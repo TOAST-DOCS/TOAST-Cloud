@@ -11,4 +11,4 @@
 #### 버그 수정
 * [Console][Infrastructure] 상품 이용 종료시 안내 문구 수정
 * [Console][Object Storage] 리소스 남아있는 상태에서 상품 이용종료 시 안내 문구 수정
-* [Console][Mobile Test] 디바이스 사용 도중 상품 이용 종료시 에러메세지 개선 요청
+* [Console][Mobile Test] 디바이스 사용 도중 상품 이용 종료시 에러메세지 안내 문구 수정
