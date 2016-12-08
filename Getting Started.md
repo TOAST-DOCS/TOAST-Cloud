@@ -130,7 +130,7 @@ Console 메인 페이지로 접속한 후 [Login] 버튼을 클릭하여 로그�
 |Product|추가|O|View|
 ||삭제|O|View|
 ||설정변경|O|O|
-|Billing||O|X|
+|Billing|결제|O|X|
 
 [표 2 공용 프로젝트 admin/멤버 권한]
 
