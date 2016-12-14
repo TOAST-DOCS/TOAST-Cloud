@@ -55,7 +55,7 @@ TOAST Cloud란 NHN 엔터테인먼트에서 제공하는 클라우드 서비스�
 
 |서비스 정보|설명|
 |---|---|
-|Leaderboard| - 대규모 트래픽에서 안정적으로 도작하는 일간, 주간, 월간, 전체 랭킹 서비스.|
+|Leaderboard| - 대규모 트래픽에서 안정적으로 동작하는 일간, 주간, 월간, 전체 랭킹 서비스.|
 |Real Time Multiplayer| - 룸기반의 실시간 멀티플레이 게임을 지원하는 네트워크 서비스.|
 
 ### Notification Service
