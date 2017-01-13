@@ -31,5 +31,5 @@
 
 #### 기능 개선/변경
 ##### Dev center
-* 요금계산기 신규 기능 추가
+* <a href="http://cloud.toast.com/product/calculator" target="_blank">요금계산기</a> 신규 기능 추가
 * 오픈소스 렌딩페이지 추가
