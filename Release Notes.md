@@ -1,5 +1,26 @@
 ## TOAST Cloud > Release Notes
 
+### 2017.04.20
+
+#### 기능 개선/변경
+##### TC Console
+* Email 상품 유료전환
+    * Email 상품이 유료로 전환되었습니다. 
+    * 이에 따라 <a href="http://alpha-docs.cloud.toast.com/ko/Notification/E-mail/Overview/" target="_blank">Notification</a> 에서 Email 상품을 만나 보실 수 있습니다. 
+
+* SMS 080 수신거부 요금추가
+    * SMS 080 수신거부 (42원/시간) 이용요금이 추가되었습니다. 
+
+* Alimtalk 신규상품 추가 
+    * 친구 추가없이 메시지를 카카오톡 사용자에게 발송할 수 있는 상품이 출시되었습니다. 
+
+#### 버그 수정
+
+##### TC Console
+* 사업자명 길이초과 버그
+    * 사업자 회원가입시 사업자명이 20글자 이상인 경우 생기는 버그가 수정되었습니다. 
+
+
 ### 2017.03.23
 
 #### 기능 개선/변경
