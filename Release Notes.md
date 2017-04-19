@@ -6,7 +6,7 @@
 ##### TC Console
 * Email 상품 유료전환
     * Email 상품이 유료로 전환되었습니다. 
-    * 이에 따라 <a href="http://alpha-docs.cloud.toast.com/ko/Notification/E-mail/Overview/" target="_blank">Notification</a> 에서 Email 상품을 만나 보실 수 있습니다. 
+    * 이에 따라 <a href="Notification/E-mail/Overview/" target="_blank">Notification</a> 에서 Email 상품을 만나 보실 수 있습니다. 
 
 * SMS 080 수신거부 요금추가
     * SMS 080 수신거부 (42원/시간) 이용요금이 추가되었습니다. 
