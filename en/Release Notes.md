@@ -19,7 +19,7 @@
 
 #### 버그 수정
 
-#### TC Console
+##### TC Console
 * 권한 노출버그 수정
     * 프로젝트의 설정 권한이 없는 Member User에게 Setting Icon이 노출되는 버그가 수정 되었습니다. 
 
