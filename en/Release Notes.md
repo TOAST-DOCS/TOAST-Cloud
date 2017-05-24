@@ -1,12 +1,36 @@
 ## TOAST Cloud > Release Notes
 
+### 2017.05.25
+
+#### 기능 개선/변경
+##### TC Console
+* 프로젝트명 길이제한 변경
+    * 프로젝트 생성시 20자로 제한된 프로젝트명 길이가 100자로 변경 되었습니다.
+
+* 다국어 지원 
+    * TOASTCloud 언어선택 메뉴에 일본어와 중국어가 추가되었습니다.
+    * TOASTCloud 공식 홈페이지 GNB 메뉴의 '언어선택란'에서 확인 하실 수 있습니다.
+
+* 프로젝트 생성 개선
+    * Console 페이지 프로젝트 리스트에 +프로젝트 생성 기능이 활성화 되었습니다.
+
+* 프로젝트 리스트 노출 개선 
+    * 프로젝트 리스트의 노출 순서가 네이밍 기준으로 변경 되었습니다.  
+
+#### 버그 수정
+
+##### TC Console
+* 권한 노출버그 수정
+    * 프로젝트의 설정 권한이 없는 Member User에게 Setting Icon이 노출되는 버그가 수정 되었습니다. 
+
+
 ### 2017.04.20
 
 #### 기능 개선/변경
 ##### TC Console
 * Email 상품 유료전환
     * Email 상품이 유료로 전환되었습니다.
-    * 이에 따라 <a href="http://docs.cloud.toast.com/en/Notification/E-mail/en/Overview/" target="_blank">Notification</a> 에서 Email 상품을 만나 보실 수 있습니다.
+    * 이에 따라 <a href="http://docs.cloud.toast.com/ko/Notification/E-mail/ko/Overview/" target="_blank">Notification</a> 에서 Email 상품을 만나 보실 수 있습니다. 
 
 * SMS 080 수신거부 요금추가
     * SMS 080 수신거부 (42원/시간) 이용요금이 추가되었습니다.
