@@ -1,5 +1,18 @@
 ## TOAST Cloud > Release Notes
 
+### 2017.06.23
+
+#### 기능 개선/변경
+##### TC Console
+* Managed Service Open
+    * TOASTCloud 에서는 관리받기 원하는 인스턴스에 대해 Managed Service를 제공합니다. 
+    * Managed Basic, Managed Pro에 따라 세분화된 관리 및 설계를 받으 실 수 있습니다. 
+
+* TOASTCloud 약관 내용 변경
+    * Managed Service에 따른 이용약관이 변경되었습니다.
+    * 보다 자세한 사항은 <a href="https://alpha-cloud.toast.com/support/notice/detail/1453495440K00120" target="_blank">TOASTCloud 공지사항</a>에서 확인 하실 수 있습니다. 
+
+
 ### 2017.05.25
 
 #### 기능 개선/변경
