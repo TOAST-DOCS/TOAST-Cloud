@@ -10,8 +10,11 @@
 
 * TOASTCloud 약관 내용 변경
     * Managed Service에 따른 이용약관이 변경되었습니다.
-    * 보다 자세한 사항은 <a href="https://alpha-cloud.toast.com/support/notice/detail/1453495440K00120" target="_blank">TOASTCloud 공지사항</a>에서 확인 하실 수 있습니다. 
+    * 보다 자세한 사항은 <a href="https://cloud.toast.com/support/notice/detail/1453495440K00120" target="_blank">TOASTCloud 공지사항</a>에서 확인 하실 수 있습니다. 
 
+* Maps 상품 카테고리 변경
+    * TOASTCloud Maps 상품이 Upcoming Products 에서 <a href="http://docs.cloud.toast.com/ko/Common/Maps/ko/Overview/" target="_blank">Common</a>Common 카테고리로 변경 되었습니다.
+    * Maps는 6개월간 무료로 이용이 가능합니다.  
 
 ### 2017.05.25
 
