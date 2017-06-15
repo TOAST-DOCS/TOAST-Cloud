@@ -16,7 +16,6 @@
     * TOASTCloud Maps 상품이 Upcoming Products 에서 <a href="http://docs.cloud.toast.com/ko/Common/Maps/ko/Overview/" target="_blank">Common</a> 카테고리로 변경 되었습니다.
     * Maps는 6개월간 무료로 이용이 가능합니다.  
 
-
 ### 2017.05.25
 
 #### 기능 개선/변경
