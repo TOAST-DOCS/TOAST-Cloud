@@ -1,6 +1,6 @@
 ## TOAST Cloud > Release Notes
 
-### 2017.06.23
+### 2017.06.22
 
 #### 기능 개선/변경
 ##### TC Console
