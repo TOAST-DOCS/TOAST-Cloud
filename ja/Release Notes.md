@@ -1,5 +1,30 @@
 ## TOAST Cloud > Release Notes
+### 2017.08.24
 
+#### 기능 개선/변경
+##### TC Console
+* Infrastructure 요금 테이블 변경
+    * Infrastructure 요금제에 Basic 과 Storage Optimized 요금제가 추가되었습니다.
+    * 저사양 Basic 과 High IOPS SSD를 제공하는 Storage Optimized 를 제공 받으실 수 있습니다. 
+    * u2 (Basic) 요금제는 BETA 서비스 기간으로 SLA가 보장되지 않습니다. 
+    * 자세한 사항은 <a href="https://cloud.toast.com/pricing" target="_blank">TOASTCloud Pricing 페이지</a> 및 요금 계산기에서 확인 하실 수 있습니다. 
+
+* Billing Viewer 권한 추가
+    * Project 의 Member 권한 중 사용량 페이지를 조회할 수 있는 Viewer 권한이 추가되었습니다. 
+    * Billing Viewer 는 Project 내의 모든 행위는 제한 되며, 이용요금 조회만 가능합니다.
+
+* AppGuard 기간 약정 요금제 추가 
+    * AppGuard 의 기간 약정제 요금이 추가되었습니다. 
+    * Android, iOS 로 분류되며 보다 자세한 사항은 <a href="https://cloud.toast.com/pricing/security" target="_blank">Security Pricing 페이지</a> 에서 조회 하실 수 있습니다. 
+
+* 요금계산기 추가
+    * NAS 상품을 비롯한 Fusion I/O Flavor 가 추가되었습니다.
+ 
+#### 버그 수정
+##### TC Console 
+* 공지사항 버그 수정
+    * 공지사항 ALL, FAQ 카테고리 글자가 나타나지 않는 현상이 수정되었습니다. 
+     
 ### 2017.06.22
 
 #### 기능 개선/변경
