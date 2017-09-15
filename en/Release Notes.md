@@ -1,4 +1,14 @@
 ## TOAST Cloud > Release Notes
+### 2017.09.21 
+
+#### 기능 개선/변경
+##### TC Console
+* RTCS 신규상품 추가 
+    * RTCS 상품이 신규 출시되었습니다. 
+    * RTCS 는 쉽고 빠르게 Web, Mobile App, Desktop Application과 같은 다양한 Device를 실시간으로 연결하고, 메시지를 주고 받을수 있게 해주는 서비스 입니다. 
+    * 보다 자세한 사항은 <a href="http://beta-docs.cloud.toast.com/ko/Upcoming%20Products/RTCS/ko/Overview/" target="_blank">RTCS Document 페이지</a> 에서 확인 하실 수 있습니다.
+
+
 ### 2017.08.24
 
 #### 기능 개선/변경
@@ -25,6 +35,7 @@
 * 공지사항 버그 수정
     * 공지사항 ALL, FAQ 카테고리 글자가 나타나지 않는 현상이 수정되었습니다. 
      
+
 ### 2017.06.22
 
 #### 기능 개선/변경
@@ -41,7 +52,6 @@
     * TOASTCloud Maps 상품이 Upcoming Products 에서 <a href="http://docs.cloud.toast.com/ko/Common/Maps/ko/Overview/" target="_blank">Common</a> 카테고리로 변경 되었습니다.
     * Maps는 6개월간 무료로 이용이 가능합니다.  
 
- 
 ### 2017.05.25
 
 #### 기능 개선/변경
@@ -72,7 +82,7 @@
 ##### TC Console
 * Email 상품 유료전환
     * Email 상품이 유료로 전환되었습니다.
-    * 이에 따라 <a href="http://docs.cloud.toast.com/en/Notification/E-mail/en/Overview/" target="_blank">Notification</a> 에서 Email 상품을 만나 보실 수 있습니다. 
+    * 이에 따라 <a href="http://docs.cloud.toast.com/ko/Notification/E-mail/ko/Overview/" target="_blank">Notification</a> 에서 Email 상품을 만나 보실 수 있습니다. 
 
 * SMS 080 수신거부 요금추가
     * SMS 080 수신거부 (42원/시간) 이용요금이 추가되었습니다.
