@@ -6,7 +6,7 @@
 * RTCS 신규상품 추가 
     * RTCS 상품이 신규 출시되었습니다. 
     * RTCS 는 쉽고 빠르게 Web, Mobile App, Desktop Application과 같은 다양한 Device를 실시간으로 연결하고, 메시지를 주고 받을수 있게 해주는 서비스 입니다. 
-    * 보다 자세한 사항은 <a href="http://beta-docs.cloud.toast.com/ko/Upcoming%20Products/RTCS/ko/Overview/" target="_blank">RTCS Document 페이지</a> 에서 확인 하실 수 있습니다.
+    * 보다 자세한 사항은 <a href="http://docs.cloud.toast.com/ko/Upcoming%20Products/RTCS/ko/Overview/" target="_blank">RTCS Document 페이지</a> 에서 확인 하실 수 있습니다.
 
 
 ### 2017.08.24
