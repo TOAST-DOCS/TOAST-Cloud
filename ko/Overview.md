@@ -55,6 +55,7 @@ TOAST Cloud란 NHN 엔터테인먼트에서 제공하는 클라우드 서비스�
 
 |서비스 정보|설명|
 |---|---|
+|Gamebase| - Game에서 공통적으로 필요한 기능을 통합 SDK로 제공하는 서비스|
 |Leaderboard| - 대규모 트래픽에서 안정적으로 동작하는 일간, 주간, 월간, 전체 랭킹 서비스.|
 |Real Time Multiplayer| - 룸기반의 실시간 멀티플레이 게임을 지원하는 네트워크 서비스.|
 
@@ -66,6 +67,8 @@ TOAST Cloud란 NHN 엔터테인먼트에서 제공하는 클라우드 서비스�
 |---|---|
 |Push	| - APNS / CGM / TENCENT 를 통한 푸쉬 제공<br/> - 메시지 전송 결과 확인 기능 제공.|
 |SMS	| - SMS / LMS / MMS 발송 기능 제공 |
+|Email| - 메일 발송, 예약 발송, 조회, 템플릿 관리까지 통합되는 메일 발송 서비스|
+|Alimtalk| - 휴대폰 번호를 기반, 친구 추가없이 카카오톡 사용자에게 정보성 메시지를 발송할 수 있는 서비스|
 
 ### Security Service
 
@@ -75,6 +78,7 @@ TOAST Cloud란 NHN 엔터테인먼트에서 제공하는 클라우드 서비스�
 |---|---|
 |AppGuard	| - 애플리케이션의 코드 조작을 방지<br/> - 다양한 조작 툴을 패턴이나 우회가 힘든 행위기반으로 탐지, 제재 |
 |Security Check	| - 보안 취약점 사전 검수<br/> - 취약점에 대한 대응 방법 가이드 |
+|Security Monitoring| - NHN Ent의 검증된 IDS/SIEM 패턴 및 위협관리대응체계 기반 보안관리 서비스|
 |CAPTCHA| - 문자 / 음성 CAPTCHA 제공|
 |OTP| - 사용자의 스마트폰으로 사용 가능한 OTP 제공|
 
@@ -88,3 +92,5 @@ TOAST Cloud란 NHN 엔터테인먼트에서 제공하는 클라우드 서비스�
 |IAP| - 하나의 인터페이스로 모든 마켓을 이용할 수 있는 인앱 결제 서비스.|
 |Mobile Test| - 물리적인 단말을 웹상에서 대여|
 |Address Search| - 도로명주소, 지번주소, 건물명 검색 기능 제공|
+|Maps| - HTTP RESTful API를 활용한 지도, 검색, 길찾기 서비스|
+
