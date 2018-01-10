@@ -1,1 +1,1 @@
-## TOAST > User Guide
+## TOAST > TOAST Guide
