@@ -91,7 +91,9 @@ https://toast.com 에 접속하여 GNB 메뉴 우측의 회원가입을 클릭�
 TOAST 서비스 사용을 위해서는 자동결제에 사용될 결제 수단 등록이 필요합니다. <br/>
 단, 기존에 만들어진 조직/프로제트의 멤버인 경우에는 결제 수단 등록 없이 TOAST 서비스를 사용할 수 있습니다. <br/>
 
-TOAST 에서 제공하는 결제 수단은 아래와 같습니다.<br/>
+### 결제수단 종류
+TOAST 에서 제공하는 결제 수단은 아래와 같습니다.
+
 - PAYCO 신용카드 : PAYCO 에서 제공하는 간편결제로, PAYCO 계정으로 이용이 가능합니다. <br/>
 - 신용카드 : 카드사에서 제공하는 인증 정책에 따라 인증(공인인증서 인증)을 하고, 신용카드를 결제수단으로 등록합니다. <br/>
 - 신용카드(해외) : 카드사에서 제공하는 인증 정책에 따라 인증(3D인증)을 하고, 신용카드를 결제수단으로 등록합니다. <br/>
@@ -114,14 +116,15 @@ TOAST 에서 제공하는 결제 수단은 아래와 같습니다.<br/>
 - 마이 페이지 > 결제수단 화면에서 결제수단변경 버튼을 클릭합니다.
 - 자동결제수단 등록화면에서 'PAYCO 신용카드'를 선택합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/payco select.png)
-  <center>[그림 5] 결제 수단 등록 - PAYCO 신용카드 선택 </center>
+![](http://static.toastoven.net/toast/user_guide/payco-select.png)
+<center>[그림 5] 결제 수단 등록 - PAYCO 신용카드 선택 </center>
+
 
 #### PAYCO 가입하기
   - PAYCO 아이디는 본인의 휴대폰 번호 또는 이메일을 아이디로 사용할 수 있습니다.
   - 사용하실 아이디와 비밀번호를 입력하시면 가입이 완료됩니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/payco join.png)
+  ![](http://static.toastoven.net/toast/user_guide/payco-join.png)
   <center>[그림 6] 결제 수단 등록 - PAYCO 가입하기 </center>
 
 #### 본인인증 및 결제수단 등록하기
@@ -129,13 +132,13 @@ TOAST 에서 제공하는 결제 수단은 아래와 같습니다.<br/>
   - 본인인증 후, 결제수단의 정보를 입력하고 동의절차를 거치면 등록이 완료됩니다.
   - 결제수단 종류에 따라 결제 비밀번호 입력이 필요할 수 있습니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/payco credit.png)
+  ![](http://static.toastoven.net/toast/user_guide/payco-credit.png)
   <center>[그림 7] 결제 수단 등록 - 결제수단 등록 </center>
 
 #### PAYCO 로 결제하기
   - 결제수단 선택 후, 결제비밀번호를 입력하면 결제수단 등록이 완료됩니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/payco password.png)
+  ![](http://static.toastoven.net/toast/user_guide/payco-password.png)
   <center>[그림 8] 결제 수단 등록 - 결제 비밀번호 입력 </center>
 
 ### 신용카드
@@ -143,39 +146,91 @@ TOAST 에서 제공하는 결제 수단은 아래와 같습니다.<br/>
   - 마이 페이지 > 결제수단 화면에서 결제수단변경 버튼을 클릭합니다.
   - 자동결제수단 등록화면에서 '신용카드'를 선택합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/credit select.png)
+  ![](http://static.toastoven.net/toast/user_guide/credit-select.png)
   <center>[그림 9] 결제 수단 등록 - 신용카드 선택 </center>
 
 #### 약관 및 이용 동의
   - 자동승인 약관, 고유식별정보 수집 및 이용동의, 개인정보의 수집 및 이용안내에 모두 동의가 필요합니다.
   - 동의 후 다음단계 버튼을 눌러서 진행합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/credit agreement.png)
+  ![](http://static.toastoven.net/toast/user_guide/credit-agreement.png)
   <center>[그림 10] 결제 수단 등록 - 약관 및 이용 동의 </center>
 
 #### 카드 정보 입력
   - 카드번호, 유효기간, 주민등록번호를 입력한 후, 다음단계 버튼을 눌러서 진행합니다.
   - 사업자회원의 경우, 회원 가입시 입력한 사업자번호가 자동으로 설정됩니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/credit cardinfo.png)
+  ![](http://static.toastoven.net/toast/user_guide/credit-cardinfo.png)
   <center>[그림 11] 결제 수단 등록 - 카드 정보 입력</center>
 
 #### 공인인증서 인증
   - 카드 정보에 대한 확인 후, 공인인증서 인증안내에 따라 공인인증서를 선택한 후, 인증서 암호를 입력합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/credit kcp.png)
+  ![](http://static.toastoven.net/toast/user_guide/credit-kcp.png)
   <center>[그림 12] 결제 수단 등록 - 공인인증서 인증</center>
 
 #### 결제 수단 등록 완료
   - 결제 수단이 정상적으로 등록이 되면, 마이 페이지 > 결제수단에서 확인이 가능합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/credit complete.png)
+  ![](http://static.toastoven.net/toast/user_guide/credit-complete.png)
   <center>[그림 13] 결제 수단 등록 - 결제 수단 등록 완료 </center>
 
 ### 신용카드(해외)
+#### 결제수단 선택
+  - 마이 페이지 > 결제수단 화면에서 결제수단변경 버튼을 클릭합니다.
+  - 자동결제수단 등록화면에서 '신용카드(해외)'를 선택합니다.
 
+  ![](http://static.toastoven.net/toast/user_guide/credit-world-select.png)
+  <center>[그림 14] 결제 수단 등록 - 신용카드(해외) 선택 </center>
 
+#### 카드사별 인증 등록
+- [그림 14] 의 화면에서 확인하세요 내용을 학인 후, 등록하기 버튼을 클릭하여 해외발행 신용카드 3D인증 적용 안내를 확인합니다. <br/>
+![](http://static.toastoven.net/toast/user_guide/worldcard-secure.png)
+<center>[그림 15] 결제 수단 등록 - 신용카드(해외) 3D인증 안내 </center>
+- verified by visa 이용안내 (확인 필요) <br/>
+  - visa checkout 서비스 등록 : visa website 에서 계정을 생성 후,visa 카드 정보 입력 후, 비밀번호를 설정합니다.
+  - 결제수단 등록시, 카드 정보 입력하게 되면, visa checkout 서비스 등록정보를 확인하여 인증합니다.
+  ![](http://static.toastoven.net/toast/user_guide/visa.png)
+  <center>[그림 16] 결제 수단 등록 - 신용카드(해외) 3D인증 - visa 안내 </center>
+- MasterCard SecureCode 이용안내 (확인 필요) <br/>
+  - MasterCard website 은행을 선택 후, SecureCode 등록합니다.
+  - 약관에 동의하고, 카드번호를 입력합니다.
+  - 카드 번호 입력 후, SecureCode 를 등록하기 위한 개인 확인 사항을 입력합니다.
+  - 결제수단 등록시, 카드 정보 입력하게 되면, SecureCode 생성을 위한 질문에 답변을 하게 되면 SecureCode 가 생성이 됩니다. 생성된 SecureCode 를 입력하여 인증합니다.
 
+  ![](http://static.toastoven.net/toast/user_guide/master.png)
+  <center>[그림 17] 결제 수단 등록 - 신용카드(해외) 3D인증 - MasterCard </center>
 
+- JBC J/Secure 이용안내 (확인 필요) <br/>
+  - J/Secure 결제창에 카드번호, 유효기간, 카드소유자명을 입력합니다.
+  - 비밀번호 입력 창이 뜨면, 비밀번호를 입력합니다.
+  - 비밀번호가 존재하면 기존과 동일한 비밀번호인지 확인하고, 없을 경우 신규로 등록합니다.
+  - 결제수단 등록시, 카드 정보를 입력하고 비밀번호를 입력하여 인증합니다.
+  ![](http://static.toastoven.net/toast/user_guide/jcb.png)
+  <center>[그림 18] 결제 수단 등록 - 신용카드(해외) 3D인증 - JBC </center>
 
 ## 회원 탈퇴
+### 회원 탈퇴 신청
+TOAST 회원 탈퇴는 마이 페이지 > 회원정보에서 회원 탈퇴 버튼을 클릭하여 신청합니다.
+
+![](http://static.toastoven.net/toast/user_guide/member-mypage.png)
+<center>[그림 19] 회원 탈퇴 - 마이 페이지 </center>
+
+### 회원 탈퇴 신청 작성
+회원 탈퇴 버튼 클릭시 고객센터 > 1:1문의 > 회원 가입/결제 의 문의유형 '회원탈퇴' 로 이동합니다.
+회원 탈퇴에 대한 내용을 작성한 후, 확인 버튼을 클릭하면 회원 탈퇴 신청이 완료됩니다.
+
+![](http://static.toastoven.net/toast/user_guide/member-out.png)
+<center>[그림 20] 회원 탈퇴 - 회원 탈퇴 신청 (1:1 문의) </center>
+
+### 회원 탈퇴 검증
+회원 탈퇴 신청 후, 고객센터에서 아래와 같은 정보를 확인 후 회원 탈퇴 처리를 합니다.
+- 이용 요금 : 이용 요금이 남이 있는 경우, 회원 탈퇴가 불가합니다.
+- 서비스 이용 : 이용 중인 서비스가 남아 있는 경우, 회원 탈퇴가 불가합니다.
+- 프로젝트와 조직 이용 : 서비스 이용을 위해 생성한 프로젝트와 조직이 남아 있는 경우, 회원 탈퇴가 불가합니다.
+
+회원 탈퇴가 불가한 경우, 회원에게 탈퇴 불가사유에 대해 회원탈퇴 신청시 등록된 이메일로 안내가 됩니다.
+
+### 회원 탈퇴 완료
+회원 탈퇴가 완료되면, 회원탈퇴 완료에 대해 회원탈퇴 신청시 등록된 이메일로 발송됩니다.
+회원 탈퇴 시 모든 이용 정보가 삭제되며, 삭제된 데이터는 복구 되지 않습니다.
