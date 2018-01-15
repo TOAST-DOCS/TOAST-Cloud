@@ -115,7 +115,7 @@ TOAST 에서 제공하는 결제 수단은 아래와 같습니다.
 ### PAYCO 신용카드
 - 결제수단 선택
   - 마이 페이지 > 결제수단 화면에서 결제수단변경 버튼을 클릭합니다.
-  - 자동결제수단 등록화면에서 PAYCO 신용카드를 선택합니다.
+  - 자동결제수단 등록화면에서 'PAYCO 신용카드'를 선택합니다.
 
   ![](http://static.toastoven.net/toast/user_guide/payco select.png)
   <center>[그림 5] 결제 수단 등록 - PAYCO 신용카드 선택 </center>
@@ -138,9 +138,38 @@ TOAST 에서 제공하는 결제 수단은 아래와 같습니다.
   <center>[그림 8] 결제 수단 등록 - 결제 비밀번호 입력 </center>
 
 ### 신용카드
+- 결제수단 선택
+  - 마이 페이지 > 결제수단 화면에서 결제수단변경 버튼을 클릭합니다.
+  - 자동결제수단 등록화면에서 '신용카드'를 선택합니다.
+  ![](http://static.toastoven.net/toast/user_guide/credit select.png)
+  <center>[그림 9] 결제 수단 등록 - 신용카드 선택 </center>
 
+- 약관 및 이용 동의
+  - 자동승인 약관, 고유식별정보 수집 및 이용동의, 개인정보의 수집 및 이용안내에 모두 동의가 필요합니다.
+  - 동의 후 다음단계 버튼을 눌러서 진행합니다.
+  ![](http://static.toastoven.net/toast/user_guide/credit agreement.png)
+  <center>[그림 10] 결제 수단 등록 - 약관 및 이용 동의 </center>
+
+- 카드 정보 입력
+  - 카드번호, 유효기간, 주민등록번호를 입력한 후, 다음단계 버튼을 눌러서 진행합니다.
+  - 사업자회원의 경우, 회원 가입시 입력한 사업자번호가 자동으로 설정됩니다.
+  ![](http://static.toastoven.net/toast/user_guide/credit cardinfo.png)
+  <center>[그림 11] 결제 수단 등록 - 카드 정보 입력</center>
+
+- 공인인증서 인증
+  - 카드 정보에 대한 확인 후, 공인인증서 인증안내에 따라 공인인증서를 선택한 후, 인증서 암호를 입력합니다.
+
+  ![](http://static.toastoven.net/toast/user_guide/credit kcp.png)
+  <center>[그림 12] 결제 수단 등록 - 공인인증서 인증</center>
+- 결제 수단 등록 완료
+  - 결제 수단이 정상적으로 등록이 되면, 마이 페이지 > 결제수단에서 확인이 가능합니다.
+  ![](http://static.toastoven.net/toast/user_guide/credit complete.png)
+  <center>[그림 13] 결제 수단 등록 - 결제 수단 등록 완료 </center>
 
 ### 신용카드(해외)
+
+
+
 
 
 ## 회원 탈퇴
