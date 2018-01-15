@@ -62,5 +62,6 @@ https://toast.com 에 접속하여 GNB 메뉴 우측의 회원가입을 클릭�
 
     ![](http://static.toastoven.net/toast/user_guide/business-member.png)
 <center>[그림 4] 토스트 회원가입 - 사업자 회원 </center>
+
 - 회원가입 완료
   - 회원가입 완료가 되면 자동 로그인이 됩니다. TOAST 서비스 사용이 가능한 상태로 TOAST 홈페이지와 Console 을 이용할 수 있습니다.
