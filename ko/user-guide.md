@@ -1,8 +1,8 @@
 ## TOAST > TOAST 사용 가이드
 
-## TOAST 회원 가입
+NHN Entertainment가 만든 클라우드 서비스, TOAST를 이용하기 위한 TOAST 회원/결제 가이드입니다.
 
-NHN Entertainment가 만든 클라우드 서비스, TOAST를 이용하기 위한 TOAST 회원 가입 가이드입니다.
+## TOAST 회원 가입
 
 ### 회원 관리 정보
 
