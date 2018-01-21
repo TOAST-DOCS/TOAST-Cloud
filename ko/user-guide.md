@@ -1,6 +1,11 @@
 ## TOAST > TOAST 사용 가이드
+NHN Entertainment 가 만든 클라우드 서비스, TOAST 를 이용하기 위한 사용자 가이드입니다.
+
 ## TOAST 회원 가입
-NHN Entertainment 가 만든 클라우드 서비스, TOAST를 이용하기 위한 TOAST 회원 가입 가이드입니다.
+TOAST 회원은 개인 회원과 사업자 회원으로 관리합니다.
+개인 회원은 간단한 이메일 인증 / SMS 인증을 통해 가입합니다.
+사업자 회원은 사업자정보를 기반으로 가입이 가능합니다.
+TOAST 회원 정보와 가입 절차는 아래와 같습니다.
 
 ### 회원 관리 정보
 TOAST 회원은 아래의 정보를 관리합니다.
@@ -20,6 +25,12 @@ TOAST 회원은 아래의 정보를 관리합니다.
 ### 회원 가입 철차
 https://toast.com 에 접속하여 GNB 메뉴 우측의 회원가입을 클릭합니다.
 회원 가입 절차는 아래와 같습니다.
+
+![](http://static.toastoven.net/toast/user_guide/userguide_001.png)
+<center>[그림 1] 회원 가입 - 개인 회원 </center>
+
+![](http://static.toastoven.net/toast/user_guide/userguide_002.png)
+<center>[그림 2] 회원 가입 - 사업자 회원 </center>
 
 #### 회원 유형 (개인 / 사업자) 선택
 
