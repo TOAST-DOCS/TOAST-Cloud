@@ -10,7 +10,6 @@ TOAST 회원 정보와 가입 절차는 아래와 같습니다.
 ### 회원 관리 정보
 TOAST 회원은 아래의 정보를 관리합니다.
 
-
 | 관리 정보 | 설명 | 필수 입력 |
 | --- | --- | --- |
 | ID | - 이메일 수신이 가능한 이메일 주소입니다. (이메일 인증 필수) | O |
@@ -60,6 +59,14 @@ https://toast.com 에 접속하여 GNB 메뉴 우측의 회원가입을 클릭�
 #### 회원가입 완료
 
 회원가입 완료가 되면 자동 로그인이 됩니다. TOAST 서비스 사용이 가능한 상태로 TOAST 홈페이지와 Console 을 이용할 수 있습니다.
+
+## TOAST 회원 전환
+PAYCO 서비스에 가입하여 TOAST 를 이용하던 회원은 아래와 같이 서비스 전환이 필요합니다.
+서비스 전환은 간단한 이메일 인증과 새로운 패스워드 설정으로 가능합니다.
+
+![](http://static.toastoven.net/toast/user_guide/userguide_003.png)
+<center>[그림 3] TOAST 회원 전환 </center>
+
 
 ## 결제수단 등록
 TOAST 서비스를 이용하기 위해서는 결제 수단 등록이 필요합니다. <br/>
@@ -131,14 +138,14 @@ TOAST 에서 제공하는 결제수단은 아래와 같습니다.
 #### 카드사별 인증 등록
 - 신용카드(해외) 의 화면에서 확인하세요 내용을 학인 후, 등록하기 버튼을 클릭하여 해외발행 신용카드 3D인증 적용 안내를 확인합니다. <br/>
 ![](http://static.toastoven.net/toast/user_guide/worldcard-secure.png)
-<center>[그림 2] 결제 수단 등록 - 신용카드(해외) 3D인증 안내 </center>
+<center>[그림 4] 결제 수단 등록 - 신용카드(해외) 3D인증 안내 </center>
 
 - verified by visa 이용안내 (확인 필요)<br/>
     - visa checkout 서비스 등록 : visa website 에서 계정을 생성 후,visa 카드 정보 입력 후, 비밀번호를 설정합니다.
     - 결제수단 등록시, 카드 정보 입력하게 되면, visa checkout 서비스 등록정보를 확인하여 인증합니다.
 
   ![](http://static.toastoven.net/toast/user_guide/visa.png)
-  <center>[그림 3] 결제 수단 등록 - 신용카드(해외) 3D인증 - visa 안내 </center>
+  <center>[그림 5] 결제 수단 등록 - 신용카드(해외) 3D인증 - visa 안내 </center>
 
 - MasterCard SecureCode 이용안내 (확인 필요) <br/>
     - MasterCard website 은행을 선택 후, SecureCode 등록합니다.
@@ -147,7 +154,7 @@ TOAST 에서 제공하는 결제수단은 아래와 같습니다.
     - 결제수단 등록시, 카드 정보 입력하게 되면, SecureCode 생성을 위한 질문에 답변을 하게 되면 SecureCode 가 생성이 됩니다. 생성된 SecureCode 를 입력하여 인증합니다.
 
   ![](http://static.toastoven.net/toast/user_guide/master.png)
-  <center>[그림 4] 결제 수단 등록 - 신용카드(해외) 3D인증 - MasterCard </center>
+  <center>[그림 6] 결제 수단 등록 - 신용카드(해외) 3D인증 - MasterCard </center>
 
 - JBC J/Secure 이용안내 (확인 필요) <br/>
     - J/Secure 결제창에 카드번호, 유효기간, 카드소유자명을 입력합니다.
@@ -156,7 +163,7 @@ TOAST 에서 제공하는 결제수단은 아래와 같습니다.
     - 결제수단 등록시, 카드 정보를 입력하고 비밀번호를 입력하여 인증합니다.
 
   ![](http://static.toastoven.net/toast/user_guide/jcb.png)
-  <center>[그림 5] 결제 수단 등록 - 신용카드(해외) 3D인증 - JBC </center>
+  <center>[그림 7] 결제 수단 등록 - 신용카드(해외) 3D인증 - JBC </center>
 
 #### 결제 수단 등록 완료
 - 결제 수단이 정상적으로 등록이 되면, 마이 페이지 > 결제수단에서 확인이 가능합니다.
