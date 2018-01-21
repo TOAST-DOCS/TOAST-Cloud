@@ -62,7 +62,7 @@ https://toast.com 에 접속하여 GNB 메뉴 우측의 회원가입을 클릭�
 
 ## TOAST 회원 전환
 PAYCO 서비스에 가입하여 TOAST 를 이용하던 회원은 아래와 같이 서비스 전환이 필요합니다.
-서비스 전환은 간단한 이메일 인증과 새로운 패스워드 설정으로 가능합니다.
+서비스 전환은 간단한 이메일 인증과 비밀번호 설정으로 가능합니다.
 
 ![](http://static.toastoven.net/toast/user_guide/userguide_003.png)
 <center>[그림 3] TOAST 회원 전환 </center>
@@ -144,7 +144,7 @@ TOAST 에서 제공하는 결제수단은 아래와 같습니다.
     - visa checkout 서비스 등록 : visa website 에서 계정을 생성 후,visa 카드 정보 입력 후, 비밀번호를 설정합니다.
     - 결제수단 등록시, 카드 정보 입력하게 되면, visa checkout 서비스 등록정보를 확인하여 인증합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/visa.png)
+  ![](http://static.toastoven.net/toast/user_guide/userguide_004.png)
   <center>[그림 5] 결제 수단 등록 - 신용카드(해외) 3D인증 - visa 안내 </center>
 
 - MasterCard SecureCode 이용안내 (확인 필요) <br/>
@@ -153,7 +153,7 @@ TOAST 에서 제공하는 결제수단은 아래와 같습니다.
     - 카드 번호 입력 후, SecureCode 를 등록하기 위한 개인 확인 사항을 입력합니다.
     - 결제수단 등록시, 카드 정보 입력하게 되면, SecureCode 생성을 위한 질문에 답변을 하게 되면 SecureCode 가 생성이 됩니다. 생성된 SecureCode 를 입력하여 인증합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/master.png)
+  ![](http://static.toastoven.net/toast/user_guide/userguide_005.png)
   <center>[그림 6] 결제 수단 등록 - 신용카드(해외) 3D인증 - MasterCard </center>
 
 - JBC J/Secure 이용안내 (확인 필요) <br/>
@@ -162,7 +162,7 @@ TOAST 에서 제공하는 결제수단은 아래와 같습니다.
     - 비밀번호가 존재하면 기존과 동일한 비밀번호인지 확인하고, 없을 경우 신규로 등록합니다.
     - 결제수단 등록시, 카드 정보를 입력하고 비밀번호를 입력하여 인증합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/jcb.png)
+  ![](http://static.toastoven.net/toast/user_guide/userguide_006.png)
   <center>[그림 7] 결제 수단 등록 - 신용카드(해외) 3D인증 - JBC </center>
 
 #### 결제 수단 등록 완료
