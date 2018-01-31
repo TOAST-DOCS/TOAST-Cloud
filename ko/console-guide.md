@@ -27,11 +27,13 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 #### 조직 서비스
 - 조직이 생성이 되면, 서비스를 선택 할 수 있습니다.
 - 조직 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
-    - ERP
-    - Dooray
-    - Contact Center
-    - bill(e-Tax)
-    - IDC
+| 조직 서비스 |
+| ------ |
+| ERP |
+| Dooray |
+| Contact Center |
+| bill(e-Tax)|
+| IDC |
 #### 조직 멤버
 조직의 멤버는 TOAST.com 회원과 조직 내부 회원으로 구분되어 관리합니다.
 
@@ -112,19 +114,70 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 #### 프로젝트 서비스
 - 프로젝트가 생성이 되면, 서비스를 선택 할 수 있습니다.
 - 프로젝트 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
-  - Compute
-  - Storage
-  - Network
-  - Security
-  - Contents Delivery
-  - Management
-  - Game
-  - Notification
-  - Application Service
-  - Search 
-  - Mobile Service
+
+| 프로젝트 서비스 |
+| ------ |
+| Compute |
+| Storage |
+| Network |
+| Security |
+| Contents Delivery |
+| Management |
+| Game |
+| Notification |
+| Application Service |
+| Search |
+| Mobile Service |
 
 #### 프로젝트 멤버
+프로젝트의 멤버는 TOAST.com 회원입니다. 조직 내부 회원이 프로젝트 멤버로 서비스를 이용할 수 있는 기능은 추후 제공 예정입니다.
+조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
+
+프로젝트 멤버 ROLE 은 아래와 같습니다.
+
+| Action | Role | Admin | Member | Billing Viewer Admin | Billing Viewer |
+| ------ | ---- | ----- | ----- | ------ | ----- | ------ |
+| Member 관리 | Project Member 등록(Admin) | O |   |  |  |
+|  | Project Member 삭제(Admin) | O |  |  | |  
+|  | Project Member 등록(Member) | O |  |  | |  
+|  | Project Member 삭제(Member) | O |  |  | |  
+|  | Project Member 등록(Billing Viewer Admin) | O |  |  |   |
+|  | Project Member 삭제(Billing Viewer Admin) | O |  |  |   |
+|  | Project Member 등록(Billing Viewer) | O |  | O | |  
+|  | Project Member 삭제(Billing Viewer) | O |  | O | |  
+| 서비스 관리 | 서비스 활성화 | O |  |  | |  
+|  | 서비스 이용 | O | O | | |  
+|  | 서비스 비활성화 | O | | | |  
+| 이용 현황 | 이용 현황 | O | O | O | O |
+
 #### 프로젝트 삭제
+프로젝트에서 이용중인 서비스가 없을 경우에 프로젝트 삭제가 가능합니다.
+프로젝트 삭제시, 프로젝트의 모든 리소스는 삭제되며 복구가 불가능합니다.
+현재까지 이용한 모든 리소스에 대한 이용내역을 즉시 정산하고 삭제할 수 있습니다.
+단, 즉시 결제하지 않고 삭제할 경우 현재까지 이용한 요금 내역은 다음 결제일에 자동 청구됩니다.
 
 ### 프로젝트 생성 / 서비스 활성화 Flow
+
+#### 프로젝트 생성
+![](http://static.toastoven.net/toast/console_guide/consoleguide_003.png)
+<center>[그림 4] 프로젝트 생성 </center>
+
+1) 조직 생성 후, 새 프로젝트 만들기 버튼이 활성화 됩니다. 해당 버튼을 클릭하여 프로젝트를 생성합니다.
+2) 프로젝트명과 설명을 입력합니다.
+3) 확인 버튼을 클릭하여 프로젝트를 생성합니다.
+4) 프로젝트가 생성이 되면 콘솔의 좌측 메뉴에 프로젝트명이 노출됩니다.
+5) 프로젝트 설정 버튼을 클릭하여 프로젝트 정보를 확인합니다.
+
+#### 프로젝트 서비스 활성화
+![](http://static.toastoven.net/toast/console_guide/consoleguide_003.png)
+<center>[그림 4] 프로젝트 서비스 활성화 </center>
+
+1) 프로젝트 생성 후, 서비스 선택 버튼을 클릭하여 프로젝트에서 사용할 서비스를 활성화 합니다.
+2) 서비스 선택 화면에서 활성화하려눈 서비스를 선택합니다.
+3) 서비스 활성화 문의 메세지가 노출됩니다.
+4) 서비스 활성화 후, 서비스 이용 할 수 있는 페이지로의 이동 안내 메세지가 노출됩니다.
+5) 활성화 한 서비스 목록을 콘솔 좌측 메뉴에서 확인합니다. 해당 서비스 클릭시 서비스 이용 화면이 노출됩니다.
+
+## 서비스 이용 현황
+
+## 결제 관리
