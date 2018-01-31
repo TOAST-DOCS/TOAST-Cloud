@@ -159,7 +159,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 ### 프로젝트 생성 / 서비스 활성화 Flow
 
 #### 프로젝트 생성
-![](http://static.toastoven.net/toast/console_guide/consoleguide_003.png)
+![](http://static.toastoven.net/toast/console_guide/consoleguide_004.png)
 <center>[그림 4] 프로젝트 생성 </center>
 
 1) 조직 생성 후, 새 프로젝트 만들기 버튼이 활성화 됩니다. 해당 버튼을 클릭하여 프로젝트를 생성합니다.
@@ -169,8 +169,8 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 5) 프로젝트 설정 버튼을 클릭하여 프로젝트 정보를 확인합니다.
 
 #### 프로젝트 서비스 활성화
-![](http://static.toastoven.net/toast/console_guide/consoleguide_003.png)
-<center>[그림 4] 프로젝트 서비스 활성화 </center>
+![](http://static.toastoven.net/toast/console_guide/consoleguide_005.png)
+<center>[그림 5] 프로젝트 서비스 활성화 </center>
 
 1) 프로젝트 생성 후, 서비스 선택 버튼을 클릭하여 프로젝트에서 사용할 서비스를 활성화 합니다.
 2) 서비스 선택 화면에서 활성화하려눈 서비스를 선택합니다.
