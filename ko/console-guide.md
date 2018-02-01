@@ -27,6 +27,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 #### 조직 서비스
 - 조직이 생성이 되면, 서비스를 선택 할 수 있습니다.
 - 조직 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
+
 | 조직 서비스 |
 | ------ |
 | ERP |
@@ -34,6 +35,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 | Contact Center |
 | bill(e-Tax)|
 | IDC |
+
 #### 조직 멤버
 조직의 멤버는 TOAST.com 회원과 조직 내부 회원으로 구분되어 관리합니다.
 
@@ -66,8 +68,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 - 조직을 삭제하기 위해서는 이용하고 있는 서비스를 모두 삭제해야 합니다.
 - 조직 삭제시, 조직의 모든 정보는 삭제되며 복구가 불가능합니다.
 
-### 조직 생성 / 조직 서비스 활성화 Flow
-#### 조직 생성
+### 조직 생성 가이드
 
 ![](http://static.toastoven.net/toast/console_guide/consoleguide_001.png)
 <center>[그림 1] 조직 생성 </center>
@@ -78,7 +79,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 4) 콘솔 좌측 상단 메뉴에 생성된 조직명이 노출이 됩니다.
 5) 설정 버튼을 클릭하여 생성된 조직 정보를 확인 합니다. 조직의 추가정보로 도메인 정보를 입력합니다. 도메인은 TOAST에서 유일한 값으로 설정해야 합니다.  
 
-#### ERP 서비스 활성화
+### ERP 서비스 활성화 가이드
 
 ![](http://static.toastoven.net/toast/console_guide/consoleguide_002.png)
 <center>[그림 2] ERP 서비스 활성화 </center>
@@ -88,7 +89,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 3) 1:1 문의 게시판으로 이동합니다.
   ERP, Contact Center, bill, IDC 서비스는 서비스 문의를 통해 서비스 신청이 가능합니다.
 
-#### Dooray 서비스 활성화
+### Dooray 서비스 활성화 가이드
 
 ![](http://static.toastoven.net/toast/console_guide/consoleguide_003.png)
 <center>[그림 3] Dooray 서비스 활성화 </center>
@@ -136,7 +137,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 프로젝트 멤버 ROLE 은 아래와 같습니다.
 
 | Action | Role | Admin | Member | Billing Viewer Admin | Billing Viewer |
-| ------ | ---- | ----- | ----- | ------ | ----- | ------ |
+| ------ | ---- | ----- | ----- | ------ | ----- |
 | Member 관리 | Project Member 등록(Admin) | O |   |  |  |
 |  | Project Member 삭제(Admin) | O |  |  | |  
 |  | Project Member 등록(Member) | O |  |  | |  
@@ -156,9 +157,8 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 현재까지 이용한 모든 리소스에 대한 이용내역을 즉시 정산하고 삭제할 수 있습니다.
 단, 즉시 결제하지 않고 삭제할 경우 현재까지 이용한 요금 내역은 다음 결제일에 자동 청구됩니다.
 
-### 프로젝트 생성 / 서비스 활성화 Flow
+### 프로젝트 생성 가이드
 
-#### 프로젝트 생성
 ![](http://static.toastoven.net/toast/console_guide/consoleguide_004.png)
 <center>[그림 4] 프로젝트 생성 </center>
 
@@ -168,7 +168,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 4) 프로젝트가 생성이 되면 콘솔의 좌측 메뉴에 프로젝트명이 노출됩니다.
 5) 프로젝트 설정 버튼을 클릭하여 프로젝트 정보를 확인합니다.
 
-#### 프로젝트 서비스 활성화
+### 프로젝트 서비스 활성화 가이드
 ![](http://static.toastoven.net/toast/console_guide/consoleguide_005.png)
 <center>[그림 5] 프로젝트 서비스 활성화 </center>
 
@@ -179,5 +179,6 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 5) 활성화 한 서비스 목록을 콘솔 좌측 메뉴에서 확인합니다. 해당 서비스 클릭시 서비스 이용 화면이 노출됩니다.
 
 ## 서비스 이용 현황
+
 
 ## 결제 관리
