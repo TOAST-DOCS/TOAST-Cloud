@@ -25,16 +25,14 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 - 조직은 조직명 / 도메인 정보를 관리합니다.
 - 조직의 도메인 정보는 서비스에서 사용해야 하는 정보로, Unique 해야 합니다.
 #### 조직 서비스
-- 조직이 생성이 되면, 서비스를 선택 할 수 있습니다.
-- 조직 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
+조직이 생성이 되면, 서비스를 선택 할 수 있습니다.
+조직 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
 
-| 조직 서비스 |
-| ------ |
-| ERP |
-| Dooray |
-| Contact Center |
-| bill(e-Tax)|
-| IDC |
+- Dooray
+- ERP
+- Contact Center
+- bill(e-Tax)
+- IDC
 
 #### 조직 멤버
 조직의 멤버는 TOAST.com 회원과 조직 내부 회원으로 구분되어 관리합니다.
@@ -113,22 +111,19 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 - 프로젝트 생성 후, 프로젝트 서비스를 활성화하여 이용할 수 있습니다.
 - 프로젝트 생성 후, 협업이 필요한 경우 프로젝트 멤버로 추가하여 함께 사용할 수 있습니다.
 #### 프로젝트 서비스
-- 프로젝트가 생성이 되면, 서비스를 선택 할 수 있습니다.
-- 프로젝트 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
-
-| 프로젝트 서비스 |
-| ------ |
-| Compute |
-| Storage |
-| Network |
-| Security |
-| Contents Delivery |
-| Management |
-| Game |
-| Notification |
-| Application Service |
-| Search |
-| Mobile Service |
+프로젝트가 생성이 되면, 서비스를 선택 할 수 있습니다.
+프로젝트 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
+- Compute
+- Storage
+- Network
+- Security
+- Contents Delivery
+- Management
+- Game
+- Notification
+- Application Service
+- Search
+- Mobile Service 
 
 #### 프로젝트 멤버
 프로젝트의 멤버는 TOAST.com 회원입니다. 조직 내부 회원이 프로젝트 멤버로 서비스를 이용할 수 있는 기능은 추후 제공 예정입니다.
