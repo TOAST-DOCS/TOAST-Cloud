@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 릴리스 노트
+## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트
 
 ## 2018.01.10
 
