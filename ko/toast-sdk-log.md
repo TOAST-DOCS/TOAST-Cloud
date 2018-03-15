@@ -2,9 +2,9 @@
 
 TOAST Logger SDK는 Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다.
 
-* [Android 설정](#Android)
-* [iOS 설정](#iOS)
-* [Unity 설정](#Unity)
+* [Android 설정](#android)
+* [iOS 설정](#ios)
+* [Unity 설정](#unity)
 
 ## Introduction
 ### 주요기능
