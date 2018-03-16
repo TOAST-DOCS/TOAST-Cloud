@@ -218,8 +218,7 @@ ToastCrash.setDataAdapter(new CrashDataAdapter() {
 ToastCrash.setListener(new CrashListener() {
     @Override
     public void onSuccess(LogObject log) {
-        // 크래시 정보 전송
-     전송에 성공하였습니다.
+        // 크래시 정보 전송에 성공하였습니다.
     }
 
     @Override

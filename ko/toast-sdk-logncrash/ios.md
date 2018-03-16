@@ -1,4 +1,4 @@
-## Analytics > Log & Crash Search > TOAST SDK 사용 가이드 > Android
+## Analytics > Log & Crash Search > TOAST SDK 사용 가이드 > iOS
 
 ## Prerequisites
 
@@ -8,7 +8,7 @@
 
 ## Component SDKs
 
-Android용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
+iOS용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 
 * [TOAST Logger](#log-collector) SDK
 * [TOAST Crash](#crash-reporter) SDK
@@ -96,23 +96,6 @@ SDK에 속한 모든 Objective-C Class 로드를 위해 "-ObjC" 항목을 추가
 #import <ToastCommon/ToastCommon.h>
 #import <ToastLogger/ToastLogger.h>
 #import <ToastCrash/ToastCrash.h>
-```
-
-### Intiailize TOAST SDK
-
-TOAST SDK의 다양한 상품을 사용하기 위해서는 Application#onCreate에 TOAST SDK를 초기화해야 합니다.
-
-```java
-public class YourApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        // ...
-
-        // Initialize TOAST SDK
-        ToastSdk.initialize(getApplicationContext());
-    }
-}
 ```
 
 ## Log Collector
