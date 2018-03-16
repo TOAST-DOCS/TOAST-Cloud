@@ -124,47 +124,74 @@ ToastCrash.setListener(new CrashListener() {
 [TCISCrash setConfigurationLogger: [TCISLogger instanceLogger] ];
 ```
 
+### Set User Field
+
+사용자가 원하는 필드를 설정합니다.
+
+```objc
+// 단일 UserField 추가
+[TCISCrash setUserField:@"USER_VALUE" forKey:@"USER_KEY"];
+
+// 다수의 UserField 추가
+NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];
+[userField setObject:@"USER_VALUE_1" forKey:@"USER_KEY_1"];
+[userField setObject:@"USER_VALUE_2" forKey:@"USER\_KEY_2"];
+
+[TCISCrash setUserField:userField];
+```
+
+> 이미 예약된 필드는 사용할 수 없습니다.
+> KEY 문자열 내에 공백은 "\_"로 치환됩니다.
+> 공백 문자열과 "\_" 는 KEY 문자열의 처음에 올 수 없습니다.
+
 ### Set Data Adapter
 
-크래시 발생 시 추가 정보를 설정할 수 있습니다.
+크래시 발생 시 크래시 로그 전송 전에 특정 Block을 수행하도록 설정할 수 있습니다.
 
 ```objc
 [TCISCrash setUserFieldIntoTCISCrashBlock:^{
 
-    [TCISCrash setUserField:@"UserFieldValue01" forKey:@"UserFieldKey01"];
-    [TCISCrash setUserField:@"UserFieldValue02" forKey:@"UserFieldKey02"];
-    [TCISCrash setUserField:@"UserFieldValue03" forKey:@"UserFieldKey03"];
+	// Input your code
 
 }];
 ```
+> 이미 예약된 필드는 사용할 수 없습니다.
 
 ### Crash Callback
 
 크래시 정보를 전송 후 전송 결과를 Callback을 통해 확인할 수 있습니다.
-
 ```objc
-- (void)crashLoggerInstance:(TCISInstanceLogger *)instanceLogger
-   didSendSuccessedCrashLog:(TCISLog *)crashLog {
-    // Successed Crash Send
-}
+// Delegate Setting
+@interface YOURCLASSS : SUBCLASS <TCISCrashDelegate>
 
+// ...
+[TCISCrash enableCrashDelegate:self];
+// ...
+
+
+@protocol TCISCrashDelegate <NSObject>
+
+@optional
+
+// 크래시 로그 전송 성공
+- (void)crashLoggerInstance:(TCISInstanceLogger *)instanceLogger
+   didSendSuccessedCrashLog:(TCISLog *)crashLog;
+
+// 크래시 로그 전송 실패
 - (void)crashLoggerInstance:(TCISInstanceLogger *)instanceLogger
       didSendFailedCrashLog:(TCISLog *)crashLog
-                      error:(NSError *)error {
-    // Failed Crash Send
-}
+                      error:(NSError *)error;
 
+// 네트워크 등의 이유로 크래시 로그 전송이 실패한 경우 재전송을 위한 로컬 DB 저장
 - (void)crashLoggerInstance:(TCISInstanceLogger *)instanceLogger
-           didSavedCrashLog:(TCISLog *)crashLog {
-    // Saved Crash -> Network not Connected
-}
+           didSavedCrashLog:(TCISLog *)crashLog;
 
+// Filter 설정에 의해 필터링
 - (void)crashLoggerInstance:(TCISInstanceLogger *)instanceLogger
         didFilteredCrashLog:(TCISLog *)crashLog
-                  logFilter:(TCISLogFilter *)logFilter {
-    // Filterd Crash
-}
+                  logFilter:(TCISLogFilter *)logFilter;
 
+@end
 ```
 
 ## Unity
@@ -259,8 +286,6 @@ public class ExampleClass : MonoBehaviour {
 ```cs
 ToastCrash.setUserField("UserField", "UserValue");
 ```
-
-> 이미 예약된 필드는 사용할 수 없습니다.
 
 ### Handled Exception Callback
 
