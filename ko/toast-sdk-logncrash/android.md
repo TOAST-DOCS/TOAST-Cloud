@@ -36,7 +36,7 @@ build.gradle 파일에 TOAST SDK에 대한 종속성을 추가합니다.
 ```groovy
 dependencies {
   // ...
-  compile 'com.toast.android:toast-sdk:0.0.4'
+  compile 'com.toast.android:toast-sdk:1.0.0'
   // ...
 }
 ```
