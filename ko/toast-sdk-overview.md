@@ -3,8 +3,6 @@
 
 TOAST SDK는 [TOAST](https://toast.com/) 상품을 손쉽고 빠르게 사용할 수 있는 통합 서비스를 제공합니다.
 
-Android용 TOAST SDK에는 다음과 같은 SDK가 포함되어 있습니다.
-
 * [Android 설정](./toast-sdk-logncrash/android)
 * [iOS 설정](./toast-sdk-logncrash/ios)
 * [Unity 설정](./toast-sdk-logncrash/unity)
