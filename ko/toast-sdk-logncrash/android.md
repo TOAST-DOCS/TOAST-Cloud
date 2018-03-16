@@ -10,8 +10,8 @@
 
 Android용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 
-* [TOAST Logger](#Log-Collector) SDK
-* [TOAST Crash](#Crash-Reporter) SDK
+* [TOAST Logger](#log-collector) SDK
+* [TOAST Crash](#crash-reporter) SDK
 
 전체 TOAST SDK 기능이 필요하지 않은 경우 앱에 필요한 SDK만 사용할 수 있습니다.
 
@@ -28,8 +28,6 @@ Android용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 * Android Studio 최신 버전 (버전 2.2 이상)
 
 ### Add TOAST SDK to Your Project
-
-#### Add SDK
 
 프로젝트에 TOAST SDK를 사용하려는 경우 몇 가지 기본적인 작업을 수행하여 Android Studio 프로젝트를 준비해야 합니다.
 
