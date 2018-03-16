@@ -147,18 +147,11 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ```objc
 // 단일 UserField 추가
-[TCISLogger addUserLogFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
-
-// 다수의 UserField 추가
-NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];
-[userField setObject:@"USER_VALUE_1" forKey:@"USER_KEY_1"];
-[userField setObject:@"USER_VALUE_2" forKey:@"USER\_KEY_2"];
-
-[TCISLogger addUserLogField:userField];
+[TCISLogger setUserLogFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
 > 이미 예약된 필드는 사용할 수 없습니다.
-> KEY 문자열 내에 공백은 "\_"로 치환됩니다.
+> KEY 문자열 내에 공백은 "\_" 로 치환됩니다.
 > 공백 문자열과 "\_" 는 KEY 문자열의 처음에 올 수 없습니다.
 
 ### Log Callback
@@ -172,6 +165,7 @@ NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary all
 // ...
 [TCISLogger setDelegate:self];
 // ...
+
 
 @protocol TCISLoggerDelegate <NSObject>
 
@@ -212,32 +206,24 @@ NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary all
 
 ```objc
 // 단일 UserField 추가
-[TCISCrash setUserField:@"USER_VALUE" forKey:@"USER_KEY"];
-
-// 다수의 UserField 추가
-NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];
-[userField setObject:@"USER_VALUE_1" forKey:@"USER_KEY_1"];
-[userField setObject:@"USER_VALUE_2" forKey:@"USER\_KEY_2"];
-
-[TCISCrash setUserField:userField];
+[TCISCrash setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
 > 이미 예약된 필드는 사용할 수 없습니다.
-> KEY 문자열 내에 공백은 "\_"로 치환됩니다.
+> KEY 문자열 내에 공백은 "\_" 로 치환됩니다.
 > 공백 문자열과 "\_" 는 KEY 문자열의 처음에 올 수 없습니다.
 
 ### Set Data Adapter
 
-크래시 발생 시 크래시 로그 전송 전에 특정 Block을 수행하도록 설정할 수 있습니다.
+크래시 발생 시 추가 정보를 설정할 수 있습니다.
 
 ```objc
 [TCISCrash setUserFieldIntoTCISCrashBlock:^{
-
-	// Input your code
-
+  NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];  
+  [userField setObject:@"USER_VALUE" forKey:@"USER_KEY"];
+  [TCISCrash setUserField:userField];
 }];
 ```
-> 이미 예약된 필드는 사용할 수 없습니다.
 
 ### Crash Callback
 
