@@ -146,6 +146,12 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 사용자가 원하는 필드를 설정합니다.
 
 ```objc
+// Dictionary를 통한 UserField 추가
+// UserFiled에 추가되는 형태가 아닌 UserFiled 전체가 갱신
+NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];  
+[userField setObject:@"USER_VALUE" forKey:@"USER_KEY"];
+[TCISLogger setUserLogField: userField];
+
 // 단일 UserField 추가
 [TCISLogger setUserLogFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
@@ -153,10 +159,11 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 > 이미 예약된 필드는 사용할 수 없습니다.
 > 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 > 필드명 내에 공백은 "\_" 로 치환됩니다.
+> 첫글자에는 공백과 "\_"를 사용할 수 없습니다.
 
 ### Log Callback
 
-로그를 전송 후 전송 결과를 Callback을 통해 확인할 수 있습니다.
+로그를 전송 후 전송 결과를 받기 원할때에는 Callback을 통해 확인할 수 있습니다.
 
 ```objc
 // Delegate Setting
@@ -180,7 +187,7 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
       didSendFailedLog:(TCISLog *)log
                  error:(NSError *)error;
 
-// 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위한 로컬 DB 저장
+// 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위한 SDK 내부 저장
 - (void)instanceLogger:(TCISInstanceLogger *)instanceLogger
            didSavedLog:(TCISLog *)log;
 
@@ -205,6 +212,12 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 사용자가 원하는 필드를 설정합니다.
 
 ```objc
+// Dictionary를 통한 UserField 추가
+// UserFiled에 추가되는 형태가 아닌 UserFiled 전체가 갱신
+NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];  
+[userField setObject:@"USER_VALUE" forKey:@"USER_KEY"];
+[TCISCrash setUserField:userField];
+
 // 단일 UserField 추가
 [TCISCrash setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
@@ -212,6 +225,7 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 > 이미 예약된 필드는 사용할 수 없습니다.
 > 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 > 필드명 내에 공백은 "\_" 로 치환됩니다.
+> 첫글자에는 공백과 "\_"를 사용할 수 없습니다.
 
 ### Set Data Adapter
 
@@ -219,15 +233,15 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ```objc
 [TCISCrash setUserFieldIntoTCISCrashBlock:^{
-  NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];  
-  [userField setObject:@"USER_VALUE" forKey:@"USER_KEY"];
-  [TCISCrash setUserField:userField];
+  
+  //Set User Field 를 통해 Crash가 발생한 상황에서 얻고자 하는 정보를 함께 전송
+  
 }];
 ```
 
 ### Crash Callback
 
-크래시 정보를 전송 후 전송 결과를 Callback을 통해 확인할 수 있습니다.
+크래시 정보를 전송 후 전송 결과를 받기 원할때에는 Callback을 통해 확인할 수 있습니다.
 ```objc
 // Delegate Setting
 @interface YOURCLASSS : SUBCLASS <TCISCrashDelegate>
@@ -250,7 +264,7 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
       didSendFailedCrashLog:(TCISLog *)crashLog
                       error:(NSError *)error;
 
-// 네트워크 등의 이유로 크래시 로그 전송이 실패한 경우 재전송을 위한 로컬 DB 저장
+// 네트워크 등의 이유로 크래시 로그 전송이 실패한 경우 재전송을 위한 SDK 내부 저장
 - (void)crashLoggerInstance:(TCISInstanceLogger *)instanceLogger
            didSavedCrashLog:(TCISLog *)crashLog;
 
