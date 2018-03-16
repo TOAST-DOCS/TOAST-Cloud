@@ -129,7 +129,7 @@ ToastLogger.fatal(tag, message);
 ### Set UserID
 
 사용자 아이디를 설정합니다.
-설정된 사용자 아이디는 "UserID" 필드로 Log & Crash Search에서 조회할 수 있습니다.
+설정된 사용자 아이디는 "UserID" 필드로 Log&Crash Search에서 조회할 수 있습니다.
 
 ```cs
 ToastLogger.setUserId(userId);
@@ -144,63 +144,91 @@ ToastLogger.setUserField("UserField", "UserValue");
 ```
 
 > 이미 예약된 필드는 사용할 수 없습니다.
-
-### Log Callback
-
-로그를 전송 후 전송 결과를 Callback을 통해 확인할 수 있습니다.
-
-```cs
-void Start() {
-    ToastLogger.initialize (consoleConfig);
-}
-
-void OnEnable () {
-    ToastLogger.StartListening ("onSuccess", onSuccessFunction);
-    ToastLogger.StartListening ("onFiltered", onSavedFunction);
-    ToastLogger.StartListening ("onFiltered", onFilteredFunction);
-    ToastLogger.StartListening ("onError", onErrorFunction);
-}
-
-void OnDisable () {
-    ToastLogger.StopListening ("onSuccess", onSuccessFunction);
-    ToastLogger.StopListening ("onFiltered", onSavedFunction);
-    ToastLogger.StopListening ("onFiltered", onFilteredFunction);
-    ToastLogger.StopListening ("onError", onErrorFunction);
-}
-
-void onSuccessFunction(ToastLogResult result){
-    // 로그 전송에 성공하였습니다.
-}
-
-void onSavedFunction(ToastLogResult result){
-    // 네트워크 차단으로 로그가 저장되었습니다.
-}
-
-void onFilteredFunction(ToastLogResult result){
-   // 로그 필터에 의해 로그가 필터링되었습니다.
-}
-
-void onErrorFunction(ToastLogResult result){
-     // 전송에 실패하였습니다.
-}
-```
+> 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
+> 필드명 내에 공백은 "\_" 로 치환됩니다.
 
 ## Crash Reporter
 
 ### Initialize
+
+ToastCrash를 초기화합니다.
+
+```cs
+// Initialize Crash
+ToastCrash.initialize();
+```
 
 ### Send Handled Exception
 
 TOAST Crash는 5가지 레벨의 예외 정보를 전송할 수 있습니다.
 
 ```cs
+// DEBUG 레벨의 예외 정보 전송
+ToastCrash.debug(tag, message, stackTrace);
 
+// INFO 레벨의 예외 정보 전송
+ToastCrash.info(tag, message, stackTrace);
+
+// WARN 레벨의 예외 정보 전송
+ToastCrash.warn(tag, message, stackTrace);
+
+// ERROR 레벨의 예외 정보 전송
+ToastCrash.error(tag, message, stackTrace);
+
+// FATAL 레벨의 예외 정보 전송
+ToastCrash.fatal(tag, message, stackTrace);
 ```
 
 #### Using
 
 ```cs
+try {
+    // User Codes...
+} catch {
+    ToastCrash.fatal(TAG, "Handled Exception", stackTrace);
+}
+```
 
+#### Application.RegisterLogCallback을 통한 로그 수집
+
+* 사용자가 [Application.RegisterLogCallback](https://docs.unity3d.com/ScriptReference/Application.LogCallback.html)을 구현하면, ToastCrash.crashReporter 함수를 사용하여 C# 오류를 서버로 전송 합니다.
+
+* TOAST SDK에서는 Exception과 Assert 레벨의 오류를 서버로 전송하는 것을 권장합니다.
+
+* UnityEngineDebugLogFilter는 UnityEngine.Debug 클래스를 통해 발생한 로그를 필터링 합니다. TOAST SDK에서는 UnityEngine.Debug 로그는 필터링 하는 것을 권장합니다.
+
+```cs
+public class ExampleClass : MonoBehaviour {
+
+   void OnEnable() {
+        // RegisterLogCallback 등록
+        Application.RegisterLogCallback(HandleLog);
+    }
+
+   void OnDisable() {
+        // RegisterLogCallback 해제
+        Application.RegisterLogCallback(null);
+    }
+
+    // UnityEngine Debug Log Filter
+    bool UnityEngineDebugLogFilter(string stackTrace) {
+        if (stackTrace.Contains ("UnityEngine.Debug")) {
+            return true;
+        }
+        return false;
+    }
+
+   void HandleLog(string condition, string stackTrace, LogType type) {
+        if (UnityEngineDebugLogFilter(stackTrace)){
+            return;
+        }
+
+        if (type == LogType.Exception || type == LogType.Assert) {
+            ToastCrash.crashReporter(TAG, condition, stackTrace, type);
+        }
+    }
+
+}
 ```
 
 ### Set User Field
@@ -208,7 +236,11 @@ TOAST Crash는 5가지 레벨의 예외 정보를 전송할 수 있습니다.
 사용자가 원하는 필드를 설정합니다.
 
 ```cs
+ToastCrash.setUserField("UserField", "UserValue");
 ```
 
 > 이미 예약된 필드는 사용할 수 없습니다.
+> 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
+> 필드명 내에 공백은 "\_" 로 치환됩니다.
+
 
