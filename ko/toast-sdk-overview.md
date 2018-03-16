@@ -19,7 +19,7 @@ build.gradle 파일에 TOAST SDK에 대한 종속성을 추가합니다.
 ```groovy
 dependencies {
   // ...
-  compile 'com.toast.android:toast-sdk:0.0.3'
+  compile 'com.toast.android:toast-sdk:0.0.4'
   // ...
 }
 ```
@@ -30,9 +30,9 @@ TOAST SDK는 다음과 같은 라이브러리를 사용할 수 있습니다.
 
 | Gradle Dependency | Service |
 | --- | --- |
-| com.toast.android:toast-logger:0.0.3 | Log Collection |
-| com.toast.android:toast-crash:0.0.3 | Crash Reporter |
-| com.toast.android:toast-dfp:0.0.3 | Device Finger Printing |
+| com.toast.android:toast-logger:0.0.4 | Log Collection |
+| com.toast.android:toast-crash:0.0.4 | Crash Reporter |
+| com.toast.android:toast-dfp:0.0.4 | Device Finger Printing |
 
 ### Intiailize TOAST SDK
 
