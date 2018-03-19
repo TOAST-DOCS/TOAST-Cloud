@@ -4,9 +4,13 @@ TOAST SDK는 [TOAST](https://toast.com/) 상품을 손쉽고 빠르게 사용할
 
 ## Getting Started TOAST SDK
 
+프로그래밍 언어 또는 플랫폼에 맞게 제공되는 API를 통해 애플리케이션에서 TOAST SDK를 더욱 간편하게 사용할 수 있습니다.
+
 * [Android 시작하기](./getting-started-android)
 * [iOS 시작하기](./getting-started-ios)
 * [Unity 시작하기](./getting-started-unity)
+
+> 보다 다양한 프로그래밍 언어와 플랫폼이 지원될 예정입니다.
 
 ## Log Collector
 
