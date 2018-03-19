@@ -1,4 +1,4 @@
-## Analytics > Log & Crash Search > TOAST SDK Guide > Log Collection
+## TOAST > TOAST SDK Guide > Log Collection > Android
 
 TOAST Logger SDK는 Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다.
 
