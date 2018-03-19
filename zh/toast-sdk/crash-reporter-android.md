@@ -1,4 +1,4 @@
-## Analytics > Log & Crash Search > TOAST SDK Guide > Crash Reporter
+## TOAST > TOAST SDK Guide > Crash Reporter > Android
 
 TOAST Crash SDK는 앱에서 발생하는 Crash 정보를 Log & Crash Search 수집 서버로 전송하는 기능을 제공합니다.
 
