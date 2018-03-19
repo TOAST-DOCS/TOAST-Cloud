@@ -92,7 +92,7 @@ ToastLogger.setListener(new ToastLoggerListener() {
 ```
 
 
-## Using The Other Service
+## Using the Other Service
 
 * [Crash Reporter > Android](./crash-reporter-android) 사용 가이드
 

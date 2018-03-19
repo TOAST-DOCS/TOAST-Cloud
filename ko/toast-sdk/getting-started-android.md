@@ -33,7 +33,7 @@ dependencies {
 }
 ```
 
-## Intiailize TOAST SDK
+## Initiailize TOAST SDK
 
 TOAST SDK의 다양한 상품을 사용하기 위해서는 Application#onCreate에 TOAST SDK를 초기화해야 합니다.
 
@@ -50,7 +50,7 @@ public class YourApplication extends Application {
 }
 ```
 
-## Next Step
+## Using the TOAST Service
 
 * [Log Collector](./log-collection-android) 사용 가이드
 * [Crash Reporter](./crash-reporter-android) 사용 가이드
