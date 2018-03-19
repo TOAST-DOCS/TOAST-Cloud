@@ -106,5 +106,5 @@ NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary all
 
 ## Using the Other Service
 
-* [Crash Reporter > Android](./crash-reporter-android) 사용 가이드
+* [Crash Reporter > iOS](./crash-reporter-ios) 사용 가이드
 
