@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK Guide > Release Notes
+## TOAST > TOAST SDK Guide > Release Notes > Android
 
 ## 2018.01.10
 
