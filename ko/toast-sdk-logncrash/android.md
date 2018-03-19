@@ -116,7 +116,6 @@ ToastLogger.setUserField("UserField", "UserValue");
 > 이미 예약된 필드는 사용할 수 없습니다.
 > 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 > 필드명 내에 공백은 "\_" 로 치환됩니다.
-> 첫글자에는 공백과 "\_"를 사용할 수 없습니다.
 
 ### Log Callback
 
@@ -199,7 +198,6 @@ ToastCrash.setUserField("UserField", "UserValue");
 > 이미 예약된 필드는 사용할 수 없습니다.
 > 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 > 필드명 내에 공백은 "\_" 로 치환됩니다.
-> 첫글자에는 공백과 "\_"를 사용할 수 없습니다.
 
 ### Set Data Adapter
 
