@@ -2,18 +2,19 @@
 
 ## 1.0.0 (2018.03.22)
 
-### 추가 사항
+### Log Collector
 
-#### Log Collector
-
-* 신규 기능 추가
-
-#### Crash Reporter
+#### 추가 사항
 
 * 신규 기능 추가
 
-### 개선/변경 사항
+#### 개션/변경 사항
 
-#### Log Collector
+### Crash Reporter
 
-#### Crash Reporter
+#### 추가 사항
+
+* 신규 기능 추가
+
+#### 개션/변경 사항
+
