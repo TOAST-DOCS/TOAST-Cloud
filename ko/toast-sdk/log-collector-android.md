@@ -91,7 +91,6 @@ ToastLogger.setListener(new ToastLoggerListener() {
 });
 ```
 
-
 ## Using the Other Service
 
 * [Crash Reporter > Android](./crash-reporter-android) 사용 가이드
