@@ -18,9 +18,9 @@ Log&Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니�
 
 ### 사용 가이드
 
-* [Log Collector > Android](./log-collection-android) 사용 가이드
-* [Log Collector > iOS](./log-collection-ios) 사용 가이드
-* [Log Collector > Unity](./log-collection-unity) 사용 가이드
+* [Log Collector > Android](./log-collector-android) 사용 가이드
+* [Log Collector > iOS](./log-collector-ios) 사용 가이드
+* [Log Collector > Unity](./log-collector-unity) 사용 가이드
 
 ## Crash Reporter
 

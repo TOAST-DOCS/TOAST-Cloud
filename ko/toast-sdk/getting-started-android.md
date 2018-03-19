@@ -1,10 +1,15 @@
 ## TOAST > TOAST SDK 사용 가이드 > 시작하기 > Android
 
+## Environments
+
+* Android 4.0.3 이상
+* Android Studio 최신 버전 (버전 2.2 이상)
+
 ## Component SDKs
 
 Android용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 
-* [TOAST Logger](./log-collection-android) SDK
+* [TOAST Logger](./log-collector-android) SDK
 * [TOAST Crash](./crash-reporter-android) SDK
 
 전체 TOAST SDK 기능이 필요하지 않은 경우 앱에 필요한 SDK만 사용할 수 있습니다.
@@ -13,11 +18,6 @@ Android용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 | --- | --- |
 | com.toast.android:toast-logger:1.0.0 | Log Collection |
 | com.toast.android:toast-crash:1.0.0 | Crash Reporter |
-
-## Environments
-
-* Android 4.0.3 이상
-* Android Studio 최신 버전 (버전 2.2 이상)
 
 ## Add TOAST SDK to Your Project
 
