@@ -52,6 +52,6 @@ public class YourApplication extends Application {
 
 ## Using the TOAST Service
 
-* [Log Collector](./log-collection-android) 사용 가이드
+* [Log Collector](./log-collector-android) 사용 가이드
 * [Crash Reporter](./crash-reporter-android) 사용 가이드
 
