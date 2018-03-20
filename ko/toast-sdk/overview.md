@@ -10,13 +10,13 @@ TOAST SDK는 [TOAST](https://toast.com/) 상품을 손쉽고 빠르게 사용할
 
 ### Android
 
-TOAST Android SDK는 `jCenter`를 통해 배포되고 있으며 간단한 Gradle 설정으로 손쉽게 사용할 수 있습니다.
+TOAST Android SDK는 **jCenter**를 통해 배포되고 있으며 간단한 Gradle 설정으로 손쉽게 사용할 수 있습니다.
 
 * [Android 시작하기](./getting-started-android)
 
 ### iOS
 
-TOAST iOS SDK는 `CocoaPods`를 지원하여 Project Setting 및 Framework Dependency를 간편하게 적용할 수 있습니다.
+TOAST iOS SDK는 **CocoaPods**를 지원하여 Project Setting 및 Framework Dependency를 간편하게 적용할 수 있습니다.
 
 * [iOS 시작하기](./getting-started-ios)
 
