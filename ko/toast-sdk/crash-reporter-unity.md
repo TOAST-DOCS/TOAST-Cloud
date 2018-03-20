@@ -13,6 +13,7 @@ TOAST Crash SDK는 [TOAST Logger](./log-collector-unity)를 사용하여 크래�
 
 ToastCrash를 초기화합니다. 
 ToastCrash는 ToastLogger에 의존하고 있습니다. ToastLogger의 초기화를 먼저 해주세요.
+초기화를 하면 게임 크래시 발생 시 크래시 로그가 OS 별(Android, iOS)로 수집됩니다.
 
 ```csharp
 ToastCrash.Initialize();
@@ -20,7 +21,7 @@ ToastCrash.Initialize();
 
 ## Send Handled Exception
 
-TOAST Crash는 5가지 레벨의 Hadled 예외 정보를 전송할 수 있습니다.
+TOAST Crash는 5가지 레벨의 Handled 예외 정보를 전송할 수 있습니다.
 
 ```csharp
 try
@@ -41,7 +42,7 @@ try
 
 - 사용자가 [Application.logMessageReceived](https://docs.unity3d.com/ScriptReference/Application-logMessageReceived.html)을 구현하면, Debug.LogException 을 이용해서 예외 로그를 전송할 수 있습니다.
 - **TOAST SDK에서는 Exception 레벨의 로그만 서버로 전송하는 것을 권장합니다.**
-- **Application.logMessageReceived 이벤트 등록시 구현에 따라 과도한 로그 전송이 발생할 수도 있습니다. 사용에 주의가 필요합니다.**
+- **Application.logMessageReceived 이벤트 등록 시 구현에 따라 과도한 로그 전송이 발생할 수도 있습니다. 사용에 주의가 필요합니다.**
 
 ```csharp
 public class MainController : MonoBehaviour
@@ -64,6 +65,7 @@ public class MainController : MonoBehaviour
 ## Set User Field
 
 사용자가 원하는 필드를 설정합니다.
+설정된 사용자 필드는 Log&Crash Search에서 조회할 수 있습니다.
 
 ```csharp
 ToastCrash.SetUserField("YOUR_CUSTOM_KEY", "YOUR_CUSTOM_VALUE");

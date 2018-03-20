@@ -51,6 +51,7 @@ ToastLogger.UserId = "USER_ID";
 ## Set User Field
 
 사용자가 원하는 필드를 설정합니다.
+설정된 사용자 필드는 Log&Crash Search에서 조회할 수 있습니다.
 
 ```csharp
 ToastLogger.SetUserField("YOUR_CUSTOM_KEY", "YOUR_CUSTOM_VALUE");

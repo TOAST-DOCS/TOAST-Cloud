@@ -8,7 +8,7 @@
 
 ## Component SDKs
 
-Unity용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
+Unity 용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 
 * [TOAST Logger](./log-collector-unity) SDK
 * [TOAST Crash](./crash-reporter-unity) SDK
@@ -20,9 +20,9 @@ Unity용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 | TOAST-Logger-UnityPlugin-1.0.0.unitypackage | Log Collection |
 | TOAST-Crash-UnityPlugin-1.0.0.unitypackage | Crash Reporter |
 
-### Strcuture of Unity package
+### Structure of Unity package
 
-Unity용 TOAST SDK는 다음과 같은 폴더 구조를 가지고 있습니다.
+Unity용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 
 | Directory | Description |
 |---|---|
@@ -33,9 +33,13 @@ Unity용 TOAST SDK는 다음과 같은 폴더 구조를 가지고 있습니다.
 | Toast/Sample | SDK 샘플 폴더 |
 | Plugins | Gradle 빌드를 위한 mainTemplate.gradle이 있는 폴더 |
 
+## Add TOAST SDK to Your Project
+
+내려받은 유니티 패키지를 더블 클릭하여 프로젝트에 포함합니다.
+
 ### Run Sample
 
-Unity용 TOAST SDK는 Sample을 포함하고 있습니다. Sample을 실행하는 방법은 아래와 같습니다.
+Unity 용 TOAST SDK는 Sample을 포함하고 있습니다. Sample을 실행하는 방법은 아래와 같습니다.
 
 1. File > Build Settings 에서 Toast/Sample/Sample.unity 를 Scenes In Build 에 추가합니다.
 2. Android 혹은 iOS로 빌드합니다.
@@ -43,10 +47,6 @@ Unity용 TOAST SDK는 Sample을 포함하고 있습니다. Sample을 실행하�
 
 > (주의) Unity SDK는 현재 Android, iOS만을 지원합니다.
 > Unity Editor에서는 정상동작하지 않습니다. (지원 예정)
-
-## Add TOAST SDK to Your Project
-
-다운로드 받은 유니티 패키지를 더블 클릭하여 프로젝트에 포함시킵니다.
 
 ## Configure
 
