@@ -1,10 +1,18 @@
 ## TOAST > TOAST SDK 사용 가이드 > 개요
 
 TOAST SDK는 [TOAST](https://toast.com/) 상품을 손쉽고 빠르게 사용할 수 있는 통합 서비스를 제공합니다.
-
+전체 TOAST SDK 기능이 필요하지 않은 경우 TOAST 서비스를 지원하는데 필요한 SDK만 사용하여 공간을 절약할 수 있습니다.
 프로그래밍 언어 또는 플랫폼에 맞게 제공되는 API를 통해 애플리케이션에서 TOAST SDK를 더욱 간편하게 사용할 수 있습니다.
 
 > 보다 다양한 프로그래밍 언어와 플랫폼이 지원될 예정입니다.
+
+## 특징
+
+* Android Gradle, iOS CocoaPods를 지원합니다.
+* Unity Plugin을 제공합니다.
+* 원하는 서비스 전체 또는 일부 서비스를 선택적으로 적용 가능합니다.
+* 기존 SDK의 문제점과 불편사항이 개선되었습니다.
+* Console 설정을 통해 앱의 재배포 없이 설정 변경이 가능합니다.
 
 ## Getting Started TOAST SDK
 
