@@ -39,7 +39,7 @@ Unity용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 
 - [다운로드](../../../Download/#toast-sdk)
 
-## Import unity package
+### Import unity package
 
 내려받은 유니티 패키지를 더블 클릭하여 프로젝트에 포함합니다.
 
