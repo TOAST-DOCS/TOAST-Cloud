@@ -35,7 +35,7 @@ dependencies {
 
 ### DOWNLOAD SDK
 
-- [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Android SDK를 다운로드 할 수 있습니다.
+- [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Android SDK를 다운로드 받을 수 있습니다.
 
 ## Initiailize TOAST SDK
 
