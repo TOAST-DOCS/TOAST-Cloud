@@ -35,6 +35,12 @@ Unity용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 
 ## Add TOAST SDK to Your Project
 
+아래 사이트에서 TOAST SDK 유니티 패키지를 내려받습니다.
+
+- [다운로드](../../../Download/#toast-sdk)
+
+## Import unity package
+
 내려받은 유니티 패키지를 더블 클릭하여 프로젝트에 포함합니다.
 
 ### Run Sample
@@ -74,7 +80,7 @@ Unity 용 TOAST SDK는 Sample을 포함하고 있습니다. Sample을 실행하�
 
 #### Script Debugging
 
-* Crash의 StackTrace에서 Crash가 발생한 LineNumber를 가져옴니다. Release의 경우 OFF로 설정합니다.
+* Crash의 StackTrace에서 Crash가 발생한 LineNumber를 가져옵니다. Release의 경우 OFF로 설정합니다.
 
 #### On .Net UnhandledException
 
