@@ -1,19 +1,20 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
-## 2018.03.22
+## 1.0.0 (2018.03.22)
 
-### Android (1.0.0)
+### Log Collector
 
-* Log Collector 기능 추가
-* Crash Reporter 기능 추가
+#### 추가 사항
 
-### iOS (1.0.0)
+* 신규 기능 추가
 
-* Log Collector 기능 추가
-* Crash Reporter 기능 추가
+#### 개선/변경 사항
 
-### Unity (1.0.0)
+### Crash Reporter
 
-* Log Collector 기능 추가
-* Crash Reporter 기능 추가
+#### 추가 사항
+
+* 신규 기능 추가
+
+#### 개선/변경 사항
 
