@@ -13,9 +13,10 @@ TOAST Crash SDK는 [TOAST Logger](./log-collector-unity)를 사용하여 크래�
 
 ToastCrash를 초기화합니다. 
 ToastCrash는 ToastLogger에 의존하고 있습니다. ToastLogger의 초기화를 먼저 해주세요.
-초기화를 하면 게임 크래시 발생 시 크래시 로그가 OS 별(Android, iOS)로 수집됩니다.
+초기화를 하면 크래시 발생 시 크래시 정보가 OS 별(Android, iOS)로 수집됩니다.
 
 ```csharp
+ToastLogger.Initialize("YOUR_PROJECT_KEY", "YOUR_PROJECT_VERSION");
 ToastCrash.Initialize();
 ```
 
