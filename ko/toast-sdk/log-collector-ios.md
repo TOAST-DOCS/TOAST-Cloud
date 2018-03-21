@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 사용 가이드 > Log Collector > iOS
+## TOAST > TOAST SDK 사용 가이드 > TOAST Logger > iOS
 
 ## Prerequisites
 
@@ -106,5 +106,5 @@ NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary all
 
 ## Using the Other Service
 
-* [Crash Reporter > iOS](./crash-reporter-ios) 사용 가이드
+* [TOAST Crash Reporter > iOS](./crash-reporter-ios) 사용 가이드
 

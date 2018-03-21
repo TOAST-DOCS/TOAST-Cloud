@@ -10,14 +10,14 @@
 iOS용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 
 * [TOAST Logger](./log-collector-ios) SDK
-* [TOAST Crash](./crash-reporter-ios) SDK
+* [TOAST Crash Reporter](./crash-reporter-ios) SDK
 
 전체 TOAST SDK 기능이 필요하지 않은 경우 앱에 필요한 SDK만 사용할 수 있습니다.
 
 | Framework | Service |
 | --- | --- |
-| ToastLogger | Log Collection |
-| ToastCrash | Crash Reporter |
+| ToastLogger | TOAST Logger |
+| ToastCrash | TOAST Crash Reporter |
 
 ## Add TOAST SDK to Your Project
 
@@ -92,6 +92,6 @@ SDK에 속한 모든 Objective-C Class 로드를 위해 "-ObjC" 항목을 추가
 
 ## Using the TOAST Service
 
-* [Log Collector](./log-collector-ios) 사용 가이드
-* [Crash Reporter](./crash-reporter-ios) 사용 가이드
+* [TOAST Logger](./log-collector-ios) 사용 가이드
+* [TOAST Crash Reporter](./crash-reporter-ios) 사용 가이드
 

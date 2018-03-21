@@ -16,8 +16,8 @@ Android용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 
 | Gradle Dependency | Service |
 | --- | --- |
-| com.toast.android:toast-logger:1.0.0 | Log Collection |
-| com.toast.android:toast-crash:1.0.0 | Crash Reporter |
+| com.toast.android:toast-logger:1.0.0 | TOAST Logger |
+| com.toast.android:toast-crash:1.0.0 | TOAST Crash Reporter |
 
 ## Add TOAST SDK to Your Project
 
@@ -56,6 +56,6 @@ public class YourApplication extends Application {
 
 ## Using the TOAST Service
 
-* [Log Collector](./log-collector-android) 사용 가이드
-* [Crash Reporter](./crash-reporter-android) 사용 가이드
+* [TOAST Logger](./log-collector-android) 사용 가이드
+* [TOAST Crash Reporter](./crash-reporter-android) 사용 가이드
 

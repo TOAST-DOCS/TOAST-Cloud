@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 사용 가이드 > Crash Reporter > iOS
+## TOAST > TOAST SDK 사용 가이드 > TOAST Crash Reporter > iOS
 
 ## Prerequisites
 

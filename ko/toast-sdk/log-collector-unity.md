@@ -63,5 +63,5 @@ ToastLogger.SetUserField("YOUR_CUSTOM_KEY", "YOUR_CUSTOM_VALUE");
 
 ## Using the Other Service
 
-* [Crash Reporter > Unity](./crash-reporter-unity) 사용 가이드
+* [TOAST Crash Reporter > Unity](./crash-reporter-unity) 사용 가이드
 

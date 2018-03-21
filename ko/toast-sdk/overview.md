@@ -38,7 +38,7 @@ TOAST Unity SDK는 Android, iOS 플랫폼을 지원하고 있습니다.
 
 * [Unity 시작하기](./getting-started-unity)
 
-## Log Collector
+## TOAST Logger
 
 Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다.<br>
 수집된 로그는 TOAST 콘솔의 Log & Crash Search 메뉴를 선택하여 열람할 수 있습니다.
@@ -53,11 +53,11 @@ Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합�
 
 ### 사용 가이드
 
-* [Log Collector > Android](./log-collector-android) 사용 가이드
-* [Log Collector > iOS](./log-collector-ios) 사용 가이드
-* [Log Collector > Unity](./log-collector-unity) 사용 가이드
+* [TOAST Logger > Android](./log-collector-android) 사용 가이드
+* [TOAST Logger > iOS](./log-collector-ios) 사용 가이드
+* [TOAST Logger > Unity](./log-collector-unity) 사용 가이드
 
-## Crash Reporter
+## TOAST Crash Reporter
 
 예상치 못한 크래시가 발생하는 경우 Log & Crash Search 수집 서버로 크래시 로그를 전송합니다.<br>
 TOAST 콘솔 화면에서 크래시 발생 현황에 대한 통계, 크래시 원인 분석에 필요한 콜스택 등을 확인할 수 있습니다. 
@@ -73,6 +73,6 @@ TOAST 콘솔 화면에서 크래시 발생 현황에 대한 통계, 크래시 �
 
 ### 사용 가이드
 
-* [Crash Reporter > Android](./crash-reporter-android) 사용 가이드
-* [Crash Reporter > iOS](./crash-reporter-ios) 사용 가이드
-* [Crash Reporter > Unity](./crash-reporter-unity) 사용 가이드
+* [TOAST Crash Reporter > Android](./crash-reporter-android) 사용 가이드
+* [TOAST Crash Reporter > iOS](./crash-reporter-ios) 사용 가이드
+* [TOAST Crash Reporter > Unity](./crash-reporter-unity) 사용 가이드

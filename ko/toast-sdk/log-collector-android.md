@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 사용 가이드 > Log Collector > Android
+## TOAST > TOAST SDK 사용 가이드 > TOAST Logger > Android
 
 ## Prerequisites
 
@@ -93,5 +93,5 @@ ToastLogger.setListener(new ToastLoggerListener() {
 
 ## Using the Other Service
 
-* [Crash Reporter > Android](./crash-reporter-android) 사용 가이드
+* [TOAST Crash Reporter > Android](./crash-reporter-android) 사용 가이드
 

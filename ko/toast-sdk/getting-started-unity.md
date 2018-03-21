@@ -11,7 +11,7 @@
 Unity 용 TOAST SDK는 다음과 같이 구성되어 있습니다.
 
 * [TOAST Logger](./log-collector-unity) SDK
-* [TOAST Crash](./crash-reporter-unity) SDK
+* [TOAST Crash Reporter](./crash-reporter-unity) SDK
 
 전체 TOAST SDK 기능이 필요하지 않은 경우 일부 SDK만 사용할 수 있습니다.
 

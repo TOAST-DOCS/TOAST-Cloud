@@ -2,7 +2,7 @@
 
 ## 1.0.0 (2018.03.22)
 
-### Log Collector
+### TOAST Logger
 
 #### 추가 사항
 
@@ -10,7 +10,7 @@
 
 #### 개선/변경 사항
 
-### Crash Reporter
+### TOAST Crash Reporter
 
 #### 추가 사항
 
