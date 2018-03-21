@@ -33,6 +33,10 @@ dependencies {
 }
 ```
 
+### DOWNLOAD SDK
+
+- [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Android SDK를 다운로드 할 수 있습니다.
+
 ## Initiailize TOAST SDK
 
 TOAST SDK의 다양한 상품을 사용하기 위해서는 Application#onCreate에 TOAST SDK를 초기화해야 합니다.
