@@ -69,7 +69,7 @@ TOAST 콘솔 화면에서 크래시 발생 현황에 대한 통계, 크래시 �
 | -- | -- |
 | 크래시 로그 전송| 앱에서 발생한 크래시 정보를 전송합니다. |
 | Handled Exceptions(Android, Unity) | try/catch statement에서 발생한 예외 정보를 전송합니다. |
-* Android플랫폼과 Unity로 개발된 앱의 경우 개발자 편의를 위해 "Handled Exception" 타입을 지원합니다. Handled Exception 타입은 Log & Crash Search 콘솔 메뉴에서 구분하여 볼 수 있는 기능을 제공합니다.
+* Android 플랫폼과 Unity로 개발된 앱의 경우 개발자 편의를 위해 "Handled Exception" 타입을 지원합니다. Handled Exception 타입은 "Log & Crash Search 콘솔" > "App Crash Search" 탭에서 필터 유형을 Crash와 Handled로 쉽게 필터링하여 조회할 수 있는 기능을 제공합니다. 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
 ### 사용 가이드
 
