@@ -17,8 +17,8 @@ Unity 용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 
 | Unity package | Service |
 | --- | --- |
-| TOAST-Logger-UnityPlugin.unitypackage | Log Collection |
-| TOAST-Crash-UnityPlugin.unitypackage | Crash Reporter |
+| TOAST-Logger-UnityPlugin.unitypackage | TOAST Logger |
+| TOAST-Crash-UnityPlugin.unitypackage | TOAST Crash Reporter |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
 
 ### Structure of Unity package
@@ -29,8 +29,8 @@ Unity용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 |---|---|
 | Toast | TOAST SDK의 루트 폴더 |
 | Toast/Base | TOAST SDK의 공통 모듈 폴더 |
-| Toast/Logger | Log Collection 모듈 폴더 |
-| Toast/Crash | Crash Reporter 모듈 폴더 |
+| Toast/Logger | TOAST Logger 모듈 폴더 |
+| Toast/Crash | TOAST Crash Reporter 모듈 폴더 |
 | Toast/Sample | SDK 샘플 폴더 |
 | Plugins | Gradle 빌드를 위한 mainTemplate.gradle이 있는 폴더 |
 
@@ -99,6 +99,6 @@ Unity 용 TOAST SDK는 별도의 Sample 패키지가 있습니다. Sample을 실
 
 ## Using the TOAST Service
 
-* [Log Collector](./log-collector-unity) 사용 가이드
-* [Crash Reporter](./crash-reporter-unity) 사용 가이드
+* [TOAST Logger](./log-collector-unity) 사용 가이드
+* [TOAST Crash Reporter](./crash-reporter-unity) 사용 가이드
 
