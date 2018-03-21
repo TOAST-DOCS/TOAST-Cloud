@@ -14,7 +14,7 @@ Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 TCISLoggerConfiguration *configuration = [TCISLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"
                                                                                projectVersion:@"YOUR_PROJECT_VERSION"];
 
-[TCISLogger loggerConfiguration:configuration];
+[TCISLogger setConfiguration:configuration];
 ```
 
 ## Send Log

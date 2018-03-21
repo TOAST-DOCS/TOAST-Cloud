@@ -20,13 +20,12 @@ TOAST Crash SDK는 [TOAST Logger](./log-collector-ios)를 사용하여 크래시
 사용자가 원하는 필드를 설정합니다.
 
 ```objc
-// Dictionary를 통한 UserField 추가
-// UserFiled에 추가되는 형태가 아닌 UserFiled 전체가 갱신
+// Dictionary를 통한 UserField 설정
 NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];  
 [userField setObject:@"USER_VALUE" forKey:@"USER_KEY"];
 [TCISCrash setUserField:userField];
 
-// 단일 UserField 추가
+// UserField 추가
 [TCISCrash setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
