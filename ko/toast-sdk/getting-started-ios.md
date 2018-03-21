@@ -72,7 +72,7 @@ SDK에 속한 모든 Objective-C Class 로드를 위해 "-ObjC" 항목을 추가
 
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-함께 배포되는 PLCRashreporter가 아닌 직접 받거나 빌드한 PLCrashReport를 사용할 경우에는 Build Setting의 Enable Bitcode의 값을 NO로 변경해야 합니다.
+함께 배포되는 PLCrashReporter가 아닌 직접 받거나 빌드한 PLCrashReporter를 사용할 경우에는 Build Setting의 Enable Bitcode의 값을 NO로 변경해야 합니다.
 
 * Project Target - Build Settings - Build Options - Enable Bitcode - "NO"
 
