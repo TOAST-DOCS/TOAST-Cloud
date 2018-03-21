@@ -47,7 +47,7 @@ end
 
 #### SDK import
 
-다운로드 받은 framework 들을 프로젝트에 추가 합니다.
+[다운로드](../../../Download/#toast-sdk) 받은 framework 들을 프로젝트에 추가 합니다.
 
 ![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks.png)
 
