@@ -1,19 +1,19 @@
 ## TOAST > TOAST SDK 사용 가이드 > 시작하기 > Unity
 
-## Environments
+## 지원 환경
 
+* Unity 5.3.4 이상
 * Android 4.0.3 이상
 * iOS 8.0 이상
-* Unity 5.3.4 이상
 
-## Component SDKs
+## TOAST SDK의 구성
 
-Unity 용 TOAST SDK는 다음과 같이 구성되어 있습니다.
+Unity 용 TOAST SDK의 구성은 다음과 같습니다.
 
 * [TOAST Logger](./log-collector-unity) SDK
 * [TOAST Crash Reporter](./crash-reporter-unity) SDK
 
-전체 TOAST SDK 기능이 필요하지 않은 경우 일부 SDK만 사용할 수 있습니다.
+TOAST SDK가 제공하는 모든 서비스에서 원하는 기능을 선택하여 적용할 수 있습니다.
 
 | Unity package | Service |
 | --- | --- |
@@ -23,7 +23,7 @@ Unity 용 TOAST SDK는 다음과 같이 구성되어 있습니다.
 
 > TOAST-Crash-UnityPlugin 는 Logger에 의존하며, Logger 코드가 함께 포함되어 있습니다.
 
-### Structure of Unity package
+### Unity package 구조
 
 Unity용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 
@@ -36,17 +36,17 @@ Unity용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 | Toast/Sample | SDK 샘플 폴더 |
 | Plugins | Gradle 빌드를 위한 mainTemplate.gradle이 있는 폴더 |
 
-## Add TOAST SDK to Your Project
+## 프로젝트에 Unity package 추가하기
 
 아래의 링크에서 TOAST SDK Unity Package를 내려받습니다.
 
 - [다운로드](../../../Download/#toast-sdk)
 
-### Import unity package
+### Unity package 를 프로젝트에 Import 하기
 
 내려받은 Unity Package 를 더블 클릭하여 프로젝트에 포함합니다.
 
-### Run Sample
+### Sample 실행하기
 
 Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample을 실행하는 방법은 아래와 같습니다.
 
@@ -58,11 +58,11 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 > (주의) Unity SDK는 현재 Android, iOS만을 지원합니다.
 > Unity Editor에서는 정상동작하지 않습니다. (지원 예정)
 
-## Configure
+## 설정
 
 ### Android
 
-#### Gradle Build
+#### Gradle Build 설정하기
 
 * TOAST SDK는 안드로이드 빌드시 Gradle 빌드를 사용합니다.
 
@@ -72,9 +72,9 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 3. Build
     - Signing 관련 에러가 발생할 경우 Development Build 옵션을 On 하고 빌드를 진행하면 됩니다.
 
-### iOS Build
+### iOS
 
-#### Build Settings
+#### Build Settings 설정하기
 
 * Unity 의 iOS 빌드 설정에는 TOAST SDK가 서버로 로그를 전송하는데 영향을 주는 몇가지 설정들이 있습니다.
 * 이 설정들의 효과를 간략히 설명하고 TOAST SDK의 권장 설정에 대해 설명합니다.
@@ -98,7 +98,7 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 
 * Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
 
-## Using the TOAST Service
+## 하나의 TOAST SDK로 여러 TOAST 서비스 선택하여 이용합니다.
 
 * [TOAST Logger](./log-collector-unity) 사용 가이드
 * [TOAST Crash Reporter](./crash-reporter-unity) 사용 가이드
