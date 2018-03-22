@@ -13,7 +13,7 @@ TOAST Crash SDK는 [TOAST Logger](./log-collector-ios)를 사용하여 크래시
 
 > 주의 : TOAST Crash SDK 기능을 사용하기 위해서는 TOAST Logger 초기화가 선행되어야 합니다.
 ```objc
-[TCISCrash setConfigurationLogger: [TCISLogger instanceLogger] ];
+[TCISCrash initWithLogger:[TCISLogger instanceLogger] ];
 ```
 
 ## 크래시 발생 시 전송하는 사용자 정의 필드 설정하기
@@ -29,10 +29,10 @@ TOAST Crash SDK는 [TOAST Logger](./log-collector-ios)를 사용하여 크래시
 // ...
 
 // Dictionary를 통한 UserField 설정
-+ (void)setUserFields:(NSDictionary<NSString*, NSString*> *)userFields;
++ (void)setUserField:(NSDictionary<NSString *, NSString *> *)userField;
 
 // UserField 추가
-+ (void)setUserFieldValue:(NSString *)value forKey:(NSString *)key;
++ (void)setUserFieldWithValue:(NSString *)value forKey:(NSString *)key;
 
 // ...
 
@@ -55,12 +55,12 @@ TOAST Crash SDK는 [TOAST Logger](./log-collector-ios)를 사용하여 크래시
 ```objc
 
 // Dictionary를 통한 UserField 설정
-NSMutableDictionary<NSString*, NSString*> *userFields = [[NSMutableDictionary alloc] init];  
-[userFields setObject:@"USER_VALUE" forKey:@"USER_KEY"];
-[TCISCrash setUserFields:userFields];
+NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];
+[userField setObject:@"USER_VALUE" forKey:@"USER_KEY"];
+[TCISCrash setUserField:userField];
 
 // UserField 추가
-[TCISCrash setUserFieldValue:@"USER_VALUE" forKey:@"USER_KEY"];
+[TCISCrash setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 
 ```
 ## 크래시 발생 시점에 추가 정보를 설정하여 전송하기
@@ -87,13 +87,14 @@ setShouldReportCrashHandler의 Block에서 사용자 정의 필드를 설정하�
 [TCISCrash setShouldReportCrashHandler:^{
   
   //사용자 정의 필드 를 통해 Crash가 발생한 상황에서 얻고자 하는 정보를 함께 전송
+  
   // Dictionary를 통한 UserField 설정
-  NSMutableDictionary<NSString*, NSString*> *userFields = [[NSMutableDictionary alloc] init];  
-  [userFields setObject:@"USER_VALUE" forKey:@"USER_KEY"];
-  [TCISCrash setUserFields:userFields];
-
+  NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];
+  [userField setObject:@"USER_VALUE" forKey:@"USER_KEY"];
+  [TCISCrash setUserField:userField];
+  
   // UserField 추가
-  [TCISCrash setUserFieldValue:@"USER_VALUE" forKey:@"USER_KEY"];
+  [TCISCrash setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 
 }];
 ```

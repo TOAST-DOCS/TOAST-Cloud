@@ -14,7 +14,7 @@ Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 TCISLoggerConfiguration *configuration = [TCISLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"
                                                                                projectVersion:@"YOUR_PROJECT_VERSION"];
 
-[TCISLogger setConfiguration:configuration];
+[TCISLogger initWithConfiguration:configuration];
 ```
 
 ## 로그 전송하기
@@ -92,10 +92,10 @@ UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용
 // ...
 
 // Dictionary를 통한 UserField 설정
-+ (void)setUserFields:(NSDictionary<NSString *, NSString *> *)userFields;
++ (void)setUserField:(NSDictionary<NSString *, NSString *> *)userField;
 
 // UserField 추가
-+ (void)setUserFieldValue:(NSString *)value forKey:(NSString *)key;
++ (void)setUserFieldWithValue:(NSString *)value forKey:(NSString *)key;
 
 // ...
 
@@ -117,10 +117,10 @@ UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용
 // Dictionary를 통한 UserField 설정
 NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];  
 [userField setObject:@"USER_VALUE" forKey:@"USER_KEY"];
-[TCISLogger setUserFields: userField];
+[TCISLogger setUserField: userField];
 
 // UserField 추가
-[TCISLogger setUserFieldValue:@"USER_VALUE" forKey:@"USER_KEY"];
+[TCISLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
 ## 로그 전송 후 추가작업 진행하기
