@@ -66,7 +66,7 @@ NSMutableDictionary<NSString*, NSString*> *userFields = [[NSMutableDictionary al
 ## 크래시 발생 시점에 추가 정보를 설정하여 전송하기
 
 크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
-setUserFieldIntoCrashBlock안에서 사용자 정의 필드를 설정하면 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
+setShouldReportCrashHandler의 Block에서 사용자 정의 필드를 설정하면 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
 
 ### Data Adapter API 명세
 ```objc
@@ -74,7 +74,7 @@ setUserFieldIntoCrashBlock안에서 사용자 정의 필드를 설정하면 정�
 
 //...
 
-+ (void)setUserFieldIntoCrashBlock:(void (^)(void))block;
++ (void)setShouldReportCrashHandler:(void (^)(void))handler;
 
 //...
 
@@ -84,7 +84,7 @@ setUserFieldIntoCrashBlock안에서 사용자 정의 필드를 설정하면 정�
 ### Data Adapter 사용 예
 
 ```objc
-[TCISCrash setUserFieldIntoCrashBlock:^{
+[TCISCrash setShouldReportCrashHandler:^{
   
   //사용자 정의 필드 를 통해 Crash가 발생한 상황에서 얻고자 하는 정보를 함께 전송
   // Dictionary를 통한 UserField 설정
