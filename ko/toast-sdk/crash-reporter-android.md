@@ -13,7 +13,7 @@ TOAST Crash SDK는 [TOAST Logger](./log-collector-android)를 사용하여 크�
 
 ## TOAST Crash SDK 초기화
 
-onCreate() 메소드에서 TOAST Crash SDK를 초기화합니다.
+onCreate() 메서드에서 TOAST Crash SDK를 초기화합니다.
 
 > 주의 : TOAST Crash SDK 기능을 사용하기 위해서는 TOAST Logger 초기화가 선행되어야 합니다.
 [TOAST Logger 초기화 안내](./log-collector-android#toast-logger-sdk)를 확인하세요.
