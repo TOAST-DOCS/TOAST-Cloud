@@ -6,7 +6,9 @@ TOAST SDK는 [TOAST](https://toast.com/)에서 제공하는 다양한 서비스�
 > 현재는 iOS, Android, Unity3D의 개발 환경을 제공하고 있고, 향후 더욱 다양한 프로그래밍 언어와 플랫폼을 지원할 예정입니다.
 
 ## 지원하는 서비스
+
 * [Log & Crash Search](https://toast.com/service/analytics/log_crash_search)
+
 > IAP, PUSH 등 개별 SDK를 제공하는 서비스는 앞으로 TOAST SDK를 통해 개발할 수 있도록 지원할 예정입니다.
 
 ## 특징
@@ -16,7 +18,6 @@ TOAST SDK는 [TOAST](https://toast.com/)에서 제공하는 다양한 서비스�
 * 사용하고자 하는 서비스 전체 또는 일부 서비스를 선택 적용할 수 있습니다.
 * 개별 서비스에서 독자적으로 제공했던 SDK의 불편사항을 개선하였습니다.
 * TOAST 콘솔을 통해 SDK의 설정을 변경할 수 있으므로 앱을 다시 빌드 하여 배포하는 불편함이 없습니다.
-
 
 ## Getting Started TOAST SDK
 
@@ -73,8 +74,8 @@ Symbolication File 등록과 관련한 내용은 [Log & Crash Search의 콘솔 �
 | 크래시 로그 전송| 앱에서 발생한 크래시 정보를 전송합니다. |
 | Handled Exceptions(Android, Unity) | try/catch statement에서 발생한 예외 정보를 전송합니다. |
 
-* Android 플랫폼과 Unity로 개발된 앱의 경우 개발자 편의를 위해 "Handled Exception" 타입을 지원합니다. 
-Handled Exception 타입은 "Log & Crash Search 콘솔" > "App Crash Search" 탭에서 필터 유형을 Crash와 Handled로 쉽게 필터링하여 조회할 수 있는 기능을 제공합니다. 
+* Android 플랫폼과 Unity로 개발된 앱의 경우 개발자 편의를 위해 "Handled Exception" 타입을 지원합니다.
+Handled Exception 타입은 "Log & Crash Search 콘솔" > "App Crash Search" 탭에서 필터 유형을 Crash와 Handled로 쉽게 필터링하여 조회할 수 있는 기능을 제공합니다.
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
 ### 사용 가이드
