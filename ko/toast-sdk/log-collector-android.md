@@ -2,13 +2,13 @@
 
 ## Prerequisites
 
-1\. [Install the TOAST SDK](./getting-started-android)  
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화]  (https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.  
+1\. [Install the TOAST SDK](./getting-started-android)
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.  
 
 ## TOAST Logger SDK 초기화
 
-onCreate() 메서드에서 Logger를 초기화합니다.  
+onCreate() 메서드에서 Logger를 초기화합니다.
 Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
 ```java
@@ -50,8 +50,7 @@ ToastLogger.warn("TOAST Log & Crash Search!");
 ```
 
 ## UserID 설정하기
-UserID를 설정하는 경우 사용자 아이디를 설정할 수 있습니다.  
-설정한 사용자 아이디는 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다. UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
+UserID를 설정하는 경우 사용자 아이디를 설정할 수 있습니다.설정한 사용자 아이디는 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다. UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
 
 ### UserID 설정 API 명세
 ```java

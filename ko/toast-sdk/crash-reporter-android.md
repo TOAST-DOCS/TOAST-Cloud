@@ -4,8 +4,8 @@
 
 TOAST Crash SDK는 [TOAST Logger](./log-collector-android)를 사용하여 크래시 정보를 Log&Crash Search 수집 서버로 전송합니다.
 
-1\. [Install the TOAST SDK](./getting-started-android)  
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log&Crash Search를 활성화]  (https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.  
+1\. [Install the TOAST SDK](./getting-started-android)
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log&Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log&Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 4\. [TOAST Logger를 초기화](./log-collector-android#initialize)합니다.  
 > 주의 : TOAST Crash SDK 기능을 사용하기 위해서는 TOAST Logger 초기화가 선행되어야 합니다.

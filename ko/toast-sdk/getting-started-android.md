@@ -12,7 +12,7 @@ Android 용 TOAST SDK의 구성은 다음과 같습니다.
 * [TOAST Logger](./log-collector-android) SDK
 * [TOAST Crash](./crash-reporter-android) SDK
 
-TOAST SDK가 제공하는 모든 서비스에서 원하는 기능을 선택하여 적용할 수 있습니다.
+TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
 | Gradle Dependency | Service |
 | --- | --- |

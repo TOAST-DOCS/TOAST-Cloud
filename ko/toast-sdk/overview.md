@@ -7,13 +7,13 @@ TOAST SDK는 [TOAST](https://toast.com/)에서 제공하는 다양한 서비스�
 
 ## 지원하는 서비스
 * [Log & Crash Search](https://toast.com/service/analytics/log_crash_search)
-> IAP, PUSH 등 개별 SDK를 제공하는 서비스는 모두 TOAST SDK를 통해 개발할 수 있도록 지원할 예정입니다.
+> IAP, PUSH 등 개별 SDK를 제공하는 서비스는 앞으로 TOAST SDK를 통해 개발할 수 있도록 지원할 예정입니다.
 
 ## 특징
 
 * Android는 Gradle, iOS는 CocoaPods를 활용한 빌드 환경을 지원합니다.
 * Unity Plugin을 제공합니다.
-* 사용하고자 하는 서비스 전체 또는 일부 서비스를 선택적으로 적용 가능합니다.
+* 사용하고자 하는 서비스 전체 또는 일부 서비스를 선택 적용할 수 있습니다.
 * 개별 서비스에서 독자적으로 제공했던 SDK의 불편사항을 개선하였습니다.
 * TOAST 콘솔을 통해 SDK의 설정을 변경할 수 있으므로 앱을 다시 빌드 하여 배포하는 불편함이 없습니다.
 
@@ -40,7 +40,7 @@ TOAST Unity SDK는 Android, iOS 플랫폼을 지원하고 있습니다.
 
 ## TOAST Logger
 
-Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다.  
+Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다.
 수집된 로그는 TOAST 콘솔의 Log & Crash Search 메뉴를 선택하여 열람할 수 있습니다.
 
 * [Log & Crash Serach 서비스 확인하기](https://toast.com/service/analytics/log_crash_search)
