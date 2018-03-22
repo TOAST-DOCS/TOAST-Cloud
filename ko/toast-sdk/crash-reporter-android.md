@@ -71,7 +71,7 @@ setUserField API는 크래시 발생 시점과 상관없이 키 밸류 형태의
 ToastCrash.setUserField(field, value);
 ```
 
-*  "field"는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.
+* "field"는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.  
 즉, Log & Crash Search의 커스텀 파라미터와 동일한 것으로 "field"값의 상세한 제약 사항은 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/)에서 확인할 수 있습니다.
 * 동일한 키에 대해 값을 여러 번 변경하면, 최종으로 변경한 값이 적용됩니다.
 
