@@ -32,19 +32,19 @@ Android 플랫폼의 경우 try/catch 구문에서 예외와 관련된 내용을
 
 ```java
 // DEBUG 레벨의 예외 정보 전송
-ToastCrash.debug(tag, message, throwable);
+ToastCrash.debug(message, throwable);
 
 // INFO 레벨의 예외 정보 전송
-ToastCrash.info(tag, message, throwable);
+ToastCrash.info(message, throwable);
 
 // WARN 레벨의 예외 정보 전송
-ToastCrash.warn(tag, message, throwable);
+ToastCrash.warn(message, throwable);
 
 // ERROR 레벨의 예외 정보 전송
-ToastCrash.error(tag, message, throwable);
+ToastCrash.error(message, throwable);
 
 // FATAL 레벨의 예외 정보 전송
-ToastCrash.fatal(tag, message, throwable);
+ToastCrash.fatal(message, throwable);
 ```
 
 ### 사용 예
@@ -53,7 +53,7 @@ ToastCrash.fatal(tag, message, throwable);
 try {
     // User Codes...
 } catch (Exception e) {
-    ToastCrash.debug(TAG, "Handled Exception", e);
+    ToastCrash.debug("Handled Exception", e);
 }
 ```
 
