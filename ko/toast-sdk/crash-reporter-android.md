@@ -31,7 +31,7 @@ Android 플랫폼의 경우 try/catch 구문에서 예외와 관련된 내용을
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
 
-### Handled Exception log API 명세
+### Handled Exception Log API 명세
 
 ```java
 // DEBUG 레벨의 예외 정보 전송
@@ -79,7 +79,7 @@ ToastCrash.setUserField(field, value);
 
 * 이미 예약된 필드는 사용할 수 없습니다. 예약된 필드는 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/) 항목의 "기본 파라미터"를 확인하세요.
 * 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
-* 필드명 내에 공백은 "\_" 로 치환됩니다.
+* 필드명 내에 공백은 "\_"로 치환됩니다.
 
 ### setUserField 사용 예
 
@@ -112,7 +112,7 @@ ToastCrash.setDataAdapter(new CrashDataAdapter() {
 });
 ```
 
-## 크래시 로그 전송 후 추가작업 진행하기
+## 크래시 로그 전송 후 추가 작업 진행하기
 
 콜백 함수를 등록하면 크래시 로그 전송 후 추가 작업을 진행할 수 있습니다.
 

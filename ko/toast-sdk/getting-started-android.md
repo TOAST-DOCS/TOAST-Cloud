@@ -35,7 +35,7 @@ dependencies {
 
 ### 2. 바이너리 다운로드로 TOAST SDK 적용하기
 
-TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Android SDK를 다운로드 받을 수 있습니다.
+TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Android SDK를 다운로드할 수 있습니다.
 
 ## TOAST SDK 초기화하기
 
