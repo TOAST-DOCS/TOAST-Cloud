@@ -13,7 +13,7 @@ Unity 용 TOAST SDK의 구성은 다음과 같습니다.
 * [TOAST Logger](./log-collector-unity) SDK
 * [TOAST Crash Reporter](./crash-reporter-unity) SDK
 
-TOAST SDK가 제공하는 모든 서비스에서 원하는 기능을 선택하여 적용할 수 있습니다.
+TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
 | Unity package | Service |
 | --- | --- |
@@ -25,16 +25,16 @@ TOAST SDK가 제공하는 모든 서비스에서 원하는 기능을 선택하�
 
 ### Unity package 구조
 
-Unity용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
+Unity 용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 
-| Directory | Description |
-|---|---|
-| Toast | TOAST SDK의 루트 폴더 |
-| Toast/Base | TOAST SDK의 공통 모듈 폴더 |
-| Toast/Logger | TOAST Logger 모듈 폴더 |
-| Toast/Crash | TOAST Crash Reporter 모듈 폴더 |
-| Toast/Sample | SDK 샘플 폴더 |
-| Plugins | Gradle 빌드를 위한 mainTemplate.gradle이 있는 폴더 |
+| Directory | Description | Unity package |
+|---|---|---|
+| Toast | TOAST SDK의 루트 폴더 | All |
+| Toast/Base | TOAST SDK의 공통 모듈 폴더 | All |
+| Toast/Logger | TOAST Logger 모듈 폴더 | Logger, Crash, Sample |
+| Toast/Crash | TOAST Crash Reporter 모듈 폴더 | Crash, Sample |
+| Toast/Sample | SDK 샘플 폴더 | Sample |
+| Plugins | Gradle 빌드를 위한 mainTemplate.gradle이 있는 폴더 | All |
 
 ## 프로젝트에 Unity package 추가하기
 
@@ -42,7 +42,7 @@ Unity용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 
 - [다운로드](../../../Download/#toast-sdk)
 
-### Unity package 를 프로젝트에 Import 하기
+### Unity package Import 하기
 
 내려받은 Unity Package 를 더블 클릭하여 프로젝트에 포함합니다.
 
