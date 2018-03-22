@@ -15,7 +15,8 @@ TOAST Crash SDK는 [TOAST Logger](./log-collector-android)를 사용하여 크�
 
 onCreate() 메소드에서 TOAST Crash SDK를 초기화합니다.
 
-> 주의 : TOAST Crash SDK 기능을 사용하기 위해서는 TOAST Logger 초기화가 선행되어야 합니다.  [TOAST Logger 초기화 안내](./log-collector-android#toast-logger-sdk)를 확인하세요.
+> 주의 : TOAST Crash SDK 기능을 사용하기 위해서는 TOAST Logger 초기화가 선행되어야 합니다.
+[TOAST Logger 초기화 안내](./log-collector-android#toast-logger-sdk)를 확인하세요.
 
 ```java
 // Initialize Crash
@@ -25,7 +26,9 @@ ToastCrash.initialize();
 ## Handled Exception API 사용하기
 
 TOAST Crash는 5가지 레벨의 예외(Handled Exception) 로그를 전송할 수 있습니다. 
-Android 플랫폼의 경우 try/catch 구문에서 예외와 관련된 내용을 TOAST Crash SDK의 Handled Exception API를 사용하여 전송할 수 있습니다. 이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 Handled로 필터링하여 조회할 수 있습니다. 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
+Android 플랫폼의 경우 try/catch 구문에서 예외와 관련된 내용을 TOAST Crash SDK의 Handled Exception API를 사용하여 전송할 수 있습니다. 
+이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 Handled로 필터링하여 조회할 수 있습니다.
+자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
 
 ### Handled Exception log API 명세
@@ -68,7 +71,8 @@ setUserField API는 크래시 발생 시점과 상관없이 키 밸류 형태의
 ToastCrash.setUserField(field, value);
 ```
 
-*  "field"는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다. 즉, Log & Crash Search의 커스텀 파라미터와 동일한 것으로 "field"값의 상세한 제약 사항은 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/)에서 확인할 수 있습니다.
+*  "field"는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.
+즉, Log & Crash Search의 커스텀 파라미터와 동일한 것으로 "field"값의 상세한 제약 사항은 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/)에서 확인할 수 있습니다.
 * 동일한 키에 대해 값을 여러 번 변경하면, 최종으로 변경한 값이 적용됩니다.
 
 #### 커스텀 필드 제약사항
@@ -89,6 +93,7 @@ ToastCrash.setUserField("UserField", "UserValue");
 setUserField는 크래시 시점과 관계없이 아무 때나 설정할 수 있고, setDataAdapter의 경우 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
 
 ### setDataAdapter API 명세
+
 ```java
 ToastCrash.setDataAdapter(adapter);
 ```
