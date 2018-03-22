@@ -11,7 +11,7 @@ TOAST SDK는 [TOAST](https://toast.com/)에서 제공하는 다양한 서비스�
 
 ## 특징
 
-* Android는 Gradle, iOS는 CocoaPods를 활용한 빌드 환경를 지원합니다.
+* Android는 Gradle, iOS는 CocoaPods를 활용한 빌드 환경을 지원합니다.
 * Unity Plugin을 제공합니다.
 * 사용하고자 하는 서비스 전체 또는 일부 서비스를 선택적으로 적용 가능합니다.
 * 개별 서비스에서 독자적으로 제공했던 SDK의 불편사항을 개선하였습니다.
@@ -40,8 +40,9 @@ TOAST Unity SDK는 Android, iOS 플랫폼을 지원하고 있습니다.
 
 ## TOAST Logger
 
-Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다.<br>
+Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다.  
 수집된 로그는 TOAST 콘솔의 Log & Crash Search 메뉴를 선택하여 열람할 수 있습니다.
+
 * [Log & Crash Serach 서비스 확인하기](https://toast.com/service/analytics/log_crash_search)
 
 ### 주요기능
@@ -49,7 +50,7 @@ Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합�
 | 기능 | 설명 |
 | -- | -- |
 | 로그 전송 | 로그를 수집 서버로 전송합니다. |
-| 조회 및 검색 | TOAST 콘솔에서 로그를 조회하거나 조검에 맞는 로그를 검색할 수 있습니다. |
+| 조회 및 검색 | TOAST 콘솔에서 로그를 조회하거나 조건에 맞는 로그를 검색할 수 있습니다. |
 
 ### 사용 가이드
 
@@ -59,8 +60,9 @@ Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합�
 
 ## TOAST Crash Reporter
 
-예상치 못한 크래시가 발생하는 경우 Log & Crash Search 수집 서버로 크래시 로그를 전송합니다.<br>
+예상치 못한 크래시가 발생하는 경우 Log & Crash Search 수집 서버로 크래시 로그를 전송합니다.  
 TOAST 콘솔 화면에서 크래시 발생 현황에 대한 통계, 크래시 원인 분석에 필요한 콜스택 등을 확인할 수 있습니다. 
+
 * 크래시 로그 확인을 위해서는 Symbolication File이 등록되어야 합니다. Symbolication File 등록과 관련한 내용은 [Log & Crash Search의 콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)에서 확인할 수 있습니다.
 
 ### 주요 기능
@@ -69,6 +71,7 @@ TOAST 콘솔 화면에서 크래시 발생 현황에 대한 통계, 크래시 �
 | -- | -- |
 | 크래시 로그 전송| 앱에서 발생한 크래시 정보를 전송합니다. |
 | Handled Exceptions(Android, Unity) | try/catch statement에서 발생한 예외 정보를 전송합니다. |
+
 * Android 플랫폼과 Unity로 개발된 앱의 경우 개발자 편의를 위해 "Handled Exception" 타입을 지원합니다. Handled Exception 타입은 "Log & Crash Search 콘솔" > "App Crash Search" 탭에서 필터 유형을 Crash와 Handled로 쉽게 필터링하여 조회할 수 있는 기능을 제공합니다. 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
 ### 사용 가이드
@@ -76,3 +79,4 @@ TOAST 콘솔 화면에서 크래시 발생 현황에 대한 통계, 크래시 �
 * [TOAST Crash Reporter > Android](./crash-reporter-android) 사용 가이드
 * [TOAST Crash Reporter > iOS](./crash-reporter-ios) 사용 가이드
 * [TOAST Crash Reporter > Unity](./crash-reporter-unity) 사용 가이드
+
