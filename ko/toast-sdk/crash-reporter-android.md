@@ -4,13 +4,13 @@
 
 TOAST Crash SDK는 [TOAST Logger](./log-collector-android)를 사용하여 크래시 정보를 Log&Crash Search 수집 서버로 전송합니다.
 
-1\. [Install the TOAST SDK](./getting-started-android)<br>
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log&Crash Search를 활성화]<br>(https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.<br>
+1\. [Install the TOAST SDK](./getting-started-android)  
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log&Crash Search를 활성화]  (https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.  
 3\. Log&Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
-4\. [TOAST Logger를 초기화](./log-collector-android#initialize)합니다.<br>
+4\. [TOAST Logger를 초기화](./log-collector-android#initialize)합니다.  
 > 주의 : TOAST Crash SDK 기능을 사용하기 위해서는 TOAST Logger 초기화가 선행되어야 합니다.
 
-## Initialize
+## TOAST Crash SDK 초기화
 
 onCreate() 메소드에서 TOAST Crash SDK를 초기화합니다.
 > 주의 : TOAST Crash SDK 기능을 사용하기 위해서는 TOAST Logger 초기화가 선행되어야 합니다.  [TOAST Logger 초기화 안내](./log-collector-android#initialize)를 확인하세요.
@@ -103,7 +103,7 @@ ToastCrash.setDataAdapter(new CrashDataAdapter() {
 
 콜백 함수를 등록하면 크래시 로그 전송 후 추가 작업을 진행할 수 있습니다.
 
-### setListener API 명세
+### setListener API 명세    
 ```java
 ToastCrash.setListener(listener);
 ```
