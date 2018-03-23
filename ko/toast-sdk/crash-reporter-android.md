@@ -121,7 +121,7 @@ ToastCrash.setDataAdapter(new CrashDataAdapter() {
 ToastCrash.setListener(listener);
 ```
 
-### setDataAdapter 사용 예
+### setListener 사용 예
 
 ```java
 ToastCrash.setListener(new CrashListener() {
