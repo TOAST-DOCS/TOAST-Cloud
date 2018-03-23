@@ -35,19 +35,19 @@ Android 플랫폼의 경우 try/catch 구문에서 예외와 관련된 내용을
 
 ```java
 // DEBUG 레벨의 예외 정보 전송
-ToastCrash.debug(String message, Throwable throwable);
+static void debug(String message, Throwable throwable);
 
 // INFO 레벨의 예외 정보 전송
-ToastCrash.info(String message, Throwable throwable);
+static void info(String message, Throwable throwable);
 
 // WARN 레벨의 예외 정보 전송
-ToastCrash.warn(String message, Throwable throwable);
+static void warn(String message, Throwable throwable);
 
 // ERROR 레벨의 예외 정보 전송
-ToastCrash.error(String message, Throwable throwable);
+static void error(String message, Throwable throwable);
 
 // FATAL 레벨의 예외 정보 전송
-ToastCrash.fatal(String message, Throwable throwable);
+static void fatal(String message, Throwable throwable);
 ```
 
 ### 사용 예
@@ -68,7 +68,7 @@ setUserField API는 크래시 발생 시점과 상관없이 키 밸류 형태의
 ### setUserField API 명세
 
 ```java
-ToastCrash.setUserField(String field, Object value);
+static void setUserField(String field, Object value);
 ```
 
 * "field"는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.  
@@ -95,7 +95,7 @@ setUserField는 크래시 시점과 관계없이 아무 때나 설정할 수 있
 ### setDataAdapter API 명세
 
 ```java
-ToastCrash.setDataAdapter(CrashDataAdapter adapter);
+static void setDataAdapter(CrashDataAdapter adapter);
 ```
 * CrashDataAdapter의 getUserFields 함수를 통해 리턴하는 Map 자료구조의 키값은 위에서 설명한 setUserField의 "field"값과 동일한 제약 조건을 갖습니다.
 
@@ -118,7 +118,7 @@ ToastCrash.setDataAdapter(new CrashDataAdapter() {
 
 ### setListener API 명세    
 ```java
-ToastCrash.setListener(CrashListener listener);
+static void setListener(CrashListener listener);
 ```
 
 ### setListener 사용 예
