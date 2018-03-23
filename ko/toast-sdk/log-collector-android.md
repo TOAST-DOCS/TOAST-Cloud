@@ -29,19 +29,19 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ```java
 // DEBUG 레벨 로그
-ToastLogger.debug(message);
+ToastLogger.debug(String message);
 
 // INFO 레벨 로그
-ToastLogger.info(message);
+ToastLogger.info(String message);
 
 // WARN 레벨 로그
-ToastLogger.warn(message);
+ToastLogger.warn(String message);
 
 // ERROR 레벨 로그
-ToastLogger.error(message);
+ToastLogger.error(String message);
 
 // FATAL 레벨 로그
-ToastLogger.fatal(message);
+ToastLogger.fatal(String message);
 ```
 
 ### 로그 전송 API 사용 예
@@ -59,7 +59,7 @@ UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용
 ### UserID API 명세
 
 ```java
-ToastLogger.setUserId(userId);
+ToastLogger.setUserId(String userId);
 ```
 
 ### UserID 설정 사용 예
@@ -76,7 +76,7 @@ ToastLogger.setUserId("TOAST");
 ### setUserField API 명세
 
 ```java
-ToastLogger.setUserField("UserField", "UserValue");
+ToastLogger.setUserField(String field, Object value);
 ```
 
 *  사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.  
@@ -102,7 +102,7 @@ ToastLogger.setUserField("nickname", "randy");
 ### setListener API 명세
 
 ```java
-ToastCrash.setListener(listener);
+ToastCrash.setListener(ToastLoggerListener listener);
 ```
 
 ### setListener 사용 예
