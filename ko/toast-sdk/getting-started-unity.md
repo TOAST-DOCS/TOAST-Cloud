@@ -30,7 +30,7 @@ Unity 용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 | Directory | Description | Unity package |
 |---|---|---|
 | Toast | TOAST SDK의 루트 폴더 | All |
-| Toast/Base | TOAST SDK의 공통 모듈 폴더 | All |
+| Toast/Common | TOAST SDK의 공통 모듈 폴더 | All |
 | Toast/Logger | TOAST Logger 모듈 폴더 | Logger, Crash, Sample |
 | Toast/Crash | TOAST Crash Reporter 모듈 폴더 | Crash, Sample |
 | Toast/Sample | SDK 샘플 폴더 | Sample |
