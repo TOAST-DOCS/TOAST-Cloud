@@ -1,4 +1,4 @@
-## TOAST > Console Guide
+## TOAST > 콘솔 사용 가이드
 콘솔은 TOAST 서비스를 이용하기 위한 관리툴과 작업창의 역할을 합니다.
 TOAST 서비스를 이용하기 위한 콘솔에서의 기본적인 설정과 사용 가이드를 제공합니다.
 
@@ -28,10 +28,10 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 조직이 생성이 되면, 서비스를 선택 할 수 있습니다.
 조직 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
 
-- Dooray
 - ERP
+- Dooray!
 - Contact Center
-- bill(e-Tax)
+- Bill
 - IDC
 
 #### 조직 멤버
@@ -85,18 +85,18 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 1) 조직이 생성이 되면 콘솔 상단의 서비스 선택 버튼이 활성화됩니다.
 2) 조직 서비스 목록이 노출이 됩니다. ERP 의 서비스 문의 버튼을 클릭합니다.
 3) 1:1 문의 게시판으로 이동합니다.
-  ERP, Contact Center, bill, IDC 서비스는 서비스 문의를 통해 서비스 신청이 가능합니다.
+  ERP, Contact Center, Bill, IDC 서비스는 서비스 문의를 통해 서비스 신청이 가능합니다.
 
-### Dooray 서비스 활성화 가이드
+### Dooray! 서비스 활성화 가이드
 
 ![](http://static.toastoven.net/toast/console_guide/consoleguide_003.png)
 <center>[그림 3] Dooray 서비스 활성화 </center>
 
 1) 조직이 생성이 되면 콘솔 상단의 서비스 선택 버튼이 활성화됩니다.
-2) 조직 서비스 목록이 노출이 됩니다. Dooray 서비스를 선택합니다.
+2) 조직 서비스 목록이 노출이 됩니다. Dooray! 서비스를 선택합니다.
 3) 서비스 활성화를 위한 조직 설정 화면이 노출됩니다. 서비스 활성화를 위해서는 도메인 설정과 서비스의 OWNER 설정이 필요합니다.
 4) 새 멤버 등록(내부 회원 등록) 후 서비스 OWNER로 권한을 설정합니다.
-5) 확인 버튼을 클릭시 Dooray 서비스가 활성화 되어 좌측 메뉴에 노출됩니다.
+5) 확인 버튼을 클릭시 Dooray! 서비스가 활성화 되어 좌측 메뉴에 노출됩니다.
 
 ## 프로젝트 관리
 프로젝트는 조직 생성 후, TOAST 서비스를 이용하기 위해서 생성합니다.
@@ -110,17 +110,21 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 - 프로젝트 생성시, 프로젝트명과 프로젝트 설명을 입력합니다.
 - 프로젝트 생성 후, 프로젝트 서비스를 활성화하여 이용할 수 있습니다.
 - 프로젝트 생성 후, 협업이 필요한 경우 프로젝트 멤버로 추가하여 함께 사용할 수 있습니다.
+
 #### 프로젝트 서비스
 프로젝트가 생성이 되면, 서비스를 선택 할 수 있습니다.
 프로젝트 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
 - Compute
 - Storage
 - Network
+- Database
 - Security
-- Contents Delivery
+- Content Delivery
+- Dev Tool
 - Management
 - Game
 - Notification
+- Analytics
 - Application Service
 - Search
 - Mobile Service
