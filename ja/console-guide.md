@@ -67,7 +67,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 
 ### 조직 생성 가이드
 
-![](http://static.toastoven.net/toast/console_guide/consoleguide_001.png)
+![](http://static.toastoven.net/toast/console_guide/consoleguide_001_new.png)
 <center>[그림 1] 조직 생성 </center>
 
 1) 콘솔 진입하여 상단 메뉴의 "조직을 생성해 주세요." 메시지 옆의 + 버튼을 클릭합니다.
@@ -136,7 +136,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 
 ### 프로젝트 생성 가이드
 
-![](http://static.toastoven.net/toast/console_guide/consoleguide_004.png)
+![](http://static.toastoven.net/toast/console_guide/consoleguide_004_new.png)
 <center>[그림 4] 프로젝트 생성 </center>
 
 1) 조직 생성 후, 새 프로젝트 만들기 버튼이 활성화 됩니다. 해당 버튼을 클릭하여 프로젝트를 생성합니다.
@@ -146,7 +146,7 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 5) 프로젝트 설정 버튼을 클릭하여 프로젝트 정보를 확인합니다.
 
 ### 프로젝트 서비스 활성화 가이드
-![](http://static.toastoven.net/toast/console_guide/consoleguide_005.png)
+![](http://static.toastoven.net/toast/console_guide/consoleguide_005_new.png)
 <center>[그림 5] 프로젝트 서비스 활성화 </center>
 
 1) 프로젝트 생성 후, 서비스 선택 버튼을 클릭하여 프로젝트에서 사용할 서비스를 활성화 합니다.
