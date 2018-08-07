@@ -117,8 +117,8 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 | ------ | ---- | ----- | ----- | ------ | ----- |
 | Member 관리 |  등록(ADMIN) | O |   |  |  |
 |  | 프로젝트 멤버 삭제(ADMIN) | O |  |  | |  
-|  | 프로젝트 멤버 등록(Member) | O |  |  | |  
-|  | 프로젝트 멤버 삭제(Member) | O |  |  | |  
+|  | 프로젝트 멤버 등록(MEMBER) | O |  |  | |  
+|  | 프로젝트 멤버 삭제(MEMBER) | O |  |  | |  
 |  | 프로젝트 멤버 등록(Billing Viewer ADMIN) | O |  |  |   |
 |  | 프로젝트 멤버 삭제(Billing Viewer ADMIN) | O |  |  |   |
 |  | 프로젝트 멤버 등록(Billing Viewer) | O |  | O | |  

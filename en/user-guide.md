@@ -135,7 +135,7 @@ The authentication and management policy of each payment method goes as follows:
     - To register a payment method, the credit card information can be retrieved to check Visa Checkout and authenticated.  
 
   ![](http://static.toastoven.net/toast/user_guide/userguide_004.png)
-  <center>[Figure 5] Register Payment Methods– 3D Authentication of Credit Cards (Overseas)– Guide for Visa Cards </center>
+  <center>[Figure 1] Register Payment Methods– 3D Authentication of Credit Cards (Overseas)– Guide for Visa Cards </center>
 
 - Guide for MasterCard SecureCode (TBC) <br/>
     - Select your bank on the website of MasterCard, and register SecureCode.
@@ -144,7 +144,7 @@ The authentication and management policy of each payment method goes as follows:
     - With the entry of credit card information to register as payment method, your replies to questions to create SecureCode are entered so as to create SecureCode. To authenticate it, enter the SecureCode.
 
   ![](http://static.toastoven.net/toast/user_guide/userguide_005.png)
-  <center>[Figure 6] Register Payment Methods– 3D Authentication of Credit Cards (Overseas) - MasterCard </center>
+  <center>[Figure 2] Register Payment Methods– 3D Authentication of Credit Cards (Overseas) - MasterCard </center>
 
 - Guides for JBC J/Secure (TBC) <br/>
     - Enter credit card number, valid period, and card holder’s name on the payment page of J/Secure.
@@ -153,7 +153,7 @@ The authentication and management policy of each payment method goes as follows:
     - To register a payment method, enter credit card information and enter password for authentication.
 
   ![](http://static.toastoven.net/toast/user_guide/userguide_006.png)
-  <center>[Figure 7] Register Payment Methods– 3D Authentication of Credit Cards (Overseas) - JBC </center>
+  <center>[Figure 3] Register Payment Methods– 3D Authentication of Credit Cards (Overseas) - JBC </center>
 
 #### Complete Registration of Payment Methods
 - When a payment method is properly registered, go to **My Page > Payment Methods** to check.
