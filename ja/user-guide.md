@@ -1,214 +1,216 @@
-## TOAST > TOAST 사용 가이드
-NHN엔터테인먼트가 만든 클라우드 서비스, TOAST 를 이용하기 위한 사용자 가이드입니다.
+## TOAST > TOAST User Guide
+This document is the user guide of TOAST, which is the cloud service of NHN Entertainment.
 
-## TOAST 회원 가입
-TOAST 회원은 개인 회원과 사업자 회원으로 관리합니다.
-개인 회원은 간단한 이메일 인증 / SMS 인증을 통해 가입합니다.
-사업자 회원은 사업자정보를 기반으로 가입이 가능합니다.
-TOAST 회원 관리 정보와 가입 절차는 아래와 같습니다.
+## Join TOAST
+Members of TOAST are classified into Personal and Business members.
+For personal members, join simply by email verification/ SMS verification.
+For business members, join upon business information.
+Below show how member information is to be managed, as well as the procedure of subscription.
 
-### 회원 관리 정보
-TOAST 회원은 아래의 정보를 관리합니다.
+### Member Profile Management
+TOAST members are managed under the following information:
 
-| 관리 정보 | 설명 | 필수 입력 |
+| Managed Information | Description | Required |
 | --- | --- | --- |
-| ID | - 이메일 수신이 가능한 이메일 주소입니다. (이메일 인증 필수) | O |
-| Password | - 영문/숫자/특수문자 2개 이상 조합으로 8자리 이상으로 구성됩니다.<br/> - 이전과 동일한 비밀번호는 사용이 불가합니다. <br/> - 대소문자는 구분합니다.  | O |
-| 회원 가입 유형 | 1. 개인 <br/>         - 간편한 이메일인증/휴대폰SMS인증으로 통해 회원 가입을 합니다. <br/> - 개인회원은 결제수단으로 신용카드를 사용할 수 있습니다. <br/> - 외국인의 경우, 개인 회원으로 가입이 가능합니다. <br/> 2. 사업자 <br/> - 회원 가입시, 추가적으로 사업자등록정보에 대해 인증을 진행합니다. <br/> - 사업자회원은 결제수단으로 신용카드와 계좌이체를 이용할 수 있으며, 계좌이체 이용시, 가입시 등록된 사업자정보를 기반으로 세금계선서 발행이 가능합니다.  | O |
-| 휴대폰 번호 | - SMS 확인이 가능한 휴대폰 번호입니다. (휴대폰 SMS 인증 필수) | O |
-| 이름 | - TOAST 서비스에서 사용할 사용자 이름입니다.  | O |
-| 주소 | - 우편번호, 기본주소, 상세주소로 구성합니다.  | X |
-| 유선전화 | - 빠른 서비스 지원을 위해 관리합니다.  | X |
-| 사업자정보 | -  사업자 회원의 경우 필수 관리항목입니다. <br/> - 회사명, 사업자등록번호, 대표자명, 업조/업태, 주소, 유선전화 정보를 관리합니다. <br/> - 사업자등록증에 기재된 정보와 일치하는 정보입니다.  | O |
+| ID | - Valid email address (verification is required). | O |
+| Password | - Comprised of more than eight characters, in combination of English, numbers, and at least two special characters. <br/> - The password cannot be the same as your previous one.  <br/> - Make a clear distinction between uppercase and lowercase letters.  | O |
+| Type of Subscription| 1. Personal Members <br/>         - Join as member via simple verification of email/SMS on mobile phone. <br/> - Personal members are allowed to pay with credit cards. <br/> - Non-Koreans can join as personal members.  <br/> 2. Business Members <br/> - To join membership, further authentication on business registration information is required.  <br/> -Business members are allowed to pay with credit cards and bank transfer, and for the latter, tax invoice can be issued upon business information registered while joining. | O |
+| Mobile Phone Number | - The mobile phone number must receive SMS. (SMS verification is required) | O |
+| Name| - User’s name to be applied for TOAST Service.  | O |
+| Address | - Comprised of zip code, basic address, and detail address. | X |
+| Landline Phone Number | - Managed for the support of faster services.  | X |
+| Business Information | - Required for business members. <br/> - Information such as business name, business registration number, name of representative, type of business/item, address, and landline phone number, are managed. <br/> - Such information must coincide with those of business registration certificate.  | O |
 
-### 회원 가입 절차
-https://toast.com 에 접속하여 GNB 메뉴 우측의 회원가입을 클릭합니다.
-회원 가입 절차는 아래와 같습니다.
+### How to Join as Member
+Access https://toast.com and click Join on the top right.
+Here’s how to join:
 
 ![](http://static.toastoven.net/toast/user_guide/userguide_001.png)
-<center>[그림 1] 회원 가입 - 개인 회원 </center>
+<center>[Figure 1] Join– Personal Members </center>
 
 ![](http://static.toastoven.net/toast/user_guide/userguide_002.png)
-<center>[그림 2] 회원 가입 - 사업자 회원 </center>
+<center>[Figure 2] Join– Business Members </center>
 
-#### 회원 유형 (개인 / 사업자) 선택
+#### Select Type of Membership (Personal/Business)
 
-회원유형에 따라 가입시 필요한 사항은 다음과 같습니다.
+Following are required for each type of membership:
 
-- 개인회원
-    - 메일수신이 가능한 이메일
-    - SMS 확인이 가능한 휴대폰
--  사업자 회원
-    - 메일수신이 가능한 이메일
-    - SMS 확인이 가능한 휴대폰
-    - 사업자등록증 사본 파일
+-  Personal Members
+    - Valid email address
+    - Valid mobile phone that properly receives SMS
+- Business Members
+    - Valid email address  
+    - Valid mobile phone that properly receives SMS
+    - Copy of Business Registration Certificate
 
-#### 이용약관 동의
+#### Consent to Terms of Use  
 
-- TOAST 이용약관 (필수) : TOAST 서비스를 이용하기 위한 약관으로 필수 동의가 필요합니다.  
-- 개인정보 수집/이용 동의 (필수) : TOAST 서비스를 이용하기 위해 필요한 개인정보 수집/이용 방안에 대해 필수 동의가 필요합니다.
-- 홍보성 수신 동의 (선택) : TOAST 에서 시행하는 이벤트/프로모션/서비스홍보 등의 정보를 수신하는데 동의하는 것으로 선택 동의 사항입니다. 홍보성 수신 동의는 회원가입 후 회원정보에서 수정할 수 있습니다.
+- TOAST Terms of Use (Required):  It is required to consent to the Terms of Use for the use of TOAST Service.
+- Consent to Collecting/Using Personal Information (Required): The consent to collect/use personal information is required to use TOAST Service.
+- Consent to Receive Promotional Information (Optional): The consent to receive events/promotions of TOAST is optional. It can be modified on My Profile after joining TOAST.
 
-#### 회원정보 입력
-- 개인 회원
-    - 이메일 인증, 휴대폰 SMS 인증
-- 사업자 회원
-    - 사업자등록증 사번 첨부
+#### Enter Member Information
+- Personal Members
+    - Verify email and mobile phone via SMS
+- Business Members
+    - Attach a copy of Business Registration Certificate
 
-#### 회원가입 완료
+#### Complete Subscription  
 
-회원가입 완료가 되면 자동 로그인이 됩니다. TOAST 서비스 사용이 가능한 상태로 TOAST 홈페이지와 콘솔을 이용할 수 있습니다.
+When you complete joining, you are automatically signed in. Now, you can use TOAST Service via its website and console.  
 
-## TOAST 회원 전환
-PAYCO 서비스에 가입하여 TOAST 를 이용하던 회원은 아래와 같이 서비스 전환이 필요합니다.
-서비스 전환은 간단한 이메일 인증과 비밀번호 설정으로 가능합니다.
+## Convert TOAST Membership
+TOAST members who are subscribed to PAYCO Service are required to convert services as below.
+It is available only with simple email verification and password setting.
 
 ![](http://static.toastoven.net/toast/user_guide/userguide_003.png)
-<center>[그림 3] TOAST 회원 전환 </center>
+<center>[Figure 3] Conversion of TOAST Members </center>
 
 
-## 결제수단 등록
-TOAST 서비스를 이용하기 위해서는 결제 수단 등록이 필요합니다.
-단, 기존에 만들어진 조직/프로제트의 멤버인 경우에는 결제 수단 등록 없이 TOAST 서비스를 이용할 수 있습니다.
-결제수단은 마이 페이지 > 결제수단에서 등록할 수 있습니다.
+## Register Payment Methods
+It is required to register a payment method to use TOAST Service
+However, for members of existing organizations/projects, no additional registration is required to use TOAST Service.
+To register, go to My Page > Payment Methods.
 
-### 결제수단 관리 정책
-TOAST 에서 제공하는 결제수단은 아래와 같습니다.
+### Management Policy of Payment Methods
+Payment methods are provided by TOAST as follows:
 
-- PAYCO 신용카드 : PAYCO 에서 제공하는 간편결제로, PAYCO 계정으로 이용이 가능합니다. <br/>
-- 신용카드 : 카드사에서 제공하는 인증 정책에 따라 인증(휴대폰 본인 인증)을 하고, 신용카드를 결제수단으로 등록합니다. <br/>
-- 신용카드(해외) : 카드사에서 제공하는 인증 정책에 따라 인증(3D인증)을 하고, 신용카드를 결제수단으로 등록합니다. <br/>
-- 계좌이체 : 사업자회원에만 제공되는 결제 수단으로, 계좌를 입력하고 은행 정책에 따라 인증(공인인증서 인증) 후 결제수단으로 등록합니다. <br/>
+- PAYCO Credit Cards: A method of simple payment provided by PAYCO, which is available upon PAYCO account. <br/>
+- Credit Cards: Authentication (authentication of the holder via mobile phone) is required in accordance with the issuing entity’s authentication policy, in order to register a credit card as payment method. <br/>
+- Credit Cards (overseas): Authentication (3D authentication) is required in accordance with the issuing entity’s authentication policy, in order to register a credit card as payment method. <br/>
+- Bank Transfers: The method is provided only to business members, who are required to enter account information and authenticate (Public Key Certificate) it in accordance with bank’s policy before registering it as payment method.  <br/>
 
-### 결제수단별 관리 정책
-결제 수단별 인증 및 관리 정책은 아래와 같습니다.
+### Management Policy per Payment Method
+The authentication and management policy of each payment method goes as follows:
 
-| 회원 유형 | 결제수단 | 인증방식 | 입력정보 | 비고 |
+| Type of Membership | Payment Method |Authentication Method  |Entry Information |Remarks |
 |--------|--------|---|------|---|
-| 개인 | PAYCO 신용카드 | 휴대폰 본인인증 |카드번호, 유효기간, 비밀번호 앞 2자리 | 카드 유효성 검증을 위해 1,000 원 결제 후 취소 처리 발생 |
-|  | 신용카드 | 휴대폰 본인인증 |카드번호, 유효기간, 비밀번호 앞 2자리 | |
-|  | 신용카드(해외) | 카드사 3D 인증  | 카드사별 관리 | |
-| 사업자 | PAYCO 신용카드 | 주민번호 or 사업자등록번호 | 카드번호, 유효기간 | 카드 유효성 검증을 위해 1,000 원 결제 후 취소 처리 발생 |
-|  | 신용카드(기명) | 휴대폰 본인인증 | 카드번호, 유효기간, 주민번호 앞 7자리 | |
-|  | 신용카드(무기명) | 사업자등록번호 | 카드번호, 유효기간, 비밀번호 앞 2자리 | 추후 제공 |
-|  | 계좌이체 | 공인인증서 인증 | 은행, 계좌번호 | 개인 계좌는 개인 공인인증서 <br/> 법인 계좌는 회원/법인 계좌/ 공인인증서의 사업자 정보 동일해야 함 |
+| Personal | PAYCO Credit Cards | Mobile phone owner authentication |Card number, valid period, and the first two digits of password| For card validation, 1,000 won is paid and then cancelled|
+|  | Credit Cards | Mobile phone owner authentication |Credit card number, valid period, and the first two digits of password | |
+|  | Credit Cards (Overseas) |3D authentication of a credit card company | Management by each credit card company | |
+| Business Owner | PAYCO Credit Cards | Resident registration number or Business registration number |Credit card number and valid period  |For card validation, 1,000 won is paid and then cancelled. |
+|  | Credit cards (Signature Required) | Mobile phone owner authentication | Credit card number, valid period, and the first 7 digits of the resident registration number | |
+|  | Credit cards (No Signature Required) | Business registration number |Credit card, valid period, and the first two digits of password | To be provided |
+|  | Bank Transfers |Authenticate with Public Key Certificate  | Bank and account number |For personal accounts, the information must coincide with those in personal Public Key Certificate, <br/> while for business accounts, the business information must coincide with those in member profile/Public Key Certificate. |
 
 
-<center>[표 1] 결제 수단별 관리 정책 </center>
+<center>[Table 1] Management Policy per Payment Method </center>
 
-### PAYCO 신용카드
-#### 결제수단 선택
-- 마이 페이지 > 결제수단 화면에서 결제수단변경 버튼을 클릭합니다.
-- 자동결제수단 등록화면에서 'PAYCO 신용카드'를 선택합니다.
+### PAYCO Credit Cards
+#### Select Payment Methods
+- Go to **My Page > Payment Methods** and click **Change Payment Method**.
+- On the registration page of **Automatic Payment Method**, click **PAYCO Credit Card**.  
 
-#### PAYCO 가입하기
-- PAYCO 아이디는 본인의 휴대폰 번호 또는 이메일을 아이디로 사용할 수 있습니다.
-- 사용하실 아이디와 비밀번호를 입력하면 가입이 완료됩니다.
+#### Join PAYCO
+- Mobile phone number or email may be used as PAYCO ID.
+- Enter ID and password to use and you are joined.  
 
-#### 본인인증 및 결제수단 등록하기
-- 결제수단 최초 등록시 휴대폰 본인인증이 진행됩니다.
-- 본인인증 후, 결제수단 정보를 입력하고 동의절차를 거치면 등록이 완료됩니다.
-- 결제수단 종류에 따라 결제 비밀번호 입력이 필요할 수 있습니다.
+#### Authenticate Holder and Register Payment Methods
+- To register a payment method for the first time, the owner needs to be authenticated via mobile phone.
+- After authentication is done, enter information for payment method and consent, and registration is completed.
+- Password may be required depending on the type of payment method.  
 
-#### PAYCO 로 결제하기
-- 결제수단 선택 후, 결제비밀번호를 입력하면 결제수단 등록이 완료됩니다.
+#### Pay with PAYCO
+- Select a payment method, and enter password for payment, then it is done with registration.
 
-### 신용카드
-#### 결제수단 선택
-- 마이 페이지 > 결제수단 화면에서 결제수단변경 버튼을 클릭합니다.
-- 자동결제수단 등록화면에서 '신용카드'를 선택합니다.
+### Credit Cards
+#### Select Payment Methods
+- Go to **My Page > Payment Methods** and click **Change Payment Method**.
+- On the registration page of **Automatic Payment Method**, select **Credit Card**.  
 
-#### 카드 종류 선택
-- 개인 / 기명 법인카드
-    - 휴대폰 본인 인증 : 이름, 성별, 생년월일, 휴대폰 번호를 입력하여 본인인증을 진행합니다.
-    - 카드 정보 입력 : 카드번호, 카드유효기간, 생년월일을 입력한 후 결제수단을 등록합니다.
-- 무기명 법인카드
-    - 사업자등록번호 확인 : 사업자등록번호를 입력합니다.
-    - 카드 정보 입력 : 카드번호, 카드유효기간, 비밀번호 앞 2자리를 입력한 후 결제수단을 등록합니다.
 
-#### 결제 수단 등록 완료
-- 결제 수단이 정상적으로 등록이 되면, 마이 페이지 > 결제수단에서 확인이 가능합니다.
+#### Select Credit Card Types
+- Personal/Corporate Credit Cards Requiring Signature
+    - Authenticate Owner via Mobile Phone: The owner can be authenticated by entering name, gender, birthday, and mobile phone number.
+    - Enter Credit Card Information: Enter credit card number, valid period, and birthday, and register it as payment method.
+- Corporate Credit Cards Requiring No Signature
+    - Check Business Registration Number: Enter business registration number.
+    - Enter Credit Card Information: Enter credit card number, valid period, and the first two digits of password, and register it as payment method.
 
-### 신용카드(해외)
-#### 결제수단 선택
-- 마이 페이지 > 결제수단 화면에서 결제수단변경 버튼을 클릭합니다.
-- 자동결제수단 등록화면에서 '신용카드(해외)'를 선택합니다.
+#### Complete Registration of Payment Methods
+- When a payment method is properly registered, go to **My Page > Payment Methods** to check.
 
-#### 카드사별 인증 등록
-- 신용카드(해외) 의 화면에서 확인하세요 내용을 학인 후, 등록하기 버튼을 클릭하여 해외발행 신용카드 3D인증 적용 안내를 확인합니다. <br/>
+### Credit Cards (Overseas)
+#### Select Payment Methods
+- Go to **My Page > Payment Methods**, click **Change Payment Method**.
+- On the registration page of **Automatic Payment Method**, click **Credit Card (Overseas)**.
+
+#### Register Authentication by Credit Card Company
+- On the page of Credit Card (Overseas), read through Check, and click **Register** to find guides to apply 3D authentication of credit cards issued overseas. <br/>
 ![](http://static.toastoven.net/toast/user_guide/worldcard-secure.png)
-<center>[그림 4] 결제 수단 등록 - 신용카드(해외) 3D인증 안내 </center>
+<center>[Figure 4] Register Payment Methods– Guide for 3D Authentication of Credit Cards (Overseas) </center>
 
-- verified by visa 이용안내 (확인 필요)<br/>
-    - visa checkout 서비스 등록 : visa website 에서 계정을 생성 후,visa 카드 정보 입력 후, 비밀번호를 설정합니다.
-    - 결제수단 등록시, 카드 정보 입력하게 되면, visa checkout 서비스 등록정보를 확인하여 인증합니다.
+- Guide for Verified by Visa (TBC)<br/>
+    - Register Visa Checkout: Create an account on the website of Visa, enter information of your Visa credit card and set password..
+    - To register a payment method, the credit card information can be retrieved to check Visa Checkout and authenticated.  
 
   ![](http://static.toastoven.net/toast/user_guide/userguide_004.png)
-  <center>[그림 5] 결제 수단 등록 - 신용카드(해외) 3D인증 - visa 안내 </center>
+  <center>[Figure 5] Register Payment Methods– 3D Authentication of Credit Cards (Overseas)– Guide for Visa Cards </center>
 
-- MasterCard SecureCode 이용안내 (확인 필요) <br/>
-    - MasterCard website 은행을 선택 후, SecureCode 등록합니다.
-    - 약관에 동의하고, 카드번호를 입력합니다.
-    - 카드 번호 입력 후, SecureCode 를 등록하기 위한 개인 확인 사항을 입력합니다.
-    - 결제수단 등록시, 카드 정보 입력하게 되면, SecureCode 생성을 위한 질문에 답변을 하게 되면 SecureCode 가 생성이 됩니다. 생성된 SecureCode 를 입력하여 인증합니다.
+- Guide for MasterCard SecureCode (TBC) <br/>
+    - Select your bank on the website of MasterCard, and register SecureCode.
+    - Consent to Terms of Use and enter your credit card number.
+    - Then, enter personal information required to register SecureCode.  
+    - With the entry of credit card information to register as payment method, your replies to questions to create SecureCode are entered so as to create SecureCode. To authenticate it, enter the SecureCode.
 
   ![](http://static.toastoven.net/toast/user_guide/userguide_005.png)
-  <center>[그림 6] 결제 수단 등록 - 신용카드(해외) 3D인증 - MasterCard </center>
+  <center>[Figure 6] Register Payment Methods– 3D Authentication of Credit Cards (Overseas) - MasterCard </center>
 
-- JBC J/Secure 이용안내 (확인 필요) <br/>
-    - J/Secure 결제창에 카드번호, 유효기간, 카드소유자명을 입력합니다.
-    - 비밀번호 입력 창이 뜨면, 비밀번호를 입력합니다.
-    - 비밀번호가 존재하면 기존과 동일한 비밀번호인지 확인하고, 없을 경우 신규로 등록합니다.
-    - 결제수단 등록시, 카드 정보를 입력하고 비밀번호를 입력하여 인증합니다.
+- Guides for JBC J/Secure (TBC) <br/>
+    - Enter credit card number, valid period, and card holder’s name on the payment page of J/Secure.
+    - When required on a popup, enter password.
+    - Check if your existing password (if any) coincides with your current password; if there’s none, register a new password.
+    - To register a payment method, enter credit card information and enter password for authentication.
 
   ![](http://static.toastoven.net/toast/user_guide/userguide_006.png)
-  <center>[그림 7] 결제 수단 등록 - 신용카드(해외) 3D인증 - JBC </center>
+  <center>[Figure 7] Register Payment Methods– 3D Authentication of Credit Cards (Overseas) - JBC </center>
 
-#### 결제 수단 등록 완료
-- 결제 수단이 정상적으로 등록이 되면, 마이 페이지 > 결제수단에서 확인이 가능합니다.
+#### Complete Registration of Payment Methods
+- When a payment method is properly registered, go to **My Page > Payment Methods** to check.
 
-### 계좌이체
-#### 결제수단 선택
-- 사업자 회원의 경우에만 사용할 수 있는 결제수단입니다.
-- 마이 페이지 > 결제수단 화면에서 결제수단변경 버튼을 클릭합니다.
-- 자동결제수단 등록화면에서 '계좌이체'를 선택합니다.
 
-#### 계좌정보 입력
-- 계좌 정보를 입력합니다.
+### Bank Transfers
+#### Select Payment Methods
+- Provided only for business members.
+- Go to **My Page > Payment Methods** and click **Change Payment Method**.
+- On the registration page of **Automatic Payment Method**, click **Bank Transfer**.  
 
-#### 공인인증서 인증
-- 개인 계좌의 경우, 개인 공인인증서를 선택하여 인증합니다.
-- 법인 계좌의 경우, 계좌의 사업자정보와 동일한 사업자정보로 등록된 공인 인증서를 선택하여 인증합니다.
+#### Enter Account Information
+- Enter your account information.
 
-#### 결제 수단 등록 완료
-- 결제 수단이 정상적으로 등록이 되면, 마이 페이지 > 결제수단에서 확인이 가능합니다.
+#### Authenticate Public Key Certificates
+- For s personal account, select a personal Public Key Certificate for authentication.
+- For a corporate account, select a Public Key Certificate registered with the same business information on its account for authentication.
 
-### 결제수단 추가 기능
-#### 이메일 명세서 수신 관리
-이메일 명세서를 수신할 이메일 주소를 등록합니다.
-#### 결제 단위 설정
-요금약정제별로 결제 or 한번에 결제를 선택합니다.
+#### Complete Registration of Payment Methods
+- When a payment method is properly registered, go to **My Page > Payment Methods** to check.
 
-## 크레딧 관리
-TOAST 서비스에서 관리하는 크레딧은 서비스 가입, 리워드, 이벤트, 보상 목적에 따라 무상으로 지급하는 크레딧입니다.
-크레딧은 현금 1원과 동일합니다.
-크레딧은 마이페이지 > 크레딧에서 확인할 수 있습니다.
-크레딧은 아래와 같은 정책으로 운영됩니다.
-- 환불 되지 않습니다.
-- 유효 기간 관리을 관리합니다. 유효 기간 이후 소멸하며 적립 유형별로 유동적으로 운영합니다.
-- TOAST 이용 금액 발생시 크레딧으로 존재하면 자동으로 이용 금액을 차감합니다. TOAST 이용 금액이 보유한 크레딧보다 많을 경우, 크레딧에서 차감하고 나머지 금액이 유료 과금됩니다.
+### Further Functions of Payment Methods
+#### Manage Receipt of Email Invoices
+Register an email address to receive email invoices.  
+#### Set Unit of Payment
+Select either **Pay by Contract Pricing Plan** or **Pay At Once**.
 
-## 회원 탈퇴
-### 회원 탈퇴 신청
-TOAST 회원 탈퇴 신청은 마이 페이지 > 회원정보에서 회원 탈퇴 버튼을 클릭하여 신청합니다.
-회원 탈퇴 유의사항을 확인 후, 회원 탈퇴를 클릭합니다.
-이용 중인 서비스가 있는 경우는 회원 탈퇴 신청이 불가합니다.
+## Manage Credits
+Credits managed by TOAST Service are provided free-of-charge, depending on service subscription, rewards, events, or compensation purposes.
+1 credit equals to 1 won in cash.
+Go to **My Page > Credits** to check your credits.
+Credits are operated in accordance with the following policy:
+- Non-refundable.
+- Manage valid period: to expire after valid period, and flexibly managed for each type of saving.
+- Automatically deduct prices in credits if TOAST service prices are charged: if the service price is higher than credits that are owned, deduct the amount in credits while the rest is charged in cash.
 
-### 회원 탈퇴 검증
-회원 탈퇴 신청 후, 아래 정보를 확인 후 회원 탈퇴 처리를 합니다.<br/>
+## Withdraw from Membership
+### Apply for Membership Withdrawal
+To apply for withdrawal from TOAST membership, go to **My Page > Member Profile** and click **Withdraw Membership**.  
+Check considerations for withdrawal and click **Withdraw**.
+Withdrawal cannot be applied, when there are services that are in use.
 
-- 이용 요금이 남이 있는 경우, 자동 결제일 (매월 15일)에 결제 후 회원 탈퇴가 처리 됩니다.
+### Verify Membership Withdrawal
+After application of withdrawal, below information is checked to process withdrawal. <br/>
 
-### 회원 탈퇴 완료
-회원 탈퇴가 완료되면, 회원탈퇴 완료에 대해 회원탈퇴 신청시 등록된 이메일로 발송됩니다.
-회원 탈퇴 시 모든 이용 정보가 삭제되며, 삭제된 데이터는 복구 되지 않습니다.
+- If there are unpaid service fees, it shall be paid on a date of automatic payment (15th of the month) before withdrawal is processed.  
+
+### Complete Membership Withdrawal
+When withdrawal is completed, it shall be notified via email registered at the time of withdrawal application.   
+With withdrawal, all information regarding service use shall be deleted and cannot be recovered.
