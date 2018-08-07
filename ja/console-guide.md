@@ -31,7 +31,6 @@ Following services are available at the level of organization:
 - ERP
 - Dooray!
 - Contact Center
-- Bill
 - IDC
 
 #### Organization Members
@@ -67,8 +66,6 @@ Each member of an organization has following roles:
 
 ### Guide to Create Organizations
 
-![](http://static.toastoven.net/toast/console_guide/consoleguide_001.png)
-<center>[Figure 1] Create Organizations </center>
 1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
 2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
 3. Click **OK** and organization is completely created.
@@ -105,6 +102,7 @@ Following services can be enabled by each project:
 - Application Service
 - Search
 - Mobile Service
+- Bill
 
 #### Project Members
 Project members are also members of TOAST.com. Insider members of an organization will be able to use project services with further functions to be provided.
@@ -135,8 +133,6 @@ However, if it is deleted without paid, all charges up to the moment shall be au
 
 ### Guide to Create Projects
 
-![](http://static.toastoven.net/toast/console_guide/consoleguide_004.png)
-<center>[Figure 4] Create Projects </center>
 1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
 2. Enter **Project Name** and **Project Description**.
 3. Click **OK** to create a project.
@@ -144,8 +140,7 @@ However, if it is deleted without paid, all charges up to the moment shall be au
 5. Click project setting to check project information.
 
 ### Guide to Enable Project Service
-![](http://static.toastoven.net/toast/console_guide/consoleguide_005.png)
-<center>[Figure 5]Enable Project Service </center>
+
 1. Click **Select Services**, after a project is created, to enable services you need
 2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
 3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.

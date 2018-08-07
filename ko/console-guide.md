@@ -31,7 +31,6 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 - ERP
 - Dooray!
 - Contact Center
-- Bill
 - IDC
 
 #### 조직 멤버
@@ -106,6 +105,7 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 - Application Service
 - Search
 - Mobile Service
+- Bill
 
 #### 프로젝트 멤버
 프로젝트의 멤버는 TOAST.com의 회원입니다. 조직 내부 회원이 프로젝트 멤버로, 서비스를 이용할 수 있는 기능은 추후 제공 예정입니다.
@@ -137,7 +137,7 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 ### 프로젝트 생성 가이드
 
 ![](http://static.toastoven.net/toast/console_guide/consoleguide_004.png)
-<center>[그림 4] 프로젝트 생성 </center>
+<center>[그림 2] 프로젝트 생성 </center>
 
 1. 조직을 생성하면 **새 프로젝트  생성하기** 버튼이 활성화됩니다. **새 프로젝트 생성하기** 버튼을 클릭하여 프로젝트를 생성합니다.
 2. **프로젝트 이름**과 **프로젝트 설명**을 입력합니다.
@@ -147,7 +147,7 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 
 ### 프로젝트 서비스 활성화 가이드
 ![](http://static.toastoven.net/toast/console_guide/consoleguide_005.png)
-<center>[그림 5] 프로젝트 서비스 활성화 </center>
+<center>[그림 3] 프로젝트 서비스 활성화 </center>
 
 1. 프로젝트 생성 후, **서비스 선택** 버튼을 클릭하여 프로젝트에서 사용할 서비스를 선택할 수 있습니다.
 2. 서비스 선택 화면에서 활성화할 서비스를 선택합니다. 서비스를 활성화할지 묻는 메시지가 나타나면 **확인**을 클릭합니다. 서비스를 이용할 수 있는 페이지로 이동한다는 안내 메시지가 나타나면 **확인**을 클릭합니다.

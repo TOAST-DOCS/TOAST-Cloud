@@ -24,12 +24,9 @@ TOAST members are managed under the following information:
 ### How to Join as Member
 Access https://toast.com and click Join on the top right.
 Here’s how to join:
-
-![](http://static.toastoven.net/toast/user_guide/userguide_001.png)
-<center>[Figure 1] Join– Personal Members </center>
-
-![](http://static.toastoven.net/toast/user_guide/userguide_002.png)
-<center>[Figure 2] Join– Business Members </center>
+1. Terms of Use Agreement
+2. Enter Member Information
+3. Completed to join
 
 #### Select Type of Membership (Personal/Business)
 
@@ -62,10 +59,6 @@ When you complete joining, you are automatically signed in. Now, you can use TOA
 ## Convert TOAST Membership
 TOAST members who are subscribed to PAYCO Service are required to convert services as below.
 It is available only with simple email verification and password setting.
-
-![](http://static.toastoven.net/toast/user_guide/userguide_003.png)
-<center>[Figure 3] Conversion of TOAST Members </center>
-
 
 ## Register Payment Methods
 It is required to register a payment method to use TOAST Service
@@ -137,9 +130,6 @@ The authentication and management policy of each payment method goes as follows:
 
 #### Register Authentication by Credit Card Company
 - On the page of Credit Card (Overseas), read through Check, and click **Register** to find guides to apply 3D authentication of credit cards issued overseas. <br/>
-![](http://static.toastoven.net/toast/user_guide/worldcard-secure.png)
-<center>[Figure 4] Register Payment Methods– Guide for 3D Authentication of Credit Cards (Overseas) </center>
-
 - Guide for Verified by Visa (TBC)<br/>
     - Register Visa Checkout: Create an account on the website of Visa, enter information of your Visa credit card and set password..
     - To register a payment method, the credit card information can be retrieved to check Visa Checkout and authenticated.  

@@ -66,8 +66,7 @@ TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “
 | Storage | The storage service has high availability and stability. |
 | Game | Useful platforms are supported for game development.|
 | Notification | Mobile Push and SMS Platform services are provided. |
-| Database | With no need of complicated installation or setting, relational database is made available in the cloud environment.
-View User's Manual |
+| Database | With no need of complicated installation or setting, relational database is made available in the cloud environment. |
 | Content Delivery | Image saving and fast content distribution are available. |
 | Security | Security can be enhanced through the platforms. |
 | Mobile Service | Developing and testing mobile app services are made more easily. |
@@ -79,8 +78,7 @@ View User's Manual |
 | ERP  | Hands-on enterprise resource management solution is provided incorporating accounting, HR, and settlement. |
 | Dooray!  | Convenient tools of collaboration are supported, including mail, issue tracker, schedule management, and chatting. |
 | Contact Center | An integrated solution for call center services helps process inquiries more efficiently, and provides elevated operational efficiency and optimized customer experience. |
-| Bill | With the Bill service, it is easy and convenient to get a tax invoice.
-View User's Manual |
+| Bill | With the Bill service, it is easy and convenient to get a tax invoice. |
 | IDC  | The urban data center, designed on its own technology and established in Pangyo, provides optimized operational efficiency.  |
 
 ## Service Release Policy
