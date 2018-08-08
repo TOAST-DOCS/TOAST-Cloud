@@ -87,12 +87,12 @@ TOAST Service is managed by the Release Policy as below.
 
 - ALPHA
     - The service is open to users before an official service version is released.
-    - The service is named with Alpha icon.
+    - The service is named with ALPHA icon.
     - This service may fade out depending on company policy.
 - BETA
     - The service is open to users before an official service version is released.
 
-    - The service is named with Beta icon.
+    - The service is named with BETA icon.
 
 - GA
     - Refers to the official version of service.
@@ -104,4 +104,4 @@ TOAST Service is managed by the Release Policy as below.
 | BETA | X | O | 3 Months |
 | GA | O | O | - |
 
-- The AlPHA or BETA period may be extended or reduced.
+- The ALPHA or BETA period may be extended or reduced.

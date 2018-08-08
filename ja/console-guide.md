@@ -110,14 +110,14 @@ You can be a project member, if not an organization member.
 
 Each project member has the following roles:
 
-| Action | Role | Admin | Member | Billing Viewer Admin | Billing Viewer |
+| Action | Role | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
 | ------ | ---- | ----- | ----- | ------ | ----- |
-| Manage Members | Register Project Members (Admin) | O |   |  |  |
+| Manage Members | Register Project Members (ADMIN) | O |   |  |  |
 |  | Delete Project Members (Admin) | O |  |  | |  
-|  | Register Project Members (Member) | O |  |  | |  
-|  | Delete Project Members (Member) | O |  |  | |  
-|  | Register Project Members (Billing Viewer Admin) | O |  |  |   |
-|  | Delete Project Members (Billing Viewer Admin) | O |  |  |   |
+|  | Register Project Members (MEMBER) | O |  |  | |  
+|  | Delete Project Members (MEMBER) | O |  |  | |  
+|  | Register Project Members (Billing Viewer ADMIN) | O |  |  |   |
+|  | Delete Project Members (Billing Viewer ADMIN) | O |  |  |   |
 |  | Register Project Members (Billing Viewer) | O |  | O | |  
 |  | Delete Project Members (Billing Viewer) | O |  | O | |  
 | Manage Service | Enable Service | O |  |  | |  
