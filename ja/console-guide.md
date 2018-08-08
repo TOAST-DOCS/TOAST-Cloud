@@ -113,7 +113,7 @@ Each project member has the following roles:
 | Action | Role | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
 | ------ | ---- | ----- | ----- | ------ | ----- |
 | Manage Members | Register Project Members (ADMIN) | O |   |  |  |
-|  | Delete Project Members (Admin) | O |  |  | |  
+|  | Delete Project Members (ADMIN) | O |  |  | |  
 |  | Register Project Members (MEMBER) | O |  |  | |  
 |  | Delete Project Members (MEMBER) | O |  |  | |  
 |  | Register Project Members (Billing Viewer ADMIN) | O |  |  |   |
