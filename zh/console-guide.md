@@ -1,97 +1,93 @@
-## TOAST > 콘솔 사용 가이드
-콘솔은 TOAST 서비스를 이용하기 위한 관리툴과 작업창의 역할을 합니다.
-TOAST 서비스를 이용하기 위한 콘솔에서의 기본적인 설정과 사용 가이드를 제공합니다.
+## TOAST > Console User Guide
+The console serves as management tool and window for the use of TOAST services.
+Basic console settings and its user guide are provided as below to use TOAST Service.
 
-TOAST Console 은 아래와 같은 기능을 제공합니다.
+TOAST Console provides the following functions:
 
-- 서비스를 이용하기 위한 기본 정보 관리 (조직, 프로젝트)
-- 서비스 활성화 / 비활성화
-- 서비스를 이용하는 멤버 관리
-- 결제 정보 제공
+- Basic information management to use the service (e.g. organizations, or projects)
+- Enable/Disable Service
+- Manage members who use the service
+- Provide payment information
 
-## 조직 관리
+## Organization Management
 
-조직은 TOAST 서비스를 효율적으로 사용하고 관리하기 위해 만들어진 그룹입니다.
-조직에서는 동일한 서비스 정책을, 사용자에게 공유하여 사용할 수 있습니다.
-조직을 통해서 다양한 TOAST 서비스를 효율적으로 사용할 수 있습니다.
+Organization refers to a group which is made to efficiently use and manage TOAST Service.
+In an organization, same service policy can be shared with users.
+It helps to make use of TOAST Service more efficiently.  
 
-### 조직 관리 정책
+### Organization Management Policy
 
-#### 조직 생성
-- TOAST 서비스를 이용하기 위해서는 조직을 생성해야 합니다.
-- 조직은 개인 / 사업자 회원 모두 생성 할 수 있습니다.
-- 조직을 생성하는 회원은 자동으로 조직의 OWNER 가 됩니다.
-- 조직을 생성하기 위해서는 회원의 결제수단이 반드시 등록이 되어 있어야 합니다.
-- 조직은 조직명 / 도메인 정보를 관리합니다.
-- 조직의 도메인 정보는 서비스에서 사용해야 하는 정보로, Unique 해야 합니다.
-#### 조직 서비스
-조직이 생성이 되면, 서비스를 선택 할 수 있습니다.
-조직 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
+#### Create Organizations
+- An organization should be created to use TOAST Service.
+- Both personal and business members can create organizations.
+- Any member who creates an organization automatically becomes the OWNER of his organization.
+- Member’s payment method is required to create an organization.
+- Organization is in charge of its name and domain information.
+- Domain information of an organization must be unique, as it is required for services.
+#### Organization Services
+After an organization is created, you can select services.
+Following services are available at the level of organization:
 
 - ERP
 - Dooray!
 - Contact Center
-- Bill
 - IDC
 
-#### 조직 멤버
-조직의 멤버는 TOAST.com 회원과 조직 내부 회원으로 구분되어 관리합니다.
+#### Organization Members
+Organization members are classified into members of TOAST.com and insider members of the organization.  
 
-| 구분 | TOAST.com 회원 | 조직 내부 회원(AWS 의 IAM 동일) |
+| Classification | TOAST.com Members | Insider Members of Organization (same as IAM of AWS) |
 | :--- | :----------- | :------- |
-| 정의 | \- 조직 관리를 위한 멤버<br>\- TOAST 이용약관에 동의한 TOAST 회원으로 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>\- TOAST 서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 TOAST 회원으로 존재 | \- 서비스 이용을 위한 멤버<br>\- TOAST 이용약관에 동의하지 않은 멤버<br>\- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
-| 멤버 등록 방법 | \- 조직의 Owner / Admin 이 TOAST ID 를 입력하여 등록 | \- 조직의 Owner / Admin 이 조직내 Unique 한 ID 를 입력하여 등록<br>\- SSO 연동 / API 연동 등을 통하여 등록 |
-| 멤버 권한 | \- 조직 관리를 위한 Action \(조직 생성 / 수정 / 조직 멤버 관리 / 조직 서비스 관리 / 결제 관리\)<br>\- 프로젝트 생성<br>\- 프로젝트 삭제 | \- 조직 서비스 이용 |
+| Definition | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted.| \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
+| Method of Member Registration | \- Owner/Admin of an organization enters TOAST ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
+| Member Authority | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services |
 
-조직 멤버의 ROLE 은 아래와 같습니다.
+Each member of an organization has following roles:
 
 | Action | Role | Owner | Admin | Member | Billing Viewer |
 | ------ | ---- | ----- | ----- | ------ | ----- |
-| 조직 관리 | 조직 생성 | O |  |  ||
-|  | 조직 수정 | O | O |  ||
-|  | 조직 삭제 | O |  |  |  |
-| 멤버 관리 | 조직 멤버 등록 | O | O |  |  |
-|  | 조직 멤버 삭제 | O | O |  |  |
-| 서비스 관리 | 조직 서비스 활성화 | O | O |  |  |
-|  | 조직 서비스 비활성화 | O | O |  |  |
-| 결제 관리 | 청구서 조회 | O |  |  ||
-|  | 이용 현황 | O | O |  | O |
-| 프로젝트 관리 | 프로젝트 생성 | O | O | O |  |
-|  | 프로젝트 삭제(조직의 전체 프로젝트) | O | O |  |  |
-|  | 프로젝트 삭제 (생성한 프로젝트) | O | O | O |  |
+| Manage Organizations | Create Organizations | O | | ||
+| | Modify Organizations | O | O | ||
+| | Delete Organizations | O | | | |
+| Manage Members | Register Organization Members | O | O | | |
+| | Delete Organization Members | O | O | | |
+| Manage Services | Enable Organization Services | O | O | | |
+| |Disable Organization Services | O | O | | |
+| Manage Payment |Query Bills | O | | ||
+| | Status of Service Use | O | O | | O |
+| Manage Projects | Create Projects | O | O | O | |
+| | Delete Projects (all projects of an organization) | O | O | | |
+| | Delete Projects (created projects) | O | O | O | |
 
-#### 조직 삭제
-- 조직 삭제는 조직의 OWNER 만이 할 수 있습니다.
-- 조직을 삭제하기 위해서는 이용하고 있는 서비스를 모두 삭제해야 합니다.
-- 조직 삭제시, 조직의 모든 정보는 삭제되며 복구가 불가능합니다.
+#### Delete Organizations
+- Only the OWNER can delete his organization.
+- All the services currently in use must be deleted first.
+- All information of an organization is to be deleted, along with the deletion of organization, and cannot be recovered.  
 
-### 조직 생성 가이드
+### Guide to Create Organizations
 
-![](http://static.toastoven.net/toast/console_guide/consoleguide_001.png)
-<center>[그림 1] 조직 생성 </center>
+1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
+2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
+3. Click **OK** and organization is completely created.
+4. You can find the organization name just created on top of the console menu
+5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
 
-1) 콘솔 진입하여 상단 메뉴의 "조직을 생성해 주세요." 메시지 옆의 + 버튼을 클릭합니다.
-2) 조직 생성 팝업 창에서 조직명을 입력합니다. 조직명은 한글/영문/특수문자/숫자 모두 사용 가능합니다.
-3) 확인 버튼을 클릭하면 조직 생성이 완료됩니다.
-4) 콘솔 상단 메뉴에 생성된 조직명이 노출이 됩니다.
-5) 설정 버튼을 클릭하여 생성된 조직 정보를 확인 합니다. 조직의 추가정보로 도메인 정보를 입력합니다. 도메인은 TOAST에서 유일한 값으로 설정해야 합니다.  
+## Manage Projects
+A project is created to use TOAST Service, after an organization is created.
+Enable project services to use a project.
+Use and charge services by the project.
 
-## 프로젝트 관리
-프로젝트는 조직 생성 후, TOAST 서비스를 이용하기 위해서 생성합니다.
-프로젝트에서는 프로젝트 서비스를 활성화하여 이용할 수 있습니다.
-프로젝트 서비스는 프로젝트 단위로 이용, 과금합니다.
+### Project Management Policy
+#### Create Projects
+- To create a project, an organization is required.
+- A member who creates a project is entitled ADMIN of the project.
+- Enter the name and description to create a project.
+- Enable project services after a project is created.
+- When collaboration is required, add project members to share the project after it is created.
 
-### 프로젝트 관리 정책
-#### 프로젝트 생성
-- 프로젝트 생성을 위해서는 조직이 생성이 되어야 합니다.
-- 프로젝트 생성하는 회원은 프로젝트의 ADMIN 권한을 가집니다.
-- 프로젝트 생성시, 프로젝트명과 프로젝트 설명을 입력합니다.
-- 프로젝트 생성 후, 프로젝트 서비스를 활성화하여 이용할 수 있습니다.
-- 프로젝트 생성 후, 협업이 필요한 경우 프로젝트 멤버로 추가하여 함께 사용할 수 있습니다.
-
-#### 프로젝트 서비스
-프로젝트가 생성이 되면, 서비스를 선택 할 수 있습니다.
-프로젝트 단위로 활성화 할 수 있는 서비스는 다음과 같습니다.
+#### Project Services
+You can select services, once a project is created.
+Following services can be enabled by each project:
 - Compute
 - Storage
 - Network
@@ -106,66 +102,62 @@ TOAST Console 은 아래와 같은 기능을 제공합니다.
 - Application Service
 - Search
 - Mobile Service
+- Bill
 
-#### 프로젝트 멤버
-프로젝트의 멤버는 TOAST.com 회원입니다. 조직 내부 회원이 프로젝트 멤버로 서비스를 이용할 수 있는 기능은 추후 제공 예정입니다.
-조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
+#### Project Members
+Project members are also members of TOAST.com. Insider members of an organization will be able to use project services with further functions to be provided.
+You can be a project member, if not an organization member.
 
-프로젝트 멤버 ROLE 은 아래와 같습니다.
+Each project member has the following roles:
 
-| Action | Role | Admin | Member | Billing Viewer Admin | Billing Viewer |
+| Action | Role | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
 | ------ | ---- | ----- | ----- | ------ | ----- |
-| Member 관리 | Project Member 등록(Admin) | O |   |  |  |
-|  | Project Member 삭제(Admin) | O |  |  | |  
-|  | Project Member 등록(Member) | O |  |  | |  
-|  | Project Member 삭제(Member) | O |  |  | |  
-|  | Project Member 등록(Billing Viewer Admin) | O |  |  |   |
-|  | Project Member 삭제(Billing Viewer Admin) | O |  |  |   |
-|  | Project Member 등록(Billing Viewer) | O |  | O | |  
-|  | Project Member 삭제(Billing Viewer) | O |  | O | |  
-| 서비스 관리 | 서비스 활성화 | O |  |  | |  
-|  | 서비스 이용 | O | O | | |  
-|  | 서비스 비활성화 | O | | | |  
-| 이용 현황 | 이용 현황 | O | O | O | O |
+| Manage Members | Register Project Members (ADMIN) | O |   |  |  |
+|  | Delete Project Members (ADMIN) | O |  |  | |  
+|  | Register Project Members (MEMBER) | O |  |  | |  
+|  | Delete Project Members (MEMBER) | O |  |  | |  
+|  | Register Project Members (Billing Viewer ADMIN) | O |  |  |   |
+|  | Delete Project Members (Billing Viewer ADMIN) | O |  |  |   |
+|  | Register Project Members (Billing Viewer) | O |  | O | |  
+|  | Delete Project Members (Billing Viewer) | O |  | O | |  
+| Manage Service | Enable Service | O |  |  | |  
+|  | Enable Service | O | O | | |  
+|  | Disable Service | O | | | |  
+| Status of Service Use | Status of Service Use | O | O | O | O |
 
-#### 프로젝트 삭제
-프로젝트에서 이용중인 서비스가 없을 경우에 프로젝트 삭제가 가능합니다.
-프로젝트 삭제시, 프로젝트의 모든 리소스는 삭제되며 복구가 불가능합니다.
-현재까지 이용한 모든 리소스에 대한 이용내역을 즉시 정산하고 삭제할 수 있습니다.
-단, 즉시 결제하지 않고 삭제할 경우 현재까지 이용한 요금 내역은 다음 결제일에 자동 청구됩니다.
+#### Delete Projects
+A project can be deleted if it has no available services.
+All its resources are deleted along with the deletion of a project, and cannot be recovered.
+You can immediately pay for all the resources that have used before deleting a project.
+However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
 
-### 프로젝트 생성 가이드
+### Guide to Create Projects
 
-![](http://static.toastoven.net/toast/console_guide/consoleguide_004.png)
-<center>[그림 4] 프로젝트 생성 </center>
+1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
+2. Enter **Project Name** and **Project Description**.
+3. Click **OK** to create a project.
+4. The project name shows on the console menu when the project is created.
+5. Click project setting to check project information.
 
-1) 조직 생성 후, 새 프로젝트 만들기 버튼이 활성화 됩니다. 해당 버튼을 클릭하여 프로젝트를 생성합니다.
-2) 프로젝트명과 설명을 입력합니다.
-3) 확인 버튼을 클릭하여 프로젝트를 생성합니다.
-4) 프로젝트가 생성이 되면 콘솔의 좌측 메뉴에 프로젝트명이 노출됩니다.
-5) 프로젝트 설정 버튼을 클릭하여 프로젝트 정보를 확인합니다.
+### Guide to Enable Project Service
 
-### 프로젝트 서비스 활성화 가이드
-![](http://static.toastoven.net/toast/console_guide/consoleguide_005.png)
-<center>[그림 5] 프로젝트 서비스 활성화 </center>
+1. Click **Select Services**, after a project is created, to enable services you need
+2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
+3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
 
-1) 프로젝트 생성 후, 서비스 선택 버튼을 클릭하여 프로젝트에서 사용할 서비스를 활성화 합니다.
-2) 서비스 선택 화면에서 서비스를 선택합니다. 서비스 활성화 문의 메세지가 노출됩니다. 서비스 활성화 후, 서비스 이용 할 수 있는 페이지로의 이동 안내 메세지가 노출됩니다.
-3) 활성화 한 서비스 목록을 콘솔 좌측 메뉴에서 확인합니다. 해당 서비스 클릭시 서비스 이용 화면이 노출됩니다.
+## Billing Management
+Supports for TOAST members to check prices and pay bills for TOAST Service.
+Billing management provides bills for the TOAST members who registered payment methods, along with estimated amount of payment and usage information.
+Go to My Profile > Billing Management to check.
 
-## 결제 관리
-TOAST 회원이 TOAST 서비스 이용 요금을 확인하고, 결제를 할 수 있도록 지원합니다.
-결제 관리는 결제수단을 등록한 TOAST 회원의 청구서와 결제예정금액과 사용량 정보를 제공합니다.
-내 정보 보기 > 결제 관리 메뉴에서 확인이 가능합니다.
+Below functions are provided, along with the history of the month’s payment via registered payment method.
+- Immediate Payment: Immediate payment is available on the 15th of every month before automatic payment is processed.  
+- Sales Statement: Sales statement can be retrieved for credit card payments.
+- Tax Invoice: Tax invoices can be retrieved for payment by bank transfers.
 
-결제수단을 통해 해당월에 결제되는 내역과 함께 아래의 기능을 제공합니다.
-- 즉시 결제 : 매월 15일 자동 결제 전에 즉시 결제 기능을 통해 결제가 가능합니다.
-- 매출 전표 : 신용카드로 결제한 경우, 매출 전표 조회 기능을 제공합니다.
-- 세금계산서 : 계좌이체로 결제한 경우, 세금계산서 조회 기능을 제공합니다.
-
-결제관리 청구서에 조회되는 내역은 아래와 같습니다.
-- 이용 금액 : 서비스 사용량과 단가를 계산한 금액
-- 할인 / 할증 금액 : 약정 할인, 관리자 할인 / 할증 등
-- 부가세 : (이용 금액 - 할인 금액 + 할증 금액) 의 10%
-- 연체료 : 최종결제금액 미납시, 해당 금액의 2%
-- 최종결제금액 : (이용 금액 - 할인 금액 + 할증 금액) + 부가세
+Following are included to the bills for retrieval:
+- Charged Amount: Prices for usage amount and service charges
+- Discount/Extra Charges: Discounts by contract, or discount/extra charges by administrators
+- Additional Tax: 10% of (Charged amount- Discount amount + Amount of extra charges)
+- Late Charges: 2% of unpaid amount out of total amount of payment
+- Total Amount of Payment: (Charged amount- Discount amount+ Amount of extra charges) + Additional Tax  
