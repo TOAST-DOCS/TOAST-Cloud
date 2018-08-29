@@ -10,14 +10,13 @@
 iOS 용 TOAST SDK의 구성은 다음과 같습니다.
 
 * [TOAST Logger](./log-collector-ios) SDK
-* [TOAST Crash Reporter](./crash-reporter-ios) SDK
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
 | Framework | CocoaPods Pod Name | Service |
 | --- | --- | --- |
 | ToastLogger | ToastLogger | TOAST Logger |
-| ToastCrash | ToastCrash | TOAST Crash Reporter |
+
 
 ## TOAST SDK를 Xcode 프로젝트에 적용하기
 
@@ -37,8 +36,8 @@ end
 생성된 Workspace를 열어 사용자고자하는 SDK를 Import 합니다.
 
 ```objc
+#import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
-#import <ToastCrash/ToastCrash.h>
 ```
 
 ### 2. 바이너리 다운로드로 TOAST SDK 적용하기
@@ -49,7 +48,7 @@ TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SD
 
 ![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks.png)
 
-TOAST Crash SDK를 사용하기 위해서는 함께 배포되는 CrashReporter.framework도 프로젝트에 추가해야합니다.
+TOAST Logger의 Crash Report 기능을 사용하기 위해서는 함께 배포되는 CrashReporter.framework도 프로젝트에 추가해야합니다.
 
 ![import_external_framework](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_external.png)
 
@@ -79,12 +78,20 @@ CrashReporter.framewor를 직접 다운로드받거나 빌드한 경우에는 Bu
 사용하고자 하는 Framework를 import 합니다.
 
 ```objc
+#import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
-#import <ToastCrash/ToastCrash.h>
 ```
+## info.plist Settings
+project의 info.plist에 다음과 같이 ToastProjectID를 추가합니다.
+```xml
+<key>ToastSDK</key>
+<dict>    
+    <key>ToastProjectID</key>
+    <string>[TOAST_PROJECT_ID]</string>   
+</dict>
+```
+ToastProjectID는 ToastConseold의 프로젝트 설정에서 확인 할 수 있습니다.
 
 ## Using the TOAST Service
 
 * [TOAST Logger](./log-collector-ios) 사용 가이드
-* [TOAST Crash Reporter](./crash-reporter-ios) 사용 가이드
-
