@@ -58,6 +58,14 @@ TOAST Logger의 Crash Report 기능을 사용하기 위해서는 함께 배포�
 
 ![link_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks.png)
 
+
+#### Frameworks Import
+
+"Linked Frameworks and Libraries"에 "AdSupport.framework", "SystemConfiguration.framework", "CoreTelephony.framework"를 추가합니다.
+
+![link_frameworks_all](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_all.png)
+
+
 #### Project Settings
 
 "Build Settings"의 "Other Linker Flags"에 "-lc++"와 "-ObjC" 항목을 추가합니다.
@@ -81,8 +89,8 @@ CrashReporter.framewor를 직접 다운로드받거나 빌드한 경우에는 Bu
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 ```
-## info.plist Settings
-project의 info.plist에 다음과 같이 ToastProjectID를 추가합니다.
+## ToastProjectID Settings
+Xcode Project의 info.plist에 다음과 같이 ToastProjectID를 추가합니다.
 ```xml
 <key>ToastSDK</key>
 <dict>    
@@ -93,6 +101,13 @@ project의 info.plist에 다음과 같이 ToastProjectID를 추가합니다.
 ToastProjectID는 ToastConsole 의 프로젝트설정에서 확인 할 수 있습니다.
 
 ![get_toastProjectID](http://static.toastoven.net/toastcloud/sdk/ios/overview_toast_project_id.png)
+
+
+## 마켓 등록 시 유의사항
+ToastSDK는 광고식별자를 전송하고 있어 마켓 등록시 반드시 광고 식별자(IDFA)를 설정해야 합니다.
+아래 광고 식별자 가이드를 참고하세요.
+
+![IDFA_kokr_S](http://static.toastoven.net/toastcloud/sdk/ios/IDFA_kokr_S.png)
 
 
 ## Using the TOAST Service
