@@ -90,7 +90,10 @@ project의 info.plist에 다음과 같이 ToastProjectID를 추가합니다.
     <string>[TOAST_PROJECT_ID]</string>   
 </dict>
 ```
-ToastProjectID는 ToastConseold의 프로젝트 설정에서 확인 할 수 있습니다.
+ToastProjectID는 ToastConsole 의 프로젝트설정에서 확인 할 수 있습니다.
+
+![get_toastProjectID](http://static.toastoven.net/toastcloud/sdk/ios/overview_toast_project_id.png)
+
 
 ## Using the TOAST Service
 
