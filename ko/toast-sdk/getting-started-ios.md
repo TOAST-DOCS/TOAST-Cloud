@@ -13,14 +13,16 @@ iOS 용 TOAST SDK의 구성은 다음과 같습니다.
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
-| Framework | CocoaPods Pod Name | Service |
+| Service  | Cocoapods Pod Name | Framework |
 | --- | --- | --- |
-| ToastLogger | ToastLogger | TOAST Logger |
+| TOAST 공통 서비스 <br/>(Manatory)  | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework |   
+| Log & Crash | ToastLogger | ToastLogger.framework |
+| 지원하는 모든 서비스| ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework |
 
 
 ## TOAST SDK를 Xcode 프로젝트에 적용하기
 
-### 1. CococaPods을 사용해서 TOAST SDK 적용하기
+### 1. Cococapods을 사용해서 TOAST SDK 적용하기
 
 Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
