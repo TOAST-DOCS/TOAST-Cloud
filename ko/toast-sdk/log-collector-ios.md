@@ -115,23 +115,19 @@ TOAST Logger는 크래시 정보를 로그로 전송하는 기능을 제공합�
 ToastLogger 초기화 시에 함께 활성화되고 사용여부를 설정할 수 있습니다. 
 크래시 로그 전송을 위해 PLCrashReporter를 사용합니다.
 
+
+### CrashReporter 사용 여부 설정
+
+ToastLogger 초기화 시에 사용여부를 설정 할 수 있습니다.
+크래시 로그 전송 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다.
 #### CrashReporter 활성화
-ToastLogger 초기화 시에 함께 활성화됩니다. 
-
 ```objc
-
-// Default Configuration - Crash Reporter Enable
-[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
-
 // CrashReporter Enable Configuration
 ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:YES];
 
 [ToastLogger initWithConfiguration:configuration];
 ```
-
-#### CrashReporter 비활성화
-크래시 로그 전송 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다.
-
+#### CrashReporter 바활성화
 ```objc
 
 // CrashReporter Disable Configuration
