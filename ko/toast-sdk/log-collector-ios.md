@@ -50,31 +50,6 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 ```objc
 [ToastLogger info:@"TOAST Log & Crash Search!"];
 ```
-## UserID 설정하기
-
-UserID를 설정하는 경우 ToastSDK에 사용자 아이디를 설정할 수 있습니다.
-설정한 UserID는 ToastSDK에서 공통으로 사용되며 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
-UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
-
-### UserID API 명세
-
-```objc
-@interface ToastSDK : NSObject
-
-//...
-
-+ (void)setUserID:(NSString *)userID;
-
-//...
-
-@end
-```
-
-### UserID 설정 사용 예
-
-```objc
-[ToastSDK setUserID:@"TOAST-USER"];
-```
 
 ## 사용자 정의 필드 설정하기
 

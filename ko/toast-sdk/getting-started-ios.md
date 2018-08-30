@@ -100,6 +100,32 @@ ToastProjectID는 ToastConsole 의 프로젝트설정에서 확인 할 수 있�
 
 ![get_toastProjectID](http://static.toastoven.net/toastcloud/sdk/ios/overview_toast_project_id.png)
 
+## UserID 설정하기
+
+ToastSDK에 사용자 아이디를 설정할 수 있습니다.
+설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
+
+### UserID API 명세
+
+```objc
+@interface ToastSDK : NSObject
+
+//...
+
++ (void)setUserID:(NSString *)userID;
+
+//...
+
+@end
+```
+
+### UserID 설정 사용 예
+
+```objc
+[ToastSDK setUserID:@"TOAST-USER"];
+```
+
 
 ## 마켓 등록 시 유의사항
 ToastSDK는 광고식별자를 전송하고 있어 마켓 등록시 반드시 광고 식별자(IDFA)를 설정해야 합니다.
