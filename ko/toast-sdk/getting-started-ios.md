@@ -15,9 +15,10 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 
 | Service  | Cocoapods Pod Name | Framework |
 | --- | --- | --- |
-| TOAST 공통 서비스 <br/>(Manatory)  | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework |   
-| Log & Crash | ToastLogger | ToastLogger.framework |
 | 지원하는 모든 서비스| ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework |
+| 공통 서비스 (Manatory)  | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework |  
+| ToastLogger (Log&Crash) | ToastLogger | ToastLogger.framework |
+
 
 
 ## TOAST SDK를 Xcode 프로젝트에 적용하기
