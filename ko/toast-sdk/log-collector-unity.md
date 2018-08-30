@@ -9,9 +9,16 @@
 ## TOAST Logger SDK 초기화
 
 Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+크래시 정보를 Log & Crash Search 웹콘솔에서 분석하기 위해서는 ToastLoggerConfiguration의 EnableCrashReporter를 true로 설정합니다.
 
 ```csharp
 ToastLogger.Initialize("YOUR_PROJECT_KEY", "YOUR_PROJECT_VERSION");
+
+var loggerConfiguration = new ToastLoggerConfiguration();
+loggerConfiguration.ProjectKey = "YOUR_PROJECT_KEY";
+loggerConfiguration.EnableCrashReporter = true;
+
+ToastLogger.Initialize(loggerConfiguration);
 ```
 
 ## 로그 전송하기
@@ -52,29 +59,13 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 });
 ```
 
-## UserID 설정하기
-
-UserID를 설정하는 경우 사용자 아이디를 설정할 수 있습니다.
-설정한 사용자 아이디는 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
-UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
-
-### UserID 설정 API 명세
-```java
-ToastLogger.UserId = userId;
-```
-
-### UserID 설정 사용 예
-```java
-ToastLogger.UserId = "TOAST";
-```
-
 ## 사용자 정의 필드 설정하기
 
 사용자 정의 원하는 필드를 설정합니다. 
 사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
 
 ### 사용자 정의 필드 설정 API 명세
-```java
+```csharp
 ToastLogger.SetUserField(userField, userValue);
 ```
 
@@ -88,11 +79,6 @@ ToastLogger.SetUserField(userField, userValue);
 * 필드명 내에 공백은 "\_" 로 치환됩니다.
 
 ### 사용자 정의 필드 설정 API 사용 예
-```java
+```csharp
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
-
-## 크래시 SDK 사용하기
-
-* [TOAST Crash Reporter > Unity](./crash-reporter-unity) 사용 가이드
-
