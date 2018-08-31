@@ -138,8 +138,7 @@ ToastSdk.DebugMode = true; // or false
 
 * Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
 
-## 하나의 TOAST SDK로 여러 TOAST 서비스 선택하여 이용합니다.
+## Using the TOAST Service
 
 * [TOAST Logger](./log-collector-unity) 사용 가이드
-* [TOAST Crash Reporter](./crash-reporter-unity) 사용 가이드
 
