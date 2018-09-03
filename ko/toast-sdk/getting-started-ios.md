@@ -90,7 +90,6 @@ CrashReporter.framewor를 직접 다운로드받거나 빌드한 경우에는 Bu
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 ```
-
 ## UserID 설정하기
 
 ToastSDK에 사용자 아이디를 설정할 수 있습니다.
@@ -116,3 +115,7 @@ ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아�
 ```objc
 [ToastSDK setUserID:@"TOAST-USER"];
 ```
+
+## Using the TOAST Service
+
+* [TOAST Logger](./log-collector-ios) 사용 가이드
