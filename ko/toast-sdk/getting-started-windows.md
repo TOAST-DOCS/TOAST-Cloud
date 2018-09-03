@@ -9,11 +9,13 @@
 
 Android 용 TOAST SDK의 구성은 다음과 같습니다.
 
-* docs/                                       ; Windows SDK 문서
-* include/toast/                              ; C++ 해더 파일
-* windows-sdk/lib32/                          ; C++ Windows 32bit 라이브러리
-* windows-sdk/lib64/                          ; C++ Windows 64bit 라이브러리
-* windows-sdk-sample/                         ; 샘플 프로젝트
+| Directory | Description | 
+|---|---|
+| docs/ | Windows SDK 문서 |
+| include/toast/ | C++ 해더 파일 |
+| windows-sdk/lib32/ | C++ Windows 32bit 라이브러리 |
+| windows-sdk/lib64/ | C++ Windows 64bit 라이브러리 |
+| windows-sdk-sample/ | 샘플 프로젝트 |
 
 ## TOAST SDK를 Visual Studio 프로젝트에 적용하기
 
@@ -24,7 +26,7 @@ Android 용 TOAST SDK의 구성은 다음과 같습니다.
 3. Linker > General > Additional Library Directories에서 빌드환경(Debug/Release)과 Target Machine(x86, x64)에 따라 라이브러리를 포함 합니다.
 4. Linker > Input > Additional Dependencies에서 빌드환경(Debug/Release)과 Target Machine(x86, x64)에 따라 추가할 lib를 입력합니다.
 
-참고 : https://msdn.microsoft.com/ko-kr/library/ms235636.aspx
+참고 : https://msdn.microsoft.com/ko-kr/library/ms235636.aspx(https://msdn.microsoft.com/ko-kr/library/ms235636.aspx)
 
 ## TOAST SDK 초기화하기
 
