@@ -82,3 +82,30 @@ ToastLogger.SetUserField(userField, userValue);
 ```csharp
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
+
+## Handled Exception 전송하기
+
+TOAST Logger는 일반 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
+이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 Handled로 필터링하여 조회할 수 있습니다. 
+자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
+
+### Handled Exception Log API 명세
+
+```csharp
+// Handled Exception 로그 전송
+var logLevel = ToastLogLevel.ERROR;
+ToastLogger.Report(logLevel, message, exception);
+```
+
+### Handled Exception Log API 사용 예
+
+```csharp
+try
+{
+    doSomethingWrong();
+}catch(Exception e)
+{
+    // Debug, Info, Warn, Error, Fatal 등을 사용할 수 있습니다.
+    ToastLogger.Report(ToastLogLevel.ERROR, "YOUR_MESSAGE", exception);
+}
+```
