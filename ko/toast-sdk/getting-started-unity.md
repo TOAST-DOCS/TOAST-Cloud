@@ -5,6 +5,7 @@
 * Unity 5.3.4 이상
 * Android 4.0.3 이상
 * iOS 8.0 이상
+    * XCode 최신 버전 (버전 9 이상)
 
 ## TOAST SDK의 구성
 
@@ -27,7 +28,7 @@ Unity 용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 |---|---|---|
 | Toast | TOAST SDK의 루트 폴더 | All |
 | Toast/Common | TOAST SDK의 공통 모듈 폴더 | All |
-| Toast/Logger | TOAST Logger 모듈 폴더 | Logger, Crash, Sample |
+| Toast/Logger | TOAST Logger 모듈 폴더 | Logger, Sample |
 | Toast/Sample | SDK 샘플 폴더 | Sample |
 | Plugins | Gradle 빌드를 위한 mainTemplate.gradle이 있는 폴더 | All |
 
@@ -52,7 +53,6 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 
 > (주의) Unity SDK는 현재 Android, iOS만을 지원합니다.
 > Unity Editor에서는 정상동작하지 않습니다. (지원 예정)
-
 
 ## 설정
 

@@ -60,7 +60,7 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 
 ## 사용자 정의 필드 설정하기
 
-사용자 정의 원하는 필드를 설정합니다. 
+원하는 사용자 정의 필드를 설정합니다. 
 사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
 
 ### 사용자 정의 필드 설정 API 명세
@@ -95,14 +95,14 @@ ToastLogger를 초기화하면 모바일 환경에서 크래시가 발생했을 
 var loggerConfiguration = new ToastLoggerConfiguration
 {
     ProjectKey = "YOUR_PROJECT_KEY",
-    EnableCrashReporter = false
+    EnableCrashReporter = false // 크래시 로그 비활성화
 };
 ```
 
 ## Handled Exception 전송하기
 
 TOAST Logger는 일반/크래시 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
-이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 Handled로 필터링하여 조회할 수 있습니다. 
+이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 "Handled"로 필터링하여 조회할 수 있습니다. 
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
 ### Handled Exception Log API 명세
