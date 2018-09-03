@@ -12,11 +12,10 @@ Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 크래시 정보를 Log & Crash Search 웹콘솔에서 분석하기 위해서는 ToastLoggerConfiguration의 EnableCrashReporter를 true로 설정합니다.
 
 ```csharp
-ToastLogger.Initialize("YOUR_PROJECT_KEY", "YOUR_PROJECT_VERSION");
-
-var loggerConfiguration = new ToastLoggerConfiguration();
-loggerConfiguration.ProjectKey = "YOUR_PROJECT_KEY";
-loggerConfiguration.EnableCrashReporter = true;
+var loggerConfiguration = new ToastLoggerConfiguration
+{
+    ProjectKey = "YOUR_PROJECT_KEY"
+};
 
 ToastLogger.Initialize(loggerConfiguration);
 ```
@@ -83,9 +82,26 @@ ToastLogger.SetUserField(userField, userValue);
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
 
+## 크래시 로그 수집
+
+ToastLogger를 초기화하면 모바일 환경에서 크래시가 발생했을 경우, 자동으로 크래시 로그가 전송됩니다.
+크래시 로그 전송을 비활성화하고 싶은 경우 아래와 같이 ToastLoggerConfiguration 객체의 EnableCrashReporter 프로퍼티를 false 로 설정하면 됩니다.
+각 플랫폼별 크래시 로그에 대한 정보는 아래 링크를 확인하면 됩니다.
+
+- [Android 크래시 로그 수집](./log-collector-android/#_5)
+- [iOS 크래시 로그 수집](./log-collector-ios/#_5)
+
+```csharp
+var loggerConfiguration = new ToastLoggerConfiguration
+{
+    ProjectKey = "YOUR_PROJECT_KEY",
+    EnableCrashReporter = false
+};
+```
+
 ## Handled Exception 전송하기
 
-TOAST Logger는 일반 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
+TOAST Logger는 일반/크래시 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
 이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 Handled로 필터링하여 조회할 수 있습니다. 
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
