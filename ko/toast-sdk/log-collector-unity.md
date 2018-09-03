@@ -5,11 +5,11 @@
 1\. [Install the TOAST SDK](./getting-started-unity)
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+4\. [TOAST SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
 
 ## TOAST Logger SDK 초기화
 
 Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
-크래시 정보를 Log & Crash Search 웹콘솔에서 분석하기 위해서는 ToastLoggerConfiguration의 EnableCrashReporter를 true로 설정합니다.
 
 ```csharp
 var loggerConfiguration = new ToastLoggerConfiguration
