@@ -90,18 +90,6 @@ CrashReporter.framewor를 직접 다운로드받거나 빌드한 경우에는 Bu
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 ```
-## ToastProjectID Settings
-Xcode Project의 info.plist에 다음과 같이 ToastProjectID를 추가합니다.
-```xml
-<key>ToastSDK</key>
-<dict>    
-    <key>ToastProjectID</key>
-    <string>[TOAST_PROJECT_ID]</string>   
-</dict>
-```
-ToastProjectID는 ToastConsole 의 프로젝트설정에서 확인 할 수 있습니다.
-
-![get_toastProjectID](http://static.toastoven.net/toastcloud/sdk/ios/overview_toast_project_id.png)
 
 ## UserID 설정하기
 
@@ -128,15 +116,3 @@ ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아�
 ```objc
 [ToastSDK setUserID:@"TOAST-USER"];
 ```
-
-
-## 마켓 등록 시 유의사항
-ToastSDK는 광고식별자를 전송하고 있어 마켓 등록시 반드시 광고 식별자(IDFA)를 설정해야 합니다.
-아래 광고 식별자 가이드를 참고하세요.
-
-![IDFA_kokr_S](http://static.toastoven.net/toastcloud/sdk/ios/IDFA_kokr_S.png)
-
-
-## Using the TOAST Service
-
-* [TOAST Logger](./log-collector-ios) 사용 가이드
