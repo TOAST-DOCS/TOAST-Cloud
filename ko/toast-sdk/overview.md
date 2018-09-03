@@ -59,3 +59,4 @@ Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합�
 * [TOAST Logger > Android](./log-collector-android) 사용 가이드
 * [TOAST Logger > iOS](./log-collector-ios) 사용 가이드
 * [TOAST Logger > Unity](./log-collector-unity) 사용 가이드
+* [TOAST Logger > Windows](./log-collector-windows) 사용 가이드
