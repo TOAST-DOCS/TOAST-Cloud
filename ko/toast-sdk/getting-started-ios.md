@@ -59,14 +59,6 @@ TOAST Logger의 Crash Report 기능을 사용하기 위해서는 함께 배포�
 
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete.png)
 
-#### Frameworks Import
-
-"Linked Frameworks and Libraries"에 "AdSupport.framework"를 추가합니다.
-
-![link_adsupport](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_adsupport.png)
-
-![link_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks.png)
-
 #### Project Settings
 
 "Build Settings"의 "Other Linker Flags"에 "-lc++"와 "-ObjC" 항목을 추가합니다.
