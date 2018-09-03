@@ -70,7 +70,7 @@ _logger->getUserId();
 * getUserId
     * 현재 설정되어있는 사용자 아이디를 가지고 옵니다.
 
-## 하나의 TOAST SDK로 여러 TOAST 서비스 선택하여 이용합니다.
+## TOAST Service 사용하기
 
 * [TOAST Logger](./log-collector-windows) 사용 가이드
 

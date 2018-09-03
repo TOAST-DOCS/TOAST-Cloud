@@ -15,7 +15,9 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 
 | Gradle Dependency | Service |
 | --- | --- |
-| com.toast.android:toast-logger:0.9.0 | TOAST Logger |
+| com.toast.android:toast-common:0.9.0 | TOAST Common |
+| com.toast.android:toast-core:0.9.0 | TOAST Core |
+| com.toast.android:toast-logger:0.9.0 | TOAST Logger (Log & Crash) |
 
 ## TOAST SDK를 Android Studio 프로젝트에 적용하기
 
@@ -71,7 +73,7 @@ public class YourApplication extends Application {
 }
 ```
 
-## 하나의 TOAST SDK로 여러 TOAST 서비스 선택하여 이용합니다.
+## TOAST Service 사용하기
 
 * [TOAST Logger](./log-collector-android) 사용 가이드
 
