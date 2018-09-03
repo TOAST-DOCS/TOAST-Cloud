@@ -53,6 +53,47 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 > (주의) Unity SDK는 현재 Android, iOS만을 지원합니다.
 > Unity Editor에서는 정상동작하지 않습니다. (지원 예정)
 
+
+## 설정
+
+### Android
+
+#### Gradle Build 설정하기
+
+* TOAST SDK는 안드로이드 빌드시 Gradle 빌드를 사용합니다.
+
+##### Gradle 빌드 설정 방법
+1. File > Build Settings > Android 선택
+2. Build System을 Gradle (New) 로 선택
+3. Build
+    - Signing 관련 에러가 발생할 경우 Development Build 옵션을 On 하고 빌드를 진행하면 됩니다.
+
+### iOS
+
+#### Build Settings 설정하기
+
+* Unity 의 iOS 빌드 설정에는 TOAST SDK가 서버로 로그를 전송하는데 영향을 주는 몇가지 설정들이 있습니다.
+* 이 설정들의 효과를 간략히 설명하고 TOAST SDK의 권장 설정에 대해 설명합니다.
+
+| 메뉴 | 목록 | 설정 | 권장 설정 |
+| --- | --- | --- | ----- |
+| Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit |
+| Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API | Disabled |
+| Edit > Project Settings > Player | Other Settings | Script Call Optimization | Slow and Safe |
+
+##### On .Net UnhandledException
+
+* On .Net UnhandledException를 Crash로 설정할 경우 예외 발생 시, 즉시 앱이 종료됩니다. 
+* Silent Exit로 설정해야 Unity Exceptoin을 캡처할 수 있습니다.
+
+##### Enable CrashReport API
+
+* Unity CrashReporter API를 활성화 합니다. Toast Crash SDK를 사용하는 경우 Disabled로 설정합니다.
+
+##### Script Call Optimization
+
+* Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
+
 ## TOAST SDK 초기화 하기
 
 TOAST SDK 사용을 위한 초기화를 최초 Scene의 컴포넌트 중 하나의 Start 에서 수행합니다.
@@ -97,46 +138,6 @@ ToastSdk.DebugMode = true; // or false
 ```
 
 > (주의) 게임을 릴리즈할 경우, 반드시 디버그 모드를 비활성화 해야 합니다.
-
-## 설정
-
-### Android
-
-#### Gradle Build 설정하기
-
-* TOAST SDK는 안드로이드 빌드시 Gradle 빌드를 사용합니다.
-
-##### Gradle 빌드 설정 방법
-1. File > Build Settings > Android 선택
-2. Build System을 Gradle (New) 로 선택
-3. Build
-    - Signing 관련 에러가 발생할 경우 Development Build 옵션을 On 하고 빌드를 진행하면 됩니다.
-
-### iOS
-
-#### Build Settings 설정하기
-
-* Unity 의 iOS 빌드 설정에는 TOAST SDK가 서버로 로그를 전송하는데 영향을 주는 몇가지 설정들이 있습니다.
-* 이 설정들의 효과를 간략히 설명하고 TOAST SDK의 권장 설정에 대해 설명합니다.
-
-| 메뉴 | 목록 | 설정 | 권장 설정 |
-| --- | --- | --- | ----- |
-| Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit |
-| Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API | Disabled |
-| Edit > Project Settings > Player | Other Settings | Script Call Optimization | Slow and Safe |
-
-##### On .Net UnhandledException
-
-* On .Net UnhandledException를 Crash로 설정할 경우 예외 발생 시, 즉시 앱이 종료됩니다. 
-* Silent Exit로 설정해야 Unity Exceptoin을 캡처할 수 있습니다.
-
-##### Enable CrashReport API
-
-* Unity CrashReporter API를 활성화 합니다. Toast Crash SDK를 사용하는 경우 Disabled로 설정합니다.
-
-##### Script Call Optimization
-
-* Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
 
 ## Using the TOAST Service
 
