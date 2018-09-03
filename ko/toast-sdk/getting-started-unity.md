@@ -139,7 +139,7 @@ ToastSdk.DebugMode = true; // or false
 
 > (주의) 게임을 릴리즈할 경우, 반드시 디버그 모드를 비활성화 해야 합니다.
 
-## Using the TOAST Service
+## TOAST Service 사용하기
 
 * [TOAST Logger](./log-collector-unity) 사용 가이드
 
