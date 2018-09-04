@@ -9,6 +9,8 @@
 
 Android 용 TOAST SDK의 구성은 다음과 같습니다.
 
+* TOAST Common SDK
+* TOAST Core SDK
 * [TOAST Logger](./log-collector-android) SDK
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
@@ -28,7 +30,7 @@ build.gradle 파일에 TOAST SDK에 대한 종속성을 추가합니다.
 ```groovy
 dependencies {
   // ...
-  compile 'com.toast.android:toast-sdk:0.9.0'
+  implementation 'com.toast.android:toast-sdk:0.9.0'
   // ...
 }
 ```
@@ -46,31 +48,32 @@ public class YourApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // ...
-
         // Initialize TOAST SDK
         ToastSdk.initialize(getApplicationContext());
+        // ...
     }
 }
 ```
 
-## TOAST SDK 사용자 추가
-TOAST SDK는 UserID 설정을 통해 로그를 전송하는 사용자를 식별할 수 있습니다.
+## UserID 설정하기
+
+ToastSDK에 사용자 아이디를 설정할 수 있습니다.
+설정한 사용자 아이디는 TOAST SDK의 각 모듈에서 다양한 용도로 사용하게 됩니다.
+예를 들어 TOAST Logger 에서는 설정한 사용자 아이디를 로그 필드에 넣어서 함께 전송합니다.
+따라서 설정한 사용자 아이디를 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
+
+### UserID API 명세
 
 ```java
-public class YourApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        // ...
+// ToastSdk.class
+public static void setUserId(String userId);
+```
 
-        // Set UserID
-        ToastSdk.setUserId("user_identifier");
+### UserID 설정 사용 예
 
-        // Initialize TOAST SDK
-        ToastSdk.initialize(getApplicationContext());
-    }
-}
+```java
+// Set UserID
+ToastSdk.setUserId("user_identifier");
 ```
 
 ## TOAST Service 사용하기
