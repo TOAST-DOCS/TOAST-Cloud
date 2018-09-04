@@ -5,7 +5,7 @@
 * Unity 5.3.4 이상
 * Android 4.0.3 이상
 * iOS 8.0 이상
-    * XCode 최신 버전 (버전 9 이상)
+* XCode 최신 버전 (버전 9 이상)
 
 ## TOAST SDK의 구성
 
