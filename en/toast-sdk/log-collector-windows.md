@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Logger > Android
+## TOAST > TOAST SDK Guide > TOAST Logger > Windows
 
 ## Prerequisites
 

@@ -32,7 +32,7 @@ Unity 용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 | Toast/Sample | SDK 샘플 폴더 | Sample |
 | Plugins | Gradle 빌드를 위한 mainTemplate.gradle이 있는 폴더 | All |
 
-## 프로젝트에 Unity package 추가하기
+## TOAST SDK를 Unity 프로젝트에 적용하기
 
 아래의 링크에서 TOAST SDK Unity Package를 내려받습니다.
 
