@@ -5,23 +5,20 @@
 * Unity 5.3.4 이상
 * Android 4.0.3 이상
 * iOS 8.0 이상
+    * XCode 최신 버전 (버전 9 이상)
 
 ## TOAST SDK의 구성
 
 Unity 용 TOAST SDK의 구성은 다음과 같습니다.
 
 * [TOAST Logger](./log-collector-unity) SDK
-* [TOAST Crash Reporter](./crash-reporter-unity) SDK
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
 | Unity package | Service |
 | --- | --- |
 | TOAST-Logger-UnityPlugin.unitypackage | TOAST Logger |
-| TOAST-Crash-UnityPlugin.unitypackage | TOAST Crash Reporter |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
-
-> TOAST-Crash-UnityPlugin 는 Logger에 의존하며, Logger 코드가 함께 포함되어 있습니다.
 
 ### Unity package 구조
 
@@ -31,12 +28,11 @@ Unity 용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 |---|---|---|
 | Toast | TOAST SDK의 루트 폴더 | All |
 | Toast/Common | TOAST SDK의 공통 모듈 폴더 | All |
-| Toast/Logger | TOAST Logger 모듈 폴더 | Logger, Crash, Sample |
-| Toast/Crash | TOAST Crash Reporter 모듈 폴더 | Crash, Sample |
+| Toast/Logger | TOAST Logger 모듈 폴더 | Logger, Sample |
 | Toast/Sample | SDK 샘플 폴더 | Sample |
 | Plugins | Gradle 빌드를 위한 mainTemplate.gradle이 있는 폴더 | All |
 
-## 프로젝트에 Unity package 추가하기
+## TOAST SDK를 Unity 프로젝트에 적용하기
 
 아래의 링크에서 TOAST SDK Unity Package를 내려받습니다.
 
@@ -98,8 +94,52 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 
 * Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
 
-## 하나의 TOAST SDK로 여러 TOAST 서비스 선택하여 이용합니다.
+## TOAST SDK 초기화 하기
+
+TOAST SDK 사용을 위한 초기화를 최초 Scene의 컴포넌트 중 하나의 Start 에서 수행합니다.
+
+> 초기화를 하지 않고 다른 API를 호출할 경우, 정상동작하지 않습니다.
+
+```csharp
+public class GameStartBehaviour : MonoBehaviour
+{
+    void Start()
+    {
+        ToastSdk.Initialize();
+    }
+}
+```
+
+## UserID 설정하기
+
+UserID를 설정하는 경우 사용자 아이디를 설정할 수 있습니다.
+설정한 사용자 아이디는 TOAST SDK의 각 모듈에서 다양한 용도로 사용하게 됩니다.
+예를 들어 TOAST Logger 에서는 설정한 사용자 아이디를 로그 필드에 넣어서 함께 전송합니다.
+따라서 설정한 사용자 아이디를 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
+
+### UserID 설정 API 명세
+```csharp
+ToastSdk.UserId = userId;
+```
+
+### UserID 설정 사용 예
+```csharp
+ToastSdk.UserId = "TOAST";
+```
+
+## 디버그 모드 설정하기
+
+TOAST SDK의 내부 로그 확인을 위해서 디버그 모드를 설정할 수 있습니다.
+TOAST SDK 문의를 하실 경우, 디버그 모드를 활성화해서 전달해주시면 빠른 지원을 받을 수 있습니다.
+
+### 디버그 모드 설정 API 명세
+```csharp
+ToastSdk.DebugMode = true; // or false
+```
+
+> (주의) 게임을 릴리즈할 경우, 반드시 디버그 모드를 비활성화 해야 합니다.
+
+## TOAST Service 사용하기
 
 * [TOAST Logger](./log-collector-unity) 사용 가이드
-* [TOAST Crash Reporter](./crash-reporter-unity) 사용 가이드
 

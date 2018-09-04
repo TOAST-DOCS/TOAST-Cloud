@@ -1,37 +1,10 @@
 ## TOAST > TOAST SDK Guide > Release Notes > Android
 
-## 2018.01.10
+## 0.9.0 (2018.09.04)
 
-### Android
+### TOAST Logger
 
+#### 추가 사항
 
-
-## 2017.12.27
-
-### Android
-
-
-
-## 2017.12.26
-
-### Android
-
-
-### iOS
-
-
-
-## 2017.12.20
-
-### Android
-
-
-
-### iOS
-
-
-
-## 2017.11.30
-
-### iOS
+* 신규 기능 추가
 

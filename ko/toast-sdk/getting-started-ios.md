@@ -10,18 +10,20 @@
 iOS 용 TOAST SDK의 구성은 다음과 같습니다.
 
 * [TOAST Logger](./log-collector-ios) SDK
-* [TOAST Crash Reporter](./crash-reporter-ios) SDK
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
-| Framework | CocoaPods Pod Name | Service |
+| Service  | Cocoapods Pod Name | Framework |
 | --- | --- | --- |
-| ToastLogger | ToastLogger | TOAST Logger |
-| ToastCrash | ToastCrash | TOAST Crash Reporter |
+| All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework |
+| Manatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework |  
+| ToastLogger (Log&Crash) | ToastLogger | ToastLogger.framework |
+
+
 
 ## TOAST SDK를 Xcode 프로젝트에 적용하기
 
-### 1. CococaPods을 사용해서 TOAST SDK 적용하기
+### 1. Cococapods을 사용해서 TOAST SDK 적용하기
 
 Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
@@ -37,8 +39,8 @@ end
 생성된 Workspace를 열어 사용자고자하는 SDK를 Import 합니다.
 
 ```objc
+#import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
-#import <ToastCrash/ToastCrash.h>
 ```
 
 ### 2. 바이너리 다운로드로 TOAST SDK 적용하기
@@ -49,7 +51,7 @@ TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SD
 
 ![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks.png)
 
-TOAST Crash SDK를 사용하기 위해서는 함께 배포되는 CrashReporter.framework도 프로젝트에 추가해야합니다.
+TOAST Logger의 Crash Report 기능을 사용하기 위해서는 함께 배포되는 CrashReporter.framework도 프로젝트에 추가해야합니다.
 
 ![import_external_framework](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_external.png)
 
@@ -57,7 +59,7 @@ TOAST Crash SDK를 사용하기 위해서는 함께 배포되는 CrashReporter.f
 
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete.png)
 
-![link_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks.png)
+![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_noAdSupport.png)
 
 #### Project Settings
 
@@ -79,12 +81,64 @@ CrashReporter.framewor를 직접 다운로드받거나 빌드한 경우에는 Bu
 사용하고자 하는 Framework를 import 합니다.
 
 ```objc
+#import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
-#import <ToastCrash/ToastCrash.h>
 ```
 
-## Using the TOAST Service
+## UserID 설정하기
+
+ToastSDK에 사용자 아이디를 설정할 수 있습니다.
+설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
+
+### UserID API 명세
+
+```objc
+@interface ToastSDK : NSObject
+
+//...
+
++ (void)setUserID:(NSString *)userID;
+
+//...
+
+@end
+```
+
+### UserID 설정 사용 예
+
+```objc
+[ToastSDK setUserID:@"TOAST-USER"];
+```
+## 디버그 모드 설정하기
+
+TOAST SDK의 내부 로그 확인을 위해서 디버그 모드를 설정할 수 있습니다.
+TOAST SDK 문의를 하실 경우, 디버그 모드를 활성화해서 전달해주시면 빠른 지원을 받을 수 있습니다.
+
+### 디버그 모드 설정 API 명세
+
+
+```objc
+@interface ToastSDK : NSObject
+
+//...
+
++ (void)setDebugMode:(BOOL)debugMode;
+
+//...
+
+@end
+```
+
+### 디버그 모드 설정 사용 예
+
+```objc
+// Set Debug Mode.
+[ToastSDK setDebugMode:YES];// or NO
+```
+
+> (주의) 앱을 릴리즈할 경우, 반드시 디버그 모드를 비활성화 해야 합니다.
+
+## TOAST Service 사용하기
 
 * [TOAST Logger](./log-collector-ios) 사용 가이드
-* [TOAST Crash Reporter](./crash-reporter-ios) 사용 가이드
-

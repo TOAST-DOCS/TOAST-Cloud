@@ -50,24 +50,6 @@ static void fatal(String message);
 ToastLogger.warn("TOAST Log & Crash Search!");
 ```
 
-## UserID 설정하기
-
-UserID를 설정하는 경우 사용자 아이디를 설정할 수 있습니다.
-설정한 사용자 아이디는 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
-UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
-
-### UserID API 명세
-
-```java
-static void setUserId(String userId);
-```
-
-### UserID 설정 사용 예
-
-```java
-ToastLogger.setUserId("TOAST");
-```
-
 ## 사용자 정의 필드 설정하기
 
 사용자 정의 원하는 필드를 설정합니다. 
@@ -131,7 +113,66 @@ ToastLogger.setListener(new ToastLoggerListener() {
 });
 ```
 
-## 크래시 SDK 사용하기
+## 크래시 로그 수집
 
-* [TOAST Crash Reporter > Android](./crash-reporter-android) 사용 가이드
+TOAST Logger가 활성화되면, Uncaught Exception을 사용하여 앱에서 예상치 못한 크래시가 발생한 경우 자동으로 크래시 정보를 서버에 기록합니다.
+
+### Handled Exception API 사용하기
+
+Android 플랫폼의 경우 try/catch 구문에서 예외와 관련된 내용을 TOAST Logger의 Handled Exception API를 사용하여 전송할 수 있습니다. 
+이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 Handled로 필터링하여 조회할 수 있습니다.
+자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
+
+### Handled Exception Log API 명세
+
+```java
+// 예외 정보 전송
+static void report(@NonNull String message, @NonNull Throwable throwable);
+
+// 사용자 필드와 함께 예외 정보 전송
+static void report(@NonNull String message,
+				   @NonNull Throwable throwable,
+				   @Nullable Map<String, Object> userFields);
+
+// ExceptionLog를 사용한 예외 정보 전송
+static void report(@NonNull ExceptionLog log)
+```
+
+### 사용 예
+
+```java
+try {
+    // User Codes...
+} catch (Exception e) {
+	Map<String, Object> userFields = new HashMap<>();
+	ToastLogger.report("message", e, userFields);
+}
+```
+
+## 크래시 발생 시점에 추가 정보를 설정하여 전송하기
+
+크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
+setUserField는 크래시 시점과 관계없이 아무 때나 설정할 수 있고, setDataAdapter의 경우 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
+
+### setDataAdapter API 명세
+
+```java
+static void setDataAdapter(CrashDataAdapter adapter);
+```
+* CrashDataAdapter의 getUserFields 함수를 통해 리턴하는 Map 자료구조의 키값은 위에서 설명한 setUserField의 "field"값과 동일한 제약 조건을 갖습니다.
+
+### setDataAdapter 사용 예
+
+```java
+ToastLogger.setDataAdapter(new CrashDataAdapter() {
+    @Override
+    public Map<String, Object> getUserFields() {
+        Map<String, Object> userFields = new HashMap<>();
+        userFields.put("UserField", "UserValue");
+        return userFields;
+    }
+});
+```
+
+
 
