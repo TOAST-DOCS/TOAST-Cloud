@@ -76,6 +76,25 @@ public static void setUserId(String userId);
 ToastSdk.setUserId("user_identifier");
 ```
 
+## 디버그 모드 설정하기
+
+TOAST SDK의 내부 로그 확인을 위해서 디버그 모드를 설정할 수 있습니다.
+TOAST SDK 문의를 하실 경우, 디버그 모드를 활성화해서 전달해주시면 빠른 지원을 받을 수 있습니다.
+
+### 디버그 모드 설정 API 명세
+
+```java
+public static void setDebugMode(boolean debug);
+```
+
+### 디버그 모드 설정 사용 예
+
+```java
+ToastSdk.setDebugMode(true); // or false
+```
+
+> (주의) 앱을 릴리즈할 경우, 반드시 디버그 모드를 비활성화 해야 합니다.
+
 ## TOAST Service 사용하기
 
 * [TOAST Logger](./log-collector-android) 사용 가이드
