@@ -110,6 +110,34 @@ ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아�
 ```objc
 [ToastSDK setUserID:@"TOAST-USER"];
 ```
+## 디버그 모드 설정하기
+
+TOAST SDK의 내부 로그 확인을 위해서 디버그 모드를 설정할 수 있습니다.
+TOAST SDK 문의를 하실 경우, 디버그 모드를 활성화해서 전달해주시면 빠른 지원을 받을 수 있습니다.
+
+### 디버그 모드 설정 API 명세
+
+
+```objc
+@interface ToastSDK : NSObject
+
+//...
+
++ (void)setDebugMode:(BOOL)debugMode;
+
+//...
+
+@end
+```
+
+### 디버그 모드 설정 사용 예
+
+```objc
+// Set Debug Mode.
+[ToastSDK setDebugMode:YES];// or NO
+```
+
+> (주의) 앱을 릴리즈할 경우, 반드시 디버그 모드를 비활성화 해야 합니다.
 
 ## TOAST Service 사용하기
 
