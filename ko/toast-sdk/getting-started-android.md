@@ -65,14 +65,14 @@ ToastSDK에 사용자 아이디를 설정할 수 있습니다.
 ### UserID API 명세
 
 ```java
-// ToastSdk.class
+// ToastSdk class
 public static void setUserId(String userId);
 ```
 
 ### UserID 설정 사용 예
 
 ```java
-// Set UserID
+// Set User ID.
 ToastSdk.setUserId("user_identifier");
 ```
 
@@ -84,12 +84,14 @@ TOAST SDK 문의를 하실 경우, 디버그 모드를 활성화해서 전달해
 ### 디버그 모드 설정 API 명세
 
 ```java
+// ToastSdk class
 public static void setDebugMode(boolean debug);
 ```
 
 ### 디버그 모드 설정 사용 예
 
 ```java
+// Set Debug Mode.
 ToastSdk.setDebugMode(true); // or false
 ```
 
