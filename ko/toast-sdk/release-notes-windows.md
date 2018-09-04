@@ -1,6 +1,6 @@
-## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Unity
+## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Windows
 
-## 0.9.0 (2018.09.04)
+## 0.9.0.12
 
 ### TOAST Logger
 

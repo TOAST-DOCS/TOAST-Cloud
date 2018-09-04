@@ -50,31 +50,6 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 ```objc
 [ToastLogger info:@"TOAST Log & Crash Search!"];
 ```
-## UserID 설정하기
-
-UserID를 설정하는 경우 ToastSDK에 사용자 아이디를 설정할 수 있습니다.
-설정한 UserID는 ToastSDK에서 공통으로 사용되며 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
-UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
-
-### UserID API 명세
-
-```objc
-@interface ToastSDK : NSObject
-
-//...
-
-+ (void)setUserID:(NSString *)userID;
-
-//...
-
-@end
-```
-
-### UserID 설정 사용 예
-
-```objc
-[ToastSDK setUserID:@"TOAST-USER"];
-```
 
 ## 사용자 정의 필드 설정하기
 
@@ -112,6 +87,32 @@ UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용
 
 ## 크래시 로그 수집
 TOAST Logger는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
+ToastLogger 초기화 시에 함께 활성화되고 사용여부를 설정할 수 있습니다. 
+크래시 로그 전송을 위해 PLCrashReporter를 사용합니다.
+
+### CrashReporter 사용 여부 설정
+CrashReporter 기능은 기본적으로 ToastLogger를 초기화할 때 함께 활성화됩니다.
+```objc
+[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
+```
+ToastLogger 초기화 시에 사용 여부를 설정할 수 있습니다.
+크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다. 
+
+#### CrashReporter 활성화
+```objc
+// CrashReporter Enable Configuration
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:YES];
+
+[ToastLogger initWithConfiguration:configuration];
+```
+#### CrashReporter 바활성화
+```objc
+
+// CrashReporter Disable Configuration
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:NO];
+
+[ToastLogger initWithConfiguration:configuration];
+```
 
 ## 크래시 발생 시점에 추가 정보를 설정하여 전송하기
 

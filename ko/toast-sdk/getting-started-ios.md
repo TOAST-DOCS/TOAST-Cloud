@@ -13,14 +13,17 @@ iOS 용 TOAST SDK의 구성은 다음과 같습니다.
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
-| Framework | CocoaPods Pod Name | Service |
+| Service  | Cocoapods Pod Name | Framework |
 | --- | --- | --- |
-| ToastLogger | ToastLogger | TOAST Logger |
+| All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework |
+| Manatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework |  
+| ToastLogger (Log&Crash) | ToastLogger | ToastLogger.framework |
+
 
 
 ## TOAST SDK를 Xcode 프로젝트에 적용하기
 
-### 1. CococaPods을 사용해서 TOAST SDK 적용하기
+### 1. Cococapods을 사용해서 TOAST SDK 적용하기
 
 Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
@@ -56,7 +59,7 @@ TOAST Logger의 Crash Report 기능을 사용하기 위해서는 함께 배포�
 
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete.png)
 
-![link_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks.png)
+![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_noAdSupport.png)
 
 #### Project Settings
 
@@ -81,20 +84,33 @@ CrashReporter.framewor를 직접 다운로드받거나 빌드한 경우에는 Bu
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 ```
-## info.plist Settings
-project의 info.plist에 다음과 같이 ToastProjectID를 추가합니다.
-```xml
-<key>ToastSDK</key>
-<dict>    
-    <key>ToastProjectID</key>
-    <string>[TOAST_PROJECT_ID]</string>   
-</dict>
+
+## UserID 설정하기
+
+ToastSDK에 사용자 아이디를 설정할 수 있습니다.
+설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
+
+### UserID API 명세
+
+```objc
+@interface ToastSDK : NSObject
+
+//...
+
++ (void)setUserID:(NSString *)userID;
+
+//...
+
+@end
 ```
-ToastProjectID는 ToastConsole 의 프로젝트설정에서 확인 할 수 있습니다.
 
-![get_toastProjectID](http://static.toastoven.net/toastcloud/sdk/ios/overview_toast_project_id.png)
+### UserID 설정 사용 예
 
+```objc
+[ToastSDK setUserID:@"TOAST-USER"];
+```
 
-## Using the TOAST Service
+## TOAST Service 사용하기
 
 * [TOAST Logger](./log-collector-ios) 사용 가이드
