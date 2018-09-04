@@ -50,9 +50,13 @@ if (_logger != NULL)
 }
 ```
 
-## TOAST SDK 사용자 추가
+## UserID 설정하기
 
-TOAST SDK는 UserID 설정을 통해 로그를 전송하는 사용자를 식별할 수 있습니다.
+ToastSDK에 사용자 아이디를 설정할 수 있습니다.
+설정한 사용자 아이디는 TOAST SDK의 각 모듈에서 다양한 용도로 사용하게 됩니다.
+예를 들어 TOAST Logger 에서는 설정한 사용자 아이디를 로그 필드에 넣어서 함께 전송합니다.
+따라서 설정한 사용자 아이디를 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
+
 
 ```
 
