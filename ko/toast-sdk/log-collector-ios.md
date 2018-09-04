@@ -110,7 +110,7 @@ UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용
 [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
-## 크래시 로그 전송하기
+## 크래시 로그 수집
 TOAST Logger는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
 
 ## 크래시 발생 시점에 추가 정보를 설정하여 전송하기
