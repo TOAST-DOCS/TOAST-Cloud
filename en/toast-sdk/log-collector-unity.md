@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK Guide > TOAST Logger > Unity
+## TOAST > TOAST SDK Guide > TOAST Log & Crash > Unity
 
 ## Prerequisites
 

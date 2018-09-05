@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Logger > Windows
+## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > Windows C++
 
 ## Prerequisites
 

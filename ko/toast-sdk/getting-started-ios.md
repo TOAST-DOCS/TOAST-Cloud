@@ -17,9 +17,7 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 | --- | --- | --- |
 | All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework |
 | Manatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework |  
-| ToastLogger (Log&Crash) | ToastLogger | ToastLogger.framework |
-
-
+| TOAST Log & Crash | ToastLogger | ToastLogger.framework |
 
 ## TOAST SDK를 Xcode 프로젝트에 적용하기
 
@@ -141,4 +139,4 @@ TOAST SDK 문의를 하실 경우, 디버그 모드를 활성화해서 전달해
 
 ## TOAST Service 사용하기
 
-* [TOAST Logger](./log-collector-ios) 사용 가이드
+* [TOAST Log & Crash](./log-collector-ios) 사용 가이드

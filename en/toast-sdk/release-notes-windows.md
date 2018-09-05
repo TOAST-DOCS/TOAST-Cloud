@@ -1,8 +1,8 @@
-## TOAST > TOAST SDK Guide > Release Notes > Windows
+## TOAST > TOAST SDK Guide > Release Notes > Windows C++
 
 ## 0.9.0.12 (2018.09.04)
 
-### TOAST Logger
+### TOAST Log & Crash
 
 #### 추가 사항
 

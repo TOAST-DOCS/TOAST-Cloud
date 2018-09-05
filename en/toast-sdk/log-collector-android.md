@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK Guide > TOAST Logger > Android
+## TOAST > TOAST SDK Guide > TOAST Log & Crash > Android
 
 ## Prerequisites
 

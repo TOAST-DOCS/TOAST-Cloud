@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK Guide > TOAST Logger > Reserved Fields
+## TOAST > TOAST SDK Guide > TOAST Log & Crash > Reserved Fields
 
 ### 예약된 필드 정의
 

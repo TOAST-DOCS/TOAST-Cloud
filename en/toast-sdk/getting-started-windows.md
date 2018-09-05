@@ -1,23 +1,27 @@
-## TOAST > TOAST SDK Guide > Getting Started > Windows
+## TOAST > TOAST SDK Guide > Getting Started > Windows C++
 
 ## 지원 환경
 
 * Windows 7
-* Windows 10 (32bit/64bit)
+* Windows 10
 
 ## TOAST SDK의 구성
 
-Android 용 TOAST SDK의 구성은 다음과 같습니다.
+Windows C++ 용 TOAST SDK의 구성은 다음과 같습니다.
 
 | Directory | Description | 
 |---|---|
 | docs/ | Windows SDK 문서 |
-| include/toast/ | C++ 해더 파일 |
+| include/toast/ | C++ 헤더 파일 |
 | windows-sdk/lib32/ | C++ Windows 32bit 라이브러리 |
 | windows-sdk/lib64/ | C++ Windows 64bit 라이브러리 |
 | windows-sdk-sample/ | 샘플 프로젝트 |
 
 ## TOAST SDK를 Visual Studio 프로젝트에 적용하기
+
+아래의 링크에서 TOAST Windows C++ SDK 를 다운로드 받을 수 있습니다.
+
+- [다운로드](../../../Download/#toast-sdk)
 
 ### 라이브러리 포함하기 
 
@@ -26,7 +30,7 @@ Android 용 TOAST SDK의 구성은 다음과 같습니다.
 3. Linker > General > Additional Library Directories에서 빌드환경(Debug/Release)과 Target Machine(x86, x64)에 따라 라이브러리를 포함 합니다.
 4. Linker > Input > Additional Dependencies에서 빌드환경(Debug/Release)과 Target Machine(x86, x64)에 따라 추가할 lib를 입력합니다.
 
-참고 : https://msdn.microsoft.com/ko-kr/library/ms235636.aspx(https://msdn.microsoft.com/ko-kr/library/ms235636.aspx)
+참고 : [https://msdn.microsoft.com/ko-kr/library/ms235636.aspx](https://msdn.microsoft.com/ko-kr/library/ms235636.aspx)
 
 ## TOAST SDK 초기화하기
 
@@ -53,9 +57,8 @@ if (_logger != NULL)
 ## UserID 설정하기
 
 ToastSDK에 사용자 아이디를 설정할 수 있습니다.
-설정한 사용자 아이디는 TOAST SDK의 각 모듈에서 다양한 용도로 사용하게 됩니다.
-예를 들어 TOAST Logger 에서는 설정한 사용자 아이디를 로그 필드에 넣어서 함께 전송합니다.
-따라서 설정한 사용자 아이디를 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
+설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
 
 
 ```
@@ -76,5 +79,5 @@ _logger->getUserId();
 
 ## TOAST Service 사용하기
 
-* [TOAST Logger](./log-collector-windows) 사용 가이드
+* [TOAST Log & Crash](./log-collector-windows) 사용 가이드
 
