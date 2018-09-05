@@ -154,11 +154,13 @@ _logger->cleareUserField();
 
 ## 크래시 로그 수집
 
-TOAST Logger가 활성화되면, 윈도우즈 어플리케이션에서 예상치 못한 크래시가 발생한 경우 자동으로 크래시 정보를 서버에 기록합니다.
+크래시 리포터(CrashRepoter.exe)는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
+크래시 발생시에 크래시 리포터를 통해서 크래시 정보를 로그로 전송합니다. 
+ToastLogger 초기화 시에 크래시 리포터 사용여부를 설정할 수 있습니다. 
+크래시 리포터 다이얼로그 박스 사용 여부 및 커스텀 메시지를 설정할 수 있습니다. 
+
 
 ### 크래시 로그 활성화 및 크래시 리포터 
-
-
 
 ```
 ...
@@ -171,9 +173,13 @@ ToastLogger* logger = GetToastLogger();
 
 ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
 ...
-loggerConf->enableCrashReporter(true);	// 크래시 리포터 사용 여부 (true: 활성, false: 비활성)
-loggerConf->enableSilenceMode(false);	// 다이얼로그 사용 여부 (true: 다이얼로그 보이지 않음, false: 다이얼로그 보임)
-loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "오류가 발생한 상황과 현상, 예상되는 원인을 기술해주시면 문제 해결에 도움이 됩니다.\n"); // 다이얼로그에 보일 메시지 정의 (정의하지 않으면 기본 메시지가 보이게 됩니다.)
+// 크래시 로그 활성화 여부
+loggerConf->enableCrashReporter(true);	
+// 크래시 리포터 다이얼로그 사용 여부
+loggerConf->enableSilenceMode(false);	
+// 크래시 리포터 다이얼로그에 보일 메시지 정의 
+// (정의하지 않으면 기본 메시지가 보이게 됩니다.)
+loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "오류가 발생한 상황...\n");
 ...
 
 if (_logger != NULL)
