@@ -8,7 +8,7 @@
 
 ## TOAST Logger SDK 초기화
 
-Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
 ```
 ...
@@ -29,6 +29,29 @@ if (_logger != NULL)
     _logger->initialize(loggerConf);
 }
 ```
+
+## UserID 설정하기
+
+ToastSDK에 사용자 아이디를 설정할 수 있습니다.
+설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
+
+
+```
+
+ToastLogger* _logger = GetToastLogger();
+
+_logger->setUserId("userId");
+
+_logger->initialize(loggerConf);
+
+_logger->getUserId();
+```
+
+* setUserId
+    * 사용자 아이디를 설정합니다.
+* getUserId
+    * 현재 설정된 사용자 아이디를 얻어옵니다.
 
 ## 로그 전송하기
 
@@ -143,7 +166,7 @@ void CsampleDlg::OnBnClickedCrash()
 dump_syms sample.pdb > sample.sym
 ```
 
-* 이후 sample.sym을 zip으로 압축하여 콘솔 서버에 업로드 합니다.
+* 이후 sample.sym을 zip으로 압축하여 [콘솔 서버에 업로드](https://alpha-docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_25) 합니다.
     * 콘솔 업로드시 입력하는 버전은 초기화 시, setProjectVersion에 입력한 버전과 동일한 값을 사용해야 합니다.
 
 #### 크래시 발생 시점에 추가 정보를 설정하여 전송하기

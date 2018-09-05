@@ -16,7 +16,7 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 | Service  | Cocoapods Pod Name | Framework |
 | --- | --- | --- |
 | All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework |
-| Manatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework |  
+| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework |  
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework |
 
 ## TOAST SDK를 Xcode 프로젝트에 적용하기
@@ -72,7 +72,7 @@ CrashReporter.framewor를 직접 다운로드받거나 빌드한 경우에는 Bu
 * Project Target - Build Settings - Build Options - Enable Bitcode - "NO"
 
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
-> TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드 받은 CrashReporter.framewor는 bitCode를 지원합니다.
+> TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드 받은 CrashReporter.framework는 bitCode를 지원합니다.
 
 #### import framework 
 

@@ -94,22 +94,22 @@ static void setListener(ToastLoggerListener listener);
 ToastLogger.setListener(new ToastLoggerListener() {
     @Override
     public void onSuccess(LogObject log) {
-        // 로그 전송에 성공하였습니다.
+        // 로그 전송 성공.
     }
 
     @Override
     public void onFiltered(LogObject log, LogFilter filter) {
-        // 로그 필터에 의해 로그가 필터링되었습니다.
+        // Filter 설정에 의해 필터링
     }
 
     @Override
     public void onSaved(LogObject log) {
-        // 네트워크 차단으로 로그가 저장되었습니다.
+        // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
     }
 
     @Override
     public void onError(LogObject log, int errorCode, String errorMessage) {
-        // 전송에 실패하였습니다.
+        // 로그 전송 실패.
     }
 });
 ```

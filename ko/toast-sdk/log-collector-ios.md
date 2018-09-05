@@ -169,7 +169,7 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
 // 로그 전송 실패
 - (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error;
 
-// 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위한 SDK 내부 저장
+// 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
 - (void)toastLogDidSave:(ToastLog *)log;
 
 // Filter 설정에 의해 필터링
@@ -198,7 +198,7 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
       // 로그 전송 실패
 }
 - (void)toastLogDidSave:(ToastLog *)log {
-      // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위한 SDK 내부 저장
+      // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
 }
 
 - (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter {

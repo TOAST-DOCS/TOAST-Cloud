@@ -84,7 +84,7 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 ##### On .Net UnhandledException
 
 * On .Net UnhandledException를 Crash로 설정할 경우 예외 발생 시, 즉시 앱이 종료됩니다. 
-* Silent Exit로 설정해야 Unity Exceptoin을 캡처할 수 있습니다.
+* Silent Exit로 설정해야 Unity Exception을 캡처할 수 있습니다.
 
 ##### Enable CrashReport API
 
