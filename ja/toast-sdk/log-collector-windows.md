@@ -31,30 +31,6 @@ if (_logger != NULL)
 }
 ```
 
-### GDPR 사용
-
-GDPR(General Data Protection Regulation, 유럽 개인정보 보호법)을 사용시에는 아래와 같이 TOAST Logger SDK를 초기화합니다.
-
-```
-...
-#include "toast/ToastLogger.h"
-
-using namespace toast::logger;
-...
-
-ToastLogger* logger = GetToastLogger();
-
-ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
-...
-loggerConf->enableApplyGDPR(true);
-...
-
-if (_logger != NULL)
-{
-    _logger->initialize(loggerConf);
-}
-```
-
 ## UserID 설정하기
 
 ToastSDK에 사용자 아이디를 설정할 수 있습니다.
