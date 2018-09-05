@@ -171,7 +171,7 @@ ToastLogger* logger = GetToastLogger();
 
 ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
 ...
-loggerConf->enableCrashReporter(true);	// 크래쉬 리포터 사용 여부 (true: 활성, false: 비활성)
+loggerConf->enableCrashReporter(true);	// 크래시 리포터 사용 여부 (true: 활성, false: 비활성)
 loggerConf->enableSilenceMode(false);	// 다이얼로그 사용 여부 (true: 다이얼로그 보이지 않음, false: 다이얼로그 보임)
 loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "오류가 발생한 상황과 현상, 예상되는 원인을 기술해주시면 문제 해결에 도움이 됩니다.\n"); // 다이얼로그에 보일 메시지 정의 (정의하지 않으면 기본 메시지가 보이게 됩니다.)
 ...
@@ -185,7 +185,7 @@ if (_logger != NULL)
 ### 크래시 로그 전송 테스트 
 
 * 크래시 로그 전송을 테스트하기 위해서는 실제로 Exception이 일어나야 합니다.
-* 크래시 로그 전송은 enableCrashReporter가 true인 경우 SDK가 자동으로 실행 합니다.
+* 크래시 로그 전송은 enableCrashReporter가 true인 경우 SDK가 자동으로 실행합니다.
 
 ```
 
@@ -210,15 +210,15 @@ void CsampleDlg::OnBnClickedCrash()
     * [dump\_syms\_vc1700 : vs2012](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1700.zip)
     * [dump\_syms\_vc1800 : vs2013](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1800.zip)
     * [dump\_syms\_vc1900 : vs2015](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1900.zip)
-* 명령 프롬프트를 실행시켜 아래와 같은 방식으로 sym 파일을 생성 합니다
-    * sample은 예제 프로젝트의 명칭 입니다.
+* 명령 프롬프트를 실행시켜 아래와 같은 방식으로 sym 파일을 생성합니다.
+    * sample은 예제 프로젝트의 명칭입니다.
 
 ```
 dump_syms sample.pdb > sample.sym
 ```
 
 * 이후 sample.sym을 zip으로 압축하여 [콘솔 서버에 업로드](https://alpha-docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_25) 합니다.
-    * 콘솔 업로드시 입력하는 버전은 초기화 시, setProjectVersion에 입력한 버전과 동일한 값을 사용해야 합니다.
+    * 콘솔 업로드 시 입력하는 버전은 초기화 시, setProjectVersion에 입력한 버전과 동일한 값을 사용해야 합니다.
 
 #### 크래시 발생 시점에 추가 정보를 설정하여 전송하기
 
