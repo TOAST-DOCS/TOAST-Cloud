@@ -27,7 +27,7 @@ Windows C++ 용 TOAST SDK의 구성은 다음과 같습니다.
 
 1. 메뉴바의 Project 탭에서 Properties를 선택합니다.
 2. C/C++ > General > Additional Include Directories에서 Sdk의 헤더파일 경로를 설정합니다.
-3. Linker > General > Additional Library Directories에서 빌드환경(Debug/Release)과 Target Machine(x86, x64)에 따라 라이브러리를 포함 합니다.
+3. Linker > General > Additional Library Directories에서 빌드환경(Debug/Release)과 Target Machine(x86, x64)에 따라 라이브러리를 포함합니다.
 4. Linker > Input > Additional Dependencies에서 빌드환경(Debug/Release)과 Target Machine(x86, x64)에 따라 추가할 lib를 입력합니다.
 
 참고 : [https://msdn.microsoft.com/ko-kr/library/ms235636.aspx](https://msdn.microsoft.com/ko-kr/library/ms235636.aspx)

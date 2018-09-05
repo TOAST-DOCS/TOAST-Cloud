@@ -49,11 +49,11 @@ TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SD
 
 ![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks.png)
 
-TOAST Logger의 Crash Report 기능을 사용하기 위해서는 함께 배포되는 CrashReporter.framework도 프로젝트에 추가해야합니다.
+TOAST Logger의 Crash Report 기능을 사용하기 위해서는 함께 배포되는 CrashReporter.framework도 프로젝트에 추가해야 합니다.
 
 ![import_external_framework](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_external.png)
 
-프로젝트에 다음과 같이 Framework 들이 추가 된 것을 확인합니다.
+프로젝트에 다음과 같이 Framework 들이 추가된 것을 확인합니다.
 
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete.png)
 
