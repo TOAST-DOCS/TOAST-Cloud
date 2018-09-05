@@ -4,7 +4,7 @@
 
 1\. [Install the TOAST SDK](./getting-started-ios)
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log&Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
-3\. Log&Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
 ## TOAST Logger SDK 초기화
 
@@ -85,7 +85,7 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
-## 크래시 로그 전송하기
+## 크래시 로그 수집
 TOAST Logger는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
 ToastLogger 초기화 시에 함께 활성화되고 사용여부를 설정할 수 있습니다. 
 크래시 로그 전송을 위해 PLCrashReporter를 사용합니다.

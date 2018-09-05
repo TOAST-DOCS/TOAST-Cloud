@@ -1,6 +1,6 @@
-## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Windows
+## TOAST > TOAST SDK Guide > Release Notes > Windows
 
-## 0.9.0.12
+## 0.9.0.12 (2018.09.04)
 
 ### TOAST Logger
 
