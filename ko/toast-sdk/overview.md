@@ -39,6 +39,12 @@ TOAST Unity SDK는 Android, iOS 플랫폼을 지원하고 있습니다.
 
 * [Unity 시작하기](./getting-started-unity)
 
+### Windows
+
+TOAST Windows SDK는 Windows 플랫폼을 지원하고 있습니다.
+
+* [Windows 시작하기](./getting-started-windows)
+
 ## TOAST Logger
 
 Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다.
