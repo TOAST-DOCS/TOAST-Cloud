@@ -29,9 +29,9 @@ build.gradle 파일에 TOAST SDK에 대한 종속성을 추가합니다.
 
 ```groovy
 dependencies {
-  // ...
-  implementation 'com.toast.android:toast-sdk:0.9.0'
-  // ...
+    // ...
+    implementation 'com.toast.android:toast-sdk:0.9.0'
+    // ...
 }
 ```
 
@@ -50,7 +50,7 @@ public class YourApplication extends Application {
         super.onCreate();
         // Initialize TOAST SDK
         ToastSdk.initialize(getApplicationContext());
-        // ...
+    // ...
     }
 }
 ```
@@ -99,4 +99,6 @@ ToastSdk.setDebugMode(true); // or false
 ## TOAST Service 사용하기
 
 * [TOAST Log & Crash](./log-collector-android) 사용 가이드
+
+
 

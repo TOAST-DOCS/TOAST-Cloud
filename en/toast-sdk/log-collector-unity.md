@@ -22,7 +22,7 @@ ToastLogger.Initialize(loggerConfiguration);
 
 ## 로그 전송하기
 
-TOAST Logger는 5가지 레벨의 로그를 전송할 수 있습니다. 
+TOAST Logger는 5가지 레벨의 로그를 전송할 수 있습니다.
 사용자 필드를 추가해서 보낼 수도 있습니다.
 
 ### 로그 전송 API 명세
@@ -60,7 +60,7 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 
 ## 사용자 정의 필드 설정하기
 
-원하는 사용자 정의 필드를 설정합니다. 
+원하는 사용자 정의 필드를 설정합니다.
 사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
 
 ### 사용자 정의 필드 설정 API 명세
@@ -68,7 +68,7 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 ToastLogger.SetUserField(userField, userValue);
 ```
 
-*  사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다. 
+*  사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.
 즉, Log & Crash Search의 커스텀 파라미터와 동일한 것으로 "field"값의 상세한 제약 사항은 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/)에서 확인할 수 있습니다.
 * 동일한 키에 대해 값을 여러 번 변경하면, 최종으로 변경한 값이 적용됩니다.
 
@@ -102,7 +102,7 @@ var loggerConfiguration = new ToastLoggerConfiguration
 ## Handled Exception 전송하기
 
 TOAST Logger는 일반/크래시 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
-이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 "Handled"로 필터링하여 조회할 수 있습니다. 
+이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 "Handled"로 필터링하여 조회할 수 있습니다.
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
 ### Handled Exception Log API 명세
@@ -125,3 +125,4 @@ try
     ToastLogger.Report(ToastLogLevel.ERROR, "YOUR_MESSAGE", exception);
 }
 ```
+

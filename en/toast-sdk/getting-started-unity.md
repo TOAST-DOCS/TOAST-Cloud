@@ -66,7 +66,7 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 1. File > Build Settings > Android 선택
 2. Build System을 Gradle (New) 로 선택
 3. Build
-    - Signing 관련 에러가 발생할 경우 Development Build 옵션을 On 하고 빌드를 진행하면 됩니다.
+- Signing 관련 에러가 발생할 경우 Development Build 옵션을 On 하고 빌드를 진행하면 됩니다.
 
 ### iOS
 
@@ -83,8 +83,8 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 
 ##### On .Net UnhandledException
 
-* On .Net UnhandledException를 Crash로 설정할 경우 예외 발생 시, 즉시 앱이 종료됩니다. 
-* Silent Exit로 설정해야 Unity Exceptoin을 캡처할 수 있습니다.
+* On .Net UnhandledException를 Crash로 설정할 경우 예외 발생 시, 즉시 앱이 종료됩니다.
+* Silent Exit로 설정해야 Unity Exception을 캡처할 수 있습니다.
 
 ##### Enable CrashReport API
 

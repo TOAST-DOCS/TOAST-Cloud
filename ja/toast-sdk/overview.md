@@ -3,9 +3,11 @@
 TOAST SDK는 [TOAST](https://toast.com/)에서 제공하는 다양한 서비스의 라이브러리(SDK)를 한 번에 간편하게 적용할 수 있도록 제공하는 통합 라이브러리(SDK)입니다. 여러 TOAST 서비스를 사용하여 애플리케이션을 개발할 때, 개별 서비스의 라이브러리를 각각 적용하는 불편함 없이 한 번에 적용할 수 있습니다.
 여러 서비스의 통합 개발 환경을 제공하지만, 원하는 기능만 선택할 수 있기 때문에 사용 공간을 절약할 수 있습니다. TOAST SDK는 사용하는 프로그래밍 언어와 플랫폼에 최적화된 라이브러리로 이질감 없는 개발 환경을 제공합니다.
 
-> 현재는 iOS, Android, Unity3D의 개발 환경을 제공하고 있고, 향후 더욱 다양한 프로그래밍 언어와 플랫폼을 지원할 예정입니다.
+> 현재는 iOS, Android, Unity3D, Windows C++의 개발 환경을 제공하고 있고, 향후 더욱 다양한 프로그래밍 언어와 플랫폼을 지원할 예정입니다.
 
 ## 지원하는 서비스
+
+TOAST SDK는 다음과 같은 서비스를 제공합니다.
 
 * [Log & Crash Search](https://toast.com/service/analytics/log_crash_search)
 
@@ -17,7 +19,6 @@ TOAST SDK는 [TOAST](https://toast.com/)에서 제공하는 다양한 서비스�
 * Unity Plugin을 제공합니다.
 * 사용하고자 하는 서비스 전체 또는 일부 서비스를 선택 적용할 수 있습니다.
 * 개별 서비스에서 독자적으로 제공했던 SDK의 불편사항을 개선하였습니다.
-* TOAST 콘솔을 통해 SDK의 설정을 변경할 수 있으므로 앱을 다시 빌드하여 배포하는 불편함이 없습니다.
 
 ## Getting Started TOAST SDK
 
@@ -39,7 +40,13 @@ TOAST Unity SDK는 Android, iOS 플랫폼을 지원하고 있습니다.
 
 * [Unity 시작하기](./getting-started-unity)
 
-## TOAST Logger
+### Windows C++
+
+TOAST Windows C++ SDK는 Windows 7, 10 (32/64bit) 환경을 지원하고 있습니다.
+
+* [Windows C++ 시작하기](./getting-started-windows)
+
+## TOAST Log & Crash
 
 Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다.
 수집된 로그는 TOAST 콘솔의 Log & Crash Search 메뉴를 선택하여 열람할 수 있습니다.
@@ -56,7 +63,8 @@ Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합�
 
 ### 사용 가이드
 
-* [TOAST Logger > Android](./log-collector-android) 사용 가이드
-* [TOAST Logger > iOS](./log-collector-ios) 사용 가이드
-* [TOAST Logger > Unity](./log-collector-unity) 사용 가이드
-* [TOAST Logger > Windows](./log-collector-windows) 사용 가이드
+* [TOAST Log & Crash > Android](./log-collector-android) 사용 가이드
+* [TOAST Log & Crash > iOS](./log-collector-ios) 사용 가이드
+* [TOAST Log & Crash > Unity](./log-collector-unity) 사용 가이드
+* [TOAST Log & Crash > Windows C++](./log-collector-windows) 사용 가이드
+
