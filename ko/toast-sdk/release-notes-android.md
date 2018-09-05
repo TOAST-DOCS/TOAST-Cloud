@@ -2,7 +2,7 @@
 
 ## 0.9.0 (2018.09.04)
 
-### TOAST Logger
+### TOAST Log & Crash
 
 #### 추가 사항
 

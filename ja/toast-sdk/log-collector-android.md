@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK Guide > TOAST Logger > Android
+## TOAST > TOAST SDK Guide > TOAST Log & Crash > Android
 
 ## Prerequisites
 
@@ -15,9 +15,9 @@ Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 ```java
 // Initialize Logger
 ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
-        .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
-        .setProjectVersion(YOUR_PROJECT_VERSION)    // App Version
-        .build();
+    .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
+    .setProjectVersion(YOUR_PROJECT_VERSION)    // App Version
+    .build();
 
 ToastLogger.initialize(loggerConfiguration);
 ```
@@ -53,7 +53,7 @@ ToastLogger.warn("TOAST Log & Crash Search!");
 
 ## 사용자 정의 필드 설정하기
 
-사용자 정의 원하는 필드를 설정합니다. 
+사용자 정의 원하는 필드를 설정합니다.
 사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
 
 ### setUserField API 명세
@@ -62,12 +62,12 @@ ToastLogger.warn("TOAST Log & Crash Search!");
 static void setUserField(String field, Object value);
 ```
 
-*  사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.  
+*  사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.
 즉, Log & Crash Search의 커스텀 파라미터와 동일한 것으로 "field"값의 상세한 제약 사항은 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/)에서 확인할 수 있습니다.
 
 #### 커스텀 필드 제약사항
 
-* 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.  
+* 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.
 예약된 필드는 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/) 항목의 "기본 파라미터"를 확인하세요.
 * 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 * 필드명 내에 공백은 "\_"로 치환됩니다.
@@ -94,33 +94,48 @@ static void setListener(ToastLoggerListener listener);
 ToastLogger.setListener(new ToastLoggerListener() {
     @Override
     public void onSuccess(LogObject log) {
-        // 로그 전송에 성공하였습니다.
+    // 로그 전송 성공.
     }
 
     @Override
     public void onFiltered(LogObject log, LogFilter filter) {
-        // 로그 필터에 의해 로그가 필터링되었습니다.
+    // Filter 설정에 의해 필터링
     }
 
     @Override
     public void onSaved(LogObject log) {
-        // 네트워크 차단으로 로그가 저장되었습니다.
+    // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
     }
 
     @Override
     public void onError(LogObject log, int errorCode, String errorMessage) {
-        // 전송에 실패하였습니다.
+    // 로그 전송 실패.
     }
 });
 ```
 
 ## 크래시 로그 수집
 
-TOAST Logger가 활성화되면, Uncaught Exception을 사용하여 앱에서 예상치 못한 크래시가 발생한 경우 자동으로 크래시 정보를 서버에 기록합니다.
+TOAST Logger는 앱에서 예상치 못한 크래시가 발생한 경우 크래시 정보를 서버에 기록합니다.
+
+### 크래시 로그 수집 사용 여부 설정
+
+크래시 로그 전송 기능은 setEnabledCrashReporter() 메소드를 사용하여 활성화 또는 비활성화 할 수 있습니다.
+
+```java
+// Initialize Logger
+ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
+    .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
+    .setProjectVersion(YOUR_PROJECT_VERSION)    // App Version
+    .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
+    .build();
+
+ToastLogger.initialize(loggerConfiguration);
+```
 
 ### Handled Exception API 사용하기
 
-Android 플랫폼의 경우 try/catch 구문에서 예외와 관련된 내용을 TOAST Logger의 Handled Exception API를 사용하여 전송할 수 있습니다. 
+Android 플랫폼의 경우 try/catch 구문에서 예외와 관련된 내용을 TOAST Logger의 Handled Exception API를 사용하여 전송할 수 있습니다.
 이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 Handled로 필터링하여 조회할 수 있습니다.
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
@@ -132,8 +147,8 @@ static void report(@NonNull String message, @NonNull Throwable throwable);
 
 // 사용자 필드와 함께 예외 정보 전송
 static void report(@NonNull String message,
-				   @NonNull Throwable throwable,
-				   @Nullable Map<String, Object> userFields);
+@NonNull Throwable throwable,
+@Nullable Map<String, Object> userFields);
 
 // ExceptionLog를 사용한 예외 정보 전송
 static void report(@NonNull ExceptionLog log)
@@ -145,8 +160,8 @@ static void report(@NonNull ExceptionLog log)
 try {
     // User Codes...
 } catch (Exception e) {
-	Map<String, Object> userFields = new HashMap<>();
-	ToastLogger.report("message", e, userFields);
+    Map<String, Object> userFields = new HashMap<>();
+    ToastLogger.report("message", e, userFields);
 }
 ```
 
@@ -174,6 +189,9 @@ ToastLogger.setDataAdapter(new CrashDataAdapter() {
     }
 });
 ```
+
+
+
 
 
 

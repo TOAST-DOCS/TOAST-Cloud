@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Logger > Android
+## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > Android
 
 ## Prerequisites
 
@@ -94,29 +94,44 @@ static void setListener(ToastLoggerListener listener);
 ToastLogger.setListener(new ToastLoggerListener() {
     @Override
     public void onSuccess(LogObject log) {
-        // 로그 전송에 성공하였습니다.
+        // 로그 전송 성공.
     }
 
     @Override
     public void onFiltered(LogObject log, LogFilter filter) {
-        // 로그 필터에 의해 로그가 필터링되었습니다.
+        // Filter 설정에 의해 필터링
     }
 
     @Override
     public void onSaved(LogObject log) {
-        // 네트워크 차단으로 로그가 저장되었습니다.
+        // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
     }
 
     @Override
     public void onError(LogObject log, int errorCode, String errorMessage) {
-        // 전송에 실패하였습니다.
+        // 로그 전송 실패.
     }
 });
 ```
 
 ## 크래시 로그 수집
 
-TOAST Logger가 활성화되면, Uncaught Exception을 사용하여 앱에서 예상치 못한 크래시가 발생한 경우 자동으로 크래시 정보를 서버에 기록합니다.
+TOAST Logger는 앱에서 예상치 못한 크래시가 발생한 경우 크래시 정보를 서버에 기록합니다.
+
+### 크래시 로그 수집 사용 여부 설정
+
+크래시 로그 전송 기능은 setEnabledCrashReporter() 메소드를 사용하여 활성화 또는 비활성화 할 수 있습니다.
+
+```java
+// Initialize Logger
+ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
+        .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
+        .setProjectVersion(YOUR_PROJECT_VERSION)    // App Version
+        .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
+        .build();
+
+ToastLogger.initialize(loggerConfiguration);
+```
 
 ### Handled Exception API 사용하기
 

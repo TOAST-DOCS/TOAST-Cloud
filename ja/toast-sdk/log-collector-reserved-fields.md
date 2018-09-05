@@ -1,11 +1,9 @@
-## TOAST > TOAST SDK Guide > TOAST Logger > Reserved Fields
+## TOAST > TOAST SDK Guide > TOAST Log & Crash > Reserved Fields
 
 ### 예약된 필드 정의
 
 예약된 필드는 TOAST SDK 내부에서 정의하여 사용하고 있는 필드명입니다.
-
-사용자가 예약된 필드를 추가하여 사용하려는 경우 필드명에 'reserved_'라는 접두사가 추가됩니다.
-
+TOAST SDK에서 예약된 사용자 필드를 사용하는 경우 필드명에 'reserved_"가 추가됩니다.
 예약된 필드의 검사 조건은 대소 문자와 관계없이 문자열을 비교합니다.
 
 ### 예약된 필드의 사용 예
@@ -17,7 +15,7 @@ sendTime -> reserved_sendTime
 
 ```
 
-* 예약된 필드와 대소문자가 같은 않은 경우
+* 예약된 필드와 대소문자가 같지 않은 경우
 
 ```
 SENDTIME -> reserved_SENDTIME
@@ -37,7 +35,7 @@ SENDTIME -> reserved_SENDTIME
 | body | 메세지 |
 | sendTime | 로그 전송 시간 |
 | createTime | 로그 생성 시간 |
-| lncBulkIndex, | 로그 전송 순서 |
+| lncBulkIndex | 로그 전송 순서 |
 | transactionID | 로그 고유번호 |
 | DeviceModel | 디바이스 모델 |
 | Carrier | 통신사 정보  |
@@ -61,3 +59,4 @@ SENDTIME -> reserved_SENDTIME
 | ExceptionType | Crash 타입 |
 | Location | Crash 발생 위치  |
 | lncIssueID | 이슈 아이디 |
+

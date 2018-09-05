@@ -17,7 +17,7 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 
 | Unity package | Service |
 | --- | --- |
-| TOAST-Logger-UnityPlugin.unitypackage | TOAST Logger |
+| TOAST-Logger-UnityPlugin.unitypackage | TOAST Log & Crash |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
 
 ### Unity package 구조
@@ -84,7 +84,7 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 ##### On .Net UnhandledException
 
 * On .Net UnhandledException를 Crash로 설정할 경우 예외 발생 시, 즉시 앱이 종료됩니다. 
-* Silent Exit로 설정해야 Unity Exceptoin을 캡처할 수 있습니다.
+* Silent Exit로 설정해야 Unity Exception을 캡처할 수 있습니다.
 
 ##### Enable CrashReport API
 
@@ -112,10 +112,9 @@ public class GameStartBehaviour : MonoBehaviour
 
 ## UserID 설정하기
 
-UserID를 설정하는 경우 사용자 아이디를 설정할 수 있습니다.
-설정한 사용자 아이디는 TOAST SDK의 각 모듈에서 다양한 용도로 사용하게 됩니다.
-예를 들어 TOAST Logger 에서는 설정한 사용자 아이디를 로그 필드에 넣어서 함께 전송합니다.
-따라서 설정한 사용자 아이디를 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
+ToastSDK에 사용자 아이디를 설정할 수 있습니다.
+설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
 
 ### UserID 설정 API 명세
 ```csharp
@@ -141,5 +140,5 @@ ToastSdk.DebugMode = true; // or false
 
 ## TOAST Service 사용하기
 
-* [TOAST Logger](./log-collector-unity) 사용 가이드
+* [TOAST Log & Crash](./log-collector-unity) 사용 가이드
 

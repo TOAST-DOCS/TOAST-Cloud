@@ -1,14 +1,14 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Logger > iOS
+## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > iOS
 
 ## Prerequisites
 
 1\. [Install the TOAST SDK](./getting-started-ios)
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log&Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
 ## TOAST Logger SDK 초기화
 
-Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
 ```objc
 [ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
@@ -105,7 +105,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 [ToastLogger initWithConfiguration:configuration];
 ```
-#### CrashReporter 바활성화
+#### CrashReporter 비활성화
 ```objc
 
 // CrashReporter Disable Configuration
@@ -169,7 +169,7 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
 // 로그 전송 실패
 - (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error;
 
-// 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위한 SDK 내부 저장
+// 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
 - (void)toastLogDidSave:(ToastLog *)log;
 
 // Filter 설정에 의해 필터링
@@ -198,7 +198,7 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
       // 로그 전송 실패
 }
 - (void)toastLogDidSave:(ToastLog *)log {
-      // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위한 SDK 내부 저장
+      // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
 }
 
 - (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter {
