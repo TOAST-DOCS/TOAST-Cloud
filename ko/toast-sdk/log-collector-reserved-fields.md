@@ -15,7 +15,7 @@ sendTime -> reserved_sendTime
 
 ```
 
-* 예약된 필드와 대소문자가 같은 않은 경우
+* 예약된 필드와 대소문자가 같지 않은 경우
 
 ```
 SENDTIME -> reserved_SENDTIME
@@ -35,7 +35,7 @@ SENDTIME -> reserved_SENDTIME
 | body | 메세지 |
 | sendTime | 로그 전송 시간 |
 | createTime | 로그 생성 시간 |
-| lncBulkIndex, | 로그 전송 순서 |
+| lncBulkIndex | 로그 전송 순서 |
 | transactionID | 로그 고유번호 |
 | DeviceModel | 디바이스 모델 |
 | Carrier | 통신사 정보  |
