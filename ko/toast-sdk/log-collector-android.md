@@ -16,7 +16,6 @@ Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 // Initialize Logger
 ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
         .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
-        .setProjectVersion(YOUR_PROJECT_VERSION)    // App Version
         .build();
 
 ToastLogger.initialize(loggerConfiguration);
