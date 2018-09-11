@@ -18,7 +18,7 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
     .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
     .build();
 
-ToastLogger.initialize(loggerConfiguration);
+ToastLogger.initialize(configuration);
 ```
 
 ## 로그 전송하기
@@ -128,7 +128,7 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
     .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
     .build();
 
-ToastLogger.initialize(loggerConfiguration);
+ToastLogger.initialize(configuration);
 ```
 
 ### Handled Exception API 사용하기
@@ -163,12 +163,12 @@ try {
 ## 크래시 발생 시점에 추가 정보를 설정하여 전송하기
 
 크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
-setUserField는 크래시 시점과 관계없이 아무 때나 설정할 수 있고, setDataAdapter의 경우 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
+setUserField는 크래시 시점과 관계없이 아무 때나 설정할 수 있고, setCrashDataAdapter의 경우 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
 
 ### setCrashDataAdapter API 명세
 
 ```java
-static void setDataAdapter(CrashDataAdapter adapter);
+static void setCrashDataAdapter(CrashDataAdapter adapter);
 ```
 * CrashDataAdapter의 getUserFields 함수를 통해 리턴하는 Map 자료구조의 키값은 위에서 설명한 setUserField의 "field"값과 동일한 제약 조건을 갖습니다.
 
