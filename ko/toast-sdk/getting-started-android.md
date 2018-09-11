@@ -57,8 +57,8 @@ public class YourApplication extends Application {
 
 ## UserID 설정하기
 
-ToastSDK에 사용자 아이디를 설정할 수 있습니다.
-설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
+ToastSdk에 사용자 아이디를 설정할 수 있습니다.
+설정한 UserID는 ToastSdk의 각 모듈에서 공통으로 사용됩니다.
 ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
 
 ### UserID API 명세

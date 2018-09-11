@@ -10,15 +10,15 @@
 ## TOAST Logger SDK 초기화
 
 onCreate() 메서드에서 Logger를 초기화합니다.
-Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
 ```java
 // Initialize Logger
-ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
+ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
         .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
         .build();
 
-ToastLogger.initialize(loggerConfiguration);
+ToastLogger.initialize(configuration);
 ```
 
 ## 로그 전송하기
@@ -81,33 +81,33 @@ ToastLogger.setUserField("nickname", "randy");
 
 콜백 함수를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습니다.
 
-### setListener API 명세
+### setLoggerListener API 명세
 
 ```java
-static void setListener(ToastLoggerListener listener);
+static void setLoggerListener(ToastLoggerListener listener);
 ```
 
-### setListener 사용 예
+### setLoggerListener 사용 예
 
 ```java
-ToastLogger.setListener(new ToastLoggerListener() {
+ToastLogger.setLoggerListener(new ToastLoggerListener() {
     @Override
-    public void onSuccess(LogObject log) {
+    public void onSuccess(LogEntry log) {
         // 로그 전송 성공.
     }
 
     @Override
-    public void onFiltered(LogObject log, LogFilter filter) {
+    public void onFilter(LogEntry log, LogFilter filter) {
         // Filter 설정에 의해 필터링
     }
 
     @Override
-    public void onSaved(LogObject log) {
+    public void onSave(LogEntry log) {
         // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
     }
 
     @Override
-    public void onError(LogObject log, int errorCode, String errorMessage) {
+    public void onError(LogEntry log, Exception e) {
         // 로그 전송 실패.
     }
 });
@@ -123,12 +123,12 @@ TOAST Logger는 앱에서 예상치 못한 크래시가 발생한 경우 크래�
 
 ```java
 // Initialize Logger
-ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
+ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
         .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
         .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
         .build();
 
-ToastLogger.initialize(loggerConfiguration);
+ToastLogger.initialize(configuration);
 ```
 
 ### Handled Exception API 사용하기
@@ -147,9 +147,6 @@ static void report(@NonNull String message, @NonNull Throwable throwable);
 static void report(@NonNull String message,
 				   @NonNull Throwable throwable,
 				   @Nullable Map<String, Object> userFields);
-
-// ExceptionLog를 사용한 예외 정보 전송
-static void report(@NonNull ExceptionLog log)
 ```
 
 ### 사용 예
@@ -168,17 +165,17 @@ try {
 크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
 setUserField는 크래시 시점과 관계없이 아무 때나 설정할 수 있고, setDataAdapter의 경우 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
 
-### setDataAdapter API 명세
+### setCrashDataAdapter API 명세
 
 ```java
-static void setDataAdapter(CrashDataAdapter adapter);
+static void setCrashDataAdapter(CrashDataAdapter adapter);
 ```
 * CrashDataAdapter의 getUserFields 함수를 통해 리턴하는 Map 자료구조의 키값은 위에서 설명한 setUserField의 "field"값과 동일한 제약 조건을 갖습니다.
 
-### setDataAdapter 사용 예
+### setCrashDataAdapter 사용 예
 
 ```java
-ToastLogger.setDataAdapter(new CrashDataAdapter() {
+ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
     @Override
     public Map<String, Object> getUserFields() {
         Map<String, Object> userFields = new HashMap<>();
