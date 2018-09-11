@@ -14,7 +14,7 @@ Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
 ```java
 // Initialize Logger
-ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
+ToastLoggerConfiguration loggerConfiguration = ToastLoggerConfiguration.newBuilder()
     .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
     .build();
 
@@ -123,7 +123,7 @@ TOAST Logger는 앱에서 예상치 못한 크래시가 발생한 경우 크래�
 
 ```java
 // Initialize Logger
-ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
+ToastLoggerConfiguration loggerConfiguration = ToastLoggerConfiguration.newBuilder()
     .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
     .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
     .build();
