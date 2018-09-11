@@ -81,34 +81,34 @@ ToastLogger.setUserField("nickname", "randy");
 
 콜백 함수를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습니다.
 
-### setListener API 명세
+### setLoggerListener API 명세
 
 ```java
 static void setLoggerListener(ToastLoggerListener listener);
 ```
 
-### setListener 사용 예
+### setLoggerListener 사용 예
 
 ```java
 ToastLogger.setLoggerListener(new ToastLoggerListener() {
     @Override
     public void onSuccess(LogEntry log) {
-    // 로그 전송 성공.
+        // 로그 전송 성공.
     }
-
+    	
     @Override
-    public void onFiltered(LogEntry log, LogFilter filter) {
-    // Filter 설정에 의해 필터링
+    public void onFilter(LogEntry log, LogFilter filter) {
+        // Filter 설정에 의해 필터링
     }
-
+    	
     @Override
-    public void onSaved(LogEntry log) {
-    // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
+    public void onSave(LogEntry log) {
+        // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
     }
-
+    	
     @Override
-    public void onError(LogEntry log, int errorCode, String errorMessage) {
-    // 로그 전송 실패.
+    public void onError(LogEntry log, Exception e) {
+        // 로그 전송 실패.
     }
 });
 ```
@@ -145,8 +145,8 @@ static void report(@NonNull String message, @NonNull Throwable throwable);
 
 // 사용자 필드와 함께 예외 정보 전송
 static void report(@NonNull String message,
-                @NonNull Throwable throwable,
-                @Nullable Map<String, Object> userFields);
+                   @NonNull Throwable throwable,
+                   @Nullable Map<String, Object> userFields);
 ```
 
 ### 사용 예
@@ -172,7 +172,7 @@ static void setCrashDataAdapter(CrashDataAdapter adapter);
 ```
 * CrashDataAdapter의 getUserFields 함수를 통해 리턴하는 Map 자료구조의 키값은 위에서 설명한 setUserField의 "field"값과 동일한 제약 조건을 갖습니다.
 
-### setDataAdapter 사용 예
+### setCrashDataAdapter 사용 예
 
 ```java
 ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
