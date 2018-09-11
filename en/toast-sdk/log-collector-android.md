@@ -125,7 +125,6 @@ TOAST Logger는 앱에서 예상치 못한 크래시가 발생한 경우 크래�
 // Initialize Logger
 ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
     .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
-    .setProjectVersion(YOUR_PROJECT_VERSION)    // App Version
     .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
     .build();
 
