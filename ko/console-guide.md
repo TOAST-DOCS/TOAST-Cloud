@@ -10,13 +10,15 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 - 서비스를 이용하는 멤버 관리
 - 결제 정보 제공
 
-## 조직 관리
+## 콘솔 퀵 가이드
 
 ![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812.png)
 ![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812.png)
 ![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812.png)
 ![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812.png)
 ![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812.png)
+
+## 조직 관리
 
 조직은 TOAST 서비스를 효율적으로 사용하고 관리하기 위해 만들어진 그룹입니다.
 조직에서는 동일한 서비스 정책을, 사용자에게 공유하여 사용할 수 있습니다.

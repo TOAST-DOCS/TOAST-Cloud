@@ -12,12 +12,6 @@ TOAST Console provides the following functions:
 
 ## Organization Management
 
-![consoleguide_01_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
-![consoleguide_02_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
-![consoleguide_03_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
-![consoleguide_04_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
-![consoleguide_05_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
-
 Organization refers to a group which is made to efficiently use and manage TOAST Service.
 In an organization, same service policy can be shared with users.
 It helps to make use of TOAST Service more efficiently.  
