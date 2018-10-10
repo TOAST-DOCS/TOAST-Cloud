@@ -1,24 +1,24 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Logger > Android
+## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > Android
 
 ## Prerequisites
 
 1\. [Install the TOAST SDK](./getting-started-android)
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+4\. [TOAST SDK를 초기화](./getting-started-android/#toast-sdk_1)합니다.
 
 ## TOAST Logger SDK 초기화
 
 onCreate() 메서드에서 Logger를 초기화합니다.
-Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
 ```java
 // Initialize Logger
-ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
+ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
         .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
-        .setProjectVersion(YOUR_PROJECT_VERSION)    // App Version
         .build();
 
-ToastLogger.initialize(loggerConfiguration);
+ToastLogger.initialize(configuration);
 ```
 
 ## 로그 전송하기
@@ -48,24 +48,6 @@ static void fatal(String message);
 
 ```java
 ToastLogger.warn("TOAST Log & Crash Search!");
-```
-
-## UserID 설정하기
-
-UserID를 설정하는 경우 사용자 아이디를 설정할 수 있습니다.
-설정한 사용자 아이디는 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
-UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
-
-### UserID API 명세
-
-```java
-static void setUserId(String userId);
-```
-
-### UserID 설정 사용 예
-
-```java
-ToastLogger.setUserId("TOAST");
 ```
 
 ## 사용자 정의 필드 설정하기
@@ -99,39 +81,109 @@ ToastLogger.setUserField("nickname", "randy");
 
 콜백 함수를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습니다.
 
-### setListener API 명세
+### setLoggerListener API 명세
 
 ```java
-static void setListener(ToastLoggerListener listener);
+static void setLoggerListener(ToastLoggerListener listener);
 ```
 
-### setListener 사용 예
+### setLoggerListener 사용 예
 
 ```java
-ToastLogger.setListener(new ToastLoggerListener() {
+ToastLogger.setLoggerListener(new ToastLoggerListener() {
     @Override
-    public void onSuccess(LogObject log) {
-        // 로그 전송에 성공하였습니다.
+    public void onSuccess(LogEntry log) {
+        // 로그 전송 성공.
     }
 
     @Override
-    public void onFiltered(LogObject log, LogFilter filter) {
-        // 로그 필터에 의해 로그가 필터링되었습니다.
+    public void onFilter(LogEntry log, LogFilter filter) {
+        // Filter 설정에 의해 필터링
     }
 
     @Override
-    public void onSaved(LogObject log) {
-        // 네트워크 차단으로 로그가 저장되었습니다.
+    public void onSave(LogEntry log) {
+        // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
     }
 
     @Override
-    public void onError(LogObject log, int errorCode, String errorMessage) {
-        // 전송에 실패하였습니다.
+    public void onError(LogEntry log, Exception e) {
+        // 로그 전송 실패.
     }
 });
 ```
 
-## 크래시 SDK 사용하기
+## 크래시 로그 수집
 
-* [TOAST Crash Reporter > Android](./crash-reporter-android) 사용 가이드
+TOAST Logger는 앱에서 예상치 못한 크래시가 발생한 경우 크래시 정보를 서버에 기록합니다.
+
+### 크래시 로그 수집 사용 여부 설정
+
+크래시 로그 전송 기능은 setEnabledCrashReporter() 메소드를 사용하여 활성화 또는 비활성화 할 수 있습니다.
+
+```java
+// Initialize Logger
+ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
+        .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
+        .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
+        .build();
+
+ToastLogger.initialize(configuration);
+```
+
+### Handled Exception API 사용하기
+
+Android 플랫폼의 경우 try/catch 구문에서 예외와 관련된 내용을 TOAST Logger의 Handled Exception API를 사용하여 전송할 수 있습니다. 
+이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 Handled로 필터링하여 조회할 수 있습니다.
+자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
+
+### Handled Exception Log API 명세
+
+```java
+// 예외 정보 전송
+static void report(@NonNull String message, @NonNull Throwable throwable);
+
+// 사용자 필드와 함께 예외 정보 전송
+static void report(@NonNull String message,
+				   @NonNull Throwable throwable,
+				   @Nullable Map<String, Object> userFields);
+```
+
+### 사용 예
+
+```java
+try {
+    // User Codes...
+} catch (Exception e) {
+	Map<String, Object> userFields = new HashMap<>();
+	ToastLogger.report("message", e, userFields);
+}
+```
+
+## 크래시 발생 시점에 추가 정보를 설정하여 전송하기
+
+크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
+setUserField는 크래시 시점과 관계없이 아무 때나 설정할 수 있고, setCrashDataAdapter의 경우 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
+
+### setCrashDataAdapter API 명세
+
+```java
+static void setCrashDataAdapter(CrashDataAdapter adapter);
+```
+* CrashDataAdapter의 getUserFields 함수를 통해 리턴하는 Map 자료구조의 키값은 위에서 설명한 setUserField의 "field"값과 동일한 제약 조건을 갖습니다.
+
+### setCrashDataAdapter 사용 예
+
+```java
+ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
+    @Override
+    public Map<String, Object> getUserFields() {
+        Map<String, Object> userFields = new HashMap<>();
+        userFields.put("UserField", "UserValue");
+        return userFields;
+    }
+});
+```
+
+
 

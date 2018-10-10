@@ -9,15 +9,17 @@
 
 Android 용 TOAST SDK의 구성은 다음과 같습니다.
 
+* TOAST Common SDK
+* TOAST Core SDK
 * [TOAST Logger](./log-collector-android) SDK
-* [TOAST Crash](./crash-reporter-android) SDK
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
 | Gradle Dependency | Service |
 | --- | --- |
-| com.toast.android:toast-logger:1.0.0 | TOAST Logger |
-| com.toast.android:toast-crash:1.0.0 | TOAST Crash Reporter |
+| com.toast.android:toast-common:0.9.0 | TOAST Common |
+| com.toast.android:toast-core:0.9.0 | TOAST Core |
+| com.toast.android:toast-logger:0.9.0 | TOAST Log & Crash |
 
 ## TOAST SDK를 Android Studio 프로젝트에 적용하기
 
@@ -28,7 +30,7 @@ build.gradle 파일에 TOAST SDK에 대한 종속성을 추가합니다.
 ```groovy
 dependencies {
   // ...
-  compile 'com.toast.android:toast-sdk:1.0.0'
+  implementation 'com.toast.android:toast-sdk:0.9.0'
   // ...
 }
 ```
@@ -46,16 +48,55 @@ public class YourApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // ...
-
         // Initialize TOAST SDK
         ToastSdk.initialize(getApplicationContext());
+        // ...
     }
 }
 ```
 
-## 하나의 TOAST SDK로 여러 TOAST 서비스 선택하여 이용합니다.
+## UserID 설정하기
 
-* [TOAST Logger](./log-collector-android) 사용 가이드
-* [TOAST Crash Reporter](./crash-reporter-android) 사용 가이드
+ToastSdk에 사용자 아이디를 설정할 수 있습니다.
+설정한 UserID는 ToastSdk의 각 모듈에서 공통으로 사용됩니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
+
+### UserID API 명세
+
+```java
+// ToastSdk class
+public static void setUserId(String userId);
+```
+
+### UserID 설정 사용 예
+
+```java
+// Set User ID.
+ToastSdk.setUserId("user_identifier");
+```
+
+## 디버그 모드 설정하기
+
+TOAST SDK의 내부 로그 확인을 위해서 디버그 모드를 설정할 수 있습니다.
+TOAST SDK 문의를 하실 경우, 디버그 모드를 활성화해서 전달해주시면 빠른 지원을 받을 수 있습니다.
+
+### 디버그 모드 설정 API 명세
+
+```java
+// ToastSdk class
+public static void setDebugMode(boolean debug);
+```
+
+### 디버그 모드 설정 사용 예
+
+```java
+// Set Debug Mode.
+ToastSdk.setDebugMode(true); // or false
+```
+
+> (주의) 앱을 릴리즈할 경우, 반드시 디버그 모드를 비활성화 해야 합니다.
+
+## TOAST Service 사용하기
+
+* [TOAST Log & Crash](./log-collector-android) 사용 가이드
 

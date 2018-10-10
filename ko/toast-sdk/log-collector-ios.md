@@ -1,20 +1,17 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Logger > iOS
+## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > iOS
 
 ## Prerequisites
 
 1\. [Install the TOAST SDK](./getting-started-ios)
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log&Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
-3\. Log&Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
 ## TOAST Logger SDK 초기화
 
-Log&Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
 ```objc
-TCISLoggerConfiguration *configuration = [TCISLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"
-                                                                               projectVersion:@"YOUR_PROJECT_VERSION"];
-
-[TCISLogger initWithConfiguration:configuration];
+[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
 ```
 
 ## 로그 전송하기
@@ -24,7 +21,7 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 ### 로그 전송 API 명세
 
 ```objc
-@interface TCISLogger : NSObject
+@interface ToastLogger : NSObject
 
 //...
 
@@ -51,32 +48,7 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 ### 로그 전송 API 사용 예
 
 ```objc
-[TCISLogger info:@"TOAST Log & Crash Search!"];
-```
-## UserID 설정하기
-
-UserID를 설정하는 경우 사용자 아이디를 설정할 수 있습니다.
-설정한 사용자 아이디는 "UserID" 필드로 Log & Crash Search 콘솔을 통해 손쉽게 필터링하여 조회할 수 있습니다.
-UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
-
-### UserID API 명세
-
-```objc
-@interface TCISLogger : NSObject
-
-//...
-
-+ (void)setUserID:(NSString *)userID;
-
-//...
-
-@end
-```
-
-### UserID 설정 사용 예
-
-```objc
-[TCISLogger setUserID:@"TOAST"];
+[ToastLogger info:@"TOAST Log & Crash Search!"];
 ```
 
 ## 사용자 정의 필드 설정하기
@@ -87,16 +59,11 @@ UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용
 ### 사용자 정의 필드 API 명세
 
 ```objc
-@interface TCISLogger : NSObject
+@interface ToastLogger : NSObject
 
 // ...
-
-// Dictionary를 통한 UserField 설정
-+ (void)setUserField:(NSDictionary<NSString *, NSString *> *)userField;
-
 // UserField 추가
 + (void)setUserFieldWithValue:(NSString *)value forKey:(NSString *)key;
-
 // ...
 
 @end
@@ -114,13 +81,67 @@ UserID를 설정하면 로그 전송 API를 호출할 때마다 설정한 사용
 
 ### 사용자 정의 필드 사용 예
 ```objc
-// Dictionary를 통한 UserField 설정
-NSMutableDictionary<NSString*, NSString*> *userField = [[NSMutableDictionary alloc] init];  
-[userField setObject:@"USER_VALUE" forKey:@"USER_KEY"];
-[TCISLogger setUserField: userField];
-
 // UserField 추가
-[TCISLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
+[ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
+```
+
+## 크래시 로그 수집
+TOAST Logger는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
+ToastLogger 초기화 시에 함께 활성화되고 사용여부를 설정할 수 있습니다. 
+크래시 로그 전송을 위해 PLCrashReporter를 사용합니다.
+
+### CrashReporter 사용 여부 설정
+CrashReporter 기능은 기본적으로 ToastLogger를 초기화할 때 함께 활성화됩니다.
+```objc
+[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
+```
+ToastLogger 초기화 시에 사용 여부를 설정할 수 있습니다.
+크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다. 
+
+#### CrashReporter 활성화
+```objc
+// CrashReporter Enable Configuration
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:YES];
+
+[ToastLogger initWithConfiguration:configuration];
+```
+#### CrashReporter 비활성화
+```objc
+
+// CrashReporter Disable Configuration
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:NO];
+
+[ToastLogger initWithConfiguration:configuration];
+```
+
+## 크래시 발생 시점에 추가 정보를 설정하여 전송하기
+
+크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
+setShouldReportCrashHandler의 Block에서 사용자 정의 필드를 설정하면 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
+
+### Data Adapter API 명세
+```objc
+@interface ToastLogger : NSObject
+
+//...
+
++ (void)setShouldReportCrashHandler:(void (^)(void))handler;
+
+//...
+
+@end
+```
+
+### Data Adapter 사용 예
+
+```objc
+[ToastLogger setShouldReportCrashHandler:^{
+  
+  //사용자 정의 필드 를 통해 Crash가 발생한 상황에서 얻고자 하는 정보를 함께 전송    
+  // UserField 추가
+  [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
+
+}];
 ```
 
 ## 로그 전송 후 추가작업 진행하기
@@ -130,35 +151,29 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
 
 ### Delegate API 명세
 ```objc
-@interface TCISLogger : NSObject
+@interface ToastLogger : NSObject
 
 // ...
 
-+ (void)setDelegate:(id<TCISLoggerDelegate>) delegate;
++ (void)setDelegate:(id<ToastLoggerDelegate>) delegate;
 
 // ...
 @end
 
 
-@protocol TCISLoggerDelegate <NSObject>
+@protocol ToastLoggerDelegate <NSObject>
 @optional
 // 로그 전송 성공
-- (void)logger:(TCISInstanceLogger *)logger
- didSuccessLog:(TCISLog *)log;
+- (void)toastLogDidSuccess:(ToastLog *)log;
 
 // 로그 전송 실패
-- (void)logger:(TCISInstanceLogger *)logger
-    didFailLog:(TCISLog *)log
-         error:(NSError *)error;
+- (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error;
 
-// 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위한 SDK 내부 저장
-- (void)logger:(TCISInstanceLogger *)logger
-    didSaveLog:(TCISLog *)log;
+// 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
+- (void)toastLogDidSave:(ToastLog *)log;
 
 // Filter 설정에 의해 필터링
-- (void)logger:(TCISInstanceLogger *)logger
-  didFilterLog:(TCISLog *)log
-     logFilter:(TCISLogFilter *)logFilter;
+- (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter;
 @end
 ```
 
@@ -167,39 +182,29 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
 
 ```objc
 // Delegate Setting
-@interface YOURCLASSS : SUBCLASS <TCISLoggerDelegate>
+@interface YOURCLASSS : SUBCLASS <ToastLoggerDelegate>
 
 // ...
 
-[TCISLogger setDelegate:self];
+[ToastLogger setDelegate:self];
 
 // ...
 
-- (void)logger:(TCISInstanceLogger *)logger
- didSuccessLog:(TCISLog *)log {
+- (void)toastLogDidSuccess:(ToastLog *)log {
       // 로그 전송 성공
  }
 
-- (void)logger:(TCISInstanceLogger *)logger
-    didFailLog:(TCISLog *)log
-         error:(NSError *)error {
+- (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error {
       // 로그 전송 실패
 }
-- (void)logger:(TCISInstanceLogger *)logger
-    didSaveLog:(TCISLog *)log {
-      // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위한 SDK 내부 저장
+- (void)toastLogDidSave:(ToastLog *)log {
+      // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
 }
 
-- (void)logger:(TCISInstanceLogger *)logger
-  didFilterLog:(TCISLog *)log
-     logFilter:(TCISLogFilter *)logFilter {
+- (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter {
       // Filter 설정에 의해 필터링
 }
 
 @end
 ```
-
-## Using the Other Service
-
-* [TOAST Crash Reporter > iOS](./crash-reporter-ios) 사용 가이드
 
