@@ -13,9 +13,9 @@
 ```groovy
 dependencies {
     if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-logger:0.9.0'
+        implementation 'com.toast.android:toast-unity-logger:0.11.0'
     } else {
-        compile 'com.toast.android:toast-unity-logger:0.9.0'
+        compile 'com.toast.android:toast-unity-logger:0.11.0'
     }
 }
 ```

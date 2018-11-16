@@ -80,8 +80,9 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 ##### NDK 관련 에러 발생시
 - Gradle을 설정하고 빌드를 하면, 아래와 같은 에러가 발생할 수 있습니다.
 > No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
-- 이 에러는 Android SDK 경로의 NDK의 버전이 높아서 발생하는 문제입니다.
-    - Android SDK가 설치된 폴더의 ndk-bundle 폴더를 삭제해주세요.
+- 이 에러는 NDK의 버전이 높아서 mips를 지원하지 않게 되면서 발생하는 문제입니다.
+    - 이는 Android Gradle Plugin을 3.2.1 이상으로 업데이트하면 해결됩니다.
+    - 특정 유니티 버전에서는 Android Gradle Plugin을 업데이트할 수 없기 때문에 Android SDK가 설치된 폴더의 ndk-bundle 폴더를 삭제하면 문제가 해결됩니다.
     - IL2CPP 빌드에 필요한 NDK는 Android SDK 하위가 아닌 별도의 폴더로 관리하는게 버전 관리에 용이합니다.
 
 ### iOS
