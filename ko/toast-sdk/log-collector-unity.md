@@ -7,6 +7,19 @@
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 4\. [TOAST SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
 
+### mainTemplate.gradle 설정 방법
+- mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
+
+```groovy
+dependencies {
+    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
+        implementation 'com.toast.android:toast-unity-logger:0.9.0'
+    } else {
+        compile 'com.toast.android:toast-unity-logger:0.9.0'
+    }
+}
+```
+
 ## TOAST Logger SDK 초기화
 
 Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
@@ -80,6 +93,52 @@ ToastLogger.SetUserField(userField, userValue);
 ### 사용자 정의 필드 설정 API 사용 예
 ```csharp
 ToastLogger.SetUserField("GameObject", gameObject.name);
+```
+
+## 로그 전송 후 추가작업 진행하기
+- 리스너를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습니다.
+
+### SetLoggerListener API 명세
+
+```csharp
+public interface IToastLoggerListener
+{
+    void OnSuccess(LogEntry log);
+    void OnFilter(LogEntry log, LogFilter filter);
+    void OnSave(LogEntry log);
+    void OnError(LogEntry log, string errorMessage);
+}
+
+static void SetLoggerListener(IToastLoggerListener listener);
+```
+
+### SetLoggerListener 사용 예
+
+```csharp
+public class SampleLoggerListener : IToastLoggerListener
+{
+    public void OnSuccess(LogEntry log)
+    {
+        // 로그 전송 성공시 처리
+    }
+
+    public void OnFilter(LogEntry log, LogFilter filter)
+    {
+        // 로그 필터링시 처리
+    }
+
+    public void OnSave(LogEntry log)
+    {
+        // 네트워크 단절 등으로 인한 실패시 로그 재전송을 위해 파일에 저장되었을 경우
+    }
+
+    public void OnError(LogEntry log, string errorMessage)
+    {
+        // 로그 전송 실패시 처리
+    }
+}
+
+ToastLogger.SetLoggerListener(new SampleLoggerListener());
 ```
 
 ## 크래시 로그 수집
