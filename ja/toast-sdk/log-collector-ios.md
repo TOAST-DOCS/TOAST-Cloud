@@ -207,3 +207,22 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
 
 @end
 ```
+
+## Network Insights
+Network Insights는 콘솔에 등록한 URL을 호출하여 지연시간 및 응답 값을 측정합니다. 이를 활용하여 세계 여러 나라(디바이스의 국가 코드 기준)에서의 지연시간과 응답 값을 측정할 수 있습니다.
+
+> 콘솔을 통해 Network Insights 기능을 활성화하면 TOAST Logger 초기화 시에, 콘솔에 등록한 URL로 1회 요청합니다.
+
+### Network Insights 활성화
+
+1. [TOAST Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
+2. [설정] 메뉴를 선택합니다.
+3. [로그 전송 설정] 탭을 선택합니다.
+4. "Network Insights 로그"를 활성화합니다.
+
+### URL 설정
+
+1. [TOAST Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
+2. [네트워크 인사이트] 메뉴를 선택합니다.
+3. [URL 설정] 탭을 선택합니다.
+4. 측정하고 자하는 URL을 입력 후 [추가] 버튼을 클릭합니다.
