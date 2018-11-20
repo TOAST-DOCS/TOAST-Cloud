@@ -8,6 +8,11 @@
 
 * SetLoggerListener API 추가
 
+#### 변경 사항
+
+* 유니티 패키지에서 mainTemplate.gradle 제거
+    * mainTemplate.gradle 설정은 가이드 참고
+
 ## 0.9.0 (2018.09.04)
 
 ### TOAST Log & Crash
