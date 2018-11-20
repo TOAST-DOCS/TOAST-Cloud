@@ -7,6 +7,7 @@
 #### 추가 사항
 
 * SetLoggerListener API 추가
+* Network Insights 지원 
 
 #### 변경 사항
 
