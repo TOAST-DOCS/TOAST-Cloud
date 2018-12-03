@@ -62,7 +62,7 @@ public class MainApplication extends Application {
 ### 로그인 예시
 - ToastSDK의 모든 상품은 설정된 하나의 사용자 아이디를 사용합니다.
 - 사용자 아이디가 설정되지 않은 경우, 결제가 진행되지 않습니다.
-- 서비스 로그인 단계에 `사용자 아이디 설정`, `미소비 결제 내역 조회`, `활성화된 구독 상품 조회` 기능이 구현되는 것을 권장 합니다.
+- 서비스 로그인 단계에 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능이 구현되는 것을 권장합니다.
     - `구독 상품의 경우 현재 Google 스토어만 지원하고 있습니다.`
     
 
@@ -152,8 +152,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 ```
-Note : Google의 경우, 반드시 로그아웃을 구현해야 프로모션 코드가 리딤되었을 때 
-잘못된 사용자 아이디로 구매가 진행되는 것을 방지할 수 있습니다.
+Note : Google의 경우 반드시 로그아웃을 구현해야 프로모션 코드가 리딤되었을 때, 잘못된 사용자 아이디로 구매가 진행되는 것을 방지할 수 있습니다.
 ```
 
 ## TOAST IAP SDK  초기화
@@ -170,7 +169,7 @@ Note : Google의 경우, 반드시 로그아웃을 구현해야 프로모션 코
 
 
 #### ToastIapConfiguration
-- ToastIapConfiguration는 builder pattern을 사용하여 객체를 생성합니다.
+- ToastIapConfiguration에는 사용자 프로젝트 키, 스토어 종류, 통신 서버 종류를 입력합니다.
 
 | Method | Description |
 | ------ | ---- |
@@ -230,7 +229,7 @@ public class MainApplication extends Application {
 
 #### 결제 콜백 API 명세
 
-- TOAST IAP SDK 통해 결제된 결과는 PurchasesUpdatedListener에 통지됩니다.
+-  결제 결과는 PurchasesUpdatedListener에 통지됩니다.
 
 #### ToastIap
 | Method | Description |
@@ -343,8 +342,7 @@ void queryProductDetails() {
 
 ### 상품의 종류
 
-- 현재 상품의 종류는 2가지로, 일회성 상품과 구독 상품을 지원합니다.
-- 상품의 타입은 상품 목록 조회 결과의 IapProductDetails의 getProductType 함수를 사용하여 확인 가능합니다.
+- 현재 지원하는 상품의 종류는 2가지로, 일회성 상품과 구독 상품을 지원합니다.
 
 | 필드 | 설명 |
 | ------ | ------ |
@@ -353,8 +351,7 @@ void queryProductDetails() {
 
 
 ## 상품 구매 하기
-- 마켓에서 상품을 구매합니다. 
-- productId는 상품 목록 조회 결과의 IapProductDetails의 getProductId 값을 사용합니다.
+- productId를 사용하여 상품을 구매합니다.
 
 ### 상품 구매 IAP 명세
 
@@ -362,9 +359,11 @@ void queryProductDetails() {
 
 | Method | Description |
 | ------ | ---- |
-| launchPurchaseFlow | 결제 창을 표시합니다. 이때 구매할 상품 아이디를 입력 합니다. |
+| launchPurchaseFlow | 결제 창을 표시합니다. |
 
 #### IapPurchaseFlowParams
+- 구매하고자 하는 상품 정보를 IapPurchaseFlowParams에 설정합니다.
+
 | Method | Description |
 | ------ | ---- |
 | setProductId | 아이디 정보를 입력합니다. |
@@ -389,12 +388,13 @@ void launchPurchaseFlow(@NonNull Activity activity, @NonNull String productId) {
 - 현재 구독 상품은 Google Play Store만 지원합니다.
 
 ### 구독 복원 API 명세
+- 결제가 완료된 구독상품은, 사용기간이 남아있는 경우 계속해서 복원할 수 있습니다.
 
 #### ToastIap
 
 | Method | Description |
 | ------ | ---- |
-| queryActivatedPurchases | 결제가 완료된 구독상품은, 사용기간이 남아있는 경우 계속해서 복원할 수 있습니다. |
+| queryActivatedPurchases | 구독 상품을 복원합니다. |
 
 ### 구독 복원 예시
 - 사용기간이 남아있는 경우, queryActivatedPurchases를 통해 구독 상품을 복원하여, 사용자에게 지급해야 합니다.
