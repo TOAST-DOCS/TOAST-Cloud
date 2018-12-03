@@ -19,7 +19,7 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 | All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework |  |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
-| TOAST IAP | ToastIAP | ToastIAP.framework | [iOS]<br/>* StoreKit.framework<br/><br/>[Optional]<br/>* libsqlite3.tdb | |
+| TOAST IAP | ToastIAP | ToastIAP.framework | [iOS]<br/> * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 
 ## TOAST SDK를 Xcode 프로젝트에 적용하기
 
