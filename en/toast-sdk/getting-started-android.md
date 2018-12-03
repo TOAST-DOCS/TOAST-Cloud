@@ -27,11 +27,14 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 
 build.gradle 파일에 TOAST SDK에 대한 종속성을 추가합니다.
 
+> 유니티를 사용하는 경우, 별도의 종속성 설정을 해야합니다. 
+> 자세한 내용은 [유니티 가이드](./getting-started-unity/#android)를 참고해주세요.
+
 ```groovy
 dependencies {
-    // ...
-    implementation 'com.toast.android:toast-sdk:0.9.0'
-    // ...
+  // ...
+  implementation 'com.toast.android:toast-sdk:0.9.0'
+  // ...
 }
 ```
 
@@ -50,7 +53,7 @@ public class YourApplication extends Application {
         super.onCreate();
         // Initialize TOAST SDK
         ToastSdk.initialize(getApplicationContext());
-    // ...
+        // ...
     }
 }
 ```
