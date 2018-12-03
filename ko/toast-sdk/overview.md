@@ -69,7 +69,7 @@ Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합�
 * [TOAST Log & Crash > Unity](./log-collector-unity) 사용 가이드
 * [TOAST Log & Crash > Windows C++](./log-collector-windows) 사용 가이드
 
-## TOAST Log & Crash
+## TOAST IAP
 
 모바일 통합 인앱 결제 서비스를 제공합니다.
 
