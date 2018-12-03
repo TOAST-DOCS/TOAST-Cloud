@@ -12,14 +12,20 @@ Android 용 TOAST SDK의 구성은 다음과 같습니다.
 * TOAST Common SDK
 * TOAST Core SDK
 * [TOAST Logger](./log-collector-android) SDK
+* TOAST In-app Purchase Core SDK
+* [TOAST In-app Purchase Google Play Store](./iap-android) SDK
+* [TOAST In-app Purchase OneStore](./iap-android) SDK
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
 | Gradle Dependency | Service |
 | --- | --- |
-| com.toast.android:toast-common:0.9.0 | TOAST Common |
-| com.toast.android:toast-core:0.9.0 | TOAST Core |
-| com.toast.android:toast-logger:0.9.0 | TOAST Log & Crash |
+| com.toast.android:toast-common:0.12.0 | TOAST Common |
+| com.toast.android:toast-core:0.12.0 | TOAST Core |
+| com.toast.android:toast-logger:0.12.0 | TOAST Log & Crash |
+| com.toast.android:toast-iap-core:0.12.0 | TOAST In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.12.0 | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.12.0 | TOAST In-app Purchase <br>OneStore |
 
 ## TOAST SDK를 Android Studio 프로젝트에 적용하기
 
@@ -33,7 +39,7 @@ build.gradle 파일에 TOAST SDK에 대한 종속성을 추가합니다.
 ```groovy
 dependencies {
   // ...
-  implementation 'com.toast.android:toast-sdk:0.9.0'
+  implementation 'com.toast.android:toast-sdk:0.12.0'
   // ...
 }
 ```
@@ -102,6 +108,7 @@ ToastSdk.setDebugMode(true); // or false
 ## TOAST Service 사용하기
 
 * [TOAST Log & Crash](./log-collector-android) 사용 가이드
+* [TOAST In-app Purchase](./iap-android) 사용 가이드
 
 
 
