@@ -29,12 +29,12 @@ ToastSDK의 모든 상품은 설정된 하나의 사용자 아이디를 사용�
 ## TOAST IAP SDK 초기화
 
 IAP에서 발급받은 AppKey를 설정합니다.
-초기화와 동신에 미완료 구매건의 대한 재처리가 진행됩니다.
+초기화와 동시에 미완료 구매건에 대한 재처리가 진행됩니다.
 재처리 진행을 위해 사용자 아이디 설정 이후에 초기화를 하시길 권장합니다.
-재처리리를 포함하여 모든 구매의 결과는 Delegate 를 통해 전달되므로 Delegate 설정 이후에 초기화를 하거나, 초기화와 함께 Delegate를 설정 하시기를 권장합니다.
+재처리를 포함하여 모든 구매의 결과는 Delegate를 통해 전달되므로 Delegate 설정 이후에 초기화를 하거나, 초기화와 함께 Delegate를 설정하시기를 권장합니다.
 
 ``` objc
-ToastIAPConfiguration *configuration =[[ToastIAPConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
+ToastIAPConfiguration *configuration = [[ToastIAPConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
 
 [ToastIAP initWithConfiguration:configuration delegate:self];
 ```
@@ -172,7 +172,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 
 ### 상품 객체를 이용한 구매 요청
 
-상품 목록 조회 결과의 ToastProduct 객체를 이용해 구매를 요청 합니다.
+상품 목록 조회 결과의 ToastProduct 객체를 이용해 구매를 요청합니다.
 
 #### 상품 객체를 이용한 구매 API 명세
 
