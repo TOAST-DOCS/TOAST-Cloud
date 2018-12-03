@@ -26,7 +26,7 @@ dependencies {
 
 ## 서비스 로그인
 
-### 서비스 초기화
+### 초기화
 - TOAST IAP SDK를 사용하기 위해서는 ToastSdk를 초기화 해야 합니다. 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
 - `초기화를 진행하지 않은 경우, TOAST SDK는 동작하지 않습니다.`
 
@@ -55,7 +55,7 @@ public class MainApplication extends Application {
 }
 ```
 
-### 서비스 로그인
+### 로그인
 - ToastSDK의 모든 상품은 설정된 하나의 사용자 아이디를 사용합니다.
 - 사용자 아이디가 설정되지 않은 경우, 결제가 진행되지 않습니다.
 - 서비스 로그인 단계에는 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회가 구현되는 것을 권장 합니다.
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 
-### 서비스 로그아웃
+### 로그아웃
 - 서비스를 종료하는 시점에 로그아웃을 구현합니다.
 
 ```java
@@ -278,7 +278,7 @@ void queryProductDetails() {
     });
 }
 ```
-- IapProductDetails
+- IapProductDetails 결과
 
 | 필드 | 설명 |
 | -- | -- |
@@ -301,7 +301,7 @@ void queryProductDetails() {
 - 상품의 타입은 상품 목록 조회 결과의 IapProductDetails의 getProductType 함수를 사용하여 확인 가능합니다.
 
 | 필드 | 설명 |
-| -- | -- |
+| ------ | ------ |
 | CONSUMABLE | 소비 이전까지 관리되며, 소비 이후 사라지는 일회성 상품 |
 | AUTO_RENEWABLE | 일정 기간마다 자동 결제되며, 활성화 기간동안 복원 가능한 구독 상품 |
 
@@ -310,6 +310,7 @@ void queryProductDetails() {
 - 마켓에서 상품을 구매합니다. 
 - productId는 상품 목록 조회 결과의 IapProductDetails의 getProductId 값을 사용합니다.
 
+### 상품 구매
 ```java
 /**
 * 상품을 구매합니다.
@@ -356,8 +357,10 @@ void queryActivatedPurchases() {
 }
 ```
 
-### 미소비 구매 내역 조회하기
+## 미소비 구매 내역 조회하기
 - 일회성 상품의 경우 queryPurchases를 호출하여, 소비하지 않은 상품 정보를 조회합니다.
+
+### 미소비 구매 내역 조회
 
 ```java
 /**
@@ -386,10 +389,11 @@ void queryConsumablePurchases() {
 ```
 
 
-### 재처리
+## 재처리 하기
 - 완료되지 못한 결제 프로세스를 재진행시킵니다.
 - onResumed에 구현하는 것을 권장합니다.
 
+### 재처리
 ```java
 public class MainActivity extends AppCompatActivity {
     ...
@@ -404,9 +408,9 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-### 에러 코드
+## 에러 코드
 
-## SDK
+### SDK
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
@@ -424,7 +428,7 @@ public class MainActivity extends AppCompatActivity {
 | USER_ID_NOT_REGISTERED | 9 | 사용자 아이디가 등록되지 않음<br>User ID Is not registered. |
 | UNDEFINED_ERROR | 9999 | 정의되지 않은 에러<br>Undefined error. |
 
-## Mobill
+### Mobill
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
@@ -434,7 +438,7 @@ public class MainActivity extends AppCompatActivity {
 | CONSUMED_PURCHASE | 104 | 구매가 이미 소비되었습니다. (5024)<br>Purchase already consumed. |
 | REFUNDED_PURCHASE | 105 | 환불된 구매입니다. (5025)<br>Purchase already refunded. |
 
-## OneStore
+### OneStore
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
