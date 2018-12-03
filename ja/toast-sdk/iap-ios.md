@@ -391,6 +391,43 @@ ToastProductTypeAutoRenewableSubscription = 2
 }
 ```
 
+## 구독 상품 관리 페이지 제공 방법
+
+자동갱신형 구독 상품을 사용할 경우 사용자에게 구독 관리 페이지를 제공해야합니다.
+> https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19
+
+별도의 UI를 구성하는것이 아닌 아래의 URL을 호출하여 구독 관리 페이지를 표시해야합니다.
+### Safari를 통한 구독 관리 페이지 연결 방법
+```
+https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
+```
+```objc
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
+```
+#### Safari를 통한 관리페이지 호출의 경우 경우 다음과 같은 순서로 관리 페이지가 표시됩니다.
+1. Safari Open
+2. Popup 노출 : itunse Store에서 열겠습니까?
+3. iTunse Store Open
+4. Popup으로 구독 관리 페이지 연결
+
+* iOS Device의 좌측 상단의 이전앱으로 돌아가기에 `Safari`가 나타납니다.
+
+
+### Scheme을 통한 구독 관리 페이지 연결 방법
+```
+itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
+```
+
+```objc
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
+```
+#### Scheme을 통한 관리페이지 호출의 경우 경우 다음과 같은 순서로 관리 페이지가 표사됩니다.
+1. App Store의 구독 관리 페이지가 App To App 호출로 바로 연결됩니다.
+
+* iOS Device의 좌측 상단의 이전앱으로 돌아가기에 `Service App`이 나타납니다.
+
+
+
 ## (구) IAP SDK 호환성 유지
 
 (구) IAP SDK 와의 호환성 유지를 위해 (구) IAP SDK 에서 생성된 미완료 구매건의 재처리 기능을 제공합니다.
@@ -467,3 +504,4 @@ typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorResponseInvalid = 104,             // 서버 응답 오류
 };
 ```
+
