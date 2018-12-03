@@ -74,8 +74,28 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 - 옵션을 활성화하면 Assets/Plugins/Android 폴더에 mainTemplate.gradle이 생성됩니다.
 
 ##### mainTemplate.gradle 설정
-- mainTemplate.gradle에 공통으로 설정해야하는 옵션은 없습니다.
-- 각 모듈 가이드의 mainTemplate.gradle 설정 방법을 확인해주세요.
+- mainTemplate.gradle에 JCenter와 Google 리포지토리를 추가해야합니다.
+- 각 모듈별로 안드로이드 유니티 플러그인이 있으며, 사용을 원하는 모듈의 플러그인을 mainTemplate.gradle에 추가해야합니다.
+    - 안드로이드 유니티 플러그인 추가에 대한 가이드는 모듈별 가이드를 확인해주세요.
+
+```groovy
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url 'https://maven.google.com'
+        }
+
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+```
+
+##### Proguard 설정
+- 안드로이드 유니티 플러그인 0.12.0 이상의 버전을 사용하면 별도의 설정이 필요없습니다.
+    - Proguard 적용을 원하시는 경우, 0.12.0 이상으로 업데이트 해주시기 바랍니다.
 
 ##### NDK 관련 에러 발생시
 - Gradle을 설정하고 빌드를 하면, 아래와 같은 에러가 발생할 수 있습니다.
@@ -86,6 +106,11 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
     - IL2CPP 빌드에 필요한 NDK는 Android SDK 하위가 아닌 별도의 폴더로 관리하는게 버전 관리에 용이합니다.
 
 ### iOS
+
+#### 설정 수정
+* iOS에서 TOAST SDK를 사용하기 위해서는 Xcode에서 아래 설정을 추가해야 합니다.
+    * Other Linker Flag 옵션에 반드시 **-ObjC**, **-lc++** 옵션을 추가해야합니다.
+    * Enable Bitcode 옵션을 **NO**로 설정해야합니다.
 
 #### Build Settings 설정하기
 
