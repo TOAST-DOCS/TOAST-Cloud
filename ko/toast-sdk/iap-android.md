@@ -6,15 +6,13 @@
 2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
 3\. IAP에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
-## TOAST IAP SDK Android 사용 가이드
-
-### 개발환경
+## 개발환경
 - Android Studio IDE 3.1.4 이상
 - Android SDK Version은 4.0.3 (API Level 15) 이상
 - Android Stuiod Gradle 설정
 
-### 라이브러리 추가
-- implementation을 사용하여, build.gradle에 라이브러리를 추가합니다.
+## 라이브러리 설정
+- build.gradle에 라이브러리를 추가합니다.
 
 ```groovy
 dependencies {
@@ -22,11 +20,14 @@ dependencies {
 }
 ```
 
-### 지원 마켓
+## 지원 마켓
 
-- TOAST IAP SDK는 Google, OneStore 마켓을 지원합니다.
+- Google 
+- OneStore
 
-### TOAST IAP SDK 초기화
+## TOAST IAP SDK 
+
+### 초기화
 
 - TOAST IAP SDK를 사용하기 위해서는 먼저 ToastSdk를 초기화 해야 합니다.
 - 이후 ToastIap를 초기화 합니다. 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.

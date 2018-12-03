@@ -10,8 +10,9 @@ TOAST SDK는 [TOAST](https://toast.com/)에서 제공하는 다양한 서비스�
 TOAST SDK는 다음과 같은 서비스를 제공합니다.
 
 * [Log & Crash Search](https://toast.com/service/analytics/log_crash_search)
+* [IAP](https://www.toast.com/service/mobile-service/iap)
 
-> IAP, PUSH 등 개별 SDK를 제공하는 서비스는 앞으로 TOAST SDK를 통해 개발할 수 있도록 지원할 예정입니다.
+> PUSH 등 개별 SDK를 제공하는 서비스는 앞으로 TOAST SDK를 통해 개발할 수 있도록 지원할 예정입니다.
 
 ## 특징
 
@@ -67,3 +68,22 @@ Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합�
 * [TOAST Log & Crash > iOS](./log-collector-ios) 사용 가이드
 * [TOAST Log & Crash > Unity](./log-collector-unity) 사용 가이드
 * [TOAST Log & Crash > Windows C++](./log-collector-windows) 사용 가이드
+
+## TOAST Log & Crash
+
+모바일 통합 인앱 결제 서비스를 제공합니다.
+
+* [IAP 서비스 확인하기](https://www.toast.com/service/mobile-service/iap)
+
+### 주요 기능
+
+| 기능 | 설명 |
+| -- | -- |
+| 일반 결제 | 일회성 상품을 판매할 수 있습니다. |
+| 구독 결제 | 구독 상품을 판매할 수 있습니다. |
+| 재처리 | 불안전하게 종료된 구매 프로세스를 복원할 수 있습니다. |
+
+### 사용 가이드
+
+* [TOAST IAP > Android](./iap-android) 사용 가이드
+* [TOAST IAP > iOS](./iap-ios) 사용 가이드
