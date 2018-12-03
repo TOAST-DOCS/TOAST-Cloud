@@ -59,7 +59,7 @@ public class MainApplication extends Application {
 }
 ```
 
-### 로그인 예시
+### 로그인
 - ToastSDK의 모든 상품은 설정된 하나의 사용자 아이디를 사용합니다.
 - 사용자 아이디가 설정되지 않은 경우, 결제가 진행되지 않습니다.
 - 서비스 로그인 단계에 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능이 구현되는 것을 권장합니다.
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 
-### 로그아웃 예시
+### 로그아웃
 - 서비스를 종료하는 시점에 로그아웃을 구현합니다.
 
 ```java
@@ -160,11 +160,10 @@ Note : Google의 경우 반드시 로그아웃을 구현해야 프로모션 코�
 ### 초기화 API 명세
 
 #### ToastIap
-
 - ToastIap는 초기화 함수의 파라미터로 ToastIapConfiguration 객체를 받습니다.
 
 | Method | Description |
-| ------ | ---- |
+| ------ | ----- |
 | initialize | ToastIapConfiguration을 입력합니다. |
 
 
@@ -177,24 +176,13 @@ Note : Google의 경우 반드시 로그아웃을 구현해야 프로모션 코�
 | setStoreCode | storeCode를 입력합니다. |
 | setServiceZone | serviceZone을 입력합니다. |
 
-- ToastIapConfiguration는 아래와 같은 정보를 반환합니다.
-
-| Method | Description |
-| ------ | ---- |
-| getContext | context를 반환합니다. |
-| getAppKey | appkey를 반환합니다. |
-| getStoreCode | storeCode를 반환합니다. |
-| getServiceZone | serviceZone을 반환합니다. |
-
 #### ServiceZone
-
 | Kind | Description |
 | ------ | ---- |
 | REAL | 리얼 서버로 초기화 됩니다. |
 | ALPHA | 알파 서버로 초기화 됩니다. |
 
 #### StoreCode
-
 | Kind | Description |
 | ------ | ---- |
 | IapStoreCode.GOOGLE_PLAY_STORE | 구글 스토어로 초기화 됩니다. |
