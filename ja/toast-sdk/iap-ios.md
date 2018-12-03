@@ -431,6 +431,9 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ## (구) IAP SDK 호환성 유지
 
 (구) IAP SDK 와의 호환성 유지를 위해 (구) IAP SDK 에서 생성된 미완료 구매건의 재처리 기능을 제공합니다.
+>(구) IAP SDK 와의 호환성 유지를 위한 기능을 사용하려면 `sqlite3 Library(libsqlite3.tdb)`를 추가로 Link 해야합니다.
+
+![linked_sqlite3](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3.png)
 
 ### 미완료 결제 재처리 API 명세
 
