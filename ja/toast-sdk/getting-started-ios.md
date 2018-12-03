@@ -18,8 +18,8 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 | --- | --- | --- | --- | --- | 
 | All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework |  |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
-| TOAST Log & Crash | ToastLogger | ToastLogger.framework | | ENABLE_BITCODE = NO; |
-| TOAST IAP | ToastIAP | ToastIAP.framework | StoreKit.framework | |
+| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
+| TOAST IAP | ToastIAP | ToastIAP.framework | [iOS]<br/>* StoreKit.framework<br/><br/>[Optional]<br/>* libsqlite3.tdb | |
 
 ## TOAST SDK를 Xcode 프로젝트에 적용하기
 
@@ -60,7 +60,7 @@ TOAST Logger의 Crash Report 기능을 사용하기 위해서는 함께 배포�
 
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
 
-TOAST IAP를 사용하기 위해서는 StoreKit.framework를 추가로 Link해야 합니다.
+> TOAST IAP를 사용하기 위해서는 StoreKit.framework를 추가로 Link해야 합니다.
 
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
