@@ -394,9 +394,8 @@ ToastProductTypeAutoRenewableSubscription = 2
 ## 구독 상품 관리 페이지 제공 방법
 
 자동갱신형 구독 상품을 사용할 경우 사용자에게 구독 관리 페이지를 제공해야합니다.
-```
-https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19
-```
+> [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
+
 별도의 UI를 구성하는것이 아닌 아래의 URL을 호출하여 구독 관리 페이지를 표시해야합니다.
 ### Safari를 통한 구독 관리 페이지 연결 방법
 ```
