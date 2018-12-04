@@ -6,6 +6,26 @@
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
+## Cococapods 적용하기
+
+Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
+
+```podspec
+platform :ios, '8.0'
+use_frameworks!
+
+target '{YOUR PROJECT TARGET NAME}' do
+    pod 'ToastLogger'
+end
+```
+
+생성된 Workspace를 열어 사용자고자하는 SDK를 Import 합니다.
+
+```objc
+#import <ToastCore/ToastCore.h>
+#import <ToastLogger/ToastLogger.h>
+```
+
 ## TOAST Logger SDK 초기화
 
 Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.

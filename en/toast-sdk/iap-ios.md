@@ -6,6 +6,26 @@
 2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
 3. IAP에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
+## Cococapods 적용하기
+
+Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
+
+```podspec
+platform :ios, '8.0'
+use_frameworks!
+
+target '{YOUR PROJECT TARGET NAME}' do
+    pod 'ToastIAP'
+end
+```
+
+생성된 Workspace를 열어 사용자고자하는 SDK를 Import 합니다.
+
+```objc
+#import <ToastCore/ToastCore.h>
+#import <ToastIAP/ToastIAP.h>
+```
+
 ## 서비스 로그인
 
 ToastSDK의 모든 상품은 설정된 하나의 사용자 아이디를 사용합니다.
