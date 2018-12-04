@@ -70,7 +70,7 @@ ToastIapConfiguration configuration =
 ## 인앱 결제 초기화
 
 - ToastIap.initialize를 호출하여 TOAST IAP를 초기화 합니다.
-- 인앱 결제를 초기화하기 전에 반드시 [TOAST SDK 초기화](https://alpha-docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#toast-sdk_1) 해야 합니다.
+- 인앱 결제를 초기화하기 전에 반드시 [TOAST SDK 초기화](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#toast-sdk_1) 해야 합니다.
 
 ### 인앱 결제 초기화 API 명세
 
@@ -116,7 +116,7 @@ public class MainApplication extends Application {
 ## 서비스 로그인
 
 * TOAST SDK의 모든 상품은 설정된 하나의 사용자 아이디를 사용합니다.
-* [ToastSdk.setUserId](https://alpha-docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)를 호출하여 사용자 아이디를 설정할 수 있습니다.
+* [ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)를 호출하여 사용자 아이디를 설정할 수 있습니다.
 * 사용자 아이디가 설정되지 않은 경우, 결제가 진행되지 않습니다.
 * 서비스 로그인 단계에 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능이 구현되는 것을 권장합니다.
 
@@ -282,7 +282,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
 ## 미소비 결제 조회하기
 
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE) 정보를 조회합니다.
-* 사용자에게 상품을 지급된 후 [Consume API](https://alpha-docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
+* 사용자에게 상품을 지급된 후 [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 * 미소비 결제는 ToastIap.queryConsumablePurchases() 메소드를 사용하여 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.
 
