@@ -30,7 +30,6 @@ Unity 용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 | Toast/Common | TOAST SDK의 공통 모듈 폴더 | All |
 | Toast/Logger | TOAST Logger 모듈 폴더 | Logger, Sample |
 | Toast/Sample | SDK 샘플 폴더 | Sample |
-| Plugins | Gradle 빌드를 위한 mainTemplate.gradle이 있는 폴더 | All |
 
 ## TOAST SDK를 Unity 프로젝트에 적용하기
 
@@ -64,12 +63,20 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package 가 있습니다. Sample�
 1. File > Build Settings > Android 선택
 2. Build System을 Gradle (New) 로 선택
 3. Build
-	- Signing 관련 에러가 발생할 경우 Development Build 옵션을 On 하고 빌드를 진행하면 됩니다.
 
-#### Custom Gradle Template 활성화
+> Signing 관련 에러가 발생할 경우 Development Build 옵션을 On 하고 빌드를 진행하면 됩니다.
+
+#### Gradle Template 파일 생성
+##### 2017.2 이상
 - Edit > Project Settings > Player 의 Publishing Settings의 Custom Gradle Template를 활성화합니다.
     - Build System을 Gradle로 선택해야 Custom Gradle Template 토글이 활성화됩니다.
 - 옵션을 활성화하면 Assets/Plugins/Android 폴더에 mainTemplate.gradle이 생성됩니다.
+
+##### 2017.2 미만
+- Unity 설치 폴더에 있는 mainTemplate.gradle 파일을 Assets/Plugins/Android 폴더로 복사합니다.
+
+> 윈도우 : (유니티 설치 폴더)\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates
+> macOS : (유니티 설치 폴더)/PlaybackEngines/AndroidPlayer/Tools/GradleTemplates
 
 #### mainTemplate.gradle 설정
 - mainTemplate.gradle에 JCenter와 Google 리포지토리를 추가해야합니다.
@@ -108,8 +115,12 @@ allprojects {
 
 ### Xcode 빌드 설정 수정
 * iOS에서 TOAST SDK를 사용하기 위해서는 Xcode에서 아래 설정을 추가해야 합니다.
-    * Other Linker Flag 옵션에 반드시 **-ObjC**, **-lc++** 옵션을 추가해야합니다.
-    * Enable Bitcode 옵션을 **NO**로 설정해야합니다.
+
+#### Other Linker Flag 옵션
+* Other Linker Flag 옵션에 **-ObjC**, **-lc++** 을 추가합니다.
+
+#### Enable Bitcode 옵션
+* Enable Bitcode 옵션을 **NO**로 설정합니다.
 
 ## TOAST SDK 초기화 하기
 
