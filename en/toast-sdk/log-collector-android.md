@@ -7,6 +7,16 @@
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 4\. [TOAST SDK를 초기화](./getting-started-android/#toast-sdk_1)합니다.
 
+## 라이브러리 설정
+- 아래 코드를 build.gradle에 추가합니다.
+
+```groovy
+dependencies {
+    implementation 'com.toast.android:toast-logger:0.12.0'
+    ...
+}
+```
+
 ## TOAST Logger SDK 초기화
 
 onCreate() 메서드에서 Logger를 초기화합니다.
