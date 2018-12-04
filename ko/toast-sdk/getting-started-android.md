@@ -33,12 +33,12 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 
 TOAST SDK의 모든 서비스를 사용하려면 아래와 같이 종속성을 설정합니다.
 
-> 유니티를 사용하는 경우, 별도의 종속성 설정을 해야합니다.
+> 유니티를 사용하는 경우, 별도의 종속성 설정을 해야합니다. 
 > 자세한 내용은 [유니티 가이드](./getting-started-unity/#android)를 참고해주세요.
 
 ```groovy
 dependencies {
-implementation 'com.toast.android:toast-sdk:0.12.0'
+  implementation 'com.toast.android:toast-sdk:0.12.0'
 }
 ```
 
@@ -53,7 +53,7 @@ TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Androi
 
 ## TOAST SDK 초기화하기
 
-- TOAST IAP SDK를 사용하기 위해서는 ToastSdk를 초기화 해야 합니다.
+- TOAST IAP SDK를 사용하기 위해서는 ToastSdk를 초기화 해야 합니다. 
 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
 
 - `초기화를 진행하지 않은 경우, TOAST SDK는 동작하지 않습니다.`
@@ -73,26 +73,26 @@ public static void initialize(Context context)
 
 ```java
 public class MainApplication extends Application {
-@Override
-public void onCreate() {
-super.onCreate();
-initializeToastSdk();
-}
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initializeToastSdk();
+    }
 
-/**
-* ToastSdk 를 초기화합니다.
-* <p>
-* ToastSdk 디버그 모드를 활성화하려면 ToastSdk.setDebugMode(boolean) 호출하여 true 로 설정합니다.
-* <pre>
-* {@code
-* ToastSdk.setDebugMode(true);
-* }
-* </pre>
-*/
-private void initializeToastSdk() {
-ToastSdk.setDebugMode(true);
-ToastSdk.initialize(getApplicationContext());
-}
+    /**
+     * ToastSdk 를 초기화합니다.
+     * <p>
+     * ToastSdk 디버그 모드를 활성화하려면 ToastSdk.setDebugMode(boolean) 호출하여 true 로 설정합니다.
+     * <pre>
+     * {@code
+     * ToastSdk.setDebugMode(true);
+     * }
+     * </pre>
+     */
+    private void initializeToastSdk() {
+        ToastSdk.setDebugMode(true);
+        ToastSdk.initialize(getApplicationContext());
+    }
 }
 ```
 
@@ -167,3 +167,6 @@ ToastSdk.setDebugMode(false);
 
 * [TOAST Log & Crash](./log-collector-android) 사용 가이드
 * [TOAST In-app Purchase](./iap-android) 사용 가이드
+
+
+
