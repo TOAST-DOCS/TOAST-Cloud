@@ -45,7 +45,7 @@ dependencies {
 TOAST SDK가 제공하는 상품별 설정 방법은 다음과 같습니다.
 
 - [TOAST Logger 라이브러리 설정](./log-collector-android/#_1)
-- [TOAST In-app Purchase 라이브러리 설정](./iap-android/#_1)
+- [TOAST In-app Purchase 라이브러리 설정](./iap-android/#_2)
 
 ### 2. 바이너리 다운로드로 TOAST SDK 적용하기
 
