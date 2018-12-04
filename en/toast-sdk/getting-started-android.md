@@ -38,9 +38,7 @@ build.gradle 파일에 TOAST SDK에 대한 종속성을 추가합니다.
 
 ```groovy
 dependencies {
-  // ...
   implementation 'com.toast.android:toast-sdk:0.12.0'
-  // ...
 }
 ```
 
@@ -50,16 +48,45 @@ TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Androi
 
 ## TOAST SDK 초기화하기
 
-TOAST SDK 사용을 위한 초기화를 Application#onCreate에서 수행합니다.
+- TOAST IAP SDK를 사용하기 위해서는 ToastSdk를 초기화 해야 합니다. 
+초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
+
+- `초기화를 진행하지 않은 경우, TOAST SDK는 동작하지 않습니다.`
+
+### 초기화 API 명세
 
 ```java
-public class YourApplication extends Application {
+/* ToastSdk.java */
+public static void initialize(Context context)
+```
+
+| Parameters | |
+| -- | -- |
+| applicationContext | Context: Application Context |
+
+### 초기화 예시
+
+```java
+public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // Initialize TOAST SDK
+        initializeToastSdk();
+    }
+
+    /**
+     * ToastSdk 를 초기화합니다.
+     * <p>
+     * ToastSdk 디버그 모드를 활성화하려면 ToastSdk.setDebugMode(boolean) 호출하여 true 로 설정합니다.
+     * <pre>
+     * {@code
+     * ToastSdk.setDebugMode(true);
+     * }
+     * </pre>
+     */
+    private void initializeToastSdk() {
+        ToastSdk.setDebugMode(true);
         ToastSdk.initialize(getApplicationContext());
-        // ...
     }
 }
 ```
@@ -70,18 +97,31 @@ ToastSDK에 사용자 아이디를 설정할 수 있습니다.
 설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
 ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
 
-### UserID API 명세
+### UserID 설정 API 명세
 
 ```java
-// ToastSdk class
+/* ToastSdk.java */
 public static void setUserId(String userId);
 ```
 
-### UserID 설정 사용 예
+| Parameters | |
+| -- | -- |
+| userId | String: 사용자 아이디.|
+
+### UserID 설정 예
+
+#### 로그인
 
 ```java
-// Set User ID.
-ToastSdk.setUserId("user_identifier");
+// Login.
+ToastSdk.setUserId(userId);
+```
+
+#### 로그아웃
+
+```java
+// Logout.
+ToastSdk.setUserId(null);
 ```
 
 ## 디버그 모드 설정하기
@@ -92,15 +132,28 @@ TOAST SDK 문의를 하실 경우, 디버그 모드를 활성화해서 전달해
 ### 디버그 모드 설정 API 명세
 
 ```java
-// ToastSdk class
+/* ToastSdk.java */
 public static void setDebugMode(boolean debug);
 ```
 
+| Parameters | |
+| -- | -- |
+| debug | boolean: 디버그 모드를 활성화하려면 true, 아니면 false.|
+
 ### 디버그 모드 설정 사용 예
 
+#### 디버그 모드 활성화
+
 ```java
-// Set Debug Mode.
-ToastSdk.setDebugMode(true); // or false
+// Enable debug mode.
+ToastSdk.setDebugMode(true);
+```
+
+#### 디버그 모드 비활성화
+
+```java
+// Disable debug mode.
+ToastSdk.setDebugMode(false);
 ```
 
 > (주의) 앱을 릴리즈할 경우, 반드시 디버그 모드를 비활성화 해야 합니다.
