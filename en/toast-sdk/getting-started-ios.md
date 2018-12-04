@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 사용 가이드 > 시작하기 > iOS
+## TOAST > TOAST SDK Guide > Getting Started > Android
 
 ## 지원 환경
 
