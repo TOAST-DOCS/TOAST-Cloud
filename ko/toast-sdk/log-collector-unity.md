@@ -7,7 +7,9 @@
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 4\. [TOAST SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
 
-### mainTemplate.gradle 설정 방법
+### Android 설정
+
+#### Gradle 빌드 설정
 - mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
 
 ```groovy
@@ -19,6 +21,36 @@ dependencies {
     }
 }
 ```
+
+### iOS 설정
+
+#### Player Settings 설정
+
+* Unity 의 iOS 빌드 설정에는 Logger 가 서버로 로그를 전송하는데 영향을 주는 몇가지 설정들이 있습니다.
+* 이 설정들의 효과를 간략히 설명하고 Logger 의 권장 설정에 대해 설명합니다.
+
+| 메뉴 | 목록 | 설정 | 권장 설정 |
+| --- | --- | --- | ----- |
+| Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit |
+| Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API | Disabled |
+| Edit > Project Settings > Player | Other Settings | Script Call Optimization | Slow and Safe |
+
+##### On .Net UnhandledException
+
+* **Silent Exit** 값을 권장합니다.
+    * On .Net UnhandledException를 Crash로 설정할 경우 예외 발생 시, 즉시 앱이 종료됩니다. 
+    * Silent Exit로 설정해야 Unity Exception을 캡처할 수 있습니다.
+
+##### Enable CrashReport API
+
+* **Disabled** 값을 권장합니다.
+    * Unity CrashReporter API 활성화 여부를 표현하는 값입니다. 
+    * 활성화 되어있으면 Logger 의 크래시 로그 수집에 영향을 줄 수 있습니다.
+
+##### Script Call Optimization
+
+* **Slow and Safe** 값을 권장합니다.
+    * Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
 
 ## TOAST Logger SDK 초기화
 
