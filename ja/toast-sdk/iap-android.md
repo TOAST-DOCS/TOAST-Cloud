@@ -200,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
 ## 상품 목록 조회하기
 
 * IAP Console에 등록된 상품 중 사용 가능한 상품 목록을 조회합니다.
-* IAP Console에 등록된 상품 중 구매 가능한 상품은 [IapProductDetails]() 리스트(Product Details List)로 반환됩니다.
-* IAP Console에 등록된 상품 중 스토어에 등록되지 않은 상품은 [IapProduct]() 리스트(Invalid Product List)로 반환됩니다.
+* IAP Console에 등록된 상품 중 구매 가능한 상품은 [IapProductDetails](./iap-android/#iapproductdetails) 리스트(Product Details List)로 반환됩니다.
+* IAP Console에 등록된 상품 중 스토어에 등록되지 않은 상품은 [IapProduct](./iap-android/#iapproduct) 리스트(Invalid Product List)로 반환됩니다.
 
 ### 상품 목록 조회 API 명세
 
@@ -282,7 +282,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
 ## 미소비 결제 조회하기
 
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE) 정보를 조회합니다.
-* 사용자에게 상품을 지급된 후 [Consume API](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/api-guide/#request)를 사용하여 상품을 소비합니다.
+* 사용자에게 상품을 지급된 후 [Consume API](https://alpha-docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 * 미소비 결제는 ToastIap.queryConsumablePurchases() 메소드를 사용하여 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.
 

@@ -16,8 +16,8 @@
 
 ```groovy
 dependencies {
-implementation 'com.toast.android:toast-iap-google:0.12.0'
-...
+    implementation 'com.toast.android:toast-iap-google:0.12.0'
+    ...
 }
 ```
 
@@ -25,8 +25,8 @@ implementation 'com.toast.android:toast-iap-google:0.12.0'
 
 ```groovy
 dependencies {
-implementation 'com.toast.android:toast-iap-onestore:0.12.0'
-...
+    implementation 'com.toast.android:toast-iap-onestore:0.12.0'
+    ...
 }
 ```
 
@@ -61,10 +61,10 @@ implementation 'com.toast.android:toast-iap-onestore:0.12.0'
 
 ```java
 ToastIapConfiguration configuration =
-ToastIapConfiguration.newBuilder(getApplicationContext())
-.setAppKey(YOUR_APP_KEY)
-.setStoreCode(IapStoreCode.GOOGLE_PLAY_STORE)
-.build();
+    ToastIapConfiguration.newBuilder(getApplicationContext())
+                .setAppKey(YOUR_APP_KEY)
+                .setStoreCode(IapStoreCode.GOOGLE_PLAY_STORE)
+                .build();
 ```
 
 ## 인앱 결제 초기화
@@ -88,28 +88,28 @@ public static void initialize(ToastIapConfiguration configuration)
 
 ### 인앱 결제 초기화 예시
 
-- ToastIap를 초기화 합니다.
+- ToastIap를 초기화 합니다. 
 
 > Note: 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
-
+    
 ```java
 public class MainApplication extends Application {
-@Override
-public void onCreate() {
-super.onCreate();
-initializeToastIap();
-}
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initializeToastIap();
+    }
 
-/**
-* ToastIap 를 초기화합니다.
-*/
-private void initializeToastIap() {
-ToastIapConfiguration configuration = ToastIapConfiguration.newBuilder(getApplicationContext())
-.setAppKey(YOUR_APP_KEY)
-.setStoreCode(IapStoreCode.GOOGLE_PLAY_STORE)
-.build();
-ToastIap.initialize(configuration);
-}
+    /**
+     * ToastIap 를 초기화합니다.
+     */
+    private void initializeToastIap() {
+        ToastIapConfiguration configuration = ToastIapConfiguration.newBuilder(getApplicationContext())
+                .setAppKey(YOUR_APP_KEY)
+                .setStoreCode(IapStoreCode.GOOGLE_PLAY_STORE)
+                .build();
+        ToastIap.initialize(configuration);
+    }
 }
 ```
 
@@ -161,54 +161,54 @@ public static void unregisterPurchasesUpdatedListener(IapService.PurchasesUpdate
 
 ```java
 public class MainActivity extends AppCompatActivity {
-/**
-* 인앱에서 소비성 상품, 구독, 프로모션 상품을 구매했을 때 결과를 통지합니다.
-*/
-private IapService.PurchasesUpdatedListener mPurchaseUpdatedListener =
-new IapService.PurchasesUpdatedListener() {
-@Override
-public void onPurchasesUpdated(@NonNull List<IapPurchaseResult> purchaseResults) {
-for (IapPurchaseResult purchaseResult : purchaseResults) {
-if (purchaseResult.isSuccess()) {
-// 성공
-IapPurchase purchase = purchaseResult.getPurchase();
-} else {
-// 실패
-}
-}
-}
-};
+    /**
+     * 인앱에서 소비성 상품, 구독, 프로모션 상품을 구매했을 때 결과를 통지합니다.
+     */
+    private IapService.PurchasesUpdatedListener mPurchaseUpdatedListener =
+            new IapService.PurchasesUpdatedListener() {
+                @Override
+                public void onPurchasesUpdated(@NonNull List<IapPurchaseResult> purchaseResults) {
+                    for (IapPurchaseResult purchaseResult : purchaseResults) {
+                        if (purchaseResult.isSuccess()) {
+                            // 성공
+                            IapPurchase purchase = purchaseResult.getPurchase();
+                        } else {
+                            // 실패
+                        }
+                    }
+                }
+            };
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-super.onCreate(savedInstanceState);
-setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-// onCreate가 호출되었을 때 Listener를 등록합니다.
-ToastIap.registerPurchasesUpdatedListener(mPurchaseUpdatedListener);
-}
+        // onCreate가 호출되었을 때 Listener를 등록합니다.
+        ToastIap.registerPurchasesUpdatedListener(mPurchaseUpdatedListener);
+    }
 
-@Override
-protected void onDestroy() {
-super.onDestroy();
-// onDestroy()가 호출되었을 때 반드시 Listener를 제거합니다.
-ToastIap.unregisterPurchasesUpdatedListener(mPurchaseUpdatedListener);
-}
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // onDestroy()가 호출되었을 때 반드시 Listener를 제거합니다.
+        ToastIap.unregisterPurchasesUpdatedListener(mPurchaseUpdatedListener);
+    }
 }
 ```
 
 ## 상품 목록 조회하기
 
 * IAP Console에 등록된 상품 중 사용 가능한 상품 목록을 조회합니다.
-* IAP Console에 등록된 상품 중 구매 가능한 상품은 [IapProductDetails]() 리스트(Product Details List)로 반환됩니다.
-* IAP Console에 등록된 상품 중 스토어에 등록되지 않은 상품은 [IapProduct]() 리스트(Invalid Product List)로 반환됩니다.
+* IAP Console에 등록된 상품 중 구매 가능한 상품은 [IapProductDetails](./iap-android/#iapproductdetails) 리스트(Product Details List)로 반환됩니다.
+* IAP Console에 등록된 상품 중 스토어에 등록되지 않은 상품은 [IapProduct](./iap-android/#iapproduct) 리스트(Invalid Product List)로 반환됩니다.
 
 ### 상품 목록 조회 API 명세
 
 ```java
 /* ToastIap.java */
 public static void queryProductDetails(Activity activity,
-IapService.ProductDetailsResponseListener listener)
+                                       IapService.ProductDetailsResponseListener listener)
 ```
 | Method | Parameters |  |
 | ---- | ---- | ---- |
@@ -219,27 +219,27 @@ IapService.ProductDetailsResponseListener listener)
 
 ```java
 /**
-* 구매 가능한 상품을 조회합니다.
-* <p>
-* productDetails : 구매 가능한 상품 목록
-* invalidProducts : TOAST IAP 콘솔에 상품을 등록하였지만 스토어에 등록되지 않은 상품
-*/
+ * 구매 가능한 상품을 조회합니다.
+ * <p>
+ * productDetails : 구매 가능한 상품 목록
+ * invalidProducts : TOAST IAP 콘솔에 상품을 등록하였지만 스토어에 등록되지 않은 상품
+ */
 void queryProductDetails() {
-IapService.ProductDetailsResponseListener responseListener =
-new IapService.ProductDetailsResponseListener() {
-@Override
-public void onProductDetailsResponse(@NonNull IapResult result,
-@Nullable List<IapProductDetails> productDetails,
-@Nullable List<IapProduct> invalidProducts) {
-if (result.isSuccess()) {
-// 조회성공
-} else {
-// 조회실패
-}
-}
-}
+    IapService.ProductDetailsResponseListener responseListener =
+            new IapService.ProductDetailsResponseListener() {
+                @Override
+                public void onProductDetailsResponse(@NonNull IapResult result,
+                                                     @Nullable List<IapProductDetails> productDetails,
+                                                     @Nullable List<IapProduct> invalidProducts) {
+                    if (result.isSuccess()) {
+                        // 조회성공
+                    } else {
+                        // 조회실패
+                    }
+                }
+            }
 
-ToastIap.queryProductDetails(MainActivity.this, responseListener);
+    ToastIap.queryProductDetails(MainActivity.this, responseListener);
 }
 ```
 
@@ -257,7 +257,7 @@ ToastIap.queryProductDetails(MainActivity.this, responseListener);
 ```java
 /* ToastIap.java */
 public static void launchPurchaseFlow(Activity activity,
-IapPurchaseFlowParams params)
+                                      IapPurchaseFlowParams params)
 ```
 
 | Method | Parameters |  |
@@ -269,20 +269,20 @@ IapPurchaseFlowParams params)
 
 ```java
 /**
-* 상품을 구매합니다.
-*/
+ * 상품을 구매합니다.
+ */
 void launchPurchaseFlow(Activity activity, String productId) {
-IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
-.setProductId(productId)
-.build();
-ToastIap.launchPurchaseFlow(activity, params);
+    IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
+            .setProductId(productId)
+            .build();
+    ToastIap.launchPurchaseFlow(activity, params);
 }
 ```
 
 ## 미소비 결제 조회하기
 
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE) 정보를 조회합니다.
-* 사용자에게 상품을 지급된 후 [Consume API](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/api-guide/#request)를 사용하여 상품을 소비합니다.
+* 사용자에게 상품을 지급된 후 [Consume API](https://alpha-docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 * 미소비 결제는 ToastIap.queryConsumablePurchases() 메소드를 사용하여 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.
 
@@ -291,7 +291,7 @@ ToastIap.launchPurchaseFlow(activity, params);
 ```java
 /* ToastIap.java */
 public static void queryConsumablePurchases(Activity activity,
-IapService.PurchasesResponseListener listener)
+                                            IapService.PurchasesResponseListener listener)
 ```
 
 | Method | Parameters |  |
@@ -303,22 +303,22 @@ IapService.PurchasesResponseListener listener)
 
 ```java
 /**
-* 미소비 결제 내역을 조회합니다.
-*/
+ * 미소비 결제 내역을 조회합니다.
+ */
 void queryConsumablePurchases() {
-PurchasesResponseListener responseListenr =
-new IapService.PurchasesResponseListener() {
-@Override
-public void onPurchasesResponse(@NonNull IapResult result,
-@Nullable List<IapPurchase> purchases) {
-if (result.isSuccess()) {
-// 성공
-} else {
-// 실패
-}
-}
-};
-ToastIap.queryConsumablePurchases(MainActivity.this, responseListenr);
+    PurchasesResponseListener responseListenr =
+            new IapService.PurchasesResponseListener() {
+                @Override
+                public void onPurchasesResponse(@NonNull IapResult result,
+                                                @Nullable List<IapPurchase> purchases) {
+                    if (result.isSuccess()) {
+                        // 성공
+                    } else {
+                        // 실패
+                    }
+                }
+            };
+    ToastIap.queryConsumablePurchases(MainActivity.this, responseListenr);
 }
 ```
 
@@ -337,7 +337,7 @@ ToastIap.queryConsumablePurchases(MainActivity.this, responseListenr);
 ```java
 /* ToastIap.java */
 public static void queryActivatedPurchases(Activity activity,
-PurchasesResponseListener listener)
+                                           PurchasesResponseListener listener)
 ```
 
 | Method | Parameters |  |
@@ -349,22 +349,22 @@ PurchasesResponseListener listener)
 
 ```java
 /**
-* 활성화된 구독 상품 조회
-*/
+ * 활성화된 구독 상품 조회
+ */
 void queryActivatedPurchases() {
-PurchasesResponseListener responseListener =
-new IapService.PurchasesResponseListener() {
-@Override
-public void onPurchasesResponse(@NonNull IapResult result,
-@Nullable List<IapPurchase> purchases) {
-if (result.isSuccess()) {
-// 성공
-} else {
-// 실패
-}
-}
-};
-ToastIap.queryActivatedPurchases(MainActivity.this, responseListener);
+    PurchasesResponseListener responseListener =
+            new IapService.PurchasesResponseListener() {
+                @Override
+                public void onPurchasesResponse(@NonNull IapResult result,
+                                                @Nullable List<IapPurchase> purchases) {
+                    if (result.isSuccess()) {
+                        // 성공
+                    } else {
+                        // 실패
+                    }
+                }
+            };
+    ToastIap.queryActivatedPurchases(MainActivity.this, responseListener);
 }
 ```
 
@@ -434,7 +434,7 @@ public Throwable getCause()
 | isSuccess | boolean | 결제 성공 여부 반환 |
 | isFailure | boolean | 결제 실패 여부 반환 |
 
-### IapResult
+### IapResult 
 
 ```java
 /* IapResult.java */
@@ -444,7 +444,7 @@ public int getCode()
 public String getMessage()
 public Throwable getCause()
 ```
-
+ 
 | Method | Returns |  |
 | ---- | ---- | ---- |
 | getCode | int | 결과 코드를 반환합니다. |
@@ -587,7 +587,7 @@ void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
 
 ```java
 void onPurchasesResponse(IapResult result,
-List<IapPurchase> purchaseList)
+                         List<IapPurchase> purchaseList)
 ```
 
 ## 에러 코드
@@ -628,4 +628,3 @@ List<IapPurchase> purchaseList)
 | ONESTORE_NEED_UPDATE | 302 | 원스토어 서비스가 업데이트 또는 설치되지 않았습니다.<br>OneStore service is not updated or installed. |
 | ONESTORE_SECURITY_ERROR | 303 | 비정상 앱에서 결제를 요청하였습니다.<br>Abnormal purchase request. |
 | ONESTORE_PURCHASE_FAILED | 304 | 결제 요청에 실패하였습니다.<br>Purchase request failed. |
-
