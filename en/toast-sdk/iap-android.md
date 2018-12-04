@@ -7,50 +7,61 @@
 3\. IAP 콘솔에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 4\. [TOAST SDK를 초기화](./getting-started-android/#toast-sdk_1)합니다.
 
-## 라이브러리 설정
-- build.gradle에 라이브러리를 추가합니다.
-
-```groovy
-dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.12.0'
-}
-```
-
 ## 스토어 종류
 - [Google Play Store](https://developer.android.com/google/play/billing)
 - [OneStore v17](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
 
+## 라이브러리 설정
+- Google Play Store용 SDK를 설치하려는 경우 아래 코드를 build.gradle에 추가합니다.
+
+```groovy
+dependencies {
+    implementation 'com.toast.android:toast-iap-google:0.12.0'
+    ...
+}
+```
+
+- OneStore용 SDK를 설치하려는 경우 아래 코드를 build.gradle에 추가합니다.
+
+```groovy
+dependencies {
+    implementation 'com.toast.android:toast-iap-onestore:0.12.0'
+    ...
+}
+```
+
 ### 스토어 코드
 
 | 스토어 | 코드 |
-| -- | -- |
+| ---- | ---- |
 | Google Play Store| "GG" |
 | OneStore | "ONESTORE" |
 
-> 스토어 코드는 [IapStoreCode]() 클래스에 정의되어 있습니다.
+> Note : 스토어 코드는 [IapStoreCode](./iap-android/#iapstorecode) 클래스에 정의되어 있습니다.
 
 ## 상품 종류
 
 - 현재 지원하는 상품의 종류는 2가지로, 일회성 상품과 구독 상품을 지원합니다.
 
 | 상품명 | 상품타입 | 설명 |
-| -- | ------ | ------ |
+| ---- | ------ | ------ |
 | 소비성 상품 | "CONSUMABLE" | 소비 이전까지 관리되며, 소비 이후 사라지는 일회성 상품 |
 | 구독 상품 | "AUTO_RENEWABLE" | 일정 기간마다 자동 결제되며, 활성화 기간동안 복원 가능한 구독 상품 |
 
-> 구독 상품은 'Google Play Store' 만 지원합니다.
+> Note :구독 상품은 'Google Play Store' 만 지원합니다.
 
 ## 인앱 결제 설정
 
-* [ToastIapConfiguration]() 객체는 인앱 결제 설정 정보를 포함하고 있습니다.
-* [ToastIapConfiguration]() 객체는 [ToastIapConfiguration.Builder]()를 사용하여 생성할 수 있습니다.
+* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체는 인앱 결제 설정 정보를 포함하고 있습니다.
+* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체는 [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder)를 사용하여 생성할 수 있습니다.
 * IAP 콘솔에서 발급받은 [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 setAppKey 메소드를 사용하여 설정합니다.
-* setStoreCode 메소드를 사용하여 인앱 결제에 사용할 [스토어 코드]()를 설정합니다.
+* setStoreCode 메소드를 사용하여 인앱 결제에 사용할 [스토어 코드](./iap-android/#_2)를 설정합니다.
 
 ### 인앱 결제 설정 예시
 
 ```java
-ToastIapConfiguration configuration = ToastIapConfiguration.newBuilder(getApplicationContext())
+ToastIapConfiguration configuration =
+    ToastIapConfiguration.newBuilder(getApplicationContext())
                 .setAppKey(YOUR_APP_KEY)
                 .setStoreCode(IapStoreCode.GOOGLE_PLAY_STORE)
                 .build();
@@ -64,7 +75,7 @@ ToastIapConfiguration configuration = ToastIapConfiguration.newBuilder(getApplic
 ### 인앱 결제 초기화 API 명세
 
 * 인앱 결제는 ToastIap.initialize 메소드를 사용하여 초기화합니다.
-* ToastIap.initialize 메소드는 [ToastIapConfiguration.Builder]()로 생성된 [ToastIapConfiguration]() 객체를 파라미터로 사용합니다.
+* ToastIap.initialize 메소드는 [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder)로 생성된 [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체를 파라미터로 사용합니다.
 
 ```java
 /* ToastIap.java */
@@ -72,14 +83,14 @@ public static void initialize(ToastIapConfiguration configuration)
 ```
 
 | Parameters | |
-| -- | -- |
+| ---- | ---- |
 | configuration | ToastIapConfiguration: 인앱 결제 설정 정보 |
 
 ### 인앱 결제 초기화 예시
 
 - ToastIap를 초기화 합니다. 
 
-> 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
+> Note: 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
     
 ```java
 public class MainApplication extends Application {
@@ -127,11 +138,11 @@ ToastSdk.setUserId(null);
 
 ## 결제 업데이트 리스너 등록
 
-* 결제 결과는 ToastIap에 설정된 [IapService.PurchasesUpdatedListener]()해 통지됩니다.
+* 결제 결과는 ToastIap에 설정된 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)해 통지됩니다.
 * 결제 업데이트 리스너는 ToastIap.registerPurchasesUpdatedListener 메소드를 사용하여 등록할 수 있습니다.
-* [IapService.PurchasesUpdatedListener]()를 통해 전달된 [IapPurchaseResult]() 리스트를 통해 결제 정보를 확인할 수 있습니다.
+* [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 전달된 [IapPurchaseResult](./iap-android/#iappurchaseresult) 리스트를 통해 결제 정보를 확인할 수 있습니다.
 
-> 결제 업데이트 리스너는 Activity.onCreate()에서 등록하고 Activity.onDestroy()에서 반드시 해제 해야합니다.
+> Note : 결제 업데이트 리스너는 Activity.onCreate()에서 등록하고 Activity.onDestroy()에서 반드시 해제 해야합니다.
 
 ### 결제 업데이트 리스너 등록 API 명세
 
@@ -142,7 +153,7 @@ public static void unregisterPurchasesUpdatedListener(IapService.PurchasesUpdate
 ```
 
 | Method | Parameters |  | Description |
-| -- | -- | -- | -- |
+| ---- | ---- | ---- | ---- |
 | registerPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>결제 업데이트 리스너 | 결제 업데이트 리스너를 등록합니다.|
 | unregisterPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>등록 해제 할 리스너 | 결제 업데이트 리스터 등록을 해제합니다. |
 
@@ -196,10 +207,11 @@ public class MainActivity extends AppCompatActivity {
 
 ```java
 /* ToastIap.java */
-public static void queryProductDetails(Activity activity, IapService.ProductDetailsResponseListener listener)
+public static void queryProductDetails(Activity activity,
+                                       IapService.ProductDetailsResponseListener listener)
 ```
 | Method | Parameters |  |
-| -- | -- | -- | -- |
+| ---- | ---- | ---- |
 | queryProductDetails | activity | Activity: 현재 활성화된 Activity |
 |  | listener | IapService.<br>ProductDetailsResponseListener: <br>상품 조회 결과 리스너 |
 
@@ -234,11 +246,11 @@ void queryProductDetails() {
 ## 상품 구매 하기
 
 * TOAST IAP는 스토어에 등록된 상품 ID를 사용하여 상품을 구매할 수 있습니다.
-* 상품 정보는 ToastIap.queryProductDetails() 메소드를 호출하여 반환된 [IapProductDetails]() 객체에 포함되어있습니다.
+* 상품 정보는 ToastIap.queryProductDetails() 메소드를 호출하여 반환된 [IapProductDetails](./iap-android/#iapproductdetails) 객체에 포함되어있습니다.
 * 상품 ID는 IapProductDetails.getProductId() 메소드를 사용하여 획득할 수 있습니다.
-* 상품 구매는 [IapPurchaseFlowParams]() 객체에 상품 ID를 설정한 후 ToastIap.launchPurchaseFlow() 메소드를 통해 구매 플로우를 시작합니다.
-* [IapPurchaseFlowParams]() 객체는 [IapPurchaseFlowParams.Builder]()를 사용하여 생성할 수 있습니다.
-* 상품 구매 결과는 ToastIap에 등록한 [IapService.PurchasesUpdatedListener]()를 통해 반환됩니다.
+* 상품 구매는 [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) 객체에 상품 ID를 설정한 후 ToastIap.launchPurchaseFlow() 메소드를 통해 구매 플로우를 시작합니다.
+* [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) 객체는 [IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder)를 사용하여 생성할 수 있습니다.
+* 상품 구매 결과는 ToastIap에 등록한 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 반환됩니다.
 
 ### 상품 구매 IAP 명세
 
@@ -249,7 +261,7 @@ public static void launchPurchaseFlow(Activity activity,
 ```
 
 | Method | Parameters |  |
-| -- | -- | -- | -- |
+| ---- | ---- | ---- |
 | launchPurchaseFlow | activity | Activity: 현재 활성화된 Activity |
 |  | params | IapPurchaseFlowParams: 구매 정보 파라미터 |
 
@@ -270,9 +282,9 @@ void launchPurchaseFlow(Activity activity, String productId) {
 ## 미소비 결제 조회하기
 
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE) 정보를 조회합니다.
-* 사용자에게 상품을 지급된 후 [Consume API]()를 사용하여 상품을 소비합니다.
+* 사용자에게 상품을 지급된 후 [Consume API](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/api-guide/#request)를 사용하여 상품을 소비합니다.
 * 미소비 결제는 ToastIap.queryConsumablePurchases() 메소드를 사용하여 조회할 수 있습니다.
-* 조회 결과는 [IapService.PurchasesResponseListener]()를 통해 [IapPurchase]() 객체 리스트로 반환됩니다.
+* 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.
 
 ### 미소비 결제 조회 API 명세
 
@@ -283,7 +295,7 @@ public static void queryConsumablePurchases(Activity activity,
 ```
 
 | Method | Parameters |  |
-| -- | -- | -- | -- |
+| ---- | ---- | ---- |
 | queryConsumablePurchases | activity | Activity: 현재 활성화된 Activity |
 |  | listener | IapService.PurchasesResponseListener: <br>미소비 구매 내역 조회 결과 리스너 |
 
@@ -315,7 +327,7 @@ void queryConsumablePurchases() {
 * User ID 기준으로 활성화된 구독 상품을 조회할 수 있습니다.
 * 결제가 완료된 구독상품은 사용기간이 남아있는 경우 계속해서 조회할 수 있습니다.
 * 활성화된 구독은 ToastIap.queryActivatedPurchases() 메소드를 사용하여 조회할 수 있습니다.
-* 조회 결과는 [IapService.PurchasesResponseListener]()를 통해 [IapPurchase]() 객체 리스트로 반환됩니다.
+* 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트를 반환됩니다.
 * iOS에서 구독한 상품을 Android에서도 조회 가능합니다.
 
 > 현재 구독 상품은 Google Play Store만 지원합니다.
@@ -324,12 +336,12 @@ void queryConsumablePurchases() {
 
 ```java
 /* ToastIap.java */
-public static void queryActivatedPurchases(@NonNull Activity activity,
-                                           @NonNull PurchasesResponseListener listener)
+public static void queryActivatedPurchases(Activity activity,
+                                           PurchasesResponseListener listener)
 ```
 
 | Method | Parameters |  |
-| -- | -- | -- | -- |
+| ---- | ---- | ---- |
 | queryActivatedPurchases | activity | Activity: 현재 활성화된 Activity |
 |  | listener | IapService.PurchasesResponseListener: <br>활성화된 구독 조회 결과 리스너 |
 
@@ -369,13 +381,13 @@ public String getStoreCode();
 ```
 
 | Method | Returns |  |
-| -- | -- | -- |
+| ---- | ---- | ---- |
 | getAppKey | String | IAP 서비스 앱 키 |
 | getStoreCode | String | 스토어 코드 정보 ("GG" or "ONESTORE", ...) |
 
 ### ToastIapConfiguration.Builder
 
-IAP 서비스 앱 키, 스토어 종류 등을 입력받아 ToastIapConfiguration 객체를 생성합니다.
+IAP 서비스 앱 키, 스토어 종류 등을 입력받아 [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체를 생성합니다.
 
 ```java
 /* ToastIapConfiguration.java */
@@ -384,7 +396,7 @@ public void setStoreCode(String storeCode)
 ```
 
 | Method | Parameters |  | Description |
-| -- | -- | -- | -- |
+| ---- | ---- | ---- | ---- |
 | setAppKey | appKey | String: IAP 서비스 앱 키 | Toast IAP Console에서 생성한 앱 키를 설정합니다.  |
 | setStoreCode | storeCode | String: 스토어 코드 정보 | 스토어 코드를 설정합니다.<br>("GG" or "ONESTORE", ...) |
 
@@ -414,7 +426,7 @@ public Throwable getCause()
 ```
 
 | Method | Returns |  |
-| -- | -- | -- |
+| ---- | ---- | ---- |
 | getPurchase | IapPurchase | 결제 정보가 담겨있는 IapPurchase 객체를 반환합니다. |
 | getCode | int | 결제 결과 코드를 반환합니다. |
 | getMessage | String | 결제 결과 메세지를 반환합니다. |
@@ -434,7 +446,7 @@ public Throwable getCause()
 ```
  
 | Method | Returns |  |
-| -- | -- | -- |
+| ---- | ---- | ---- |
 | getCode | int | 결과 코드를 반환합니다. |
 | getMessage | String | 결과 메세지를 반환합니다. |
 | getCause | Throwable | 실패 원인를 반환합니다. |
@@ -462,7 +474,7 @@ public String getExpiryTime()
 ```
 
 | Method | Returns | |
-| -- | -- | -- |
+| ---- | ---- | ---- |
 | getPaymentId | String | 결제 ID 를 반환합니다. |
 | getOriginalPaymentId | String | 원본 결제 ID를 반환합니다. |
 | getPaymentSequence | String | 결제 고유 번호를 반환합니다. |
@@ -498,7 +510,7 @@ public boolean isActivated()
 ```
 
 | Method | Returns | |
-| -- | -- | -- |
+| ---- | ---- | ---- |
 | getProductId | String | 상품의 ID |
 | getProductSequence | String | 상품 고유 번호 |
 | getPrice | float | 가격 |
@@ -527,7 +539,7 @@ public boolean isActivated()
 ```
 
 | Method | Returns | |
-| -- | -- | -- |
+| ---- | ---- | ---- |
 | getProductId | String | 상품의 ID |
 | getProductSequence | String | 상품 고유 번호 |
 | getProductType | String | 상품 타입 |
@@ -545,7 +557,7 @@ public String getProductId()
 ```
 
 | Method | Returns | |
-| -- | -- | -- |
+| ---- | ---- | ---- |
 | getProductId | String | 상품 ID |
 
 ### IapPurchaseFlowParams.Builder
@@ -558,7 +570,7 @@ public void setProductId(String productId)
 ```
 
 | Method | Parameters |  | Description |
-| -- | -- | -- | -- |
+| ---- | ---- | ---- | ---- |
 | setProductId | productId | String: 상품 ID | 상품 ID를 설정합니다.  |
 
 ### IapService.PurchasesUpdatedListener
