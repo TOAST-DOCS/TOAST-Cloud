@@ -115,10 +115,10 @@ public class MainApplication extends Application {
 
 ## 서비스 로그인
 
-* TOAST SDK의 모든 상품은 설정된 하나의 사용자 아이디를 사용합니다.
-* [ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)를 호출하여 사용자 아이디를 설정할 수 있습니다.
-* 사용자 아이디가 설정되지 않은 경우, 결제가 진행되지 않습니다.
-* 서비스 로그인 단계에 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능이 구현되는 것을 권장합니다.
+* TOAST SDK에서 제공하는 모든 상품(IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
+    * [ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
+    * 사용자 아이디를 설정하지 않은 경우, 결제가 진행되지 않습니다.
+* 서비스 로그인 단계에서 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능을 구현하는 것을 권장합니다.
 
 ### 로그인
 
@@ -134,7 +134,7 @@ ToastSdk.setUserId(userId);
 ToastSdk.setUserId(null);
 ```
 
-> Note : Google Play Store의 경우 반드시 로그아웃을 구현해야 프로모션 코드가 리딤되었을 때, 잘못된 사용자 아이디로 구매가 진행되는 것을 방지할 수 있습니다.
+> Note : Google Play Store의 경우 반드시 로그아웃을 구현해야 합니다. 로그아웃 처리로 프로모션 코드가 리딤되었을 때, 잘못된 사용자 아이디로 구매가 진행되는 것을 방지할 수 있습니다.
 
 ## 결제 업데이트 리스너 등록
 
@@ -248,7 +248,7 @@ void queryProductDetails() {
 * TOAST IAP는 스토어에 등록된 상품 ID를 사용하여 상품을 구매할 수 있습니다.
 * 상품 정보는 ToastIap.queryProductDetails() 메소드를 호출하여 반환된 [IapProductDetails](./iap-android/#iapproductdetails) 객체에 포함되어있습니다.
 * 상품 ID는 IapProductDetails.getProductId() 메소드를 사용하여 획득할 수 있습니다.
-* 상품 구매는 [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) 객체에 상품 ID를 설정한 후 ToastIap.launchPurchaseFlow() 메소드를 통해 구매 플로우를 시작합니다.
+* 상품 구매는 [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) 객체에 상품 ID를 설정한 후 ToastIap.launchPurchaseFlow() 메소드를 통해 구매 단계를 시작합니다.
 * [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) 객체는 [IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder)를 사용하여 생성할 수 있습니다.
 * 상품 구매 결과는 ToastIap에 등록한 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 반환됩니다.
 
