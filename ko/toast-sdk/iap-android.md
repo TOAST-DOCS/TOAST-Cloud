@@ -55,7 +55,7 @@ implementation 'com.toast.android:toast-iap-onestore:0.12.0'
 * [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체는 인앱 결제 설정 정보를 포함하고 있습니다.
 * [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체는 [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder)를 사용하여 생성할 수 있습니다.
 * IAP 콘솔에서 발급받은 [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 setAppKey 메소드를 사용하여 설정합니다.
-* setStoreCode 메소드를 사용하여 인앱 결제에 사용할 [스토어 코드](./iap-android/#_2)를 설정합니다.
+* setStoreCode 메소드를 사용하여 인앱 결제에 사용할 [스토어 코드](./iap-android/#_3)를 설정합니다.
 
 ### 인앱 결제 설정 예시
 
