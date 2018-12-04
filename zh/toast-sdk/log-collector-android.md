@@ -7,6 +7,16 @@
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 4\. [TOAST SDK를 초기화](./getting-started-android/#toast-sdk_1)합니다.
 
+## 라이브러리 설정
+- 아래 코드를 build.gradle에 추가합니다.
+
+```groovy
+dependencies {
+    implementation 'com.toast.android:toast-logger:0.12.0'
+    ...
+}
+```
+
 ## TOAST Logger SDK 초기화
 
 onCreate() 메서드에서 Logger를 초기화합니다.
@@ -203,4 +213,7 @@ Network Insights는 콘솔에 등록한 URL을 호출하여 지연시간 및 응
 2. [네트워크 인사이트] 메뉴를 선택합니다.
 3. [URL 설정] 탭을 선택합니다.
 4. 측정하고 자하는 URL을 입력 후 [추가] 버튼을 클릭합니다.
+
+
+
 
