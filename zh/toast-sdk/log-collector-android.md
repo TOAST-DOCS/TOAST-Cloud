@@ -21,7 +21,7 @@ dependencies {
 
 - 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
 
-- `초기화를 진행하지 않고, ToastLogger를 사용하는 경우 초기화 오류가 발생합니다.`
+> 초기화를 진행하지 않고, ToastLogger를 사용하는 경우 초기화 오류가 발생합니다.
 
 ```java
 // Initialize Logger
