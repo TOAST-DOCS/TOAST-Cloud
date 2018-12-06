@@ -53,10 +53,9 @@ TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Androi
 
 ## TOAST SDK 초기화하기
 
-- TOAST IAP SDK를 사용하기 위해서는 ToastSdk를 초기화 해야 합니다. 
-초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
+- 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
 
-- `초기화를 진행하지 않은 경우, TOAST SDK는 동작하지 않습니다.`
+- `초기화를 진행하지 않고, TOAST SDK를 사용하는 경우 초기화 오류가 발생합니다.`
 
 ### 초기화 API 명세
 

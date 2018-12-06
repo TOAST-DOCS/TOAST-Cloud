@@ -19,8 +19,11 @@ dependencies {
 
 ## TOAST Logger SDK 초기화
 
-onCreate() 메서드에서 Logger를 초기화합니다.
-Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+- 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
+
+- `초기화를 진행하지 않고, ToastLogger를 사용하는 경우 초기화 오류가 발생합니다.`
+
+- Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
 ```java
 // Initialize Logger
