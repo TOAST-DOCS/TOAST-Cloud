@@ -1,28 +1,28 @@
-## TOAST > TOAST SDK Guide > Release Notes > Android
+## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
 ## 0.12.0 (2018.12.04)
 
 ### TOAST IAP
 
-#### 추가 사항
+#### Added 
 
-* 신규 기능 추가
-    * 구글 플레이 스토어 (소비성 상품, 구독 상품)
-    * 원스토어 (소비성 상품)
+* New Functions 
+    * Google Play Store (One-Time/Subscription Products)
+    * OneStore (One-Time Products)
 
 ## 0.11.0 (2018.11.20)
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### Added 
 
-* Network Insights 기능 추가
+* Network Insights
 
 ## 0.9.0 (2018.09.04)
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### Added
 
-* 신규 기능 추가
+* New Functions
 

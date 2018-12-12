@@ -1,14 +1,14 @@
-## TOAST > TOAST SDK Guide > TOAST IAP > iOS
+## TOAST > User Guide for TOAST SDK > TOAST IAP > iOS
 
 ## Prerequisites
 
-1. [Install the TOAST SDK](./getting-started-ios)
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
-3. IAP에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
+1. [Install TOAST SDK](./getting-started-ios).
+2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+3.  [Check AppKey ](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)in IAP.
 
-## Cococapods 적용하기
+## Apply Cococapods 
 
-Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
+Create a podfile to add pods to TOAST SDK. 
 
 ```podspec
 platform :ios, '8.0'
@@ -19,39 +19,39 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-생성된 Workspace를 열어 사용자고자하는 SDK를 Import 합니다.
+Open a created workspace and import SDK to use. 
 
 ```objc
 #import <ToastCore/ToastCore.h>
 #import <ToastIAP/ToastIAP.h>
 ```
 
-## 서비스 로그인
+## Service Login 
 
-* TOAST SDK에서 제공하는 모든 상품(IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
+* All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID. 
 
-### 로그인
+### Login
 
-`사용자 아이디가 설정되지 않은 상태에서는 구매, 활성화된 상품 조회, 미소비 내역 조회 기능을 사용할 수 없습니다.`
+`Without user ID set, purchase, query of activated products, or query of consumed details are not available. `
 
 ``` objc
-// 서비스 로그인 완료 후 사용자 아이디 설정
+// Set user ID after service login is completed
 [ToastSDK setUserID:@"INPUT_USER_ID"];
 ```
 
-### 로그아웃
+### Logout
 
 ``` objc
-// 서비스 로그아웃 완료 후 사용자 아이디를 nil로 설정
+// Set user ID as nil after service logout is completed
 [ToastSDK setUserID:nil];
 ```
 
-## TOAST IAP SDK 초기화
+## Initialize TOAST IAP SDK 
 
-TOAST IAP에서 발급받은 AppKey를 설정합니다.
-초기화와 동시에 미완료 구매건에 대한 재처리가 진행됩니다.
-따라서 원활한 재처리 진행을 위해서는 반드시 사용자 아이디 설정 이후에 초기화를 진행하십시오.
-재처리를 포함하여 모든 구매의 결과는 Delegate를 통해 전달되므로 Delegate 설정 이후에 초기화를 하거나, 초기화와 함께 Delegate를 설정하시기를 권장합니다.
+Set appkey issued from TOAST IAP. 
+Reprocessing for uncompleted purchases is executed along with initialization.  
+Therefore, for flawless reprocessing, user ID must be set first before initialization. 
+All purchase results, including reprocessing, are delivered through delegate, so it is recommended to set delegate before or along with initialization.   
 
 ``` objc
 ToastIAPConfiguration *configuration = [[ToastIAPConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
@@ -59,18 +59,18 @@ ToastIAPConfiguration *configuration = [[ToastIAPConfiguration alloc] initWithAp
 [ToastIAP initWithConfiguration:configuration delegate:self];
 ```
 
-### 초기화 API 명세
+### Specifications for Initialization API
 
 ``` objc
 @interface ToastIAP : NSObject
 
-// 초기화
+// Initialize
 + (void)initWithConfiguration:(ToastIAPConfiguration *)configuration;
 
-// Delegate 설정
+// Set Delegate 
 + (void)setDelegate:(nullable id<ToastInAppPurchaseDelegate>)delegate;
 
-// 초기화 및 Delegate 설정
+// Initialize and Set Delegate
 + (void)initWithConfiguration:(ToastIAPConfiguration *)configuration
                      delegate:(nullable id<ToastInAppPurchaseDelegate>)delegate;
 
@@ -79,23 +79,23 @@ ToastIAPConfiguration *configuration = [[ToastIAPConfiguration alloc] initWithAp
 @end
 ```
 
-### Delegate API 명세
+### Specifications for Delegate API
 
-Delegate를 등록하면 결제 후 추가 작업을 진행할 수 있습니다.
+Register delegate to proceed follow-ups after payment. 
 
 ``` objc
 @protocol ToastInAppPurchaseDelegate <NSObject>
 
-// 결제 성공
+// Payment Succeeded 
 - (void)didReceivePurchaseResult:(ToastPurchaseResult *)purchase;
 
-// 결제 실패
+// Payment Failed 
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error;
 
 @end
 ```
 
-### 초기화 과정 예
+### Example of Initialization Procedure
 
 ``` objc
 #import <UIKit/UIKit.h>
@@ -111,18 +111,18 @@ Delegate를 등록하면 결제 후 추가 작업을 진행할 수 있습니다.
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // 초기화 및 Delegate 설정
+    // Initialize and Set Delegate 
     ToastIAPConfiguration *configuration =[[ToastIAPConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
 
     [ToastIAP initWithConfiguration:configuration delegate:self];
 }
 
-// 결제 성공
+// Payment Succeeded 
 - (void)didReceivePurchaseResult:(ToastPurchaseResult *)purchase {
     NSLog(@"Successfully purchased");
 }
 
-// 결제 실패
+// Payment Failed 
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error {
     NSLog(@"Failed to purchase: %@", erorr);
 }
@@ -130,19 +130,19 @@ Delegate를 등록하면 결제 후 추가 작업을 진행할 수 있습니다.
 @end
 ```
 
-## 상품 목록 조회하기
+## Query Product List
 
-IAP 콘솔에 등록되어 있는 상품들 중 사용여부 설정이 USE 인 상품들의 목록을 조회합니다.
-스토어(Apple)로 부터 상품 정보를 획득하지 못한 상품은 invalidProducts 항목으로 표시됩니다.
+Query the list of products which are set as USE IAP, among those registered in the console.  
+Products that failed to obtain product information from store (Apple) are indicated as invalidProducts. 
 
-### 상품 목록 조회 API 명세
+### Specifications for Product List Query API
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// 상품 목록 조회
+// Query Product List 
 + (void)requestProductsWithCompletionHandler:(nullable void (^)(ToastProductsResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -150,7 +150,7 @@ IAP 콘솔에 등록되어 있는 상품들 중 사용여부 설정이 USE 인 �
 @end
 ```
 
-### 상품 목록 조회 API 사용 예
+### Usage Example of Product List Query API
 
 ``` objc
 [ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
@@ -159,7 +159,7 @@ IAP 콘솔에 등록되어 있는 상품들 중 사용여부 설정이 USE 인 �
         NSArray<ToastProduct *> *products = response.products;
         NSLog(@"Products : %@", products);
 
-        // 스토어로 부터 상품정보를 획득하지 못함
+        // Failed to obtain product information from store 
         NSArray<ToastProduct *> *invalidProducts = response.invalidProducts;
         NSLog(@"Invalid Products : %@", invalidProducts);
 
@@ -169,39 +169,39 @@ IAP 콘솔에 등록되어 있는 상품들 중 사용여부 설정이 USE 인 �
 }
 ```
 
-### 상품 종류
+### Product Types 
 
-`자동갱신형 구독 상품의 업그레이드, 다운그레이드, 수정 기능은 지원하지 않습니다.`
-하나의 구독그룹에 하나의 상품만 등록해야 합니다.
+`Do not support Upgrades, Downgrades, and Modification for auto-renewable subscription products.`
+Only one product must be registered to one subscription group.
 
 ``` objc
-// 상품종류 획득 실패
+// Failed to Obtain Product Types 
 ToastProductTypeUnknown = 0
 
-// 소비성 상품
+// One-time Products 
 ToastProductTypeConsumable = 1
 
-// 자동 갱신형 구독 상품
+// Auto-Renewable Subscription Products 
 ToastProductTypeAutoRenewableSubscription = 2
 ```
 
-## 상품 구매 하기
+## Purchase Products 
 
-구매 결과는 설정된 Delegate를 통해 전달 됩니다.
-구매 진행중에 앱이 종료되거나 네트워크 오류등으로 구매가 중단되었을 경우 앱이 재실행 되면, IAP SDK 초기화 과정에서 구매 재처리를 진행합니다.
+Purchase results are delivered through a delegate.  
+If an app is closed during purchase, or purchase is suspended due to network error, such purchase is reprocessed during initialization of IAP SDK when the app is re-executed.  
 
-### 상품 객체를 이용한 구매 요청
+### Request for Purchase with Product Objects 
 
-상품 목록 조회 결과의 ToastProduct 객체를 이용해 구매를 요청합니다.
+Purchase is requested by using ToastProduct object of query result of product list. 
 
-#### 상품 객체를 이용한 구매 API 명세
+#### Specifications for Purchase with Product Objects API 
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// 상품 구매
+// 상품 구매 Product Purchase 
 + (void)purchaseWithProduct:(ToastProduct *)product;
 
 // ...
@@ -209,16 +209,16 @@ ToastProductTypeAutoRenewableSubscription = 2
 @end
 ```
 
-#### 상품 객체를 이용한 구매 API 사용 예
+#### Usage Example of Purchase with Product Objects API 
 
 ``` objc
 @property (nonatomic) NSArray <ToastProduct *> *products;
 
-// 상품 목록 조회
+// Query Product List 
 [ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
 
     if (error == nil) {
-        // 구매 가능한 상품 목록 저장
+        // Save purchasable product list 
         self.products = response.products;
 
     } else {
@@ -226,23 +226,23 @@ ToastProductTypeAutoRenewableSubscription = 2
     }
 }
 
-// 상품 구매 요청
+// Request for Product Purchase 
 [ToastIAP purchaseWithProduct:self.products[0]];
 ```
 
-### 상품 아이디를 이용한 구매 요청
+### Purchase Requests using Product ID 
 
-서비스에서 별도로 상품 목록을 관리하고 있다면, 상품의 아이디만을 이용해 구매를 요청합니다.
-구매가 불가한 상품일 경우 Delegate 를 통해 구매 불가 상품임을 나타내는 오류가 전달 됩니다.
+When product list is managed by each service, purchase can be requested only by product ID. 
+For a product which cannot be purchased, an error will be delivered indicating purchase is unavailable through delegate. 
 
-#### 상품 아이디를 이용한 구매 API 명세
+#### Specifications for Purchase with Product ID API 
 
 ``` objc
 @interface ToastIAP (Additional)
 
 // ...
 
-// 상품 구매
+// Purchase Product 
 + (void)purchaseWithProductIdentifier:(NSString *)productIdentifier;
 
 // ...
@@ -250,26 +250,26 @@ ToastProductTypeAutoRenewableSubscription = 2
 @end
 ```
 
-#### 상품 아이디를 이용한 구매 API 사용 예
+#### Usage Example of Purchase with Product ID API 
 
 ``` objc
-// 상품 구매 요청
+// Request for Product Purchase 
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
 ```
 
-## 활성화된 구매 목록 조회하기
+## Query Activated Purchase List 
 
-현재 사용자 아이디에 활성화된 구매(만료되지 않고 구독중인 구독 상품) 목록을 조회 합니다.
-사용자 아이디가 같다면 Android 에서 구매한 구독상품도 조회됩니다.
+Query activated list of purchases (products that are not expired but currently under subscription) for current user ID.  
+Android subscription can also be queried for a same user ID.  
 
-### 활성화된 구매 목록 조회 API 명세
+### Specifications for Activated Purchase List API 
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// 활성화된 구매 목록 조회하기
+// Query Activated Purchase List 
 + (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -277,14 +277,14 @@ ToastProductTypeAutoRenewableSubscription = 2
 @end
 ```
 
-### 활성화된 구매 목록 조회 API 사용 예
+### Usage Example of Activated Purchase List Query API 
 
 ``` objc
 [ToastIAP requestActivePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
 
     if (error == nil) {
         for (ToastPurchaseResult *purchase in purchases) {
-            // 구독 상품 접근 활성화
+            // Activate access for subscription products 
         }
 
     } else {
@@ -293,18 +293,18 @@ ToastProductTypeAutoRenewableSubscription = 2
 }];
 ```
 
-## 구매 복원하기
+## Restore Purchases 
 
-현재 사용자 아이디에서 구매된 항목중 복원 가능한 구매 목록을 조회 합니다.
+Query the list of restorable purchases by current user ID.  
 
-### 구매 복원 API 명세
+### Specifications for Restoring Purchase API 
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// 구매 복원
+// Restore Purchase 
 + (void)restoreWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -312,7 +312,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 @end
 ```
 
-### 구매 복원 API 사용 예
+### Usage Example of Restoring Purchase API 
 
 ``` objc
 [ToastIAP restoreWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
@@ -328,19 +328,18 @@ ToastProductTypeAutoRenewableSubscription = 2
 }];
 ```
 
-## 미소비 구매 내역 조회하기
+## Query Unconsumed Purchase List 
 
-소비성 상품의 경우 상품 지급 후에 소비(Consume) 처리를 해야 합니다.
-소비 처리되지 않은 구매 내역을 조회 합니다.
+An one-time product must be processed as consumed after product is provided. List of unconsumed purchases is to be queried.  
 
-### 미소비 구매 내역 조회 API 명세
+### Specifications for Unconsumed Purchase Query API
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// 미소비 구매 내역 조회
+// Query Unconsumed Purchases 
 + (void)requestConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -348,7 +347,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 @end
 ```
 
-### 미소비 구매 내역 조회 API 사용 예
+### Usage Example of Unconsumed Purchase Query API 
 
 ``` objc
 [ToastIAP requestConsumablePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
@@ -361,11 +360,11 @@ ToastProductTypeAutoRenewableSubscription = 2
 }
 ```
 
-## 소비성 상품 소비하기
+## Consume One-time Products 
 
-소비성 상품의 경우 서비스에 상품 지급 후에 REST API 혹은 SDK 의 Consume API 를 통해 소비 처리를 해줘야 합니다.
+One-time products must be processed as consumed through REST API or Consume API of SDK, after products are provided.
 
-### 소비 API 명세
+### Specifications for Consumption API 
 
 ``` objc
 @interface ToastIAP (Additional)
@@ -380,17 +379,17 @@ ToastProductTypeAutoRenewableSubscription = 2
 @end
 ```
 
-### 소비 API 사용 예
+### Usage Example of Consumption API 
 
 ``` objc
-// 미소비 구매 내역 조회
+// Query Unconsumed Purchases 
 [ToastIAP requestConsumablePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
     if (error == nil) {
         for (ToastPurchaseResult *purchaseResult in purchases) {
-            // 상품 지급 처리
+            //  Process as Product Provided 
             // ...
 
-            // 상품 지급후 소비 처리
+            // Process as Consumed after Product is Provided 
             [ToastIAP consumeWithPurchaseResult:purchaseResult
                               completionHandler:^(NSError *error) {
                                     if (error == nil) {
@@ -399,7 +398,7 @@ ToastProductTypeAutoRenewableSubscription = 2
                                     } else {
                                         NSLog(@"Failed to consume : %@", error);
 
-                                        // 상품 지급 회수
+                                        // Retreive Product Provided  
                                         // ...
                                     }
                               }];
@@ -411,29 +410,29 @@ ToastProductTypeAutoRenewableSubscription = 2
 }
 ```
 
-## 구독 상품 관리 페이지 제공 방법
+## Provide Page for Subscription Products
 
-자동갱신형 구독 상품을 사용할 경우 사용자에게 구독 관리 페이지를 제공해야합니다.
+For auto-renewable subscription products, users must be provided with a subscription management page. 
 > [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
 
-별도의 UI를 구성하는것이 아닌 아래의 URL을 호출하여 구독 관리 페이지를 표시해야합니다.
-### Safari를 통한 구독 관리 페이지 연결 방법
+Without configuring a separate UI, call URL as below to display subscription management page. 
+### Connect to Subscription Management Page on Safari 
 ```
 https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ```
 ```objc
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
 ```
-#### Safari를 통한 관리페이지 호출의 경우 경우 다음과 같은 순서로 관리 페이지가 표시됩니다.
-1. Safari Open
-2. Popup 노출 : itunse Store에서 열겠습니까?
-3. iTunse Store Open
-4. Popup으로 구독 관리 페이지 연결
+#### Management page on Safari is called in the following order: 
+1. Safari Opens
+2. Popup Shows: Want to open in iTunes Store?
+3. iTunes Store Opens
+4. Connected to subscription management page on a popup
 
-> iOS Device의 좌측 상단의 이전앱으로 돌아가기에 `Safari`가 나타납니다.
+>  `Safari` appears for Return to Previous App on top left on an iOS Device.
 
 
-### Scheme을 통한 구독 관리 페이지 연결 방법
+### Connect to Subscription Management Page on Scheme
 ```
 itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ```
@@ -441,21 +440,21 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ```objc
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
 ```
-#### Scheme을 통한 관리페이지 호출의 경우 경우 다음과 같은 순서로 관리 페이지가 표사됩니다.
-1. App Store의 구독 관리 페이지가 App To App 호출로 바로 연결됩니다.
+#### Management page on Scheme is called in the following order: 
+1. Subscription management page of App Store is directly connected with App-to-App call. 
 
-> iOS Device의 좌측 상단의 이전앱으로 돌아가기에 `Service App`이 나타납니다.
+>  `Service App` appears for Return to Previous App on top left on an iOS device.
 
 
 
-## (구) IAP SDK 호환성 유지
+## Remain Compatible with (old) IAP SDK 
 
-(구) IAP SDK 와의 호환성 유지를 위해 (구) IAP SDK 에서 생성된 미완료 구매건의 재처리 기능을 제공합니다.
->(구) IAP SDK 와의 호환성 유지를 위한 기능을 사용하려면 `sqlite3 Library(libsqlite3.tdb)`를 추가로 Link 해야합니다.
+To remain compatible with (old) IAP SDK, reprocessing is supported for incomplete purchases created by (old) IAP SDK.
+>To enable compatibility with (old) IAP SDK, additionally link `sqlite3 Library(libsqlite3.tdb)`.  
 
 ![linked_sqlite3](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3.png)
 
-### 미완료 결제 재처리 API 명세
+### Specifications for Reprocessing Incomplete Payment API 
 
 ``` objc
 @interface ToastIAP (Additional)
@@ -469,17 +468,17 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 @end
 ```
 
-### 미완료 결제 재처리 API 사용 예
+### Usage Example of Reprocessing Incomplete Payment 
 
 ``` objc
-// 미완료 결제 재처리 요청
+// Request for Reprocessing Incomplete Payment
 [ToastIAP processesIncompletePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *results, NSError *error) {
     if (error == nil) {
         for (ToastPurchaseResult *purchaseResult in results) {
-            // 상품 지급 처리
+            // Process as Product Provided 
             // ...
 
-            // 상품 지급후 소비 처리
+            // Process as Consumed after Product Provided 
             [ToastIAP consumeWithPurchaseResult:purchaseResult
                               completionHandler:^(NSError *error) {
                                     if (error == nil) {
@@ -488,7 +487,7 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
                                     } else {
                                         NSLog(@"Failed to consume : %@", error);
 
-                                        // 상품 지급 회수
+                                        // Retrieve Product Provided 
                                         // ...
                                     }
                               }];
@@ -500,31 +499,31 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 }];
 ```
 
-### 에러 코드
+### Error Codes 
 ```objc
 typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
-    ToastIAPErrorUnknown = 0,                       // 알수 없음
+    ToastIAPErrorUnknown = 0,                       // Unknown 
     
-    ToastIAPErrorNotInitialized = 1,                // 초기화 하지 않음
-    ToastIAPErrorStoreNotAvailable = 2,             // 스토어 사용 불가
-    ToastIAPErrorProductNotAvailable = 3,           // 상품 정보 획득 실패
-    ToastIAPErrorProductInvalid = 4,                // 원결제의 상품 아이디와 현재 상품 아이디 불일치
-    ToastIAPErrorAlreadyOwned = 5,                  // 이미 소유한 상품
-    ToastIAPErrorAlreadyInProgress = 6,             // 이미 진행중인 요청 있음
-    ToastIAPErrorUserInvalid = 7,                   // 현재 사용자 아이디가 결제 사용자 아이디와 불일치
-    ToastIAPErrorPaymentInvalid = 8,                // 결제 추가정보(ApplicationUsername) 획득 실패
-    ToastIAPErrorPaymentCancelled = 9,              // 스토어 결제 취소
-    ToastIAPErrorPaymentFailed = 10,                // 스토어 결제 실패
-    ToastIAPErrorVerifyFailed = 11,                 // 영수증 검증 실패
-    ToastIAPErrorChangePurchaseStatusFailed = 12,   // 구매 상태 변경 실패
-    ToastIAPErrorPurchaseStatusInvalid = 13,        // 구매 진행 불가 상태
-    ToastIAPErrorExpired = 14,                      // 구독 만료
+    ToastIAPErrorNotInitialized = 1,                // Not Initialized 
+    ToastIAPErrorStoreNotAvailable = 2,             // Store is unavailable 
+    ToastIAPErrorProductNotAvailable = 3,           // Failed to obtain product information 
+    ToastIAPErrorProductInvalid = 4,                // Inconsistency of IDs between original payment and current product   
+    ToastIAPErrorAlreadyOwned = 5,                  // Product is already owned 
+    ToastIAPErrorAlreadyInProgress = 6,             // Request is already processing 
+    ToastIAPErrorUserInvalid = 7,                   // Inconsistency of IDs between current user and paid user  
+    ToastIAPErrorPaymentInvalid = 8,                // Failed to obtain futher payment information (ApplicationUsername)
+    ToastIAPErrorPaymentCancelled = 9,              // Store payment cancelled 
+    ToastIAPErrorPaymentFailed = 10,                // Store payment failed
+    ToastIAPErrorVerifyFailed = 11,                 // Receipt verification failed 
+    ToastIAPErrorChangePurchaseStatusFailed = 12,   // Change of purchase status failed  
+    ToastIAPErrorPurchaseStatusInvalid = 13,        // Unavailable to purchase 
+    ToastIAPErrorExpired = 14,                      // Subscription expired 
     
-    ToastIAPErrorNetworkNotAvailable = 100,         // 네트워크 사용 불가
-    ToastIAPErrorNetworkFailed = 101,               // HTTP Status Code 가 200이 아님
-    ToastIAPErrorTimeout = 102,                     // 타임아웃
-    ToastIAPErrorParameterInvalid = 103,            // 요청 파라미터 오류
-    ToastIAPErrorResponseInvalid = 104,             // 서버 응답 오류
+    ToastIAPErrorNetworkNotAvailable = 100,         // Network is unavailable 
+    ToastIAPErrorNetworkFailed = 101,               //HTTP Status Code is not 200 
+    ToastIAPErrorTimeout = 102,                     // Timeout
+    ToastIAPErrorParameterInvalid = 103,            // Error in request parameter
+    ToastIAPErrorResponseInvalid = 104,             // Error in server respone 
 };
 ```
 

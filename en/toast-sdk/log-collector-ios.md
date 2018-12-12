@@ -1,14 +1,14 @@
-## TOAST > TOAST SDK Guide > TOAST Log & Crash > iOS
+## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > iOS
 
 ## Prerequisites
 
-1\. [Install the TOAST SDK](./getting-started-ios)
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
-3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+1\. [Install TOAST SDK](./getting-started-ios).
+2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+3\.[Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search. 
 
-## Cococapods 적용하기
+## Apply Cococapods 
 
-Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
+Create a podfile to add pods to TOAST SDK. 
 
 ```podspec
 platform :ios, '8.0'
@@ -19,45 +19,45 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-생성된 Workspace를 열어 사용자고자하는 SDK를 Import 합니다.
+Open a created workspace and import SDK to use. 
 
 ```objc
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 ```
 
-## TOAST Logger SDK 초기화
+## Initialize TOAST Logger SDK 
 
-Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Set appkey issued from Log & Crash Search as ProjectKey.
 
 ```objc
 [ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
 ```
 
-## 로그 전송하기
+## Send Logs 
 
-TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
+TOAST Logger provides log-sending functions of five levels. 
 
-### 로그 전송 API 명세
+### Specifications for Log Sending API 
 
 ```objc
 @interface ToastLogger : NSObject
 
 //...
 
-// DEBUG Level log
+// DEBUG level log
 + (void)debug:(NSString *)message;
 
-// INFO Level log
+// INFO level log
 + (void)info:(NSString *)message;
 
-// WARN Level log
+// WARN level log
 + (void)warn:(NSString *)message;
 
-// ERROR Level log
+// ERROR level log
 + (void)error:(NSString *)message;
 
-// FATAL Level log
+// FATAL level log
 + (void)fatal:(NSString *)message;
 
 //...
@@ -65,67 +65,67 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 @end
 ```
 
-### 로그 전송 API 사용 예
+### Usage Example of Log Sending API 
 
 ```objc
 [ToastLogger info:@"TOAST Log & Crash Search!"];
 ```
 
-## 사용자 정의 필드 설정하기
+## Set User-defined Fields 
 
-사용자 정의 원하는 필드를 설정합니다. 
-사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
+Set a user-defined field as wanted.  
+With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called. 
 
-### 사용자 정의 필드 API 명세
+### Specifications for User-defined Field Setting API 
 
 ```objc
 @interface ToastLogger : NSObject
 
 // ...
-// UserField 추가
+// Add a UserField 
 + (void)setUserFieldWithValue:(NSString *)value forKey:(NSString *)key;
 // ...
 
 @end
 ```
 
-*  사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.  
-즉, Log & Crash Search의 커스텀 파라미터와 동일한 것으로 "field"값의 상세한 제약 사항은 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/)에서 확인할 수 있습니다.
+*  User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab". 
+That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of Custom Field](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
 
-#### 사용자 정의 필드 제약사항
+#### Restrictions for User-Defined Fields
 
-* 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.  
-예약된 필드는 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/) 항목의 "기본 파라미터"를 확인하세요.
-* 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
-* 필드명 내에 공백은 "\_"로 치환됩니다.
+- Cannot use already [Reserved Fields](./log-collector-reserved-fields).  
+  Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
+- Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z". 
+- Replace spaces within a field name by "_". 
 
-### 사용자 정의 필드 사용 예
+### Usage Example of User-Defined Fields
 ```objc
-// UserField 추가
+// Add a UserField
 [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
-## 크래시 로그 수집
-TOAST Logger는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
-ToastLogger 초기화 시에 함께 활성화되고 사용여부를 설정할 수 있습니다. 
-크래시 로그 전송을 위해 PLCrashReporter를 사용합니다.
+## Collect Crash Logs
+TOAST Logger sends crash information to logs.
+It is enabled along with ToastLogger initilization, by setting.  
+To send crash logs, PLCrashReporter is applied. 
 
-### CrashReporter 사용 여부 설정
-CrashReporter 기능은 기본적으로 ToastLogger를 초기화할 때 함께 활성화됩니다.
+### Set Enable CrashReporter 
+CrashReporter is enabled, on principle, along with initialization of TOASTLogger.  
 ```objc
 [ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
 ```
-ToastLogger 초기화 시에 사용 여부를 설정할 수 있습니다.
-크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다. 
+It is enabled by setting, along with ToastLogger initialization. 
+In order not to send crash logs, CrashReporter must be disabled.  
 
-#### CrashReporter 활성화
+#### Enable CrashReporter 
 ```objc
 // CrashReporter Enable Configuration
 ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:YES];
 
 [ToastLogger initWithConfiguration:configuration];
 ```
-#### CrashReporter 비활성화
+#### Disable CrashReporter 
 ```objc
 
 // CrashReporter Disable Configuration
@@ -134,12 +134,12 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 [ToastLogger initWithConfiguration:configuration];
 ```
 
-## 크래시 발생 시점에 추가 정보를 설정하여 전송하기
+## Set Additional Information in Time for Crash Occurrence before Sending
 
-크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
-setShouldReportCrashHandler의 Block에서 사용자 정의 필드를 설정하면 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
+Additional information can be set immediately after crash occurs. 
+setUserField can be set anytime regardless of crash occurrence, whilesetCrashDataAdapter can be set at an accurate timing when a crash occurs.
 
-### Data Adapter API 명세
+### Specifications for Data Adapter API 
 ```objc
 @interface ToastLogger : NSObject
 
@@ -152,24 +152,24 @@ setShouldReportCrashHandler의 Block에서 사용자 정의 필드를 설정하�
 @end
 ```
 
-### Data Adapter 사용 예
+### Usage Example of Data Adapter 
 
 ```objc
 [ToastLogger setShouldReportCrashHandler:^{
   
-  //사용자 정의 필드 를 통해 Crash가 발생한 상황에서 얻고자 하는 정보를 함께 전송    
-  // UserField 추가
+  //Send, via user-defined field, wanted information from crash occurrence
+  // Add a UserField 
   [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 
 }];
 ```
 
-## 로그 전송 후 추가작업 진행하기
+## Further Tasks after Sending Logs
 
-Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습니다.
+With delegate registered, further tasks can be executed after logs are sent.
 
 
-### Delegate API 명세
+### Specifications for Delegate API
 ```objc
 @interface ToastLogger : NSObject
 
@@ -183,22 +183,22 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
 
 @protocol ToastLoggerDelegate <NSObject>
 @optional
-// 로그 전송 성공
+// Sending logs succeeded
 - (void)toastLogDidSuccess:(ToastLog *)log;
 
-// 로그 전송 실패
+// Sending logs failed
 - (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error;
 
-// 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
+// Save within SDK for re-sending if log-sending fails due to network errors
 - (void)toastLogDidSave:(ToastLog *)log;
 
-// Filter 설정에 의해 필터링
+// Filter by filter setting
 - (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter;
 @end
 ```
 
 
-### Delegate 사용 예
+### Usage Example of Delegate 
 
 ```objc
 // Delegate Setting
@@ -211,38 +211,40 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
 // ...
 
 - (void)toastLogDidSuccess:(ToastLog *)log {
-      // 로그 전송 성공
+      // Sending logs succeeded
  }
 
 - (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error {
-      // 로그 전송 실패
+      // Sending logs failed
 }
 - (void)toastLogDidSave:(ToastLog *)log {
-      // 네트워크 등의 이유로 로그 전송이 실패한 경우 재전송을 위해 SDK 내부 저장
+      // Save within SDK for re-sending if log-sending fails due to network erros
 }
 
 - (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter {
-      // Filter 설정에 의해 필터링
+      // Filter by filter setting
 }
 
 @end
 ```
 
 ## Network Insights
-Network Insights는 콘솔에 등록한 URL을 호출하여 지연시간 및 응답 값을 측정합니다. 이를 활용하여 세계 여러 나라(디바이스의 국가 코드 기준)에서의 지연시간과 응답 값을 측정할 수 있습니다.
 
-> 콘솔을 통해 Network Insights 기능을 활성화하면 TOAST Logger 초기화 시에, 콘솔에 등록한 URL로 1회 요청합니다.
+Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device). 
 
-### Network Insights 활성화
+> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized. 
 
-1. [TOAST Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
-2. [설정] 메뉴를 선택합니다.
-3. [로그 전송 설정] 탭을 선택합니다.
-4. "Network Insights 로그"를 활성화합니다.
+### Enable Network Insights
 
-### URL 설정
+1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
+2. Select [Settings].
+3. Click the [Setting for Sending Logs] tab.
+4. Enable "Network Insights Logs".
 
-1. [TOAST Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
-2. [네트워크 인사이트] 메뉴를 선택합니다.
-3. [URL 설정] 탭을 선택합니다.
-4. 측정하고 자하는 URL을 입력 후 [추가] 버튼을 클릭합니다.
+### URL Setting
+
+1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
+2. Select [Network Insights].
+3. Click the [URL Setting] tab.
+4. Enter URL to measure and click [Add].
+

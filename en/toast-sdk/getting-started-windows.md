@@ -1,39 +1,38 @@
-## TOAST > TOAST SDK Guide > Getting Started > Windows C++
+## TOAST > User Guide for TOAST SDK > Getting Started > Windows C++
 
-## 지원 환경
+## Supporting Environment
 
 * Windows 7
 * Windows 10
 
-## TOAST SDK의 구성
+## Configuration of TOAST SDK
 
-Windows C++ 용 TOAST SDK의 구성은 다음과 같습니다.
+TOAST SDK for Windows C++ is configured as follows:
 
 | Directory | Description |
 |---|---|
-| docs/ | Windows SDK 문서 |
-| include/toast/ | C++ 헤더 파일 |
-| windows-sdk/lib32/ | C++ Windows 32bit 라이브러리 |
-| windows-sdk/lib64/ | C++ Windows 64bit 라이브러리 |
-| windows-sdk-sample/ | 샘플 프로젝트 |
+| docs/ | Windows SDK document |
+| include/toast/ | C++ Header file |
+| windows-sdk/lib32/ | C++ Windows 32bit library |
+| windows-sdk/lib64/ | C++ Windows 64bit library |
+| windows-sdk-sample/ | Sample project |
 
-## TOAST SDK를 Visual Studio 프로젝트에 적용하기
+## Apply TOAST SDK to Visual Studio Projects 
 
-아래의 링크에서 TOAST Windows C++ SDK 를 다운로드 받을 수 있습니다.
+TOAST Windows C++ SDK can be downloaded from the following link:  
 
-- [다운로드](../../../Download/#toast-sdk)
+- [Download](../../../Download/#toast-sdk)
 
-### 라이브러리 포함하기
+### Include Libraries  
 
-1. 메뉴바의 Project 탭에서 Properties를 선택합니다.
-2. C/C++ > General > Additional Include Directories에서 Sdk의 헤더파일 경로를 설정합니다.
-3. Linker > General > Additional Library Directories에서 빌드환경(Debug/Release)과 Target Machine(x86, x64)에 따라 라이브러리를 포함합니다.
-4. Linker > Input > Additional Dependencies에서 빌드환경(Debug/Release)과 Target Machine(x86, x64)에 따라 추가할 lib를 입력합니다.
+1. Select Properties from Project on the menu.
+2. Set the route for SDK header files from C/C++ > General > Additional Include Directories.
+3. Go to Linker > General > Additional Library Directories, and include library, depending on the build environment (Debug/Release) and target machine (x86 or x64). 
+4. Go to Linker > Input > Additional Dependencies, and enter lib to add, depending on the build environment (Debug/Release) and target machine (x86 or x64).
 
-참고 : [https://msdn.microsoft.com/ko-kr/library/ms235636.aspx](https://msdn.microsoft.com/ko-kr/library/ms235636.aspx)
+For reference: [https://msdn.microsoft.com/ko-kr/library/ms235636.aspx](https://msdn.microsoft.com/ko-kr/library/ms235636.aspx)
 
-## TOAST Service 사용하기
+## Use TOAST Service 
 
-* [TOAST Log & Crash](./log-collector-windows) 사용 가이드
-
+* User Guide for [TOAST Log & Crash](./log-collector-windows) 
 
