@@ -140,7 +140,7 @@ ToastSdk.setUserId(null);
 
 ## 결제 업데이트 리스너 등록
 
-* 결제 결과는 ToastIap에 설정된 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)해 통지됩니다.
+* 결제 결과는 ToastIap에 설정된 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 통지됩니다.
 * 결제 업데이트 리스너는 ToastIap.registerPurchasesUpdatedListener 메서드를 사용하여 등록할 수 있습니다.
 * [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 전달된 [IapPurchaseResult](./iap-android/#iappurchaseresult) 리스트를 통해 결제 정보를 확인할 수 있습니다.
 
@@ -621,7 +621,7 @@ void onPurchasesResponse(IapResult result,
 | INACTIVATED_APP        | 101  | 활성화되지 않은 앱입니다.<br>App is not active.     |
 | NETOWRK_NOT_CONNECTED  | 102  | 네트워크가 연결되지 않았습니다.<br>Network not connected. |
 | VERIFY_PURCHASE_FAILED | 103  | 결제 검증에 실패했습니다.<br>Failure to verify purchase. |
-| CONSUMED_PURCHASE      | 104  | 구매가 이미 소비되었습니다.<br>Purchase already consumed. |
+| CONSUMED_PURCHASE      | 104  | 이미 소비된 구매입니다.<br>Purchase already consumed. |
 | REFUNDED_PURCHASE      | 105  | 환불된 구매입니다.<br>Purchase already refunded. |
 
 ### ONE store 오류 코드
