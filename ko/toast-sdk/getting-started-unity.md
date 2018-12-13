@@ -1,4 +1,4 @@
-e## TOAST > TOAST SDK 사용 가이드 > 시작하기 > Unity
+## TOAST > TOAST SDK 사용 가이드 > 시작하기 > Unity
 
 ## 지원 환경
 
