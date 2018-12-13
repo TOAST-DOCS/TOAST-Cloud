@@ -90,12 +90,10 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 ```
 
 *  사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다. 
-  Log & Crash Search의 커스텀 파라미터와 같은 것으로, 'field값'의 자세한 제약  사항은 [커스텀 필드의 제약 사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/)에서 확인할 수 있습니다.
-
+  
 #### 사용자 정의 필드 제약사항
 
 * 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.  
-예약된 필드는 [커스텀 필드의 제약사항](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/) 항목의 **기본 파라미터**를 확인하세요.
 * 필드 이름은 'A-Z, a-z'로 시작하고 'A-Z, a-z, 0-9, -, _' 문자를 사용할 수 있습니다.
 * 필드 이름의 공백은 '_'로 치환됩니다.
 
@@ -112,11 +110,11 @@ TOAST Logger를 초기화할 때 함께 활성화되고 사용 여부를 설정�
 크래시 로그를 전송하려면 PLCrashReporter를 사용합니다.
 
 ### CrashReporter 사용 여부 설정
-CrashReporter 기능은 기본적으로 ToastLogger를 초기화할 때 함께 활성화됩니다.
+CrashReporter 기능은 기본적으로 TOAST Logger를 초기화할 때 함께 활성화됩니다.
 ```objc
 [ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
 ```
-ToastLogger를 초기화할 때 사용 여부를 설정할 수 있습니다.
+TOAST Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
 크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다. 
 
 #### CrashReporter 활성화
