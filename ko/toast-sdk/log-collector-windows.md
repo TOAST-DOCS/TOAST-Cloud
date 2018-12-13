@@ -1,6 +1,6 @@
 ## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > Windows C++
 
-## Prerequisites
+## 사전 준비
 
 1\. [Install the TOAST SDK](./getting-started-windows)
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
@@ -31,11 +31,11 @@ if (_logger != NULL)
 }
 ```
 
-## UserID 설정하기
+## UserID 설정
 
-ToastSDK에 사용자 아이디를 설정할 수 있습니다.
+ToastSDK에 사용자 ID를 설정할 수 있습니다.
 설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
-ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 ID를 로그와 함께 서버로 전송합니다.
 
 
 ```
@@ -50,11 +50,11 @@ _logger->getUserId();
 ```
 
 * setUserId
-    * 사용자 아이디를 설정합니다.
+    * 사용자 ID를 설정합니다.
 * getUserId
-    * 현재 설정된 사용자 아이디를 얻어옵니다.
+    * 현재 설정된 사용자 ID를 얻어옵니다.
 
-## 로그 전송하기
+## 로그 전송
 
 TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
@@ -110,13 +110,13 @@ if (_userFieldMap != NULL)
     * find : 데이터 탐색
     * empty : 빈 상태 여부
 
-*  사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.  
+*  사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다. 
 
 #### 커스텀 필드 제약사항
 
 * 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.  
 * 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
-* 필드명 내에 공백은 "\_"로 치환됩니다.
+* 필드명 내에 공백은 "_"로 치환됩니다.
 
 ### addUserField / removeUserFiled / cleareUserField 사용 예
 
@@ -129,9 +129,9 @@ _logger->cleareUserField();
 ## 크래시 로그 수집
 
 크래시 리포터(CrashRepoter.exe)는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
-크래시 발생 시에 크래시 리포터를 통해서 크래시 정보를 로그로 전송합니다.
-ToastLogger 초기화 시에 크래시 리포터 사용 여부를 설정할 수 있습니다.
-크래시 리포터 다이얼로그 박스 사용 여부 및 커스텀 메시지를 설정할 수 있습니다. 
+크래시가 발생하면 크래시 리포터에서 크래시 정보를 로그로 전송합니다.
+ToastLogger를 초기화할 때 크래시 리포터 사용 여부를 설정할 수 있습니다.
+크래시 리포터 대화 상자 사용 여부 및 커스텀 메시지를 설정할 수 있습니다. 
 
 
 ### 크래시 로그 활성화 및 크래시 리포터 
@@ -164,7 +164,7 @@ if (_logger != NULL)
 
 ### 크래시 로그 전송 테스트 
 
-* 크래시 로그 전송을 테스트하기 위해서는 실제로 Exception이 일어나야 합니다.
+* 크래시 로그 전송을 테스트하려면 실제로 예외(Exception)가 발생해야 합니다.
 * 크래시 로그 전송은 enableCrashReporter가 true인 경우 SDK가 자동으로 실행합니다.
 
 ```
@@ -177,40 +177,38 @@ void CsampleDlg::OnBnClickedCrash()
 }
 ```
 
-### 크래시 로그 해석하기
+### 크래시 로그 해석
 
-#### 개요
+TOAST Windows SDK에서 발생한 크래시를 해석하려면 심벌 파일을 생성해 웹 콘솔에 업로드해야 합니다.
 
-* TOAST Windows SDK에서 발생한 Crash를 해석하기 위해서는 심볼 파일을 생성하여 웹 콘솔에 업로드 해야 합니다.
+#### 심벌 파일 생성
 
-#### 심볼 파일 생성
-
-* 심볼 파일을 생성하기 위해서는 개발환경에 맞는 dump_syms가 필요합니다.
+* 심벌 파일을 생성하려면 개발환경에 맞는 dump_syms가 필요합니다.
     * [dump\_syms\_vc1600 : vs2010](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1600.zip)
     * [dump\_syms\_vc1700 : vs2012](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1700.zip)
     * [dump\_syms\_vc1800 : vs2013](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1800.zip)
     * [dump\_syms\_vc1900 : vs2015](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1900.zip)
-* 명령 프롬프트를 실행시켜 아래와 같은 방식으로 sym 파일을 생성합니다.
+* 명령 프롬프트를 실행해 아래와 같은 방식으로 .sym 파일을 생성합니다.
     * sample은 예제 프로젝트의 명칭입니다.
 
 ```
 dump_syms sample.pdb > sample.sym
 ```
 
-* 이후 sample.sym을 zip으로 압축하여 [콘솔 서버에 업로드](https://alpha-docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_25) 합니다.
-    * 콘솔 업로드 시 입력하는 버전은 초기화 시, setProjectVersion에 입력한 버전과 동일한 값을 사용해야 합니다.
+* 이후 sample.sym을 zip으로 압축하여 [콘솔 서버에 업로드](https://alpha-docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_25)합니다.
+    * 콘솔 업로드할 때 입력하는 버전은, 초기화할 때 setProjectVersion에 입력한 버전과 같은 값이어야 합니다.
 
-#### 크래시 발생 시점에 추가 정보를 설정하여 전송하기
+#### 크래시 발생 시점에 추가 정보를 설정하여 전송
 
 크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
-setUserField는 크래시 시점과 관계없이 아무 때나 설정할 수 있고, setDataAdapter의 경우 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
+setUserField는 크래시 시점과 관계없이 아무때나 설정할 수 있고, setDataAdapter의 경우 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
 
 ##### setDataAdapter API 명세
 
 ```java
 static void setDataAdapter(CrashDataAdapter adapter);
 ```
-* CrashDataAdapter의 getUserFields 함수를 통해 리턴하는 Map 자료구조의 키값은 위에서 설명한 setUserField의 "field"값과 동일한 제약 조건을 갖습니다.
+* CrashDataAdapter의 getUserFields 함수를 통해 리턴하는 Map 자료 구조의 키값은 위에서 설명한 setUserField의 "field"값과 동일한 제약 조건을 갖습니다.
 
 ##### setDataAdapter 사용 예
 
