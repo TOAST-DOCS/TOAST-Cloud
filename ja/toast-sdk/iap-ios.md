@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST IAP > iOS
+## TOAST > TOAST SDK Guide > TOAST IAP >  iOS
 
 ## Prerequisites
 
