@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-1\. [Install the TOAST SDK](./getting-started-ios)
+1\. [TOAST SDK](./getting-started-ios)를 설치합니다.
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
@@ -34,7 +34,7 @@ Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 [ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
 ```
 
-## 로그 전송
+## 로그 전송 
 
 TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
