@@ -1,5 +1,8 @@
 ## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > iOS
 
+> [공지]
+> arm64e 아키텍처를 사용하는 신규기기(iPhone XS, XR, XS Max, iPad Pros 3rd)에서 발생한 Crash 로그는 집계만 가능하며 Crash 내용의 분석은 아직 지원하지 않고 있습니다.
+
 ## Prerequisites
 
 1\. [Install TOAST SDK](./getting-started-ios).
