@@ -1,8 +1,8 @@
 ## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > iOS
 
-> [공지]
-> 현재 arm64e 아키텍처를 사용하는 신규기기(iPhone XS, XR, XS Max, iPad Pros 3rd)에서 크래시가 발생한 경우에는 크래시 발생 건수의 집계만 가능하며, 크래시 내용의 분석(스택추적)이 되지 않습니다. 
-> 빠른 시일 내에 신규기기에 대한 분석(스택추적) 기능을 제공하도록 하겠습니다.
+> [Notice]
+> Crash logs from new devices using the arm64e architecture (iPhone XS, XR, XS Max, and iPad Pros 3rd) can only count the number of occurrences, and analysis of crash content is not yet supported.
+> We will provide analysis capabilities for new devices in the near future.
 
 ## Prerequisites
 
