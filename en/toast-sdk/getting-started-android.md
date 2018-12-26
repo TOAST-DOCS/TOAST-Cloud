@@ -15,6 +15,8 @@ TOAST SDK for Android is configured as follows:
 * TOAST In-app Purchase Core SDK
 * [TOAST In-app Purchase Google Play Store](./iap-android) SDK
 * [TOAST In-app Purchase OneStore](./iap-android) SDK
+* TOAST Push Core SDK
+* [TOAST Push Firebase Cloud Messaging](./push-android) SDK
 
 TOAST SDK services can be selectively applied for your needs. 
 
@@ -26,6 +28,8 @@ TOAST SDK services can be selectively applied for your needs.
 | com.toast.android:toast-iap-core:0.13.0 | TOAST In-app Purchase Core |
 | com.toast.android:toast-iap-google:0.13.0 | TOAST In-app Purchase <br>Google Play Store |
 | com.toast.android:toast-iap-onestore:0.13.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-push-core:0.13.0    | TOAST Push Core   |
+| com.toast.android:toast-push-fcm:0.13.0     | TOAST Push <br>Firebase Cloud Messaging |
 
 ## Apply TOAST SDK to Android Studio Projects 
 
@@ -46,6 +50,7 @@ Following describe how to set for each product of TOAST SDK.
 
 - [Setting Library of TOAST Logger](./log-collector-android/#_1)
 - [Setting Library of TOAST In-app Purchase](./iap-android/#_2)
+- [Setting Library of TOAST Push](./push-android/#_2)
 
 ### 2. Apply TOAST SDK with Binary Downloads  
 
@@ -122,6 +127,7 @@ ToastSdk.setDebugMode(false);
 
 * User Guide for [TOAST Log & Crash](./log-collector-android) 
 * User Guide for [TOAST In-app Purchase](./iap-android) 
+* User Guide for [TOAST Push](./push-android) 
 
 
 
