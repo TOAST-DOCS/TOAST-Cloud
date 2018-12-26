@@ -1,13 +1,13 @@
-## TOAST > TOAST SDK Guide > Getting Started > Android
+## TOAST > User Guide for TOAST SDK > Getting Started > Android
 
-## 지원 환경
+## Supporting Environment
 
-* Android 4.0.3 이상
-* Android Studio 최신 버전 (버전 2.2 이상)
+* Android 4.0.3 or higher
+* The latest version of Android Studio (version 2.2 or higher)
 
-## TOAST SDK의 구성
+## Configuration of TOAST SDK
 
-Android 용 TOAST SDK의 구성은 다음과 같습니다.
+TOAST SDK for Android is configured as follows:  
 
 * TOAST Common SDK
 * TOAST Core SDK
@@ -16,7 +16,7 @@ Android 용 TOAST SDK의 구성은 다음과 같습니다.
 * [TOAST In-app Purchase Google Play Store](./iap-android) SDK
 * [TOAST In-app Purchase OneStore](./iap-android) SDK
 
-TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
+TOAST SDK services can be selectively applied for your needs. 
 
 | Gradle Dependency | Service |
 | --- | --- |
@@ -27,14 +27,14 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용�
 | com.toast.android:toast-iap-google:0.12.0 | TOAST In-app Purchase <br>Google Play Store |
 | com.toast.android:toast-iap-onestore:0.12.0 | TOAST In-app Purchase <br>OneStore |
 
-## TOAST SDK를 Android Studio 프로젝트에 적용하기
+## Apply TOAST SDK to Android Studio Projects 
 
-### 1. Gradle을 사용해서 TOAST SDK 적용하기
+### 1. Apply TOAST SDK with Gradle
 
-TOAST SDK의 모든 서비스를 사용하려면 아래와 같이 종속성을 설정합니다.
+Set dependency as below, to use all TOAST SDK services.  
 
-> 유니티를 사용하는 경우, 별도의 종속성 설정을 해야합니다. 
-> 자세한 내용은 [유니티 가이드](./getting-started-unity/#android)를 참고해주세요.
+> For Unity users, dependency must be set separately.  
+> For more details, see [Guide for Unity](./getting-started-unity/#android).
 
 ```groovy
 dependencies {
@@ -42,22 +42,23 @@ dependencies {
 }
 ```
 
-TOAST SDK가 제공하는 상품별 설정 방법은 다음과 같습니다.
+Following describe how to set for each product of TOAST SDK. 
 
-- [TOAST Logger 라이브러리 설정](./log-collector-android/#_1)
-- [TOAST In-app Purchase 라이브러리 설정](./iap-android/#_2)
+- [Setting Library of TOAST Logger](./log-collector-android/#_1)
+- [Setting Library of TOAST In-app Purchase](./iap-android/#_2)
 
-### 2. 바이너리 다운로드로 TOAST SDK 적용하기
+### 2. Apply TOAST SDK with Binary Downloads  
 
-TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Android SDK를 다운로드할 수 있습니다.
+The entire Android SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST. 
 
-## TOAST SDK 초기화하기
+## Initialize TOAST SDK 
 
-- 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
+- To use TOAST IAP SDK, TOAST SDK must be initialized. 
+Initialization must be executed from Application#onCreate.
 
-> 초기화를 진행하지 않고, TOAST SDK를 사용하는 경우 초기화 오류가 발생합니다.
+- `TOAST SDK, without initialization, cannot operate.`
 
-### 초기화 API 명세
+### Specifications for Initialization API 
 
 ```java
 /* ToastSdk.java */
@@ -68,7 +69,7 @@ public static void initialize(Context context)
 | -- | -- |
 | applicationContext | Context: Application Context |
 
-### 초기화 예시
+### Example of Initialization 
 
 ```java
 public class MainApplication extends Application {
@@ -79,9 +80,9 @@ public class MainApplication extends Application {
     }
 
     /**
-     * ToastSdk 를 초기화합니다.
+     * Initialize ToastSdk.
      * <p>
-     * ToastSdk 디버그 모드를 활성화하려면 ToastSdk.setDebugMode(boolean) 호출하여 true 로 설정합니다.
+     * To enable the ToastSdk debug mode, call ToastSdk.setDebugMode(boolean) and set True.  
      * <pre>
      * {@code
      * ToastSdk.setDebugMode(true);
@@ -95,13 +96,12 @@ public class MainApplication extends Application {
 }
 ```
 
-## UserID 설정하기
+## Set UserID 
 
-ToastSDK에 사용자 아이디를 설정할 수 있습니다.
-설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
-ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
+User ID can be set for ToastSDK and it is for common usage at each module of TOAST SDK.
+Send such set user ID to a server, along with logs, whenever Log Sending API of TOAST Logger is called. 
 
-### UserID 설정 API 명세
+### Specifications for User ID Setting API
 
 ```java
 /* ToastSdk.java */
@@ -110,30 +110,30 @@ public static void setUserId(String userId);
 
 | Parameters | |
 | -- | -- |
-| userId | String: 사용자 아이디.|
+| userId | String: User ID |
 
-### UserID 설정 예
+### Example of UserID Setting 
 
-#### 로그인
+#### Login 
 
 ```java
 // Login.
 ToastSdk.setUserId(userId);
 ```
 
-#### 로그아웃
+#### Logout 
 
 ```java
 // Logout.
 ToastSdk.setUserId(null);
 ```
 
-## 디버그 모드 설정하기
+## Set Debug Mode 
 
-TOAST SDK의 내부 로그 확인을 위해서 디버그 모드를 설정할 수 있습니다.
-TOAST SDK 문의를 하실 경우, 디버그 모드를 활성화해서 전달해주시면 빠른 지원을 받을 수 있습니다.
+To check logs within TOAST SDK, the debug mode can be set. 
+To inquire of TOAST SDK, enable the debug mode for faster response.  
 
-### 디버그 모드 설정 API 명세
+### Specifications for Debug Mode Setting API 
 
 ```java
 /* ToastSdk.java */
@@ -142,30 +142,30 @@ public static void setDebugMode(boolean debug);
 
 | Parameters | |
 | -- | -- |
-| debug | boolean: 디버그 모드를 활성화하려면 true, 아니면 false.|
+| debug | boolean: True to enable debug mode, or False |
 
-### 디버그 모드 설정 사용 예
+### Usage Example of Debug Mode Setting 
 
-#### 디버그 모드 활성화
+#### Enable Debug Mode 
 
 ```java
 // Enable debug mode.
 ToastSdk.setDebugMode(true);
 ```
 
-#### 디버그 모드 비활성화
+#### Disable Debug Mode 
 
 ```java
 // Disable debug mode.
 ToastSdk.setDebugMode(false);
 ```
 
-> (주의) 앱을 릴리즈할 경우, 반드시 디버그 모드를 비활성화 해야 합니다.
+> (Caution) To release an app, the debug mode must be disabled. 
 
-## TOAST Service 사용하기
+## Use TOAST Service 
 
-* [TOAST Log & Crash](./log-collector-android) 사용 가이드
-* [TOAST In-app Purchase](./iap-android) 사용 가이드
+* User Guide for [TOAST Log & Crash](./log-collector-android) 
+* User Guide for [TOAST In-app Purchase](./iap-android) 
 
 
 

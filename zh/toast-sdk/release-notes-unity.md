@@ -1,23 +1,23 @@
-## TOAST > TOAST SDK Guide > Release Notes > Unity
+## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
 ## 0.10.0 (2018.11.20)
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### Added
 
-* SetLoggerListener API 추가
-* Network Insights 지원 
+* SetLoggerListener API 
+* Support of Network Insights  
 
-#### 변경 사항
+#### Changed 
 
-* 유니티 패키지에서 mainTemplate.gradle 제거
-    * mainTemplate.gradle 설정은 가이드 참고
+* Removed mainTemplate.gradle from Unity Package 
+    * See guide for setting of mainTemplate.gradle 
 
 ## 0.9.0 (2018.09.04)
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### Added
 
-* 신규 기능 추가
+* New Functions

@@ -1,4 +1,5 @@
 ## TOAST > Console User Guide
+
 The console serves as management tool and window for the use of TOAST services.
 Basic console settings and its user guide are provided as below to use TOAST Service.
 
@@ -18,13 +19,16 @@ It helps to make use of TOAST Service more efficiently.
 ### Organization Management Policy
 
 #### Create Organizations
+
 - An organization should be created to use TOAST Service.
 - Both personal and business members can create organizations.
 - Any member who creates an organization automatically becomes the OWNER of his organization.
 - Member’s payment method is required to create an organization.
 - Organization is in charge of its name and domain information.
 - Domain information of an organization must be unique, as it is required for services.
+
 #### Organization Services
+
 After an organization is created, you can select services.
 Following services are available at the level of organization:
 
@@ -34,37 +38,41 @@ Following services are available at the level of organization:
 - IDC
 
 #### Organization Members
+
 Organization members are classified into members of TOAST.com and insider members of the organization.  
 
-| Classification | TOAST.com Members | Insider Members of Organization (same as IAM of AWS) |
-| :--- | :----------- | :------- |
-| Definition | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted.| \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
+| Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
+| :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Definition                    | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
 | Method of Member Registration | \- Owner/Admin of an organization enters TOAST ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
-| Member Authority | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services |
+| Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
 
 Each member of an organization has following roles:
 
-| Action | Role | Owner | Admin | Member | Billing Viewer |
-| ------ | ---- | ----- | ----- | ------ | ----- |
-| Manage Organizations | Create Organizations | O | | ||
-| | Modify Organizations | O | O | ||
-| | Delete Organizations | O | | | |
-| Manage Members | Register Organization Members | O | O | | |
-| | Delete Organization Members | O | O | | |
-| Manage Services | Enable Organization Services | O | O | | |
-| |Disable Organization Services | O | O | | |
-| Manage Payment |Query Bills | O | | ||
-| | Status of Service Use | O | O | | O |
-| Manage Projects | Create Projects | O | O | O | |
-| | Delete Projects (all projects of an organization) | O | O | | |
-| | Delete Projects (created projects) | O | O | O | |
+| Action               | Role                                              | Owner | Admin | Member | Billing Viewer |
+| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- |
+| Manage Organizations | Create Organizations                              | O     |       |        |                |
+|                      | Modify Organizations                              | O     | O     |        |                |
+|                      | Delete Organizations                              | O     |       |        |                |
+| Manage Members       | Register Organization Members                     | O     | O     |        |                |
+|                      | Delete Organization Members                       | O     | O     |        |                |
+| Manage Services      | Enable Organization Services                      | O     | O     |        |                |
+|                      | Disable Organization Services                     | O     | O     |        |                |
+| Manage Payment       | Query Bills                                       | O     |       |        |                |
+|                      | Status of Service Use                             | O     | O     |        | O              |
+| Manage Projects      | Create Projects                                   | O     | O     | O      |                |
+|                      | Delete Projects (all projects of an organization) | O     | O     |        |                |
+|                      | Delete Projects (created projects)                | O     | O     | O      |                |
 
 #### Delete Organizations
+
 - Only the OWNER can delete his organization.
 - All the services currently in use must be deleted first.
 - All information of an organization is to be deleted, along with the deletion of organization, and cannot be recovered.  
 
 ### Guide to Create Organizations
+
+![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
 
 1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
 2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
@@ -73,12 +81,15 @@ Each member of an organization has following roles:
 5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
 
 ## Manage Projects
+
 A project is created to use TOAST Service, after an organization is created.
 Enable project services to use a project.
 Use and charge services by the project.
 
 ### Project Management Policy
+
 #### Create Projects
+
 - To create a project, an organization is required.
 - A member who creates a project is entitled ADMIN of the project.
 - Enter the name and description to create a project.
@@ -86,8 +97,10 @@ Use and charge services by the project.
 - When collaboration is required, add project members to share the project after it is created.
 
 #### Project Services
+
 You can select services, once a project is created.
 Following services can be enabled by each project:
+
 - Compute
 - Storage
 - Network
@@ -105,33 +118,37 @@ Following services can be enabled by each project:
 - Bill
 
 #### Project Members
+
 Project members are also members of TOAST.com. Insider members of an organization will be able to use project services with further functions to be provided.
 You can be a project member, if not an organization member.
 
 Each project member has the following roles:
 
-| Action | Role | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
-| ------ | ---- | ----- | ----- | ------ | ----- |
-| Manage Members | Register Project Members (ADMIN) | O |   |  |  |
-|  | Delete Project Members (ADMIN) | O |  |  | |  
-|  | Register Project Members (MEMBER) | O |  |  | |  
-|  | Delete Project Members (MEMBER) | O |  |  | |  
-|  | Register Project Members (Billing Viewer ADMIN) | O |  |  |   |
-|  | Delete Project Members (Billing Viewer ADMIN) | O |  |  |   |
-|  | Register Project Members (Billing Viewer) | O |  | O | |  
-|  | Delete Project Members (Billing Viewer) | O |  | O | |  
-| Manage Service | Enable Service | O |  |  | |  
-|  | Enable Service | O | O | | |  
-|  | Disable Service | O | | | |  
-| Status of Service Use | Status of Service Use | O | O | O | O |
+| Action                | Role                                            | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
+| --------------------- | ----------------------------------------------- | ----- | ------ | -------------------- | -------------- |
+| Manage Members        | Register Project Members (ADMIN)                | O     |        |                      |                |
+|                       | Delete Project Members (ADMIN)                  | O     |        |                      |                |
+|                       | Register Project Members (MEMBER)               | O     |        |                      |                |
+|                       | Delete Project Members (MEMBER)                 | O     |        |                      |                |
+|                       | Register Project Members (Billing Viewer ADMIN) | O     |        |                      |                |
+|                       | Delete Project Members (Billing Viewer ADMIN)   | O     |        |                      |                |
+|                       | Register Project Members (Billing Viewer)       | O     |        | O                    |                |
+|                       | Delete Project Members (Billing Viewer)         | O     |        | O                    |                |
+| Manage Service        | Enable Service                                  | O     |        |                      |                |
+|                       | Enable Service                                  | O     | O      |                      |                |
+|                       | Disable Service                                 | O     |        |                      |                |
+| Status of Service Use | Status of Service Use                           | O     | O      | O                    | O              |
 
 #### Delete Projects
+
 A project can be deleted if it has no available services.
 All its resources are deleted along with the deletion of a project, and cannot be recovered.
 You can immediately pay for all the resources that have used before deleting a project.
 However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
 
 ### Guide to Create Projects
+
+![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
 
 1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
 2. Enter **Project Name** and **Project Description**.
@@ -141,23 +158,28 @@ However, if it is deleted without paid, all charges up to the moment shall be au
 
 ### Guide to Enable Project Service
 
+![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
+
 1. Click **Select Services**, after a project is created, to enable services you need
 2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
 3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
 
 ## Billing Management
+
 Supports for TOAST members to check prices and pay bills for TOAST Service.
 Billing management provides bills for the TOAST members who registered payment methods, along with estimated amount of payment and usage information.
 Go to My Profile > Billing Management to check.
 
 Below functions are provided, along with the history of the month’s payment via registered payment method.
+
 - Immediate Payment: Immediate payment is available on the 15th of every month before automatic payment is processed.  
 - Sales Statement: Sales statement can be retrieved for credit card payments.
 - Tax Invoice: Tax invoices can be retrieved for payment by bank transfers.
 
 Following are included to the bills for retrieval:
+
 - Charged Amount: Prices for usage amount and service charges
 - Discount/Extra Charges: Discounts by contract, or discount/extra charges by administrators
 - Additional Tax: 10% of (Charged amount- Discount amount + Amount of extra charges)
 - Late Charges: 2% of unpaid amount out of total amount of payment
-- Total Amount of Payment: (Charged amount- Discount amount+ Amount of extra charges) + Additional Tax  
+- Total Amount of Payment: (Charged amount- Discount amount+ Amount of extra charges) + Additional Tax
