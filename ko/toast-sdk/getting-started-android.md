@@ -15,6 +15,8 @@ Android용 TOAST SDK의 구성은 다음과 같습니다.
 * TOAST In-app Purchase Core SDK
 * [TOAST In-app Purchase Google Play Store](./iap-android) SDK
 * [TOAST In-app Purchase OneStore](./iap-android) SDK
+* TOAST Push Core SDK
+* [TOAST Push Firebase Cloud Messaging](./push-android) SDK
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 수 있습니다.
 
@@ -26,6 +28,8 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 | com.toast.android:toast-iap-core:0.13.0     | TOAST In-app Purchase Core |
 | com.toast.android:toast-iap-google:0.13.0   | TOAST In-app Purchase <br>Google Play Store |
 | com.toast.android:toast-iap-onestore:0.13.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-push-core:0.13.0    | TOAST Push Core   |
+| com.toast.android:toast-push-fcm:0.13.0     | TOAST Push <br>Firebase Cloud Messaging |
 
 ## TOAST SDK를 Android Studio 프로젝트에 적용
 
@@ -46,6 +50,7 @@ TOAST SDK가 제공하는 상품별 설정 방법은 다음과 같습니다.
 
 - [TOAST Logger 라이브러리 설정](./log-collector-android/#_1)
 - [TOAST In-app Purchase 라이브러리 설정](./iap-android/#_2)
+- [TOAST Push 라이브러리 설정](./push-android/#_2)
 
 ### 2. 바이너리를 다운로드하여 TOAST SDK 적용
 
@@ -122,6 +127,8 @@ ToastSdk.setDebugMode(false);
 
 * [TOAST Log & Crash](./log-collector-android) 사용 가이드
 * [TOAST In-app Purchase](./iap-android) 사용 가이드
+* [TOAST Push](./push-android) 사용 가이드
+
 
 
 
