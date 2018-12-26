@@ -11,6 +11,7 @@ iOS용 TOAST SDK의 구성은 다음과 같습니다.
 
 * [TOAST Logger](./log-collector-ios) SDK
 * [TOAST In-app Purchase AppStore](./iap-ios) SDK
+* [TOAST Push](./push-ios) SDK
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 수 있습니다.
 
