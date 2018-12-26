@@ -481,7 +481,7 @@ public String getExpiryTime()
 | getProductId | String | Return product ID. |
 | getProductType | String | Return product type. |
 | getUserId | String | Return user ID. |
-| getPrice | float | Return payment information. |
+| getPrice | float | Return price. |
 | getPriceCurrencyCode | String | Return currency information. |
 | getAccessToken | String | Return token for consumption. |
 | getPurchaseType | String | Return product type. |
