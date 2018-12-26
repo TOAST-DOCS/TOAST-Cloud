@@ -175,7 +175,12 @@ ToastLogger.SetLoggerListener(new SampleLoggerListener());
 
 ## Collect Crash Logs 
 
-With ToastLogger initialized, a crash log is automatically sent when it occurs under the mobile environment. 
+TOAST Logger classifies Unity's crashes into two categories.
+
+- Crash on native platform (app terminated)
+- Unexpected exception from Unity (no app terminated)
+
+With ToastLogger initialized, a crash log is automatically sent when it occurs crash under the mobile environment or when it occurs the unexpected exception in Unity.
 To disable crash log delivery, set false for EnableCrashReporter property of the ToastLoggerConfiguration object.
 For more information on crash logs of each platform, check the links below: 
 
@@ -189,6 +194,33 @@ var loggerConfiguration = new ToastLoggerConfiguration
     EnableCrashReporter = false // Disable crash logs
 };
 ```
+
+## Further Tasks after Sending Crash logs
+- With crash listener registered, further tasks can be executed after crash logs are sent. 
+
+> ** Crash listener only works when it occurs unexpected exception in Unity **
+> Crash listener is not supported for crashes on the native platform.
+
+### Specifications for SetCrashListener API
+
+```csharp
+public delegate void CrashListener(bool isSuccess, LogEntry logEntry);
+
+public static void SetCrashListener(CrashListener listener);
+```
+
+### Usage Example of SetCrashListener API
+
+```csharp
+ToastLogger.SetCrashListener((isSuccess, log) =>
+{
+    if (isSuccess) 
+    {
+        Application.Quit();
+    }
+});
+```
+
 
 ## Send Handled Exceptions 
 

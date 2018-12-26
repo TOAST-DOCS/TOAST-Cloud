@@ -1,5 +1,14 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.11.0 (2018.12.27)
+
+### TOAST Log & Crash
+
+#### Added
+
+* Add a feature that sends automatically unexpected exception logs that occurs in Unity 
+* SetCrashListener API
+
 ## 0.10.0 (2018.11.20)
 
 ### TOAST Log & Crash
