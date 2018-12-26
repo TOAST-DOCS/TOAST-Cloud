@@ -23,7 +23,54 @@ dependencies {
 
 ## Firebase Cloud Messaging 설정
 
-> (Firebase Cloud Messaging 웹콘솔 가이드 작성 예정)
+### 프로젝트 및 앱 추가
+- 기존 Firebase 프로젝트가 없다면, [Firebase 콘솔](https://console.firebase.google.com/?hl=ko)에서 프로젝트를 생성합니다.
+- 콘솔의 상단에 있는 톱니바퀴 버튼을 클릭해서 **프로젝트 설정**으로 이동합니다.
+- 프로젝트 설정의 **내 앱** 에서 **Android 앱에 Firebase 추가**를 클릭합니다.
+- **Android 패키지 이름**, **앱 닉네임 (선택사항)** 을 입력하고 **앱 등록** 버튼을 클릭합니다.
+- **google-services.json 다운로드** 버튼을 클릭해서 설정 정보를 다운로드합니다. 그리고 **다음** 버튼을 클릭합니다.
+    - 만약 다운로드를 안하고 넘어갔더라도 프로젝트 설정에서 다시 다운로드 가능합니다.
+- 다음 스텝인 **Firebase SDK 추가** 는 아래 별도의 가이드를 참고하면 되기 때문에 바로 **다음** 버튼을 클릭합니다.
+- 다음 스텝인 **앱을 실행하여 설치 확인** 도 **_이 단계 건너뛰기_** 를 클릭해서 넘어갑니다.
+
+### build.gradle 설정
+#### 루트 수준의 build.gradle
+- 루트 수준의 build.gradle에 아래 코드를 추가합니다.
+
+```groovy
+buildscript {
+    // ...
+    dependencies {
+        // ...
+        classpath 'com.google.gms:google-services:4.2.0' // google-services plugin
+    }
+}
+
+allprojects {
+    // ...
+    repositories {
+        // ...
+        google() // Google's Maven repository
+    }
+}
+```
+
+#### 앱 모듈의 build.gradle
+- 앱 모듈의 build.gradle에 아래 코드를 추가합니다.
+
+```groovy
+apply plugin: 'com.android.application'
+
+android {
+  // ...
+}
+
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'
+```
+
+### google-services.json 추가
+- 앱 모듈의 루트 경로에 앞서 다운로드한 google-services.json을 복사합니다.
 
 ## Push 설정
 - ToastPushConfiguration 객체는 Push 설정 정보를 포함하고 있습니다.
@@ -55,9 +102,14 @@ ToastPush.initialize(provider, configuration);
     - 사용자 아이디를 설정하지 않은 경우, 토큰을 등록할 수 없습니다.
 - 서비스 로그인 단계에서 사용자 아이디 설정, 토큰 등록 기능을 구현하는 것을 권장합니다.
 
+### 서비스 로그인 예제
+
 ```java
-// Login.
-ToastSdk.setUserId(userId);
+public void onLogin(String userId) {
+    // Login.
+    ToastSdk.setUserId(userId);
+    // 토큰 등록 등
+}
 ```
 
 ## 수신 동의 설정
@@ -116,12 +168,102 @@ ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
 
 ## 알림 기본값 설정
 
-> (작성 예정) 아이콘, 채널, 색상 설정
+### 작은 아이콘 기본값 설정
+- 알림의 작은 아이콘의 기본값을 설정합니다.
+- 작은 아이콘의 기본값을 설정하면 SDK가 알림 생성시 기본값으로 설정된 작은 아이콘을 알림에 등록합니다.
+
+#### 작은 아이콘 기본값 설정 예시
+```java
+ToastNotification.setDefaultSmallIcon(context, R.drawable.ic_notification);
+```
+
+### 기본 알림 채널 설정
+- 안드로이드 8.0(API 레벨 26) 이상 부터는 알림 채널을 반드시 사용해야 합니다.
+- 기본 알림 채널을 설정하면 SDK가 알림 생성시 기본 알림 채널로 알림을 등록합니다.
+- **알림 채널 ID**는 알림 채널을 식별하기 위한 값으로 앱에서 유일한 값으로 설정해야 합니다.
+- **알림 채널 이름**은 사용자에게 노출되는 알림 채널의 이름입니다.
+
+> 기본 알림 채널을 설정하지 않으면 아래값으로 기본 알림 채널을 생성합니다.
+> **알림 채널 ID** : 임의의 UUID를 ID로 사용합니다.
+> **알림 채널 이름** : 애플리케이션의 이름을 알림 채널 이름으로 사용합니다.
+
+### 기본 알림 채널 설정 예시
+```java
+ToastNotification.setDefaultNotificationChannel(context, 
+    "YOUR_NOTIFICATION_CHANNEL_ID", 
+    "YOUR_NOTIFICATION_CHANNEL_NAME");
+```
 
 ## 리치 메시지
 
-> (작성 예정) 간단한 설명과 ReplyActionListener 등록법
-> 간단한 설명만 하고 기본 리시버가 알아서 변환해서 알림 등록해준다고 설명할 예정
+### 리치 메시지란?
+- **리치 메시지**란 제목, 본문과 함께 수신할 수 있는 다양하고 풍부한 메시지입니다.
+
+### 지원하는 리치 메시지
+#### 버튼
+- 알림 제거 : 현재 알림을 제거합니다.
+- 앱 열기 : 앱을 실행합니다.
+- URL 열기 : 특정 URL로 이동합니다.
+    - Custom scheme을 이용한 Activity/BroadcastReceiver 이동도 가능
+- 답장 전송 : 알림에서 바로 답장을 보냅니다.
+    - 안드로이드 7.0(API 레벨 24) 이상에서만 사용 가능합니다.
+
+> 버튼은 최대 3개까지 지원합니다.
+
+#### 미디어
+- 이미지 : 알림에 이미지를 추가합니다. (내부, 외부 이미지 모두 지원)
+    - 이미지는 가로와 세로 비율이 2:1인 이미지를 권장합니다.
+    - 다른 비율의 이미지는 잘린채로 노출될 수 있습니다.
+- 그 외 : 그 외의 미디어(동영상, 소리 등)는 지원하지 않습니다.
+
+#### 큰 아이콘
+- 알림에 큰 아이콘을 추가합니다. (내부, 외부 이미지 모두 지원)
+    - 큰 아이콘의 이미지는 1:1 비율을 권장합니다.
+    - 다른 비율의 이미지는 강제로 비율이 1:1로 변경되기 때문에 기대와 다른 이미지가 노출될 수 있습니다.
+
+#### 그룹
+- 같은 키의 알림들을 하나로 묶습니다.
+- 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
+
+### 리치 메시지 변환 방법
+- 리치 메시지는 TOAST Push의 웹콘솔에서 전송할 수 있습니다. 또한 메시지 발송 API의 richMessage 필드를 추가해서 전송할 수도 있습니다.
+- 리치 메시지를 정해진 형태로 전송했다면, 별도의 변환 과정없이 리치 메시지 알림이 등록됩니다.
+
+### ReplyActionListener 등록
+- 리치 메시지의 답장(혹은 응답) 버튼을 사용하는 경우, 사용자의 입력 메시지를 받아서 별도의 처리가 필요합니다.
+- 이를 위해서 ReplyActionListener 를 제공합니다.
+- ReplyActionListener는 **반드시** Application의 onCreate 에서 등록해야 합니다.
+
+> (주의) 사용자가 입력을 완료하고 전송 버튼을 누르면 알림(Notification)은 로딩바가 노출되며 알림이 제거되지 않습니다.
+> 따라서 답장 처리가 완료되면 알림(Notification)을 제거하거나 업데이트하는 코드를 추가해야합니다.
+> 아래 예제 코드를 참고해주세요.
+
+#### ReplyActionListener 등록 예제
+
+```java
+public class ToastPushSampleApplication extends Application {
+    @Override
+    public void onCreate() {
+        ToastNotification.setReplyActionListener(new ReplyActionListener() {
+            @Override
+            public void onReceiveReplyAction(@NonNull Context context, @NonNull ReplyActionResult result) {
+                // Do Something (ex. Send message contents to server)
+
+                // Choice 1. Remove previous reply notification with notification id
+                NotificationManagerCompat.from(context).cancel(result.getNotificationId());
+
+                // Choice 2. Update previous reply notification with notification id
+                NotificationManagerCompat.from(context).notify(result.getNotificationId(),
+                        new NotificationCompat.Builder(context, result.getNotificationChannel())
+                                .setSmallIcon(/* Resource ID of your icon */ getDefaultIcon(context))
+                                .setContentTitle("Send")
+                                .setContentText("Success to send message")
+                                .build());
+            }
+        });
+    }
+}
+```
 
 ## TOAST Push Class Reference
 ### ToastPushConfiguration
