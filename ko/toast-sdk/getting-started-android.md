@@ -20,12 +20,12 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.toast.android:toast-common:0.12.0       | TOAST Common      |
-| com.toast.android:toast-core:0.12.0         | TOAST Core        |
-| com.toast.android:toast-logger:0.12.0       | TOAST Log & Crash |
-| com.toast.android:toast-iap-core:0.12.0     | TOAST In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.12.0   | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.12.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-common:0.13.0       | TOAST Common      |
+| com.toast.android:toast-core:0.13.0         | TOAST Core        |
+| com.toast.android:toast-logger:0.13.0       | TOAST Log & Crash |
+| com.toast.android:toast-iap-core:0.13.0     | TOAST In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.13.0   | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.13.0 | TOAST In-app Purchase <br>OneStore |
 
 ## TOAST SDK를 Android Studio 프로젝트에 적용
 
@@ -38,7 +38,7 @@ TOAST SDK의 모든 서비스를 사용하려면 아래와 같이 종속성(depe
 
 ```groovy
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.12.0'
+  implementation 'com.toast.android:toast-sdk:0.13.0'
 }
 ```
 
@@ -50,50 +50,6 @@ TOAST SDK가 제공하는 상품별 설정 방법은 다음과 같습니다.
 ### 2. 바이너리를 다운로드하여 TOAST SDK 적용
 
 TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 Android SDK를 다운로드합니다.
-
-## TOAST SDK 초기화
-
-- 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
-
-> 초기화를 진행하지 않고, TOAST SDK를 사용하는 경우 초기화 오류가 발생합니다.
-
-### 초기화 API 명세
-
-```java
-/* ToastSdk.java */
-public static void initialize(Context context)
-```
-
-| Parameters | |
-| -- | -- |
-| applicationContext | Context: Application Context |
-
-### 초기화 예시
-
-```java
-public class MainApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        initializeToastSdk();
-    }
-
-    /**
-     * ToastSdk 를 초기화합니다.
-     * <p>
-     * ToastSdk 디버그 모드를 활성화하려면 ToastSdk.setDebugMode(boolean) 호출하여 true 로 설정합니다.
-     * <pre>
-     * {@code
-     * ToastSdk.setDebugMode(true);
-     * }
-     * </pre>
-     */
-    private void initializeToastSdk() {
-        ToastSdk.setDebugMode(true);
-        ToastSdk.initialize(getApplicationContext());
-    }
-}
-```
 
 ## UserID 설정
 

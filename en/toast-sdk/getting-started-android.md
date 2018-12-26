@@ -20,12 +20,12 @@ TOAST SDK services can be selectively applied for your needs.
 
 | Gradle Dependency | Service |
 | --- | --- |
-| com.toast.android:toast-common:0.12.0 | TOAST Common |
-| com.toast.android:toast-core:0.12.0 | TOAST Core |
-| com.toast.android:toast-logger:0.12.0 | TOAST Log & Crash |
-| com.toast.android:toast-iap-core:0.12.0 | TOAST In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.12.0 | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.12.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-common:0.13.0 | TOAST Common |
+| com.toast.android:toast-core:0.13.0 | TOAST Core |
+| com.toast.android:toast-logger:0.13.0 | TOAST Log & Crash |
+| com.toast.android:toast-iap-core:0.13.0 | TOAST In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.13.0 | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.13.0 | TOAST In-app Purchase <br>OneStore |
 
 ## Apply TOAST SDK to Android Studio Projects 
 
@@ -38,7 +38,7 @@ Set dependency as below, to use all TOAST SDK services.
 
 ```groovy
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.12.0'
+  implementation 'com.toast.android:toast-sdk:0.13.0'
 }
 ```
 
@@ -51,50 +51,6 @@ Following describe how to set for each product of TOAST SDK.
 
 The entire Android SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST. 
 
-## Initialize TOAST SDK 
-
-- To use TOAST IAP SDK, TOAST SDK must be initialized. 
-Initialization must be executed from Application#onCreate.
-
-- `TOAST SDK, without initialization, cannot operate.`
-
-### Specifications for Initialization API 
-
-```java
-/* ToastSdk.java */
-public static void initialize(Context context)
-```
-
-| Parameters | |
-| -- | -- |
-| applicationContext | Context: Application Context |
-
-### Example of Initialization 
-
-```java
-public class MainApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        initializeToastSdk();
-    }
-
-    /**
-     * Initialize ToastSdk.
-     * <p>
-     * To enable the ToastSdk debug mode, call ToastSdk.setDebugMode(boolean) and set True.  
-     * <pre>
-     * {@code
-     * ToastSdk.setDebugMode(true);
-     * }
-     * </pre>
-     */
-    private void initializeToastSdk() {
-        ToastSdk.setDebugMode(true);
-        ToastSdk.initialize(getApplicationContext());
-    }
-}
-```
 
 ## Set UserID 
 

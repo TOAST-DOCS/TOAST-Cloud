@@ -5,7 +5,6 @@
 1\. [TOAST SDK](./getting-started-android)를 설치합니다.
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [IAP 서비스를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)합니다.
 3\. IAP 콘솔에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
-4\. [TOAST SDK를 초기화](./getting-started-android/#toast-sdk_1)합니다.
 
 ## 스토어별 인앱 결제 가이드
 
@@ -18,7 +17,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.12.0'
+    implementation 'com.toast.android:toast-iap-google:0.13.0'
     ...
 }
 ```
@@ -27,7 +26,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.12.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.13.0'
     ...
 }
 ```
@@ -72,7 +71,6 @@ ToastIapConfiguration configuration =
 ## 인앱 결제 초기화
 
 - ToastIap.initialize를 호출하여 TOAST IAP를 초기화합니다.
-- 인앱 결제를 초기화하기 전에 반드시 [TOAST SDK 초기화](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#toast-sdk_1) 해야 합니다.
 
 ### 인앱 결제 초기화 API 명세
 

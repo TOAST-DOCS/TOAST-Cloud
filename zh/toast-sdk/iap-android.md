@@ -7,7 +7,6 @@
 2.[Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) [in TOAST console](https://console.cloud.toast.com).
 
 3\. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP console.
-4\. [Initialize TOAST SDK](./getting-started-android/#toast-sdk_1).
 
 ## Store Types 
 - [Google Play Store](https://developer.android.com/google/play/billing)
@@ -18,7 +17,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.12.0'
+    implementation 'com.toast.android:toast-iap-google:0.13.0'
     ...
 }
 ```
@@ -27,7 +26,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.12.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.13.0'
     ...
 }
 ```
@@ -72,7 +71,6 @@ ToastIapConfiguration configuration =
 ## Initialize IAP
 
 - Call ToastIap.initialize and initialize TOAST IAP.  
-- Before IAP initialization, [TOAST SDK Initialization](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#toast-sdk_1) must precede. 
 
 ### Specifications for IAP Initialization API 
 
