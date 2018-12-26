@@ -19,8 +19,8 @@ TOAST SDK services can be selectively applied for your needs.
 | All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework |  |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
-| TOAST IAP | ToastIAP | ToastIAP.framework | [iOS]<br/> * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
-| TOAST Push | ToastPush | ToastPush.framework | [iOS]<br/> * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
+| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| TOAST Push | ToastPush | ToastPush.framework | * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
 
 ## Apply TOAST SDK to Xcode Projects
 
