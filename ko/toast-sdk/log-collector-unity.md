@@ -174,7 +174,12 @@ ToastLogger.SetLoggerListener(new SampleLoggerListener());
 
 ## 크래시 로그 수집
 
-ToastLogger를 초기화하면 모바일 환경에서 크래시가 발생했을 경우, 자동으로 크래시 로그가 전송됩니다.
+TOAST Logger 에서는 유니티의 크래시를 크게 두 가지로 분류합니다.
+
+- 네이티브 플랫폼에서 발생한 크래시 (앱이 강제 종료됨)
+- 유니티에서 발생한 예기치 못한 예외 (앱이 강제 종료되지 않음)
+
+ToastLogger를 초기화하면 모바일 환경에서 크래시가 발생했을 경우, 혹은 유니티에서 예기치 못한 예외가 발생했을 경우, 자동으로 크래시 로그가 전송됩니다.
 크래시 로그 전송을 비활성화하고 싶은 경우 아래와 같이 ToastLoggerConfiguration 객체의 EnableCrashReporter 프로퍼티를 false 로 설정하면 됩니다.
 각 플랫폼별 크래시 로그에 대한 정보는 아래 링크를 확인하면 됩니다.
 
@@ -187,6 +192,32 @@ var loggerConfiguration = new ToastLoggerConfiguration
     ProjectKey = "YOUR_PROJECT_KEY",
     EnableCrashReporter = false // 크래시 로그 비활성화
 };
+```
+
+## 크래시 로그 전송 후 추가작업 진행하기
+- 크래시 리스너를 등록하면 크래시 로그 전송 후 추가 작업을 진행할 수 있습니다.
+
+> **유니티에서 예기치 못한 예외가 발생했을 경우에만 동작합니다.**
+> 네이티브 플랫폼에서 발생한 크래시에 대한 리스너는 제공하지 않습니다.
+
+### SetCrashListener API 명세
+
+```csharp
+public delegate void CrashListener(bool isSuccess, LogEntry logEntry);
+
+public static void SetCrashListener(CrashListener listener);
+```
+
+### SetCrashListener API 사용 예
+
+```csharp
+ToastLogger.SetCrashListener((isSuccess, log) =>
+{
+    if (isSuccess) 
+    {
+        Application.Quit();
+    }
+});
 ```
 
 ## Handled Exception 전송하기
