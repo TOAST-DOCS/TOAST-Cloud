@@ -13,7 +13,7 @@ TOAST SDK provides the following services:
 
 - [IAP](https://www.toast.com/service/mobile-service/iap)
 
-- [Push](https://docs.toast.com/ko/Notification/Push)
+- [Push](https://www.toast.com/service/notification/push)
 
 > Further service development providing individual SDKs are to be supported via TOAST SDK.  
 

@@ -11,7 +11,7 @@ TOAST SDK는 다음과 같은 서비스를 제공합니다.
 
 - [Log & Crash Search](https://toast.com/service/analytics/log_crash_search)
 - [IAP](https://www.toast.com/service/mobile-service/iap)
-- [Push](https://docs.toast.com/ko/Notification/Push)
+- [Push](https://www.toast.com/service/notification/push)
 
 > 개별 SDK를 제공하는 서비스는 앞으로 TOAST SDK를 통해 개발할 수 있게 지원할 예정입니다.
 
