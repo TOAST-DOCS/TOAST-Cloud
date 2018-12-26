@@ -198,30 +198,6 @@ dump_syms sample.pdb > sample.sym
 * 이후 sample.sym을 zip으로 압축하여 [콘솔 서버에 업로드](https://alpha-docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_25)합니다.
     * 콘솔 업로드할 때 입력하는 버전은, 초기화할 때 setProjectVersion에 입력한 버전과 같은 값이어야 합니다.
 
-#### 크래시 발생 시점에 추가 정보를 설정하여 전송
-
-크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
-setUserField는 크래시 시점과 관계없이 아무때나 설정할 수 있고, setDataAdapter의 경우 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
-
-##### setDataAdapter API 명세
-
-```java
-static void setDataAdapter(CrashDataAdapter adapter);
-```
-* CrashDataAdapter의 getUserFields 함수를 통해 리턴하는 Map 자료 구조의 키값은 위에서 설명한 setUserField의 "field"값과 동일한 제약 조건을 갖습니다.
-
-##### setDataAdapter 사용 예
-
-```java
-ToastLogger.setDataAdapter(new CrashDataAdapter() {
-    @Override
-    public Map<String, Object> getUserFields() {
-        Map<String, Object> userFields = new HashMap<>();
-        userFields.put("UserField", "UserValue");
-        return userFields;
-    }
-});
-```
 
 
 

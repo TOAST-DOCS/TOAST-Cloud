@@ -1,219 +1,205 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Android
+## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Windows C++
 
 ## Prerequisites
 
-1\. [Install TOAST SDK](./getting-started-android)
+1\. [Install TOAST SDK](./getting-started-windows)
 2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
-3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) from Log & Crash Search.
-4\. [Initialize TOAST SDK](./getting-started-android/#toast-sdk_1).
+3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 
-## Library Setting 
-- Add the code as below to build.gradle. 
+## Initialize TOAST Logger SDK
 
-```groovy
-dependencies {
-    implementation 'com.toast.android:toast-logger:0.12.0'
-    ...
+Set appkey issued from Log & Crash Search as ProjectKey.
+
+```
+...
+#include "toast/ToastLogger.h"
+
+using namespace toast::logger;
+...
+
+ToastLogger* logger = GetToastLogger();
+
+ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
+...
+loggerConf->setProjectKey(appkey);
+loggerConf->setProjectVersion(version);
+...
+
+if (_logger != NULL)
+{
+    _logger->initialize(loggerConf);
 }
 ```
 
-## Initialize TOAST Logger SDK 
+## Set UserID 
 
-Initialize logger in the onCreate() method. 
-Set appkey issued from Log & Crash Search as ProjectKey. 
+User ID can be set for TOAST SDK.
+Such set UserID is common for each module of TOAST SDK. 
+Set User ID is sent to server, along with logs, every time Log Sending API is called. 
 
-```java
-// Initialize Logger
-ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
-        .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
-        .build();
 
-ToastLogger.initialize(configuration);
 ```
+
+ToastLogger* _logger = GetToastLogger();
+
+_logger->setUserId("userId");
+
+_logger->initialize(loggerConf);
+
+_logger->getUserId();
+```
+
+* setUserId
+    * Set a user ID. 
+* getUserId
+    * Get user ID of current setting. 
 
 ## Send Logs 
 
-TOAST Logger provides log-sending functions of five levels.  
+TOAST Logger provides log sending functions of five levels. 
 
-### Specifications for Log Sending API
+### Send Logs  
 
-```java
-// DEBUG level logs 
-static void debug(String message);
+```
+// General logs
+_logger->log(level, message, _userFieldMap);
+
+// DEBUG level logs
+_logger->debug(level, message, _userFieldMap);
 
 // INFO level logs
-static void info(String message);
+_logger->info(level, message, _userFieldMap);
 
 // WARN level logs
-static void warn(String message);
+_logger->warn(String message);
 
 // ERROR level logs
-static void error(String message);
+_logger->error(String message);
 
-// FATAL level logs 
-static void fatal(String message);
+// FATAL level logs
+_logger->fatal(String message);
 ```
 
-### Usage Example of Log Sending API 
+## Add User-Defined Fields 
 
-```java
-ToastLogger.warn("TOAST Log & Crash Search!");
 ```
 
-## Set User-Defined Field 
+ToastLoggerUserFields* _userFieldMap = CreateToastLoggerUserFields();
 
-Set a user-defined field as wanted. 
-With user-defined field setting, set values are sent to server along with logs every time Log Sending API is called. 
+_userFieldMap->insert(key, value);
 
-### Specifications for setUserField API
-
-```java
-static void setUserField(String field, Object value);
+if (_userFieldMap != NULL)
+{
+    if (_userFieldMap->size() > 0)
+    {
+        _logger->log(level, message, _userFieldMap);
+    }
+    else
+    {
+        _logger->log(level, message);
+    }
+}
 ```
 
-*  User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab".  
-That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
+* User-defined fields contain field information as wanted and are applied only to particular logs.
+* ToastLoggerUserFields support the following functions: 
+    * insert:  Insert data
+    * erase: Delete data
+    * clear: Delete all 
+    * size: Size 
+    * find: Search data
+    * empty: Whether it is empty 
+* User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab". 
+  That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of Custom Field](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
 
-#### Restrictions for User-Defined Fields 
+#### Restrictions for User-Defined Fields
 
-* Cannot use already [Reserved Fields](./log-collector-reserved-fields).  
+- Cannot use already [Reserved Fields](./log-collector-reserved-fields).  
   Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
-* Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z". 
-* Replace spaces within a field name by "_". 
+- Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z". 
+- Replace spaces within a field name by "_". 
 
-### Usage Example of setUserField 
+### Usage Example of addUserField / removeUserFiled / cleareUserField 
 
-```java
-ToastLogger.setUserField("nickname", "randy");
 ```
-
-## Further Tasks after Sending Logs  
-
-With listener registered, further tasks can be executed after logs are sent. 
-
-### Specifications for setLoggerListener API 
-
-```java
-static void setLoggerListener(ToastLoggerListener listener);
-```
-
-### Usage Example of setLoggerListener
-
-```java
-ToastLogger.setLoggerListener(new ToastLoggerListener() {
-    @Override
-    public void onSuccess(LogEntry log) {
-        // Sending logs succeeded.
-    }
-
-    @Override
-    public void onFilter(LogEntry log, LogFilter filter) {
-        // Filter by filter setting 
-    }
-
-    @Override
-    public void onSave(LogEntry log) {
-        // Save within SDK for re-sending if log-sending fails due to network errors
-    }
-
-    @Override
-    public void onError(LogEntry log, Exception e) {
-        // Sending logs failed. 
-    }
-});
+_logger->addUserField("nickname", "randy");
+_logger->removeUserField("nickname");
+_logger->cleareUserField();
 ```
 
 ## Collect Crash Logs 
 
-When an unexpected crash occurs in an app, TOAST Logger records such crash information in the server. 
+Crash reporter (CrashRepoter.exe) sends crash log information to logs. 
+Crash information is sent to logs through crash reporter, when a crash occurs. 
+Crash reporter can be enabled along with ToastLogger initialization, by setting. 
+It is also available to enable crash reporter dialogue box and custom messages.  
 
-### Set Enable Collecting Crash Logs 
 
-Sending crash logs can be enabled or disabled by using setEnabledCrashReporter() method .
+### Enable Crash Logs and Crash Reporter  
 
-```java
-// Initialize Logger
-ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
-        .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
-        .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
-        .build();
-
-ToastLogger.initialize(configuration);
 ```
+...
+#include "toast/ToastLogger.h"
 
-### Use Handled Exception API 
+using namespace toast::logger;
+...
 
-For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of TOAST Logger.  
-Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab". 
-For more usage details on Log & Cash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
+ToastLogger* logger = GetToastLogger();
 
-### Specifications for Handled Exception Log API 
+ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
+...
+// Whether to enable crash logs 
+loggerConf->enableCrashReporter(true);	
+// Whether to enable crash reporter dialogue 
+loggerConf->enableSilenceMode(false);	
+// Define messages for crash reporter dialogue 
+// (If not defined, default message shows.)
+loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "Error has occurred...\n");
+...
 
-```java
-// Send Exception Information 
-static void report(@NonNull String message, @NonNull Throwable throwable);
-
-// Send Exception Information along with User Fields 
-static void report(@NonNull String message,
-                   @NonNull Throwable throwable,
-                   @Nullable Map<String, Object> userFields);
-```
-
-### Usage Example 
-
-```java
-try {
-    // User Codes...
-} catch (Exception e) {
-    Map<String, Object> userFields = new HashMap<>();
-    ToastLogger.report("message", e, userFields);
+if (_logger != NULL)
+{
+    _logger->initialize(loggerConf);
 }
 ```
 
-## Set Additional Information in Time for Crash Occurrence before Sending 
+###  Test Sending Crash Logs  
 
-Additional information can be set immediately after crash occurs. 
-setUserField can be set anytime regardless of crash occurrence, while setCrashDataAdapter can be set at an accurate timing when a crash occurs. 
+* To test on crash logs sending, an exception must occur. 
+* Crash logs are automatically sent by SDK when enableCrashReporter is true.
 
-### Specifications for setCrashDataAdapter API 
-
-```java
-static void setCrashDataAdapter(CrashDataAdapter adapter);
-```
-* Key values of the Map data structure returned through the getUserFields function of CrashDataAdapter have the same restriction conditions as the "field" value of setUserField described in the above.  
-
-### Usage Example of setCrashDataAdapter 
-
-```java
-ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
-    @Override
-    public Map<String, Object> getUserFields() {
-        Map<String, Object> userFields = new HashMap<>();
-        userFields.put("UserField", "UserValue");
-        return userFields;
-    }
-});
 ```
 
-## Network Insights
-Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device). 
+void CsampleDlg::OnBnClickedCrash()
+{
+    // TODO: Add your control notification handler code here
+    int *i = reinterpret_cast<int*>(0x45);
+    *i = 5;
+}
+```
 
-> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized. 
+### Interpret Crash Logs 
 
-### Enable Network Insights 
+#### Overview
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
-2. Select [Settings].
-3. Click the [Setting for Sending Logs] tab.
-4. Enable "Network Insights Logs".
+* To interpret crashes occurred in TOAST Windows SDK, a symbol file must be created and uploaded to a web console. 
 
-### URL Setting 
+#### Create Symbol Files 
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
-2. Select [Network Insights].
-3. Click the [URL Setting] tab.
-4. Enter URL to measure and click [Add].
+* Creating a symbol file requires dump_syms appropriate for each development environment. 
+    * [dump\_syms\_vc1600 : vs2010](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1600.zip)
+    * [dump\_syms\_vc1700 : vs2012](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1700.zip)
+    * [dump\_syms\_vc1800 : vs2013](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1800.zip)
+    * [dump\_syms\_vc1900 : vs2015](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1900.zip)
+* Execute a order prompt to create sym files, like below: 
+    * The sample project is called sample. 
 
+```
+dump_syms sample.pdb > sample.sym
+```
+
+* Then, compress sample.sym with zip and [Upload to Console Server](https://alpha-docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_25)
+    * The version for console uploads must be the same as the version for setProjectVersion. 
 
 
 
