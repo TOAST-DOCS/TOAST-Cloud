@@ -20,6 +20,7 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
 | TOAST IAP | ToastIAP | ToastIAP.framework | [iOS]<br/> * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| TOAST Push | ToastPush | ToastPush.framework | [iOS]<br/> * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
 
 ## TOAST SDK를 Xcode 프로젝트에 적용
 
@@ -42,6 +43,7 @@ end
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 #import <ToastIAP/ToastIAP.h>
+#import <ToastPush/ToastPush.h>
 ```
 
 ### 2. 바이너리를 다운로드하여 TOAST SDK 적용
@@ -66,6 +68,15 @@ TOAST Logger의 Crash Report 기능을 사용하려면 함께 배포되는 Crash
 
 ![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_noAdSupport_IAP.png)
 
+> TOAST Push 기능을 사용하려면 UserNotifications.framework를 추가해야 합니다.
+
+![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
+
+> TOAST Push 의 VoIP 기능을 사용하려면 PushKit.framework를 추가해야 합니다.
+
+![linked__pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
+
+![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_Push.png)
 
 #### Project Settings
 
@@ -90,6 +101,7 @@ CrashReporter.framewor를 직접 다운로드하거나 빌드한 경우에는 Bu
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 #import <ToastIAP/ToastIAP.h>
+#import <ToastPush/ToastPush.h>
 ```
 
 ## UserID 설정
@@ -150,3 +162,4 @@ TOAST SDK와 관련해 문의하실 때는 디버그 모드를 활성화해서 �
 
 * [TOAST Log & Crash](./log-collector-ios) 사용 가이드
 * [TOAST In-app Purchase](./iap-ios) 사용 가이드
+* [TOAST Push](./push-ios) 사용 가이드

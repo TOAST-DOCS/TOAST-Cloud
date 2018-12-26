@@ -20,6 +20,7 @@ TOAST SDK services can be selectively applied for your needs.
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
 | TOAST IAP | ToastIAP | ToastIAP.framework | [iOS]<br/> * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| TOAST Push | ToastPush | ToastPush.framework | [iOS]<br/> * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
 
 ## Apply TOAST SDK to Xcode Projects
 
@@ -42,6 +43,7 @@ Open a created workspace and import SDK to use.
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 #import <ToastIAP/ToastIAP.h>
+#import <ToastPush/ToastPush.h>
 ```
 
 ### 2. Apply TOAST SDK with Binary Downloads 
@@ -65,6 +67,16 @@ Check frameworks are added to the project, as below:
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
 ![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_noAdSupport_IAP.png)
+
+> To use TOAST Push, UserNotifications.framework must be linked addtionally.
+
+![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
+
+> To user TOAST Push's VoIP, PushKit.framework must be linked addtionally.
+
+![linked__pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
+
+![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_Push.png)
 
 
 #### Project Settings
@@ -90,6 +102,7 @@ Import the framework to use.
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 #import <ToastIAP/ToastIAP.h>
+#import <ToastPush/ToastPush.h>
 ```
 
 ## Set UserID 
@@ -149,3 +162,4 @@ To inquire of TOAST SDK, enable the debug mode for faster response.
 
 * User Guide for [TOAST Log & Crash](./log-collector-ios) 
 * User Guide for [TOAST In-app Purchase](./iap-ios) 
+* User Guide for [TOAST Push](./push-ios)

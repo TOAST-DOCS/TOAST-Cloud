@@ -318,7 +318,7 @@ agreement.allowNightAdvertisements = NO;
 ## 리치 메세지 수신
 
 `리치 메세지 수신은 iOS 10.0+ 이상부터 지원합니다.`
-알림 메세지에 미디어(이미지, 비디오, 오디오)와 버튼을 표현하기 위해서는 어플리케이션에 [Notification Service Extension](/#_9) 이 추가되어 있어야만 합니다.
+알림 메세지에 미디어(이미지, 비디오, 오디오)와 버튼을 표현하기 위해서는 어플리케이션에 [Notification Service Extension](/#notification-service-extension) 이 추가되어 있어야만 합니다.
 
 ### 리치 메세지 수신 설정 예
 
@@ -341,7 +341,7 @@ agreement.allowNightAdvertisements = NO;
 ### 수신(Received) 지표 수집 설정
 
 `수신 지표 수집은 iOS 10.0+ 이상부터 지원합니다.`
-수신 지표 수집을 위해서는 어플리케이션에 [Notification Service Extension](/#_9) 이 추가되어 있어야만 합니다.
+수신 지표 수집을 위해서는 어플리케이션에 [Notification Service Extension](/#notification-service-extension) 이 추가되어 있어야만 합니다.
 Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파일` 내부에 앱키를 설정하셔야만 지표 전송이 가능합니다.
 
 #### Toast Push SDK 초기화를 통한 수신 지표 수집 설정 예
@@ -391,7 +391,7 @@ Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파�
 ### 실행(Opened) 지표 수집 설정
 
 실행 지표의 수집과 전송은 SDK 내부에서 자동으로 진행됩니다.
-[Toast Push SDK 초기화](/#_3) 혹은 `Application의 info.plist 파일` 내부에 앱키를 설정하셔야만 지표 전송이 가능합니다.
+[Toast Push SDK 초기화](/#toast-push-sdk) 혹은 `Application의 info.plist 파일` 내부에 앱키를 설정하셔야만 지표 전송이 가능합니다.
 
 #### info.plist 설정을 통한 수신 지표 수집 설정 예
 
@@ -416,18 +416,18 @@ Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파�
 </dict>
 ```
 
-## NotificationServiceExtension
+## Notification Service Extension
 
 `iOS 10.0+ 부터 지원합니다.`
 리치 메세지 수신, 수신 지표 수집을 위해서는 어플리케이션에 NotificationServiceExtension을 반드시 생성 및 설정해야만 합니다.
 
-### NotificationServiceExtension 생성
+### Notification Service Extension 생성
 
 **File New > Target > iOS > Notification Service Extension**
 
 ![create_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_create_ext.png)
 
-### NotificationServiceExtension 설정
+### Notification Service Extension 설정
 
 NotificationService 클래스에 ToastPushServiceExtension 을 확장구현 해야 합니다.
 
@@ -438,4 +438,23 @@ NotificationService 클래스에 ToastPushServiceExtension 을 확장구현 해�
 @interface NotificationService : ToastPushServiceExtension
 
 @end
+```
+
+### 에러 코드
+```objc
+typedef NS_ENUM(NSUInteger, ToastPushErrorCode) {
+    ToastPushErrorUnknown               = 0,    // 알수 없음
+    ToastPushErrorNotInitialize         = 1,    // 초기화하지 않음
+    ToastPushErrorUserInvalid           = 2,    // 사용자 아이디 미설정
+    ToastPushErrorPermissionDenied      = 3,    // 권한 획득 실패
+    ToastPushErrorSystemFailed          = 4,    // 시스템 에러
+    ToastPushErrorTokenInvalid          = 5,    // 토큰 값이 없거나 유효하지 않음
+    ToastPushErrorAlreadyInProgress     = 6,    // 요청이 이미 진행중
+    
+    ToastPushErrorNetworkNotAvailable   = 100,  // 네트워크 사용 불가
+    ToastPushErrorNetworkFailed         = 101,  // HTTP Status Code 가 200이 아님
+    ToastPushErrorTimeout               = 102,  // 타임아웃
+    ToastPushErrorParameterInvalid      = 103,  // 요청 파라미터 오류
+    ToastPushErrorResponseInvalid       = 104,  // 서버 응답 오류
+};
 ```

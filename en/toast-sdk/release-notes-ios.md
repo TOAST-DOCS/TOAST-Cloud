@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.12.0 (2018.12.27)
+
+### TOAST Push
+
+#### Added 
+
+* New Functions 
+
 ## 0.11.1 (2018.12.04)
 
 ### TOAST IAP
