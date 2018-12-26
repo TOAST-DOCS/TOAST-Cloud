@@ -2,9 +2,9 @@
 
 ## 사전 준비
 
-1. [TOAST SDK](./getting-started-android)를 설치합니다.
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
-3. Push 콘솔에서 AppKey를 확인합니다.
+1\. [TOAST SDK](./getting-started-android)를 설치합니다.
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+3\. Push 콘솔에서 AppKey를 확인합니다.
 
 ## Push 제공자별 가이드
 
@@ -73,8 +73,8 @@ apply plugin: 'com.google.gms.google-services'
 - 앱 모듈의 루트 경로에 앞서 다운로드한 google-services.json을 복사합니다.
 
 ## Push 설정
-- ToastPushConfiguration 객체는 Push 설정 정보를 포함하고 있습니다.
-- ToastPushConfiguration 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
+- [ToastPushConfiguration](/push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
+- [ToastPushConfiguration](/push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
 - Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
 
 ### Push 설정 예시
