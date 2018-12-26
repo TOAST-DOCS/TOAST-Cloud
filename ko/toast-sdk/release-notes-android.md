@@ -1,5 +1,21 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 0.13.0 (2018.12.27)
+
+### TOAST Core
+
+#### 기능 개선
+
+* ToastSdk.initialize() 메소드 deprecated.
+    * Application 시작 시에 자동으로 호출되도록 변경
+
+### TOAST Push
+
+#### 기능 추가
+
+* 신규 기능 추가
+    * Firebase Cloud Messaging(FCM) 
+
 ## 0.12.0 (2018.12.04)
 
 ### TOAST IAP
