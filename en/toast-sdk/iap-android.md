@@ -10,7 +10,7 @@
 
 ## Store Types 
 - [Google Play Store](https://developer.android.com/google/play/billing)
-- [OneStore v17](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
+- [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
 
 ## Library Setting 
 - To install Google Play Store SDKs, add the code as below to build.gradle. 
@@ -22,7 +22,7 @@ dependencies {
 }
 ```
 
-- To install OneStore SDKs, add the code as below to build.gradle.  
+- To install ONE store SDKs, add the code as below to build.gradle.  
 
 ```groovy
 dependencies {
@@ -36,7 +36,7 @@ dependencies {
 | Store | Code |
 | ---- | ---- |
 | Google Play Store| "GG" |
-| OneStore | "ONESTORE" |
+| ONE store | "ONESTORE" |
 
 > Note : Store codes are defined in the  [IapStoreCode](./iap-android/#iapstorecode) class.
 
@@ -409,7 +409,7 @@ String ONE_STORE
 ```
 
 * GOOGLE_PLAY_STORE<br>Applies Google Play Store in-app payment.<br>Constant Value: "GG"
-* ONE_STORE<br>Applies OneStore in-app payment. <br>Constant Value: "ONESTORE"
+* ONE_STORE<br>Applies ONE store in-app payment. <br>Constant Value: "ONESTORE"
 
 ### IapPurchaseResult
 
@@ -491,7 +491,7 @@ public String getExpiryTime()
 ### IapProductDetails
 
 * Detail product information is available with lapProductDetails. 
-* Includes information registered in TOAST IAP Console and Google Play Console or OneStore Developer. 
+* Includes information registered in TOAST IAP Console and Google Play Console or ONE store Developer. 
 
 ```java
 /* IapProductDetails.java */
@@ -620,11 +620,11 @@ void onPurchasesResponse(IapResult result,
 | CONSUMED_PURCHASE | 104 | Purchase is already consumed.<br> |
 | REFUNDED_PURCHASE | 105 | Purchase is already refunded.<br> |
 
-### OneStore 
+### ONE store 
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
-| ONESTORE_NEED_LOGIN | 301 | Not logged-in to OneStore Service.<br> |
-| ONESTORE_NEED_UPDATE | 302 | OneStore Service is not updated or installed.<br> |
+| ONESTORE_NEED_LOGIN | 301 | Not logged-in to ONE store Service.<br> |
+| ONESTORE_NEED_UPDATE | 302 | ONE store Service is not updated or installed.<br> |
 | ONESTORE_SECURITY_ERROR | 303 | Payment requested from abnormal app.<br> |
 | ONESTORE_PURCHASE_FAILED | 304 | Failed to request for payment.<br> |

@@ -8,7 +8,7 @@
 
 * New Functions 
     * Google Play Store (One-Time/Subscription Products)
-    * OneStore (One-Time Products)
+    * ONE store (One-Time Products)
 
 ## 0.11.0 (2018.11.20)
 
