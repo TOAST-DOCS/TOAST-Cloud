@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-1. [Install the TOAST SDK](./getting-started-ios)
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Notification \> Push를 활성화](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+1\. [Install the TOAST SDK](./getting-started-ios)
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Notification \> Push를 활성화](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
 3\. Push에서 AppKey를 확인합니다\.
 
 ## Cococapods 적용
