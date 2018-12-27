@@ -321,7 +321,7 @@ agreement.allowNightAdvertisements = NO;
 ## 리치 메세지 수신
 
 `리치 메세지 수신은 iOS 10.0+ 이상부터 지원합니다.`
-알림 메세지에 미디어(이미지, 비디오, 오디오)와 버튼을 표현하기 위해서는 어플리케이션에 [Notification Service Extension](./#notification-service-extension) 이 추가되어 있어야만 합니다.
+알림 메세지에 미디어(이미지, 비디오, 오디오)와 버튼을 표현하기 위해서는 어플리케이션에 [Notification Service Extension](./push-ios/#notification-service-extension) 이 추가되어 있어야만 합니다.
 
 ### 리치 메세지 수신 설정 예
 
@@ -394,7 +394,7 @@ Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파�
 ### 실행(Opened) 지표 수집 설정
 
 실행 지표의 수집과 전송은 SDK 내부에서 자동으로 진행됩니다.
-[Toast Push SDK 초기화](/TOAST/ko/toast-sdk/push-ios/#toast-push-sdk) 혹은 `Application의 info.plist 파일` 내부에 앱키를 설정하셔야만 지표 전송이 가능합니다.
+[Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 `Application의 info.plist 파일` 내부에 앱키를 설정하셔야만 지표 전송이 가능합니다.
 
 #### info.plist 설정을 통한 수신 지표 수집 설정 예
 
