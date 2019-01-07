@@ -52,9 +52,10 @@ dependencies {
 | iOS | Apple App Store | 소비성 상품, 구독 상품 |
 
 ## TOAST IAP SDK 초기화
-TOAST IAP에서 발급받은 AppKey를 설정합니다.
+TOAST IAP에서 [ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 발급받은 AppKey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
 
+> **초기화 시점**
 > TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며, 
 > 사용자 ID를 설정(아래 **서비스 로그인** 항목 참고)하기 전에 초기화를 해야 합니다.
 
@@ -63,20 +64,6 @@ TOAST IAP에서 발급받은 AppKey를 설정합니다.
 public delegate void PurchaseUpdateListener(ToastResult result, IapPurchase purchase);
 
 public static void Initialize(ToastIapConfiguration configuration, PurchaseUpdateListener listener);
-
-public class ToastIapConfiguration
-{
-    public string AppKey { get; set; }
-    public StoreCode StoreCode { get; set; }
-    public ToastServiceZone ServiceZone { get; set; }
-}
-
-public enum StoreCode
-{
-    GooglePlayStore,
-    AppleAppStore,
-    OneStore
-}
 ```
 
 ### 초기화 예시
@@ -217,6 +204,39 @@ ToastIap.RequestActivePurchases((result, purchases) =>
 ```
 
 ## TOAST IAP Class Reference
+
+### ToastIapConfiguration
+
+```csharp
+public class ToastIapConfiguration
+{
+    public string AppKey { get; set; }
+    public StoreCode StoreCode { get; set; }
+}
+```
+
+| Property | Returns | Description |
+|---|---|---|
+| AppKey | string | IAP 서비스 앱 키를 설정합니다. |
+| StoreCode | StoreCode | 스토어 코드를 설정합니다. |
+
+
+### StoreCode
+
+```csharp
+public enum StoreCode
+{
+    GooglePlayStore,
+    AppleAppStore,
+    OneStore
+}
+```
+
+| Value | Description |
+|---|---|
+| GooglePlayStore | 구글 플레이 스토어 (Android Only) |
+| AppleAppStore | 애플 앱 스토어 (iOS Only) |
+| OneStore | 원 스토어 (Android Only) |
 
 ### ToastResult<T>
 ```csharp
