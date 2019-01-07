@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.12.0 (2019.01.08)
+
+### TOAST IAP
+
+#### 추가 사항
+
+* Add module
+
 ## 0.11.0 (2018.12.27)
 
 ### TOAST Log & Crash
@@ -29,4 +37,4 @@
 
 #### Added
 
-* New Functions
+* Add module
