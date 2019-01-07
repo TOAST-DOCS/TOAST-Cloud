@@ -57,7 +57,7 @@ dependencies {
 
 > **초기화 시점**
 > TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며, 
-> 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/##_4) 항목 참고)하기 전에 초기화를 해야 합니다.
+> 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/#_4) 항목 참고)하기 전에 초기화를 해야 합니다.
 
 ### 초기화 API 명세
 ```csharp
@@ -159,7 +159,7 @@ ToastIap.Purchase(productId);
 ## 미소비 결제 조회
 - 아직 소비되지 않은 소비성 상품 정보를 조회합니다.
     - 미소비 결제 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
-- 사용자에게 상품을 지급된 후 [Consume API](../../../Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
+- 사용자에게 상품을 지급된 후 [Consume API](../../../Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 
 ### 미소비 결제 조회 API 명세
 
