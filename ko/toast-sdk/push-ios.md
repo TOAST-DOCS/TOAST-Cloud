@@ -20,7 +20,7 @@ iOS용 TOAST Push SDK의 구성은 다음과 같습니다.
 
 ## TOAST IAP SDK를 Xcode 프로젝트에 적용
 
-### Cococapods 적용
+### 1. Cococapods 적용
 
 Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
@@ -40,7 +40,7 @@ end
 #import <ToastPush/ToastPush.h>
 ```
 
-### 바이너리를 다운로드하여 TOAST SDK 적용 
+### 2. 바이너리를 다운로드하여 TOAST SDK 적용 
 
 #### SDK 가져오기(import)
 
@@ -50,9 +50,9 @@ Xcode Project에 **ToastPush.framework**, **ToastCore.framework**, **ToastCommon
 
 > UserNotifications.framework는 아래 방법으로 추가할 수 있습니다.
 
-TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework`를 추가해야 합니다.
-
 ![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
+
+TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework`를 추가해야 합니다.
 
 > PushKit.framework는 아래 방법으로 추가할 수 있습니다.
 

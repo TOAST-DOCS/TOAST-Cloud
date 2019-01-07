@@ -17,7 +17,7 @@ TOAST Logger SDK for iOS is configured as follows.
 
 ## Apply TOAST SDK to Xcode Projects
 
-### Apply Cococapods 
+### 1. Apply Cococapods 
 
 Create a podfile to add pods to TOAST SDK. 
 
@@ -38,7 +38,7 @@ Open a created workspace and import SDK to use.
 ```
 
 
-### Apply TOAST SDK with Binary Downloads  
+### 2. Apply TOAST SDK with Binary Downloads  
 
 #### Import SDK
 

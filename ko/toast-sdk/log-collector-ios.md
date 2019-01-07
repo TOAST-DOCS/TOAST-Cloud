@@ -21,7 +21,7 @@ iOS용 TOAST Logger SDK의 구성은 다음과 같습니다.
 
 ## TOAST Logger SDK를 Xcode 프로젝트에 적용
 
-### Cococapods 적용
+### 1. Cococapods 적용
 
 Podfile을 생성하여 TOAST SDK에 대한 pod를 추가합니다.
 
@@ -41,7 +41,7 @@ end
 #import <ToastLogger/ToastLogger.h>
 ```
 
-### 바이너리를 다운로드하여 TOAST SDK 적용 
+### 2. 바이너리를 다운로드하여 TOAST SDK 적용 
 
 #### SDK 가져오기(import)
 

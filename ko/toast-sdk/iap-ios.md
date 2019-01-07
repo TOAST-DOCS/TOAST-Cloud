@@ -18,7 +18,7 @@ iOS용 TOAST IAP SDK의 구성은 다음과 같습니다.
 
 ## TOAST IAP SDK를 Xcode 프로젝트에 적용
 
-### Cococapods 적용
+### 1. Cococapods 적용
 
 Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
@@ -38,7 +38,7 @@ end
 #import <ToastIAP/ToastIAP.h>
 ```
 
-### 바이너리를 다운로드하여 TOAST SDK 적용 
+### 2. 바이너리를 다운로드하여 TOAST SDK 적용 
 
 #### SDK 가져오기(import)
 
@@ -124,7 +124,7 @@ ToastIAPConfiguration *configuration = [[ToastIAPConfiguration alloc] initWithAp
 
 ### Delegate API 명세
 
-Delegate를 등록하면 결제 후 추가 작업을 진행할 수 있습니다.
+Delegate를 등록하면 구매 후 추가 작업을 진행할 수 있습니다.
 
 ``` objc
 @protocol ToastInAppPurchaseDelegate <NSObject>
@@ -498,7 +498,7 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 
 ![linked_sqlite3](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3.png)
 
-### 미완료 결제 재처리 API 명세
+### 미완료 구매 재처리 API 명세
 
 ``` objc
 @interface ToastIAP (Additional)
@@ -512,10 +512,10 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 @end
 ```
 
-### 미완료 결제 재처리 API 사용 예
+### 미완료 구매 재처리 API 사용 예
 
 ``` objc
-// 미완료 결제 재처리 요청
+// 미완료 구매 재처리 요청
 [ToastIAP processesIncompletePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *results, NSError *error) {
     if (error == nil) {
         for (ToastPurchaseResult *purchaseResult in results) {
