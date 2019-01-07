@@ -17,7 +17,7 @@ TOAST SDK services can be selectively applied for your needs.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework |  |  |
+| All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework<br/>ToastPush.framework |  |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
 | TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
@@ -67,8 +67,6 @@ Check frameworks are added to the project, as below:
 
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
-![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_noAdSupport_IAP.png)
-
 > To use TOAST Push, UserNotifications.framework must be linked addtionally.
 
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
@@ -77,7 +75,7 @@ Check frameworks are added to the project, as below:
 
 ![linked__pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
 
-![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_Push.png)
+![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_all.png)
 
 
 #### Project Settings

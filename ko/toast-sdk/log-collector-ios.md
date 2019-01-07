@@ -10,7 +10,18 @@
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
-## Cococapods 적용
+## TOAST Logger 구성
+
+iOS용 TOAST Logger SDK의 구성은 다음과 같습니다.
+
+| Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
+| --- | --- | --- | --- | --- | 
+| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
+| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+
+## TOAST Logger SDK를 Xcode 프로젝트에 적용
+
+### Cococapods 적용
 
 Podfile을 생성하여 TOAST SDK에 대한 pod를 추가합니다.
 
@@ -29,6 +40,43 @@ end
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 ```
+
+### 바이너리를 다운로드하여 TOAST SDK 적용 
+
+#### SDK 가져오기(import)
+
+TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
+
+Xcode Project에 **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework**를 추가합니다.
+
+TOAST Logger의 Crash Report 기능을 사용하려면 함께 배포되는 **CrashReporter.framework**도 프로젝트에 추가해야 합니다.
+
+![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
+
+#### Project Settings
+
+**Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+
+**Project Target > Build Settings > Linking > Other Linker Flags**를 클릭해 추가할 수 있습니다.
+
+![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+
+CrashReporter.framewor를 직접 다운로드하거나 빌드한 경우에는 Build Setting의 Enable Bitcode의 값을 **NO**로 변경해야 합니다.
+
+**Project Target > Build Settings > Build Options > Enable Bitcode**을 클릭하고 **NO**를 클릭합니다.
+
+![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+> TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
+
+#### 프레임워크 가져오기 
+
+사용하려는 프레임워크를 가져옵니다(import).
+
+```objc
+#import <ToastCore/ToastCore.h>
+#import <ToastLogger/ToastLogger.h>
+```
+
 
 ## TOAST Logger SDK 초기화
 

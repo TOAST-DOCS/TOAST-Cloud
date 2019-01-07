@@ -6,7 +6,18 @@
 2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
 3.  [Check AppKey ](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)in IAP.
 
-## Apply Cococapods 
+## Configuration of TOAST IAP
+
+TOAST Logger SDK for iOS is configured as follows.
+
+| Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
+| --- | --- | --- | --- | --- | 
+| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+
+## Apply TOAST SDK to Xcode Projects
+
+### Apply Cococapods 
 
 Create a podfile to add pods to TOAST SDK. 
 
@@ -20,6 +31,38 @@ end
 ```
 
 Open a created workspace and import SDK to use. 
+
+```objc
+#import <ToastCore/ToastCore.h>
+#import <ToastIAP/ToastIAP.h>
+```
+
+
+### Apply TOAST SDK with Binary Downloads  
+
+#### Import SDK
+
+The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
+
+Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework` to the Xcode Project.
+
+> StoreKit.framework can be added in the following way.
+
+![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
+
+![linked_frameworks_iap](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap.png)
+
+#### Project Settings
+
+Add "-lc++" and "-ObjC" to "Other Linker Flags" at "Build Settings". 
+
+* Project Target - Build Settings - Linking - Other Linker Flags
+
+![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+
+#### Import Framework 
+
+Import the framework to use. 
 
 ```objc
 #import <ToastCore/ToastCore.h>
@@ -81,15 +124,15 @@ ToastIAPConfiguration *configuration = [[ToastIAPConfiguration alloc] initWithAp
 
 ### Specifications for Delegate API
 
-Register delegate to proceed follow-ups after payment. 
+Register delegate to proceed follow-ups after purchase. 
 
 ``` objc
 @protocol ToastInAppPurchaseDelegate <NSObject>
 
-// Payment Succeeded 
+// Purchase Succeeded 
 - (void)didReceivePurchaseResult:(ToastPurchaseResult *)purchase;
 
-// Payment Failed 
+// Purchase Failed
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error;
 
 @end
@@ -117,12 +160,12 @@ Register delegate to proceed follow-ups after payment.
     [ToastIAP initWithConfiguration:configuration delegate:self];
 }
 
-// Payment Succeeded 
+// Purchase Succeeded 
 - (void)didReceivePurchaseResult:(ToastPurchaseResult *)purchase {
     NSLog(@"Successfully purchased");
 }
 
-// Payment Failed 
+// Purchase Failed
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error {
     NSLog(@"Failed to purchase: %@", erorr);
 }
@@ -178,7 +221,7 @@ Only one product must be registered to one subscription group.
 // Failed to Obtain Product Types 
 ToastProductTypeUnknown = 0
 
-// One-time Products 
+// Consumable Products 
 ToastProductTypeConsumable = 1
 
 // Auto-Renewable Subscription Products 
@@ -201,7 +244,7 @@ Purchase is requested by using ToastProduct object of query result of product li
 
 // ...
 
-// 상품 구매 Product Purchase 
+// Purchase Product 
 + (void)purchaseWithProduct:(ToastProduct *)product;
 
 // ...
@@ -226,7 +269,7 @@ Purchase is requested by using ToastProduct object of query result of product li
     }
 }
 
-// Request for Product Purchase 
+// Request for Purchase Product 
 [ToastIAP purchaseWithProduct:self.products[0]];
 ```
 
@@ -253,7 +296,7 @@ For a product which cannot be purchased, an error will be delivered indicating p
 #### Usage Example of Purchase with Product ID API 
 
 ``` objc
-// Request for Product Purchase 
+// Request for Purchase Product 
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
 ```
 
@@ -330,7 +373,7 @@ Query the list of restorable purchases by current user ID.
 
 ## Query Unconsumed Purchase List 
 
-An one-time product must be processed as consumed after product is provided. List of unconsumed purchases is to be queried.  
+An consumable product must be processed as consumed after product is provided. List of unconsumed purchases is to be queried.  
 
 ### Specifications for Unconsumed Purchase Query API
 
@@ -360,9 +403,9 @@ An one-time product must be processed as consumed after product is provided. Lis
 }
 ```
 
-## Consume One-time Products 
+## Consume Consumable Products 
 
-One-time products must be processed as consumed through REST API or Consume API of SDK, after products are provided.
+Consumable products must be processed as consumed through REST API or Consume API of SDK, after products are provided.
 
 ### Specifications for Consumption API 
 
@@ -454,7 +497,7 @@ To remain compatible with (old) IAP SDK, reprocessing is supported for incomplet
 
 ![linked_sqlite3](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3.png)
 
-### Specifications for Reprocessing Incomplete Payment API 
+### Specifications for Reprocessing Incomplete Purchase API 
 
 ``` objc
 @interface ToastIAP (Additional)
@@ -468,10 +511,10 @@ To remain compatible with (old) IAP SDK, reprocessing is supported for incomplet
 @end
 ```
 
-### Usage Example of Reprocessing Incomplete Payment 
+### Usage Example of Reprocessing Incomplete Purchase 
 
 ``` objc
-// Request for Reprocessing Incomplete Payment
+// Request for Reprocessing Incomplete Purchase
 [ToastIAP processesIncompletePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *results, NSError *error) {
     if (error == nil) {
         for (ToastPurchaseResult *purchaseResult in results) {
@@ -526,4 +569,3 @@ typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorResponseInvalid = 104,             // Error in server respone 
 };
 ```
-

@@ -10,7 +10,18 @@
 2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
 3\.[Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search. 
 
-## Apply Cococapods 
+## Configuration of TOAST Logger
+
+TOAST Logger SDK for iOS is configured as follows.
+
+| Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
+| --- | --- | --- | --- | --- | 
+| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
+| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+
+## Apply TOAST SDK to Xcode Projects
+
+### Apply Cococapods 
 
 Create a podfile to add pods to TOAST SDK. 
 
@@ -29,6 +40,44 @@ Open a created workspace and import SDK to use.
 #import <ToastCore/ToastCore.h>
 #import <ToastLogger/ToastLogger.h>
 ```
+
+
+### Apply TOAST SDK with Binary Downloads  
+
+#### Import SDK
+
+The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
+
+Add **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework** to the Xcode Project.
+
+To enable Crash Report of TOAST Logger, CrashReporter.framework which is distributed as well, must be added to the project. 
+
+![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
+
+#### Project Settings
+
+Add "-lc++" and "-ObjC" to "Other Linker Flags" at "Build Settings". 
+
+* Project Target - Build Settings - Linking - Other Linker Flags
+
+![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+
+To directly download or build CrashReporter.framework, the Bitcode at Build Setting must be changed to NO.  
+
+* Project Target - Build Settings - Build Options - Enable Bitcode - "NO"
+
+![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+> CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode. 
+
+#### Import Framework 
+
+Import the framework to use. 
+
+```objc
+#import <ToastCore/ToastCore.h>
+#import <ToastLogger/ToastLogger.h>
+```
+
 
 ## Initialize TOAST Logger SDK 
 
@@ -86,7 +135,7 @@ With user-defined field setting, set values are sent to server along with logs, 
 @interface ToastLogger : NSObject
 
 // ...
-// Add a UserField 
+// Add User-Defined Field 
 + (void)setUserFieldWithValue:(NSString *)value forKey:(NSString *)key;
 // ...
 
@@ -105,13 +154,13 @@ That is, it is same as custom parameter of Log & Crash Search, and you can find 
 
 ### Usage Example of User-Defined Fields
 ```objc
-// Add a UserField
+// Add User-Defined Field
 [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
 ## Collect Crash Logs
 TOAST Logger sends crash information to logs.
-It is enabled along with ToastLogger initilization, by setting.  
+It is enabled along with TOAST Logger initilization, by setting.  
 To send crash logs, PLCrashReporter is applied. 
 
 ### Set Enable CrashReporter 
@@ -119,7 +168,7 @@ CrashReporter is enabled, on principle, along with initialization of TOASTLogger
 ```objc
 [ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
 ```
-It is enabled by setting, along with ToastLogger initialization. 
+It is enabled by setting, along with TOAST Logger initialization. 
 In order not to send crash logs, CrashReporter must be disabled.  
 
 #### Enable CrashReporter 
@@ -141,7 +190,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ## Set Additional Information in Time for Crash Occurrence before Sending
 
 Additional information can be set immediately after crash occurs. 
-setUserField can be set anytime regardless of crash occurrence, whilesetCrashDataAdapter can be set at an accurate timing when a crash occurs.
+With user-defined field setting for Block at setShouldReportCrashHandler, additional information can be configured precisely when a crash occurs
 
 ### Specifications for Data Adapter API 
 ```objc
@@ -162,7 +211,7 @@ setUserField can be set anytime regardless of crash occurrence, whilesetCrashDat
 [ToastLogger setShouldReportCrashHandler:^{
   
   //Send, via user-defined field, wanted information from crash occurrence
-  // Add a UserField 
+  // Add User-Defined Field 
   [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 
 }];

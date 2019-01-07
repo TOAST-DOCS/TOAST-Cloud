@@ -17,7 +17,7 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- | 
-| All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework |  |  |
+| All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework<br/>ToastPush.framework |  |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
 | TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
@@ -67,8 +67,6 @@ TOAST Logger의 Crash Report 기능을 사용하려면 함께 배포되는 Crash
 
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
-![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_noAdSupport_IAP.png)
-
 > TOAST Push 기능을 사용하려면 UserNotifications.framework를 추가해야 합니다.
 
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
@@ -77,7 +75,8 @@ TOAST Logger의 Crash Report 기능을 사용하려면 함께 배포되는 Crash
 
 ![linked__pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
 
-![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_Push.png)
+![linked_frameworks_all](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_all.png)
+
 
 #### Project Settings
 

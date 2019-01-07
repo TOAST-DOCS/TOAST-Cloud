@@ -6,7 +6,19 @@
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
 3\. IAP에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
-## Cococapods 적용
+## TOAST IAP 구성
+
+iOS용 TOAST IAP SDK의 구성은 다음과 같습니다.
+
+| Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
+| --- | --- | --- | --- | --- | 
+| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+
+
+## TOAST IAP SDK를 Xcode 프로젝트에 적용
+
+### Cococapods 적용
 
 Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
@@ -26,9 +38,40 @@ end
 #import <ToastIAP/ToastIAP.h>
 ```
 
+### 바이너리를 다운로드하여 TOAST SDK 적용 
+
+#### SDK 가져오기(import)
+
+TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
+
+Xcode Project에 **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework`를 추가합니다.
+
+> StoreKit.framework는 아래 방법으로 추가할 수 있습니다.
+
+![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
+
+![linked_frameworks_iap](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap.png)
+
+#### Project Settings
+
+**Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+
+**Project Target > Build Settings > Linking > Other Linker Flags**를 클릭해 추가할 수 있습니다.
+
+![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+
+#### 프레임워크 가져오기 
+
+사용하려는 프레임워크를 가져옵니다(import).
+
+```objc
+#import <ToastCore/ToastCore.h>
+#import <ToastIAP/ToastIAP.h>
+```
+
 ## 서비스 로그인
 
-* TOAST SDK에서 제공하는 모든 상품(IAP, Log & Crash등)은 같은 사용자 ID 하나만 사용합니다.
+* TOAST SDK에서 제공하는 모든 상품(IAP, Log & Crash, Push등)은 같은 사용자 ID 하나만 사용합니다.
 
 ### 로그인
 
