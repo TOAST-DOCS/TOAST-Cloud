@@ -12,12 +12,14 @@
 Unity 용 TOAST SDK의 구성은 다음과 같습니다.
 
 * [TOAST Logger](./log-collector-unity) SDK
+* [TOAST IAP](./iap-unity) SDK
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택하여 적용할 수 있습니다.
 
 | Unity package | Service |
 | --- | --- |
 | TOAST-Logger-UnityPlugin.unitypackage | TOAST Log & Crash |
+| TOAST-IAP-UnityPlugin.unitypackage | TOAST IAP |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
 
 ### Unity package 구조
@@ -29,6 +31,7 @@ Unity 용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 | Toast | TOAST SDK의 루트 폴더 | All |
 | Toast/Common | TOAST SDK의 공통 모듈 폴더 | All |
 | Toast/Logger | TOAST Logger 모듈 폴더 | Logger, Sample |
+| Toast/IAP | TOAST IAP 모듈 폴더 | IAP, Sample |
 | Toast/Sample | SDK 샘플 폴더 | Sample |
 
 ## TOAST SDK를 Unity 프로젝트에 적용
@@ -168,4 +171,5 @@ ToastSdk.DebugMode = true; // or false
 ## TOAST Service 사용하기
 
 * [TOAST Log & Crash](./log-collector-unity) 사용 가이드
+* [TOAST IAP](./iap-unity) 사용 가이드
 

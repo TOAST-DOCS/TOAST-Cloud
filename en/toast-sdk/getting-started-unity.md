@@ -12,12 +12,14 @@
 TOAST SDK for Unity is configured as follows: 
 
 * [TOAST Logger](./log-collector-unity) SDK
+* [TOAST IAP](./iap-unity) SDK
 
  TOAST SDK services can be selectively applied for your needs. 
 
 | Unity package | Service |
 | --- | --- |
 | TOAST-Logger-UnityPlugin.unitypackage | TOAST Log & Crash |
+| TOAST-IAP-UnityPlugin.unitypackage | TOAST IAP |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
 
 ### Structure of Unity Package 
@@ -29,6 +31,7 @@ TOAST SDK for Unity is structured with folders as follows:
 | Toast | Root folder of TOAST SDK | All |
 | Toast/Common | Common module folder of TOAST SDK | All |
 | Toast/Logger | Module folder of TOAST Logger | Logger, Sample |
+| Toast/IAP | Module folder of TOAST IAP | IAP, Sample |
 | Toast/Sample | SDK sample folder | Sample |
 
 ## Apply TOAST SDK to Unity Projects 
@@ -168,4 +171,5 @@ ToastSdk.DebugMode = true; // or false
 ## Use TOAST Service 
 
 * User Guide for [TOAST Log & Crash](./log-collector-unity) 
+* User Guide for [TOAST IAP](./iap-unity)
 
