@@ -52,12 +52,12 @@ dependencies {
 | iOS | Apple App Store | 소비성 상품, 구독 상품 |
 
 ## TOAST IAP SDK 초기화
-TOAST IAP에서 [ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 발급받은 AppKey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
+[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 TOAST IAP 콘솔에서 발급받은 AppKey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
 
 > **초기화 시점**
 > TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며, 
-> 사용자 ID를 설정(아래 **서비스 로그인** 항목 참고)하기 전에 초기화를 해야 합니다.
+> 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/##_4) 항목 참고)하기 전에 초기화를 해야 합니다.
 
 ### 초기화 API 명세
 ```csharp
@@ -110,8 +110,8 @@ ToastSdk.UserId = null;
 
 ## 상품 목록 조회
 - IAP 콘솔에 등록된 상품 중 사용 가능한 상품 목록을 조회합니다.
-- IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 [ProductDetailsResult](./iap-unity/#productdetailsresult)의 Product 프로퍼티([IapProduct](./iap-unity/#iapproduct))로 반환됩니다.
-- IAP 콘솔에 등록된 상품 중 스토어에 등록되지 않은 상품은 [ProductDetailsResult](./iap-unity/#productdetailsresult) InvalidProducts 프로퍼티([IapProduct](./iap-unity/#iapproduct))로 반환됩니다.
+    - IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 [ProductDetailsResult](./iap-unity/#productdetailsresult)의 Product 프로퍼티([IapProduct](./iap-unity/#iapproduct))로 반환됩니다.
+    - IAP 콘솔에 등록된 상품 중 스토어에 등록되지 않은 상품은 [ProductDetailsResult](./iap-unity/#productdetailsresult) InvalidProducts 프로퍼티([IapProduct](./iap-unity/#iapproduct))로 반환됩니다.
 
 ### 상품 목록 조회 API 명세
 
@@ -158,8 +158,8 @@ ToastIap.Purchase(productId);
 
 ## 미소비 결제 조회
 - 아직 소비되지 않은 소비성 상품 정보를 조회합니다.
-- 미소비 결제 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
-- 사용자에게 상품을 지급된 후 Consume API를 사용하여 상품을 소비합니다.
+    - 미소비 결제 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
+- 사용자에게 상품을 지급된 후 [Consume API](../../../Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 
 ### 미소비 결제 조회 API 명세
 
