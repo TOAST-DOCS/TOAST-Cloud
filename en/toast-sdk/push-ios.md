@@ -77,6 +77,18 @@ TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework`를 추가해야
 #import <ToastIAP/ToastIAP.h>
 ```
 
+## Capabilities Setting
+
+TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Background Modes** 항목을 활성화해야 합니다.
+
+**Project Target > Capabilities > Push Notification > ON** 
+
+![capabilities_push_notification](http://static.toastoven.net/toastcloud/sdk/ios/capability_push_notification.png)
+
+**Project Target > Capabilities > Background Modes > ON** 
+
+![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
+
 ## 서비스 로그인
 
 * TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 같은 사용자 ID 하나만 사용합니다.

@@ -68,6 +68,13 @@ Xcode Project에 **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.
 #import <ToastCore/ToastCore.h>
 #import <ToastIAP/ToastIAP.h>
 ```
+## Capabilities Setting
+
+TOAST IAP를 사용하려면 Capabilities에서 In-App Purchase 항목을 활성화해야 합니다.
+
+**Project Target > Capabilities > In-App Purchase > ON** 
+
+![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## 서비스 로그인
 

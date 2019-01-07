@@ -69,6 +69,14 @@ Import the framework to use.
 #import <ToastIAP/ToastIAP.h>
 ```
 
+## Capabilities Setting
+
+To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
+
+**Project Target > Capabilities > In-App Purchase > ON** 
+
+![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
+
 ## Service Login 
 
 * All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID. 
