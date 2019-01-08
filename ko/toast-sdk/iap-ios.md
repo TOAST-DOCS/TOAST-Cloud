@@ -104,7 +104,7 @@ TOAST IAP에서 발급받은 AppKey를 설정합니다.
 재처리를 포함해 모든 구매 결과는 Delegate를 통해 전달되므로 Delegate 설정 이후에 초기화하거나, 초기화와 함께 Delegate를 설정하시기를 권장합니다.
 
 ``` objc
-ToastIAPConfiguration *configuration = [[ToastIAPConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
+ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
 
 [ToastIAP initWithConfiguration:configuration delegate:self];
 ```
@@ -162,7 +162,7 @@ Delegate를 등록하면 구매 후 추가 작업을 진행할 수 있습니다.
     [super viewDidLoad];
 
     // 초기화 및 Delegate 설정
-    ToastIAPConfiguration *configuration =[[ToastIAPConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
+    ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
 
     [ToastIAP initWithConfiguration:configuration delegate:self];
 }
