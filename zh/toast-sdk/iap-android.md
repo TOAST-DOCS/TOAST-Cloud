@@ -13,7 +13,7 @@
 - [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
 
 ## Library Setting 
-- To install Google Play Store SDKs, add the code as below to build.gradle. 
+- To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
 
 ```groovy
 dependencies {
@@ -22,7 +22,7 @@ dependencies {
 }
 ```
 
-- To install ONE store SDKs, add the code as below to build.gradle.  
+- To use In-App Purchase of ONE store, add dependency to build.gradle, as below:
 
 ```groovy
 dependencies {
@@ -42,16 +42,16 @@ dependencies {
 
 ## Product Types
 
-- Two types of products are currently supported: one-time products and subscription products. 
+- Two types of products are currently supported: consumable products and subscription products. 
 
 | Product Name | Product Type | Description |
 | ---- | ------ | ------ |
-| One-Time Products | "CONSUMABLE" | Managed before consumed, and disappears afterwards |
-| Subscription Products | "AUTO_RENEWABLE" | Automatically re-paid at every period and recoverable during activated period |
+| Consumable Products | "CONSUMABLE" | Consumable Products refer to consumable one-time products, <br>such as products within a game, and media files. |
+| Subscription Products | "AUTO_RENEWABLE" | Subscription products refer to products <br>which are automatically paid at specific intervals and prices, <br>such as online magazines and music streaming services.  |
 
 > Note :Subscription products are supported by Google Play Store only. 
 
-## In-App Payment (IAP) Setting 
+## In-App Purchase (IAP) Setting 
 
 * [ToastIapConfiguration](./iap-android/#toastiapconfiguration) includes IAP setting information. 
 * [ToastIapConfiguration](./iap-android/#toastiapconfiguration) can be created by using [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder).
@@ -70,7 +70,7 @@ ToastIapConfiguration configuration =
 
 ## Initialize IAP
 
-- Call ToastIap.initialize and initialize TOAST IAP.  
+- Call ToastIap.initialize() method to initialize TOAST IAP.  
 
 ### Specifications for IAP Initialization API 
 
@@ -117,8 +117,8 @@ public class MainApplication extends Application {
 
 * All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID. 
     * Set user ID with[ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid).
-    * Cannot make payments when user ID is not set. 
-* It is recommended to set user ID, query unconsumed payment history, and search enabled subscription products, during service login. 
+    * Cannot make purchases when user ID is not set. 
+* It is recommended to set user ID, query unconsumed purchase history, and search enabled subscription products, during service login. 
 
 ### Login 
 
@@ -134,17 +134,17 @@ ToastSdk.setUserId(userId);
 ToastSdk.setUserId(null);
 ```
 
-> Note: User ID must be set as null for a service logout so as to prevent promotion codes redeemed or purchase with wrong user ID when reprocessing payment operates. 
+> Note: User ID must be set as null for a service logout so as to prevent promotion codes redeemed or purchase with wrong user ID when reprocessing purchase operates. 
 
-## Register Payment Update Listeners
+## Register Purchases Update Listener
 
-* Payment results are notified via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) configured in Toastlap. 
-* Payment update listeners can be registered by using the ToastIap.registerPurchasesUpdatedListener method. 
-* Payment information is available on the list of [IapPurchaseResult](./iap-android/#iappurchaseresult) delivered by [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener).
+* Purchase results are notified via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) configured in Toastlap. 
+* Purchases update listener can be registered by using the ToastIap.registerPurchasesUpdatedListener method. 
+* Purchase information is available on the list of [IapPurchaseResult](./iap-android/#iappurchaseresult) delivered by [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener).
 
-> Note: Payment update listener must be registered in Activity.onCreate() and unregistered in Activity.onDestroy(). 
+> Note: Purchases update listener must be registered in Activity.onCreate() and unregistered in Activity.onDestroy(). 
 
-### Specifications for Registering Payment Upload Listener API 
+### Specifications for Registering Purchases Upload Listener API 
 
 ```java
 /* ToastIap.java */
@@ -154,15 +154,15 @@ public static void unregisterPurchasesUpdatedListener(IapService.PurchasesUpdate
 
 | Method | Parameters |  | Description |
 | ---- | ---- | ---- | ---- |
-| registerPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>Payment Update Listener | Payment update listener is registered. |
-| unregisterPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>Listener to unregister | Payment update listener is unregistered. |
+| registerPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>Purchases Update Listener | Purchases update listener is registered. |
+| unregisterPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>Listener to unregister | Purchases update listener is unregistered. |
 
-#### Example of Registering Payment Update Listeners
+#### Example of Registering Purchases Update Listener
 
 ```java
 public class MainActivity extends AppCompatActivity {
     /**
-     * Notifies the result of purchasing one-time products, subscription products, or promotional products.
+     * Notifies the result of purchasing consumable products, subscription products, or promotional products.
      */
     private IapService.PurchasesUpdatedListener mPurchaseUpdatedListener =
             new IapService.PurchasesUpdatedListener() {
@@ -279,14 +279,14 @@ void launchPurchaseFlow(Activity activity, String productId) {
 }
 ```
 
-## Query Unconsumed Payment
+## Query Unconsumed Purchases
 
-* Query information of unconsumed one-time products. 
+* Query information of unconsumed one-time products(CONSUMABLE). 
 * Product, after provided to user, can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api). 
-* Unconsumed payment can be queried by using the ToastIap.queryConsumablePurchases() method. 
+* Unconsumed purchase can be queried by using the ToastIap.queryConsumablePurchases() method. 
 * Query results are returned to the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener). 
 
-### Specifications for Unconsumed Payment Query API
+### Specifications for Unconsumed Purchases Query API
 
 ```java
 /* ToastIap.java */
@@ -299,11 +299,11 @@ public static void queryConsumablePurchases(Activity activity,
 | queryConsumablePurchases | activity | Activity: Currently activated activity |
 |  | listener | IapService.PurchasesResponseListener: <br>Query result listener for unconsumed purchase details |
 
-### Example of Unconsumed Payment Query 
+### Example of Unconsumed Purchases Query 
 
 ```java
 /**
- * List of unconsumed payment is queried. 
+ * List of unconsumed purchases is queried. 
  */
 void queryConsumablePurchases() {
     PurchasesResponseListener responseListenr =
@@ -372,7 +372,7 @@ void queryActivatedPurchases() {
 
 ### ToastIapConfiguration
 
-The IAP setting information is delivered as below for TOAST IAP initialization. 
+Refers to IAP configuration information which is applied as parameter for TOAST IAP initialization method.
 
 ```java
 /* ToastIapConfiguration.java */
@@ -408,12 +408,12 @@ String GOOGLE_PLAY_STORE
 String ONE_STORE
 ```
 
-* GOOGLE_PLAY_STORE<br>Applies Google Play Store in-app payment.<br>Constant Value: "GG"
-* ONE_STORE<br>Applies ONE store in-app payment. <br>Constant Value: "ONESTORE"
+* GOOGLE_PLAY_STORE<br>Applies Google Play Store in-app purchase.<br>Constant Value: "GG"
+* ONE_STORE<br>Applies ONE store in-app purchase. <br>Constant Value: "ONESTORE"
 
 ### IapPurchaseResult
 
-* Includes payment result and information.
+* Includes purchase result and information.
 
 ```java
 /* IapPurchaseResult.java */
@@ -427,12 +427,12 @@ public Throwable getCause()
 
 | Method | Returns |  |
 | ---- | ---- | ---- |
-| getPurchase | IapPurchase | Return IaPPurchase which contains payment information. |
-| getCode | int | Return payment result code. |
-| getMessage | String | Return payment result message. |
-| getCause | Throwable | Return cause of failed payment. |
-| isSuccess | boolean | Return if payment is successful |
-| isFailure | boolean | Return if payment is failed |
+| getPurchase | IapPurchase | Return IaPPurchase which contains purchase information. |
+| getCode | int | Return purchase result code. |
+| getMessage | String | Return purchase result message. |
+| getCause | Throwable | Return cause of failed purchase. |
+| isSuccess | boolean | Return if purchase is successful |
+| isFailure | boolean | Return if purchase is failed |
 
 ### IapResult 
 
@@ -455,7 +455,7 @@ public Throwable getCause()
 
 ### IapPurchase
 
-* Payment information is available via IapPurchase object.  
+* Purchase information is available via IapPurchase object.  
 
 ```java
 /* IapPurchase.java */
@@ -481,7 +481,7 @@ public String getExpiryTime()
 | getProductId | String | Return product ID. |
 | getProductType | String | Return product type. |
 | getUserId | String | Return user ID. |
-| getPrice | float | Return price. |
+| getPrice | float | Return price information. |
 | getPriceCurrencyCode | String | Return currency information. |
 | getAccessToken | String | Return token for consumption. |
 | getPurchaseType | String | Return product type. |
@@ -575,7 +575,7 @@ public void setProductId(String productId)
 
 ### IapService.PurchasesUpdatedListener
 
-* Payment information, if updated, is notified via onPurchasesUpdated of an object inherited with IapService.PurchasesUpdatedListener.
+* Purchase information, if updated, is notified via onPurchasesUpdated of an object inherited with IapService.PurchasesUpdatedListener.
 
 ```java
 void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
@@ -583,7 +583,7 @@ void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
 
 ### IapService.PurchasesResponseListener
 
-* Unconsumed payment or activated subscription, when queried, is notified via onPurchasesResponse of an object inherited with IapService.PurchasesResponseListener. 
+* Unconsumed purchase or activated subscription, when queried, is notified via onPurchasesResponse of an object inherited with IapService.PurchasesResponseListener. 
 
 ```java
 void onPurchasesResponse(IapResult result,
@@ -616,7 +616,7 @@ void onPurchasesResponse(IapResult result,
 | ------ | ---- | ---- |
 | INACTIVATED_APP | 101 | App is not activated.<br> |
 | NETOWRK_NOT_CONNECTED | 102 | Network is not connected.<br> |
-| VERIFY_PURCHASE_FAILED | 103 | Failed to verify payment.<br> |
+| VERIFY_PURCHASE_FAILED | 103 | Failed to verify purchase.<br> |
 | CONSUMED_PURCHASE | 104 | Purchase is already consumed.<br> |
 | REFUNDED_PURCHASE | 105 | Purchase is already refunded.<br> |
 
@@ -626,5 +626,5 @@ void onPurchasesResponse(IapResult result,
 | ------ | ---- | ---- |
 | ONESTORE_NEED_LOGIN | 301 | Not logged-in to ONE store Service.<br> |
 | ONESTORE_NEED_UPDATE | 302 | ONE store Service is not updated or installed.<br> |
-| ONESTORE_SECURITY_ERROR | 303 | Payment requested from abnormal app.<br> |
-| ONESTORE_PURCHASE_FAILED | 304 | Failed to request for payment.<br> |
+| ONESTORE_SECURITY_ERROR | 303 | Purchase requested from abnormal app.<br> |
+| ONESTORE_PURCHASE_FAILED | 304 | Failed to request for purchase.<br> |

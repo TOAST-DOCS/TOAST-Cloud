@@ -33,7 +33,7 @@ TOAST SDK services can be selectively applied for your needs.
 
 ## Apply TOAST SDK to Android Studio Projects 
 
-### 1. Apply TOAST SDK with Gradle
+### 1. Build Android with Gradle
 
 Set dependency as below, to use all TOAST SDK services.  
 
@@ -52,9 +52,9 @@ Following describe how to set for each product of TOAST SDK.
 - [Setting Library of TOAST In-app Purchase](./iap-android/#_2)
 - [Setting Library of TOAST Push](./push-android/#_2)
 
-### 2. Apply TOAST SDK with Binary Downloads  
+### 2. Build Android with AAR  
 
-The entire Android SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST. 
+Android SDK can be downloaded from [Downloads](../../../Download/#toast-sdk).
 
 
 ## Set UserID 

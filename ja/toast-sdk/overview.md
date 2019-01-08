@@ -62,8 +62,8 @@ Collected logs can be retrieved by selecting from the Log & Crash Search Menu on
 | Feature          | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | Sending Logs     | Send logs to a collector server.                             |
-| Query and Search | Query logs from TOAST console or search logs for conditions  |
-| Crash Reports    | Send crash logs occurred unexpectedly to a collector server of Log & Crash Search. |
+| Query and Search | Logs can be queried or searched for conditions from TOAST Console. |
+| Crash Reports    | Unexpected crashes are sent to a collector server of Log & Crash Search. |
 
 ### User Guides
 
