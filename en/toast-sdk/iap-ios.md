@@ -105,7 +105,7 @@ Therefore, for flawless reprocessing, user ID must be set first before initializ
 All purchase results, including reprocessing, are delivered through delegate, so it is recommended to set delegate before or along with initialization.   
 
 ``` objc
-ToastIAPConfiguration *configuration = [[ToastIAPConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
+ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
 
 [ToastIAP initWithConfiguration:configuration delegate:self];
 ```
@@ -163,7 +163,7 @@ Register delegate to proceed follow-ups after purchase.
     [super viewDidLoad];
 
     // Initialize and Set Delegate 
-    ToastIAPConfiguration *configuration =[[ToastIAPConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
+    ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
 
     [ToastIAP initWithConfiguration:configuration delegate:self];
 }
