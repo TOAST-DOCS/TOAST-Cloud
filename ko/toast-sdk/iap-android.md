@@ -13,7 +13,7 @@
 
 ## 라이브러리 설정
 
-- Google Play 스토어용 SDK를 설치하려면 아래 코드를 build.gradle에 추가합니다.
+- Google Play Store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
 dependencies {
@@ -22,7 +22,7 @@ dependencies {
 }
 ```
 
-- ONE store용 SDK를 설치하려면 아래 코드를 build.gradle에 추가합니다.
+- ONE store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
 dependencies {
@@ -42,12 +42,12 @@ dependencies {
 
 ## 상품 종류
 
-- 현재 지원하는 상품 종류는 2가지로, 일회성 상품과 구독 상품이 있습니다.
+- 현재 지원하는 상품 종류는 2가지로, 소비성 상품과 구독 상품이 있습니다.
 
 | 상품명    | 상품타입             | 설명                                     |
 | ------ | ---------------- | -------------------------------------- |
-| 소비성 상품 | "CONSUMABLE"     | 소비 이전까지 관리되며, 소비 이후 사라지는 일회성 상품        |
-| 구독 상품  | "AUTO_RENEWABLE" | 일정 기간마다 자동 결제되며, 활성화 기간동안 복원 가능한 구독 상품 |
+| 소비성 상품 | "CONSUMABLE"     | 소비 가능한 일회성 상품, 게임내 재화, 미디어 파일은 소비성 상품의 예입니다. |
+| 구독 상품  | "AUTO_RENEWABLE" | 지정된 간격 및 가격으로 결제가 자동으로 되풀이되는 상품, <br>온라인 잡지 및 음악 스트리밍 서비스는 구독의 예입니다. |
 
 > [참고] 구독 상품은 **Google Play 스토어**만 지원합니다.
 
@@ -70,7 +70,7 @@ ToastIapConfiguration configuration =
 
 ## 인앱 결제 초기화
 
-- ToastIap.initialize를 호출하여 TOAST IAP를 초기화합니다.
+- ToastIap.initialize() 메소드를 호출하여 TOAST IAP를 초기화 합니다.
 
 ### 인앱 결제 초기화 API 명세
 
@@ -374,7 +374,7 @@ void queryActivatedPurchases() {
 
 ### ToastIapConfiguration
 
-TOAST IAP를 초기화할 때 전달되는 인앱 설정 정보입니다.
+TOAST IAP 초기화 메소드의 파라미터로 사용되는 인앱 결제 설정 정보입니다.
 
 ```java
 /* ToastIapConfiguration.java */
