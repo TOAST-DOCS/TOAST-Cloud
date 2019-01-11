@@ -1,41 +1,41 @@
-## TOAST > TOAST 보안 정책
+## TOAST > TOAST Security Policy 
 
-TOAST는 보다 안전한 보안 환경을 제공하고자 보안 상품, 보안 정책, 취약점 정보 등을 안내하고 있습니다.
-다양하고 새로운 공격 기법과 보안 취약점으로부터 고객의 자산을 보호하기 위해, 클라우드 환경에서 자주 발생하는 보안 사고 및 위협에 대비할 수 있는 보안 정책을 아래와 같이 제공합니다.
+TOAST guides for security products, security policy, and vulnerability information, to provide safer security environment.
+Security policy is provided as below, to protect customer's resources from new and various types of attacks and security vulnerabilities, and prepare against frequent accidents and threats in the cloud.
 
-## 비밀번호 정책
-사용자 계정(root 및 일반 계정 모두) 비밀번호 설정 시, 일반적으로 유추하기 쉬운 비밀번호를 설정하면, 비인가된 사용자가 비밀번호 대입 공격을 통해 일반 계정 또는 root 권한을 획득하여 시스템에 접근할 수 있습니다. 이로 인해 서버에 저장된 중요 데이터가 유출되거나, 해킹 경유지 서버로 악용될 수 있으므로 안전한 비밀번호를 설정하고 관리해야 합니다.
+## Password Policy 
+To set passwords for user accounts (both root and general accounts), general passwords that are easy to guess may be cracked by unauthorized users and obtain authority for general or root accounts and access systems. As this may result in the leakage of important data saved in the server or abused as hackers' stop, a safe password must be set and managed. .
 
-### 안전한 비밀번호란
-영문자, 숫자, 특수문자를 조합하여 최소 8자 이상으로 구성합니다. 다음과 같이 추측 가능한 비밀번호를 사용하지 않아야 합니다.
+### Safe Passwords
+Must be comprised of 8 or more characters, in combination of alphabets, numbers, and special characters. Following passwords should be avoided as they are easy to guess: 
 
-- null 비밀번호
-- 문자 또는 숫자만으로 구성
-- 사용자 ID와 같은 비밀번호
-- 연속적인 문자나 숫자(예: 1111, 1234, adcd 등)
-- 주기적으로 비밀번호 재사용
-- 전화번호, 생일, 계정명, 호스트 이름과 같이 추측하기 쉬운 비밀번호
+- null Passwords
+- Comprised only of characters or numbers 
+- Same as user ID 
+- Consecutive characters or numbers (e.g: 1111, 1234, or adcd)
+- Periodic reuses 
+- Composed of phone number, birthday, account name, or host name, which are easy to guess 
 
-### TOAST 비밀번호 정책
-TOAST는 고객의 소중한 자산과 서비스를 보호하기 위하여 아래와 같이 비밀번호 정책을 기본 적용합니다.
+### TOAST Password Policy 
+To protect customer's resources and services, TOAST applies the following as the basic password policy.
 
-- 영문자, 숫자, 특수문자 3종류로 조합
-- 최소 8자리 이상
+- Combined with three types: Alphabets, Numbers, and Special Characters
+- Has more than 8 characters
 
-## DRDoS 공격 차단 정책
-외부 네트워크에 오픈된 인스턴스가 DRDoS 공격 경유지로 악용될 경우 아웃바운드 트래픽의 비정상적인 증가로 인해 서비스 장애나 및 의도하지 않은 트래픽 과금이 발생할 수 있습니다.
+## Anti-DRDoS Policy
+Instances exposed to external networks may be abused as stops for Distributed Reflection Denial of Service, or DRDoS attacks, causing service failure or unintentional traffic charges due to abnormal increase in outbound traffic. 
 
-### DRDoS(Distributed Reflect DoS, 분산 반사 서비스 거부 공격)란?
-DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으로 인해 발생합니다. 다수의 좀비 PC를 이용하여 작은 요청 패킷으로 큰 응답 패킷을 만들어 타깃 서버에 트래픽을 집중시킬 수 있기 때문에 최근 해킹 공격에 많이 사용되는 대역폭 잠식형 공격 기법입니다.
+### What is DRDoS (Distributed Reflection Denial of Service)?
+DRDoS occurs due to vulnerable settings of applications, such as DNS, NTP, SSDP, or Memcached. This bandwidth amplifying attack technique is widely used for recent hackings, as it creates a large response packet with small request packets by using a number of zombie computers, and causes traffic to be concentrated at a target server.
 
-### TOAST DRDoS 포트 차단 정책
-TOAST는 고객의 소중한 자산과 서비스를 보호하기 위하여 DRDoS 공격 경유지로 자주 악용되는 UDP 포트에 대한 차단 정책을 적용하고 있습니다.
+### Anti-TOAST DRDoS Port Policy
+To protect customer's resources and services, TOAST blocks UDP ports which are frequently abused as stops for DRDoS attacks..
 
-### 차단 포트 목록
-|서비스명 |   차단 포트  | 차단 방법|비고|
+### List of Blocked Ports 
+|Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- |
-|Chargen | UDP / 19    | Network ACL 차단 적용 |   외부에서 접속 불가|
-|SSDP    | UDP / 1900  | Network ACL 차단 적용 | 외부에서 접속 불가|
-|Memcached   | UDP / 11211 | Network ACL 차단 적용 | 외부에서 접속 불가|
+|Chargen | UDP / 19    | Network ACL | Inaccessible from outside |
+|SSDP    | UDP / 1900  | Network ACL | Inaccessible from outside |
+|Memcached   | UDP / 11211 | Network ACL | Inaccessible from outside |
 
-포트 차단 정책에 대해 문의하려면 고객센터로 문의하시기 바랍니다.
+For further inquiries on port blocking policy, contact Customer Center.
