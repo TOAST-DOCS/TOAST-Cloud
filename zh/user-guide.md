@@ -23,10 +23,9 @@ TOAST members are managed under the following information:
 
 ### How to Join as Member
 Access https://toast.com and click Join on the top right.
-Here’s how to join:
-1. Terms of Use Agreement
-2. Enter Member Information
-3. Completed to join
+There are three steps to complete.
+
+![userguide_01_201812_en](https://static.toastoven.net/toast/userguide_01_201812_en.png)
 
 #### Select Type of Membership (Personal/Business)
 
@@ -56,10 +55,6 @@ Following are required for each type of membership:
 
 When you complete joining, you are automatically signed in. Now, you can use TOAST Service via its website and console.  
 
-## Convert TOAST Membership
-TOAST members who are subscribed to PAYCO Service are required to convert services as below.
-It is available only with simple email verification and password setting.
-
 ## Register Payment Methods
 It is required to register a payment method to use TOAST Service
 However, for members of existing organizations/projects, no additional registration is required to use TOAST Service.
@@ -85,9 +80,6 @@ The authentication and management policy of each payment method goes as follows:
 |  | Credit cards (Signature Required) | Mobile phone owner authentication | Credit card number, valid period, and the first 7 digits of the resident registration number | |
 |  | Credit cards (No Signature Required) | Business registration number |Credit card, valid period, and the first two digits of password | To be provided |
 |  | Bank Transfers |Authenticate with Public Key Certificate  | Bank and account number |For personal accounts, the information must coincide with those in personal Public Key Certificate, <br/> while for business accounts, the business information must coincide with those in member profile/Public Key Certificate. |
-
-
-<center>[Table 1] Management Policy per Payment Method </center>
 
 ### PAYCO Credit Cards
 #### Select Payment Methods
@@ -130,12 +122,13 @@ The authentication and management policy of each payment method goes as follows:
 
 #### Register Authentication by Credit Card Company
 - On the page of Credit Card (Overseas), read through Check, and click **Register** to find guides to apply 3D authentication of credit cards issued overseas. <br/>
+
+![userguide_04_201812_en](https://static.toastoven.net/toast/userguide_04_201812_en.png)
 - Guide for Verified by Visa (TBC)<br/>
-    - Register Visa Checkout: Create an account on the website of Visa, enter information of your Visa credit card and set password..
+    - Register Visa Checkout: Create an account on the website of Visa, enter information of your Visa credit card and set password.
     - To register a payment method, the credit card information can be retrieved to check Visa Checkout and authenticated.  
 
-  ![](http://static.toastoven.net/toast/user_guide/userguide_004.png)
-  <center>[Figure 1] Register Payment Methods– 3D Authentication of Credit Cards (Overseas)– Guide for Visa Cards </center>
+![userguide_05_201812](https://static.toastoven.net/toast/userguide_05_201812.png)
 
 - Guide for MasterCard SecureCode (TBC) <br/>
     - Select your bank on the website of MasterCard, and register SecureCode.
@@ -143,8 +136,7 @@ The authentication and management policy of each payment method goes as follows:
     - Then, enter personal information required to register SecureCode.  
     - With the entry of credit card information to register as payment method, your replies to questions to create SecureCode are entered so as to create SecureCode. To authenticate it, enter the SecureCode.
 
-  ![](http://static.toastoven.net/toast/user_guide/userguide_005.png)
-  <center>[Figure 2] Register Payment Methods– 3D Authentication of Credit Cards (Overseas) - MasterCard </center>
+![userguide_06_201812](https://static.toastoven.net/toast/userguide_06_201812.png)
 
 - Guides for JBC J/Secure (TBC) <br/>
     - Enter credit card number, valid period, and card holder’s name on the payment page of J/Secure.
@@ -152,12 +144,10 @@ The authentication and management policy of each payment method goes as follows:
     - Check if your existing password (if any) coincides with your current password; if there’s none, register a new password.
     - To register a payment method, enter credit card information and enter password for authentication.
 
-  ![](http://static.toastoven.net/toast/user_guide/userguide_006.png)
-  <center>[Figure 3] Register Payment Methods– 3D Authentication of Credit Cards (Overseas) - JBC </center>
+![userguide_07_201812](https://static.toastoven.net/toast/userguide_07_201812.png)
 
 #### Complete Registration of Payment Methods
 - When a payment method is properly registered, go to **My Page > Payment Methods** to check.
-
 
 ### Bank Transfers
 #### Select Payment Methods
