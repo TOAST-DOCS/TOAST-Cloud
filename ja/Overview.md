@@ -1,107 +1,90 @@
-## TOAST > Overview
+﻿## TOAST > 概要
 
-TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “Integrated Cloud Service” of NHN Entertainment, as part of unwavering passion to make the world renewed with arts, science, and technology.  
+TOASTはNHNエンターテインメントが提供する「統合クラウドサービス」です。TOward Art Science Technologyをモットーに芸術科学技術に向かう新らしい世界を作るために挑戦する情熱を意味します。
 
-## Features
+## 特徴
 
-- Easy-to-Use Cloud Service for Anyone
+- 誰でも手軽に使用できるクラウドサービスです。
+- 開発に専念できるように便利なインフラとプラットフォームを提供します。
+- Webブラウザ上で簡単なクリック操作だけでサービスを使用できます。
+- 合理的な費用でインフラとプラットフォームを利用できます。
 
-- Infrastructure and Platform Provided <br>for Your Concentrated Development
+### 多様なサービス構成
 
-- Enabled Only with a Click on Web Browser
-- Infrastructure and Platform Available at Reasonable Costs
+- インフラ、開発、テスト、運営と技術サポート、事業化に必要な多様なサービスを提供します。
+- 社内メッセンジャー、プロジェクト管理から人事/財務/リソース管理まで、企業のITインフラのためのサービスを利用できます。
+- 自社の技術力で設計、構築した都心型データセンターで、ハイブリッドクラウド構成ができます。
 
-### Composed of Various Services
+### プラットフォーム中心クラウド
 
+- インフラに基づいたプラットフォーム中心クラウドです。
+- インフラ、コンテンツ、分析、ゲーム、セキュリティー、通知メッセージ、その他アプリケーションを運営する際に必要な各種機能を提供します。
+- アプリケーション開発と運営に必要な多様な機能を提供します。
+- 企業がクラウドで簡単に開発できる生態系を作ることができます。
 
-- We provide various services required for infrastructure, development, test, operations and technology support, and running a business.
+### 合理的な価格
 
-- From internal messenger and project management, to HR/finance/resource management, services are available for IT infrastructure of a company.
+- 使用した分だけ課金されます。(一部サービスは基本定額料金で課金します。)
+- 約定料金制で、さらに多くの割引き特典を提供します。
+- 補助サービスは無料で提供します。
 
-- The urban data center, designed on its own technology and established in Pangyo, provides optimized operational efficiency.
+### 強力な技術サポート
 
+- 10年以上、ハンゲーム、Bugs、Paycoなどの運営を通して蓄積したIT運営経験による安定したサービスを提供します。
+- クラウド導入戦略樹立のためのコンサルティングを提供します。
+- 専門エンジニアが24時間/365日お問い合わせに対応します。
 
-### Platform-oriented Cloud
+## サービス対象
 
+- インフラ構築が困難で、1：1技術コンサルティングが必要な企業
+- セキュリティーが重要なサービスを運営している企業や公共機関
+- インフラを効率的に利用したい企業
+- 中/大型ショッピングモールを運営する企業
+- SMS、Push、Emailなどの統合メッセージサービスが必要な企業
 
-- The cloud service is platform-oriented based on infrastructure.
+## サービス構成
 
-- Functions required to operate infrastructure, content, analysis, games, security, alarm messages, and other applications are provided.
-- Functions required to develop and operate applications are provided.
-- Companies are supported for easy development in the cloud environment.
-
-### Reasonable Prices
-
-
-- You'll be charged by pay-as-you-go. (Some services are charged by basic flat rate.)
-
-- Contract-based pricing plan provides more discount benefits.
-
-- Complementary services are free-of-charge.
-
-
-### Powerful Technology Support
-
-
-- Stable services are ensured with experienced IT operations accumulated for over a decade with Hangame, Bugs, and PAYCO services.
-
-- Consulting service is provided to establish plans to introduce the cloud environment.
-
-- Professional engineers are supported 24/7.
-
-## Service Targets  
-
-- Companies in need of 1:1 technical consulting due to difficulties in the buildup of infrastructure
-- Private or public businesses for which security is on top of priority
-- Companies wanting to efficiently make use of infrastructure
-- Mid-and large-size shopping mall owners
-- Businesses in need of integrated messaging services, including SMS, Push and email
-
-## Service Composition
-
-| Service | Description |
+| サービス | 説明 |
 | --- | --- |
-| Compute |With on-demand infrastructure based on OpenStack, apply infrastructure resources as much as required at affordable prices. |
-| Network | Build virtual private network and provide public IP which is accessible from outside.|
-| Storage | The storage service has high availability and stability. |
-| Game | Useful platforms are supported for game development.|
-| Notification | Mobile Push and SMS Platform services are provided. |
-| Database | With no need of complicated installation or setting, relational database is made available in the cloud environment. |
-| Content Delivery | Image saving and fast content distribution are available. |
-| Security | Security can be enhanced through the platforms. |
-| Mobile Service | Developing and testing mobile app services are made more easily. |
-| Dev Tool | Convenient and efficient development environment is provided. |
-| Analytics | Platforms for data analysis and collection are supported. |
-| Application Service | Various tools are supported for web/app services. |
-| Search  | Up-to-date data are always available through different search services. |
-| Management | Professional engineers with the highest technical skills provide systematic server management, while customers can focus more on content development. |
-| ERP  | Hands-on enterprise resource management solution is provided incorporating accounting, HR, and settlement. |
-| Dooray!  | Convenient tools of collaboration are supported, including mail, issue tracker, schedule management, and chatting. |
-| Contact Center | An integrated solution for call center services helps process inquiries more efficiently, and provides elevated operational efficiency and optimized customer experience. |
-| Bill | With the Bill service, it is easy and convenient to get a tax invoice. |
-| IDC  | The urban data center, designed on its own technology and established in Pangyo, provides optimized operational efficiency.  |
+| Compute | OpenStack基盤On-Demandインフラサービスにより、安価な費用でインフラリソースを必要な分だけ使用できます。 |
+| Network | 仮想プライベートネットワークを構築でき、外部から接続できる公認IPを提供します。 |
+| Storage | 高可用性と安定性を持つストレージサービスです。 |
+| Game | ゲーム開発に必要なプラットフォームを使用できます。 |
+| Notification | モバイルプッシュおよびSMSプラットフォームを使用できます。 |
+| Database | 複雑なインストール作業や設定をしなくても、クラウド環境でリレーショナルデータベースを使用できます。 |
+| Content Delivery | イメージ保存および迅速なコンテンツ配布ができるプラットフォームです。 |
+| Security | セキュリティーを強化できるプラットフォームを使用できます。 |
+| Mobile Service | モバイルアプリサービス開発とテストを簡単にできるように、サポートするサービスです。 |
+| Dev Tool | 便利で効率的な開発環境を提供するサービスです。 |
+| Analytics | データ分析および収集に必要なプラットフォームを使用できます。 |
+| Application Service | Web/アプリサービスに必要な多様なツールを提供します。 |
+| Search  | 多様な検索サービスを通して、アップデートの心配なく常に最新のデータを利用できます。 |
+| Management | 最高の技術力を持つ専門エンジニアが体系的にサーバーを管理し、顧客はコンテンツ開発に集中できます。 |
+| ERP  | 会計、人事、決済を統合する手軽な全社的リソース管理ソリューションです。 |
+| Dooray!  | 協業のための便利なサービス。メール、課題トラッカー、スケジュール管理、チャットまでサポートし、簡単に協業できます。 |
+| Contact Center | コールセンター相談統合ソリューションによる効率的なお問い合わせ処理を通して運営効率性を高め、最適な顧客体験を提供できます。 |
+| Bill | 簡単に税金計算書を発行できます。 |
+| IDC  | 自社の技術力で京畿道パンギョに設計・構築した都心型インターネットデータセンターです。 |
 
-## Service Release Policy
+## サービスリリースポリシー
 
-TOAST Service is managed by the Release Policy as below.
+TOASTサービスは下記のリリースポリシーに従って管理します。
 
 - ALPHA
-    - The service is open to users before an official service version is released.
-    - The service is named with ALPHA icon.
-    - This service may fade out depending on company policy.
+    - 正式サービスリリース前にユーザーに公開するサービスです。
+    - サービス名にアルファアイコンが表示されます。
+    - アルファサービスは会社のポリシーにより中断する場合があります。
 - BETA
-    - The service is open to users before an official service version is released.
-
-    - The service is named with BETA icon.
-
+    - 正式サービスリリース前にユーザーに公開するサービスです。
+    - サービス名にベータアイコンが表示されます。
 - GA
-    - Refers to the official version of service.
+    - 正式サービスです。
 
 
-| Classification | SLA Guarantees  | Service Continuity| Period |
-| :---: | :---: |:---: | :---: |
-| ALPHA | X | △ | 3 Months |
-| BETA | X | O | 3 Months |
+| 区分 | SLA保障 | サービス持続 | 期間 |
+| :---: | :---: | :---: | :---: |
+| ALPHA | X | △ | 3か月 |
+| BETA | X | O | 3か月 |
 | GA | O | O | - |
 
-- The ALPHA or BETA period may be extended or reduced.
+- アルファ/ベータ期間は、延長または短縮する場合があります。

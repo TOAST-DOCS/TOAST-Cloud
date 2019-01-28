@@ -25,11 +25,13 @@ TOAST 회원은 아래의 정보를 관리합니다.
 https://toast.com에 접속한 후 화면 오른쪽 위에서 **회원가입**을 클릭합니다.
 회원 가입 절차는 아래와 같습니다.
 
-![](http://static.toastoven.net/toast/user_guide/userguide_001.png)
-<center>[그림 1] 회원 가입 - 개인 회원 </center>
+#### 개인 회원 가입
 
-![](http://static.toastoven.net/toast/user_guide/userguide_002.png)
-<center>[그림 2] 회원 가입 - 사업자 회원 </center>
+![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_201812.png)
+
+#### 사업자 회원 가입
+
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_201812.png)
 
 #### 회원 유형(개인/사업자) 선택
 
@@ -63,9 +65,7 @@ https://toast.com에 접속한 후 화면 오른쪽 위에서 **회원가입**�
 PAYCO 서비스에 가입하여 TOAST를 이용하던 회원은 아래와 같이 서비스 전환이 필요합니다.
 서비스 전환은 간단한 이메일 인증과 비밀번호 설정으로 가능합니다.
 
-![](http://static.toastoven.net/toast/user_guide/userguide_003.png)
-<center>[그림 3] TOAST 회원 전환 </center>
-
+![userguide_03_201812](https://static.toastoven.net/toast/user_guide/userguide_03_201812.png)
 
 ## 결제 수단 등록
 TOAST 서비스를 이용하기 위해서는 결제 수단 등록이 필요합니다.
@@ -92,9 +92,6 @@ TOAST에서 제공하는 결제 수단은 아래와 같습니다.
 |  | 신용카드(기명) | 휴대폰 본인 인증 | 카드 번호, 유효기간, 주민등록번호 앞 7자리 | |
 |  | 신용카드(무기명) | 사업자등록번호 | 카드 번호, 유효기간, 비밀번호 앞 2자리 | 추후 제공 |
 |  | 계좌이체 | 공인인증서 인증 | 은행, 계좌번호 | 개인 계좌는 개인 공인인증서 <br/> 법인 계좌는 회원/법인 계좌/ 공인인증서의 사업자 정보가 동일해야 함 |
-
-
-<center>[표 1] 결제 수단별 관리 정책 </center>
 
 ### PAYCO 신용카드
 #### 결제 수단 선택
@@ -136,15 +133,13 @@ TOAST에서 제공하는 결제 수단은 아래와 같습니다.
 
 #### 카드사별 인증 등록
 - 신용카드(해외)의 화면에서 **확인하세요** 내용을 확인한 후, **등록하기** 버튼을 클릭하여 해외 발행 신용카드 3D인증 적용 안내를 확인합니다. <br/>
-![](http://static.toastoven.net/toast/user_guide/worldcard-secure.png)
-<center>[그림 4] 결제 수단 등록 - 신용카드(해외) 3D인증 안내 </center>
+![userguide_04_201812](https://static.toastoven.net/toast/user_guide/userguide_04_201812.png)
 
 - Verified by visa 이용안내(확인 필요)<br/>
     - Visa checkout 서비스 등록: Visa 웹 사이트에서 계정을 생성한 후, Visa 카드 정보를 입력하고 비밀번호를 설정합니다.
     - 결제 수단 등록 시 카드 정보를 입력하면, Visa checkout 서비스 등록 정보를 확인하여 인증합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/userguide_004.png)
-  <center>[그림 5] 결제 수단 등록 - 신용카드(해외) 3D인증 - Visa 안내 </center>
+![userguide_05_201812](https://static.toastoven.net/toast/user_guide/userguide_05_201812.png)
 
 - MasterCard SecureCode 이용안내(확인 필요) <br/>
     - MasterCard website 은행을 선택 후, SecureCode 등록합니다.
@@ -152,8 +147,7 @@ TOAST에서 제공하는 결제 수단은 아래와 같습니다.
     - 카드 번호 입력 후, SecureCode 를 등록하기 위한 개인 확인 사항을 입력합니다.
     - 결제 수단 등록 시 카드 정보를 입력하면, SecureCode 생성을 위한 질문에 답변을 하게 되면 SecureCode 가 생성이 됩니다. 생성된 SecureCode 를 입력하여 인증합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/userguide_005.png)
-  <center>[그림 6] 결제 수단 등록 - 신용카드(해외) 3D인증 - MasterCard </center>
+![userguide_06_201812](https://static.toastoven.net/toast/user_guide/userguide_06_201812.png)
 
 - JBC J/Secure 이용안내(확인 필요) <br/>
     - J/Secure 결제 창에 카드 번호, 유효기간, 카드 소유자명을 입력합니다.
@@ -161,8 +155,7 @@ TOAST에서 제공하는 결제 수단은 아래와 같습니다.
     - 비밀번호가 있으면 기존과 동일한 비밀번호인지 확인하고, 없을 경우 신규로 등록합니다.
     - 결제 수단 등록 시, 카드 정보를 입력하고 비밀번호를 입력하여 인증합니다.
 
-  ![](http://static.toastoven.net/toast/user_guide/userguide_006.png)
-  <center>[그림 7] 결제 수단 등록 - 신용카드(해외) 3D인증 - JBC </center>
+![userguide_07_201812](https://static.toastoven.net/toast/user_guide/userguide_07_201812.png)
 
 #### 결제 수단 등록 완료
 - 결제 수단이 정상적으로 등록되면, **마이 페이지 > 결제수단**에서 확인이 가능합니다.

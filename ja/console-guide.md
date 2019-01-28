@@ -1,105 +1,116 @@
-## TOAST > Console User Guide
+﻿## TOAST > コンソール使用ガイド
 
-The console serves as management tool and window for the use of TOAST services.
-Basic console settings and its user guide are provided as below to use TOAST Service.
+コンソールはTOASTサービスを利用するための管理ツールと作業ウィンドウの役割をします。
+ここではTOASTコンソールの基本的な設定と使用方法を案内します。
 
-TOAST Console provides the following functions:
+TOAST Consoleは下記の機能を提供します。
 
-- Basic information management to use the service (e.g. organizations, or projects)
-- Enable/Disable Service
-- Manage members who use the service
-- Provide payment information
+- サービスを利用するための基本情報管理(組織、プロジェクト)
+- サービス有効/無効
+- サービスを利用するメンバーの管理
+- 決済情報提供
 
-## Organization Management
+## コンソールクイックガイド
 
-Organization refers to a group which is made to efficiently use and manage TOAST Service.
-In an organization, same service policy can be shared with users.
-It helps to make use of TOAST Service more efficiently.  
+![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812.png)
+![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812.png)
+![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812.png)
+![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812.png)
+![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812.png)
 
-### Organization Management Policy
+## 組織管理
 
-#### Create Organizations
+組織は、TOASTサービスを効率的に使用し、管理するために作られたグループです。
+組織では同じサービスポリシーをユーザーに共有して使用できます。
+組織を通して多様なTOASTサービスを効率的に使用できます。
 
-- An organization should be created to use TOAST Service.
-- Both personal and business members can create organizations.
-- Any member who creates an organization automatically becomes the OWNER of his organization.
-- Member’s payment method is required to create an organization.
-- Organization is in charge of its name and domain information.
-- Domain information of an organization must be unique, as it is required for services.
+### 組織管理ポリシー
 
-#### Organization Services
+#### 組織作成
 
-After an organization is created, you can select services.
-Following services are available at the level of organization:
+- TOASTサービスを利用するには組織を作成する必要があります。
+- 組織は個人/事業者会員、どちらでも作成できます。
+- 組織を作成する会員は自動で組織のOWNERになります。
+- 組織を作成するには会員の決済方法が登録されている必要があります。
+- 組織は組織名/ドメイン情報を管理します。
+- 組織のドメイン情報はサービスで使用する必要がある情報で、固有の情報でなければいけません。
+
+#### 組織サービス
+
+組織が作成されると、サービスを選択できます。
+組織単位で有効にできるサービスは次のとおりです。
 
 - ERP
 - Dooray!
 - Contact Center
 - IDC
 
-#### Organization Members
+#### 組織メンバー
 
-Organization members are classified into members of TOAST.com and insider members of the organization.  
+組織のメンバーはTOAST.com会員と組織内部会員に区分して管理します。
 
-| Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
-| :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Definition                    | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
-| Method of Member Registration | \- Owner/Admin of an organization enters TOAST ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
-| Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
+| 区分          | TOAST.com会員                                              | 組織内部会員(AWSのIAMと同じ)                               |
+| :------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 定義         | \- 組織管理のためのメンバー<br>\- TOAST利用約款に同意したTOAST会員で、サービス利用に対する責任と義務を持つメンバー<br>\- TOASTサービス全体で有効なメンバーで、所属した組織が削除されてもTOAST会員に存在 | \- サービス利用のためのメンバー<br>\- TOAST利用約款に同意しないメンバー<br>\- 組織内でのみ有効なメンバー、所属した組織が削除されると削除されるメンバー | 
 
-Each member of an organization has following roles:
+| メンバー登録方法 | \- 組織のOWNERまたはAdminがTOAST IDを入力して登録         | \- 組織のOWNERまたはAdminが組織内で唯一のIDを入力して登録<br>\- SSO連動/API連動などを通して登録 |
+| メンバー権限     | \- 組織管理(組織作成/修正/組織メンバー管理/組織サービス管理/決済管理\)<br>\- プロジェクト作成<br>\- プロジェクト削除 | \- 組織サービス利用                                         |
 
-| Action               | Role                                              | Owner | Admin | Member | Billing Viewer |
-| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- |
-| Manage Organizations | Create Organizations                              | O     |       |        |                |
-|                      | Modify Organizations                              | O     | O     |        |                |
-|                      | Delete Organizations                              | O     |       |        |                |
-| Manage Members       | Register Organization Members                     | O     | O     |        |                |
-|                      | Delete Organization Members                       | O     | O     |        |                |
-| Manage Services      | Enable Organization Services                      | O     | O     |        |                |
-|                      | Disable Organization Services                     | O     | O     |        |                |
-| Manage Payment       | Query Bills                                       | O     |       |        |                |
-|                      | Status of Service Use                             | O     | O     |        | O              |
-| Manage Projects      | Create Projects                                   | O     | O     | O      |                |
-|                      | Delete Projects (all projects of an organization) | O     | O     |        |                |
-|                      | Delete Projects (created projects)                | O     | O     | O      |                |
+組織メンバーの役割(role)は下記のとおりです。
 
-#### Delete Organizations
+| 作業         | 役割                                | OWNER | Admin | MEMBER | Billing Viewer |
+| ------------- | ----------------------------------- | ----- | ----- | ------ | -------------- |
+| 組織管理    | 組織作成                          | O     |       |        |                |
+|               | 組織修正                          | O     | O     |        |                |
+|               | 組織削除                          | O     |       |        |                |
+| メンバー管理    | 組織メンバー登録                     | O     | O     |        |                |
+|               | 組織メンバー削除                     | O     | O     |        |                |
+| サービス管理  | 組織サービス有効                 | O     | O     |        |                |
+|               | 組織サービス無効               | O     | O     |        |                |
+| 決済管理    | 請求書照会                        | O     |       |        |                |
+|               | 利用現況                          | O     | O     |        | O              |
+| プロジェクト管理 | プロジェクト作成                      | O     | O     | O      |                |
+|               | プロジェクト削除(組織の全体プロジェクト) | O     | O     |        |                |
+|               | プロジェクト削除(作成したプロジェクト)     | O     | O     | O      |                |
 
-- Only the OWNER can delete his organization.
-- All the services currently in use must be deleted first.
-- All information of an organization is to be deleted, along with the deletion of organization, and cannot be recovered.  
+#### 組織削除
 
-### Guide to Create Organizations
+- 組織削除は組織のOWNERだけができます。
+- 組織を削除するには、利用中のサービスをすべて削除する必要があります。
+- 組織を削除すると、組織のすべての情報は削除され復旧できません。
 
-![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
+### 組織作成ガイド
 
-1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
-2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
-3. Click **OK** and organization is completely created.
-4. You can find the organization name just created on top of the console menu
-5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
+![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812.png)
 
-## Manage Projects
+<center>[図1]組織作成 </center>
 
-A project is created to use TOAST Service, after an organization is created.
-Enable project services to use a project.
-Use and charge services by the project.
+1. コンソールに移動した後、上段メニューから **組織を作成してください。** 横の**+**ボタンをクリックします。
+2. **組織作成** ウィンドウで組織名を入力します。組織名には日本語、アルファベット、特殊文字、数字を使用できます。
+3. **確認**ボタンをクリックすると組織作成が完了します。
+4. コンソール上段メニューに、作成された組織名が表示されます。
+5. **設定**ボタンをクリックして、作成された組織情報を確認します。組織の追加情報にドメイン情報を入力します。ドメインはTOASTで唯一の値に設定する必要があります。
 
-### Project Management Policy
+## プロジェクト管理
 
-#### Create Projects
+プロジェクトは組織作成後、TOASTサービスを利用するために作成します。
+プロジェクトではプロジェクトサービスを有効にして利用できます。
+プロジェクトサービスはプロジェクト単位で利用し、これに応じて課金します。
 
-- To create a project, an organization is required.
-- A member who creates a project is entitled ADMIN of the project.
-- Enter the name and description to create a project.
-- Enable project services after a project is created.
-- When collaboration is required, add project members to share the project after it is created.
+### プロジェクト管理ポリシー
 
-#### Project Services
+#### プロジェクト作成
 
-You can select services, once a project is created.
-Following services can be enabled by each project:
+- プロジェクトを作成するには、組織を作成する必要があります。
+- プロジェクトを作成した会員は、プロジェクトのAdmin権限を持ちます。
+- プロジェクト作成時、プロジェクト名とプロジェクト説明を入力します。
+- プロジェクト作成後、プロジェクトサービスを有効にして利用できます。
+- プロジェクト作成後、協業が必要な場合はプロジェクトメンバーに追加して一緒に使用できます。
+
+#### プロジェクトサービス
+
+プロジェクトが作成されると、サービスを選択できます。
+プロジェクト単位で有効にできるサービスは次のとおりです。
 
 - Compute
 - Storage
@@ -117,69 +128,73 @@ Following services can be enabled by each project:
 - Mobile Service
 - Bill
 
-#### Project Members
+#### プロジェクトメンバー
 
-Project members are also members of TOAST.com. Insider members of an organization will be able to use project services with further functions to be provided.
-You can be a project member, if not an organization member.
+プロジェクトのメンバーはTOAST.comの会員です。組織内部会員がプロジェクトメンバーで、サービスを利用できる機能は今後提供予定です。
+組織のメンバーでなくてもプロジェクトのメンバーになることができます。
 
-Each project member has the following roles:
+プロジェクトメンバーの役割(role)は次のとおりです。
 
-| Action                | Role                                            | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
-| --------------------- | ----------------------------------------------- | ----- | ------ | -------------------- | -------------- |
-| Manage Members        | Register Project Members (ADMIN)                | O     |        |                      |                |
-|                       | Delete Project Members (ADMIN)                  | O     |        |                      |                |
-|                       | Register Project Members (MEMBER)               | O     |        |                      |                |
-|                       | Delete Project Members (MEMBER)                 | O     |        |                      |                |
-|                       | Register Project Members (Billing Viewer ADMIN) | O     |        |                      |                |
-|                       | Delete Project Members (Billing Viewer ADMIN)   | O     |        |                      |                |
-|                       | Register Project Members (Billing Viewer)       | O     |        | O                    |                |
-|                       | Delete Project Members (Billing Viewer)         | O     |        | O                    |                |
-| Manage Service        | Enable Service                                  | O     |        |                      |                |
-|                       | Enable Service                                  | O     | O      |                      |                |
-|                       | Disable Service                                 | O     |        |                      |                |
-| Status of Service Use | Status of Service Use                           | O     | O      | O                    | O              |
+| 作業       | 役割                                     | Admin | MEMBER | Billing Viewer Admin | Billing Viewer |
+| ----------- | ---------------------------------------- | ----- | ------ | -------------------- | -------------- |
+| Member管理 | 登録(Admin)                              | O     |        |                      |                |
+|             | プロジェクトメンバー削除(Admin)                | O     |        |                      |                |
+|             | プロジェクトメンバー登録(MEMBER)               | O     |        |                      |                |
+|             | プロジェクトメンバー削除(MEMBER)               | O     |        |                      |                |
+|             | プロジェクトメンバー登録(Billing Viewer Admin) | O     |        |                      |                |
+|             | プロジェクトメンバー削除(Billing Viewer Admin) | O     |        |                      |                |
+|             | プロジェクトメンバー登録(Billing Viewer)       | O     |        | O                    |                |
+|             | プロジェクトメンバー削除(Billing Viewer)       | O     |        | O                    |                |
+| サービス管理 | サービス有効                           | O     |        |                      |                |
+|             | サービス利用                             | O     | O      |                      |                |
+|             | サービス無効                         | O     |        |                      |                |
+| 利用現況  | 利用現況                               | O     | O      | O                    | O              |
 
-#### Delete Projects
+#### プロジェクト削除
 
-A project can be deleted if it has no available services.
-All its resources are deleted along with the deletion of a project, and cannot be recovered.
-You can immediately pay for all the resources that have used before deleting a project.
-However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
+プロジェクトで利用中のサービスがない場合、プロジェクトを削除できます。
+プロジェクトを削除すると、プロジェクトのすべてのリソースは削除され、復旧できません。
+現在まで利用したすべてのリソースに対する利用内訳を即時決済して削除できます。
+ただし、即時決済せずに削除する場合、現在まで利用した料金内訳は次の決済日に自動請求されます。
 
-### Guide to Create Projects
+### プロジェクト作成ガイド
 
-![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
+![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812.png)
 
-1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
-2. Enter **Project Name** and **Project Description**.
-3. Click **OK** to create a project.
-4. The project name shows on the console menu when the project is created.
-5. Click project setting to check project information.
+<center>[図2]プロジェクト作成 </center>
 
-### Guide to Enable Project Service
+1. 組織を作成すると **新しいプロジェクト作成**ボタンが有効になります。 **新しいプロジェクト作成**ボタンをクリックしてプロジェクトを作成します。
+2. **プロジェクト名**と**プロジェクト説明**を入力します。
+3. **確認**ボタンをクリックして、プロジェクトを作成します。
+4. プロジェクトが作成されると、メニューにプロジェクト名が表示されます。
+5. プロジェクト設定ボタンをクリックして、プロジェクト情報を確認します。
 
-![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
+### プロジェクトサービス有効ガイド
 
-1. Click **Select Services**, after a project is created, to enable services you need
-2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
-3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812.png)
 
-## Billing Management
+<center>[図3]プロジェクトサービス有効 </center>
 
-Supports for TOAST members to check prices and pay bills for TOAST Service.
-Billing management provides bills for the TOAST members who registered payment methods, along with estimated amount of payment and usage information.
-Go to My Profile > Billing Management to check.
+1. プロジェクト作成後、**サービス選択**ボタンをクリックしてプロジェクトで使用するサービスを選択できます。
+2. サービス選択画面で、有効にするサービスを選択します。サービスを有効にするか確認するメッセージが表示されたら **確認**をクリックします。サービスを利用できるページに移動するという案内メッセージが表示されたら **確認**をクリックします。
+3. 有効にしたサービスリストはコンソール左のメニューで確認できます。リストからサービスをクリックすると、サービス利用画面が表示されます。
 
-Below functions are provided, along with the history of the month’s payment via registered payment method.
+## 決済管理
 
-- Immediate Payment: Immediate payment is available on the 15th of every month before automatic payment is processed.  
-- Sales Statement: Sales statement can be retrieved for credit card payments.
-- Tax Invoice: Tax invoices can be retrieved for payment by bank transfers.
+TOAST会員がTOASTサービス利用料金を確認し、決済できるようにサポートします。
+決済管理は決済方法を登録したTOAST会員の請求書と決済予定金額と使用量情報を提供します。
+**マイ情報参照 > 決済管理**メニューで確認できます。
 
-Following are included to the bills for retrieval:
+決済方法を通して、該当の月に決済する内訳と下記の機能を提供します。
 
-- Charged Amount: Prices for usage amount and service charges
-- Discount/Extra Charges: Discounts by contract, or discount/extra charges by administrators
-- Additional Tax: 10% of (Charged amount- Discount amount + Amount of extra charges)
-- Late Charges: 2% of unpaid amount out of total amount of payment
-- Total Amount of Payment: (Charged amount- Discount amount+ Amount of extra charges) + Additional Tax
+- 即時決済：毎月15日の自動決済前に、即時決済機能を通して決済ができます。
+- 売上伝票：クレジットカードで決済した場合、売上伝票照会機能を提供します。
+- 税金計算書：口座振替で決済した場合、税金計算書照会機能を提供します。
+
+決済管理請求書で照会する内訳は下記のとおりです。
+
+- 利用金額：サービス使用量と単価を計算した金額
+- 割引き/割増し金額：約定割引き、管理者割引き/割増しなど
+- 付加税：(利用金額 - 割引き金額 + 割増し金額)の10%
+- 延滞料：最終決済金額が未払いの時、該当金額の2%
+- 最終決済金額： (利用金額 - 割引き金額 + 割増し金額) + 付加税
