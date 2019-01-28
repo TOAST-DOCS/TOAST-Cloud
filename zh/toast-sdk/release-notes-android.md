@@ -1,5 +1,21 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.14.1 (2019.01.29)
+
+### TOAST IAP
+
+#### Fixed
+
+* Fixed an error that could not reprocess old IAP SDK purchases.
+
+## 0.14.0 (2019.01.08)
+
+### TOAST IAP
+
+#### Added
+
+* Added TOAST IAP Unity Plugin.
+
 ## 0.13.0 (2018.12.27)
 
 ### TOAST Core
