@@ -16,7 +16,7 @@ TOAST는 보다 안전한 보안 환경을 제공하고자 보안 상품, 보안
 - 주기적으로 비밀번호 재사용
 - 전화번호, 생일, 계정명, 호스트 이름과 같이 추측하기 쉬운 비밀번호
 
-### TOAST 비밀번호 정책
+### 비밀번호 정책
 TOAST는 고객의 소중한 자산과 서비스를 보호하기 위하여 아래와 같이 비밀번호 정책을 기본 적용합니다.
 
 - 영문자, 숫자, 특수문자 3종류로 조합
@@ -24,12 +24,10 @@ TOAST는 고객의 소중한 자산과 서비스를 보호하기 위하여 아�
 
 ## DRDoS 공격 차단 정책
 외부 네트워크에 오픈된 인스턴스가 DRDoS 공격 경유지로 악용될 경우 아웃바운드 트래픽의 비정상적인 증가로 인해 서비스 장애나 및 의도하지 않은 트래픽 과금이 발생할 수 있습니다.
+TOAST는 고객의 소중한 자산과 서비스를 보호하기 위하여 DRDoS 공격 경유지로 자주 악용되는 UDP 포트에 대한 차단 정책을 적용하고 있습니다.
 
 ### DRDoS(Distributed Reflect DoS, 분산 반사 서비스 거부 공격)란?
 DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으로 인해 발생합니다. 다수의 좀비 PC를 이용하여 작은 요청 패킷으로 큰 응답 패킷을 만들어 타깃 서버에 트래픽을 집중시킬 수 있기 때문에 최근 해킹 공격에 많이 사용되는 대역폭 잠식형 공격 기법입니다.
-
-### TOAST DRDoS 포트 차단 정책
-TOAST는 고객의 소중한 자산과 서비스를 보호하기 위하여 DRDoS 공격 경유지로 자주 악용되는 UDP 포트에 대한 차단 정책을 적용하고 있습니다.
 
 ### 차단 포트 목록
 |서비스명 |   차단 포트  | 차단 방법|비고|
@@ -37,8 +35,6 @@ TOAST는 고객의 소중한 자산과 서비스를 보호하기 위하여 DRDoS
 |Chargen | UDP / 19    | Network ACL 차단 적용 |   외부에서 접속 불가|
 |SSDP    | UDP / 1900  | Network ACL 차단 적용 | 외부에서 접속 불가|
 |Memcached   | UDP / 11211 | Network ACL 차단 적용 | 외부에서 접속 불가|
-
-포트 차단 정책에 대해 문의하려면 고객센터로 문의하시기 바랍니다.
 
 ## 인터넷 포트 차단 정책 (Inbound)
 TOAST와 달리 공공 기관에 제공하는 TOAST G 클라우드는 고객 서비스 보호를 위해 고객이 직접 관리할 수 있는 Security Group 기능 외 침입차단 시스템을 이용하여 중요 서비스 포트에 대해 차단하고 있습니다.
@@ -51,12 +47,10 @@ TOAST와 달리 공공 기관에 제공하는 TOAST G 클라우드는 고객 서
 | Netbios 관련 Port | TCP, UDP / 135, 137, 138, 139, 445 | Network ACL 차단 적용 | 외부에서 접속 불가 |
 | 기타 | TCP / 21(FTP), TCP / 5900(VNC) | Network ACL 차단 적용 | 외부에서 접속 불가 |
 
-## 포트 추가/허용 신청 절차
+### 포트 추가/허용 신청 절차
+- 아래 이미지 링크를 통해 “TOASTCloud G 방화벽 및 SSL VPN 정책 신청서.xlsx” 파일 다운로드하고 작성합니다.
 
-1. 아래 이미지 링크를 통해 “TOAST G 방화벽 신청서.xlsx” 파일 다운로드 및 작성
+[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOASTCloud G 방화벽 및 SSL VPN 정책 신청서.xlsx)
 
-<center>
-[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOASTCloud G 방화벽 및 SSL VPN 정책 신청서.xlsx)</center><br>
-
-2.작성파일명 “TOAST G 방화벽 정책 신청서-기관명.xlsx”으로 저장 <br>
-3.TOAST G 대표 메일 support@gov.toast.com로 접수 신청 메일 발송 (접수일 기준으로 3일 이내 처리 및 회신)<br>
+- 파일명 “TOAST G 방화벽 정책 신청서-기관명.xlsx”으로 저장합니다.
+- TOAST G 대표 메일 support@gov.toast.com로 접수 신청 메일 발송합니다.(접수일 기준으로 3일 이내 처리 및 회신)
