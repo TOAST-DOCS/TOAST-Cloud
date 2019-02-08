@@ -49,7 +49,6 @@ TOAST와 달리 공공 기관에 제공하는 TOAST G 클라우드는 고객 서
 
 ### 포트 추가/허용 신청 절차
 1. 아래 이미지 링크를 통해 “TOASTCloud G 방화벽 및 SSL VPN 정책 신청서.xlsx” 파일 다운로드하고 작성합니다.
-<center>
-[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOASTCloud G 방화벽 및 SSL VPN 정책 신청서.xlsx)</center><br>
+[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOASTCloud G 방화벽 및 SSL VPN 정책 신청서.xlsx)
 2.파일명 “TOAST G 방화벽 정책 신청서-기관명.xlsx”으로 저장합니다.
 3.TOAST G 대표 메일 support@gov.toast.com로 접수 신청 메일 발송합니다.(접수일 기준으로 3일 이내 처리 및 회신)
