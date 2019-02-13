@@ -1,20 +1,20 @@
-## TOAST > User Guide for TOAST SDK > Getting Started > Unity
+﻿## TOAST > TOAST SDK使用ガイド > 開始するUnity
 
-## Supporting Environment 
+## サポート環境
 
-* Unity 5.3.4 or higher
-* Android 4.0.3 or higher
-* iOS 8.0 or higher
-* The latest version of XCode (version 9 or higher)
+* Unity 5.3.4以上
+* Android 4.0.3以上
+* iOS 8.0以上
+* XCode最新バージョン(バージョン9以上)
 
-## Configuration of TOAST SDK
+## TOAST SDKの構成
 
-TOAST SDK for Unity is configured as follows: 
+Unity用TOAST SDKの構成は次のとおりです。
 
 * [TOAST Logger](./log-collector-unity) SDK
 * [TOAST IAP](./iap-unity) SDK
 
- TOAST SDK services can be selectively applied for your needs. 
+TOAST SDKが提供するサービスの中から、希望する機能を選択して適用できます。
 
 | Unity package | Service |
 | --- | --- |
@@ -22,69 +22,68 @@ TOAST SDK for Unity is configured as follows:
 | TOAST-IAP-UnityPlugin.unitypackage | TOAST IAP |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
 
-### Structure of Unity Package 
+### Unity package構造
 
-TOAST SDK for Unity is structured with folders as follows:  
+Unity用TOAST SDKは、次のようなフォルダ構造になっています。
 
 | Directory | Description | Unity package |
 |---|---|---|
-| Toast | Root folder of TOAST SDK | All |
-| Toast/Common | Common module folder of TOAST SDK | All |
-| Toast/Logger | Module folder of TOAST Logger | Logger, Sample |
-| Toast/IAP | Module folder of TOAST IAP | IAP, Sample |
-| Toast/Sample | SDK sample folder | Sample |
+| Toast | TOAST SDKのルートフォルダ | All |
+| Toast/Common | TOAST SDKの共通モジュールフォルダ | All |
+| Toast/Logger | TOAST Loggerモジュールフォルダ | Logger, Sample |
+| Toast/IAP | TOAST IAPモジュールフォルダ | IAP, Sample |
+| Toast/Sample | SDKサンプルフォルダ | Sample |
 
-## Apply TOAST SDK to Unity Projects 
+## TOAST SDKをUnityプロジェクトに適用
 
-Download TOAST SDK Unity Package from the following link: 
+TOASTの[Download](../../../Download/#toast-sdk)ページでTOAST SDK Unityをダウンロードします。 
 
-- [Download](../../../Download/#toast-sdk)
+### Unity packageのインポート
 
-### Import Unity Package 
+ダウンロードしたUnity Packageをダブルクリックしてプロジェクトに含めます。
 
-Double-click the downloaded unity package and include it to the project. 
+### Sample実行
 
-### Execute Sample 
+Unity用TOAST SDKは、別途のSample Unity Packageがあります。Sampleを実行する方法は次のとおりです。
 
-TOAST SDK for Unity has an additional sample unity package, and below describes how to execute the sample: 
+1. Sample Unity Packageをダブルクリックしてプロジェクトに含めます。
+2. **File > Build Settings**でToast/Sample/Sample.unityを**Scenes In Build**に追加します。
+3. AndroidまたはiOSでビルドします。
+4. ビルドされたアプリケーションを実行します。
 
-1. Double-click the sample unity package and include it to the project. 
-2. Add Toast/Sample/Sample.unity from File > Build Settings, to Scenes in Build.
-3. Build in Android or iOS. 
-4. Execute the build application. 
+> (注意) Unity SDKは現在Android、iOSのみをサポートします。
+> Unity Editorでは正常に動作しません。 (サポート予定)
 
-> (Caution) Unity SDK currently supports Android and iOS only. 
-> Cannot operate in Unity Editor (to be supported in the near future). 
+## 設定
 
-## For Android 
+### Andrroid
 
-### Gradle Build Setting
+### Gradle Build設定
 
-* TOAST SDK applies Gradle Build for Android builds.
+* TOAST SDKは、Androidビルド時にGradleビルドを使用します。
 
-#### How to Set Gradle Builds
-1. Go to File > Build Settings > Android
-2. Select Gradle (New) for Build System
+#### Gradleビルド設定方法
+1. **File > Build Settings > Android**を選択します。
+2. **Build System**を**Gradle (New)**に選択
 3. Build
+    - Signing関連エラーが発生する場合、Development BuildオプションをOnにしてビルドを進行してください。
 
-> For signing-related errors, turn On the Development Build option and proceed with build. 
+#### Gradle Templateファイル作成
+##### 2017.2以上
+- **Edit > Project Settings > Player**のPublishing SettingsのCustom Gradle Templateを有効にします。
+    - Build SystemをGradleに選択すると、Custom Gradle Templateのトグルが有効になります。
+- オプションを有効にすると、 Assets/Plugins/AndroidフォルダにmainTemplate.gradleが作成されます。
 
-#### Create Gradle Template Files
-##### Feb.2017 or Later  
-- Go to Edit > Project Settings > Player and enable Custom Gradle Template for Publishing Settings.
-    - Select Gradle for Build System so as to enable the Custom Gradle Template toggle. 
-- With the option enabled, mainTemplate.gradle is created in the Assets/Plugins/Android folder. 
+##### 2017.2未満
+- UnityインストールフォルダにあるmainTemplate.gradleファイルをAssets/Plugins/Androidフォルダにコピーします。
 
-##### Before Feb.2017 
-- Copy the mainTemplate.gradle in the Unity installation folder to the Assets/Plugins/Android folder. 
+> Windows： (Unityインストールフォルダ)\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates
+> macOS： (Unityインストールフォルダ)/PlaybackEngines/AndroidPlayer/Tools/GradleTemplates
 
-> Windows: (Unity installation folder)\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates
-> macOS: (Unity installation folder)/PlaybackEngines/AndroidPlayer/Tools/GradleTemplates
-
-#### mainTemplate.gradle Setting
-- JCenter and Google repositories must be added to mainTemplate.gradle.
-- Each module has Android Unity plugins, and add a plugin of the module of choice to mainTemplate.gradle.
-    - To add Android Unity Plugins, see guides for each module. 
+#### mainTemplate.gradle設定
+- mainTemplate.gradleにJCenterとGoogleリポジトリを追加します。
+- 各モジュール別にAndroid Unityプラグインがあり、使用したいモジュールのプラグインをmainTemplate.gradleに追加します。
+    - Android Unityプラグイン追加に関するガイドは、モジュール別ガイドを確認してください。
 
 ```groovy
 allprojects {
@@ -101,35 +100,35 @@ allprojects {
 }
 ```
 
-#### For NDK-related Errors
-- After Gradle setting and build, following error may occur: 
+#### NDK関連エラー発生時
+- Gradleを設定してビルドを行うと、下記のようなエラーが発生することがあります。
 > No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
-- This error occurs due to a high NDK version which does not support mips. 
-    - The solution is to update Android Gradle Plugin to 3.2.1 or higher.
-    - For some Unity versions not supporting updates of Android Gradle Plugin, delete the ndk-bundle folder where Android SDK is installed. 
-    - NDKs required for the IL2CPP build are recommended to be managed in a separate folder, not under Android SDK. 
+- このエラーは、NDKのバージョンが高いためにmipsをサポートしなくなることで発生する問題です。
+    - これはAndroid Gradle Pluginを3.2.1以上にアップデートすると解決します。
+    - 特定UnityバージョンではAndroid Gradle Pluginをアップデートできないため、Android SDKがインストールされたフォルダのndk-bundleフォルダを削除すると問題が解決します。
+    - IL2CPPビルドに必要なNDKは、Android SDKの下位ではなく、別途のフォルダで管理するとバージョン管理が容易です。
 
-### Proguard Setting 
-- For 0.12.0 or higher Android Unity Plugin users, no additional setting is necessary. 
-    - To apply Proguard, update to 0.12.0 or a higher version. 
+### Proguard設定
+- Android Unity Plugin 0.12.0以上のバージョンを使用する場合は、別途の設定が不要です。
+    - Proguardを適用したい場合、 0.12.0以上にアップデートしてください。
 
 
-## For iOS 
+### iOS
 
-### Modify Xcode Build Settings
-* To use TOAST SDK for iOS, add settings as below in Xcode. 
+### Xcodeビルド設定修正
+* iOSでTOAST SDKを使用するには、Xcodeで下記の設定を追加する必要があります。
 
-#### Other Linker Flag 
-* Add **-ObjC**, **-lc++**  to Other Linker Flag option.  
+#### Other Linker Flagオプション
+* Other Linker Flagオプションに**-ObjC**、**-lc++**を追加します。
 
-#### Enable Bitcode 옵션
-* Set **NO** for Enable Bitcode.
+#### Enable Bitcodeオプション
+* Enable Bitcodeオプションを**NO**に設定します。
 
-## Initialize TOAST SDK 
+## TOAST SDK初期化
 
-Execute TOAST SDK initialization in one of the starts of components on the initial scene. 
+TOAST SDKを使用するために最初のSceneのコンポーネントの中から1つのStartで初期化を実行します。
 
-> Other API calls do not operate properly, without initialization. 
+> 初期化せずに他のAPIを呼び出す場合、正常に動作しません。
 
 ```csharp
 public class GameStartBehaviour : MonoBehaviour
@@ -141,35 +140,35 @@ public class GameStartBehaviour : MonoBehaviour
 }
 ```
 
-## Set UserID
+## UserID設定
 
-User ID can be set for TOAST SDK and it is for common usage at each module of TOAST SDK.
-Send such set user ID to a server, along with logs, whenever Log Sending API of TOAST Logger is called. 
+TOAST SDKにユーザーIDを設定できます。
+設定したUserIDは、ToastSDKの各モジュールで共通使用されます。
+ToastLoggerのログ送信APIを呼び出すたびに、設定したユーザーIDをログと一緒にサーバーに送信します。
 
-### Specifications for User ID Setting API  
+### UserID設定API仕様
 ```csharp
 ToastSdk.UserId = userId;
 ```
 
-### Usage Example of User ID Setting 
+### UserID設定使用例
 ```csharp
 ToastSdk.UserId = "TOAST";
 ```
 
-## Set Debug Mode 
+## デバッグモードを設定する
 
-To check logs within TOAST SDK, the debug mode can be set. 
-To inquire of TOAST SDK, enable the debug mode for faster response.  
+TOAST SDKの内部ログ確認するために、デバッグモードを設定できます。
+TOAST SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
 
-### Specifications for Debug Mode Setting API
+### デバッグモード設定API仕様
 ```csharp
 ToastSdk.DebugMode = true; // or false
 ```
 
-> (Caution) To release a game, the debug mode must be disabled. 
+> (注意)ゲームをリリースする場合、必ずデバッグモードを無効にする必要があります。
 
-## Use TOAST Service 
+## TOAST Serviceを使用する
 
-* User Guide for [TOAST Log & Crash](./log-collector-unity) 
-* User Guide for [TOAST IAP](./iap-unity)
-
+* [TOAST Log & Crash](./log-collector-unity)使用ガイド
+* [TOAST IAP](./iap-unity)使用ガイド

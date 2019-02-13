@@ -1,56 +1,57 @@
-## TOAST > User Guide for TOAST SDK > Release Notes > iOS
+﻿## TOAST > TOAST SDK使用ガイド > リリースノート > iOS
 
 ## 0.12.1 (2019.01.08)
 
 ### TOAST IAP
 
-#### 개선 사항
+#### 改善事項
 
-* Fixed an issue where VerifyEnd could not be reprocessed under certain circumstances
+* 特定状況で決済状態がVerifyEndの決済の再処理が動作しない問題の修正
 
 ## 0.12.0 (2018.12.27)
 
 ### TOAST CORE
 
-#### 개선 사항
+#### 改善事項
 
-* Add a defense code for crashes in ToastTransfer
+* ToastTransferで断続的に発生していたCrashを防止するためのコードを追加
 
 ### TOAST Push
 
-#### Added 
+#### 追加事項
 
-* New Functions 
+* 新規機能追加
 
 ### TOAST IAP
 
-#### 개선 사항
+#### 改善事項
 
-* Added exception handling for UserID verification logic to handle reprocessed transactions delivered by Apple
-* Add a defense code for crashes in ToastOperation
+* Appleで再処理するTransactionの処理ができるようにUserID Checkロジックの例外処理を追加
+* ToastOperationで断続的に発生していたCrashを防止するためのコードを追加 
+
 
 ## 0.11.1 (2018.12.04)
 
 ### TOAST IAP
 
-#### Added 
+#### 追加事項
 
-* New Functions 
+* 新規機能追加
 
 
 ## 0.11.0 (2018.11.20)
 
 ### TOAST Log & Crash
 
-#### Added 
+#### 追加事項
 
-* Network Insights
+* Network Insights機能追加
 
 
 ## 0.9.0 (2018.09.04)
 
 ### TOAST Log & Crash
 
-#### Added
+#### 追加事項
 
-* New Functions
+* 新規機能追加

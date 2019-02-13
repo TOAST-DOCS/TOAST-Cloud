@@ -1,38 +1,35 @@
-## TOAST > User Guide for TOAST SDK > Getting Started > Windows C++
+﻿## TOAST > TOAST SDK使用ガイド > 開始する > Windows C++
 
-## Supporting Environment
+## サポート環境
 
 * Windows 7
 * Windows 10
 
-## Configuration of TOAST SDK
+## TOAST SDKの構成
 
-TOAST SDK for Windows C++ is configured as follows:
+Windows C++用TOAST SDKの構成は次のとおりです。
 
-| Directory | Description |
+| Directory | Description | 
 |---|---|
-| docs/ | Windows SDK document |
-| include/toast/ | C++ Header file |
-| windows-sdk/lib32/ | C++ Windows 32bit library |
-| windows-sdk/lib64/ | C++ Windows 64bit library |
-| windows-sdk-sample/ | Sample project |
+| docs/ | Windows SDK文書 |
+| include/toast/ | C++ ヘッダファイル |
+| windows-sdk/lib32/ | C++ Windows 32bitライブラリ |
+| windows-sdk/lib64/ | C++ Windows 64bitライブラリ |
+| windows-sdk-sample/ | サンプルプロジェクト |
 
-## Apply TOAST SDK to Visual Studio Projects 
+## TOAST SDKをVisual Studioプロジェクトに適用する
 
-TOAST Windows C++ SDK can be downloaded from the following link:  
+TOASTの[Downloads](../../../Download/#toast-sdk)ページでTOAST Windows C++ SDKをダウンロードします。
 
-- [Download](../../../Download/#toast-sdk)
+### ライブラリを含める
 
-### Include Libraries  
+1. メニューバーの**Project**タブで**Properties**を選択します。
+2. **C/C++ > General > Additional Include Directories**でSdkのヘッダファイルパスを設定します。
+3. **Linker > General > Additional Library Directories**でビルド環境(Debug/Release)とTarget Machine(x86、x64)に応じてライブラリを含めます。
+4. **Linker > Input > Additional Dependencies**でビルド環境(Debug/Release)とTarget Machine(x86、x64)に応じて追加するlibを入力します。
 
-1. Select Properties from Project on the menu.
-2. Set the route for SDK header files from C/C++ > General > Additional Include Directories.
-3. Go to Linker > General > Additional Library Directories, and include library, depending on the build environment (Debug/Release) and target machine (x86 or x64). 
-4. Go to Linker > Input > Additional Dependencies, and enter lib to add, depending on the build environment (Debug/Release) and target machine (x86 or x64).
+[参考] [https://msdn.microsoft.com/ko-kr/library/ms235636.aspx](https://msdn.microsoft.com/ko-kr/library/ms235636.aspx)
 
-For reference: [https://msdn.microsoft.com/ko-kr/library/ms235636.aspx](https://msdn.microsoft.com/ko-kr/library/ms235636.aspx)
+## TOAST Serviceの使用
 
-## Use TOAST Service 
-
-* User Guide for [TOAST Log & Crash](./log-collector-windows) 
-
+* [TOAST Log & Crash](./log-collector-windows)使用ガイド

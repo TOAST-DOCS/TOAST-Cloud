@@ -1,60 +1,43 @@
-## TOAST > User Guide for TOAST SDK > Release Notes > Android
-
-## 0.14.1 (2019.01.29)
-
-### TOAST IAP
-
-#### Fixed
-
-* Fixed an error that could not reprocess old IAP SDK purchases.
-
-## 0.14.0 (2019.01.08)
-
-### TOAST IAP
-
-#### Added
-
-* Added TOAST IAP Unity Plugin.
+﻿## TOAST > TOAST SDK使用ガイド > リリースノート > Android
 
 ## 0.13.0 (2018.12.27)
 
 ### TOAST Core
 
-#### Improved
+#### 機能改善
 
-* ToastSdk.initialize() is deprecated.
-    * It is called automatically on application start.
+* ToastSdk.initialize()メソッドdeprecated.
+    * Application起動時に自動的に呼び出すように変更
 
 ### TOAST Push
 
-#### Added
+#### 機能追加
 
-* New Functions
+* 新規機能追加
     * Firebase Cloud Messaging(FCM) 
 
 ## 0.12.0 (2018.12.04)
 
 ### TOAST IAP
 
-#### Added 
+#### 追加事項
 
-* New Functions 
-    * Google Play Store (One-Time/Subscription Products)
-    * ONE store (One-Time Products)
+* 新規機能追加
+    * Google Playストア(消費性サービス、購読サービス)
+    * ONE store(消費性サービス)
 
 ## 0.11.0 (2018.11.20)
 
 ### TOAST Log & Crash
 
-#### Added 
+#### 追加事項
 
-* Network Insights
+* Network Insights機能追加
 
 ## 0.9.0 (2018.09.04)
 
 ### TOAST Log & Crash
 
-#### Added
+#### 追加事項
 
-* New Functions
-
+* 新規機能追加

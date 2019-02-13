@@ -1,64 +1,64 @@
-## TOAST > User Guide for TOAST SDK > TOAST IAP > Android
+﻿## TOAST > TOAST SDK使用ガイド > TOAST IAP > Android
 
-## Prerequisites
+## 事前準備
 
-1\. [Install TOAST SDK](./getting-started-android)
+1\. [TOAST SDK](./getting-started-android)をインストールします。
+2\. [TOASTコンソール](https://console.cloud.toast.com)で[IAPサービスを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)します。
+3\. IAPコンソールで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
-2.[Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) [in TOAST console](https://console.cloud.toast.com).
+## ストア別アプリ内決済ガイド
 
-3\. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP console.
+- [Android Developersアプリ内決済](https://developer.android.com/google/play/billing)
+- [ONE storeアプリ内決済API V5 (SDK V17)案内およびダウンロード](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
 
-## Store Types 
-- [Google Play Store](https://developer.android.com/google/play/billing)
-- [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
+## ライブラリ設定
 
-## Library Setting 
-- To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
+- Google Play Storeのアプリ内決済を使用するには、下記のようにbuild.gradleに依存性を追加します。
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.14.1'
+    implementation 'com.toast.android:toast-iap-google:0.13.0'
     ...
 }
 ```
 
-- To use In-App Purchase of ONE store, add dependency to build.gradle, as below:
+- ONE storeのアプリ内決済を使用するには、下記のようにbuild.gradleに依存性を追加します。
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.14.1'
+    implementation 'com.toast.android:toast-iap-onestore:0.13.0'
     ...
 }
 ```
 
-### Store Codes 
+### ストアコード
 
-| Store | Code |
-| ---- | ---- |
-| Google Play Store| "GG" |
-| ONE store | "ONESTORE" |
+| ストア       | コード       |
+| ----------- | ---------- |
+| Google Play | "GG"       |
+| ONE store   | "ONESTORE" |
 
-> Note : Store codes are defined in the  [IapStoreCode](./iap-android/#iapstorecode) class.
+> [参考]ストアコードは[IapStoreCode](./iap-android/#iapstorecode)クラスに定義されています。
 
-## Product Types
+## サービスの種類
 
-- Two types of products are currently supported: consumable products and subscription products. 
+- 現在サポートしているサービスの種類は2つで、消費性サービスと購読サービスがあります。
 
-| Product Name | Product Type | Description |
-| ---- | ------ | ------ |
-| Consumable Products | "CONSUMABLE" | Consumable Products refer to consumable one-time products, <br>such as products within a game, and media files. |
-| Subscription Products | "AUTO_RENEWABLE" | Subscription products refer to products <br>which are automatically paid at specific intervals and prices, <br>such as online magazines and music streaming services.  |
+| サービス名   | サービスタイプ           | 説明                                   |
+| ------ | ---------------- | -------------------------------------- |
+| 消費性サービス | "CONSUMABLE"     | 消費可能な一回性サービス。ゲーム内マネー、メディアファイルなどがあります。 |
+| 購読サービス | "AUTO_RENEWABLE" | 指定された間隔および価格で決済が自動的に繰り返されるサービス。 <br>オンライン雑誌および音楽ストリーミングサービスなどがあります。 |
 
-> Note :Subscription products are supported by Google Play Store only. 
+> [参考]購読サービスは、**Google Playストア**のみサポートします。
 
-## In-App Purchase (IAP) Setting 
+## アプリ内決済設定
 
-* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) includes IAP setting information. 
-* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) can be created by using [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder).
-* [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console can be set by using setAppKey. 
-* With the setStoreCode method, set [Store Code](./iap-android/#_3) for IAP.
+* [ToastIapConfiguration](./iap-android/#toastiapconfiguration)オブジェクトは、アプリ内決済設定情報を含んでいます。
+* [ToastIapConfiguration](./iap-android/#toastiapconfiguration)オブジェクトは、[ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder)を使用して作成できます。
+* IAPコンソールで発行された[AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)を、setAppKeyメソッドを使用して設定します。
+* setStoreCodeメソッドを使用して、アプリ内決済に使用する[ストアコード](./iap-android/#_3)を設定します。
 
-### Example of IAP Setting 
+### アプリ内決済設定例
 
 ```java
 ToastIapConfiguration configuration =
@@ -68,30 +68,30 @@ ToastIapConfiguration configuration =
                 .build();
 ```
 
-## Initialize IAP
+## アプリ内決済の初期化
 
-- Call ToastIap.initialize() method to initialize TOAST IAP.  
+- ToastIap.initialize()メソッドを呼び出してTOAST IAPを初期化します。
 
-### Specifications for IAP Initialization API 
+### アプリ内決済初期化API仕様
 
-* Initialize IAP by using ToastIap.initialize. 
-* The ToastIap.initialize method applies [ToastIapConfiguration](./iap-android/#toastiapconfiguration) created with [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder) as parameter. 
+* アプリ内決済は、ToastIap.initializeメソッドを使用して初期化します。
+* ToastIap.initializeメソッドは、[ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder)で作成された[ToastIapConfiguration](./iap-android/#toastiapconfiguration)オブジェクトをパラメータに使用します。
 
 ```java
 /* ToastIap.java */
 public static void initialize(ToastIapConfiguration configuration)
 ```
 
-| Parameters | |
-| ---- | ---- |
-| configuration | ToastIapConfiguration: Information for IAP setting |
+| Parameters    |                                    |
+| ------------- | ---------------------------------- |
+| configuration | ToastIapConfiguration：アプリ内決済設定情報 |
 
-### Example of IAP Initialization 
+### アプリ内決済初期化例
 
-- Initialize ToastIap. 
+- ToastIapを初期化します。 
 
-> Note: Initialization must be executed in Application#onCreate. 
-
+> [参考]初期化は、必ずApplication#onCreateで進行する必要があります。
+    
 ```java
 public class MainApplication extends Application {
     @Override
@@ -101,7 +101,7 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Initialize ToastIap.
+     * ToastIapを初期化します。
      */
     private void initializeToastIap() {
         ToastIapConfiguration configuration = ToastIapConfiguration.newBuilder(getApplicationContext())
@@ -113,38 +113,38 @@ public class MainApplication extends Application {
 }
 ```
 
-## Service Login 
+## サービスログイン
 
-* All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID. 
-    * Set user ID with[ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid).
-    * Cannot make purchases when user ID is not set. 
-* It is recommended to set user ID, query unconsumed purchase history, and search enabled subscription products, during service login. 
+* TOAST SDKで提供するすべてのサービス(IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
+    * [ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)でユーザーIDを設定できます。
+    * ユーザーIDを設定していない場合、決済が行われません。
+* サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読サービス照会機能を導入することを推奨します。
 
-### Login 
+### ログイン
 
 ```java
 // Login.
 ToastSdk.setUserId(userId);
 ```
 
-### Logout 
+### ログアウト
 
 ```java
 // Logout.
 ToastSdk.setUserId(null);
 ```
 
-> Note: User ID must be set as null for a service logout so as to prevent promotion codes redeemed or purchase with wrong user ID when reprocessing purchase operates. 
+> [参考]サービスログアウト時に、必ずユーザーIDをnullに設定してください。プロモーションコードが使われたり、決済再処理動作時に誤ったユーザーIDで購入が行われることを防止できます。
 
-## Register Purchases Update Listener
+## 決済アップデートリスナー登録
 
-* Purchase results are notified via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) configured in Toastlap. 
-* Purchases update listener can be registered by using the ToastIap.registerPurchasesUpdatedListener method. 
-* Purchase information is available on the list of [IapPurchaseResult](./iap-android/#iappurchaseresult) delivered by [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener).
+* 決済結果は、ToastIapに設定された[IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)を通して通知されます。
+* 決済アップデートリスナーは、ToastIap.registerPurchasesUpdatedListenerメソッドを使用して登録できます。
+* [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)を通して伝達された[IapPurchaseResult](./iap-android/#iappurchaseresult)リストから決済情報を確認できます。
 
-> Note: Purchases update listener must be registered in Activity.onCreate() and unregistered in Activity.onDestroy(). 
+> [参考]決済アップデートリスナーは、Activity.onCreate()で登録し、Activity.onDestroy()で解除する必要があります。
 
-### Specifications for Registering Purchases Upload Listener API 
+### 決済アップデートリスナー登録API仕様
 
 ```java
 /* ToastIap.java */
@@ -152,17 +152,17 @@ public static void registerPurchasesUpdatedListener(IapService.PurchasesUpdatedL
 public static void unregisterPurchasesUpdatedListener(IapService.PurchasesUpdatedListener listener)
 ```
 
-| Method | Parameters |  | Description |
-| ---- | ---- | ---- | ---- |
-| registerPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>Purchases Update Listener | Purchases update listener is registered. |
-| unregisterPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>Listener to unregister | Purchases update listener is unregistered. |
+| Method                             | Parameters |                                          | Description            |
+| ---------------------------------- | ---------- | ---------------------------------------- | ---------------------- |
+| registerPurchasesUpdatedListener   | listener   | IapService.<br>PurchasesUpdatedListener: <br>決済アップデートリスナー | 決済アップデートリスナーを登録します。    |
+| unregisterPurchasesUpdatedListener | listener   | IapService.<br>PurchasesUpdatedListener: <br>登録解除するリスナー | 決済アップデートリスナー登録を解除します。 |
 
-#### Example of Registering Purchases Update Listener
+#### 決済アップデートリスナーの登録例
 
 ```java
 public class MainActivity extends AppCompatActivity {
     /**
-     * Notifies the result of purchasing consumable products, subscription products, or promotional products.
+     * アプリ内で消費性サービス、購読、プロモーションサービスを購入した時、結果を通知します。
      */
     private IapService.PurchasesUpdatedListener mPurchaseUpdatedListener =
             new IapService.PurchasesUpdatedListener() {
@@ -170,10 +170,10 @@ public class MainActivity extends AppCompatActivity {
                 public void onPurchasesUpdated(@NonNull List<IapPurchaseResult> purchaseResults) {
                     for (IapPurchaseResult purchaseResult : purchaseResults) {
                         if (purchaseResult.isSuccess()) {
-                            // Succeeded
+                            // 成功
                             IapPurchase purchase = purchaseResult.getPurchase();
                         } else {
-                            // Failed
+                            // 失敗
                         }
                     }
                 }
@@ -184,45 +184,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Register Listener when onCreate is called.
+        // onCreateが呼び出された時、Listenerを登録します。
         ToastIap.registerPurchasesUpdatedListener(mPurchaseUpdatedListener);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Must remove Listener when onDestroy() is called.
+        // onDestroy()が呼び出された時、必ずListenerを削除します。
         ToastIap.unregisterPurchasesUpdatedListener(mPurchaseUpdatedListener);
     }
 }
 ```
 
-## Query Product List 
+## サービスリスト照会
 
-* Query available list of products which are registered in IAP Console.
-* Available products to purchase among those registered in IAP Console are returned to [IapProductDetails](./iap-android/#iapproductdetails) (Product Details List).
-* Products unregistered to store among those registered in IAP Console are returned to [IapProduct ](./iap-android/#iapproduct)(Invalid Product List).
+* IAPコンソールに登録されたサービスのうち、使用可能なサービスリストを照会します。
+* IAPコンソールに登録されたサービスのうち、購入可能なサービスは[IapProductDetails](./iap-android/#iapproductdetails)リスト(Product Details List)で返されます。
+* IAPコンソールに登録されたサービスのうち、ストアに登録されていないサービスは[IapProduct](./iap-android/#iapproduct)リスト(Invalid Product List)で返されます。
 
-### Specifications for Product List Query API 
+### サービスリスト照会API仕様
 
 ```java
 /* ToastIap.java */
 public static void queryProductDetails(Activity activity,
                                        IapService.ProductDetailsResponseListener listener)
 ```
-| Method | Parameters |  |
-| ---- | ---- | ---- |
-| queryProductDetails | activity | Activity: Currently activated activity |
-|  | listener | IapService.<br>ProductDetailsResponseListener: <br>Product query result listener |
 
-### Example of Product List Query
+| Method              | Parameters |                                          |
+| ------------------- | ---------- | ---------------------------------------- |
+| queryProductDetails | activity   | Activity: 現在有効になっているActivity               |
+|                     | listener   | IapService.<br>ProductDetailsResponseListener: <br>サービス照会結果リスナー |
+
+
+### サービスリスト照会例
 
 ```java
 /**
- * Products available to purchase are queried.
+ * 購入可能なサービスを照会します。
  * <p>
- * productDetails: List of available products to purchase
- * invalidProducts: Products  registered in TOAST IAP Console but not in a store 
+ * productDetails ：購入可能なサービスリスト
+ * invalidProducts ：TOAST IAPコンソールにサービスを登録しましたが、ストアに登録されていないサービス
  */
 void queryProductDetails() {
     IapService.ProductDetailsResponseListener responseListener =
@@ -232,9 +234,9 @@ void queryProductDetails() {
                                                      @Nullable List<IapProductDetails> productDetails,
                                                      @Nullable List<IapProduct> invalidProducts) {
                     if (result.isSuccess()) {
-                        // Query Succeeded 
+                        // 照会成功
                     } else {
-                        // Query Failed 
+                        // 照会失敗
                     }
                 }
             }
@@ -243,16 +245,16 @@ void queryProductDetails() {
 }
 ```
 
-## Purchase Products 
+## サービス購入 
 
-* TOAST IAP supports product purchase by using product ID registered at store. 
-* Product information is included to [IapProductDetails](./iap-android/#iapproductdetails) which is returned by calling ToastIap.queryProductDetails(). 
-* Product ID can be obtained by using IapProductDetails.getProductId(). 
-* Product purchase begins via ToastIap.launchPurchaseFlow(), after setting product ID to [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams).  
-* [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) can be created by using [IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder).
-* Result of product purchase is returned through [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) registered in TOAST IAP. 
+* TOAST IAPは、ストアに登録されたサービスIDを使用してサービスを購入できます。
+* サービス情報はToastIap.queryProductDetails()メソッドを呼び出して返された[IapProductDetails](./iap-android/#iapproductdetails)オブジェクトに含まれています。
+* サービスIDは、IapProductDetails.getProductId()メソッドを使用して獲得できます。
+* サービス購入は[IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams)オブジェクトにサービスIDを設定した後、ToastIap.launchPurchaseFlow()メソッドを通して購入ステップを開始します。
+* [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams)オブジェクトは、[IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder)を使用して作成できます。
+* サービス購入結果は、ToastIapに登録した[IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)を通して返されます。
 
-### Specifications for Product Purchase IAP 
+### サービス購入IAP仕様
 
 ```java
 /* ToastIap.java */
@@ -260,16 +262,16 @@ public static void launchPurchaseFlow(Activity activity,
                                       IapPurchaseFlowParams params)
 ```
 
-| Method | Parameters |  |
-| ---- | ---- | ---- |
-| launchPurchaseFlow | activity | Activity: Currently activated activity |
-|  | params | IapPurchaseFlowParams: Parameter for purchase information |
+| Method             | Parameters |                                   |
+| ------------------ | ---------- | --------------------------------- |
+| launchPurchaseFlow | activity   | Activity: 現在有効になっているActivity        |
+|                    | params     | IapPurchaseFlowParams:購入情報パラメータ |
 
-### Example of Product Purchase 
+### サービス購入例
 
 ```java
 /**
- * Purchase a product.
+ * サービスを購入します。
  */
 void launchPurchaseFlow(Activity activity, String productId) {
     IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
@@ -279,14 +281,14 @@ void launchPurchaseFlow(Activity activity, String productId) {
 }
 ```
 
-## Query Unconsumed Purchases
+## 未消費決済照会
 
-* Query information of unconsumed one-time products(CONSUMABLE). 
-* Product, after provided to user, can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api). 
-* Unconsumed purchase can be queried by using the ToastIap.queryConsumablePurchases() method. 
-* Query results are returned to the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener). 
+* まだ消費されていない一回性サービス(CONSUMABLE)情報を照会します。
+* ユーザーにサービスを支給した後、[Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)を使用してサービスを消費します。
+* 未消費決済は、ToastIap.queryConsumablePurchases()メソッドを使用して照会できます。
+* 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストで返されます。
 
-### Specifications for Unconsumed Purchases Query API
+### 未消費決済照会API仕様
 
 ```java
 /* ToastIap.java */
@@ -294,16 +296,16 @@ public static void queryConsumablePurchases(Activity activity,
                                             IapService.PurchasesResponseListener listener)
 ```
 
-| Method | Parameters |  |
-| ---- | ---- | ---- |
-| queryConsumablePurchases | activity | Activity: Currently activated activity |
-|  | listener | IapService.PurchasesResponseListener: <br>Query result listener for unconsumed purchase details |
+| Method                   | Parameters |                                          |
+| ------------------------ | ---------- | ---------------------------------------- |
+| queryConsumablePurchases | activity   | Activity: 現在有効になっているActivity               |
+|                          | listener   | IapService.PurchasesResponseListener: <br>未消費購入履歴照会結果リスナー |
 
-### Example of Unconsumed Purchases Query 
+### 未消費決済照会例
 
 ```java
 /**
- * List of unconsumed purchases is queried. 
+ * 未消費決済履歴を照会します。
  */
 void queryConsumablePurchases() {
     PurchasesResponseListener responseListenr =
@@ -312,9 +314,9 @@ void queryConsumablePurchases() {
                 public void onPurchasesResponse(@NonNull IapResult result,
                                                 @Nullable List<IapPurchase> purchases) {
                     if (result.isSuccess()) {
-                        // Succeeded
+                        // 成功
                     } else {
-                        // Failed
+                        // 失敗
                     }
                 }
             };
@@ -322,17 +324,17 @@ void queryConsumablePurchases() {
 }
 ```
 
-## Query Activated Subscription 
+## 有効になっている購読の照会
 
-* Activated subscription products can be queried for user ID. 
-* Completely-paid subscription products can be queried as long as usage period remains. 
-* Activated subscription can be queried by using the ToastIap.queryActivatedPurchases() method.
-* Query results are returned via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener) to [IapPurchase](./iap-android/#iappurchase).
-* Subscription products of iOS can be queried in Android as well. 
+* User IDベースで有効になっている購読サービスを照会できます。
+* 決済が完了した購読サービスは、使用期間が残っている場合、継続して照会できます。
+* 有効になっている購読は、ToastIap.queryActivatedPurchases()メソッドを使用して照会できます。
+* 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストに返されます。
+* iOSで購読したサービスをAndroidでも照会可能です。
 
-> Subscription products are currently supported by Google Play Store only. 
+> 現在、購読サービスはGoogle Playストアのみサポートします。
 
-### Specifications for Activated Subscription Query API
+### 有効になっている購読照会API仕様
 
 ```java
 /* ToastIap.java */
@@ -340,16 +342,16 @@ public static void queryActivatedPurchases(Activity activity,
                                            PurchasesResponseListener listener)
 ```
 
-| Method | Parameters |  |
-| ---- | ---- | ---- |
-| queryActivatedPurchases | activity | Activity: Currently activated activity |
-|  | listener | IapService.PurchasesResponseListener: <br>Query result listener for activated subscription |
+| Method                  | Parameters |                                          |
+| ----------------------- | ---------- | ---------------------------------------- |
+| queryActivatedPurchases | activity   | Activity: 現在有効になっているActivity               |
+|                         | listener   | IapService.PurchasesResponseListener: <br>有効になっている購読照会結果リスナー |
 
-### Example of Activated Subscription Query 
+### 有効になっている購読照会例
 
 ```java
 /**
- * Query activated subscription products 
+ * 有効になっている購読サービス照会
  */
 void queryActivatedPurchases() {
     PurchasesResponseListener responseListener =
@@ -358,9 +360,9 @@ void queryActivatedPurchases() {
                 public void onPurchasesResponse(@NonNull IapResult result,
                                                 @Nullable List<IapPurchase> purchases) {
                     if (result.isSuccess()) {
-                        // Succeeded
-                    } else { 
-                        // Failed 
+                        // 成功
+                    } else {
+                        // 失敗
                     }
                 }
             };
@@ -372,7 +374,7 @@ void queryActivatedPurchases() {
 
 ### ToastIapConfiguration
 
-Refers to IAP configuration information which is applied as parameter for TOAST IAP initialization method.
+TOAST IAP初期化メソッドのパラメータに使用されるアプリ内決済設定情報です。
 
 ```java
 /* ToastIapConfiguration.java */
@@ -380,14 +382,14 @@ public String getAppKey();
 public String getStoreCode();
 ```
 
-| Method | Returns |  |
-| ---- | ---- | ---- |
-| getAppKey | String | IAP service appkey |
-| getStoreCode | String | Store code information ("GG" or "ONESTORE", ...) |
+| Method       | Returns |                                     |
+| ------------ | ------- | ----------------------------------- |
+| getAppKey    | String  | IAPサービスアプリキー                        |
+| getStoreCode | String  | ストアコード情報("GG" or "ONESTORE", ...) |
 
 ### ToastIapConfiguration.Builder
 
-IAP service app key and store type are entered to create [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object.  
+IAPサービスアプリキー、ストア種類などを入力し、[ToastIapConfiguration](./iap-android/#toastiapconfiguration)オブジェクトを作成します。
 
 ```java
 /* ToastIapConfiguration.java */
@@ -395,10 +397,10 @@ public void setAppKey(String appKey)
 public void setStoreCode(String storeCode)
 ```
 
-| Method | Parameters |  | Description |
-| ---- | ---- | ---- | ---- |
-| setAppKey | appKey | String: IAP service appkey | Set appkey created in TOAST IAP Console. |
-| setStoreCode | storeCode | String: Store code information | Set store code. <br>("GG" or "ONESTORE", ...) |
+| Method       | Parameters |                     | Description                              |
+| ------------ | ---------- | ------------------- | ---------------------------------------- |
+| setAppKey    | appKey     | String: IAPサービスアプリキー | TOAST IAPコンソールで作成したアプリキーを設定します。      |
+| setStoreCode | storeCode  | String: ストアコード情報 | ストアコードを設定します。<br>("GG" or "ONESTORE", ...) |
 
 ### IapStoreCode
 
@@ -408,12 +410,12 @@ String GOOGLE_PLAY_STORE
 String ONE_STORE
 ```
 
-* GOOGLE_PLAY_STORE<br>Applies Google Play Store in-app purchase.<br>Constant Value: "GG"
-* ONE_STORE<br>Applies ONE store in-app purchase. <br>Constant Value: "ONESTORE"
+* GOOGLE_PLAY_STORE<br>Google Playストアアプリ内決済を使用します。<br>Constant Value: "GG"
+* ONE_STORE<br>ONE storeアプリ内決済を使用します。<br>Constant Value: "ONESTORE"
 
 ### IapPurchaseResult
 
-* Includes purchase result and information.
+* 決済結果および決済情報を含むオブジェクトです。
 
 ```java
 /* IapPurchaseResult.java */
@@ -425,14 +427,14 @@ public String getMessage()
 public Throwable getCause()
 ```
 
-| Method | Returns |  |
-| ---- | ---- | ---- |
-| getPurchase | IapPurchase | Return IaPPurchase which contains purchase information. |
-| getCode | int | Return purchase result code. |
-| getMessage | String | Return purchase result message. |
-| getCause | Throwable | Return cause of failed purchase. |
-| isSuccess | boolean | Return if purchase is successful |
-| isFailure | boolean | Return if purchase is failed |
+| Method      | Returns     |                                  |
+| ----------- | ----------- | -------------------------------- |
+| getPurchase | IapPurchase | 決済情報があるIapPurchaseオブジェクトを返します。 |
+| getCode     | int         | 決済結果コードを返します。                 |
+| getMessage  | String      | 決済結果メッセージを返します。                |
+| getCause    | Throwable   | 決済失敗原因を返します。                 |
+| isSuccess   | boolean     | 決済に成功したかを返します。                 |
+| isFailure   | boolean     | 決済に失敗したかを返します。                 |
 
 ### IapResult 
 
@@ -445,17 +447,17 @@ public String getMessage()
 public Throwable getCause()
 ```
 
-| Method | Returns |  |
-| ---- | ---- | ---- |
-| getCode | int | Return result code. |
-| getMessage | String | Return result message. |
-| getCause | Throwable | Return cause of failure. |
-| isSuccess | boolean | Return if Successful |
-| isFailure | boolean | Return if Failed |
+| Method     | Returns   |                |
+| ---------- | --------- | -------------- |
+| getCode    | int       | 結果コードを返します。  |
+| getMessage | String    | 結果メッセージを返します。 |
+| getCause   | Throwable | 失敗原因を返します。  |
+| isSuccess  | boolean   | 成功したかを返します。  |
+| isFailure  | boolean   | 失敗したかを返します。  |
 
 ### IapPurchase
 
-* Purchase information is available via IapPurchase object.  
+* IapPurchaseオブジェクトで、決済情報を確認できます。
 
 ```java
 /* IapPurchase.java */
@@ -473,25 +475,25 @@ public String getPurchaseTime()
 public String getExpiryTime()
 ```
 
-| Method | Returns | |
-| ---- | ---- | ---- |
-| getPaymentId | String | Return payment ID. |
-| getOriginalPaymentId | String | Return original payment ID. |
-| getPaymentSequence | String | Return original payment number. |
-| getProductId | String | Return product ID. |
-| getProductType | String | Return product type. |
-| getUserId | String | Return user ID. |
-| getPrice | float | Return price information. |
-| getPriceCurrencyCode | String | Return currency information. |
-| getAccessToken | String | Return token for consumption. |
-| getPurchaseType | String | Return product type. |
-| getPurchaseTime | long | Return product purchase time. |
-| getExpiryTime | long | Return remaining time of subscription product. |
+| Method               | Returns |                      |
+| -------------------- | ------- | -------------------- |
+| getPaymentId         | String  | 決済IDを返します。        |
+| getOriginalPaymentId | String  | 原本決済IDを返します。     |
+| getPaymentSequence   | String  | 決済固有番号を返します。     |
+| getProductId         | String  | サービスIDを返します。        |
+| getProductType       | String  | サービスタイプを返します。        |
+| getUserId            | String  | ユーザーIDを返します。       |
+| getPrice             | float   | 価格情報を返します。        |
+| getPriceCurrencyCode | String  | 通貨情報を返します。        |
+| getAccessToken       | String  | 消費に使用されるトークンを返します。  |
+| getPurchaseType      | String  | サービスタイプを返します。        |
+| getPurchaseTime      | long    | サービス購入時間を返します。     |
+| getExpiryTime        | long    | 購読サービスの残り時間を返します。 |
 
 ### IapProductDetails
 
-* Detail product information is available with lapProductDetails. 
-* Includes information registered in TOAST IAP Console and Google Play Console or ONE store Developer. 
+* IapProductDetailsオブジェクトで、サービス詳細情報を確認できます。
+* TOAST IAPコンソールに登録された情報とGoogle PlayコンソールまたはONE store Developerに登録された詳細な情報を含みます。
 
 ```java
 /* IapProductDetails.java */
@@ -509,24 +511,24 @@ public String getProductDescription()
 public boolean isActivated()
 ```
 
-| Method | Returns | |
-| ---- | ---- | ---- |
-| getProductId | String | Product ID |
-| getProductSequence | String | Original product number |
-| getPrice | float | Price |
-| getLocalizedPrice | String | Local price |
-| getPriceCurrencyCode | String | Currency |
-| getPriceAmountMicros | long | Price by 1,000,000 |
-| getFreeTrialPeriod | String | Free trial period |
-| getSubscriptionPeriod | String | Subscription period |
-| getProductType | String | Product type |
-| getProductTitle | String | Product title |
-| getProductDescription | String | Product description |
-| isActivated | boolean | If product is activated |
+| Method                | Returns |                 |
+| --------------------- | ------- | --------------- |
+| getProductId          | String  | サービスのID          |
+| getProductSequence    | String  | サービス固有番号      |
+| getPrice              | float   | 価格            |
+| getLocalizedPrice     | String  | 現地価格         |
+| getPriceCurrencyCode  | String  | 通貨             |
+| getPriceAmountMicros  | long    | 1,000,000単位価格|
+| getFreeTrialPeriod    | String  | 無料使用期間      |
+| getSubscriptionPeriod | String  | 購読期間         |
+| getProductType        | String  | サービスタイプ         |
+| getProductTitle       | String  | サービスタイトル(title)    |
+| getProductDescription | String  | サービス説明         |
+| isActivated           | boolean | サービスが有効になっているか      |
 
 ### IapProduct
 
-* Brief information registered in TOAST IAP Console is available. 
+* TOAST IAPコンソールに登録された簡略な情報を確認できます。
 
 ```java
 /* IapProduct.java */
@@ -538,44 +540,44 @@ public String getProductDescription()
 public boolean isActivated()
 ```
 
-| Method | Returns | |
-| ---- | ---- | ---- |
-| getProductId | String | Product ID |
-| getProductSequence | String | Original product number |
-| getProductType | String | Product type |
-| getProductTitle | String | Product title |
-| getProductDescription | String | Product description |
-| isActivated | boolean | If product is activated |
+| Method                | Returns |              |
+| --------------------- | ------- | ------------ |
+| getProductId          | String  | サービスのID       |
+| getProductSequence    | String  | サービス固有番号   |
+| getProductType        | String  | サービスタイプ      |
+| getProductTitle       | String  | サービスタイトル(title) |
+| getProductDescription | String  | サービス説明      |
+| isActivated           | boolean | サービスが有効になっているか   |
 
 ### IapPurchaseFlowParams
 
-* IapPurchaseFlowParams includes information of a product to purchase. 
+* IapPurchaseFlowParamsは、購入しようとするサービス情報を含みます。
 
 ```java
 /* IapPurchaseFlowParams.java */
 public String getProductId()
 ```
 
-| Method | Returns | |
-| ---- | ---- | ---- |
-| getProductId | String | Product ID |
+| Method       | Returns |       |
+| ------------ | ------- | ----- |
+| getProductId | String  | サービスID |
 
 ### IapPurchaseFlowParams.Builder
 
-* Creates IapPurchaseFlowParams.
+* IapPurchaseFlowParamsオブジェクトを作成します。
 
 ```java
 /* IapPurchaseFlowParams.java */
 public void setProductId(String productId)
 ```
 
-| Method | Parameters |  | Description |
-| ---- | ---- | ---- | ---- |
-| setProductId | productId | String: Product ID | Product ID is set. |
+| Method       | Parameters |               | Description   |
+| ------------ | ---------- | ------------- | ------------- |
+| setProductId | productId  | String: サービスID | サービスIDを設定します。 |
 
 ### IapService.PurchasesUpdatedListener
 
-* Purchase information, if updated, is notified via onPurchasesUpdated of an object inherited with IapService.PurchasesUpdatedListener.
+* 決済情報がアップデートされた時、IapService.PurchasesUpdatedListenerを継承実装したオブジェクトのonPurchasesUpdatedメソッドを通して通知されます。
 
 ```java
 void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
@@ -583,48 +585,48 @@ void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
 
 ### IapService.PurchasesResponseListener
 
-* Unconsumed purchase or activated subscription, when queried, is notified via onPurchasesResponse of an object inherited with IapService.PurchasesResponseListener. 
+* 未消費決済照会または有効化された購読の照会時、IapService.PurchasesResponseListenerを継承実装したオブジェクトのonPurchasesResponseメソッドを通して通知されます。
 
 ```java
 void onPurchasesResponse(IapResult result,
                          List<IapPurchase> purchaseList)
 ```
 
-## Error Codes
+## エラーコード
 
-### Common 
+### 共通エラーコード
 
-| RESULT | CODE | DESC |
-| ------ | ---- | ---- |
-| FEATURE_NOT_SUPPORTED | -2 | Requested feature is not supported.<br> |
-| SERVICE_DISCONNECTED | -1 | Store service is not connected.<br> |
-| OK | 0 | Succeeded<br> |
-| USER_CANCELED | 1 | User cancelled.<br> |
-| SERVICE_UNAVAILABLE | 2 | Network is not connected.<br> |
-| BILLING_UNAVAILABLE | 3 | API version is not supported for the requested type.<br> |
-| PRODUCT_UNAVAILABLE | 4 | Requested product is not available.<br> |
-| DEVELOPER_ERROR | 5 | Provided invalid parameter to API: a common error during development phase. <br> |
-| ERROR | 6 | Fatal error occurred during API action.<br> |
-| PRODUCT_ALREADY_OWNED | 7 | Failed to purchase as it is already owned.<br> |
-| PRODUCT_NOT_OWNED | 8 | Cannot consume as it is not owned.<br> |
-| USER_ID_NOT_REGISTERED | 9 | User ID Is not registered.<br> |
-| UNDEFINED_ERROR | 9999 | Undefined Error<br> |
+| RESULT                 | CODE | DESC                                     |
+| ---------------------- | ---- | ---------------------------------------- |
+| FEATURE_NOT_SUPPORTED  | -2   | 要請した機能はサポートしません。<br>Requested feature is not supported. |
+| SERVICE_DISCONNECTED   | -1   | ストアサービスが接続されませんでした。<br>Store service is not connected. |
+| OK                     | 0    | 成功。<br>Success.                          |
+| USER_CANCELED          | 1    | ユーザーキャンセル。<br>User canceled.                |
+| SERVICE_UNAVAILABLE    | 2    | ネットワークが接続されませんでした。<br>Network connection is down. |
+| BILLING_UNAVAILABLE    | 3    | 要請されたタイプに対して、API Versionがサポートされていません。<br>API version is not supported for the type requested. |
+| PRODUCT_UNAVAILABLE    | 4    | 要請したサービスを使用できません。<br>Requested product is not available. |
+| DEVELOPER_ERROR        | 5    | 無効な引数がAPIに提供されました。開発段階で発生するエラーです。<br>Developer error. |
+| ERROR                  | 6    | API作業中に深刻なエラーが発生しました。<br>Fatal error during the API action. |
+| PRODUCT_ALREADY_OWNED  | 7    | すでに所持しているサービスのため、購入できませんでした。<br>Failure to purchase since item is already owned. |
+| PRODUCT_NOT_OWNED      | 8    | 所持していないサービスのため、消費できません。<br>Failure to consume since item is not owned. |
+| USER_ID_NOT_REGISTERED | 9    | ユーザーIDが登録されていません。<br>User ID Is not registered. |
+| UNDEFINED_ERROR        | 9999 | 定義されていないエラー<br>Undefined error.           |
 
-### Server 
+### サーバーエラーコード
 
-| RESULT | CODE | DESC |
-| ------ | ---- | ---- |
-| INACTIVATED_APP | 101 | App is not activated.<br> |
-| NETOWRK_NOT_CONNECTED | 102 | Network is not connected.<br> |
-| VERIFY_PURCHASE_FAILED | 103 | Failed to verify purchase.<br> |
-| CONSUMED_PURCHASE | 104 | Purchase is already consumed.<br> |
-| REFUNDED_PURCHASE | 105 | Purchase is already refunded.<br> |
+| RESULT                 | CODE | DESC                                     |
+| ---------------------- | ---- | ---------------------------------------- |
+| INACTIVATED_APP        | 101  | 有効になっていないアプリです。<br>App is not active.     |
+| NETOWRK_NOT_CONNECTED  | 102  | ネットワークが接続されていません。<br>Network not connected. |
+| VERIFY_PURCHASE_FAILED | 103  | 決済の検証に失敗しました。<br>Failure to verify purchase. |
+| CONSUMED_PURCHASE      | 104  | すでに消費した購入です。<br>Purchase already consumed. |
+| REFUNDED_PURCHASE      | 105  | 返金された購入です。<br>Purchase already refunded. |
 
-### ONE store 
+### ONE storeエラーコード
 
-| RESULT | CODE | DESC |
-| ------ | ---- | ---- |
-| ONESTORE_NEED_LOGIN | 301 | Not logged-in to ONE store Service.<br> |
-| ONESTORE_NEED_UPDATE | 302 | ONE store Service is not updated or installed.<br> |
-| ONESTORE_SECURITY_ERROR | 303 | Purchase requested from abnormal app.<br> |
-| ONESTORE_PURCHASE_FAILED | 304 | Failed to request for purchase.<br> |
+| RESULT                   | CODE | DESC                                     |
+| ------------------------ | ---- | ---------------------------------------- |
+| ONESTORE_NEED_LOGIN      | 301  | ONE storeサービスにログインしていません。<br>ONE store service is not logged in. |
+| ONESTORE_NEED_UPDATE     | 302  | ONE storeサービスがアップデートまたはインストールされませんでした。<br>ONE store service is not updated or installed. |
+| ONESTORE_SECURITY_ERROR  | 303  | 正常ではないアプリで決済を要請しました。<br>Abnormal purchase request. |
+| ONESTORE_PURCHASE_FAILED | 304  | 決済要請に失敗しました。<br>Purchase request failed. |

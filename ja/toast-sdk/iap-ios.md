@@ -1,25 +1,26 @@
-## TOAST > User Guide for TOAST SDK > TOAST IAP > iOS
+﻿## TOAST > TOAST SDK使用ガイド > TOAST IAP > iOS
 
 ## Prerequisites
 
-1. [Install TOAST SDK](./getting-started-ios).
-2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
-3.  [Check AppKey ](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)in IAP.
+1\. [TOAST SDK](./getting-started-ios)をインストールします。
+2\. [TOASTコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
+3\. IAPで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
-## Configuration of TOAST IAP
+## TOAST IAP構成
 
-TOAST Logger SDK for iOS is configured as follows.
+iOS用TOAST IAP SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- | 
 | TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## Apply TOAST SDK to Xcode Projects
 
-### 1. Apply Cococapods 
+## TOAST IAP SDKをXcodeプロジェクトに適用
 
-Create a podfile to add pods to TOAST SDK. 
+### 1. Cococapods適用
+
+Podfileを作成して、TOAST SDKに対するPodを追加します。
 
 ```podspec
 platform :ios, '8.0'
@@ -30,23 +31,22 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-Open a created workspace and import SDK to use. 
+作成されたWorkspaceを開き、使用するSDKをインポートします(import)。
 
 ```objc
 #import <ToastCore/ToastCore.h>
 #import <ToastIAP/ToastIAP.h>
 ```
 
+### 2. バイナリをダウンロードしてTOAST SDKを適用 
 
-### 2. Apply TOAST SDK with Binary Downloads  
+#### SDKをインポート(import)
 
-#### Import SDK
+TOASTの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
 
-The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
+Xcode Projectに**ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework`を追加します。
 
-Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework` to the Xcode Project.
-
-> StoreKit.framework can be added in the following way.
+> StoreKit.frameworkは、下記の方法で追加できます。
 
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
@@ -54,55 +54,54 @@ Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, 
 
 #### Project Settings
 
-Add "-lc++" and "-ObjC" to "Other Linker Flags" at "Build Settings". 
+**Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
 
-* Project Target - Build Settings - Linking - Other Linker Flags
+**Project Target > Build Settings > Linking > Other Linker Flags**をクリックして追加できます。
 
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-#### Import Framework 
+#### フレームワークをインポート
 
-Import the framework to use. 
+使用するフレームワークをインポートします(import)。
 
 ```objc
 #import <ToastCore/ToastCore.h>
 #import <ToastIAP/ToastIAP.h>
 ```
+## Capabilities Setting
 
-## Capability Setting
+TOAST IAPを使用するには、CapabilitiesでIn-App Purchase項目を有効にする必要があります。
 
-To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
+**Project Target > Capabilities > In-App Purchase > ON**
 
-**Project Target > Capabilities > In-App Purchase > ON** 
+![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
-![capability_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
+## サービスログイン
 
-## Service Login 
+* TOAST SDKで提供するすべてのサービス(IAP、Log & Crash、Pushなど)は、同じユーザーID1つのみ使用します。
 
-* All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID. 
+### ログイン
 
-### Login
-
-`Without user ID set, purchase, query of activated products, or query of consumed details are not available. `
+`ユーザーIDが設定されていない状態では、購入、有効になっているサービス照会、未消費履歴照会機能を使用できません。`
 
 ``` objc
-// Set user ID after service login is completed
+// サービスログイン完了後、ユーザーID設定
 [ToastSDK setUserID:@"INPUT_USER_ID"];
 ```
 
-### Logout
+### ログアウト
 
 ``` objc
-// Set user ID as nil after service logout is completed
+// サービスログアウト完了後、ユーザーIDをnilに設定
 [ToastSDK setUserID:nil];
 ```
 
-## Initialize TOAST IAP SDK 
+## TOAST IAP SDK初期化
 
-Set appkey issued from TOAST IAP. 
-Reprocessing for uncompleted purchases is executed along with initialization.  
-Therefore, for flawless reprocessing, user ID must be set first before initialization. 
-All purchase results, including reprocessing, are delivered through delegate, so it is recommended to set delegate before or along with initialization.   
+TOAST IAPで発行されたAppKeyを設定します。
+初期化と同時に未完了購入の件に対する再処理が行われます。
+したがって、円滑に再処理を行うには、必ずユーザーIDを設定した後に初期化してください。
+再処理を含むすべての購入結果は、Delegateを通して伝達さるため、Delegate設定後に初期化するか、初期化の際にDelegateを設定することを推奨します。
 
 ``` objc
 ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
@@ -110,18 +109,18 @@ ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithA
 [ToastIAP initWithConfiguration:configuration delegate:self];
 ```
 
-### Specifications for Initialization API
+### 初期化API仕様
 
 ``` objc
 @interface ToastIAP : NSObject
 
-// Initialize
+// 初期化
 + (void)initWithConfiguration:(ToastIAPConfiguration *)configuration;
 
-// Set Delegate 
+// Delegate設定
 + (void)setDelegate:(nullable id<ToastInAppPurchaseDelegate>)delegate;
 
-// Initialize and Set Delegate
+// 初期化およびDelegate設定
 + (void)initWithConfiguration:(ToastIAPConfiguration *)configuration
                      delegate:(nullable id<ToastInAppPurchaseDelegate>)delegate;
 
@@ -130,23 +129,23 @@ ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithA
 @end
 ```
 
-### Specifications for Delegate API
+### Delegate API仕様
 
-Register delegate to proceed follow-ups after purchase. 
+Delegateを登録すると、購入後に追加作業を進行できます。
 
 ``` objc
 @protocol ToastInAppPurchaseDelegate <NSObject>
 
-// Purchase Succeeded 
+// 購入成功
 - (void)didReceivePurchaseResult:(ToastPurchaseResult *)purchase;
 
-// Purchase Failed
+// 購入失敗
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error;
 
 @end
 ```
 
-### Example of Initialization Procedure
+### 初期化プロセス例
 
 ``` objc
 #import <UIKit/UIKit.h>
@@ -162,18 +161,18 @@ Register delegate to proceed follow-ups after purchase.
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Initialize and Set Delegate 
+    // 初期化およびDelegate設定
     ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
 
     [ToastIAP initWithConfiguration:configuration delegate:self];
 }
 
-// Purchase Succeeded 
+// 購入成功
 - (void)didReceivePurchaseResult:(ToastPurchaseResult *)purchase {
     NSLog(@"Successfully purchased");
 }
 
-// Purchase Failed
+// 購入失敗
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error {
     NSLog(@"Failed to purchase: %@", erorr);
 }
@@ -181,19 +180,19 @@ Register delegate to proceed follow-ups after purchase.
 @end
 ```
 
-## Query Product List
+## サービスリスト照会
 
-Query the list of products which are set as USE IAP, among those registered in the console.  
-Products that failed to obtain product information from store (Apple) are indicated as invalidProducts. 
+IAPコンソールに登録されているサービスのうち、使用設定がUSEのサービスのリストを照会します。
+ストア(Apple)からサービス情報を取得できなかったサービスは、invalidProducts項目に表示されます。
 
-### Specifications for Product List Query API
+### サービスリスト照会API仕様
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// Query Product List 
+// サービスリスト照会
 + (void)requestProductsWithCompletionHandler:(nullable void (^)(ToastProductsResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -201,7 +200,7 @@ Products that failed to obtain product information from store (Apple) are indica
 @end
 ```
 
-### Usage Example of Product List Query API
+### サービスリスト照会API使用例
 
 ``` objc
 [ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
@@ -210,7 +209,7 @@ Products that failed to obtain product information from store (Apple) are indica
         NSArray<ToastProduct *> *products = response.products;
         NSLog(@"Products : %@", products);
 
-        // Failed to obtain product information from store 
+        // ストアからサービス情報を取得できない
         NSArray<ToastProduct *> *invalidProducts = response.invalidProducts;
         NSLog(@"Invalid Products : %@", invalidProducts);
 
@@ -220,39 +219,39 @@ Products that failed to obtain product information from store (Apple) are indica
 }
 ```
 
-### Product Types 
+### サービスの種類
 
-`Do not support Upgrades, Downgrades, and Modification for auto-renewable subscription products.`
-Only one product must be registered to one subscription group.
+`自動更新型購読サービスのアップグレード、ダウングレード、修正機能は、サポートしていません。`
+1つの購読グループに、1つのサービスのみ登録する必要があります。
 
 ``` objc
-// Failed to Obtain Product Types 
+// サービス種類取得失敗
 ToastProductTypeUnknown = 0
 
-// Consumable Products 
+// 消費性サービス
 ToastProductTypeConsumable = 1
 
-// Auto-Renewable Subscription Products 
+// 自動更新型購読サービス
 ToastProductTypeAutoRenewableSubscription = 2
 ```
 
-## Purchase Products 
+## サービス購入
 
-Purchase results are delivered through a delegate.  
-If an app is closed during purchase, or purchase is suspended due to network error, such purchase is reprocessed during initialization of IAP SDK when the app is re-executed.  
+購入結果は、設定されたDelegateを通して伝達されます。
+購入進行中にアプリが終了したり、ネットワークエラーなどで購入が中断された場合、アプリが再起動されるとIAP SDKを初期化する時に購入の再処理を行います。
 
-### Request for Purchase with Product Objects 
+### サービスオブジェクトを利用した購入要請
 
-Purchase is requested by using ToastProduct object of query result of product list. 
+サービスリスト照会結果のToastProductオブジェクトを利用して購入を要請します。
 
-#### Specifications for Purchase with Product Objects API 
+#### サービスオブジェクトを利用した購入API仕様
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// Purchase Product 
+// サービス購入
 + (void)purchaseWithProduct:(ToastProduct *)product;
 
 // ...
@@ -260,16 +259,16 @@ Purchase is requested by using ToastProduct object of query result of product li
 @end
 ```
 
-#### Usage Example of Purchase with Product Objects API 
+#### サービスオブジェクトを利用した購入API使用例
 
 ``` objc
 @property (nonatomic) NSArray <ToastProduct *> *products;
 
-// Query Product List 
+// サービスリスト照会
 [ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
 
     if (error == nil) {
-        // Save purchasable product list 
+        // 購入可能なサービスリスト保存
         self.products = response.products;
 
     } else {
@@ -277,23 +276,23 @@ Purchase is requested by using ToastProduct object of query result of product li
     }
 }
 
-// Request for Purchase Product 
+// サービス購入要請
 [ToastIAP purchaseWithProduct:self.products[0]];
 ```
 
-### Purchase Requests using Product ID 
+### サービスIDを利用した購入要請
 
-When product list is managed by each service, purchase can be requested only by product ID. 
-For a product which cannot be purchased, an error will be delivered indicating purchase is unavailable through delegate. 
+サービスで別途にサービスリストを管理している場合、サービスIDのみを利用して購入を要請します。
+購入できないサービスの場合、Delegateを通して購入不可サービスであることを表すエラーが伝達されます。
 
-#### Specifications for Purchase with Product ID API 
+#### サービスIDを利用した購入API仕様
 
 ``` objc
 @interface ToastIAP (Additional)
 
 // ...
 
-// Purchase Product 
+// サービス購入
 + (void)purchaseWithProductIdentifier:(NSString *)productIdentifier;
 
 // ...
@@ -301,26 +300,26 @@ For a product which cannot be purchased, an error will be delivered indicating p
 @end
 ```
 
-#### Usage Example of Purchase with Product ID API 
+#### サービスIDを利用した購入API使用例
 
 ``` objc
-// Request for Purchase Product 
+// サービス購入要請
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
 ```
 
-## Query Activated Purchase List 
+## 有効になっている購入リスト照会
 
-Query activated list of purchases (products that are not expired but currently under subscription) for current user ID.  
-Android subscription can also be queried for a same user ID.  
+現在のユーザーIDにおいて、有効になっている購入(満了しておらず、購読中の購読サービス)リストを照会します。
+同じユーザーIDであれば、Androidで購入した購読サービスも照会されます。
 
-### Specifications for Activated Purchase List API 
+### 有効になっている購入リスト照会API仕様
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// Query Activated Purchase List 
+// 有効になっている購入リストを照会する
 + (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -328,14 +327,14 @@ Android subscription can also be queried for a same user ID.
 @end
 ```
 
-### Usage Example of Activated Purchase List Query API 
+### 有効になっている購入リスト照会API使用例
 
 ``` objc
 [ToastIAP requestActivePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
 
     if (error == nil) {
         for (ToastPurchaseResult *purchase in purchases) {
-            // Activate access for subscription products 
+            // 購読サービスアクセス有効化
         }
 
     } else {
@@ -344,18 +343,18 @@ Android subscription can also be queried for a same user ID.
 }];
 ```
 
-## Restore Purchases 
+## 購入復元
 
-Query the list of restorable purchases by current user ID.  
+現在のユーザーIDで購入した項目のうち、復元可能な購入リストを照会します。
 
-### Specifications for Restoring Purchase API 
+### 購入復元API仕様
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// Restore Purchase 
+// 購入復元
 + (void)restoreWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -363,7 +362,7 @@ Query the list of restorable purchases by current user ID.
 @end
 ```
 
-### Usage Example of Restoring Purchase API 
+### 購入復元API使用例
 
 ``` objc
 [ToastIAP restoreWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
@@ -379,18 +378,19 @@ Query the list of restorable purchases by current user ID.
 }];
 ```
 
-## Query Unconsumed Purchase List 
+## 未消費購入履歴照会
 
-An consumable product must be processed as consumed after product is provided. List of unconsumed purchases is to be queried.  
+消費性サービスの場合、サービス支給後に消費(consume)処理を行う必要があります。
+消費処理されていない購入履歴を照会します。
 
-### Specifications for Unconsumed Purchase Query API
+### 未消費購入履歴照会API仕様
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// Query Unconsumed Purchases 
+// 未消費購入履歴照会
 + (void)requestConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -398,7 +398,7 @@ An consumable product must be processed as consumed after product is provided. L
 @end
 ```
 
-### Usage Example of Unconsumed Purchase Query API 
+### 未消費購入履歴照会API使用例
 
 ``` objc
 [ToastIAP requestConsumablePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
@@ -411,11 +411,11 @@ An consumable product must be processed as consumed after product is provided. L
 }
 ```
 
-## Consume Consumable Products 
+## 消費性サービスの消費
 
-Consumable products must be processed as consumed through REST API or Consume API of SDK, after products are provided.
+消費性サービスの場合、サービスにサービス支給後にREST APIまたはSDKのConsume APIで消費処理を行う必要があります。
 
-### Specifications for Consumption API 
+### 消費API仕様
 
 ``` objc
 @interface ToastIAP (Additional)
@@ -430,17 +430,17 @@ Consumable products must be processed as consumed through REST API or Consume AP
 @end
 ```
 
-### Usage Example of Consumption API 
+### 消費API使用例
 
 ``` objc
-// Query Unconsumed Purchases 
+// 未消費購入履歴照会
 [ToastIAP requestConsumablePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
     if (error == nil) {
         for (ToastPurchaseResult *purchaseResult in purchases) {
-            //  Process as Product Provided 
+            // サービス支給処理
             // ...
 
-            // Process as Consumed after Product is Provided 
+            // サービス支給後に消費処理
             [ToastIAP consumeWithPurchaseResult:purchaseResult
                               completionHandler:^(NSError *error) {
                                     if (error == nil) {
@@ -449,7 +449,7 @@ Consumable products must be processed as consumed through REST API or Consume AP
                                     } else {
                                         NSLog(@"Failed to consume : %@", error);
 
-                                        // Retreive Product Provided  
+                                        // サービス支給回数
                                         // ...
                                     }
                               }];
@@ -461,29 +461,29 @@ Consumable products must be processed as consumed through REST API or Consume AP
 }
 ```
 
-## Provide Page for Subscription Products
+## 購読サービス管理ページの提供方法
 
-For auto-renewable subscription products, users must be provided with a subscription management page. 
+自動更新型購読サービスを使用する場合、ユーザーに購読管理ページを提供する必要があります。
 > [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
 
-Without configuring a separate UI, call URL as below to display subscription management page. 
-### Connect to Subscription Management Page on Safari 
+別途のUIを構成せず、下記URLを呼び出して購読管理ページを表示する必要があります。
+### Safariで購読管理ページに接続する方法
 ```
 https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ```
 ```objc
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
 ```
-#### Management page on Safari is called in the following order: 
-1. Safari Opens
-2. Popup Shows: Want to open in iTunes Store?
-3. iTunes Store Opens
-4. Connected to subscription management page on a popup
+#### Safariで管理ページを呼び出す時は、次のような順序で管理ページが表示されます。
+1. Safariを開く
+2. Popup表示：itunse Storeで開きますか？
+3. iTunse Storeを開く
+4. Popupで購読管理ページに接続
 
->  `Safari` appears for Return to Previous App on top left on an iOS Device.
+> iOS端末左上の、以前のアプリに戻るに`Safari`が表示されます。
 
 
-### Connect to Subscription Management Page on Scheme
+### Schemeから購読管理ページに接続する方法
 ```
 itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ```
@@ -491,21 +491,21 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ```objc
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
 ```
-#### Management page on Scheme is called in the following order: 
-1. Subscription management page of App Store is directly connected with App-to-App call. 
+#### Schemeから管理ページを呼び出す時は、次のような順序で管理ページが表示されます。
+1. App Storeの購読管理ページがApp To App呼び出しですぐに接続されます。
 
->  `Service App` appears for Return to Previous App on top left on an iOS device.
+> iOS端末左上の、以前のアプリに戻るに`Service App`が表示されます。
 
 
 
-## Remain Compatible with (old) IAP SDK 
+## (旧)IAP SDK互換性維持
 
-To remain compatible with (old) IAP SDK, reprocessing is supported for incomplete purchases created by (old) IAP SDK.
->To enable compatibility with (old) IAP SDK, additionally link `sqlite3 Library(libsqlite3.tdb)`.  
+(旧)IAP SDKとの互換性を維持できるように、(旧)IAP SDKで作成された未完了購入の件の再処理機能を提供します。
+>(旧)IAP SDKとの互換性維持機能を使用するには、`sqlite3 Library(libsqlite3.tdb)`を追加で接続(link)する必要があります。
 
 ![linked_sqlite3](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3.png)
 
-### Specifications for Reprocessing Incomplete Purchase API 
+### 未完了購入再処理API仕様
 
 ``` objc
 @interface ToastIAP (Additional)
@@ -519,17 +519,17 @@ To remain compatible with (old) IAP SDK, reprocessing is supported for incomplet
 @end
 ```
 
-### Usage Example of Reprocessing Incomplete Purchase 
+### 未完了購入再処理API使用例
 
 ``` objc
-// Request for Reprocessing Incomplete Purchase
+// 未完了購入再処理要請
 [ToastIAP processesIncompletePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *results, NSError *error) {
     if (error == nil) {
         for (ToastPurchaseResult *purchaseResult in results) {
-            // Process as Product Provided 
+            // サービス支給処理
             // ...
 
-            // Process as Consumed after Product Provided 
+            // サービス支給後、消費処理
             [ToastIAP consumeWithPurchaseResult:purchaseResult
                               completionHandler:^(NSError *error) {
                                     if (error == nil) {
@@ -538,7 +538,7 @@ To remain compatible with (old) IAP SDK, reprocessing is supported for incomplet
                                     } else {
                                         NSLog(@"Failed to consume : %@", error);
 
-                                        // Retrieve Product Provided 
+                                        // サービス支給回数
                                         // ...
                                     }
                               }];
@@ -550,30 +550,30 @@ To remain compatible with (old) IAP SDK, reprocessing is supported for incomplet
 }];
 ```
 
-### Error Codes 
+### エラーコード
 ```objc
 typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
-    ToastIAPErrorUnknown = 0,                       // Unknown 
+    ToastIAPErrorUnknown = 0,                       // 不明
     
-    ToastIAPErrorNotInitialized = 1,                // Not Initialized 
-    ToastIAPErrorStoreNotAvailable = 2,             // Store is unavailable 
-    ToastIAPErrorProductNotAvailable = 3,           // Failed to obtain product information 
-    ToastIAPErrorProductInvalid = 4,                // Inconsistency of IDs between original payment and current product   
-    ToastIAPErrorAlreadyOwned = 5,                  // Product is already owned 
-    ToastIAPErrorAlreadyInProgress = 6,             // Request is already processing 
-    ToastIAPErrorUserInvalid = 7,                   // Inconsistency of IDs between current user and paid user  
-    ToastIAPErrorPaymentInvalid = 8,                // Failed to obtain futher payment information (ApplicationUsername)
-    ToastIAPErrorPaymentCancelled = 9,              // Store payment cancelled 
-    ToastIAPErrorPaymentFailed = 10,                // Store payment failed
-    ToastIAPErrorVerifyFailed = 11,                 // Receipt verification failed 
-    ToastIAPErrorChangePurchaseStatusFailed = 12,   // Change of purchase status failed  
-    ToastIAPErrorPurchaseStatusInvalid = 13,        // Unavailable to purchase 
-    ToastIAPErrorExpired = 14,                      // Subscription expired 
+    ToastIAPErrorNotInitialized = 1,                // 初期化しない
+    ToastIAPErrorStoreNotAvailable = 2,             // ストア使用不可
+    ToastIAPErrorProductNotAvailable = 3,           // サービス情報取得に失敗
+    ToastIAPErrorProductInvalid = 4,                // 元決済のサービスIDと現在のサービスIDが不一致
+    ToastIAPErrorAlreadyOwned = 5,                  // すでに所有しているサービス
+    ToastIAPErrorAlreadyInProgress = 6,             // すでに進行中の要請あり
+    ToastIAPErrorUserInvalid = 7,                   // 現在のユーザーIDが決済ユーザーIDと不一致
+    ToastIAPErrorPaymentInvalid = 8,                // 決済追加情報(ApplicationUsername)取得失敗
+    ToastIAPErrorPaymentCancelled = 9,              // ストア決済キャンセル
+    ToastIAPErrorPaymentFailed = 10,                // ストア決済失敗
+    ToastIAPErrorVerifyFailed = 11,                 // 領収書検証失敗
+    ToastIAPErrorChangePurchaseStatusFailed = 12,   // 購入状態変更失敗
+    ToastIAPErrorPurchaseStatusInvalid = 13,        // 購入進行不可状態
+    ToastIAPErrorExpired = 14,                      // 購読満了
     
-    ToastIAPErrorNetworkNotAvailable = 100,         // Network is unavailable 
-    ToastIAPErrorNetworkFailed = 101,               //HTTP Status Code is not 200 
-    ToastIAPErrorTimeout = 102,                     // Timeout
-    ToastIAPErrorParameterInvalid = 103,            // Error in request parameter
-    ToastIAPErrorResponseInvalid = 104,             // Error in server respone 
+    ToastIAPErrorNetworkNotAvailable = 100,         // ネットワーク使用不可
+    ToastIAPErrorNetworkFailed = 101,               // HTTP Status Codeが200ではない
+    ToastIAPErrorTimeout = 102,                     // タイムアウト
+    ToastIAPErrorParameterInvalid = 103,            // 要請パラメータエラー
+    ToastIAPErrorResponseInvalid = 104,             // サーバーレスポンスエラー
 };
 ```

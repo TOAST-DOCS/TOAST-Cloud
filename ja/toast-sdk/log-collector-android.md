@@ -1,25 +1,28 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Android
+﻿## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Android
 
-## Prerequisites
+## 事前準備
 
-1\. [Install TOAST SDK](./getting-started-android)
-2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
-3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) from Log & Crash Search.
+1\. [TOAST SDK](./getting-started-android)をインストールします。
+2\. [TOASTコンソール](https://console.cloud.toast.com)で[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+3\. Log & Crash Searchで[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 
-## Library Setting 
-- Add the code as below to build.gradle. 
+## ライブラリ設定
+- 下記コードをbuild.gradleに追加します。
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-logger:0.14.1'
+    implementation 'com.toast.android:toast-logger:0.13.0'
     ...
 }
 ```
 
-## Initialize TOAST Logger SDK 
+## TOAST Logger SDK初期化
 
-Initialize logger in the onCreate() method. 
-Set appkey issued from Log & Crash Search as ProjectKey. 
+- 初期化は、Application#onCreateで行う必要があります。
+
+> 初期化を行わずにToastLoggerを使用すると、初期化エラーが発生します。
+
+- Log & Crash Searchで発行されたAppKeyをProjectKeyに設定します。
 
 ```java
 // Initialize Logger
@@ -30,105 +33,103 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
 ToastLogger.initialize(configuration);
 ```
 
-## Send Logs 
+## ログ送信
 
-TOAST Logger provides log-sending functions of five levels.  
+TOAST Loggerは5つのレベルのログ送信関数を提供します。
 
-### Specifications for Log Sending API
+### ログ送信API仕様
 
 ```java
-// DEBUG level logs 
+// DEBUGレベルのログ
 static void debug(String message);
 
-// INFO level logs
+// INFOレベルのログ
 static void info(String message);
 
-// WARN level logs
+// WARNレベルのログ
 static void warn(String message);
 
-// ERROR level logs
+// ERRORレベルのログ
 static void error(String message);
 
-// FATAL level logs 
+// FATALレベルのログ
 static void fatal(String message);
 ```
 
-### Usage Example of Log Sending API 
+### ログ送信API使用例
 
 ```java
 ToastLogger.warn("TOAST Log & Crash Search!");
 ```
 
-## Set User-Defined Field 
+## ユーザー定義フィールド設定
 
-Set a user-defined field as wanted.  
-With user-defined field setting, set values are sent to server along with logs every time Log Sending API is called. 
+希望するユーザー定義フィールドを設定します。 
+ユーザー定義フィールドを設定すると、ログ送信APIを呼び出すたびに設定した値をログと一緒にサーバーに送信します。
 
-### Specifications for setUserField API
+### setUserField API仕様
 
 ```java
 static void setUserField(String field, Object value);
 ```
 
-*  User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab".  
-That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
+* ユーザー定義フィールドは**Log & Crash Search > ログ検索**をクリックした後**ログ検索**画面の **選択したフィールド**に表示される値と同じです。
 
-#### Restrictions for User-Defined Fields 
+#### カスタムフィールドの制約事項
 
-* Cannot use already [Reserved Fields](./log-collector-reserved-fields).  
-  Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
-* Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z". 
-* Replace spaces within a field name by "_". 
+* すでに[予約されているフィールド](./log-collector-reserved-fields)は使用できません。
+* フィールド名には'A-Z、a-z、0-9、-、_'を使用できます。最初の文字は'A-Z、a-z'のみ使用できます。
+* フィールド名のスペースは、'_'に置換されます。
 
-### Usage Example of setUserField 
+### setUserField使用例
 
 ```java
 ToastLogger.setUserField("nickname", "randy");
 ```
 
-## Further Tasks after Sending Logs  
+## ログ送信後、追加作業進行
 
-With listener registered, further tasks can be executed after logs are sent.
+コールバック関数を登録すると、ログ送信後に追加作業を進行できます。
 
-### Specifications for setLoggerListener API 
+### setLoggerListener API仕様
 
 ```java
 static void setLoggerListener(ToastLoggerListener listener);
 ```
 
-### Usage Example of setLoggerListener
+### setLoggerListener使用例
 
 ```java
 ToastLogger.setLoggerListener(new ToastLoggerListener() {
     @Override
     public void onSuccess(LogEntry log) {
-        // Sending logs succeeded.
+        // ログ送信成功
     }
 
     @Override
     public void onFilter(LogEntry log, LogFilter filter) {
-        // Filter by filter setting 
+        // ログフィルタリング
     }
 
     @Override
     public void onSave(LogEntry log) {
-        // Save within SDK for re-sending if log-sending fails due to network errors
+        // ネットワーク切断などでログの送信に失敗した場合、再送信のためにSDK内部保存
     }
 
     @Override
     public void onError(LogEntry log, Exception e) {
-        // Sending logs failed. 
+        // ログ送信失敗
     }
 });
 ```
 
-## Collect Crash Logs 
+## クラッシュログの収集
 
-When an unexpected crash occurs in an app, TOAST Logger records such crash information in the server. 
+TOAST Loggerは、アプリで予期せぬクラッシュが発生した場合に、クラッシュ情報をサーバーに記録します。
 
-### Set Enable Collecting Crash Logs 
+### クラッシュログ収集を使用するかの設定
 
-Sending crash logs can be enabled or disabled by using setEnabledCrashReporter() .
+クラッシュログ送信機能は、setEnabledCrashReporter()メソッドを使用して有効化または無効化できます。
 
 ```java
 // Initialize Logger
@@ -140,25 +141,25 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
 ToastLogger.initialize(configuration);
 ```
 
-### Use Handled Exception API 
+### Handled Exception API使用
 
-For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of TOAST Logger.  
-Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab". 
-For more usage details on Log & Cash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
+Androidプラットフォームでは、try/catch構文で例外に関する内容を、TOAST LoggerのHandled Exception APIを使用して送信できます。 
+このように送信した例外ログは、コンソールで**Log & Crash Search > アプリクラッシュ検索**をクリックし、**エラータイプ**で**Handled**をクリックして照会できます。
+Log & Crashコンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
 
-### Specifications for Handled Exception Log API 
+### Handled Exception Log API仕様
 
 ```java
-// Send Exception Information 
+// 例外情報送信
 static void report(@NonNull String message, @NonNull Throwable throwable);
 
-// Send Exception Information along with User Fields 
+// ユーザーフィールドと一緒に例外情報送信
 static void report(@NonNull String message,
                    @NonNull Throwable throwable,
                    @Nullable Map<String, Object> userFields);
 ```
 
-### Usage Example 
+### 使用例
 
 ```java
 try {
@@ -169,19 +170,20 @@ try {
 }
 ```
 
-## Set Additional Information in Time for Crash Occurrence before Sending 
+## クラッシュ発生時に追加情報を設定して送信
 
-Additional information can be set immediately after crash occurs. 
-setUserField can be set anytime regardless of crash occurrence, whilesetCrashDataAdapter can be set at an accurate timing when a crash occurs. 
+クラッシュ発生直後、追加情報を設定できます。
+setUserFieldは、クラッシュ時点に関わらず、いつでも設定でき、 setCrashDataAdapterの場合は、正確にクラッシュが発生した時点に追加情報を設定できます。
 
-### Specifications for setCrashDataAdapter API 
+### setCrashDataAdapter API仕様
 
 ```java
 static void setCrashDataAdapter(CrashDataAdapter adapter);
 ```
-* Key values of the Map data structure returned through the getUserFields function of CrashDataAdapter have the same restriction conditions as the "field" value of setUserField described in the above.  
 
-### Usage Example of setCrashDataAdapter 
+* CrashDataAdapterのgetUserFields関数を通してリターンするMap資料構造のキー値は、上で説明したsetUserFieldの'field値'と同じ制約条件を持ちます。
+
+### setCrashDataAdapter使用例
 
 ```java
 ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
@@ -195,24 +197,25 @@ ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
 ```
 
 ## Network Insights
-Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device). 
 
-> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized. 
+Network Insightsは、コンソールに登録したURLを呼び出して遅延時間とレスポンス値を測定します。これを活用して複数の国(デバイスの国コード基準)での遅延時間とレスポンス値を測定できます。
 
-### Enable Network Insights 
+> コンソールからNetwork Insights機能を有効にすると、TOAST Loggerを初期化する時、コンソールに登録したURLで1回要請します。
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
-2. Select [Settings].
-3. Click the [Setting for Sending Logs] tab.
-4. Enable "Network Insights Logs".
+### Network Insights有効化
 
-### URL Setting 
+Network Insightsを有効にする方法は次のとおりです。
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
-2. Select [Network Insights].
-3. Click the [URL Setting] tab.
-4. Enter URL to measure and click [Add].
+1. [TOAST Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+2. **設定**メニューをクリックします。
+3. **ログ送信設定**タブをクリックします。
+4. **Network Insightsログ**を有効にします。
 
+### URL設定
 
+URLを設定する方法は次のとおりです。
 
-
+1. [TOAST Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+2. **ネットワークインサイト**メニューをクリックします。
+3. **URL設定**タブをクリックします。
+4. 測定するには、URLを入力して**追加**ボタンをクリックします。
