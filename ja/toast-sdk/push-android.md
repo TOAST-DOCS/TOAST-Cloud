@@ -113,7 +113,7 @@ public void onLogin(String userId) {
 ```
 
 ## 受信同意設定
-- 情報通信網法規定(第50条から第50条の8)に従い、トークン登録時の通知/広告性/夜間広告性プッシュメッセージ受信に同意するかも一緒に入力を受けます。メッセージ送信時に受信に同意しているかを基準に自動的にフィルタリングします。
+- 韓国情報通信網法規定(第50条から第50条の8)に従い、トークン登録時の通知/広告性/夜間広告性プッシュメッセージ受信に同意するかも一緒に入力を受けます。メッセージ送信時に受信に同意しているかを基準に自動的にフィルタリングします。
     - [KISAガイドへ](https://spam.kisa.or.kr/spam/sub62.do)
     - [法令へ](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 
@@ -278,49 +278,3 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 | Method | Returns | |
 |---|---|---|
 | getAppKey | String | Pushサービスアプリキーを返します。 |
-| static newBuilder | ToastPushConfiguration.Builder | ToastPushConfigurationオブジェクト作成のためのビルダーを作成します。 |
-
-### PushResult
-- 非同期APIの呼び出し時に、コールバックのレスポンスに返される結果オブジェクトです。
-
-
-```java
-/* PushResult.java */
-public int getCode();
-public String getMessage();
-public boolean isSuccess();
-public boolean isFailure();
-```
-
-| Method | Returns | |
-|---|---|---|
-| getCode | int | 結果コードを返します。 |
-| getMessage | int | 結果メッセージを返します。 |
-| isSuccess | boolean | 成功したかを返します。 |
-| isFailure | boolean | 失敗したかを返します。 |
-
-### TokenInfo
-- トークン情報照会呼び出し時、コールバックで返されるトークン情報が入っているオブジェクトです。
-
-```java
-/* TokenInfo.java */
-public String getPushType();
-public ToastPushAgreement getAgreement();
-public String getTimeZone();
-public String getCountry();
-public String getLanguage();
-public String getUserId();
-public Date getActivatedDateTime();
-public String getToken();
-```
-
-| Method | Returns | |
-|---|---|---|
-| getPushType | String | Pushタイプを返します。 |
-| getAgreement | ToastPushAgreement | 通知/広告/夜間広告などに同意しているかを返します。 |
-| getTimeZone | String | タイムゾーンを返します。 |
-| getCountry | String | 国コードを返します。 |
-| getLanguage | String | 言語コードを返します。 |
-| getUserId | String | ユーザーIDを返します。 |
-| getActivatedDateTime | Date | トークンの最近の登録日時を返します。 |
-| getToken | String | トークンを返します。 |

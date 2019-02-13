@@ -40,16 +40,16 @@ dependencies {
 
 > [参考]ストアコードは[IapStoreCode](./iap-android/#iapstorecode)クラスに定義されています。
 
-## サービスの種類
+## 商品の種類
 
-- 現在サポートしているサービスの種類は2つで、消費性サービスと購読サービスがあります。
+- 現在サポートしている商品の種類は2つで、消費性商品と購読商品があります。
 
-| サービス名   | サービスタイプ           | 説明                                   |
+| 商品名   | 商品タイプ           | 説明                                   |
 | ------ | ---------------- | -------------------------------------- |
-| 消費性サービス | "CONSUMABLE"     | 消費可能な一回性サービス。ゲーム内マネー、メディアファイルなどがあります。 |
-| 購読サービス | "AUTO_RENEWABLE" | 指定された間隔および価格で決済が自動的に繰り返されるサービス。 <br>オンライン雑誌および音楽ストリーミングサービスなどがあります。 |
+| 消費性商品 | "CONSUMABLE"     | 消費可能な一回性商品。ゲーム内マネー、メディアファイルなどがあります。 |
+| 購読商品 | "AUTO_RENEWABLE" | 指定された間隔および価格で決済が自動的に繰り返される商品。 <br>オンライン雑誌および音楽ストリーミングサービスなどがあります。 |
 
-> [参考]購読サービスは、**Google Playストア**のみサポートします。
+> [参考]購読商品は、**Google Playストア**のみサポートします。
 
 ## アプリ内決済設定
 
@@ -118,7 +118,7 @@ public class MainApplication extends Application {
 * TOAST SDKで提供するすべてのサービス(IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
     * [ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)でユーザーIDを設定できます。
     * ユーザーIDを設定していない場合、決済が行われません。
-* サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読サービス照会機能を導入することを推奨します。
+* サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読商品照会機能を導入することを推奨します。
 
 ### ログイン
 
@@ -162,7 +162,7 @@ public static void unregisterPurchasesUpdatedListener(IapService.PurchasesUpdate
 ```java
 public class MainActivity extends AppCompatActivity {
     /**
-     * アプリ内で消費性サービス、購読、プロモーションサービスを購入した時、結果を通知します。
+     * アプリ内で消費性商品、購読、プロモーション商品を購入した時、結果を通知します。
      */
     private IapService.PurchasesUpdatedListener mPurchaseUpdatedListener =
             new IapService.PurchasesUpdatedListener() {
@@ -197,13 +197,13 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## サービスリスト照会
+## 商品リスト照会
 
-* IAPコンソールに登録されたサービスのうち、使用可能なサービスリストを照会します。
-* IAPコンソールに登録されたサービスのうち、購入可能なサービスは[IapProductDetails](./iap-android/#iapproductdetails)リスト(Product Details List)で返されます。
-* IAPコンソールに登録されたサービスのうち、ストアに登録されていないサービスは[IapProduct](./iap-android/#iapproduct)リスト(Invalid Product List)で返されます。
+* IAPコンソールに登録された商品のうち、使用可能な商品リストを照会します。
+* IAPコンソールに登録された商品のうち、購入可能な商品は[IapProductDetails](./iap-android/#iapproductdetails)リスト(Product Details List)で返されます。
+* IAPコンソールに登録された商品のうち、ストアに登録されていない商品は[IapProduct](./iap-android/#iapproduct)リスト(Invalid Product List)で返されます。
 
-### サービスリスト照会API仕様
+### 商品リスト照会API仕様
 
 ```java
 /* ToastIap.java */
@@ -214,17 +214,17 @@ public static void queryProductDetails(Activity activity,
 | Method              | Parameters |                                          |
 | ------------------- | ---------- | ---------------------------------------- |
 | queryProductDetails | activity   | Activity: 現在有効になっているActivity               |
-|                     | listener   | IapService.<br>ProductDetailsResponseListener: <br>サービス照会結果リスナー |
+|                     | listener   | IapService.<br>ProductDetailsResponseListener: <br>商品照会結果リスナー |
 
 
-### サービスリスト照会例
+### 商品リスト照会例
 
 ```java
 /**
- * 購入可能なサービスを照会します。
+ * 購入可能な商品を照会します。
  * <p>
- * productDetails ：購入可能なサービスリスト
- * invalidProducts ：TOAST IAPコンソールにサービスを登録しましたが、ストアに登録されていないサービス
+ * productDetails ：購入可能な商品リスト
+ * invalidProducts ：TOAST IAPコンソールに商品を登録しましたが、ストアに登録されていない商品
  */
 void queryProductDetails() {
     IapService.ProductDetailsResponseListener responseListener =
@@ -245,16 +245,16 @@ void queryProductDetails() {
 }
 ```
 
-## サービス購入 
+## 商品購入 
 
-* TOAST IAPは、ストアに登録されたサービスIDを使用してサービスを購入できます。
-* サービス情報はToastIap.queryProductDetails()メソッドを呼び出して返された[IapProductDetails](./iap-android/#iapproductdetails)オブジェクトに含まれています。
-* サービスIDは、IapProductDetails.getProductId()メソッドを使用して獲得できます。
-* サービス購入は[IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams)オブジェクトにサービスIDを設定した後、ToastIap.launchPurchaseFlow()メソッドを通して購入ステップを開始します。
+* TOAST IAPは、ストアに登録された商品IDを使用して商品を購入できます。
+* 商品情報はToastIap.queryProductDetails()メソッドを呼び出して返された[IapProductDetails](./iap-android/#iapproductdetails)オブジェクトに含まれています。
+* 商品IDは、IapProductDetails.getProductId()メソッドを使用して獲得できます。
+* 商品購入は[IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams)オブジェクトに商品IDを設定した後、ToastIap.launchPurchaseFlow()メソッドを通して購入ステップを開始します。
 * [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams)オブジェクトは、[IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder)を使用して作成できます。
-* サービス購入結果は、ToastIapに登録した[IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)を通して返されます。
+* 商品購入結果は、ToastIapに登録した[IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)を通して返されます。
 
-### サービス購入IAP仕様
+### 商品購入IAP仕様
 
 ```java
 /* ToastIap.java */
@@ -267,11 +267,11 @@ public static void launchPurchaseFlow(Activity activity,
 | launchPurchaseFlow | activity   | Activity: 現在有効になっているActivity        |
 |                    | params     | IapPurchaseFlowParams:購入情報パラメータ |
 
-### サービス購入例
+### 商品購入例
 
 ```java
 /**
- * サービスを購入します。
+ * 商品を購入します。
  */
 void launchPurchaseFlow(Activity activity, String productId) {
     IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
@@ -283,8 +283,8 @@ void launchPurchaseFlow(Activity activity, String productId) {
 
 ## 未消費決済照会
 
-* まだ消費されていない一回性サービス(CONSUMABLE)情報を照会します。
-* ユーザーにサービスを支給した後、[Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)を使用してサービスを消費します。
+* まだ消費されていない一回性商品(CONSUMABLE)情報を照会します。
+* ユーザーに商品を支給した後、[Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
 * 未消費決済は、ToastIap.queryConsumablePurchases()メソッドを使用して照会できます。
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストで返されます。
 
@@ -326,13 +326,13 @@ void queryConsumablePurchases() {
 
 ## 有効になっている購読の照会
 
-* User IDベースで有効になっている購読サービスを照会できます。
-* 決済が完了した購読サービスは、使用期間が残っている場合、継続して照会できます。
+* User IDベースで有効になっている購読商品を照会できます。
+* 決済が完了した購読商品は、使用期間が残っている場合、継続して照会できます。
 * 有効になっている購読は、ToastIap.queryActivatedPurchases()メソッドを使用して照会できます。
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストに返されます。
-* iOSで購読したサービスをAndroidでも照会可能です。
+* iOSで購読した商品をAndroidでも照会可能です。
 
-> 現在、購読サービスはGoogle Playストアのみサポートします。
+> 現在、購読商品はGoogle Playストアのみサポートします。
 
 ### 有効になっている購読照会API仕様
 
@@ -351,7 +351,7 @@ public static void queryActivatedPurchases(Activity activity,
 
 ```java
 /**
- * 有効になっている購読サービス照会
+ * 有効になっている購読商品照会
  */
 void queryActivatedPurchases() {
     PurchasesResponseListener responseListener =
@@ -480,19 +480,19 @@ public String getExpiryTime()
 | getPaymentId         | String  | 決済IDを返します。        |
 | getOriginalPaymentId | String  | 原本決済IDを返します。     |
 | getPaymentSequence   | String  | 決済固有番号を返します。     |
-| getProductId         | String  | サービスIDを返します。        |
-| getProductType       | String  | サービスタイプを返します。        |
+| getProductId         | String  | 商品IDを返します。        |
+| getProductType       | String  | 商品タイプを返します。        |
 | getUserId            | String  | ユーザーIDを返します。       |
 | getPrice             | float   | 価格情報を返します。        |
 | getPriceCurrencyCode | String  | 通貨情報を返します。        |
 | getAccessToken       | String  | 消費に使用されるトークンを返します。  |
-| getPurchaseType      | String  | サービスタイプを返します。        |
-| getPurchaseTime      | long    | サービス購入時間を返します。     |
-| getExpiryTime        | long    | 購読サービスの残り時間を返します。 |
+| getPurchaseType      | String  | 商品タイプを返します。        |
+| getPurchaseTime      | long    | 商品購入時間を返します。     |
+| getExpiryTime        | long    | 購読商品の残り時間を返します。 |
 
 ### IapProductDetails
 
-* IapProductDetailsオブジェクトで、サービス詳細情報を確認できます。
+* IapProductDetailsオブジェクトで、商品詳細情報を確認できます。
 * TOAST IAPコンソールに登録された情報とGoogle PlayコンソールまたはONE store Developerに登録された詳細な情報を含みます。
 
 ```java
@@ -513,18 +513,18 @@ public boolean isActivated()
 
 | Method                | Returns |                 |
 | --------------------- | ------- | --------------- |
-| getProductId          | String  | サービスのID          |
-| getProductSequence    | String  | サービス固有番号      |
+| getProductId          | String  | 商品のID          |
+| getProductSequence    | String  | 商品固有番号      |
 | getPrice              | float   | 価格            |
 | getLocalizedPrice     | String  | 現地価格         |
 | getPriceCurrencyCode  | String  | 通貨             |
 | getPriceAmountMicros  | long    | 1,000,000単位価格|
 | getFreeTrialPeriod    | String  | 無料使用期間      |
 | getSubscriptionPeriod | String  | 購読期間         |
-| getProductType        | String  | サービスタイプ         |
-| getProductTitle       | String  | サービスタイトル(title)    |
-| getProductDescription | String  | サービス説明         |
-| isActivated           | boolean | サービスが有効になっているか      |
+| getProductType        | String  | 商品タイプ         |
+| getProductTitle       | String  | 商品タイトル(title)    |
+| getProductDescription | String  | 商品説明         |
+| isActivated           | boolean | 商品が有効になっているか      |
 
 ### IapProduct
 
@@ -542,16 +542,16 @@ public boolean isActivated()
 
 | Method                | Returns |              |
 | --------------------- | ------- | ------------ |
-| getProductId          | String  | サービスのID       |
-| getProductSequence    | String  | サービス固有番号   |
-| getProductType        | String  | サービスタイプ      |
-| getProductTitle       | String  | サービスタイトル(title) |
-| getProductDescription | String  | サービス説明      |
-| isActivated           | boolean | サービスが有効になっているか   |
+| getProductId          | String  | 商品のID       |
+| getProductSequence    | String  | 商品固有番号   |
+| getProductType        | String  | 商品タイプ      |
+| getProductTitle       | String  | 商品タイトル(title) |
+| getProductDescription | String  | 商品説明      |
+| isActivated           | boolean | 商品が有効になっているか   |
 
 ### IapPurchaseFlowParams
 
-* IapPurchaseFlowParamsは、購入しようとするサービス情報を含みます。
+* IapPurchaseFlowParamsは、購入しようとする商品情報を含みます。
 
 ```java
 /* IapPurchaseFlowParams.java */
@@ -560,7 +560,7 @@ public String getProductId()
 
 | Method       | Returns |       |
 | ------------ | ------- | ----- |
-| getProductId | String  | サービスID |
+| getProductId | String  | 商品ID |
 
 ### IapPurchaseFlowParams.Builder
 
@@ -573,7 +573,7 @@ public void setProductId(String productId)
 
 | Method       | Parameters |               | Description   |
 | ------------ | ---------- | ------------- | ------------- |
-| setProductId | productId  | String: サービスID | サービスIDを設定します。 |
+| setProductId | productId  | String: 商品ID | 商品IDを設定します。 |
 
 ### IapService.PurchasesUpdatedListener
 
@@ -599,16 +599,16 @@ void onPurchasesResponse(IapResult result,
 | RESULT                 | CODE | DESC                                     |
 | ---------------------- | ---- | ---------------------------------------- |
 | FEATURE_NOT_SUPPORTED  | -2   | 要請した機能はサポートしません。<br>Requested feature is not supported. |
-| SERVICE_DISCONNECTED   | -1   | ストアサービスが接続されませんでした。<br>Store service is not connected. |
+| SERVICE_DISCONNECTED   | -1   | ストアサービスに接続できませんでした。<br>Store service is not connected. |
 | OK                     | 0    | 成功。<br>Success.                          |
 | USER_CANCELED          | 1    | ユーザーキャンセル。<br>User canceled.                |
 | SERVICE_UNAVAILABLE    | 2    | ネットワークが接続されませんでした。<br>Network connection is down. |
 | BILLING_UNAVAILABLE    | 3    | 要請されたタイプに対して、API Versionがサポートされていません。<br>API version is not supported for the type requested. |
-| PRODUCT_UNAVAILABLE    | 4    | 要請したサービスを使用できません。<br>Requested product is not available. |
+| PRODUCT_UNAVAILABLE    | 4    | 要請した商品を使用できません。<br>Requested product is not available. |
 | DEVELOPER_ERROR        | 5    | 無効な引数がAPIに提供されました。開発段階で発生するエラーです。<br>Developer error. |
 | ERROR                  | 6    | API作業中に深刻なエラーが発生しました。<br>Fatal error during the API action. |
-| PRODUCT_ALREADY_OWNED  | 7    | すでに所持しているサービスのため、購入できませんでした。<br>Failure to purchase since item is already owned. |
-| PRODUCT_NOT_OWNED      | 8    | 所持していないサービスのため、消費できません。<br>Failure to consume since item is not owned. |
+| PRODUCT_ALREADY_OWNED  | 7    | すでに所持している商品のため、購入できませんでした。<br>Failure to purchase since item is already owned. |
+| PRODUCT_NOT_OWNED      | 8    | 所持していない商品のため、消費できません。<br>Failure to consume since item is not owned. |
 | USER_ID_NOT_REGISTERED | 9    | ユーザーIDが登録されていません。<br>User ID Is not registered. |
 | UNDEFINED_ERROR        | 9999 | 定義されていないエラー<br>Undefined error.           |
 

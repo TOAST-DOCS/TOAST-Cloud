@@ -82,7 +82,7 @@ TOAST IAPを使用するには、CapabilitiesでIn-App Purchase項目を有効�
 
 ### ログイン
 
-`ユーザーIDが設定されていない状態では、購入、有効になっているサービス照会、未消費履歴照会機能を使用できません。`
+`ユーザーIDが設定されていない状態では、購入、有効になっている商品照会、未消費履歴照会機能を使用できません。`
 
 ``` objc
 // サービスログイン完了後、ユーザーID設定
@@ -180,19 +180,19 @@ Delegateを登録すると、購入後に追加作業を進行できます。
 @end
 ```
 
-## サービスリスト照会
+## 商品リスト照会
 
-IAPコンソールに登録されているサービスのうち、使用設定がUSEのサービスのリストを照会します。
-ストア(Apple)からサービス情報を取得できなかったサービスは、invalidProducts項目に表示されます。
+IAPコンソールに登録されている商品のうち、使用設定がUSEの商品のリストを照会します。
+ストア(Apple)から商品情報を取得できなかった商品は、invalidProducts項目に表示されます。
 
-### サービスリスト照会API仕様
+### 商品リスト照会API仕様
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// サービスリスト照会
+// 商品リスト照会
 + (void)requestProductsWithCompletionHandler:(nullable void (^)(ToastProductsResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -200,7 +200,7 @@ IAPコンソールに登録されているサービスのうち、使用設定�
 @end
 ```
 
-### サービスリスト照会API使用例
+### 商品リスト照会API使用例
 
 ``` objc
 [ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
@@ -209,7 +209,7 @@ IAPコンソールに登録されているサービスのうち、使用設定�
         NSArray<ToastProduct *> *products = response.products;
         NSLog(@"Products : %@", products);
 
-        // ストアからサービス情報を取得できない
+        // ストアから商品情報を取得できない
         NSArray<ToastProduct *> *invalidProducts = response.invalidProducts;
         NSLog(@"Invalid Products : %@", invalidProducts);
 
@@ -219,39 +219,39 @@ IAPコンソールに登録されているサービスのうち、使用設定�
 }
 ```
 
-### サービスの種類
+### 商品の種類
 
-`自動更新型購読サービスのアップグレード、ダウングレード、修正機能は、サポートしていません。`
-1つの購読グループに、1つのサービスのみ登録する必要があります。
+`自動更新型購読商品のアップグレード、ダウングレード、修正機能は、サポートしていません。`
+1つの購読グループに、1つの商品のみ登録する必要があります。
 
 ``` objc
-// サービス種類取得失敗
+// 商品種類取得失敗
 ToastProductTypeUnknown = 0
 
-// 消費性サービス
+// 消費性商品
 ToastProductTypeConsumable = 1
 
-// 自動更新型購読サービス
+// 自動更新型購読商品
 ToastProductTypeAutoRenewableSubscription = 2
 ```
 
-## サービス購入
+## 商品購入
 
 購入結果は、設定されたDelegateを通して伝達されます。
 購入進行中にアプリが終了したり、ネットワークエラーなどで購入が中断された場合、アプリが再起動されるとIAP SDKを初期化する時に購入の再処理を行います。
 
-### サービスオブジェクトを利用した購入要請
+### 商品オブジェクトを利用した購入要請
 
-サービスリスト照会結果のToastProductオブジェクトを利用して購入を要請します。
+商品リスト照会結果のToastProductオブジェクトを利用して購入を要請します。
 
-#### サービスオブジェクトを利用した購入API仕様
+#### 商品オブジェクトを利用した購入API仕様
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// サービス購入
+// 商品購入
 + (void)purchaseWithProduct:(ToastProduct *)product;
 
 // ...
@@ -259,16 +259,16 @@ ToastProductTypeAutoRenewableSubscription = 2
 @end
 ```
 
-#### サービスオブジェクトを利用した購入API使用例
+#### 商品オブジェクトを利用した購入API使用例
 
 ``` objc
 @property (nonatomic) NSArray <ToastProduct *> *products;
 
-// サービスリスト照会
+// 商品リスト照会
 [ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
 
     if (error == nil) {
-        // 購入可能なサービスリスト保存
+        // 購入可能な商品リスト保存
         self.products = response.products;
 
     } else {
@@ -276,23 +276,23 @@ ToastProductTypeAutoRenewableSubscription = 2
     }
 }
 
-// サービス購入要請
+// 商品購入要請
 [ToastIAP purchaseWithProduct:self.products[0]];
 ```
 
-### サービスIDを利用した購入要請
+### 商品IDを利用した購入要請
 
-サービスで別途にサービスリストを管理している場合、サービスIDのみを利用して購入を要請します。
-購入できないサービスの場合、Delegateを通して購入不可サービスであることを表すエラーが伝達されます。
+サービスで別途に商品リストを管理している場合、商品IDのみを利用して購入を要請します。
+購入できない商品の場合、Delegateを通して購入不可商品であることを表すエラーが伝達されます。
 
-#### サービスIDを利用した購入API仕様
+#### 商品IDを利用した購入API仕様
 
 ``` objc
 @interface ToastIAP (Additional)
 
 // ...
 
-// サービス購入
+// 商品購入
 + (void)purchaseWithProductIdentifier:(NSString *)productIdentifier;
 
 // ...
@@ -300,17 +300,17 @@ ToastProductTypeAutoRenewableSubscription = 2
 @end
 ```
 
-#### サービスIDを利用した購入API使用例
+#### 商品IDを利用した購入API使用例
 
 ``` objc
-// サービス購入要請
+// 商品購入要請
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
 ```
 
 ## 有効になっている購入リスト照会
 
-現在のユーザーIDにおいて、有効になっている購入(満了しておらず、購読中の購読サービス)リストを照会します。
-同じユーザーIDであれば、Androidで購入した購読サービスも照会されます。
+現在のユーザーIDにおいて、有効になっている購入(満了しておらず、購読中の購読商品)リストを照会します。
+同じユーザーIDであれば、Androidで購入した購読商品も照会されます。
 
 ### 有効になっている購入リスト照会API仕様
 
@@ -334,7 +334,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 
     if (error == nil) {
         for (ToastPurchaseResult *purchase in purchases) {
-            // 購読サービスアクセス有効化
+            // 購読商品アクセス有効化
         }
 
     } else {
@@ -380,7 +380,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 
 ## 未消費購入履歴照会
 
-消費性サービスの場合、サービス支給後に消費(consume)処理を行う必要があります。
+消費性商品の場合、商品支給後に消費(consume)処理を行う必要があります。
 消費処理されていない購入履歴を照会します。
 
 ### 未消費購入履歴照会API仕様
@@ -411,9 +411,9 @@ ToastProductTypeAutoRenewableSubscription = 2
 }
 ```
 
-## 消費性サービスの消費
+## 消費性商品の消費
 
-消費性サービスの場合、サービスにサービス支給後にREST APIまたはSDKのConsume APIで消費処理を行う必要があります。
+消費性商品の場合、サービスに商品支給後にREST APIまたはSDKのConsume APIで消費処理を行う必要があります。
 
 ### 消費API仕様
 
@@ -437,10 +437,10 @@ ToastProductTypeAutoRenewableSubscription = 2
 [ToastIAP requestConsumablePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
     if (error == nil) {
         for (ToastPurchaseResult *purchaseResult in purchases) {
-            // サービス支給処理
+            // 商品支給処理
             // ...
 
-            // サービス支給後に消費処理
+            // 商品支給後に消費処理
             [ToastIAP consumeWithPurchaseResult:purchaseResult
                               completionHandler:^(NSError *error) {
                                     if (error == nil) {
@@ -449,7 +449,7 @@ ToastProductTypeAutoRenewableSubscription = 2
                                     } else {
                                         NSLog(@"Failed to consume : %@", error);
 
-                                        // サービス支給回数
+                                        // 商品支給回数
                                         // ...
                                     }
                               }];
@@ -461,9 +461,9 @@ ToastProductTypeAutoRenewableSubscription = 2
 }
 ```
 
-## 購読サービス管理ページの提供方法
+## 購読商品管理ページの提供方法
 
-自動更新型購読サービスを使用する場合、ユーザーに購読管理ページを提供する必要があります。
+自動更新型購読商品を使用する場合、ユーザーに購読管理ページを提供する必要があります。
 > [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
 
 別途のUIを構成せず、下記URLを呼び出して購読管理ページを表示する必要があります。
@@ -526,10 +526,10 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 [ToastIAP processesIncompletePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *results, NSError *error) {
     if (error == nil) {
         for (ToastPurchaseResult *purchaseResult in results) {
-            // サービス支給処理
+            // 商品支給処理
             // ...
 
-            // サービス支給後、消費処理
+            // 商品支給後、消費処理
             [ToastIAP consumeWithPurchaseResult:purchaseResult
                               completionHandler:^(NSError *error) {
                                     if (error == nil) {
@@ -538,7 +538,7 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
                                     } else {
                                         NSLog(@"Failed to consume : %@", error);
 
-                                        // サービス支給回数
+                                        // 商品支給回数
                                         // ...
                                     }
                               }];
@@ -557,9 +557,9 @@ typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     
     ToastIAPErrorNotInitialized = 1,                // 初期化しない
     ToastIAPErrorStoreNotAvailable = 2,             // ストア使用不可
-    ToastIAPErrorProductNotAvailable = 3,           // サービス情報取得に失敗
-    ToastIAPErrorProductInvalid = 4,                // 元決済のサービスIDと現在のサービスIDが不一致
-    ToastIAPErrorAlreadyOwned = 5,                  // すでに所有しているサービス
+    ToastIAPErrorProductNotAvailable = 3,           // 商品情報取得に失敗
+    ToastIAPErrorProductInvalid = 4,                // 元決済の商品IDと現在の商品IDが不一致
+    ToastIAPErrorAlreadyOwned = 5,                  // すでに所有している商品
     ToastIAPErrorAlreadyInProgress = 6,             // すでに進行中の要請あり
     ToastIAPErrorUserInvalid = 7,                   // 現在のユーザーIDが決済ユーザーIDと不一致
     ToastIAPErrorPaymentInvalid = 8,                // 決済追加情報(ApplicationUsername)取得失敗

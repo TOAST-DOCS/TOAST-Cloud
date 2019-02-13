@@ -43,13 +43,13 @@ dependencies {
 - iOSでIAP機能を使用するには、Storekit.frameworkが必要です。
 - XCodeプロジェクトの設定でStorekit.frameworkを追加してください。
 
-## サポートするストアおよびサービスの種類
+## サポートするストアおよび商品の種類
 
-| プラットフォーム | ストア | サポートするサービスの種類 |
+| プラットフォーム | ストア | サポートする商品の種類 |
 |---|---|---|
-| Android | Google Play Store | 消費性サービス、購読サービス |
-| Android | One Store | 消費性サービス |
-| iOS | Apple App Store | 消費性サービス、購読サービス |
+| Android | Google Play Store | 消費性商品、購読商品 |
+| Android | One Store | 消費性商品 |
+| iOS | Apple App Store | 消費性商品、購読商品 |
 
 ## TOAST IAP SDK初期化
 [ToastIapConfiguration](./iap-unity/#toastiapconfiguration)を利用してTOAST IAPコンソールで発行されたAppKeyとストアコード([StoreCode](./iap-unity/#storecode))を設定します。
@@ -90,7 +90,7 @@ ToastIap.Initialize(new ToastIapConfiguration
 - TOAST SDKで提供するすべてのサービス(IAP, Log & Crashなど)は、1つの同じユーザーIDを使用します。
     - ToastSdk.UserIdでユーザーIDを設定できます。
     - ユーザーIDを設定しない場合、決済が行われません。
-- サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読サービス照会機能の実装を推奨します。
+- サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読商品照会機能の実装を推奨します。
 
 ### ログイン
 
@@ -108,18 +108,18 @@ ToastSdk.UserId = null;
 
 > [参考]サービスログアウト時に、必ずユーザーIDをnullに設定してください。プロモーションコードが使われたり、決済再処理動作時に誤ったユーザーIDで購入が行われることを防止できます。
 
-## サービスリスト照会
-- IAPコンソールに登録されたサービスのうち、使用可能なサービスリストを照会します。
-    - IAPコンソールに登録されたサービスのうち、購入可能なサービスは[ProductDetailsResult](./iap-unity/#productdetailsresult)のProductプロパティ([IapProduct](./iap-unity/#iapproduct))で返されます。
-    - IAPコンソールに登録されたサービスのうち、ストアに登録されていないサービスは[ProductDetailsResult](./iap-unity/#productdetailsresult) InvalidProductsプロパティ([IapProduct](./iap-unity/#iapproduct))で返されます。
+## 商品リスト照会
+- IAPコンソールに登録された商品のうち、使用可能な商品リストを照会します。
+    - IAPコンソールに登録された商品のうち、購入可能な商品は[ProductDetailsResult](./iap-unity/#productdetailsresult)のProductプロパティ([IapProduct](./iap-unity/#iapproduct))で返されます。
+    - IAPコンソールに登録された商品のうち、ストアに登録されていない商品は[ProductDetailsResult](./iap-unity/#productdetailsresult) InvalidProductsプロパティ([IapProduct](./iap-unity/#iapproduct))で返されます。
 
-### サービスリスト照会API仕様
+### 商品リスト照会API仕様
 
 ```csharp
 public static void RequestProductDetails(ToastCallback<ProductDetailsResult> callback);
 ```
 
-### サービスリスト照会例
+### 商品リスト照会例
 
 ```csharp
 ToastIap.RequestProductDetails((result, productDetailsResult) =>
@@ -137,19 +137,19 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 });
 ```
 
-## サービス購入
-- TOAST IAPは、ストアに登録されたサービスIDを使用してサービスを購入できます。
-    - サービスIDは、サービスリスト照会時に取得できます。
-- サービス購入結果は、初期化時に登録したPurchaseUpdateListenerを通して返されます。
+## 商品購入
+- TOAST IAPは、ストアに登録された商品IDを使用して商品を購入できます。
+    - 商品IDは、商品リスト照会時に取得できます。
+- 商品購入結果は、初期化時に登録したPurchaseUpdateListenerを通して返されます。
     - 購入結果は[IapPurchase](./iap-unity/#iappurchase)を返します。
 
-### サービス購入API仕様
+### 商品購入API仕様
 
 ```csharp
 public static void Purchase(string productId);
 ```
 
-### サービス購入例
+### 商品購入例
 
 ```csharp
 var productId = userSelectedProductId;
@@ -157,9 +157,9 @@ ToastIap.Purchase(productId);
 ```
 
 ## 未消費決済照会
-- まだ消費されていない消費性サービス情報を照会します。
+- まだ消費されていない消費性商品情報を照会します。
     - 未消費決済照会の結果は[IapPurchase](./iap-unity/#iappurchase)オブジェクトのリストで返されます。
-- ユーザーにサービスを支給された後[Consume API](../../../Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)を使用してサービスを消費します。
+- ユーザーに商品を支給した後[Consume API](../../../Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
 
 ### 未消費決済照会API仕様
 
@@ -180,10 +180,10 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
 ```
 
 ## 有効になっている購読照会
-- User ID基準で有効になっている購読サービスを照会できます。
-    - 決済が完了した購読サービスは、使用期間が残っている場合、継続して照会できます。
+- User ID基準で有効になっている購読商品を照会できます。
+    - 決済が完了した購読商品は、使用期間が残っている場合、継続して照会できます。
     - 有効になっている購読照会の結果は[IapPurchase](./iap-unity/#iappurchase)オブジェクトのリストで返されます。
-- Androidで購読したサービスをiOSでも、またはiOSで購読したサービスをAndroidでも照会できます。
+- Androidで購読した商品をiOSでも、またはiOSで購読した商品をAndroidでも照会できます。
 
 ### 有効になっている購読照会API仕様
 
@@ -265,8 +265,8 @@ public class ProductDetailsResult
 
 | Property | Returns | Description |
 |---|---|---|
-| Products | List<IapProduct> | 使用可能なサービス情報を返します。 |
-| InvalidProducts | List<IapProduct> | TOAST IAPコンソールにサービスを登録しましたが、ストアに登録されていないサービスを返します。 |
+| Products | List<IapProduct> | 使用可能な商品情報を返します。 |
+| InvalidProducts | List<IapProduct> | TOAST IAPコンソールに商品を登録しましたが、ストアに登録されていない商品を返します。 |
 
 
 ### IapProduct
@@ -285,10 +285,10 @@ public class IapProduct
 
 | Property | Returns | Description |
 |---|---|---|
-| Id | string | サービスのID |
-| Name | string | サービス名 |
-| ProductType | string | サービスタイプ |
-| IsActive | bool | サービスが有効になっているか |
+| Id | string | 商品のID |
+| Name | string | 商品名 |
+| ProductType | string | 商品タイプ |
+| IsActive | bool | 商品が有効になっているか |
 | Price | float | 価格 |
 | Currency | string | 通貨 |
 | LocalizedPrice | string | 現地価格 |
@@ -316,14 +316,14 @@ public class IapPurchase
 | PaymentId | string | 決済ID | 
 | PaymentSequence | string | 決済固有番号 | 
 | OriginalPaymentId | string | 原本決済ID | 
-| ProductId | string | サービスID | 
-| ProductType | string | サービスタイプ | 
+| ProductId | string | 商品ID | 
+| ProductType | string | 商品タイプ | 
 | UserId | string | ユーザーID | 
 | Price | float | 価格 | 
 | PriceCurrencyCode | string | 通貨情報 | 
 | AccessToken | string | 消費に使用されるトークン | 
-| PurchaseTime | long | サービス購入時間 | 
-| ExpiryTime | long | 購読サービスの残り時間 | 
+| PurchaseTime | long | 商品購入時間 | 
+| ExpiryTime | long | 購読商品の残り時間 | 
 
 
 ## FAQ
@@ -335,4 +335,4 @@ public class IapPurchase
 #### Answer.1
 UnityアクティビティのlaunchModeがsingleTaskのため発生する問題です。決済ウィンドウが破壊されるとユーザーキャンセルと認識するため、ユーザーキャンセルエラーが返されます。
 もしストアで決済が完了した状態なら、アプリを再起動するか未消費決済照会を呼び出すことで再処理できます。再処理が完了すると、ユーザーにアイテムを支給できるようになります。
-再処理ができていない状態で再度決済を試行すると、すでに保有中のサービスというエラーが返されます。(これによりユーザーの重複決済を回避することができます)
+再処理ができていない状態で再度決済を試行すると、すでに保有中の商品というエラーが返されます。(これによりユーザーの重複決済を回避することができます)
