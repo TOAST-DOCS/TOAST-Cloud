@@ -1,5 +1,21 @@
 ﻿## TOAST > TOAST SDK使用ガイド > リリースノート > Android
 
+## 0.14.1 (2019.01.29)
+
+### TOAST IAP
+
+#### バグ修正
+
+* (구)IAP SDK決済件を処理していないエラーを修正。
+
+## 0.14.0 (2019.01.08)
+
+### TOAST IAP
+
+#### 機能追加
+
+* TOAST IAP Unity Plugin追加.
+
 ## 0.13.0 (2018.12.27)
 
 ### TOAST Core

@@ -16,7 +16,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.13.0'
+    implementation 'com.toast.android:toast-push-fcm:0.14.1'
     ...
 }
 ```
@@ -278,3 +278,49 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 | Method | Returns | |
 |---|---|---|
 | getAppKey | String | Pushサービスアプリキーを返します。 |
+| static newBuilder | ToastPushConfiguration.Builder | ToastPushConfigurationオブジェクト作成のためのビルダーを作成します。 |
+
+### PushResult
+- 非同期APIの呼び出し時に、コールバックのレスポンスに返される結果オブジェクトです。
+
+
+```java
+/* PushResult.java */
+public int getCode();
+public String getMessage();
+public boolean isSuccess();
+public boolean isFailure();
+```
+
+| Method | Returns | |
+|---|---|---|
+| getCode | int | 結果コードを返します。 |
+| getMessage | int | 結果メッセージを返します。 |
+| isSuccess | boolean | 成功したかを返します。 |
+| isFailure | boolean | 失敗したかを返します。 |
+
+### TokenInfo
+- トークン情報照会呼び出し時、コールバックで返されるトークン情報が入っているオブジェクトです。
+
+```java
+/* TokenInfo.java */
+public String getPushType();
+public ToastPushAgreement getAgreement();
+public String getTimeZone();
+public String getCountry();
+public String getLanguage();
+public String getUserId();
+public Date getActivatedDateTime();
+public String getToken();
+```
+
+| Method | Returns | |
+|---|---|---|
+| getPushType | String | Pushタイプを返します。 |
+| getAgreement | ToastPushAgreement | 通知/広告/夜間広告などに同意しているかを返します。 |
+| getTimeZone | String | タイムゾーンを返します。 |
+| getCountry | String | 国コードを返します。 |
+| getLanguage | String | 言語コードを返します。 |
+| getUserId | String | ユーザーIDを返します。 |
+| getActivatedDateTime | Date | トークンの最近の登録日時を返します。 |
+| getToken | String | トークンを返します。 |

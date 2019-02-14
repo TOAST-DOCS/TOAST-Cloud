@@ -4,7 +4,7 @@
 
 ### TOAST IAP
 
-#### Fixed
+#### 개선 사항
 
 * (구)IAP SDK 결제건을 처리하지 못하는 에러 수정.
 
@@ -12,7 +12,7 @@
 
 ### TOAST IAP
 
-#### Added
+#### 기능 추가
 
 * TOAST IAP Unity Plugin 추가.
 
