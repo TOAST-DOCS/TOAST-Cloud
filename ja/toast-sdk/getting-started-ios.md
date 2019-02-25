@@ -1,33 +1,33 @@
-## TOAST > User Guide for TOAST SDK > Getting Started > iOS
+﻿## TOAST > TOAST SDK使用ガイド > 開始する > iOS
 
-## Supporting Environment 
+## サポート環境
 
-* iOS 8.0 or higher
-* The latest version of XCode (version 9 or higher)
+* iOS 8.0以上
+* XCode最新バージョン(バージョン9以上)
 
-## Configuration of TOAST SDK
+## TOAST SDKの構成
 
-TOAST SDK for iOS is configured as follows: 
+iOS用TOAST SDKの構成は次のとおりです。
 
 * [TOAST Logger](./log-collector-ios) SDK
 * [TOAST In-app Purchase AppStore](./iap-ios) SDK
 * [TOAST Push](./push-ios) SDK
 
-TOAST SDK services can be selectively applied for your needs. 
+TOAST SDKが提供するサービスの中から、希望する機能を選択して適用できます。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | 
 | All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework<br/>ToastPush.framework |  |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
 | TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 | TOAST Push | ToastPush | ToastPush.framework | * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
 
-## Apply TOAST SDK to Xcode Projects
+## TOAST SDKをXcodeプロジェクトに適用
 
-### 1. Apply TOAST SDK with Cococapods
+### 1. Cococapodsを使用してTOAST SDK適用
 
-Create a podfile and add pods to TOAST SDK. 
+Podfileを作成してTOAST SDKのPodを追加します。
 
 ```podspec
 platform :ios, '8.0'
@@ -38,7 +38,7 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-Open a created workspace and import SDK to use. 
+作成されたWorkspaceを開き、使用するSDKをインポートします(import)。
 
 ```objc
 #import <ToastCore/ToastCore.h>
@@ -47,55 +47,55 @@ Open a created workspace and import SDK to use.
 #import <ToastPush/ToastPush.h>
 ```
 
-### 2. Apply TOAST SDK with Binary Downloads 
+### 2. バイナリをダウンロードしてTOAST SDK適用
 
-#### Import SDK
+#### SDKインポート(import)
 
-The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
+TOASTの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
 
 ![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder.png)
 
-To enable Crash Report of TOAST Logger, CrashReporter.framework which is distributed as well, must be added to the project. 
+TOAST LoggerのCrash Report機能を使用するには、一緒に配布されるCrashReporter.frameworkもプロジェクトに追加する必要があります。
 
 ![import_external_framework](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_external_folder.png)
 
-Check frameworks are added to the project, as below:  
+プロジェクトに次のようにフレームワーク(framework)が追加されたことを確認します。
 
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
 
-> To use TOAST IAP, StoreKit.framework must be linked additionally. 
+> TOAST IAP機能を使用するには、StoreKit.frameworkを追加する必要があります。
 
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
-> To use TOAST Push, UserNotifications.framework must be linked addtionally.
+> TOAST Push機能を使用するには、UserNotifications.frameworkを追加する必要があります。
 
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
-> To user TOAST Push's VoIP, PushKit.framework must be linked addtionally.
+> TOAST PushのVoIP機能を使用するには、PushKit.frameworkを追加する必要があります。
 
 ![linked__pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
 
-![linked_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_all.png)
+![linked_frameworks_all](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_all.png)
 
 
 #### Project Settings
 
-Add "-lc++" and "-ObjC" to "Other Linker Flags" at "Build Settings". 
+**Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
 
-* Project Target - Build Settings - Linking - Other Linker Flags
+**Project Target > Build Settings > Linking > Other Linker Flags**をクリックして追加できます。
 
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-To directly download or build CrashReporter.framework, the Bitcode at Build Setting must be changed to NO.  
+CrashReporter.frameworを直接ダウンロードするか、ビルドした場合はBuild SettingのEnable Bitcodeの値を**NO**に変更する必要があります。
 
-* Project Target - Build Settings - Build Options - Enable Bitcode - "NO"
+**Project Target > Build Settings > Build Options > Enable Bitcode**をクリックして**NO**をクリックします。
 
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
-> CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode. 
+> TOASTの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。
 
-#### Import Framework 
+#### フレームワークのインポート
 
-Import the framework to use. 
+使用するフレームワークをインポートします(import)。
 
 ```objc
 #import <ToastCore/ToastCore.h>
@@ -104,12 +104,13 @@ Import the framework to use.
 #import <ToastPush/ToastPush.h>
 ```
 
-## Set UserID 
+## UserID設定
 
-User ID can be set for ToastSDK and it is for common usage at each module of TOAST SDK.
-Send such set user ID to a server, along with logs, whenever Log Sending API of TOAST Logger is called. 
+TOASAT SDKにユーザーIDを設定できます。
+設定したUserIDは、TOAST SDKの各モジュールで共通使用されます。
+TOAST Loggerのログ送信APIを呼び出すたびに、設定したユーザーIDをログと一緒にサーバーに送信します。
 
-### Specifications for UserID API
+### UserID API仕様
 
 ```objc
 @interface ToastSDK : NSObject
@@ -123,17 +124,17 @@ Send such set user ID to a server, along with logs, whenever Log Sending API of 
 @end
 ```
 
-### Usage Example of UserID Setting
+### UserID設定使用例
 
 ```objc
 [ToastSDK setUserID:@"TOAST-USER"];
 ```
-## Set Debug Mode
+## デバッグモード設定
 
-To check logs within TOAST SDK, the debug mode can be set. 
-To inquire of TOAST SDK, enable the debug mode for faster response.  
+TOAST SDKの内部ログを確認するために、デバッグモードを設定できます。
+TOAST SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
 
-### Specifications for Debug Mode API 
+### デバッグモード設定API仕様
 
 
 ```objc
@@ -148,17 +149,17 @@ To inquire of TOAST SDK, enable the debug mode for faster response.
 @end
 ```
 
-### Usage Example of Debug Mode Setting 
+### デバッグモード設定使用例
 
 ```objc
 // Set Debug Mode.
 [ToastSDK setDebugMode:YES];// or NO
 ```
 
-> (Caution) To release an app, the debug mode must be disabled.  
+> [注意]アプリをリリースする場合、デバッグモードを無効化する必要があります。
 
-## Use TOAST Service 
+## TOAST Service使用
 
-* User Guide for [TOAST Log & Crash](./log-collector-ios) 
-* User Guide for [TOAST In-app Purchase](./iap-ios) 
-* User Guide for [TOAST Push](./push-ios)
+* [TOAST Log & Crash](./log-collector-ios)使用ガイド
+* [TOAST In-app Purchase](./iap-ios)使用ガイド
+* [TOAST Push](./push-ios)使用ガイド

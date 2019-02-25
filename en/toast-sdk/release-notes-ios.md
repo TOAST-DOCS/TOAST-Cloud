@@ -1,30 +1,53 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.12.3 (2019.02.26)
+
+### TOAST Core, Common
+
+#### Fixed
+
+* Add a exception for util function
+
+### TOAST IAP
+
+#### Fixed
+
+* Add products information caching 
+* Add a exception 
+
+## 0.12.2 (2019.02.08) - Hotfix
+
+### TOAST Core
+
+#### Fixed
+
+* Add a defense code for crashes in ToastTransfer
+
 ## 0.12.1 (2019.01.08)
 
 ### TOAST IAP
 
-#### 개선 사항
+#### Fixed
 
 * Fixed an issue where VerifyEnd could not be reprocessed under certain circumstances
 
 ## 0.12.0 (2018.12.27)
 
-### TOAST CORE
+### TOAST Core
 
-#### 개선 사항
+#### Fixed
 
 * Add a defense code for crashes in ToastTransfer
 
 ### TOAST Push
 
-#### Added 
+#### Fixed 
 
 * New Functions 
 
 ### TOAST IAP
 
-#### 개선 사항
+#### Fixed
 
 * Added exception handling for UserID verification logic to handle reprocessed transactions delivered by Apple
 * Add a defense code for crashes in ToastOperation

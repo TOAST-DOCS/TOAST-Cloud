@@ -1,99 +1,99 @@
-## TOAST > User Guide for TOAST SDK > Overview
+﻿## TOAST > TOAST SDK使用ガイド > 概要
 
-TOAST SDK is an integrated library (SDK) which conveniently applies libraries of many services (SDKs) provided by [TOAST](https://toast.com/), at once. With TOAST SDK, there is no need to apply individual library of different services for the development of applications requiring many TOAST services. 
-Although an integrated development environment is provided for many services, functions are optional so as to save usage space. TOAST SDK library is optimized for each programming language and platform of choice, and provides no-strange environment for development. 
+TOAST SDKは、[TOAST](https://toast.com/)の多様なサービスライブラリ(SDK)を簡単に適用できるようにした統合ライブラリ(SDK)です。 TOASTサービスを使用してアプリケーションを開発する時、個別サービスのライブラリをそれぞれ適用する煩わしさがなく、一度に適用できます。 
+複数のサービスの統合開発環境を提供しますが、希望する機能だけを選択できるため、使用スペースを節約できます。TOAST SDKは、使用するプログラミング言語とプラットフォームに最適化されたライブラリで、慣れた開発環境を提供します。
 
-> Currently supports for iOS, Android, Unity3D, and Windows C++, and more programming languages and platforms are to be supported in the near future.
+> 現在はiOS、Android、Unity3D、Windows C++の開発環境のみ提供します。今後さらに多様なプログラミング言語とプラットフォームをサポートする予定です。
 
-## Supported Services
+## サポートするサービス
 
-TOAST SDK provides the following services: 
+TOAST SDKは、次のようなサービスを提供します。
 
 - [Log & Crash Search](https://toast.com/service/analytics/log_crash_search)
-
 - [IAP](https://www.toast.com/service/mobile-service/iap)
-
 - [Push](https://www.toast.com/service/notification/push)
 
-> Further service development providing individual SDKs are to be supported via TOAST SDK.  
+> 個別SDKを提供するサービスは、今後TOAST SDKを通して開発できるようにサポートする予定です。
 
-## Features
+## 特徴
 
-- Support Gradle for Android, and CocoaPods for iOS, for the build environment.  
-- Provide Unity Plugins. 
-- Apply the whole or parts of the services, depending on the needs.  
-- Improved inconvenient standalone SDK services provided  by individual services. 
+- AndroidはGradle、iOSはCocoaPodsを活用したビルド環境をサポートします。
+- Unity Pluginを提供します。
+- 使用するには、サービス全体または一部サービスを選択して適用できます。
+- 個別サービスで独自に提供していたSDKの不便な点を改善しました。
 
-## Getting Started 
+## TOAST SDKを開始する
 
 ### Android
 
-TOAST Android SDK is distributed via **jCenter** and enabled only with simple Gradle settings.  
+TOAST Android SDKは、**jCenter**で配布され、簡単なGradle設定だけで使用できます。
 
-- [Get started with Android](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-android)
+- [Androidで開始する](./getting-started-android)
 
 ### iOS
 
-TOAST iOS SDK supports the management of Project Setting and Framework Dependency with **CocoaPods**. 
+TOAST iOS SDKは**CocoaPods**でProject SettingおよびFramework Dependencyの管理をサポートします。
 
-- [Get started with iOS](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-ios)
+- [iOSで開始する](./getting-started-ios)
 
 ### Unity
 
-TOAST Unity SDK supports Android and iOS platforms. 
+TOAST Unity SDKは、Android、iOSプラットフォームをサポートします。
 
-- [Get started with Unity](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-unity)
+- [Unityで開始する](./getting-started-unity)
 
 ### Windows C++
 
-TOAST Windows C++ SDK supports Windows 7 and 10 (32/64 bits). 
+TOAST Windows C++ SDKは、Windows 7、10(32/64bit)環境をサポートします。
 
-- [Get started with Windows C++](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-windows)
+- [Windows C++で開始する](./getting-started-windows)
 
 ## TOAST Log & Crash
 
-Sends logs to a collector server of Log & Crash Search.  
-Collected logs can be retrieved by selecting from the Log & Crash Search Menu on TOAST console. 
+Log & Crash Search収集サーバーにログを送信する機能を提供します。収集されたログは、TOASTコンソールの**Log & Crash Search**メニューをクリックして確認できます。
 
-- [Find out Log & Crash Search Service](https://toast.com/service/analytics/log_crash_search)
+- [Log & Crash Searchサービス確認](https://toast.com/service/analytics/log_crash_search)
 
-### Main Features
+### 主な機能
 
-| Feature          | Description                                                  |
-| ---------------- | ------------------------------------------------------------ |
-| Sending Logs     | Send logs to a collector server.                             |
-| Query and Search | Logs can be queried or searched for conditions from TOAST Console. |
-| Crash Reports    | Unexpected crashes are sent to a collector server of Log & Crash Search. |
+| 機能   | 説明                                    |
+| ------- | ---------------------------------------- |
+| ログ送信 | ログを収集サーバーに送信します。                        |
+| 照会および検索 | TOASTコンソールでログを照会したり、条件に合ったログを検索できます。 |
+| クラッシュレポート | 予期せぬクラッシュが発生した場合、Log & Crash Search収集サーバーにクラッシュログを送信します。 |
 
-### User Guides
+### 使用ガイド
 
-- User Guide for [TOAST Log & Crash > Android](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-android) 
-- User Guide for [TOAST Log & Crash > iOS](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-ios) 
-- User Guide for [TOAST Log & Crash > Unity](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-unity) 
-- User Guide for [TOAST Log & Crash > Windows C++](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-windows) 
+- [TOAST Log & Crash > Android](./log-collector-android)使用ガイド
+- [TOAST Log & Crash > iOS](./log-collector-ios)使用ガイド
+- [TOAST Log & Crash > Unity](./log-collector-unity)使用ガイド
+- [TOAST Log & Crash > Windows C++](./log-collector-windows)使用ガイド
 
 ## TOAST IAP
 
-Supports integrated mobile In-App Payment service. 
+モバイル統合アプリ内決済サービスを提供します。
 
-* [Find out IAP Service](https://www.toast.com/service/mobile-service/iap)
+- [IAPサービスを確認する](https://www.toast.com/service/mobile-service/iap)
 
-### Main Features
+### 主な機能
 
-| Feature | Description |
+| 機能 | 説明 |
 | -- | -- |
-| General Payment | Sell one-time products. |
-| Subscription Payment | Sell subscription products. |
-| Re-processing | Restore incompletely-closed purchase process. |
+| 一般決済 | 一回性商品を販売できます。 |
+| 購読決済 | 購読商品を販売できます。 |
+| 再処理 | 不安定な形で終了した購入プロセスを復元できます。 |
 
-### User Guides
+### 使用ガイド
 
-* User Guide for [TOAST IAP > Android](./iap-android) 
-* User Guide for [TOAST IAP > iOS](./iap-ios) 
+- [TOAST IAP > Android](./iap-android)使用ガイド
+- [TOAST IAP > iOS](./iap-ios)使用ガイド
 
 ## TOAST Push
 
-### 사용 가이드
+TOAST Push SDKを使用して、Pushサービスを簡単に適用できます。
+コンソールから通知メッセージを安定的に送信し、送信結果を確認できます。
 
-* User Guide for [TOAST Push > Android](./push-android) 
-* User Guide for [TOAST Push > iOS](./push-ios) 
+### 使用ガイド
+
+- [TOAST Push > Android](./push-android)使用ガイド
+- [TOAST Push > iOS](./push-ios)使用ガイド

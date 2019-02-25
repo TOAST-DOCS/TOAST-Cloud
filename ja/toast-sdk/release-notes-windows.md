@@ -1,10 +1,9 @@
-## TOAST > User Guide for TOAST SDK > Release Notes > Windows C++
+﻿## TOAST > TOAST SDK使用ガイド > リリースノート > Windows C++
 
 ## 0.9.0.12 (2018.09.04)
 
 ### TOAST Log & Crash
 
-#### Added 
+#### 追加事項
 
-* New Functions
-
+* 新規機能追加

@@ -1,16 +1,16 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Unity
+﻿## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Unity
 
 ## Prerequisites
 
-1\. [Install TOAST SDK](./getting-started-unity)
-2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
-3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search. 
-4\. [Initialize TOAST SDK](./getting-started-unity#toast-sdk_1).
+1\. [Install the TOAST SDK](./getting-started-unity)
+2\. [TOASTコンソール](https://console.cloud.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+3\. Log & Crash Searchで、[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
+4\. [TOAST SDKを初期化](./getting-started-unity#toast-sdk_1)します。
 
-### For Android 
+### Android設定
 
-#### Gradle Build Settings
-- Add below to dependencies of mainTemplate.gradle. 
+#### Gradleビルド設定
+- mainTemplate.gradleのdependencies項目に下記の内容を追加します。
 
 ```groovy
 dependencies {
@@ -22,14 +22,14 @@ dependencies {
 }
 ```
 
-### For iOS 
+### iOS設定
 
-#### Player Settings 
+#### Player Settings設定
 
-* Unity's iOS build setting includes some settings that influence logger's log delivery to a server. 
-* Below briefly shows effects of such settings and describes recommended settings for a logger.  
+* UnityのiOSビルド設定には、Loggerがサーバーにログを送信する際に影響を与えるいくつかの設定があります。
+* この設定の効果とLoggerの推奨設定を説明します。
 
-| Menu | List | Setting | Recommended Setting |
+| メニュー | リスト | 設定 | 推奨設定 |
 | --- | --- | --- | ----- |
 | Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit |
 | Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API | Disabled |
@@ -37,24 +37,24 @@ dependencies {
 
 ##### On .Net UnhandledException
 
-* **Silent Exit** is recommended.
-    * If On .Net UnhandledException is set for Crash, app is closed immediately when an exception occurs. 
-    * With Silent Exit, Unity Exception can be captured. 
+* **Silent Exit**値を推奨します。
+    * On .Net UnhandledExceptionをCrashに設定すると、例外発生時に即時にアプリが終了します。
+    * Silent Exitに設定すると、Unity Exceptionをキャプチャできます。
 
 ##### Enable CrashReport API
 
-* **Disabled** is recommended.
-    * Shows whether Unity CrashReporter API is enabled or not. 
-    * When enabled, it may affect logger's crash log collection. 
+* **Disabled**値を推奨します。
+    * Unity CrashReporter APIが有効になっているかを表す値です。 
+    * 有効になっていれば、Loggerのクラッシュログ収集に影響を与えることがあります。
 
 ##### Script Call Optimization
 
-* **Slow and Safe** is recommended.
-    * To collect Runtime C# Crash logs, Slow and Safe must be enabled.  
+* **Slow and Safe**値を推奨します。
+    * Runtime C# Crashログを収集したい場合、Slow and Safeに設定する必要があります。
 
-## Initialize TOAST Logger SDK 
+## TOAST Logger SDK初期化
 
-Set appkey issued from Log & Crash Search as ProjectKey. 
+Log & Crash Searchで発行されたAppKeyをProjectKeyに設定します。
 
 ```csharp
 var loggerConfiguration = new ToastLoggerConfiguration
@@ -65,36 +65,36 @@ var loggerConfiguration = new ToastLoggerConfiguration
 ToastLogger.Initialize(loggerConfiguration);
 ```
 
-## Send Logs 
+## ログを送信する
 
-TOAST Logger can send logs of five levels. 
-User fields may be additionally sent. 
+TOAST Loggerは、5つのレベルのログを送信できます。 
+ユーザーフィールドを追加して送ることもできます。
 
-### Specifications for Log Sending API 
+### ログ送信API仕様
 
 ```csharp
-// DEBUG level logs 
+// DEBUGレベルのログ
 ToastLogger.Debug(message);
 ToastLogger.Debug(message, userFields);
 
-// INFO level logs
+// INFOレベルのログ
 ToastLogger.Info(message);
 ToastLogger.Info(message, userFields);
 
-// WARN level logs
+// WARNレベルのログ
 ToastLogger.Warn(message);
 ToastLogger.Warn(message, userFields);
 
-// ERROR level logs
+// ERRORレベルのログ
 ToastLogger.Error(message);
 ToastLogger.Error(message, userFields);
 
-// FATAL level logs
+// FATALレベルのログ
 ToastLogger.Fatal(message);
 ToastLogger.Fatal(message, userFields);
 ```
 
-### Usage Example of Log Sending API 
+### ログ送信API使用例
 
 ```csharp
 ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
@@ -103,34 +103,33 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 });
 ```
 
-## Set User-Defined Fields 
+## ユーザー定義フィールドを設定する
 
-Set a user-defined field as wanted.  
-With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called. 
+希望するユーザー定義フィールドを設定します。 
+ユーザー定義フィールドを設定すると、ログ送信APIを呼び出すたびに設定した値をログと一緒にサーバーに送信します。
 
-### Specifications for User-Defined Field Setting API 
+### ユーザー定義フィールド設定API仕様
 ```csharp
 ToastLogger.SetUserField(userField, userValue);
 ```
 
-*  User-defined field is same as the value exposed as "Selected Field" in "Log & Crash Search Console" > "Log Search Tab". 
-    That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
-*  If a key is changed for many times, the final value shall be applied.  
+* ユーザー定義フィールドは、"Log & Crash Searchコンソール" > "Log Searchタブ"の"選択したフィールド"に表示される値と同じです。
+* 同じキーの値を複数回変更すると、最後に変更した値が適用されます。
 
-#### Restrictions of User-Defined Fields 
-* Cannot use already [Reserved Fields](./log-collector-reserved-fields). Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
-* Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z".
-* Replace spaces within a field name by "_". 
+#### カスタムフィールド制約事項
+* すでに[予約されているフィールド](./log-collector-reserved-fields)は使用できません。
+* フィールド名には'A-Z、a-z、0-9、-、_'を使用できます。最初の文字は'A-Z、a-z'のみ使用できます。
+* フィールド名のスペースは、'_'に置換されます。
 
-### Usage Example of User-Defined Field Setting API
+### ユーザー定義フィールド設定API使用例
 ```csharp
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
 
-## Further Tasks after Sending Logs 
-- With listener registered, further tasks can be executed after logs are sent. 
+## ログ送信後、追加作業を進行する
+- リスナーを登録すると、ログ送信後に追加作業を進行します。
 
-### Specifications for SetLoggerListener API
+### SetLoggerListener API仕様
 
 ```csharp
 public interface IToastLoggerListener
@@ -144,64 +143,64 @@ public interface IToastLoggerListener
 static void SetLoggerListener(IToastLoggerListener listener);
 ```
 
-### Usage Example of SetLoggerListener 
+### SetLoggerListener使用例
 
 ```csharp
 public class SampleLoggerListener : IToastLoggerListener
 {
     public void OnSuccess(LogEntry log)
     {
-        // Sending logs succeeded 
+        // ログ送信成功時の処理
     }
 
     public void OnFilter(LogEntry log, LogFilter filter)
     {
-        // Filter by filter setting  
+        // ログフィルタリング時の処理
     }
 
     public void OnSave(LogEntry log)
     {
-        // Save within SDK for re-sending if log-sending fails due to network errors 
+        // ネットワーク切断などによる失敗時のログ再送信のために、ファイルに保存された場合
     }
 
     public void OnError(LogEntry log, string errorMessage)
     {
-        // Sending logs failed 
+        // ログ送信失敗時の処理
     }
 }
 
 ToastLogger.SetLoggerListener(new SampleLoggerListener());
 ```
 
-## Collect Crash Logs 
+## クラッシュログの収集
 
-TOAST Logger classifies Unity's crashes into two categories.
+TOAST Loggerでは、Unityのクラッシュを大きく2つに分類します。
 
-- Crash on native platform (app terminated)
-- Unexpected exception from Unity (no app terminated)
+- ネイティブプラットフォームで発生したクラッシュ(アプリが強制終了する)
+- Unityで発生した予期せぬ例外(アプリが強制終了しない)
 
-With ToastLogger initialized, a crash log is automatically sent when it occurs crash under the mobile environment or when it occurs the unexpected exception in Unity.
-To disable crash log delivery, set false for EnableCrashReporter property of the ToastLoggerConfiguration object.
-For more information on crash logs of each platform, check the links below: 
+ToastLoggerを初期化すると、モバイル環境でクラッシュが発生した場合、またはUnityで予期せぬ例外が発生した場合、自動的にクラッシュログが送信されます。
+クラッシュログの送信を無効化したい場合は、下記のようにToastLoggerConfigurationオブジェクトのEnableCrashReporterプロパティをfalseに設定してください。
+各プラットフォーム別のクラッシュログ情報は、下記のリンクを確認してください。
 
-- [Collect Android Crash Logs](./log-collector-android/#_5)
-- [Collect iOS Crash Logs](./log-collector-ios/#_5)
+- [Androidクラッシュログの収集](./log-collector-android/#_5)
+- [iOSクラッシュログの収集](./log-collector-ios/#_5)
 
 ```csharp
 var loggerConfiguration = new ToastLoggerConfiguration
 {
     ProjectKey = "YOUR_PROJECT_KEY",
-    EnableCrashReporter = false // Disable crash logs
+    EnableCrashReporter = false // クラッシュログの無効化
 };
 ```
 
-## Further Tasks after Sending Crash logs
-- With crash listener registered, further tasks can be executed after crash logs are sent. 
+## クラッシュログを送信後、追加作業を進行する
+- クラッシュリスナーを登録すると、クラッシュログ送信後に追加作業を進行できます。
 
-> ** Crash listener only works when it occurs unexpected exception in Unity **
-> Crash listener is not supported for crashes on the native platform.
+> **Unityで予期せぬ例外が発生した場合にのみ動作します。**
+> ネイティブプラットフォームで発生したクラッシュに対するリスナーは提供しません。
 
-### Specifications for SetCrashListener API
+### SetCrashListener API仕様
 
 ```csharp
 public delegate void CrashListener(bool isSuccess, LogEntry logEntry);
@@ -209,7 +208,7 @@ public delegate void CrashListener(bool isSuccess, LogEntry logEntry);
 public static void SetCrashListener(CrashListener listener);
 ```
 
-### Usage Example of SetCrashListener API
+### SetCrashListener API使用例
 
 ```csharp
 ToastLogger.SetCrashListener((isSuccess, log) =>
@@ -221,22 +220,21 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 });
 ```
 
+## Handled Exception送信
 
-## Send Handled Exceptions 
+TOAST Loggerは、一般/クラッシュログだけでなく、try/catch構文で例外に関連する内容をReport APIを使用して送信できます。
+こうして送信した例外ログは、"Log & Crash Searchコンソール" > "App Crash Searchタブ"のエラータイプで"Handled"でフィルタリングして照会できます。 
+Log & Crashコンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
 
-Exceptions from a try/catch sentence, as well as general/crash logs, can be sent by using  Report API of TOAST Logger. 
-Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab". 
-For more usage details on Log & Crash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/). 
-
-### Specifications for Handled Exception Log API
+### Handled Exception Log API詳細
 
 ```csharp
-// Send Handled Exception Logs
+// Handled Exceptionログ送信
 var logLevel = ToastLogLevel.ERROR;
 ToastLogger.Report(logLevel, message, exception);
 ```
 
-### Usage Example of Handled Exception Log API 
+### Handled Exception Log API使用例
 
 ```csharp
 try
@@ -244,26 +242,26 @@ try
     doSomethingWrong();
 }catch(Exception e)
 {
-    // Debug, Info, Warn, Error, and Fatal are available. 
+    // Debug、Info、Warn、Error、Fatalなどを使用できます。
     ToastLogger.Report(ToastLogLevel.ERROR, "YOUR_MESSAGE", exception);
 }
 ```
 
 ## Network Insights
-Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response values of many countries around the world (according to national codes on a device). 
+Network Insightsは、コンソールに登録したURLを呼び出して、遅延時間およびレスポンス値を測定します。これを活用して複数の国(デバイスの国コード基準)での遅延時間とレスポンス値を測定できます。
 
-> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized. 
+> コンソールからNetwork Insights機能を有効にすると、TOAST Logger初期化時に、コンソールに登録したURLで1回要請します。
 
-### Enable Network Insights 
+### Network Insights有効化
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
-2. Select [Settings].
-3. Click the [Setting for Sending Logs] tab. 
-4. Enable "Network Insights Logs".
+1. [TOAST Console](https://console.toast.com/)で、[Log & Crash Search]サービスを選択します。
+2. [設定]メニューを選択します。
+3. [ログ送信設定]タブを選択します。
+4. "Network Insightsログ"を有効にします。
 
-### URL Setting 
+### URL設定
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
-2. Select [Network Insights].
-3. Click the [URL Setting] tab.
-4. Enter URL to measure and click [Add].
+1. [TOAST Console](https://console.toast.com/)で、[Log & Crash Search]サービスを選択します。
+2. [ネットワークインサイト]メニューを選択します。
+3. [URL設定]タブを選択します。
+4. 測定するURLを入力後、[追加]ボタンをクリックします。

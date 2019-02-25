@@ -1,14 +1,14 @@
-## TOAST > User Guide for TOAST SDK > TOAST IAP > Unity
+﻿## TOAST > TOAST SDK使用ガイド > TOAST IAP > Unity
 
 ## Prerequisites
 
 1. [Install the TOAST SDK](./getting-started-unity)
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ja/Mobile%20Service/IAP/ja/console-guide/)합니다.
-3. IAP에서 [AppKey를 확인](https://docs.toast.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)합니다.
+2. [TOASTコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
+3. IAPで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
-## Android 설정
-### Gradle 빌드 설정
-- mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
+## Android設定
+### Gradleビルド設定
+- mainTemplate.gradleのdependencies項目に下記の内容を追加します。
 
 #### Google Play Store
 
@@ -34,39 +34,39 @@ dependencies {
 }
 ```
 
-## iOS 설정
-### Capabilities 설정
-- XCode 프로젝트의 설정에서 Capabilities 탭을 선택합니다.
-- In-App Purchase 항목을 ON 합니다.
+## iOS設定
+### Capabilities設定
+- XCodeプロジェクトの設定でCapabilitiesタブを選択します。
+- In-App Purchase項目をONにします。
 
-### 필수 프레임워크 추가
-- iOS에서 IAP 기능을 사용하기 위해서는 Storekit.framework가 반드시 필요합니다.
-- XCode 프로젝트의 설정에서 Storekit.framework을 추가해주세요.
+### 必須フレームワーク追加
+- iOSでIAP機能を使用するには、Storekit.frameworkが必要です。
+- XCodeプロジェクトの設定でStorekit.frameworkを追加してください。
 
-## 지원하는 스토어 및 상품 종류
+## サポートするストアおよび商品の種類
 
-| 플랫폼 | 스토어 | 지원하는 상품 종류 |
+| プラットフォーム | ストア | サポートする商品の種類 |
 |---|---|---|
-| Android | Google Play Store | 소비성 상품, 구독 상품 |
-| Android | One Store | 소비성 상품 |
-| iOS | Apple App Store | 소비성 상품, 구독 상품 |
+| Android | Google Play Store | 消費性商品、購読商品 |
+| Android | One Store | 消費性商品 |
+| iOS | Apple App Store | 消費性商品、購読商品 |
 
-## TOAST IAP SDK 초기화
-[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 TOAST IAP 콘솔에서 발급받은 AppKey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
-초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
+## TOAST IAP SDK初期化
+[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)を利用してTOAST IAPコンソールで発行されたAppKeyとストアコード([StoreCode](./iap-unity/#storecode))を設定します。
+初期化と同時に購入結果を受け取れるPurchaseUpdateListenerを登録します。
 
-> **초기화 시점**
-> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며, 
-> 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/#_4) 항목 참고)하기 전에 초기화를 해야 합니다.
+> **初期化タイミング**
+> TOAST IAP SDKの初期化は、アプリ実行直後、最初の1回のみ行う必要があり、
+> ユーザーIDを設定(下記[サービスログイン](./iap-unity/#_4)項目参照)する前に行う必要があります。
 
-### 초기화 API 명세
+### 初期化API仕様
 ```csharp
 public delegate void PurchaseUpdateListener(ToastResult result, IapPurchase purchase);
 
 public static void Initialize(ToastIapConfiguration configuration, PurchaseUpdateListener listener);
 ```
 
-### 초기화 예시
+### 初期化例
 
 ```csharp
 ToastIap.Initialize(new ToastIapConfiguration
@@ -77,49 +77,49 @@ ToastIap.Initialize(new ToastIapConfiguration
 {
     if (result.IsSuccessful)
     {
-        // 결제 성공
+        // 決済成功
     }
     else
     {
-        // 결제 실패
+        // 決済失敗
     }
 });
 ```
 
-## 서비스 로그인
-- TOAST SDK에서 제공하는 모든 상품(IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
-    - ToastSdk.UserId 로 사용자 아이디를 설정할 수 있습니다.
-    - 사용자 아이디를 설정하지 않은 경우, 결제가 진행되지 않습니다.
-- 서비스 로그인 단계에서 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능을 구현하는 것을 권장합니다.
+## サービスログイン
+- TOAST SDKで提供するすべてのサービス(IAP, Log & Crashなど)は、1つの同じユーザーIDを使用します。
+    - ToastSdk.UserIdでユーザーIDを設定できます。
+    - ユーザーIDを設定しない場合、決済が行われません。
+- サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読商品照会機能の実装を推奨します。
 
-### 로그인
+### ログイン
 
 ```csharp
 // Login
 ToastSdk.UserId = "USER_ID";
 ```
 
-### 로그아웃
+### ログアウト
 
 ```csharp
 // Logout
 ToastSdk.UserId = null;
 ```
 
-> [참고] 서비스 로그아웃 시 반드시 유저 아이디를 null로 설정해야 프로모션 코드가 리딤되거나 결제 재처리 동작시 잘못된 사용자 아이디로 구매가 진행되는 것을 방지할 수 있습니다.
+> [参考]サービスログアウト時に、必ずユーザーIDをnullに設定してください。プロモーションコードが使われたり、決済再処理動作時に誤ったユーザーIDで購入が行われることを防止できます。
 
-## 상품 목록 조회
-- IAP 콘솔에 등록된 상품 중 사용 가능한 상품 목록을 조회합니다.
-    - IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 [ProductDetailsResult](./iap-unity/#productdetailsresult)의 Product 프로퍼티([IapProduct](./iap-unity/#iapproduct))로 반환됩니다.
-    - IAP 콘솔에 등록된 상품 중 스토어에 등록되지 않은 상품은 [ProductDetailsResult](./iap-unity/#productdetailsresult) InvalidProducts 프로퍼티([IapProduct](./iap-unity/#iapproduct))로 반환됩니다.
+## 商品リスト照会
+- IAPコンソールに登録された商品のうち、使用可能な商品リストを照会します。
+    - IAPコンソールに登録された商品のうち、購入可能な商品は[ProductDetailsResult](./iap-unity/#productdetailsresult)のProductプロパティ([IapProduct](./iap-unity/#iapproduct))で返されます。
+    - IAPコンソールに登録された商品のうち、ストアに登録されていない商品は[ProductDetailsResult](./iap-unity/#productdetailsresult) InvalidProductsプロパティ([IapProduct](./iap-unity/#iapproduct))で返されます。
 
-### 상품 목록 조회 API 명세
+### 商品リスト照会API仕様
 
 ```csharp
 public static void RequestProductDetails(ToastCallback<ProductDetailsResult> callback);
 ```
 
-### 상품 목록 조회 예시
+### 商品リスト照会例
 
 ```csharp
 ToastIap.RequestProductDetails((result, productDetailsResult) =>
@@ -137,68 +137,68 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 });
 ```
 
-## 상품 구매
-- TOAST IAP는 스토어에 등록된 상품 ID를 사용하여 상품을 구매할 수 있습니다.
-    - 상품 ID는 상품 목록 조회시 획득할 수 있습니다.
-- 상품 구매 결과는 초기화시 등록한 PurchaseUpdateListener를 통해 반환됩니다.
-    - 구매 결과는 [IapPurchase](./iap-unity/#iappurchase)를 반환합니다.
+## 商品購入
+- TOAST IAPは、ストアに登録された商品IDを使用して商品を購入できます。
+    - 商品IDは、商品リスト照会時に取得できます。
+- 商品購入結果は、初期化時に登録したPurchaseUpdateListenerを通して返されます。
+    - 購入結果は[IapPurchase](./iap-unity/#iappurchase)を返します。
 
-### 상품 구매 API 명세
+### 商品購入API仕様
 
 ```csharp
 public static void Purchase(string productId);
 ```
 
-### 상품 구매 예시
+### 商品購入例
 
 ```csharp
 var productId = userSelectedProductId;
 ToastIap.Purchase(productId);
 ```
 
-## 미소비 결제 조회
-- 아직 소비되지 않은 소비성 상품 정보를 조회합니다.
-    - 미소비 결제 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
-- 사용자에게 상품을 지급된 후 [Consume API](../../../Mobile%20Service/IAP/ja/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
+## 未消費決済照会
+- まだ消費されていない消費性商品情報を照会します。
+    - 未消費決済照会の結果は[IapPurchase](./iap-unity/#iappurchase)オブジェクトのリストで返されます。
+- ユーザーに商品を支給した後[Consume API](../../../Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
 
-### 미소비 결제 조회 API 명세
+### 未消費決済照会API仕様
 
 ```csharp
 public static void RequestConsumablePurchases(ToastCallback<List<IapPurchase>> callback);
 ```
 
-### 미소비 결제 조회 예시
+### 未消費決済照会例
 
 ```csharp
 ToastIap.RequestConsumablePurchases((result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 미소비 결제 조회 성공
+        // 未消費決済照会成功
     }
 });
 ```
 
-## 활성화된 구독 조회
-- User ID 기준으로 활성화된 구독 상품을 조회할 수 있습니다.
-    - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 조회할 수 있습니다.
-    - 활성화된 구독 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
-- Android에서 구독한 상품을 iOS에서도, 혹은 iOS에서 구독한 상품을 Android에서도 조회 가능합니다.
+## 有効になっている購読照会
+- User ID基準で有効になっている購読商品を照会できます。
+    - 決済が完了した購読商品は、使用期間が残っている場合、継続して照会できます。
+    - 有効になっている購読照会の結果は[IapPurchase](./iap-unity/#iappurchase)オブジェクトのリストで返されます。
+- Androidで購読した商品をiOSでも、またはiOSで購読した商品をAndroidでも照会できます。
 
-### 활성화된 구독 조회 API 명세
+### 有効になっている購読照会API仕様
 
 ```csharp
 public static void RequestActivePurchases(ToastCallback<List<IapPurchase>> callback);
 ```
 
-### 활성화된 구독 조회 예시
+### 有効になっている購読照会例
 
 ```csharp
 ToastIap.RequestActivePurchases((result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 활성화된 구독 조회 성공
+        // 有効になっている購読照会成功
     }
 });
 ```
@@ -217,8 +217,8 @@ public class ToastIapConfiguration
 
 | Property | Returns | Description |
 |---|---|---|
-| AppKey | string | IAP 서비스 앱 키를 설정합니다. |
-| StoreCode | StoreCode | 스토어 코드를 설정합니다. |
+| AppKey | string | IAPサービスアプリキーを設定します。 |
+| StoreCode | StoreCode | ストアコードを設定します。 |
 
 
 ### StoreCode
@@ -234,9 +234,9 @@ public enum StoreCode
 
 | Value | Description |
 |---|---|
-| GooglePlayStore | 구글 플레이 스토어 (Android Only) |
-| AppleAppStore | 애플 앱 스토어 (iOS Only) |
-| OneStore | 원 스토어 (Android Only) |
+| GooglePlayStore | GooglePlayStore(Android Only) |
+| AppleAppStore | AppleAppStore(iOS Only) |
+| OneStore | OneStore(Android Only) |
 
 ### ToastResult<T>
 ```csharp
@@ -250,9 +250,9 @@ public class ToastResult
 
 | Property | Returns | Description |
 |---|---|---|
-| IsSuccessful | bool | 결과 성공 여부를 반환합니다. |
-| Code | int | 결과 코드를 반환합니다. <br/> (성공은 0을 반환) |
-| Message | string | 결과 메시지를 반환합니다. |
+| IsSuccessful | bool | 結果が成功したかを返します。 |
+| Code | int | 結果コードを返します。 <br/> (成功は0を返す) |
+| Message | string | 結果メッセージを返します。 |
 
 ### ProductDetailsResult
 ```csharp
@@ -265,8 +265,8 @@ public class ProductDetailsResult
 
 | Property | Returns | Description |
 |---|---|---|
-| Products | List<IapProduct> | 사용가능한 상품 정보들을 반환합니다. |
-| InvalidProducts | List<IapProduct> | TOAST IAP 콘솔에 상품을 등록하였지만 스토어에 등록되지 않은 상품들을 반환합니다. |
+| Products | List<IapProduct> | 使用可能な商品情報を返します。 |
+| InvalidProducts | List<IapProduct> | TOAST IAPコンソールに商品を登録しましたが、ストアに登録されていない商品を返します。 |
 
 
 ### IapProduct
@@ -285,13 +285,13 @@ public class IapProduct
 
 | Property | Returns | Description |
 |---|---|---|
-| Id | string | 상품의 ID |
-| Name | string | 상품 이름 |
-| ProductType | string | 상품 유형 |
-| IsActive | bool | 상품 활성화 여부 |
-| Price | float | 가격 |
-| Currency | string | 통화 |
-| LocalizedPrice | string | 현지 가격 |
+| Id | string | 商品のID |
+| Name | string | 商品名 |
+| ProductType | string | 商品タイプ |
+| IsActive | bool | 商品が有効になっているか |
+| Price | float | 価格 |
+| Currency | string | 通貨 |
+| LocalizedPrice | string | 現地価格 |
 
 ### IapPurchase
 ```csharp
@@ -313,26 +313,26 @@ public class IapPurchase
 
 | Property | Returns | Description |
 |---|---|---|
-| PaymentId | string | 결제 ID | 
-| PaymentSequence | string | 결제 고유 번호 | 
-| OriginalPaymentId | string | 원본 결제 ID | 
-| ProductId | string | 상품 ID | 
-| ProductType | string | 상품 유형 | 
-| UserId | string | 사용자 ID | 
-| Price | float | 가격 | 
-| PriceCurrencyCode | string | 통화 정보 | 
-| AccessToken | string | 소비에 사용되는 토큰 | 
-| PurchaseTime | long | 상품 구매 시간 | 
-| ExpiryTime | long | 구독 상품의 남은 시간 | 
+| PaymentId | string | 決済ID | 
+| PaymentSequence | string | 決済固有番号 | 
+| OriginalPaymentId | string | 原本決済ID | 
+| ProductId | string | 商品ID | 
+| ProductType | string | 商品タイプ | 
+| UserId | string | ユーザーID | 
+| Price | float | 価格 | 
+| PriceCurrencyCode | string | 通貨情報 | 
+| AccessToken | string | 消費に使用されるトークン | 
+| PurchaseTime | long | 商品購入時間 | 
+| ExpiryTime | long | 購読商品の残り時間 | 
 
 
 ## FAQ
 ### Android
 
 #### Question.1
-**구매 중(혹은 구매 완료 직후)에 앱을 백그라운드로 전환했다가 앱 아이콘으로 앱에 다시 진입하면 사용자 취소 에러가 콜백으로 반환됩니다. 어떻게 해야할까요?**
+**購入中(または購入完了直後)にアプリをバックグラウンドに変更し、アプリアイコンでアプリを再び起動するとユーザーキャンセルエラーがコールバックで返されます。どうしたらいいですか？**
 
 #### Answer.1
-유니티 액티비티의 launchMode가 singleTask 이기 때문에 발생하는 문제입니다. 결제창이 파괴되면서 사용자 취소로 인식하기 때문에 사용자 취소 에러가 반환됩니다.
-만약 스토어에서 결제가 완료된 상태라면, 앱을 재시작거나 미소비 결제 조회 호출을 통해 재처리를 할 수 있습니다. 재처리가 완료되면 사용자에게 아이템을 지급할 수 있게 됩니다.
-재처리가 되지 않은 상태에서 다시 결제를 시도하면, 이미 소유중인 상품이라는 오류가 반환됩니다. (이를 통해 사용자의 중복결제를 피할 수 있습니다)
+UnityアクティビティのlaunchModeがsingleTaskのため発生する問題です。決済ウィンドウが破壊されるとユーザーキャンセルと認識するため、ユーザーキャンセルエラーが返されます。
+もしストアで決済が完了した状態なら、アプリを再起動するか未消費決済照会を呼び出すことで再処理できます。再処理が完了すると、ユーザーにアイテムを支給できるようになります。
+再処理ができていない状態で再度決済を試行すると、すでに保有中の商品というエラーが返されます。(これによりユーザーの重複決済を回避することができます)
