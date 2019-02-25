@@ -1,40 +1,40 @@
-## TOAST > User Guide for TOAST SDK > Release Notes > Unity
+﻿## TOAST > TOAST SDK使用ガイド > リリースノート > Unity
 
 ## 0.12.0 (2019.01.08)
 
 ### TOAST IAP
 
-#### 추가 사항
+#### 追加事項
 
-* Add module
+* 新規機能追加
 
 ## 0.11.0 (2018.12.27)
 
 ### TOAST Log & Crash
 
-#### Added
+#### 追加事項
 
-* Add a feature that sends automatically unexpected exception logs that occurs in Unity 
-* SetCrashListener API
+* Unityで発生した予期せぬ例外のログを自動的に送信する機能を追加
+* SetCrashListener API追加
 
 ## 0.10.0 (2018.11.20)
 
 ### TOAST Log & Crash
 
-#### Added
+#### 追加事項
 
-* SetLoggerListener API 
-* Support of Network Insights  
+* SetLoggerListener API追加
+* Network Insightsサポート 
 
-#### Changed 
+#### 変更事項
 
-* Removed mainTemplate.gradle from Unity Package 
-    * See guide for setting of mainTemplate.gradle 
+* UnityパッケージからmainTemplate.gradle削除
+    * mainTemplate.gradle設定はガイド参照
 
 ## 0.9.0 (2018.09.04)
 
 ### TOAST Log & Crash
 
-#### Added
+#### 追加事項
 
-* Add module
+* 新規機能追加

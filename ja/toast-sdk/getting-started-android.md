@@ -1,13 +1,13 @@
-## TOAST > User Guide for TOAST SDK > Getting Started > Android
+﻿## TOAST > TOAST SDK使用ガイド > 開始する > Android
 
-## Supporting Environment
+## サポート環境
 
-* Android 4.0.3 or higher
-* The latest version of Android Studio (version 2.2 or higher)
+* Android 4.0.3以上
+* Android Studio最新バージョン(バージョン2.2以上)
 
-## Configuration of TOAST SDK
+## TOAST SDKの構成
 
-TOAST SDK for Android is configured as follows:  
+Android用TOAST SDKの構成は次のとおりです。
 
 * TOAST Common SDK
 * TOAST Core SDK
@@ -18,51 +18,51 @@ TOAST SDK for Android is configured as follows:
 * TOAST Push Core SDK
 * [TOAST Push Firebase Cloud Messaging](./push-android) SDK
 
-TOAST SDK services can be selectively applied for your needs. 
+TOAST SDKが提供するサービスの中から、希望する機能を選択して適用できます。
 
-| Gradle Dependency | Service |
-| --- | --- |
-| com.toast.android:toast-common:0.14.1 | TOAST Common |
-| com.toast.android:toast-core:0.14.1 | TOAST Core |
-| com.toast.android:toast-logger:0.14.1 | TOAST Log & Crash |
-| com.toast.android:toast-iap-core:0.14.1 | TOAST In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.14.1 | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.14.1 | TOAST In-app Purchase <br>OneStore |
-| com.toast.android:toast-push-core:0.14.1    | TOAST Push Core   |
-| com.toast.android:toast-push-fcm:0.14.1     | TOAST Push <br>Firebase Cloud Messaging |
+| Gradle Dependency                           | Service           |
+| ------------------------------------------- | ----------------- |
+| com.toast.android：toast-common：0.14.1       | TOAST Common      |
+| com.toast.android：toast-core：0.14.1         | TOAST Core        |
+| com.toast.android：toast-logger：0.14.1       | TOAST Log & Crash |
+| com.toast.android：toast-iap-core：0.14.1     | TOAST In-app Purchase Core |
+| com.toast.android：toast-iap-google：0.14.1   | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android：toast-iap-onestore：0.14.1 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android：toast-push-core：0.14.1    | TOAST Push Core   |
+| com.toast.android：toast-push-fcm：0.14.1     | TOAST Push <br>Firebase Cloud Messaging |
 
-## Apply TOAST SDK to Android Studio Projects 
+## TOAST SDKをAndroid Studioプロジェクトに適用
 
-### 1. Build Android with Gradle
+### 1. Gradleを使用してAndroidビルド
 
-Set dependency as below, to use all TOAST SDK services.  
+TOAST SDKのすべてのサービスを使用するには、下記のように従属性(dependency)を設定します。
 
-> For Unity users, dependency must be set separately.  
-> For more details, see [Guide for Unity](./getting-started-unity/#android).
+> Unityを使用する場合、別途の従属性設定を行う必要があります。
+> 詳細は[Unityガイド](./getting-started-unity/#android)を参照してください。
 
 ```groovy
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.14.1'
+  implementation 'com.toast.android：toast-sdk：0.14.1'
 }
 ```
 
-Following describe how to set for each product of TOAST SDK. 
+TOAST SDKが提供するサービス別の設定方法は次のとおりです。
 
-- [Setting Library of TOAST Logger](./log-collector-android/#_1)
-- [Setting Library of TOAST In-app Purchase](./iap-android/#_2)
-- [Setting Library of TOAST Push](./push-android/#_2)
+- [TOAST Loggerライブラリ設定](./log-collector-android/#_1)
+- [TOAST In-app Purchaseライブラリ設定](./iap-android/#_2)
+- [TOAST Pushライブラリ設定](./push-android/#_2)
 
-### 2. Build Android with AAR  
+### 2. AARを使用してAndroidビルド
 
-Android SDK can be downloaded from [Downloads](../../../Download/#toast-sdk).
+Android SDKは[Downloads](../../../Download/#toast-sdk)ページでダウンロードできます。
 
+## UserID設定
 
-## Set UserID 
+TOASAT SDKにUserIDを設定できます。
+設定したUserIDは、TOAST SDKの各モジュールで共通使用されます。
+ToastLoggerのログ送信APIを呼び出すたびに、設定したUserIDをログと一緒にサーバーに送信します。
 
-User ID can be set for ToastSDK and it is for common usage at each module of TOAST SDK.
-Send such set user ID to a server, along with logs, whenever Log Sending API of TOAST Logger is called. 
-
-### Specifications for User ID Setting API
+### UserID設定API仕様
 
 ```java
 /* ToastSdk.java */
@@ -71,30 +71,30 @@ public static void setUserId(String userId);
 
 | Parameters | |
 | -- | -- |
-| userId | String: User ID |
+| userId | String：ユーザーID|
 
-### Example of UserID Setting 
+### UserID設定例
 
-#### Login 
+#### ログイン
 
 ```java
 // Login.
 ToastSdk.setUserId(userId);
 ```
 
-#### Logout 
+#### ログアウト
 
 ```java
 // Logout.
 ToastSdk.setUserId(null);
 ```
 
-## Set Debug Mode 
+## デバッグモード設定
 
-To check logs within TOAST SDK, the debug mode can be set. 
-To inquire of TOAST SDK, enable the debug mode for faster response.  
+TOAST SDKの内部ログを確認するために、デバッグモードを設定できます。
+TOAST SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
 
-### Specifications for Debug Mode Setting API 
+### デバッグモード設定API仕様
 
 ```java
 /* ToastSdk.java */
@@ -103,31 +103,28 @@ public static void setDebugMode(boolean debug);
 
 | Parameters | |
 | -- | -- |
-| debug | boolean: True to enable debug mode, or False |
+| debug | boolean：デバッグモードを有効にするにはtrue、無効にする場合はfalse。|
 
-### Usage Example of Debug Mode Setting 
+### デバッグモード設定使用例
 
-#### Enable Debug Mode 
+#### デバッグモード有効化
 
 ```java
 // Enable debug mode.
 ToastSdk.setDebugMode(true);
 ```
 
-#### Disable Debug Mode 
+#### デバッグモード無効化
 
 ```java
 // Disable debug mode.
 ToastSdk.setDebugMode(false);
 ```
 
-> (Caution) To release an app, the debug mode must be disabled. 
+> [注意]アプリをリリースする時は、デバッグモードを無効化する必要があります。
 
-## Use TOAST Service 
+## TOASTサービス使用
 
-* User Guide for [TOAST Log & Crash](./log-collector-android) 
-* User Guide for [TOAST In-app Purchase](./iap-android) 
-* User Guide for [TOAST Push](./push-android) 
-
-
-
+* [TOAST Log & Crash](./log-collector-android)使用ガイド
+* [TOAST In-app Purchase](./iap-android)使用ガイド
+* [TOAST Push](./push-android)使用ガイド

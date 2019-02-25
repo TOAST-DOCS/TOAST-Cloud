@@ -73,8 +73,8 @@ apply plugin: 'com.google.gms.google-services'
 - 앱 모듈의 루트 경로에 앞서 다운로드한 google-services.json을 복사합니다.
 
 ## Push 설정
-- [ToastPushConfiguration](/push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
-- [ToastPushConfiguration](/push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
+- [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
+- [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
 - Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
 
 ### Push 설정 예시

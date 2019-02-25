@@ -1,18 +1,18 @@
-## TOAST > User Guide for TOAST SDK > TOAST Push > Android
+﻿## TOAST > TOAST SDK使用ガイド > TOAST Push > Android
 
-## 사전 준비
+## 事前準備
 
-1\. [TOAST SDK](./getting-started-android)를 설치합니다.
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
-3\. Push 콘솔에서 AppKey를 확인합니다.
+1\. [TOAST SDK](./getting-started-android)をインストールします。
+2\. [TOASTコンソール](https://console.cloud.toast.com)で、[Pushサービスを有効化](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)します。
+3\. PushコンソールでAppKeyを確認します。
 
-## Push 제공자별 가이드
+## Push提供者別ガイド
 
-- [Firebase Cloud Messaging (이하 FCM) 가이드](https://firebase.google.com/docs/cloud-messaging/)
+- [Firebase Cloud Messaging (以下FCM)ガイド](https://firebase.google.com/docs/cloud-messaging/)
 
-## 라이브러리 설정
+## ライブラリ設定
 
-- FCM용 SDK를 설치하려면 아래 코드를 build.gradle에 추가합니다.
+- FCM用SDKをインストールするには、下記のコードをbuild.gradleに追加します。
 
 ```groovy
 dependencies {
@@ -21,21 +21,21 @@ dependencies {
 }
 ```
 
-## Firebase Cloud Messaging 설정
+## Firebase Cloud Messagingの設定
 
-### 프로젝트 및 앱 추가
-- 기존 Firebase 프로젝트가 없다면, [Firebase 콘솔](https://console.firebase.google.com/?hl=ko)에서 프로젝트를 생성합니다.
-- 콘솔의 상단에 있는 톱니바퀴 버튼을 클릭해서 **프로젝트 설정**으로 이동합니다.
-- 프로젝트 설정의 **내 앱** 에서 **Android 앱에 Firebase 추가**를 클릭합니다.
-- **Android 패키지 이름**, **앱 닉네임 (선택사항)** 을 입력하고 **앱 등록** 버튼을 클릭합니다.
-- **google-services.json 다운로드** 버튼을 클릭해서 설정 정보를 다운로드합니다. 그리고 **다음** 버튼을 클릭합니다.
-    - 만약 다운로드를 안하고 넘어갔더라도 프로젝트 설정에서 다시 다운로드 가능합니다.
-- 다음 스텝인 **Firebase SDK 추가** 는 아래 별도의 가이드를 참고하면 되기 때문에 바로 **다음** 버튼을 클릭합니다.
-- 다음 스텝인 **앱을 실행하여 설치 확인** 도 **_이 단계 건너뛰기_** 를 클릭해서 넘어갑니다.
+### プロジェクトおよびアプリ追加
+- 既存Firebaseプロジェクトがない場合、[Firebaseコンソール](https://console.firebase.google.com/?hl=ko)でプロジェクトを作成します。
+- コンソールの上部にある歯車ボタンをクリックして**プロジェクト設定**に移動します。
+- プロジェクト設定の**マイアプリ**で、**AndroidアプリにFirebase追加**をクリックします。
+- **Androidパッケージ名**、**アプリニックネーム(選択事項)**を入力し、**アプリ登録**ボタンをクリックします。
+- **google-services.jsonダウンロード**ボタンをクリックして、設定情報をダウンロードします。そして**次へ**ボタンをクリックします。
+    - もしダウンロードをせずにスキップしても、プロジェクト設定から再度ダウンロード可能です。
+- 次のステップ**Firebase SDK追加**は、下記の別途ガイドを参考すればよいので、すぐに**次へ**ボタンをクリックします。
+- 次のステップ**アプリを実行してインストール確認**も、**_この段階をスキップ_**をクリックしてスキップします。
 
-### build.gradle 설정
-#### 루트 수준의 build.gradle
-- 루트 수준의 build.gradle에 아래 코드를 추가합니다.
+### build.gradle設定
+#### ルートレベルのbuild.gradle
+- ルートレベルのbuild.gradleに、下記のコードを追加します。
 
 ```groovy
 buildscript {
@@ -55,8 +55,8 @@ allprojects {
 }
 ```
 
-#### 앱 모듈의 build.gradle
-- 앱 모듈의 build.gradle에 아래 코드를 추가합니다.
+#### アプリモジュールのbuild.gradle
+- アプリモジュールのbuild.gradleに、下記のコードを追加します。
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -69,15 +69,15 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
-### google-services.json 추가
-- 앱 모듈의 루트 경로에 앞서 다운로드한 google-services.json을 복사합니다.
+### google-services.jsonの追加
+- アプリモジュールのルートパスに、ダウンロードしたgoogle-services.jsonをコピーします。
 
-## Push 설정
-- [ToastPushConfiguration](/push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
-- [ToastPushConfiguration](/push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
-- Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
+## Push設定
+- [ToastPushConfiguration](./push-android/#toastpushconfiguration)オブジェクトは、Push設定情報を含んでいます。
+- [ToastPushConfiguration](./push-android/#toastpushconfiguration)オブジェクトは、ToastPushConfiguration.Builderを使用して作成できます。
+- Pushコンソールで発行されたAppKeyをToastPushConfiguration.newBuilderの引数に渡します。
 
-### Push 설정 예시
+### Push設定例
 
 ```java
 ToastPushConfiguration.Builder configuration = 
@@ -85,59 +85,59 @@ ToastPushConfiguration.Builder configuration =
             .build();
 ```
 
-## Push 초기화
-- ToastPush.initialize를 호출하여 TOAST Push를 초기화합니다.
-- 사용하기를 원하는 PushProvider의 객체를 초기화 호출시 전달해야 합니다.
+## Push初期化
+- ToastPush.initializeを呼び出してTOAST Pushを初期化します。
+- 使用したいPushProviderのオブジェクトを初期化呼び出し時に渡す必要があります。
 
-### FCM 초기화 예시
+### FCM初期化例
 
 ```java
 PushProvider provider = FirebaseMessagingPushProvider.getProvider();
 ToastPush.initialize(provider, configuration);
 ```
 
-## 서비스 로그인
-- TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
-    - [ToastSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
-    - 사용자 아이디를 설정하지 않은 경우, 토큰을 등록할 수 없습니다.
-- 서비스 로그인 단계에서 사용자 아이디 설정, 토큰 등록 기능을 구현하는 것을 권장합니다.
+## サービスログイン
+- TOAST SDKで提供するすべてのサービス(Push、IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
+    - [ToastSdk.setUserId](./getting-started-android/#userid)にユーザーIDを設定できます。
+    - ユーザーIDを設定していない場合、トークンを登録できません。
+- サービスログイン段階でユーザーID設定、トークン登録機能を実装することを推奨します。
 
-### 서비스 로그인 예제
+### サービスログイン例
 
 ```java
 public void onLogin(String userId) {
     // Login.
     ToastSdk.setUserId(userId);
-    // 토큰 등록 등
+    // トークン登録など
 }
 ```
 
-## 수신 동의 설정
-- 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 푸시 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
-    - [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
-    - [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+## 受信同意設定
+- 韓国情報通信網法規定(第50条から第50条の8)に従い、トークン登録時の通知/広告性/夜間広告性プッシュメッセージ受信に同意するかも一緒に入力を受けます。メッセージ送信時に受信に同意しているかを基準に自動的にフィルタリングします。
+    - [KISAガイドへ](https://spam.kisa.or.kr/spam/sub62.do)
+    - [法令へ](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 
-### 수신 동의 설정 예시
+### 受信同意設定例
 ```java
-ToastPushAgreement agreement = ToastPushAgreement.newBuilder(/* 알림 수신 여부 */ true)
-        .setAllowAdvertisements(/* 광고 수신 여부 */ true)
-        .setAllowNightAdvertisements(/* 야간 광고 수신 여부 */ true)
+ToastPushAgreement agreement = ToastPushAgreement.newBuilder(/*通知を受信するか*/ true)
+        .setAllowAdvertisements(/* 広告を受信するか*/ true)
+        .setAllowNightAdvertisements(/*夜間広告を受信するか*/ true)
         .build();
 ```
 
-## 토큰 등록
-- 각 Push 제공자가 제공하는 토큰을 획득하여, TOAST Push 서버로 전송합니다.
-- 토큰이 성공적으로 등록되면, Push를 수신할 수 있습니다.
+## トークン登録
+- 各Push提供者が提供するトークンを取得し、TOAST Pushサーバーに送信します。
+- トークンの登録に成功すると、Pushを受信できます。
 
-### 토큰 등록 예시
+### トークン登録例
 ```java
 ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
     @Override
     public void onRegister(@NonNull PushResult result, @Nullable String token) {
         if (result.isSuccess()) {
-            // 토큰 등록 성공
+            // トークン登録成功
         } else {
-            // 토큰 등록 실패
+            // トークン登録失敗
             int code = result.getCode();
             String message = result.getMessage();
         }
@@ -145,10 +145,10 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 });
 ```
 
-## 토큰 정보 조회
-- TOAST Push 서버에 등록된 토큰 정보를 조회합니다.
+## トークン情報照会
+- TOAST Pushサーバーに登録されているトークン情報を照会します。
 
-### 토큰 정보 조회 예시
+### トークン情報照会例
 ```java
 ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
     @Override
@@ -156,9 +156,9 @@ ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
         if (result.isSuccess()) {
             String token = tokenInfo.getToken();
             ToastPushAgreement agreement = tokenInfo.getAgreement();
-            // 토큰 정보 조회 성공
+            // トークン情報照会成功
         } else {
-            // 토큰 정보 조회 실패
+            // トークン情報照会失敗
             int code = result.getCode();
             String message = result.getMessage();
         }
@@ -166,79 +166,79 @@ ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
 });
 ```
 
-## 알림 기본값 설정
+## 通知デフォルト値設定
 
-### 작은 아이콘 기본값 설정
-- 알림의 작은 아이콘의 기본값을 설정합니다.
-- 작은 아이콘의 기본값을 설정하면 SDK가 알림 생성시 기본값으로 설정된 작은 아이콘을 알림에 등록합니다.
+### 小さいアイコンのデフォルト値設定
+- 通知の小さいアイコンのデフォルト値を設定します。
+- 小さいアイコンのデフォルト値を設定すると、SDKが通知作成時にデフォルト値に設定された小さいアイコンを通知に登録します。
 
-#### 작은 아이콘 기본값 설정 예시
+#### 小さいアイコンデフォルト値設定例
 ```java
 ToastNotification.setDefaultSmallIcon(context, R.drawable.ic_notification);
 ```
 
-### 기본 알림 채널 설정
-- 안드로이드 8.0(API 레벨 26) 이상 부터는 알림 채널을 반드시 사용해야 합니다.
-- 기본 알림 채널을 설정하면 SDK가 알림 생성시 기본 알림 채널로 알림을 등록합니다.
-- **알림 채널 ID**는 알림 채널을 식별하기 위한 값으로 앱에서 유일한 값으로 설정해야 합니다.
-- **알림 채널 이름**은 사용자에게 노출되는 알림 채널의 이름입니다.
+### 基本通知チャンネル設定
+- Android 8.0(APIレベル26)以上からは、通知チャンネルを使用する必要があります。
+- 基本通知チャンネルを設定すると、SDKが通知作成時に、基本通知チャンネルで通知を登録します。
+- **通知チャンネルID**は、通知チャンネルを識別するための値で、アプリでユニークな値に設定する必要があります。
+- **通知チャンネル名**は、ユーザーに表示される通知チャンネルの名前です。
 
-> 기본 알림 채널을 설정하지 않으면 아래값으로 기본 알림 채널을 생성합니다.
-> **알림 채널 ID** : 임의의 UUID를 ID로 사용합니다.
-> **알림 채널 이름** : 애플리케이션의 이름을 알림 채널 이름으로 사용합니다.
+> 基本通知チャンネルを設定しない場合、下記の値で基本通知チャンネルを作成します。
+> **通知チャンネルID**：任意のUUIDをIDに使用します。
+> **通知チャンネル名**：アプリケーションの名前を通知チャンネル名に使用します。
 
-### 기본 알림 채널 설정 예시
+### 基本通知チャンネルの設定例
 ```java
 ToastNotification.setDefaultNotificationChannel(context, 
     "YOUR_NOTIFICATION_CHANNEL_ID", 
     "YOUR_NOTIFICATION_CHANNEL_NAME");
 ```
 
-## 리치 메시지
+## リッチメッセージ
 
-### 리치 메시지란?
-- **리치 메시지**란 제목, 본문과 함께 수신할 수 있는 다양하고 풍부한 메시지입니다.
+### リッチメッセージとは？
+- **リッチメッセージ**とは、タイトル、本文と一緒に受信できるリッチなメッセージです。
 
-### 지원하는 리치 메시지
-#### 버튼
-- 알림 제거 : 현재 알림을 제거합니다.
-- 앱 열기 : 앱을 실행합니다.
-- URL 열기 : 특정 URL로 이동합니다.
-    - Custom scheme을 이용한 Activity/BroadcastReceiver 이동도 가능
-- 답장 전송 : 알림에서 바로 답장을 보냅니다.
-    - 안드로이드 7.0(API 레벨 24) 이상에서만 사용 가능합니다.
+### サポートするリッチメッセージ
+#### ボタン
+- 通知削除：現在の通知を削除します。
+- アプリを開く：アプリを実行します。
+- URLを開く：特定のURLに移動します。
+    - Custom schemeを利用したActivity/BroadcastReceiver移動も可能
+- 返信：通知から返信を送ります。
+    - Android 7.0(APIレベル24)以上でのみ使用可能です。
 
-> 버튼은 최대 3개까지 지원합니다.
+> ボタンは最大3個までサポートします。
 
-#### 미디어
-- 이미지 : 알림에 이미지를 추가합니다. (내부, 외부 이미지 모두 지원)
-    - 이미지는 가로와 세로 비율이 2:1인 이미지를 권장합니다.
-    - 다른 비율의 이미지는 잘린채로 노출될 수 있습니다.
-- 그 외 : 그 외의 미디어(동영상, 소리 등)는 지원하지 않습니다.
+#### メディア
+- 画像：通知に画像を追加します。 (内部、外部画像をサポート)
+    - 画像の横と縦の比率は2:1を推奨します。
+    - 異なる比率の画像は、見切れて表示されることがあります。
+- その他：その他のメディア(動画、音声など)はサポートしていません。
 
-#### 큰 아이콘
-- 알림에 큰 아이콘을 추가합니다. (내부, 외부 이미지 모두 지원)
-    - 큰 아이콘의 이미지는 1:1 비율을 권장합니다.
-    - 다른 비율의 이미지는 강제로 비율이 1:1로 변경되기 때문에 기대와 다른 이미지가 노출될 수 있습니다.
+#### 大きなアイコン
+- 通知に大きなアイコンを追加します。 (内部、外部画像をサポート)
+    - 大きなアイコンの画像は、1:1の比率を推奨します。
+    - 異なる比率の画像は、強制的に比率が1:1に変更されるため、期待と異なる画像が表示されることがあります。
 
-#### 그룹
-- 같은 키의 알림들을 하나로 묶습니다.
-- 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
+#### グループ
+- 同じキーの通知を1つにまとめます。
+- Android 7.0(APIレベル24)以上でのみ使用可能です。
 
-### 리치 메시지 변환 방법
-- 리치 메시지는 TOAST Push의 웹콘솔에서 전송할 수 있습니다. 또한 메시지 발송 API의 richMessage 필드를 추가해서 전송할 수도 있습니다.
-- 리치 메시지를 정해진 형태로 전송했다면, 별도의 변환 과정없이 리치 메시지 알림이 등록됩니다.
+### リッチメッセージの変換方法
+- リッチメッセージは、TOAST PushのWebコンソールで送信できます。また、メッセージ送信APIのrichMessageフィールドを追加して、送信することもできます。
+- リッチメッセージを決められた形式で送信した場合、別途の変換プロセスを経ずにリッチメッセージ通知が登録されます。
 
-### ReplyActionListener 등록
-- 리치 메시지의 답장(혹은 응답) 버튼을 사용하는 경우, 사용자의 입력 메시지를 받아서 별도의 처리가 필요합니다.
-- 이를 위해서 ReplyActionListener 를 제공합니다.
-- ReplyActionListener는 **반드시** Application의 onCreate 에서 등록해야 합니다.
+### ReplyActionListenerの登録
+- リッチメッセージの返信(またはレスポンス)ボタンを使用する場合、ユーザーの入力メッセージを受け取って別途の処理が必要です。
+- このためにReplyActionListenerを提供します。
+- ReplyActionListenerは、**必ず**ApplicationのonCreateで登録してください。
 
-> (주의) 사용자가 입력을 완료하고 전송 버튼을 누르면 알림(Notification)은 로딩바가 노출되며 알림이 제거되지 않습니다.
-> 따라서 답장 처리가 완료되면 알림(Notification)을 제거하거나 업데이트하는 코드를 추가해야합니다.
-> 아래 예제 코드를 참고해주세요.
+> (注意)ユーザーが入力を完了して送信ボタンを押すと、通知(Notification)はローディングバーが表示され、通知が削除されません。
+> したがって、返信処理が完了したら通知(Notification)を削除するか、アップデートするコードを追加する必要があります。
+> 下記のサンプルコードを参考にしてください。
 
-#### ReplyActionListener 등록 예제
+#### ReplyActionListener登録例
 
 ```java
 public class ToastPushSampleApplication extends Application {
@@ -267,7 +267,7 @@ public class ToastPushSampleApplication extends Application {
 
 ## TOAST Push Class Reference
 ### ToastPushConfiguration
-- TOAST Push를 초기화할 때 전달되는 Push 설정 정보입니다.
+- TOAST Pushを初期化する時に渡されるPush設定情報です。
 
 ```java
 /* ToastPushConfiguration.java */
@@ -277,11 +277,11 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 
 | Method | Returns | |
 |---|---|---|
-| getAppKey | String | Push 서비스 앱 키를 반환합니다. |
-| static newBuilder | ToastPushConfiguration.Builder | ToastPushConfiguration 객체 생성을 위한 빌더를 생성합니다. |
+| getAppKey | String | Pushサービスアプリキーを返します。 |
+| static newBuilder | ToastPushConfiguration.Builder | ToastPushConfigurationオブジェクト作成のためのビルダーを作成します。 |
 
 ### PushResult
-- 비동기 API 호출시 콜백의 응답으로 반환되는 결과 객체입니다.
+- 非同期APIの呼び出し時に、コールバックのレスポンスに返される結果オブジェクトです。
 
 
 ```java
@@ -294,13 +294,13 @@ public boolean isFailure();
 
 | Method | Returns | |
 |---|---|---|
-| getCode | int | 결과 코드를 반환합니다. |
-| getMessage | int | 결과 메시지를 반환합니다. |
-| isSuccess | boolean | 성공 여부를 반환합니다. |
-| isFailure | boolean | 실패 여부를 반환합니다. |
+| getCode | int | 結果コードを返します。 |
+| getMessage | int | 結果メッセージを返します。 |
+| isSuccess | boolean | 成功したかを返します。 |
+| isFailure | boolean | 失敗したかを返します。 |
 
 ### TokenInfo
-- 토큰 정보 조회 호출시 콜백으로 반환되는 토큰 정보를 담고 있는 객체입니다.
+- トークン情報照会呼び出し時、コールバックで返されるトークン情報が入っているオブジェクトです。
 
 ```java
 /* TokenInfo.java */
@@ -316,11 +316,11 @@ public String getToken();
 
 | Method | Returns | |
 |---|---|---|
-| getPushType | String | Push 타입을 반환합니다. |
-| getAgreement | ToastPushAgreement | 알림/광고/야간 광고 등 동의 여부를 반환합니다. |
-| getTimeZone | String | 타임존을 반환합니다. |
-| getCountry | String | 국가 코드를 반환합니다. |
-| getLanguage | String | 언어 코드를 반환합니다. |
-| getUserId | String | 사용자 ID를 반환합니다. |
-| getActivatedDateTime | Date | 토큰의 최근 등록 일시를 반환합니다. |
-| getToken | String | 토큰을 반환합니다. |
+| getPushType | String | Pushタイプを返します。 |
+| getAgreement | ToastPushAgreement | 通知/広告/夜間広告などに同意しているかを返します。 |
+| getTimeZone | String | タイムゾーンを返します。 |
+| getCountry | String | 国コードを返します。 |
+| getLanguage | String | 言語コードを返します。 |
+| getUserId | String | ユーザーIDを返します。 |
+| getActivatedDateTime | Date | トークンの最近の登録日時を返します。 |
+| getToken | String | トークンを返します。 |
