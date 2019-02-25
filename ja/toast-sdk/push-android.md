@@ -73,8 +73,8 @@ apply plugin: 'com.google.gms.google-services'
 - アプリモジュールのルートパスに、ダウンロードしたgoogle-services.jsonをコピーします。
 
 ## Push設定
-- [ToastPushConfiguration](/push-android/#toastpushconfiguration)オブジェクトは、Push設定情報を含んでいます。
-- [ToastPushConfiguration](/push-android/#toastpushconfiguration)オブジェクトは、ToastPushConfiguration.Builderを使用して作成できます。
+- [ToastPushConfiguration](./push-android/#toastpushconfiguration)オブジェクトは、Push設定情報を含んでいます。
+- [ToastPushConfiguration](./push-android/#toastpushconfiguration)オブジェクトは、ToastPushConfiguration.Builderを使用して作成できます。
 - Pushコンソールで発行されたAppKeyをToastPushConfiguration.newBuilderの引数に渡します。
 
 ### Push設定例
