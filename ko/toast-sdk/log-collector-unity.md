@@ -177,7 +177,11 @@ ToastLogger.SetLoggerListener(new SampleLoggerListener());
 TOAST Logger 에서는 유니티의 크래시를 크게 두 가지로 분류합니다.
 
 - 네이티브 플랫폼에서 발생한 크래시 (앱이 강제 종료됨)
-- 유니티에서 발생한 예기치 못한 예외 (앱이 강제 종료되지 않음)
+- 유니티에서 발생한 예기치 못한 예외와 LogException을 통해서 출력된 로그 (앱이 강제 종료되지 않음)
+
+> **왜 LogException으로 출력된 로그도 크래시 로그로 수집하나요?**
+> 써드파티 라이브러리 중에 LogException를 통해서 사용자 코드의 예외를 노출하는 경우가 더러 있기 때문입니다.
+> 크래시 로그를 필터링 하고 싶다면 아래 **크래시 로그 필터링하기** 를 참고해주세요.
 
 ToastLogger를 초기화하면 모바일 환경에서 크래시가 발생했을 경우, 혹은 유니티에서 예기치 못한 예외가 발생했을 경우, 자동으로 크래시 로그가 전송됩니다.
 크래시 로그 전송을 비활성화하고 싶은 경우 아래와 같이 ToastLoggerConfiguration 객체의 EnableCrashReporter 프로퍼티를 false 로 설정하면 됩니다.
@@ -218,6 +222,35 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
         Application.Quit();
     }
 });
+```
+
+## 크래시 로그 필터링하기
+- 유니티를 이용하다보면 수집을 원하지 않는 예외 로그 혹은 크래시 로그들이 수집될 수 있습니다.
+- TOAST Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
+    - 해당 기능은 유니티 예외에 한정된 기능입니다.
+
+## AddCrashFilter API 명세
+```csharp
+public delegate bool CrashFilter(CrashLogData logData);
+
+public class CrashLogData
+{
+    public LogType LogType { get; }
+
+    public string Condition { get; }
+
+    public string StackTrace { get; }
+}
+
+public static void AddCrashFilter(CrashFilter filter);
+```
+
+- CrashLogData의 프로퍼티들은 [Application.LogCallback의 매개변수와 동일](https://docs.unity3d.com/ScriptReference/Application.LogCallback.html)합니다.
+
+### AddCrashFilter API 사용 예
+
+```csharp
+ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("UnityEngine.Debug.Log"));
 ```
 
 ## Handled Exception 전송하기
