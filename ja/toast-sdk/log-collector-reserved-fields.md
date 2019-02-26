@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > 予約されているフィールド
+## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > 予約されているフィールド
 
 ### 予約されているフィールド定義
 

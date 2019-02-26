@@ -1,10 +1,18 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.13.0 (2019.02.26)
+
+### TOAST Log & Crash
+
+#### Added
+
+* Add a feature that filter crash logs
+
 ## 0.12.0 (2019.01.08)
 
 ### TOAST IAP
 
-#### 추가 사항
+#### Added
 
 * Add module
 

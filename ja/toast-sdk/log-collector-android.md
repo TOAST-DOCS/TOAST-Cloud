@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Android
+## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Android
 
 ## 事前準備
 
@@ -64,7 +64,7 @@ ToastLogger.warn("TOAST Log & Crash Search!");
 
 ## ユーザー定義フィールド設定
 
-希望するユーザー定義フィールドを設定します。 
+希望するユーザー定義フィールドを設定します。
 ユーザー定義フィールドを設定すると、ログ送信APIを呼び出すたびに設定した値をログと一緒にサーバーに送信します。
 
 ### setUserField API仕様
@@ -143,7 +143,7 @@ ToastLogger.initialize(configuration);
 
 ### Handled Exception API使用
 
-Androidプラットフォームでは、try/catch構文で例外に関する内容を、TOAST LoggerのHandled Exception APIを使用して送信できます。 
+Androidプラットフォームでは、try/catch構文で例外に関する内容を、TOAST LoggerのHandled Exception APIを使用して送信できます。
 このように送信した例外ログは、コンソールで**Log & Crash Search > アプリクラッシュ検索**をクリックし、**エラータイプ**で**Handled**をクリックして照会できます。
 Log & Crashコンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
 
