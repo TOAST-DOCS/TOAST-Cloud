@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > 開始する > Android
+## TOAST > TOAST SDK使用ガイド > 開始する > Android
 
 ## サポート環境
 

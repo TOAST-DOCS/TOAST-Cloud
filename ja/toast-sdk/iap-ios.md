@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST IAP > iOS
+## TOAST > TOAST SDK使用ガイド > TOAST IAP > iOS
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@
 iOS用TOAST IAP SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- | 
+| --- | --- | --- | --- | --- |
 | TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
@@ -38,7 +38,7 @@ end
 #import <ToastIAP/ToastIAP.h>
 ```
 
-### 2. バイナリをダウンロードしてTOAST SDKを適用 
+### 2. バイナリをダウンロードしてTOAST SDKを適用
 
 #### SDKをインポート(import)
 
@@ -554,7 +554,7 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ```objc
 typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorUnknown = 0,                       // 不明
-    
+
     ToastIAPErrorNotInitialized = 1,                // 初期化しない
     ToastIAPErrorStoreNotAvailable = 2,             // ストア使用不可
     ToastIAPErrorProductNotAvailable = 3,           // 商品情報取得に失敗
@@ -569,7 +569,7 @@ typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorChangePurchaseStatusFailed = 12,   // 購入状態変更失敗
     ToastIAPErrorPurchaseStatusInvalid = 13,        // 購入進行不可状態
     ToastIAPErrorExpired = 14,                      // 購読満了
-    
+
     ToastIAPErrorNetworkNotAvailable = 100,         // ネットワーク使用不可
     ToastIAPErrorNetworkFailed = 101,               // HTTP Status Codeが200ではない
     ToastIAPErrorTimeout = 102,                     // タイムアウト

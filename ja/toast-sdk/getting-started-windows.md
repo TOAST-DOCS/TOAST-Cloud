@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > 開始する > Windows C++
+## TOAST > TOAST SDK使用ガイド > 開始する > Windows C++
 
 ## サポート環境
 
@@ -9,7 +9,7 @@
 
 Windows C++用TOAST SDKの構成は次のとおりです。
 
-| Directory | Description | 
+| Directory | Description |
 |---|---|
 | docs/ | Windows SDK文書 |
 | include/toast/ | C++ ヘッダファイル |

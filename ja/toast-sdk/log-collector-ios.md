@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > iOS
+## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > iOS
 
 > [告知]
 > arm64eアーキテクチャを使用する新規端末(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュログは、発生件数の集計のみ可能で、クラッシュ内容の分析はまだサポートされていません。
@@ -15,7 +15,7 @@
 iOS用TOAST Logger SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- | 
+| --- | --- | --- | --- | --- |
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
@@ -41,7 +41,7 @@ end
 #import <ToastLogger/ToastLogger.h>
 ```
 
-### 2. バイナリをダウンロードしてTOAST SDK適用 
+### 2. バイナリをダウンロードしてTOAST SDK適用
 
 #### SDKのインポート(import)
 
@@ -125,7 +125,7 @@ TOAST Loggerは、5つのレベルのログ送信関数を提供します。
 
 ## ユーザー定義フィールド設定
 
-希望するユーザー定義フィールドを設定します。 
+希望するユーザー定義フィールドを設定します。
 ユーザー定義フィールドを設定すると、ログ送信APIを呼び出すたびに設定した値をログと一緒にサーバーに送信します。
 
 ### ユーザー定義フィールドAPI仕様
@@ -142,7 +142,7 @@ TOAST Loggerは、5つのレベルのログ送信関数を提供します。
 ```
 
 * ユーザー定義フィールドは、**Log & Crash Search > ログ検索**をクリックした後、**ログ検索**画面の**選択したフィールド**に表示される値と同じです。
-  
+
 #### ユーザー定義フィールド制約事項
 
 * すでに[予約されているフィールド](./log-collector-reserved-fields)は使用できません。  
@@ -158,7 +158,7 @@ TOAST Loggerは、5つのレベルのログ送信関数を提供します。
 
 ## クラッシュログの収集
 TOAST Loggerは、クラッシュ情報をログに送信する機能を提供します。
-TOAST Loggerを初期化する時、一緒に有効になり、使用するかを設定できます。 
+TOAST Loggerを初期化する時、一緒に有効になり、使用するかを設定できます。
 クラッシュログを送信するには、PLCrashReporterを使用します。
 
 ### CrashReporter使用するかの設定
@@ -207,7 +207,7 @@ setShouldReportCrashHandlerのBlockでユーザー定義フィールドを設定
 
 ```objc
 [ToastLogger setShouldReportCrashHandler:^{
-  
+
   // ユーザー定義フィールドを通してCrashが発生した状況から得たい情報を一緒に送信
   // ユーザー定義フィールド追加
   [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];

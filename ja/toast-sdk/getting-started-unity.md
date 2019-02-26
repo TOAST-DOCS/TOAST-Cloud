@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > 開始するUnity
+## TOAST > TOAST SDK使用ガイド > 開始するUnity
 
 ## サポート環境
 
@@ -36,7 +36,7 @@ Unity用TOAST SDKは、次のようなフォルダ構造になっています。
 
 ## TOAST SDKをUnityプロジェクトに適用
 
-TOASTの[Download](../../../Download/#toast-sdk)ページでTOAST SDK Unityをダウンロードします。 
+TOASTの[Download](../../../Download/#toast-sdk)ページでTOAST SDK Unityをダウンロードします。
 
 ### Unity packageのインポート
 

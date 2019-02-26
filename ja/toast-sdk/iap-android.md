@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST IAP > Android
+## TOAST > TOAST SDK使用ガイド > TOAST IAP > Android
 
 ## 事前準備
 
@@ -88,10 +88,10 @@ public static void initialize(ToastIapConfiguration configuration)
 
 ### アプリ内決済初期化例
 
-- ToastIapを初期化します。 
+- ToastIapを初期化します。
 
 > [参考]初期化は、必ずApplication#onCreateで進行する必要があります。
-    
+
 ```java
 public class MainApplication extends Application {
     @Override
@@ -245,7 +245,7 @@ void queryProductDetails() {
 }
 ```
 
-## 商品購入 
+## 商品購入
 
 * TOAST IAPは、ストアに登録された商品IDを使用して商品を購入できます。
 * 商品情報はToastIap.queryProductDetails()メソッドを呼び出して返された[IapProductDetails](./iap-android/#iapproductdetails)オブジェクトに含まれています。
@@ -436,7 +436,7 @@ public Throwable getCause()
 | isSuccess   | boolean     | 決済に成功したかを返します。                 |
 | isFailure   | boolean     | 決済に失敗したかを返します。                 |
 
-### IapResult 
+### IapResult
 
 ```java
 /* IapResult.java */

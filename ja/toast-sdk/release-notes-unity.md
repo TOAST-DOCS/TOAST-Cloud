@@ -1,4 +1,12 @@
-﻿## TOAST > TOAST SDK使用ガイド > リリースノート > Unity
+## TOAST > TOAST SDK使用ガイド > リリースノート > Unity
+
+## 0.13.0 (2019.02.26)
+
+### TOAST Log & Crash
+
+#### 追加事項
+
+* クラッシュログをフィルタリングする機能を追加
 
 ## 0.12.0 (2019.01.08)
 
@@ -24,7 +32,7 @@
 #### 追加事項
 
 * SetLoggerListener API追加
-* Network Insightsサポート 
+* Network Insightsサポート
 
 #### 変更事項
 
