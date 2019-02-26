@@ -229,7 +229,7 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 - TOAST Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
     - 해당 기능은 유니티 예외에 한정된 기능입니다.
 
-## AddCrashFilter API 명세
+### AddCrashFilter API 명세
 ```csharp
 public delegate bool CrashFilter(CrashLogData logData);
 
