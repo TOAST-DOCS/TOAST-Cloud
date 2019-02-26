@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > リリースノート > Android
+## TOAST > TOAST SDK使用ガイド > リリースノート > Android
 
 ## 0.14.1 (2019.01.29)
 
@@ -6,7 +6,7 @@
 
 #### バグ修正
 
-* (구)IAP SDK決済件を処理していないエラーを修正。
+* （旧）IAP SDK決済件を処理していないエラーを修正。
 
 ## 0.14.0 (2019.01.08)
 
@@ -30,7 +30,7 @@
 #### 機能追加
 
 * 新規機能追加
-    * Firebase Cloud Messaging(FCM) 
+    * Firebase Cloud Messaging(FCM)
 
 ## 0.12.0 (2018.12.04)
 

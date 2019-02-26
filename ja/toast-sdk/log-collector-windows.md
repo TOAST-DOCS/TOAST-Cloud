@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Windows C++
+## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Windows C++
 
 ## 事前準備
 
@@ -58,7 +58,7 @@ _logger->getUserId();
 
 TOAST Loggerは、5つのレベルのログ送信関数を提供します。
 
-### ログ送信 
+### ログ送信
 
 ```
 // 一般ログ
@@ -131,10 +131,10 @@ _logger->cleareUserField();
 クラッシュレポーター(CrashRepoter.exe)は、クラッシュ情報をログに送信する機能を提供します。
 クラッシュが発生すると、クラッシュレポーターからクラッシュ情報をログに送信します。
 ToastLoggerを初期化する時、クラッシュレポーターを使用するかを設定できます。
-クラッシュレポーターダイアログボックスを使用するかどうか、カスタムメッセージを設定できます。 
+クラッシュレポーターダイアログボックスを使用するかどうか、カスタムメッセージを設定できます。
 
 
-### クラッシュログ有効化およびクラッシュレポーター 
+### クラッシュログ有効化およびクラッシュレポーター
 
 ```
 ...
@@ -148,10 +148,10 @@ ToastLogger* logger = GetToastLogger();
 ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
 ...
 // クラッシュログが有効になっているか
-loggerConf->enableCrashReporter(true);	
+loggerConf->enableCrashReporter(true);
 // クラッシュレポーターダイアログを使用するか
-loggerConf->enableSilenceMode(false);	
-// クラッシュレポーターダイアログに表示されるメッセージを定義 
+loggerConf->enableSilenceMode(false);
+// クラッシュレポーターダイアログに表示されるメッセージを定義
 // (定義しない場合、基本メッセージが表示される。)
 loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "エラーが発生した状況…\n");
 ...
@@ -162,7 +162,7 @@ if (_logger != NULL)
 }
 ```
 
-### クラッシュログ送信テスト 
+### クラッシュログ送信テスト
 
 * クラッシュログの送信をテストするには、実際に例外(Exception)が発生する必要があります。
 * クラッシュログの送信は、enableCrashReporterがtrueの場合にSDKが自動的に実行します。

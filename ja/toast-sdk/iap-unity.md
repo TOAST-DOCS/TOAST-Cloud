@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST IAP > Unity
+## TOAST > TOAST SDK使用ガイド > TOAST IAP > Unity
 
 ## Prerequisites
 
@@ -313,17 +313,17 @@ public class IapPurchase
 
 | Property | Returns | Description |
 |---|---|---|
-| PaymentId | string | 決済ID | 
-| PaymentSequence | string | 決済固有番号 | 
-| OriginalPaymentId | string | 原本決済ID | 
-| ProductId | string | 商品ID | 
-| ProductType | string | 商品タイプ | 
-| UserId | string | ユーザーID | 
-| Price | float | 価格 | 
-| PriceCurrencyCode | string | 通貨情報 | 
-| AccessToken | string | 消費に使用されるトークン | 
-| PurchaseTime | long | 商品購入時間 | 
-| ExpiryTime | long | 購読商品の残り時間 | 
+| PaymentId | string | 決済ID |
+| PaymentSequence | string | 決済固有番号 |
+| OriginalPaymentId | string | 原本決済ID |
+| ProductId | string | 商品ID |
+| ProductType | string | 商品タイプ |
+| UserId | string | ユーザーID |
+| Price | float | 価格 |
+| PriceCurrencyCode | string | 通貨情報 |
+| AccessToken | string | 消費に使用されるトークン |
+| PurchaseTime | long | 商品購入時間 |
+| ExpiryTime | long | 購読商品の残り時間 |
 
 
 ## FAQ

@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Unity
+## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Unity
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ dependencies {
 ##### Enable CrashReport API
 
 * **Disabled**値を推奨します。
-    * Unity CrashReporter APIが有効になっているかを表す値です。 
+    * Unity CrashReporter APIが有効になっているかを表す値です。
     * 有効になっていれば、Loggerのクラッシュログ収集に影響を与えることがあります。
 
 ##### Script Call Optimization
@@ -67,7 +67,7 @@ ToastLogger.Initialize(loggerConfiguration);
 
 ## ログを送信する
 
-TOAST Loggerは、5つのレベルのログを送信できます。 
+TOAST Loggerは、5つのレベルのログを送信できます。
 ユーザーフィールドを追加して送ることもできます。
 
 ### ログ送信API仕様
@@ -105,7 +105,7 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 
 ## ユーザー定義フィールドを設定する
 
-希望するユーザー定義フィールドを設定します。 
+希望するユーザー定義フィールドを設定します。
 ユーザー定義フィールドを設定すると、ログ送信APIを呼び出すたびに設定した値をログと一緒にサーバーに送信します。
 
 ### ユーザー定義フィールド設定API仕様
@@ -213,7 +213,7 @@ public static void SetCrashListener(CrashListener listener);
 ```csharp
 ToastLogger.SetCrashListener((isSuccess, log) =>
 {
-    if (isSuccess) 
+    if (isSuccess)
     {
         Application.Quit();
     }
@@ -223,7 +223,7 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 ## Handled Exception送信
 
 TOAST Loggerは、一般/クラッシュログだけでなく、try/catch構文で例外に関連する内容をReport APIを使用して送信できます。
-こうして送信した例外ログは、"Log & Crash Searchコンソール" > "App Crash Searchタブ"のエラータイプで"Handled"でフィルタリングして照会できます。 
+こうして送信した例外ログは、"Log & Crash Searchコンソール" > "App Crash Searchタブ"のエラータイプで"Handled"でフィルタリングして照会できます。
 Log & Crashコンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
 
 ### Handled Exception Log API詳細

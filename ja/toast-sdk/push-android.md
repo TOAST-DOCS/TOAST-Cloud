@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST Push > Android
+## TOAST > TOAST SDK使用ガイド > TOAST Push > Android
 
 ## 事前準備
 
@@ -80,7 +80,7 @@ apply plugin: 'com.google.gms.google-services'
 ### Push設定例
 
 ```java
-ToastPushConfiguration.Builder configuration = 
+ToastPushConfiguration.Builder configuration =
     ToastPushConfiguration.newBuilder(getApplicationContext(), "YOUR_APP_KEY")
             .build();
 ```
@@ -189,8 +189,8 @@ ToastNotification.setDefaultSmallIcon(context, R.drawable.ic_notification);
 
 ### 基本通知チャンネルの設定例
 ```java
-ToastNotification.setDefaultNotificationChannel(context, 
-    "YOUR_NOTIFICATION_CHANNEL_ID", 
+ToastNotification.setDefaultNotificationChannel(context,
+    "YOUR_NOTIFICATION_CHANNEL_ID",
     "YOUR_NOTIFICATION_CHANNEL_NAME");
 ```
 

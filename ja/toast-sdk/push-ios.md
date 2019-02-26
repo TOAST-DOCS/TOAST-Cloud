@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > TOAST Push > iOS
+## TOAST > TOAST SDK使用ガイド > TOAST Push > iOS
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@
 iOS用TOAST Push SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- | 
+| --- | --- | --- | --- | --- |
 | TOAST Push | ToastPush | ToastPush.framework | * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
@@ -40,7 +40,7 @@ end
 #import <ToastPush/ToastPush.h>
 ```
 
-### 2. バイナリをダウンロードして、TOAST SDKを適用 
+### 2. バイナリをダウンロードして、TOAST SDKを適用
 
 #### SDKのインポート(import)
 
@@ -514,7 +514,7 @@ typedef NS_ENUM(NSUInteger, ToastPushErrorCode) {
     ToastPushErrorSystemFailed          = 4,    // システムエラー
     ToastPushErrorTokenInvalid          = 5,    // トークン値がないか、有効ではない
     ToastPushErrorAlreadyInProgress     = 6,    // 要請がすでに進行中
-    
+
     ToastPushErrorNetworkNotAvailable   = 100,  // ネットワーク使用不可
     ToastPushErrorNetworkFailed         = 101,  // HTTP Status Codeが200ではない
     ToastPushErrorTimeout               = 102,  // タイムアウト

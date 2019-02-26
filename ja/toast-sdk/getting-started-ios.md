@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST SDK使用ガイド > 開始する > iOS
+## TOAST > TOAST SDK使用ガイド > 開始する > iOS
 
 ## サポート環境
 
@@ -16,7 +16,7 @@ iOS用TOAST SDKの構成は次のとおりです。
 TOAST SDKが提供するサービスの中から、希望する機能を選択して適用できます。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- | 
+| --- | --- | --- | --- | --- |
 | All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework<br/>ToastPush.framework |  |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 | TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
