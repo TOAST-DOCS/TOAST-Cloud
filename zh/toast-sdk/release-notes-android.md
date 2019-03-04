@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.14.2 (2019.03.04)
+
+### TOAST Push
+
+#### Fixed
+
+* Fixed a crash that occurs when could not obtain a FCM token.
+
 ## 0.14.1 (2019.01.29)
 
 ### TOAST IAP
