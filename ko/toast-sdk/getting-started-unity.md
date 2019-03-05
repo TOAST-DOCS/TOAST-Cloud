@@ -102,7 +102,7 @@ allprojects {
 - Android Unity Plugin 0.12.0 이상의 버전을 사용하면 별도의 설정이 필요없습니다.
     - Proguard 적용을 원하시는 경우, 0.12.0 이상으로 업데이트 해주시기 바랍니다.
 
-### 빌드 실패 FAQ
+### Android 빌드 실패 FAQ
 
 #### 라이브러리 충돌 발생시
 
