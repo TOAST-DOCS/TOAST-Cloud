@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.14.3 (2019.03.07)
+
+### TOAST IAP
+
+#### Fixed
+
+* Fixed a issue that doesn't work APIs when a application applies Proguard.
+
 ## 0.14.2 (2019.03.04)
 
 ### TOAST Push
