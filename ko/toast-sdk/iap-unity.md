@@ -15,9 +15,9 @@
 ```groovy
 dependencies {
     if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-google:0.14.0'
+        implementation 'com.toast.android:toast-unity-iap-google:0.14.3'
     } else {
-        compile 'com.toast.android:toast-unity-iap-google:0.14.0'
+        compile 'com.toast.android:toast-unity-iap-google:0.14.3'
     }
 }
 ```
@@ -27,9 +27,9 @@ dependencies {
 ```groovy
 dependencies {
     if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-onestore:0.14.0'
+        implementation 'com.toast.android:toast-unity-iap-onestore:0.14.3'
     } else {
-        compile 'com.toast.android:toast-unity-iap-onestore:0.14.0'
+        compile 'com.toast.android:toast-unity-iap-onestore:0.14.3'
     }
 }
 ```
@@ -325,6 +325,23 @@ public class IapPurchase
 | PurchaseTime | long | 상품 구매 시간 | 
 | ExpiryTime | long | 구독 상품의 남은 시간 | 
 
+
+## 오류 코드
+
+| 에러 코드 | 설명 |
+|---|---|
+| 50000 | 초기화 되지 않았습니다 |
+| 50001 | 지원하지 않는 기능입니다 |
+| 50002 | 지원하지 않는 스토어 코드입니다 |
+| 50003 | 사용할 수 없는 상품입니다 |
+| 50004 | 이미 소유중인 상품입니다 |
+| 50006 | 사용자 아이디가 잘못되었습니다 |
+| 50007 | 사용자가 결제를 취소했습니다 |
+| 50008 | 스토어에서 결제가 실패했습니다 |
+| 50009 | 영수증 검증에 실패했습니다 |
+| 50011 | 구독 갱신이 실패했습니다 |
+| 50012 | 환불로 인해 구매를 진행할 수 없습니다 |
+| 59999 | 알 수 없는 에러입니다. 에러 메시지를 확인해주세요 |
 
 ## FAQ
 ### Android
