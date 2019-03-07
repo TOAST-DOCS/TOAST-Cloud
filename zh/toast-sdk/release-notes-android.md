@@ -1,6 +1,6 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
-## 0.14.3 (2019.03.07)
+## 0.14.3 (2019.03.08)
 
 ### TOAST IAP
 
