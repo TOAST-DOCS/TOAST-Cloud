@@ -54,9 +54,7 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package가 있습니다. Sample을
 > (주의) Unity SDK는 현재 Android, iOS만을 지원합니다.
 > Unity Editor에서는 정상동작하지 않습니다. (지원 예정)
 
-## 설정
-
-### Andrroid
+## Android 빌드 설정
 
 ### Gradle Build 설정
 
@@ -100,6 +98,39 @@ allprojects {
 }
 ```
 
+### Proguard 설정
+- Android Unity Plugin 0.12.0 이상의 버전을 사용하면 별도의 설정이 필요없습니다.
+    - Proguard 적용을 원하시는 경우, 0.12.0 이상으로 업데이트 해주시기 바랍니다.
+
+### Android 빌드 실패 FAQ
+
+#### 라이브러리 충돌 발생시
+
+> **빌드 에러 로그**
+> com.android.build.api.transform.TransformException:java.util.zip.ZipException: duplicate entry: android/support/annotation/AnimRes.class See the Console for details.
+
+- 만약 위와 같은 빌드 에러 로그가 발생한다면 라이브러리 충돌이 발생한 경우입니다.
+- TOAST SDK는 의존 라이브러리를 최대한 가지고 있지 않도록 설계되었지만, 유일하게 **com.android.support:support-annotations** 에 의존하고 있습니다.
+- 프로젝트에 support-annotations 라이브러리가 jar 혹은 aar 파일로 존재한다면 라이브러리 충돌이 발생합니다.
+- jar 혹은 aar 파일로 존재하는 support-annotations의 버전을 확인해서 아래와 같이 수정해야 빌드가 가능합니다.
+
+##### support-annotations 버전이 27.1.1 이하인 경우
+- 해당 파일을 제거 합니다.
+
+##### support-annotations 버전이 27.1.1 초과인 경우
+- 아래와 같이 exclude 를 추가합니다.
+```groovy
+if (GradleVersion.current() >= GradleVersion.version("4.2")) {
+    implementation('com.toast.android:toast-unity-XXX:X.X.X') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+} else {
+    compile('com.toast.android:toast-unity-XXX:X.X.X') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+}
+```
+
 #### NDK 관련 에러 발생시
 - Gradle을 설정하고 빌드를 하면, 아래와 같은 에러가 발생할 수 있습니다.
 > No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
@@ -108,12 +139,7 @@ allprojects {
     - 특정 Unity 버전에서는 Android Gradle Plugin을 업데이트할 수 없기 때문에 Android SDK가 설치된 폴더의 ndk-bundle 폴더를 삭제하면 문제가 해결됩니다.
     - IL2CPP 빌드에 필요한 NDK는 Android SDK 하위가 아닌 별도의 폴더로 관리해야 버전 관리하는 것이 쉽습니다.
 
-### Proguard 설정
-- Android Unity Plugin 0.12.0 이상의 버전을 사용하면 별도의 설정이 필요없습니다.
-    - Proguard 적용을 원하시는 경우, 0.12.0 이상으로 업데이트 해주시기 바랍니다.
-
-
-### iOS
+## iOS 빌드 설정
 
 ### Xcode 빌드 설정 수정
 * iOS에서 TOAST SDK를 사용하기 위해서는 Xcode에서 아래 설정을 추가해야 합니다.
