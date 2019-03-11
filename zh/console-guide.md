@@ -63,7 +63,7 @@ Each member of an organization has following roles:
 | Manage Projects      | Create Projects                                   | O     | O     | O      |                |            |
 |                      | Delete Projects (all projects of an organization) | O     | O     |        |                |            |
 |                      | Delete Projects (created projects)                | O     | O     | O      |                |            |
-| 사용자 Action 로그 관리  | 사용자 Action 로그 조회                               |       |       |        |                | O          |
+| 사용자 Action 로그 관리  | 사용자 Action 로그 조회                               | O     | O     |        |                | O          |
 
 #### Delete Organizations
 
