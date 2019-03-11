@@ -49,20 +49,21 @@ Organization members are classified into members of TOAST.com and insider member
 
 Each member of an organization has following roles:
 
-| Action               | Role                                              | Owner | Admin | Member | Billing Viewer |
-| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- |
-| Manage Organizations | Create Organizations                              | O     |       |        |                |
-|                      | Modify Organizations                              | O     | O     |        |                |
-|                      | Delete Organizations                              | O     |       |        |                |
-| Manage Members       | Register Organization Members                     | O     | O     |        |                |
-|                      | Delete Organization Members                       | O     | O     |        |                |
-| Manage Services      | Enable Organization Services                      | O     | O     |        |                |
-|                      | Disable Organization Services                     | O     | O     |        |                |
-| Manage Payment       | Query Bills                                       | O     |       |        |                |
-|                      | Status of Service Use                             | O     | O     |        | O              |
-| Manage Projects      | Create Projects                                   | O     | O     | O      |                |
-|                      | Delete Projects (all projects of an organization) | O     | O     |        |                |
-|                      | Delete Projects (created projects)                | O     | O     | O      |                |
+| Action               | Role                                              | Owner | Admin | Member | Billing Viewer | Log Viewer |
+| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---------- |
+| Manage Organizations | Create Organizations                              | O     |       |        |                |            |
+|                      | Modify Organizations                              | O     | O     |        |                |            |
+|                      | Delete Organizations                              | O     |       |        |                |            |
+| Manage Members       | Register Organization Members                     | O     | O     |        |                |            |
+|                      | Delete Organization Members                       | O     | O     |        |                |            |
+| Manage Services      | Enable Organization Services                      | O     | O     |        |                |            |
+|                      | Disable Organization Services                     | O     | O     |        |                |            |
+| Manage Payment       | Query Bills                                       | O     |       |        |                |            |
+|                      | Status of Service Use                             | O     | O     |        | O              |            |
+| Manage Projects      | Create Projects                                   | O     | O     | O      |                |            |
+|                      | Delete Projects (all projects of an organization) | O     | O     |        |                |            |
+|                      | Delete Projects (created projects)                | O     | O     | O      |                |            |
+| 사용자 Action 로그 관리  | 사용자 Action 로그 조회                               |       |       |        |                | O          |
 
 #### Delete Organizations
 
@@ -92,14 +93,14 @@ Each member of an organization has following roles:
 #### 2차 인증 
 ![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903.png)
 - 2차 인증을 필수로 설정하여 사용하도록 할 수 있습니다. 
-- 설정 안 함 : 2차 인증을 하지 않고, 아이디와 패스워드 입력 만으로 로그인 할 수 있습니다. 
+- 설정 안 함 : 2차 인증을 하지 않고, 아이디와 패스워드 입력 만으로 로그인 할 수 있습니다.
 - Google OTP : 아이디와 패스워드 입력 후, Google OTP 앱에서 제공한 One Time Password를 입력하여 인증 후 로그인 할 수 있습니다.  
 - 이메일 : 아이디와 패스워드 입력 후, 이메일 주소로 발송된 인증 버튼을 클릭해서 인증 후 로그인 할 수 있습니다. 
 
 #### 로그인 실패 보안
 ![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903.png)
 - 로그인을 계속해서 실패했을 때 일정 시간이 지난 후 다시 로그인 할 수 있도록 설정할 수 있습니다.
-- 로그인 실패 보안 설정은 서비스 별로 다르게 설정할 수 없습니다. 공통 설정 기능만 제공합니다.  
+- 로그인 실패 보안 설정은 서비스 별로 다르게 설정할 수 없습니다. 공통 설정 기능만 제공합니다.
 - 설정 안 함 : 로그인에 실패하더라도 계속해서 로그인 시도를 할 수 있습니다. 
 - 설정 : 원하는 실패 횟수와 잠금 시간을 입력하면 해당 횟수만큼 로그인에 실패하면 해당 잠금 시간동안 로그인을 시도할 수 없습니다. 
 
