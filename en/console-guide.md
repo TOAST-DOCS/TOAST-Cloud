@@ -80,6 +80,35 @@ Each member of an organization has following roles:
 4. You can find the organization name just created on top of the console menu
 5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
 
+### IAM 콘솔 로그인 보안 설정
+- IAM 회원의 콘솔 접속 보안을 강화하기 위해 [로그인 보안 설정] 기능을 제공합니다. 
+- 모든 조직 서비스(Cloud콘솔,Online Contact, Dooray 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다. 
+
+![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903.png)
+
+1. 콘솔로 이동한 위 설정을 원하는 조직의 조직설정 페이지에 접속합니다. 
+2. IAM 콘솔의 [로그인 보안 설정] 버튼을 클릭합니다. 
+
+#### 2차 인증 
+![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903.png)
+- 2차 인증을 필수로 설정하여 사용하도록 할 수 있습니다. 
+- 설정 안 함 : 2차 인증을 하지 않고, 아이디와 패스워드 입력 만으로 로그인 할 수 있습니다. 
+- Google OTP : 아이디와 패스워드 입력 후, Google OTP 앱에서 제공한 One Time Password를 입력하여 인증 후 로그인 할 수 있습니다.  
+- 이메일 : 아이디와 패스워드 입력 후, 이메일 주소로 발송된 인증 버튼을 클릭해서 인증 후 로그인 할 수 있습니다. 
+
+#### 로그인 실패 보안
+![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903.png)
+- 로그인을 계속해서 실패했을 때 일정 시간이 지난 후 다시 로그인 할 수 있도록 설정할 수 있습니다.
+- 로그인 실패 보안 설정은 서비스 별로 다르게 설정할 수 없습니다. 공통 설정 기능만 제공합니다.  
+- 설정 안 함 : 로그인에 실패하더라도 계속해서 로그인 시도를 할 수 있습니다. 
+- 설정 : 원하는 실패 횟수와 잠금 시간을 입력하면 해당 횟수만큼 로그인에 실패하면 해당 잠금 시간동안 로그인을 시도할 수 없습니다. 
+
+#### IP ACL 
+![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903.png)
+- 허용한 IP(또는 IP 대역)에서만 IAM 콘솔에 접근할 수 있습니다. 
+- 설정 안 함 : 모든 IP(또는 IP 대역)에서 IAM 콘솔에 접근할 수 있습니다. 
+- 허용한 IP(또는 IP 대역)만 콘솔 접근 : 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력하시면 됩니다. 
+
 ## Manage Projects
 
 A project is created to use TOAST Service, after an organization is created.
