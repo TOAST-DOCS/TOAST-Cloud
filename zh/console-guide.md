@@ -94,7 +94,7 @@ Each member of an organization has following roles:
 ![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903.png)
 - 2차 인증을 필수로 설정하여 사용하도록 할 수 있습니다. 
 - 설정 안 함 : 2차 인증을 하지 않고, 아이디와 패스워드 입력 만으로 로그인 할 수 있습니다. 
-- Google OTP : 아이디와 패스워드 입력 후, Google OTP 앱에서 제공한 One Time Password를 입력하여 인증 후 로그인 할 수 있습니다.  
+- Google OTP : 아이디와 패스워드 입력 후, Google OTP 앱에서 제공한 One Time Password를 입력하여 인증 후 로그인 할 수 있습니다.
 - 이메일 : 아이디와 패스워드 입력 후, 이메일 주소로 발송된 인증 버튼을 클릭해서 인증 후 로그인 할 수 있습니다. 
 
 #### 로그인 실패 보안
