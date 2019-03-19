@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.12.4 (2019.03.19)
+
+### TOAST Core
+
+#### Fixed
+
+* Add a exception 
+
 ## 0.12.3 (2019.02.26)
 
 ### TOAST Core, Common
