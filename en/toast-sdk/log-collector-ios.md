@@ -81,10 +81,10 @@ Import the framework to use.
 
 ## Initialize TOAST Logger SDK 
 
-Set appkey issued from Log & Crash Search as ProjectKey.
+Set appkey issued from Log & Crash Search. 
 
 ```objc
-[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
+[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
 ```
 
 ## Send Logs 
@@ -166,7 +166,7 @@ To send crash logs, PLCrashReporter is applied.
 ### Set Enable CrashReporter 
 CrashReporter is enabled, on principle, along with initialization of TOASTLogger.  
 ```objc
-[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
+[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
 ```
 It is enabled by setting, along with TOAST Logger initialization. 
 In order not to send crash logs, CrashReporter must be disabled.  
@@ -174,7 +174,7 @@ In order not to send crash logs, CrashReporter must be disabled.
 #### Enable CrashReporter 
 ```objc
 // CrashReporter Enable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:YES];
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
 
 [ToastLogger initWithConfiguration:configuration];
 ```
@@ -182,7 +182,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ```objc
 
 // CrashReporter Disable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:NO];
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:NO];
 
 [ToastLogger initWithConfiguration:configuration];
 ```

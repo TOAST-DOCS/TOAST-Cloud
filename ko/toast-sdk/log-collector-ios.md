@@ -80,10 +80,10 @@ CrashReporter.framewor를 직접 다운로드하거나 빌드한 경우에는 Bu
 
 ## TOAST Logger SDK 초기화
 
-Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급받은 AppKey를 설정합니다.
 
 ```objc
-[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
+[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
 ```
 
 ## 로그 전송
@@ -164,7 +164,7 @@ TOAST Logger를 초기화할 때 함께 활성화되고 사용 여부를 설정�
 ### CrashReporter 사용 여부 설정
 CrashReporter 기능은 기본적으로 TOAST Logger를 초기화할 때 함께 활성화됩니다.
 ```objc
-[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
+[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
 ```
 TOAST Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
 크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다. 
@@ -172,7 +172,7 @@ TOAST Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
 #### CrashReporter 활성화
 ```objc
 // CrashReporter Enable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:YES];
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
 
 [ToastLogger initWithConfiguration:configuration];
 ```
@@ -180,7 +180,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ```objc
 
 // CrashReporter Disable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:NO];
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:NO];
 
 [ToastLogger initWithConfiguration:configuration];
 ```
