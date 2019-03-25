@@ -1,5 +1,52 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > iOS
 
+## 0.13.0 (2019.03.26)
+
+### 공통
+
+#### 개선 사항
+
+* Public Class의 사용성 개선  
+  * Description 추가
+  * Nullability, NSCoding, NSCopying 지원
+
+### ToastCore
+
+#### 기능 개선
+
+* 내부 예외 처리 추가
+
+### ToastLogger
+
+#### 기능 추가
+
+* arm64e 아키텍처를 사용하는 기기의 Crash 분석 지원
+* PLCrashReporter Dependency 변경
+
+#### 기능 개선
+
+* Configuration Interface 변경
+  * Deprecate
+    * configurationWithProjectKey
+  * Add
+    * configurationWithAppKey
+
+#### 버그 수정
+
+* UserID 설정 시점에 따라 전송하는 Log의 UserID가 갱신되지 않을 수 있는 문제 수정
+
+### ToastIAP
+
+#### 기능 개선
+
+* 내부 예외 처리 추가
+
+### ToastPush
+
+#### 기능 추가
+
+* 토큰 삭제 API 추가
+
 ## 0.12.4 (2019.03.19)
 
 ### TOAST Core

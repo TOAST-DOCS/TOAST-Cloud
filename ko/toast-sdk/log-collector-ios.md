@@ -1,8 +1,7 @@
 ## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > iOS
 
 > [공지]
-> arm64e 아키텍처를 사용하는 신규기기(iPhone XS, XR, XS Max, iPad Pros 3rd)에서 발생한 크래시 로그는 발생 건수의 집계만 가능하며, 크래시 내용의 분석은 아직 지원되지 않고 있습니다.
-> 이른 시일 내에 신규기기에 대한 분석 기능을 제공하도록 하겠습니다.
+> TOAST SDK 0.13.0 부터 arm64e 아키텍처를 사용하는 기기(iPhone XS, XR, XS Max, iPad Pros 3rd)에서 발생한 크래시의 집계, 분석이 가능합니다.
 
 ## Prerequisites
 
@@ -15,8 +14,8 @@
 iOS용 TOAST Logger SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- | 
-| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
+| --- | --- | --- | --- | --- |
+| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## TOAST Logger SDK를 Xcode 프로젝트에 적용
@@ -41,7 +40,7 @@ end
 #import <ToastLogger/ToastLogger.h>
 ```
 
-### 2. 바이너리를 다운로드하여 TOAST SDK 적용 
+### 2. 바이너리를 다운로드하여 TOAST SDK 적용
 
 #### SDK 가져오기(import)
 
@@ -68,7 +67,8 @@ CrashReporter.framewor를 직접 다운로드하거나 빌드한 경우에는 Bu
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
 
-#### 프레임워크 가져오기 
+
+#### 프레임워크 가져오기
 
 사용하려는 프레임워크를 가져옵니다(import).
 
@@ -77,6 +77,12 @@ CrashReporter.framewor를 직접 다운로드하거나 빌드한 경우에는 Bu
 #import <ToastLogger/ToastLogger.h>
 ```
 
+## CrashReport 사용시 주의사항
+
+* arm64e 아키텍처를 사용하는 기기의 크래시 분석을 위해서는 TOAST Logger와 함께 배포되는 CrashReporter를 사용해야 합니다.
+    * 직접 다운받거나 빌드한 CrashReporter를 사용할 경우 arm64e 아키텍처를 사용하는 기기의 크래시 분석이 불가능합니다.
+    * Cocoapods을 사용할 경우 `pod PLCrashReporter`를 추가하면 프로젝트 빌드시에 symbol 충돌 문제가 발생합니다.
+      * `CrashReporter를 별도로 추가할 필요는 없습니다.`
 
 ## TOAST Logger SDK 초기화
 
@@ -125,7 +131,7 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ## 사용자 정의 필드 설정
 
-원하는 사용자 정의 필드를 설정합니다. 
+원하는 사용자 정의 필드를 설정합니다.
 사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
 
 ### 사용자 정의 필드 API 명세
@@ -141,8 +147,8 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 @end
 ```
 
-*  사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다. 
-  
+*  사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다.
+
 #### 사용자 정의 필드 제약사항
 
 * 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.  
@@ -158,7 +164,7 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ## 크래시 로그 수집
 TOAST Logger는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
-TOAST Logger를 초기화할 때 함께 활성화되고 사용 여부를 설정할 수 있습니다. 
+TOAST Logger를 초기화할 때 함께 활성화되고 사용 여부를 설정할 수 있습니다.
 크래시 로그를 전송하려면 PLCrashReporter를 사용합니다.
 
 ### CrashReporter 사용 여부 설정
@@ -167,7 +173,7 @@ CrashReporter 기능은 기본적으로 TOAST Logger를 초기화할 때 함께 
 [ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
 ```
 TOAST Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
-크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다. 
+크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다.
 
 #### CrashReporter 활성화
 ```objc
@@ -178,7 +184,6 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ```
 #### CrashReporter 비활성화
 ```objc
-
 // CrashReporter Disable Configuration
 ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:NO];
 
@@ -207,7 +212,7 @@ setShouldReportCrashHandler의 Block에서 사용자 정의 필드를 설정하�
 
 ```objc
 [ToastLogger setShouldReportCrashHandler:^{
-  
+
   // 사용자 정의 필드 를 통해 Crash가 발생한 상황에서 얻고자 하는 정보를 함께 전송    
   // 사용자 정의 필드 추가
   [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
