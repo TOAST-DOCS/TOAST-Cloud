@@ -4,26 +4,26 @@
 
 ### 공통
 
-#### 개선 사항
+#### 기능 개선
 
 * Public Class의 사용성 개선  
   * Description 추가
   * Nullability, NSCoding, NSCopying 지원
 
-### ToastCore
+### TOAST Core
 
-#### 기능 개선
+#### 개선 사항
 
 * 내부 예외 처리 추가
 
-### ToastLogger
+### TOAST Logger
 
-#### 기능 추가
+#### 추가 사항
 
 * arm64e 아키텍처를 사용하는 기기의 Crash 분석 지원
 * PLCrashReporter Dependency 변경
 
-#### 기능 개선
+#### 개선 사항
 
 * Configuration Interface 변경
   * Deprecate
@@ -31,19 +31,19 @@
   * Add
     * configurationWithAppKey
 
-#### 버그 수정
+#### 수정 사항
 
 * UserID 설정 시점에 따라 전송하는 Log의 UserID가 갱신되지 않을 수 있는 문제 수정
 
-### ToastIAP
+### TOAST IAP
 
-#### 기능 개선
+#### 개선 사항
 
 * 내부 예외 처리 추가
 
-### ToastPush
+### TOAST Push
 
-#### 기능 추가
+#### 추가 사항
 
 * 토큰 삭제 API 추가
 

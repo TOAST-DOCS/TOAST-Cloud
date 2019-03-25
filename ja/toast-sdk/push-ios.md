@@ -167,7 +167,7 @@ Pushで発行されたAppKeyを設定します。
 
 ### Delegate API仕様
 
-Delegateを登録すると、トークン登録後、またはメッセージ / アクション受信後に追加作業を進行できます。
+Delegateを登録すると、トークンの登録後、トークン解除後、あるいはメッセージ/アクション受信後に追加の作業を進めることができます。
 
 ``` objc
 @protocol ToastPushDelegate <NSObject>
@@ -191,6 +191,15 @@ Delegateを登録すると、トークン登録後、またはメッセージ / 
                                 categoryIdentifier:(NSString *)categoryIdentifier
                                            payload:(NSDictionary *)payload
                                           userText:(nullable NSString *)userText;
+
+// トークンの登録を解除成功
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                            pushType:(ToastPushType)pushType;
+
+// トークンの登録解除に失敗し
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                  pushType:(ToastPushType)pushType
+                                     error:(NSError *)error;
 
 @end
 ```
@@ -377,6 +386,54 @@ agreement.allowNightAdvertisements = NO;
                                           NSLog(@"Fail : %@", error);
                                       }
                                   }];
+```
+
+## トークン解除
+
+初期化時に設定された情報（プッシュタイプ、サンドボックスの存在）に基づいて登録済みトークンを登録解除します。
+設定された情報に対応するトークンが存在しない場合、または登録解除が成功した場合は、登録解除成功デリゲートを呼び出します。 
+トークンの登録解除結果は、初期化時にデリゲートセットを介して渡されます。
+
+### トークン登録解除APIの仕様
+
+``` objc
+
+@interface ToastPush : NSObject
+
+// ...
+
+// トークン解除
++ (void)unregisterToken;
+
+// ...
+
+@end
+
+```
+
+### トークン登録解除の例
+
+``` objc
+
+// ...
+
+[ToastPush unregisterToken];
+
+// ...
+
+- (void)didUnregisterWithDeviceToken:(NSString *)deviceToken
+                            pushType:(ToastPushType)pushType {
+    
+    NSLog(@"Success to unregister token : %@", deviceToken);
+}
+
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                  pushType:(ToastPushType)pushType
+                                     error:(NSError *)error {
+    
+    NSLog(@"Failed to unregister token, error : %@", error);
+}
+
 ```
 
 ## リッチメッセージの受信

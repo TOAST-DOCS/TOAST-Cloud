@@ -77,17 +77,17 @@ TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework`를 추가해야
 #import <ToastIAP/ToastIAP.h>
 ```
 
-## Capability Setting
+## Capabilities Setting
 
 TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Background Modes** 항목을 활성화해야 합니다.
 
 **Project Target > Capabilities > Push Notification > ON** 
 
-![capability_push_notification](http://static.toastoven.net/toastcloud/sdk/ios/capability_push_notification.png)
+![capabilities_push_notification](http://static.toastoven.net/toastcloud/sdk/ios/capability_push_notification.png)
 
 **Project Target > Capabilities > Background Modes > ON** 
 
-![capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
+![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
 
 ## 서비스 로그인
 
@@ -165,9 +165,9 @@ Push에서 발급받은 AppKey를 설정합니다.
 @end
 ```
 
-### Delegate API 명세
+### Delegate API Specification
 
-Delegate를 등록하면 토큰 등록 후 혹은 메세지 / 액션 수신 후 추가 작업을 진행할 수 있습니다.
+Once you register a delegate, you can do additional tasks after registering the token, clearing the token, or receiving the message / action.
 
 ``` objc
 @protocol ToastPushDelegate <NSObject>
@@ -191,6 +191,15 @@ Delegate를 등록하면 토큰 등록 후 혹은 메세지 / 액션 수신 후 
                                 categoryIdentifier:(NSString *)categoryIdentifier
                                            payload:(NSDictionary *)payload
                                           userText:(nullable NSString *)userText;
+
+// 토큰 등록 해제 성공
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                            pushType:(ToastPushType)pushType;
+
+// 토큰 등록 해제 실패
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                  pushType:(ToastPushType)pushType
+                                     error:(NSError *)error;
 
 @end
 ```
@@ -377,6 +386,55 @@ agreement.allowNightAdvertisements = NO;
                                           NSLog(@"Fail : %@", error);
                                       }
                                   }];
+```
+
+## Token unregistration
+
+Unregisters the registered token based on the information (push type, sandbox existence) set at initialization. 
+If the token corresponding to the configured information does not exist, or if the unregistration succeeds, call the unregistration success delegate. 
+The token unregistration result is passed through the delegate set at initialization.
+
+### Token unregistration API Specification
+
+``` objc
+
+@interface ToastPush : NSObject
+
+// ...
+
+// Unregister the token
++ (void)unregisterToken;
+
+// ...
+
+@end
+
+```
+
+### Token unregistration example
+
+``` objc
+
+// ...
+
+[ToastPush unregisterToken];
+
+// ...
+
+
+- (void)didUnregisterWithDeviceToken:(NSString *)deviceToken
+pushType:(ToastPushType)pushType {
+
+NSLog(@"Success to unregister token : %@", deviceToken);
+}
+
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+pushType:(ToastPushType)pushType
+error:(NSError *)error {
+
+NSLog(@"Failed to unregister token, error : %@", error);
+}
+
 ```
 
 ## 리치 메세지 수신

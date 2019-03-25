@@ -1,8 +1,7 @@
 ## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > iOS
 
 > [Notice]
-> Crash logs from new devices using the arm64e architecture (iPhone XS, XR, XS Max, and iPad Pros 3rd) can only count the number of occurrences, and analysis of crash content is not yet supported.
-> We will provide analysis capabilities for new devices in the near future.
+> From TOAST SDK 0.13.0, it is possible to analyze and analyze crashes from devices using arm64e architecture (iPhone XS, XR, XS Max, iPad Pros 3rd).
 
 ## Prerequisites
 
@@ -15,8 +14,8 @@
 TOAST Logger SDK for iOS is configured as follows.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- | 
-| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
+| --- | --- | --- | --- | --- |
+| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## Apply TOAST SDK to Xcode Projects
@@ -78,7 +77,11 @@ Import the framework to use.
 #import <ToastLogger/ToastLogger.h>
 ```
 
+## Precautions when using CrashReport
 
+* Crash analysis of devices using the arm64e architecture requires the use of CrashReporter, which is distributed with the TOAST Logger.
+    * Crash analysis of devices using the arm64e architecture is not possible if you use a CrashReporter that is downloaded or built directly from a location other than the [Downloads](../../../Download/#toast-sdk) of TOAST.
+    
 ## Initialize TOAST Logger SDK 
 
 Set appkey issued from Log & Crash Search. 

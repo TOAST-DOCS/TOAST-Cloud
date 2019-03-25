@@ -1,8 +1,7 @@
 ## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > iOS
 
 > [告知]
-> arm64eアーキテクチャを使用する新規端末(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュログは、発生件数の集計のみ可能で、クラッシュ内容の分析はまだサポートされていません。
-> 早いうちに新規端末の分析機能を提供したいと思います。
+> TOAST SDK 0.13.0でarm64eアーキテクチャを使用する機器(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュ集計、分析が可能です。
 
 ## Prerequisites
 
@@ -16,7 +15,7 @@ iOS用TOAST Logger SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
+| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## TOAST Logger SDKをXcodeプロジェクトに適用
@@ -77,6 +76,10 @@ CrashReporter.frameworを直接ダウンロードするか、ビルドした場�
 #import <ToastLogger/ToastLogger.h>
 ```
 
+## CrashReport 使用時注意事項
+
+* arm64eアーキテクチャを使用する機器のクラッシュ・分析のためにはTOAST Loggerと一緒に配布されるCrashReporterを使用しなければなりません。
+      * TOASTの[Downloads](../../../Download/#toast-sdk)ページではない他の場所でダウンロードしたり、直接ビルドしたCrashReporterを使用する場合、arm64eアーキテクチャを使用する機器のクラッシュ分析が不可能です。
 
 ## TOAST Logger SDK初期化
 
