@@ -80,9 +80,7 @@ CrashReporter.framewor를 직접 다운로드하거나 빌드한 경우에는 Bu
 ## CrashReport 사용시 주의사항
 
 * arm64e 아키텍처를 사용하는 기기의 크래시 분석을 위해서는 TOAST Logger와 함께 배포되는 CrashReporter를 사용해야 합니다.
-    * 직접 다운받거나 빌드한 CrashReporter를 사용할 경우 arm64e 아키텍처를 사용하는 기기의 크래시 분석이 불가능합니다.
-    * Cocoapods을 사용할 경우 `pod PLCrashReporter`를 추가하면 프로젝트 빌드시에 symbol 충돌 문제가 발생합니다.
-      * `CrashReporter를 별도로 추가할 필요는 없습니다.`
+    * TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지가 아닌 다른곳에서 다운받거나 직접 빌드한 CrashReporter를 사용할 경우 arm64e 아키텍처를 사용하는 기기의 크래시 분석이 불가능합니다.
 
 ## TOAST Logger SDK 초기화
 
