@@ -1,5 +1,22 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 0.15.0 (2019.03.26)
+
+### TOAST Log & Crash
+
+#### 기능 개선
+
+* ToastLoggerConfiguration의 ProjectKey가 AppKey로 명칭 변경
+    * 기존 setProjectKey는 계속 사용 가능
+
+### TOAST Push
+
+#### 기능 추가
+
+* 토큰 해제 API 추가.
+* sound 필드 추가시 알림의 소리를 설정할 수 있는 기능 추가.
+    * 안드로이드 8.0 미만에서만 동작
+
 ## 0.14.3 (2019.03.08)
 
 ### TOAST IAP
