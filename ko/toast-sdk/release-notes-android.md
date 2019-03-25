@@ -9,6 +9,12 @@
 * ProjectKey가 AppKey로 명칭 변경
     * 기존 setProjectKey는 계속 사용 가능
 
+### TOAST IAP
+
+#### 기능 추가
+
+* 중국 마켓 추가.
+
 ### TOAST Push
 
 #### 기능 추가
@@ -63,7 +69,7 @@
 #### 기능 추가
 
 * 신규 기능 추가
-    * Firebase Cloud Messaging(FCM) 
+    * Firebase Cloud Messaging(FCM)
 
 ## 0.12.0 (2018.12.04)
 
@@ -90,4 +96,3 @@
 #### 추가 사항
 
 * 신규 기능 추가
-
