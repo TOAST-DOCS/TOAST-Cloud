@@ -4,7 +4,7 @@
 
 ### TOAST Log & Crash
 
-#### Improvemented
+#### Improved
 
 * Rename ProjectKey to AppKey
     * setProjectKey is still available
