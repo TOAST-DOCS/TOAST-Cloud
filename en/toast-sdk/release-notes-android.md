@@ -1,5 +1,28 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.15.0 (2019.03.26)
+
+### TOAST Log & Crash
+
+#### Improvemented
+
+* Rename ProjectKey to AppKey
+    * setProjectKey is still available
+
+### TOAST IAP
+
+#### Added
+
+* Added chinese markets.
+
+### TOAST Push
+
+#### Added
+
+* Added API to unregister a token.
+* Added a feature that sets notification's sound when adding a 'sound' field.
+    * Only under Android 8.0
+
 ## 0.14.3 (2019.03.08)
 
 ### TOAST IAP
