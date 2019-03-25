@@ -1,5 +1,15 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Unity
 
+## 0.13.1 (2019.03.26)
+
+### TOAST Log & Crash
+
+#### 기능 개선
+
+* 유니티 쓰레드가 아닌 쓰레드에서도 로그 전송 가능
+* ProjectKey가 AppKey로 명칭 변경
+    * 기존 ProjectKey는 계속 사용 가능
+
 ## 0.13.0 (2019.02.26)
 
 ### TOAST Log & Crash

@@ -6,7 +6,7 @@
 
 #### 기능 개선
 
-* ToastLoggerConfiguration의 ProjectKey가 AppKey로 명칭 변경
+* ProjectKey가 AppKey로 명칭 변경
     * 기존 setProjectKey는 계속 사용 가능
 
 ### TOAST Push
