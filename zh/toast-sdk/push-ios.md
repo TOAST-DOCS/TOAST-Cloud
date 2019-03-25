@@ -165,9 +165,9 @@ Push에서 발급받은 AppKey를 설정합니다.
 @end
 ```
 
-### Delegate API Specification
+### Delegate API 명세
 
-Must register your delegate to provide additional functionality after registering tokens, unregistration tokens, receiving pushes, and receiving notification actions.
+토큰 등록, 토큰 해제, 푸시 수신, 알림 액션 수신 이후 추가적인 기능을 제공하려면 Delegate를 등록해야합니다.
 
 ``` objc
 @protocol ToastPushDelegate <NSObject>
@@ -388,13 +388,13 @@ agreement.allowNightAdvertisements = NO;
                                   }];
 ```
 
-## Token unregistration
+## 토큰 해제
 
-Unregisters the registered token based on the information (push type, sandbox existence) set at initialization. 
-If the token corresponding to the configured information does not exist, or if the unregistration succeeds, call the unregistration success delegate. 
-The token unregistration result is passed through the delegate set at initialization.
+초기화시에 설정된 정보(푸쉬 타입, 샌드박스 유무)를 토대로 등록된 토큰을 해제합니다.
+만약 설정된 정보에 해당하는 토큰이 존재하지 않거나 해제에 성공한다면 해제 성공 Delegate를 호출합니다.
+토큰 해제 결과는 초기화시에 설정된 Delegate를 통해 전달됩니다.
 
-### Token unregistration API Specification
+### 토큰 해제API 명세
 
 ``` objc
 
@@ -402,7 +402,7 @@ The token unregistration result is passed through the delegate set at initializa
 
 // ...
 
-// Unregister the token
+// 토큰 해제
 + (void)unregisterToken;
 
 // ...
@@ -411,7 +411,7 @@ The token unregistration result is passed through the delegate set at initializa
 
 ```
 
-### Token unregistration example
+### 토큰 해제 예
 
 ``` objc
 
@@ -421,22 +421,20 @@ The token unregistration result is passed through the delegate set at initializa
 
 // ...
 
-
 - (void)didUnregisterWithDeviceToken:(NSString *)deviceToken
-pushType:(ToastPushType)pushType {
+                            pushType:(ToastPushType)pushType {
 
-NSLog(@"Success to unregister token : %@", deviceToken);
+    NSLog(@"Success to unregister token : %@", deviceToken);
 }
 
 - (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-pushType:(ToastPushType)pushType
-error:(NSError *)error {
+                                  pushType:(ToastPushType)pushType
+                                     error:(NSError *)error {
 
-NSLog(@"Failed to unregister token, error : %@", error);
+    NSLog(@"Failed to unregister token, error : %@", error);
 }
 
 ```
-
 ## 리치 메세지 수신
 
 `리치 메세지 수신은 iOS 10.0+ 이상부터 지원합니다.`
