@@ -167,7 +167,7 @@ Push에서 발급받은 AppKey를 설정합니다.
 
 ### Delegate API Specification
 
-Once you register a delegate, you can do additional tasks after registering the token, clearing the token, or receiving the message / action.
+Must register your delegate to provide additional functionality after registering tokens, unregistration tokens, receiving pushes, and receiving notification actions.
 
 ``` objc
 @protocol ToastPushDelegate <NSObject>

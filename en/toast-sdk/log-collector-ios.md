@@ -79,8 +79,8 @@ Import the framework to use.
 
 ## Precautions when using CrashReport
 
-* Crash analysis of devices using the arm64e architecture requires the use of CrashReporter, which is distributed with the TOAST Logger.
-    * Crash analysis of devices using the arm64e architecture is not possible if you use a CrashReporter that is downloaded or built directly from a location other than the [Downloads](../../../Download/#toast-sdk) of TOAST.
+* Crash analysis of devices using the arm64e architecture requires the use of PLCrashReporter, which is distributed with the TOAST Logger.
+    * Crash analysis of devices using the arm64e architecture is not possible if you use a PLCrashReporter that is downloaded or built directly from a location other than the [Downloads](../../../Download/#toast-sdk) of TOAST.
     
 ## Initialize TOAST Logger SDK 
 

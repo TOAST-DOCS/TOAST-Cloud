@@ -60,7 +60,7 @@ TOAST LoggerのCrash Report機能を使用するには、一緒に配布され�
 
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-CrashReporter.frameworを直接ダウンロードするか、ビルドした場合にはBuild SettingのEnable Bitcodeの値を**NO**に変更する必要があります。
+CrashReporter.frameworkを直接ダウンロードするか、ビルドした場合にはBuild SettingのEnable Bitcodeの値を**NO**に変更する必要があります。
 
 **Project Target > Build Settings > Build Options > Enable Bitcode**をクリックして**NO**をクリックします。
 
@@ -78,8 +78,8 @@ CrashReporter.frameworを直接ダウンロードするか、ビルドした場�
 
 ## CrashReport 使用時注意事項
 
-* arm64eアーキテクチャを使用する機器のクラッシュ・分析のためにはTOAST Loggerと一緒に配布されるCrashReporterを使用しなければなりません。
-      * TOASTの[Downloads](../../../Download/#toast-sdk)ページではない他の場所でダウンロードしたり、直接ビルドしたCrashReporterを使用する場合、arm64eアーキテクチャを使用する機器のクラッシュ分析が不可能です。
+* arm64eアーキテクチャを使用する機器のクラッシュ・分析のためにはTOAST Loggerと一緒に配布されるPLCrashReporterを使用しなければなりません。
+      * TOASTの[Downloads](../../../Download/#toast-sdk)ページではない他の場所でダウンロードしたり、直接ビルドしたPLCrashReporterを使用する場合、arm64eアーキテクチャを使用する機器のクラッシュ分析が不可能です。
 
 ## TOAST Logger SDK初期化
 

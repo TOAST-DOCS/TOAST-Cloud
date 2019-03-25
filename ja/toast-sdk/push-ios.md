@@ -167,7 +167,7 @@ Pushで発行されたAppKeyを設定します。
 
 ### Delegate API仕様
 
-Delegateを登録すると、トークンの登録後、トークン解除後、あるいはメッセージ/アクション受信後に追加の作業を進めることができます。
+トークンの登録、トークン解除、プッシュ受信すると、通知アクションの受信後に、追加の機能を提供するためDelegateを登録する必要があります。
 
 ``` objc
 @protocol ToastPushDelegate <NSObject>

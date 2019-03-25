@@ -167,7 +167,7 @@ Push에서 발급받은 AppKey를 설정합니다.
 
 ### Delegate API 명세
 
-Delegate를 등록하면 토큰 등록 후, 토큰 해제 후 혹은 메세지 / 액션 수신 후 추가 작업을 진행할 수 있습니다.
+토큰 등록, 토큰 해제, 푸시 수신, 알림 액션 수신 이후 추가적인 기능을 제공하려면 Delegate를 등록해야합니다.
 
 ``` objc
 @protocol ToastPushDelegate <NSObject>
