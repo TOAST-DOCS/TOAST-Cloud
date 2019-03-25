@@ -4,7 +4,7 @@
 
 ### 공통
 
-#### 기능 개선
+#### 개선 사항
 
 * Public Class의 사용성 개선  
   * Description 추가
