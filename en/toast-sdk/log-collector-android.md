@@ -19,12 +19,12 @@ dependencies {
 ## Initialize TOAST Logger SDK 
 
 Initialize logger in the onCreate() method. 
-Set appkey issued from Log & Crash Search as ProjectKey. 
+Set appkey issued from Log & Crash Search.
 
 ```java
 // Initialize Logger
 ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
-        .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
+        .setAppKey(YOUR_APP_KEY)            // Log & Crash Search AppKey
         .build();
 
 ToastLogger.initialize(configuration);
@@ -133,7 +133,7 @@ Sending crash logs can be enabled or disabled by using setEnabledCrashReporter()
 ```java
 // Initialize Logger
 ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
-        .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
+        .setAppKey(YOUR_APP_KEY)            // Log & Crash Search AppKey
         .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
         .build();
 

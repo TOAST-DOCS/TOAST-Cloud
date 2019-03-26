@@ -166,6 +166,26 @@ ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
 });
 ```
 
+## 토큰 해제
+가장 최근에 등록된 토큰을 해제합니다. 토큰이 해제되면 푸시를 더 이상 받을 수 없게 됩니다.
+
+> 이미 해제된 토큰을 해제하면 "이미 해제된 토큰입니다(Already a token has been unregistered)" 라는 메시지와 함께 성공이 반환됩니다.
+
+### 토큰 해제 예시
+```java
+ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
+    @Override
+    public void onUnregister(@NonNull PushResult result,
+                             @Nullable String unregisteredToken) {
+        if (result.isSuccess()) {
+            // 토큰 해제 성공시
+        } else {
+            // 토큰 해제 실패시
+        }
+    }
+});
+```
+
 ## 알림 기본값 설정
 
 ### 작은 아이콘 기본값 설정
@@ -193,6 +213,14 @@ ToastNotification.setDefaultNotificationChannel(context,
     "YOUR_NOTIFICATION_CHANNEL_ID", 
     "YOUR_NOTIFICATION_CHANNEL_NAME");
 ```
+
+## 알림 리소스 설정
+
+### 알림 소리 리소스
+- 푸시 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림 소리로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
+    - 푸시 발송 시 sound 필드에 로컬 리소스 이름만(확장자 제외) 입력해야 합니다.
+- 로컬 리소스는 반드시 리소스 폴더 하위의 raw 폴더에 있어야 합니다.
+    - 예) main/res/raw/dingdong1.wav
 
 ## 리치 메시지
 

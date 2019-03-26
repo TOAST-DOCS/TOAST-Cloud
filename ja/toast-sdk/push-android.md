@@ -166,6 +166,26 @@ ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
 });
 ```
 
+## トークン解除
+最近登録されたトークンを解除します。トークンが解除されると、プッシュをこれ以上受けることができなくなります。
+
+>すでに解除されたトークンを解除すると、「既に解除されたトークンです（Already a token has been unregistered）」というメッセージと一緒に成功を返します。
+
+### トークン解除例
+```java
+ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
+    @Override
+    public void onUnregister(@NonNull PushResult result,
+                             @Nullable String unregisteredToken) {
+        if (result.isSuccess()) {
+            // トークン解除成功
+        } else {
+            // トークン解除失敗
+        }
+    }
+});
+```
+
 ## 通知デフォルト値設定
 
 ### 小さいアイコンのデフォルト値設定
@@ -193,6 +213,14 @@ ToastNotification.setDefaultNotificationChannel(context,
     "YOUR_NOTIFICATION_CHANNEL_ID",
     "YOUR_NOTIFICATION_CHANNEL_NAME");
 ```
+
+## 通知リソース設定
+
+### 通知音リソース
+- プッシュ発送時soundフィールドを追加すると、ローカルリソース（mp3、wavファイル）を通知音として設定することができます。（アンドロイド8.0未満でのみ動作）
+    - プッシュ発送時soundフィールドにローカルリソースの名前だけ（拡張子を除く）を入力する必要があります。
+- ローカルリソースは、必ずリソースフォルダ下位のrawフォルダにする必要があります。
+    - 例) main/res/raw/dingdong1.wav
 
 ## リッチメッセージ
 

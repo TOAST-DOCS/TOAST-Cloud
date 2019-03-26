@@ -16,10 +16,10 @@ iOS용 TOAST SDK의 구성은 다음과 같습니다.
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 수 있습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- | 
+| --- | --- | --- | --- | --- |
 | All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework<br/>ToastPush.framework |  |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
-| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
+| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
 | TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 | TOAST Push | ToastPush | ToastPush.framework | * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
 
@@ -93,7 +93,7 @@ CrashReporter.framewor를 직접 다운로드하거나 빌드한 경우에는 Bu
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
 
-#### 프레임워크 가져오기 
+#### 프레임워크 가져오기
 
 사용하려는 프레임워크를 가져옵니다(import).
 

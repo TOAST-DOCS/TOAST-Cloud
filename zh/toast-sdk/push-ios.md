@@ -77,17 +77,17 @@ TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework`를 추가해야
 #import <ToastIAP/ToastIAP.h>
 ```
 
-## Capability Setting
+## Capabilities Setting
 
 TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Background Modes** 항목을 활성화해야 합니다.
 
 **Project Target > Capabilities > Push Notification > ON** 
 
-![capability_push_notification](http://static.toastoven.net/toastcloud/sdk/ios/capability_push_notification.png)
+![capabilities_push_notification](http://static.toastoven.net/toastcloud/sdk/ios/capability_push_notification.png)
 
 **Project Target > Capabilities > Background Modes > ON** 
 
-![capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
+![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
 
 ## 서비스 로그인
 
@@ -167,7 +167,7 @@ Push에서 발급받은 AppKey를 설정합니다.
 
 ### Delegate API 명세
 
-Delegate를 등록하면 토큰 등록 후 혹은 메세지 / 액션 수신 후 추가 작업을 진행할 수 있습니다.
+토큰 등록, 토큰 해제, 푸시 수신, 알림 액션 수신 이후 추가적인 기능을 제공하려면 Delegate를 등록해야합니다.
 
 ``` objc
 @protocol ToastPushDelegate <NSObject>
@@ -191,6 +191,15 @@ Delegate를 등록하면 토큰 등록 후 혹은 메세지 / 액션 수신 후 
                                 categoryIdentifier:(NSString *)categoryIdentifier
                                            payload:(NSDictionary *)payload
                                           userText:(nullable NSString *)userText;
+
+// 토큰 등록 해제 성공
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                            pushType:(ToastPushType)pushType;
+
+// 토큰 등록 해제 실패
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                  pushType:(ToastPushType)pushType
+                                     error:(NSError *)error;
 
 @end
 ```
@@ -379,6 +388,53 @@ agreement.allowNightAdvertisements = NO;
                                   }];
 ```
 
+## 토큰 해제
+
+초기화시에 설정된 정보(푸쉬 타입, 샌드박스 유무)를 토대로 등록된 토큰을 해제합니다.
+만약 설정된 정보에 해당하는 토큰이 존재하지 않거나 해제에 성공한다면 해제 성공 Delegate를 호출합니다.
+토큰 해제 결과는 초기화시에 설정된 Delegate를 통해 전달됩니다.
+
+### 토큰 해제API 명세
+
+``` objc
+
+@interface ToastPush : NSObject
+
+// ...
+
+// 토큰 해제
++ (void)unregisterToken;
+
+// ...
+
+@end
+
+```
+
+### 토큰 해제 예
+
+``` objc
+
+// ...
+
+[ToastPush unregisterToken];
+
+// ...
+
+- (void)didUnregisterWithDeviceToken:(NSString *)deviceToken
+                            pushType:(ToastPushType)pushType {
+
+    NSLog(@"Success to unregister token : %@", deviceToken);
+}
+
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                  pushType:(ToastPushType)pushType
+                                     error:(NSError *)error {
+
+    NSLog(@"Failed to unregister token, error : %@", error);
+}
+
+```
 ## 리치 메세지 수신
 
 `리치 메세지 수신은 iOS 10.0+ 이상부터 지원합니다.`

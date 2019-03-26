@@ -1,5 +1,19 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.13.1 (2019.03.26)
+
+### TOAST Log & Crash
+
+#### Improved
+
+* Improved to be able to send logs on non-unity thread.
+* Rename ProjectKey to AppKey
+    * setProjectKey is still available
+
+#### Fixed
+
+* Fixed a issue that sends a unexpected SDK exception when message is empty in Android.
+
 ## 0.13.0 (2019.02.26)
 
 ### TOAST Log & Crash
