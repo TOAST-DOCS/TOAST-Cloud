@@ -167,7 +167,7 @@ Push에서 발급받은 AppKey를 설정합니다.
 
 ### Delegate API 명세
 
-Delegate를 등록하면 토큰 등록 후 혹은 메세지 / 액션 수신 후 추가 작업을 진행할 수 있습니다.
+토큰 등록, 토큰 해제, 푸시 수신, 알림 액션 수신 이후 추가적인 기능을 제공하려면 Delegate를 등록해야합니다.
 
 ``` objc
 @protocol ToastPushDelegate <NSObject>
@@ -191,6 +191,15 @@ Delegate를 등록하면 토큰 등록 후 혹은 메세지 / 액션 수신 후 
                                 categoryIdentifier:(NSString *)categoryIdentifier
                                            payload:(NSDictionary *)payload
                                           userText:(nullable NSString *)userText;
+
+// 토큰 등록 해제 성공
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                            pushType:(ToastPushType)pushType;
+
+// 토큰 등록 해제 실패
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                  pushType:(ToastPushType)pushType
+                                     error:(NSError *)error;
 
 @end
 ```
@@ -377,6 +386,54 @@ agreement.allowNightAdvertisements = NO;
                                           NSLog(@"Fail : %@", error);
                                       }
                                   }];
+```
+
+## 토큰 해제
+
+초기화시에 설정된 정보(푸쉬 타입, 샌드박스 유무)를 토대로 등록된 토큰을 해제합니다.
+만약 설정된 정보에 해당하는 토큰이 존재하지 않거나 해제에 성공한다면 해제 성공 Delegate를 호출합니다.
+토큰 해제 결과는 초기화시에 설정된 Delegate를 통해 전달됩니다.
+
+### 토큰 해제API 명세
+
+``` objc
+
+@interface ToastPush : NSObject
+
+// ...
+
+// 토큰 해제
++ (void)unregisterToken;
+
+// ...
+
+@end
+
+```
+
+### 토큰 해제 예
+
+``` objc
+
+// ...
+
+[ToastPush unregisterToken];
+
+// ...
+
+- (void)didUnregisterWithDeviceToken:(NSString *)deviceToken
+                            pushType:(ToastPushType)pushType {
+
+    NSLog(@"Success to unregister token : %@", deviceToken);
+}
+
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                  pushType:(ToastPushType)pushType
+                                     error:(NSError *)error {
+
+    NSLog(@"Failed to unregister token, error : %@", error);
+}
+
 ```
 
 ## 리치 메세지 수신

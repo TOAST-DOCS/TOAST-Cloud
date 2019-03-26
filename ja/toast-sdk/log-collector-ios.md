@@ -1,8 +1,7 @@
 ## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > iOS
 
 > [告知]
-> arm64eアーキテクチャを使用する新規端末(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュログは、発生件数の集計のみ可能で、クラッシュ内容の分析はまだサポートされていません。
-> 早いうちに新規端末の分析機能を提供したいと思います。
+> TOAST SDK 0.13.0でarm64eアーキテクチャを使用する機器(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュ集計、分析が可能です。
 
 ## Prerequisites
 
@@ -16,7 +15,7 @@ iOS用TOAST Logger SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework | ENABLE_BITCODE = NO; |
+| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## TOAST Logger SDKをXcodeプロジェクトに適用
@@ -61,7 +60,7 @@ TOAST LoggerのCrash Report機能を使用するには、一緒に配布され�
 
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-CrashReporter.frameworを直接ダウンロードするか、ビルドした場合にはBuild SettingのEnable Bitcodeの値を**NO**に変更する必要があります。
+CrashReporter.frameworkを直接ダウンロードするか、ビルドした場合にはBuild SettingのEnable Bitcodeの値を**NO**に変更する必要があります。
 
 **Project Target > Build Settings > Build Options > Enable Bitcode**をクリックして**NO**をクリックします。
 
@@ -77,13 +76,17 @@ CrashReporter.frameworを直接ダウンロードするか、ビルドした場�
 #import <ToastLogger/ToastLogger.h>
 ```
 
+## CrashReport 使用時注意事項
+
+* arm64eアーキテクチャを使用する機器のクラッシュ・分析のためにはTOAST Loggerと一緒に配布されるPLCrashReporterを使用しなければなりません。
+      * TOASTの[Downloads](../../../Download/#toast-sdk)ページではない他の場所でダウンロードしたり、直接ビルドしたPLCrashReporterを使用する場合、arm64eアーキテクチャを使用する機器のクラッシュ分析が不可能です。
 
 ## TOAST Logger SDK初期化
 
-Log & Crash Searchで発行されたAppKeyをProjectKeyに設定します。
+Log & Crash Searchで発行されたAppKeyを設定します。
 
 ```objc
-[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
+[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
 ```
 
 ## ログ送信
@@ -164,7 +167,7 @@ TOAST Loggerを初期化する時、一緒に有効になり、使用するか�
 ### CrashReporter使用するかの設定
 CrashReporter機能は、基本的にTOAST Loggerを初期化する時に一緒に有効になります。
 ```objc
-[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY"]];
+[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
 ```
 TOAST Loggerを初期化する時、使用するかを設定できます。
 クラッシュログ送信機能を使用しない場合は、CrashReporter機能を無効にする必要があります。
@@ -172,7 +175,7 @@ TOAST Loggerを初期化する時、使用するかを設定できます。
 #### CrashReporter有効化
 ```objc
 // CrashReporter Enable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:YES];
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
 
 [ToastLogger initWithConfiguration:configuration];
 ```
@@ -180,7 +183,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ```objc
 
 // CrashReporter Disable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithProjectKey:@"YOUR_PROJECT_KEY" enableCrashReporter:NO];
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:NO];
 
 [ToastLogger initWithConfiguration:configuration];
 ```

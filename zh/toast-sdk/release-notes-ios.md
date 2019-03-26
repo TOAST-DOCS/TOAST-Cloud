@@ -1,8 +1,57 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.13.0 (2019.03.26)
+
+### Common
+
+#### Fixed
+
+* Improved Usability of Public Class
+  * Add Description
+  * Support Nullability, NSCoding, NSCopying
+
+### ToastCore
+
+#### Fixed
+
+* Add Internal Exception Processing
+
+### TOAST Logger
+
+#### Added
+
+* Support for Crash analysis of devices using the arm64e architecture
+* Change PLCrashReporter Dependency
+
+#### Fixed
+
+* Change Configuration Interface
+  * Deprecate
+    * configurationWithProjectKey
+  * Add
+    * configurationWithAppKey
+
+#### Bug Fixed
+
+* Modify a problem that may not update the UserID of the Log that is sent at the time of UserID setup
+
+### TOAST IAP
+
+#### Fixed
+
+* Add Internal Exception Processing
+
+### TOAST Push
+
+#### Added
+
+* Add unregisterToken API
+
 ## 0.12.4 (2019.03.19)
 
 ### TOAST Core
+
+#### Fixed
 
 * Add a exception 
 

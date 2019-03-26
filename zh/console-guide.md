@@ -81,34 +81,43 @@ Each member of an organization has following roles:
 4. You can find the organization name just created on top of the console menu
 5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
 
-### IAM 콘솔 로그인 보안 설정
-- IAM 회원의 콘솔 접속 보안을 강화하기 위해 [로그인 보안 설정] 기능을 제공합니다. 
-- 모든 조직 서비스(Cloud콘솔,Online Contact, Dooray 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다. 
+### Security Setting for IAM Console Logins 
+To tighten console access security for IAM members, [Login Security Setting] is provided.  
+
+Same configuration may be applied to all organizations (e.g. Cloud console, Online Contact, or Dooray!), or each service may be diffferently configured. 
 
 ![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903.png)
 
-1. 콘솔로 이동한 위 설정을 원하는 조직의 조직설정 페이지에 접속합니다. 
-2. IAM 콘솔의 [로그인 보안 설정] 버튼을 클릭합니다. 
+1. Access Organization Setting of an organization to configure on a console. 
+2. Click [Login Security Setting] on the IAM console. 
 
-#### 2차 인증 
+#### Two-factor Authentication 
+
+The two-factor authentication can be made a required setting.    
+
 ![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903.png)
-- 2차 인증을 필수로 설정하여 사용하도록 할 수 있습니다. 
-- 설정 안 함 : 2차 인증을 하지 않고, 아이디와 패스워드 입력 만으로 로그인 할 수 있습니다. 
-- Google OTP : 아이디와 패스워드 입력 후, Google OTP 앱에서 제공한 One Time Password를 입력하여 인증 후 로그인 할 수 있습니다.
-- 이메일 : 아이디와 패스워드 입력 후, 이메일 주소로 발송된 인증 버튼을 클릭해서 인증 후 로그인 할 수 있습니다. 
+- Not Configured: Login is available only by ID and password, without two-factor authentication.  
+- Google OTP:  Enter ID and password, and enter One Time Password provided by Google OTP, to authenticate and log in. 
+- Email: Enter ID and password, and click an authentication button delivered via email address, to authenticate and log in. 
 
-#### 로그인 실패 보안
+#### Security for Failed Logins 
+
+When it fails to log in for many consecutive times, you are allowed to log in after certain time. 
+
+Security setting for failed logins can be differently applied for each service. 
+Only common settings are provided. 
+
 ![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903.png)
-- 로그인을 계속해서 실패했을 때 일정 시간이 지난 후 다시 로그인 할 수 있도록 설정할 수 있습니다.
-- 로그인 실패 보안 설정은 서비스 별로 다르게 설정할 수 없습니다. 공통 설정 기능만 제공합니다.
-- 설정 안 함 : 로그인에 실패하더라도 계속해서 로그인 시도를 할 수 있습니다. 
-- 설정 : 원하는 실패 횟수와 잠금 시간을 입력하면 해당 횟수만큼 로그인에 실패하면 해당 잠금 시간동안 로그인을 시도할 수 없습니다. 
+- Not Configured: Login can be attempted forever even after it fails for many times. 
+- Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
 
 #### IP ACL 
+
+Access to IAM console is available only in allowed IPs (or IP bandwidth)
+
 ![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903.png)
-- 허용한 IP(또는 IP 대역)에서만 IAM 콘솔에 접근할 수 있습니다. 
-- 설정 안 함 : 모든 IP(또는 IP 대역)에서 IAM 콘솔에 접근할 수 있습니다. 
-- 허용한 IP(또는 IP 대역)만 콘솔 접근 : 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력하시면 됩니다. 
+- Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
+- Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
 
 ## Manage Projects
 

@@ -22,12 +22,12 @@ dependencies {
 
 > 初期化を行わずにToastLoggerを使用すると、初期化エラーが発生します。
 
-- Log & Crash Searchで発行されたAppKeyをProjectKeyに設定します。
+- Log & Crash Searchで発行されたAppKeyを設定します。
 
 ```java
 // Initialize Logger
 ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
-        .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
+        .setAppKey(YOUR_APP_KEY)            // Log & Crash Search AppKey
         .build();
 
 ToastLogger.initialize(configuration);
@@ -134,7 +134,7 @@ TOAST Loggerは、アプリで予期せぬクラッシュが発生した場合�
 ```java
 // Initialize Logger
 ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
-        .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
+        .setAppKey(YOUR_APP_KEY)            // Log & Crash Search AppKey
         .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
         .build();
 
