@@ -14,11 +14,11 @@
 iOS용 TOAST Push SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- | 
+| --- | --- | --- | --- | --- |
 | TOAST Push | ToastPush | ToastPush.framework | * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## TOAST IAP SDK를 Xcode 프로젝트에 적용
+## TOAST Push SDK를 Xcode 프로젝트에 적용
 
 ### 1. Cococapods 적용
 
@@ -40,7 +40,7 @@ end
 #import <ToastPush/ToastPush.h>
 ```
 
-### 2. 바이너리를 다운로드하여 TOAST SDK 적용 
+### 2. 바이너리를 다운로드하여 TOAST SDK 적용
 
 #### SDK 가져오기(import)
 
@@ -68,24 +68,24 @@ TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework`를 추가해야
 
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-#### 프레임워크 가져오기 
+#### 프레임워크 가져오기
 
 사용하려는 프레임워크를 가져옵니다(import).
 
 ```objc
 #import <ToastCore/ToastCore.h>
-#import <ToastIAP/ToastIAP.h>
+#import <ToastPush/ToastPush.h>
 ```
 
 ## Capabilities Setting
 
 TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Background Modes** 항목을 활성화해야 합니다.
 
-**Project Target > Capabilities > Push Notification > ON** 
+**Project Target > Capabilities > Push Notification > ON**
 
 ![capabilities_push_notification](http://static.toastoven.net/toastcloud/sdk/ios/capability_push_notification.png)
 
-**Project Target > Capabilities > Background Modes > ON** 
+**Project Target > Capabilities > Background Modes > ON**
 
 ![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
 
@@ -194,11 +194,11 @@ Push에서 발급받은 AppKey를 설정합니다.
 
 // 토큰 등록 해제 성공
 - (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
-                            pushType:(ToastPushType)pushType;
+                             forType:(ToastPushType)type;
 
 // 토큰 등록 해제 실패
 - (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                  pushType:(ToastPushType)pushType
+                                   forType:(ToastPushType)type
                                      error:(NSError *)error;
 
 @end
@@ -422,19 +422,20 @@ agreement.allowNightAdvertisements = NO;
 // ...
 
 - (void)didUnregisterWithDeviceToken:(NSString *)deviceToken
-                            pushType:(ToastPushType)pushType {
+                             forType:(ToastPushType)type {
 
     NSLog(@"Success to unregister token : %@", deviceToken);
 }
 
 - (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                  pushType:(ToastPushType)pushType
+                                   forType:(ToastPushType)type
                                      error:(NSError *)error {
 
     NSLog(@"Failed to unregister token, error : %@", error);
 }
 
 ```
+
 ## 리치 메세지 수신
 
 `리치 메세지 수신은 iOS 10.0+ 이상부터 지원합니다.`
@@ -570,7 +571,7 @@ typedef NS_ENUM(NSUInteger, ToastPushErrorCode) {
     ToastPushErrorSystemFailed          = 4,    // 시스템 에러
     ToastPushErrorTokenInvalid          = 5,    // 토큰 값이 없거나 유효하지 않음
     ToastPushErrorAlreadyInProgress     = 6,    // 요청이 이미 진행중
-    
+
     ToastPushErrorNetworkNotAvailable   = 100,  // 네트워크 사용 불가
     ToastPushErrorNetworkFailed         = 101,  // HTTP Status Code 가 200이 아님
     ToastPushErrorTimeout               = 102,  // 타임아웃
