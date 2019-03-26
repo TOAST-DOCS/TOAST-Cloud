@@ -261,6 +261,20 @@ Pushで発行されたAppKeyを設定します。
                                           userText:(nullable NSString *)userText NS_AVAILABLE_IOS(10_0) {
     // ...
 }
+
+// トークンの登録を解除成功
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                             forType:(ToastPushType)type {
+     // ...
+}
+
+// トークンの登録解除に失敗し
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                   forType:(ToastPushType)type
+                                     error:(NSError *)error {[
+     // ...
+}
+
 ```
 
 ## トークン登録

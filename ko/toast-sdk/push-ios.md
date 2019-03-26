@@ -261,6 +261,20 @@ Push에서 발급받은 AppKey를 설정합니다.
                                           userText:(nullable NSString *)userText NS_AVAILABLE_IOS(10_0) {
     // ...
 }
+
+// 토큰 등록 해제 성공
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                             forType:(ToastPushType)type {
+    // ...
+}
+
+// 토큰 등록 해제 실패
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                   forType:(ToastPushType)type
+                                     error:(NSError *)error {
+     // ...
+}
+
 ```
 
 ## 토큰 등록
