@@ -21,7 +21,7 @@
 #### Added
 
 * Support for Crash analysis of devices using the arm64e architecture
-* PLCrashReporter Dependency 변경
+* Change PLCrashReporter Dependency
 
 #### Fixed
 
