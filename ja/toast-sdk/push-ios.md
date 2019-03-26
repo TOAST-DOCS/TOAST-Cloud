@@ -18,7 +18,7 @@ iOS用TOAST Push SDKの構成は次のとおりです。
 | TOAST Push | ToastPush | ToastPush.framework | * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## TOAST IAP SDKをXcodeプロジェクトに適用
+## TOAST Push SDKをXcodeプロジェクトに適用
 
 ### 1. Cococapodsの適用
 
@@ -74,7 +74,7 @@ TOAST PushのVoIP機能を使用するには、`PushKit.framework`を追加す�
 
 ```objc
 #import <ToastCore/ToastCore.h>
-#import <ToastIAP/ToastIAP.h>
+#import <ToastPush/ToastPush.h>
 ```
 
 ## Capabilities Setting
@@ -194,11 +194,11 @@ Pushで発行されたAppKeyを設定します。
 
 // トークンの登録を解除成功
 - (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
-                            pushType:(ToastPushType)pushType;
+                             forType:(ToastPushType)type;
 
 // トークンの登録解除に失敗し
 - (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                  pushType:(ToastPushType)pushType
+                                   forType:(ToastPushType)type
                                      error:(NSError *)error;
 
 @end
@@ -261,6 +261,20 @@ Pushで発行されたAppKeyを設定します。
                                           userText:(nullable NSString *)userText NS_AVAILABLE_IOS(10_0) {
     // ...
 }
+
+// トークンの登録を解除成功
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                             forType:(ToastPushType)type {
+     // ...
+}
+
+// トークンの登録解除に失敗し
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                   forType:(ToastPushType)type
+                                     error:(NSError *)error {[
+     // ...
+}
+
 ```
 
 ## トークン登録
@@ -422,13 +436,13 @@ agreement.allowNightAdvertisements = NO;
 // ...
 
 - (void)didUnregisterWithDeviceToken:(NSString *)deviceToken
-                            pushType:(ToastPushType)pushType {
+                             forType:(ToastPushType)type {
     
     NSLog(@"Success to unregister token : %@", deviceToken);
 }
 
 - (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                  pushType:(ToastPushType)pushType
+                                   forType:(ToastPushType)type
                                      error:(NSError *)error {
     
     NSLog(@"Failed to unregister token, error : %@", error);
