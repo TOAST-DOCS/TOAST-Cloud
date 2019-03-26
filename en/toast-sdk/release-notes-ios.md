@@ -10,7 +10,7 @@
   * Add Description
   * Support Nullability, NSCoding, NSCopying
 
-### ToastCore
+### TOAST Core
 
 #### Fixed
 
