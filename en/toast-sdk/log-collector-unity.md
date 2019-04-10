@@ -4,29 +4,29 @@
 
 1\. [Install TOAST SDK](./getting-started-unity)
 2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
-3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search. 
+3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 4\. [Initialize TOAST SDK](./getting-started-unity#toast-sdk_1).
 
-### For Android 
+### For Android
 
 #### Gradle Build Settings
-- Add below to dependencies of mainTemplate.gradle. 
+- Add below to dependencies of mainTemplate.gradle.
 
 ```groovy
 dependencies {
     if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-logger:0.14.3'
+        implementation 'com.toast.android:toast-unity-logger:0.15.0'
     } else {
-        compile 'com.toast.android:toast-unity-logger:0.14.3'
+        compile 'com.toast.android:toast-unity-logger:0.15.0'
     }
 }
 ```
 
-### For iOS 
+### For iOS
 
-#### Player Settings 
+#### Player Settings
 
-* Unity's iOS build setting includes some settings that influence logger's log delivery to a server. 
+* Unity's iOS build setting includes some settings that influence logger's log delivery to a server.
 * Below briefly shows effects of such settings and describes recommended settings for a logger.  
 
 | Menu | List | Setting | Recommended Setting |
@@ -38,23 +38,23 @@ dependencies {
 ##### On .Net UnhandledException
 
 * **Silent Exit** is recommended.
-    * If On .Net UnhandledException is set for Crash, app is closed immediately when an exception occurs. 
-    * With Silent Exit, Unity Exception can be captured. 
+    * If On .Net UnhandledException is set for Crash, app is closed immediately when an exception occurs.
+    * With Silent Exit, Unity Exception can be captured.
 
 ##### Enable CrashReport API
 
 * **Disabled** is recommended.
-    * Shows whether Unity CrashReporter API is enabled or not. 
-    * When enabled, it may affect logger's crash log collection. 
+    * Shows whether Unity CrashReporter API is enabled or not.
+    * When enabled, it may affect logger's crash log collection.
 
 ##### Script Call Optimization
 
 * **Slow and Safe** is recommended.
     * To collect Runtime C# Crash logs, Slow and Safe must be enabled.  
 
-## Initialize TOAST Logger SDK 
+## Initialize TOAST Logger SDK
 
-Set appkey issued from Log & Crash Search as ProjectKey. 
+Set appkey issued from Log & Crash Search as ProjectKey.
 
 ```csharp
 var loggerConfiguration = new ToastLoggerConfiguration
@@ -65,15 +65,15 @@ var loggerConfiguration = new ToastLoggerConfiguration
 ToastLogger.Initialize(loggerConfiguration);
 ```
 
-## Send Logs 
+## Send Logs
 
-TOAST Logger can send logs of five levels. 
-User fields may be additionally sent. 
+TOAST Logger can send logs of five levels.
+User fields may be additionally sent.
 
-### Specifications for Log Sending API 
+### Specifications for Log Sending API
 
 ```csharp
-// DEBUG level logs 
+// DEBUG level logs
 ToastLogger.Debug(message);
 ToastLogger.Debug(message, userFields);
 
@@ -94,7 +94,7 @@ ToastLogger.Fatal(message);
 ToastLogger.Fatal(message, userFields);
 ```
 
-### Usage Example of Log Sending API 
+### Usage Example of Log Sending API
 
 ```csharp
 ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
@@ -103,32 +103,32 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 });
 ```
 
-## Set User-Defined Fields 
+## Set User-Defined Fields
 
 Set a user-defined field as wanted.  
-With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called. 
+With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called.
 
-### Specifications for User-Defined Field Setting API 
+### Specifications for User-Defined Field Setting API
 ```csharp
 ToastLogger.SetUserField(userField, userValue);
 ```
 
-*  User-defined field is same as the value exposed as "Selected Field" in "Log & Crash Search Console" > "Log Search Tab". 
+*  User-defined field is same as the value exposed as "Selected Field" in "Log & Crash Search Console" > "Log Search Tab".
     That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
 *  If a key is changed for many times, the final value shall be applied.  
 
-#### Restrictions of User-Defined Fields 
+#### Restrictions of User-Defined Fields
 * Cannot use already [Reserved Fields](./log-collector-reserved-fields). Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
 * Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z".
-* Replace spaces within a field name by "_". 
+* Replace spaces within a field name by "_".
 
 ### Usage Example of User-Defined Field Setting API
 ```csharp
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
 
-## Further Tasks after Sending Logs 
-- With listener registered, further tasks can be executed after logs are sent. 
+## Further Tasks after Sending Logs
+- With listener registered, further tasks can be executed after logs are sent.
 
 ### Specifications for SetLoggerListener API
 
@@ -144,14 +144,14 @@ public interface IToastLoggerListener
 static void SetLoggerListener(IToastLoggerListener listener);
 ```
 
-### Usage Example of SetLoggerListener 
+### Usage Example of SetLoggerListener
 
 ```csharp
 public class SampleLoggerListener : IToastLoggerListener
 {
     public void OnSuccess(LogEntry log)
     {
-        // Sending logs succeeded 
+        // Sending logs succeeded
     }
 
     public void OnFilter(LogEntry log, LogFilter filter)
@@ -161,19 +161,19 @@ public class SampleLoggerListener : IToastLoggerListener
 
     public void OnSave(LogEntry log)
     {
-        // Save within SDK for re-sending if log-sending fails due to network errors 
+        // Save within SDK for re-sending if log-sending fails due to network errors
     }
 
     public void OnError(LogEntry log, string errorMessage)
     {
-        // Sending logs failed 
+        // Sending logs failed
     }
 }
 
 ToastLogger.SetLoggerListener(new SampleLoggerListener());
 ```
 
-## Collect Crash Logs 
+## Collect Crash Logs
 
 TOAST Logger classifies Unity's crashes into two categories.
 
@@ -182,7 +182,7 @@ TOAST Logger classifies Unity's crashes into two categories.
 
 With ToastLogger initialized, a crash log is automatically sent when it occurs crash under the mobile environment or when it occurs the unexpected exception in Unity.
 To disable crash log delivery, set false for EnableCrashReporter property of the ToastLoggerConfiguration object.
-For more information on crash logs of each platform, check the links below: 
+For more information on crash logs of each platform, check the links below:
 
 - [Collect Android Crash Logs](./log-collector-android/#_5)
 - [Collect iOS Crash Logs](./log-collector-ios/#_5)
@@ -196,7 +196,7 @@ var loggerConfiguration = new ToastLoggerConfiguration
 ```
 
 ## Further Tasks after Sending Crash logs
-- With crash listener registered, further tasks can be executed after crash logs are sent. 
+- With crash listener registered, further tasks can be executed after crash logs are sent.
 
 > ** Crash listener only works when it occurs unexpected exception in Unity **
 > Crash listener is not supported for crashes on the native platform.
@@ -214,7 +214,7 @@ public static void SetCrashListener(CrashListener listener);
 ```csharp
 ToastLogger.SetCrashListener((isSuccess, log) =>
 {
-    if (isSuccess) 
+    if (isSuccess)
     {
         Application.Quit();
     }
@@ -222,11 +222,11 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 ```
 
 
-## Send Handled Exceptions 
+## Send Handled Exceptions
 
-Exceptions from a try/catch sentence, as well as general/crash logs, can be sent by using  Report API of TOAST Logger. 
-Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab". 
-For more usage details on Log & Crash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/). 
+Exceptions from a try/catch sentence, as well as general/crash logs, can be sent by using  Report API of TOAST Logger.
+Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
+For more usage details on Log & Crash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
 
 ### Specifications for Handled Exception Log API
 
@@ -236,7 +236,7 @@ var logLevel = ToastLogLevel.ERROR;
 ToastLogger.Report(logLevel, message, exception);
 ```
 
-### Usage Example of Handled Exception Log API 
+### Usage Example of Handled Exception Log API
 
 ```csharp
 try
@@ -244,24 +244,24 @@ try
     doSomethingWrong();
 }catch(Exception e)
 {
-    // Debug, Info, Warn, Error, and Fatal are available. 
+    // Debug, Info, Warn, Error, and Fatal are available.
     ToastLogger.Report(ToastLogLevel.ERROR, "YOUR_MESSAGE", exception);
 }
 ```
 
 ## Network Insights
-Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response values of many countries around the world (according to national codes on a device). 
+Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response values of many countries around the world (according to national codes on a device).
 
-> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized. 
+> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized.
 
-### Enable Network Insights 
+### Enable Network Insights
 
 1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Settings].
-3. Click the [Setting for Sending Logs] tab. 
+3. Click the [Setting for Sending Logs] tab.
 4. Enable "Network Insights Logs".
 
-### URL Setting 
+### URL Setting
 
 1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Network Insights].
