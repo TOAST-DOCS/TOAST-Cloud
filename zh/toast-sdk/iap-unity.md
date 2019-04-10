@@ -15,9 +15,9 @@
 ```groovy
 dependencies {
     if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-google:0.14.3'
+        implementation 'com.toast.android:toast-unity-iap-google:0.15.0'
     } else {
-        compile 'com.toast.android:toast-unity-iap-google:0.14.3'
+        compile 'com.toast.android:toast-unity-iap-google:0.15.0'
     }
 }
 ```
@@ -27,9 +27,9 @@ dependencies {
 ```groovy
 dependencies {
     if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-onestore:0.14.3'
+        implementation 'com.toast.android:toast-unity-iap-onestore:0.15.0'
     } else {
-        compile 'com.toast.android:toast-unity-iap-onestore:0.14.3'
+        compile 'com.toast.android:toast-unity-iap-onestore:0.15.0'
     }
 }
 ```
