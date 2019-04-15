@@ -1,5 +1,5 @@
 ## TOAST > TOAST User Guide
-This document is the user guide of TOAST, which is the cloud service of NHN Entertainment.
+This document is the user guide of TOAST, which is the cloud service of NHN.
 
 ## Join TOAST
 Members of TOAST are classified into Personal and Business members.
