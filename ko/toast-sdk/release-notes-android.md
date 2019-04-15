@@ -1,5 +1,14 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 0.16.0 (2019.04.23)
+
+### TOAST Push
+
+#### 기능 추가
+
+* Tencent 푸시 추가.
+* 사용자 메시지 처리 기능 추가.
+
 ## 0.15.0 (2019.03.26)
 
 ### TOAST Log & Crash

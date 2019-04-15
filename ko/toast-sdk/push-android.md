@@ -295,7 +295,7 @@ public class ToastPushSampleApplication extends Application {
 
 ## 사용자 정의 메시지 처리
 - 직접 수신한 메시지를 처리하고 싶은 경우, ToastPushMessagingService 를 상속해서 onMessageReceived 메소드를 구현해야합니다.
-- 구현한 서비스는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
+- ToastPushMessagingService를 구현한 서비스는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
 
 > 수신한 메시지를 직접 처리할 경우, 알림(Notification) 등록도 사용자가 직접 해야 합니다.
 
