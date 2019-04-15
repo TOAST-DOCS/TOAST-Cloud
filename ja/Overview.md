@@ -1,6 +1,6 @@
 ﻿## TOAST > 概要
 
-TOASTはNHNエンターテインメントが提供する「統合クラウドサービス」です。TOward Art Science Technologyをモットーに芸術科学技術に向かう新らしい世界を作るために挑戦する情熱を意味します。
+TOASTはNHNが提供する「統合クラウドサービス」です。TOward Art Science Technologyをモットーに芸術科学技術に向かう新らしい世界を作るために挑戦する情熱を意味します。
 
 ## 特徴
 
