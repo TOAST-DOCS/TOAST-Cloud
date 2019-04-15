@@ -293,6 +293,47 @@ public class ToastPushSampleApplication extends Application {
 }
 ```
 
+## 사용자 정의 메시지 처리
+- 직접 수신한 메시지를 처리하고 싶은 경우, ToastPushMessagingService 를 상속해서 onMessageReceived 메소드를 구현해야합니다.
+- 구현한 서비스는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
+
+> 수신한 메시지를 직접 처리할 경우, 알림(Notification) 등록도 사용자가 직접 해야 합니다.
+
+### ToastPushMessagingService 구현 코드 예
+```java
+public class UserCustomReceiver extends ToastPushMessagingService {
+    @Override
+    public void onMessageReceived(@NonNull ToastRemoteMessage remoteMessage) {
+        ToastPushMessage message = remoteMessage.getMessage();
+
+        final CharSequence title = message.getTitle();
+        final CharSequence body = message.getBody();
+        final RichMessage richMessage = message.getRichMessage();
+        final Map<String, String> extras = message.getExtras();
+
+        // 수신한 데이터를 이용해서 코드를 구현합니다.
+    }
+}
+```
+
+### AndroidManifest.xml 등록 예
+```xml
+<manifest>
+    <application>
+        <service android:name=".UserCustomReceiver">
+            <intent-filter>
+                <action android:name="com.toast.android.push.MESSAGE_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- 생략 -->
+    </application>
+
+    <!-- 생략 -->
+</manifest>
+```
+
+
 ## TOAST Push Class Reference
 ### ToastPushConfiguration
 - TOAST Push를 초기화할 때 전달되는 Push 설정 정보입니다.
