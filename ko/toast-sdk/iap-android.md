@@ -31,7 +31,29 @@ dependencies {
 }
 ```
 
-### 스토어 코드
+## AndroidManifest 설정
+
+### ONE store 결제 화면 설정 (옵션)
+
+ONE store는 전체 결제 화면과 팝업 결제 화면을 지원합니다.
+AndroidManifest.xml에 meta-data를 추가하여 전체 결제 화면("full") 또는 팝업 결제 화면("popup")을 선택할 수 있습니다.
+meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
+
+```xml
+<application
+  ...>
+  <meta-data android:name="iap:view_option" android:value="popup | full"/>
+</application>
+```
+
+| 결제 화면 | 설정 값 |
+| -- | -- |
+| 전체 결제 화면 | "full" |
+| 팝업 결제 화면 | "popup" |
+
+자세한 정보는 [원스토어 결제 화면 설정](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17_04_preparation#HAndroidManifestD30CC77CC124C815)을 확인하세요.
+
+## 스토어 코드
 
 | 스토어         | 코드         |
 | ----------- | ---------- |
@@ -49,7 +71,7 @@ dependencies {
 | 소비성 상품 | "CONSUMABLE"     | 소비 가능한 일회성 상품, 게임내 재화, 미디어 파일은 소비성 상품의 예입니다. |
 | 구독 상품  | "AUTO_RENEWABLE" | 지정된 간격 및 가격으로 결제가 자동으로 되풀이되는 상품, <br>온라인 잡지 및 음악 스트리밍 서비스는 구독의 예입니다. |
 
-> [참고] 구독 상품은 **Google Play 스토어**만 지원합니다.
+> [참고] 구독 상품은 **Google Play 스토어** 만 지원합니다.
 
 ## 인앱 결제 설정
 
@@ -88,10 +110,10 @@ public static void initialize(ToastIapConfiguration configuration)
 
 ### 인앱 결제 초기화 예시
 
-- ToastIap를 초기화합니다. 
+- ToastIap를 초기화합니다.
 
 > [참고] 초기화는 반드시 Application#onCreate에서 진행해야 합니다.
-    
+
 ```java
 public class MainApplication extends Application {
     @Override
@@ -245,7 +267,7 @@ void queryProductDetails() {
 }
 ```
 
-## 상품 구매 
+## 상품 구매
 
 * TOAST IAP는 스토어에 등록된 상품 ID를 사용하여 상품을 구매할 수 있습니다.
 * 상품 정보는 ToastIap.queryProductDetails() 메서드를 호출하여 반환된 [IapProductDetails](./iap-android/#iapproductdetails) 객체에 포함되어있습니다.
@@ -436,7 +458,7 @@ public Throwable getCause()
 | isSuccess   | boolean     | 결제 성공 여부를 반환합니다.                 |
 | isFailure   | boolean     | 결제 실패 여부를 반환합니다.                 |
 
-### IapResult 
+### IapResult
 
 ```java
 /* IapResult.java */
@@ -630,4 +652,3 @@ void onPurchasesResponse(IapResult result,
 | ONESTORE_NEED_UPDATE     | 302  | ONE store 서비스가 업데이트 또는 설치되지 않았습니다.<br>ONE store service is not updated or installed. |
 | ONESTORE_SECURITY_ERROR  | 303  | 비정상 앱에서 결제를 요청하였습니다.<br>Abnormal purchase request. |
 | ONESTORE_PURCHASE_FAILED | 304  | 결제 요청에 실패했습니다.<br>Purchase request failed. |
-
