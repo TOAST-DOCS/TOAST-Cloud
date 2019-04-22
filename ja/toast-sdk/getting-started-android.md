@@ -22,14 +22,14 @@ TOAST SDKが提供するサービスの中から、希望する機能を選択�
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.toast.android：toast-common：0.15.0       | TOAST Common      |
-| com.toast.android：toast-core：0.15.0         | TOAST Core        |
-| com.toast.android：toast-logger：0.15.0       | TOAST Log & Crash |
-| com.toast.android：toast-iap-core：0.15.0     | TOAST In-app Purchase Core |
-| com.toast.android：toast-iap-google：0.15.0   | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android：toast-iap-onestore：0.15.0 | TOAST In-app Purchase <br>OneStore |
-| com.toast.android：toast-push-core：0.15.0    | TOAST Push Core   |
-| com.toast.android：toast-push-fcm：0.15.0     | TOAST Push <br>Firebase Cloud Messaging |
+| com.toast.android：toast-common：0.16.0       | TOAST Common      |
+| com.toast.android：toast-core：0.16.0         | TOAST Core        |
+| com.toast.android：toast-logger：0.16.0       | TOAST Log & Crash |
+| com.toast.android：toast-iap-core：0.16.0     | TOAST In-app Purchase Core |
+| com.toast.android：toast-iap-google：0.16.0   | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android：toast-iap-onestore：0.16.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android：toast-push-core：0.16.0    | TOAST Push Core   |
+| com.toast.android：toast-push-fcm：0.16.0     | TOAST Push <br>Firebase Cloud Messaging |
 
 ## TOAST SDKをAndroid Studioプロジェクトに適用
 
@@ -42,7 +42,7 @@ TOAST SDKのすべてのサービスを使用するには、下記のように�
 
 ```groovy
 dependencies {
-  implementation 'com.toast.android：toast-sdk：0.15.0'
+  implementation 'com.toast.android：toast-sdk：0.16.0'
 }
 ```
 
