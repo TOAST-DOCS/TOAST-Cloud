@@ -9,14 +9,26 @@
 ## Push 제공자별 가이드
 
 - [Firebase Cloud Messaging (이하 FCM) 가이드](https://firebase.google.com/docs/cloud-messaging/)
+- [Tencent Push Notification (이하 TENCENT) 가이드](https://xg.qq.com/docs/)
 
 ## 라이브러리 설정
 
+### FCM
 - FCM용 SDK를 설치하려면 아래 코드를 build.gradle에 추가합니다.
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.15.0'
+    implementation 'com.toast.android:toast-push-fcm:0.16.0'
+    ...
+}
+```
+
+### TENCENT
+- TENCENT용 SDK를 설치하려면 아래 코드를 build.gradle에 추가합니다.
+
+```groovy
+dependencies {
+    implementation 'com.toast.android:toast-push-tencent:0.16.0'
     ...
 }
 ```
@@ -72,6 +84,44 @@ apply plugin: 'com.google.gms.google-services'
 ### google-services.json 추가
 - 앱 모듈의 루트 경로에 앞서 다운로드한 google-services.json을 복사합니다.
 
+## Tencent Push Notification 설정
+- 기존 Tencent 프로젝트가 없다면, [Tencent 콘솔](https://xg.qq.com/)에서 프로젝트를 생성합니다.
+- 웹 우측에 어플리케이션 등록을 선택합니다.
+- 어플리케이션을 등록하면 AccessID와 Accesskey가 생성됩니다.
+
+### build.gradle 설정
+#### 앱 모듈의 build.gradle
+- 앱 모듈의 build.gradle에 아래 코드를 추가합니다.
+
+```groovy
+apply plugin: 'com.android.application'
+
+android {
+    ...
+    defaultConfig {
+        ...
+        ndk {
+        // 빌드하고자 하는 cpu 유형을 추가 합니다.
+        // 필요 시 추가 : 'x86', 'x86_64', 'mips', 'mips64'
+        abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+        }
+        
+        manifestPlaceholders = [
+            XG_ACCESS_ID:"accessid",
+            XG_ACCESS_KEY : "accesskey",
+        ]
+    }
+}
+```
+
+### gradle.properties 설정
+- 루트 수준의 gradle.properties에 아래 코드를 추가합니다.
+
+```groovy
+android.useDeprecatedNdk = true
+```
+
+
 ## Push 설정
 - [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
 - [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
@@ -93,6 +143,12 @@ ToastPushConfiguration.Builder configuration =
 
 ```java
 PushProvider provider = FirebaseMessagingPushProvider.getProvider();
+ToastPush.initialize(provider, configuration);
+```
+
+### TENCENT 초기화 예시
+```java
+PushProvider provider = TencentMessagingPushProvider.getProvider();
 ToastPush.initialize(provider, configuration);
 ```
 
@@ -294,8 +350,8 @@ public class ToastPushSampleApplication extends Application {
 ```
 
 ## 사용자 정의 메시지 처리
-- 직접 수신한 메시지를 처리하고 싶은 경우, ToastPushMessagingService 를 상속해서 onMessageReceived 메소드를 구현해야합니다.
-- ToastPushMessagingService를 구현한 서비스는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
+- 직접 수신한 메시지를 처리하고 싶은 경우, ToastPushMessageReceiver를 상속해서 onMessageReceived 메소드를 구현해야합니다.
+- ToastPushMessageReceiver를 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
 
 > **(주의)**
 > 1. 수신한 메시지를 직접 처리할 경우, 알림(Notification) 등록도 사용자가 직접 해야 합니다.
@@ -303,11 +359,10 @@ public class ToastPushSampleApplication extends Application {
 
 ### ToastPushMessagingService 구현 코드 예
 ```java
-public class UserCustomReceiver extends ToastPushMessagingService {
+public class UserCustomReceiver extends ToastPushMessageReceiver {
     @Override
-    public void onMessageReceived(@NonNull ToastRemoteMessage remoteMessage) {
+    public void onMessageReceived(@NonNull Context context, @NonNull ToastRemoteMessage remoteMessage) {
         final ToastPushMessage message = remoteMessage.getMessage();
-
         final CharSequence title = message.getTitle();
         final CharSequence body = message.getBody();
         final RichMessage richMessage = message.getRichMessage();
@@ -319,14 +374,18 @@ public class UserCustomReceiver extends ToastPushMessagingService {
 ```
 
 ### AndroidManifest.xml 등록 예
+> **(주의)**
+> ToastPushMessageReceiver를 사용하는 경우, 반드시 permission을 설정해야 합니다.
+
 ```xml
 <manifest>
     <application>
-        <service android:name=".UserCustomReceiver">
-            <intent-filter>
-                <action android:name="com.toast.android.push.MESSAGE_EVENT" />
+    <receiver android:name=".ToastPushSampleReceiver"
+        android:permission="${applicationId}.toast.push.permission.RECEIVE">
+        <intent-filter>
+            <action android:name="com.toast.android.push.MESSAGE_EVENT" />
             </intent-filter>
-        </service>
+    </receiver>
 
         <!-- 생략 -->
     </application>
@@ -355,7 +414,10 @@ public void onMessageReceived(@NonNull ToastRemoteMessage remoteMessage) {
     Notification notification = builder.build();
 }
 ```
-
+## Emoji 사용
+> **(주의)**
+> 기기에서 지원하지 않는 emoji를 사용한 경우, 표시되지 않을 수 있습니다.
+> TENCENT의 경우, emoji를 사용하면 메세지가 수신되지 않을 수 있습니다.
 
 ## TOAST Push Class Reference
 ### ToastPushConfiguration
