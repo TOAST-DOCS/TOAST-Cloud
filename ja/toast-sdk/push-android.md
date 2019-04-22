@@ -9,7 +9,7 @@
 ## Push提供者別ガイド
 
 - [Firebase Cloud Messaging (以下FCM)ガイド](https://firebase.google.com/docs/cloud-messaging/)
-- [Tencent Push Notification (以下 TENCENT) 가이드](https://xg.qq.com/docs/)
+- [Tencent Push Notification (以下 Tencent) 가이드](https://xg.qq.com/docs/)
 
 ## ライブラリ設定
 
@@ -23,12 +23,12 @@ dependencies {
 }
 ```
 
-### TENCENT
-- TENCENT用SDKをインストールするには、下記のコードをbuild.gradleに追加します。
+### Tencent
+- Tencent用SDKをインストールするには、下記のコードをbuild.gradleに追加します。
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.16.0’
+    implementation 'com.toast.android:toast-push-Tencent:0.16.0’
     ...
 }
 ```
@@ -145,7 +145,7 @@ PushProvider provider = FirebaseMessagingPushProvider.getProvider();
 ToastPush.initialize(provider, configuration);
 ```
 
-### TENCENT初期化例
+### Tencent初期化例
 ```java
 PushProvider provider = TencentMessagingPushProvider.getProvider();
 ToastPush.initialize(provider, configuration);
@@ -416,7 +416,7 @@ public void onMessageReceived(@NonNull ToastRemoteMessage remoteMessage) {
 ## Emoji使用
 > **(注意)**
 > 機器でサポートしていないemojiを使用した場合には、表示されないことがあります。
-> TENCENTの場合には、emojiを使用すると、メッセージが受信されない場合があります。
+> Tencentの場合には、emojiを使用すると、メッセージが受信されない場合があります。
 
 ## TOAST Push Class Reference
 ### ToastPushConfiguration
