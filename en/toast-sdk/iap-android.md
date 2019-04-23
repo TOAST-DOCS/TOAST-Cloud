@@ -8,16 +8,16 @@
 
 3\. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP console.
 
-## Store Types 
+## Store Types
 - [Google Play Store](https://developer.android.com/google/play/billing)
 - [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
 
-## Library Setting 
+## Library Setting
 - To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.15.0'
+    implementation 'com.toast.android:toast-iap-google:0.16.0'
     ...
 }
 ```
@@ -26,12 +26,34 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.15.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.16.0'
     ...
 }
 ```
 
-### Store Codes 
+## AndroidManifest Settings
+
+### ONE store purchase screen setting (optional)
+
+ONE store supports full purchase screen and pop-up purchase screen.
+You can add meta-data to AndroidManifest.xml to select the full purchase screen ("full") or popup purchase screen ("popup").
+If meta-data is not set, the default ("full") is applied.
+
+```xml
+<application
+  ...>
+  <meta-data android:name="iap:view_option" android:value="popup | full"/>
+</application>
+```
+
+| Purchase Screen | Value |
+| -- | -- |
+| Full Purchase Screen | "full" |
+| Popup Purchase Screen | "popup" |
+
+For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17_04_preparation#HAndroidManifestD30CC77CC124C815).
+
+## Store Codes
 
 | Store | Code |
 | ---- | ---- |
@@ -42,23 +64,23 @@ dependencies {
 
 ## Product Types
 
-- Two types of products are currently supported: consumable products and subscription products. 
+- Two types of products are currently supported: consumable products and subscription products.
 
 | Product Name | Product Type | Description |
 | ---- | ------ | ------ |
 | Consumable Products | "CONSUMABLE" | Consumable Products refer to consumable one-time products, <br>such as products within a game, and media files. |
 | Subscription Products | "AUTO_RENEWABLE" | Subscription products refer to products <br>which are automatically paid at specific intervals and prices, <br>such as online magazines and music streaming services.  |
 
-> Note :Subscription products are supported by Google Play Store only. 
+> Note :Subscription products are supported by Google Play Store only.
 
-## In-App Purchase (IAP) Setting 
+## In-App Purchase (IAP) Setting
 
-* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) includes IAP setting information. 
+* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) includes IAP setting information.
 * [ToastIapConfiguration](./iap-android/#toastiapconfiguration) can be created by using [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder).
-* [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console can be set by using setAppKey. 
+* [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console can be set by using setAppKey.
 * With the setStoreCode method, set [Store Code](./iap-android/#_3) for IAP.
 
-### Example of IAP Setting 
+### Example of IAP Setting
 
 ```java
 ToastIapConfiguration configuration =
@@ -72,10 +94,10 @@ ToastIapConfiguration configuration =
 
 - Call ToastIap.initialize() method to initialize TOAST IAP.  
 
-### Specifications for IAP Initialization API 
+### Specifications for IAP Initialization API
 
-* Initialize IAP by using ToastIap.initialize. 
-* The ToastIap.initialize method applies [ToastIapConfiguration](./iap-android/#toastiapconfiguration) created with [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder) as parameter. 
+* Initialize IAP by using ToastIap.initialize.
+* The ToastIap.initialize method applies [ToastIapConfiguration](./iap-android/#toastiapconfiguration) created with [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder) as parameter.
 
 ```java
 /* ToastIap.java */
@@ -86,11 +108,11 @@ public static void initialize(ToastIapConfiguration configuration)
 | ---- | ---- |
 | configuration | ToastIapConfiguration: Information for IAP setting |
 
-### Example of IAP Initialization 
+### Example of IAP Initialization
 
-- Initialize ToastIap. 
+- Initialize ToastIap.
 
-> Note: Initialization must be executed in Application#onCreate. 
+> Note: Initialization must be executed in Application#onCreate.
 
 ```java
 public class MainApplication extends Application {
@@ -113,38 +135,38 @@ public class MainApplication extends Application {
 }
 ```
 
-## Service Login 
+## Service Login
 
-* All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID. 
+* All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID.
     * Set user ID with[ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid).
-    * Cannot make purchases when user ID is not set. 
-* It is recommended to set user ID, query unconsumed purchase history, and search enabled subscription products, during service login. 
+    * Cannot make purchases when user ID is not set.
+* It is recommended to set user ID, query unconsumed purchase history, and search enabled subscription products, during service login.
 
-### Login 
+### Login
 
 ```java
 // Login.
 ToastSdk.setUserId(userId);
 ```
 
-### Logout 
+### Logout
 
 ```java
 // Logout.
 ToastSdk.setUserId(null);
 ```
 
-> Note: User ID must be set as null for a service logout so as to prevent promotion codes redeemed or purchase with wrong user ID when reprocessing purchase operates. 
+> Note: User ID must be set as null for a service logout so as to prevent promotion codes redeemed or purchase with wrong user ID when reprocessing purchase operates.
 
 ## Register Purchases Update Listener
 
-* Purchase results are notified via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) configured in Toastlap. 
-* Purchases update listener can be registered by using the ToastIap.registerPurchasesUpdatedListener method. 
+* Purchase results are notified via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) configured in Toastlap.
+* Purchases update listener can be registered by using the ToastIap.registerPurchasesUpdatedListener method.
 * Purchase information is available on the list of [IapPurchaseResult](./iap-android/#iappurchaseresult) delivered by [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener).
 
-> Note: Purchases update listener must be registered in Activity.onCreate() and unregistered in Activity.onDestroy(). 
+> Note: Purchases update listener must be registered in Activity.onCreate() and unregistered in Activity.onDestroy().
 
-### Specifications for Registering Purchases Upload Listener API 
+### Specifications for Registering Purchases Upload Listener API
 
 ```java
 /* ToastIap.java */
@@ -197,13 +219,13 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## Query Product List 
+## Query Product List
 
 * Query available list of products which are registered in IAP Console.
 * Available products to purchase among those registered in IAP Console are returned to [IapProductDetails](./iap-android/#iapproductdetails) (Product Details List).
 * Products unregistered to store among those registered in IAP Console are returned to [IapProduct ](./iap-android/#iapproduct)(Invalid Product List).
 
-### Specifications for Product List Query API 
+### Specifications for Product List Query API
 
 ```java
 /* ToastIap.java */
@@ -222,7 +244,7 @@ public static void queryProductDetails(Activity activity,
  * Products available to purchase are queried.
  * <p>
  * productDetails: List of available products to purchase
- * invalidProducts: Products  registered in TOAST IAP Console but not in a store 
+ * invalidProducts: Products  registered in TOAST IAP Console but not in a store
  */
 void queryProductDetails() {
     IapService.ProductDetailsResponseListener responseListener =
@@ -232,9 +254,9 @@ void queryProductDetails() {
                                                      @Nullable List<IapProductDetails> productDetails,
                                                      @Nullable List<IapProduct> invalidProducts) {
                     if (result.isSuccess()) {
-                        // Query Succeeded 
+                        // Query Succeeded
                     } else {
-                        // Query Failed 
+                        // Query Failed
                     }
                 }
             }
@@ -243,16 +265,16 @@ void queryProductDetails() {
 }
 ```
 
-## Purchase Products 
+## Purchase Products
 
-* TOAST IAP supports product purchase by using product ID registered at store. 
-* Product information is included to [IapProductDetails](./iap-android/#iapproductdetails) which is returned by calling ToastIap.queryProductDetails(). 
-* Product ID can be obtained by using IapProductDetails.getProductId(). 
+* TOAST IAP supports product purchase by using product ID registered at store.
+* Product information is included to [IapProductDetails](./iap-android/#iapproductdetails) which is returned by calling ToastIap.queryProductDetails().
+* Product ID can be obtained by using IapProductDetails.getProductId().
 * Product purchase begins via ToastIap.launchPurchaseFlow(), after setting product ID to [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams).  
 * [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) can be created by using [IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder).
-* Result of product purchase is returned through [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) registered in TOAST IAP. 
+* Result of product purchase is returned through [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) registered in TOAST IAP.
 
-### Specifications for Product Purchase IAP 
+### Specifications for Product Purchase IAP
 
 ```java
 /* ToastIap.java */
@@ -265,7 +287,7 @@ public static void launchPurchaseFlow(Activity activity,
 | launchPurchaseFlow | activity | Activity: Currently activated activity |
 |  | params | IapPurchaseFlowParams: Parameter for purchase information |
 
-### Example of Product Purchase 
+### Example of Product Purchase
 
 ```java
 /**
@@ -281,10 +303,10 @@ void launchPurchaseFlow(Activity activity, String productId) {
 
 ## Query Unconsumed Purchases
 
-* Query information of unconsumed one-time products(CONSUMABLE). 
-* Product, after provided to user, can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api). 
-* Unconsumed purchase can be queried by using the ToastIap.queryConsumablePurchases() method. 
-* Query results are returned to the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener). 
+* Query information of unconsumed one-time products(CONSUMABLE).
+* Product, after provided to user, can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api).
+* Unconsumed purchase can be queried by using the ToastIap.queryConsumablePurchases() method.
+* Query results are returned to the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
 
 ### Specifications for Unconsumed Purchases Query API
 
@@ -299,11 +321,11 @@ public static void queryConsumablePurchases(Activity activity,
 | queryConsumablePurchases | activity | Activity: Currently activated activity |
 |  | listener | IapService.PurchasesResponseListener: <br>Query result listener for unconsumed purchase details |
 
-### Example of Unconsumed Purchases Query 
+### Example of Unconsumed Purchases Query
 
 ```java
 /**
- * List of unconsumed purchases is queried. 
+ * List of unconsumed purchases is queried.
  */
 void queryConsumablePurchases() {
     PurchasesResponseListener responseListenr =
@@ -322,15 +344,15 @@ void queryConsumablePurchases() {
 }
 ```
 
-## Query Activated Subscription 
+## Query Activated Subscription
 
-* Activated subscription products can be queried for user ID. 
-* Completely-paid subscription products can be queried as long as usage period remains. 
+* Activated subscription products can be queried for user ID.
+* Completely-paid subscription products can be queried as long as usage period remains.
 * Activated subscription can be queried by using the ToastIap.queryActivatedPurchases() method.
 * Query results are returned via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener) to [IapPurchase](./iap-android/#iappurchase).
-* Subscription products of iOS can be queried in Android as well. 
+* Subscription products of iOS can be queried in Android as well.
 
-> Subscription products are currently supported by Google Play Store only. 
+> Subscription products are currently supported by Google Play Store only.
 
 ### Specifications for Activated Subscription Query API
 
@@ -345,11 +367,11 @@ public static void queryActivatedPurchases(Activity activity,
 | queryActivatedPurchases | activity | Activity: Currently activated activity |
 |  | listener | IapService.PurchasesResponseListener: <br>Query result listener for activated subscription |
 
-### Example of Activated Subscription Query 
+### Example of Activated Subscription Query
 
 ```java
 /**
- * Query activated subscription products 
+ * Query activated subscription products
  */
 void queryActivatedPurchases() {
     PurchasesResponseListener responseListener =
@@ -359,8 +381,8 @@ void queryActivatedPurchases() {
                                                 @Nullable List<IapPurchase> purchases) {
                     if (result.isSuccess()) {
                         // Succeeded
-                    } else { 
-                        // Failed 
+                    } else {
+                        // Failed
                     }
                 }
             };
@@ -434,7 +456,7 @@ public Throwable getCause()
 | isSuccess | boolean | Return if purchase is successful |
 | isFailure | boolean | Return if purchase is failed |
 
-### IapResult 
+### IapResult
 
 ```java
 /* IapResult.java */
@@ -490,8 +512,8 @@ public String getExpiryTime()
 
 ### IapProductDetails
 
-* Detail product information is available with lapProductDetails. 
-* Includes information registered in TOAST IAP Console and Google Play Console or ONE store Developer. 
+* Detail product information is available with lapProductDetails.
+* Includes information registered in TOAST IAP Console and Google Play Console or ONE store Developer.
 
 ```java
 /* IapProductDetails.java */
@@ -526,7 +548,7 @@ public boolean isActivated()
 
 ### IapProduct
 
-* Brief information registered in TOAST IAP Console is available. 
+* Brief information registered in TOAST IAP Console is available.
 
 ```java
 /* IapProduct.java */
@@ -549,7 +571,7 @@ public boolean isActivated()
 
 ### IapPurchaseFlowParams
 
-* IapPurchaseFlowParams includes information of a product to purchase. 
+* IapPurchaseFlowParams includes information of a product to purchase.
 
 ```java
 /* IapPurchaseFlowParams.java */
@@ -583,7 +605,7 @@ void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
 
 ### IapService.PurchasesResponseListener
 
-* Unconsumed purchase or activated subscription, when queried, is notified via onPurchasesResponse of an object inherited with IapService.PurchasesResponseListener. 
+* Unconsumed purchase or activated subscription, when queried, is notified via onPurchasesResponse of an object inherited with IapService.PurchasesResponseListener.
 
 ```java
 void onPurchasesResponse(IapResult result,
@@ -592,7 +614,7 @@ void onPurchasesResponse(IapResult result,
 
 ## Error Codes
 
-### Common 
+### Common
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
@@ -610,7 +632,7 @@ void onPurchasesResponse(IapResult result,
 | USER_ID_NOT_REGISTERED | 9 | User ID Is not registered.<br> |
 | UNDEFINED_ERROR | 9999 | Undefined Error<br> |
 
-### Server 
+### Server
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
@@ -620,7 +642,7 @@ void onPurchasesResponse(IapResult result,
 | CONSUMED_PURCHASE | 104 | Purchase is already consumed.<br> |
 | REFUNDED_PURCHASE | 105 | Purchase is already refunded.<br> |
 
-### ONE store 
+### ONE store
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |

@@ -17,7 +17,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.15.0'
+    implementation 'com.toast.android:toast-iap-google:0.16.0'
     ...
 }
 ```
@@ -26,12 +26,34 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.15.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.16.0'
     ...
 }
 ```
 
-### ストアコード
+## AndroidManifest設定
+
+### ONE store購入画面設定（オプション）
+
+ONE storeは全決済画面とポップアップ決済画面をサポートします。
+AndroidManifest.xmlにmeta-dataを追加して、全決済画面（"full"）またはポップアップ決済画面（"popup"）を選択することができます。
+メタデータが設定されていない場合は、デフォルト（ "full"）が適用されます。
+
+```xml
+<application
+  ...>
+  <meta-data android:name="iap:view_option" android:value="popup | full"/>
+</application>
+```
+
+| 決済画面 | 設定値 |
+| -- | -- |
+| 全決済画面 | "full" |
+| ポップアップ決済画面 | "popup" |
+
+詳細については、[ワンストア決済画面設定]（https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17_04_preparation#HAndroidManifestD30CC77CC124C815）を確認してください。
+
+## ストアコード
 
 | ストア       | コード       |
 | ----------- | ---------- |
@@ -49,7 +71,7 @@ dependencies {
 | 消費性商品 | "CONSUMABLE"     | 消費可能な一回性商品。ゲーム内マネー、メディアファイルなどがあります。 |
 | 購読商品 | "AUTO_RENEWABLE" | 指定された間隔および価格で決済が自動的に繰り返される商品。 <br>オンライン雑誌および音楽ストリーミングサービスなどがあります。 |
 
-> [参考]購読商品は、**Google Playストア**のみサポートします。
+> [参考]購読商品は、**Google Playストア** のみサポートします。
 
 ## アプリ内決済設定
 

@@ -9,14 +9,26 @@
 ## Push提供者別ガイド
 
 - [Firebase Cloud Messaging (以下FCM)ガイド](https://firebase.google.com/docs/cloud-messaging/)
+- [Tencent Push Notification (以下 Tencent) 가이드](https://xg.qq.com/docs/)
 
 ## ライブラリ設定
 
+### FCM
 - FCM用SDKをインストールするには、下記のコードをbuild.gradleに追加します。
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.15.0'
+    implementation 'com.toast.android:toast-push-fcm:0.16.0’
+    ...
+}
+```
+
+### Tencent
+- Tencent用SDKをインストールするには、下記のコードをbuild.gradleに追加します。
+
+```groovy
+dependencies {
+    implementation 'com.toast.android:toast-push-Tencent:0.16.0’
     ...
 }
 ```
@@ -77,6 +89,43 @@ apply plugin: 'com.google.gms.google-services'
 - [ToastPushConfiguration](./push-android/#toastpushconfiguration)オブジェクトは、ToastPushConfiguration.Builderを使用して作成できます。
 - Pushコンソールで発行されたAppKeyをToastPushConfiguration.newBuilderの引数に渡します。
 
+## Tencent Push Notification 설정
+- 기존 Tencent 프로젝트가 없다면, [Tencent 콘솔](https://xg.qq.com/)에서 프로젝트를 생성합니다.
+- 웹 우측에 어플리케이션 등록을 선택합니다.
+- 어플리케이션을 등록하면 AccessID와 Accesskey가 생성됩니다.
+
+### build.gradle 設定
+#### ルートレベルのbuild.gradle
+- アプリモジュールのbuild.gradleに、下記のコードを追加します。
+
+```groovy
+apply plugin: 'com.android.application'
+
+android {
+    ...
+    defaultConfig {
+        ...
+        ndk {
+        // ビルドしようとするcpuの種類を追加します。
+        // 必要に応じて追加 : 'x86', 'x86_64', 'mips', 'mips64'
+        abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+        }
+        
+        manifestPlaceholders = [
+            XG_ACCESS_ID:"accessid",
+            XG_ACCESS_KEY : "accesskey",
+        ]
+    }
+}
+```
+
+### gradle.properties 設定
+- ルートレベルのgradle.propertiesに、下記のコードを追加します。
+
+```groovy
+android.useDeprecatedNdk = true
+```
+
 ### Push設定例
 
 ```java
@@ -93,6 +142,12 @@ ToastPushConfiguration.Builder configuration =
 
 ```java
 PushProvider provider = FirebaseMessagingPushProvider.getProvider();
+ToastPush.initialize(provider, configuration);
+```
+
+### Tencent初期化例
+```java
+PushProvider provider = TencentMessagingPushProvider.getProvider();
 ToastPush.initialize(provider, configuration);
 ```
 
@@ -292,6 +347,76 @@ public class ToastPushSampleApplication extends Application {
     }
 }
 ```
+
+## ユーザー定義メッセージの処理
+- 直接受信したメッセージを処理したい場合には、ToastPushMessageReceiverを継承してonMessageReceivedメソッドを実装する必要があります。
+- ToastPushMessageReceiverを実装したブロードキャストはAndroidManifest.xmlにも必ず登録する必要があります。
+
+> **(注意)**
+> 1. 受信したメッセージを直接処理する場合には、通知（Notification）の処理は、ユーザーが自分であります。
+> 2. 受信したメッセージを直接処理する場合には、「受信」/「オープン」の指標の機能のために追加の作業が必要です。（下の指標の収集機能を追加セクションを参)
+
+### ToastPushMessagingService例示
+```java
+public class UserCustomReceiver extends ToastPushMessageReceiver {
+    @Override
+    public void onMessageReceived(@NonNull Context context, @NonNull ToastRemoteMessage remoteMessage) {
+        final ToastPushMessage message = remoteMessage.getMessage();
+        final CharSequence title = message.getTitle();
+        final CharSequence body = message.getBody();
+        final RichMessage richMessage = message.getRichMessage();
+        final Map<String, String> extras = message.getExtras();
+
+        // 通知の処理
+    }
+}
+```
+
+### AndroidManifest.xml例示
+> **(注意)**
+> ToastPushMessageReceiverを使用する場合には、permissionが必要です。
+
+```xml
+<manifest>
+    <application>
+    <receiver android:name=".ToastPushSampleReceiver"
+        android:permission="${applicationId}.toast.push.permission.RECEIVE">
+        <intent-filter>
+            <action android:name="com.toast.android.push.MESSAGE_EVENT" />
+            </intent-filter>
+    </receiver>
+
+        <!-- 省略 -->
+    </application>
+
+    <!-- 省略 -->
+</manifest>
+```
+
+### 指標の収集機能を有効に(FCM Only)
+- 受信したメッセージを直接処理する場合には、指標の収集機能を有効にするために追加の作業が必要です。
+- ToastPushAnalyticsNotificationExtenderを作成し、NotificationCompat.Builderを展開します。
+
+#### 指標の収集機能の例
+```java
+@Override
+public void onMessageReceived(@NonNull ToastRemoteMessage remoteMessage) {
+    final ToastPushMessage message = remoteMessage.getMessage();
+
+    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YOUR_CHANNE_ID");
+    // (省略)
+
+    Intent launchIntent = new Intent(context, MainActivity.class); // 알림 클릭시 동작을 Intent로 정의함
+    ToastPushAnalyticsNotificationExtender extender = new ToastPushAnalyticsNotificationExtender(launchIntent);
+    builder = extender.extend(context, message, builder);
+
+    Notification notification = builder.build();
+}
+```
+## Emoji使用
+> **(注意)**
+> 機器でサポートしていないemojiを使用した場合には、表示されないことがあります。
+> Tencentの場合には、emojiを使用すると、メッセージが受信されない場合があります。
 
 ## TOAST Push Class Reference
 ### ToastPushConfiguration
