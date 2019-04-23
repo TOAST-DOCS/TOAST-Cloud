@@ -1,5 +1,15 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.16.0 (2019.04.23)
+
+### TOAST Push
+
+#### Added
+
+* Added Tencent Push.
+* Added CustomReceiver.
+    * Once the message is received, the message is processed by a user-defined receiver.
+
 ## 0.15.0 (2019.03.26)
 
 ### TOAST Log & Crash
