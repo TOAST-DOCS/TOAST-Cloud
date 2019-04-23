@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-Tencent:0.16.0'
+    implementation 'com.toast.android:toast-push-tencent:0.16.0'
     ...
 }
 ```
@@ -121,6 +121,41 @@ android {
 android.useDeprecatedNdk = true
 ```
 
+### Android P 호환방법
+- Android 9.0 이상에서 target API 28을 사용하는 경우, network_security_config.xml의 파일을 추가합니다.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">182.254.116.117</domain>
+        <domain includeSubdomains="true">pingma.qq.com</domain>
+    </domain-config>
+</network-security-config>
+```
+
+- AndroidManifest에 application에 android:networkSecurityConfig 설정을 추가합니다.
+- 자세한 설명은 [security-config](https://developer.android.com/training/articles/security-config?hl=ko)를 참고하십시오.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ... >
+    <application android:networkSecurityConfig="@xml/network_security_config"
+    ... >
+        ...
+    </application>
+</manifest>
+```
+
+### Apache HTTP 클라이언트 라이브러리 추가하기
+- AndroidManifest에 다음 설정을 추가합니다.
+- 자세한 설명은 [Android 6.0 변경사항](https://developer.android.com/about/versions/marshmallow/android-6.0-changes?hl=ko)을 참고하십시오.
+
+```xml
+android {
+    useLibrary 'org.apache.http.legacy'
+}
+```
 
 ## Push 설정
 - [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
