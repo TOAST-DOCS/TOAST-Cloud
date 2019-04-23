@@ -125,6 +125,42 @@ android {
 ```groovy
 android.useDeprecatedNdk = true
 ```
+### Android P対応
+- Android 9.0以上でtarget API 28を使用している場合は、network_security_config.xmlのファイルを追加します。
+
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">182.254.116.117</domain>
+        <domain includeSubdomains="true">pingma.qq.com</domain>
+    </domain-config>
+</network-security-config>
+```
+
+- AndroidManifestにapplicationにandroid：networkSecurityConfig設定を追加します。
+- 詳細については、[security-config]（https://developer.android.com/training/articles/security-config?hl=ko）を参照してください。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ... >
+    <application android:networkSecurityConfig="@xml/network_security_config"
+    ... >
+        ...
+    </application>
+</manifest>
+```
+
+### Apache HTTPクライアントライブラリ設定
+- AndroidManifestに以下の設定を追加します。
+- 詳細については、[Android 6.0の変更]（https://developer.android.com/about/versions/marshmallow/android-6.0-changes?hl=ko）を参照します。
+
+```xml
+android {
+    useLibrary 'org.apache.http.legacy'
+}
+```
 
 ### Push設定例
 

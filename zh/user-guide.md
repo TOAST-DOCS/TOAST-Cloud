@@ -25,7 +25,7 @@ TOAST members are managed under the following information:
 Access https://toast.com and click Join on the top right.
 There are three steps to complete.
 
-![userguide_01_201812_en](https://static.toastoven.net/toast/userguide_01_201812_en.png)
+![userguide_01_201812_en](https://static.toastoven.net/toast/user_guide/userguide_01_201812_en.png)
 
 #### Select Type of Membership (Personal/Business)
 
@@ -123,12 +123,12 @@ The authentication and management policy of each payment method goes as follows:
 #### Register Authentication by Credit Card Company
 - On the page of Credit Card (Overseas), read through Check, and click **Register** to find guides to apply 3D authentication of credit cards issued overseas. <br/>
 
-![userguide_04_201812_en](https://static.toastoven.net/toast/userguide_04_201812_en.png)
+![userguide_04_201812_en](https://static.toastoven.net/toast/user_guide/userguide_04_201812_en.png)
 - Guide for Verified by Visa (TBC)<br/>
     - Register Visa Checkout: Create an account on the website of Visa, enter information of your Visa credit card and set password.
     - To register a payment method, the credit card information can be retrieved to check Visa Checkout and authenticated.  
 
-![userguide_05_201812](https://static.toastoven.net/toast/userguide_05_201812.png)
+![userguide_05_201812](https://static.toastoven.net/toast/user_guide/userguide_05_201812.png)
 
 - Guide for MasterCard SecureCode (TBC) <br/>
     - Select your bank on the website of MasterCard, and register SecureCode.
@@ -136,7 +136,7 @@ The authentication and management policy of each payment method goes as follows:
     - Then, enter personal information required to register SecureCode.  
     - With the entry of credit card information to register as payment method, your replies to questions to create SecureCode are entered so as to create SecureCode. To authenticate it, enter the SecureCode.
 
-![userguide_06_201812](https://static.toastoven.net/toast/userguide_06_201812.png)
+![userguide_06_201812](https://static.toastoven.net/toast/user_guide/userguide_06_201812.png)
 
 - Guides for JBC J/Secure (TBC) <br/>
     - Enter credit card number, valid period, and card holder’s name on the payment page of J/Secure.
@@ -144,7 +144,7 @@ The authentication and management policy of each payment method goes as follows:
     - Check if your existing password (if any) coincides with your current password; if there’s none, register a new password.
     - To register a payment method, enter credit card information and enter password for authentication.
 
-![userguide_07_201812](https://static.toastoven.net/toast/userguide_07_201812.png)
+![userguide_07_201812](https://static.toastoven.net/toast/user_guide/userguide_07_201812.png)
 
 #### Complete Registration of Payment Methods
 - When a payment method is properly registered, go to **My Page > Payment Methods** to check.
