@@ -6,8 +6,7 @@
 
 #### Fixed
 
-* Removing toast-tencent-sdk dependencies from toast-sdk.
-
+* Removed 'toast-push-tencent' dependencies from 'toast-sdk'.
 
 ## 0.16.0 (2019.04.23)
 
@@ -88,15 +87,15 @@
 #### Added
 
 * New Functions
-    * Firebase Cloud Messaging(FCM) 
+    * Firebase Cloud Messaging(FCM)
 
 ## 0.12.0 (2018.12.04)
 
 ### TOAST IAP
 
-#### Added 
+#### Added
 
-* New Functions 
+* New Functions
     * Google Play Store (One-Time/Subscription Products)
     * ONE store (One-Time Products)
 
@@ -104,7 +103,7 @@
 
 ### TOAST Log & Crash
 
-#### Added 
+#### Added
 
 * Network Insights
 
@@ -115,4 +114,3 @@
 #### Added
 
 * New Functions
-
