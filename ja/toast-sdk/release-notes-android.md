@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK使用ガイド > リリースノート > Android
 
+## 0.16.1 (2019.05.02)
+
+### TOAST SDK
+
+#### Fixed
+
+* toast-sdkでtoast-tencent-push依存を取り除く。
+
 ## 0.16.0 (2019.04.23)
 
 ### TOAST Push

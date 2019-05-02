@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 0.16.1 (2019.05.02)
+
+### TOAST SDK
+
+#### Fixed
+
+* Removing toast-tencent-sdk dependencies from toast-sdk.
+
 ## 0.16.0 (2019.04.23)
 
 ### TOAST Push
