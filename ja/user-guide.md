@@ -1,4 +1,6 @@
-## TOAST > TOAST使用ガイド
+
+## TOAST Guide
+
 NHNが開発したクラウドサービス、TOASTの利用方法を説明したユーザーガイドです。
 
 ## TOAST会員登録
