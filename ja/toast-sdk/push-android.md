@@ -110,7 +110,7 @@ android {
         // 必要に応じて追加 : 'x86', 'x86_64', 'mips', 'mips64'
         abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
         }
-        
+
         manifestPlaceholders = [
             XG_ACCESS_ID:"accessid",
             XG_ACCESS_KEY : "accesskey",
@@ -125,6 +125,7 @@ android {
 ```groovy
 android.useDeprecatedNdk = true
 ```
+
 ### Android P対応
 - Android 9.0以上でtarget API 28を使用している場合は、network_security_config.xmlのファイルを追加します。
 
