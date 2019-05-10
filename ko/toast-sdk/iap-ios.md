@@ -100,8 +100,9 @@ TOAST IAP를 사용하려면 Capabilities에서 In-App Purchase 항목을 활성
 
 TOAST IAP에서 발급받은 AppKey를 설정합니다.
 초기화와 동시에 미완료 구매 건에 대한 재처리가 진행됩니다.
-따라서 원활하게 재처리하려면 반드시 사용자 ID를 설정한 후 초기화하십시오.
-재처리를 포함해 모든 구매 결과는 Delegate를 통해 전달되므로 Delegate 설정 이후에 초기화하거나, 초기화와 함께 Delegate를 설정하시기를 권장합니다.
+재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않습니다.
+재처리가 완료되면 미소비 상품 목록(소모성 상품), 활성화된 구매 목록(구독 상품)에 반영됩니다.
+결제 결과에 대한 통지를 받기 위해서는 상품 구매 전에 Delegate 가 설정되어 있어야만 합니다.
 
 ``` objc
 ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
@@ -131,7 +132,7 @@ ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithA
 
 ### Delegate API 명세
 
-Delegate를 등록하면 구매 후 추가 작업을 진행할 수 있습니다.
+Delegate를 등록하면 구매 결과에 대한 통지를 받을 수 있습니다.
 
 ``` objc
 @protocol ToastInAppPurchaseDelegate <NSObject>
@@ -238,7 +239,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 ## 상품 구매
 
 구매 결과는 설정된 Delegate를 통해 전달됩니다.
-구매 진행 중에 앱이 종료되거나 네트워크 오류 등으로 구매가 중단되었을 경우 앱이 재실행되면, IAP SDK를 초기화할 때 구매 재처리를 진행합니다.
+구매 진행 중에 앱이 종료되거나 네트워크 오류 등으로 구매가 중단되었을 경우 다음번 앱 실행에서 IAP SDK 초기화 직후에 구매 재처리를 진행합니다.
 
 ### 상품 객체를 이용한 구매 요청
 
@@ -345,7 +346,9 @@ ToastProductTypeAutoRenewableSubscription = 2
 
 ## 구매 복원
 
-현재 사용자 ID에서 구매된 항목 중 복원 가능한 구매 목록을 조회합니다.
+현재 사용자의 AppStore 계정으로 구매된 내역과 IAP 서버상의 구매 내역을 동기화하여 구매 내역을 복원합니다.
+구매한 구독 상품 내역 중 IAP 서버에서 조회되지 않을 경우 사용해주세요.
+구매 복원 완료 후에 활성화된 구매 목록을 반환 합니다.
 
 ### 구매 복원 API 명세
 
@@ -552,16 +555,18 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 
 ### 에러 코드
 ```objc
+// IAP 기능 관련 에러 코드
+static NSString *const ToastIAPErrorDomain = @"com.toast.iap";
+
 typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorUnknown = 0,                       // 알수 없음
-    
-    ToastIAPErrorNotInitialized = 1,                // 초기화하지 않음
+    ToastIAPErrorNotInitialized = 1,                // 초기화 하지 않음
     ToastIAPErrorStoreNotAvailable = 2,             // 스토어 사용 불가
     ToastIAPErrorProductNotAvailable = 3,           // 상품 정보 획득 실패
-    ToastIAPErrorProductInvalid = 4,                // 원결제의 상품 ID와 현재 상품 ID 불일치
+    ToastIAPErrorProductInvalid = 4,                // 원결제의 상품 아이디와 현재 상품 아이디 불일치
     ToastIAPErrorAlreadyOwned = 5,                  // 이미 소유한 상품
-    ToastIAPErrorAlreadyInProgress = 6,             // 이미 진행 중인 요청 있음
-    ToastIAPErrorUserInvalid = 7,                   // 현재 사용자 ID가 결제 사용자 ID와 불일치
+    ToastIAPErrorAlreadyInProgress = 6,             // 이미 진행중인 요청 있음
+    ToastIAPErrorUserInvalid = 7,                   // 현재 사용자 아이디가 결제 사용자 아이디와 불일치
     ToastIAPErrorPaymentInvalid = 8,                // 결제 추가정보(ApplicationUsername) 획득 실패
     ToastIAPErrorPaymentCancelled = 9,              // 스토어 결제 취소
     ToastIAPErrorPaymentFailed = 10,                // 스토어 결제 실패
@@ -569,12 +574,22 @@ typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorChangePurchaseStatusFailed = 12,   // 구매 상태 변경 실패
     ToastIAPErrorPurchaseStatusInvalid = 13,        // 구매 진행 불가 상태
     ToastIAPErrorExpired = 14,                      // 구독 만료
-    
-    ToastIAPErrorNetworkNotAvailable = 100,         // 네트워크 사용 불가
-    ToastIAPErrorNetworkFailed = 101,               // HTTP Status Code 가 200이 아님
-    ToastIAPErrorTimeout = 102,                     // 타임아웃
-    ToastIAPErrorParameterInvalid = 103,            // 요청 파라미터 오류
-    ToastIAPErrorResponseInvalid = 104,             // 서버 응답 오류
+    ToastIAPErrorRenewalPaymentNotFound = 15,       // 영수증내에 갱신 결제와 일치하는 결제 정보가 없음
+    ToastIAPErrorRestoreFailed = 16,                // 복원 실패
+};
+
+// 네트워크 관련 에러 코드
+static NSString *const ToastHttpErrorDomain = @"com.toast.http";
+
+typedef NS_ENUM(NSUInteger, ToastHttpErrorCode) {
+    ToastHttpErrorNetworkNotAvailable = 100,        // 네트워크 사용 불가
+    ToastHttpErrorRequestFailed = 101,              // HTTP Status Code 가 200이 아니거나 서버에서 요청을 제대로 읽지 못함
+    ToastHttpErrorRequestTimeout = 102,             // 타임아웃
+    ToastHttpErrorRequestInvalid = 103,             // 잘못된 요청 (파라미터 오류 등)
+    ToastHttpErrorURLInvalid = 104,                 // URL 오류
+    ToastHttpErrorResponseInvalid = 105,            // 서버 응답 오류
+    ToastHttpErrorAlreadyInprogress = 106,          // 동일 요청 이미 수행중
+    ToastHttpErrorRequiresSecureConnection = 107,   // Allow Arbitrary Loads 미설정
 };
 ```
 
