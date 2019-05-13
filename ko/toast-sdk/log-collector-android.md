@@ -141,6 +141,9 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
 ToastLogger.initialize(configuration);
 ```
 
+> User ID가 설정되어 있으면 Log&Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인 할 수 있습니다.
+> User ID 설정은 [시작하기](./getting-started-android/#userid)에서 확인 가능합니다.
+
 ### Handled Exception API 사용
 
 Android 플랫폼에서는 try/catch 구문에서 예외와 관련된 내용을 TOAST Logger의 Handled Exception API를 사용하여 전송할 수 있습니다. 

@@ -183,8 +183,8 @@ ToastLoggerを初期化すると、モバイル環境でクラッシュが発生
 クラッシュログの送信を無効化したい場合は、下記のようにToastLoggerConfigurationオブジェクトのEnableCrashReporterプロパティをfalseに設定してください。
 各プラットフォーム別のクラッシュログ情報は、下記のリンクを確認してください。
 
-- [Androidクラッシュログの収集](./log-collector-android/#_5)
-- [iOSクラッシュログの収集](./log-collector-ios/#_5)
+- [Androidクラッシュログの収集](./log-collector-android/#_7)
+- [iOSクラッシュログの収集](./log-collector-ios/#_6)
 
 ```csharp
 var loggerConfiguration = new ToastLoggerConfiguration
@@ -193,6 +193,9 @@ var loggerConfiguration = new ToastLoggerConfiguration
     EnableCrashReporter = false // クラッシュログの無効化
 };
 ```
+
+> UserIDが設定されている場合、Log＆Crash Searchコンソールの`Crash User`セクションでユーザー固有のクラッシュ体験を確認できます。
+> UserIDの設定は[開始する]（./getting-started-unity/＃userid）で確認できます。
 
 ## クラッシュログを送信後、追加作業を進行する
 - クラッシュリスナーを登録すると、クラッシュログ送信後に追加作業を進行できます。

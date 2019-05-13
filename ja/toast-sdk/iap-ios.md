@@ -100,8 +100,8 @@ TOAST IAPを使用するには、CapabilitiesでIn-App Purchase項目を有効�
 
 TOAST IAPで発行されたAppKeyを設定します。
 初期化と同時に未完了購入の件に対する再処理が行われます。
-したがって、円滑に再処理を行うには、必ずユーザーIDを設定した後に初期化してください。
-再処理を含むすべての購入結果は、Delegateを通して伝達さるため、Delegate設定後に初期化するか、初期化の際にDelegateを設定することを推奨します。
+再処理により決済が完了した購買件は,Delegatingされず,未消費商品リスト(消耗性商品),活性化された購買リスト(購読商品)に反映されます。
+`決済結果に対する通知を受けるためには,商品購入前にDelegateが設定されていなければなりません。`
 
 ``` objc
 ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
@@ -131,7 +131,7 @@ ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithA
 
 ### Delegate API仕様
 
-Delegateを登録すると、購入後に追加作業を進行できます。
+Delegateを登録すると,購入結果の通知を受けることができます。
 
 ``` objc
 @protocol ToastInAppPurchaseDelegate <NSObject>
@@ -238,7 +238,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 ## 商品購入
 
 購入結果は、設定されたDelegateを通して伝達されます。
-購入進行中にアプリが終了したり、ネットワークエラーなどで購入が中断された場合、アプリが再起動されるとIAP SDKを初期化する時に購入の再処理を行います。
+購買進行中にアプリが終了したり,ネットワークエラーなどで購買が中断された場合,次回のアプリ実行におけるIAP SDK初期化以後,再処理が進みます。
 
 ### 商品オブジェクトを利用した購入要請
 
@@ -345,7 +345,9 @@ ToastProductTypeAutoRenewableSubscription = 2
 
 ## 購入復元
 
-現在のユーザーIDで購入した項目のうち、復元可能な購入リストを照会します。
+使用者のAppStoreアカウントで購入した内訳を基準に購買内訳を復元し,IAPコンソールに反映します。 
+購買した購読商品が照会されないか,活性化しない場合に使います。
+購買復元が完了してから,活性化された購買リストを返還します。
 
 ### 購入復元API仕様
 
@@ -552,9 +554,11 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 
 ### エラーコード
 ```objc
+// IAP エラーコード
+static NSString *const ToastIAPErrorDomain = @"com.toast.iap";
+
 typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorUnknown = 0,                       // 不明
-
     ToastIAPErrorNotInitialized = 1,                // 初期化しない
     ToastIAPErrorStoreNotAvailable = 2,             // ストア使用不可
     ToastIAPErrorProductNotAvailable = 3,           // 商品情報取得に失敗
@@ -569,11 +573,21 @@ typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorChangePurchaseStatusFailed = 12,   // 購入状態変更失敗
     ToastIAPErrorPurchaseStatusInvalid = 13,        // 購入進行不可状態
     ToastIAPErrorExpired = 14,                      // 購読満了
+    ToastIAPErrorRenewalPaymentNotFound = 15,       // 領収書内に更新決済と一致する決済情報がない
+    ToastIAPErrorRestoreFailed = 16,                // 復元に失敗しました
+};
 
-    ToastIAPErrorNetworkNotAvailable = 100,         // ネットワーク使用不可
-    ToastIAPErrorNetworkFailed = 101,               // HTTP Status Codeが200ではない
-    ToastIAPErrorTimeout = 102,                     // タイムアウト
-    ToastIAPErrorParameterInvalid = 103,            // 要請パラメータエラー
-    ToastIAPErrorResponseInvalid = 104,             // サーバーレスポンスエラー
+// Network エラーコード
+static NSString *const ToastHttpErrorDomain = @"com.toast.http";
+
+typedef NS_ENUM(NSUInteger, ToastHttpErrorCode) {
+    ToastHttpErrorNetworkNotAvailable = 100,        // ネットワーク使用不可
+    ToastHttpErrorRequestFailed = 101,              // HTTP ステータス コードが 200 でないか,要求を読み取れない
+    ToastHttpErrorRequestTimeout = 102,             // タイムアウト
+    ToastHttpErrorRequestInvalid = 103,             // 要請の誤り
+    ToastHttpErrorURLInvalid = 104,                 // URLの誤り
+    ToastHttpErrorResponseInvalid = 105,            // 応答の誤り
+    ToastHttpErrorAlreadyInprogress = 106,          // 要請がすで進行中
+    ToastHttpErrorRequiresSecureConnection = 107,   // Allow Arbitrary Loadsを設定しない
 };
 ```

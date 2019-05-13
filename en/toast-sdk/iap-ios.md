@@ -101,8 +101,8 @@ To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
 
 Set appkey issued from TOAST IAP. 
 Reprocessing for uncompleted purchases is executed along with initialization.  
-Therefore, for flawless reprocessing, user ID must be set first before initialization. 
-All purchase results, including reprocessing, are delivered through delegate, so it is recommended to set delegate before or along with initialization.   
+Reprocessing results are not delegated, but are applied to the list of consumable products and the list of active purchases.
+`In order to receive delegate of purchase result, Delegate must be set before purchase of product.`
 
 ``` objc
 ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
@@ -132,7 +132,7 @@ ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithA
 
 ### Specifications for Delegate API
 
-Register delegate to proceed follow-ups after purchase. 
+Register delegate to receive purchase result.
 
 ``` objc
 @protocol ToastInAppPurchaseDelegate <NSObject>
@@ -239,7 +239,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 ## Purchase Products 
 
 Purchase results are delivered through a delegate.  
-If an app is closed during purchase, or purchase is suspended due to network error, such purchase is reprocessed during initialization of IAP SDK when the app is re-executed.  
+If an app is closed during purchase, or purchase is suspended due to network error, such purchase is reprocessed after the initialization of IAP SDK of the next app running.
 
 ### Request for Purchase with Product Objects 
 
@@ -346,7 +346,9 @@ Android subscription can also be queried for a same user ID.
 
 ## Restore Purchases 
 
-Query the list of restorable purchases by current user ID.  
+Restore the purchase history based on your AppStore account and apply it in the IAP console. 
+Use if purchased subscription products are not viewed or activated.
+Returns the list of actived purchases after restored.
 
 ### Specifications for Restoring Purchase API 
 
@@ -551,29 +553,42 @@ To remain compatible with (old) IAP SDK, reprocessing is supported for incomplet
 ```
 
 ### Error Codes 
+
 ```objc
+// IAP Error
+static NSString *const ToastIAPErrorDomain = @"com.toast.iap";
+
 typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorUnknown = 0,                       // Unknown 
-    
     ToastIAPErrorNotInitialized = 1,                // Not Initialized 
     ToastIAPErrorStoreNotAvailable = 2,             // Store is unavailable 
-    ToastIAPErrorProductNotAvailable = 3,           // Failed to obtain product information 
+    ToastIAPErrorProductNotAvailable = 3,           // Failed to get product information 
     ToastIAPErrorProductInvalid = 4,                // Inconsistency of IDs between original payment and current product   
     ToastIAPErrorAlreadyOwned = 5,                  // Product is already owned 
     ToastIAPErrorAlreadyInProgress = 6,             // Request is already processing 
     ToastIAPErrorUserInvalid = 7,                   // Inconsistency of IDs between current user and paid user  
-    ToastIAPErrorPaymentInvalid = 8,                // Failed to obtain futher payment information (ApplicationUsername)
+    ToastIAPErrorPaymentInvalid = 8,                // Failed to get futher payment information (ApplicationUsername)
     ToastIAPErrorPaymentCancelled = 9,              // Store payment cancelled 
     ToastIAPErrorPaymentFailed = 10,                // Store payment failed
     ToastIAPErrorVerifyFailed = 11,                 // Receipt verification failed 
     ToastIAPErrorChangePurchaseStatusFailed = 12,   // Change of purchase status failed  
     ToastIAPErrorPurchaseStatusInvalid = 13,        // Unavailable to purchase 
     ToastIAPErrorExpired = 14,                      // Subscription expired 
-    
-    ToastIAPErrorNetworkNotAvailable = 100,         // Network is unavailable 
-    ToastIAPErrorNetworkFailed = 101,               //HTTP Status Code is not 200 
-    ToastIAPErrorTimeout = 102,                     // Timeout
-    ToastIAPErrorParameterInvalid = 103,            // Error in request parameter
-    ToastIAPErrorResponseInvalid = 104,             // Error in server respone 
+    ToastIAPErrorRenewalPaymentNotFound = 15,       // Renewal payment information not found in receipt
+    ToastIAPErrorRestoreFailed = 16,                // Failed to restore
+};
+
+// Network Error
+static NSString *const ToastHttpErrorDomain = @"com.toast.http";
+
+typedef NS_ENUM(NSUInteger, ToastHttpErrorCode) {
+    ToastHttpErrorNetworkNotAvailable = 100,        // Network is unavailable 
+    ToastHttpErrorRequestFailed = 101,              // HTTP Status Code is not 200 or can not read request
+    ToastHttpErrorRequestTimeout = 102,             // Timeout
+    ToastHttpErrorRequestInvalid = 103,             // Request is invalid
+    ToastHttpErrorURLInvalid = 104,                 // URL is invalid
+    ToastHttpErrorResponseInvalid = 105,            // Response is invalid
+    ToastHttpErrorAlreadyInprogress = 106,          // Request is already in progress
+    ToastHttpErrorRequiresSecureConnection = 107,   // Do not set Allow Arbitrary Loads
 };
 ```

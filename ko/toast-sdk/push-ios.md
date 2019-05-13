@@ -115,7 +115,9 @@ TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Backgr
 
 Push에서 발급받은 AppKey를 설정합니다.
 `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
-`원활한 메세지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 초기화 수행하시기를 권장합니다.`
+`Delegate 설정이 된 후 메세지 수신에 대한 통지를 받을 수 있습니다.`
+`원활한 메세지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
+`개발환경에서는 반드시 ToastPushConfiguration 의 sandbox 프로퍼티를 YES 로 설정하셔야 사용 가능합니다.`
 
 ### 초기화 API 명세
 
@@ -128,6 +130,12 @@ Push에서 발급받은 AppKey를 설정합니다.
 // 초기화 및 Delegate 설정
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration
                      delegate:(nullable id<ToastPushDelegate>)delegate;
+
+// Delegate 설정
++ (void)setDelegate:(nullable id<ToastPushDelegate>)delegate;
+
+// 초기화
++ (void)initWithConfiguration:(ToastPushConfiguration *)configuration;
 
 // 카테고리 설정 (iOS 10.0+)
 + (void)setCategories:(nullable NSSet<UNNotificationCategory *> *)categories NS_AVAILABLE_IOS(10_0);
@@ -272,9 +280,8 @@ Push에서 발급받은 AppKey를 설정합니다.
 - (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
                                    forType:(ToastPushType)type
                                      error:(NSError *)error {
-     // ...
+    // ...
 }
-
 ```
 
 ## 토큰 등록
@@ -322,9 +329,11 @@ Push에서 발급받은 AppKey를 설정합니다.
 ### 토큰 등록 예
 
 ``` objc
-ToastPushAgreement *agreement = [[ToastPushAgreement alloc] init];
-agreement.allowNotifications = YES;
+ToastPushAgreement *agreement = [[ToastPushAgreement alloc] initWithAllowNotifications:YES];
+
+// 광고성 메세지 수신 동의 여부 설정
 agreement.allowAdvertisements = YES;
+// 야간 광고성 메세지 수신 동의 여부 설정
 agreement.allowNightAdvertisements = NO;
 
 [ToastPush registerWithAgreement:agreement];
@@ -405,6 +414,7 @@ agreement.allowNightAdvertisements = NO;
 ## 토큰 해제
 
 초기화시에 설정된 정보(푸쉬 타입, 샌드박스 유무)를 토대로 등록된 토큰을 해제합니다.
+`서비스 로그아웃 후에 메세지 수신을 원치 않으시면 토큰을 해제해 주세요.`
 만약 설정된 정보에 해당하는 토큰이 존재하지 않거나 해제에 성공한다면 해제 성공 Delegate를 호출합니다.
 토큰 해제 결과는 초기화시에 설정된 Delegate를 통해 전달됩니다.
 
@@ -454,6 +464,7 @@ agreement.allowNightAdvertisements = NO;
 
 `리치 메세지 수신은 iOS 10.0+ 이상부터 지원합니다.`
 알림 메세지에 미디어(이미지, 비디오, 오디오)와 버튼을 표현하기 위해서는 어플리케이션에 [Notification Service Extension](./push-ios/#notification-service-extension) 이 추가되어 있어야만 합니다.
+`Extension 의 Development Target 은 어플리케이션과 동일하게 설정하시길 권장합니다.`
 
 ### 리치 메세지 수신 설정 예
 
@@ -477,6 +488,7 @@ agreement.allowNightAdvertisements = NO;
 
 `수신 지표 수집은 iOS 10.0+ 이상부터 지원합니다.`
 수신 지표 수집을 위해서는 어플리케이션에 [Notification Service Extension](./push-ios/#notification-service-extension) 이 추가되어 있어야만 합니다.
+`Extension 의 Development Target 은 어플리케이션과 동일하게 설정하시길 권장합니다.`
 Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파일` 내부에 앱키를 설정하셔야만 지표 전송이 가능합니다.
 
 #### Toast Push SDK 초기화를 통한 수신 지표 수집 설정 예
@@ -577,19 +589,31 @@ NotificationService 클래스에 ToastPushServiceExtension 을 확장구현 해�
 
 ### 에러 코드
 ```objc
+// Push 기능 관련 에러 코드
+static NSString *const ToastPushErrorDomain = @"com.toast.push";
+
 typedef NS_ENUM(NSUInteger, ToastPushErrorCode) {
     ToastPushErrorUnknown               = 0,    // 알수 없음
     ToastPushErrorNotInitialize         = 1,    // 초기화하지 않음
     ToastPushErrorUserInvalid           = 2,    // 사용자 아이디 미설정
     ToastPushErrorPermissionDenied      = 3,    // 권한 획득 실패
-    ToastPushErrorSystemFailed          = 4,    // 시스템 에러
+    ToastPushErrorSystemFailed          = 4,    // 시스템에 의한 실패
     ToastPushErrorTokenInvalid          = 5,    // 토큰 값이 없거나 유효하지 않음
-    ToastPushErrorAlreadyInProgress     = 6,    // 요청이 이미 진행중
+    ToastPushErrorAlreadyInProgress     = 6,    // 이미 진행중
+    ToastPushErrorParameterInvalid      = 7,    // 매계변수 오류
+};
 
-    ToastPushErrorNetworkNotAvailable   = 100,  // 네트워크 사용 불가
-    ToastPushErrorNetworkFailed         = 101,  // HTTP Status Code 가 200이 아님
-    ToastPushErrorTimeout               = 102,  // 타임아웃
-    ToastPushErrorParameterInvalid      = 103,  // 요청 파라미터 오류
-    ToastPushErrorResponseInvalid       = 104,  // 서버 응답 오류
+// 네트워크 관련 에러 코드
+static NSString *const ToastHttpErrorDomain = @"com.toast.http";
+
+typedef NS_ENUM(NSUInteger, ToastHttpErrorCode) {
+    ToastHttpErrorNetworkNotAvailable = 100,        // 네트워크 사용 불가
+    ToastHttpErrorRequestFailed = 101,              // HTTP Status Code 가 200이 아니거나 서버에서 요청을 제대로 읽지 못함
+    ToastHttpErrorRequestTimeout = 102,             // 타임아웃
+    ToastHttpErrorRequestInvalid = 103,             // 잘못된 요청 (파라미터 오류 등)
+    ToastHttpErrorURLInvalid = 104,                 // URL 오류
+    ToastHttpErrorResponseInvalid = 105,            // 서버 응답 오류
+    ToastHttpErrorAlreadyInprogress = 106,          // 동일 요청 이미 수행중
+    ToastHttpErrorRequiresSecureConnection = 107,   // Allow Arbitrary Loads 미설정
 };
 ```

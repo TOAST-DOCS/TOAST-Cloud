@@ -1,5 +1,33 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.14.0 (2019.05.14)
+
+### Common
+
+#### Fixed
+
+* Network error code integration
+* Improvement in safety
+
+### TOAST IAP
+
+#### Fixed
+
+* Improved purchasing restore
+    * Adds a restore feature for missing payments based on AppStore receipt 
+    * Add restore failure error code
+* Adding a store request(promotion) flag to the purchase result class
+* Expand reprocessing target
+* Improve purchase flow
+
+### TOAST Push
+
+#### Fixed
+
+* Improvement in safety
+* Adding message id in payload that is passed to delegate
+* In the case of VoIP, which does not require consent to receive a advertisement message or a night advertisement message, a message is received regardless of whether the user agrees to receive it or not
+
 ## 0.13.0 (2019.03.26)
 
 ### Common

@@ -140,6 +140,9 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
 ToastLogger.initialize(configuration);
 ```
 
+> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log&Crash Search console.
+> User ID setting can be checked in [Getting Started](./getting-started-android/#set-userid).
+
 ### Use Handled Exception API 
 
 For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of TOAST Logger.  
