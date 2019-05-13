@@ -100,9 +100,8 @@ TOAST IAP를 사용하려면 Capabilities에서 In-App Purchase 항목을 활성
 
 TOAST IAP에서 발급받은 AppKey를 설정합니다.
 초기화와 동시에 미완료 구매 건에 대한 재처리가 진행됩니다.
-재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않습니다.
-재처리가 완료되면 미소비 상품 목록(소모성 상품), 활성화된 구매 목록(구독 상품)에 반영됩니다.
-결제 결과에 대한 통지를 받기 위해서는 상품 구매 전에 Delegate 가 설정되어 있어야만 합니다.
+재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않고, 미소비 상품 목록(소모성 상품), 활성화된 구매 목록(구독 상품)에 반영됩니다.
+`결제 결과에 대한 통지를 받기 위해서는 상품 구매 전에 Delegate 가 설정되어 있어야만 합니다.`
 
 ``` objc
 ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];

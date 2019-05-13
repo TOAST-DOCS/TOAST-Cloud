@@ -280,9 +280,8 @@ Push에서 발급받은 AppKey를 설정합니다.
 - (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
                                    forType:(ToastPushType)type
                                      error:(NSError *)error {
-     // ...
+    // ...
 }
-
 ```
 
 ## 토큰 등록
@@ -491,7 +490,6 @@ agreement.allowNightAdvertisements = NO;
 수신 지표 수집을 위해서는 어플리케이션에 [Notification Service Extension](./push-ios/#notification-service-extension) 이 추가되어 있어야만 합니다.
 `Extension 의 Development Target 은 어플리케이션과 동일하게 설정하시길 권장합니다.`
 Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파일` 내부에 앱키를 설정하셔야만 지표 전송이 가능합니다.
-
 
 #### Toast Push SDK 초기화를 통한 수신 지표 수집 설정 예
 
