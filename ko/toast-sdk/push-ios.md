@@ -115,8 +115,9 @@ TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Backgr
 
 Push에서 발급받은 AppKey를 설정합니다.
 `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
-`메세지 수신에 대한 통지를 받기 원하시면 원활한 메세지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 를 설정하시기를 권장합니다.`
-`개발환경에서는 반드시 ToastPushConfiguration 의 sandbox 프로퍼티를 YES 로 설정하셔야 메세지 수신이 가능합니다.`
+`Delegate 설정이 된 후 메세지 수신에 대한 통지를 받을 수 있습니다.`
+`원활한 메세지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
+`개발환경에서는 반드시 ToastPushConfiguration 의 sandbox 프로퍼티를 YES 로 설정하셔야 사용 가능합니다.`
 
 ### 초기화 API 명세
 
@@ -330,7 +331,10 @@ Push에서 발급받은 AppKey를 설정합니다.
 
 ``` objc
 ToastPushAgreement *agreement = [[ToastPushAgreement alloc] initWithAllowNotifications:YES];
+
+// 광고성 메세지 수신 동의 여부 설정
 agreement.allowAdvertisements = YES;
+// 야간 광고성 메세지 수신 동의 여부 설정
 agreement.allowNightAdvertisements = NO;
 
 [ToastPush registerWithAgreement:agreement];

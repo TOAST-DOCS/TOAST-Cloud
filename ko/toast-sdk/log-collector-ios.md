@@ -90,6 +90,18 @@ Log & Crash Search에서 발급받은 AppKey를 설정합니다.
 [ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
 ```
 
+## UserID 설정
+
+TOASAT SDK에 UserID를 설정할 수 있습니다.
+설정한 UserID는 TOAST SDK의 각 모듈에서 공통으로 사용됩니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 UserID를 로그와 함께 서버로 전송합니다.
+
+### UserID 설정 API 명세
+
+```objc
+[ToastSDK setUserID:@"INPUT_USER_ID"];
+```
+
 ## 로그 전송
 
 TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
