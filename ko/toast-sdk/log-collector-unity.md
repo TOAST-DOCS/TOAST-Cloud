@@ -187,7 +187,7 @@ ToastLogger를 초기화하면 모바일 환경에서 크래시가 발생했을 
 크래시 로그 전송을 비활성화하고 싶은 경우 아래와 같이 ToastLoggerConfiguration 객체의 EnableCrashReporter 프로퍼티를 false 로 설정하면 됩니다.
 각 플랫폼별 크래시 로그에 대한 정보는 아래 링크를 확인하면 됩니다.
 
-- [Android 크래시 로그 수집](./log-collector-android/#_5)
+- [Android 크래시 로그 수집](./log-collector-android/#_7)
 - [iOS 크래시 로그 수집](./log-collector-ios/#_5)
 
 ```csharp
@@ -197,6 +197,9 @@ var loggerConfiguration = new ToastLoggerConfiguration
     EnableCrashReporter = false // 크래시 로그 비활성화
 };
 ```
+
+> User ID가 설정되어 있으면 Log&Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인 할 수 있습니다.
+> User ID 설정은 [시작하기](./getting-started-unity/#userid)에서 확인 가능합니다.
 
 ## 크래시 로그 전송 후 추가작업 진행하기
 - 크래시 리스너를 등록하면 크래시 로그 전송 후 추가 작업을 진행할 수 있습니다.

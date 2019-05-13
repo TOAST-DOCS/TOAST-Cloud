@@ -89,10 +89,10 @@ apply plugin: 'com.google.gms.google-services'
 - [ToastPushConfiguration](./push-android/#toastpushconfiguration)オブジェクトは、ToastPushConfiguration.Builderを使用して作成できます。
 - Pushコンソールで発行されたAppKeyをToastPushConfiguration.newBuilderの引数に渡します。
 
-## Tencent Push Notification 설정
-- 기존 Tencent 프로젝트가 없다면, [Tencent 콘솔](https://xg.qq.com/)에서 프로젝트를 생성합니다.
-- 웹 우측에 어플리케이션 등록을 선택합니다.
-- 어플리케이션을 등록하면 AccessID와 Accesskey가 생성됩니다.
+## Tencent Push Notification 設定
+- 既存のTencentのプロジェクトがない場合は、[Tencentコンソール]（https://xg.qq.com/）でプロジェクトを作成します。
+- ウェブ右側にアプリケーションの登録を選択します。
+- アプリケーションを登録すると、AccessIDとAccesskeyが生成されます。
 
 ### build.gradle 設定
 #### ルートレベルのbuild.gradle
