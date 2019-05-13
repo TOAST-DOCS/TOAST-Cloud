@@ -184,8 +184,8 @@ With ToastLogger initialized, a crash log is automatically sent when it occurs c
 To disable crash log delivery, set false for EnableCrashReporter property of the ToastLoggerConfiguration object.
 For more information on crash logs of each platform, check the links below:
 
-- [Collect Android Crash Logs](./log-collector-android/#_5)
-- [Collect iOS Crash Logs](./log-collector-ios/#_5)
+- [Collect Android Crash Logs](./log-collector-android/#collect-crash-logs)
+- [Collect iOS Crash Logs](./log-collector-ios/collect-crash-logs)
 
 ```csharp
 var loggerConfiguration = new ToastLoggerConfiguration
@@ -194,6 +194,9 @@ var loggerConfiguration = new ToastLoggerConfiguration
     EnableCrashReporter = false // Disable crash logs
 };
 ```
+
+> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log&Crash Search console.
+> User ID setting can be checked in [Getting Started](./getting-started-unity/#set-userid).
 
 ## Further Tasks after Sending Crash logs
 - With crash listener registered, further tasks can be executed after crash logs are sent.

@@ -30,18 +30,6 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
 ToastLogger.initialize(configuration);
 ```
 
-## Set UserID 
-
-User ID can be set for ToastSDK and it is for common usage at each module of TOAST SDK.
-Send such set user ID to a server, along with logs, whenever Log Sending API of TOAST Logger is called. 
-
-### Specifications for User ID Setting API
-
-```java
-/* ToastSdk.java */
-public static void setUserId(String userId);
-```
-
 ## Send Logs 
 
 TOAST Logger provides log-sending functions of five levels.  
@@ -151,6 +139,9 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
 
 ToastLogger.initialize(configuration);
 ```
+
+> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log&Crash Search console.
+> User ID setting can be checked in [Getting Started](./getting-started-android/#set-userid).
 
 ### Use Handled Exception API 
 

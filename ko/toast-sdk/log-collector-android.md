@@ -33,19 +33,6 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
 ToastLogger.initialize(configuration);
 ```
 
-## UserID 설정
-
-TOASAT SDK에 UserID를 설정할 수 있습니다.
-설정한 UserID는 TOAST SDK의 각 모듈에서 공통으로 사용됩니다.
-ToastLogger의 로그 전송 API를 호출할 때마다 설정한 UserID를 로그와 함께 서버로 전송합니다.
-
-### UserID 설정 API 명세
-
-```java
-/* ToastSdk.java */
-public static void setUserId(String userId);
-```
-
 ## 로그 전송
 
 TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
@@ -153,6 +140,9 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
 
 ToastLogger.initialize(configuration);
 ```
+
+> User ID가 설정되어 있으면 Log&Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인 할 수 있습니다.
+> User ID 설정은 [시작하기](./getting-started-android/#userid)에서 확인 가능합니다.
 
 ### Handled Exception API 사용
 

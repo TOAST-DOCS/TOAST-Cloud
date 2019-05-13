@@ -90,18 +90,6 @@ Log & Crash Search에서 발급받은 AppKey를 설정합니다.
 [ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
 ```
 
-## UserID 설정
-
-TOASAT SDK에 UserID를 설정할 수 있습니다.
-설정한 UserID는 TOAST SDK의 각 모듈에서 공통으로 사용됩니다.
-ToastLogger의 로그 전송 API를 호출할 때마다 설정한 UserID를 로그와 함께 서버로 전송합니다.
-
-### UserID 설정 API 명세
-
-```objc
-[ToastSDK setUserID:@"INPUT_USER_ID"];
-```
-
 ## 로그 전송
 
 TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
@@ -184,6 +172,9 @@ CrashReporter 기능은 기본적으로 TOAST Logger를 초기화할 때 함께 
 ```
 TOAST Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
 크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다.
+
+> User ID가 설정되어 있으면 Log&Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인 할 수 있습니다.
+> User ID 설정은 [시작하기](./getting-started-ios/#userid)에서 확인 가능합니다.
 
 #### CrashReporter 활성화
 ```objc

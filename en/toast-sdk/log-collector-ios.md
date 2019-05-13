@@ -174,6 +174,9 @@ CrashReporter is enabled, on principle, along with initialization of TOASTLogger
 It is enabled by setting, along with TOAST Logger initialization. 
 In order not to send crash logs, CrashReporter must be disabled.  
 
+> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log&Crash Search console.
+> User ID setting can be checked in [Getting Started](./getting-started-ios/#set-userid).
+
 #### Enable CrashReporter 
 ```objc
 // CrashReporter Enable Configuration
