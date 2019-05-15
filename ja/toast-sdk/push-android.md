@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.16.1’
+    implementation 'com.toast.android:toast-push-fcm:0.16.2’
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.16.1’
+    implementation 'com.toast.android:toast-push-tencent:0.16.2’
     ...
 }
 ```
@@ -186,6 +186,21 @@ ToastPush.initialize(provider, configuration);
 ```java
 PushProvider provider = TencentMessagingPushProvider.getProvider();
 ToastPush.initialize(provider, configuration);
+```
+
+## 初期化確認
+
+ToastPushが初期化されたかどうかを知ることができます。
+
+```java
+/**
+* Indicates whether the ToastPush has been initialized.
+*
+* @return true if initialized, false if not
+*/
+public static synchronized boolean isInitialized() {
+    return sIsInitialized;
+}
 ```
 
 ## サービスログイン
