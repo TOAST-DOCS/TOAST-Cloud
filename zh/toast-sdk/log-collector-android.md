@@ -11,7 +11,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-logger:0.16.1'
+    implementation 'com.toast.android:toast-logger:0.16.2'
     ...
 }
 ```
@@ -28,6 +28,21 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
         .build();
 
 ToastLogger.initialize(configuration);
+```
+
+## Check Initialization Status
+
+Indicates whether the ToastLogger has been initialized.
+
+```java
+/**
+* Indicates whether the ToastLogger has been initialized.
+*
+* @return true if initialized, false if not
+*/
+public static synchronized boolean isInitialized() {
+    return sIsInitialized;
+}
 ```
 
 ## Send Logs 
