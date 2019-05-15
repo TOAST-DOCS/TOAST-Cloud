@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.16.2 (2019.05.14)
+
+### TOAST SDK
+
+#### Improved
+
+* Add method that can check whether to initialize.
+
 ## 0.16.1 (2019.05.02)
 
 ### TOAST SDK
