@@ -17,7 +17,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.16.1'
+    implementation 'com.toast.android:toast-iap-google:0.16.2'
     ...
 }
 ```
@@ -26,7 +26,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.16.1'
+    implementation 'com.toast.android:toast-iap-onestore:0.16.2'
     ...
 }
 ```
@@ -132,6 +132,21 @@ public class MainApplication extends Application {
                 .build();
         ToastIap.initialize(configuration);
     }
+}
+```
+
+## 초기화 상태 확인
+
+ToastIap가 초기화되었는지 여부를 알 수 있습니다.
+
+```java
+/**
+* Indicates whether the ToastIap has been initialized.
+*
+* @return true if initialized, false if not
+*/
+public static synchronized boolean isInitialized() {
+    return sIsInitialized;
 }
 ```
 
