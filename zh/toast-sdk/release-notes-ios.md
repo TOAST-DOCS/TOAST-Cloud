@@ -1,5 +1,19 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.14.1 (2019.05.16)
+
+### TOAST IAP
+
+#### Fixed
+
+* Fixes a bug that was incorrectly collected for indicator events according to the device calendar settings.
+
+### TOAST Push
+
+#### Fixed
+
+* Improved non-purchasing phenomena when tried to purchase the same product as reprocessing in progress.
+
 ## 0.14.0 (2019.05.14)
 
 ### Common
