@@ -50,7 +50,7 @@ TOAST Consoleは下記の機能を提供します。
 
 ### 組織作成ガイド
 
-![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812.png)
+![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
 
 <center>[図1]組織の作成 </center>
 
@@ -103,7 +103,7 @@ TOAST Consoleは下記の機能を提供します。
 
 ### プロジェクト作成ガイド
 
-![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812.png)
+![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
 
 <center>[図2]プロジェクト作成 </center>
 
@@ -115,7 +115,7 @@ TOAST Consoleは下記の機能を提供します。
 
 ### プロジェクトサービス有効化ガイド
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
 
 <center>[図3]プロジェクトサービスの有効化 </center>
 
