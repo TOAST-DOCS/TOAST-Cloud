@@ -1,144 +1,86 @@
-## TOAST > Console User Guide
+## TOAST > 控制台使用指南
 
-The console serves as management tool and window for the use of TOAST services.
-Basic console settings and its user guide are provided as below to use TOAST Service.
+TOAST Console起到使用TOAST服务的管理工具及操作窗口的作用。
+下面介绍TOAST控制台的基本设置及使用方法。
 
-TOAST Console provides the following functions:
+TOAST Console提供如下功能。
 
-- Basic information management to use the service (e.g. organizations, or projects)
-- Enable/Disable Service
-- Manage members who use the service
-- Provide payment information
+- 管理使用服务所需的基本信息（组织、项目）
+- 启用/禁用服务
+- 管理使用服务的会员
+- 提供付款信息
 
-## Organization Management
+## 控制台快捷指南
+针对控制台提供的基本功能的快捷指南。 
 
-Organization refers to a group which is made to efficiently use and manage TOAST Service.
-In an organization, same service policy can be shared with users.
-It helps to make use of TOAST Service more efficiently.  
+![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812.png)
+![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812.png)
+![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812.png)
+![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812.png)
+![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812.png)
 
-### Organization Management Policy
+## 组织管理
 
-#### Create Organizations
+组织是为高效使用并管理TOAST服务所创建的组。
+在组织中用户可以共享并使用相同的服务策略。
+通过组织可以高效使用各种TOAST服务。
 
-- An organization should be created to use TOAST Service.
-- Both personal and business members can create organizations.
-- Any member who creates an organization automatically becomes the OWNER of his organization.
-- Member’s payment method is required to create an organization.
-- Organization is in charge of its name and domain information.
-- Domain information of an organization must be unique, as it is required for services.
+### 创建组织
 
-#### Organization Services
+- 为使用TOAST服务，需要创建组织。
+- 个人/企业会员均可创建组织。
+- 创建组织的会员自动成为组织的OWNER。
+- 为创建组织，必须登记会员的付款方式。
+- 组织管理组织名/域信息。
+- 组织的域信息应为必须在服务中使用的信息以及固有信息。
 
-After an organization is created, you can select services.
-Following services are available at the level of organization:
+### 组织服务
+
+创建组织后，可选择服务。
+可以以组织为单位启用的服务如下。
 
 - ERP
 - Dooray!
 - Contact Center
 - IDC
+- CloudTrail
 
-#### Organization Members
+### 创建组织指南
 
-Organization members are classified into members of TOAST.com and insider members of the organization.  
+![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812.png)
 
-| Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
-| :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Definition                    | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
-| Method of Member Registration | \- Owner/Admin of an organization enters TOAST ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
-| Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
+<center>[图 1] 创建组织 </center>
 
-Each member of an organization has following roles:
+1. 移动至控制台后，在上端菜单中单击**请创建组织。**旁的**+**按钮。
+2. 在**创建组织**窗口中输入组织名称。组织名称可使用韩文、英文、特殊字符、数字。
+3. 单击**确认**按钮，组织创建完成。
+4. 控制台上端菜单中显示创建的组织名称。
+5. 单击**设置**按钮，确认创建的组织信息。作为组织的补充信息，输入域信息。域应设置为TOAST中唯一的值。  
 
-| Action               | Role                                              | Owner | Admin | Member | Billing Viewer | Log Viewer |
-| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---------- |
-| Manage Organizations | Create Organizations                              | O     |       |        |                |            |
-|                      | Modify Organizations                              | O     | O     |        |                |            |
-|                      | Delete Organizations                              | O     |       |        |                |            |
-| Manage Members       | Register Organization Members                     | O     | O     |        |                |            |
-|                      | Delete Organization Members                       | O     | O     |        |                |            |
-| Manage Services      | Enable Organization Services                      | O     | O     |        |                |            |
-|                      | Disable Organization Services                     | O     | O     |        |                |            |
-| Manage Payment       | Query Bills                                       | O     |       |        |                |            |
-|                      | Status of Service Use                             | O     | O     |        | O              |            |
-| Manage Projects      | Create Projects                                   | O     | O     | O      |                |            |
-|                      | Delete Projects (all projects of an organization) | O     | O     |        |                |            |
-|                      | Delete Projects (created projects)                | O     | O     | O      |                |            |
-| 사용자 Action 로그 관리  | 사용자 Action 로그 조회                               | O     | O     |        |                | O          |
+### 删除组织
 
-#### Delete Organizations
+- 仅组织的OWNER可删除组织。
+- 为删除组织，应删除所有使用的服务。
+- 删除组织时，组织的所有信息将被删除，且无法恢复。
 
-- Only the OWNER can delete his organization.
-- All the services currently in use must be deleted first.
-- All information of an organization is to be deleted, along with the deletion of organization, and cannot be recovered.  
+## 管理项目
 
-### Guide to Create Organizations
+创建组织后，为使用TOAST服务而创建项目。
+在项目中启用项目服务方可使用服务。
+项目服务以项目为单位使用，并以此为基准收费。
 
-![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
+### 创建项目
 
-1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
-2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
-3. Click **OK** and organization is completely created.
-4. You can find the organization name just created on top of the console menu
-5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
+- 为创建项目，应创建组织。
+- 创建项目的会员拥有项目的ADMIN权限。
+- 创建项目时，输入项目名称与项目说明。
+- 创建项目后，启用项目服务方可使用服务。
+- 创建项目后，若需要合作，可添加为项目会员一起使用。
 
-### Security Setting for IAM Console Logins 
-To tighten console access security for IAM members, [Login Security Setting] is provided.  
+### 项目服务
 
-Same configuration may be applied to all organizations (e.g. Cloud console, Online Contact, or Dooray!), or each service may be diffferently configured. 
-
-![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903.png)
-
-1. Access Organization Setting of an organization to configure on a console. 
-2. Click [Login Security Setting] on the IAM console. 
-
-#### Two-factor Authentication 
-
-The two-factor authentication can be made a required setting.    
-
-![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903.png)
-- Not Configured: Login is available only by ID and password, without two-factor authentication.  
-- Google OTP:  Enter ID and password, and enter One Time Password provided by Google OTP, to authenticate and log in. 
-- Email: Enter ID and password, and click an authentication button delivered via email address, to authenticate and log in. 
-
-#### Security for Failed Logins 
-
-When it fails to log in for many consecutive times, you are allowed to log in after certain time. 
-
-Security setting for failed logins can be differently applied for each service. 
-Only common settings are provided. 
-
-![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903.png)
-- Not Configured: Login can be attempted forever even after it fails for many times. 
-- Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
-
-#### IP ACL 
-
-Access to IAM console is available only in allowed IPs (or IP bandwidth)
-
-![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903.png)
-- Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
-- Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
-
-## Manage Projects
-
-A project is created to use TOAST Service, after an organization is created.
-Enable project services to use a project.
-Use and charge services by the project.
-
-### Project Management Policy
-
-#### Create Projects
-
-- To create a project, an organization is required.
-- A member who creates a project is entitled ADMIN of the project.
-- Enter the name and description to create a project.
-- Enable project services after a project is created.
-- When collaboration is required, add project members to share the project after it is created.
-
-#### Project Services
-
-You can select services, once a project is created.
-Following services can be enabled by each project:
+创建项目后，可选择服务。
+可以以项目为单位启用的服务如下。
 
 - Compute
 - Storage
@@ -156,69 +98,147 @@ Following services can be enabled by each project:
 - Mobile Service
 - Bill
 
-#### Project Members
+### 创建项目指南
 
-Project members are also members of TOAST.com. Insider members of an organization will be able to use project services with further functions to be provided.
-You can be a project member, if not an organization member.
+![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812.png)
 
-Each project member has the following roles:
+<center>[图2] 创建项目 </center>
 
-| Action                | Role                                            | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
-| --------------------- | ----------------------------------------------- | ----- | ------ | -------------------- | -------------- |
-| Manage Members        | Register Project Members (ADMIN)                | O     |        |                      |                |
-|                       | Delete Project Members (ADMIN)                  | O     |        |                      |                |
-|                       | Register Project Members (MEMBER)               | O     |        |                      |                |
-|                       | Delete Project Members (MEMBER)                 | O     |        |                      |                |
-|                       | Register Project Members (Billing Viewer ADMIN) | O     |        |                      |                |
-|                       | Delete Project Members (Billing Viewer ADMIN)   | O     |        |                      |                |
-|                       | Register Project Members (Billing Viewer)       | O     |        | O                    |                |
-|                       | Delete Project Members (Billing Viewer)         | O     |        | O                    |                |
-| Manage Service        | Enable Service                                  | O     |        |                      |                |
-|                       | Enable Service                                  | O     | O      |                      |                |
-|                       | Disable Service                                 | O     |        |                      |                |
-| Status of Service Use | Status of Service Use                           | O     | O      | O                    | O              |
+1. 创建组织后，**创建新项目**按钮激活。单击**创建新项目**按钮，创建项目。
+2. 输入**项目名称**与**项目说明**。
+3. 单击**确认**按钮，创建项目。
+4. 创建项目后，菜单中显示项目名称。
+5. 单击**项目设置**按钮，确认项目信息。
 
-#### Delete Projects
+### 启用项目服务指南
 
-A project can be deleted if it has no available services.
-All its resources are deleted along with the deletion of a project, and cannot be recovered.
-You can immediately pay for all the resources that have used before deleting a project.
-However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812.png)
 
-### Guide to Create Projects
+<center>[图3] 启用项目服务 </center>
 
-![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
+1. 创建项目后，单击**选择服务**按钮，可以选择项目中要使用的服务。
+2. 在选择服务界面中选择要激活的服务。显示询问是否要激活服务的信息后，单击**确认**。显示提示移动至可以使用服务的页面信息后，单击**确认**按钮。
+3. 启用的服务列表可以在控制台左侧菜单中确认。在列表中单击所需服务，显示服务使用界面。
 
-1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
-2. Enter **Project Name** and **Project Description**.
-3. Click **OK** to create a project.
-4. The project name shows on the console menu when the project is created.
-5. Click project setting to check project information.
+### 删除项目
 
-### Guide to Enable Project Service
+若项目中没有正在使用的服务，可删除项目。
+删除项目时，项目的所有资源将被删除，且无法恢复。
+截至目前使用的所有资源的使用明细，可立即付款并删除。
+但若不立即付款而删除时，截至目前使用的费用明细将在下一付款日自动要求付款。
 
-![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
+## 管理会员 
+利用管理会员，可通过各用户验证（登录）及权限赋予进行控制。 
+在项目及组织中，可分开管理会员。 
+会员分为TOAST会员及IAM会员。
 
-1. Click **Select Services**, after a project is created, to enable services you need
-2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
-3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
+### TOAST会员与IAM会员政策
 
-## Billing Management
+| 分类           | TOAST.com会员                                               | IAM会员                               |
+| :------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 定义           | \- 针对组织管理的会员<br>\- 同意TOAST使用条款的TOAST会员，具有服务使用责任及义务的会员 <br>\- 在整体TOAST服务中，即使有效会员所属组织被删除，但仍旧作为TOAST会员存在 | \- 针对服务使用的会员<br>\- 不同意TOAST使用条款的会员<br>\- 仅在组织内有效的会员，若所属的组织删除也会被删除的会员 |
+| 会员登记方法 | \- 组织的OWNER或ADMIN输入TOAST ID登记          | \- 组织的OWNER或ADMIN输入组织内唯一的ID登记<br>\- 通过与SSO关联/API关联等登记 |
+| 会员权限      | \- 组织管理（组织创建/修改/组织会员管理/组织服务管理/付款管理\）<br>\- 创建项目<br>\- 删除项目 | \- 使用组织服务 |
+| 访问控制台      | \- 访问TOAST控制台(https://console.toast.com/) <br>\- TOAST> 以会员ID/PW登录<br> | \- 访问IAM控制台（https://组织域.console.toast.com/）<br> \- （Dooray!、ERP服务以相应服务域访问）<br> \- 以组织的OWNER（或ADMIN）设置的ID/PW登录 \- 组织中设置的登录安全（2次验证，按服务设置）验证 |
 
-Supports for TOAST members to check prices and pay bills for TOAST Service.
-Billing management provides bills for the TOAST members who registered payment methods, along with estimated amount of payment and usage information.
-Go to My Profile > Billing Management to check.
+### IAM控制台登录安全设置
+为增强IAM会员的控制台访问安全，提供[登录安全设置]功能。 
 
-Below functions are provided, along with the history of the month’s payment via registered payment method.
+可对所有的组织服务（Cloud Console, Online Contact, Dooray! 等）进行相同的设置，也可按照各种服务类别进行不同的设置。 
 
-- Immediate Payment: Immediate payment is available on the 15th of every month before automatic payment is processed.  
-- Sales Statement: Sales statement can be retrieved for credit card payments.
-- Tax Invoice: Tax invoices can be retrieved for payment by bank transfers.
+![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903.png)
 
-Following are included to the bills for retrieval:
+1.访问要在控制台中设置的组织的组织设置页面。 
+2.单击IAM控制台的[登录安全设置]按钮。 
 
-- Charged Amount: Prices for usage amount and service charges
-- Discount/Extra Charges: Discounts by contract, or discount/extra charges by administrators
-- Additional Tax: 10% of (Charged amount- Discount amount + Amount of extra charges)
-- Late Charges: 2% of unpaid amount out of total amount of payment
-- Total Amount of Payment: (Charged amount- Discount amount+ Amount of extra charges) + Additional Tax
+#### 2次验证
+
+2次验证可设置为必须。
+
+![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903.png)
+- 不设置：  不进行2次验证，仅输入ID和密码即可登录。 
+- Google OTP：  输入ID和密码，然后输入Google OTP应用提供的One Time Password（一次性密码）并通过验证后即可登录。  
+- 电子邮件：输入ID和密码后，单击发送到电子邮箱的验证按钮，通过验证后即可登录。 
+
+#### 登录失败安全
+
+可设置为若登录一直失败，等待一定时间后可再次登录。
+
+登录失败安全设置无法按服务类别进行不同的设置。仅提供通用设置功能。  
+
+![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903.png)
+- 不设置：即使登录失败也可继续尝试登录。 
+- 设置：输入需要的失败次数和锁定时间，登录失败达到该次数时，在相应的锁定时间内无法尝试登录。 
+
+#### IP ACL 
+
+仅允许使用的IP（或IP段）可访问IAM控制台。 
+
+![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903.png)
+- 不设置：所有IP（或IP段）都可访问IAM控制台。 
+- 仅允许使用的IP（或IP段）访问控制台：仅输入的IP（或IP段）可访问控制台。输入允许访问的IP或IP段即可。 
+
+### 组织会员
+
+- 组织的OWNER可赋予所有权限，申请服务。 
+- OWNER可登记TOAST会员，赋予各组织管理权限。
+- TOAST会员不注册toast.com时，向登记TOAST会员时输入的邮箱发送邀请邮件。
+
+| 操作          | 作用                                | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
+| ------------- | ----------------------------------- | ----- | ----- | ------ | -------------- | -------- |
+| 管理组织     | 创建组织                           | O     |       |        |                |  |
+|               | 修改组织                           | O     | O     |        |                |  |
+|               | 删除组织                           | O     |       |        |                |  |
+| 管理会员     | 登记组织会员                      | O     | O     |        |                |  |
+|               | 删除组织会员                      | O     | O     |        |                |  |
+| 管理服务   | 启用组织服务                  | O     | O     |        |                |  |
+|               | 禁用组织服务                | O     | O     |        |                |  |
+| 管理付款     | 查询申请书                         | O     |       |        |                |  |
+|               | 使用现状                           | O     | O     |        | O              |  |
+| 管理项目 | 创建项目                       | O     | O     | O      |                |  |
+|               | 删除项目（组织的所有项目） | O     | O     |        |                |  |
+|               | 删除项目（创建的项目）     | O     | O     | O      |                |  |
+| 管理用户Action日志 | 查询用户Action日志            | O     | O     |       |                | O |
+
+### 项目会员
+
+项目的会员是toast.com的会员。组织内部会员作为项目会员，可以使用服务的功能预计之后提供。
+即使不是组织的会员，也可以成为项目的会员。
+
+| 操作        | 作用                                     | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
+| ----------- | ---------------------------------------- | ----- | ------ | -------------------- | -------------- |
+| 管理登记Member(ADMIN)                              | O     |        |                      |                |
+|             | 删除项目会员(ADMIN)                | O     |        |                      |                |
+|             | 登记项目会员(MEMBER)               | O     |        |                      |                |
+|             | 删除项目会员(MEMBER)               | O     |        |                      |                |
+|             | 登记项目会员(Billing Viewer ADMIN) | O     |        |                      |                |
+|             | 删除项目会员(Billing Viewer ADMIN) | O     |        |                      |                |
+|             | 登记项目会员(Billing Viewer)       | O     |        | O                    |                |
+|             | 删除项目会员(Billing Viewer)       | O     |        | O                    |                |
+| 管理服务 | 启用服务                            | O     |        |                      |                |
+|             | 使用服务                              | O     | O      |                      |                |
+|             | 禁用服务                          | O     |        |                      |                |
+| 使用现状   | 使用现状                                | O     | O      | O                    | O              |
+
+
+## 付款管理
+
+可确认TOAST服务使用费用并付款。
+在**查看我的信息 > 付款管理**菜单中可以查看登记付款方式的TOAST会员的申请书与预计付款金额、使用量信息。
+
+提供相应月通过付款方式付款的明细以及以下功能。
+
+- 即时付款：每月8日自动付款前，可通过即时付款功能付款。
+- 销售凭证：使用信用卡付款时，可查询销售凭证。
+- 税单：使用转账付款时，可查询税务发票。
+
+付款管理请求书中查询到的明细如下。
+
+- 使用金额：计算服务使用量与单价的金额
+- 折扣/附加金额：协议折扣、管理员折扣/附加金额等
+- 附加税：（使用金额 - 折扣金额 + 附加金额）的10%
+- 滞纳金
+    - 韩国会员：未缴纳最终金额时，相应金额的2%
+    - 日本会员：依据日本消费者合同法，不产生滞纳金。
+- 最终付款金额：（使用金额 - 折扣金额 + 附加金额）+ 附加税
+

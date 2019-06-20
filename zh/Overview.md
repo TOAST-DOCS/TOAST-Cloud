@@ -1,107 +1,97 @@
-## TOAST > Overview
+## TOAST > 概要
 
-TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “Integrated Cloud Service” of NHN, as part of unwavering passion to make the world renewed with arts, science, and technology.  
+TOAST是NHN提供的“综合云服务”，意味着以TOward Art Science Technology为座右铭，为打造面向艺术科学技术的新世界而进行挑战的热情。
 
-## Features
+## 特征
 
-- Easy-to-Use Cloud Service for Anyone
+- 是任何人都可以轻松使用的云服务。
+- 提供便利的基础设施和平台，使得可以专注于开发。
+- 仅在网页浏览器上简单点击便可使用服务。
+- 可以以合理的费用使用基础设施和平台。
 
-- Infrastructure and Platform Provided <br>for Your Concentrated Development
+### 丰富的服务构成
 
-- Enabled Only with a Click on Web Browser
-- Infrastructure and Platform Available at Reasonable Costs
+- 提供基础设施、开发、测试、运营及技术支持等事业化所需的各种服务。
+- 从公司内部Messenger、项目管理，到人事/财务/资源管理，可以使用用于企业IT基础设施的服务。
+- 凭借自主技术力设计、构建的城市型数据中心，可以构成混合型云。
 
-### Composed of Various Services
+### 以平台为中心的云
 
+- 是基于基础设施的以平台为中心的云。
+- 提供基础设施、内容、分析、游戏、安全、警报信息、运营其他应用程序时需要的各种功能。
+- 提供开发及运营应用程序所需的各种功能。
+- 企业能在在云中轻松地打造可开发的生态系统。
 
-- We provide various services required for infrastructure, development, test, operations and technology support, and running a business.
+### 合理的价格
 
-- From internal messenger and project management, to HR/finance/resource management, services are available for IT infrastructure of a company.
+- 按照使用计费。（部分服务收取基本定额费用。）
+- 采用协议费用制，提供更多折扣优惠。
+- 免费提供辅助服务。
 
-- The urban data center, designed on its own technology and established in Pangyo, provides optimized operational efficiency.
+### 强大的技术支持
 
+- 通过10年以上的Hangame、Bugs、PAYCO 服务积累的IT运营经验，提供稳定的服务。
+- 提供制定引入云战略的咨询。
+- 专业工程师24小时/365天提供咨询。
 
-### Platform-oriented Cloud
+### 全球云
+- 支持韩国国内企业进军日本。
+- 为当地企业提供累积10年以上的强大技术和服务。
+- 支持成功的海外服务所需的全球平台。
 
+## 服务对象
 
-- The cloud service is platform-oriented based on infrastructure.
+- 感觉难以构建基础设施而需要1:1技术咨询的企业
+- 运营重视安全性服务的企业或公共机构
+- 希望有效使用基础设施的企业
+- 中/大型购物中心企业
+- 以进军全球市场为目标的企业
+- 需要SMS、Push、Email等综合信息服务的企业
 
-- Functions required to operate infrastructure, content, analysis, games, security, alarm messages, and other applications are provided.
-- Functions required to develop and operate applications are provided.
-- Companies are supported for easy development in the cloud environment.
+## 服务构成
 
-### Reasonable Prices
-
-
-- You'll be charged by pay-as-you-go. (Some services are charged by basic flat rate.)
-
-- Contract-based pricing plan provides more discount benefits.
-
-- Complementary services are free-of-charge.
-
-
-### Powerful Technology Support
-
-
-- Stable services are ensured with experienced IT operations accumulated for over a decade with Hangame, Bugs, and PAYCO services.
-
-- Consulting service is provided to establish plans to introduce the cloud environment.
-
-- Professional engineers are supported 24/7.
-
-## Service Targets  
-
-- Companies in need of 1:1 technical consulting due to difficulties in the buildup of infrastructure
-- Private or public businesses for which security is on top of priority
-- Companies wanting to efficiently make use of infrastructure
-- Mid-and large-size shopping mall owners
-- Businesses in need of integrated messaging services, including SMS, Push and email
-
-## Service Composition
-
-| Service | Description |
+| 服务 | 说明 |
 | --- | --- |
-| Compute |With on-demand infrastructure based on OpenStack, apply infrastructure resources as much as required at affordable prices. |
-| Network | Build virtual private network and provide public IP which is accessible from outside.|
-| Storage | The storage service has high availability and stability. |
-| Game | Useful platforms are supported for game development.|
-| Notification | Mobile Push and SMS Platform services are provided. |
-| Database | With no need of complicated installation or setting, relational database is made available in the cloud environment. |
-| Content Delivery | Image saving and fast content distribution are available. |
-| Security | Security can be enhanced through the platforms. |
-| Mobile Service | Developing and testing mobile app services are made more easily. |
-| Dev Tool | Convenient and efficient development environment is provided. |
-| Analytics | Platforms for data analysis and collection are supported. |
-| Application Service | Various tools are supported for web/app services. |
-| Search  | Up-to-date data are always available through different search services. |
-| Management | Professional engineers with the highest technical skills provide systematic server management, while customers can focus more on content development. |
-| ERP  | Hands-on enterprise resource management solution is provided incorporating accounting, HR, and settlement. |
-| Dooray!  | Convenient tools of collaboration are supported, including mail, issue tracker, schedule management, and chatting. |
-| Contact Center | An integrated solution for call center services helps process inquiries more efficiently, and provides elevated operational efficiency and optimized customer experience. |
-| Bill | With the Bill service, it is easy and convenient to get a tax invoice. |
-| IDC  | The urban data center, designed on its own technology and established in Pangyo, provides optimized operational efficiency.  |
+| Compute | 作为基于OpenStack的On-Demand基础设施服务，可以以较低的价格按照需求使用基础设施资源。|
+| Network | 可以构建虚拟专用网络，提供可从外部访问的公用IP。|
+| Storage | 具备高可用性及稳定性的存储服务。|
+| Game | 可以使用游戏开发需要的平台。|
+| Notification | 可以使用移动设备推送及SMS平台。|
+| Database | 无复杂的安装及设置过程，可在云环境下使用关系型数据库。|
+| Content Delivery | 可保存图像及快速分发内容的平台。|
+| Security | 可以使用能够提高安全的平台。|
+| Mobile Service | 有助于轻松进行移动设备应用程序服务开发及测试的服务。|
+| Dev Tool | 提供方便高效的开发环境的服务。|
+| Analytics | 可使用数据分析及收集所需的平台。|
+| Application Service | 提供网页/应用程序服务所需的各种工具。|
+| Search  | 通过各种搜索服务，无需担心更新即可始终使用最新数据。|
+| Management | 拥有最佳技术力的专业工程师系统化管理服务器，顾客可以更加专注于内容开发。|
+| ERP  | 整合会计、人事、审批的方便的全公司性资源管理解决方案。|
+| Dooray!  | 作为合作所需的便利服务，同时支持邮件、问题跟踪器、日程管理、聊天，可以实现轻松合作。|
+| Contact Center | 通过客服中心咨询的综合解决方案，高效处理咨询，提高运营效率，提供最佳的客户体验。|
+| Bill | 可以轻松便利地签发税务发票。|
+| IDC  | 凭借自主技术力在京畿道板桥设计·构建的城市型网络数据中心。|
+| CloudTrail  | 通过TOAST Console及API等，自动收集发生的各种活动日志及事件的免费服务。|
 
-## Service Release Policy
+## 服务发布策略
 
-TOAST Service is managed by the Release Policy as below.
+TOAST服务按照如下发布策略进行管理。
 
 - ALPHA
-    - The service is open to users before an official service version is released.
-    - The service is named with ALPHA icon.
-    - This service may fade out depending on company policy.
+    - 正式服务推出前，向用户公开的服务。
+    - 服务名中显示ALPHA图标。
+    - ALPHA服务可能根据公司的策略中断。
 - BETA
-    - The service is open to users before an official service version is released.
-
-    - The service is named with BETA icon.
-
+    - 正式服务推出前，向用户公开的服务。
+    - 服务名中显示BETA图标。
 - GA
-    - Refers to the official version of service.
+    - 正式服务。
 
 
-| Classification | SLA Guarantees  | Service Continuity| Period |
-| :---: | :---: |:---: | :---: |
-| ALPHA | X | △ | 3 Months |
-| BETA | X | O | 3 Months |
+| 分类 | SLA保障 | 服务持续 | 期间 |
+| :---: | :---: | :---: | :---: |
+| ALPHA | X | △ | 3 个月 |
+| BETA | X | O | 3 个月 |
 | GA | O | O | - |
 
-- The ALPHA or BETA period may be extended or reduced.
+- ALPHA、BETA时间可能延长或缩短。
