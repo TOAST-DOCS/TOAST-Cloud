@@ -10,6 +10,14 @@ TOAST Console provides the following functions:
 - Manage members who use the service
 - Provide payment information
 
+## Console Quick Guide
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
+![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
+![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
+![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
+
+
 ## Organization Management
 
 Organization refers to a group which is made to efficiently use and manage TOAST Service.
@@ -86,7 +94,7 @@ To tighten console access security for IAM members, [Login Security Setting] is 
 
 Same configuration may be applied to all organizations (e.g. Cloud console, Online Contact, or Dooray!), or each service may be diffferently configured. 
 
-![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903.png)
+![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
 
 1. Access Organization Setting of an organization to configure on a console. 
 2. Click [Login Security Setting] on the IAM console. 
@@ -95,7 +103,7 @@ Same configuration may be applied to all organizations (e.g. Cloud console, Onli
 
 The two-factor authentication can be made a required setting.    
 
-![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903.png)
+![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903_en.png)
 - Not Configured: Login is available only by ID and password, without two-factor authentication.  
 - Google OTP:  Enter ID and password, and enter One Time Password provided by Google OTP, to authenticate and log in. 
 - Email: Enter ID and password, and click an authentication button delivered via email address, to authenticate and log in. 
@@ -107,7 +115,7 @@ When it fails to log in for many consecutive times, you are allowed to log in af
 Security setting for failed logins can be differently applied for each service. 
 Only common settings are provided. 
 
-![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903.png)
+![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903_en.png)
 - Not Configured: Login can be attempted forever even after it fails for many times. 
 - Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
 
@@ -115,7 +123,7 @@ Only common settings are provided.
 
 Access to IAM console is available only in allowed IPs (or IP bandwidth)
 
-![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903.png)
+![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903_en.png)
 - Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
 - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
 
@@ -158,7 +166,7 @@ Following services can be enabled by each project:
 
 #### Project Members
 
-Project members are also members of TOAST.com. Insider members of an organization will be able to use project services with further functions to be provided.
+Project members are also members of TOAST.com. 
 You can be a project member, if not an organization member.
 
 Each project member has the following roles:

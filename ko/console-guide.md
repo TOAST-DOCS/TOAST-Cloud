@@ -194,7 +194,7 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 
 ### 프로젝트 멤버
 
-프로젝트의 멤버는 toast.com의 회원입니다. 조직 IAM 회원이 프로젝트 멤버로 서비스를 이용할 수 있는 기능은 추후 제공 예정입니다.
+프로젝트의 멤버는 toast.com의 회원입니다. 
 조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
 
 | 작업        | 역할                                     | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |

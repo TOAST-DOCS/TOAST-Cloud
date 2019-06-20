@@ -1,196 +1,249 @@
-## TOAST > TOAST User Guide
-This document is the user guide of TOAST, which is the cloud service of NHN.
+## TOAST > TOAST使用指南
+介绍NHN打造的云服务TOAST使用方法的用户指南。
 
-## Join TOAST
-Members of TOAST are classified into Personal and Business members.
-For personal members, join simply by email verification/ SMS verification.
-For business members, join upon business information.
-Below show how member information is to be managed, as well as the procedure of subscription.
+## 注册TOAST会员
+可以选择使用服务的国家。 
+TOAST会员分为个人会员和企业会员。但韩国以外的国家，只可注册个人会员。 
+个人会员通过简单的电子邮件验证和SMS验证注册。
+企业会员可基于企业信息注册。
+TOAST会员管理信息及注册步骤如下。
 
-### Member Profile Management
-TOAST members are managed under the following information:
+### 会员管理信息
+TOAST会员根据提供服务的主体分为韩国会员(NHN)及日本会员(NHN Japan)。 
 
-| Managed Information | Description | Required |
+#### 韩国会员
+| 管理信息 | 说明 | 必须输入 |
 | --- | --- | --- |
-| ID | - Valid email address (verification is required). | O |
-| Password | - Comprised of more than eight characters, in combination of English, numbers, and at least two special characters. <br/> - The password cannot be the same as your previous one.  <br/> - Make a clear distinction between uppercase and lowercase letters.  | O |
-| Type of Subscription| 1. Personal Members <br/>         - Join as member via simple verification of email/SMS on mobile phone. <br/> - Personal members are allowed to pay with credit cards. <br/> - Non-Koreans can join as personal members.  <br/> 2. Business Members <br/> - To join membership, further authentication on business registration information is required.  <br/> -Business members are allowed to pay with credit cards and bank transfer, and for the latter, tax invoice can be issued upon business information registered while joining. | O |
-| Mobile Phone Number | - The mobile phone number must receive SMS. (SMS verification is required) | O |
-| Name| - User’s name to be applied for TOAST Service.  | O |
-| Address | - Comprised of zip code, basic address, and detail address. | X |
-| Landline Phone Number | - Managed for the support of faster services.  | X |
-| Business Information | - Required for business members. <br/> - Information such as business name, business registration number, name of representative, type of business/item, address, and landline phone number, are managed. <br/> - Such information must coincide with those of business registration certificate.  | O |
+| ID | - 可接收电子邮件的邮箱（必须进行电子邮件验证） | O |
+| 密码| - 组合英文、数字、特殊字符中2种以上，由8位以上构成。<br/> - 不可使用与之前相同的密码。<br/> - 区分大小写。  | O |
+| 会员注册类型 | 1.个人 <br/> - 通过简单的电子邮件验证、手机SMS验证注册会员。<br/> - 个人会员可使用信用卡作为付款方式。<br/> - 外国人可注册个人会员。 <br/> 2. 企业 <br/> - 注册会员时，需要补充进行营业执照信息验证。<br/> - 企业会员可使用信用卡及银行转账作为付款方式，使用银行转账时，可根据注册时登记的企业信息开具税务发票。 | O |
+| 手机号 | - 可确认SMS的手机号（必须进行手机SMS验证）。 | O |
+| 姓名 | - TOAST服务中使用的用户姓名。  | O |
+| 地址 | - 由邮编、基本地址、详细地址构成。  | X |
+| 座机 | - 为快速提供服务而进行管理。  | X |
+| 企业信息 | -  企业会员的必须管理项目。<br/> - 管理公司名、营业执照号、代表人姓名、行业/业态、地址、座机信息。<br/> - 应与营业执照中记载的信息一致。  | O |
 
-### How to Join as Member
-Access https://toast.com and click Join on the top right.
-There are three steps to complete.
+#### 日本会员
+| 管理信息 | 说明 | 必须输入 |
+| --- | --- | --- |
+| ID | - 可接收电子邮件的邮箱（必须进行电子邮件验证） | O |
+| 密码| - 组合英文、数字、特殊字符中2种以上，由8位以上构成。<br/> - 不可使用与之前相同的密码。<br/> - 区分大小写。  | O |
+| 手机号 | - 可确认SMS的手机号（必须进行手机SMS验证）。 | O |
+| 姓名 | - TOAST服务中使用的用户姓名。  | O |
+| 座机 | - 输入座机号，可快速获得服务支持。 | X |
 
-![userguide_01_201812_en](https://static.toastoven.net/toast/user_guide/userguide_01_201812_en.png)
+### 会员注册步骤
+访问https://toast.com后，在界面右上方点击**注册会员**。
+会员注册步骤如下。
 
-#### Select Type of Membership (Personal/Business)
+#### 韩国会员
 
-Following are required for each type of membership:
+- 注册个人会员
 
--  Personal Members
-    - Valid email address
-    - Valid mobile phone that properly receives SMS
-- Business Members
-    - Valid email address  
-    - Valid mobile phone that properly receives SMS
-    - Copy of Business Registration Certificate
+![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_201904.png)
 
-#### Consent to Terms of Use  
+- 注册企业会员
 
-- TOAST Terms of Use (Required):  It is required to consent to the Terms of Use for the use of TOAST Service.
-- Consent to Collecting/Using Personal Information (Required): The consent to collect/use personal information is required to use TOAST Service.
-- Consent to Receive Promotional Information (Optional): The consent to receive events/promotions of TOAST is optional. It can be modified on My Profile after joining TOAST.
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_201904.png)
 
-#### Enter Member Information
-- Personal Members
-    - Verify email and mobile phone via SMS
-- Business Members
-    - Attach a copy of Business Registration Certificate
+#### 日本会员
 
-#### Complete Subscription  
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_201904.png)
 
-When you complete joining, you are automatically signed in. Now, you can use TOAST Service via its website and console.  
+#### 选择国家 
 
-## Register Payment Methods
-It is required to register a payment method to use TOAST Service
-However, for members of existing organizations/projects, no additional registration is required to use TOAST Service.
-To register, go to My Page > Payment Methods.
+根据国家信息，会员信息及可用付款方式可能有所不同。
 
-### Management Policy of Payment Methods
-Payment methods are provided by TOAST as follows:
+- 会员类型
+    - 韩国会员：个人/企业
+    - 日本会员：个人
+- 付款方式
+    - 韩国会员
+        - 个人：PAYCO信用卡、信用卡
+        - 企业：  PAYCO信用卡、信用卡、转账
+    - 日本会员
+        - 信用卡
 
-- PAYCO Credit Cards: A method of simple payment provided by PAYCO, which is available upon PAYCO account. <br/>
-- Credit Cards: Authentication (authentication of the holder via mobile phone) is required in accordance with the issuing entity’s authentication policy, in order to register a credit card as payment method. <br/>
-- Credit Cards (overseas): Authentication (3D authentication) is required in accordance with the issuing entity’s authentication policy, in order to register a credit card as payment method. <br/>
-- Bank Transfers: The method is provided only to business members, who are required to enter account information and authenticate (Public Key Certificate) it in accordance with bank’s policy before registering it as payment method.  <br/>
+#### 选择会员类型（个人/企业）
 
-### Management Policy per Payment Method
-The authentication and management policy of each payment method goes as follows:
+根据会员类型，注册时所需事项如下。
 
-| Type of Membership | Payment Method |Authentication Method  |Entry Information |Remarks |
-|--------|--------|---|------|---|
-| Personal | PAYCO Credit Cards | Mobile phone owner authentication |Card number, valid period, and the first two digits of password| For card validation, 1,000 won is paid and then cancelled|
-|  | Credit Cards | Mobile phone owner authentication |Credit card number, valid period, and the first two digits of password | |
-|  | Credit Cards (Overseas) |3D authentication of a credit card company | Management by each credit card company | |
-| Business Owner | PAYCO Credit Cards | Resident registration number or Business registration number |Credit card number and valid period  |For card validation, 1,000 won is paid and then cancelled. |
-|  | Credit cards (Signature Required) | Mobile phone owner authentication | Credit card number, valid period, and the first 7 digits of the resident registration number | |
-|  | Credit cards (No Signature Required) | Business registration number |Credit card, valid period, and the first two digits of password | To be provided |
-|  | Bank Transfers |Authenticate with Public Key Certificate  | Bank and account number |For personal accounts, the information must coincide with those in personal Public Key Certificate, <br/> while for business accounts, the business information must coincide with those in member profile/Public Key Certificate. |
+- 个人会员
+    - 可接收电子邮件的邮箱
+    - 可确认SMS的手机
+-  企业会员（韩国会员）
+    - 可接收电子邮件的邮箱
+    - 可确认SMS的手机
+    - 营业执照副本
 
-### PAYCO Credit Cards
-#### Select Payment Methods
-- Go to **My Page > Payment Methods** and click **Change Payment Method**.
-- On the registration page of **Automatic Payment Method**, click **PAYCO Credit Card**.  
+#### 同意使用条款
 
-#### Join PAYCO
-- Mobile phone number or email may be used as PAYCO ID.
-- Enter ID and password to use and you are joined.  
+- TOAST使用条款（必需）：必须同意使用TOAST服务的条款。  
+- 同意收集/使用个人信息（必须）：必须同意使用TOAST服务所需的个人信息收集/使用方案。
+- 同意接收宣传性信息（可选）：同意接收TOAST举行的活动、促销、服务宣传等信息，为可选同意事项。注册会员后可在会员信息中修改同意接收宣传性信息选项。
 
-#### Authenticate Holder and Register Payment Methods
-- To register a payment method for the first time, the owner needs to be authenticated via mobile phone.
-- After authentication is done, enter information for payment method and consent, and registration is completed.
-- Password may be required depending on the type of payment method.  
+#### 输入会员信息
+- 个人会员
+    - 电子邮件验证、手机SMS验证
+- 企业会员（韩国会员）
+    - 附上营业执照副本
 
-#### Pay with PAYCO
-- Select a payment method, and enter password for payment, then it is done with registration.
+#### 会员注册完成
 
-### Credit Cards
-#### Select Payment Methods
-- Go to **My Page > Payment Methods** and click **Change Payment Method**.
-- On the registration page of **Automatic Payment Method**, select **Credit Card**.  
+会员注册完成后自动登录。在可使用TOAST服务的状态下，可使用TOAST官网及控制台。
+
+## 登记付款方式
+为使用TOAST服务，需要登记付款方式。
+但已创建的组织、项目的成员，无需登记付款方式即可使用TOAST服务。
+付款方式可在[我的页面 > 付款方式]中登记。
+
+### 付款方式管理政策
+TOAST提供的付款方式如下。
+
+#### 韩国会员
+- PAYCO信用卡：可用PAYCO账号使用PAYCO提供的简便付款方式。<br/>
+- 信用卡：按照信用卡公司提供的验证政策进行验证（手机本人验证），将信用卡登记为付款方式。<br/>
+- 信用卡（海外）：按照信用卡公司提供的验证政策进行验证（3D验证），将信用卡登记为付款方式。<br/>
+- 银行转账：仅向企业会员提供的付款方式，输入银行账户并按照银行政策验证（电子证书验证）后登记为付款方式。<br/>
+
+#### 日本会员
+- 信用卡：按照信用卡公司提供的验证政策进行验证（信用卡有效性验证），将信用卡登记为付款方式。 
+
+### 各付款方式的管理政策
+各付款方式的验证及管理政策如下。
+
+| 国家 | 会员类型 | 付款方式 | 验证方式 | 输入信息 | 备注 |
+|--------|--------|--------|---|------|---|
+| 韩国 | 个人 | PAYCO信用卡 | 手机本人验证 |卡号、有效期、密码前2位 | 为验证信用卡有效性，支付1,000韩元后取消处理 |
+|  |  | 信用卡 | 手机本人验证 |卡号、有效期、密码前2位 | |
+|  |  | 信用卡（海外） | 信用卡公司3D验证  | 按信用卡公司管理 | |
+|  | 企业 | PAYCO信用卡 | 身份证号或营业执照号 | 卡号、有效期 | 为验证信用卡有效性，支付1,000韩元后取消处理 |
+|  |  | 信用卡（记名） | 手机本人验证 | 卡号、有效期、身份证号前7位 | |
+|  |  | 信用卡（不记名） | 营业执照号 | 卡号、有效期、密码前2位 | |
+|  |  | 银行转账 | 电子证书验证 | 银行、账号 | 个人账户应与个人电子证书 <br/> 法人账户应与会员/法人账号/电子证书的企业信息一致 |
+| 日本 | 个人 | 信用卡 | 信用卡所属验证 | 卡号、有效期、姓名、安全码 | 为验证信用卡有效性，支付2日元后取消处理 |
+
+### 韩国会员
+#### PAYCO信用卡
+##### 选择付款方式
+- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
+- 在**登记自动付款方式**界面中选择**PAYCO信用卡**。
+
+##### 注册PAYCO
+- PAYCO ID可使用本人的手机号或电子邮箱。
+- 输入要使用的ID和密码，完成注册。
+
+##### 本人验证并登记付款方式
+- 最初登记付款方式时，进行手机本人验证。
+- 本人验证后，输入付款方式信息并经过同意步骤，完成登记。
+- 根据付款方式类型，可能需要输入付款密码。
+
+##### 使用PAYCO付款
+- 选择付款方式后，输入付款密码，完成付款方式登记。
+
+#### 信用卡
+##### 选择付款方式
+- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
+- 在**登记自动付款方式**界面中选择**信用卡**。
+
+##### 选择信用卡类型
+- 个人/记名法人卡
+    - 手机本人验证：输入姓名、性别、出生年月日、手机号，进行本人验证。
+    - 输入信用卡信息：输入卡号、信用卡有效期、出生年月日后，登记付款方式。
+- 不记名法人卡
+    - 确认营业执照号：输入营业执照号。
+    - 输入信用卡信息：输入卡号、信用卡有效期、密码前2位后，登记付款方式。
+
+##### 付款方式登记完成
+‘- 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
+
+#### 信用卡（海外）
+##### 选择付款方式
+- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
+- 在**登记自动付款方式**界面中选择**信用卡（海外）**。
+
+##### 登记各信用卡公司验证
 
 
-#### Select Credit Card Types
-- Personal/Corporate Credit Cards Requiring Signature
-    - Authenticate Owner via Mobile Phone: The owner can be authenticated by entering name, gender, birthday, and mobile phone number.
-    - Enter Credit Card Information: Enter credit card number, valid period, and birthday, and register it as payment method.
-- Corporate Credit Cards Requiring No Signature
-    - Check Business Registration Number: Enter business registration number.
-    - Enter Credit Card Information: Enter credit card number, valid period, and the first two digits of password, and register it as payment method.
+- 在信用卡（海外）的界面中确认**请确认**内容后，单击**登记**按钮，确认海外签发信用卡3D验证指南。<br/>
+![userguide_04_201812](https://static.toastoven.net/toast/user_guide/userguide_04_201812.png)
 
-#### Complete Registration of Payment Methods
-- When a payment method is properly registered, go to **My Page > Payment Methods** to check.
-
-### Credit Cards (Overseas)
-#### Select Payment Methods
-- Go to **My Page > Payment Methods**, click **Change Payment Method**.
-- On the registration page of **Automatic Payment Method**, click **Credit Card (Overseas)**.
-
-#### Register Authentication by Credit Card Company
-- On the page of Credit Card (Overseas), read through Check, and click **Register** to find guides to apply 3D authentication of credit cards issued overseas. <br/>
-
-![userguide_04_201812_en](https://static.toastoven.net/toast/user_guide/userguide_04_201812_en.png)
-- Guide for Verified by Visa (TBC)<br/>
-    - Register Visa Checkout: Create an account on the website of Visa, enter information of your Visa credit card and set password.
-    - To register a payment method, the credit card information can be retrieved to check Visa Checkout and authenticated.  
+- Verified by visa使用指南（需要确认）<br/>
+    - 登记Visa checkout服务：在Visa网站上创建账户后，输入Visa信用卡信息，然后设置密码。
+    - 登记付款方式时输入信用卡信息后，可确认Visa checkout服务登记信息并验证。
 
 ![userguide_05_201812](https://static.toastoven.net/toast/user_guide/userguide_05_201812.png)
 
-- Guide for MasterCard SecureCode (TBC) <br/>
-    - Select your bank on the website of MasterCard, and register SecureCode.
-    - Consent to Terms of Use and enter your credit card number.
-    - Then, enter personal information required to register SecureCode.  
-    - With the entry of credit card information to register as payment method, your replies to questions to create SecureCode are entered so as to create SecureCode. To authenticate it, enter the SecureCode.
+- MasterCard SecureCode使用指南（需要确认）<br/>
+    - 选择MasterCard website银行后登记SecureCode。
+    - 同意条款并输入卡号。
+    - 输入卡号后，输入登记SecureCode的个人确认事项。
+    - 登记付款方式时输入信用卡信息并回答创建SecureCode的问题，创建SecureCode。输入创建的SecureCode并验证。
 
 ![userguide_06_201812](https://static.toastoven.net/toast/user_guide/userguide_06_201812.png)
 
-- Guides for JBC J/Secure (TBC) <br/>
-    - Enter credit card number, valid period, and card holder’s name on the payment page of J/Secure.
-    - When required on a popup, enter password.
-    - Check if your existing password (if any) coincides with your current password; if there’s none, register a new password.
-    - To register a payment method, enter credit card information and enter password for authentication.
+- JBC J/Secure使用指南（需要确认）<br/>
+    - 在J/Secure付款窗口中输入卡号、有效期、信用卡所有者名。
+    - 弹出密码输入窗口后，输入密码。
+    - 若有密码，确认是否与原有密码相同，若没有密码，登记信的密码。
+    - 登记付款方式时，输入信用卡信息后输入密码进行验证。
 
 ![userguide_07_201812](https://static.toastoven.net/toast/user_guide/userguide_07_201812.png)
 
-#### Complete Registration of Payment Methods
-- When a payment method is properly registered, go to **My Page > Payment Methods** to check.
+##### 付款方式登记完成
+- 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
 
-### Bank Transfers
-#### Select Payment Methods
-- Provided only for business members.
-- Go to **My Page > Payment Methods** and click **Change Payment Method**.
-- On the registration page of **Automatic Payment Method**, click **Bank Transfer**.  
+#### 银行转账
+##### 选择付款方式
+- 仅企业会员可使用的付款方式。
+- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
+- 在**登记自动付款方式**界面中选择**银行转账**。
 
-#### Enter Account Information
-- Enter your account information.
+##### 输入账户信息
+- 输入账户信息
 
-#### Authenticate Public Key Certificates
-- For s personal account, select a personal Public Key Certificate for authentication.
-- For a corporate account, select a Public Key Certificate registered with the same business information on its account for authentication.
+##### 电子证书验证
+- 对于个人账户，选择个人电子证书进行验证。
+- 对于法人账户，选择按照与账户的企业信息相同的企业信息来登记的电子证书进行验证。
 
-#### Complete Registration of Payment Methods
-- When a payment method is properly registered, go to **My Page > Payment Methods** to check.
+##### 付款方式登记完成
+- 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
 
-### Further Functions of Payment Methods
-#### Manage Receipt of Email Invoices
-Register an email address to receive email invoices.  
-#### Set Unit of Payment
-Select either **Pay by Contract Pricing Plan** or **Pay At Once**.
+### 日本会员 
+#### 信用卡
+##### 选择付款方式
+- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
+- 在**登记自动付款方式**界面中输入**信用卡信息**（卡号、有效期、信用卡名义、安全码）。
 
-## Manage Credits
-Credits managed by TOAST Service are provided free-of-charge, depending on service subscription, rewards, events, or compensation purposes.
-1 credit equals to 1 won in cash.
-Go to **My Page > Credits** to check your credits.
-Credits are operated in accordance with the following policy:
-- Non-refundable.
-- Manage valid period: to expire after valid period, and flexibly managed for each type of saving.
-- Automatically deduct prices in credits if TOAST service prices are charged: if the service price is higher than credits that are owned, deduct the amount in credits while the rest is charged in cash.
+##### 付款方式登记完成
+- 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
 
-## Withdraw from Membership
-### Apply for Membership Withdrawal
-To apply for withdrawal from TOAST membership, go to **My Page > Member Profile** and click **Withdraw Membership**.  
-Check considerations for withdrawal and click **Withdraw**.
-Withdrawal cannot be applied, when there are services that are in use.
+### 付款方式附加功能
+#### 电子邮件明细表收信管理
+登记接收电子邮件明细表的邮箱。
+#### 设置付款单位
+按照不同的费用合约制度，选择**付款**或**一次性付款**。
 
-### Verify Membership Withdrawal
-After application of withdrawal, below information is checked to process withdrawal. <br/>
+## 积分管理
+TOAST服务管理的积分是根据注册服务、奖励、活动、补偿目的无偿支付的积分。
+积分相当于现金1韩元。
+积分可在**我的页面 > 积分**中查询。
+积分按照以下政策运营。
+- 不可兑换现金。
+- 管理有效期。有效期后作废，按照累积类型流动式运营。
+- 产生TOAST使用金额时，若有积分，自动按照使用金额从积分中扣减。若TOAST使用金额超过拥有的积分，从积分中扣减后，对剩余费用收费。
 
-- If there are unpaid service fees, it shall be paid on a date of automatic payment (15th of the month) before withdrawal is processed.  
+## 退出会员
+### 申请退出会员
+退出TOAST会员在**我的页面 > 会员信息**中单击**退出会员**按钮申请。
+确认退出会员注意事项后，单击**退出会员**。
+若有正在使用的服务，无法申请退出会员。
 
-### Complete Membership Withdrawal
-When withdrawal is completed, it shall be notified via email registered at the time of withdrawal application.   
-With withdrawal, all information regarding service use shall be deleted and cannot be recovered.
+### 验证退出会员
+申请退出会员后，确认以下信息并处理退出会员。<br/>
+
+- 若有未支付的使用费用，自动付款日（每月8日）付款后进行退出会员处理。
+
+### 会员退出完成
+会员退出完成后，向申请退出会员时登记的电子邮箱发送退出明细。
+退出会员时，删除所有使用信息，删除的数据无法恢复。
