@@ -202,7 +202,7 @@ TOAST Console提供如下功能。
 
 ### 项目会员
 
-项目的会员是toast.com的会员。组织内部会员作为项目会员，可以使用服务的功能预计之后提供。
+项目的会员是toast.com的会员。
 即使不是组织的会员，也可以成为项目的会员。
 
 | 操作        | 作用                                     | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |

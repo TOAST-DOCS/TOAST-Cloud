@@ -166,7 +166,7 @@ Following services can be enabled by each project:
 
 #### Project Members
 
-Project members are also members of TOAST.com. Insider members of an organization will be able to use project services with further functions to be provided.
+Project members are also members of TOAST.com. 
 You can be a project member, if not an organization member.
 
 Each project member has the following roles:
