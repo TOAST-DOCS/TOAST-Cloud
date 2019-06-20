@@ -13,11 +13,13 @@ TOAST Consoleは下記の機能を提供します。
 ## コンソールクイックガイド
 コンソールで提供する基本機能のクイックガイドです。 
 
-![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812.png)
-![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812.png)
-![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812.png)
-![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812.png)
-![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812.png)
+
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
+![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
+![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
+![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
+
 
 ## 組織管理
 

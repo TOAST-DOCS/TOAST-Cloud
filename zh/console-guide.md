@@ -13,11 +13,11 @@ TOAST Console提供如下功能。
 ## 控制台快捷指南
 针对控制台提供的基本功能的快捷指南。 
 
-![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812.png)
-![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812.png)
-![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812.png)
-![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812.png)
-![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812.png)
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
+![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
+![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
+![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
 
 ## 组织管理
 
@@ -47,7 +47,7 @@ TOAST Console提供如下功能。
 
 ### 创建组织指南
 
-![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812.png)
+![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
 
 <center>[图 1] 创建组织 </center>
 
@@ -100,7 +100,7 @@ TOAST Console提供如下功能。
 
 ### 创建项目指南
 
-![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812.png)
+![console_guide_7_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
 
 <center>[图2] 创建项目 </center>
 
@@ -112,7 +112,7 @@ TOAST Console提供如下功能。
 
 ### 启用项目服务指南
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812.png)
+![console_guide_8_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
 
 <center>[图3] 启用项目服务 </center>
 
@@ -146,7 +146,7 @@ TOAST Console提供如下功能。
 
 可对所有的组织服务（Cloud Console, Online Contact, Dooray! 等）进行相同的设置，也可按照各种服务类别进行不同的设置。 
 
-![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
 
 1.访问要在控制台中设置的组织的组织设置页面。 
 2.单击IAM控制台的[登录安全设置]按钮。 
@@ -155,7 +155,7 @@ TOAST Console提供如下功能。
 
 2次验证可设置为必须。
 
-![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903_en.png)
+![iam_console_login_security_setting_guide_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903_en.png)
 - 不设置：  不进行2次验证，仅输入ID和密码即可登录。 
 - Google OTP：  输入ID和密码，然后输入Google OTP应用提供的One Time Password（一次性密码）并通过验证后即可登录。  
 - 电子邮件：输入ID和密码后，单击发送到电子邮箱的验证按钮，通过验证后即可登录。 
@@ -166,7 +166,7 @@ TOAST Console提供如下功能。
 
 登录失败安全设置无法按服务类别进行不同的设置。仅提供通用设置功能。  
 
-![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903_en.png)
+![iam_console_login_security_setting_guide_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903_en.png)
 - 不设置：即使登录失败也可继续尝试登录。 
 - 设置：输入需要的失败次数和锁定时间，登录失败达到该次数时，在相应的锁定时间内无法尝试登录。 
 
@@ -174,7 +174,7 @@ TOAST Console提供如下功能。
 
 仅允许使用的IP（或IP段）可访问IAM控制台。 
 
-![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903_en.png)
+![iam_console_login_security_setting_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903_en.png)
 - 不设置：所有IP（或IP段）都可访问IAM控制台。 
 - 仅允许使用的IP（或IP段）访问控制台：仅输入的IP（或IP段）可访问控制台。输入允许访问的IP或IP段即可。 
 
