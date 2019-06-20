@@ -78,7 +78,7 @@ The authentication and management policy of each payment method goes as follows:
 |  | Credit Cards (Overseas) |3D authentication of a credit card company | Management by each credit card company | |
 | Business Owner | PAYCO Credit Cards | Resident registration number or Business registration number |Credit card number and valid period  |For card validation, 1,000 won is paid and then cancelled. |
 |  | Credit cards (Signature Required) | Mobile phone owner authentication | Credit card number, valid period, and the first 7 digits of the resident registration number | |
-|  | Credit cards (No Signature Required) | Business registration number |Credit card, valid period, and the first two digits of password | To be provided |
+|  | Credit cards (No Signature Required) | Business registration number |Credit card, valid period, and the first two digits of password | |
 |  | Bank Transfers |Authenticate with Public Key Certificate  | Bank and account number |For personal accounts, the information must coincide with those in personal Public Key Certificate, <br/> while for business accounts, the business information must coincide with those in member profile/Public Key Certificate. |
 
 ### PAYCO Credit Cards
