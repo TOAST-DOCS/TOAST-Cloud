@@ -282,8 +282,8 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 
 ## 토큰 정보 업데이트
 - 사용자 아이디, 국가 코드, 언어 코드, 알림 메시지 수신 동의 등의 토큰 정보를 업데이트합니다.
-- [UpdateTokenInfoParams](./push-android/#UpdateTokenInfoParams) 객체를 생성하여 업데이트 항목을 설정합니다.
-- 생성한 [UpdateTokenInfoParams](./push-android/#UpdateTokenInfoParams) 객체를 ToastPush.updateTokenInfo() 메소드의 파라미터로 전달합니다.
+- [UpdateTokenInfoParams](./push-android/#updatetokeninfoparams) 객체를 생성하여 업데이트 항목을 설정합니다.
+- 생성한 [UpdateTokenInfoParams](./push-android/#updatetokeninfoparams) 객체를 ToastPush.updateTokenInfo() 메소드의 파라미터로 전달합니다.
 
 ### 토큰 정보 업데이트 예시
 
@@ -310,7 +310,7 @@ ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
 ## 메시지 수신
 - 푸시 메시지 수신 시 OnReceiveMessageListener 를 통해 통지 받을 수 있습니다.
 - 푸시 메시지 수신 리스너는 ToastPush.setOnReceiveMessageListener 메서드를 사용하여 등록할 수 있습니다.
-- OnReceiveMessageListener 에 전달된 [ToastPushMessage](./push-android/#ToastPushMessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
+- OnReceiveMessageListener 에 전달된 [ToastPushMessage](./push-android/#toastpushmessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
 - 앱이 실행 중이지 않을 때도 메시지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
 > 메시지 수신 시 사용자가 앱을 사용 중(Foreground)일 경우 알림을 노출하지 않습니다.
@@ -411,7 +411,7 @@ ToastNotification.setDefaultNotificationChannel(context,
 ### 버튼 액션 리스너 등록
 - 사용자가 리치 메세지의 버튼 선택 시 액션 리스너로 통지합니다.
 - 리치 메시지의 답장(혹은 응답) 버튼을 사용하는 경우, 액션 리스너에서 사용자 입력 메세지에 대한 처리가 필요합니다.
-- [PushAction](./push-android/#PushAction) 객체로 액션 정보를 확인 가능합니다.
+- [PushAction](./push-android/#pushaction) 객체로 액션 정보를 확인 가능합니다.
 - 앱이 실행중이지 않을 때에도 메세지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
 #### 버튼 액션 리스너 등록 예시
@@ -435,7 +435,7 @@ public class ToastPushSampleApplication extends Application {
 ```
 
 ## 사용자 정의 메시지 처리
-- 수신한 메시지를 수정하거나 인텐트를 변경, 알림을 직접 생성해야하는 경우, [ToastPushMessageReceiver](./push-android/#ToastPushMessageReceiver)를 상속해서 onMessageReceived 메소드를 구현해야합니다.
+- 수신한 메시지를 수정하거나 인텐트를 변경, 알림을 직접 생성해야하는 경우, [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속해서 onMessageReceived 메소드를 구현해야합니다.
 - ToastPushMessageReceiver를 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
 - 알림 생성, 인텐트 생성 등의 추가 기능을 제공합니다.
 
