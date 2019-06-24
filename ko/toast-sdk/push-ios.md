@@ -254,7 +254,7 @@ Push에서 발급받은 AppKey를 설정합니다.
     if (@available(iOS 10.0, *)) {
         [ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
     } else {
-        [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeBadge];
+        [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
     }
 
     return YES;
