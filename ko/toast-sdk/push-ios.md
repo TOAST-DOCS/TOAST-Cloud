@@ -200,11 +200,11 @@ Push에서 발급받은 AppKey를 설정합니다.
 - (void)didFailToRegisterForType:(ToastPushType)type
                        withError:(NSError *)error;
 
-// 토큰 등록 해제 성공
+// 토큰 해제 성공
 - (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
                              forType:(ToastPushType)type;
 
-// 토큰 등록 해제 실패
+// 토큰 해제 실패
 - (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
                                    forType:(ToastPushType)type
                                      error:(NSError *)error;
@@ -273,13 +273,13 @@ Push에서 발급받은 AppKey를 설정합니다.
     // ...
 }
 
-// 토큰 등록 해제 성공
+// 토큰 해제 성공
 - (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
                              forType:(ToastPushType)type {
     // ...
 }
 
-// 토큰 등록 해제 실패
+// 토큰 해제 실패
 - (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
                                    forType:(ToastPushType)type
                                      error:(NSError *)error {
@@ -480,7 +480,7 @@ agreement.allowNightAdvertisements = NO;
 ## 토큰 정보 업데이트
 
 사용자 아이디, 국가코드, 언어코드, 메세지 동의 설정 등의 토큰 정보를 업데이트합니다.
-업데이트를 원하는 항목만 설정하여 업데이트 가능합니다.
+등록되어있는 모든 토큰에 일괄 적용됩니다.
 `토큰 정보 업데이트 요청은 앱 실행 후 토큰 등록이 된 상태에서만 가능합니다.`
 
 ### 토큰 정보 업데이트 API 명세
