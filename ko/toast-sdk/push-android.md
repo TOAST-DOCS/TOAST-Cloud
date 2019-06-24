@@ -105,7 +105,7 @@ android {
         // 필요 시 추가 : 'x86', 'x86_64', 'mips', 'mips64'
         abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
         }
-        
+
         manifestPlaceholders = [
             XG_ACCESS_ID:"accessid",
             XG_ACCESS_KEY : "accesskey",
@@ -165,14 +165,14 @@ android {
 ### Push 설정 예시
 
 ```java
-ToastPushConfiguration.Builder configuration = 
+ToastPushConfiguration.Builder configuration =
     ToastPushConfiguration.newBuilder(getApplicationContext(), "YOUR_APP_KEY")
             .build();
 ```
 
 ## Push 초기화
 - ToastPush.initialize를 호출하여 TOAST Push를 초기화합니다.
-- 사용하기를 원하는 PusyType 을 초기화 호출시 전달해야 합니다.
+- 사용하기를 원하는 PushType 을 초기화 호출시 전달해야 합니다.
 
 ### FCM 초기화 예시
 
@@ -222,9 +222,9 @@ ToastPushAgreement agreement = ToastPushAgreement.newBuilder(/* 알림 수신 �
 ```java
 ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
     @Override
-    public void onRegister(@NonNull PushResult result, 
+    public void onRegister(@NonNull PushResult result,
                            @Nullable String token) {
-        
+
         if (result.isSuccess()) {
             // 토큰 등록 성공
         } else {
@@ -243,9 +243,9 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 ```java
 ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
     @Override
-    public void onQuery(@NonNull PushResult result, 
+    public void onQuery(@NonNull PushResult result,
                         @Nullable TokenInfo tokenInfo) {
-        
+
         if (result.isSuccess()) {
             String token = tokenInfo.getToken();
             ToastPushAgreement agreement = tokenInfo.getAgreement();
@@ -270,7 +270,7 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
     @Override
     public void onUnregister(@NonNull PushResult result,
                              @Nullable String unregisteredToken) {
-        
+
         if (result.isSuccess()) {
             // 토큰 해제 성공시
         } else {
@@ -281,8 +281,9 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 ```
 
 ## 토큰 정보 업데이트
-- 사용자 아이디, 국가코드, 언어코드, 메세지 동의 설정 등의 토큰 정보를 업데이트합니다.
-- [UpdateTokenInfoParams](./push-android/#UpdateTokenInfoParams) 객체에 업데이트를 원하는 항목만 설정하여 업데이트 가능합니다.
+- 사용자 아이디, 국가 코드, 언어 코드, 알림 메시지 수신 동의 등의 토큰 정보를 업데이트합니다.
+- [UpdateTokenInfoParams](./push-android/#UpdateTokenInfoParams) 객체를 생성하여 업데이트 항목을 설정합니다.
+- 생성한 [UpdateTokenInfoParams](./push-android/#UpdateTokenInfoParams) 객체를 ToastPush.updateTokenInfo() 메소드의 파라미터로 전달합니다.
 
 ### 토큰 정보 업데이트 예시
 
@@ -294,7 +295,7 @@ UpdateTokenInfoParams params = UpdateTokenInfoParams.newBuilder()
 
 ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
     @Override
-    public void onUpdate(@NonNull PushResult result, 
+    public void onUpdate(@NonNull PushResult result,
                          @Nullable TokenInfo tokenInfo) {
 
         if (result.isSuccess()) {
@@ -306,12 +307,16 @@ ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
 });
 ```
 
-## 메세지 수신
-- `사용자가 앱을 사용중일 때에는 메세지 수신시 알림을 노출하지 않는게 기본 동작입니다.`
-- 메세지 수신 리스너 등록하면 메세지가 수신되었을 때 앱이 실행중인지 여부와 메세지 내용인 [ToastPushMessage](./push-android/#ToastPushMessage) 객체가 리스너로 통지됩니다.
-- 앱이 실행중이지 않을 때에도 메세지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
+## 메시지 수신
+- 푸시 메시지 수신 시 OnReceiveMessageListener 를 통해 통지 받을 수 있습니다.
+- 푸시 메시지 수신 리스너는 ToastPush.setOnReceiveMessageListener 메서드를 사용하여 등록할 수 있습니다.
+- OnReceiveMessageListener 에 전달된 [ToastPushMessage](./push-android/#ToastPushMessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
+- 앱이 실행 중이지 않을 때도 메시지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
-### 메세지 수신 리스너 등록 예시
+> 메시지 수신 시 사용자가 앱을 사용 중(Foreground)일 경우 알림을 노출하지 않습니다.
+> Foreground 여부는 OnReceiveMessageListener#onReceive 에 전달되는 isForeground 를 통해 확인 할 수 있습니다.
+
+### 메시지 수신 리스너 등록 예시
 
 ``` java
 public class ToastPushSampleApplication extends Application {
@@ -319,9 +324,9 @@ public class ToastPushSampleApplication extends Application {
     public void onCreate() {
         ToastPush.setOnReceiveMessageListener(new OnReceiveMessageListener() {
             @Override
-            public void onReceive(@NonNull ToastPushMessage message, 
+            public void onReceive(@NonNull ToastPushMessage message,
                                   boolean isForeground) {
-                
+
                 // 사용자가 앱을 사용중 일때에도 알림을 노출
                 if (isForeground) {
                     ToastNotification.notify(getApplicationContext(), message);
@@ -355,8 +360,8 @@ ToastNotification.setDefaultSmallIcon(context, R.drawable.ic_notification);
 
 ### 기본 알림 채널 설정 예시
 ```java
-ToastNotification.setDefaultNotificationChannel(context, 
-    "YOUR_NOTIFICATION_CHANNEL_ID", 
+ToastNotification.setDefaultNotificationChannel(context,
+    "YOUR_NOTIFICATION_CHANNEL_ID",
     "YOUR_NOTIFICATION_CHANNEL_NAME");
 ```
 
@@ -404,7 +409,7 @@ ToastNotification.setDefaultNotificationChannel(context,
 - 리치 메시지를 정해진 형태로 전송했다면, 별도의 변환 과정없이 리치 메시지 알림이 등록됩니다.
 
 ### 버튼 액션 리스너 등록
-- 사용자가 리치 메세지의 버튼 선택시 이를 등록된 액션 리스너로 통지합니다.
+- 사용자가 리치 메세지의 버튼 선택 시 액션 리스너로 통지합니다.
 - 리치 메시지의 답장(혹은 응답) 버튼을 사용하는 경우, 액션 리스너에서 사용자 입력 메세지에 대한 처리가 필요합니다.
 - [PushAction](./push-android/#PushAction) 객체로 액션 정보를 확인 가능합니다.
 - 앱이 실행중이지 않을 때에도 메세지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
@@ -430,9 +435,9 @@ public class ToastPushSampleApplication extends Application {
 ```
 
 ## 사용자 정의 메시지 처리
-- 수신한 메시지 내용 수정, 실행 인텐트 변경, 알림 직접 생성이 필요한 경우, [ToastPushMessageReceiver](./push-android/#ToastPushMessageReceiver)를 상속해서 onMessageReceived 메소드를 구현해야합니다.
+- 수신한 메시지를 수정하거나 인텐트를 변경, 알림을 직접 생성해야하는 경우, [ToastPushMessageReceiver](./push-android/#ToastPushMessageReceiver)를 상속해서 onMessageReceived 메소드를 구현해야합니다.
 - ToastPushMessageReceiver를 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
-- 알림 생성, 실행 인텐트 생성 등의 추가 기능을 제공합니다.
+- 알림 생성, 인텐트 생성 등의 추가 기능을 제공합니다.
 
 > **(주의)**
 > 1. 수신한 메시지를 이용해 알림을 직접 생성할 경우, 오픈 지표 수집을 위해 별도의 처리가 필요 필요합니다. (아래 지표 수집 기능 추가 섹션 참고)
@@ -441,21 +446,21 @@ public class ToastPushSampleApplication extends Application {
 ```java
 public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
     @Override
-    public void onMessageReceived(@NonNull Context context, 
+    public void onMessageReceived(@NonNull Context context,
                                   @NonNull ToastRemoteMessage remoteMessage) {
-        
+
         // 채널 아이디 변경
         remoteMessage.setChannelId("channel");
 
         // 메세지 내용 수정
         ToastPushMessage message = remoteMessage.getMessage();
         CharSequence title = message.getTitle();
-        
+
         message.setTitle("[Modified] " + title);
 
         // 실행 인텐트 설정 (미설정시 패키지 기본 메인 액티비티 실행)
         Intent launchIntent = new Intent(context, MainActivity.class);
-        
+
         // 사용자가 앱을 사용중이지 않을 때만 알림을 노출하도록하고 싶은 경우
         if (!isAppForeground()) {
             // 알림 생성 및 노출
@@ -487,13 +492,13 @@ public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
 ```
 
 ### 지표 수집 기능 추가 (FCM Only)
-- 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 실행 인텐트 생성시 지표 수집을 포함하는 인텐트로 생성해야 합니다.
+- 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 createAnalyticsContentIntent() 메소드를 사용하여 생성한 인텐트를 사용해야합니다.
 
 #### 지표 수집 기능 추가 예
 ```java
 public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
     @Override
-    public void onMessageReceived(@NonNull Context context, 
+    public void onMessageReceived(@NonNull Context context,
                                   @NonNull ToastRemoteMessage remoteMessage) {
 
         ToastPushMessage message = remoteMessage.getMessage();
