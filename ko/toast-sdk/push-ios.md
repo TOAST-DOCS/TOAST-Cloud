@@ -125,8 +125,6 @@ Push에서 발급받은 AppKey를 설정합니다.
 
 @interface ToastPush : NSObject
 
-// ...
-
 // 초기화 및 Delegate 설정
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration
                      delegate:(nullable id<ToastPushDelegate>)delegate;
@@ -140,7 +138,11 @@ Push에서 발급받은 AppKey를 설정합니다.
 // 카테고리 설정 (iOS 10.0+)
 + (void)setCategories:(nullable NSSet<UNNotificationCategory *> *)categories NS_AVAILABLE_IOS(10_0);
 
-// ...
+// 알림 옵션 설정
+// iOS 8.0+ : UIUserNotificationType
+// iOS 10.0+ : UNAuthorizationOptions
+// default : UNAuthorizationOptionSound | UNAuthorizationOptionBadge
++ (void)setOptions:(NSInteger)options;
 
 @end
 ```
@@ -157,7 +159,13 @@ Push에서 발급받은 AppKey를 설정합니다.
 @property (nonatomic) ToastServiceZone serviceZone;
 
 // 푸시 타입(APNS, VoIP)
-@property (nonatomic) NSSet<ToastPushType> *pushTypes;
+@property (nonatomic, copy) NSSet<ToastPushType> *pushTypes;
+
+// 국가 코드 (예약 메세지 발송시 기준 시간이 되는 국가코드)
+@property (nonatomic, copy) NSString *countryCode;
+
+// 언어 코드 (다국어 메세지 발송시 언어 선택 기준)
+@property (nonatomic, copy) NSString *languageCode;
 
 // Sandbox(Debug) 환경 설정
 @property (nonatomic) BOOL sandbox;
@@ -190,6 +198,15 @@ Push에서 발급받은 AppKey를 설정합니다.
 - (void)didFailToRegisterForType:(ToastPushType)type
                        withError:(NSError *)error;
 
+// 토큰 해제 성공
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                             forType:(ToastPushType)type;
+
+// 토큰 해제 실패
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                   forType:(ToastPushType)type
+                                     error:(NSError *)error;
+
 // 푸시 수신
 - (void)didReceivePushWithPayload:(NSDictionary *)payload
                           forType:(ToastPushType)type;
@@ -199,15 +216,6 @@ Push에서 발급받은 AppKey를 설정합니다.
                                 categoryIdentifier:(NSString *)categoryIdentifier
                                            payload:(NSDictionary *)payload
                                           userText:(nullable NSString *)userText;
-
-// 토큰 등록 해제 성공
-- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
-                             forType:(ToastPushType)type;
-
-// 토큰 등록 해제 실패
-- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                   forType:(ToastPushType)type
-                                     error:(NSError *)error;
 
 @end
 ```
@@ -256,6 +264,19 @@ Push에서 발급받은 AppKey를 설정합니다.
     // ...
 }
 
+// 토큰 해제 성공
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                             forType:(ToastPushType)type {
+    // ...
+}
+
+// 토큰 해제 실패
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                   forType:(ToastPushType)type
+                                     error:(NSError *)error {
+    // ...
+}
+
 // 메세지 수신
 - (void)didReceivePushWithPayload:(NSDictionary *)payload
                           forType:(ToastPushType)type {
@@ -269,18 +290,27 @@ Push에서 발급받은 AppKey를 설정합니다.
                                           userText:(nullable NSString *)userText NS_AVAILABLE_IOS(10_0) {
     // ...
 }
+```
 
-// 토큰 등록 해제 성공
-- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
-                             forType:(ToastPushType)type {
-    // ...
-}
+### 알림 옵션 설정
 
-// 토큰 등록 해제 실패
-- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                   forType:(ToastPushType)type
-                                     error:(NSError *)error {
-    // ...
+알림 옵션은 다음과 같이 설정되어 있습니다.
+`앱 실행 중 알림을 표시하기 위해서는 옵션을 변경해야 합니다.`
+
+```objc
+UNAuthorizationOptionBadge | UNAuthorizationOptionSound
+```
+
+### 알림 옵션 설정 예
+
+``` objc
+// default : UNAuthorizationOptionBadge | UNAuthorizationOptionSound
+// 사용자가 앱을 실행 중일 때도 알림이 노출되려면 옵션을 설정을 변경해주세요.
+if (@available(iOS 10.0, *)) {
+    [ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
+
+} else {
+    [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
 }
 ```
 
@@ -418,7 +448,7 @@ agreement.allowNightAdvertisements = NO;
 만약 설정된 정보에 해당하는 토큰이 존재하지 않거나 해제에 성공한다면 해제 성공 Delegate를 호출합니다.
 토큰 해제 결과는 초기화시에 설정된 Delegate를 통해 전달됩니다.
 
-### 토큰 해제API 명세
+### 토큰 해제 API 명세
 
 ``` objc
 
@@ -457,6 +487,49 @@ agreement.allowNightAdvertisements = NO;
 
     NSLog(@"Failed to unregister token, error : %@", error);
 }
+
+```
+
+## 토큰 정보 업데이트
+
+사용자 아이디, 국가코드, 언어코드, 메세지 동의 설정 등의 토큰 정보를 업데이트합니다.
+등록되어있는 모든 토큰에 일괄 적용됩니다.
+`토큰 정보 업데이트 요청은 앱 실행 후 토큰 등록이 된 상태에서만 가능합니다.`
+
+### 토큰 정보 업데이트 API 명세
+
+``` objc
+@interface ToastPush : NSObject
+
+// ...
+
+// 토큰 정보 업데이트
++ (void)updateTokenInfo:(ToastPushTokenInfo *)tokenInfo
+      completionHandler:(nullable void (^) (NSArray<ToastPushTokenInfo *> * _Nullable results, NSError * _Nullable error))completionHandler;
+
+// ...
+
+@end
+
+```
+
+### 토큰 정보 업데이트 예
+
+``` objc
+
+ToastPushMutableTokenInfo *tokenInfo = [[ToastPushMutableTokenInfo alloc] init];
+// 업데이트하고자하는 항목만 설정
+tokenInfo.languageCode = languageCode;
+tokenInfo.agreement = agreement;
+
+[ToastPush updateTokenInfo:tokenInfo
+            completionHandler:^(NSArray<ToastPushTokenInfo *> *results, NSError *error) {
+                if (error == nil) {
+                    for (ToastPushTokenInfo *tokenInfo in results) {
+                        // ...
+                    }
+                }
+            }];
 
 ```
 

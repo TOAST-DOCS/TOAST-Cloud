@@ -22,15 +22,15 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.toast.android:toast-common:0.16.1       | TOAST Common      |
-| com.toast.android:toast-core:0.16.1         | TOAST Core        |
-| com.toast.android:toast-logger:0.16.1       | TOAST Log & Crash |
-| com.toast.android:toast-iap-core:0.16.1     | TOAST In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.16.1   | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.16.1 | TOAST In-app Purchase <br>OneStore |
-| com.toast.android:toast-push-core:0.16.1    | TOAST Push Core   |
-| com.toast.android:toast-push-fcm:0.16.1    | TOAST Push <br>Firebase Cloud Messaging |
-| com.toast.android:toast-push-tencent:0.16.1    | TOAST Push <br>Tencent Push Notification |
+| com.toast.android:toast-common:0.17.0       | TOAST Common      |
+| com.toast.android:toast-core:0.17.0         | TOAST Core        |
+| com.toast.android:toast-logger:0.17.0       | TOAST Log & Crash |
+| com.toast.android:toast-iap-core:0.17.0     | TOAST In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.17.0   | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.17.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-push-core:0.17.0    | TOAST Push Core   |
+| com.toast.android:toast-push-fcm:0.17.0    | TOAST Push <br>Firebase Cloud Messaging |
+| com.toast.android:toast-push-tencent:0.17.0    | TOAST Push <br>Tencent Push Notification |
 
 ## TOAST SDK를 Android Studio 프로젝트에 적용
 
@@ -38,12 +38,12 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 
 TOAST SDK의 모든 서비스를 사용하려면 아래와 같이 종속성(dependency)을 설정합니다.
 
-> 유니티를 사용하는 경우, 별도의 종속성 설정을 해야합니다. 
+> 유니티를 사용하는 경우, 별도의 종속성 설정을 해야합니다.
 > 자세한 내용은 [유니티 가이드](./getting-started-unity/#android)를 참고해주세요.
 
 ```groovy
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.16.1'
+  implementation 'com.toast.android:toast-sdk:0.17.0'
 }
 ```
 
@@ -129,7 +129,3 @@ ToastSdk.setDebugMode(false);
 * [TOAST Log & Crash](./log-collector-android) 사용 가이드
 * [TOAST In-app Purchase](./iap-android) 사용 가이드
 * [TOAST Push](./push-android) 사용 가이드
-
-
-
-
