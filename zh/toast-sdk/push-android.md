@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.16.1'
+    implementation 'com.toast.android:toast-push-fcm:0.17.0'
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.16.1'
+    implementation 'com.toast.android:toast-push-tencent:0.17.0'
     ...
 }
 ```
@@ -105,7 +105,7 @@ android {
         // 필요 시 추가 : 'x86', 'x86_64', 'mips', 'mips64'
         abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
         }
-        
+
         manifestPlaceholders = [
             XG_ACCESS_ID:"accessid",
             XG_ACCESS_KEY : "accesskey",
@@ -165,7 +165,7 @@ useLibrary 'org.apache.http.legacy'
 ### Push 설정 예시
 
 ```java
-ToastPushConfiguration.Builder configuration = 
+ToastPushConfiguration.Builder configuration =
     ToastPushConfiguration.newBuilder(getApplicationContext(), "YOUR_APP_KEY")
             .build();
 ```
@@ -300,8 +300,8 @@ ToastNotification.setDefaultSmallIcon(context, R.drawable.ic_notification);
 
 ### 기본 알림 채널 설정 예시
 ```java
-ToastNotification.setDefaultNotificationChannel(context, 
-    "YOUR_NOTIFICATION_CHANNEL_ID", 
+ToastNotification.setDefaultNotificationChannel(context,
+    "YOUR_NOTIFICATION_CHANNEL_ID",
     "YOUR_NOTIFICATION_CHANNEL_NAME");
 ```
 
