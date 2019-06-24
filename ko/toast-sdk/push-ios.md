@@ -250,6 +250,13 @@ Push에서 발급받은 AppKey를 설정합니다.
     // delegate 를 함께 설정 합니다.
     [ToastPush initWithConfiguration:configuration delegate:self];
 
+    // 사용자가 앱을 실행중일 때도 알림이 노출되려면 옵션을 설정을 변경해주세요.
+    if (@available(iOS 10.0, *)) {
+        [ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
+    } else {
+        [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeBadge];
+    }
+
     return YES;
 }
 
