@@ -11,7 +11,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-logger:0.16.1'
+    implementation 'com.toast.android:toast-logger:0.17.0'
     ...
 }
 ```
@@ -64,7 +64,7 @@ ToastLogger.warn("TOAST Log & Crash Search!");
 
 ## 사용자 정의 필드 설정
 
-원하는 사용자 정의 필드를 설정합니다. 
+원하는 사용자 정의 필드를 설정합니다.
 사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
 
 ### setUserField API 명세
@@ -73,7 +73,7 @@ ToastLogger.warn("TOAST Log & Crash Search!");
 static void setUserField(String field, Object value);
 ```
 
-*  사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다. 
+*  사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다.
 
 #### 커스텀 필드 제약 사항
 
@@ -146,7 +146,7 @@ ToastLogger.initialize(configuration);
 
 ### Handled Exception API 사용
 
-Android 플랫폼에서는 try/catch 구문에서 예외와 관련된 내용을 TOAST Logger의 Handled Exception API를 사용하여 전송할 수 있습니다. 
+Android 플랫폼에서는 try/catch 구문에서 예외와 관련된 내용을 TOAST Logger의 Handled Exception API를 사용하여 전송할 수 있습니다.
 이렇게 전송한 예외 로그는 콘솔에서 **Log & Crash Search > 앱 크래시 검색**을 클릭하고 **오류 유형**에서 **Handled**를 클릭해 조회할 수 있습니다.
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
@@ -222,9 +222,3 @@ URL을 설정하는 방법은 다음과 같습니다.
 2. **네트워크 인사이트** 메뉴를 클릭합니다.
 3. **URL 설정** 탭을 클릭합니다.
 4. 측정하려는 URL을 입력하고 **추가** 버튼을 클릭합니다.
-
-
-
-
-
-
