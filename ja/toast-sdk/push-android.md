@@ -129,7 +129,6 @@ android.useDeprecatedNdk = true
 ### Android P対応
 - Android 9.0以上でtarget API 28を使用している場合は、network_security_config.xmlのファイルを追加します。
 
-
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
@@ -173,19 +172,17 @@ ToastPushConfiguration.Builder configuration =
 
 ## Push初期化
 - ToastPush.initializeを呼び出してTOAST Pushを初期化します。
-- 使用したいPushProviderのオブジェクトを初期化呼び出し時に渡す必要があります。
+- 사용하기를 원하는 PushType 을 초기화 호출시 전달해야 합니다.
 
 ### FCM初期化例
 
 ```java
-PushProvider provider = FirebaseMessagingPushProvider.getProvider();
-ToastPush.initialize(provider, configuration);
+ToastPush.initialize(PushType.FCM, configuration);
 ```
 
 ### Tencent初期化例
 ```java
-PushProvider provider = TencentMessagingPushProvider.getProvider();
-ToastPush.initialize(provider, configuration);
+ToastPush.initialize(PushType.TENCENT, configuration);
 ```
 
 ## サービスログイン
@@ -225,7 +222,9 @@ ToastPushAgreement agreement = ToastPushAgreement.newBuilder(/*通知を受信�
 ```java
 ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
     @Override
-    public void onRegister(@NonNull PushResult result, @Nullable String token) {
+    public void onRegister(@NonNull PushResult result,
+                           @Nullable String token) {
+
         if (result.isSuccess()) {
             // トークン登録成功
         } else {
@@ -259,7 +258,7 @@ ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
 ```
 
 ## トークン解除
-最近登録されたトークンを解除します。トークンが解除されると、プッシュをこれ以上受けることができなくなります。
+- 最近登録されたトークンを解除します。トークンが解除されると、プッシュをこれ以上受けることができなくなります。
 
 >すでに解除されたトークンを解除すると、「既に解除されたトークンです（Already a token has been unregistered）」というメッセージと一緒に成功を返します。
 
@@ -269,13 +268,75 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
     @Override
     public void onUnregister(@NonNull PushResult result,
                              @Nullable String unregisteredToken) {
+        
         if (result.isSuccess()) {
             // トークン解除成功
         } else {
             // トークン解除失敗
+            int code = result.getCode();
+            String message = result.getMessage();
         }
     }
 });
+```
+
+## 토큰 정보 업데이트
+- 사용자 아이디, 국가 코드, 언어 코드, 알림 메시지 수신 동의 등의 토큰 정보를 업데이트합니다.
+- [UpdateTokenInfoParams](./push-android/#updatetokeninfoparams) 객체를 생성하여 업데이트 항목을 설정합니다.
+- 생성한 [UpdateTokenInfoParams](./push-android/#updatetokeninfoparams) 객체를 ToastPush.updateTokenInfo() 메소드의 파라미터로 전달합니다.
+
+### 토큰 정보 업데이트 예시
+
+``` java
+UpdateTokenInfoParams params = UpdateTokenInfoParams.newBuilder()
+                .setLanguage(preferences.getLanguage())
+                .setAgreement(agreement)
+                .build();
+
+ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
+    @Override
+    public void onUpdate(@NonNull PushResult result,
+                         @Nullable TokenInfo tokenInfo) {
+
+        if (result.isSuccess()) {
+            // 토큰 정보 업데이트 성공시
+        } else {
+            // 토큰 정보 업데이트 실패시
+            int code = result.getCode();
+            String message = result.getMessage();
+        }
+    }
+});
+```
+
+## 메시지 수신
+- 푸시 메시지 수신 시 OnReceiveMessageListener 를 통해 통지 받을 수 있습니다.
+- 푸시 메시지 수신 리스너는 ToastPush.setOnReceiveMessageListener 메서드를 사용하여 등록할 수 있습니다.
+- OnReceiveMessageListener 에 전달된 [ToastPushMessage](./push-android/#toastpushmessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
+- 앱이 실행 중이지 않을 때도 메시지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
+
+> 메시지 수신 시 사용자가 앱을 사용 중(Foreground)일 경우 알림을 노출하지 않습니다.
+> Foreground 여부는 OnReceiveMessageListener#onReceive 에 전달되는 isForeground 를 통해 확인 할 수 있습니다.
+
+### 메시지 수신 리스너 등록 예시
+
+``` java
+public class ToastPushSampleApplication extends Application {
+    @Override
+    public void onCreate() {
+        ToastPush.setOnReceiveMessageListener(new OnReceiveMessageListener() {
+            @Override
+            public void onReceive(@NonNull ToastPushMessage message,
+                                  boolean isForeground) {
+
+                // 사용자가 앱을 사용 중 일 때에도 알림을 노출
+                if (isForeground) {
+                    ToastNotification.notify(getApplicationContext(), message);
+                }
+            }
+        });
+    }
+}
 ```
 
 ## 通知デフォルト値設定
@@ -349,36 +410,26 @@ ToastNotification.setDefaultNotificationChannel(context,
 - リッチメッセージは、TOAST PushのWebコンソールで送信できます。また、メッセージ送信APIのrichMessageフィールドを追加して、送信することもできます。
 - リッチメッセージを決められた形式で送信した場合、別途の変換プロセスを経ずにリッチメッセージ通知が登録されます。
 
-### ReplyActionListenerの登録
-- リッチメッセージの返信(またはレスポンス)ボタンを使用する場合、ユーザーの入力メッセージを受け取って別途の処理が必要です。
-- このためにReplyActionListenerを提供します。
-- ReplyActionListenerは、**必ず**ApplicationのonCreateで登録してください。
+### 버튼 액션 리스너 등록
+- 사용자가 리치 메세지의 버튼 선택 시 액션 리스너로 통지합니다.
+- 리치 메시지의 답장(혹은 응답) 버튼을 사용하는 경우, 액션 리스너에서 사용자 입력 메세지에 대한 처리가 필요합니다.
+- [PushAction](./push-android/#pushaction) 객체로 액션 정보를 확인 가능합니다.
+- 앱이 실행중이지 않을 때에도 메세지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
-> (注意)ユーザーが入力を完了して送信ボタンを押すと、通知(Notification)はローディングバーが表示され、通知が削除されません。
-> したがって、返信処理が完了したら通知(Notification)を削除するか、アップデートするコードを追加する必要があります。
-> 下記のサンプルコードを参考にしてください。
+#### 버튼 액션 리스너 등록 예시
 
-#### ReplyActionListener登録例
-
-```java
+``` java
 public class ToastPushSampleApplication extends Application {
     @Override
     public void onCreate() {
-        ToastNotification.setReplyActionListener(new ReplyActionListener() {
+        ToastNotification.setOnActionListener(new OnActionListener() {
             @Override
-            public void onReceiveReplyAction(@NonNull Context context, @NonNull ReplyActionResult result) {
-                // Do Something (ex. Send message contents to server)
-
-                // Choice 1. Remove previous reply notification with notification id
-                NotificationManagerCompat.from(context).cancel(result.getNotificationId());
-
-                // Choice 2. Update previous reply notification with notification id
-                NotificationManagerCompat.from(context).notify(result.getNotificationId(),
-                        new NotificationCompat.Builder(context, result.getNotificationChannel())
-                                .setSmallIcon(/* Resource ID of your icon */ getDefaultIcon(context))
-                                .setContentTitle("Send")
-                                .setContentText("Success to send message")
-                                .build());
+            public void onAction(@NonNull PushAction action) {
+                // 답장 액션일 경우, 서비스 서버로 해당 내용을 전송
+                if (action.getActionType() == PushAction.ActionType.REPLY) {
+                    String userText = action.getUserText();
+                    // e.g. 서비스 서버로 사용자 입력 내용 전송
+                }
             }
         });
     }
@@ -386,25 +437,37 @@ public class ToastPushSampleApplication extends Application {
 ```
 
 ## ユーザー定義メッセージの処理
-- 直接受信したメッセージを処理したい場合には、ToastPushMessageReceiverを継承してonMessageReceivedメソッドを実装する必要があります。
+- 수신한 메시지를 수정하거나 인텐트를 변경, 알림을 직접 생성해야하는 경우, [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속해서 onMessageReceived 메소드를 구현해야합니다.
 - ToastPushMessageReceiverを実装したブロードキャストはAndroidManifest.xmlにも必ず登録する必要があります。
+- 알림 생성, 인텐트 생성 등의 추가 기능을 제공합니다.
 
 > **(注意)**
-> 1. 受信したメッセージを直接処理する場合には、通知（Notification）の処理は、ユーザーが自分であります。
-> 2. 受信したメッセージを直接処理する場合には、「受信」/「オープン」の指標の機能のために追加の作業が必要です。（下の指標の収集機能を追加セクションを参)
+> 1. 수신한 메시지를 이용해 알림을 직접 생성할 경우, 오픈 지표 수집을 위해 별도의 처리가 필요 필요합니다. (아래 지표 수집 기능 추가 섹션 참고)
 
 ### ToastPushMessagingService例示
 ```java
-public class UserCustomReceiver extends ToastPushMessageReceiver {
+public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
     @Override
-    public void onMessageReceived(@NonNull Context context, @NonNull ToastRemoteMessage remoteMessage) {
-        final ToastPushMessage message = remoteMessage.getMessage();
-        final CharSequence title = message.getTitle();
-        final CharSequence body = message.getBody();
-        final RichMessage richMessage = message.getRichMessage();
-        final Map<String, String> extras = message.getExtras();
+    public void onMessageReceived(@NonNull Context context,
+                                  @NonNull ToastRemoteMessage remoteMessage) {
 
-        // 通知の処理
+        // 채널 아이디 변경
+        remoteMessage.setChannelId("channel");
+
+        // 메세지 내용 수정
+        ToastPushMessage message = remoteMessage.getMessage();
+        CharSequence title = message.getTitle();
+
+        message.setTitle("[Modified] " + title);
+
+        // 실행 인텐트 설정 (미설정시 패키지 기본 메인 액티비티 실행)
+        Intent launchIntent = new Intent(context, MainActivity.class);
+
+        // 사용자가 앱을 사용중이지 않을 때만 알림을 노출하도록하고 싶은 경우
+        if (!isAppForeground()) {
+            // 알림 생성 및 노출
+            notify(context, remoteMessage, launchIntent);
+        }
     }
 }
 ```
@@ -431,25 +494,32 @@ public class UserCustomReceiver extends ToastPushMessageReceiver {
 ```
 
 ### 指標の収集機能を有効に(FCM Only)
-- 受信したメッセージを直接処理する場合には、指標の収集機能を有効にするために追加の作業が必要です。
-- ToastPushAnalyticsNotificationExtenderを作成し、NotificationCompat.Builderを展開します。
+- 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 createAnalyticsContentIntent() 메소드를 사용하여 생성한 인텐트를 사용해야합니다.
 
 #### 指標の収集機能の例
 ```java
-@Override
-public void onMessageReceived(@NonNull ToastRemoteMessage remoteMessage) {
-    final ToastPushMessage message = remoteMessage.getMessage();
+public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
+    @Override
+    public void onMessageReceived(@NonNull Context context,
+                                  @NonNull ToastRemoteMessage remoteMessage) {
 
-    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YOUR_CHANNE_ID");
-    // (省略)
+        ToastPushMessage message = remoteMessage.getMessage();
 
-    Intent launchIntent = new Intent(context, MainActivity.class); // 알림 클릭시 동작을 Intent로 정의함
-    ToastPushAnalyticsNotificationExtender extender = new ToastPushAnalyticsNotificationExtender(launchIntent);
-    builder = extender.extend(context, message, builder);
+        // 사용자 실행 인텐트 생성
+        Intent launchIntent = new Intent(context, MainActivity.class);
 
-    Notification notification = builder.build();
+        // 지표 전송을 포함한 실행 인텐트 생성 기능 제공
+        PendingIntent contentIntent = createAnalyticsContentIntent(context, remoteMessage, launchIntent);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YOUR_CHANNE_ID");
+        // (중략)
+        builder.setContentIntent(contentIntent);
+
+        notify(context, builder.build());
+    }
 }
 ```
+
 ## Emoji使用
 > **(注意)**
 > 機器でサポートしていないemojiを使用した場合には、表示されないことがあります。
@@ -514,3 +584,111 @@ public String getToken();
 | getUserId | String | ユーザーIDを返します。 |
 | getActivatedDateTime | Date | トークンの最近の登録日時を返します。 |
 | getToken | String | トークンを返します。 |
+
+### UpdateTokenInfoParams
+- 토큰 정보 업데이트 호출시 업데이트할 정보를 설정하는 객체입니다.
+
+``` java
+/* UpdateTokenInfoParams.java */
+public String getUserId();
+public String getCountry();
+public String getLanguage();
+public String getTimeZone();
+public String getAgreement();
+
+public static Builder newBuilder();
+```
+
+| Method | Returns | |
+|---|---|---|
+| getUserId | String | 사용자 ID를 반환합니다. |
+| getCountry | String | 국가 코드를 반환합니다. |
+| getLanguage | String | 언어 코드를 반환합니다. |
+| getTimeZone | String | 타임존을 반환합니다. |
+| getAgreement | ToastPushAgreement | 알림/광고/야간 광고 등 동의 여부를 반환합니다. |
+| static newBuilder | UpdateTokenInfoParams.Builder | UpdateTokenInfoParams 객체 생성을 위한 빌더를 생성합니다. |
+
+### ToastRemoteMessage
+- 메세지 수신 리스너, 커스텀 리시버에서 메세지 수신시 반환되는 객체 입니다.
+
+``` java
+/* ToastRemoteMessage.java */
+public String getChannelId();
+public void setChannelId(String channelId);
+public ToastPushMessage getMessage();
+```
+
+| Method | Returns | |
+|---|---|---|
+| getChannelId | String | 채널 ID를 반환합니다. |
+| setChannelId |  | 채널 ID를 설정합니다. |
+| getMessage | ToastPushMessage | 메세지 객체를 반환합니다. |
+
+### ToastPushMessage
+- 수신한 메세지 내용을 담는 객체 입니다.
+
+``` java
+/* ToastPushMessage.java */
+public String getPusyType();
+public String getTitle();
+public void setTitle(String title);
+public String getBody();
+public void setBody(String body);
+public RichMessage getRichMessage();
+public Map<String, String> getExtras();
+```
+
+| Method | Returns | |
+|---|---|---|
+| getPusyType | String | PushType을 반환합니다. |
+| getTitle | String | 메세지 타이틀을 반환합니다. |
+| setTitle |  | 메세지 타이틀을 설정합니다. |
+| getBody | String | 메세지 내용을 반환합니다. |
+| setBody |  | 메세지 내용을 설정합니다. |
+| getRichMessage | RichMessage | 리치 메세지 정보를 반환합니다. |
+| getExtras |  | 수신된 메세지 전체를 반환합니다. |
+
+
+### PushAction
+- 버튼 액션 수신시 반환되는 객체 있니다.
+
+``` java
+/* PushAction.java */
+public ActionType getActionType();
+public String getNotificationId();
+public String getNotificationChannel();
+public ToastPushMessage getMessage();
+public String getuserText();
+```
+
+| Method | Returns | |
+|---|---|---|
+| getActionType | ActionType | ActionType을 반환합니다. |
+| getNotificationId | String | 액션이 실행된 알림의 ID을 반환합니다. |
+| getNotificationChannel | String | 액션이 실행된 알림의 채널을 반환합니다. |
+| getMessage | ToastPushMessage | 액션이 실행된 알림의 메세지 정보를 반환합니다. |
+| getuserText | RichMessage | 사용자가 입력한 문자열을 반환합니다. |
+
+### ToastPushMessageReceiver
+- 메세지 내용 수정, 실행 인텐트 정의, 알림 직접 생성 등의 기능을 위해서는 사용자가 구현해야하는 객체 입니다.
+
+``` java
+/* ToastPushMessageReceiver.java */
+public final boolean isAppForeground();
+public final void notify(Context context, ToastRemoteMessage message);
+public final void notify(Context context, ToastRemoteMessage message, Intent userIntent);
+public final void notify(Context context, Notification notification);
+public final void notify(Context context, int notificationId, Notification notification);
+public final PendingIntent createAnalyticsContentIntent(Context context, ToastRemoteMessage message);
+public final PendingIntent createAnalyticsContentIntent(Context context, ToastRemoteMessage message, Intent userIntent);
+```
+
+| Method | Returns | Parameters | |
+|---|---|---|---|
+| isAppForeground | boolean |  | 현재 앱을 사용중인지 여부를 반환합니다. |
+| notify | | Context, ToastRemoteMessage | 기본 실행 인텐트로 알림을 생성 및 노출합니다. |
+| notify | | Context, ToastRemoteMessage, Intent | 사용자 실행 인텐트로 알림을 생성 및 노출합니다. |
+| notify | | Context, Notification | 사용자 알림을 노출합니다. |
+| notify | | Context, int, Notification | 사용자 알림을 특정 ID로 노출합니다. |
+| createAnalyticsContentIntent | PendingIntent | Context, ToastRemoteMessage | 지표 전송을 포함하는 기본 실행 인텐트를 반환합니다. |
+| createAnalyticsContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |

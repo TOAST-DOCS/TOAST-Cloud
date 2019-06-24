@@ -275,6 +275,8 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
             // 토큰 해제 성공시
         } else {
             // 토큰 해제 실패시
+            int code = result.getCode();
+            String message = result.getMessage();
         }
     }
 });
@@ -302,6 +304,8 @@ ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
             // 토큰 정보 업데이트 성공시
         } else {
             // 토큰 정보 업데이트 실패시
+            int code = result.getCode();
+            String message = result.getMessage();
         }
     }
 });
@@ -327,7 +331,7 @@ public class ToastPushSampleApplication extends Application {
             public void onReceive(@NonNull ToastPushMessage message,
                                   boolean isForeground) {
 
-                // 사용자가 앱을 사용중 일때에도 알림을 노출
+                // 사용자가 앱을 사용 중 일 때에도 알림을 노출
                 if (isForeground) {
                     ToastNotification.notify(getApplicationContext(), message);
                 }
@@ -517,6 +521,7 @@ public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
     }
 }
 ```
+
 ## Emoji 사용
 > **(주의)**
 > 기기에서 지원하지 않는 emoji를 사용한 경우, 표시되지 않을 수 있습니다.
