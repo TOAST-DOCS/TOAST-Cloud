@@ -292,11 +292,16 @@ Push에서 발급받은 AppKey를 설정합니다.
 }
 ```
 
-### 옵션 설정
+### 알림 옵션 설정
 
+알림 옵션은 다음과 같이 설정되어 있습니다.
 `앱 실행 중 알림을 표시하기 위해서는 옵션을 변경해야 합니다.`
 
-### 옵션 설정 예
+```objc
+UNAuthorizationOptionBadge | UNAuthorizationOptionSound
+```
+
+### 알림 옵션 설정 예
 
 ``` objc
 // default : UNAuthorizationOptionBadge | UNAuthorizationOptionSound

@@ -292,20 +292,25 @@ Push에서 발급받은 AppKey를 설정합니다.
 }
 ```
 
-### 옵션 설정
+### 알림 옵션 설정
 
-`사용자가 앱을 사용중일 때는 알림을 표시하지 않도록 기본 옵션이 설정되어 있습니다.`
+알림 옵션은 다음과 같이 설정되어 있습니다.
+`앱 실행 중 알림을 표시하기 위해서는 옵션을 변경해야 합니다.`
 
-### 옵션 설정 예
+```objc
+UNAuthorizationOptionBadge | UNAuthorizationOptionSound
+```
+
+### 알림 옵션 설정 예
 
 ``` objc
 // default : UNAuthorizationOptionBadge | UNAuthorizationOptionSound
-// 사용자가 앱을 실행중일 때도 알림이 노출되려면 옵션을 설정을 변경해주세요.
+// 사용자가 앱을 실행 중일 때도 알림이 노출되려면 옵션을 설정을 변경해주세요.
 if (@available(iOS 10.0, *)) {
-    [ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
+[ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
 
 } else {
-    [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
+[ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
 }
 ```
 
