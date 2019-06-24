@@ -115,7 +115,9 @@ TOAST Pushを使用するには、Capabilitiesで**Push Notification**、**Backg
 
 Pushで発行されたAppKeyを設定します。
 `初期化しない状態では、トークンの登録および照会機能を使用できません。`
-`円滑なメッセージ受信のためにapplication:didFinishLaunchingWithOptions：関数で初期化を実行することを推奨します。`
+`Delegate 설정이 된 후 메세지 수신에 대한 통지를 받을 수 있습니다.`
+`원활한 메세지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
+`개발환경에서는 반드시 ToastPushConfiguration 의 sandbox 프로퍼티를 YES 로 설정하셔야 사용 가능합니다.`
 
 ### 初期化API仕様
 
@@ -129,10 +131,20 @@ Pushで発行されたAppKeyを設定します。
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration
                      delegate:(nullable id<ToastPushDelegate>)delegate;
 
+// Delegate設定
++ (void)setDelegate:(nullable id<ToastPushDelegate>)delegate;
+
+// 初期化
++ (void)initWithConfiguration:(ToastPushConfiguration *)configuration;
+
 // カテゴリー設定(iOS 10.0+)
 + (void)setCategories:(nullable NSSet<UNNotificationCategory *> *)categories NS_AVAILABLE_IOS(10_0);
 
-// ...
+// お知らせオプション設定
+// iOS 8.0+ : UIUserNotificationType
+// iOS 10.0+ : UNAuthorizationOptions
+// default : UNAuthorizationOptionSound | UNAuthorizationOptionBadge
++ (void)setOptions:(NSInteger)options;
 
 @end
 ```
@@ -150,6 +162,12 @@ Pushで発行されたAppKeyを設定します。
 
 // プッシュタイプ(APNS、VoIP)
 @property (nonatomic) NSSet<ToastPushType> *pushTypes;
+
+// 国コード (예약 메세지 발송시 기준 시간이 되는 국가코드)
+@property (nonatomic, copy) NSString *countryCode;
+
+// 言語設定 (다국어 메세지 발송시 언어 선택 기준)
+@property (nonatomic, copy) NSString *languageCode;
 
 // Sandbox(Debug)環境設定
 @property (nonatomic) BOOL sandbox;
@@ -182,6 +200,15 @@ Pushで発行されたAppKeyを設定します。
 - (void)didFailToRegisterForType:(ToastPushType)type
                        withError:(NSError *)error;
 
+// トークン解題成功
+- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
+                             forType:(ToastPushType)type;
+
+// トークン解題失敗
+- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
+                                   forType:(ToastPushType)type
+                                     error:(NSError *)error;
+
 // プッシュ受信
 - (void)didReceivePushWithPayload:(NSDictionary *)payload
                           forType:(ToastPushType)type;
@@ -191,15 +218,6 @@ Pushで発行されたAppKeyを設定します。
                                 categoryIdentifier:(NSString *)categoryIdentifier
                                            payload:(NSDictionary *)payload
                                           userText:(nullable NSString *)userText;
-
-// トークンの登録を解除成功
-- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
-                             forType:(ToastPushType)type;
-
-// トークンの登録解除に失敗し
-- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                   forType:(ToastPushType)type
-                                     error:(NSError *)error;
 
 @end
 ```
@@ -275,6 +293,23 @@ Pushで発行されたAppKeyを設定します。
      // ...
 }
 
+```
+
+### 옵션 설정
+
+`사용자가 앱을 사용중일 때는 알림을 표시하지 않도록 기본 옵션이 설정되어 있습니다.`
+
+### 옵션 설정 예
+
+``` objc
+// default : UNAuthorizationOptionBadge | UNAuthorizationOptionSound
+// 사용자가 앱을 실행중일 때도 알림이 노출되려면 옵션을 설정을 변경해주세요.
+if (@available(iOS 10.0, *)) {
+    [ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
+
+} else {
+    [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
+}
 ```
 
 ## トークン登録
@@ -405,6 +440,7 @@ agreement.allowNightAdvertisements = NO;
 ## トークン解除
 
 初期化時に設定された情報（プッシュタイプ、サンドボックスの存在）に基づいて登録済みトークンを登録解除します。
+`サービスログアウト後にメッセージ受信を望まない場合はトークンを解除してください。`
 設定された情報に対応するトークンが存在しない場合、または登録解除が成功した場合は、登録解除成功デリゲートを呼び出します。 
 トークンの登録解除結果は、初期化時にデリゲートセットを介して渡されます。
 
@@ -447,6 +483,49 @@ agreement.allowNightAdvertisements = NO;
     
     NSLog(@"Failed to unregister token, error : %@", error);
 }
+
+```
+
+## 토큰 정보 업데이트
+
+사용자 아이디, 국가코드, 언어코드, 메세지 동의 설정 등의 토큰 정보를 업데이트합니다.
+등록되어있는 모든 토큰에 일괄 적용됩니다.
+`토큰 정보 업데이트 요청은 앱 실행 후 토큰 등록이 된 상태에서만 가능합니다.`
+
+### 토큰 정보 업데이트 API 명세
+
+``` objc
+@interface ToastPush : NSObject
+
+// ...
+
+// 토큰 정보 업데이트
++ (void)updateTokenInfo:(ToastPushTokenInfo *)tokenInfo
+      completionHandler:(nullable void (^) (NSArray<ToastPushTokenInfo *> * _Nullable results, NSError * _Nullable error))completionHandler;
+
+// ...
+
+@end
+
+```
+
+### 토큰 정보 업데이트 예
+
+``` objc
+
+ToastPushMutableTokenInfo *tokenInfo = [[ToastPushMutableTokenInfo alloc] init];
+// 업데이트하고자하는 항목만 설정
+tokenInfo.languageCode = languageCode;
+tokenInfo.agreement = agreement;
+
+[ToastPush updateTokenInfo:tokenInfo
+            completionHandler:^(NSArray<ToastPushTokenInfo *> *results, NSError *error) {
+                if (error == nil) {
+                    for (ToastPushTokenInfo *tokenInfo in results) {
+                        // ...
+                    }
+                }
+            }];
 
 ```
 

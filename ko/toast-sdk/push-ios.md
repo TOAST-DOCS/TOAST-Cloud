@@ -125,8 +125,6 @@ Push에서 발급받은 AppKey를 설정합니다.
 
 @interface ToastPush : NSObject
 
-// ...
-
 // 초기화 및 Delegate 설정
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration
                      delegate:(nullable id<ToastPushDelegate>)delegate;
@@ -250,13 +248,6 @@ Push에서 발급받은 AppKey를 설정합니다.
     // delegate 를 함께 설정 합니다.
     [ToastPush initWithConfiguration:configuration delegate:self];
 
-    // 사용자가 앱을 실행중일 때도 알림이 노출되려면 옵션을 설정을 변경해주세요.
-    if (@available(iOS 10.0, *)) {
-        [ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
-    } else {
-        [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
-    }
-
     return YES;
 }
 
@@ -298,6 +289,23 @@ Push에서 발급받은 AppKey를 설정합니다.
                                            payload:(NSDictionary *)payload
                                           userText:(nullable NSString *)userText NS_AVAILABLE_IOS(10_0) {
     // ...
+}
+```
+
+### 옵션 설정
+
+`사용자가 앱을 사용중일 때는 알림을 표시하지 않도록 기본 옵션이 설정되어 있습니다.`
+
+### 옵션 설정 예
+
+``` objc
+// default : UNAuthorizationOptionBadge | UNAuthorizationOptionSound
+// 사용자가 앱을 실행중일 때도 알림이 노출되려면 옵션을 설정을 변경해주세요.
+if (@available(iOS 10.0, *)) {
+    [ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
+
+} else {
+    [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
 }
 ```
 
