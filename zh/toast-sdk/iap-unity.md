@@ -8,9 +8,10 @@
 
 ## Android 설정
 ### Gradle 빌드 설정
-- Player Settings > Publishing Settings > Build 항목에서 Build System을 Gradle로 변경합니다.
-- Custom Gradle Template을 활성화 시켜, mainTemplate.gradle을 생성합니다.
-- mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
+- In the Unity Editor, open the Build Settings windows (Player Settings > Publishing Settings > Build).
+- Set the Build System drop-down to Gradle
+- Use the Custom Gradle Template checkbocx unbder Build System
+- Add below to dependencies of mainTemplate.gradle.
 
 #### Google Play Store
 
