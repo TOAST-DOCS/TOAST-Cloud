@@ -2,7 +2,7 @@
 
 ## Supporting Environment 
 
-* Unity 5.3.4 or higher
+* Unity 5.5.0 or higher
 * Android 4.0.3 or higher
 * iOS 8.0 or higher
 * The latest version of XCode (version 9 or higher)
