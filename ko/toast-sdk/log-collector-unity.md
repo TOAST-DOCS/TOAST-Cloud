@@ -7,6 +7,13 @@
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 4\. [TOAST SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
 
+### 지원 플랫폼
+
+* iOS
+* Android
+* Standalone
+* WebGL
+
 ### Android 설정
 
 #### Gradle 빌드 설정
@@ -117,7 +124,7 @@ ToastLogger.SetUserField(userField, userValue);
 * 동일한 키에 대해 값을 여러 번 변경하면, 최종으로 변경한 값이 적용됩니다.
 
 #### 커스텀 필드 제약사항
-* 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.
+* 이미 [예약된 필드](./log-collector-erved-fields)는 사용할 수 없습니다.
 * 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 * 필드명 내에 공백은 "\_" 로 치환됩니다.
 
