@@ -7,9 +7,16 @@
 3\. Log & Crash Searchで、[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 4\. [TOAST SDKを初期化](./getting-started-unity#toast-sdk_1)します。
 
-### Android設定
+## 지원 플랫폼
 
-#### Gradleビルド設定
+* iOS
+* Android
+* Standalone
+* WebGL
+
+## Android設定
+
+### Gradleビルド設定
 - Unity Editorで、Build Settingsウィンドウを開きます。 （Player Settings> Publishing Settings> Build）。
 - Build SystemリストからGradleを選択します。
 - Build Systemサブのチェックボックスを選択して、Custom Gralde Templateを使用します。
@@ -25,9 +32,9 @@ dependencies {
 **DEPS**}
 ```
 
-### iOS設定
+## iOS設定
 
-#### Player Settings設定
+### Player Settings設定
 
 * UnityのiOSビルド設定には、Loggerがサーバーにログを送信する際に影響を与えるいくつかの設定があります。
 * この設定の効果とLoggerの推奨設定を説明します。
@@ -38,19 +45,19 @@ dependencies {
 | Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API | Disabled |
 | Edit > Project Settings > Player | Other Settings | Script Call Optimization | Slow and Safe |
 
-##### On .Net UnhandledException
+#### On .Net UnhandledException
 
 * **Silent Exit**値を推奨します。
     * On .Net UnhandledExceptionをCrashに設定すると、例外発生時に即時にアプリが終了します。
     * Silent Exitに設定すると、Unity Exceptionをキャプチャできます。
 
-##### Enable CrashReport API
+#### Enable CrashReport API
 
 * **Disabled**値を推奨します。
     * Unity CrashReporter APIが有効になっているかを表す値です。
     * 有効になっていれば、Loggerのクラッシュログ収集に影響を与えることがあります。
 
-##### Script Call Optimization
+#### Script Call Optimization
 
 * **Slow and Safe**値を推奨します。
     * Runtime C# Crashログを収集したい場合、Slow and Safeに設定する必要があります。
