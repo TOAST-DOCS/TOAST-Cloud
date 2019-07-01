@@ -16,13 +16,13 @@
 - Add below to dependencies of mainTemplate.gradle.
 
 ```groovy
+
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-logger:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-logger:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-logger:0.17.0'
+**DEPS**}
 ```
 
 ### For iOS 
