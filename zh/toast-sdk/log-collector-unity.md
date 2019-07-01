@@ -10,7 +10,10 @@
 ### For Android 
 
 #### Gradle Build Settings
-- Add below to dependencies of mainTemplate.gradle. 
+- In the Unity Editor, open the Build Settings windows (Player Settings > Publishing Settings > Build).
+- Set the Build System drop-down to Gradle
+- Use the Custom Gradle Template checkbocx unbder Build System
+- Add below to dependencies of mainTemplate.gradle.
 
 ```groovy
 dependencies {
