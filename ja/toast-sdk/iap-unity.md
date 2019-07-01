@@ -8,30 +8,30 @@
 
 ## Android設定
 ### Gradleビルド設定
+- Player Settings> Publishing Settings> Build項目でBuild SystemをGradleに変更します。
+- Custom Gradle Templateを活性化させ、mainTemplate.gradleを生成します。
 - mainTemplate.gradleのdependencies項目に下記の内容を追加します。
 
 #### Google Play Store
 
 ```groovy
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-google:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-iap-google:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-iap-google:0.17.0'
+**DEPS**}
 ```
 
 #### One Store
 
 ```groovy
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-onestore:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-iap-onestore:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.17.0'
+**DEPS**}
 ```
 
 ## iOS設定
