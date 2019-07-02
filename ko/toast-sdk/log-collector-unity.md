@@ -7,16 +7,16 @@
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 4\. [TOAST SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
 
-### 지원 플랫폼
+## 지원 플랫폼
 
 * iOS
 * Android
 * Standalone
 * WebGL
 
-### Android 설정
+## Android 설정
 
-#### Gradle 빌드 설정
+### Gradle 빌드 설정
 - Unity Editor에서, Build Settings 창을 엽니다. (Player Settings > Publishing Settings > Build).
 - Build System 목록에서 Gradle을 선택합니다.
 - Build System 하위의 체크 박스를 선택하여 Custom Gralde Template을 사용합니다.
@@ -31,9 +31,9 @@ dependencies {
 **DEPS**}
 ```
 
-### iOS 설정
+## iOS 설정
 
-#### Player Settings 설정
+### Player Settings 설정
 
 * Unity 의 iOS 빌드 설정에는 Logger 가 서버로 로그를 전송하는데 영향을 주는 몇가지 설정들이 있습니다.
 * 이 설정들의 효과를 간략히 설명하고 Logger 의 권장 설정에 대해 설명합니다.
