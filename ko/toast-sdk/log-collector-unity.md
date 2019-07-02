@@ -126,7 +126,7 @@ ToastLogger.SetUserField(userField, userValue);
 * 동일한 키에 대해 값을 여러 번 변경하면, 최종으로 변경한 값이 적용됩니다.
 
 #### 커스텀 필드 제약사항
-* 이미 [예약된 필드](./log-collector-erved-fields)는 사용할 수 없습니다.
+* 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.
 * 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 * 필드명 내에 공백은 "\_" 로 치환됩니다.
 
