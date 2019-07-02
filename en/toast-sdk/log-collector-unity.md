@@ -7,24 +7,33 @@
 3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 4\. [Initialize TOAST SDK](./getting-started-unity#toast-sdk_1).
 
-### For Android
+## 지원 플랫폼
 
-#### Gradle Build Settings
+* iOS
+* Android
+* Standalone
+* WebGL
+
+## For Android
+
+### Gradle Build Settings
+- In the Unity Editor, open the Build Settings windows (Player Settings > Publishing Settings > Build).
+- Set the Build System drop-down to Gradle
+- Use the Custom Gradle Template checkbocx unbder Build System
 - Add below to dependencies of mainTemplate.gradle.
 
 ```groovy
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-logger:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-logger:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-logger:0.17.0'
+**DEPS**}
 ```
 
-### For iOS
+## For iOS
 
-#### Player Settings
+### Player Settings
 
 * Unity's iOS build setting includes some settings that influence logger's log delivery to a server.
 * Below briefly shows effects of such settings and describes recommended settings for a logger.  
@@ -35,19 +44,19 @@ dependencies {
 | Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API | Disabled |
 | Edit > Project Settings > Player | Other Settings | Script Call Optimization | Slow and Safe |
 
-##### On .Net UnhandledException
+#### On .Net UnhandledException
 
 * **Silent Exit** is recommended.
     * If On .Net UnhandledException is set for Crash, app is closed immediately when an exception occurs.
     * With Silent Exit, Unity Exception can be captured.
 
-##### Enable CrashReport API
+#### Enable CrashReport API
 
 * **Disabled** is recommended.
     * Shows whether Unity CrashReporter API is enabled or not.
     * When enabled, it may affect logger's crash log collection.
 
-##### Script Call Optimization
+#### Script Call Optimization
 
 * **Slow and Safe** is recommended.
     * To collect Runtime C# Crash logs, Slow and Safe must be enabled.  

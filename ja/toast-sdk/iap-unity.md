@@ -8,30 +8,31 @@
 
 ## Android設定
 ### Gradleビルド設定
+- Unity Editorで、Build Settingsウィンドウを開きます。 （Player Settings> Publishing Settings> Build）。
+- Build SystemリストからGradleを選択します。
+- Build Systemサブのチェックボックスを選択して、Custom Gralde Templateを使用します。
 - mainTemplate.gradleのdependencies項目に下記の内容を追加します。
 
 #### Google Play Store
 
 ```groovy
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-google:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-iap-google:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-iap-google:0.17.0'
+**DEPS**}
 ```
 
 #### One Store
 
 ```groovy
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-onestore:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-iap-onestore:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.17.0'
+**DEPS**}
 ```
 
 ## iOS設定
@@ -179,6 +180,31 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
 });
 ```
 
+## 구독 복원
+- User ID 기준으로 구독 상품을 복원할 수 있습니다.
+    - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 복원할 수 있습니다.
+    - 구독 상품 복원 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
+- iOS에서만 구독한 상품을 복원 가능합니다.
+    - 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다. 
+
+### 구독 복원 API 명세
+
+```csharp
+public static void RequestRestorePurchases(ToastCallback<List<IapPurchase>> callback);
+```
+
+### 구독 복원 예시
+
+```csharp
+ToastIap.RequestRestorePurchases((result, purchases) =>
+{
+    if (result.IsSuccessful)
+    {
+        // 구독 복원 조회 성공
+    }
+});
+```
+
 ## 有効になっている購読照会
 - User ID基準で有効になっている購読商品を照会できます。
     - 決済が完了した購読商品は、使用期間が残っている場合、継続して照会できます。
@@ -188,13 +214,13 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
 ### 有効になっている購読照会API仕様
 
 ```csharp
-public static void RequestActivePurchases(ToastCallback<List<IapPurchase>> callback);
+public static void RequestActivedPurchases(ToastCallback<List<IapPurchase>> callback);
 ```
 
 ### 有効になっている購読照会例
 
 ```csharp
-ToastIap.RequestActivePurchases((result, purchases) =>
+ToastIap.RequestActivedPurchases((result, purchases) =>
 {
     if (result.IsSuccessful)
     {

@@ -1,5 +1,21 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.14.0 (2019.07.02)
+
+### TOAST Log & Crash
+
+### 추가 사항
+
+* Unity Standalone/WebGL 버전 추가
+    * Logger
+    * Instance Logger
+
+## TOAST IAP
+
+### 추가 사항
+
+* ActivedPurchase 추가
+
 ## 0.13.1 (2019.03.26)
 
 ### TOAST Log & Crash

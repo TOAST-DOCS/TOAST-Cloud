@@ -8,30 +8,31 @@
 
 ## Android 설정
 ### Gradle 빌드 설정
-- mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
+- In the Unity Editor, open the Build Settings windows (Player Settings > Publishing Settings > Build).
+- Set the Build System drop-down to Gradle
+- Use the Custom Gradle Template checkbocx unbder Build System
+- Add below to dependencies of mainTemplate.gradle.
 
 #### Google Play Store
 
 ```groovy
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-google:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-iap-google:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-iap-google:0.17.0'
+**DEPS**}
 ```
 
 #### One Store
 
 ```groovy
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-onestore:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-iap-onestore:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.17.0'
+**DEPS**}
 ```
 
 ## iOS 설정
@@ -179,6 +180,31 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
 });
 ```
 
+## 구독 복원
+- User ID 기준으로 구독 상품을 복원할 수 있습니다.
+    - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 복원할 수 있습니다.
+    - 구독 상품 복원 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
+- iOS에서만 구독한 상품을 복원 가능합니다.
+    - 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다. 
+
+### 구독 복원 API 명세
+
+```csharp
+public static void RequestRestorePurchases(ToastCallback<List<IapPurchase>> callback);
+```
+
+### 구독 복원 예시
+
+```csharp
+ToastIap.RequestRestorePurchases((result, purchases) =>
+{
+    if (result.IsSuccessful)
+    {
+        // 구독 복원 조회 성공
+    }
+});
+```
+
 ## 활성화된 구독 조회
 - User ID 기준으로 활성화된 구독 상품을 조회할 수 있습니다.
     - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 조회할 수 있습니다.
@@ -188,13 +214,13 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
 ### 활성화된 구독 조회 API 명세
 
 ```csharp
-public static void RequestActivePurchases(ToastCallback<List<IapPurchase>> callback);
+public static void RequestActivedPurchases(ToastCallback<List<IapPurchase>> callback);
 ```
 
 ### 활성화된 구독 조회 예시
 
 ```csharp
-ToastIap.RequestActivePurchases((result, purchases) =>
+ToastIap.RequestActivedPurchases((result, purchases) =>
 {
     if (result.IsSuccessful)
     {

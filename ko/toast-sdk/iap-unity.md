@@ -8,30 +8,31 @@
 
 ## Android 설정
 ### Gradle 빌드 설정
+- Unity Editor에서, Build Settings 창을 엽니다. (Player Settings > Publishing Settings > Build).
+- Build System 목록에서 Gradle을 선택합니다.
+- Build System 하위의 체크 박스를 선택하여 Custom Gralde Template을 사용합니다.
 - mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
 
 #### Google Play Store
 
 ```groovy
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-google:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-iap-google:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-iap-google:0.17.0'
+**DEPS**}
 ```
 
 #### One Store
 
 ```groovy
+apply plugin: 'com.android.application'
+
 dependencies {
-    if (GradleVersion.current() >= GradleVersion.version("4.2")) {
-        implementation 'com.toast.android:toast-unity-iap-onestore:0.16.1'
-    } else {
-        compile 'com.toast.android:toast-unity-iap-onestore:0.16.1'
-    }
-}
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.17.0'
+**DEPS**}
 ```
 
 ## iOS 설정
@@ -179,6 +180,30 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
 });
 ```
 
+## 구독 복원
+- User ID 기준으로 활성화된 구독 상품을 복원할 수 있습니다.
+    - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 복원할 수 있습니다.
+    - 구독 상품 복원 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
+- iOS에서만 구독한 상품을 복원 가능합니다.
+
+### 구독 복원 API 명세
+
+```csharp
+public static void RequestRestorePurchases(ToastCallback<List<IapPurchase>> callback);
+```
+
+### 구독 복원 예시
+
+```csharp
+ToastIap.RequestRestorePurchases((result, purchases) =>
+{
+    if (result.IsSuccessful)
+    {
+        // 구독 복원 조회 성공
+    }
+});
+```
+
 ## 활성화된 구독 조회
 - User ID 기준으로 활성화된 구독 상품을 조회할 수 있습니다.
     - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 조회할 수 있습니다.
@@ -188,13 +213,13 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
 ### 활성화된 구독 조회 API 명세
 
 ```csharp
-public static void RequestActivePurchases(ToastCallback<List<IapPurchase>> callback);
+public static void RequestActivedPurchases(ToastCallback<List<IapPurchase>> callback);
 ```
 
 ### 활성화된 구독 조회 예시
 
 ```csharp
-ToastIap.RequestActivePurchases((result, purchases) =>
+ToastIap.RequestActivedPurchases((result, purchases) =>
 {
     if (result.IsSuccessful)
     {
