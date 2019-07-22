@@ -214,13 +214,13 @@ ToastIap.RequestRestorePurchases((result, purchases) =>
 ### 有効になっている購読照会API仕様
 
 ```csharp
-public static void RequestActivedPurchases(ToastCallback<List<IapPurchase>> callback);
+public static void RequestActivatedPurchases(ToastCallback<List<IapPurchase>> callback);
 ```
 
 ### 有効になっている購読照会例
 
 ```csharp
-ToastIap.RequestActivedPurchases((result, purchases) =>
+ToastIap.RequestActivatedPurchases((result, purchases) =>
 {
     if (result.IsSuccessful)
     {
