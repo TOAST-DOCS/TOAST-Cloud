@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.17.1 (2019.07.23)
+
+### TOAST Push
+
+#### 기능 추가
+
+* 커스텀 리시버 사용시 메세지 객체내에 FCM 발신자 ID 정보 추가.
+
 ## 0.17.0 (2019.06.25)
 
 ### TOAST Push
