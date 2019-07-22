@@ -1,5 +1,20 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.16.0 (2019.07.23)
+
+### TOAST IAP
+
+#### 개선 사항
+
+* 앱 내 구입 제한 설정에 따른 결제 실패 대응
+* 프로모션 결제 개선
+
+### TOAST Push
+
+#### 개선 사항
+
+* 메세지 수신 delegate 개선
+
 ## 0.15.0 (2019.06.25)
 
 ### TOAST IAP
