@@ -135,8 +135,8 @@ Push에서 발급받은 AppKey를 설정합니다.
 // 초기화
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration;
 
-// 카테고리 설정 (iOS 10.0+)
-+ (void)setCategories:(nullable NSSet<UNNotificationCategory *> *)categories NS_AVAILABLE_IOS(10_0);
+// 카테고리 설정
++ (void)setCategories:(nullable NSSet<UNNotificationCategory *> *)categories;
 
 // 알림 옵션 설정
 // iOS 8.0+ : UIUserNotificationType
@@ -207,15 +207,102 @@ Push에서 발급받은 AppKey를 설정합니다.
                                    forType:(ToastPushType)type
                                      error:(NSError *)error;
 
-// 푸시 수신
-- (void)didReceivePushWithPayload:(NSDictionary *)payload
-                          forType:(ToastPushType)type;
+// 메세지 수신
+- (void)didReceivePushMessage:(ToastPushMessage *)message
+                      forType:(ToastPushType)type;
 
-// 알림 액션 수신 (APNS)
-- (void)didReceiveNotificationActionWithIdentifier:(NSString *)actionIdentifier
-                                categoryIdentifier:(NSString *)categoryIdentifier
-                                           payload:(NSDictionary *)payload
-                                          userText:(nullable NSString *)userText;
+// 액션 수신 (APNS, iOS 10.0+)
+- (void)didReceivePushAction:(ToastPushAction *)action API_AVAILABLE(ios(10.0));
+
+@end
+```
+
+#### 메세지 객체 API 명세
+
+```objc
+// 메세지 객체
+@interface ToastPushMessage : NSObject
+
+@property (nonatomic, readonly) NSString *identifier;
+
+@property (nonatomic, readonly, nullable) NSString *title;
+
+@property (nonatomic, readonly, nullable) NSString *body;
+
+@property (nonatomic, readonly) NSInteger badge;
+
+@property (nonatomic, readonly, nullable) ToastPushRichMessage *richMessage;
+
+@property (nonatomic, readonly) NSDictionary<NSString *, NSString *> *payload;
+
+@end
+
+
+// 리치 메세지 객체
+@interface ToastPushRichMessage : NSObject
+
+@property (nonatomic, readonly, nullable) ToastPushMedia *media;
+
+@property (nonatomic, readonly, nullable) NSArray<ToastPushButton *> *buttons;
+
+@end
+
+
+// 미디어 객체
+@interface ToastPushMedia : NSObject
+
+@property (nonatomic, readonly) ToastPushMediaType mediaType;
+
+@property (nonatomic, readonly) NSString *source;
+
+@property (nonatomic, readonly) ToastPushSourceType sourceType;
+
+@property (nonatomic, readonly) NSString *extension;
+
+@end
+
+
+// 버튼 객체
+@interface ToastPushButton : NSObject
+
+@property (nonatomic, readonly) NSString *identifier;
+
+@property (nonatomic, readonly) ToastPushButtonType buttonType;
+
+@property (nonatomic, readonly) NSString *name;
+
+@property (nonatomic, readonly, nullable) NSString *link;
+
+@property (nonatomic, readonly, nullable) NSString *hint;
+
+@property (nonatomic, readonly, nullable) NSString *submit;
+
+@end
+```
+
+#### 액션 객체 API 명세
+
+```objc
+typedef NS_ENUM(NSInteger, ToastPushActionType) {
+    ToastPushActionDismiss = 0,
+    ToastPushActionOpenApp = 1,
+    ToastPushActionOpenURL = 2,
+    ToastPushActionReply = 3,
+};
+
+@interface ToastPushAction : NSObject
+
+@property (nonatomic, readonly) NSString *actionIdentifier;
+
+@property (nonatomic, readonly) NSString *categoryIdentifier;
+
+@property (nonatomic, readonly) ToastPushActionType actionType;
+
+@property (nonatomic, readonly, nullable) ToastPushButton *button;
+
+@property (nonatomic, readonly, nullable) ToastPushMessage *message;
+
+@property (nonatomic, readonly, nullable) NSString *userText;
 
 @end
 ```
@@ -278,16 +365,13 @@ Push에서 발급받은 AppKey를 설정합니다.
 }
 
 // 메세지 수신
-- (void)didReceivePushWithPayload:(NSDictionary *)payload
-                          forType:(ToastPushType)type {
+- (void)didReceivePushMessage:(ToastPushMessage *)message
+                      forType:(ToastPushType)type {
     // ...
 }
 
 // 알림 액션(버튼) 수신 (iOS 10.0+)
-- (void)didReceiveNotificationActionWithIdentifier:(NSString *)actionIdentifier
-                                categoryIdentifier:(NSString *)categoryIdentifier
-                                           payload:(NSDictionary *)payload
-                                          userText:(nullable NSString *)userText NS_AVAILABLE_IOS(10_0) {
+- (void)didReceivePushAction:(ToastPushAction *)action {
     // ...
 }
 ```
@@ -307,10 +391,10 @@ UNAuthorizationOptionBadge | UNAuthorizationOptionSound
 // default : UNAuthorizationOptionBadge | UNAuthorizationOptionSound
 // 사용자가 앱을 실행 중일 때도 알림이 노출되려면 옵션을 설정을 변경해주세요.
 if (@available(iOS 10.0, *)) {
-[ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
+    [ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
 
 } else {
-[ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
+    [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
 }
 ```
 
