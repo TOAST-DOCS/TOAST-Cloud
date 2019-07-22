@@ -616,6 +616,7 @@ public static Builder newBuilder();
 public String getChannelId();
 public void setChannelId(String channelId);
 public ToastPushMessage getMessage();
+public String getSenderId();
 ```
 
 | Method | Returns | |
@@ -623,6 +624,7 @@ public ToastPushMessage getMessage();
 | getChannelId | String | 채널 ID를 반환합니다. |
 | setChannelId |  | 채널 ID를 설정합니다. |
 | getMessage | ToastPushMessage | 메세지 객체를 반환합니다. |
+| getSenderId | String | 발신자 ID를 반환합니다. (FCM Only) |
 
 ### ToastPushMessage
 - 수신한 메세지 내용을 담는 객체 입니다.

@@ -20,7 +20,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.17.0'
+    implementation 'com.toast.android:toast-unity-iap-google:0.17.1'
 **DEPS**}
 ```
 
@@ -31,7 +31,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.17.0'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.17.1'
 **DEPS**}
 ```
 
@@ -213,13 +213,13 @@ ToastIap.RequestRestorePurchases((result, purchases) =>
 ### 활성화된 구독 조회 API 명세
 
 ```csharp
-public static void RequestActivedPurchases(ToastCallback<List<IapPurchase>> callback);
+public static void RequestActivatedPurchases(ToastCallback<List<IapPurchase>> callback);
 ```
 
 ### 활성화된 구독 조회 예시
 
 ```csharp
-ToastIap.RequestActivedPurchases((result, purchases) =>
+ToastIap.RequestActivatedPurchases((result, purchases) =>
 {
     if (result.IsSuccessful)
     {

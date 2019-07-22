@@ -27,7 +27,14 @@ loggerConf->setProjectVersion(version);
 
 if (_logger != NULL)
 {
-    _logger->initialize(loggerConf);
+    if (_logger->initialize(loggerConf))
+	{
+		// success
+	}
+	else
+	{
+		// fail
+	}
 }
 ```
 

@@ -137,8 +137,8 @@ Pushで発行されたAppKeyを設定します。
 // 初期化
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration;
 
-// カテゴリー設定(iOS 10.0+)
-+ (void)setCategories:(nullable NSSet<UNNotificationCategory *> *)categories NS_AVAILABLE_IOS(10_0);
+// カテゴリー設定
++ (void)setCategories:(nullable NSSet<UNNotificationCategory *> *)categories;
 
 // お知らせオプション設定
 // iOS 8.0+ : UIUserNotificationType
@@ -209,15 +209,102 @@ Pushで発行されたAppKeyを設定します。
                                    forType:(ToastPushType)type
                                      error:(NSError *)error;
 
-// プッシュ受信
-- (void)didReceivePushWithPayload:(NSDictionary *)payload
-                          forType:(ToastPushType)type;
+// メッセージ受信
+- (void)didReceivePushMessage:(ToastPushMessage *)message
+                      forType:(ToastPushType)type;
 
-// 通知アクション受信(APNS)
-- (void)didReceiveNotificationActionWithIdentifier:(NSString *)actionIdentifier
-                                categoryIdentifier:(NSString *)categoryIdentifier
-                                           payload:(NSDictionary *)payload
-                                          userText:(nullable NSString *)userText;
+// 通知アクション受信 (APNS, iOS 10.0+)
+- (void)didReceivePushAction:(ToastPushAction *)action API_AVAILABLE(ios(10.0));
+
+@end
+```
+
+#### 메세지 객체 API 명세
+
+```objc
+// 메세지 객체
+@interface ToastPushMessage : NSObject
+
+@property (nonatomic, readonly) NSString *identifier;
+
+@property (nonatomic, readonly, nullable) NSString *title;
+
+@property (nonatomic, readonly, nullable) NSString *body;
+
+@property (nonatomic, readonly) NSInteger badge;
+
+@property (nonatomic, readonly, nullable) ToastPushRichMessage *richMessage;
+
+@property (nonatomic, readonly) NSDictionary<NSString *, NSString *> *payload;
+
+@end
+
+
+// 리치 메세지 객체
+@interface ToastPushRichMessage : NSObject
+
+@property (nonatomic, readonly, nullable) ToastPushMedia *media;
+
+@property (nonatomic, readonly, nullable) NSArray<ToastPushButton *> *buttons;
+
+@end
+
+
+// 미디어 객체
+@interface ToastPushMedia : NSObject
+
+@property (nonatomic, readonly) ToastPushMediaType mediaType;
+
+@property (nonatomic, readonly) NSString *source;
+
+@property (nonatomic, readonly) ToastPushSourceType sourceType;
+
+@property (nonatomic, readonly) NSString *extension;
+
+@end
+
+
+// 버튼 객체
+@interface ToastPushButton : NSObject
+
+@property (nonatomic, readonly) NSString *identifier;
+
+@property (nonatomic, readonly) ToastPushButtonType buttonType;
+
+@property (nonatomic, readonly) NSString *name;
+
+@property (nonatomic, readonly, nullable) NSString *link;
+
+@property (nonatomic, readonly, nullable) NSString *hint;
+
+@property (nonatomic, readonly, nullable) NSString *submit;
+
+@end
+```
+
+#### 액션 객체 API 명세
+
+```objc
+typedef NS_ENUM(NSInteger, ToastPushActionType) {
+    ToastPushActionDismiss = 0,
+    ToastPushActionOpenApp = 1,
+    ToastPushActionOpenURL = 2,
+    ToastPushActionReply = 3,
+};
+
+@interface ToastPushAction : NSObject
+
+@property (nonatomic, readonly) NSString *actionIdentifier;
+
+@property (nonatomic, readonly) NSString *categoryIdentifier;
+
+@property (nonatomic, readonly) ToastPushActionType actionType;
+
+@property (nonatomic, readonly, nullable) ToastPushButton *button;
+
+@property (nonatomic, readonly, nullable) ToastPushMessage *message;
+
+@property (nonatomic, readonly, nullable) NSString *userText;
 
 @end
 ```
@@ -267,16 +354,13 @@ Pushで発行されたAppKeyを設定します。
 }
 
 // メッセージ受信
-- (void)didReceivePushWithPayload:(NSDictionary *)payload
-                          forType:(ToastPushType)type {
+- (void)didReceivePushMessage:(ToastPushMessage *)message
+                      forType:(ToastPushType)type {
     // ...
 }
 
 // 通知アクション(ボタン)受信(iOS 10.0+)
-- (void)didReceiveNotificationActionWithIdentifier:(NSString *)actionIdentifier
-                                categoryIdentifier:(NSString *)categoryIdentifier
-                                           payload:(NSDictionary *)payload
-                                          userText:(nullable NSString *)userText NS_AVAILABLE_IOS(10_0) {
+- (void)didReceivePushAction:(ToastPushAction *)action {
     // ...
 }
 

@@ -1,20 +1,28 @@
 ## TOAST > TOAST SDK使用ガイド > リリースノート > Unity
 
+## 0.15.0 (2019.07.23)
+
+### TOAST IAP
+
+#### 변경 사항
+
+* ActivedPurchases -> ActivatedPurchses
+    
 ## 0.14.0 (2019.07.02)
 
 ### TOAST Log & Crash
 
-### 추가 사항
+#### 추가 사항
 
 * Unity Standalone/WebGL 버전 추가
     * Logger
     * Instance Logger
 
-## TOAST IAP
+### TOAST IAP
 
-### 추가 사항
+#### 추가 사항
 
-* ActivedPurchase 추가
+* ActivedPurchases 추가
 
 ## 0.13.1 (2019.03.26)
 
