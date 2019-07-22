@@ -87,6 +87,9 @@ TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Backgr
 
 **Project Target > Capabilities > Background Modes > ON**
 
+APNS 기능을 사용하려면 `Remote notifications` 항목을 활성화해야 합니다.
+VoIP 기능을 사용하려면 `Voice over IP` 항목을 활성화해야 합니다.
+
 ![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
 
 ## 서비스 로그인
