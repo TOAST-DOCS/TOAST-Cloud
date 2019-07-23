@@ -1,6 +1,6 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Windows C++
 
-## 0.9.3.0 (2019.07.22)
+## 0.9.3.0 (2019.07.23)
 
 ### TOAST Log & Crash
 
