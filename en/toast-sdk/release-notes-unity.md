@@ -1,5 +1,11 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.15.1 (2019.07.29)
+
+### 공통
+
+* iOS 0.16.1 framework 적용
+
 ## 0.15.0 (2019.07.23)
 
 ### TOAST IAP
