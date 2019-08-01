@@ -19,6 +19,7 @@ TOAST Console提供如下功能。
 ![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
 ![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
 
+
 ## 组织管理
 
 组织是为高效使用并管理TOAST服务所创建的组。
@@ -178,6 +179,7 @@ TOAST Console提供如下功能。
 - 不设置：所有IP（或IP段）都可访问IAM控制台。 
 - 仅允许使用的IP（或IP段）访问控制台：仅输入的IP（或IP段）可访问控制台。输入允许访问的IP或IP段即可。 
 
+
 ### 组织会员
 
 - 组织的OWNER可赋予所有权限，申请服务。 
@@ -202,7 +204,7 @@ TOAST Console提供如下功能。
 
 ### 项目会员
 
-项目的会员是toast.com的会员。
+项目的会员是toast.com的会员。组织内部会员作为项目会员，可以使用服务的功能预计之后提供。
 即使不是组织的会员，也可以成为项目的会员。
 
 | 操作        | 作用                                     | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
