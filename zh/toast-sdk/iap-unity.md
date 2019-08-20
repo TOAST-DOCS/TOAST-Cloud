@@ -62,7 +62,7 @@ dependencies {
 
 ### 초기화 API 명세
 ```csharp
-public delegate void PurchaseUpdateListener(ToastResult result, IapPurchase purchase);
+public delegate void PurchaseUpdateListener(string transactionId, ToastResult result, IapPurchase purchase);
 
 public static void Initialize(ToastIapConfiguration configuration, PurchaseUpdateListener listener);
 ```
@@ -130,7 +130,7 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
         var products = productDetailsResult.Products;
         foreach (var product in products)
         {
-            var name = product.Name;
+            var name = product.ProductName;
             var localizedPrice = product.LocalizedPrice;
             // ...
         }
