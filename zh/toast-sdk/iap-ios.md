@@ -234,6 +234,9 @@ ToastProductTypeConsumable = 1
 
 // Auto-Renewable Subscription Products 
 ToastProductTypeAutoRenewableSubscription = 2
+
+// Auto-Renewable Consumable Subscription Products 
+ToastProductTypeConsumableSubscription = 3
 ```
 
 ## Purchase Products 
@@ -349,6 +352,7 @@ Android subscription can also be queried for a same user ID.
 Restore the purchase history based on your AppStore account and apply it in the IAP console. 
 Use if purchased subscription products are not viewed or activated.
 Returns the list of actived purchases after restored.
+자동 갱신형 소비성 구독 상품은 소비 처리하지 않은 구매 내역이 존재할 경우 미소비 구매 내역에서 조회 가능합니다.
 
 ### Specifications for Restoring Purchase API 
 
@@ -384,6 +388,7 @@ Returns the list of actived purchases after restored.
 ## Query Unconsumed Purchase List 
 
 An consumable product must be processed as consumed after product is provided. List of unconsumed purchases is to be queried.  
+자동 갱신형 소비성 구독 상품은 갱신 결제가 발생할 때마다 미소비 구매 내역에서 조회 가능합니다.
 
 ### Specifications for Unconsumed Purchase Query API
 

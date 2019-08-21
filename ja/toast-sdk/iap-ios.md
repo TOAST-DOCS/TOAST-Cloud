@@ -233,6 +233,10 @@ ToastProductTypeConsumable = 1
 
 // 自動更新型購読商品
 ToastProductTypeAutoRenewableSubscription = 2
+
+
+// 自動更新型消費性購読商品
+ToastProductTypeConsumableSubscription = 3
 ```
 
 ## 商品購入
@@ -348,6 +352,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 使用者のAppStoreアカウントで購入した内訳を基準に購買内訳を復元し,IAPコンソールに反映します。 
 購買した購読商品が照会されないか,活性化しない場合に使います。
 購買復元が完了してから,活性化された購買リストを返還します。
+자동 갱신형 소비성 구독 상품은 소비 처리하지 않은 구매 내역이 존재할 경우 미소비 구매 내역에서 조회 가능합니다.
 
 ### 購入復元API仕様
 
@@ -384,6 +389,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 
 消費性商品の場合、商品支給後に消費(consume)処理を行う必要があります。
 消費処理されていない購入履歴を照会します。
+자동 갱신형 소비성 구독 상품은 갱신 결제가 발생할 때마다 미소비 구매 내역에서 조회 가능합니다.
 
 ### 未消費購入履歴照会API仕様
 
