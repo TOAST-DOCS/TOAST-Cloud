@@ -221,22 +221,29 @@ IAPコンソールに登録されている商品のうち、使用設定がUSE�
 
 ### 商品の種類
 
+| 상품명    | 상품타입             | 설명                                     |
+| ------ | ---------------- | -------------------------------------- |
+| 消費性商品 | ToastProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
+| 自動更新型購読商品  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
+| 自動更新型消費性購読商品 | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
+
 `自動更新型購読商品のアップグレード、ダウングレード、修正機能は、サポートしていません。`
-1つの購読グループに、1つの商品のみ登録する必要があります。
+`1つの購読グループに、1つの商品のみ登録する必要があります。`
 
 ``` objc
-// 商品種類取得失敗
-ToastProductTypeUnknown = 0
+typedef NS_ENUM(NSInteger, ToastProductType) {
+    // 商品種類取得失敗
+    ToastProductTypeUnknown = 0,
 
-// 消費性商品
-ToastProductTypeConsumable = 1
+    // 消費性商品
+    ToastProductTypeConsumable = 1,
 
-// 自動更新型購読商品
-ToastProductTypeAutoRenewableSubscription = 2
+    // 自動更新型購読商品
+    ToastProductTypeAutoRenewableSubscription = 2,
 
-
-// 自動更新型消費性購読商品
-ToastProductTypeConsumableSubscription = 3
+    // 自動更新型消費性購読商品
+    ToastProductTypeConsumableSubscription = 3
+};
 ```
 
 ## 商品購入

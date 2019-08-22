@@ -222,21 +222,29 @@ Products that failed to obtain product information from store (Apple) are indica
 
 ### Product Types 
 
+| 상품명    | 상품타입             | 설명                                     |
+| ------ | ---------------- | -------------------------------------- |
+| Consumable Products | ToastProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
+| Auto-Renewable Subscription Products  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
+| Auto-Renewable Consumable Subscription Products  | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
+
 `Do not support Upgrades, Downgrades, and Modification for auto-renewable subscription products.`
-Only one product must be registered to one subscription group.
+`Only one product must be registered to one subscription group.`
 
 ``` objc
-// Failed to Obtain Product Types 
-ToastProductTypeUnknown = 0
+typedef NS_ENUM(NSInteger, ToastProductType) {
+    // Failed to Obtain Product Types 
+    ToastProductTypeUnknown = 0,
 
-// Consumable Products 
-ToastProductTypeConsumable = 1
+    // Consumable Products 
+    ToastProductTypeConsumable = 1,
 
-// Auto-Renewable Subscription Products 
-ToastProductTypeAutoRenewableSubscription = 2
+    // Auto-Renewable Subscription Products 
+    ToastProductTypeAutoRenewableSubscription = 2,
 
-// Auto-Renewable Consumable Subscription Products 
-ToastProductTypeConsumableSubscription = 3
+    // Auto-Renewable Consumable Subscription Products 
+    ToastProductTypeConsumableSubscription = 3
+};
 ```
 
 ## Purchase Products 

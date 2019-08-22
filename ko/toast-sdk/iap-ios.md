@@ -221,21 +221,30 @@ IAP 콘솔에 등록되어 있는 상품 중 사용 여부 설정이 USE인 상�
 
 ### 상품 종류
 
+| 상품명    | 상품타입             | 설명                                     |
+| ------ | ---------------- | -------------------------------------- |
+| 소비성 상품 | ToastProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
+| 자동 갱신형 구독 상품  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
+| 자동 갱신형 소비성 구독 상품 | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
+
 `자동 갱신형 구독 상품의 업그레이드, 다운그레이드, 수정 기능은 지원하지 않습니다.`
-하나의 구독 그룹에 하나의 상품만 등록해야 합니다.
+`하나의 구독 그룹에 하나의 상품만 등록해야 합니다.`
+
 
 ``` objc
-// 상품종류 획득 실패
-ToastProductTypeUnknown = 0
+typedef NS_ENUM(NSInteger, ToastProductType) {
+    // 상품종류 획득 실패
+    ToastProductTypeUnknown = 0,
 
-// 소비성 상품
-ToastProductTypeConsumable = 1
+    // 소비성 상품
+    ToastProductTypeConsumable = 1,
 
-// 자동 갱신형 구독 상품
-ToastProductTypeAutoRenewableSubscription = 2
+    // 자동 갱신형 구독 상품
+    ToastProductTypeAutoRenewableSubscription = 2,
 
-// 자동 갱신형 소비성 구독 상품
-ToastProductTypeConsumableSubscription = 3
+    // 자동 갱신형 소비성 구독 상품
+    ToastProductTypeConsumableSubscription = 3
+};
 ```
 
 ## 상품 구매
