@@ -228,8 +228,8 @@ Products that failed to obtain product information from store (Apple) are indica
 | Auto-Renewable Subscription Products  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
 | Auto-Renewable Consumable Subscription Products  | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
 
-`Do not support Upgrades, Downgrades, and Modification for auto-renewable subscription products.`
-`Only one product must be registered to one subscription group.`
+> `Do not support Upgrades, Downgrades, and Modification for auto-renewable subscription products.`
+> `Only one product must be registered to one subscription group.`
 
 ``` objc
 typedef NS_ENUM(NSInteger, ToastProductType) {
