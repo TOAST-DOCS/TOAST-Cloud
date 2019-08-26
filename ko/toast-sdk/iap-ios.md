@@ -100,7 +100,7 @@ TOAST IAP를 사용하려면 Capabilities에서 In-App Purchase 항목을 활성
 
 TOAST IAP에서 발급받은 AppKey를 설정합니다.
 초기화와 동시에 미완료 구매 건에 대한 재처리가 진행됩니다.
-재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않고, 미소비 상품 목록(소모성 상품), 활성화된 구매 목록(구독 상품)에 반영됩니다.
+재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않고, 미소비 상품 목록(소모성 상품), 활성화된 구독 목록(구독 상품)에 반영됩니다.
 `결제 결과에 대한 통지를 받기 위해서는 상품 구매 전에 Delegate 가 설정되어 있어야만 합니다.`
 
 ``` objc
@@ -319,19 +319,20 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
 ```
 
-## 활성화된 구매 목록 조회
+## 활성화된 구독 목록 조회
 
-현재 사용자 ID에 활성화된 구매(만료되지 않고 구독 중인 구독 상품) 목록을 조회합니다.
+현재 사용자 ID 기준으로 활성화된 구독 목록을 조회합니다.
+결제가 완료된 구독 상품(자동 갱신형 구독, 자동 갱신형 소비성 구독 상품)은 만료되기 전까지 계속 조회할 수 있습니다. 
 사용자 ID가 같다면 Android에서 구매한 구독 상품도 조회됩니다.
 
-### 활성화된 구매 목록 조회 API 명세
+### 활성화된 구독 목록 조회 API 명세
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// 활성화된 구매 목록 조회하기
+// 활성화된 구독 목록 조회하기
 + (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -339,7 +340,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 @end
 ```
 
-### 활성화된 구매 목록 조회 API 사용 예
+### 활성화된 구독 목록 조회 API 사용 예
 
 ``` objc
 [ToastIAP requestActivePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
@@ -359,8 +360,8 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다. 
 구매한 구독 상품이 조회되지 않거나 활성화 되지 않을 경우 사용합니다.
-구매 복원이 완료된 후에 활성화된 구매 목록을 반환합니다. 
-자동 갱신형 소비성 구독 상품은 소비 처리하지 않은 구매 내역이 존재할 경우 미소비 구매 내역에서 조회 가능합니다.
+구매 복원이 완료된 후에 활성화된 구독 목록을 반환합니다. 
+자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### 구매 복원 API 명세
 

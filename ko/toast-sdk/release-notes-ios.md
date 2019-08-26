@@ -13,9 +13,9 @@
 
 * 자동 갱신형 소비성 구독 상품 추가 
 
-#### 버그 수정
+#### 개선 사항
 
-* 상품 목록 조회시 invalidProducts 에 유효한 상품 목록이 반환되던 버그 수정
+* 상품 목록 조회시 invalidProducts 에 유효한 상품 목록이 반환되던 문제 수정
 
 ### TOAST Push
 
@@ -146,8 +146,6 @@
     * configurationWithProjectKey
   * Add
     * configurationWithAppKey
-
-#### 수정 사항
 
 * UserID 설정 시점에 따라 전송하는 Log의 UserID가 갱신되지 않을 수 있는 문제 수정
 

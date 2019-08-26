@@ -101,7 +101,7 @@ To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
 
 Set appkey issued from TOAST IAP. 
 Reprocessing for uncompleted purchases is executed along with initialization.  
-Reprocessing results are not delegated, but are applied to the list of consumable products and the list of active purchases.
+Reprocessing results are not delegated, but are applied to the list of consumable products and the list of active subscription.
 `In order to receive delegate of purchase result, Delegate must be set before purchase of product.`
 
 ``` objc
@@ -319,19 +319,20 @@ For a product which cannot be purchased, an error will be delivered indicating p
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
 ```
 
-## Query Activated Purchase List 
+## Query Activated Subscription List 
 
-Query activated list of purchases (products that are not expired but currently under subscription) for current user ID.  
+Query activated list of purchases for current user ID.
+Completely-paid subscription products(Auto-Renewal Subscription, Auto-Renewal Consumable Subscription) can be queried as long as usage period remains.
 Android subscription can also be queried for a same user ID.  
 
-### Specifications for Activated Purchase List API 
+### Specifications for Activated Subscription List API 
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// Query Activated Purchase List 
+// Query Activated Subscription List 
 + (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -339,7 +340,7 @@ Android subscription can also be queried for a same user ID.
 @end
 ```
 
-### Usage Example of Activated Purchase List Query API 
+### Usage Example of Activated Subscription List Query API 
 
 ``` objc
 [ToastIAP requestActivePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
@@ -360,7 +361,7 @@ Android subscription can also be queried for a same user ID.
 Restore the purchase history based on your AppStore account and apply it in the IAP console. 
 Use if purchased subscription products are not viewed or activated.
 Returns the list of actived purchases after restored.
-자동 갱신형 소비성 구독 상품은 소비 처리하지 않은 구매 내역이 존재할 경우 미소비 구매 내역에서 조회 가능합니다.
+자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### Specifications for Restoring Purchase API 
 
