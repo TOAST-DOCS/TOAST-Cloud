@@ -165,7 +165,7 @@ android {
 ### Push 설정 예시
 
 ```java
-ToastPushConfiguration.Builder configuration =
+ToastPushConfiguration configuration =
     ToastPushConfiguration.newBuilder(getApplicationContext(), "YOUR_APP_KEY")
             .build();
 ```
@@ -343,13 +343,23 @@ public class ToastPushSampleApplication extends Application {
 
 ## 알림 기본값 설정
 
-### 작은 아이콘 기본값 설정
-- 알림의 작은 아이콘의 기본값을 설정합니다.
-- 작은 아이콘의 기본값을 설정하면 SDK가 알림 생성시 기본값으로 설정된 작은 아이콘을 알림에 등록합니다.
+### 알림 기본 옵션 설정
+- 알림의 우선 순위, 작은 아이콘, 배경색, LED 라이트, 진동, 알림음을 설정합니다.
+- 알림 기본 옵션 적용을 위해서는 `Application#onCreate` 에서 등록해야 합니다.
+- 안드로이드 8.0(API 레벨 26) 이상 단말기에서는 기본 옵션 적용을 위해 기본 알림 채널이 재생성 됩니다.
 
-#### 작은 아이콘 기본값 설정 예시
+#### 알림 기본 옵션 설정 예시
 ```java
-ToastNotification.setDefaultSmallIcon(context, R.drawable.ic_notification);
+ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder(context)
+        .setPriority(NotificationCompat.PRIORITY_HIGH)
+        .setColor(0x0085AA)
+        .setLights(Color.RED, 0, 300)
+        .setSmallIcon(R.drawable.ic_notification)
+        .setSound(R.raw.dingdong1)
+        .setVibratePattern(new long[] {500, 700, 1000})
+        .build();
+
+ToastNotification.setDefaultOptions(context, defaultOptions);
 ```
 
 ### 기본 알림 채널 설정
@@ -364,9 +374,18 @@ ToastNotification.setDefaultSmallIcon(context, R.drawable.ic_notification);
 
 ### 기본 알림 채널 설정 예시
 ```java
-ToastNotification.setDefaultNotificationChannel(context,
+// 기본 채널만 설정
+ToastNotification.setDefaultNotificationChannel(
+    context,
     "YOUR_NOTIFICATION_CHANNEL_ID",
     "YOUR_NOTIFICATION_CHANNEL_NAME");
+
+// 기본 채널과 기본 옵션 동시에 설정
+ToastNotification.setDefaultNotificationChannel(
+    context,
+    "YOUR_NOTIFICATION_CHANNEL_ID",
+    "YOUR_NOTIFICATION_CHANNEL_NAME",
+    defaultOptions);
 ```
 
 ## 알림 리소스 설정
@@ -387,7 +406,8 @@ ToastNotification.setDefaultNotificationChannel(context,
 - 알림 제거 : 현재 알림을 제거합니다.
 - 앱 열기 : 앱을 실행합니다.
 - URL 열기 : 특정 URL로 이동합니다.
-    - Custom scheme을 이용한 Activity/BroadcastReceiver 이동도 가능
+    - 웹 URL 입력시 브라우져가 실행됩니다.
+    - Custom scheme을 이용한 Activity/BroadcastReceiver 실행이 가능합니다.
 - 답장 전송 : 알림에서 바로 답장을 보냅니다.
     - 안드로이드 7.0(API 레벨 24) 이상에서만 사용 가능합니다.
 
@@ -430,7 +450,7 @@ public class ToastPushSampleApplication extends Application {
                 // 답장 액션일 경우, 서비스 서버로 해당 내용을 전송
                 if (action.getActionType() == PushAction.ActionType.REPLY) {
                     String userText = action.getUserText();
-                    // e.g. 서비스 서버로 사용자 입력 내용 전송
+                    // 서비스 서버로 사용자 입력 내용 전송
                 }
             }
         });
@@ -696,3 +716,29 @@ public final PendingIntent createAnalyticsContentIntent(Context context, ToastRe
 | notify | | Context, int, Notification | 사용자 알림을 특정 ID로 노출합니다. |
 | createAnalyticsContentIntent | PendingIntent | Context, ToastRemoteMessage | 지표 전송을 포함하는 기본 실행 인텐트를 반환합니다. |
 | createAnalyticsContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
+
+### ToastNotificationOptions
+- 기본 알림 옵션 설정시 우선순위, 작은 아이콘, 배경색, LED, 진동, 알림음의 정보를 설정하는 객체입니다.
+
+``` java
+/* ToastNotificationOptions.java */
+public int getPriority();
+public int getSmallIcon();
+public int getColor();
+public int getLightColor();
+public int getLightOnMs();
+public int getLightOffMs();
+public long[] getVibratePattern();
+public Uri getSound();
+```
+
+| Method | Returns | Parameters | |
+|---|---|---|---|
+| getPriority | int |  | 우선 순위를 반환합니다. |
+| getSmallIcon | int | | 작은 아이콘의 리소스 식별자를 반환합니다. |
+| getColor | int | | 배경색을 반환합니다. |
+| getLightColor | int | | LED 색을 반환합니다. |
+| getLightOnMs | int | | LED 불이 들어올 때의 시간을 반환합니다. |
+| getLightOffMs | int | | LED 불이 나갈 때의 시간을 반환합니다. |
+| getVibratePattern | long[] | | 진동의 패턴을 반환합니다. |
+| getSound | Uri | | 알림음의 Uri 를 반환합니다. |
