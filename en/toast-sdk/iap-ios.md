@@ -361,6 +361,7 @@ Android subscription can also be queried for a same user ID.
 Restore the purchase history based on your AppStore account and apply it in the IAP console. 
 Use if purchased subscription products are not viewed or activated.
 Returns the list of actived purchases after restored.
+자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### Specifications for Restoring Purchase API 
 
