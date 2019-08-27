@@ -70,8 +70,9 @@ AndroidManifest.xmlにmeta-dataを追加して、全決済画面（"full"）ま�
 | ------ | ---------------- | -------------------------------------- |
 | 消費性商品 | "CONSUMABLE"     | 消費可能な一回性商品。ゲーム内マネー、メディアファイルなどがあります。 |
 | 購読商品 | "AUTO_RENEWABLE" | 指定された間隔および価格で決済が自動的に繰り返される商品。 <br>オンライン雑誌および音楽ストリーミングサービスなどがあります。 |
+| Consumable Subscription Products | "CONSUMABLE_AUTO_RENEWABLE" | 소비가 가능한 구독 상품<br>정기적으로 게임내 재화, 아이템 등을 지급하는 결제 방식입니다. |
 
-> [参考]購読商品は、**Google Playストア** のみサポートします。
+> Note :Subscription products and Consumable subscription products are supported by Google Play Store only.
 
 ## アプリ内決済設定
 
@@ -305,7 +306,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
 
 ## 未消費決済照会
 
-* まだ消費されていない一回性商品(CONSUMABLE)情報を照会します。
+* まだ消費されていない一回の商品(CONSUMABLE)と消費性購読商品(CONSUMABLE_AUTO_RENEWABLE)情報を照会します。
 * ユーザーに商品を支給した後、[Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
 * 未消費決済は、ToastIap.queryConsumablePurchases()メソッドを使用して照会できます。
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストで返されます。
@@ -348,7 +349,7 @@ void queryConsumablePurchases() {
 
 ## 有効になっている購読の照会
 
-* User IDベースで有効になっている購読商品を照会できます。
+* User IDベースで有効になっている購読商品(AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE)を照会できます。
 * 決済が完了した購読商品は、使用期間が残っている場合、継続して照会できます。
 * 有効になっている購読は、ToastIap.queryActivatedPurchases()メソッドを使用して照会できます。
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストに返されます。
