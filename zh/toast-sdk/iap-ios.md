@@ -101,7 +101,7 @@ To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
 
 Set appkey issued from TOAST IAP. 
 Reprocessing for uncompleted purchases is executed along with initialization.  
-Reprocessing results are not delegated, but are applied to the list of consumable products and the list of active purchases.
+Reprocessing results are not delegated, but are applied to the list of consumable products and the list of active subscription.
 `In order to receive delegate of purchase result, Delegate must be set before purchase of product.`
 
 ``` objc
@@ -222,18 +222,29 @@ Products that failed to obtain product information from store (Apple) are indica
 
 ### Product Types 
 
-`Do not support Upgrades, Downgrades, and Modification for auto-renewable subscription products.`
-Only one product must be registered to one subscription group.
+| 상품명    | 상품타입             | 설명                                     |
+| ------ | ---------------- | -------------------------------------- |
+| Consumable Products | ToastProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
+| Auto-Renewable Subscription Products  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
+| Auto-Renewable Consumable Subscription Products  | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
+
+> `Do not support Upgrades, Downgrades, and Modification for auto-renewable subscription products.`
+> `Only one product must be registered to one subscription group.`
 
 ``` objc
-// Failed to Obtain Product Types 
-ToastProductTypeUnknown = 0
+typedef NS_ENUM(NSInteger, ToastProductType) {
+    // Failed to Obtain Product Types 
+    ToastProductTypeUnknown = 0,
 
-// Consumable Products 
-ToastProductTypeConsumable = 1
+    // Consumable Products 
+    ToastProductTypeConsumable = 1,
 
-// Auto-Renewable Subscription Products 
-ToastProductTypeAutoRenewableSubscription = 2
+    // Auto-Renewable Subscription Products 
+    ToastProductTypeAutoRenewableSubscription = 2,
+
+    // Auto-Renewable Consumable Subscription Products 
+    ToastProductTypeConsumableSubscription = 3
+};
 ```
 
 ## Purchase Products 
@@ -308,19 +319,20 @@ For a product which cannot be purchased, an error will be delivered indicating p
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
 ```
 
-## Query Activated Purchase List 
+## Query Activated Subscription List 
 
-Query activated list of purchases (products that are not expired but currently under subscription) for current user ID.  
+Query activated list of purchases for current user ID.
+Completely-paid subscription products(Auto-Renewal Subscription, Auto-Renewal Consumable Subscription) can be queried as long as usage period remains.
 Android subscription can also be queried for a same user ID.  
 
-### Specifications for Activated Purchase List API 
+### Specifications for Activated Subscription List API 
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// Query Activated Purchase List 
+// Query Activated Subscription List 
 + (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -328,7 +340,7 @@ Android subscription can also be queried for a same user ID.
 @end
 ```
 
-### Usage Example of Activated Purchase List Query API 
+### Usage Example of Activated Subscription List Query API 
 
 ``` objc
 [ToastIAP requestActivePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
@@ -349,6 +361,7 @@ Android subscription can also be queried for a same user ID.
 Restore the purchase history based on your AppStore account and apply it in the IAP console. 
 Use if purchased subscription products are not viewed or activated.
 Returns the list of actived purchases after restored.
+자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### Specifications for Restoring Purchase API 
 
@@ -384,6 +397,7 @@ Returns the list of actived purchases after restored.
 ## Query Unconsumed Purchase List 
 
 An consumable product must be processed as consumed after product is provided. List of unconsumed purchases is to be queried.  
+자동 갱신형 소비성 구독 상품은 갱신 결제가 발생할 때마다 미소비 구매 내역에서 조회 가능합니다.
 
 ### Specifications for Unconsumed Purchase Query API
 

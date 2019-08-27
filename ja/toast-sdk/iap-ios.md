@@ -100,7 +100,7 @@ TOAST IAPを使用するには、CapabilitiesでIn-App Purchase項目を有効�
 
 TOAST IAPで発行されたAppKeyを設定します。
 初期化と同時に未完了購入の件に対する再処理が行われます。
-再処理により決済が完了した購買件は,Delegatingされず,未消費商品リスト(消耗性商品),活性化された購買リスト(購読商品)に反映されます。
+再処理により決済が完了した購買件は,Delegatingされず,未消費商品リスト(消耗性商品),活性化された購読リスト(購読商品)に反映されます。
 `決済結果に対する通知を受けるためには,商品購入前にDelegateが設定されていなければなりません。`
 
 ``` objc
@@ -221,18 +221,29 @@ IAPコンソールに登録されている商品のうち、使用設定がUSE�
 
 ### 商品の種類
 
-`自動更新型購読商品のアップグレード、ダウングレード、修正機能は、サポートしていません。`
-1つの購読グループに、1つの商品のみ登録する必要があります。
+| 상품명    | 상품타입             | 설명                                     |
+| ------ | ---------------- | -------------------------------------- |
+| 消費性商品 | ToastProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
+| 自動更新型購読商品  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
+| 自動更新型消費性購読商品 | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
+
+> `自動更新型購読商品のアップグレード、ダウングレード、修正機能は、サポートしていません。`
+> `1つの購読グループに、1つの商品のみ登録する必要があります。`
 
 ``` objc
-// 商品種類取得失敗
-ToastProductTypeUnknown = 0
+typedef NS_ENUM(NSInteger, ToastProductType) {
+    // 商品種類取得失敗
+    ToastProductTypeUnknown = 0,
 
-// 消費性商品
-ToastProductTypeConsumable = 1
+    // 消費性商品
+    ToastProductTypeConsumable = 1,
 
-// 自動更新型購読商品
-ToastProductTypeAutoRenewableSubscription = 2
+    // 自動更新型購読商品
+    ToastProductTypeAutoRenewableSubscription = 2,
+
+    // 自動更新型消費性購読商品
+    ToastProductTypeConsumableSubscription = 3
+};
 ```
 
 ## 商品購入
@@ -307,19 +318,20 @@ ToastProductTypeAutoRenewableSubscription = 2
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
 ```
 
-## 有効になっている購入リスト照会
+## 有効になっている購読リスト照会
 
-現在のユーザーIDにおいて、有効になっている購入(満了しておらず、購読中の購読商品)リストを照会します。
+현재 사용자 ID 기준으로 활성화된 구독 목록을 조회합니다.
+결제가 완료된 구독 상품(자동 갱신형 구독, 자동 갱신형 소비성 구독 상품)은 만료되기 전까지 계속 조회할 수 있습니다. 
 同じユーザーIDであれば、Androidで購入した購読商品も照会されます。
 
-### 有効になっている購入リスト照会API仕様
+### 有効になっている購読リスト照会API仕様
 
 ``` objc
 @interface ToastIAP : NSObject
 
 // ...
 
-// 有効になっている購入リストを照会する
+// 有効になっている購読リストを照会する
 + (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // ...
@@ -327,7 +339,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 @end
 ```
 
-### 有効になっている購入リスト照会API使用例
+### 有効になっている購読リスト照会API使用例
 
 ``` objc
 [ToastIAP requestActivePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
@@ -348,6 +360,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 使用者のAppStoreアカウントで購入した内訳を基準に購買内訳を復元し,IAPコンソールに反映します。 
 購買した購読商品が照会されないか,活性化しない場合に使います。
 購買復元が完了してから,活性化された購買リストを返還します。
+자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### 購入復元API仕様
 
@@ -384,6 +397,7 @@ ToastProductTypeAutoRenewableSubscription = 2
 
 消費性商品の場合、商品支給後に消費(consume)処理を行う必要があります。
 消費処理されていない購入履歴を照会します。
+자동 갱신형 소비성 구독 상품은 갱신 결제가 발생할 때마다 미소비 구매 내역에서 조회 가능합니다.
 
 ### 未消費購入履歴照会API仕様
 
