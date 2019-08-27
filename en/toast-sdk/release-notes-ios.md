@@ -1,19 +1,42 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.17.0 (2019.08.27)
+
+### 공통
+
+#### 개선 사항 
+* 안전성 개선
+
+### TOAST IAP
+
+#### 추가 사항
+
+* 자동 갱신형 소비성 구독 상품 추가 
+
+#### 개선 사항
+
+* 상품 목록 조회시 invalidProducts 에 유효한 상품 목록이 반환되던 문제 수정
+
+### TOAST Push
+
+#### 개선 사항
+
+* 푸쉬 메시지에 알림음을 설정하지 않고 발송시 기본 알림음이 설정되도록 개선
+
 ## 0.16.1 (2019.07.29)
 
 ### 공통
 
 #### 개선 사항 
-- 국가코드를 획득하지 못하는 문제 수정 
+* 국가코드를 획득하지 못하는 문제 수정 
 
 ## 0.16.0 (2019.07.23)
 
 ### TOAST Logger 
 
 #### 개선 사항 
-- 심볼이 존재하는 바이너리의 경우 CrashReport CallStack에 심볼 문자열이 포함되도록 개선
-- CrashReport Reason 이 출력되지 않는 현상 수정
+* 심볼이 존재하는 바이너리의 경우 CrashReport CallStack에 심볼 문자열이 포함되도록 개선
+* CrashReport Reason 이 출력되지 않는 현상 수정
 
 ### TOAST IAP
 
@@ -123,8 +146,6 @@
     * configurationWithProjectKey
   * Add
     * configurationWithAppKey
-
-#### Bug Fixed
 
 * Modify a problem that may not update the UserID of the Log that is sent at the time of UserID setup
 

@@ -43,7 +43,7 @@ TOAST SDKのすべてのサービスを使用するには、下記のように�
 
 ```groovy
 dependencies {
-  implementation 'com.toast.android：toast-sdk：0.17.1'
+  implementation 'com.toast.android：toast-sdk：0.18.0'
 }
 ```
 
