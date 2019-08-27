@@ -70,8 +70,9 @@ For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/
 | ---- | ------ | ------ |
 | Consumable Products | "CONSUMABLE" | Consumable Products refer to consumable one-time products, <br>such as products within a game, and media files. |
 | Subscription Products | "AUTO_RENEWABLE" | Subscription products refer to products <br>which are automatically paid at specific intervals and prices, <br>such as online magazines and music streaming services.  |
+| Consumable Subscription Products | "CONSUMABLE_AUTO_RENEWABLE" | 소비가 가능한 구독 상품<br>정기적으로 게임내 재화, 아이템 등을 지급하는 결제 방식입니다. |
 
-> Note :Subscription products are supported by Google Play Store only.
+> Note :Subscription products and Consumable subscription products are supported by Google Play Store only.
 
 ## In-App Purchase (IAP) Setting
 
@@ -303,7 +304,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
 
 ## Query Unconsumed Purchases
 
-* Query information of unconsumed one-time products(CONSUMABLE).
+* Query information of unconsumed one-time products(CONSUMABLE) and consumable subscription products(CONSUMABLE_AUTO_RENEWABLE).
 * Product, after provided to user, can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api).
 * Unconsumed purchase can be queried by using the ToastIap.queryConsumablePurchases() method.
 * Query results are returned to the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
@@ -346,7 +347,7 @@ void queryConsumablePurchases() {
 
 ## Query Activated Subscription
 
-* Activated subscription products can be queried for user ID.
+* Activated subscription products(AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE) can be queried for user ID.
 * Completely-paid subscription products can be queried as long as usage period remains.
 * Activated subscription can be queried by using the ToastIap.queryActivatedPurchases() method.
 * Query results are returned via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener) to [IapPurchase](./iap-android/#iappurchase).

@@ -70,8 +70,9 @@ meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
 | ------ | ---------------- | -------------------------------------- |
 | 소비성 상품 | "CONSUMABLE"     | 소비 가능한 일회성 상품, 게임내 재화, 미디어 파일은 소비성 상품의 예입니다. |
 | 구독 상품  | "AUTO_RENEWABLE" | 지정된 간격 및 가격으로 결제가 자동으로 되풀이되는 상품, <br>온라인 잡지 및 음악 스트리밍 서비스는 구독의 예입니다. |
+| 소비성 구독 상품 | "CONSUMABLE_AUTO_RENEWABLE" | 소비가 가능한 구독 상품<br>정기적으로 게임내 재화, 아이템 등을 지급하는 결제 방식입니다. |
 
-> [참고] 구독 상품은 **Google Play 스토어** 만 지원합니다.
+> [참고] 구독 상품과 소비성 구독 상품은 **Google Play 스토어** 만 지원합니다.
 
 ## 인앱 결제 설정
 
@@ -305,7 +306,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
 
 ## 미소비 결제 조회
 
-* 아직 소비되지 않은 일회성 상품(CONSUMABLE) 정보를 조회합니다.
+* 아직 소비되지 않은 일회성 상품(CONSUMABLE)과 소비성 구독 상품(CONSUMABLE_AUTO_RENEWABLE) 정보를 조회합니다.
 * 사용자에게 상품을 지급된 후 [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 * 미소비 결제는 ToastIap.queryConsumablePurchases() 메서드를 사용하여 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.
@@ -348,7 +349,7 @@ void queryConsumablePurchases() {
 
 ## 활성화된 구독 조회
 
-* User ID 기준으로 활성화된 구독 상품을 조회할 수 있습니다.
+* User ID 기준으로 활성화된 구독 상품(AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE)을 조회할 수 있습니다.
 * 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 조회할 수 있습니다.
 * 활성화된 구독은 ToastIap.queryActivatedPurchases() 메서드를 사용하여 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트를 반환됩니다.
