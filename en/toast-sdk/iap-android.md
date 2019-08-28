@@ -64,7 +64,7 @@ For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/
 
 ## Product Types
 
-- Two types of products are currently supported: consumable products and subscription products.
+- Three types of products are currently supported: consumable products and subscription products, consumable subscription products.
 
 | Product Name | Product Type | Description |
 | ---- | ------ | ------ |
