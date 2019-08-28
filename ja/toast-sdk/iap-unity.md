@@ -48,9 +48,9 @@ dependencies {
 
 | プラットフォーム | ストア | サポートする商品の種類 |
 |---|---|---|
-| Android | Google Play Store | 消費性商品、購読商品 |
+| Android | Google Play Store | 消費性商品、購読商品, 消費性購読商品 |
 | Android | One Store | 消費性商品 |
-| iOS | Apple App Store | 消費性商品、購読商品 |
+| iOS | Apple App Store | 消費性商品、購読商品, 消費性購読商品 |
 
 ## TOAST IAP SDK初期化
 [ToastIapConfiguration](./iap-unity/#toastiapconfiguration)を利用してTOAST IAPコンソールで発行されたAppKeyとストアコード([StoreCode](./iap-unity/#storecode))を設定します。
