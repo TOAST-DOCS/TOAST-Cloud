@@ -48,9 +48,9 @@ dependencies {
 
 | 플랫폼 | 스토어 | 지원하는 상품 종류 |
 |---|---|---|
-| Android | Google Play Store | 소비성 상품, 구독 상품 |
+| Android | Google Play Store | 소비성 상품, 구독 상품, 소비성 구독 상품 |
 | Android | One Store | 소비성 상품 |
-| iOS | Apple App Store | 소비성 상품, 구독 상품 |
+| iOS | Apple App Store | 소비성 상품, 구독 상품, 소비성 구독 상품 |
 
 ## TOAST IAP SDK 초기화
 [ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 TOAST IAP 콘솔에서 발급받은 AppKey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
