@@ -1,8 +1,16 @@
 ## TOAST > TOAST SDK使用ガイド > リリースノート > iOS
 
-## TOAST > User Guide for TOAST SDK > Release Notes > iOS
-
 ## 0.18.0 (2019.10.01)
+
+### TOAST IAP
+
+#### 추가 사항
+
+* 구매 요청시 사용자 데이터 설정 기능 추가
+
+#### 개선 사항
+
+* 복원 기능 수행 후 복원된 결제건만 반환하도록 변경
 
 ### TOAST Push
 
@@ -10,6 +18,7 @@
 
 * ToastPushConfiguration 객체의 Nullability 속성 변경
 * 리치 메시지 생성 로직 개선으로 ToastPushMedia 객체의 sourceType, extension 프로퍼티 삭제
+* 리치 메시지의 소스 정보에 한글 URL 지원
 
 #### 버그 수정
 
