@@ -1,5 +1,14 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.19.0 (2019.10.01)
+
+### TOAST Push
+
+#### 기능 개선
+
+* 사용자 정의 메시지 리시버 사용성 개선.
+    * 알림 노출 요청시 사용자 콘텐츠 인텐트 타입이 PendingIntent 로 변경되었습니다.
+
 ## 0.18.0 (2019.08.27)
 
 ### TOAST IAP
@@ -26,7 +35,7 @@
 
 #### 기능 추가
 
-* 커스텀 리시버 사용시 메세지 객체내에 FCM 발신자 ID 정보 추가.
+* 커스텀 리시버 사용시 메시지 객체내에 FCM 발신자 ID 정보 추가.
 
 ## 0.17.0 (2019.06.25)
 
@@ -36,8 +45,8 @@
 
 * 토큰 정보 업데이트 기능 추가.
     * 언어 및 국가 정보 등의 정보를 업데이트할 수 있습니다.
-* 메세지 수신 통지 기능 추가.
-* 리치 메세지 버튼의 액션("Open", "Dismiss", "Reply", etc) 통지 기능 추가.
+* 메시지 수신 통지 기능 추가.
+* 리치 메시지 버튼의 액션("Open", "Dismiss", "Reply", etc) 통지 기능 추가.
 
 #### 기능 개선
 
@@ -45,7 +54,7 @@
     * PushType ("FCM", "TENCENT", etc)으로 초기화가 가능합니다.
 * 앱 상태에 따른 알림 노출 정책 변경.
     * 사용자가 앱을 사용 중(Foreground)일 때는 알림을 노출하지 않습니다.
-* 사용자 정의 메세지 리시버 사용성 개선.
+* 사용자 정의 메시지 리시버 사용성 개선.
     * 사용자 정의 메시지 수정 및 알림 생성이 간편해졌습니다.
     * 사용자 정의 알림의 지표 전송이 간편해졌습니다.
 
@@ -70,111 +79,111 @@
 
 #### Fixed
 
-* Removed 'toast-push-tencent' dependencies from 'toast-sdk'.
+* 'toast-sdk'에서 'toast-push-tencent' 의존성 제거.
 
 ## 0.16.0 (2019.04.23)
 
 ### TOAST Push
 
-#### Added
+#### 기능 추가
 
-* Added Tencent Push.
-* Added CustomReceiver.
-    * Once the message is received, the message is processed by a user-defined receiver.
+* Tencent 푸시 추가.
+* 사용자 메시지 처리 기능 추가.
+    * 메시지가 수신되면 사용자가 정의한 receiver가 메시지를 처리합니다.
 
 ## 0.15.0 (2019.03.26)
 
 ### TOAST Log & Crash
 
-#### Improved
+#### 기능 개선
 
-* Rename ProjectKey to AppKey
-    * setProjectKey is still available
+* ProjectKey가 AppKey로 명칭 변경
+    * 기존 setProjectKey는 계속 사용 가능
 
 ### TOAST IAP
 
-#### Added
+#### 기능 추가
 
-* Added chinese markets.
+* 중국 마켓 추가.
 
 ### TOAST Push
 
-#### Added
+#### 기능 추가
 
-* Added API to unregister a token.
-* Added a feature that sets notification's sound when adding a 'sound' field.
-    * Only under Android 8.0
+* 토큰 해제 API 추가.
+* sound 필드 추가시 알림의 소리를 설정할 수 있는 기능 추가.
+    * 안드로이드 8.0 미만에서만 동작
 
 ## 0.14.3 (2019.03.08)
 
 ### TOAST IAP
 
-#### Fixed
+#### 버그 수정
 
-* Fixed a issue that doesn't work APIs when a application applies Proguard.
+* 앱에서 Proguard를 적용하는 경우, API가 정상적으로 동작하지 않는 문제 해결.
 
 ## 0.14.2 (2019.03.04)
 
 ### TOAST Push
 
-#### Fixed
+#### 버그 수정
 
-* Fixed a crash that occurs when could not obtain a FCM token.
+* FCM 토큰을 획득할 수 없는 경우, 크래시가 발생하는 문제 해결
 
 ## 0.14.1 (2019.01.29)
 
 ### TOAST IAP
 
-#### Fixed
+#### 버그 수정
 
-* Fixed an error that could not reprocess old IAP SDK purchases.
+* (구)IAP SDK 결제건을 처리하지 못하는 에러 수정.
 
 ## 0.14.0 (2019.01.08)
 
 ### TOAST IAP
 
-#### Added
+#### 기능 추가
 
-* Added TOAST IAP Unity Plugin.
+* TOAST IAP Unity Plugin 추가.
 
 ## 0.13.0 (2018.12.27)
 
 ### TOAST Core
 
-#### Improved
+#### 기능 개선
 
-* ToastSdk.initialize() is deprecated.
-    * It is called automatically on application start.
+* ToastSdk.initialize() 메소드 deprecated.
+    * Application 시작 시에 자동으로 호출되도록 변경
 
 ### TOAST Push
 
-#### Added
+#### 기능 추가
 
-* New Functions
+* 신규 기능 추가
     * Firebase Cloud Messaging(FCM)
 
 ## 0.12.0 (2018.12.04)
 
 ### TOAST IAP
 
-#### Added
+#### 추가 사항
 
-* New Functions
-    * Google Play Store (One-Time/Subscription Products)
-    * ONE store (One-Time Products)
+* 신규 기능 추가
+    * Google Play 스토어(소비성 상품, 구독 상품)
+    * ONE store(소비성 상품)
 
 ## 0.11.0 (2018.11.20)
 
 ### TOAST Log & Crash
 
-#### Added
+#### 추가 사항
 
-* Network Insights
+* Network Insights 기능 추가
 
 ## 0.9.0 (2018.09.04)
 
 ### TOAST Log & Crash
 
-#### Added
+#### 추가 사항
 
-* New Functions
+* 신규 기능 추가
