@@ -1,5 +1,18 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.18.0 (2019.10.01)
+
+### TOAST Push
+
+#### 개선 사항
+
+* ToastPushConfiguration 객체의 Nullability 속성 변경
+* 리치 메시지 생성 로직 개선으로 ToastPushMedia 객체의 sourceType, extension 프로퍼티 삭제
+
+#### 버그 수정
+
+* 콘솔 설정에 메시지 수신/확인 기능이 사용 안함으로 설정되어 있는 경우 리치 메시지가 정상적으로 표시되지 않던 버그 수정
+
 ## 0.17.0 (2019.08.27)
 
 ### 공통
@@ -50,7 +63,7 @@
 
 #### 개선 사항
 
-* 메세지 / 액션 수신 delegate 변경
+* 메시지 / 액션 수신 delegate 변경
 
 ## 0.15.0 (2019.06.25)
 
@@ -72,177 +85,178 @@
 
 * 알림 옵션의 기본 설정 변경 
     * 앱 실행 중에는 알림을 표시하지 않도록 변경
-        * 이전과 동일한 동작을 위해서는 [여기](./push-ios/#_6)를 확인하세요.    
+        * 이전과 동일한 동작을 위해서는 [여기](./push-ios/#_6)를 확인하세요.
 
 ## 0.14.1 (2019.05.16)
 
 ### TOAST IAP
 
-#### Fixed
+#### 개선 사항
 
-* Improved non-purchasing phenomena when tried to purchase the same product as reprocessing in progress.
+* 처리중인 재처리 결제건과 동일한 상품 구매시 보유한 상품으로 처리되는 현상 개선
 
 ### TOAST Push
 
-#### Fixed
+#### 개선 사항
 
-* Fixes a bug that was incorrectly collected for indicator events according to the device calendar settings.
+* 단말기 캘린더 설정에 따라 지표 이벤트 발생 시간이 잘못 수집되던 버그 수정
 
 ## 0.14.0 (2019.05.14)
 
-### Common
+### 공통
 
-#### Fixed
+#### 개선 사항
 
-* Network error code integration
-* Improvement in safety
+* 네트워크 관련 에러 코드 통합
+* 안전성 개선
 
 ### TOAST IAP
 
-#### Fixed
+#### 개선 사항
 
-* Improved purchasing restore
-    * Adds a restore feature for missing payments based on AppStore receipt 
-    * Add restore failure error code
-* Adding a store request(promotion) flag to the purchase result class
-* Expand reprocessing target
-* Improve purchase flow
+* 구매 복원 기능 개선 
+    * AppStore 구매 내역을 기준으로 누락된 결제의 복원 기능 추가 
+    * 복원 실패 에러 코드 추가
+* 결제 결과 클래스에 스토어 요청(프로모션) 여부 추가
+* 재처리 대상 확대 
+* 결제 흐름 개선 
 
 ### TOAST Push
 
-#### Fixed
+#### 개선 사항
 
-* Improvement in safety
-* Adding message id in payload that is passed to delegate
-* In the case of VoIP, which does not require consent to receive a advertisement message or a night advertisement message, a message is received regardless of whether the user agrees to receive it or not
+* 안전성 개선
+* 메시지 수신 Delegate 로 전달되는 payload 정보에 메시지 ID 정보 추가
+* 광고성 메시지 수신 동의, 야간 광고성 메시지 수신 동의가 불필요한 VoIP 의 경우 수신 동의 여부와 관계 없이 메시지 수신
 
 ## 0.13.0 (2019.03.26)
 
-### Common
+### 공통
 
-#### Fixed
+#### 개선 사항
 
-* Improved Usability of Public Class
-  * Add Description
-  * Support Nullability, NSCoding, NSCopying
+* Public Class의 사용성 개선  
+  * Description 추가
+  * Nullability, NSCoding, NSCopying 지원
 
 ### TOAST Core
 
-#### Fixed
+#### 개선 사항
 
-* Add Internal Exception Processing
+* 내부 예외 처리 추가
 
 ### TOAST Logger
 
-#### Added
+#### 추가 사항
 
-* Support for Crash analysis of devices using the arm64e architecture
-* Change PLCrashReporter Dependency
+* arm64e 아키텍처를 사용하는 기기의 Crash 분석 지원
+* PLCrashReporter Dependency 변경
 
-#### Fixed
+#### 개선 사항
 
-* Change Configuration Interface
+* Configuration Interface 변경
   * Deprecate
     * configurationWithProjectKey
   * Add
     * configurationWithAppKey
 
-* Modify a problem that may not update the UserID of the Log that is sent at the time of UserID setup
+* UserID 설정 시점에 따라 전송하는 Log의 UserID가 갱신되지 않을 수 있는 문제 수정
 
 ### TOAST IAP
 
-#### Fixed
+#### 개선 사항
 
-* Add Internal Exception Processing
+* 내부 예외 처리 추가
 
 ### TOAST Push
 
-#### Added
+#### 추가 사항
 
-* Add unregisterToken API
+* 토큰 삭제 API 추가
 
 ## 0.12.4 (2019.03.19)
 
 ### TOAST Core
 
-#### Fixed
+#### 개선 사항
 
-* Add a exception 
+* 예외처리 추가
 
 ## 0.12.3 (2019.02.26)
 
 ### TOAST Core, Common
 
-#### Fixed
+#### 개선 사항
 
-* Add a exception for util function
+* 유틸 기능의 예외처리 추가
 
 ### TOAST IAP
 
-#### Fixed
+#### 개선 사항
 
-* Add products information caching 
-* Add a exception 
+* 상품정보 캐싱 추가
+* 예외처리 추가
 
 ## 0.12.2 (2019.02.08) - Hotfix
 
 ### TOAST Core
 
-#### Fixed
+#### 개선 사항
 
-* Add a defense code for crashes in ToastTransfer
+* ToastTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
 
 ## 0.12.1 (2019.01.08)
 
 ### TOAST IAP
 
-#### Fixed
+#### 개선 사항
 
-* Fixed an issue where VerifyEnd could not be reprocessed under certain circumstances
+* 특정 상황에서 결제 상태가 VerifyEnd인 결제의 재처리가 동작하지 않던 문제 수정
 
 ## 0.12.0 (2018.12.27)
 
 ### TOAST Core
 
-#### Fixed
+#### 개선 사항
 
-* Add a defense code for crashes in ToastTransfer
+* ToastTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
 
 ### TOAST Push
 
-#### Fixed 
+#### 추가 사항
 
-* New Functions 
+* 신규 기능 추가
 
 ### TOAST IAP
 
-#### Fixed
+#### 개선 사항
 
-* Added exception handling for UserID verification logic to handle reprocessed transactions delivered by Apple
-* Add a defense code for crashes in ToastOperation
+* Apple에서 재처리해주는 Transaction의 처리가 가능하도록 UserID Check 로직의 예외처리 추가
+* ToastOperation에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
+
 
 ## 0.11.1 (2018.12.04)
 
 ### TOAST IAP
 
-#### Added 
+#### 추가 사항
 
-* New Functions 
+* 신규 기능 추가
 
 
 ## 0.11.0 (2018.11.20)
 
 ### TOAST Log & Crash
 
-#### Added 
+#### 추가 사항
 
-* Network Insights
+* Network Insights 기능 추가
 
 
 ## 0.9.0 (2018.09.04)
 
 ### TOAST Log & Crash
 
-#### Added
+#### 추가 사항
 
-* New Functions
+* 신규 기능 추가

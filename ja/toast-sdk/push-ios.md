@@ -118,9 +118,9 @@ VoIP機能を使用するには,`Voice over IP`項目を活性化する必要が
 
 Pushで発行されたAppKeyを設定します。
 `初期化しない状態では、トークンの登録および照会機能を使用できません。`
-`Delegate 설정이 된 후 메세지 수신에 대한 통지를 받을 수 있습니다.`
-`원활한 메세지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
-`개발환경에서는 반드시 ToastPushConfiguration 의 sandbox 프로퍼티를 YES 로 설정하셔야 사용 가능합니다.`
+`Delegate 설정이 된 후 메시지 수신에 대한 통지를 받을 수 있습니다.`
+`원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
+`개발환경에서는 반드시 ToastPushConfiguration 의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
 
 ### 初期化API仕様
 
@@ -166,10 +166,10 @@ Pushで発行されたAppKeyを設定します。
 // プッシュタイプ(APNS、VoIP)
 @property (nonatomic) NSSet<ToastPushType> *pushTypes;
 
-// 国コード (예약 메세지 발송시 기준 시간이 되는 국가코드)
+// 国コード (예약 메시지 발송시 기준 시간이 되는 국가코드)
 @property (nonatomic, copy) NSString *countryCode;
 
-// 言語設定 (다국어 메세지 발송시 언어 선택 기준)
+// 言語設定 (다국어 메시지 발송시 언어 선택 기준)
 @property (nonatomic, copy) NSString *languageCode;
 
 // Sandbox(Debug)環境設定
@@ -222,10 +222,10 @@ Pushで発行されたAppKeyを設定します。
 @end
 ```
 
-#### 메세지 객체 API 명세
+#### 메시지 객체 API 명세
 
 ```objc
-// 메세지 객체
+// 메시지 객체
 @interface ToastPushMessage : NSObject
 
 @property (nonatomic, readonly) NSString *identifier;
@@ -243,7 +243,7 @@ Pushで発行されたAppKeyを設定します。
 @end
 
 
-// 리치 메세지 객체
+// 리치 메시지 객체
 @interface ToastPushRichMessage : NSObject
 
 @property (nonatomic, readonly, nullable) ToastPushMedia *media;
@@ -259,10 +259,6 @@ Pushで発行されたAppKeyを設定します。
 @property (nonatomic, readonly) ToastPushMediaType mediaType;
 
 @property (nonatomic, readonly) NSString *source;
-
-@property (nonatomic, readonly) ToastPushSourceType sourceType;
-
-@property (nonatomic, readonly) NSString *extension;
 
 @end
 
@@ -580,7 +576,7 @@ agreement.allowNightAdvertisements = NO;
 
 ## 토큰 정보 업데이트
 
-사용자 아이디, 국가코드, 언어코드, 메세지 동의 설정 등의 토큰 정보를 업데이트합니다.
+사용자 아이디, 국가코드, 언어코드, 메시지 동의 설정 등의 토큰 정보를 업데이트합니다.
 등록되어있는 모든 토큰에 일괄 적용됩니다.
 `토큰 정보 업데이트 요청은 앱 실행 후 토큰 등록이 된 상태에서만 가능합니다.`
 
@@ -735,7 +731,10 @@ Toast Push SDK初期化または`NotificationServiceExtensionのinfo.plistファ
 
 ### Notification Service Extensionの設定
 
-NotificationServiceクラスにToastPushServiceExtensionを拡張実装する必要があります。
+앱의 프로젝트 설정과 동일하게 Extension의 [프로젝트 설정](http://docs.toast.com/ko/TOAST/ko/toast-sdk/push-ios/#toast-push-sdk-xcode)을 추가합니다.
+`Extension은 앱과 함께 설치되지만 앱과는 분리된 별도의 Sandbox 환경입니다.`
+
+NotificationService 클래스에 ToastPushServiceExtension 을 확장구현 해야 합니다.
 
 ``` objc
 #import <UserNotifications/UserNotifications.h>
