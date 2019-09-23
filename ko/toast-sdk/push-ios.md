@@ -210,7 +210,7 @@ Push에서 발급받은 AppKey를 설정합니다.
                                    forType:(ToastPushType)type
                                      error:(NSError *)error;
 
-// 메세지 수신
+// 메시지 수신
 - (void)didReceivePushMessage:(ToastPushMessage *)message
                       forType:(ToastPushType)type;
 
