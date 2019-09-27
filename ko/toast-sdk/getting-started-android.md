@@ -43,7 +43,7 @@ TOAST SDK의 모든 서비스를 사용하려면 아래와 같이 종속성(depe
 
 ```groovy
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.18.0'
+  implementation 'com.toast.android:toast-sdk:0.19.0'
 }
 ```
 
