@@ -310,13 +310,14 @@ void launchPurchaseFlow(Activity activity, String productId) {
 * User information is set to setDeveloperPayload() method of IapPurchaseFlowParams$Builder.
 * Set user information can be identified as a getDeveloperPayload() method of [IapPurchase] (./iap-android/#iappurchase) returned during unconsumed query and activated subscription query.
 
-java
+```java
 String userData = "userData"
 IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
 setProductId (productId)
 .setDeveloperPayload(userData)
 .build();
 ToastIap.launchPurchaseFlow (activity, params);
+```
 
 
 If you purchased a product with a promotional code from the Google Play Store, you cannot use user data.
