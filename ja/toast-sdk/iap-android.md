@@ -313,6 +313,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
 *固定されたユーザー情報は、未消費決済照会とアクティブなサブスクリプション照会時に返される[IapPurchase](./iap-android / #iappurchase)のgetDeveloperPayloadメソッドで確認できます。
 
 ``java
+String userData = "userData"
 IapPurchase FlowParams params = IapPurchase FlowParams.newBuilder()
 .setProductId(productId)
 .setDeveloperPayload(userData)
