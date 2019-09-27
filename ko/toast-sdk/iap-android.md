@@ -314,7 +314,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
 * 설정된 사용자 정보는 미소비 결제 조회와 활성화된 구독 조회시 반환되는 [IapPurchase](./iap-android/#iappurchase) 의 getDeveloperPayload() 메서드로 확인할 수 있습니다.
 
 ```java
-String userData = "신발"
+String userData = "User Data"
 IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
        .setProductId(productId)
        .setDeveloperPayload(userData)
