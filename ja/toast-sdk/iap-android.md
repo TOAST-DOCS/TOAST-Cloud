@@ -306,6 +306,21 @@ void launchPurchaseFlow(Activity activity, String productId) {
     ToastIap.launchPurchaseFlow(activity, params);
 }
 ```
+##ユーザーデータ設定
+
+* TOAST IAPは、購入要求時にユーザー情報を追加することができます。
+*ユーザー情報は、IapPurchaseFlowParams.BuilderのsetDeveloperPayloadメソッドに設定します。
+*固定されたユーザー情報は、未消費決済照会とアクティブなサブスクリプション照会時に返される[IapPurchase](./iap-android / #iappurchase)のgetDeveloperPayloadメソッドで確認できます。
+
+``java
+IapPurchase FlowParams params = IapPurchase FlowParams.newBuilder()
+.setProductId(productId)
+.setDeveloperPayload(userData)
+.build()
+ToastIap. launchPurchase Flow(activity、params)
+````
+
+Googleプレイストアでプロモーションコードで商品を購入した場合は、ユーザーデータは利用できません。
 
 ## 未消費決済照会
 
