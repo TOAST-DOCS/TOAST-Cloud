@@ -8,11 +8,15 @@ Individual members can join with simple email and SMS authentication.
 Business members can join upon business information. 
 TOAST member information for management, as well as how to join are as follows: 
 
+### Members management Information
+TOAST members are classified into TOAST Korea (NHN) and TOAST Japan (NHN Japan) depending on who provides the service. 
+They are classified by the country of choice, and allowed to join when they agree with Terms of Services, as well as Privacy Policy set by regulations of each country.  
+
 #### Members of TOAST Korea
 | Managed Information | Description | Required |
 | --- | --- | --- |
 | ID | - Valid email address (requires email verification). | O | 
-| Password | -  Comprised of at least eight characters, in  combination of two or more of English, numbers, and special characters. <br/> - The password cannot be same as your previous one. <br/> - Make a clear distinction between uppercase and lowercase letters. | O | 
+| Password | -  To be comprised of more than 8 characters, including English, numbers, and special characters.  <br/> - To be comprised of more than 10 characters, if two are combined from English, numbers, or special characters. <br/> - The password cannot be same as your previous one. <br/> - Make a clear distinction between uppercase and lowercase letters. | O | 
 | Type of Membership | 1. Individual Members <br/> - Join with simple email and SMS authentication.  <br/> - Individual members can use credit cards for payment. <br/> - Non-Korean users can join as individual members.  <br/> 2. Business Members <br/> - Further authentication is required for business registration information.  <br/> - Business members can use credit cards and bank transfer for payment; for bank transfer, tax invoice can be issued upon business information registered while joining. | O |
 | Mobile Phone Number | - Valid mobile phone number available for SMS (requires SMS verification). | O |
 | Name | - User's name for TOAST Service.  | O |
