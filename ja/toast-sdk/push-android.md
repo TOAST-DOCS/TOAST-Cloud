@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.17.0’
+    implementation 'com.toast.android:toast-push-fcm:0.19.0’
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.17.0’
+    implementation 'com.toast.android:toast-push-tencent:0.19.0’
     ...
 }
 ```
@@ -479,10 +479,20 @@ public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
         // 실행 인텐트 설정 (미설정시 패키지 기본 메인 액티비티 실행)
         Intent launchIntent = new Intent(context, MainActivity.class);
 
-        // 사용자가 앱을 사용중이지 않을 때만 알림을 노출하도록하고 싶은 경우
+        PendingIntent contentIntent = PendingIntent.getActivity(
+                context,
+                REQUEST_CODE,
+                launchIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // 사용자가 앱을 사용중일때와 그렇지 않을때를 구분하여 알림을 노출하고 싶은 경우
         if (!isAppForeground()) {
             // 알림 생성 및 노출
-            notify(context, remoteMessage, launchIntent);
+            notify(context, remoteMessage, contentIntent);
+
+        } else {
+            // 특정 UI 화면 노출
+            Toast.makeText(context, message.title, Toast.LENGTH_SHORT).show();
         }
     }
 }
@@ -524,12 +534,18 @@ public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
         // 사용자 실행 인텐트 생성
         Intent launchIntent = new Intent(context, MainActivity.class);
 
+        PendingIntent contentIntent = PendingIntent.getActivity(
+                context,
+                REQUEST_CODE,
+                launchIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
         // 지표 전송을 포함한 실행 인텐트 생성 기능 제공
-        PendingIntent contentIntent = createAnalyticsContentIntent(context, remoteMessage, launchIntent);
+        PendingIntent analyticsIntent = createAnalyticsContentIntent(context, remoteMessage, contentIntent);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YOUR_CHANNE_ID");
         // (중략)
-        builder.setContentIntent(contentIntent);
+        builder.setContentIntent(analyticsIntent);
 
         notify(context, builder.build());
     }
@@ -694,22 +710,22 @@ public String getuserText();
 /* ToastPushMessageReceiver.java */
 public final boolean isAppForeground();
 public final void notify(Context context, ToastRemoteMessage message);
-public final void notify(Context context, ToastRemoteMessage message, Intent userIntent);
+public final void notify(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
 public final void notify(Context context, Notification notification);
 public final void notify(Context context, int notificationId, Notification notification);
 public final PendingIntent createAnalyticsContentIntent(Context context, ToastRemoteMessage message);
-public final PendingIntent createAnalyticsContentIntent(Context context, ToastRemoteMessage message, Intent userIntent);
+public final PendingIntent createAnalyticsContentIntent(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
 ```
 
 | Method | Returns | Parameters | |
 |---|---|---|---|
 | isAppForeground | boolean |  | 현재 앱을 사용중인지 여부를 반환합니다. |
 | notify | | Context, ToastRemoteMessage | 기본 실행 인텐트로 알림을 생성 및 노출합니다. |
-| notify | | Context, ToastRemoteMessage, Intent | 사용자 실행 인텐트로 알림을 생성 및 노출합니다. |
+| notify | | Context, ToastRemoteMessage, PendingIntent | 사용자 실행 인텐트로 알림을 생성 및 노출합니다. |
 | notify | | Context, Notification | 사용자 알림을 노출합니다. |
 | notify | | Context, int, Notification | 사용자 알림을 특정 ID로 노출합니다. |
 | createAnalyticsContentIntent | PendingIntent | Context, ToastRemoteMessage | 지표 전송을 포함하는 기본 실행 인텐트를 반환합니다. |
-| createAnalyticsContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
+| createAnalyticsContentIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
 
 ### ToastNotificationOptions
 - 기본 알림 옵션 설정시 우선순위, 작은 아이콘, 배경색, LED, 진동, 알림음의 정보를 설정하는 객체입니다.

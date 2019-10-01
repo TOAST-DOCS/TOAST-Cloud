@@ -52,11 +52,13 @@ Xcode Project에 **ToastPush.framework**, **ToastCore.framework**, **ToastCommon
 
 ![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
-TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework`를 추가해야 합니다.
+TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framework`를 추가해야 합니다.
 
-> PushKit.framework는 아래 방법으로 추가할 수 있습니다.
+> PushKit.framework, CallKit.framework는 아래 방법으로 추가할 수 있습니다.
 
 ![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
+
+![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
 
 ![linked_frameworks_push](http://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push.png)
 
@@ -92,6 +94,10 @@ VoIP 기능을 사용하려면 `Voice over IP` 항목을 활성화해야 합니�
 
 ![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
 
+## Xcode11 변경 사항
+Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
+`Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
+
 ## 서비스 로그인
 
 * TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 같은 사용자 ID 하나만 사용합니다.
@@ -118,9 +124,9 @@ VoIP 기능을 사용하려면 `Voice over IP` 항목을 활성화해야 합니�
 
 Push에서 발급받은 AppKey를 설정합니다.
 `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
-`Delegate 설정이 된 후 메세지 수신에 대한 통지를 받을 수 있습니다.`
-`원활한 메세지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
-`개발환경에서는 반드시 ToastPushConfiguration 의 sandbox 프로퍼티를 YES 로 설정하셔야 사용 가능합니다.`
+`Delegate 설정이 된 후 메시지 수신에 대한 통지를 받을 수 있습니다.`
+`원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
+`개발환경에서는 반드시 ToastPushConfiguration 의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
 
 ### 초기화 API 명세
 
@@ -164,10 +170,10 @@ Push에서 발급받은 AppKey를 설정합니다.
 // 푸시 타입(APNS, VoIP)
 @property (nonatomic, copy) NSSet<ToastPushType> *pushTypes;
 
-// 국가 코드 (예약 메세지 발송시 기준 시간이 되는 국가코드)
+// 국가 코드 (예약 메시지 발송시 기준 시간이 되는 국가코드)
 @property (nonatomic, copy) NSString *countryCode;
 
-// 언어 코드 (다국어 메세지 발송시 언어 선택 기준)
+// 언어 코드 (다국어 메시지 발송시 언어 선택 기준)
 @property (nonatomic, copy) NSString *languageCode;
 
 // Sandbox(Debug) 환경 설정
@@ -210,7 +216,7 @@ Push에서 발급받은 AppKey를 설정합니다.
                                    forType:(ToastPushType)type
                                      error:(NSError *)error;
 
-// 메세지 수신
+// 메시지 수신
 - (void)didReceivePushMessage:(ToastPushMessage *)message
                       forType:(ToastPushType)type;
 
@@ -220,10 +226,10 @@ Push에서 발급받은 AppKey를 설정합니다.
 @end
 ```
 
-#### 메세지 객체 API 명세
+#### 메시지 객체 API 명세
 
 ```objc
-// 메세지 객체
+// 메시지 객체
 @interface ToastPushMessage : NSObject
 
 @property (nonatomic, readonly) NSString *identifier;
@@ -241,7 +247,7 @@ Push에서 발급받은 AppKey를 설정합니다.
 @end
 
 
-// 리치 메세지 객체
+// 리치 메시지 객체
 @interface ToastPushRichMessage : NSObject
 
 @property (nonatomic, readonly, nullable) ToastPushMedia *media;
@@ -257,10 +263,6 @@ Push에서 발급받은 AppKey를 설정합니다.
 @property (nonatomic, readonly) ToastPushMediaType mediaType;
 
 @property (nonatomic, readonly) NSString *source;
-
-@property (nonatomic, readonly) ToastPushSourceType sourceType;
-
-@property (nonatomic, readonly) NSString *extension;
 
 @end
 
@@ -331,7 +333,7 @@ typedef NS_ENUM(NSInteger, ToastPushActionType) {
     configuration.pushTypes = [NSSet setWithObjects:ToastPushTypeAPNS, ToastPushTypeVoIP, nil];
 
 #if DEBUG
-    // 개발환경(Debug) 에서는 꼭 아래 sandbox 프로퍼티를 YES로 설정해야 합니다.
+    // 개발환경(Debug) 에서는 꼭 아래 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.
     configuration.sandbox = YES;
 #endif
 
@@ -367,7 +369,7 @@ typedef NS_ENUM(NSInteger, ToastPushActionType) {
     // ...
 }
 
-// 메세지 수신
+// 메시지 수신
 - (void)didReceivePushMessage:(ToastPushMessage *)message
                       forType:(ToastPushType)type {
     // ...
@@ -381,7 +383,7 @@ typedef NS_ENUM(NSInteger, ToastPushActionType) {
 
 ### 알림 옵션 설정
 
-알림 옵션은 다음과 같이 설정되어 있습니다.
+알림 옵션은 아래와 같이 가본 설정되어 있습니다.
 `앱 실행 중 알림을 표시하기 위해서는 옵션을 변경해야 합니다.`
 
 ```objc
@@ -448,9 +450,9 @@ if (@available(iOS 10.0, *)) {
 ``` objc
 ToastPushAgreement *agreement = [[ToastPushAgreement alloc] initWithAllowNotifications:YES];
 
-// 광고성 메세지 수신 동의 여부 설정
+// 광고성 메시지 수신 동의 여부 설정
 agreement.allowAdvertisements = YES;
-// 야간 광고성 메세지 수신 동의 여부 설정
+// 야간 광고성 메시지 수신 동의 여부 설정
 agreement.allowNightAdvertisements = NO;
 
 [ToastPush registerWithAgreement:agreement];
@@ -531,7 +533,7 @@ agreement.allowNightAdvertisements = NO;
 ## 토큰 해제
 
 초기화시에 설정된 정보(푸쉬 타입, 샌드박스 유무)를 토대로 등록된 토큰을 해제합니다.
-`서비스 로그아웃 후에 메세지 수신을 원치 않으시면 토큰을 해제해 주세요.`
+`서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해 주세요.`
 만약 설정된 정보에 해당하는 토큰이 존재하지 않거나 해제에 성공한다면 해제 성공 Delegate를 호출합니다.
 토큰 해제 결과는 초기화시에 설정된 Delegate를 통해 전달됩니다.
 
@@ -579,7 +581,7 @@ agreement.allowNightAdvertisements = NO;
 
 ## 토큰 정보 업데이트
 
-사용자 아이디, 국가코드, 언어코드, 메세지 동의 설정 등의 토큰 정보를 업데이트합니다.
+사용자 아이디, 국가코드, 언어코드, 메시지 동의 설정 등의 토큰 정보를 업데이트합니다.
 등록되어있는 모든 토큰에 일괄 적용됩니다.
 `토큰 정보 업데이트 요청은 앱 실행 후 토큰 등록이 된 상태에서만 가능합니다.`
 
@@ -620,13 +622,12 @@ tokenInfo.agreement = agreement;
 
 ```
 
-## 리치 메세지 수신
+## 리치 메시지 수신
 
-`리치 메세지 수신은 iOS 10.0+ 이상부터 지원합니다.`
-알림 메세지에 미디어(이미지, 비디오, 오디오)와 버튼을 표현하기 위해서는 어플리케이션에 [Notification Service Extension](./push-ios/#notification-service-extension) 이 추가되어 있어야만 합니다.
-`Extension 의 Development Target 은 어플리케이션과 동일하게 설정하시길 권장합니다.`
+`리치 메시지 수신은 iOS 10.0+ 이상부터 지원합니다.`
+알림 메시지에 미디어(이미지, 비디오, 오디오)와 버튼을 표현하기 위해서는 어플리케이션에 [Notification Service Extension](./push-ios/#notification-service-extension) 타겟이 추가되어 있어야만 합니다.
 
-### 리치 메세지 수신 설정 예
+### 리치 메시지 수신 설정 예
 
 `NotificationService 클래스에 ToastPushServiceExtension 을 확장구현 해야 합니다.`
 
@@ -647,8 +648,7 @@ tokenInfo.agreement = agreement;
 ### 수신(Received) 지표 수집 설정
 
 `수신 지표 수집은 iOS 10.0+ 이상부터 지원합니다.`
-수신 지표 수집을 위해서는 어플리케이션에 [Notification Service Extension](./push-ios/#notification-service-extension) 이 추가되어 있어야만 합니다.
-`Extension 의 Development Target 은 어플리케이션과 동일하게 설정하시길 권장합니다.`
+수신 지표 수집을 위해서는 어플리케이션에 [Notification Service Extension](./push-ios/#notification-service-extension) 타겟이 추가되어 있어야만 합니다.
 Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파일` 내부에 앱키를 설정하셔야만 지표 전송이 가능합니다.
 
 #### Toast Push SDK 초기화를 통한 수신 지표 수집 설정 예
@@ -726,7 +726,7 @@ Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파�
 ## Notification Service Extension
 
 `iOS 10.0+ 부터 지원합니다.`
-리치 메세지 수신, 수신 지표 수집을 위해서는 어플리케이션에 NotificationServiceExtension을 반드시 생성 및 설정해야만 합니다.
+리치 메시지 수신, 수신 지표 수집을 위해서는 어플리케이션에 NotificationServiceExtension을 반드시 생성 및 설정해야만 합니다.
 
 ### Notification Service Extension 생성
 
@@ -735,6 +735,9 @@ Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파�
 ![create_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_create_ext.png)
 
 ### Notification Service Extension 설정
+
+앱의 프로젝트 설정과 동일하게 Extension의 [프로젝트 설정](http://docs.toast.com/ko/TOAST/ko/toast-sdk/push-ios/#toast-push-sdk-xcode)을 추가합니다.
+`Extension은 앱과 함께 설치되지만 앱과는 분리된 별도의 Sandbox 환경입니다.`
 
 NotificationService 클래스에 ToastPushServiceExtension 을 확장구현 해야 합니다.
 

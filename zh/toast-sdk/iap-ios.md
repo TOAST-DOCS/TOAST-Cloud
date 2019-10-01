@@ -251,6 +251,8 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 Purchase results are delivered through a delegate.  
 If an app is closed during purchase, or purchase is suspended due to network error, such purchase is reprocessed after the initialization of IAP SDK of the next app running.
+구매 요청시 사용자 데이터 추가가 가능합니다.
+사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원) 정보에 포함되어 반환됩니다.
 
 ### Request for Purchase with Product Objects 
 
@@ -263,8 +265,11 @@ Purchase is requested by using ToastProduct object of query result of product li
 
 // ...
 
-// Purchase Product 
+// Purchase product 
 + (void)purchaseWithProduct:(ToastProduct *)product;
+
+// Purchase product with payload
++ (void)purchaseWithProduct:(ToastProduct *)product payload:(NSString *)payload;
 
 // ...
 
@@ -288,8 +293,8 @@ Purchase is requested by using ToastProduct object of query result of product li
     }
 }
 
-// Request for Purchase Product 
-[ToastIAP purchaseWithProduct:self.products[0]];
+// Request for purchase product with payload
+[ToastIAP purchaseWithProduct:self.products[0] payload:@"DEVELOPER_PAYLOAD"];
 ```
 
 ### Purchase Requests using Product ID 
@@ -304,8 +309,11 @@ For a product which cannot be purchased, an error will be delivered indicating p
 
 // ...
 
-// Purchase Product 
+// Purchase product by identifier
 + (void)purchaseWithProductIdentifier:(NSString *)productIdentifier;
+
+// Purchase product by identifier with payload
++ (void)purchaseWithProductIdentifier:(NSString *)productIdentifier payload:(NSString *)payload;
 
 // ...
 
@@ -315,8 +323,8 @@ For a product which cannot be purchased, an error will be delivered indicating p
 #### Usage Example of Purchase with Product ID API 
 
 ``` objc
-// Request for Purchase Product 
-[ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
+// Request for purchase product with payload
+[ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER" payload:@"DEVELOPER_PAYLOAD"];
 ```
 
 ## Query Activated Subscription List 
@@ -360,7 +368,7 @@ Android subscription can also be queried for a same user ID.
 
 Restore the purchase history based on your AppStore account and apply it in the IAP console. 
 Use if purchased subscription products are not viewed or activated.
-Returns the list of actived purchases after restored.
+만료된 결제건을 포함하여 복원된 결제건이 결과로 반환됩니다.
 자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### Specifications for Restoring Purchase API 
