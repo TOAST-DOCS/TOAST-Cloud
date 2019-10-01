@@ -184,7 +184,7 @@ Each project member has the following roles:
 | Manage Service        | Enable Service                                  | O     |        |                      |                |
 |                       | Enable Service                                  | O     | O      |                      |                |
 |                       | Disable Service                                 | O     |        |                      |                |
-| Status of Service Use | Status of Service Use                           | O     | O      | O                    | O              |
+| Status of Service Use | Status of Service Use                           | O     |        | O                    | O              |
 
 #### Delete Projects
 
