@@ -94,6 +94,10 @@ VoIP機能を使用するには,`Voice over IP`項目を活性化する必要が
 
 ![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
 
+## Xcode11 변경 사항
+Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
+`Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
+
 ## サービスログイン
 
 * TOAST SDKで提供するすべてのサービス(Push、IAP、Log & Crashなど)は、同じユーザーID1つのみを使用します。
