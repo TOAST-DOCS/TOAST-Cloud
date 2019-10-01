@@ -17,7 +17,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.18.0'
+    implementation 'com.toast.android:toast-iap-google:0.19.0'
     ...
 }
 ```
@@ -26,7 +26,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.18.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.19.0'
     ...
 }
 ```
@@ -304,6 +304,22 @@ void launchPurchaseFlow(Activity activity, String productId) {
     ToastIap.launchPurchaseFlow(activity, params);
 }
 ```
+## User Data Setting
+
+* TOAST IAP can add user information when requesting purchase.
+* User information is set to setDeveloperPayload() method of IapPurchaseFlowParams$Builder.
+* Set user information can be identified as a getDeveloperPayload() method of [IapPurchase] (./iap-android/#iappurchase) returned during unconsumed query and activated subscription query.
+
+```java
+String userData = "userData"
+IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
+setProductId (productId)
+.setDeveloperPayload(userData)
+.build();
+ToastIap.launchPurchaseFlow (activity, params);
+```
+
+If you purchased a product with a promotional code from the Google Play Store, you cannot use user data.
 
 ## Query Unconsumed Purchases
 

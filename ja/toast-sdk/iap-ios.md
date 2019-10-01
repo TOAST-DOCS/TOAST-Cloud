@@ -250,6 +250,8 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 購入結果は、設定されたDelegateを通して伝達されます。
 購買進行中にアプリが終了したり,ネットワークエラーなどで購買が中断された場合,次回のアプリ実行におけるIAP SDK初期化以後,再処理が進みます。
+구매 요청시 사용자 데이터 추가가 가능합니다.
+사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원) 정보에 포함되어 반환됩니다.
 
 ### 商品オブジェクトを利用した購入要請
 
@@ -264,6 +266,9 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 // 商品購入
 + (void)purchaseWithProduct:(ToastProduct *)product;
+
+// 사용자 데이터를 추가하여 상품 구매
++ (void)purchaseWithProduct:(ToastProduct *)product payload:(NSString *)payload;
 
 // ...
 
@@ -288,7 +293,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 }
 
 // 商品購入要請
-[ToastIAP purchaseWithProduct:self.products[0]];
+[ToastIAP purchaseWithProduct:self.products[0] payload:@"DEVELOPER_PAYLOAD"];
 ```
 
 ### 商品IDを利用した購入要請
@@ -306,6 +311,9 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 // 商品購入
 + (void)purchaseWithProductIdentifier:(NSString *)productIdentifier;
 
+// 사용자 데이터를 추가하여 상품 구매
++ (void)purchaseWithProductIdentifier:(NSString *)productIdentifier payload:(NSString *)payload;
+
 // ...
 
 @end
@@ -315,7 +323,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 ``` objc
 // 商品購入要請
-[ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER"];
+[ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER" payload:@"DEVELOPER_PAYLOAD"];
 ```
 
 ## 有効になっている購読リスト照会
@@ -359,7 +367,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 使用者のAppStoreアカウントで購入した内訳を基準に購買内訳を復元し,IAPコンソールに反映します。 
 購買した購読商品が照会されないか,活性化しない場合に使います。
-購買復元が完了してから,活性化された購買リストを返還します。
+만료된 결제건을 포함하여 복원된 결제건이 결과로 반환됩니다.
 자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### 購入復元API仕様
