@@ -169,7 +169,7 @@ TOAST Consoleは下記の機能を提供します。
 - 設定：失敗回数とロック時間を入力すると、該当回数ログインに失敗するとロックされ、ロック時間中はログインを試行できません。 
 
 #### IP ACL 
-![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903_en.png)
+![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_13_201903_en.png)
 - 許可したIP(またはIP帯域)でのみIAMコンソールにアクセスできます。 
 - 設定しない：すべてのIP(またはIP帯域)でIAMコンソールにアクセスできます。 
 - 許可したIP(またはIP帯域)のみコンソールにアクセス：入力したIP(またはIP帯域)でのみコンソールにアクセスできます。アクセスを許可するIPまたはIP帯域を入力してください。

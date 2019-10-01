@@ -123,7 +123,7 @@ Only common settings are provided.
 
 Access to IAM console is available only in allowed IPs (or IP bandwidth)
 
-![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903_en.png)
+![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_13_201903_en.png)
 - Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
 - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
 
