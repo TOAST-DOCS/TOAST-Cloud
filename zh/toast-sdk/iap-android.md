@@ -308,7 +308,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
 
 * TOAST IAP can add user information when requesting purchase.
 * User information is set to setDeveloperPayload() method of IapPurchaseFlowParams$Builder.
-* Set user information can be identified as a getDeveloperPayload() method of [IapPurchase] (./iap-android/#iappurchase) returned during unconsumed query and activated subscription query.
+* Set user information can be identified as a getDeveloperPayload() method of [IapPurchase](./iap-android/#iappurchase) returned during unconsumed query and activated subscription query.
 
 ```java
 String userData = "userData"
