@@ -17,7 +17,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.18.0'
+    implementation 'com.toast.android:toast-iap-google:0.19.1'
     ...
 }
 ```
@@ -26,7 +26,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.18.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.19.1'
     ...
 }
 ```
@@ -307,6 +307,23 @@ void launchPurchaseFlow(Activity activity, String productId) {
 }
 ```
 
+### 사용자 데이터 설정
+
+* TOAST IAP는 구매 요청 시 사용자 정보를 추가할 수 있습니다.
+* 사용자 정보는 IapPurchaseFlowParams.Builder 의 setDeveloperPayload() 메서드로 설정합니다.
+* 설정된 사용자 정보는 미소비 결제 조회와 활성화된 구독 조회시 반환되는 [IapPurchase](./iap-android/#iappurchase) 의 getDeveloperPayload() 메서드로 확인할 수 있습니다.
+
+```java
+String userData = "User Data"
+IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
+       .setProductId(productId)
+       .setDeveloperPayload(userData)
+       .build();
+ToastIap.launchPurchaseFlow(activity, params);
+```
+
+> 구글 플레이 스토어에서 프로모션 코드로 상품을 구매한 경우, 사용자 데이터를 사용할 수 없습니다.
+
 ## 미소비 결제 조회
 
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE)과 소비성 구독 상품(CONSUMABLE_AUTO_RENEWABLE) 정보를 조회합니다.
@@ -499,6 +516,7 @@ public String getAccessToken()
 public String getPurchaseType()
 public String getPurchaseTime()
 public String getExpiryTime()
+public String getDeveloperPayload()
 ```
 
 | Method               | Returns |                      |
@@ -515,6 +533,7 @@ public String getExpiryTime()
 | getPurchaseType      | String  | 상품 유형을 반환합니다.        |
 | getPurchaseTime      | long    | 상품 구매 시간을 반환합니다.     |
 | getExpiryTime        | long    | 구독 상품의 남은 시간을 반환합니다. |
+| getDeveloperPayload  | String  | 사용자 데이터를 반환합니다. |
 
 ### IapProductDetails
 

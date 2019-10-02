@@ -15,7 +15,7 @@ iOS용 TOAST Push SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Push | ToastPush | ToastPush.framework | * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
+| TOAST Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[Optional]<br/>PushKit.framework<br/>CallKit.framework | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## TOAST Push SDK를 Xcode 프로젝트에 적용
@@ -52,11 +52,13 @@ Xcode Project에 **ToastPush.framework**, **ToastCore.framework**, **ToastCommon
 
 ![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
-TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework`를 추가해야 합니다.
+TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framework`를 추가해야 합니다.
 
-> PushKit.framework는 아래 방법으로 추가할 수 있습니다.
+> PushKit.framework, CallKit.framework는 아래 방법으로 추가할 수 있습니다.
 
 ![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
+
+![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
 
 ![linked_frameworks_push](http://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push.png)
 
@@ -91,6 +93,10 @@ APNS 기능을 사용하려면 `Remote notifications` 항목을 활성화해야 
 VoIP 기능을 사용하려면 `Voice over IP` 항목을 활성화해야 합니다.
 
 ![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
+
+## Xcode11 변경 사항
+Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
+`Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
 
 ## 서비스 로그인
 

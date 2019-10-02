@@ -175,7 +175,7 @@ TOAST Console提供如下功能。
 
 仅允许使用的IP（或IP段）可访问IAM控制台。 
 
-![iam_console_login_security_setting_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_12_201903_en.png)
+![iam_console_login_security_setting_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_13_201903_en.png)
 - 不设置：所有IP（或IP段）都可访问IAM控制台。 
 - 仅允许使用的IP（或IP段）访问控制台：仅输入的IP（或IP段）可访问控制台。输入允许访问的IP或IP段即可。 
 
@@ -220,7 +220,7 @@ TOAST Console提供如下功能。
 | 管理服务 | 启用服务                            | O     |        |                      |                |
 |             | 使用服务                              | O     | O      |                      |                |
 |             | 禁用服务                          | O     |        |                      |                |
-| 使用现状   | 使用现状                                | O     | O      | O                    | O              |
+| 使用现状   | 使用现状                                | O     |        | O                    | O              |
 
 
 ## 付款管理
