@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 0.19.1 (2019.10.02)
+
+### TOAST IAP
+
+#### 기능 추가
+
+* TOAST IAP Unity Plugin 추가.
+
 ## 0.19.0 (2019.10.01)
 
 ### TOAST IAP

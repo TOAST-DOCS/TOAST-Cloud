@@ -15,7 +15,7 @@ iOS用TOAST Push SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Push | ToastPush | ToastPush.framework | * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
+| TOAST Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[Optional]<br/>PushKit.framework<br/>CallKit.framework | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## TOAST Push SDKをXcodeプロジェクトに適用

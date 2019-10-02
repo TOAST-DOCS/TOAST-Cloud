@@ -20,7 +20,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.19.0'
+    implementation 'com.toast.android:toast-unity-iap-google:0.19.1'
 **DEPS**}
 ```
 
@@ -31,7 +31,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.19.0'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.19.1'
 **DEPS**}
 ```
 
@@ -147,14 +147,25 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 ### 商品購入API仕様
 
 ```csharp
-public static void Purchase(string productId);
+public static void Purchase(string productId, developerPayload = "");
 ```
+
 
 ### 商品購入例
 
 ```csharp
 var productId = userSelectedProductId;
 ToastIap.Purchase(productId);
+```
+
+```csharp
+var productId = userSelectedProductId;
+ToastIap.Purchase(productId);
+```
+
+```csharp
+var productId = userSelectedProductId;
+ToastIap.Purchase(productId, developerPayload);
 ```
 
 ## 未消費決済照会

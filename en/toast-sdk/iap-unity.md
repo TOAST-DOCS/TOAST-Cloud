@@ -20,7 +20,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.19.0'
+    implementation 'com.toast.android:toast-unity-iap-google:0.19.1'
 **DEPS**}
 ```
 
@@ -31,7 +31,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.19.0'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.19.1'
 **DEPS**}
 ```
 
@@ -147,7 +147,7 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 ### 상품 구매 API 명세
 
 ```csharp
-public static void Purchase(string productId);
+public static void Purchase(string productId, developerPayload = "");
 ```
 
 ### 상품 구매 예시
@@ -155,6 +155,11 @@ public static void Purchase(string productId);
 ```csharp
 var productId = userSelectedProductId;
 ToastIap.Purchase(productId);
+```
+
+```csharp
+var productId = userSelectedProductId;
+ToastIap.Purchase(productId, developerPayload);
 ```
 
 ## 미소비 결제 조회
