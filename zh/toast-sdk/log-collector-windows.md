@@ -38,6 +38,12 @@ if (_logger != NULL)
 }
 ```
 
+## TOAST Logger SDK 종료
+
+```
+DestroyToastLogger();
+```
+
 ## Set UserID 
 
 User ID can be set for TOAST SDK.
@@ -166,8 +172,17 @@ loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "Error has occurred..
 
 if (_logger != NULL)
 {
-    _logger->initialize(loggerConf);
+        bool bInit = _logger->initialize(loggerConf);
+	
+	// x86에서 pure virtual call / invalid paramenter 크래시 로그 추가	
+	if (bInit && enableCrashReport)
+	{
+#ifndef _WIN64
+		SetCrashHandler();
+#endif
+	}
 }
+
 ```
 
 ###  Test Sending Crash Logs  
