@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Windows C++
 
+## 0.9.4.3 (2019.10.10)
+
+### TOAST Log & Crash
+
+#### 버그 수정
+
+* x86에서 pure virtual call / invalid parameter 크래쉬로그가 남지 않는 현상 처리
+
 ## 0.9.3.0 (2019.07.23)
 
 ### TOAST Log & Crash
