@@ -221,7 +221,10 @@ Push에서 발급받은 AppKey를 설정합니다.
                       forType:(ToastPushType)type;
 
 // 액션 수신 (APNS, iOS 10.0+)
-- (void)didReceivePushAction:(ToastPushAction *)action API_AVAILABLE(ios(10.0));
+- (void)didReceivePushAction:(ToastPushAction *)action;
+
+// 알림 실행 (APNS)
+- (void)didReceiveNotificationResponseForPushMessage:(ToastPushMessage *)message;
 
 @end
 ```
@@ -377,6 +380,11 @@ typedef NS_ENUM(NSInteger, ToastPushActionType) {
 
 // 알림 액션(버튼) 수신 (iOS 10.0+)
 - (void)didReceivePushAction:(ToastPushAction *)action {
+    // ...
+}
+
+// 알림 실행
+- (void)didReceiveNotificationResponseForPushMessage:(ToastPushMessage *)message {
     // ...
 }
 ```
