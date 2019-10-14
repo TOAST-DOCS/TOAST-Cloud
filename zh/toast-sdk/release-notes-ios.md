@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.19.0 (2019.10.15)
+
+### TOAST Push
+
+#### 추가 사항
+
+* 알림 실행에 대한 통지 기능 추가
+
 ## 0.18.0 (2019.10.01)
 
 ### 공통
