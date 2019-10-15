@@ -94,9 +94,11 @@ VoIP 기능을 사용하려면 `Voice over IP` 항목을 활성화해야 합니�
 
 ![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
 
-## Xcode11 변경 사항
+## Xcode11 / iOS13 변경 사항
 Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
 `Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
+iOS13 이상부터 VoIP 메시지 수신 후에 CallKit 으로 리포트하지 않으면 메시지 수신이 제한됩니다.
+CallKit 을 사용한 전화 수신화면은 서비스에서 구현해야 합니다.
 
 ## 서비스 로그인
 
@@ -221,7 +223,10 @@ Push에서 발급받은 AppKey를 설정합니다.
                       forType:(ToastPushType)type;
 
 // 액션 수신 (APNS, iOS 10.0+)
-- (void)didReceivePushAction:(ToastPushAction *)action API_AVAILABLE(ios(10.0));
+- (void)didReceivePushAction:(ToastPushAction *)action;
+
+// 알림 실행 (APNS)
+- (void)didReceiveNotificationResponseForPushMessage:(ToastPushMessage *)message;
 
 @end
 ```
@@ -377,6 +382,11 @@ typedef NS_ENUM(NSInteger, ToastPushActionType) {
 
 // 알림 액션(버튼) 수신 (iOS 10.0+)
 - (void)didReceivePushAction:(ToastPushAction *)action {
+    // ...
+}
+
+// 알림 실행 (APNS)
+- (void)didReceiveNotificationResponseForPushMessage:(ToastPushMessage *)message {
     // ...
 }
 ```
