@@ -53,6 +53,7 @@ Xcode Project에 **ToastPush.framework**, **ToastCore.framework**, **ToastCommon
 ![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
 TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framework`를 추가해야 합니다.
+`VoIP 기능은 iOS 10.0 이상부터 지원합니다.`
 
 > PushKit.framework, CallKit.framework는 아래 방법으로 추가할 수 있습니다.
 

@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.19.1 (2019.10.18)
+
+### TOAST Push
+
+#### 개선 사항
+
+* 토큰 등록 기능 개선
+
 ## 0.19.0 (2019.10.15)
 
 ### TOAST Push

@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.19.3 (2019.10.18)
+
+### TOAST Push
+
+#### 기능 개선
+
+* 토큰 등록 기능 개선.
+
 ## 0.19.2 (2019.10.15)
 
 ### TOAST Push
@@ -22,7 +30,7 @@
 
 #### 기능 추가
 
-* TOAST IAP Unity Plugin 추가.
+* Unity Android IAP Plugin에 구매 요청 시 사용자 데이터를 영수증에 포함할 수 있는 기능이 추가되었습니다.
 
 ## 0.19.0 (2019.10.01)
 
@@ -30,7 +38,7 @@
 
 #### 기능 추가
 
-* 구매 요청시 사용자 데이터 설정 기능 추가
+* Android IAP 라이브러리에 구매 요청 시 사용자 데이터를 영수증에 포함할 수 있는 기능이 추가되었습니다.
 
 ### TOAST Push
 
