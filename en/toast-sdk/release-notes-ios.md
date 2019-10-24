@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.19.2 (2019.10.25)
+
+### TOAST Push
+
+#### 개선 사항
+
+* (구) TCPushSDK 마이그레이션 지원
+
 ## 0.19.1 (2019.10.18)
 
 ### TOAST Push
