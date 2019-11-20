@@ -73,8 +73,9 @@ TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Backgr
 ## Xcode11 / iOS13 변경 사항
 Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
 `Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
-iOS13 이상부터 VoIP 메시지 수신 후에 CallKit 으로 리포트하지 않으면 메시지 수신이 제한됩니다.
-CallKit 을 사용한 전화 수신화면은 서비스에서 구현해야 합니다.
+
+iOS13 이상부터 VoIP 메시지 수신 후에 CallKit 으로 리포트하지 않으면 메시지 수신이 제한됩니다. ([PushKit pushRegistry 가이드](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
+CallKit 을 사용한 전화 수신 화면은 앱에서 직접 구현해야 합니다.
 
 ## 서비스 로그인
 
@@ -85,7 +86,7 @@ CallKit 을 사용한 전화 수신화면은 서비스에서 구현해야 합니
 `사용자 ID가 설정되지 않은 상태에서는 토큰 등록 및 삭제 기능을 사용할 수 없습니다.`
 
 ``` objc
-// 서비스 로그인 완료 후 사용자 ID 설정
+// 서비스 로그인, 사용자 ID 설정
 [ToastSDK setUserID:@"INPUT_USER_ID"];
 ```
 
@@ -94,7 +95,7 @@ CallKit 을 사용한 전화 수신화면은 서비스에서 구현해야 합니
 `로그아웃 하여도 등록된 토큰은 삭제되지 않습니다.`
 
 ``` objc
-// 서비스 로그아웃 완료 후 사용자 ID를 nil로 설정
+// 서비스 로그아웃, 사용자 ID를 nil로 설정
 [ToastSDK setUserID:nil];
 ```
 
@@ -316,8 +317,8 @@ typedef NS_ENUM(NSInteger, ToastPushActionType) {
 
 ## 토큰 등록
 
-OS 에 원격 알림을 등록하고, 발급 받은 토큰 정보를 토스트 클라우드 서버에 등록합니다.
-최초 설치시 사용자에게 알림 허용 권환을 요청합니다. 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
+발급 받은 토큰 정보를 토스트 클라우드 서버에 등록합니다.
+최초 실행일 경우 사용자에게 알림 허용 권환을 요청합니다. 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
 
 ### 토큰 등록 API 명세
 
@@ -402,7 +403,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge | ToastP
 
 ## 토큰 정보 조회
 
-현재 단말기 상에서 가장 최근 등록된 토큰과 설정정보를 조회 합니다.
+현재 단말기에서 마지막으로 등록에 성공한 토큰과 설정 정보를 조회합니다.
 
 ### 토큰 조회 API 명세
 
@@ -486,7 +487,7 @@ extern ToastPushType const ToastPushTypeVoIP;
 ## 토큰 해제
 
 토스트 클라우드 서버에 등록된 토큰을 해제합니다.
-`서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해 주세요.`
+`서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해야 합니다.`
 `토큰이 해제되어도 단말기 상에 알림 권한은 회수되지 않습니다.`
 
 ### 토큰 해제 API 명세
@@ -595,7 +596,7 @@ Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파�
 ### 실행(Opened) 지표 수집 설정
 
 실행 지표의 수집과 전송은 SDK 내부에서 자동으로 진행됩니다.
-[Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 `Application의 info.plist 파일` 내부에 앱키를 설정하셔야만 지표 전송이 가능합니다.
+[Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 `Application의 info.plist 파일` 내부에 앱키를 설정해야 지표 전송이 가능합니다.
 
 #### info.plist 설정을 통한 수신 지표 수집 설정 예
 
@@ -673,9 +674,9 @@ TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framewo
 
 ![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_voip.png)
 
-### 초기화 및 델리게이트 설정
+### 초기화 및 Delegate 설정
 
-`ToastPush 초기화 정보를 그대로 사용합니다. ToastPush 를 통해 초기화해주세요.`
+`ToastPush 초기화 정보를 그대로 사용합니다. ToastPush 를 통해 초기화해야 합니다.`
 
 #### 초기화 과정 예
 
@@ -701,7 +702,7 @@ TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framewo
     // ToastPush 에 초기화합니다.
     [ToastPush initWithConfiguration:configuration];
 
-    // ToastVoIP 에 델리게이트를 설정합니다.
+    // ToastVoIP Delegate를 설정합니다.
     [ToastVoIP setDelegate:self];
 
     return YES;
@@ -717,7 +718,7 @@ TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framewo
 
 ### 토큰 등록
 
-OS 에 VoIP 푸쉬를 등록하고, 발급 받은 토큰 정보를 토스트 클라우드 서버에 등록합니다.
+발급 받은 VoIP 토큰 정보를 토스트 클라우드 서버에 등록합니다.
 VoIP 기능은 별도의 사용자 권한 및 동의정보가 필요없습니다.
 
 #### 토큰 등록 API 명세
@@ -750,7 +751,7 @@ VoIP 기능은 별도의 사용자 권한 및 동의정보가 필요없습니다
 
 ### 토큰 정보 조회
 
-현재 단말기 상에서 가장 최근 등록된 토큰과 설정정보를 조회 합니다.
+현재 단말기에서 마지막으로 등록에 성공한 토큰과 설정 정보를 조회합니다.
 
 #### 토큰 정보 조회 API 명세
 
@@ -783,7 +784,7 @@ VoIP 기능은 별도의 사용자 권한 및 동의정보가 필요없습니다
 ### 토큰 해제
 
 토스트 클라우드 서버에 등록된 토큰을 해제합니다.
-`서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해 주세요.`
+`서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해야 합니다.`
 
 #### 토큰 해제 API 명세
 
