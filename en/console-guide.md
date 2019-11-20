@@ -68,10 +68,9 @@ Each member of an organization has following roles:
 |                      | Disable Organization Services                     | O     | O     |        |                |            |
 | Manage Payment       | Query Bills                                       | O     |       |        |                |            |
 |                      | Status of Service Use                             | O     | O     |        | O              |            |
-| Manage Projects      | Create Projects                                   | O     | O     | O      |                |            |
-|                      | Delete Projects (all projects of an organization) | O     | O     |        |                |            |
-|                      | Delete Projects (created projects)                | O     | O     | O      |                |            |
-| 사용자 Action 로그 관리  | 사용자 Action 로그 조회                               | O     | O     |        |                | O          |
+| Manage Projects      | Creat Projects                                    | O     | O     | O      |                | O          |
+| Manage Projects      | Delete Projects                                   | O     |       |        |                |            |
+
 
 #### Delete Organizations
 
@@ -188,21 +187,14 @@ You can be a project member, if not an organization member.
 
 Each project member has the following roles:
 
-| Action                | Role                                            | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
-| --------------------- | ----------------------------------------------- | ----- | ------ | -------------------- | -------------- |
-| Manage Members        | Register Project Members (ADMIN)                | O     |        |                      |                |
-|                       | Delete Project Members (ADMIN)                  | O     |        |                      |                |
-|                       | Register Project Members (MEMBER)               | O     |        |                      |                |
-|                       | Delete Project Members (MEMBER)                 | O     |        |                      |                |
-|                       | Register Project Members (Billing Viewer ADMIN) | O     |        |                      |                |
-|                       | Delete Project Members (Billing Viewer ADMIN)   | O     |        |                      |                |
-|                       | Register Project Members (Billing Viewer)       | O     |        | O                    |                |
-|                       | Delete Project Members (Billing Viewer)         | O     |        | O                    |                |
-| Manage Service        | Enable Service                                  | O     |        |                      |                |
-|                       | Enable Service                                  | O     | O      |                      |                |
-|                       | Disable Service                                 | O     |        |                      |                |
-| Status of Service Use | Status of Service Use                           | O     |        | O                    | O              |
-
+| Action                | Role                                            | ADMIN | MEMBER |  Billing Viewer |
+| --------------------- | ----------------------------------------------- | ----- | ------ |  -------------- |
+| Manage Members        | Register Project Members                        | O     |        |                 |
+|                       | Delete Project Members                          | O     |        |                 |
+| Manage Service        | Enable Service                                  | O     |        |                 |
+|                       | Disable Service                                 | O     |        |                 |
+| Status of Service Use | Status of Service Use                           | O     |        |  O              |
+| Manage Projects       | Delete Projects                                 | O     |        |                 |
 #### Delete Projects
 
 A project can be deleted if it has no available services.
