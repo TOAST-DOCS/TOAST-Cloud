@@ -119,6 +119,23 @@ Only common settings are provided.
 - Not Configured: Login can be attempted forever even after it fails for many times. 
 - Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
 
+#### Login Session 
+
+![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_14_201911_en.png)
+
+- Depending on the setting of login session, login session may be maintained or automatically expired. 
+- After login is expired, it is required to log in again to access console. 
+- This common setting is to be applied across the IAM console. 
+- This common setting is to be applied across the IAM console. 
+    - Set the available number of simultaneous logins under same ID on many devices.   
+    - If the setting is for 1, no simultaneous login is allowed on other devices, like computers or smartphones. 
+        - e.g.) PC-  Login Maintained, Smart phones- Auto Logout 
+- Login time maintained in session
+    - Configure time to maintain login session even without any actions, like a click. 
+    - It is automatically logged out, if there's no action, like a click, during configured time. 
+    - Consider the length in the setting, due to security issue. 
+
+
 #### IP ACL 
 
 Access to IAM console is available only in allowed IPs (or IP bandwidth)
