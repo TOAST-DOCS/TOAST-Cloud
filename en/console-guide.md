@@ -47,7 +47,7 @@ Following services are available at the level of organization:
 
 #### Organization Members
 
-Organization members are classified into members of TOAST.com and insider members of the organization.  
+
 
 | Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
 | :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |

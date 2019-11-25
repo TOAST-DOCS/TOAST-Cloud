@@ -15,12 +15,14 @@ iOS용 TOAST Push SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[Optional]<br/>PushKit.framework<br/>CallKit.framework | |
+| TOAST Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[ToastVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## TOAST Push SDK를 Xcode 프로젝트에 적용
 
-### 1. Cococapods 적용
+### 프레임워크 설정
+
+#### 1. Cococapods 을 통한 적용
 
 Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
@@ -33,16 +35,7 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-생성된 Workspace를 열어 사용하려는 SDK를 가져옵니다(import).
-
-``` objc
-#import <ToastCore/ToastCore.h>
-#import <ToastPush/ToastPush.h>
-```
-
-### 2. 바이너리를 다운로드하여 TOAST SDK 적용
-
-#### SDK 가져오기(import)
+#### 2. 바이너리를 다운로드하여 TOAST SDK 적용
 
 TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
 
@@ -52,18 +45,7 @@ Xcode Project에 **ToastPush.framework**, **ToastCore.framework**, **ToastCommon
 
 ![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
-TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framework`를 추가해야 합니다.
-`VoIP 기능은 iOS 10.0 이상부터 지원합니다.`
-
-> PushKit.framework, CallKit.framework는 아래 방법으로 추가할 수 있습니다.
-
-![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
-
-![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
-
-![linked_frameworks_push](http://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push.png)
-
-#### Project Settings
+### 프로젝트 설정
 
 **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
 
@@ -71,29 +53,22 @@ TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framewo
 
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-#### 프레임워크 가져오기
 
-사용하려는 프레임워크를 가져옵니다(import).
-
-```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastPush/ToastPush.h>
-```
-
-## Capabilities Setting
+### Capabilities 설정
 
 TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Background Modes** 항목을 활성화해야 합니다.
 
-**Project Target > Capabilities > Push Notification > ON**
+**Project Target > Signing & Capabilities > + Capability > Push Notification**
 
-![capabilities_push_notification](http://static.toastoven.net/toastcloud/sdk/ios/capability_push_notification.png)
+![add_capability_push_notifications](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications.png)
 
-**Project Target > Capabilities > Background Modes > ON**
+**Project Target > Signing & Capabilities > + Capability > Background Modes**
 
-APNS 기능을 사용하려면 `Remote notifications` 항목을 활성화해야 합니다.
-VoIP 기능을 사용하려면 `Voice over IP` 항목을 활성화해야 합니다.
+![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
 
-![capabilities_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/capability_background_modes.png)
+`Remote notifications` 항목을 활성화해야 합니다.
+
+![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities.png)
 
 ## Xcode11 / iOS13 변경 사항
 Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
@@ -107,7 +82,7 @@ CallKit 을 사용한 전화 수신화면은 서비스에서 구현해야 합니
 
 ### 로그인
 
-`사용자 ID가 설정되지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
+`사용자 ID가 설정되지 않은 상태에서는 토큰 등록 및 삭제 기능을 사용할 수 없습니다.`
 
 ``` objc
 // 서비스 로그인 완료 후 사용자 ID 설정
@@ -116,7 +91,7 @@ CallKit 을 사용한 전화 수신화면은 서비스에서 구현해야 합니
 
 ### 로그아웃
 
-`로그아웃 하여도 등록된 알림은 해제되지 않습니다.`
+`로그아웃 하여도 등록된 토큰은 삭제되지 않습니다.`
 
 ``` objc
 // 서비스 로그아웃 완료 후 사용자 ID를 nil로 설정
@@ -141,20 +116,17 @@ Push에서 발급받은 AppKey를 설정합니다.
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration
                      delegate:(nullable id<ToastPushDelegate>)delegate;
 
-// Delegate 설정
-+ (void)setDelegate:(nullable id<ToastPushDelegate>)delegate;
-
 // 초기화
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration;
 
-// 카테고리 설정
-+ (void)setCategories:(nullable NSSet<UNNotificationCategory *> *)categories;
+// Delegate 설정
++ (void)setDelegate:(nullable id<ToastPushDelegate>)delegate;
 
-// 알림 옵션 설정
-// iOS 8.0+ : UIUserNotificationType
-// iOS 10.0+ : UNAuthorizationOptions
-// default : UNAuthorizationOptionSound | UNAuthorizationOptionBadge
-+ (void)setOptions:(NSInteger)options;
+// 카테고리 설정 (iOS 10.0+)
++ (void)setNotificationCategories:(NSSet<UNNotificationCategory *> *)categories API_AVAILABLE(ios(10.0))
+
+// 카테고리 설정 (iOS 8.0+)
++ (void)setUserNotificationCategories:(NSSet<UIUserNotificationCategory *> *)categories
 
 @end
 ```
@@ -170,25 +142,22 @@ Push에서 발급받은 AppKey를 설정합니다.
 // 서비스 존
 @property (nonatomic) ToastServiceZone serviceZone;
 
-// 푸시 타입(APNS, VoIP)
-@property (nonatomic, copy) NSSet<ToastPushType> *pushTypes;
-
 // 국가 코드 (예약 메시지 발송시 기준 시간이 되는 국가코드)
 @property (nonatomic, copy) NSString *countryCode;
 
 // 언어 코드 (다국어 메시지 발송시 언어 선택 기준)
 @property (nonatomic, copy) NSString *languageCode;
 
+// 타임존
+@property (nonatomic, copy) NSString *timezone;
+
 // Sandbox(Debug) 환경 설정
 @property (nonatomic) BOOL sandbox;
 
 
-// 앱키만 설정하여 생성
 - (instancetype)initWithAppKey:(NSString *)appKey;
 
-// 앱키, 푸시타입을 설정하여 생성
-- (instancetype)initWithAppKey:(NSString *)appKey
-                     pushTypes:(NSSet<ToastPushType> *)pushTypes;
++ (instancetype)configurationWithAppKey:(NSString *)appKey;
 
 @end
 ```
@@ -202,32 +171,14 @@ Push에서 발급받은 AppKey를 설정합니다.
 
 @optional
 
-// 토큰 등록 성공
-- (void)didRegisterWithDeviceToken:(NSString *)deviceToken
-                           forType:(ToastPushType)type;
-
-// 토큰 등록 실패
-- (void)didFailToRegisterForType:(ToastPushType)type
-                       withError:(NSError *)error;
-
-// 토큰 해제 성공
-- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
-                             forType:(ToastPushType)type;
-
-// 토큰 해제 실패
-- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                   forType:(ToastPushType)type
-                                     error:(NSError *)error;
-
 // 메시지 수신
-- (void)didReceivePushMessage:(ToastPushMessage *)message
-                      forType:(ToastPushType)type;
+- (void)didReceiveNotificationWithMessage:(ToastPushMessage *)message;
 
-// 액션 수신 (APNS, iOS 10.0+)
-- (void)didReceivePushAction:(ToastPushAction *)action;
+// 알림 실행(클릭)
+- (void)didReceiveNotificationResponseWithMessage:(ToastPushMessage *)message
 
-// 알림 실행 (APNS)
-- (void)didReceiveNotificationResponseForPushMessage:(ToastPushMessage *)message;
+// 알림 액션(버튼) 실행
+- (void)didReceiveNotificationAction:(ToastPushNotificationAction *)action
 
 @end
 ```
@@ -332,11 +283,7 @@ typedef NS_ENUM(NSInteger, ToastPushActionType) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    // 앱키만 설정할 경우 pushTypes 는 기본으로 APNS 만 설정됩니다.
     ToastPushConfiguration *configuration = [[ToastPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
-
-    // VoIP 사용 혹은 APNS 와 함께 사용할 경우 아래와 같이 NSSet 으로 설정합니다.
-    configuration.pushTypes = [NSSet setWithObjects:ToastPushTypeAPNS, ToastPushTypeVoIP, nil];
 
 #if DEBUG
     // 개발환경(Debug) 에서는 꼭 아래 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.
@@ -344,90 +291,62 @@ typedef NS_ENUM(NSInteger, ToastPushActionType) {
 #endif
 
     // delegate 를 함께 설정 합니다.
-    [ToastPush initWithConfiguration:configuration delegate:self];
+    [ToastPush initWithConfiguration:configuration 
+                            delegate:self];
 
     return YES;
 }
 
-#pragma mark - ToastPushDelegates
-// 토큰 등록 성공
-- (void)didRegisterWithDeviceToken:(NSString *)deviceToken
-                           forType:(ToastPushType)type {
-    // ...
-}
-
-// 토큰 등록 실패
-- (void)didFailToRegisterForType:(ToastPushType)type
-                       withError:(NSError *)error {
-    // ...
-}
-
-// 토큰 해제 성공
-- (void)didUnregisterWithDeviceToken:(nullable NSString *)deviceToken
-                             forType:(ToastPushType)type {
-    // ...
-}
-
-// 토큰 해제 실패
-- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                   forType:(ToastPushType)type
-                                     error:(NSError *)error {
-    // ...
-}
-
+#pragma mark - ToastPushDelegate
 // 메시지 수신
-- (void)didReceivePushMessage:(ToastPushMessage *)message
-                      forType:(ToastPushType)type {
+- (void)didReceiveNotificationWithMessage:(ToastPushMessage *)message {
     // ...
 }
 
-// 알림 액션(버튼) 수신 (iOS 10.0+)
-- (void)didReceivePushAction:(ToastPushAction *)action {
+// 알림 응답(실행)
+- (void)didReceiveNotificationResponseWithMessage:(ToastPushMessage *)message {
     // ...
 }
 
-// 알림 실행
-- (void)didReceiveNotificationResponseForPushMessage:(ToastPushMessage *)message {
+// 알림 액션(버튼) 실행
+- (void)didReceiveNotificationAction:(ToastPushNotificationAction *)action {
     // ...
-}
-```
-
-### 알림 옵션 설정
-
-알림 옵션은 아래와 같이 가본 설정되어 있습니다.
-`앱 실행 중 알림을 표시하기 위해서는 옵션을 변경해야 합니다.`
-
-```objc
-UNAuthorizationOptionBadge | UNAuthorizationOptionSound
-```
-
-### 알림 옵션 설정 예
-
-``` objc
-// default : UNAuthorizationOptionBadge | UNAuthorizationOptionSound
-// 사용자가 앱을 실행 중일 때도 알림이 노출되려면 옵션을 설정을 변경해주세요.
-if (@available(iOS 10.0, *)) {
-    [ToastPush setOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert];
-
-} else {
-    [ToastPush setOptions:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert];
 }
 ```
 
 ## 토큰 등록
 
-초기화시에 설정된 푸시 타입별로 OS 에 등록하고, 발급 받은 토큰 정보를 토스트 클라우드 서버에 등록합니다.
-토큰 등록 결과는 초기화시에 설정된 Delegate를 통해 전달됩니다.
+OS 에 원격 알림을 등록하고, 발급 받은 토큰 정보를 토스트 클라우드 서버에 등록합니다.
+최초 설치시 사용자에게 알림 허용 권환을 요청합니다. 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
 
 ### 토큰 등록 API 명세
 
 ``` objc
 @interface ToastPush : NSObject
 
-// ...
+// 알림 옵션
+typedef NS_OPTIONS(NSUInteger, ToastPushNotificationOptions) {
+    ToastPushNotificationOptionBadge = (1 << 0),
+    ToastPushNotificationOptionSound = (1 << 1),
+    ToastPushNotificationOptionAlert = (1 << 2),
+};
+
 
 // 토큰 등록
-+ (void)registerWithAgreement:(ToastPushAgreement *)agreement;
++ (void)registerWithAgreement:(ToastPushAgreement *)agreement
+            completionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
+
+// 토큰 등록 및 알림 옵션 설정
++ (void)registerWithAgreement:(ToastPushAgreement *)agreement
+                      options:(ToastPushNotificationOptions)options
+            completionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler
+
+// 이전 동의정보를 사용하여 토큰 등록
++ (void)registerWithCompletionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
+
+// // 이전 동의정보를 사용하여 토큰 등록 및 알림 옵션 설정
++ (void)registerWithOptions:(ToastPushNotificationOptions)options
+          completionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 
 // ...
 
@@ -459,19 +378,31 @@ if (@available(iOS 10.0, *)) {
 ### 토큰 등록 예
 
 ``` objc
+// 동의 정보 등록
 ToastPushAgreement *agreement = [[ToastPushAgreement alloc] initWithAllowNotifications:YES];
+agreement.allowAdvertisements = YES;        // 광고성 메시지 알림 표시 동의
+agreement.allowNightAdvertisements = YES;   // 야간 광고성 메시지 알림 표시 동의
 
-// 광고성 메시지 수신 동의 여부 설정
-agreement.allowAdvertisements = YES;
-// 야간 광고성 메시지 수신 동의 여부 설정
-agreement.allowNightAdvertisements = NO;
+// 알림 옵션 설정
+// 미설정시 기본값 : ToastPushNotificationOptionBadge | ToastPushNotificationOptionSound
+ToastPushNotificationOptions options = ToastPushNotificationOptionBadge | ToastPushNotificationOptionSound | ToastPushNotificationOptionAlert;
 
-[ToastPush registerWithAgreement:agreement];
+[ToastPush registerWithAgreement:agreement
+                         options:options
+               completionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
+
+    if (tokenInfo != nil) {
+        NSLog(@"Successfully registered : %@", tokenInfo.deviceToken);
+        
+    } else {
+        NSLog(@"Failed to register : %@", error.localizedDescription);
+    }
+}];
 ```
 
-## 토큰 조회
+## 토큰 정보 조회
 
-현재 사용자 아이디로 등록된 가장 최근 토큰과 설정정보를 조회 합니다.
+현재 단말기 상에서 가장 최근 등록된 토큰과 설정정보를 조회 합니다.
 
 ### 토큰 조회 API 명세
 
@@ -481,17 +412,39 @@ agreement.allowNightAdvertisements = NO;
 // ...
 
 // 토큰 조회
-+ (void)requestTokenInfoForPushType:(ToastPushType)type
-                  completionHandler:(nullable void (^) (ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
++ (void)queryTokenInfoWithCompletionHandler:(void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 
 // ...
 
 @end
 ```
 
+### 토큰 조회 예
+
+``` objc
+[ToastPush queryTokenInfoWithCompletionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
+    if (tokenInfo != nil) {
+        NSLog(@"Successfully query token info : %@", [tokenInfo description]);
+        
+    } else {
+        NSLog(@"Failed to query token info : %@", error.localizedDescription);
+    }
+}];
+```
+
 ### 토큰 정보 API 명세
 
 ``` objc
+
+typedef NSString *ToastPushType NS_STRING_ENUM;
+
+// APNS 타입
+extern ToastPushType const ToastPushTypeAPNS;
+
+// VoIP 타입
+extern ToastPushType const ToastPushTypeVoIP;
+
+
 @interface ToastPushTokenInfo : NSObject
 
 // 사용자 아이디
@@ -507,7 +460,7 @@ agreement.allowNightAdvertisements = NO;
 @property (nonatomic, readonly) NSString *languageCode;
 
 // 푸시 타입
-@property (nonatomic, readonly) NSString *pushType;
+@property (nonatomic, readonly) ToastPushType pushType;
 
 // 알림 표시 동의 여부
 @property (nonatomic, readonly) BOOL allowNotifications;
@@ -524,29 +477,17 @@ agreement.allowNightAdvertisements = NO;
 // 토큰 업데이트 시간
 @property (nonatomic, readonly) NSString *updateDateTime;
 
+// 샌드박스 환경에서 등록된 토큰인지 확인
+@property (nonatomic, getter=isSandbox) BOOL sandbox;
+
 @end
-```
-
-### 토큰 조회 예
-
-``` objc
-+ (void)requestTokenInfoForPushType:(ToastPushType)type
-                  completionHandler:(void (^) (ToastPushTokenInfo *tokenInfo, NSError *error))completionHandler {
-                                      if (error == nil) {
-                                          NSLog(@"Success : %@", tokenInfo);
-
-                                      } else {
-                                          NSLog(@"Fail : %@", error);
-                                      }
-                                  }];
 ```
 
 ## 토큰 해제
 
-초기화시에 설정된 정보(푸쉬 타입, 샌드박스 유무)를 토대로 등록된 토큰을 해제합니다.
+토스트 클라우드 서버에 등록된 토큰을 해제합니다.
 `서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해 주세요.`
-만약 설정된 정보에 해당하는 토큰이 존재하지 않거나 해제에 성공한다면 해제 성공 Delegate를 호출합니다.
-토큰 해제 결과는 초기화시에 설정된 Delegate를 통해 전달됩니다.
+`토큰이 해제되어도 단말기 상에 알림 권한은 회수되지 않습니다.`
 
 ### 토큰 해제 API 명세
 
@@ -557,7 +498,7 @@ agreement.allowNightAdvertisements = NO;
 // ...
 
 // 토큰 해제
-+ (void)unregisterToken;
++ (void)unregisterWithCompletionHandler:(nullable void (^)(NSString * _Nullable deviceToken, NSError * _Nullable error))completionHandler;
 
 // ...
 
@@ -568,69 +509,41 @@ agreement.allowNightAdvertisements = NO;
 ### 토큰 해제 예
 
 ``` objc
-
-// ...
-
-[ToastPush unregisterToken];
-
-// ...
-
-- (void)didUnregisterWithDeviceToken:(NSString *)deviceToken
-                             forType:(ToastPushType)type {
-
-    NSLog(@"Success to unregister token : %@", deviceToken);
-}
-
-- (void)didFailToUnregisterWithDeviceToken:(NSString *)deviceToken
-                                   forType:(ToastPushType)type
-                                     error:(NSError *)error {
-
-    NSLog(@"Failed to unregister token, error : %@", error);
-}
-
+[ToastPush unregisterWithCompletionHandler:^(NSString *deviceToken, NSError *error) {
+    if (deviceToken != nil) {
+        NSLog(@"Successfully unregistered token : %@", deviceToken);
+        
+    } else {
+        NSLog(@"Failed to unregister : %@", error.localizedDescription);
+    }
+}];
 ```
 
-## 토큰 정보 업데이트
+## Notification Service Extension
 
-사용자 아이디, 국가코드, 언어코드, 메시지 동의 설정 등의 토큰 정보를 업데이트합니다.
-등록되어있는 모든 토큰에 일괄 적용됩니다.
-`토큰 정보 업데이트 요청은 앱 실행 후 토큰 등록이 된 상태에서만 가능합니다.`
+`iOS 10.0+ 부터 지원합니다.`
+리치 메시지 수신, 수신 지표 수집을 위해서는 어플리케이션에 NotificationServiceExtension을 반드시 생성 및 설정해야만 합니다.
 
-### 토큰 정보 업데이트 API 명세
+### Notification Service Extension 생성
+
+**File New > Target > iOS > Notification Service Extension**
+
+![create_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_create_ext.png)
+
+### Notification Service Extension 설정
+
+앱의 프로젝트 설정과 동일하게 Extension의 [프로젝트 설정](http://docs.toast.com/ko/TOAST/ko/toast-sdk/push-ios/#toast-push-sdk-xcode)을 추가합니다.
+`Extension은 앱과 함께 설치되지만 앱과는 분리된 별도의 Sandbox 환경입니다.`
+
+NotificationService 클래스에 ToastPushServiceExtension 을 확장구현 해야 합니다.
 
 ``` objc
-@interface ToastPush : NSObject
+#import <UserNotifications/UserNotifications.h>
+#import <ToastPush/ToastPush.h>
 
-// ...
-
-// 토큰 정보 업데이트
-+ (void)updateTokenInfo:(ToastPushTokenInfo *)tokenInfo
-      completionHandler:(nullable void (^) (NSArray<ToastPushTokenInfo *> * _Nullable results, NSError * _Nullable error))completionHandler;
-
-// ...
+@interface NotificationService : ToastPushServiceExtension
 
 @end
-
-```
-
-### 토큰 정보 업데이트 예
-
-``` objc
-
-ToastPushMutableTokenInfo *tokenInfo = [[ToastPushMutableTokenInfo alloc] init];
-// 업데이트하고자하는 항목만 설정
-tokenInfo.languageCode = languageCode;
-tokenInfo.agreement = agreement;
-
-[ToastPush updateTokenInfo:tokenInfo
-            completionHandler:^(NSArray<ToastPushTokenInfo *> *results, NSError *error) {
-                if (error == nil) {
-                    for (ToastPushTokenInfo *tokenInfo in results) {
-                        // ...
-                    }
-                }
-            }];
-
 ```
 
 ## 리치 메시지 수신
@@ -640,7 +553,7 @@ tokenInfo.agreement = agreement;
 
 ### 리치 메시지 수신 설정 예
 
-`NotificationService 클래스에 ToastPushServiceExtension 을 확장구현 해야 합니다.`
+`NotificationService 클래스에 ToastPushServiceExtension 을 확장 구현 해야 합니다.`
 
 ``` objc
 #import <UserNotifications/UserNotifications.h>
@@ -653,7 +566,7 @@ tokenInfo.agreement = agreement;
 
 ## 지표 수집
 
-클라이언트에서 푸시 메시지 수신 및 알림에 의한 애플리케이션 실행 여부가 서버에 전송됩니다.
+메시지 수신 및 알림 실행에 대한 지표를 수집하여 서버에 전송합니다.
 이 내용은 통계 탭에서 확인할 수 있습니다.
 
 ### 수신(Received) 지표 수집 설정
@@ -674,7 +587,7 @@ Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파�
         // 지표 전송에만 사용되므로 앱키만 설정하셔도 됩니다.
         ToastPushConfiguration *configuration = [[ToastPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
 
-        [ToastPush initWithConfiguration:configuration delegate:nil];
+        [ToastPush initWithConfiguration:configuration];
     }
 
     return self;
@@ -734,53 +647,193 @@ Toast Push SDK 초기화 혹은 `NotificationServiceExtension의 info.plist 파�
 </dict>
 ```
 
-## Notification Service Extension
+## VoIP
 
-`iOS 10.0+ 부터 지원합니다.`
-리치 메시지 수신, 수신 지표 수집을 위해서는 어플리케이션에 NotificationServiceExtension을 반드시 생성 및 설정해야만 합니다.
+`VoIP 기능은 iOS 10.0+ 이상부터 지원합니다.`
 
-### Notification Service Extension 생성
+### 프레임워크 설정
 
-**File New > Target > iOS > Notification Service Extension**
+TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framework`를 추가해야 합니다.
 
-![create_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_create_ext.png)
+> PushKit.framework, CallKit.framework는 아래 방법으로 추가할 수 있습니다.
 
-### Notification Service Extension 설정
+![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
 
-앱의 프로젝트 설정과 동일하게 Extension의 [프로젝트 설정](http://docs.toast.com/ko/TOAST/ko/toast-sdk/push-ios/#toast-push-sdk-xcode)을 추가합니다.
-`Extension은 앱과 함께 설치되지만 앱과는 분리된 별도의 Sandbox 환경입니다.`
+![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
 
-NotificationService 클래스에 ToastPushServiceExtension 을 확장구현 해야 합니다.
+![linked_frameworks_push](http://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push.png)
+
+### Capabilities 설정
+
+**Project Target > Signing & Capabilities > + Capability > Background Modes**
+
+![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
+
+`Voice over IP` 항목을 활성화해야 합니다.
+
+![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_voip.png)
+
+### 초기화
+
+`ToastPush 초기화 정보를 그대로 사용합니다. ToastPush 를 통해 초기화해주세요.`
+
+#### 초기화 과정 예
 
 ``` objc
-#import <UserNotifications/UserNotifications.h>
-#import <ToastPush/ToastPush.h>
+#import <ToastPush/ToastVoIP.h>
 
-@interface NotificationService : ToastPushServiceExtension
+@interface AppDelegate () <UIApplicationDelegate, ToastVoIPDelegate>
+
+@end
+
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    ToastPushConfiguration *configuration = [[ToastPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
+
+#if DEBUG
+    // 개발환경(Debug) 에서는 꼭 아래 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.
+    configuration.sandbox = YES;
+#endif
+
+    // ToastPush 에 초기화합니다.
+    [ToastPush initWithConfiguration:configuration];
+
+    // ToastVoIP 에 델리게이트를 설정합니다.
+    [ToastVoIP setDelegate:self];
+
+    return YES;
+}
+
+#pragma mark - ToastVoIPDelegate
+// 메시지 수신
+- (void)didReceiveIncomingVoiceCallWithMessage:(ToastPushMessage *)message {
+    // ...
+}
+```
+
+
+### 토큰 등록
+
+OS 에 VoIP 푸쉬를 등록하고, 발급 받은 토큰 정보를 토스트 클라우드 서버에 등록합니다.
+VoIP 기능은 별도의 사용자 권한 및 동의정보가 필요하지 않습니다.
+
+#### 토큰 등록 API 명세
+
+```objc
+@interface ToastVoIP : NSObject
+
+// ...
+
+// 토큰 등록
++ (void)registerWithCompletionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
+
+// ...
 
 @end
 ```
 
-### 에러 코드
+#### 토큰 등록 예
+
+```objc
+[ToastVoIP registerWithCompletionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
+    if (tokenInfo != nil) {
+        NSLog(@"Successfully registered : %@", tokenInfo.deviceToken);
+        
+    } else {
+        NSLog(@"Failed to register : %@", error.localizedDescription);
+    }
+}];
+```
+
+### 토큰 정보 조회
+
+현재 단말기 상에서 가장 최근 등록된 토큰과 설정정보를 조회 합니다.
+
+#### 토큰 정보 조회 API 명세
+
+```objc
+@interface ToastVoIP : NSObject
+
+// ...
+
+// 토큰 정보 조회
++ (void)queryTokenInfoWithCompletionHandler:(void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
+
+// ...
+
+@end
+```
+
+#### 토큰 정보 조회 예
+
+```objc
+[ToastVoIP queryTokenInfoWithCompletionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
+    if (tokenInfo != nil) {
+        NSLog(@"Successfully query token info : %@", [tokenInfo description]);
+        
+    } else {
+        NSLog(@"Failed to query token info : %@", error.localizedDescription);
+    }
+}];
+```
+
+### 토큰 해제
+
+토스트 클라우드 서버에 등록된 토큰을 해제합니다.
+`서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해 주세요.`
+
+#### 토큰 해제 API 명세
+
+```objc
+@interface ToastVoIP : NSObject
+
+// ...
+
+// 토큰 해제
++ (void)unregisterWithCompletionHandler:(nullable void (^)(NSString * _Nullable deviceToken, NSError * _Nullable error))completionHandler;
+
+// ...
+
+@end
+```
+
+#### 토큰 헤제 예
+
+```objc
+[ToastVoIP unregisterWithCompletionHandler:^(NSString *deviceToken, NSError *error) {
+    if (deviceToken != nil) {
+        NSLog(@"Successfully unregistered token : %@", deviceToken);
+        
+    } else {
+        NSLog(@"Failed to unregister : %@", error.localizedDescription);
+    }
+}];
+```
+
+## 에러 코드
 ```objc
 // Push 기능 관련 에러 코드
-static NSString *const ToastPushErrorDomain = @"com.toast.push";
+extern NSErrorDomain const ToastPushErrorDomain;
 
-typedef NS_ENUM(NSUInteger, ToastPushErrorCode) {
-    ToastPushErrorUnknown               = 0,    // 알수 없음
-    ToastPushErrorNotInitialize         = 1,    // 초기화하지 않음
-    ToastPushErrorUserInvalid           = 2,    // 사용자 아이디 미설정
-    ToastPushErrorPermissionDenied      = 3,    // 권한 획득 실패
-    ToastPushErrorSystemFailed          = 4,    // 시스템에 의한 실패
-    ToastPushErrorTokenInvalid          = 5,    // 토큰 값이 없거나 유효하지 않음
-    ToastPushErrorAlreadyInProgress     = 6,    // 이미 진행중
-    ToastPushErrorParameterInvalid      = 7,    // 매계변수 오류
+typedef NS_ERROR_ENUM(ToastPushErrorDomain, ToastPushError) {
+    ToastPushErrorUnknown = 0,              // 알수 없음
+    ToastPushErrorNotInitialized = 1,       // 초기화하지 않음
+    ToastPushErrorUserInvalid = 2,          // 사용자 아이디 미설정
+    ToastPushErrorPermissionDenied = 3,     // 권한 획득 실패
+    ToastPushErrorSystemFailed = 4,         // 시스템에 의한 실패
+    ToastPushErrorTokenInvalid = 5,         // 토큰 값이 없거나 유효하지 않음
+    ToastPushErrorAlreadyInProgress = 6,    // 이미 진행중
+    ToastPushErrorParameterInvalid = 7,     // 매계변수 오류
+    ToastPushErrorNotSupported = 8,         // 지원하지 않는 기능
 };
 
 // 네트워크 관련 에러 코드
-static NSString *const ToastHttpErrorDomain = @"com.toast.http";
+extern NSErrorDomain const ToastHttpErrorDomain;
 
-typedef NS_ENUM(NSUInteger, ToastHttpErrorCode) {
+typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
     ToastHttpErrorNetworkNotAvailable = 100,        // 네트워크 사용 불가
     ToastHttpErrorRequestFailed = 101,              // HTTP Status Code 가 200이 아니거나 서버에서 요청을 제대로 읽지 못함
     ToastHttpErrorRequestTimeout = 102,             // 타임아웃
