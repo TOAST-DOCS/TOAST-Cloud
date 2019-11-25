@@ -47,7 +47,7 @@ Following services are available at the level of organization:
 
 #### Organization Members
 
-Organization members are classified into members of TOAST.com and insider members of the organization.  
+
 
 | Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
 | :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -68,10 +68,9 @@ Each member of an organization has following roles:
 |                      | Disable Organization Services                     | O     | O     |        |                |            |
 | Manage Payment       | Query Bills                                       | O     |       |        |                |            |
 |                      | Status of Service Use                             | O     | O     |        | O              |            |
-| Manage Projects      | Create Projects                                   | O     | O     | O      |                |            |
-|                      | Delete Projects (all projects of an organization) | O     | O     |        |                |            |
-|                      | Delete Projects (created projects)                | O     | O     | O      |                |            |
-| 사용자 Action 로그 관리  | 사용자 Action 로그 조회                               | O     | O     |        |                | O          |
+| Manage Projects      | Creat Projects                                    | O     | O     | O      |                | O          |
+| Manage Projects      | Delete Projects                                   | O     |       |        |                |            |
+
 
 #### Delete Organizations
 
@@ -118,6 +117,23 @@ Only common settings are provided.
 ![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903_en.png)
 - Not Configured: Login can be attempted forever even after it fails for many times. 
 - Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
+
+#### Login Session 
+
+![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_14_201911_en.png)
+
+- Depending on the setting of login session, login session may be maintained or automatically expired. 
+- After login is expired, it is required to log in again to access console. 
+- This common setting is to be applied across the IAM console. 
+- This common setting is to be applied across the IAM console. 
+    - Set the available number of simultaneous logins under same ID on many devices.   
+    - If the setting is for 1, no simultaneous login is allowed on other devices, like computers or smartphones. 
+        - e.g.) PC-  Login Maintained, Smart phones- Auto Logout 
+- Login time maintained in session
+    - Configure time to maintain login session even without any actions, like a click. 
+    - It is automatically logged out, if there's no action, like a click, during configured time. 
+    - Consider the length in the setting, due to security issue. 
+
 
 #### IP ACL 
 
@@ -171,21 +187,14 @@ You can be a project member, if not an organization member.
 
 Each project member has the following roles:
 
-| Action                | Role                                            | ADMIN | MEMBER | Billing Viewer ADMIN | Billing Viewer |
-| --------------------- | ----------------------------------------------- | ----- | ------ | -------------------- | -------------- |
-| Manage Members        | Register Project Members (ADMIN)                | O     |        |                      |                |
-|                       | Delete Project Members (ADMIN)                  | O     |        |                      |                |
-|                       | Register Project Members (MEMBER)               | O     |        |                      |                |
-|                       | Delete Project Members (MEMBER)                 | O     |        |                      |                |
-|                       | Register Project Members (Billing Viewer ADMIN) | O     |        |                      |                |
-|                       | Delete Project Members (Billing Viewer ADMIN)   | O     |        |                      |                |
-|                       | Register Project Members (Billing Viewer)       | O     |        | O                    |                |
-|                       | Delete Project Members (Billing Viewer)         | O     |        | O                    |                |
-| Manage Service        | Enable Service                                  | O     |        |                      |                |
-|                       | Enable Service                                  | O     | O      |                      |                |
-|                       | Disable Service                                 | O     |        |                      |                |
-| Status of Service Use | Status of Service Use                           | O     |        | O                    | O              |
-
+| Action                | Role                                            | ADMIN | MEMBER |  Billing Viewer |
+| --------------------- | ----------------------------------------------- | ----- | ------ |  -------------- |
+| Manage Members        | Register Project Members                        | O     |        |                 |
+|                       | Delete Project Members                          | O     |        |                 |
+| Manage Service        | Enable Service                                  | O     |        |                 |
+|                       | Disable Service                                 | O     |        |                 |
+| Status of Service Use | Status of Service Use                           | O     |        |  O              |
+| Manage Projects       | Delete Projects                                 | O     |        |                 |
 #### Delete Projects
 
 A project can be deleted if it has no available services.
