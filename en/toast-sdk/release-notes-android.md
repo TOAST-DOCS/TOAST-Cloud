@@ -1,5 +1,14 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.19.4 (2019.11.26)
+
+### TOAST Push
+
+#### 기능 개선
+
+* (구) pushsdk 데이터 마이그레이션 지원.
+    * (구) pushsdk 에서 업데이트 한 경우 모든 데이터를 TOAST SDK 로 마이그레이션 합니다.
+    
 ## 0.19.3 (2019.10.18)
 
 ### TOAST Push
