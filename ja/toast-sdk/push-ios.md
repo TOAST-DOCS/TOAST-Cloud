@@ -245,24 +245,24 @@ Push에서 발급받은 AppKey를 설정합니다.
 #### 액션 객체 API 명세
 
 ```objc
-typedef NS_ENUM(NSInteger, ToastPushActionType) {
-    ToastPushActionDismiss = 0,
-    ToastPushActionOpenApp = 1,
-    ToastPushActionOpenURL = 2,
-    ToastPushActionReply = 3,
+typedef NS_ENUM(NSInteger, ToastPushNotificationActionType) {
+    ToastPushNotificationActionDismiss  NS_SWIFT_NAME(dismiss) = 0,
+    ToastPushNotificationActionOpenApp  NS_SWIFT_NAME(openApp) = 1,
+    ToastPushNotificationActionOpenURL  NS_SWIFT_NAME(openURL) = 2,
+    ToastPushNotificationActionReply    NS_SWIFT_NAME(reply) = 3,
 };
 
-@interface ToastPushAction : NSObject
+@interface ToastPushNotificationAction : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, readonly) NSString *actionIdentifier;
 
 @property (nonatomic, readonly) NSString *categoryIdentifier;
 
-@property (nonatomic, readonly) ToastPushActionType actionType;
+@property (nonatomic, readonly) ToastPushNotificationActionType actionType;
 
-@property (nonatomic, readonly, nullable) ToastPushButton *button;
+@property (nonatomic, readonly) ToastPushButton *button;
 
-@property (nonatomic, readonly, nullable) ToastPushMessage *message;
+@property (nonatomic, readonly) ToastPushMessage *message;
 
 @property (nonatomic, readonly, nullable) NSString *userText;
 
