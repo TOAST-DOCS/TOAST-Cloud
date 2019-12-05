@@ -150,6 +150,7 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 public static void Purchase(string productId, developerPayload = "");
 ```
 
+- TOAST IAP는 구매 요청 시 developerPayload를 통해 사용자 정보를 추가할 수 있습니다.
 
 ### 商品購入例
 
