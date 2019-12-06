@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Unity
 
+## 0.18.0 (2019.12.06)
+
+### 공통
+
+* iOS 0.20.1 framework 적용
+* Android 0.19.4 aar 포함해서 배포
+* Native Plugin (Windows, MacOS) 배포
+
 ## 0.17.0 (2019.10.02)
 
 ### TOAST IAP
