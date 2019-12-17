@@ -32,7 +32,7 @@ TOAST Android SDK는 **jCenter**를 통해 배포되며 간단한 Gradle 설정�
 
 ### iOS
 
-TOAST iOS SDK는 **CocoaPods**로 Project Setting 및 Framework Dependency 관리를 지원합니다.
+TOAST iOS SDK는 **Github**를 통해 배포되며 간단한 **Cocoapods**, **Carthage** 설정만으로 사용할 수 있습니다.
 
 - [iOS 시작하기](./getting-started-ios)
 

@@ -3,7 +3,7 @@
 ## 지원 환경
 
 * iOS 8.0 이상
-* XCode 최신 버전(버전 9 이상)
+* XCode 최신 버전(버전 10 이상)
 
 ## TOAST SDK의 구성
 
@@ -15,13 +15,13 @@ iOS용 TOAST SDK의 구성은 다음과 같습니다.
 
 TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 수 있습니다.
 
-| Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- |
-| All | ToastSDK | ToastCore.framework<br/>ToastCommon.framework<br/>ToastLogger.framework<br/>ToastIAP.framework<br/>ToastPush.framework |  |  |
-| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
-| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
-| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
-| TOAST Push | ToastPush | ToastPush.framework | * UserNotifications.framework<br/><br/>[Optional]<br/> * PushKit.framework | |
+| Service | Cocoapods Pod Name | Carthage | Framework | Dependency | Build Settings |
+| ------- | ------------------ | -------- | --------- | ---------- | -------------- |
+| All | ToastSDK | git nhn/toastcloud.sdk<br> | ToastCore.framework<br>ToastCommon.framework<br>ToastLogger.framework<br>ToastIAP.framework<br>ToastPush.framework |  |  |
+| Mandatory | ToastCore<br>ToastCommon |  | ToastCore.framework<br>ToastCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
+| TOAST Log & Crash | ToastLogger |  | ToastLogger.framework | [External & Optional]<br>\* CrashReporter.framework (Toast) |  |
+| TOAST IAP | ToastIAP |  | ToastIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
+| TOAST Push | ToastPush |  | ToastPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
 
 ## TOAST SDK를 Xcode 프로젝트에 적용
 
@@ -38,16 +38,27 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-생성된 Workspace를 열어 사용할 SDK를 가져옵니다(import).
-
-```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastLogger/ToastLogger.h>
-#import <ToastIAP/ToastIAP.h>
-#import <ToastPush/ToastPush.h>
+### 2. Carthage를 사용해 TOAST SDK 적용
+#### Cartfile 설정
+Cartfile을 생성하여 TOAST SDK의 Release Github Repository를 추가합니다.
+```
+github "nhn/toastcloud.sdk"
 ```
 
-### 2. 바이너리를 다운로드하여 TOAST SDK 적용
+#### SDK 가져오기 (import)
+생성된 Carthage/Build 폴더의 Framework를 Xcode 프로젝트에 추가합니다. 
+![carthage_import_framework](http://static.toastoven.net/toastcloud/sdk/ios/carthage_setting_01.png)
+
+프로젝트에 다음과 같이 프레임워크(framework)가 추가된 것을 확인합니다.
+![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage_setting_02.png)
+
+#### 필수 Framework 추가와 프로젝트 설정
+TOAST SDK를 사용하기 위해 [필수 Framework](./getting-started-ios/#필수-Framework-추가)와 [Project Setting](./getting-started-ios/#Project-Settings)을 추가합니다.
+
+> 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
+> 서비스별로 필요한 Framework는 [TOAST SDK의 구성](./getting-started-ios/#TOAST-SDK의-구성)에서 확인 할 수 있습니다. 
+
+### 3. 바이너리를 다운로드하여 TOAST SDK 적용
 
 #### SDK 가져오기(import)
 
@@ -60,9 +71,9 @@ TOAST Logger의 Crash Report 기능을 사용하려면 함께 배포되는 Crash
 ![import_external_framework](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_external_folder.png)
 
 프로젝트에 다음과 같이 프레임워크(framework)가 추가된 것을 확인합니다.
-
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
 
+#### 필수 Framework 추가
 > TOAST IAP 기능을 사용하려면 StoreKit.framework를 추가해야 합니다.
 
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
@@ -93,7 +104,7 @@ CrashReporter.framewor를 직접 다운로드하거나 빌드한 경우에는 Bu
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
 
-#### 프레임워크 가져오기
+### 프레임워크 가져오기
 
 사용하려는 프레임워크를 가져옵니다(import).
 

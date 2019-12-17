@@ -1,5 +1,15 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.21.0 (2019.12.24)
+### TOAST Logger
+#### 개선 사항
+* Crash 발생 위치 분류 방식 개선을 위한 데이터 추가 
+
+### TOAST IAP
+#### 개선 사항
+* API 보안 기능 추가
+* 안전성 개선
+
 ## 0.20.1 (2019.12.04)
 
 ### 공통
