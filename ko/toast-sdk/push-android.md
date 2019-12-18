@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.20.40'
+    implementation 'com.toast.android:toast-push-tencent:0.20.0'
     ...
 }
 ```
@@ -322,7 +322,7 @@ ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
 
 ### 메시지 수신 리스너 등록 예시
 ``` java
-public class ToastPushSampleApplication extends Application {
+public class MyApplication extends Application {
     @Override
     public void onCreate() {
         ToastPush.setOnReceiveMessageListener(new OnReceiveMessageListener() {
@@ -347,13 +347,18 @@ public class ToastPushSampleApplication extends Application {
 
 ### 알림 클릭 리스너 등록 예시
 ```java
-ToastNotification.setOnClickListener(new OnClickListener() {
+public class MyApplication extends Application {
     @Override
-    public void onClick(@NonNull ToastPushMessage message) {
-        // 메시지 내용을 기반으로 페이지 이동 등의 서비스 로직 수행이 가능합니다.
-        Map<String, String> extras = message.getExtras();
+    public void onCreate() {
+        ToastNotification.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(@NonNull ToastPushMessage message) {
+                // 메시지 내용을 기반으로 페이지 이동 등의 서비스 로직 수행이 가능합니다.
+                Map<String, String> extras = message.getExtras();
+            }
+        });
     }
-});
+}
 ```
 
 ## 알림 설정
@@ -363,59 +368,93 @@ ToastNotification.setOnClickListener(new OnClickListener() {
 - 알림 채널명은 앱의 알림 설정에서 노출되는 채널의 이름입니다.
 - 알림에 별도의 채널을 설정하지 않았으면 기본 알림 채널로 알림이 요청됩니다.
 - 알림 기본 옵션 설정시 적용을 위해 기본 알림 채널이 새로 생성됩니다.
-- `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의해야 합니다.
+- `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
 
 > 기본 알림 채널명을 설정하지 않으면 애플리케이션의 이름으로 자동 설정됩니다.
 
 #### 기본 알림 채널명 설정 예시
-##### 코드에서 설정
+##### 코드에서 설정 예시
 ```java
-ToastNotification.setDefaultChannelName(
-    context,
-    "YOUR_NOTIFICATION_CHANNEL_NAME");
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        ToastNotification.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(@NonNull ToastPushMessage message) {
+                ToastNotification.setDefaultChannelName(context, "YOUR_CHANNEL_NAME");
+            }
+        });
+    }
+}
 ```
 
-##### AndroidManifest.xml 메타 데이터로 정의
+##### AndroidManifest.xml 메타 데이터로 정의 예시
 ```xml
-<meta-data android:name="com.toast.sdk.push.notification.default_channel_name" android:value="@string/default_notification_channel_name"/>
+<!-- 기본 채널의 이름 설정 -->
+<meta-data android:name="com.toast.sdk.push.notification.default_channel_name" 
+           android:value="@string/default_notification_channel_name"/>
 ```
 
 ### 알림 기본 옵션 설정
 - 알림의 우선 순위, 작은 아이콘, 배경색, LED 라이트, 진동, 알림음을 설정합니다.
 - 안드로이드 8.0(API 레벨 26) 이상 단말기에서는 기본 알림 채널에만 옵션이 적용 됩니다.
-- `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의해야 합니다.
+- `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
 
 #### 알림 기본 옵션 설정 예시
-##### 코드에서 설정
+##### 코드에서 설정 예시
 ```java
-ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder(context)
-        .setPriority(NotificationCompat.PRIORITY_HIGH)
-        .setColor(0x0085AA)
-        .setLights(Color.RED, 0, 300)
-        .setSmallIcon(R.drawable.ic_notification)
-        .setSound(R.raw.dingdong1)
-        .setVibratePattern(new long[] {500, 700, 1000})
-        .build();
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        ToastNotification.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(@NonNull ToastPushMessage message) {
+                ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder(context)
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)  // 알림 우선 순위 설정
+                        .setColor(0x0085AA)                             // 알림 배경색 설정
+                        .setLights(Color.RED, 0, 300)                   // LED 라이트 설정
+                        .setSmallIcon(R.drawable.ic_notification)       // 작은 아이콘 설정
+                        .setSound(R.raw.dingdong1)                      // 알림음 설정
+                        .setVibratePattern(new long[] {500, 700, 1000}) // 진동 패턴 설정
+                        .build();
 
-ToastNotification.setDefaultOptions(context, defaultOptions);
+                ToastNotification.setDefaultOptions(context, defaultOptions);
+            }
+        });
+    }
+}
 ```
 
-##### AndroidManifest.xml 메타 데이터로 정의
+##### AndroidManifest.xml 메타 데이터로 정의 예시
 ```xml
-<meta-data android:name="com.toast.sdk.push.notification.default_priority" android:value="1"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_small_icon" android:resource="@drawable/ic_notification"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_background_color" android:resource="@color/defaultNotificationColor"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_light_color" android:value="#0000ff"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_light_on_ms" android:value="0"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_light_off_ms" android:value="500"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern" android:resource="@array/default_vibrate_pattern"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_sound" android:value="notification_sound"/>
+<!-- 알림 우선 순위 -->
+<meta-data android:name="com.toast.sdk.push.notification.default_priority" 
+           android:value="1"/>
+<!-- 알림 배경색 -->
+<meta-data android:name="com.toast.sdk.push.notification.default_background_color" 
+           android:resource="@color/defaultNotificationColor"/>
+<!-- LED 라이트 -->
+<meta-data android:name="com.toast.sdk.push.notification.default_light_color" 
+           android:value="#0000ff"/>
+<meta-data android:name="com.toast.sdk.push.notification.default_light_on_ms" 
+           android:value="0"/>
+<meta-data android:name="com.toast.sdk.push.notification.default_light_off_ms" 
+           android:value="500"/>
+<!-- 작은 아이콘 -->
+<meta-data android:name="com.toast.sdk.push.notification.default_small_icon" 
+           android:resource="@drawable/ic_notification"/>
+<!-- 알림음 -->
+<meta-data android:name="com.toast.sdk.push.notification.default_sound" 
+           android:value="notification_sound"/>
+<!-- 진동 패턴 -->
+<meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern" 
+           android:resource="@array/default_vibrate_pattern"/>
 ```
 
 ### 알림음 설정
 - Push 메시지 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림으로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
 - 알림음은 애플리케이션 리소스 폴더 하위의 raw 폴더에 있는 로컬 리소스만 사용 가능합니다.
-    - 예) main/res/raw/dingdong1.wav
+    - 예) main/res/raw/notification_sound.wav
 
 ## 리치 메시지
 
@@ -460,7 +499,7 @@ ToastNotification.setDefaultOptions(context, defaultOptions);
 #### 알림 액션 리스너 등록 예시
 
 ``` java
-public class ToastPushSampleApplication extends Application {
+public class MyApplication extends Application {
     @Override
     public void onCreate() {
         ToastNotification.setOnActionListener(new OnActionListener() {
@@ -479,8 +518,9 @@ public class ToastPushSampleApplication extends Application {
 ```
 
 ## 사용자 정의 메시지 처리
-- 메시지 수신 후 별도의 처리 과정을 수행하거나 수신한 메시지의 내용을 수정해 알림을 노출해야하는 경우 [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속해서 onMessageReceived 함수를 구현해야합니다.
-- ToastPushMessageReceiver를 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
+- 메시지 수신 후 별도의 처리 과정을 수행하거나 수신한 메시지의 내용을 수정해 알림을 노출해야하는 경우 [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속 구현하는 브로드캐스트를 구현해야 합니다.
+- ToastPushMessageReceiver를 상속 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
+- 메시지 수신시 onMessageReceived 함수로 수신된 메시지가 전달됩니다.
 
 > **(주의)**
 > 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다. 
@@ -488,7 +528,7 @@ public class ToastPushSampleApplication extends Application {
 
 ### ToastPushMessagingService 구현 코드 예
 ```java
-public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
+public class MyPushMessageReceiver extends ToastPushMessageReceiver {
     @Override
     public void onMessageReceived(@NonNull Context context,
                                   @NonNull ToastRemoteMessage remoteMessage) {
