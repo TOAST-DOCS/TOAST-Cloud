@@ -325,6 +325,8 @@ ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
+        // ...
+
         ToastPush.setOnReceiveMessageListener(new OnReceiveMessageListener() {
             @Override
             public void onReceive(@NonNull ToastPushMessage message,
@@ -336,6 +338,8 @@ public class MyApplication extends Application {
                 }
             }
         });
+
+        // ...
     }
 }
 ```
@@ -350,6 +354,8 @@ public class MyApplication extends Application {
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
+        // ...
+
         ToastNotification.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(@NonNull ToastPushMessage message) {
@@ -357,6 +363,8 @@ public class MyApplication extends Application {
                 Map<String, String> extras = message.getExtras();
             }
         });
+
+        // ...
     }
 }
 ```
@@ -378,12 +386,16 @@ public class MyApplication extends Application {
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
+        // ...
+
         ToastNotification.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(@NonNull ToastPushMessage message) {
                 ToastNotification.setDefaultChannelName(context, "YOUR_CHANNEL_NAME");
             }
         });
+
+        // ...
     }
 }
 ```
@@ -406,6 +418,8 @@ public class MyApplication extends Application {
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
+        // ...
+
         ToastNotification.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(@NonNull ToastPushMessage message) {
@@ -421,6 +435,8 @@ public class MyApplication extends Application {
                 ToastNotification.setDefaultOptions(context, defaultOptions);
             }
         });
+
+        // ...
     }
 }
 ```
@@ -502,6 +518,8 @@ public class MyApplication extends Application {
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
+        // ...
+
         ToastNotification.setOnActionListener(new OnActionListener() {
             @Override
             public void onAction(@NonNull PushAction action) {
@@ -513,6 +531,8 @@ public class MyApplication extends Application {
                 }
             }
         });
+
+        // ...
     }
 }
 ```
@@ -590,7 +610,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 #### 지표 수집 기능 추가 예
 ```java
-public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
+public class MyPushMessageReceiver extends ToastPushMessageReceiver {
     @Override
     public void onMessageReceived(@NonNull Context context,
                                   @NonNull ToastRemoteMessage remoteMessage) {
