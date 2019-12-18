@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.19.4'
+    implementation 'com.toast.android:toast-push-fcm:0.20.0'
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.19.4'
+    implementation 'com.toast.android:toast-push-tencent:0.20.40'
     ...
 }
 ```
@@ -166,7 +166,7 @@ android {
 
 ```java
 ToastPushConfiguration configuration =
-    ToastPushConfiguration.newBuilder(getApplicationContext(), "YOUR_APP_KEY")
+    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 ```
 
@@ -202,21 +202,21 @@ public void onLogin(String userId) {
 ```
 
 ## 수신 동의 설정
-- 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 푸시 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
+- 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
     - [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
     - [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 
 ### 수신 동의 설정 예시
 ```java
-ToastPushAgreement agreement = ToastPushAgreement.newBuilder(/* 알림 수신 여부 */ true)
-        .setAllowAdvertisements(/* 광고 수신 여부 */ true)
-        .setAllowNightAdvertisements(/* 야간 광고 수신 여부 */ true)
+ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 알림 수신 여부
+        .setAllowAdvertisements(true)       // 광고성 알림 수신 여부
+        .setAllowNightAdvertisements(true)  // 야간 광고성 알림 수신 여부
         .build();
 ```
 
 ## 토큰 등록
 - 각 Push 제공자가 제공하는 토큰을 획득하여, TOAST Push 서버로 전송합니다.
-- 토큰이 성공적으로 등록되면, Push를 수신할 수 있습니다.
+- 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
 
 ### 토큰 등록 예시
 ```java
@@ -241,15 +241,15 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 
 ### 토큰 정보 조회 예시
 ```java
-ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
+ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
     @Override
     public void onQuery(@NonNull PushResult result,
                         @Nullable TokenInfo tokenInfo) {
 
         if (result.isSuccess()) {
+            // 토큰 정보 조회 성공
             String token = tokenInfo.getToken();
             ToastPushAgreement agreement = tokenInfo.getAgreement();
-            // 토큰 정보 조회 성공
         } else {
             // 토큰 정보 조회 실패
             int code = result.getCode();
@@ -260,7 +260,7 @@ ToastPush.queryTokenInfo(mContext, new QueryTokenInfoCallback() {
 ```
 
 ## 토큰 해제
-- 가장 최근에 등록된 토큰을 해제합니다. 토큰이 해제되면 푸시를 더 이상 받을 수 없게 됩니다.
+- TOAST Push 서버에 등록된 토큰을 해제합니다. 해제된 토큰은 메시지 발송 대상에서 제외됩니다.
 
 > 이미 해제된 토큰을 해제하면 "이미 해제된 토큰입니다(Already a token has been unregistered)" 라는 메시지와 함께 성공이 반환됩니다.
 
@@ -312,8 +312,8 @@ ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
 ```
 
 ## 메시지 수신
-- 푸시 메시지 수신 시 OnReceiveMessageListener 를 통해 통지 받을 수 있습니다.
-- 푸시 메시지 수신 리스너는 ToastPush.setOnReceiveMessageListener 함수를 사용하여 등록할 수 있습니다.
+- Push 메시지 수신 시 OnReceiveMessageListener 를 통해 통지 받을 수 있습니다.
+- Push 메시지 수신 리스너는 ToastPush.setOnReceiveMessageListener 함수를 사용하여 등록할 수 있습니다.
 - OnReceiveMessageListener 에 전달된 [ToastPushMessage](./push-android/#toastpushmessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
 - 앱이 실행 중이지 않을 때도 메시지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
@@ -321,7 +321,6 @@ ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
 > Foreground 여부는 OnReceiveMessageListener#onReceive 에 전달되는 isForeground 를 통해 확인 할 수 있습니다.
 
 ### 메시지 수신 리스너 등록 예시
-
 ``` java
 public class ToastPushSampleApplication extends Application {
     @Override
@@ -341,14 +340,12 @@ public class ToastPushSampleApplication extends Application {
 }
 ```
 
-## 알림 실행
-
+## 알림 클릭
 - 사용자가 노출된 알림을 클릭하여 앱이 실행되었을 때 OnClickListener 를 통해 통지 받울 수 있습니다.
 - 알림 클릭 리스너는 ToastNotification.setOnClickListener 함수를 사용하여 등록할 수 있습니다.
 - 앱이 실행 중이지 않을 때도 알림 클릭 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
 ### 알림 클릭 리스너 등록 예시
-
 ```java
 ToastNotification.setOnClickListener(new OnClickListener() {
     @Override
@@ -359,14 +356,37 @@ ToastNotification.setOnClickListener(new OnClickListener() {
 });
 ```
 
-## 알림 기본값 설정
+## 알림 설정
+
+### 기본 알림 채널명 설정
+- 안드로이드 8.0(API 레벨 26) 이상 부터는 알림 채널을 반드시 사용해야 합니다.
+- 알림 채널명은 앱의 알림 설정에서 노출되는 채널의 이름입니다.
+- 알림에 별도의 채널을 설정하지 않았으면 기본 알림 채널로 알림이 요청됩니다.
+- 알림 기본 옵션 설정시 적용을 위해 기본 알림 채널이 새로 생성됩니다.
+- `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의해야 합니다.
+
+> 기본 알림 채널명을 설정하지 않으면 애플리케이션의 이름으로 자동 설정됩니다.
+
+#### 기본 알림 채널명 설정 예시
+##### 코드에서 설정
+```java
+ToastNotification.setDefaultChannelName(
+    context,
+    "YOUR_NOTIFICATION_CHANNEL_NAME");
+```
+
+##### AndroidManifest.xml 메타 데이터로 정의
+```xml
+<meta-data android:name="com.toast.sdk.push.notification.default_channel_name" android:value="@string/default_notification_channel_name"/>
+```
 
 ### 알림 기본 옵션 설정
 - 알림의 우선 순위, 작은 아이콘, 배경색, LED 라이트, 진동, 알림음을 설정합니다.
-- 알림 기본 옵션 적용을 위해서는 `Application#onCreate` 에서 등록해야 합니다.
-- 안드로이드 8.0(API 레벨 26) 이상 단말기에서는 기본 옵션 적용을 위해 기본 알림 채널이 재생성 됩니다.
+- 안드로이드 8.0(API 레벨 26) 이상 단말기에서는 기본 알림 채널에만 옵션이 적용 됩니다.
+- `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의해야 합니다.
 
 #### 알림 기본 옵션 설정 예시
+##### 코드에서 설정
 ```java
 ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder(context)
         .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -380,38 +400,21 @@ ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder(c
 ToastNotification.setDefaultOptions(context, defaultOptions);
 ```
 
-### 기본 알림 채널 설정
-- 안드로이드 8.0(API 레벨 26) 이상 부터는 알림 채널을 반드시 사용해야 합니다.
-- 기본 알림 채널을 설정하면 SDK가 알림 생성시 기본 알림 채널로 알림을 등록합니다.
-- **알림 채널 ID**는 알림 채널을 식별하기 위한 값으로 앱에서 유일한 값으로 설정해야 합니다.
-- **알림 채널 이름**은 사용자에게 노출되는 알림 채널의 이름입니다.
-
-> 기본 알림 채널을 설정하지 않으면 아래값으로 기본 알림 채널을 생성합니다.
-> **알림 채널 ID** : 임의의 UUID를 ID로 사용합니다.
-> **알림 채널 이름** : 애플리케이션의 이름을 알림 채널 이름으로 사용합니다.
-
-### 기본 알림 채널 설정 예시
-```java
-// 기본 채널만 설정
-ToastNotification.setDefaultNotificationChannel(
-    context,
-    "YOUR_NOTIFICATION_CHANNEL_ID",
-    "YOUR_NOTIFICATION_CHANNEL_NAME");
-
-// 기본 채널과 기본 옵션 동시에 설정
-ToastNotification.setDefaultNotificationChannel(
-    context,
-    "YOUR_NOTIFICATION_CHANNEL_ID",
-    "YOUR_NOTIFICATION_CHANNEL_NAME",
-    defaultOptions);
+##### AndroidManifest.xml 메타 데이터로 정의
+```xml
+<meta-data android:name="com.toast.sdk.push.notification.default_priority" android:value="1"/>
+<meta-data android:name="com.toast.sdk.push.notification.default_small_icon" android:resource="@drawable/ic_notification"/>
+<meta-data android:name="com.toast.sdk.push.notification.default_background_color" android:resource="@color/defaultNotificationColor"/>
+<meta-data android:name="com.toast.sdk.push.notification.default_light_color" android:value="#0000ff"/>
+<meta-data android:name="com.toast.sdk.push.notification.default_light_on_ms" android:value="0"/>
+<meta-data android:name="com.toast.sdk.push.notification.default_light_off_ms" android:value="500"/>
+<meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern" android:resource="@array/default_vibrate_pattern"/>
+<meta-data android:name="com.toast.sdk.push.notification.default_sound" android:value="notification_sound"/>
 ```
 
-## 알림 리소스 설정
-
-### 알림 소리 리소스
-- 푸시 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림 소리로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
-    - 푸시 발송 시 sound 필드에 로컬 리소스 이름만(확장자 제외) 입력해야 합니다.
-- 로컬 리소스는 반드시 리소스 폴더 하위의 raw 폴더에 있어야 합니다.
+### 알림음 설정
+- Push 메시지 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림으로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
+- 알림음은 애플리케이션 리소스 폴더 하위의 raw 폴더에 있는 로컬 리소스만 사용 가능합니다.
     - 예) main/res/raw/dingdong1.wav
 
 ## 리치 메시지
@@ -420,25 +423,28 @@ ToastNotification.setDefaultNotificationChannel(
 - **리치 메시지**란 제목, 본문과 함께 수신할 수 있는 다양하고 풍부한 메시지입니다.
 
 ### 지원하는 리치 메시지
+
 #### 버튼
 - 알림 제거 : 현재 알림을 제거합니다.
 - 앱 열기 : 앱을 실행합니다.
 - URL 열기 : 특정 URL로 이동합니다.
     - 웹 URL 입력시 브라우져가 실행됩니다.
-    - Custom scheme을 이용한 Activity/BroadcastReceiver 실행이 가능합니다.
+    - 애플리케이션에 등록된 커스텀 스킴 입력시 커스텀 스킴에 해당하는 Activity / BroadcastReceiver를 실행합니다.
 - 답장 전송 : 알림에서 바로 답장을 보냅니다.
     - 안드로이드 7.0(API 레벨 24) 이상에서만 사용 가능합니다.
 
 > 버튼은 최대 3개까지 지원합니다.
 
 #### 미디어
-- 이미지 : 알림에 이미지를 추가합니다. (내부, 외부 이미지 모두 지원)
+- 이미지 : 알림에 이미지를 추가합니다. 
+    - 이미지의 경로는 애플리케이션 내의 리소스, 안드로이드 Assets, 리모트 URL 을 지원합니다.
     - 이미지는 가로와 세로 비율이 2:1인 이미지를 권장합니다.
     - 다른 비율의 이미지는 잘린채로 노출될 수 있습니다.
 - 그 외 : 그 외의 미디어(동영상, 소리 등)는 지원하지 않습니다.
 
 #### 큰 아이콘
-- 알림에 큰 아이콘을 추가합니다. (내부, 외부 이미지 모두 지원)
+- 알림에 큰 아이콘을 추가합니다.
+    - 이미지의 경로는 애플리케이션 내의 리소스, 안드로이드 Assets, 리모트 URL 을 지원합니다.
     - 큰 아이콘의 이미지는 1:1 비율을 권장합니다.
     - 다른 비율의 이미지는 강제로 비율이 1:1로 변경되기 때문에 기대와 다른 이미지가 노출될 수 있습니다.
 
@@ -446,17 +452,12 @@ ToastNotification.setDefaultNotificationChannel(
 - 같은 키의 알림들을 하나로 묶습니다.
 - 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
 
-### 리치 메시지 변환 방법
-- 리치 메시지는 TOAST Push의 웹콘솔에서 전송할 수 있습니다. 또한 메시지 발송 API의 richMessage 필드를 추가해서 전송할 수도 있습니다.
-- 리치 메시지를 정해진 형태로 전송했다면, 별도의 변환 과정없이 리치 메시지 알림이 등록됩니다.
-
-### 버튼 액션 리스너 등록
-- 사용자가 리치 메세지의 버튼 선택 시 액션 리스너로 통지합니다.
-- 리치 메시지의 답장(혹은 응답) 버튼을 사용하는 경우, 액션 리스너에서 사용자 입력 메세지에 대한 처리가 필요합니다.
+### 알림 액션 리스너 등록
+- 사용자가 알림의 버튼 혹은 답장 전송 버튼 클릭시 알림 액션 리스너로 통지합니다.
 - [PushAction](./push-android/#pushaction) 객체로 액션 정보를 확인 가능합니다.
 - 앱이 실행중이지 않을 때에도 메세지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
-#### 버튼 액션 리스너 등록 예시
+#### 알림 액션 리스너 등록 예시
 
 ``` java
 public class ToastPushSampleApplication extends Application {
@@ -467,6 +468,7 @@ public class ToastPushSampleApplication extends Application {
             public void onAction(@NonNull PushAction action) {
                 // 답장 액션일 경우, 서비스 서버로 해당 내용을 전송
                 if (action.getActionType() == PushAction.ActionType.REPLY) {
+                    // 사용자가 입력한 답장 내용 획득
                     String userText = action.getUserText();
                     // 서비스 서버로 사용자 입력 내용 전송
                 }
@@ -477,12 +479,12 @@ public class ToastPushSampleApplication extends Application {
 ```
 
 ## 사용자 정의 메시지 처리
-- 수신한 메시지를 수정하거나 인텐트를 변경, 알림을 직접 생성해야하는 경우, [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속해서 onMessageReceived 함수를 구현해야합니다.
+- 메시지 수신 후 별도의 처리 과정을 수행하거나 수신한 메시지의 내용을 수정해 알림을 노출해야하는 경우 [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속해서 onMessageReceived 함수를 구현해야합니다.
 - ToastPushMessageReceiver를 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
-- 알림 생성, 인텐트 생성 등의 추가 기능을 제공합니다.
 
 > **(주의)**
-> 1. 수신한 메시지를 이용해 알림을 직접 생성할 경우, 오픈 지표 수집을 위해 별도의 처리가 필요 필요합니다. (아래 지표 수집 기능 추가 섹션 참고)
+> 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다. 
+> 2. 알림을 직접 생성할 경우 Push 서비스 인텐트를 알림의 콘텐츠 인텐트로 설정해야만 지표 수집이 가능합니다. (아래 지표 수집 기능 추가 섹션 참고)
 
 ### ToastPushMessagingService 구현 코드 예
 ```java
@@ -544,7 +546,7 @@ public class ToastPushSampleMessageReceiver extends ToastPushMessageReceiver {
 ```
 
 ### 지표 수집 기능 추가 (FCM Only)
-- 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 getNotificationServiceIntent() 함수를 사용하여 생성한 인텐트를 사용해야합니다.
+- 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 getNotificationServiceIntent() 함수를 사용하여 생성한 인텐트를 알림의 콘텐츠 인텐트로 설정해야합니다.
 
 #### 지표 수집 기능 추가 예
 ```java
@@ -710,7 +712,7 @@ public Map<String, String> getExtras();
 
 
 ### PushAction
-- 버튼 액션 수신시 반환되는 객체 있니다.
+- 알림 액션 수신시 반환되는 객체 있니다.
 
 ``` java
 /* PushAction.java */
