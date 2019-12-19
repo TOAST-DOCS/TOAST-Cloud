@@ -97,20 +97,20 @@ end
 ### 초기화 API 명세
 
 ``` objc
-// 초기화 및 델리게이트 설정
+// 초기화 및 Delegate 설정
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration
                      delegate:(nullable id<ToastPushDelegate>)delegate;
 
 // 초기화
 + (void)initWithConfiguration:(ToastPushConfiguration *)configuration;
 
-// 델리게이트 설정
+// Delegate 설정
 + (void)setDelegate:(nullable id<ToastPushDelegate>)delegate;
 ```
 
-### 델리게이트 API 명세
-* 알림 수신, 알림 실행, 알림 액션 수신시 델리게이트를 통해 통지됩니다.
-* `원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 델리게이트 설정을 권장합니다.`
+### Delegate API 명세
+* 알림 수신, 알림 실행, 알림 액션 수신시 Delegate를 통해 통지됩니다.
+* `원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
 
 ``` objc
 @protocol ToastPushDelegate <NSObject>
@@ -129,7 +129,7 @@ end
 @end
 ```
 
-### 초기화 및 델리게이트 설정 예시
+### 초기화 및 Delegate 설정 예시
 
 ``` objc
 #import <ToastPush/ToastPush.h>
@@ -153,7 +153,7 @@ end
     configuration.sandbox = YES;
 #endif
 
-    // 초기화와 동시에 델리게이트를 설정 합니다.
+    // 초기화와 동시에 Delegate를 설정 합니다.
     [ToastPush initWithConfiguration:configuration 
                             delegate:self];
 
@@ -471,12 +471,12 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 * `VoIP 기능은 [Toast Push SDK 초기화](./push-ios/#toast-push-sdk)가 되어 있어야 사용가능합니다.`
 * `VoIP 기능은 Toast Push SDK의 서브모듈로 별도 분리되어 있습니다.`
 
-### 델리게이트 설정
+### Delegate 설정
 
-* 메시지 수신시 델리게이트를 통해 통지됩니다.
-* `원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 델리게이트 설정을 권장합니다.`
+* 메시지 수신시 Delegate를 통해 통지됩니다.
+* `원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
 
-#### 델리게이트 API 명세
+#### Delegate API 명세
 
 ``` objc
 @protocol ToastVoIPDelegate <NSObject>
@@ -487,7 +487,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 @end
 ```
 
-#### 델리게이트 설정 예시
+#### Delegate 설정 예시
 
 ``` objc
 // VoIP 서브모듈을 추가합니다.
@@ -504,7 +504,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 
     // ...
 
-    // 델리게이트를 설정합니다.
+    // Delegate를 설정합니다.
     [ToastVoIP setDelegate:self];
 
     return YES;
