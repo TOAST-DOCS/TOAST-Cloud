@@ -24,7 +24,7 @@
 
 #### 1. Cococapods 을 통한 적용
 
-- Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
+* Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
 ``` podspec
 platform :ios, '8.0'
@@ -45,7 +45,7 @@ end
 ### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
-**Project Target > Build Settings > Linking > Other Linker Flags**
+* **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
 
