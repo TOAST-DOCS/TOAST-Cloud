@@ -14,7 +14,7 @@
 ## 라이브러리 설정
 
 ### FCM
-* FCM용 SDK를 설치하려면 아래 코드를 build.gradle에 추가합니다.
+* TOAST FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
 dependencies {
@@ -24,7 +24,7 @@ dependencies {
 ```
 
 ### Tencent
-* Tencent용 SDK를 설치하려면 아래 코드를 build.gradle에 추가합니다.
+* TOAST Tencent Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
 dependencies {
