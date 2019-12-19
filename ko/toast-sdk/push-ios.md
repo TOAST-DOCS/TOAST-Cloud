@@ -24,7 +24,7 @@
 
 #### 1. Cococapods 을 통한 적용
 
-- Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
+* Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
 ``` podspec
 platform :ios, '8.0'
@@ -45,7 +45,7 @@ end
 ### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
-**Project Target > Build Settings > Linking > Other Linker Flags**
+* **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
 
@@ -60,11 +60,12 @@ end
 ![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities.png)
 
 ## Xcode11 / iOS13 변경 사항
-* Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
-* `Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
-
-* iOS13 이상부터 VoIP 메시지 수신 후에 CallKit 으로 리포트하지 않으면 메시지 수신이 제한됩니다. ([PushKit pushRegistry 가이드](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
-* CallKit 을 사용한 전화 수신 화면은 앱에서 직접 구현해야 합니다.
+* 공통 
+    * Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
+    * `Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
+* VoIP
+    * iOS13 이상부터 VoIP 메시지 수신 후에 CallKit 으로 리포트하지 않으면 메시지 수신이 제한됩니다. ([PushKit pushRegistry 가이드](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
+    * CallKit 을 사용한 전화 수신 화면은 앱에서 직접 구현해야 합니다.
 
 ## 서비스 로그인
 
