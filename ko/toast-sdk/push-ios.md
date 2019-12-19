@@ -90,9 +90,9 @@ end
 
 ## TOAST Push SDK 초기화
 
-* Push에서 발급받은 AppKey를 설정합니다.
 * `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
-* `개발환경에서는 반드시 ToastPushConfiguration 의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
+* [ToastPushConfiguration](./push-ios/#toastpushconfiguration) 객체에 토스트 클라우드 서버에서 발급받은 Push AppKey를 설정합니다.
+* `개발환경에서는 반드시 ToastPushConfiguration의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
 
 ### 초기화 API 명세
 
@@ -109,7 +109,9 @@ end
 ```
 
 ### Delegate API 명세
-* 알림 수신, 알림 실행, 알림 액션 수신시 Delegate를 통해 통지됩니다.
+* 앱이 실행 중인 상태에서 알림 메시지 수신 시 [ToastPushMessage](./push-ios/#toastpushmessage) 객체로 수신 받은 메시지의 내용이 전달됩니다.
+* 사용자가 알림을 실행(클릭)하여 앱이 실행되었을 때 [ToastPushMessage](./push-ios/#toastpushmessage) 객체로 실행된 알림 메시지의 내용이 전달됩니다.
+* 사용자가 알림 상의 버튼을 실행(클릭) 하였을 때 [ToastPushAction](./push-ios/#toastpushaction) 객체로 실행된 버튼의 액션 정보가 전달됩니다.
 * `원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
 
 ``` objc
@@ -149,7 +151,7 @@ end
     ToastPushConfiguration *configuration = [[ToastPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
 
 #if DEBUG
-    // 개발환경(Debug) 에서는 꼭 아래 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.
+    // 개발환경(Debug)에서는 꼭 아래 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.
     configuration.sandbox = YES;
 #endif
 
@@ -182,6 +184,7 @@ end
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
     * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+* [ToastPushAgreement](./push-ios/#toastpushagreement) 객체에 사용자 알림 메시지 수신 동의 정보를 설정합니다.
 
 ### 수신 동의 설정 예시
 
@@ -193,7 +196,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 ## 알림 옵션 설정
 
-* 토큰 등록시 알림 노출에 대한 옵션을 설정합니다.
+* 토큰 등록 시 알림에 대한 옵션을 설정합니다.
 * 알림 옵션을 설정하지 않은 경우 배지 아이콘과 알림음 사용 옵션만 적용됩니다. (`앱 실행중 알림 노출 옵션 제외`)
 
 ### 알림 옵션 설정 예시
@@ -207,7 +210,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 ```
 ## 토큰 등록
 
-* 발급 받은 토큰 정보를 토스트 클라우드 서버에 등록합니다.
+* 발급받은 토큰 정보를 토스트 클라우드 서버에 등록합니다.
 * 최초 실행일 경우 사용자에게 알림 허용 권환을 요청합니다. 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
 
 ### 토큰 등록 API 명세
@@ -251,6 +254,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 ## 토큰 정보 조회
 
 * 현재 단말기에서 마지막으로 등록에 성공한 토큰과 설정 정보를 조회합니다.
+* 토큰 조회 정보 성공 시 [ToastPushTokenInfo](./push-ios/#toastpushtokeninfo) 객체로 토큰의 설정 정보가 반환됩니다.
 
 ### 토큰 정보 조회 API 명세
 
@@ -473,7 +477,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 
 ### Delegate 설정
 
-* 메시지 수신시 Delegate를 통해 통지됩니다.
+* VoIP 메시지 수신 시 [ToastPushMessage](./push-ios/#toastpushmessage) 객체로 수신 받은 메시지의 내용이 전달됩니다.
 * `원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
 
 #### Delegate API 명세
@@ -546,6 +550,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 ### 토큰 정보 조회
 
 * 현재 단말기에서 마지막으로 등록에 성공한 토큰과 설정 정보를 조회합니다.
+* 토큰 조회 정보 성공 시 [ToastPushTokenInfo](./push-ios/#toastpushtokeninfo) 객체로 토큰의 설정 정보가 반환됩니다.
 
 #### 토큰 정보 조회 API 명세
 
