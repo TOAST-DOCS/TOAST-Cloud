@@ -20,7 +20,9 @@
 
 ## TOAST Logger SDKをXcodeプロジェクトに適用
 
-### 1. Cococapods適用
+### Framework Settings
+
+#### 1. Cococapods適用
 
 * Podfileを作成して、TOAST SDKに対するpodを追加します。
 
@@ -33,16 +35,14 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. バイナリをダウンロードしてTOAST SDK適用
-
-#### SDKのインポート(import)
+#### 2. バイナリをダウンロードしてTOAST SDK適用
 
 * TOASTの[Downloads](../../../Download/#toast-sdk)ページで、全体iOS SDKをダウンロードできます。
 * Xcode Projectに**ToastLogger.framework**、**ToastCore.framework**、**ToastCommon.framework**を追加します。
 * TOAST LoggerのCrash Report機能を使用するには、一緒に配布される**CrashReporter.framework**もプロジェクトに追加する必要があります。
 ![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
 
-#### Project Settings
+### Project Settings
 
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
       * **Project Target > Build Settings > Linking > Other Linker Flags**をクリックして追加できます。
