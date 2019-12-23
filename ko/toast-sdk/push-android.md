@@ -36,14 +36,9 @@ dependencies {
 ## Firebase Cloud Messaging 설정
 
 ### 프로젝트 및 앱 추가
-* 기존 Firebase 프로젝트가 없다면, [Firebase 콘솔](https://console.firebase.google.com/?hl=ko)에서 프로젝트를 생성합니다.
-* 콘솔의 상단에 있는 톱니바퀴 버튼을 클릭해서 **프로젝트 설정**으로 이동합니다.
-* 프로젝트 설정의 **내 앱** 에서 **Android 앱에 Firebase 추가**를 클릭합니다.
-* **Android 패키지 이름**, **앱 닉네임 (선택사항)** 을 입력하고 **앱 등록** 버튼을 클릭합니다.
-* **google-services.json 다운로드** 버튼을 클릭해서 설정 정보를 다운로드합니다. 그리고 **다음** 버튼을 클릭합니다.
-    * 만약 다운로드를 안하고 넘어갔더라도 프로젝트 설정에서 다시 다운로드 가능합니다.
-* 다음 스텝인 **Firebase SDK 추가** 는 아래 별도의 가이드를 참고하면 되기 때문에 바로 **다음** 버튼을 클릭합니다.
-* 다음 스텝인 **앱을 실행하여 설치 확인** 도 **_이 단계 건너뛰기_** 를 클릭해서 넘어갑니다.
+
+* [Firebase 프로젝트를 설정](https://firebase.google.com/docs/android/setup)합니다.
+* [Firebase 콘솔](https://console.firebase.google.com/?hl=ko)에서 **google-services.json** 파일을 다운로드하여 안드로이드 프로젝트에 추가합니다.
 
 ### build.gradle 설정
 #### 루트 수준의 build.gradle
@@ -54,7 +49,7 @@ buildscript {
     // ...
     dependencies {
         // ...
-        classpath 'com.google.gms:google-services:4.2.0' // google-services plugin
+        classpath "com.google.gms:google-services:$google_services_version" // google-services plugin
     }
 }
 
@@ -81,17 +76,14 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
-### google-services.json 추가
-* 앱 모듈의 루트 경로에 앞서 다운로드한 google-services.json을 복사합니다.
-
 ## Tencent Push Notification 설정
-* 기존 Tencent 프로젝트가 없다면, [Tencent 콘솔](https://xg.qq.com/)에서 프로젝트를 생성합니다.
-* 웹 우측에 어플리케이션 등록을 선택합니다.
-* 어플리케이션을 등록하면 AccessID와 Accesskey가 생성됩니다.
+
+* [Tencent 콘솔](https://xg.qq.com/)에 어플리케이션을 등록합니다.
 
 ### build.gradle 설정
 #### 앱 모듈의 build.gradle
 * 앱 모듈의 build.gradle에 아래 코드를 추가합니다.
+* [Tencent 콘솔](https://xg.qq.com/)에 등록한 어플리케이션의 **AccessID**와 **AccessKey**를 입력합니다.
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -121,7 +113,7 @@ android {
 android.useDeprecatedNdk = true
 ```
 
-### Android P 호환방법
+### 네트워크 보안 구성 (Android P 이상)
 * Android 9.0 이상에서 target API 28을 사용하는 경우, network_security_config.xml의 파일을 추가합니다.
 
 ```xml
@@ -157,31 +149,31 @@ android {
 }
 ```
 
-## Push 설정
+## Push 초기화
+
+* ToastPush.initialize를 호출하여 TOAST Push를 초기화합니다.
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
 * Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
-
-### Push 설정 예시
-
-```java
-ToastPushConfiguration configuration =
-    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
-            .build();
-```
-
-## Push 초기화
-* ToastPush.initialize를 호출하여 TOAST Push를 초기화합니다.
 * 사용하기를 원하는 PushType 을 초기화 호출시 전달해야 합니다.
 
 ### FCM 초기화 예시
 
 ```java
+ToastPushConfiguration configuration =
+    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+            .build();
+
 ToastPush.initialize(PushType.FCM, configuration);
 ```
 
 ### Tencent 초기화 예시
+
 ```java
+ToastPushConfiguration configuration =
+    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+            .build();
+
 ToastPush.initialize(PushType.TENCENT, configuration);
 ```
 
@@ -205,6 +197,7 @@ public void onLogin(String userId) {
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
     * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 TOAST Push 서버로 전송합니다.
 
 ### 수신 동의 설정 예시
 ```java
@@ -215,7 +208,7 @@ ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 알림 �
 ```
 
 ## 토큰 등록
-* 각 Push 제공자가 제공하는 토큰을 획득하여, TOAST Push 서버로 전송합니다.
+* ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 TOAST Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
 * 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
 
 ### 토큰 등록 예시
@@ -374,8 +367,7 @@ public class MyApplication extends Application {
 ## 알림 설정
 
 ### 기본 알림 채널명 설정
-* 안드로이드 8.0(API 레벨 26) 이상 부터는 알림 채널을 반드시 사용해야 합니다.
-* 알림 채널명은 앱의 알림 설정에서 노출되는 채널의 이름입니다.
+* 알림 채널명은 안드로이드 8.0(API 레벨 26) 이상 단말기의 알림 설정에 노출되는 채널의 이름입니다.
 * 알림에 별도의 채널을 설정하지 않았으면 기본 알림 채널로 알림이 요청됩니다.
 * 알림 기본 옵션 설정시 적용을 위해 기본 알림 채널이 새로 생성됩니다.
 * `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
@@ -460,7 +452,7 @@ public class MyApplication extends Application {
 ```
 
 ### 알림음 설정
-* Push 메시지 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림으로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
+* Push 메시지 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림음으로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
 * 알림음은 어플리케이션 리소스 폴더 하위의 raw 폴더에 있는 로컬 리소스만 사용 가능합니다.
     * 예) main/res/raw/notification_sound.wav
 
