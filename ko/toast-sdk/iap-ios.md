@@ -18,9 +18,11 @@ iOS용 TOAST IAP SDK의 구성은 다음과 같습니다.
 
 ## TOAST IAP SDK를 Xcode 프로젝트에 적용
 
-### 1. Cococapods 적용
+### 프레임워크 설정
 
-Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
+#### 1. Cococapods 을 통한 적용
+
+* Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
 ```podspec
 platform :ios, '8.0'
@@ -31,58 +33,33 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-생성된 Workspace를 열어 사용하려는 SDK를 가져옵니다(import).
+#### 2. 바이너리를 다운로드하여 TOAST SDK 적용
 
-```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastIAP/ToastIAP.h>
-```
-
-### 2. 바이너리를 다운로드하여 TOAST SDK 적용 
-
-#### SDK 가져오기(import)
-
-TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
-
-Xcode Project에 **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework`를 추가합니다.
-
-> StoreKit.framework는 아래 방법으로 추가할 수 있습니다.
-
+* TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
+* Xcode Project에 **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework`를 추가합니다.
+* StoreKit.framework는 아래 방법으로 추가할 수 있습니다.
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
-![linked_frameworks_iap](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap.png)
+### 프로젝트 설정
 
-#### Project Settings
-
-**Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
-
-**Project Target > Build Settings > Linking > Other Linker Flags**를 클릭해 추가할 수 있습니다.
-
+* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-#### 프레임워크 가져오기 
 
-사용하려는 프레임워크를 가져옵니다(import).
+### Capabilities 설정
 
-```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastIAP/ToastIAP.h>
-```
-## Capabilities Setting
-
-TOAST IAP를 사용하려면 Capabilities에서 In-App Purchase 항목을 활성화해야 합니다.
-
-**Project Target > Capabilities > In-App Purchase > ON** 
-
+* TOAST IAP를 사용하려면 Capabilities에서 In-App Purchase 항목을 활성화해야 합니다.
+    * **Project Target > Capabilities > In-App Purchase > ON** 
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## 서비스 로그인
 
-* TOAST SDK에서 제공하는 모든 상품(IAP, Log & Crash, Push등)은 같은 사용자 ID 하나만 사용합니다.
+* TOAST SDK에서 제공하는 모든 상품(Log&Crash, IAP, Push, ...)은 하나의 사용자 아이디를 공유합니다.
 
 ### 로그인
 
-`사용자 ID가 설정되지 않은 상태에서는 구매, 활성화된 상품 조회, 미소비 내역 조회 기능을 사용할 수 없습니다.`
+* `사용자 ID가 설정되지 않은 상태에서는 구매, 활성화된 상품 조회, 미소비 내역 조회 기능을 사용할 수 없습니다.`
 
 ``` objc
 // 서비스 로그인 완료 후 사용자 ID 설정
@@ -98,22 +75,12 @@ TOAST IAP를 사용하려면 Capabilities에서 In-App Purchase 항목을 활성
 
 ## TOAST IAP SDK 초기화
 
-TOAST IAP에서 발급받은 AppKey를 설정합니다.
-초기화와 동시에 미완료 구매 건에 대한 재처리가 진행됩니다.
-재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않고, 미소비 상품 목록(소모성 상품), 활성화된 구독 목록(구독 상품)에 반영됩니다.
-`결제 결과에 대한 통지를 받기 위해서는 상품 구매 전에 Delegate 가 설정되어 있어야만 합니다.`
-
-``` objc
-ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
-
-[ToastIAP initWithConfiguration:configuration delegate:self];
-```
+* TOAST IAP에서 발급받은 AppKey를 설정합니다.
+* 초기화와 동시에 미완료 구매 건에 대한 재처리가 진행됩니다.
 
 ### 초기화 API 명세
 
 ``` objc
-@interface ToastIAP : NSObject
-
 // 초기화
 + (void)initWithConfiguration:(ToastIAPConfiguration *)configuration;
 
@@ -123,15 +90,14 @@ ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithA
 // 초기화 및 Delegate 설정
 + (void)initWithConfiguration:(ToastIAPConfiguration *)configuration
                      delegate:(nullable id<ToastInAppPurchaseDelegate>)delegate;
-
-// ...
-
-@end
 ```
 
 ### Delegate API 명세
 
-Delegate를 등록하면 구매 결과에 대한 통지를 받을 수 있습니다.
+* Delegate를 등록하면 구매 결과에 대한 통지를 받을 수 있습니다.
+* 재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않고, 미소비 상품 목록(소모성 상품), 활성화된 구독 목록(구독 상품)에 반영됩니다.
+* `결제 결과에 대한 통지를 받기 위해서는 상품 구매 전에 Delegate 가 설정되어 있어야만 합니다.`
+
 
 ``` objc
 @protocol ToastInAppPurchaseDelegate <NSObject>
@@ -182,29 +148,19 @@ Delegate를 등록하면 구매 결과에 대한 통지를 받을 수 있습니�
 
 ## 상품 목록 조회
 
-IAP 콘솔에 등록되어 있는 상품 중 사용 여부 설정이 USE인 상품의 목록을 조회합니다.
-스토어(Apple)에서 상품 정보를 획득하지 못한 상품은 invalidProducts 항목으로 표시됩니다.
+* IAP 콘솔에 등록되어 있는 상품 중 사용 여부 설정이 USE인 상품의 목록을 조회합니다.
+* 스토어(Apple)에서 상품 정보를 획득하지 못한 상품은 invalidProducts 항목으로 표시됩니다.
 
 ### 상품 목록 조회 API 명세
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
-// 상품 목록 조회
 + (void)requestProductsWithCompletionHandler:(nullable void (^)(ToastProductsResponse * _Nullable response, NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### 상품 목록 조회 API 사용 예
 
 ``` objc
 [ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
-
     if (error == nil) {
         NSArray<ToastProduct *> *products = response.products;
         NSLog(@"Products : %@", products);
@@ -249,110 +205,58 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 ## 상품 구매
 
-구매 결과는 설정된 Delegate를 통해 전달됩니다.
-구매 진행 중에 앱이 종료되거나 네트워크 오류 등으로 구매가 중단되었을 경우 다음번 앱 실행의 IAP SDK 초기화 이후 재처리가 진행됩니다.
-구매 요청시 사용자 데이터 추가가 가능합니다.
-사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원) 정보에 포함되어 반환됩니다.
+* 구매 결과는 설정된 Delegate를 통해 전달됩니다.
+* 구매 진행 중에 앱이 종료되거나 네트워크 오류 등으로 구매가 중단되었을 경우 다음번 앱 실행의 IAP SDK 초기화 이후 재처리가 진행됩니다.
+* 구매 요청시 사용자 데이터 추가가 가능합니다.
+* 사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원) 정보에 포함되어 반환됩니다.
+* 구매할 수 없는 상품이면 Delegate를 통해 구매 불가 상품임을 나타내는 오류가 전달됩니다.
+* 상품 목록 조회 결과의 ToastProduct 객체 혹은 상품 아이디를 이용해 구매를 요청합니다.
 
-### 상품 객체를 이용한 구매 요청
-
-상품 목록 조회 결과의 ToastProduct 객체를 이용해 구매를 요청합니다.
-
-#### 상품 객체를 이용한 구매 API 명세
+### 상품 구매 API 명세
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
-// 상품 구매
+// 상품 구매 요청
 + (void)purchaseWithProduct:(ToastProduct *)product;
 
-// 사용자 데이터를 추가하여 상품 구매
+// 상품 구매 요청시 사용자 데이터 추가
 + (void)purchaseWithProduct:(ToastProduct *)product payload:(NSString *)payload;
 
-// ...
-
-@end
-```
-
-#### 상품 객체를 이용한 구매 API 사용 예
-
-``` objc
-@property (nonatomic) NSArray <ToastProduct *> *products;
-
-// 상품 목록 조회
-[ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
-
-    if (error == nil) {
-        // 구매 가능한 상품 목록 저장
-        self.products = response.products;
-
-    } else {
-        NSLog(@"Failed to request products: %@", error);
-    }
-}
-
-// 상품 구매 요청
-[ToastIAP purchaseWithProduct:self.products[0] payload:@"DEVELOPER_PAYLOAD"];
-```
-
-### 상품 ID를 이용한 구매 요청
-
-서비스에서 별도로 상품 목록을 관리하고 있다면, 상품 ID만을 이용해 구매를 요청합니다.
-구매할 수 없는 상품이면 Delegate를 통해 구매 불가 상품임을 나타내는 오류가 전달됩니다.
-
-#### 상품 ID를 이용한 구매 API 명세
-
-``` objc
-@interface ToastIAP (Additional)
-
-// ...
-
-// 상품 구매
+// 상품 아이디로 구매 요청
 + (void)purchaseWithProductIdentifier:(NSString *)productIdentifier;
 
-// 사용자 데이터를 추가하여 상품 구매
+// 상품 아이디로 구매 요청시 사용자 데이터 추가
 + (void)purchaseWithProductIdentifier:(NSString *)productIdentifier payload:(NSString *)payload;
-
-// ...
-
-@end
 ```
 
-#### 상품 ID를 이용한 구매 API 사용 예
+### 상품 구매 API 사용 예
 
 ``` objc
 // 상품 구매 요청
+[ToastIAP purchaseWithProduct:self.products[0] payload:@"DEVELOPER_PAYLOAD"];
+
+// or
+
+// 상품 아이디로 구매 요청
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER" payload:@"DEVELOPER_PAYLOAD"];
 ```
 
 ## 활성화된 구독 목록 조회
 
-현재 사용자 ID 기준으로 활성화된 구독 목록을 조회합니다.
-결제가 완료된 구독 상품(자동 갱신형 구독, 자동 갱신형 소비성 구독 상품)은 만료되기 전까지 계속 조회할 수 있습니다. 
-사용자 ID가 같다면 Android에서 구매한 구독 상품도 조회됩니다.
+* 현재 사용자 ID 기준으로 활성화된 구독 목록을 조회합니다.
+* 결제가 완료된 구독 상품(자동 갱신형 구독, 자동 갱신형 소비성 구독 상품)은 만료되기 전까지 계속 조회할 수 있습니다. 
+* 사용자 ID가 같다면 Android에서 구매한 구독 상품도 조회됩니다.
 
 ### 활성화된 구독 목록 조회 API 명세
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
 // 활성화된 구독 목록 조회하기
 + (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### 활성화된 구독 목록 조회 API 사용 예
 
 ``` objc
 [ToastIAP requestActivePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
-
     if (error == nil) {
         for (ToastPurchaseResult *purchase in purchases) {
             // 구독 상품 접근 활성화
@@ -366,31 +270,22 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 ## 구매 복원
 
-사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다. 
-구매한 구독 상품이 조회되지 않거나 활성화 되지 않을 경우 사용합니다.
-만료된 결제건을 포함하여 복원된 결제건이 결과로 반환됩니다.
-자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
+* 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다. 
+* 구매한 구독 상품이 조회되지 않거나 활성화 되지 않을 경우 사용합니다.
+* 만료된 결제건을 포함하여 복원된 결제건이 결과로 반환됩니다.
+* 자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### 구매 복원 API 명세
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
 // 구매 복원
 + (void)restoreWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### 구매 복원 API 사용 예
 
 ``` objc
 [ToastIAP restoreWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
-
     if (error == nil) {
         for (ToastPurchaseResult *purchase in purchases) {
             NSLog(@"Restored purchase : %@", purchase);
@@ -404,23 +299,15 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 ## 미소비 구매 내역 조회
 
-소비성 상품의 경우 상품 지급 후에 소비(consume) 처리를 해야 합니다.
-소비 처리되지 않은 구매 내역을 조회합니다.
-자동 갱신형 소비성 구독 상품은 갱신 결제가 발생할 때마다 미소비 구매 내역에서 조회 가능합니다.
+* 소비성 상품의 경우 상품 지급 후에 소비(consume) 처리를 해야 합니다.
+* 소비 처리되지 않은 구매 내역을 조회합니다.
+* 자동 갱신형 소비성 구독 상품은 갱신 결제가 발생할 때마다 미소비 구매 내역에서 조회 가능합니다.
 
 ### 미소비 구매 내역 조회 API 명세
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
 // 미소비 구매 내역 조회
 + (void)requestConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### 미소비 구매 내역 조회 API 사용 예
@@ -438,21 +325,13 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 ## 소비성 상품 소비
 
-소비성 상품의 경우 서비스에 상품 지급 후에 REST API 혹은 SDK의 Consume API로 소비 처리를 해야 합니다.
+* 소비성 상품의 경우 서비스에 상품 지급 후에 REST API 혹은 SDK의 Consume API로 소비 처리를 해야 합니다.
 
 ### 소비 API 명세
 
 ``` objc
-@interface ToastIAP (Additional)
-
-// ...
-
 + (void)consumeWithPurchaseResult:(ToastPurchaseResult *)result
                 completionHandler:(nullable void (^)(NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### 소비 API 사용 예
@@ -488,10 +367,11 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 ## 구독 상품 관리 페이지 제공 방법
 
-자동 갱신형 구독 상품을 사용할 경우 사용자에게 구독 관리 페이지를 제공해야 합니다.
+* 자동 갱신형 구독 상품을 사용할 경우 사용자에게 구독 관리 페이지를 제공해야 합니다.
 > [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
 
-별도의 UI를 구성하지 않고 아래 URL을 호출해 구독 관리 페이지를 표시해야 합니다.
+* 별도의 UI를 구성하지 않고 아래 URL을 호출해 구독 관리 페이지를 표시해야 합니다.
+
 ### Safari를 통한 구독 관리 페이지 연결 방법
 ```
 https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
@@ -525,23 +405,14 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 
 ## (구)IAP SDK 호환성 유지
 
-(구)IAP SDK와의 호환성을 유지할 수 있게 (구)IAP SDK에서 생성된 미완료 구매 건의 재처리 기능을 제공합니다.
->(구)IAP SDK와의 호환성 유지 기능을 사용하려면 `sqlite3 Library(libsqlite3.tdb)`를 추가로 연결(link)해야 합니다.
-
+* (구)IAP SDK와의 호환성을 유지할 수 있게 (구)IAP SDK에서 생성된 미완료 구매 건의 재처리 기능을 제공합니다.
+* (구)IAP SDK와의 호환성 유지 기능을 사용하려면 `sqlite3 Library(libsqlite3.tdb)`를 추가로 연결(link)해야 합니다.
 ![linked_sqlite3](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3.png)
 
 ### 미완료 구매 재처리 API 명세
 
 ``` objc
-@interface ToastIAP (Additional)
-
-// ...
-
 + (void)processesIncompletePurchasesWithCompletionHandler:(nullable void (^)(NSArray <ToastPurchaseResult *> * _Nullable results, NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### 미완료 구매 재처리 API 사용 예
@@ -614,4 +485,3 @@ typedef NS_ENUM(NSUInteger, ToastHttpErrorCode) {
     ToastHttpErrorRequiresSecureConnection = 107,   // Allow Arbitrary Loads 미설정
 };
 ```
-

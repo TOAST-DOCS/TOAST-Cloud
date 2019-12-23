@@ -8,7 +8,7 @@
 
 ## Configuration of TOAST IAP
 
-TOAST Logger SDK for iOS is configured as follows.
+* TOAST Logger SDK for iOS is configured as follows.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- | 
@@ -19,7 +19,7 @@ TOAST Logger SDK for iOS is configured as follows.
 
 ### 1. Apply Cococapods 
 
-Create a podfile to add pods to TOAST SDK. 
+* Create a podfile to add pods to TOAST SDK. 
 
 ```podspec
 platform :ios, '8.0'
@@ -30,60 +30,34 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-Open a created workspace and import SDK to use. 
-
-```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastIAP/ToastIAP.h>
-```
-
-
 ### 2. Apply TOAST SDK with Binary Downloads  
 
 #### Import SDK
 
-The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
-
-Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework` to the Xcode Project.
-
-> StoreKit.framework can be added in the following way.
-
+* The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
+* Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework` to the Xcode Project.
+* StoreKit.framework can be added in the following way.
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
-
-![linked_frameworks_iap](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap.png)
 
 #### Project Settings
 
-Add "-lc++" and "-ObjC" to "Other Linker Flags" at "Build Settings". 
-
-* Project Target - Build Settings - Linking - Other Linker Flags
-
+* Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**. 
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
-
-#### Import Framework 
-
-Import the framework to use. 
-
-```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastIAP/ToastIAP.h>
-```
 
 ## Capabilities Setting
 
-To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
-
-**Project Target > Capabilities > In-App Purchase > ON** 
-
+* To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
+    **Project Target > Capabilities > In-App Purchase > ON** 
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## Service Login 
 
-* All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID. 
+* All TOAST SDK products(Log&Crash, IAP, Push, ...) are based on a same user ID.
 
 ### Login
 
-`Without user ID set, purchase, query of activated products, or query of consumed details are not available. `
+* `Without user ID set, purchase, query of activated products, or query of consumed details are not available. `
 
 ``` objc
 // Set user ID after service login is completed
@@ -99,22 +73,12 @@ To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
 
 ## Initialize TOAST IAP SDK 
 
-Set appkey issued from TOAST IAP. 
-Reprocessing for uncompleted purchases is executed along with initialization.  
-Reprocessing results are not delegated, but are applied to the list of consumable products and the list of active subscription.
-`In order to receive delegate of purchase result, Delegate must be set before purchase of product.`
-
-``` objc
-ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
-
-[ToastIAP initWithConfiguration:configuration delegate:self];
-```
+* Set appkey issued from TOAST IAP. 
+* Reprocessing for uncompleted purchases is executed along with initialization.  
 
 ### Specifications for Initialization API
 
 ``` objc
-@interface ToastIAP : NSObject
-
 // Initialize
 + (void)initWithConfiguration:(ToastIAPConfiguration *)configuration;
 
@@ -124,15 +88,13 @@ ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithA
 // Initialize and Set Delegate
 + (void)initWithConfiguration:(ToastIAPConfiguration *)configuration
                      delegate:(nullable id<ToastInAppPurchaseDelegate>)delegate;
-
-// ...
-
-@end
 ```
 
 ### Specifications for Delegate API
 
-Register delegate to receive purchase result.
+* Register delegate to receive purchase result.
+* Reprocessing results are not delegated, but are applied to the list of consumable products and the list of active subscription.
+* `In order to receive delegate of purchase result, Delegate must be set before purchase of product.`
 
 ``` objc
 @protocol ToastInAppPurchaseDelegate <NSObject>
@@ -183,21 +145,14 @@ Register delegate to receive purchase result.
 
 ## Query Product List
 
-Query the list of products which are set as USE IAP, among those registered in the console.  
-Products that failed to obtain product information from store (Apple) are indicated as invalidProducts. 
+* Query the list of products which are set as USE IAP, among those registered in the console.  
+* Products that failed to obtain product information from store (Apple) are indicated as invalidProducts. 
 
 ### Specifications for Product List Query API
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
 // Query Product List 
 + (void)requestProductsWithCompletionHandler:(nullable void (^)(ToastProductsResponse * _Nullable response, NSError * _Nullable error))completionHandler;
-
-// ...
-
 @end
 ```
 
@@ -205,7 +160,6 @@ Products that failed to obtain product information from store (Apple) are indica
 
 ``` objc
 [ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
-
     if (error == nil) {
         NSArray<ToastProduct *> *products = response.products;
         NSLog(@"Products : %@", products);
@@ -247,112 +201,60 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 };
 ```
 
-## Purchase Products 
+## Purchase Product
 
-Purchase results are delivered through a delegate.  
-If an app is closed during purchase, or purchase is suspended due to network error, such purchase is reprocessed after the initialization of IAP SDK of the next app running.
-구매 요청시 사용자 데이터 추가가 가능합니다.
-사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원) 정보에 포함되어 반환됩니다.
+* Purchase results are delivered through a delegate.  
+* If an app is closed during purchase, or purchase is suspended due to network error, such purchase is reprocessed after the initialization of IAP SDK of the next app running.
+* 구매 요청시 사용자 데이터 추가가 가능합니다.
+* 사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원) 정보에 포함되어 반환됩니다.
+* Purchase is requested by using ToastProduct object of query result of product list or product identifier.
 
-### Request for Purchase with Product Objects 
-
-Purchase is requested by using ToastProduct object of query result of product list. 
-
-#### Specifications for Purchase with Product Objects API 
+### Specifications for Purchase Product API
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
 // Purchase product 
 + (void)purchaseWithProduct:(ToastProduct *)product;
 
 // Purchase product with payload
 + (void)purchaseWithProduct:(ToastProduct *)product payload:(NSString *)payload;
 
-// ...
-
-@end
-```
-
-#### Usage Example of Purchase with Product Objects API 
-
-``` objc
-@property (nonatomic) NSArray <ToastProduct *> *products;
-
-// Query Product List 
-[ToastIAP requestProductsWithCompletionHandler:^(ToastProductsResponse *response, NSError *error) {
-
-    if (error == nil) {
-        // Save purchasable product list 
-        self.products = response.products;
-
-    } else {
-        NSLog(@"Failed to request products: %@", error);
-    }
-}
-
-// Request for purchase product with payload
-[ToastIAP purchaseWithProduct:self.products[0] payload:@"DEVELOPER_PAYLOAD"];
-```
-
-### Purchase Requests using Product ID 
-
-When product list is managed by each service, purchase can be requested only by product ID. 
-For a product which cannot be purchased, an error will be delivered indicating purchase is unavailable through delegate. 
-
-#### Specifications for Purchase with Product ID API 
-
-``` objc
-@interface ToastIAP (Additional)
-
-// ...
-
 // Purchase product by identifier
 + (void)purchaseWithProductIdentifier:(NSString *)productIdentifier;
 
 // Purchase product by identifier with payload
 + (void)purchaseWithProductIdentifier:(NSString *)productIdentifier payload:(NSString *)payload;
-
-// ...
-
-@end
 ```
 
-#### Usage Example of Purchase with Product ID API 
+### Usage Example of Purchase Product API 
 
 ``` objc
-// Request for purchase product with payload
+// Purchase product 
+[ToastIAP purchaseWithProduct:self.products[0] payload:@"DEVELOPER_PAYLOAD"];
+
+// or
+
+// Purchase product 
+
 [ToastIAP purchaseWithProductIdentifier:@"PRODUCT_IDENTIFIER" payload:@"DEVELOPER_PAYLOAD"];
 ```
 
 ## Query Activated Subscription List 
 
-Query activated list of purchases for current user ID.
-Completely-paid subscription products(Auto-Renewal Subscription, Auto-Renewal Consumable Subscription) can be queried as long as usage period remains.
-Android subscription can also be queried for a same user ID.  
+* Query activated list of purchases for current user ID.
+* Completely-paid subscription products(Auto-Renewal Subscription, Auto-Renewal Consumable Subscription) can be queried as long as usage period remains.
+* Android subscription can also be queried for a same user ID.  
 
 ### Specifications for Activated Subscription List API 
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
 // Query Activated Subscription List 
 + (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### Usage Example of Activated Subscription List Query API 
 
 ``` objc
 [ToastIAP requestActivePurchasesWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
-
     if (error == nil) {
         for (ToastPurchaseResult *purchase in purchases) {
             // Activate access for subscription products 
@@ -366,31 +268,22 @@ Android subscription can also be queried for a same user ID.
 
 ## Restore Purchases 
 
-Restore the purchase history based on your AppStore account and apply it in the IAP console. 
-Use if purchased subscription products are not viewed or activated.
-만료된 결제건을 포함하여 복원된 결제건이 결과로 반환됩니다.
-자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
+* Restore the purchase history based on your AppStore account and apply it in the IAP console. 
+* Use if purchased subscription products are not viewed or activated.
+* 만료된 결제건을 포함하여 복원된 결제건이 결과로 반환됩니다.
+* 자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### Specifications for Restoring Purchase API 
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
 // Restore Purchase 
 + (void)restoreWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### Usage Example of Restoring Purchase API 
 
 ``` objc
 [ToastIAP restoreWithCompletionHandler:^(NSArray<ToastPurchaseResult *> *purchases, NSError *error) {
-
     if (error == nil) {
         for (ToastPurchaseResult *purchase in purchases) {
             NSLog(@"Restored purchase : %@", purchase);
@@ -404,22 +297,14 @@ Use if purchased subscription products are not viewed or activated.
 
 ## Query Unconsumed Purchase List 
 
-An consumable product must be processed as consumed after product is provided. List of unconsumed purchases is to be queried.  
-자동 갱신형 소비성 구독 상품은 갱신 결제가 발생할 때마다 미소비 구매 내역에서 조회 가능합니다.
+* An consumable product must be processed as consumed after product is provided. List of unconsumed purchases is to be queried.  
+* 자동 갱신형 소비성 구독 상품은 갱신 결제가 발생할 때마다 미소비 구매 내역에서 조회 가능합니다.
 
 ### Specifications for Unconsumed Purchase Query API
 
 ``` objc
-@interface ToastIAP : NSObject
-
-// ...
-
 // Query Unconsumed Purchases 
 + (void)requestConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<ToastPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### Usage Example of Unconsumed Purchase Query API 
@@ -437,21 +322,13 @@ An consumable product must be processed as consumed after product is provided. L
 
 ## Consume Consumable Products 
 
-Consumable products must be processed as consumed through REST API or Consume API of SDK, after products are provided.
+* Consumable products must be processed as consumed through REST API or Consume API of SDK, after products are provided.
 
 ### Specifications for Consumption API 
 
 ``` objc
-@interface ToastIAP (Additional)
-
-// ...
-
 + (void)consumeWithPurchaseResult:(ToastPurchaseResult *)result
                 completionHandler:(nullable void (^)(NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### Usage Example of Consumption API 
@@ -487,10 +364,10 @@ Consumable products must be processed as consumed through REST API or Consume AP
 
 ## Provide Page for Subscription Products
 
-For auto-renewable subscription products, users must be provided with a subscription management page. 
+* For auto-renewable subscription products, users must be provided with a subscription management page. 
 > [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
 
-Without configuring a separate UI, call URL as below to display subscription management page. 
+* Without configuring a separate UI, call URL as below to display subscription management page. 
 ### Connect to Subscription Management Page on Safari 
 ```
 https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
@@ -532,15 +409,7 @@ To remain compatible with (old) IAP SDK, reprocessing is supported for incomplet
 ### Specifications for Reprocessing Incomplete Purchase API 
 
 ``` objc
-@interface ToastIAP (Additional)
-
-// ...
-
 + (void)processesIncompletePurchasesWithCompletionHandler:(nullable void (^)(NSArray <ToastPurchaseResult *> * _Nullable results, NSError * _Nullable error))completionHandler;
-
-// ...
-
-@end
 ```
 
 ### Usage Example of Reprocessing Incomplete Purchase 
