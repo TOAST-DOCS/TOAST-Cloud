@@ -37,8 +37,13 @@ dependencies {
 
 ### 프로젝트 및 앱 추가
 
-* [Firebase 프로젝트를 설정](https://firebase.google.com/docs/android/setup)합니다.
-* [Firebase 콘솔](https://console.firebase.google.com/?hl=ko)에서 **google-services.json** 파일을 다운로드하여 안드로이드 프로젝트에 추가합니다.
+* [Firebase 콘솔](https://console.firebase.google.com/?hl=ko)에서 프로젝트를 생성합니다.
+* 콘솔의 상단에 있는 톱니바퀴 버튼을 클릭해서 **프로젝트 설정**으로 이동합니다.
+* 프로젝트 설정의 **내 앱** 에서 **Android 앱에 Firebase 추가**를 클릭합니다.
+* **Android 패키지 이름**, **앱 닉네임 (선택사항)** 을 입력하고 **앱 등록** 버튼을 클릭합니다.
+* **google-services.json 다운로드** 버튼을 클릭해서 설정 정보를 다운로드합니다.
+* 앱 모듈의 루트 경로에 앞서 다운로드한 google-services.json을 복사합니다.
+* 자세한 사항은 [Android 프로젝트에 Firebase 추가](https://firebase.google.com/docs/android/setup)을 참고하세요.
 
 ### build.gradle 설정
 #### 루트 수준의 build.gradle
@@ -78,7 +83,9 @@ apply plugin: 'com.google.gms.google-services'
 
 ## Tencent Push Notification 설정
 
-* [Tencent 콘솔](https://xg.qq.com/)에 어플리케이션을 등록합니다.
+* [Tencent 콘솔](https://xg.qq.com/)에서 프로젝트를 생성합니다.
+* 어플리케이션 등록을 선택하여 어플리케이션을 등록합니다.
+* 어플리케이션 등록 후 AccessID와 Accesskey를 확인합니다.
 
 ### build.gradle 설정
 #### 앱 모듈의 build.gradle
