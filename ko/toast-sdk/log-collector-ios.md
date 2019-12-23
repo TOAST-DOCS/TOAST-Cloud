@@ -11,7 +11,7 @@
 
 ## TOAST Logger 구성
 
-iOS용 TOAST Logger SDK의 구성은 다음과 같습니다.
+* iOS용 TOAST Logger SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
@@ -22,7 +22,7 @@ iOS용 TOAST Logger SDK의 구성은 다음과 같습니다.
 
 ### 1. Cococapods 적용
 
-Podfile을 생성하여 TOAST SDK에 대한 pod를 추가합니다.
+* Podfile을 생성하여 TOAST SDK에 대한 pod를 추가합니다.
 
 ```podspec
 platform :ios, '8.0'
@@ -33,49 +33,25 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-생성된 Workspace를 열어 사용할 SDK를 가져옵니다(import).
-
-```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastLogger/ToastLogger.h>
-```
-
 ### 2. 바이너리를 다운로드하여 TOAST SDK 적용
 
 #### SDK 가져오기(import)
 
-TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
-
-Xcode Project에 **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework**를 추가합니다.
-
-TOAST Logger의 Crash Report 기능을 사용하려면 함께 배포되는 **CrashReporter.framework**도 프로젝트에 추가해야 합니다.
-
+* TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
+* Xcode Project에 **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework**를 추가합니다.
+* TOAST Logger의 Crash Report 기능을 사용하려면 함께 배포되는 **CrashReporter.framework**도 프로젝트에 추가해야 합니다.
 ![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
 
 #### Project Settings
 
-**Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
-
-**Project Target > Build Settings > Linking > Other Linker Flags**를 클릭해 추가할 수 있습니다.
-
+* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+      * **Project Target > Build Settings > Linking > Other Linker Flags**를 클릭해 추가할 수 있습니다.
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-CrashReporter.framework를 직접 다운로드하거나 빌드한 경우에는 Build Setting의 Enable Bitcode의 값을 **NO**로 변경해야 합니다.
-
-**Project Target > Build Settings > Build Options > Enable Bitcode**을 클릭하고 **NO**를 클릭합니다.
-
+* CrashReporter.framework를 직접 다운로드하거나 빌드한 경우에는 Build Setting의 Enable Bitcode의 값을 **NO**로 변경해야 합니다.
+      * **Project Target > Build Settings > Build Options > Enable Bitcode**을 클릭하고 **NO**를 클릭합니다.
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
-
-
-#### 프레임워크 가져오기
-
-사용하려는 프레임워크를 가져옵니다(import).
-
-```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastLogger/ToastLogger.h>
-```
 
 ## CrashReport 사용시 주의사항
 
@@ -84,23 +60,29 @@ CrashReporter.framework를 직접 다운로드하거나 빌드한 경우에는 B
 
 ## TOAST Logger SDK 초기화
 
-Log & Crash Search에서 발급받은 AppKey를 설정합니다.
+* Log & Crash Search에서 발급받은 AppKey를 설정합니다.
+
+### 초기화 API 명세
+
+``` objc
+// 초기화
++ (void)initWithConfiguration:(ToastLoggerConfiguration *)configuration;
+```
+
+### 초기화 예
 
 ```objc
-[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
+[ToastLogger initWithConfiguration:configuration];
 ```
 
 ## 로그 전송
 
-TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
+* TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ### 로그 전송 API 명세
 
 ```objc
-@interface ToastLogger : NSObject
-
-//...
-
 // DEBUG Level log
 + (void)debug:(NSString *)message;
 
@@ -115,10 +97,6 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 // FATAL Level log
 + (void)fatal:(NSString *)message;
-
-//...
-
-@end
 ```
 
 ### 로그 전송 API 사용 예
@@ -129,23 +107,17 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ## 사용자 정의 필드 설정
 
-원하는 사용자 정의 필드를 설정합니다.
-사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
+* 원하는 사용자 정의 필드를 설정합니다.
+* 사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
 
 ### 사용자 정의 필드 API 명세
 
 ```objc
-@interface ToastLogger : NSObject
-
-// ...
 // 사용자 정의 필드 추가
 + (void)setUserFieldWithValue:(NSString *)value forKey:(NSString *)key;
-// ...
-
-@end
 ```
 
-*  사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다.
+* 사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다.
 
 #### 사용자 정의 필드 제약사항
 
@@ -161,59 +133,49 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 ```
 
 ## 크래시 로그 수집
-TOAST Logger는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
-TOAST Logger를 초기화할 때 함께 활성화되고 사용 여부를 설정할 수 있습니다.
-크래시 로그를 전송하려면 PLCrashReporter를 사용합니다.
+* TOAST Logger는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
+* TOAST Logger를 초기화할 때 함께 활성화되고 사용 여부를 설정할 수 있습니다.
+* 크래시 로그를 전송하려면 PLCrashReporter를 사용합니다.
 
 ### CrashReporter 사용 여부 설정
-CrashReporter 기능은 기본적으로 TOAST Logger를 초기화할 때 함께 활성화됩니다.
-```objc
-[ToastLogger initWithConfiguration:[ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"]];
-```
-TOAST Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
-크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다.
+* CrashReporter 기능은 기본적으로 TOAST Logger를 초기화할 때 함께 활성화됩니다.
+* TOAST Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
+* 크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다.
 
 > User ID가 설정되어 있으면 Log&Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인 할 수 있습니다.
 > User ID 설정은 [시작하기](./getting-started-ios/#userid)에서 확인 가능합니다.
 
 #### CrashReporter 활성화
 ```objc
-// CrashReporter Enable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
+// CrashReporter 활성화
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
+                                                                        enableCrashReporter:YES];
 
 [ToastLogger initWithConfiguration:configuration];
 ```
 #### CrashReporter 비활성화
 ```objc
-// CrashReporter Disable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:NO];
+// CrashReporter 비활성화
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
+                                                                        enableCrashReporter:NO];
 
 [ToastLogger initWithConfiguration:configuration];
 ```
 
 ## 크래시 발생 시점에 추가 정보를 설정하여 전송
 
-크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
-setShouldReportCrashHandler의 Block에서 사용자 정의 필드를 설정하면 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
+* 크래시 발생 직후, 추가 정보를 설정할 수 있습니다.
+* setShouldReportCrashHandler의 Block에서 사용자 정의 필드를 설정하면 정확히 크래시가 발생한 시점에 추가 정보를 설정할 수 있습니다.
 
 ### Data Adapter API 명세
 ```objc
-@interface ToastLogger : NSObject
-
-//...
-
 + (void)setShouldReportCrashHandler:(void (^)(void))handler;
-
-//...
-
-@end
 ```
 
 ### Data Adapter 사용 예
 
 ```objc
 [ToastLogger setShouldReportCrashHandler:^{
-
   // 사용자 정의 필드 를 통해 Crash가 발생한 상황에서 얻고자 하는 정보를 함께 전송    
   // 사용자 정의 필드 추가
   [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
@@ -223,21 +185,17 @@ setShouldReportCrashHandler의 Block에서 사용자 정의 필드를 설정하�
 
 ## 로그 전송 후 추가작업 진행
 
-Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습니다.
+* Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습니다.
 
+
+### Delegate 설정 API 명세
+```objc
++ (void)setDelegate:(id<ToastLoggerDelegate>) delegate;
+```
 
 ### Delegate API 명세
-```objc
-@interface ToastLogger : NSObject
 
-// ...
-
-+ (void)setDelegate:(id<ToastLoggerDelegate>) delegate;
-
-// ...
-@end
-
-
+``` objc
 @protocol ToastLoggerDelegate <NSObject>
 @optional
 // 로그 전송 성공
@@ -255,44 +213,63 @@ Delegate를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습
 ```
 
 
-### Delegate 사용 예
+### Delegate 설정 및 사용 예
 
 ```objc
-// Delegate Setting
-@interface YOURCLASSS : SUBCLASS <ToastLoggerDelegate>
+#import <ToastLogger/ToastLogger.h>
 
-// ...
+@interface AppDelegate () <UIApplicationDelegate, ToastLoggerDelegate>
 
-[ToastLogger setDelegate:self];
+@end
 
-// ...
 
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    // ...
+
+    // 초기화
+    ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
+                                                                            enableCrashReporter:YES];
+    [ToastLogger initWithConfiguration:configuration];
+
+    // Delegate 설정
+    [[ToastLogger setDelegate:self];
+
+    return YES;
+}
+
+#pragma mark - ToastLoggerDelegate
+// 로그 전송 성공
 - (void)toastLogDidSuccess:(ToastLog *)log {
-      // 로그 전송 성공
+      // ...
  }
 
+// 로그 전송 실패
 - (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error {
-      // 로그 전송 실패
-}
-- (void)toastLogDidSave:(ToastLog *)log {
-      // 네트워크 단절 등의 이유로 로그 전송에 실패한 경우 재전송을 위해 SDK 내부 저장
+      // ...
 }
 
+// 네트워크 단절 등의 이유로 로그 전송에 실패한 경우 재전송을 위해 SDK 내부 저장
+- (void)toastLogDidSave:(ToastLog *)log {
+      // ...
+}
+
+// 로그 필터링
 - (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter {
-      // 로그 필터링
+      // ...
 }
 
 @end
 ```
 
 ## Network Insights
-Network Insights는 콘솔에 등록한 URL을 호출하여 지연 시간과 응답값을 측정합니다. 이를 활용하여 세계 여러 나라(디바이스의 국가 코드 기준)에서의 지연 시간과 응답값을 측정할 수 있습니다.
+* Network Insights는 콘솔에 등록한 URL을 호출하여 지연 시간과 응답값을 측정합니다. 이를 활용하여 세계 여러 나라(디바이스의 국가 코드 기준)에서의 지연 시간과 응답값을 측정할 수 있습니다.
 
 > 콘솔을 통해 Network Insights 기능을 활성화하면 TOAST Logger를 초기화할 때, 콘솔에 등록한 URL로 1회 요청합니다.
 
 ### Network Insights 활성화
-
-Network Insights를 활성화하는 방법은 다음과 같습니다.
 
 1. [TOAST Console](https://console.toast.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
 2. **설정** 메뉴를 클릭합니다.
@@ -300,8 +277,6 @@ Network Insights를 활성화하는 방법은 다음과 같습니다.
 4. **Network Insights 로그**를 활성화합니다.
 
 ### URL 설정
-
-URL을 설정하는 방법은 다음과 같습니다.
 
 1. [TOAST Console](https://console.toast.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
 2. **네트워크 인사이트** 메뉴를 클릭합니다.
