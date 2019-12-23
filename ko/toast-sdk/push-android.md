@@ -42,7 +42,7 @@ dependencies {
 * 프로젝트 설정의 **내 앱** 에서 **Android 앱에 Firebase 추가**를 클릭합니다.
 * **Android 패키지 이름**, **앱 닉네임 (선택사항)** 을 입력하고 **앱 등록** 버튼을 클릭합니다.
 * **google-services.json 다운로드** 버튼을 클릭해서 설정 정보를 다운로드합니다.
-* 앱 모듈의 루트 경로에 앞서 다운로드한 google-services.json을 복사합니다.
+* 다운로드 받은 **google-services.json** 파일을 앱의 모듈(앱 수준) 디렉터리로 이동합니다.
 * 자세한 사항은 [Android 프로젝트에 Firebase 추가](https://firebase.google.com/docs/android/setup)을 참고하세요.
 
 ### build.gradle 설정
