@@ -111,7 +111,7 @@ end
 ### Delegate API 명세
 * 앱이 실행 중인 상태에서 알림 메시지 수신 시 [ToastPushMessage](./push-ios/#toastpushmessage) 객체로 수신 받은 메시지의 내용이 전달됩니다.
 * 사용자가 알림을 실행(클릭)하여 앱이 실행되었을 때 [ToastPushMessage](./push-ios/#toastpushmessage) 객체로 실행된 알림 메시지의 내용이 전달됩니다.
-* 사용자가 알림 상의 버튼을 실행(클릭) 하였을 때 [ToastPushAction](./push-ios/#toastpushaction) 객체로 실행된 버튼의 액션 정보가 전달됩니다.
+* 사용자가 알림 상의 버튼을 실행(클릭) 하였을 때 [ToastPushNotificationAction](./push-ios/#ToastPushNotificationAction) 객체로 실행된 버튼의 액션 정보가 전달됩니다.
 * `원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
 
 ``` objc
@@ -197,7 +197,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 ## 알림 옵션 설정
 
 * 토큰 등록 시 알림에 대한 옵션을 설정합니다.
-* 알림 옵션을 설정하지 않은 경우 배지 아이콘과 알림음 사용 옵션만 적용됩니다. (`앱 실행중 알림 노출 옵션 제외`)
+* 알림 옵션을 설정하지 않은 경우 배지 아이콘과 알림음 사용 옵션만 적용됩니다. (앱 실행중 알림 노출 옵션 제외)
 
 ### 알림 옵션 설정 예
 
@@ -344,7 +344,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 * `수신 지표 수집은 iOS 10.0+ 이상부터 지원합니다.`
 * 수신 지표는 Notification Service Extension에 추가한 Toast Push SDK 에서 자동으로 수집됩니다.
 * 수신 지표 수집을 위해서는 사용자 어플리케이션에 ToastPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
-* Notification Service Extension 생성자에서 [Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 `익스텐션의 info.plist 파일`에 앱키가 정의되어 있어야 수신 지표 수집이 가능합니다.
+* Notification Service Extension 생성자에서 [Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 **익스텐션의 info.plist 파일**에 앱키가 정의되어 있어야 수신 지표 수집이 가능합니다.
 
 #### 초기화를 통한 수신 지표 수집 설정 예
 
@@ -395,7 +395,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 ### 실행(Opened) 지표 수집 설정
 
 * 실행 지표는 어플리케이션에 추가한 Toast Push SDK 에서 자동으로 수집됩니다.
-* [Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 `어플리케이션의 info.plist 파일`에 앱키가 정의되어 있어야 실행 지표 수집이 가능합니다.
+* [Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 **어플리케이션의 info.plist 파일**에 앱키가 정의되어 있어야 실행 지표 수집이 가능합니다.
 
 #### info.plist 정의를 통한 수신 지표 수집 설정 예
 
@@ -432,7 +432,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 
 ### Notification Service Extension 설정
 
-* 앱의 프로젝트 설정과 동일하게 Extension의 [프로젝트 설정](http://docs.toast.com/ko/TOAST/ko/toast-sdk/push-ios/#toast-push-sdk-xcode)을 추가합니다.
+* 앱의 프로젝트 설정과 동일하게 Extension의 [프로젝트 설정](./push-ios/#프로젝트-설정)을 추가합니다.
 * `iOS의 Extension은 앱과 함께 설치되지만 앱과는 분리된 별도의 샌드박스 환경이라 컨테이너를 공유하지 않습니다.`
 
 ### Notification Service Extension 설정 예
@@ -456,7 +456,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 
 ### 프레임워크 설정
 
-* TOAST Push의 VoIP 기능을 사용하려면 `PushKit.framework, CallKit.framework`를 추가해야 합니다.
+* TOAST Push의 VoIP 기능을 사용하려면 **PushKit.framework**, **CallKit.framework**를 추가해야 합니다.
 * PushKit.framework, CallKit.framework는 아래 방법으로 추가할 수 있습니다.
 ![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
 ![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
@@ -467,7 +467,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 * **Project Target > Signing & Capabilities > + Capability > Background Modes**
 ![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
 
-* `Voice over IP` 항목을 활성화해야 합니다.
+* **Voice over IP** 항목을 활성화해야 합니다.
 ![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_voip.png)
 
 ### 초기화
