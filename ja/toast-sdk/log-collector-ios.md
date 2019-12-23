@@ -145,7 +145,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 * クラッシュログ送信機能を使用しない場合は、CrashReporter機能を無効にする必要があります。
 
 > UserIDが設定されている場合、Log＆Crash Searchコンソールの`Crash User`セクションでユーザー固有のクラッシュ体験を確認できます。
-> UserIDの設定は[開始する]（./getting-started-ios/#userid）で確認できます。
+> UserIDの設定は[開始する]（./getting-started-ios/#UserID設定）で確認できます。
 
 #### CrashReporter有効化
 ```objc
