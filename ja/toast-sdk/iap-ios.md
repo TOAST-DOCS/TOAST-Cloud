@@ -33,7 +33,7 @@ end
 
 ### 2. バイナリをダウンロードしてTOAST SDKを適用
 
-#### SDKをインポート(import)
+#### Link Frameworks
 
 * TOASTの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
 * Xcode Projectに**ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework`を追加します。
@@ -48,7 +48,7 @@ end
     * **Project Target > Build Settings > Linking > Other Linker Flags**をクリックして追加できます。
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-## Capabilities Setting
+### Capabilities Setting
 
 * TOAST IAPを使用するには、CapabilitiesでIn-App Purchase項目を有効にする必要があります。
 

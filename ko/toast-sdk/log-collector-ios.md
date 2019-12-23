@@ -20,9 +20,7 @@
 
 ## TOAST Logger SDK를 Xcode 프로젝트에 적용
 
-### 프레임워크 설정
-
-#### 1. Cococapods 적용
+### 1. Cococapods 적용
 
 * Podfile을 생성하여 TOAST SDK에 대한 pod를 추가합니다.
 
@@ -35,14 +33,16 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-#### 2. 바이너리를 다운로드하여 TOAST SDK 적용
+### 2. 바이너리를 다운로드하여 TOAST SDK 적용
+
+#### 프레임워크 설정
 
 * TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
 * Xcode Project에 **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework**를 추가합니다.
 * TOAST Logger의 Crash Report 기능을 사용하려면 함께 배포되는 **CrashReporter.framework**도 프로젝트에 추가해야 합니다.
 ![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
 
-### 프로젝트 설정
+#### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
       * **Project Target > Build Settings > Linking > Other Linker Flags**를 클릭해 추가할 수 있습니다.
@@ -53,7 +53,7 @@ end
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
 
-## CrashReport 사용시 주의사항
+### CrashReport 사용시 주의사항
 
 * arm64e 아키텍처를 사용하는 기기의 크래시 분석을 위해서는 TOAST Logger와 함께 배포되는 PLCrashReporter를 사용해야 합니다.
     * TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지가 아닌 다른곳에서 다운받거나 직접 빌드한 PLCrashReporter를 사용할 경우 arm64e 아키텍처를 사용하는 기기의 크래시 분석이 불가능합니다.

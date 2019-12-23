@@ -24,9 +24,7 @@
 
 ## TOAST SDKをXcodeプロジェクトに適用
 
-### Framework Settings
-
-#### 1. Cococapodsを使用してTOAST SDK適用
+### 1. Cococapodsを使用してTOAST SDK適用
 
 * Podfileを作成してTOAST SDKのPodを追加します。
 
@@ -39,7 +37,7 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-#### 2. Carthage를 사용해 TOAST SDK 적용
+### 2. Carthage를 사용해 TOAST SDK 적용
 
 * Cartfile을 생성하여 TOAST SDK의 Release Github Repository를 추가합니다.
 ```
@@ -57,7 +55,9 @@ github "nhn/toastcloud.sdk"
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
 > 서비스별로 필요한 Framework는 [TOAST SDK의 구성](./getting-started-ios/#TOAST-SDK의-구성)에서 확인 할 수 있습니다. 
 
-#### 3. バイナリをダウンロードしてTOAST SDK適用
+### 3. バイナリをダウンロードしてTOAST SDK適用
+
+#### Link Frameworks
 
 * TOASTの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
 ![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder.png)
@@ -68,7 +68,6 @@ github "nhn/toastcloud.sdk"
 * プロジェクトに次のようにフレームワーク(framework)が追加されたことを確認します。
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
 
-##### 必須Frameworkの追加
 * TOAST IAP機能を使用するには、StoreKit.frameworkを追加する必要があります。
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
@@ -76,7 +75,7 @@ github "nhn/toastcloud.sdk"
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
 
-### Project Settings
+#### Project Settings
 
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**をクリックして追加できます。

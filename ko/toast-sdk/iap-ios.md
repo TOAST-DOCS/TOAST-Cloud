@@ -18,9 +18,7 @@ iOS용 TOAST IAP SDK의 구성은 다음과 같습니다.
 
 ## TOAST IAP SDK를 Xcode 프로젝트에 적용
 
-### 프레임워크 설정
-
-#### 1. Cococapods 을 통한 적용
+### 1. Cococapods 을 통한 적용
 
 * Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
@@ -33,14 +31,18 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-#### 2. 바이너리를 다운로드하여 TOAST SDK 적용
+### 2. 바이너리를 다운로드하여 TOAST SDK 적용
+
+#### 프레임워크 설정
 
 * TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
 * Xcode Project에 **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework`를 추가합니다.
 * StoreKit.framework는 아래 방법으로 추가할 수 있습니다.
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
-### 프로젝트 설정
+![linked_frameworks_iap](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap.png)
+
+#### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
     * **Project Target > Build Settings > Linking > Other Linker Flags**

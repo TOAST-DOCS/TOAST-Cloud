@@ -24,9 +24,7 @@
 
 ## Apply TOAST SDK to Xcode Projects
 
-### Framework Settings
-
-#### 1. Apply TOAST SDK with Cococapods
+### 1. Apply TOAST SDK with Cococapods
 
 * Create a podfile and add pods to TOAST SDK.
 
@@ -39,7 +37,7 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-#### 2. Apply TOAST SDK with Carthage
+### 2. Apply TOAST SDK with Carthage
 
 * Cartfile을 생성하여 TOAST SDK의 Release Github Repository를 추가합니다.
 ```
@@ -57,7 +55,9 @@ github "nhn/toastcloud.sdk"
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
 > 서비스별로 필요한 Framework는 [TOAST SDK의 구성](./getting-started-ios/#TOAST-SDK의-구성)에서 확인 할 수 있습니다. 
 
-#### 3. Apply TOAST SDK with Binary Downloads
+### 3. Apply TOAST SDK with Binary Downloads
+
+#### Link Frameworks
 
 * The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
 ![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder.png)
@@ -68,15 +68,13 @@ github "nhn/toastcloud.sdk"
 * Check frameworks are added to the project, as below:  
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
 
-##### Add Required Framework
 * To use TOAST IAP, StoreKit.framework must be linked additionally.
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
 * To use TOAST Push, UserNotifications.framework must be linked addtionally.
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
-
-### Project Settings
+#### Project Settings
 
 * Add "-lc++" and "-ObjC" to "Other Linker Flags" at "Build Settings".
     * Project Target - Build Settings - Linking - Other Linker Flags

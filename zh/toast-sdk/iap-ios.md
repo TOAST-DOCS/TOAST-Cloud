@@ -32,12 +32,14 @@ end
 
 ### 2. Apply TOAST SDK with Binary Downloads  
 
-#### Import SDK
+#### Link Frameworks
 
 * The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
 * Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework` to the Xcode Project.
 * StoreKit.framework can be added in the following way.
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
+
+![linked_frameworks_iap](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap.png)
 
 #### Project Settings
 
@@ -45,7 +47,7 @@ end
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-## Capabilities Setting
+### Capabilities Setting
 
 * To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
     **Project Target > Capabilities > In-App Purchase > ON** 
