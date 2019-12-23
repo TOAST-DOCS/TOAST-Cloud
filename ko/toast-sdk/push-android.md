@@ -162,7 +162,7 @@ android {
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
 * Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
-* 사용하기를 원하는 PushType 을 초기화 호출시 전달해야 합니다.
+* 사용하기를 원하는 PushType을 초기화 호출시 전달해야 합니다.
 
 ### FCM 초기화 예시
 
