@@ -24,7 +24,9 @@
 
 ## TOAST SDKをXcodeプロジェクトに適用
 
-### 1. Cococapodsを使用してTOAST SDK適用
+### Framework Settings
+
+#### 1. Cococapodsを使用してTOAST SDK適用
 
 * Podfileを作成してTOAST SDKのPodを追加します。
 
@@ -37,29 +39,25 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Carthage를 사용해 TOAST SDK 적용
-#### Cartfile 설정
+#### 2. Carthage를 사용해 TOAST SDK 적용
+
 * Cartfile을 생성하여 TOAST SDK의 Release Github Repository를 추가합니다.
 ```
 github "nhn/toastcloud.sdk"
 ```
 
-#### SDK 가져오기 (import)
 * 생성된 Carthage/Build 폴더의 Framework를 Xcode 프로젝트에 추가합니다. 
 ![carthage_import_framework](http://static.toastoven.net/toastcloud/sdk/ios/carthage_setting_01.png)
 
 * 프로젝트에 다음과 같이 프레임워크(framework)가 추가된 것을 확인합니다.
 ![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage_setting_02.png)
 
-#### 필수 Framework 추가와 프로젝트 설정
 * TOAST SDK를 사용하기 위해 [필수 Framework](./getting-started-ios/#必須Frameworkの追加)와 [Project Setting](./getting-started-ios/#Project-Settings)을 추가합니다.
 
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
 > 서비스별로 필요한 Framework는 [TOAST SDK의 구성](./getting-started-ios/#TOAST-SDK의-구성)에서 확인 할 수 있습니다. 
 
-### 3. バイナリをダウンロードしてTOAST SDK適用
-
-#### SDKインポート(import)
+#### 3. バイナリをダウンロードしてTOAST SDK適用
 
 * TOASTの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
 ![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder.png)
@@ -70,7 +68,7 @@ github "nhn/toastcloud.sdk"
 * プロジェクトに次のようにフレームワーク(framework)が追加されたことを確認します。
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
 
-#### 必須Frameworkの追加
+##### 必須Frameworkの追加
 * TOAST IAP機能を使用するには、StoreKit.frameworkを追加する必要があります。
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
@@ -78,7 +76,7 @@ github "nhn/toastcloud.sdk"
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
 
-#### Project Settings
+### Project Settings
 
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**をクリックして追加できます。

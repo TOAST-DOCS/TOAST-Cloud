@@ -20,7 +20,9 @@
 
 ## Apply TOAST SDK to Xcode Projects
 
-### 1. Apply Cococapods 
+### Framework Settings
+
+#### 1. Apply Cococapods 
 
 * Create a podfile to add pods to TOAST SDK. 
 
@@ -33,16 +35,14 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apply TOAST SDK with Binary Downloads  
-
-#### Import SDK
+#### 2. Apply TOAST SDK with Binary Downloads  
 
 * The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
 * Add **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework** to the Xcode Project.
 * To enable Crash Report of TOAST Logger, CrashReporter.framework which is distributed as well, must be added to the project. 
 ![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
 
-#### Project Settings
+### Project Settings
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**. 
       * **Project Target > Build Settings > Linking > Other Linker Flags**
