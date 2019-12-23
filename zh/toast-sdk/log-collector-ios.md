@@ -20,9 +20,7 @@
 
 ## Apply TOAST SDK to Xcode Projects
 
-### Framework Settings
-
-#### 1. Apply Cococapods 
+### 1. Apply Cococapods 
 
 * Create a podfile to add pods to TOAST SDK. 
 
@@ -35,25 +33,27 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-#### 2. Apply TOAST SDK with Binary Downloads  
+### 2. Apply TOAST SDK with Binary Downloads  
+
+#### Link Frameworks
 
 * The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
 * Add **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework** to the Xcode Project.
 * To enable Crash Report of TOAST Logger, CrashReporter.framework which is distributed as well, must be added to the project. 
 ![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
 
-### Project Settings
+#### Project Settings
 
-* Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**. 
-      * **Project Target > Build Settings > Linking > Other Linker Flags**
+* Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**.
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-* To directly download or build CrashReporter.framework, the Bitcode at Build Setting must be changed to NO.  
-      * **Project Target > Build Settings > Build Options > Enable Bitcode > NO**
+* To directly download or build **CrashReporter.framework**, the **Bitcode** at **Build Settings** must be changed to **NO**.  
+    * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
-> CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode. 
+> CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode.
 
-## Precautions when using CrashReport
+### Precautions when using CrashReport
 
 * Crash analysis of devices using the arm64e architecture requires the use of PLCrashReporter, which is distributed with the TOAST Logger.
     * Crash analysis of devices using the arm64e architecture is not possible if you use a PLCrashReporter that is downloaded or built directly from a location other than the [Downloads](../../../Download/#toast-sdk) of TOAST.

@@ -51,7 +51,7 @@ github "nhn/toastcloud.sdk"
 * 프로젝트에 다음과 같이 프레임워크(framework)가 추가된 것을 확인합니다.
 ![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage_setting_02.png)
 
-* TOAST SDK를 사용하기 위해 [필수 Framework](./getting-started-ios/#필수-Framework-추가)와 [프로젝트 설정](./getting-started-ios/#프로젝트-설정)을 추가합니다.
+* TOAST SDK를 사용하기 위해 [프레임워크 설정](./getting-started-ios/#프레임워크-설정)과 [프로젝트 설정](./getting-started-ios/#프로젝트-설정)을 추가합니다.
 
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
 > 서비스별로 필요한 Framework는 [TOAST SDK의 구성](./getting-started-ios/#TOAST-SDK의-구성)에서 확인 할 수 있습니다. 
@@ -82,7 +82,7 @@ github "nhn/toastcloud.sdk"
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
 * **CrashReporter.framewor**를 직접 다운로드하거나 빌드한 경우에는 **Build Setting**의 **Enable Bitcode**의 값을 **NO**로 변경해야 합니다.
-    * **Project Target > Build Settings > Build Options > Enable Bitcode**을 클릭하고 **NO**를 클릭합니다.
+    * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
 

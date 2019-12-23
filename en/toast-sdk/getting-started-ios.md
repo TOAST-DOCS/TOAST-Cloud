@@ -50,7 +50,7 @@ github "nhn/toastcloud.sdk"
 * 프로젝트에 다음과 같이 프레임워크(framework)가 추가된 것을 확인합니다.
 ![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage_setting_02.png)
 
-* TOAST SDK를 사용하기 위해 [필수 Framework](./getting-started-ios/#Add-Required-Framework)와 [Project Setting](./getting-started-ios/#Project-Settings)을 추가합니다.
+* TOAST SDK를 사용하기 위해 [프레임워크 설정](./getting-started-ios/#Link-Frameworks)과 [Project Setting](./getting-started-ios/#Project-Settings)을 추가합니다.
 
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
 > 서비스별로 필요한 Framework는 [TOAST SDK의 구성](./getting-started-ios/#TOAST-SDK의-구성)에서 확인 할 수 있습니다. 
@@ -77,12 +77,12 @@ github "nhn/toastcloud.sdk"
 
 #### Project Settings
 
-* Add "-lc++" and "-ObjC" to "Other Linker Flags" at "Build Settings".
-    * Project Target - Build Settings - Linking - Other Linker Flags
+* Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**.
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-* To directly download or build CrashReporter.framework, the Bitcode at Build Setting must be changed to NO.  
-    * Project Target - Build Settings - Build Options - Enable Bitcode - "NO"
+* To directly download or build **CrashReporter.framework**, the **Bitcode** at **Build Settings** must be changed to **NO**.  
+    * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode.
 

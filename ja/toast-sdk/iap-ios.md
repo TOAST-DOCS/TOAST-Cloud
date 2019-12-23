@@ -45,14 +45,13 @@ end
 #### Project Settings
 
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
-    * **Project Target > Build Settings > Linking > Other Linker Flags**をクリックして追加できます。
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
 ### Capabilities Setting
 
-* TOAST IAPを使用するには、CapabilitiesでIn-App Purchase項目を有効にする必要があります。
-
-* **Project Target > Capabilities > In-App Purchase > ON**
+* TOAST IAPを使用するには、Capabilitiesで**In-App Purchase**項目を有効にする必要があります。
+    * **Project Target > Capabilities > In-App Purchase**
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## サービスログイン

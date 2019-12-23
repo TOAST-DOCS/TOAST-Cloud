@@ -45,11 +45,11 @@ end
 #### Project Settings
 
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
-      * **Project Target > Build Settings > Linking > Other Linker Flags**をクリックして追加できます。
+      * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-* CrashReporter.frameworkを直接ダウンロードするか、ビルドした場合にはBuild SettingのEnable Bitcodeの値を**NO**に変更する必要があります。
-      * **Project Target > Build Settings > Build Options > Enable Bitcode**をクリックして**NO**をクリックします。
+* **CrashReporter.framewor**を直接ダウンロードするか、ビルドした場合は**Build Settings**の**Enable Bitcode**の値を**NO**に変更する必要があります。
+    * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 
 > TOASTの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。

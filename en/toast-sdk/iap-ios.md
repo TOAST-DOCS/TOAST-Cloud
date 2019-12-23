@@ -49,8 +49,8 @@ end
 
 ### Capabilities Setting
 
-* To use TOAST IAP, you must enable the In-App Purchase item in Capabilities.
-    **Project Target > Capabilities > In-App Purchase > ON** 
+* To use TOAST IAP, you must enable the **In-App Purchase** item in Capabilities.
+    **Project Target > Capabilities > In-App Purchase** 
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## Service Login 

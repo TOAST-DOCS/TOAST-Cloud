@@ -51,8 +51,8 @@ end
 
 ### Capabilities 설정
 
-* TOAST IAP를 사용하려면 Capabilities에서 In-App Purchase 항목을 활성화해야 합니다.
-    * **Project Target > Capabilities > In-App Purchase > ON** 
+* TOAST IAP를 사용하려면 Capabilities에서 **In-App Purchase** 항목을 활성화해야 합니다.
+    * **Project Target > Capabilities > In-App Purchase** 
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## 서비스 로그인

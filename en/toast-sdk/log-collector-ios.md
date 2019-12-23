@@ -44,14 +44,14 @@ end
 
 #### Project Settings
 
-* Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**. 
-      * **Project Target > Build Settings > Linking > Other Linker Flags**
+* Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**.
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-* To directly download or build CrashReporter.framework, the Bitcode at Build Setting must be changed to NO.  
-      * **Project Target > Build Settings > Build Options > Enable Bitcode > NO**
+* To directly download or build **CrashReporter.framework**, the **Bitcode** at **Build Settings** must be changed to **NO**.  
+    * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
-> CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode. 
+> CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode.
 
 ### Precautions when using CrashReport
 
