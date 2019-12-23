@@ -45,18 +45,18 @@ end
 ### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
-* **Project Target > Build Settings > Linking > Other Linker Flags**
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
 
 ### Capabilities 설정
 
 * TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Background Modes** 항목을 활성화해야 합니다.
-* **Project Target > Signing & Capabilities > + Capability > Push Notification**
+    * **Project Target > Signing & Capabilities > + Capability > Push Notification**
 ![add_capability_push_notifications](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications.png)
-* **Project Target > Signing & Capabilities > + Capability > Background Modes**
+    * **Project Target > Signing & Capabilities > + Capability > Background Modes**
 ![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
-* `Remote notifications` 항목을 활성화해야 합니다.
+    * **Background Modes** 항목 중 **Remote notifications**를 활성화해야 합니다.
 ![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities.png)
 
 ## Xcode11 / iOS13 변경 사항
@@ -69,14 +69,14 @@ end
 
 ## 서비스 로그인
 
-* TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 같은 사용자 ID 하나만 사용합니다.
+* TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash, ...)은 하나의 사용자 아이디를 공유합니다.
 
 ### 로그인
 
-* `사용자 ID가 설정되지 않은 상태에서는 토큰 등록 및 삭제 기능을 사용할 수 없습니다.`
+* `사용자 아이디가 설정되지 않은 상태에서는 토큰 등록 및 삭제 기능을 사용할 수 없습니다.`
 
 ``` objc
-// 서비스 로그인, 사용자 ID 설정
+// 서비스 로그인, 사용자 아이디 설정
 [ToastSDK setUserID:@"INPUT_USER_ID"];
 ```
 
@@ -85,7 +85,7 @@ end
 * `로그아웃 하여도 등록된 토큰은 삭제되지 않습니다.`
 
 ``` objc
-// 서비스 로그아웃, 사용자 ID를 nil로 설정
+// 서비스 로그아웃, 사용자 아이디를 nil로 설정
 [ToastSDK setUserID:nil];
 ```
 
@@ -132,7 +132,7 @@ end
 @end
 ```
 
-### 초기화 및 Delegate 설정 예시
+### 초기화 및 Delegate 설정 예
 
 ``` objc
 #import <ToastPush/ToastPush.h>
@@ -187,7 +187,7 @@ end
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * [ToastPushAgreement](./push-ios/#toastpushagreement) 객체에 사용자 알림 메시지 수신 동의 정보를 설정합니다.
 
-### 수신 동의 설정 예시
+### 수신 동의 설정 예
 
 ``` objc
 ToastPushAgreement *agreement = [[ToastPushAgreement alloc] initWithAllowNotifications:YES]; // 알림 메시지 수신 동의
@@ -200,7 +200,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 * 토큰 등록 시 알림에 대한 옵션을 설정합니다.
 * 알림 옵션을 설정하지 않은 경우 배지 아이콘과 알림음 사용 옵션만 적용됩니다. (`앱 실행중 알림 노출 옵션 제외`)
 
-### 알림 옵션 설정 예시
+### 알림 옵션 설정 예
 
 ``` objc
 // 기본값 : ToastPushNotificationOptionBadge | ToastPushNotificationOptionSound
@@ -234,7 +234,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
           completionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 ```
 
-### 토큰 등록 예시
+### 토큰 등록 예
 
 ``` objc
 [ToastPush registerWithAgreement:agreement
@@ -263,7 +263,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 + (void)queryTokenInfoWithCompletionHandler:(void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 ```
 
-### 토큰 정보 조회 예시
+### 토큰 정보 조회 예
 
 ``` objc
 [ToastPush queryTokenInfoWithCompletionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
@@ -290,7 +290,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 + (void)unregisterWithCompletionHandler:(nullable void (^)(NSString * _Nullable deviceToken, NSError * _Nullable error))completionHandler;
 ```
 
-### 토큰 해제 예시
+### 토큰 해제 예
 
 ``` objc
 [ToastPush unregisterWithCompletionHandler:^(NSString *deviceToken, NSError *error) {
@@ -347,7 +347,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 * 수신 지표 수집을 위해서는 사용자 어플리케이션에 ToastPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
 * Notification Service Extension 생성자에서 [Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 `익스텐션의 info.plist 파일`에 앱키가 정의되어 있어야 수신 지표 수집이 가능합니다.
 
-#### 초기화를 통한 수신 지표 수집 설정 예시
+#### 초기화를 통한 수신 지표 수집 설정 예
 
 * `어플리케이션과 익스텐션은 함께 설치되지만 서로 분리된 별도의 샌드박스 환경이기 때문에 어플리케이션에서의 초기화와는 별개로 익스텐션에서도 초기화를 해야합니다.`
 
@@ -370,7 +370,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 @end
 ```
 
-#### info.plist 정의를 통한 수신 지표 수집 설정 예시
+#### info.plist 정의를 통한 수신 지표 수집 설정 예
 
 * Property List
 
@@ -398,7 +398,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 * 실행 지표는 어플리케이션에 추가한 Toast Push SDK 에서 자동으로 수집됩니다.
 * [Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 `어플리케이션의 info.plist 파일`에 앱키가 정의되어 있어야 실행 지표 수집이 가능합니다.
 
-#### info.plist 정의를 통한 수신 지표 수집 설정 예시
+#### info.plist 정의를 통한 수신 지표 수집 설정 예
 
 * Property List
 
@@ -436,7 +436,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 * 앱의 프로젝트 설정과 동일하게 Extension의 [프로젝트 설정](http://docs.toast.com/ko/TOAST/ko/toast-sdk/push-ios/#toast-push-sdk-xcode)을 추가합니다.
 * `iOS의 Extension은 앱과 함께 설치되지만 앱과는 분리된 별도의 샌드박스 환경이라 컨테이너를 공유하지 않습니다.`
 
-### Notification Service Extension 설정 예시
+### Notification Service Extension 설정 예
 
 * 생성된 NotificationService 클래스에 ToastPushServiceExtension 을 상속해야 합니다.
 * 별도의 사용자 정의 처리 로직이 없는 경우 상속만으로도 리치 메시지와 수신 지표 수집 기능이 동작합니다.
@@ -492,7 +492,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 @end
 ```
 
-#### Delegate 설정 예시
+#### Delegate 설정 예
 
 ``` objc
 // VoIP 서브모듈을 추가합니다.
@@ -533,7 +533,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 + (void)registerWithCompletionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 ```
 
-#### 토큰 등록 예시
+#### 토큰 등록 예
 
 ```objc
 [ToastVoIP registerWithCompletionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
@@ -560,7 +560,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 + (void)queryTokenInfoWithCompletionHandler:(void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 ```
 
-#### 토큰 정보 조회 예시
+#### 토큰 정보 조회 예
 
 ```objc
 [ToastVoIP queryTokenInfoWithCompletionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
@@ -586,7 +586,7 @@ ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         
 + (void)unregisterWithCompletionHandler:(nullable void (^)(NSString * _Nullable deviceToken, NSError * _Nullable error))completionHandler;
 ```
 
-#### 토큰 헤제 예시
+#### 토큰 헤제 예
 
 ```objc
 [ToastVoIP unregisterWithCompletionHandler:^(NSString *deviceToken, NSError *error) {
