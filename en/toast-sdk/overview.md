@@ -34,7 +34,7 @@ TOAST Android SDK is distributed via **jCenter** and enabled only with simple Gr
 
 ### iOS
 
-TOAST iOS SDK supports the management of Project Setting and Framework Dependency with **CocoaPods**. 
+TOAST iOS SDK is distributed via **Github** and enabled only with simple **Cocoapods**, **Carthage** settings.  
 
 - [Get started with iOS](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-ios)
 

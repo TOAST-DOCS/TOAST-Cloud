@@ -20,7 +20,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.19.4'
+    implementation 'com.toast.android:toast-unity-iap-google:0.20.0'
 **DEPS**}
 ```
 
@@ -31,7 +31,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.19.4'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.20.0'
 **DEPS**}
 ```
 

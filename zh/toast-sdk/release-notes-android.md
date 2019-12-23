@@ -1,5 +1,28 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.20.0 (2019.12.24)
+
+### TOAST Push
+
+#### 기능 개선
+
+* Assets 리소스 지원
+  * Assets 경로의 이미지 리소스를 지원합니다.
+* 기본 옵션 설정 방법 개선
+  * AndroidManifest의 meta-data을 사용하여 알림 기본 옵션을 설정할 수 있습니다.
+
+### TOAST IAP
+
+#### 기능 개선
+
+* 보안 강화
+  * 내부 보안 정책을 강화하였습니다.
+
+#### 버그 수정
+
+* "Bad base64 Exception" 오류 수정
+  * TOAST SDK를 사용하지 않은 결제건 처리 시에 "Bad Base64 Exception"이 발생하는 오류를 수정하였습니다.
+
 ## 0.19.4 (2019.11.26)
 
 ### TOAST Push
