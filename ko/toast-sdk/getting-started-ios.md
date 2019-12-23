@@ -52,7 +52,7 @@ github "nhn/toastcloud.sdk"
 ![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage_setting_02.png)
 
 #### 필수 Framework 추가와 프로젝트 설정
-* TOAST SDK를 사용하기 위해 [필수 Framework](./getting-started-ios/#필수-Framework-추가)와 [Project Setting](./getting-started-ios/#Project-Settings)을 추가합니다.
+* TOAST SDK를 사용하기 위해 [필수 Framework](./getting-started-ios/#필수-Framework-추가)와 [프로젝트 설정](./getting-started-ios/#프로젝트-설정)을 추가합니다.
 
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
 > 서비스별로 필요한 Framework는 [TOAST SDK의 구성](./getting-started-ios/#TOAST-SDK의-구성)에서 확인 할 수 있습니다. 
