@@ -36,7 +36,7 @@ end
 #### Link Frameworks
 
 * TOASTの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
-* Xcode Projectに**ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework`を追加します。
+* Xcode Projectに**ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework, StoreKit.framework**を追加します。
 * StoreKit.frameworkは、下記の方法で追加できます。
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 

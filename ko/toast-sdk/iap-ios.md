@@ -36,7 +36,7 @@ end
 #### 프레임워크 설정
 
 * TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
-* Xcode Project에 **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework`를 추가합니다.
+* Xcode Project에 **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework, StoreKit.framework**를 추가합니다.
 * StoreKit.framework는 아래 방법으로 추가할 수 있습니다.
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 

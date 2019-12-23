@@ -35,7 +35,7 @@ end
 #### Link Frameworks
 
 * The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
-* Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework**, `StoreKit.framework` to the Xcode Project.
+* Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework, StoreKit.framework** to the Xcode Project.
 * StoreKit.framework can be added in the following way.
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
