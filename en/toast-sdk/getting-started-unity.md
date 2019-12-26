@@ -58,6 +58,27 @@ TOAST SDK for Unity has an additional sample unity package, and below describes 
 
 ## For Android 
 
+### Unity Play Services Resolver 
+
+* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다. 
+* 이 라이브러리는 안드로이드 관련 라이브러리(예:AAR)에 대한 종속성을 자동으로 해결하여 Unity 프로젝트에 복사됩니다. 
+
+#### Gradle 빌드 설정을 사용할 경우
+
+* Gradle 빌드 설정은 아래에 있습니다. 
+* 아래와 같이 옵션을 제거하고 받은 플러그인을 제거하고 사용하시면 됩니다 .
+	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > Android Resolver(Android 리졸버) > Settings(세팅)을 선택합니다.
+	2. 설정에서 "Enable Auto-Resolution"과 "Enable Resolution On Build" 옵션을 끕니다.	
+	3. Assets/Plugins/Android에 있는 AAR파일을 제거합니다.
+	
+#### AAR 라이브러리 제공
+
+* AAR 라이브러리들을 압축파일로 첨부해서 제공하고 있습니다. 
+* 아래와 같이 옵션을 제거하고 받은 플러그인을 제거하고 사용하시면 됩니다 .
+	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > Android Resolver(Android 리졸버) > Settings(세팅)을 선택합니다.
+	2. 설정에서 "Enable Auto-Resolution"과 "Enable Resolution On Build" 옵션을 끕니다.
+	3. Assets/Plugins/Android에 있는 AAR파일을 제거합니다.
+
 ### Gradle Build Setting
 
 * TOAST SDK applies Gradle Build for Android builds.
@@ -124,6 +145,23 @@ allprojects {
 
 #### Enable Bitcode 옵션
 * Set **NO** for Enable Bitcode.
+
+### Unity Play Services Resolver 
+
+* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다. 
+* 이 라이브러리는 iOS CocoaPods을 사용하는 라이브러리에 대한 종속성을 자동으로 해결해줍니다.
+
+> 참고) iOS 종속성은 CocoaPods를 사용하여 식별합니다. CocoaPods는 빌드 후 처리단계에서 실행됩니다.
+
+* Unity 5.6이상을 사용하는 경우 필요한 TOAST SDK native plugin을 포하하는 xcworkspace가 생성됩니다. 표준 xcode 프로젝트 대신 생성된 xcworkspace를 사용해야 합니다.
+* 이전 버전의 Unity를 사용할 때 종속성이 표준 Xcode 프로젝트에 포함됩니다.
+
+#### iOS framework 제공
+
+* iOS framework들을 압축파일로 첨부해서 제공하고 있습니다. 
+* 아래와 같이 옵션을 제거하고 사용하시면 됩니다. 
+	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > iOS Resolver(iOS 리졸버) > Settings(세팅)을 선택합니다.
+	2. 설정에서 모든 옵션을 끕니다.
 
 ## Initialize TOAST SDK 
 
