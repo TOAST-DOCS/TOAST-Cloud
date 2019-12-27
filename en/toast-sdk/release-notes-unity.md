@@ -1,8 +1,14 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.19.0 (2019.12.27)
+
+### Added
+
+* Unity Play Services Resolver 적용
+
 ## 0.18.0 (2019.12.06)
 
-### 공통
+### Common
 
 * iOS 0.20.1 framework 적용
 * Android 0.19.4 aar 포함해서 배포
@@ -18,13 +24,13 @@
 
 ### TOAST IAP
 
-#### 변경 사항
+#### Changed 
 
 * 소비성 구독 상품 추가
 
 ## 0.15.1 (2019.07.29)
 
-### 공통
+### Common
 
 * iOS 0.16.1 framework 적용
 
@@ -32,7 +38,7 @@
 
 ### TOAST IAP
 
-#### 변경 사항
+#### Changed 
 
 * ActivedPurchases -> ActivatedPurchses
     
@@ -40,7 +46,7 @@
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### Added
 
 * Unity Standalone/WebGL 버전 추가
     * Logger
@@ -48,7 +54,7 @@
 
 ### TOAST IAP
 
-#### 추가 사항
+#### Added
 
 * ActivedPurchases 추가
 
