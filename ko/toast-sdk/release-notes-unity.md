@@ -1,5 +1,11 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Unity
 
+## 0.19.0 (2019.12.27)
+
+### 추가 사항
+
+* Unity Play Services Resolver 적용
+
 ## 0.18.0 (2019.12.06)
 
 ### 공통
