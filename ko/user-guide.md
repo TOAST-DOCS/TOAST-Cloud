@@ -1,6 +1,9 @@
 ## TOAST > TOAST 사용 가이드
 NHN이 만든 클라우드 서비스, TOAST 이용 방법을 설명한 사용자 가이드입니다.
 
+## 동영상 가이드 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qPclADHluk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## TOAST 회원 가입
 서비스를 이용할 국가를 선택할 수 있습니다. 
 TOAST 회원에는 개인과 사업자 회원이 있습니다. 단, 한국 외 국가에서는 개인 회원으로만 가입할 수 있습니다. 
