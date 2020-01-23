@@ -1,5 +1,11 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.19.1 (2020.01.23)
+
+### 버그 수정
+
+* OnHandleException 콜백 호출 이슈
+
 ## 0.19.0 (2019.12.27)
 
 ### Added
