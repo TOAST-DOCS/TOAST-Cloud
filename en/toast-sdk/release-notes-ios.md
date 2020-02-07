@@ -1,5 +1,11 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.22.0 (2020.02.11)
+### TOAST IAP
+#### 개선 사항
+* 안전성 개선
+* Payload 복원 기능 추가
+
 ## 0.21.0 (2019.12.24)
 ### TOAST Logger
 #### 개선 사항
