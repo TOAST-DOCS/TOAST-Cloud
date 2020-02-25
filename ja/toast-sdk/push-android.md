@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.20.2’
+    implementation 'com.toast.android:toast-push-fcm:0.20.3’
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.20.2’
+    implementation 'com.toast.android:toast-push-tencent:0.20.3’
     ...
 }
 ```
@@ -183,8 +183,8 @@ ToastPush.initialize(PushType.TENCENT, configuration);
 ## サービスログイン
 * TOAST SDKで提供するすべてのサービス(Push、IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
     * [ToastSdk.setUserId](./getting-started-android/#userid)にユーザーIDを設定できます。
-    * ユーザーIDを設定していない場合、トークンを登録できません。
 * サービスログイン段階でユーザーID設定、トークン登録機能を実装することを推奨します。
+* トークンの登録後、ユーザーIDを設定または変更すると、トークン情報を更新します。
 
 ### サービスログイン例
 
@@ -212,6 +212,7 @@ ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 通知を
 
 ## トークン登録
 * ToastPush.registerToken()メソッドを使用してPushトークンをTOAST Pushサーバーに転送します。 この時、受信同意可否(ToastPushAgreement)をパラメータで伝えます。
+* 最初のトークン登録時のユーザー名が設定されていなければ、端末識別子を使用して登録します。
 * トークンの登録に成功すると、Push メッセージを受信することができます。
 
 ### トークン登録例
