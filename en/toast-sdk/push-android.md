@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.20.2'
+    implementation 'com.toast.android:toast-push-fcm:0.20.3'
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.20.2'
+    implementation 'com.toast.android:toast-push-tencent:0.20.3'
     ...
 }
 ```
@@ -187,8 +187,8 @@ ToastPush.initialize(PushType.TENCENT, configuration);
 ## 서비스 로그인
 * TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
     * [ToastSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
-    * 사용자 아이디를 설정하지 않은 경우, 토큰을 등록할 수 없습니다.
 * 서비스 로그인 단계에서 사용자 아이디 설정, 토큰 등록 기능을 구현하는 것을 권장합니다.
+* 토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.
 
 ### 서비스 로그인 예제
 
@@ -216,6 +216,7 @@ ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 알림 �
 
 ## 토큰 등록
 * ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 TOAST Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
+* 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 * 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
 
 ### 토큰 등록 예시
