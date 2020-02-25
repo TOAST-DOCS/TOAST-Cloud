@@ -27,7 +27,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-logger:0.20.2'
+    implementation 'com.toast.android:toast-unity-logger:0.20.3'
 **DEPS**}
 ```
 

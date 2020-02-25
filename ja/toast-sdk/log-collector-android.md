@@ -11,7 +11,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-logger:0.20.2'
+    implementation 'com.toast.android:toast-logger:0.20.3'
     ...
 }
 ```
