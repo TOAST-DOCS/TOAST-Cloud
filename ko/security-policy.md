@@ -44,7 +44,7 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 | ---- | ---- | ---- | ---- | ---- |
 | 한국(판교) <br> 일본(도쿄) <br> 미국 (캘리포니아) | 시스템 Terminal Port | TCP / 23 | Network ACL 차단 적용 | 외부에서 접속 불가 |
 
-### 차단 포트 목록
+### TOAST G 차단 포트 목록
 |서비스명 |   차단 포트  | 차단 방법 |비고|
 | ---- | ---- | ---- | ---- |
 | 시스템 Terminal Port | TCP / 22, 23, 3389 | Network ACL 차단 적용 | 외부에서 접속 불가|
@@ -55,7 +55,7 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 ### 포트 추가/허용 신청 절차
 - 아래 엑셀 파일을 다운로드하여 작성합니다.
 
-[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOAST G 방화벽 및 SSL VPN 정책 신청서.xlsx)
+[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOAST 방화벽 및 SSL VPN 정책 신청서.xlsx)
 
 - 파일명 “TOAST 방화벽 및 SSL VPN 정책 신청서.xlsx”으로 저장합니다.
 - 아래 대표 메일로 접수 신청 메일 발송합니다.(접수일 기준으로 3일 이내 처리 및 회신)
