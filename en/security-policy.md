@@ -31,11 +31,27 @@ DRDoS occurs due to vulnerable settings of applications, such as DNS, NTP, SSDP,
 ### Anti-TOAST DRDoS Port Policy
 To protect customer's resources and services, TOAST blocks UDP ports which are frequently abused as stops for DRDoS attacks..
 
-### List of Blocked Ports 
+
+### List of Blocked Ports
 |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- |
 |Chargen | UDP / 19    | Network ACL | Inaccessible from outside |
 |SSDP    | UDP / 1900  | Network ACL | Inaccessible from outside |
 |Memcached   | UDP / 11211 | Network ACL | Inaccessible from outside |
+
+### List of Blocked Internet Ports
+
+#### List of Blocked Ports (TOAST)
+| Region |Service Name |  Blocked Port  | Blocking Method |Reference|
+| ---- | ---- | ---- | ---- | ---- |
+| KOREA(Pangyo) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
+
+#### List of Blocked Ports (TOAST G)
+|Service Name |  Blocked Port  | Blocking Method |Reference|
+| ---- | ---- | ---- | ---- |
+| System Terminal port | TCP / 22, 23, 3389 | Network ACL | Inaccessible from outside | 
+| DBMS Port | TCP, UDP / 1433(MS-SQL), 1521(Oracle), 3306(MySQL) | Network ACL | Inaccessible from outside | 
+| Netbios Port | TCP, UDP / 135, 137, 138, 139, 445 | Network ACL | Inaccessible from outside | 
+| etc | TCP / 21(FTP), TCP / 5900(VNC) | Network ACL | Inaccessible from outside | 
 
 For further inquiries on port blocking policy, contact Customer Center.

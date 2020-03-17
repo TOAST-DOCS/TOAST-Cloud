@@ -38,4 +38,17 @@ TOASTは顧客の大切な資産とサービスを保護するために、DRDoS�
 | SSDP    | UDP / 1900  | Network ACL遮断適用 | 外部から接続不可 |
 | Memcached   | UDP / 11211 | Network ACL遮断適用 | 外部から接続不可 |
 
+#### List of Blocked Ports (TOAST)
+| Region |Service Name |  Blocked Port  | Blocking Method |Reference|
+| ---- | ---- | ---- | ---- | ---- |
+| KOREA(Pangyo) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
+
+#### List of Blocked Ports (TOAST G)
+|Service Name |  Blocked Port  | Blocking Method |Reference|
+| ---- | ---- | ---- | ---- |
+| System Terminal port | TCP / 22, 23, 3389 | Network ACL | Inaccessible from outside | 
+| DBMS Port | TCP, UDP / 1433(MS-SQL), 1521(Oracle), 3306(MySQL) | Network ACL | Inaccessible from outside | 
+| Netbios Port | TCP, UDP / 135, 137, 138, 139, 445 | Network ACL | Inaccessible from outside | 
+| etc | TCP / 21(FTP), TCP / 5900(VNC) | Network ACL | Inaccessible from outside | 
+
 ポート遮断ポリシーの詳細については、カスタマーセンターまでお問い合わせください。
