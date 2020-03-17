@@ -38,12 +38,14 @@ DRDoS是由DNS, NTP, SSDP, Memcached等应用程序中薄弱的设置导致的�
 | SSDP | UDP / 1900 | 应用Network ACL阻断 | 外部无法访问| 
 | Memcached | UDP / 11211 | 应用Network ACL阻断 | 外部无法访问 |
 
-#### List of Blocked Ports (TOAST)
+### List of Blocked Internet Ports
+
+#### List of Blocked Internet Ports (TOAST)
 | Region |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- | ---- |
 | KOREA(Pangyo) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
 
-#### List of Blocked Ports (TOAST G)
+#### List of Blocked Internet Ports (TOAST G)
 |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- |
 | System Terminal port | TCP / 22, 23, 3389 | Network ACL | Inaccessible from outside | 

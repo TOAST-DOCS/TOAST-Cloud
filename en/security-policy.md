@@ -41,12 +41,12 @@ To protect customer's resources and services, TOAST blocks UDP ports which are f
 
 ### List of Blocked Internet Ports
 
-#### List of Blocked Ports (TOAST)
+#### List of Blocked Internet Ports (TOAST)
 | Region |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- | ---- |
 | KOREA(Pangyo) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
 
-#### List of Blocked Ports (TOAST G)
+#### List of Blocked Internet Ports (TOAST G)
 |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- |
 | System Terminal port | TCP / 22, 23, 3389 | Network ACL | Inaccessible from outside | 
