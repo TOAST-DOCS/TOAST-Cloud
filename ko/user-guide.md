@@ -17,12 +17,21 @@ https://toast.com에 접속한 후 화면 오른쪽 위에서 **회원 가입**�
 ![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_201904.png)
 
 - 사업자 회원 가입
-
 ![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_201904.png)
 
-#### 회원가입 시 `한국 외 국가`를 선택한 회원 
+#### 회원가입 시 `일본`을 선택한 회원 
 
+- 개인 회원 가입
 ![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_201904.png)
+
+- 사업자 회원 가입
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_08_202003.png)
+
+#### 회원가입 시 '그 외 국가'를 선택한 회원
+
+- 개인 회원 가입
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_09_202003.png)
+
 
 #### 국가 선택 
 
