@@ -94,7 +94,7 @@ end
 * `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
 * [ToastPushConfiguration](./push-ios/#toastpushconfiguration) 객체에 토스트 클라우드 서버에서 발급받은 Push AppKey를 설정합니다.
 * `개발환경에서는 반드시 ToastPushConfiguration의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
-* 앱 실행 중 알림 노출 여부 등의 알림 옵션이 설정 가능합니다.
+* 앱 실행 중에도 알림이 노출되기를 원하시면, [ToastNotificationOptions](./push-ios/#toastnotificationoptions) 객체를 설정합니다.
 
 ### 초기화 API 명세
 
@@ -642,10 +642,31 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 // Sandbox(Debug) 환경 설정
 @property (nonatomic) BOOL sandbox;
 
+// 알림 옵션
+@property (nonatomic, copy, nullable) ToastNotificationOptions *notificationOptions;
+
 
 + (instancetype)configurationWithAppKey:(NSString *)appKey;
 
 - (instancetype)initWithAppKey:(NSString *)appKey;
+
+@end
+```
+
+### ToastNotificationOptions
+* TOAST Push를 초기화할 때 전달되는 알림 설정 정보입니다.
+
+``` objc
+@interface ToastNotificationOptions : NSObject
+
+// 앱 실행 중 알림 노출 여부
+@property (nonatomic) BOOL foregroundEnabled;
+
+// 배지 아이콘 사용 여부
+@property (nonatomic) BOOL badgeEnabled;
+
+// 알림음 사용 여부
+@property (nonatomic) BOOL soundEnabled;
 
 @end
 ```
