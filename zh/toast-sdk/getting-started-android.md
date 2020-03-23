@@ -12,6 +12,7 @@ TOAST SDK for Android is configured as follows:
 * TOAST Common SDK
 * TOAST Core SDK
 * [TOAST Logger](./log-collector-android) SDK
+* [TOAST NDK Crash Reporter](./log-collector-ndk) SDK
 * TOAST In-app Purchase Core SDK
 * [TOAST In-app Purchase Google Play Store](./iap-android) SDK
 * [TOAST In-app Purchase OneStore](./iap-android) SDK
@@ -51,6 +52,7 @@ dependencies {
 Following describe how to set for each product of TOAST SDK.
 
 - [Setting Library of TOAST Logger](./log-collector-android/#_1)
+- [Setting Library of TOAST NDK Crash Reporter](./log-collector-ndk/#_1)
 - [Setting Library of TOAST In-app Purchase](./iap-android/#_2)
 - [Setting Library of TOAST Push](./push-android/#_2)
 
@@ -128,5 +130,6 @@ ToastSdk.setDebugMode(false);
 ## Use TOAST Service
 
 * User Guide for [TOAST Log & Crash](./log-collector-android)
+* User Guide for [TOAST NDK Crash Reporter](./log-collector-ndk)
 * User Guide for [TOAST In-app Purchase](./iap-android)
 * User Guide for [TOAST Push](./push-android)
