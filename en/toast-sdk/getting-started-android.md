@@ -25,6 +25,7 @@ TOAST SDK services can be selectively applied for your needs.
 | com.toast.android:toast-common:0.21.0       | TOAST Common      |
 | com.toast.android:toast-core:0.21.0         | TOAST Core        |
 | com.toast.android:toast-logger:0.21.0       | TOAST Log & Crash |
+| com.toast.android:toast-crash-reporter-ndk:0.21.0       | TOAST NDK Crash Reporter |
 | com.toast.android:toast-iap-core:0.21.0     | TOAST In-app Purchase Core |
 | com.toast.android:toast-iap-google:0.21.0   | TOAST In-app Purchase <br>Google Play Store |
 | com.toast.android:toast-iap-onestore:0.21.0 | TOAST In-app Purchase <br>OneStore |
