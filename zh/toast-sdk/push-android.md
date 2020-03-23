@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.20.3'
+    implementation 'com.toast.android:toast-push-fcm:0.21.0'
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.20.3'
+    implementation 'com.toast.android:toast-push-tencent:0.21.0'
     ...
 }
 ```
@@ -162,7 +162,7 @@ android {
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
 * Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
-* 사용하기를 원하는 PushType 을 초기화 호출시 전달해야 합니다.
+* 사용하기를 원하는 PushType을 초기화 호출시 전달해야 합니다.
 
 ### FCM 초기화 예시
 
@@ -200,27 +200,26 @@ public void onLogin(String userId) {
 }
 ```
 
-## 수신 동의 설정
-* 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
-    * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
-    * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 TOAST Push 서버로 전송합니다.
-
-### 수신 동의 설정 예시
-```java
-ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 알림 메시지 수신 동의
-        .setAllowAdvertisements(true)       // 홍보성 알림 메시지 수신 동의
-        .setAllowNightAdvertisements(true)  // 야간 홍보성 아림 메시지 수신 동의
-        .build();
-```
-
 ## 토큰 등록
 * ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 TOAST Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 * 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
 
-### 토큰 등록 예시
+### 수신 동의 설정
+* 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
+    * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
+    * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 TOAST Push 서버로 전송합니다.
+
+### 토큰 등록 및 수신 동의 설정 예시
 ```java
+// 수신 동의 설정 객체 생성
+ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 알림 메시지 수신 동의
+        .setAllowAdvertisements(true)       // 홍보성 알림 메시지 수신 동의
+        .setAllowNightAdvertisements(true)  // 야간 홍보성 아림 메시지 수신 동의
+        .build();
+
+// 토큰 등록 및 수신 동의 설정
 ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
     @Override
     public void onRegister(@NonNull PushResult result,
@@ -278,35 +277,6 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
             // 토큰 해제 성공시
         } else {
             // 토큰 해제 실패시
-            int code = result.getCode();
-            String message = result.getMessage();
-        }
-    }
-});
-```
-
-## 토큰 정보 업데이트
-* 사용자 아이디, 국가 코드, 언어 코드, 알림 메시지 수신 동의 등의 토큰 정보를 업데이트합니다.
-* [UpdateTokenInfoParams](./push-android/#updatetokeninfoparams) 객체를 생성하여 업데이트 항목을 설정합니다.
-* 생성한 [UpdateTokenInfoParams](./push-android/#updatetokeninfoparams) 객체를 ToastPush.updateTokenInfo() 함수의 파라미터로 전달합니다.
-
-### 토큰 정보 업데이트 예시
-
-``` java
-UpdateTokenInfoParams params = UpdateTokenInfoParams.newBuilder()
-                .setLanguage(preferences.getLanguage())
-                .setAgreement(agreement)
-                .build();
-
-ToastPush.updateTokenInfo(mContext, params, new UpdateTokenInfoCallback() {
-    @Override
-    public void onUpdate(@NonNull PushResult result,
-                         @Nullable TokenInfo tokenInfo) {
-
-        if (result.isSuccess()) {
-            // 토큰 정보 업데이트 성공시
-        } else {
-            // 토큰 정보 업데이트 실패시
             int code = result.getCode();
             String message = result.getMessage();
         }
@@ -406,6 +376,8 @@ public class MyApplication extends Application {
 
 ### 알림 기본 옵션 설정
 * 알림의 우선 순위, 작은 아이콘, 배경색, LED 라이트, 진동, 알림음을 설정합니다.
+* 앱이 포그라운드 상태일 때의 알림 노출 여부를 설정합니다.
+* 배지 아이콘의 사용 여부를 설정합니다.
 * 안드로이드 8.0(API 레벨 26) 이상 단말기에서는 기본 알림 채널에만 옵션이 적용 됩니다.
 * `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
 
@@ -424,6 +396,8 @@ public class MyApplication extends Application {
                 .setSmallIcon(R.drawable.ic_notification)       // 작은 아이콘 설정
                 .setSound(R.raw.dingdong1)                      // 알림음 설정
                 .setVibratePattern(new long[] {500, 700, 1000}) // 진동 패턴 설정
+                .enableForeground(true)                         // 포그라운드 알림 노출 설정
+                .enableBadge(true)                              // 배지 아이콘 사용 설정
                 .build();
 
         ToastNotification.setDefaultOptions(context, defaultOptions);
@@ -457,6 +431,12 @@ public class MyApplication extends Application {
 <!-- 진동 패턴 -->
 <meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern" 
            android:resource="@array/default_vibrate_pattern"/>
+<!-- 배지 아이콘 사용 -->
+<meta-data android:name="com.toast.sdk.push.notification.badge_enabled" 
+           android:value="true"/>
+<!-- 앱 실행 중 알림 노출 -->
+<meta-data android:name="com.toast.sdk.push.notification.foreground_enabled" 
+           android:value="false"/>
 ```
 
 ### 알림음 설정
@@ -696,29 +676,6 @@ public String getToken();
 | getActivatedDateTime | Date | 토큰의 최근 등록 일시를 반환합니다. |
 | getToken | String | 토큰을 반환합니다. |
 
-### UpdateTokenInfoParams
-* 토큰 정보 업데이트 호출시 업데이트할 정보를 설정하는 객체입니다.
-
-``` java
-/* UpdateTokenInfoParams.java */
-public String getUserId();
-public String getCountry();
-public String getLanguage();
-public String getTimeZone();
-public String getAgreement();
-
-public static Builder newBuilder();
-```
-
-| Method | Returns | |
-|---|---|---|
-| getUserId | String | 사용자 ID를 반환합니다. |
-| getCountry | String | 국가 코드를 반환합니다. |
-| getLanguage | String | 언어 코드를 반환합니다. |
-| getTimeZone | String | 타임존을 반환합니다. |
-| getAgreement | ToastPushAgreement | 알림/광고/야간 광고 등 동의 여부를 반환합니다. |
-| static newBuilder | UpdateTokenInfoParams.Builder | UpdateTokenInfoParams 객체 생성을 위한 빌더를 생성합니다. |
-
 ### ToastRemoteMessage
 * 메세지 수신 리스너, 커스텀 리시버에서 메세지 수신시 반환되는 객체 입니다.
 
@@ -805,7 +762,7 @@ public final PendingIntent getNotificationServiceIntent(Context context, ToastRe
 | getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
 
 ### ToastNotificationOptions
-* 기본 알림 옵션 설정시 우선순위, 작은 아이콘, 배경색, LED, 진동, 알림음의 정보를 설정하는 객체입니다.
+* 기본 알림 옵션 설정시 우선순위, 작은 아이콘, 배경색, LED, 진동, 알림음, 포그라운드 알림 노출 정보를 설정하는 객체입니다.
 
 ``` java
 /* ToastNotificationOptions.java */
@@ -817,6 +774,8 @@ public int getLightOnMs();
 public int getLightOffMs();
 public long[] getVibratePattern();
 public Uri getSound();
+public boolean isForegroundEnabled();
+public boolean isBadgeEnabled();
 ```
 
 | Method | Returns | Parameters | |
@@ -829,3 +788,5 @@ public Uri getSound();
 | getLightOffMs | int | | LED 불이 나갈 때의 시간을 반환합니다. |
 | getVibratePattern | long[] | | 진동의 패턴을 반환합니다. |
 | getSound | Uri | | 알림음의 Uri 를 반환합니다. |
+| isForegroundEnabled | boolean | | 포그라운드 알림 사용 여부를 반환합니다. |
+| isBadgeEnabled | boolean | | 배지 아이콘 사용 여부를 반환합니다. |

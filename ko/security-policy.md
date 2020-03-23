@@ -32,25 +32,32 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 ### 차단 포트 목록
 |서비스명 |   차단 포트  | 차단 방법|비고|
 | ---- | ---- | ---- | ---- |
-|Chargen | UDP / 19    | Network ACL 차단 적용 |   외부에서 접속 불가|
-|SSDP    | UDP / 1900  | Network ACL 차단 적용 | 외부에서 접속 불가|
-|Memcached   | UDP / 11211 | Network ACL 차단 적용 | 외부에서 접속 불가|
+|Chargen | UDP / 19    | 네트워크 ACL 차단 적용 |   외부에서 접속 불가|
+|SSDP    | UDP / 1900  | 네트워크 ACL 차단 적용 | 외부에서 접속 불가|
+|Memcached   | UDP / 11211 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가|
 
-## 인터넷 포트 차단 정책 (Inbound)
-TOAST와 달리 공공 기관에 제공하는 TOAST G 클라우드는 고객 서비스 보호를 위해 고객이 직접 관리할 수 있는 Security Group 기능 외 침입차단 시스템을 이용하여 중요 서비스 포트에 대해 차단하고 있습니다.
+## 인터넷 포트 차단 정책(inbound)
+고객 서비스 보호를 위해 고객이 직접 관리할 수 있는 보안 그룹(security group) 기능 외 침입 차단 시스템을 이용하여 중요 서비스 포트에 대해 차단하고 있습니다.
 
-### 차단 포트 목록
-|서비스명 |   차단 포트  | 차단 방법|비고|
+### TOAST 차단 포트 목록
+|적용 리전 | 서비스명 | 차단 포트 | 차단 방법 | 비고 |
+| ---- | ---- | ---- | ---- | ---- |
+| 한국(판교) <br> 일본(도쿄) <br> 미국(캘리포니아) | 시스템 터미널 포트 | TCP/23 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
+
+### TOAST G 차단 포트 목록
+|서비스명 |   차단 포트  | 차단 방법 |비고|
 | ---- | ---- | ---- | ---- |
-| 시스템 Terminal Port | TCP / 22, 23, 3389 | Network ACL 차단 적용 | 외부에서 접속 불가|
-| DBMS Port | TCP, UDP / 1433(MS-SQL), 1521(Oracle), 3306(MySQL)  | Network ACL 차단 적용 | 외부에서 접속 불가|
-| Netbios 관련 Port | TCP, UDP / 135, 137, 138, 139, 445 | Network ACL 차단 적용 | 외부에서 접속 불가 |
-| 기타 | TCP / 21(FTP), TCP / 5900(VNC) | Network ACL 차단 적용 | 외부에서 접속 불가 |
+| 시스템 터미널 포트 | TCP/22, 23, 3389 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가|
+| DBMS 포트 | TCP, UDP/1433(MS-SQL), 1521(Oracle), 3306(MySQL)  | 네트워크 ACL 차단 적용 | 외부에서 접속 불가|
+| Netbios 관련 포트 | TCP, UDP/135, 137, 138, 139, 445 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
+| 기타 | TCP/21(FTP), TCP / 5900(VNC) | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 
 ### 포트 추가/허용 신청 절차
-- 아래 이미지 링크를 통해 “TOASTCloud G 방화벽 및 SSL VPN 정책 신청서.xlsx” 파일 다운로드하고 작성합니다.
+- 아래 엑셀 파일을 다운로드하여 작성합니다.
 
-[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOAST G 방화벽 및 SSL VPN 정책 신청서.xlsx)
+[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOAST 방화벽 및 SSL VPN 정책 신청서.xlsx)
 
-- 파일명 “TOAST G 방화벽 정책 신청서-기관명.xlsx”으로 저장합니다.
-- TOAST G 대표 메일 support@gov.toast.com로 접수 신청 메일 발송합니다.(접수일 기준으로 3일 이내 처리 및 회신)
+- 파일명 “TOAST 방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
+- 아래 대표 메일로 접수 신청 메일 발송합니다.(접수일 기준으로 3일 이내 처리 및 회신)
+    - TOAST : support@toast.com
+    - TOAST G : support@gov.toast.com
