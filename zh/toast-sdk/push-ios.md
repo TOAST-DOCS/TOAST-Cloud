@@ -94,6 +94,7 @@ end
 * `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
 * [ToastPushConfiguration](./push-ios/#toastpushconfiguration) 객체에 토스트 클라우드 서버에서 발급받은 Push AppKey를 설정합니다.
 * `개발환경에서는 반드시 ToastPushConfiguration의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
+* 앱이 포그라운드 상태일 때는 알림을 노출하지 않습니다. 알림 노출을 원하시면, [ToastNotificationOptions](./push-ios/#toastnotificationoptions) 객체로 알림 옵션을 설정해야 합니다.
 
 ### 초기화 API 명세
 
@@ -180,66 +181,38 @@ end
 }
 ```
 
-## 수신 동의 설정
+## 토큰 등록
+
+* 발급받은 토큰 정보를 토스트 클라우드 서버에 등록합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
+* 최초 실행일 경우 사용자에게 알림 허용 권환을 요청합니다. 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
+* 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
+
+### 수신 동의 설정
 
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
     * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * [ToastPushAgreement](./push-ios/#toastpushagreement) 객체에 사용자 알림 메시지 수신 동의 정보를 설정합니다.
 
-### 수신 동의 설정 예
+### 토큰 등록 및 수신 동의 설정 API 명세
+
+``` objc
+// 토큰 등록 및 수신 동의 설정
++ (void)registerWithAgreement:(ToastPushAgreement *)agreement
+            completionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
+
+// 기존에 설정된 수신 동의 정보를 사용하여 토큰 등록
++ (void)registerWithCompletionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
+```
+
+### 토큰 등록 및 수신 동의 설정 예
 
 ``` objc
 ToastPushAgreement *agreement = [[ToastPushAgreement alloc] initWithAllowNotifications:YES]; // 알림 메시지 수신 동의
 agreement.allowAdvertisements = YES;        // 홍보성 알림 메시지 수신 동의
 agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지 수신 동의
-```
 
-## 알림 옵션 설정
-
-* 토큰 등록 시 알림에 대한 옵션을 설정합니다.
-* 알림 옵션을 설정하지 않은 경우 배지 아이콘과 알림음 사용 옵션만 적용됩니다. (앱 실행중 알림 노출 옵션 제외)
-
-### 알림 옵션 설정 예
-
-``` objc
-// 기본값 : ToastPushNotificationOptionBadge | ToastPushNotificationOptionSound
-
-ToastPushNotificationOptions options = ToastPushNotificationOptionBadge         // 배지 아이콘(숫자) 표시
-                                            | ToastPushNotificationOptionSound  // 알림음 사용
-                                            | ToastPushNotificationOptionAlert; // 앱 실행중 알림 노출
-```
-## 토큰 등록
-
-* 발급받은 토큰 정보를 토스트 클라우드 서버에 등록합니다.
-* 최초 실행일 경우 사용자에게 알림 허용 권환을 요청합니다. 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
-* 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
-
-### 토큰 등록 API 명세
-
-``` objc
-// 토큰 등록
-+ (void)registerWithAgreement:(ToastPushAgreement *)agreement
-            completionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
-
-// 토큰 등록 및 알림 옵션 설정
-+ (void)registerWithAgreement:(ToastPushAgreement *)agreement
-                      options:(ToastPushNotificationOptions)options
-            completionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler
-
-// 이전 동의정보를 사용하여 토큰 등록
-+ (void)registerWithCompletionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
-
-// 이전 동의정보를 사용하여 토큰 등록 및 알림 옵션 설정
-+ (void)registerWithOptions:(ToastPushNotificationOptions)options
-          completionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
-```
-
-### 토큰 등록 예
-
-``` objc
 [ToastPush registerWithAgreement:agreement
-                         options:options
                completionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
 
     if (error == nil) {
@@ -663,10 +636,31 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 // Sandbox(Debug) 환경 설정
 @property (nonatomic) BOOL sandbox;
 
+// 알림 옵션
+@property (nonatomic, copy, nullable) ToastNotificationOptions *notificationOptions;
+
 
 + (instancetype)configurationWithAppKey:(NSString *)appKey;
 
 - (instancetype)initWithAppKey:(NSString *)appKey;
+
+@end
+```
+
+### ToastNotificationOptions
+* TOAST Push를 초기화할 때 전달되는 알림 설정 정보입니다.
+
+``` objc
+@interface ToastNotificationOptions : NSObject
+
+// 앱 실행 중 알림 노출 여부
+@property (nonatomic) BOOL foregroundEnabled;
+
+// 배지 아이콘 사용 여부
+@property (nonatomic) BOOL badgeEnabled;
+
+// 알림음 사용 여부
+@property (nonatomic) BOOL soundEnabled;
 
 @end
 ```
