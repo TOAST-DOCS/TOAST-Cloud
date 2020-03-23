@@ -1,14 +1,14 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > iOS
 
 ## 0.23.0 (2020.03.24)
+### TOAST Logger 
+#### 개선 사항
+* CrashReport CallStack에 잘못된 문자열이 포함될 수 있는 문제 수정
+
 ### TOAST Push
 #### 추가 사항
 * 알림 옵션 설정 기능 추가
     * 초기화시에 포그라운드 알림 노출, 배지 아이콘 사용, 알림음 사용 여부에 대한 설정이 가능합니다.
-
-### TOAST Logger 
-#### 개선 사항
-* CrashReport CallStack에 잘못된 문자열이 포함될 수 있는 문제 수정
 
 ## 0.22.1 (2020.02.25)
 ### TOAST Push
