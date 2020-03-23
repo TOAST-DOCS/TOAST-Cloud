@@ -9,14 +9,15 @@
 
 ## 지원 플랫폼
 
-* iOS
-* Android
-* Standalone
-* WebGL
+- iOS
+- Android
+- Standalone
+- WebGL
 
 ## Android 설정
 
 ### Gradle 빌드 설정
+
 - Unity Editor에서, Build Settings 창을 엽니다. (Player Settings > Publishing Settings > Build).
 - Build System 목록에서 Gradle을 선택합니다.
 - Build System 하위의 체크 박스를 선택하여 Custom Gralde Template을 사용합니다.
@@ -35,31 +36,37 @@ dependencies {
 
 ### Player Settings 설정
 
-* Unity 의 iOS 빌드 설정에는 Logger 가 서버로 로그를 전송하는데 영향을 주는 몇가지 설정들이 있습니다.
-* 이 설정들의 효과를 간략히 설명하고 Logger 의 권장 설정에 대해 설명합니다.
+- Unity 의 iOS 빌드 설정에는 Logger 가 서버로 로그를 전송하는데 영향을 주는 몇가지 설정들이 있습니다.
+- 이 설정들의 효과를 간략히 설명하고 Logger 의 권장 설정에 대해 설명합니다.
 
-| 메뉴 | 목록 | 설정 | 권장 설정 |
-| --- | --- | --- | ----- |
-| Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit |
-| Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API | Disabled |
-| Edit > Project Settings > Player | Other Settings | Script Call Optimization | Slow and Safe |
+| 메뉴                             | 목록                          | 설정                       | 권장 설정     |
+| -------------------------------- | ----------------------------- | -------------------------- | ------------- |
+| Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit   |
+| Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API     | Disabled      |
+| Edit > Project Settings > Player | Other Settings                | Script Call Optimization   | Slow and Safe |
 
 ##### On .Net UnhandledException
 
-* **Silent Exit** 값을 권장합니다.
-    * On .Net UnhandledException를 Crash로 설정할 경우 예외 발생 시, 즉시 앱이 종료됩니다. 
-    * Silent Exit로 설정해야 Unity Exception을 캡처할 수 있습니다.
+- **Silent Exit** 값을 권장합니다.
+  - On .Net UnhandledException를 Crash로 설정할 경우 예외 발생 시, 즉시 앱이 종료됩니다.
+  - Silent Exit로 설정해야 Unity Exception을 캡처할 수 있습니다.
 
 ##### Enable CrashReport API
 
-* **Disabled** 값을 권장합니다.
-    * Unity CrashReporter API 활성화 여부를 표현하는 값입니다. 
-    * 활성화 되어있으면 Logger 의 크래시 로그 수집에 영향을 줄 수 있습니다.
+- **Disabled** 값을 권장합니다.
+  - Unity CrashReporter API 활성화 여부를 표현하는 값입니다.
+  - 활성화 되어있으면 Logger 의 크래시 로그 수집에 영향을 줄 수 있습니다.
 
 ##### Script Call Optimization
 
-* **Slow and Safe** 값을 권장합니다.
-    * Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
+- **Slow and Safe** 값을 권장합니다.
+  - Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
+
+## TOAST Logger 네임스페이스
+
+```csharp
+using Toast.Logger;
+```
 
 ## TOAST Logger SDK 초기화
 
@@ -76,7 +83,7 @@ ToastLogger.Initialize(loggerConfiguration);
 
 ## 로그 전송하기
 
-TOAST Logger는 5가지 레벨의 로그를 전송할 수 있습니다. 
+TOAST Logger는 5가지 레벨의 로그를 전송할 수 있습니다.
 사용자 필드를 추가해서 보낼 수도 있습니다.
 
 ### 로그 전송 API 명세
@@ -114,28 +121,32 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 
 ## 사용자 정의 필드 설정하기
 
-원하는 사용자 정의 필드를 설정합니다. 
+원하는 사용자 정의 필드를 설정합니다.
 사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
 
 ### 사용자 정의 필드 설정 API 명세
+
 ```csharp
 ToastLogger.SetUserField(userField, userValue);
 ```
 
-* 사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다. 
-* 동일한 키에 대해 값을 여러 번 변경하면, 최종으로 변경한 값이 적용됩니다.
+- 사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.
+- 동일한 키에 대해 값을 여러 번 변경하면, 최종으로 변경한 값이 적용됩니다.
 
 #### 커스텀 필드 제약사항
-* 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.
-* 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
-* 필드명 내에 공백은 "\_" 로 치환됩니다.
+
+- 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.
+- 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, \_" 문자를 사용할 수 있습니다.
+- 필드명 내에 공백은 "\_" 로 치환됩니다.
 
 ### 사용자 정의 필드 설정 API 사용 예
+
 ```csharp
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
 
 ## 로그 전송 후 추가작업 진행하기
+
 - 리스너를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습니다.
 
 ### SetLoggerListener API 명세
@@ -211,6 +222,7 @@ var loggerConfiguration = new ToastLoggerConfiguration
 > User ID 설정은 [시작하기](./getting-started-unity/#userid)에서 확인 가능합니다.
 
 ## 크래시 로그 전송 후 추가작업 진행하기
+
 - 크래시 리스너를 등록하면 크래시 로그 전송 후 추가 작업을 진행할 수 있습니다.
 
 > **유니티에서 예기치 못한 예외가 발생했을 경우에만 동작합니다.**
@@ -229,7 +241,7 @@ public static void SetCrashListener(CrashListener listener);
 ```csharp
 ToastLogger.SetCrashListener((isSuccess, log) =>
 {
-    if (isSuccess) 
+    if (isSuccess)
     {
         Application.Quit();
     }
@@ -237,11 +249,13 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 ```
 
 ## 크래시 로그 필터링하기
+
 - 유니티를 이용하다보면 수집을 원하지 않는 예외 로그 혹은 크래시 로그들이 수집될 수 있습니다.
 - TOAST Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
-    - 해당 기능은 유니티 예외에 한정된 기능입니다.
+  - 해당 기능은 유니티 예외에 한정된 기능입니다.
 
 ### AddCrashFilter API 명세
+
 ```csharp
 public delegate bool CrashFilter(CrashLogData logData);
 
@@ -268,7 +282,7 @@ ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("Unit
 ## Handled Exception 전송하기
 
 TOAST Logger는 일반/크래시 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
-이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 "Handled"로 필터링하여 조회할 수 있습니다. 
+이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 "Handled"로 필터링하여 조회할 수 있습니다.
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
 ### Handled Exception Log API 명세
@@ -293,6 +307,7 @@ try
 ```
 
 ## Network Insights
+
 Network Insights는 콘솔에 등록한 URL을 호출하여 지연시간 및 응답 값을 측정합니다. 이를 활용하여 세계 여러 나라(디바이스의 국가 코드 기준)에서의 지연시간과 응답 값을 측정할 수 있습니다.
 
 > 콘솔을 통해 Network Insights 기능을 활성화하면 TOAST Logger 초기화 시에, 콘솔에 등록한 URL로 1회 요청합니다.
