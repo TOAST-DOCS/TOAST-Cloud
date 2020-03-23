@@ -12,6 +12,7 @@ Android용 TOAST SDK의 구성은 다음과 같습니다.
 * TOAST Common SDK
 * TOAST Core SDK
 * [TOAST Logger](./log-collector-android) SDK
+* [TOAST Native Crash Reporter](./log-collector-ndk) SDK
 * TOAST In-app Purchase Core SDK
 * [TOAST In-app Purchase Google Play Store](./iap-android) SDK
 * [TOAST In-app Purchase OneStore](./iap-android) SDK
@@ -22,15 +23,16 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.toast.android:toast-common:0.20.3       | TOAST Common      |
-| com.toast.android:toast-core:0.20.3         | TOAST Core        |
-| com.toast.android:toast-logger:0.20.3       | TOAST Log & Crash |
-| com.toast.android:toast-iap-core:0.20.3     | TOAST In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.20.3   | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.20.3 | TOAST In-app Purchase <br>OneStore |
-| com.toast.android:toast-push-core:0.20.3    | TOAST Push Core   |
-| com.toast.android:toast-push-fcm:0.20.3    | TOAST Push <br>Firebase Cloud Messaging |
-| com.toast.android:toast-push-tencent:0.20.3    | TOAST Push <br>Tencent Push Notification |
+| com.toast.android:toast-common:0.21.0       | TOAST Common      |
+| com.toast.android:toast-core:0.21.0         | TOAST Core        |
+| com.toast.android:toast-logger:0.21.0       | TOAST Log & Crash |
+| com.toast.android:toast-crash-reporter-ndk:0.21.0       | TOAST Native Crash Reporter |
+| com.toast.android:toast-iap-core:0.21.0     | TOAST In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.21.0   | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.21.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-push-core:0.21.0    | TOAST Push Core   |
+| com.toast.android:toast-push-fcm:0.21.0    | TOAST Push <br>Firebase Cloud Messaging |
+| com.toast.android:toast-push-tencent:0.21.0    | TOAST Push <br>Tencent Push Notification |
 
 ## TOAST SDK를 Android Studio 프로젝트에 적용
 
@@ -43,13 +45,14 @@ TOAST SDK의 모든 서비스를 사용하려면 아래와 같이 종속성(depe
 
 ```groovy
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.20.3'
+  implementation 'com.toast.android:toast-sdk:0.21.0'
 }
 ```
 
 TOAST SDK가 제공하는 상품별 설정 방법은 다음과 같습니다.
 
 - [TOAST Logger 라이브러리 설정](./log-collector-android/#_1)
+- [TOAST Native Crash Reporter 라이브러리 설정](./log-collector-ndk/#_1)
 - [TOAST In-app Purchase 라이브러리 설정](./iap-android/#_2)
 - [TOAST Push 라이브러리 설정](./push-android/#_2)
 
@@ -127,5 +130,6 @@ ToastSdk.setDebugMode(false);
 ## TOAST 서비스 사용
 
 * [TOAST Log & Crash](./log-collector-android) 사용 가이드
+* [TOAST Native Crash Reporter](./log-collector-ndk) 사용 가이드
 * [TOAST In-app Purchase](./iap-android) 사용 가이드
 * [TOAST Push](./push-android) 사용 가이드

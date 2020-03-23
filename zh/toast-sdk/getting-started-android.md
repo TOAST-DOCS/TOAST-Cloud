@@ -12,6 +12,7 @@ TOAST SDK for Android is configured as follows:
 * TOAST Common SDK
 * TOAST Core SDK
 * [TOAST Logger](./log-collector-android) SDK
+* [TOAST Native Crash Reporter](./log-collector-ndk) SDK
 * TOAST In-app Purchase Core SDK
 * [TOAST In-app Purchase Google Play Store](./iap-android) SDK
 * [TOAST In-app Purchase OneStore](./iap-android) SDK
@@ -22,15 +23,16 @@ TOAST SDK services can be selectively applied for your needs.
 
 | Gradle Dependency | Service |
 | --- | --- |
-| com.toast.android:toast-common:0.20.3       | TOAST Common      |
-| com.toast.android:toast-core:0.20.3         | TOAST Core        |
-| com.toast.android:toast-logger:0.20.3       | TOAST Log & Crash |
-| com.toast.android:toast-iap-core:0.20.3     | TOAST In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.20.3   | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.20.3 | TOAST In-app Purchase <br>OneStore |
-| com.toast.android:toast-push-core:0.20.3    | TOAST Push Core   |
-| com.toast.android:toast-push-fcm:0.20.3    | TOAST Push <br>Firebase Cloud Messaging |
-| com.toast.android:toast-push-tencent:0.20.3    | TOAST Push <br>Tencent Push Notification |
+| com.toast.android:toast-common:0.21.0       | TOAST Common      |
+| com.toast.android:toast-core:0.21.0         | TOAST Core        |
+| com.toast.android:toast-logger:0.21.0       | TOAST Log & Crash |
+| com.toast.android:toast-crash-reporter-ndk:0.21.0       | TOAST Native Crash Reporter |
+| com.toast.android:toast-iap-core:0.21.0     | TOAST In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.21.0   | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.21.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-push-core:0.21.0    | TOAST Push Core   |
+| com.toast.android:toast-push-fcm:0.21.0    | TOAST Push <br>Firebase Cloud Messaging |
+| com.toast.android:toast-push-tencent:0.21.0    | TOAST Push <br>Tencent Push Notification |
 
 ## Apply TOAST SDK to Android Studio Projects
 
@@ -43,13 +45,14 @@ Set dependency as below, to use all TOAST SDK services.
 
 ```groovy
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.20.3'
+  implementation 'com.toast.android:toast-sdk:0.21.0'
 }
 ```
 
 Following describe how to set for each product of TOAST SDK.
 
 - [Setting Library of TOAST Logger](./log-collector-android/#_1)
+- [Setting Library of TOAST Native Crash Reporter](./log-collector-ndk/#_1)
 - [Setting Library of TOAST In-app Purchase](./iap-android/#_2)
 - [Setting Library of TOAST Push](./push-android/#_2)
 
@@ -127,5 +130,6 @@ ToastSdk.setDebugMode(false);
 ## Use TOAST Service
 
 * User Guide for [TOAST Log & Crash](./log-collector-android)
+* User Guide for [TOAST Native Crash Reporter](./log-collector-ndk)
 * User Guide for [TOAST In-app Purchase](./iap-android)
 * User Guide for [TOAST Push](./push-android)
