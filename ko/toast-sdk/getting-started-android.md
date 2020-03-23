@@ -12,7 +12,7 @@ Android용 TOAST SDK의 구성은 다음과 같습니다.
 * TOAST Common SDK
 * TOAST Core SDK
 * [TOAST Logger](./log-collector-android) SDK
-* [TOAST NDK Crash Reporter](./log-collector-ndk) SDK
+* [TOAST Native Crash Reporter](./log-collector-ndk) SDK
 * TOAST In-app Purchase Core SDK
 * [TOAST In-app Purchase Google Play Store](./iap-android) SDK
 * [TOAST In-app Purchase OneStore](./iap-android) SDK
@@ -26,7 +26,7 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 | com.toast.android:toast-common:0.21.0       | TOAST Common      |
 | com.toast.android:toast-core:0.21.0         | TOAST Core        |
 | com.toast.android:toast-logger:0.21.0       | TOAST Log & Crash |
-| com.toast.android:toast-crash-reporter-ndk:0.21.0       | TOAST NDK Crash Reporter |
+| com.toast.android:toast-crash-reporter-ndk:0.21.0       | TOAST Native Crash Reporter |
 | com.toast.android:toast-iap-core:0.21.0     | TOAST In-app Purchase Core |
 | com.toast.android:toast-iap-google:0.21.0   | TOAST In-app Purchase <br>Google Play Store |
 | com.toast.android:toast-iap-onestore:0.21.0 | TOAST In-app Purchase <br>OneStore |
@@ -52,7 +52,7 @@ dependencies {
 TOAST SDK가 제공하는 상품별 설정 방법은 다음과 같습니다.
 
 - [TOAST Logger 라이브러리 설정](./log-collector-android/#_1)
-- [TOAST NDK Crash Reporter 라이브러리 설정](./log-collector-ndk/#_1)
+- [TOAST Native Crash Reporter 라이브러리 설정](./log-collector-ndk/#_1)
 - [TOAST In-app Purchase 라이브러리 설정](./iap-android/#_2)
 - [TOAST Push 라이브러리 설정](./push-android/#_2)
 
@@ -130,6 +130,6 @@ ToastSdk.setDebugMode(false);
 ## TOAST 서비스 사용
 
 * [TOAST Log & Crash](./log-collector-android) 사용 가이드
-* [TOAST NDK Crash Reporter](./log-collector-ndk) 사용 가이드
+* [TOAST Native Crash Reporter](./log-collector-ndk) 사용 가이드
 * [TOAST In-app Purchase](./iap-android) 사용 가이드
 * [TOAST Push](./push-android) 사용 가이드
