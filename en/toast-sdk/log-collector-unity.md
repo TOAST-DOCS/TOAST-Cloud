@@ -9,14 +9,15 @@
 
 ## 지원 플랫폼
 
-* iOS
-* Android
-* Standalone
-* WebGL
+- iOS
+- Android
+- Standalone
+- WebGL
 
 ## For Android
 
 ### Gradle Build Settings
+
 - In the Unity Editor, open the Build Settings windows (Player Settings > Publishing Settings > Build).
 - Set the Build System drop-down to Gradle
 - Use the Custom Gradle Template checkbocx unbder Build System
@@ -35,31 +36,37 @@ dependencies {
 
 ### Player Settings
 
-* Unity's iOS build setting includes some settings that influence logger's log delivery to a server.
-* Below briefly shows effects of such settings and describes recommended settings for a logger.  
+- Unity's iOS build setting includes some settings that influence logger's log delivery to a server.
+- Below briefly shows effects of such settings and describes recommended settings for a logger.
 
-| Menu | List | Setting | Recommended Setting |
-| --- | --- | --- | ----- |
-| Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit |
-| Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API | Disabled |
-| Edit > Project Settings > Player | Other Settings | Script Call Optimization | Slow and Safe |
+| Menu                             | List                          | Setting                    | Recommended Setting |
+| -------------------------------- | ----------------------------- | -------------------------- | ------------------- |
+| Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit         |
+| Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API     | Disabled            |
+| Edit > Project Settings > Player | Other Settings                | Script Call Optimization   | Slow and Safe       |
 
 #### On .Net UnhandledException
 
-* **Silent Exit** is recommended.
-    * If On .Net UnhandledException is set for Crash, app is closed immediately when an exception occurs.
-    * With Silent Exit, Unity Exception can be captured.
+- **Silent Exit** is recommended.
+  - If On .Net UnhandledException is set for Crash, app is closed immediately when an exception occurs.
+  - With Silent Exit, Unity Exception can be captured.
 
 #### Enable CrashReport API
 
-* **Disabled** is recommended.
-    * Shows whether Unity CrashReporter API is enabled or not.
-    * When enabled, it may affect logger's crash log collection.
+- **Disabled** is recommended.
+  - Shows whether Unity CrashReporter API is enabled or not.
+  - When enabled, it may affect logger's crash log collection.
 
 #### Script Call Optimization
 
-* **Slow and Safe** is recommended.
-    * To collect Runtime C# Crash logs, Slow and Safe must be enabled.  
+- **Slow and Safe** is recommended.
+  - To collect Runtime C# Crash logs, Slow and Safe must be enabled.
+
+## TOAST Logger namespace
+
+```csharp
+using Toast.Logger;
+```
 
 ## Initialize TOAST Logger SDK
 
@@ -118,25 +125,29 @@ Set a user-defined field as wanted.
 With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called.
 
 ### Specifications for User-Defined Field Setting API
+
 ```csharp
 ToastLogger.SetUserField(userField, userValue);
 ```
 
-*  User-defined field is same as the value exposed as "Selected Field" in "Log & Crash Search Console" > "Log Search Tab".
-    That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
-*  If a key is changed for many times, the final value shall be applied.  
+- User-defined field is same as the value exposed as "Selected Field" in "Log & Crash Search Console" > "Log Search Tab".
+  That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
+- If a key is changed for many times, the final value shall be applied.
 
 #### Restrictions of User-Defined Fields
-* Cannot use already [Reserved Fields](./log-collector-reserved-fields). Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
-* Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z".
-* Replace spaces within a field name by "_".
+
+- Cannot use already [Reserved Fields](./log-collector-reserved-fields). Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
+- Use characters from "A-Z, a-z, 0-9, -, and \_" for a field name, starting with "A-Z, or a-z".
+- Replace spaces within a field name by "\_".
 
 ### Usage Example of User-Defined Field Setting API
+
 ```csharp
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
 
 ## Further Tasks after Sending Logs
+
 - With listener registered, further tasks can be executed after logs are sent.
 
 ### Specifications for SetLoggerListener API
@@ -165,7 +176,7 @@ public class SampleLoggerListener : IToastLoggerListener
 
     public void OnFilter(LogEntry log, LogFilter filter)
     {
-        // Filter by filter setting  
+        // Filter by filter setting
     }
 
     public void OnSave(LogEntry log)
@@ -208,6 +219,7 @@ var loggerConfiguration = new ToastLoggerConfiguration
 > User ID setting can be checked in [Getting Started](./getting-started-unity/#set-userid).
 
 ## Further Tasks after Sending Crash logs
+
 - With crash listener registered, further tasks can be executed after crash logs are sent.
 
 > ** Crash listener only works when it occurs unexpected exception in Unity **
@@ -233,10 +245,9 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 });
 ```
 
-
 ## Send Handled Exceptions
 
-Exceptions from a try/catch sentence, as well as general/crash logs, can be sent by using  Report API of TOAST Logger.
+Exceptions from a try/catch sentence, as well as general/crash logs, can be sent by using Report API of TOAST Logger.
 Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
 For more usage details on Log & Crash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
 
@@ -262,6 +273,7 @@ try
 ```
 
 ## Network Insights
+
 Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response values of many countries around the world (according to national codes on a device).
 
 > With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized.
