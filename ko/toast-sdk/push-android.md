@@ -405,7 +405,8 @@ public class MyApplication extends Application {
 
 ### 알림 기본 옵션 설정
 * 알림의 우선 순위, 작은 아이콘, 배경색, LED 라이트, 진동, 알림음을 설정합니다.
-* 앱 실행 중 알림 노출, 배지 아이콘 사용 여부를 설정합니다.
+* 앱이 포그라운드 상태일 때의 알림 노출 여부를 설정합니다.
+* 배지 아이콘의 사용 여부를 설정합니다.
 * 안드로이드 8.0(API 레벨 26) 이상 단말기에서는 기본 알림 채널에만 옵션이 적용 됩니다.
 * `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
 
@@ -424,7 +425,7 @@ public class MyApplication extends Application {
                 .setSmallIcon(R.drawable.ic_notification)       // 작은 아이콘 설정
                 .setSound(R.raw.dingdong1)                      // 알림음 설정
                 .setVibratePattern(new long[] {500, 700, 1000}) // 진동 패턴 설정
-                .enableForeground(true)                         // 앱 실행 중 알림 노출 설정
+                .enableForeground(true)                         // 포그라운드 알림 노출 설정
                 .enableBadge(true)                              // 배지 아이콘 사용 설정
                 .build();
 
