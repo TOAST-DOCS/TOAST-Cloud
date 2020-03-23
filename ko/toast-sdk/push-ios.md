@@ -157,7 +157,7 @@ end
     configuration.sandbox = YES;
 #endif
 
-    // 앱이 실행 중인 상태에서도 알림을 받기 원하시면 알림 옵션 객체를 생성합니다.
+    // 앱이 실행 중인 상태에서도 알림을 받기 원하시면 ToastNotificationOptions 객체로 알림 옵션을 설정합니다.
     ToastNotificationOptions *options = [[ToastNotificationOptions alloc] init];
     options.foregroundEnabled = YES;
     
