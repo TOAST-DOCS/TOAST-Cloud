@@ -200,27 +200,26 @@ public void onLogin(String userId) {
 }
 ```
 
-## 수신 동의 설정
-* 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
-    * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
-    * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 TOAST Push 서버로 전송합니다.
-
-### 수신 동의 설정 예시
-```java
-ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 알림 메시지 수신 동의
-        .setAllowAdvertisements(true)       // 홍보성 알림 메시지 수신 동의
-        .setAllowNightAdvertisements(true)  // 야간 홍보성 아림 메시지 수신 동의
-        .build();
-```
-
 ## 토큰 등록
 * ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 TOAST Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 * 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
 
-### 토큰 등록 예시
+### 수신 동의 설정
+* 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
+    * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
+    * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 TOAST Push 서버로 전송합니다.
+
+### 토큰 등록 및 수신 동의 설정 예시
 ```java
+// 수신 동의 설정 객체 생성
+ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 알림 메시지 수신 동의
+        .setAllowAdvertisements(true)       // 홍보성 알림 메시지 수신 동의
+        .setAllowNightAdvertisements(true)  // 야간 홍보성 아림 메시지 수신 동의
+        .build();
+
+// 토큰 등록 및 수신 동의 설정
 ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
     @Override
     public void onRegister(@NonNull PushResult result,
@@ -406,6 +405,7 @@ public class MyApplication extends Application {
 
 ### 알림 기본 옵션 설정
 * 알림의 우선 순위, 작은 아이콘, 배경색, LED 라이트, 진동, 알림음을 설정합니다.
+* 앱 실행 중 알림 노출, 배지 아이콘 사용 여부를 설정합니다.
 * 안드로이드 8.0(API 레벨 26) 이상 단말기에서는 기본 알림 채널에만 옵션이 적용 됩니다.
 * `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
 
@@ -424,6 +424,8 @@ public class MyApplication extends Application {
                 .setSmallIcon(R.drawable.ic_notification)       // 작은 아이콘 설정
                 .setSound(R.raw.dingdong1)                      // 알림음 설정
                 .setVibratePattern(new long[] {500, 700, 1000}) // 진동 패턴 설정
+                .enableForeground(true)                         // 앱 실행 중 알림 노출 설정
+                .enableBadge(true)                              // 배지 아이콘 사용 설정
                 .build();
 
         ToastNotification.setDefaultOptions(context, defaultOptions);
@@ -457,6 +459,12 @@ public class MyApplication extends Application {
 <!-- 진동 패턴 -->
 <meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern" 
            android:resource="@array/default_vibrate_pattern"/>
+<!-- 배지 아이콘 사용 -->
+<meta-data android:name="com.toast.sdk.push.notification.badge_enabled" 
+           android:value="true"/>
+<!-- 앱 실행 중 알림 노출 -->
+<meta-data android:name="com.toast.sdk.push.notification.foreground_enabled" 
+           android:value="false"/>
 ```
 
 ### 알림음 설정
