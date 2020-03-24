@@ -2,9 +2,9 @@
 
 Android 앱에 네이티브 라이브러리가 포함되어 있는 경우 간단한 빌드 설정으로 네이티브 코드에 대한 전체 스택 추적과 상세한 오류 보고서를 사용할 수 있습니다.
 
-* TOAST Crash Reporter for NDK는 `TOAST 0.21.0 이상`에서 사용할 수 있습니다.
+* TOAST Crash Reporter for NDK는 **TOAST 0.21.0 이상**에서 사용할 수 있습니다.
 * TOAST Crash Reporter for NDK는 TOAST Logger 를 통해 크래시 로그를 전송합니다.
-* TOAST Logger와 TOAST Crash Reporter for NDK 라이브러리는 `동일한 버전을 사용하는 것을 권장`합니다.
+* TOAST Logger와 TOAST Crash Reporter for NDK 라이브러리는 **동일한 버전을 사용하는 것을 권장**합니다.
 * TOAST Crash Reporter for NDK는 TOAST Logger 초기화 시에 크래시 감지를 시작합니다.
 * TOAST Crash Reporter for NDK를 사용하기 위해서는 **r17c이상의 NDK**가 필요합니다.
 
