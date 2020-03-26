@@ -2,7 +2,7 @@
 
 ## 0.20.0 (2020.03.26)
 
-## plugin version
+### plugin version
 
 - Android : 0.21.0
 - iOS : 0.23.0
