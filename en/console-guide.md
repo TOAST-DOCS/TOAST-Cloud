@@ -24,9 +24,7 @@ Organization refers to a group which is made to efficiently use and manage TOAST
 In an organization, same service policy can be shared with users.
 It helps to make use of TOAST Service more efficiently.  
 
-### Organization Management Policy
-
-#### Create Organizations
+### Create Organizations
 
 - An organization should be created to use TOAST Service.
 - Both personal and business members can create organizations.
@@ -35,7 +33,7 @@ It helps to make use of TOAST Service more efficiently.
 - Organization is in charge of its name and domain information.
 - Domain information of an organization must be unique, as it is required for services.
 
-#### Organization Services
+### Organization Services
 
 After an organization is created, you can select services.
 Following services are available at the level of organization:
@@ -45,6 +43,86 @@ Following services are available at the level of organization:
 - Contact Center
 - IDC
 
+### Guide to Create Organizations
+
+![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
+
+1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
+2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
+3. Click **OK** and organization is completely created.
+4. You can find the organization name just created on top of the console menu
+5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
+
+
+### Delete Organizations
+
+- Only the OWNER can delete his organization.
+- All the services currently in use must be deleted first.
+- All information of an organization is to be deleted, along with the deletion of organization, and cannot be recovered.  
+
+
+## Manage Projects
+
+A project is created to use TOAST Service, after an organization is created.
+Enable project services to use a project.
+Use and charge services by the project.
+
+### Create Projects
+
+- To create a project, an organization is required.
+- A member who creates a project is entitled ADMIN of the project.
+- Enter the name and description to create a project.
+- Enable project services after a project is created.
+- When collaboration is required, add project members to share the project after it is created.
+
+### Project Services
+
+You can select services, once a project is created.
+Following services can be enabled by each project:
+
+- Compute
+- Storage
+- Network
+- Database
+- Security
+- Content Delivery
+- Dev Tool
+- Management
+- Game
+- Notification
+- Analytics
+- Application Service
+- Search
+- Mobile Service
+- Bill
+
+
+### Guide to Create Projects
+
+![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
+
+1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
+2. Enter **Project Name** and **Project Description**.
+3. Click **OK** to create a project.
+4. The project name shows on the console menu when the project is created.
+5. Click project setting to check project information.
+
+### Guide to Enable Project Service
+
+![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
+
+1. Click **Select Services**, after a project is created, to enable services you need
+2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
+3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
+
+### Delete Projects
+
+A project can be deleted if it has no available services.
+All its resources are deleted along with the deletion of a project, and cannot be recovered.
+You can immediately pay for all the resources that have used before deleting a project.
+However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
+
+## Manage Members
 #### Organization Members
 
 | Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
@@ -69,61 +147,6 @@ Each member of an organization has following roles:
 | Manage Projects      | Creat Projects                                    | O     | O     | O      |                | O          |
 | Manage Projects      | Delete Projects                                   | O     |       |        |                |            |
 
-
-#### Delete Organizations
-
-- Only the OWNER can delete his organization.
-- All the services currently in use must be deleted first.
-- All information of an organization is to be deleted, along with the deletion of organization, and cannot be recovered.  
-
-### Guide to Create Organizations
-
-![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
-
-1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
-2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
-3. Click **OK** and organization is completely created.
-4. You can find the organization name just created on top of the console menu
-5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
-
-
-## Manage Projects
-
-A project is created to use TOAST Service, after an organization is created.
-Enable project services to use a project.
-Use and charge services by the project.
-
-### Project Management Policy
-
-#### Create Projects
-
-- To create a project, an organization is required.
-- A member who creates a project is entitled ADMIN of the project.
-- Enter the name and description to create a project.
-- Enable project services after a project is created.
-- When collaboration is required, add project members to share the project after it is created.
-
-#### Project Services
-
-You can select services, once a project is created.
-Following services can be enabled by each project:
-
-- Compute
-- Storage
-- Network
-- Database
-- Security
-- Content Delivery
-- Dev Tool
-- Management
-- Game
-- Notification
-- Analytics
-- Application Service
-- Search
-- Mobile Service
-- Bill
-
 #### Project Members
 
 Project members are also members of TOAST.com. 
@@ -139,36 +162,10 @@ Each project member has the following roles:
 |                       | Disable Service                                 | O     |        |                 |
 | Status of Service Use | Status of Service Use                           | O     |        |  O              |
 | Manage Projects       | Delete Projects                                 | O     |        |                 |
-#### Delete Projects
-
-A project can be deleted if it has no available services.
-All its resources are deleted along with the deletion of a project, and cannot be recovered.
-You can immediately pay for all the resources that have used before deleting a project.
-However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
-
-### Guide to Create Projects
-
-![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
-
-1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
-2. Enter **Project Name** and **Project Description**.
-3. Click **OK** to create a project.
-4. The project name shows on the console menu when the project is created.
-5. Click project setting to check project information.
-
-### Guide to Enable Project Service
-
-![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
-
-1. Click **Select Services**, after a project is created, to enable services you need
-2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
-3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
 
 
 
 ## IAM Console 
-
-
 ### Security Setting for IAM Console Logins 
 To tighten console access security for IAM members, [Login Security Setting] is provided.  
 
