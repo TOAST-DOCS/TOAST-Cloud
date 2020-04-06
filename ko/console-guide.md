@@ -143,6 +143,18 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 | 멤버 권한      | \- 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리\)<br>\- 프로젝트 생성<br>\- 프로젝트 삭제 | \- 조직 서비스 이용 |
 | 콘솔 접근      | \- TOAST 콘솔(https://console.toast.com/) 접근 <br>\- TOAST> 회원 ID/PW로 로그인<br> | \- IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br> \- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br> \- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
+## IAM 콘솔 
+IAM 회원이 사용할 수 있는 콘솔입니다. 
+
+### IAM 콘솔 종류 
+- Cloud Console  
+- Workplace | ERP
+- Workplace | Gruopware
+- Workplace | Dooray! 
+- Mobile Contact
+- Online Contact
+- Omni Contact
+
 ### IAM 콘솔 로그인 보안 설정
 IAM 회원의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다. 
 
