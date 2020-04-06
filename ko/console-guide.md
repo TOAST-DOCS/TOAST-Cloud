@@ -244,15 +244,6 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 ## IAM 콘솔 
 IAM 회원이 사용할 수 있는 콘솔입니다. 
 
-### IAM 콘솔 종류 
-- Cloud Console  
-- Workplace | ERP
-- Workplace | Gruopware
-- Workplace | Dooray! 
-- Mobile Contact
-- Online Contact
-- Omni Contact
-
 ### IAM 콘솔 로그인 보안 설정
 IAM 회원의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다. 
 
