@@ -86,63 +86,6 @@ Each member of an organization has following roles:
 4. You can find the organization name just created on top of the console menu
 5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
 
-### Security Setting for IAM Console Logins 
-To tighten console access security for IAM members, [Login Security Setting] is provided.  
-
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
-
-1. Access Organization Setting of an organization to configure on a console. 
-2. Click [Login Security Setting] on the IAM console. 
-
-#### Two-factor Authentication 
-The two-factor authentication can be made a required setting.    
-
-- Service
-    - Common Settings
-    - Individual Settings for Each Service (e.g. User Console, Dooray, or ERP)
-- Two-factor Authentication 
-    - Not Configured: Login is available only by ID and password, without two-factor authentication.  
-    - Google OTP:  Enter ID and password, and enter One Time Password provided by Google OTP, to authenticate and log in. 
-    - Email: Enter ID and password, and click an authentication button delivered via email address, to authenticate and log in. 
-- Exclusion IP
-    - Not Configured
-    - Configured
-
-#### Security for Failed Logins 
-When it fails to log in for many consecutive times, you are allowed to log in after certain time. 
-
-- Service 
-    Security setting for failed logins can be differently applied for each service. Only common settings are provided. 
-- Security for Failed Logins 
-    - Not Configured: Login can be attempted forever even after it fails for many times. 
-    - Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
-
-#### Login Session 
-Depending on the setting of login session, login session may be maintained or automatically expired. 
-After login is expired, it is required to log in again to access console. 
-
-- Service 
-    Security setting for failed logins can be differently applied for each service. Only common settings are provided. 
-- Login Session Count
-    - Set the available number of simultaneous logins under same ID on many devices.   
-    - If the setting is for 1, no simultaneous login is allowed on other devices, like computers or smartphones. 
-        - e.g.) PC-  Login Maintained, Smart phones- Auto Logout 
-- Login Session Maintenance Time
-    - Configure time to maintain login session even without any actions, like a click. 
-    - It is automatically logged out, if there's no action, like a click, during configured time. 
-    - Consider the length in the setting, due to security issue. 
-
-
-#### IP ACL 
-Access to IAM console is available only in allowed IPs (or IP bandwidth)
-Dooray! Service allows the IP ACL setting on the console page of each service. 
-
-- Service
-    - Common Settings
-    - Individual Settings for Each Service (e.g. User Console, Dooray, or ERP)
-- IP ACL
-    - Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
-    - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
 
 ## Manage Projects
 
@@ -220,6 +163,69 @@ However, if it is deleted without paid, all charges up to the moment shall be au
 1. Click **Select Services**, after a project is created, to enable services you need
 2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
 3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
+
+
+
+## IAM Console 
+
+
+### Security Setting for IAM Console Logins 
+To tighten console access security for IAM members, [Login Security Setting] is provided.  
+
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
+
+1. Access Organization Setting of an organization to configure on a console. 
+2. Click [Login Security Setting] on the IAM console. 
+
+#### Two-factor Authentication 
+The two-factor authentication can be made a required setting.    
+
+- Service
+    - Common Settings
+    - Individual Settings for Each Service (e.g. User Console, Dooray, or ERP)
+- Two-factor Authentication 
+    - Not Configured: Login is available only by ID and password, without two-factor authentication.  
+    - Google OTP:  Enter ID and password, and enter One Time Password provided by Google OTP, to authenticate and log in. 
+    - Email: Enter ID and password, and click an authentication button delivered via email address, to authenticate and log in. 
+- Exclusion IP
+    - Not Configured
+    - Configured
+
+#### Security for Failed Logins 
+When it fails to log in for many consecutive times, you are allowed to log in after certain time. 
+
+- Service 
+    Security setting for failed logins can be differently applied for each service. Only common settings are provided. 
+- Security for Failed Logins 
+    - Not Configured: Login can be attempted forever even after it fails for many times. 
+    - Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
+
+#### Login Session 
+Depending on the setting of login session, login session may be maintained or automatically expired. 
+After login is expired, it is required to log in again to access console. 
+
+- Service 
+    Security setting for failed logins can be differently applied for each service. Only common settings are provided. 
+- Login Session Count
+    - Set the available number of simultaneous logins under same ID on many devices.   
+    - If the setting is for 1, no simultaneous login is allowed on other devices, like computers or smartphones. 
+        - e.g.) PC-  Login Maintained, Smart phones- Auto Logout 
+- Login Session Maintenance Time
+    - Configure time to maintain login session even without any actions, like a click. 
+    - It is automatically logged out, if there's no action, like a click, during configured time. 
+    - Consider the length in the setting, due to security issue. 
+
+
+#### IP ACL 
+Access to IAM console is available only in allowed IPs (or IP bandwidth)
+Dooray! Service allows the IP ACL setting on the console page of each service. 
+
+- Service
+    - Common Settings
+    - Individual Settings for Each Service (e.g. User Console, Dooray, or ERP)
+- IP ACL
+    - Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
+    - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
 
 ## Billing Management
 
