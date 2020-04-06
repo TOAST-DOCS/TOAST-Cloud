@@ -198,48 +198,48 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 #### 서비스 이용 권한 
 | 서비스 | 권한 | 설명 | 
 | --- | --- | --- | 
-| Infrastructure | Admin |  Infrastructure 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| DNS Plus | Admin | DNS Plus 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Object Storage | Admin | Object Storage 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Backup | Admin | Backup 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| RDS for MySQL | Admin | RDS for MySQL 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| EasyCache | Admin | EasyCache 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Gamebase | Admin | Gamebase 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Leaderboard | Admin | Leaderboard 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Launching  | Admin | Launching  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Smart Downloader | Admin | Smart Downloader 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| AppGuard  | Admin | AppGuard  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Security Check  | Admin | Security Check 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Security Monitoring  | Admin | Security Monitoring 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Basic Security  | Admin | Basic Security 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Mal-URL Detector  | Admin | Mal-URL Detector  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| CAPTCHA  | Admin | CAPTCHA   서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| OTP  | Admin | OTP 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| DBSafer  | Admin | DBSafer 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| WEB Firewall  | Admin | WEB Firewall  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Vaccine  | Admin | Vaccine 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Secure Key Manager  | Admin | Secure Key Manager 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| CDN   | Admin | CDN 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Image  | Admin | Image 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Push  | Admin | Push 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| SMS  | Admin | SMS 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Email  | Admin | Email 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| KakaoTalk Bizmessage  | Admin | KakaoTalk Bizmessage 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| IAP  | Admin | IAP 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Mobile Device Info  | Admin | Mobile Device Info 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Log & Crash Search  | Admin | Log & Crash Search  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Maps  | Admin | Maps 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| ROLE  | Admin | ROLE 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| API Gateway  | Admin | API Gateway  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| RTCS  | Admin | RTCS  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Cloud Search  | Admin | Cloud Search  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Autocomplete  | Admin | Autocomplete 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Corporation Search  | Admin | Corporation Search 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Address Search  | Admin | Address Search  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Deploy  | Admin | Deploy  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Managed  | Admin | Managed  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Service Monitoring  | Admin | Service Monitoring  서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
-| Certificate Manager  | Admin | Certificate Manager 서비스에 대한 Create(생성)/Read(읽기)/pdate(갱신)/delete(삭제) 권한 |
+| Infrastructure | Admin |  Infrastructure 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| DNS Plus | Admin | DNS Plus 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Object Storage | Admin | Object Storage 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Backup | Admin | Backup 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| RDS for MySQL | Admin | RDS for MySQL 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| EasyCache | Admin | EasyCache 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Gamebase | Admin | Gamebase 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Leaderboard | Admin | Leaderboard 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Launching  | Admin | Launching  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Smart Downloader | Admin | Smart Downloader 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| AppGuard  | Admin | AppGuard  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Security Check  | Admin | Security Check 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Security Monitoring  | Admin | Security Monitoring 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Basic Security  | Admin | Basic Security 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Mal-URL Detector  | Admin | Mal-URL Detector  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| CAPTCHA  | Admin | CAPTCHA   서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| OTP  | Admin | OTP 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| DBSafer  | Admin | DBSafer 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| WEB Firewall  | Admin | WEB Firewall  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Vaccine  | Admin | Vaccine 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Secure Key Manager  | Admin | Secure Key Manager 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| CDN   | Admin | CDN 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Image  | Admin | Image 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Push  | Admin | Push 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| SMS  | Admin | SMS 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Email  | Admin | Email 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| KakaoTalk Bizmessage  | Admin | KakaoTalk Bizmessage 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| IAP  | Admin | IAP 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Mobile Device Info  | Admin | Mobile Device Info 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Log & Crash Search  | Admin | Log & Crash Search  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Maps  | Admin | Maps 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| ROLE  | Admin | ROLE 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| API Gateway  | Admin | API Gateway  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| RTCS  | Admin | RTCS  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Cloud Search  | Admin | Cloud Search  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Autocomplete  | Admin | Autocomplete 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Corporation Search  | Admin | Corporation Search 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Address Search  | Admin | Address Search  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Deploy  | Admin | Deploy  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Managed  | Admin | Managed  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Service Monitoring  | Admin | Service Monitoring  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Certificate Manager  | Admin | Certificate Manager 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 
 ## IAM 콘솔 
 IAM 회원이 사용할 수 있는 콘솔입니다. 
