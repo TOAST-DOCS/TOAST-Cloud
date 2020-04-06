@@ -134,18 +134,19 @@ However, if it is deleted without paid, all charges up to the moment shall be au
 Each member of an organization has following roles:
 
 | Action               | Role                                              | Owner | Admin | Member | Billing Viewer | Log Viewer |
-| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---------- |
-| Manage Organizations | Create Organizations                              | O     |       |        |                |            |
-|                      | Modify Organizations                              | O     | O     |        |                |            |
-|                      | Delete Organizations                              | O     |       |        |                |            |
-| Manage Members       | Register Organization Members                     | O     | O     |        |                |            |
-|                      | Delete Organization Members                       | O     | O     |        |                |            |
-| Manage Services      | Enable Organization Services                      | O     | O     |        |                |            |
-|                      | Disable Organization Services                     | O     | O     |        |                |            |
-| Manage Payment       | Query Bills                                       | O     |       |        |                |            |
-|                      | Status of Service Use                             | O     | O     |        | O              |            |
-| Manage Projects      | Creat Projects                                    | O     | O     | O      |                | O          |
-| Manage Projects      | Delete Projects                                   | O     |       |        |                |            |
+| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---- |
+| Manage Organizations | Create Organizations                              | O     |       |        |                |      |
+|                      | Modify Organizations                              | O     | O     |        |                |      |
+|                      | Delete Organizations                              | O     |       |        |                |      |
+| Manage Members       | Register Organization Members                     | O     | O     |        |                |      |
+|                      | Delete Organization Members                       | O     | O     |        |                |      |
+| Manage Services      | Enable Organization Services                      | O     | O     |        |                |      |
+|                      | Disable Organization Services                     | O     | O     |        |                |      |
+| Manage Payment       | Query Bills                                       | O     |       |        |                |      |
+|                      | Status of Service Use                             | O     | O     |        | O              |      |
+| Manage Projects      | Creat Projects                                    | O     | O     | O      |                |      |
+| Manage Projects      | Delete Projects                                   | O     |       |        |                |      |
+| Manage User Action Log | Query User Action Logs                          |       |       |        |                |  O   |
 
 #### Project Members
 
