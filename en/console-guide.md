@@ -47,8 +47,6 @@ Following services are available at the level of organization:
 
 #### Organization Members
 
-
-
 | Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
 | :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Definition                    | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
@@ -91,57 +89,60 @@ Each member of an organization has following roles:
 ### Security Setting for IAM Console Logins 
 To tighten console access security for IAM members, [Login Security Setting] is provided.  
 
-Same configuration may be applied to all organizations (e.g. Cloud console, Online Contact, or Dooray!), or each service may be diffferently configured. 
-
-![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
 
 1. Access Organization Setting of an organization to configure on a console. 
 2. Click [Login Security Setting] on the IAM console. 
 
 #### Two-factor Authentication 
-
 The two-factor authentication can be made a required setting.    
 
-![iam_console_login_security_setting_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903_en.png)
-- Not Configured: Login is available only by ID and password, without two-factor authentication.  
-- Google OTP:  Enter ID and password, and enter One Time Password provided by Google OTP, to authenticate and log in. 
-- Email: Enter ID and password, and click an authentication button delivered via email address, to authenticate and log in. 
+- Service
+    - Common Settings
+    - Individual Settings for Each Service (e.g. User Console, Dooray, or ERP)
+- Two-factor Authentication 
+    - Not Configured: Login is available only by ID and password, without two-factor authentication.  
+    - Google OTP:  Enter ID and password, and enter One Time Password provided by Google OTP, to authenticate and log in. 
+    - Email: Enter ID and password, and click an authentication button delivered via email address, to authenticate and log in. 
+- Exclusion IP
+    - Not Configured
+    - Configured
 
 #### Security for Failed Logins 
-
 When it fails to log in for many consecutive times, you are allowed to log in after certain time. 
 
-Security setting for failed logins can be differently applied for each service. 
-Only common settings are provided. 
-
-![iam_console_login_security_setting_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903_en.png)
-- Not Configured: Login can be attempted forever even after it fails for many times. 
-- Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
+- Service 
+    Security setting for failed logins can be differently applied for each service. Only common settings are provided. 
+- Security for Failed Logins 
+    - Not Configured: Login can be attempted forever even after it fails for many times. 
+    - Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
 
 #### Login Session 
+Depending on the setting of login session, login session may be maintained or automatically expired. 
+After login is expired, it is required to log in again to access console. 
 
-![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_14_201911_en.png)
-
-- Depending on the setting of login session, login session may be maintained or automatically expired. 
-- After login is expired, it is required to log in again to access console. 
-- This common setting is to be applied across the IAM console. 
-- This common setting is to be applied across the IAM console. 
+- Service 
+    Security setting for failed logins can be differently applied for each service. Only common settings are provided. 
+- Login Session Count
     - Set the available number of simultaneous logins under same ID on many devices.   
     - If the setting is for 1, no simultaneous login is allowed on other devices, like computers or smartphones. 
         - e.g.) PC-  Login Maintained, Smart phones- Auto Logout 
-- Login time maintained in session
+- Login Session Maintenance Time
     - Configure time to maintain login session even without any actions, like a click. 
     - It is automatically logged out, if there's no action, like a click, during configured time. 
     - Consider the length in the setting, due to security issue. 
 
 
 #### IP ACL 
-
 Access to IAM console is available only in allowed IPs (or IP bandwidth)
+Dooray! Service allows the IP ACL setting on the console page of each service. 
 
-![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_13_201903_en.png)
-- Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
-- Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
+- Service
+    - Common Settings
+    - Individual Settings for Each Service (e.g. User Console, Dooray, or ERP)
+- IP ACL
+    - Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
+    - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
 
 ## Manage Projects
 
@@ -187,7 +188,7 @@ You can be a project member, if not an organization member.
 
 Each project member has the following roles:
 
-| Action                | Role                                            | ADMIN | MEMBER |  Billing Viewer |
+| Action                | Role                                            | ADMIN | MEMBER |  Billing Viewer | 
 | --------------------- | ----------------------------------------------- | ----- | ------ |  -------------- |
 | Manage Members        | Register Project Members                        | O     |        |                 |
 |                       | Delete Project Members                          | O     |        |                 |

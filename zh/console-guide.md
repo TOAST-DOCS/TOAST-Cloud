@@ -145,38 +145,41 @@ TOAST Console提供如下功能。
 ### IAM控制台登录安全设置
 为增强IAM会员的控制台访问安全，提供[登录安全设置]功能。 
 
-可对所有的组织服务（Cloud Console, Online Contact, Dooray! 等）进行相同的设置，也可按照各种服务类别进行不同的设置。 
-
 ![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
 
 1.访问要在控制台中设置的组织的组织设置页面。 
 2.单击IAM控制台的[登录安全设置]按钮。 
 
 #### 2次验证
-
 2次验证可设置为必须。
 
-![iam_console_login_security_setting_guide_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_201903_en.png)
-- 不设置：  不进行2次验证，仅输入ID和密码即可登录。 
-- Google OTP：  输入ID和密码，然后输入Google OTP应用提供的One Time Password（一次性密码）并通过验证后即可登录。  
-- 电子邮件：输入ID和密码后，单击发送到电子邮箱的验证按钮，通过验证后即可登录。 
+- 服务
+    - 通用设置
+    - 按服务（User Console、Dooray、ERP等）类别设置
+- 2次验证
+    - 不设置：  不进行2次验证，仅输入ID和密码即可登录。 
+    - Google OTP：  输入ID和密码，然后输入Google OTP应用提供的One Time Password（一次性密码）并通过验证后即可登录。  
+    - 电子邮件：输入ID和密码后，单击发送到电子邮箱的验证按钮，通过验证后即可登录。 
+- Exclusion IP
+    - 不设置
+    - 设置
 
 #### 登录失败安全
-
 可设置为若登录一直失败，等待一定时间后可再次登录。
 
-登录失败安全设置无法按服务类别进行不同的设置。仅提供通用设置功能。  
-
-![iam_console_login_security_setting_guide_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_11_201903_en.png)
-- 不设置：即使登录失败也可继续尝试登录。 
-- 设置：输入需要的失败次数和锁定时间，登录失败达到该次数时，在相应的锁定时间内无法尝试登录。 
+- 服务
+    - 登录失败安全设置无法按服务类别进行不同的设置。仅提供通用设置功能。  
+- 登录失败安全
+    - 不设置：即使登录失败也可继续尝试登录。 
+    - 设置：输入需要的失败次数和锁定时间，登录失败达到该次数时，在相应的锁定时间内无法尝试登录。 
 
 #### 登录会话
-![iam_console_login_security_setting_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_14_201911_en.png)
-- 根据登录会话设置，登录会话会保持或自动过期。
-- 登录过期后应重新登录方可访问控制台。
-- 该设置为通用设置，统一应用于IAM控制台。 
-- 该设置为通用设置，统一应用于IAM控制台。 
+根据登录会话设置，登录会话会保持或自动过期。
+登录过期后应重新登录方可访问控制台。
+
+- 服务
+    - 登录失败安全设置无法按服务类别进行不同的设置。仅提供通用设置功能。
+- 登录会话数
     - 设置可以在多个设备中以相同ID同时登录的个数。 
     - 设置为1个时，不可以相同ID同时登录PC、智能手机等其他设备。 
         - 例）PC- 保持登录，智能手机 - 自动退出
@@ -187,12 +190,14 @@ TOAST Console提供如下功能。
 
 
 #### IP ACL 
-
 仅允许使用的IP（或IP段）可访问IAM控制台。 
 
-![iam_console_login_security_setting_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_13_201903_en.png)
-- 不设置：所有IP（或IP段）都可访问IAM控制台。 
-- 仅允许使用的IP（或IP段）访问控制台：仅输入的IP（或IP段）可访问控制台。输入允许访问的IP或IP段即可。 
+- 服务
+    - 通用设置
+    - 按服务（User Console、Dooray、ERP等）类别设置
+- IP ACL
+    - 不设置：所有IP（或IP段）都可访问IAM控制台。 
+    - 仅允许使用的IP（或IP段）访问控制台：仅输入的IP（或IP段）可访问控制台。输入允许访问的IP或IP段即可。 
 
 
 ### 组织会员
