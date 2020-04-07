@@ -41,8 +41,8 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 조직이 생성되면, 서비스를 선택할 수 있습니다.
 조직 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
 
-- ERP
-- Dooray!
+- ERP 
+- Dooray! 
 - Contact Center
 - IDC
 - CloudTrail
@@ -181,7 +181,7 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 ### 프로젝트 멤버
 조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
 프로젝트 멤버에게 여러 개의 필요한 권한을 부여할 수 있습니다. 
-단, ADMIN 과 MEMBER는 모든 서비스를 이용할 수 있는 슈퍼 관리자(SUPER ADMIN)과 같은 권한으로 해당 권한 외 다른 권한은 부여할 수 없습니다.  
+단, ADMIN 과 MEMBER는 모든 서비스를 이용할 수 있는 슈퍼 관리자(SUPER ADMIN)과 같은 권한으로, 다른 권한과 함께 부여할 수 없습니다.  
 
 #### 프로젝트 관리 권한
 | 작업        | 역할                                     | ADMIN | MEMBER |  BILLING VIEWER | 
