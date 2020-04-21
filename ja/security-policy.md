@@ -38,19 +38,30 @@ TOASTは顧客の大切な資産とサービスを保護するために、DRDoS�
 | SSDP    | UDP / 1900  | Network ACL遮断適用 | 外部から接続不可 |
 | Memcached   | UDP / 11211 | Network ACL遮断適用 | 外部から接続不可 |
 
-### List of Blocked Internet Ports
+## インターネットポート遮断ポリシー(inbound)
+顧客サービス保護のため、顧客が直接管理できるセキュリティグループ(security group)機能のほか、侵入遮断システムを利用して重要サービスのポートにおいて接続を遮断しています。
 
-#### List of Blocked Internet Ports (TOAST)
-| Region |Service Name |  Blocked Port  | Blocking Method |Reference|
+### TOAST遮断ポートリスト
+|適用リージョン | サービス名 | 遮断ポート | 遮断方法 | 備考 |
 | ---- | ---- | ---- | ---- | ---- |
-| KOREA(Pangyo) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
+| 韓国(パンギョ) <br> 日本(東京) <br> 米国(カリフォルニア) | システムターミナルポート | TCP/23 | ネットワークACL遮断適用 | 外部から接続不可 |
 
-#### List of Blocked Internet Ports (TOAST G)
-|Service Name |  Blocked Port  | Blocking Method |Reference|
+### TOAST G遮断ポートリスト
+|サービス名 |  遮断ポート | 遮断方法 |備考|
 | ---- | ---- | ---- | ---- |
-| System Terminal port | TCP / 22, 23, 3389 | Network ACL | Inaccessible from outside | 
-| DBMS Port | TCP, UDP / 1433(MS-SQL), 1521(Oracle), 3306(MySQL) | Network ACL | Inaccessible from outside | 
-| Netbios Port | TCP, UDP / 135, 137, 138, 139, 445 | Network ACL | Inaccessible from outside | 
-| etc | TCP / 21(FTP), TCP / 5900(VNC) | Network ACL | Inaccessible from outside | 
+| システムターミナルポート | TCP/22, 23, 3389 | ネットワークACL遮断適用 | 外部から接続不可|
+| DBMSポート | TCP、UDP/1433(MS-SQL)、1521(Oracle)、3306(MySQL)  | ネットワークACL遮断適用 | 外部から接続不可|
+| Netbios関連ポート | TCP、UDP/135、137、138、139、445 | ネットワークACL遮断適用 | 外部から接続不可 |
+| その他 | TCP/21(FTP)、TCP / 5900(VNC) | ネットワークACL遮断適用 | 外部から接続不可 |
 
 ポート遮断ポリシーの詳細については、カスタマーセンターまでお問い合わせください。
+
+### 포트 추가/허용 신청 절차
+- 아래 엑셀 파일을 다운로드하여 작성합니다.
+
+[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOAST 방화벽 및 SSL VPN 정책 신청서_JP.xlsx)
+
+- 파일명 “TOAST 방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
+- 아래 대표 메일로 접수 신청 메일 발송합니다.(접수일 기준으로 3일 이내 처리 및 회신)
+    - TOAST : support@toast.com
+    - TOAST G : support@gov.toast.com
