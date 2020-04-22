@@ -41,8 +41,8 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 조직이 생성되면, 서비스를 선택할 수 있습니다.
 조직 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
 
-- ERP 
-- Dooray! 
+- ERP
+- Dooray!
 - Contact Center
 - IDC
 - CloudTrail
@@ -143,114 +143,15 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 | 멤버 권한      | \- 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리\)<br>\- 프로젝트 생성<br>\- 프로젝트 삭제 | \- 조직 서비스 이용 |
 | 콘솔 접근      | \- TOAST 콘솔(https://console.toast.com/) 접근 <br>\- TOAST> 회원 ID/PW로 로그인<br> | \- IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br> \- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br> \- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
-
-### 조직 멤버
-- 조직의 OWNER는 계정의 모든 권한 부여하고 서비스를 신청할 수 있습니다. 
-- OWNER는 회원을 등록하여 조직별 관리 권한을 부여할 수 있습니다.
-
-#### TOAST 회원의 조직 권한
-| 작업          | 역할                                | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| ------------- | ----------------------------------- | ----- | ----- | ------ | -------------- | -------- |
-| 조직 관리     | 조직 생성                           | O     |       |        |                |  |
-|               | 조직 수정                           | O     | O     |        |                |  |
-|               | 조직 삭제                           | O     |       |        |                |  |
-| 멤버 관리     | 조직 멤버 등록                      | O     | O     |        |                |  |
-|               | 조직 멤버 삭제                      | O     | O     |        |                |  |
-| 서비스 관리   | 조직 서비스 활성화                  | O     | O     |        |                |  |
-|               | 조직 서비스 비활성화                | O     | O     |        |                |  |
-| 결제 관리     | 청구서 조회                         | O     |       |        |                |  |
-|               | 이용 현황                           | O     | O     |        | O              |  |
-| 프로젝트 관리 | 프로젝트 생성                       | O     | O     | O      |                |  |
-|               | 프로젝트 삭제                      | O     | O     |        |                |  |
-|               | 프로젝트 삭제(생성한 프로젝트)      | O     | O     | O      |                |  |
-| 사용자 Action 로그 관리 | 사용자 Action 로그 조회            | O     | O     |       |                | O |
-
-#### IAM 회원의 조직 권한 
-- 조직 서비스 별(online contact, Dooray 등) 설정할 수 있는 권한이 다릅니다. 
-- IAM 회원이 이용하는 Cloud 콘솔에 대한 권한은 아래와 같습니다.
-    - MEMBER 권한은 원하는 경우에만 선택적으로 부여할 수 있습니다. 
-    - 권한이 없는 IAM 회원은 프로젝트 생성/삭제 및 서비스 활성화 등을 할 수 없습니다. 멤버로 등록된 프로젝트에 한해서 서비스를 이용할 수 있습니다. 
-
-| 작업          | 역할                                | MEMBER | 
-| ------------- | ----------------------------------- | ----- | 
-| 서비스 관리   | 프로젝트 서비스 활성화    | O     | 
-|               | 프로젝트 서비스 비활성화 | O     | 
-| 프로젝트 관리 | 프로젝트 생성             | O     | 
-|              | 프로젝트 삭제(생성한 프로젝트)  | O     | 
-
-### 프로젝트 멤버
-조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
-프로젝트 멤버에게 여러 개의 필요한 권한을 부여할 수 있습니다. 
-단, ADMIN 과 MEMBER는 모든 서비스를 이용할 수 있는 슈퍼 관리자(SUPER ADMIN)과 같은 권한으로, 다른 권한과 함께 부여할 수 없습니다.  
-
-#### 프로젝트 관리 권한
-| 작업        | 역할                                     | ADMIN | MEMBER |  BILLING VIEWER | 
-| ----------- | ---------------------------------------- | ----- | ------ | -------------------- | 
-| Member 관리 | 프로젝트 멤버 등록                              | O     |        |                   |               
-|             | 프로젝트 멤버 삭제                               | O     |        |                      |                  
-| 서비스 관리 | 서비스 활성화                            | O     |        |                      |                  
-|             | 서비스 이용                              | O     | O      |                      | 
-|             | 서비스 비활성화                          | O     |        |                      |            
-| 이용 현황   | 이용 현황                                | O     |       | O                    |             
-| 프로젝트 관리 | 프로젝트 삭제                           | O     |       |                      |                 
-|              | 프로젝트 삭제(생성한 프로젝트)            |      | O       |                     |  
-
-#### 서비스 이용 권한 
-| 서비스 | 권한 | 설명 | 
-| --- | --- | --- | 
-| Infrastructure | ADMIN |  Infrastructure 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| DNS Plus | ADMIN | DNS Plus 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Object Storage | ADMIN | Object Storage 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Backup | ADMIN | Backup 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| RDS for MySQL | ADMIN | RDS for MySQL 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| EasyCache | ADMIN | EasyCache 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Gamebase | ADMIN | Gamebase 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Leaderboard | ADMIN | Leaderboard 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Launching  | ADMIN | Launching  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Smart Downloader | ADMIN | Smart Downloader 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| AppGuard  | ADMIN | AppGuard  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Security Check  | ADMIN | Security Check 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Security Monitoring  | ADMIN | Security Monitoring 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Basic Security  | ADMIN | Basic Security 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Mal-URL Detector  | ADMIN | Mal-URL Detector  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| CAPTCHA  | ADMIN | CAPTCHA   서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| OTP  | ADMIN | OTP 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| DBSafer  | ADMIN | DBSafer 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| WEB Firewall  | ADMIN | WEB Firewall  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Vaccine  | ADMIN | Vaccine 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Secure Key Manager  | ADMIN | Secure Key Manager 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| CDN   | ADMIN | CDN 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Image  | ADMIN | Image 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Push  | ADMIN | Push 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| SMS  | ADMIN | SMS 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Email  | ADMIN | Email 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| KakaoTalk Bizmessage  | ADMIN | KakaoTalk Bizmessage 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| IAP  | ADMIN | IAP 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Mobile Device Info  | ADMIN | Mobile Device Info 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Log & Crash Search  | ADMIN | Log & Crash Search  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Maps  | ADMIN | Maps 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| ROLE  | ADMIN | ROLE 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| API Gateway  | ADMIN | API Gateway  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| RTCS  | ADMIN | RTCS  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Cloud Search  | ADMIN | Cloud Search  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Autocomplete  | ADMIN | Autocomplete 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Corporation Search  | ADMIN | Corporation Search 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Address Search  | ADMIN | Address Search  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Deploy  | ADMIN | Deploy  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Managed  | ADMIN | Managed  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Service Monitoring  | ADMIN | Service Monitoring  서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Certificate Manager  | ADMIN | Certificate Manager 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-
-## IAM 콘솔 
-IAM 회원이 사용할 수 있는 콘솔입니다. 
-
 ### IAM 콘솔 로그인 보안 설정
-IAM 회원의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다. 
+- IAM 회원의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다. 
+- 모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다. 
 
 ![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 설정 페이지에 접속합니다. 
 2. IAM 콘솔의 **로그인 보안 설정** 버튼을 클릭합니다. 
+
 
 #### 2차 인증 
 2차 인증을 필수로 설정하여 사용하게 할 수 있습니다.
@@ -301,6 +202,57 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
     - 설정 안 함: 모든 IP(또는 IP 대역)에서 IAM 콘솔에 접근할 수 있습니다. 
     - 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 
       접근을 허용할 IP 또는 IP 대역을 입력하시면 됩니다. 
+
+
+### 조직 멤버
+- 조직의 OWNER는 계정의 모든 권한 부여하고 서비스를 신청할 수 있습니다. 
+- OWNER는 회원을 등록하여 조직별 관리 권한을 부여할 수 있습니다.
+
+#### TOAST 회원의 조직 권한
+
+| 작업          | 역할                                | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
+| ------------- | ----------------------------------- | ----- | ----- | ------ | -------------- | -------- |
+| 조직 관리     | 조직 생성                           | O     |       |        |                |  |
+|               | 조직 수정                           | O     | O     |        |                |  |
+|               | 조직 삭제                           | O     |       |        |                |  |
+| 멤버 관리     | 조직 멤버 등록                      | O     | O     |        |                |  |
+|               | 조직 멤버 삭제                      | O     | O     |        |                |  |
+| 서비스 관리   | 조직 서비스 활성화                  | O     | O     |        |                |  |
+|               | 조직 서비스 비활성화                | O     | O     |        |                |  |
+| 결제 관리     | 청구서 조회                         | O     |       |        |                |  |
+|               | 이용 현황                           | O     | O     |        | O              |  |
+| 프로젝트 관리 | 프로젝트 생성                       | O     | O     | O      |                |  |
+|               | 프로젝트 삭제                      | O     | O     |        |                |  |
+|               | 프로젝트 삭제(생성한 프로젝트)      | O     | O     | O      |                |  |
+| 사용자 Action 로그 관리 | 사용자 Action 로그 조회            | O     | O     |       |                | O |
+
+#### IAM 회원의 조직 권한 
+- 조직 서비스별(online contact, Dooray 등) 설정할 수 있는 권한이 다릅니다. 
+- IAM 회원이 이용하는 Cloud 콘솔에 대한 권한은 아래와 같습니다.
+    - MEMBER 권한은 원하는 경우에만 선택적으로 부여할 수 있습니다. 
+    - 권한이 없는 IAM 회원은 프로젝트 생성/삭제 및 서비스 활성화 등을 할 수 없습니다. 멤버로 등록된 프로젝트에 한해서 서비스를 이용할 수 있습니다. 
+
+| 작업          | 역할                                | MEMBER | 
+| ------------- | ----------------------------------- | ----- | 
+| 서비스 관리   | 프로젝트 서비스 활성화    | O     | 
+|               | 프로젝트 서비스 비활성화 | O     | 
+| 프로젝트 관리 | 프로젝트 생성             | O     | 
+|              | 프로젝트 삭제(생성한 프로젝트)  | O     | 
+
+### 프로젝트 멤버
+
+조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
+
+| 작업        | 역할                                     | ADMIN | MEMBER |  Billing Viewer |
+| ----------- | ---------------------------------------- | ----- | ------ | -------------------- | 
+| Member 관리 | 프로젝트 멤버 등록                              | O     |        |                      |                
+|             | 프로젝트 멤버 삭제                               | O     |        |                      |                
+| 서비스 관리 | 서비스 활성화                            | O     |        |                      |                
+|             | 서비스 이용                              | O     | O      |                      |                
+|             | 서비스 비활성화                          | O     |        |                      |                
+| 이용 현황   | 이용 현황                                | O     |       | O                    |            
+| 프로젝트 관리 | 프로젝트 삭제                           | O     |       |                      |                
+|              | 프로젝트 삭제(생성한 프로젝트)            |      | O       |                     |
 
 ## 결제 관리
 

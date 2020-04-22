@@ -56,12 +56,12 @@ TOASTは顧客の大切な資産とサービスを保護するために、DRDoS�
 
 ポート遮断ポリシーの詳細については、カスタマーセンターまでお問い合わせください。
 
-### 포트 추가/허용 신청 절차
-- 아래 엑셀 파일을 다운로드하여 작성합니다.
+### ポート追加/許可申請手順
+- 下記Excelファイルをダウンロードして作成します。
 
-[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOAST 방화벽 및 SSL VPN 정책 신청서_JP.xlsx)
+[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOASTファイアウォールおよびSSL VPNポリシー申請書_JP.xlsx)
 
-- 파일명 “TOAST 방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
-- 아래 대표 메일로 접수 신청 메일 발송합니다.(접수일 기준으로 3일 이내 처리 및 회신)
+- ファイル名「TOASTファイアウォールおよびSSL VPNポリシー申請書_JP-機関名.xlsx」で保存します。
+- 下記代表メールへ受付申請メールを送信します。(受付日基準で3日以内に処理および返信)
     - TOAST : support@toast.com
     - TOAST G : support@gov.toast.com
