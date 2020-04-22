@@ -24,19 +24,19 @@ Resource usage is calculated by project, and the resource usage quota policy is 
 DNS Plus services are part of the resource usage policy. 
 Resource usage is calculated by project.
 
-* DNS
+#### DNS
 |Resources | Criteria | Capacity |
 |----|----|----|
 |Record Set	| Per DNS Zone |5,000|
 
-* GSLB
+#### GSLB
 |Resources | Criteria | Capacity |
 |----|----|----|
 |GSLB	| Per project | 20|
 |Pool	| Per project | 20 |
 |Pool   | Per GSLB    | 16 |
-|Endpoint | 프로젝트당 | 20 |
-|Endpoint| Pool당 | 5 |
+|Endpoint | Per project | 20 |
+|Endpoint| Per Pool | 5 |
 |Health check	| Per project | 5 |
 
 
