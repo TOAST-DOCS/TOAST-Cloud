@@ -35,8 +35,8 @@ Resource usage is calculated by project.
 |GSLB	| Per project | 20|
 |Pool	| Per project | 20 |
 |Pool   | Per GSLB    | 16 |
-|Endpoint | 프로젝트당 | 20 |
-|Endpoint| Pool당 | 5 |
+|Endpoint | Per project | 20 |
+|Endpoint| Per pool | 5 |
 |Health check	| Per project | 5 |
 
 
