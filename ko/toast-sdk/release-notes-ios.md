@@ -8,7 +8,7 @@
 
 ### TOAST IAP 
 #### 추가 사항
-* 프로모션 결제의 진행 빙밥을 선택할 수 있도록 Optional Delegate 추가
+* 프로모션 결제의 진행 여부를 선택할 수 있도록 Optional Delegate 추가
 
 ### TOAST Push
 #### 추가 사항
