@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.21.1 (2020.04.28)
+
+### TOAST Push
+
+#### 기능 개선
+
+* 안전성 개선
+
 ## 0.21.0 (2020.03.24)
 
 ### TOAST Logger
