@@ -176,7 +176,7 @@ PAYCO 아이디는 본인의 휴대폰 번호 또는 이메일을 아이디로 �
 
     ![userguide_06_201812](https://static.toastoven.net/toast/user_guide/userguide_06_201812.png)
 
-- JBC J/Secure 이용 안내 <br/>
+- JCB J/Secure 이용 안내 <br/>
     - J/Secure 결제 창에 카드 번호, 유효기간, 카드 소유자명을 입력합니다.
     - 비밀번호 입력 창이 나타나면, 비밀번호를 입력합니다.
     - 비밀번호가 있으면 기존과 동일한 비밀번호인지 확인하고, 없을 경우 신규로 등록합니다.

@@ -2,7 +2,7 @@
 
 ## サポート環境
 
-* iOS 8.0以上
+* iOS 9.0以上
 * XCode最新バージョン(バージョン10以上)
 
 ## TOAST SDKの構成
@@ -29,7 +29,7 @@
 * Podfileを作成してTOAST SDKのPodを追加します。
 
 ```podspec
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do

@@ -22,7 +22,7 @@
 * Create a podfile to add pods to TOAST SDK. 
 
 ```podspec
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
@@ -95,6 +95,7 @@ end
 ### Specifications for Delegate API
 
 * Register delegate to receive purchase result.
+    * You can decide whether to proceed with the promotion payment in SDK or request payment directly when you want.
 * Reprocessing results are not delegated, but are applied to the list of consumable products and the list of active subscription.
 * `In order to receive delegate of purchase result, Delegate must be set before purchase of product.`
 
@@ -107,6 +108,9 @@ end
 // Purchase Failed
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error;
 
+@optional
+// Select how to proceed with the promotion payment
+- (BOOL)shouldAddStorePurchaseForProduct:(ToastProduct *)product API_AVAILABLE(ios(11.0));
 @end
 ```
 
@@ -142,6 +146,24 @@ end
     NSLog(@"Failed to purchase: %@", erorr);
 }
 
+// Select how to proceed with the promotion payment
+- (BOOL)shouldAddStorePurchaseForProduct:(ToastProduct *)product {
+
+    /*
+    * return YES; 
+        * Make the requested promotion purchase in SDK.
+        * purchase window will be printed after initialization and login.
+    */ 
+    return YES;
+   
+    /*
+    * return NO;
+        * Promotion purchase will be terminated.
+        * After saving a product object, you can proceed with purchase with the stored object at any future point in time.     
+    */
+    self.promotionProduct = product;
+    return NO;     
+}
 @end
 ```
 

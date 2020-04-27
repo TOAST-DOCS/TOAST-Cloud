@@ -23,7 +23,7 @@
 * Podfileを作成して、TOAST SDKに対するPodを追加します。
 
 ```podspec
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
@@ -96,6 +96,7 @@ end
 ### Delegate API仕様
 
 * Delegateを登録すると,購入結果の通知を受けることができます。
+    * 프로모션 결제를 SDK에서 진행할지 사용자가 원하는 시점에 직접 결제를 요청할지 결정 할 수 있습니다. 
 * 再処理により決済が完了した購買件は,Delegatingされず,未消費商品リスト(消耗性商品),活性化された購読リスト(購読商品)に反映されます。
 * `決済結果に対する通知を受けるためには,商品購入前にDelegateが設定されていなければなりません。`
 
@@ -108,6 +109,9 @@ end
 // 購入失敗
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error;
 
+@optional
+// 프로모션 결제 진행 방법 선택
+- (BOOL)shouldAddStorePurchaseForProduct:(ToastProduct *)product API_AVAILABLE(ios(11.0));
 @end
 ```
 
@@ -141,6 +145,25 @@ end
 // 購入失敗
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error {
     NSLog(@"Failed to purchase: %@", erorr);
+}
+
+// 프로모션 결제 진행 방법 선택
+- (BOOL)shouldAddStorePurchaseForProduct:(ToastProduct *)product {
+
+    /*
+    * return YES; 
+        * 요청한 프로모션 결제를 SDK에서 수행하도록 합니다. 
+        * 초기화 및 로그인 후 결제창이 출력됩니다. 
+    */ 
+    return YES;
+   
+    /*
+    * return NO;
+        * 프로모션 결제가 종료됩니다. 
+        * product 객체를 저장한뒤 이후 원하는 시점에 저장된 객체로 결제를 진행 할 수 있습니다.        
+    */
+    self.promotionProduct = product;
+    return NO;     
 }
 
 @end
