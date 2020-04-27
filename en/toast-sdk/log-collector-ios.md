@@ -25,7 +25,7 @@
 * Create a podfile to add pods to TOAST SDK. 
 
 ```podspec
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do

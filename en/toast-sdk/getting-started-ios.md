@@ -2,7 +2,7 @@
 
 ## Supporting Environment
 
-* iOS 8.0 or higher
+* iOS 9.0 or higher
 * The latest version of XCode (version 10 or higher)
 
 ## Configuration of TOAST SDK
@@ -29,7 +29,7 @@
 * Create a podfile and add pods to TOAST SDK.
 
 ```podspec
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
