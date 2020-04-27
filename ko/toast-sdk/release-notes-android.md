@@ -8,6 +8,12 @@
 
 * 안전성 개선
 
+### TOAST Logger
+
+#### 기능 개선
+
+* Native Crash Reporting 기능 개선
+
 ## 0.21.0 (2020.03.24)
 
 ### TOAST Logger
