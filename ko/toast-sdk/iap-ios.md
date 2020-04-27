@@ -23,7 +23,7 @@ iOS용 TOAST IAP SDK의 구성은 다음과 같습니다.
 * Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
 ```podspec
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
@@ -96,7 +96,8 @@ end
 
 ### Delegate API 명세
 
-* Delegate를 등록하면 구매 결과에 대한 통지를 받을 수 있습니다.
+* Delegate를 등록하면 구매 결과와 프로모션 결제의 진행여부 결정에 대한 통지를 받을 수 있습니다.
+    * 프로모션 결제를 SDK에서 진행할지 사용자가 원하는 시점에 직접 결제를 요청할지 결정 할 수 있습니다. 
 * 재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않고, 미소비 상품 목록(소모성 상품), 활성화된 구독 목록(구독 상품)에 반영됩니다.
 * `결제 결과에 대한 통지를 받기 위해서는 상품 구매 전에 Delegate 가 설정되어 있어야만 합니다.`
 
@@ -110,6 +111,9 @@ end
 // 구매 실패
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error;
 
+@optional
+// 프로모션 결제 진행 방법 선택
+- (BOOL)shouldAddStorePurchaseForProduct:(ToastProduct *)product API_AVAILABLE(ios(11.0));
 @end
 ```
 
@@ -143,6 +147,25 @@ end
 // 구매 실패
 - (void)didFailPurchaseProduct:(NSString *)productIdentifier withError:(NSError *)error {
     NSLog(@"Failed to purchase: %@", erorr);
+}
+
+// 프로모션 결제 진행 방법 선택
+- (BOOL)shouldAddStorePurchaseForProduct:(ToastProduct *)product {
+
+    /*
+    * return YES; 
+        * 요청한 프로모션 결제를 SDK에서 수행하도록 합니다. 
+        * 초기화 및 로그인 후 결제창이 출력됩니다. 
+    */ 
+    return YES;
+   
+    /*
+    * return NO;
+        * 프로모션 결제가 종료됩니다. 
+        * product 객체를 저장한뒤 이후 원하는 시점에 저장된 객체로 결제를 진행 할 수 있습니다.        
+    */
+    self.promotionProduct = product;
+    return NO;     
 }
 
 @end

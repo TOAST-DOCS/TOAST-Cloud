@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.21.0’
+    implementation 'com.toast.android:toast-push-fcm:0.21.1’
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.21.0’
+    implementation 'com.toast.android:toast-push-tencent:0.21.1’
     ...
 }
 ```
