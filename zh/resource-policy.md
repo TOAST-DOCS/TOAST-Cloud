@@ -20,7 +20,7 @@ TOAST为所有客户提供稳定的服务，为保护客户不因创建意料之
 |IP访问控制组	| 每个项目   |10个|
 |IP访问控制对象 | 每个IP访问控制组	|1000个|
 
-### Resource Usage Policy for DNS Plus Services 
+### DNS Plus施服务源提供政策 
 DNS Plus施服务是源提供政策。
 源使用量按各项目计算。
 
@@ -39,7 +39,7 @@ DNS Plus施服务是源提供政策。
 |Endpoint| 每个项目 | 5个 |
 |Health check	| 每个项目 | 5个 |
 
-### KakaoTalk Bizmessage 서비스 리소스 제공 정책
+### KakaoTalk Bizmessage施服务源提供政策 
 KakaoTalk Bizmessage施服务是源提供政策。 
 
 | 源 | 提供标准 | 提供量 |
