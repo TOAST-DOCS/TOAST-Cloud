@@ -41,6 +41,7 @@ Resource usage is calculated by project.
 
 ### Resource Usage Policy for KakaoTalk Bizmessage
 KakaoTalk Bizmessage services are part of the resource usage policy. 
+
 | Resource | Criteria | Capacity |
 | -------- | -------- | -------- |
 | Alimtalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |

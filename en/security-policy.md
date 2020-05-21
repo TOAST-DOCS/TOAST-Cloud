@@ -31,7 +31,6 @@ DRDoS occurs due to vulnerable settings of applications, such as DNS, NTP, SSDP,
 ### Anti-TOAST DRDoS Port Policy
 To protect customer's resources and services, TOAST blocks UDP ports which are frequently abused as stops for DRDoS attacks..
 
-
 ### List of Blocked Ports
 |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- |
@@ -39,19 +38,22 @@ To protect customer's resources and services, TOAST blocks UDP ports which are f
 |SSDP    | UDP / 1900  | Network ACL | Inaccessible from outside |
 |Memcached   | UDP / 11211 | Network ACL | Inaccessible from outside |
 
-### List of Blocked Internet Ports
 
-#### List of Blocked Internet Ports (TOAST)
-| Region |Service Name |  Blocked Port  | Blocking Method |Reference|
+## Internet Port Blocking Policy (Inbound) 
+To protect customer service, the block-intrusion system is provided as well as security group which is managed under the control of customers.
+
+### TOAST List of Blocked Ports 
+|Region | Service Name | Blocked Port | Blocking Method | Remarks |
 | ---- | ---- | ---- | ---- | ---- |
-| KOREA(Pangyo) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
+| Korea (Pangyo) <br> Japan (Tokyo) <br> US (California) | System Terminal Port | TCP/23 | Blocked by network ACLs | Externally inaccessible |
 
-#### List of Blocked Internet Ports (TOAST G)
-|Service Name |  Blocked Port  | Blocking Method |Reference|
+### TOAST G List of Blocked Ports 
+|Service Name |   Blocked Ports  | Blocking Method  | Remarks |
 | ---- | ---- | ---- | ---- |
-| System Terminal port | TCP / 22, 23, 3389 | Network ACL | Inaccessible from outside | 
-| DBMS Port | TCP, UDP / 1433(MS-SQL), 1521(Oracle), 3306(MySQL) | Network ACL | Inaccessible from outside | 
-| Netbios Port | TCP, UDP / 135, 137, 138, 139, 445 | Network ACL | Inaccessible from outside | 
-| etc | TCP / 21(FTP), TCP / 5900(VNC) | Network ACL | Inaccessible from outside | 
+| System Terminal Port | TCP/22, 23, 3389 | Blocked by network ACLs | Externally inaccessible |
+| DBMS Port | TCP, UDP/1433(MS-SQL), 1521(Oracle), 3306(MySQL)  | Blocked by network ACLs | Externally inaccessible |
+| Netbios Relavant Port | TCP, UDP/135, 137, 138, 139, 445 | Blocked by network ACLs | Externally inaccessible |
+| Others | TCP/21(FTP), TCP / 5900(VNC) | Blocked by network ACLs | Externally inaccessible |
+
 
 For further inquiries on port blocking policy, contact Customer Center.
