@@ -39,6 +39,13 @@ Resource usage is calculated by project.
 |Endpoint| Per Pool | 5 |
 |Health check	| Per project | 5 |
 
+### Resource Usage Policy for KakaoTalk Bizmessage
+KakaoTalk Bizmessage services are part of the resource usage policy. 
+| Resource | Criteria | Capacity |
+| -------- | -------- | -------- |
+| Alimtalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
+| FriendTalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
+
 
 ### Request for Capacity Adjustment
 To increase capacity beyond default volume, send a request to TOAST Customer Center [1:1Inquiries]. 

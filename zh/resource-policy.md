@@ -21,23 +21,31 @@ TOAST为所有客户提供稳定的服务，为保护客户不因创建意料之
 |IP访问控制对象 | 每个IP访问控制组	|1000个|
 
 ### Resource Usage Policy for DNS Plus Services 
-DNS Plus services are part of the resource usage policy. 
-Resource usage is calculated by project.
+DNS Plus施服务是源提供政策。
+源使用量按各项目计算。
 
 #### DNS
-|Resources | Criteria | Capacity |
+|源 | 提供标准 | 提供量 | 
 |----|----|----|
-|Record Set	| Per DNS Zone |5,000|
+|Record Set	| Per DNS Zone |5,000个|
 
 #### GSLB
-|Resources | Criteria | Capacity |
+|源 | 提供标准 | 提供量 | 
 |----|----|----|
-|GSLB	| Per project | 20|
-|Pool	| Per project | 20 |
-|Pool   | Per GSLB    | 16 |
-|Endpoint | Per project | 20 |
-|Endpoint| Per Pool | 5 |
-|Health check	| Per project | 5 |
+|GSLB	| 每个项目 | 20个|
+|Pool	| 每个项目 | 20个 |
+|Pool   | 每个项目    | 16个 |
+|Endpoint | 每个项目 | 20个 |
+|Endpoint| 每个项目 | 5个 |
+|Health check	| 每个项目 | 5个 |
+
+### KakaoTalk Bizmessage 서비스 리소스 제공 정책
+KakaoTalk Bizmessage施服务是源提供政策。 
+
+| 源 | 提供标准 | 提供量 |
+| --- | ---- | --- |
+| 通知TALK 发送量 |  KakaoTalk Channel 1日毎 | 1,000 件 |
+| 好友TALK 发送量 |  KakaoTalk Channel 1日毎 | 1,000 件 |
 
 ### 申请调整源提供量 
 除基本提供量外，若欲额外使用，咨询TOAST客服中心[1:1咨询]即可。 
