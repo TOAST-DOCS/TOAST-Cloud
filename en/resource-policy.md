@@ -2,7 +2,6 @@
 TOAST provides the Resource Usage Policy to provide stable services to all users and protect them from excessive spending incurred by unintentional resource creation. 
 
 ### Resource Usage Policy for Infrastructure Services  
-Infrastructure services (e.g. Instance, Network, or Load Balancer) are part of the resource usage policy. 
 Resource usage is calculated by project, and the resource usage quota policy is applied for each region. 
 
 |Resources | Criteria | Capacity |
@@ -21,7 +20,6 @@ Resource usage is calculated by project, and the resource usage quota policy is 
 |IP Access Control Target | Per IP access control group	|1000|
 
 ### Resource Usage Policy for DNS Plus Services 
-DNS Plus services are part of the resource usage policy. 
 Resource usage is calculated by project.
 
 #### DNS
@@ -38,6 +36,13 @@ Resource usage is calculated by project.
 |Endpoint | Per project | 20 |
 |Endpoint| Per Pool | 5 |
 |Health check	| Per project | 5 |
+
+### Resource Usage Policy for KakaoTalk Bizmessage
+
+| Resource | Criteria | Capacity |
+| -------- | -------- | -------- |
+| Alimtalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
+| FriendTalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
 
 
 ### Request for Capacity Adjustment
