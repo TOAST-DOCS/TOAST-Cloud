@@ -25,10 +25,10 @@ https://toast.comにアクセスし、画面右上にある**会員登録**を�
 #### 会員登録時に「日本」を選択した会員 
 
 - 個人会員登録
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_201904.png)
+![userguide_03_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_03_20200521_ja.png)
 
 - 事業者会員登録
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_08_202003.png)
+![userguide_08_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_08_20200521_ja.png)
 
 #### 会員登録時に「その他の国」を選択した会員
 
