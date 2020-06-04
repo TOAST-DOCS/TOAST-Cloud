@@ -28,13 +28,11 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 
 | 분류 | 서비스명 | 글로벌/리전 서비스 | 한국(판교) 리전 | 한국(평촌) 리전 | 일본(도쿄) 리전 | 미국(캘리포니아) 리전 |
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
-| Compute | Instance | 리전  | O | O | O | O |
+| Compute | Instance | 리전 | O | O | O | O |
 |  | GPU Instance | 리전 | O |  |  |  |
 |  | Image | 리전 | O | O | O | O |
 |  | Auto Scale | 리전 | O | O | O | O |
 |  | System Monitoring | 리전 | O | O | O | O |
-| Container | Kubernetes | 리전 |  | O |  |  |
-|  | Container Registry | 리전 |  | O |  |  |
 | Network | VPC | 리전 | O | O | O | O |
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
@@ -48,21 +46,20 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | EasyCache | 리전 | O |  | O |  |
 |  | MS-SQL Instance | 리전 | O | O | O | O |
 |  | MySQL Instance | 리전 | O | O | O | O |
-|  | RDS for MS-SQL | 리전 |  | O |  |  |
 | Game | Gamebase | 글로벌 |  |  |  |  |
 |  | Leaderboard | 글로벌 |  |  |  |  |
 |  | Launching | 글로벌 |  |  |  |  |
 |  | Smart Downloader | 글로벌 |  |  |  |  |
 | Security | AppGuard | 글로벌 |  |  |  |  |
 |  | Security Check | 리전 | O |  |  |  |
-|  | Security Monitoring | 리전 | O | O |  |  |
-|  | Basic Security | 리전 | O | O |  |  |
+|  | Security Monitoring | 리전 | O |  |  |  |
+|  | Basic Security | 리전 | O |  |  |  |
 |  | Mal-URL Detector | 리전 | O |  |  |  |
 |  | CAPTCHA | 리전 | O |  |  |  |
 |  | OTP | 리전 | O |  |  |  |
-|  | DBSafer | 리전 | O | O |  |  |
-|  | Web Firewall | 리전 | O | O |  |  |
-|  | Vaccine | 리전 | O | O |  |  |
+|  | DBSafer | 리전 | O |  |  |  |
+|  | Web Firewall | 리전 | O |  |  |  |
+|  | Vaccine | 리전 | O |  |  |  |
 |  | Secure Key Manager | 글로벌 |  |  |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image | 리전 | O |  |  |  |
@@ -82,7 +79,7 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Corporation Search | 리전 | O |  |  |  |
 |  | Address Search | 리전 | O |  |  |  |
 | Dev Tools | Deploy | 글로벌 |  |  |  |  |
-| Management | Managed | 리전 | O | O |  |  |
+| Management | Managed | 리전 | O |  |  |  |
 |  | Service Monitoring | 리전 | O |  |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
 | Workplace | Dooray! | 글로벌 |  |  |  |  |
