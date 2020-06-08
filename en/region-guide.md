@@ -1,19 +1,19 @@
-## TOAST > TOAST 리전 가이드
-리전은 독립적이고 지리적으로 격리된 서버의 물리적 위치를 의미합니다.
-일반적으로 리전은 가용성 영역이라고 부르는 독립된 전원 및 네트워크를 갖춘 데이터 센터로 구성되며, 사용하려는 지역과 서비스에 따라 리전을 선택할 수 있습니다. <br>
-인터넷으로 언제 어디서나 자유롭게 리전을 선택하여 TOAST 서비스를 이용하세요.
+## TOAST > TOAST Region Guide 리전 가이드
+A region refers to the physical location of an independent and geologically separated server. 리전은 독립적이고 지리적으로 격리된 서버의 물리적 위치를 의미합니다.
+Generally, a region is comprised of a standalone power, the so-called available area, and datacenter equipped with a network, and the user may select a region depending on the region and service.  일반적으로 리전은 가용성 영역이라고 부르는 독립된 전원 및 네트워크를 갖춘 데이터 센터로 구성되며, 사용하려는 지역과 서비스에 따라 리전을 선택할 수 있습니다. <br>
+인터넷으로 언제 어디서나 자유롭게 리전을 선택하여 TOAST 서비스를 이용하세요. Feel free to select your region anytime and anywhere and enjoy TOAST services. 
 
-## TOAST 리전
+## TOAST 리전 Regions
 
-TOAST는 안정적인 글로벌 서비스 제공을 위해 4개의 리전을 운영하고 있습니다.<br>
-고가용성을 지원하기 위해서는 여러 가용성 영역 혹은 복수의 리전에 애플리케이션을 배포해야 합니다.<br>
-TOAST 유저는 서비스 지역과 목적에 따라 사용할 리전을 선택할 수 있으며, 일반적으로 서비스 대상이 주로 위치한 지역의 리전을 이용하면 짧은 응답 시간을 기대할 수 있습니다.
+TOAST operates four regions to provide stable global services. 는 안정적인 글로벌 서비스 제공을 위해 4개의 리전을 운영하고 있습니다.<br>
+To support high availability, an application must be deployed to many available areas or multiple regions. 고가용성을 지원하기 위해서는 여러 가용성 영역 혹은 복수의 리전에 애플리케이션을 배포해야 합니다.<br>
+TOAST 유저는 서비스 지역과 목적에 따라 사용할 리전을 선택할 수 있으며, 일반적으로 서비스 대상이 주로 위치한 지역의 리전을 이용하면 짧은 응답 시간을 기대할 수 있습니다. TOAST users are allowed to select a region depending on the service and purpose, and generally 
 
-## TOAST 리전 위치
-TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전을 확대하고 있습니다.<br>
+## TOAST 리전 위치 Location of TOAT Regions 
+TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전을 확대하고 있습니다.<br> 
 ![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/region_guide%2001.png)
 
-## TOAST 리전 서비스
+## TOAST 리전 서비스 Regional Service 
 
 **리전 서비스**<br>
 리전 서비스는 서비스를 제공하는 리전의 인프라 환경과 국가/지역/법률/상품에서 서비스하는 내용의 제한에 의해 특정 지역에만 제공되는 서비스입니다.<br>
@@ -28,7 +28,7 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 
 | 분류 | 서비스명 | 글로벌/리전 서비스 | 한국(판교) 리전 | 한국(평촌) 리전 | 일본(도쿄) 리전 | 미국(캘리포니아) 리전 |
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
-| Compute | Instance | 리전 | O | O | O | O |
+| Compute | Instance | Region | O | O | O | O |
 |  | GPU Instance | 리전 | O |  |  |  |
 |  | Image | 리전 | O | O | O | O |
 |  | Auto Scale | 리전 | O | O | O | O |
