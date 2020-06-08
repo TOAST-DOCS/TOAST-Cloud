@@ -1,4 +1,4 @@
-## TOAST > TOAST Region Guide
+## TOAST > Guide to TOAST Regions
 A region refers to the physical location of an independent and geologically separated server. 
 Generally, a region is comprised of a standalone power, the so-called available area, and datacenter equipped with a network, and the user may select a region depending on the region and service. <br>
 Feel free to select your region anytime and anywhere to enjoy TOAST services. 
