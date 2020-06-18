@@ -28,7 +28,7 @@ Resource usage for organization is calculated by the member who registered payme
 |Project	 | Per organization |5|
 
 ### Resource Usage Policy for DNS Plus Service 
-Resource usage is calculated by project.
+Resource usage is calculated by the project.
 
 #### DNS
 |Resource | Criteria | Capacity |
