@@ -1,10 +1,10 @@
 ## TOAST > TOAST Resource Usage Policy 
 TOAST provides the Resource Usage Policy to provide stable services to all users and protect them from excessive spending incurred by unintentional resource creation. 
 
-### Resource Usage Policy for Infrastructure Services  
-Resource usage is calculated by project, and the resource usage quota policy is applied for each region. 
+### Resource Usage Policy for Infrastructure Service  
+Resource usage is calculated by the project, and the resource usage policy is applied for each region. 
 
-|Resources | Criteria | Capacity |
+|Resource | Criteria | Capacity |
 |----|----|----|
 |CPU	| Per project |100vCore|
 |Memory	 | Per projet |256GB|
@@ -19,16 +19,24 @@ Resource usage is calculated by project, and the resource usage quota policy is 
 |IP Access Control Group	| Per project |10|
 |IP Access Control Target | Per IP access control group	|1000|
 
-### Resource Usage Policy for DNS Plus Services 
+### Resource Usage Policy for Organization/Project 
+Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
+
+|Resource | Criteria | Capacity | 
+|----|----|----|
+|Organization	| Per member with registered payment method |3|
+|Project	 | Per organization |5|
+
+### Resource Usage Policy for DNS Plus Service 
 Resource usage is calculated by project.
 
 #### DNS
-|Resources | Criteria | Capacity |
+|Resource | Criteria | Capacity |
 |----|----|----|
 |Record Set	| Per DNS Zone |5,000|
 
 #### GSLB
-|Resources | Criteria | Capacity |
+|Resource | Criteria | Capacity |
 |----|----|----|
 |GSLB	| Per project | 20|
 |Pool	| Per project | 20 |
