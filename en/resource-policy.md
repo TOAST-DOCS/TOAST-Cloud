@@ -1,6 +1,14 @@
 ## TOAST > TOAST Resource Usage Policy 
 TOAST provides the Resource Usage Policy to provide stable services to all users and protect them from excessive spending incurred by unintentional resource creation. 
 
+### Resource Usage Policy for Organization/Project 
+Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
+
+|Resource | Criteria | Capacity | 
+|----|----|----|
+|Organization	| Per member with registered payment method |3|
+|Project	 | Per organization |5|
+
 ### Resource Usage Policy for Infrastructure Service  
 Resource usage is calculated by the project, and the resource usage policy is applied for each region. 
 
@@ -18,14 +26,6 @@ Resource usage is calculated by the project, and the resource usage policy is ap
 |Load Balancer | Per project |10|
 |IP Access Control Group	| Per project |10|
 |IP Access Control Target | Per IP access control group	|1000|
-
-### Resource Usage Policy for Organization/Project 
-Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
-
-|Resource | Criteria | Capacity | 
-|----|----|----|
-|Organization	| Per member with registered payment method |3|
-|Project	 | Per organization |5|
 
 ### Resource Usage Policy for DNS Plus Service 
 Resource usage is calculated by the project.

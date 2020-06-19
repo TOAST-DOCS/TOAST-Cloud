@@ -1,6 +1,14 @@
 ## TOAST > TOAST源提供政策 
 TOAST为所有客户提供稳定的服务，为保护客户不因创建意料之外的源而产生支出等，提供源使用量政策。
 
+### Resource Usage Policy for Organization/Project 
+Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
+
+|Resource | Criteria | Capacity | 
+|----|----|----|
+|Organization	| Per member with registered payment method |3|
+|Project	 | Per organization |5|
+
 ### 基础设施服务源提供政策 
 源使用量按各项目计算，各地区应用另外的源使用量限制政策。
 
