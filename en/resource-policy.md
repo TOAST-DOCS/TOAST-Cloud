@@ -1,6 +1,14 @@
 ## TOAST > TOAST Resource Usage Policy 
 TOAST provides the Resource Usage Policy to provide stable services to all users and protect them from excessive spending incurred by unintentional resource creation. 
 
+### Resource Usage Policy for Organization/Project 
+Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
+
+|Resource | Criteria | Capacity | 
+|----|----|----|
+|Organization	| Per member with registered payment method |3|
+|Project	 | Per organization |5|
+
 ### Resource Usage Policy for Infrastructure Service  
 Resource usage is calculated by the project, and the resource usage policy is applied for each region. 
 
@@ -11,21 +19,23 @@ Resource usage is calculated by the project, and the resource usage policy is ap
 |Block Storage| Per project |10TB|
 |Floating IP | Per project |50|
 |VPC | Per project |3|
-|Subnet | Per vpc |10|
-|Routing Table | Per vpc |10|
+|Subnet | Per VPC |10|
+|Routing Table | Per VPC |10|
 |Route | Per routing table |10|
 |Internet Gateway | Per project	|3|
 |Load Balancer | Per project |10|
 |IP Access Control Group	| Per project |10|
 |IP Access Control Target | Per IP access control group	|1000|
 
-### Resource Usage Policy for Organization/Project 
-Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
+### Kubernetes 서비스 리소스 제공 정책
+Kubernetes 서비스 리소스 제공 정책입니다. 
+리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다.
 
-|Resource | Criteria | Capacity | 
+|리소스 | 제공 기준 | 제공량 | 
 |----|----|----|
-|Organization	| Per member with registered payment method |3|
-|Project	 | Per organization |5|
+|클러스터	| 프로젝트당 |3개|
+|워커 노드 그룹	 | 클러스터당 |3개(기본 워커 노드 그룹 포함)|
+
 
 ### Resource Usage Policy for DNS Plus Service 
 Resource usage is calculated by the project.
