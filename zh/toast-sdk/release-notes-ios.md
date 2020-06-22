@@ -1,5 +1,10 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.25.0 (2020.06.23)
+### 공통
+#### 개선 사항
+* 안전성 개선
+
 ## 0.24.1 (2020.05.26)
 ### TOAST Push
 #### 기능 개선
