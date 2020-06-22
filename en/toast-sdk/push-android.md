@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.21.2'
+    implementation 'com.toast.android:toast-push-fcm:0.22.0'
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.21.2'
+    implementation 'com.toast.android:toast-push-tencent:0.22.0'
     ...
 }
 ```
@@ -370,7 +370,7 @@ public class MyApplication extends Application {
 ##### AndroidManifest.xml 메타 데이터로 정의 예시
 ```xml
 <!-- 기본 채널의 이름 설정 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_channel_name" 
+<meta-data android:name="com.toast.sdk.push.notification.default_channel_name"
            android:value="@string/default_notification_channel_name"/>
 ```
 
@@ -410,32 +410,32 @@ public class MyApplication extends Application {
 ##### AndroidManifest.xml 메타 데이터로 정의 예시
 ```xml
 <!-- 알림 우선 순위 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_priority" 
+<meta-data android:name="com.toast.sdk.push.notification.default_priority"
            android:value="1"/>
 <!-- 알림 배경색 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_background_color" 
+<meta-data android:name="com.toast.sdk.push.notification.default_background_color"
            android:resource="@color/defaultNotificationColor"/>
 <!-- LED 라이트 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_light_color" 
+<meta-data android:name="com.toast.sdk.push.notification.default_light_color"
            android:value="#0000ff"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_light_on_ms" 
+<meta-data android:name="com.toast.sdk.push.notification.default_light_on_ms"
            android:value="0"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_light_off_ms" 
+<meta-data android:name="com.toast.sdk.push.notification.default_light_off_ms"
            android:value="500"/>
 <!-- 작은 아이콘 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_small_icon" 
+<meta-data android:name="com.toast.sdk.push.notification.default_small_icon"
            android:resource="@drawable/ic_notification"/>
 <!-- 알림음 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_sound" 
+<meta-data android:name="com.toast.sdk.push.notification.default_sound"
            android:value="notification_sound"/>
 <!-- 진동 패턴 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern" 
+<meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern"
            android:resource="@array/default_vibrate_pattern"/>
 <!-- 배지 아이콘 사용 -->
-<meta-data android:name="com.toast.sdk.push.notification.badge_enabled" 
+<meta-data android:name="com.toast.sdk.push.notification.badge_enabled"
            android:value="true"/>
 <!-- 앱 실행 중 알림 노출 -->
-<meta-data android:name="com.toast.sdk.push.notification.foreground_enabled" 
+<meta-data android:name="com.toast.sdk.push.notification.foreground_enabled"
            android:value="false"/>
 ```
 
@@ -516,7 +516,7 @@ public class MyApplication extends Application {
 * 메시지 수신시 onMessageReceived 함수로 수신된 메시지가 전달됩니다.
 
 > **(주의)**
-> 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다. 
+> 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다.
 > 2. 알림을 직접 생성할 경우 Push 서비스 인텐트를 알림의 콘텐츠 인텐트로 설정해야만 지표 수집이 가능합니다. (아래 지표 수집 기능 추가 섹션 참고)
 
 ### ToastPushMessagingService 구현 코드 예
