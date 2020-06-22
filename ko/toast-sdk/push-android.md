@@ -799,6 +799,7 @@ public long[] getVibratePattern();
 public Uri getSound();
 public boolean isForegroundEnabled();
 public boolean isBadgeEnabled();
+public Builder buildUpon();
 ```
 
 | Method | Returns | Parameters | |
@@ -813,3 +814,4 @@ public boolean isBadgeEnabled();
 | getSound | Uri | | 알림음의 Uri 를 반환합니다. |
 | isForegroundEnabled | boolean | | 포그라운드 알림 사용 여부를 반환합니다. |
 | isBadgeEnabled | boolean | | 배지 아이콘 사용 여부를 반환합니다. |
+| buildUpon | ToastNotificationOptions#Builder | | 현재 옵션 정보를 기반으로 빌더를 반환합니다. |
