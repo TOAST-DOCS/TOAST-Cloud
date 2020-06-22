@@ -383,24 +383,47 @@ public class MyApplication extends Application {
 
 #### 알림 기본 옵션 설정 예시
 ##### 코드에서 설정 예시
+**전체 알림 옵션을 변경할 경우**
 ```java
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
         // ...
 
-        ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder(context)
+        ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder()
                 .setPriority(NotificationCompat.PRIORITY_HIGH)  // 알림 우선 순위 설정
                 .setColor(0x0085AA)                             // 알림 배경색 설정
                 .setLights(Color.RED, 0, 300)                   // LED 라이트 설정
                 .setSmallIcon(R.drawable.ic_notification)       // 작은 아이콘 설정
-                .setSound(R.raw.dingdong1)                      // 알림음 설정
+                .setSound(context, R.raw.dingdong1)             // 알림음 설정
                 .setVibratePattern(new long[] {500, 700, 1000}) // 진동 패턴 설정
                 .enableForeground(true)                         // 포그라운드 알림 노출 설정
                 .enableBadge(true)                              // 배지 아이콘 사용 설정
                 .build();
 
         ToastNotification.setDefaultOptions(context, defaultOptions);
+
+        // ...
+    }
+}
+```
+
+**설정된 알림 옵션 중 일부만 변경할 경우**
+```java
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        // ...
+
+        // 설정된 기본 알림 옵션 획득
+        ToastNotificationOptions defaultOptions = ToastNotification.getDefaultOptions(context);
+
+        // 알림 옵션 객체로부터 빌더 생성
+        ToastNotificationOptions newDefaultOptions = options.buildUpon()
+                .enableForeground(true)      // 포그라운드 알림 노출 여부 설정만 변경
+                .build();
+
+        ToastNotification.setDefaultOptions(mContext, newDefaultOptions);
 
         // ...
     }

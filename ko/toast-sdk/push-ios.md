@@ -94,7 +94,6 @@ end
 * `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
 * [ToastPushConfiguration](./push-ios/#toastpushconfiguration) 객체에 토스트 클라우드 서버에서 발급받은 Push AppKey를 설정합니다.
 * `개발환경에서는 반드시 ToastPushConfiguration의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
-* 앱이 포그라운드 상태일 때는 알림을 노출하지 않습니다. 알림 노출을 원하시면, [ToastNotificationOptions](./push-ios/#toastnotificationoptions) 객체로 알림 옵션을 설정해야 합니다.
 
 ### 초기화 API 명세
 
@@ -179,6 +178,29 @@ end
 - (void)didReceiveNotificationAction:(ToastPushNotificationAction *)action {
     // ...
 }
+```
+
+## 알림 옵션 설정
+
+* [ToastNotificationOptions](./push-ios/#toastnotificationoptions) 객체로 포그라운드 알림, 배지 아이콘, 알림음 기능 사용 여부에 대한 알림 옵션 설정이 가능합니다.
+* 미설정시 포그라운드 알림 미사용, 배지 아이콘 및 알림음 기능 사용을 기본 설정으로 합니다. 
+* 앱이 포그라운드 상태일 때는 알림을 노출하지 않는것이 기본 동작이므로 알림 노출을 원하시면, 알림 옵션을 설정해야 합니다. 
+
+### 알림 옵션 설정 API 명세
+
+``` objc
++ (void)setNotificationOptions:(nullable ToastNotificationOptions *)options;
+```
+
+### 알림 옵션 설정 예
+
+``` objc
+ToastNotificationOptions *options = [[ToastNotificationOptions alloc] init];
+options.foregroundEnabled = YES;    // 포그라운드 알림 사용 설정 (default : NO)
+options.badgeEnabled = YES;         // 배지 아이콘 사용 설정 (default : YES)
+options.soundEnabled = YES;         // 알림음 사용 설정 (default : YES)
+    
+[ToastPush setNotificationOptions:options];
 ```
 
 ## 토큰 등록
@@ -635,9 +657,6 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 
 // Sandbox(Debug) 환경 설정
 @property (nonatomic) BOOL sandbox;
-
-// 알림 옵션
-@property (nonatomic, copy, nullable) ToastNotificationOptions *notificationOptions;
 
 
 + (instancetype)configurationWithAppKey:(NSString *)appKey;
