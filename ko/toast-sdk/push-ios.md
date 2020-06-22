@@ -182,9 +182,15 @@ end
 
 ## 알림 옵션 설정
 
-* [ToastNotificationOptions](./push-ios/#toastnotificationoptions) 객체로 포그라운드 알림, 배지 아이콘, 알림음 기능 사용 여부에 대한 알림 옵션 설정이 가능합니다.
-* 미설정시 포그라운드 알림 미사용, 배지 아이콘 및 알림음 기능 사용을 기본 설정으로 합니다. 
-* 앱이 포그라운드 상태일 때는 알림을 노출하지 않는것이 기본 동작이므로 알림 노출을 원하시면, 알림 옵션을 설정해야 합니다. 
+* [ToastNotificationOptions](./push-ios/#toastnotificationoptions) 객체로 알림 옵션 설정이 가능합니다.
+
+| 옵션명 | 설명 | 기본값 |
+| --- | --- | --- |
+| foregroundEnabled | 앱이 포그라운드 상태일때의 알림 노출 여부 | NO |
+| badgeEnabled | 배지 아이콘 사용 여부 | YES |
+| soundEnabled | 알림음 사용 여부 | YES |
+
+* 앱이 포그라운드 상태일 때는 알림을 노출하지 않는 것이 기본 동작이므로 알림 노출을 원하시면, 알림 옵션을 설정해야 합니다. 
 
 ### 알림 옵션 설정 API 명세
 

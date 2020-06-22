@@ -419,11 +419,11 @@ public class MyApplication extends Application {
         ToastNotificationOptions defaultOptions = ToastNotification.getDefaultOptions(context);
 
         // 알림 옵션 객체로부터 빌더 생성
-        ToastNotificationOptions newDefaultOptions = options.buildUpon()
+        ToastNotificationOptions newDefaultOptions = defaultOptions.buildUpon()
                 .enableForeground(true)      // 포그라운드 알림 노출 여부 설정만 변경
                 .build();
 
-        ToastNotification.setDefaultOptions(mContext, newDefaultOptions);
+        ToastNotification.setDefaultOptions(context, newDefaultOptions);
 
         // ...
     }
