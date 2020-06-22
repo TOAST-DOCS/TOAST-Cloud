@@ -2,6 +2,14 @@
 
 ## 0.22.0 (2020.06.23)
 
+### TOAST IAP
+
+#### 기능 개선
+
+`TOAST IAP SDK 0.22.0 이상으로 업데이트 시 반드시 강제 업데이트를 진행해야 합니다.`
+
+* Google Play Billing Library BillingClient 2.2.1 적용
+
 ### TOAST Push
 
 #### 기능 개선
@@ -81,7 +89,7 @@
 #### 기능 개선
 * 보안 강화
     * 내부 보안 정책을 강화하였습니다.
-    
+
 #### 버그 수정
 
 * "Bad base64 Exception" 오류 수정
