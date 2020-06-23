@@ -58,6 +58,6 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 [![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/TOAST%20%EB%B0%A9%ED%99%94%EB%B2%BD%20%EB%B0%8F%20SSL%20VPN%20%EC%A0%95%EC%B1%85%20%EC%8B%A0%EC%B2%AD%EC%84%9C.xlsx)
 
 - 파일명 “TOAST 방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
-- 아래 대표 메일로 접수 신청 메일 발송합니다.(접수일 기준으로 3일 이내 처리 및 회신)
+- 아래 대표 메일로 접수 신청 메일 발송합니다. (접수일 기준으로 3일 이내 처리 및 회신)
     - TOAST : support@toast.com
     - TOAST G : support@gov.toast.com

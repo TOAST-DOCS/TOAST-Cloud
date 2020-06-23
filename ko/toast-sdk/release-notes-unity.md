@@ -1,5 +1,20 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Unity
 
+## 0.20.1 (2020.06.23)
+
+### plugin version
+
+- Android : 0.21.0
+- iOS : 0.23.0
+
+### 버그 수정
+
+- 빈 파일이 생성된 경우, 복호화 에러 수정
+
+### 기능 개선
+
+- Windows 환경에서 C++ DLL 의존성 제거
+
 ## 0.20.0 (2020.03.26)
 
 ### plugin version

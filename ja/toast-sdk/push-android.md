@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.21.2’
+    implementation 'com.toast.android:toast-push-fcm:0.22.0’
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.21.2’
+    implementation 'com.toast.android:toast-push-tencent:0.22.0’
     ...
 }
 ```
@@ -242,7 +242,7 @@ ToastPush.queryTokenInfo(ㅊontext, new QueryTokenInfoCallback() {
             // トークン情報照会成功
             String token = tokenInfo.getToken();
             ToastPushAgreement agreement = tokenInfo.getAgreement();
-            
+
         } else {
             // トークン情報照会失敗
             int code = result.getCode();
@@ -265,7 +265,7 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
     @Override
     public void onUnregister(@NonNull PushResult result,
                              @Nullable String unregisteredToken) {
-        
+
         if (result.isSuccess()) {
             // トークン解除成功
         } else {
@@ -368,7 +368,7 @@ public class MyApplication extends Application {
 ##### AndroidManifest.xml 메타 데이터로 정의 예시
 ```xml
 <!-- 기본 채널의 이름 설정 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_channel_name" 
+<meta-data android:name="com.toast.sdk.push.notification.default_channel_name"
            android:value="@string/default_notification_channel_name"/>
 ```
 
@@ -381,18 +381,19 @@ public class MyApplication extends Application {
 
 #### 알림 기본 옵션 설정 예시
 ##### 코드에서 설정 예시
+**전체 알림 옵션을 변경할 경우**
 ```java
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
         // ...
 
-        ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder(context)
+        ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder()
                 .setPriority(NotificationCompat.PRIORITY_HIGH)  // 알림 우선 순위 설정
                 .setColor(0x0085AA)                             // 알림 배경색 설정
                 .setLights(Color.RED, 0, 300)                   // LED 라이트 설정
                 .setSmallIcon(R.drawable.ic_notification)       // 작은 아이콘 설정
-                .setSound(R.raw.dingdong1)                      // 알림음 설정
+                .setSound(context, R.raw.dingdong1)             // 알림음 설정
                 .setVibratePattern(new long[] {500, 700, 1000}) // 진동 패턴 설정
                 .enableForeground(true)                         // 포그라운드 알림 노출 설정
                 .enableBadge(true)                              // 배지 아이콘 사용 설정
@@ -405,35 +406,57 @@ public class MyApplication extends Application {
 }
 ```
 
+**설정된 알림 옵션 중 일부만 변경할 경우**
+```java
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        // ...
+
+        // 설정된 기본 알림 옵션 획득
+        ToastNotificationOptions defaultOptions = ToastNotification.getDefaultOptions(context);
+
+        // 알림 옵션 객체로부터 빌더 생성
+        ToastNotificationOptions newDefaultOptions = defaultOptions.buildUpon()
+                .enableForeground(true)      // 포그라운드 알림 노출 여부 설정만 변경
+                .build();
+
+        ToastNotification.setDefaultOptions(context, newDefaultOptions);
+
+        // ...
+    }
+}
+```
+
 ##### AndroidManifest.xml 메타 데이터로 정의 예시
 ```xml
 <!-- 알림 우선 순위 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_priority" 
+<meta-data android:name="com.toast.sdk.push.notification.default_priority"
            android:value="1"/>
 <!-- 알림 배경색 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_background_color" 
+<meta-data android:name="com.toast.sdk.push.notification.default_background_color"
            android:resource="@color/defaultNotificationColor"/>
 <!-- LED 라이트 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_light_color" 
+<meta-data android:name="com.toast.sdk.push.notification.default_light_color"
            android:value="#0000ff"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_light_on_ms" 
+<meta-data android:name="com.toast.sdk.push.notification.default_light_on_ms"
            android:value="0"/>
-<meta-data android:name="com.toast.sdk.push.notification.default_light_off_ms" 
+<meta-data android:name="com.toast.sdk.push.notification.default_light_off_ms"
            android:value="500"/>
 <!-- 작은 아이콘 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_small_icon" 
+<meta-data android:name="com.toast.sdk.push.notification.default_small_icon"
            android:resource="@drawable/ic_notification"/>
 <!-- 알림음 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_sound" 
+<meta-data android:name="com.toast.sdk.push.notification.default_sound"
            android:value="notification_sound"/>
 <!-- 진동 패턴 -->
-<meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern" 
+<meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern"
            android:resource="@array/default_vibrate_pattern"/>
 <!-- 배지 아이콘 사용 -->
-<meta-data android:name="com.toast.sdk.push.notification.badge_enabled" 
+<meta-data android:name="com.toast.sdk.push.notification.badge_enabled"
            android:value="true"/>
 <!-- 앱 실행 중 알림 노출 -->
-<meta-data android:name="com.toast.sdk.push.notification.foreground_enabled" 
+<meta-data android:name="com.toast.sdk.push.notification.foreground_enabled"
            android:value="false"/>
 ```
 
@@ -516,7 +539,7 @@ public class MyApplication extends Application {
 * 메시지 수신시 onMessageReceived 함수로 수신된 메시지가 전달됩니다.
 
 > **(주의)**
-> 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다. 
+> 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다.
 > 2. 알림을 직접 생성할 경우 Push 서비스 인텐트를 알림의 콘텐츠 인텐트로 설정해야만 지표 수집이 가능합니다. (아래 지표 수집 기능 추가 섹션 참고)
 
 ### ToastPushMessagingService 구현 코드 예
@@ -776,6 +799,7 @@ public long[] getVibratePattern();
 public Uri getSound();
 public boolean isForegroundEnabled();
 public boolean isBadgeEnabled();
+public Builder buildUpon();
 ```
 
 | Method | Returns | Parameters | |
@@ -790,3 +814,4 @@ public boolean isBadgeEnabled();
 | getSound | Uri | | 알림음의 Uri 를 반환합니다. |
 | isForegroundEnabled | boolean | | 포그라운드 알림 사용 여부를 반환합니다. |
 | isBadgeEnabled | boolean | | 배지 아이콘 사용 여부를 반환합니다. |
+| buildUpon | ToastNotificationOptions#Builder | | 현재 옵션 정보를 기반으로 빌더를 반환합니다. |
