@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.21.2’
+    implementation 'com.toast.android:toast-push-tencent:0.22.0’
     ...
 }
 ```
