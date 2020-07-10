@@ -17,23 +17,18 @@ https://toast.comにアクセスし、画面右上にある**会員登録**を�
 
 - 個人会員登録（表示言語：韓国語の場合の手続き例）
 
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_201904.png)
+![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_20200710.png)
 
 - 事業者会員登録（表示言語：韓国語の場合の手続き例）
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_201904.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_20200710.png)
 
 #### 会員登録時に「日本」を選択した会員 
 
 - 個人会員登録（表示言語：日本語の場合の手続き例）
-![userguide_03_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_03_20200521_ja.png)
+![userguide_03_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_03_20200710_ja.png)
 
 - 事業者会員登録（表示言語：日本語の場合の手続き例）
-![userguide_08_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_08_20200521_ja.png)
-
-#### 会員登録時に「その他の国」を選択した会員
-
-- 個人会員登録(表示言語：英語の場合の手続き例)
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_09_202003.png)
+![userguide_08_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_08_20200710_ja.png)
 
 
 #### 国選択 
@@ -41,7 +36,7 @@ TOAST会員は、会員登録時に選択した国によって韓国会員(NHN)�
 各国の法令に基づいて定めたTOAST利用約款と個人情報保護方針に同意すると、会員登録ができます。
 
 - 韓国会員(NHN)
-    - 会員登録時に「韓国」または「韓国/日本以外の国」を選択した会員
+    - 会員登録時に「韓国」を選択した会員
     
 - 日本会員(NHN Japan)
     - 会員登録時に「日本」を選択した会員
@@ -94,8 +89,6 @@ TOASTで利用できる決済方法は次の通りです。
 - 日本 
     - 個人：クレジットカード
     - 事業者：クレジットカード
-- その他の国
-    - 個人：海外クレジットカード(VISA、MASTER、JCB)、海外クレジットカード(UNIONPAY)
 
 ### 各決済方法の管理ポリシー
 各決済方法の認証および管理ポリシーは下記の通りです。
@@ -110,7 +103,6 @@ TOASTで利用できる決済方法は次の通りです。
 |  |  | 口座振替 | 公認証明書認証 | 銀行、口座番号 | 個人口座は個人公認証明書 <br/> 法人口座は会員/法人口座/ 公認証明書の事業者情報が同じでなければいけない |
 | 日本 | 個人 | クレジットカード | カード所有認証 | カード番号、有効期限、名前、セキュリティコード | カードの有効性をチェックするために2円決済後、キャンセル処理 |
 |  | 事業者 | クレジットカード | カード所有認証 | カード番号、有効期限、名前、セキュリティコード | カードの有効性をチェックするために2円決済後、キャンセル処理 |
-| その他の国 | 個人 | 海外クレジットカード(VISA/MASTER/JCB) <br> 海外クレジットカード(UNIONPAY) | カード会社3Dセキュア | カード会社別管理 | カードの有効性をチェックするために1,000KRW決済後にキャンセル処理 |
 
 ## 決済方法登録方法 
 
@@ -152,36 +144,6 @@ PAYCOは本人の携帯電話番号またはメールをIDとして使用でき�
 - **自動決済方法登録**画面で**クレジットカード情報(カード番号、有効期限、カード名義、セキュリティコード)**を入力します。
 #### 決済方法登録完了
 - 決済方法が正常に登録されるとマイページ > 決済方法で確認できます。
-
-### クレジットカード(その他の国)
-#### 決済方法選択
-- **マイページ > 決済方法**画面で**決済方法変更**ボタンをクリックします。
-- **自動決済方法登録**画面で**海外クレジットカード(VISA/MASTER/JCB)または海外クレジットカード(UNIONPAY)**を選択します。
-
-#### 各カード会社の認証登録
-- クレジットカード(海外)の画面で**確認してください**の内容を確認した後、**登録する**ボタンをクリックして海外発行クレジットカード3Dセキュア適用案内を確認します。 <br/>
-![userguide_04_201812](https://static.toastoven.net/toast/user_guide/userguide_04_201812.png)
-
-- Verified by visa利用案内(確認必要)<br/>
-    - Visa checkoutサービス登録：Visa Webサイトでアカウントを作成した後、Visaカード情報を入力してパスワードを設定します。
-    - 決済方法登録時、カード情報を入力してVisa checkoutサービス登録情報を確認して認証します。
-
-    ![userguide_05_201812](https://static.toastoven.net/toast/user_guide/userguide_05_201812.png)
-
-- MasterCard SecureCode利用案内(確認必要) <br/>
-    - MasterCard website銀行を選択し、SecureCodeを登録します。
-    - 約款に同意し、カード番号を入力します。
-    - カード番号入力後、SecureCodeを登録するための個人確認事項を入力します。
-    - 決済方法登録時、カード情報を入力し、SecureCodeを作成するための質問に答えると、SecureCodeが作成されます。作成されたSecureCodeを入力して認証します。
-
-    ![userguide_06_201812](https://static.toastoven.net/toast/user_guide/userguide_06_201812.png)
-
-- JCB J/Secure利用案内(確認必要) <br/>
-    - J/Secure決済ウィンドウにカード番号、有効期限、カード所有者名を入力します。
-    - パスワード入力ウィンドウが表示されたらパスワードを入力します。
-    - パスワードがある場合は既存のものと同じパスワードかを確認します。ない場合は新たに登録します。
-    - 決済方法登録時、カード情報とパスワードを入力して認証します。
-    ![userguide_07_201812](https://static.toastoven.net/toast/user_guide/userguide_07_201812.png)
 
 #### 決済方法登録完了
 決済方法が正常に登録されたら**マイページ > 決済方法**で確認できます。
