@@ -17,18 +17,18 @@ https://toast.comにアクセスし、画面右上にある**会員登録**を�
 
 - 個人会員登録（表示言語：韓国語の場合の手続き例）
 
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_202007.png)
+![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_20200710.png)
 
 - 事業者会員登録（表示言語：韓国語の場合の手続き例）
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_202007.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_20200710.png)
 
 #### 会員登録時に「日本」を選択した会員 
 
 - 個人会員登録（表示言語：日本語の場合の手続き例）
-![userguide_03_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_03_202007_ja.png)
+![userguide_03_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_03_20200710_ja.png)
 
 - 事業者会員登録（表示言語：日本語の場合の手続き例）
-![userguide_08_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_08_202007_ja.png)
+![userguide_08_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_08_20200710_ja.png)
 
 
 #### 国選択 

@@ -41,15 +41,15 @@ Follow the procedure to join membership.
 
 - Join Individual Membership
 
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_201904.png)
+![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_20200710.png)
 
 - Join Business Membership
 
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_201904.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_20200710.png)
 
 #### Members of TOAST Japan
 
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_201904.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_20200710.png)
 
 
 #### Select Country

@@ -41,15 +41,15 @@ TOAST会员根据服务提供主体，分为韩国会员(NHN)与日本会员(NHN
 
 - 注册个人会员
 
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_202007.png)
+![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_20200710.png)
 
 - 注册企业会员
 
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_202007.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_20200710.png)
 
 #### 日本会员
 
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_202007.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_20200710.png)
 
 #### 选择国家 
 
