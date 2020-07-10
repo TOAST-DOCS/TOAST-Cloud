@@ -3,7 +3,7 @@ This document is the user guide of TOAST, which is the cloud service of NHN.
 
 ## Join TOAST
 You may choose a country to use services.  
-TOAST membership is provided for individuals and businesses. Note, however, that non-Koreans can join only as individual members. 
+TOAST membership is provided for individuals and businesses.
 Individual members can join with simple email and SMS authentication. 
 Business members can join upon business information. 
 TOAST member information for management, as well as how to join are as follows: 
@@ -17,7 +17,7 @@ They are classified by the country of choice, and allowed to join when they agre
 | --- | --- | --- |
 | ID | - Valid email address (requires email verification). | O | 
 | Password | -  To be comprised of more than 8 characters, including English, numbers, and special characters.  <br/> - To be comprised of more than 10 characters, if two are combined from English, numbers, or special characters. <br/> - The password cannot be same as your previous one. <br/> - Make a clear distinction between uppercase and lowercase letters. | O | 
-| Type of Membership | 1. Individual Members <br/> - Join with simple email and SMS authentication.  <br/> - Individual members can use credit cards for payment. <br/> - Non-Korean users can join as individual members.  <br/> 2. Business Members <br/> - Further authentication is required for business registration information.  <br/> - Business members can use credit cards and bank transfer for payment; for bank transfer, tax invoice can be issued upon business information registered while joining. | O |
+| Type of Membership | 1. Individual Members <br/> - Join with simple email and SMS authentication.  <br/> - Individual members can use credit cards for payment. <br/> 2. Business Members <br/> - Further authentication is required for business registration information.  <br/> - Business members can use credit cards and bank transfer for payment; for bank transfer, tax invoice can be issued upon business information registered while joining. | O |
 | Mobile Phone Number | - Valid mobile phone number available for SMS (requires SMS verification). | O |
 | Name | - User's name for TOAST Service.  | O |
 | Address | - Comprised of zip code, basic address, and detail address.  | X |
@@ -107,7 +107,6 @@ TOAST provides the following payment methods:
 #### TOAST Korea
 - PAYCO Credit Cards: A simplified method of payment provided by PAYCO, available on PAYCO account.  <br/>
 - Credit Cards: Authentication (authentication of the holder via mobile phone) is required in accordance with the issuing entity’s authentication policy, in order to register a credit card as payment method. <br/>
-- Credit Cards (outside of Korea): Authentication (3D authentication) is required in accordance with the issuing entity’s authentication policy, in order to register a credit card as payment method. <br/>
 - Bank Transfers: The method is provided only to business members, who are required to enter account information and authenticate (Public Key Certificate) it in accordance with bank’s policy before registering it as payment method.<br/>
 
 #### TOAST Japan 
@@ -120,7 +119,6 @@ The authentication and management policy of each payment method goes as follows:
 |--------|--------|--------|---|------|---|
 | Korea | Individual | PAYCO Credit Cards | Mobile phone owner authentication |Card number, valid period, and the first two digits of password | To validate credit card, KRW 1,000 shall be paid and cancelled |
 | | | Credit Cards | Mobile phone owner authentication |Credit card number, valid period, and the first two digits of password | |
-| | | Credit Cards (Overseas) | 3D authentication of credit card company | To be managed by credit card company | |
 | | Business Owner | PAYCO Credit Cards | Resident registration number of business registration number | Card number, valid period | To validate credit card, KRW 1,000 shall be paid and cancelled. |
 | | | Credit Cards (signature required) | Mobile phone owner authentication | Card number, valid period, and the first 7 digits of resident registration number | |
 | | | Credit Cards (no signature required) | Business registration number | Card number, valid period, and the two digits of password | TBD |
@@ -161,38 +159,6 @@ The authentication and management policy of each payment method goes as follows:
 
 ##### Complete Registration of Payment Methods
 - When a payment method is properly registered, you may check at **My Page > Payment Methods**.
-
-#### Credit Cards (Overseas)
-##### Select Payment Methods
-- Go to **My Page > Payment Methods** and click **Change Payment Methods**.
-- On the **Register Auto Payment Methods** page, select **Credit Cards (Overseas)**.
-
-##### Register Authentication by Credit Card Company
-- On the page of Credit Cards (Overseas), read through "Check", and click **Register** to find guides on applying 3D authentication of credit cards issued overseas. <br/>
-
-![userguide_04_201812_en](https://static.toastoven.net/toast/user_guide/userguide_04_201812_en.png)
-- Guide for Verified by Visa (TBC)<br/>
-    - Register Visa Checkout: Create an account on the website of Visa, enter information of your Visa credit card and set password.
-    - - To register a payment method, Visa Checkout registration can be retrieved for authentication from credit card information.   
-
-![userguide_05_201812](https://static.toastoven.net/toast/user_guide/userguide_05_201812.png)
-
-- Guide for MasterCard SecureCode (TBC) <br/>
-    - Select your bank on the website of MasterCard, and register SecureCode.
-    - Consent to Terms of Use and enter your credit card number.
-    - Then, enter personal information required to register SecureCode. 
-    - Enter information of credit card to be registered as payment method, and answer questions to create SecureCode. Once created, enter SecureCode to authenticate it.     
-
-
-![userguide_06_201812](https://static.toastoven.net/toast/user_guide/userguide_06_201812.png)
-
-- Guide for JBC J/Secure (TBC) <br/>
-    - Enter credit card number, valid period, and card holder’s name on the payment page of J/Secure.
-    - When required on a popup, enter password.
-    - Check if your existing password (if any) coincides with your current password; if there’s none, register a new password.
-    - To register a payment method, enter credit card information and enter password for authentication.
-
-![userguide_07_201812](https://static.toastoven.net/toast/user_guide/userguide_07_201812.png)
 
 ##### Complete Registration of Payment Methods
 - When a payment method is properly registered, check at **My Page > Payment Methods**.

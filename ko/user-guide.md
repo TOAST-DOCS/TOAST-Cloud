@@ -17,23 +17,18 @@ https://toast.com에 접속한 후 화면 오른쪽 위에서 **회원 가입**�
 
 - 개인 회원 가입
 
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_201904.png)
+![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_202007.png)
 
 - 사업자 회원 가입
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_201904.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_202007.png)
 
 #### 회원 가입 시 '일본'을 선택한 회원 
 
 - 개인 회원 가입
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_201904.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_202007.png)
 
 - 사업자 회원 가입
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_08_202003.png)
-
-#### 회원 가입 시 '그 외 국가'를 선택한 회원
-
-- 개인 회원 가입
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_09_202003.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_08_202007.png)
 
 
 #### 국가 선택 
@@ -41,7 +36,7 @@ TOAST 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(NHN)�
 각 국가의 법령에 의한 TOAST 이용약관과 개인 정보 처리 방침에 동의해야 회원으로 가입할 수 있습니다.
 
 - 한국 회원(NHN)
-    - 회원 가입 시 '한국' 또는 '한국/일본 외 국가'를 선택한 회원
+    - 회원 가입 시 '한국'를 선택한 회원
     
 - 일본 회원(NHN Japan)
     - 회원 가입 시 '일본'을 선택한 회원
@@ -94,8 +89,6 @@ TOAST에서 제공하는 결제 수단은 아래와 같습니다.
 - 일본 
     - 개인: 신용카드
     - 사업자: 신용카드
-- 그 외 국가
-    - 개인: 해외 신용카드(VISA, MASTER, JCB), 해외 신용카드 (UNIONPAY)
 
 ### 결제 수단별 관리 정책
 결제 수단별 인증 및 관리 정책은 아래와 같습니다.
@@ -110,7 +103,6 @@ TOAST에서 제공하는 결제 수단은 아래와 같습니다.
 |  |  | 계좌이체 | 공인인증서 인증 | 은행, 계좌번호 | 개인 계좌는 개인 공인인증서 <br/> 법인 계좌는 회원/법인 계좌/ 공인인증서의 사업자 정보가 동일해야 함 |
 | 일본 | 개인 | 신용카드 | 카드 소유 인증 | 카드 번호, 유효기간, 이름, 보안 코드 | 카드 유효성 검증을 위해 2엔(円) 결제 후 취소 처리 |
 |  | 사업자 | 신용카드 | 카드 소유 인증 | 카드 번호, 유효기간, 이름, 보안 코드 | 카드 유효성 검증을 위해 2엔(円) 결제 후 취소 처리 |
-| 그 외 국가 | 개인 | 해외 신용카드(VISA/MASTER/JCB) <br> 해외 신용카드 (UNIONPAY) | 카드사 3D 인증 | 카드사별 관리 | 카드 유효성 검증을 위해 1,000원 결제 후 취소 처리 |
 
 ## 결제 수단 등록 방법 
 
@@ -153,10 +145,6 @@ PAYCO 아이디는 본인의 휴대폰 번호 또는 이메일을 아이디로 �
 #### 결제 수단 등록 완료
 - 결제 수단이 정상적으로 등록되면, 마이 페이지 > 결제 수단에서 확인할 수 있습니다
 
-### 신용카드(그 외 국가)
-#### 결제 수단 선택
-- **마이 페이지 > 결제 수단** 화면에서 **결제 수단 변경** 버튼을 클릭합니다.
-- **자동 결제 수단 등록** 화면에서 **해외 신용카드(VISA/MASTER/JCB) 또는 해외 신용카드(UNIONPAY)**를 선택합니다.
 
 #### 카드사별 인증 등록
 - 신용카드(해외)의 화면에서 **확인하세요** 내용을 확인한 후, **등록하기** 버튼을 클릭하여 해외 발행 신용카드 3D 인증 적용 안내를 확인합니다. <br/>

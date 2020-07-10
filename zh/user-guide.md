@@ -3,7 +3,7 @@
 
 ## 注册TOAST会员
 可以选择使用服务的国家。 
-TOAST会员分为个人会员和企业会员。但韩国以外的国家，只可注册个人会员。 
+TOAST会员分为个人会员和企业会员。
 个人会员通过简单的电子邮件验证和SMS验证注册。
 企业会员可基于企业信息注册。
 TOAST会员管理信息及注册步骤如下。
@@ -41,15 +41,15 @@ TOAST会员根据服务提供主体，分为韩国会员(NHN)与日本会员(NHN
 
 - 注册个人会员
 
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_201904.png)
+![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_202007.png)
 
 - 注册企业会员
 
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_201904.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_202007.png)
 
 #### 日本会员
 
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_201904.png)
+![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_202007.png)
 
 #### 选择国家 
 
@@ -104,11 +104,7 @@ TOAST提供的付款方式如下。
 #### 韩国会员
 - PAYCO信用卡：可用PAYCO账号使用PAYCO提供的简便付款方式。<br/>
 - 信用卡：按照信用卡公司提供的验证政策进行验证（手机本人验证），将信用卡登记为付款方式。<br/>
-- 信用卡（海外）：按照信用卡公司提供的验证政策进行验证（3D验证），将信用卡登记为付款方式。<br/>
 - 银行转账：仅向企业会员提供的付款方式，输入银行账户并按照银行政策验证（电子证书验证）后登记为付款方式。<br/>
-
-#### 日本会员
-- 信用卡：按照信用卡公司提供的验证政策进行验证（信用卡有效性验证），将信用卡登记为付款方式。 
 
 #### 日本会员
 - 信用卡：按照信用卡公司提供的验证政策进行验证（信用卡有效性验证），将信用卡登记为付款方式。 
@@ -120,7 +116,6 @@ TOAST提供的付款方式如下。
 |--------|--------|--------|---|------|---|
 | 韩国 | 个人 | PAYCO信用卡 | 手机本人验证 | 卡号、有效期、密码前2位 | 为验证信用卡有效性，支付1,000韩元后取消处理 |
 |  |  | 信用卡 | 手机本人验证 |卡号、有效期、密码前2位 | |
-|  |  | 信用卡（海外） | 信用卡公司3D验证  | 按信用卡公司管理 | |
 |  | 企业 | PAYCO信用卡 | 身份证号或营业执照号 | 卡号、有效期 | 为验证信用卡有效性，支付1,000韩元后取消处理 |
 |  |  | 信用卡（记名） | 手机本人验证 | 卡号、有效期、身份证号前7位 | |
 |  |  | 信用卡（不记名） | 营业执照号 | 卡号、有效期、密码前2位 | |
@@ -162,38 +157,6 @@ TOAST提供的付款方式如下。
 ##### 付款方式登记完成
 ‘- 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
 
-#### 信用卡（海外）
-##### 选择付款方式
-- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
-- 在**登记自动付款方式**界面中选择**信用卡（海外）**。
-
-##### 登记各信用卡公司验证
-
-
-- 在信用卡（海外）的界面中确认**请确认**内容后，单击**登记**按钮，确认海外签发信用卡3D验证指南。<br/>
-![userguide_04_201812](https://static.toastoven.net/toast/user_guide/userguide_04_201812.png)
-
-- Verified by visa使用指南（需要确认）<br/>
-    - 登记Visa checkout服务：在Visa网站上创建账户后，输入Visa信用卡信息，然后设置密码。
-    - 登记付款方式时输入信用卡信息后，可确认Visa checkout服务登记信息并验证。
-
-![userguide_05_201812](https://static.toastoven.net/toast/user_guide/userguide_05_201812.png)
-
-- MasterCard SecureCode使用指南（需要确认）<br/>
-    - 选择MasterCard website银行后登记SecureCode。
-    - 同意条款并输入卡号。
-    - 输入卡号后，输入登记SecureCode的个人确认事项。
-    - 登记付款方式时输入信用卡信息并回答创建SecureCode的问题，创建SecureCode。输入创建的SecureCode并验证。
-
-![userguide_06_201812](https://static.toastoven.net/toast/user_guide/userguide_06_201812.png)
-
-- JBC J/Secure使用指南（需要确认）<br/>
-    - 在J/Secure付款窗口中输入卡号、有效期、信用卡所有者名。
-    - 弹出密码输入窗口后，输入密码。
-    - 若有密码，确认是否与原有密码相同，若没有密码，登记信的密码。
-    - 登记付款方式时，输入信用卡信息后输入密码进行验证。
-
-![userguide_07_201812](https://static.toastoven.net/toast/user_guide/userguide_07_201812.png)
 
 ##### 付款方式登记完成
 - 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
