@@ -1,5 +1,16 @@
 ## TOAST > TOAST SDK 使用ガイド > リリースノート > Unity
 
+## 0.20.3 (2020.07.10)
+
+### plugin version
+
+- Android : 0.22.0
+- iOS : 0.25.1
+
+### 버그 수정
+
+- InstanceLogger 사용시, 암호화키를 호출하지 않는 버그 수정
+
 ## 0.20.2 (2020.07.08)
 
 ### plugin version
