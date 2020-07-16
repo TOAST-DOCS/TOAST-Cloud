@@ -1,32 +1,32 @@
 ## TOAST > Guide to TOAST Regions
 A region refers to the physical location of an independent and geologically separated server. 
-Generally, a region is comprised of a standalone power, the so-called available area, and datacenter equipped with a network, and the user may select a region depending on the region and service. <br>
+Generally, a region is comprised of a standalone power, the so-called available area, and datacenter equipped with a network, and the user may select a region depending on the region and service. 
 Feel free to select your region anytime and anywhere to enjoy TOAST services. 
 
 ## TOAST Regions
 
-TOAST operates four regions to provide stable global services. <br>
-To support for high availability, an application must be deployed to many available areas or multiple regions. <br>
+TOAST operates four regions to provide stable global services. 
+To support for high availability, an application must be deployed to many available areas or multiple regions. 
 TOAST users are allowed to select regions depending on the service area and purpose, but recommended to select those regions where service targets are mainly located so as to get fast response.   
 
 ## Location of TOAT Regions 
-TOAST is expanding its regions to make its service globally available. <br> 
+TOAST is expanding its regions to make its service globally available.  
 ![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/region_guide%2001.png)
 
 ## TOAST Regional Service 
 
-**Regional Service**<br>
-Regional Service refers to services that are provided only for particular regions due to restrictions in infrastructure and service content of eacy country/region/law/product. <br>
-The service is also provided to serve at different physical locations or to enable redundant data configuration. <br>
-Regional service is available only for a specific region, and each region may provide different pricing policy. <br>
+**Regional Service**
+Regional Service refers to services that are provided only for particular regions due to restrictions in infrastructure and service content of eacy country/region/law/product. 
+The service is also provided to serve at different physical locations or to enable redundant data configuration. 
+Regional service is available only for a specific region, and each region may provide different pricing policy. 
 
-**Global Service**<br>
-Global Service refers to services that are available throughout all regions. <br>
-All users are provided with the same features, policy, stability and usability, by selecting all regions. <br>
+**Global Service**
+Global Service refers to services that are available throughout all regions. 
+All users are provided with the same features, policy, stability and usability, by selecting all regions. 
 
-**Globally/Regionally Available Services**<br>
+**Globally/Regionally Available Services**
 
-| Category | Service Name | Global/Regional Service | Korea (Pangyo) Region | Korea (Pyeongchon) Region | Japan (Tokyo) Region | US (California) Region |
+| Category | Service Name | Global/Regional Service | Korea(Pangyo) Region | Korea(Pyeongchon) Region | Japan(Tokyo) Region | US(California) Region |
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
 | Compute | Instance | Regional | O | O | O | O |
 |  | GPU Instance | Region | O |  |  |  |
@@ -39,10 +39,10 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Physical Load Balancer | Regional | O | O |  |  |
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
-|  | NAS (offline) | Regional | O | O |  | O |
+|  | NAS (offline) | Regional | O |  |  | O |
 |  | Object Storage | Regional | O | O | O | O |
 |  | Backup | Regional | O |  | O |  |
-| Database | RDS for MySQL | Regional | O | O | O |  |
+| Database | RDS for MySQL | Regional | O |  | O |  |
 |  | EasyCache | Regional | O |  | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
