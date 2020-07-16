@@ -39,10 +39,10 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | 物理Load Balancer | リージョン | O | O |  |  |
 |  | DNS Plus | グローバル |  |  |  |  |
 | Storage | Block Storage | リージョン | O | O | O | O |
-|  | NAS (offline) | リージョン | O | O |  | O |
+|  | NAS (offline) | リージョン | O |  |  | O |
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O |  | O |  |
-| Database | RDS for MySQL | リージョン | O | O | O |  |
+| Database | RDS for MySQL | リージョン | O |  | O |  |
 |  | EasyCache | リージョン | O |  | O |  |
 |  | MS-SQL Instance | リージョン | O | O | O | O |
 |  | MySQL Instance | リージョン | O | O | O | O |

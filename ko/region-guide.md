@@ -39,10 +39,10 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | 물리 Load Balancer | 리전 | O | O |  |  |
 |  | DNS Plus | 글로벌 |  |  |  |  |
 | Storage | Block Storage | 리전 | O | O | O | O |
-|  | NAS (offline) | 리전 | O | O |  | O |
+|  | NAS (offline) | 리전 | O |  |  | O |
 |  | Object Storage | 리전 | O | O | O | O |
 |  | Backup | 리전 | O |  | O |  |
-| Database | RDS for MySQL | 리전 | O | O | O |  |
+| Database | RDS for MySQL | 리전 | O |  | O |  |
 |  | EasyCache | 리전 | O |  | O |  |
 |  | MS-SQL Instance | 리전 | O | O | O | O |
 |  | MySQL Instance | 리전 | O | O | O | O |
