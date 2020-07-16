@@ -1,12 +1,6 @@
 ## TOAST > TOAST使用ガイド
 このガイドではTOASTの利用方法を詳しく説明します。
 
-## 動画ガイド(韓国語) 
-
-主な内容を確認するには、下記の動画ガイドをご覧ください。
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qPclADHluk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## TOAST会員登録 
 
 ### 会員登録方法
