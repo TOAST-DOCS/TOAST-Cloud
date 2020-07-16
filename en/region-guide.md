@@ -39,10 +39,10 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Physical Load Balancer | Regional | O | O |  |  |
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
-|  | NAS (offline) | Regional | O | O |  | O |
+|  | NAS (offline) | Regional | O |  |  | O |
 |  | Object Storage | Regional | O | O | O | O |
 |  | Backup | Regional | O |  | O |  |
-| Database | RDS for MySQL | Regional | O | O | O |  |
+| Database | RDS for MySQL | Regional | O |  | O |  |
 |  | EasyCache | Regional | O |  | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
