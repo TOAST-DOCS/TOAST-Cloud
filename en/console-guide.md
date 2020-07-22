@@ -148,41 +148,6 @@ Each member of an organization has following roles:
 | Manage Projects      | Delete Projects                                   | O     |       |        |                |      |
 | Manage User Action Log | Query User Action Logs                          |       |       |        |                |  O   |
 
-#### Organization Role of IAM Members 
-- Each organization service (e.g. Online Contact, Dooray!) provides different configuration role. 
-- IAM members have the following roles for the use of the Cloud console. 
-    - The role of MEMBER is selectively provided only when needed. 
-    - IAM members without role cannot create or delete a project, or activate service. Only registered project members can use service.  
-
-| Task     | Role                           | MEMBER |
-| ------------- | ----------------------------------- | ----- |
-| Service Management | Activating project service | O     |
-|               | Deactivating project service | O     |
-| Project Management | Creating projects | O     |
-|              | Deleting projects (which have been created) | O     |
-
-### Project Members
-Even a non-organization member can serve as project member. 
-A project member can be given with many roles.  
-However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to all services, cannot have other roles at the same time. 
-
-#### Role of Project Management 
-| Task    | Role                                | ADMIN | MEMBER |  BILLING VIEWER |
-| ----------- | ---------------------------------------- | ----- | ------ | -------------------- |
-| Member Management | Register project members     | O     |        |                   |
-|             | Delete project members         | O     |        |                      |
-| Service Management | Activate service          | O     |        |                      |
-|             | Use service                 | O     | O      |                      |
-|             | Deactivate service       | O     |        |                      |
-| Usage Status | Status of service use           | O     |       | O                    |
-| Project Management | Delete projects           | O     |       |                      |
-|              | Delete projects (which have been created) |      | O       |                     |
-
-#### Role of Service Use
-| Service | Role | Description |
-| --- | --- | --- |
-| Infrastructure | ADMIN | Create/Read/Update/Delete infrastructure service |
-
 #### Project Members
 
 Project members are also members of TOAST.com. 
@@ -259,6 +224,42 @@ Dooray! Service allows the IP ACL setting on the console page of each service.
 - IP ACL
     - Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
     - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
+
+#### Organization Role of IAM Members 
+- Each organization service (e.g. Online Contact, Dooray!) provides different configuration role. 
+- IAM members have the following roles for the use of the Cloud console. 
+    - The role of MEMBER is selectively provided only when needed. 
+    - IAM members without role cannot create or delete a project, or activate service. Only registered project members can use service.  
+
+| Task     | Role                           | MEMBER |
+| ------------- | ----------------------------------- | ----- |
+| Service Management | Activating project service | O     |
+|               | Deactivating project service | O     |
+| Project Management | Creating projects | O     |
+|              | Deleting projects (which have been created) | O     |
+
+### Project Members
+Even a non-organization member can serve as project member. 
+A project member can be given with many roles.  
+However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to all services, cannot have other roles at the same time. 
+
+#### Role of Project Management 
+| Task    | Role                                | ADMIN | MEMBER |  BILLING VIEWER |
+| ----------- | ---------------------------------------- | ----- | ------ | -------------------- |
+| Member Management | Register project members     | O     |        |                   |
+|             | Delete project members         | O     |        |                      |
+| Service Management | Activate service          | O     |        |                      |
+|             | Use service                 | O     | O      |                      |
+|             | Deactivate service       | O     |        |                      |
+| Usage Status | Status of service use           | O     |       | O                    |
+| Project Management | Delete projects           | O     |       |                      |
+|              | Delete projects (which have been created) |      | O       |                     |
+
+#### Role of Service Use
+| Service | Role | Description |
+| --- | --- | --- |
+| Infrastructure | ADMIN | Create/Read/Update/Delete infrastructure service |
+
 
 ## Billing Management
 
