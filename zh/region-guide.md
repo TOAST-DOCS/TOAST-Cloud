@@ -43,6 +43,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Object Storage | Regional | O | O | O | O |
 |  | Backup | Regional | O |  | O |  |
 | Database | RDS for MySQL | Regional | O |  | O |  |
+|  | RDS for MS-SQL | Regional | O |  |  |  |
 |  | EasyCache | Regional | O |  | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
