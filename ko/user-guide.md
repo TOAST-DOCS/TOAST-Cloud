@@ -5,7 +5,7 @@
 
 주요 내용을 빠르게 확인하려면 아래 동영상 가이드를 참고해 주시기 바랍니다.
 
-<iframe width="560" height="315" src="https://youtu.be/zkh3VPCfc1E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=zkh3VPCfc1E&list=PL42XJKPNDepYOHjEXL12p9EAItp2InPlj&index=2&t=0s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## TOAST 회원 가입 
 

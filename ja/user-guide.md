@@ -5,7 +5,7 @@
 
 主な内容を確認するには、下記の動画ガイドをご覧ください。
 
-<iframe width="560" height="315" src="https://youtu.be/zkh3VPCfc1E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=zkh3VPCfc1E&list=PL42XJKPNDepYOHjEXL12p9EAItp2InPlj&index=2&t=0s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## TOAST会員登録 
 

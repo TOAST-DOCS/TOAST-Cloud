@@ -11,7 +11,7 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 - 결제 정보 제공
 
 ## 동영상 가이드
-<iframe width="560" height="315" src="https://youtu.be/PphP9zBrHeI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=PphP9zBrHeI&list=PL42XJKPNDepYOHjEXL12p9EAItp2InPlj&index=2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 퀵 가이드
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
