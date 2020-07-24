@@ -255,10 +255,61 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | Project Management | Delete projects           | O     |       |                      |
 |              | Delete projects (which have been created) |      | O       |                     |
 
+
 #### Role of Service Use
 | Service | Role | Description |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Create/Read/Update/Delete infrastructure service |
+| Infrastructure | ADMIN |  Create/Read/Update/Delete Infrastructure Service  |
+| Infrastructure | MEMBER | Viewer VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete Other services |
+| Container Registry | ADMIN | Create/Read/Update/Delete Container Registry Service |
+| Container Registry | MEMBER | Read Container Registry Service  |
+| DNS Plus | ADMIN | Create/Read/Update/Delete DNS Plus Service  |
+| Object Storage | ADMIN | Create/Read/Update/Delete Object Storage Service   |
+| Backup | ADMIN |  Create/Read/Update/Delete Backup Service |
+| RDS for MySQL | ADMIN | Create/Read/Update/Delete RDS for MySQL Service |
+| RDS for MS-SQL | ADMIN | Create/Read/Update/Delete RDS for MS-SQL Service |
+| EasyCache | ADMIN | Create/Read/Update/Delete EasyCache Service |
+| Gamebase | ADMIN | Create/Read/Update/Delete Gamebase Service |
+| Leaderboard | ADMIN | Create/Read/Update/Delete Leaderboard Service |
+| Leaderboard | MEMBER |  Read Leaderboard Service |
+| Launching  | ADMIN | Create/Read/Update/Delete Launching Service  |
+| Smart Downloader | ADMIN |  Create/Read/Update/Delete Smart Downloader Service |
+| AppGuard  | ADMIN | Create/Read/Update/Delete AppGuard Service |
+| Security Check  | ADMIN | Create/Read/Update/Delete Security Check Service |
+| Security Monitoring  | ADMIN | Create/Read/Update/Delete Security Monitoring Service |
+| Basic Security  | ADMIN |Create/Read/Update/Delete  Basic Security Service |
+| Mal-URL Detector  | ADMIN | Create/Read/Update/Delete Mal-URL Detector Service |
+| CAPTCHA  | ADMIN |  Create/Read/Update/Delete CAPTCHA Service  |
+| OTP  | ADMIN | Create/Read/Update/Delete OTP Service |
+| DBSafer  | ADMIN | Create/Read/Update/Delete  DBSafer Service |
+| WEB Firewall  | ADMIN |   Create/Read/Update/Delete WEB Firewall Service |
+| Vaccine  | ADMIN |  Create/Read/Update/Delete Vaccine Service |
+| Secure Key Manager  | ADMIN |  Create/Read/Update/Delete Secure Key Manager Service |
+| Secure Key Manager  | MEMBER |  Read Secure Key Manager Service |
+| CDN   | ADMIN |  Create/Read/Update/Delete CDN Service  |
+| Image  | ADMIN |  Create/Read/Update/Delete Image Service |
+| Push  | ADMIN |  Create/Read/Update/Delete Push Service  |
+| SMS  | ADMIN |Create/Read/Update/Delete  SMS  Service |
+| Email  | ADMIN |  Create/Read/Update/Delete Email Service |
+| KakaoTalk Bizmessage  | ADMIN |  Create/Read/Update/Delete KakaoTalk Bizmessage Service |
+| IAP  | ADMIN |  Create/Read/Update/Delete IAP Service  |
+| Mobile Device Info  | ADMIN |  Create/Read/Update/Delete Mobile Device Info Service |
+| Log & Crash Search  | ADMIN |   Create/Read/Update/Delete Log & Crash Search Service |
+| Maps  | ADMIN |  Create/Read/Update/Delete Maps Service |
+| ROLE  | ADMIN |  Create/Read/Update/Delete ROLE Service |
+| API Gateway  | ADMIN | Create/Read/Update/Delete API Gateway Service |
+| RTCS  | ADMIN |   Create/Read/Update/Delete RTCS Service |
+| Cloud Search  | ADMIN | Create/Read/Update/Delete Cloud Search Service |
+| Autocomplete  | ADMIN | Create/Read/Update/Delete AutocompleteService |
+| Corporation Search  | ADMIN |  Create/Read/Update/Delete Corporation Search Service |
+| Address Search  | ADMIN |   Create/Read/Update/Delete Address Search Service |
+| Deploy  | ADMIN |  Create/Read/Update/Delete Deploy Service |
+| Managed  | ADMIN | Create/Read/Update/Delete Managed Service |
+| Service Monitoring  | ADMIN | Create/Read/Update/Delete Service Monitoring Service |
+| Certificate Manager  | ADMIN | Create/Read/Update/Delete Certificate Manager Service |
+| Bill (e-Tax)  | ADMIN |  Create/Read/Update/Delete Bill (e-Tax) Service |
+| Bill (e-Tax)  | MEMBER |  Read Bill (e-Tax) Service |
+
 
 
 ## Billing Management
