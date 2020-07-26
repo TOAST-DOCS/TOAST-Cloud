@@ -55,7 +55,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Security Check | Regional | O |  |  |  |
 |  | Security Monitoring | Regional | O |  |  |  |
 |  | Basic Security | Regional | O |  |  |  |
-|  | Mal-URL Detector | Regional | O |  |  |  |
 |  | CAPTCHA | Regional | O |  |  |  |
 |  | OTP | Regional | O |  |  |  |
 |  | DBSafer | Regional | O |  |  |  |
@@ -99,7 +98,3 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Online Contact | Global |  |  |  |  |
 | Bill | Bill (e-Tax) | Regional | O |  |  |  |
 | IDC | TCC | Regional | O |  |  |  |
-| Marketplace | Massive Mail Delivery Service(for Japan) | Regional |  |  | O |  |
-|  | Goorm IDE | Regional | O |  |  |  |
-|  | Goorm EDU | Regional | O |  |  |  |
-|  | Goorm DEVTH | Regional | O |  |  |  |
