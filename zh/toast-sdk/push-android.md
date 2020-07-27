@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.22.0'
+    implementation 'com.toast.android:toast-push-fcm:0.23.0'
     ...
 }
 ```
@@ -28,7 +28,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.22.0'
+    implementation 'com.toast.android:toast-push-tencent:0.23.0'
     ...
 }
 ```
@@ -638,6 +638,115 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 > **(주의)**
 > 기기에서 지원하지 않는 emoji를 사용한 경우, 표시되지 않을 수 있습니다.
 > Tencent의 경우, emoji를 사용하면 메세지가 수신되지 않을 수 있습니다.
+
+## 사용자 태그
+
+* [사용자 태그](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
+* 태그명이 아닌 태그 아이디(8자리 문자열)를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
+
+### 사용자 태그 수정
+
+#### 사용자 태그 수정 예
+
+* 입력 받은 태그 아이디 목록을 추가 혹은 업데이트하고 최종 반영된 태그 아이디 목록을 반환합니다.
+
+```java
+// 추가할 태그 아이디 목록 생성
+Set<String> tagIds = new HashSet<>();
+tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8자리 문자열)
+tagIds.add(TAG_ID_2);
+
+// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 추가
+ToastPush.addUserTag(tagIds, new UserTagCallback() {
+    @Override
+    public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
+        if (result.isSuccess()) {
+            // 사용자 태그 아이디 추가 성공
+        } else {
+            // 사용자 태그 아이디 추가 실패
+            int errorCode = result.getCode();
+            String errorMessage = result.getMessage();
+        }
+    }
+});
+
+// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 업데이트 (기존 태그 아이디 목록은 삭제되고 입력한 값으로 설정)
+ToastPush.setUserTag(tagIds, new UserTagCallback() {
+    @Override
+    public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
+        if (result.isSuccess()) {
+            // 사용자 태그 아이디 목록 업데이트 성공
+        } else {
+            // 사용자 태그 아이디 목록 업데이트 실패
+            int errorCode = result.getCode();
+            String errorMessage = result.getMessage();
+        }
+    }
+});
+```
+
+### 사용자 태그 획득
+
+* 현재 사용자에 등록된 모든 태그 아이디 목록을 반환합니다.
+
+#### 사용자 태그 획득 예
+
+```java
+// 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록을 반환
+ToastPush.getUserTag(new UserTagCallback() {
+    @Override
+    public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
+        if (result.isSuccess()) {
+            // 사용자 태그 아이디 목록 획득 성공
+        } else {
+            // 사용자 태그 아이디 목록 획득 실패
+            int errorCode = result.getCode();
+            String errorMessage = result.getMessage();
+        }
+    }
+});
+```
+
+### 사용자 태그 삭제
+
+#### 사용자 태그 삭제 예
+
+* 입력 받은 사용자 태그 아이디 목록을 삭제하고, 최종 반영된 태그 아이디 목록을 반환합니다.
+
+```java
+// 삭제할 태그 아이디 목록 생성
+Set<String> tagIds = new HashSet<>();
+tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8자리 문자열)
+tagIds.add(TAG_ID_2);
+
+// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 삭제
+ToastPush.removeUserTag(tagIds, new UserTagCallback() {
+    @Override
+    public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
+        if (result.isSuccess()) {
+            // 사용자 태그 아이디 목록 삭제 성공
+        } else {
+            // 사용자 태그 아이디 목록 삭제 실패
+            int errorCode = result.getCode();
+            String errorMessage = result.getMessage();
+        }
+    }
+});
+
+// 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록 삭제
+ToastPush.removeAllUserTag(new UserTagCallback() {
+    @Override
+    public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
+        if (result.isSuccess()) {
+            // 전체 사용자 태그 삭제 성공
+        } else {
+            // 전체 사용자 태그 삭제 실패
+            int errorCode = result.getCode();
+            String errorMessage = result.getMessage();
+        }
+    }
+});
+```
 
 ## TOAST Push Class Reference
 ### ToastPushConfiguration

@@ -43,6 +43,7 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O |  | O |  |
 | Database | RDS for MySQL | リージョン | O |  | O |  |
+|  | RDS for MS-SQL | リージョン | O |  |  |  |
 |  | EasyCache | リージョン | O |  | O |  |
 |  | MS-SQL Instance | リージョン | O | O | O | O |
 |  | MySQL Instance | リージョン | O | O | O | O |
@@ -54,7 +55,6 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Security Check | リージョン | O |  |  |  |
 |  | Security Monitoring | リージョン | O |  |  |  |
 |  | Basic Security | リージョン | O |  |  |  |
-|  | Mal-URL Detector | リージョン | O |  |  |  |
 |  | CAPTCHA | リージョン | O |  |  |  |
 |  | OTP | リージョン | O |  |  |  |
 |  | DBSafer | リージョン | O |  |  |  |
@@ -98,7 +98,3 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Online Contact | グローバル |  |  |  |  |
 | Bill | Bill (e-Tax) | リージョン | O |  |  |  |
 | IDC | TCC | リージョン | O |  |  |  |
-| Marketplace | Massive Mail Delivery Service(for Japan) | リージョン |  |  | O |  |
-|  | Goorm IDE | リージョン | O |  |  |  |
-|  | Goorm EDU | リージョン | O |  |  |  |
-|  | Goorm DEVTH | リージョン | O |  |  |  |

@@ -491,6 +491,7 @@ typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorExpired = 14,                      // Subscription expired 
     ToastIAPErrorRenewalPaymentNotFound = 15,       // Renewal payment information not found in receipt
     ToastIAPErrorRestoreFailed = 16,                // Failed to restore
+    ToastIAPErrorPaymentNotAvailable = 17,          // Status of purchase inoperative (e.g. setting purchase restrictions in app)
 };
 
 // Network Error

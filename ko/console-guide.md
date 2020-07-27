@@ -10,6 +10,9 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 - 서비스를 이용하는 멤버 관리
 - 결제 정보 제공
 
+## 동영상 가이드
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PphP9zBrHeI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## 퀵 가이드
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
 
@@ -194,7 +197,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 - 서비스 설정 
     - 공통 설정 : 모든 조직 서비스에 동일하게 2차 인증을 설정합니다. 
-    - 서비스 별 설정 : 각 서비스(Cloud Console, Online Contactm Workplace | Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
+    - 서비스 별 설정 : 각 서비스(Cloud, Online Contactm Workplace | Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
 - IP ACL 설정 
     - 설정 안 함: 모든 IP(또는 IP 대역)에서 IAM 콘솔에 접근할 수 있습니다. 
     - 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 
@@ -224,32 +227,91 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | 사용자 Action 로그 관리 | 사용자 Action 로그 조회            | O     | O     |       |                | O |
 
 #### IAM 회원의 조직 권한 
-- 조직 서비스별(online contact, Dooray 등) 설정할 수 있는 권한이 다릅니다. 
+- 조직 서비스별(Online Contact, Dooray! 등) 설정할 수 있는 권한이 다릅니다. 
 - IAM 회원이 이용하는 Cloud 콘솔에 대한 권한은 아래와 같습니다.
     - MEMBER 권한은 원하는 경우에만 선택적으로 부여할 수 있습니다. 
-    - 권한이 없는 IAM 회원은 프로젝트 생성/삭제 및 서비스 활성화 등을 할 수 없습니다. 멤버로 등록된 프로젝트에 한해서 서비스를 이용할 수 있습니다. 
+    - 권한이 없는 IAM 회원은 프로젝트 생성이나 삭제, 서비스 활성화 등을 할 수 없습니다. 멤버로 등록된 프로젝트만 서비스를 이용할 수 있습니다. 
 
-| 작업          | 역할                                | MEMBER | 
-| ------------- | ----------------------------------- | ----- | 
-| 서비스 관리   | 프로젝트 서비스 활성화    | O     | 
-|               | 프로젝트 서비스 비활성화 | O     | 
-| 프로젝트 관리 | 프로젝트 생성             | O     | 
-|              | 프로젝트 삭제(생성한 프로젝트)  | O     | 
+| 작업          | 역할                                | MEMBER |
+| ------------- | ----------------------------------- | ----- |
+| 서비스 관리   | 프로젝트 서비스 활성화    | O     |
+|               | 프로젝트 서비스 비활성화 | O     |
+| 프로젝트 관리 | 프로젝트 생성             | O     |
+|              | 프로젝트 삭제(생성한 프로젝트)  | O     |
 
 ### 프로젝트 멤버
-
 조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
+프로젝트 멤버에게 필요한 권한을 여러 개 부여할 수 있습니다. 
+단, ADMIN과 MEMBER는 모든 서비스를 이용할 수 있는 Super Admin과 같은 권한으로 해당 권한 외 다른 권한은 부여할 수 없습니다. 
 
+#### 프로젝트 관리 권한
 | 작업        | 역할                                     | ADMIN | MEMBER |  Billing Viewer |
-| ----------- | ---------------------------------------- | ----- | ------ | -------------------- | 
-| Member 관리 | 프로젝트 멤버 등록                              | O     |        |                      |                
-|             | 프로젝트 멤버 삭제                               | O     |        |                      |                
-| 서비스 관리 | 서비스 활성화                            | O     |        |                      |                
-|             | 서비스 이용                              | O     | O      |                      |                
-|             | 서비스 비활성화                          | O     |        |                      |                
-| 이용 현황   | 이용 현황                                | O     |       | O                    |            
-| 프로젝트 관리 | 프로젝트 삭제                           | O     |       |                      |                
+| ----------- | ---------------------------------------- | ----- | ------ | -------------------- |
+| Member 관리 | 프로젝트 멤버 등록                              | O     |        |                   |
+|             | 프로젝트 멤버 삭제                               | O     |        |                      |
+| 서비스 관리 | 서비스 활성화                            | O     |        |                      |
+|             | 서비스 이용                              | O     | O      |                      |
+|             | 서비스 비활성화                          | O     |        |                      |
+| 이용 현황   | 이용 현황                                | O     |       | O                    |
+| 프로젝트 관리 | 프로젝트 삭제                           | O     |       |                      |
 |              | 프로젝트 삭제(생성한 프로젝트)            |      | O       |                     |
+
+
+#### 서비스 이용 권한 
+| 서비스 | 권한 | 설명 | 
+| --- | --- | --- | 
+| Infrastructure | ADMIN |  Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Container Registry | ADMIN | Container Registry 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Container Registry | MEMBER | Container Registry 서비스 Read(읽기) |
+| DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| RDS for MS-SQL | ADMIN | RDS for MS-SQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| EasyCache | ADMIN | EasyCache 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Gamebase | ADMIN | Gamebase 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Leaderboard | ADMIN | Leaderboard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Leaderboard | MEMBER | Leaderboard 서비스 Read(읽기) |
+| Launching  | ADMIN | Launching  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Smart Downloader | ADMIN | Smart Downloader 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| AppGuard  | ADMIN | AppGuard  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Security Check  | ADMIN | Security Check 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Security Monitoring  | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Basic Security  | ADMIN | Basic Security 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Mal-URL Detector  | ADMIN | Mal-URL Detector  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| CAPTCHA  | ADMIN | CAPTCHA   서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| OTP  | ADMIN | OTP 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| DBSafer  | ADMIN | DBSafer 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| WEB Firewall  | ADMIN | WEB Firewall  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Vaccine  | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Secure Key Manager  | ADMIN | Secure Key Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Secure Key Manager  | MEMBER | Secure Key Manager 서비스 Read(읽기) |
+| CDN   | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Image  | ADMIN | Image 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Push  | ADMIN | Push 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| SMS  | ADMIN | SMS 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Email  | ADMIN | Email 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| KakaoTalk Bizmessage  | ADMIN | KakaoTalk Bizmessage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| IAP  | ADMIN | IAP 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Mobile Device Info  | ADMIN | Mobile Device Info 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Log & Crash Search  | ADMIN | Log & Crash Search  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Maps  | ADMIN | Maps 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| ROLE  | ADMIN | ROLE 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| API Gateway  | ADMIN | API Gateway  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| RTCS  | ADMIN | RTCS  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Cloud Search  | ADMIN | Cloud Search  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Autocomplete  | ADMIN | Autocomplete 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Corporation Search  | ADMIN | Corporation Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Address Search  | ADMIN | Address Search  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Deploy  | ADMIN | Deploy  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Managed  | ADMIN | Managed  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Service Monitoring  | ADMIN | Service Monitoring  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Certificate Manager  | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Bill (e-Tax)  | ADMIN | Bill (e-Tax) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Bill (e-Tax)  | MEMBER | Bill (e-Tax) 서비스 Read(읽기) |
+
+
 
 ## 결제 관리
 

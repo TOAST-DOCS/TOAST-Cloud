@@ -43,6 +43,7 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Object Storage | 리전 | O | O | O | O |
 |  | Backup | 리전 | O |  | O |  |
 | Database | RDS for MySQL | 리전 | O |  | O |  |
+|  | RDS for MS-SQL | 리전 | O |  |  |  |
 |  | EasyCache | 리전 | O |  | O |  |
 |  | MS-SQL Instance | 리전 | O | O | O | O |
 |  | MySQL Instance | 리전 | O | O | O | O |
@@ -54,7 +55,6 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Security Check | 리전 | O |  |  |  |
 |  | Security Monitoring | 리전 | O |  |  |  |
 |  | Basic Security | 리전 | O |  |  |  |
-|  | Mal-URL Detector | 리전 | O |  |  |  |
 |  | CAPTCHA | 리전 | O |  |  |  |
 |  | OTP | 리전 | O |  |  |  |
 |  | DBSafer | 리전 | O |  |  |  |
@@ -98,7 +98,3 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Online Contact | 글로벌 |  |  |  |  |
 | Bill | Bill (e-Tax) | 리전 | O |  |  |  |
 | IDC | TCC | 리전 | O |  |  |  |
-| Marketplace | Massive Mail Delivery Service(for Japan) | 리전 |  |  | O |  |
-|  | Goorm IDE | 리전 | O |  |  |  |
-|  | Goorm EDU | 리전 | O |  |  |  |
-|  | Goorm DEVTH | 리전 | O |  |  |  |

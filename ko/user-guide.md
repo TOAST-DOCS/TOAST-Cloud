@@ -1,6 +1,12 @@
 ## TOAST > TOAST 사용 가이드
 이 가이드에서는 TOAST 이용 방법을 자세히 설명합니다.
 
+## 동영상 가이드 
+
+주요 내용을 빠르게 확인하려면 아래 동영상 가이드를 참고해 주시기 바랍니다.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zkh3VPCfc1E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## TOAST 회원 가입 
 
 ### 회원 가입 절차
