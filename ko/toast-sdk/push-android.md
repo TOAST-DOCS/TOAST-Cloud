@@ -647,6 +647,8 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 > 태그 기능은 태그명이 아닌 태그의 아이디를 기반으로 동작합니다.
 > 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인이 가능합니다.
 
+![user_tag](http://static.toastoven.net/toastcloud/sdk/push/push_user_tag.png)
+
 ### 사용자 태그 수정
 
 #### 사용자 태그 수정 예
@@ -721,6 +723,7 @@ Set<String> tagIds = new HashSet<>();
 tagIds.add("INPUT_YOUR_TAG_ID");
 tagIds.add("INPUT_YOUR_TAG_ID");
 
+// 태그 아이디 목록 삭제
 ToastPush.removeUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
