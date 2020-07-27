@@ -166,8 +166,8 @@ end
 ## 상품 목록 조회
 
 * IAP 콘솔에 등록된 상품이 [ToastProductResponse](./iap-ios/#toastproductresponse) 객체로 반환됩니다.
-* IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 `products`([ToastProduct](./iap-ios/#toastproduct))로 반환됩니다. 
-* IAP 콘솔에 등록된 상품 중 스토어(Apple)에서 상품 정보를 획득하지 못한 상품은 `invalidProducts`([ToastProduct](./iap-ios/#toastproduct))로 반환됩니다.
+* IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 products([ToastProduct](./iap-ios/#toastproduct))로 반환됩니다. 
+* IAP 콘솔에 등록된 상품 중 스토어(Apple)에서 상품 정보를 획득하지 못한 상품은 invalidProducts([ToastProduct](./iap-ios/#toastproduct))로 반환됩니다.
 
 ### 상품 목록 조회 API 명세
 

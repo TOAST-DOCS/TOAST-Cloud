@@ -1,5 +1,10 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.26.0 (2020.07.28)
+### TOAST Push
+#### 기능 추가
+* 사용자 태그 기능 지원
+
 ## 0.25.1 (2020.07.03)
 ### TOAST Logger 
 #### 개선 사항

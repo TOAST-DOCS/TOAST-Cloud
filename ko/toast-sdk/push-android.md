@@ -641,11 +641,8 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ## 사용자 태그
 
-* [사용자 태그](https://docs.toast.com/ko/Notification/Push/ko/api-guide/#uid_6) 기능을 이용하여 태그 그룹을 대상으로 메시지 발송이 가능합니다.
-
-> 사용자 아이디를 기반으로 동작하기 때문에 사용자 아이디가 설정되어 있는 상태에서만 동작합니다.
-> 태그 기능은 태그명이 아닌 태그의 아이디를 기반으로 동작합니다.
-> 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인이 가능합니다.
+* [사용자 태그](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
+* 태그명이 아닌 태그 아이디(8자리 문자열)를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
 
 ### 사용자 태그 수정
 
@@ -656,10 +653,10 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ```java
 // 추가할 태그 아이디 목록 생성
 Set<String> tagIds = new HashSet<>();
-tagIds.add("INPUT_YOUR_TAG_ID");
-tagIds.add("INPUT_YOUR_TAG_ID");
+tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8자리 문자열)
+tagIds.add(TAG_ID_2);
 
-// 태그 아이디 목록 추가
+// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 추가
 ToastPush.addUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
@@ -673,7 +670,7 @@ ToastPush.addUserTag(tagIds, new UserTagCallback() {
     }
 });
 
-// 태그 아이디 목록 업데이트 (기존 태그 아이디 목록은 삭제되고 입력한 값으로 설정)
+// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 업데이트 (기존 태그 아이디 목록은 삭제되고 입력한 값으로 설정)
 ToastPush.setUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
@@ -695,6 +692,7 @@ ToastPush.setUserTag(tagIds, new UserTagCallback() {
 #### 사용자 태그 획득 예
 
 ```java
+// 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록을 반환
 ToastPush.getUserTag(new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
@@ -718,9 +716,10 @@ ToastPush.getUserTag(new UserTagCallback() {
 ```java
 // 삭제할 태그 아이디 목록 생성
 Set<String> tagIds = new HashSet<>();
-tagIds.add("INPUT_YOUR_TAG_ID");
-tagIds.add("INPUT_YOUR_TAG_ID");
+tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8자리 문자열)
+tagIds.add(TAG_ID_2);
 
+// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 삭제
 ToastPush.removeUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
@@ -734,7 +733,7 @@ ToastPush.removeUserTag(tagIds, new UserTagCallback() {
     }
 });
 
-// 전체 태그 삭제
+// 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록 삭제
 ToastPush.removeAllUserTag(new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
