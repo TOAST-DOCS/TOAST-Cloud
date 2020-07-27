@@ -455,27 +455,27 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 ## 사용자 태그
 
 * [사용자 태그](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
-* 태그명이 아닌 태그 아이디를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
+* 태그명이 아닌 태그 아이디(8자리 문자열)를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
 
 ### 사용자 태그 설정 API 명세
 
 ``` objc
-// 사용자 태그 추가
+// 사용자 아이디의 태그 아이디 목록 추가
 + (void)addUserTagWithIdentifiers:(NSSet<NSString *> *)tagIdentifiers
                 completionHandler:(nullable void (^)(NSSet<NSString *> * _Nullable tagIdentifiers, NSError * _Nullable error))completionHandler;
 
-// 사용자 태그 업데이트
+// 사용자 아이디의 태그 아이디 목록 업데이트
 + (void)setUserTagWithIdentifiers:(nullable NSSet<NSString *> *)tagIdentifiers
                 completionHandler:(nullable void (^)(NSError * _Nullable error))completionHandler;
 
-// 사용자 태그 획득
+// 사용자 아이디의 태그 아이디 목록 획득
 + (void)getUserTagWithCompletionHandler:(void (^)(NSSet<NSString *> * _Nullable tagIdentifiers, NSError * _Nullable error))completionHandler;
 
-// 사용자 태그 삭제
+// 사용자 아이디의 태그 아이디 목록 삭제
 + (void)removeUserTagWithIdentifiers:(NSSet<NSString *> *)tagIdentifiers
                    completionHandler:(nullable void (^)(NSSet<NSString *> * _Nullable tagIdentifiers, NSError * _Nullable error))completionHandler;
 
-// 전체 사용자 태그 삭제
+// 사용자 아이디의 전체 태그 삭제
 + (void)removeAllUserTagWithCompletionHandler:(nullable void (^)(NSError * _Nullable error))completionHandler;
 ```
 
@@ -488,10 +488,10 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 ``` objc
 // 추가할 태그 아이디 목록 생성
 NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
-[tagIDs addObject:@"INPUT_YOUR_TAG_IDENTIFIER"];
-[tagIDs addObject:@"INPUT_YOUR_TAG_IDENTIFIER"];
+[tagIDs addObject:TAG_ID_1];    // e.g. "ZZPP00b6" (8자리 문자열)
+[tagIDs addObject:TAG_ID_2];
 
-// 태그 아이디 목록 추가
+// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 추가
 [ToastPush addUserTagWithIdentifiers:tagIDs
                     cmpletionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
     
@@ -502,7 +502,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
     }
 }];
 
-// 태그 아이디 목록 업데이트 (기존 태그 아이디 목록은 삭제되고 입력한 값으로 설정)
+// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 업데이트 (기존 태그 아이디 목록은 삭제되고 입력한 값으로 설정)
 [ToastPush setUserTagWithIdentifiers:tagIDs
                     cmpletionHandler:^(NSError *error) {
     
@@ -521,6 +521,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 #### 사용자 태그 획득 예
 
 ``` objc
+// 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록을 반환
 [ToastPush getUserTagWithCompletionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
     if (error == nil) {
         // 태그 아이디 목록 획득 성공
@@ -539,10 +540,10 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 ``` objc
 // 삭제할 태그 아이디 목록 생성
 NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
-[tagIDs addObject:@"INPUT_YOUR_TAG_IDENTIFIER"];
-[tagIDs addObject:@"INPUT_YOUR_TAG_IDENTIFIER"];
+[tagIDs addObject:TAG_ID_1];    // e.g. "ZZPP00b6" (8자리 문자열)
+[tagIDs addObject:TAG_ID_2];
 
-// 태그 아이디 목록 삭제
+// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 삭제
 [ToastPush removeUserTagWithIdentifiers:tagIDs
                       completionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
     if (error == nil) {
@@ -552,7 +553,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
     }
 }];
 
-// 전체 태그 삭제
+// 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록 삭제
 [ToastPush removeAllUserTagWithCompletionHandler:^(NSError *error) {
     if (error == nil) {
         // 전체 사용자 태그 삭제 성공
