@@ -256,10 +256,61 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | 프로젝트 관리 | 프로젝트 삭제                           | O     |       |                      |
 |              | 프로젝트 삭제(생성한 프로젝트)            |      | O       |                     |
 
+
 #### 서비스 이용 권한 
-| 서비스 | 권한 | 설명 |
-| --- | --- | --- |
-| Infrastructure | Admin |  Infrastructure 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| 서비스 | 권한 | 설명 | 
+| --- | --- | --- | 
+| Infrastructure | ADMIN |  Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Container Registry | ADMIN | Container Registry 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Container Registry | MEMBER | Container Registry 서비스 Read(읽기) |
+| DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| RDS for MS-SQL | ADMIN | RDS for MS-SQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| EasyCache | ADMIN | EasyCache 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Gamebase | ADMIN | Gamebase 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Leaderboard | ADMIN | Leaderboard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Leaderboard | MEMBER | Leaderboard 서비스 Read(읽기) |
+| Launching  | ADMIN | Launching  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Smart Downloader | ADMIN | Smart Downloader 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| AppGuard  | ADMIN | AppGuard  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Security Check  | ADMIN | Security Check 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Security Monitoring  | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Basic Security  | ADMIN | Basic Security 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Mal-URL Detector  | ADMIN | Mal-URL Detector  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| CAPTCHA  | ADMIN | CAPTCHA   서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| OTP  | ADMIN | OTP 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| DBSafer  | ADMIN | DBSafer 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| WEB Firewall  | ADMIN | WEB Firewall  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Vaccine  | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Secure Key Manager  | ADMIN | Secure Key Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Secure Key Manager  | MEMBER | Secure Key Manager 서비스 Read(읽기) |
+| CDN   | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Image  | ADMIN | Image 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Push  | ADMIN | Push 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| SMS  | ADMIN | SMS 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Email  | ADMIN | Email 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| KakaoTalk Bizmessage  | ADMIN | KakaoTalk Bizmessage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| IAP  | ADMIN | IAP 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Mobile Device Info  | ADMIN | Mobile Device Info 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Log & Crash Search  | ADMIN | Log & Crash Search  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Maps  | ADMIN | Maps 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| ROLE  | ADMIN | ROLE 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| API Gateway  | ADMIN | API Gateway  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| RTCS  | ADMIN | RTCS  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Cloud Search  | ADMIN | Cloud Search  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Autocomplete  | ADMIN | Autocomplete 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Corporation Search  | ADMIN | Corporation Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Address Search  | ADMIN | Address Search  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Deploy  | ADMIN | Deploy  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Managed  | ADMIN | Managed  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Service Monitoring  | ADMIN | Service Monitoring  서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Certificate Manager  | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Bill (e-Tax)  | ADMIN | Bill (e-Tax) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Bill (e-Tax)  | MEMBER | Bill (e-Tax) 서비스 Read(읽기) |
+
 
 
 ## 결제 관리
