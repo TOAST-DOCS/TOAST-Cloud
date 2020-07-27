@@ -454,12 +454,8 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 ## 사용자 태그
 
-* [사용자 태그](https://docs.toast.com/ko/Notification/Push/ko/api-guide/#uid_6) 기능을 이용하여 태그 그룹을 대상으로 메시지 발송이 가능합니다.
-* 사용자 태그 기능은 사용자 아이디가 설정되어 있는 상태에서만 동작합니다.
-* 태그명이 아닌 태그 아이디를 기반으로 동작합니다.
-* 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인이 가능합니다.
-
-![user_tag](http://static.toastoven.net/toastcloud/sdk/push/push_user_tag.png)
+* [사용자 태그](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
+* 태그명이 아닌 태그 아이디를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
 
 ### 사용자 태그 설정 API 명세
 
