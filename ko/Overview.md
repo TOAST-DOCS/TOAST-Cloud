@@ -1,6 +1,6 @@
 ## TOAST > 개요
 
-ko1TOAST는 NHN에서 제공하는 “통합 클라우드 서비스” 이며, TOward Art Science Technology를 모토로 예술 과학 기술을 향한 새로운 세상을 만들기 위해 도전하는 열정을 의미합니다.
+aaTOAST는 NHN에서 제공하는 “통합 클라우드 서비스” 이며, TOward Art Science Technology를 모토로 예술 과학 기술을 향한 새로운 세상을 만들기 위해 도전하는 열정을 의미합니다.
 
 ## 특징
 
