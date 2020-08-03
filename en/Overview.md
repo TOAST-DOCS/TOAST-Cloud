@@ -1,6 +1,6 @@
 ## TOAST > Overview
 
-TOAST1, which is from ‘Toward Art, Science, and Technology’, refers to an “Integrated Cloud Service” of NHN, as part of unwavering passion to make the world renewed with arts, science, and technology.  
+TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “Integrated Cloud Service” of NHN, as part of unwavering passion to make the world renewed with arts, science, and technology.  
 
 ## Features
 
