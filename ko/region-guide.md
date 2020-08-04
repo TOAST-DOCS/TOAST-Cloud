@@ -33,6 +33,8 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Image | 리전 | O | O | O | O |
 |  | Auto Scale | 리전 | O | O | O | O |
 |  | System Monitoring | 리전 | O | O | O | O |
+| Container | Kubernetes | 리전 | O |  |  |  |
+|  | Container Registry | 리전 | O |  |  |  |
 | Network | VPC | 리전 | O | O | O | O |
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
@@ -98,3 +100,4 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Online Contact | 글로벌 |  |  |  |  |
 | Bill | Bill (e-Tax) | 리전 | O |  |  |  |
 | IDC | TCC | 리전 | O |  |  |  |
+| CloudTail | CloudTail | 글로벌 |  |  |  |  |
