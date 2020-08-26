@@ -41,9 +41,9 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | 物理Load Balancer | リージョン | O | O |  |  |
 |  | DNS Plus | グローバル |  |  |  |  |
 | Storage | Block Storage | リージョン | O | O | O | O |
-|  | NAS (offline) | リージョン | O |  |  | O |
+|  | NAS (offline) | リージョン | O | O  |  | O |
 |  | Object Storage | リージョン | O | O | O | O |
-|  | Backup | リージョン | O |  | O |  |
+|  | Backup | リージョン | O | O  | O |  |
 | Database | RDS for MySQL | リージョン | O |  | O |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
 |  | EasyCache | リージョン | O |  | O |  |
@@ -59,9 +59,9 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Basic Security | リージョン | O |  |  |  |
 |  | CAPTCHA | リージョン | O |  |  |  |
 |  | OTP | リージョン | O |  |  |  |
-|  | DBSafer | リージョン | O |  |  |  |
-|  | Web Firewall | リージョン | O |  |  |  |
-|  | Vaccine | リージョン | O |  |  |  |
+|  | DBSafer | リージョン | O | O  |  |  |
+|  | Web Firewall | リージョン | O | O  |  |  |
+|  | Vaccine | リージョン | O | O |  |  |
 |  | Secure Key Manager | グローバル |  |  |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image | リージョン | O |  |  |  |
@@ -81,7 +81,7 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Corporation Search | リージョン | O |  |  |  |
 |  | Address Search | リージョン | O |  |  |  |
 | Dev Tools | Deploy | グローバル |  |  |  |  |
-| Management | Managed | リージョン | O |  |  |  |
+| Management | Managed | リージョン | O | O |  |  |
 |  | Service Monitoring | リージョン | O |  |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
 | Workplace Dooray! | Project | グローバル |  |  |  |  |
