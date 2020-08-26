@@ -41,9 +41,9 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | 물리 Load Balancer | 리전 | O | O |  |  |
 |  | DNS Plus | 글로벌 |  |  |  |  |
 | Storage | Block Storage | 리전 | O | O | O | O |
-|  | NAS (offline) | 리전 | O |  |  | O |
+|  | NAS (offline) | 리전 | O | O |  | O |
 |  | Object Storage | 리전 | O | O | O | O |
-|  | Backup | 리전 | O |  | O |  |
+|  | Backup | 리전 | O | O | O |  |
 | Database | RDS for MySQL | 리전 | O |  | O |  |
 |  | RDS for MS-SQL | 리전 | O |  |  |  |
 |  | EasyCache | 리전 | O |  | O |  |
@@ -59,9 +59,9 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Basic Security | 리전 | O |  |  |  |
 |  | CAPTCHA | 리전 | O |  |  |  |
 |  | OTP | 리전 | O |  |  |  |
-|  | DBSafer | 리전 | O |  |  |  |
-|  | Web Firewall | 리전 | O |  |  |  |
-|  | Vaccine | 리전 | O |  |  |  |
+|  | DBSafer | 리전 | O | O |  |  |
+|  | Web Firewall | 리전 | O | O |  |  |
+|  | Vaccine | 리전 | O | O |  |  |
 |  | Secure Key Manager | 글로벌 |  |  |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image | 리전 | O |  |  |  |
@@ -81,7 +81,7 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Corporation Search | 리전 | O |  |  |  |
 |  | Address Search | 리전 | O |  |  |  |
 | Dev Tools | Deploy | 글로벌 |  |  |  |  |
-| Management | Managed | 리전 | O |  |  |  |
+| Management | Managed | 리전 | O | O |  |  |
 |  | Service Monitoring | 리전 | O |  |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
 | Workplace Dooray! | Project | 글로벌 |  |  |  |  |

@@ -41,9 +41,9 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Physical Load Balancer | Regional | O | O |  |  |
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
-|  | NAS (offline) | Regional | O |  |  | O |
+|  | NAS (offline) | Regional | O | O |  | O |
 |  | Object Storage | Regional | O | O | O | O |
-|  | Backup | Regional | O |  | O |  |
+|  | Backup | Regional | O | O | O |  |
 | Database | RDS for MySQL | Regional | O |  | O |  |
 |  | RDS for MS-SQL | Regional | O |  |  |  |
 |  | EasyCache | Regional | O |  | O |  |
@@ -59,9 +59,9 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Basic Security | Regional | O |  |  |  |
 |  | CAPTCHA | Regional | O |  |  |  |
 |  | OTP | Regional | O |  |  |  |
-|  | DBSafer | Regional | O |  |  |  |
-|  | Web Firewall | Regional | O |  |  |  |
-|  | Vaccine | Regional | O |  |  |  |
+|  | DBSafer | Regional | O | O  |  |  |
+|  | Web Firewall | Regional | O | O  |  |  |
+|  | Vaccine | Regional | O | O |  |  |
 |  | Secure Key Manager | Global |  |  |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image | Regional | O |  |  |  |
@@ -81,7 +81,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Corporation Search | Regional | O |  |  |  |
 |  | Address Search | Regional | O |  |  |  |
 | Dev Tools | Deploy | Global |  |  |  |  |
-| Management | Managed | Regional | O |  |  |  |
+| Management | Managed | Regional | O | O |  |  |
 |  | Service Monitoring | Regional | O |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
 | Workplace Dooray! | Project | Global |  |  |  |  |
