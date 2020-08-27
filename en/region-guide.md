@@ -55,7 +55,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Smart Downloader | Global |  |  |  |  |
 | Security | AppGuard | Global |  |  |  |  |
 |  | Security Check | Regional | O |  |  |  |
-|  | Security Monitoring | Regional | O |  |  |  |
+|  | Security Monitoring | Regional | O | O |  |  |
 |  | Basic Security | Regional | O |  |  |  |
 |  | CAPTCHA | Regional | O |  |  |  |
 |  | OTP | Regional | O |  |  |  |

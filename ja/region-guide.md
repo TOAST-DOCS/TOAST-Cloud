@@ -55,7 +55,7 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Smart Downloader | グローバル |  |  |  |  |
 | Security | AppGuard | グローバル |  |  |  |  |
 |  | Security Check | リージョン | O |  |  |  |
-|  | Security Monitoring | リージョン | O |  |  |  |
+|  | Security Monitoring | リージョン | O | O |  |  |
 |  | Basic Security | リージョン | O |  |  |  |
 |  | CAPTCHA | リージョン | O |  |  |  |
 |  | OTP | リージョン | O |  |  |  |
