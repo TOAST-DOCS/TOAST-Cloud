@@ -55,7 +55,7 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Smart Downloader | 글로벌 |  |  |  |  |
 | Security | AppGuard | 글로벌 |  |  |  |  |
 |  | Security Check | 리전 | O |  |  |  |
-|  | Security Monitoring | 리전 | O |  |  |  |
+|  | Security Monitoring | 리전 | O |O |  |  |
 |  | Basic Security | 리전 | O |  |  |  |
 |  | CAPTCHA | 리전 | O |  |  |  |
 |  | OTP | 리전 | O |  |  |  |
