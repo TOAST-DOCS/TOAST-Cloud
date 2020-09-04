@@ -9,7 +9,7 @@
 ## ストア別アプリ内決済ガイド
 
 - [Android Developersアプリ内決済](https://developer.android.com/google/play/billing)
-- [ONE storeアプリ内決済API V5 (SDK V17)案内およびダウンロード](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
+- [ONE storeアプリ内決済API V5 (SDK V17)案内およびダウンロード](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 
 ## ライブラリ設定
 
@@ -51,7 +51,7 @@ AndroidManifest.xmlにmeta-dataを追加して、全決済画面（"full"）ま�
 | 全決済画面 | "full" |
 | ポップアップ決済画面 | "popup" |
 
-詳細については、[ワンストア決済画面設定]（https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17_04_preparation#HAndroidManifestD30CC77CC124C815）を確認してください。
+詳細については、[ワンストア決済画面設定]https://dev.onestore.co.kr/devpoc/reference/view/Tools）を確認してください。
 
 ## ストアコード
 

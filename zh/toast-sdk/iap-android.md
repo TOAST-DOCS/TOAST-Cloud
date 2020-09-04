@@ -10,7 +10,7 @@
 
 ## Store Types
 - [Google Play Store](https://developer.android.com/google/play/billing)
-- [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
+- [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 
 ## Library Setting
 - To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
@@ -51,7 +51,7 @@ If meta-data is not set, the default ("full") is applied.
 | Full Purchase Screen | "full" |
 | Popup Purchase Screen | "popup" |
 
-For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17_04_preparation#HAndroidManifestD30CC77CC124C815).
+For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/devpoc/reference/view/Tools).
 
 ## Store Codes
 
