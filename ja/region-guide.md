@@ -56,7 +56,7 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 | Security | AppGuard | グローバル |  |  |  |  |
 |  | Security Check | リージョン | O |  |  |  |
 |  | Security Monitoring | リージョン | O | O |  |  |
-|  | Basic Security | リージョン | O |  |  |  |
+|  | Basic Security | リージョン | O | O |  |  |
 |  | CAPTCHA | リージョン | O |  |  |  |
 |  | OTP | リージョン | O |  |  |  |
 |  | DBSafer | リージョン | O | O  |  |  |
@@ -82,7 +82,7 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Address Search | リージョン | O |  |  |  |
 | Dev Tools | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
-|  | Service Monitoring | リージョン | O |  |  |  |
+|  | Service Monitoring | グローバル |  |  |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
 | Workplace Dooray! | Project | グローバル |  |  |  |  |
 |  | Messenger | グローバル |  |  |  |  |
