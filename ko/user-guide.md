@@ -175,7 +175,7 @@ TOAST 서비스에서 관리하는 크레딧은 서비스 가입, 리워드, 이
 - TOAST 이용 금액 발생 시 크레딧이 있으면 자동으로 크레딧만큼 이용 금액을 차감합니다.
 - TOAST 이용 금액이 보유한 크레딧보다 많을 경우, 크레딧에서 차감하고 나머지 금액이 유료 과금됩니다.
 - 가입 축하 크레딧은 TOAST에서 제공하는 주요 서비스 이용 대금으로 이용할 수 있습니다.
-  예시 ) Compute > Instance (Network, OS 제외), Network > VPC, Network > 일반 Load Balancer, Storage 서비스 등
+  - 적용 서비스: Compute > Instance (Network, OS 제외), Network > VPC, 일반 Load Balancer, Storage> Block Storage, NAS (offline), Object Storage, Backup
 
 ## 회원 탈퇴
 ### 회원 탈퇴 신청
