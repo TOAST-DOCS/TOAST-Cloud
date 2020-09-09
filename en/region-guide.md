@@ -56,7 +56,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Security | AppGuard | Global |  |  |  |  |
 |  | Security Check | Regional | O |  |  |  |
 |  | Security Monitoring | Regional | O | O |  |  |
-|  | Basic Security | Regional | O |  |  |  |
+|  | Basic Security | Regional | O | O |  |  |
 |  | CAPTCHA | Regional | O |  |  |  |
 |  | OTP | Regional | O |  |  |  |
 |  | DBSafer | Regional | O | O  |  |  |
@@ -82,7 +82,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Address Search | Regional | O |  |  |  |
 | Dev Tools | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
-|  | Service Monitoring | Regional | O |  |  |  |
+|  | Service Monitoring | Global |  |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
 | Workplace Dooray! | Project | Global |  |  |  |  |
 |  | Messenger | Global |  |  |  |  |
