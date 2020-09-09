@@ -56,7 +56,7 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 | Security | AppGuard | 글로벌 |  |  |  |  |
 |  | Security Check | 리전 | O |  |  |  |
 |  | Security Monitoring | 리전 | O | O |  |  |
-|  | Basic Security | 리전 | O |  |  |  |
+|  | Basic Security | 리전 | O | O |  |  |
 |  | CAPTCHA | 리전 | O |  |  |  |
 |  | OTP | 리전 | O |  |  |  |
 |  | DBSafer | 리전 | O | O |  |  |
@@ -82,7 +82,7 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Address Search | 리전 | O |  |  |  |
 | Dev Tools | Deploy | 글로벌 |  |  |  |  |
 | Management | Managed | 리전 | O | O |  |  |
-|  | Service Monitoring | 리전 | O |  |  |  |
+|  | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
 | Workplace Dooray! | Project | 글로벌 |  |  |  |  |
 |  | Messenger | 글로벌 |  |  |  |  |
