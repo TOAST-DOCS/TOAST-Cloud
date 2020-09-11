@@ -1,5 +1,18 @@
 ## TOAST > TOAST SDK使用ガイド > リリースノート > iOS
 
+## 0.27.0 (2020.09.11)
+### TOAST Push
+#### 개선 사항
+* 안전성 개선
+
+### TOAST IAP
+#### 기능 추가
+* ToastProduct에 지역화된 상품정보 추가 (localizedTitle, localizedDescription)
+
+#### 기능 개선
+* iOS 14 beta 변경 사항 대응 
+    * 결제 실패 Delegate가 수신되지 않는 문제 개선
+    
 ## 0.26.0 (2020.07.28)
 ### TOAST Push
 #### 기능 추가

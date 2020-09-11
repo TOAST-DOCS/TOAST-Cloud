@@ -524,7 +524,7 @@ TOAST IAP 콘솔에 등록된 상품의 정보를 확인할 수 있습니다.
 @property (nonatomic, copy, readonly) NSString *productIdentifier;
 // 상품 고유 번호
 @property (nonatomic, readonly) long productSeq;
-// 상품 이름
+// 상품 이름 (IAP Console)
 @property (nonatomic, copy, readonly, nullable) NSString *productName;
 // 상품 유형
 @property (nonatomic, readonly) ToastProductType productType;
@@ -532,6 +532,10 @@ TOAST IAP 콘솔에 등록된 상품의 정보를 확인할 수 있습니다.
 @property (nonatomic, copy, readonly, nullable) NSDecimalNumber *price;
 // 통화
 @property (nonatomic, copy, readonly, nullable) NSString *currency;
+// 현지 상품 이름 (AppStoreConnect)
+@property (nonatomic, copy, readonly, nullable) NSString *localizedTitle;
+// 현지 상품 설명 (AppStoreConnect)
+@property (nonatomic, copy, readonly, nullable) NSString *localizedDescription;
 // 현지 가격
 @property (nonatomic, copy, readonly, nullable) NSString *localizedPrice;
 // 상품 활성화 여부

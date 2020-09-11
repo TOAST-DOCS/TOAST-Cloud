@@ -9,7 +9,7 @@
 ## 스토어별 인앱 결제 가이드
 
 - [Android Developers 인앱 결제](https://developer.android.com/google/play/billing)
-- [ONE store 인앱결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17)
+- [ONE store 인앱결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 
 ## 라이브러리 설정
 
@@ -17,7 +17,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.23.0'
+    implementation 'com.toast.android:toast-iap-google:0.23.1'
     ...
 }
 ```
@@ -26,7 +26,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.23.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.23.1'
     ...
 }
 ```
@@ -51,7 +51,7 @@ meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
 | 전체 결제 화면 | "full" |
 | 팝업 결제 화면 | "popup" |
 
-자세한 정보는 [원스토어 결제 화면 설정](https://dev.onestore.co.kr/devpoc/reference/view/IAP_v17_04_preparation#HAndroidManifestD30CC77CC124C815)을 확인하세요.
+자세한 정보는 [원스토어 결제 화면 설정](https://dev.onestore.co.kr/devpoc/reference/view/Tools)을 확인하세요.
 
 ## 스토어 코드
 
