@@ -33,8 +33,8 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Image | 리전 | O | O | O | O |
 |  | Auto Scale | 리전 | O | O | O | O |
 |  | System Monitoring | 리전 | O | O | O | O |
-| Container | Kubernetes | 리전 | O | O |  |  |
-|  | Container Registry | 리전 | O | O |  |  |
+| Container | Kubernetes | 리전 | O |  |  |  |
+|  | Container Registry | 리전 | O |  |  |  |
 | Network | VPC | 리전 | O | O | O | O |
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
@@ -44,9 +44,9 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | NAS (offline) | 리전 | O | O |  | O |
 |  | Object Storage | 리전 | O | O | O | O |
 |  | Backup | 리전 | O | O | O |  |
-| Database | RDS for MySQL | 리전 | O | O | O |  |
+| Database | RDS for MySQL | 리전 | O |  | O |  |
 |  | RDS for MS-SQL | 리전 | O |  |  |  |
-|  | EasyCache | 리전 | O | O | O |  |
+|  | EasyCache | 리전 | O |  | O |  |
 |  | MS-SQL Instance | 리전 | O | O | O | O |
 |  | MySQL Instance | 리전 | O | O | O | O |
 | Game | Gamebase | 글로벌 |  |  |  |  |
