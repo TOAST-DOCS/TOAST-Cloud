@@ -44,7 +44,7 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | NAS (offline) | リージョン | O | O  |  | O |
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O  | O |  |
-| Database | RDS for MySQL | リージョン | O |  | O |  |
+| Database | RDS for MySQL | リージョン | O | O | O |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
 |  | EasyCache | リージョン | O |  | O |  |
 |  | MS-SQL Instance | リージョン | O | O | O | O |
