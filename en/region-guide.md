@@ -33,8 +33,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image | Region | O | O | O | O |
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
-| Container | Kubernetes | Regional | O | O |  |  |
-|  | Container Registry | Regional | O | O |  |  |
+| Container | Kubernetes | Regional | O |  |  |  |
+|  | Container Registry | Regional | O |  |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
@@ -46,7 +46,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Backup | Regional | O | O | O |  |
 | Database | RDS for MySQL | Regional | O | O | O |  |
 |  | RDS for MS-SQL | Regional | O |  |  |  |
-|  | EasyCache | Regional | O | O | O |  |
+|  | EasyCache | Regional | O |  | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
