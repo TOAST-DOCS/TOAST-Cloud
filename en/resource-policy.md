@@ -19,6 +19,16 @@ Resource usage is calculated by the project, and the resource usage policy is ap
 |IP Access Control Group    | Per project |10|
 |IP Access Control Target | Per IP access control group    |1000|
 
+### Resource Supply Policy for Kubernetes Service  
+Resource policy is provided for Kubernetes service.  
+Resource usage is calculated for each project, and the policy is applied by the region. 
+
+|Resources | Criteria | Capacity | 
+|----|----|----|
+|Cluster	| Per project |3|
+|Worker Node Group	 | Per cluster |3 (including default worker node group)|
+
+
 ### Resource Usage Policy for Organization/Project 
 Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
 
