@@ -19,14 +19,14 @@ Resource usage is calculated by the project, and the resource usage policy is ap
 |IP Access Control Group    | Per project |10|
 |IP Access Control Target | Per IP access control group    |1000|
 
-### Kubernetes 서비스 리소스 제공 정책
-Kubernetes 서비스 리소스 제공 정책입니다. 
-리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다.
+### Resource Supply Policy for Kubernetes Service  
+Resource policy is provided for Kubernetes service.  
+Resource usage is calculated for each project, and the policy is applied by the region. 
 
-|리소스 | 제공 기준 | 제공량 | 
+|Resources | Criteria | Capacity | 
 |----|----|----|
-|클러스터	| 프로젝트당 |3개|
-|워커 노드 그룹	 | 클러스터당 |3개(기본 워커 노드 그룹 포함)|
+|Cluster	| Per project |3|
+|Worker Node Group	 | Per cluster |3 (including default worker node group)|
 
 
 ### Resource Usage Policy for Organization/Project 
