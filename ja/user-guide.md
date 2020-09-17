@@ -1,33 +1,12 @@
 ﻿## TOAST > TOAST使用ガイド
 このガイドではTOASTの利用方法を詳しく説明します。
 
-## 動画ガイド(韓国語) 
-主な内容を確認するには、下記の動画ガイドをご覧ください。
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zkh3VPCfc1E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## TOAST会員登録 
 
 ### 会員登録方法
 https://toast.comにアクセスし、画面右上にある**会員登録**をクリックします。
 会員登録の方法は次の通りです。
-
-#### 会員登録時に「韓国」を選択した会員 
-
-- 個人会員登録（表示言語：韓国語の場合の手続き例）
-
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_20200710.png)
-
-- 事業者会員登録（表示言語：韓国語の場合の手続き例）
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_20200710.png)
-
-#### 会員登録時に「日本」を選択した会員 
-
-- 個人会員登録（表示言語：日本語の場合の手続き例）
 ![userguide_03_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_03_20200710_ja.png)
-
-- 事業者会員登録（表示言語：日本語の場合の手続き例）
-![userguide_08_20200521_ja](https://static.toastoven.net/toast/user_guide/userguide_08_20200710_ja.png)
-
 
 #### 国選択 
 TOAST会員は、会員登録時に選択した国によって韓国会員(NHN)と日本会員(NHN Japan)に分類されます。
