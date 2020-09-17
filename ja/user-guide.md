@@ -1,4 +1,4 @@
-﻿## TOAST > TOAST使用ガイド
+## TOAST> TOAST使用ガイド
 このガイドではTOASTの利用方法を詳しく説明します。
 
 ## TOAST会員登録 
