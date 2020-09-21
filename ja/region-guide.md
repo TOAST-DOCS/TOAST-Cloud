@@ -33,8 +33,8 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Image | リージョン | O | O | O | O |
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | System Monitoring | リージョン | O | O | O | O |
-| Container | Kubernetes | リージョン | O |  |  |  |
-|  | Container Registry | リージョン | O |  |  |  |
+| Container | Kubernetes | リージョン | O | O |  |  |
+|  | Container Registry | リージョン | O | O |  |  |
 | Network | VPC | リージョン | O | O | O | O |
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |
