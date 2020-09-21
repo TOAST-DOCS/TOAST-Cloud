@@ -46,7 +46,7 @@ TOAST는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전�
 |  | Backup | 리전 | O | O | O |  |
 | Database | RDS for MySQL | 리전 | O | O | O |  |
 |  | RDS for MS-SQL | 리전 | O |  |  |  |
-|  | EasyCache | 리전 | O |  | O |  |
+|  | EasyCache | 리전 | O | O | O |  |
 |  | MS-SQL Instance | 리전 | O | O | O | O |
 |  | MySQL Instance | 리전 | O | O | O | O |
 | Game | Gamebase | 글로벌 |  |  |  |  |
