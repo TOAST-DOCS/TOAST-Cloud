@@ -46,7 +46,7 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Backup | リージョン | O | O  | O |  |
 | Database | RDS for MySQL | リージョン | O | O | O |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
-|  | EasyCache | リージョン | O |  | O |  |
+|  | EasyCache | リージョン | O | O | O |  |
 |  | MS-SQL Instance | リージョン | O | O | O | O |
 |  | MySQL Instance | リージョン | O | O | O | O |
 | Game | Gamebase | グローバル |  |  |  |  |

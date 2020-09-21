@@ -46,7 +46,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Backup | Regional | O | O | O |  |
 | Database | RDS for MySQL | Regional | O | O | O |  |
 |  | RDS for MS-SQL | Regional | O |  |  |  |
-|  | EasyCache | Regional | O |  | O |  |
+|  | EasyCache | Regional | O | O | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
