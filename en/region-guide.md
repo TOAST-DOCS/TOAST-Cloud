@@ -33,8 +33,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image | Region | O | O | O | O |
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
-| Container | Kubernetes | Regional | O |  |  |  |
-|  | Container Registry | Regional | O |  |  |  |
+| Container | Kubernetes | Regional | O | O |  |  |
+|  | Container Registry | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
