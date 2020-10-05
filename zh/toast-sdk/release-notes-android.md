@@ -1,10 +1,19 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.23.2 (2020.10.06)
+
+### TOAST IAP
+
+#### Fixed
+
+* 구독 이슈 수정.
+  * 구독이 "계정 보류" 또는 "유예 기간" 상태에서 결제 수단 수정으로 복원된 경우 IapService.PurchasesUpdatedListener를 통해 에러가 통지되지 않도록 수정하였습니다.
+
 ## 0.23.1 (2020.09.11)
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * 토큰 등록 로직 개선
 
@@ -12,7 +21,7 @@
 
 ### TOAST Push
 
-#### 기능 추가
+#### Added
 
 * 사용자 태그 기능 지원
 
@@ -20,7 +29,7 @@
 
 ### TOAST IAP
 
-#### 기능 개선
+#### Improved
 
 `TOAST IAP SDK 0.22.0 이상으로 업데이트 시 반드시 강제 업데이트를 진행해야 합니다.`
 
@@ -28,7 +37,7 @@
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * 기본 알림 옵션 설정 기능 개선
 
@@ -36,7 +45,7 @@
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * 토큰 등록 기능 개선
 
@@ -44,13 +53,13 @@
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * 안전성 개선
 
 ### TOAST Logger
 
-#### 기능 개선
+#### Improved
 
 * Native Crash Reporting 기능 개선
 
@@ -58,13 +67,13 @@
 
 ### TOAST Logger
 
-#### 기능 추가
+#### Added
 
 * Native Crash Reporting (NDK) 기능 추가
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * 기본 알림 옵션에 설정 가능한 항목 추가
     * 포그라운드 알림 노출 여부 설정이 추가되었습니다.
@@ -74,7 +83,7 @@
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * 토큰 등록 기능 개선
     * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
@@ -84,7 +93,7 @@
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * 지표 수집 기능 개선
 * 기본 알림 채널 생성 로직 개선
@@ -93,7 +102,7 @@
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * Assets 리소스 지원
   * Assets 경로의 이미지 리소스를 지원합니다.
@@ -102,11 +111,11 @@
 
 ### TOAST IAP
 
-#### 기능 개선
+#### Improved
 * 보안 강화
     * 내부 보안 정책을 강화하였습니다.
 
-#### 버그 수정
+#### Fixed
 
 * "Bad base64 Exception" 오류 수정
   * TOAST SDK를 사용하지 않은 결제건 처리 시에 "Bad Base64 Exception"이 발생하는 오류를 수정하였습니다.
@@ -115,16 +124,16 @@
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * (구) pushsdk 데이터 마이그레이션 지원.
     * (구) pushsdk 에서 업데이트 한 경우 모든 데이터를 TOAST SDK 로 마이그레이션 합니다.
-    
+
 ## 0.19.3 (2019.10.18)
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * 토큰 등록 기능 개선.
 
@@ -132,23 +141,23 @@
 
 ### TOAST Push
 
-#### 기능 추가
+#### Added
 
 * 알림 클릭시 통지 기능 추가.
     * 사용자가 알림을 클릭하여 앱이 실행되었을 때에 대한 리스너를 등록할 수 있습니다.
 * 배지 기능 지원.
     * 알림 수신시 배지 아이콘과 앱 숏컷 화면에 배지 카운트가 노출됩니다.
 
-#### 기능 개선
+#### Improved
 
 * 알림 기본 스타일 지정.
     * 미디어를 포함하지 않는 알림은 BigTextStyle 로 지정되어 두 줄 이상의 메시지도 표현됩니다.
-    
+
 ## 0.19.1 (2019.10.02)
 
 ### TOAST IAP
 
-#### 기능 추가
+#### Added
 
 * Unity Android IAP Plugin에 구매 요청 시 사용자 데이터를 영수증에 포함할 수 있는 기능이 추가되었습니다.
 
@@ -156,13 +165,13 @@
 
 ### TOAST IAP
 
-#### 기능 추가
+#### Added
 
 * Android IAP 라이브러리에 구매 요청 시 사용자 데이터를 영수증에 포함할 수 있는 기능이 추가되었습니다.
 
 ### TOAST Push
 
-#### 기능 개선
+#### Improved
 
 * 사용자 정의 메시지 리시버 사용성 개선.
     * 알림 노출 요청시 사용자 콘텐츠 인텐트 타입이 PendingIntent 로 변경되었습니다.
@@ -171,18 +180,18 @@
 
 ### TOAST IAP
 
-#### 기능 추가
+#### Added
 
 * 소비성 구독 상품 추가.
     * 상품 타입에 소비 가능한 구독 상품이 추가되었습니다.
 
-#### 버그 수정
+#### Fixed
 
 * 구글 플레이 스토어 앱 업데이트 시, 결제 결과가 2회 이상 통지되는 오류가 수정되었습니다.
 
 ### TOAST Push
 
-#### 기능 추가
+#### Added
 
 * 기본 알림 옵션 설정 기능 추가.
     * 작은 아이콘, 진동, 알림음 등의 기본 옵션을 설정할 수 있습니다.
@@ -191,7 +200,7 @@
 
 ### TOAST Push
 
-#### 기능 추가
+#### Added
 
 * 커스텀 리시버 사용시 메시지 객체내에 FCM 발신자 ID 정보 추가.
 
@@ -199,14 +208,14 @@
 
 ### TOAST Push
 
-#### 기능 추가
+#### Added
 
 * 토큰 정보 업데이트 기능 추가.
     * 언어 및 국가 정보 등의 정보를 업데이트할 수 있습니다.
 * 메시지 수신 통지 기능 추가.
 * 리치 메시지 버튼의 액션("Open", "Dismiss", "Reply", etc) 통지 기능 추가.
 
-#### 기능 개선
+#### Improved
 
 * 초기화 개선.
     * PushType ("FCM", "TENCENT", etc)으로 초기화가 가능합니다.
@@ -220,14 +229,14 @@
 
 ### TOAST IAP
 
-#### 기능 개선
+#### Improved
 
 * 사용자 아이디가 변경되었을 때 동작 개선
 * (구)IAP SDK v1.5.3 이전 결제건의 재처리 개선
 
 ### TOAST Logger
 
-#### 버그 수정
+#### Fixed
 
 * 크래시 오류 수정
 
@@ -237,111 +246,111 @@
 
 #### Fixed
 
-* 'toast-sdk'에서 'toast-push-tencent' 의존성 제거.
+* Removed 'toast-push-tencent' dependencies from 'toast-sdk'.
 
 ## 0.16.0 (2019.04.23)
 
 ### TOAST Push
 
-#### 기능 추가
+#### Added
 
-* Tencent 푸시 추가.
-* 사용자 메시지 처리 기능 추가.
-    * 메시지가 수신되면 사용자가 정의한 receiver가 메시지를 처리합니다.
+* Added Tencent Push.
+* Added CustomReceiver.
+    * Once the message is received, the message is processed by a user-defined receiver.
 
 ## 0.15.0 (2019.03.26)
 
 ### TOAST Log & Crash
 
-#### 기능 개선
+#### Improved
 
-* ProjectKey가 AppKey로 명칭 변경
-    * 기존 setProjectKey는 계속 사용 가능
+* Rename ProjectKey to AppKey
+    * setProjectKey is still available
 
 ### TOAST IAP
 
-#### 기능 추가
+#### Added
 
-* 중국 마켓 추가.
+* Added chinese markets.
 
 ### TOAST Push
 
-#### 기능 추가
+#### Added
 
-* 토큰 해제 API 추가.
-* sound 필드 추가시 알림의 소리를 설정할 수 있는 기능 추가.
-    * 안드로이드 8.0 미만에서만 동작
+* Added API to unregister a token.
+* Added a feature that sets notification's sound when adding a 'sound' field.
+    * Only under Android 8.0
 
 ## 0.14.3 (2019.03.08)
 
 ### TOAST IAP
 
-#### 버그 수정
+#### Fixed
 
-* 앱에서 Proguard를 적용하는 경우, API가 정상적으로 동작하지 않는 문제 해결.
+* Fixed a issue that doesn't work APIs when a application applies Proguard.
 
 ## 0.14.2 (2019.03.04)
 
 ### TOAST Push
 
-#### 버그 수정
+#### Fixed
 
-* FCM 토큰을 획득할 수 없는 경우, 크래시가 발생하는 문제 해결
+* Fixed a crash that occurs when could not obtain a FCM token.
 
 ## 0.14.1 (2019.01.29)
 
 ### TOAST IAP
 
-#### 버그 수정
+#### Fixed
 
-* (구)IAP SDK 결제건을 처리하지 못하는 에러 수정.
+* Fixed an error that could not reprocess old IAP SDK purchases.
 
 ## 0.14.0 (2019.01.08)
 
 ### TOAST IAP
 
-#### 기능 추가
+#### Added
 
-* TOAST IAP Unity Plugin 추가.
+* Added TOAST IAP Unity Plugin.
 
 ## 0.13.0 (2018.12.27)
 
 ### TOAST Core
 
-#### 기능 개선
+#### Improved
 
-* ToastSdk.initialize() 메소드 deprecated.
-    * Application 시작 시에 자동으로 호출되도록 변경
+* ToastSdk.initialize() is deprecated.
+    * It is called automatically on application start.
 
 ### TOAST Push
 
-#### 기능 추가
+#### Added
 
-* 신규 기능 추가
+* New Functions
     * Firebase Cloud Messaging(FCM)
 
 ## 0.12.0 (2018.12.04)
 
 ### TOAST IAP
 
-#### 추가 사항
+#### Added
 
-* 신규 기능 추가
-    * Google Play 스토어(소비성 상품, 구독 상품)
-    * ONE store(소비성 상품)
+* New Functions
+    * Google Play Store (One-Time/Subscription Products)
+    * ONE store (One-Time Products)
 
 ## 0.11.0 (2018.11.20)
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### Added
 
-* Network Insights 기능 추가
+* Network Insights
 
 ## 0.9.0 (2018.09.04)
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### Added
 
-* 신규 기능 추가
+* New Functions
