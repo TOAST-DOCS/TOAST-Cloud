@@ -284,6 +284,7 @@ Dooray!サービスは、該当サービスコンソール画面でIP ACLを設�
 | RDS for MySQL | ADMIN | RDS for MySQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| EasyCache | MEMBER | EasyCacheサービスレプリケーショングループメニューRead(読込)、モニタリングメニューRead(読込) |
 | Gamebase | ADMIN | Gamebaseサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Leaderboard | MEMBER | Leaderboardサービスに対するRead(読み取り |
