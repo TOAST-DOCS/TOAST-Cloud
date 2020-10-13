@@ -38,10 +38,12 @@ It helps to make use of TOAST Service more efficiently.
 After an organization is created, you can select services.
 Following services are available at the level of organization:
 
-- ERP
 - Dooray!
+- ERP
+- Groupware
 - Contact Center
 - IDC
+- CloudTrail
 
 ### Guide to Create Organizations
 
@@ -81,19 +83,20 @@ You can select services, once a project is created.
 Following services can be enabled by each project:
 
 - Compute
-- Storage
+- Container
 - Network
+- Storage
 - Database
+- Game
 - Security
 - Content Delivery
-- Dev Tool
-- Management
-- Game
 - Notification
+- Mobile Service
 - Analytics
 - Application Service
 - Search
-- Mobile Service
+- Dev Tool
+- Management
 - Bill
 
 
@@ -109,10 +112,10 @@ Following services can be enabled by each project:
 
 ### Guide to Enable Project Service
 
-![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
+![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202010.png)
 
 1. Click **Select Services**, after a project is created, to enable services you need
-2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
+2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. 
 3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
 
 ### Delete Projects
@@ -123,52 +126,22 @@ You can immediately pay for all the resources that have used before deleting a p
 However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
 
 ## Manage Members
-#### Organization Members
+멤버 관리를 통해 사용자별 인증(로그인) 및 권한 부여를 통해 통제할 수 있습니다. 
+프로젝트와 조직에서 멤버 관리를 별도로 할 수 있습니다. 
+멤버는 TOAST 회원과 IAM 회원으로 구분됩니다.
+
+#### TOAST 회원과 IAM 회원 정책
 
 | Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
 | :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Definition                    | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
 | Method of Member Registration | \- Owner/Admin of an organization enters TOAST ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
 | Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
+| 콘솔 접근      | \- TOAST 콘솔(https://console.toast.com/) 접근 <br>\- TOAST> 회원 ID/PW로 로그인<br> (선택) 2차(Email 또는 SMS) 인증 | \- IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br> \- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br> \- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
-Each member of an organization has following roles:
-
-| Action               | Role                                              | Owner | Admin | Member | Billing Viewer | Log Viewer |
-| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---- |
-| Manage Organizations | Create Organizations                              | O     |       |        |                |      |
-|                      | Modify Organizations                              | O     | O     |        |                |      |
-|                      | Delete Organizations                              | O     |       |        |                |      |
-| Manage Members       | Register Organization Members                     | O     | O     |        |                |      |
-|                      | Delete Organization Members                       | O     | O     |        |                |      |
-| Manage Services      | Enable Organization Services                      | O     | O     |        |                |      |
-|                      | Disable Organization Services                     | O     | O     |        |                |      |
-| Manage Payment       | Query Bills                                       | O     |       |        |                |      |
-|                      | Status of Service Use                             | O     | O     |        | O              |      |
-| Manage Projects      | Creat Projects                                    | O     | O     | O      |                |      |
-| Manage Projects      | Delete Projects                                   | O     |       |        |                |      |
-| Manage User Action Log | Query User Action Logs                          |       |       |        |                |  O   |
-
-#### Project Members
-
-Project members are also members of TOAST.com. 
-You can be a project member, if not an organization member.
-
-Each project member has the following roles:
-
-| Action                | Role                                            | ADMIN | MEMBER |  Billing Viewer | 
-| --------------------- | ----------------------------------------------- | ----- | ------ |  -------------- |
-| Manage Members        | Register Project Members                        | O     |        |                 |
-|                       | Delete Project Members                          | O     |        |                 |
-| Manage Service        | Enable Service                                  | O     |        |                 |
-|                       | Disable Service                                 | O     |        |                 |
-| Status of Service Use | Status of Service Use                           | O     |        |  O              |
-| Manage Projects       | Delete Projects                                 | O     |        |                 |
-
-
-
-## IAM Console 
 ### Security Setting for IAM Console Logins 
 To tighten console access security for IAM members, [Login Security Setting] is provided.  
+모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
 
 ![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
 
@@ -225,6 +198,29 @@ Dooray! Service allows the IP ACL setting on the console page of each service.
     - Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
     - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
 
+### Organization Members
+- 조직의 OWNER는 계정의 모든 권한 부여하고 서비스를 신청할 수 있습니다. 
+- OWNER는 회원을 등록하여 조직별 관리 권한을 부여할 수 있습니다.
+
+#### Organization Role of TOAST Members 
+
+| Action               | Role                                              | Owner | Admin | Member | Billing Viewer | Log Viewer |
+| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---- |
+| Manage Organizations | Create Organizations                              | O     |       |        |                |      |
+|                      | Modify Organizations                              | O     | O     |        |                |      |
+|                      | Delete Organizations                              | O     |       |        |                |      |
+| Manage Members       | Register Organization Members                     | O     | O     |        |                |      |
+|                      | Delete Organization Members                       | O     | O     |        |                |      |
+| Manage Services      | Enable Organization Services                      | O     | O     |        |                |      |
+|                      | Disable Organization Services                     | O     | O     |        |                |      |
+| Manage Payment       | Query Bills                                       | O     |       |        |                |      |
+|                      | Status of Service Use                             | O     | O     |        | O              |      |
+| Manage Projects      | Creat Projects                                    | O     | O     | O      |                |      |
+| Manage Projects      | Delete Projects                                   | O     |       |        |                |      |
+| Manage User Action Log | Query User Action Logs                          |       |       |        |                |  O   |
+
+
+
 #### Organization Role of IAM Members 
 - Each organization service (e.g. Online Contact, Dooray!) provides different configuration role. 
 - IAM members have the following roles for the use of the Cloud console. 
@@ -233,10 +229,7 @@ Dooray! Service allows the IP ACL setting on the console page of each service.
 
 | Task     | Role                           | MEMBER |
 | ------------- | ----------------------------------- | ----- |
-| Service Management | Activating project service | O     |
-|               | Deactivating project service | O     |
 | Project Management | Creating projects | O     |
-|              | Deleting projects (which have been created) | O     |
 
 ### Project Members
 Even a non-organization member can serve as project member. 
