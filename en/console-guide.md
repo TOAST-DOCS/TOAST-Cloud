@@ -126,22 +126,15 @@ You can immediately pay for all the resources that have used before deleting a p
 However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
 
 ## Manage Members
-멤버 관리를 통해 사용자별 인증(로그인) 및 권한 부여를 통해 통제할 수 있습니다. 
-프로젝트와 조직에서 멤버 관리를 별도로 할 수 있습니다. 
-멤버는 TOAST 회원과 IAM 회원으로 구분됩니다.
-
-#### TOAST 회원과 IAM 회원 정책
 
 | Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
 | :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Definition                    | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
 | Method of Member Registration | \- Owner/Admin of an organization enters TOAST ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
 | Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
-| 콘솔 접근      | \- TOAST 콘솔(https://console.toast.com/) 접근 <br>\- TOAST> 회원 ID/PW로 로그인<br> (선택) 2차(Email 또는 SMS) 인증 | \- IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br> \- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br> \- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 ### Security Setting for IAM Console Logins 
 To tighten console access security for IAM members, [Login Security Setting] is provided.  
-모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
 
 ![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
 
@@ -199,8 +192,6 @@ Dooray! Service allows the IP ACL setting on the console page of each service.
     - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
 
 ### Organization Members
-- 조직의 OWNER는 계정의 모든 권한 부여하고 서비스를 신청할 수 있습니다. 
-- OWNER는 회원을 등록하여 조직별 관리 권한을 부여할 수 있습니다.
 
 #### Organization Role of TOAST Members 
 
