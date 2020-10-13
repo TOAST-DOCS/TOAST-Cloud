@@ -41,8 +41,9 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 조직이 생성되면, 서비스를 선택할 수 있습니다.
 조직 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
 
-- ERP
 - Dooray!
+- ERP
+- Groupware
 - Contact Center
 - IDC
 - CloudTrail
@@ -85,19 +86,20 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 프로젝트 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
 
 - Compute
-- Storage
+- Container
 - Network
+- Storage
 - Database
+- Game
 - Security
 - Content Delivery
-- Dev Tool
-- Management
-- Game
 - Notification
+- Mobile Service
 - Analytics
 - Application Service
 - Search
-- Mobile Service
+- Dev Tool
+- Management
 - Bill
 
 ### 프로젝트 생성 가이드
@@ -114,12 +116,12 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 
 ### 프로젝트 서비스 활성화 가이드
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202010.png)
 
 <center>[그림 3] 프로젝트 서비스 활성화 </center>
 
 1. 프로젝트 생성 후, **서비스 선택** 버튼을 클릭하여 프로젝트에서 사용할 서비스를 선택할 수 있습니다.
-2. 서비스 선택 화면에서 활성화할 서비스를 선택합니다. 서비스를 활성화할지 묻는 메시지가 나타나면 **확인**을 클릭합니다. 서비스를 이용할 수 있는 페이지로 이동한다는 안내 메시지가 나타나면 **확인**을 클릭합니다.
+2. 서비스 선택 화면에서 활성화할 서비스를 선택합니다. 서비스를 활성화할지 묻는 메시지가 나타나면 **확인**을 클릭합니다. 
 3. 활성화한 서비스 목록은 콘솔 왼쪽 메뉴에서 확인할 수 있습니다. 목록에서 원하는 서비스를 클릭하면 서비스 이용 화면이 나타납니다.
 
 ### 프로젝트 삭제
@@ -141,7 +143,7 @@ TOAST Console은 아래와 같은 기능을 제공합니다.
 | 정의           | \- 조직 관리를 위한 멤버<br>\- TOAST 이용 약관에 동의한 TOAST 회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버 <br>\- TOAST 서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 TOAST 회원으로 존재 | \- 서비스 이용을 위한 멤버<br>\- TOAST 이용 약관에 동의하지 않은 멤버<br>\- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
 | 멤버 등록 방법 | \- 조직의 OWNER나 ADMIN이 TOAST ID를 입력하여 등록          | \- 조직의 OWNER나 ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>\- SSO 연동/API 연동 등을 통해 등록 |
 | 멤버 권한      | \- 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리\)<br>\- 프로젝트 생성<br>\- 프로젝트 삭제 | \- 조직 서비스 이용 |
-| 콘솔 접근      | \- TOAST 콘솔(https://console.toast.com/) 접근 <br>\- TOAST> 회원 ID/PW로 로그인<br> | \- IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br> \- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br> \- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
+| 콘솔 접근      | \- TOAST 콘솔(https://console.toast.com/) 접근 <br>\- TOAST> 회원 ID/PW로 로그인<br> (선택) 2차(Email 또는 SMS) 인증 | \- IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br> \- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br> \- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 ### IAM 콘솔 로그인 보안 설정
 - IAM 회원의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다. 
@@ -223,21 +225,17 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 |               | 이용 현황                           | O     | O     |        | O              |  |
 | 프로젝트 관리 | 프로젝트 생성                       | O     | O     | O      |                |  |
 |               | 프로젝트 삭제                      | O     | O     |        |                |  |
-|               | 프로젝트 삭제(생성한 프로젝트)      | O     | O     | O      |                |  |
 | 사용자 Action 로그 관리 | 사용자 Action 로그 조회            | O     | O     |       |                | O |
 
 #### IAM 회원의 조직 권한 
 - 조직 서비스별(Online Contact, Dooray! 등) 설정할 수 있는 권한이 다릅니다. 
 - IAM 회원이 이용하는 Cloud 콘솔에 대한 권한은 아래와 같습니다.
     - MEMBER 권한은 원하는 경우에만 선택적으로 부여할 수 있습니다. 
-    - 권한이 없는 IAM 회원은 프로젝트 생성이나 삭제, 서비스 활성화 등을 할 수 없습니다. 멤버로 등록된 프로젝트만 서비스를 이용할 수 있습니다. 
+    - MEMBER 권한이 부여되면 프로젝트를 직접 생성할 수 있습니다.
 
 | 작업          | 역할                                | MEMBER |
 | ------------- | ----------------------------------- | ----- |
-| 서비스 관리   | 프로젝트 서비스 활성화    | O     |
-|               | 프로젝트 서비스 비활성화 | O     |
 | 프로젝트 관리 | 프로젝트 생성             | O     |
-|              | 프로젝트 삭제(생성한 프로젝트)  | O     |
 
 ### 프로젝트 멤버
 조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
