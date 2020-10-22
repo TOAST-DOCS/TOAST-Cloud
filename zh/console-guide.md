@@ -40,8 +40,9 @@ TOAST Console提供如下功能。
 创建组织后，可选择服务。
 可以以组织为单位启用的服务如下。
 
-- ERP
 - Dooray!
+- ERP
+- Groupware
 - Contact Center
 - IDC
 - CloudTrail
@@ -84,19 +85,20 @@ TOAST Console提供如下功能。
 可以以项目为单位启用的服务如下。
 
 - Compute
-- Storage
+- Container
 - Network
+- Storage
 - Database
+- Game
 - Security
 - Content Delivery
-- Dev Tool
-- Management
-- Game
 - Notification
+- Mobile Service
 - Analytics
 - Application Service
 - Search
-- Mobile Service
+- Dev Tool
+- Management
 - Bill
 
 ### 创建项目指南
@@ -113,12 +115,12 @@ TOAST Console提供如下功能。
 
 ### 启用项目服务指南
 
-![console_guide_8_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
+![console_guide_8_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202010.png)
 
 <center>[图3] 启用项目服务 </center>
 
 1. 创建项目后，单击**选择服务**按钮，可以选择项目中要使用的服务。
-2. 在选择服务界面中选择要激活的服务。显示询问是否要激活服务的信息后，单击**确认**。显示提示移动至可以使用服务的页面信息后，单击**确认**按钮。
+2. 在选择服务界面中选择要激活的服务。显示询问是否要激活服务的信息后，单击**确认**。
 3. 启用的服务列表可以在控制台左侧菜单中确认。在列表中单击所需服务，显示服务使用界面。
 
 ### 删除项目
