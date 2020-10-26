@@ -1,5 +1,17 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.24.0 (2020.10.27)
+
+### TOAST Push
+
+#### Improved
+
+* 알림 답장 기능 미지원 단말기에서는 답장 기능의 버튼이 생성되지 않도록 수정
+
+#### Fixed
+
+* 특정 상황에서 알림 채널이 새로 생성되는 버그 수정
+
 ## 0.23.2 (2020.10.06)
 
 ### TOAST IAP
