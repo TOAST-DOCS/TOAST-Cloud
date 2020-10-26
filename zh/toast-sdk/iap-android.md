@@ -411,6 +411,99 @@ void queryActivatedPurchases() {
 }
 ```
 
+## 구글 스토어 구독(정기 결제) 기능
+
+구글 스토어의 구독 결제의 갱신 및 만료와 같은 수명주기에 따른 이벤트를 처리하는 방법을 설명합니다.
+자세한 사항은 [정기 결제별 기능 추가](https://developer.android.com/google/play/billing/billing_subscriptions)을 참고하세요.
+
+### 구독 수명 주기 처리
+
+구글 스토어의 구독은 수명주기 동안 다양한 상태 변경을 거치며 앱은 각 상태에 따라 대응해야합니다.
+
+* **활성화 상태(Active)**: 정기 결제 콘텐츠에 엑세스 할 수 있으며 자동 갱신이 진행되는 상태
+* **취소(Cancelled)**: 정기 결제 콘텐츠에 엑세스 할 수 있으나 사용자가 구독 상품을 더 이상 사용하지 않는다고 취소하여 자동 갱신이 정지된 상태
+* **유예 기간 (In grace period)**: 결제 수단 문제로 정기 결제가 실패하였으나 정기 결제 콘텐츠에는 엑세스 할 수 있는 상태 (사용자가 결제 수단을 변경하기를 기다리는 상태)
+* **계정 보류 (On hold)**: 결제 수단 문제로 정기 결제가 실패하여 보류 상태 (유예 기간이 사용 설정되어있다면 유예 기간 동안 결제 수단을 변경하지 않아 결제가 보류된 상태)
+* **일시중지 (Pause)**: 정기 결제 상품을 일시적으로 중지한 상태
+* **만료 (Expired)**: 정기 결제 상품이 만료된 상태
+
+| 상태 | 미소비 결제 조회<br>(ToastIap.queryConsumablePurchases) | 활성화된 구독 조회<br>(ToastIap.queryActivatedPurchases) | 만료 시간 | 자동 갱신 여부 |
+| --- | --- | --- | --- | --- |
+| 활성화 상태 (Active) | Yes | Yes | 미래시간 | Yes |
+| 취소 (Cancelled) | Yes | Yes | 미래시간 | No |
+| 유예 기간 (In grace period) | No | Yes | 미래시간 | Yes |
+| 계정 보류 (On hold) | No | No | 과거시간 | Yes |
+| 일시중지 (Pause) | No | No | 과거시간 | Yes |
+| 만료 (Expired) | No | No | 과거시간 | No |
+
+### 유예 기간
+
+유예 기간이 사용 설정된 경우 결제 주기가 끝날 때 결제 수단에 문제가 있다면 정기 결제는 유예 기간으로 전환됩니다.
+<span style="color:#e11d21">유예 기간 동안 사용자는 정기 결제 콘텐츠에 엑세스 할 수 있어야 합니다.</span>
+자세한 사항은 [유예 기간](https://developer.android.com/google/play/billing/subs#grace)을 참고하세요.
+
+> <span style="color:#e11d21">**주의!)**</span> 유예 기간 중 결제 수단 수정 등으로 복원되면 자동 갱신을 재개합니다. TOAST IAP는 갱신된 결제건을 결제 업데이트 리스너(IapService.PurchaseUpdatedListener)를 통해 결제 결과를 통지합니다. 게임이나 앱은 중요한 동작 중 결제 업데이트 리스너에 의해 불필요한 팝업이 사용자에게 노출되지 않도록 주의해야합니다.
+
+#### 일반 구독 상품 (AUTO_RENEWABLE))
+
+* 유예 기간 동안 일반 구독 상품은 정기 결제 콘텐츠에 엑세스 할 수 있어야 합니다.
+* 유예 기간 동안 ToastIap.queryActivatedPurchases()로 조회할 수 있습니다.
+
+#### 소비성 구독 상품 (CONSUMABLE_AUTO_RENEWABLE)
+
+* 유예 기간이 시작되면 구글은 새로운 영수증을 발급하나 결제 수단을 수정하지 않으면 계정 보류 상태가 되거나 취소됩니다.
+* 소비성 구독 상품은 유예 기간 동안 상품을 소비할 수 없도록 ToastIap.queryConsumablePurchases()로 조회되지 않습니다.
+
+### 계정 보류
+
+계정 보류는 결제 수단 문제로 갱신이 실패했을 때의 사용자 상태를 말합니다.
+결제에 실패하면 유예 기간 동안 재시도하고, 유예 기간 동안에도 결제가 실패하면 정기 결제 상태는 보류 상태가 됩니다.
+계정 보류 상태가 사용자는 정기 결제 콘텐츠에 액세스 할 수 없습니다.
+계정 보류 기간은 최대 30일입니다.
+계정 보류 기간이 종료되기 전에 결제 수단을 수정하지 않으면 취소 처리됩니다.
+자세한 사항은 [계정 보류](https://developer.android.com/google/play/billing/subs#account-hold)를 참고하세요.
+
+> <span style="color:#e11d21">**주의!)**</span> 계정 보류 기간 중 결제 수단 수정 등으로 복원되면 자동 갱신을 재개합니다. TOAST IAP는 갱신된 결제건을 결제 업데이트 리스너(IapService.PurchaseUpdatedListener)를 통해 결제 결과를 통지합니다. 게임이나 앱은 중요한 동작 중 결제 업데이트 리스너에 의해 불필요한 팝업이 사용자에게 노출되지 않도록 주의해야합니다.
+
+#### 일반 구독 상품 (AUTO_RENEWABLE))
+
+* 계정 보류 기간 동안 일반 구독 상품은 정기 결제 콘텐츠에 엑세스 할 수 없습니다.
+* 계정 보류 기간 동안 ToastIap.queryActivatedPurchases()로 조회되지 않습니다.
+
+#### 소비성 구독 상품 (CONSUMABLE_AUTO_RENEWABLE)
+
+* 계정 보류 기간 동안 소비성 구독 상품은 새로운 구매를 생성하지 않습니다.
+* 계정 보류 기간 동안 ToastIap.queryConsumablePurchases()로 새로운 구매가 조회되지 않습니다.
+
+### 일시중지
+
+일시중지 기능을 설정하면 사용자가 정기 결제를 1주일에서 3개월 사이로 일시중지 할 수 있습니다.
+정기 결제 일시중지는 현재 구독 기간이 종료된 이후에 적용됩니다.
+일시중지 기간이 끝나면 정기 결제가 자동으로 재개됩니다.
+자세한 사항은 [일시중지](https://developer.android.com/google/play/billing/subs#pause)를 참고하세요.
+
+> <span style="color:#e11d21">**주의!)**</span> 일시중지 기간이 끝나면 자동 갱신을 재개합니다. TOAST IAP는 갱신된 결제건을 결제 업데이트 리스너(IapService.PurchaseUpdatedListener)를 통해 결제 결과를 통지합니다. 게임이나 앱은 중요한 동작 중 결제 업데이트 리스너에 의해 불필요한 팝업이 사용자에게 노출되지 않도록 주의해야합니다.
+
+#### 일반 구독 상품 (AUTO_RENEWABLE))
+
+* 일시중지 기간 동안 일반 구독 상품은 정기 결제 콘텐츠에 엑세스 할 수 없습니다.
+* 일시중지 기간 동안 ToastIap.queryActivatedPurchases()로 조회되지 않습니다.
+
+#### 소비성 구독 상품 (CONSUMABLE_AUTO_RENEWABLE)
+
+* 일시중지 기간 동안 소비성 구독 상품은 새로운 구매를 생성하지 않습니다.
+* 일시중지 기간 동안 ToastIap.queryConsumablePurchases()로 새로운 구매가 조회되지 않습니다.
+
+### 정기 결제 재신청
+
+정기 결제 재신청 기능을 설정하면 사용자가 정기 결제 만료일로 부터 12개월 이내에 취소한 정기 결제를 재신청할 수 있습니다.
+정기 결제 재신청은 새 정기 결제 및 구매 토큰이 생성됩니다.
+정기 결제가 만료된 이후 사용자는 구글 플레이 정기 결제 센터를 통해 만료 후 1년까지 동일한 상품을 다시 구매할 수 있습니다.
+자세한 사항은 [정기 결제 재신청](https://developer.android.com/google/play/billing/subs#resubscribe)을 참고하세요.
+
+> <span style="color:#e11d21">**주의!)**</span> 앱이나 게임 내 화면에서 구매가 진행되지 않으므로 사용자 데이터(IapPurchase.getDeveloperPayload())를 사용할 수 없습니다.
+> <span style="color:#e11d21">**주의!)**</span> 구글 플레이 스토어에서 정기 결제 재신청으로 구독 상품을 구매할 경우 TOAST IAP는 구매한 결제건을 결제 업데이트 리스너(IapService.PurchaseUpdatedListener)를 통해 결제 결과를 통지합니다. 게임이나 앱은 중요한 동작 중 결제 업데이트 리스너에 의해 불필요한 팝업이 사용자에게 노출되지 않도록 주의해야합니다.
+
 ## TOAST IAP Class Reference
 
 ### ToastIapConfiguration
