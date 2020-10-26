@@ -10,6 +10,7 @@
 
 - [Android Developersアプリ内決済](https://developer.android.com/google/play/billing)
 - [ONE storeアプリ内決済API V5 (SDK V17)案内およびダウンロード](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [Galaxy storeアプリ内課金APIのご案内とダウンロード](https://developer.samsung.com/iap/overview.html)
 
 ## ライブラリ設定
 
@@ -27,6 +28,15 @@ dependencies {
 ```groovy
 dependencies {
     implementation 'com.toast.android:toast-iap-onestore:0.24.0'
+    ...
+}
+```
+
+- Galaxy storeのアプリ内決済を使用するには、下記のようにbuild.gradleに依存性を追加します。
+
+```groovy
+dependencies {
+    implementation 'com.toast.android:toast-iap-galaxy:0.24.0'
     ...
 }
 ```
@@ -59,6 +69,7 @@ AndroidManifest.xmlにmeta-dataを追加して、全決済画面（"full"）ま�
 | ----------- | ---------- |
 | Google Play | "GG"       |
 | ONE store   | "ONESTORE" |
+| Galaxy store | "GALAXY" |
 
 > [参考]ストアコードは[IapStoreCode](./iap-android/#iapstorecode)クラスに定義されています。
 
@@ -520,7 +531,7 @@ public String getStoreCode();
 | Method       | Returns |                                     |
 | ------------ | ------- | ----------------------------------- |
 | getAppKey    | String  | IAPサービスアプリキー                        |
-| getStoreCode | String  | ストアコード情報("GG" or "ONESTORE", ...) |
+| getStoreCode | String  | ストアコード情報("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### ToastIapConfiguration.Builder
 
@@ -535,7 +546,7 @@ public void setStoreCode(String storeCode)
 | Method       | Parameters |                     | Description                              |
 | ------------ | ---------- | ------------------- | ---------------------------------------- |
 | setAppKey    | appKey     | String: IAPサービスアプリキー | TOAST IAPコンソールで作成したアプリキーを設定します。      |
-| setStoreCode | storeCode  | String: ストアコード情報 | ストアコードを設定します。<br>("GG" or "ONESTORE", ...) |
+| setStoreCode | storeCode  | String: ストアコード情報 | ストアコードを設定します。<br>("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### IapStoreCode
 
@@ -543,10 +554,12 @@ public void setStoreCode(String storeCode)
 /* IapStoreCode.java */
 String GOOGLE_PLAY_STORE
 String ONE_STORE
+String GALAXY_STORE
 ```
 
 * GOOGLE_PLAY_STORE<br>Google Playストアアプリ内決済を使用します。<br>Constant Value: "GG"
 * ONE_STORE<br>ONE storeアプリ内決済を使用します。<br>Constant Value: "ONESTORE"
+* GALAXY_STORE<br>Galaxy storeアプリ内決済を使用します。<br>Constant Value: "GALAXY"
 
 ### IapPurchaseResult
 
@@ -765,3 +778,12 @@ void onPurchasesResponse(IapResult result,
 | ONESTORE_NEED_UPDATE     | 302  | ONE storeサービスがアップデートまたはインストールされませんでした。<br>ONE store service is not updated or installed. |
 | ONESTORE_SECURITY_ERROR  | 303  | 正常ではないアプリで決済を要請しました。<br>Abnormal purchase request. |
 | ONESTORE_PURCHASE_FAILED | 304  | 決済要請に失敗しました。<br>Purchase request failed. |
+
+### Galaxy storeエラーコード
+
+| RESULT                   | CODE | DESC                                     |
+| ------------------------ | ---- | ---------------------------------------- |
+| GALAXY_NOT_LOGGED_IN      | 501  | ONE storeサービスにログインしていません。<br>Galaxy service is not logged in. |
+| GALAXY_NOT_UPDATED     | 502  | ONE storeサービスがアップデートまたはインストールされませんでした。<br>Galaxy service is not updated or installed. |
+| GALAXY_PURCHASE_FAILED  | 503  | 正常ではないアプリで決済を要請しました。<br>Galaxy purchase failed. |
+| GALAXY_SERVICE_DENIED | 504  | 決済要請に失敗しました。<br>PurGalaxy service denied. |

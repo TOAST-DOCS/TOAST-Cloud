@@ -11,6 +11,7 @@
 ## Store Types
 - [Google Play Store](https://developer.android.com/google/play/billing)
 - [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [Galaxy store](https://developer.samsung.com/iap/overview.html)
 
 ## Library Setting
 - To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
@@ -27,6 +28,15 @@ dependencies {
 ```groovy
 dependencies {
     implementation 'com.toast.android:toast-iap-onestore:0.24.0'
+    ...
+}
+```
+
+- To use In-App Purchase of Galaxy store, add dependency to build.gradle, as below:
+
+```groovy
+dependencies {
+    implementation 'com.toast.android:toast-iap-galaxy:0.24.0'
     ...
 }
 ```
@@ -59,6 +69,7 @@ For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/
 | ---- | ---- |
 | Google Play Store| "GG" |
 | ONE store | "ONESTORE" |
+| Galaxy store | "GALAXY" |
 
 > Note : Store codes are defined in the  [IapStoreCode](./iap-android/#iapstorecode) class.
 
@@ -519,7 +530,7 @@ public String getStoreCode();
 | Method | Returns |  |
 | ---- | ---- | ---- |
 | getAppKey | String | IAP service appkey |
-| getStoreCode | String | Store code information ("GG" or "ONESTORE", ...) |
+| getStoreCode | String | Store code information ("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### ToastIapConfiguration.Builder
 
@@ -534,7 +545,7 @@ public void setStoreCode(String storeCode)
 | Method | Parameters |  | Description |
 | ---- | ---- | ---- | ---- |
 | setAppKey | appKey | String: IAP service appkey | Set appkey created in TOAST IAP Console. |
-| setStoreCode | storeCode | String: Store code information | Set store code. <br>("GG" or "ONESTORE", ...) |
+| setStoreCode | storeCode | String: Store code information | Set store code. <br>("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### IapStoreCode
 
@@ -542,10 +553,12 @@ public void setStoreCode(String storeCode)
 /* IapStoreCode.java */
 String GOOGLE_PLAY_STORE
 String ONE_STORE
+String GALAXY_STORE
 ```
 
 * GOOGLE_PLAY_STORE<br>Applies Google Play Store in-app purchase.<br>Constant Value: "GG"
 * ONE_STORE<br>Applies ONE store in-app purchase. <br>Constant Value: "ONESTORE"
+* GALAXY_STORE<br>Applies Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
 
 ### IapPurchaseResult
 
@@ -764,3 +777,12 @@ void onPurchasesResponse(IapResult result,
 | ONESTORE_NEED_UPDATE | 302 | ONE store Service is not updated or installed.<br> |
 | ONESTORE_SECURITY_ERROR | 303 | Purchase requested from abnormal app.<br> |
 | ONESTORE_PURCHASE_FAILED | 304 | Failed to request for purchase.<br> |
+
+### Galaxy storeエラーコード
+
+| RESULT                   | CODE | DESC                                     |
+| ------------------------ | ---- | ---------------------------------------- |
+| GALAXY_NOT_LOGGED_IN      | 501  | Galaxy service is not logged in.<br> |
+| GALAXY_NOT_UPDATED     | 502  | Galaxy service is not updated or installed.<br> |
+| GALAXY_PURCHASE_FAILED  | 503  | Galaxy purchase failed.<br> |
+| GALAXY_SERVICE_DENIED | 504  | PurGalaxy service denied.<br> |

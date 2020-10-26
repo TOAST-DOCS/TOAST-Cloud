@@ -10,6 +10,7 @@
 
 - [Android Developers 인앱 결제](https://developer.android.com/google/play/billing)
 - [ONE store 인앱결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [Galaxy store 인앱결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
 
 ## 라이브러리 설정
 
@@ -27,6 +28,15 @@ dependencies {
 ```groovy
 dependencies {
     implementation 'com.toast.android:toast-iap-onestore:0.24.0'
+    ...
+}
+```
+
+- Galaxy store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+dependencies {
+    implementation 'com.toast.android:toast-iap-galaxy:0.24.0'
     ...
 }
 ```
@@ -59,6 +69,7 @@ meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
 | ----------- | ---------- |
 | Google Play | "GG"       |
 | ONE store   | "ONESTORE" |
+| Galaxy store | "GALAXY" |
 
 > [참고] 스토어 코드는 [IapStoreCode](./iap-android/#iapstorecode) 클래스에 정의되어 있습니다.
 
@@ -521,7 +532,7 @@ public String getStoreCode();
 | Method       | Returns |                                     |
 | ------------ | ------- | ----------------------------------- |
 | getAppKey    | String  | IAP 서비스 앱 키                         |
-| getStoreCode | String  | 스토어 코드 정보 ("GG" or "ONESTORE", ...) |
+| getStoreCode | String  | 스토어 코드 정보 ("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### ToastIapConfiguration.Builder
 
@@ -536,7 +547,7 @@ public void setStoreCode(String storeCode)
 | Method       | Parameters |                     | Description                              |
 | ------------ | ---------- | ------------------- | ---------------------------------------- |
 | setAppKey    | appKey     | String: IAP 서비스 앱 키 | TOAST IAP 콘솔에서 생성한 앱 키를 설정합니다.      |
-| setStoreCode | storeCode  | String: 스토어 코드 정보   | 스토어 코드를 설정합니다.<br>("GG" or "ONESTORE", ...) |
+| setStoreCode | storeCode  | String: 스토어 코드 정보   | 스토어 코드를 설정합니다.<br>("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### IapStoreCode
 
@@ -544,10 +555,12 @@ public void setStoreCode(String storeCode)
 /* IapStoreCode.java */
 String GOOGLE_PLAY_STORE
 String ONE_STORE
+String GALAXY_STORE
 ```
 
 * GOOGLE_PLAY_STORE<br>Google Play 스토어 인앱 결제를 사용합니다.<br>Constant Value: "GG"
 * ONE_STORE<br>ONE store 인앱 결제를 사용합니다.<br>Constant Value: "ONESTORE"
+* GALAXY_STORE<br>Galaxy store 인앱 결제를 사용합니다.<br>Constant Value: "GALAXY"
 
 ### IapPurchaseResult
 
@@ -768,3 +781,12 @@ void onPurchasesResponse(IapResult result,
 | ONESTORE_NEED_UPDATE     | 302  | ONE store 서비스가 업데이트 또는 설치되지 않았습니다.<br>ONE store service is not updated or installed. |
 | ONESTORE_SECURITY_ERROR  | 303  | 비정상 앱에서 결제를 요청하였습니다.<br>Abnormal purchase request. |
 | ONESTORE_PURCHASE_FAILED | 304  | 결제 요청에 실패했습니다.<br>Purchase request failed. |
+
+### Galaxy store 오류 코드
+
+| RESULT                   | CODE | DESC                                     |
+| ------------------------ | ---- | ---------------------------------------- |
+| GALAXY_NOT_LOGGED_IN      | 501  | ONE store 서비스에 로그인되어 있지 않습니다.<br>Galaxy service is not logged in. |
+| GALAXY_NOT_UPDATED     | 502  | ONE store 서비스가 업데이트 또는 설치되지 않았습니다.<br>Galaxy service is not updated or installed. |
+| GALAXY_PURCHASE_FAILED  | 503  | 비정상 앱에서 결제를 요청하였습니다.<br>Galaxy purchase failed. |
+| GALAXY_SERVICE_DENIED | 504  | 결제 요청에 실패했습니다.<br>PurGalaxy service denied. |
