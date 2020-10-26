@@ -30,6 +30,7 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 | com.toast.android:toast-iap-core:0.24.0     | TOAST In-app Purchase Core |
 | com.toast.android:toast-iap-google:0.24.0   | TOAST In-app Purchase <br>Google Play Store |
 | com.toast.android:toast-iap-onestore:0.24.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-iap-galaxy:0.24.0 | TOAST In-app Purchase <br>GalaxyStore |
 | com.toast.android:toast-push-core:0.24.0    | TOAST Push Core   |
 | com.toast.android:toast-push-fcm:0.24.0    | TOAST Push <br>Firebase Cloud Messaging |
 | com.toast.android:toast-push-tencent:0.24.0    | TOAST Push <br>Tencent Push Notification |
