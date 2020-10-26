@@ -11,9 +11,12 @@
 #### Improved
 
 * 구글 결제 라이브러리 업데이트
-    * BillingClient 3.0.1 적용
+    * 구글 결제 라이브러리 BillingClient 3.0.1이 적용되었습니다.
+    * 2021년 8월 2일 부터 모든 새로운 앱은 결제라이브러리 버전 3 이상을 사용해야합니다.
+    * 2021년 11월 1일까지 기존 앱에 대한 모든 업데이트는 결제 라이브러리 버전 3 이상을 사용해야합니다.
+    * 자세한 사항은 [Meet Google Play Billing Library Version 3](https://android-developers.googleblog.com/2020/06/meet-google-play-billing-library.html)을 참고하세요.
 * 구글 정기 결제(구독) 상태 변경에 따른 대응
-    * 유예 기간, 계정 보류, 복원, 일시중지, 정기 결제 재신청 등
+    * 구글 구독 결제의 갱신 및 만료와 같은 수명주기 동안 다양한 상태 변경(유예 기간, 계정 보류, 복원, 일시중지, 정기 결제 재신청 등)에 대응하였습니다.
 
 ### TOAST Push
 
