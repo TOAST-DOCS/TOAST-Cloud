@@ -1,5 +1,33 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.24.0 (2020.10.27)
+
+### TOAST IAP
+
+#### Added
+
+* 갤럭시 스토어 추가
+
+#### Improved
+
+* 구글 결제 라이브러리 업데이트
+    * 구글 결제 라이브러리 BillingClient 3.0.1이 적용되었습니다.
+    * 2021년 8월 2일 부터 모든 새로운 앱은 결제라이브러리 버전 3 이상을 사용해야합니다.
+    * 2021년 11월 1일까지 기존 앱에 대한 모든 업데이트는 결제 라이브러리 버전 3 이상을 사용해야합니다.
+    * 자세한 사항은 [Meet Google Play Billing Library Version 3](https://android-developers.googleblog.com/2020/06/meet-google-play-billing-library.html)을 참고하세요.
+* 구글 정기 결제(구독) 상태 변경에 따른 대응
+    * 구글 구독 결제의 갱신 및 만료와 같은 수명주기 동안 다양한 상태 변경(유예 기간, 계정 보류, 복원, 일시중지, 정기 결제 재신청 등)에 대응하였습니다.
+
+### TOAST Push
+
+#### Improved
+
+* 알림 답장 기능 미지원 단말기에서는 답장 기능의 버튼이 생성되지 않도록 수정
+
+#### Fixed
+
+* 특정 상황에서 알림 채널이 새로 생성되는 버그 수정
+
 ## 0.23.2 (2020.10.06)
 
 ### TOAST IAP
@@ -7,7 +35,7 @@
 #### Fixed
 
 * 구독 이슈 수정.
-  * 구독이 "계정 보류" 또는 "유예 기간" 상태에서 결제 수단 수정으로 복원된 경우 IapService.PurchasesUpdatedListener를 통해 에러가 통지되지 않도록 수정하였습니다.
+    * 구독이 "계정 보류" 또는 "유예 기간" 상태에서 결제 수단 수정으로 복원된 경우 IapService.PurchasesUpdatedListener를 통해 에러가 통지되지 않도록 수정하였습니다.
 
 ## 0.23.1 (2020.09.11)
 
@@ -105,9 +133,9 @@
 #### Improved
 
 * Assets 리소스 지원
-  * Assets 경로의 이미지 리소스를 지원합니다.
+    * Assets 경로의 이미지 리소스를 지원합니다.
 * 기본 옵션 설정 방법 개선
-  * AndroidManifest의 meta-data을 사용하여 알림 기본 옵션을 설정할 수 있습니다.
+    * AndroidManifest의 meta-data을 사용하여 알림 기본 옵션을 설정할 수 있습니다.
 
 ### TOAST IAP
 
@@ -118,7 +146,7 @@
 #### Fixed
 
 * "Bad base64 Exception" 오류 수정
-  * TOAST SDK를 사용하지 않은 결제건 처리 시에 "Bad Base64 Exception"이 발생하는 오류를 수정하였습니다.
+    * TOAST SDK를 사용하지 않은 결제건 처리 시에 "Bad Base64 Exception"이 발생하는 오류를 수정하였습니다.
 
 ## 0.19.4 (2019.11.26)
 
