@@ -1,5 +1,14 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 0.24.1 (2020.10.30)
+
+### TOAST IAP
+
+#### Fixed
+
+* 갤럭시 스토어 인앱결제 오류 수정
+    * Galaxy Apps(Galaxy Store 이전 앱 명칭) 3.x 이하 버전에서 Timeout이 발생하는 오류를 수정하였습니다.
+
 ## 0.24.0 (2020.10.27)
 
 ### TOAST IAP
