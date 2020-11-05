@@ -283,7 +283,8 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | Gamebase | Gamebase Coupon VIEWER | 쿠폰 메뉴 Read(읽기) |
 | Gamebase | Gamebase IAP ADMIN | 구매 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Gamebase | Gamebase IAP VIEWER | 구매 메뉴 Read(읽기) |
-| Gamebase | Gamebase Leaderboard ADMIN | 리더보드 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Gamebase | Gamebase 
+ADMIN | 리더보드 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Gamebase | Gamebase Leaderboard VIEWER | 리더보드 메뉴 Read(읽기) |
 | Gamebase | Gamebase Management ADMIN | 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Gamebase | Gamebase Member ADMIN | 멤버 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
@@ -294,7 +295,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | Gamebase | Gamebase Push ADMIN | 푸시 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Gamebase | Gamebase Push VIEWER | 푸시 메뉴 Read(읽기) |
 | Leaderboard | ADMIN | Leaderboard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Leaderboard | MEMBER | Leaderboard 서비스 Read(읽기) |
+| Leaderboard | VIEWER | Leaderboard 서비스 Read(읽기) |
 | Launching | ADMIN | Launching 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Smart Downloader | ADMIN | Smart Downloader 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | AppGuard | ADMIN | AppGuard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
