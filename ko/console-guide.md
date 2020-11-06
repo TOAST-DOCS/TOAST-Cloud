@@ -288,7 +288,7 @@ ADMIN | 리더보드 메뉴 Create(생성), Read(읽기), Update(갱신), Delete
 | Gamebase | Gamebase Leaderboard VIEWER | 리더보드 메뉴 Read(읽기) |
 | Gamebase | Gamebase Management ADMIN | 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Gamebase | Gamebase Member ADMIN | 멤버 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | Gamebase Member File Download | 멤버 다운로드 메뉴 Riad(읽기) 및 파일 다운로드 |
+| Gamebase | Gamebase Member File Download | 멤버 다운로드 메뉴 Read(읽기) 및 파일 다운로드 |
 | Gamebase | Gamebase Member VIEWER | 멤버 메뉴 Read(읽기) |
 | Gamebase | Gamebase Operation ADMIN | 운영 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Gamebase | Gamebase Operation VIEWER | 운영 메뉴 Read(읽기) |
