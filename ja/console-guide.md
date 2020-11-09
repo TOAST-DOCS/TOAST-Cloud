@@ -1,5 +1,4 @@
-﻿
-## TOAST > コンソール使用ガイド
+﻿## TOAST > コンソール使用ガイド
 
 TOAST Consoleは、TOASTサービスを利用するための管理ツールと作業ウィンドウの役割を担います。
 ここではTOASTコンソールの基本的な設定と使用方法を案内します。
@@ -240,23 +239,24 @@ Dooray!サービスは、該当サービスコンソール画面でIP ACLを設�
 | プロジェクト管理 | プロジェクト作成           | O     |
 
 ### プロジェクトメンバー
+
 組織のメンバーではなくてもプロジェクトのメンバーになることができます。
 プロジェクトメンバーに必要な権限を複数付与できます。 
-ただし、ADMINとMEMBERはすべてのサービスを利用できるスーパー管理者(SUPER ADMIN)のような権限であり、他の権限と一緒に付与できません。  
 
 #### プロジェクト管理権限
-| 作業      | 役割                                    | ADMIN | MEMBER |  BILLING VIEWER |
-| ----------- | ---------------------------------------- | ----- | ------ | -------------------- |
-| Member管理 | プロジェクトメンバー登録                            | O     |        |                   |
-|             | プロジェクトメンバー削除                             | O     |        |                      |
-| サービス管理 | サービス有効化                          | O     |        |                      |
-|             | サービス利用                            | O     | O      |                      |
-|             | サービス無効化                        | O     |        |                      |
-| 利用状況 | 利用状況                              | O     |       | O                    |
-| プロジェクト管理 | プロジェクト削除                         | O     |       |                      |
-|              | プロジェクト削除(作成したプロジェクト)            |      | O       |                     |
+
+| 権限 | 説明 |
+| --- | --- |
+| ADMIN | プロジェクト全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| MEMBER | プロジェクト内のすべてのサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| BILLING VIEWER | 利用状況Read(読み取り)権限 |
+| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <Br> プロジェクト権限グループCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除)権限 |
+| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br> プロジェクト統合Appkey Read(読み取り)<br> プロジェクト権限グループRead(読み取り)権限 |
+| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り)権限 |
 
 #### サービス利用権限
+
 | サービス | 権限 | 説明 |
 | --- | --- | --- |
 | Infrastructure | ADMIN |  Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
@@ -270,7 +270,7 @@ Dooray!サービスは、該当サービスコンソール画面でIP ACLを設�
 | RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | EasyCache | MEMBER | EasyCacheサービスレプリケーショングループメニューRead(読込)、モニタリングメニューRead(読込) |
-| Gamebase | ADMIN | Gamebaseサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Gamebase | ADMIN | GamebaseサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Leaderboard | MEMBER | Leaderboardサービスに対するRead(読み取り |
 | Launching  | ADMIN | Launchingサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
@@ -333,4 +333,3 @@ TOASTサービス利用料金を確認し、決済できます。
     - 韓国会員：最終決済金額が未払いの時、該当金額の2%
     - 日本会員：日本消費者契約法により延滞料が発生しません。
 - 最終決済金額：(利用金額 - 割引金額 + 割増金額) + 付加税
-
