@@ -150,7 +150,7 @@ TOAST Consoleは下記の機能を提供します。
 - IAM会員のコンソール接続セキュリティを強化するために、**ログインセキュリティ設定**機能を提供します。 
 
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202011_en.png)
 
 1. コンソールに移動した後、設定したい組織の組織設定ページに接続します。 
 2. IAMコンソールの**ログインセキュリティ設定**ボタンをクリックします。 
