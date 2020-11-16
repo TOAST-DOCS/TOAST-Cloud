@@ -185,7 +185,7 @@ TOAST Console提供如下功能。
 ### IAM控制台登录安全设置
 为增强IAM会员的控制台访问安全，提供[登录安全设置]功能。 
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202011_en.png)
 
 1.访问要在控制台中设置的组织的组织设置页面。 
 2.单击IAM控制台的[登录安全设置]按钮。 

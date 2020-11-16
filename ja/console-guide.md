@@ -262,17 +262,40 @@ Dooray!サービスは、該当サービスコンソール画面でIP ACLを設�
 | Infrastructure | ADMIN |  Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
 | Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
 | Container Registry | ADMIN | Container Registryサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| Container Registry | MEMBER | Container Registryサービスに対するRead(読み取り |
+| Container Registry | VIEWER | Container Registryサービスに対するRead(読み取り |
 | DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Object Storage | ADMIN | Object Storageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Backup | ADMIN | Backupサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | RDS for MySQL | ADMIN | RDS for MySQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| EasyCache | MEMBER | EasyCacheサービスレプリケーショングループメニューRead(読込)、モニタリングメニューRead(読込) |
-| Gamebase | ADMIN | GamebaseサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| EasyCache | VIEWER | EasyCacheサービスレプリケーショングループメニューRead(読込)、モニタリングメニューRead(読込) |
+| Gamebase | Gamebase ADMIN | Gamebase サービス Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase Analytics Viewer - ALL | 모든 지표 Read(読み取り) |
+| Gamebase | Gamebase Analytics Viewer - excluding SALES | 매출을 제외한 모든 지표 Read(読み取り) |
+| Gamebase | Gamebase Analytics Viewer - only Real-Time | 실시간 지표 Read(読み取り) |
+| Gamebase | Gamebase App ADMIN | APP 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase App VIEWER | APP 메뉴 Read(読み取り) |
+| Gamebase | Gamebase Ban ADMIN | 이용 정지 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除 |
+| Gamebase | Gamebase Ban Viewer | 이용 정지 메뉴 Read(読み取り) |
+| Gamebase | Gamebase CS ADMIN | 고객센터 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase CS Inquiry Support | 고객센터 문의 메뉴 Read(読み取り), Update(更新) 및 멤버 메뉴 Read(読み取り) |
+| Gamebase | Gamebase Coupon ADMIN | 쿠폰 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase Coupon VIEWER | 쿠폰 메뉴 Read(読み取り) |
+| Gamebase | Gamebase IAP ADMIN | 구매 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase IAP VIEWER | 구매 메뉴 Read(読み取り) |
+| Gamebase | Gamebase Leaderboard ADMIN | 리더보드 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase Leaderboard VIEWER | 리더보드 메뉴 Read(読み取り) |
+| Gamebase | Gamebase Management ADMIN | 관리 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase Member ADMIN | 멤버 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase Member File Download | 멤버 다운로드 메뉴 Riad(読み取り) 및 파일 다운로드 |
+| Gamebase | Gamebase Member VIEWER | 멤버 메뉴 Read(読み取り) |
+| Gamebase | Gamebase Operation ADMIN | 운영 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase Operation VIEWER | 운영 메뉴 Read(読み取り) |
+| Gamebase | Gamebase Push ADMIN | 푸시 메뉴 Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | Gamebase Push VIEWER | 푸시 메뉴 Read(読み取り) |
 | Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Leaderboard | MEMBER | Leaderboardサービスに対するRead(読み取り |
+| Leaderboard | VIEWER | Leaderboardサービスに対するRead(読み取り |
 | Launching  | ADMIN | Launchingサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Smart Downloader | ADMIN | Smart Downloaderサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | AppGuard  | ADMIN | AppGuardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
@@ -286,7 +309,7 @@ Dooray!サービスは、該当サービスコンソール画面でIP ACLを設�
 | WEB Firewall  | ADMIN | WEB Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Vaccine  | ADMIN | Vaccineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Secure Key Manager  | ADMIN | Secure Key Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Secure Key Manager  | MEMBER | Secure Key Managerサービスに対するRead(読み取り |
+| Secure Key Manager  | VIEWER | Secure Key Managerサービスに対するRead(読み取り |
 | CDN   | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Image  | ADMIN | Imageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Push  | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
@@ -309,7 +332,7 @@ Dooray!サービスは、該当サービスコンソール画面でIP ACLを設�
 | Service Monitoring  | ADMIN | Service Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Certificate Manager  | ADMIN | Certificate Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Bill (e-Tax)  | ADMIN | Bill (e-Tax) サービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| Bill (e-Tax)  | MEMBER | Bill (e-Tax)サービスに対するRead(読み取り |
+| Bill (e-Tax)  | VIEWER | Bill (e-Tax)サービスに対するRead(読み取り |
 
 
 
