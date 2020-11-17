@@ -136,7 +136,7 @@ However, if it is deleted without paid, all charges up to the moment shall be au
 ### Security Setting for IAM Console Logins 
 To tighten console access security for IAM members, [Login Security Setting] is provided.  
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202011_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_20201117_en.png)
 
 1. Access Organization Setting of an organization to configure on a console. 
 2. Click [Login Security Setting] on the IAM console. 
@@ -246,7 +246,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | Infrastructure | ADMIN |  Create/Read/Update/Delete Infrastructure Service  |
 | Infrastructure | MEMBER | Viewer VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete Other services |
 | Container Registry | ADMIN | Create/Read/Update/Delete Container Registry Service |
-| Container Registry | MEMBER | Read Container Registry Service  |
+| Container Registry | VIEWER | Read Container Registry Service  |
 | DNS Plus | ADMIN | Create/Read/Update/Delete DNS Plus Service  |
 | Object Storage | ADMIN | Create/Read/Update/Delete Object Storage Service   |
 | Backup | ADMIN |  Create/Read/Update/Delete Backup Service |
@@ -255,7 +255,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | EasyCache | ADMIN | Create/Read/Update/Delete EasyCache Service |
 | Gamebase | ADMIN | Create/Read/Update/Delete Gamebase Service |
 | Leaderboard | ADMIN | Create/Read/Update/Delete Leaderboard Service |
-| Leaderboard | MEMBER |  Read Leaderboard Service |
+| Leaderboard | VIEWER |  Read Leaderboard Service |
 | Launching  | ADMIN | Create/Read/Update/Delete Launching Service  |
 | Smart Downloader | ADMIN |  Create/Read/Update/Delete Smart Downloader Service |
 | AppGuard  | ADMIN | Create/Read/Update/Delete AppGuard Service |
@@ -269,7 +269,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | WEB Firewall  | ADMIN |   Create/Read/Update/Delete WEB Firewall Service |
 | Vaccine  | ADMIN |  Create/Read/Update/Delete Vaccine Service |
 | Secure Key Manager  | ADMIN |  Create/Read/Update/Delete Secure Key Manager Service |
-| Secure Key Manager  | MEMBER |  Read Secure Key Manager Service |
+| Secure Key Manager  | VIEWER |  Read Secure Key Manager Service |
 | CDN   | ADMIN |  Create/Read/Update/Delete CDN Service  |
 | Image  | ADMIN |  Create/Read/Update/Delete Image Service |
 | Push  | ADMIN |  Create/Read/Update/Delete Push Service  |
@@ -292,7 +292,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | Service Monitoring  | ADMIN | Create/Read/Update/Delete Service Monitoring Service |
 | Certificate Manager  | ADMIN | Create/Read/Update/Delete Certificate Manager Service |
 | Bill (e-Tax)  | ADMIN |  Create/Read/Update/Delete Bill (e-Tax) Service |
-| Bill (e-Tax)  | MEMBER |  Read Bill (e-Tax) Service |
+| Bill (e-Tax)  | VIEWER |  Read Bill (e-Tax) Service |
 
 
 

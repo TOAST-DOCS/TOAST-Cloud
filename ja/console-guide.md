@@ -1,4 +1,4 @@
-## TOAST > コンソール使用ガイド
+﻿## TOAST > コンソール使用ガイド
 
 TOAST Consoleは、TOASTサービスを利用するための管理ツールと作業ウィンドウの役割を担います。
 ここではTOASTコンソールの基本的な設定と使用方法を案内します。
@@ -150,7 +150,7 @@ TOAST Consoleは下記の機能を提供します。
 - IAM会員のコンソール接続セキュリティを強化するために、**ログインセキュリティ設定**機能を提供します。 
 
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202011_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_20201117_en.png)
 
 1. コンソールに移動した後、設定したい組織の組織設定ページに接続します。 
 2. IAMコンソールの**ログインセキュリティ設定**ボタンをクリックします。 
@@ -270,30 +270,30 @@ Dooray!サービスは、該当サービスコンソール画面でIP ACLを設�
 | RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | EasyCache | VIEWER | EasyCacheサービスレプリケーショングループメニューRead(読込)、モニタリングメニューRead(読込) |
-| Gamebase | Gamebase ADMIN | Gamebase サービス Create(作成), Read(読み取り), Update(更新), Delete(削除) |
-| Gamebase | Gamebase Analytics Viewer - ALL | すべての指標Read(読み取り) |
-| Gamebase | Gamebase Analytics Viewer - excluding SALES | 売上を除くすべての指標Read(読み取り) |
-| Gamebase | Gamebase Analytics Viewer - only Real-Time | リアルタイム指標Read(読み取り) |
-| Gamebase | Gamebase App ADMIN | APPメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Gamebase | Gamebase App VIEWER | APPメニューRead(読み取り) |
-| Gamebase | Gamebase Ban ADMIN | 利用停止メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除 |
-| Gamebase | Gamebase Ban Viewer | 利用停止メニューRead(読み取り) |
-| Gamebase | Gamebase CS ADMIN | サポートメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Gamebase | Gamebase CS Inquiry Support | サポートお問い合わせメニューRead(読み取り)、Update(更新)およびメンバーメニューRead(読み取り) |
-| Gamebase | Gamebase Coupon ADMIN | クーポンメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Gamebase | Gamebase Coupon VIEWER | クーポンメニューRead(読み取り) |
-| Gamebase | Gamebase IAP ADMIN | 購入メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Gamebase | Gamebase IAP VIEWER | 購入メニューRead(読み取り) |
-| Gamebase | Gamebase Leaderboard ADMIN | リーダーボードメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Gamebase | Gamebase Leaderboard VIEWER | リーダーボードメニューRead(読み取り) |
-| Gamebase | Gamebase Management ADMIN | 管理メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Gamebase | Gamebase Member ADMIN | メンバーメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Gamebase | Gamebase Member File Download | メンバーダウンロードメニューRead(読み取り)およびファイルダウンロード |
-| Gamebase | Gamebase Member VIEWER | メンバーメニューRead(読み取り) |
-| Gamebase | Gamebase Operation ADMIN | 運営メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Gamebase | Gamebase Operation VIEWER | 運営メニューRead(読み取り) |
-| Gamebase | Gamebase Push ADMIN | プッシュメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Gamebase | Gamebase Push VIEWER | プッシュメニューRead(読み取り) |
+| Gamebase | ADMIN | Gamebase サービス Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | ANALYTICS VIEWER - ALL | すべての指標Read(読み取り) |
+| Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | 売上を除くすべての指標Read(読み取り) |
+| Gamebase | ANALYTICS VIEWER - ONLY REAL-TIME | リアルタイム指標Read(読み取り) |
+| Gamebase | APP ADMIN | APPメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | APP VIEWER | APPメニューRead(読み取り) |
+| Gamebase | BAN ADMIN | 利用停止メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除 |
+| Gamebase | BAN VIEWER | 利用停止メニューRead(読み取り) |
+| Gamebase | COUPON ADMIN | クーポンメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | COUPON VIEWER | クーポンメニューRead(読み取り) |
+| Gamebase | CS ADMIN | サポートメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | CS INQUIRY SUPPORT | サポートお問い合わせメニューRead(読み取り)、Update(更新)およびメンバーメニューRead(読み取り) |
+| Gamebase | IAP ADMIN | 購入メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | IAP VIEWER | 購入メニューRead(読み取り) |
+| Gamebase | LEADERBOARD ADMIN | リーダーボードメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | LEADERBOARD VIEWER | リーダーボードメニューRead(読み取り) |
+| Gamebase | MANAGEMENT ADMIN | 管理メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | MEMBER ADMIN | メンバーメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | MEMBER VIEWER | メンバーメニューRead(読み取り) |
+| Gamebase | MEMBER FILE DOWNLOAD | メンバーダウンロードメニューRead(読み取り)およびファイルダウンロード |
+| Gamebase | OPERATION ADMIN | 運営メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | OPERATION VIEWER | 運営メニューRead(読み取り) |
+| Gamebase | PUSH ADMIN | プッシュメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | PUSH VIEWER | プッシュメニューRead(読み取り) |
 | Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Leaderboard | VIEWER | Leaderboardサービスに対するRead(読み取り |
 | Launching  | ADMIN | Launchingサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
