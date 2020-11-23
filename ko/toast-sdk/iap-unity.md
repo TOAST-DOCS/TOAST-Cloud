@@ -35,6 +35,17 @@ dependencies {
 **DEPS**}
 ```
 
+#### Galaxy Store
+
+```groovy
+apply plugin: 'com.android.application'
+
+dependencies {
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-iap-galaxy:0.24.2'
+**DEPS**}
+```
+
 ## iOS 설정
 ### Capabilities 설정
 - XCode 프로젝트의 설정에서 Capabilities 탭을 선택합니다.
