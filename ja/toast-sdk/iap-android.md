@@ -41,6 +41,8 @@ dependencies {
 }
 ```
 
+> Galaxy Store in-app purchases works on Android 4.3 (API level 18) or higher.
+
 ## AndroidManifest設定
 
 ### ONE store購入画面設定（オプション）
