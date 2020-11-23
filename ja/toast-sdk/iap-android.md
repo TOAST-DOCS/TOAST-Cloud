@@ -785,7 +785,7 @@ void onPurchasesResponse(IapResult result,
 
 | RESULT                   | CODE | DESC                                     |
 | ------------------------ | ---- | ---------------------------------------- |
-| GALAXY_NOT_LOGGED_IN      | 501  | ONE storeサービスにログインしていません。<br>Galaxy service is not logged in. |
-| GALAXY_NOT_UPDATED     | 502  | ONE storeサービスがアップデートまたはインストールされませんでした。<br>Galaxy service is not updated or installed. |
+| GALAXY_NOT_LOGGED_IN      | 501  | Galaxy storeサービスにログインしていません。<br>Galaxy service is not logged in. |
+| GALAXY_NOT_UPDATED     | 502  | Galaxy storeサービスがアップデートまたはインストールされませんでした。<br>Galaxy service is not updated or installed. |
 | GALAXY_PURCHASE_FAILED  | 503  | 正常ではないアプリで決済を要請しました。<br>Galaxy purchase failed. |
 | GALAXY_SERVICE_DENIED | 504  | 決済要請に失敗しました。<br>PurGalaxy service denied. |
