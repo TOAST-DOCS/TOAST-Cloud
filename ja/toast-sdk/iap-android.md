@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.24.0'
+    implementation 'com.toast.android:toast-iap-google:0.24.2'
     ...
 }
 ```
@@ -27,7 +27,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.24.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.24.2'
     ...
 }
 ```
@@ -36,7 +36,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.24.0'
+    implementation 'com.toast.android:toast-iap-galaxy:0.24.2'
     ...
 }
 ```
