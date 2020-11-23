@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.24.2 (2020.11.24)
+
+### TOAST Push
+
+#### Fixed
+
+* 사용자 아이디 설정과 동시에 토큰 등록 요청시 단말기 식별자로 등록되던 문제 해결
+
 ## 0.24.1 (2020.10.30)
 
 ### TOAST IAP
