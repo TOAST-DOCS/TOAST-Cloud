@@ -1,10 +1,16 @@
 ## TOAST > TOAST SDK使用ガイド > リリースノート > iOS
 
-## 0.27.0 (2020.09.11)
+## 0.27.1 (2020.11.24)
+### TOAST IAP
+#### 개선 사항
+* 구독 상품 재구매 오류 수정 (iOS 14 )
+- Appstore로부터 상품 정보 획득 실패 시 ToastProductsResponse가 nil을 반환하도록 변경
+
 ### TOAST Push
 #### 개선 사항
-* 안전성 개선
+* 토큰 해제 요청 시 등록된 토큰이 없을 경우 Callback이 발생하지 않는 문제 개선
 
+## 0.27.0 (2020.09.11)
 ### TOAST IAP
 #### 기능 추가
 * ToastProduct에 지역화된 상품정보 추가 (localizedTitle, localizedDescription)
@@ -12,6 +18,10 @@
 #### 기능 개선
 * iOS 14 beta 변경 사항 대응 
     * 결제 실패 Delegate가 수신되지 않는 문제 개선
+    
+### TOAST Push
+#### 개선 사항
+* 안전성 개선
     
 ## 0.26.0 (2020.07.28)
 ### TOAST Push
