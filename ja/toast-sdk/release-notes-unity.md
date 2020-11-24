@@ -1,5 +1,25 @@
 ## TOAST > TOAST SDK 使用ガイド > リリースノート > Unity
 
+## 0.21.3 (2020.11.24)
+
+### plugin version
+
+- Android : 0.24.2
+- iOS : 0.27.1
+
+### 공통
+
+- Native Plugin Version Update
+
+### 기능 추가
+
+- Galaxy Store 추가
+
+### 버그 수정
+
+- 공통 에러코드 변환 에러 수정
+- 멀티 클라이언트 환경에서 파일 접근 에러 수정
+
 ## 0.21.2 (2020.10.05)
 
 ### plugin version
