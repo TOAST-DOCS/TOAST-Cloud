@@ -86,7 +86,7 @@ ToastPushConfiguration configuration =
     ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 
-ToastPush.initialize(PushType.FCM, configuration);
+ToastPush.initialize(configuration);
 ```
 
 ## 서비스 로그인
