@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK使用ガイド > リリースノート > Android
 
+## 0.24.3 (2020.12.08)
+
+### TOAST Push
+
+#### 기능 추가
+
+* Tencent QQ 서비스 종료에 따른 모듈 삭제
+
 ## 0.24.2 (2020.11.24)
 
 ### TOAST Push
