@@ -9,7 +9,7 @@
 ## Push提供者別ガイド
 
 * [Firebase Cloud Messaging (以下FCM)ガイド](https://firebase.google.com/docs/cloud-messaging/)
-* ~~[Tencent Push Notification (이하 Tencent) 가이드](https://xg.qq.com/docs/)~~ `2020년 11월 서비스 종료`
+* `Tencent Push Notification (QQ) 2020년 11월 서비스 종료`
 
 ## ライブラリ設定
 
