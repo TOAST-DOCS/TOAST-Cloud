@@ -9,7 +9,7 @@
 ## Push提供者別ガイド
 
 * [Firebase Cloud Messaging (以下FCM)ガイド](https://firebase.google.com/docs/cloud-messaging/)
-* [Tencent Push Notification (以下 Tencent) 가이드](https://xg.qq.com/docs/)
+* ~~[Tencent Push Notification (이하 Tencent) 가이드](https://xg.qq.com/docs/)~~ `2020년 11월 서비스 종료`
 
 ## ライブラリ設定
 
@@ -18,17 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.24.2’
-    ...
-}
-```
-
-### Tencent
-* Tencent用SDKをインストールするには、下記のコードをbuild.gradleに追加します。
-
-```groovy
-dependencies {
-    implementation 'com.toast.android:toast-push-tencent:0.24.2’
+    implementation 'com.toast.android:toast-push-fcm:0.24.3’
     ...
 }
 ```
@@ -80,80 +70,6 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
-## Tencent Push Notification 設定
-* [Tencentコンソール](https://xg.qq.com/)でプロジェクトを作成します。
-* アプリケーション登録を選択し、アプリケーションを登録します。
-* アプリケーション登録後、AccessIDとAccesskeyを確認します。
-
-### build.gradle 設定
-#### ルートレベルのbuild.gradle
-* アプリモジュールのbuild.gradleに、下記のコードを追加します。
-* [Tencentコンソール](https://xg.qq.com/)に登録したアプリケーションの**AccessID**と**AccessKey**を入力します。
-
-```groovy
-apply plugin: 'com.android.application'
-
-android {
-    ...
-    defaultConfig {
-        ...
-        ndk {
-        // ビルドしようとするcpuの種類を追加します。
-        // 必要に応じて追加 : 'x86', 'x86_64', 'mips', 'mips64'
-        abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
-        }
-
-        manifestPlaceholders = [
-            XG_ACCESS_ID:"accessid",
-            XG_ACCESS_KEY : "accesskey",
-        ]
-    }
-}
-```
-
-### gradle.properties 設定
-* ルートレベルのgradle.propertiesに、下記のコードを追加します。
-
-```groovy
-android.useDeprecatedNdk = true
-```
-
-### ネットワークセキュリティ構成 (Android P 以上)
-* Android 9.0以上でtarget API 28を使用している場合は、network_security_config.xmlのファイルを追加します。
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">182.254.116.117</domain>
-        <domain includeSubdomains="true">pingma.qq.com</domain>
-    </domain-config>
-</network-security-config>
-```
-
-* AndroidManifestにapplicationにandroid：networkSecurityConfig設定を追加します。
-* 詳細については、[security-config]（https://developer.android.com/training/articles/security-config?hl=ko）を参照してください。
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<manifest ... >
-    <application android:networkSecurityConfig="@xml/network_security_config"
-    ... >
-        ...
-    </application>
-</manifest>
-```
-
-### Apache HTTPクライアントライブラリ設定
-* AndroidManifestに以下の設定を追加します。
-* 詳細については、[Android 6.0の変更]（https://developer.android.com/about/versions/marshmallow/android-6.0-changes?hl=ko）を参照します。
-
-```xml
-android {
-    useLibrary 'org.apache.http.legacy'
-}
-```
-
 ## Push初期化
 * ToastPush.initializeを呼び出してTOAST Pushを初期化します。
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration)オブジェクトは、Push設定情報を含んでいます。
@@ -168,16 +84,7 @@ ToastPushConfiguration configuration =
     ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 
-ToastPush.initialize(PushType.FCM, configuration);
-```
-
-### Tencent初期化例
-```java
-ToastPushConfiguration configuration =
-    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
-            .build();
-
-ToastPush.initialize(PushType.TENCENT, configuration);
+ToastPush.initialize(configuration);
 ```
 
 ## サービスログイン
@@ -637,7 +544,6 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ## Emoji使用
 > **(注意)**
 > 機器でサポートしていないemojiを使用した場合には、表示されないことがあります。
-> Tencentの場合には、emojiを使用すると、メッセージが受信されない場合があります。
 
 ## 사용자 태그
 
