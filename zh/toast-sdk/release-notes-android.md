@@ -1,6 +1,6 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
-## 0.24.4 (2021.01.08)
+## 0.24.4 (2021.01.12)
 
 ### TOAST Push
 
