@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.24.3'
+    implementation 'com.toast.android:toast-push-fcm:0.24.4'
     ...
 }
 ```
