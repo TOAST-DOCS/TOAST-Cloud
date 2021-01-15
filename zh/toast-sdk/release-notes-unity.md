@@ -1,5 +1,11 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.21.5 (2021.01.15)
+
+### plugin version
+
+- Android : 0.24.4
+
 ## 0.21.4 (2020.12.10)
 
 ### plugin version
