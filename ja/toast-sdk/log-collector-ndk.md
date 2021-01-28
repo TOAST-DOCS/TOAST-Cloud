@@ -8,7 +8,7 @@ Androidアプリにネイティブライブラリーが含まれる場合、簡�
 * TOAST Crash Reporter for NDKは、TOAST Loggerを通じてクラッシュログを送信します。
 * TOAST LoggerとTOAST Crash Reporter for NDKライブラリーは、**同一バージョンの使用を推奨**します。
 * TOAST Crash Reporter for NDKは TOAST Loggerの初期化時にクラッシュの検知を開始します。
-* TOAST Crash Reporter for NDKを使用するためには、**r17c以上の**が必要です。
+* TOAST Crash Reporter for NDKを使用するためには、**r17c以上のNDK**が必要です。
 
 ### 事前準備
 
