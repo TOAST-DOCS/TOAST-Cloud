@@ -785,7 +785,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 ``` objc
 @interface ToastNotificationOptions : NSObject
 
-// アプリ実行中に通知に露出するか
+// アプリ実行中に通知に表示するか
 @property (nonatomic) BOOL foregroundEnabled;
 
 // バッジアイコンを使用するか
