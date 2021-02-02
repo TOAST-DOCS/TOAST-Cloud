@@ -286,7 +286,7 @@ public class MyApplication extends Application {
 * Android 8.0(APIレベル26)以上の端末では、基本通知チャンネルにのみオプションが適用されます。
 * `Application#onCreate`で登録したり、AndroidManifest.xmlファイルにメタデータとして定義できます。
 
-#### 知基本オプションの設定例
+#### 通知基本オプションの設定例
 ##### コードでの設定例
 **全通知オプションを変更する場合**
 ```java
@@ -547,7 +547,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ## ユーザータグ
 
-* [ユーザータグ](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 ユーザーIDをひとつのタグでまとめ、それを利用してメッセージを送信することができます。
+* [ユーザータグ](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 機能はさまざまなユーザーIDをひとつのタグでまとめ、それを利用してメッセージを送信することができます。
 * タグ名ではなく、タグID(8桁の文字列)に基づいて動作します。タグIDはコンソール > タグメニューから作成·確認できます。
 
 ### ユーザータグ修正
@@ -794,7 +794,7 @@ public final PendingIntent getNotificationServiceIntent(Context context, ToastRe
 | Method | Returns | Parameters | |
 |---|---|---|---|
 | isAppForeground | boolean |  | 現在アプリを使用中かどうかを返します。 |
-| notify | | Context, ToastRemoteMessage | 기基本実行インテントで通知を生成および表示します。 |
+| notify | | Context, ToastRemoteMessage | 基本実行インテントで通知を生成および表示します。 |
 | notify | | Context, ToastRemoteMessage, PendingIntent | ユーザー実行インテントで通知を生成および表示します。 |
 | notify | | Context, int, Notification |  ユーザー通知を特定のIDで表示します。 |
 | getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 指標の転送を含むユーザー実行インテントを返します |
