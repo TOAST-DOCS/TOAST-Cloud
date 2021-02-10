@@ -310,7 +310,7 @@ try
 
 Network Insights는 콘솔에 등록한 URL을 호출하여 지연시간 및 응답 값을 측정합니다. 이를 활용하여 세계 여러 나라(디바이스의 국가 코드 기준)에서의 지연시간과 응답 값을 측정할 수 있습니다.
 
-> 콘솔을 통해 Network Insights 기능을 활성화하면 TOAST Logger 초기화 시에, 콘솔에 등록한 URL로 1회 요청합니다.
+> 콘솔을 통해 Network Insights 기능을 활성화하면 NHN Cloud Logger 초기화 시에, 콘솔에 등록한 URL로 1회 요청합니다.
 
 ### Network Insights 활성화
 
