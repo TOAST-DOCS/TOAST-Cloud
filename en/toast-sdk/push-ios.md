@@ -1,28 +1,28 @@
-## TOAST > User Guide for TOAST SDK > TOAST Push > iOS
+## NHN Cloud > User Guide for NHN Cloud SDK > NHN Cloud Push > iOS
 
 ## Prerequisites
 
-1\. [TOAST SDK](./getting-started-ios)를 설치합니다.
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Notification \> Push를 활성화](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+1\. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
+2\. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Notification \> Push를 활성화](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
 3\. Push에서 AppKey를 확인합니다.
 
 ## APNS 가이드
 * [APNS 가이드](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
 
-## TOAST Push 구성
+## NHN Cloud Push 구성
 
-* iOS용 TOAST Push SDK의 구성은 다음과 같습니다.
+* iOS용 NHN Cloud Push SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[ToastVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
-| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+| NHN Cloud Push | NHN CloudPush | ToastPush.framework | UserNotifications.framework<br/><br/>[ToastVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
+| Mandatory   | NHN CloudCore<br/>NHN CloudCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## TOAST Push SDK를 Xcode 프로젝트에 적용
+## NHN Cloud Push SDK를 Xcode 프로젝트에 적용
 
 ### 1. Cococapods 을 통한 적용
 
-* Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
+* Podfile을 생성하여 NHN Cloud SDK에 대한 Pod을 추가합니다.
 
 ``` podspec
 platform :ios, '9.0'
@@ -33,11 +33,11 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. 바이너리를 다운로드하여 TOAST SDK 적용
+### 2. 바이너리를 다운로드하여 NHN Cloud SDK 적용
 
 #### 프레임워크 설정
 
-* TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
+* NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
 * Xcode Project에 **ToastPush.framework**, **ToastCore.framework**, **ToastCommon.framework, UserNotifications.framework**를 추가합니다.
 * UserNotifications.framework는 아래 방법으로 추가할 수 있습니다.
 ![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
@@ -50,7 +50,7 @@ end
 
 ### Capabilities 설정
 
-* TOAST Push를 사용하려면 Capabilities에서 **Push Notification**, **Background Modes** 항목을 활성화해야 합니다.
+* NHN Cloud Push를 사용하려면 Capabilities에서 **Push Notification**, **Background Modes** 항목을 활성화해야 합니다.
     * **Project Target > Signing & Capabilities > + Capability > Push Notification**
 ![add_capability_push_notifications](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications.png)
     * **Project Target > Signing & Capabilities > + Capability > Background Modes**
@@ -60,15 +60,15 @@ end
 
 ## Xcode11 / iOS13 변경 사항
 * 공통 
-    * Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
-    * `Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
+    * Xcode11부터 NHN Cloud SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
+    * `Xcode11 이상을 사용할 경우 NHN Cloud SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
 * VoIP
     * iOS13 이상부터 VoIP 메시지 수신 후에 CallKit 으로 리포트하지 않으면 메시지 수신이 제한됩니다. ([PushKit pushRegistry 가이드](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
     * CallKit 을 사용한 전화 수신 화면은 앱에서 직접 구현해야 합니다.
 
 ## 서비스 로그인
 
-* TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash, ...)은 하나의 사용자 아이디를 공유합니다.
+* NHN Cloud SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash, ...)은 하나의 사용자 아이디를 공유합니다.
 
 ### 로그인
 
@@ -89,11 +89,11 @@ end
 [ToastSDK setUserID:nil];
 ```
 
-## TOAST Push SDK 초기화
+## NHN Cloud Push SDK 초기화
 
 * `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
-* [ToastPushConfiguration](./push-ios/#toastpushconfiguration) 객체에 토스트 클라우드 서버에서 발급받은 Push AppKey를 설정합니다.
-* `개발환경에서는 반드시 ToastPushConfiguration의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
+* [NHN CloudPushConfiguration](./push-ios/#toastpushconfiguration) 객체에 토스트 클라우드 서버에서 발급받은 Push AppKey를 설정합니다.
+* `개발환경에서는 반드시 NHN CloudPushConfiguration의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
 
 ### 초기화 API 명세
 
@@ -110,9 +110,9 @@ end
 ```
 
 ### Delegate API 명세
-* 앱이 실행 중인 상태에서 알림 메시지 수신 시 [ToastPushMessage](./push-ios/#toastpushmessage) 객체로 수신 받은 메시지의 내용이 전달됩니다.
-* 사용자가 알림을 실행(클릭)하여 앱이 실행되었을 때 [ToastPushMessage](./push-ios/#toastpushmessage) 객체로 실행된 알림 메시지의 내용이 전달됩니다.
-* 사용자가 알림 상의 버튼을 실행(클릭) 하였을 때 [ToastPushNotificationAction](./push-ios/#toastpushnotificationaction) 객체로 실행된 버튼의 액션 정보가 전달됩니다.
+* 앱이 실행 중인 상태에서 알림 메시지 수신 시 [NHN CloudPushMessage](./push-ios/#toastpushmessage) 객체로 수신 받은 메시지의 내용이 전달됩니다.
+* 사용자가 알림을 실행(클릭)하여 앱이 실행되었을 때 [NHN CloudPushMessage](./push-ios/#toastpushmessage) 객체로 실행된 알림 메시지의 내용이 전달됩니다.
+* 사용자가 알림 상의 버튼을 실행(클릭) 하였을 때 [NHN CloudPushNotificationAction](./push-ios/#toastpushnotificationaction) 객체로 실행된 버튼의 액션 정보가 전달됩니다.
 * `원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
 
 ``` objc
@@ -182,7 +182,7 @@ end
 
 ## 알림 옵션 설정
 
-* [ToastNotificationOptions](./push-ios/#toastnotificationoptions) 객체로 알림 옵션 설정이 가능합니다.
+* [NHN CloudNotificationOptions](./push-ios/#toastnotificationoptions) 객체로 알림 옵션 설정이 가능합니다.
 
 | 옵션명 | 설명 | 기본값 |
 | --- | --- | --- |
@@ -211,7 +211,7 @@ options.soundEnabled = YES;         // 알림음 사용 설정 (default : YES)
 
 ## 토큰 등록
 
-* 발급받은 토큰 정보를 토스트 클라우드 서버에 등록합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
+* 발급받은 토큰 정보를 토스트 클라우드 서버에 등록합니다. 이때 수신 동의 여부(NHN CloudPushAgreement)를 파라미터로 전달합니다.
 * 최초 실행일 경우 사용자에게 알림 허용 권환을 요청합니다. 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 
@@ -220,7 +220,7 @@ options.soundEnabled = YES;         // 알림음 사용 설정 (default : YES)
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
     * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* [ToastPushAgreement](./push-ios/#toastpushagreement) 객체에 사용자 알림 메시지 수신 동의 정보를 설정합니다.
+* [NHN CloudPushAgreement](./push-ios/#toastpushagreement) 객체에 사용자 알림 메시지 수신 동의 정보를 설정합니다.
 
 ### 토큰 등록 및 수신 동의 설정 API 명세
 
@@ -257,7 +257,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 ## 토큰 정보 조회
 
 * 현재 단말기에서 마지막으로 등록에 성공한 토큰과 설정 정보를 조회합니다.
-* 토큰 조회 정보 성공 시 [ToastPushTokenInfo](./push-ios/#toastpushtokeninfo) 객체로 토큰의 설정 정보가 반환됩니다.
+* 토큰 조회 정보 성공 시 [NHN CloudPushTokenInfo](./push-ios/#toastpushtokeninfo) 객체로 토큰의 설정 정보가 반환됩니다.
 
 ### 토큰 정보 조회 API 명세
 
@@ -311,7 +311,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 * 리치 메시지는 알림의 제목, 본문과 함께 미디어(이미지, 비디오, 오디오)를 알림에 표현하고 버튼, 답장 등의 액션을 추가합니다.
 * `리치 메시지 수신은 iOS 10.0+ 이상부터 지원합니다.`
-* 리치 메시지 표현을 위해서는 사용자 어플리케이션에 ToastPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
+* 리치 메시지 표현을 위해서는 사용자 어플리케이션에 NHN CloudPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
 
 ### 지원하는 리치 메시지
 
@@ -319,10 +319,10 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 | 유형 | 기능 | 액션 |
 | --- | ------- | --- |
-| 앱 열기 (OPEN_APP) | 어플리케이션 실행 | ToastPushNotificationActionOpenApp |
-| URL 열기 (OPEN_URL) | URL로 이동<br/>(웹 URL 주소 혹은 앱 커스텀 스킴 실행) | ToastPushNotificationActionOpenURL |
-| 답장 (REPLY) | 알림에서 답장 전송 | ToastPushNotificationActionReply |
-| 취소 (DISMISS) | 현재 알림 취소 | ToastPushNotificationActionDismiss |
+| 앱 열기 (OPEN_APP) | 어플리케이션 실행 | NHN CloudPushNotificationActionOpenApp |
+| URL 열기 (OPEN_URL) | URL로 이동<br/>(웹 URL 주소 혹은 앱 커스텀 스킴 실행) | NHN CloudPushNotificationActionOpenURL |
+| 답장 (REPLY) | 알림에서 답장 전송 | NHN CloudPushNotificationActionReply |
+| 취소 (DISMISS) | 현재 알림 취소 | NHN CloudPushNotificationActionDismiss |
 
 > 버튼은 메시지당 최대 3개까지 지원합니다.
 
@@ -345,9 +345,9 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 ### 수신(Received) 지표 수집 설정
 
 * `수신 지표 수집은 iOS 10.0+ 이상부터 지원합니다.`
-* 수신 지표는 Notification Service Extension에 추가한 Toast Push SDK 에서 자동으로 수집됩니다.
-* 수신 지표 수집을 위해서는 사용자 어플리케이션에 ToastPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
-* Notification Service Extension 생성자에서 [Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 **익스텐션의 info.plist 파일**에 앱키가 정의되어 있어야 수신 지표 수집이 가능합니다.
+* 수신 지표는 Notification Service Extension에 추가한 NHN Cloud Push SDK 에서 자동으로 수집됩니다.
+* 수신 지표 수집을 위해서는 사용자 어플리케이션에 NHN CloudPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
+* Notification Service Extension 생성자에서 [NHN Cloud Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 **익스텐션의 info.plist 파일**에 앱키가 정의되어 있어야 수신 지표 수집이 가능합니다.
 
 #### 초기화를 통한 수신 지표 수집 설정 예
 
@@ -397,8 +397,8 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 ### 실행(Opened) 지표 수집 설정
 
-* 실행 지표는 어플리케이션에 추가한 Toast Push SDK 에서 자동으로 수집됩니다.
-* [Toast Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 **어플리케이션의 info.plist 파일**에 앱키가 정의되어 있어야 실행 지표 수집이 가능합니다.
+* 실행 지표는 어플리케이션에 추가한 NHN Cloud Push SDK 에서 자동으로 수집됩니다.
+* [NHN Cloud Push SDK 초기화](./push-ios/#toast-push-sdk) 혹은 **어플리케이션의 info.plist 파일**에 앱키가 정의되어 있어야 실행 지표 수집이 가능합니다.
 
 #### info.plist 정의를 통한 수신 지표 수집 설정 예
 
@@ -426,7 +426,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 ## Notification Service Extension
 
 * `iOS 10.0+ 부터 지원합니다.`
-* 리치 메시지, 수신 지표 수집을 위해서는 어플리케이션에 ToastPushServiceExtension를 상속 구현하는 Notification Service Extension을 반드시 구현해야 합니다.
+* 리치 메시지, 수신 지표 수집을 위해서는 어플리케이션에 NHN CloudPushServiceExtension를 상속 구현하는 Notification Service Extension을 반드시 구현해야 합니다.
 
 ### Notification Service Extension 생성
 
@@ -440,7 +440,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 ### Notification Service Extension 설정 예
 
-* 생성된 NotificationService 클래스에 ToastPushServiceExtension 을 상속해야 합니다.
+* 생성된 NotificationService 클래스에 NHN CloudPushServiceExtension 을 상속해야 합니다.
 * 별도의 사용자 정의 처리 로직이 없는 경우 상속만으로도 리치 메시지와 수신 지표 수집 기능이 동작합니다.
 
 ``` objc
@@ -569,7 +569,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### 프레임워크 설정
 
-* TOAST Push의 VoIP 기능을 사용하려면 **PushKit.framework**, **CallKit.framework**를 추가해야 합니다.
+* NHN Cloud Push의 VoIP 기능을 사용하려면 **PushKit.framework**, **CallKit.framework**를 추가해야 합니다.
 * PushKit.framework, CallKit.framework는 아래 방법으로 추가할 수 있습니다.
 ![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
 ![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
@@ -585,12 +585,12 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### 초기화
 
-* `VoIP 기능은 [Toast Push SDK 초기화](./push-ios/#toast-push-sdk)가 되어 있어야 사용가능합니다.`
-* `VoIP 기능은 Toast Push SDK의 서브모듈로 별도 분리되어 있습니다.`
+* `VoIP 기능은 [NHN Cloud Push SDK 초기화](./push-ios/#toast-push-sdk)가 되어 있어야 사용가능합니다.`
+* `VoIP 기능은 NHN Cloud Push SDK의 서브모듈로 별도 분리되어 있습니다.`
 
 ### Delegate 설정
 
-* VoIP 메시지 수신 시 [ToastPushMessage](./push-ios/#toastpushmessage) 객체로 수신 받은 메시지의 내용이 전달됩니다.
+* VoIP 메시지 수신 시 [NHN CloudPushMessage](./push-ios/#toastpushmessage) 객체로 수신 받은 메시지의 내용이 전달됩니다.
 * `원활한 메시지 수신을 위해 application:didFinishLaunchingWithOptions: 함수에서 Delegate 설정을 권장합니다.`
 
 #### Delegate API 명세
@@ -663,7 +663,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 ### 토큰 정보 조회
 
 * 현재 단말기에서 마지막으로 등록에 성공한 토큰과 설정 정보를 조회합니다.
-* 토큰 조회 정보 성공 시 [ToastPushTokenInfo](./push-ios/#toastpushtokeninfo) 객체로 토큰의 설정 정보가 반환됩니다.
+* 토큰 조회 정보 성공 시 [NHN CloudPushTokenInfo](./push-ios/#toastpushtokeninfo) 객체로 토큰의 설정 정보가 반환됩니다.
 
 #### 토큰 정보 조회 API 명세
 
@@ -748,10 +748,10 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 };
 ```
 
-## TOAST Push Class Reference
+## NHN Cloud Push Class Reference
 
-### ToastPushConfiguration
-* TOAST Push를 초기화할 때 전달되는 Push 설정 정보입니다.
+### NHN CloudPushConfiguration
+* NHN Cloud Push를 초기화할 때 전달되는 Push 설정 정보입니다.
 
 ``` objc
 @interface ToastPushConfiguration : NSObject
@@ -782,8 +782,8 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 @end
 ```
 
-### ToastNotificationOptions
-* TOAST Push를 초기화할 때 전달되는 알림 설정 정보입니다.
+### NHN CloudNotificationOptions
+* NHN Cloud Push를 초기화할 때 전달되는 알림 설정 정보입니다.
 
 ``` objc
 @interface ToastNotificationOptions : NSObject
@@ -801,7 +801,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 ```
 
 
-### ToastPushAgreement
+### NHN CloudPushAgreement
 
 ``` objc
 @interface ToastPushAgreement : NSObject
@@ -823,7 +823,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 @end
 ```
 
-### ToastPushMessage
+### NHN CloudPushMessage
 * 메세지 수신시 반환되는 객체입니다.
 
 ```objc
@@ -844,7 +844,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 @end
 ```
 
-### ToastPushMessage
+### NHN CloudPushMessage
 * 수신한 메세지 내용 중 리치메시지 내용을 담는 객체 입니다.
 
 ```objc
@@ -857,7 +857,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 @end
 ```
 
-### ToastPushMedia
+### NHN CloudPushMedia
 * 수신한 리치메시지 중 미디어 내용을 담는 객체 입니다.
 
 ```objc
@@ -870,7 +870,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 @end
 ```
 
-### ToastPushButton
+### NHN CloudPushButton
 * 수신한 리치메시지 내용 중 버튼 내용을 담는 객체 입니다.
 
 ```objc
@@ -891,7 +891,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 @end
 ```
 
-### ToastPushNotificationAction
+### NHN CloudPushNotificationAction
 * 알림 액션(버튼, 답장) 수신시 반환되는 객체 입니다.
 
 ```objc
@@ -920,7 +920,7 @@ typedef NS_ENUM(NSInteger, ToastPushNotificationActionType) {
 @end
 ```
 
-### ToastPushTokenInfo
+### NHN CloudPushTokenInfo
 * 토큰 정보 조회 요청시 반환되는 토큰 정보 객체입니다.
 
 ``` objc

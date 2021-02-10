@@ -1,8 +1,8 @@
-## TOAST > TOAST SDK使用ガイド > リリースノート > Android
+## NHN Cloud > NHN Cloud SDK使用ガイド > リリースノート > Android
 
 ## 0.24.4 (2021.01.12)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -10,7 +10,7 @@
 
 ## 0.24.3 (2020.12.08)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能追加
 
@@ -18,7 +18,7 @@
 
 ## 0.24.2 (2020.11.24)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### バグ修正
 
@@ -26,7 +26,7 @@
 
 ## 0.24.1 (2020.10.30)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### バグ修正
 
@@ -35,7 +35,7 @@
 
 ## 0.24.0 (2020.10.27)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 機能追加
 
@@ -51,7 +51,7 @@
 * Google定期決済(サブスクリプション)ステータス変更による対応
     * Google定期購入決済の更新および満了などのライフサイクルの間、様々な状態の変更(猶予期間、アカウント保留、復元、一時停止、定期決済の再申請など)に対応しました。
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -63,7 +63,7 @@
 
 ## 0.23.2 (2020.10.06)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### バグ修正
 
@@ -72,7 +72,7 @@
 
 ## 0.23.1 (2020.09.11)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -80,7 +80,7 @@
 
 ## 0.23.0 (2020.07.28)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能追加
 
@@ -88,7 +88,7 @@
 
 ## 0.22.0 (2020.06.23)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 機能改善
 
@@ -96,7 +96,7 @@
 
 * Google Play Billing Library BillingClient 2.2.1適用
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -104,7 +104,7 @@
 
 ## 0.21.2 (2020.05.26)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -112,13 +112,13 @@
 
 ## 0.21.1 (2020.04.28)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
 * 安全性の改善
 
-### TOAST Logger
+### NHN Cloud Logger
 
 #### 機能改善
 
@@ -126,13 +126,13 @@
 
 ## 0.21.0 (2020.03.24)
 
-### TOAST Logger
+### NHN Cloud Logger
 
 #### 機能追加
 
 * Native Crash Reporting (NDK)機能の追加
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -142,7 +142,7 @@
 
 ## 0.20.3 (2020.02.25)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -152,7 +152,7 @@
 
 ## 0.20.2 (2020.01.21)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -161,7 +161,7 @@
 
 ## 0.20.1 (2020.01.07)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -170,7 +170,7 @@
 * 基本オプションの設定方法の改善
     * AndroidManifestのmeta-dataを使用して通知の基本オプションを設定できます。
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 機能改善
 * セキュリティ強化
@@ -183,7 +183,7 @@
 
 ## 0.19.4 (2019.11.26)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -192,7 +192,7 @@
 
 ## 0.19.3 (2019.10.18)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -200,7 +200,7 @@
 
 ## 0.19.2 (2019.10.15)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能追加
 
@@ -216,7 +216,7 @@
 
 ## 0.19.1 (2019.10.02)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 機能追加
 
@@ -224,13 +224,13 @@
 
 ## 0.19.0 (2019.10.01)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 機能追加
 * Android IAPライブラリーに購入リクエストの際、ユーザーデータを領主書へ含めることができる機能が追加されました。
 
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能改善
 
@@ -239,7 +239,7 @@
 
 ## 0.18.0 (2019.08.27)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 機能追加
 
@@ -250,7 +250,7 @@
 
 * GooglePlayStoreでのアプリアップデートの際、決済結果が2回以上通知されるエラーを修正しました。
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能追加
 
@@ -259,7 +259,7 @@
 
 ## 0.17.1 (2019.07.23)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能追加
 
@@ -267,7 +267,7 @@
 
 ## 0.17.0 (2019.06.25)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能追加
 
@@ -288,14 +288,14 @@
 
 ## 0.16.2 (2019.06.21)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 機能改善
 
 * ユーザーIDが変更された場合の動作改善
 * (旧)IAP SDK v1.5.3以前の決済アイテムの再処理
 
-### TOAST Logger
+### NHN Cloud Logger
 
 #### バグ修正
 
@@ -303,7 +303,7 @@
 
 ## 0.16.1 (2019.05.02)
 
-### TOAST SDK
+### NHN Cloud SDK
 
 #### Fixed
 
@@ -311,7 +311,7 @@
 
 ## 0.16.0 (2019.04.23)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能を追加
 
@@ -321,20 +321,20 @@
 
 ## 0.15.0 (2019.03.26)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### 機能改善
 
 * ProjectKeyがAppKeyに名称変更
     *既存のsetProjectKeyは引き続き使用可能
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 機能追加
 
 * 中国のマーケットを追加。
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能追加
 
@@ -344,7 +344,7 @@
 
 ## 0.14.3 (2019.03.08)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### バグ修正
 
@@ -352,7 +352,7 @@
 
 ## 0.14.2 (2019.03.04)
 
-### TOAST Push
+### NHN Cloud Push
 
 #### バグ修正
 
@@ -360,7 +360,7 @@
 
 ## 0.14.1 (2019.01.29)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### バグ修正
 
@@ -368,22 +368,22 @@
 
 ## 0.14.0 (2019.01.08)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 機能追加
 
-* TOAST IAP Unity Plugin追加.
+* NHN Cloud IAP Unity Plugin追加.
 
 ## 0.13.0 (2018.12.27)
 
-### TOAST Core
+### NHN Cloud Core
 
 #### 機能改善
 
 * ToastSdk.initialize()メソッドdeprecated.
     * Application起動時に自動的に呼び出すように変更
 
-### TOAST Push
+### NHN Cloud Push
 
 #### 機能追加
 
@@ -392,7 +392,7 @@
 
 ## 0.12.0 (2018.12.04)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### 追加事項
 
@@ -402,7 +402,7 @@
 
 ## 0.11.0 (2018.11.20)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### 追加事項
 
@@ -410,7 +410,7 @@
 
 ## 0.9.0 (2018.09.04)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### 追加事項
 

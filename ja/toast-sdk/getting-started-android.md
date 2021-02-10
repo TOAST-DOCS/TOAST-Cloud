@@ -1,25 +1,25 @@
-## TOAST > TOAST SDK使用ガイド > 開始する > Android
+## NHN Cloud > NHN Cloud SDK使用ガイド > 開始する > Android
 
 ## サポート環境
 
 * Android 4.0.3以上
 * Android Studio最新バージョン(バージョン2.2以上)
 
-## TOAST SDKの構成
+## NHN Cloud SDKの構成
 
-Android用TOAST SDKの構成は次のとおりです。
+Android用NHN Cloud SDKの構成は次のとおりです。
 
-* TOAST Common SDK
-* TOAST Core SDK
-* [TOAST Logger](./log-collector-android) SDK
-* [TOAST Native Crash Reporter](./log-collector-ndk) SDK
-* TOAST In-app Purchase Core SDK
-* [TOAST In-app Purchase Google Play Store](./iap-android) SDK
-* [TOAST In-app Purchase OneStore](./iap-android) SDK
-* TOAST Push Core SDK
-* [TOAST Push Firebase Cloud Messaging](./push-android) SDK
+* NHN Cloud Common SDK
+* NHN Cloud Core SDK
+* [NHN Cloud Logger](./log-collector-android) SDK
+* [NHN Cloud Native Crash Reporter](./log-collector-ndk) SDK
+* NHN Cloud In-app Purchase Core SDK
+* [NHN Cloud In-app Purchase Google Play Store](./iap-android) SDK
+* [NHN Cloud In-app Purchase OneStore](./iap-android) SDK
+* NHN Cloud Push Core SDK
+* [NHN Cloud Push Firebase Cloud Messaging](./push-android) SDK
 
-TOAST SDKが提供するサービスの中から、希望する機能を選択して適用できます。
+NHN Cloud SDKが提供するサービスの中から、希望する機能を選択して適用できます。
 
 | Gradle Dependency | Service |
 | --- | --- |
@@ -34,11 +34,11 @@ TOAST SDKが提供するサービスの中から、希望する機能を選択�
 | com.toast.android:toast-push-core:0.24.4    | TOAST Push Core   |
 | com.toast.android:toast-push-fcm:0.24.4    | TOAST Push <br>Firebase Cloud Messaging |
 
-## TOAST SDKをAndroid Studioプロジェクトに適用
+## NHN Cloud SDKをAndroid Studioプロジェクトに適用
 
 ### 1. Gradleを使用してAndroidビルド
 
-TOAST SDKのすべてのサービスを使用するには、下記のように従属性(dependency)を設定します。
+NHN Cloud SDKのすべてのサービスを使用するには、下記のように従属性(dependency)を設定します。
 
 > Unityを使用する場合、別途の従属性設定を行う必要があります。
 > 詳細は[Unityガイド](./getting-started-unity/#android)を参照してください。
@@ -49,12 +49,12 @@ dependencies {
 }
 ```
 
-TOAST SDKが提供するサービス別の設定方法は次のとおりです。
+NHN Cloud SDKが提供するサービス別の設定方法は次のとおりです。
 
-- [TOAST Loggerライブラリ設定](./log-collector-android/#_1)
-- [TOAST Native Crash Reporterライブラリ設定](./log-collector-ndk/#_1)
-- [TOAST In-app Purchaseライブラリ設定](./iap-android/#_2)
-- [TOAST Pushライブラリ設定](./push-android/#_2)
+- [NHN Cloud Loggerライブラリ設定](./log-collector-android/#_1)
+- [NHN Cloud Native Crash Reporterライブラリ設定](./log-collector-ndk/#_1)
+- [NHN Cloud In-app Purchaseライブラリ設定](./iap-android/#_2)
+- [NHN Cloud Pushライブラリ設定](./push-android/#_2)
 
 ### 2. AARを使用してAndroidビルド
 
@@ -63,8 +63,8 @@ Android SDKは[Downloads](../../../Download/#toast-sdk)ページでダウンロ�
 ## UserID設定
 
 TOASAT SDKにUserIDを設定できます。
-設定したUserIDは、TOAST SDKの各モジュールで共通使用されます。
-ToastLoggerのログ送信APIを呼び出すたびに、設定したUserIDをログと一緒にサーバーに送信します。
+設定したUserIDは、NHN Cloud SDKの各モジュールで共通使用されます。
+NHN CloudLoggerのログ送信APIを呼び出すたびに、設定したUserIDをログと一緒にサーバーに送信します。
 
 ### UserID設定API仕様
 
@@ -95,8 +95,8 @@ ToastSdk.setUserId(null);
 
 ## デバッグモード設定
 
-TOAST SDKの内部ログを確認するために、デバッグモードを設定できます。
-TOAST SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
+NHN Cloud SDKの内部ログを確認するために、デバッグモードを設定できます。
+NHN Cloud SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
 
 ### デバッグモード設定API仕様
 
@@ -127,9 +127,9 @@ ToastSdk.setDebugMode(false);
 
 > [注意]アプリをリリースする時は、デバッグモードを無効化する必要があります。
 
-## TOASTサービス使用
+## NHN Cloudサービス使用
 
-* [TOAST Log & Crash](./log-collector-android)使用ガイド
-* [TOAST Native Crash Reporter](./log-collector-ndk)使用ガイド
-* [TOAST In-app Purchase](./iap-android)使用ガイド
-* [TOAST Push](./push-android)使用ガイド
+* [NHN Cloud Log & Crash](./log-collector-android)使用ガイド
+* [NHN Cloud Native Crash Reporter](./log-collector-ndk)使用ガイド
+* [NHN Cloud In-app Purchase](./iap-android)使用ガイド
+* [NHN Cloud Push](./push-android)使用ガイド
