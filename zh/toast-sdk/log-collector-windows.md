@@ -1,12 +1,12 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Windows C++
+## NHN Cloud > User Guide for NHN Cloud SDK > NHN Cloud Log & Crash > Windows C++
 
 ## Prerequisites
 
-1\. [Install TOAST SDK](./getting-started-windows)
-2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1\. [Install NHN Cloud SDK](./getting-started-windows)
+2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 
-## Initialize TOAST Logger SDK
+## Initialize NHN Cloud Logger SDK
 
 Set appkey issued from Log & Crash Search as ProjectKey.
 
@@ -38,7 +38,7 @@ if (_logger != NULL)
 }
 ```
 
-## TOAST Logger SDK 종료
+## NHN Cloud Logger SDK 종료
 
 ```
 DestroyToastLogger();
@@ -46,8 +46,8 @@ DestroyToastLogger();
 
 ## Set UserID 
 
-User ID can be set for TOAST SDK.
-Such set UserID is common for each module of TOAST SDK. 
+User ID can be set for NHN Cloud SDK.
+Such set UserID is common for each module of NHN Cloud SDK. 
 Set User ID is sent to server, along with logs, every time Log Sending API is called. 
 
 
@@ -69,7 +69,7 @@ _logger->getUserId();
 
 ## Send Logs 
 
-TOAST Logger provides log sending functions of five levels. 
+NHN Cloud Logger provides log sending functions of five levels. 
 
 ### Send Logs  
 
@@ -204,7 +204,7 @@ void CsampleDlg::OnBnClickedCrash()
 
 #### Overview
 
-* To interpret crashes occurred in TOAST Windows SDK, a symbol file must be created and uploaded to a web console. 
+* To interpret crashes occurred in NHN Cloud Windows SDK, a symbol file must be created and uploaded to a web console. 
 
 #### Create Symbol Files 
 

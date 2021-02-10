@@ -1,6 +1,6 @@
-## TOAST > TOAST安全策略
+## NHN Cloud > NHN Cloud安全策略
 
-TOAST通过提供安全服务、安全策略、漏洞信息等内容，为客户创造更安全的安全环境。
+NHN Cloud通过提供安全服务、安全策略、漏洞信息等内容，为客户创造更安全的安全环境。
 为保护客户资产免受各种新型攻击技术和安全漏洞的影响，我们提供如下可防范云环境中常见的安全事件及威胁的安全策略。
 
 ## 密码策略
@@ -16,8 +16,8 @@ TOAST通过提供安全服务、安全策略、漏洞信息等内容，为客户
 - 定期重新使用密码
 - 如电话号码、生日、账号名、主机名等易猜测的密码
 
-### TOAST密码策略
-为保护客户宝贵的资产和服务，TOAST默认应用如下密码政策。
+### NHN Cloud密码策略
+为保护客户宝贵的资产和服务，NHN Cloud默认应用如下密码政策。
 
 - 英文、数字、特殊字符3种组合
 - 最少8位以上
@@ -28,8 +28,8 @@ TOAST通过提供安全服务、安全策略、漏洞信息等内容，为客户
 ### 什么是DRDoS（Distributed Reflect DoS，分布式反射拒绝服务）？
 DRDoS是由DNS, NTP, SSDP, Memcached等应用程序中薄弱的设置导致的。使用大量的僵尸PC，把小型请求数据包做成大型响应数据包，可以使流量集中于目标服务器，因此是最近黑客入侵中常用的带宽渗透性入侵技术。
 
-### TOAST DRDoS端口阻断策略
-为保护客户宝贵的资产和服务，TOAST对常被恶意用作DRDoS入侵中转站的UDP端口实施阻断策略。
+### NHN Cloud DRDoS端口阻断策略
+为保护客户宝贵的资产和服务，NHN Cloud对常被恶意用作DRDoS入侵中转站的UDP端口实施阻断策略。
 
 ### 阻断端口列表
 | 服务名 | 阻断端口 | 阻断方法 | 备注 |
@@ -40,12 +40,12 @@ DRDoS是由DNS, NTP, SSDP, Memcached等应用程序中薄弱的设置导致的�
 
 ### List of Blocked Internet Ports
 
-#### List of Blocked Internet Ports (TOAST)
+#### List of Blocked Internet Ports (NHN Cloud)
 | Region |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- | ---- |
 | KOREA(Pangyo) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
 
-#### List of Blocked Internet Ports (TOAST G)
+#### List of Blocked Internet Ports (NHN Cloud G)
 |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- |
 | System Terminal port | TCP / 22, 23, 3389 | Network ACL | Inaccessible from outside | 
@@ -59,7 +59,7 @@ DRDoS是由DNS, NTP, SSDP, Memcached等应用程序中薄弱的设置导致的�
 
 [![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/Application%20for%20Exception%20from%20TOAST%20Firewall%20and%20SSL%20VPN%20Policy_Agency%20Name.xlsx)
 
-- Save file name as “Application for Exception from TOAST Firewall and SSL VPN Policy_JP-Agency Name.xlsx”.
+- Save file name as “Application for Exception from NHN Cloud Firewall and SSL VPN Policy_JP-Agency Name.xlsx”.
 Send the application over the email like below (to be processed and replied within 3 days after received). 
-    - TOAST : support@toast.com
+    - NHN Cloud : support@toast.com
     - TOAST G : support@gov.toast.com

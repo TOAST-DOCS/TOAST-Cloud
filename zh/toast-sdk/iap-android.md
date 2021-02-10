@@ -1,10 +1,10 @@
-## TOAST > User Guide for TOAST SDK > TOAST IAP > Android
+## NHN Cloud > User Guide for NHN Cloud SDK > NHN Cloud IAP > Android
 
 ## Prerequisites
 
-1\. [Install TOAST SDK](./getting-started-android)
+1\. [Install NHN Cloud SDK](./getting-started-android)
 
-2.[Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) [in TOAST console](https://console.cloud.toast.com).
+2.[Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) [in NHN Cloud console](https://console.cloud.toast.com).
 
 3\. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP console.
 
@@ -151,7 +151,7 @@ public class MainApplication extends Application {
 
 ## Service Login
 
-* All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID.
+* All NHN Cloud SDK products (including IAP and Log & Crash) are based on a same user ID.
     * Set user ID with[ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid).
     * Cannot make purchases when user ID is not set.
 * It is recommended to set user ID, query unconsumed purchase history, and search enabled subscription products, during service login.
@@ -284,7 +284,7 @@ void queryProductDetails() {
 
 ## Purchase Products
 
-* TOAST IAP supports product purchase by using product ID registered at store.
+* NHN Cloud IAP supports product purchase by using product ID registered at store.
 * Product information is included to [IapProductDetails](./iap-android/#iapproductdetails) which is returned by calling ToastIap.queryProductDetails().
 * Product ID can be obtained by using IapProductDetails.getProductId().
 * Product purchase begins via ToastIap.launchPurchaseFlow(), after setting product ID to [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams).  

@@ -1,25 +1,25 @@
-## TOAST > User Guide for TOAST SDK > TOAST IAP > iOS
+## NHN Cloud > User Guide for NHN Cloud SDK > NHN Cloud IAP > iOS
 
 ## Prerequisites
 
-1. [Install TOAST SDK](./getting-started-ios).
-2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1. [Install NHN Cloud SDK](./getting-started-ios).
+2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3.  [Check AppKey ](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)in IAP.
 
-## Configuration of TOAST IAP
+## Configuration of NHN Cloud IAP
 
-* TOAST Logger SDK for iOS is configured as follows.
+* NHN Cloud Logger SDK for iOS is configured as follows.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- | 
 | TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## Apply TOAST SDK to Xcode Projects
+## Apply NHN Cloud SDK to Xcode Projects
 
 ### 1. Apply Cococapods 
 
-* Create a podfile to add pods to TOAST SDK. 
+* Create a podfile to add pods to NHN Cloud SDK. 
 
 ```podspec
 platform :ios, '9.0'
@@ -30,11 +30,11 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apply TOAST SDK with Binary Downloads  
+### 2. Apply NHN Cloud SDK with Binary Downloads  
 
 #### Link Frameworks
 
-* The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
+* The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of NHN Cloud.  
 * Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework, StoreKit.framework** to the Xcode Project.
 * StoreKit.framework can be added in the following way.
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
@@ -49,13 +49,13 @@ end
 
 ### Capabilities Setting
 
-* To use TOAST IAP, you must enable the **In-App Purchase** item in Capabilities.
+* To use NHN Cloud IAP, you must enable the **In-App Purchase** item in Capabilities.
     * **Project Target > Capabilities > In-App Purchase** 
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## Service Login 
 
-* All TOAST SDK products(Log&Crash, IAP, Push, ...) are based on a same user ID.
+* All NHN Cloud SDK products(Log&Crash, IAP, Push, ...) are based on a same user ID.
 
 ### Login
 
@@ -73,9 +73,9 @@ end
 [ToastSDK setUserID:nil];
 ```
 
-## Initialize TOAST IAP SDK 
+## Initialize NHN Cloud IAP SDK 
 
-* Set appkey issued from TOAST IAP. 
+* Set appkey issued from NHN Cloud IAP. 
 * Reprocessing for uncompleted purchases is executed along with initialization.  
 
 ### Specifications for Initialization API
