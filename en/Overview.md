@@ -1,6 +1,6 @@
-## TOAST > Overview
+## NHN Cloud > Overview
 
-TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “Integrated Cloud Service” of NHN, as part of unwavering passion to make the world renewed with arts, science, and technology.  
+NHN Cloud, which is from ‘Toward Art, Science, and Technology’, refers to an “Integrated Cloud Service” of NHN, as part of unwavering passion to make the world renewed with arts, science, and technology.  
 
 ## Features
 
@@ -83,7 +83,7 @@ TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “
 
 ## Service Release Policy
 
-TOAST Service is managed by the Release Policy as below.
+NHN Cloud Service is managed by the Release Policy as below.
 
 - ALPHA
     - The service is open to users before an official service version is released.

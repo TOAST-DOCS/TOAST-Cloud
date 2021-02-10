@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK使用ガイド > TOAST Push > iOS
+## NHN Cloud > NHN Cloud SDK使用ガイド > NHN Cloud Push > iOS
 
 ## Prerequisites
 
@@ -15,8 +15,8 @@
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[ToastVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
-| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+| NHN Cloud Push | NHN CloudPush | ToastPush.framework | UserNotifications.framework<br/><br/>[NHN CloudVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
+| Mandatory   | NHN CloudCore<br/>NHN CloudCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## TOAST Push SDKをXcodeプロジェクトに適用
 
@@ -745,7 +745,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 };
 ```
 
-## TOAST Push Class Reference
+## NHN Cloud Push Class Reference
 
 ### ToastPushConfiguration
 * TOAST Pushを初期化する際に配信されるPush設定情報です。
@@ -798,7 +798,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 ```
 
 
-### ToastPushAgreement
+### NHN CloudPushAgreement
 
 ``` objc
 @interface ToastPushAgreement : NSObject

@@ -1,4 +1,4 @@
-## TOAST > User Guide for TOAST SDK > Release Notes > Unity
+## NHN Cloud > User Guide for NHN Cloud SDK > Release Notes > Unity
 
 ## 0.21.5 (2021.01.15)
 
@@ -115,13 +115,13 @@
 
 ## 0.17.0 (2019.10.02)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 - 구매 요청시 사용자 데이터 설정 기능 추가
 
 ## 0.16.0 (2019.08.28)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### Changed
 
@@ -135,7 +135,7 @@
 
 ## 0.15.0 (2019.07.23)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### Changed
 
@@ -143,7 +143,7 @@
 
 ## 0.14.0 (2019.07.02)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### Added
 
@@ -151,7 +151,7 @@
   - Logger
   - Instance Logger
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### Added
 
@@ -159,7 +159,7 @@
 
 ## 0.13.1 (2019.03.26)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### Improved
 
@@ -173,7 +173,7 @@
 
 ## 0.13.0 (2019.02.26)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### Added
 
@@ -181,7 +181,7 @@
 
 ## 0.12.0 (2019.01.08)
 
-### TOAST IAP
+### NHN Cloud IAP
 
 #### Added
 
@@ -189,7 +189,7 @@
 
 ## 0.11.0 (2018.12.27)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### Added
 
@@ -198,7 +198,7 @@
 
 ## 0.10.0 (2018.11.20)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### Added
 
@@ -212,7 +212,7 @@
 
 ## 0.9.0 (2018.09.04)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### Added
 

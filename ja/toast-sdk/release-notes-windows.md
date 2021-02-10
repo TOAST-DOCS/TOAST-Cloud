@@ -1,8 +1,8 @@
-## TOAST > TOAST SDK使用ガイド > リリースノート > Windows C++
+## NHN Cloud > NHN Cloud SDK使用ガイド > リリースノート > Windows C++
 
 ## 0.9.4.3 (2019.10.10)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### バグ修正
 
@@ -10,7 +10,7 @@
 
 ## 0.9.3.0 (2019.07.23)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### 追加事項
 
@@ -24,7 +24,7 @@
 
 ## 0.9.0.12 (2018.09.04)
 
-### TOAST Log & Crash
+### NHN Cloud Log & Crash
 
 #### 追加事項
 
