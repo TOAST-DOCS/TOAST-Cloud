@@ -82,7 +82,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Address Search | Regional | O |  |  |  |
 | Dev Tools | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
-|  | Service Monitoring | Global |  |  |  |  |
+|  |  | Global |  |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
 | Workplace Dooray! | Project | Global |  |  |  |  |
 |  | Messenger | Global |  |  |  |  |
