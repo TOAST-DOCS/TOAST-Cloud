@@ -1,39 +1,39 @@
-## NHN Cloud > User Guide for NHN Cloud SDK > Release Notes > iOS
+## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
 ## 0.27.1 (2020.11.24)
-### NHN Cloud IAP
+### TOAST IAP
 #### 개선 사항
 * 구독 상품 재구매 오류 수정 (iOS 14 )
-- Appstore로부터 상품 정보 획득 실패 시 NHN CloudProductsResponse가 nil을 반환하도록 변경
+- Appstore로부터 상품 정보 획득 실패 시 TOASTProductsResponse가 nil을 반환하도록 변경
 
-### NHN Cloud Push
+### TOAST Push
 #### 개선 사항
 * 토큰 해제 요청 시 등록된 토큰이 없을 경우 Callback이 발생하지 않는 문제 개선
 
 ## 0.27.0 (2020.09.11)
-### NHN Cloud IAP
+### TOAST IAP
 #### 기능 추가
-* NHN CloudProduct에 지역화된 상품정보 추가 (localizedTitle, localizedDescription)
+* TOASTProduct에 지역화된 상품정보 추가 (localizedTitle, localizedDescription)
 
 #### 기능 개선
 * iOS 14 beta 변경 사항 대응 
     * 결제 실패 Delegate가 수신되지 않는 문제 개선
     
-### NHN Cloud Push
+### TOAST Push
 #### 개선 사항
 * 안전성 개선
     
 ## 0.26.0 (2020.07.28)
-### NHN Cloud Push
+### TOAST Push
 #### 기능 추가
 * 사용자 태그 기능 지원
 
 ## 0.25.1 (2020.07.03)
-### NHN Cloud Logger 
+### TOAST Logger 
 #### 개선 사항
 * 안전성 개선
 
-### NHN Cloud Push
+### TOAST Push
 #### 개선 사항
 * 안전성 개선
 
@@ -42,56 +42,56 @@
 #### 개선 사항
 * 안전성 개선
 
-### NHN Cloud Push
+### TOAST Push
 #### 개선 사항
 * 알림 옵션 설정 인터페이스 분리
 
 ## 0.24.1 (2020.05.26)
-### NHN Cloud Push
+### TOAST Push
 #### 기능 개선
 * 토큰 등록 기능 개선
 
 ## 0.24.0 (2020.04.28)
 ### 공통
-* NHN Cloud SDK 최소 지원버전 상향 (iOS 8.0 -> iOS 9.0)
+* TOAST SDK 최소 지원버전 상향 (iOS 8.0 -> iOS 9.0)
 * 안전성 개선
 
-### NHN Cloud IAP 
+### TOAST IAP 
 #### 추가 사항
 * 프로모션 결제의 진행 여부를 선택할 수 있도록 Optional Delegate 추가
 
-### NHN Cloud Push
+### TOAST Push
 #### 개선 사항 
 * 안전성 개선
 
 ## 0.23.0 (2020.03.24)
-### NHN Cloud Logger 
+### TOAST Logger 
 #### 개선 사항
 * CrashReport CallStack에 잘못된 문자열이 포함될 수 있는 문제 수정
 
-### NHN Cloud Push
+### TOAST Push
 #### 추가 사항
 * 알림 옵션 설정 기능 추가
     * 초기화시에 포그라운드 알림 노출, 배지 아이콘 사용, 알림음 사용 여부에 대한 설정이 가능합니다.
     
 ## 0.22.1 (2020.02.25)
-### NHN Cloud Push
+### TOAST Push
 #### 개선 사항
 * 토큰 등록 기능 개선
     * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
     * 토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.
 
 ## 0.22.0 (2020.02.11)
-### NHN Cloud IAP
+### TOAST IAP
 #### 개선 사항
 * 안전성 개선
 
 ## 0.21.0 (2019.12.24)
-### NHN Cloud Logger
+### TOAST Logger
 #### 개선 사항
 * Crash 발생 위치 분류 방식 개선을 위한 데이터 추가 
 
-### NHN Cloud IAP
+### TOAST IAP
 #### 개선 사항
 * API 보안 기능 추가
 * 안전성 개선
@@ -107,7 +107,7 @@
 
 ## 0.20.0 (2019.11.26)
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 개선 사항
 
@@ -126,7 +126,7 @@
 
 ## 0.19.2 (2019.10.25)
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 개선 사항
 
@@ -134,7 +134,7 @@
 
 ## 0.19.1 (2019.10.18)
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 개선 사항
 
@@ -142,7 +142,7 @@
 
 ## 0.19.0 (2019.10.15)
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 추가 사항
 
@@ -156,7 +156,7 @@
 
 * iOS 13 / Xcode 11 대응
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 추가 사항
 
@@ -166,12 +166,12 @@
 
 * 복원 기능 수행 후 복원된 결제건만 반환하도록 변경
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 개선 사항
 
-* NHN CloudPushConfiguration 객체의 Nullability 속성 변경
-* 리치 메시지 생성 로직 개선으로 NHN CloudPushMedia 객체의 sourceType, extension 프로퍼티 삭제
+* TOASTPushConfiguration 객체의 Nullability 속성 변경
+* 리치 메시지 생성 로직 개선으로 TOASTPushMedia 객체의 sourceType, extension 프로퍼티 삭제
 * 리치 메시지의 소스 정보에 한글 URL 지원
 
 #### 버그 수정
@@ -186,7 +186,7 @@
 #### 개선 사항 
 * 안전성 개선
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 추가 사항
 
@@ -196,7 +196,7 @@
 
 * 상품 목록 조회시 invalidProducts 에 유효한 상품 목록이 반환되던 문제 수정
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 개선 사항
 
@@ -211,13 +211,13 @@
 
 ## 0.16.0 (2019.07.23)
 
-### NHN Cloud Logger 
+### TOAST Logger 
 
 #### 개선 사항 
 * 심볼이 존재하는 바이너리의 경우 CrashReport CallStack에 심볼 문자열이 포함되도록 개선
 * CrashReport Reason 이 출력되지 않는 현상 수정
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 개선 사항
 
@@ -225,7 +225,7 @@
 * 앱 내 구입이 허용되지 않은 상태에서 결제가 요청되던 문제 수정
 * 프로모션 결제 개선
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 개선 사항
 
@@ -233,13 +233,13 @@
 
 ## 0.15.0 (2019.06.25)
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 개선 사항
 
 * 신규 결제, 프로모션 결제, 미소비 내역 조회 요청시 미완료 결제건 재처리 로직 추가
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 추가 사항
 
@@ -255,13 +255,13 @@
 
 ## 0.14.1 (2019.05.16)
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 개선 사항
 
 * 처리중인 재처리 결제건과 동일한 상품 구매시 보유한 상품으로 처리되는 현상 개선
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 개선 사항
 
@@ -276,7 +276,7 @@
 * 네트워크 관련 에러 코드 통합
 * 안전성 개선
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 개선 사항
 
@@ -287,7 +287,7 @@
 * 재처리 대상 확대 
 * 결제 흐름 개선 
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 개선 사항
 
@@ -305,13 +305,13 @@
   * Description 추가
   * Nullability, NSCoding, NSCopying 지원
 
-### NHN Cloud Core
+### TOAST Core
 
 #### 개선 사항
 
 * 내부 예외 처리 추가
 
-### NHN Cloud Logger
+### TOAST Logger
 
 #### 추가 사항
 
@@ -328,13 +328,13 @@
 
 * UserID 설정 시점에 따라 전송하는 Log의 UserID가 갱신되지 않을 수 있는 문제 수정
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 개선 사항
 
 * 내부 예외 처리 추가
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 추가 사항
 
@@ -342,7 +342,7 @@
 
 ## 0.12.4 (2019.03.19)
 
-### NHN Cloud Core
+### TOAST Core
 
 #### 개선 사항
 
@@ -350,13 +350,13 @@
 
 ## 0.12.3 (2019.02.26)
 
-### NHN Cloud Core, Common
+### TOAST Core, Common
 
 #### 개선 사항
 
 * 유틸 기능의 예외처리 추가
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 개선 사항
 
@@ -365,15 +365,15 @@
 
 ## 0.12.2 (2019.02.08) - Hotfix
 
-### NHN Cloud Core
+### TOAST Core
 
 #### 개선 사항
 
-* NHN CloudTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
+* TOASTTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
 
 ## 0.12.1 (2019.01.08)
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 개선 사항
 
@@ -381,29 +381,29 @@
 
 ## 0.12.0 (2018.12.27)
 
-### NHN Cloud Core
+### TOAST Core
 
 #### 개선 사항
 
-* NHN CloudTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
+* TOASTTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
 
-### NHN Cloud Push
+### TOAST Push
 
 #### 추가 사항
 
 * 신규 기능 추가
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 개선 사항
 
 * Apple에서 재처리해주는 Transaction의 처리가 가능하도록 UserID Check 로직의 예외처리 추가
-* NHN CloudOperation에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
+* TOASTOperation에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
 
 
 ## 0.11.1 (2018.12.04)
 
-### NHN Cloud IAP
+### TOAST IAP
 
 #### 추가 사항
 
@@ -412,7 +412,7 @@
 
 ## 0.11.0 (2018.11.20)
 
-### NHN Cloud Log & Crash
+### TOAST Log & Crash
 
 #### 추가 사항
 
@@ -421,7 +421,7 @@
 
 ## 0.9.0 (2018.09.04)
 
-### NHN Cloud Log & Crash
+### TOAST Log & Crash
 
 #### 추가 사항
 
