@@ -43,7 +43,7 @@ DRDoS是由DNS, NTP, SSDP, Memcached等应用程序中薄弱的设置导致的�
 #### List of Blocked Internet Ports (NHN Cloud)
 | Region |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- | ---- |
-| KOREA(Pangyo) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
+| KOREA(Pangyo/Pyeongchon) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
 
 #### List of Blocked Internet Ports (NHN Cloud G)
 |Service Name |  Blocked Port  | Blocking Method |Reference|
