@@ -1,18 +1,18 @@
-## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Android (NDK)
+## NHN Cloud > NHN Cloud SDK使用ガイド > NHN Cloud Log & Crash > Android (NDK)
 
 ## Android NDKクラッシュレポート
 
 Androidアプリにネイティブライブラリーが含まれる場合、簡単なビルド設定でネイティブコードに対する全体スタック追跡と詳細なエラーレポートを利用できるようになります。
 
-* TOAST Crash Reporter for NDKは、**TOAST 0.21.0以上**で使用可能です。
-* TOAST Crash Reporter for NDKは、TOAST Loggerを通じてクラッシュログを送信します。
-* TOAST LoggerとTOAST Crash Reporter for NDKライブラリーは、**同一バージョンの使用を推奨**します。
-* TOAST Crash Reporter for NDKは TOAST Loggerの初期化時にクラッシュの検知を開始します。
-* TOAST Crash Reporter for NDKを使用するためには、**r17c以上のNDK**が必要です。
+* NHN Cloud Crash Reporter for NDKは、**TOAST 0.21.0以上**で使用可能です。
+* NHN Cloud Crash Reporter for NDKは、NHN Cloud Loggerを通じてクラッシュログを送信します。
+* NHN Cloud LoggerとNHN Cloud Crash Reporter for NDKライブラリーは、**同一バージョンの使用を推奨**します。
+* NHN Cloud Crash Reporter for NDKは NHN Cloud Loggerの初期化時にクラッシュの検知を開始します。
+* NHN Cloud Crash Reporter for NDKを使用するためには、**r17c以上のNDK**が必要です。
 
 ### 事前準備
 
-1\. [TOAST Log & Crash](./log-collector-android)事前準備
+1\. [NHN Cloud Log & Crash](./log-collector-android)事前準備
 
 ### ライブラリー設定
 - アプリレベルbuild.gradleで、依存性を追加します。

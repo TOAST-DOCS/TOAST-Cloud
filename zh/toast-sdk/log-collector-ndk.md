@@ -12,7 +12,7 @@ Android 앱에 네이티브 라이브러리가 포함된 경우 간단한 빌드
 
 ### 사전 준비
 
-1\. [TOAST Log & Crash](./log-collector-android)를 설치합니다.
+1\. [NHN Cloud Log & Crash](./log-collector-android)를 설치합니다.
 
 ### 라이브러리 설정
 - 앱 수준 build.gradle에서 의존성을 추가합니다.
