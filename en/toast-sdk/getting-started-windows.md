@@ -12,7 +12,7 @@ NHN Cloud SDK for Windows C++ is configured as follows:
 | Directory | Description |
 |---|---|
 | docs/ | Windows SDK document |
-| include/NHN Cloud/ | C++ Header file |
+| include/toast/ | C++ Header file |
 | windows-sdk/lib32/ | C++ Windows 32bit library |
 | windows-sdk/lib64/ | C++ Windows 64bit library |
 | windows-sdk-sample/ | Sample project |

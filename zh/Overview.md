@@ -1,6 +1,6 @@
-## TOAST > 概要
+## NHN Cloud > 概要
 
-TOAST是NHN提供的“综合云服务”，意味着以TOward Art Science Technology为座右铭，为打造面向艺术科学技术的新世界而进行挑战的热情。
+NHN Cloud是NHN提供的“综合云服务”，意味着以TOward Art Science Technology为座右铭，为打造面向艺术科学技术的新世界而进行挑战的热情。
 
 ## 特征
 
@@ -71,11 +71,11 @@ TOAST是NHN提供的“综合云服务”，意味着以TOward Art Science Techn
 | Contact Center | 通过客服中心咨询的综合解决方案，高效处理咨询，提高运营效率，提供最佳的客户体验。|
 | Bill | 可以轻松便利地签发税务发票。|
 | IDC  | 凭借自主技术力在京畿道板桥设计·构建的城市型网络数据中心。|
-| CloudTrail  | 通过TOAST Console及API等，自动收集发生的各种活动日志及事件的免费服务。|
+| CloudTrail  | 通过NHN Cloud Console及API等，自动收集发生的各种活动日志及事件的免费服务。|
 
 ## 服务发布策略
 
-TOAST服务按照如下发布策略进行管理。
+NHN Cloud服务按照如下发布策略进行管理。
 
 - ALPHA
     - 正式服务推出前，向用户公开的服务。

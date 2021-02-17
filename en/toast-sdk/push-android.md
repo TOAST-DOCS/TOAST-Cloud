@@ -665,7 +665,7 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 | Method | Returns | |
 |---|---|---|
 | getAppKey | String | Push 서비스 앱 키를 반환합니다. |
-| static newBuilder | ToastPushConfiguration.Builder | ToastPushConfiguration 객체 생성을 위한 빌더를 생성합니다. |
+| static newBuilder | ToastPushConfiguration.Builder | NHN CloudPushConfiguration 객체 생성을 위한 빌더를 생성합니다. |
 
 ### PushResult
 * 비동기 API 호출시 콜백의 응답으로 반환되는 결과 객체입니다.
@@ -827,4 +827,4 @@ public Builder buildUpon();
 | getSound | Uri | | 알림음의 Uri 를 반환합니다. |
 | isForegroundEnabled | boolean | | 포그라운드 알림 사용 여부를 반환합니다. |
 | isBadgeEnabled | boolean | | 배지 아이콘 사용 여부를 반환합니다. |
-| buildUpon | ToastNotificationOptions#Builder | | 현재 옵션 정보를 기반으로 빌더를 반환합니다. |
+| buildUpon | NHN CloudNotificationOptions#Builder | | 현재 옵션 정보를 기반으로 빌더를 반환합니다. |

@@ -307,7 +307,7 @@
 
 #### Fixed
 
-* 'toast-sdk'에서 'toast-push-tencent' 의존성 제거.
+* 'NHN Cloud-sdk'에서 'NHN Cloud-push-tencent' 의존성 제거.
 
 ## 0.16.0 (2019.04.23)
 

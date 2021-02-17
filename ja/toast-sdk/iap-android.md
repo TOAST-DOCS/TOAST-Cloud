@@ -111,7 +111,7 @@ ToastIapConfiguration configuration =
 ### アプリ内決済初期化API仕様
 
 * アプリ内決済は、ToastIap.initializeメソッドを使用して初期化します。
-* ToastIap.initializeメソッドは、[ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder)で作成された[ToastIapConfiguration](./iap-android/#toastiapconfiguration)オブジェクトをパラメータに使用します。
+* ToastIap.initializeメソッドは、[ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder)で作成された[NHN CloudIapConfiguration](./iap-android/#toastiapconfiguration)オブジェクトをパラメータに使用します。
 
 ```java
 /* ToastIap.java */
@@ -120,7 +120,7 @@ public static void initialize(ToastIapConfiguration configuration)
 
 | Parameters    |                                    |
 | ------------- | ---------------------------------- |
-| configuration | ToastIapConfiguration：アプリ内決済設定情報 |
+| configuration | NHN CloudIapConfiguration：アプリ内決済設定情報 |
 
 ### アプリ内決済初期化例
 

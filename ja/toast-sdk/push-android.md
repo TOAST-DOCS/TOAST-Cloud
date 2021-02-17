@@ -187,7 +187,7 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 ## メッセージ受信
 * Pushメッセージを受信時に、OnReceiveMessageListenerを通じて通知を受けることができます。
 * Pushメッセージ受信リスナーは、ToastPush.setOnReceiveMessageListenerメソッドを使用して登録できます。
-* OnReceiveMessageListenerに渡された[ToastPushMessage](./push-android/#toastpushmessage)オブジェクトからメッセージ情報を確認できます。
+* OnReceiveMessageListenerに渡された[NHN CloudPushMessage](./push-android/#toastpushmessage)オブジェクトからメッセージ情報を確認できます。
 * アプリが実行されていな場合でも、メッセージの受信通知を受信するためには`Application#onCreate`に登録してください。
 
 > メッセージを受信時にユーザーがアプリを使用中(Foreground)の場合、通知を表示しません。
@@ -441,15 +441,15 @@ public class MyApplication extends Application {
 ```
 
 ## ユーザー定義メッセージ処理
-* メッセージの受信後、別の処理過程を実行したり、受信したメッセージの内容を修正して通知を表示しなければならない場合は、[ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)を継承するブロードキャストを実装する必要があります。
-* ToastPushMessageReceiverを継承したブロートキャストは、AndroidManifest.xmlも必ず登録しなければなりません。
+* メッセージの受信後、別の処理過程を実行したり、受信したメッセージの内容を修正して通知を表示しなければならない場合は、[NHN CloudPushMessageReceiver](./push-android/#toastpushmessagereceiver)を継承するブロードキャストを実装する必要があります。
+* NHN CloudPushMessageReceiverを継承したブロートキャストは、AndroidManifest.xmlも必ず登録しなければなりません。
 * メッセージを受信すると、onMessageReceived関数で受信したメッセージが伝達されます。
 
 > **(注意)**
 > 1. onMessageReceived関数でメッセージ受信後に通知表示をリクエスト(notify)しないと、通知が表示されません。
 > 2. 通知を直接作成する場合は、Pushサービスコンテンツを通知のコンテンツインテントとして設定することで、指標収集が可能になります。(以下の指標収集機能の追加セクション参照)
 
-### ToastPushMessagingService実装コード例
+### NHN CloudPushMessagingService実装コード例
 ```java
 public class MyPushMessageReceiver extends ToastPushMessageReceiver {
     @Override
@@ -489,7 +489,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ### AndroidManifest.xml 登録例
 > **(注意)**
-> ToastPushMessageReceiverを使う場合は、必ずpermissionを設定しなければなりません。
+> NHN CloudPushMessageReceiverを使う場合は、必ずpermissionを設定しなければなりません。
 
 ```xml
 <manifest>
@@ -667,7 +667,7 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 | Method | Returns | |
 |---|---|---|
 | getAppKey | String | Pushサービスアプリキーを返します。 |
-| static newBuilder | ToastPushConfiguration.Builder | ToastPushConfigurationオブジェクト作成のためのビルダーを作成します。 |
+| static newBuilder | ToastPushConfiguration.Builder | NHN CloudPushConfigurationオブジェクト作成のためのビルダーを作成します。 |
 
 ### PushResult
 * 非同期APIの呼び出し時に、コールバックのレスポンスに返される結果オブジェクトです。
@@ -714,7 +714,7 @@ public String getToken();
 | getActivatedDateTime | Date | トークンの最近の登録日時を返します。 |
 | getToken | String | トークンを返します。 |
 
-### ToastRemoteMessage
+### NHN CloudRemoteMessage
 * メッセージ受信リスナー、カスタムレシーバからのメッセージ受信時に返されるオブジェクトです。
 
 ``` java
@@ -729,10 +729,10 @@ public String getSenderId();
 |---|---|---|
 | getChannelId | String | チャンネルIDを返します。 |
 | setChannelId |  | チャンネルIDを設定します。 |
-| getMessage | ToastPushMessage | メッセージオブジェクトを返します。|
+| getMessage | NHN CloudPushMessage | メッセージオブジェクトを返します。|
 | getSenderId | String | 発信者 ID を返します (FCM Only)|
 
-### ToastPushMessage
+### NHN CloudPushMessage
 * 受信したメッセージ内容を含むオブジェクトです。
 
 ``` java
@@ -776,10 +776,10 @@ public String getuserText();
 | getActionType | ActionType | ActionTypeを返します。 |
 | getNotificationId | String | アクションが実行された通知のIDを返します。 |
 | getNotificationChannel | String | アクションが実行された通知のチャンネルを返します。 |
-| getMessage | ToastPushMessage | アクションが設定された通知のメッセージ情報を返します。 |
+| getMessage | NHN CloudPushMessage | アクションが設定された通知のメッセージ情報を返します。 |
 | getuserText | RichMessage | ユーザーが入力した文字列を返します。 |
 
-### ToastPushMessageReceiver
+### NHN CloudPushMessageReceiver
 * メッセージ内容の修正、実行インテント定義、通知の直接生成などの機能のためには、ユーザーが実装する必要があるオブジェクトです。
 
 ``` java
@@ -794,12 +794,12 @@ public final PendingIntent getNotificationServiceIntent(Context context, ToastRe
 | Method | Returns | Parameters | |
 |---|---|---|---|
 | isAppForeground | boolean |  | 現在アプリを使用中かどうかを返します。 |
-| notify | | Context, ToastRemoteMessage | 基本実行インテントで通知を生成および表示します。 |
-| notify | | Context, ToastRemoteMessage, PendingIntent | ユーザー実行インテントで通知を生成および表示します。 |
+| notify | | Context, NHN CloudRemoteMessage | 基本実行インテントで通知を生成および表示します。 |
+| notify | | Context, NHN CloudRemoteMessage, PendingIntent | ユーザー実行インテントで通知を生成および表示します。 |
 | notify | | Context, int, Notification |  ユーザー通知を特定のIDで表示します。 |
-| getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 指標の転送を含むユーザー実行インテントを返します |
+| getNotificationServiceIntent | PendingIntent | Context, NHN CloudRemoteMessage, PendingIntent | 指標の転送を含むユーザー実行インテントを返します |
 
-### ToastNotificationOptions
+### NHN CloudNotificationOptions
 * デフォルト通知オプション設定時、優先順位、小さなアイコン、背景色、LED、振動、通知音、フォアグラウンドの通知露出情報を設定するオブジェクトです。
 
 ``` java
@@ -829,4 +829,4 @@ public Builder buildUpon();
 | getSound | Uri | | 通知音のUriを返します。 |
 | isForegroundEnabled | boolean | | フォアグラウンド通知の使用するかを返します。|
 | isBadgeEnabled | boolean | | バッジアイコンの使用の有無を返します。 |
-| buildUpon | ToastNotificationOptions#Builder | | 現在のオプション情報に基づき、ビルダーを返します。 |
+| buildUpon | NHN CloudNotificationOptions#Builder | | 現在のオプション情報に基づき、ビルダーを返します。 |

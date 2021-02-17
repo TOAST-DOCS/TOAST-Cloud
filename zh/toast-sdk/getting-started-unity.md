@@ -1,4 +1,4 @@
-## TOAST > User Guide for TOAST SDK > Getting Started > Unity
+## NHN Cloud > User Guide for NHN Cloud SDK > Getting Started > Unity
 
 ## Supporting Environment 
 
@@ -7,36 +7,36 @@
 * iOS 8.0 or higher
 * The latest version of XCode (version 9 or higher)
 
-## Configuration of TOAST SDK
+## Configuration of NHN Cloud SDK
 
-TOAST SDK for Unity is configured as follows: 
+NHN Cloud SDK for Unity is configured as follows: 
 
-* [TOAST Logger](./log-collector-unity) SDK
-* [TOAST IAP](./iap-unity) SDK
+* [NHN Cloud Logger](./log-collector-unity) SDK
+* [NHN Cloud IAP](./iap-unity) SDK
 
- TOAST SDK services can be selectively applied for your needs. 
+ NHN Cloud SDK services can be selectively applied for your needs. 
 
 | Unity package | Service |
 | --- | --- |
-| TOAST-Logger-UnityPlugin.unitypackage | TOAST Log & Crash |
-| TOAST-IAP-UnityPlugin.unitypackage | TOAST IAP |
+| TOAST-Logger-UnityPlugin.unitypackage | NHN Cloud Log & Crash |
+| TOAST-IAP-UnityPlugin.unitypackage | NHN Cloud IAP |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
 
 ### Structure of Unity Package 
 
-TOAST SDK for Unity is structured with folders as follows:  
+NHN Cloud SDK for Unity is structured with folders as follows:  
 
 | Directory | Description | Unity package |
 |---|---|---|
-| Toast | Root folder of TOAST SDK | All |
-| Toast/Common | Common module folder of TOAST SDK | All |
-| Toast/Logger | Module folder of TOAST Logger | Logger, Sample |
-| Toast/IAP | Module folder of TOAST IAP | IAP, Sample |
-| Toast/Sample | SDK sample folder | Sample |
+| NHN Cloud | Root folder of NHN Cloud SDK | All |
+| NHN Cloud/Common | Common module folder of NHN Cloud SDK | All |
+| NHN Cloud/Logger | Module folder of NHN Cloud Logger | Logger, Sample |
+| NHN Cloud/IAP | Module folder of NHN Cloud IAP | IAP, Sample |
+| NHN Cloud/Sample | SDK sample folder | Sample |
 
-## Apply TOAST SDK to Unity Projects 
+## Apply NHN Cloud SDK to Unity Projects 
 
-Download TOAST SDK Unity Package from the following link: 
+Download NHN Cloud SDK Unity Package from the following link: 
 
 - [Download](../../../Download/#toast-sdk)
 
@@ -46,10 +46,10 @@ Double-click the downloaded unity package and include it to the project.
 
 ### Execute Sample 
 
-TOAST SDK for Unity has an additional sample unity package, and below describes how to execute the sample: 
+NHN Cloud SDK for Unity has an additional sample unity package, and below describes how to execute the sample: 
 
 1. Double-click the sample unity package and include it to the project. 
-2. Add Toast/Sample/Sample.unity from File > Build Settings, to Scenes in Build.
+2. Add NHN Cloud/Sample/Sample.unity from File > Build Settings, to Scenes in Build.
 3. Build in Android or iOS. 
 4. Execute the build application. 
 
@@ -60,7 +60,7 @@ TOAST SDK for Unity has an additional sample unity package, and below describes 
 
 ### Unity Play Services Resolver 
 
-* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다. 
+* NHN Cloud SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다. 
 * 이 라이브러리는 안드로이드 관련 라이브러리(예:AAR)에 대한 종속성을 자동으로 해결하여 Unity 프로젝트에 복사됩니다. 
 
 #### Gradle 빌드 설정을 사용할 경우
@@ -81,7 +81,7 @@ TOAST SDK for Unity has an additional sample unity package, and below describes 
 
 ### Gradle Build Setting
 
-* TOAST SDK applies Gradle Build for Android builds.
+* NHN Cloud SDK applies Gradle Build for Android builds.
 
 #### How to Set Gradle Builds
 1. Go to File > Build Settings > Android
@@ -138,7 +138,7 @@ allprojects {
 ## For iOS 
 
 ### Modify Xcode Build Settings
-* To use TOAST SDK for iOS, add settings as below in Xcode. 
+* To use NHN Cloud SDK for iOS, add settings as below in Xcode. 
 
 #### Other Linker Flag 
 * Add **-ObjC**, **-lc++**  to Other Linker Flag option.  
@@ -148,12 +148,12 @@ allprojects {
 
 ### Unity Play Services Resolver 
 
-* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다. 
+* NHN Cloud SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다. 
 * 이 라이브러리는 iOS CocoaPods을 사용하는 라이브러리에 대한 종속성을 자동으로 해결해줍니다.
 
 > 참고) iOS 종속성은 CocoaPods를 사용하여 식별합니다. CocoaPods는 빌드 후 처리단계에서 실행됩니다.
 
-* Unity 5.6이상을 사용하는 경우 필요한 TOAST SDK native plugin을 포하하는 xcworkspace가 생성됩니다. 표준 xcode 프로젝트 대신 생성된 xcworkspace를 사용해야 합니다.
+* Unity 5.6이상을 사용하는 경우 필요한 NHN Cloud SDK native plugin을 포하하는 xcworkspace가 생성됩니다. 표준 xcode 프로젝트 대신 생성된 xcworkspace를 사용해야 합니다.
 * 이전 버전의 Unity를 사용할 때 종속성이 표준 Xcode 프로젝트에 포함됩니다.
 
 #### iOS framework 제공
@@ -163,9 +163,9 @@ allprojects {
 	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > iOS Resolver(iOS 리졸버) > Settings(세팅)을 선택합니다.
 	2. 설정에서 모든 옵션을 끕니다.
 
-## Initialize TOAST SDK 
+## Initialize NHN Cloud SDK 
 
-Execute TOAST SDK initialization in one of the starts of components on the initial scene. 
+Execute NHN Cloud SDK initialization in one of the starts of components on the initial scene. 
 
 > Other API calls do not operate properly, without initialization. 
 
@@ -181,8 +181,8 @@ public class GameStartBehaviour : MonoBehaviour
 
 ## Set UserID
 
-User ID can be set for TOAST SDK and it is for common usage at each module of TOAST SDK.
-Send such set user ID to a server, along with logs, whenever Log Sending API of TOAST Logger is called. 
+User ID can be set for NHN Cloud SDK and it is for common usage at each module of NHN Cloud SDK.
+Send such set user ID to a server, along with logs, whenever Log Sending API of NHN Cloud Logger is called. 
 
 ### Specifications for User ID Setting API  
 ```csharp
@@ -196,8 +196,8 @@ ToastSdk.UserId = "TOAST";
 
 ## Set Debug Mode 
 
-To check logs within TOAST SDK, the debug mode can be set. 
-To inquire of TOAST SDK, enable the debug mode for faster response.  
+To check logs within NHN Cloud SDK, the debug mode can be set. 
+To inquire of NHN Cloud SDK, enable the debug mode for faster response.  
 
 ### Specifications for Debug Mode Setting API
 ```csharp
@@ -206,8 +206,8 @@ ToastSdk.DebugMode = true; // or false
 
 > (Caution) To release a game, the debug mode must be disabled. 
 
-## Use TOAST Service 
+## Use NHN Cloud Service 
 
-* User Guide for [TOAST Log & Crash](./log-collector-unity) 
-* User Guide for [TOAST IAP](./iap-unity)
+* User Guide for [NHN Cloud Log & Crash](./log-collector-unity) 
+* User Guide for [NHN Cloud IAP](./iap-unity)
 

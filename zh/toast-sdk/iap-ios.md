@@ -1,25 +1,25 @@
-## TOAST > User Guide for TOAST SDK > TOAST IAP > iOS
+## NHN Cloud > User Guide for NHN Cloud SDK > NHN Cloud IAP > iOS
 
 ## Prerequisites
 
-1. [Install TOAST SDK](./getting-started-ios).
-2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1. [Install NHN Cloud SDK](./getting-started-ios).
+2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3.  [Check AppKey ](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)in IAP.
 
-## Configuration of TOAST IAP
+## Configuration of NHN Cloud IAP
 
-* TOAST Logger SDK for iOS is configured as follows.
+* NHN Cloud Logger SDK for iOS is configured as follows.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- | 
-| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
-| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+| NHN Cloud IAP | NHN CloudIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| Mandatory   | NHN CloudCore<br/>NHN CloudCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## Apply TOAST SDK to Xcode Projects
+## Apply NHN Cloud SDK to Xcode Projects
 
 ### 1. Apply Cococapods 
 
-* Create a podfile to add pods to TOAST SDK. 
+* Create a podfile to add pods to NHN Cloud SDK. 
 
 ```podspec
 platform :ios, '9.0'
@@ -30,11 +30,11 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apply TOAST SDK with Binary Downloads  
+### 2. Apply NHN Cloud SDK with Binary Downloads  
 
 #### Link Frameworks
 
-* The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
+* The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of NHN Cloud.  
 * Add **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework, StoreKit.framework** to the Xcode Project.
 * StoreKit.framework can be added in the following way.
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
@@ -49,13 +49,13 @@ end
 
 ### Capabilities Setting
 
-* To use TOAST IAP, you must enable the **In-App Purchase** item in Capabilities.
+* To use NHN Cloud IAP, you must enable the **In-App Purchase** item in Capabilities.
     * **Project Target > Capabilities > In-App Purchase** 
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## Service Login 
 
-* All TOAST SDK products(Log&Crash, IAP, Push, ...) are based on a same user ID.
+* All NHN Cloud SDK products(Log&Crash, IAP, Push, ...) are based on a same user ID.
 
 ### Login
 
@@ -73,9 +73,9 @@ end
 [ToastSDK setUserID:nil];
 ```
 
-## Initialize TOAST IAP SDK 
+## Initialize NHN Cloud IAP SDK 
 
-* Set appkey issued from TOAST IAP. 
+* Set appkey issued from NHN Cloud IAP. 
 * Reprocessing for uncompleted purchases is executed along with initialization.  
 
 ### Specifications for Initialization API
@@ -202,9 +202,9 @@ end
 
 | 상품명    | 상품타입             | 설명                                     |
 | ------ | ---------------- | -------------------------------------- |
-| Consumable Products | ToastProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
-| Auto-Renewable Subscription Products  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
-| Auto-Renewable Consumable Subscription Products  | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
+| Consumable Products | NHN CloudProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
+| Auto-Renewable Subscription Products  | NHN CloudProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
+| Auto-Renewable Consumable Subscription Products  | NHN CloudProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
 
 > `Do not support Upgrades, Downgrades, and Modification for auto-renewable subscription products.`
 > `Only one product must be registered to one subscription group.`
@@ -231,7 +231,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 * If an app is closed during purchase, or purchase is suspended due to network error, such purchase is reprocessed after the initialization of IAP SDK of the next app running.
 * 구매 요청시 사용자 데이터 추가가 가능합니다.
 * 사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원) 정보에 포함되어 반환됩니다.
-* Purchase is requested by using ToastProduct object of query result of product list or product identifier.
+* Purchase is requested by using NHN CloudProduct object of query result of product list or product identifier.
 
 ### Specifications for Purchase Product API
 

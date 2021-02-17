@@ -1,37 +1,37 @@
 ## 0.27.1 (2020.11.24)
-### TOAST IAP
+### NHN Cloud IAP
 #### 改善事項
 * サブスクリプションプロダクトの再購入エラー修正 (iOS 14 )
-- Appstoreからプロダクト情報を得られなかった場合、ToastProductsResponseがnilを返すように変更
+- Appstoreからプロダクト情報を得られなかった場合、NHN CloudProductsResponseがnilを返すように変更
 
-### TOAST Push
+### NHN Cloud Push
 #### 改善事項
 * トークン解除リクエスト時に、登録されたトークンがない場合、Callbackが発生しない問題の改善
 
 ## 0.27.0 (2020.09.11)
-### TOAST IAP
+### NHN Cloud IAP
 #### 機能追加
-* ToastProductにローカライズされたプロダクト情報の追加 (localizedTitle、 localizedDescription)
+* NHN CloudProductにローカライズされたプロダクト情報の追加 (localizedTitle、 localizedDescription)
 
 #### 機能改善
 * iOS 14 beta変更事項に対応 
     * 決済失敗のDelegateが受信できない問題の改善
     
-### TOAST Push
+### NHN Cloud Push
 #### 改善事項
 * 安全性の改善
     
 ## 0.26.0 (2020.07.28)
-### TOAST Push
+### NHN Cloud Push
 #### 機能追加
 * ユーザータグ機能のサポート
 
 ## 0.25.1 (2020.07.03)
-### TOAST Logger 
+### NHN Cloud Logger 
 #### 改善事項
 * 安全性の改善
 
-### TOAST Push
+### NHN Cloud Push
 #### 改善事項
 * 安全性の改善
 
@@ -40,57 +40,57 @@
 #### 改善事項
 * 安全性の改善
 
-### TOAST Push
+### NHN Cloud Push
 #### 改善事項
 * 通知オプション設定のインターフェイスを分離
 
 ## 0.24.1 (2020.05.26)
-### TOAST Push
+### NHN Cloud Push
 #### 機能改善
 * トークン登録の機能改善
 
 ## 0.24.0 (2020.04.28)
 ### 共通
-* TOAST SDKサポートバージョンの最小バージョンを変更(iOS 8.0 -> iOS 9.0)
+* NHN Cloud SDKサポートバージョンの最小バージョンを変更(iOS 8.0 -> iOS 9.0)
 * 安全性の改善
 
-### TOAST IAP 
+### NHN Cloud IAP 
 #### 追加事項
 * プロモーション決済の実行するか選択できるOptional Delegateを追加
 
-### TOAST Push
+### NHN Cloud Push
 #### 改善事項 
 * 安全性の改善
 
 ## 0.23.0 (2020.03.24)
-### TOAST Logger 
+### NHN Cloud Logger 
 #### 改善事項
 * CrashReport CallStackに誤った文字列が含まれて可能性がある問題を修正
 
-### TOAST Push
+### NHN Cloud Push
 #### 追加事項
 * 通知オプション設定の機能追加
     * 初期化時にフォアグラウンドで通知を表示するか、バッジアイコンの表示するか、通知音を使用するかの設定が可能
     
 ## 0.22.1 (2020.02.25)
-### TOAST Push
+### NHN Cloud Push
 #### 改善事項
 * トークン登録の機能改善
     * 初回トークン登録時にユーザーIDが設定されていない場合は、デバイス識別子を使用して登録します。
     * トークンに登録した後、ユーザーIDを設定、または変更すると、トークン情報を更新します。
     
 ## 0.22.0 (2020.02.11)
-### TOAST IAP
+### NHN Cloud IAP
 #### 改善事項
 * 安全性の改善
 
 
 ## 0.21.0 (2019.12.24)
-### TOAST Logger
+### NHN Cloud Logger
 #### 改善事項
 * Crash発生の位置情報の分類方式を改善するため、データを追加
 
-### TOAST IAP
+### NHN Cloud IAP
 #### 改善事項
 * API 보안 機能追加
 * 安全性の改善
@@ -169,8 +169,8 @@
 
 #### 改善事項
 
-* ToastPushConfigurationオブジェクトのNullabilityプロパティの変更
-* リッチメッセージ作成ロジックの改善により、ToastPushMediaオブジェクトのsourceType、extensionのプロパティを削除
+* NHN CloudPushConfigurationオブジェクトのNullabilityプロパティの変更
+* リッチメッセージ作成ロジックの改善により、NHN CloudPushMediaオブジェクトのsourceType、extensionのプロパティを削除
 * リッチメッセージのソース情報にハングルURLも対応
 
 #### バグ修正
@@ -349,7 +349,7 @@
 
 ## 0.12.3 (2019.02.26)
 
-### TOAST Core、 Common
+### NHN Cloud Core、 Common
 
 #### 改善事項
 

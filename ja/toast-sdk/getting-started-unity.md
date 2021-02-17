@@ -180,9 +180,9 @@ public class GameStartBehaviour : MonoBehaviour
 
 ## UserID設定
 
-TOAST SDKにユーザーIDを設定できます。
-設定したUserIDは、ToastSDKの各モジュールで共通使用されます。
-ToastLoggerのログ送信APIを呼び出すたびに、設定したユーザーIDをログと一緒にサーバーに送信します。
+NHN Cloud SDKにユーザーIDを設定できます。
+設定したUserIDは、NHN CloudSDKの各モジュールで共通使用されます。
+NHN CloudLoggerのログ送信APIを呼び出すたびに、設定したユーザーIDをログと一緒にサーバーに送信します。
 
 ### UserID設定API仕様
 ```csharp
@@ -196,8 +196,8 @@ ToastSdk.UserId = "TOAST";
 
 ## デバッグモードを設定する
 
-TOAST SDKの内部ログ確認するために、デバッグモードを設定できます。
-TOAST SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
+NHN Cloud SDKの内部ログ確認するために、デバッグモードを設定できます。
+NHN Cloud SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
 
 ### デバッグモード設定API仕様
 ```csharp
@@ -206,7 +206,7 @@ ToastSdk.DebugMode = true; // or false
 
 > (注意)ゲームをリリースする場合、必ずデバッグモードを無効にする必要があります。
 
-## TOAST Serviceを使用する
+## NHN Cloud Serviceを使用する
 
-* [TOAST Log & Crash](./log-collector-unity)使用ガイド
-* [TOAST IAP](./iap-unity)使用ガイド
+* [NHN Cloud Log & Crash](./log-collector-unity)使用ガイド
+* [NHN Cloud IAP](./iap-unity)使用ガイド

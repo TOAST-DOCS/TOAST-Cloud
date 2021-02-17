@@ -115,7 +115,7 @@ if (_userFieldMap != NULL)
 ```
 
 * User-defined fields contain field information as wanted and are applied only to particular logs.
-* ToastLoggerUserFields support the following functions: 
+* NHN CloudLoggerUserFields support the following functions: 
     * insert:  Insert data
     * erase: Delete data
     * clear: Delete all 

@@ -92,7 +92,7 @@
 
 #### 機能改善
 
-`TOAST IAP SDK 0.22.0以上でアップデートする際は、必ず強制アップデートを実行してください。`
+`NHN Cloud IAP SDK 0.22.0以上でアップデートする際は、必ず強制アップデートを実行してください。`
 
 * Google Play Billing Library BillingClient 2.2.1適用
 
@@ -179,7 +179,7 @@
 #### バグ修正
 
 * "Bad base64 Exception"のエラー修正
-    * TOAST SDKを使用しない決済アイテム処理時に「Bad Base64 Exception」が発生するエラーを修正しました。
+    * NHN Cloud SDKを使用しない決済アイテム処理時に「Bad Base64 Exception」が発生するエラーを修正しました。
 
 ## 0.19.4 (2019.11.26)
 
@@ -188,7 +188,7 @@
 #### 機能改善
 
 * (旧) pushsdkデータマイグレーションをサポート。
-    * (旧) pushsdkでアップデートした場合、すべてのデータをTOAST SDKにマイグレーションします。
+    * (旧) pushsdkでアップデートした場合、すべてのデータをNHN Cloud SDKにマイグレーションします。
 
 ## 0.19.3 (2019.10.18)
 
@@ -307,7 +307,7 @@
 
 #### Fixed
 
-* 'toast-sdk'で'toast-push-tencent'依存を取り除く。
+* 'NHN Cloud-sdk'で'NHN Cloud-push-tencent'依存を取り除く。
 
 ## 0.16.0 (2019.04.23)
 
