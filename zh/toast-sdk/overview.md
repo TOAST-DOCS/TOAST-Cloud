@@ -1,6 +1,6 @@
 ## NHN Cloud > User Guide for NHN Cloud SDK > Overview
 
-NHN Cloud SDK is an integrated library (SDK) which conveniently applies libraries of many services (SDKs) provided by [NHN Cloud](https://toast.com/), at once. With TOAST SDK, there is no need to apply individual library of different services for the development of applications requiring many NHN Cloud services. 
+NHN Cloud SDK is an integrated library (SDK) which conveniently applies libraries of many services (SDKs) provided by [NHN Cloud](https://toast.com/), at once. With NHN Cloud SDK, there is no need to apply individual library of different services for the development of applications requiring many NHN Cloud services. 
 Although an integrated development environment is provided for many services, functions are optional so as to save usage space. NHN Cloud SDK library is optimized for each programming language and platform of choice, and provides no-strange environment for development. 
 
 > Currently supports for iOS, Android, Unity3D, and Windows C++, and more programming languages and platforms are to be supported in the near future.

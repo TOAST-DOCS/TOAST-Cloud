@@ -45,7 +45,7 @@ To protect customer service, the block-intrusion system is provided as well as s
 ### NHN Cloud List of Blocked Ports 
 |Region | Service Name | Blocked Port | Blocking Method | Remarks |
 | ---- | ---- | ---- | ---- | ---- |
-| Korea (Pangyo) <br> Japan (Tokyo) <br> US (California) | System Terminal Port | TCP/23 | Blocked by network ACLs | Externally inaccessible |
+| Korea (Pangyo/Pyeongchon) <br> Japan (Tokyo) <br> US (California) | System Terminal Port | TCP/23 | Blocked by network ACLs | Externally inaccessible |
 
 ### How to Apply for More Ports
 - Download the excel file below and fill in the form.
