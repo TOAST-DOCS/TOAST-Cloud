@@ -1,11 +1,11 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > Unity
+## NHN Cloud > NHN Cloud SDK 사용 가이드 > NHN Cloud Log & Crash > Unity
 
 ## Prerequisites
 
-1\. [Install the TOAST SDK](./getting-started-unity)
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+1\. [Install the NHN Cloud SDK](./getting-started-unity)
+2\. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
-4\. [TOAST SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
+4\. [NHN Cloud SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
 
 ## 지원 플랫폼
 
@@ -62,13 +62,13 @@ dependencies {
 - **Slow and Safe** 값을 권장합니다.
   - Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
 
-## TOAST Logger 네임스페이스
+## NHN Cloud Logger 네임스페이스
 
 ```csharp
 using Toast.Logger;
 ```
 
-## TOAST Logger SDK 초기화
+## NHN Cloud Logger SDK 초기화
 
 Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
@@ -83,7 +83,7 @@ ToastLogger.Initialize(loggerConfiguration);
 
 ## 로그 전송하기
 
-TOAST Logger는 5가지 레벨의 로그를 전송할 수 있습니다.
+NHN Cloud Logger는 5가지 레벨의 로그를 전송할 수 있습니다.
 사용자 필드를 추가해서 보낼 수도 있습니다.
 
 ### 로그 전송 API 명세
@@ -194,7 +194,7 @@ ToastLogger.SetLoggerListener(new SampleLoggerListener());
 
 ## 크래시 로그 수집
 
-TOAST Logger 에서는 유니티의 크래시를 크게 두 가지로 분류합니다.
+NHN Cloud Logger 에서는 유니티의 크래시를 크게 두 가지로 분류합니다.
 
 - 네이티브 플랫폼에서 발생한 크래시 (앱이 강제 종료됨)
 - 유니티에서 발생한 예기치 못한 예외와 LogException을 통해서 출력된 로그 (앱이 강제 종료되지 않음)
@@ -203,8 +203,8 @@ TOAST Logger 에서는 유니티의 크래시를 크게 두 가지로 분류합�
 > 써드파티 라이브러리 중에 LogException를 통해서 사용자 코드의 예외를 노출하는 경우가 더러 있기 때문입니다.
 > 크래시 로그를 필터링 하고 싶다면 아래 **크래시 로그 필터링하기** 를 참고해주세요.
 
-ToastLogger를 초기화하면 모바일 환경에서 크래시가 발생했을 경우, 혹은 유니티에서 예기치 못한 예외가 발생했을 경우, 자동으로 크래시 로그가 전송됩니다.
-크래시 로그 전송을 비활성화하고 싶은 경우 아래와 같이 ToastLoggerConfiguration 객체의 EnableCrashReporter 프로퍼티를 false 로 설정하면 됩니다.
+NHN CloudLogger를 초기화하면 모바일 환경에서 크래시가 발생했을 경우, 혹은 유니티에서 예기치 못한 예외가 발생했을 경우, 자동으로 크래시 로그가 전송됩니다.
+크래시 로그 전송을 비활성화하고 싶은 경우 아래와 같이 NHN CloudLoggerConfiguration 객체의 EnableCrashReporter 프로퍼티를 false 로 설정하면 됩니다.
 각 플랫폼별 크래시 로그에 대한 정보는 아래 링크를 확인하면 됩니다.
 
 - [Android 크래시 로그 수집](./log-collector-android/#_7)
@@ -251,7 +251,7 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 ## 크래시 로그 필터링하기
 
 - 유니티를 이용하다보면 수집을 원하지 않는 예외 로그 혹은 크래시 로그들이 수집될 수 있습니다.
-- TOAST Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
+- NHN Cloud Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
   - 해당 기능은 유니티 예외에 한정된 기능입니다.
 
 ### AddCrashFilter API 명세
@@ -281,7 +281,7 @@ ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("Unit
 
 ## Handled Exception 전송하기
 
-TOAST Logger는 일반/크래시 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
+NHN Cloud Logger는 일반/크래시 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
 이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 "Handled"로 필터링하여 조회할 수 있습니다.
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
@@ -310,18 +310,18 @@ try
 
 Network Insights는 콘솔에 등록한 URL을 호출하여 지연시간 및 응답 값을 측정합니다. 이를 활용하여 세계 여러 나라(디바이스의 국가 코드 기준)에서의 지연시간과 응답 값을 측정할 수 있습니다.
 
-> 콘솔을 통해 Network Insights 기능을 활성화하면 TOAST Logger 초기화 시에, 콘솔에 등록한 URL로 1회 요청합니다.
+> 콘솔을 통해 Network Insights 기능을 활성화하면 NHN Cloud Logger 초기화 시에, 콘솔에 등록한 URL로 1회 요청합니다.
 
 ### Network Insights 활성화
 
-1. [TOAST Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
+1. [NHN Cloud Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
 2. [설정] 메뉴를 선택합니다.
 3. [로그 전송 설정] 탭을 선택합니다.
 4. "Network Insights 로그"를 활성화합니다.
 
 ### URL 설정
 
-1. [TOAST Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
+1. [NHN Cloud Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
 2. [네트워크 인사이트] 메뉴를 선택합니다.
 3. [URL 설정] 탭을 선택합니다.
 4. 측정하고 자하는 URL을 입력 후 [추가] 버튼을 클릭합니다.

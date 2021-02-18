@@ -2,7 +2,7 @@
 ### TOAST IAP
 #### 改善事項
 * サブスクリプションプロダクトの再購入エラー修正 (iOS 14 )
-- Appstoreからプロダクト情報を得られなかった場合、ToastProductsResponseがnilを返すように変更
+- Appstoreからプロダクト情報を得られなかった場合、TOASTProductsResponseがnilを返すように変更
 
 ### TOAST Push
 #### 改善事項
@@ -11,7 +11,7 @@
 ## 0.27.0 (2020.09.11)
 ### TOAST IAP
 #### 機能追加
-* ToastProductにローカライズされたプロダクト情報の追加 (localizedTitle、 localizedDescription)
+* TOASTProductにローカライズされたプロダクト情報の追加 (localizedTitle、 localizedDescription)
 
 #### 機能改善
 * iOS 14 beta変更事項に対応 
@@ -169,8 +169,8 @@
 
 #### 改善事項
 
-* ToastPushConfigurationオブジェクトのNullabilityプロパティの変更
-* リッチメッセージ作成ロジックの改善により、ToastPushMediaオブジェクトのsourceType、extensionのプロパティを削除
+* TOASTPushConfigurationオブジェクトのNullabilityプロパティの変更
+* リッチメッセージ作成ロジックの改善により、TOASTPushMediaオブジェクトのsourceType、extensionのプロパティを削除
 * リッチメッセージのソース情報にハングルURLも対応
 
 #### バグ修正
@@ -368,7 +368,7 @@
 
 #### 改善事項
 
-* ToastTransferで断続的に発生していたCrashを防止するためのコードを追加
+* TOASTTransferで断続的に発生していたCrashを防止するためのコードを追加
 
 ## 0.12.1 (2019.01.08)
 
@@ -384,7 +384,7 @@
 
 #### 改善事項
 
-* ToastTransferで断続的に発生していたCrashを防止するためのコードを追加
+* TOASTTransferで断続的に発生していたCrashを防止するためのコードを追加
 
 ### TOAST Push
 
@@ -397,7 +397,7 @@
 #### 改善事項
 
 * Appleで再処理するTransactionの処理ができるようにUserID Checkロジックの例外処理を追加
-* ToastOperationで断続的に発生していたCrashを防止するためのコードを追加 
+* TOASTOperationで断続的に発生していたCrashを防止するためのコードを追加 
 
 
 ## 0.11.1 (2018.12.04)

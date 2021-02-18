@@ -1,9 +1,9 @@
-## TOAST > Console User Guide
+## NHN Cloud > Console User Guide
 
-The console serves as management tool and window for the use of TOAST services.
-Basic console settings and its user guide are provided as below to use TOAST Service.
+The console serves as management tool and window for the use of NHN Cloud services.
+Basic console settings and its user guide are provided as below to use NHN Cloud Service.
 
-TOAST Console provides the following functions:
+NHN Cloud Console provides the following functions:
 
 - Basic information management to use the service (e.g. organizations, or projects)
 - Enable/Disable Service
@@ -20,13 +20,13 @@ TOAST Console provides the following functions:
 
 ## Organization Management
 
-Organization refers to a group which is made to efficiently use and manage TOAST Service.
+Organization refers to a group which is made to efficiently use and manage NHN Cloud Service.
 In an organization, same service policy can be shared with users.
-It helps to make use of TOAST Service more efficiently.  
+It helps to make use of NHN Cloud Service more efficiently.  
 
 ### Create Organizations
 
-- An organization should be created to use TOAST Service.
+- An organization should be created to use NHN Cloud Service.
 - Both personal and business members can create organizations.
 - Any member who creates an organization automatically becomes the OWNER of his organization.
 - Member’s payment method is required to create an organization.
@@ -53,7 +53,7 @@ Following services are available at the level of organization:
 2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
 3. Click **OK** and organization is completely created.
 4. You can find the organization name just created on top of the console menu
-5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
+5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in NHN Cloud.
 
 
 ### Delete Organizations
@@ -65,7 +65,7 @@ Following services are available at the level of organization:
 
 ## Manage Projects
 
-A project is created to use TOAST Service, after an organization is created.
+A project is created to use NHN Cloud Service, after an organization is created.
 Enable project services to use a project.
 Use and charge services by the project.
 
@@ -129,8 +129,8 @@ However, if it is deleted without paid, all charges up to the moment shall be au
 
 | Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
 | :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Definition                    | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
-| Method of Member Registration | \- Owner/Admin of an organization enters TOAST ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
+| Definition                    | \- Members for organization management <br>\- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole NHN Cloud Service and remain as NHN Cloud members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
+| Method of Member Registration | \- Owner/Admin of an organization enters NHN Cloud ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
 | Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
 
 ### Security Setting for IAM Console Logins 
@@ -193,7 +193,7 @@ Dooray! Service allows the IP ACL setting on the console page of each service.
 
 ### Organization Members
 
-#### Organization Role of TOAST Members 
+#### Organization Role of NHN Cloud Members 
 
 | Action               | Role                                              | Owner | Admin | Member | Billing Viewer | Log Viewer |
 | -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---- |
@@ -298,8 +298,8 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 
 ## Billing Management
 
-Supports for TOAST members to check prices and pay bills for TOAST Service.
-Billing management provides bills for the TOAST members who registered payment methods, along with estimated amount of payment and usage information.
+Supports for NHN Cloud members to check prices and pay bills for NHN Cloud Service.
+Billing management provides bills for the NHN Cloud members who registered payment methods, along with estimated amount of payment and usage information.
 Go to My Profile > Billing Management to check.
 
 Below functions are provided, along with the history of the month’s payment via registered payment method.

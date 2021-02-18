@@ -1,9 +1,9 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Reserved Fields
+## NHN Cloud > User Guide for NHN Cloud SDK > NHN Cloud Log & Crash > Reserved Fields
 
 ### Definition of Reserved Fields 
 
-Reserved fields refer to field names which are defined and used within TOAST SDK. 
-To use reserved fields in TOAST SDK, 'reserved_" is added to a field name. 
+Reserved fields refer to field names which are defined and used within NHN Cloud SDK. 
+To use reserved fields in NHN Cloud SDK, 'reserved_" is added to a field name. 
 Inspection conditions of a reserved field regard to comparing character strings, regardless of the letter case. 
 
 ### Usage Example of Reserved Fields 

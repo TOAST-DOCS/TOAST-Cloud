@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Push > Android
+## NHN Cloud > NHN Cloud SDK 사용 가이드 > NHN Cloud Push > Android
 
 ## 사전 준비
 
-1\. [TOAST SDK](./getting-started-android)를 설치합니다.
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+1\. [NHN Cloud SDK](./getting-started-android)를 설치합니다.
+2\. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
 3\. Push 콘솔에서 AppKey를 확인합니다.
 
 ## Push 제공자별 가이드
@@ -14,7 +14,7 @@
 ## 라이브러리 설정
 
 ### FCM
-* TOAST FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+* NHN Cloud FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
 dependencies {
@@ -73,9 +73,9 @@ apply plugin: 'com.google.gms.google-services'
 
 ## Push 초기화
 
-* ToastPush.initialize를 호출하여 TOAST Push를 초기화합니다.
-* [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
-* [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
+* ToastPush.initialize를 호출하여 NHN Cloud Push를 초기화합니다.
+* [NHN CloudPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
+* [NHN CloudPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
 * Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
 * 사용하기를 원하는 PushType을 초기화 호출시 전달해야 합니다.
 
@@ -90,8 +90,8 @@ ToastPush.initialize(configuration);
 ```
 
 ## 서비스 로그인
-* TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
-    * [ToastSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
+* NHN Cloud SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
+    * [NHN CloudSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
 * 서비스 로그인 단계에서 사용자 아이디 설정, 토큰 등록 기능을 구현하는 것을 권장합니다.
 * 토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.
 
@@ -106,7 +106,7 @@ public void onLogin(String userId) {
 ```
 
 ## 토큰 등록
-* ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 TOAST Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
+* NHN CloudPush.registerToken() 메서드를 사용하여 Push 토큰을 NHN Cloud Push 서버로 전송합니다. 이때 수신 동의 여부(NHN CloudPushAgreement)를 파라미터로 전달합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 * 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
 
@@ -114,7 +114,7 @@ public void onLogin(String userId) {
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
     * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 TOAST Push 서버로 전송합니다.
+* NHN CloudPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 NHN Cloud Push 서버로 전송합니다.
 
 ### 토큰 등록 및 수신 동의 설정 예시
 ```java
@@ -142,7 +142,7 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 ```
 
 ## 토큰 정보 조회
-* TOAST Push 서버에 등록된 토큰 정보를 조회합니다.
+* NHN Cloud Push 서버에 등록된 토큰 정보를 조회합니다.
 
 ### 토큰 정보 조회 예시
 ```java
@@ -165,7 +165,7 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 ```
 
 ## 토큰 해제
-* TOAST Push 서버에 등록된 토큰을 해제합니다. 해제된 토큰은 메시지 발송 대상에서 제외됩니다.
+* NHN Cloud Push 서버에 등록된 토큰을 해제합니다. 해제된 토큰은 메시지 발송 대상에서 제외됩니다.
 * `서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해야 합니다.`
 * `토큰이 해제되어도 단말기 상에 알림 권한은 회수되지 않습니다.`
 
@@ -192,7 +192,7 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 ## 메시지 수신
 * Push 메시지 수신 시 OnReceiveMessageListener 를 통해 통지 받을 수 있습니다.
 * Push 메시지 수신 리스너는 ToastPush.setOnReceiveMessageListener 함수를 사용하여 등록할 수 있습니다.
-* OnReceiveMessageListener 에 전달된 [ToastPushMessage](./push-android/#toastpushmessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
+* OnReceiveMessageListener 에 전달된 [NHN CloudPushMessage](./push-android/#toastpushmessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
 * 앱이 실행 중이지 않을 때도 메시지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
 > 메시지 수신 시 사용자가 앱을 사용 중(Foreground)일 경우 알림을 노출하지 않습니다.
@@ -439,15 +439,15 @@ public class MyApplication extends Application {
 ```
 
 ## 사용자 정의 메시지 처리
-* 메시지 수신 후 별도의 처리 과정을 수행하거나 수신한 메시지의 내용을 수정해 알림을 노출해야하는 경우 [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속 구현하는 브로드캐스트를 구현해야 합니다.
-* ToastPushMessageReceiver를 상속 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
+* 메시지 수신 후 별도의 처리 과정을 수행하거나 수신한 메시지의 내용을 수정해 알림을 노출해야하는 경우 [NHN CloudPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속 구현하는 브로드캐스트를 구현해야 합니다.
+* NHN CloudPushMessageReceiver를 상속 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
 * 메시지 수신시 onMessageReceived 함수로 수신된 메시지가 전달됩니다.
 
 > **(주의)**
 > 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다.
 > 2. 알림을 직접 생성할 경우 Push 서비스 인텐트를 알림의 콘텐츠 인텐트로 설정해야만 지표 수집이 가능합니다. (아래 지표 수집 기능 추가 섹션 참고)
 
-### ToastPushMessagingService 구현 코드 예
+### NHN CloudPushMessagingService 구현 코드 예
 ```java
 public class MyPushMessageReceiver extends ToastPushMessageReceiver {
     @Override
@@ -487,7 +487,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ### AndroidManifest.xml 등록 예
 > **(주의)**
-> ToastPushMessageReceiver를 사용하는 경우, 반드시 permission을 설정해야 합니다.
+> NHN CloudPushMessageReceiver를 사용하는 경우, 반드시 permission을 설정해야 합니다.
 
 ```xml
 <manifest>
@@ -652,9 +652,9 @@ ToastPush.removeAllUserTag(new UserTagCallback() {
 });
 ```
 
-## TOAST Push Class Reference
-### ToastPushConfiguration
-* TOAST Push를 초기화할 때 전달되는 Push 설정 정보입니다.
+## NHN Cloud Push Class Reference
+### NHN CloudPushConfiguration
+* NHN Cloud Push를 초기화할 때 전달되는 Push 설정 정보입니다.
 
 ```java
 /* ToastPushConfiguration.java */
@@ -665,7 +665,7 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 | Method | Returns | |
 |---|---|---|
 | getAppKey | String | Push 서비스 앱 키를 반환합니다. |
-| static newBuilder | ToastPushConfiguration.Builder | ToastPushConfiguration 객체 생성을 위한 빌더를 생성합니다. |
+| static newBuilder | ToastPushConfiguration.Builder | NHN CloudPushConfiguration 객체 생성을 위한 빌더를 생성합니다. |
 
 ### PushResult
 * 비동기 API 호출시 콜백의 응답으로 반환되는 결과 객체입니다.
@@ -704,7 +704,7 @@ public String getToken();
 | Method | Returns | |
 |---|---|---|
 | getPushType | String | Push 타입을 반환합니다. |
-| getAgreement | ToastPushAgreement | 알림/광고/야간 광고 등 동의 여부를 반환합니다. |
+| getAgreement | NHN CloudPushAgreement | 알림/광고/야간 광고 등 동의 여부를 반환합니다. |
 | getTimeZone | String | 타임존을 반환합니다. |
 | getCountry | String | 국가 코드를 반환합니다. |
 | getLanguage | String | 언어 코드를 반환합니다. |
@@ -712,7 +712,7 @@ public String getToken();
 | getActivatedDateTime | Date | 토큰의 최근 등록 일시를 반환합니다. |
 | getToken | String | 토큰을 반환합니다. |
 
-### ToastRemoteMessage
+### NHN CloudRemoteMessage
 * 메세지 수신 리스너, 커스텀 리시버에서 메세지 수신시 반환되는 객체 입니다.
 
 ``` java
@@ -727,10 +727,10 @@ public String getSenderId();
 |---|---|---|
 | getChannelId | String | 채널 ID를 반환합니다. |
 | setChannelId |  | 채널 ID를 설정합니다. |
-| getMessage | ToastPushMessage | 메세지 객체를 반환합니다. |
+| getMessage | NHN CloudPushMessage | 메세지 객체를 반환합니다. |
 | getSenderId | String | 발신자 ID를 반환합니다. (FCM Only) |
 
-### ToastPushMessage
+### NHN CloudPushMessage
 * 수신한 메세지 내용을 담는 객체 입니다.
 
 ``` java
@@ -774,10 +774,10 @@ public String getUserText();
 | getActionType | ActionType | ActionType을 반환합니다. |
 | getNotificationId | String | 액션이 실행된 알림의 ID을 반환합니다. |
 | getNotificationChannel | String | 액션이 실행된 알림의 채널을 반환합니다. |
-| getMessage | ToastPushMessage | 액션이 실행된 알림의 메세지 정보를 반환합니다. |
+| getMessage | NHN CloudPushMessage | 액션이 실행된 알림의 메세지 정보를 반환합니다. |
 | getUserText | RichMessage | 사용자가 입력한 문자열을 반환합니다. |
 
-### ToastPushMessageReceiver
+### NHN CloudPushMessageReceiver
 * 메세지 내용 수정, 실행 인텐트 정의, 알림 직접 생성 등의 기능을 위해서는 사용자가 구현해야하는 객체 입니다.
 
 ``` java
@@ -792,12 +792,12 @@ public final PendingIntent getNotificationServiceIntent(Context context, ToastRe
 | Method | Returns | Parameters | |
 |---|---|---|---|
 | isAppForeground | boolean |  | 현재 앱을 사용중인지 여부를 반환합니다. |
-| notify | | Context, ToastRemoteMessage | 기본 실행 인텐트로 알림을 생성 및 노출합니다. |
-| notify | | Context, ToastRemoteMessage, PendingIntent | 사용자 실행 인텐트로 알림을 생성 및 노출합니다. |
+| notify | | Context, NHN CloudRemoteMessage | 기본 실행 인텐트로 알림을 생성 및 노출합니다. |
+| notify | | Context, NHN CloudRemoteMessage, PendingIntent | 사용자 실행 인텐트로 알림을 생성 및 노출합니다. |
 | notify | | Context, int, Notification | 사용자 알림을 특정 ID로 노출합니다. |
-| getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
+| getNotificationServiceIntent | PendingIntent | Context, NHN CloudRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
 
-### ToastNotificationOptions
+### NHN CloudNotificationOptions
 * 기본 알림 옵션 설정시 우선순위, 작은 아이콘, 배경색, LED, 진동, 알림음, 포그라운드 알림 노출 정보를 설정하는 객체입니다.
 
 ``` java

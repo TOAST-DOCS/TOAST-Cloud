@@ -307,7 +307,7 @@
 
 #### Fixed
 
-* 'toast-sdk'で'toast-push-tencent'依存を取り除く。
+* 'TOAST-sdk'で'TOAST-push-tencent'依存を取り除く。
 
 ## 0.16.0 (2019.04.23)
 
