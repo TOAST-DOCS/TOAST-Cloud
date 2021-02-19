@@ -62,7 +62,7 @@ Android SDKは[Downloads](../../../Download/#toast-sdk)ページでダウンロ�
 
 ## UserID設定
 
-TOASAT SDKにUserIDを設定できます。
+NHN Cloud SDKにUserIDを設定できます。
 設定したUserIDは、NHN Cloud SDKの各モジュールで共通使用されます。
 NHN CloudLoggerのログ送信APIを呼び出すたびに、設定したUserIDをログと一緒にサーバーに送信します。
 
