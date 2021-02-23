@@ -4,23 +4,23 @@
 
 ### TOAST Log & Crash
 
-#### 버그 수정
+#### バグ修正
 
-* x86에서 pure virtual call / invalid parameter 크래쉬로그가 남지 않는 현상 처리
+* x86でpure virtual call / invalid parameterのクラッシュログが残らない問題を修正
 
 ## 0.9.3.0 (2019.07.23)
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### 追加事項
 
-* Intialize() 함수 성공/실패 처리
-	* bool로 리턴값 변경
-* SessionId 일반로그에도 추가
-* Setting 정보 못가져왔을때 이전에 저장된 Setting 정보로 처리
-* Static libarary 제공
-	* visual studio 2015 (vc14) 버전 제공
-* xp 버전 제공 
+* Intialize()関数の成功/失敗処理
+	* boolのリターン値変更
+* SessionId 一般ログにも追加
+* Setting情報を持っていなかった場合、すでに保存されていたSetting情報で処理
+* Static libarary提供
+	* visual studio 2015 (vc14)バージョンを提供
+* xpバージョンを提供
 
 ## 0.9.0.12 (2018.09.04)
 

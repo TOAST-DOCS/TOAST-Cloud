@@ -307,7 +307,7 @@
 
 #### Fixed
 
-* Removed 'toast-push-tencent' dependencies from 'toast-sdk'.
+* Removed 'TOAST-push-tencent' dependencies from 'TOAST-sdk'.
 
 ## 0.16.0 (2019.04.23)
 

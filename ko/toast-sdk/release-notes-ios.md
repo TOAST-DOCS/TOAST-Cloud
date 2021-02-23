@@ -4,7 +4,7 @@
 ### TOAST IAP
 #### 개선 사항
 * 구독 상품 재구매 오류 수정 (iOS 14 )
-- Appstore로부터 상품 정보 획득 실패 시 ToastProductsResponse가 nil을 반환하도록 변경
+- Appstore로부터 상품 정보 획득 실패 시 TOASTProductsResponse가 nil을 반환하도록 변경
 
 ### TOAST Push
 #### 개선 사항
@@ -13,7 +13,7 @@
 ## 0.27.0 (2020.09.11)
 ### TOAST IAP
 #### 기능 추가
-* ToastProduct에 지역화된 상품정보 추가 (localizedTitle, localizedDescription)
+* TOASTProduct에 지역화된 상품정보 추가 (localizedTitle, localizedDescription)
 
 #### 기능 개선
 * iOS 14 beta 변경 사항 대응 
@@ -143,8 +143,8 @@
 
 ### TOAST Push
 #### 개선 사항
-* ToastPushConfiguration 객체의 Nullability 속성 변경
-* 리치 메시지 생성 로직 개선으로 ToastPushMedia 객체의 sourceType, extension 프로퍼티 삭제
+* TOASTPushConfiguration 객체의 Nullability 속성 변경
+* 리치 메시지 생성 로직 개선으로 TOASTPushMedia 객체의 sourceType, extension 프로퍼티 삭제
 * 리치 메시지의 소스 정보에 한글 URL 지원
 #### 버그 수정
 * 콘솔 설정에 메시지 수신/확인 기능이 사용 안함으로 설정되어 있는 경우 리치 메시지가 정상적으로 표시되지 않던 버그 수정
@@ -282,7 +282,7 @@
 ## 0.12.2 (2019.02.08) - Hotfix
 ### TOAST Core
 #### 개선 사항
-* ToastTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
+* TOASTTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
 
 ## 0.12.1 (2019.01.08)
 ### TOAST IAP
@@ -292,7 +292,7 @@
 ## 0.12.0 (2018.12.27)
 ### TOAST Core
 #### 개선 사항
-* ToastTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
+* TOASTTransfer에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
 
 ### TOAST Push
 #### 추가 사항
@@ -301,7 +301,7 @@
 ### TOAST IAP
 #### 개선 사항
 * Apple에서 재처리해주는 Transaction의 처리가 가능하도록 UserID Check 로직의 예외처리 추가
-* ToastOperation에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
+* TOASTOperation에서 간헐적으로 발생하던 Crash 방지를 위해 방어코드 추가
 
 
 ## 0.11.1 (2018.12.04)

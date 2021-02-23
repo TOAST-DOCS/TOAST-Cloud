@@ -19,13 +19,13 @@
 - Android : 0.24.2
 - iOS : 0.27.1
 
-### 공통
+### 共通
 
 - Native Plugin Version Update
 
-### 기능 추가
+### 機能追加
 
-- Galaxy Store 추가
+- Galaxy Store追加
 
 ## 0.21.2 (2020.10.05)
 
@@ -51,9 +51,9 @@
 - Android : 0.22.0
 - iOS : 0.25.1
 
-### 버그 수정
+### バグ修正
 
-- InstanceLogger 사용시, 암호화키를 호출하지 않는 버그 수정
+- InstanceLogger使用時、暗号化キーを呼び出さないバグを修正
 
 ## 0.20.2 (2020.07.08)
 
@@ -73,13 +73,13 @@
 - Android : 0.21.0
 - iOS : 0.23.0
 
-### 버그 수정
+### バグ修正
 
-- 빈 파일이 생성된 경우, 복호화 에러 수정
+- 空ファイルが作成された際の復号エラーを修正
 
-### 기능 개선
+### 機能改善
 
-- Windows 환경에서 C++ DLL 의존성 제거
+- Windows環境で C++ DLL依存性を除去
 
 ## 0.20.0 (2020.03.26)
 
@@ -88,55 +88,55 @@
 - Android : 0.21.0
 - iOS : 0.23.0
 
-### 버그 수정
+### バグ修正
 
-- CrashFilter관련 처리에서 Exception 이슈
+- CrashFilter関連処理での Exceptionの問題を修正
 
 ## 0.19.1 (2020.01.23)
 
-### 버그 수정
+### バグ修正
 
-- OnHandleException 콜백 호출 이슈
+- OnHandleException コールバック呼び出しの問題を修正
 
 ## 0.19.0 (2019.12.27)
 
-### 추가 사항
+### 追加事項
 
-- Unity Play Services Resolver 적용
+- Unity Play Services Resolver 適用
 
 ## 0.18.0 (2019.12.06)
 
-### 공통
+### 共通
 
-- iOS 0.20.1 framework 적용
-- Android 0.19.4 aar 포함해서 배포
-- Native Plugin (Windows, MacOS) 배포
+- iOS 0.20.1 framework 適用
+- Android 0.19.4 aar 含めて配布
+- Native Plugin (Windows, MacOS) 配布
 
 ## 0.17.0 (2019.10.02)
 
 ### TOAST IAP
 
-- 구매 요청시 사용자 데이터 설정 기능 추가
+- 購入リクエスト時にユーザーデータ設定機能追加
 
 ## 0.16.0 (2019.08.28)
 
 ### TOAST IAP
 
-#### 변경 사항
+#### 変更事項
 
-- 소비성 구독 상품 추가
+- 消費性サブスクリプションプロダクトの追加
 
 ## 0.15.1 (2019.07.29)
 
-### 공통
+### 共通
 
-- iOS 0.16.1 framework 적용
+- iOS 0.16.1 framework適用
 
 ## 0.15.0 (2019.07.23)
 
 ### TOAST IAP
 
-#### 변경 사항
+#### 変更事項
 
 - ActivedPurchases -> ActivatedPurchses
 
@@ -144,17 +144,17 @@
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### 追加事項
 
-- Unity Standalone/WebGL 버전 추가
+- Unity Standalone/WebGLバージョン追加
   - Logger
   - Instance Logger
 
 ### TOAST IAP
 
-#### 추가 사항
+#### 追加事項
 
-- ActivedPurchases 추가
+- ActivedPurchases追加
 
 ## 0.13.1 (2019.03.26)
 
@@ -164,7 +164,7 @@
 
 - ユニティスレッドではなく、スレッドでもログを送信できるように機能改善。
 - ProjectKey が AppKey に名称変更。
-      \*既存の setProjectKey は引き続き使用可能。
+- 既存の setProjectKey は引き続き使用可能。
 
 #### バグ修正
 

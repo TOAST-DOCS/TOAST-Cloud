@@ -1,19 +1,19 @@
-## TOAST > Guide to TOAST Regions
+## NHN Cloud > Guide to NHN Cloud Regions
 A region refers to the physical location of an independent and geologically separated server. 
 Generally, a region is comprised of a standalone power, the so-called available area, and datacenter equipped with a network, and the user may select a region depending on the region and service. 
-Feel free to select your region anytime and anywhere to enjoy TOAST services. 
+Feel free to select your region anytime and anywhere to enjoy NHN Cloud services. 
 
-## TOAST Regions
+## NHN Cloud Regions
 
-TOAST operates four regions to provide stable global services. 
+NHN Cloud operates four regions to provide stable global services. 
 To support for high availability, an application must be deployed to many available areas or multiple regions. 
-TOAST users are allowed to select regions depending on the service area and purpose, but recommended to select those regions where service targets are mainly located so as to get fast response.   
+NHN Cloud users are allowed to select regions depending on the service area and purpose, but recommended to select those regions where service targets are mainly located so as to get fast response.   
 
 ## Location of TOAT Regions 
-TOAST is expanding its regions to make its service globally available.  
+NHN Cloud is expanding its regions to make its service globally available.  
 ![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/region_guide%2001.png)
 
-## TOAST Regional Service 
+## NHN Cloud Regional Service 
 
 **Regional Service**
 Regional Service refers to services that are provided only for particular regions due to restrictions in infrastructure and service content of eacy country/region/law/product. 

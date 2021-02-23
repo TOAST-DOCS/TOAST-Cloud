@@ -1,43 +1,43 @@
-## TOAST > TOAST User Guide
-This document is the user guide of TOAST, which is the cloud service of NHN.
+## NHN Cloud > NHN Cloud User Guide
+This document is the user guide of NHN Cloud, which is the cloud service of NHN.
 
-## Join TOAST
+## Join NHN Cloud
 You may choose a country to use services.  
-TOAST membership is provided for individuals and businesses.
+NHN Cloud membership is provided for individuals and businesses.
 Individual members can join with simple email and SMS authentication. 
 Business members can join upon business information. 
-TOAST member information for management, as well as how to join are as follows: 
+NHN Cloud member information for management, as well as how to join are as follows: 
 
 ### Members management Information
-TOAST members are classified into TOAST Korea (NHN) and TOAST Japan (NHN Japan) depending on who provides the service. 
+NHN Cloud members are classified into NHN Cloud Korea (NHN) and NHN Cloud Japan (NHN Japan) depending on who provides the service. 
 They are classified by the country of choice, and allowed to join when they agree with Terms of Services, as well as Privacy Policy set by regulations of each country.  
 
-#### Members of TOAST Korea
+#### Members of NHN Cloud Korea
 | Managed Information | Description | Required |
 | --- | --- | --- |
 | ID | - Valid email address (requires email verification). | O | 
 | Password | -  To be comprised of more than 8 characters, including English, numbers, and special characters.  <br/> - The password cannot be same as your previous one. <br/> - Make a clear distinction between uppercase and lowercase letters. | O | 
 | Type of Membership | 1. Individual Members <br/> - Join with simple email and SMS authentication.  <br/> - Individual members can use credit cards for payment. <br/> 2. Business Members <br/> - Further authentication is required for business registration information.  <br/> - Business members can use credit cards and bank transfer for payment; for bank transfer, tax invoice can be issued upon business information registered while joining. | O |
 | Mobile Phone Number | - Valid mobile phone number available for SMS (requires SMS verification). | O |
-| Name | - User's name for TOAST Service.  | O |
+| Name | - User's name for NHN Cloud Service.  | O |
 | Address | - Comprised of zip code, basic address, and detail address.  | X |
 | Landline Phone Number | - Managed for the support of faster services.  | X |
 | Business Information | - Required for business members. <br/> - Information, such as company name, business registration number, name of representative, business type/item, and landline phone number are managed. <br/> - Such information must coincide with those of business registration certificate.  | O |
 
-#### Members of TOAST Japan 
+#### Members of NHN Cloud Japan 
 | Managed Information | Description | Required |
 | --- | --- | --- |
 | ID | - Valid email address (requires email verification). | O |
 | Password | - Comprised of at least eight characters, in  combination of two or more of English, numbers, and special characters. <br/> - The password cannot be same as your previous one. <br/> - Make a clear distinction between uppercase and lowercase letters.  | O |
 | Mobile Phone Number | - Valid mobile phone number available for SMS (requires SMS verification). | O |
-| Name | - User's name for TOAST Service.  | O |
+| Name | - User's name for NHN Cloud Service.  | O |
 | Landline Phone Number | - Managed for the support of faster services.  | X |
 
 ### How to Join as Member
 Access https://toast.com and click Join on the top right.
 Follow the procedure to join membership. 
 
-#### Members of TOAST Korea
+#### Members of NHN Cloud Korea
 
 - Join Individual Membership
 
@@ -47,7 +47,7 @@ Follow the procedure to join membership.
 
 ![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_20200710.png)
 
-#### Members of TOAST Japan
+#### Members of NHN Cloud Japan
 
 ![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_20200710.png)
 
@@ -57,13 +57,13 @@ Follow the procedure to join membership.
 Each country provides different member information and payment methods.  
 
 - Type of Membership 
-- TOAST Korea: Individual/Business Members
-- TOAST Japan: Individual Members
+- NHN Cloud Korea: Individual/Business Members
+- NHN Cloud Japan: Individual Members
 - Payment Method 
-- TOAST Korea 
+- NHN Cloud Korea 
 - Individual: PAYCO on credit cards, Credit cards 
 - Business: PAYCO on credit cards, Credit cards, or Bank transfer
-- TOAST Japan
+- NHN Cloud Japan
 - Credit cards
 
 
@@ -75,41 +75,41 @@ Following are required for each type of membership:
 - Individual Members
     - Valid email address
     - Valid mobile phone that properly receives SMS
-- Business Members (TOAST Korea)
+- Business Members (NHN Cloud Korea)
     - Valid email address  
     - Valid mobile phone that properly receives SMS
     - Copy of Business Registration Certificate
 
 #### Consent to Terms of Use  
 
-- TOAST Terms of Use (Required): It is required to consent to the Terms of Use, to use TOAST service. 
-- Consent to Collecting/Using Personal Information (Required): It is required to consent to collecting/using personal information to use TOAST service. 
-- Consent to Receiving Promotional Information (Optional): It is optional to consent to receiving events or promotions of TOAST. It can be modified on My Profile after joining TOAST. 
+- NHN Cloud Terms of Use (Required): It is required to consent to the Terms of Use, to use NHN Cloud service. 
+- Consent to Collecting/Using Personal Information (Required): It is required to consent to collecting/using personal information to use NHN Cloud service. 
+- Consent to Receiving Promotional Information (Optional): It is optional to consent to receiving events or promotions of NHN Cloud. It can be modified on My Profile after joining NHN Cloud. 
 
 
 #### Enter Member Information
 - Personal Members
     - Verify email and mobile phone via SMS
-- Business members (TOAST Korea)
+- Business members (NHN Cloud Korea)
     - Attach a copy of Business Registration Certificate
 
 #### Joining Completed 
-After you're done with joining, you're automatically signed in. Now, TOAST service is available on its website and console. 
+After you're done with joining, you're automatically signed in. Now, NHN Cloud service is available on its website and console. 
 
 ## Register Payment Methods
-It is required to register a payment method to use TOAST Service. 
-However, for members of existing organizations/projects, no additional registration is required to use TOAST Service.
+It is required to register a payment method to use NHN Cloud Service. 
+However, for members of existing organizations/projects, no additional registration is required to use NHN Cloud Service.
 To register, go to [My Page > Payment Methods].
 
 ### Management Policy of Payment Methods
-TOAST provides the following payment methods:
+NHN Cloud provides the following payment methods:
 
-#### TOAST Korea
+#### NHN Cloud Korea
 - PAYCO Credit Cards: A simplified method of payment provided by PAYCO, available on PAYCO account.  <br/>
 - Credit Cards: Authentication (authentication of the holder via mobile phone) is required in accordance with the issuing entity’s authentication policy, in order to register a credit card as payment method. <br/>
 - Bank Transfers: The method is provided only to business members, who are required to enter account information and authenticate (Public Key Certificate) it in accordance with bank’s policy before registering it as payment method.<br/>
 
-#### TOAST Japan 
+#### NHN Cloud Japan 
 - Credit Cards: Authentication (for card validity) is required in accordance with the issuing entity's authentication policy, in order to register a credit card as payment method.  
 
 ### Management Policy per Payment Method
@@ -125,7 +125,7 @@ The authentication and management policy of each payment method goes as follows:
 | | | Bank Transfers | Authenticate with public key certificate | Bank and account number | Personal account must contain same information on the public key certificate of the person <br/> while corporate account must contain same business information on the member profile/corporate account/public key certificate.   |
 | Japan | Individual | Credit Cards | Credit card holder authentication |Card number, valid period, name, and security code | To validate credit card, 2 Yen shall be paid and cancelled. |
 
-### TOAST Korea 
+### NHN Cloud Korea 
 
 #### PAYCO Credit Cards
 ##### Select Payment Methods
@@ -179,7 +179,7 @@ The authentication and management policy of each payment method goes as follows:
 ##### Complete Registration of Payment Methods 
 - When a payment method is properly registered, check at **My Page > Payment Methods**.
 
-### TOAST Japan 
+### NHN Cloud Japan 
 #### Credit Cards 
 ##### Select Payment Methods 
 - Go to **My Page > Payment Methods** and click **Change Payment Methods**.
@@ -196,18 +196,18 @@ Register your email address to receive invoices.
 Select either "Pay by Pricing Plan", or "Pay At Once". 
 
 ## Manage Credits
-Credits managed by TOAST Service are provided free-of-charge, depending on service subscription, rewards, events, or compensation purposes.
+Credits managed by NHN Cloud Service are provided free-of-charge, depending on service subscription, rewards, events, or compensation purposes.
 1 credit equals to 1 KRW in cash. 
 To check your credits, go to **My Page > Credits**.
 Credits are operated in accordance with the following policy:
 - Non-refundable.
 - Managed by valid period: to be expired after valid period and flexibly managed for each type of saving. 
-- Automatically deducted as much as charged for TOAST Service: if TOAST Service is charged more than your own credits, shortage shall be charged further in cash. 
+- Automatically deducted as much as charged for NHN Cloud Service: if NHN Cloud Service is charged more than your own credits, shortage shall be charged further in cash. 
 
 
 ## Withdraw from Membership
 ### Apply for Membership Withdrawal
-To apply for withdrawal from TOAST membership, go to **My Page > Member Profile** and click **Withdraw Membership**.  
+To apply for withdrawal from NHN Cloud membership, go to **My Page > Member Profile** and click **Withdraw Membership**.  
 Check notes for membership withdrawal, and click **Withdraw**.
 Withdrawal cannot be applied when you're using a service. 
 

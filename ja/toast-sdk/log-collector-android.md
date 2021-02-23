@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Android
+## NHN Cloud > NHN Cloud SDK使用ガイド > NHN Cloud Log & Crash > Android
 
 ## 事前準備
 
-1\. [TOAST SDK](./getting-started-android)をインストールします。
-2\. [TOASTコンソール](https://console.cloud.toast.com)で[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+1\. [NHN Cloud SDK](./getting-started-android)をインストールします。
+2\. [NHN Cloudコンソール](https://console.cloud.toast.com)で[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
 3\. Log & Crash Searchで[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 
 ## ライブラリ設定
@@ -16,11 +16,11 @@ dependencies {
 }
 ```
 
-## TOAST Logger SDK初期化
+## NHN Cloud Logger SDK初期化
 
 - 初期化は、Application#onCreateで行う必要があります。
 
-> 初期化を行わずにToastLoggerを使用すると、初期化エラーが発生します。
+> 初期化を行わずにNHN CloudLoggerを使用すると、初期化エラーが発生します。
 
 - Log & Crash Searchで発行されたAppKeyを設定します。
 
@@ -35,7 +35,7 @@ ToastLogger.initialize(configuration);
 
 ## ログ送信
 
-TOAST Loggerは5つのレベルのログ送信関数を提供します。
+NHN Cloud Loggerは5つのレベルのログ送信関数を提供します。
 
 ### ログ送信API仕様
 
@@ -125,7 +125,7 @@ ToastLogger.setLoggerListener(new ToastLoggerListener() {
 
 ## クラッシュログの収集
 
-TOAST Loggerは、アプリで予期せぬクラッシュが発生した場合に、クラッシュ情報をサーバーに記録します。
+NHN Cloud Loggerは、アプリで予期せぬクラッシュが発生した場合に、クラッシュ情報をサーバーに記録します。
 
 ### クラッシュログ収集を使用するかの設定
 
@@ -146,7 +146,7 @@ ToastLogger.initialize(configuration);
 
 ### Handled Exception API使用
 
-Androidプラットフォームでは、try/catch構文で例外に関する内容を、TOAST LoggerのHandled Exception APIを使用して送信できます。
+Androidプラットフォームでは、try/catch構文で例外に関する内容を、NHN Cloud LoggerのHandled Exception APIを使用して送信できます。
 このように送信した例外ログは、コンソールで**Log & Crash Search > アプリクラッシュ検索**をクリックし、**エラータイプ**で**Handled**をクリックして照会できます。
 Log & Crashコンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
 
@@ -203,13 +203,13 @@ ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
 
 Network Insightsは、コンソールに登録したURLを呼び出して遅延時間とレスポンス値を測定します。これを活用して複数の国(デバイスの国コード基準)での遅延時間とレスポンス値を測定できます。
 
-> コンソールからNetwork Insights機能を有効にすると、TOAST Loggerを初期化する時、コンソールに登録したURLで1回要請します。
+> コンソールからNetwork Insights機能を有効にすると、NHN Cloud Loggerを初期化する時、コンソールに登録したURLで1回要請します。
 
 ### Network Insights有効化
 
 Network Insightsを有効にする方法は次のとおりです。
 
-1. [TOAST Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+1. [NHN Cloud Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
 2. **設定**メニューをクリックします。
 3. **ログ送信設定**タブをクリックします。
 4. **Network Insightsログ**を有効にします。
@@ -218,7 +218,7 @@ Network Insightsを有効にする方法は次のとおりです。
 
 URLを設定する方法は次のとおりです。
 
-1. [TOAST Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+1. [NHN Cloud Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
 2. **ネットワークインサイト**メニューをクリックします。
 3. **URL設定**タブをクリックします。
 4. 測定するには、URLを入力して**追加**ボタンをクリックします。

@@ -1,26 +1,26 @@
-## TOAST > TOAST SDK使用ガイド > TOAST IAP > iOS
+## NHN Cloud > NHN Cloud SDK使用ガイド > NHN Cloud IAP > iOS
 
 ## Prerequisites
 
-1\. [TOAST SDK](./getting-started-ios)をインストールします。
-2\. [TOASTコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
+1\. [NHN Cloud SDK](./getting-started-ios)をインストールします。
+2\. [NHN Cloudコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
 3\. IAPで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
-## TOAST IAP構成
+## NHN Cloud IAP構成
 
-* iOS用TOAST IAP SDKの構成は次のとおりです。
+* iOS用NHN Cloud IAP SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
-| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+| NHN Cloud IAP | NHN CloudIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| Mandatory   | NHN CloudCore<br/>NHN CloudCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
-## TOAST IAP SDKをXcodeプロジェクトに適用
+## NHN Cloud IAP SDKをXcodeプロジェクトに適用
 
 ### 1. Cococapods適用
 
-* Podfileを作成して、TOAST SDKに対するPodを追加します。
+* Podfileを作成して、NHN Cloud SDKに対するPodを追加します。
 
 ```podspec
 platform :ios, '9.0'
@@ -31,11 +31,11 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. バイナリをダウンロードしてTOAST SDKを適用
+### 2. バイナリをダウンロードしてNHN Cloud SDKを適用
 
 #### Link Frameworks
 
-* TOASTの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
+* NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
 * Xcode Projectに**ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework, StoreKit.framework**を追加します。
 * StoreKit.frameworkは、下記の方法で追加できます。
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
@@ -50,13 +50,13 @@ end
 
 ### Capabilities Setting
 
-* TOAST IAPを使用するには、Capabilitiesで**In-App Purchase**項目を有効にする必要があります。
+* NHN Cloud IAPを使用するには、Capabilitiesで**In-App Purchase**項目を有効にする必要があります。
     * **Project Target > Capabilities > In-App Purchase**
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## サービスログイン
 
-* TOAST SDKで提供するすべてのサービス(IAP、Log & Crash、Pushなど)は、同じユーザーID1つのみ使用します。
+* NHN Cloud SDKで提供するすべてのサービス(IAP、Log & Crash、Pushなど)は、同じユーザーID1つのみ使用します。
 
 ### ログイン
 
@@ -74,9 +74,9 @@ end
 [ToastSDK setUserID:nil];
 ```
 
-## TOAST IAP SDK初期化
+## NHN Cloud IAP SDK初期化
 
-* TOAST IAPで発行されたAppKeyを設定します。
+* NHN Cloud IAPで発行されたAppKeyを設定します。
 * 初期化と同時に未完了購入の件に対する再処理が行われます。
 
 ### 初期化API仕様
@@ -203,9 +203,9 @@ end
 
 | 상품명    | 상품타입             | 설명                                     |
 | ------ | ---------------- | -------------------------------------- |
-| 消費性商品 | ToastProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
-| 自動更新型購読商品  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
-| 自動更新型消費性購読商品 | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
+| 消費性商品 | NHN CloudProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
+| 自動更新型購読商品  | NHN CloudProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
+| 自動更新型消費性購読商品 | NHN CloudProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
 
 > `自動更新型購読商品のアップグレード、ダウングレード、修正機能は、サポートしていません。`
 > `1つの購読グループに、1つの商品のみ登録する必要があります。`
@@ -232,7 +232,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 * 購買進行中にアプリが終了したり,ネットワークエラーなどで購買が中断された場合,次回のアプリ実行におけるIAP SDK初期化以後,再処理が進みます。
 * 구매 요청시 사용자 데이터 추가가 가능합니다.
 * 사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원) 정보에 포함되어 반환됩니다.
-* * 상품 목록 조회 결과의 ToastProduct 객체 혹은 상품 아이디를 이용해 구매를 요청합니다.
+* * 상품 목록 조회 결과의 NHN CloudProduct 객체 혹은 상품 아이디를 이용해 구매를 요청합니다.
 
 #### 商品オブジェクトを利用した購入API仕様
 
