@@ -1,11 +1,11 @@
-## NHN Cloud > User Guide for NHN Cloud SDK > NHN Cloud Log & Crash > Unity
+## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Unity
 
 ## Prerequisites
 
-1\. [Install NHN Cloud SDK](./getting-started-unity)
-2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
+1\. [Install TOAST SDK](./getting-started-unity)
+2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
 3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
-4\. [Initialize NHN Cloud SDK](./getting-started-unity#toast-sdk_1).
+4\. [Initialize TOAST SDK](./getting-started-unity#toast-sdk_1).
 
 ## 지원 플랫폼
 
@@ -62,13 +62,13 @@ dependencies {
 - **Slow and Safe** is recommended.
   - To collect Runtime C# Crash logs, Slow and Safe must be enabled.
 
-## NHN Cloud Logger namespace
+## TOAST Logger namespace
 
 ```csharp
 using Toast.Logger;
 ```
 
-## Initialize NHN Cloud Logger SDK
+## Initialize TOAST Logger SDK
 
 Set appkey issued from Log & Crash Search as ProjectKey.
 
@@ -83,7 +83,7 @@ ToastLogger.Initialize(loggerConfiguration);
 
 ## Send Logs
 
-NHN Cloud Logger can send logs of five levels.
+TOAST Logger can send logs of five levels.
 User fields may be additionally sent.
 
 ### Specifications for Log Sending API
@@ -195,13 +195,13 @@ ToastLogger.SetLoggerListener(new SampleLoggerListener());
 
 ## Collect Crash Logs
 
-NHN Cloud Logger classifies Unity's crashes into two categories.
+TOAST Logger classifies Unity's crashes into two categories.
 
 - Crash on native platform (app terminated)
 - Unexpected exception from Unity (no app terminated)
 
-With NHN CloudLogger initialized, a crash log is automatically sent when it occurs crash under the mobile environment or when it occurs the unexpected exception in Unity.
-To disable crash log delivery, set false for EnableCrashReporter property of the NHN CloudLoggerConfiguration object.
+With ToastLogger initialized, a crash log is automatically sent when it occurs crash under the mobile environment or when it occurs the unexpected exception in Unity.
+To disable crash log delivery, set false for EnableCrashReporter property of the ToastLoggerConfiguration object.
 For more information on crash logs of each platform, check the links below:
 
 - [Collect Android Crash Logs](./log-collector-android/#collect-crash-logs)
@@ -247,7 +247,7 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 
 ## Send Handled Exceptions
 
-Exceptions from a try/catch sentence, as well as general/crash logs, can be sent by using Report API of NHN Cloud Logger.
+Exceptions from a try/catch sentence, as well as general/crash logs, can be sent by using Report API of TOAST Logger.
 Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
 For more usage details on Log & Crash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
 
@@ -276,18 +276,18 @@ try
 
 Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response values of many countries around the world (according to national codes on a device).
 
-> With Network Insights enabled in console, it is requested for one time via URL registered in the console when NHN Cloud Logger is initialized.
+> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized.
 
 ### Enable Network Insights
 
-1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Settings].
 3. Click the [Setting for Sending Logs] tab.
 4. Enable "Network Insights Logs".
 
 ### URL Setting
 
-1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Network Insights].
 3. Click the [URL Setting] tab.
 4. Enter URL to measure and click [Add].

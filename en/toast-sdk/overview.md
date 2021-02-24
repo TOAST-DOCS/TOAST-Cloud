@@ -1,13 +1,13 @@
-## NHN Cloud > User Guide for NHN Cloud SDK > Overview
+## TOAST > User Guide for TOAST SDK > Overview
 
-NHN Cloud SDK is an integrated library (SDK) which conveniently applies libraries of many services (SDKs) provided by [NHN Cloud](https://toast.com/), at once. With NHN Cloud SDK, there is no need to apply individual library of different services for the development of applications requiring many NHN Cloud services. 
-Although an integrated development environment is provided for many services, functions are optional so as to save usage space. NHN Cloud SDK library is optimized for each programming language and platform of choice, and provides no-strange environment for development. 
+TOAST SDK is an integrated library (SDK) which conveniently applies libraries of many services (SDKs) provided by [TOAST](https://toast.com/), at once. With TOAST SDK, there is no need to apply individual library of different services for the development of applications requiring many TOAST services. 
+Although an integrated development environment is provided for many services, functions are optional so as to save usage space. TOAST SDK library is optimized for each programming language and platform of choice, and provides no-strange environment for development. 
 
 > Currently supports for iOS, Android, Unity3D, and Windows C++, and more programming languages and platforms are to be supported in the near future.
 
 ## Supported Services
 
-NHN Cloud SDK provides the following services: 
+TOAST SDK provides the following services: 
 
 - [Log & Crash Search](https://toast.com/service/analytics/log_crash_search)
 
@@ -15,7 +15,7 @@ NHN Cloud SDK provides the following services:
 
 - [Push](https://www.toast.com/service/notification/push)
 
-> Further service development providing individual SDKs are to be supported via NHN Cloud SDK.  
+> Further service development providing individual SDKs are to be supported via TOAST SDK.  
 
 ## Features
 
@@ -28,32 +28,32 @@ NHN Cloud SDK provides the following services:
 
 ### Android
 
-NHN Cloud Android SDK is distributed via **jCenter** and enabled only with simple Gradle settings.  
+TOAST Android SDK is distributed via **jCenter** and enabled only with simple Gradle settings.  
 
 - [Get started with Android](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-android)
 
 ### iOS
 
-NHN Cloud iOS SDK is distributed via **Github** and enabled only with simple **Cocoapods**, **Carthage** settings.  
+TOAST iOS SDK is distributed via **Github** and enabled only with simple **Cocoapods**, **Carthage** settings.  
 
 - [Get started with iOS](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-ios)
 
 ### Unity
 
-NHN Cloud Unity SDK supports Android and iOS platforms. 
+TOAST Unity SDK supports Android and iOS platforms. 
 
 - [Get started with Unity](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-unity)
 
 ### Windows C++
 
-NHN Cloud Windows C++ SDK supports Windows 7 and 10 (32/64 bits). 
+TOAST Windows C++ SDK supports Windows 7 and 10 (32/64 bits). 
 
 - [Get started with Windows C++](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-windows)
 
-## NHN Cloud Log & Crash
+## TOAST Log & Crash
 
 Sends logs to a collector server of Log & Crash Search.  
-Collected logs can be retrieved by selecting from the Log & Crash Search Menu on NHN Cloud console. 
+Collected logs can be retrieved by selecting from the Log & Crash Search Menu on TOAST console. 
 
 - [Find out Log & Crash Search Service](https://toast.com/service/analytics/log_crash_search)
 
@@ -62,17 +62,17 @@ Collected logs can be retrieved by selecting from the Log & Crash Search Menu on
 | Feature          | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | Sending Logs     | Send logs to a collector server.                             |
-| Query and Search | Logs can be queried or searched for conditions from NHN Cloud Console. |
+| Query and Search | Logs can be queried or searched for conditions from TOAST Console. |
 | Crash Reports    | Unexpected crashes are sent to a collector server of Log & Crash Search. |
 
 ### User Guides
 
-- User Guide for [NHN Cloud Log & Crash > Android](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-android) 
-- User Guide for [NHN Cloud Log & Crash > iOS](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-ios) 
-- User Guide for [NHN Cloud Log & Crash > Unity](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-unity) 
-- User Guide for [NHN Cloud Log & Crash > Windows C++](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-windows) 
+- User Guide for [TOAST Log & Crash > Android](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-android) 
+- User Guide for [TOAST Log & Crash > iOS](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-ios) 
+- User Guide for [TOAST Log & Crash > Unity](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-unity) 
+- User Guide for [TOAST Log & Crash > Windows C++](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-windows) 
 
-## NHN Cloud IAP
+## TOAST IAP
 
 Supports integrated mobile In-App Payment service. 
 
@@ -88,12 +88,12 @@ Supports integrated mobile In-App Payment service.
 
 ### User Guides
 
-* User Guide for [NHN Cloud IAP > Android](./iap-android) 
-* User Guide for [NHN Cloud IAP > iOS](./iap-ios) 
+* User Guide for [TOAST IAP > Android](./iap-android) 
+* User Guide for [TOAST IAP > iOS](./iap-ios) 
 
-## NHN Cloud Push
+## TOAST Push
 
 ### 사용 가이드
 
-* User Guide for [NHN Cloud Push > Android](./push-android) 
-* User Guide for [NHN Cloud Push > iOS](./push-ios) 
+* User Guide for [TOAST Push > Android](./push-android) 
+* User Guide for [TOAST Push > iOS](./push-ios) 
