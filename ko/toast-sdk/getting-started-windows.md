@@ -1,13 +1,13 @@
-## NHN Cloud > NHN Cloud SDK 사용 가이드 > 시작하기 > Windows C++
+## TOAST > TOAST SDK 사용 가이드 > 시작하기 > Windows C++
 
 ## 지원 환경
 
 * Windows 7
 * Windows 10
 
-## NHN Cloud SDK의 구성
+## TOAST SDK의 구성
 
-Windows C++ 용 NHN Cloud SDK의 구성은 다음과 같습니다.
+Windows C++ 용 TOAST SDK의 구성은 다음과 같습니다.
 
 | Directory | Description | 
 |---|---|
@@ -17,9 +17,9 @@ Windows C++ 용 NHN Cloud SDK의 구성은 다음과 같습니다.
 | windows-sdk/lib64/ | C++ Windows 64bit 라이브러리 |
 | windows-sdk-sample/ | 샘플 프로젝트 |
 
-## NHN Cloud SDK를 Visual Studio 프로젝트에 적용하기
+## TOAST SDK를 Visual Studio 프로젝트에 적용하기
 
-NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 NHN Cloud Windows C++ SDK를 다운로드합니다.
+TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 TOAST Windows C++ SDK를 다운로드합니다.
 
 ### 라이브러리 포함
 
@@ -30,7 +30,7 @@ NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 NHN Cloud
 
 [참고] [https://msdn.microsoft.com/ko-kr/library/ms235636.aspx](https://msdn.microsoft.com/ko-kr/library/ms235636.aspx)
 
-## NHN Cloud Service 사용
+## TOAST Service 사용
 
-* [NHN Cloud Log & Crash](./log-collector-windows) 사용 가이드
+* [TOAST Log & Crash](./log-collector-windows) 사용 가이드
 
