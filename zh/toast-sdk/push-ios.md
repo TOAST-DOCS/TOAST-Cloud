@@ -1,28 +1,28 @@
-## NHN Cloud > User Guide for NHN Cloud SDK > NHN Cloud Push > iOS
+## TOAST > User Guide for TOAST SDK > TOAST Push > iOS
 
 ## Prerequisites
 
-1\. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
-2\. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Notification \> Push를 활성화](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+1\. [TOAST SDK](./getting-started-ios)를 설치합니다.
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Notification \> Push를 활성화](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
 3\. Push에서 AppKey를 확인합니다.
 
 ## APNS 가이드
 * [APNS 가이드](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
 
-## NHN Cloud Push 구성
+## TOAST Push 구성
 
-* iOS용 NHN Cloud Push SDK의 구성은 다음과 같습니다.
+* iOS용 TOAST Push SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
 | TOAST Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[ToastVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## NHN Cloud Push SDK를 Xcode 프로젝트에 적용
+## TOAST Push SDK를 Xcode 프로젝트에 적용
 
 ### 1. Cococapods 을 통한 적용
 
-* Podfile을 생성하여 NHN Cloud SDK에 대한 Pod을 추가합니다.
+* Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
 ``` podspec
 platform :ios, '9.0'
@@ -33,11 +33,11 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. 바이너리를 다운로드하여 NHN Cloud SDK 적용
+### 2. 바이너리를 다운로드하여 TOAST SDK 적용
 
 #### 프레임워크 설정
 
-* NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
+* TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
 * Xcode Project에 **ToastPush.framework**, **ToastCore.framework**, **ToastCommon.framework, UserNotifications.framework**를 추가합니다.
 * UserNotifications.framework는 아래 방법으로 추가할 수 있습니다.
 ![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
@@ -60,15 +60,15 @@ end
 
 ## Xcode11 / iOS13 변경 사항
 * 공통 
-    * Xcode11부터 NHN Cloud SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
-    * `Xcode11 이상을 사용할 경우 NHN Cloud SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
+    * Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
+    * `Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
 * VoIP
     * iOS13 이상부터 VoIP 메시지 수신 후에 CallKit 으로 리포트하지 않으면 메시지 수신이 제한됩니다. ([PushKit pushRegistry 가이드](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
     * CallKit 을 사용한 전화 수신 화면은 앱에서 직접 구현해야 합니다.
 
 ## 서비스 로그인
 
-* NHN Cloud SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash, ...)은 하나의 사용자 아이디를 공유합니다.
+* TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash, ...)은 하나의 사용자 아이디를 공유합니다.
 
 ### 로그인
 
@@ -89,7 +89,7 @@ end
 [ToastSDK setUserID:nil];
 ```
 
-## NHN Cloud Push SDK 초기화
+## TOAST Push SDK 초기화
 
 * `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
 * [ToastPushConfiguration](./push-ios/#toastpushconfiguration) 객체에 토스트 클라우드 서버에서 발급받은 Push AppKey를 설정합니다.
@@ -585,8 +585,8 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### 초기화
 
-* `VoIP 기능은 [NHN Cloud Push SDK 초기화](./push-ios/#toast-push-sdk)가 되어 있어야 사용가능합니다.`
-* `VoIP 기능은 NHN Cloud Push SDK의 서브모듈로 별도 분리되어 있습니다.`
+* `VoIP 기능은 [Toast Push SDK 초기화](./push-ios/#toast-push-sdk)가 되어 있어야 사용가능합니다.`
+* `VoIP 기능은 Toast Push SDK의 서브모듈로 별도 분리되어 있습니다.`
 
 ### Delegate 설정
 
