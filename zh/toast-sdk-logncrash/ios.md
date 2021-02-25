@@ -1,1 +1,1 @@
-## Analytics > Log & Crash Search > NHN Cloud SDK Guide > iOS
+## Analytics > Log & Crash Search > TOAST SDK Guide > iOS

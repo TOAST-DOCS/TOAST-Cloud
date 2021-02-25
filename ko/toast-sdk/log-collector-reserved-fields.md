@@ -1,9 +1,9 @@
-## NHN Cloud > NHN Cloud SDK 사용 가이드 > NHN Cloud Log & Crash > 예약된 필드
+## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > 예약된 필드
 
 ### 예약된 필드 정의
 
-예약된 필드는 NHN Cloud SDK 내부에서 정의하여 사용하고 있는 필드 이름입니다.
-NHN Cloud SDK에서 예약된 사용자 필드를 사용하는 경우 필드 이름에 'reserved_'가 추가됩니다.
+예약된 필드는 TOAST SDK 내부에서 정의하여 사용하고 있는 필드 이름입니다.
+TOAST SDK에서 예약된 사용자 필드를 사용하는 경우 필드 이름에 'reserved_'가 추가됩니다.
 예약된 필드의 검사 조건은 대소문자와 관계없이 문자열을 비교합니다.
 
 ### 예약된 필드의 사용 예

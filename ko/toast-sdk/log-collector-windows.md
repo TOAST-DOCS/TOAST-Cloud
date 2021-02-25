@@ -1,12 +1,12 @@
-## NHN Cloud > NHN Cloud SDK 사용 가이드 > NHN Cloud Log & Crash > Windows C++
+## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > Windows C++
 
 ## 사전 준비
 
-1\. [Install the NHN Cloud SDK](./getting-started-windows)
-2\. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+1\. [Install the TOAST SDK](./getting-started-windows)
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
-## NHN Cloud Logger SDK 초기화
+## TOAST Logger SDK 초기화
 
 Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
@@ -38,7 +38,7 @@ if (_logger != NULL)
 }
 ```
 
-## NHN Cloud Logger SDK 종료
+## TOAST Logger SDK 종료
 
 ```
 DestroyToastLogger();
@@ -46,9 +46,9 @@ DestroyToastLogger();
 
 ## UserID 설정
 
-NHN CloudSDK에 사용자 ID를 설정할 수 있습니다.
-설정한 UserID는 NHN CloudSDK의 각 모듈에서 공통으로 사용됩니다.
-NHN CloudLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 ID를 로그와 함께 서버로 전송합니다.
+ToastSDK에 사용자 ID를 설정할 수 있습니다.
+설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
+ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 ID를 로그와 함께 서버로 전송합니다.
 
 
 ```
@@ -69,7 +69,7 @@ _logger->getUserId();
 
 ## 로그 전송
 
-NHN Cloud Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
+TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ### 로그 전송 
 
@@ -115,7 +115,7 @@ if (_userFieldMap != NULL)
 ```
 
 * 사용자 필드는 특정로그에만 적용하고 싶은 필드 정보를 담습니다.
-* NHN CloudLoggerUserFields는 아래와 같은 함수를 지원합니다.
+* ToastLoggerUserFields는 아래와 같은 함수를 지원합니다.
     * insert : 데이터 삽입
     * erase : 데이터 삭제
     * clear : 전체 삭제
@@ -143,7 +143,7 @@ _logger->cleareUserField();
 
 크래시 리포터(CrashRepoter.exe)는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
 크래시가 발생하면 크래시 리포터에서 크래시 정보를 로그로 전송합니다.
-NHN CloudLogger를 초기화할 때 크래시 리포터 사용 여부를 설정할 수 있습니다.
+ToastLogger를 초기화할 때 크래시 리포터 사용 여부를 설정할 수 있습니다.
 크래시 리포터 대화 상자 사용 여부 및 커스텀 메시지를 설정할 수 있습니다. 
 
 
@@ -200,7 +200,7 @@ void CsampleDlg::OnBnClickedCrash()
 
 ### 크래시 로그 해석
 
-NHN Cloud Windows SDK에서 발생한 크래시를 해석하려면 심벌 파일을 생성해 웹 콘솔에 업로드해야 합니다.
+TOAST Windows SDK에서 발생한 크래시를 해석하려면 심벌 파일을 생성해 웹 콘솔에 업로드해야 합니다.
 
 #### 심벌 파일 생성
 

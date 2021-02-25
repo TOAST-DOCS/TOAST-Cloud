@@ -1,26 +1,26 @@
-## NHN Cloud > NHN Cloud SDK 사용 가이드 > NHN Cloud IAP > iOS
+## TOAST > TOAST SDK 사용 가이드 > TOAST IAP > iOS
 
 ## Prerequisites
 
-1\. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
-2\. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
+1\. [TOAST SDK](./getting-started-ios)를 설치합니다.
+2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
 3\. IAP에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
-## NHN Cloud IAP 구성
+## TOAST IAP 구성
 
-iOS용 NHN Cloud IAP SDK의 구성은 다음과 같습니다.
+iOS용 TOAST IAP SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- | 
-| NHN Cloud IAP | NHN CloudIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
-| Mandatory   | NHN CloudCore<br/>NHN CloudCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
-## NHN Cloud IAP SDK를 Xcode 프로젝트에 적용
+## TOAST IAP SDK를 Xcode 프로젝트에 적용
 
 ### 1. Cococapods 을 통한 적용
 
-* Podfile을 생성하여 NHN Cloud SDK에 대한 Pod을 추가합니다.
+* Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
 
 ```podspec
 platform :ios, '9.0'
@@ -31,12 +31,12 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. 바이너리를 다운로드하여 NHN Cloud SDK 적용
+### 2. 바이너리를 다운로드하여 TOAST SDK 적용
 
 #### 프레임워크 설정
 
-* NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
-* Xcode Project에 **NHN CloudIAP.framework**, **NHN CloudCore.framework**, **NHN CloudCommon.framework, StoreKit.framework**를 추가합니다.
+* TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
+* Xcode Project에 **ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework, StoreKit.framework**를 추가합니다.
 * StoreKit.framework는 아래 방법으로 추가할 수 있습니다.
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
@@ -51,13 +51,13 @@ end
 
 ### Capabilities 설정
 
-* NHN Cloud IAP를 사용하려면 Capabilities에서 **In-App Purchase** 항목을 활성화해야 합니다.
+* TOAST IAP를 사용하려면 Capabilities에서 **In-App Purchase** 항목을 활성화해야 합니다.
     * **Project Target > Capabilities > In-App Purchase** 
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## 서비스 로그인
 
-* NHN Cloud SDK에서 제공하는 모든 상품(Log&Crash, IAP, Push, ...)은 하나의 사용자 아이디를 공유합니다.
+* TOAST SDK에서 제공하는 모든 상품(Log&Crash, IAP, Push, ...)은 하나의 사용자 아이디를 공유합니다.
 
 ### 로그인
 
@@ -75,10 +75,10 @@ end
 [ToastSDK setUserID:nil];
 ```
 
-## NHN Cloud IAP SDK 초기화
+## TOAST IAP SDK 초기화
 
-* IAP 콘솔에서 발급받은 [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 [NHN CloudIAPConfiguration](./iap-ios/#toastiapconfiguration) 객체에 설정합니다.
-* NHN Cloud IAP는 초기화에 [NHN CloudIAPConfiguration](./iap-ios/#toastiapconfiguration) 객체를 파라미터로 사용합니다.
+* IAP 콘솔에서 발급받은 [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 [ToastIAPConfiguration](./iap-ios/#toastiapconfiguration) 객체에 설정합니다.
+* TOAST IAP는 초기화에 [ToastIAPConfiguration](./iap-ios/#toastiapconfiguration) 객체를 파라미터로 사용합니다.
 
 ### 초기화 API 명세
 
@@ -94,7 +94,7 @@ end
 
 ### Delegate API 명세
 
-* [NHN CloudInAppPurchaseDelegate](./iap-ios/#toastinapppurchasedelegate) 를 등록하면 구매 결과와 프로모션 결제의 진행여부 결정에 대한 통지를 받을 수 있습니다.
+* [ToastInAppPurchaseDelegate](./iap-ios/#toastinapppurchasedelegate) 를 등록하면 구매 결과와 프로모션 결제의 진행여부 결정에 대한 통지를 받을 수 있습니다.
     * 프로모션 결제를 SDK에서 진행할지 사용자가 원하는 시점에 직접 결제를 요청할지 결정 할 수 있습니다. 
 * 재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않고, 미소비 상품 목록(소모성 상품), 활성화된 구독 목록(구독 상품)에 반영됩니다.
 * `결제 결과에 대한 통지를 받기 위해서는 상품 구매 전에 Delegate 가 설정되어 있어야만 합니다.`
@@ -165,9 +165,9 @@ end
 
 ## 상품 목록 조회
 
-* IAP 콘솔에 등록된 상품이 [NHN CloudProductResponse](./iap-ios/#toastproductresponse) 객체로 반환됩니다.
-* IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 products([NHN CloudProduct](./iap-ios/#toastproduct))로 반환됩니다. 
-* IAP 콘솔에 등록된 상품 중 스토어(Apple)에서 상품 정보를 획득하지 못한 상품은 invalidProducts([NHN CloudProduct](./iap-ios/#toastproduct))로 반환됩니다.
+* IAP 콘솔에 등록된 상품이 [ToastProductResponse](./iap-ios/#toastproductresponse) 객체로 반환됩니다.
+* IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 products([ToastProduct](./iap-ios/#toastproduct))로 반환됩니다. 
+* IAP 콘솔에 등록된 상품 중 스토어(Apple)에서 상품 정보를 획득하지 못한 상품은 invalidProducts([ToastProduct](./iap-ios/#toastproduct))로 반환됩니다.
 
 ### 상품 목록 조회 API 명세
 
@@ -197,9 +197,9 @@ end
 
 | 상품명    | 상품타입             | 설명                                     |
 | ------ | ---------------- | -------------------------------------- |
-| 소비성 상품 | NHN CloudProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
-| 자동 갱신형 구독 상품  | NHN CloudProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
-| 자동 갱신형 소비성 구독 상품 | NHN CloudProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
+| 소비성 상품 | ToastProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
+| 자동 갱신형 구독 상품  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
+| 자동 갱신형 소비성 구독 상품 | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
 
 > `자동 갱신형 구독 상품의 업그레이드, 다운그레이드, 수정 기능은 지원하지 않습니다.`
 > `하나의 구독 그룹에 하나의 상품만 등록해야 합니다.`
@@ -220,12 +220,12 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 ## 상품 구매
 
-* 구매 결과는 설정된 [NHN CloudInAppPurchaseDelegate](./iap-ios/#toastinapppurchasedelegate)를 통해 전달됩니다.
+* 구매 결과는 설정된 [ToastInAppPurchaseDelegate](./iap-ios/#toastinapppurchasedelegate)를 통해 전달됩니다.
 * 구매 진행 중에 앱이 종료되거나 네트워크 오류 등으로 구매가 중단되었을 경우 다음번 앱 실행의 IAP SDK 초기화 이후 재처리가 진행됩니다.
 * 구매 요청시 사용자 데이터 추가가 가능합니다.
-* 사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원)의 [NHN CloudPurchaseResult](./iap-ios/#toastpurchaseresult) 객체에 포함되어 반환됩니다.
-* 구매할 수 없는 상품이면 [NHN CloudInAppPurchaseDelegate](./iap-ios/#toastinapppurchasedelegate)를 통해 구매 불가 상품임을 나타내는 오류가 전달됩니다.
-* 상품 목록 조회 결과의 [NHN CloudProduct](./iap-ios/#toastproduct) 객체 혹은 상품 아이디를 이용해 구매를 요청합니다.
+* 사용자 데이터는 결제 결과(구매 성공 Delegate, 미소비 결제 내역, 활성화된 구독, 구매 복원)의 [ToastPurchaseResult](./iap-ios/#toastpurchaseresult) 객체에 포함되어 반환됩니다.
+* 구매할 수 없는 상품이면 [ToastInAppPurchaseDelegate](./iap-ios/#toastinapppurchasedelegate)를 통해 구매 불가 상품임을 나타내는 오류가 전달됩니다.
+* 상품 목록 조회 결과의 [ToastProduct](./iap-ios/#toastproduct) 객체 혹은 상품 아이디를 이용해 구매를 요청합니다.
 
 ### 상품 구매 API 명세
 
@@ -253,7 +253,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 ## 활성화된 구독 목록 조회
 
 * 현재 사용자 ID 기준으로 활성화된 구독 목록을 조회합니다.
-* 결제가 완료된 구독 상품(자동 갱신형 구독, 자동 갱신형 소비성 구독 상품)은 만료되기 전까지 계속 [NHN CloudPurchaseResult](./iap-ios/#toastpurchaseresult) 객체로 반환됩니다.
+* 결제가 완료된 구독 상품(자동 갱신형 구독, 자동 갱신형 소비성 구독 상품)은 만료되기 전까지 계속 [ToastPurchaseResult](./iap-ios/#toastpurchaseresult) 객체로 반환됩니다.
 * 사용자 ID가 같다면 Android에서 구매한 구독 상품도 조회됩니다.
 
 ### 활성화된 구독 목록 조회 API 명세
@@ -281,7 +281,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 * 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다. 
 * 구매한 구독 상품이 조회되지 않거나 활성화 되지 않을 경우 사용합니다.
-* 만료된 결제건을 포함하여 복원된 결제건이 [NHN CloudPurchaseResult](./iap-ios/#toastpurchaseresult) 객체로 반환됩니다.
+* 만료된 결제건을 포함하여 복원된 결제건이 [ToastPurchaseResult](./iap-ios/#toastpurchaseresult) 객체로 반환됩니다.
 * 자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
 
 ### 구매 복원 API 명세
@@ -308,7 +308,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 ## 미소비 구매 내역 조회
 
 * 소비성 상품의 경우 상품 지급 후에 소비(consume) 처리를 해야 합니다.
-* 소비 처리되지 않은 구매 내역이 [NHN CloudPurchaseResult](./iap-ios/#toastpurchaseresult) 객체로 반환됩니다.
+* 소비 처리되지 않은 구매 내역이 [ToastPurchaseResult](./iap-ios/#toastpurchaseresult) 객체로 반환됩니다.
 * 자동 갱신형 소비성 구독 상품은 갱신 결제가 발생할 때마다 미소비 구매 내역에서 조회 가능합니다.
 
 ### 미소비 구매 내역 조회 API 명세
@@ -454,11 +454,11 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ```
 
 
-## NHN Cloud IAP Class Reference
+## TOAST IAP Class Reference
 
-### NHN CloudIAPConfiguration
+### ToastIAPConfiguration
 
-NHN Cloud IAP 초기화 메소드의 파라미터로 사용되는 인앱 결제 설정 정보입니다.
+TOAST IAP 초기화 메소드의 파라미터로 사용되는 인앱 결제 설정 정보입니다.
 
 ```objc
 @interface ToastIAPConfiguration : NSObject <NSCoding, NSCopying>
@@ -476,7 +476,7 @@ NS_SWIFT_NAME(init(appKey:));
 @end
 ```
 
-## NHN CloudInAppPurchaseDelegate
+## ToastInAppPurchaseDelegate
 
 결제 결과를 통지받고 프로모션 결제의 수행 방식을 설정 할 수 있습니다.
 
@@ -498,7 +498,7 @@ NS_SWIFT_NAME(didFailPurchase(productIdentifier:error:));
 @end
 ```
 
-## NHN CloudProductResponse
+## ToastProductResponse
 
 상품 목록 정보를 확인 할 수 있습니다.
 
@@ -513,9 +513,9 @@ NS_SWIFT_NAME(didFailPurchase(productIdentifier:error:));
 @end
 ```
 
-## NHN CloudProduct 
+## ToastProduct 
 
-NHN Cloud IAP 콘솔에 등록된 상품의 정보를 확인할 수 있습니다.
+TOAST IAP 콘솔에 등록된 상품의 정보를 확인할 수 있습니다.
 
 ```objc
 @interface ToastProduct : NSObject <NSCoding, NSCopying>
@@ -546,7 +546,7 @@ NHN Cloud IAP 콘솔에 등록된 상품의 정보를 확인할 수 있습니다
 @end
 ```
 
-## NHN CloudPurchaseResult
+## ToastPurchaseResult
 
 결제 정보를 확인할 수 있습니다.
 

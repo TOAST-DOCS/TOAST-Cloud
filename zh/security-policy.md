@@ -45,7 +45,7 @@ DRDoS是由DNS, NTP, SSDP, Memcached等应用程序中薄弱的设置导致的�
 | ---- | ---- | ---- | ---- | ---- |
 | KOREA(Pangyo/Pyeongchon) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
 
-#### List of Blocked Internet Ports (NHN Cloud G)
+#### List of Blocked Internet Ports (TOAST G)
 |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- |
 | System Terminal port | TCP / 22, 23, 3389 | Network ACL | Inaccessible from outside | 
@@ -62,4 +62,4 @@ DRDoS是由DNS, NTP, SSDP, Memcached等应用程序中薄弱的设置导致的�
 - Save file name as “Application for Exception from NHN Cloud Firewall and SSL VPN Policy_JP-Agency Name.xlsx”.
 Send the application over the email like below (to be processed and replied within 3 days after received). 
     - NHN Cloud : support@toast.com
-    - NHN Cloud G : support@gov.toast.com
+    - TOAST G : support@gov.toast.com
