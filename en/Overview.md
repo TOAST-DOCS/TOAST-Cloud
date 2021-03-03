@@ -62,6 +62,7 @@ NHN Cloud, which is from ‘Toward Art, Science, and Technology’, refers to an
 | Service | Description |
 | --- | --- |
 | Compute |With on-demand infrastructure based on OpenStack, apply infrastructure resources as much as required at affordable prices. |
+| Container | A service that automates distribution, scaling, and containerized application management based on an open source container orchestration engine. |
 | Network | Build virtual private network and provide public IP which is accessible from outside.|
 | Storage | The storage service has high availability and stability. |
 | Game | Useful platforms are supported for game development.|
