@@ -233,8 +233,8 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-> [참고] 결제 결과가 IapService.PurchasesUpdatedListener로 통지되기 전 Activity가 종료되면 결제 데이터가 유실될 수 있습니다.
-> 결제를 안전하게 처리하기 위해 결제 결과를 통지받기 전, 사용자가 Activity를 종료(백 버튼 또는 종료 버튼 클릭)할 수 없도록 해야 합니다.
+> [Note] If this activity is terminated before the transaction result is notified to IapService.PurchasesUpdatedListener, the transaction data could be lost.
+> For safer processing of transaction, users must be restricted from terminating their activity (clicking Back or Quit button) until they get the transaction result.
 
 ## Query Product List
 
