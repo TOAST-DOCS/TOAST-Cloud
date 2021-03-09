@@ -253,6 +253,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | RDS for MySQL | ADMIN | Create/Read/Update/Delete RDS for MySQL Service |
 | RDS for MS-SQL | ADMIN | Create/Read/Update/Delete RDS for MS-SQL Service |
 | EasyCache | ADMIN | Create/Read/Update/Delete EasyCache Service |
+| EasyCache | VIEWER | Read EasyCache Service Replication Group menu, read Monitoring menu |
 | Gamebase | ADMIN | Create/Read/Update/Delete Gamebase Service |
 | Leaderboard | ADMIN | Create/Read/Update/Delete Leaderboard Service |
 | Leaderboard | VIEWER |  Read Leaderboard Service |
