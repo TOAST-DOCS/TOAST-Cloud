@@ -146,7 +146,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 | 콘솔 접근      | \- NHN Cloud 콘솔(https://console.toast.com/) 접근 <br>\- NHN Cloud> 회원  ID/비밀번호로 로그인<br>\- (선택) 2차(이메일 또는 SMS) 인증 | \- IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br> \- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br> \- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 ### IP ACL 설정
-허용한 IP(또는 IP 대역)에서만 IAM 콘솔에 접근할 수 있습니다. 
+허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 
 Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
 
 - 서비스 설정 
