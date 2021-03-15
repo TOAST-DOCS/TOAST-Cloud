@@ -16,11 +16,11 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 ## 퀵 가이드
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
 
-![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812.png)
-![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812.png)
-![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812.png)
-![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812.png)
-![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812.png)
+![tutorial_1_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103.jpg)
+![tutorial_2_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103.jpg)
+![tutorial_3_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103.jpg)
+![tutorial_4_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103.jpg)
+![tutorial_5_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103.jpg)
 
 ## 조직 관리
 
@@ -50,7 +50,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 ### 조직 생성 가이드
 
-![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812.png)
+![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202103.png)
 
 <center>[그림 1] 조직 생성 </center>
 
@@ -104,7 +104,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 ### 프로젝트 생성 가이드
 
-![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812.png)
+![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202103.png)
 
 <center>[그림 2] 프로젝트 생성 </center>
 
@@ -116,7 +116,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 ### 프로젝트 서비스 활성화 가이드
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202010.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202103.png)
 
 <center>[그림 3] 프로젝트 서비스 활성화 </center>
 
@@ -160,7 +160,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 - IAM 회원의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다. 
 - 모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다. 
 
-![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202011.png)
+![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202103.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 설정 페이지에 접속합니다. 
 2. IAM 콘솔의 **로그인 보안 설정** 버튼을 클릭합니다. 

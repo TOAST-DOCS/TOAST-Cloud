@@ -12,7 +12,7 @@
 ### 회원 가입 절차
 https://toast.com에 접속한 후 화면 오른쪽 위에서 **회원 가입**을 클릭합니다.
 회원 가입 절차는 아래와 같습니다.
-![userguide_01_202010](https://static.toastoven.net/toast/user_guide/userguide_01_20201013.png)
+![userguide_01_20210315](https://static.toastoven.net/toast/user_guide/userguide_01_20210315.png)
 
 
 #### 국가 선택 
