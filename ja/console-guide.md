@@ -14,11 +14,11 @@ NHN Cloud Consoleは下記の機能を提供します。
 コンソールで提供する基本機能のクイックガイドです。 
 
 
-![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
-![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
-![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
-![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
-![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103_ja.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103_ja.png)
+![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103_ja.png)
+![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103_ja.png)
+![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103_ja.png)
 
 
 ## 組織管理
@@ -50,7 +50,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 
 ### 組織作成ガイド
 
-![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
+![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202103_ja.png)
 
 <center>[図1]組織の作成 </center>
 
@@ -103,7 +103,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 - Bill
 ### プロジェクト作成ガイド
 
-![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
+![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202103_ja.png)
 
 <center>[図2]プロジェクト作成 </center>
 
@@ -115,7 +115,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 
 ### プロジェクトサービス有効化ガイド
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202010.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202103_ja.png)
 
 <center>[図3]プロジェクトサービスの有効化 </center>
 
@@ -161,7 +161,7 @@ Dooray!サービスは該当サービスのコンソール画面でIP ACLを設�
 - IAM会員のコンソール接続セキュリティを強化するために、**ログインセキュリティ設定**機能を提供します。 
 
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_20201117_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202103_ja.png)
 
 1. コンソールに移動した後、設定したい組織の組織設定ページに接続します。 
 2. IAMコンソールの**ログインセキュリティ設定**ボタンをクリックします。 
