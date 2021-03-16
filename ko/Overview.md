@@ -1,6 +1,6 @@
 ## NHN Cloud > 개요
 
-NHN Cloud는 NHN에서 제공하는 “통합 클라우드 서비스” 이며, TOward Art Science Technology를 모토로 예술 과학 기술을 향한 새로운 세상을 만들기 위해 도전하는 열정을 의미합니다.
+NHN Cloud는 NHN에서 제공하는 “통합 클라우드 서비스”이며, 기업의 운영과 서비스 개발을 위해 필요한 모든 것을 제공합니다. 
 
 ## 특징
 
