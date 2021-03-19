@@ -16,11 +16,11 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 ## 퀵 가이드
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
 
-![tutorial_1_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103.png)
-![tutorial_2_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103.png)
-![tutorial_3_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103.png)
-![tutorial_4_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103.png)
-![tutorial_5_ko.jpg](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103.png)
+![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103.png)
+![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103.png)
+![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103.png)
+![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103.png)
+![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103.png)
 
 ## 조직 관리
 
