@@ -368,64 +368,64 @@ public class IapPurchase
 | PurchaseTime | long | 상품 구매 시간 | 
 | ExpiryTime | long | 구독 상품의 남은 시간 | 
 
-## 오류 코드
+## Error code
 
-### 공통 오류 코드
-| 에러 코드 | 설명 |
+### Common error code
+| Error code | Description |
 |---|---|
-| 50000 | 초기화 되지 않았습니다 |
-| 50001 | 지원하지 않는 기능입니다 |
-| 50002 | 지원하지 않는 스토어 코드입니다 |
-| 50003 | 사용할 수 없는 상품입니다 |
-| 50004 | 이미 소유중인 상품입니다 |
-| 50006 | 사용자 아이디가 잘못되었습니다 |
-| 50007 | 사용자가 결제를 취소했습니다 |
-| 50009 | 영수증 검증에 실패했습니다 |
-| 50011 | 구독 갱신이 실패했습니다 |
-| 50015 | 소유하고 있지 않은 상품입니다. |
-| 50103 | 이미 소비된 상품 입니다. |
-| 50104 | 이미 환불된 상품 입니다. |
-| 59999 | 알 수 없는 에러입니다. 에러 메시지를 확인해주세요 |
+| 50000 | Not initialized |
+| 50001 | Feature not supported |
+| 50002 | Unsupported store code |
+| 50003 | Product not available |
+| 50004 | Product already owned |
+| 50006 | Incorrect user ID |
+| 50007 | User canceled payment |
+| 50009 | Failed receipt verification |
+| 50011 | Failed to renew subscription |
+| 50015 | Product not owned |
+| 50103 | Product already consumed |
+| 50104 | Product already refunded |
+| 59999 | Unknown error. Please check error message |
 
-### 서버 오류 코드
+### Server error code
 
-| 에러 코드 | 설명 |
+| Error code | Description |
 |---|---|
-| 10000 | 잘못된 요청입니다. |
-| 10002 | 네트워크가 연결되지 않았습니다. |
-| 10003 | 서버 응답이 실패했습니다. |
-| 10004 | 타임아웃이 발생했습니다. |
-| 10005 | 유효하지 않은 서버 응답값입니다. |
-| 10010 | 활성화 되지 않은 앱입니다. |
+| 10000 | Invalid request |
+| 10002 | Not connected to network |
+| 10003 | Server response failed |
+| 10004 | Timeout occurred |
+| 10005 | Invalid server return value |
+| 10010 | App not activated |
 
-### App store 오류 코드
+### App store error code
 
-| 에러 코드 | 설명 |
+| Error code | Description |
 |---|---|
-| 50005 | 이미 진행중인 요청이 있습니다. |
-| 50008 | 스토어에서 결제가 실패했습니다 |
-| 50010 | 구매상태 변경에 실패했습니다 |
-| 50012 | 환불로 인해 구매를 진행할 수 없습니다 |
-| 50013 | 복원에 실패했습니다. |
-| 50014 | 구매 진행 불가 상태입니다. (e.g. 앱 내 구입 제한 설정) |
+| 50005 | A request is already in progress |
+| 50008 | Store payment failed |
+| 50010 | Failed to change purchase status |
+| 50012 | Cannot proceed with purchase due to refund |
+| 50013 | Recovery failed |
+| 50014 | Cannot make purchases now. (e.g. in-app purchase restrictions) |
 
-### ONE store 오류 코드
+### ONE store error code
 
-| 에러 코드 | 설명 |
+| Error code | Description |
 |---|---|
-| 51000 | ONE store 서비스에 로그인되어 있지 않습니다. |
-| 51001 | ONE store 서비스가 업데이트 또는 설치되지 않았습니다. |
-| 51002 | 비정상 앱에서 결제를 요청하였습니다. |
-| 51003 | 결제 요청에 실패했습니다. |
+| 51000 | Not logged into ONE Store services |
+| 51001 | ONE Store service has not been updated or installed |
+| 51002 | Payment requested from abnormal app |
+| 51003 | Payment request failed |
 
-### Galaxy store 오류 코드
+### Galaxy store error code
 
-| 에러 코드 | 설명 |
+| Error code | Description |
 |---|---|
-| 53000 | Galaxy store 서비스에 로그인되어 있지 않습니다. |
-| 53001 | Galaxy store 서비스가 업데이트 또는 설치되지 않았습니다. |
-| 53002 | 비정상 앱에서 결제를 요청하였습니다. |
-| 51003 | 결제 요청에 실패했습니다. |
+| 53000 | Not logged into Galaxy Store services |
+| 53001 | Galaxy Store service has not been updated or installed |
+| 53002 | Payment requested from abnormal app |
+| 51003 | Payment request failed |
 
 
 ## FAQ

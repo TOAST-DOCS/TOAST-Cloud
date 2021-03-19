@@ -14,11 +14,11 @@ NHN Cloud Consoleは下記の機能を提供します。
 コンソールで提供する基本機能のクイックガイドです。 
 
 
-![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
-![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
-![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
-![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
-![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103_ja.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103_ja.png)
+![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103_ja.png)
+![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103_ja.png)
+![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103_ja.png)
 
 
 ## 組織管理
@@ -50,7 +50,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 
 ### 組織作成ガイド
 
-![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
+![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202103_ja.png)
 
 <center>[図1]組織の作成 </center>
 
@@ -103,7 +103,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 - Bill
 ### プロジェクト作成ガイド
 
-![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
+![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202103_ja.png)
 
 <center>[図2]プロジェクト作成 </center>
 
@@ -115,7 +115,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 
 ### プロジェクトサービス有効化ガイド
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202010.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202103_ja.png)
 
 <center>[図3]プロジェクトサービスの有効化 </center>
 
@@ -144,13 +144,24 @@ NHN Cloud Consoleは下記の機能を提供します。
 | メンバー権限    | \- 組織管理(組織作成/修正/組織メンバー管理/組織サービス管理/決済管理\)<br>\- プロジェクト作成<br>\- プロジェクト削除 | \- 組織サービス利用 |
 | コンソールにアクセス    | \- NHN Cloudコンソール(https://console.toast.com/)にアクセス <br>\- NHN Cloud> 会員ID/PWでログイン<br> (任意)2次(EmailまたはSMS)認証 | \- IAMコンソール(https://組織ドメイン.console.toast.com/)にアクセス<br> \- (Dooray!、ERPサービスは該当のサービスドメインでアクセス)<br> \- 組織のOWNER(またはAdmin)が設定したID/PWでログイン\- 組織で設定したログインセキュリティ(2次認証、サービス別設定)認証 |
 
+### IP ACL設定
 
+許可したIP(またはIP帯域)からのみIAMコンソールにアクセスできます。 
+Dooray!サービスは該当サービスのコンソール画面でIP ACLを設定できます。
+
+- サービス設定
+    - 共通設定：すべてのサービスに同じようにIP ACLを設定できます。
+    - サービス別設定：各サービス(Cloud、Online Contactm Workplace | Dooray!など)ごとにIP ACLを設定できます。    
+- IP ACL設定
+    - 設定しない：すべてのIP(またはIP帯域)からコンソールにアクセスできます。 
+    - 許可したIP(またはIP帯域)のみコンソールにアクセス：入力したIP(またはIP帯域)からのみコンソールにアクセスできます。
+    アクセスを許可するIPまたはIP帯域を入力してください。
 
 ### IAMコンソールログインセキュリティ設定
 - IAM会員のコンソール接続セキュリティを強化するために、**ログインセキュリティ設定**機能を提供します。 
 
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_20201117_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202103_ja.png)
 
 1. コンソールに移動した後、設定したい組織の組織設定ページに接続します。 
 2. IAMコンソールの**ログインセキュリティ設定**ボタンをクリックします。 
@@ -195,16 +206,6 @@ NHN Cloud Consoleは下記の機能を提供します。
     - 設定した時間中にクリックなどの作業を何もしなければ、自動的にログアウトします。 
     - 長めの設定は、セキュリティ上好ましくありません。よく考慮した上で、設定してください。
 
-#### IP ACL 
-許可したIP(またはIP帯域)でのみIAMコンソールにアクセスできます。 
-Dooray!サービスは、該当サービスコンソール画面でIP ACLを設定できます。
-
-- サービス
-    - 共通設定
-    - サービス(Cloud Console、 Dooray!、ERPなど)別設定
-- IP ACL
-    - 設定しない：すべてのIP(またはIP帯域)でIAMコンソールにアクセスできます。 
-    - 許可したIP(またはIP帯域)のみコンソールにアクセス：入力したIP(またはIP帯域)でのみコンソールにアクセスできます。アクセスを許可するIPまたはIP帯域を入力してください。
 
 ### 組織メンバー
 
