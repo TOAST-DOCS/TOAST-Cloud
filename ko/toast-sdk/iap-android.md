@@ -65,6 +65,25 @@ meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
 
 자세한 정보는 [원스토어 결제 화면 설정](https://dev.onestore.co.kr/devpoc/reference/view/Tools)을 확인하세요.
 
+### Android 11 이상을 타겟팅하는 앱 (only ONE store)
+
+Android 11에서는 앱이 사용자가 기기에 설치한 다른 앱을 쿼리하고 상호작용하는 방법을 변경합니다.
+Android 11 이상을 타겟팅하는 앱에서 ONE store 결제를 사용하려면 아래와 같이 AndroidManifest.xml \<queries\> 요소를 정의해야합니다.
+
+```xml
+<queries>
+    <intent>
+        <action android:name="com.onestore.ipc.iap.IapService.ACTION" />
+    </intent>
+    <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="onestore" />
+    </intent>
+</queries>
+```
+
+> queries 태그는 Gradle 5.6.4 이상 동작합니다.
+
 ## 스토어 코드
 
 | 스토어         | 코드         |
