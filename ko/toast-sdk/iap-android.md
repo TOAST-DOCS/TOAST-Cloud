@@ -68,7 +68,7 @@ meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
 ### Android 11 이상을 타겟팅하는 앱 (only ONE store)
 
 Android 11에서는 앱이 사용자가 기기에 설치한 다른 앱을 쿼리하고 상호작용하는 방법을 변경합니다.
-Android 11 이상을 타겟팅하는 앱에서 ONE store 결제를 사용하려면 아래와 같이 AndroidManifest.xml \<queries\> 요소를 정의해야합니다.
+Android 11 이상을 타겟팅하는 앱에서 ONE store 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 <queries> 요소를 정의해야합니다.
 
 ```xml
 <queries>
@@ -82,7 +82,7 @@ Android 11 이상을 타겟팅하는 앱에서 ONE store 결제를 사용하려�
 </queries>
 ```
 
-\<queries\> 요소는 Android Gradle Plugin 4.1 이상 동작합니다.
+<queries> 요소는 Android Gradle Plugin 4.1 이상 동작합니다.
 이전 버전의 Android Gradle Plugin을 사용하려면 [Android 11에서 패키지 가시성을 위해 Gradle 빌드 준비](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html)을 참고하세요.
 
 ## 스토어 코드
