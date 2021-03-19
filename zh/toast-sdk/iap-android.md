@@ -82,7 +82,7 @@ Android 11 이상을 타겟팅하는 앱에서 ONE store 결제를 사용하려�
 </queries>
 ```
 
-'queries' 요소는 Android Gradle Plugin 4.1 이상 동작합니다.
+'queries' 요소는 Android Gradle Plugin 4.1 이상에서 동작합니다.
 이전 버전의 Android Gradle Plugin을 사용하려면 [Android 11에서 패키지 가시성을 위해 Gradle 빌드 준비](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html)을 참고하세요.
 
 ## Store Codes
