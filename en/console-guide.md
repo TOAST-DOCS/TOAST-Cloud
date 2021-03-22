@@ -133,6 +133,20 @@ However, if it is deleted without paid, all charges up to the moment shall be au
 | Method of Member Registration | \- Owner/Admin of an organization enters NHN Cloud ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
 | Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
 
+### IP ACL Settings
+
+Only allowed IP (or IP bandwidth) can access the IAM console. 
+For Dooray! Services, IP ACL can be set on the service console screen.
+
+- Service Settings 
+    - Common Settings: IP ACL can be globally set to all services.
+    - Settings per Service: For each service (Cloud, Online Contactm Workplace | Dooray!, etc.), IP ACL can be set.
+
+- IP ACL Settings
+    - Not Set: All IPs (or IP bandwidth) can access the console. 
+    - Console Accessible by Allowed IP (or IP bandwidth) Only: Only the entered IP(or IP bandwidth) can access the console.
+      Please enter an IP or IP bandwidth to allow access. 
+
 ### Security Setting for IAM Console Logins 
 To tighten console access security for IAM members, [Login Security Setting] is provided.  
 

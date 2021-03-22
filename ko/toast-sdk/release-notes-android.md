@@ -8,11 +8,17 @@
 
 * FCM 토큰 갱신시 업데이트 로직 개선
 
+### TOAST Gradle Plugin (0.0.1)
+
+#### 기능 추가
+
+* Symbol Uploader 기능 추가
+
 ## 0.24.3 (2020.12.08)
 
 ### TOAST Push
 
-#### 기능 추가
+#### 기능 개선
 
 * Tencent QQ 서비스 종료에 따른 모듈 삭제
 

@@ -65,10 +65,12 @@ If meta-data is not set, the default ("full") is applied.
 
 For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/devpoc/reference/view/Tools).
 
-### Android 11 이상을 타겟팅하는 앱 (only ONE store)
+### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store)
 
 Android 11에서는 앱이 사용자가 기기에 설치한 다른 앱을 쿼리하고 상호작용하는 방법을 변경합니다.
-Android 11 이상을 타겟팅하는 앱에서 ONE store 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소를 정의해야합니다.
+Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소를 정의해야합니다.
+
+#### ONE store
 
 ```xml
 <queries>
@@ -79,6 +81,14 @@ Android 11 이상을 타겟팅하는 앱에서 ONE store 결제를 사용하려�
         <action android:name="android.intent.action.VIEW" />
         <data android:scheme="onestore" />
     </intent>
+</queries>
+```
+
+#### Galaxy Store
+
+```xml
+<queries>
+    <package android:name="com.sec.android.app.samsungapps" />
 </queries>
 ```
 
