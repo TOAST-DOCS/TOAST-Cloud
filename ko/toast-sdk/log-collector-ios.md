@@ -53,17 +53,13 @@ end
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
 
-## Symbol Uploader 가이드
+## TOAST Symbol Uploader 적용
 
-### Xcode Project 설정
-
-#### 프로젝트의 디버그 설정 변경
+### 프로젝트의 디버그 설정 변경
 * 빌드 설정을 변경하여 프로젝트의 디버그 정보 형식을 변경해야합니다.
 * Xcode -> Project Target -> Build Settings -> Debug Information Format -> Debug -> DWARF with dSYM File
 
-### Symbol 업로드 방법
-
-#### 개발 환경에서 Run Script를 사용하여 자동 업로드
+### 개발 환경에서 Run Script를 사용하여 자동 업로드
 
 * Xcode -> Project Target -> Build Phases -> + -> New Run Script Phase
 * 표시되는 새 Run Script 섹션을 펼칩니다.
@@ -79,7 +75,7 @@ fi
 
 ![symbol_uploader_run_script](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_image.png)
 
-#### Symbol Uploader를 사용하여 직접 업로드
+### Symbol Uploader를 사용하여 직접 업로드
 
 * SymbolUploader 사용법
 
