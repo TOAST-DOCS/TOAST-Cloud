@@ -67,14 +67,14 @@ end
 * Shell(셸) 필드 아래에 있는 스크립트 필드에서 새 실행 스크립트를 추가합니다.
 ```
 if [ "${CONFIGURATION}" = "Debug" ]; then
-    ${PROJECT_DIR}/../ToastSymbolUploader/toastcloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
+    ${PODS_ROOT}/ToastSymbolUploader/toastcloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
 * LOG_N_CRASH_SEARCH_APPKEY에는 Log&Crash Search의 AppKey를 입력해야합니다.
 * Run Script 섹션 하단의 Input Files에 dSYM의 기본 경로를 설정합니다.
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
-![symbol_uploader_run_script](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_image.png)
+![symbol_uploader_script_pods_path](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path.png)
 
 ### Symbol Uploader를 사용하여 직접 업로드
 
