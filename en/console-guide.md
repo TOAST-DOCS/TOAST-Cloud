@@ -11,11 +11,11 @@ NHN Cloud Console provides the following functions:
 - Provide payment information
 
 ## Console Quick Guide
-![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
-![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
-![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
-![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
-![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103_en.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103_en.png)
+![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103_en.png)
+![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103_en.png)
+![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103_en.png)
 
 
 ## Organization Management
@@ -47,7 +47,7 @@ Following services are available at the level of organization:
 
 ### Guide to Create Organizations
 
-![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
+![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202103_en.png)
 
 1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
 2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
@@ -102,7 +102,7 @@ Following services can be enabled by each project:
 
 ### Guide to Create Projects
 
-![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
+![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202103_en.png)
 
 1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
 2. Enter **Project Name** and **Project Description**.
@@ -112,7 +112,7 @@ Following services can be enabled by each project:
 
 ### Guide to Enable Project Service
 
-![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202010.png)
+![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202103_en.png)
 
 1. Click **Select Services**, after a project is created, to enable services you need
 2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. 
@@ -133,10 +133,24 @@ However, if it is deleted without paid, all charges up to the moment shall be au
 | Method of Member Registration | \- Owner/Admin of an organization enters NHN Cloud ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
 | Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
 
+### IP ACL Settings
+
+Only allowed IP (or IP bandwidth) can access the IAM console. 
+For Dooray! Services, IP ACL can be set on the service console screen.
+
+- Service Settings 
+    - Common Settings: IP ACL can be globally set to all services.
+    - Settings per Service: For each service (Cloud, Online Contactm Workplace | Dooray!, etc.), IP ACL can be set.
+
+- IP ACL Settings
+    - Not Set: All IPs (or IP bandwidth) can access the console. 
+    - Console Accessible by Allowed IP (or IP bandwidth) Only: Only the entered IP(or IP bandwidth) can access the console.
+      Please enter an IP or IP bandwidth to allow access. 
+
 ### Security Setting for IAM Console Logins 
 To tighten console access security for IAM members, [Login Security Setting] is provided.  
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_20201117_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202103_en.png)
 
 1. Access Organization Setting of an organization to configure on a console. 
 2. Click [Login Security Setting] on the IAM console. 
@@ -253,6 +267,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | RDS for MySQL | ADMIN | Create/Read/Update/Delete RDS for MySQL Service |
 | RDS for MS-SQL | ADMIN | Create/Read/Update/Delete RDS for MS-SQL Service |
 | EasyCache | ADMIN | Create/Read/Update/Delete EasyCache Service |
+| EasyCache | VIEWER | Read EasyCache Service Replication Group menu, read Monitoring menu |
 | Gamebase | ADMIN | Create/Read/Update/Delete Gamebase Service |
 | Leaderboard | ADMIN | Create/Read/Update/Delete Leaderboard Service |
 | Leaderboard | VIEWER |  Read Leaderboard Service |

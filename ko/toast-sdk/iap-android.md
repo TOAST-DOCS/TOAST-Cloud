@@ -65,6 +65,36 @@ meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
 
 자세한 정보는 [원스토어 결제 화면 설정](https://dev.onestore.co.kr/devpoc/reference/view/Tools)을 확인하세요.
 
+### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store)
+
+Android 11에서는 앱이 사용자가 기기에 설치한 다른 앱을 쿼리하고 상호작용하는 방법을 변경합니다.
+Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소를 정의해야합니다.
+
+#### ONE store
+
+```xml
+<queries>
+    <intent>
+        <action android:name="com.onestore.ipc.iap.IapService.ACTION" />
+    </intent>
+    <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="onestore" />
+    </intent>
+</queries>
+```
+
+#### Galaxy Store
+
+```xml
+<queries>
+    <package android:name="com.sec.android.app.samsungapps" />
+</queries>
+```
+
+'queries' 요소는 Android Gradle Plugin 4.1 이상에서 동작합니다.
+이전 버전의 Android Gradle Plugin을 사용하려면 [Android 11에서 패키지 가시성을 위해 Gradle 빌드 준비](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html)를 참고하세요.
+
 ## 스토어 코드
 
 | 스토어         | 코드         |

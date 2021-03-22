@@ -13,11 +13,11 @@ NHN Cloud Console提供如下功能。
 ## 控制台快捷指南
 针对控制台提供的基本功能的快捷指南。 
 
-![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
-![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
-![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
-![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
-![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103_zh.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103_zh.png)
+![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103_zh.png)
+![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103_zh.png)
+![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103_zh.png)
 
 
 ## 组织管理
@@ -49,7 +49,7 @@ NHN Cloud Console提供如下功能。
 
 ### 创建组织指南
 
-![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
+![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202103_zh.png)
 
 <center>[图 1] 创建组织 </center>
 
@@ -103,7 +103,7 @@ NHN Cloud Console提供如下功能。
 
 ### 创建项目指南
 
-![console_guide_7_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
+![console_guide_7_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202103_zh.png)
 
 <center>[图2] 创建项目 </center>
 
@@ -115,7 +115,7 @@ NHN Cloud Console提供如下功能。
 
 ### 启用项目服务指南
 
-![console_guide_8_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202010.png)
+![console_guide_8_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202103_zh.png)
 
 <center>[图3] 启用项目服务 </center>
 
@@ -185,7 +185,7 @@ NHN Cloud Console提供如下功能。
 ### IAM控制台登录安全设置
 为增强IAM会员的控制台访问安全，提供[登录安全设置]功能。 
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_20201117_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202103_zh.png)
 
 1.访问要在控制台中设置的组织的组织设置页面。 
 2.单击IAM控制台的[登录安全设置]按钮。 

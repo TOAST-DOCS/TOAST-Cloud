@@ -9,7 +9,7 @@
 ## Push 제공자별 가이드
 
 * [Firebase Cloud Messaging (이하 FCM) 가이드](https://firebase.google.com/docs/cloud-messaging/)
-* `Tencent Push Notification (QQ) 2020년 11월 서비스 종료`
+* `Tencent Push Notification (QQ) service ends in November 2020`
 
 ## 라이브러리 설정
 

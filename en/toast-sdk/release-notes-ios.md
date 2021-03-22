@@ -1,14 +1,23 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.27.2 (2021.03.23)
+### 공통
+#### 개선 사항
+* 안전성 개선
+
+### TOAST Logger
+#### SymbolUploader (v0.0.1)
+* SymbolUploader 추가
+
 ## 0.27.1 (2020.11.24)
 ### TOAST IAP
-#### 개선 사항
-* 구독 상품 재구매 오류 수정 (iOS 14 )
-- Appstore로부터 상품 정보 획득 실패 시 ToastProductsResponse가 nil을 반환하도록 변경
+#### Improvements
+* Subscription product resubscription error revision (iOS 14 )
+- Changed ToastProductsResponse to return nil when failing to get product info from the Appstore
 
 ### TOAST Push
-#### 개선 사항
-* 토큰 해제 요청 시 등록된 토큰이 없을 경우 Callback이 발생하지 않는 문제 개선
+#### Improvements
+* Improved problem where callback did not occur upon a token disable request and there were no registered tokens
 
 ## 0.27.0 (2020.09.11)
 ### TOAST IAP
@@ -20,8 +29,8 @@
     * 결제 실패 Delegate가 수신되지 않는 문제 개선
     
 ### TOAST Push
-#### 개선 사항
-* 안전성 개선
+#### Improvements
+* Improved stability
     
 ## 0.26.0 (2020.07.28)
 ### TOAST Push

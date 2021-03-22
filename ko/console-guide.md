@@ -16,11 +16,11 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 ## 퀵 가이드
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
 
-![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812.png)
-![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812.png)
-![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812.png)
-![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812.png)
-![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812.png)
+![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103.png)
+![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103.png)
+![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103.png)
+![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103.png)
+![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103.png)
 
 ## 조직 관리
 
@@ -50,7 +50,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 ### 조직 생성 가이드
 
-![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812.png)
+![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202103.png)
 
 <center>[그림 1] 조직 생성 </center>
 
@@ -104,7 +104,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 ### 프로젝트 생성 가이드
 
-![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812.png)
+![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202103.png)
 
 <center>[그림 2] 프로젝트 생성 </center>
 
@@ -116,7 +116,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 ### 프로젝트 서비스 활성화 가이드
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202010.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202103.png)
 
 <center>[그림 3] 프로젝트 서비스 활성화 </center>
 
@@ -145,11 +145,22 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 | 멤버 권한      | \- 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리\)<br>\- 프로젝트 생성<br>\- 프로젝트 삭제 | \- 조직 서비스 이용 |
 | 콘솔 접근      | \- NHN Cloud 콘솔(https://console.toast.com/) 접근 <br>\- NHN Cloud> 회원  ID/비밀번호로 로그인<br>\- (선택) 2차(이메일 또는 SMS) 인증 | \- IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br> \- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br> \- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
+### IP ACL 설정
+허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 
+Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
+
+- 서비스 설정 
+    - 공통 설정 : 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
+    - 서비스 별 설정 : 각 서비스(Cloud, Online Contact Workplace | Dooray! 등) 별로 IP ACL을 설정할 수 있습니다.
+- IP ACL 설정 
+    - 설정 안 함 : 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다. 
+    - 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력하시면 됩니다. 
+
 ### IAM 콘솔 로그인 보안 설정
 - IAM 회원의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다. 
 - 모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다. 
 
-![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202011.png)
+![iam_console_login_security_setting_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202103.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 설정 페이지에 접속합니다. 
 2. IAM 콘솔의 **로그인 보안 설정** 버튼을 클릭합니다. 
@@ -192,18 +203,6 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
     - 클릭 등의 아무런 작업이 없어도 로그인을 유지할 시간을 설정합니다. 
     - 설정한 시간 동안 클릭 등의 작업을 하지 않으면 자동으로 로그아웃됩니다. 
     - 너무 길게 설정하시면 보안상 좋지 않으니 고려하여 설정하시기 바랍니다. 
-
-#### IP ACL 
-허용한 IP(또는 IP 대역)에서만 IAM 콘솔에 접근할 수 있습니다. 
-Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
-
-- 서비스 설정 
-    - 공통 설정 : 모든 조직 서비스에 동일하게 2차 인증을 설정합니다. 
-    - 서비스 별 설정 : 각 서비스(Cloud, Online Contactm Workplace | Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
-- IP ACL 설정 
-    - 설정 안 함: 모든 IP(또는 IP 대역)에서 IAM 콘솔에 접근할 수 있습니다. 
-    - 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 
-      접근을 허용할 IP 또는 IP 대역을 입력하시면 됩니다. 
 
 
 ### 조직 멤버
