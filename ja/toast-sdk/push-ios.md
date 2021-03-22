@@ -582,8 +582,8 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
  
 ### 初期化 
  
-* `VoIP機能は[Toast Push SDK 初期化](./push-ios/#toast-push-sdk)がされていなければ使用できません。` 
-* `VoIP機能はToast Push SDKのサブモジュールで別途分離されています。` 
+* VoIP機能は[Toast Push SDK 初期化](./push-ios/#toast-push-sdk)がされていなければ使用できません。
+* VoIP機能はToast Push SDKのサブモジュールで別途分離されています。
  
 ### Delegate設定 
  
