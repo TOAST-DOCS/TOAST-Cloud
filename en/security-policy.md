@@ -50,7 +50,7 @@ To protect customer service, the block-intrusion system is provided as well as s
 ### How to Apply for More Ports
 - Download the excel file below and fill in the form.
 
-[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/Application%20for%20Exception%20from%20TOAST%20Firewall%20and%20SSL%20VPN%20Policy_Agency%20Name.xlsx)
+[![](http://static.toastoven.net/prod_gov_security/img_04.png)](http://static.toastoven.net/prod_gov_security/Application%20for%20Exception%20from%20NHN%20Cloud%20Firewall%20and%20SSL%20VPN%20Policy_Agency%20Name.xlsx)
 
 - Save file name as “Application for Exception from NHN Cloud Firewall and SSL VPN Policy_JP-Agency Name.xlsx”.
 Send the application over the email like below (to be processed and replied within 3 days after received). 
