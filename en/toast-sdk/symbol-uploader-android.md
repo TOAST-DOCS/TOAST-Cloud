@@ -5,9 +5,9 @@
 1. Android 프로젝트에 [TOAST Logger 를 추가](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-android/) 합니다.
 2. Android 앱에 네이티브 라이브러리가 포함되어 있는 경우 [TOAST Crash Reporter for NDK 를 추가](https://docs.toast.com/ko/TOAST/ko/toast-sdk/log-collector-ndk/) 합니다.
 
-## TOAST Gradle Plugin 추가
+## 라이브러리 설정
 
-1. 프로젝트 수준의 build.gradle 파일에 TOAST Gradle Plugin 을 buildscript 의존성 항목으로 추가합니다.
+프로젝트 수준의 build.gradle 파일에 TOAST Gradle Plugin 을 buildscript 의존성 항목으로 추가합니다.
 
 ```groovy
 buildscript {
@@ -24,7 +24,7 @@ buildscript {
 }
 ```
 
-2. 앱 수준의 build.gradle 파일에 TOAST Gradle Plugin 을 적용합니다.
+앱 수준의 build.gradle 파일에 TOAST Gradle Plugin 을 적용합니다.
 
 ```groovy
 // Apply the TOAST Gradle Plugin
@@ -34,7 +34,7 @@ apply plugin: 'com.toast.android.toast-services'
 ## mapping.txt 파일 업로드 사용 설정
 
 ProGuard, R8로 코드 난독화가 되어있는 스택 트레이스를 사람이 읽을 수 있는 명료한 코드로 렌더링하기 위해서는 빌드 시 생성된 매핑 파일을 TOAST Log & Crash Search 에 업로드해야합니다.
-Gradle Plugin 에는 매핑 파일 업로드를 자동화하는 `uploadMappingFile{BUILD_VARIANT}` 태스크가 포함되어 있습니다. 이 태스크를 활성화하려면 `mappingFileUploadEnabled` 가 `true` 로 설정되어 있는지 확인합니다.
+TOAST Gradle Plugin 에는 매핑 파일 업로드를 자동화하는 `uploadMappingFile{BUILD_VARIANT}` 태스크가 포함되어 있습니다. 이 태스크를 활성화하려면 `mappingFileUploadEnabled` 가 `true` 로 설정되어 있는지 확인합니다.
 
 
 매핑 파일 업로드 태스크를 활성화 하려면 앱 수준의 build.gradle 파일에서 `mappingFileUploadEnabled` 를 `true` 로 설정합니다.
@@ -51,7 +51,7 @@ toastServices {
 ## Native symbol 파일 업로드 사용 설정
 
 NDK 비정상 종료로 부터 읽기 가능한 스택 트레이스를 생성하려면 TOAST Log & Crash Search 에서 네이티브 바이너리의 심벌에 대해 파악해야합니다.
-Gradle Plugin 에는 네이티브 심벌 파일 업로드를 자동화하는 `uploadSymbolFile{BUILD_VARIANT}` 태스크가 포함되어 있습니다.
+TOAST Gradle Plugin 에는 네이티브 심벌 파일 업로드를 자동화하는 `uploadSymbolFile{BUILD_VARIANT}` 태스크가 포함되어 있습니다.
 이 태스크를 활성화하려면 `nativeSymbolUploadEnabled` 가 `true` 로 설정되어 있는지 확인합니다.
 
 심 파일 업로드 태스크를 활성화 하려면 앱 수준의 build.gradle 파일에서 `nativeSymbolUploadEnabled` 를 `true` 로 설정합니다.
