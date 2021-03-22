@@ -1,5 +1,15 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.21.6 (2021.03.23)
+
+### 버그 수정
+
+- File 충돌 버그 수정
+
+### plugin version
+
+- iOS : 0.27.2
+
 ## 0.21.5 (2021.01.15)
 
 ### plugin version
