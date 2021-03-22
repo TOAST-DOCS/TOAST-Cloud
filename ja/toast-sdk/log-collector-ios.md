@@ -53,6 +53,60 @@ end
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png) 
  
 > TOASTの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。 
+
+## TOAST Symbol Uploader 적용
+
+### 프로젝트의 디버그 설정 변경
+* 빌드 설정을 변경하여 프로젝트의 디버그 정보 형식을 변경해야합니다.
+* Xcode -> Project Target -> Build Settings -> Debug Information Format -> Debug -> DWARF with dSYM File
+
+### 개발 환경에서 Run Script를 사용하여 자동 업로드
+
+* Xcode -> Project Target -> Build Phases -> + -> New Run Script Phase
+* 표시되는 새 Run Script 섹션을 펼칩니다.
+* Shell(셸) 필드 아래에 있는 스크립트 필드에서 새 실행 스크립트를 추가합니다.
+```
+if [ "${CONFIGURATION}" = "Debug" ]; then
+    ${PODS_ROOT}/ToastSymbolUploader/toastcloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
+fi
+```
+* LOG_N_CRASH_SEARCH_APPKEY에는 Log&Crash Search의 AppKey를 입력해야합니다.
+* Run Script 섹션 하단의 Input Files에 dSYM의 기본 경로를 설정합니다.
+    * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
+
+![symbol_uploader_script_pods_path](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path.png)
+
+### Symbol Uploader를 사용하여 직접 업로드
+
+* SymbolUploader 사용법
+
+```
+USAGE: symbol-uploader -ak <ak> -pv <pv> [-sz <sz>] <path> [--verbose]
+
+ARGUMENTS:
+  <path>                  dSYM file path is must be entered. 
+
+OPTIONS:
+  -ak, --app-key <ak>     [Log&Crash Search]'s AppKey must be entered. 
+  -pv, --project-version <pv>
+                          Project version must be entered. 
+  -sz, --service-zone <sz>
+                          You can choose between real, alpha, and demo. (default: real)
+  --verbose               Show more debugging information 
+  -h, --help              Show help information.
+
+```
+
+* Xcode의 Run Script를 사용하지 않고 사용자가 원하는 시점에 아래와 같은 방법으로 SymbolUploader를 사용하여 직접 Symbol을 업로드 할 수 있습니다.
+
+```
+./SymbolUploader --app-key {APP_KEY} --project-version {CFBundleShortVersionString || MARKETING_VERSION} {symbol path(~/Project.dSYM)}
+```
+
+> `동일한 버전의 Symbol이 이미 업로드되어 있는 경우 SymbolUploader는 업로드되어 있는 Symbol을 제거하고 업로드를 수행합니다.`
+> 이때 두 Symbol 파일의 `파일명이 다를 경우 업로드되어 있던 Symbol은 제거되지 않습니다.`
+> Log & Crash Search 콘솔에서 업로드되어 있는 Symbol을 제거해야 합니다.
+> https://console.toast.com/-> 조직 선택 -> 프로젝트 선택 -> Anaytics -> Log & Crash Search -> 설정 -> 심벌 파일
  
 ### CrashReport 使用時注意事項 
  

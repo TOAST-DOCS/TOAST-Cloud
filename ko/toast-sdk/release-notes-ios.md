@@ -1,5 +1,14 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > iOS
 
+## 0.27.2 (2021.03.23)
+### 공통
+#### 개선 사항
+* 안전성 개선
+
+### TOAST Logger
+#### SymbolUploader (v0.0.1)
+* SymbolUploader 추가
+
 ## 0.27.1 (2020.11.24)
 ### TOAST IAP
 #### 개선 사항
