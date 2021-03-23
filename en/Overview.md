@@ -1,6 +1,6 @@
 ## NHN Cloud > Overview
 
-NHN Cloud, which is from ‘Toward Art, Science, and Technology’, refers to an “Integrated Cloud Service” of NHN, as part of unwavering passion to make the world renewed with arts, science, and technology.  
+NHN Cloud is an “integrated cloud service” provided by NHN, which provides everything necessary for your business operation and service development. 
 
 ## Features
 
@@ -74,6 +74,7 @@ NHN Cloud, which is from ‘Toward Art, Science, and Technology’, refers to an
 | Dev Tool | Convenient and efficient development environment is provided. |
 | Analytics | Platforms for data analysis and collection are supported. |
 | Application Service | Various tools are supported for web/app services. |
+| AI Service | You can easily and conveniently build AI Service powered by the latest cutting-edge technologies. |
 | Search  | Up-to-date data are always available through different search services. |
 | Management | Professional engineers with the highest technical skills provide systematic server management, while customers can focus more on content development. |
 | ERP  | Hands-on enterprise resource management solution is provided incorporating accounting, HR, and settlement. |

@@ -1,6 +1,7 @@
 ## NHN Cloud > 概要
 
-NHN Cloud是NHN提供的“综合云服务”，意味着以TOward Art Science Technology为座右铭，为打造面向艺术科学技术的新世界而进行挑战的热情。
+NHN Cloud is an “integrated cloud service” provided by NHN, which provides everything necessary for your business operation and service development. 
+
 
 ## 特征
 
