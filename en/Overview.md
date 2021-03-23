@@ -74,6 +74,7 @@ NHN Cloud is an “integrated cloud service” provided by NHN, which provides e
 | Dev Tool | Convenient and efficient development environment is provided. |
 | Analytics | Platforms for data analysis and collection are supported. |
 | Application Service | Various tools are supported for web/app services. |
+| AI Service | You can easily and conveniently build AI Service powered by the latest cutting-edge technologies. |
 | Search  | Up-to-date data are always available through different search services. |
 | Management | Professional engineers with the highest technical skills provide systematic server management, while customers can focus more on content development. |
 | ERP  | Hands-on enterprise resource management solution is provided incorporating accounting, HR, and settlement. |
