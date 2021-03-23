@@ -1,6 +1,6 @@
 ## NHN Cloud > Overview
 
-NHN Cloud, which is from ‘Toward Art, Science, and Technology’, refers to an “Integrated Cloud Service” of NHN, as part of unwavering passion to make the world renewed with arts, science, and technology.  
+NHN Cloud is an “integrated cloud service” provided by NHN, which provides everything necessary for your business operation and service development. 
 
 ## Features
 
