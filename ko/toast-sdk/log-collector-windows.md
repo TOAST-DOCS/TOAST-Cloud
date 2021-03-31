@@ -6,60 +6,49 @@
 2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
-## TOAST Logger SDK 초기화
+## NHN Cloud SDK 초기화
 
 Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
-```
+``` 
 ...
 #include "toast/ToastLogger.h"
 
-using namespace toast::logger;
+toast::logger::ToastLogger* g_nhncloud_lnc = nullptr;  // NHN Cloud SDK - Log & crash search
 ...
 
-ToastLogger* logger = GetToastLogger();
+// 전역 변수에 NHN Cloud SDK 인스턴스를 할당합니다.
+g_nhncloud_lnc = toast::logger::ToastLogger::GetInstance();
 
-ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
+// ToastLogger를 초기화 할 때, 필요한 설정 정보를 입력합니다. 
+toast::logger::ToastLoggerConfiguration* loggerConf = toast::logger::ToastLoggerConfiguration::GetInstance();
+
 ...
+// Log & Crash Search 콘솔에서 확인한 앱키를 입력합니다.
 loggerConf->setProjectKey(appkey);
+
+// 현재 어플리케이션의 버전 정보를 입력합니다. 버전 정보는 심볼 파일 등록하는 과정에서 입력하는 버전 정보와 일치해야 합니다.
 loggerConf->setProjectVersion(version);
 ...
 
-if (_logger != NULL)
+if (!g_nhncloud_lnc->initialize(loggerConf))
 {
-    if (_logger->initialize(loggerConf))
-	{
-		// success
-	}
-	else
-	{
-		// fail
-	}
+	// 초기화가 실패하는 경우는 이미 초기화 되었거나, 앱키를 입력하지 않은 경우에 발생합니다.
+	::MessageBox(g_mainWnd, _T("Failed to initialize NHN Cloud SDK."), _T("Alert"), MB_OK);
+	return false;
 }
-```
 
-## TOAST Logger SDK 종료
-
-```
-DestroyToastLogger();
 ```
 
 ## UserID 설정
 
-ToastSDK에 사용자 ID를 설정할 수 있습니다.
-설정한 UserID는 ToastSDK의 각 모듈에서 공통으로 사용됩니다.
-ToastLogger의 로그 전송 API를 호출할 때마다 설정한 사용자 ID를 로그와 함께 서버로 전송합니다.
+사용자 ID를 설정할 수 있습니다.
+UserID를 설정하면, 로그 전송 API를 호출할 때 로그와 함께 사용자 ID도 서버로 전송합니다.
+사용자 ID는 초기화 전/후 상관 없이 설정 할 수 있습니다.
 
-
-```
-
-ToastLogger* _logger = GetToastLogger();
-
-_logger->setUserId("userId");
-
-_logger->initialize(loggerConf);
-
-_logger->getUserId();
+``` 
+    toast::logger::ToastLogger* pLogger = toast::logger::ToastLogger::GetInstance();
+    pLogger->setUserId(pUserID);
 ```
 
 * setUserId
@@ -72,122 +61,118 @@ _logger->getUserId();
 TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ### 로그 전송 
-
+* DEBUG, INFO, WARN, ERROR, FATAL 레벨의 로그를 명시적으로 전송
+	* char*, wchar_t* 형을 모두 지원합니다.
+	* userFields는 사용자 정의 필드를 좀 더 쉽게 사용하기 위한 헬퍼 클래스입니다.
 ```
-// 일반 로그
-_logger->log(level, message, _userFieldMap);
-
-// DEBUG 레벨 로그
-_logger->debug(level, message, _userFieldMap);
-
-// INFO 레벨 로그
-_logger->info(level, message, _userFieldMap);
-
-// WARN 레벨 로그
-_logger->warn(String message);
-
-// ERROR 레벨 로그
-_logger->error(String message);
-
-// FATAL 레벨 로그
-_logger->fatal(String message);
+void debug(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+void info(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+void warn(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+void error(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+void fatal(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+```
+* 로그 레벨과, 메시지를 명시적으로 전송
+```
+void log(TOAST_LOGGER_LEVEL logLevel, const wchar_t* message, ToastLoggerUserFields* userFields = nullptr);
 ```
 
 ## 사용자 정의 필드 추가
+### 방법 1 : ToastLogger 인스턴스 API 사용
+
+* ToastLogger 인스턴스에서 직접 관리하는 사용자 정의 필드입니다.
+
+```
+bool addUserField(const char* key, const wchar_t* value);
+void removeUserField(const char* key);
+void clearUserFileds();
+
+...
+
+g_nhncloud_lnc->addUserField("nickname", "randy");
+g_nhncloud_lnc->removeUserField("nickname");
+g_nhncloud_lnc->cleareUserField();
 
 ```
 
-ToastLoggerUserFields* _userFieldMap = CreateToastLoggerUserFields();
+### 방법 2 : ToastLoggerUserFields 클래스 사용
 
-_userFieldMap->insert(key, value);
-
-if (_userFieldMap != NULL)
-{
-    if (_userFieldMap->size() > 0)
-    {
-        _logger->log(level, message, _userFieldMap);
-    }
-    else
-    {
-        _logger->log(level, message);
-    }
-}
 ```
+toast::logger::ToastLoggerUserFields* pUserFieldHelper = toast::logger::ToastLoggerUserFields::GetInstance();	// 사용자 정의 필드 헬퍼 클래스를 얻어옵니다.
 
-* 사용자 필드는 특정로그에만 적용하고 싶은 필드 정보를 담습니다.
-* ToastLoggerUserFields는 아래와 같은 함수를 지원합니다.
-    * insert : 데이터 삽입
-    * erase : 데이터 삭제
-    * clear : 전체 삭제
-    * size : 사이즈
-    * find : 데이터 탐색
-    * empty : 빈 상태 여부
+pUserFieldHelper->insert("userCustomKeyHelper01", L"ToastLoggerUserFields 헬퍼 클래스로 추가한 사용자 정의 필드\r\nCustom fields added with the ToastLoggerUserFields helper class");
+pUserFieldHelper->insert("userCustomKeyHelper02", L"clear() 함수로 지금껏 정의한 사용자 필드를 간단히 정리할 수 있어요.\r\nWith the clear() function, you can simply clear the custom fields you have defined so far.");
+pUserFieldHelper->insert("userCustomKeyHelper03", L"log() 함수로 전송시, ToastLoggerUserFields 클래스에 정의한 사용자 필드들은 로그 객체에 복사됩니다.\r\nWhen sending to the log() function, the user fields defined in the ToastLoggerUserFields class are copied to the log object.");
+
+g_nhncloud_lnc->log(level, pLogMessage, pUserFieldHelper);	// 사용자 정의 필드와 함께 로그를 전송합니다.
+
+pUserFieldHelper->clear(); // 위에서 설정한 사용자 정의 필드를 모두 삭제합니다.
+	
+```
 
 *  사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다. 
 
-#### 커스텀 필드 제약사항
+#### 사용자 정의(커스텀) 필드 제약사항
 
 * 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.  
 * 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 * 필드명 내에 공백은 "_"로 치환됩니다.
 
-### addUserField / removeUserFiled / cleareUserField 사용 예
-
-```
-_logger->addUserField("nickname", "randy");
-_logger->removeUserField("nickname");
-_logger->cleareUserField();
-```
 
 ## 크래시 로그 수집
+* 크래시가 발생하면, SDK를 포함한 실행 파일에서 크래시 덤프를 전송하는 것이 기본동작입니다.
+* 크래시 발생시 사용자에 오류 화면을 노출하고 추가 정보를 수집할 수 있습니다. 
 
-크래시 리포터(CrashRepoter.exe)는 크래시 정보를 로그로 전송하는 기능을 제공합니다.
-크래시가 발생하면 크래시 리포터에서 크래시 정보를 로그로 전송합니다.
-ToastLogger를 초기화할 때 크래시 리포터 사용 여부를 설정할 수 있습니다.
-크래시 리포터 대화 상자 사용 여부 및 커스텀 메시지를 설정할 수 있습니다. 
-
-
-### 크래시 로그 활성화 및 크래시 리포터 
+### 크래시 로그 수집과 환경 설정
 
 ```
-...
+
 #include "toast/ToastLogger.h"
 
-using namespace toast::logger;
+toast::logger::ToastLogger* g_nhncloud_lnc = nullptr;  // NHN Cloud SDK - Log & crash search
 ...
 
-ToastLogger* _logger = GetToastLogger();
+// 전역 변수에 NHN Cloud SDK 인스턴스를 할당합니다.
+g_nhncloud_lnc = toast::logger::ToastLogger::GetInstance();
 
-ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
+// ToastLogger를 초기화 할 때, 필요한 설정 정보를 입력합니다. 
+toast::logger::ToastLoggerConfiguration* loggerConf = toast::logger::ToastLoggerConfiguration::GetInstance();
+
 ...
-// 크래시 로그 활성화 여부
+// Log & Crash Search 콘솔에서 확인한 앱키를 입력합니다.
+loggerConf->setProjectKey(appkey);
+
+// 현재 어플리케이션의 버전 정보를 입력합니다. 버전 정보는 심볼 파일 등록하는 과정에서 입력하는 버전 정보와 일치해야 합니다.
+loggerConf->setProjectVersion(version);
+
+// 크래시 수집 활성화 - 기본적으로 활성화 상태입니다. 크래시 수집을 원하지 않는다면 false로 설정합니다.
 loggerConf->enableCrashReporter(true);	
-// 크래시 리포터 다이얼로그 사용 여부
+
+// 별도의 프로세스로 동작하는 크래시 리포터(CrashReporter.exe)를 사용하기 위해서는, enableSilenceMode(false)로 설정합니다.
 loggerConf->enableSilenceMode(false);	
-// 크래시 리포터 다이얼로그에 보일 메시지 정의 
-// (정의하지 않으면 기본 메시지가 보이게 됩니다.)
+
+// 별도의 프로세스로 동작하는 크래시 리포터에 노출할 메시지를 정의합니다. 정의하지 않으면 기본 메시지가 보이게 됩니다. 
 loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "오류가 발생한 상황...\n");
+
+// 별도의 프로세스로 크래시를 전송하지만, 사용자에 UI를 노출하고 싶지 않을경우는 exposeExternalCrashReporterUI(false)로 설정합니다.
+//loggerConf->exposeExternalCrashReporterUI(false);
 ...
 
-if (_logger != NULL)
+// 초기화가 끝나면, 크래시 수집이 가능합니다.
+if (!g_nhncloud_lnc->initialize(loggerConf))
 {
-    bool bInit = _logger->initialize(loggerConf);
-	
-	// x86에서 pure virtual call / invalid paramenter 크래시 로그 추가	
-	if (bInit && enableCrashReport)
-	{
-#ifndef _WIN64
-		SetCrashHandler();
-#endif
-	}
+	// 초기화가 실패하는 경우는 이미 초기화 되었거나, 앱키를 입력하지 않은 경우에 발생합니다.
+	::MessageBox(g_mainWnd, _T("Failed to initialize NHN Cloud SDK."), _T("Alert"), MB_OK);
+	return false;
 }
+
+
 ```
 
 ### 크래시 로그 전송 테스트 
 
 * 크래시 로그 전송을 테스트하려면 실제로 예외(Exception)가 발생해야 합니다.
 * 크래시 로그 전송은 enableCrashReporter가 true인 경우 SDK가 자동으로 실행합니다.
-
+* Access Violation 예제
 ```
 
 void CsampleDlg::OnBnClickedCrash()
@@ -200,15 +185,12 @@ void CsampleDlg::OnBnClickedCrash()
 
 ### 크래시 로그 해석
 
-TOAST Windows SDK에서 발생한 크래시를 해석하려면 심벌 파일을 생성해 웹 콘솔에 업로드해야 합니다.
+NHN Cloud Windows SDK에서 발생한 크래시를 해석하려면 심벌 파일을 생성해 웹 콘솔에 업로드해야 합니다.
 
 #### 심벌 파일 생성
 
-* 심벌 파일을 생성하려면 개발환경에 맞는 dump_syms가 필요합니다.
-    * [dump\_syms\_vc1600 : vs2010](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1600.zip)
-    * [dump\_syms\_vc1700 : vs2012](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1700.zip)
-    * [dump\_syms\_vc1800 : vs2013](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1800.zip)
-    * [dump\_syms\_vc1900 : vs2015](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1900.zip)
+* 심벌 파일을 생성하려면 배포파일의 경로에서 dump_syms.exe 를 사용해야합니다.
+* 좀 더 쉬운 예제는 배포파일 경로에서 `nhncloudsdk_example`예제 프로젝트의 빌드후 이벤트를 참고해주세요.
 * 명령 프롬프트를 실행해 아래와 같은 방식으로 .sym 파일을 생성합니다.
     * sample은 예제 프로젝트의 명칭입니다.
 
