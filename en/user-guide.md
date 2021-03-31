@@ -37,19 +37,7 @@ They are classified by the country of choice, and allowed to join when they agre
 Access https://toast.com and click Join on the top right.
 Follow the procedure to join membership. 
 
-#### Members of NHN Cloud Korea
-
-- Join Individual Membership
-
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_20200710.png)
-
-- Join Business Membership
-
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_20200710.png)
-
-#### Members of NHN Cloud Japan
-
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_20200710.png)
+![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_202103_en.png)
 
 
 #### Select Country

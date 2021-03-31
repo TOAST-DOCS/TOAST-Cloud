@@ -44,17 +44,16 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | NAS (offline) | 리전 | O | O |  | O |
 |  | Object Storage | 리전 | O | O | O | O |
 |  | Backup | 리전 | O | O | O |  |
+|  | Data transporter | 리전 | O | O |  |  |
 | Database | RDS for MySQL | 리전 | O | O | O |  |
 |  | RDS for MS-SQL | 리전 | O |  |  |  |
 |  | EasyCache | 리전 | O | O | O |  |
 |  | MS-SQL Instance | 리전 | O | O | O | O |
 |  | MySQL Instance | 리전 | O | O | O | O |
-| Game | Gamebase | 글로벌 |  |  |  |  |
-|  | Leaderboard | 글로벌 |  |  |  |  |
-|  | Launching | 글로벌 |  |  |  |  |
-|  | Smart Downloader | 글로벌 |  |  |  |  |
+|  | PostgreSQL Instance | 리전 | O | O | O | O |
 | Security | AppGuard | 글로벌 |  |  |  |  |
-|  | Security Check | 리전 | O |  |  |  |
+|  | App Security Check | 리전 | O |  |  |  |
+|  | Server Security Check | 리전 | O | O |  |  |
 |  | Security Monitoring | 리전 | O | O |  |  |
 |  | Basic Security | 리전 | O | O |  |  |
 |  | CAPTCHA | 리전 | O |  |  |  |
@@ -63,27 +62,35 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Web Firewall | 리전 | O | O |  |  |
 |  | Vaccine | 리전 | O | O |  |  |
 |  | Secure Key Manager | 글로벌 |  |  |  |  |
+|  | NHN Compliance | 글로벌 |  |  |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image | 리전 | O |  |  |  |
+| Game | Gamebase | 글로벌 |  |  |  |  |
+|  | Leaderboard | 글로벌 |  |  |  |  |
+|  | Launching | 글로벌 |  |  |  |  |
+|  | Smart Downloader | 글로벌 |  |  |  |  |
+|  | GameAnvil | 글로벌 |  |  |  |  |
 | Notification | Push | 글로벌 |  |  |  |  |
 |  | SMS | 리전 | O |  |  |  |
 |  | Email | 글로벌 |  |  |  |  |
 |  | KakaoTalk Bizmessage | 리전 | O |  |  |  |
-| Mobile Service | IAP | 글로벌 |  |  |  |  |
-|  | Mobile Device Info | 글로벌 |  |  |  |  |
-| Analytics | Log & Crash Search | 글로벌 |  |  |  |  |
+| AI Service | Face Recognition | 리전 | O | O |  |  |
 | Application Service | Maps | 리전 | O |  |  |  |
 |  | ROLE | 글로벌 |  |  |  |  |
 |  | API Gateway | 리전 | O |  |  |  |
 |  | RTCS | 글로벌 |  |  |  |  |
+| Mobile Service | IAP | 글로벌 |  |  |  |  |
+|  | Mobile Device Info | 글로벌 |  |  |  |  |
 | Search | Cloud Search | 리전 | O |  |  |  |
 |  | Autocomplete | 리전 | O |  |  |  |
 |  | Corporation Search | 리전 | O |  |  |  |
 |  | Address Search | 리전 | O |  |  |  |
+| Analytics | Log & Crash Search | 글로벌 |  |  |  |  |
 | Dev Tools | Deploy | 글로벌 |  |  |  |  |
 | Management | Managed | 리전 | O | O |  |  |
 |  | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
+| Bill | Bill (e-Tax) | 리전 | O |  |  |  |
 | Workplace Dooray! | Project | 글로벌 |  |  |  |  |
 |  | Messenger | 글로벌 |  |  |  |  |
 |  | Mail | 글로벌 |  |  |  |  |
@@ -98,6 +105,5 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Contact Center | Omni Contact | 리전 | O |  |  |  |
 |  | Mobile Contact | 리전 | O |  |  |  |
 |  | Online Contact | 글로벌 |  |  |  |  |
-| Bill | Bill (e-Tax) | 리전 | O |  |  |  |
 | IDC | TCC | 리전 | O |  |  |  |
 | CloudTail | CloudTail | 글로벌 |  |  |  |  |
