@@ -39,6 +39,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
 |  | Physical Load Balancer | Regional | O | O |  |  |
+|  | NAT Instance | Regional |  | O |  |  |
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
 |  | NAS (offline) | Regional | O | O |  | O |
@@ -61,6 +62,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | OTP | Regional | O |  |  |  |
 |  | DBSafer | Regional | O | O  |  |  |
 |  | Web Firewall | Regional | O | O  |  |  |
+|  | DDoS Guard | Regional | O | O |  |  |
 |  | Vaccine | Regional | O | O |  |  |
 |  | Secure Key Manager | Global |  |  |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
@@ -76,11 +78,13 @@ All users are provided with the same features, policy, stability and usability, 
 |  | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O |  |  |  |
 |  | RTCS | Global |  |  |  |  |
+|  | ShortURL | Global |  |  |  |  |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
 |  | Address Search | Regional | O |  |  |  |
-| Dev Tools | Deploy | Global |  |  |  |  |
+| Dev Tools | Pipeline | Regional | O | O |  |  |
+|  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
 |  |  | Global |  |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
