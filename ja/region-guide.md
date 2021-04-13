@@ -39,6 +39,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |
 |  | 物理Load Balancer | リージョン | O | O |  |  |
+|  | NAT Instance | リージョン |  | O  |  |  |
 |  | DNS Plus | グローバル |  |  |  |  |
 | Storage | Block Storage | リージョン | O | O | O | O |
 |  | NAS (offline) | リージョン | O | O  |  | O |
@@ -61,6 +62,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | OTP | リージョン | O |  |  |  |
 |  | DBSafer | リージョン | O | O  |  |  |
 |  | Web Firewall | リージョン | O | O  |  |  |
+|  | DDoS Guard | リージョン | O | O  |  |  |
 |  | Vaccine | リージョン | O | O |  |  |
 |  | Secure Key Manager | グローバル |  |  |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
@@ -76,11 +78,13 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | ROLE | グローバル |  |  |  |  |
 |  | API Gateway | リージョン | O |  |  |  |
 |  | RTCS | グローバル |  |  |  |  |
+|  | Short URL | グローバル |  |  |  |  |
 | Search | Cloud Search | リージョン | O |  |  |  |
 |  | Autocomplete | リージョン | O |  |  |  |
 |  | Corporation Search | リージョン | O |  |  |  |
 |  | Address Search | リージョン | O |  |  |  |
-| Dev Tools | Deploy | グローバル |  |  |  |  |
+| Dev Tools | Pipeline | リージョン | O | O |  |  |
+|  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
 |  | Service Monitoring | グローバル |  |  |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
