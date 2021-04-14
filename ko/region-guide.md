@@ -12,7 +12,7 @@ NHN Cloud 유저는 서비스 지역과 목적에 따라 사용할 리전을 선
 
 ## NHN Cloud 리전 위치
 NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전을 확대하고 있습니다.
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/region_guide%2001.png)
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Region_guide_2021.png)
 
 ## NHN Cloud 리전 서비스
 **리전 서비스**
