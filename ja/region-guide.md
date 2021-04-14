@@ -11,7 +11,7 @@ NHN Cloudユーザーは、サービス地域と目的に応じて使用する�
 
 ## NHN Cloudリージョン位置
 NHN Cloudは、グローバルなサービスを提供するために、多くの地域にリージョンを拡大しています。
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/region_guide%2001.png)
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Region_guide_2021.png)
 
 ## NHN Cloudリージョンサービス
 
