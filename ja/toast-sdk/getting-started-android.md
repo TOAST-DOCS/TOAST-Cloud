@@ -15,7 +15,7 @@ Android用TOAST SDKの構成は次のとおりです。
 * [TOAST Native Crash Reporter](./log-collector-ndk) SDK
 * TOAST In-app Purchase Core SDK
 * [TOAST In-app Purchase Google Play Store](./iap-android) SDK
-* [TOAST In-app Purchase OneStore](./iap-android) SDK 
+* [TOAST In-app Purchase OneStore](./iap-android) SDK
 * TOAST Push Core SDK
 * [TOAST Push Firebase Cloud Messaging](./push-android) SDK
 
@@ -44,6 +44,10 @@ TOAST SDKのすべてのサービスを使用するには、下記のように�
 > 詳細は[Unityガイド](./getting-started-unity/#android)を参照してください。
 
 ```groovy
+repositories {
+  mavenCentral()
+}
+
 dependencies {
   implementation 'com.toast.android：toast-sdk：0.24.2'
 }

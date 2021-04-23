@@ -44,6 +44,10 @@ Set dependency as below, to use all TOAST SDK services.
 > For more details, see [Guide for Unity](./getting-started-unity/#android).
 
 ```groovy
+repositories {
+  mavenCentral()
+}
+
 dependencies {
   implementation 'com.toast.android:toast-sdk:0.25.0'
 }

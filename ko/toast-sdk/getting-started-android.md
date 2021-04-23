@@ -44,6 +44,10 @@ TOAST SDK의 모든 서비스를 사용하려면 아래와 같이 종속성(depe
 > 자세한 내용은 [유니티 가이드](./getting-started-unity/#android)를 참고해주세요.
 
 ```groovy
+repositories {
+  mavenCentral()
+}
+
 dependencies {
   implementation 'com.toast.android:toast-sdk:0.25.0'
 }
