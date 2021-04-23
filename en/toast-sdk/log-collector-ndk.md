@@ -18,6 +18,10 @@ Android 앱에 네이티브 라이브러리가 포함된 경우 간단한 빌드
 - 앱 수준 build.gradle에서 의존성을 추가합니다.
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     // ...
 

@@ -18,12 +18,16 @@ Androidアプリにネイティブライブラリーが含まれる場合、簡�
 - アプリレベルbuild.gradleで、依存性を追加します。
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     // ...
-    
+
     // Add the TOAST Logger dependency
     implementation 'com.toast.android:toast-logger:0.25.0'    
-    
+
     // Add the TOAST Crash Reporter for NDK dependency
     implementation 'com.toast.android:toast-crash-reporter-ndk:0.25.0'
 }
@@ -32,7 +36,7 @@ dependencies {
 ### クラッシュ分析
 
 * Nativeクラッシュが発生すると、ダンプ(.dmp)ファイルが生成されます。
-* 生成されたダインプファイルを解析する過程を、**Symbolication**といいます。 
+* 生成されたダインプファイルを解析する過程を、**Symbolication**といいます。
 * 正確なスタック追跡のためには、必ずシンボルファイルをアップロードしてください。
 * シンボルファイルがアップロードされたら、クラッシュ発生時にLog & Crash Searchのコンソールにおいて、分析されたクラッシュ情報を閲覧できます。
 
