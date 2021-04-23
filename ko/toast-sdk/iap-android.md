@@ -17,6 +17,11 @@
 - Google Play Store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-iap-google:0.25.0'
     ...
@@ -26,6 +31,10 @@ dependencies {
 - ONE store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-iap-onestore:0.25.0'
     ...
@@ -35,6 +44,10 @@ dependencies {
 - Galaxy store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-iap-galaxy:0.25.0'
     ...

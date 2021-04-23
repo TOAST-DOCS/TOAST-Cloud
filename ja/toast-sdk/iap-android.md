@@ -17,6 +17,11 @@
 - Google Play Storeのアプリ内決済を使用するには、下記のようにbuild.gradleに依存性を追加します。
 
 ```groovy
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-iap-google:0.25.0'
     ...
@@ -26,6 +31,10 @@ dependencies {
 - ONE storeのアプリ内決済を使用するには、下記のようにbuild.gradleに依存性を追加します。
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-iap-onestore:0.25.0'
     ...
@@ -35,6 +44,10 @@ dependencies {
 - Galaxy storeのアプリ内決済を使用するには、下記のようにbuild.gradleに依存性を追加します。
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-iap-galaxy:0.25.0'
     ...

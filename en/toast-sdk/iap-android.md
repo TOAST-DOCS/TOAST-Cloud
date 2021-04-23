@@ -17,6 +17,11 @@
 - To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
 
 ```groovy
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-iap-google:0.25.0'
     ...
@@ -26,6 +31,10 @@ dependencies {
 - To use In-App Purchase of ONE store, add dependency to build.gradle, as below:
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-iap-onestore:0.25.0'
     ...
@@ -35,6 +44,10 @@ dependencies {
 - To use In-App Purchase of Galaxy store, add dependency to build.gradle, as below:
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-iap-galaxy:0.25.0'
     ...
