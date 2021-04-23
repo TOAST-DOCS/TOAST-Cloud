@@ -26,6 +26,10 @@
 ```groovy
 apply plugin: 'com.android.application'
 
+repositories {
+  mavenCentral()
+}
+
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.toast.android:toast-unity-logger:0.25.0'

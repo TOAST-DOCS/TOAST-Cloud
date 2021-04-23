@@ -24,8 +24,11 @@
 - Add below to dependencies of mainTemplate.gradle.
 
 ```groovy
-
 apply plugin: 'com.android.application'
+
+repositories {
+  mavenCentral()
+}
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -205,8 +208,8 @@ With ToastLogger initialized, a crash log is automatically sent when it occurs c
 To disable crash log delivery, set false for EnableCrashReporter property of the ToastLoggerConfiguration object.
 For more information on crash logs of each platform, check the links below:
 
-- [Collect Android Crash Logs](./log-collector-android/#collec-crash-logs)
-- [Collect iOS Crash Logs](./log-collector-ios/#collet-crash-logs)
+- [Collect Android Crash Logs](./log-collector-android/#collect-crash-logs)
+- [Collect iOS Crash Logs](./log-collector-ios/collect-crash-logs)
 
 ```csharp
 var loggerConfiguration = new ToastLoggerConfiguration
