@@ -408,6 +408,71 @@ public class IapPurchase
 | PurchaseTime | long | 상품 구매 시간 |
 | ExpiryTime | long | 구독 상품의 남은 시간 |
 
+### IapSubscriptionStatus
+
+```csharp
+public class IapSubscriptionStatus
+{
+    public string GetProductId();
+    public string GetProductType();
+    public string GetPaymentId();
+    public string GetOriginalPaymentId();
+    public string GetPaymentSequence();
+    public string GetUserId();
+    public float GetPrice();
+    public string GetPriceCurrencyCode();
+    public string GetAccessToken();
+    public long GetPurchaseTime();
+    public long GetExpiryTime();
+    public string GetDeveloperPayload();
+    public Status GetStatus();
+    public string GetStatusDescription();
+}
+```
+
+| Method | Returns | Description |
+|---|---|---|
+| GetProductId | string | 결제 ID |
+| GetProductType | string | 결제 고유 번호 |
+| GetPaymentId | string | 원본 결제 ID |
+| GetOriginalPaymentId | string | 상품 ID |
+| GetPaymentSequence | string | 상품 유형 |
+| GetUserId | string | 사용자 ID |
+| GetPrice | float | 가격 |
+| GetPriceCurrencyCode | string | 통화 정보 |
+| GetAccessToken | string | 소비에 사용되는 토큰 |
+| GetPurchaseTime | long | 상품 구매 시간 |
+| GetExpiryTime | long | 구독 상품의 남은 시간 |
+| GetDeveloperPayload | string | 개발자 페이로드 |
+| GetStatus | Status | 구독 상태 |
+| GetStatusDescription | string | 구독 상태 설명 |
+
+### IapSubscriptionStatus.Status
+
+```csharp
+public enum Status
+{
+    Active = 0,
+    Canceled = 3,
+    OnHold = 5,
+    InGracePeriod = 6,
+    Paused = 10,
+    Revoked = 12,
+    Expired = 13,
+    Unknown = 9999
+}
+```
+
+| Name | Code | Status | Description |
+| --- | --- | --- | --- |
+| Active | 0 | 활성 | 구독이 활성 상태입니다. |
+| Canceled | 3 | 취소 | 구독이 취소되었습니다. |
+| OnHold | 5 | 계정 보류 | 정기 결제가 계정 보류 상태가 되었습니다(사용 설정된 경우). |
+| InGracePeriod | 6 | 유예 기간 | 정기 결제가 유예 기간 상태로 전환되었습니다(사용 설정된 경우). |
+| Paused | 10 | 일시 중지 | 구독이 일시 중지되었습니다. |
+| Revoked | 12 | 해지 | 정기 결제가 만료 시간 전에 사용자에 의해 취소되었습니다. |
+| Expired | 13 | 만료 | 정기 결제가 만료되었습니다. |
+| Unknown | 9999 | 미정의 | 정의 되지 않은 상태입니다. |
 
 ## 오류 코드
 
