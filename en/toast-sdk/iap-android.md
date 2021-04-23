@@ -466,6 +466,56 @@ void queryActivatedPurchases() {
 }
 ```
 
+## 구독 상태 조회
+
+* User ID 기준으로 구입한 구독 상품의 상태를 조회할 수 있습니다.
+* 만료된 구독 상품은 includeExpiredSubscriptions 설정으로 조회 또는 제외할 수 있습니다. (default: false)
+* 구독 상품 상태는 ToastIap.querySubscriptionsStatus() 메서드를 사용하여 조회할 수 있습니다.
+* 조회 결과는 [IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener)를 통해 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체 리스트를 반환됩니다.
+* [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 사용하는 구독 상태 코드는 [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatusCode)에 정의되어 있습니다.
+
+```
+현재 구독 상품은 Google Play 스토어만 지원합니다.
+```
+
+### 구독 상태 조회 API 명세
+
+```java
+/* ToastIap.java */
+public static void querySubscriptionsStatus(Activity activity,
+                                            boolean includeExpiredSubscriptions,
+                                            IapService.SubscriptionsStatusResponseListener listener)
+```
+
+| Method | Parameters |  |
+| --- | --- | --- |
+| querySubscriptionsStatus | activity | Activity: 현재 활성화된 Activity |
+|  | includeExpiredSubscriptions | boolean:<br>구독 만료된 구독 상품의 상태 포함 여부 |
+|  | listener | IapService.SubscriptionsStatusResponseListener:<br>구독 상태 조회 결과 리스너 |
+
+### 구독 상태 조회 예시
+
+```java
+/**
+ * 구독 상태 조회
+ */
+private void querySubscriptionsStatus() {
+    SubscriptionsStatusResponseListener listener =
+            new SubscriptionsStatusResponseListener() {
+                @Override
+                public void onSubscriptionsStatusResponse(@NonNull String storeCode,
+                                                          @Nullable List<IapSubscriptionStatus> subscriptionsStatus) {
+                    if (result.isSuccess()) {
+                        // 성공
+                    } else {
+                        // 실패
+                    }
+                }
+            };
+    ToastIap.querySubscriptionsStatus(MainActivity.this, false, listener);
+}
+```
+
 ## Google Store subscription (recurring billing) feature
 
 This explains how to process events related to life cycles, such as Google Store subscription payment renewals and expiries.
@@ -766,6 +816,79 @@ public void setProductId(String productId)
 | ---- | ---- | ---- | ---- |
 | setProductId | productId | String: Product ID | Product ID is set. |
 
+### IapSubscriptionStatus
+
+* IapSubscriptionStatus 객체로 구독 상태 정보를 확인할 수 있습니다.
+* 구독 상태 코드는 IapSubscriptionStatus.StatusCode에 정의되어 있습니다.
+
+```java
+/* IapSubscriptionStatus.java */
+public String getStoreCode()
+public String getPaymentId()
+public String getOriginalPaymentId()
+public String getPaymentSequence()
+public String getProductId()
+public String getProductType()
+public String getProductSequence()
+public String getUserId()
+public float getPrice()
+public String getPriceCurrencyCode()
+public String getAccessToken()
+public String getPurchaseType()
+public String getPurchaseTime()
+public String getExpiryTime()
+public String getDeveloperPayload()
+public int getStatusCode()
+public String getStatusDescription()
+```
+
+| Method | Returns |  |
+| --- | --- | --- |
+| getStoreCode | String | 스토어 코드를 반환합니다. |
+| getPaymentId | String | 결제 ID를 반환합니다. |
+| getOriginalPaymentId | String | 원본 결제 ID를 반환합니다. |
+| getPaymentSequence | String | 결제 고유 번호를 반환합니다. |
+| getProductId | String | 상품 ID를 반환합니다. |
+| getProductType | String | 상품 유형을 반환합니다. |
+| getProductSeq | String | 상품 고유 번호를 반환합니다. |
+| getUserId | String | 사용자 ID를 반환합니다. |
+| getPrice | float | 가격 정보를 반환합니다. |
+| getPriceCurrencyCode | String | 통화 정보를 반환합니다. |
+| getAccessToken | String | 소비에 사용되는 토큰을 반환합니다. |
+| getPurchaseType | String | 결제 유형을 반환합니다.<br>"Test" or "Promo" or null |
+| getPurchaseTime | long | 상품 구매 시간을 반환합니다. |
+| getExpiryTime | long | 구독 상품의 남은 시간을 반환합니다. |
+| getDeveloperPayload | String | 사용자 데이터를 반환합니다. |
+| getStatusCode | int | 구독 상태 코드를 반환합니다. |
+| getStatusDescription | String | 구독 상태 코드에 대한 설명을 반환합니다. |
+
+### IapSubscriptionStatus.StatusCode
+
+* 구독 상태를 나타내는 코드 입니다.
+
+```java
+/* IapSubscriptionStatus.java */
+int ACTIVE
+int CANCELED
+int ON_HOLD
+int IN_GRACE_PERIOD
+int PAUSED
+int REVOKED
+int EXPIRED
+int UNKNOWN
+```
+
+| Name | Code | Status | Description |
+| --- | --- | --- | --- |
+| ACTIVE | 0 | 활성 | 구독이 활성 상태입니다. |
+| CANCELED | 3 | 취소 | 구독이 취소되었습니다. |
+| ON\_HOLD | 5 | 계정 보류 | 정기 결제가 계정 보류 상태가 되었습니다(사용 설정된 경우). |
+| IN\_GRACE\_PERIOD | 6 | 유예 기간 | 정기 결제가 유예 기간 상태로 전환되었습니다(사용 설정된 경우). |
+| PAUSED | 10 | 일시 중지 | 구독이 일시 중지되었습니다. |
+| REVOKED | 12 | 해지 | 정기 결제가 만료 시간 전에 사용자에 의해 취소되었습니다. |
+| EXPIRED | 13 | 만료 | 정기 결제가 만료되었습니다. |
+| UNKNOWN | 9999 | 미정의 | 정의 되지 않은 상태입니다. |
+
 ### IapService.PurchasesUpdatedListener
 
 * Purchase information, if updated, is notified via onPurchasesUpdated of an object inherited with IapService.PurchasesUpdatedListener.
@@ -781,6 +904,15 @@ void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
 ```java
 void onPurchasesResponse(IapResult result,
                          List<IapPurchase> purchaseList)
+```
+
+### IapService.SubscriptionsStatusResponseListener
+
+* 구독 상태 조회 시 SubscriptionsStatusResponseListener 상속 구현한 객체의 onSubscriptionsStatusResponse 메서드를 통해 통지됩니다.
+
+```java
+void onSubscriptionsStatusResponse(IapResult result,
+                                   List<IapSubscriptionStatus> subscriptionsStatus);
 ```
 
 ## Error Codes
