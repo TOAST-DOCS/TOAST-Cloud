@@ -18,6 +18,11 @@
 ```groovy
 apply plugin: 'com.android.application'
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.toast.android:toast-unity-iap-google:0.25.0'
@@ -27,6 +32,10 @@ dependencies {
 #### One Store
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'com.android.application'
 
 dependencies {
@@ -38,6 +47,10 @@ dependencies {
 #### Galaxy Store
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'com.android.application'
 
 dependencies {
@@ -68,7 +81,7 @@ dependencies {
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
 
 > **초기화 시점**
-> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며, 
+> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며,
 > 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/#_4) 항목 참고)하기 전에 초기화를 해야 합니다.
 
 ### 초기화 API 명세
@@ -356,17 +369,17 @@ public class IapPurchase
 
 | Property | Returns | Description |
 |---|---|---|
-| PaymentId | string | 결제 ID | 
-| PaymentSequence | string | 결제 고유 번호 | 
-| OriginalPaymentId | string | 원본 결제 ID | 
-| ProductId | string | 상품 ID | 
-| ProductType | string | 상품 유형 | 
-| UserId | string | 사용자 ID | 
-| Price | float | 가격 | 
-| PriceCurrencyCode | string | 통화 정보 | 
-| AccessToken | string | 소비에 사용되는 토큰 | 
-| PurchaseTime | long | 상품 구매 시간 | 
-| ExpiryTime | long | 구독 상품의 남은 시간 | 
+| PaymentId | string | 결제 ID |
+| PaymentSequence | string | 결제 고유 번호 |
+| OriginalPaymentId | string | 원본 결제 ID |
+| ProductId | string | 상품 ID |
+| ProductType | string | 상품 유형 |
+| UserId | string | 사용자 ID |
+| Price | float | 가격 |
+| PriceCurrencyCode | string | 통화 정보 |
+| AccessToken | string | 소비에 사용되는 토큰 |
+| PurchaseTime | long | 상품 구매 시간 |
+| ExpiryTime | long | 구독 상품의 남은 시간 |
 
 
 ## 오류 코드

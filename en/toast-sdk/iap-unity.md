@@ -18,6 +18,11 @@
 ```groovy
 apply plugin: 'com.android.application'
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.toast.android:toast-unity-iap-google:0.25.0'
@@ -27,6 +32,10 @@ dependencies {
 #### One Store
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'com.android.application'
 
 dependencies {
@@ -34,9 +43,14 @@ dependencies {
     implementation 'com.toast.android:toast-unity-iap-onestore:0.25.0'
 **DEPS**}
 ```
+
 #### Galaxy Store
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'com.android.application'
 
 dependencies {
