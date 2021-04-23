@@ -10,6 +10,10 @@
 - Add the code as below to build.gradle.
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation 'com.toast.android:toast-logger:0.25.0'
     ...
