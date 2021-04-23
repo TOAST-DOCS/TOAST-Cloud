@@ -20,7 +20,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.24.4'
+    implementation 'com.toast.android:toast-unity-iap-google:0.25.0'
 **DEPS**}
 ```
 
@@ -31,7 +31,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.24.4'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.25.0'
 **DEPS**}
 ```
 #### Galaxy Store
@@ -41,7 +41,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-galaxy:0.24.4'
+    implementation 'com.toast.android:toast-unity-iap-galaxy:0.25.0'
 **DEPS**}
 ```
 
@@ -67,7 +67,7 @@ dependencies {
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
 
 > **초기화 시점**
-> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며, 
+> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며,
 > 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/#_4) 항목 참고)하기 전에 초기화를 해야 합니다.
 
 ### 초기화 API 명세
@@ -202,7 +202,7 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
     - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 복원할 수 있습니다.
     - 구독 상품 복원 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
 - iOS에서만 구독한 상품을 복원 가능합니다.
-    - 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다. 
+    - 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다.
 
 ### 구독 복원 API 명세
 
@@ -356,17 +356,17 @@ public class IapPurchase
 
 | Property | Returns | Description |
 |---|---|---|
-| PaymentId | string | 결제 ID | 
-| PaymentSequence | string | 결제 고유 번호 | 
-| OriginalPaymentId | string | 원본 결제 ID | 
-| ProductId | string | 상품 ID | 
-| ProductType | string | 상품 유형 | 
-| UserId | string | 사용자 ID | 
-| Price | float | 가격 | 
-| PriceCurrencyCode | string | 통화 정보 | 
-| AccessToken | string | 소비에 사용되는 토큰 | 
-| PurchaseTime | long | 상품 구매 시간 | 
-| ExpiryTime | long | 구독 상품의 남은 시간 | 
+| PaymentId | string | 결제 ID |
+| PaymentSequence | string | 결제 고유 번호 |
+| OriginalPaymentId | string | 원본 결제 ID |
+| ProductId | string | 상품 ID |
+| ProductType | string | 상품 유형 |
+| UserId | string | 사용자 ID |
+| Price | float | 가격 |
+| PriceCurrencyCode | string | 통화 정보 |
+| AccessToken | string | 소비에 사용되는 토큰 |
+| PurchaseTime | long | 상품 구매 시간 |
+| ExpiryTime | long | 구독 상품의 남은 시간 |
 
 ## Error code
 
