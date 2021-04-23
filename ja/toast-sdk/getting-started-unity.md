@@ -102,7 +102,7 @@ Unity用TOAST SDKは、別途のSample Unity Packageがあります。Sampleを�
 > macOS： (Unityインストールフォルダ)/PlaybackEngines/AndroidPlayer/Tools/GradleTemplates
 
 #### mainTemplate.gradle設定
-- mainTemplate.gradleにJCenterとGoogleリポジトリを追加します。
+- mainTemplate.gradleにmavenCentralとGoogleリポジトリを追加します。
 - 各モジュール別にAndroid Unityプラグインがあり、使用したいモジュールのプラグインをmainTemplate.gradleに追加します。
     - Android Unityプラグイン追加に関するガイドは、モジュール別ガイドを確認してください。
 

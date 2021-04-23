@@ -100,7 +100,7 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package가 있습니다. Sample을
 > macOS : (유니티 설치 폴더)/PlaybackEngines/AndroidPlayer/Tools/GradleTemplates
 
 #### mainTemplate.gradle 설정
-- mainTemplate.gradle에 JCenter와 Google 리포지토리를 추가합니다.
+- mainTemplate.gradle에 mavenCentral와 Google 리포지토리를 추가합니다.
 - 각 모듈별로 안드로이드 유니티 플러그인이 있으며, 사용을 원하는 모듈의 플러그인을 mainTemplate.gradle에 추가합니다.
     - 안드로이드 유니티 플러그인 추가에 대한 가이드는 모듈별 가이드를 확인해주세요.
 

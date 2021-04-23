@@ -103,7 +103,7 @@ TOAST SDK for Unity has an additional sample unity package, and below describes 
 > macOS: (Unity installation folder)/PlaybackEngines/AndroidPlayer/Tools/GradleTemplates
 
 #### mainTemplate.gradle Setting
-- JCenter and Google repositories must be added to mainTemplate.gradle.
+- mavenCentral and Google repositories must be added to mainTemplate.gradle.
 - Each module has Android Unity plugins, and add a plugin of the module of choice to mainTemplate.gradle.
     - To add Android Unity Plugins, see guides for each module.
 
