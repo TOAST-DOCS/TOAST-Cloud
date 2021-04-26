@@ -1,8 +1,20 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.22.0 (2021.04.27)
+
+### Added
+
+* TOAST IAP
+    * 구글 구독 상태 조회 API 추가
+
+### plugin version
+
+* Android : 0.25.0
+* iOS : 0.27.2
+
 ## 0.21.6 (2021.03.23)
 
-### 버그 수정
+### Fixed
 
 - File 충돌 버그 수정
 
@@ -33,7 +45,7 @@
 
 - Native Plugin Version Update
 
-### 기능 추가
+### Added
 
 - Galaxy Store 추가
 
@@ -50,7 +62,7 @@
 - Android : 0.23.1
 - iOS : 0.27.0
 
-### Common 
+### Common
 
 - Native Plugin Version Update
 
@@ -61,7 +73,7 @@
 - Android : 0.22.0
 - iOS : 0.25.1
 
-### 버그 수정
+### Fixed
 
 - InstanceLogger 사용시, 암호화키를 호출하지 않는 버그 수정
 
@@ -72,7 +84,7 @@
 - Android : 0.22.0
 - iOS : 0.25.1
 
-### Common 
+### Common
 
 - Native Plugin Version Update
 
@@ -99,13 +111,13 @@
 - Android : 0.21.0
 - iOS : 0.23.0
 
-### 버그 수정
+### Fixed
 
 - CrashFilter관련 처리에서 Exception 이슈
 
 ## 0.19.1 (2020.01.23)
 
-### 버그 수정
+### Fixed
 
 - OnHandleException 콜백 호출 이슈
 

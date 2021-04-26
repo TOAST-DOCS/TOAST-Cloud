@@ -17,8 +17,13 @@
 * TOAST FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.24.4'
+    implementation 'com.toast.android:toast-push-fcm:0.25.0'
     ...
 }
 ```

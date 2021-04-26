@@ -23,16 +23,16 @@ TOAST SDK services can be selectively applied for your needs.
 
 | Gradle Dependency | Service |
 | --- | --- |
-| com.toast.android:toast-common:0.24.4       | TOAST Common      |
-| com.toast.android:toast-core:0.24.4         | TOAST Core        |
-| com.toast.android:toast-logger:0.24.4       | TOAST Log & Crash |
-| com.toast.android:toast-crash-reporter-ndk:0.24.4       | TOAST Native Crash Reporter |
-| com.toast.android:toast-iap-core:0.24.4     | TOAST In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.24.4   | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.24.4 | TOAST In-app Purchase <br>OneStore |
-| com.toast.android:toast-iap-galaxy:0.24.4 | TOAST In-app Purchase <br>GalaxyStore |
-| com.toast.android:toast-push-core:0.24.4    | TOAST Push Core   |
-| com.toast.android:toast-push-fcm:0.24.4    | TOAST Push <br>Firebase Cloud Messaging |
+| com.toast.android:toast-common:0.25.0       | TOAST Common      |
+| com.toast.android:toast-core:0.25.0         | TOAST Core        |
+| com.toast.android:toast-logger:0.25.0       | TOAST Log & Crash |
+| com.toast.android:toast-crash-reporter-ndk:0.25.0       | TOAST Native Crash Reporter |
+| com.toast.android:toast-iap-core:0.25.0     | TOAST In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.25.0   | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.25.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-iap-galaxy:0.25.0 | TOAST In-app Purchase <br>GalaxyStore |
+| com.toast.android:toast-push-core:0.25.0    | TOAST Push Core   |
+| com.toast.android:toast-push-fcm:0.25.0    | TOAST Push <br>Firebase Cloud Messaging |
 
 ## Apply TOAST SDK to Android Studio Projects
 
@@ -44,8 +44,12 @@ Set dependency as below, to use all TOAST SDK services.
 > For more details, see [Guide for Unity](./getting-started-unity/#android).
 
 ```groovy
+repositories {
+  mavenCentral()
+}
+
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.24.4'
+  implementation 'com.toast.android:toast-sdk:0.25.0'
 }
 ```
 

@@ -28,7 +28,7 @@ TOAST SDK provides the following services:
 
 ### Android
 
-TOAST Android SDK is distributed via **jCenter** and enabled only with simple Gradle settings.  
+TOAST Android SDK is distributed via **mavenCentral** and enabled only with simple Gradle settings.  
 
 - [Get started with Android](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-android)
 
