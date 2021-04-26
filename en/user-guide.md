@@ -37,7 +37,7 @@ They are classified by the country of choice, and allowed to join when they agre
 Access https://toast.com and click Join on the top right.
 Follow the procedure to join membership. 
 
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_202103_en.png)
+![userguide_01_202104](https://static.toastoven.net/toast/user_guide/userguide_01_202104_en.png)
 
 
 #### Select Country

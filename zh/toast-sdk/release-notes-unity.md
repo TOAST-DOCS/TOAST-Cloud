@@ -1,8 +1,20 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.22.0 (2021.04.27)
+
+### Added
+
+* TOAST IAP
+    * 구글 구독 상태 조회 API 추가
+
+### plugin version
+
+* Android : 0.25.0
+* iOS : 0.27.2
+
 ## 0.21.6 (2021.03.23)
 
-### 버그 수정
+### Fixed
 
 - File 충돌 버그 수정
 
@@ -33,7 +45,7 @@
 
 - Native Plugin Version Update
 
-### 기능 추가
+### Added
 
 - Galaxy Store 추가
 
@@ -50,7 +62,7 @@
 - Android : 0.23.1
 - iOS : 0.27.0
 
-### Common 
+### Common
 
 - Native Plugin Version Update
 
@@ -61,7 +73,7 @@
 - Android : 0.22.0
 - iOS : 0.25.1
 
-### 버그 수정
+### Fixed
 
 - InstanceLogger 사용시, 암호화키를 호출하지 않는 버그 수정
 
@@ -72,7 +84,7 @@
 - Android : 0.22.0
 - iOS : 0.25.1
 
-### Common 
+### Common
 
 - Native Plugin Version Update
 
@@ -83,13 +95,14 @@
 - Android : 0.21.0
 - iOS : 0.23.0
 
-### 버그 수정
+### Fixed
 
 - 빈 파일이 생성된 경우, 복호화 에러 수정
 
-### 기능 개선
+### Enhanced
 
 - Windows 환경에서 C++ DLL 의존성 제거
+
 
 ## 0.20.0 (2020.03.26)
 
@@ -98,25 +111,25 @@
 - Android : 0.21.0
 - iOS : 0.23.0
 
-### 버그 수정
+### Fixed
 
 - CrashFilter관련 처리에서 Exception 이슈
 
 ## 0.19.1 (2020.01.23)
 
-### 버그 수정
+### Fixed
 
 - OnHandleException 콜백 호출 이슈
 
 ## 0.19.0 (2019.12.27)
 
-### 추가 사항
+### Added
 
 - Unity Play Services Resolver 적용
 
 ## 0.18.0 (2019.12.06)
 
-### 공통
+### Common
 
 - iOS 0.20.1 framework 적용
 - Android 0.19.4 aar 포함해서 배포
@@ -132,13 +145,13 @@
 
 ### TOAST IAP
 
-#### 변경 사항
+#### Changed
 
 - 소비성 구독 상품 추가
 
 ## 0.15.1 (2019.07.29)
 
-### 공통
+### Common
 
 - iOS 0.16.1 framework 적용
 
@@ -146,7 +159,7 @@
 
 ### TOAST IAP
 
-#### 변경 사항
+#### Changed
 
 - ActivedPurchases -> ActivatedPurchses
 
@@ -154,7 +167,7 @@
 
 ### TOAST Log & Crash
 
-#### 추가 사항
+#### Added
 
 - Unity Standalone/WebGL 버전 추가
   - Logger
@@ -162,7 +175,7 @@
 
 ### TOAST IAP
 
-#### 추가 사항
+#### Added
 
 - ActivedPurchases 추가
 

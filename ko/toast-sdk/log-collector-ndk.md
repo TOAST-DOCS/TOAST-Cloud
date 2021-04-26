@@ -18,21 +18,25 @@ Android 앱에 네이티브 라이브러리가 포함된 경우 간단한 빌드
 - 앱 수준 build.gradle에서 의존성을 추가합니다.
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     // ...
-    
+
     // Add the TOAST Logger dependency
-    implementation 'com.toast.android:toast-logger:0.24.4'    
-    
+    implementation 'com.toast.android:toast-logger:0.25.0'    
+
     // Add the TOAST Crash Reporter for NDK dependency
-    implementation 'com.toast.android:toast-crash-reporter-ndk:0.24.4'
+    implementation 'com.toast.android:toast-crash-reporter-ndk:0.25.0'
 }
 ```
 
 ### 크래시 분석
 
 * Native 크래시가 발생하면 덤프(.dmp) 파일이 생성됩니다.
-* 생성된 덤프 파일을 해석하는 과정을 **Symbolication**이라 합니다. 
+* 생성된 덤프 파일을 해석하는 과정을 **Symbolication**이라 합니다.
 * 정확한 스택 추적을 위해서는 반드시 심볼 파일을 업로드 해야 합니다.
 * 심볼 파일이 업로드되면 크래시 발생 시 Log & Crash Search Console에서 분석된 크래시 정보를 확인할 수 있습니다.
 

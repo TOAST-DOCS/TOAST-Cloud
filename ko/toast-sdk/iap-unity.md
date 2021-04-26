@@ -18,31 +18,44 @@
 ```groovy
 apply plugin: 'com.android.application'
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.24.4'
+    implementation 'com.toast.android:toast-unity-iap-google:0.25.0'
 **DEPS**}
 ```
 
 #### One Store
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.24.4'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.25.0'
 **DEPS**}
 ```
 
 #### Galaxy Store
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-galaxy:0.24.4'
+    implementation 'com.toast.android:toast-unity-iap-galaxy:0.25.0'
 **DEPS**}
 ```
 
@@ -68,7 +81,7 @@ dependencies {
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
 
 > **초기화 시점**
-> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며, 
+> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며,
 > 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/#_4) 항목 참고)하기 전에 초기화를 해야 합니다.
 
 ### 초기화 API 명세
@@ -246,6 +259,33 @@ ToastIap.RequestActivatedPurchases((result, purchases) =>
 });
 ```
 
+## 구독 상태 조회
+
+- User ID 기준으로 구입한 구독 상품의 상태를 조회할 수 있습니다.
+- 구독 상태 조회 결과는 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체의 리스트로 반환됩니다.
+- 구독 상태는 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus).GetStatus() 메서드로 확인할 수 있습니다.
+- 구독 상태 코드는 [IapSubscriptionStatus.Status](./iap-android/#iapsubscriptionstatusstatus)에 정의되어 있습니다.
+
+### 구독 상태 조회 API 명세
+
+```csharp
+public static void RequestSubscriptionsStatus(
+            bool includeExpiredSubscriptions,
+            ToastCallback<List<IapSubscriptionStatus>> callback);
+```
+
+### 구독 상태 조회 예시
+
+```csharp
+ToastIap.RequestSubscriptionsStatus(true, (result, subscriptionsStatus) =>
+{
+    if (result.IsSuccessful)
+    {
+        // 성공
+    }
+});
+```
+
 ## TOAST IAP Class Reference
 
 ### ToastIapConfiguration
@@ -356,18 +396,83 @@ public class IapPurchase
 
 | Property | Returns | Description |
 |---|---|---|
-| PaymentId | string | 결제 ID | 
-| PaymentSequence | string | 결제 고유 번호 | 
-| OriginalPaymentId | string | 원본 결제 ID | 
-| ProductId | string | 상품 ID | 
-| ProductType | string | 상품 유형 | 
-| UserId | string | 사용자 ID | 
-| Price | float | 가격 | 
-| PriceCurrencyCode | string | 통화 정보 | 
-| AccessToken | string | 소비에 사용되는 토큰 | 
-| PurchaseTime | long | 상품 구매 시간 | 
-| ExpiryTime | long | 구독 상품의 남은 시간 | 
+| PaymentId | string | 결제 ID |
+| PaymentSequence | string | 결제 고유 번호 |
+| OriginalPaymentId | string | 원본 결제 ID |
+| ProductId | string | 상품 ID |
+| ProductType | string | 상품 유형 |
+| UserId | string | 사용자 ID |
+| Price | float | 가격 |
+| PriceCurrencyCode | string | 통화 정보 |
+| AccessToken | string | 소비에 사용되는 토큰 |
+| PurchaseTime | long | 상품 구매 시간 |
+| ExpiryTime | long | 구독 상품의 남은 시간 |
 
+### IapSubscriptionStatus
+
+```csharp
+public class IapSubscriptionStatus
+{
+    public string GetProductId();
+    public string GetProductType();
+    public string GetPaymentId();
+    public string GetOriginalPaymentId();
+    public string GetPaymentSequence();
+    public string GetUserId();
+    public float GetPrice();
+    public string GetPriceCurrencyCode();
+    public string GetAccessToken();
+    public long GetPurchaseTime();
+    public long GetExpiryTime();
+    public string GetDeveloperPayload();
+    public Status GetStatus();
+    public string GetStatusDescription();
+}
+```
+
+| Method | Returns | Description |
+|---|---|---|
+| GetProductId | string | 결제 ID |
+| GetProductType | string | 결제 고유 번호 |
+| GetPaymentId | string | 원본 결제 ID |
+| GetOriginalPaymentId | string | 상품 ID |
+| GetPaymentSequence | string | 상품 유형 |
+| GetUserId | string | 사용자 ID |
+| GetPrice | float | 가격 |
+| GetPriceCurrencyCode | string | 통화 정보 |
+| GetAccessToken | string | 소비에 사용되는 토큰 |
+| GetPurchaseTime | long | 상품 구매 시간 |
+| GetExpiryTime | long | 구독 상품의 남은 시간 |
+| GetDeveloperPayload | string | 개발자 페이로드 |
+| GetStatus | Status | 구독 상태 |
+| GetStatusDescription | string | 구독 상태 설명 |
+
+### IapSubscriptionStatus.Status
+
+```csharp
+public enum Status
+{
+    Active = 0,
+    Canceled = 3,
+    OnHold = 5,
+    InGracePeriod = 6,
+    Paused = 10,
+    Revoked = 12,
+    Expired = 13,
+    Unknown = 9999
+}
+```
+
+| Name | Code | Status | Description |
+| --- | --- | --- | --- |
+| Active | 0 | 활성 | 구독이 활성 상태입니다. |
+| Canceled | 3 | 취소 | 구독이 취소되었습니다. |
+| OnHold | 5 | 계정 보류 | 정기 결제가 계정 보류 상태가 되었습니다(사용 설정된 경우). |
+| InGracePeriod | 6 | 유예 기간 | 정기 결제가 유예 기간 상태로 전환되었습니다(사용 설정된 경우). |
+| Paused | 10 | 일시 중지 | 구독이 일시 중지되었습니다. |
+| Revoked | 12 | 해지 | 정기 결제가 만료 시간 전에 사용자에 의해 취소되었습니다. |
+| Expired | 13 | 만료 | 정기 결제가 만료되었습니다. |
+| Unknown | 9999 | 미정의 | 정의 되지 않은 상태입니다. |
 
 ## 오류 코드
 

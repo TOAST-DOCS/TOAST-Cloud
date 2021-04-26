@@ -37,7 +37,7 @@ NHN Cloud会员根据服务提供主体，分为韩国会员(NHN)与日本会员
 访问https://toast.com后，在界面右上方点击**注册会员**。
 会员注册步骤如下。
 
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_202103_zh.png)
+![userguide_01_202104](https://static.toastoven.net/toast/user_guide/userguide_01_202104_zh.png)
 
 
 #### 选择国家 

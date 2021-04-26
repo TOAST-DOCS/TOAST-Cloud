@@ -12,7 +12,7 @@ NHN Cloud 유저는 서비스 지역과 목적에 따라 사용할 리전을 선
 
 ## NHN Cloud 리전 위치
 NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전을 확대하고 있습니다.
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/region_guide%2001.png)
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Region_guide_2021.png)
 
 ## NHN Cloud 리전 서비스
 **리전 서비스**
@@ -38,7 +38,8 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Network | VPC | 리전 | O | O | O | O |
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
-|  | 물리 Load Balancer | 리전 | O | O |  |  |
+|  | 물리 Load Balancer | 리전 |  | O |  |  |
+|  | NAT Instance | 리전 | O | O |  |  |
 |  | DNS Plus | 글로벌 |  |  |  |  |
 | Storage | Block Storage | 리전 | O | O | O | O |
 |  | NAS (offline) | 리전 | O | O |  | O |
@@ -60,6 +61,8 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | OTP | 리전 | O |  |  |  |
 |  | DBSafer | 리전 | O | O |  |  |
 |  | Web Firewall | 리전 | O | O |  |  |
+|  | DDoS Guard | 리전 | O | O |  |  |
+|  | SIEM | 리전 | O | O |  |  |
 |  | Vaccine | 리전 | O | O |  |  |
 |  | Secure Key Manager | 글로벌 |  |  |  |  |
 |  | NHN Compliance | 글로벌 |  |  |  |  |
@@ -79,6 +82,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | ROLE | 글로벌 |  |  |  |  |
 |  | API Gateway | 리전 | O |  |  |  |
 |  | RTCS | 글로벌 |  |  |  |  |
+|  | ShortURL | 글로벌 |  |  |  |  |
 | Mobile Service | IAP | 글로벌 |  |  |  |  |
 |  | Mobile Device Info | 글로벌 |  |  |  |  |
 | Search | Cloud Search | 리전 | O |  |  |  |
@@ -86,7 +90,8 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Corporation Search | 리전 | O |  |  |  |
 |  | Address Search | 리전 | O |  |  |  |
 | Analytics | Log & Crash Search | 글로벌 |  |  |  |  |
-| Dev Tools | Deploy | 글로벌 |  |  |  |  |
+| Dev Tools | Pipeline | 리전 | O | O |  |  |
+|  | Deploy | 글로벌 |  |  |  |  |
 | Management | Managed | 리전 | O | O |  |  |
 |  | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |

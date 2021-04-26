@@ -1,5 +1,17 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Unity
 
+## 0.22.0 (2021.04.27)
+
+### 기능 추가
+
+* TOAST IAP
+    * 구글 구독 상태 조회 API 추가
+
+### plugin version
+
+* Android : 0.25.0
+* iOS : 0.27.2
+
 ## 0.21.6 (2021.03.23)
 
 ### 버그 수정
@@ -14,7 +26,7 @@
 
 ### plugin version
 
-- Android : 0.24.4
+- Android : 0.25.0
 
 ## 0.21.4 (2020.12.10)
 
@@ -50,7 +62,7 @@
 - Android : 0.23.1
 - iOS : 0.27.0
 
-### Common 
+### Common
 
 - Native Plugin Version Update
 
@@ -72,7 +84,7 @@
 - Android : 0.22.0
 - iOS : 0.25.1
 
-### Common 
+### Common
 
 - Native Plugin Version Update
 

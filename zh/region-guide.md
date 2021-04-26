@@ -11,7 +11,7 @@ NHN Cloud users are allowed to select regions depending on the service area and 
 
 ## Location of TOAT Regions 
 NHN Cloud is expanding its regions to make its service globally available.  
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/region_guide%2001.png)
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Region_guide_2021.png)
 
 ## NHN Cloud Regional Service 
 
@@ -39,6 +39,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
 |  | Physical Load Balancer | Regional | O | O |  |  |
+|  | NAT Instance | Regional |  | O |  |  |
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
 |  | NAS (offline) | Regional | O | O |  | O |
@@ -61,7 +62,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | OTP | Regional | O |  |  |  |
 |  | DBSafer | Regional | O | O  |  |  |
 |  | Web Firewall | Regional | O | O  |  |  |
-|  | Vaccine | Regional | O | O  |  |  |
+|  | DDoS Guard | Regional | O | O |  |  |
+|  | Vaccine | Regional | O | O |  |  |
 |  | Secure Key Manager | Global |  |  |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image | Regional | O |  |  |  |
@@ -76,13 +78,15 @@ All users are provided with the same features, policy, stability and usability, 
 |  | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O |  |  |  |
 |  | RTCS | Global |  |  |  |  |
+|  | ShortURL | Global |  |  |  |  |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
 |  | Address Search | Regional | O |  |  |  |
-| Dev Tools | Deploy | Global |  |  |  |  |
+| Dev Tools | Pipeline | Regional | O | O |  |  |
+|  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
-|  | Service Monitoring | Global |  |  |  |  |
+|  |  | Global |  |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
 | Workplace Dooray! | Project | Global |  |  |  |  |
 |  | Messenger | Global |  |  |  |  |

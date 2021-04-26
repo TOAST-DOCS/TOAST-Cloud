@@ -3,46 +3,59 @@
 ## Prerequisites
 
 1. [Install the TOAST SDK](./getting-started-unity)
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/zh/Mobile%20Service/IAP/zh/console-guide/)합니다.
-3. IAP에서 [AppKey를 확인](https://docs.toast.com/zh/Mobile%20Service/IAP/zh/console-guide/#appkey)합니다.
+2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/en/Mobile%20Service/IAP/en/console-guide/)합니다.
+3. IAP에서 [AppKey를 확인](https://docs.toast.com/en/Mobile%20Service/IAP/en/console-guide/#appkey)합니다.
 
 ## Android 설정
 ### Gradle 빌드 설정
-- In the Unity Editor, open the Build Settings windows (Player Settings > Publishing Settings > Build).
-- Set the Build System drop-down to Gradle
-- Use the Custom Gradle Template checkbocx unbder Build System
-- Add below to dependencies of mainTemplate.gradle.
+- Unity Editor에서, Build Settings 창을 엽니다. (Player Settings > Publishing Settings > Build).
+- Build System 목록에서 Gradle을 선택합니다.
+- Build System 하위의 체크 박스를 선택하여 Custom Gralde Template을 사용합니다.
+- mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
 
 #### Google Play Store
 
 ```groovy
 apply plugin: 'com.android.application'
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.24.4'
+    implementation 'com.toast.android:toast-unity-iap-google:0.25.0'
 **DEPS**}
 ```
 
 #### One Store
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.24.4'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.25.0'
 **DEPS**}
 ```
 
 #### Galaxy Store
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-galaxy:0.24.4'
+    implementation 'com.toast.android:toast-unity-iap-galaxy:0.25.0'
 **DEPS**}
 ```
 
@@ -68,7 +81,7 @@ dependencies {
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
 
 > **초기화 시점**
-> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며, 
+> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며,
 > 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/#_4) 항목 참고)하기 전에 초기화를 해야 합니다.
 
 ### 초기화 API 명세
@@ -178,7 +191,7 @@ ToastIap.Purchase(productId, developerPayload);
 ## 미소비 결제 조회
 - 아직 소비되지 않은 소비성 상품 정보를 조회합니다.
     - 미소비 결제 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
-- 사용자에게 상품을 지급된 후 [Consume API](../../../Mobile%20Service/IAP/zh/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
+- 사용자에게 상품을 지급된 후 [Consume API](../../../Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 
 ### 미소비 결제 조회 API 명세
 
@@ -203,7 +216,7 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
     - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 복원할 수 있습니다.
     - 구독 상품 복원 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
 - iOS에서만 구독한 상품을 복원 가능합니다.
-    - 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다. 
+    - 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다.
 
 ### 구독 복원 API 명세
 
@@ -243,6 +256,33 @@ ToastIap.RequestActivatedPurchases((result, purchases) =>
     if (result.IsSuccessful)
     {
         // 활성화된 구독 조회 성공
+    }
+});
+```
+
+## 구독 상태 조회
+
+- User ID 기준으로 구입한 구독 상품의 상태를 조회할 수 있습니다.
+- 구독 상태 조회 결과는 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체의 리스트로 반환됩니다.
+- 구독 상태는 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus).GetStatus() 메서드로 확인할 수 있습니다.
+- 구독 상태 코드는 [IapSubscriptionStatus.Status](./iap-android/#iapsubscriptionstatusstatus)에 정의되어 있습니다.
+
+### 구독 상태 조회 API 명세
+
+```csharp
+public static void RequestSubscriptionsStatus(
+            bool includeExpiredSubscriptions,
+            ToastCallback<List<IapSubscriptionStatus>> callback);
+```
+
+### 구독 상태 조회 예시
+
+```csharp
+ToastIap.RequestSubscriptionsStatus(true, (result, subscriptionsStatus) =>
+{
+    if (result.IsSuccessful)
+    {
+        // 성공
     }
 });
 ```
@@ -357,76 +397,143 @@ public class IapPurchase
 
 | Property | Returns | Description |
 |---|---|---|
-| PaymentId | string | 결제 ID | 
-| PaymentSequence | string | 결제 고유 번호 | 
-| OriginalPaymentId | string | 원본 결제 ID | 
-| ProductId | string | 상품 ID | 
-| ProductType | string | 상품 유형 | 
-| UserId | string | 사용자 ID | 
-| Price | float | 가격 | 
-| PriceCurrencyCode | string | 통화 정보 | 
-| AccessToken | string | 소비에 사용되는 토큰 | 
-| PurchaseTime | long | 상품 구매 시간 | 
-| ExpiryTime | long | 구독 상품의 남은 시간 | 
+| PaymentId | string | 결제 ID |
+| PaymentSequence | string | 결제 고유 번호 |
+| OriginalPaymentId | string | 원본 결제 ID |
+| ProductId | string | 상품 ID |
+| ProductType | string | 상품 유형 |
+| UserId | string | 사용자 ID |
+| Price | float | 가격 |
+| PriceCurrencyCode | string | 통화 정보 |
+| AccessToken | string | 소비에 사용되는 토큰 |
+| PurchaseTime | long | 상품 구매 시간 |
+| ExpiryTime | long | 구독 상품의 남은 시간 |
 
-## 오류 코드
+### IapSubscriptionStatus
 
-### 공통 오류 코드
-| 에러 코드 | 설명 |
+```csharp
+public class IapSubscriptionStatus
+{
+    public string GetProductId();
+    public string GetProductType();
+    public string GetPaymentId();
+    public string GetOriginalPaymentId();
+    public string GetPaymentSequence();
+    public string GetUserId();
+    public float GetPrice();
+    public string GetPriceCurrencyCode();
+    public string GetAccessToken();
+    public long GetPurchaseTime();
+    public long GetExpiryTime();
+    public string GetDeveloperPayload();
+    public Status GetStatus();
+    public string GetStatusDescription();
+}
+```
+
+| Method | Returns | Description |
+|---|---|---|
+| GetProductId | string | 결제 ID |
+| GetProductType | string | 결제 고유 번호 |
+| GetPaymentId | string | 원본 결제 ID |
+| GetOriginalPaymentId | string | 상품 ID |
+| GetPaymentSequence | string | 상품 유형 |
+| GetUserId | string | 사용자 ID |
+| GetPrice | float | 가격 |
+| GetPriceCurrencyCode | string | 통화 정보 |
+| GetAccessToken | string | 소비에 사용되는 토큰 |
+| GetPurchaseTime | long | 상품 구매 시간 |
+| GetExpiryTime | long | 구독 상품의 남은 시간 |
+| GetDeveloperPayload | string | 개발자 페이로드 |
+| GetStatus | Status | 구독 상태 |
+| GetStatusDescription | string | 구독 상태 설명 |
+
+### IapSubscriptionStatus.Status
+
+```csharp
+public enum Status
+{
+    Active = 0,
+    Canceled = 3,
+    OnHold = 5,
+    InGracePeriod = 6,
+    Paused = 10,
+    Revoked = 12,
+    Expired = 13,
+    Unknown = 9999
+}
+```
+
+| Name | Code | Status | Description |
+| --- | --- | --- | --- |
+| Active | 0 | 활성 | 구독이 활성 상태입니다. |
+| Canceled | 3 | 취소 | 구독이 취소되었습니다. |
+| OnHold | 5 | 계정 보류 | 정기 결제가 계정 보류 상태가 되었습니다(사용 설정된 경우). |
+| InGracePeriod | 6 | 유예 기간 | 정기 결제가 유예 기간 상태로 전환되었습니다(사용 설정된 경우). |
+| Paused | 10 | 일시 중지 | 구독이 일시 중지되었습니다. |
+| Revoked | 12 | 해지 | 정기 결제가 만료 시간 전에 사용자에 의해 취소되었습니다. |
+| Expired | 13 | 만료 | 정기 결제가 만료되었습니다. |
+| Unknown | 9999 | 미정의 | 정의 되지 않은 상태입니다. |
+
+## Error code
+
+### Common error code
+| Error code | Description |
 |---|---|
-| 50000 | 초기화 되지 않았습니다 |
-| 50001 | 지원하지 않는 기능입니다 |
-| 50002 | 지원하지 않는 스토어 코드입니다 |
-| 50003 | 사용할 수 없는 상품입니다 |
-| 50004 | 이미 소유중인 상품입니다 |
-| 50006 | 사용자 아이디가 잘못되었습니다 |
-| 50007 | 사용자가 결제를 취소했습니다 |
-| 50009 | 영수증 검증에 실패했습니다 |
-| 50011 | 구독 갱신이 실패했습니다 |
-| 50015 | 소유하고 있지 않은 상품입니다. |
-| 50103 | 이미 소비된 상품 입니다. |
-| 50104 | 이미 환불된 상품 입니다. |
-| 59999 | 알 수 없는 에러입니다. 에러 메시지를 확인해주세요 |
+| 50000 | Not initialized |
+| 50001 | Feature not supported |
+| 50002 | Unsupported store code |
+| 50003 | Product not available |
+| 50004 | Product already owned |
+| 50006 | Incorrect user ID |
+| 50007 | User canceled payment |
+| 50009 | Failed receipt verification |
+| 50011 | Failed to renew subscription |
+| 50015 | Product not owned |
+| 50103 | Product already consumed |
+| 50104 | Product already refunded |
+| 59999 | Unknown error. Please check error message |
 
-### 서버 오류 코드
+### Server error code
 
-| 에러 코드 | 설명 |
+| Error code | Description |
 |---|---|
-| 10000 | 잘못된 요청입니다. |
-| 10002 | 네트워크가 연결되지 않았습니다. |
-| 10003 | 서버 응답이 실패했습니다. |
-| 10004 | 타임아웃이 발생했습니다. |
-| 10005 | 유효하지 않은 서버 응답값입니다. |
-| 10010 | 활성화 되지 않은 앱입니다. |
+| 10000 | Invalid request |
+| 10002 | Not connected to network |
+| 10003 | Server response failed |
+| 10004 | Timeout occurred |
+| 10005 | Invalid server return value |
+| 10010 | App not activated |
 
-### App store 오류 코드
+### App store error code
 
-| 에러 코드 | 설명 |
+| Error code | Description |
 |---|---|
-| 50005 | 이미 진행중인 요청이 있습니다. |
-| 50008 | 스토어에서 결제가 실패했습니다 |
-| 50010 | 구매상태 변경에 실패했습니다 |
-| 50012 | 환불로 인해 구매를 진행할 수 없습니다 |
-| 50013 | 복원에 실패했습니다. |
-| 50014 | 구매 진행 불가 상태입니다. (e.g. 앱 내 구입 제한 설정) |
+| 50005 | A request is already in progress |
+| 50008 | Store payment failed |
+| 50010 | Failed to change purchase status |
+| 50012 | Cannot proceed with purchase due to refund |
+| 50013 | Recovery failed |
+| 50014 | Cannot make purchases now. (e.g. in-app purchase restrictions) |
 
-### ONE store 오류 코드
+### ONE store error code
 
-| 에러 코드 | 설명 |
+| Error code | Description |
 |---|---|
-| 51000 | ONE store 서비스에 로그인되어 있지 않습니다. |
-| 51001 | ONE store 서비스가 업데이트 또는 설치되지 않았습니다. |
-| 51002 | 비정상 앱에서 결제를 요청하였습니다. |
-| 51003 | 결제 요청에 실패했습니다. |
+| 51000 | Not logged into ONE Store services |
+| 51001 | ONE Store service has not been updated or installed |
+| 51002 | Payment requested from abnormal app |
+| 51003 | Payment request failed |
 
-### Galaxy store 오류 코드
+### Galaxy store error code
 
-| 에러 코드 | 설명 |
+| Error code | Description |
 |---|---|
-| 53000 | Galaxy store 서비스에 로그인되어 있지 않습니다. |
-| 53001 | Galaxy store 서비스가 업데이트 또는 설치되지 않았습니다. |
-| 53002 | 비정상 앱에서 결제를 요청하였습니다. |
-| 51003 | 결제 요청에 실패했습니다. |
+| 53000 | Not logged into Galaxy Store services |
+| 53001 | Galaxy Store service has not been updated or installed |
+| 53002 | Payment requested from abnormal app |
+| 51003 | Payment request failed |
+
 
 ## FAQ
 ### Android
