@@ -1,6 +1,6 @@
 ## TOAST > TOAST SDK使用ガイド > リリースノート > Windows C++ 
  
-## 0.9.4.3 (2019.10.10) 
+## 0.9.4.3 (2019.10.10) [[Download]](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.4/toast-sdk-windows-0.9.4.3.zip)
  
 ### TOAST Log & Crash 
  
@@ -8,7 +8,7 @@
  
 * x86でpure virtual call / invalid parameterのクラッシュログが残らない問題を修正 
  
-## 0.9.3.0 (2019.07.23) 
+## 0.9.3.0 (2019.07.23) [[Download]](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.3/toast-sdk-windows-0.9.3.0.zip)
  
 ### TOAST Log & Crash 
  
@@ -22,7 +22,7 @@
 	* visual studio 2015 (vc14)バージョンを提供 
 * xpバージョンを提供 
  
-## 0.9.0.12 (2018.09.04) 
+## 0.9.0.12 (2018.09.04) [[Download]](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.0/toast-sdk-windows-0.9.0.12.zip)
  
 ### TOAST Log & Crash 
  
