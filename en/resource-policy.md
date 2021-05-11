@@ -1,5 +1,5 @@
-## TOAST > TOAST Resource Usage Policy 
-TOAST provides the Resource Usage Policy to provide stable services to all users and protect them from excessive spending incurred by unintentional resource creation. 
+## NHN Cloud > NHN Cloud Resource Usage Policy 
+NHN Cloud provides the Resource Usage Policy to provide stable services to all users and protect them from excessive spending incurred by unintentional resource creation. 
 
 ### Resource Usage Policy for Infrastructure Service  
 Resource usage is calculated by the project, and the resource usage policy is applied for each region. 
@@ -64,7 +64,7 @@ Resource usage is calculated by the project.
 
 
 ### Request for Capacity Adjustment
-To increase capacity beyond default volume, send a request to TOAST Customer Center [1:1Inquiries]. 
+To increase capacity beyond default volume, send a request to NHN Cloud Customer Center [1:1Inquiries]. 
 It helps a lot if you fill out the items and volume in need. 
 
 Since it takes 2 to 5 days to process a reuqest, it is recommended to send requests in advance. 

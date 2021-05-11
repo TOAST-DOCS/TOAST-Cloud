@@ -26,7 +26,7 @@ TOAST SDK는 다음과 같은 서비스를 제공합니다.
 
 ### Android
 
-TOAST Android SDK는 **jCenter**를 통해 배포되며 간단한 Gradle 설정만으로 사용할 수 있습니다.
+TOAST Android SDK는 **mavenCentral**를 통해 배포되며 간단한 Gradle 설정만으로 사용할 수 있습니다.
 
 - [Android 시작하기](./getting-started-android)
 

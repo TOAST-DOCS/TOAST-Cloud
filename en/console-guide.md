@@ -1,9 +1,9 @@
-## TOAST > Console User Guide
+## NHN Cloud > Console User Guide
 
-The console serves as management tool and window for the use of TOAST services.
-Basic console settings and its user guide are provided as below to use TOAST Service.
+The console serves as management tool and window for the use of NHN Cloud services.
+Basic console settings and its user guide are provided as below to use NHN Cloud Service.
 
-TOAST Console provides the following functions:
+NHN Cloud Console provides the following functions:
 
 - Basic information management to use the service (e.g. organizations, or projects)
 - Enable/Disable Service
@@ -11,22 +11,22 @@ TOAST Console provides the following functions:
 - Provide payment information
 
 ## Console Quick Guide
-![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
-![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
-![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
-![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
-![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103_en.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103_en.png)
+![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103_en.png)
+![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103_en.png)
+![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103_en.png)
 
 
 ## Organization Management
 
-Organization refers to a group which is made to efficiently use and manage TOAST Service.
+Organization refers to a group which is made to efficiently use and manage NHN Cloud Service.
 In an organization, same service policy can be shared with users.
-It helps to make use of TOAST Service more efficiently.  
+It helps to make use of NHN Cloud Service more efficiently.  
 
 ### Create Organizations
 
-- An organization should be created to use TOAST Service.
+- An organization should be created to use NHN Cloud Service.
 - Both personal and business members can create organizations.
 - Any member who creates an organization automatically becomes the OWNER of his organization.
 - Member’s payment method is required to create an organization.
@@ -38,20 +38,22 @@ It helps to make use of TOAST Service more efficiently.
 After an organization is created, you can select services.
 Following services are available at the level of organization:
 
-- ERP
 - Dooray!
+- ERP
+- Groupware
 - Contact Center
 - IDC
+- CloudTrail
 
 ### Guide to Create Organizations
 
-![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
+![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202103_en.png)
 
 1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
 2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
 3. Click **OK** and organization is completely created.
 4. You can find the organization name just created on top of the console menu
-5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in TOAST.
+5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in NHN Cloud.
 
 
 ### Delete Organizations
@@ -63,7 +65,7 @@ Following services are available at the level of organization:
 
 ## Manage Projects
 
-A project is created to use TOAST Service, after an organization is created.
+A project is created to use NHN Cloud Service, after an organization is created.
 Enable project services to use a project.
 Use and charge services by the project.
 
@@ -81,25 +83,26 @@ You can select services, once a project is created.
 Following services can be enabled by each project:
 
 - Compute
-- Storage
+- Container
 - Network
+- Storage
 - Database
+- Game
 - Security
 - Content Delivery
-- Dev Tool
-- Management
-- Game
 - Notification
+- Mobile Service
 - Analytics
 - Application Service
 - Search
-- Mobile Service
+- Dev Tool
+- Management
 - Bill
 
 
 ### Guide to Create Projects
 
-![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
+![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202103_en.png)
 
 1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
 2. Enter **Project Name** and **Project Description**.
@@ -109,10 +112,10 @@ Following services can be enabled by each project:
 
 ### Guide to Enable Project Service
 
-![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
+![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202103_en.png)
 
 1. Click **Select Services**, after a project is created, to enable services you need
-2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. When a message guiding to go to the service page, click **OK**.
+2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. 
 3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
 
 ### Delete Projects
@@ -123,54 +126,31 @@ You can immediately pay for all the resources that have used before deleting a p
 However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
 
 ## Manage Members
-#### Organization Members
 
 | Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
 | :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Definition                    | \- Members for organization management <br>\- TOAST members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole TOAST Service and remain as TOAST members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
-| Method of Member Registration | \- Owner/Admin of an organization enters TOAST ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
+| Definition                    | \- Members for organization management <br>\- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole NHN Cloud Service and remain as NHN Cloud members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
+| Method of Member Registration | \- Owner/Admin of an organization enters NHN Cloud ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
 | Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
 
-Each member of an organization has following roles:
+### IP ACL Settings
 
-| Action               | Role                                              | Owner | Admin | Member | Billing Viewer | Log Viewer |
-| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---- |
-| Manage Organizations | Create Organizations                              | O     |       |        |                |      |
-|                      | Modify Organizations                              | O     | O     |        |                |      |
-|                      | Delete Organizations                              | O     |       |        |                |      |
-| Manage Members       | Register Organization Members                     | O     | O     |        |                |      |
-|                      | Delete Organization Members                       | O     | O     |        |                |      |
-| Manage Services      | Enable Organization Services                      | O     | O     |        |                |      |
-|                      | Disable Organization Services                     | O     | O     |        |                |      |
-| Manage Payment       | Query Bills                                       | O     |       |        |                |      |
-|                      | Status of Service Use                             | O     | O     |        | O              |      |
-| Manage Projects      | Creat Projects                                    | O     | O     | O      |                |      |
-| Manage Projects      | Delete Projects                                   | O     |       |        |                |      |
-| Manage User Action Log | Query User Action Logs                          |       |       |        |                |  O   |
+Only allowed IP (or IP bandwidth) can access the IAM console. 
+For Dooray! Services, IP ACL can be set on the service console screen.
 
-#### Project Members
+- Service Settings 
+    - Common Settings: IP ACL can be globally set to all services.
+    - Settings per Service: For each service (Cloud, Online Contactm Workplace | Dooray!, etc.), IP ACL can be set.
 
-Project members are also members of TOAST.com. 
-You can be a project member, if not an organization member.
+- IP ACL Settings
+    - Not Set: All IPs (or IP bandwidth) can access the console. 
+    - Console Accessible by Allowed IP (or IP bandwidth) Only: Only the entered IP(or IP bandwidth) can access the console.
+      Please enter an IP or IP bandwidth to allow access. 
 
-Each project member has the following roles:
-
-| Action                | Role                                            | ADMIN | MEMBER |  Billing Viewer | 
-| --------------------- | ----------------------------------------------- | ----- | ------ |  -------------- |
-| Manage Members        | Register Project Members                        | O     |        |                 |
-|                       | Delete Project Members                          | O     |        |                 |
-| Manage Service        | Enable Service                                  | O     |        |                 |
-|                       | Disable Service                                 | O     |        |                 |
-| Status of Service Use | Status of Service Use                           | O     |        |  O              |
-| Manage Projects       | Delete Projects                                 | O     |        |                 |
-
-
-
-## IAM Console 
 ### Security Setting for IAM Console Logins 
 To tighten console access security for IAM members, [Login Security Setting] is provided.  
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202103_en.png)
 
 1. Access Organization Setting of an organization to configure on a console. 
 2. Click [Login Security Setting] on the IAM console. 
@@ -225,6 +205,27 @@ Dooray! Service allows the IP ACL setting on the console page of each service.
     - Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
     - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
 
+### Organization Members
+
+#### Organization Role of NHN Cloud Members 
+
+| Action               | Role                                              | Owner | Admin | Member | Billing Viewer | Log Viewer |
+| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---- |
+| Manage Organizations | Create Organizations                              | O     |       |        |                |      |
+|                      | Modify Organizations                              | O     | O     |        |                |      |
+|                      | Delete Organizations                              | O     |       |        |                |      |
+| Manage Members       | Register Organization Members                     | O     | O     |        |                |      |
+|                      | Delete Organization Members                       | O     | O     |        |                |      |
+| Manage Services      | Enable Organization Services                      | O     | O     |        |                |      |
+|                      | Disable Organization Services                     | O     | O     |        |                |      |
+| Manage Payment       | Query Bills                                       | O     |       |        |                |      |
+|                      | Status of Service Use                             | O     | O     |        | O              |      |
+| Manage Projects      | Creat Projects                                    | O     | O     | O      |                |      |
+| Manage Projects      | Delete Projects                                   | O     |       |        |                |      |
+| Manage User Action Log | Query User Action Logs                          |       |       |        |                |  O   |
+
+
+
 #### Organization Role of IAM Members 
 - Each organization service (e.g. Online Contact, Dooray!) provides different configuration role. 
 - IAM members have the following roles for the use of the Cloud console. 
@@ -233,10 +234,7 @@ Dooray! Service allows the IP ACL setting on the console page of each service.
 
 | Task     | Role                           | MEMBER |
 | ------------- | ----------------------------------- | ----- |
-| Service Management | Activating project service | O     |
-|               | Deactivating project service | O     |
 | Project Management | Creating projects | O     |
-|              | Deleting projects (which have been created) | O     |
 
 ### Project Members
 Even a non-organization member can serve as project member. 
@@ -262,16 +260,17 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | Infrastructure | ADMIN |  Create/Read/Update/Delete Infrastructure Service  |
 | Infrastructure | MEMBER | Viewer VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete Other services |
 | Container Registry | ADMIN | Create/Read/Update/Delete Container Registry Service |
-| Container Registry | MEMBER | Read Container Registry Service  |
+| Container Registry | VIEWER | Read Container Registry Service  |
 | DNS Plus | ADMIN | Create/Read/Update/Delete DNS Plus Service  |
 | Object Storage | ADMIN | Create/Read/Update/Delete Object Storage Service   |
 | Backup | ADMIN |  Create/Read/Update/Delete Backup Service |
 | RDS for MySQL | ADMIN | Create/Read/Update/Delete RDS for MySQL Service |
 | RDS for MS-SQL | ADMIN | Create/Read/Update/Delete RDS for MS-SQL Service |
 | EasyCache | ADMIN | Create/Read/Update/Delete EasyCache Service |
+| EasyCache | VIEWER | Read EasyCache Service Replication Group menu, read Monitoring menu |
 | Gamebase | ADMIN | Create/Read/Update/Delete Gamebase Service |
 | Leaderboard | ADMIN | Create/Read/Update/Delete Leaderboard Service |
-| Leaderboard | MEMBER |  Read Leaderboard Service |
+| Leaderboard | VIEWER |  Read Leaderboard Service |
 | Launching  | ADMIN | Create/Read/Update/Delete Launching Service  |
 | Smart Downloader | ADMIN |  Create/Read/Update/Delete Smart Downloader Service |
 | AppGuard  | ADMIN | Create/Read/Update/Delete AppGuard Service |
@@ -285,7 +284,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | WEB Firewall  | ADMIN |   Create/Read/Update/Delete WEB Firewall Service |
 | Vaccine  | ADMIN |  Create/Read/Update/Delete Vaccine Service |
 | Secure Key Manager  | ADMIN |  Create/Read/Update/Delete Secure Key Manager Service |
-| Secure Key Manager  | MEMBER |  Read Secure Key Manager Service |
+| Secure Key Manager  | VIEWER |  Read Secure Key Manager Service |
 | CDN   | ADMIN |  Create/Read/Update/Delete CDN Service  |
 | Image  | ADMIN |  Create/Read/Update/Delete Image Service |
 | Push  | ADMIN |  Create/Read/Update/Delete Push Service  |
@@ -308,14 +307,14 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | Service Monitoring  | ADMIN | Create/Read/Update/Delete Service Monitoring Service |
 | Certificate Manager  | ADMIN | Create/Read/Update/Delete Certificate Manager Service |
 | Bill (e-Tax)  | ADMIN |  Create/Read/Update/Delete Bill (e-Tax) Service |
-| Bill (e-Tax)  | MEMBER |  Read Bill (e-Tax) Service |
+| Bill (e-Tax)  | VIEWER |  Read Bill (e-Tax) Service |
 
 
 
 ## Billing Management
 
-Supports for TOAST members to check prices and pay bills for TOAST Service.
-Billing management provides bills for the TOAST members who registered payment methods, along with estimated amount of payment and usage information.
+Supports for NHN Cloud members to check prices and pay bills for NHN Cloud Service.
+Billing management provides bills for the NHN Cloud members who registered payment methods, along with estimated amount of payment and usage information.
 Go to My Profile > Billing Management to check.
 
 Below functions are provided, along with the history of the month’s payment via registered payment method.

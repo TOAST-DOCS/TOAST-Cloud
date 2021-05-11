@@ -1,6 +1,6 @@
-## TOAST > Overview
+## NHN Cloud > Overview
 
-TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “Integrated Cloud Service” of NHN, as part of unwavering passion to make the world renewed with arts, science, and technology.  
+NHN Cloud is an “integrated cloud service” provided by NHN, which provides everything necessary for your business operation and service development. 
 
 ## Features
 
@@ -62,6 +62,7 @@ TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “
 | Service | Description |
 | --- | --- |
 | Compute |With on-demand infrastructure based on OpenStack, apply infrastructure resources as much as required at affordable prices. |
+| Container | A service that automates distribution, scaling, and containerized application management based on an open source container orchestration engine. |
 | Network | Build virtual private network and provide public IP which is accessible from outside.|
 | Storage | The storage service has high availability and stability. |
 | Game | Useful platforms are supported for game development.|
@@ -73,6 +74,7 @@ TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “
 | Dev Tool | Convenient and efficient development environment is provided. |
 | Analytics | Platforms for data analysis and collection are supported. |
 | Application Service | Various tools are supported for web/app services. |
+| AI Service | You can easily and conveniently build AI Service powered by the latest cutting-edge technologies. |
 | Search  | Up-to-date data are always available through different search services. |
 | Management | Professional engineers with the highest technical skills provide systematic server management, while customers can focus more on content development. |
 | ERP  | Hands-on enterprise resource management solution is provided incorporating accounting, HR, and settlement. |
@@ -83,7 +85,7 @@ TOAST, which is from ‘Toward Art, Science, and Technology’, refers to an “
 
 ## Service Release Policy
 
-TOAST Service is managed by the Release Policy as below.
+NHN Cloud Service is managed by the Release Policy as below.
 
 - ALPHA
     - The service is open to users before an official service version is released.

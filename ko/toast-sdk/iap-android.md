@@ -10,14 +10,20 @@
 
 - [Android Developers 인앱 결제](https://developer.android.com/google/play/billing)
 - [ONE store 인앱결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [Galaxy store 인앱결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
 
 ## 라이브러리 설정
 
 - Google Play Store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.23.1'
+    implementation 'com.toast.android:toast-iap-google:0.25.0'
     ...
 }
 ```
@@ -25,11 +31,30 @@ dependencies {
 - ONE store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.23.1'
+    implementation 'com.toast.android:toast-iap-onestore:0.25.0'
     ...
 }
 ```
+
+- Galaxy store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-iap-galaxy:0.25.0'
+    ...
+}
+```
+
+> Galaxy Store 인앱 결제는 Android 4.3 (API 레벨 18) 이상에서 동작합니다.
 
 ## AndroidManifest 설정
 
@@ -53,12 +78,43 @@ meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
 
 자세한 정보는 [원스토어 결제 화면 설정](https://dev.onestore.co.kr/devpoc/reference/view/Tools)을 확인하세요.
 
+### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store)
+
+Android 11에서는 앱이 사용자가 기기에 설치한 다른 앱을 쿼리하고 상호작용하는 방법을 변경합니다.
+Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소를 정의해야합니다.
+
+#### ONE store
+
+```xml
+<queries>
+    <intent>
+        <action android:name="com.onestore.ipc.iap.IapService.ACTION" />
+    </intent>
+    <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="onestore" />
+    </intent>
+</queries>
+```
+
+#### Galaxy Store
+
+```xml
+<queries>
+    <package android:name="com.sec.android.app.samsungapps" />
+</queries>
+```
+
+'queries' 요소는 Android Gradle Plugin 4.1 이상에서 동작합니다.
+이전 버전의 Android Gradle Plugin을 사용하려면 [Android 11에서 패키지 가시성을 위해 Gradle 빌드 준비](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html)를 참고하세요.
+
 ## 스토어 코드
 
 | 스토어         | 코드         |
 | ----------- | ---------- |
 | Google Play | "GG"       |
 | ONE store   | "ONESTORE" |
+| Galaxy store | "GALAXY" |
 
 > [참고] 스토어 코드는 [IapStoreCode](./iap-android/#iapstorecode) 클래스에 정의되어 있습니다.
 
@@ -161,7 +217,7 @@ ToastSdk.setUserId(null);
 
 ## 결제 업데이트 리스너 등록
 
-* 결제 결과는 ToastIap에 설정된 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 통지됩니다.
+* 인앱에서 구매한 결제와 구글 플레이 스토어 앱에서 프로모션 리딤 또는 구독 상태 변경(복원, 정기 결제 재신청 등) 시 ToastIap에 설정된 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 결제 결과가 통지됩니다.
 * 결제 업데이트 리스너는 ToastIap.registerPurchasesUpdatedListener 메서드를 사용하여 등록할 수 있습니다.
 * [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 전달된 [IapPurchaseResult](./iap-android/#iappurchaseresult) 리스트를 통해 결제 정보를 확인할 수 있습니다.
 
@@ -413,6 +469,149 @@ void queryActivatedPurchases() {
 }
 ```
 
+## 구독 상태 조회
+
+* User ID 기준으로 구입한 구독 상품의 상태를 조회할 수 있습니다.
+* 만료된 구독 상품은 includeExpiredSubscriptions 설정으로 조회 또는 제외할 수 있습니다. (default: false)
+* 구독 상품 상태는 ToastIap.querySubscriptionsStatus() 메서드를 사용하여 조회할 수 있습니다.
+* 조회 결과는 [IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener)를 통해 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체 리스트를 반환됩니다.
+* [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 사용하는 구독 상태 코드는 [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatusCode)에 정의되어 있습니다.
+
+```
+현재 구독 상품은 Google Play 스토어만 지원합니다.
+```
+
+### 구독 상태 조회 API 명세
+
+```java
+/* ToastIap.java */
+public static void querySubscriptionsStatus(Activity activity,
+                                            boolean includeExpiredSubscriptions,
+                                            IapService.SubscriptionsStatusResponseListener listener)
+```
+
+| Method | Parameters |  |
+| --- | --- | --- |
+| querySubscriptionsStatus | activity | Activity: 현재 활성화된 Activity |
+|  | includeExpiredSubscriptions | boolean:<br>구독 만료된 구독 상품의 상태 포함 여부 |
+|  | listener | IapService.SubscriptionsStatusResponseListener:<br>구독 상태 조회 결과 리스너 |
+
+### 구독 상태 조회 예시
+
+```java
+/**
+ * 구독 상태 조회
+ */
+private void querySubscriptionsStatus() {
+    SubscriptionsStatusResponseListener listener =
+            new SubscriptionsStatusResponseListener() {
+                @Override
+                public void onSubscriptionsStatusResponse(@NonNull String storeCode,
+                                                          @Nullable List<IapSubscriptionStatus> subscriptionsStatus) {
+                    if (result.isSuccess()) {
+                        // 성공
+                    } else {
+                        // 실패
+                    }
+                }
+            };
+    ToastIap.querySubscriptionsStatus(MainActivity.this, false, listener);
+}
+```
+
+## 구글 스토어 구독(정기 결제) 기능
+
+구글 스토어의 구독 결제의 갱신 및 만료와 같은 수명주기에 따른 이벤트를 처리하는 방법을 설명합니다.
+자세한 사항은 [정기 결제별 기능 추가](https://developer.android.com/google/play/billing/billing_subscriptions)을 참고하세요.
+
+### 구독 수명 주기 처리
+
+구글 스토어의 구독은 수명주기 동안 다양한 상태 변경을 거치며 앱은 각 상태에 따라 대응해야합니다.
+
+* **활성화 상태(Active)**: 정기 결제 콘텐츠에 엑세스 할 수 있으며 자동 갱신이 진행되는 상태
+* **취소(Cancelled)**: 정기 결제 콘텐츠에 엑세스 할 수 있으나 사용자가 구독 상품을 더 이상 사용하지 않는다고 취소하여 자동 갱신이 정지된 상태
+* **유예 기간 (In grace period)**: 결제 수단 문제로 정기 결제가 실패하였으나 정기 결제 콘텐츠에는 엑세스 할 수 있는 상태 (사용자가 결제 수단을 변경하기를 기다리는 상태)
+* **계정 보류 (On hold)**: 결제 수단 문제로 정기 결제가 실패하여 보류 상태 (유예 기간이 사용 설정되어있다면 유예 기간 동안 결제 수단을 변경하지 않아 결제가 보류된 상태)
+* **일시중지 (Pause)**: 정기 결제 상품을 일시적으로 중지한 상태
+* **만료 (Expired)**: 정기 결제 상품이 만료된 상태
+
+| 상태 | 미소비 결제 조회<br>(ToastIap.queryConsumablePurchases) | 활성화된 구독 조회<br>(ToastIap.queryActivatedPurchases) | 만료 시간 | 자동 갱신 여부 |
+| --- | --- | --- | --- | --- |
+| 활성화 상태 (Active) | Yes | Yes | 미래시간 | Yes |
+| 취소 (Cancelled) | Yes | Yes | 미래시간 | No |
+| 유예 기간 (In grace period) | No | Yes | 미래시간 | Yes |
+| 계정 보류 (On hold) | No | No | 과거시간 | Yes |
+| 일시중지 (Pause) | No | No | 과거시간 | Yes |
+| 만료 (Expired) | No | No | 과거시간 | No |
+
+### 유예 기간
+
+유예 기간이 사용 설정된 경우 결제 주기가 끝날 때 결제 수단에 문제가 있다면 정기 결제는 유예 기간으로 전환됩니다.
+<span style="color:#e11d21">유예 기간 동안 사용자는 정기 결제 콘텐츠에 엑세스 할 수 있어야 합니다.</span>
+자세한 사항은 [유예 기간](https://developer.android.com/google/play/billing/subs#grace)을 참고하세요.
+
+> <span style="color:#e11d21">**주의!)**</span> 유예 기간 중 결제 수단 수정 등으로 복원되면 자동 갱신을 재개합니다. TOAST IAP는 갱신된 결제건을 결제 업데이트 리스너(IapService.PurchaseUpdatedListener)를 통해 결제 결과를 통지합니다. 게임이나 앱은 중요한 동작 중 결제 업데이트 리스너에 의해 불필요한 팝업이 사용자에게 노출되지 않도록 주의해야합니다.
+
+#### 일반 구독 상품 (AUTO_RENEWABLE))
+
+* 유예 기간 동안 일반 구독 상품은 정기 결제 콘텐츠에 엑세스 할 수 있어야 합니다.
+* 유예 기간 동안 ToastIap.queryActivatedPurchases()로 조회할 수 있습니다.
+
+#### 소비성 구독 상품 (CONSUMABLE_AUTO_RENEWABLE)
+
+* 유예 기간이 시작되면 구글은 새로운 영수증을 발급하나 결제 수단을 수정하지 않으면 계정 보류 상태가 되거나 취소됩니다.
+* 소비성 구독 상품은 유예 기간 동안 상품을 소비할 수 없도록 ToastIap.queryConsumablePurchases()로 조회되지 않습니다.
+
+### 계정 보류
+
+계정 보류는 결제 수단 문제로 갱신이 실패했을 때의 사용자 상태를 말합니다.
+결제에 실패하면 유예 기간 동안 재시도하고, 유예 기간 동안에도 결제가 실패하면 정기 결제 상태는 보류 상태가 됩니다.
+계정 보류 상태가 사용자는 정기 결제 콘텐츠에 액세스 할 수 없습니다.
+계정 보류 기간은 최대 30일입니다.
+계정 보류 기간이 종료되기 전에 결제 수단을 수정하지 않으면 취소 처리됩니다.
+자세한 사항은 [계정 보류](https://developer.android.com/google/play/billing/subs#account-hold)를 참고하세요.
+
+> <span style="color:#e11d21">**주의!)**</span> 계정 보류 기간 중 결제 수단 수정 등으로 복원되면 자동 갱신을 재개합니다. TOAST IAP는 갱신된 결제건을 결제 업데이트 리스너(IapService.PurchaseUpdatedListener)를 통해 결제 결과를 통지합니다. 게임이나 앱은 중요한 동작 중 결제 업데이트 리스너에 의해 불필요한 팝업이 사용자에게 노출되지 않도록 주의해야합니다.
+
+#### 일반 구독 상품 (AUTO_RENEWABLE))
+
+* 계정 보류 기간 동안 일반 구독 상품은 정기 결제 콘텐츠에 엑세스 할 수 없습니다.
+* 계정 보류 기간 동안 ToastIap.queryActivatedPurchases()로 조회되지 않습니다.
+
+#### 소비성 구독 상품 (CONSUMABLE_AUTO_RENEWABLE)
+
+* 계정 보류 기간 동안 소비성 구독 상품은 새로운 구매를 생성하지 않습니다.
+* 계정 보류 기간 동안 ToastIap.queryConsumablePurchases()로 새로운 구매가 조회되지 않습니다.
+
+### 일시중지
+
+일시중지 기능을 설정하면 사용자가 정기 결제를 1주일에서 3개월 사이로 일시중지 할 수 있습니다.
+정기 결제 일시중지는 현재 구독 기간이 종료된 이후에 적용됩니다.
+일시중지 기간이 끝나면 정기 결제가 자동으로 재개됩니다.
+자세한 사항은 [일시중지](https://developer.android.com/google/play/billing/subs#pause)를 참고하세요.
+
+> <span style="color:#e11d21">**주의!)**</span> 일시중지 기간이 끝나면 자동 갱신을 재개합니다. TOAST IAP는 갱신된 결제건을 결제 업데이트 리스너(IapService.PurchaseUpdatedListener)를 통해 결제 결과를 통지합니다. 게임이나 앱은 중요한 동작 중 결제 업데이트 리스너에 의해 불필요한 팝업이 사용자에게 노출되지 않도록 주의해야합니다.
+
+#### 일반 구독 상품 (AUTO_RENEWABLE))
+
+* 일시중지 기간 동안 일반 구독 상품은 정기 결제 콘텐츠에 엑세스 할 수 없습니다.
+* 일시중지 기간 동안 ToastIap.queryActivatedPurchases()로 조회되지 않습니다.
+
+#### 소비성 구독 상품 (CONSUMABLE_AUTO_RENEWABLE)
+
+* 일시중지 기간 동안 소비성 구독 상품은 새로운 구매를 생성하지 않습니다.
+* 일시중지 기간 동안 ToastIap.queryConsumablePurchases()로 새로운 구매가 조회되지 않습니다.
+
+### 정기 결제 재신청
+
+정기 결제 재신청 기능을 설정하면 사용자가 정기 결제 만료일로 부터 12개월 이내에 취소한 정기 결제를 재신청할 수 있습니다.
+정기 결제 재신청은 새 정기 결제 및 구매 토큰이 생성됩니다.
+정기 결제가 만료된 이후 사용자는 구글 플레이 정기 결제 센터를 통해 만료 후 1년까지 동일한 상품을 다시 구매할 수 있습니다.
+자세한 사항은 [정기 결제 재신청](https://developer.android.com/google/play/billing/subs#resubscribe)을 참고하세요.
+
+> <span style="color:#e11d21">**주의!)**</span> 앱이나 게임 내 화면에서 구매가 진행되지 않으므로 사용자 데이터(IapPurchase.getDeveloperPayload())를 사용할 수 없습니다.
+> <span style="color:#e11d21">**주의!)**</span> 구글 플레이 스토어에서 정기 결제 재신청으로 구독 상품을 구매할 경우 TOAST IAP는 구매한 결제건을 결제 업데이트 리스너(IapService.PurchaseUpdatedListener)를 통해 결제 결과를 통지합니다. 게임이나 앱은 중요한 동작 중 결제 업데이트 리스너에 의해 불필요한 팝업이 사용자에게 노출되지 않도록 주의해야합니다.
+
 ## TOAST IAP Class Reference
 
 ### ToastIapConfiguration
@@ -428,7 +627,7 @@ public String getStoreCode();
 | Method       | Returns |                                     |
 | ------------ | ------- | ----------------------------------- |
 | getAppKey    | String  | IAP 서비스 앱 키                         |
-| getStoreCode | String  | 스토어 코드 정보 ("GG" or "ONESTORE", ...) |
+| getStoreCode | String  | 스토어 코드 정보 ("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### ToastIapConfiguration.Builder
 
@@ -443,7 +642,7 @@ public void setStoreCode(String storeCode)
 | Method       | Parameters |                     | Description                              |
 | ------------ | ---------- | ------------------- | ---------------------------------------- |
 | setAppKey    | appKey     | String: IAP 서비스 앱 키 | TOAST IAP 콘솔에서 생성한 앱 키를 설정합니다.      |
-| setStoreCode | storeCode  | String: 스토어 코드 정보   | 스토어 코드를 설정합니다.<br>("GG" or "ONESTORE", ...) |
+| setStoreCode | storeCode  | String: 스토어 코드 정보   | 스토어 코드를 설정합니다.<br>("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### IapStoreCode
 
@@ -451,10 +650,12 @@ public void setStoreCode(String storeCode)
 /* IapStoreCode.java */
 String GOOGLE_PLAY_STORE
 String ONE_STORE
+String GALAXY_STORE
 ```
 
 * GOOGLE_PLAY_STORE<br>Google Play 스토어 인앱 결제를 사용합니다.<br>Constant Value: "GG"
 * ONE_STORE<br>ONE store 인앱 결제를 사용합니다.<br>Constant Value: "ONESTORE"
+* GALAXY_STORE<br>Galaxy store 인앱 결제를 사용합니다.<br>Constant Value: "GALAXY"
 
 ### IapPurchaseResult
 
@@ -620,6 +821,79 @@ public void setProductId(String productId)
 | ------------ | ---------- | ------------- | ------------- |
 | setProductId | productId  | String: 상품 ID | 상품 ID를 설정합니다. |
 
+### IapSubscriptionStatus
+
+* IapSubscriptionStatus 객체로 구독 상태 정보를 확인할 수 있습니다.
+* 구독 상태 코드는 IapSubscriptionStatus.StatusCode에 정의되어 있습니다.
+
+```java
+/* IapSubscriptionStatus.java */
+public String getStoreCode()
+public String getPaymentId()
+public String getOriginalPaymentId()
+public String getPaymentSequence()
+public String getProductId()
+public String getProductType()
+public String getProductSequence()
+public String getUserId()
+public float getPrice()
+public String getPriceCurrencyCode()
+public String getAccessToken()
+public String getPurchaseType()
+public String getPurchaseTime()
+public String getExpiryTime()
+public String getDeveloperPayload()
+public int getStatusCode()
+public String getStatusDescription()
+```
+
+| Method | Returns |  |
+| --- | --- | --- |
+| getStoreCode | String | 스토어 코드를 반환합니다. |
+| getPaymentId | String | 결제 ID를 반환합니다. |
+| getOriginalPaymentId | String | 원본 결제 ID를 반환합니다. |
+| getPaymentSequence | String | 결제 고유 번호를 반환합니다. |
+| getProductId | String | 상품 ID를 반환합니다. |
+| getProductType | String | 상품 유형을 반환합니다. |
+| getProductSeq | String | 상품 고유 번호를 반환합니다. |
+| getUserId | String | 사용자 ID를 반환합니다. |
+| getPrice | float | 가격 정보를 반환합니다. |
+| getPriceCurrencyCode | String | 통화 정보를 반환합니다. |
+| getAccessToken | String | 소비에 사용되는 토큰을 반환합니다. |
+| getPurchaseType | String | 결제 유형을 반환합니다.<br>"Test" or "Promo" or null |
+| getPurchaseTime | long | 상품 구매 시간을 반환합니다. |
+| getExpiryTime | long | 구독 상품의 남은 시간을 반환합니다. |
+| getDeveloperPayload | String | 사용자 데이터를 반환합니다. |
+| getStatusCode | int | 구독 상태 코드를 반환합니다. |
+| getStatusDescription | String | 구독 상태 코드에 대한 설명을 반환합니다. |
+
+### IapSubscriptionStatus.StatusCode
+
+* 구독 상태를 나타내는 코드 입니다.
+
+```java
+/* IapSubscriptionStatus.java */
+int ACTIVE
+int CANCELED
+int ON_HOLD
+int IN_GRACE_PERIOD
+int PAUSED
+int REVOKED
+int EXPIRED
+int UNKNOWN
+```
+
+| Name | Code | Status | Description |
+| --- | --- | --- | --- |
+| ACTIVE | 0 | 활성 | 구독이 활성 상태입니다. |
+| CANCELED | 3 | 취소 | 구독이 취소되었습니다. |
+| ON\_HOLD | 5 | 계정 보류 | 정기 결제가 계정 보류 상태가 되었습니다(사용 설정된 경우). |
+| IN\_GRACE\_PERIOD | 6 | 유예 기간 | 정기 결제가 유예 기간 상태로 전환되었습니다(사용 설정된 경우). |
+| PAUSED | 10 | 일시 중지 | 구독이 일시 중지되었습니다. |
+| REVOKED | 12 | 해지 | 정기 결제가 만료 시간 전에 사용자에 의해 취소되었습니다. |
+| EXPIRED | 13 | 만료 | 정기 결제가 만료되었습니다. |
+| UNKNOWN | 9999 | 미정의 | 정의 되지 않은 상태입니다. |
+
 ### IapService.PurchasesUpdatedListener
 
 * 결제 정보가 업데이트가 되었을 때 IapService.PurchasesUpdatedListener를 상속 구현한 객체의 onPurchasesUpdated 메서드를 통해 통지됩니다.
@@ -635,6 +909,15 @@ void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
 ```java
 void onPurchasesResponse(IapResult result,
                          List<IapPurchase> purchaseList)
+```
+
+### IapService.SubscriptionsStatusResponseListener
+
+* 구독 상태 조회 시 SubscriptionsStatusResponseListener 상속 구현한 객체의 onSubscriptionsStatusResponse 메서드를 통해 통지됩니다.
+
+```java
+void onSubscriptionsStatusResponse(IapResult result,
+                                   List<IapSubscriptionStatus> subscriptionsStatus);
 ```
 
 ## 오류 코드
@@ -675,3 +958,12 @@ void onPurchasesResponse(IapResult result,
 | ONESTORE_NEED_UPDATE     | 302  | ONE store 서비스가 업데이트 또는 설치되지 않았습니다.<br>ONE store service is not updated or installed. |
 | ONESTORE_SECURITY_ERROR  | 303  | 비정상 앱에서 결제를 요청하였습니다.<br>Abnormal purchase request. |
 | ONESTORE_PURCHASE_FAILED | 304  | 결제 요청에 실패했습니다.<br>Purchase request failed. |
+
+### Galaxy store 오류 코드
+
+| RESULT                   | CODE | DESC                                     |
+| ------------------------ | ---- | ---------------------------------------- |
+| GALAXY_NOT_LOGGED_IN      | 501  | Galaxy store 서비스에 로그인되어 있지 않습니다.<br>Galaxy service is not logged in. |
+| GALAXY_NOT_UPDATED     | 502  | Galaxy store 서비스가 업데이트 또는 설치되지 않았습니다.<br>Galaxy service is not updated or installed. |
+| GALAXY_PURCHASE_FAILED  | 503  | 비정상 앱에서 결제를 요청하였습니다.<br>Galaxy purchase failed. |
+| GALAXY_SERVICE_DENIED | 504  | 결제 요청에 실패했습니다.<br>PurGalaxy service denied. |

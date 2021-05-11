@@ -1,9 +1,9 @@
-## TOAST > 控制台使用指南
+## NHN Cloud > 控制台使用指南
 
-TOAST Console起到使用TOAST服务的管理工具及操作窗口的作用。
-下面介绍TOAST控制台的基本设置及使用方法。
+NHN Cloud Console起到使用NHN Cloud服务的管理工具及操作窗口的作用。
+下面介绍NHN Cloud控制台的基本设置及使用方法。
 
-TOAST Console提供如下功能。
+NHN Cloud Console提供如下功能。
 
 - 管理使用服务所需的基本信息（组织、项目）
 - 启用/禁用服务
@@ -13,22 +13,22 @@ TOAST Console提供如下功能。
 ## 控制台快捷指南
 针对控制台提供的基本功能的快捷指南。 
 
-![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
-![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
-![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
-![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
-![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103_zh.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103_zh.png)
+![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103_zh.png)
+![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103_zh.png)
+![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103_zh.png)
 
 
 ## 组织管理
 
-组织是为高效使用并管理TOAST服务所创建的组。
+组织是为高效使用并管理NHN Cloud服务所创建的组。
 在组织中用户可以共享并使用相同的服务策略。
-通过组织可以高效使用各种TOAST服务。
+通过组织可以高效使用各种NHN Cloud服务。
 
 ### 创建组织
 
-- 为使用TOAST服务，需要创建组织。
+- 为使用NHN Cloud服务，需要创建组织。
 - 个人/企业会员均可创建组织。
 - 创建组织的会员自动成为组织的OWNER。
 - 为创建组织，必须登记会员的付款方式。
@@ -40,15 +40,16 @@ TOAST Console提供如下功能。
 创建组织后，可选择服务。
 可以以组织为单位启用的服务如下。
 
-- ERP
 - Dooray!
+- ERP
+- Groupware
 - Contact Center
 - IDC
 - CloudTrail
 
 ### 创建组织指南
 
-![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
+![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202103_zh.png)
 
 <center>[图 1] 创建组织 </center>
 
@@ -56,7 +57,7 @@ TOAST Console提供如下功能。
 2. 在**创建组织**窗口中输入组织名称。组织名称可使用韩文、英文、特殊字符、数字。
 3. 单击**确认**按钮，组织创建完成。
 4. 控制台上端菜单中显示创建的组织名称。
-5. 单击**设置**按钮，确认创建的组织信息。作为组织的补充信息，输入域信息。域应设置为TOAST中唯一的值。  
+5. 单击**设置**按钮，确认创建的组织信息。作为组织的补充信息，输入域信息。域应设置为NHN Cloud中唯一的值。  
 
 ### 删除组织
 
@@ -66,7 +67,7 @@ TOAST Console提供如下功能。
 
 ## 管理项目
 
-创建组织后，为使用TOAST服务而创建项目。
+创建组织后，为使用NHN Cloud服务而创建项目。
 在项目中启用项目服务方可使用服务。
 项目服务以项目为单位使用，并以此为基准收费。
 
@@ -84,24 +85,25 @@ TOAST Console提供如下功能。
 可以以项目为单位启用的服务如下。
 
 - Compute
-- Storage
+- Container
 - Network
+- Storage
 - Database
+- Game
 - Security
 - Content Delivery
-- Dev Tool
-- Management
-- Game
 - Notification
+- Mobile Service
 - Analytics
 - Application Service
 - Search
-- Mobile Service
+- Dev Tool
+- Management
 - Bill
 
 ### 创建项目指南
 
-![console_guide_7_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
+![console_guide_7_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202103_zh.png)
 
 <center>[图2] 创建项目 </center>
 
@@ -113,12 +115,12 @@ TOAST Console提供如下功能。
 
 ### 启用项目服务指南
 
-![console_guide_8_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
+![console_guide_8_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202103_zh.png)
 
 <center>[图3] 启用项目服务 </center>
 
 1. 创建项目后，单击**选择服务**按钮，可以选择项目中要使用的服务。
-2. 在选择服务界面中选择要激活的服务。显示询问是否要激活服务的信息后，单击**确认**。显示提示移动至可以使用服务的页面信息后，单击**确认**按钮。
+2. 在选择服务界面中选择要激活的服务。显示询问是否要激活服务的信息后，单击**确认**。
 3. 启用的服务列表可以在控制台左侧菜单中确认。在列表中单击所需服务，显示服务使用界面。
 
 ### 删除项目
@@ -131,16 +133,16 @@ TOAST Console提供如下功能。
 ## 管理会员 
 利用管理会员，可通过各用户验证（登录）及权限赋予进行控制。 
 在项目及组织中，可分开管理会员。 
-会员分为TOAST会员及IAM会员。
+会员分为NHN Cloud会员及IAM会员。
 
-### TOAST会员与IAM会员政策
+### NHN Cloud会员与IAM会员政策
 
 | 分类           | TOAST.com会员                                               | IAM会员                               |
 | :------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 定义           | \- 针对组织管理的会员<br>\- 同意TOAST使用条款的TOAST会员，具有服务使用责任及义务的会员 <br>\- 在整体TOAST服务中，即使有效会员所属组织被删除，但仍旧作为TOAST会员存在 | \- 针对服务使用的会员<br>\- 不同意TOAST使用条款的会员<br>\- 仅在组织内有效的会员，若所属的组织删除也会被删除的会员 |
-| 会员登记方法 | \- 组织的OWNER或ADMIN输入TOAST ID登记          | \- 组织的OWNER或ADMIN输入组织内唯一的ID登记<br>\- 通过与SSO关联/API关联等登记 |
+| 定义           | \- 针对组织管理的会员<br>\- 同意NHN Cloud使用条款的NHN Cloud会员，具有服务使用责任及义务的会员 <br>\- 在整体NHN Cloud服务中，即使有效会员所属组织被删除，但仍旧作为NHN Cloud会员存在 | \- 针对服务使用的会员<br>\- 不同意NHN Cloud使用条款的会员<br>\- 仅在组织内有效的会员，若所属的组织删除也会被删除的会员 |
+| 会员登记方法 | \- 组织的OWNER或ADMIN输入NHN Cloud ID登记          | \- 组织的OWNER或ADMIN输入组织内唯一的ID登记<br>\- 通过与SSO关联/API关联等登记 |
 | 会员权限      | \- 组织管理（组织创建/修改/组织会员管理/组织服务管理/付款管理\）<br>\- 创建项目<br>\- 删除项目 | \- 使用组织服务 |
-| 访问控制台      | \- 访问TOAST控制台(https://console.toast.com/) <br>\- TOAST> 以会员ID/PW登录<br> | \- 访问IAM控制台（https://组织域.console.toast.com/）<br> \- （Dooray!、ERP服务以相应服务域访问）<br> \- 以组织的OWNER（或ADMIN）设置的ID/PW登录 \- 组织中设置的登录安全（2次验证，按服务设置）验证 |
+| 访问控制台      | \- 访问NHN Cloud控制台(https://console.toast.com/) <br>\- NHN Cloud> 以会员ID/PW登录<br> | \- 访问IAM控制台（https://组织域.console.toast.com/）<br> \- （Dooray!、ERP服务以相应服务域访问）<br> \- 以组织的OWNER（或ADMIN）设置的ID/PW登录 \- 组织中设置的登录安全（2次验证，按服务设置）验证 |
 
 
 ### 组织会员
@@ -183,7 +185,7 @@ TOAST Console提供如下功能。
 ### IAM控制台登录安全设置
 为增强IAM会员的控制台访问安全，提供[登录安全设置]功能。 
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202103_zh.png)
 
 1.访问要在控制台中设置的组织的组织设置页面。 
 2.单击IAM控制台的[登录安全设置]按钮。 
@@ -274,7 +276,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | Infrastructure | ADMIN |  Create/Read/Update/Delete Infrastructure Service  |
 | Infrastructure | MEMBER | Viewer VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete Other services |
 | Container Registry | ADMIN | Create/Read/Update/Delete Container Registry Service |
-| Container Registry | MEMBER | Read Container Registry Service  |
+| Container Registry | VIEWER | Read Container Registry Service  |
 | DNS Plus | ADMIN | Create/Read/Update/Delete DNS Plus Service  |
 | Object Storage | ADMIN | Create/Read/Update/Delete Object Storage Service   |
 | Backup | ADMIN |  Create/Read/Update/Delete Backup Service |
@@ -283,7 +285,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | EasyCache | ADMIN | Create/Read/Update/Delete EasyCache Service |
 | Gamebase | ADMIN | Create/Read/Update/Delete Gamebase Service |
 | Leaderboard | ADMIN | Create/Read/Update/Delete Leaderboard Service |
-| Leaderboard | MEMBER |  Read Leaderboard Service |
+| Leaderboard | VIEWER |  Read Leaderboard Service |
 | Launching  | ADMIN | Create/Read/Update/Delete Launching Service  |
 | Smart Downloader | ADMIN |  Create/Read/Update/Delete Smart Downloader Service |
 | AppGuard  | ADMIN | Create/Read/Update/Delete AppGuard Service |
@@ -297,7 +299,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | WEB Firewall  | ADMIN |   Create/Read/Update/Delete WEB Firewall Service |
 | Vaccine  | ADMIN |  Create/Read/Update/Delete Vaccine Service |
 | Secure Key Manager  | ADMIN |  Create/Read/Update/Delete Secure Key Manager Service |
-| Secure Key Manager  | MEMBER |  Read Secure Key Manager Service |
+| Secure Key Manager  | VIEWER |  Read Secure Key Manager Service |
 | CDN   | ADMIN |  Create/Read/Update/Delete CDN Service  |
 | Image  | ADMIN |  Create/Read/Update/Delete Image Service |
 | Push  | ADMIN |  Create/Read/Update/Delete Push Service  |
@@ -320,15 +322,15 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | Service Monitoring  | ADMIN | Create/Read/Update/Delete Service Monitoring Service |
 | Certificate Manager  | ADMIN | Create/Read/Update/Delete Certificate Manager Service |
 | Bill (e-Tax)  | ADMIN |  Create/Read/Update/Delete Bill (e-Tax) Service |
-| Bill (e-Tax)  | MEMBER |  Read Bill (e-Tax) Service |
+| Bill (e-Tax)  | VIEWER |  Read Bill (e-Tax) Service |
 
 
 
 
 ## 付款管理
 
-可确认TOAST服务使用费用并付款。
-在**查看我的信息 > 付款管理**菜单中可以查看登记付款方式的TOAST会员的申请书与预计付款金额、使用量信息。
+可确认NHN Cloud服务使用费用并付款。
+在**查看我的信息 > 付款管理**菜单中可以查看登记付款方式的NHN Cloud会员的申请书与预计付款金额、使用量信息。
 
 提供相应月通过付款方式付款的明细以及以下功能。
 

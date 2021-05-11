@@ -1,19 +1,19 @@
-## TOAST > Guide to TOAST Regions
+## NHN Cloud > Guide to NHN Cloud Regions
 A region refers to the physical location of an independent and geologically separated server. 
 Generally, a region is comprised of a standalone power, the so-called available area, and datacenter equipped with a network, and the user may select a region depending on the region and service. 
-Feel free to select your region anytime and anywhere to enjoy TOAST services. 
+Feel free to select your region anytime and anywhere to enjoy NHN Cloud services. 
 
-## TOAST Regions
+## NHN Cloud Regions
 
-TOAST operates four regions to provide stable global services. 
+NHN Cloud operates four regions to provide stable global services. 
 To support for high availability, an application must be deployed to many available areas or multiple regions. 
-TOAST users are allowed to select regions depending on the service area and purpose, but recommended to select those regions where service targets are mainly located so as to get fast response.   
+NHN Cloud users are allowed to select regions depending on the service area and purpose, but recommended to select those regions where service targets are mainly located so as to get fast response.   
 
 ## Location of TOAT Regions 
-TOAST is expanding its regions to make its service globally available.  
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/region_guide%2001.png)
+NHN Cloud is expanding its regions to make its service globally available.  
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Region_guide_2021.png)
 
-## TOAST Regional Service 
+## NHN Cloud Regional Service 
 
 **Regional Service**
 Regional Service refers to services that are provided only for particular regions due to restrictions in infrastructure and service content of eacy country/region/law/product. 
@@ -33,12 +33,13 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image | Region | O | O | O | O |
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
-| Container | Kubernetes | Regional | O |  |  |  |
-|  | Container Registry | Regional | O |  |  |  |
+| Container | Kubernetes | Regional | O | O |  |  |
+|  | Container Registry | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
 |  | Physical Load Balancer | Regional | O | O |  |  |
+|  | NAT Instance | Regional |  | O |  |  |
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
 |  | NAS (offline) | Regional | O | O |  | O |
@@ -46,7 +47,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Backup | Regional | O | O | O |  |
 | Database | RDS for MySQL | Regional | O | O | O |  |
 |  | RDS for MS-SQL | Regional | O |  |  |  |
-|  | EasyCache | Regional | O |  | O |  |
+|  | EasyCache | Regional | O | O | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
@@ -61,7 +62,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | OTP | Regional | O |  |  |  |
 |  | DBSafer | Regional | O | O  |  |  |
 |  | Web Firewall | Regional | O | O  |  |  |
-|  | Vaccine | Regional | O | O  |  |  |
+|  | DDoS Guard | Regional | O | O |  |  |
+|  | Vaccine | Regional | O | O |  |  |
 |  | Secure Key Manager | Global |  |  |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image | Regional | O |  |  |  |
@@ -76,13 +78,15 @@ All users are provided with the same features, policy, stability and usability, 
 |  | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O |  |  |  |
 |  | RTCS | Global |  |  |  |  |
+|  | ShortURL | Global |  |  |  |  |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
 |  | Address Search | Regional | O |  |  |  |
-| Dev Tools | Deploy | Global |  |  |  |  |
+| Dev Tools | Pipeline | Regional | O | O |  |  |
+|  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
-|  | Service Monitoring | Global |  |  |  |  |
+|  |  | Global |  |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
 | Workplace Dooray! | Project | Global |  |  |  |  |
 |  | Messenger | Global |  |  |  |  |

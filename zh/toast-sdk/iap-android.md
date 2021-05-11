@@ -11,13 +11,19 @@
 ## Store Types
 - [Google Play Store](https://developer.android.com/google/play/billing)
 - [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [Galaxy store](https://developer.samsung.com/iap/overview.html)
 
 ## Library Setting
 - To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
 
 ```groovy
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.23.1'
+    implementation 'com.toast.android:toast-iap-google:0.25.0'
     ...
 }
 ```
@@ -25,11 +31,30 @@ dependencies {
 - To use In-App Purchase of ONE store, add dependency to build.gradle, as below:
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.23.1'
+    implementation 'com.toast.android:toast-iap-onestore:0.25.0'
     ...
 }
 ```
+
+- To use In-App Purchase of Galaxy store, add dependency to build.gradle, as below:
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-iap-galaxy:0.25.0'
+    ...
+}
+```
+
+> Galaxy Store in-app purchases works on Android 4.3 (API level 18) or higher.
 
 ## AndroidManifest Settings
 
@@ -53,12 +78,43 @@ If meta-data is not set, the default ("full") is applied.
 
 For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/devpoc/reference/view/Tools).
 
+### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store)
+
+Android 11에서는 앱이 사용자가 기기에 설치한 다른 앱을 쿼리하고 상호작용하는 방법을 변경합니다.
+Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소를 정의해야합니다.
+
+#### ONE store
+
+```xml
+<queries>
+    <intent>
+        <action android:name="com.onestore.ipc.iap.IapService.ACTION" />
+    </intent>
+    <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="onestore" />
+    </intent>
+</queries>
+```
+
+#### Galaxy Store
+
+```xml
+<queries>
+    <package android:name="com.sec.android.app.samsungapps" />
+</queries>
+```
+
+'queries' 요소는 Android Gradle Plugin 4.1 이상에서 동작합니다.
+이전 버전의 Android Gradle Plugin을 사용하려면 [Android 11에서 패키지 가시성을 위해 Gradle 빌드 준비](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html)를 참고하세요.
+
 ## Store Codes
 
 | Store | Code |
 | ---- | ---- |
 | Google Play Store| "GG" |
 | ONE store | "ONESTORE" |
+| Galaxy store | "GALAXY" |
 
 > Note : Store codes are defined in the  [IapStoreCode](./iap-android/#iapstorecode) class.
 
@@ -220,8 +276,8 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-> [참고] 결제 결과가 IapService.PurchasesUpdatedListener로 통지되기 전 Activity가 종료되면 결제 데이터가 유실될 수 있습니다.
-> 결제를 안전하게 처리하기 위해 결제 결과를 통지받기 전, 사용자가 Activity를 종료(백 버튼 또는 종료 버튼 클릭)할 수 없도록 해야 합니다.
+> [Note] If this activity is terminated before the transaction result is notified to IapService.PurchasesUpdatedListener, the transaction data could be lost.
+> For safer processing of transaction, users must be restricted from terminating their activity (clicking Back or Quit button) until they get the transaction result.
 
 ## Query Product List
 
@@ -319,7 +375,6 @@ setProductId (productId)
 ToastIap.launchPurchaseFlow (activity, params);
 ```
 
-
 If you purchased a product with a promotional code from the Google Play Store, you cannot use user data.
 
 ## Query Unconsumed Purchases
@@ -411,6 +466,149 @@ void queryActivatedPurchases() {
 }
 ```
 
+## 구독 상태 조회
+
+* User ID 기준으로 구입한 구독 상품의 상태를 조회할 수 있습니다.
+* 만료된 구독 상품은 includeExpiredSubscriptions 설정으로 조회 또는 제외할 수 있습니다. (default: false)
+* 구독 상품 상태는 ToastIap.querySubscriptionsStatus() 메서드를 사용하여 조회할 수 있습니다.
+* 조회 결과는 [IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener)를 통해 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체 리스트를 반환됩니다.
+* [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 사용하는 구독 상태 코드는 [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatusCode)에 정의되어 있습니다.
+
+```
+현재 구독 상품은 Google Play 스토어만 지원합니다.
+```
+
+### 구독 상태 조회 API 명세
+
+```java
+/* ToastIap.java */
+public static void querySubscriptionsStatus(Activity activity,
+                                            boolean includeExpiredSubscriptions,
+                                            IapService.SubscriptionsStatusResponseListener listener)
+```
+
+| Method | Parameters |  |
+| --- | --- | --- |
+| querySubscriptionsStatus | activity | Activity: 현재 활성화된 Activity |
+|  | includeExpiredSubscriptions | boolean:<br>구독 만료된 구독 상품의 상태 포함 여부 |
+|  | listener | IapService.SubscriptionsStatusResponseListener:<br>구독 상태 조회 결과 리스너 |
+
+### 구독 상태 조회 예시
+
+```java
+/**
+ * 구독 상태 조회
+ */
+private void querySubscriptionsStatus() {
+    SubscriptionsStatusResponseListener listener =
+            new SubscriptionsStatusResponseListener() {
+                @Override
+                public void onSubscriptionsStatusResponse(@NonNull String storeCode,
+                                                          @Nullable List<IapSubscriptionStatus> subscriptionsStatus) {
+                    if (result.isSuccess()) {
+                        // 성공
+                    } else {
+                        // 실패
+                    }
+                }
+            };
+    ToastIap.querySubscriptionsStatus(MainActivity.this, false, listener);
+}
+```
+
+## Google Store subscription (recurring billing) feature
+
+This explains how to process events related to life cycles, such as Google Store subscription payment renewals and expiries.
+For further details, please refer to [Add Features For Each Recurring Billing](https://developer.android.com/google/play/billing/billing_subscriptions).
+
+### Subscription life cycle processing
+
+Subscriptions on the Google Store go through various status changes throughout their life cycle and an app must respond to each.
+
+* **Active**: recurring billing content can be accessed, and auto-renewal is enabled
+* **Cancelled**: recurring billing content can be accessed, but the user has cancelled the subscription product and auto-renewal has been halted
+* **In grace period**: recurring billing has failed due to a payment method problem but recurring billing content can still be accessed (waiting for the user to change the payment method)
+* **On hold**: a payment method problem has caused recurring billing to fail, placing the account on hold (If grace period has been enabled, the payment method was not changed during the grace period and payment has been placed on hold)
+* **Pause**: a recurring billing product have been put on pause
+* **Expired**: a recurring billing product has expired
+
+| Status | Query consumable purchases<br>(ToastIap.queryConsumablePurchases) | Query activated purchases<br>(ToastIap.queryActivatedPurchases) | Expiry time | Auto-renewal |
+| --- | --- | --- | --- | --- |
+| Active state | Yes | Yes | Future time | Yes |
+| Cancelled | Yes | Yes | Future time | No |
+| In grace period | No | Yes | Future time | Yes |
+| On hold | No | No | Past time | Yes |
+| Pause | No | No | Past time | Yes |
+| Expired | No | No | Past time | No |
+
+### Grace period
+
+If grace period has been enabled, when there is a problem with the payment method when a billing cycle ends recurring billing will transition to a grace period.
+<span style="color:#e11d21">During a grace period the user must be able to access recurring billing content.</span>
+For further details please refer to [Grace period](https://developer.android.com/google/play/billing/subs#grace)
+
+> <span style="color:#e11d21">**Warning!)**</span> If recovery is performed through a payment method change, etc. during the grace period, auto-renewal resumes. The TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary popup isn't exposed to the user by the purchase update listener during an important action.
+
+#### Ordinary subscription product (AUTO_RENEWABLE))
+
+* During a grace period ordinary subscription products must be able to access recurring billing content.
+* Queries can be made with ToastIap.queryActivatedPurchases() during grace period.
+
+#### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
+
+* Once grace period begins, Google issues a new receipt. If the payment method isn’t modified, however, the payment is placed on hold or cancelled.
+* Consumable subscription products cannot be queried with ToastIap.queryConsumablePurchases()to prevent consumption of products during grace period.
+
+### On hold
+
+This refers to a user state where renewal failed due to a payment method problem.
+If payment fails, more attempts will be made during grace period. If payment fails during the grace period as well, the recurring billing is placed on hold.
+Users placed on hold cannot access recurring billing content.
+Account hold period is 30 days maximum.
+If the payment method is not changed before the hold period ends, the subscription will be cancelled.
+For further details, please refer to [Account hold](https://developer.android.com/google/play/billing/subs#account-hold)
+
+> <span style="color:#e11d21">**Warning!)**</span> If recovery is performed through a payment method change, etc. during the account hold period, auto-renewal resumes. The TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary popup isn't exposed to the user by the purchase update listener during an important action.
+
+#### Ordinary subscription product (AUTO_RENEWABLE))
+
+* During account hold period ordinary subscription products must be able to access recurring billing content.
+* Queries through ToastIap.queryActivatedPurchases() are unavailable while subscription is on hold.
+
+#### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
+
+* Consumable subscription products do not create new purchases while subscription is on hold.
+* Queries for new purchases through ToastIap.queryConsumablePurchases()are unavailable while subscription is on hold.
+
+### Pause
+
+Using the pause function allows the user to pause the recurring billing for anywhere from 1 week to 3 months.
+Recurring billing pausing will take effect after the current subscription period ends.
+When the pause period ends, recurring billing will automatically resume.
+For further details, please refer to [Pause](https://developer.android.com/google/play/billing/subs#pause)
+
+> <span style="color:#e11d21">**Warning!)**</span> Auto-renewal resumes when the pause period is over. The TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary popup isn't exposed to the user by the purchase update listener during an important action.
+
+#### Ordinary subscription product (AUTO_RENEWABLE))
+
+* During pause period ordinary subscription products must be able to access recurring billing content.
+* Queries through ToastIap.queryActivatedPurchases() are unavailable while subscription is paused.
+
+#### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
+
+* Consumable subscription products do not create new purchases while subscription is paused.
+* Queries for new purchases through ToastIap.queryConsumablePurchases()are unavailable while subscription is paused.
+
+### Reapplying for recurring billing
+
+Setting the recurring billing resubscribe function will allow the user to reapply for recurring billing that has been cancelled within 12 months of the expiry of the recurring billing.
+Recurring billing resubscription will create a new recurring billing and purchase token.
+After a recurring billing has expired, the user can use the Google Play recurring billing center to repurchase the same product for up to 1 years after expiry.
+For further details please refer to [Recurring Billing Resubscription](https://developer.android.com/google/play/billing/subs#resubscribe)
+
+> <span style="color:#e11d21">**Warning!)**</span> User data (IapPurchase.getDeveloperPayload()) cannot be used because purchases are not carried out in an in-app or game screen.
+> <span style="color:#e11d21">**Warning!)**</span> If recurring billing resubscription was used to purchase a subscription product from the Google Play Store, the TOAST IAP notifies of the payment results regarding the purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary popup isn't exposed to the user by the purchase update listener during an important action.
+
 ## TOAST IAP Class Reference
 
 ### ToastIapConfiguration
@@ -426,7 +624,7 @@ public String getStoreCode();
 | Method | Returns |  |
 | ---- | ---- | ---- |
 | getAppKey | String | IAP service appkey |
-| getStoreCode | String | Store code information ("GG" or "ONESTORE", ...) |
+| getStoreCode | String | Store code information ("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### ToastIapConfiguration.Builder
 
@@ -441,7 +639,7 @@ public void setStoreCode(String storeCode)
 | Method | Parameters |  | Description |
 | ---- | ---- | ---- | ---- |
 | setAppKey | appKey | String: IAP service appkey | Set appkey created in TOAST IAP Console. |
-| setStoreCode | storeCode | String: Store code information | Set store code. <br>("GG" or "ONESTORE", ...) |
+| setStoreCode | storeCode | String: Store code information | Set store code. <br>("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### IapStoreCode
 
@@ -449,10 +647,12 @@ public void setStoreCode(String storeCode)
 /* IapStoreCode.java */
 String GOOGLE_PLAY_STORE
 String ONE_STORE
+String GALAXY_STORE
 ```
 
 * GOOGLE_PLAY_STORE<br>Applies Google Play Store in-app purchase.<br>Constant Value: "GG"
 * ONE_STORE<br>Applies ONE store in-app purchase. <br>Constant Value: "ONESTORE"
+* GALAXY_STORE<br>Applies Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
 
 ### IapPurchaseResult
 
@@ -616,6 +816,79 @@ public void setProductId(String productId)
 | ---- | ---- | ---- | ---- |
 | setProductId | productId | String: Product ID | Product ID is set. |
 
+### IapSubscriptionStatus
+
+* IapSubscriptionStatus 객체로 구독 상태 정보를 확인할 수 있습니다.
+* 구독 상태 코드는 IapSubscriptionStatus.StatusCode에 정의되어 있습니다.
+
+```java
+/* IapSubscriptionStatus.java */
+public String getStoreCode()
+public String getPaymentId()
+public String getOriginalPaymentId()
+public String getPaymentSequence()
+public String getProductId()
+public String getProductType()
+public String getProductSequence()
+public String getUserId()
+public float getPrice()
+public String getPriceCurrencyCode()
+public String getAccessToken()
+public String getPurchaseType()
+public String getPurchaseTime()
+public String getExpiryTime()
+public String getDeveloperPayload()
+public int getStatusCode()
+public String getStatusDescription()
+```
+
+| Method | Returns |  |
+| --- | --- | --- |
+| getStoreCode | String | 스토어 코드를 반환합니다. |
+| getPaymentId | String | 결제 ID를 반환합니다. |
+| getOriginalPaymentId | String | 원본 결제 ID를 반환합니다. |
+| getPaymentSequence | String | 결제 고유 번호를 반환합니다. |
+| getProductId | String | 상품 ID를 반환합니다. |
+| getProductType | String | 상품 유형을 반환합니다. |
+| getProductSeq | String | 상품 고유 번호를 반환합니다. |
+| getUserId | String | 사용자 ID를 반환합니다. |
+| getPrice | float | 가격 정보를 반환합니다. |
+| getPriceCurrencyCode | String | 통화 정보를 반환합니다. |
+| getAccessToken | String | 소비에 사용되는 토큰을 반환합니다. |
+| getPurchaseType | String | 결제 유형을 반환합니다.<br>"Test" or "Promo" or null |
+| getPurchaseTime | long | 상품 구매 시간을 반환합니다. |
+| getExpiryTime | long | 구독 상품의 남은 시간을 반환합니다. |
+| getDeveloperPayload | String | 사용자 데이터를 반환합니다. |
+| getStatusCode | int | 구독 상태 코드를 반환합니다. |
+| getStatusDescription | String | 구독 상태 코드에 대한 설명을 반환합니다. |
+
+### IapSubscriptionStatus.StatusCode
+
+* 구독 상태를 나타내는 코드 입니다.
+
+```java
+/* IapSubscriptionStatus.java */
+int ACTIVE
+int CANCELED
+int ON_HOLD
+int IN_GRACE_PERIOD
+int PAUSED
+int REVOKED
+int EXPIRED
+int UNKNOWN
+```
+
+| Name | Code | Status | Description |
+| --- | --- | --- | --- |
+| ACTIVE | 0 | 활성 | 구독이 활성 상태입니다. |
+| CANCELED | 3 | 취소 | 구독이 취소되었습니다. |
+| ON\_HOLD | 5 | 계정 보류 | 정기 결제가 계정 보류 상태가 되었습니다(사용 설정된 경우). |
+| IN\_GRACE\_PERIOD | 6 | 유예 기간 | 정기 결제가 유예 기간 상태로 전환되었습니다(사용 설정된 경우). |
+| PAUSED | 10 | 일시 중지 | 구독이 일시 중지되었습니다. |
+| REVOKED | 12 | 해지 | 정기 결제가 만료 시간 전에 사용자에 의해 취소되었습니다. |
+| EXPIRED | 13 | 만료 | 정기 결제가 만료되었습니다. |
+| UNKNOWN | 9999 | 미정의 | 정의 되지 않은 상태입니다. |
+
 ### IapService.PurchasesUpdatedListener
 
 * Purchase information, if updated, is notified via onPurchasesUpdated of an object inherited with IapService.PurchasesUpdatedListener.
@@ -631,6 +904,15 @@ void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
 ```java
 void onPurchasesResponse(IapResult result,
                          List<IapPurchase> purchaseList)
+```
+
+### IapService.SubscriptionsStatusResponseListener
+
+* 구독 상태 조회 시 SubscriptionsStatusResponseListener 상속 구현한 객체의 onSubscriptionsStatusResponse 메서드를 통해 통지됩니다.
+
+```java
+void onSubscriptionsStatusResponse(IapResult result,
+                                   List<IapSubscriptionStatus> subscriptionsStatus);
 ```
 
 ## Error Codes
@@ -671,3 +953,12 @@ void onPurchasesResponse(IapResult result,
 | ONESTORE_NEED_UPDATE | 302 | ONE store Service is not updated or installed.<br> |
 | ONESTORE_SECURITY_ERROR | 303 | Purchase requested from abnormal app.<br> |
 | ONESTORE_PURCHASE_FAILED | 304 | Failed to request for purchase.<br> |
+
+### Galaxy storeエラーコード
+
+| RESULT                   | CODE | DESC                                     |
+| ------------------------ | ---- | ---------------------------------------- |
+| GALAXY_NOT_LOGGED_IN      | 501  | Galaxy service is not logged in.<br> |
+| GALAXY_NOT_UPDATED     | 502  | Galaxy service is not updated or installed.<br> |
+| GALAXY_PURCHASE_FAILED  | 503  | Galaxy purchase failed.<br> |
+| GALAXY_SERVICE_DENIED | 504  | PurGalaxy service denied.<br> |

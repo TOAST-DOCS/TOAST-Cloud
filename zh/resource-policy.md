@@ -1,5 +1,5 @@
-## TOAST > TOAST源提供政策 
-TOAST为所有客户提供稳定的服务，为保护客户不因创建意料之外的源而产生支出等，提供源使用量政策。
+## NHN Cloud > NHN Cloud源提供政策 
+NHN Cloud为所有客户提供稳定的服务，为保护客户不因创建意料之外的源而产生支出等，提供源使用量政策。
 
 ### Resource Usage Policy for Organization/Project 
 Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
@@ -53,7 +53,7 @@ Resource usage for organization is calculated by the member who registered payme
 | 好友TALK 发送量 |  KakaoTalk Channel 1日毎 | 1,000 件 |
 
 ### 申请调整源提供量 
-除基本提供量外，若欲额外使用，咨询TOAST客服中心[1:1咨询]即可。 
+除基本提供量外，若欲额外使用，咨询NHN Cloud客服中心[1:1咨询]即可。 
 申请时，填写欲增加的项目和欲增加的量，可轻松地进行咨询。 
 
 申请后至予以处理需2~5日左右，因此建议相较于实际需要时间提前申请。 

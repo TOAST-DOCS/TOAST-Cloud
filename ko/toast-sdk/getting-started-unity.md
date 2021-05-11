@@ -36,7 +36,7 @@ Unity 용 TOAST SDK는 다음과 같은 폴더 구조로 되어 있습니다.
 
 ## TOAST SDK를 Unity 프로젝트에 적용
 
-TOAST의 [Download](../../../Download/#toast-sdk) 페이지에서 TOAST SDK Unity를 다운로드합니다. 
+TOAST의 [Download](../../../Download/#toast-sdk) 페이지에서 TOAST SDK Unity를 다운로드합니다.
 
 ### Unity package 가져오기
 
@@ -56,22 +56,22 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package가 있습니다. Sample을
 
 ## Android 빌드 설정
 
-### Unity Play Services Resolver 
+### Unity Play Services Resolver
 
-* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다. 
-* 이 라이브러리는 안드로이드 관련 라이브러리(예:AAR)에 대한 종속성을 자동으로 해결하여 Unity 프로젝트에 복사됩니다. 
+* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다.
+* 이 라이브러리는 안드로이드 관련 라이브러리(예:AAR)에 대한 종속성을 자동으로 해결하여 Unity 프로젝트에 복사됩니다.
 
 #### Gradle 빌드 설정을 사용할 경우
 
-* Gradle 빌드 설정은 아래에 있습니다. 
+* Gradle 빌드 설정은 아래에 있습니다.
 * 아래와 같이 옵션을 제거하고 받은 플러그인을 제거하고 사용하시면 됩니다 .
 	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > Android Resolver(Android 리졸버) > Settings(세팅)을 선택합니다.
-	2. 설정에서 "Enable Auto-Resolution"과 "Enable Resolution On Build" 옵션을 끕니다.	
+	2. 설정에서 "Enable Auto-Resolution"과 "Enable Resolution On Build" 옵션을 끕니다.
 	3. Assets/Plugins/Android에 있는 AAR파일을 제거합니다.
-	
+
 #### AAR 라이브러리 제공
 
-* AAR 라이브러리들을 압축파일로 첨부해서 제공하고 있습니다. 
+* AAR 라이브러리들을 압축파일로 첨부해서 제공하고 있습니다.
 * 아래와 같이 옵션을 제거하고 받은 플러그인을 제거하고 사용하시면 됩니다 .
 	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > Android Resolver(Android 리졸버) > Settings(세팅)을 선택합니다.
 	2. 설정에서 "Enable Auto-Resolution"과 "Enable Resolution On Build" 옵션을 끕니다.
@@ -100,14 +100,14 @@ Unity 용 TOAST SDK는 별도의 Sample Unity Package가 있습니다. Sample을
 > macOS : (유니티 설치 폴더)/PlaybackEngines/AndroidPlayer/Tools/GradleTemplates
 
 #### mainTemplate.gradle 설정
-- mainTemplate.gradle에 JCenter와 Google 리포지토리를 추가합니다.
+- mainTemplate.gradle에 mavenCentral와 Google 리포지토리를 추가합니다.
 - 각 모듈별로 안드로이드 유니티 플러그인이 있으며, 사용을 원하는 모듈의 플러그인을 mainTemplate.gradle에 추가합니다.
     - 안드로이드 유니티 플러그인 추가에 대한 가이드는 모듈별 가이드를 확인해주세요.
 
 ```groovy
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
         maven {
             url 'https://maven.google.com'
         }
@@ -171,9 +171,9 @@ if (GradleVersion.current() >= GradleVersion.version("4.2")) {
 #### Enable Bitcode 옵션
 * Enable Bitcode 옵션을 **NO**로 설정합니다.
 
-### Unity Play Services Resolver 
+### Unity Play Services Resolver
 
-* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다. 
+* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다.
 * 이 라이브러리는 iOS CocoaPods을 사용하는 라이브러리에 대한 종속성을 자동으로 해결해줍니다.
 
 > 참고) iOS 종속성은 CocoaPods를 사용하여 식별합니다. CocoaPods는 빌드 후 처리단계에서 실행됩니다.
@@ -183,8 +183,8 @@ if (GradleVersion.current() >= GradleVersion.version("4.2")) {
 
 #### iOS framework 제공
 
-* iOS framework들을 압축파일로 첨부해서 제공하고 있습니다. 
-* 아래와 같이 옵션을 제거하고 사용하시면 됩니다. 
+* iOS framework들을 압축파일로 첨부해서 제공하고 있습니다.
+* 아래와 같이 옵션을 제거하고 사용하시면 됩니다.
 	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > iOS Resolver(iOS 리졸버) > Settings(세팅)을 선택합니다.
 	2. 설정에서 모든 옵션을 끕니다.
 
@@ -236,4 +236,3 @@ ToastSdk.DebugMode = true; // or false
 
 * [TOAST Log & Crash](./log-collector-unity) 사용 가이드
 * [TOAST IAP](./iap-unity) 사용 가이드
-

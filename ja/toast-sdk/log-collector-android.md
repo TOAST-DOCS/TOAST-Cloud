@@ -10,8 +10,12 @@
 - 下記コードをbuild.gradleに追加します。
 
 ```groovy
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    implementation 'com.toast.android:toast-logger:0.23.1'
+    implementation 'com.toast.android:toast-logger:0.25.0'
     ...
 }
 ```

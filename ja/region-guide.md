@@ -1,19 +1,19 @@
-## TOAST > TOASTリージョンガイド
+## NHN Cloud > NHN Cloudリージョンガイド
 リージョンは、独立していて地理的に隔離されたサーバーの物理的な位置を意味します。
 一般的にリージョンは、アベイラビリティゾーンと呼ぶ独立した電源およびネットワークを持つデータセンターで構成され、使用したい地域とサービスに応じてリージョンを選択できます。 <br>
-インターネットで、いつどこでも自由にリージョンを選択してTOASTサービスを利用できます。
+インターネットで、いつどこでも自由にリージョンを選択してNHN Cloudサービスを利用できます。
 
-## TOASTリージョン
+## NHN Cloudリージョン
 
-TOASTは、安定的なグローバルサービスを提供するために、4個のリージョンを運用しています。
+NHN Cloudは、安定的なグローバルサービスを提供するために、4個のリージョンを運用しています。
 高可用性をサポートするには、複数のアベイラビリティゾーンまたは複数のリージョンにアプリケーションを配布する必要があります。
-TOASTユーザーは、サービス地域と目的に応じて使用するリージョンを選択できます。一般的に主なサービス対象になる地域のリージョンを利用すると、短いレスポンス時間が期待できます。
+NHN Cloudユーザーは、サービス地域と目的に応じて使用するリージョンを選択できます。一般的に主なサービス対象になる地域のリージョンを利用すると、短いレスポンス時間が期待できます。
 
-## TOASTリージョン位置
-TOASTは、グローバルなサービスを提供するために、多くの地域にリージョンを拡大しています。
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/region_guide%2001.png)
+## NHN Cloudリージョン位置
+NHN Cloudは、グローバルなサービスを提供するために、多くの地域にリージョンを拡大しています。
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Region_guide_2021.png)
 
-## TOASTリージョンサービス
+## NHN Cloudリージョンサービス
 
 **リージョンサービス**
 リージョンサービスは、サービスを提供するリージョンのインフラ環境と国/地域/法律/商品でサービスする内容の制限により、特定地域にのみ提供されるサービスです。
@@ -33,12 +33,13 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Image | リージョン | O | O | O | O |
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | System Monitoring | リージョン | O | O | O | O |
-| Container | Kubernetes | リージョン | O |  |  |  |
-|  | Container Registry | リージョン | O |  |  |  |
+| Container | Kubernetes | リージョン | O | O |  |  |
+|  | Container Registry | リージョン | O | O |  |  |
 | Network | VPC | リージョン | O | O | O | O |
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |
 |  | 物理Load Balancer | リージョン | O | O |  |  |
+|  | NAT Instance | リージョン |  | O  |  |  |
 |  | DNS Plus | グローバル |  |  |  |  |
 | Storage | Block Storage | リージョン | O | O | O | O |
 |  | NAS (offline) | リージョン | O | O  |  | O |
@@ -46,7 +47,7 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | Backup | リージョン | O | O  | O |  |
 | Database | RDS for MySQL | リージョン | O | O | O |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
-|  | EasyCache | リージョン | O |  | O |  |
+|  | EasyCache | リージョン | O | O | O |  |
 |  | MS-SQL Instance | リージョン | O | O | O | O |
 |  | MySQL Instance | リージョン | O | O | O | O |
 | Game | Gamebase | グローバル |  |  |  |  |
@@ -61,6 +62,7 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | OTP | リージョン | O |  |  |  |
 |  | DBSafer | リージョン | O | O  |  |  |
 |  | Web Firewall | リージョン | O | O  |  |  |
+|  | DDoS Guard | リージョン | O | O  |  |  |
 |  | Vaccine | リージョン | O | O |  |  |
 |  | Secure Key Manager | グローバル |  |  |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
@@ -76,11 +78,13 @@ TOASTは、グローバルなサービスを提供するために、多くの地
 |  | ROLE | グローバル |  |  |  |  |
 |  | API Gateway | リージョン | O |  |  |  |
 |  | RTCS | グローバル |  |  |  |  |
+|  | Short URL | グローバル |  |  |  |  |
 | Search | Cloud Search | リージョン | O |  |  |  |
 |  | Autocomplete | リージョン | O |  |  |  |
 |  | Corporation Search | リージョン | O |  |  |  |
 |  | Address Search | リージョン | O |  |  |  |
-| Dev Tools | Deploy | グローバル |  |  |  |  |
+| Dev Tools | Pipeline | リージョン | O | O |  |  |
+|  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
 |  | Service Monitoring | グローバル |  |  |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
