@@ -1,5 +1,6 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Windows C++
 ## 1.0.0.5 (2021.03.31)
+Download : [toast-sdk-windows-1.0.0.5.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/1.0.0/toast-sdk-windows-1.0.0.5.zip)
 * 버그 수정
 * 일부 API 인터페이스 수정
 * 사용자 정의 필드 사용시 입력값 검증 
@@ -10,6 +11,7 @@
 	
 	
 ## 0.9.4.3 (2019.10.10)
+Download : [toast-sdk-windows-0.9.4.3.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.4/toast-sdk-windows-0.9.4.3.zip)
 
 ### TOAST Log & Crash
 
@@ -18,6 +20,7 @@
 * x86에서 pure virtual call / invalid parameter 크래쉬로그가 남지 않는 현상 처리
 
 ## 0.9.3.0 (2019.07.23)
+Download : [toast-sdk-windows-0.9.3.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.3/toast-sdk-windows-0.9.3.0.zip)
 
 ### TOAST Log & Crash
 
@@ -32,6 +35,7 @@
 * xp 버전 제공 
 
 ## 0.9.0.12 (2018.09.04)
+Download : [toast-sdk-windows-0.9.0.12.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.0/toast-sdk-windows-0.9.0.12.zip)
 
 ### TOAST Log & Crash
 
