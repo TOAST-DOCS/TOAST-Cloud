@@ -80,6 +80,10 @@ binary "https://nh.nu/toast"
 * To use TOAST Push, UserNotifications.framework must be linked addtionally.
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
+##### xcframework
+* xcframework를 사용하면 arm simulator에서도 ToastSDK를 사용할 수 있습니다.
+![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework01.png)
+![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework02.png)
 
 #### Project Settings
 
