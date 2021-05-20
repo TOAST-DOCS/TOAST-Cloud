@@ -1,5 +1,16 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > iOS
 
+## 0.28.0 (2021.05.25)
+### 공통 
+#### 개선 사항
+* xcframework 추가 
+    * arm Simulator 지원 추가
+
+### TOAST Logger
+#### CrashReporter (BuildInfo 20210525)
+* 아키텍쳐 분류 방식 개선
+    * iOS14 Core Library가 심볼리케이션되지 않는 문제 개선
+
 ## 0.27.2 (2021.03.23)
 ### 공통
 #### 개선 사항
