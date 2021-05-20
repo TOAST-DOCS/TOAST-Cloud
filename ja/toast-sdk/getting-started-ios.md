@@ -80,7 +80,11 @@ binary "https://nh.nu/toast"
 * TOAST Push機能を使用するには、UserNotifications.frameworkを追加する必要があります。 
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png) 
  
- 
+##### xcframework
+* xcframework를 사용하면 arm simulator에서도 ToastSDK를 사용할 수 있습니다.
+![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework01.png)
+![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework02.png)
+
 #### Project Settings 
  
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。 
