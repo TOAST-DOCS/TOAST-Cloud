@@ -1,5 +1,18 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.22.1 (2021.05.25)
+Download : [toast-sdk-unity-0.22.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.22.1/toast-sdk-unity-0.22.1.zip)
+
+### Fixed
+
+* Obsolete warning 대응
+    * Unity 2020.2.x 이상에서 UnityWebRequest 관련 메서드가 deprecated 되어 발생하는 warning 대응
+
+### plugin version
+
+* Android : 0.25.0
+* iOS : 0.28.0
+
 ## 0.22.0 (2021.04.27)
 Download : [toast-sdk-unity-0.22.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.22.0/toast-sdk-unity-0.22.0.zip)
 
