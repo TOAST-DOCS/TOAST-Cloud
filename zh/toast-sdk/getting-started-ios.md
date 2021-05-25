@@ -16,7 +16,7 @@
 
 | Service | Cocoapods Pod Name | Carthage | Framework | Dependency | Build Settings |
 | ------- | ------------------ | -------- | --------- | ---------- | -------------- |
-| All | ToastSDK | github nhn/toastcloud.sdk<br> | ToastCore.framework<br>ToastCommon.framework<br>ToastLogger.framework<br>ToastIAP.framework<br>ToastPush.framework |  |  |
+| All | ToastSDK | binary "https://nh.nu/toast" | ToastCore.framework<br>ToastCommon.framework<br>ToastLogger.framework<br>ToastIAP.framework<br>ToastPush.framework |  |  |
 | Mandatory | ToastCore<br>ToastCommon |  | ToastCore.framework<br>ToastCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
 | TOAST Log & Crash | ToastLogger |  | ToastLogger.framework | [External & Optional]<br>\* CrashReporter.framework (Toast) |  |
 | TOAST IAP | ToastIAP |  | ToastIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
@@ -39,16 +39,22 @@ end
 
 ### 2. Apply TOAST SDK with Carthage
 
-* Cartfile을 생성하여 TOAST SDK의 Release Github Repository를 추가합니다.
-```
-github "nhn/toastcloud.sdk"
+* Cartfile을 생성하여 TOAST SDK를 추가합니다.
+
+```sh
+# Full URL
+binary "https://api-storage.cloud.toast.com/v1/AUTH_f9e3dc598ca142d3820e1c19343d5428/carthage/ToastSDK.json" 
+
+# Short URL 
+binary "https://nh.nu/toast"
 ```
 
 * 생성된 Carthage/Build 폴더의 Framework를 Xcode 프로젝트에 추가합니다. 
-![carthage_import_framework](http://static.toastoven.net/toastcloud/sdk/ios/carthage_setting_01.png)
+![carthage_import_framework](http://static.toastoven.net/toastcloud/sdk/ios/carthage01.png)
 
 * 프로젝트에 다음과 같이 프레임워크(framework)가 추가된 것을 확인합니다.
-![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage_setting_02.png)
+![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage02.png)
+![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage03.png)
 
 * TOAST SDK를 사용하기 위해 **프레임워크 설정**과 **프로젝트 설정**을 해야합니다.
 
@@ -74,6 +80,10 @@ github "nhn/toastcloud.sdk"
 * To use TOAST Push, UserNotifications.framework must be linked addtionally.
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
+##### xcframework
+* xcframework를 사용하면 arm simulator에서도 ToastSDK를 사용할 수 있습니다.
+![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework01.png)
+![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework02.png)
 
 #### Project Settings
 

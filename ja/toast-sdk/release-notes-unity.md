@@ -1,6 +1,20 @@
 ## TOAST > TOAST SDK 使用ガイド > リリースノート > Unity
 
+## 0.22.1 (2021.05.25)
+Download : [toast-sdk-unity-0.22.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.22.1/toast-sdk-unity-0.22.1.zip)
+
+### バグ修正
+
+* Obsolete warning 대응
+    * Unity 2020.2.x 이상에서 UnityWebRequest 관련 메서드가 deprecated 되어 발생하는 warning 대응
+
+### plugin version
+
+* Android : 0.25.0
+* iOS : 0.28.0
+
 ## 0.22.0 (2021.04.27)
+Download : [toast-sdk-unity-0.22.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.22.0/toast-sdk-unity-0.22.0.zip)
 
 ### 機能追加
 
@@ -13,6 +27,7 @@
 * iOS : 0.27.2
 
 ## 0.21.6 (2021.03.23)
+Download : [toast-sdk-unity-0.21.6.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.21.6/toast-sdk-unity-0.21.6.zip)
 
 ### バグ修正
 
@@ -22,19 +37,22 @@
 
 - iOS : 0.27.2
 
-## 0.21.5 (2021.01.15) 
+## 0.21.5 (2021.01.15)
+Download : [toast-sdk-unity-0.21.5.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.21.5/toast-sdk-unity-0.21.5.zip)
 
 ### plugin version
 
 - Android : 0.24.4
 
 ## 0.21.4 (2020.12.10)
+Download : [toast-sdk-unity-0.21.4.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.21.4/toast-sdk-unity-0.21.4.zip)
 
 ### plugin version
 
 - Android : 0.24.3
 
 ## 0.21.3 (2020.11.24)
+Download : [toast-sdk-unity-0.21.3.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.21.3/toast-sdk-unity-0.21.3.zip)
 
 ### plugin version
 
@@ -50,12 +68,15 @@
 - Galaxy Store追加
 
 ## 0.21.2 (2020.10.05)
+Download : [toast-sdk-unity-0.21.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.21.2/toast-sdk-unity-0.21.2.zip)
 
 ### plugin version
 
 - Android : 0.23.2
 
 ## 0.21.1 (2020.09.16)
+Download : [toast-sdk-unity-0.21.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.21.1/toast-sdk-unity-0.21.1.zip)
+
 
 ### plugin version
 
@@ -67,6 +88,7 @@
 - Native Plugin Version Update
 
 ## 0.20.3 (2020.07.10)
+Download : [toast-sdk-unity-0.20.3.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.20.3/toast-sdk-unity-0.20.3.zip)
 
 ### plugin version
 
@@ -78,6 +100,7 @@
 - InstanceLogger使用時、暗号化キーを呼び出さないバグを修正
 
 ## 0.20.2 (2020.07.08)
+Download : [toast-sdk-unity-0.20.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.20.2/toast-sdk-unity-0.20.2.zip)
 
 ### plugin version
 
@@ -89,6 +112,7 @@
 - Native Plugin Version Update
 
 ## 0.20.1 (2020.06.23)
+Download : [toast-sdk-unity-0.20.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.20.1/toast-sdk-unity-0.20.1.zip)
 
 ### plugin version
 
@@ -104,6 +128,7 @@
 - Windows環境で C++ DLL依存性を除去
 
 ## 0.20.0 (2020.03.26)
+Download : [toast-sdk-unity-0.20.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.20.0/toast-sdk-unity-0.20.0.zip)
 
 ### plugin version
 
@@ -115,18 +140,21 @@
 - CrashFilter関連処理での Exceptionの問題を修正
 
 ## 0.19.1 (2020.01.23)
+Download : [toast-sdk-unity-0.19.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.19.1/toast-sdk-unity-0.19.1.zip)
 
 ### バグ修正
 
 - OnHandleException コールバック呼び出しの問題を修正
 
 ## 0.19.0 (2019.12.27)
+Download : [toast-sdk-unity-0.19.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.19.0/toast-sdk-unity-0.19.0.zip)
 
 ### 追加事項
 
 - Unity Play Services Resolver 適用
 
 ## 0.18.0 (2019.12.06)
+Download : [toast-sdk-unity-0.18.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.18.0/toast-sdk-unity-0.18.0.zip)
 
 ### 共通
 
@@ -135,12 +163,14 @@
 - Native Plugin (Windows, MacOS) 配布
 
 ## 0.17.0 (2019.10.02)
+Download : [toast-sdk-unity-0.17.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.17.0/toast-sdk-unity-0.17.0.zip)
 
 ### TOAST IAP
 
 - 購入リクエスト時にユーザーデータ設定機能追加
 
 ## 0.16.0 (2019.08.28)
+Download : [toast-sdk-unity-0.16.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.16.0/toast-sdk-unity-0.16.0.zip)
 
 ### TOAST IAP
 
@@ -149,12 +179,14 @@
 - 消費性サブスクリプションプロダクトの追加
 
 ## 0.15.1 (2019.07.29)
+Download : [toast-sdk-unity-0.15.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.15.1/toast-sdk-unity-0.15.1.zip)
 
 ### 共通
 
 - iOS 0.16.1 framework適用
 
 ## 0.15.0 (2019.07.23)
+Download : [toast-sdk-unity-0.15.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.15.0/toast-sdk-unity-0.15.0.zip)
 
 ### TOAST IAP
 
@@ -163,6 +195,7 @@
 - ActivedPurchases -> ActivatedPurchses
 
 ## 0.14.0 (2019.07.02)
+Download : [toast-sdk-unity-0.14.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.14.0/toast-sdk-unity-0.14.0.zip)
 
 ### TOAST Log & Crash
 
@@ -179,6 +212,7 @@
 - ActivedPurchases追加
 
 ## 0.13.1 (2019.03.26)
+Download : [toast-sdk-unity-0.13.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.13.1/toast-sdk-unity-0.13.1.zip)
 
 ### TOAST Log & Crash
 
@@ -193,6 +227,7 @@
 - Android 上でクラッシュログの送信時に空の文字列がある場合、SDK の例外ログが送信される問題を解決。
 
 ## 0.13.0 (2019.02.26)
+Download : [toast-sdk-unity-0.13.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.13.0/toast-sdk-unity-0.13.0.zip)
 
 ### TOAST Log & Crash
 
@@ -201,6 +236,7 @@
 - クラッシュログをフィルタリングする機能を追加
 
 ## 0.12.0 (2019.01.08)
+Download : [toast-sdk-unity-0.12.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.12.0/toast-sdk-unity-0.12.0.zip)
 
 ### TOAST IAP
 
@@ -209,6 +245,7 @@
 - 新規機能追加
 
 ## 0.11.0 (2018.12.27)
+Download : [toast-sdk-unity-0.11.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.11.0/toast-sdk-unity-0.11.0.zip)
 
 ### TOAST Log & Crash
 
@@ -218,6 +255,7 @@
 - SetCrashListener API 追加
 
 ## 0.10.0 (2018.11.20)
+Download : [toast-sdk-unity-0.10.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.10.0/toast-sdk-unity-0.10.0.zip)
 
 ### TOAST Log & Crash
 
@@ -232,6 +270,7 @@
   - mainTemplate.gradle 設定はガイド参照
 
 ## 0.9.0 (2018.09.04)
+Download : [toast-sdk-unity-0.9.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.9.0/toast-sdk-unity-0.9.0.zip)
 
 ### TOAST Log & Crash
 
