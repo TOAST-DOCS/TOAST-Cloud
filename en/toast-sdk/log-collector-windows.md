@@ -219,7 +219,7 @@ void CsampleDlg::OnBnClickedCrash()
 dump_syms sample.pdb > sample.sym
 ```
 
-* Then, compress sample.sym with zip and [Upload to Console Server](https://alpha-docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_25)
+* Then, compress sample.sym with zip and [Upload to Console Server](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_24)
     * The version for console uploads must be the same as the version for setProjectVersion. 
 
 
