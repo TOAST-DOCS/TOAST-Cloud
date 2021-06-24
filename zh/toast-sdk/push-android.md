@@ -384,13 +384,14 @@ public class MyApplication extends Application {
 ### 지원하는 리치 메시지
 
 #### 버튼
-* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
 | 유형 | 기능 | 액션 |
 | --- | ------- | --- |
 | 앱 열기 (OPEN_APP) | 어플리케이션 실행 | PushAction.ActionType.OPEN_APP |
 | URL 열기 (OPEN_URL) | URL로 이동<br/>(웹 URL 주소 혹은 앱 커스텀 스킴 실행) | PushAction.ActionType.OPEN_URL |
 | 답장 (REPLY) | 알림에서 답장 전송 | PushAction.ActionType.REPLY |
 | 취소 (DISMISS) | 현재 알림 취소 | PushAction.ActionType.DISMISS |
+
+* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
 
 > 버튼은 메시지당 최대 3개까지 지원합니다.
 

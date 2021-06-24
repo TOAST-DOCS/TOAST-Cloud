@@ -385,13 +385,14 @@ public class MyApplication extends Application {
 ### サポートするリッチメッセージ
 
 #### ボタン
-* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
 | タイプ | 機能 | アクション |
 | --- | ------- | --- |
 | アプリを開く (OPEN_APP) | アプリを実行します。 | PushAction.ActionType.OPEN_APP |
 | URLを開く (OPEN_URL) | URLで移動<br/>(ウェブURLアドレスもしくはアプリカスタムスキームを実行) | PushAction.ActionType.OPEN_URL |
 | 返信 (REPLY) | 通知から返信を送ります。 | PushAction.ActionType.REPLY |
 | 通知削除 (DISMISS) | 現在の通知を削除します。 | PushAction.ActionType.DISMISS |
+
+* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
 
 > ボタンは最大3個までサポートします。
 
