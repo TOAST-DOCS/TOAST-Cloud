@@ -384,6 +384,7 @@ public class MyApplication extends Application {
 ### 지원하는 리치 메시지
 
 #### 버튼
+* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
 | 유형 | 기능 | 액션 |
 | --- | ------- | --- |
 | 앱 열기 (OPEN_APP) | 어플리케이션 실행 | PushAction.ActionType.OPEN_APP |

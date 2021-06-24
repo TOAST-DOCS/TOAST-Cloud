@@ -385,7 +385,7 @@ public class MyApplication extends Application {
 ### サポートするリッチメッセージ
 
 #### ボタン
-
+* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
 | タイプ | 機能 | アクション |
 | --- | ------- | --- |
 | アプリを開く (OPEN_APP) | アプリを実行します。 | PushAction.ActionType.OPEN_APP |
