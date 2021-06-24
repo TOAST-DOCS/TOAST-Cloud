@@ -391,7 +391,7 @@ public class MyApplication extends Application {
 | 답장 (REPLY) | 알림에서 답장 전송 | PushAction.ActionType.REPLY |
 | 취소 (DISMISS) | 현재 알림 취소 | PushAction.ActionType.DISMISS |
 
-* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
+* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상부터 사용 가능합니다.
 
 > 버튼은 메시지당 최대 3개까지 지원합니다.
 
@@ -413,7 +413,7 @@ public class MyApplication extends Application {
 
 #### 그룹
 * 동일한 그룹키를 갖는 알림들이 그룹핑되어 표현됩니다.
-* 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
+* 안드로이드 7.0(API 레벨 24) 이상부터 사용 가능합니다.
 
 ### 알림 액션 리스너 등록
 * 사용자가 알림의 버튼 혹은 답장 전송 버튼 클릭시 알림 액션 리스너로 통지합니다.

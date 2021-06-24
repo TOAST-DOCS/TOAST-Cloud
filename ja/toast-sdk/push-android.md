@@ -392,7 +392,7 @@ public class MyApplication extends Application {
 | 返信 (REPLY) | 通知から返信を送ります。 | PushAction.ActionType.REPLY |
 | 通知削除 (DISMISS) | 現在の通知を削除します。 | PushAction.ActionType.DISMISS |
 
-* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상에서만 사용가능합니다.
+* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상부터 사용 가능합니다.
 
 > ボタンは最大3個までサポートします。
 
@@ -414,7 +414,7 @@ public class MyApplication extends Application {
 
 #### グループ
 * 同じキーの通知を1つにまとめます。
-* Android 7.0(APIレベル24)以上でのみ使用可能です。
+* 안드로이드 7.0(API 레벨 24) 이상부터 사용 가능합니다.
 
 ### 通知アクションリスナー登録
 * ユーザーが通知のボタン、または返信送信ボタンをクリックすると、通知アクション リスナーに通知します。
