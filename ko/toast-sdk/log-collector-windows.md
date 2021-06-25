@@ -198,7 +198,7 @@ NHN Cloud Windows SDK에서 발생한 크래시를 해석하려면 심벌 파일
 dump_syms sample.pdb > sample.sym
 ```
 
-* 이후 sample.sym을 zip으로 압축하여 [콘솔 서버에 업로드](https://alpha-docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_25)합니다.
+* 이후 sample.sym을 zip으로 압축하여 [콘솔 서버에 업로드](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_24)합니다.
     * 콘솔 업로드할 때 입력하는 버전은, 초기화할 때 setProjectVersion에 입력한 버전과 같은 값이어야 합니다.
 
 

@@ -216,5 +216,5 @@ TOAST Windows SDKで発生したクラッシュを解析するには、シンボ
 dump_syms sample.pdb > sample.sym 
 ``` 
  
-* そしてsample.symをzipに圧縮して、[コンソールサーバーにアップロード](https://alpha-docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_25)します。 
+* そしてsample.symをzipに圧縮して、[コンソールサーバーにアップロード](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_24)します。 
     * コンソールアップロードする時に入力するバージョンは、初期化する時にsetProjectVersionに入力したバージョンと同じ値である必要があります。 
