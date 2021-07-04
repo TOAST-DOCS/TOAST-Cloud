@@ -494,6 +494,7 @@ typedef NS_ENUM(NSUInteger, ToastIAPErrorCode) {
     ToastIAPErrorRenewalPaymentNotFound = 15,       // 領収書内に更新決済と一致する決済情報がない 
     ToastIAPErrorRestoreFailed = 16,                // 復元に失敗しました 
     ToastIAPErrorPaymentNotAvailable = 17,          // 購入不可状態(e.g.アプリ内での購入制限設定) 
+    ToastIAPErrorPurchaseLimitExceeded = 18,        // 월 구매 한도 초과
 }; 
  
 // Network エラーコード 
