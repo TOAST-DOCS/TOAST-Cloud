@@ -1,4 +1,4 @@
-## NHN Cloud (공공기관용) > 개요
+## NHN Cloud > 개요
  NHN Cloud (공공기관용)은 NHN에서 제공하는 “공공 기관을 위한 최적의 클라우드 서비스”이며, 국내 유일 OpenStack을 기반으로 Public/Private/Hybrid/Multi 클라우드를 지원합니다. 
 공공기관 클라우드 컨설팅, 마이그레이션 등 차별화된 서비스를 제공합니다. 
 
