@@ -942,8 +942,9 @@ void onSubscriptionsStatusResponse(IapResult result,
 | INACTIVATED_APP | 101 | App is not activated.<br> |
 | NETOWRK_NOT_CONNECTED | 102 | Network is not connected.<br> |
 | VERIFY_PURCHASE_FAILED | 103 | Failed to verify purchase.<br> |
-| CONSUMED_PURCHASE | 104 | Purchase is already consumed.<br> |
-| REFUNDED_PURCHASE | 105 | Purchase is already refunded.<br> |
+| PURCHASE_ALREADY_CONSUMED | 104 | Purchase is already consumed.<br> |
+| PURCHASE_ALREADY_REFUNDED | 105 | Purchase is already refunded.<br> |
+| PURCHASE_LIMIT_EXCEEDED | 106 | Purchase limit exceeded.<br> |
 
 ### ONE store
 

@@ -939,13 +939,14 @@ void onSubscriptionsStatusResponse(IapResult result,
 
 ### サーバーエラーコード
 
-| RESULT                 | CODE | DESC                                     |
-| ---------------------- | ---- | ---------------------------------------- |
-| INACTIVATED_APP        | 101  | 有効になっていないアプリです。<br>App is not active.     |
-| NETOWRK_NOT_CONNECTED  | 102  | ネットワークが接続されていません。<br>Network not connected. |
-| VERIFY_PURCHASE_FAILED | 103  | 決済の検証に失敗しました。<br>Failure to verify purchase. |
-| CONSUMED_PURCHASE      | 104  | すでに消費した購入です。<br>Purchase already consumed. |
-| REFUNDED_PURCHASE      | 105  | 返金された購入です。<br>Purchase already refunded. |
+| RESULT                    | CODE | DESC                                     |
+| ------------------------- | ---- | ---------------------------------------- |
+| INACTIVATED_APP           | 101  | 有効になっていないアプリです。<br>App is not active.     |
+| NETOWRK_NOT_CONNECTED     | 102  | ネットワークが接続されていません。<br>Network not connected. |
+| VERIFY_PURCHASE_FAILED    | 103  | 決済の検証に失敗しました。<br>Failure to verify purchase. |
+| PURCHASE_ALREADY_CONSUMED | 104  | すでに消費した購入です。<br>Purchase already consumed. |
+| PURCHASE_ALREADY_REFUNDED | 105  | 返金された購入です。<br>Purchase already refunded. |
+| PURCHASE_LIMIT_EXCEEDED   | 106  | 구매 한도를 초과했습니다.<br>Purchase limit exceeded. |
 
 ### ONE storeエラーコード
 
