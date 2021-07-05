@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.25.0'
+    implementation 'com.toast.android:toast-iap-google:0.26.0'
     ...
 }
 ```
@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.25.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.26.0'
     ...
 }
 ```
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.25.0'
+    implementation 'com.toast.android:toast-iap-galaxy:0.26.0'
     ...
 }
 ```
@@ -942,13 +942,14 @@ void onSubscriptionsStatusResponse(IapResult result,
 
 ### 서버 오류 코드
 
-| RESULT                 | CODE | DESC                                     |
-| ---------------------- | ---- | ---------------------------------------- |
-| INACTIVATED_APP        | 101  | 활성화되지 않은 앱입니다.<br>App is not active.     |
-| NETOWRK_NOT_CONNECTED  | 102  | 네트워크가 연결되지 않았습니다.<br>Network not connected. |
-| VERIFY_PURCHASE_FAILED | 103  | 결제 검증에 실패했습니다.<br>Failure to verify purchase. |
-| CONSUMED_PURCHASE      | 104  | 이미 소비된 구매입니다.<br>Purchase already consumed. |
-| REFUNDED_PURCHASE      | 105  | 환불된 구매입니다.<br>Purchase already refunded. |
+| RESULT                    | CODE | DESC                                     |
+| ------------------------- | ---- | ---------------------------------------- |
+| INACTIVATED_APP           | 101  | 활성화되지 않은 앱입니다.<br>App is not active.     |
+| NETOWRK_NOT_CONNECTED     | 102  | 네트워크가 연결되지 않았습니다.<br>Network not connected. |
+| VERIFY_PURCHASE_FAILED    | 103  | 결제 검증에 실패했습니다.<br>Failure to verify purchase. |
+| PURCHASE_ALREADY_CONSUMED | 104  | 이미 소비된 구매입니다.<br>Purchase already consumed. |
+| PURCHASE_ALREADY_REFUNDED | 105  | 환불된 구매입니다.<br>Purchase already refunded. |
+| PURCHASE_LIMIT_EXCEEDED   | 106  | 구매 한도를 초과했습니다.<br>Purchase limit exceeded. |
 
 ### ONE store 오류 코드
 

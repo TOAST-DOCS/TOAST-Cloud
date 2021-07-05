@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.25.0'
+    implementation 'com.toast.android:toast-unity-iap-google:0.26.0'
 **DEPS**}
 ```
 
@@ -40,7 +40,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.25.0'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.26.0'
 **DEPS**}
 ```
 
@@ -55,7 +55,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-galaxy:0.25.0'
+    implementation 'com.toast.android:toast-unity-iap-galaxy:0.26.0'
 **DEPS**}
 ```
 
@@ -491,7 +491,8 @@ public enum Status
 | 50015 | 소유하고 있지 않은 상품입니다. |
 | 50103 | 이미 소비된 상품 입니다. |
 | 50104 | 이미 환불된 상품 입니다. |
-| 59999 | 알 수 없는 에러입니다. 에러 메시지를 확인해주세요 |
+| 50105 | 구매 한도를 초과했습니다. |
+| 59999 | 알 수 없는 에러입니다. 에러 메시지를 확인해주세요. |
 
 ### 서버 오류 코드
 
