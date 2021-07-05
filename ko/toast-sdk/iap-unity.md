@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.25.0'
+    implementation 'com.toast.android:toast-unity-iap-google:0.26.0'
 **DEPS**}
 ```
 
@@ -40,7 +40,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.25.0'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.26.0'
 **DEPS**}
 ```
 
@@ -55,7 +55,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-galaxy:0.25.0'
+    implementation 'com.toast.android:toast-unity-iap-galaxy:0.26.0'
 **DEPS**}
 ```
 
