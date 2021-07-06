@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.25.0'
+    implementation 'com.toast.android:toast-iap-google:0.26.0'
     ...
 }
 ```
@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.25.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.26.0'
     ...
 }
 ```
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.25.0'
+    implementation 'com.toast.android:toast-iap-galaxy:0.26.0'
     ...
 }
 ```
@@ -942,8 +942,9 @@ void onSubscriptionsStatusResponse(IapResult result,
 | INACTIVATED_APP | 101 | App is not activated.<br> |
 | NETOWRK_NOT_CONNECTED | 102 | Network is not connected.<br> |
 | VERIFY_PURCHASE_FAILED | 103 | Failed to verify purchase.<br> |
-| CONSUMED_PURCHASE | 104 | Purchase is already consumed.<br> |
-| REFUNDED_PURCHASE | 105 | Purchase is already refunded.<br> |
+| PURCHASE_ALREADY_CONSUMED | 104 | Purchase is already consumed.<br> |
+| PURCHASE_ALREADY_REFUNDED | 105 | Purchase is already refunded.<br> |
+| PURCHASE_LIMIT_EXCEEDED | 106 | Purchase limit exceeded.<br> |
 
 ### ONE store
 

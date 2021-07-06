@@ -1,5 +1,20 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 0.26.0 (2021.07.06)
+
+### TOAST IAP
+
+#### 기능 추가
+
+* 월 결제 한도 기능 추가
+
+### TOAST Push
+
+#### 버그 수정
+
+* Firebase Messaging 22.0.0 이상 대응
+    * Firebase Messaging 22.0.0 이상에서 발생하는 오류가 수정되었습니다.
+
 ## 0.25.0 (2021.04.27)
 
 ### TOAST IAP
