@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK使用ガイド > リリースノート > Android
 
+## 0.27.0 (2021.08.03)
+
+### TOAST IAP
+
+#### 機能追加
+
+* ONE store v16 추가
+
 ## 0.26.0 (2021.07.06)
 
 ### TOAST IAP

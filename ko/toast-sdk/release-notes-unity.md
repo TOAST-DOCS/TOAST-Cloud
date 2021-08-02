@@ -1,5 +1,14 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Unity
 
+## 0.23.1 (2021.08.03)
+
+Download : [toast-sdk-unity-0.23.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.23.1/toast-sdk-unity-0.23.1.zip)
+
+### plugin version
+
+* Android : 0.27.0
+* iOS : 0.29.0
+
 ## 0.23.0 (2021.07.06)
 
 Download : [toast-sdk-unity-0.23.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.23.0/toast-sdk-unity-0.23.0.zip)
@@ -7,7 +16,7 @@ Download : [toast-sdk-unity-0.23.0.zip](https://static.toastoven.net/toastcloud/
 ### 기능 추가
 
 * TOAST IAP
-    * 월 결제 한도 기능 추가 
+    * 월 결제 한도 기능 추가
 
 ### plugin version
 
