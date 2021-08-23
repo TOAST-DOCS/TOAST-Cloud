@@ -26,10 +26,10 @@ dependencies {
     // ...
 
     // Add the TOAST Logger dependency
-    implementation 'com.toast.android:toast-logger:0.27.0'    
+    implementation 'com.toast.android:toast-logger:0.27.1'    
 
     // Add the TOAST Crash Reporter for NDK dependency
-    implementation 'com.toast.android:toast-crash-reporter-ndk:0.27.0'
+    implementation 'com.toast.android:toast-crash-reporter-ndk:0.27.1'
 }
 ```
 
