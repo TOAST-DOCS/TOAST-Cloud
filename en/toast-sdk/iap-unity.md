@@ -7,7 +7,9 @@
 3. IAP에서 [AppKey를 확인](https://docs.toast.com/en/Mobile%20Service/IAP/en/console-guide/#appkey)합니다.
 
 ## Android 설정
+
 ### Gradle 빌드 설정
+
 - Unity Editor에서, Build Settings 창을 엽니다. (Player Settings > Publishing Settings > Build).
 - Build System 목록에서 Gradle을 선택합니다.
 - Build System 하위의 체크 박스를 선택하여 Custom Gralde Template을 사용합니다.
