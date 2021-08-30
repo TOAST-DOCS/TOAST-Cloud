@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-1\. [Install TOAST SDK](./getting-started-unity)
-2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
-3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
-4\. [Initialize TOAST SDK](./getting-started-unity#toast-sdk_1).
+1. [Install TOAST SDK](./getting-started-unity)
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
+4. [Initialize TOAST SDK](./getting-started-unity#toast-sdk_1).
 
 ## 지원 플랫폼
 
@@ -20,7 +20,7 @@
 
 - In the Unity Editor, open the Build Settings windows (Player Settings > Publishing Settings > Build).
 - Set the Build System drop-down to Gradle
-- Use the Custom Gradle Template checkbocx unbder Build System
+- Use the Custom Gradle Template checkbox under Build System
 - Add below to dependencies of mainTemplate.gradle.
 
 ```groovy
@@ -125,7 +125,7 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 
 ## Set User-Defined Fields
 
-Set a user-defined field as wanted.  
+Set a user-defined field as wanted.
 With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called.
 
 ### Specifications for User-Defined Field Setting API
@@ -135,12 +135,11 @@ ToastLogger.SetUserField(userField, userValue);
 ```
 
 - User-defined field is same as the value exposed as "Selected Field" in "Log & Crash Search Console" > "Log Search Tab".
-  That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
 - If a key is changed for many times, the final value shall be applied.
 
 #### Restrictions of User-Defined Fields
 
-- Cannot use already [Reserved Fields](./log-collector-reserved-fields). Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
+- Cannot use already [Reserved Fields](./log-collector-reserved-fields).
 - Use characters from "A-Z, a-z, 0-9, -, and \_" for a field name, starting with "A-Z, or a-z".
 - Replace spaces within a field name by "\_".
 
@@ -204,6 +203,10 @@ TOAST Logger classifies Unity's crashes into two categories.
 - Crash on native platform (app terminated)
 - Unexpected exception from Unity (no app terminated)
 
+> **왜 LogException으로 출력된 로그도 크래시 로그로 수집하나요?**
+> 써드파티 라이브러리 중에 LogException를 통해서 사용자 코드의 예외를 노출하는 경우가 더러 있기 때문입니다.
+> 크래시 로그를 필터링 하고 싶다면 아래 **크래시 로그 필터링하기** 를 참고해주세요.
+
 With ToastLogger initialized, a crash log is automatically sent when it occurs crash under the mobile environment or when it occurs the unexpected exception in Unity.
 To disable crash log delivery, set false for EnableCrashReporter property of the ToastLoggerConfiguration object.
 For more information on crash logs of each platform, check the links below:
@@ -247,6 +250,37 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
         Application.Quit();
     }
 });
+```
+
+## 크래시 로그 필터링하기
+
+- 유니티를 이용하다보면 수집을 원하지 않는 예외 로그 혹은 크래시 로그들이 수집될 수 있습니다.
+- TOAST Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
+  - 해당 기능은 유니티 예외에 한정된 기능입니다.
+
+### AddCrashFilter API 명세
+
+```csharp
+public delegate bool CrashFilter(CrashLogData logData);
+
+public class CrashLogData
+{
+    public LogType LogType { get; }
+
+    public string Condition { get; }
+
+    public string StackTrace { get; }
+}
+
+public static void AddCrashFilter(CrashFilter filter);
+```
+
+- CrashLogData의 프로퍼티들은 [Application.LogCallback의 매개변수와 동일](https://docs.unity3d.com/ScriptReference/Application.LogCallback.html)합니다.
+
+### AddCrashFilter API 사용 예
+
+```csharp
+ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("UnityEngine.Debug.Log"));
 ```
 
 ## Send Handled Exceptions

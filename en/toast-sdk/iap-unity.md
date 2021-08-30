@@ -10,7 +10,7 @@
 ### Gradle 빌드 설정
 - Unity Editor에서, Build Settings 창을 엽니다. (Player Settings > Publishing Settings > Build).
 - Build System 목록에서 Gradle을 선택합니다.
-- Build System 하위의 체크 박스를 선택하여 Custom Gralde Template을 사용합니다.
+- Build System 하위의 체크 박스를 선택하여 Custom Gradle Template을 사용합니다.
 - mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
 
 #### Google Play Store
@@ -216,7 +216,6 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
     - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 복원할 수 있습니다.
     - 구독 상품 복원 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
 - iOS에서만 구독한 상품을 복원 가능합니다.
-    - 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다.
 
 ### 구독 복원 API 명세
 

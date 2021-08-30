@@ -24,7 +24,7 @@ TOAST SDK for Unity is configured as follows:
 
 ### Structure of Unity Package
 
-TOAST SDK for Unity is structured with folders as follows:  
+TOAST SDK for Unity is structured with folders as follows:
 
 | Directory | Description | Unity package |
 |---|---|---|
@@ -36,9 +36,7 @@ TOAST SDK for Unity is structured with folders as follows:
 
 ## Apply TOAST SDK to Unity Projects
 
-Download TOAST SDK Unity Package from the following link:
-
-- [Download](../../../Download/#toast-sdk)
+Download TOAST SDK Unity Package from the [Download](../../../Download/#toast-sdk) page.
 
 ### Import Unity Package
 
@@ -91,7 +89,7 @@ TOAST SDK for Unity has an additional sample unity package, and below describes 
 > For signing-related errors, turn On the Development Build option and proceed with build.
 
 #### Create Gradle Template Files
-##### Feb.2017 or Later  
+##### Feb.2017 or Later
 - Go to Edit > Project Settings > Player and enable Custom Gradle Template for Publishing Settings.
     - Select Gradle for Build System so as to enable the Custom Gradle Template toggle.
 - With the option enabled, mainTemplate.gradle is created in the Assets/Plugins/Android folder.
@@ -122,6 +120,39 @@ allprojects {
 }
 ```
 
+### Proguard Setting
+- For 0.12.0 or higher Android Unity Plugin users, no additional setting is necessary.
+    - To apply Proguard, update to 0.12.0 or a higher version.
+
+### Android 빌드 실패 FAQ
+
+#### 라이브러리 충돌 발생시
+
+> **빌드 에러 로그**
+> com.android.build.api.transform.TransformException:java.util.zip.ZipException: duplicate entry: android/support/annotation/AnimRes.class See the Console for details.
+
+- 만약 위와 같은 빌드 에러 로그가 발생한다면 라이브러리 충돌이 발생한 경우입니다.
+- TOAST SDK는 의존 라이브러리를 최대한 가지고 있지 않도록 설계되었지만, 유일하게 **com.android.support:support-annotations** 에 의존하고 있습니다.
+- 프로젝트에 support-annotations 라이브러리가 jar 혹은 aar 파일로 존재한다면 라이브러리 충돌이 발생합니다.
+- jar 혹은 aar 파일로 존재하는 support-annotations의 버전을 확인해서 아래와 같이 수정해야 빌드가 가능합니다.
+
+##### support-annotations 버전이 27.1.1 이하인 경우
+- 해당 파일을 제거 합니다.
+
+##### support-annotations 버전이 27.1.1 초과인 경우
+- 아래와 같이 exclude 를 추가합니다.
+```groovy
+if (GradleVersion.current() >= GradleVersion.version("4.2")) {
+    implementation('com.toast.android:toast-unity-XXX:X.X.X') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+} else {
+    compile('com.toast.android:toast-unity-XXX:X.X.X') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+}
+```
+
 #### For NDK-related Errors
 - After Gradle setting and build, following error may occur:
 > No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
@@ -130,18 +161,13 @@ allprojects {
     - For some Unity versions not supporting updates of Android Gradle Plugin, delete the ndk-bundle folder where Android SDK is installed.
     - NDKs required for the IL2CPP build are recommended to be managed in a separate folder, not under Android SDK.
 
-### Proguard Setting
-- For 0.12.0 or higher Android Unity Plugin users, no additional setting is necessary.
-    - To apply Proguard, update to 0.12.0 or a higher version.
-
-
 ## For iOS
 
 ### Modify Xcode Build Settings
 * To use TOAST SDK for iOS, add settings as below in Xcode.
 
 #### Other Linker Flag
-* Add **-ObjC**, **-lc++**  to Other Linker Flag option.  
+* Add **-ObjC**, **-lc++**  to Other Linker Flag option.
 
 #### Enable Bitcode 옵션
 * Set **NO** for Enable Bitcode.
@@ -184,7 +210,7 @@ public class GameStartBehaviour : MonoBehaviour
 User ID can be set for TOAST SDK and it is for common usage at each module of TOAST SDK.
 Send such set user ID to a server, along with logs, whenever Log Sending API of TOAST Logger is called.
 
-### Specifications for User ID Setting API  
+### Specifications for User ID Setting API
 ```csharp
 ToastSdk.UserId = userId;
 ```
@@ -197,7 +223,7 @@ ToastSdk.UserId = "TOAST";
 ## Set Debug Mode
 
 To check logs within TOAST SDK, the debug mode can be set.
-To inquire of TOAST SDK, enable the debug mode for faster response.  
+To inquire of TOAST SDK, enable the debug mode for faster response.
 
 ### Specifications for Debug Mode Setting API
 ```csharp
