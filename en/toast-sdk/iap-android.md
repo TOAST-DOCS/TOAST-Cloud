@@ -917,7 +917,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 
 ## Error Codes
 
-### Common
+### Common error code
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
@@ -935,7 +935,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | USER_ID_NOT_REGISTERED | 9 | User ID Is not registered.<br> |
 | UNDEFINED_ERROR | 9999 | Undefined Error<br> |
 
-### Server
+### Server error code
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
@@ -946,7 +946,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | PURCHASE_ALREADY_REFUNDED | 105 | Purchase is already refunded.<br> |
 | PURCHASE_LIMIT_EXCEEDED | 106 | Purchase limit exceeded.<br> |
 
-### ONE store
+### ONE store error code
 
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
@@ -955,7 +955,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | ONESTORE_SECURITY_ERROR | 303 | Purchase requested from abnormal app.<br> |
 | ONESTORE_PURCHASE_FAILED | 304 | Failed to request for purchase.<br> |
 
-### Galaxy storeエラーコード
+### Galaxy store error code
 
 | RESULT                   | CODE | DESC                                     |
 | ------------------------ | ---- | ---------------------------------------- |
