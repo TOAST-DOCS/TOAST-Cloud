@@ -10,7 +10,7 @@
 ### Gradle 빌드 설정
 - Unity Editor에서, Build Settings 창을 엽니다. (Player Settings > Publishing Settings > Build).
 - Build System 목록에서 Gradle을 선택합니다.
-- Build System 하위의 체크 박스를 선택하여 Custom Gralde Template을 사용합니다.
+- Build System 하위의 체크 박스를 선택하여 Custom Gradle Template을 사용합니다.
 - mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
 
 #### Google Play Store

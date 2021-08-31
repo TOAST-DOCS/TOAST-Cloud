@@ -5,9 +5,9 @@
 
 ## Prerequisites
 
-1\. [Install TOAST SDK](./getting-started-ios).
-2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
-3\.[Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search. 
+1. [Install TOAST SDK](./getting-started-ios).
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 
 ## Configuration of TOAST Logger
 
@@ -20,9 +20,9 @@
 
 ## Apply TOAST SDK to Xcode Projects
 
-### 1. Apply Cococapods 
+### 1. Apply Cococapods
 
-* Create a podfile to add pods to TOAST SDK. 
+* Create a podfile to add pods to TOAST SDK.
 
 ```podspec
 platform :ios, '9.0'
@@ -33,13 +33,13 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apply TOAST SDK with Binary Downloads  
+### 2. Apply TOAST SDK with Binary Downloads
 
 #### Link Frameworks
 
-* The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.  
+* The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.
 * Add **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework** to the Xcode Project.
-* To enable Crash Report of TOAST Logger, CrashReporter.framework which is distributed as well, must be added to the project. 
+* To enable Crash Report of TOAST Logger, CrashReporter.framework which is distributed as well, must be added to the project.
 ![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
 
 #### Project Settings
@@ -48,7 +48,7 @@ end
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
 
-* To directly download or build **CrashReporter.framework**, the **Bitcode** at **Build Settings** must be changed to **NO**.  
+* To directly download or build **CrashReporter.framework**, the **Bitcode** at **Build Settings** must be changed to **NO**.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode.
@@ -83,15 +83,15 @@ fi
 USAGE: symbol-uploader -ak <ak> -pv <pv> [-sz <sz>] <path> [--verbose]
 
 ARGUMENTS:
-  <path>                  dSYM file path is must be entered. 
+  <path>                  dSYM file path is must be entered.
 
 OPTIONS:
-  -ak, --app-key <ak>     [Log&Crash Search]'s AppKey must be entered. 
+  -ak, --app-key <ak>     [Log&Crash Search]'s AppKey must be entered.
   -pv, --project-version <pv>
-                          Project version must be entered. 
+                          Project version must be entered.
   -sz, --service-zone <sz>
                           You can choose between real, alpha, and demo. (default: real)
-  --verbose               Show more debugging information 
+  --verbose               Show more debugging information
   -h, --help              Show help information.
 
 ```
@@ -111,10 +111,10 @@ OPTIONS:
 
 * Crash analysis of devices using the arm64e architecture requires the use of PLCrashReporter, which is distributed with the TOAST Logger.
     * Crash analysis of devices using the arm64e architecture is not possible if you use a PLCrashReporter that is downloaded or built directly from a location other than the [Downloads](../../../Download/#toast-sdk) of TOAST.
-    
-## Initialize TOAST Logger SDK 
 
-* Set appkey issued from Log & Crash Search. 
+## Initialize TOAST Logger SDK
+
+* Set appkey issued from Log & Crash Search.
 
 ### Specifications for Initialization API
 
@@ -130,11 +130,11 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 [ToastLogger initWithConfiguration:configuration];
 ```
 
-## Send Logs 
+## Send Logs
 
-* TOAST Logger provides log-sending functions of five levels. 
+* TOAST Logger provides log-sending functions of five levels.
 
-### Specifications for Log Sending API 
+### Specifications for Log Sending API
 
 ```objc
 // DEBUG level log
@@ -153,32 +153,30 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 + (void)fatal:(NSString *)message;
 ```
 
-### Usage Example of Log Sending API 
+### Usage Example of Log Sending API
 
 ```objc
 [ToastLogger info:@"TOAST Log & Crash Search!"];
 ```
 
-## Set User-defined Fields 
+## Set User-defined Fields
 
-* Set a user-defined field as wanted.  
-* With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called. 
+* Set a user-defined field as wanted.
+* With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called.
 
-### Specifications for User-defined Field Setting API 
+### Specifications for User-defined Field Setting API
 
 ```objc
-// Add User-Defined Field 
+// Add User-Defined Field
 + (void)setUserFieldWithValue:(NSString *)value forKey:(NSString *)key;
 ```
-* User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab". 
-* That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of Custom Field](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
+* User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab".
 
 #### Restrictions for User-Defined Fields
 
-* Cannot use already [Reserved Fields](./log-collector-reserved-fields).  
-  Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
-* Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z". 
-* Replace spaces within a field name by "_". 
+* Cannot use already [Reserved Fields](./log-collector-reserved-fields).
+* Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z".
+* Replace spaces within a field name by "_".
 
 ### Usage Example of User-Defined Fields
 ```objc
@@ -188,30 +186,31 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 ## Collect Crash Logs
 * TOAST Logger sends crash information to logs.
-* It is enabled along with TOAST Logger initilization, by setting.  
-* To send crash logs, PLCrashReporter is applied. 
+* It is enabled along with TOAST Logger initialization, by setting.
+* To send crash logs, PLCrashReporter is applied.
 
-### Set Enable CrashReporter 
+### Set Enable CrashReporter
 
-* It is enabled by setting, along with TOAST Logger initialization. 
-* In order not to send crash logs, CrashReporter must be disabled.  
+* It is enabled by setting, along with TOAST Logger initialization.
+* TOAST Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
+* In order not to send crash logs, CrashReporter must be disabled.
 
 > If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log&Crash Search console.
 > User ID setting can be checked in [Getting Started](./getting-started-ios/#set-userid).
 
-#### Enable CrashReporter 
+#### Enable CrashReporter
 ```objc
 // CrashReporter Enable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"
                                                                         enableCrashReporter:YES];
 
 [ToastLogger initWithConfiguration:configuration];
 ```
-#### Disable CrashReporter 
+#### Disable CrashReporter
 ```objc
 
 // CrashReporter Disable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"
                                                                         enableCrashReporter:NO];
 
 [ToastLogger initWithConfiguration:configuration];
@@ -219,21 +218,21 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 ## Set Additional Information in Time for Crash Occurrence before Sending
 
-* Additional information can be set immediately after crash occurs. 
+* Additional information can be set immediately after crash occurs.
 * With user-defined field setting for Block at setShouldReportCrashHandler, additional information can be configured precisely when a crash occurs
 
-### Specifications for Data Adapter API 
+### Specifications for Data Adapter API
 ```objc
 + (void)setShouldReportCrashHandler:(void (^)(void))handler;
 ```
 
-### Usage Example of Data Adapter 
+### Usage Example of Data Adapter
 
 ```objc
 [ToastLogger setShouldReportCrashHandler:^{
-  
+
   //Send, via user-defined field, wanted information from crash occurrence
-  // Add User-Defined Field 
+  // Add User-Defined Field
   [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 
 }];
@@ -247,10 +246,11 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 ```objc
 + (void)setDelegate:(id<ToastLoggerDelegate>) delegate;
-@end
+```
 
 ### Specifications for Delegate API
 
+``` objc
 @protocol ToastLoggerDelegate <NSObject>
 @optional
 // Sending logs succeeded
@@ -268,7 +268,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ```
 
 
-### Usage Example of Delegate 
+### Usage Example of Delegate
 
 ```objc
 #import <ToastLogger/ToastLogger.h>
@@ -285,7 +285,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
     // ...
 
     // Initialize
-    ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
+    ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"
                                                                             enableCrashReporter:YES];
     [ToastLogger initWithConfiguration:configuration];
 
@@ -306,7 +306,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
       // ...
 }
 
-// Save within SDK for re-sending if log-sending fails due to network erros
+// Save within SDK for re-sending if log-sending fails due to network errors
 - (void)toastLogDidSave:(ToastLog *)log {
       // ...
 }
@@ -321,9 +321,9 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 ## Network Insights
 
-* Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device). 
+* Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device).
 
-> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized. 
+> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized.
 
 ### Enable Network Insights
 

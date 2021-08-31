@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-1\. [Install TOAST SDK](./getting-started-unity)
-2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
-3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
-4\. [Initialize TOAST SDK](./getting-started-unity#toast-sdk_1).
+1. [Install TOAST SDK](./getting-started-unity)
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
+4. [Initialize TOAST SDK](./getting-started-unity#toast-sdk_1).
 
 ## 지원 플랫폼
 
@@ -20,7 +20,7 @@
 
 - In the Unity Editor, open the Build Settings windows (Player Settings > Publishing Settings > Build).
 - Set the Build System drop-down to Gradle
-- Use the Custom Gradle Template checkbocx unbder Build System
+- Use the Custom Gradle Template checkbox under Build System
 - Add below to dependencies of mainTemplate.gradle.
 
 ```groovy
@@ -125,7 +125,7 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 
 ## Set User-Defined Fields
 
-Set a user-defined field as wanted.  
+Set a user-defined field as wanted.
 With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called.
 
 ### Specifications for User-Defined Field Setting API

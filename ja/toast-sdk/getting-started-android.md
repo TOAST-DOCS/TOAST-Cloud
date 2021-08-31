@@ -66,7 +66,7 @@ Android SDKは[Downloads](../../../Download/#toast-sdk)ページでダウンロ�
 
 ## UserID設定
 
-TOASAT SDKにUserIDを設定できます。
+TOAST SDKにUserIDを設定できます。
 設定したUserIDは、TOAST SDKの各モジュールで共通使用されます。
 ToastLoggerのログ送信APIを呼び出すたびに、設定したUserIDをログと一緒にサーバーに送信します。
 

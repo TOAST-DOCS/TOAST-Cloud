@@ -2,9 +2,9 @@
 
 ## 事前準備
 
-1\. [TOAST SDK](./getting-started-android)をインストールします。
-2\. [TOASTコンソール](https://console.cloud.toast.com)で、[Pushサービスを有効化](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)します。
-3\. PushコンソールでAppKeyを確認します。
+1. [TOAST SDK](./getting-started-android)をインストールします。
+2. [TOASTコンソール](https://console.cloud.toast.com)で、[Pushサービスを有効化](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)します。
+3. PushコンソールでAppKeyを確認します。
 
 ## Push提供者別ガイド
 

@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
-1\. [Install TOAST SDK](./getting-started-android)
-2\. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
-3\. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) from Log & Crash Search.
+1. [Install TOAST SDK](./getting-started-android)
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) from Log & Crash Search.
 
 ## Library Setting
 - Add the code as below to build.gradle.
@@ -36,7 +36,7 @@ ToastLogger.initialize(configuration);
 
 ## Send Logs
 
-TOAST Logger provides log-sending functions of five levels.  
+TOAST Logger provides log-sending functions of five levels.
 
 ### Specifications for Log Sending API
 
@@ -65,7 +65,7 @@ ToastLogger.warn("TOAST Log & Crash Search!");
 
 ## Set User-Defined Field
 
-Set a user-defined field as wanted.  
+Set a user-defined field as wanted.
 With user-defined field setting, set values are sent to server along with logs every time Log Sending API is called.
 
 ### Specifications for setUserField API
@@ -74,12 +74,12 @@ With user-defined field setting, set values are sent to server along with logs e
 static void setUserField(String field, Object value);
 ```
 
-*  User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab".  
+*  User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab".
 That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
 
 #### Restrictions for User-Defined Fields
 
-* Cannot use already [Reserved Fields](./log-collector-reserved-fields).  
+* Cannot use already [Reserved Fields](./log-collector-reserved-fields).
   Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
 * Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z".
 * Replace spaces within a field name by "_".
@@ -90,7 +90,7 @@ That is, it is same as custom parameter of Log & Crash Search, and you can find 
 ToastLogger.setUserField("nickname", "randy");
 ```
 
-## Further Tasks after Sending Logs  
+## Further Tasks after Sending Logs
 
 With listener registered, further tasks can be executed after logs are sent.
 
@@ -149,7 +149,7 @@ ToastLogger.initialize(configuration);
 
 ### Use Handled Exception API
 
-For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of TOAST Logger.  
+For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of TOAST Logger.
 Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
 For more usage details on Log & Cash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
 
@@ -186,7 +186,7 @@ setUserField can be set anytime regardless of crash occurrence, whilesetCrashDat
 ```java
 static void setCrashDataAdapter(CrashDataAdapter adapter);
 ```
-* Key values of the Map data structure returned through the getUserFields function of CrashDataAdapter have the same restriction conditions as the "field" value of setUserField described in the above.  
+* Key values of the Map data structure returned through the getUserFields function of CrashDataAdapter have the same restriction conditions as the "field" value of setUserField described in the above.
 
 ### Usage Example of setCrashDataAdapter
 
