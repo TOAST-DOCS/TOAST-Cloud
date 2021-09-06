@@ -30,16 +30,21 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
 | Compute | Instance | 리전 | O | O | O | O |
 |  | GPU Instance | 리전 | O |  |  |  |
+|  | Instance Template | 리전 | O | O | O | O |
 |  | Image | 리전 | O | O | O | O |
 |  | Auto Scale | 리전 | O | O | O | O |
 |  | System Monitoring | 리전 | O | O | O | O |
 | Container | Kubernetes | 리전 | O | O |  |  |
 |  | Container Registry | 리전 | O | O |  |  |
 | Network | VPC | 리전 | O | O | O | O |
+|  | NAT Instance | 리전 |  | O |  |  |
+|  | Floating IP | 리전 | O | O | O | O |
+|  | Security Groups | 리전 | O | O | O | O |
+|  | Network ACL | 리전 |  | O |  |  |
+|  | Network Interface | 리전 | O | O | O | O |
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
-|  | 물리 Load Balancer | 리전 |  | O |  |  |
-|  | NAT Instance | 리전 | O | O |  |  |
+|  | 물리 Load Balancer | 리전 | O | O |  |  |
 |  | DNS Plus | 글로벌 |  |  |  |  |
 | Storage | Block Storage | 리전 | O | O | O | O |
 |  | NAS (offline) | 리전 | O | O |  | O |
@@ -52,37 +57,38 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | MS-SQL Instance | 리전 | O | O | O | O |
 |  | MySQL Instance | 리전 | O | O | O | O |
 |  | PostgreSQL Instance | 리전 | O | O | O | O |
-| Security | AppGuard | 글로벌 |  |  |  |  |
+| Game | Gamebase | 글로벌 |  |  |  |  |
+|  | Leaderboard | 글로벌 |  |  |  |  |
+|  | Launching | 글로벌 |  |  |  |  |
+|  | Smart Downloader | 글로벌 |  |  |  |  |
+|  | GameAnvil | 글로벌 |  |  |  |  |
+| Security |NHN AppGuard | 글로벌 |  |  |  |  |
 |  | App Security Check | 리전 | O |  |  |  |
 |  | Server Security Check | 리전 | O | O |  |  |
 |  | Security Monitoring | 리전 | O | O |  |  |
 |  | Basic Security | 리전 | O | O |  |  |
 |  | CAPTCHA | 리전 | O |  |  |  |
 |  | OTP | 리전 | O |  |  |  |
-|  | DBSafer | 리전 | O | O |  |  |
 |  | Web Firewall | 리전 | O | O |  |  |
-|  | DDoS Guard | 리전 | O | O |  |  |
-|  | SIEM | 리전 | O | O |  |  |
 |  | Vaccine | 리전 | O | O |  |  |
 |  | Secure Key Manager | 글로벌 |  |  |  |  |
-|  | NHN Compliance | 글로벌 |  |  |  |  |
+|  | Security Compliance | 글로벌 |  |  |  |  |
+|  | DDoS Guard | 리전 | O | O |  |  |
+|  | SIEM | 리전 | O | O |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image | 리전 | O |  |  |  |
-| Game | Gamebase | 글로벌 |  |  |  |  |
-|  | Leaderboard | 글로벌 |  |  |  |  |
-|  | Launching | 글로벌 |  |  |  |  |
-|  | Smart Downloader | 글로벌 |  |  |  |  |
-|  | GameAnvil | 글로벌 |  |  |  |  |
 | Notification | Push | 글로벌 |  |  |  |  |
 |  | SMS | 리전 | O |  |  |  |
 |  | Email | 글로벌 |  |  |  |  |
 |  | KakaoTalk Bizmessage | 리전 | O |  |  |  |
 | AI Service | Face Recognition | 리전 | O | O |  |  |
+|  | AI Fashion | 리전 | O | O |  O |  |
 | Application Service | Maps | 리전 | O |  |  |  |
 |  | ROLE | 글로벌 |  |  |  |  |
 |  | API Gateway | 리전 | O |  |  |  |
 |  | RTCS | 글로벌 |  |  |  |  |
 |  | ShortURL | 글로벌 |  |  |  |  |
+|  | Cheating Detection | 리전 | O |  |  |  |
 | Mobile Service | IAP | 글로벌 |  |  |  |  |
 |  | Mobile Device Info | 글로벌 |  |  |  |  |
 | Search | Cloud Search | 리전 | O |  |  |  |
@@ -96,7 +102,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
 | Bill | eTax | 리전 | O |  |  |  |
-| Workplace Dooray! | Project | 글로벌 |  |  |  |  |
+| Dooray! | Project | 글로벌 |  |  |  |  |
 |  | Messenger | 글로벌 |  |  |  |  |
 |  | Mail | 글로벌 |  |  |  |  |
 |  | Calendar | 글로벌 |  |  |  |  |
@@ -110,5 +116,5 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Contact Center | Omni Contact | 리전 | O |  |  |  |
 |  | Mobile Contact | 리전 | O |  |  |  |
 |  | Online Contact | 글로벌 |  |  |  |  |
-| IDC | TCC | 리전 | O |  |  |  |
+| IDC | NCC | 리전 | O |  |  |  |
 | CloudTail | CloudTail | 글로벌 |  |  |  |  |
