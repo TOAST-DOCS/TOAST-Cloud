@@ -310,6 +310,7 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | Email | ADMIN | Create/Read/Update/Delete Email Service |
 | KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete KakaoTalk Bizmessage Service |
 | Face Recognition | ADMIN | Create/Read/Update/Delete Face Recognition Service |
+| AI Fashion |	ADMIN |	Create/Read/Update/Delete AI Fashion Service |
 | IAP | ADMIN | Create/Read/Update/Delete IAP Service |
 | Mobile Device Info | ADMIN | Create/Read/Update/Delete Mobile Device Info Service |
 | Log & Crash Search | ADMIN | Create/Read/Update/Delete Log & Crash Search Service |
@@ -328,8 +329,8 @@ However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to a
 | Managed | ADMIN | Create/Read/Update/Delete Managed Service |
 | Service Monitoring | ADMIN | Create/Read/Update/Delete Service Monitoring Service |
 | Certificate Manager | ADMIN | Create/Read/Update/Delete Certificate Manager Service |
-| Bill (e-Tax) | ADMIN | Create/Read/Update/Delete Bill (e-Tax) Service |
-| Bill (e-Tax) | VIEWER | Read Bill (e-Tax) Service |
+| eTax | ADMIN | Create/Read/Update/Delete eTax Service |
+| eTax | VIEWER | Read eTax Service |
 
 
 
