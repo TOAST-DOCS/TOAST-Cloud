@@ -10,7 +10,7 @@
 ### Gradleビルド設定
 - Unity Editorで、Build Settingsウィンドウを開きます。 （Player Settings> Publishing Settings> Build）。
 - Build SystemリストからGradleを選択します。
-- Build Systemサブのチェックボックスを選択して、Custom Gralde Templateを使用します。
+- Build Systemサブのチェックボックスを選択して、Custom Gradle Templateを使用します。
 - mainTemplate.gradleのdependencies項目に下記の内容を追加します。
 
 #### Google Play Store
@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.27.1'
+    implementation 'com.toast.android:toast-unity-iap-google:0.27.2'
 **DEPS**}
 ```
 
@@ -40,7 +40,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.27.1'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.27.2'
 **DEPS**}
 ```
 
@@ -55,7 +55,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-galaxy:0.27.1'
+    implementation 'com.toast.android:toast-unity-iap-galaxy:0.27.2'
 **DEPS**}
 ```
 

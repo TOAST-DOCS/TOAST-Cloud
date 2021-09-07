@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-1\. [Install the TOAST SDK](./getting-started-unity)
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
-3\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
-4\. [TOAST SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
+1. [Install the TOAST SDK](./getting-started-unity)
+2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+3. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+4. [TOAST SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
 
 ## 지원 플랫폼
 
@@ -20,7 +20,7 @@
 
 - Unity Editor에서, Build Settings 창을 엽니다. (Player Settings > Publishing Settings > Build).
 - Build System 목록에서 Gradle을 선택합니다.
-- Build System 하위의 체크 박스를 선택하여 Custom Gralde Template을 사용합니다.
+- Build System 하위의 체크 박스를 선택하여 Custom Gradle Template을 사용합니다.
 - mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
 
 ```groovy
@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-logger:0.27.1'
+    implementation 'com.toast.android:toast-unity-logger:0.27.2'
 **DEPS**}
 ```
 

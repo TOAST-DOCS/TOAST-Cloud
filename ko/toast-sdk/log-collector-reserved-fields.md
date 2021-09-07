@@ -53,7 +53,6 @@ SENDTIME -> reserved_SENDTIME
 | FreeMemory | 여유 메모리 |
 | FreeDiskSpace | 여유 디스크 공간 |
 | SinkVersion | DB 저장 모듈 버전 |
-| errorCode | 에러 코드 |
 | errorCode | 오류 코드 |
 | crashMeta | 크래시 메타 데이터 |
 | SymResult | 크래시 분석 결과 |

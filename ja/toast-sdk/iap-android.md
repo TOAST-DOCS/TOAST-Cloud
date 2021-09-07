@@ -2,9 +2,9 @@
 
 ## 事前準備
 
-1\. [TOAST SDK](./getting-started-android)をインストールします。
-2\. [TOASTコンソール](https://console.cloud.toast.com)で[IAPサービスを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)します。
-3\. IAPコンソールで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
+1. [TOAST SDK](./getting-started-android)をインストールします。
+2. [TOASTコンソール](https://console.cloud.toast.com)で[IAPサービスを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)します。
+3. IAPコンソールで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
 ## ストア別アプリ内決済ガイド
 
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.27.1'
+    implementation 'com.toast.android:toast-iap-google:0.27.2'
     ...
 }
 ```
@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.27.1'
+    implementation 'com.toast.android:toast-iap-onestore:0.27.2'
     ...
 }
 ```
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.27.1'
+    implementation 'com.toast.android:toast-iap-galaxy:0.27.2'
     ...
 }
 ```
@@ -942,7 +942,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | RESULT                    | CODE | DESC                                     |
 | ------------------------- | ---- | ---------------------------------------- |
 | INACTIVATED_APP           | 101  | 有効になっていないアプリです。<br>App is not active.     |
-| NETOWRK_NOT_CONNECTED     | 102  | ネットワークが接続されていません。<br>Network not connected. |
+| NETWORK_NOT_CONNECTED     | 102  | ネットワークが接続されていません。<br>Network not connected. |
 | VERIFY_PURCHASE_FAILED    | 103  | 決済の検証に失敗しました。<br>Failure to verify purchase. |
 | PURCHASE_ALREADY_CONSUMED | 104  | すでに消費した購入です。<br>Purchase already consumed. |
 | PURCHASE_ALREADY_REFUNDED | 105  | 返金された購入です。<br>Purchase already refunded. |

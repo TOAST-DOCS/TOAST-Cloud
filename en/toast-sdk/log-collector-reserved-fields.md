@@ -1,33 +1,33 @@
 ## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Reserved Fields
 
-### Definition of Reserved Fields 
+### Definition of Reserved Fields
 
-Reserved fields refer to field names which are defined and used within TOAST SDK. 
-To use reserved fields in TOAST SDK, 'reserved_" is added to a field name. 
-Inspection conditions of a reserved field regard to comparing character strings, regardless of the letter case. 
+Reserved fields refer to field names which are defined and used within TOAST SDK.
+To use reserved fields in TOAST SDK, 'reserved_" is added to a field name.
+Inspection conditions of a reserved field regard to comparing character strings, regardless of the letter case.
 
-### Usage Example of Reserved Fields 
+### Usage Example of Reserved Fields
 
-* When the letter case is same as in reserved fields 
+* When the letter case is same as in reserved fields
 
 ```
 sendTime -> reserved_sendTime
 
 ```
 
-* When the letter case is not same as in reserved fields 
+* When the letter case is not same as in reserved fields
 
 ```
 SENDTIME -> reserved_SENDTIME
 
 ```
 
-### List of Reserved Fields 
+### List of Reserved Fields
 
 | Key | Description |
 | --- | ----------- |
 | projectName | Project name |
-|  | Project version |
+| projectVersion | Project version |
 | logVersion | Log Sending API version |
 | logType | Log type |
 | logSource | Log source |

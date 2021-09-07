@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-1\. [Install the TOAST SDK](./getting-started-unity)
-2\. [TOAST コンソール](https://console.cloud.toast.com)で、[Log & Crash Search を有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
-3\. Log & Crash Search で、[AppKey を確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
-4\. [TOAST SDK を初期化](./getting-started-unity#toast-sdk_1)します。
+1. [Install the TOAST SDK](./getting-started-unity)
+2. [TOAST コンソール](https://console.cloud.toast.com)で、[Log & Crash Search を有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+3. Log & Crash Search で、[AppKey を確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
+4. [TOAST SDK を初期化](./getting-started-unity#toast-sdk_1)します。
 
 ## 지원 플랫폼
 
@@ -20,7 +20,7 @@
 
 - Unity Editor で、Build Settings ウィンドウを開きます。 （Player Settings> Publishing Settings> Build）。
 - Build System リストから Gradle を選択します。
-- Build System サブのチェックボックスを選択して、Custom Gralde Template を使用します。
+- Build System サブのチェックボックスを選択して、Custom Gradle Template を使用します。
 - mainTemplate.gradle の dependencies 項目に下記の内容を追加します。
 
 ```groovy
@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-logger:0.27.1'
+    implementation 'com.toast.android:toast-unity-logger:0.27.2'
 **DEPS**}
 ```
 

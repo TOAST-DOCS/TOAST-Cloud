@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
-1\. [TOAST SDK](./getting-started-ios)를 설치합니다.
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Notification \> Push를 활성화](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
-3\. Push에서 AppKey를 확인합니다.
+1. [TOAST SDK](./getting-started-ios)를 설치합니다.
+2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Notification \> Push를 활성화](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+3. Push에서 AppKey를 확인합니다.
 
 ## APNS 가이드
 * [APNS 가이드](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
@@ -59,7 +59,7 @@ end
 ![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities.png)
 
 ## Xcode11 / iOS13 변경 사항
-* 공통 
+* 공통
     * Xcode11부터 TOAST SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
     * `Xcode11 이상을 사용할 경우 TOAST SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
 * VoIP
@@ -157,7 +157,7 @@ end
 #endif
 
     // 초기화와 동시에 Delegate를 설정 합니다.
-    [ToastPush initWithConfiguration:configuration 
+    [ToastPush initWithConfiguration:configuration
                             delegate:self];
 
     return YES;
@@ -190,7 +190,7 @@ end
 | badgeEnabled | 배지 아이콘 사용 여부 | YES |
 | soundEnabled | 알림음 사용 여부 | YES |
 
-* 앱이 포그라운드 상태일 때는 알림을 노출하지 않는 것이 기본 동작이므로 알림 노출을 원하시면, 알림 옵션을 설정해야 합니다. 
+* 앱이 포그라운드 상태일 때는 알림을 노출하지 않는 것이 기본 동작이므로 알림 노출을 원하시면, 알림 옵션을 설정해야 합니다.
 
 ### 알림 옵션 설정 API 명세
 
@@ -205,7 +205,7 @@ ToastNotificationOptions *options = [[ToastNotificationOptions alloc] init];
 options.foregroundEnabled = YES;    // 포그라운드 알림 사용 설정 (default : NO)
 options.badgeEnabled = YES;         // 배지 아이콘 사용 설정 (default : YES)
 options.soundEnabled = YES;         // 알림음 사용 설정 (default : YES)
-    
+
 [ToastPush setNotificationOptions:options];
 ```
 
@@ -246,7 +246,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
     if (error == nil) {
         // 토큰 등록 성공
         NSLog(@"Successfully registered : %@", tokenInfo.deviceToken);
-        
+
     } else {
         // 토큰 등록 실패
         NSLog(@"Failed to register : %@", error.localizedDescription);
@@ -272,7 +272,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
     if (error == nil) {
         // 토큰 정보 조회 성공
         NSLog(@"Successfully query token info : %@", [tokenInfo description]);
-        
+
     } else {
         // 토큰 정보 조회 실패
         NSLog(@"Failed to query token info : %@", error.localizedDescription);
@@ -299,7 +299,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
     if (error == nil) {
         // 토큰 해제 성공
         NSLog(@"Successfully unregistered token : %@", deviceToken);
-        
+
     } else {
         // 토큰 해제 실패
         NSLog(@"Failed to unregister : %@", error.localizedDescription);
@@ -494,7 +494,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 // 로그인되어 있는 사용자 아이디의 태그 아이디 목록 추가
 [ToastPush addUserTagWithIdentifiers:tagIDs
                     cmpletionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
-    
+
     if (error == nil) {
         // 태그 아이디 목록 추가 성공
     } else {
@@ -505,7 +505,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 // 로그인되어 있는 사용자 아이디의 태그 아이디 목록 업데이트 (기존 태그 아이디 목록은 삭제되고 입력한 값으로 설정)
 [ToastPush setUserTagWithIdentifiers:tagIDs
                     cmpletionHandler:^(NSError *error) {
-    
+
     if (error == nil) {
         // 태그 아이디 목록 업데이트 성공
     } else {
@@ -652,7 +652,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
     if (error == nil) {
         // 토큰 등록 성공
         NSLog(@"Successfully registered : %@", tokenInfo.deviceToken);
-        
+
     } else {
         // 토큰 등록 실패
         NSLog(@"Failed to register : %@", error.localizedDescription);
@@ -679,7 +679,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
     if (error == nil) {
         // 토큰 정보 조회 성공
         NSLog(@"Successfully query token info : %@", [tokenInfo description]);
-        
+
     } else {
         // 토큰 정보 조회 실패
         NSLog(@"Failed to query token info : %@", error.localizedDescription);
@@ -705,7 +705,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
     if (error == nil) {
         // 토큰 해제 성공
         NSLog(@"Successfully unregistered token : %@", deviceToken);
-        
+
     } else {
         // 토큰 해제 실패
         NSLog(@"Failed to unregister : %@", error.localizedDescription);

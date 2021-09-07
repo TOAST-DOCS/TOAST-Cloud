@@ -2,11 +2,11 @@
 
 ## Prerequisites
 
-1\. [Install TOAST SDK](./getting-started-android)
+1. [Install TOAST SDK](./getting-started-android)
 
 2.[Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) [in TOAST console](https://console.cloud.toast.com).
 
-3\. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP console.
+3. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP console.
 
 ## Store Types
 - [Google Play Store](https://developer.android.com/google/play/billing)
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.27.1'
+    implementation 'com.toast.android:toast-iap-google:0.27.2'
     ...
 }
 ```
@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.27.1'
+    implementation 'com.toast.android:toast-iap-onestore:0.27.2'
     ...
 }
 ```
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.27.1'
+    implementation 'com.toast.android:toast-iap-galaxy:0.27.2'
     ...
 }
 ```
@@ -149,7 +149,7 @@ ToastIapConfiguration configuration =
 
 ## Initialize IAP
 
-- Call ToastIap.initialize() method to initialize TOAST IAP.  
+- Call ToastIap.initialize() method to initialize TOAST IAP.
 
 ### Specifications for IAP Initialization API
 
@@ -330,7 +330,7 @@ void queryProductDetails() {
 * TOAST IAP supports product purchase by using product ID registered at store.
 * Product information is included to [IapProductDetails](./iap-android/#iapproductdetails) which is returned by calling ToastIap.queryProductDetails().
 * Product ID can be obtained by using IapProductDetails.getProductId().
-* Product purchase begins via ToastIap.launchPurchaseFlow(), after setting product ID to [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams).  
+* Product purchase begins via ToastIap.launchPurchaseFlow(), after setting product ID to [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams).
 * [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) can be created by using [IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder).
 * Result of product purchase is returned through [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) registered in TOAST IAP.
 
@@ -628,7 +628,7 @@ public String getStoreCode();
 
 ### ToastIapConfiguration.Builder
 
-IAP service app key and store type are entered to create [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object.  
+IAP service app key and store type are entered to create [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object.
 
 ```java
 /* ToastIapConfiguration.java */
@@ -698,7 +698,7 @@ public Throwable getCause()
 
 ### IapPurchase
 
-* Purchase information is available via IapPurchase object.  
+* Purchase information is available via IapPurchase object.
 
 ```java
 /* IapPurchase.java */
@@ -940,7 +940,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | RESULT | CODE | DESC |
 | ------ | ---- | ---- |
 | INACTIVATED_APP | 101 | App is not activated.<br> |
-| NETOWRK_NOT_CONNECTED | 102 | Network is not connected.<br> |
+| NETWORK_NOT_CONNECTED | 102 | Network is not connected.<br> |
 | VERIFY_PURCHASE_FAILED | 103 | Failed to verify purchase.<br> |
 | PURCHASE_ALREADY_CONSUMED | 104 | Purchase is already consumed.<br> |
 | PURCHASE_ALREADY_REFUNDED | 105 | Purchase is already refunded.<br> |

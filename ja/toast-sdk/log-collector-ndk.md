@@ -12,7 +12,7 @@ Androidアプリにネイティブライブラリーが含まれる場合、簡�
 
 ### 事前準備
 
-1\. [NHN Cloud Log & Crash](./log-collector-android)事前準備
+1. [NHN Cloud Log & Crash](./log-collector-android)事前準備
 
 ### ライブラリー設定
 - アプリレベルbuild.gradleで、依存性を追加します。
@@ -26,10 +26,10 @@ dependencies {
     // ...
 
     // Add the TOAST Logger dependency
-    implementation 'com.toast.android:toast-logger:0.27.1'    
+    implementation 'com.toast.android:toast-logger:0.27.2'
 
     // Add the TOAST Crash Reporter for NDK dependency
-    implementation 'com.toast.android:toast-crash-reporter-ndk:0.27.1'
+    implementation 'com.toast.android:toast-crash-reporter-ndk:0.27.2'
 }
 ```
 
