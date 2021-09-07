@@ -15,26 +15,26 @@ TOAST SDK provides the following services:
 
 - [Push](https://www.toast.com/service/notification/push)
 
-> Further service development providing individual SDKs are to be supported via TOAST SDK.  
+> Further service development providing individual SDKs are to be supported via TOAST SDK.
 
 ## Features
 
-- Support Gradle for Android, and CocoaPods for iOS, for the build environment.  
+- Support Gradle for Android, and CocoaPods for iOS, for the build environment.
 - Provide Unity Plugins.
-- Apply the whole or parts of the services, depending on the needs.  
+- Apply the whole or parts of the services, depending on the needs.
 - Improved inconvenient standalone SDK services provided  by individual services.
 
 ## Getting Started
 
 ### Android
 
-TOAST Android SDK is distributed via **mavenCentral** and enabled only with simple Gradle settings.  
+TOAST Android SDK is distributed via **mavenCentral** and enabled only with simple Gradle settings.
 
 - [Get started with Android](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-android)
 
 ### iOS
 
-TOAST iOS SDK is distributed via **Github** and enabled only with simple **Cocoapods**, **Carthage** settings.  
+TOAST iOS SDK is distributed via **Github** and enabled only with simple **Cocoapods**, **Carthage** settings.
 
 - [Get started with iOS](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-ios)
 
@@ -52,7 +52,7 @@ TOAST Windows C++ SDK supports Windows 7 and 10 (32/64 bits).
 
 ## TOAST Log & Crash
 
-Sends logs to a collector server of Log & Crash Search.  
+Sends logs to a collector server of Log & Crash Search.
 Collected logs can be retrieved by selecting from the Log & Crash Search Menu on TOAST console.
 
 - [Find out Log & Crash Search Service](https://toast.com/service/analytics/log_crash_search)
@@ -92,6 +92,9 @@ Supports integrated mobile In-App Payment service.
 * User Guide for [TOAST IAP > iOS](./iap-ios)
 
 ## TOAST Push
+
+TOAST Push SDK를 사용하여 Push 서비스를 손쉽게 적용할 수 있습니다.
+콘솔을 통해 알림 메시지를 안정적으로 전송하고 전송 결과를 확인할 수 있습니다.
 
 ### 사용 가이드
 

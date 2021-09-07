@@ -30,65 +30,79 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
 | Compute | Instance | リージョン | O | O | O | O |
 |  | GPU Instance | リージョン | O |  |  |  |
+|  | Instance Template | リージョン | O | O | O | O |
 |  | Image | リージョン | O | O | O | O |
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | System Monitoring | リージョン | O | O | O | O |
 | Container | Kubernetes | リージョン | O | O |  |  |
 |  | Container Registry | リージョン | O | O |  |  |
 | Network | VPC | リージョン | O | O | O | O |
+|  | NAT Instance | リージョン |  | O  |  |  |
+|  | Floating IP | リージョン | O | O | O | O |
+|  | Security Groups | リージョン | O | O | O | O |
+|  | Network ACL | リージョン | O | O | O | O |
+|  | Network Interface | リージョン | O | O | O | O |
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |
 |  | 物理Load Balancer | リージョン | O | O |  |  |
-|  | NAT Instance | リージョン |  | O  |  |  |
 |  | DNS Plus | グローバル |  |  |  |  |
 | Storage | Block Storage | リージョン | O | O | O | O |
 |  | NAS (offline) | リージョン | O | O  |  | O |
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O  | O |  |
+|  | Data transporter | リージョン | O | O  |  |  |
 | Database | RDS for MySQL | リージョン | O | O | O |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
 |  | EasyCache | リージョン | O | O | O |  |
 |  | MS-SQL Instance | リージョン | O | O | O | O |
 |  | MySQL Instance | リージョン | O | O | O | O |
+|  | PostgreSQL Instance | リージョン | O | O | O  |O  |
 | Game | Gamebase | グローバル |  |  |  |  |
+|  | GameAnvil | グローバル |  |  |  |  |
 |  | Leaderboard | グローバル |  |  |  |  |
 |  | Launching | グローバル |  |  |  |  |
 |  | Smart Downloader | グローバル |  |  |  |  |
-| Security | AppGuard | グローバル |  |  |  |  |
-|  | Security Check | リージョン | O |  |  |  |
+| Security | NHN AppGuard | グローバル |  |  |  |  |
+|  | App Security Check | リージョン | O |  |  |  |
+|  | Server Security Check | リージョン | O | O |  |  |
 |  | Security Monitoring | リージョン | O | O |  |  |
 |  | Basic Security | リージョン | O |O |  |  |
 |  | CAPTCHA | リージョン | O |  |  |  |
 |  | OTP | リージョン | O |  |  |  |
-|  | DBSafer | リージョン | O | O  |  |  |
 |  | Web Firewall | リージョン | O | O  |  |  |
-|  | DDoS Guard | リージョン | O | O  |  |  |
 |  | Vaccine | リージョン | O | O |  |  |
 |  | Secure Key Manager | グローバル |  |  |  |  |
+|  | Security Compliance | グローバル |  |  |  |  |
+|  | DDoS Guard | リージョン | O | O  |  |  |
+|  | SIEM | リージョン | O |O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image | リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |
 |  | SMS | リージョン | O |  |  |  |
 |  | Email | グローバル |  |  |  |  |
 |  | KakaoTalk Bizmessage | リージョン | O |  |  |  |
-| Mobile Service | IAP | グローバル |  |  |  |  |
-|  | Mobile Device Info | グローバル |  |  |  |  |
-| Analytics | Log & Crash Search | グローバル |  |  |  |  |
+| AI Service | Face Recognition | リージョン | O | O |  |  |
+|  | AI Fashion | リージョン | O | O | O |  |  |
 | Application Service | Maps | リージョン | O |  |  |  |
 |  | ROLE | グローバル |  |  |  |  |
 |  | API Gateway | リージョン | O |  |  |  |
 |  | RTCS | グローバル |  |  |  |  |
 |  | Short URL | グローバル |  |  |  |  |
+|  | Cheating Detection | リージョン | O |  |  |  |
+| Mobile Service | IAP | グローバル |  |  |  |  |
+|  | Mobile Device Info | グローバル |  |  |  |  |
 | Search | Cloud Search | リージョン | O |  |  |  |
 |  | Autocomplete | リージョン | O |  |  |  |
 |  | Corporation Search | リージョン | O |  |  |  |
 |  | Address Search | リージョン | O |  |  |  |
+| Analytics | Log & Crash Search | グローバル |  |  |  |  |
 | Dev Tools | Pipeline | リージョン | O | O |  |  |
 |  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
 |  | Service Monitoring | グローバル |  |  |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
-| Workplace Dooray! | Project | グローバル |  |  |  |  |
+| Bill | eTax | リージョン | O |  |  |  |
+| Dooray! | Project | グローバル |  |  |  |  |
 |  | Messenger | グローバル |  |  |  |  |
 |  | Mail | グローバル |  |  |  |  |
 |  | Calendar | グローバル |  |  |  |  |
@@ -102,6 +116,5 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Contact Center | Omni Contact | リージョン | O |  |  |  |
 |  | Mobile Contact | リージョン | O |  |  |  |
 |  | Online Contact | グローバル |  |  |  |  |
-| Bill | Bill (e-Tax) | リージョン | O |  |  |  |
-| IDC | TCC | リージョン | O |  |  |  |
+| IDC | NCC | リージョン | O |  |  |  |
 | CloudTail | CloudTail | グローバル |  |  |  |  |

@@ -2,16 +2,16 @@
 
 ## Prerequisites
 
-1\. [TOAST SDK](./getting-started-ios)를 설치합니다.
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
-3\. IAP에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
+1. [TOAST SDK](./getting-started-ios)를 설치합니다.
+2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
+3. IAP에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
 ## TOAST IAP 구성
 
 iOS용 TOAST IAP SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- | 
+| --- | --- | --- | --- | --- |
 | TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
@@ -52,7 +52,7 @@ end
 ### Capabilities 설정
 
 * TOAST IAP를 사용하려면 Capabilities에서 **In-App Purchase** 항목을 활성화해야 합니다.
-    * **Project Target > Capabilities > In-App Purchase** 
+    * **Project Target > Capabilities > In-App Purchase**
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## 서비스 로그인
@@ -95,7 +95,7 @@ end
 ### Delegate API 명세
 
 * [ToastInAppPurchaseDelegate](./iap-ios/#toastinapppurchasedelegate) 를 등록하면 구매 결과와 프로모션 결제의 진행여부 결정에 대한 통지를 받을 수 있습니다.
-    * 프로모션 결제를 SDK에서 진행할지 사용자가 원하는 시점에 직접 결제를 요청할지 결정 할 수 있습니다. 
+    * 프로모션 결제를 SDK에서 진행할지 사용자가 원하는 시점에 직접 결제를 요청할지 결정 할 수 있습니다.
 * 재처리에 의해 결제가 완료된 구매 건은 Delegating 되지 않고, 미소비 상품 목록(소모성 상품), 활성화된 구독 목록(구독 상품)에 반영됩니다.
 * `결제 결과에 대한 통지를 받기 위해서는 상품 구매 전에 Delegate 가 설정되어 있어야만 합니다.`
 
@@ -125,7 +125,7 @@ end
 
 @implementation ViewController
 
-- (void)initializeTosatIAP {    
+- (void)initializeTosatIAP {
     // 초기화 및 Delegate 설정
     ToastIAPConfiguration *configuration = [ToastIAPConfiguration configurationWithAppKey:@"INPUT_YOUE_APPKEY"];
 
@@ -145,19 +145,19 @@ end
 // 프로모션 결제 진행 방법 선택
 - (BOOL)shouldAddStorePurchaseForProduct:(ToastProduct *)product {
     /*
-    * return YES; 
-        * 요청한 프로모션 결제를 SDK에서 수행하도록 합니다. 
-        * 초기화 및 로그인 후 결제창이 출력됩니다. 
-    */ 
+    * return YES;
+        * 요청한 프로모션 결제를 SDK에서 수행하도록 합니다.
+        * 초기화 및 로그인 후 결제창이 출력됩니다.
+    */
     return YES;
-   
+
     /*
     * return NO;
-        * 프로모션 결제가 종료됩니다. 
-        * product 객체를 저장한뒤 이후 원하는 시점에 저장된 객체로 결제를 진행 할 수 있습니다.        
+        * 프로모션 결제가 종료됩니다.
+        * product 객체를 저장한뒤 이후 원하는 시점에 저장된 객체로 결제를 진행 할 수 있습니다.
     */
     self.promotionProduct = product;
-    return NO;     
+    return NO;
 }
 
 @end
@@ -166,7 +166,7 @@ end
 ## 상품 목록 조회
 
 * IAP 콘솔에 등록된 상품이 [ToastProductResponse](./iap-ios/#toastproductresponse) 객체로 반환됩니다.
-* IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 products([ToastProduct](./iap-ios/#toastproduct))로 반환됩니다. 
+* IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 products([ToastProduct](./iap-ios/#toastproduct))로 반환됩니다.
 * IAP 콘솔에 등록된 상품 중 스토어(Apple)에서 상품 정보를 획득하지 못한 상품은 invalidProducts([ToastProduct](./iap-ios/#toastproduct))로 반환됩니다.
 
 ### 상품 목록 조회 API 명세
@@ -199,7 +199,7 @@ end
 | ------ | ---------------- | -------------------------------------- |
 | 소비성 상품 | ToastProductTypeConsumable     | 소비 가능한 일회성 상품입니다. <br/>게임내 재화, 코인, 반복 구입 가능한 상품등에 사용할 수 있습니다. |
 | 자동 갱신형 구독 상품  | ToastProductTypeAutoRenewableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다, <br>잡지, 음악 스트리밍 접근 허용, 광고 제거등에 사용할 수 있습니다. |
-| 자동 갱신형 소비성 구독 상품 | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. | 
+| 자동 갱신형 소비성 구독 상품 | ToastProductTypeConsumableSubscription | 지정된 간격 및 가격으로 결제가 자동으로 반복되는 상품입니다. <br/>지정된 간격 및 가격으로 소비성 상품을 지급하고자 할 때 사용할 수 있습니다. |
 
 > `자동 갱신형 구독 상품의 업그레이드, 다운그레이드, 수정 기능은 지원하지 않습니다.`
 > `하나의 구독 그룹에 하나의 상품만 등록해야 합니다.`
@@ -279,7 +279,7 @@ typedef NS_ENUM(NSInteger, ToastProductType) {
 
 ## 구매 복원
 
-* 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다. 
+* 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다.
 * 구매한 구독 상품이 조회되지 않거나 활성화 되지 않을 경우 사용합니다.
 * 만료된 결제건을 포함하여 복원된 결제건이 [ToastPurchaseResult](./iap-ios/#toastpurchaseresult) 객체로 반환됩니다.
 * 자동 갱신형 소비성 구독 상품의 경우 반영되지 않은 구매 내역이 존재할 경우 복원 후 미소비 구매 내역에서 조회 가능합니다.
@@ -505,7 +505,7 @@ NS_SWIFT_NAME(didFailPurchase(productIdentifier:error:));
 ```objc
 @interface ToastProductsResponse : NSObject <NSCoding, NSCopying>
 
-// IAP 콘솔과 스토어(Apple)에 등록되어 있는 결제에 사용할 수 있는 상품 목록 
+// IAP 콘솔과 스토어(Apple)에 등록되어 있는 결제에 사용할 수 있는 상품 목록
 @property (nonatomic, copy, readonly) NSArray<ToastProduct *> *products;
 // 스토어(Apple)에서 상품 정보를 획득하지 못한 상품 목록
 @property (nonatomic, copy, readonly) NSArray<ToastProduct *> *invalidProducts;
@@ -513,7 +513,7 @@ NS_SWIFT_NAME(didFailPurchase(productIdentifier:error:));
 @end
 ```
 
-## ToastProduct 
+## ToastProduct
 
 TOAST IAP 콘솔에 등록된 상품의 정보를 확인할 수 있습니다.
 

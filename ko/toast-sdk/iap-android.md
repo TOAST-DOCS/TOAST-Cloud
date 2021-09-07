@@ -2,9 +2,9 @@
 
 ## 사전 준비
 
-1\. [TOAST SDK](./getting-started-android)를 설치합니다.
-2\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [IAP 서비스를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)합니다.
-3\. IAP 콘솔에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
+1. [TOAST SDK](./getting-started-android)를 설치합니다.
+2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [IAP 서비스를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)합니다.
+3. IAP 콘솔에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
 ## 스토어별 인앱 결제 가이드
 
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.27.1'
+    implementation 'com.toast.android:toast-iap-google:0.27.2'
     ...
 }
 ```
@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.27.1'
+    implementation 'com.toast.android:toast-iap-onestore:0.27.2'
     ...
 }
 ```
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.27.1'
+    implementation 'com.toast.android:toast-iap-galaxy:0.27.2'
     ...
 }
 ```
@@ -945,7 +945,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | RESULT                    | CODE | DESC                                     |
 | ------------------------- | ---- | ---------------------------------------- |
 | INACTIVATED_APP           | 101  | 활성화되지 않은 앱입니다.<br>App is not active.     |
-| NETOWRK_NOT_CONNECTED     | 102  | 네트워크가 연결되지 않았습니다.<br>Network not connected. |
+| NETWORK_NOT_CONNECTED     | 102  | 네트워크가 연결되지 않았습니다.<br>Network not connected. |
 | VERIFY_PURCHASE_FAILED    | 103  | 결제 검증에 실패했습니다.<br>Failure to verify purchase. |
 | PURCHASE_ALREADY_CONSUMED | 104  | 이미 소비된 구매입니다.<br>Purchase already consumed. |
 | PURCHASE_ALREADY_REFUNDED | 105  | 환불된 구매입니다.<br>Purchase already refunded. |

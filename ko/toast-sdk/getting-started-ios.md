@@ -109,7 +109,7 @@ binary "https://nh.nu/toast"
 
 ## 사용자 아이디 설정
 
-* TOASAT SDK에 사용자 아이디를 설정할 수 있습니다.
+* TOAST SDK에 사용자 아이디를 설정할 수 있습니다.
 * 설정한 사용자 아이디는 TOAST SDK의 각 모듈에서 공통으로 사용됩니다.
 * TOAST Logger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
 
