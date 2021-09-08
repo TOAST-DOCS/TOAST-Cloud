@@ -27,6 +27,27 @@ Resource usage for organization is calculated by the member who registered payme
 |IP访问控制组    | 每个项目   |10个|
 |IP访问控制对象 | 每个IP访问控制组    |1000个|
 
+### Resource Supply Policy for Kubernetes Service  
+Resource policy is provided for Kubernetes service.  
+Resource usage is calculated for each project, and the policy is applied by the region. 
+
+|Resources | Criteria | Capacity | 
+|----|----|----|
+|Cluster	| Per project |3|
+|Worker Node Group	 | Per cluster |3 (including default worker node group)|
+|Worker Node Count	| Worker node groups|10|
+
+
+
+### Resource Usage Policy for Organization/Project 
+Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
+
+|Resource | Criteria | Capacity | 
+|----|----|----|
+|Organization    | Per member with registered payment method |3|
+|Project     | Per organization |5|
+
+
 ### DNS Plus施服务源提供政策 
 源使用量按各项目计算。
 
