@@ -80,7 +80,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 3. 조직 거버넌스 설정의 **IP ACL 설정**을 설정하여 관리할 수 있습니다.
     * 서비스 설정
         * 공통 설정 : 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
-        * 서비스 별 설정 : 각 서비스(Cloud, Online Contact Workplace | Dooray! 등) 별로 IP ACL을 설정할 수 있습니다\.
+        * 서비스 별 설정 : 각 서비스(Cloud, Online Contact, Dooray! 등) 별로 IP ACL을 설정할 수 있습니다\.
     * IP ACL
         * 설정 안 함 : 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
         * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력하시면 됩니다.
@@ -103,7 +103,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 * 서비스 설정
     * 공통 설정 : 모든 조직 서비스에 동일하게 2차 인증을 설정합니다.
-    * 서비스 별 설정 : 각 서비스\(Cloud Console, Online Contact, Workplace \| Dooray\! 등\) 별로 2차 인증을 다르게 설정할 수 있습니다\.
+    * 서비스 별 설정 : 각 서비스\(Cloud Console, Online Contact, Dooray\! 등\) 별로 2차 인증을 다르게 설정할 수 있습니다\.
 * 2차 인증 설정
     * 설정 안 함: 2차 인증을 하지 않고, 아이디와 비밀번호 입력만으로 로그인할 수 있습니다.
     * Google OTP: 아이디와 비밀번호 입력 후, Google OTP 앱에서 제공한 One Time Password를 입력하여 인증 후 로그인할 수 있습니다.
