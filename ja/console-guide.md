@@ -151,7 +151,7 @@ Dooray!サービスは該当サービスのコンソール画面でIP ACLを設�
 
 - サービス設定
     - 共通設定：すべてのサービスに同じようにIP ACLを設定できます。
-    - サービス別設定：各サービス(Cloud、Online Contactm Workplace | Dooray!など)ごとにIP ACLを設定できます。    
+    - サービス別設定：各サービス(Cloud、Online Contact, Dooray!など)ごとにIP ACLを設定できます。    
 - IP ACL設定
     - 設定しない：すべてのIP(またはIP帯域)からコンソールにアクセスできます。 
     - 許可したIP(またはIP帯域)のみコンソールにアクセス：入力したIP(またはIP帯域)からのみコンソールにアクセスできます。
