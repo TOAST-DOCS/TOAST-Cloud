@@ -1,55 +1,52 @@
-## NHN Cloud > 콘솔 사용 가이드
+## NHN Cloud > コンソール使用ガイド
 
-NHN Cloud Console은 NHN Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을 합니다.
-여기에서는 NHN Cloud 콘솔의 기본적인 설정과 사용 방법을 안내합니다.
+NHN Cloud Consoleは、NHN Cloudサービスを利用するための管理ツールと作業ウィンドウの役割を担います。
+ここではNHN Cloudコンソールの基本的な設定と使用方法を案内します。
 
-NHN Cloud Console은 아래와 같은 기능을 제공합니다.
+NHN Cloud Consoleは下記の機能を提供します。
 
-- 서비스를 이용하기 위한 기본 정보 관리(조직, 프로젝트)
-- 서비스 활성화/비활성화
-- 서비스를 이용하는 멤버 관리
-- 결제 정보 제공
+- サービスを利用するための基本情報管理(組織、プロジェクト)
+- サービス有効化/無効化
+- サービスを利用するメンバーの管理
+- 決済情報提供
 
-## 동영상 가이드
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PphP9zBrHeI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-## 퀵 가이드
-콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
+## コンソールクイックガイド
+コンソールで提供する基本機能のクイックガイドです。 
 
 ![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202109.png)
 ![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202109.png)
 
+## 組織管理
 
-## 조직 관리
+組織は、NHN Cloudサービスを効率的に使用し、管理するために作られたグループです。
+組織では同じサービスポリシーをユーザーに共有して使用できます。
+組織を通して多様なNHN Cloudサービスを効率的に使用できます。
 
-조직은 NHN Cloud 서비스를 효율적으로 사용하고 관리하기 위해 만들어진 그룹입니다.
-조직에서는 동일한 서비스 정책을, 사용자에게 공유하여 사용할 수 있습니다.
+### 組織作成
 
-### 조직 생성
+- NHN Cloudサービスを利用するには組織を作成する必要があります。
+- 組織は個人/事業者会員、どちらでも作成できます。
+- 組織を作成した会員は自動的に組織のOWNERになります。
+- 組織を作成するには会員の決済方法が登録されている必要があります。
+- 組織は組織名/ドメイン情報を管理します。
+- 組織のドメイン情報はサービスで使用する必要がある情報で、固有の情報でなければいけません。
 
-- NHN Cloud 서비스를 이용하기 위해서는 조직을 생성해야 합니다.
-- 조직은 개인/사업자 회원 모두 생성할 수 있습니다.
-- 조직을 생성하는 회원은 자동으로 조직의 OWNER가 됩니다.
-- 조직을 생성하기 위해서는 회원의 결제 수단이 반드시 등록되어 있어야 합니다.
-- 조직은 조직명/도메인 정보를 관리합니다.
-- 조직의 도메인 정보는 서비스에서 사용해야 하는 정보로, 고유한 정보여야 합니다.
-
-### 조직 생성 가이드
+### 組織作成ガイド
 
 ![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202109.png)
 ![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202109.png)
 
-1. 콘솔로 이동한 뒤 상단 메뉴에서 **조직을 생성해 주세요.** 옆의 **+** 버튼을 클릭합니다.
-2. **조직 생성** 창에서 조직 이름을 입력합니다. 조직 이름은 한글, 영문, 특수문자, 숫자 모두 사용 가능합니다.
-3. **확인** 버튼을 클릭하면 조직 생성이 완료됩니다.
-4. 콘솔 상단 메뉴에 생성된 조직 이름이 표시됩니다.
-5. **설정** 버튼을 클릭하여 생성된 조직 정보를 확인합니다. 조직의 추가 정보로 도메인 정보를 입력합니다. 도메인은 NHN Cloud에서 유일한 값으로 설정해야 합니다.
+1. コンソールに移動した後、上段メニューから**組織を作成してください。**横の**+**ボタンをクリックします。
+2. **組織作成**ウィンドウで組織名を入力します。組織名には日本語、アルファベット、特殊文字、数字を使用できます。
+3. **確認**ボタンをクリックすると組織の作成が完了します。
+4. コンソール上段メニューに作成された組織名が表示されます。
+5. **設定**ボタンをクリックし、作成された組織情報を確認します。組織の追加情報にドメイン情報を入力します。ドメインはNHN Cloudで唯一の値に設定する必要があります。
 
 
-### 조직 서비스
+### 組織サービス
 
-조직이 생성되면, 서비스를 선택할 수 있습니다.
-조직 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
+組織が作成されると、サービスを選択できます。
+組織単位で有効にできるサービスは次のとおりです。
 
 - Dooray!
 - ERP
@@ -60,131 +57,129 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 
 
-### 조직 삭제
+### 組織の削除
 
-- 조직 삭제는 조직의 OWNER만 할 수 있습니다.
-- 조직을 삭제하기 위해서는 이용하고 있는 서비스를 모두 삭제해야 합니다.
-- 조직 삭제 시, 조직의 모든 정보는 삭제되며 복원할 수 없습니다.
+- 組織の削除は組織のOWNERだけができます。
+- 組織を削除するには、利用中のサービスをすべて削除する必要があります。
+- 組織を削除すると、組織のすべての情報は削除され、復旧できません。
 
-### 조직 거버넌스 설정
+### 組織ガバナンス設定
 
-로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
+ログインおよび個人情報など、セキュリティコンプライアンス遵守のための組織の共通ポリシーを策定し、組織内のメンバーがポリシーを遵守できるように管理します。
 
-#### IP ACL 설정
-허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다.
-Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
+#### IP ACL設定
+許可したIP(またはIP帯域)からのみコンソールにアクセスできます。
+Dooray!サービスは各サービスコンソール画面からIP ACLを設定できます。
 ![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202109.png)
 
-1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
-2. 하위 메뉴인 거버넌스 설정을 선택합니다.
-3. 조직 거버넌스 설정의 **IP ACL 설정**을 설정하여 관리할 수 있습니다.
-    * 서비스 설정
-        * 공통 설정 : 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
-        * 서비스 별 설정 : 각 서비스(Cloud, Online Contact, Dooray! 등) 별로 IP ACL을 설정할 수 있습니다\.
-    * IP ACL
-        * 설정 안 함 : 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
-        * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력하시면 됩니다.
+1. コンソールに移動した後、設定したい組織の組織管理ページに接続します。
+2. サブメニューからガバナンス設定を選択します。
+3. 組織ガバナンス設定の**IP ACL設定**でIP ACLを設定し、管理できます。
+   * サービス設定
+       * 共通設定：すべてのサービスに同じようにIP ACLを設定できます。
+       * サービスの設定：各サービス(Cloud、Online Contact Workplace | Dooray!など)ごとにIP ACLを設定できます。
+   * IP ACL
+        * 設定しない：すべてのIP(またはIP帯域)からコンソールにアクセスできます。
+        * 許可したIP(またはIP帯域)のみコンソールアクセス：入力したIP(またはIP帯域)からのみコンソールにアクセスできます。アクセスを許可するIPまたはIP帯域を入力します。
 
-### IAM 거버넌스 설정
+### IAMガバナンス設定
 
-#### 로그인 보안 설정
+#### ログインセキュリティ設定
 
-* IAM 회원의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
-* 모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
+* IAM会員のコンソール接続セキュリティを強化するために**ログインセキュリティ設定**機能を提供します。
+* すべての組織サービス(コンソール、Online Contact、Dooray!など)に同じように設定したり、サービスごとに設定できます。
 ![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109.png)
 
-① 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
-② 하위 메뉴인 거버넌스 설정을 선택합니다.
-③ IAM 거버넌스 설정의 로그인 보안 설정을 설정하여 관리할 수 있습니다.
+1. コンソールに移動した後、設定したい組織の組織管理ページに接続します。
+2. サブメニューのガバナンス設定を選択します。
+3. IAMガバナンス設定のログインセキュリティ設定を設定して管理できます。
 
-#### 2차 인증
+#### 2次認証
 
-2차 인증을 필수로 설정하여 사용하게 할 수 있습니다.
+2次認証を必須に設定して使用するようにできます。
 
-* 서비스 설정
-    * 공통 설정 : 모든 조직 서비스에 동일하게 2차 인증을 설정합니다.
-    * 서비스 별 설정 : 각 서비스\(Cloud Console, Online Contact, Dooray\! 등\) 별로 2차 인증을 다르게 설정할 수 있습니다\.
-* 2차 인증 설정
-    * 설정 안 함: 2차 인증을 하지 않고, 아이디와 비밀번호 입력만으로 로그인할 수 있습니다.
-    * Google OTP: 아이디와 비밀번호 입력 후, Google OTP 앱에서 제공한 One Time Password를 입력하여 인증 후 로그인할 수 있습니다.
-    * 이메일: 아이디와 비밀번호를 입력한 후, 이메일 주소로 발송된 **인증** 버튼을 클릭해서 인증 후 로그인할 수 있습니다.
-* 예외 IP 설정
-    * 설정 안 함 : 로그인 시 모든 IP 대역에서 2차 인증 후 로그인할 수 있습니다.
-    * 설정 : 설정한 IP 또는 IP 대역에서 로그인 시 2차 인증을 하지 않고 로그인 할 수 있습니다.
+* サービス設定
+    * 共通設定：すべての組織サービスに同じように2次認証を設定します。
+    * サービス別設定：各サービス\(Cloud Console\, Online Contactm Workplace \| Dooray\!など\)ごとに2次認証を設定できます。
+* 2次認証設定
+    * 設定しない：2次認証を行わず、IDとパスワードの入力だけでログインできます。
+    * Google OTP：IDとパスワードを入力した後、Google OTPアプリで提供したOne Time Passwordを入力してログインできます。
+    * メール：IDとパスワードを入力した後、メールアドレスに送信された**認証**ボタンをクリックして認証した後、ログインできます。
+* 例外IP設定
+    * 設定しない：ログイン時、すべてのIP帯域で2次認証後にログインできます。
+    * 設定：設定したIPまたはIP帯域からログインした時、2次認証を行わずにログインできます。
 
-#### 로그인 실패 보안
+#### ログイン失敗セキュリティ
 
-로그인을 계속해서 실패했을 때 일정 시간이 지난 후 다시 로그인할 수 있도록 설정할 수 있습니다.
+ログインを繰り返し失敗した時、一定時間が経過した後に再度ログインできるように設定できます。
 
-* 서비스 설정
-    * 공통 설정 : 모든 조직 서비스에 동일하게 2차 인증을 설정합니다. (서비스 별 설정 기능 미제공)
-* 로그인 실패 보안 설정
-    * 설정 안 함: 로그인에 실패하더라도 계속해서 로그인을 시도할 수 있습니다.
-    * 설정: 원하는 실패 횟수와 잠금 시간을 입력하면 해당 횟수만큼 로그인에 실패했을 때 해당 잠금 시간 동안 로그인을 시도할 수 없습니다.
+* サービス設定
+    * 共通設定：すべての組織サービスに同じように2次認証を設定します。 (サービス別設定機能は未提供)
+* ログイン失敗セキュリティ設定
+    * 設定しない：ログインに失敗しても継続してログインを試行できます。
+    * 設定：失敗回数とロック時間を設定すると、設定した回数ログインに失敗した時、入力したロック時間中はログインを試行できません。
 
-#### 로그인 세션
+#### ログインセッション
 
-로그인 세션 설정에 따라 로그인 세션이 유지되거나 자동으로 만료됩니다.
-로그인이 만료된 후에는 다시 로그인해야 콘솔에 접속할 수 있습니다.
+ログインセッション設定に基づいてログインセッションが維持されるか、自動的に終了します。
+ログインが終了した後は、再度ログインするとコンソールに接続できます。
 
-* 서비스 설정
-    * 공통 설정 : 모든 조직 서비스에 동일하게 2차 인증을 설정합니다. (서비스 별 설정 기능 미제공)
-* 로그인 세션 수
-    * 여러 기기에서 동일한 ID로 동시에 로그인할 수 있는 개수를 설정합니다.
-    * 1개 설정 시 동일한 ID로 PC, 스마트폰 등 다른 기기에서 동시에 로그인할 수 없습니다.
-    예) PC- 로그인 유지, 스마트폰 - 자동 로그아웃
-* 로그인 세션 유지 시간
-    * 클릭 등의 아무런 작업이 없어도 로그인을 유지할 시간을 설정합니다.
-    * 설정한 시간 동안 클릭 등의 작업을 하지 않으면 자동으로 로그아웃됩니다.
-    * 너무 길게 설정하시면 보안상 좋지 않으니 고려하여 설정하시기 바랍니다.
+* サービス設定
+    * 共通設定：すべての組織サービスに同じように2次認証を設定します。 (サービス別設定機能は未提供)
+* ログインセッション数
+    * 複数の端末から同じIDで同時にログインすることができる数を設定します。
+    * 1に設定すると、同じIDでPC、スマートフォンなど複数の端末から同時にログインできません。
+  例) PC- ログイン維持。スマートフォン - 自動ログアウト
+* ログインセッション維持時間
+    * クリックなどの操作がなくてもログインを維持する時間を設定します。
+    * 設定した時間の間にクリックなどの操作を行わなかった場合、自動的にログアウトされます。
+    * あまりにも長く設定すると、セキュリティ上良くないため、考慮して設定してください。
 
-### 프로젝트 공통 권한 그룹 설정
+### プロジェクト共通権限グループ設定
 
-조직에 속한 프로젝트에서 공통으로 사용할 권한 그룹을 생성하고 관리할 수 있습니다.
-설정된 권한 그룹은 프로젝트의 권한 그룹 관리에서 NHN Cloud 회원 및 IAM 회원을 선택하여 권한을 일괄 부여할 수 있습니다.
+組織に属しているプロジェクトにおいて共通で使用する権限グループを作成し、管理できます。
+設定された権限グループはプロジェクトの権限グループ管理からNHN Cloud会員およびIAM会員を選択して権限を一括付与できます。
 
-1. 조직 설정을 선택한 뒤, 프로젝트 공통 권한 그룹 설정 메뉴를 클릭합니다.
-2. **권한 그룹 추가**를 선택하여, 서비스별 권한을 추가합니다.
-3. 권한 그룹 이름, 설명을 입력하고, 서비스별 권한을 추가합니다.
-    * 권한 그룹 이름은 한글, 영문, 숫자, 특수 문자 모두 사용 가능하며 최대 40자까지 입력할 수 있습니다.
-    * 설명은 권한 그룹에 대한 부연 설명으로 최대 100자까지 입력할 수 있습니다.
-4. 권한은 **서비스별 세분화된 이용 권한**을 선택할 수 있습니다.
-    * 서비스명을 왼쪽 영역에서 검색한 후, 오른쪽 영역에서 권한을 선택합니다.
-5. 선택된 권한을 확인하여 추가/삭제할 수 있습니다.
-    * 서비스명 옆 x 버튼을 클릭하여, 선택된 서비스를 삭제할 수 있습니다.
-6. 추가 버튼을 클릭하여 권한 그룹을 추가합니다.
-7. 권한 그룹이 추가되면, 권한 그룹 리스트에 이름이 표기됩니다. 권한 그룹 이름을 선택하여, 상세 권한 내역을 확인할 수 있습니다.
-8. 권한 추가를 클릭하면, 3번 권한 그룹 추가 화면으로 이동합니다. 권한을 추가하거나 삭제할 수 있습니다.
+1. 組織設定を選択した後、プロジェクト共通権限グループ設定メニューをクリックします。
+2. **権限グループ追加**を選択して、サービスごとに権限を追加します。
+3. 権限グループ名、説明を入力し、サービスごとに権限を追加します。
+    * 権限グループ名は日本語、アルファベット、特殊文字を使用可能で、最大40文字まで入力できます。
+    * 説明は最大100文字まで入力できます。
+4. 権限は**サービスごとに細分化された利用権限**を選択できます。
+    * サービス名を左側の領域から検索した後、右側の領域で権限を選択します。
+5. 選択された権限を確認して追加または削除できます。
+    * サービス名の横にあるxボタンをクリックして、選択されたサービスを削除できます。
+6. 追加ボタンをクリックして権限グループを追加します。
+7. 権限グループが追加されると、権限グループリストに名前が表示されます。権限グループ名を選択して、詳細権限内容を確認できます。
+8. 権限追加をクリックすると、3回権限グループ追加画面に移動します。権限を追加または削除できます。
 
-## 프로젝트 관리
+## プロジェクト管理
 
-프로젝트는 조직 생성 후, NHN Cloud 서비스를 이용하기 위해서 생성합니다.
-프로젝트에서는 프로젝트 서비스를 활성화하여 이용할 수 있습니다.
-프로젝트 서비스는 프로젝트 단위로 이용하며, 이에 따라 과금합니다.
+プロジェクトは組織作成後、NHN Cloudサービスを利用するために作成します。
+プロジェクトではプロジェクトサービスを有効にして利用できます。
+プロジェクトサービスはプロジェクト単位で利用し、これに応じて課金します。
 
-### 프로젝트 생성
+### プロジェクトの作成
 
-* 프로젝트 생성을 위해서는 조직을 생성해야 합니다.
-* 프로젝트를 생성하는 회원은 프로젝트의 ADMIN 권한을 가집니다.
-* 프로젝트 생성 시, 프로젝트 이름과 프로젝트 설명을 입력합니다.
-* 프로젝트 생성 후, 프로젝트 서비스를 활성화하여 이용할 수 있습니다.
-* 프로젝트 생성 후, 협업이 필요한 경우 프로젝트 멤버로 추가하여 함께 사용할 수 있습니다.
+* プロジェクトを作成するには、組織を作成する必要があります。
+* プロジェクトを作成した会員は、プロジェクトのAdmin権限を持ちます。
+* プロジェクト作成時、プロジェクト名とプロジェクトの説明を入力します。
+* プロジェクト作成後、プロジェクトサービスを有効にして利用できます。
+* プロジェクト作成後、協業が必要な場合はプロジェクトメンバーに追加して一緒に使用できます。
 
-#### 프로젝트 생성 가이드
+### プロジェクト作成ガイド
 
-![console_guide_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202109.png)
-![console_guide_6_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202109.png)
 
-1. 조직을 생성하면 **새 프로젝트 생성하기** 버튼이 활성화됩니다. **새 프로젝트 생성하기** 버튼을 클릭하여 프로젝트를 생성합니다.
-2. **프로젝트 이름**과 **프로젝트 설명**을 입력합니다.
-3. **확인** 버튼을 클릭하여 프로젝트를 생성합니다.
-4. 프로젝트가 생성되면 메뉴에 프로젝트 이름이 표시됩니다.
-5. **프로젝트 설정** 버튼을 클릭하여 프로젝트 정보를 확인합니다.
+1. 組織を作成すると、**新しいプロジェクト作成**ボタンが有効になります。**新しいプロジェクト作成**ボタンをクリックし、プロジェクトを作成します。
+2. **プロジェクト名**と**プロジェクトの説明**を入力します。
+3. **確認**ボタンをクリックし、プロジェクトを作成します。
+4. プロジェクトが作成されると、メニューにプロジェクト名が表示されます。
+5. **プロジェクト設定**ボタンをクリックし、プロジェクト情報を確認します。
 
-### 프로젝트 서비스
+### プロジェクトサービス
 
-프로젝트가 생성되면, 서비스를 선택할 수 있습니다.
-프로젝트 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
+プロジェクトが作成されると、サービスを選択できます。
+プロジェクト単位で有効にすることができるサービスは次のとおりです。
 
 * Compute
 * Container
@@ -203,191 +198,192 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 * Management
 * Bill
 
-### 프로젝트 서비스 활성화 가이드
+### プロジェクトサービス有効化ガイド
 
 ![console_guide_6_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202109.png)
 ![console_guide_7_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_202109.png)
 
-1. 프로젝트 생성 후, **서비스 선택** 버튼을 클릭하여 프로젝트에서 사용할 서비스를 선택할 수 있습니다.
-2. 서비스 선택 화면에서 활성화할 서비스를 선택합니다. 서비스를 활성화할지 묻는 메시지가 나타나면 **확인**을 클릭합니다.
-3. 활성화한 서비스 목록은 콘솔 왼쪽 메뉴에서 확인할 수 있습니다. 목록에서 원하는 서비스를 클릭하면 서비스 이용 화면이 나타납니다.
+1. プロジェクト作成後、**サービス選択**ボタンをクリックし、プロジェクトで使用するサービスを選択できます。
+2. サービス選択画面で、有効にするサービスを選択します。サービスを有効にするかどうかの確認メッセージが表示されたら、**確認**をクリックします。
+3. 有効にしたサービスリストは、コンソール左のメニューで確認できます。リストからサービスをクリックすると、サービス利用画面が表示されます。
 
-### 프로젝트 삭제
+### プロジェクトの削除
 
-프로젝트에서 이용 중인 서비스가 없을 경우에 프로젝트 삭제가 가능합니다.
-프로젝트 삭제 시, 프로젝트의 모든 리소스는 삭제되며 복원가 불가능합니다.
-현재까지 이용한 모든 리소스에 대한 이용 내역을 즉시 결제하고 삭제할 수 있습니다.
-단, 즉시 결제하지 않고 삭제할 경우 현재까지 이용한 요금 내역은 다음 결제일에 자동 청구됩니다.
+プロジェクトで利用中のサービスがない場合、プロジェクトを削除できます。
+プロジェクトを削除すると、プロジェクトのすべてのリソースは削除され、復旧できません。
+現在まで利用したすべてのリソースに対する利用内訳を即時決済して削除できます。
+ただし、即時決済せずに削除する場合、現在まで利用した料金内訳は次の決済日に自動請求されます。
 
-## 멤버 관리
+## メンバーの管理
 
-멤버 관리를 통해 사용자별 인증(로그인) 및 권한 부여를 통해 통제할 수 있습니다.
-프로젝트와 조직에서 멤버 관리를 별도로 할 수 있습니다.
-멤버는 NHN Cloud 회원과 IAM 회원으로 구분됩니다.
+メンバーの管理でユーザー別認証(ログイン)と権限付与が行えます。
+プロジェクトと組織でメンバー管理を別々に行えます。
+メンバーはNHN Cloud会員とIAM会員に分けられます。
 
-### NHN Cloud 회원과 IAM 회원 정책
+### NHN Cloud会員とIAM会員ポリシー
 
-| 구분 | [TOAST.com](http://TOAST.com)회원 | IAM 회원 |
+| 区分 | [TOAST.com](http://TOAST.com)会員 | IAM会員 |
 | --- | --- | --- |
-| 정의 | \- 조직 관리를 위한 멤버<br>\- NHN Cloud 이용 약관에 동의한 NHN Cloud 회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>\- NHN Cloud 서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud 회원으로 존재 | \- 서비스 이용을 위한 멤버<br>\- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>\- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
-| 멤버 등록 방법 | \- 조직의 OWNER나 ADMIN이 NHN Cloud ID를 입력하여 등록 | \- 조직의 OWNER나 ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>\- SSO 연동/API 연동 등을 통해 등록 |
-| 멤버 권한 | \- 조직 관리\(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리\)<br>\- 프로젝트 생성<br>\- 프로젝트 삭제 | \- 조직 서비스 이용 |
-| 콘솔 접근 | \- NHN Cloud 콘솔\([https://console.toast.com/](https://console.toast.com/\) 접근<br>\- NHN Cloud\> 회원 ID/비밀번호로 로그인<br>\- \(선택\) 2차\(이메일 또는 SMS\) 인증 | \- IAM 콘솔\([https://조직도메인.console.toast.com/](https://%EC%A1%B0%EC%A7%81%EB%8F%84%EB%A9%94%EC%9D%B8.console.toast.com/)) 접근<br>\- \(Dooray\!\, ERP 서비스는 해당 서비스 도메인으로 접근\)<br>\- 조직의 OWNER\(또는 ADMIN\)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안\(2차 인증\, 서비스별 설정\) 인증 |
+| 定義      | \- 組織管理のためのメンバー<br>\- NHN Cloud利用約款に同意したNHN Cloud会員で、サービス利用に対する責任と義務を有するメンバー<br>\- NHN Cloudサービス全体で有効なメンバーで、所属した組織が削除されてもNHN Cloud会員に存在 | \- サービス利用のためのメンバー<br>\- NHN Cloud利用約款に同意しないメンバー<br>\- 組織内でのみ有効なメンバー、所属した組織が削除されると削除されるメンバー | 
+| メンバー登録方法 | \- 組織のOWNERまたはAdminがNHN Cloud IDを入力して登録 | \- 組織のOWNERまたはAdminが組織内で唯一のIDを入力して登録<br>\- SSO連動/API連携などを通して登録 |
+| メンバー権限 | \- 組織管理\(組織作成/修正/組織メンバー管理/組織サービス管理/決済管理\)<br>\- プロジェクト作成<br>\- プロジェクト削除 | \- 組織サービス利用 |
+| コンソールアクセス | \- NHN Cloudコンソール\([https://console.toast.com/](https://console.toast.com/)アクセス<br>\- NHN Cloud\> 会員ID/パスワードでログイン<br>\- \(任意\) 2次\(メールまたはSMS\)認証 | \- IAMコンソール\([https://組織ドメイン.console.toast.com/](https://%EC%A1%B0%EC%A7%81%EB%8F%84%EB%A9%94%EC%9D%B8.console.toast.com/))アクセス<br>\- \(Dooray\!、ERPサービスは該当サービスドメインでアクセス\)<br>\- 組織のOWNER\(またはADMIN\)が設定したID/PWでログイン\- 組織で設定したログインセキュリティ\(2次認証、サービス別設定\)認証 |
 
-### 조직 멤버
 
-* 조직의 OWNER는 계정의 모든 권한 부여하고 서비스를 신청할 수 있습니다.
-* OWNER는 회원을 등록하여 조직별 관리 권한을 부여할 수 있습니다.
+### 組織メンバー
 
-#### NHN Cloud 회원의 조직 권한
+- 組織のOWNERはアカウントのすべての権限を付与し、サービスを申請できます。 
+- OWNERは会員を登録し、組織別の管理権限を付与できます。
 
-| 작업 | 역할 | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
+#### NHN Cloud会員の組織権限
+
+| 作業 | 役割 | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
 | --- | --- | --- | --- | --- | --- | --- |
-| 조직 관리 | 조직 생성 | O |  |  |  |  |
-|  | 조직 수정 | O | O |  |  |  |
-|  | 조직 삭제 | O |  |  |  |  |
-| 멤버 관리 | 조직 멤버 등록 | O | O |  |  |  |
-|  | 조직 멤버 삭제 | O | O |  |  |  |
-| 서비스 관리 | 조직 서비스 활성화 | O | O |  |  |  |
-|  | 조직 서비스 비활성화 | O | O |  |  |  |
-| 결제 관리 | 청구서 조회 | O |  |  |  |  |
-|  | 이용 현황 | O | O |  | O |  |
-| 프로젝트 관리 | 프로젝트 생성 | O | O | O |  |  |
-|  | 프로젝트 삭제 | O | O |  |  |  |
-| 사용자 Action 로그 관리 | 사용자 Action 로그 조회 | O | O |  |  | O |
+| 組織管理 | 組織作成 | O |  |  |  |  |
+|  | 組織修正 | O | O |  |  |  |
+|  | 組織削除 | O |  |  |  |  |
+| メンバー管理 | 組織メンバー登録 | O | O |  |  |  |
+|  | 組織メンバー削除 | O | O |  |  |  |
+| サービス管理 | 組織サービス有効化 | O | O |  |  |  |
+|  | 組織サービス無効化 | O | O |  |  |  |
+| 決済管理 | 請求書照会 | O |  |  |  |  |
+|  | 利用状況 | O | O |  | O |  |
+| プロジェクト管理 | プロジェクト作成 | O | O | O |  |  |
+|  | プロジェクト削除 | O | O |  |  |  |
+| ユーザーActionログの管理 | ユーザーActionログの照会 | O | O |  |  | O |
 
-#### IAM 회원의 조직 권한
+#### IAM会員の組織権限
 
-* 조직 서비스별(Online Contact, Dooray! 등) 설정할 수 있는 권한이 다릅니다.
-* 클라우드 서비스 권한은 아래와 같습니다.
-    * MEMBER 권한은 원하는 경우에만 선택적으로 부여할 수 있습니다.
-    * MEMBER 권한이 부여되면 프로젝트를 직접 생성할 수 있습니다.
+* 組織サービスごと(Online Contact、Dooray!など)に設定できる権限が異なります。
+* クラウドサービスの権限は下記のとおりです。
+    * MEMBER権限は、希望する場合にのみ任意で付与できます。 
+    * 権限がないIAM会員は、プロジェクト作成や削除、サービスの有効化などを行うことができません。メンバーに登録されたプロジェクトのみサービスを利用できます。 
 
-| 작업 | 역할 | MEMBER |
+| 作業 | 役割 | MEMBER |
 | --- | --- | --- |
-| 프로젝트 관리 | 프로젝트 생성 | O |
+| プロジェクト管理 | プロジェクト作成 | O |
 
-### 프로젝트 멤버
+### プロジェクトメンバー
 
-조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
-프로젝트 멤버에게 필요한 권한을 여러 개 부여할 수 있습니다.
+組織のメンバーではなくてもプロジェクトのメンバーになることができます。
+プロジェクトメンバーに必要な権限を複数付与できます。 
 
-#### 프로젝트 관리 권한
+#### プロジェクト管理権限
 
-| 권한 | 설명 |
+| 権限 | 説明 |
 | --- | --- |
-| ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| MEMBER | 프로젝트 내 모든 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| BILLING VIEWER | 이용 현황 Read(읽기) 권한 |
-| PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 권한 그룹 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제) 권한 |
-| PROJECT MANAGEMENT VIEWER | 프로젝트 기본 정보 Read(읽기)<br>프로젝트 통합 Appkey Read(읽기)<br>프로젝트 권한 그룹 Read(읽기) 권한 |
-| PROJECT MEMBER ADMIN | 프로젝트 멤버 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| PROJECT MEMBER VIEWER | 프로젝트 멤버 Read(읽기) 권한 |
+| ADMIN | プロジェクト全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| MEMBER | プロジェクト内のすべてのサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| BILLING VIEWER | 利用状況Read(読み取り)権限 |
+| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <Br> プロジェクト権限グループCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除)権限 |
+| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br> プロジェクト統合Appkey Read(読み取り)<br> プロジェクト権限グループRead(読み取り)権限 |
+| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り)権限 |
 
-#### 서비스 이용 권한
+#### サービス利用権限
 
-| 서비스 | 권한 | 설명 |
+| サービス | 権限 | 説明 |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Container Registry | ADMIN | Container Registry 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Container Registry | VIEWER | Container Registry 서비스 Read(읽기) |
-| DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| RDS for MS-SQL | ADMIN | RDS for MS-SQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| EasyCache | ADMIN | EasyCache 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| EasyCache | VIEWER | EasyCache 서비스 복제 그룹 메뉴 Read(읽기), 모니터링 메뉴 Read(읽기) |
-| Gamebase | ADMIN | Gamebase 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | ANALYTICS VIEWER - ALL | 모든 지표 Read(읽기) |
-| Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | 매출을 제외한 모든 지표 Read(읽기) |
-| Gamebase | ANALYTICS VIEWER - ONLY REAL-TIME | 실시간 지표 Read(읽기) |
-| Gamebase | APP ADMIN | APP 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | APP VIEWER | APP 메뉴 Read(읽기) |
-| Gamebase | BAN ADMIN | 이용 정지 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | BAN VIEWER | 이용 정지 메뉴 Read(읽기) |
-| Gamebase | COUPON ADMIN | 쿠폰 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | COUPON VIEWER | 쿠폰 메뉴 Read(읽기) |
-| Gamebase | CS ADMIN | 고객센터 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | CS INQUIRY SUPPORT | 고객센터 문의 메뉴 Read(읽기), Update(갱신) 및 멤버 메뉴 Read(읽기) |
-| Gamebase | IAP ADMIN | 구매 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | IAP VIEWER | 구매 메뉴 Read(읽기) |
-| Gamebase | LEADERBOARD ADMIN | 리더보드 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | LEADERBOARD VIEWER | 리더보드 메뉴 Read(읽기) |
-| Gamebase | MANAGEMENT ADMIN | 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | MEMBER ADMIN | 멤버 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | MEMBER VIEWER | 멤버 메뉴 Read(읽기) |
-| Gamebase | MEMBER FILE DOWNLOAD | 지표, 매출, 멤버 등에 대한 메뉴 Read(읽기) 및 다운로드 |
-| Gamebase | OPERATION ADMIN | 운영 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | OPERATION VIEWER | 운영 메뉴 Read(읽기) |
-| Gamebase | PUSH ADMIN | 푸시 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Gamebase | PUSH VIEWER | 푸시 메뉴 Read(읽기) |
-| Leaderboard | ADMIN | Leaderboard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Leaderboard | VIEWER | Leaderboard 서비스 Read(읽기) |
-| Launching | ADMIN | Launching 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Smart Downloader | ADMIN | Smart Downloader 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| NHN AppGuard | ADMIN | AppGuard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| App Security Check | ADMIN | Security Check 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Server Security Check | ADMIN | Server Security Check 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| CAPTCHA | ADMIN | CAPTCHA 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| OTP | ADMIN | OTP 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Secure Key Manager | ADMIN | Secure Key Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Secure Key Manager | VIEWER | Secure Key Manager 서비스 Read(읽기) |
-| Security  Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)) 권한 |
-| DDoS Guard | ADMIN | DDos Guard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| SIEM | ADMIN | SIEM 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| CDN | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Image | ADMIN | Image 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Push | ADMIN | Push 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| SMS | ADMIN | SMS 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Email | ADMIN | Email 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Face Recognition | ADMIN | Face Recognition 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| AI Fashion | ADMIN | AI Fashion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 | 
-| Maps | ADMIN | Maps 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| ROLE | ADMIN | ROLE 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| API Gateway | ADMIN | API Gateway 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| RTCS | ADMIN | RTCS 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| ShortURL | ADMIN | ShortURL 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| Cheating Detection | ADMIN | Cheating Detection 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| IAP | ADMIN | IAP 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Mobile Device Info | ADMIN | Mobile Device Info 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Cloud Search | ADMIN | Cloud Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Autocomplete | ADMIN | Autocomplete 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Corporation Search | ADMIN | Corporation Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Address Search | ADMIN | Address Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Pipeline | ADMIN | Pipeline 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| Deploy | ADMIN | Deploy 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Managed | ADMIN | Managed 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Service Monitoring | ADMIN | Service Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| eTax| ADMIN | eTax 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| eTax | VIEWER | eTax 서비스 Read(읽기) |
+| Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| Container Registry | ADMIN | Container Registryサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| Container Registry | VIEWER | Container Registryサービスに対するRead(読み取り |
+| DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Object Storage | ADMIN | Object Storageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Backup | ADMIN | Backupサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| RDS for MySQL | ADMIN | RDS for MySQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| EasyCache | VIEWER | EasyCacheサービスレプリケーショングループメニューRead(読込)、モニタリングメニューRead(読込) |
+| Gamebase | ADMIN | Gamebase サービス Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Gamebase | ANALYTICS VIEWER - ALL | すべての指標Read(読み取り) |
+| Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | 売上を除くすべての指標Read(読み取り) |
+| Gamebase | ANALYTICS VIEWER - ONLY REAL-TIME | リアルタイム指標Read(読み取り) |
+| Gamebase | APP ADMIN | APPメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | APP VIEWER | APPメニューRead(読み取り) |
+| Gamebase | BAN ADMIN | 利用停止メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除 |
+| Gamebase | BAN VIEWER | 利用停止メニューRead(読み取り) |
+| Gamebase | COUPON ADMIN | クーポンメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | COUPON VIEWER | クーポンメニューRead(読み取り) |
+| Gamebase | CS ADMIN | サポートメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | CS INQUIRY SUPPORT | サポートお問い合わせメニューRead(読み取り)、Update(更新)およびメンバーメニューRead(読み取り) |
+| Gamebase | IAP ADMIN | 購入メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | IAP VIEWER | 購入メニューRead(読み取り) |
+| Gamebase | LEADERBOARD ADMIN | リーダーボードメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | LEADERBOARD VIEWER | リーダーボードメニューRead(読み取り) |
+| Gamebase | MANAGEMENT ADMIN | 管理メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | MEMBER ADMIN | メンバーメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | MEMBER VIEWER | メンバーメニューRead(読み取り) |
+| Gamebase | MEMBER FILE DOWNLOAD | メンバーダウンロードメニューRead(読み取り)およびファイルダウンロード |
+| Gamebase | OPERATION ADMIN | 運営メニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | OPERATION VIEWER | 運営メニューRead(読み取り) |
+| Gamebase | PUSH ADMIN | プッシュメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Gamebase | PUSH VIEWER | プッシュメニューRead(読み取り) |
+| Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Leaderboard | VIEWER | Leaderboardサービスに対するRead(読み取り) |
+| Launching | ADMIN | Launchingサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Smart Downloader | ADMIN | Smart Downloaderサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| NHN AppGuard | ADMIN | AppGuardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| App Security Check | ADMIN | Security Checkサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Server Security Check | ADMIN | Server Security Check サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Security Monitoring | ADMIN | Security Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| CAPTCHA | ADMIN | CAPTCHAサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| OTP | ADMIN | OTPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| WEB Firewall | ADMIN | WEB Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Vaccine | ADMIN | Vaccineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Secure Key Manager | ADMIN | Secure Key Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Secure Key Manager | VIEWER | Secure Key Managerサービスに対するRead(読み取り) |
+| Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| DDoS Guard | ADMIN | DDos Guardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| SIEM | ADMIN | SIEMサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Image | ADMIN | Imageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| SMS | ADMIN | SMSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Email | ADMIN | Emailサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| AI Fashion | ADMIN | AI Fashionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 | 
+| IAP | ADMIN | IAPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Maps | ADMIN | Mapsサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| ROLE | ADMIN | ROLEサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| RTCS | ADMIN | RTCSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| ShortURL | ADMIN | ShortURLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Cheating Detection | ADMIN | Cheating Detectionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Cloud Search | ADMIN | Cloud Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Autocomplete | ADMIN | Autocompleteサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Corporation Search | ADMIN | Corporation Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Address Search | ADMIN | Address Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Pipeline | ADMIN | Pipelineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Deploy | ADMIN | Deployサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Managed | ADMIN | Managedサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Service Monitoring | ADMIN | Service Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Certificate Manager | ADMIN | Certificate Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| eTax | ADMIN | eTax サービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| eTax | VIEWER | eTaxサービスに対するRead(読み取り)権限 |
 
 
 
-## 결제 관리
+## 決済管理
 
-NHN Cloud 서비스 이용 요금을 확인하고, 결제할 수 있습니다.
-**내 정보 보기 > 결제 관리** 메뉴에서 결제 수단을 등록한 NHN Cloud 회원의 청구서와 결제 예정 금액, 사용량 정보를 확인할 수 있습니다.
+NHN Cloudサービス利用料金を確認し、決済できます。
+**情報表示 > 決済管理**メニューで決済方法を登録したNHN Cloud会員の請求書と決済予定金額、使用量情報を確認できます。
 
-결제 수단을 통해 해당 월에 결제되는 내역과 함께 아래의 기능을 제공합니다.
+決済方法を通して、該当の月に決済する内訳と下記の機能を提供します。
 
-- 즉시 결제: 매월 8일 자동 결제 전에 즉시 결제 기능을 통해 결제할 수 있습니다.
-- 매출 전표: 신용카드로 결제한 경우, 매출 전표를 조회할 수 있습니다.
-- 세금계산서: 계좌 이체로 결제한 경우, 세금계산서를 조회할 수 있습니다.
+- 即時決済：毎月8日の自動決済前に即時決済機能で決済できます。
+- 売上伝票：クレジットカードで決済した場合、売上伝票を照会できます。
+- 税金計算書：口座振替で決済した場合、税金計算書を照会できます。
 
-결제 관리 청구서에 조회되는 내역은 아래와 같습니다.
+決済管理請求書で照会する内訳は下記のとおりです。
 
-- 이용 금액: 서비스 사용량과 단가를 계산한 금액
-- 할인/할증 금액: 약정 할인, 관리자 할인/할증 등
-- 부가세: (이용 금액 - 할인 금액 + 할증 금액)의 10%
-- 연체료
-    - 한국 회원: 최종 결제 금액 미납 시, 해당 금액의 2%
-    - 일본 회원: 일본 소비자계약법에 의해 연체료가 발생하지 않습니다.
-- 최종 결제 금액: (이용 금액 - 할인 금액 + 할증 금액) + 부가세
+- 利用金額：サービス使用量と単価を計算した金額
+- 割引/割増金額：約定割引、管理者割引/割増など
+- 付加税：(利用金額 - 割引金額 + 割増金額)の10%
+- 延滞料
+    - 韓国会員：最終決済金額が未払いの時、該当金額の2%
+    - 日本会員：日本消費者契約法により延滞料が発生しません。
+- 最終決済金額：(利用金額 - 割引金額 + 割増金額) + 付加税
