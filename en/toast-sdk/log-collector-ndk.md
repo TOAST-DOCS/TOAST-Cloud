@@ -1,21 +1,21 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > Android (NDK)
+## TOAST > TOAST SDK User Guide > TOAST Log & Crash > Android (NDK)
 
-## Android NDK 크래시 보고서
+## Android NDK Crash Report
 
-Android 앱에 네이티브 라이브러리가 포함된 경우 간단한 빌드 설정으로 네이티브 코드에 대한 전체 스택 추적과 상세한 오류 보고서를 사용할 수 있습니다.
+If your Android app includes native libraries, a simple build setup will enable full stack traces and detailed error reports for native code.
 
-* TOAST Crash Reporter for NDK는 **TOAST 0.21.0 이상**에서 사용할 수 있습니다.
-* TOAST Crash Reporter for NDK는 TOAST Logger를 통해 크래시 로그를 전송합니다.
-* TOAST Logger와 TOAST Crash Reporter for NDK 라이브러리는 **동일한 버전을 사용하는 것을 권장**합니다.
-* TOAST Crash Reporter for NDK는 TOAST Logger 초기화 시에 크래시 감지를 시작합니다.
-* TOAST Crash Reporter for NDK를 사용하기 위해서는 **r17c 이상의 NDK**가 필요합니다.
+* TOAST Crash Reporter for NDK is available on **TOAST 0.21.0 and higher**.
+* TOAST Crash Reporter for NDK sends crash logs through TOAST Logger.
+* It is recommended that you **use the same version** of TOAST Logger and TOAST Crash Reporter for NDK libraries.
+* TOAST Crash Reporter for NDK starts crash detection at TOAST Logger initialization.
+* TOAST Crash Reporter for NDK requires **NDK r17c or higher**.
 
-### 사전 준비
+### Prerequisites
 
-1. [TOAST Log & Crash](./log-collector-android)를 설치합니다.
+1. Install [TOAST Log & Crash](./log-collector-android).
 
-### 라이브러리 설정
-- 앱 수준 build.gradle에서 의존성을 추가합니다.
+### Library Setting
+- Add dependencies in the app-level build.gradle.
 
 ```groovy
 repositories {
@@ -26,27 +26,27 @@ dependencies {
     // ...
 
     // Add the TOAST Logger dependency
-    implementation 'com.toast.android:toast-logger:0.27.1'
+    implementation 'com.toast.android:toast-logger:0.27.3'
 
     // Add the TOAST Crash Reporter for NDK dependency
-    implementation 'com.toast.android:toast-crash-reporter-ndk:0.27.1'
+    implementation 'com.toast.android:toast-crash-reporter-ndk:0.27.3'
 }
 ```
 
-### 크래시 분석
+### Crash Analysis
 
-* Native 크래시가 발생하면 덤프(.dmp) 파일이 생성됩니다.
-* 생성된 덤프 파일을 해석하는 과정을 **Symbolication**이라 합니다.
-* 정확한 스택 추적을 위해서는 반드시 심볼 파일을 업로드 해야 합니다.
-* 심볼 파일이 업로드되면 크래시 발생 시 Log & Crash Search Console에서 분석된 크래시 정보를 확인할 수 있습니다.
+* When native crash occurs, dump (.dmp) file is generated.
+* The process of interpreting the generated dump file is called **Symbolication**.
+* You must upload a symbol file for an accurate stack trace.
+* When the symbol file is uploaded, you can check the crash information analyzed in Log & Crash Search Console when a crash occurs.
 
-#### 심볼 업로드
+#### Symbol Upload
 
-* 심볼 파일은 Project 특정 경로에 {library name}.so 파일명으로 생성됩니다.
-* 업로드 파일의 최대 크기는 500MB입니다.
-* {library name}.so을 {library name}.so.zip으로 압축하여 [Log & Crash Search > 설정 > 심벌 파일]에서 업로드 합니다.
+* A symbol file is generated as a {library name}.so file in the project's specific path.
+* The maximum size of the upload file is 500 MB.
+* Compress {library name}.so into {library name}.so.zip and upload it from [Log & Crash Search > Settings > Symbol File].
 
-#### 심볼 파일 경로
+#### Symbol File Path
 
-- ndk-build : {PROJECT}/obj/local/{ANDROID_ABI} 하위에 .so 파일이 생성됩니다.
-- cmake : {PROJECT}/build/intermediates/{VARIANTS}/obj/{ANDROID_ABI} 하위에 .so 파일이 생성됩니다.
+- ndk-build: .so file is generated under {PROJECT}/obj/local/{ANDROID_ABI}.
+- cmake: .so file is generated under {PROJECT}/build/intermediates/{VARIANTS}/obj/{ANDROID_ABI}.

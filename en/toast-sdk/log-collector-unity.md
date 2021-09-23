@@ -1,4 +1,4 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Unity
+## TOAST > TOAST SDK User Guide > TOAST Log & Crash > Unity
 
 ## Prerequisites
 
@@ -7,7 +7,7 @@
 3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 4. [Initialize TOAST SDK](./getting-started-unity#toast-sdk_1).
 
-## 지원 플랫폼
+## Supported Platforms
 
 - iOS
 - Android
@@ -31,8 +31,8 @@ repositories {
 }
 
 dependencies {
-	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-logger:0.27.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-unity-logger:0.27.3'
 **DEPS**}
 ```
 
@@ -43,25 +43,25 @@ dependencies {
 - Unity's iOS build setting includes some settings that influence logger's log delivery to a server.
 - Below briefly shows effects of such settings and describes recommended settings for a logger.
 
-| Menu                             | List                          | Setting                    | Recommended Setting |
-| -------------------------------- | ----------------------------- | -------------------------- | ------------------- |
-| Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit         |
-| Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API     | Disabled            |
-| Edit > Project Settings > Player | Other Settings                | Script Call Optimization   | Slow and Safe       |
+| Menu                             | List                          | Setting                       | Recommended Setting     |
+| -------------------------------- | ----------------------------- | -------------------------- | ------------- |
+| Edit > Project Settings > Player | Debugging and crash reporting | On .Net UnhandledException | Silent Exit   |
+| Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API     | Disabled      |
+| Edit > Project Settings > Player | Other Settings                | Script Call Optimization   | Slow and Safe |
 
-#### On .Net UnhandledException
+##### On .Net UnhandledException
 
 - **Silent Exit** is recommended.
   - If On .Net UnhandledException is set for Crash, app is closed immediately when an exception occurs.
   - With Silent Exit, Unity Exception can be captured.
 
-#### Enable CrashReport API
+##### Enable CrashReport API
 
 - **Disabled** is recommended.
   - Shows whether Unity CrashReporter API is enabled or not.
   - When enabled, it may affect logger's crash log collection.
 
-#### Script Call Optimization
+##### Script Call Optimization
 
 - **Slow and Safe** is recommended.
   - To collect Runtime C# Crash logs, Slow and Safe must be enabled.
@@ -74,7 +74,7 @@ using Toast.Logger;
 
 ## Initialize TOAST Logger SDK
 
-Set appkey issued from Log & Crash Search as ProjectKey.
+Set Appkey issued from Log & Crash Search as ProjectKey.
 
 ```csharp
 var loggerConfiguration = new ToastLoggerConfiguration
@@ -90,7 +90,7 @@ ToastLogger.Initialize(loggerConfiguration);
 TOAST Logger can send logs of five levels.
 User fields may be additionally sent.
 
-### Specifications for Log Sending API
+### Specification for Log Sending API
 
 ```csharp
 // DEBUG level logs
@@ -128,7 +128,7 @@ ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
 Set a user-defined field as wanted.
 With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called.
 
-### Specifications for User-Defined Field Setting API
+### Specification for User-Defined Field Setting API
 
 ```csharp
 ToastLogger.SetUserField(userField, userValue);
@@ -153,7 +153,7 @@ ToastLogger.SetUserField("GameObject", gameObject.name);
 
 - With listener registered, further tasks can be executed after logs are sent.
 
-### Specifications for SetLoggerListener API
+### Specification for SetLoggerListener API
 
 ```csharp
 public interface IToastLoggerListener
@@ -203,9 +203,9 @@ TOAST Logger classifies Unity's crashes into two categories.
 - Crash on native platform (app terminated)
 - Unexpected exception from Unity (no app terminated)
 
-> **왜 LogException으로 출력된 로그도 크래시 로그로 수집하나요?**
-> 써드파티 라이브러리 중에 LogException를 통해서 사용자 코드의 예외를 노출하는 경우가 더러 있기 때문입니다.
-> 크래시 로그를 필터링 하고 싶다면 아래 **크래시 로그 필터링하기** 를 참고해주세요.
+> **Why is the log outputted as LogException also collected as a crash log?**
+> This is because some third-party libraries expose exceptions in user code through LogException.
+> If you want to filter out the crash log, refer to **Filtering the Crash Log** below.
 
 With ToastLogger initialized, a crash log is automatically sent when it occurs crash under the mobile environment or when it occurs the unexpected exception in Unity.
 To disable crash log delivery, set false for EnableCrashReporter property of the ToastLoggerConfiguration object.
@@ -222,7 +222,7 @@ var loggerConfiguration = new ToastLoggerConfiguration
 };
 ```
 
-> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log&Crash Search console.
+> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log & Crash Search console.
 > User ID setting can be checked in [Getting Started](./getting-started-unity/#set-userid).
 
 ## Further Tasks after Sending Crash logs
@@ -232,7 +232,7 @@ var loggerConfiguration = new ToastLoggerConfiguration
 > ** Crash listener only works when it occurs unexpected exception in Unity **
 > Crash listener is not supported for crashes on the native platform.
 
-### Specifications for SetCrashListener API
+### Specification for SetCrashListener API
 
 ```csharp
 public delegate void CrashListener(bool isSuccess, LogEntry logEntry);
@@ -252,13 +252,13 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 });
 ```
 
-## 크래시 로그 필터링하기
+## Filtering the Crash Log
 
-- 유니티를 이용하다보면 수집을 원하지 않는 예외 로그 혹은 크래시 로그들이 수집될 수 있습니다.
-- TOAST Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
-  - 해당 기능은 유니티 예외에 한정된 기능입니다.
+- While using Unity, exception logs or crash logs that you do not want to collect may be collected.
+- TOAST Logger supports the feature to filter out the crash logs that you do not want to collect.
+  - This feature is specific to exceptions of Unity.
 
-### AddCrashFilter API 명세
+### Specification for AddCrashFilter API
 
 ```csharp
 public delegate bool CrashFilter(CrashLogData logData);
@@ -275,9 +275,9 @@ public class CrashLogData
 public static void AddCrashFilter(CrashFilter filter);
 ```
 
-- CrashLogData의 프로퍼티들은 [Application.LogCallback의 매개변수와 동일](https://docs.unity3d.com/ScriptReference/Application.LogCallback.html)합니다.
+- The properties of CrashLogData is the same as the parameters of [Application.LogCallback](https://docs.unity3d.com/ScriptReference/Application.LogCallback.html).
 
-### AddCrashFilter API 사용 예
+### Usage Example of AddCrashFilter API
 
 ```csharp
 ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("UnityEngine.Debug.Log"));
@@ -289,7 +289,7 @@ Exceptions from a try/catch sentence, as well as general/crash logs, can be sent
 Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
 For more usage details on Log & Crash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
 
-### Specifications for Handled Exception Log API
+### Specification for Handled Exception Log API
 
 ```csharp
 // Send Handled Exception Logs

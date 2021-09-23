@@ -1,4 +1,21 @@
-## TOAST > User Guide for TOAST SDK > Release Notes > Android
+## TOAST > TOAST SDK User Guide > Release Notes > Android
+
+## 0.27.3 (2021.09.28)
+
+### TOAST IAP
+
+#### Improved
+
+* Improved ONE store v16 test payment process
+
+## 0.27.2 (2021.09.06)
+
+### TOAST Logger
+
+#### Fixed
+
+* Fixed an error where DeviceModel was displayed as "UNKNOWN"
+    * Fixed an error where DeviceModel was displayed as "UNKNOWN" when crash occurred in Unity.
 
 ## 0.27.1 (2021.08.24)
 
@@ -6,8 +23,8 @@
 
 #### Improved
 
-* 구글 구독 결제 프로세스 개선
-* 원스토어 v16 결제 프로세스 개선
+* Improved Google subscription payment process
+* Improved ONE store v16 payment process
 
 ## 0.27.0 (2021.08.03)
 
@@ -15,7 +32,7 @@
 
 #### Added
 
-* ONE store v16 추가
+* Added ONE store v16
 
 ## 0.26.0 (2021.07.06)
 
@@ -23,14 +40,14 @@
 
 #### Added
 
-* 월 결제 한도 기능 추가
+* Added a monthly payment limit feature
 
 ### TOAST Push
 
 #### Fixed
 
-* Firebase Messaging 22.0.0 이상 대응
-    * Firebase Messaging 22.0.0 이상에서 발생하는 오류가 수정되었습니다.
+* Handled an issue in Firebase Messaging 22.0.0 or higher
+    * Fixed an error that occurred in Firebase Messaging 22.0.0 or higher.
 
 ## 0.25.0 (2021.04.27)
 
@@ -38,17 +55,17 @@
 
 #### Added
 
-* 구글 구독 상태 조회 API 추가
-    * 구글 구독 상태를 조회할 수 있는 querySubscriptionsStatus API 가 추가되었습니다.
+* Added Google subscription status query API
+    * Added the querySubscriptionsStatus API to query Google subscription status.
 
 #### Improved
 
-* 구글 결제 라이브러리 업데이트
-    * 구글 결제 라이브러리 BillingClient 3.0.3이 적용되었습니다.
+* Google payment library update
+    * Google payment library BillingClient 3.0.3 has been applied.
 
 #### Fixed
 
-* Android 11 이상에서 간헐적으로 "취소" 가 반환되는 오류를 수정하였습니다.
+* Fixed an error where "Cancel" was returned intermittently on Android 11 or higher.
 
 ## 0.24.4 (2021.01.12)
 
@@ -56,13 +73,13 @@
 
 #### Improved
 
-* FCM 토큰 갱신시 업데이트 로직 개선
+* Improved update logic when updating FCM tokens
 
 ### TOAST Gradle Plugin (0.0.1)
 
 #### Added
 
-* Symbol Uploader 기능 추가
+* Added Symbol Uploader function
 
 ## 0.24.3 (2020.12.08)
 
@@ -70,7 +87,7 @@
 
 #### Improved
 
-* Tencent QQ 서비스 종료에 따른 모듈 삭제
+* Deleted a module due to termination of Tencent QQ service
 
 ## 0.24.2 (2020.11.24)
 
@@ -78,7 +95,7 @@
 
 #### Fixed
 
-* 사용자 아이디 설정과 동시에 토큰 등록 요청시 단말기 식별자로 등록되던 문제 해결
+* Fixed an issue where the token is registered with a device identifier when requesting token registration at the same time as user ID setting
 
 ## 0.24.1 (2020.10.30)
 
@@ -86,8 +103,8 @@
 
 #### Fixed
 
-* 갤럭시 스토어 인앱결제 오류 수정
-    * Galaxy Apps(Galaxy Store 이전 앱 명칭) 3.x 이하 버전에서 Timeout이 발생하는 오류를 수정하였습니다.
+* Fixed Galaxy Store in-app purchase error
+    * Fixed an error where timeout occurred in Galaxy Apps (previous app name of Galaxy Store) 3.x or lower.
 
 ## 0.24.0 (2020.10.27)
 
@@ -95,27 +112,27 @@
 
 #### Added
 
-* 갤럭시 스토어 추가
+* Added Galaxy Store
 
 #### Improved
 
-* 구글 결제 라이브러리 업데이트
-    * 구글 결제 라이브러리 BillingClient 3.0.1이 적용되었습니다.
-    * 2021년 8월 2일 부터 모든 새로운 앱은 결제라이브러리 버전 3 이상을 사용해야합니다.
-    * 2021년 11월 1일까지 기존 앱에 대한 모든 업데이트는 결제 라이브러리 버전 3 이상을 사용해야합니다.
-    * 자세한 사항은 [Meet Google Play Billing Library Version 3](https://android-developers.googleblog.com/2020/06/meet-google-play-billing-library.html)을 참고하세요.
-* 구글 정기 결제(구독) 상태 변경에 따른 대응
-    * 구글 구독 결제의 갱신 및 만료와 같은 수명주기 동안 다양한 상태 변경(유예 기간, 계정 보류, 복원, 일시중지, 정기 결제 재신청 등)에 대응하였습니다.
+* Google payment library update
+    * Google payment library BillingClient 3.0.1 has been applied.
+    * From August 2, 2021, all new apps must use payment library version 3 or higher.
+    * By November 1, 2021, all updates to existing apps must use payment library version 3 or higher.
+    * For details, refer to [Meet Google Play Billing Library Version 3](https://android-developers.googleblog.com/2020/06/meet-google-play-billing-library.html).
+* Handled changes in Google subscription status
+    * Handled various status changes (grace period, account hold, restore, pause, resubmit subscription, etc.) during lifecycle, such as renewal and expiration of Google subscription payment.
 
 ### TOAST Push
 
 #### Improved
 
-* 알림 답장 기능 미지원 단말기에서는 답장 기능의 버튼이 생성되지 않도록 수정
+* Changed so that the reply button is not created on devices that do not support the notification reply function
 
 #### Fixed
 
-* 특정 상황에서 알림 채널이 새로 생성되는 버그 수정
+* Fixed a bug where notification channel is newly created under certain circumstances
 
 ## 0.23.2 (2020.10.06)
 
@@ -123,8 +140,8 @@
 
 #### Fixed
 
-* 구독 이슈 수정.
-    * 구독이 "계정 보류" 또는 "유예 기간" 상태에서 결제 수단 수정으로 복원된 경우 IapService.PurchasesUpdatedListener를 통해 에러가 통지되지 않도록 수정하였습니다.
+* Fixed a subscription issue.
+    * Fixed so that an error is not notified through IapService.PurchasesUpdatedListener when subscription is restored by payment method modification in "Account Hold" or "Grace Period" status.
 
 ## 0.23.1 (2020.09.11)
 
@@ -132,7 +149,7 @@
 
 #### Improved
 
-* 토큰 등록 로직 개선
+* Improved token registration logic
 
 ## 0.23.0 (2020.07.28)
 
@@ -140,7 +157,7 @@
 
 #### Added
 
-* 사용자 태그 기능 지원
+* Support user tag function
 
 ## 0.22.0 (2020.06.23)
 
@@ -148,15 +165,15 @@
 
 #### Improved
 
-`TOAST IAP SDK 0.22.0 이상으로 업데이트 시 반드시 강제 업데이트를 진행해야 합니다.`
+`When updating to TOAST IAP SDK 0.22.0 or higher, you must perform a forced update.`
 
-* Google Play Billing Library BillingClient 2.2.1 적용
+* Applied Google Play Billing Library BillingClient 2.2.1
 
 ### TOAST Push
 
 #### Improved
 
-* 기본 알림 옵션 설정 기능 개선
+* Improved the feature to set default notification options
 
 ## 0.21.2 (2020.05.26)
 
@@ -164,7 +181,7 @@
 
 #### Improved
 
-* 토큰 등록 기능 개선
+* Improved token registration function
 
 ## 0.21.1 (2020.04.28)
 
@@ -172,13 +189,13 @@
 
 #### Improved
 
-* 안전성 개선
+* Improved stability
 
 ### TOAST Logger
 
 #### Improved
 
-* Native Crash Reporting 기능 개선
+* Improved Native Crash Reporting function
 
 ## 0.21.0 (2020.03.24)
 
@@ -186,15 +203,15 @@
 
 #### Added
 
-* Native Crash Reporting (NDK) 기능 추가
+* Added Native Crash Reporting (NDK) function
 
 ### TOAST Push
 
 #### Improved
 
-* 기본 알림 옵션에 설정 가능한 항목 추가
-    * 포그라운드 알림 노출 여부 설정이 추가되었습니다.
-    * 배지 아이콘 사용 여부 설정이 추가되었습니다.
+* Add configurable items to default notification options
+    * Added setting on whether or not to expose foreground notifications.
+    * Added setting on whether or not to use the badge icon.
 
 ## 0.20.3 (2020.02.25)
 
@@ -202,9 +219,9 @@
 
 #### Improved
 
-* 토큰 등록 기능 개선
-    * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
-    * 토큰 등록 후 ToastSdk.setUserId() 를 사용하여 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.
+* Improved token registration function
+    * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
+    * After token registration, if the user ID is set or changed using ToastSdk.setUserId(), the token information is updated.
 
 ## 0.20.2 (2020.01.21)
 
@@ -212,8 +229,8 @@
 
 #### Improved
 
-* 지표 수집 기능 개선
-* 기본 알림 채널 생성 로직 개선
+* Improved metrics collection function
+* Improved logic for creating the default notification channel
 
 ## 0.20.1 (2020.01.07)
 
@@ -221,21 +238,21 @@
 
 #### Improved
 
-* Assets 리소스 지원
-    * Assets 경로의 이미지 리소스를 지원합니다.
-* 기본 옵션 설정 방법 개선
-    * AndroidManifest의 meta-data을 사용하여 알림 기본 옵션을 설정할 수 있습니다.
+* Supports Assets resource
+    * Supports image resources in the Assets path.
+* Improved method of setting the default options
+    * You can set the default notification options using metadata in AndroidManifest.
 
 ### TOAST IAP
 
 #### Improved
-* 보안 강화
-    * 내부 보안 정책을 강화하였습니다.
+* Enhanced security
+    * Internal security policy has been strengthened.
 
 #### Fixed
 
-* "Bad base64 Exception" 오류 수정
-    * TOAST SDK를 사용하지 않은 결제건 처리 시에 "Bad Base64 Exception"이 발생하는 오류를 수정하였습니다.
+* Fixed a "Bad base64 Exception" error
+    * Fixed an error where "Bad Base64 Exception" occurred when processing a payment that did not use TOAST SDK.
 
 ## 0.19.4 (2019.11.26)
 
@@ -243,8 +260,8 @@
 
 #### Improved
 
-* (구) pushsdk 데이터 마이그레이션 지원.
-    * (구) pushsdk 에서 업데이트 한 경우 모든 데이터를 TOAST SDK 로 마이그레이션 합니다.
+* Supports migration of (old) pushsdk data.
+    * If updated from (old) pushsdk, all data will be migrated to TOAST SDK.
 
 ## 0.19.3 (2019.10.18)
 
@@ -252,7 +269,7 @@
 
 #### Improved
 
-* 토큰 등록 기능 개선.
+* Improved token registration function.
 
 ## 0.19.2 (2019.10.15)
 
@@ -260,15 +277,15 @@
 
 #### Added
 
-* 알림 클릭시 통지 기능 추가.
-    * 사용자가 알림을 클릭하여 앱이 실행되었을 때에 대한 리스너를 등록할 수 있습니다.
-* 배지 기능 지원.
-    * 알림 수신시 배지 아이콘과 앱 숏컷 화면에 배지 카운트가 노출됩니다.
+* Added notification function when clicking notification.
+    * You can register a listener for when the user clicks the notification and the app is launched.
+* Supports badge feature.
+    * Badge count is exposed on the badge icon and app shortcut screen when receiving notifications.
 
 #### Improved
 
-* 알림 기본 스타일 지정.
-    * 미디어를 포함하지 않는 알림은 BigTextStyle 로 지정되어 두 줄 이상의 메시지도 표현됩니다.
+* Notification default style setting.
+    * Notifications that do not contain media are set to BigTextStyle so that messages with more than one line can also be represented.
 
 ## 0.19.1 (2019.10.02)
 
@@ -276,7 +293,7 @@
 
 #### Added
 
-* Unity Android IAP Plugin에 구매 요청 시 사용자 데이터를 영수증에 포함할 수 있는 기능이 추가되었습니다.
+* Added a feature to include user data in the receipt when making a purchase request to the Unity Android IAP Plugin.
 
 ## 0.19.0 (2019.10.01)
 
@@ -284,14 +301,14 @@
 
 #### Added
 
-* Android IAP 라이브러리에 구매 요청 시 사용자 데이터를 영수증에 포함할 수 있는 기능이 추가되었습니다.
+* Added a feature to include user data in the receipt when making a purchase request to the Android IAP library.
 
 ### TOAST Push
 
 #### Improved
 
-* 사용자 정의 메시지 리시버 사용성 개선.
-    * 알림 노출 요청시 사용자 콘텐츠 인텐트 타입이 PendingIntent 로 변경되었습니다.
+* Improved usability of custom message receivers.
+    * The user content intent type when requesting notification exposure has been changed to PendingIntent.
 
 ## 0.18.0 (2019.08.27)
 
@@ -299,19 +316,19 @@
 
 #### Added
 
-* 소비성 구독 상품 추가.
-    * 상품 타입에 소비 가능한 구독 상품이 추가되었습니다.
+* Added consumable subscription products.
+    * Consumable subscription products have been added to the product type.
 
 #### Fixed
 
-* 구글 플레이 스토어 앱 업데이트 시, 결제 결과가 2회 이상 통지되는 오류가 수정되었습니다.
+* Fixed an error where payment results are notified more than twice when updating the Google Play Store app.
 
 ### TOAST Push
 
 #### Added
 
-* 기본 알림 옵션 설정 기능 추가.
-    * 작은 아이콘, 진동, 알림음 등의 기본 옵션을 설정할 수 있습니다.
+* Added a feature to set default notification options.
+    * You can set basic options such as small icons, vibration, and notification sound.
 
 ## 0.17.1 (2019.07.23)
 
@@ -319,28 +336,28 @@
 
 #### Added
 
-* 커스텀 리시버 사용시 메시지 객체내에 FCM 발신자 ID 정보 추가.
+* Added FCM sender ID information in message object when using a custom receiver.
 
 ## 0.17.0 (2019.06.25)
 
-### TOAST Push
+### TOAST Pus
 
 #### Added
 
-* 토큰 정보 업데이트 기능 추가.
-    * 언어 및 국가 정보 등의 정보를 업데이트할 수 있습니다.
-* 메시지 수신 통지 기능 추가.
-* 리치 메시지 버튼의 액션("Open", "Dismiss", "Reply", etc) 통지 기능 추가.
+* Added token information update function.
+    * You can update information such as language and country information.
+* Added message reception notification function.
+* Added notification function for rich message button actions ("Open", "Dismiss", "Reply", etc.).
 
 #### Improved
 
-* 초기화 개선.
-    * PushType ("FCM", "TENCENT", etc)으로 초기화가 가능합니다.
-* 앱 상태에 따른 알림 노출 정책 변경.
-    * 사용자가 앱을 사용 중(Foreground)일 때는 알림을 노출하지 않습니다.
-* 사용자 정의 메시지 리시버 사용성 개선.
-    * 사용자 정의 메시지 수정 및 알림 생성이 간편해졌습니다.
-    * 사용자 정의 알림의 지표 전송이 간편해졌습니다.
+* Improved initialization.
+    * Initialization can be performed with PushType ("FCM", "TENCENT", etc.).
+* Changed notification exposure policy according to app status.
+    * Notifications are not exposed when the user is using the app (Foreground).
+* Improved usability of custom message receivers.
+    * Made it easier to edit custom messages and create notifications.
+    * Made it easier to send metrics for custom notifications.
 
 ## 0.16.2 (2019.06.21)
 
@@ -348,14 +365,14 @@
 
 #### Improved
 
-* 사용자 아이디가 변경되었을 때 동작 개선
-* (구)IAP SDK v1.5.3 이전 결제건의 재처리 개선
+* Improved behavior when user ID is changed
+* Improvement of reprocessing of payments before (old) IAP SDK v1.5.3
 
 ### TOAST Logger
 
 #### Fixed
 
-* 크래시 오류 수정
+* Crash bug fix
 
 ## 0.16.1 (2019.05.02)
 
