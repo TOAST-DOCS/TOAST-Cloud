@@ -1,5 +1,22 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 0.27.3 (2021.09.28)
+
+### TOAST IAP
+
+#### 기능 개선
+
+* 원스토어 v16 테스트 결제 프로세스 개선
+
+## 0.27.2 (2021.09.06)
+
+### TOAST Logger
+
+#### 버그 수정
+
+* DeviceModel이 "UNKNOWN"으로 표시되는 오류 수정
+    * 유니티에서 크래시 발생 시 DeviceModel이 "UNKNOWN"으로 표시되는 오류가 수정되었습니다.
+
 ## 0.27.1 (2021.08.24)
 
 ### TOAST IAP

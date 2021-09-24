@@ -102,6 +102,6 @@ All users are provided with the same features, policy, stability and usability, 
 | Contact Center | Omni Contact | Regional | O |  |  |  |
 |  | Mobile Contact | Regional | O |  |  |  |
 |  | Online Contact | Global |  |  |  |  |
-| Bill | Bill (e-Tax) | Regional | O |  |  |  |
+| Bill | eTax | Regional | O |  |  |  |
 | IDC | TCC | Regional | O |  |  |  |
 | CloudTail | CloudTail | Global |  |  |  |  |
