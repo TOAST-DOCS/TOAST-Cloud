@@ -78,10 +78,10 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
 2. 하위 메뉴인 거버넌스 설정을 선택합니다.
 3. 조직 거버넌스 설정의 **IP ACL 설정**을 설정하여 관리할 수 있습니다.
-    * 서비스 설정
-        * 공통 설정 : 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
-        * 서비스 별 설정 : 각 서비스(Cloud, Online Contact, Dooray! 등) 별로 IP ACL을 설정할 수 있습니다\.
-    * IP ACL
+   * 서비스 설정
+       * 공통 설정 : 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
+       * 서비스 별 설정 : 각 서비스(Cloud, Online Contact Workplace | Dooray! 등) 별로 IP ACL을 설정할 수 있습니다\.
+   * IP ACL
         * 설정 안 함 : 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
         * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력하시면 됩니다.
 
@@ -93,9 +93,9 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 * 모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
 ![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109.png)
 
-① 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
-② 하위 메뉴인 거버넌스 설정을 선택합니다.
-③ IAM 거버넌스 설정의 로그인 보안 설정을 설정하여 관리할 수 있습니다.
+1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
+2. 하위 메뉴인 거버넌스 설정을 선택합니다.
+3. IAM 거버넌스 설정의 로그인 보안 설정을 설정하여 관리할 수 있습니다.
 
 #### 2차 인증
 
@@ -103,7 +103,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 * 서비스 설정
     * 공통 설정 : 모든 조직 서비스에 동일하게 2차 인증을 설정합니다.
-    * 서비스 별 설정 : 각 서비스\(Cloud Console, Online Contact, Dooray\! 등\) 별로 2차 인증을 다르게 설정할 수 있습니다\.
+    * 서비스 별 설정 : 각 서비스\(Cloud Console\, Online Contactm Workplace \| Dooray\! 등\) 별로 2차 인증을 다르게 설정할 수 있습니다\.
 * 2차 인증 설정
     * 설정 안 함: 2차 인증을 하지 않고, 아이디와 비밀번호 입력만으로 로그인할 수 있습니다.
     * Google OTP: 아이디와 비밀번호 입력 후, Google OTP 앱에서 제공한 One Time Password를 입력하여 인증 후 로그인할 수 있습니다.
@@ -229,10 +229,10 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 | 구분 | [TOAST.com](http://TOAST.com)회원 | IAM 회원 |
 | --- | --- | --- |
-| 정의 | \- 조직 관리를 위한 멤버<br>\- NHN Cloud 이용 약관에 동의한 NHN Cloud 회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>\- NHN Cloud 서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud 회원으로 존재 | \- 서비스 이용을 위한 멤버<br>\- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>\- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
+| 정의 | \- 조직 관리를 위한 멤버<br>\- NHN Cloud 이용 약관에 동의한 NHN Cloud 회원으로\, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>\- NHN Cloud 서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud 회원으로 존재 | \- 서비스 이용을 위한 멤버<br>\- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>\- 조직 내에서만 유효한 멤버\, 소속된 조직이 삭제되면 삭제되는 멤버 |
 | 멤버 등록 방법 | \- 조직의 OWNER나 ADMIN이 NHN Cloud ID를 입력하여 등록 | \- 조직의 OWNER나 ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>\- SSO 연동/API 연동 등을 통해 등록 |
 | 멤버 권한 | \- 조직 관리\(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리\)<br>\- 프로젝트 생성<br>\- 프로젝트 삭제 | \- 조직 서비스 이용 |
-| 콘솔 접근 | \- NHN Cloud 콘솔\([https://console.toast.com/](https://console.toast.com/\) 접근<br>\- NHN Cloud\> 회원 ID/비밀번호로 로그인<br>\- \(선택\) 2차\(이메일 또는 SMS\) 인증 | \- IAM 콘솔\([https://조직도메인.console.toast.com/](https://%EC%A1%B0%EC%A7%81%EB%8F%84%EB%A9%94%EC%9D%B8.console.toast.com/)) 접근<br>\- \(Dooray\!\, ERP 서비스는 해당 서비스 도메인으로 접근\)<br>\- 조직의 OWNER\(또는 ADMIN\)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안\(2차 인증\, 서비스별 설정\) 인증 |
+| 콘솔 접근 | \- NHN Cloud 콘솔\([https://console.toast.com/](https://console.toast.com/) 접근<br>\- NHN Cloud\> 회원 ID/비밀번호로 로그인<br>\- \(선택\) 2차\(이메일 또는 SMS\) 인증 | \- IAM 콘솔\([https://조직도메인.console.toast.com/](https://%EC%A1%B0%EC%A7%81%EB%8F%84%EB%A9%94%EC%9D%B8.console.toast.com/)) 접근<br>\- \(Dooray\!\, ERP 서비스는 해당 서비스 도메인으로 접근\)<br>\- 조직의 OWNER\(또는 ADMIN\)가 설정한 ID/PW로 로그인 \- 조직에서 설정한 로그인 보안\(2차 인증\, 서비스별 설정\) 인증 |
 
 ### 조직 멤버
 

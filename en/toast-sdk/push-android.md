@@ -1,20 +1,20 @@
-## TOAST > User Guide for TOAST SDK > TOAST Push > Android
+## TOAST > TOAST SDK User Guide > TOAST Push > Android
 
-## 사전 준비
+## Prerequisites
 
-1. [TOAST SDK](./getting-started-android)를 설치합니다.
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
-3. Push 콘솔에서 AppKey를 확인합니다.
+1. Install [TOAST SDK](./getting-started-android).
+2. [Enable Push service](https://docs.toast.com/en/Notification/Push/en/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+3. Check the AppKey in the Push console.
 
-## Push 제공자별 가이드
+## Guide by Push Provider
 
-* [Firebase Cloud Messaging (이하 FCM) 가이드](https://firebase.google.com/docs/cloud-messaging/)
-* `Tencent Push Notification (QQ) service ends in November 2020`
+* [Firebase Cloud Messaging (FCM) Guide](https://firebase.google.com/docs/cloud-messaging/)
+* `Tencent Push Notification (QQ) service ended in November 2020`
 
-## 라이브러리 설정
+## Library Setting
 
 ### FCM
-* TOAST FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+* To use TOAST FCM Push, add dependency to build.gradle as below.
 
 ```groovy
 repositories {
@@ -23,26 +23,26 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.27.2'
+    implementation 'com.toast.android:toast-push-fcm:0.27.3'
     ...
 }
 ```
 
-## Firebase Cloud Messaging 설정
+## Firebase Cloud Messaging Settings
 
-### 프로젝트 및 앱 추가
+### Add projects and apps
 
-* [Firebase 콘솔](https://console.firebase.google.com/?hl=ko)에서 프로젝트를 생성합니다.
-* 콘솔의 상단에 있는 톱니바퀴 버튼을 클릭해서 **프로젝트 설정**으로 이동합니다.
-* 프로젝트 설정의 **내 앱** 에서 **Android 앱에 Firebase 추가**를 클릭합니다.
-* **Android 패키지 이름**, **앱 닉네임 (선택사항)** 을 입력하고 **앱 등록** 버튼을 클릭합니다.
-* **google-services.json 다운로드** 버튼을 클릭해서 설정 정보를 다운로드합니다.
-* 다운로드 받은 **google-services.json** 파일을 앱의 모듈(앱 수준) 디렉터리로 이동합니다.
-* 자세한 사항은 [Android 프로젝트에 Firebase 추가](https://firebase.google.com/docs/android/setup)을 참고하세요.
+* Create a project in [Firebase console](https://console.firebase.google.com/?hl=en).
+* Go to **Project Settings** by clicking the gear button at the top of the console.
+* Under **My Apps** in Project Settings, click **Add Firebase to Android App**.
+* Enter **Android Package Name**, **App Nickname (optional)** and click the **Register App** button.
+* Click the **Download google-services.json** button to download the setting information.
+* Move the downloaded **google-services.json** file to your app's module (app level) directory.
+* For details, see [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup).
 
-### build.gradle 설정
-#### 루트 수준의 build.gradle
-* 루트 수준의 build.gradle에 아래 코드를 추가합니다.
+### Set Up build.gradle
+#### Root-level build.gradle
+* Add code below to root-level build.gradle.
 
 ```groovy
 buildscript {
@@ -62,8 +62,8 @@ allprojects {
 }
 ```
 
-#### 앱 모듈의 build.gradle
-* 앱 모듈의 build.gradle에 아래 코드를 추가합니다.
+#### App module's build.gradle
+* Add the code below to your app module's build.gradle.
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -76,15 +76,15 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
-## Push 초기화
+## Push Initialization
 
-* ToastPush.initialize를 호출하여 TOAST Push를 초기화합니다.
-* [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
-* [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
-* Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
-* 사용하기를 원하는 PushType을 초기화 호출시 전달해야 합니다.
+* Initialize TOAST Push by calling ToastPush.initialize.
+* A [ToastPushConfiguration](./push-android/#toastpushconfiguration) object contains push configuration information.
+* A [ToastPushConfiguration](./push-android/#toastpushconfiguration) object can be created using ToastPushConfiguration.Builder.
+* Pass the AppKey issued from the Push console as the parameter of ToastPushConfiguration.newBuilder.
+* The PushType you want to use must be passed in the initialization call.
 
-### FCM 초기화 예시
+### FCM initialization example
 
 ```java
 ToastPushConfiguration configuration =
@@ -94,51 +94,51 @@ ToastPushConfiguration configuration =
 ToastPush.initialize(configuration);
 ```
 
-## 서비스 로그인
-* TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
-    * [ToastSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
-* 서비스 로그인 단계에서 사용자 아이디 설정, 토큰 등록 기능을 구현하는 것을 권장합니다.
-* 토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.
+## Service Login
+* All products provided by TOAST SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
+    * You can set the user id with [ToastSdk.setUserId](./getting-started-android/#userid).
+* It is recommended to implement the user ID setting and token registration functions in the service login step.
+* If you set or change the user ID after registering the token, the token information is updated.
 
-### 서비스 로그인 예제
+### Service login example
 
 ```java
 public void onLogin(String userId) {
     // Login.
     ToastSdk.setUserId(userId);
-    // 토큰 등록 등
+    // Token registration, etc.
 }
 ```
 
-## 토큰 등록
-* ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 TOAST Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
-* 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
-* 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
+## Token Registration
+* Use the ToastPush.registerToken() method to send a Push token to the TOAST Push server. In this case, pass whether the user agreed to receive (ToastPushAgreement) as a parameter.
+* If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
+* When the token is registered successfully, the user can receive a Push message.
 
-### 수신 동의 설정
-* 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
-    * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
-    * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 TOAST Push 서버로 전송합니다.
+### Consent Setting
+* In accordance with the provisions of the Information and Communications Network Act (Articles 50 through 50-8), when registering a token, whether or not to receive notification/advertising/night-time advertising push messages must also be inputted. When sending a message, it is automatically filtered based on whether or not the user agreed to receive it.
+    * [Shortcut to KISA Guide](https://spam.kisa.or.kr/spam/sub62.do)
+    * [Shortcut to the law](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+* Set whether or not the user agreed to receive the push in ToastPushAgreementIt and send it to the TOAST Push server when registering tokens.
 
-### 토큰 등록 및 수신 동의 설정 예시
+### Example of token registration and agreement setting
 ```java
-// 수신 동의 설정 객체 생성
-ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 알림 메시지 수신 동의
-        .setAllowAdvertisements(true)       // 홍보성 알림 메시지 수신 동의
-        .setAllowNightAdvertisements(true)  // 야간 홍보성 아림 메시지 수신 동의
+// Create a receiving agreement setting object
+ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // Agree to receive notification messages
+        .setAllowAdvertisements(true)       // Agree to receive advertising notification messages
+        .setAllowNightAdvertisements(true)  // Agree to receive nigh-time advertising notification messages
         .build();
 
-// 토큰 등록 및 수신 동의 설정
+// Register a token and set receiving agreement
 ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
     @Override
     public void onRegister(@NonNull PushResult result,
                            @Nullable String token) {
 
         if (result.isSuccess()) {
-            // 토큰 등록 성공
+            // Token registration succeeded
         } else {
-            // 토큰 등록 실패
+            // Token registration failed
             int code = result.getCode();
             String message = result.getMessage();
         }
@@ -146,10 +146,10 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 });
 ```
 
-## 토큰 정보 조회
-* TOAST Push 서버에 등록된 토큰 정보를 조회합니다.
+## Token Information Query
+* Query the token information registered in the TOAST Push server.
 
-### 토큰 정보 조회 예시
+### Token information query example
 ```java
 ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
     @Override
@@ -157,11 +157,11 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
                         @Nullable TokenInfo tokenInfo) {
 
         if (result.isSuccess()) {
-            // 토큰 정보 조회 성공
+            // Token information query succeeded
             String token = tokenInfo.getToken();
             ToastPushAgreement agreement = tokenInfo.getAgreement();
         } else {
-            // 토큰 정보 조회 실패
+            // Token information query failed
             int code = result.getCode();
             String message = result.getMessage();
         }
@@ -169,14 +169,14 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 });
 ```
 
-## 토큰 해제
-* TOAST Push 서버에 등록된 토큰을 해제합니다. 해제된 토큰은 메시지 발송 대상에서 제외됩니다.
-* `서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해야 합니다.`
-* `토큰이 해제되어도 단말기 상에 알림 권한은 회수되지 않습니다.`
+## Token Unregistration
+* Unregister the token registered in the TOAST Push server. Unregistered tokens are excluded from targets for sending messages.
+* `If you do not want to receive messages after the service logout, you must unregister the token.`
+* `Even if the token is unregistered, the notification permission on the device is not revoked.`
 
-> 이미 해제된 토큰을 해제하면 "이미 해제된 토큰입니다(Already a token has been unregistered)" 라는 메시지와 함께 성공이 반환됩니다.
+> Unregistering a token that has already been unregistered returns success with the message "Already a token has been unregistered".
 
-### 토큰 해제 예시
+### Token unregistration example
 ```java
 ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
     @Override
@@ -184,9 +184,9 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
                              @Nullable String unregisteredToken) {
 
         if (result.isSuccess()) {
-            // 토큰 해제 성공시
+            // Token unregistration succeeded
         } else {
-            // 토큰 해제 실패시
+            // Token unregistration failed
             int code = result.getCode();
             String message = result.getMessage();
         }
@@ -194,16 +194,16 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 });
 ```
 
-## 메시지 수신
-* Push 메시지 수신 시 OnReceiveMessageListener 를 통해 통지 받을 수 있습니다.
-* Push 메시지 수신 리스너는 ToastPush.setOnReceiveMessageListener 함수를 사용하여 등록할 수 있습니다.
-* OnReceiveMessageListener 에 전달된 [ToastPushMessage](./push-android/#toastpushmessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
-* 앱이 실행 중이지 않을 때도 메시지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
+## Message Reception
+* You can be notified via OnReceiveMessageListener when a push message is received.
+* A listener for push message reception can be registered using the ToastPush.setOnReceiveMessageListener function.
+* You can check message information through the [ToastPushMessage](./push-android/#toastpushmessage) object passed to OnReceiveMessageListener .
+* To be notified of message reception even when the app is not running, you need to register the listener in `Application#onCreate`.
 
-> 메시지 수신 시 사용자가 앱을 사용 중(Foreground)일 경우 알림을 노출하지 않습니다.
-> Foreground 여부는 OnReceiveMessageListener#onReceive 에 전달되는 isForeground 를 통해 확인 할 수 있습니다.
+> When receiving a message, a notification is not exposed if the user is using the app (Foreground).
+> Foreground status can be checked by isForeground passed to OnReceiveMessageListener#onReceive.
 
-### 메시지 수신 리스너 등록 예시
+### Example of registering a message reception listener
 ``` java
 public class MyApplication extends Application {
     @Override
@@ -215,7 +215,7 @@ public class MyApplication extends Application {
             public void onReceive(@NonNull ToastPushMessage message,
                                   boolean isForeground) {
 
-                // 사용자가 앱을 사용 중 일 때에도 알림을 노출
+                // Expose a notification even when the user is using the app
                 if (isForeground) {
                     ToastNotification.notify(getApplicationContext(), message);
                 }
@@ -227,12 +227,12 @@ public class MyApplication extends Application {
 }
 ```
 
-## 알림 클릭
-* 사용자가 노출된 알림을 클릭하여 앱이 실행되었을 때 OnClickListener 를 통해 통지 받울 수 있습니다.
-* 알림 클릭 리스너는 ToastNotification.setOnClickListener 함수를 사용하여 등록할 수 있습니다.
-* 앱이 실행 중이지 않을 때도 알림 클릭 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
+## Notification Click
+* You can be notified via OnClickListener when the app is launched after the user clicks on the exposed notification.
+* A listener for notification click can be registered using the ToastNotification.setOnClickListener function.
+* To receive notification click notifications even when the app is not running, you need to register the listener in `Application#onCreate`.
 
-### 알림 클릭 리스너 등록 예시
+### Example of notification click listener registration
 ```java
 public class MyApplication extends Application {
     @Override
@@ -242,7 +242,7 @@ public class MyApplication extends Application {
         ToastNotification.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(@NonNull ToastPushMessage message) {
-                // 메시지 내용을 기반으로 페이지 이동 등의 서비스 로직 수행이 가능합니다.
+                // Service logic such as page move can be performed based on the message content.
                 Map<String, String> extras = message.getExtras();
             }
         });
@@ -252,18 +252,18 @@ public class MyApplication extends Application {
 }
 ```
 
-## 알림 설정
+## Notification Settings
 
-### 기본 알림 채널명 설정
-* 알림 채널명은 안드로이드 8.0(API 레벨 26) 이상 단말기의 알림 설정에 노출되는 채널의 이름입니다.
-* 알림에 별도의 채널을 설정하지 않았으면 기본 알림 채널로 알림이 요청됩니다.
-* 알림 기본 옵션 설정시 적용을 위해 기본 알림 채널이 새로 생성됩니다.
-* `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
+### Default Notification Channel Name Setting
+* The notification channel name is the name of the channel exposed in the notification settings in devices running on Android 8.0 (API level 26) or higher.
+* If you do not set a separate channel for notifications, notifications are requested through the default notification channel.
+* A new default notification channel is created to be applied when setting notification default options.
+* It can be registered in `Application#onCreate` or defined as metadata in the AndroidManifest.xml file.
 
-> 기본 알림 채널명을 설정하지 않으면 어플리케이션의 이름으로 자동 설정됩니다.
+> If you do not set the default notification channel name, it is automatically set as the name of the application.
 
-#### 기본 알림 채널명 설정 예시
-##### 코드에서 설정 예시
+#### Example of setting the default notification channel name
+##### Example of setting in code
 ```java
 public class MyApplication extends Application {
     @Override
@@ -277,23 +277,23 @@ public class MyApplication extends Application {
 }
 ```
 
-##### AndroidManifest.xml 메타 데이터로 정의 예시
+##### Example of defining as the AndroidManifest.xml metadata
 ```xml
-<!-- 기본 채널의 이름 설정 -->
+<!-- Set the default channel name -->
 <meta-data android:name="com.toast.sdk.push.notification.default_channel_name"
            android:value="@string/default_notification_channel_name"/>
 ```
 
-### 알림 기본 옵션 설정
-* 알림의 우선 순위, 작은 아이콘, 배경색, LED 라이트, 진동, 알림음을 설정합니다.
-* 앱이 포그라운드 상태일 때의 알림 노출 여부를 설정합니다.
-* 배지 아이콘의 사용 여부를 설정합니다.
-* 안드로이드 8.0(API 레벨 26) 이상 단말기에서는 기본 알림 채널에만 옵션이 적용 됩니다.
-* `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
+### Notification Preferences Setting
+* Set the priority of notifications, small icon, background color, LED light, vibration, and sound.
+* Set whether to display notifications when the app is in the foreground state.
+* Set whether to use the badge icon.
+* In devices running on Android 8.0 (API level 26) or higher, the option is applied only to the default notification channel.
+* It can be registered in `Application#onCreate` or defined as metadata in the AndroidManifest.xml file.
 
-#### 알림 기본 옵션 설정 예시
-##### 코드에서 설정 예시
-**전체 알림 옵션을 변경할 경우**
+#### Example of setting notification default options
+##### Example of setting in code
+**If you change all notification options**
 ```java
 public class MyApplication extends Application {
     @Override
@@ -301,14 +301,14 @@ public class MyApplication extends Application {
         // ...
 
         ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder()
-                .setPriority(NotificationCompat.PRIORITY_HIGH)  // 알림 우선 순위 설정
-                .setColor(0x0085AA)                             // 알림 배경색 설정
-                .setLights(Color.RED, 0, 300)                   // LED 라이트 설정
-                .setSmallIcon(R.drawable.ic_notification)       // 작은 아이콘 설정
-                .setSound(context, R.raw.dingdong1)             // 알림음 설정
-                .setVibratePattern(new long[] {500, 700, 1000}) // 진동 패턴 설정
-                .enableForeground(true)                         // 포그라운드 알림 노출 설정
-                .enableBadge(true)                              // 배지 아이콘 사용 설정
+                .setPriority(NotificationCompat.PRIORITY_HIGH)  // Set notification priority
+                .setColor(0x0085AA)                             // Set notification background color
+                .setLights(Color.RED, 0, 300)                   // Set LED light
+                .setSmallIcon(R.drawable.ic_notification)       // Set small icon
+                .setSound(context, R.raw.dingdong1)             // Set notification sound
+                .setVibratePattern(new long[] {500, 700, 1000}) // Set vibration pattern
+                .enableForeground(true)                         // Set foreground notification exposure
+                .enableBadge(true)                              // Set badge icon use
                 .build();
 
         ToastNotification.setDefaultOptions(context, defaultOptions);
@@ -318,19 +318,19 @@ public class MyApplication extends Application {
 }
 ```
 
-**설정된 알림 옵션 중 일부만 변경할 경우**
+**If you change only some of the configured notification options**
 ```java
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
         // ...
 
-        // 설정된 기본 알림 옵션 획득
+        // Get the configured default notification options
         ToastNotificationOptions defaultOptions = ToastNotification.getDefaultOptions(context);
 
-        // 알림 옵션 객체로부터 빌더 생성
+        // Create a builder from the notification options object
         ToastNotificationOptions newDefaultOptions = defaultOptions.buildUpon()
-                .enableForeground(true)      // 포그라운드 알림 노출 여부 설정만 변경
+                .enableForeground(true)      // Change only the foreground notification exposure status
                 .build();
 
         ToastNotification.setDefaultOptions(context, newDefaultOptions);
@@ -340,87 +340,87 @@ public class MyApplication extends Application {
 }
 ```
 
-##### AndroidManifest.xml 메타 데이터로 정의 예시
+##### Example of defining as the AndroidManifest.xml metadata
 ```xml
-<!-- 알림 우선 순위 -->
+<!-- Notification priority -->
 <meta-data android:name="com.toast.sdk.push.notification.default_priority"
            android:value="1"/>
-<!-- 알림 배경색 -->
+<!-- Notification background color -->
 <meta-data android:name="com.toast.sdk.push.notification.default_background_color"
            android:resource="@color/defaultNotificationColor"/>
-<!-- LED 라이트 -->
+<!-- LED light -->
 <meta-data android:name="com.toast.sdk.push.notification.default_light_color"
            android:value="#0000ff"/>
 <meta-data android:name="com.toast.sdk.push.notification.default_light_on_ms"
            android:value="0"/>
 <meta-data android:name="com.toast.sdk.push.notification.default_light_off_ms"
            android:value="500"/>
-<!-- 작은 아이콘 -->
+<!-- Small icon -->
 <meta-data android:name="com.toast.sdk.push.notification.default_small_icon"
            android:resource="@drawable/ic_notification"/>
-<!-- 알림음 -->
+<!-- Notification sound -->
 <meta-data android:name="com.toast.sdk.push.notification.default_sound"
            android:value="notification_sound"/>
-<!-- 진동 패턴 -->
+<!-- Vibration pattern -->
 <meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern"
            android:resource="@array/default_vibrate_pattern"/>
-<!-- 배지 아이콘 사용 -->
+<!-- Badge icon use -->
 <meta-data android:name="com.toast.sdk.push.notification.badge_enabled"
            android:value="true"/>
-<!-- 앱 실행 중 알림 노출 -->
+<!-- Notification exposure while the app is running -->
 <meta-data android:name="com.toast.sdk.push.notification.foreground_enabled"
            android:value="false"/>
 ```
 
-### 알림음 설정
-* Push 메시지 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림음으로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
-* 알림음은 어플리케이션 리소스 폴더 하위의 raw 폴더에 있는 로컬 리소스만 사용 가능합니다.
-    * 예) main/res/raw/notification_sound.wav
+### Notification Sound Setting
+* If you add a sound field when sending a push message, you can set a local resource (mp3, wav) as a notification sound. (Only works in versions below Android 8.0)
+* For notification sound, only the local resources in the raw folder under the application resource folder can be used.
+    * Example: main/res/raw/notification_sound.wav
 
-## 리치 메시지
+## Rich Message
 
-* 리치 메시지는 알림의 제목, 본문과 함께 이미지를 알림에 표현하고 버튼, 답장 등의 액션을 추가합니다.
+* Rich messages represent an image in the notification, along with the notification's subject and body, and add actions such as buttons and replies.
 
-### 지원하는 리치 메시지
+### Supported Rich Messages
 
-#### 버튼
-| 유형 | 기능 | 액션 |
+#### Button
+| Type | Feature | Action |
 | --- | ------- | --- |
-| 앱 열기 (OPEN_APP) | 어플리케이션 실행 | PushAction.ActionType.OPEN_APP |
-| URL 열기 (OPEN_URL) | URL로 이동<br/>(웹 URL 주소 혹은 앱 커스텀 스킴 실행) | PushAction.ActionType.OPEN_URL |
-| 답장 (REPLY) | 알림에서 답장 전송 | PushAction.ActionType.REPLY |
-| 취소 (DISMISS) | 현재 알림 취소 | PushAction.ActionType.DISMISS |
+| Open App (OPEN_APP) | Run the application | PushAction.ActionType.OPEN_APP |
+| Open URL (OPEN_URL) | Go to URL <br/> (run Web URL address or app's custom scheme) | PushAction.ActionType.OPEN_URL |
+| Reply (REPLY) | Send a reply from notification | PushAction.ActionType.REPLY |
+| Cancel (DISMISS) | Cancel current notification | PushAction.ActionType.DISMISS |
 
-* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상부터 사용 가능합니다.
+* The REPLY button is available in Android 7.0 (API level 24) or higher.
 
-> 버튼은 메시지당 최대 3개까지 지원합니다.
+> Up to 3 buttons per message are supported.
 
-#### 미디어
-* 어플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
-* 이미지 외의 동영상, 소리 등의 미디어는 지원하지 않습니다.
-* 이미지는 가로와 세로 비율이 2:1인 이미지를 권장합니다.
+#### Media
+* You can specify a file by resource ID in the app, Android Assets file path, or URL.
+* Media other than images, such as video and sound, is not supported.
+* For image, an image with an aspect ratio of 2:1 is recommended.
     * Small : 512 x 256
     * Medium : 1024 x 512
     * Large : 2048 x 1024
 
-> 웹 URL 사용시 미디어 파일 다운로드 시간이 소요됩니다.
+> It takes time to download media files when using a web URL.
 
-#### 큰 아이콘
-* 어플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
-* 큰 아이콘의 이미지는 1:1 비율을 권장합니다.
+#### Large Icon
+* You can specify a file by resource ID in the app, Android Assets file path, or URL.
+* For images of large icons, a 1:1 ratio is recommended.
 
-> 사용된 이미지가 1:1 비율이 아닌 경우 강제로 1:1로 변경되기 때문에 기대와 다른 이미지가 노출될 수 있습니다.
+> If the image used is not 1:1 ratio, the image may be displayed differently from what you expect because it is forcibly changed to 1:1.
 
-#### 그룹
-* 동일한 그룹키를 갖는 알림들이 그룹핑되어 표현됩니다.
-* 안드로이드 7.0(API 레벨 24) 이상부터 사용 가능합니다.
+#### Group
+* Notifications with the same group key are grouped and displayed.
+* This feature is available in Android 7.0 (API level 24) or higher.
 
-### 알림 액션 리스너 등록
-* 사용자가 알림의 버튼 혹은 답장 전송 버튼 클릭시 알림 액션 리스너로 통지합니다.
-* [PushAction](./push-android/#pushaction) 객체로 액션 정보를 확인 가능합니다.
-* 앱이 실행중이지 않을 때에도 메세지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
+### Register notification action listener
+* Notifies the notification action listener when the user clicks the button in the notification or the send reply button.
+* You can check the action information with the [PushAction](./push-android/#pushaction) object.
+* To be notified of receiving messages even when the app is not running, you must register in `Application#onCreate`.
 
-#### 알림 액션 리스너 등록 예시
+#### Example of notification action listener registration
 
 ``` java
 public class MyApplication extends Application {
@@ -431,11 +431,11 @@ public class MyApplication extends Application {
         ToastNotification.setOnActionListener(new OnActionListener() {
             @Override
             public void onAction(@NonNull PushAction action) {
-                // 답장 액션일 경우, 서비스 서버로 해당 내용을 전송
+                // In case of Reply action, send the content to a service server
                 if (action.getActionType() == PushAction.ActionType.REPLY) {
-                    // 사용자가 입력한 답장 내용 획득
+                    // Get the reply content that the user entered
                     String userText = action.getUserText();
-                    // 서비스 서버로 사용자 입력 내용 전송
+                    // Send the user input content to a service server
                 }
             }
         });
@@ -445,32 +445,32 @@ public class MyApplication extends Application {
 }
 ```
 
-## 사용자 정의 메시지 처리
-* 메시지 수신 후 별도의 처리 과정을 수행하거나 수신한 메시지의 내용을 수정해 알림을 노출해야하는 경우 [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속 구현하는 브로드캐스트를 구현해야 합니다.
-* ToastPushMessageReceiver를 상속 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
-* 메시지 수신시 onMessageReceived 함수로 수신된 메시지가 전달됩니다.
+## User-defined Message Handling
+* If you need to perform a separate processing after receiving a message or expose a notification by modifying the content of the received message, you must implement a broadcast that inherits and implements [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver).
+* The broadcast that inherits and implements ToastPushMessageReceiver must also be registered in AndroidManifest.xml.
+* When a message is received, the received message is sent to the onMessageReceived function.
 
-> **(주의)**
-> 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다.
-> 2. 알림을 직접 생성할 경우 Push 서비스 인텐트를 알림의 콘텐츠 인텐트로 설정해야만 지표 수집이 가능합니다. (아래 지표 수집 기능 추가 섹션 참고)
+> **(Caution)**
+> 1. If the onMessageReceived function does not request (notify) the notification after receiving the message, the notification is not exposed.
+> 2. If you create a notification manually, you must set the Push service intent as the notification's content intent in order to collect metrics. (See the Adding the Metric Collection Feature section below)
 
-### ToastPushMessagingService 구현 코드 예
+### Example of ToastPushMessagingService implementation code
 ```java
 public class MyPushMessageReceiver extends ToastPushMessageReceiver {
     @Override
     public void onMessageReceived(@NonNull Context context,
                                   @NonNull ToastRemoteMessage remoteMessage) {
 
-        // 채널 아이디 변경
+        // Change channel ID
         remoteMessage.setChannelId("channel");
 
-        // 메세지 내용 수정
+        // Modify message content
         ToastPushMessage message = remoteMessage.getMessage();
         CharSequence title = message.getTitle();
 
         message.setTitle("[Modified] " + title);
 
-        // 실행 인텐트 설정 (미설정시 패키지 기본 메인 액티비티 실행)
+        // Set the execution intent (If not set, package's default main activity is executed)
         Intent launchIntent = new Intent(context, MainActivity.class);
 
         PendingIntent contentIntent = PendingIntent.getActivity(
@@ -479,22 +479,22 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
                 launchIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        // 사용자가 앱을 사용중일때와 그렇지 않을때를 구분하여 알림을 노출하고 싶은 경우
+        // If you want to expose the notification based on whether the user is using the app or not
         if (!isAppForeground()) {
-            // 알림 생성 및 노출
+            // Create and expose the notification
             notify(context, remoteMessage, contentIntent);
 
         } else {
-            // 특정 UI 화면 노출
+            // Expose a specific UI screen
             Toast.makeText(context, message.title, Toast.LENGTH_SHORT).show();
         }
     }
 }
 ```
 
-### AndroidManifest.xml 등록 예
-> **(주의)**
-> ToastPushMessageReceiver를 사용하는 경우, 반드시 permission을 설정해야 합니다.
+### Example of registering in AndroidManifest.xml
+> **(Caution)**
+> When using ToastPushMessageReceiver, you must set permission.
 
 ```xml
 <manifest>
@@ -506,17 +506,17 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
             </intent-filter>
     </receiver>
 
-        <!-- 생략 -->
+        <!-- Omitted -->
     </application>
 
-    <!-- 생략 -->
+    <!-- Omitted -->
 </manifest>
 ```
 
-### 지표 수집 기능 추가 (FCM Only)
-* 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 getNotificationServiceIntent() 함수를 사용하여 생성한 인텐트를 알림의 콘텐츠 인텐트로 설정해야합니다.
+### Adding the Metric Collection Feature (FCM Only)
+* If you create a notification manually, you must set the intent you created using the getNotificationServiceIntent() function as the notification's content intent in order to use the metrics collection feature.
 
-#### 지표 수집 기능 추가 예
+#### Example of adding the metrics collection feature
 ```java
 public class MyPushMessageReceiver extends ToastPushMessageReceiver {
     @Override
@@ -525,7 +525,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
         ToastPushMessage message = remoteMessage.getMessage();
 
-        // 사용자 실행 인텐트 생성
+        // Create a user execution intent
         Intent launchIntent = new Intent(context, MainActivity.class);
 
         PendingIntent contentIntent = PendingIntent.getActivity(
@@ -534,11 +534,11 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
                 launchIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        // 지표 전송을 포함한 실행 인텐트 생성 기능 제공
+        // Provide an execution intent generation feature including the metrics collection
         PendingIntent serviceIntent = getNotificationServiceIntent(context, remoteMessage, contentIntent);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YOUR_CHANNE_ID");
-        // (중략)
+        // (Omitted)
         builder.setContentIntent(serviceIntent);
 
         notify(context, builder.build());
@@ -546,49 +546,49 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 }
 ```
 
-## Emoji 사용
-> **(주의)**
-> 기기에서 지원하지 않는 emoji를 사용한 경우, 표시되지 않을 수 있습니다.
+## Using Emoji
+> **(Caution)**
+> If an emoji that is not supported by the device is used, it may not be displayed.
 
-## 사용자 태그
+## User Tag
 
-* [사용자 태그](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
-* 태그명이 아닌 태그 아이디(8자리 문자열)를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
+* The [User Tag](https://https://docs.toast.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
+* It operates based on the tag ID (8-character string) rather than the tag name, and the tag ID can be created and checked in the Console > Tag menu.
 
-### 사용자 태그 수정
+### Modify User Tags
 
-#### 사용자 태그 수정 예
+#### Example of modifying user tags
 
-* 입력 받은 태그 아이디 목록을 추가 혹은 업데이트하고 최종 반영된 태그 아이디 목록을 반환합니다.
+* Adds or updates the inputted tag ID list and returns the resulting tag ID list.
 
 ```java
-// 추가할 태그 아이디 목록 생성
+// Create a tag ID list to add
 Set<String> tagIds = new HashSet<>();
-tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8자리 문자열)
+tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8-character string)
 tagIds.add(TAG_ID_2);
 
-// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 추가
+// Add the tag ID list of the logged-in user ID
 ToastPush.addUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
-            // 사용자 태그 아이디 추가 성공
+            // Adding the user tag ID succeeded
         } else {
-            // 사용자 태그 아이디 추가 실패
+            // Adding the user tag ID failed
             int errorCode = result.getCode();
             String errorMessage = result.getMessage();
         }
     }
 });
 
-// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 업데이트 (기존 태그 아이디 목록은 삭제되고 입력한 값으로 설정)
+// Update the tag ID list of the logged-in user ID (Existing tag ID list is deleted and set to the inputted value)
 ToastPush.setUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
-            // 사용자 태그 아이디 목록 업데이트 성공
+            // Updating the user tag ID list succeeded
         } else {
-            // 사용자 태그 아이디 목록 업데이트 실패
+            // Updating the user tag ID list failed
             int errorCode = result.getCode();
             String errorMessage = result.getMessage();
         }
@@ -596,21 +596,21 @@ ToastPush.setUserTag(tagIds, new UserTagCallback() {
 });
 ```
 
-### 사용자 태그 획득
+### Retrieve User Tags
 
-* 현재 사용자에 등록된 모든 태그 아이디 목록을 반환합니다.
+* Returns a list of all tag IDs registered to the current user.
 
-#### 사용자 태그 획득 예
+#### Example of retrieving user tags
 
 ```java
-// 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록을 반환
+// Return the whole tag ID list of the logged-in user ID
 ToastPush.getUserTag(new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
-            // 사용자 태그 아이디 목록 획득 성공
+            // Retrieving the user tag ID list succeeded
         } else {
-            // 사용자 태그 아이디 목록 획득 실패
+            // Retrieving the user tag ID list failed
             int errorCode = result.getCode();
             String errorMessage = result.getMessage();
         }
@@ -618,40 +618,40 @@ ToastPush.getUserTag(new UserTagCallback() {
 });
 ```
 
-### 사용자 태그 삭제
+### Delete user tag
 
-#### 사용자 태그 삭제 예
+#### Example of deleting user tags
 
-* 입력 받은 사용자 태그 아이디 목록을 삭제하고, 최종 반영된 태그 아이디 목록을 반환합니다.
+* Deletes the inputted user tag ID list and returns the resulting tag ID list.
 
 ```java
-// 삭제할 태그 아이디 목록 생성
+// Create a tag ID list to delete
 Set<String> tagIds = new HashSet<>();
-tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8자리 문자열)
+tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8-character string)
 tagIds.add(TAG_ID_2);
 
-// 로그인되어 있는 사용자 아이디의 태그 아이디 목록 삭제
+// Delete the tag ID list of the logged-in user ID
 ToastPush.removeUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
-            // 사용자 태그 아이디 목록 삭제 성공
+            // Deleting the user tag ID list succeeded
         } else {
-            // 사용자 태그 아이디 목록 삭제 실패
+            // Deleting the user tag ID list failed
             int errorCode = result.getCode();
             String errorMessage = result.getMessage();
         }
     }
 });
 
-// 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록 삭제
+// Delete the whole tag ID list of the logged-in user ID
 ToastPush.removeAllUserTag(new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
-            // 전체 사용자 태그 삭제 성공
+            // Deleting the whole user tag succeeded
         } else {
-            // 전체 사용자 태그 삭제 실패
+            // Deleting the whole user tag failed
             int errorCode = result.getCode();
             String errorMessage = result.getMessage();
         }
@@ -661,7 +661,7 @@ ToastPush.removeAllUserTag(new UserTagCallback() {
 
 ## TOAST Push Class Reference
 ### ToastPushConfiguration
-* TOAST Push를 초기화할 때 전달되는 Push 설정 정보입니다.
+* Push configuration that is passed when TOAST Push is initialized.
 
 ```java
 /* ToastPushConfiguration.java */
@@ -671,11 +671,11 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 
 | Method | Returns | |
 |---|---|---|
-| getAppKey | String | Push 서비스 앱 키를 반환합니다. |
-| static newBuilder | ToastPushConfiguration.Builder | ToastPushConfiguration 객체 생성을 위한 빌더를 생성합니다. |
+| getAppKey | String | Returns the Push service Appkey. |
+| static newBuilder | ToastPushConfiguration.Builder | Creates a builder to create a ToastPushConfiguration object. |
 
 ### PushResult
-* 비동기 API 호출시 콜백의 응답으로 반환되는 결과 객체입니다.
+* A result object returned in response to the callback when calling an asynchronous API.
 
 
 ```java
@@ -688,13 +688,13 @@ public boolean isFailure();
 
 | Method | Returns | |
 |---|---|---|
-| getCode | int | 결과 코드를 반환합니다. |
-| getMessage | int | 결과 메시지를 반환합니다. |
-| isSuccess | boolean | 성공 여부를 반환합니다. |
-| isFailure | boolean | 실패 여부를 반환합니다. |
+| getCode | int | Returns the result code. |
+| getMessage | int | Returns the result message. |
+| isSuccess | boolean | Returns whether or not it succeeded. |
+| isFailure | boolean | Returns whether or not it failed. |
 
 ### TokenInfo
-* 토큰 정보 조회 요청시 반환되는 토큰 정보 객체입니다.
+* Token information object returned when requesting a token information query.
 
 ```java
 /* TokenInfo.java */
@@ -710,17 +710,17 @@ public String getToken();
 
 | Method | Returns | |
 |---|---|---|
-| getPushType | String | Push 타입을 반환합니다. |
-| getAgreement | ToastPushAgreement | 알림/광고/야간 광고 등 동의 여부를 반환합니다. |
-| getTimeZone | String | 타임존을 반환합니다. |
-| getCountry | String | 국가 코드를 반환합니다. |
-| getLanguage | String | 언어 코드를 반환합니다. |
-| getUserId | String | 사용자 ID를 반환합니다. |
-| getActivatedDateTime | Date | 토큰의 최근 등록 일시를 반환합니다. |
-| getToken | String | 토큰을 반환합니다. |
+| getPushType | String | Returns a Push type. |
+| getAgreement | ToastPushAgreement | Returns whether to agree to notifications/advertising/night-time advertising, etc. |
+| getTimeZone | String | Returns the timezone. |
+| getCountry | String | Returns the country code. |
+| getLanguage | String | Returns the language code. |
+| getUserId | String | Returns the user ID. |
+| getActivatedDateTime | Date | Returns the date and time of the token's most recent registration. |
+| getToken | String | Returns a token. |
 
 ### ToastRemoteMessage
-* 메세지 수신 리스너, 커스텀 리시버에서 메세지 수신시 반환되는 객체 입니다.
+* An object returned when receiving a message from a message reception listener or a custom receiver.
 
 ``` java
 /* ToastRemoteMessage.java */
@@ -732,13 +732,13 @@ public String getSenderId();
 
 | Method | Returns | |
 |---|---|---|
-| getChannelId | String | 채널 ID를 반환합니다. |
-| setChannelId |  | 채널 ID를 설정합니다. |
-| getMessage | ToastPushMessage | 메세지 객체를 반환합니다. |
-| getSenderId | String | 발신자 ID를 반환합니다. (FCM Only) |
+| getChannelId | String | Returns the channel ID. |
+| setChannelId |  | Sets the channel ID. |
+| getMessage | ToastPushMessage | Returns a message object. |
+| getSenderId | String | Returns the sender ID. (FCM Only) |
 
 ### ToastPushMessage
-* 수신한 메세지 내용을 담는 객체 입니다.
+* An object containing the contents of the received message.
 
 ``` java
 /* ToastPushMessage.java */
@@ -754,18 +754,18 @@ public Map<String, String> getExtras();
 
 | Method | Returns | |
 |---|---|---|
-| getMessageId | String | 메시지 식별자를 반환합니다. |
-| getPusyType | String | PushType을 반환합니다. |
-| getTitle | String | 메세지 타이틀을 반환합니다. |
-| setTitle |  | 메세지 타이틀을 설정합니다. |
-| getBody | String | 메세지 내용을 반환합니다. |
-| setBody |  | 메세지 내용을 설정합니다. |
-| getRichMessage | RichMessage | 리치 메세지 정보를 반환합니다. |
-| getExtras |  | 수신된 메세지 전체를 반환합니다. |
+| getMessageId | String | Returns the message identifier. |
+| getPusyType | String | Returns the PushType. |
+| getTitle | String | Returns the message title. |
+| setTitle |  | Sets the message title. |
+| getBody | String | Returns the message content. |
+| setBody |  | Sets the message content. |
+| getRichMessage | RichMessage | Returns rich message information. |
+| getExtras |  | Returns all received messages. |
 
 
 ### PushAction
-* 알림 액션 수신시 반환되는 객체 입니다.
+* An object returned when notification action is received.
 
 ``` java
 /* PushAction.java */
@@ -778,14 +778,14 @@ public String getUserText();
 
 | Method | Returns | |
 |---|---|---|
-| getActionType | ActionType | ActionType을 반환합니다. |
-| getNotificationId | String | 액션이 실행된 알림의 ID을 반환합니다. |
-| getNotificationChannel | String | 액션이 실행된 알림의 채널을 반환합니다. |
-| getMessage | ToastPushMessage | 액션이 실행된 알림의 메세지 정보를 반환합니다. |
-| getUserText | RichMessage | 사용자가 입력한 문자열을 반환합니다. |
+| getActionType | ActionType | Returns the ActionType. |
+| getNotificationId | String | Returns the ID of the notification where the action was executed. |
+| getNotificationChannel | String | Returns the channel of the notification where the action was executed. |
+| getMessage | ToastPushMessage | Returns the message information of the notification where the action was executed. |
+| getUserText | RichMessage | Returns the string entered by the user. |
 
 ### ToastPushMessageReceiver
-* 메세지 내용 수정, 실행 인텐트 정의, 알림 직접 생성 등의 기능을 위해서는 사용자가 구현해야하는 객체 입니다.
+* An object that the user must implement for features such as modifying message content, defining execution intent, and generating notifications manually.
 
 ``` java
 /* ToastPushMessageReceiver.java */
@@ -798,14 +798,14 @@ public final PendingIntent getNotificationServiceIntent(Context context, ToastRe
 
 | Method | Returns | Parameters | |
 |---|---|---|---|
-| isAppForeground | boolean |  | 현재 앱을 사용중인지 여부를 반환합니다. |
-| notify | | Context, ToastRemoteMessage | 기본 실행 인텐트로 알림을 생성 및 노출합니다. |
-| notify | | Context, ToastRemoteMessage, PendingIntent | 사용자 실행 인텐트로 알림을 생성 및 노출합니다. |
-| notify | | Context, int, Notification | 사용자 알림을 특정 ID로 노출합니다. |
-| getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
+| isAppForeground | boolean |  | Returns whether the app is currently in use. |
+| notify | | Context, ToastRemoteMessage | Creates and exposes notifications with the default execution intents. |
+| notify | | Context, ToastRemoteMessage, PendingIntent | Creates and exposes notifications with a user execution intent. |
+| notify | | Context, int, Notification | Exposes user notifications with a specific ID. |
+| getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | Returns a user execution intent that includes sending metrics. |
 
 ### ToastNotificationOptions
-* 기본 알림 옵션 설정시 우선순위, 작은 아이콘, 배경색, LED, 진동, 알림음, 포그라운드 알림 노출 정보를 설정하는 객체입니다.
+* An object that sets priority, small icon, background color, LED, vibration, notification sound, and foreground notification exposure information when setting the default notification options.
 
 ``` java
 /* ToastNotificationOptions.java */
@@ -824,14 +824,14 @@ public Builder buildUpon();
 
 | Method | Returns | Parameters | |
 |---|---|---|---|
-| getPriority | int |  | 우선 순위를 반환합니다. |
-| getSmallIcon | int | | 작은 아이콘의 리소스 식별자를 반환합니다. |
-| getColor | int | | 배경색을 반환합니다. |
-| getLightColor | int | | LED 색을 반환합니다. |
-| getLightOnMs | int | | LED 불이 들어올 때의 시간을 반환합니다. |
-| getLightOffMs | int | | LED 불이 나갈 때의 시간을 반환합니다. |
-| getVibratePattern | long[] | | 진동의 패턴을 반환합니다. |
-| getSound | Uri | | 알림음의 Uri 를 반환합니다. |
-| isForegroundEnabled | boolean | | 포그라운드 알림 사용 여부를 반환합니다. |
-| isBadgeEnabled | boolean | | 배지 아이콘 사용 여부를 반환합니다. |
-| buildUpon | ToastNotificationOptions#Builder | | 현재 옵션 정보를 기반으로 빌더를 반환합니다. |
+| getPriority | int |  | Returns the priority. |
+| getSmallIcon | int | | Returns the resource identifier for the small icon. |
+| getColor | int | | Returns the background color. |
+| getLightColor | int | | Returns the LED color. |
+| getLightOnMs | int | | Returns the time when the LED light is turned on. |
+| getLightOffMs | int | | Returns the time when the LED light is turned off. |
+| getVibratePattern | long[] | | Returns the pattern of vibrations. |
+| getSound | Uri | | Returns the URI of the notification sound. |
+| isForegroundEnabled | boolean | | Returns whether or not to use foreground notifications. |
+| isBadgeEnabled | boolean | | Returns whether or not to use the badge icon. |
+| buildUpon | ToastNotificationOptions#Builder | | Returns a builder based on the current option information. |

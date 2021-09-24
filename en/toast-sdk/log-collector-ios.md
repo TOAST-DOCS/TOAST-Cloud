@@ -1,4 +1,4 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > iOS
+## TOAST > TOAST SDK User Guide > TOAST Log & Crash > iOS
 
 > [Notice]
 > From TOAST SDK 0.13.0, it is possible to analyze and analyze crashes from devices using arm64e architecture (iPhone XS, XR, XS Max, iPad Pros 3rd).
@@ -22,7 +22,7 @@
 
 ### 1. Apply Cococapods
 
-* Create a podfile to add pods to TOAST SDK.
+* Create a Podfile to add a pod for TOAST SDK.
 
 ```podspec
 platform :ios, '9.0'
@@ -53,31 +53,31 @@ end
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode.
 
-## TOAST Symbol Uploader 적용
+## Apply TOAST Symbol Uploader
 
-### 프로젝트의 디버그 설정 변경
-* 빌드 설정을 변경하여 프로젝트의 디버그 정보 형식을 변경해야합니다.
+### Change Project Debug Settings
+* You must change build settings to change the debug information format of the project.
 * Xcode -> Project Target -> Build Settings -> Debug Information Format -> Debug -> DWARF with dSYM File
 
-### 개발 환경에서 Run Script를 사용하여 자동 업로드
+### Upload Automatically Using Run Script in Development Environment
 
 * Xcode -> Project Target -> Build Phases -> + -> New Run Script Phase
-* 표시되는 새 Run Script 섹션을 펼칩니다.
-* Shell(셸) 필드 아래에 있는 스크립트 필드에서 새 실행 스크립트를 추가합니다.
+* Expand the new Run Script section that shows up.
+* In the script field below the Shell field, add a new run script.
 ```
 if [ "${CONFIGURATION}" = "Debug" ]; then
     ${PODS_ROOT}/ToastSymbolUploader/toastcloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
-* LOG_N_CRASH_SEARCH_APPKEY에는 Log&Crash Search의 AppKey를 입력해야합니다.
-* Run Script 섹션 하단의 Input Files에 dSYM의 기본 경로를 설정합니다.
+* In LOG_N_CRASH_SEARCH_APPKEY, enter AppKey of Log & Crash Search.
+* On Input Files under the Run Script section, set the default path of dSYM.
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
 ![symbol_uploader_script_pods_path](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path.png)
 
-### Symbol Uploader를 사용하여 직접 업로드
+### Upload Manually Using Symbol Uploader
 
-* SymbolUploader 사용법
+* SymbolUploader Usage
 
 ```
 USAGE: symbol-uploader -ak <ak> -pv <pv> [-sz <sz>] <path> [--verbose]
@@ -86,7 +86,7 @@ ARGUMENTS:
   <path>                  dSYM file path is must be entered.
 
 OPTIONS:
-  -ak, --app-key <ak>     [Log&Crash Search]'s AppKey must be entered.
+  -ak, --app-key <ak>     [Log & Crash Search]'s AppKey must be entered.
   -pv, --project-version <pv>
                           Project version must be entered.
   -sz, --service-zone <sz>
@@ -96,16 +96,16 @@ OPTIONS:
 
 ```
 
-* Xcode의 Run Script를 사용하지 않고 사용자가 원하는 시점에 아래와 같은 방법으로 SymbolUploader를 사용하여 직접 Symbol을 업로드 할 수 있습니다.
+* Without using Xcode's Run Script, you can upload symbols manually using SymbolUploader in the following way at any time you want.
 
 ```
 ./SymbolUploader --app-key {APP_KEY} --project-version {CFBundleShortVersionString || MARKETING_VERSION} {symbol path(~/Project.dSYM)}
 ```
 
-> `동일한 버전의 Symbol이 이미 업로드되어 있는 경우 SymbolUploader는 업로드되어 있는 Symbol을 제거하고 업로드를 수행합니다.`
-> 이때 두 Symbol 파일의 `파일명이 다를 경우 업로드되어 있던 Symbol은 제거되지 않습니다.`
-> Log & Crash Search 콘솔에서 업로드되어 있는 Symbol을 제거해야 합니다.
-> https://console.toast.com/-> 조직 선택 -> 프로젝트 선택 -> Anaytics -> Log & Crash Search -> 설정 -> 심벌 파일
+> `If a symbol with the same version has already been uploaded, SymbolUploader removes the uploaded symbol and performs uploading.`
+> At this time, if the filenames of the two symbol files are different, the uploaded symbol will not be removed.
+> You need to remove the uploaded symbol from the Log & Crash Search console.
+> https://console.toast.com/-> Select Organization -> Select Project -> Anaytics -> Log & Crash Search -> Settings -> Symbol Files
 
 ### Precautions when using CrashReport
 
@@ -114,9 +114,9 @@ OPTIONS:
 
 ## Initialize TOAST Logger SDK
 
-* Set appkey issued from Log & Crash Search.
+* Set Appkey issued from Log & Crash Search.
 
-### Specifications for Initialization API
+### Specification for Initialization API
 
 ``` objc
 // Initialize
@@ -134,7 +134,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 * TOAST Logger provides log-sending functions of five levels.
 
-### Specifications for Log Sending API
+### Specification for Log Sending API
 
 ```objc
 // DEBUG level log
@@ -164,12 +164,13 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 * Set a user-defined field as wanted.
 * With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called.
 
-### Specifications for User-defined Field Setting API
+### Specification for User-defined Field Setting API
 
 ```objc
 // Add User-Defined Field
 + (void)setUserFieldWithValue:(NSString *)value forKey:(NSString *)key;
 ```
+
 * User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab".
 
 #### Restrictions for User-Defined Fields
@@ -177,6 +178,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 * Cannot use already [Reserved Fields](./log-collector-reserved-fields).
 * Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z".
 * Replace spaces within a field name by "_".
+
 
 ### Usage Example of User-Defined Fields
 ```objc
@@ -189,13 +191,12 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 * It is enabled along with TOAST Logger initialization, by setting.
 * To send crash logs, PLCrashReporter is applied.
 
-### Set Enable CrashReporter
-
-* It is enabled by setting, along with TOAST Logger initialization.
-* TOAST Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
+### Set Whether to Enable CrashReporter
+* By default, CrashReporter is enabled when TOAST Logger is initialized.
+* During TOAST Logger initialization, you can set whether to use CrashReporter or not.
 * In order not to send crash logs, CrashReporter must be disabled.
 
-> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log&Crash Search console.
+> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log & Crash Search console.
 > User ID setting can be checked in [Getting Started](./getting-started-ios/#set-userid).
 
 #### Enable CrashReporter
@@ -221,7 +222,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 * Additional information can be set immediately after crash occurs.
 * With user-defined field setting for Block at setShouldReportCrashHandler, additional information can be configured precisely when a crash occurs
 
-### Specifications for Data Adapter API
+### Specification for Data Adapter API
 ```objc
 + (void)setShouldReportCrashHandler:(void (^)(void))handler;
 ```
@@ -242,13 +243,13 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 * With delegate registered, further tasks can be executed after logs are sent.
 
-### Specifications for Set Delegate API
 
+### Specification for Set Delegate API
 ```objc
 + (void)setDelegate:(id<ToastLoggerDelegate>) delegate;
 ```
 
-### Specifications for Delegate API
+### Specification for Delegate API
 
 ``` objc
 @protocol ToastLoggerDelegate <NSObject>
@@ -320,7 +321,6 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ```
 
 ## Network Insights
-
 * Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device).
 
 > With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized.
@@ -338,4 +338,3 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 2. Select [Network Insights].
 3. Click the [URL Setting] tab.
 4. Enter URL to measure and click [Add].
-
