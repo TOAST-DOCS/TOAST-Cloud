@@ -280,7 +280,7 @@
 
 * Changed the default settings of notification options
     * Changed to not display notifications while the app is running
-        * For the same behavior as before, check [here] (./push-ios/#_6).
+        * For the same behavior as before, check [here](./push-ios/#_6).
 
 ## 0.14.1 (2019.05.16)
 

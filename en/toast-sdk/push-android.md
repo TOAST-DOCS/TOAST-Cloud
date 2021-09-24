@@ -32,7 +32,7 @@ dependencies {
 
 ### Add projects and apps
 
-* Create a project in [Firebase console] (https://console.firebase.google.com/?hl=en).
+* Create a project in [Firebase console](https://console.firebase.google.com/?hl=en).
 * Go to **Project Settings** by clicking the gear button at the top of the console.
 * Under **My Apps** in Project Settings, click **Add Firebase to Android App**.
 * Enter **Android Package Name**, **App Nickname (optional)** and click the **Register App** button.
@@ -118,7 +118,7 @@ public void onLogin(String userId) {
 ### Consent Setting
 * In accordance with the provisions of the Information and Communications Network Act (Articles 50 through 50-8), when registering a token, whether or not to receive notification/advertising/night-time advertising push messages must also be inputted. When sending a message, it is automatically filtered based on whether or not the user agreed to receive it.
     * [Shortcut to KISA Guide](https://spam.kisa.or.kr/spam/sub62.do)
-    * [Shortcut to the law] (http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+    * [Shortcut to the law](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * Set whether or not the user agreed to receive the push in ToastPushAgreementIt and send it to the TOAST Push server when registering tokens.
 
 ### Example of token registration and agreement setting

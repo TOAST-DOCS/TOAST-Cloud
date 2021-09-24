@@ -7,7 +7,7 @@
 3. Check your AppKey in Push.
 
 ## APNS Guide
-* [APNS Guide] (https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
+* [APNS Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
 
 ## TOAST Push Components
 
@@ -219,7 +219,7 @@ options.soundEnabled = YES;         // Set the use of notification sound (defaul
 
 * In accordance with the provisions of the Information and Communications Network Act (Articles 50 through 50-8), when registering a token, whether or not to receive notification/advertising/night-time advertising push messages must also be inputted. When sending a message, it is automatically filtered based on whether or not the user agreed to receive it.
     * [Shortcut to KISA Guide](https://spam.kisa.or.kr/spam/sub62.do)
-    * [Shortcut to the law] (http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+    * [Shortcut to the law](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * Set user notification message agreement information in the [ToastPushAgreement](./push-ios/#toastpushagreement) object.
 
 ### Specification for token registration and agreement setting API
@@ -435,7 +435,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 
 ### Notification Service Extension Setting
 
-* Add the extension's [Project Settings] (./push-ios/#project-settings) in the same way as the app's project settings.
+* Add the extension's [Project Settings](./push-ios/#project-settings) in the same way as the app's project settings.
 * `The extension for iOS is installed along with the app, but they do not share a container because it is on a separate sandbox environment which is separate from the app.'
 
 ### Notification Service Extension Setting Example
