@@ -1,39 +1,55 @@
 ## NHN Cloud > Console User Guide
 
-The console serves as management tool and window for the use of NHN Cloud services.
-Basic console settings and its user guide are provided as below to use NHN Cloud Service.
+NHN Cloud console serves as a management tool and task window for using NHN Cloud services.
+This document guides you through the basic setup and use of the NHN Cloud console.
 
-NHN Cloud Console provides the following functions:
+NHN Cloud console provides the following features:
 
-- Basic information management to use the service (e.g. organizations, or projects)
-- Enable/Disable Service
-- Manage members who use the service
-- Provide payment information
+- Manage basic information to use services (organization, project)
+- Enable/disable services
+- Manage members who use services
+- Provide billing information
 
-## Console Quick Guide
+<!-- Video guide is not provided in the translated document -->
+<!-- Dummy comment for a video link -->
+
+## Quick Guide
+This is a quick guide to the basic features provided by the console.
+
 ![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202109_en.png)
 ![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202109_en.png)
 
 
 ## Organization Management
 
-Organization refers to a group which is made to efficiently use and manage NHN Cloud Service.
-In an organization, same service policy can be shared with users.
-It helps to make use of NHN Cloud Service more efficiently.  
+An organization is a group that is created to use and manage NHN Cloud services efficiently.
+In an organization, users can share and use the same service policy.
 
-### Create Organizations
+### Create an Organization
 
-- An organization should be created to use NHN Cloud Service.
+- To use NHN Cloud services, an organization must be created.
 - Both personal and business members can create organizations.
-- Any member who creates an organization automatically becomes the OWNER of his organization.
-- Member’s payment method is required to create an organization.
-- Organization is in charge of its name and domain information.
-- Domain information of an organization must be unique, as it is required for services.
+- A member who creates an organization automatically becomes the OWNER of the organization.
+- To create an organization, a member's payment method must be registered.
+- An organization manages organization name and domain information.
+- Domain information of an organization must be unique, because it is required for use by services.
+
+### Guide to Creating an Organization
+
+![console_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202109_en.png)
+![console_guide_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202109_en.png)
+
+1. Go to the console and click the **+** button next to **Create an Organization** in the top menu.
+2. In the **Create Organization** window, enter a name for your organization. The organization name can include Korean letters, English letters, special characters, and numbers.
+3. Click the **OK** button to complete the organization creation.
+4. The created organization name is displayed in the top menu of the console.
+5. Click the **Settings** button to check information of the created organization. Enter your domain information as additional information for your organization. The domain must be set as a unique value in NHN Cloud.
+
 
 ### Organization Services
 
-After an organization is created, you can select services.
-Following services are available at the level of organization:
+Once the organization is created, you can select services.
+Services that can be enabled for each organization include the following:
 
 - Dooray!
 - ERP
@@ -42,44 +58,133 @@ Following services are available at the level of organization:
 - IDC
 - CloudTrail
 
-### Guide to Create Organizations
-
-![console_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202109.png)
-![console_guide_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202109.png)
 
 
-1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
-2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
-3. Click **OK** and organization is completely created.
-4. You can find the organization name just created on top of the console menu
-5. Click **Setting** to check information of the created organization. Enter domain information as additional information of the organization: domain must be unique in NHN Cloud.
+### Delete an Organization
 
+- An organization can be deleted only by the OWNER of the organization.
+- To delete an organization, all the services being used must be deleted.
+- When an organization is deleted, all information of the organization is deleted and cannot be restored.
 
-### Delete Organizations
+### Organization Governance Setting
 
-- Only the OWNER can delete his organization.
-- All the services currently in use must be deleted first.
-- All information of an organization is to be deleted, along with the deletion of organization, and cannot be recovered.  
+Set up a common organization policy for security compliance such as login and personal information, so that the members within the organization can comply with the policy.
 
+#### IP ACL Setting
+When IP ACL is set, the console can be accessed from the allowed IPs (or IP range) only.
+For Dooray! services, IP ACL can be set on the service's console screen.
+![console_guide_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202109_en.png)
 
-## Manage Projects
+1. Go to the console and access the Organization Management page of the organization you want to set up.
+2. Select Governance Setting from the submenu.
+3. You can set and manage IP ACL under **Set IP ACL** in the Organization Governance Setting.
+    * Service setting
+        * Common Settings: IP ACL can be set globally for all services.
+        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Online Contact Workplace | Dooray!, etc.).
+    * IP ACL
+        * Not Configured: The console can be accessed from any IPs (or IP range).
+        * Console Access Only from Allowed IPs (or IP range): The console can be accessed only from the IPs (or IP range) you entered. Enter the IP or IP range to allow access.
 
-A project is created to use NHN Cloud Service, after an organization is created.
-Enable project services to use a project.
-Use and charge services by the project.
+### IAM Governance Setting
 
-### Create Projects
+#### Login Security Setting
 
-- To create a project, an organization is required.
-- A member who creates a project is entitled ADMIN of the project.
-- Enter the name and description to create a project.
-- Enable project services after a project is created.
-- When collaboration is required, add project members to share the project after it is created.
+* To strengthen the console access security of IAM members, **Login Security Setting** feature is provided.
+* You can set it globally for all organization services (Console, Online Contact, Dooray!, etc.), or set it differently for each service.
+![console_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109_en.png)
+
+1. Go to the console and access the Organization Management page of the organization you want to set up.
+2. Select Governance Setting from the submenu.
+3. You can set and manage login security setting in IAM Governance Setting.
+
+#### Two-factor Authentication
+
+You can enable two-factor authentication by setting it as a required feature.
+
+* Service setting
+    * Common Settings: Set the two-factor authentication globally for all organization services.
+    * Individual Settings for Each Service: You can set two-factor authentication differently for each service (Cloud Console, Online Contact, Workplace \| Dooray\!, etc.).
+* Two-factor Authentication setting
+    * Not Configured: Users can log in by entering their ID and password without two-factor authentication.
+    * Google OTP: After entering ID and password, users can log in by entering the One Time Password provided by the Google OTP app.
+    * Email: After entering ID and password, users can log in by clicking the **Verify** button sent to their email address for authentication.
+* Exclusion IP setting
+    * Not Configured: When logging in, users can log in after two-factor authentication from all IP ranges.
+    * Configured: Users can log in without two-factor authentication when logging in from the configured IP or IP range.
+
+#### Security for Failed Logins
+
+You can adjust setting so that users can log in again after a certain period of time when they failed to log in repeatedly.
+
+* Service setting
+    * Common Setting: Set the two-factor authentication globally for all organization services. (Individual Settings for Each Service is not provided)
+* Failure Login Security setting
+    * Not Configured: Users can continue to try to log in even if login fails.
+    * Configured: If you enter the desired number of failures and lock time, if users fail to log in for the configured number of times, users will not be able to log in during the entered lock time.
+
+#### Login Session
+
+Depending on the login session setting, a login session will be maintained or expire automatically.
+After the login expires, the user must log in again to access the console.
+
+* Service setting
+    * Common Setting: Set the two-factor authentication globally for all organization services. (Individual Settings for Each Service is not provided)
+* Login Session Count
+    * Set the number of simultaneous logins with the same ID on multiple devices.
+    * If this is set to 1, users cannot log in with the same ID on other devices such as PC or smartphone at the same time.
+    E.g.) PC - maintain login, Smartphone - automatically logged out
+* Login Session Maintenance Time
+    * Set the amount of time to maintain login without any action such as clicking.
+    * If a user do not perform any actions such as clicking for a configured period of time, the user will be automatically logged out.
+    * Setting it too long is not good for security, so please consider setting it to an appropriate value.
+
+### Project Common Permission Group Setting
+
+You can create and manage permission groups for common use in projects belonging to your organization.
+The configured permission groups can be used to grant permissions in bulk by selecting NHN Cloud members and IAM members in the project's permission group management.
+
+1. After selecting Organization Setting, click the Project Common Permission Group Setting menu.
+2. Select **Add Permission Group** to add permissions for each service.
+3. Enter the permission group name, description, and add permissions for each service.
+    * The permission group name can include Korean letters, English letters, numbers, and special characters, and can contain up to 40 characters.
+    * Description is a additional description of the permission group, and contain up to 100 characters.
+4. Permissions can be selected from **Detailed Usage Permissions for Each Service**.
+    * After searching for the service name on the left side, select the permission on the right side.
+5. Check the selected permission and add or delete the permission.
+    * You can delete the selected service by clicking the x button next to the service name.
+6. Click the Add button to add a permission group.
+7. When a permission group is added, its name is displayed in the permission group list. You can check the detailed permission details by selecting the permission group name.
+8. Clicking Add Permission leads you to the Add Permission Group screen in Step 3. You can add or delete permissions.
+
+## Project Management
+
+After creating an organization, you can create a project to use NHN Cloud services.
+In a project, you can enable project services and use them.
+Project services are used on a per-project basis and are billed accordingly.
+
+### Create a Project
+
+* To create a project, you need to create an organization.
+* A member who creates a project has ADMIN permission for the project.
+* When creating a project, enter the project name and project description.
+* After creating a project, you can enable project services and use them.
+* After creating a project, if collaboration is required, you can add project members to share the project.
+
+### Guide to Creating a Project
+
+![console_guide_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202109_en.png)
+![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202109_en.png)
+
+1. After an organization is created, a **Create New Project** button is enabled. Click the **Create New Project** button to create a project.
+2. Enter **Project Name** and **Project Description**.
+3. Click **Confirm** to create a project.
+4. The project name is displayed on the console menu when the project is created.
+5. Click the **Project Settings** button to check project information.
 
 ### Project Services
 
-You can select services, once a project is created.
-Following services can be enabled by each project:
+Once the project is created, you can select services.
+Services that can be enabled for each project include the following:
 
 - Compute
 - Container
@@ -98,119 +203,45 @@ Following services can be enabled by each project:
 - Management
 - Bill
 
+### Guide to Enabling Project Services
 
-### Guide to Create Projects
+![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202109_en.png)
+![console_guide_7_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_202109_en.png)
 
-![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202109_en.png)
-![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_202109_en.png)
+1. After creating a project, click the **Select Service** button to select the service to be used in the project.
+2. On the Select Service screen, select the service you want to enable. When prompted to enable the service, click **Confirm**.
+3. A list of enabled services can be found in the menu on the left side of the console. Click the desired service from the list to display the service page.
 
+### Delete a Project
 
-1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
-2. Enter **Project Name** and **Project Description**.
-3. Click **OK** to create a project.
-4. The project name shows on the console menu when the project is created.
-5. Click project setting to check project information.
+A project can be deleted if there is no service in use in the project.
+When a project is deleted, all resources of the project are deleted and cannot be restored.
+You can immediately pay for and delete the usage history for all the resources you have used so far.
+However, if you delete the project without paying immediately, the bills used so far will be automatically charged on the next billing date.
 
-### Guide to Enable Project Service
+## Member Management
 
-![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202109_en.png)
+Member management allows you to control per-user authentication (login) and authorization.
+You can manage members separately in projects and organizations.
+Members are classified into NHN Cloud members and IAM members.
 
-1. Click **Select Services**, after a project is created, to enable services you need
-2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. 
-3. Check the list of enabled services on the left of the console. Click the service you want and the service page will show.
+### Policy for NHN Cloud Members and IAM Members
 
-### Delete Projects
-
-A project can be deleted if it has no available services.
-All its resources are deleted along with the deletion of a project, and cannot be recovered.
-You can immediately pay for all the resources that have used before deleting a project.
-However, if it is deleted without paid, all charges up to the moment shall be automatically billed on the next payment date.
-
-## Manage Members
-
-| Classification                | TOAST.com Members                                            | Insider Members of Organization (same as IAM of AWS)         |
-| :---------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Definition                    | \- Members for organization management <br>\- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole NHN Cloud Service and remain as NHN Cloud members even if their organizations are deleted. | \- Members for the service use <br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
-| Method of Member Registration | \- Owner/Admin of an organization enters NHN Cloud ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API interfaces |
-| Member Authority              | \- Actions to manage organizations \(Create/Modify Organizations / Manage Organization Members / Manage Organization Services /Manage Payment \)<br>\- Create Projects<br>\- Delete Projects | \- Use Organization Services                                 |
-
-### IP ACL Settings
-
-Only allowed IP (or IP bandwidth) can access the IAM console. 
-For Dooray! Services, IP ACL can be set on the service console screen.
-
-- Service Settings 
-    - Common Settings: IP ACL can be globally set to all services.
-    - Settings per Service: For each service (Cloud, Online Contact, Dooray!, etc.), IP ACL can be set.
-
-- IP ACL Settings
-    - Not Set: All IPs (or IP bandwidth) can access the console. 
-    - Console Accessible by Allowed IP (or IP bandwidth) Only: Only the entered IP(or IP bandwidth) can access the console.
-      Please enter an IP or IP bandwidth to allow access. 
-
-### Security Setting for IAM Console Logins 
-To tighten console access security for IAM members, [Login Security Setting] is provided.  
-
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109_en.png)
-
-1. Access Organization Setting of an organization to configure on a console. 
-2. Click [Login Security Setting] on the IAM console. 
-
-#### Two-factor Authentication 
-The two-factor authentication can be made a required setting.    
-
-- Service
-    - Common Settings
-    - Individual Settings for Each Service (e.g. User Console, Dooray, or ERP)
-- Two-factor Authentication 
-    - Not Configured: Login is available only by ID and password, without two-factor authentication.  
-    - Google OTP:  Enter ID and password, and enter One Time Password provided by Google OTP, to authenticate and log in. 
-    - Email: Enter ID and password, and click an authentication button delivered via email address, to authenticate and log in. 
-- Exclusion IP
-    - Not Configured
-    - Configured
-
-#### Security for Failed Logins 
-When it fails to log in for many consecutive times, you are allowed to log in after certain time. 
-
-- Service 
-    Security setting for failed logins can be differently applied for each service. Only common settings are provided. 
-- Security for Failed Logins 
-    - Not Configured: Login can be attempted forever even after it fails for many times. 
-    - Configured: Enter the number of failure and lock timeout,  and you cannot attempt to log in during such lock timeout if you fail to log in as many as the number. 
-
-#### Login Session 
-Depending on the setting of login session, login session may be maintained or automatically expired. 
-After login is expired, it is required to log in again to access console. 
-
-- Service 
-    Security setting for failed logins can be differently applied for each service. Only common settings are provided. 
-- Login Session Count
-    - Set the available number of simultaneous logins under same ID on many devices.   
-    - If the setting is for 1, no simultaneous login is allowed on other devices, like computers or smartphones. 
-        - e.g.) PC-  Login Maintained, Smart phones- Auto Logout 
-- Login Session Maintenance Time
-    - Configure time to maintain login session even without any actions, like a click. 
-    - It is automatically logged out, if there's no action, like a click, during configured time. 
-    - Consider the length in the setting, due to security issue. 
-
-
-#### IP ACL 
-Access to IAM console is available only in allowed IPs (or IP bandwidth)
-Dooray! Service allows the IP ACL setting on the console page of each service. 
-
-- Service
-    - Common Settings
-    - Individual Settings for Each Service (e.g. User Console, Dooray, or ERP)
-- IP ACL
-    - Not Configured: Access to IAM console is available in all IPs (or IP bandwidth) 
-    - Console Access for Allowed IPs (or IP bandwidth) Only: Access to console is available only in allowed IPs (or IP bandwidth): enter IPs or IP bandwidth to allow access for.  
+| Classification | [NHN Cloud](http://TOAST.com) Members | IAM Members |
+| --- | --- | --- |
+| Definition                    | \- Members for organization management<br>\- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud members even if their organizations are deleted. | \- Members for the service use<br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
+| Method of Member Registration | \- Owner/Admin of an organization enters NHN Cloud ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API integration |
+| Member Permission              | \- Manage organizations \(Create/Modify organizations / Manage organization members / Manage organization services /Manage billing\)<br>\- Create projects<br>\- Delete projects | \- Use organization services                                 |
+| Console Access | \- Access NHN Cloud console\([https://console.toast.com/])(https://console.toast.com/)<br>\- NHN Cloud \> Log in with member ID/password<br >\- \(optional\) Two-factor \(email or SMS\) authentication | \- IAM console \(https://\{organization domain\}.console.toast.com/) access<br>\- Access Dooray\! and ERP service with the service domain<br>\- Log in with ID/PW set by the organization's OWNER \(or ADMIN\)<br>\- Authenticate with login security set by the organization \(two-factor authentication, settings per service\) |
 
 ### Organization Members
 
-#### Organization Role of NHN Cloud Members 
+* The OWNER of the organization can grant full control of the account and apply for services.
+* OWNER can register members and grant management permission for each organization.
 
-| Action               | Role                                              | Owner | Admin | Member | Billing Viewer | Log Viewer |
+#### Organization Permission of NHN Cloud Members 
+
+| Task               | Role                                              | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
 | -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---- |
 | Manage Organizations | Create Organizations                              | O     |       |        |                |      |
 |                      | Modify Organizations                              | O     | O     |        |                |      |
@@ -219,122 +250,144 @@ Dooray! Service allows the IP ACL setting on the console page of each service.
 |                      | Delete Organization Members                       | O     | O     |        |                |      |
 | Manage Services      | Enable Organization Services                      | O     | O     |        |                |      |
 |                      | Disable Organization Services                     | O     | O     |        |                |      |
-| Manage Payment       | Query Bills                                       | O     |       |        |                |      |
+| Manage Billing       | Query Bills                                       | O     |       |        |                |      |
 |                      | Status of Service Use                             | O     | O     |        | O              |      |
-| Manage Projects      | Creat Projects                                    | O     | O     | O      |                |      |
-| Manage Projects      | Delete Projects                                   | O     |       |        |                |      |
-| Manage User Action Log | Query User Action Logs                          |       |       |        |                |  O   |
+| Manage Projects      | Create Projects                                    | O     | O     | O      |                |      |
+|                      | Delete Projects                                   | O     | O     |        |                |      |
+| Manage User Action Log | Query User Action Logs                          | O     | O     |        |                |  O   |
 
+#### Organization Permission of IAM Members 
 
+* Permissions that can be set are different for each organization service (Online Contact, Dooray!, etc.).
+* Cloud service permissions are as follows.
+    * The MEMBER permission can be selectively granted only when needed.
+    * If the MEMBER permission is granted, the user can create a project directly.
 
-#### Organization Role of IAM Members 
-- Each organization service (e.g. Online Contact, Dooray!) provides different configuration role. 
-- IAM members have the following roles for the use of the Cloud console. 
-    - The role of MEMBER is selectively provided only when needed. 
-    - IAM members without role cannot create or delete a project, or activate service. Only registered project members can use service.  
-
-| Task     | Role                           | MEMBER |
-| ------------- | ----------------------------------- | ----- |
-| Project Management | Creating projects | O     |
+| Task | Role | MEMBER |
+| --- | --- | --- |
+| Manage Project | Create Projects | O |
 
 ### Project Members
-Even a non-organization member can serve as project member. 
-A project member can be given with many roles.  
-However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to all services, cannot have other roles at the same time. 
 
-#### Role of Project Management 
-| Task    | Role                                | ADMIN | MEMBER |  BILLING VIEWER |
-| ----------- | ---------------------------------------- | ----- | ------ | -------------------- |
-| Member Management | Register project members     | O     |        |                   |
-|             | Delete project members         | O     |        |                      |
-| Service Management | Activate service          | O     |        |                      |
-|             | Use service                 | O     | O      |                      |
-|             | Deactivate service       | O     |        |                      |
-| Usage Status | Status of service use           | O     |       | O                    |
-| Project Management | Delete projects           | O     |       |                      |
-|              | Delete projects (which have been created) |      | O       |                     |
+A user can become a member of a project even if the user is not a member of an organization.
+You can grant multiple required permissions to project members.
 
+#### Project Management Permissions
 
-#### Role of Service Use
+| Permission | Description |
+| --- | --- |
+| ADMIN | Create/Read/Update/Delete permission for the entire project |
+| MEMBER | Create/Read/Update/Delete permission for all services in the project |
+| BILLING VIEWER | Read permission for usage status |
+| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete permission for project's integrated Appkey<br>Create/Read/Update/Delete permission for project's permission groups<br>Enable/Disable project services<br>Delete for projects |
+| PROJECT MANAGEMENT VIEWER | Read permission for project's basic information<br>Read permission for project's integrated Appkey<br>Read permission for project's permission groups |
+| PROJECT MEMBER ADMIN | Create/Read/Update/Delete permission for project members |
+| PROJECT MEMBER VIEWER | Read permission for project members |
 
-| Service | Role | Description |
+#### Service Use Permissions
+
+| Service | Permission | Description |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Create/Read/Update/Delete Infrastructure Service |
-| Infrastructure | MEMBER | Viewer VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete Other services |
-| Container Registry | ADMIN | Create/Read/Update/Delete Container Registry Service |
-| Container Registry | VIEWER | Read Container Registry Service |
-| DNS Plus | ADMIN | Create/Read/Update/Delete DNS Plus Service |
-| Object Storage | ADMIN | Create/Read/Update/Delete Object Storage Service |
-| Backup | ADMIN | Create/Read/Update/Delete Backup Service |
-| RDS for MySQL | ADMIN | Create/Read/Update/Delete RDS for MySQL Service |
-| RDS for MS-SQL | ADMIN | Create/Read/Update/Delete RDS for MS-SQL Service |
-| EasyCache | ADMIN | Create/Read/Update/Delete EasyCache Service |
-| EasyCache | VIEWER | Read EasyCache Service Replication Group menu, read Monitoring menu |
-| Gamebase | ADMIN | Create/Read/Update/Delete Gamebase Service |
-| Leaderboard | ADMIN | Create/Read/Update/Delete Leaderboard Service |
-| Leaderboard | VIEWER | Read Leaderboard Service |
-| Launching | ADMIN | Create/Read/Update/Delete Launching Service |
-| Smart Downloader | ADMIN | Create/Read/Update/Delete Smart Downloader Service |
-| NHN AppGuard | ADMIN | Create/Read/Update/Delete NHN AppGuard  Service|
-| App Security Check | ADMIN | Create/Read/Update/Delete App Security Check Service |
-| Server Security Check | ADMIN | Create/Read/Update/Delete Server Security Check  Service |
-| Security Monitoring | ADMIN | Create/Read/Update/Delete Security Monitoring Service |
-| CAPTCHA | ADMIN | Create/Read/Update/Delete CAPTCHA Service |
-| OTP | ADMIN | Create/Read/Update/Delete OTP Service |
-| WEB Firewall | ADMIN | Create/Read/Update/Delete WEB Firewall Service |
-| Vaccine | ADMIN | Create/Read/Update/Delete Vaccine Service |
-| Secure Key Manager | ADMIN | Create/Read/Update/Delete Secure Key Manager Service |
-| Secure Key Manager | VIEWER | Read ecure Key Manager Service |
-| Security  Compliance | ADMIN | Create/Read/Update/Delete Security Compliance Service|
-| DDoS Guard | ADMIN | Create/Read/Update/Delete DDoS Guard Service |
-| SIEM | ADMIN | Create/Read/Update/Delete SIEM Service |
-| CDN | ADMIN | Create/Read/Update/Delete CDN Service |
-| Image | ADMIN | Create/Read/Update/Delete Image Service |
-| Push | ADMIN | Create/Read/Update/Delete Push Service |
-| SMS | ADMIN | Create/Read/Update/Delete SMS Service |
-| Email | ADMIN | Create/Read/Update/Delete Email Service |
-| KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete KakaoTalk Bizmessage Service |
-| Face Recognition | ADMIN | Create/Read/Update/Delete Face Recognition Service |
-| AI Fashion |	ADMIN |	Create/Read/Update/Delete AI Fashion Service |
-| IAP | ADMIN | Create/Read/Update/Delete IAP Service |
-| Mobile Device Info | ADMIN | Create/Read/Update/Delete Mobile Device Info Service |
-| Log & Crash Search | ADMIN | Create/Read/Update/Delete Log & Crash Search Service |
-| Maps | ADMIN | Create/Read/Update/Delete Maps Service |
-| ROLE | ADMIN | Create/Read/Update/Delete ROLE Service |
-| API Gateway | ADMIN | Create/Read/Update/Delete API Gateway Service |
-| RTCS | ADMIN | Create/Read/Update/Delete RTCS Service |
-| ShortURL | ADMIN | Create/Read/Update/Delete ShortURL Service |
-| Cheating Detection | ADMIN | Create/Read/Update/Delete Cheating Detection Service |
-| Cloud Search | ADMIN | Create/Read/Update/Delete Cloud Search Service |
-| Autocomplete | ADMIN | Create/Read/Update/Delete AutocompleteService |
-| Corporation Search | ADMIN | Create/Read/Update/Delete Corporation Search Service |
-| Address Search | ADMIN | Create/Read/Update/Delete Address Search Service |
-| Pipeline | ADMIN | Create/Read/Update/Delete Pipeline Service |
-| Deploy | ADMIN | Create/Read/Update/Delete Deploy Service |
-| Managed | ADMIN | Create/Read/Update/Delete Managed Service |
-| Service Monitoring | ADMIN | Create/Read/Update/Delete Service Monitoring Service |
-| Certificate Manager | ADMIN | Create/Read/Update/Delete Certificate Manager Service |
-| eTax | ADMIN | Create/Read/Update/Delete eTax Service |
-| eTax | VIEWER | Read eTax Service |
+| Infrastructure | ADMIN | Create/Read/Update/Delete permission for Infrastructure Service |
+| Infrastructure | MEMBER | Read permission for VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete permission for Other services |
+| Container Registry | ADMIN | Create/Read/Update/Delete permission for Container Registry Service |
+| Container Registry | VIEWER | Read permission for Container Registry Service |
+| DNS Plus | ADMIN | Create/Read/Update/Delete permission for DNS Plus Service |
+| Object Storage | ADMIN | Create/Read/Update/Delete permission for Object Storage Service |
+| Backup | ADMIN | Create/Read/Update/Delete permission for Backup Service |
+| RDS for MySQL | ADMIN | Create/Read/Update/Delete permission for RDS for MySQL Service |
+| RDS for MS-SQL | ADMIN | Create/Read/Update/Delete permission for RDS for MS-SQL Service |
+| EasyCache | ADMIN | Create/Read/Update/Delete permission for EasyCache Service |
+| EasyCache | VIEWER | Read permission for EasyCache Service Replication Group menu, Read permission for Monitoring menu |
+| Gamebase | ADMIN | Create/Read/Update/Delete permission for Gamebase Service |
+| Gamebase | ANALYTICS VIEWER - ALL | Read permission for all metrics |
+| Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | Read permission for all metrics except sales |
+| Gamebase | ANALYTICS VIEWER - ONLY REAL-TIME | Read permission for real-time metrics |
+| Gamebase | APP ADMIN | Create, Read, Update, Delete for APP menu |
+| Gamebase | APP VIEWER | Read permission for APP menu |
+| Gamebase | BAN ADMIN | Create, Read, Update, Delete for Suspended menu |
+| Gamebase | BAN VIEWER | Read permission for Suspended menu |
+| Gamebase | COUPON ADMIN | Create, Read, Update, Delete for Coupon menu |
+| Gamebase | COUPON VIEWER | Read permission for Coupon menu |
+| Gamebase | CS ADMIN | Create, Read, Update, Delete for Customer Center menu |
+| Gamebase | CS INQUIRY SUPPORT | Read, Update for Contact Customer Center menu, Read permission for member menu |
+| Gamebase | IAP ADMIN | Create, Read, Update, Delete for Purchase menu |
+| Gamebase | IAP VIEWER | Read permission for Purchase menu |
+| Gamebase | LEADERBOARD ADMIN | Create, Read, Update, Delete for Leaderboard menu |
+| Gamebase | LEADERBOARD VIEWER | Read permission for Leaderboard menu |
+| Gamebase | MANAGEMENT ADMIN | Create, Read, Update, Delete for Admin menu |
+| Gamebase | MEMBER ADMIN | Create, Read, Update, Delete for Member menu |
+| Gamebase | MEMBER VIEWER | Read permission for Member menu |
+| Gamebase | MEMBER FILE DOWNLOAD | Read and Download for menus including Metrics, Sales, Members |
+| Gamebase | OPERATION ADMIN | Create, Read, Update, Delete for Operation menu |
+| Gamebase | OPERATION VIEWER | Read permission for Operation menu |
+| Gamebase | PUSH ADMIN | Create, Read, Update, Delete for Push menu |
+| Gamebase | PUSH VIEWER | Read permission for Push Menu |
+| Leaderboard | ADMIN | Create/Read/Update/Delete permission for Leaderboard Service |
+| Leaderboard | VIEWER | Read permission for Leaderboard Service |
+| Launching | ADMIN | Create/Read/Update/Delete permission for Launching Service |
+| Smart Downloader | ADMIN | Create/Read/Update/Delete permission for Smart Downloader Service |
+| NHN AppGuard | ADMIN | Create/Read/Update/Delete permission for NHN AppGuard Service|
+| App Security Check | ADMIN | Create/Read/Update/Delete permission for App Security Check Service |
+| Server Security Check | ADMIN | Create/Read/Update/Delete permission for Server Security Check  Service |
+| Security Monitoring | ADMIN | Create/Read/Update/Delete permission for Security Monitoring Service |
+| CAPTCHA | ADMIN | Create/Read/Update/Delete permission for CAPTCHA Service |
+| OTP | ADMIN | Create/Read/Update/Delete permission for OTP Service |
+| WEB Firewall | ADMIN | Create/Read/Update/Delete permission for WEB Firewall Service |
+| Vaccine | ADMIN | Create/Read/Update/Delete permission for Vaccine Service |
+| Secure Key Manager | ADMIN | Create/Read/Update/Delete permission for Secure Key Manager Service |
+| Secure Key Manager | VIEWER | Read permission for Secure Key Manager Service |
+| Security Compliance | ADMIN | Create/Read/Update/Delete permission for Security Compliance Service|
+| DDoS Guard | ADMIN | Create/Read/Update/Delete permission for DDoS Guard Service |
+| SIEM | ADMIN | Create/Read/Update/Delete permission for SIEM Service |
+| CDN | ADMIN | Create/Read/Update/Delete permission for CDN Service |
+| Image | ADMIN | Create/Read/Update/Delete permission for Image Service |
+| Push | ADMIN | Create/Read/Update/Delete permission for Push Service |
+| SMS | ADMIN | Create/Read/Update/Delete permission for SMS Service |
+| Email | ADMIN | Create/Read/Update/Delete permission for Email Service |
+| KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete permission for KakaoTalk Bizmessage Service |
+| Face Recognition | ADMIN | Create/Read/Update/Delete permission for Face Recognition Service |
+| AI Fashion |	ADMIN |	Create/Read/Update/Delete permission for AI Fashion Service |
+| Maps | ADMIN | Create/Read/Update/Delete permission for Maps Service |
+| ROLE | ADMIN | Create/Read/Update/Delete permission for ROLE Service |
+| API Gateway | ADMIN | Create/Read/Update/Delete permission for API Gateway Service |
+| RTCS | ADMIN | Create/Read/Update/Delete permission for RTCS Service |
+| ShortURL | ADMIN | Create/Read/Update/Delete permission for ShortURL Service |
+| Cheating Detection | ADMIN | Create/Read/Update/Delete permission for Cheating Detection Service |
+| IAP | ADMIN | Create/Read/Update/Delete permission for IAP Service |
+| Mobile Device Info | ADMIN | Create/Read/Update/Delete permission for Mobile Device Info Service |
+| Cloud Search | ADMIN | Create/Read/Update/Delete permission for Cloud Search Service |
+| Autocomplete | ADMIN | Create/Read/Update/Delete permission for AutocompleteService |
+| Corporation Search | ADMIN | Create/Read/Update/Delete permission for Corporation Search Service |
+| Address Search | ADMIN | Create/Read/Update/Delete permission for Address Search Service |
+| Log & Crash Search | ADMIN | Create/Read/Update/Delete permission for Log & Crash Search Service |
+| Pipeline | ADMIN | Create/Read/Update/Delete permission for Pipeline Service |
+| Deploy | ADMIN | Create/Read/Update/Delete permission for Deploy Service |
+| Managed | ADMIN | Create/Read/Update/Delete permission for Managed Service |
+| Service Monitoring | ADMIN | Create/Read/Update/Delete permission for Service Monitoring Service |
+| Certificate Manager | ADMIN | Create/Read/Update/Delete permission for Certificate Manager Service |
+| eTax | ADMIN | Create/Read/Update/Delete permission for eTax Service |
+| eTax | VIEWER | Read permission for eTax Service |
 
 
 
 ## Billing Management
 
-Supports for NHN Cloud members to check prices and pay bills for NHN Cloud Service.
-Billing management provides bills for the NHN Cloud members who registered payment methods, along with estimated amount of payment and usage information.
-Go to My Profile > Billing Management to check.
+You can check the usage fee for NHN Cloud service and make payment.
+In the **View My Info > Manage Billing** menu, you can check the bill, expected payment amount, and usage information of the NHN Cloud member who registered a payment method.
 
-Below functions are provided, along with the history of the month’s payment via registered payment method.
+The following features are provided along with the billing details of the payment method for the month.
 
-- Immediate Payment: Immediate payment is available on the 15th of every month before automatic payment is processed.  
-- Sales Statement: Sales statement can be retrieved for credit card payments.
-- Tax Invoice: Tax invoices can be retrieved for payment by bank transfers.
+- Immediate Payment: You can pay with the immediate payment feature before automatic payment that occurs on the 8th of every month.
+- Sales slip: If you paid by credit card, you can view the sales slip.
+- Tax Invoice: If you paid by bank transfer, you can view your tax invoice.
 
-Following are included to the bills for retrieval:
+The details displayed on the payment management invoice are as follows.
 
-- Charged Amount: Prices for usage amount and service charges
-- Discount/Extra Charges: Discounts by contract, or discount/extra charges by administrators
-- Additional Tax: 10% of (Charged amount- Discount amount + Amount of extra charges)
-- Late Charges: 2% of unpaid amount out of total amount of payment
-- Total Amount of Payment: (Charged amount- Discount amount+ Amount of extra charges) + Additional Tax
+- Usage Amount: The amount calculated by service usage and unit price
+- Discount/Surcharge Amount: Contract discount, manager discount/surcharge, etc.
+- VAT: 10% of (Usage Amount - Discount Amount + Surcharge Amount)
+- Late Fee
+    - Korean members: In case of non-payment for the Total Amount of Payment, 2% of the amount
+    - Japanese members: There is no late fee in accordance with the Japanese Consumer Contract Law.
+- Total Amount of Payment: (Usage Amount - Discount Amount + Surcharge Amount) + VAT
