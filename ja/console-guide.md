@@ -13,8 +13,8 @@ NHN Cloud Consoleは下記の機能を提供します。
 ## コンソールクイックガイド
 コンソールで提供する基本機能のクイックガイドです。 
 
-![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202109.png)
-![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202109.png)
+![tutorial_1_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202109_jp.png)
+![tutorial_2_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202109_jp.png)
 
 ## 組織管理
 
@@ -33,8 +33,8 @@ NHN Cloud Consoleは下記の機能を提供します。
 
 ### 組織作成ガイド
 
-![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202109.png)
-![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202109.png)
+![console_guide_1_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202109_jp.png)
+![console_guide_2_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202109_jp.png)
 
 1. コンソールに移動した後、上段メニューから**組織を作成してください。**横の**+**ボタンをクリックします。
 2. **組織作成**ウィンドウで組織名を入力します。組織名には日本語、アルファベット、特殊文字、数字を使用できます。
@@ -70,7 +70,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 #### IP ACL設定
 許可したIP(またはIP帯域)からのみコンソールにアクセスできます。
 Dooray!サービスは各サービスコンソール画面からIP ACLを設定できます。
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202109.png)
+![console_guide_3_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202109_jp.png)
 
 1. コンソールに移動した後、設定したい組織の組織管理ページに接続します。
 2. サブメニューからガバナンス設定を選択します。
@@ -88,7 +88,7 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 
 * IAM会員のコンソール接続セキュリティを強化するために**ログインセキュリティ設定**機能を提供します。
 * すべての組織サービス(コンソール、Online Contact、Dooray!など)に同じように設定したり、サービスごとに設定できます。
-![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109.png)
+![console_guide_4_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109_jp.png)
 
 1. コンソールに移動した後、設定したい組織の組織管理ページに接続します。
 2. サブメニューのガバナンス設定を選択します。
@@ -200,8 +200,8 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 
 ### プロジェクトサービス有効化ガイド
 
-![console_guide_6_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202109.png)
-![console_guide_7_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_202109.png)
+![console_guide_6_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202109_jp.png)
+![console_guide_7_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_202109_jp.png)
 
 1. プロジェクト作成後、**サービス選択**ボタンをクリックし、プロジェクトで使用するサービスを選択できます。
 2. サービス選択画面で、有効にするサービスを選択します。サービスを有効にするかどうかの確認メッセージが表示されたら、**確認**をクリックします。
