@@ -11,11 +11,8 @@ NHN Cloud Console provides the following functions:
 - Provide payment information
 
 ## Console Quick Guide
-![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202103_en.png)
-![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202103_en.png)
-![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202103_en.png)
-![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202103_en.png)
-![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202103_en.png)
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202109_en.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202109_en.png)
 
 
 ## Organization Management
@@ -47,7 +44,9 @@ Following services are available at the level of organization:
 
 ### Guide to Create Organizations
 
-![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202103_en.png)
+![console_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202109.png)
+![console_guide_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202109.png)
+
 
 1. Access the console and click **+** next to the **Create an organization** message in the menu on top.
 2. On the popup window of **Create Organizations**, enter the name of an organization: all are available including Korean, English, special characters and numbers.
@@ -102,7 +101,9 @@ Following services can be enabled by each project:
 
 ### Guide to Create Projects
 
-![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202103_en.png)
+![consoleguide_06_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202109_en.png)
+![consoleguide_07_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_202109_en.png)
+
 
 1. After an organization is created, **Create New Project** button is enabled: click the button to create a project.
 2. Enter **Project Name** and **Project Description**.
@@ -112,7 +113,7 @@ Following services can be enabled by each project:
 
 ### Guide to Enable Project Service
 
-![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202103_en.png)
+![consoleguide_08_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202109_en.png)
 
 1. Click **Select Services**, after a project is created, to enable services you need
 2. Select services on the page of Select Services. When a message asking for Enable Service shows, click **OK**. 
@@ -140,7 +141,7 @@ For Dooray! Services, IP ACL can be set on the service console screen.
 
 - Service Settings 
     - Common Settings: IP ACL can be globally set to all services.
-    - Settings per Service: For each service (Cloud, Online Contactm Workplace | Dooray!, etc.), IP ACL can be set.
+    - Settings per Service: For each service (Cloud, Online Contact, Dooray!, etc.), IP ACL can be set.
 
 - IP ACL Settings
     - Not Set: All IPs (or IP bandwidth) can access the console. 
@@ -150,7 +151,7 @@ For Dooray! Services, IP ACL can be set on the service console screen.
 ### Security Setting for IAM Console Logins 
 To tighten console access security for IAM members, [Login Security Setting] is provided.  
 
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202103_en.png)
+![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109_en.png)
 
 1. Access Organization Setting of an organization to configure on a console. 
 2. Click [Login Security Setting] on the IAM console. 
