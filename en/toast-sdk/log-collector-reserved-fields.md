@@ -1,4 +1,4 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Reserved Fields
+## TOAST > TOAST SDK User Guide > TOAST Log & Crash > Reserved Fields
 
 ### Definition of Reserved Fields
 
@@ -28,7 +28,7 @@ SENDTIME -> reserved_SENDTIME
 | --- | ----------- |
 | projectName | Project name |
 | projectVersion | Project version |
-| logVersion | Log Sending API version |
+| logVersion | Log Sending API version  |
 | logType | Log type |
 | logSource | Log source |
 | logLevel | Log level |
@@ -38,7 +38,7 @@ SENDTIME -> reserved_SENDTIME
 | lncBulkIndex | Log sending order |
 | transactionID | Original log number |
 | DeviceModel | Device model |
-| Carrier | Carrier information |
+| Carrier | Carrier information  |
 | CountryCode | Country information |
 | Platform | Platform information |
 | NetworkType | Network type |
@@ -57,5 +57,5 @@ SENDTIME -> reserved_SENDTIME
 | crashMeta | Crash metadata |
 | SymResult | Crash analysis result |
 | ExceptionType | Crash type |
-| Location | Crash occurrence location |
+| Location | Crash occurrence location  |
 | lncIssueID | Issue ID |
