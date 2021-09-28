@@ -80,7 +80,7 @@ For Dooray! services, IP ACL can be set on the service's console screen.
 3. You can set and manage IP ACL under **Set IP ACL** in the Organization Governance Setting.
     * Service setting
         * Common Settings: IP ACL can be set globally for all services.
-        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Online Contact Workplace | Dooray!, etc.).
+        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Online Contact, Dooray!, etc.).
     * IP ACL
         * Not Configured: The console can be accessed from any IPs (or IP range).
         * Console Access Only from Allowed IPs (or IP range): The console can be accessed only from the IPs (or IP range) you entered. Enter the IP or IP range to allow access.
@@ -103,7 +103,7 @@ You can enable two-factor authentication by setting it as a required feature.
 
 * Service setting
     * Common Settings: Set the two-factor authentication globally for all organization services.
-    * Individual Settings for Each Service: You can set two-factor authentication differently for each service (Cloud Console, Online Contact, Workplace \| Dooray\!, etc.).
+    * Individual Settings for Each Service: You can set two-factor authentication differently for each service (Cloud Console, Online Contact, Dooray!, etc.).
 * Two-factor Authentication setting
     * Not Configured: Users can log in by entering their ID and password without two-factor authentication.
     * Google OTP: After entering ID and password, users can log in by entering the One Time Password provided by the Google OTP app.
@@ -229,10 +229,10 @@ Members are classified into NHN Cloud members and IAM members.
 
 | Classification | [NHN Cloud](http://TOAST.com) Members | IAM Members |
 | --- | --- | --- |
-| Definition                    | \- Members for organization management<br>\- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>\- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud members even if their organizations are deleted. | \- Members for the service use<br>\- Members who do not consent to the Terms of Use <br>\- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
-| Method of Member Registration | \- Owner/Admin of an organization enters NHN Cloud ID for registration | \- Owner/Admin of an organization enters unique ID for registration <br>\- Register via SSO or API integration |
-| Member Permission              | \- Manage organizations \(Create/Modify organizations / Manage organization members / Manage organization services /Manage billing\)<br>\- Create projects<br>\- Delete projects | \- Use organization services                                 |
-| Console Access | \- Access NHN Cloud console\([https://console.toast.com/])(https://console.toast.com/)<br>\- NHN Cloud \> Log in with member ID/password<br >\- \(optional\) Two-factor \(email or SMS\) authentication | \- IAM console \(https://\{organization domain\}.console.toast.com/) access<br>\- Access Dooray\! and ERP service with the service domain<br>\- Log in with ID/PW set by the organization's OWNER \(or ADMIN\)<br>\- Authenticate with login security set by the organization \(two-factor authentication, settings per service\) |
+| Definition                    | - Members for organization management<br>- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud members even if their organizations are deleted. | - Members for the service use<br>- Members who do not consent to the Terms of Use <br>- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
+| Method of Member Registration | - Owner/Admin of an organization enters NHN Cloud ID for registration | - Owner/Admin of an organization enters unique ID for registration <br>- Register via SSO or API integration |
+| Member Permission              | - Manage organizations (Create/Modify organizations / Manage organization members / Manage organization services /Manage billing)<br>- Create projects<br>- Delete projects | - Use organization services                                 |
+| Console Access | - Access NHN Cloud console([https://console.toast.com/])(https://console.toast.com/)<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.toast.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) |
 
 ### Organization Members
 
