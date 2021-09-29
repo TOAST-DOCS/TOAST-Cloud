@@ -50,6 +50,9 @@ All users are provided with the same features, policy, stability and usability, 
 |  | EasyCache | Regional | O | O | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
+|  | PostgreSQL Instance | Regional | O | O | O | O |
+|  | CUBRID Insatnce  | Regional | O | O | O | O |
+|  | MariaDB Instance  | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
 |  | Leaderboard | Global |  |  |  |  |
 |  | Launching | Global |  |  |  |  |
@@ -71,6 +74,15 @@ All users are provided with the same features, policy, stability and usability, 
 |  | SMS | Regional | O |  |  |  |
 |  | Email | Global |  |  |  |  |
 |  | KakaoTalk Bizmessage | Regional | O |  |  |  |
+| AI Service | Face Recognition | Regional | O | O |  |  |
+|  | AI Fashion | Regional | O | O | O |  |  |
+| Machine Learning | Deep Learning Instance | Regional | O | O | O | O |
+| Application Service | Maps | Regional | O |  |  |  |
+|  | ROLE | Global |  |  |  |  |
+|  | API Gateway | Regional | O |  |  |  |
+|  | RTCS | Global |  |  |  |  |
+|  | ShortURL | Global |  |  |  |  |
+|  | Cheating Detection | Regional | O |  |  |  |
 | Mobile Service | IAP | Global |  |  |  |  |
 |  | Mobile Device Info | Global |  |  |  |  |
 | Analytics | Log & Crash Search | Global |  |  |  |  |
