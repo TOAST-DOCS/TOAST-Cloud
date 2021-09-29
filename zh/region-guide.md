@@ -58,8 +58,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
 |  | PostgreSQL Instance | Regional | O | O | O | O |
-|  | CUBRID Insatnce  | Regional | O | O | O | O |
-|  | MariaDB Instance  | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global |  |  |  |  |
 |  | Leaderboard | Global |  |  |  |  |
@@ -86,7 +84,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | KakaoTalk Bizmessage | Regional | O |  |  |  |
 | AI Service | Face Recognition | Regional | O | O |  |  |
 |  | AI Fashion | Regional | O | O | O |  |  |
-| Machine Learning | Deep Learning Instance | Regional | O | O | O | O |
 | Application Service | Maps | Regional | O |  |  |  |
 |  | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O |  |  |  |
