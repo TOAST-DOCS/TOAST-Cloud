@@ -45,14 +45,14 @@ Follow the procedure to join membership.
 Each country provides different member information and payment methods.  
 
 - Type of Membership 
-- NHN Cloud Korea: Individual/Business Members
-- NHN Cloud Japan: Individual Members
+    - NHN Cloud Korea: Individual/Business Members
+    - NHN Cloud Japan: Individual Members
 - Payment Method 
-- NHN Cloud Korea 
-- Individual: PAYCO on credit cards, Credit cards 
-- Business: PAYCO on credit cards, Credit cards, or Bank transfer
-- NHN Cloud Japan
-- Credit cards
+    - NHN Cloud Korea 
+        - Individual: PAYCO on credit cards, Credit cards 
+        - Business: PAYCO on credit cards, Credit cards, Check cards, or Bank transfer
+    - NHN Cloud Japan
+        - Credit cards
 
 
 #### Select Type of Membership (Individual/Business) 
@@ -108,7 +108,7 @@ The authentication and management policy of each payment method goes as follows:
 | Korea | Individual | PAYCO Credit Cards | Mobile phone owner authentication |Card number, valid period, and the first two digits of password | To validate credit card, KRW 1,000 shall be paid and cancelled |
 | | | Credit Cards | Mobile phone owner authentication |Credit card number, valid period, and the first two digits of password | |
 | | Business Owner | PAYCO Credit Cards | Resident registration number of business registration number | Card number, valid period | To validate credit card, KRW 1,000 shall be paid and cancelled. |
-| | | Credit Cards (signature required) | Mobile phone owner authentication | Card number, valid period, and the first 7 digits of resident registration number | |
+| | | Credit Cards (signature required) | Mobile phone owner authentication | Card number, valid period, and the first 7 digits of resident registration number | Check card supported |
 | | | Credit Cards (no signature required) | Business registration number | Card number, valid period, and the two digits of password | TBD |
 | | | Bank Transfers | Authenticate with public key certificate | Bank and account number | Personal account must contain same information on the public key certificate of the person <br/> while corporate account must contain same business information on the member profile/corporate account/public key certificate.   |
 | Japan | Individual | Credit Cards | Credit card holder authentication |Card number, valid period, name, and security code | To validate credit card, 2 Yen shall be paid and cancelled. |
@@ -138,7 +138,7 @@ The authentication and management policy of each payment method goes as follows:
 - On the **Register Auto Payment Method** page, select **Credit Cards**.
 
 ##### Select Credit Card Types
-- Personal/Corporate Credit Cards Requiring Signature
+- Personal/Corporate Credit Cards Requiring Signature/Check Cards
     - User Authentication via Mobile Phone: Enter name, gender, birthday, and mobile phone number to authenticate the user. 
     - Enter Credit Card Information: Enter credit card number, valid period, and birthday, and register it as payment method.
 - Corporate Credit Cards Requiring No Signature
