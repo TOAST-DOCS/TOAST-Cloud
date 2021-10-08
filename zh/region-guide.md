@@ -84,6 +84,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | KakaoTalk Bizmessage | Regional | O |  |  |  |
 | AI Service | Face Recognition | Regional | O | O |  |  |
 |  | AI Fashion | Regional | O | O | O |  |  |
+|  | Document OCR | Global |  |  |  |  |
 | Application Service | Maps | Regional | O |  |  |  |
 |  | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O |  |  |  |
