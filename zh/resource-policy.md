@@ -1,8 +1,8 @@
 ## NHN Cloud > NHN Cloud源提供政策 
 NHN Cloud为所有客户提供稳定的服务，为保护客户不因创建意料之外的源而产生支出等，提供源使用量政策。
 
-### Resource Usage Policy for Organization/Project 
-Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
+### Resource Provision Policy for Organization/Project 
+Resource usage for organization is calculated based on members who registered payment method. For project, it is calculated based on organizations.  
 
 |Resource | Criteria | Capacity | 
 |----|----|----|
@@ -27,8 +27,7 @@ Resource usage for organization is calculated by the member who registered payme
 |IP访问控制组    | 每个项目   |10个|
 |IP访问控制对象 | 每个IP访问控制组    |1000个|
 
-### Resource Supply Policy for Kubernetes Service  
-Resource policy is provided for Kubernetes service.  
+### Resource Provision Policy for Kubernetes Service  
 Resource usage is calculated for each project, and the policy is applied by the region. 
 
 |Resources | Criteria | Capacity | 
@@ -36,17 +35,6 @@ Resource usage is calculated for each project, and the policy is applied by the 
 |Cluster	| Per project |3|
 |Worker Node Group	 | Per cluster |3 (including default worker node group)|
 |Worker Node Count	| Worker node groups|10|
-
-
-
-### Resource Usage Policy for Organization/Project 
-Resource usage for organization is calculated by the member who registered payment method;for project, it is calculated by the organization.  
-
-|Resource | Criteria | Capacity | 
-|----|----|----|
-|Organization    | Per member with registered payment method |3|
-|Project     | Per organization |5|
-
 
 ### DNS Plus施服务源提供政策 
 源使用量按各项目计算。
@@ -73,8 +61,25 @@ Resource usage for organization is calculated by the member who registered payme
 | 通知TALK 发送量 |  KakaoTalk Channel 1日毎 | 1,000 件 |
 | 好友TALK 发送量 |  KakaoTalk Channel 1日毎 | 1,000 件 |
 
+### Resource Provision Policy for API Gateway Service
+Resource usage is calculated for each project, and the policy is applied by the region.
+
+| Resource | Criteria | Capacity |
+| --- | :---: | :---: |
+| API Gateway Service | Per project | 10 |
+| Stage | Per API Gateway service | 50 |
+| Resource Method | Per API Gateway service | 300 |
+
+### Resource Provision Policy for Log & Crash Search Service
+Resource usage is calculated for each project.
+
+| Resource | Criteria | Capacity |
+| --- | :---: | :---: |
+| Number of logs (normal log, crash log) | 1 day | 20,000,000 cases |
+| Size of log (normal log, crash log) | 1 case | 8MB |
+
 ### 申请调整源提供量 
-除基本提供量外，若欲额外使用，咨询NHN Cloud客服中心[1:1咨询]即可。 
+除基本提供量外，若欲额外使用，咨询NHN Cloud客服中心[1:1咨询](https://www.toast.com/kr/support/inquiry)即可。 
 申请时，填写欲增加的项目和欲增加的量，可轻松地进行咨询。 
 
 申请后至予以处理需2~5日左右，因此建议相较于实际需要时间提前申请。 
