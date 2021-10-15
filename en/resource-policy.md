@@ -55,7 +55,6 @@ Resource usage is calculated for each project.
 |Health Check    | Per project | 5 |
 
 ### Resource Provision Policy for KakaoTalk Bizmessage Service
-
 | Resource | Criteria | Capacity |
 | -------- | -------- | -------- |
 | Alimtalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
@@ -82,4 +81,4 @@ Resource usage is calculated for each project.
 To increase capacity beyond default volume, send a request to NHN Cloud Customer Center [1:1 Inquiry](https://www.toast.com/kr/support/inquiry). 
 It helps a lot if you fill out the items and volume in need. 
 
-Since it takes 2 to 5 days to process a request, it is recommended to send requests in advance. 
+Since it takes 2 to 5 days to process a request, it is recommended to send requests in advance.
