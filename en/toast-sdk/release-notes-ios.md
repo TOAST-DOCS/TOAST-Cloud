@@ -1,5 +1,10 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > iOS
 
+## 0.29.1 (2021.10.26)
+### TOAST IAP
+#### 개선 사항
+* 안전성 개선
+
 ## 0.29.0 (2021.07.06)
 ### Common
 #### Improvements
