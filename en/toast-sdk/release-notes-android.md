@@ -6,7 +6,7 @@
 
 #### Fixed
 
-* 사용자 알림 채널 설정이 초기화되는 오류 수정
+* Fixed an error where user notification channel settings were initialized
 
 ## 0.27.3 (2021.09.28)
 
