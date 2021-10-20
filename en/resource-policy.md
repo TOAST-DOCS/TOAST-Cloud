@@ -66,8 +66,8 @@ Resource usage is calculated for each project, and the policy is applied by the 
 | Resource | Criteria | Capacity |
 | --- | :---: | :---: |
 | API Gateway Service | Per project | 10 |
-| Stage | Per API Gateway service | 50 |
-| Resource Method | Per API Gateway service | 300 |
+| Stage | Per API Gateway service | 10 |
+| Resource Method | Per API Gateway service | 100 |
 
 ### Resource Provision Policy for Log & Crash Search Service
 Resource usage is calculated for each project.
