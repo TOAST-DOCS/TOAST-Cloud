@@ -507,7 +507,7 @@ typedef NS_ENUM(NSUInteger, ToastHttpErrorCode) {
     ToastHttpErrorRequestInvalid = 103,             // 要請の誤り 
     ToastHttpErrorURLInvalid = 104,                 // URLの誤り 
     ToastHttpErrorResponseInvalid = 105,            // 応答の誤り 
-    ToastHttpErrorAlreadyInprogress = 106,          // 要請がすで進行中 
+    ToastHttpErrorAlreadyInprogress = 106,          // 要請がすでに進行中 
     ToastHttpErrorRequiresSecureConnection = 107,   // Allow Arbitrary Loadsを設定しない 
 }; 
 ``` 
