@@ -5,9 +5,9 @@
 
 ## Prerequisites
 
-1. [TOAST SDK](./getting-started-ios)をインストールします。
-2. [TOASTコンソール](https://console.cloud.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
-3. Log & Crash Searchで、[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
+1\. [TOAST SDK](./getting-started-ios)をインストールします。
+2\. [TOASTコンソール](https://console.cloud.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+3\. Log & Crash Searchで、[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 
 ## TOAST Logger構成
 
@@ -51,62 +51,61 @@ end
 * **CrashReporter.framewor**を直接ダウンロードするか、ビルドした場合は**Build Settings**の**Enable Bitcode**の値を**NO**に変更する必要があります。
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
-
 > TOASTの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。
 
-## TOAST Symbol Uploader 적용
+## TOAST Symbol Uploader適用
 
-### 프로젝트의 디버그 설정 변경
-* 빌드 설정을 변경하여 프로젝트의 디버그 정보 형식을 변경해야합니다.
+### プロジェクトのデバッグ設定を変更
+* ビルド設定を変更してプロジェクトのデバッグ情報形式を変更する必要があります。
 * Xcode -> Project Target -> Build Settings -> Debug Information Format -> Debug -> DWARF with dSYM File
 
-### 개발 환경에서 Run Script를 사용하여 자동 업로드
+### 開発環境でRun Scriptを使用して自動アップロード
 
 * Xcode -> Project Target -> Build Phases -> + -> New Run Script Phase
-* 표시되는 새 Run Script 섹션을 펼칩니다.
-* Shell(셸) 필드 아래에 있는 스크립트 필드에서 새 실행 스크립트를 추가합니다.
+* 表示される新しいRun Scriptセクションを展開します。
+* Shell(シェル)フィールドの下にあるスクリプトフィールドで新しい実行スクリプトを追加します。
 ```
 if [ "${CONFIGURATION}" = "Debug" ]; then
     ${PODS_ROOT}/ToastSymbolUploader/toastcloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
-* LOG_N_CRASH_SEARCH_APPKEY에는 Log&Crash Search의 AppKey를 입력해야합니다.
-* Run Script 섹션 하단의 Input Files에 dSYM의 기본 경로를 설정합니다.
+* LOG_N_CRASH_SEARCH_APPKEYにはLog&Crash SearchのAppKeyを入力する必要があります。
+* Run Scriptセクションの下にあるInput FilesにdSYMの基本パスを設定します。
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
 ![symbol_uploader_script_pods_path](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path.png)
 
-### Symbol Uploader를 사용하여 직접 업로드
+### Symbol Uploaderを使用して直接アップロード
 
-* SymbolUploader 사용법
+* SymbolUploaderの使い方
 
 ```
 USAGE: symbol-uploader -ak <ak> -pv <pv> [-sz <sz>] <path> [--verbose]
 
 ARGUMENTS:
-  <path>                  dSYM file path is must be entered.
+  <path>                  dSYM file path is must be entered. 
 
 OPTIONS:
-  -ak, --app-key <ak>     [Log&Crash Search]'s AppKey must be entered.
+  -ak, --app-key <ak>     [Log&Crash Search]'s AppKey must be entered. 
   -pv, --project-version <pv>
-                          Project version must be entered.
+                          Project version must be entered. 
   -sz, --service-zone <sz>
                           You can choose between real, alpha, and demo. (default: real)
-  --verbose               Show more debugging information
+  --verbose               Show more debugging information 
   -h, --help              Show help information.
 
 ```
 
-* Xcode의 Run Script를 사용하지 않고 사용자가 원하는 시점에 아래와 같은 방법으로 SymbolUploader를 사용하여 직접 Symbol을 업로드 할 수 있습니다.
+* XcodeのRun Scriptを使用せずにユーザーが任意の時点で、次のような方法でSymbolUploaderを使用して直接Symbolをアップロードできます。
 
 ```
 ./SymbolUploader --app-key {APP_KEY} --project-version {CFBundleShortVersionString || MARKETING_VERSION} {symbol path(~/Project.dSYM)}
 ```
 
-> `동일한 버전의 Symbol이 이미 업로드되어 있는 경우 SymbolUploader는 업로드되어 있는 Symbol을 제거하고 업로드를 수행합니다.`
-> 이때 두 Symbol 파일의 `파일명이 다를 경우 업로드되어 있던 Symbol은 제거되지 않습니다.`
-> Log & Crash Search 콘솔에서 업로드되어 있는 Symbol을 제거해야 합니다.
-> https://console.toast.com/-> 조직 선택 -> 프로젝트 선택 -> Anaytics -> Log & Crash Search -> 설정 -> 심벌 파일
+> `同じバージョンのSymbolがすでにアップロードされている場合、SymbolUploaderはアップロードされているSymbolを削除してアップロードを実行します。`
+> この時、2つのSymbolファイルの`ファイル名が異なる場合、アップロードされていたSymbolは削除されません。`
+> Log & Crash SearchコンソールからアップロードされているSymbolを削除する必要があります。
+> https://console.toast.com/→組織選択→プロジェクト選択→ Anaytics → Log & Crash Search →設定→シンボルファイル
 
 ### CrashReport 使用時注意事項
 
@@ -117,11 +116,10 @@ OPTIONS:
 
 * Log & Crash Searchで発行されたAppKeyを設定します。
 
-
 ### 初期化API仕様
 
 ``` objc
-// 초기화
+// 初期化
 + (void)initWithConfiguration:(ToastLoggerConfiguration *)configuration;
 ```
 
@@ -204,7 +202,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 #### CrashReporter有効化
 ```objc
 // CrashReporter Enable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
                                                                         enableCrashReporter:YES];
 
 [ToastLogger initWithConfiguration:configuration];
@@ -212,7 +210,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 #### CrashReporter無効化
 ```objc
 // CrashReporter Disable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"
+ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
                                                                         enableCrashReporter:NO];
 
 [ToastLogger initWithConfiguration:configuration];
@@ -245,10 +243,8 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 
 ### Delegate API仕様
-
 ```objc
 + (void)setDelegate:(id<ToastLoggerDelegate>) delegate;
-@end
 ```
 
 ### Delegate API仕様
@@ -287,12 +283,12 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
     // ...
 
-    // 초기화
-    ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"
+    // 初期化
+    ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
                                                                             enableCrashReporter:YES];
     [ToastLogger initWithConfiguration:configuration];
 
-    // Delegate 설정
+    // Delegate設定
     [[ToastLogger setDelegate:self];
 
     return YES;
