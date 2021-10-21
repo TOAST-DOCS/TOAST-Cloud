@@ -20,7 +20,7 @@
 
 - Unity Editor で、Build Settings ウィンドウを開きます。 （Player Settings> Publishing Settings> Build）。
 - Build System リストから Gradle を選択します。
-- Build System サブのチェックボックスを選択して、Custom Gralde Template を使用します。
+- Build System サブのチェックボックスを選択して、Custom Gradle Template を使用します。
 - mainTemplate.gradle の dependencies 項目に下記の内容を追加します。
 
 ```groovy
