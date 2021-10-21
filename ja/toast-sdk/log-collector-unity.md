@@ -7,7 +7,7 @@
 3. Log & Crash Search で、[AppKey を確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 4. [TOAST SDK を初期化](./getting-started-unity#toast-sdk_1)します。
 
-## 지원 플랫폼
+## サポートプラットフォーム
 
 - iOS
 - Android
@@ -20,11 +20,10 @@
 
 - Unity Editor で、Build Settings ウィンドウを開きます。 （Player Settings> Publishing Settings> Build）。
 - Build System リストから Gradle を選択します。
-- Build System サブのチェックボックスを選択して、Custom Gradle Template を使用します。
+- Build System サブのチェックボックスを選択して、Custom Gralde Template を使用します。
 - mainTemplate.gradle の dependencies 項目に下記の内容を追加します。
 
 ```groovy
-
 apply plugin: 'com.android.application'
 
 repositories {
@@ -50,19 +49,19 @@ dependencies {
 | Edit > Project Settings > Player | Debugging and crash reporting | Enable CrashReport API     | Disabled      |
 | Edit > Project Settings > Player | Other Settings                | Script Call Optimization   | Slow and Safe |
 
-#### On .Net UnhandledException
+##### On .Net UnhandledException
 
 - **Silent Exit**値を推奨します。
   - On .Net UnhandledException を Crash に設定すると、例外発生時に即時にアプリが終了します。
   - Silent Exit に設定すると、Unity Exception をキャプチャできます。
 
-#### Enable CrashReport API
+##### Enable CrashReport API
 
 - **Disabled**値を推奨します。
   - Unity CrashReporter API が有効になっているかを表す値です。
   - 有効になっていれば、Logger のクラッシュログ収集に影響を与えることがあります。
 
-#### Script Call Optimization
+##### Script Call Optimization
 
 - **Slow and Safe**値を推奨します。
   - Runtime C# Crash ログを収集したい場合、Slow and Safe に設定する必要があります。
@@ -204,6 +203,10 @@ TOAST Logger では、Unity のクラッシュを大きく 2 つに分類しま�
 - ネイティブプラットフォームで発生したクラッシュ(アプリが強制終了する)
 - Unity で発生した予期せぬ例外(アプリが強制終了しない)
 
+> **なぜLogExceptionとして出力されたログもクラッシュログとして収集するのですか？**
+> サードパーティライブラリの中にLogExceptionを通してユーザーコードの例外を表示する場合が稀にあるからです。
+> クラッシュログをフィルタリングしたい場合は、以下の**クラッシュログフィルタリングを行う**を参照してください。
+
 ToastLogger を初期化すると、モバイル環境でクラッシュが発生した場合、または Unity で予期せぬ例外が発生した場合、自動的にクラッシュログが送信されます。
 クラッシュログの送信を無効化したい場合は、下記のように ToastLoggerConfiguration オブジェクトの EnableCrashReporter プロパティを false に設定してください。
 各プラットフォーム別のクラッシュログ情報は、下記のリンクを確認してください。
@@ -247,6 +250,37 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
         Application.Quit();
     }
 });
+```
+
+## クラッシュログフィルタリングを行う
+
+- Unityを利用していると、収集を望まない例外ログやクラッシュログが収集されることがあります。
+- TOAST Loggerは、収集を望まないクラッシュログをフィルタリングする機能をサポートします。
+  - この機能はUnityの例外に限定した機能です。
+
+### AddCrashFilter APIの仕様
+
+```csharp
+public delegate bool CrashFilter(CrashLogData logData);
+
+public class CrashLogData
+{
+    public LogType LogType { get; }
+
+    public string Condition { get; }
+
+    public string StackTrace { get; }
+}
+
+public static void AddCrashFilter(CrashFilter filter);
+```
+
+- CrashLogDataのプロパティは、[Application.LogCallbackの引数と同じ](https://docs.unity3d.com/ScriptReference/Application.LogCallback.html)です。
+
+### AddCrashFilter APIの使用例
+
+```csharp
+ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("UnityEngine.Debug.Log"));
 ```
 
 ## Handled Exception 送信
