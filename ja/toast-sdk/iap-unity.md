@@ -10,7 +10,7 @@
 ### Gradleビルド設定
 - Unity Editorで、Build Settingsウィンドウを開きます。 （Player Settings> Publishing Settings> Build）。
 - Build SystemリストからGradleを選択します。
-- Build Systemサブのチェックボックスを選択して、Custom Gradle Templateを使用します。
+- Build Systemサブのチェックボックスを選択して、Custom Gralde Templateを使用します。
 - mainTemplate.gradleのdependencies項目に下記の内容を追加します。
 
 #### Google Play Store
@@ -185,11 +185,6 @@ ToastIap.Purchase(productId);
 
 ```csharp
 var productId = userSelectedProductId;
-ToastIap.Purchase(productId);
-```
-
-```csharp
-var productId = userSelectedProductId;
 ToastIap.Purchase(productId, developerPayload);
 ```
 
@@ -221,7 +216,6 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
     - 決済が完了したサブスクリプション商品は、使用期間が残っている場合、継続して復元できます。
     - サブスクリプション商品の復元照会の結果は[IapPurchase](./iap-unity/#iappurchase)オブジェクトのリストで返されます。
 - iOSでのみ購読した商品を復元できます。
-    - ユーザーのAppStoreアカウントで購入した履歴を元に購入履歴を復元してIAPコンソールに反映します。  
 
 ### サブスクリプション復元APIの仕様
 
@@ -323,9 +317,9 @@ public enum StoreCode
 
 | Value | Description |
 |---|---|
-| GooglePlayStore | GooglePlayStore(Android Only) |
-| AppleAppStore | AppleAppStore(iOS Only) |
-| OneStore | OneStore(Android Only) |
+| GooglePlayStore | Google Play Store(Android Only) |
+| AppleAppStore | Apple App Store(iOS Only) |
+| OneStore | One Store(Android Only) |
 
 ### ToastResult<T>
 ```csharp
@@ -539,7 +533,6 @@ public enum Status
 | 53001 | Galaxy storeサービスが更新またはインストールされていません。 |
 | 53002 | 正常ではないアプリから決済をリクエストしました。 |
 | 51003 | 決済のリクエストに失敗しました。 |
-
 
 ## FAQ
 ### Android
