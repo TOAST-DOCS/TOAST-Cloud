@@ -218,7 +218,7 @@ options.soundEnabled = YES;         // 通知音使用設定(default : YES)
 
 * 韓国における情報通信網法の規定(第50条から第50条の8)に基づき、トークン登録時の通知/広報性/夜間の広報性Pushメッセージ受信に関して、同意するかも、同時に入力されます。メッセージの送信時に、ユーザーが受信同意をしているかを基準に自動的にフィルタリングします。
     * [KISAガイドへのショートカット（韓国語）](https://spam.kisa.or.kr/spam/sub62.do)
-    * [法令へのショートカット（韓国語）](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+    * [法令へ（韓国語）](http://www.law.go.kr/法令/情報通信網の利用促進および情報保護などに関する法律/%2820130218,11322,20120217%29/第50条)
 * [ToastPushAgreement](./push-ios/#toastpushagreement) オブジェクトにユーザー通知メッセージの同意情報を設定します。
 ### トークン登録、および受信同意設定API
 
@@ -433,7 +433,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 ### Notification Service Extension設定
 
-* アプリのプロジェクト設定と同様に、Extensionの[プロジェクト設定](./push-ios/#프로젝트-설정)を追加します。
+* アプリのプロジェクト設定と同様に、Extensionの[プロジェクト設定](./push-ios/#プロジェクト-設定)を追加します。
 * `iOSのExtensionはアプリと一緒にインストールされますが、アプリとは分離された別のサンドボックス環境であるため、コンテナを共有することはできません。`
 
 ### Notification Service Extension設定例
