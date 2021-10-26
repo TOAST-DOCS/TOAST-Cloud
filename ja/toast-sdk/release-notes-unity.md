@@ -1,5 +1,14 @@
 ## TOAST > TOAST SDK 使用ガイド > リリースノート > Unity
 
+## 0.23.5 (2021.10.26)
+
+Download : [toast-sdk-unity-0.23.5.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.23.5/toast-sdk-unity-0.23.5.zip)
+
+### plugin version
+
+* Android : 0.27.4
+* iOS : 0.29.1
+
 ## 0.23.4 (2021.09.28)
 
 Download : [toast-sdk-unity-0.23.4.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.23.4/toast-sdk-unity-0.23.4.zip)
@@ -43,7 +52,7 @@ Download : [toast-sdk-unity-0.23.0.zip](https://static.toastoven.net/toastcloud/
 ### 機能追加
 
 * TOAST IAP
-    * 월 결제 한도 기능 추가
+    * 月決済限度機能を追加
 
 ### plugin version
 
@@ -55,8 +64,8 @@ Download : [toast-sdk-unity-0.22.1.zip](https://static.toastoven.net/toastcloud/
 
 ### バグ修正
 
-* Obsolete warning 대응
-    * Unity 2020.2.x 이상에서 UnityWebRequest 관련 메서드가 deprecated 되어 발생하는 warning 대응
+* Obsolete warning対応
+    * Unity 2020.2.x以上でUnityWebRequest関連メソッドがdeprecatedされて発生するwarningに対応
 
 ### plugin version
 
@@ -69,7 +78,7 @@ Download : [toast-sdk-unity-0.22.0.zip](https://static.toastoven.net/toastcloud/
 ### 機能追加
 
 * TOAST IAP
-    * 구글 구독 상태 조회 API 추가
+    * Googleサブスクリプション状態照会APIを追加
 
 ### plugin version
 
@@ -81,7 +90,7 @@ Download : [toast-sdk-unity-0.21.6.zip](https://static.toastoven.net/toastcloud/
 
 ### バグ修正
 
-- File 충돌 버그 수정
+- File衝突バグを修正
 
 ### plugin version
 

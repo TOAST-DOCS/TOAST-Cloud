@@ -77,7 +77,7 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 3. 組織ガバナンス設定の**IP ACL設定**でIP ACLを設定し、管理できます。
    * サービス設定
        * 共通設定：すべてのサービスに同じようにIP ACLを設定できます。
-       * サービスの設定：各サービス(Cloud、Online Contact Workplace | Dooray!など)ごとにIP ACLを設定できます。
+       * サービスの設定：各サービス(Cloud Console、Online Contact, Dooray!など)ごとにIP ACLを設定できます。
    * IP ACL
         * 設定しない：すべてのIP(またはIP帯域)からコンソールにアクセスできます。
         * 許可したIP(またはIP帯域)のみコンソールアクセス：入力したIP(またはIP帯域)からのみコンソールにアクセスできます。アクセスを許可するIPまたはIP帯域を入力します。
@@ -100,7 +100,7 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 
 * サービス設定
     * 共通設定：すべての組織サービスに同じように2次認証を設定します。
-    * サービス別設定：各サービス\(Cloud Console\, Online Contactm Workplace \| Dooray\!など\)ごとに2次認証を設定できます。
+    * サービス別設定：各サービス(Cloud Console, Online Contact, Dooray!など)ごとに2次認証を設定できます。
 * 2次認証設定
     * 設定しない：2次認証を行わず、IDとパスワードの入力だけでログインできます。
     * Google OTP：IDとパスワードを入力した後、Google OTPアプリで提供したOne Time Passwordを入力してログインできます。
@@ -168,6 +168,8 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 * プロジェクト作成後、協業が必要な場合はプロジェクトメンバーに追加して一緒に使用できます。
 
 ### プロジェクト作成ガイド
+![console_guide_5_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202109_jp.png)
+![console_guide_6_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202109_jp.png)
 
 
 1. 組織を作成すると、**新しいプロジェクト作成**ボタンが有効になります。**新しいプロジェクト作成**ボタンをクリックし、プロジェクトを作成します。
@@ -222,12 +224,12 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 
 ### NHN Cloud会員とIAM会員ポリシー
 
-| 区分 | [TOAST.com](http://TOAST.com)会員 | IAM会員 |
+| 区分 | [NHN Cloud](http://TOAST.com)会員 | IAM会員 |
 | --- | --- | --- |
-| 定義      | \- 組織管理のためのメンバー<br>\- NHN Cloud利用約款に同意したNHN Cloud会員で、サービス利用に対する責任と義務を有するメンバー<br>\- NHN Cloudサービス全体で有効なメンバーで、所属した組織が削除されてもNHN Cloud会員に存在 | \- サービス利用のためのメンバー<br>\- NHN Cloud利用約款に同意しないメンバー<br>\- 組織内でのみ有効なメンバー、所属した組織が削除されると削除されるメンバー | 
-| メンバー登録方法 | \- 組織のOWNERまたはAdminがNHN Cloud IDを入力して登録 | \- 組織のOWNERまたはAdminが組織内で唯一のIDを入力して登録<br>\- SSO連動/API連携などを通して登録 |
-| メンバー権限 | \- 組織管理\(組織作成/修正/組織メンバー管理/組織サービス管理/決済管理\)<br>\- プロジェクト作成<br>\- プロジェクト削除 | \- 組織サービス利用 |
-| コンソールアクセス | \- NHN Cloudコンソール\([https://console.toast.com/](https://console.toast.com/)アクセス<br>\- NHN Cloud\> 会員ID/パスワードでログイン<br>\- \(任意\) 2次\(メールまたはSMS\)認証 | \- IAMコンソール\([https://組織ドメイン.console.toast.com/](https://%EC%A1%B0%EC%A7%81%EB%8F%84%EB%A9%94%EC%9D%B8.console.toast.com/))アクセス<br>\- \(Dooray\!、ERPサービスは該当サービスドメインでアクセス\)<br>\- 組織のOWNER\(またはADMIN\)が設定したID/PWでログイン\- 組織で設定したログインセキュリティ\(2次認証、サービス別設定\)認証 |
+| 定義      | - 組織管理のためのメンバー<br>- NHN Cloud利用約款に同意したNHN Cloud会員で、サービス利用に対する責任と義務を有するメンバー<br>- NHN Cloudサービス全体で有効なメンバーで、所属した組織が削除されてもNHN Cloud会員に存在 | - サービス利用のためのメンバー<br>- NHN Cloud利用約款に同意しないメンバー<br>- 組織内でのみ有効なメンバー、所属した組織が削除されると削除されるメンバー | 
+| メンバー登録方法 | - 組織のOWNERまたはAdminがNHN Cloud IDを入力して登録 | - 組織のOWNERまたはAdminが組織内で唯一のIDを入力して登録<br>- SSO連動/API連携などを通して登録 |
+| メンバー権限 | - 組織管理(組織作成/修正/組織メンバー管理/組織サービス管理/決済管理)<br>- プロジェクト作成<br>- プロジェクト削除 | - 組織サービス利用 |
+| コンソールアクセス | - NHN Cloudコンソール([https://console.toast.com/](https://console.toast.com/)アクセス<br>- NHN Cloud> 会員ID/パスワードでログイン<br>- (任意) 2次(メールまたはSMS)認証 | - IAMコンソール([https://組織ドメイン.console.toast.com/](https://%EC%A1%B0%EC%A7%81%EB%8F%84%EB%A9%94%EC%9D%B8.console.toast.com/))アクセス<br>- (Dooray!、ERPサービスは該当サービスドメインでアクセス)<br>- 組織のOWNER(またはADMIN)が設定したID/PWでログイン- 組織で設定したログインセキュリティ(2次認証、サービス別設定)認証 |
 
 
 ### 組織メンバー

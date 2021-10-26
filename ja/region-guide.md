@@ -56,7 +56,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | EasyCache | リージョン | O | O | O |  |
 |  | MS-SQL Instance | リージョン | O | O | O | O |
 |  | MySQL Instance | リージョン | O | O | O | O |
-|  | PostgreSQL Instance | リージョン | O | O | O  |O  |
+|  | PostgreSQL Instance | リージョン | O | O | O | O |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
 |  | Leaderboard | グローバル |  |  |  |  |
@@ -83,6 +83,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | KakaoTalk Bizmessage | リージョン | O |  |  |  |
 | AI Service | Face Recognition | リージョン | O | O |  |  |
 |  | AI Fashion | リージョン | O | O | O |  |  |
+|  | Document OCR | グローバル |  |  |  |  |  |
 | Application Service | Maps | リージョン | O |  |  |  |
 |  | ROLE | グローバル |  |  |  |  |
 |  | API Gateway | リージョン | O |  |  |  |

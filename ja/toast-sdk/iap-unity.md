@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.27.3'
+    implementation 'com.toast.android:toast-unity-iap-google:0.27.4'
 **DEPS**}
 ```
 
@@ -40,7 +40,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.27.3'
+    implementation 'com.toast.android:toast-unity-iap-onestore:0.27.4'
 **DEPS**}
 ```
 
@@ -55,7 +55,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-galaxy:0.27.3'
+    implementation 'com.toast.android:toast-unity-iap-galaxy:0.27.4'
 **DEPS**}
 ```
 
@@ -174,14 +174,9 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 public static void Purchase(string productId, developerPayload = "");
 ```
 
-- TOAST IAP는 구매 요청 시 developerPayload를 통해 사용자 정보를 추가할 수 있습니다.
+- TOAST IAPは購入リクエスト時にdeveloperPayloadを介してユーザー情報を追加できます。
 
 ### 商品購入例
-
-```csharp
-var productId = userSelectedProductId;
-ToastIap.Purchase(productId);
-```
 
 ```csharp
 var productId = userSelectedProductId;
@@ -216,27 +211,26 @@ ToastIap.RequestConsumablePurchases((result, purchases) =>
 });
 ```
 
-## 구독 복원
-- User ID 기준으로 구독 상품을 복원할 수 있습니다.
-    - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 복원할 수 있습니다.
-    - 구독 상품 복원 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
-- iOS에서만 구독한 상품을 복원 가능합니다.
-    - 사용자의 AppStore 계정으로 구매한 내역을 기준으로 구매 내역을 복원하여 IAP 콘솔에 반영합니다.  
+## サブスクリプションの復元
+- User IDごとにサブスクリプション商品を復元できます。
+    - 決済が完了したサブスクリプション商品は、使用期間が残っている場合、継続して復元できます。
+    - サブスクリプション商品の復元照会の結果は[IapPurchase](./iap-unity/#iappurchase)オブジェクトのリストで返されます。
+- iOSでのみ購読した商品を復元できます。
 
-### 구독 복원 API 명세
+### サブスクリプション復元APIの仕様
 
 ```csharp
 public static void RequestRestorePurchases(ToastCallback<List<IapPurchase>> callback);
 ```
 
-### 구독 복원 예시
+### サブスクリプションの復元例
 
 ```csharp
 ToastIap.RequestRestorePurchases((result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 구독 복원 조회 성공
+        // サブスクリプションの復元照会成功
     }
 });
 ```
@@ -265,14 +259,14 @@ ToastIap.RequestActivatedPurchases((result, purchases) =>
 });
 ```
 
-## 구독 상태 조회
+## サブスクリプション状態照会
 
-- User ID 기준으로 구입한 구독 상품의 상태를 조회할 수 있습니다.
-- 구독 상태 조회 결과는 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체의 리스트로 반환됩니다.
-- 구독 상태는 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus).GetStatus() 메서드로 확인할 수 있습니다.
-- 구독 상태 코드는 [IapSubscriptionStatus.Status](./iap-android/#iapsubscriptionstatusstatus)에 정의되어 있습니다.
+- 各User IDで購入したサブスクリプション商品の状態を照会できます。
+- サブスクリプション状態の照会結果は[IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus)オブジェクトのリストで返されます。
+- サブスクリプションの状態は[IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus).GetStatus()メソッドで確認できます。
+- サブスクリプションのステータスコードは[IapSubscriptionStatus.Status](./iap-android/#iapsubscriptionstatusstatus)に定義されています。
 
-### 구독 상태 조회 API 명세
+### サブスクリプション状態照会APIの仕様
 
 ```csharp
 public static void RequestSubscriptionsStatus(
@@ -280,14 +274,14 @@ public static void RequestSubscriptionsStatus(
             ToastCallback<List<IapSubscriptionStatus>> callback);
 ```
 
-### 구독 상태 조회 예시
+### サブスクリプションの状態照会例
 
 ```csharp
 ToastIap.RequestSubscriptionsStatus(true, (result, subscriptionsStatus) =>
 {
     if (result.IsSuccessful)
     {
-        // 성공
+        // 成功
     }
 });
 ```
@@ -323,9 +317,9 @@ public enum StoreCode
 
 | Value | Description |
 |---|---|
-| GooglePlayStore | GooglePlayStore(Android Only) |
-| AppleAppStore | AppleAppStore(iOS Only) |
-| OneStore | OneStore(Android Only) |
+| GooglePlayStore | Google Play Store(Android Only) |
+| AppleAppStore | Apple App Store(iOS Only) |
+| OneStore | One Store(Android Only) |
 
 ### ToastResult<T>
 ```csharp
@@ -438,20 +432,20 @@ public class IapSubscriptionStatus
 
 | Method | Returns | Description |
 |---|---|---|
-| GetProductId | string | 결제 ID |
-| GetProductType | string | 결제 고유 번호 |
-| GetPaymentId | string | 원본 결제 ID |
-| GetOriginalPaymentId | string | 상품 ID |
-| GetPaymentSequence | string | 상품 유형 |
-| GetUserId | string | 사용자 ID |
-| GetPrice | float | 가격 |
-| GetPriceCurrencyCode | string | 통화 정보 |
-| GetAccessToken | string | 소비에 사용되는 토큰 |
-| GetPurchaseTime | long | 상품 구매 시간 |
-| GetExpiryTime | long | 구독 상품의 남은 시간 |
-| GetDeveloperPayload | string | 개발자 페이로드 |
-| GetStatus | Status | 구독 상태 |
-| GetStatusDescription | string | 구독 상태 설명 |
+| GetProductId | string | 決済ID |
+| GetProductType | string | 決済固有番号 |
+| GetPaymentId | string | 元の決済ID |
+| GetOriginalPaymentId | string | 商品ID |
+| GetPaymentSequence | string | 商品タイプ |
+| GetUserId | string | ユーザーID |
+| GetPrice | float | 価格 |
+| GetPriceCurrencyCode | string | 通貨情報 |
+| GetAccessToken | string | 消費に使用されるトークン |
+| GetPurchaseTime | long | 商品購入時間 |
+| GetExpiryTime | long | サブスクリプション商品の残り時間 |
+| GetDeveloperPayload | string | 開発者ペイロード |
+| GetStatus | Status | サブスクリプションの状態 |
+| GetStatusDescription | string | サブスクリプション状態の説明 |
 
 ### IapSubscriptionStatus.Status
 
@@ -471,75 +465,74 @@ public enum Status
 
 | Name | Code | Status | Description |
 | --- | --- | --- | --- |
-| Active | 0 | 활성 | 구독이 활성 상태입니다. |
-| Canceled | 3 | 취소 | 구독이 취소되었습니다. |
-| OnHold | 5 | 계정 보류 | 정기 결제가 계정 보류 상태가 되었습니다(사용 설정된 경우). |
-| InGracePeriod | 6 | 유예 기간 | 정기 결제가 유예 기간 상태로 전환되었습니다(사용 설정된 경우). |
-| Paused | 10 | 일시 중지 | 구독이 일시 중지되었습니다. |
-| Revoked | 12 | 해지 | 정기 결제가 만료 시간 전에 사용자에 의해 취소되었습니다. |
-| Expired | 13 | 만료 | 정기 결제가 만료되었습니다. |
-| Unknown | 9999 | 미정의 | 정의 되지 않은 상태입니다. |
+| Active | 0 | アクティブ | サブスクリプションがアクティブ状態です。 |
+| Canceled | 3 | キャンセル | サブスクリプションがキャンセルされました。 |
+| OnHold | 5 | アカウント保留 | 定期決済がアカウント保留状態になりました(使用する設定になっている場合)。 |
+| InGracePeriod | 6 | 猶予期間 | 定期決済が猶予期間状態に変わりました(使用する設定になっている場合)。 |
+| Paused | 10 | 一時停止 | サブスクリプションが一時停止しました。 |
+| Revoked | 12 | 解約 | 定期決済が有効期限前にユーザーによってキャンセルされました。 |
+| Expired | 13 | 有効期限切れ | 定期決済の期限が切れました。 |
+| Unknown | 9999 | 未定義 | 定義されていない状態です。 |
 
-## 오류 코드
+## エラーコード
 
-### 공통 오류 코드
-| 에러 코드 | 설명 |
+### 共通エラーコード
+| エラーコード | 説明 |
 |---|---|
-| 50000 | 초기화 되지 않았습니다 |
-| 50001 | 지원하지 않는 기능입니다 |
-| 50002 | 지원하지 않는 스토어 코드입니다 |
-| 50003 | 사용할 수 없는 상품입니다 |
-| 50004 | 이미 소유중인 상품입니다 |
-| 50006 | 사용자 아이디가 잘못되었습니다 |
-| 50007 | 사용자가 결제를 취소했습니다 |
-| 50009 | 영수증 검증에 실패했습니다 |
-| 50011 | 구독 갱신이 실패했습니다 |
-| 50015 | 소유하고 있지 않은 상품입니다. |
-| 50103 | 이미 소비된 상품 입니다. |
-| 50104 | 이미 환불된 상품 입니다. |
-| 50105 | 구매 한도를 초과했습니다. |
-| 59999 | 알 수 없는 에러입니다. 에러 메시지를 확인해주세요. |
+| 50000 | 初期化されていません |
+| 50001 | サポートしていない機能です |
+| 50002 | サポートしないストアコードです |
+| 50003 | 使用できない商品です |
+| 50004 | すでに所有している商品です |
+| 50006 | ユーザーIDが間違っています |
+| 50007 | ユーザーが決済をキャンセルしました |
+| 50009 | 領収書の検証に失敗しました |
+| 50011 | サブスクリプションの更新が失敗しました |
+| 50015 | 所有していない商品です。 |
+| 50103 | すでに消費した商品です。 |
+| 50104 | すでに返金された商品です。 |
+| 50105 | 購入限度を超過しました。 |
+| 59999 | 不明なエラーです。エラーメッセージを確認してください。 |
 
-### 서버 오류 코드
+### サーバーエラーコード
 
-| 에러 코드 | 설명 |
+| エラーコード | 説明 |
 |---|---|
-| 10000 | 잘못된 요청입니다. |
-| 10002 | 네트워크가 연결되지 않았습니다. |
-| 10003 | 서버 응답이 실패했습니다. |
-| 10004 | 타임아웃이 발생했습니다. |
-| 10005 | 유효하지 않은 서버 응답값입니다. |
-| 10010 | 활성화 되지 않은 앱입니다. |
+| 10000 | 無効なリクエストです。 |
+| 10002 | ネットワークが接続されていません。 |
+| 10003 | サーバーレスポンスが失敗しました。 |
+| 10004 | タイムアウトが発生しました。 |
+| 10005 | 有効ではないサーバーレスポンス値です。 |
+| 10010 | 有効になっていないアプリです。 |
 
-### App store 오류 코드
+### App storeエラーコード
 
-| 에러 코드 | 설명 |
+| エラーコード | 説明 |
 |---|---|
-| 50005 | 이미 진행중인 요청이 있습니다. |
-| 50008 | 스토어에서 결제가 실패했습니다 |
-| 50010 | 구매상태 변경에 실패했습니다 |
-| 50012 | 환불로 인해 구매를 진행할 수 없습니다 |
-| 50013 | 복원에 실패했습니다. |
-| 50014 | 구매 진행 불가 상태입니다. (e.g. 앱 내 구입 제한 설정) |
+| 50005 | すでに進行中のリクエストがあります。 |
+| 50008 | ストアで決済が失敗しました |
+| 50010 | 購入状態の変更に失敗しました |
+| 50012 | 返金により購入を進めることができません |
+| 50013 | 復元に失敗しました。 |
+| 50014 | 購入進行不可状態です。 (e.g. アプリ内の購入制限設定) |
 
-### ONE store 오류 코드
+### ONE storeエラーコード
 
-| 에러 코드 | 설명 |
+| エラーコード | 説明 |
 |---|---|
-| 51000 | ONE store 서비스에 로그인되어 있지 않습니다. |
-| 51001 | ONE store 서비스가 업데이트 또는 설치되지 않았습니다. |
-| 51002 | 비정상 앱에서 결제를 요청하였습니다. |
-| 51003 | 결제 요청에 실패했습니다. |
+| 51000 | ONE storeサービスにログインしていません。 |
+| 51001 | ONE storeサービスが更新またはインストールされていません。 |
+| 51002 | 正常ではないアプリから決済をリクエストしました。 |
+| 51003 | 決済のリクエストに失敗しました。 |
 
-### Galaxy store 오류 코드
+### Galaxy storeエラーコード
 
-| 에러 코드 | 설명 |
+| エラーコード | 説明 |
 |---|---|
-| 53000 | Galaxy store 서비스에 로그인되어 있지 않습니다. |
-| 53001 | Galaxy store 서비스가 업데이트 또는 설치되지 않았습니다. |
-| 53002 | 비정상 앱에서 결제를 요청하였습니다. |
-| 51003 | 결제 요청에 실패했습니다. |
-
+| 53000 | Galaxy storeサービスにログインしていません。 |
+| 53001 | Galaxy storeサービスが更新またはインストールされていません。 |
+| 53002 | 正常ではないアプリから決済をリクエストしました。 |
+| 51003 | 決済のリクエストに失敗しました。 |
 
 ## FAQ
 ### Android

@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > Android
 
+## 0.27.4 (2021.10.26)
+
+### TOAST Push
+
+#### Fixed
+
+* Fixed an error where user notification channel settings were initialized
+
 ## 0.27.3 (2021.09.28)
 
 ### TOAST IAP

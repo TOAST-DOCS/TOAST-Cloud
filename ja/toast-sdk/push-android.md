@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.27.3’
+    implementation 'com.toast.android:toast-push-fcm:0.27.4’
     ...
 }
 ```
@@ -116,7 +116,7 @@ public void onLogin(String userId) {
 ### 受信同意設定
 * 韓国情報通信網法規定(第50条から第50条の8)に従い、トークン登録時の通知/広告性/夜間広告性プッシュメッセージ受信に同意するかも一緒に入力を受けます。メッセージ送信時に受信に同意しているかを基準に自動的にフィルタリングします。
     * [KISAガイドへ](https://spam.kisa.or.kr/spam/sub62.do)
-    * [法令へ](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+    * [法令へ（韓国語）](http://www.law.go.kr/法令/情報通信網の利用促進および情報保護などに関する法律/%2820130218,11322,20120217%29/第50条)
 * ToastPushAgreementに受信同意の可否を設定し、トークン登録時にTOAST Pushサーバーに転送します。
 
 ### トークン登録例
@@ -392,7 +392,7 @@ public class MyApplication extends Application {
 | 返信 (REPLY) | 通知から返信を送ります。 | PushAction.ActionType.REPLY |
 | 通知削除 (DISMISS) | 現在の通知を削除します。 | PushAction.ActionType.DISMISS |
 
-* 답장 (REPLY) 버튼은 안드로이드 7.0(API 레벨 24) 이상부터 사용 가능합니다.
+* 返信(REPLY)ボタンはAndroid 7.0(APIレベル24)以上から使用できます。
 
 > ボタンは最大3個までサポートします。
 
@@ -414,7 +414,7 @@ public class MyApplication extends Application {
 
 #### グループ
 * 同じキーの通知を1つにまとめます。
-* 안드로이드 7.0(API 레벨 24) 이상부터 사용 가능합니다.
+* Android 7.0(APIレベル24)以上から使用できます。
 
 ### 通知アクションリスナー登録
 * ユーザーが通知のボタン、または返信送信ボタンをクリックすると、通知アクション リスナーに通知します。
@@ -539,7 +539,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
         PendingIntent serviceIntent = getNotificationServiceIntent(context, remoteMessage, contentIntent);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YOUR_CHANNE_ID");
-        // (중략)
+        // (中略)
         builder.setContentIntent(serviceIntent);
 
         notify(context, builder.build());
