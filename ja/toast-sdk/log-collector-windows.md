@@ -38,7 +38,7 @@ if (_logger != NULL)
 }
 ```
 
-## TOAST Logger SDK 종료
+## TOAST Logger SDK終了
 
 ```
 DestroyToastLogger();
@@ -172,8 +172,8 @@ loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "エラーが発生�
 if (_logger != NULL)
 {
         bool bInit = _logger->initialize(loggerConf);
-
-	// x86에서 pure virtual call / invalid paramenter 크래시 로그 추가
+	
+	// x86でpure virtual call / invalid paramenterクラッシュログ追加	
 	if (bInit && enableCrashReport)
 	{
 #ifndef _WIN64
