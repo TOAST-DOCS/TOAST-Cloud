@@ -32,6 +32,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | GPU Instance | 리전 | O |  |  |  |
 |  | Instance Template | 리전 | O | O | O | O |
 |  | Image | 리전 | O | O | O | O |
+|  | Image Builder  | 리전 | O | O |  |  |
 |  | Auto Scale | 리전 | O | O | O | O |
 |  | System Monitoring | 리전 | O | O | O | O |
 | Container | Kubernetes | 리전 | O | O |  |  |

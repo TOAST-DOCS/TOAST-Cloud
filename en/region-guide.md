@@ -31,6 +31,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Compute | Instance | Regional | O | O | O | O |
 |  | GPU Instance | Region | O |  |  |  |
 |  | Image | Region | O | O | O | O |
+|  | Image Builder  | Region | O | O |  |  |
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
 | Container | Kubernetes | Regional | O | O |  |  |

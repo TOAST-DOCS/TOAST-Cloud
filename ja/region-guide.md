@@ -32,6 +32,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | GPU Instance | リージョン | O |  |  |  |
 |  | Instance Template | リージョン | O | O | O | O |
 |  | Image | リージョン | O | O | O | O |
+|  | Image Builder  | リージョン | O | O |  |  |
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | System Monitoring | リージョン | O | O | O | O |
 | Container | Kubernetes | リージョン | O | O |  |  |
