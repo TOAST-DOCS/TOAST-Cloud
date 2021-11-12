@@ -132,6 +132,8 @@ Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
 「queries」要素はAndroid Gradle Plugin 4.1以上で動作します。
 以前のバージョンのAndroid Gradle Pluginを使用するには、[Android 11でパッケージ可視性のためにGradleビルド準備](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html)を参照してください。
 
+> <span style="color:#e11d21">**주의!)**</span> QUERY_ALL_PACKAGES 권한을 Google Play Store에 적용하지 않도록 주의하시기 바랍니다.
+
 ## ストアコード
 
 | ストア      | コード      |
