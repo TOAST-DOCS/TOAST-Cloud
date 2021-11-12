@@ -494,13 +494,15 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ### Example of registering in AndroidManifest.xml
 > **(Caution)**
-> When using ToastPushMessageReceiver, you must set permission.
+> 1. When using ToastPushMessageReceiver, you must set permission.
+> 2. API 레벨 31 이상 타겟시 exported 속성을 설정해야 합니다. 
 
 ```xml
 <manifest>
     <application>
     <receiver android:name=".ToastPushSampleReceiver"
-        android:permission="${applicationId}.toast.push.permission.RECEIVE">
+        android:permission="${applicationId}.toast.push.permission.RECEIVE"
+        android:exported="false">
         <intent-filter>
             <action android:name="com.toast.android.push.MESSAGE_EVENT" />
             </intent-filter>
@@ -514,35 +516,58 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ```
 
 ### Adding the Metric Collection Feature (FCM Only)
-* If you create a notification manually, you must set the intent you created using the getNotificationServiceIntent() function as the notification's content intent in order to use the metrics collection feature.
+* 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 getContentIntent() 함수를 사용하여 생성한 인텐트를 알림의 콘텐츠 인텐트로 설정해야합니다.
 
 #### Example of adding the metrics collection feature
 ```java
 public class MyPushMessageReceiver extends ToastPushMessageReceiver {
-    @Override
-    public void onMessageReceived(@NonNull Context context,
-                                  @NonNull ToastRemoteMessage remoteMessage) {
+    private NotificationManager mManager = null;
 
+    @Override
+    public void onMessageReceived(
+            @NonNull Context context,
+            @NonNull ToastRemoteMessage remoteMessage) {
+
+        // 메시지 내용 획득
         ToastPushMessage message = remoteMessage.getMessage();
 
-        // Create a user execution intent
+        //NotificationManager 생성
+        if (mManager == null) {
+            mManager = context.getSystemService(NotificationManager.class);
+            if  (mManager == null) {
+                Log.e(TAG, "Failed to get NotificationManager");
+                return;
+            }
+        }
+
+        // 채널 설정
+        String channelId = "YOUR_CHANNE_ID";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = mManager.getNotificationChannel(channelId);
+            if (channel == null) {
+                String channelName = "YOUR_CHANNE_NAME";
+                createNotificationChannel(channelId, channelName);
+            }
+        }
+
+        // 실행 인텐트 설정
         Intent launchIntent = new Intent(context, MainActivity.class);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(
-                context,
-                REQUEST_CODE,
-                launchIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+        // 지표 전송을 포함한 컨텐츠 인텐트 생성
+        PendingIntent contentIntent;
+        contentIntent = getContentIntent(context, remoteMessage, launchIntent);
 
-        // Provide an execution intent generation feature including the metrics collection
-        PendingIntent serviceIntent = getNotificationServiceIntent(context, remoteMessage, contentIntent);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YOUR_CHANNE_ID");
-        // (Omitted)
-        builder.setContentIntent(serviceIntent);
-
-        notify(context, builder.build());
+        //알림 생성
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
+        builder.setContentTitle("New Message")
+                .setContentText(message.getBody())
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentIntent(contentIntent)
+                .setAutoCancel(true);
+     
+        notify(context, NotificationUtils.createNewId(), builder.build());
     }
+    ...
 }
 ```
 
@@ -793,7 +818,9 @@ public final boolean isAppForeground();
 public final void notify(Context context, ToastRemoteMessage message);
 public final void notify(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
 public final void notify(Context context, int notificationId, Notification notification);
+@Deprecated
 public final PendingIntent getNotificationServiceIntent(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
+public final PendingIntent getContentIntent(Context context, ToastRemoteMessage message, Intent launchIntent);
 ```
 
 | Method | Returns | Parameters | |
@@ -802,7 +829,8 @@ public final PendingIntent getNotificationServiceIntent(Context context, ToastRe
 | notify | | Context, ToastRemoteMessage | Creates and exposes notifications with the default execution intents. |
 | notify | | Context, ToastRemoteMessage, PendingIntent | Creates and exposes notifications with a user execution intent. |
 | notify | | Context, int, Notification | Exposes user notifications with a specific ID. |
-| getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | Returns a user execution intent that includes sending metrics. |
+| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. <br> Android 12 (API 레벨 31) 이상부터 정상 동작 하지 않으며,  getContentIntent()를 사용해야 합니다. |
+| getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
 
 ### ToastNotificationOptions
 * An object that sets priority, small icon, background color, LED, vibration, notification sound, and foreground notification exposure information when setting the default notification options.
