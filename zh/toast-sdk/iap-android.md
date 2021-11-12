@@ -12,6 +12,7 @@
 - [Google Play Store](https://developer.android.com/google/play/billing)
 - [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 - [Galaxy store](https://developer.samsung.com/iap/overview.html)
+- [Amazon Appstore](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 
 ## Library Setting
 - To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
@@ -56,6 +57,19 @@ dependencies {
 
 > Galaxy Store in-app purchases works on Android 4.3 (API level 18) or higher.
 
+- Amazon Appstore의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-iap-amazon:0.28.0'
+    ...
+}
+```
+
 ## AndroidManifest Settings
 
 ### ONE store purchase screen setting (optional)
@@ -78,10 +92,10 @@ If meta-data is not set, the default ("full") is applied.
 
 For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/devpoc/reference/view/Tools).
 
-### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store)
+### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store, Amazon Appstore)
 
 Android 11에서는 앱이 사용자가 기기에 설치한 다른 앱을 쿼리하고 상호작용하는 방법을 변경합니다.
-Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소를 정의해야합니다.
+Android 11 이상을 타겟팅하는 앱에서 ONE store, Galaxy Store 또는 Amazon Appstore 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소 또는 권한을 정의해야합니다.
 
 #### ONE store
 
@@ -105,6 +119,16 @@ Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결
 </queries>
 ```
 
+### Amazon Appstore
+
+Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
+
+```xml
+<uses-permission
+    android:name="android.permission.QUERY_ALL_PACKAGES"
+    tools:ignore="QueryAllPackagesPermission" />
+```
+
 'queries' 요소는 Android Gradle Plugin 4.1 이상에서 동작합니다.
 이전 버전의 Android Gradle Plugin을 사용하려면 [Android 11에서 패키지 가시성을 위해 Gradle 빌드 준비](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html)를 참고하세요.
 
@@ -115,6 +139,7 @@ Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결
 | Google Play Store| "GG" |
 | ONE store | "ONESTORE" |
 | Galaxy store | "GALAXY" |
+| Amazon Appstore | "AMAZON" |
 
 > Note : Store codes are defined in the  [IapStoreCode](./iap-android/#iapstorecode) class.
 
@@ -648,11 +673,13 @@ public void setStoreCode(String storeCode)
 String GOOGLE_PLAY_STORE
 String ONE_STORE
 String GALAXY_STORE
+String AMAZON_APP_STORE
 ```
 
 * GOOGLE_PLAY_STORE<br>Applies Google Play Store in-app purchase.<br>Constant Value: "GG"
 * ONE_STORE<br>Applies ONE store in-app purchase. <br>Constant Value: "ONESTORE"
 * GALAXY_STORE<br>Applies Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
+* AMAZON_APP_STORE<br>Amazon Appstore 인앱 결제를 사용합니다.<br>Constant Value: "AMAZON"
 
 ### IapPurchaseResult
 
