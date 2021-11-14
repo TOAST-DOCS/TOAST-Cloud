@@ -58,8 +58,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | EasyCache | Regional | O | O | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
-|  | PostgreSQL Instance | Regional | O | O | O | O |
-|  | CUBRID Insatnce  | Regional | O | O | O | O |
 |  | MariaDB Instance  | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global |  |  |  |  |

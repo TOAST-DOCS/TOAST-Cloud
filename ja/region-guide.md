@@ -58,8 +58,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | MS-SQL Instance | リージョン | O | O | O | O |
 |  | MySQL Instance | リージョン | O | O | O | O |
 |  | PostgreSQL Instance | リージョン | O | O | O | O |
-|  | CUBRID Insatnce  | リージョン | O | O | O | O |
-|  | MariaDB Instance  | リージョン | O | O | O | O |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
 |  | Leaderboard | グローバル |  |  |  |  |
