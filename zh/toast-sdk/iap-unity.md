@@ -327,7 +327,8 @@ public enum StoreCode
 {
     GooglePlayStore,
     AppleAppStore,
-    OneStore
+    OneStore,
+    AmazonAppStore
 }
 ```
 
@@ -336,6 +337,7 @@ public enum StoreCode
 | GooglePlayStore | 구글 플레이 스토어 (Android Only) |
 | AppleAppStore | 애플 앱 스토어 (iOS Only) |
 | OneStore | 원 스토어 (Android Only) |
+| AmazonAppStore | Amazon Appstore (Android Only) |
 
 ### ToastResult<T>
 ```csharp
