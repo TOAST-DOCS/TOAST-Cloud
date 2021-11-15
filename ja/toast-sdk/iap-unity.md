@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.28.0'
+    implementation 'com.toast.android:toast-iap-google:0.28.0'
 **DEPS**}
 ```
 
@@ -40,7 +40,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.28.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.28.0'
 **DEPS**}
 ```
 
@@ -55,7 +55,22 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-galaxy:0.28.0'
+    implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
+**DEPS**}
+```
+
+#### Amazon Appstore
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'com.android.application'
+
+dependencies {
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.toast.android:toast-iap-amazon:0.28.0'
 **DEPS**}
 ```
 
