@@ -16,16 +16,13 @@
 #### Google Play Store
 
 ```groovy
-apply plugin: 'com.android.application'
-
 repositories {
-    google()
-    mavenCentral()
+  google()
+  mavenCentral()
 }
 
 dependencies {
-	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-iap-google:0.28.0'
+  implementation 'com.toast.android:toast-iap-google:0.28.0'
 **DEPS**}
 ```
 
@@ -33,14 +30,11 @@ dependencies {
 
 ```groovy
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
-apply plugin: 'com.android.application'
-
 dependencies {
-	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-iap-onestore:0.28.0'
+  implementation 'com.toast.android:toast-iap-onestore:0.28.0'
 **DEPS**}
 ```
 
@@ -48,14 +42,11 @@ dependencies {
 
 ```groovy
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
-apply plugin: 'com.android.application'
-
 dependencies {
-	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
+  implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
 **DEPS**}
 ```
 
@@ -63,14 +54,11 @@ dependencies {
 
 ```groovy
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
-apply plugin: 'com.android.application'
-
 dependencies {
-	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-iap-amazon:0.28.0'
+  implementation 'com.toast.android:toast-iap-amazon:0.28.0'
 **DEPS**}
 ```
 
