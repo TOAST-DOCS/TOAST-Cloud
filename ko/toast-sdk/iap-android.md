@@ -9,9 +9,9 @@
 ## 스토어별 인앱 결제 가이드
 
 - [Android Developers 인앱 결제](https://developer.android.com/google/play/billing)
-- [ONE store 인앱결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
-- [Galaxy store 인앱결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
-- [Amazon Appstore 인앱결제 API 안내 및 다운로드](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
+- [ONE store 인앱 결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [Galaxy store 인앱 결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
+- [Amazon Appstore 인앱 결제 API 안내 및 다운로드](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 
 ## 라이브러리 설정
 

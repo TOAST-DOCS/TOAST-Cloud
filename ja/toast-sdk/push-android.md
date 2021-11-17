@@ -496,7 +496,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ### AndroidManifest.xml 登録例
 > **(注意)**
 > 1. ToastPushMessageReceiverを使う場合は、必ずpermissionを設定しなければなりません。
-> 2. API 레벨 31 이상 타겟시 exported 속성을 설정해야 합니다. 
+> 2. API 레벨 31 이상 타겟팅 시 exported 속성을 설정해야 합니다. 
 
 ```xml
 <manifest>
@@ -517,7 +517,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ```
 
 ### 指標収集機能の追加(FCM Only)
-* 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 getContentIntent() 함수를 사용하여 생성한 인텐트를 알림의 콘텐츠 인텐트로 설정해야합니다.
+* 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 getContentIntent() 함수를 사용하여 생성한 인텐트를 알림의 콘텐츠 인텐트로 설정해야 합니다.
 
 #### 指標収集機能追加例
 ```java
@@ -830,7 +830,7 @@ public final PendingIntent getContentIntent(Context context, ToastRemoteMessage 
 | notify | | Context, ToastRemoteMessage | 基本実行インテントで通知を生成および表示します。 |
 | notify | | Context, ToastRemoteMessage, PendingIntent | ユーザー実行インテントで通知を生成および表示します。 |
 | notify | | Context, int, Notification |  ユーザー通知を特定のIDで表示します。 |
-| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. <br> Android 12 (API 레벨 31) 이상부터 정상 동작 하지 않으며,  getContentIntent()를 사용해야 합니다. |
+| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. <br> Android 12 (API 레벨 31) 이상부터 정상 동작 하지 않으며, 대신 getContentIntent()를 사용해야 합니다. |
 | getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
 
 ### ToastNotificationOptions

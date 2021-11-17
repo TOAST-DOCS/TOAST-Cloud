@@ -11,7 +11,7 @@
 - [Android Developers In-App Purchase](https://developer.android.com/google/play/billing)
 - [ONE store In-App Purchase API V5 (SDK V17) Guide and Download](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 - [Galaxy store In-App Purchase API Guide and Download](https://developer.samsung.com/iap/overview.html)
-- [Amazon Appstore 인앱결제 API 안내 및 다운로드](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
+- [Amazon Appstore 인앱 결제 API 안내 및 다운로드](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 
 ## Library Setting
 
