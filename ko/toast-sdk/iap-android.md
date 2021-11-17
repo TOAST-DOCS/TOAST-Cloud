@@ -9,8 +9,9 @@
 ## 스토어별 인앱 결제 가이드
 
 - [Android Developers 인앱 결제](https://developer.android.com/google/play/billing)
-- [ONE store 인앱결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
-- [Galaxy store 인앱결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
+- [ONE store 인앱 결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [Galaxy store 인앱 결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
+- [Amazon Appstore 인앱 결제 API 안내 및 다운로드](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 
 ## 라이브러리 설정
 
@@ -23,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.27.4'
+    implementation 'com.toast.android:toast-iap-google:0.28.0'
     ...
 }
 ```
@@ -36,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.27.4'
+    implementation 'com.toast.android:toast-iap-onestore:0.28.0'
     ...
 }
 ```
@@ -49,12 +50,25 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.27.4'
+    implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
     ...
 }
 ```
 
 > Galaxy Store 인앱 결제는 Android 4.3 (API 레벨 18) 이상에서 동작합니다.
+
+- Amazon Appstore의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-iap-amazon:0.28.0'
+    ...
+}
+```
 
 ## AndroidManifest 설정
 
@@ -78,10 +92,10 @@ meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
 
 자세한 정보는 [원스토어 결제 화면 설정](https://dev.onestore.co.kr/devpoc/reference/view/Tools)을 확인하세요.
 
-### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store)
+### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store, Amazon Appstore)
 
 Android 11에서는 앱이 사용자가 기기에 설치한 다른 앱을 쿼리하고 상호작용하는 방법을 변경합니다.
-Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소를 정의해야합니다.
+Android 11 이상을 타겟팅하는 앱에서 ONE store, Galaxy Store 또는 Amazon Appstore 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소 또는 권한을 정의해야합니다.
 
 #### ONE store
 
@@ -105,8 +119,20 @@ Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결
 </queries>
 ```
 
+### Amazon Appstore
+
+Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
+
+```xml
+<uses-permission
+    android:name="android.permission.QUERY_ALL_PACKAGES"
+    tools:ignore="QueryAllPackagesPermission" />
+```
+
 'queries' 요소는 Android Gradle Plugin 4.1 이상에서 동작합니다.
 이전 버전의 Android Gradle Plugin을 사용하려면 [Android 11에서 패키지 가시성을 위해 Gradle 빌드 준비](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html)를 참고하세요.
+
+> <span style="color:#e11d21">**주의!)**</span> QUERY_ALL_PACKAGES 권한을 Google Play Store에 적용하지 않도록 주의하시기 바랍니다.
 
 ## 스토어 코드
 
@@ -115,6 +141,7 @@ Android 11 이상을 타겟팅하는 앱에서 ONE store 또는 Galaxy Store 결
 | Google Play | "GG"       |
 | ONE store   | "ONESTORE" |
 | Galaxy store | "GALAXY" |
+| Amazon Appstore | "AMAZON" |
 
 > [참고] 스토어 코드는 [IapStoreCode](./iap-android/#iapstorecode) 클래스에 정의되어 있습니다.
 
@@ -651,11 +678,13 @@ public void setStoreCode(String storeCode)
 String GOOGLE_PLAY_STORE
 String ONE_STORE
 String GALAXY_STORE
+String AMAZON_APP_STORE
 ```
 
 * GOOGLE_PLAY_STORE<br>Google Play 스토어 인앱 결제를 사용합니다.<br>Constant Value: "GG"
 * ONE_STORE<br>ONE store 인앱 결제를 사용합니다.<br>Constant Value: "ONESTORE"
 * GALAXY_STORE<br>Galaxy store 인앱 결제를 사용합니다.<br>Constant Value: "GALAXY"
+* AMAZON_APP_STORE<br>Amazon Appstore 인앱 결제를 사용합니다.<br>Constant Value: "AMAZON"
 
 ### IapPurchaseResult
 

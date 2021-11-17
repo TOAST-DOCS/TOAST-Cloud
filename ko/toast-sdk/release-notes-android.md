@@ -1,5 +1,25 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 0.28.0 (2021.11.23)
+
+### TOAST IAP
+
+#### 기능 추가
+
+* 아마존 스토어 추가
+
+### TOAST Push
+
+#### 기능 개선
+
+* Android 12 대응
+    * Pending intents mutability.
+    * Notification trampoline restrictions.
+    * Safer component exporting (android.exported).
+
+> Notification을 직접 생성하는 경우 지표 수집이 가능한 PendingIntent를 반환하는 ToastPushMessageReceiver.getContentIntent()가 추가되었습니다.
+이는 Android 12 이상에서 일부 기능이 정상 동작하지 않는 ToastPushMessageReceiver.getNotificationServiceIntent()를 대체합니다.
+
 ## 0.27.4 (2021.10.26)
 
 ### TOAST Push
@@ -111,7 +131,7 @@
 
 #### 버그 수정
 
-* 갤럭시 스토어 인앱결제 오류 수정
+* 갤럭시 스토어 인앱 결제 오류 수정
     * Galaxy Apps(Galaxy Store 이전 앱 명칭) 3.x 이하 버전에서 Timeout이 발생하는 오류를 수정하였습니다.
 
 ## 0.24.0 (2020.10.27)
