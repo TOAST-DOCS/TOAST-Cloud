@@ -6,19 +6,19 @@
 
 #### Added
 
-* 아마존 스토어 추가
+* Added Amazon Appstore support
 
 ### TOAST Push
 
 #### Improved
 
-* Android 12 대응
+* Handles Android 12
     * Pending intents mutability.
     * Notification trampoline restrictions.
     * Safer component exporting (android.exported).
 
-> Notification을 직접 생성하는 경우 지표 수집이 가능한 PendingIntent를 반환하는 ToastPushMessageReceiver.getContentIntent()가 추가되었습니다.
-이는 Android 12 이상에서 일부 기능이 정상 동작하지 않는 ToastPushMessageReceiver.getNotificationServiceIntent()를 대체합니다.
+> Added ToastPushMessageReceiver.getContentIntent() which returns a PendingIntent that can collect metrics when creating a Notification manually.
+This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has some features that do not work properly in Android 12 or higher.
 
 ## 0.27.4 (2021.10.26)
 

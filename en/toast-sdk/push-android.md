@@ -495,7 +495,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ### Example of registering in AndroidManifest.xml
 > **(Caution)**
 > 1. When using ToastPushMessageReceiver, you must set permission.
-> 2. API 레벨 31 이상 타겟팅 시 exported 속성을 설정해야 합니다. 
+> 2. When targeting API level 31 or higher, you must set the 'exported' attribute.
 
 ```xml
 <manifest>
@@ -516,7 +516,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ```
 
 ### Adding the Metric Collection Feature (FCM Only)
-* 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 getContentIntent() 함수를 사용하여 생성한 인텐트를 알림의 콘텐츠 인텐트로 설정해야 합니다.
+* If you create a notification manually, to use the metric collection feature, you must set the intent you created using the getContentIntent() function as the notification's content intent.
 
 #### Example of adding the metrics collection feature
 ```java
@@ -528,10 +528,10 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
             @NonNull Context context,
             @NonNull ToastRemoteMessage remoteMessage) {
 
-        // 메시지 내용 획득
+        // Obtain the message content
         ToastPushMessage message = remoteMessage.getMessage();
 
-        //NotificationManager 생성
+        // Create NotificationManager
         if (mManager == null) {
             mManager = context.getSystemService(NotificationManager.class);
             if  (mManager == null) {
@@ -540,7 +540,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
             }
         }
 
-        // 채널 설정
+        // Set the channel
         String channelId = "YOUR_CHANNE_ID";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = mManager.getNotificationChannel(channelId);
@@ -550,14 +550,14 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
             }
         }
 
-        // 실행 인텐트 설정
+        // Set the launch intent
         Intent launchIntent = new Intent(context, MainActivity.class);
 
-        // 지표 전송을 포함한 컨텐츠 인텐트 생성
+        // Create a content intent that includes sending metrics
         PendingIntent contentIntent;
         contentIntent = getContentIntent(context, remoteMessage, launchIntent);
 
-        //알림 생성
+        // Create a notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
         builder.setContentTitle("New Message")
                 .setContentText(message.getBody())
@@ -829,8 +829,8 @@ public final PendingIntent getContentIntent(Context context, ToastRemoteMessage 
 | notify | | Context, ToastRemoteMessage | Creates and exposes notifications with the default execution intents. |
 | notify | | Context, ToastRemoteMessage, PendingIntent | Creates and exposes notifications with a user execution intent. |
 | notify | | Context, int, Notification | Exposes user notifications with a specific ID. |
-| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. <br> Android 12 (API 레벨 31) 이상부터 정상 동작 하지 않으며, 대신 getContentIntent()를 사용해야 합니다. |
-| getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
+| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | Returns a user launch intent that includes sending metrics. <br> It does not work normally from Android 12 (API level 31) or higher, so you must use getContentIntent() instead. |
+| getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | Returns a user launch intent that includes sending metrics. |
 
 ### ToastNotificationOptions
 * An object that sets priority, small icon, background color, LED, vibration, notification sound, and foreground notification exposure information when setting the default notification options.
