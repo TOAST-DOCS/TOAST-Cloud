@@ -217,7 +217,7 @@
 
 #### Improved
 
-* 안전성 개선
+* 안정성 개선
 
 ### TOAST Logger
 
