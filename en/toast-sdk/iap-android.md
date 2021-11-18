@@ -11,7 +11,7 @@
 - [Android Developers In-App Purchase](https://developer.android.com/google/play/billing)
 - [ONE store In-App Purchase API V5 (SDK V17) Guide and Download](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 - [Galaxy store In-App Purchase API Guide and Download](https://developer.samsung.com/iap/overview.html)
-- [Amazon Appstore 인앱 결제 API 안내 및 다운로드](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
+- [Amazon Appstore In-App Purchase API Guide and Download](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 
 ## Library Setting
 
@@ -57,7 +57,7 @@ dependencies {
 
 > Galaxy Store in-app purchase works on Android 4.3 (API level 18) or higher.
 
-- Amazon Appstore의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+- To use in-app purchase of Amazon Appstore, add dependencies to build.gradle as follows:
 
 ```groovy
 repositories {
@@ -95,7 +95,7 @@ For more information, see [ONE store Purchase Screen Setting](https://dev.onesto
 ### App targeting Android 11 or higher (ONE store, Galaxy Store, Amazon Appstore)
 
 In Android 11, an app queries other apps that the user installed on the device and changes the way to interact with the apps.
-Android 11 이상을 타겟팅하는 앱에서 ONE store, Galaxy Store 또는 Amazon Appstore 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소 또는 권한을 정의해야합니다.
+To use ONE store, Galaxy Store, or Amazon Appstore purchase in apps targeting Android 11 or higher, you need to define a 'queries' element or permission in AndroidManifest.xml as shown below.
 
 #### ONE store
 
@@ -121,7 +121,7 @@ Android 11 이상을 타겟팅하는 앱에서 ONE store, Galaxy Store 또는 Am
 
 ### Amazon Appstore
 
-Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
+For Amazon Appstore, add a permission instead of the 'queries' element.
 
 ```xml
 <uses-permission
@@ -132,7 +132,7 @@ Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
 The 'queries' element works in Android Gradle Plugin 4.1 or higher.
 To use a lower version of Android Gradle Plugin, see [Preparing your Gradle build for package visibility in Android 11](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html).
 
-> <span style="color:#e11d21">**주의!)**</span> QUERY_ALL_PACKAGES 권한을 Google Play Store에 적용하지 않도록 주의하시기 바랍니다.
+> <span style="color:#e11d21">**Caution!)**</span> Be careful not to apply the QUERY_ALL_PACKAGES permission to the Google Play Store.
 
 ## Store Codes
 
@@ -684,7 +684,7 @@ String AMAZON_APP_STORE
 * GOOGLE_PLAY_STORE<br>Uses Google Play Store in-app purchase.<br>Constant Value: "GG"
 * ONE_STORE<br>Uses ONE store in-app purchase. <br>Constant Value: "ONESTORE"
 * GALAXY_STORE<br>Uses Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
-* AMAZON_APP_STORE<br>Amazon Appstore 인앱 결제를 사용합니다.<br>Constant Value: "AMAZON"
+* AMAZON_APP_STORE<br>Uses Amazon Appstore in-app purchase.<br>Constant Value: "AMAZON"
 
 ### IapPurchaseResult
 

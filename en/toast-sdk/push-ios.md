@@ -360,7 +360,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
     self = [super init];
 
     if (self) {
-        // Only AppKey needs to be set, because it is used only for seding metrics.
+        // Only AppKey needs to be set, because it is used only for sending metrics.
         ToastPushConfiguration *configuration = [[ToastPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
 
         [ToastPush initWithConfiguration:configuration];
