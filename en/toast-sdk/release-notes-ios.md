@@ -2,8 +2,9 @@
 
 ## 0.29.2 (2021.11.23)
 ### TOAST Push
-#### 개선 사항
-* 안정성 개선
+
+#### Improvements
+* Improved stability
 
 ## 0.29.1 (2021.10.26)
 ### TOAST IAP
