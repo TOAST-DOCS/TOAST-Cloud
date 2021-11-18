@@ -16,31 +16,25 @@
 #### Google Play Store
 
 ```groovy
-apply plugin: 'com.android.application'
-
 repositories {
-    google()
-    mavenCentral()
+  google()
+  mavenCentral()
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-google:0.27.4'
+  implementation 'com.toast.android:toast-iap-google:0.28.0'
 **DEPS**}
 ```
 
-#### ONE store
+#### One Store
 
 ```groovy
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
-apply plugin: 'com.android.application'
-
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-onestore:0.27.4'
+  implementation 'com.toast.android:toast-iap-onestore:0.28.0'
 **DEPS**}
 ```
 
@@ -48,14 +42,23 @@ dependencies {
 
 ```groovy
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
-apply plugin: 'com.android.application'
+dependencies {
+  implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
+**DEPS**}
+```
+
+#### Amazon Appstore
+
+```groovy
+repositories {
+  mavenCentral()
+}
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-iap-galaxy:0.27.4'
+  implementation 'com.toast.android:toast-iap-amazon:0.28.0'
 **DEPS**}
 ```
 
@@ -312,7 +315,8 @@ public enum StoreCode
 {
     GooglePlayStore,
     AppleAppStore,
-    OneStore
+    OneStore,
+    AmazonAppStore
 }
 ```
 
@@ -321,6 +325,7 @@ public enum StoreCode
 | GooglePlayStore | Google Play Store (Android Only) |
 | AppleAppStore | Apple App Store (iOS Only) |
 | OneStore | ONE store (Android Only) |
+| AmazonAppStore | Amazon Appstore (Android Only) |
 
 ### ToastResult<T>
 ```csharp

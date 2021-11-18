@@ -23,16 +23,16 @@ TOAST SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.toast.android:toast-common:0.27.4       | TOAST Common      |
-| com.toast.android:toast-core:0.27.4         | TOAST Core        |
-| com.toast.android:toast-logger:0.27.4       | TOAST Log & Crash |
-| com.toast.android:toast-crash-reporter-ndk:0.27.4       | TOAST Native Crash Reporter |
-| com.toast.android:toast-iap-core:0.27.4     | TOAST In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.27.4   | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.27.4 | TOAST In-app Purchase <br>OneStore |
-| com.toast.android:toast-iap-galaxy:0.27.4 | TOAST In-app Purchase <br>GalaxyStore |
-| com.toast.android:toast-push-core:0.27.4    | TOAST Push Core   |
-| com.toast.android:toast-push-fcm:0.27.4    | TOAST Push <br>Firebase Cloud Messaging |
+| com.toast.android:toast-common:0.28.0       | TOAST Common      |
+| com.toast.android:toast-core:0.28.0         | TOAST Core        |
+| com.toast.android:toast-logger:0.28.0       | TOAST Log & Crash |
+| com.toast.android:toast-crash-reporter-ndk:0.28.0       | TOAST Native Crash Reporter |
+| com.toast.android:toast-iap-core:0.28.0     | TOAST In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.28.0   | TOAST In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.28.0 | TOAST In-app Purchase <br>OneStore |
+| com.toast.android:toast-iap-galaxy:0.28.0 | TOAST In-app Purchase <br>GalaxyStore |
+| com.toast.android:toast-push-core:0.28.0    | TOAST Push Core   |
+| com.toast.android:toast-push-fcm:0.28.0    | TOAST Push <br>Firebase Cloud Messaging |
 
 ## TOAST SDK를 Android Studio 프로젝트에 적용
 
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.27.4'
+  implementation 'com.toast.android:toast-sdk:0.28.0'
 }
 ```
 

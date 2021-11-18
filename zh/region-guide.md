@@ -32,6 +32,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | GPU Instance | Region | O |  |  |  |
 |  | Instance Template | Region | O | O | O | O |
 |  | Image | Region | O | O | O | O |
+|  | Image Builder  | Region | O | O |  |  |
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
 | Container | Kubernetes | Regional | O | O |  |  |
@@ -57,7 +58,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | EasyCache | Regional | O | O | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
-|  | PostgreSQL Instance | Regional | O | O | O | O |
+|  | MariaDB Instance  | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global |  |  |  |  |
 |  | Leaderboard | Global |  |  |  |  |
@@ -84,7 +85,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | KakaoTalk Bizmessage | Regional | O |  |  |  |
 | AI Service | Face Recognition | Regional | O | O |  |  |
 |  | AI Fashion | Regional | O | O | O |  |  |
-|  | Document OCR | Global |  |  |  |  |
+|  | Document Recognizer | Global |  |  |  |  |
+|  | Vehicle Plate Recognizer | Global |  |  |  |  |
 | Application Service | Maps | Regional | O |  |  |  |
 |  | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O |  |  |  |
