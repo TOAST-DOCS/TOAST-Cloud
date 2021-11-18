@@ -496,7 +496,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ### AndroidManifest.xml 登録例
 > **(注意)**
 > 1. ToastPushMessageReceiverを使う場合は、必ずpermissionを設定しなければなりません。
-> 2. API 레벨 31 이상 타겟팅 시 exported 속성을 설정해야 합니다. 
+> 2. APIレベル31以上をターゲットとする時、exportedプロパティを設定する必要があります。 
 
 ```xml
 <manifest>
@@ -517,7 +517,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ```
 
 ### 指標収集機能の追加(FCM Only)
-* 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 getContentIntent() 함수를 사용하여 생성한 인텐트를 알림의 콘텐츠 인텐트로 설정해야 합니다.
+* 通知を直接作成する場合、指標収集機能を使用するにはgetContentIntent()関数を使用して作成したインテントを通知のコンテンツインテントに設定する必要があります。
 
 #### 指標収集機能追加例
 ```java
@@ -529,10 +529,10 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
             @NonNull Context context,
             @NonNull ToastRemoteMessage remoteMessage) {
 
-        // 메시지 내용 획득
+        // メッセージ内容の取得
         ToastPushMessage message = remoteMessage.getMessage();
 
-        //NotificationManager 생성
+        //NotificationManagerの作成
         if (mManager == null) {
             mManager = context.getSystemService(NotificationManager.class);
             if  (mManager == null) {
@@ -541,7 +541,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
             }
         }
 
-        // 채널 설정
+        // チャンネル設定
         String channelId = "YOUR_CHANNE_ID";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = mManager.getNotificationChannel(channelId);
@@ -551,14 +551,14 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
             }
         }
 
-        // 실행 인텐트 설정
+        // 実行インテントの設定
         Intent launchIntent = new Intent(context, MainActivity.class);
 
-        // 지표 전송을 포함한 컨텐츠 인텐트 생성
+        // 指標転送を含むコンテンツインテントの作成
         PendingIntent contentIntent;
         contentIntent = getContentIntent(context, remoteMessage, launchIntent);
 
-        //알림 생성
+        //通知作成
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
         builder.setContentTitle("New Message")
                 .setContentText(message.getBody())
@@ -830,8 +830,8 @@ public final PendingIntent getContentIntent(Context context, ToastRemoteMessage 
 | notify | | Context, ToastRemoteMessage | 基本実行インテントで通知を生成および表示します。 |
 | notify | | Context, ToastRemoteMessage, PendingIntent | ユーザー実行インテントで通知を生成および表示します。 |
 | notify | | Context, int, Notification |  ユーザー通知を特定のIDで表示します。 |
-| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. <br> Android 12 (API 레벨 31) 이상부터 정상 동작 하지 않으며, 대신 getContentIntent()를 사용해야 합니다. |
-| getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
+| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 指標転送を含むユーザー実行インテントを返します。 <br> Android 12 (APIレベル31)以上では正常に動作しないため、代わりにgetContentIntent()を使用する必要があります。 |
+| getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 指標転送を含むユーザー実行インテントを返します。 |
 
 ### ToastNotificationOptions
 * デフォルト通知オプション設定時、優先順位、小さなアイコン、背景色、LED、振動、通知音、フォアグラウンドの通知露出情報を設定するオブジェクトです。
