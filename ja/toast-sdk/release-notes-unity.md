@@ -7,7 +7,7 @@ Download : [toast-sdk-unity-0.24.0.zip](https://static.toastoven.net/toastcloud/
 ### 機能追加
 
 * TOAST IAP
-  * 아마존 스토어 추가
+  * Amazonストア追加
 
 ### plugin version
 
