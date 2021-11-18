@@ -2,6 +2,7 @@
 
 ## 0.29.2 (2021.11.23)
 ### TOAST Push
+
 #### Improvements
 * Improved stability
 
