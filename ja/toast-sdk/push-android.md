@@ -534,7 +534,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
         //NotificationManagerの作成
         if (mManager == null) {
-            mManager = context.getSystemService(NotificationManager.class);
+            mManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             if  (mManager == null) {
                 Log.e(TAG, "Failed to get NotificationManager");
                 return;
@@ -542,11 +542,11 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
         }
 
         // チャンネル設定
-        String channelId = "YOUR_CHANNE_ID";
+        String channelId = "YOUR_CHANNEL_ID";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = mManager.getNotificationChannel(channelId);
             if (channel == null) {
-                String channelName = "YOUR_CHANNE_NAME";
+                String channelName = "YOUR_CHANNEL_NAME";
                 createNotificationChannel(channelId, channelName);
             }
         }
@@ -560,7 +560,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
         //通知作成
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
-        builder.setContentTitle("New Message")
+        builder.setContentTitle(message.getTitle())
                 .setContentText(message.getBody())
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentIntent(contentIntent)
