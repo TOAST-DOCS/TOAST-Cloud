@@ -11,6 +11,7 @@
 - [Android Developers In-App Purchase](https://developer.android.com/google/play/billing)
 - [ONE store In-App Purchase API V5 (SDK V17) Guide and Download](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 - [Galaxy store In-App Purchase API Guide and Download](https://developer.samsung.com/iap/overview.html)
+- [Amazon Appstore In-App Purchase API Guide and Download](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 
 ## Library Setting
 
@@ -23,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.27.4'
+    implementation 'com.toast.android:toast-iap-google:0.28.0'
     ...
 }
 ```
@@ -36,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.27.4'
+    implementation 'com.toast.android:toast-iap-onestore:0.28.0'
     ...
 }
 ```
@@ -49,12 +50,25 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.27.4'
+    implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
     ...
 }
 ```
 
 > Galaxy Store in-app purchase works on Android 4.3 (API level 18) or higher.
+
+- To use in-app purchase of Amazon Appstore, add dependencies to build.gradle as follows:
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-iap-amazon:0.28.0'
+    ...
+}
+```
 
 ## AndroidManifest Setting
 
@@ -78,10 +92,10 @@ If metadata is not set, the default value ("full") is applied.
 
 For more information, see [ONE store Purchase Screen Setting](https://dev.onestore.co.kr/devpoc/reference/view/Tools).
 
-### App targeting Android 11 or higher (ONE store, Galaxy Store)
+### App targeting Android 11 or higher (ONE store, Galaxy Store, Amazon Appstore)
 
 In Android 11, an app queries other apps that the user installed on the device and changes the way to interact with the apps.
-To use ONE store or Galaxy Store purchase in an app targeting Android 11 or higher, you must define 'queries' element in AndroidManifest.xml as below.
+To use ONE store, Galaxy Store, or Amazon Appstore purchase in apps targeting Android 11 or higher, you need to define a 'queries' element or permission in AndroidManifest.xml as shown below.
 
 #### ONE store
 
@@ -105,8 +119,20 @@ To use ONE store or Galaxy Store purchase in an app targeting Android 11 or high
 </queries>
 ```
 
+### Amazon Appstore
+
+For Amazon Appstore, add a permission instead of the 'queries' element.
+
+```xml
+<uses-permission
+    android:name="android.permission.QUERY_ALL_PACKAGES"
+    tools:ignore="QueryAllPackagesPermission" />
+```
+
 The 'queries' element works in Android Gradle Plugin 4.1 or higher.
 To use a lower version of Android Gradle Plugin, see [Preparing your Gradle build for package visibility in Android 11](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html).
+
+> <span style="color:#e11d21">**Caution!)**</span> Be careful not to apply the QUERY_ALL_PACKAGES permission to the Google Play Store.
 
 ## Store Codes
 
@@ -115,6 +141,7 @@ To use a lower version of Android Gradle Plugin, see [Preparing your Gradle buil
 | Google Play Store | "GG"       |
 | ONE store   | "ONESTORE" |
 | Galaxy store | "GALAXY" |
+| Amazon Appstore | "AMAZON" |
 
 > [Note] Store codes are defined in the [IapStoreCode](./iap-android/#iapstorecode) class.
 
@@ -651,11 +678,13 @@ public void setStoreCode(String storeCode)
 String GOOGLE_PLAY_STORE
 String ONE_STORE
 String GALAXY_STORE
+String AMAZON_APP_STORE
 ```
 
 * GOOGLE_PLAY_STORE<br>Uses Google Play Store in-app purchase.<br>Constant Value: "GG"
 * ONE_STORE<br>Uses ONE store in-app purchase. <br>Constant Value: "ONESTORE"
 * GALAXY_STORE<br>Uses Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
+* AMAZON_APP_STORE<br>Uses Amazon Appstore in-app purchase.<br>Constant Value: "AMAZON"
 
 ### IapPurchaseResult
 

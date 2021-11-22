@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.27.4'
+    implementation 'com.toast.android:toast-push-fcm:0.28.0'
     ...
 }
 ```
@@ -494,13 +494,15 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ### Example of registering in AndroidManifest.xml
 > **(Caution)**
-> When using ToastPushMessageReceiver, you must set permission.
+> 1. When using ToastPushMessageReceiver, you must set permission.
+> 2. When targeting API level 31 or higher, you must set the 'exported' attribute.
 
 ```xml
 <manifest>
     <application>
     <receiver android:name=".ToastPushSampleReceiver"
-        android:permission="${applicationId}.toast.push.permission.RECEIVE">
+        android:permission="${applicationId}.toast.push.permission.RECEIVE"
+        android:exported="false">
         <intent-filter>
             <action android:name="com.toast.android.push.MESSAGE_EVENT" />
             </intent-filter>
@@ -514,35 +516,58 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ```
 
 ### Adding the Metric Collection Feature (FCM Only)
-* If you create a notification manually, you must set the intent you created using the getNotificationServiceIntent() function as the notification's content intent in order to use the metrics collection feature.
+* If you create a notification manually, to use the metric collection feature, you must set the intent you created using the getContentIntent() function as the notification's content intent.
 
 #### Example of adding the metrics collection feature
 ```java
 public class MyPushMessageReceiver extends ToastPushMessageReceiver {
-    @Override
-    public void onMessageReceived(@NonNull Context context,
-                                  @NonNull ToastRemoteMessage remoteMessage) {
+    private NotificationManager mManager = null;
 
+    @Override
+    public void onMessageReceived(
+            @NonNull Context context,
+            @NonNull ToastRemoteMessage remoteMessage) {
+
+        // Obtain the message content
         ToastPushMessage message = remoteMessage.getMessage();
 
-        // Create a user execution intent
+        // Create NotificationManager
+        if (mManager == null) {
+            mManager = context.getSystemService(NotificationManager.class);
+            if  (mManager == null) {
+                Log.e(TAG, "Failed to get NotificationManager");
+                return;
+            }
+        }
+
+        // Set the channel
+        String channelId = "YOUR_CHANNE_ID";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = mManager.getNotificationChannel(channelId);
+            if (channel == null) {
+                String channelName = "YOUR_CHANNE_NAME";
+                createNotificationChannel(channelId, channelName);
+            }
+        }
+
+        // Set the launch intent
         Intent launchIntent = new Intent(context, MainActivity.class);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(
-                context,
-                REQUEST_CODE,
-                launchIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+        // Create a content intent that includes sending metrics
+        PendingIntent contentIntent;
+        contentIntent = getContentIntent(context, remoteMessage, launchIntent);
 
-        // Provide an execution intent generation feature including the metrics collection
-        PendingIntent serviceIntent = getNotificationServiceIntent(context, remoteMessage, contentIntent);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YOUR_CHANNE_ID");
-        // (Omitted)
-        builder.setContentIntent(serviceIntent);
-
-        notify(context, builder.build());
+        // Create a notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
+        builder.setContentTitle("New Message")
+                .setContentText(message.getBody())
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentIntent(contentIntent)
+                .setAutoCancel(true);
+     
+        notify(context, NotificationUtils.createNewId(), builder.build());
     }
+    ...
 }
 ```
 
@@ -793,7 +818,9 @@ public final boolean isAppForeground();
 public final void notify(Context context, ToastRemoteMessage message);
 public final void notify(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
 public final void notify(Context context, int notificationId, Notification notification);
+@Deprecated
 public final PendingIntent getNotificationServiceIntent(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
+public final PendingIntent getContentIntent(Context context, ToastRemoteMessage message, Intent launchIntent);
 ```
 
 | Method | Returns | Parameters | |
@@ -802,7 +829,8 @@ public final PendingIntent getNotificationServiceIntent(Context context, ToastRe
 | notify | | Context, ToastRemoteMessage | Creates and exposes notifications with the default execution intents. |
 | notify | | Context, ToastRemoteMessage, PendingIntent | Creates and exposes notifications with a user execution intent. |
 | notify | | Context, int, Notification | Exposes user notifications with a specific ID. |
-| getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | Returns a user execution intent that includes sending metrics. |
+| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | Returns a user launch intent that includes sending metrics. <br> It does not work normally from Android 12 (API level 31) or higher, so you must use getContentIntent() instead. |
+| getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | Returns a user launch intent that includes sending metrics. |
 
 ### ToastNotificationOptions
 * An object that sets priority, small icon, background color, LED, vibration, notification sound, and foreground notification exposure information when setting the default notification options.

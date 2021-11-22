@@ -32,6 +32,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | GPU Instance | リージョン | O |  |  |  |
 |  | Instance Template | リージョン | O | O | O | O |
 |  | Image | リージョン | O | O | O | O |
+|  | Image Builder  | リージョン | O | O |  |  |
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | System Monitoring | リージョン | O | O | O | O |
 | Container | Kubernetes | リージョン | O | O |  |  |
@@ -83,7 +84,8 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | KakaoTalk Bizmessage | リージョン | O |  |  |  |
 | AI Service | Face Recognition | リージョン | O | O |  |  |
 |  | AI Fashion | リージョン | O | O | O |  |  |
-|  | Document OCR | グローバル |  |  |  |  |  |
+|  | Document Recognizer | グローバル |  |  |  |  |
+|  | Vehicle Plate Recognizer | グローバル |  |  |  |  |
 | Application Service | Maps | リージョン | O |  |  |  |
 |  | ROLE | グローバル |  |  |  |  |
 |  | API Gateway | リージョン | O |  |  |  |

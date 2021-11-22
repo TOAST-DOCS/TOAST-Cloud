@@ -1,5 +1,19 @@
 ## TOAST > TOAST SDK 使用ガイド > リリースノート > Unity
 
+## 0.24.0 (2021.11.23)
+
+Download : [toast-sdk-unity-0.24.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.24.0/toast-sdk-unity-0.24.0.zip)
+
+### 機能追加
+
+* TOAST IAP
+  * Amazonストア追加
+
+### plugin version
+
+* Android : 0.28.0
+* iOS : 0.29.2
+
 ## 0.23.5 (2021.10.26)
 
 Download : [toast-sdk-unity-0.23.5.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.23.5/toast-sdk-unity-0.23.5.zip)
