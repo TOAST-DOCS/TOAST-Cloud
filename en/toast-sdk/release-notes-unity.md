@@ -7,7 +7,7 @@ Download : [toast-sdk-unity-0.24.0.zip](https://static.toastoven.net/toastcloud/
 ### Added
 
 * TOAST IAP
-  * Added Amazon Appstore support
+    * Added Amazon Appstore support
 
 ### plugin version
 
