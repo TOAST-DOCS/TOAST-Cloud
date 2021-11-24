@@ -17,7 +17,6 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
 
 ![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202107.png)
-![tutorial_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202107.png)
 
 
 ## 조직 관리
