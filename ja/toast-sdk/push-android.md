@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.27.4’
+    implementation 'com.toast.android:toast-push-fcm:0.28.0’
     ...
 }
 ```
@@ -495,13 +495,15 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ### AndroidManifest.xml 登録例
 > **(注意)**
-> ToastPushMessageReceiverを使う場合は、必ずpermissionを設定しなければなりません。
+> 1. ToastPushMessageReceiverを使う場合は、必ずpermissionを設定しなければなりません。
+> 2. APIレベル31以上をターゲットとする時、exportedプロパティを設定する必要があります。 
 
 ```xml
 <manifest>
     <application>
     <receiver android:name=".ToastPushSampleReceiver"
-        android:permission="${applicationId}.toast.push.permission.RECEIVE">
+        android:permission="${applicationId}.toast.push.permission.RECEIVE"
+        android:exported="false">
         <intent-filter>
             <action android:name="com.toast.android.push.MESSAGE_EVENT" />
             </intent-filter>
@@ -515,35 +517,58 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 ```
 
 ### 指標収集機能の追加(FCM Only)
-* 通知を直接生成する場合、指標収集機能を使用するためには getNotificationServiceIntent()関数を使用して生成したコンテンツを通知のコンテンツとして設定する必要があります。
+* 通知を直接作成する場合、指標収集機能を使用するにはgetContentIntent()関数を使用して作成したインテントを通知のコンテンツインテントに設定する必要があります。
 
 #### 指標収集機能追加例
 ```java
 public class MyPushMessageReceiver extends ToastPushMessageReceiver {
-    @Override
-    public void onMessageReceived(@NonNull Context context,
-                                  @NonNull ToastRemoteMessage remoteMessage) {
+    private NotificationManager mManager = null;
 
+    @Override
+    public void onMessageReceived(
+            @NonNull Context context,
+            @NonNull ToastRemoteMessage remoteMessage) {
+
+        // メッセージ内容の取得
         ToastPushMessage message = remoteMessage.getMessage();
 
-        // ユーザー実行インテント作成
+        //NotificationManagerの作成
+        if (mManager == null) {
+            mManager = context.getSystemService(NotificationManager.class);
+            if  (mManager == null) {
+                Log.e(TAG, "Failed to get NotificationManager");
+                return;
+            }
+        }
+
+        // チャンネル設定
+        String channelId = "YOUR_CHANNE_ID";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = mManager.getNotificationChannel(channelId);
+            if (channel == null) {
+                String channelName = "YOUR_CHANNE_NAME";
+                createNotificationChannel(channelId, channelName);
+            }
+        }
+
+        // 実行インテントの設定
         Intent launchIntent = new Intent(context, MainActivity.class);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(
-                context,
-                REQUEST_CODE,
-                launchIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+        // 指標転送を含むコンテンツインテントの作成
+        PendingIntent contentIntent;
+        contentIntent = getContentIntent(context, remoteMessage, launchIntent);
 
-        // 指標転送を含む実行インテント生成機能を提供
-        PendingIntent serviceIntent = getNotificationServiceIntent(context, remoteMessage, contentIntent);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YOUR_CHANNE_ID");
-        // (中略)
-        builder.setContentIntent(serviceIntent);
-
-        notify(context, builder.build());
+        //通知作成
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
+        builder.setContentTitle("New Message")
+                .setContentText(message.getBody())
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentIntent(contentIntent)
+                .setAutoCancel(true);
+     
+        notify(context, NotificationUtils.createNewId(), builder.build());
     }
+    ...
 }
 ```
 
@@ -794,7 +819,9 @@ public final boolean isAppForeground();
 public final void notify(Context context, ToastRemoteMessage message);
 public final void notify(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
 public final void notify(Context context, int notificationId, Notification notification);
+@Deprecated
 public final PendingIntent getNotificationServiceIntent(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
+public final PendingIntent getContentIntent(Context context, ToastRemoteMessage message, Intent launchIntent);
 ```
 
 | Method | Returns | Parameters | |
@@ -803,7 +830,8 @@ public final PendingIntent getNotificationServiceIntent(Context context, ToastRe
 | notify | | Context, ToastRemoteMessage | 基本実行インテントで通知を生成および表示します。 |
 | notify | | Context, ToastRemoteMessage, PendingIntent | ユーザー実行インテントで通知を生成および表示します。 |
 | notify | | Context, int, Notification |  ユーザー通知を特定のIDで表示します。 |
-| getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 指標の転送を含むユーザー実行インテントを返します |
+| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 指標転送を含むユーザー実行インテントを返します。 <br> Android 12 (APIレベル31)以上では正常に動作しないため、代わりにgetContentIntent()を使用する必要があります。 |
+| getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 指標転送を含むユーザー実行インテントを返します。 |
 
 ### ToastNotificationOptions
 * デフォルト通知オプション設定時、優先順位、小さなアイコン、背景色、LED、振動、通知音、フォアグラウンドの通知露出情報を設定するオブジェクトです。

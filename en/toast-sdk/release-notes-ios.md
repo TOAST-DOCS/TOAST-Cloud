@@ -1,5 +1,11 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > iOS
 
+## 0.29.2 (2021.11.23)
+### TOAST Push
+
+#### Improvements
+* Improved stability
+
 ## 0.29.1 (2021.10.26)
 ### TOAST IAP
 #### Improvements

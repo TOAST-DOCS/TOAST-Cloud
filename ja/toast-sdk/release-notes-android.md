@@ -1,5 +1,25 @@
 ## TOAST > TOAST SDK使用ガイド > リリースノート > Android
 
+## 0.28.0 (2021.11.23)
+
+### TOAST IAP
+
+#### 機能追加
+
+* Amazonストア追加
+
+### TOAST Push
+
+#### 機能改善
+
+* Android 12対応
+    * Pending intents mutability.
+    * Notification trampoline restrictions.
+    * Safer component exporting (android.exported).
+
+> Notificationを直接作成する場合、指標の収集が可能なPendingIntentを返すToastPushMessageReceiver.getContentIntent()が追加されました。
+これはAndroid 12以上で一部の機能が正常に動作しないToastPushMessageReceiver.getNotificationServiceIntent()に代わるものです。
+
 ## 0.27.4 (2021.10.26)
 
 ### TOAST Push
