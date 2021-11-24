@@ -45,7 +45,7 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 
 ### 조직 생성 가이드
 ![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202107.png)
-![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202107.png)
+![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202112.png)
 
 
 <center>[그림 1] 조직 생성 </center>
@@ -69,7 +69,7 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 #### IP ACL 설정
 허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다.
 Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202109.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202112.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
 2. 하위 메뉴에서 거버넌스 설정을 선택합니다.
@@ -87,7 +87,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 * IAM 회원의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
 * 모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
-![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109.png)
+![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202112.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
 2. 하위 메뉴인 거버넌스 설정을 선택합니다.
