@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-google:0.28.0'
+  implementation 'com.toast.android:toast-iap-google:0.29.0'
 **DEPS**}
 ```
 
@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-onestore:0.28.0'
+  implementation 'com.toast.android:toast-iap-onestore:0.29.0'
 **DEPS**}
 ```
 
@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
+  implementation 'com.toast.android:toast-iap-galaxy:0.29.0'
 **DEPS**}
 ```
 
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-amazon:0.28.0'
+  implementation 'com.toast.android:toast-iap-amazon:0.29.0'
 **DEPS**}
 ```
 
