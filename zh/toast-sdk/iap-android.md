@@ -11,11 +11,14 @@
 ## Store Types
 - [Google Play Store](https://developer.android.com/google/play/billing)
 - [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
-- [Galaxy store](https://developer.samsung.com/iap/overview.html)
+- [Galaxy Store](https://developer.samsung.com/iap/overview.html)
 - [Amazon Appstore](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 - [Huawei App Gallery 인앱 결제 API 안내 및 다운로드](https://developer.huawei.com/consumer/en/hms/huawei-iap)
 
 ## Library Setting
+
+### Google Play Store
+
 - To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
 
 ```groovy
@@ -30,6 +33,8 @@ dependencies {
 }
 ```
 
+### ONE store
+
 - To use In-App Purchase of ONE store, add dependency to build.gradle, as below:
 
 ```groovy
@@ -43,7 +48,9 @@ dependencies {
 }
 ```
 
-- To use In-App Purchase of Galaxy store, add dependency to build.gradle, as below:
+### Galaxy Store
+
+- To use In-App Purchase of Galaxy Store, add dependency to build.gradle, as below:
 
 ```groovy
 repositories {
@@ -58,6 +65,8 @@ dependencies {
 
 > Galaxy Store in-app purchases works on Android 4.3 (API level 18) or higher.
 
+### Amazon Appstore
+
 - Amazon Appstore의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
@@ -71,9 +80,38 @@ dependencies {
 }
 ```
 
-- Huawei App Gallery의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+### Huawei App Gallery
+
+- AppGallery Connection 구성 파일(agconnect-service.json) 파일을 추가합니다.
+    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인하고 내 프로젝트를 클릭합니다.
+    - 프로젝트에서 앱을 선택합니다.
+    - **Project settings** > **General information**으로 이동합니다.
+    - **App information**에서 **agconnect-service.json** 파일을 다운로드합니다.
+    - **agconnect-service.json** 파일을 앱의 루트 디렉토리에 복사합니다.
+
+- 아래와 같이 루트 수준의 build.gradle에 App Gallery Connect 플러그인을 추가합니다.
 
 ```groovy
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        // Configure the Maven repository address for the HMS Core SDK.
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+    dependencies {
+        ...
+        // Add the AppGallery Connect plugin configuration. You are advised to use the latest plugin version.
+        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+    }
+}
+```
+
+- 아래와 같이 앱 수준의 build.gradle에 의존성을 추가합니다.
+
+```groovy
+apply plugin: 'com.huawei.agconnect'
+
 repositories {
     mavenCentral()
     maven {url 'https://developer.huawei.com/repo/'}
