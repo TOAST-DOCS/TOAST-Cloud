@@ -62,6 +62,45 @@ dependencies {
 **DEPS**}
 ```
 
+#### Huawei App Gallery
+
+- AppGallery Connection 구성 파일(agconnect-service.json) 파일을 추가합니다.
+    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인하고 내 프로젝트를 클릭합니다.
+    - 프로젝트에서 앱을 선택합니다.
+    - **Project settings** > **General information**으로 이동합니다.
+    - **App information**에서 **agconnect-service.json** 파일을 다운로드합니다.
+    - **agconnect-service.json** 파일을 앱의 루트 디렉토리에 복사합니다.
+- 아래와 같이 App Gallery Connect 플러그인과 의존성을 설정합니다.
+
+```groovy
+buildscript {
+	repositories {
+		mavenCentral()
+
+		// Huawei Repository
+		maven {url 'https://developer.huawei.com/repo/'}
+	}
+
+	dependencies {
+    ...
+
+		// Huawei App Gallery Plugin
+    classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+	}
+}
+
+repositories {
+  mavenCentral()
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.huawei.agconnect'
+
+dependencies {
+  implementation 'com.toast.android:toast-iap-huawei:0.29.0'
+**DEPS**}
+```
+
 ## iOS 설정
 ### Capabilities 설정
 - XCode 프로젝트의 설정에서 Capabilities 탭을 선택합니다.
