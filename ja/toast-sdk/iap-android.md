@@ -12,6 +12,7 @@
 - [ONE storeアプリ内決済API V5 (SDK V17)案内およびダウンロード](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 - [Galaxy storeアプリ内課金APIのご案内とダウンロード](https://developer.samsung.com/iap/overview.html)
 - [Amazon Appstoreアプリ内決済APIの案内とダウンロード](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
+- [Huawei App Gallery 인앱 결제 API 안내 및 다운로드](https://developer.huawei.com/consumer/jp/hms/huawei-iap)
 
 ## ライブラリ設定
 
@@ -69,6 +70,22 @@ dependencies {
     ...
 }
 ```
+
+- Huawei App Gallery의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+repositories {
+    mavenCentral()
+    maven {url 'https://developer.huawei.com/repo/'}
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-iap-huawei:0.29.0'
+    ...
+}
+```
+
+> Huawei App Gallery 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
 
 ## AndroidManifest設定
 
@@ -142,6 +159,7 @@ Amazon Appstoreでは'queries'要素の代わりに権限を追加します。
 | ONE store   | "ONESTORE" |
 | Galaxy store | "GALAXY" |
 | Amazon Appstore | "AMAZON" |
+| Huawei App Gallery | "HUAWEI" |
 
 > [参考]ストアコードは[IapStoreCode](./iap-android/#iapstorecode)クラスに定義されています。
 
@@ -678,12 +696,14 @@ String GOOGLE_PLAY_STORE
 String ONE_STORE
 String GALAXY_STORE
 String AMAZON_APP_STORE
+String HUAWEI_APP_GALLERY
 ```
 
 * GOOGLE_PLAY_STORE<br>Google Playストアアプリ内決済を使用します。<br>Constant Value: "GG"
 * ONE_STORE<br>ONE storeアプリ内決済を使用します。<br>Constant Value: "ONESTORE"
 * GALAXY_STORE<br>Galaxy storeアプリ内決済を使用します。<br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Amazon Appstoreアプリ内決済を使用します。<br>Constant Value: "AMAZON"
+* HUAWEI_APP_GALLERY<br>Huawei App Gallery 인앱 결제를 사용합니다.<br>Constant Value: "HUAWEI"
 
 ### IapPurchaseResult
 
