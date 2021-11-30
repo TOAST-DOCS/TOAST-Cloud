@@ -355,7 +355,8 @@ public enum StoreCode
     GooglePlayStore,
     AppleAppStore,
     OneStore,
-    AmazonAppStore
+    AmazonAppStore,
+    HuaweiAppGallery
 }
 ```
 
@@ -365,6 +366,7 @@ public enum StoreCode
 | AppleAppStore | Apple App Store (iOS Only) |
 | OneStore | ONE store (Android Only) |
 | AmazonAppStore | Amazon Appstore (Android Only) |
+| HuaweiAppGallery | Huawei App Gallery (Android Only) |
 
 ### ToastResult<T>
 ```csharp
