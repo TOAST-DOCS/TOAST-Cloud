@@ -64,13 +64,13 @@ dependencies {
 
 #### Huawei App Gallery
 
-- AppGallery Connection 구성 파일(agconnect-service.json)을 추가합니다.
-    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인한 다음 **내 프로젝트**를 클릭합니다.
-    - 프로젝트에서 앱을 선택합니다.
-    - **Project settings** > **General information**으로 이동합니다.
-    - **App information**에서 **agconnect-service.json** 파일을 다운로드합니다.
-    - **agconnect-service.json** 파일을 앱의 루트 디렉토리에 복사합니다.
-- 아래와 같이 App Gallery Connect 플러그인과 의존성을 설정합니다.
+- Add the AppGallery Connection configuration file (agconnect-service.json).
+    - Log in to [AppGallery Connect] (https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and then click **My Projects**.
+    - Select an app from your project.
+    - Go to **Project settings** > **General information**.
+    - Download the **agconnect-service.json** file from **App information**.
+    - Copy the **agconnect-service.json** file to the root directory of your app.
+- Set up the App Gallery Connect plugin and dependencies as follows.
 
 ```groovy
 buildscript {
