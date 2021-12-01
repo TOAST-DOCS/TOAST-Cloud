@@ -12,7 +12,7 @@
 - [ONE store In-App Purchase API V5 (SDK V17) Guide and Download](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 - [Galaxy Store In-App Purchase API Guide and Download](https://developer.samsung.com/iap/overview.html)
 - [Amazon Appstore In-App Purchase API Guide and Download](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
-- [Huawei App Gallery 인앱 결제 API 안내 및 다운로드](https://developer.huawei.com/consumer/en/hms/huawei-iap)
+- [Huawei App Gallery In-App Purchase API Guide and Download](https://developer.huawei.com/consumer/en/hms/huawei-iap)
 
 ## Library Setting
 
@@ -66,7 +66,7 @@ dependencies {
 
 ### Amazon Appstore
 
-- To use in-app purchase of Amazon Appstore, add dependencies to build.gradle as follows:
+- To use in-app purchase of Amazon Appstore, add dependency to build.gradle as follows:
 
 ```groovy
 repositories {
@@ -81,14 +81,14 @@ dependencies {
 
 ### Huawei App Gallery
 
-- AppGallery Connection 구성 파일(agconnect-service.json)을 추가합니다.
-    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인한 다음 **내 프로젝트**를 클릭합니다.
-    - 프로젝트에서 앱을 선택합니다.
-    - **Project settings** > **General information**으로 이동합니다.
-    - **App information**에서 **agconnect-service.json** 파일을 다운로드합니다.
-    - **agconnect-service.json** 파일을 앱의 루트 디렉토리에 복사합니다.
+- Add the AppGallery Connection configuration file (agconnect-service.json).
+    - Log in to [AppGallery Connect] (https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and then click **My Projects**.
+    - Select an app from your project.
+    - Go to **Project settings** > **General information**.
+    - Download the **agconnect-service.json** file from **App information**.
+    - Copy the **agconnect-service.json** file to the root directory of your app.
 
-- 아래와 같이 루트 수준의 build.gradle에 App Gallery Connect 플러그인을 추가합니다.
+- Add the App Gallery Connect plugin to the root level build.gradle as follows.
 
 ```groovy
 buildscript {
@@ -106,7 +106,7 @@ buildscript {
 }
 ```
 
-- 아래와 같이 앱 수준의 build.gradle에 의존성을 추가합니다.
+- Add dependency to the app level build.gradle as follows.
 
 ```groovy
 apply plugin: 'com.huawei.agconnect'
@@ -122,7 +122,7 @@ dependencies {
 }
 ```
 
-> Huawei App Gallery 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
+> Huawei App Gallery's in-app purchase works on Android 4.4 (API level 19) or higher.
 
 ## AndroidManifest Setting
 
@@ -682,7 +682,7 @@ For further details, refer to [Pause](https://developer.android.com/google/play/
 #### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
 
 * During pause period, consumable subscription products do not create new purchases.
-* During pause period, new purchases cannot be quried with ToastIap.queryConsumablePurchases().
+* During pause period, new purchases cannot be queried with ToastIap.queryConsumablePurchases().
 
 ### Resubscription
 
@@ -741,7 +741,7 @@ String HUAWEI_APP_GALLERY
 * ONE_STORE<br>Uses ONE store in-app purchase. <br>Constant Value: "ONESTORE"
 * GALAXY_STORE<br>Uses Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Uses Amazon Appstore in-app purchase.<br>Constant Value: "AMAZON"
-* HUAWEI_APP_GALLERY<br>Huawei App Gallery 인앱 결제를 사용합니다.<br>Constant Value: "HUAWEI"
+* HUAWEI_APP_GALLERY<br>Uses Huawei App Gallery in-app purchase.<br>Constant Value: "HUAWEI"
 
 ### IapPurchaseResult
 

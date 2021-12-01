@@ -4,7 +4,7 @@
 
 #### Added
 
-* 화웨이 스토어(Huawei App Gallery) 추가
+* Added Huawei store (Huawei App Gallery) support
 
 ## 0.28.0 (2021.11.23)
 
