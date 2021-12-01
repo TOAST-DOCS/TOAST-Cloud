@@ -82,8 +82,8 @@ dependencies {
 
 ### Huawei App Gallery
 
-- AppGallery Connection 구성 파일(agconnect-service.json) 파일을 추가합니다.
-    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인하고 내 프로젝트를 클릭합니다.
+- AppGallery Connection 구성 파일(agconnect-service.json)을 추가합니다.
+    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인한 다음 **내 프로젝트**를 클릭합니다.
     - 프로젝트에서 앱을 선택합니다.
     - **Project settings** > **General information**으로 이동합니다.
     - **App information**에서 **agconnect-service.json** 파일을 다운로드합니다.
