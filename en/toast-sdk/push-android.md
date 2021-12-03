@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.28.0'
+    implementation 'com.toast.android:toast-push-fcm:0.29.0'
     ...
 }
 ```
@@ -533,7 +533,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
         // Create NotificationManager
         if (mManager == null) {
-            mManager = context.getSystemService(NotificationManager.class);
+            mManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             if  (mManager == null) {
                 Log.e(TAG, "Failed to get NotificationManager");
                 return;
@@ -541,11 +541,11 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
         }
 
         // Set the channel
-        String channelId = "YOUR_CHANNE_ID";
+        String channelId = "YOUR_CHANNEL_ID";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = mManager.getNotificationChannel(channelId);
             if (channel == null) {
-                String channelName = "YOUR_CHANNE_NAME";
+                String channelName = "YOUR_CHANNEL_NAME";
                 createNotificationChannel(channelId, channelName);
             }
         }
@@ -559,7 +559,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
         // Create a notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
-        builder.setContentTitle("New Message")
+        builder.setContentTitle(message.getTitle())
                 .setContentText(message.getBody())
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentIntent(contentIntent)
@@ -577,7 +577,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ## User Tag
 
-* The [User Tag](https://https://docs.toast.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
+* The [User Tag](https://docs.toast.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
 * It operates based on the tag ID (8-character string) rather than the tag name, and the tag ID can be created and checked in the Console > Tag menu.
 
 ### Modify User Tags

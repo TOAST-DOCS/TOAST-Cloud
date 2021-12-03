@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-logger:0.28.0'
+    implementation 'com.toast.android:toast-logger:0.29.0'
     ...
 }
 ```

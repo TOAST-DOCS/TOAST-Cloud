@@ -1,5 +1,19 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > Unity
 
+## 0.25.0 (2021.12.07)
+
+Download : [toast-sdk-unity-0.25.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.25.0/toast-sdk-unity-0.25.0.zip)
+
+### Added
+
+* TOAST IAP
+    * Added Huawei store (Huawei App Gallery) support
+
+### plugin version
+
+* Android : 0.29.0
+* iOS : 0.29.2
+
 ## 0.24.0 (2021.11.23)
 
 Download : [toast-sdk-unity-0.24.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.24.0/toast-sdk-unity-0.24.0.zip)
@@ -7,7 +21,7 @@ Download : [toast-sdk-unity-0.24.0.zip](https://static.toastoven.net/toastcloud/
 ### Added
 
 * TOAST IAP
-  * Added Amazon Appstore support
+    * Added Amazon Appstore support
 
 ### plugin version
 
@@ -22,24 +36,6 @@ Download : [toast-sdk-unity-0.23.5.zip](https://static.toastoven.net/toastcloud/
 
 * Android : 0.27.4
 * iOS : 0.29.1
-
-## 0.23.4 (2021.09.28)
-
-Download : [toast-sdk-unity-0.23.4.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.23.4/toast-sdk-unity-0.23.4.zip)
-
-### plugin version
-
-* Android : 0.27.3
-* iOS : 0.29.0
-
-## 0.23.3 (2021.09.07)
-
-Download : [toast-sdk-unity-0.23.3.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.23.3/toast-sdk-unity-0.23.3.zip)
-
-### plugin version
-
-* Android : 0.27.2
-* iOS : 0.29.0
 
 ## 0.23.4 (2021.09.28)
 

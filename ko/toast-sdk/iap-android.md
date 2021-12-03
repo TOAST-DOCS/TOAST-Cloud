@@ -10,10 +10,13 @@
 
 - [Android Developers 인앱 결제](https://developer.android.com/google/play/billing)
 - [ONE store 인앱 결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
-- [Galaxy store 인앱 결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
+- [Galaxy Store 인앱 결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
 - [Amazon Appstore 인앱 결제 API 안내 및 다운로드](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
+- [Huawei App Gallery 인앱 결제 API 안내 및 다운로드](https://developer.huawei.com/consumer/kr/hms/huawei-iap)
 
 ## 라이브러리 설정
+
+### Google Play Store
 
 - Google Play Store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
@@ -24,10 +27,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.28.0'
+    implementation 'com.toast.android:toast-iap-google:0.29.0'
     ...
 }
 ```
+
+### ONE store
 
 - ONE store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
@@ -37,12 +42,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.28.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.29.0'
     ...
 }
 ```
 
-- Galaxy store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+### Galaxy Store
+
+- Galaxy Store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
 repositories {
@@ -50,12 +57,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
+    implementation 'com.toast.android:toast-iap-galaxy:0.29.0'
     ...
 }
 ```
 
 > Galaxy Store 인앱 결제는 Android 4.3 (API 레벨 18) 이상에서 동작합니다.
+
+### Amazon Appstore
 
 - Amazon Appstore의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
 
@@ -65,10 +74,55 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-amazon:0.28.0'
+    implementation 'com.toast.android:toast-iap-amazon:0.29.0'
     ...
 }
 ```
+
+### Huawei App Gallery
+
+- AppGallery Connection 구성 파일(agconnect-service.json)을 추가합니다.
+    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인한 다음 **내 프로젝트**를 클릭합니다.
+    - 프로젝트에서 앱을 선택합니다.
+    - **Project settings** > **General information**으로 이동합니다.
+    - **App information**에서 **agconnect-service.json** 파일을 다운로드합니다.
+    - **agconnect-service.json** 파일을 앱의 루트 디렉토리에 복사합니다.
+
+- 아래와 같이 루트 수준의 build.gradle에 App Gallery Connect 플러그인을 추가합니다.
+
+```groovy
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        // Configure the Maven repository address for the HMS Core SDK.
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+    dependencies {
+        ...
+        // Add the AppGallery Connect plugin configuration. You are advised to use the latest plugin version.
+        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+    }
+}
+```
+
+- 아래와 같이 앱 수준의 build.gradle에 의존성을 추가합니다.
+
+```groovy
+apply plugin: 'com.huawei.agconnect'
+
+repositories {
+    mavenCentral()
+    maven {url 'https://developer.huawei.com/repo/'}
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-iap-huawei:0.29.0'
+    ...
+}
+```
+
+> Huawei App Gallery 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
 
 ## AndroidManifest 설정
 
@@ -142,6 +196,7 @@ Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
 | ONE store   | "ONESTORE" |
 | Galaxy store | "GALAXY" |
 | Amazon Appstore | "AMAZON" |
+| Huawei App Gallery | "HUAWEI" |
 
 > [참고] 스토어 코드는 [IapStoreCode](./iap-android/#iapstorecode) 클래스에 정의되어 있습니다.
 
@@ -679,12 +734,14 @@ String GOOGLE_PLAY_STORE
 String ONE_STORE
 String GALAXY_STORE
 String AMAZON_APP_STORE
+String HUAWEI_APP_GALLERY
 ```
 
 * GOOGLE_PLAY_STORE<br>Google Play 스토어 인앱 결제를 사용합니다.<br>Constant Value: "GG"
 * ONE_STORE<br>ONE store 인앱 결제를 사용합니다.<br>Constant Value: "ONESTORE"
 * GALAXY_STORE<br>Galaxy store 인앱 결제를 사용합니다.<br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Amazon Appstore 인앱 결제를 사용합니다.<br>Constant Value: "AMAZON"
+* HUAWEI_APP_GALLERY<br>Huawei App Gallery 인앱 결제를 사용합니다.<br>Constant Value: "HUAWEI"
 
 ### IapPurchaseResult
 
