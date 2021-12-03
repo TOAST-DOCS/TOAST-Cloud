@@ -3,7 +3,7 @@
 ## 事前準備
 
 1. [TOAST SDK](./getting-started-android)をインストールします。
-2. [TOASTコンソール](https://console.cloud.toast.com)で、[Pushサービスを有効化](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)します。
+2. [TOASTコンソール](https://console.cloud.toast.com)で、[Pushサービスを有効化](https://docs.toast.com/ja/Notification/Push/ja/console-guide/)します。
 3. PushコンソールでAppKeyを確認します。
 
 ## Push提供者別ガイド
@@ -578,7 +578,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ## ユーザータグ
 
-* [ユーザータグ](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 機能はさまざまなユーザーIDをひとつのタグでまとめ、それを利用してメッセージを送信することができます。
+* [ユーザータグ](https://docs.toast.com/ja/Notification/Push/ja/console-guide/#_16) 機能はさまざまなユーザーIDをひとつのタグでまとめ、それを利用してメッセージを送信することができます。
 * タグ名ではなく、タグID(8桁の文字列)に基づいて動作します。タグIDはコンソール > タグメニューから作成·確認できます。
 
 ### ユーザータグ修正
