@@ -3,7 +3,7 @@
 ## 사전 준비
 
 1. [TOAST SDK](./getting-started-android)를 설치합니다.
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/zh/Notification/Push/zh/console-guide/)합니다.
 3. Push 콘솔에서 AppKey를 확인합니다.
 
 ## Push 제공자별 가이드
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.28.0'
+    implementation 'com.toast.android:toast-push-fcm:0.29.0'
     ...
 }
 ```
@@ -533,7 +533,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
         //NotificationManager 생성
         if (mManager == null) {
-            mManager = context.getSystemService(NotificationManager.class);
+            mManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             if  (mManager == null) {
                 Log.e(TAG, "Failed to get NotificationManager");
                 return;
@@ -541,11 +541,11 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
         }
 
         // 채널 설정
-        String channelId = "YOUR_CHANNE_ID";
+        String channelId = "YOUR_CHANNEL_ID";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = mManager.getNotificationChannel(channelId);
             if (channel == null) {
-                String channelName = "YOUR_CHANNE_NAME";
+                String channelName = "YOUR_CHANNEL_NAME";
                 createNotificationChannel(channelId, channelName);
             }
         }
@@ -559,7 +559,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
         //알림 생성
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
-        builder.setContentTitle("New Message")
+        builder.setContentTitle(message.getTitle())
                 .setContentText(message.getBody())
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentIntent(contentIntent)
@@ -577,7 +577,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ## 사용자 태그
 
-* [사용자 태그](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
+* [사용자 태그](https://docs.toast.com/zh/Notification/Push/zh/console-guide/#tags) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
 * 태그명이 아닌 태그 아이디(8자리 문자열)를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
 
 ### 사용자 태그 수정

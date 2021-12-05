@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-google:0.28.0'
+  implementation 'com.toast.android:toast-iap-google:0.29.0'
 **DEPS**}
 ```
 
@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-onestore:0.28.0'
+  implementation 'com.toast.android:toast-iap-onestore:0.29.0'
 **DEPS**}
 ```
 
@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
+  implementation 'com.toast.android:toast-iap-galaxy:0.29.0'
 **DEPS**}
 ```
 
@@ -58,7 +58,46 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-amazon:0.28.0'
+  implementation 'com.toast.android:toast-iap-amazon:0.29.0'
+**DEPS**}
+```
+
+#### Huawei App Gallery
+
+- AppGallery Connection 구성 파일(agconnect-service.json)을 추가합니다.
+    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인한 다음 **내 프로젝트**를 클릭합니다.
+    - 프로젝트에서 앱을 선택합니다.
+    - **Project settings** > **General information**으로 이동합니다.
+    - **App information**에서 **agconnect-service.json** 파일을 다운로드합니다.
+    - **agconnect-service.json** 파일을 앱의 루트 디렉토리에 복사합니다.
+- 아래와 같이 App Gallery Connect 플러그인과 의존성을 설정합니다.
+
+```groovy
+buildscript {
+	repositories {
+		mavenCentral()
+
+		// Huawei Repository
+		maven {url 'https://developer.huawei.com/repo/'}
+	}
+
+	dependencies {
+    ...
+
+		// Huawei App Gallery Plugin
+    classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+	}
+}
+
+repositories {
+  mavenCentral()
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.huawei.agconnect'
+
+dependencies {
+  implementation 'com.toast.android:toast-iap-huawei:0.29.0'
 **DEPS**}
 ```
 
@@ -316,7 +355,8 @@ public enum StoreCode
     GooglePlayStore,
     AppleAppStore,
     OneStore,
-    AmazonAppStore
+    AmazonAppStore,
+    HuaweiAppGallery
 }
 ```
 
@@ -326,6 +366,7 @@ public enum StoreCode
 | AppleAppStore | 애플 앱 스토어 (iOS Only) |
 | OneStore | 원 스토어 (Android Only) |
 | AmazonAppStore | Amazon Appstore (Android Only) |
+| HuaweiAppGallery | Huawei App Gallery (Android Only) |
 
 ### ToastResult<T>
 ```csharp

@@ -1,5 +1,11 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > Android
 
+## 0.29.0 (2021.12.07)
+
+#### Added
+
+* Added Huawei store (Huawei App Gallery) support
+
 ## 0.28.0 (2021.11.23)
 
 ### TOAST IAP
