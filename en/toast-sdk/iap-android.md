@@ -82,7 +82,7 @@ dependencies {
 ### Huawei App Gallery
 
 - Add the AppGallery Connection configuration file (agconnect-service.json).
-    - Log in to [AppGallery Connect] (https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and then click **My Projects**.
+    - Log in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and then click **My Projects**.
     - Select an app from your project.
     - Go to **Project settings** > **General information**.
     - Download the **agconnect-service.json** file from **App information**.
