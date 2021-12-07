@@ -10,10 +10,13 @@
 
 - [Android Developers In-App Purchase](https://developer.android.com/google/play/billing)
 - [ONE store In-App Purchase API V5 (SDK V17) Guide and Download](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
-- [Galaxy store In-App Purchase API Guide and Download](https://developer.samsung.com/iap/overview.html)
+- [Galaxy Store In-App Purchase API Guide and Download](https://developer.samsung.com/iap/overview.html)
 - [Amazon Appstore In-App Purchase API Guide and Download](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
+- [Huawei App Gallery In-App Purchase API Guide and Download](https://developer.huawei.com/consumer/en/hms/huawei-iap)
 
 ## Library Setting
+
+### Google Play Store
 
 - To use in-app purchase of Google Play Store, add dependency to build.gradle as below:
 
@@ -24,10 +27,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.28.0'
+    implementation 'com.toast.android:toast-iap-google:0.29.0'
     ...
 }
 ```
+
+### ONE store
 
 - To use in-app purchase of ONE store, add dependency to build.gradle as below:
 
@@ -37,12 +42,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.28.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.29.0'
     ...
 }
 ```
 
-- To use in-app purchase of Galaxy store, add dependency to build.gradle as below:
+### Galaxy Store
+
+- To use in-app purchase of Galaxy Store, add dependency to build.gradle as below:
 
 ```groovy
 repositories {
@@ -50,14 +57,16 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
+    implementation 'com.toast.android:toast-iap-galaxy:0.29.0'
     ...
 }
 ```
 
 > Galaxy Store in-app purchase works on Android 4.3 (API level 18) or higher.
 
-- To use in-app purchase of Amazon Appstore, add dependencies to build.gradle as follows:
+### Amazon Appstore
+
+- To use in-app purchase of Amazon Appstore, add dependency to build.gradle as follows:
 
 ```groovy
 repositories {
@@ -65,10 +74,55 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-amazon:0.28.0'
+    implementation 'com.toast.android:toast-iap-amazon:0.29.0'
     ...
 }
 ```
+
+### Huawei App Gallery
+
+- Add the AppGallery Connection configuration file (agconnect-service.json).
+    - Log in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and then click **My Projects**.
+    - Select an app from your project.
+    - Go to **Project settings** > **General information**.
+    - Download the **agconnect-service.json** file from **App information**.
+    - Copy the **agconnect-service.json** file to the root directory of your app.
+
+- Add the App Gallery Connect plugin to the root level build.gradle as follows.
+
+```groovy
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        // Configure the Maven repository address for the HMS Core SDK.
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+    dependencies {
+        ...
+        // Add the AppGallery Connect plugin configuration. You are advised to use the latest plugin version.
+        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+    }
+}
+```
+
+- Add dependency to the app level build.gradle as follows.
+
+```groovy
+apply plugin: 'com.huawei.agconnect'
+
+repositories {
+    mavenCentral()
+    maven {url 'https://developer.huawei.com/repo/'}
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-iap-huawei:0.29.0'
+    ...
+}
+```
+
+> Huawei App Gallery's in-app purchase works on Android 4.4 (API level 19) or higher.
 
 ## AndroidManifest Setting
 
@@ -142,6 +196,7 @@ To use a lower version of Android Gradle Plugin, see [Preparing your Gradle buil
 | ONE store   | "ONESTORE" |
 | Galaxy store | "GALAXY" |
 | Amazon Appstore | "AMAZON" |
+| Huawei App Gallery | "HUAWEI" |
 
 > [Note] Store codes are defined in the [IapStoreCode](./iap-android/#iapstorecode) class.
 
@@ -627,7 +682,7 @@ For further details, refer to [Pause](https://developer.android.com/google/play/
 #### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
 
 * During pause period, consumable subscription products do not create new purchases.
-* During pause period, new purchases cannot be quried with ToastIap.queryConsumablePurchases().
+* During pause period, new purchases cannot be queried with ToastIap.queryConsumablePurchases().
 
 ### Resubscription
 
@@ -679,12 +734,14 @@ String GOOGLE_PLAY_STORE
 String ONE_STORE
 String GALAXY_STORE
 String AMAZON_APP_STORE
+String HUAWEI_APP_GALLERY
 ```
 
 * GOOGLE_PLAY_STORE<br>Uses Google Play Store in-app purchase.<br>Constant Value: "GG"
 * ONE_STORE<br>Uses ONE store in-app purchase. <br>Constant Value: "ONESTORE"
 * GALAXY_STORE<br>Uses Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Uses Amazon Appstore in-app purchase.<br>Constant Value: "AMAZON"
+* HUAWEI_APP_GALLERY<br>Uses Huawei App Gallery in-app purchase.<br>Constant Value: "HUAWEI"
 
 ### IapPurchaseResult
 

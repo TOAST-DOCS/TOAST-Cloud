@@ -1,5 +1,19 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.25.0 (2021.12.07)
+
+Download : [toast-sdk-unity-0.25.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.25.0/toast-sdk-unity-0.25.0.zip)
+
+### Added
+
+* TOAST IAP
+    * 화웨이 스토어(Huawei App Gallery) 추가
+
+### plugin version
+
+* Android : 0.29.0
+* iOS : 0.29.2
+
 ## 0.24.0 (2021.11.23)
 
 Download : [toast-sdk-unity-0.24.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.24.0/toast-sdk-unity-0.24.0.zip)
@@ -7,7 +21,7 @@ Download : [toast-sdk-unity-0.24.0.zip](https://static.toastoven.net/toastcloud/
 ### Added
 
 * TOAST IAP
-  * 아마존 스토어 추가
+    * 아마존 스토어 추가
 
 ### plugin version
 

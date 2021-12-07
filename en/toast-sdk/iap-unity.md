@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-google:0.28.0'
+  implementation 'com.toast.android:toast-iap-google:0.29.0'
 **DEPS**}
 ```
 
@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-onestore:0.28.0'
+  implementation 'com.toast.android:toast-iap-onestore:0.29.0'
 **DEPS**}
 ```
 
@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-galaxy:0.28.0'
+  implementation 'com.toast.android:toast-iap-galaxy:0.29.0'
 **DEPS**}
 ```
 
@@ -58,7 +58,46 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-amazon:0.28.0'
+  implementation 'com.toast.android:toast-iap-amazon:0.29.0'
+**DEPS**}
+```
+
+#### Huawei App Gallery
+
+- Add the AppGallery Connection configuration file (agconnect-service.json).
+    - Log in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and then click **My Projects**.
+    - Select an app from your project.
+    - Go to **Project settings** > **General information**.
+    - Download the **agconnect-service.json** file from **App information**.
+    - Copy the **agconnect-service.json** file to the root directory of your app.
+- Set up the App Gallery Connect plugin and dependencies as follows.
+
+```groovy
+buildscript {
+	repositories {
+		mavenCentral()
+
+		// Huawei Repository
+		maven {url 'https://developer.huawei.com/repo/'}
+	}
+
+	dependencies {
+    ...
+
+		// Huawei App Gallery Plugin
+    classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+	}
+}
+
+repositories {
+  mavenCentral()
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.huawei.agconnect'
+
+dependencies {
+  implementation 'com.toast.android:toast-iap-huawei:0.29.0'
 **DEPS**}
 ```
 
@@ -316,7 +355,8 @@ public enum StoreCode
     GooglePlayStore,
     AppleAppStore,
     OneStore,
-    AmazonAppStore
+    AmazonAppStore,
+    HuaweiAppGallery
 }
 ```
 
@@ -326,6 +366,7 @@ public enum StoreCode
 | AppleAppStore | Apple App Store (iOS Only) |
 | OneStore | ONE store (Android Only) |
 | AmazonAppStore | Amazon Appstore (Android Only) |
+| HuaweiAppGallery | Huawei App Gallery (Android Only) |
 
 ### ToastResult<T>
 ```csharp
