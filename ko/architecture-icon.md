@@ -1,5 +1,5 @@
 
-## NHN Cloud > NHN Cloud 아키텍쳐 아이콘
+## NHN Cloud > 아키텍쳐 아이콘
 NHN Cloud는 아키텍쳐 아이콘을 제공합니다.
 
 ### 아키텍쳐 아이콘 다운로드
