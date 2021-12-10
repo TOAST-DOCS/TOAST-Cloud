@@ -4,7 +4,7 @@
 
 #### 機能追加
 
-* 화웨이 스토어(Huawei App Gallery) 추가
+* ファーウェイストア(Huawei App Gallery)追加
 
 ## 0.28.0 (2021.11.23)
 
