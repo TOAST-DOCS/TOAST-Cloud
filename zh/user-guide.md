@@ -1,4 +1,4 @@
-## NHN Cloud > NHN Cloud使用指南
+## NHN Cloud > 使用指南
 介绍NHN打造的云服务NHN Cloud使用方法的用户指南。
 
 ## 注册NHN Cloud会员
