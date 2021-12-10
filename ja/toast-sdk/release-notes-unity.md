@@ -7,7 +7,7 @@ Download : [toast-sdk-unity-0.25.0.zip](https://static.toastoven.net/toastcloud/
 ### 機能追加
 
 * TOAST IAP
-    * 화웨이 스토어(Huawei App Gallery) 추가
+    * ファーウェイストア(Huawei App Gallery)追加
 
 ### plugin version
 
