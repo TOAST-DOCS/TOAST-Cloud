@@ -1,4 +1,4 @@
-## NHN Cloud > NHN Cloud User Guide
+## NHN Cloud > User Guide
 This document is the user guide of NHN Cloud, which is the cloud service of NHN.
 
 ## Join NHN Cloud

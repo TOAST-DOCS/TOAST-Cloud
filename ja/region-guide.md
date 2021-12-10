@@ -1,4 +1,4 @@
-## NHN Cloud > NHN Cloudリージョンガイド
+## NHN Cloud > リージョンガイド
 リージョンは、独立していて地理的に隔離されたサーバーの物理的な位置を意味します。
 一般的にリージョンは、アベイラビリティゾーンと呼ぶ独立した電源およびネットワークを持つデータセンターで構成され、使用したい地域とサービスに応じてリージョンを選択できます。 <br>
 インターネットで、いつどこでも自由にリージョンを選択してNHN Cloudサービスを利用できます。
@@ -53,6 +53,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Backup | リージョン | O | O  | O |  |
 |  | Data transporter | リージョン | O | O  |  |  |
 | Database | RDS for MySQL | リージョン | O | O | O |  |
+|  | RDS for MariaDB | リージョン | O |  |  |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
 |  | EasyCache | リージョン | O | O | O |  |
 |  | MS-SQL Instance | リージョン | O | O | O | O |

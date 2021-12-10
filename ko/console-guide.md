@@ -296,6 +296,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| RDS for MariaDB | ADMIN | RDS for MariaDB 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | RDS for MS-SQL | ADMIN | RDS for MS-SQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | EasyCache | ADMIN | EasyCache 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | EasyCache | VIEWER | EasyCache 서비스 복제 그룹 메뉴 Read(읽기), 모니터링 메뉴 Read(읽기) |

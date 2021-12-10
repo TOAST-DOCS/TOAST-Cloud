@@ -1,4 +1,4 @@
-## NHN Cloud > NHN Cloud Security Policy 
+## NHN Cloud > Security Policy 
 
 NHN Cloud guides for security products, security policy, and vulnerability information, to provide safer security environment.
 Security policy is provided as below, to protect customer's resources from new and various types of attacks and security vulnerabilities, and prepare against frequent accidents and threats in the cloud.

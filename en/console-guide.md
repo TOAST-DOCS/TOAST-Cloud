@@ -296,6 +296,7 @@ You can grant multiple required permissions to project members.
 | Object Storage | ADMIN | Create/Read/Update/Delete permission for Object Storage Service |
 | Backup | ADMIN | Create/Read/Update/Delete permission for Backup Service |
 | RDS for MySQL | ADMIN | Create/Read/Update/Delete permission for RDS for MySQL Service |
+| RDS for MariaDB | ADMIN | Create/Read/Update/Delete permission for RDS for MariaDB Service |
 | RDS for MS-SQL | ADMIN | Create/Read/Update/Delete permission for RDS for MS-SQL Service |
 | EasyCache | ADMIN | Create/Read/Update/Delete permission for EasyCache Service |
 | EasyCache | VIEWER | Read permission for EasyCache Service Replication Group menu, Read permission for Monitoring menu |
