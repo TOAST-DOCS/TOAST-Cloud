@@ -1,5 +1,5 @@
 
-## NHN Cloud> NHN Cloud 사용 가이드
+## NHN Cloud> 사용 가이드
 NHN이 만든 공공 클라우드 서비스, NHN Cloud (공공기관용) 이용 방법을 설명한 사용자 가이드입니다.
 
 ## NHN Cloud 회원 가입
