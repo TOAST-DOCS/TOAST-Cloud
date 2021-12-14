@@ -1,5 +1,5 @@
 
-## NHN Cloud > NHN Cloud 리전 가이드
+## NHN Cloud > 리전 가이드
 리전은 독립적이고 지리적으로 격리된 서버의 물리적 위치를 의미합니다.
 일반적으로 리전은 가용성 영역이라고 부르는 독립된 전원 및 네트워크를 갖춘 데이터 센터로 구성되며, 사용하려는 지역과 서비스에 따라 리전을 선택할 수 있습니다.
 인터넷으로 언제 어디서나 자유롭게 리전을 선택하여 NHN Cloud 서비스를 이용하세요.
@@ -53,6 +53,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Backup | 리전 | O | O | O |  |
 |  | Data transporter | 리전 | O | O |  |  |
 | Database | RDS for MySQL | 리전 | O | O | O |  |
+|  | RDS for MariaDB | 리전 | O |  |  |  |
 |  | RDS for MS-SQL | 리전 | O |  |  |  |
 |  | EasyCache | 리전 | O | O | O |  |
 |  | MS-SQL Instance | 리전 | O | O | O | O |

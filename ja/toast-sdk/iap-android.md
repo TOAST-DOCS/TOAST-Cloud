@@ -12,7 +12,7 @@
 - [ONE storeアプリ内決済API V5 (SDK V17)案内およびダウンロード](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
 - [Galaxy Storeアプリ内課金APIのご案内とダウンロード](https://developer.samsung.com/iap/overview.html)
 - [Amazon Appstoreアプリ内決済APIの案内とダウンロード](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
-- [Huawei App Gallery 인앱 결제 API 안내 및 다운로드](https://developer.huawei.com/consumer/jp/hms/huawei-iap)
+- [Huawei App Galleryアプリ内決済API案内およびダウンロード](https://developer.huawei.com/consumer/jp/hms/huawei-iap)
 
 ## ライブラリ設定
 
@@ -81,14 +81,14 @@ dependencies {
 
 ### Huawei App Gallery
 
-- AppGallery Connection 구성 파일(agconnect-service.json)을 추가합니다.
-    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인한 다음 **내 프로젝트**를 클릭합니다.
-    - 프로젝트에서 앱을 선택합니다.
-    - **Project settings** > **General information**으로 이동합니다.
-    - **App information**에서 **agconnect-service.json** 파일을 다운로드합니다.
-    - **agconnect-service.json** 파일을 앱의 루트 디렉토리에 복사합니다.
+- AppGallery Connection構成ファイル(agconnect-service.json)を追加します。
+    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)にログインし、**マイプロジェクト**をクリックします。
+    - プロジェクトでアプリを選択します。
+    - **Project settings** > **General information**に移動します。
+    - **App information**から**agconnect-service.json**ファイルをダウンロードします。
+    - **agconnect-service.json** ファイルをアプリのルートディレクトリにコピーします。
 
-- 아래와 같이 루트 수준의 build.gradle에 App Gallery Connect 플러그인을 추가합니다.
+- 以下のようにルートレベルのbuild.gradleにApp Gallery Connectプラグインを追加します。
 
 ```groovy
 buildscript {
@@ -106,7 +106,7 @@ buildscript {
 }
 ```
 
-- 아래와 같이 앱 수준의 build.gradle에 의존성을 추가합니다.
+- 以下のようにアプリレベルのbuild.gradleに依存関係を追加します。
 
 ```groovy
 apply plugin: 'com.huawei.agconnect'
@@ -122,7 +122,7 @@ dependencies {
 }
 ```
 
-> Huawei App Gallery 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
+> Huawei App Galleryアプリ内決済はAndroid 4.4 (APIレベル19)以上で動作します。
 
 ## AndroidManifest設定
 
@@ -740,7 +740,7 @@ String HUAWEI_APP_GALLERY
 * ONE_STORE<br>ONE storeアプリ内決済を使用します。<br>Constant Value: "ONESTORE"
 * GALAXY_STORE<br>Galaxy storeアプリ内決済を使用します。<br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Amazon Appstoreアプリ内決済を使用します。<br>Constant Value: "AMAZON"
-* HUAWEI_APP_GALLERY<br>Huawei App Gallery 인앱 결제를 사용합니다.<br>Constant Value: "HUAWEI"
+* HUAWEI_APP_GALLERY<br>Huawei App Galleryアプリ内決済を使用します。<br>Constant Value: "HUAWEI"
 
 ### IapPurchaseResult
 

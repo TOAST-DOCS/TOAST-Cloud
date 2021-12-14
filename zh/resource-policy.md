@@ -1,4 +1,4 @@
-## NHN Cloud > NHN Cloud源提供政策 
+## NHN Cloud > 源提供政策 
 NHN Cloud为所有客户提供稳定的服务，为保护客户不因创建意料之外的源而产生支出等，提供源使用量政策。
 
 ### Resource Provision Policy for Organization/Project 

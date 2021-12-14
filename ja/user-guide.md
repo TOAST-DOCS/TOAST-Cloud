@@ -1,4 +1,4 @@
-## NHN Cloud> NHN Cloud使用ガイド
+## NHN Cloud> 使用ガイド
 このガイドではNHN Cloudの利用方法を詳しく説明します。
 
 ## NHN Cloud会員登録 
