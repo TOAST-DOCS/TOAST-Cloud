@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [TOAST SDK](./getting-started-ios)を設置します。
-2. [TOASTコンソール](https://console.cloud.toast.com)で [Notification \> Pushを有効化](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)します。
+2. [TOASTコンソール](https://console.cloud.toast.com)で [Notification \> Pushを有効化](http://docs.toast.com/ja/Notification/Push/ja/console-guide/)します。
 3. PushでAppKeyを確認します。
 
 ## APNSガイド
@@ -452,7 +452,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 ## ユーザー·タグ
 
-* [ユーザー·タグ](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16)能は、複数のユーザー IDをひとつのタグで結びつけ、それを活用してメッセージを送信することができます。
+* [ユーザー·タグ](https://docs.toast.com/ja/Notification/Push/ja/console-guide/#_16)能は、複数のユーザー IDをひとつのタグで結びつけ、それを活用してメッセージを送信することができます。
 * タグ名ではなく、タグID(8桁の文字列)に基づいて動作し、タグIDはコンソール > タグメニューから作成・確認できます。
 
 ### ユーザー·タグ設定API

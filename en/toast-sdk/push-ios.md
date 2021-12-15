@@ -454,7 +454,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 
 ## User Tag
 
-* The [User Tag](https://https://docs.toast.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
+* The [User Tag](https://docs.toast.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
 * It operates based on the tag ID (8-character string) rather than the tag name, and the tag ID can be created and checked in the Console > Tag menu.
 
 ### Specification for User Tag Setting API
