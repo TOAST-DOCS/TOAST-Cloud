@@ -59,7 +59,7 @@ NHN Cloudは顧客の大切な資産とサービスを保護するために、DR
 ### ポート追加/許可申請手順
 - 下記Excelファイルをダウンロードして作成します。
 
-[![](https://static.toastoven.net/prod_gov_security/img_04.png)](https://static.toastoven.net/prod_gov_security/NHN%20Cloud%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%8A%E3%82%88%E3%81%B2%E3%82%99SSL%20VPN%E3%83%9B%E3%82%9A%E3%83%AA%E3%82%B7%E3%83%BC%E7%94%B3%E8%AB%8B%E6%9B%B8_JP.xlsx)
+[![](https://static.toastoven.net/prod_gov_security/fileicon_download_excel.png)](https://static.toastoven.net/prod_gov_security/NHN%20Cloud%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%8A%E3%82%88%E3%81%B2%E3%82%99SSL%20VPN%E3%83%9B%E3%82%9A%E3%83%AA%E3%82%B7%E3%83%BC%E7%94%B3%E8%AB%8B%E6%9B%B8_JP.xlsx)
 
 - ファイル名「NHN CloudファイアウォールおよびSSL VPNポリシー申請書_JP-機関名.xlsx」で保存します。
 - 下記代表メールへ受付申請メールを送信します。(受付日基準で3日以内に処理および返信)
