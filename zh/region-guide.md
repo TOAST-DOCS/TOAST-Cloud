@@ -62,7 +62,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | CUBRID Insatnce  | Regional | O | O | O | O |
 |  | MariaDB Instance  | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
-|  | GameAnvil | Global |  |  |  |  |
+|  | GameAnvil | Global | | | | |
+|  | GameStarter | Global | | | | |
 |  | Leaderboard | Global |  |  |  |  |
 |  | Launching | Global |  |  |  |  |
 |  | Smart Downloader | Global |  |  |  |  |

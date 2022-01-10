@@ -62,10 +62,11 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | CUBRID Insatnce  | 리전 | O | O | O | O |
 |  | MariaDB Instance  | 리전 | O | O | O | O |
 | Game | Gamebase | 글로벌 |  |  |  |  |
+|  | GameAnvil | 글로벌 |  |  |  |  |
+|  | GameStarter | 글로벌 |  |  |  |  |
 |  | Leaderboard | 글로벌 |  |  |  |  |
 |  | Launching | 글로벌 |  |  |  |  |
 |  | Smart Downloader | 글로벌 |  |  |  |  |
-|  | GameAnvil | 글로벌 |  |  |  |  |
 | Security |NHN AppGuard | 글로벌 |  |  |  |  |
 |  | App Security Check | 리전 | O |  |  |  |
 |  | Server Security Check | 리전 | O | O |  |  |
