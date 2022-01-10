@@ -35,7 +35,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Image Builder  | 리전 | O | O |  |  |
 |  | Auto Scale | 리전 | O | O | O | O |
 |  | System Monitoring | 리전 | O | O | O | O |
-| Container | Kubernetes | 리전 | O | O |  |  |
+| Container | NHN Kubernetes Service(NKS) | 리전 | O | O |  |  |
 |  | Container Registry | 리전 | O | O |  |  |
 | Network | VPC | 리전 | O | O | O | O |
 |  | NAT Instance | 리전 |  | O |  |  |

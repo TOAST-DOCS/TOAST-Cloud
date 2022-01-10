@@ -35,7 +35,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image Builder  | Region | O | O |  |  |
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
-| Container | Kubernetes | Regional | O | O |  |  |
+| Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | Container Registry | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | NAT Instance | Regional |  | O |  |  |
