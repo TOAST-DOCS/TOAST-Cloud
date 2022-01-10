@@ -61,6 +61,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | PostgreSQL Instance | リージョン | O | O | O | O |
 |  | CUBRID Insatnce  | リージョン | O | O | O | O |
 |  | MariaDB Instance  | リージョン | O | O | O | O |
+|  | Tibero Instance   | リージョン | O | O | O | O |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
 |  | GameStarter | グローバル |  |  |  |  |
@@ -90,6 +91,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | AI Fashion | リージョン | O | O | O |  |  |
 |  | Document Recognizer | グローバル |  |  |  |  |
 |  | Vehicle Plate Recognizer | グローバル |  |  |  |  |
+| Machine Learning | Deep Learning Instance | リージョン | O |  | | |
 | Application Service | Maps | リージョン | O |  |  |  |
 |  | ROLE | グローバル |  |  |  |  |
 |  | API Gateway | リージョン | O |  |  |  |

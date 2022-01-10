@@ -61,6 +61,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | PostgreSQL Instance | 리전 | O | O | O | O |
 |  | CUBRID Insatnce  | 리전 | O | O | O | O |
 |  | MariaDB Instance  | 리전 | O | O | O | O |
+|  | Tibero Instance   | 리전 | O | O | O | O |
 | Game | Gamebase | 글로벌 |  |  |  |  |
 |  | GameAnvil | 글로벌 |  |  |  |  |
 |  | GameStarter | 글로벌 |  |  |  |  |
@@ -90,6 +91,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | AI Fashion | 리전 | O | O |  O |  |
 |  | Document Recognizer | 글로벌 |  |  |  |  |
 |  | Vehicle Plate Recognizer | 글로벌 |  |  |  |  |
+| Machine Learning | Deep Learning Instance | 리전 | O |  | | |
 | Application Service | Maps | 리전 | O |  |  |  |
 |  | ROLE | 글로벌 |  |  |  |  |
 |  | API Gateway | 리전 | O |  |  |  |

@@ -61,6 +61,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | MySQL Instance | Regional | O | O | O | O |
 |  | CUBRID Insatnce  | Regional | O | O | O | O |
 |  | MariaDB Instance  | Regional | O | O | O | O |
+|  | Tibero Instance   | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
 |  | GameStarter | Global | | | | |
@@ -90,6 +91,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | AI Fashion | Regional | O | O | O |  |  |
 |  | Document Recognizer | Global |  |  |  |  |
 |  | Vehicle Plate Recognizer | Global |  |  |  |  |
+| Machine Learning | Deep Learning Instance | Regional | O |  | | |
 | Application Service | Maps | Regional | O |  |  |  |
 |  | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O |  |  |  |
