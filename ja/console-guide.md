@@ -350,7 +350,8 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 | Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | AI Fashion | ADMIN | AI Fashionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 | 
 | Document Recognizer | ADMIN | Document Recognizerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 | 
-| Vehicle Plate Recognizer | ADMIN | Vehicle Plate Recognizerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 | 
+| Vehicle Plate Recognizer | ADMIN | Vehicle Plate Recognizerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 | 
 | IAP | ADMIN | IAPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |

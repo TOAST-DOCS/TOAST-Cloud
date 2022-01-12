@@ -35,7 +35,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Image Builder  | リージョン | O | O |  |  |
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | System Monitoring | リージョン | O | O | O | O |
-| Container | Kubernetes | リージョン | O | O |  |  |
+| Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
 |  | Container Registry | リージョン | O | O |  |  |
 | Network | VPC | リージョン | O | O | O | O |
 |  | NAT Instance | リージョン |  | O  |  |  |
@@ -91,6 +91,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | AI Fashion | リージョン | O | O | O |  |  |
 |  | Document Recognizer | グローバル |  |  |  |  |
 |  | Vehicle Plate Recognizer | グローバル |  |  |  |  |
+|  | Text to Speech | グローバル |  |  |  |  |
 | Machine Learning | Deep Learning Instance | リージョン | O |  | | |
 | Application Service | Maps | リージョン | O |  |  |  |
 |  | ROLE | グローバル |  |  |  |  |

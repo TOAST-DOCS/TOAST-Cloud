@@ -27,7 +27,7 @@ Resource usage for organization is calculated based on members who registered pa
 |IP访问控制组    | 每个项目   |10个|
 |IP访问控制对象 | 每个IP访问控制组    |1000个|
 
-### Resource Provision Policy for Kubernetes Service  
+### Resource Provision Policy for NHN Kubernetes Service(NKS)  
 Resource usage is calculated for each project, and the policy is applied by the region. 
 
 |Resources | Criteria | Capacity | 

@@ -352,7 +352,8 @@ You can grant multiple required permissions to project members.
 | Face Recognition | ADMIN | Create/Read/Update/Delete permission for Face Recognition Service |
 | AI Fashion |	ADMIN |	Create/Read/Update/Delete permission for AI Fashion Service |
 | Document Recognizer | ADMIN | Create/Read/Update/Delete permission for Document Recognizer | 
-| Vehicle Plate Recognizer | ADMIN | Create/Read/Update/Delete permission for Vehicle Plate Recognizer | 
+| Vehicle Plate Recognizer | ADMIN | Create/Read/Update/Delete permission for Vehicle Plate Recognizer |
+| Text to Speech | ADMIN | Create/Read/Update/Delete permission for Text to Speech | 
 | Maps | ADMIN | Create/Read/Update/Delete permission for Maps Service |
 | ROLE | ADMIN | Create/Read/Update/Delete permission for ROLE Service |
 | API Gateway | ADMIN | Create/Read/Update/Delete permission for API Gateway Service |

@@ -34,7 +34,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image Builder  | Region | O | O |  |  |
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
-| Container | Kubernetes | Regional | O | O |  |  |
+| Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | Container Registry | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | Shared Load Balancer | Regional | O | O | O | O |
@@ -82,6 +82,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | AI Fashion | Regional | O | O | O |  |  |
 |  | Document Recognizer | Global |  |  |  |  |
 |  | Vehicle Plate Recognizer | Global |  |  |  |  |
+|  | Text to  | Global |  |  |  |  |
 | Machine Learning | Deep Learning Instance | Regional | O |  | | |
 | Application Service | Maps | Regional | O |  |  |  |
 |  | ROLE | Global |  |  |  |  |
@@ -92,11 +93,6 @@ All users are provided with the same features, policy, stability and usability, 
 | Mobile Service | IAP | Global |  |  |  |  |
 |  | Mobile Device Info | Global |  |  |  |  |
 | Analytics | Log & Crash Search | Global |  |  |  |  |
-| Application Service | Maps | Regional | O |  |  |  |
-|  | ROLE | Global |  |  |  |  |
-|  | API Gateway | Regional | O |  |  |  |
-|  | RTCS | Global |  |  |  |  |
-|  | ShortURL | Global |  |  |  |  |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |

@@ -353,6 +353,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | AI Fashion | ADMIN | AI Fashion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 | 
 | Document Recognizer | ADMIN | Document Recognizer 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 | 
 | Vehicle Plate Recognizer | ADMIN | Vehicle Plate Recognizer 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 | 
+| Text to Speech | ADMIN | Text to Speech 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | Maps | ADMIN | Maps 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | ROLE | ADMIN | ROLE 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | API Gateway | ADMIN | API Gateway 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
