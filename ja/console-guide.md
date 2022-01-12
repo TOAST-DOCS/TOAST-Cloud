@@ -324,6 +324,8 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 | Gamebase | OPERATION VIEWER | 運営メニューRead(読み取り) |
 | Gamebase | PUSH ADMIN | プッシュメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Gamebase | PUSH VIEWER | プッシュメニューRead(読み取り) |
+| GameStarter  | ADMIN | ゲーム設定, 配布メニュー Create(作成)/ Read(読み取り)/ Update(更新) 権限 |
+| GameStarter  | VIEWER | ゲーム設定, 配布メニュー Read(読み取り) 権限 |
 | Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | Leaderboard | VIEWER | Leaderboardサービスに対するRead(読み取り) |
 | Launching | ADMIN | Launchingサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |

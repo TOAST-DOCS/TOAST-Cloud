@@ -326,6 +326,8 @@ You can grant multiple required permissions to project members.
 | Gamebase | OPERATION VIEWER | Read permission for Operation menu |
 | Gamebase | PUSH ADMIN | Create, Read, Update, Delete for Push menu |
 | Gamebase | PUSH VIEWER | Read permission for Push Menu |
+| GameStarter  | ADMIN | Create, Read, Update for menus game settings, distribution |
+| GameStarter  | VIEWER | Read permission for menus game settings, distribution |
 | Leaderboard | ADMIN | Create/Read/Update/Delete permission for Leaderboard Service |
 | Leaderboard | VIEWER | Read permission for Leaderboard Service |
 | Launching | ADMIN | Create/Read/Update/Delete permission for Launching Service |
