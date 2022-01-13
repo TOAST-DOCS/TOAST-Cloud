@@ -3,7 +3,7 @@
 ## Supporting Environment
 
 * iOS 9.0 or higher
-* The latest version of XCode (version 10 or higher)
+* The latest version of XCode (version 13 or higher)
 
 ## Configuration of TOAST SDK
 
