@@ -54,6 +54,7 @@ NHN Cloud is an “integrated cloud service” provided by NHN, which provides e
 | 服务 | 说明 |
 | --- | --- |
 | Compute | 作为基于OpenStack的On-Demand基础设施服务，可以以较低的价格按照需求使用基础设施资源。|
+| Container | A service that automates distribution, scaling, and containerized application management based on an open source container orchestration engine. |
 | Network | 可以构建虚拟专用网络，提供可从外部访问的公用IP。|
 | Storage | 具备高可用性及稳定性的存储服务。|
 | Game | 可以使用游戏开发需要的平台。|
@@ -65,6 +66,8 @@ NHN Cloud is an “integrated cloud service” provided by NHN, which provides e
 | Dev Tool | 提供方便高效的开发环境的服务。|
 | Analytics | 可使用数据分析及收集所需的平台。|
 | Application Service | 提供网页/应用程序服务所需的各种工具。|
+| AI Service | You can easily and conveniently build AI Service powered by the latest cutting-edge technologies. |
+| Machine Learning | Services for developing machine learning applications. |
 | Search  | 通过各种搜索服务，无需担心更新即可始终使用最新数据。|
 | Management | 拥有最佳技术力的专业工程师系统化管理服务器，顾客可以更加专注于内容开发。|
 | ERP  | 整合会计、人事、审批的方便的全公司性资源管理解决方案。|
