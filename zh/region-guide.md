@@ -35,7 +35,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image Builder  | Region | O | O |  |  |
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
-| Container | Kubernetes | Regional | O | O |  |  |
+| Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | Container Registry | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | NAT Instance | Regional |  | O |  |  |
@@ -61,8 +61,10 @@ All users are provided with the same features, policy, stability and usability, 
 |  | MySQL Instance | Regional | O | O | O | O |
 |  | CUBRID Insatnce  | Regional | O | O | O | O |
 |  | MariaDB Instance  | Regional | O | O | O | O |
+|  | Tibero Instance   | Regional | O | O | O | O |
 | Game | Gamebase | Global |  |  |  |  |
-|  | GameAnvil | Global |  |  |  |  |
+|  | GameAnvil | Global | | | | |
+|  | GameStarter | Global | | | | |
 |  | Leaderboard | Global |  |  |  |  |
 |  | Launching | Global |  |  |  |  |
 |  | Smart Downloader | Global |  |  |  |  |
@@ -89,6 +91,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | AI Fashion | Regional | O | O | O |  |  |
 |  | Document Recognizer | Global |  |  |  |  |
 |  | Vehicle Plate Recognizer | Global |  |  |  |  |
+|  | Text to Speech | Global |  |  |  |  |
+| Machine Learning | Deep Learning Instance | Regional | O |  | | |
 | Application Service | Maps | Regional | O |  |  |  |
 |  | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O |  |  |  |

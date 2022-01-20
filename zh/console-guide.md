@@ -326,6 +326,8 @@ You can grant multiple required permissions to project members.
 | Gamebase | OPERATION VIEWER | Read permission for Operation menu |
 | Gamebase | PUSH ADMIN | Create, Read, Update, Delete for Push menu |
 | Gamebase | PUSH VIEWER | Read permission for Push Menu |
+| GameStarter  | ADMIN | Create, Read, Update for menus game settings, distribution |
+| GameStarter  | VIEWER | Read permission for menus game settings, distribution |
 | Leaderboard | ADMIN | Create/Read/Update/Delete permission for Leaderboard Service |
 | Leaderboard | VIEWER | Read permission for Leaderboard Service |
 | Launching | ADMIN | Create/Read/Update/Delete permission for Launching Service |
@@ -353,6 +355,7 @@ You can grant multiple required permissions to project members.
 | AI Fashion |	ADMIN |	Create/Read/Update/Delete permission for AI Fashion Service |
 | Document Recognizer | ADMIN | Create/Read/Update/Delete permission for Document Recognizer | 
 | Vehicle Plate Recognizer | ADMIN | Create/Read/Update/Delete permission for Vehicle Plate Recognizer | 
+| Text to Speech | ADMIN | Create/Read/Update/Delete permission for Text to Speech |
 | Maps | ADMIN | Create/Read/Update/Delete permission for Maps Service |
 | ROLE | ADMIN | Create/Read/Update/Delete permission for ROLE Service |
 | API Gateway | ADMIN | Create/Read/Update/Delete permission for API Gateway Service |

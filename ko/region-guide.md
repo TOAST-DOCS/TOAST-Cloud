@@ -35,7 +35,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Image Builder  | 리전 | O | O |  |  |
 |  | Auto Scale | 리전 | O | O | O | O |
 |  | System Monitoring | 리전 | O | O | O | O |
-| Container | Kubernetes | 리전 | O | O |  |  |
+| Container | NHN Kubernetes Service(NKS) | 리전 | O | O |  |  |
 |  | Container Registry | 리전 | O | O |  |  |
 | Network | VPC | 리전 | O | O | O | O |
 |  | NAT Instance | 리전 |  | O |  |  |
@@ -61,11 +61,13 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | PostgreSQL Instance | 리전 | O | O | O | O |
 |  | CUBRID Insatnce  | 리전 | O | O | O | O |
 |  | MariaDB Instance  | 리전 | O | O | O | O |
+|  | Tibero Instance   | 리전 | O | O | O | O |
 | Game | Gamebase | 글로벌 |  |  |  |  |
+|  | GameAnvil | 글로벌 |  |  |  |  |
+|  | GameStarter | 글로벌 |  |  |  |  |
 |  | Leaderboard | 글로벌 |  |  |  |  |
 |  | Launching | 글로벌 |  |  |  |  |
 |  | Smart Downloader | 글로벌 |  |  |  |  |
-|  | GameAnvil | 글로벌 |  |  |  |  |
 | Security |NHN AppGuard | 글로벌 |  |  |  |  |
 |  | App Security Check | 리전 | O |  |  |  |
 |  | Server Security Check | 리전 | O | O |  |  |
@@ -89,6 +91,8 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | AI Fashion | 리전 | O | O |  O |  |
 |  | Document Recognizer | 글로벌 |  |  |  |  |
 |  | Vehicle Plate Recognizer | 글로벌 |  |  |  |  |
+|  | Text to Speech | 글로벌 |  |  |  |  |
+| Machine Learning | Deep Learning Instance | 리전 | O |  | | |
 | Application Service | Maps | 리전 | O |  |  |  |
 |  | ROLE | 글로벌 |  |  |  |  |
 |  | API Gateway | 리전 | O |  |  |  |
