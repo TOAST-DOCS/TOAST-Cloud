@@ -16,18 +16,25 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |----|----|----|
 |CPU    | Per project |100vCore|
 |Memory     | Per project |256GB|
+| Key Pair | Per project | 100 |
 |Block Storage| Per project |10TB|
 |Floating IP | Per project |50|
 |VPC | Per project |3|
 |Subnet | Per VPC |10|
 |Routing Table | Per VPC |10|
 |Route | Per routing table |10|
+|Static Route | Per subnet | 20 |
 |Internet Gateway | Per project    |3|
+|NAT Gateway | Per project | 3 | 
+| Network Interface | Per project | 500 | 
+| Network ACL | Per project | 10 | 
+| Network ACL Policy | Per project | 100 | 
+| Network ACL Binding | Per project | 100 | 
 |Load Balancer | Per project |10|
 |IP Access Control Group    | Per project |10|
 |IP Access Control Target | Per IP access control group    |1000|
 
-### Resource Provision Policy for NHN Kubernetes Service(NKS)  
+### Resource Provision Policy for NHN Kubernetes Service (NKS)  
 Resource usage is calculated for each project, and the policy is applied by the region. 
 
 |Resources | Criteria | Capacity | 
