@@ -92,13 +92,14 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Document Recognizer | 글로벌 |  |  |  |  |
 |  | Vehicle Plate Recognizer | 글로벌 |  |  |  |  |
 |  | Text to Speech | 글로벌 |  |  |  |  |
+|  | Speech to Text | 글로벌 |  |  |  |  |
+|  | Cheating Detection | 리전 | O |  |  |  |
 | Machine Learning | Deep Learning Instance | 리전 | O |  | | |
 | Application Service | Maps | 리전 | O |  |  |  |
 |  | ROLE | 글로벌 |  |  |  |  |
 |  | API Gateway | 리전 | O |  |  |  |
 |  | RTCS | 글로벌 |  |  |  |  |
 |  | ShortURL | 글로벌 |  |  |  |  |
-|  | Cheating Detection | 리전 | O |  |  |  |
 | Mobile Service | IAP | 글로벌 |  |  |  |  |
 |  | Mobile Device Info | 글로벌 |  |  |  |  |
 | Search | Cloud Search | 리전 | O |  |  |  |
