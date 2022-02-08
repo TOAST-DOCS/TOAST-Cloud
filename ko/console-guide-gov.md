@@ -286,6 +286,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | SIEM | ADMIN | SIEM 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | CDN | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Deploy | ADMIN | Deploy 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Managed | ADMIN | Managed 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 
