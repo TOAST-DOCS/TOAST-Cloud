@@ -375,6 +375,8 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 | Certificate Manager | ADMIN | Certificate Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
 | eTax | ADMIN | eTax サービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
 | eTax | VIEWER | eTaxサービスに対するRead(読み取り)権限 |
+| marketplace | ADMIN | marketplaceプロジェクトサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| marketplace | ADMIN | marketplaceプロジェクトサービスに対するRead(読み取り)権限 |
 
 
 

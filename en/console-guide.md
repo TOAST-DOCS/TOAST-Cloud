@@ -377,6 +377,8 @@ You can grant multiple required permissions to project members.
 | Certificate Manager | ADMIN | Create/Read/Update/Delete permission for Certificate Manager Service |
 | eTax | ADMIN | Create/Read/Update/Delete permission for eTax Service |
 | eTax | VIEWER | Read permission for eTax Service |
+| marketplace | ADMIN | Create/Read/Update/Delete permission for marketplace Project Service |
+| marketplace | ADMIN | Read permission for marketplace Project Service |
 
 
 

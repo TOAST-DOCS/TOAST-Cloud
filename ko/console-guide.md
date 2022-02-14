@@ -377,6 +377,8 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | eTax| ADMIN | eTax 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | eTax | VIEWER | eTax 서비스 Read(읽기) |
+| marketplace | ADMIN | marketplace 프로젝트 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| marketplace | ADMIN | marketplace 프로젝트 서비스 Read(읽기) |
 
 
 
