@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > Android
 
+## 0.29.1 (2022.02.22)
+
+### TOAST Push
+
+#### Fixed
+
+* 구글 플레이 서비스가 설치되어있지 않은 디바이스에서 FCM 토큰 획득 시 크래시 이슈 수정
+
 ## 0.29.0 (2021.12.07)
 
 #### Added
