@@ -355,13 +355,14 @@ You can grant multiple required permissions to project members.
 | AI Fashion |	ADMIN |	Create/Read/Update/Delete permission for AI Fashion Service |
 | Document Recognizer | ADMIN | Create/Read/Update/Delete permission for Document Recognizer | 
 | Vehicle Plate Recognizer | ADMIN | Create/Read/Update/Delete permission for Vehicle Plate Recognizer |
-| Text to Speech | ADMIN | Create/Read/Update/Delete permission for Text to Speech | 
+| Text to Speech | ADMIN | Create/Read/Update/Delete permission for Text to Speech |
+| Speech to Text | ADMIN | Create/Read/Update/Delete permission for Speech to Text |
+| Cheating Detection | ADMIN | Create/Read/Update/Delete permission for Cheating Detection Service |
 | Maps | ADMIN | Create/Read/Update/Delete permission for Maps Service |
 | ROLE | ADMIN | Create/Read/Update/Delete permission for ROLE Service |
 | API Gateway | ADMIN | Create/Read/Update/Delete permission for API Gateway Service |
 | RTCS | ADMIN | Create/Read/Update/Delete permission for RTCS Service |
 | ShortURL | ADMIN | Create/Read/Update/Delete permission for ShortURL Service |
-| Cheating Detection | ADMIN | Create/Read/Update/Delete permission for Cheating Detection Service |
 | IAP | ADMIN | Create/Read/Update/Delete permission for IAP Service |
 | Mobile Device Info | ADMIN | Create/Read/Update/Delete permission for Mobile Device Info Service |
 | Cloud Search | ADMIN | Create/Read/Update/Delete permission for Cloud Search Service |
@@ -376,6 +377,8 @@ You can grant multiple required permissions to project members.
 | Certificate Manager | ADMIN | Create/Read/Update/Delete permission for Certificate Manager Service |
 | eTax | ADMIN | Create/Read/Update/Delete permission for eTax Service |
 | eTax | VIEWER | Read permission for eTax Service |
+| marketplace | ADMIN | Create/Read/Update/Delete permission for marketplace Project Service |
+| marketplace | ADMIN | Read permission for marketplace Project Service |
 
 
 

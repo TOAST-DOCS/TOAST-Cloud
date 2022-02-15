@@ -57,23 +57,23 @@ NHN Cloud is an “integrated cloud service” provided by NHN, which provides e
 | Container | A service that automates distribution, scaling, and containerized application management based on an open source container orchestration engine. |
 | Network | 可以构建虚拟专用网络，提供可从外部访问的公用IP。|
 | Storage | 具备高可用性及稳定性的存储服务。|
-| Game | 可以使用游戏开发需要的平台。|
-| Notification | 可以使用移动设备推送及SMS平台。|
 | Database | 无复杂的安装及设置过程，可在云环境下使用关系型数据库。|
-| Content Delivery | 可保存图像及快速分发内容的平台。|
+| Game | 可以使用游戏开发需要的平台。|
 | Security | 可以使用能够提高安全的平台。|
-| Mobile Service | 有助于轻松进行移动设备应用程序服务开发及测试的服务。|
-| Dev Tool | 提供方便高效的开发环境的服务。|
-| Analytics | 可使用数据分析及收集所需的平台。|
-| Application Service | 提供网页/应用程序服务所需的各种工具。|
+| Content Delivery | 可保存图像及快速分发内容的平台。|
+| Notification | 可以使用移动设备推送及SMS平台。|
 | AI Service | You can easily and conveniently build AI Service powered by the latest cutting-edge technologies. |
 | Machine Learning | Services for developing machine learning applications. |
+| Application Service | 提供网页/应用程序服务所需的各种工具。|
+| Mobile Service | 有助于轻松进行移动设备应用程序服务开发及测试的服务。|
 | Search  | 通过各种搜索服务，无需担心更新即可始终使用最新数据。|
+| Analytics | 可使用数据分析及收集所需的平台。|
+| Dev Tool | 提供方便高效的开发环境的服务。|
 | Management | 拥有最佳技术力的专业工程师系统化管理服务器，顾客可以更加专注于内容开发。|
-| ERP  | 整合会计、人事、审批的方便的全公司性资源管理解决方案。|
-| Dooray!  | 作为合作所需的便利服务，同时支持邮件、问题跟踪器、日程管理、聊天，可以实现轻松合作。|
-| Contact Center | 通过客服中心咨询的综合解决方案，高效处理咨询，提高运营效率，提供最佳的客户体验。|
 | Bill | 可以轻松便利地签发税务发票。|
+| Dooray!  | 作为合作所需的便利服务，同时支持邮件、问题跟踪器、日程管理、聊天，可以实现轻松合作。|
+| ERP  | 整合会计、人事、审批的方便的全公司性资源管理解决方案。|
+| Contact Center | 通过客服中心咨询的综合解决方案，高效处理咨询，提高运营效率，提供最佳的客户体验。|
 | IDC  | 凭借自主技术力在京畿道板桥设计·构建的城市型网络数据中心。|
 | CloudTrail  | 通过NHN Cloud Console及API等，自动收集发生的各种活动日志及事件的免费服务。|
 

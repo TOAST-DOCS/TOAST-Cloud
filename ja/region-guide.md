@@ -92,13 +92,14 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Document Recognizer | グローバル |  |  |  |  |
 |  | Vehicle Plate Recognizer | グローバル |  |  |  |  |
 |  | Text to Speech | グローバル |  |  |  |  |
+|  | Speech to text | グローバル |  |  |  |  |
+|  | Cheating Detection | リージョン | O |  |  |  |
 | Machine Learning | Deep Learning Instance | リージョン | O |  | | |
 | Application Service | Maps | リージョン | O |  |  |  |
 |  | ROLE | グローバル |  |  |  |  |
 |  | API Gateway | リージョン | O |  |  |  |
 |  | RTCS | グローバル |  |  |  |  |
 |  | Short URL | グローバル |  |  |  |  |
-|  | Cheating Detection | リージョン | O |  |  |  |
 | Mobile Service | IAP | グローバル |  |  |  |  |
 |  | Mobile Device Info | グローバル |  |  |  |  |
 | Search | Cloud Search | リージョン | O |  |  |  |
