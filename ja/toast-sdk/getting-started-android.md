@@ -29,8 +29,8 @@ TOAST SDKが提供するサービスの中から、希望する機能を選択�
 | com.toast.android:toast-crash-reporter-ndk:0.29.1       | TOAST Native Crash Reporter |
 | com.toast.android:toast-iap-core:0.29.1     | TOAST In-app Purchase Core |
 | com.toast.android:toast-iap-google:0.29.1   | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.29.1 | TOAST In-app Purchase <br>OneStore |
-| com.toast.android:toast-iap-galaxy:0.29.1 | TOAST In-app Purchase <br>GalaxyStore |
+| com.toast.android:toast-iap-onestore:0.29.1 | TOAST In-app Purchase <br>ONE store |
+| com.toast.android:toast-iap-galaxy:0.29.1 | TOAST In-app Purchase <br>Galaxy Store |
 | com.toast.android:toast-push-core:0.29.1    | TOAST Push Core   |
 | com.toast.android:toast-push-fcm:0.29.1    | TOAST Push <br>Firebase Cloud Messaging |
 
