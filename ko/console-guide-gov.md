@@ -171,6 +171,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 프로젝트 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
 
 * Compute
+* Container
 * Network
 * Storage
 * Database
