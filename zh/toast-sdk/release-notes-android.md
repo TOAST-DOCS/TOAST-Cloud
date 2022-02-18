@@ -2,6 +2,8 @@
 
 ## 0.29.0 (2021.12.07)
 
+### TOAST IAP
+
 #### Added
 
 * 화웨이 스토어(Huawei App Gallery) 추가
