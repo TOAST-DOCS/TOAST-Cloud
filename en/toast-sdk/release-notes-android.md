@@ -10,6 +10,8 @@
 
 ## 0.29.0 (2021.12.07)
 
+### TOAST IAP
+
 #### Added
 
 * Added Huawei store (Huawei App Gallery) support
