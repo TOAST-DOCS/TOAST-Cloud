@@ -1,6 +1,16 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > Android
 
+## 0.29.1 (February 22, 2022)
+
+### TOAST Push
+
+#### Fixed
+
+* Fixed a crash issue that occurred when obtaining FCM tokens on devices that do not have Google Play Services installed
+
 ## 0.29.0 (2021.12.07)
+
+### TOAST IAP
 
 #### Added
 
