@@ -1,5 +1,14 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Unity
 
+## 0.25.1 (2022.02.23)
+
+Download : [toast-sdk-unity-0.25.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.25.1/toast-sdk-unity-0.25.1.zip)
+
+### plugin version
+
+* Android : 0.29.1
+* iOS : 0.29.2
+
 ## 0.25.0 (2021.12.07)
 
 Download : [toast-sdk-unity-0.25.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.25.0/toast-sdk-unity-0.25.0.zip)
