@@ -8,7 +8,7 @@
 
 * Fixed a crash issue that occurred when obtaining FCM tokens on devices that do not have Google Play Services installed
 
-## 0.29.0 (2021.12.07)
+## 0.29.0 (December 07, 2021)
 
 ### TOAST IAP
 
@@ -16,7 +16,7 @@
 
 * Added Huawei store (Huawei App Gallery) support
 
-## 0.28.0 (2021.11.23)
+## 0.28.0 (November 23, 2021)
 
 ### TOAST IAP
 
@@ -36,7 +36,7 @@
 > Added ToastPushMessageReceiver.getContentIntent() which returns a PendingIntent that can collect metrics when creating a Notification manually.
 This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has some features that do not work properly in Android 12 or higher.
 
-## 0.27.4 (2021.10.26)
+## 0.27.4 (October 26, 2021)
 
 ### TOAST Push
 
@@ -44,7 +44,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Fixed an error where user notification channel settings were initialized
 
-## 0.27.3 (2021.09.28)
+## 0.27.3 (September 28, 2021)
 
 ### TOAST IAP
 
@@ -52,7 +52,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Improved ONE store v16 test payment process
 
-## 0.27.2 (2021.09.06)
+## 0.27.2 (September 06, 2021)
 
 ### TOAST Logger
 
@@ -61,7 +61,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Fixed an error where DeviceModel was displayed as "UNKNOWN"
     * Fixed an error where DeviceModel was displayed as "UNKNOWN" when crash occurred in Unity.
 
-## 0.27.1 (2021.08.24)
+## 0.27.1 (August 24, 2021)
 
 ### TOAST IAP
 
@@ -70,7 +70,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Improved Google subscription payment process
 * Improved ONE store v16 payment process
 
-## 0.27.0 (2021.08.03)
+## 0.27.0 (August 03, 2021)
 
 ### TOAST IAP
 
@@ -78,7 +78,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Added ONE store v16
 
-## 0.26.0 (2021.07.06)
+## 0.26.0 (July 06, 2021)
 
 ### TOAST IAP
 
@@ -93,7 +93,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Handled an issue in Firebase Messaging 22.0.0 or higher
     * Fixed an error that occurred in Firebase Messaging 22.0.0 or higher.
 
-## 0.25.0 (2021.04.27)
+## 0.25.0 (April 27, 2021)
 
 ### TOAST IAP
 
@@ -111,7 +111,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Fixed an error where "Cancel" was returned intermittently on Android 11 or higher.
 
-## 0.24.4 (2021.01.12)
+## 0.24.4 (January 12, 2021)
 
 ### TOAST Push
 
@@ -125,7 +125,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Added Symbol Uploader function
 
-## 0.24.3 (2020.12.08)
+## 0.24.3 (December 08, 2020)
 
 ### TOAST Push
 
@@ -133,7 +133,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Deleted a module due to termination of Tencent QQ service
 
-## 0.24.2 (2020.11.24)
+## 0.24.2 (November 24, 2020)
 
 ### TOAST Push
 
@@ -141,7 +141,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Fixed an issue where the token is registered with a device identifier when requesting token registration at the same time as user ID setting
 
-## 0.24.1 (2020.10.30)
+## 0.24.1 (October 30, 2020)
 
 ### TOAST IAP
 
@@ -150,7 +150,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Fixed Galaxy Store in-app purchase error
     * Fixed an error where timeout occurred in Galaxy Apps (previous app name of Galaxy Store) 3.x or lower.
 
-## 0.24.0 (2020.10.27)
+## 0.24.0 (October 27, 2020)
 
 ### TOAST IAP
 
@@ -178,7 +178,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Fixed a bug where notification channel is newly created under certain circumstances
 
-## 0.23.2 (2020.10.06)
+## 0.23.2 (October 06, 2020)
 
 ### TOAST IAP
 
@@ -187,7 +187,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Fixed a subscription issue.
     * Fixed so that an error is not notified through IapService.PurchasesUpdatedListener when subscription is restored by payment method modification in "Account Hold" or "Grace Period" status.
 
-## 0.23.1 (2020.09.11)
+## 0.23.1 (September 11, 2020)
 
 ### TOAST Push
 
@@ -195,7 +195,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Improved token registration logic
 
-## 0.23.0 (2020.07.28)
+## 0.23.0 (July 28, 2020)
 
 ### TOAST Push
 
@@ -203,7 +203,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Support user tag function
 
-## 0.22.0 (2020.06.23)
+## 0.22.0 (June 23, 2020)
 
 ### TOAST IAP
 
@@ -219,7 +219,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Improved the feature to set default notification options
 
-## 0.21.2 (2020.05.26)
+## 0.21.2 (May 26, 2020)
 
 ### TOAST Push
 
@@ -227,7 +227,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Improved token registration function
 
-## 0.21.1 (2020.04.28)
+## 0.21.1 (April 28, 2020)
 
 ### TOAST Push
 
@@ -241,7 +241,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Improved Native Crash Reporting function
 
-## 0.21.0 (2020.03.24)
+## 0.21.0 (March 24, 2020)
 
 ### TOAST Logger
 
@@ -257,7 +257,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
     * Added setting on whether or not to expose foreground notifications.
     * Added setting on whether or not to use the badge icon.
 
-## 0.20.3 (2020.02.25)
+## 0.20.3 (February 25, 2020)
 
 ### TOAST Push
 
@@ -267,7 +267,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
     * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
     * After token registration, if the user ID is set or changed using ToastSdk.setUserId(), the token information is updated.
 
-## 0.20.2 (2020.01.21)
+## 0.20.2 (January 21, 2020)
 
 ### TOAST Push
 
@@ -276,7 +276,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Improved metrics collection function
 * Improved logic for creating the default notification channel
 
-## 0.20.1 (2020.01.07)
+## 0.20.1 (January 07, 2020)
 
 ### TOAST Push
 
@@ -298,7 +298,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Fixed a "Bad base64 Exception" error
     * Fixed an error where "Bad Base64 Exception" occurred when processing a payment that did not use TOAST SDK.
 
-## 0.19.4 (2019.11.26)
+## 0.19.4 (November 26, 2019)
 
 ### TOAST Push
 
@@ -307,7 +307,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Supports migration of (old) pushsdk data.
     * If updated from (old) pushsdk, all data will be migrated to TOAST SDK.
 
-## 0.19.3 (2019.10.18)
+## 0.19.3 (October 18, 2019)
 
 ### TOAST Push
 
@@ -315,7 +315,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Improved token registration function.
 
-## 0.19.2 (2019.10.15)
+## 0.19.2 (October 15, 2019)
 
 ### TOAST Push
 
@@ -331,7 +331,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Notification default style setting.
     * Notifications that do not contain media are set to BigTextStyle so that messages with more than one line can also be represented.
 
-## 0.19.1 (2019.10.02)
+## 0.19.1 (October 02, 2019)
 
 ### TOAST IAP
 
@@ -339,7 +339,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Added a feature to include user data in the receipt when making a purchase request to the Unity Android IAP Plugin.
 
-## 0.19.0 (2019.10.01)
+## 0.19.0 (October 01, 2019)
 
 ### TOAST IAP
 
@@ -354,7 +354,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Improved usability of custom message receivers.
     * The user content intent type when requesting notification exposure has been changed to PendingIntent.
 
-## 0.18.0 (2019.08.27)
+## 0.18.0 (August 27, 2019)
 
 ### TOAST IAP
 
@@ -374,7 +374,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Added a feature to set default notification options.
     * You can set basic options such as small icons, vibration, and notification sound.
 
-## 0.17.1 (2019.07.23)
+## 0.17.1 (July 23, 2019)
 
 ### TOAST Push
 
@@ -382,7 +382,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Added FCM sender ID information in message object when using a custom receiver.
 
-## 0.17.0 (2019.06.25)
+## 0.17.0 (June 25, 2019)
 
 ### TOAST Pus
 
@@ -403,7 +403,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
     * Made it easier to edit custom messages and create notifications.
     * Made it easier to send metrics for custom notifications.
 
-## 0.16.2 (2019.06.21)
+## 0.16.2 (June 21, 2019)
 
 ### TOAST IAP
 
@@ -418,7 +418,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Crash bug fix
 
-## 0.16.1 (2019.05.02)
+## 0.16.1 (May 02, 2019)
 
 ### TOAST SDK
 
@@ -426,7 +426,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Removed 'toast-push-tencent' dependencies from 'toast-sdk'.
 
-## 0.16.0 (2019.04.23)
+## 0.16.0 (April 23, 2019)
 
 ### TOAST Push
 
@@ -436,7 +436,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Added CustomReceiver.
     * Once the message is received, the message is processed by a user-defined receiver.
 
-## 0.15.0 (2019.03.26)
+## 0.15.0 (March 26, 2019)
 
 ### TOAST Log & Crash
 
@@ -459,7 +459,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * Added a feature that sets notification's sound when adding a 'sound' field.
     * Only under Android 8.0
 
-## 0.14.3 (2019.03.08)
+## 0.14.3 (March 08, 2019)
 
 ### TOAST IAP
 
@@ -467,7 +467,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Fixed a issue that doesn't work APIs when a application applies Proguard.
 
-## 0.14.2 (2019.03.04)
+## 0.14.2 (March 04, 2019)
 
 ### TOAST Push
 
@@ -475,7 +475,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Fixed a crash that occurs when could not obtain a FCM token.
 
-## 0.14.1 (2019.01.29)
+## 0.14.1 (January 29, 2019)
 
 ### TOAST IAP
 
@@ -483,7 +483,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Fixed an error that could not reprocess old IAP SDK purchases.
 
-## 0.14.0 (2019.01.08)
+## 0.14.0 (January 08, 2019)
 
 ### TOAST IAP
 
@@ -491,7 +491,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Added TOAST IAP Unity Plugin.
 
-## 0.13.0 (2018.12.27)
+## 0.13.0 (December 27, 2018)
 
 ### TOAST Core
 
@@ -507,7 +507,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 * New Functions
     * Firebase Cloud Messaging(FCM)
 
-## 0.12.0 (2018.12.04)
+## 0.12.0 (December 04, 2018)
 
 ### TOAST IAP
 
@@ -517,7 +517,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
     * Google Play Store (One-Time/Subscription Products)
     * ONE store (One-Time Products)
 
-## 0.11.0 (2018.11.20)
+## 0.11.0 (November 20, 2018)
 
 ### TOAST Log & Crash
 
@@ -525,7 +525,7 @@ This replaces ToastPushMessageReceiver.getNotificationServiceIntent(), which has
 
 * Network Insights
 
-## 0.9.0 (2018.09.04)
+## 0.9.0 (September 04, 2018)
 
 ### TOAST Log & Crash
 
