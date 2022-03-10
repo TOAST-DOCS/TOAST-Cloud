@@ -10,8 +10,6 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 * 서비스를 이용하는 멤버 관리
 * 결제 정보 제공
 
-## 동영상 가이드
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PphP9zBrHeI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 퀵 가이드
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
