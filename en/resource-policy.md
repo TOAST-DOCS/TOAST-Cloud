@@ -24,6 +24,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Routing Table | Per VPC |10|
 |Route | Per routing table |10|
 |Static Route | Per subnet | 20 |
+|Region Peering | Per VPC  |10 | 
 |Internet Gateway | Per project    |3|
 |NAT Gateway | Per project | 3 | 
 | Network Interface | Per project | 500 | 
