@@ -35,6 +35,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Image Builder  | リージョン | O | O |  |  |
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | System Monitoring | リージョン | O | O | O | O |
+|  | Virtual Desktop | リージョン | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
 |  | Container Registry | リージョン | O | O |  |  |
 | Network | VPC | リージョン | O | O | O | O |
@@ -100,6 +101,8 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | API Gateway | リージョン | O |  |  |  |
 |  | RTCS | グローバル |  |  |  |  |
 |  | Short URL | グローバル |  |  |  |  |
+|  | JEUS Instance | リージョン | O | O | O | O |
+|  | WebtoB Instance | リージョン | O | O | O | O |
 | Mobile Service | IAP | グローバル |  |  |  |  |
 |  | Mobile Device Info | グローバル |  |  |  |  |
 | Search | Cloud Search | リージョン | O |  |  |  |
