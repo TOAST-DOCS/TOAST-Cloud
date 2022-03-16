@@ -291,8 +291,8 @@ You can grant multiple required permissions to project members.
 | Infrastructure | ADMIN | Create/Read/Update/Delete permission for Infrastructure Service |
 | Infrastructure | MEMBER | Read permission for VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete permission for Other services |
 | Virtual Desktop | ADMIN | Create/Read/Update/Delete permission for Virtual Desktop Service |
-| Container Registry | ADMIN | Create/Read/Update/Delete permission for Container Registry Service |
-| Container Registry | VIEWER | Read permission for Container Registry Service |
+| NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete permission for NHN Container Registry (NCR) Service |
+| NHN Container Registry (NCR) | VIEWER | Read permission for NHN Container Registry (NCR) Service |
 | DNS Plus | ADMIN | Create/Read/Update/Delete permission for DNS Plus Service |
 | Object Storage | ADMIN | Create/Read/Update/Delete permission for Object Storage Service |
 | Backup | ADMIN | Create/Read/Update/Delete permission for Backup Service |
