@@ -10,9 +10,6 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 - 서비스를 이용하는 멤버 관리
 - 결제 정보 제공
 
-## 동영상 가이드
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PphP9zBrHeI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## 퀵 가이드
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
 
@@ -290,8 +287,9 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Container Registry | ADMIN | Container Registry 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Container Registry | VIEWER | Container Registry 서비스 Read(읽기) |
+| Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR) 서비스 Read(읽기) |
 | DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |

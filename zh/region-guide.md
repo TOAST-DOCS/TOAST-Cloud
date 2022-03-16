@@ -35,6 +35,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image Builder  | Region | O | O |  |  |
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
+|  | Virtual Desktop | Regional | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | Container Registry | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
@@ -100,6 +101,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | API Gateway | Regional | O |  |  |  |
 |  | RTCS | Global |  |  |  |  |
 |  | ShortURL | Global |  |  |  |  |
+|  | JEUS Instance | Regional | O | O | O | O |
+|  | WebtoB Instance | Regional | O | O | O | O |
 | Mobile Service | IAP | Global |  |  |  |  |
 |  | Mobile Device Info | Global |  |  |  |  |
 | Search | Cloud Search | Regional | O |  |  |  |
