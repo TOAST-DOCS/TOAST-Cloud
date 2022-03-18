@@ -36,7 +36,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | System Monitoring | Regional | O | O | O | O |
 |  | Virtual Desktop | Regional | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
-|  | Container Registry | Regional | O | O |  |  |
+|  | NHN Container Registry (NCR) | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |

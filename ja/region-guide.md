@@ -37,7 +37,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | System Monitoring | リージョン | O | O | O | O |
 |  | Virtual Desktop | リージョン | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
-|  | Container Registry | リージョン | O | O |  |  |
+|  | NHN Container Registry (NCR) | リージョン | O | O |  |  |
 | Network | VPC | リージョン | O | O | O | O |
 |  | NAT Instance | リージョン |  | O  |  |  |
 |  | Floating IP | リージョン | O | O | O | O |
