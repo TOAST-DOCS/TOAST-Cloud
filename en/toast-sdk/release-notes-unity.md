@@ -7,8 +7,8 @@ Download : [toast-sdk-unity-0.25.2.zip](https://static.toastoven.net/toastcloud/
 ### Enhanced
 
 * TOAST IAP
-    * Apple 결제의 Sandbox 여부를 확인할 수 있는 프로퍼티 추가
-        * IapPurchase.IsSandboxPayment 프로퍼티가 추가되었습니다.
+    * Added a property to check whether Apple payment is sandbox payment or not
+        * Added the IapPurchase.IsSandboxPayment property.
 
 ### plugin version
 
