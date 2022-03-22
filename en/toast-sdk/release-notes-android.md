@@ -6,7 +6,7 @@
 
 #### Fixed
 
-* 토큰 갱신 시 토큰이 등록되지 않는 문제 수정
+* Fixed an issue where, when a token was renewed, the token was not registered
 
 ## 0.29.1 (February 22, 2022)
 
