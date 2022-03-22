@@ -581,6 +581,8 @@ TOAST IAPコンソールに登録された商品の情報を確認できます�
 @property (nonatomic, readonly) NSTimeInterval expiryTime;
 // プロモーション決済状況
 @property (nonatomic, readonly, getter=isStorePayment) BOOL storePayment;
+// 샌드박스 결제 여부
+@property (nonatomic, readonly, getter=isSandboxPayment) BOOL sandboxPayment;
 // ユーザーデータ
 @property (nonatomic, readonly, copy, nullable) NSString *payload;
 

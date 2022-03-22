@@ -1,5 +1,20 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > Unity
 
+## 0.25.2 (2022.03.29)
+
+Download : [toast-sdk-unity-0.25.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.25.2/toast-sdk-unity-0.25.2.zip)
+
+### Enhanced
+
+* TOAST IAP
+    * Apple 결제의 Sandbox 여부를 확인할 수 있는 프로퍼티 추가
+        * IapPurchase.IsSandboxPayment 프로퍼티가 추가되었습니다.
+
+### plugin version
+
+* Android : 0.29.2
+* iOS : 0.30.0
+
 ## 0.25.1 (2022.02.23)
 
 Download : [toast-sdk-unity-0.25.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.25.1/toast-sdk-unity-0.25.1.zip)
