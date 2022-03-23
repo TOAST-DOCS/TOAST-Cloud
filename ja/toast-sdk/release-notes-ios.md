@@ -2,8 +2,8 @@
 
 ## 0.30.0 (2022.03.29)
 ### TOAST IAP
-#### 기능 추가
-* ToastPurchaseResult에 샌드박스 결제 여부 추가 (sandboxPayment)
+#### 機能追加
+* ToastPurchaseResultにサンドボックス決済かどうかを追加(sandboxPayment)
 
 ## 0.29.2 (2021.11.23)
 ### TOAST Push
