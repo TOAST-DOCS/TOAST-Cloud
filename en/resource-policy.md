@@ -27,7 +27,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Region Peering | Per VPC  |10 | 
 |Internet Gateway | Per project    |3|
 |NAT Gateway | Per project | 3 | 
-|Service Gateway | Per VPC | 3 | 
+|Service Gateway | Per VPC | 10 | 
 | Network Interface | Per project | 500 | 
 | Network ACL | Per project | 10 | 
 | Network ACL Policy | Per project | 100 | 
