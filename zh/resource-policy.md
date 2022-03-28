@@ -1,5 +1,5 @@
-## NHN Cloud > 源提供政策 
-NHN Cloud为所有客户提供稳定的服务，为保护客户不因创建意料之外的源而产生支出等，提供源使用量政策。
+## NHN Cloud > NHN Cloud Resource Provision Policy 
+NHN Cloud provides the Resource Provision Policy to provide stable services to all users and protect them from excessive spending incurred by unintentional resource creation. 
 
 ### Resource Provision Policy for Organization/Project 
 Resource usage for organization is calculated based on members who registered payment method. For project, it is calculated based on organizations.  
@@ -9,57 +9,65 @@ Resource usage for organization is calculated based on members who registered pa
 |Organization    | Per member with registered payment method |3|
 |Project     | Per organization |5|
 
-### 基础设施服务源提供政策 
-源使用量按各项目计算，各地区应用另外的源使用量限制政策。
+### Resource Provision Policy for Infrastructure Service  
+Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
 
-|源 | 提供标准 | 提供量 | 
+|Resource | Criteria | Capacity |
 |----|----|----|
-|CPU    | 每个项目 |100vCore|
-|内存     | 每个项目 |256GB|
-|Block Storage| 每个项目 |10TB|
-|Floating IP | 每个项目 |50个|
-|VPC | 每个项目 |3个|
-|子网 | 每个vpc |10个|
-|路由表 | 每个vpc |10个|
-|路由 | 每个路由表 |10个|
-|互联网网关 | 每个项目    |3个|
-|Load Balancer | 每个项目 |10个|
-|IP访问控制组    | 每个项目   |10个|
-|IP访问控制对象 | 每个IP访问控制组    |1000个|
+|CPU    | Per project |100vCore|
+|Memory     | Per project |256GB|
+| Key Pair | Per project | 100 |
+|Block Storage| Per project |10TB|
+|Floating IP | Per project |50|
+|VPC | Per project |3|
+|Subnet | Per VPC |10|
+|Routing Table | Per VPC |10|
+|Route | Per routing table |10|
+|Static Route | Per subnet | 20 |
+|Region Peering | Per VPC  |10 | 
+|Internet Gateway | Per project    |3|
+|NAT Gateway | Per project | 3 | 
+|Service Gateway | Per VPC | 10 | 
+| Network Interface | Per project | 500 | 
+| Network ACL | Per project | 10 | 
+| Network ACL Policy | Per project | 100 | 
+| Network ACL Binding | Per project | 100 | 
+|Load Balancer | Per project |10|
+|IP Access Control Group    | Per project |10|
+|IP Access Control Target | Per IP access control group    |1000|
 
-### Resource Provision Policy for NHN Kubernetes Service(NKS)  
+### Resource Provision Policy for NHN Kubernetes Service (NKS)  
 Resource usage is calculated for each project, and the policy is applied by the region. 
 
 |Resources | Criteria | Capacity | 
 |----|----|----|
 |Cluster	| Per project |3|
 |Worker Node Group	 | Per cluster |3 (including default worker node group)|
-|Worker Node Count	| Worker node groups|10|
+|Worker Node Count	 | Per worker node group  |10|
 
-### DNS Plus施服务源提供政策 
-源使用量按各项目计算。
+### Resource Provision Policy for DNS Plus Service 
+Resource usage is calculated for each project.
 
 #### DNS
-|源 | 提供标准 | 提供量 | 
+|Resource | Criteria | Capacity |
 |----|----|----|
-|Record Set    | Per DNS Zone |5,000个|
+|Record Set    | Per DNS Zone |5,000|
 
 #### GSLB
-|源 | 提供标准 | 提供量 | 
+|Resource | Criteria | Capacity |
 |----|----|----|
-|GSLB    | 每个项目 | 20个|
-|Pool    | 每个项目 | 20个 |
-|Pool   | 每个项目    | 16个 |
-|Endpoint | 每个项目 | 20个 |
-|Endpoint| 每个项目 | 5个 |
-|Health check    | 每个项目 | 5个 |
+|GSLB    | Per project | 20|
+|Pool    | Per project | 20 |
+|Pool   | Per GSLB    | 16 |
+|Endpoint | Per project | 20 |
+|Endpoint| Per pool | 5 |
+|Health Check    | Per project | 5 |
 
-### KakaoTalk Bizmessage施服务源提供政策 
-
-| 源 | 提供标准 | 提供量 |
-| --- | ---- | --- |
-| 通知TALK 发送量 |  KakaoTalk Channel 1日毎 | 1,000 件 |
-| 好友TALK 发送量 |  KakaoTalk Channel 1日毎 | 1,000 件 |
+### Resource Provision Policy for KakaoTalk Bizmessage Service
+| Resource | Criteria | Capacity |
+| -------- | -------- | -------- |
+| Alimtalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
+| FriendTalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
 
 ### Resource Provision Policy for API Gateway Service
 Resource usage is calculated for each project, and the policy is applied by the region.
@@ -78,8 +86,8 @@ Resource usage is calculated for each project.
 | Number of logs (normal log, crash log) | 1 day | 20,000,000 cases |
 | Size of log (normal log, crash log) | 1 case | 8MB |
 
-### 申请调整源提供量 
-除基本提供量外，若欲额外使用，咨询NHN Cloud客服中心[1:1咨询](https://www.toast.com/kr/support/inquiry)即可。 
-申请时，填写欲增加的项目和欲增加的量，可轻松地进行咨询。 
+### Request for Capacity Adjustment
+To increase capacity beyond default volume, send a request to NHN Cloud Customer Center [1:1 Inquiry](https://www.toast.com/kr/support/inquiry). 
+It helps a lot if you fill out the items and volume in need. 
 
-申请后至予以处理需2~5日左右，因此建议相较于实际需要时间提前申请。 
+Since it takes 2 to 5 days to process a request, it is recommended to send requests in advance.

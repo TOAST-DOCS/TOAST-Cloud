@@ -37,7 +37,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | System Monitoring | 리전 | O | O | O | O |
 |  | Virtual Desktop | 리전 | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |  |  |
-|  | Container Registry | 리전 | O | O |  |  |
+|  | NHN Container Registry (NCR) | 리전 | O | O |  |  |
 | Network | VPC | 리전 | O | O | O | O |
 |  | NAT Instance | 리전 |  | O |  |  |
 |  | Floating IP | 리전 | O | O | O | O |
@@ -101,8 +101,8 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | API Gateway | 리전 | O |  |  |  |
 |  | RTCS | 글로벌 |  |  |  |  |
 |  | ShortURL | 글로벌 |  |  |  |  |
-|  | JEUS Instance | 리전 | O |O | O | O |
-|  | WebtoB Instance | 리전 | O |O | O | O |
+|  | JEUS Instance | 리전 | O | O | O | O |
+|  | WebtoB Instance | 리전 | O | O | O | O |
 | Mobile Service | IAP | 글로벌 |  |  |  |  |
 |  | Mobile Device Info | 글로벌 |  |  |  |  |
 | Search | Cloud Search | 리전 | O |  |  |  |

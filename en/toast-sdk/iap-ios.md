@@ -582,6 +582,8 @@ Lets you check the purchase information.
 @property (nonatomic, readonly) NSTimeInterval expiryTime;
 // Whether it is promotion payment or not
 @property (nonatomic, readonly, getter=isStorePayment) BOOL storePayment;
+// Whether it is sandbox payment or not
+@property (nonatomic, readonly, getter=isSandboxPayment) BOOL sandboxPayment;
 // User data
 @property (nonatomic, readonly, copy, nullable) NSString *payload;
 
