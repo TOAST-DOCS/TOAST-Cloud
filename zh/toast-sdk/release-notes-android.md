@@ -1,5 +1,13 @@
 ## TOAST > User Guide for TOAST SDK > Release Notes > Android
 
+## 0.29.2 (2022. 03. 29.)
+
+### TOAST Push
+
+#### Fixed
+
+* 토큰 갱신 시 토큰이 등록되지 않는 문제 수정
+
 ## 0.29.1 (2022. 02. 22.)
 
 ### TOAST Push

@@ -1,5 +1,10 @@
 ## TOAST > TOAST SDK 사용 가이드 > 릴리스 노트 > iOS
 
+## 0.30.0 (2022.03.29)
+### TOAST IAP
+#### 기능 추가
+* ToastPurchaseResult에 샌드박스 결제 여부 추가 (sandboxPayment)
+
 ## 0.29.2 (2021.11.23)
 ### TOAST Push
 #### 개선 사항

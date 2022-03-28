@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > Android
 
+## 0.29.2 (March 29, 2022)
+
+### TOAST Push
+
+#### Fixed
+
+* Fixed an issue where, when a token was renewed, the token was not registered
+
 ## 0.29.1 (February 22, 2022)
 
 ### TOAST Push
