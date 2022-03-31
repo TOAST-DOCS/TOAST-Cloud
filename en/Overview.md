@@ -1,6 +1,6 @@
 ## NHN Cloud > Overview
 
-NHN Cloud is an “integrated cloud service” provided by NHN, which provides everything necessary for your business operation and service development. 
+NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which provides everything necessary for your business operation and service development. 
 
 ## Features
 
