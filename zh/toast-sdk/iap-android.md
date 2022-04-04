@@ -1,25 +1,24 @@
-## TOAST > User Guide for TOAST SDK > TOAST IAP > Android
+## NHN Cloud > SDK User Guide > IAP > Android
 
 ## Prerequisites
 
-1. [Install TOAST SDK](./getting-started-android)
-
-2.[Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) [in TOAST console](https://console.cloud.toast.com).
-
+1. [Install NHN Cloud SDK](./getting-started-android).
+2. [Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) in [NHN Cloud console](https://console.cloud.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP console.
 
-## Store Types
-- [Google Play Store](https://developer.android.com/google/play/billing)
-- [ONE store v17](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
-- [Galaxy Store](https://developer.samsung.com/iap/overview.html)
-- [Amazon Appstore](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
-- [Huawei App Gallery 인앱 결제 API 안내 및 다운로드](https://developer.huawei.com/consumer/en/hms/huawei-iap)
+## In-App Purchase Guide for Each Store Type
+
+- [Android Developers In-App Purchase](https://developer.android.com/google/play/billing)
+- [ONE store In-App Purchase API V5 (SDK V17) Guide and Download](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [Galaxy Store In-App Purchase API Guide and Download](https://developer.samsung.com/iap/overview.html)
+- [Amazon Appstore In-App Purchase API Guide and Download](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
+- [Huawei App Gallery In-App Purchase API Guide and Download](https://developer.huawei.com/consumer/en/hms/huawei-iap)
 
 ## Library Setting
 
 ### Google Play Store
 
-- To use In-App Purchase of Google Play Store, add dependency to build.gradle, as below:
+- To use in-app purchase of Google Play Store, add dependency to build.gradle as below:
 
 ```groovy
 repositories {
@@ -35,7 +34,7 @@ dependencies {
 
 ### ONE store
 
-- To use In-App Purchase of ONE store, add dependency to build.gradle, as below:
+- To use in-app purchase of ONE store, add dependency to build.gradle as below:
 
 ```groovy
 repositories {
@@ -50,7 +49,7 @@ dependencies {
 
 ### Galaxy Store
 
-- To use In-App Purchase of Galaxy Store, add dependency to build.gradle, as below:
+- To use in-app purchase of Galaxy Store, add dependency to build.gradle as below:
 
 ```groovy
 repositories {
@@ -63,11 +62,11 @@ dependencies {
 }
 ```
 
-> Galaxy Store in-app purchases works on Android 4.3 (API level 18) or higher.
+> Galaxy Store in-app purchase works on Android 4.3 (API level 18) or higher.
 
 ### Amazon Appstore
 
-- Amazon Appstore의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+- To use in-app purchase of Amazon Appstore, add dependency to build.gradle as follows:
 
 ```groovy
 repositories {
@@ -82,14 +81,14 @@ dependencies {
 
 ### Huawei App Gallery
 
-- AppGallery Connection 구성 파일(agconnect-service.json)을 추가합니다.
-    - [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html)에 로그인한 다음 **내 프로젝트**를 클릭합니다.
-    - 프로젝트에서 앱을 선택합니다.
-    - **Project settings** > **General information**으로 이동합니다.
-    - **App information**에서 **agconnect-service.json** 파일을 다운로드합니다.
-    - **agconnect-service.json** 파일을 앱의 루트 디렉토리에 복사합니다.
+- Add the AppGallery Connection configuration file (agconnect-service.json).
+    - Log in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and then click **My Projects**.
+    - Select an app from your project.
+    - Go to **Project settings** > **General information**.
+    - Download the **agconnect-service.json** file from **App information**.
+    - Copy the **agconnect-service.json** file to the root directory of your app.
 
-- 아래와 같이 루트 수준의 build.gradle에 App Gallery Connect 플러그인을 추가합니다.
+- Add the App Gallery Connect plugin to the root level build.gradle as follows.
 
 ```groovy
 buildscript {
@@ -107,7 +106,7 @@ buildscript {
 }
 ```
 
-- 아래와 같이 앱 수준의 build.gradle에 의존성을 추가합니다.
+- Add dependency to the app level build.gradle as follows.
 
 ```groovy
 apply plugin: 'com.huawei.agconnect'
@@ -123,15 +122,15 @@ dependencies {
 }
 ```
 
-> Huawei App Gallery 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
+> Huawei App Gallery's in-app purchase works on Android 4.4 (API level 19) or higher.
 
-## AndroidManifest Settings
+## AndroidManifest Setting
 
 ### ONE store purchase screen setting (optional)
 
 ONE store supports full purchase screen and pop-up purchase screen.
-You can add meta-data to AndroidManifest.xml to select the full purchase screen ("full") or popup purchase screen ("popup").
-If meta-data is not set, the default ("full") is applied.
+You can add metadata to AndroidManifest.xml to select the full purchase screen ("full") or pop-up purchase screen ("popup").
+If metadata is not set, the default value ("full") is applied.
 
 ```xml
 <application
@@ -140,17 +139,17 @@ If meta-data is not set, the default ("full") is applied.
 </application>
 ```
 
-| Purchase Screen | Value |
+| Purchase Screen | Setting Value |
 | -- | -- |
 | Full Purchase Screen | "full" |
-| Popup Purchase Screen | "popup" |
+| Pop-up Purchase Screen | "popup" |
 
-For more information, see [One Store Billing Screen](https://dev.onestore.co.kr/devpoc/reference/view/Tools).
+For more information, see [ONE store Purchase Screen Setting](https://dev.onestore.co.kr/devpoc/reference/view/Tools).
 
-### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store, Amazon Appstore)
+### App targeting Android 11 or higher (ONE store, Galaxy Store, Amazon Appstore)
 
-Android 11에서는 앱이 사용자가 기기에 설치한 다른 앱을 쿼리하고 상호작용하는 방법을 변경합니다.
-Android 11 이상을 타겟팅하는 앱에서 ONE store, Galaxy Store 또는 Amazon Appstore 결제를 사용하려면 아래와 같이 AndroidManifest.xml에 'queries' 요소 또는 권한을 정의해야합니다.
+In Android 11, an app queries other apps that the user installed on the device and changes the way to interact with the apps.
+To use ONE store, Galaxy Store, or Amazon Appstore purchase in apps targeting Android 11 or higher, you need to define a 'queries' element or permission in AndroidManifest.xml as shown below.
 
 #### ONE store
 
@@ -176,7 +175,7 @@ Android 11 이상을 타겟팅하는 앱에서 ONE store, Galaxy Store 또는 Am
 
 ### Amazon Appstore
 
-Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
+For Amazon Appstore, add a permission instead of the 'queries' element.
 
 ```xml
 <uses-permission
@@ -184,41 +183,41 @@ Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
     tools:ignore="QueryAllPackagesPermission" />
 ```
 
-'queries' 요소는 Android Gradle Plugin 4.1 이상에서 동작합니다.
-이전 버전의 Android Gradle Plugin을 사용하려면 [Android 11에서 패키지 가시성을 위해 Gradle 빌드 준비](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html)를 참고하세요.
+The 'queries' element works in Android Gradle Plugin 4.1 or higher.
+To use a lower version of Android Gradle Plugin, see [Preparing your Gradle build for package visibility in Android 11](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html).
 
-> <span style="color:#e11d21">**주의!)**</span> QUERY_ALL_PACKAGES 권한을 Google Play Store에 적용하지 않도록 주의하시기 바랍니다.
+> <span style="color:#e11d21">**Caution!)**</span> Be careful not to apply the QUERY_ALL_PACKAGES permission to the Google Play Store.
 
 ## Store Codes
 
-| Store | Code |
-| ---- | ---- |
-| Google Play Store| "GG" |
-| ONE store | "ONESTORE" |
+| Store         | Code         |
+| ----------- | ---------- |
+| Google Play Store | "GG"       |
+| ONE store   | "ONESTORE" |
 | Galaxy store | "GALAXY" |
 | Amazon Appstore | "AMAZON" |
 | Huawei App Gallery | "HUAWEI" |
 
-> Note : Store codes are defined in the  [IapStoreCode](./iap-android/#iapstorecode) class.
+> [Note] Store codes are defined in the [IapStoreCode](./iap-android/#iapstorecode) class.
 
 ## Product Types
 
-- Three types of products are currently supported: consumable products and subscription products, consumable subscription products.
+- Three types of products are currently supported: consumable products, subscription products, and consumable subscription products.
 
-| Product Name | Product Type | Description |
-| ---- | ------ | ------ |
-| Consumable Products | "CONSUMABLE" | Consumable Products refer to consumable one-time products, <br>such as products within a game, and media files. |
-| Subscription Products | "AUTO_RENEWABLE" | Subscription products refer to products <br>which are automatically paid at specific intervals and prices, <br>such as online magazines and music streaming services.  |
-| Consumable Subscription Products | "CONSUMABLE_AUTO_RENEWABLE" | 소비가 가능한 구독 상품<br>정기적으로 게임내 재화, 아이템 등을 지급하는 결제 방식입니다. |
+| Product Name    | Product Type             | Description                                     |
+| ------ | ---------------- | -------------------------------------- |
+| Consumable products | "CONSUMABLE"     | Examples of Consumable Products: consumable one-time products, in-game goods, and media files. |
+| Subscription products  | "AUTO_RENEWABLE" | Examples of Subscription products: products that are automatically purchased at specific interval and price, <br>and online magazines and music streaming services. |
+| Consumable subscription products | "CONSUMABLE_AUTO_RENEWABLE" | A subscription product that can be consumed<br>This is a payment method that provides in-game goods and items periodically. |
 
-> Note :Subscription products and Consumable subscription products are supported by Google Play Store only.
+> [Note] Subscription products and consumable subscription products are supported by **Google Play Store** only.
 
 ## In-App Purchase (IAP) Setting
 
-* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) includes IAP setting information.
-* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) can be created by using [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder).
-* [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console can be set by using setAppKey.
-* With the setStoreCode method, set [Store Code](./iap-android/#_3) for IAP.
+* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object includes IAP setting information.
+* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object can be created by using [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder).
+* Use the setAppKey method to set [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console.
+* Use the setStoreCode method to set [Store Code](./iap-android/#_3) for IAP.
 
 ### Example of IAP Setting
 
@@ -232,27 +231,27 @@ ToastIapConfiguration configuration =
 
 ## Initialize IAP
 
-- Call ToastIap.initialize() method to initialize TOAST IAP.
+- Call the ToastIap.initialize() method to initialize TOAST IAP.
 
-### Specifications for IAP Initialization API
+### Specification for IAP Initialization API
 
-* Initialize IAP by using ToastIap.initialize.
-* The ToastIap.initialize method applies [ToastIapConfiguration](./iap-android/#toastiapconfiguration) created with [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder) as parameter.
+* IAP is initialized by using the ToastIap.initialize method.
+* The ToastIap.initialize method uses [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object created by [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder) as a parameter.
 
 ```java
 /* ToastIap.java */
 public static void initialize(ToastIapConfiguration configuration)
 ```
 
-| Parameters | |
-| ---- | ---- |
+| Parameters    |                                    |
+| ------------- | ---------------------------------- |
 | configuration | ToastIapConfiguration: Information for IAP setting |
 
 ### Example of IAP Initialization
 
 - Initialize ToastIap.
 
-> Note: Initialization must be executed in Application#onCreate.
+> [Note] Initialization must be performed in Application#onCreate.
 
 ```java
 public class MainApplication extends Application {
@@ -277,10 +276,10 @@ public class MainApplication extends Application {
 
 ## Service Login
 
-* All TOAST SDK products (including IAP and Log & Crash) are based on a same user ID.
-    * Set user ID with[ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid).
-    * Cannot make purchases when user ID is not set.
-* It is recommended to set user ID, query unconsumed purchase history, and search enabled subscription products, during service login.
+* All products provided by NHN Cloud SDK, such as IAP and Log & Crash, use the same user ID.
+    * User ID can be set with [ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid).
+    * When user ID is not set, purchase cannot proceed.
+* It is recommended to implement the following features in service login step: user ID setting, querying unconsumed purchase history, and querying active subscription products.
 
 ### Login
 
@@ -296,17 +295,17 @@ ToastSdk.setUserId(userId);
 ToastSdk.setUserId(null);
 ```
 
-> Note: User ID must be set as null for a service logout so as to prevent promotion codes redeemed or purchase with wrong user ID when reprocessing purchase operates.
+> [Note] When the service is logged out, user ID must be set to null. Otherwise, promotion codes might be redeemed or purchase with wrong user ID might occur in purchase reprocessing operation.
 
 ## Register Purchases Update Listener
 
-* Purchase results are notified via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) configured in Toastlap.
+* When promotion redemption or subscription status change (recovery, resubscription, etc.) occurs on in-app purchases or  Google Play Store app, the purchase result is notified via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) set in ToastIap.
 * Purchases update listener can be registered by using the ToastIap.registerPurchasesUpdatedListener method.
 * Purchase information is available on the list of [IapPurchaseResult](./iap-android/#iappurchaseresult) delivered by [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener).
 
 > Note: Purchases update listener must be registered in Activity.onCreate() and unregistered in Activity.onDestroy().
 
-### Specifications for Registering Purchases Upload Listener API
+### Specification for Registering Purchases Update Listener API
 
 ```java
 /* ToastIap.java */
@@ -314,17 +313,17 @@ public static void registerPurchasesUpdatedListener(IapService.PurchasesUpdatedL
 public static void unregisterPurchasesUpdatedListener(IapService.PurchasesUpdatedListener listener)
 ```
 
-| Method | Parameters |  | Description |
-| ---- | ---- | ---- | ---- |
-| registerPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>Purchases Update Listener | Purchases update listener is registered. |
-| unregisterPurchasesUpdatedListener | listener | IapService.<br>PurchasesUpdatedListener: <br>Listener to unregister | Purchases update listener is unregistered. |
+| Method                             | Parameters |                                          | Description            |
+| ---------------------------------- | ---------- | ---------------------------------------- | ---------------------- |
+| registerPurchasesUpdatedListener   | listener   | IapService.<br>PurchasesUpdatedListener: <br>Listener for update on purchases | Registers purchases update listener.    |
+| unregisterPurchasesUpdatedListener | listener   | IapService.<br>PurchasesUpdatedListener: <br>Listener to unregister | Unregisters purchases update listener. |
 
 #### Example of Registering Purchases Update Listener
 
 ```java
 public class MainActivity extends AppCompatActivity {
     /**
-     * Notifies the result of purchasing consumable products, subscription products, or promotional products.
+     * Notifies the result of purchasing consumable products, subscription products, or promotion products in the app.
      */
     private IapService.PurchasesUpdatedListener mPurchaseUpdatedListener =
             new IapService.PurchasesUpdatedListener() {
@@ -346,48 +345,50 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Register Listener when onCreate is called.
+        // Register the listener when onCreate is called.
         ToastIap.registerPurchasesUpdatedListener(mPurchaseUpdatedListener);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Must remove Listener when onDestroy() is called.
+        // Must remove the listener when onDestroy() is called.
         ToastIap.unregisterPurchasesUpdatedListener(mPurchaseUpdatedListener);
     }
 }
 ```
 
-> [Note] If this activity is terminated before the transaction result is notified to IapService.PurchasesUpdatedListener, the transaction data could be lost.
-> For safer processing of transaction, users must be restricted from terminating their activity (clicking Back or Quit button) until they get the transaction result.
+> [Note] If the activity is terminated before the purchase result is notified to IapService.PurchasesUpdatedListener, the purchase  data can be lost.
+> To process the purchase safely, users must be restricted from terminating the activity (clicking Back or Quit button) until they get the purchase result.
 
 ## Query Product List
 
-* Query available list of products which are registered in IAP Console.
-* Available products to purchase among those registered in IAP Console are returned to [IapProductDetails](./iap-android/#iapproductdetails) (Product Details List).
-* Products unregistered to store among those registered in IAP Console are returned to [IapProduct ](./iap-android/#iapproduct)(Invalid Product List).
+* Query the list of available products among the ones registered in IAP console.
+* Products that can be purchased among those registered in IAP console are returned in [IapProductDetails](./iap-android/#iapproductdetails) list (Product Details List).
+* Products unregistered in the store among those registered in IAP console are returned as the [IapProduct ](./iap-android/#iapproduct) list (Invalid Product List).
 
-### Specifications for Product List Query API
+### Specification for Product List Query API
 
 ```java
 /* ToastIap.java */
 public static void queryProductDetails(Activity activity,
                                        IapService.ProductDetailsResponseListener listener)
 ```
-| Method | Parameters |  |
-| ---- | ---- | ---- |
-| queryProductDetails | activity | Activity: Currently activated activity |
-|  | listener | IapService.<br>ProductDetailsResponseListener: <br>Product query result listener |
+
+| Method              | Parameters |                                          |
+| ------------------- | ---------- | ---------------------------------------- |
+| queryProductDetails | activity   | Activity: Currently active activity               |
+|                     | listener   | IapService.<br>ProductDetailsResponseListener: <br>Listener for product query result |
+
 
 ### Example of Product List Query
 
 ```java
 /**
- * Products available to purchase are queried.
+ * Query the products available for purchase.
  * <p>
- * productDetails: List of available products to purchase
- * invalidProducts: Products  registered in TOAST IAP Console but not in a store
+ * productDetails: List of products available for purchase
+ * invalidProducts: Products registered in TOAST IAP console but not in a store
  */
 void queryProductDetails() {
     IapService.ProductDetailsResponseListener responseListener =
@@ -410,14 +411,14 @@ void queryProductDetails() {
 
 ## Purchase Products
 
-* TOAST IAP supports product purchase by using product ID registered at store.
-* Product information is included to [IapProductDetails](./iap-android/#iapproductdetails) which is returned by calling ToastIap.queryProductDetails().
-* Product ID can be obtained by using IapProductDetails.getProductId().
-* Product purchase begins via ToastIap.launchPurchaseFlow(), after setting product ID to [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams).
-* [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) can be created by using [IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder).
-* Result of product purchase is returned through [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) registered in TOAST IAP.
+* NHN Cloud IAP supports product purchase by using product ID registered at the store.
+* Product information is included in the [IapProductDetails](./iap-android/#iapproductdetails) object that is returned by calling the ToastIap.queryProductDetails() method.
+* Product ID can be obtained by using the IapProductDetails.getProductId() method.
+* Product purchase begins via ToastIap.launchPurchaseFlow(), after setting product ID on [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams).
+* The [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) object can be created by using [IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder).
+* The result of product purchase is returned via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) registered in TOAST IAP.
 
-### Specifications for Product Purchase IAP
+### Specification for Product Purchase IAP
 
 ```java
 /* ToastIap.java */
@@ -425,10 +426,10 @@ public static void launchPurchaseFlow(Activity activity,
                                       IapPurchaseFlowParams params)
 ```
 
-| Method | Parameters |  |
-| ---- | ---- | ---- |
-| launchPurchaseFlow | activity | Activity: Currently activated activity |
-|  | params | IapPurchaseFlowParams: Parameter for purchase information |
+| Method             | Parameters |                                   |
+| ------------------ | ---------- | --------------------------------- |
+| launchPurchaseFlow | activity   | Activity: Currently active activity        |
+|                    | params     | IapPurchaseFlowParams: Parameter for purchase information |
 
 ### Example of Product Purchase
 
@@ -443,31 +444,32 @@ void launchPurchaseFlow(Activity activity, String productId) {
     ToastIap.launchPurchaseFlow(activity, params);
 }
 ```
-## User Data Setting
 
-* TOAST IAP can add user information when requesting purchase.
-* User information is set to setDeveloperPayload() method of IapPurchaseFlowParams$Builder.
-* Set user information can be identified as a getDeveloperPayload() method of [IapPurchase](./iap-android/#iappurchase) returned during unconsumed query and activated subscription query.
+### Set User Data
+
+* NHN Cloud IAP can add user information when requesting purchase.
+* User information is set with the setDeveloperPayload() method of IapPurchaseFlowParams.Builder.
+* You can check the configured user information with the getDeveloperPayload() method of [IapPurchase](./iap-android/#iappurchase), which is returned when you query unconsumed purchase and activated subscription.
 
 ```java
-String userData = "userData"
+String userData = "User Data"
 IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
-setProductId (productId)
-.setDeveloperPayload(userData)
-.build();
-ToastIap.launchPurchaseFlow (activity, params);
+       .setProductId(productId)
+       .setDeveloperPayload(userData)
+       .build();
+ToastIap.launchPurchaseFlow(activity, params);
 ```
 
-If you purchased a product with a promotional code from the Google Play Store, you cannot use user data.
+If a user purchased a product with a promotion code from the Google Play Store, the user data cannot be used.
 
 ## Query Unconsumed Purchases
 
-* Query information of unconsumed one-time products(CONSUMABLE) and consumable subscription products(CONSUMABLE_AUTO_RENEWABLE).
-* Product, after provided to user, can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api).
+* Query the information of unconsumed one-time products (CONSUMABLE) and consumable subscription products (CONSUMABLE_AUTO_RENEWABLE).
+* After a product is provided to a user, the product can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api).
 * Unconsumed purchase can be queried by using the ToastIap.queryConsumablePurchases() method.
-* Query results are returned to the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
+* Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
 
-### Specifications for Unconsumed Purchases Query API
+### Specification for Unconsumed Purchases Query API
 
 ```java
 /* ToastIap.java */
@@ -475,16 +477,16 @@ public static void queryConsumablePurchases(Activity activity,
                                             IapService.PurchasesResponseListener listener)
 ```
 
-| Method | Parameters |  |
-| ---- | ---- | ---- |
-| queryConsumablePurchases | activity | Activity: Currently activated activity |
-|  | listener | IapService.PurchasesResponseListener: <br>Query result listener for unconsumed purchase details |
+| Method                   | Parameters |                                          |
+| ------------------------ | ---------- | ---------------------------------------- |
+| queryConsumablePurchases | activity   | Activity: Currently active activity               |
+|                          | listener   | IapService.PurchasesResponseListener: <br>Listener for query result of unconsumed purchase details |
 
 ### Example of Unconsumed Purchases Query
 
 ```java
 /**
- * List of unconsumed purchases is queried.
+ * Query the list of unconsumed purchases.
  */
 void queryConsumablePurchases() {
     PurchasesResponseListener responseListenr =
@@ -505,15 +507,15 @@ void queryConsumablePurchases() {
 
 ## Query Activated Subscription
 
-* Activated subscription products(AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE) can be queried for user ID.
-* Completely-paid subscription products can be queried as long as usage period remains.
+* You can query activated subscription products (AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE) by user ID.
+* Subscription products for which purchase has been completed can be queried as long as usage period remains.
 * Activated subscription can be queried by using the ToastIap.queryActivatedPurchases() method.
-* Query results are returned via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener) to [IapPurchase](./iap-android/#iappurchase).
-* Subscription products of iOS can be queried in Android as well.
+* Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
+* Products subscribed in iOS can be queried in Android as well.
 
 > Subscription products are currently supported by Google Play Store only.
 
-### Specifications for Activated Subscription Query API
+### Specification for Activated Subscription Query API
 
 ```java
 /* ToastIap.java */
@@ -521,10 +523,10 @@ public static void queryActivatedPurchases(Activity activity,
                                            PurchasesResponseListener listener)
 ```
 
-| Method | Parameters |  |
-| ---- | ---- | ---- |
-| queryActivatedPurchases | activity | Activity: Currently activated activity |
-|  | listener | IapService.PurchasesResponseListener: <br>Query result listener for activated subscription |
+| Method                  | Parameters |                                          |
+| ----------------------- | ---------- | ---------------------------------------- |
+| queryActivatedPurchases | activity   | Activity: Currently active activity               |
+|                         | listener   | IapService.PurchasesResponseListener: <br>Listener for query result of activated subscription |
 
 ### Example of Activated Subscription Query
 
@@ -549,19 +551,19 @@ void queryActivatedPurchases() {
 }
 ```
 
-## 구독 상태 조회
+## Query Subscription Status
 
-* User ID 기준으로 구입한 구독 상품의 상태를 조회할 수 있습니다.
-* 만료된 구독 상품은 includeExpiredSubscriptions 설정으로 조회 또는 제외할 수 있습니다. (default: false)
-* 구독 상품 상태는 ToastIap.querySubscriptionsStatus() 메서드를 사용하여 조회할 수 있습니다.
-* 조회 결과는 [IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener)를 통해 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체 리스트를 반환됩니다.
-* [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 사용하는 구독 상태 코드는 [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatusCode)에 정의되어 있습니다.
+* You can query the status of purchased subscription product by user ID.
+* Expired subscription products can be included or excluded from the query with the includeExpiredSubscriptions setting. (default: false)
+* The status of subscription product can be queried by using the ToastIap.querySubscriptionsStatus() method.
+* Query results are returned as the [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) object list via [IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener).
+* The subscription status codes used by [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) are defined in [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatusCode).
 
 ```
-현재 구독 상품은 Google Play 스토어만 지원합니다.
+Subscription products are currently supported by Google Play Store only.
 ```
 
-### 구독 상태 조회 API 명세
+### Specification for Subscription Status Query API
 
 ```java
 /* ToastIap.java */
@@ -572,15 +574,15 @@ public static void querySubscriptionsStatus(Activity activity,
 
 | Method | Parameters |  |
 | --- | --- | --- |
-| querySubscriptionsStatus | activity | Activity: 현재 활성화된 Activity |
-|  | includeExpiredSubscriptions | boolean:<br>구독 만료된 구독 상품의 상태 포함 여부 |
-|  | listener | IapService.SubscriptionsStatusResponseListener:<br>구독 상태 조회 결과 리스너 |
+| querySubscriptionsStatus | activity | Activity: Currently active activity |
+|  | includeExpiredSubscriptions | boolean:<br>whether or not to include the status of expired subscription products |
+|  | listener | IapService.SubscriptionsStatusResponseListener:<br>Listener for query result of subscription status |
 
-### 구독 상태 조회 예시
+### Example of Subscription Status Query
 
 ```java
 /**
- * 구독 상태 조회
+ * Subscription Status Query
  */
 private void querySubscriptionsStatus() {
     SubscriptionsStatusResponseListener listener =
@@ -589,9 +591,9 @@ private void querySubscriptionsStatus() {
                 public void onSubscriptionsStatusResponse(@NonNull String storeCode,
                                                           @Nullable List<IapSubscriptionStatus> subscriptionsStatus) {
                     if (result.isSuccess()) {
-                        // 성공
+                        // Succeeded
                     } else {
-                        // 실패
+                        // Failed
                     }
                 }
             };
@@ -599,25 +601,25 @@ private void querySubscriptionsStatus() {
 }
 ```
 
-## Google Store subscription (recurring billing) feature
+## Google Store Subscription Feature
 
-This explains how to process events related to life cycles, such as Google Store subscription payment renewals and expiries.
-For further details, please refer to [Add Features For Each Recurring Billing](https://developer.android.com/google/play/billing/billing_subscriptions).
+This section explains how to handle subscription lifecycle events in Google Store, such as renewals and expirations.
+For further details, refer to [Add Features For Each Subscription](https://developer.android.com/google/play/billing/billing_subscriptions).
 
-### Subscription life cycle processing
+### Subscription Lifecycle Handling
 
-Subscriptions on the Google Store go through various status changes throughout their life cycle and an app must respond to each.
+Subscriptions on the Google Store go through various status changes throughout their lifecycle and an app must respond to each status.
 
-* **Active**: recurring billing content can be accessed, and auto-renewal is enabled
-* **Cancelled**: recurring billing content can be accessed, but the user has cancelled the subscription product and auto-renewal has been halted
-* **In grace period**: recurring billing has failed due to a payment method problem but recurring billing content can still be accessed (waiting for the user to change the payment method)
-* **On hold**: a payment method problem has caused recurring billing to fail, placing the account on hold (If grace period has been enabled, the payment method was not changed during the grace period and payment has been placed on hold)
-* **Pause**: a recurring billing product have been put on pause
-* **Expired**: a recurring billing product has expired
+* **Active**: A state where subscription content can be accessed and auto-renewal is enabled
+* **Cancelled**: A state where subscription content can be accessed, but the user has cancelled the subscription product and auto-renewal has been stopped
+* **In grace period**: A state where subscription has failed due to a payment method problem but subscription content can still be accessed (waiting for the user to change the payment method)
+* **On hold**: A state where a payment method problem has caused subscription to fail, placing the account on hold (If grace period is enabled, the payment method was not changed during grace period and payment has been placed on hold)
+* **Pause**: A state where a subscription product has been put on pause
+* **Expired**: A state where a subscription product has expired
 
-| Status | Query consumable purchases<br>(ToastIap.queryConsumablePurchases) | Query activated purchases<br>(ToastIap.queryActivatedPurchases) | Expiry time | Auto-renewal |
+| Status | Query unconsumed purchases<br>(ToastIap.queryConsumablePurchases) | Query activated subscriptions<br>(ToastIap.queryActivatedPurchases) | Expiry time | Auto-renewal |
 | --- | --- | --- | --- | --- |
-| Active state | Yes | Yes | Future time | Yes |
+| Active | Yes | Yes | Future time | Yes |
 | Cancelled | Yes | Yes | Future time | No |
 | In grace period | No | Yes | Future time | Yes |
 | On hold | No | No | Past time | Yes |
@@ -626,77 +628,77 @@ Subscriptions on the Google Store go through various status changes throughout t
 
 ### Grace period
 
-If grace period has been enabled, when there is a problem with the payment method when a billing cycle ends recurring billing will transition to a grace period.
-<span style="color:#e11d21">During a grace period the user must be able to access recurring billing content.</span>
-For further details please refer to [Grace period](https://developer.android.com/google/play/billing/subs#grace)
+If grace period is enabled, subscriptions transition to grace period if there are issues in the payment method at the end of a billing cycle.
+<span style="color:#e11d21">During grace period, the user should be able to access subscription content.</span>
+For further details, refer to [Grace period](https://developer.android.com/google/play/billing/subs#grace).
 
-> <span style="color:#e11d21">**Warning!)**</span> If recovery is performed through a payment method change, etc. during the grace period, auto-renewal resumes. The TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary popup isn't exposed to the user by the purchase update listener during an important action.
-
-#### Ordinary subscription product (AUTO_RENEWABLE))
-
-* During a grace period ordinary subscription products must be able to access recurring billing content.
-* Queries can be made with ToastIap.queryActivatedPurchases() during grace period.
-
-#### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
-
-* Once grace period begins, Google issues a new receipt. If the payment method isn’t modified, however, the payment is placed on hold or cancelled.
-* Consumable subscription products cannot be queried with ToastIap.queryConsumablePurchases()to prevent consumption of products during grace period.
-
-### On hold
-
-This refers to a user state where renewal failed due to a payment method problem.
-If payment fails, more attempts will be made during grace period. If payment fails during the grace period as well, the recurring billing is placed on hold.
-Users placed on hold cannot access recurring billing content.
-Account hold period is 30 days maximum.
-If the payment method is not changed before the hold period ends, the subscription will be cancelled.
-For further details, please refer to [Account hold](https://developer.android.com/google/play/billing/subs#account-hold)
-
-> <span style="color:#e11d21">**Warning!)**</span> If recovery is performed through a payment method change, etc. during the account hold period, auto-renewal resumes. The TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary popup isn't exposed to the user by the purchase update listener during an important action.
+> <span style="color:#e11d21">**Warning!)**</span> If a user recovers subscription by fixing the payment method, etc. during the grace period, auto-renewal is resumed. TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
 
 #### Ordinary subscription product (AUTO_RENEWABLE))
 
-* During account hold period ordinary subscription products must be able to access recurring billing content.
-* Queries through ToastIap.queryActivatedPurchases() are unavailable while subscription is on hold.
+* During grace period, ordinary subscription products must be able to access subscription content.
+* During grace period, they can be queried with ToastIap.queryActivatedPurchases().
 
 #### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
 
-* Consumable subscription products do not create new purchases while subscription is on hold.
-* Queries for new purchases through ToastIap.queryConsumablePurchases()are unavailable while subscription is on hold.
+* Once grace period begins, Google issues a new receipt. However, if a user does not fix the payment method, the payment is placed on hold or cancelled.
+* Consumable subscription products cannot be queried with ToastIap.queryConsumablePurchases() to prevent consumption of the products during grace period.
+
+### Account hold
+
+Account hold refers to a user's state when renewal failed due to a payment method issue.
+If payment fails, more attempts will be made during grace period. If payment fails even during the grace period, the subscription is placed on hold.
+Users placed on hold cannot access subscription content.
+Account hold period is up to 30 days.
+If the payment method is not fixed before the account hold period ends, the subscription will be cancelled.
+For further details, refer to [Account hold](https://developer.android.com/google/play/billing/subs#account-hold).
+
+> <span style="color:#e11d21">**Warning!)**</span> If a user recovers subscription by fixing the payment method, etc. during the account hold period, auto-renewal is resumed. TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
+
+#### Ordinary subscription product (AUTO_RENEWABLE))
+
+* During account hold period, ordinary subscription products cannot access subscription content.
+* During account hold period, they cannot be queried with ToastIap.queryActivatedPurchases().
+
+#### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
+
+* During account hold period, consumable subscription products do not create new purchases.
+* During account hold period, new purchases cannot be queried using ToastIap.queryConsumablePurchases().
 
 ### Pause
 
-Using the pause function allows the user to pause the recurring billing for anywhere from 1 week to 3 months.
-Recurring billing pausing will take effect after the current subscription period ends.
-When the pause period ends, recurring billing will automatically resume.
-For further details, please refer to [Pause](https://developer.android.com/google/play/billing/subs#pause)
+Setting the pause feature allows the user to pause the subscription for a time period from 1 week to 3 months.
+The pause of subscription will take effect after the current subscription period ends.
+When the pause period ends, subscription will automatically resume.
+For further details, refer to [Pause](https://developer.android.com/google/play/billing/subs#pause).
 
-> <span style="color:#e11d21">**Warning!)**</span> Auto-renewal resumes when the pause period is over. The TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary popup isn't exposed to the user by the purchase update listener during an important action.
+> <span style="color:#e11d21">**Warning!)**</span> When the pause period is over, auto-renewal is resumed. TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
 
 #### Ordinary subscription product (AUTO_RENEWABLE))
 
-* During pause period ordinary subscription products must be able to access recurring billing content.
-* Queries through ToastIap.queryActivatedPurchases() are unavailable while subscription is paused.
+* During pause period, ordinary subscription products cannot access subscription content.
+* During pause period, they cannot be queried with ToastIap.queryActivatedPurchases().
 
 #### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
 
-* Consumable subscription products do not create new purchases while subscription is paused.
-* Queries for new purchases through ToastIap.queryConsumablePurchases()are unavailable while subscription is paused.
+* During pause period, consumable subscription products do not create new purchases.
+* During pause period, new purchases cannot be queried with ToastIap.queryConsumablePurchases().
 
-### Reapplying for recurring billing
+### Resubscription
 
-Setting the recurring billing resubscribe function will allow the user to reapply for recurring billing that has been cancelled within 12 months of the expiry of the recurring billing.
-Recurring billing resubscription will create a new recurring billing and purchase token.
-After a recurring billing has expired, the user can use the Google Play recurring billing center to repurchase the same product for up to 1 years after expiry.
-For further details please refer to [Recurring Billing Resubscription](https://developer.android.com/google/play/billing/subs#resubscribe)
+Setting the resubscription feature will allow the user to reapply for subscription that has been cancelled within 12 months of the expiry of the subscription.
+Resubscription will create a new subscription and purchase token.
+After a subscription has expired, the user can use the Google Play Subscription Center to repurchase the same product for up to 1 year after expiry.
+For further details, refer to [Resubscribe](https://developer.android.com/google/play/billing/subs#resubscribe).
 
 > <span style="color:#e11d21">**Warning!)**</span> User data (IapPurchase.getDeveloperPayload()) cannot be used because purchases are not carried out in an in-app or game screen.
-> <span style="color:#e11d21">**Warning!)**</span> If recurring billing resubscription was used to purchase a subscription product from the Google Play Store, the TOAST IAP notifies of the payment results regarding the purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary popup isn't exposed to the user by the purchase update listener during an important action.
+> <span style="color:#e11d21">**Warning!)**</span> If resubscription was used to purchase a subscription product from the Google Play Store, the TOAST IAP notifies of the payment results regarding the purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
 
-## TOAST IAP Class Reference
+## NHN Cloud IAP Class Reference
 
 ### ToastIapConfiguration
 
-Refers to IAP configuration information which is applied as parameter for TOAST IAP initialization method.
+IAP configuration information which is used as a parameter for the NHN Cloud IAP initialization method.
 
 ```java
 /* ToastIapConfiguration.java */
@@ -704,14 +706,14 @@ public String getAppKey();
 public String getStoreCode();
 ```
 
-| Method | Returns |  |
-| ---- | ---- | ---- |
-| getAppKey | String | IAP service appkey |
-| getStoreCode | String | Store code information ("GG" or "ONESTORE", "GALAXY", ...) |
+| Method       | Returns |                                     |
+| ------------ | ------- | ----------------------------------- |
+| getAppKey    | String  | IAP service Appkey                         |
+| getStoreCode | String  | Store code information ("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### ToastIapConfiguration.Builder
 
-IAP service app key and store type are entered to create [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object.
+Accepts IAP service Appkey and store type as inputs and creates an [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object.
 
 ```java
 /* ToastIapConfiguration.java */
@@ -719,10 +721,10 @@ public void setAppKey(String appKey)
 public void setStoreCode(String storeCode)
 ```
 
-| Method | Parameters |  | Description |
-| ---- | ---- | ---- | ---- |
-| setAppKey | appKey | String: IAP service appkey | Set appkey created in TOAST IAP Console. |
-| setStoreCode | storeCode | String: Store code information | Set store code. <br>("GG" or "ONESTORE", "GALAXY", ...) |
+| Method       | Parameters |                     | Description                              |
+| ------------ | ---------- | ------------------- | ---------------------------------------- |
+| setAppKey    | appKey     | String: IAP service Appkey | Set Appkey created in TOAST IAP console.      |
+| setStoreCode | storeCode  | String: Store code information   | Set store code. <br>("GG" or "ONESTORE", "GALAXY", ...) |
 
 ### IapStoreCode
 
@@ -735,15 +737,15 @@ String AMAZON_APP_STORE
 String HUAWEI_APP_GALLERY
 ```
 
-* GOOGLE_PLAY_STORE<br>Applies Google Play Store in-app purchase.<br>Constant Value: "GG"
-* ONE_STORE<br>Applies ONE store in-app purchase. <br>Constant Value: "ONESTORE"
-* GALAXY_STORE<br>Applies Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
-* AMAZON_APP_STORE<br>Amazon Appstore 인앱 결제를 사용합니다.<br>Constant Value: "AMAZON"
-* HUAWEI_APP_GALLERY<br>Huawei App Gallery 인앱 결제를 사용합니다.<br>Constant Value: "HUAWEI"
+* GOOGLE_PLAY_STORE<br>Uses Google Play Store in-app purchase.<br>Constant Value: "GG"
+* ONE_STORE<br>Uses ONE store in-app purchase. <br>Constant Value: "ONESTORE"
+* GALAXY_STORE<br>Uses Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
+* AMAZON_APP_STORE<br>Uses Amazon Appstore in-app purchase.<br>Constant Value: "AMAZON"
+* HUAWEI_APP_GALLERY<br>Uses Huawei App Gallery in-app purchase.<br>Constant Value: "HUAWEI"
 
 ### IapPurchaseResult
 
-* Includes purchase result and information.
+* An object that Includes purchase result and purchase information.
 
 ```java
 /* IapPurchaseResult.java */
@@ -755,14 +757,14 @@ public String getMessage()
 public Throwable getCause()
 ```
 
-| Method | Returns |  |
-| ---- | ---- | ---- |
-| getPurchase | IapPurchase | Return IaPPurchase which contains purchase information. |
-| getCode | int | Return purchase result code. |
-| getMessage | String | Return purchase result message. |
-| getCause | Throwable | Return cause of failed purchase. |
-| isSuccess | boolean | Return if purchase is successful |
-| isFailure | boolean | Return if purchase is failed |
+| Method      | Returns     |                                  |
+| ----------- | ----------- | -------------------------------- |
+| getPurchase | IapPurchase | Returns the IaPPurchase object that contains purchase information. |
+| getCode     | int         | Returns a purchase result code.                 |
+| getMessage  | String      | Returns a purchase result message.                |
+| getCause    | Throwable   | Returns cause of failed purchase.                 |
+| isSuccess   | boolean     | Returns whether the purchase succeeded.                 |
+| isFailure   | boolean     | Returns whether the purchase failed.                 |
 
 ### IapResult
 
@@ -775,17 +777,17 @@ public String getMessage()
 public Throwable getCause()
 ```
 
-| Method | Returns |  |
-| ---- | ---- | ---- |
-| getCode | int | Return result code. |
-| getMessage | String | Return result message. |
-| getCause | Throwable | Return cause of failure. |
-| isSuccess | boolean | Return if Successful |
-| isFailure | boolean | Return if Failed |
+| Method     | Returns   |                |
+| ---------- | --------- | -------------- |
+| getCode    | int       | Returns a result code.  |
+| getMessage | String    | Returns a result message. |
+| getCause   | Throwable | Returns cause of failure.  |
+| isSuccess  | boolean   | Returns whether it succeeded.  |
+| isFailure  | boolean   | Returns whether it failed.  |
 
 ### IapPurchase
 
-* Purchase information is available via IapPurchase object.
+* An IapPurchase object lets you check the purchase information.
 
 ```java
 /* IapPurchase.java */
@@ -801,27 +803,29 @@ public String getAccessToken()
 public String getPurchaseType()
 public String getPurchaseTime()
 public String getExpiryTime()
+public String getDeveloperPayload()
 ```
 
-| Method | Returns | |
-| ---- | ---- | ---- |
-| getPaymentId | String | Return payment ID. |
-| getOriginalPaymentId | String | Return original payment ID. |
-| getPaymentSequence | String | Return original payment number. |
-| getProductId | String | Return product ID. |
-| getProductType | String | Return product type. |
-| getUserId | String | Return user ID. |
-| getPrice | float | Return price information. |
-| getPriceCurrencyCode | String | Return currency information. |
-| getAccessToken | String | Return token for consumption. |
-| getPurchaseType | String | Return product type. |
-| getPurchaseTime | long | Return product purchase time. |
-| getExpiryTime | long | Return remaining time of subscription product. |
+| Method               | Returns |                      |
+| -------------------- | ------- | -------------------- |
+| getPaymentId         | String  | Returns payment ID.        |
+| getOriginalPaymentId | String  | Returns original payment ID.     |
+| getPaymentSequence   | String  | Returns payment sequence number.     |
+| getProductId         | String  | Returns product ID.        |
+| getProductType       | String  | Returns product type.        |
+| getUserId            | String  | Returns user ID.       |
+| getPrice             | float   | Returns price information.        |
+| getPriceCurrencyCode | String  | Returns currency information.        |
+| getAccessToken       | String  | Returns token used for consumption.  |
+| getPurchaseType      | String  | Returns product purchase type.        |
+| getPurchaseTime      | long    | Returns product purchase time.     |
+| getExpiryTime        | long    | Returns remaining time of subscription product. |
+| getDeveloperPayload  | String  | Returns user data. |
 
 ### IapProductDetails
 
-* Detail product information is available with lapProductDetails.
-* Includes information registered in TOAST IAP Console and Google Play Console or ONE store Developer.
+* An lapProductDetails object lets you check detailed product information.
+* This object includes detailed information registered in NHN Cloud IAP console and Google Play Console or ONE store Developer.
 
 ```java
 /* IapProductDetails.java */
@@ -839,24 +843,24 @@ public String getProductDescription()
 public boolean isActivated()
 ```
 
-| Method | Returns | |
-| ---- | ---- | ---- |
-| getProductId | String | Product ID |
-| getProductSequence | String | Original product number |
-| getPrice | float | Price |
-| getLocalizedPrice | String | Local price |
-| getPriceCurrencyCode | String | Currency |
-| getPriceAmountMicros | long | Price by 1,000,000 |
-| getFreeTrialPeriod | String | Free trial period |
-| getSubscriptionPeriod | String | Subscription period |
-| getProductType | String | Product type |
-| getProductTitle | String | Product title |
-| getProductDescription | String | Product description |
-| isActivated | boolean | If product is activated |
+| Method                | Returns |                 |
+| --------------------- | ------- | --------------- |
+| getProductId          | String  | Product ID          |
+| getProductSequence    | String  | Product sequence number        |
+| getPrice              | float   | Price              |
+| getLocalizedPrice     | String  | Local price           |
+| getPriceCurrencyCode  | String  | Currency              |
+| getPriceAmountMicros  | long    | Price by 1,000,000 unit |
+| getFreeTrialPeriod    | String  | Free trial period        |
+| getSubscriptionPeriod | String  | Subscription period           |
+| getProductType        | String  | Product type           |
+| getProductTitle       | String  | Product title    |
+| getProductDescription | String  | Product description           |
+| isActivated           | boolean | Whether the product is activated       |
 
 ### IapProduct
 
-* Brief information registered in TOAST IAP Console is available.
+* Lets you check brief information registered in NHN Cloud IAP console.
 
 ```java
 /* IapProduct.java */
@@ -868,14 +872,14 @@ public String getProductDescription()
 public boolean isActivated()
 ```
 
-| Method | Returns | |
-| ---- | ---- | ---- |
-| getProductId | String | Product ID |
-| getProductSequence | String | Original product number |
-| getProductType | String | Product type |
-| getProductTitle | String | Product title |
-| getProductDescription | String | Product description |
-| isActivated | boolean | If product is activated |
+| Method                | Returns |              |
+| --------------------- | ------- | ------------ |
+| getProductId          | String  | Product ID       |
+| getProductSequence    | String  | Product sequence number     |
+| getProductType        | String  | Product type        |
+| getProductTitle       | String  | Product title |
+| getProductDescription | String  | Product description        |
+| isActivated           | boolean | Whether the product is activated    |
 
 ### IapPurchaseFlowParams
 
@@ -886,9 +890,9 @@ public boolean isActivated()
 public String getProductId()
 ```
 
-| Method | Returns | |
-| ---- | ---- | ---- |
-| getProductId | String | Product ID |
+| Method       | Returns |       |
+| ------------ | ------- | ----- |
+| getProductId | String  | Product ID |
 
 ### IapPurchaseFlowParams.Builder
 
@@ -899,14 +903,14 @@ public String getProductId()
 public void setProductId(String productId)
 ```
 
-| Method | Parameters |  | Description |
-| ---- | ---- | ---- | ---- |
-| setProductId | productId | String: Product ID | Product ID is set. |
+| Method       | Parameters |               | Description   |
+| ------------ | ---------- | ------------- | ------------- |
+| setProductId | productId  | String: Product ID | Set the Product ID. |
 
 ### IapSubscriptionStatus
 
-* IapSubscriptionStatus 객체로 구독 상태 정보를 확인할 수 있습니다.
-* 구독 상태 코드는 IapSubscriptionStatus.StatusCode에 정의되어 있습니다.
+* An IapSubscriptionStatus object lets you check the subscription status.
+* Subscription status codes are defined in IapSubscriptionStatus.StatusCode.
 
 ```java
 /* IapSubscriptionStatus.java */
@@ -931,27 +935,27 @@ public String getStatusDescription()
 
 | Method | Returns |  |
 | --- | --- | --- |
-| getStoreCode | String | 스토어 코드를 반환합니다. |
-| getPaymentId | String | 결제 ID를 반환합니다. |
-| getOriginalPaymentId | String | 원본 결제 ID를 반환합니다. |
-| getPaymentSequence | String | 결제 고유 번호를 반환합니다. |
-| getProductId | String | 상품 ID를 반환합니다. |
-| getProductType | String | 상품 유형을 반환합니다. |
-| getProductSeq | String | 상품 고유 번호를 반환합니다. |
-| getUserId | String | 사용자 ID를 반환합니다. |
-| getPrice | float | 가격 정보를 반환합니다. |
-| getPriceCurrencyCode | String | 통화 정보를 반환합니다. |
-| getAccessToken | String | 소비에 사용되는 토큰을 반환합니다. |
-| getPurchaseType | String | 결제 유형을 반환합니다.<br>"Test" or "Promo" or null |
-| getPurchaseTime | long | 상품 구매 시간을 반환합니다. |
-| getExpiryTime | long | 구독 상품의 남은 시간을 반환합니다. |
-| getDeveloperPayload | String | 사용자 데이터를 반환합니다. |
-| getStatusCode | int | 구독 상태 코드를 반환합니다. |
-| getStatusDescription | String | 구독 상태 코드에 대한 설명을 반환합니다. |
+| getStoreCode | String | Returns store code. |
+| getPaymentId | String | Returns payment ID. |
+| getOriginalPaymentId | String | Returns original payment ID. |
+| getPaymentSequence | String | Returns payment sequence number. |
+| getProductId | String | Returns product ID. |
+| getProductType | String | Returns product type. |
+| getProductSeq | String | Returns payment sequence number. |
+| getUserId | String | Returns user ID. |
+| getPrice | float | Returns price information. |
+| getPriceCurrencyCode | String | Returns currency information. |
+| getAccessToken | String | Returns token used for consumption. |
+| getPurchaseType | String | Returns purchase type.<br>"Test" or "Promo" or null |
+| getPurchaseTime | long | Returns product purchase time. |
+| getExpiryTime | long | Returns remaining time of subscription product. |
+| getDeveloperPayload | String | Returns user data. |
+| getStatusCode | int | Returns subscription status code. |
+| getStatusDescription | String | Returns description for subscription status code. |
 
 ### IapSubscriptionStatus.StatusCode
 
-* 구독 상태를 나타내는 코드 입니다.
+* Codes representing the subscription status.
 
 ```java
 /* IapSubscriptionStatus.java */
@@ -967,18 +971,18 @@ int UNKNOWN
 
 | Name | Code | Status | Description |
 | --- | --- | --- | --- |
-| ACTIVE | 0 | 활성 | 구독이 활성 상태입니다. |
-| CANCELED | 3 | 취소 | 구독이 취소되었습니다. |
-| ON\_HOLD | 5 | 계정 보류 | 정기 결제가 계정 보류 상태가 되었습니다(사용 설정된 경우). |
-| IN\_GRACE\_PERIOD | 6 | 유예 기간 | 정기 결제가 유예 기간 상태로 전환되었습니다(사용 설정된 경우). |
-| PAUSED | 10 | 일시 중지 | 구독이 일시 중지되었습니다. |
-| REVOKED | 12 | 해지 | 정기 결제가 만료 시간 전에 사용자에 의해 취소되었습니다. |
-| EXPIRED | 13 | 만료 | 정기 결제가 만료되었습니다. |
-| UNKNOWN | 9999 | 미정의 | 정의 되지 않은 상태입니다. |
+| ACTIVE | 0 | Active | Subscription is active. |
+| CANCELED | 3 | Canceled | Subscription has been canceled. |
+| ON\_HOLD | 5 | Account hold | Subscription was put on hold (if enabled). |
+| IN\_GRACE\_PERIOD | 6 | Grace period | Subscription entered grace period (if enabled). |
+| PAUSED | 10 | Paused | Subscription was paused. |
+| REVOKED | 12 | Revoked | Subscription was canceled by the user before expiry time. |
+| EXPIRED | 13 | Expired | Subscription has expired. |
+| UNKNOWN | 9999 | Undefined | Undefined status. |
 
 ### IapService.PurchasesUpdatedListener
 
-* Purchase information, if updated, is notified via onPurchasesUpdated of an object inherited with IapService.PurchasesUpdatedListener.
+* When payment information is updated, it is notified through the onPurchasesUpdated method of the object that inherits and implements IapService.PurchasesUpdatedListener.
 
 ```java
 void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
@@ -986,7 +990,7 @@ void onPurchasesUpdated(List<IapPurchaseResult> purchaseResults)
 
 ### IapService.PurchasesResponseListener
 
-* Unconsumed purchase or activated subscription, when queried, is notified via onPurchasesResponse of an object inherited with IapService.PurchasesResponseListener.
+* When a query for unconsumed purchase or activated subscription occurs, it is notified through the onPurchasesResponse method of the object that inherits and implements IapService.PurchasesResponseListener.
 
 ```java
 void onPurchasesResponse(IapResult result,
@@ -995,7 +999,7 @@ void onPurchasesResponse(IapResult result,
 
 ### IapService.SubscriptionsStatusResponseListener
 
-* 구독 상태 조회 시 SubscriptionsStatusResponseListener 상속 구현한 객체의 onSubscriptionsStatusResponse 메서드를 통해 통지됩니다.
+* When a query for subscription status occurs, it is notified through the onSubscriptionsStatusResponse method of the object that inherits and implements SubscriptionsStatusResponseListener.
 
 ```java
 void onSubscriptionsStatusResponse(IapResult result,
@@ -1004,49 +1008,49 @@ void onSubscriptionsStatusResponse(IapResult result,
 
 ## Error Codes
 
-### Common
+### Common Error Codes
 
-| RESULT | CODE | DESC |
-| ------ | ---- | ---- |
-| FEATURE_NOT_SUPPORTED | -2 | Requested feature is not supported.<br> |
-| SERVICE_DISCONNECTED | -1 | Store service is not connected.<br> |
-| OK | 0 | Succeeded<br> |
-| USER_CANCELED | 1 | User cancelled.<br> |
-| SERVICE_UNAVAILABLE | 2 | Network is not connected.<br> |
-| BILLING_UNAVAILABLE | 3 | API version is not supported for the requested type.<br> |
-| PRODUCT_UNAVAILABLE | 4 | Requested product is not available.<br> |
-| DEVELOPER_ERROR | 5 | Provided invalid parameter to API: a common error during development phase. <br> |
-| ERROR | 6 | Fatal error occurred during API action.<br> |
-| PRODUCT_ALREADY_OWNED | 7 | Failed to purchase as it is already owned.<br> |
-| PRODUCT_NOT_OWNED | 8 | Cannot consume as it is not owned.<br> |
-| USER_ID_NOT_REGISTERED | 9 | User ID Is not registered.<br> |
-| UNDEFINED_ERROR | 9999 | Undefined Error<br> |
+| RESULT                 | CODE | DESC                                     |
+| ---------------------- | ---- | ---------------------------------------- |
+| FEATURE_NOT_SUPPORTED  | -2   | Requested feature is not supported. |
+| SERVICE_DISCONNECTED   | -1   | Store service is not connected. |
+| OK                     | 0    | Success.                          |
+| USER_CANCELED          | 1    | User canceled.                |
+| SERVICE_UNAVAILABLE    | 2    | Network connection is down. |
+| BILLING_UNAVAILABLE    | 3    | API version is not supported for the requested type. |
+| PRODUCT_UNAVAILABLE    | 4    | Requested product is not available. |
+| DEVELOPER_ERROR        | 5    | Invalid argument provided for API, which is a common error in development phase. |
+| ERROR                  | 6    | Fatal error occurred during API action. |
+| PRODUCT_ALREADY_OWNED  | 7    | Failed to purchase an item as it is already owned. |
+| PRODUCT_NOT_OWNED      | 8    | Cannot consume an item as it is not owned. |
+| USER_ID_NOT_REGISTERED | 9    | User ID is not registered. |
+| UNDEFINED_ERROR        | 9999 | Undefined error.           |
 
-### Server
+### Server Error Codes
 
-| RESULT | CODE | DESC |
-| ------ | ---- | ---- |
-| INACTIVATED_APP | 101 | App is not activated.<br> |
-| NETWORK_NOT_CONNECTED | 102 | Network is not connected.<br> |
-| VERIFY_PURCHASE_FAILED | 103 | Failed to verify purchase.<br> |
-| PURCHASE_ALREADY_CONSUMED | 104 | Purchase is already consumed.<br> |
-| PURCHASE_ALREADY_REFUNDED | 105 | Purchase is already refunded.<br> |
-| PURCHASE_LIMIT_EXCEEDED | 106 | Purchase limit exceeded.<br> |
+| RESULT                    | CODE | DESC                                     |
+| ------------------------- | ---- | ---------------------------------------- |
+| INACTIVATED_APP           | 101  | App is not activated.     |
+| NETWORK_NOT_CONNECTED     | 102  | Network is not connected. |
+| VERIFY_PURCHASE_FAILED    | 103  | Failed to verify purchase. |
+| PURCHASE_ALREADY_CONSUMED | 104  | Purchase is already consumed. |
+| PURCHASE_ALREADY_REFUNDED | 105  | Purchase is already refunded. |
+| PURCHASE_LIMIT_EXCEEDED   | 106  | Purchase limit was exceeded. |
 
-### ONE store
-
-| RESULT | CODE | DESC |
-| ------ | ---- | ---- |
-| ONESTORE_NEED_LOGIN | 301 | Not logged-in to ONE store Service.<br> |
-| ONESTORE_NEED_UPDATE | 302 | ONE store Service is not updated or installed.<br> |
-| ONESTORE_SECURITY_ERROR | 303 | Purchase requested from abnormal app.<br> |
-| ONESTORE_PURCHASE_FAILED | 304 | Failed to request for purchase.<br> |
-
-### Galaxy storeエラーコード
+### ONE store Error Codes
 
 | RESULT                   | CODE | DESC                                     |
 | ------------------------ | ---- | ---------------------------------------- |
-| GALAXY_NOT_LOGGED_IN      | 501  | Galaxy service is not logged in.<br> |
-| GALAXY_NOT_UPDATED     | 502  | Galaxy service is not updated or installed.<br> |
-| GALAXY_PURCHASE_FAILED  | 503  | Galaxy purchase failed.<br> |
-| GALAXY_SERVICE_DENIED | 504  | PurGalaxy service denied.<br> |
+| ONESTORE_NEED_LOGIN      | 301  | ONE store service is not logged in. |
+| ONESTORE_NEED_UPDATE     | 302  | ONE store service is not updated or installed. |
+| ONESTORE_SECURITY_ERROR  | 303  | Purchase requested from an abnormal app. |
+| ONESTORE_PURCHASE_FAILED | 304  | Purchase request failed. |
+
+### Galaxy Store Error Codes
+
+| RESULT                   | CODE | DESC                                     |
+| ------------------------ | ---- | ---------------------------------------- |
+| GALAXY_NOT_LOGGED_IN      | 501  | Galaxy service is not logged in. |
+| GALAXY_NOT_UPDATED     | 502  | Galaxy service is not updated or installed. |
+| GALAXY_PURCHASE_FAILED  | 503  | Purchase requested from an abnormal app. |
+| GALAXY_SERVICE_DENIED | 504  | Purchase request failed. |

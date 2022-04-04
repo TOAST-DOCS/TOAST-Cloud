@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK User Guide > TOAST Push > Android
+## NHN Cloud > SDK User Guide > Push > Android
 
 ## Prerequisites
 
-1. Install [TOAST SDK](./getting-started-android).
-2. [Enable Push service](https://docs.toast.com/en/Notification/Push/en/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1. Install [NHN Cloud SDK](./getting-started-android).
+2. [Enable Push service](https://docs.toast.com/en/Notification/Push/en/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3. Check the AppKey in the Push console.
 
 ## Guide by Push Provider
@@ -14,7 +14,7 @@
 ## Library Setting
 
 ### FCM
-* To use TOAST FCM Push, add dependency to build.gradle as below.
+* To use NHN Cloud FCM Push, add dependency to build.gradle as below.
 
 ```groovy
 repositories {
@@ -95,7 +95,7 @@ ToastPush.initialize(configuration);
 ```
 
 ## Service Login
-* All products provided by TOAST SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
+* All products provided by NHN Cloud SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
     * You can set the user id with [ToastSdk.setUserId](./getting-started-android/#userid).
 * It is recommended to implement the user ID setting and token registration functions in the service login step.
 * If you set or change the user ID after registering the token, the token information is updated.
@@ -111,7 +111,7 @@ public void onLogin(String userId) {
 ```
 
 ## Token Registration
-* Use the ToastPush.registerToken() method to send a Push token to the TOAST Push server. In this case, pass whether the user agreed to receive (ToastPushAgreement) as a parameter.
+* Use the ToastPush.registerToken() method to send a Push token to the NHN Cloud Push server. In this case, pass whether the user agreed to receive (ToastPushAgreement) as a parameter.
 * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
 * When the token is registered successfully, the user can receive a Push message.
 
@@ -119,7 +119,7 @@ public void onLogin(String userId) {
 * In accordance with the provisions of the Information and Communications Network Act (Articles 50 through 50-8), when registering a token, whether or not to receive notification/advertising/night-time advertising push messages must also be inputted. When sending a message, it is automatically filtered based on whether or not the user agreed to receive it.
     * [Shortcut to KISA Guide](https://spam.kisa.or.kr/spam/sub62.do)
     * [Shortcut to the law](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* Set whether or not the user agreed to receive the push in ToastPushAgreementIt and send it to the TOAST Push server when registering tokens.
+* Set whether or not the user agreed to receive the push in ToastPushAgreementIt and send it to the NHN Cloud Push server when registering tokens.
 
 ### Example of token registration and agreement setting
 ```java
@@ -147,7 +147,7 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 ```
 
 ## Token Information Query
-* Query the token information registered in the TOAST Push server.
+* Query the token information registered in the NHN Cloud Push server.
 
 ### Token information query example
 ```java
@@ -170,7 +170,7 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 ```
 
 ## Token Unregistration
-* Unregister the token registered in the TOAST Push server. Unregistered tokens are excluded from targets for sending messages.
+* Unregister the token registered in the NHN Cloud Push server. Unregistered tokens are excluded from targets for sending messages.
 * `If you do not want to receive messages after the service logout, you must unregister the token.`
 * `Even if the token is unregistered, the notification permission on the device is not revoked.`
 
@@ -684,9 +684,9 @@ ToastPush.removeAllUserTag(new UserTagCallback() {
 });
 ```
 
-## TOAST Push Class Reference
+## NHN Cloud Push Class Reference
 ### ToastPushConfiguration
-* Push configuration that is passed when TOAST Push is initialized.
+* Push configuration that is passed when NHN Cloud Push is initialized.
 
 ```java
 /* ToastPushConfiguration.java */

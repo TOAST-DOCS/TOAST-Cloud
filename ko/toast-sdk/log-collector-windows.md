@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > Windows C++
+## NHN Cloud > SDK 사용 가이드 > Log & Crash > Windows C++
 
 ## 사전 준비
 
-1. [Install the TOAST SDK](./getting-started-windows)
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+1. [Install the NHN Cloud SDK](./getting-started-windows)
+2. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
 ## NHN Cloud SDK 초기화
@@ -58,7 +58,7 @@ UserID를 설정하면, 로그 전송 API를 호출할 때 로그와 함께 사�
 
 ## 로그 전송
 
-TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
+NHN Cloud Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ### 로그 전송
 * DEBUG, INFO, WARN, ERROR, FATAL 레벨의 로그를 명시적으로 전송

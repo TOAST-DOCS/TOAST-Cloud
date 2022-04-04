@@ -1,14 +1,14 @@
-## TOAST > TOAST SDK使用ガイド > TOAST IAP > iOS
+## NHN Cloud > SDK使用ガイド > IAP > iOS
 
 ## Prerequisites
 
-1\. [TOAST SDK](./getting-started-ios)をインストールします。
-2\. [TOASTコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
+1\. [NHN Cloud SDK](./getting-started-ios)をインストールします。
+2\. [NHN Cloudコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
 3\. IAPで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
-## TOAST IAP構成
+## NHN Cloud IAP構成
 
-* iOS用TOAST IAP SDKの構成は次のとおりです。
+* iOS用NHN Cloud IAP SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
@@ -16,11 +16,11 @@
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
-## TOAST IAP SDKをXcodeプロジェクトに適用
+## NHN Cloud IAP SDKをXcodeプロジェクトに適用
 
 ### 1. Cococapods適用
 
-* Podfileを作成して、TOAST SDKに対するPodを追加します。
+* Podfileを作成して、NHN Cloud SDKに対するPodを追加します。
 
 ```podspec
 platform :ios, '9.0'
@@ -31,11 +31,11 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. バイナリをダウンロードしてTOAST SDKを適用
+### 2. バイナリをダウンロードしてNHN Cloud SDKを適用
 
 #### Link Frameworks
 
-* TOASTの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
+* NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページで全体iOS SDKをダウンロードできます。
 * Xcode Projectに**ToastIAP.framework**, **ToastCore.framework**, **ToastCommon.framework, StoreKit.framework**を追加します。
 * StoreKit.frameworkは、下記の方法で追加できます。
 ![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
@@ -51,13 +51,13 @@ end
 
 ### Capabilities設定
 
-* TOAST IAPを使用するには、Capabilitiesで**In-App Purchase**項目を有効にする必要があります。
+* NHN Cloud IAPを使用するには、Capabilitiesで**In-App Purchase**項目を有効にする必要があります。
     * **Project Target > Capabilities > In-App Purchase**
 ![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
 
 ## サービスログイン
 
-* TOAST SDKで提供するすべてのサービス(IAP、Log & Crash、Pushなど)は、同じユーザーID1つのみ使用します。
+* NHN Cloud SDKで提供するすべてのサービス(IAP、Log & Crash、Pushなど)は、同じユーザーID1つのみ使用します。
 
 ### ログイン
 
@@ -75,7 +75,7 @@ end
 [ToastSDK setUserID:nil];
 ```
 
-## TOAST IAP SDK初期化
+## NHN Cloud IAP SDK初期化
 
 * IAPコンソールで発行された[AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)を[ToastIAPConfiguration](./iap-ios/#toastiapconfiguration)オブジェクトに設定します。
 * TOAST IAPは初期化に[ToastIAPConfiguration](./iap-ios/#toastiapconfiguration)オブジェクトをパラメータとして使用します。
@@ -454,11 +454,11 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 ```
 
 
-## TOAST IAP Class Reference
+## NHN Cloud IAP Class Reference
 
 ### ToastIAPConfiguration
 
-TOAST IAP初期化メソッドのパラメータとして使用されるアプリ内決済設定情報です。
+NHN Cloud IAP初期化メソッドのパラメータとして使用されるアプリ内決済設定情報です。
 
 ```objc
 @interface ToastIAPConfiguration : NSObject <NSCoding, NSCopying>

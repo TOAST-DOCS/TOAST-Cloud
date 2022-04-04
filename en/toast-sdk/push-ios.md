@@ -1,28 +1,28 @@
-## TOAST > TOAST SDK User Guide > TOAST Push > iOS
+## NHN Cloud > SDK User Guide > Push > iOS
 
 ## Prerequisites
 
-1. Install [TOAST SDK](./getting-started-ios).
-2. [Enable Notification \> Push](http://docs.toast.com/en/Notification/Push/en/console-guide/) in [TOAST Console](https://console.cloud.toast.com).
+1. Install [NHN Cloud SDK](./getting-started-ios).
+2. [Enable Notification \> Push](http://docs.toast.com/en/Notification/Push/en/console-guide/) in [NHN Cloud Console](https://console.cloud.toast.com).
 3. Check your AppKey in Push.
 
 ## APNS Guide
 * [APNS Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
 
-## TOAST Push Components
+## NHN Cloud Push Components
 
-* TOAST Push SDK for iOS consists of the following:
+* NHN Cloud Push SDK for iOS consists of the following:
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Push | ToastPush | ToastPush.framework | UserNotifications.framework <br/> <br/> [ToastVoIP] <br/> PushKit.framework <br/> CallKit.framework | |
+| NHN Cloud Push | ToastPush | ToastPush.framework | UserNotifications.framework <br/> <br/> [ToastVoIP] <br/> PushKit.framework <br/> CallKit.framework | |
 | Mandatory   | ToastCore <br/> ToastCommon | ToastCore.framework <br/> ToastCommon.framework | | OTHER_LDFLAGS = ( <br/> "-ObjC", <br/> "-lc++" <br/> ); |
 
-## Apply TOAST Push SDK to Xcode Projects
+## Apply NHN Cloud Push SDK to Xcode Projects
 
 ### 1. Apply using Cococapods
 
-* Create a Podfile and add a pod for TOAST SDK.
+* Create a Podfile and add a pod for NHN Cloud SDK.
 
 ``` podspec
 platform :ios, '9.0'
@@ -33,11 +33,11 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apply TOAST SDK by Downloading Binaries
+### 2. Apply NHN Cloud SDK by Downloading Binaries
 
 #### Frameworks Setup
 
-* You can download the full iOS SDK from the [Downloads](../../../Download/#toast-sdk) page of TOAST.
+* You can download the full iOS SDK from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud.
 * Add **ToastPush.framework**, **ToastCore.framework**, **ToastCommon.framework, UserNotifications.framework** to your Xcode Project.
 * UserNotifications.framework can be added in the following way.
 ![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
@@ -50,7 +50,7 @@ end
 
 ### Capabilities Setup
 
-* To use TOAST Push, you must enable **Push Notification** and **Background Modes** items in Capabilities.
+* To use NHN Cloud Push, you must enable **Push Notification** and **Background Modes** items in Capabilities.
     * **Project Target > Signing & Capabilities > + Capability > Push Notification**
 ![add_capability_push_notifications](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications.png)
     * **Project Target > Signing & Capabilities > + Capability > Background Modes**
@@ -60,7 +60,7 @@ end
 
 ## Changes for Xcode11/iOS13
 * Common
-    * Starting with Xcode 11, projects using TOAST SDK version lower than 0.18.0 have a problem where token registration fails on iOS 13.
+    * Starting with Xcode 11, projects using NHN Cloud SDK version lower than 0.18.0 have a problem where token registration fails on iOS 13.
     * `If you are using Xcode 11 or higher, you must use the TOAST SDK version 0.18.0 or higher. (Xcode 11, iOS 13)`
 * VoIP
     * In iOS 13 or higher, if you do not report to CallKit after receiving a VoIP message, the message reception becomes restricted. ([PushKit pushRegistry guide](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
@@ -68,7 +68,7 @@ end
 
 ## Service Login
 
-* All products provided by TOAST SDK (Push, IAP, Log & Crash, ...) share one user ID.
+* All products provided by NHN Cloud SDK (Push, IAP, Log & Crash, ...) share one user ID.
 
 ### Login
 
@@ -89,7 +89,7 @@ end
 [ToastSDK setUserID:nil];
 ```
 
-## Initialize TOAST Push SDK
+## Initialize NHN Cloud Push SDK
 
 * `The token registration and query features cannot be used without initialization.`
 * Set the Push AppKey issued from the Toast Cloud server in the [ToastPushConfiguration](./push-ios/#toastpushconfiguration) object.
@@ -211,7 +211,7 @@ options.soundEnabled = YES;         // Set the use of notification sound (defaul
 
 ## Token Registration
 
-* Register the issued token information to the Toast Cloud server. At this time,  pass whether or not to agree to receive the push (ToastPushAgreement) as a parameter.
+* Register the issued token information to the NHN Cloud server. At this time,  pass whether or not to agree to receive the push (ToastPushAgreement) as a parameter.
 * If this is the initial execution, request the user for permission to allow notifications. If the permission to allow notifications is not acquired, token registration fails.
 * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
 
@@ -282,7 +282,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 
 ## Token Unregistration
 
-* Unregister the token registered in the TOAST Cloud server. Unregistered tokens are excluded from targets for sending messages.
+* Unregister the token registered in the NHN Cloud server. Unregistered tokens are excluded from targets for sending messages.
 * `If you do not want to receive messages after the service logout, you must unregister the token.`
 * `Even if the token is unregistered, the notification permission on the device is not revoked.`
 
@@ -338,7 +338,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 
 ## Metric Collection
 
-* This feature collects metrics for push message reception and user notification execution in the client and sends them to the Toast Cloud server.
+* This feature collects metrics for push message reception and user notification execution in the client and sends them to the NHN Cloud server.
 * The collected data can be viewed in the Statistics tab.
 * `To collect metrics, an Appkey must be defined in Push SDK initialization or info.plist file.`
 
@@ -347,7 +347,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 * `Received metrics collection is supported in iOS 10.0+ or higher.`
 * Received metrics are automatically collected by the Toast Push SDK that was added to the Notification Service Extension.
 * To collect received metrics, you need to implement Notification Service Extension that inherits and implements ToastPushServiceExtension in the user application. (Refer to the [Notification Service Extension](./push-ios/#notification-service-extension) section below for how to add the Notification Service Extension)
-* To enable the collection of received metrics, an Appkey must be defined in the [Toast Push SDK initialization](./push-ios/#toast-push-sdk) in the Notification Service Extension constructor or **extension's info.plist file**.
+* To enable the collection of received metrics, an Appkey must be defined in the [NHN Cloud Push SDK initialization](./push-ios/#toast-push-sdk) in the Notification Service Extension constructor or **extension's info.plist file**.
 
 #### Example of received metrics collection setting through initialization
 
@@ -398,7 +398,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 ### Opened Metric Collection Setting
 
 * Opened metrics are automatically collected from the Toast Push SDK that was added to the application.
-* To enable the collection of opened metrics, an Appkey must be defined in the [Toast Push SDK initialization](./push-ios/#toast-push-sdk) or **application's info.plist file**.
+* To enable the collection of opened metrics, an Appkey must be defined in the [NHN Cloud Push SDK initialization](./push-ios/#toast-push-sdk) or **application's info.plist file**.
 
 #### Example of opened metrics collection setting through info.plist definition
 
@@ -569,7 +569,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### Frameworks Setup
 
-* To use the VoIP function of TOAST Push, you need to add **PushKit.framework** and **CallKit.framework**.
+* To use the VoIP function of NHN Cloud Push, you need to add **PushKit.framework** and **CallKit.framework**.
 * PushKit.framework and CallKit.framework can be added in the following way.
 ![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
 ![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
@@ -636,7 +636,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### Token Registration
 
-* Register the issued VoIP token information to the Toast Cloud server.
+* Register the issued VoIP token information to the NHN Cloud server.
 * VoIP function does not require separate user permission and agreement information.
 
 #### Specification for Token Registration API
@@ -689,7 +689,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### Token Unregistration
 
-* Unregister the token registered in the TOAST Cloud server. Unregistered tokens are excluded from targets for sending messages.
+* Unregister the token registered in the NHN Cloud server. Unregistered tokens are excluded from targets for sending messages.
 * `If you do not want to receive messages after the service logout, you must unregister the token.`
 
 #### Specification for Token Unregistration API
@@ -748,10 +748,10 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 };
 ```
 
-## TOAST Push Class Reference
+## NHN Cloud Push Class Reference
 
 ### ToastPushConfiguration
-* Push setting information passed when TOAST Push is initialized.
+* Push setting information passed when NHN Cloud Push is initialized.
 
 ``` objc
 @interface ToastPushConfiguration : NSObject

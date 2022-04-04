@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK使用ガイド > TOAST Push > Android
+## NHN Cloud > SDK使用ガイド > Push > Android
 
 ## 事前準備
 
-1. [TOAST SDK](./getting-started-android)をインストールします。
-2. [TOASTコンソール](https://console.cloud.toast.com)で、[Pushサービスを有効化](https://docs.toast.com/ja/Notification/Push/ja/console-guide/)します。
+1. [NHN Cloud SDK](./getting-started-android)をインストールします。
+2. [NHN Cloudコンソール](https://console.cloud.toast.com)で、[Pushサービスを有効化](https://docs.toast.com/ja/Notification/Push/ja/console-guide/)します。
 3. PushコンソールでAppKeyを確認します。
 
 ## Push提供者別ガイド
@@ -93,7 +93,7 @@ ToastPush.initialize(configuration);
 ```
 
 ## サービスログイン
-* TOAST SDKで提供するすべてのサービス(Push、IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
+* NHN Cloud SDKで提供するすべてのサービス(Push、IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
     * [ToastSdk.setUserId](./getting-started-android/#userid)にユーザーIDを設定できます。
 * サービスログイン段階でユーザーID設定、トークン登録機能を実装することを推奨します。
 * トークンの登録後、ユーザーIDを設定または変更すると、トークン情報を更新します。
@@ -109,7 +109,7 @@ public void onLogin(String userId) {
 ```
 
 ## トークン登録
-* ToastPush.registerToken()メソッドを使用してPushトークンをTOAST Pushサーバーに転送します。 この時、受信同意可否(ToastPushAgreement)をパラメータで伝えます。
+* ToastPush.registerToken()メソッドを使用してPushトークンをNHN Cloud Pushサーバーに転送します。 この時、受信同意可否(ToastPushAgreement)をパラメータで伝えます。
 * 最初のトークン登録時のユーザー名が設定されていなければ、端末識別子を使用して登録します。
 * トークンの登録に成功すると、Push メッセージを受信することができます。
 
@@ -117,7 +117,7 @@ public void onLogin(String userId) {
 * 韓国情報通信網法規定(第50条から第50条の8)に従い、トークン登録時の通知/広告性/夜間広告性プッシュメッセージ受信に同意するかも一緒に入力を受けます。メッセージ送信時に受信に同意しているかを基準に自動的にフィルタリングします。
     * [KISAガイドへ](https://spam.kisa.or.kr/spam/sub62.do)
     * [法令へ（韓国語）](http://www.law.go.kr/法令/情報通信網の利用促進および情報保護などに関する法律/%2820130218,11322,20120217%29/第50条)
-* ToastPushAgreementに受信同意の可否を設定し、トークン登録時にTOAST Pushサーバーに転送します。
+* ToastPushAgreementに受信同意の可否を設定し、トークン登録時にNHN Cloud Pushサーバーに転送します。
 
 ### トークン登録例
 ```java
@@ -143,7 +143,7 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 ```
 
 ## トークン情報照会
-* TOAST Pushサーバーに登録されているトークン情報を照会します。
+* NHN Cloud Pushサーバーに登録されているトークン情報を照会します。
 
 ### トークン情報照会例
 ```java
@@ -165,7 +165,7 @@ ToastPush.queryTokenInfo(ㅊontext, new QueryTokenInfoCallback() {
 ```
 
 ## トークン解除
-* TOAST Push サーバーに登録されたトークンを解除します。 解除されたトークンはメッセージの送信対象外となります。
+* NHN Cloud Push サーバーに登録されたトークンを解除します。 解除されたトークンはメッセージの送信対象外となります。
 * `サービスログアウト後にメッセージ受信をご希望にならなければトークンを解除しなければなりません。`
 * `トークンが解除されても端末のお知らせ権限は回収されません。`
 
@@ -685,9 +685,9 @@ ToastPush.removeAllUserTag(new UserTagCallback() {
 });
 ```
 
-## TOAST Push Class Reference
+## NHN Cloud Push Class Reference
 ### ToastPushConfiguration
-* TOAST Pushを初期化する時に渡されるPush設定情報です。
+* NHN Cloud Pushを初期化する時に渡されるPush設定情報です。
 
 ```java
 /* ToastPushConfiguration.java */

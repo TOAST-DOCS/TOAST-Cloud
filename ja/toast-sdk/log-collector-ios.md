@@ -1,28 +1,28 @@
-## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > iOS
+## NHN Cloud > SDK使用ガイド > Log & Crash > iOS
 
 > [告知]
-> TOAST SDK 0.13.0でarm64eアーキテクチャを使用する機器(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュ集計、分析が可能です。
+> NHN Cloud SDK 0.13.0でarm64eアーキテクチャを使用する機器(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュ集計、分析が可能です。
 
 ## Prerequisites
 
-1. [TOAST SDK](./getting-started-ios)をインストールします。
-2. [TOASTコンソール](https://console.cloud.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+1. [NHN Cloud SDK](./getting-started-ios)をインストールします。
+2. [NHN Cloudコンソール](https://console.cloud.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
 3. Log & Crash Searchで、[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 
-## TOAST Logger構成
+## NHN Cloud Logger構成
 
-* iOS用TOAST Logger SDKの構成は次のとおりです。
+* iOS用NHN Cloud Logger SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
+| Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## TOAST Logger SDKをXcodeプロジェクトに適用
+## Log & Crash Logger SDKをXcodeプロジェクトに適用
 
 ### 1. Cococapods適用
 
-* Podfileを作成して、TOAST SDKに対するpodを追加します。
+* Podfileを作成して、Log & Crash SDKに対するpodを追加します。
 
 ```podspec
 platform :ios, '9.0'
@@ -33,13 +33,13 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. バイナリをダウンロードしてTOAST SDK適用
+### 2. バイナリをダウンロードしてNHN Cloud SDK適用
 
 #### Link Frameworks
 
-* TOASTの[Downloads](../../../Download/#toast-sdk)ページで、全体iOS SDKをダウンロードできます。
+* NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページで、全体iOS SDKをダウンロードできます。
 * Xcode Projectに**ToastLogger.framework**、**ToastCore.framework**、**ToastCommon.framework**を追加します。
-* TOAST LoggerのCrash Report機能を使用するには、一緒に配布される**CrashReporter.framework**もプロジェクトに追加する必要があります。
+* NHN Cloud LoggerのCrash Report機能を使用するには、一緒に配布される**CrashReporter.framework**もプロジェクトに追加する必要があります。
 ![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
 
 #### Project Settings
@@ -53,7 +53,7 @@ end
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > TOASTの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。
 
-## TOAST Symbol Uploader適用
+## NHN Cloud Symbol Uploader適用
 
 ### プロジェクトのデバッグ設定を変更
 * ビルド設定を変更してプロジェクトのデバッグ情報形式を変更する必要があります。
@@ -109,10 +109,10 @@ OPTIONS:
 
 ### CrashReport 使用時注意事項
 
-* arm64eアーキテクチャを使用する機器のクラッシュ・分析のためにはTOAST Loggerと一緒に配布されるPLCrashReporterを使用しなければなりません。
+* arm64eアーキテクチャを使用する機器のクラッシュ・分析のためにはNHN Cloud Loggerと一緒に配布されるPLCrashReporterを使用しなければなりません。
       * TOASTの[Downloads](../../../Download/#toast-sdk)ページではない他の場所でダウンロードしたり、直接ビルドしたPLCrashReporterを使用する場合、arm64eアーキテクチャを使用する機器のクラッシュ分析が不可能です。
 
-## TOAST Logger SDK初期化
+## NHN Cloud Logger SDK初期化
 
 * Log & Crash Searchで発行されたAppKeyを設定します。
 
@@ -132,7 +132,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 ## ログ送信
 
-* TOAST Loggerは、5つのレベルのログ送信関数を提供します。
+* NHN Cloud Loggerは、5つのレベルのログ送信関数を提供します。
 
 ### ログ送信API仕様
 
@@ -187,13 +187,13 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ```
 
 ## クラッシュログの収集
-* TOAST Loggerは、クラッシュ情報をログに送信する機能を提供します。
-* TOAST Loggerを初期化する時、一緒に有効になり、使用するかを設定できます。
+* NHN Cloud Loggerは、クラッシュ情報をログに送信する機能を提供します。
+* NHN Cloud Loggerを初期化する時、一緒に有効になり、使用するかを設定できます。
 * クラッシュログを送信するには、PLCrashReporterを使用します。
 
 ### CrashReporter使用するかの設定
-* CrashReporter機能は、基本的にTOAST Loggerを初期化する時に一緒に有効になります。
-* TOAST Loggerを初期化する時、使用するかを設定できます。
+* CrashReporter機能は、基本的にNHN Cloud Loggerを初期化する時に一緒に有効になります。
+* NHN Cloud Loggerを初期化する時、使用するかを設定できます。
 * クラッシュログ送信機能を使用しない場合は、CrashReporter機能を無効にする必要があります。
 
 > UserIDが設定されている場合、Log＆Crash Searchコンソールの`Crash User`セクションでユーザー固有のクラッシュ体験を確認できます。
@@ -321,18 +321,18 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ## Network Insights
 * Network Insightsは、コンソールに登録したURLを呼び出して、遅延時間とレスポンス値を測定します。これを活用して複数の国(デバイスの国コード基準)からの遅延時間とレスポンス値を測定できます。
 
-> コンソールからNetwork Insights機能を有効にすると、TOAST Loggerを初期化する時、コンソールに登録したURLで1回要請します。
+> コンソールからNetwork Insights機能を有効にすると、NHN Cloud Loggerを初期化する時、コンソールに登録したURLで1回要請します。
 
 ### Network Insights有効化
 
-1. [TOAST Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+1. [NHN Cloud Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
 2. **設定**メニューをクリックします。
 3. **ログ送信設定**タブをクリックします。
 4. **Network Insightsログ**を有効にします。
 
 ### URL設定
 
-1. [TOAST Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+1. [NHN Cloud Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
 2. **ネットワークインサイト**メニューをクリックします。
 3. **URL設定**タブをクリックします。
 4. 測定するにはURLを入力して**追加**ボタンをクリックします。

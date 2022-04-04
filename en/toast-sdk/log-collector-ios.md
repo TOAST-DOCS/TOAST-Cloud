@@ -1,28 +1,28 @@
-## TOAST > TOAST SDK User Guide > TOAST Log & Crash > iOS
+## NHN Cloud > SDK User Guide > Log & Crash > iOS
 
 > [Notice]
-> From TOAST SDK 0.13.0, it is possible to analyze and analyze crashes from devices using arm64e architecture (iPhone XS, XR, XS Max, iPad Pros 3rd).
+> From NHN Cloud SDK 0.13.0, it is possible to analyze and analyze crashes from devices using arm64e architecture (iPhone XS, XR, XS Max, iPad Pros 3rd).
 
 ## Prerequisites
 
-1. [Install TOAST SDK](./getting-started-ios).
-2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1. [Install NHN Cloud SDK](./getting-started-ios).
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 
-## Configuration of TOAST Logger
+## Configuration of NHN Cloud Logger
 
-* TOAST Logger SDK for iOS is configured as follows.
+* NHN Cloud Logger SDK for iOS is configured as follows.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
+| Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## Apply TOAST SDK to Xcode Projects
+## Apply NHN Cloud SDK to Xcode Projects
 
 ### 1. Apply Cococapods
 
-* Create a Podfile to add a pod for TOAST SDK.
+* Create a Podfile to add a pod for NHN Cloud SDK.
 
 ```podspec
 platform :ios, '9.0'
@@ -33,13 +33,13 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apply TOAST SDK with Binary Downloads
+### 2. Apply NHN Cloud SDK with Binary Downloads
 
 #### Link Frameworks
 
-* The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST.
+* The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of NHN Cloud.
 * Add **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework** to the Xcode Project.
-* To enable Crash Report of TOAST Logger, CrashReporter.framework which is distributed as well, must be added to the project.
+* To enable Crash Report of NHN Cloud Logger, CrashReporter.framework which is distributed as well, must be added to the project.
 ![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
 
 #### Project Settings
@@ -53,7 +53,7 @@ end
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
 > CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of TOAST supports bitCode.
 
-## Apply TOAST Symbol Uploader
+## Apply NHN Cloud Symbol Uploader
 
 ### Change Project Debug Settings
 * You must change build settings to change the debug information format of the project.
@@ -109,10 +109,10 @@ OPTIONS:
 
 ### Precautions when using CrashReport
 
-* Crash analysis of devices using the arm64e architecture requires the use of PLCrashReporter, which is distributed with the TOAST Logger.
-    * Crash analysis of devices using the arm64e architecture is not possible if you use a PLCrashReporter that is downloaded or built directly from a location other than the [Downloads](../../../Download/#toast-sdk) of TOAST.
+* Crash analysis of devices using the arm64e architecture requires the use of PLCrashReporter, which is distributed with the NHN Cloud Logger.
+    * Crash analysis of devices using the arm64e architecture is not possible if you use a PLCrashReporter that is downloaded or built directly from a location other than the [Downloads](../../../Download/#toast-sdk) of NHN Cloud.
 
-## Initialize TOAST Logger SDK
+## Initialize NHN Cloud Logger SDK
 
 * Set Appkey issued from Log & Crash Search.
 
@@ -132,7 +132,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 ## Send Logs
 
-* TOAST Logger provides log-sending functions of five levels.
+* NHN Cloud Logger provides log-sending functions of five levels.
 
 ### Specification for Log Sending API
 
@@ -187,13 +187,13 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ```
 
 ## Collect Crash Logs
-* TOAST Logger sends crash information to logs.
-* It is enabled along with TOAST Logger initialization, by setting.
+* NHN Cloud Logger sends crash information to logs.
+* It is enabled along with NHN Cloud Logger initialization, by setting.
 * To send crash logs, PLCrashReporter is applied.
 
 ### Set Whether to Enable CrashReporter
-* By default, CrashReporter is enabled when TOAST Logger is initialized.
-* During TOAST Logger initialization, you can set whether to use CrashReporter or not.
+* By default, CrashReporter is enabled when NHN Cloud Logger is initialized.
+* During NHN Cloud Logger initialization, you can set whether to use CrashReporter or not.
 * In order not to send crash logs, CrashReporter must be disabled.
 
 > If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log & Crash Search console.
@@ -323,18 +323,18 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ## Network Insights
 * Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device).
 
-> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized.
+> With Network Insights enabled in console, it is requested for one time via URL registered in the console when NHN Cloud Logger is initialized.
 
 ### Enable Network Insights
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Settings].
 3. Click the [Setting for Sending Logs] tab.
 4. Enable "Network Insights Logs".
 
 ### URL Setting
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Network Insights].
 3. Click the [URL Setting] tab.
 4. Enter URL to measure and click [Add].

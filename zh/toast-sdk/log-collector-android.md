@@ -1,9 +1,9 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Android
+## NHN Cloud > SDK User Guide > Log & Crash > Android
 
 ## Prerequisites
 
-1. [Install TOAST SDK](./getting-started-android)
-2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1. [Install NHN Cloud SDK](./getting-started-android)
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) from Log & Crash Search.
 
 ## Library Setting
@@ -20,10 +20,13 @@ dependencies {
 }
 ```
 
-## Initialize TOAST Logger SDK
+## Initialize NHN Cloud Logger SDK
 
-Initialize logger in the onCreate() method.
-Set appkey issued from Log & Crash Search.
+- Initialization must be performed in Application#onCreate.
+
+> If you use ToastLogger without initialization, an initialization error occurs.
+
+- Set Appkey issued from Log & Crash Search.
 
 ```java
 // Initialize Logger
@@ -36,9 +39,9 @@ ToastLogger.initialize(configuration);
 
 ## Send Logs
 
-TOAST Logger provides log-sending functions of five levels.
+NHN Cloud Logger provides log-sending functions of five levels.
 
-### Specifications for Log Sending API
+### Specification for Log Sending API
 
 ```java
 // DEBUG level logs
@@ -68,19 +71,17 @@ ToastLogger.warn("TOAST Log & Crash Search!");
 Set a user-defined field as wanted.
 With user-defined field setting, set values are sent to server along with logs every time Log Sending API is called.
 
-### Specifications for setUserField API
+### Specification for setUserField API
 
 ```java
 static void setUserField(String field, Object value);
 ```
 
 *  User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab".
-That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
 
 #### Restrictions for User-Defined Fields
 
 * Cannot use already [Reserved Fields](./log-collector-reserved-fields).
-  Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
 * Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z".
 * Replace spaces within a field name by "_".
 
@@ -94,7 +95,7 @@ ToastLogger.setUserField("nickname", "randy");
 
 With listener registered, further tasks can be executed after logs are sent.
 
-### Specifications for setLoggerListener API
+### Specification for setLoggerListener API
 
 ```java
 static void setLoggerListener(ToastLoggerListener listener);
@@ -128,7 +129,7 @@ ToastLogger.setLoggerListener(new ToastLoggerListener() {
 
 ## Collect Crash Logs
 
-When an unexpected crash occurs in an app, TOAST Logger records such crash information in the server.
+When an unexpected crash occurs in an app, NHN Cloud Logger records such crash information in the server.
 
 ### Set Enable Collecting Crash Logs
 
@@ -144,16 +145,16 @@ ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
 ToastLogger.initialize(configuration);
 ```
 
-> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log&Crash Search console.
+> If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log & Crash Search console.
 > User ID setting can be checked in [Getting Started](./getting-started-android/#set-userid).
 
 ### Use Handled Exception API
 
-For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of TOAST Logger.
+For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of NHN Cloud Logger.
 Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
 For more usage details on Log & Cash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
 
-### Specifications for Handled Exception Log API
+### Specification for Handled Exception Log API
 
 ```java
 // Send Exception Information
@@ -181,11 +182,12 @@ try {
 Additional information can be set immediately after crash occurs.
 setUserField can be set anytime regardless of crash occurrence, whilesetCrashDataAdapter can be set at an accurate timing when a crash occurs.
 
-### Specifications for setCrashDataAdapter API
+### Specification for setCrashDataAdapter API
 
 ```java
 static void setCrashDataAdapter(CrashDataAdapter adapter);
 ```
+
 * Key values of the Map data structure returned through the getUserFields function of CrashDataAdapter have the same restriction conditions as the "field" value of setUserField described in the above.
 
 ### Usage Example of setCrashDataAdapter
@@ -202,20 +204,25 @@ ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
 ```
 
 ## Network Insights
+
 Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device).
 
 > With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized.
 
 ### Enable Network Insights
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
+Network Insights can be enabled as follows.
+
+1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Settings].
 3. Click the [Setting for Sending Logs] tab.
 4. Enable "Network Insights Logs".
 
 ### URL Setting
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
+URL can be set as follows.
+
+1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Network Insights].
 3. Click the [URL Setting] tab.
 4. Enter URL to measure and click [Add].

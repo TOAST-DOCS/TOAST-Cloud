@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Push > Android
+## NHN Cloud > SDK 사용 가이드 > Push > Android
 
 ## 사전 준비
 
-1. [TOAST SDK](./getting-started-android)를 설치합니다.
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+1. [NHN Cloud SDK](./getting-started-android)를 설치합니다.
+2. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
 3. Push 콘솔에서 AppKey를 확인합니다.
 
 ## Push 제공자별 가이드
@@ -14,7 +14,7 @@
 ## 라이브러리 설정
 
 ### FCM
-* TOAST FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+* NHN Cloud FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
 repositories {
@@ -95,7 +95,7 @@ ToastPush.initialize(configuration);
 ```
 
 ## 서비스 로그인
-* TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
+* NHN Cloud SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
     * [ToastSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
 * 서비스 로그인 단계에서 사용자 아이디 설정, 토큰 등록 기능을 구현하는 것을 권장합니다.
 * 토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.
@@ -111,7 +111,7 @@ public void onLogin(String userId) {
 ```
 
 ## 토큰 등록
-* ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 TOAST Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
+* ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 NHN Cloud Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 * 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
 
@@ -119,7 +119,7 @@ public void onLogin(String userId) {
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
     * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 TOAST Push 서버로 전송합니다.
+* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 NHN Cloud Push 서버로 전송합니다.
 
 ### 토큰 등록 및 수신 동의 설정 예시
 ```java
@@ -147,7 +147,7 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 ```
 
 ## 토큰 정보 조회
-* TOAST Push 서버에 등록된 토큰 정보를 조회합니다.
+* NHN Cloud Push 서버에 등록된 토큰 정보를 조회합니다.
 
 ### 토큰 정보 조회 예시
 ```java
@@ -170,7 +170,7 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 ```
 
 ## 토큰 해제
-* TOAST Push 서버에 등록된 토큰을 해제합니다. 해제된 토큰은 메시지 발송 대상에서 제외됩니다.
+* NHN Cloud Push 서버에 등록된 토큰을 해제합니다. 해제된 토큰은 메시지 발송 대상에서 제외됩니다.
 * `서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해야 합니다.`
 * `토큰이 해제되어도 단말기 상에 알림 권한은 회수되지 않습니다.`
 
@@ -684,9 +684,9 @@ ToastPush.removeAllUserTag(new UserTagCallback() {
 });
 ```
 
-## TOAST Push Class Reference
+## NHN Cloud Push Class Reference
 ### ToastPushConfiguration
-* TOAST Push를 초기화할 때 전달되는 Push 설정 정보입니다.
+* NHN Cloud Push를 초기화할 때 전달되는 Push 설정 정보입니다.
 
 ```java
 /* ToastPushConfiguration.java */

@@ -1,111 +1,108 @@
-## TOAST > User Guide for TOAST SDK > Getting Started > Unity
+## NHN Cloud > SDK User Guide > Getting Started > Unity
 
-## Supporting Environment
+## Supported Environment
 
 * Unity 5.5.0 or higher
 * Android 4.0.3 or higher
 * iOS 8.0 or higher
 * The latest version of XCode (version 9 or higher)
 
-## Configuration of TOAST SDK
+## NHN Cloud SDK Components
 
-TOAST SDK for Unity is configured as follows:
+NHN Cloud SDK for Unity consists of the following:
 
-* [TOAST Logger](./log-collector-unity) SDK
-* [TOAST IAP](./iap-unity) SDK
+* [Logger](./log-collector-unity) SDK
+* [IAP](./iap-unity) SDK
 
- TOAST SDK services can be selectively applied for your needs.
+You can selectively apply the required feature among the services provided by NHN Cloud SDK.
 
 | Unity package | Service |
 | --- | --- |
-| TOAST-Logger-UnityPlugin.unitypackage | TOAST Log & Crash |
-| TOAST-IAP-UnityPlugin.unitypackage | TOAST IAP |
+| TOAST-Logger-UnityPlugin.unitypackage | Log & Crash |
+| TOAST-IAP-UnityPlugin.unitypackage | IAP |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
 
 ### Structure of Unity Package
 
-TOAST SDK for Unity is structured with folders as follows:  
+NHN Cloud SDK for Unity is organized in the following folder structure:
 
 | Directory | Description | Unity package |
 |---|---|---|
-| Toast | Root folder of TOAST SDK | All |
-| Toast/Common | Common module folder of TOAST SDK | All |
-| Toast/Logger | Module folder of TOAST Logger | Logger, Sample |
-| Toast/IAP | Module folder of TOAST IAP | IAP, Sample |
+| Toast | Root folder of NHN Cloud SDK | All |
+| Toast/Common | Common module folder of SDK | All |
+| Toast/Logger | Module folder of Logger | Logger, Sample |
+| Toast/IAP | Module folder of IAP | IAP, Sample |
 | Toast/Sample | SDK sample folder | Sample |
 
-## Apply TOAST SDK to Unity Projects
+## Apply NHN Cloud SDK to Unity Projects
 
-Download TOAST SDK Unity Package from the following link:
-
-- [Download](../../../Download/#toast-sdk)
+Download NHN Cloud SDK Unity from the [Download](../../../Download/#toast-sdk) page.
 
 ### Import Unity Package
 
-Double-click the downloaded unity package and include it to the project.
+Double-click the downloaded Unity package to include it in the project.
 
-### Execute Sample
+### Run the Sample
 
-TOAST SDK for Unity has an additional sample unity package, and below describes how to execute the sample:
+NHN Cloud SDK for Unity has an additional Sample Unity Package. The following describes how to execute the sample:
 
-1. Double-click the sample unity package and include it to the project.
-2. Add Toast/Sample/Sample.unity from File > Build Settings, to Scenes in Build.
-3. Build in Android or iOS.
-4. Execute the build application.
+1. Double-click the Sample Unity Package to include it in the project.
+2. In **File > Build Settings**, add Toast/Sample/Sample.unity to **Scenes in Build**.
+3. Run the build in Android or iOS.
+4. Run the built application.
 
 > (Caution) Unity SDK currently supports Android and iOS only.
-> Cannot operate in Unity Editor (to be supported in the near future).
+> It does not operate properly in Unity Editor (to be supported).
 
-## For Android
+## Android Build Setup
 
 ### Unity Play Services Resolver
 
-* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다.
-* 이 라이브러리는 안드로이드 관련 라이브러리(예:AAR)에 대한 종속성을 자동으로 해결하여 Unity 프로젝트에 복사됩니다.
+* NHN Cloud SDK Unity (0.19.0~) version is released with the Unity Play Services Resolver library.
+* This library is copied into your Unity project, automatically resolving dependencies on Android-related libraries (e.g. AAR).
 
-#### Gradle 빌드 설정을 사용할 경우
+#### Using Gradle build settings
 
-* Gradle 빌드 설정은 아래에 있습니다.
-* 아래와 같이 옵션을 제거하고 받은 플러그인을 제거하고 사용하시면 됩니다 .
-	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > Android Resolver(Android 리졸버) > Settings(세팅)을 선택합니다.
-	2. 설정에서 "Enable Auto-Resolution"과 "Enable Resolution On Build" 옵션을 끕니다.
-	3. Assets/Plugins/Android에 있는 AAR파일을 제거합니다.
+* Gradle build settings are provided below.
+* Before using the settings, turn off options and remove the downloaded plugin as follows.
+    1. In Unity editor, select Assets > Play Services Resolver > Android Resolver > Settings.
+    2. In the settings, turn off "Enable Auto-Resolution" and "Enable Resolution On Build" options.
+    3. Remove the AAR file in Assets/Plugins/Android.
 
-#### AAR 라이브러리 제공
+#### Using the provided AAR libraries
 
-* AAR 라이브러리들을 압축파일로 첨부해서 제공하고 있습니다.
-* 아래와 같이 옵션을 제거하고 받은 플러그인을 제거하고 사용하시면 됩니다 .
-	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > Android Resolver(Android 리졸버) > Settings(세팅)을 선택합니다.
-	2. 설정에서 "Enable Auto-Resolution"과 "Enable Resolution On Build" 옵션을 끕니다.
-	3. Assets/Plugins/Android에 있는 AAR파일을 제거합니다.
+* AAR libraries are provided as an attached archive file.
+* Before using the libraries, turn off options and remove the downloaded plugin as follows.
+    1. In Unity editor, select Assets > Play Services Resolver > Android Resolver > Settings.
+    2. In the settings, turn off "Enable Auto-Resolution" and "Enable Resolution On Build" options.
+    3. Remove the AAR file in Assets/Plugins/Android.
 
-### Gradle Build Setting
+### Gradle Build Setup
 
-* TOAST SDK applies Gradle Build for Android builds.
+* NHN Cloud SDK uses Gradle build for Android builds.
 
-#### How to Set Gradle Builds
-1. Go to File > Build Settings > Android
-2. Select Gradle (New) for Build System
-3. Build
+#### How to Set Up Gradle Build
+1. Select **File > Build Settings > Android**.
+2. Select **Gradle (New)** for **Build System**.
+3. Run the Build.
+    - If a signing-related error occurs, turn on the Development Build option and proceed with build.
 
-> For signing-related errors, turn On the Development Build option and proceed with build.
-
-#### Create Gradle Template Files
-##### Feb.2017 or Later  
-- Go to Edit > Project Settings > Player and enable Custom Gradle Template for Publishing Settings.
-    - Select Gradle for Build System so as to enable the Custom Gradle Template toggle.
+#### Create a Gradle Template File
+##### 2017.2 or higher
+- Go to **Edit > Project Settings > Player** and enable Custom Gradle Template for Publishing Settings.
+    - Select Gradle for Build System to enable the Custom Gradle Template toggle.
 - With the option enabled, mainTemplate.gradle is created in the Assets/Plugins/Android folder.
 
-##### Before Feb.2017
+##### Lower than 2017.2
 - Copy the mainTemplate.gradle in the Unity installation folder to the Assets/Plugins/Android folder.
 
 > Windows: (Unity installation folder)\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates
 > macOS: (Unity installation folder)/PlaybackEngines/AndroidPlayer/Tools/GradleTemplates
 
-#### mainTemplate.gradle Setting
-- mavenCentral and Google repositories must be added to mainTemplate.gradle.
-- Each module has Android Unity plugins, and add a plugin of the module of choice to mainTemplate.gradle.
-    - To add Android Unity Plugins, see guides for each module.
+#### Set Up mainTemplate.gradle
+- Add mavenCentral and Google repositories to mainTemplate.gradle.
+- Each module has an Android Unity plugin. Add a plugin of the module that you want to use to mainTemplate.gradle.
+    - To add Android Unity Plugins, see the guide for each module.
 
 ```groovy
 allprojects {
@@ -122,52 +119,80 @@ allprojects {
 }
 ```
 
-#### For NDK-related Errors
-- After Gradle setting and build, following error may occur:
+### Proguard Setup
+- If you're using Android Unity Plugin 0.12.0 or higher, no additional setting is necessary.
+    - To apply Proguard, update Android Unity Plugin to 0.12.0 or higher.
+
+### Android Build Issue FAQ
+
+#### When library conflict occurs
+
+> **Build error log**
+> com.android.build.api.transform.TransformException:java.util.zip.ZipException: duplicate entry: android/support/annotation/AnimRes.class See the Console for details.
+
+- If the build error log as above is generated, it indicates library conflict.
+- NHN Cloud SDK was designed to have as few dependency libraries as possible, but it has a sole dependency on **com.android.support:support-annotations**.
+- If the support-annotations library exists as jar or aar file in the project, library conflict occurs.
+- To enable the build, check the version of support-annotations in jar or aar format and take action as follows.
+
+##### If the version of support-annotations is 27.1.1 or lower
+- Remove the file.
+
+##### If the version of support-annotations is higher than 27.1.1
+- Add an exclude rule as below.
+```groovy
+if (GradleVersion.current() >= GradleVersion.version("4.2")) {
+    implementation('com.toast.android:toast-unity-XXX:X.X.X') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+} else {
+    compile('com.toast.android:toast-unity-XXX:X.X.X') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+}
+```
+
+#### When an NDK-related error occurs
+- When you run the build after setting up Gradle, the following error may occur:
 > No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
-- This error occurs due to a high NDK version which does not support mips.
+- This error occurs because the NDK version is high and does not support mips.
     - The solution is to update Android Gradle Plugin to 3.2.1 or higher.
-    - For some Unity versions not supporting updates of Android Gradle Plugin, delete the ndk-bundle folder where Android SDK is installed.
-    - NDKs required for the IL2CPP build are recommended to be managed in a separate folder, not under Android SDK.
+    - Some Unity versions do not support update of Android Gradle Plugin. In this case, delete the ndk-bundle folder under the Android SDK installation folder.
+    - For easier version management, we recommend you manage NDKs required for the IL2CPP build in a separate folder, not under Android SDK.
 
-### Proguard Setting
-- For 0.12.0 or higher Android Unity Plugin users, no additional setting is necessary.
-    - To apply Proguard, update to 0.12.0 or a higher version.
-
-
-## For iOS
+## iOS Build Setup
 
 ### Modify Xcode Build Settings
-* To use TOAST SDK for iOS, add settings as below in Xcode.
+* To use NHN Cloud SDK in iOS, add settings as below in Xcode.
 
-#### Other Linker Flag
-* Add **-ObjC**, **-lc++**  to Other Linker Flag option.  
+#### Other Linker Flag option
+* Add **-ObjC**, **-lc++**  to Other Linker Flag option.
 
-#### Enable Bitcode 옵션
-* Set **NO** for Enable Bitcode.
+#### Enable Bitcode option
+* Set Enable Bitcode to **NO**.
 
 ### Unity Play Services Resolver
 
-* TOAST SDK Unity(0.19.0~) 버전에는 Unity Play Services Resolver 라이브러리와 함께 배포됩니다.
-* 이 라이브러리는 iOS CocoaPods을 사용하는 라이브러리에 대한 종속성을 자동으로 해결해줍니다.
+* NHN Cloud SDK Unity (0.19.0~) version is released with the Unity Play Services Resolver library.
+* This library automatically resolves the dependency on libraries that use iOS CocoaPods.
 
-> 참고) iOS 종속성은 CocoaPods를 사용하여 식별합니다. CocoaPods는 빌드 후 처리단계에서 실행됩니다.
+> Note) iOS dependency is identified using CocoaPods. CocoaPods is executed in the build post-processing steps.
 
-* Unity 5.6이상을 사용하는 경우 필요한 TOAST SDK native plugin을 포하하는 xcworkspace가 생성됩니다. 표준 xcode 프로젝트 대신 생성된 xcworkspace를 사용해야 합니다.
-* 이전 버전의 Unity를 사용할 때 종속성이 표준 Xcode 프로젝트에 포함됩니다.
+* If you're using Unity 5.6 or higher, xcworkspace including the necessary TOAST SDK native plugins is created. You must use the created xcworkspace instead of a standard Xcode project.
+* When you use the previous Unity version, dependency is included in the normal Xcode project.
 
-#### iOS framework 제공
+#### Using the provided iOS framework
 
-* iOS framework들을 압축파일로 첨부해서 제공하고 있습니다.
-* 아래와 같이 옵션을 제거하고 사용하시면 됩니다.
-	1. Unity 편집기에서 Assets(애셋) > Play Services Resolver(Play 서비스 리졸버) > iOS Resolver(iOS 리졸버) > Settings(세팅)을 선택합니다.
-	2. 설정에서 모든 옵션을 끕니다.
+* iOS frameworks are provided as an attached archive file.
+* Before using the frameworks, turn off options as follows.
+    1. In Unity editor, select Assets > Play Services Resolver > iOS Resolver > Settings.
+    2. Turn off all options in the settings.
 
-## Initialize TOAST SDK
+## Initialize NHN Cloud SDK
 
-Execute TOAST SDK initialization in one of the starts of components on the initial scene.
+To use NHN Cloud SDK, perform initialization in Start of one of components of the first Scene.
 
-> Other API calls do not operate properly, without initialization.
+> Without initialization, other API calls do not operate properly.
 
 ```csharp
 public class GameStartBehaviour : MonoBehaviour
@@ -179,12 +204,13 @@ public class GameStartBehaviour : MonoBehaviour
 }
 ```
 
-## Set UserID
+## Set User ID
 
-User ID can be set for TOAST SDK and it is for common usage at each module of TOAST SDK.
-Send such set user ID to a server, along with logs, whenever Log Sending API of TOAST Logger is called.
+User ID can be set for NHN Cloud SDK.
+The configured User ID is commonly used in each module of NHN Cloud SDK.
+Whenever Log Sending API of ToastLogger is called, the configured User ID is sent to a server along with logs.
 
-### Specifications for User ID Setting API  
+### Specification for User ID Setting API
 ```csharp
 ToastSdk.UserId = userId;
 ```
@@ -196,17 +222,17 @@ ToastSdk.UserId = "TOAST";
 
 ## Set Debug Mode
 
-To check logs within TOAST SDK, the debug mode can be set.
-To inquire of TOAST SDK, enable the debug mode for faster response.  
+To check internal logs of TOAST SDK, the debug mode can be set.
+When you make an inquiry regarding TOAST SDK, sending the logs with the debug mode enabled can be helpful for faster response.
 
-### Specifications for Debug Mode Setting API
+### Specification for Debug Mode Setting API
 ```csharp
 ToastSdk.DebugMode = true; // or false
 ```
 
-> (Caution) To release a game, the debug mode must be disabled.
+> [Caution] The debug mode must be disabled before releasing a game.
 
-## Use TOAST Service
+## Use NHN Cloud Service
 
-* User Guide for [TOAST Log & Crash](./log-collector-unity)
-* User Guide for [TOAST IAP](./iap-unity)
+* User Guide for [Log & Crash](./log-collector-unity)
+* User Guide for [IAP](./iap-unity)

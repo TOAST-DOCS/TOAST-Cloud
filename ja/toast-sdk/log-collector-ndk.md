@@ -1,4 +1,4 @@
-## NHN Cloud > NHN Cloud SDK使用ガイド > NHN Cloud Log & Crash > Android (NDK)
+## NHN Cloud > SDK使用ガイド > Cloud Log & Crash > Android (NDK)
 
 ## Android NDKクラッシュレポート
 

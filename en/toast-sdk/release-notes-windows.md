@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK User Guide > Release Notes > Windows C++
+## NHN Cloud > SDK User Guide > Release Notes > Windows C++
 ## 1.0.0.5 (2021.03.31)
 Download : [toast-sdk-windows-1.0.0.5.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/1.0.0/toast-sdk-windows-1.0.0.5.zip)
 * Bug fixes

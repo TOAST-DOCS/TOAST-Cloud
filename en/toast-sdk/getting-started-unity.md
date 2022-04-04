@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK User Guide > Getting Started > Unity
+## NHN Cloud > SDK User Guide > Getting Started > Unity
 
 ## Supported Environment
 
@@ -7,36 +7,36 @@
 * iOS 8.0 or higher
 * The latest version of XCode (version 9 or higher)
 
-## TOAST SDK Components
+## NHN Cloud SDK Components
 
-TOAST SDK for Unity consists of the following:
+NHN Cloud SDK for Unity consists of the following:
 
-* [TOAST Logger](./log-collector-unity) SDK
-* [TOAST IAP](./iap-unity) SDK
+* [Logger](./log-collector-unity) SDK
+* [IAP](./iap-unity) SDK
 
-You can selectively apply the required feature among the services provided by TOAST SDK.
+You can selectively apply the required feature among the services provided by NHN Cloud SDK.
 
 | Unity package | Service |
 | --- | --- |
-| TOAST-Logger-UnityPlugin.unitypackage | TOAST Log & Crash |
-| TOAST-IAP-UnityPlugin.unitypackage | TOAST IAP |
+| TOAST-Logger-UnityPlugin.unitypackage | Log & Crash |
+| TOAST-IAP-UnityPlugin.unitypackage | IAP |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
 
 ### Structure of Unity Package
 
-TOAST SDK for Unity is organized in the following folder structure:
+NHN Cloud SDK for Unity is organized in the following folder structure:
 
 | Directory | Description | Unity package |
 |---|---|---|
-| Toast | Root folder of TOAST SDK | All |
-| Toast/Common | Common module folder of TOAST SDK | All |
-| Toast/Logger | Module folder of TOAST Logger | Logger, Sample |
-| Toast/IAP | Module folder of TOAST IAP | IAP, Sample |
+| Toast | Root folder of NHN Cloud SDK | All |
+| Toast/Common | Common module folder of SDK | All |
+| Toast/Logger | Module folder of Logger | Logger, Sample |
+| Toast/IAP | Module folder of IAP | IAP, Sample |
 | Toast/Sample | SDK sample folder | Sample |
 
-## Apply TOAST SDK to Unity Projects
+## Apply NHN Cloud SDK to Unity Projects
 
-Download TOAST SDK Unity from the [Download](../../../Download/#toast-sdk) page.
+Download NHN Cloud SDK Unity from the [Download](../../../Download/#toast-sdk) page.
 
 ### Import Unity Package
 
@@ -44,7 +44,7 @@ Double-click the downloaded Unity package to include it in the project.
 
 ### Run the Sample
 
-TOAST SDK for Unity has an additional Sample Unity Package. The following describes how to execute the sample:
+NHN Cloud SDK for Unity has an additional Sample Unity Package. The following describes how to execute the sample:
 
 1. Double-click the Sample Unity Package to include it in the project.
 2. In **File > Build Settings**, add Toast/Sample/Sample.unity to **Scenes in Build**.
@@ -58,7 +58,7 @@ TOAST SDK for Unity has an additional Sample Unity Package. The following descri
 
 ### Unity Play Services Resolver
 
-* TOAST SDK Unity (0.19.0~) version is released with the Unity Play Services Resolver library.
+* NHN Cloud SDK Unity (0.19.0~) version is released with the Unity Play Services Resolver library.
 * This library is copied into your Unity project, automatically resolving dependencies on Android-related libraries (e.g. AAR).
 
 #### Using Gradle build settings
@@ -79,7 +79,7 @@ TOAST SDK for Unity has an additional Sample Unity Package. The following descri
 
 ### Gradle Build Setup
 
-* TOAST SDK uses Gradle build for Android builds.
+* NHN Cloud SDK uses Gradle build for Android builds.
 
 #### How to Set Up Gradle Build
 1. Select **File > Build Settings > Android**.
@@ -131,7 +131,7 @@ allprojects {
 > com.android.build.api.transform.TransformException:java.util.zip.ZipException: duplicate entry: android/support/annotation/AnimRes.class See the Console for details.
 
 - If the build error log as above is generated, it indicates library conflict.
-- TOAST SDK was designed to have as few dependency libraries as possible, but it has a sole dependency on **com.android.support:support-annotations**.
+- NHN Cloud SDK was designed to have as few dependency libraries as possible, but it has a sole dependency on **com.android.support:support-annotations**.
 - If the support-annotations library exists as jar or aar file in the project, library conflict occurs.
 - To enable the build, check the version of support-annotations in jar or aar format and take action as follows.
 
@@ -163,7 +163,7 @@ if (GradleVersion.current() >= GradleVersion.version("4.2")) {
 ## iOS Build Setup
 
 ### Modify Xcode Build Settings
-* To use TOAST SDK in iOS, add settings as below in Xcode.
+* To use NHN Cloud SDK in iOS, add settings as below in Xcode.
 
 #### Other Linker Flag option
 * Add **-ObjC**, **-lc++**  to Other Linker Flag option.
@@ -173,7 +173,7 @@ if (GradleVersion.current() >= GradleVersion.version("4.2")) {
 
 ### Unity Play Services Resolver
 
-* TOAST SDK Unity (0.19.0~) version is released with the Unity Play Services Resolver library.
+* NHN Cloud SDK Unity (0.19.0~) version is released with the Unity Play Services Resolver library.
 * This library automatically resolves the dependency on libraries that use iOS CocoaPods.
 
 > Note) iOS dependency is identified using CocoaPods. CocoaPods is executed in the build post-processing steps.
@@ -188,9 +188,9 @@ if (GradleVersion.current() >= GradleVersion.version("4.2")) {
     1. In Unity editor, select Assets > Play Services Resolver > iOS Resolver > Settings.
     2. Turn off all options in the settings.
 
-## Initialize TOAST SDK
+## Initialize NHN Cloud SDK
 
-To use TOAST SDK, perform initialization in Start of one of components of the first Scene.
+To use NHN Cloud SDK, perform initialization in Start of one of components of the first Scene.
 
 > Without initialization, other API calls do not operate properly.
 
@@ -206,8 +206,8 @@ public class GameStartBehaviour : MonoBehaviour
 
 ## Set User ID
 
-User ID can be set for Toast SDK.
-The configured User ID is commonly used in each module of TOAST SDK.
+User ID can be set for NHN Cloud SDK.
+The configured User ID is commonly used in each module of NHN Cloud SDK.
 Whenever Log Sending API of ToastLogger is called, the configured User ID is sent to a server along with logs.
 
 ### Specification for User ID Setting API
@@ -232,7 +232,7 @@ ToastSdk.DebugMode = true; // or false
 
 > [Caution] The debug mode must be disabled before releasing a game.
 
-## Use TOAST Service
+## Use NHN Cloud Service
 
-* User Guide for [TOAST Log & Crash](./log-collector-unity)
-* User Guide for [TOAST IAP](./iap-unity)
+* User Guide for [Log & Crash](./log-collector-unity)
+* User Guide for [IAP](./iap-unity)

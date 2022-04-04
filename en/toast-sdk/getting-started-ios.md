@@ -1,18 +1,18 @@
-## TOAST > TOAST SDK User Guide > Getting Started > iOS
+## NHN Cloud > SDK User Guide > Getting Started > iOS
 
 ## Supported Environment
 
 * iOS 9.0 or higher
 * The latest version of XCode (version 13 or higher)
 
-## TOAST SDK Components
+## NHN Cloud SDK Components
 
-* TOAST SDK for iOS consists of the following:
-    * [TOAST Logger](./log-collector-ios) SDK
-    * [TOAST In-app Purchase AppStore](./iap-ios) SDK
-    * [TOAST Push](./push-ios) SDK
+* NHN Cloud SDK for iOS consists of the following:
+    * [Logger](./log-collector-ios) SDK
+    * [In-app Purchase AppStore](./iap-ios) SDK
+    * [Push](./push-ios) SDK
 
-* You can selectively apply the required feature among the services provided by TOAST SDK.
+* You can selectively apply the required feature among the services provided by NHN Cloud SDK.
 
 | Service | Cocoapods Pod Name | Carthage | Framework | Dependency | Build Settings |
 | ------- | ------------------ | -------- | --------- | ---------- | -------------- |
@@ -22,9 +22,9 @@
 | TOAST IAP | ToastIAP |  | ToastIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
 | TOAST Push | ToastPush |  | ToastPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
 
-## Apply TOAST SDK to Xcode Projects
+## Apply NHN Cloud SDK to Xcode Projects
 
-### 1. Apply TOAST SDK with Cococapods
+### 1. Apply NHN Cloud SDK with Cococapods
 
 * Create a Podfile and add a pod for TOAST SDK.
 
@@ -37,9 +37,9 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apply TOAST SDK with Carthage
+### 2. Apply NHN Cloud SDK with Carthage
 
-* Create a Cartfile and add TOAST SDK.
+* Create a Cartfile and add NHN Cloud SDK.
 
 ```sh
 # Full URL
@@ -56,32 +56,32 @@ binary "https://nh.nu/toast"
 ![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage02.png)
 ![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage03.png)
 
-* To use TOAST SDK, you must perform **Framework setting** and **Project setting**.
+* To use NHN Cloud SDK, you must perform **Framework setting** and **Project setting**.
 
 > To use desired features among the services selectively, you need to choose only the required frameworks per service and add them to the project.
-> For details on required frameworks per service, see [TOAST SDK Components](./getting-started-ios/#toast-sdk).
+> For details on required frameworks per service, see [NHN Cloud SDK Components](./getting-started-ios/#toast-sdk).
 
-### 3. Apply TOAST SDK by Downloading Binaries
+### 3. Apply NHN Cloud SDK by Downloading Binaries
 
 #### Frameworks Setup
 
-* The entire iOS SDK can be downloaded from the [Downloads](../../../Download/#toast-sdk) page of TOAST.
+* The entire iOS SDK can be downloaded from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud.
 ![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder.png)
 
-* To use the Crash Report feature of TOAST Logger, CrashReporter.framework which is released along with the service, must be added to the project.
+* To use the Crash Report feature of Logger, CrashReporter.framework which is released along with the service, must be added to the project.
 ![import_external_framework](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_external_folder.png)
 
 * Check that the frameworks have been added to the project as shown below.
 ![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
 
-* To use the TOAST IAP feature, StoreKit.framework must be added.
+* To use the IAP feature, StoreKit.framework must be added.
 ![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
 
-* To use the TOAST Push feature, UserNotifications.framework must be added.
+* To use the Push feature, UserNotifications.framework must be added.
 ![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
 
 ##### xcframework
-* Using xcframework allows you to use ToastSDK even in arm simulator.
+* Using xcframework allows you to use NHN Cloud SDK even in arm simulator.
 ![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework01.png)
 ![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework02.png)
 
@@ -94,7 +94,7 @@ binary "https://nh.nu/toast"
 * If you directly downloaded or built **CrashReporter.framework**, the **Enable Bitcode** under **Build Settings** must be changed to **No**.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
-> CrashReporter.framework downloaded from the [Downloads](../../../Download/#toast-sdk) page of TOAST supports bitcode.
+> CrashReporter.framework downloaded from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud supports bitcode.
 
 ### Import Framework
 
@@ -109,9 +109,9 @@ binary "https://nh.nu/toast"
 
 ## Set User ID
 
-* User ID can be set for ToastSDK.
-* The configured User ID is commonly used in each module of TOAST SDK.
-* Whenever Log Sending API of Toast Logger is called, the configured User ID is sent to a server along with logs.
+* User ID can be set for NHN Cloud SDK.
+* The configured User ID is commonly used in each module of NHN Cloud SDK.
+* Whenever Log Sending API of NHN Cloud Logger is called, the configured User ID is sent to a server along with logs.
 
 ### Specification for User ID Setting API
 
@@ -126,8 +126,8 @@ binary "https://nh.nu/toast"
 ```
 ## Set Debug Mode
 
-* To check logs within TOAST SDK, the debug mode can be set.
-* When you make an inquiry regarding TOAST SDK, sending the logs with the debug mode enabled can be helpful for faster response.
+* To check logs within NHN Cloud SDK, the debug mode can be set.
+* When you make an inquiry regarding NHN Cloud SDK, sending the logs with the debug mode enabled can be helpful for faster response.
 
 ### Specification for Debug Mode API
 
@@ -144,8 +144,8 @@ binary "https://nh.nu/toast"
 
 > [Caution] The debug mode must be disabled before releasing an app.
 
-## Use TOAST Service
+## Use NHN Cloud Service
 
-* User Guide for [TOAST Log & Crash](./log-collector-ios)
-* User Guide for [TOAST In-app Purchase](./iap-ios)
-* User Guide for [TOAST Push](./push-ios)
+* User Guide for [Log & Crash](./log-collector-ios)
+* User Guide for [In-app Purchase](./iap-ios)
+* User Guide for [Push](./push-ios)

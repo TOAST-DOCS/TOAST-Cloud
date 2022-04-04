@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Log & Crash > Android
+## NHN Cloud > SDK 사용 가이드 > Log & Crash > Android
 
 ## 사전 준비
 
-1. [TOAST SDK](./getting-started-android)을 설치합니다.
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+1. [NHN Cloud SDK](./getting-started-android)을 설치합니다.
+2. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
 ## 라이브러리 설정
@@ -20,7 +20,7 @@ dependencies {
 }
 ```
 
-## TOAST Logger SDK 초기화
+## NHN Cloud Logger SDK 초기화
 
 - 초기화는 반드시 Application#onCreate에서 진행되어야 합니다.
 
@@ -39,7 +39,7 @@ ToastLogger.initialize(configuration);
 
 ## 로그 전송
 
-TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
+NHN Cloud Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ### 로그 전송 API 명세
 
@@ -129,7 +129,7 @@ ToastLogger.setLoggerListener(new ToastLoggerListener() {
 
 ## 크래시 로그 수집
 
-TOAST Logger는 앱에서 예상하지 못한 크래시가 발생한 경우 크래시 정보를 서버에 기록합니다.
+NHN Cloud Logger는 앱에서 예상하지 못한 크래시가 발생한 경우 크래시 정보를 서버에 기록합니다.
 
 ### 크래시 로그 수집 사용 여부 설정
 
@@ -150,7 +150,7 @@ ToastLogger.initialize(configuration);
 
 ### Handled Exception API 사용
 
-Android 플랫폼에서는 try/catch 구문에서 예외와 관련된 내용을 TOAST Logger의 Handled Exception API를 사용하여 전송할 수 있습니다.
+Android 플랫폼에서는 try/catch 구문에서 예외와 관련된 내용을 NHN Cloud Logger의 Handled Exception API를 사용하여 전송할 수 있습니다.
 이렇게 전송한 예외 로그는 콘솔에서 **Log & Crash Search > 앱 크래시 검색**을 클릭하고 **오류 유형**에서 **Handled**를 클릭해 조회할 수 있습니다.
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
@@ -213,7 +213,7 @@ Network Insights는 콘솔에 등록한 URL을 호출하여 지연 시간과 응
 
 Network Insights를 활성화하는 방법은 다음과 같습니다.
 
-1. [TOAST Console](https://console.toast.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
+1. [NHN Cloud Console](https://console.toast.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
 2. **설정** 메뉴를 클릭합니다.
 3. **로그 전송 설정** 탭을 클릭합니다.
 4. **Network Insights 로그**를 활성화합니다.
@@ -222,7 +222,7 @@ Network Insights를 활성화하는 방법은 다음과 같습니다.
 
 URL을 설정하는 방법은 다음과 같습니다.
 
-1. [TOAST Console](https://console.toast.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
+1. [NHN Cloud Console](https://console.toast.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
 2. **네트워크 인사이트** 메뉴를 클릭합니다.
 3. **URL 설정** 탭을 클릭합니다.
 4. 측정하려는 URL을 입력하고 **추가** 버튼을 클릭합니다.
