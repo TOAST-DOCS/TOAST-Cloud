@@ -1,5 +1,5 @@
 ## NHN Cloud > User Guide
-This document is the user guide of NHN Cloud, which is the cloud service of NHN.
+This document is the user guide of NHN Cloud, which is the cloud service of NHN Cloud.
 
 ## Join NHN Cloud
 You may choose a country to use services.  
@@ -9,7 +9,7 @@ Business members can join upon business information.
 NHN Cloud member information for management, as well as how to join are as follows: 
 
 ### Members management Information
-NHN Cloud members are classified into NHN Cloud Korea (NHN) and NHN Cloud Japan (NHN Japan) depending on who provides the service. 
+NHN Cloud members are classified into NHN Cloud Korea (NHN Cloud) and NHN Cloud Japan (NHN Japan) depending on who provides the service. 
 They are classified by the country of choice, and allowed to join when they agree with Terms of Services, as well as Privacy Policy set by regulations of each country.  
 
 #### Members of NHN Cloud Korea
