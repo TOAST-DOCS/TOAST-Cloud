@@ -222,8 +222,8 @@ ToastSdk.UserId = "TOAST";
 
 ## Set Debug Mode
 
-To check internal logs of TOAST SDK, the debug mode can be set.
-When you make an inquiry regarding TOAST SDK, sending the logs with the debug mode enabled can be helpful for faster response.
+To check internal logs of NHN Cloud SDK, the debug mode can be set.
+When you make an inquiry regarding NHN Cloud SDK, sending the logs with the debug mode enabled can be helpful for faster response.
 
 ### Specification for Debug Mode Setting API
 ```csharp

@@ -9,30 +9,30 @@
 
 Android用NHN Cloud SDKの構成は次のとおりです。
 
-* TOAST Common SDK
-* TOAST Core SDK
-* [TOAST Logger](./log-collector-android) SDK
-* [TOAST Native Crash Reporter](./log-collector-ndk) SDK
-* TOAST In-app Purchase Core SDK
-* [TOAST In-app Purchase Google Play Store](./iap-android) SDK
-* [TOAST In-app Purchase OneStore](./iap-android) SDK
-* TOAST Push Core SDK
-* [TOAST Push Firebase Cloud Messaging](./push-android) SDK
+* Common SDK
+* Core SDK
+* [Logger](./log-collector-android) SDK
+* [Native Crash Reporter](./log-collector-ndk) SDK
+* In-app Purchase Core SDK
+* [In-app Purchase Google Play Store](./iap-android) SDK
+* [In-app Purchase OneStore](./iap-android) SDK
+* Push Core SDK
+* [Push Firebase Cloud Messaging](./push-android) SDK
 
 NHN Cloud SDKが提供するサービスの中から、希望する機能を選択して適用できます。
 
 | Gradle Dependency | Service |
 | --- | --- |
-| com.toast.android:toast-common:0.29.2       | TOAST Common      |
-| com.toast.android:toast-core:0.29.2         | TOAST Core        |
-| com.toast.android:toast-logger:0.29.2       | TOAST Log & Crash |
-| com.toast.android:toast-crash-reporter-ndk:0.29.2       | TOAST Native Crash Reporter |
-| com.toast.android:toast-iap-core:0.29.2     | TOAST In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.29.2   | TOAST In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.29.2 | TOAST In-app Purchase <br>ONE store |
-| com.toast.android:toast-iap-galaxy:0.29.2 | TOAST In-app Purchase <br>Galaxy Store |
-| com.toast.android:toast-push-core:0.29.2    | TOAST Push Core   |
-| com.toast.android:toast-push-fcm:0.29.2    | TOAST Push <br>Firebase Cloud Messaging |
+| com.toast.android:toast-common:0.29.2       | Common      |
+| com.toast.android:toast-core:0.29.2         | Core        |
+| com.toast.android:toast-logger:0.29.2       | Log & Crash |
+| com.toast.android:toast-crash-reporter-ndk:0.29.2       | Native Crash Reporter |
+| com.toast.android:toast-iap-core:0.29.2     | In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.29.2   | In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.29.2 | In-app Purchase <br>ONE store |
+| com.toast.android:toast-iap-galaxy:0.29.2 | In-app Purchase <br>Galaxy Store |
+| com.toast.android:toast-push-core:0.29.2    | Push Core   |
+| com.toast.android:toast-push-fcm:0.29.2    | Push <br>Firebase Cloud Messaging |
 
 ## NHN Cloud SDKをAndroid Studioプロジェクトに適用
 
@@ -67,7 +67,7 @@ Android SDKは[Downloads](../../../Download/#toast-sdk)ページでダウンロ�
 ## UserID設定
 
 NHN Cloud SDKにUserIDを設定できます。
-設定したUserIDは、TOAST SDKの各モジュールで共通使用されます。
+設定したUserIDは、NHN Cloud SDKの各モジュールで共通使用されます。
 ToastLoggerのログ送信APIを呼び出すたびに、設定したUserIDをログと一緒にサーバーに送信します。
 
 ### UserID設定API仕様
@@ -99,8 +99,8 @@ ToastSdk.setUserId(null);
 
 ## デバッグモード設定
 
-TOAST SDKの内部ログを確認するために、デバッグモードを設定できます。
-TOAST SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
+NHN Cloud SDKの内部ログを確認するために、デバッグモードを設定できます。
+NHN Cloud SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
 
 ### デバッグモード設定API仕様
 

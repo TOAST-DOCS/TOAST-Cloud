@@ -15,7 +15,7 @@
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| NHN Cloud Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[ToastVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
+| Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[ToastVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## NHN Cloud Push SDK를 Xcode 프로젝트에 적용
@@ -212,13 +212,13 @@ options.soundEnabled = YES;         // 알림음 사용 설정 (default : YES)
 ## 토큰 등록
 
 * 발급받은 토큰 정보를 NHN Cloud 서버에 등록합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
-* 최초 실행일 경우 사용자에게 알림 허용 권환을 요청합니다. 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
+* 최초 실행일 경우 사용자에게 알림 허용 권한을 요청합니다. 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 
 ### 수신 동의 설정
 
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
-    * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
+    * [KISA 가이드 바로 가기](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * [ToastPushAgreement](./push-ios/#toastpushagreement) 객체에 사용자 알림 메시지 수신 동의 정보를 설정합니다.
 
@@ -585,7 +585,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### 초기화
 
-* VoIP 기능은 [Toast Push SDK 초기화](./push-ios/#toast-push-sdk)가 되어 있어야 사용가능합니다.
+* VoIP 기능은 [NHN Cloud Push SDK 초기화](./push-ios/#toast-push-sdk)가 되어 있어야 사용가능합니다.
 * VoIP 기능은 NHN Cloud Push SDK의 서브모듈로 별도 분리되어 있습니다.
 
 ### Delegate 설정
@@ -783,7 +783,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 ```
 
 ### ToastNotificationOptions
-* TOAST Push를 초기화할 때 전달되는 알림 설정 정보입니다.
+* NHN Cloud Push를 초기화할 때 전달되는 알림 설정 정보입니다.
 
 ``` objc
 @interface ToastNotificationOptions : NSObject

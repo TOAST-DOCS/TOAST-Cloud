@@ -51,7 +51,7 @@ end
 * **CrashReporter.framewor**를 직접 다운로드하거나 빌드한 경우에는 **Build Setting**의 **Enable Bitcode**의 값을 **NO**로 변경해야 합니다.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
-> TOAST의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
+> NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
 
 ## NHN Cloud Symbol Uploader 적용
 
@@ -156,7 +156,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### 로그 전송 API 사용 예
 
 ```objc
-[ToastLogger info:@"TOAST Log & Crash Search!"];
+[ToastLogger info:@"NHN Cloud Log & Crash Search!"];
 ```
 
 ## 사용자 정의 필드 설정

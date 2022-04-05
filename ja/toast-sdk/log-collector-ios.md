@@ -18,7 +18,7 @@
 | Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
-## Log & Crash Logger SDKをXcodeプロジェクトに適用
+## NHN Cloud Logger SDKをXcodeプロジェクトに適用
 
 ### 1. Cococapods適用
 
@@ -51,7 +51,7 @@ end
 * **CrashReporter.framewor**を直接ダウンロードするか、ビルドした場合は**Build Settings**の**Enable Bitcode**の値を**NO**に変更する必要があります。
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
-> TOASTの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。
+> NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。
 
 ## NHN Cloud Symbol Uploader適用
 
@@ -156,7 +156,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### ログ送信API使用例
 
 ```objc
-[ToastLogger info:@"TOAST Log & Crash Search!"];
+[ToastLogger info:@"NHN Cloud Log & Crash Search!"];
 ```
 
 ## ユーザー定義フィールド設定

@@ -119,7 +119,7 @@ dependencies {
 | iOS | Apple App Store | 消費性商品、購読商品, 消費性購読商品 |
 
 ## NHN Cloud IAP SDK初期化
-[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)を利用してTOAST IAPコンソールで発行されたAppKeyとストアコード([StoreCode](./iap-unity/#storecode))を設定します。
+[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)を利用してNHN Cloud IAPコンソールで発行されたAppKeyとストアコード([StoreCode](./iap-unity/#storecode))を設定します。
 初期化と同時に購入結果を受け取れるPurchaseUpdateListenerを登録します。
 
 > **初期化タイミング**
@@ -395,7 +395,7 @@ public class ProductDetailsResult
 | Property | Returns | Description |
 |---|---|---|
 | Products | List<IapProduct> | 使用可能な商品情報を返します。 |
-| InvalidProducts | List<IapProduct> | TOAST IAPコンソールに商品を登録しましたが、ストアに登録されていない商品を返します。 |
+| InvalidProducts | List<IapProduct> | NHN Cloud IAPコンソールに商品を登録しましたが、ストアに登録されていない商品を返します。 |
 
 
 ### IapProduct

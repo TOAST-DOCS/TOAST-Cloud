@@ -18,15 +18,15 @@
 | ------- | ------------------ | -------- | --------- | ---------- | -------------- |
 | All | ToastSDK | binary "https://nh.nu/toast" | ToastCore.framework<br>ToastCommon.framework<br>ToastLogger.framework<br>ToastIAP.framework<br>ToastPush.framework |  |  |
 | Mandatory | ToastCore<br>ToastCommon |  | ToastCore.framework<br>ToastCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
-| TOAST Log & Crash | ToastLogger |  | ToastLogger.framework | [External & Optional]<br>\* CrashReporter.framework (Toast) |  |
-| TOAST IAP | ToastIAP |  | ToastIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
-| TOAST Push | ToastPush |  | ToastPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
+| Log & Crash | ToastLogger |  | ToastLogger.framework | [External & Optional]<br>\* CrashReporter.framework (Toast) |  |
+| IAP | ToastIAP |  | ToastIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
+| Push | ToastPush |  | ToastPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
 
 ## NHN Cloud SDK를 Xcode 프로젝트에 적용
 
 ### 1. Cococapods를 사용해 NHN Cloud SDK 적용
 
-* Podfile을 생성하여 TOAST SDK에 대한 Pod을 추가합니다.
+* Podfile을 생성하여 NHN Cloud SDK에 대한 Pod을 추가합니다.
 
 ```podspec
 platform :ios, '9.0'
@@ -146,6 +146,6 @@ binary "https://nh.nu/toast"
 
 ## NHN Cloud Service 사용
 
-* [Cloud Log & Crash](./log-collector-ios) 사용 가이드
+* [Log & Crash](./log-collector-ios) 사용 가이드
 * [In-app Purchase](./iap-ios) 사용 가이드
 * [Push](./push-ios) 사용 가이드

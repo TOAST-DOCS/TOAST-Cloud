@@ -1,9 +1,9 @@
 ## NHN Cloud > SDK User Guide > Overview
 
-TOAST SDK is an integrated library that lets you conveniently apply various service libraries of [NHN Cloud](https://toast.com/). When you use TOAST services to develop an application, you can apply them all at once without applying each library of individual services.
-Although the SDK provides an integrated development environment for many services, you can save storage space by selecting only the required features. TOAST SDK is a library optimized for each programming language and platform of your choice, and provides familiar development environment.
+NHN Cloud SDK is an integrated library that lets you conveniently apply various service libraries of [NHN Cloud](https://toast.com/). When you use NHN Cloud services to develop an application, you can apply them all at once without applying each library of individual services.
+Although the SDK provides an integrated development environment for many services, you can save storage space by selecting only the required features. NHN Cloud SDK is a library optimized for each programming language and platform of your choice, and provides familiar development environment.
 
-> Currently, TOAST SDK provides development environment for iOS, Android, Unity3D, and Windows C++. More programming languages and platforms are to be supported in the future.
+> Currently, NHN Cloud SDK provides development environment for iOS, Android, Unity3D, and Windows C++. More programming languages and platforms are to be supported in the future.
 
 ## Supported Services
 

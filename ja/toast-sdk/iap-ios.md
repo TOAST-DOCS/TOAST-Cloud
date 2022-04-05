@@ -12,7 +12,7 @@
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
@@ -78,7 +78,7 @@ end
 ## NHN Cloud IAP SDK初期化
 
 * IAPコンソールで発行された[AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)を[ToastIAPConfiguration](./iap-ios/#toastiapconfiguration)オブジェクトに設定します。
-* TOAST IAPは初期化に[ToastIAPConfiguration](./iap-ios/#toastiapconfiguration)オブジェクトをパラメータとして使用します。
+* NHN Cloud IAPは初期化に[ToastIAPConfiguration](./iap-ios/#toastiapconfiguration)オブジェクトをパラメータとして使用します。
 
 ### 初期化API仕様
 
@@ -515,7 +515,7 @@ NS_SWIFT_NAME(didFailPurchase(productIdentifier:error:));
 
 ## ToastProduct
 
-TOAST IAPコンソールに登録された商品の情報を確認できます。
+NHN Cloud IAPコンソールに登録された商品の情報を確認できます。
 
 ```objc
 @interface ToastProduct : NSObject <NSCoding, NSCopying>

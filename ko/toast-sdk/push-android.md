@@ -78,7 +78,7 @@ apply plugin: 'com.google.gms.google-services'
 
 ## Push 초기화
 
-* ToastPush.initialize를 호출하여 TOAST Push를 초기화합니다.
+* ToastPush.initialize를 호출하여 NHN Cloud Push를 초기화합니다.
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
 * Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
@@ -117,7 +117,7 @@ public void onLogin(String userId) {
 
 ### 수신 동의 설정
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
-    * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
+    * [KISA 가이드 바로 가기](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 NHN Cloud Push 서버로 전송합니다.
 

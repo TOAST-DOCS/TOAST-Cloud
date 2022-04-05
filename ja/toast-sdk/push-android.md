@@ -76,7 +76,7 @@ apply plugin: 'com.google.gms.google-services'
 ```
 
 ## Push初期化
-* ToastPush.initializeを呼び出してTOAST Pushを初期化します。
+* ToastPush.initializeを呼び出してNHN Cloud Pushを初期化します。
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration)オブジェクトは、Push設定情報を含んでいます。
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration)オブジェクトは、ToastPushConfiguration.Builderを使用して作成できます。
 * Pushコンソールで発行されたAppKeyをToastPushConfiguration.newBuilderの引数に渡します。
@@ -115,7 +115,7 @@ public void onLogin(String userId) {
 
 ### 受信同意設定
 * 韓国情報通信網法規定(第50条から第50条の8)に従い、トークン登録時の通知/広告性/夜間広告性プッシュメッセージ受信に同意するかも一緒に入力を受けます。メッセージ送信時に受信に同意しているかを基準に自動的にフィルタリングします。
-    * [KISAガイドへ](https://spam.kisa.or.kr/spam/sub62.do)
+    * [KISAガイドへ](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [法令へ（韓国語）](http://www.law.go.kr/法令/情報通信網の利用促進および情報保護などに関する法律/%2820130218,11322,20120217%29/第50条)
 * ToastPushAgreementに受信同意の可否を設定し、トークン登録時にNHN Cloud Pushサーバーに転送します。
 

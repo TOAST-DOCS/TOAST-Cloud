@@ -255,7 +255,7 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 ## 크래시 로그 필터링하기
 
 - 유니티를 이용하다보면 수집을 원하지 않는 예외 로그 혹은 크래시 로그들이 수집될 수 있습니다.
-- TOAST Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
+- NHN Cloud Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
   - 해당 기능은 유니티 예외에 한정된 기능입니다.
 
 ### AddCrashFilter API 명세

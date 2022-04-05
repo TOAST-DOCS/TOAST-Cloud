@@ -255,7 +255,7 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 ## Filtering the Crash Log
 
 - While using Unity, exception logs or crash logs that you do not want to collect may be collected.
-- TOAST Logger supports the feature to filter out the crash logs that you do not want to collect.
+- NHN Cloud Logger supports the feature to filter out the crash logs that you do not want to collect.
   - This feature is specific to exceptions of Unity.
 
 ### Specification for AddCrashFilter API

@@ -18,15 +18,15 @@
 | ------- | ------------------ | -------- | --------- | ---------- | -------------- | 
 | All | ToastSDK | binary "https://nh.nu/toast" | ToastCore.framework<br>ToastCommon.framework<br>ToastLogger.framework<br>ToastIAP.framework<br>ToastPush.framework |  |  | 
 | Mandatory | ToastCore<br>ToastCommon |  | ToastCore.framework<br>ToastCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); | 
-| TOAST Log & Crash | ToastLogger |  | ToastLogger.framework | [External & Optional]<br>\* CrashReporter.framework (Toast) |  | 
-| TOAST IAP | ToastIAP |  | ToastIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  | 
-| TOAST Push | ToastPush |  | ToastPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  | 
+| Log & Crash | ToastLogger |  | ToastLogger.framework | [External & Optional]<br>\* CrashReporter.framework (Toast) |  | 
+| IAP | ToastIAP |  | ToastIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  | 
+| Push | ToastPush |  | ToastPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  | 
  
 ## NHN Cloud SDKをXcodeプロジェクトに適用 
  
 ### 1. Cococapodsを使用してNHN Cloud SDK適用 
  
-* Podfileを作成してTOAST SDKのPodを追加します。 
+* Podfileを作成してNHN Cloud SDKのPodを追加します。 
  
 ```podspec 
 platform :ios, '9.0' 
@@ -109,8 +109,8 @@ binary "https://nh.nu/toast"
  
 ## UserID設定 
  
-* NHN Cloud SDK SDKにユーザーIDを設定できます。 
-* 設定したUserIDは、NHN Cloud SDK SDKの各モジュールで共通使用されます。 
+* NHN Cloud SDKにユーザーIDを設定できます。 
+* 設定したUserIDは、NHN Cloud SDKの各モジュールで共通使用されます。 
 * NHN Cloud SDK Loggerのログ送信APIを呼び出すたびに、設定したユーザーIDをログと一緒にサーバーに送信します。 
  
 ### UserID API仕様 
@@ -126,8 +126,8 @@ binary "https://nh.nu/toast"
 ``` 
 ## デバッグモード設定 
  
-* NHN Cloud SDK SDKの内部ログを確認するために、デバッグモードを設定できます。 
-* NHN Cloud SDK SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。 
+* NHN Cloud SDKの内部ログを確認するために、デバッグモードを設定できます。 
+* NHN Cloud SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。 
  
 ### デバッグモード設定API仕様 
  

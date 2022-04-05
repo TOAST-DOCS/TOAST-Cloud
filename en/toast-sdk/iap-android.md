@@ -231,7 +231,7 @@ ToastIapConfiguration configuration =
 
 ## Initialize IAP
 
-- Call the ToastIap.initialize() method to initialize TOAST IAP.
+- Call the ToastIap.initialize() method to initialize NHN Cloud IAP.
 
 ### Specification for IAP Initialization API
 
@@ -388,7 +388,7 @@ public static void queryProductDetails(Activity activity,
  * Query the products available for purchase.
  * <p>
  * productDetails: List of products available for purchase
- * invalidProducts: Products registered in TOAST IAP console but not in a store
+ * invalidProducts: Products registered in NHN Cloud IAP console but not in a store
  */
 void queryProductDetails() {
     IapService.ProductDetailsResponseListener responseListener =
@@ -632,7 +632,7 @@ If grace period is enabled, subscriptions transition to grace period if there ar
 <span style="color:#e11d21">During grace period, the user should be able to access subscription content.</span>
 For further details, refer to [Grace period](https://developer.android.com/google/play/billing/subs#grace).
 
-> <span style="color:#e11d21">**Warning!)**</span> If a user recovers subscription by fixing the payment method, etc. during the grace period, auto-renewal is resumed. TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
+> <span style="color:#e11d21">**Warning!)**</span> If a user recovers subscription by fixing the payment method, etc. during the grace period, auto-renewal is resumed. NHN Cloud IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
 
 #### Ordinary subscription product (AUTO_RENEWABLE))
 
@@ -653,7 +653,7 @@ Account hold period is up to 30 days.
 If the payment method is not fixed before the account hold period ends, the subscription will be cancelled.
 For further details, refer to [Account hold](https://developer.android.com/google/play/billing/subs#account-hold).
 
-> <span style="color:#e11d21">**Warning!)**</span> If a user recovers subscription by fixing the payment method, etc. during the account hold period, auto-renewal is resumed. TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
+> <span style="color:#e11d21">**Warning!)**</span> If a user recovers subscription by fixing the payment method, etc. during the account hold period, auto-renewal is resumed. NHN Cloud IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
 
 #### Ordinary subscription product (AUTO_RENEWABLE))
 
@@ -672,7 +672,7 @@ The pause of subscription will take effect after the current subscription period
 When the pause period ends, subscription will automatically resume.
 For further details, refer to [Pause](https://developer.android.com/google/play/billing/subs#pause).
 
-> <span style="color:#e11d21">**Warning!)**</span> When the pause period is over, auto-renewal is resumed. TOAST IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
+> <span style="color:#e11d21">**Warning!)**</span> When the pause period is over, auto-renewal is resumed. NHN Cloud IAP notifies of the payment results regarding the renewed purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
 
 #### Ordinary subscription product (AUTO_RENEWABLE))
 
@@ -692,7 +692,7 @@ After a subscription has expired, the user can use the Google Play Subscription 
 For further details, refer to [Resubscribe](https://developer.android.com/google/play/billing/subs#resubscribe).
 
 > <span style="color:#e11d21">**Warning!)**</span> User data (IapPurchase.getDeveloperPayload()) cannot be used because purchases are not carried out in an in-app or game screen.
-> <span style="color:#e11d21">**Warning!)**</span> If resubscription was used to purchase a subscription product from the Google Play Store, the TOAST IAP notifies of the payment results regarding the purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
+> <span style="color:#e11d21">**Warning!)**</span> If resubscription was used to purchase a subscription product from the Google Play Store, the NHN Cloud IAP notifies of the payment results regarding the purchase through the purchase update listener (IapService.PurchaseUpdatedListener). The game or app must make sure that an unnecessary pop-up isn't exposed to the user by the purchase update listener during an important action.
 
 ## NHN Cloud IAP Class Reference
 

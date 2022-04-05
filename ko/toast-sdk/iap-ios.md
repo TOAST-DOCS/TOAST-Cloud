@@ -12,7 +12,7 @@ iOS용 NHN Cloud IAP SDK의 구성은 다음과 같습니다.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
@@ -78,7 +78,7 @@ end
 ## NHN Cloud IAP SDK 초기화
 
 * IAP 콘솔에서 발급받은 [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 [ToastIAPConfiguration](./iap-ios/#toastiapconfiguration) 객체에 설정합니다.
-* TOAST IAP는 초기화에 [ToastIAPConfiguration](./iap-ios/#toastiapconfiguration) 객체를 파라미터로 사용합니다.
+* NHN Cloud IAP는 초기화에 [ToastIAPConfiguration](./iap-ios/#toastiapconfiguration) 객체를 파라미터로 사용합니다.
 
 ### 초기화 API 명세
 
@@ -515,7 +515,7 @@ NS_SWIFT_NAME(didFailPurchase(productIdentifier:error:));
 
 ## ToastProduct
 
-TOAST IAP 콘솔에 등록된 상품의 정보를 확인할 수 있습니다.
+NHN Cloud IAP 콘솔에 등록된 상품의 정보를 확인할 수 있습니다.
 
 ```objc
 @interface ToastProduct : NSObject <NSCoding, NSCopying>

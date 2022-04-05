@@ -217,7 +217,7 @@ options.soundEnabled = YES;         // 通知音使用設定(default : YES)
 ### 受信同意設定
 
 * 韓国における情報通信網法の規定(第50条から第50条の8)に基づき、トークン登録時の通知/広報性/夜間の広報性Pushメッセージ受信に関して、同意するかも、同時に入力されます。メッセージの送信時に、ユーザーが受信同意をしているかを基準に自動的にフィルタリングします。
-    * [KISAガイドへのショートカット（韓国語）](https://spam.kisa.or.kr/spam/sub62.do)
+    * [KISAガイドへのショートカット（韓国語）](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [法令へ（韓国語）](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * [ToastPushAgreement](./push-ios/#toastpushagreement) オブジェクトにユーザー通知メッセージの同意情報を設定します。
 ### トークン登録、および受信同意設定API
@@ -582,7 +582,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### 初期化
 
-* VoIP機能は[Toast Push SDK 初期化](./push-ios/#toast-push-sdk)がされていなければ使用できません。
+* VoIP機能は[NHN Cloud Push SDK 初期化](./push-ios/#toast-push-sdk)がされていなければ使用できません。
 * VoIP機能はNHN Cloud Push SDKのサブモジュールで別途分離されています。
 
 ### Delegate設定

@@ -63,7 +63,7 @@ static void fatal(String message);
 ### ログ送信API使用例
 
 ```java
-ToastLogger.warn("TOAST Log & Crash Search!");
+ToastLogger.warn("NHN Cloud Log & Crash Search!");
 ```
 
 ## ユーザー定義フィールド設定

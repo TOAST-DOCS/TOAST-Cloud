@@ -15,7 +15,7 @@
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| NHN Cloud Push | ToastPush | ToastPush.framework | UserNotifications.framework <br/> <br/> [ToastVoIP] <br/> PushKit.framework <br/> CallKit.framework | |
+| Push | ToastPush | ToastPush.framework | UserNotifications.framework <br/> <br/> [ToastVoIP] <br/> PushKit.framework <br/> CallKit.framework | |
 | Mandatory   | ToastCore <br/> ToastCommon | ToastCore.framework <br/> ToastCommon.framework | | OTHER_LDFLAGS = ( <br/> "-ObjC", <br/> "-lc++" <br/> ); |
 
 ## Apply NHN Cloud Push SDK to Xcode Projects
@@ -218,7 +218,7 @@ options.soundEnabled = YES;         // Set the use of notification sound (defaul
 ### Agreement Setting
 
 * In accordance with the provisions of the Information and Communications Network Act (Articles 50 through 50-8), when registering a token, whether or not to receive notification/advertising/night-time advertising push messages must also be inputted. When sending a message, it is automatically filtered based on whether or not the user agreed to receive it.
-    * [Shortcut to KISA Guide](https://spam.kisa.or.kr/spam/sub62.do)
+    * [Shortcut to KISA Guide](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [Shortcut to the law](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * Set user notification message agreement information in the [ToastPushAgreement](./push-ios/#toastpushagreement) object.
 
@@ -585,7 +585,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### Initialization
 
-* VoIP function is available only when [Toast Push SDK initialization](./push-ios/#toast-push-sdk) has been performed.
+* VoIP function is available only when [NHN Cloud Push SDK initialization](./push-ios/#toast-push-sdk) has been performed.
 * The VoIP function is separated as a submodule of the Toast Push SDK.
 
 ### Delegate Setting
@@ -783,7 +783,7 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 ```
 
 ### ToastNotificationOptions
-* Notification setting information passed when TOAST Push is initialized.
+* Notification setting information passed when NHN Cloud Push is initialized.
 
 ``` objc
 @interface ToastNotificationOptions : NSObject

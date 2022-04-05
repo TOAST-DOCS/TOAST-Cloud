@@ -6,13 +6,13 @@
 2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP.
 
-## TOAST IAP Components
+## NHN Cloud IAP Components
 
-TOAST IAP SDK for iOS consists of the following:
+NHN Cloud IAP SDK for iOS consists of the following:
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| TOAST IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
+| IAP | ToastIAP | ToastIAP.framework | * StoreKit.framework<br/><br/>[Optional]<br/> * libsqlite3.tdb | |
 | Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
@@ -78,7 +78,7 @@ end
 ## Initialize NHN Cloud IAP SDK
 
 * Set the [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console on the [ToastIAPConfiguration](./iap-ios/#toastiapconfiguration) object.
-* TOAST IAP uses the [ToastIAPConfiguration](./iap-ios/#toastiapconfiguration) object as a parameter for initialization.
+* NHN Cloud IAP uses the [ToastIAPConfiguration](./iap-ios/#toastiapconfiguration) object as a parameter for initialization.
 
 ### Specification for Initialization API
 
@@ -516,7 +516,7 @@ Lets you check the product list information.
 
 ## ToastProduct
 
-Lets you check information of a product registered in TOAST IAP console.
+Lets you check information of a product registered in NHN Cloud IAP console.
 
 ```objc
 @interface ToastProduct : NSObject <NSCoding, NSCopying>

@@ -119,7 +119,7 @@ dependencies {
 | iOS | Apple App Store | Consumable products, subscription products, consumable subscription products |
 
 ## NHN Cloud IAP SDK Initialization
-Use [ToastIapConfiguration](./iap-unity/#toastiapconfiguration) to set the AppKey issued from the TOAST IAP console and store code ([StoreCode](./iap-unity/#storecode)).
+Use [ToastIapConfiguration](./iap-unity/#toastiapconfiguration) to set the AppKey issued from the NHN Cloud IAP console and store code ([StoreCode](./iap-unity/#storecode)).
 During initialization, register PurchaseUpdateListener that can receive the purchase result.
 
 > **Timing of Initialization**
@@ -396,7 +396,7 @@ public class ProductDetailsResult
 | Property | Returns | Description |
 |---|---|---|
 | Products | List<IapProduct> | Returns information of available products. |
-| InvalidProducts | List<IapProduct> | Returns products that are registered in TOAST IAP console but not registered in the store. |
+| InvalidProducts | List<IapProduct> | Returns products that are registered in NHN Cloud IAP console but not registered in the store. |
 
 
 ### IapProduct

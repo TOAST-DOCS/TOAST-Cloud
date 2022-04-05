@@ -255,7 +255,7 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 ## クラッシュログフィルタリングを行う
 
 - Unityを利用していると、収集を望まない例外ログやクラッシュログが収集されることがあります。
-- TOAST Loggerは、収集を望まないクラッシュログをフィルタリングする機能をサポートします。
+- NHN Cloud Loggerは、収集を望まないクラッシュログをフィルタリングする機能をサポートします。
   - この機能はUnityの例外に限定した機能です。
 
 ### AddCrashFilter APIの仕様

@@ -231,7 +231,7 @@ ToastIapConfiguration configuration =
 
 ## アプリ内決済の初期化
 
-- ToastIap.initialize()メソッドを呼び出してTOAST IAPを初期化します。
+- ToastIap.initialize()メソッドを呼び出してNHN Cloud IAPを初期化します。
 
 ### アプリ内決済初期化API仕様
 
@@ -388,7 +388,7 @@ public static void queryProductDetails(Activity activity,
  * 購入可能な商品を照会します。
  * <p>
  * productDetails ：購入可能な商品リスト
- * invalidProducts ：TOAST IAPコンソールに商品を登録しましたが、ストアに登録されていない商品
+ * invalidProducts ：NHN Cloud IAPコンソールに商品を登録しましたが、ストアに登録されていない商品
  */
 void queryProductDetails() {
     IapService.ProductDetailsResponseListener responseListener =
@@ -631,7 +631,7 @@ GooglePlayのサブスクリプションは、ライフサイクルの間にさ�
 <span style="color:#e11d21">猶予期間中、ユーザーは定期決済コンテンツにアクセスできなければいけません。</span>
 詳細については、[猶予期間](https://developer.android.com/google/play/billing/subs#grace)を参照してください。
 
-> <span style="color:#e11d21">**注意！)**</span> 猶予期間中に決済方法の修正などで復元されると、自動更新を再開します。TOAST IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
+> <span style="color:#e11d21">**注意！)**</span> 猶予期間中に決済方法の修正などで復元されると、自動更新を再開します。NHN Cloud IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
 
 #### 一般サブスクリプション商品(AUTO_RENEWABLE))
 
@@ -652,7 +652,7 @@ GooglePlayのサブスクリプションは、ライフサイクルの間にさ�
 アカウント保留期間が終了する前に決済方法を修正しなかった場合、キャンセル処理されます。
 詳細については、[アカウント保留](https://developer.android.com/google/play/billing/subs#account-hold)を参照してください。
 
-> <span style="color:#e11d21">**注意！)**</span> アカウント保留期間中に決済方法の修正などで復元されると、自動更新を再開します。TOAST IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
+> <span style="color:#e11d21">**注意！)**</span> アカウント保留期間中に決済方法の修正などで復元されると、自動更新を再開します。NHN Cloud IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
 
 #### 一般サブスクリプション商品(AUTO_RENEWABLE))
 
@@ -671,7 +671,7 @@ GooglePlayのサブスクリプションは、ライフサイクルの間にさ�
 一時停止期間が終了すると定期決済が自動的に再開されます。
 詳細については、[一時停止](https://developer.android.com/google/play/billing/subs#pause)を参照してください。
 
-> <span style="color:#e11d21">**注意！)**</span> 一時停止期間が終了すると自動更新を再開します。TOAST IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
+> <span style="color:#e11d21">**注意！)**</span> 一時停止期間が終了すると自動更新を再開します。NHN Cloud IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
 
 #### 一般サブスクリプション商品(AUTO_RENEWABLE))
 
@@ -691,7 +691,7 @@ GooglePlayのサブスクリプションは、ライフサイクルの間にさ�
 詳細については、[定期決済再申請](https://developer.android.com/google/play/billing/subs#resubscribe)を参照してください。
 
 > <span style="color:#e11d21">**注意！)**</span> アプリやゲーム内画面で購入が行われないため、ユーザーデータ(IapPurchase.getDeveloperPayload())を使用できません。
-> <span style="color:#e11d21">**注意！)**</span> Google Playストアにおいて、定期決済再申請でサブスクリプション商品を購入する場合、TOAST IAPは購入した決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
+> <span style="color:#e11d21">**注意！)**</span> Google Playストアにおいて、定期決済再申請でサブスクリプション商品を購入する場合、NHN Cloud IAPは購入した決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
 
 ## NHN Cloud IAP Class Reference
 

@@ -78,7 +78,7 @@ apply plugin: 'com.google.gms.google-services'
 
 ## Push Initialization
 
-* Initialize TOAST Push by calling ToastPush.initialize.
+* Initialize NHN Cloud Push by calling ToastPush.initialize.
 * A [ToastPushConfiguration](./push-android/#toastpushconfiguration) object contains push configuration information.
 * A [ToastPushConfiguration](./push-android/#toastpushconfiguration) object can be created using ToastPushConfiguration.Builder.
 * Pass the AppKey issued from the Push console as the parameter of ToastPushConfiguration.newBuilder.
@@ -117,7 +117,7 @@ public void onLogin(String userId) {
 
 ### Consent Setting
 * In accordance with the provisions of the Information and Communications Network Act (Articles 50 through 50-8), when registering a token, whether or not to receive notification/advertising/night-time advertising push messages must also be inputted. When sending a message, it is automatically filtered based on whether or not the user agreed to receive it.
-    * [Shortcut to KISA Guide](https://spam.kisa.or.kr/spam/sub62.do)
+    * [Shortcut to KISA Guide](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [Shortcut to the law](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * Set whether or not the user agreed to receive the push in ToastPushAgreementIt and send it to the NHN Cloud Push server when registering tokens.
 

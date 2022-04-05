@@ -63,7 +63,7 @@ static void fatal(String message);
 ### Usage Example of Log Sending API
 
 ```java
-ToastLogger.warn("TOAST Log & Crash Search!");
+ToastLogger.warn("NHN Cloud Log & Crash Search!");
 ```
 
 ## Set User-Defined Field
@@ -207,7 +207,7 @@ ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
 
 Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device).
 
-> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized.
+> With Network Insights enabled in console, it is requested for one time via URL registered in the console when NHN Cloud Logger is initialized.
 
 ### Enable Network Insights
 
