@@ -36,6 +36,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | System Monitoring | リージョン | O | O | O | O |
 |  | Virtual Desktop | リージョン | O | O |  |  |
+|  | Private Region | リージョン | - | - | - | - |
 | Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
 |  | NHN Container Registry (NCR) | リージョン | O | O |  |  |
 | Network | VPC | リージョン | O | O | O | O |
