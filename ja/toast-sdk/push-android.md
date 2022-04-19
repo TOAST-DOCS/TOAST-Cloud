@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.29.2’
+    implementation 'com.toast.android:toast-push-fcm:0.29.3’
     ...
 }
 ```
