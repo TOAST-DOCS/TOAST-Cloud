@@ -28,6 +28,21 @@ dependencies {
 }
 ```
 
+### ADM
+* TOAST ADM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-push-adm:0.29.3'
+    ...
+}
+```
+
 ## Firebase Cloud Messaging 설정
 
 ### 프로젝트 및 앱 추가
@@ -76,6 +91,41 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
+## Amazon Device Messageing 설정
+
+### 프로젝트 및 앱 추가
+
+* [Amazon Developer 콘솔](https://developer.amazon.com/settings/console/home)으로 이동합니다.
+* 상단 **Apps & Services**의 **My Apps**으로 이동합니다.
+* **Add New App** 에서 **Android**을 선택 후 앱 정보를 입력하여 앱을 등록합니다.
+* **Android 패키지 이름**, **앱 닉네임 (선택사항)** 을 입력하고 **앱 등록** 버튼을 클릭합니다.
+
+### API Key 추가
+
+* **My Apps**에서 등록한 앱을 선택하고 좌측 메뉴에서 **App Service**를 클릭합니다.
+* Device Messaging에서 **Security Profile**을 생성하고 등록합니다.
+* **View Security Profile**로 이동하여 **Android/Kindle Settings**메뉴에서 API Key를 생성합니다.
+* 생성한 API Key를 복사하여 프로젝트의 **assets** 폴더에 **api_key.txt** 파일로 저장합니다.
+* 자세한 사항은 [Amazon Device Messageing - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)을 참고하세요.
+
+### ADM SDK 다운로드
+
+* Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드 합니다.
+* 다운로드 받은 **amazon-device-messaging-1.1.0.jar** 파일을 프로젝트의 **libs** 폴더에 저장합니다.
+
+### Proguard 설정
+
+* Proguard를 사용하는 경우 <b>[proguard-rules.pro](http://proguard-rules.pro)</b>파일에 아래와 같이 추가합니다.
+
+```groovy
+-libraryjars libs
+-dontwarn com.amazon.device.messaging.**
+-keep class com.amazon.device.messaging.** { *; }
+-keep public class * extends com.amazon.device.messaging.ADMMessageReceiver
+-keep public class * extends com.amazon.device.messaging.ADMMessageHandlerBase
+-keep public class * extends com.amazon.device.messaging.ADMMessageHandlerJobBase
+```
+
 ## Push 초기화
 
 * ToastPush.initialize를 호출하여 TOAST Push를 초기화합니다.
@@ -91,8 +141,21 @@ ToastPushConfiguration configuration =
     ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 
-ToastPush.initialize(configuration);
+ToastPush.initialize(PushType.FCM, configuration);
 ```
+
+### ADM 초기화 예시
+
+```java
+ToastPushConfiguration configuration =
+    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+            .build();
+
+ToastPush.initialize(PushType.ADM, configuration);
+```
+* ToastPush.initialize(ToastPushConfiguration)는 Deprecated 되었습니다.
+    * ToastPush.initialize(ToastPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
+
 
 ## 서비스 로그인
 * TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
