@@ -1,5 +1,13 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > Android
 
+## 0.29.3 (April 26, 2022)
+
+### TOAST Push
+
+#### Added
+
+- ADM(Amazon Device Messaging) 추가
+
 ## 0.29.2 (March 29, 2022)
 
 ### TOAST Push
