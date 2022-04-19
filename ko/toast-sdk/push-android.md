@@ -153,8 +153,8 @@ ToastPushConfiguration configuration =
 
 ToastPush.initialize(PushType.ADM, configuration);
 ```
-* ToastPush.initialize(ToastPushConfiguration)는 Deprecated 되었습니다.
-    * ToastPush.initialize(ToastPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
+> ToastPush.initialize(ToastPushConfiguration)는 Deprecated 되었습니다.
+> ToastPush.initialize(ToastPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
 
 
 ## 서비스 로그인
