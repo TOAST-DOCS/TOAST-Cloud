@@ -61,7 +61,7 @@ end
 ## Changes for Xcode11/iOS13
 * Common
     * Starting with Xcode 11, projects using NHN Cloud SDK version lower than 0.18.0 have a problem where token registration fails on iOS 13.
-    * `If you are using Xcode 11 or higher, you must use the TOAST SDK version 0.18.0 or higher. (Xcode 11, iOS 13)`
+    * `If you are using Xcode 11 or higher, you must use the NHN Cloud SDK version 0.18.0 or higher. (Xcode 11, iOS 13)`
 * VoIP
     * In iOS 13 or higher, if you do not report to CallKit after receiving a VoIP message, the message reception becomes restricted. ([PushKit pushRegistry guide](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
     * The call reception screen using CallKit must be implemented in the app.
@@ -92,7 +92,7 @@ end
 ## Initialize NHN Cloud Push SDK
 
 * `The token registration and query features cannot be used without initialization.`
-* Set the Push AppKey issued from the Toast Cloud server in the [ToastPushConfiguration](./push-ios/#toastpushconfiguration) object.
+* Set the Push AppKey issued from the NHN Cloud server in the [ToastPushConfiguration](./push-ios/#toastpushconfiguration) object.
 * `In the development environment, the sandbox property of ToastPushConfiguration must be set to YES to receive the message sent using the development certificate.'
 
 ### Specification for Initialization API
@@ -345,7 +345,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 ### Received Metric Collection Setting
 
 * `Received metrics collection is supported in iOS 10.0+ or higher.`
-* Received metrics are automatically collected by the Toast Push SDK that was added to the Notification Service Extension.
+* Received metrics are automatically collected by the NHN Cloud Push SDK that was added to the Notification Service Extension.
 * To collect received metrics, you need to implement Notification Service Extension that inherits and implements ToastPushServiceExtension in the user application. (Refer to the [Notification Service Extension](./push-ios/#notification-service-extension) section below for how to add the Notification Service Extension)
 * To enable the collection of received metrics, an Appkey must be defined in the [NHN Cloud Push SDK initialization](./push-ios/#toast-push-sdk) in the Notification Service Extension constructor or **extension's info.plist file**.
 
@@ -397,7 +397,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 
 ### Opened Metric Collection Setting
 
-* Opened metrics are automatically collected from the Toast Push SDK that was added to the application.
+* Opened metrics are automatically collected from the Toast NHN Cloud SDK that was added to the application.
 * To enable the collection of opened metrics, an Appkey must be defined in the [NHN Cloud Push SDK initialization](./push-ios/#toast-push-sdk) or **application's info.plist file**.
 
 #### Example of opened metrics collection setting through info.plist definition
@@ -586,7 +586,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 ### Initialization
 
 * VoIP function is available only when [NHN Cloud Push SDK initialization](./push-ios/#toast-push-sdk) has been performed.
-* The VoIP function is separated as a submodule of the Toast Push SDK.
+* The VoIP function is separated as a submodule of the NHN Cloud Push SDK.
 
 ### Delegate Setting
 

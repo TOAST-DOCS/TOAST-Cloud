@@ -90,7 +90,7 @@ This service provides integrated mobile in-app payment (IAP) service.
 
 ## NHN Cloud Push
 
-TOAST Push SDK allows you to apply push notification service easily.
+NHN Cloud Push SDK allows you to apply push notification service easily.
 On console, you can send the notification message in a stable manner and check the result.
 
 ### User Guides

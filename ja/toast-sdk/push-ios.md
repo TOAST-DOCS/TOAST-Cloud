@@ -92,7 +92,7 @@ end
 ## NHN Cloud Push SDK初期化
 
 * `初期化をしない状態では、トークン登録、および照会機能を使用できません。`
-* [ToastPushConfiguration](./push-ios/#toastpushconfiguration) オブジェクトにTOASTクラウドサーバーで発行されたPush AppKeyを設定します。
+* [ToastPushConfiguration](./push-ios/#toastpushconfiguration) オブジェクトにNHN Cloudクラウドサーバーで発行されたPush AppKeyを設定します。
 * `開発環境では、必ずToastPushConfigurationのsandboxプロパティをYESに設定しないと、開発用認証書で送信したメッセージの受信ができません。`
 
 ### 初期化APIの明細

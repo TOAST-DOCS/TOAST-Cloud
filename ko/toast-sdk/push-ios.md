@@ -92,7 +92,7 @@ end
 ## NHN Cloud Push SDK 초기화
 
 * `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
-* [ToastPushConfiguration](./push-ios/#toastpushconfiguration) 객체에 토스트 클라우드 서버에서 발급받은 Push AppKey를 설정합니다.
+* [ToastPushConfiguration](./push-ios/#toastpushconfiguration) 객체에 NHN Cloud 서버에서 발급받은 Push AppKey를 설정합니다.
 * `개발환경에서는 반드시 ToastPushConfiguration의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
 
 ### 초기화 API 명세
