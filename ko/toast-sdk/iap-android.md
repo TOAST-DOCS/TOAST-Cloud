@@ -231,7 +231,7 @@ ToastIapConfiguration configuration =
 
 ## 인앱 결제 초기화
 
-- ToastIap.initialize() 메소드를 호출하여 NHN Cloud IAP를 초기화 합니다.
+- ToastIap.initialize() 메소드를 호출하여 NHN Cloud IAP를 초기화합니다.
 
 ### 인앱 결제 초기화 API 명세
 

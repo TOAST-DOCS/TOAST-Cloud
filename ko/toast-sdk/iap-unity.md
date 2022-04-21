@@ -119,7 +119,7 @@ dependencies {
 | iOS | Apple App Store | 소비성 상품, 구독 상품, 소비성 구독 상품 |
 
 ## NHN Cloud IAP SDK 초기화
-[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 NHN Cloud IAP 콘솔에서 발급받은 AppKey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
+[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 NHN Cloud IAP 콘솔에서 발급받은 Appkey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
 
 > **초기화 시점**
@@ -154,7 +154,7 @@ ToastIap.Initialize(new ToastIapConfiguration
 ```
 
 ## 서비스 로그인
-- NHN Cloud SDK에서 제공하는 모든 상품(IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
+- NHN Cloud SDK에서 제공하는 모든 상품(IAP, Log & Crash 등)은 하나의 동일한 사용자 아이디를 사용합니다.
     - ToastSdk.UserId 로 사용자 아이디를 설정할 수 있습니다.
     - 사용자 아이디를 설정하지 않은 경우, 결제가 진행되지 않습니다.
 - 서비스 로그인 단계에서 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능을 구현하는 것을 권장합니다.

@@ -56,10 +56,10 @@ binary "https://nh.nu/toast"
 ![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage02.png)
 ![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage03.png)
 
-* NHN Cloud SDK를 사용하기 위해 **프레임워크 설정**과 **프로젝트 설정**을 해야합니다.
+* NHN Cloud SDK를 사용하려면 **프레임워크 설정**과 **프로젝트 설정**을 해야합니다.
 
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
-> 서비스별로 필요한 Framework는 [NHN Cloud SDK의 구성](./getting-started-ios/#toast-sdk)에서 확인 할 수 있습니다. 
+> 서비스별로 필요한 Framework는 [NHN Cloud SDK의 구성](./getting-started-ios/#toast-sdk)에서 확인할 수 있습니다. 
 
 ### 3. 바이너리를 다운로드하여 NHN Cloud SDK 적용
 

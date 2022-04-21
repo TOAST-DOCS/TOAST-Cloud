@@ -1,7 +1,7 @@
 ## NHN Cloud > SDK 사용 가이드 > Log & Crash > iOS
 
 > [공지]
-> NHN Cloud SDK 0.13.0 부터 arm64e 아키텍처를 사용하는 기기(iPhone XS, XR, XS Max, iPad Pros 3rd)에서 발생한 크래시의 집계, 분석이 가능합니다.
+> NHN Cloud SDK 0.13.0부터 arm64e 아키텍처를 사용하는 기기(iPhone XS, XR, XS Max, iPad Pros 3rd)에서 발생한 크래시의 집계, 분석이 가능합니다.
 
 ## Prerequisites
 
@@ -110,7 +110,7 @@ OPTIONS:
 ### CrashReport 사용시 주의사항
 
 * arm64e 아키텍처를 사용하는 기기의 크래시 분석을 위해서는 NHN Cloud Logger와 함께 배포되는 PLCrashReporter를 사용해야 합니다.
-    * NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지가 아닌 다른곳에서 다운받거나 직접 빌드한 PLCrashReporter를 사용할 경우 arm64e 아키텍처를 사용하는 기기의 크래시 분석이 불가능합니다.
+    * NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지가 아닌 다른 곳에서 다운로드하거나 직접 빌드한 PLCrashReporter를 사용할 경우 arm64e 아키텍처를 사용하는 기기의 크래시 분석이 불가능합니다.
 
 ## NHN Cloud Logger SDK 초기화
 

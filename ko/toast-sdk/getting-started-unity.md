@@ -9,7 +9,7 @@
 
 ## NHN Cloud SDK의 구성
 
-Unity 용 NHN Cloud SDK의 구성은 다음과 같습니다.
+Unity용 NHN Cloud SDK의 구성은 다음과 같습니다.
 
 * [Logger](./log-collector-unity) SDK
 * [IAP](./iap-unity) SDK
