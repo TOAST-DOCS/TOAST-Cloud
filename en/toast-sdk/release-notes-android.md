@@ -1,6 +1,6 @@
 ## TOAST > TOAST SDK User Guide > Release Notes > Android
 
-## 0.29.3 (April 26, 2022)
+## 0.30.0 (April 26, 2022)
 
 ### TOAST Push
 
