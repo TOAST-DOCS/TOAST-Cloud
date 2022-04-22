@@ -36,6 +36,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
 |  | Virtual Desktop | Regional | O | O |  |  |
+|  | Private Region | Regional | - | - | - | - |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
