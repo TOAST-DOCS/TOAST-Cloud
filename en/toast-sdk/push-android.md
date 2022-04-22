@@ -95,27 +95,27 @@ apply plugin: 'com.google.gms.google-services'
 
 ### 프로젝트 및 앱 추가
 
-* [Amazon Developer 콘솔](https://developer.amazon.com/settings/console/home)으로 이동합니다.
-* 상단 **Apps & Services**의 **My Apps**으로 이동합니다.
-* **Add New App** 에서 **Android**을 선택 후 앱 정보를 입력하여 앱을 등록합니다.
-* **Android 패키지 이름**, **앱 닉네임 (선택사항)** 을 입력하고 **앱 등록** 버튼을 클릭합니다.
+* [Amazon Developer 콘솔](https://developer.amazon.com/settings/console/home)로 이동합니다.
+* 상단 **Apps & Services**의 **My Apps**로 이동합니다.
+* **Add New App**에서 **Android**를 선택 후 앱 정보를 입력하여 앱을 등록합니다.
+* **Android 패키지 이름**, **앱 닉네임 (선택사항)**을 입력하고 **앱 등록** 버튼을 클릭합니다.
 
 ### API Key 추가
 
 * **My Apps**에서 등록한 앱을 선택하고 좌측 메뉴에서 **App Service**를 클릭합니다.
 * Device Messaging에서 **Security Profile**을 생성하고 등록합니다.
-* **View Security Profile**로 이동하여 **Android/Kindle Settings**메뉴에서 API Key를 생성합니다.
+* **View Security Profile**로 이동하여 **Android/Kindle Settings** 메뉴에서 API Key를 생성합니다.
 * 생성한 API Key를 복사하여 프로젝트의 **assets** 폴더에 **api_key.txt** 파일로 저장합니다.
-* 자세한 사항은 [Amazon Device Messageing - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)을 참고하세요.
+* 자세한 사항은 [Amazon Device Messageing - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)를 참고하세요.
 
 ### ADM SDK 다운로드
 
-* Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드 합니다.
-* 다운로드 받은 **amazon-device-messaging-1.1.0.jar** 파일을 프로젝트의 **libs** 폴더에 저장합니다.
+* Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드합니다.
+* 다운로드한 **amazon-device-messaging-1.1.0.jar** 파일을 프로젝트의 **libs** 폴더에 저장합니다.
 
 ### Proguard 설정
 
-* Proguard를 사용하는 경우 <b>[proguard-rules.pro](http://proguard-rules.pro)</b>파일에 아래와 같이 추가합니다.
+* Proguard를 사용하는 경우 <b>[proguard-rules.pro](http://proguard-rules.pro)</b> 파일에 아래와 같이 추가합니다.
 
 ```groovy
 -libraryjars libs
