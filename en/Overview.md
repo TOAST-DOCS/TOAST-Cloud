@@ -4,49 +4,34 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 
 ## Features
 
-- Easy-to-Use Cloud Service for Anyone
-
-- Infrastructure and Platform Provided <br>for Your Concentrated Development
-
-- Enabled Only with a Click on Web Browser
-- Infrastructure and Platform Available at Reasonable Costs
+- It is an easy-to-use cloud service for anyone.
+- It provides convenient infrastructure and platform so that you can focus on development.
+- You can use the service with a simple click on a web browser.
+- You can use the infrastructure and platform at a reasonable cost.
 
 ### Composed of Various Services
 
-
 - We provide various services required for infrastructure, development, test, operations and technology support, and running a business.
-
 - From internal messenger and project management, to HR/finance/resource management, services are available for IT infrastructure of a company.
-
 - The urban data center, designed on its own technology and established in Pangyo, provides optimized operational efficiency.
-
 
 ### Platform-oriented Cloud
 
-
 - The cloud service is platform-oriented based on infrastructure.
-
 - Functions required to operate infrastructure, content, analysis, games, security, alarm messages, and other applications are provided.
 - Functions required to develop and operate applications are provided.
 - Companies are supported for easy development in the cloud environment.
 
 ### Reasonable Prices
 
-
 - You'll be charged by pay-as-you-go. (Some services are charged by basic flat rate.)
-
 - Contract-based pricing plan provides more discount benefits.
-
 - Complementary services are free-of-charge.
-
 
 ### Powerful Technology Support
 
-
 - Stable services are ensured with experienced IT operations accumulated for over a decade with Hangame, Bugs, and PAYCO services.
-
 - Consulting service is provided to establish plans to introduce the cloud environment.
-
 - Professional engineers are supported 24/7.
 
 ## Service Targets  
@@ -96,15 +81,13 @@ NHN Cloud Service is managed by the Release Policy as below.
     - This service may fade out depending on company policy.
 - BETA
     - The service is open to users before an official service version is released.
-
     - The service is named with BETA icon.
-
 - GA
     - Refers to the official version of service.
 
 
 | Classification | SLA Guarantees  | Service Continuity| Period |
-| :---: | :---: |:---: | :---: |
+| :---: | :---: | :---: | :---: |
 | ALPHA | X | △ | 3 Months |
 | BETA | X | O | 3 Months |
 | GA | O | O | - |
