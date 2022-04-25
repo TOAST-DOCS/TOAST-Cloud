@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK使用ガイド > リリースノート > Android
+## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
 ## 0.30.0 (2022. 04. 26.)
 

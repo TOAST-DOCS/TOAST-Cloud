@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK User Guide > Release Notes > Unity
+## NHN Cloud > SDK User Guide > Release Notes > Unity
 
 ## 0.25.2 (2022.03.29)
 

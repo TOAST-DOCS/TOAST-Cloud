@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK使用ガイド > TOAST IAP > Android
+## NHN Cloud > SDK使用ガイド > IAP > Android
 
 ## 事前準備
 
-1. [TOAST SDK](./getting-started-android)をインストールします。
-2. [TOASTコンソール](https://console.cloud.toast.com)で[IAPサービスを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)します。
+1. [NHN Cloud SDK](./getting-started-android)をインストールします。
+2. [NHN Cloudコンソール](https://console.cloud.toast.com)で[IAPサービスを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)します。
 3. IAPコンソールで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
 ## ストア別アプリ内決済ガイド
@@ -231,7 +231,7 @@ ToastIapConfiguration configuration =
 
 ## アプリ内決済の初期化
 
-- ToastIap.initialize()メソッドを呼び出してTOAST IAPを初期化します。
+- ToastIap.initialize()メソッドを呼び出してNHN Cloud IAPを初期化します。
 
 ### アプリ内決済初期化API仕様
 
@@ -276,7 +276,7 @@ public class MainApplication extends Application {
 
 ## サービスログイン
 
-* TOAST SDKで提供するすべてのサービス(IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
+* NHN Cloud SDKで提供するすべてのサービス(IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
     * [ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)でユーザーIDを設定できます。
     * ユーザーIDを設定していない場合、決済が行われません。
 * サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読商品照会機能を導入することを推奨します。
@@ -388,7 +388,7 @@ public static void queryProductDetails(Activity activity,
  * 購入可能な商品を照会します。
  * <p>
  * productDetails ：購入可能な商品リスト
- * invalidProducts ：TOAST IAPコンソールに商品を登録しましたが、ストアに登録されていない商品
+ * invalidProducts ：NHN Cloud IAPコンソールに商品を登録しましたが、ストアに登録されていない商品
  */
 void queryProductDetails() {
     IapService.ProductDetailsResponseListener responseListener =
@@ -411,7 +411,7 @@ void queryProductDetails() {
 
 ## 商品購入
 
-* TOAST IAPは、ストアに登録された商品IDを使用して商品を購入できます。
+* NHN Cloud IAPは、ストアに登録された商品IDを使用して商品を購入できます。
 * 商品情報はToastIap.queryProductDetails()メソッドを呼び出して返された[IapProductDetails](./iap-android/#iapproductdetails)オブジェクトに含まれています。
 * 商品IDは、IapProductDetails.getProductId()メソッドを使用して獲得できます。
 * 商品購入は[IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams)オブジェクトに商品IDを設定した後、ToastIap.launchPurchaseFlow()メソッドを通して購入ステップを開始します。
@@ -446,7 +446,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
 ```
 ##ユーザーデータ設定
 
-* TOAST IAPは、購入要求時にユーザー情報を追加することができます。
+* NHN Cloud IAPは、購入要求時にユーザー情報を追加することができます。
 *ユーザー情報は、IapPurchaseFlowParams.BuilderのsetDeveloperPayloadメソッドに設定します。
 *固定されたユーザー情報は、未消費決済照会とアクティブなサブスクリプション照会時に返される[IapPurchase](./iap-android / #iappurchase)のgetDeveloperPayloadメソッドで確認できます。
 
@@ -631,7 +631,7 @@ GooglePlayのサブスクリプションは、ライフサイクルの間にさ�
 <span style="color:#e11d21">猶予期間中、ユーザーは定期決済コンテンツにアクセスできなければいけません。</span>
 詳細については、[猶予期間](https://developer.android.com/google/play/billing/subs#grace)を参照してください。
 
-> <span style="color:#e11d21">**注意！)**</span> 猶予期間中に決済方法の修正などで復元されると、自動更新を再開します。TOAST IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
+> <span style="color:#e11d21">**注意！)**</span> 猶予期間中に決済方法の修正などで復元されると、自動更新を再開します。NHN Cloud IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
 
 #### 一般サブスクリプション商品(AUTO_RENEWABLE))
 
@@ -652,7 +652,7 @@ GooglePlayのサブスクリプションは、ライフサイクルの間にさ�
 アカウント保留期間が終了する前に決済方法を修正しなかった場合、キャンセル処理されます。
 詳細については、[アカウント保留](https://developer.android.com/google/play/billing/subs#account-hold)を参照してください。
 
-> <span style="color:#e11d21">**注意！)**</span> アカウント保留期間中に決済方法の修正などで復元されると、自動更新を再開します。TOAST IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
+> <span style="color:#e11d21">**注意！)**</span> アカウント保留期間中に決済方法の修正などで復元されると、自動更新を再開します。NHN Cloud IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
 
 #### 一般サブスクリプション商品(AUTO_RENEWABLE))
 
@@ -671,7 +671,7 @@ GooglePlayのサブスクリプションは、ライフサイクルの間にさ�
 一時停止期間が終了すると定期決済が自動的に再開されます。
 詳細については、[一時停止](https://developer.android.com/google/play/billing/subs#pause)を参照してください。
 
-> <span style="color:#e11d21">**注意！)**</span> 一時停止期間が終了すると自動更新を再開します。TOAST IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
+> <span style="color:#e11d21">**注意！)**</span> 一時停止期間が終了すると自動更新を再開します。NHN Cloud IAPは更新された決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
 
 #### 一般サブスクリプション商品(AUTO_RENEWABLE))
 
@@ -691,13 +691,13 @@ GooglePlayのサブスクリプションは、ライフサイクルの間にさ�
 詳細については、[定期決済再申請](https://developer.android.com/google/play/billing/subs#resubscribe)を参照してください。
 
 > <span style="color:#e11d21">**注意！)**</span> アプリやゲーム内画面で購入が行われないため、ユーザーデータ(IapPurchase.getDeveloperPayload())を使用できません。
-> <span style="color:#e11d21">**注意！)**</span> Google Playストアにおいて、定期決済再申請でサブスクリプション商品を購入する場合、TOAST IAPは購入した決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
+> <span style="color:#e11d21">**注意！)**</span> Google Playストアにおいて、定期決済再申請でサブスクリプション商品を購入する場合、NHN Cloud IAPは購入した決済の結果を決済アップデートリスナー(IapService.PurchaseUpdatedListener)を介して通知します。ゲームやアプリは重要な動作中に決済アップデートリスナーにより不要なポップアップがユーザーに表示されないように注意する必要があります。
 
-## TOAST IAP Class Reference
+## NHN Cloud IAP Class Reference
 
 ### ToastIapConfiguration
 
-TOAST IAP初期化メソッドのパラメータに使用されるアプリ内決済設定情報です。
+NHN Cloud IAP初期化メソッドのパラメータに使用されるアプリ内決済設定情報です。
 
 ```java
 /* ToastIapConfiguration.java */
@@ -822,7 +822,7 @@ public String getExpiryTime()
 ### IapProductDetails
 
 * IapProductDetailsオブジェクトで、商品詳細情報を確認できます。
-* TOAST IAPコンソールに登録された情報とGoogle PlayコンソールまたはONE store Developerに登録された詳細な情報を含みます。
+* NHN Cloud IAPコンソールに登録された情報とGoogle PlayコンソールまたはONE store Developerに登録された詳細な情報を含みます。
 
 ```java
 /* IapProductDetails.java */
@@ -857,7 +857,7 @@ public boolean isActivated()
 
 ### IapProduct
 
-* TOAST IAPコンソールに登録された簡略な情報を確認できます。
+* NHN Cloud IAPコンソールに登録された簡略な情報を確認できます。
 
 ```java
 /* IapProduct.java */

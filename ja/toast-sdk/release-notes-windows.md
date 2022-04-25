@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK使用ガイド > リリースノート > Windows C++
+## NHN Cloud > SDK使用ガイド > リリースノート > Windows C++
 
 ## 0.9.4.3 (2019.10.10)
 Download : [toast-sdk-windows-0.9.4.3.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.4/toast-sdk-windows-0.9.4.3.zip)

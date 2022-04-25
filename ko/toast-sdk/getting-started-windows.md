@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK 사용 가이드 > 시작하기 > Windows C++
+## NHN Cloud > SDK 사용 가이드 > 시작하기 > Windows C++
 
 ## 지원 환경
 * Windows 7
@@ -34,5 +34,5 @@ NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 NHN Cloud
 
 ## NHN Cloud Log & Crash Search Service 사용
 
-* [TOAST Log & Crash](./log-collector-windows) 사용 가이드
+* [Log & Crash](./log-collector-windows) 사용 가이드
 

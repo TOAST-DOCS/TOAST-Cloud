@@ -1,4 +1,4 @@
-## TOAST > User Guide for TOAST SDK > Release Notes > Unity
+## NHN Cloud > SDK User Guide > Release Notes > Unity
 
 ## 0.25.2 (2022.03.29)
 
@@ -7,8 +7,8 @@ Download : [toast-sdk-unity-0.25.2.zip](https://static.toastoven.net/toastcloud/
 ### Enhanced
 
 * TOAST IAP
-    * Apple 결제의 Sandbox 여부를 확인할 수 있는 프로퍼티 추가
-        * IapPurchase.IsSandboxPayment 프로퍼티가 추가되었습니다.
+    * Added a property to check whether Apple payment is sandbox payment or not
+        * Added the IapPurchase.IsSandboxPayment property.
 
 ### plugin version
 
@@ -31,7 +31,7 @@ Download : [toast-sdk-unity-0.25.0.zip](https://static.toastoven.net/toastcloud/
 ### Added
 
 * TOAST IAP
-    * 화웨이 스토어(Huawei App Gallery) 추가
+    * Added Huawei store (Huawei App Gallery) support
 
 ### plugin version
 
@@ -45,7 +45,7 @@ Download : [toast-sdk-unity-0.24.0.zip](https://static.toastoven.net/toastcloud/
 ### Added
 
 * TOAST IAP
-    * 아마존 스토어 추가
+    * Added Amazon Appstore support
 
 ### plugin version
 
@@ -104,7 +104,7 @@ Download : [toast-sdk-unity-0.23.0.zip](https://static.toastoven.net/toastcloud/
 ### Added
 
 * TOAST IAP
-    * 월 결제 한도 기능 추가
+    * Added a monthly payment limit feature
 
 ### plugin version
 
@@ -116,8 +116,8 @@ Download : [toast-sdk-unity-0.22.1.zip](https://static.toastoven.net/toastcloud/
 
 ### Fixed
 
-* Obsolete warning 대응
-    * Unity 2020.2.x 이상에서 UnityWebRequest 관련 메서드가 deprecated 되어 발생하는 warning 대응
+* Handled obsolete warning
+     * Handled a warning that occurs because UnityWebRequest-related methods have been deprecated in Unity 2020.2.x or higher
 
 ### plugin version
 
@@ -130,7 +130,7 @@ Download : [toast-sdk-unity-0.22.0.zip](https://static.toastoven.net/toastcloud/
 ### Added
 
 * TOAST IAP
-    * 구글 구독 상태 조회 API 추가
+    * Added Google subscription status query API
 
 ### plugin version
 
@@ -142,7 +142,7 @@ Download : [toast-sdk-unity-0.21.6.zip](https://static.toastoven.net/toastcloud/
 
 ### Fixed
 
-- File 충돌 버그 수정
+- Fixed a file crash bug
 
 ### plugin version
 
@@ -170,13 +170,13 @@ Download : [toast-sdk-unity-0.21.3.zip](https://static.toastoven.net/toastcloud/
 - Android : 0.24.2
 - iOS : 0.27.1
 
-### 공통
+### Common
 
 - Native Plugin Version Update
 
 ### Added
 
-- Galaxy Store 추가
+- Added Galaxy Store
 
 ## 0.21.2 (2020.10.05)
 Download : [toast-sdk-unity-0.21.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.21.2/toast-sdk-unity-0.21.2.zip)
@@ -207,7 +207,7 @@ Download : [toast-sdk-unity-0.20.3.zip](https://static.toastoven.net/toastcloud/
 
 ### Fixed
 
-- InstanceLogger 사용시, 암호화키를 호출하지 않는 버그 수정
+- Fixed a bug where encryption key is not called when using InstanceLogger
 
 ## 0.20.2 (2020.07.08)
 Download : [toast-sdk-unity-0.20.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.20.2/toast-sdk-unity-0.20.2.zip)
@@ -231,11 +231,11 @@ Download : [toast-sdk-unity-0.20.1.zip](https://static.toastoven.net/toastcloud/
 
 ### Fixed
 
-- 빈 파일이 생성된 경우, 복호화 에러 수정
+- Fixed decryption error when an empty file is created
 
 ### Enhanced
 
-- Windows 환경에서 C++ DLL 의존성 제거
+- Remove C++ DLL dependency in Windows environment
 
 
 ## 0.20.0 (2020.03.26)
@@ -248,37 +248,37 @@ Download : [toast-sdk-unity-0.20.0.zip](https://static.toastoven.net/toastcloud/
 
 ### Fixed
 
-- CrashFilter관련 처리에서 Exception 이슈
+- Fixed an exception issue in CrashFilter-related processing
 
 ## 0.19.1 (2020.01.23)
 Download : [toast-sdk-unity-0.19.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.19.1/toast-sdk-unity-0.19.1.zip)
 
 ### Fixed
 
-- OnHandleException 콜백 호출 이슈
+- Fixed an issue of OnHandleException callback call
 
 ## 0.19.0 (2019.12.27)
 Download : [toast-sdk-unity-0.19.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.19.0/toast-sdk-unity-0.19.0.zip)
 
 ### Added
 
-- Unity Play Services Resolver 적용
+- Applied Unity Play Services Resolver
 
 ## 0.18.0 (2019.12.06)
 Download : [toast-sdk-unity-0.18.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.18.0/toast-sdk-unity-0.18.0.zip)
 
 ### Common
 
-- iOS 0.20.1 framework 적용
-- Android 0.19.4 aar 포함해서 배포
-- Native Plugin (Windows, MacOS) 배포
+- Applied iOS 0.20.1 framework
+- Distributed with Android 0.19.4 aar included
+- Distributed Native Plugin (Windows, MacOS)
 
 ## 0.17.0 (2019.10.02)
 Download : [toast-sdk-unity-0.17.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.17.0/toast-sdk-unity-0.17.0.zip)
 
 ### TOAST IAP
 
-- 구매 요청시 사용자 데이터 설정 기능 추가
+- Added user data setting function when requesting a purchase
 
 ## 0.16.0 (2019.08.28)
 Download : [toast-sdk-unity-0.16.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.16.0/toast-sdk-unity-0.16.0.zip)
@@ -287,14 +287,14 @@ Download : [toast-sdk-unity-0.16.0.zip](https://static.toastoven.net/toastcloud/
 
 #### Changed
 
-- 소비성 구독 상품 추가
+- Add consumable subscription products
 
 ## 0.15.1 (2019.07.29)
 Download : [toast-sdk-unity-0.15.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.15.1/toast-sdk-unity-0.15.1.zip)
 
 ### Common
 
-- iOS 0.16.1 framework 적용
+- Applied iOS 0.16.1 framework
 
 ## 0.15.0 (2019.07.23)
 Download : [toast-sdk-unity-0.15.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.15.0/toast-sdk-unity-0.15.0.zip)
@@ -312,7 +312,7 @@ Download : [toast-sdk-unity-0.14.0.zip](https://static.toastoven.net/toastcloud/
 
 #### Added
 
-- Unity Standalone/WebGL 버전 추가
+- Added Unity Standalone/WebGL version
   - Logger
   - Instance Logger
 
@@ -320,7 +320,7 @@ Download : [toast-sdk-unity-0.14.0.zip](https://static.toastoven.net/toastcloud/
 
 #### Added
 
-- ActivedPurchases 추가
+- Added ActivatedPurchases
 
 ## 0.13.1 (2019.03.26)
 Download : [toast-sdk-unity-0.13.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.13.1/toast-sdk-unity-0.13.1.zip)

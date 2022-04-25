@@ -1,18 +1,18 @@
-## TOAST > TOAST SDK User Guide > TOAST Log & Crash > Android (NDK)
+## NHN Cloud > SDK User Guide > Log & Crash > Android (NDK)
 
 ## Android NDK Crash Report
 
 If your Android app includes native libraries, a simple build setup will enable full stack traces and detailed error reports for native code.
 
-* TOAST Crash Reporter for NDK is available on **TOAST 0.21.0 and higher**.
-* TOAST Crash Reporter for NDK sends crash logs through TOAST Logger.
-* It is recommended that you **use the same version** of TOAST Logger and TOAST Crash Reporter for NDK libraries.
-* TOAST Crash Reporter for NDK starts crash detection at TOAST Logger initialization.
-* TOAST Crash Reporter for NDK requires **NDK r17c or higher**.
+* NHN Cloud Crash Reporter for NDK is available on **NHN Cloud 0.21.0 and higher**.
+* NHN Cloud Crash Reporter for NDK sends crash logs through NHN Cloud Logger.
+* It is recommended that you **use the same version** of NHN Cloud Logger and NHN Cloud Crash Reporter for NDK libraries.
+* NHN Cloud Crash Reporter for NDK starts crash detection at NHN Cloud Logger initialization.
+* NHN Cloud Crash Reporter for NDK requires **NDK r17c or higher**.
 
 ### Prerequisites
 
-1. Install [TOAST Log & Crash](./log-collector-android).
+1. Install [NHN Cloud Log & Crash](./log-collector-android).
 
 ### Library Setting
 - Add dependencies in the app-level build.gradle.
@@ -24,11 +24,10 @@ repositories {
 
 dependencies {
     // ...
-
-    // Add the TOAST Logger dependency
+    // Add the NHN Cloud Logger dependency
     implementation 'com.toast.android:toast-logger:0.30.0'
 
-    // Add the TOAST Crash Reporter for NDK dependency
+    // Add the NHN Cloud Crash Reporter for NDK dependency
     implementation 'com.toast.android:toast-crash-reporter-ndk:0.30.0'
 }
 ```

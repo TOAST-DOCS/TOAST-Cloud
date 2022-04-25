@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST IAP > Unity
+## NHN Cloud > SDK 사용 가이드 > IAP > Unity
 
 ## Prerequisites
 
-1. [Install the TOAST SDK](./getting-started-unity)
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
+1. [Install the NHN Cloud SDK](./getting-started-unity)
+2. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
 3. IAP에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
 ## Android 설정
@@ -118,12 +118,12 @@ dependencies {
 | Android | One Store | 소비성 상품 |
 | iOS | Apple App Store | 소비성 상품, 구독 상품, 소비성 구독 상품 |
 
-## TOAST IAP SDK 초기화
-[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 TOAST IAP 콘솔에서 발급받은 AppKey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
+## NHN Cloud IAP SDK 초기화
+[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 NHN Cloud IAP 콘솔에서 발급받은 Appkey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
 
 > **초기화 시점**
-> TOAST IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며,
+> NHN Cloud IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며,
 > 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/#_4) 항목 참고)하기 전에 초기화를 해야 합니다.
 
 ### 초기화 API 명세
@@ -154,7 +154,7 @@ ToastIap.Initialize(new ToastIapConfiguration
 ```
 
 ## 서비스 로그인
-- TOAST SDK에서 제공하는 모든 상품(IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
+- NHN Cloud SDK에서 제공하는 모든 상품(IAP, Log & Crash 등)은 하나의 동일한 사용자 아이디를 사용합니다.
     - ToastSdk.UserId 로 사용자 아이디를 설정할 수 있습니다.
     - 사용자 아이디를 설정하지 않은 경우, 결제가 진행되지 않습니다.
 - 서비스 로그인 단계에서 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능을 구현하는 것을 권장합니다.
@@ -205,7 +205,7 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 ```
 
 ## 상품 구매
-- TOAST IAP는 스토어에 등록된 상품 ID를 사용하여 상품을 구매할 수 있습니다.
+- NHN Cloud IAP는 스토어에 등록된 상품 ID를 사용하여 상품을 구매할 수 있습니다.
     - 상품 ID는 상품 목록 조회시 획득할 수 있습니다.
 - 상품 구매 결과는 초기화시 등록한 PurchaseUpdateListener를 통해 반환됩니다.
     - 구매 결과는 [IapPurchase](./iap-unity/#iappurchase)를 반환합니다.
@@ -216,7 +216,7 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 public static void Purchase(string productId, developerPayload = "");
 ```
 
-- TOAST IAP는 구매 요청 시 developerPayload를 통해 사용자 정보를 추가할 수 있습니다.
+- NHN Cloud IAP는 구매 요청 시 developerPayload를 통해 사용자 정보를 추가할 수 있습니다.
 
 ### 상품 구매 예시
 
@@ -328,7 +328,7 @@ ToastIap.RequestSubscriptionsStatus(true, (result, subscriptionsStatus) =>
 });
 ```
 
-## TOAST IAP Class Reference
+## NHN Cloud IAP Class Reference
 
 ### ToastIapConfiguration
 
@@ -395,7 +395,7 @@ public class ProductDetailsResult
 | Property | Returns | Description |
 |---|---|---|
 | Products | List<IapProduct> | 사용가능한 상품 정보들을 반환합니다. |
-| InvalidProducts | List<IapProduct> | TOAST IAP 콘솔에 상품을 등록하였지만 스토어에 등록되지 않은 상품들을 반환합니다. |
+| InvalidProducts | List<IapProduct> | NHN Cloud IAP 콘솔에 상품을 등록하였지만 스토어에 등록되지 않은 상품들을 반환합니다. |
 
 
 ### IapProduct
