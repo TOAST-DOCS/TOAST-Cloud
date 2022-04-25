@@ -1,11 +1,11 @@
-## TOAST > TOAST SDK 使用ガイド > TOAST Log & Crash > Unity
+## NHN Cloud > SDK 使用ガイド > Log & Crash > Unity
 
 ## Prerequisites
 
-1. [Install the TOAST SDK](./getting-started-unity)
-2. [TOAST コンソール](https://console.cloud.toast.com)で、[Log & Crash Search を有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+1. [Install the NHN Cloud SDK](./getting-started-unity)
+2. [NHN Cloud コンソール](https://console.cloud.toast.com)で、[Log & Crash Search を有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
 3. Log & Crash Search で、[AppKey を確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
-4. [TOAST SDK を初期化](./getting-started-unity#toast-sdk_1)します。
+4. [NHN Cloud SDK を初期化](./getting-started-unity#toast-sdk_1)します。
 
 ## サポートプラットフォーム
 
@@ -66,13 +66,13 @@ dependencies {
 - **Slow and Safe**値を推奨します。
   - Runtime C# Crash ログを収集したい場合、Slow and Safe に設定する必要があります。
 
-## TOAST Logger namespace
+## NHN Cloud Logger namespace
 
 ```csharp
 using Toast.Logger;
 ```
 
-## TOAST Logger SDK 初期化
+## NHN Cloud Logger SDK 初期化
 
 Log & Crash Search で発行された AppKey を ProjectKey に設定します。
 
@@ -87,7 +87,7 @@ ToastLogger.Initialize(loggerConfiguration);
 
 ## ログを送信する
 
-TOAST Logger は、5 つのレベルのログを送信できます。
+NHN Cloud Logger は、5 つのレベルのログを送信できます。
 ユーザーフィールドを追加して送ることもできます。
 
 ### ログ送信 API 仕様
@@ -117,7 +117,7 @@ ToastLogger.Fatal(message, userFields);
 ### ログ送信 API 使用例
 
 ```csharp
-ToastLogger.Debug("TOAST Log & Crash Search!", new Dictionary<string, string>
+ToastLogger.Debug("NHN Cloud Log & Crash Search!", new Dictionary<string, string>
 {
     { "Scene", "Main" }
 });
@@ -198,7 +198,7 @@ ToastLogger.SetLoggerListener(new SampleLoggerListener());
 
 ## クラッシュログの収集
 
-TOAST Logger では、Unity のクラッシュを大きく 2 つに分類します。
+NHN Cloud Logger では、Unity のクラッシュを大きく 2 つに分類します。
 
 - ネイティブプラットフォームで発生したクラッシュ(アプリが強制終了する)
 - Unity で発生した予期せぬ例外(アプリが強制終了しない)
@@ -255,7 +255,7 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 ## クラッシュログフィルタリングを行う
 
 - Unityを利用していると、収集を望まない例外ログやクラッシュログが収集されることがあります。
-- TOAST Loggerは、収集を望まないクラッシュログをフィルタリングする機能をサポートします。
+- NHN Cloud Loggerは、収集を望まないクラッシュログをフィルタリングする機能をサポートします。
   - この機能はUnityの例外に限定した機能です。
 
 ### AddCrashFilter APIの仕様
@@ -285,7 +285,7 @@ ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("Unit
 
 ## Handled Exception 送信
 
-TOAST Logger は、一般/クラッシュログだけでなく、try/catch 構文で例外に関連する内容を Report API を使用して送信できます。
+NHN Cloud Logger は、一般/クラッシュログだけでなく、try/catch 構文で例外に関連する内容を Report API を使用して送信できます。
 こうして送信した例外ログは、"Log & Crash Search コンソール" > "App Crash Search タブ"のエラータイプで"Handled"でフィルタリングして照会できます。
 Log & Crash コンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
 
@@ -314,18 +314,18 @@ try
 
 Network Insights は、コンソールに登録した URL を呼び出して、遅延時間およびレスポンス値を測定します。これを活用して複数の国(デバイスの国コード基準)での遅延時間とレスポンス値を測定できます。
 
-> コンソールから Network Insights 機能を有効にすると、TOAST Logger 初期化時に、コンソールに登録した URL で 1 回要請します。
+> コンソールから Network Insights 機能を有効にすると、NHN Cloud Logger 初期化時に、コンソールに登録した URL で 1 回要請します。
 
 ### Network Insights 有効化
 
-1. [TOAST Console](https://console.toast.com/)で、[Log & Crash Search]サービスを選択します。
+1. [NHN Cloud Console](https://console.toast.com/)で、[Log & Crash Search]サービスを選択します。
 2. [設定]メニューを選択します。
 3. [ログ送信設定]タブを選択します。
 4. "Network Insights ログ"を有効にします。
 
 ### URL 設定
 
-1. [TOAST Console](https://console.toast.com/)で、[Log & Crash Search]サービスを選択します。
+1. [NHN Cloud Console](https://console.toast.com/)で、[Log & Crash Search]サービスを選択します。
 2. [ネットワークインサイト]メニューを選択します。
 3. [URL 設定]タブを選択します。
 4. 測定する URL を入力後、[追加]ボタンをクリックします。

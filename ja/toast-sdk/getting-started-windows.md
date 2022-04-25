@@ -1,13 +1,13 @@
-## TOAST > TOAST SDK使用ガイド > 開始する > Windows C++ 
+## NHN Cloud > SDK使用ガイド > 開始する > Windows C++ 
  
 ## サポート環境 
  
 * Windows 7 
 * Windows 10 
  
-## TOAST SDKの構成 
+## NHN Cloud SDKの構成 
  
-Windows C++用TOAST SDKの構成は次のとおりです。 
+Windows C++用NHN Cloud SDKの構成は次のとおりです。 
  
 | Directory | Description | 
 |---|---| 
@@ -17,9 +17,9 @@ Windows C++用TOAST SDKの構成は次のとおりです。
 | windows-sdk/lib64/ | C++ Windows 64bitライブラリ | 
 | windows-sdk-sample/ | サンプルプロジェクト | 
  
-## TOAST SDKをVisual Studioプロジェクトに適用する 
+## NHN Cloud SDKをVisual Studioプロジェクトに適用する 
  
-TOASTの[Downloads](../../../Download/#toast-sdk)ページでTOAST Windows C++ SDKをダウンロードします。 
+NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページでNHN Cloud Windows C++ SDKをダウンロードします。 
  
 ### ライブラリを含める 
  
@@ -32,4 +32,4 @@ TOASTの[Downloads](../../../Download/#toast-sdk)ページでTOAST Windows C++ S
  
 ## TOAST Serviceの使用 
  
-* [TOAST Log & Crash](./log-collector-windows)使用ガイド 
+* [Log & Crash](./log-collector-windows)使用ガイド 

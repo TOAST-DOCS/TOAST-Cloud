@@ -1,4 +1,4 @@
-## TOAST > TOAST SDK User Guide > Getting Started > Windows C++
+## NHN Cloud > SDK User Guide > Getting Started > Windows C++
 
 ## Supported Environment
 * Windows 7
@@ -34,5 +34,5 @@ For reference: [https://msdn.microsoft.com/ko-kr/library/ms235636.aspx](https://
 
 ## Use NHN Cloud Log & Crash Search Service
 
-* User Guide for [TOAST Log & Crash](./log-collector-windows)
+* User Guide for [Log & Crash](./log-collector-windows)
 
