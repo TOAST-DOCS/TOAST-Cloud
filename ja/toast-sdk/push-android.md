@@ -29,7 +29,7 @@ dependencies {
 ```
 
 ### ADM
-* TOAST ADM Pushを使用するために、以下のようにbuild.gradleに依存関係を追加します。
+* NHN Cloud ADM Pushを使用するために、以下のようにbuild.gradleに依存関係を追加します。
 
 ```groovy
 repositories {
