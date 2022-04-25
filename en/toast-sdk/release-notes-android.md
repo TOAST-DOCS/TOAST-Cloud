@@ -6,7 +6,7 @@
 
 #### Added
 
-- ADM(Amazon Device Messaging) 추가
+- Added ADM (Amazon Device Messaging)
 
 ## 0.29.2 (March 29, 2022)
 

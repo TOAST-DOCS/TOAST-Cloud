@@ -14,7 +14,7 @@
 ## Library Setting
 
 ### FCM
-* To use NHN Cloud FCM Push, add dependency to build.gradle as below.
+* To use NHN Cloud FCM Push, add a dependency to build.gradle as follows.
 
 ```groovy
 repositories {
@@ -29,7 +29,7 @@ dependencies {
 ```
 
 ### ADM
-* TOAST ADM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+* To use NHN Cloud ADM Push, add a dependency to build.gradle as follows.
 
 ```groovy
 repositories {
@@ -45,7 +45,7 @@ dependencies {
 
 ## Firebase Cloud Messaging Settings
 
-### Add projects and apps
+### Add the project and app
 
 * Create a project in [Firebase console](https://console.firebase.google.com/?hl=en).
 * Go to **Project Settings** by clicking the gear button at the top of the console.
@@ -57,7 +57,7 @@ dependencies {
 
 ### Set Up build.gradle
 #### Root-level build.gradle
-* Add code below to root-level build.gradle.
+* Add the following code to root-level build.gradle.
 
 ```groovy
 buildscript {
@@ -78,7 +78,7 @@ allprojects {
 ```
 
 #### App module's build.gradle
-* Add the code below to your app module's build.gradle.
+* Add the following code to your app module's build.gradle.
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -91,31 +91,31 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
-## Amazon Device Messageing 설정
+## Amazon Device Messaging Settings
 
-### 프로젝트 및 앱 추가
+### Add the project and app
 
-* [Amazon Developer 콘솔](https://developer.amazon.com/settings/console/home)로 이동합니다.
-* 상단 **Apps & Services**의 **My Apps**로 이동합니다.
-* **Add New App**에서 **Android**를 선택 후 앱 정보를 입력하여 앱을 등록합니다.
-* **Android 패키지 이름**, **앱 닉네임 (선택사항)**을 입력하고 **앱 등록** 버튼을 클릭합니다.
+* Go to the [Amazon Developer Console](https://developer.amazon.com/settings/console/home).
+* Go to **My Apps** in **Apps & Services** at the top.
+* In **Add New App**, select **Android** and enter the app information to register the app.
+* Enter **Android Package Name**, **App Nickname (optional)** and click the **Register App** button.
 
-### API Key 추가
+### Add the API key
 
-* **My Apps**에서 등록한 앱을 선택하고 좌측 메뉴에서 **App Service**를 클릭합니다.
-* Device Messaging에서 **Security Profile**을 생성하고 등록합니다.
-* **View Security Profile**로 이동하여 **Android/Kindle Settings** 메뉴에서 API Key를 생성합니다.
-* 생성한 API Key를 복사하여 프로젝트의 **assets** 폴더에 **api_key.txt** 파일로 저장합니다.
-* 자세한 사항은 [Amazon Device Messageing - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)를 참고하세요.
+* Select the registered app in **My Apps** and click **App Service** in the left menu.
+* Create and register **Security Profile** in Device Messaging.
+* Go to **View Security Profile** and generate API Key from the **Android/Kindle Settings** menu.
+* Copy the generated API Key and save it as **api_key.txt** file in the **assets** folder of your project.
+* For details, refer to [Amazon Device Messaging - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html).
 
-### ADM SDK 다운로드
+### Download the ADM SDK
 
-* Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드합니다.
-* 다운로드한 **amazon-device-messaging-1.1.0.jar** 파일을 프로젝트의 **libs** 폴더에 저장합니다.
+* Download the ADM SDK from [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm) of the Amazon Developer site.
+* Save the downloaded **amazon-device-messaging-1.1.0.jar** file to the **libs** folder of your project.
 
-### Proguard 설정
+### Proguard settings
 
-* Proguard를 사용하는 경우 <b>[proguard-rules.pro](http://proguard-rules.pro)</b> 파일에 아래와 같이 추가합니다.
+* If you're using Proguard, add the following to the <b>[proguard-rules.pro](http://proguard-rules.pro)</b> file.
 
 ```groovy
 -libraryjars libs
@@ -144,7 +144,7 @@ ToastPushConfiguration configuration =
 ToastPush.initialize(PushType.FCM, configuration);
 ```
 
-### ADM 초기화 예시
+### ADM initialization example
 
 ```java
 ToastPushConfiguration configuration =
@@ -154,8 +154,8 @@ ToastPushConfiguration configuration =
 ToastPush.initialize(PushType.ADM, configuration);
 ```
 
-> ToastPush.initialize(ToastPushConfiguration)는 Deprecated 되었습니다.
-> ToastPush.initialize(ToastPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
+> ToastPush.initialize(ToastPushConfiguration) has been deprecated.
+> PushType is automatically set to FCM when initialized using ToastPush.initialize(ToastPushConfiguration).
 
 ## Service Login
 * All products provided by NHN Cloud SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
