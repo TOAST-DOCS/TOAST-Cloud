@@ -29,6 +29,7 @@ dependencies {
 ```
 
 ### ADM
+
 * To use NHN Cloud ADM Push, add a dependency to build.gradle as follows.
 
 ```groovy

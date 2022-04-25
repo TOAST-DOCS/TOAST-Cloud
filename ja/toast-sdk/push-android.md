@@ -29,7 +29,7 @@ dependencies {
 ```
 
 ### ADM
-* TOAST ADM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+* NHN Cloud ADM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
 repositories {
@@ -90,7 +90,7 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
-## Amazon Device Messageing 설정
+## Amazon Device Messaging 설정
 
 ### 프로젝트 및 앱 추가
 
@@ -105,7 +105,7 @@ apply plugin: 'com.google.gms.google-services'
 * Device Messaging에서 **Security Profile**을 생성하고 등록합니다.
 * **View Security Profile**로 이동하여 **Android/Kindle Settings** 메뉴에서 API Key를 생성합니다.
 * 생성한 API Key를 복사하여 프로젝트의 **assets** 폴더에 **api_key.txt** 파일로 저장합니다.
-* 자세한 사항은 [Amazon Device Messageing - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)를 참고하세요.
+* 자세한 사항은 [Amazon Device Messaging - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)를 참고하세요.
 
 ### ADM SDK 다운로드
 
