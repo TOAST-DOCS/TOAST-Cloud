@@ -23,13 +23,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.30.0’
+    implementation 'com.toast.android:toast-push-fcm:0.30.0'
     ...
 }
 ```
 
 ### ADM
-* NHN Cloud ADM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+* TOAST ADM Pushを使用するために、以下のようにbuild.gradleに依存関係を追加します。
 
 ```groovy
 repositories {
@@ -90,31 +90,31 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
-## Amazon Device Messaging 설정
+## Amazon Device Messageing設定
 
-### 프로젝트 및 앱 추가
+### プロジェクトおよびアプリ追加
 
-* [Amazon Developer 콘솔](https://developer.amazon.com/settings/console/home)로 이동합니다.
-* 상단 **Apps & Services**의 **My Apps**로 이동합니다.
-* **Add New App**에서 **Android**를 선택 후 앱 정보를 입력하여 앱을 등록합니다.
-* **Android 패키지 이름**, **앱 닉네임 (선택사항)**을 입력하고 **앱 등록** 버튼을 클릭합니다.
+* [Amazon Developerコンソール](https://developer.amazon.com/settings/console/home)に移動します。
+* 上部**Apps & Services**の**My Apps**に移動します。
+* **Add New App**で**Android**を選択し、アプリ情報を入力してアプリを登録します。
+* **Androidパッケージ名**、**アプリニックネーム(任意)**を入力し、**アプリ登録**ボタンをクリックします。
 
-### API Key 추가
+### API Key追加
 
-* **My Apps**에서 등록한 앱을 선택하고 좌측 메뉴에서 **App Service**를 클릭합니다.
-* Device Messaging에서 **Security Profile**을 생성하고 등록합니다.
-* **View Security Profile**로 이동하여 **Android/Kindle Settings** 메뉴에서 API Key를 생성합니다.
-* 생성한 API Key를 복사하여 프로젝트의 **assets** 폴더에 **api_key.txt** 파일로 저장합니다.
-* 자세한 사항은 [Amazon Device Messaging - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)를 참고하세요.
+* **My Apps**で登録したアプリを選択し、左側メニューで**App Service**をクリックします。
+* Device Messagingで**Security Profile**を作成し、登録します。
+* **View Security Profile**に移動して **Android/Kindle Settings**メニューkからAPI Keyを作成します。
+* 作成したAPI Keyをコピーしてプロジェクトの**assets**フォルダに**api_key.txt**ファイルとして保存します。
+* 詳細については、[Amazon Device Messageing - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)を参照してください。
 
-### ADM SDK 다운로드
+### ADM SDKのダウンロード
 
-* Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드합니다.
-* 다운로드한 **amazon-device-messaging-1.1.0.jar** 파일을 프로젝트의 **libs** 폴더에 저장합니다.
+* Amazon Developerの[Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)からADM SDKをダウンロードします。
+* ダウンロードした**amazon-device-messaging-1.1.0.jar**ファイルをプロジェクトの**libs**フォルダに保存します。
 
-### Proguard 설정
+### Proguard設定
 
-* Proguard를 사용하는 경우 <b>[proguard-rules.pro](http://proguard-rules.pro)</b> 파일에 아래와 같이 추가합니다.
+* Proguardを使用する場合 <b>[proguard-rules.pro](http://proguard-rules.pro)</b>ファイルに以下のように追加します。
 
 ```groovy
 -libraryjars libs
@@ -142,7 +142,7 @@ ToastPushConfiguration configuration =
 ToastPush.initialize(PushType.FCM, configuration);
 ```
 
-### ADM 초기화 예시
+### ADM初期化例
 
 ```java
 ToastPushConfiguration configuration =
@@ -152,8 +152,8 @@ ToastPushConfiguration configuration =
 ToastPush.initialize(PushType.ADM, configuration);
 ```
 
-> ToastPush.initialize(ToastPushConfiguration)는 Deprecated 되었습니다.
-> ToastPush.initialize(ToastPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
+> ToastPush.initialize(ToastPushConfiguration)はDeprecatedされました。
+> ToastPush.initialize(ToastPushConfiguration)を使用して初期化する場合PushTypeは自動的にFCMに設定されます。
 
 ## サービスログイン
 * NHN Cloud SDKで提供するすべてのサービス(Push、IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
