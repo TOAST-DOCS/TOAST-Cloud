@@ -1,12 +1,12 @@
-## TOAST > TOAST SDK使用ガイド > TOAST Log & Crash > Windows C++
+## NHN Cloud > SDK使用ガイド > Log & Crash > Windows C++
 
 ## 事前準備
 
-1. [Install the TOAST SDK](./getting-started-windows)
-2. [TOASTコンソール](https://console.cloud.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+1. [Install the NHN Cloud SDK](./getting-started-windows)
+2. [NHN Cloudコンソール](https://console.cloud.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
 3. Log & Crash Searchで[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 
-## TOAST Logger SDKの初期化
+## NHN Cloud Logger SDKの初期化
 
 Log & Crash Searchで発行されたAppKeyをProjectKeyに設定します。
 
@@ -38,7 +38,7 @@ if (_logger != NULL)
 }
 ```
 
-## TOAST Logger SDK終了
+## NHN Cloud Logger SDK終了
 
 ```
 DestroyToastLogger();
@@ -69,7 +69,7 @@ _logger->getUserId();
 
 ## ログ送信
 
-TOAST Loggerは、5つのレベルのログ送信関数を提供します。
+NHN Cloud Loggerは、5つのレベルのログ送信関数を提供します。
 
 ### ログ送信
 

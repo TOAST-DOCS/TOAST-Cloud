@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK 사용 가이드 > TOAST Push > Android
+## NHN Cloud > SDK 사용 가이드 > Push > Android
 
 ## 사전 준비
 
-1. [TOAST SDK](./getting-started-android)를 설치합니다.
-2. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+1. [NHN Cloud SDK](./getting-started-android)를 설치합니다.
+2. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
 3. Push 콘솔에서 AppKey를 확인합니다.
 
 ## Push 제공자별 가이드
@@ -14,7 +14,7 @@
 ## 라이브러리 설정
 
 ### FCM
-* TOAST FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+* NHN Cloud FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
 
 ```groovy
 repositories {
@@ -23,7 +23,22 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.29.2'
+    implementation 'com.toast.android:toast-push-fcm:0.30.0'
+    ...
+}
+```
+
+### ADM
+* NHN Cloud ADM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-push-adm:0.30.0'
     ...
 }
 ```
@@ -76,9 +91,44 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
+## Amazon Device Messaging 설정
+
+### 프로젝트 및 앱 추가
+
+* [Amazon Developer 콘솔](https://developer.amazon.com/settings/console/home)로 이동합니다.
+* 상단 **Apps & Services**의 **My Apps**로 이동합니다.
+* **Add New App**에서 **Android**를 선택 후 앱 정보를 입력하여 앱을 등록합니다.
+* **Android 패키지 이름**, **앱 닉네임 (선택사항)**을 입력하고 **앱 등록** 버튼을 클릭합니다.
+
+### API Key 추가
+
+* **My Apps**에서 등록한 앱을 선택하고 좌측 메뉴에서 **App Service**를 클릭합니다.
+* Device Messaging에서 **Security Profile**을 생성하고 등록합니다.
+* **View Security Profile**로 이동하여 **Android/Kindle Settings** 메뉴에서 API Key를 생성합니다.
+* 생성한 API Key를 복사하여 프로젝트의 **assets** 폴더에 **api_key.txt** 파일로 저장합니다.
+* 자세한 사항은 [Amazon Device Messaging - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)를 참고하세요.
+
+### ADM SDK 다운로드
+
+* Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드합니다.
+* 다운로드한 **amazon-device-messaging-1.1.0.jar** 파일을 프로젝트의 **libs** 폴더에 저장합니다.
+
+### Proguard 설정
+
+* Proguard를 사용하는 경우 <b>[proguard-rules.pro](http://proguard-rules.pro)</b> 파일에 아래와 같이 추가합니다.
+
+```groovy
+-libraryjars libs
+-dontwarn com.amazon.device.messaging.**
+-keep class com.amazon.device.messaging.** { *; }
+-keep public class * extends com.amazon.device.messaging.ADMMessageReceiver
+-keep public class * extends com.amazon.device.messaging.ADMMessageHandlerBase
+-keep public class * extends com.amazon.device.messaging.ADMMessageHandlerJobBase
+```
+
 ## Push 초기화
 
-* ToastPush.initialize를 호출하여 TOAST Push를 초기화합니다.
+* ToastPush.initialize를 호출하여 NHN Cloud Push를 초기화합니다.
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
 * [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
 * Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
@@ -91,11 +141,25 @@ ToastPushConfiguration configuration =
     ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 
-ToastPush.initialize(configuration);
+ToastPush.initialize(PushType.FCM, configuration);
 ```
 
+### ADM 초기화 예시
+
+```java
+ToastPushConfiguration configuration =
+    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+            .build();
+
+ToastPush.initialize(PushType.ADM, configuration);
+```
+
+> ToastPush.initialize(ToastPushConfiguration)는 Deprecated 되었습니다.
+> ToastPush.initialize(ToastPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
+
+
 ## 서비스 로그인
-* TOAST SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
+* NHN Cloud SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
     * [ToastSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
 * 서비스 로그인 단계에서 사용자 아이디 설정, 토큰 등록 기능을 구현하는 것을 권장합니다.
 * 토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.
@@ -111,15 +175,15 @@ public void onLogin(String userId) {
 ```
 
 ## 토큰 등록
-* ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 TOAST Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
+* ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 NHN Cloud Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 * 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
 
 ### 수신 동의 설정
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
-    * [KISA 가이드 바로 가기](https://spam.kisa.or.kr/spam/sub62.do)
+    * [KISA 가이드 바로 가기](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 TOAST Push 서버로 전송합니다.
+* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 NHN Cloud Push 서버로 전송합니다.
 
 ### 토큰 등록 및 수신 동의 설정 예시
 ```java
@@ -147,7 +211,7 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 ```
 
 ## 토큰 정보 조회
-* TOAST Push 서버에 등록된 토큰 정보를 조회합니다.
+* NHN Cloud Push 서버에 등록된 토큰 정보를 조회합니다.
 
 ### 토큰 정보 조회 예시
 ```java
@@ -170,7 +234,7 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 ```
 
 ## 토큰 해제
-* TOAST Push 서버에 등록된 토큰을 해제합니다. 해제된 토큰은 메시지 발송 대상에서 제외됩니다.
+* NHN Cloud Push 서버에 등록된 토큰을 해제합니다. 해제된 토큰은 메시지 발송 대상에서 제외됩니다.
 * `서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해야 합니다.`
 * `토큰이 해제되어도 단말기 상에 알림 권한은 회수되지 않습니다.`
 
@@ -684,9 +748,9 @@ ToastPush.removeAllUserTag(new UserTagCallback() {
 });
 ```
 
-## TOAST Push Class Reference
+## NHN Cloud Push Class Reference
 ### ToastPushConfiguration
-* TOAST Push를 초기화할 때 전달되는 Push 설정 정보입니다.
+* NHN Cloud Push를 초기화할 때 전달되는 Push 설정 정보입니다.
 
 ```java
 /* ToastPushConfiguration.java */

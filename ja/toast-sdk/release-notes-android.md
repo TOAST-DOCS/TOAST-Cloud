@@ -1,4 +1,12 @@
-## TOAST > TOAST SDK使用ガイド > リリースノート > Android
+## NHN Cloud > SDK使用ガイド > リリースノート > Android
+
+## 0.30.0 (2022. 04. 26.)
+
+### TOAST Push
+
+#### 機能追加
+
+- ADM(Amazon Device Messaging) 追加
 
 ## 0.29.2 (2022. 03. 29.)
 

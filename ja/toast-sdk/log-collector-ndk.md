@@ -1,4 +1,4 @@
-## NHN Cloud > NHN Cloud SDK使用ガイド > NHN Cloud Log & Crash > Android (NDK)
+## NHN Cloud > SDK使用ガイド > Log & Crash > Android (NDK)
 
 ## Android NDKクラッシュレポート
 
@@ -24,12 +24,11 @@ repositories {
 
 dependencies {
     // ...
+    // Add the NHN Cloud Logger dependency
+    implementation 'com.toast.android:toast-logger:0.30.0'
 
-    // Add the TOAST Logger dependency
-    implementation 'com.toast.android:toast-logger:0.29.2'
-
-    // Add the TOAST Crash Reporter for NDK dependency
-    implementation 'com.toast.android:toast-crash-reporter-ndk:0.29.2'
+    // Add the NHN Cloud Crash Reporter for NDK dependency
+    implementation 'com.toast.android:toast-crash-reporter-ndk:0.30.0'
 }
 ```
 
