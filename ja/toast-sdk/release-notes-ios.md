@@ -1,4 +1,4 @@
-## TOAST > User Guide for TOAST SDK > Release Notes > iOS
+## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
 ## 0.30.0 (2022.03.29)
 ### TOAST IAP

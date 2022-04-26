@@ -1,12 +1,12 @@
-## TOAST > TOAST SDK User Guide > TOAST Log & Crash > Windows C++
+## NHN Cloud > SDK User Guide > Log & Crash > Windows C++
 
 ## Prerequisites
 
-1. [Install TOAST SDK](./getting-started-windows)
-2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1. [Install NHN Cloud SDK](./getting-started-windows)
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 
-## Initialize TOAST Logger SDK
+## Initialize NHN Cloud Logger SDK
 
 Set Appkey issued from Log & Crash Search as ProjectKey.
 
@@ -58,7 +58,7 @@ Set User ID is sent to server, along with logs, every time Log Sending API is ca
 
 ## Send Logs
 
-TOAST Logger provides log sending functions of five levels.
+NHN Cloud Logger provides log sending functions of five levels.
 
 ### Send Logs
 * Send logs of DEBUG, INFO, WARN, ERROR, FATAL levels explicitly

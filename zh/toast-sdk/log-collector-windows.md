@@ -1,47 +1,43 @@
-## TOAST > User Guide for TOAST SDK > TOAST Log & Crash > Windows C++
+## NHN Cloud > SDK User Guide > Log & Crash > Windows C++
 
 ## Prerequisites
 
-1. [Install TOAST SDK](./getting-started-windows)
-2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1. [Install NHN Cloud SDK](./getting-started-windows)
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 
-## Initialize TOAST Logger SDK
+## Initialize NHN Cloud Logger SDK
 
-Set appkey issued from Log & Crash Search as ProjectKey.
+Set Appkey issued from Log & Crash Search as ProjectKey.
 
 ```
 ...
 #include "toast/ToastLogger.h"
 
-using namespace toast::logger;
+toast::logger::ToastLogger* g_nhncloud_lnc = nullptr;  // NHN Cloud SDK - Log & crash search
 ...
 
-ToastLogger* logger = GetToastLogger();
+// Assign the NHN Cloud SDK instance to a global variable.
+g_nhncloud_lnc = toast::logger::ToastLogger::GetInstance();
 
-ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
+// When initializing ToastLogger, input necessary configuration information.
+toast::logger::ToastLoggerConfiguration* loggerConf = toast::logger::ToastLoggerConfiguration::GetInstance();
+
 ...
+// Input the Appkey you checked in the Log & Crash Search console.
 loggerConf->setProjectKey(appkey);
+
+// Input the version information of the current application. The version information must match the version information inputted during the symbol file registration.
 loggerConf->setProjectVersion(version);
 ...
 
-if (_logger != NULL)
+if (!g_nhncloud_lnc->initialize(loggerConf))
 {
-    if (_logger->initialize(loggerConf))
-	{
-		// success
-	}
-	else
-	{
-		// fail
-	}
+    // Initialization failure occurs if it has already been initialized or if the AppKey is not inputted.
+    ::MessageBox(g_mainWnd, _T("Failed to initialize NHN Cloud SDK."), _T("Alert"), MB_OK);
+    return false;
 }
-```
 
-## TOAST Logger SDK 종료
-
-```
-DestroyToastLogger();
 ```
 
 ## Set UserID
@@ -50,16 +46,9 @@ User ID can be set for TOAST SDK.
 Such set UserID is common for each module of TOAST SDK.
 Set User ID is sent to server, along with logs, every time Log Sending API is called.
 
-
 ```
-
-ToastLogger* _logger = GetToastLogger();
-
-_logger->setUserId("userId");
-
-_logger->initialize(loggerConf);
-
-_logger->getUserId();
+    toast::logger::ToastLogger* pLogger = toast::logger::ToastLogger::GetInstance();
+    pLogger->setUserId(pUserID);
 ```
 
 * setUserId
@@ -69,119 +58,113 @@ _logger->getUserId();
 
 ## Send Logs
 
-TOAST Logger provides log sending functions of five levels.
+NHN Cloud Logger provides log sending functions of five levels.
 
 ### Send Logs
-
+* Send logs of DEBUG, INFO, WARN, ERROR, FATAL levels explicitly
+    * Both of char*, wchar_t* types are supported.
+    * userFields is a helper class to make it easier to use the user-defined fields.
 ```
-// General logs
-_logger->log(level, message, _userFieldMap);
-
-// DEBUG level logs
-_logger->debug(level, message, _userFieldMap);
-
-// INFO level logs
-_logger->info(level, message, _userFieldMap);
-
-// WARN level logs
-_logger->warn(String message);
-
-// ERROR level logs
-_logger->error(String message);
-
-// FATAL level logs
-_logger->fatal(String message);
+void debug(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+void info(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+void warn(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+void error(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+void fatal(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+```
+* Send the log level and message explicitly
+```
+void log(TOAST_LOGGER_LEVEL logLevel, const wchar_t* message, ToastLoggerUserFields* userFields = nullptr);
 ```
 
 ## Add User-Defined Fields
+### Method 1: Use the ToastLogger instance API
+
+* A user-defined field that is managed directly by the ToastLogger instance.
+
+```
+bool addUserField(const char* key, const wchar_t* value);
+void removeUserField(const char* key);
+void clearUserFileds();
+
+...
+
+g_nhncloud_lnc->addUserField("nickname", "randy");
+g_nhncloud_lnc->removeUserField("nickname");
+g_nhncloud_lnc->cleareUserField();
 
 ```
 
-ToastLoggerUserFields* _userFieldMap = CreateToastLoggerUserFields();
+### Method 2 : Use the ToastLoggerUserFields class
 
-_userFieldMap->insert(key, value);
+```
+toast::logger::ToastLoggerUserFields* pUserFieldHelper = toast::logger::ToastLoggerUserFields::GetInstance();   // Get the custom field helper class.
 
-if (_userFieldMap != NULL)
-{
-    if (_userFieldMap->size() > 0)
-    {
-        _logger->log(level, message, _userFieldMap);
-    }
-    else
-    {
-        _logger->log(level, message);
-    }
-}
+pUserFieldHelper->insert("userCustomKeyHelper01", L"ToastLoggerUserFields 헬퍼 클래스로 추가한 사용자 정의 필드\r\nCustom fields added with the ToastLoggerUserFields helper class");
+pUserFieldHelper->insert("userCustomKeyHelper02", L"clear() 함수로 지금껏 정의한 사용자 필드를 간단히 정리할 수 있어요.\r\nWith the clear() function, you can simply clear the custom fields you have defined so far.");
+pUserFieldHelper->insert("userCustomKeyHelper03", L"log() 함수로 전송시, ToastLoggerUserFields 클래스에 정의한 사용자 필드들은 로그 객체에 복사됩니다.\r\nWhen sending to the log() function, the user fields defined in the ToastLoggerUserFields class are copied to the log object.");
+
+g_nhncloud_lnc->log(level, pLogMessage, pUserFieldHelper);  // Send log with user-defined fields.
+
+pUserFieldHelper->clear(); // Delete all user-defined fields configured above.
+
 ```
 
-* User-defined fields contain field information as wanted and are applied only to particular logs.
-* ToastLoggerUserFields support the following functions:
-    * insert:  Insert data
-    * erase: Delete data
-    * clear: Delete all
-    * size: Size
-    * find: Search data
-    * empty: Whether it is empty
-* User-defined field is same as the value exposed as "Selected Field"in "Log & Crash Search Console" > "Log Search Tab".
-  That is, it is same as custom parameter of Log & Crash Search, and you can find more details on restrictions of "field" value in [Restrictions of Custom Field](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
+*  User-defined field is same as the value exposed as "Selected Field" in "Log & Crash Search Console" > "Log Search Tab".
 
 #### Restrictions for User-Defined Fields
 
-- Cannot use already [Reserved Fields](./log-collector-reserved-fields).
-  Check reserved fields at "Basic Parameters" from [Restrictions of User-Defined Fields](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/api-guide/).
-- Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z".
-- Replace spaces within a field name by "_".
+* Cannot use already [Reserved Fields](./log-collector-reserved-fields).
+* Use characters from "A-Z, a-z, 0-9, -, and _" for a field name, starting with "A-Z, or a-z".
+* Replace spaces within a field name by "_".
 
-### Usage Example of addUserField / removeUserFiled / cleareUserField
-
-```
-_logger->addUserField("nickname", "randy");
-_logger->removeUserField("nickname");
-_logger->cleareUserField();
-```
 
 ## Collect Crash Logs
+* When a crash occurs, the default behavior is to send a crash dump from the executable file including the SDK.
+* When a crash occurs, you can expose an error screen to the user and collect additional information.
 
-Crash reporter (CrashRepoter.exe) sends crash log information to logs.
-Crash information is sent to logs through crash reporter, when a crash occurs.
-Crash reporter can be enabled along with ToastLogger initialization, by setting.
-It is also available to enable crash reporter dialogue box and custom messages.
-
-
-### Enable Crash Logs and Crash Reporter
+### Crash Log Collection and Configuration
 
 ```
-...
+
 #include "toast/ToastLogger.h"
 
-using namespace toast::logger;
+toast::logger::ToastLogger* g_nhncloud_lnc = nullptr;  // NHN Cloud SDK - Log & crash search
 ...
 
-ToastLogger* logger = GetToastLogger();
+// Assign the NHN Cloud SDK instance to a global variable.
+g_nhncloud_lnc = toast::logger::ToastLogger::GetInstance();
 
-ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
+// When initializing ToastLogger, input necessary configuration information.
+toast::logger::ToastLoggerConfiguration* loggerConf = toast::logger::ToastLoggerConfiguration::GetInstance();
+
 ...
-// Whether to enable crash logs
+// Input the AppKey you checked in the Log & Crash Search console.
+loggerConf->setProjectKey(appkey);
+
+// Input the version information of the current application. The version information must match the version information inputted during the symbol file registration.
+loggerConf->setProjectVersion(version);
+
+// Enable Crash Collection - This is enabled by default. Set to false if you don't want crash collection.
 loggerConf->enableCrashReporter(true);
-// Whether to enable crash reporter dialogue
+
+// To use Crash Reporter (CrashReporter.exe) running as a separate process, set enableSilenceMode(false).
 loggerConf->enableSilenceMode(false);
-// Define messages for crash reporter dialogue
-// (If not defined, default message shows.)
-loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "Error has occurred...\n");
+
+// Defines the message to be exposed to the CrashReporter running as a separate process. If not defined, the default message will be shown.
+loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "오류가 발생한 상황...\n");
+
+// If you want to send the crash as a separate process, but do not want to expose the UI to the user, set exposeExternalCrashReporterUI(false).
+//loggerConf->exposeExternalCrashReporterUI(false);
 ...
 
-if (_logger != NULL)
+// After initialization is complete, crash collection becomes available.
+if (!g_nhncloud_lnc->initialize(loggerConf))
 {
-        bool bInit = _logger->initialize(loggerConf);
-
-	// x86에서 pure virtual call / invalid paramenter 크래시 로그 추가
-	if (bInit && enableCrashReport)
-	{
-#ifndef _WIN64
-		SetCrashHandler();
-#endif
-	}
+    // Initialization failure occurs if it has already been initialized or if the AppKey has not been inputted.
+    ::MessageBox(g_mainWnd, _T("Failed to initialize NHN Cloud SDK."), _T("Alert"), MB_OK);
+    return false;
 }
+
 
 ```
 
@@ -189,7 +172,7 @@ if (_logger != NULL)
 
 * To test on crash logs sending, an exception must occur.
 * Crash logs are automatically sent by SDK when enableCrashReporter is true.
-
+* Access Violation Example
 ```
 
 void CsampleDlg::OnBnClickedCrash()
@@ -202,19 +185,14 @@ void CsampleDlg::OnBnClickedCrash()
 
 ### Interpret Crash Logs
 
-#### Overview
-
-* To interpret crashes occurred in TOAST Windows SDK, a symbol file must be created and uploaded to a web console.
+To interpret crashes occurred in TOAST Windows SDK, a symbol file must be created and uploaded to a web console.
 
 #### Create Symbol Files
 
-* Creating a symbol file requires dump_syms appropriate for each development environment.
-    * [dump\_syms\_vc1600 : vs2010](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1600.zip)
-    * [dump\_syms\_vc1700 : vs2012](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1700.zip)
-    * [dump\_syms\_vc1800 : vs2013](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1800.zip)
-    * [dump\_syms\_vc1900 : vs2015](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1900.zip)
-* Execute a order prompt to create sym files, like below:
-    * The sample project is called sample.
+* To create a symbol file, you must use dump_syms.exe in the path of the distribution file.
+* For an easier example, refer to the post-build event of the `nhncloudsdk_example` example project in the distribution file path.
+* Run the command prompt to create a .sym file in the following way.
+    * sample is the name of the example project.
 
 ```
 dump_syms sample.pdb > sample.sym
@@ -222,6 +200,3 @@ dump_syms sample.pdb > sample.sym
 
 * Then, compress sample.sym with zip and [Upload to Console Server](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#_24)
     * The version for console uploads must be the same as the version for setProjectVersion.
-
-
-
