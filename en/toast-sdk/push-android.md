@@ -127,7 +127,7 @@ dependencies {
 * If you're using Proguard, add the following to the <b>[proguard-rules.pro](http://proguard-rules.pro)</b> file.
 
 ```groovy
--libraryjars amazon/libs
+-libraryjars amazon/libs/amazon-device-messaging-1.1.0.jar
 -dontwarn com.amazon.device.messaging.**
 -keep class com.amazon.device.messaging.** { *; }
 -keep public class * extends com.amazon.device.messaging.ADMMessageReceiver

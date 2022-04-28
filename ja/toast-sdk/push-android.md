@@ -125,7 +125,7 @@ dependencies {
 * Proguardを使用する場合 <b>[proguard-rules.pro](http://proguard-rules.pro)</b>ファイルに以下のように追加します。
 
 ```groovy
--libraryjars amazon/libs
+-libraryjars amazon/libs/amazon-device-messaging-1.1.0.jar
 -dontwarn com.amazon.device.messaging.**
 -keep class com.amazon.device.messaging.** { *; }
 -keep public class * extends com.amazon.device.messaging.ADMMessageReceiver
