@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 0.30.1 (2022. 05. 03.)
+
+### TOAST IAP
+
+#### 기능 개선
+
+* 원스토어 v16 로직 개선
+
 ## 0.30.0 (April 26, 2022)
 
 ### TOAST Push
