@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.30.0'
+    implementation 'com.toast.android:toast-iap-google:0.30.1'
     ...
 }
 ```
@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.30.0'
+    implementation 'com.toast.android:toast-iap-onestore:0.30.1'
     ...
 }
 ```
@@ -57,7 +57,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.30.0'
+    implementation 'com.toast.android:toast-iap-galaxy:0.30.1'
     ...
 }
 ```
@@ -74,7 +74,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-amazon:0.30.0'
+    implementation 'com.toast.android:toast-iap-amazon:0.30.1'
     ...
 }
 ```
@@ -117,7 +117,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-huawei:0.30.0'
+    implementation 'com.toast.android:toast-iap-huawei:0.30.1'
     ...
 }
 ```
