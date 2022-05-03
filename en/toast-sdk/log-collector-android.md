@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK User Guide > TOAST Log & Crash > Android
+## NHN Cloud > SDK User Guide > Log & Crash > Android
 
 ## Prerequisites
 
-1. [Install TOAST SDK](./getting-started-android)
-2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1. [Install NHN Cloud SDK](./getting-started-android)
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) from Log & Crash Search.
 
 ## Library Setting
@@ -15,12 +15,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-logger:0.29.2'
+    implementation 'com.toast.android:toast-logger:0.30.1'
     ...
 }
 ```
 
-## Initialize TOAST Logger SDK
+## Initialize NHN Cloud Logger SDK
 
 - Initialization must be performed in Application#onCreate.
 
@@ -39,7 +39,7 @@ ToastLogger.initialize(configuration);
 
 ## Send Logs
 
-TOAST Logger provides log-sending functions of five levels.
+NHN Cloud Logger provides log-sending functions of five levels.
 
 ### Specification for Log Sending API
 
@@ -63,7 +63,7 @@ static void fatal(String message);
 ### Usage Example of Log Sending API
 
 ```java
-ToastLogger.warn("TOAST Log & Crash Search!");
+ToastLogger.warn("NHN Cloud Log & Crash Search!");
 ```
 
 ## Set User-Defined Field
@@ -129,7 +129,7 @@ ToastLogger.setLoggerListener(new ToastLoggerListener() {
 
 ## Collect Crash Logs
 
-When an unexpected crash occurs in an app, TOAST Logger records such crash information in the server.
+When an unexpected crash occurs in an app, NHN Cloud Logger records such crash information in the server.
 
 ### Set Enable Collecting Crash Logs
 
@@ -150,7 +150,7 @@ ToastLogger.initialize(configuration);
 
 ### Use Handled Exception API
 
-For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of TOAST Logger.
+For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of NHN Cloud Logger.
 Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
 For more usage details on Log & Cash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
 
@@ -207,13 +207,13 @@ ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
 
 Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response vales of many countries around the world (according to national codes on a device).
 
-> With Network Insights enabled in console, it is requested for one time via URL registered in the console when TOAST Logger is initialized.
+> With Network Insights enabled in console, it is requested for one time via URL registered in the console when NHN Cloud Logger is initialized.
 
 ### Enable Network Insights
 
 Network Insights can be enabled as follows.
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Settings].
 3. Click the [Setting for Sending Logs] tab.
 4. Enable "Network Insights Logs".
@@ -222,7 +222,7 @@ Network Insights can be enabled as follows.
 
 URL can be set as follows.
 
-1. Go to [TOAST Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
 2. Select [Network Insights].
 3. Click the [URL Setting] tab.
 4. Enter URL to measure and click [Add].

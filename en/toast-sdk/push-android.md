@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK User Guide > TOAST Push > Android
+## NHN Cloud > SDK User Guide > Push > Android
 
 ## Prerequisites
 
-1. Install [TOAST SDK](./getting-started-android).
-2. [Enable Push service](https://docs.toast.com/en/Notification/Push/en/console-guide/) in [TOAST console](https://console.cloud.toast.com).
+1. Install [NHN Cloud SDK](./getting-started-android).
+2. [Enable Push service](https://docs.toast.com/en/Notification/Push/en/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
 3. Check the AppKey in the Push console.
 
 ## Guide by Push Provider
@@ -14,7 +14,7 @@
 ## Library Setting
 
 ### FCM
-* To use TOAST FCM Push, add dependency to build.gradle as below.
+* To use NHN Cloud FCM Push, add a dependency to build.gradle as follows.
 
 ```groovy
 repositories {
@@ -23,14 +23,30 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.29.2'
+    implementation 'com.toast.android:toast-push-fcm:0.30.1'
+    ...
+}
+```
+
+### ADM
+
+* To use NHN Cloud ADM Push, add a dependency to build.gradle as follows.
+
+```groovy
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.toast.android:toast-push-adm:0.30.1'
     ...
 }
 ```
 
 ## Firebase Cloud Messaging Settings
 
-### Add projects and apps
+### Add the project and app
 
 * Create a project in [Firebase console](https://console.firebase.google.com/?hl=en).
 * Go to **Project Settings** by clicking the gear button at the top of the console.
@@ -42,7 +58,7 @@ dependencies {
 
 ### Set Up build.gradle
 #### Root-level build.gradle
-* Add code below to root-level build.gradle.
+* Add the following code to root-level build.gradle.
 
 ```groovy
 buildscript {
@@ -63,7 +79,7 @@ allprojects {
 ```
 
 #### App module's build.gradle
-* Add the code below to your app module's build.gradle.
+* Add the following code to your app module's build.gradle.
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -76,9 +92,52 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
+## Amazon Device Messaging Settings
+
+### Add the project and app
+
+* Go to the [Amazon Developer Console](https://developer.amazon.com/settings/console/home).
+* Go to **My Apps** in **Apps & Services** at the top.
+* In **Add New App**, select **Android** and enter the app information to register the app.
+* Enter **Android Package Name**, **App Nickname (optional)** and click the **Register App** button.
+
+### Add the API key
+
+* Select the registered app in **My Apps** and click **App Service** in the left menu.
+* Create and register **Security Profile** in Device Messaging.
+* Go to **View Security Profile** and generate API Key from the **Android/Kindle Settings** menu.
+* Copy the generated API Key and save it as **api_key.txt** file in the **assets** folder of your project.
+* For details, refer to [Amazon Device Messaging - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html).
+
+### Download the ADM SDK
+
+* Download the ADM SDK from [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm) of the Amazon Developer site.
+* Save the downloaded **amazon-device-messaging-1.1.0.jar** file to the **amazon/libs** folder of your project.
+
+#### App module's build.gradle
+```groovy
+dependencies {
+    //...
+    compileOnly files('amazon/libs/amazon-device-messaging-1.1.0.jar')
+}
+```
+
+### Proguard settings
+
+* If you're using Proguard, add the following to the <b>[proguard-rules.pro](http://proguard-rules.pro)</b> file.
+
+```groovy
+-libraryjars amazon/libs/amazon-device-messaging-1.1.0.jar
+-dontwarn com.amazon.device.messaging.**
+-keep class com.amazon.device.messaging.** { *; }
+-keep public class * extends com.amazon.device.messaging.ADMMessageReceiver
+-keep public class * extends com.amazon.device.messaging.ADMMessageHandlerBase
+-keep public class * extends com.amazon.device.messaging.ADMMessageHandlerJobBase
+```
+
 ## Push Initialization
 
-* Initialize TOAST Push by calling ToastPush.initialize.
+* Initialize NHN Cloud Push by calling ToastPush.initialize.
 * A [ToastPushConfiguration](./push-android/#toastpushconfiguration) object contains push configuration information.
 * A [ToastPushConfiguration](./push-android/#toastpushconfiguration) object can be created using ToastPushConfiguration.Builder.
 * Pass the AppKey issued from the Push console as the parameter of ToastPushConfiguration.newBuilder.
@@ -91,11 +150,24 @@ ToastPushConfiguration configuration =
     ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 
-ToastPush.initialize(configuration);
+ToastPush.initialize(PushType.FCM, configuration);
 ```
 
+### ADM initialization example
+
+```java
+ToastPushConfiguration configuration =
+    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+            .build();
+
+ToastPush.initialize(PushType.ADM, configuration);
+```
+
+> ToastPush.initialize(ToastPushConfiguration) has been deprecated.
+> PushType is automatically set to FCM when initialized using ToastPush.initialize(ToastPushConfiguration).
+
 ## Service Login
-* All products provided by TOAST SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
+* All products provided by NHN Cloud SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
     * You can set the user id with [ToastSdk.setUserId](./getting-started-android/#userid).
 * It is recommended to implement the user ID setting and token registration functions in the service login step.
 * If you set or change the user ID after registering the token, the token information is updated.
@@ -111,15 +183,15 @@ public void onLogin(String userId) {
 ```
 
 ## Token Registration
-* Use the ToastPush.registerToken() method to send a Push token to the TOAST Push server. In this case, pass whether the user agreed to receive (ToastPushAgreement) as a parameter.
+* Use the ToastPush.registerToken() method to send a Push token to the NHN Cloud Push server. In this case, pass whether the user agreed to receive (ToastPushAgreement) as a parameter.
 * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
 * When the token is registered successfully, the user can receive a Push message.
 
 ### Consent Setting
 * In accordance with the provisions of the Information and Communications Network Act (Articles 50 through 50-8), when registering a token, whether or not to receive notification/advertising/night-time advertising push messages must also be inputted. When sending a message, it is automatically filtered based on whether or not the user agreed to receive it.
-    * [Shortcut to KISA Guide](https://spam.kisa.or.kr/spam/sub62.do)
+    * [Shortcut to KISA Guide](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [Shortcut to the law](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* Set whether or not the user agreed to receive the push in ToastPushAgreementIt and send it to the TOAST Push server when registering tokens.
+* Set whether or not the user agreed to receive the push in ToastPushAgreementIt and send it to the NHN Cloud Push server when registering tokens.
 
 ### Example of token registration and agreement setting
 ```java
@@ -147,7 +219,7 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 ```
 
 ## Token Information Query
-* Query the token information registered in the TOAST Push server.
+* Query the token information registered in the NHN Cloud Push server.
 
 ### Token information query example
 ```java
@@ -170,7 +242,7 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 ```
 
 ## Token Unregistration
-* Unregister the token registered in the TOAST Push server. Unregistered tokens are excluded from targets for sending messages.
+* Unregister the token registered in the NHN Cloud Push server. Unregistered tokens are excluded from targets for sending messages.
 * `If you do not want to receive messages after the service logout, you must unregister the token.`
 * `Even if the token is unregistered, the notification permission on the device is not revoked.`
 
@@ -684,9 +756,9 @@ ToastPush.removeAllUserTag(new UserTagCallback() {
 });
 ```
 
-## TOAST Push Class Reference
+## NHN Cloud Push Class Reference
 ### ToastPushConfiguration
-* Push configuration that is passed when TOAST Push is initialized.
+* Push configuration that is passed when NHN Cloud Push is initialized.
 
 ```java
 /* ToastPushConfiguration.java */

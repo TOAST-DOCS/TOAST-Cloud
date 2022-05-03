@@ -1,4 +1,20 @@
-## TOAST > TOAST SDK User Guide > Release Notes > Android
+## NHN Cloud > SDK User Guide > Release Notes > Android
+
+## 0.30.1 (May 3, 2022)
+
+### TOAST IAP
+
+#### Improved
+
+* Improved the item query logic for ONE store v16
+
+## 0.30.0 (April 26, 2022)
+
+### TOAST Push
+
+#### Added
+
+- Added ADM (Amazon Device Messaging)
 
 ## 0.29.2 (March 29, 2022)
 

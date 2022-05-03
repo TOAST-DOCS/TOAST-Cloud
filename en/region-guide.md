@@ -35,6 +35,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
 |  | Virtual Desktop | Regional | O | O |  |  |
+|  | Private Region | Regional | - | - | - | - |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
@@ -42,6 +43,12 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
 |  | Physical Load Balancer | Regional | O | O |  |  |
 |  | NAT Instance | Regional |  | O |  |  |
+|  | Internet Gateway | Regional | O | O | O | O |
+|  | Peering Gateway | Regional | O | O | O | O |
+|  | Colocation Gateway | Regional | O | O |  |  |
+|  | NAT Gateway | Regional | O | O |  |  |
+|  | VPN Gateway(Site-to-Site VPN) | Regional |  | O |  |  |
+|  | Service Gateway | Regional | O | O |  |  |
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
 |  | NAS (offline) | Regional | O | O |  | O |

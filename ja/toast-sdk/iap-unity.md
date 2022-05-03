@@ -1,9 +1,9 @@
-## TOAST > TOAST SDK使用ガイド > TOAST IAP > Unity
+## NHN Cloud > SDK使用ガイド > IAP > Unity
 
 ## Prerequisites
 
-1. [Install the TOAST SDK](./getting-started-unity)
-2. [TOASTコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
+1. [Install the NHN Cloud SDK](./getting-started-unity)
+2. [NHN Cloudコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
 3. IAPで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
 ## Android設定
@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-google:0.29.2'
+  implementation 'com.toast.android:toast-iap-google:0.30.1'
 **DEPS**}
 ```
 
@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-onestore:0.29.2'
+  implementation 'com.toast.android:toast-iap-onestore:0.30.1'
 **DEPS**}
 ```
 
@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-galaxy:0.29.2'
+  implementation 'com.toast.android:toast-iap-galaxy:0.30.1'
 **DEPS**}
 ```
 
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-amazon:0.29.2'
+  implementation 'com.toast.android:toast-iap-amazon:0.30.1'
 **DEPS**}
 ```
 
@@ -97,7 +97,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.huawei.agconnect'
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-huawei:0.29.2'
+  implementation 'com.toast.android:toast-iap-huawei:0.30.1'
 **DEPS**}
 ```
 
@@ -118,12 +118,12 @@ dependencies {
 | Android | One Store | 消費性商品 |
 | iOS | Apple App Store | 消費性商品、購読商品, 消費性購読商品 |
 
-## TOAST IAP SDK初期化
-[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)を利用してTOAST IAPコンソールで発行されたAppKeyとストアコード([StoreCode](./iap-unity/#storecode))を設定します。
+## NHN Cloud IAP SDK初期化
+[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)を利用してNHN Cloud IAPコンソールで発行されたAppKeyとストアコード([StoreCode](./iap-unity/#storecode))を設定します。
 初期化と同時に購入結果を受け取れるPurchaseUpdateListenerを登録します。
 
 > **初期化タイミング**
-> TOAST IAP SDKの初期化は、アプリ実行直後、最初の1回のみ行う必要があり、
+> NHN Cloud IAP SDKの初期化は、アプリ実行直後、最初の1回のみ行う必要があり、
 > ユーザーIDを設定(下記[サービスログイン](./iap-unity/#_4)項目参照)する前に行う必要があります。
 
 ### 初期化API仕様
@@ -154,7 +154,7 @@ ToastIap.Initialize(new ToastIapConfiguration
 ```
 
 ## サービスログイン
-- TOAST SDKで提供するすべてのサービス(IAP, Log & Crashなど)は、1つの同じユーザーIDを使用します。
+- NHN Cloud SDKで提供するすべてのサービス(IAP, Log & Crashなど)は、1つの同じユーザーIDを使用します。
     - ToastSdk.UserIdでユーザーIDを設定できます。
     - ユーザーIDを設定しない場合、決済が行われません。
 - サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読商品照会機能の実装を推奨します。
@@ -205,7 +205,7 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 ```
 
 ## 商品購入
-- TOAST IAPは、ストアに登録された商品IDを使用して商品を購入できます。
+- NHN Cloud IAPは、ストアに登録された商品IDを使用して商品を購入できます。
     - 商品IDは、商品リスト照会時に取得できます。
 - 商品購入結果は、初期化時に登録したPurchaseUpdateListenerを通して返されます。
     - 購入結果は[IapPurchase](./iap-unity/#iappurchase)を返します。
@@ -216,7 +216,7 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 public static void Purchase(string productId, developerPayload = "");
 ```
 
-- TOAST IAPは購入リクエスト時にdeveloperPayloadを介してユーザー情報を追加できます。
+- NHN Cloud IAPは購入リクエスト時にdeveloperPayloadを介してユーザー情報を追加できます。
 
 ### 商品購入例
 
@@ -328,7 +328,7 @@ ToastIap.RequestSubscriptionsStatus(true, (result, subscriptionsStatus) =>
 });
 ```
 
-## TOAST IAP Class Reference
+## NHN Cloud IAP Class Reference
 
 ### ToastIapConfiguration
 
@@ -395,7 +395,7 @@ public class ProductDetailsResult
 | Property | Returns | Description |
 |---|---|---|
 | Products | List<IapProduct> | 使用可能な商品情報を返します。 |
-| InvalidProducts | List<IapProduct> | TOAST IAPコンソールに商品を登録しましたが、ストアに登録されていない商品を返します。 |
+| InvalidProducts | List<IapProduct> | NHN Cloud IAPコンソールに商品を登録しましたが、ストアに登録されていない商品を返します。 |
 
 
 ### IapProduct

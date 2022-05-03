@@ -1,4 +1,20 @@
-## TOAST > TOAST SDK使用ガイド > リリースノート > Android
+## NHN Cloud > SDK使用ガイド > リリースノート > Android
+
+## 0.30.1 (2022. 05. 03.)
+
+### TOAST IAP
+
+#### 기능 개선
+
+* 원스토어 v16 아이템 조회 로직 개선
+
+## 0.30.0 (2022. 04. 26.)
+
+### TOAST Push
+
+#### 機能追加
+
+- ADM(Amazon Device Messaging) 追加
 
 ## 0.29.2 (2022. 03. 29.)
 

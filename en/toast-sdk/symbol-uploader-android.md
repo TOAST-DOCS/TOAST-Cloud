@@ -1,13 +1,13 @@
-## TOAST > TOAST SDK User Guide > TOAST Log & Crash > Android (Symbol Uploader)
+## NHN Cloud > SDK User Guide > Log & Crash > Android (Symbol Uploader)
 
 ## Prerequisites
 
-1. [Add TOAST Logger](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-android/) to your Android project.
-2. If your Android app includes native libraries, [add TOAST Crash Reporter for NDK](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-ndk/).
+1. [Add NHN Cloud Logger](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-android/) to your Android project.
+2. If your Android app includes native libraries, [add NHN Cloud Crash Reporter for NDK](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-ndk/).
 
 ## Library Setting
 
-Add the TOAST Gradle Plugin as a buildscript dependency to your project-level build.gradle file.
+Add the NHN Cloud Gradle Plugin as a buildscript dependency to your project-level build.gradle file.
 
 ```groovy
 buildscript {
@@ -18,7 +18,7 @@ buildscript {
     dependencies {
         // ...
 
-        // Add the TOAST Gradle Plugin
+        // Add the NHN Cloud Gradle Plugin
         classpath "com.toast.android:toast-gradle-plugin:0.0.1"
     }
 }
@@ -50,8 +50,8 @@ toastServices {
 
 ## Enable Native Symbol File Upload
 
-To generate readable stack trace from NDK crashes, TOAST Log & Crash Search needs to know the symbols of native binaries.
-TOAST Gradle Plugin includes an `uploadSymbolFile{BUILD_VARIANT}` task to automate uploading of native symbol files.
+To generate readable stack trace from NDK crashes, NHN Cloud Log & Crash Search needs to know the symbols of native binaries.
+NHN Cloud Gradle Plugin includes an `uploadSymbolFile{BUILD_VARIANT}` task to automate uploading of native symbol files.
 To enable this task, make sure `nativeSymbolUploadEnabled` is set to `true`.
 
 To enable the symbol file upload task, set `nativeSymbolUploadEnabled` to `true` in your app-level build.gradle file.
@@ -103,7 +103,7 @@ toastServices {
 
 ## Execute the File Upload Task
 
-To upload a mapping file or native symbol file to TOAST Log & Crash Search, you must explicitly call the upload task.
+To upload a mapping file or native symbol file to NHN Cloud Log & Crash Search, you must explicitly call the upload task.
 For example:
 
 ```
