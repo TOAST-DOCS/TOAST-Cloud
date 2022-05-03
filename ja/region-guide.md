@@ -48,6 +48,12 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |
 |  | 物理Load Balancer | リージョン | O | O |  |  |
+|  | Internet Gateway | リージョン | O | O | O | O |
+|  | Peering Gateway | リージョン | O | O | O | O |
+|  | Colocation Gateway | リージョン | O | O |  |  |
+|  | NAT Gateway | リージョン | O | O |  |  |
+|  | VPN Gateway(Site-to-Site VPN) | リージョン |  | O |  |  |
+|  | Service Gateway | リージョン | O | O |  |  |
 |  | DNS Plus | グローバル |  |  |  |  |
 | Storage | Block Storage | リージョン | O | O | O | O |
 |  | NAS (offline) | リージョン | O | O  |  | O |
