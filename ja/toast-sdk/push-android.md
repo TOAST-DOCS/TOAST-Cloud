@@ -110,14 +110,22 @@ apply plugin: 'com.google.gms.google-services'
 ### ADM SDKのダウンロード
 
 * Amazon Developerの[Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)からADM SDKをダウンロードします。
-* ダウンロードした**amazon-device-messaging-1.1.0.jar**ファイルをプロジェクトの**libs**フォルダに保存します。
+* ダウンロードした**amazon-device-messaging-1.1.0.jar**ファイルをプロジェクトの**amazon/libs**フォルダに保存します。
+
+#### アプリモジュールのbuild.gradle
+```groovy
+dependencies {
+    //...
+    compileOnly files('amazon/libs/amazon-device-messaging-1.1.0.jar')
+}
+```
 
 ### Proguard設定
 
 * Proguardを使用する場合 <b>[proguard-rules.pro](http://proguard-rules.pro)</b>ファイルに以下のように追加します。
 
 ```groovy
--libraryjars libs
+-libraryjars amazon/libs/amazon-device-messaging-1.1.0.jar
 -dontwarn com.amazon.device.messaging.**
 -keep class com.amazon.device.messaging.** { *; }
 -keep public class * extends com.amazon.device.messaging.ADMMessageReceiver
