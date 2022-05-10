@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 0.31.0 (2022. 05. 10.)
+
+### TOAST IAP
+
+#### 기능 추가
+
+* 원스토어 외부결제 추가
+
 ## 0.30.1 (May 3, 2022)
 
 ### TOAST IAP
