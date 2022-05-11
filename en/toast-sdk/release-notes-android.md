@@ -8,6 +8,12 @@
 
 * 원스토어 외부결제 추가
 
+### TOAST Push
+
+#### 기능 추가
+
+* 하나의 Firebase Project에 등록된 다수의 안드로이드 앱 지원
+
 ## 0.30.1 (May 3, 2022)
 
 ### TOAST IAP
