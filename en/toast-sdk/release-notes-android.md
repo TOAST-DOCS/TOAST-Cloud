@@ -1,5 +1,19 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 0.31.0 (May 10, 2022)
+
+### TOAST IAP
+
+#### Added
+
+* Added ONE store external payment
+
+### TOAST Push
+
+#### Added
+
+* Added support for multiple Android apps registered in one Firebase project
+
 ## 0.30.1 (May 3, 2022)
 
 ### TOAST IAP
