@@ -49,6 +49,12 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
 |  | Physical Load Balancer | Regional | O | O |  |  |
 |  | NAT Instance | Regional |  | O |  |  |
+|  | Internet Gateway | Regional | O | O | O | O |
+|  | Peering Gateway | Regional | O | O | O | O |
+|  | Colocation Gateway | Regional | O | O |  |  |
+|  | NAT Gateway | Regional | O | O |  |  |
+|  | VPN Gateway(Site-to-Site VPN) | Regional |  | O |  |  |
+|  | Service Gateway | Regional | O | O |  |  |
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
 |  | NAS (offline) | Regional | O | O |  | O |
