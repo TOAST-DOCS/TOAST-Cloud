@@ -19,6 +19,7 @@
 |CPU	| 프로젝트당 |100vCore|
 |메모리	 | 프로젝트당 |256GB|
 |Block Storage| 프로젝트당 |10TB|
+|볼륨당 최대 크기| volume당 |2048GB| 
 |Floating IP | 프로젝트당 |50개|
 |VPC | 프로젝트당 |3개|
 |서브넷 | VPC당 |10개|
