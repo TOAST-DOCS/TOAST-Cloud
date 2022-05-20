@@ -28,6 +28,8 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |리전 간 피어링 | VPC당 |10개| 
 |인터넷 게이트웨이 | 프로젝트당	|3개|
 |NAT 게이트웨이 | 프로젝트당 | 3개 | 
+|VPN 게이트웨이(Site-to-Site VPN) | VPC당 | 1개 | 
+|VPN 게이트웨이(Site-to-Site VPN) 연결 | 서브넷당 | 1개 | 
 |서비스 게이트웨이 | VPC당 | 10개 | 
 | Network Interface | 프로젝트당 | 500개 | 
 | Network ACL | 프로젝트당 | 10개 | 
