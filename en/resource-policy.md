@@ -18,6 +18,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Memory     | Per project |256GB|
 | Key Pair | Per project | 100 |
 |Block Storage| Per project |10TB|
+|Max Volume Size| Per volume |2048GB|
 |Floating IP | Per project |50|
 |VPC | Per project |3|
 |Subnet | Per VPC |10|
@@ -25,8 +26,11 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Route | Per routing table |10|
 |Static Route | Per subnet | 20 |
 |Region Peering | Per VPC  |10 | 
-|Internet Gateway | Per project    |3|
-|NAT Gateway | Per project | 3 | 
+|Project Peering |Per project  |10 |
+|Internet Gateway | Per project |3|
+|NAT Gateway | Per project | 3 |
+|VPN Gateway(Site-to-Site VPN) | Per VPC | 1 | 
+|VPN Gateway(Site-to-Site VPN) Connection | Per subnet | 1 |  
 |Service Gateway | Per VPC | 10 | 
 | Network Interface | Per project | 500 | 
 | Network ACL | Per project | 10 | 

@@ -557,7 +557,7 @@ void queryActivatedPurchases() {
 * 만료된 구독 상품은 includeExpiredSubscriptions 설정으로 조회 또는 제외할 수 있습니다. (default: false)
 * 구독 상품 상태는 ToastIap.querySubscriptionsStatus() 메서드를 사용하여 조회할 수 있습니다.
 * 조회 결과는 [IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener)를 통해 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체 리스트를 반환됩니다.
-* [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 사용하는 구독 상태 코드는 [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatusCode)에 정의되어 있습니다.
+* [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 사용하는 구독 상태 코드는 [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatuscode)에 정의되어 있습니다.
 
 ```
 현재 구독 상품은 Google Play 스토어만 지원합니다.
