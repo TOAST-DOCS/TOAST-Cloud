@@ -557,7 +557,7 @@ void queryActivatedPurchases() {
 * Expired subscription products can be included or excluded from the query with the includeExpiredSubscriptions setting. (default: false)
 * The status of subscription product can be queried by using the ToastIap.querySubscriptionsStatus() method.
 * Query results are returned as the [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) object list via [IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener).
-* The subscription status codes used by [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) are defined in [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatusCode).
+* The subscription status codes used by [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) are defined in [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatuscode).
 
 ```
 Subscription products are currently supported by Google Play Store only.
