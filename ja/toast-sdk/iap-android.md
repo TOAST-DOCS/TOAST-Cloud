@@ -556,7 +556,7 @@ void queryActivatedPurchases() {
 * 有効期限が切れたサブスクリプション商品はincludeExpiredSubscriptions設定で照会または除外できます。 (default：false)
 * サブスクリプション商品の状態はToastIap.querySubscriptionsStatus()メソッドを使用して照会できます。
 * 照会結果は[IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener)を介して[IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus)オブジェクトリストを返します。
-* [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus)使用するサブスクリプションステータスコードは[IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatusCode)に定義されています。
+* [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus)使用するサブスクリプションステータスコードは[IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatuscode)に定義されています。
 
 ```
 現在サブスクリプション商品はGoogle Playストアのみサポートします。
