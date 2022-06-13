@@ -51,6 +51,7 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Network | Build virtual private network and provide public IP which is accessible from outside.|
 | Storage | The storage service has high availability and stability. |
 | Database | With no need of complicated installation or setting, relational database is made available in the cloud environment. |
+| Hybrid & Private Cloud | NHN Private Cloud is a service for building hybrid and private clouds. |
 | Game | Useful platforms are supported for game development. |
 | Security | Security can be enhanced through the platforms. |
 | Content Delivery | Image saving and fast content distribution are available. |
