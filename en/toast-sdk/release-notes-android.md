@@ -4,6 +4,14 @@
 
 ### TOAST IAP
 
+## 0.31.1 (2022. 06. 14.)
+
+### TOAST Logger
+
+#### 기능 개선
+
+* TOAST Logger 안정화
+
 #### Added
 
 * Added ONE store external payment

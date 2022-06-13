@@ -23,16 +23,16 @@ NHN Cloud SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.toast.android:toast-common:0.31.0       | Common      |
-| com.toast.android:toast-core:0.31.0         | Core        |
-| com.toast.android:toast-logger:0.31.0       | Log & Crash |
-| com.toast.android:toast-crash-reporter-ndk:0.31.0       | Native Crash Reporter |
-| com.toast.android:toast-iap-core:0.31.0     | In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.31.0   | In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.31.0 | In-app Purchase <br>ONE store |
-| com.toast.android:toast-iap-galaxy:0.31.0 | In-app Purchase <br>Galaxy Store |
-| com.toast.android:toast-push-core:0.31.0    | Push Core   |
-| com.toast.android:toast-push-fcm:0.31.0    | Push <br>Firebase Cloud Messaging |
+| com.toast.android:toast-common:0.31.1       | Common      |
+| com.toast.android:toast-core:0.31.1         | Core        |
+| com.toast.android:toast-logger:0.31.1       | Log & Crash |
+| com.toast.android:toast-crash-reporter-ndk:0.31.1       | Native Crash Reporter |
+| com.toast.android:toast-iap-core:0.31.1     | In-app Purchase Core |
+| com.toast.android:toast-iap-google:0.31.1   | In-app Purchase <br>Google Play Store |
+| com.toast.android:toast-iap-onestore:0.31.1 | In-app Purchase <br>ONE store |
+| com.toast.android:toast-iap-galaxy:0.31.1 | In-app Purchase <br>Galaxy Store |
+| com.toast.android:toast-push-core:0.31.1    | Push Core   |
+| com.toast.android:toast-push-fcm:0.31.1    | Push <br>Firebase Cloud Messaging |
 
 ## NHN Cloud SDK를 Android Studio 프로젝트에 적용
 
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-sdk:0.31.0'
+  implementation 'com.toast.android:toast-sdk:0.31.1'
 }
 ```
 
