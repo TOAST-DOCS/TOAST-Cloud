@@ -4,9 +4,9 @@
 
 ### TOAST Logger
 
-#### 기능 개선
+#### 機能改善
 
-* TOAST Logger 안정화
+* TOAST Logger安定化
 
 ## 0.31.0 (2022. 05. 10.)
 
