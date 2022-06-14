@@ -1,58 +1,51 @@
-## NHN Cloud > 安全策略
+## NHN Cloud > Security Policy 
 
-NHN Cloud通过提供安全服务、安全策略、漏洞信息等内容，为客户创造更安全的安全环境。
-为保护客户资产免受各种新型攻击技术和安全漏洞的影响，我们提供如下可防范云环境中常见的安全事件及威胁的安全策略。
+NHN Cloud guides for security products, security policy, and vulnerability information, to provide safer security environment.
+Security policy is provided as below, to protect customer's resources from new and various types of attacks and security vulnerabilities, and prepare against frequent accidents and threats in the cloud.
 
-## 密码策略
-用户设置账号（root及一般账号）密码时，若设置易猜测的密码，未经授权的用户可通过猜测密码获取一般账号或root权限，访问系统。这会导致服务器中保存的重要数据泄露或被恶意利用为黑客入侵的中转服务器，因此应设置安全的密码并进行管理。
+## Password Policy 
+To set passwords for user accounts (both root and general accounts), general passwords that are easy to guess may be cracked by unauthorized users and obtain authority for general or root accounts and access systems. As this may result in the leakage of important data saved in the server or abused as hackers' stop, a safe password must be set and managed. .
 
-### 何为安全的密码
-由8位以上的英文字母、数字、特殊字符组合构成。不应使用如下可猜测密码。
+### Safe Passwords
+Must be comprised of 8 or more characters, in combination of alphabets, numbers, and special characters. Following passwords should be avoided as they are easy to guess: 
 
-- null密码
-- 仅由字符和数字组成
-- 与用户ID相同的密码
-- 连续字符或数字（例：1111, 1234, adcd等）
-- 定期重新使用密码
-- 如电话号码、生日、账号名、主机名等易猜测的密码
+- null Passwords
+- Comprised only of characters or numbers 
+- Same as user ID 
+- 4 or more consecutive characters or numbers (e.g: 1111, 1234, or adcd)
+- Periodic reuses 
+- Composed of phone number, birthday, account name, or host name, which are easy to guess 
 
-### NHN Cloud密码策略
-为保护客户宝贵的资产和服务，NHN Cloud默认应用如下密码政策。
+### NHN Cloud Password Policy 
+To protect customer's resources and services, NHN Cloud applies the following as the basic password policy.
 
-- 英文、数字、特殊字符3种组合
-- 最少8位以上
+- Combined with three types: Alphabets, Numbers, and Special Characters
+- Has more than 8 characters
 
-## DRDoS攻击阻断策略
-若面向外部网络开放的实例被恶意利用为DRDoS入侵的中转站，输出流量会异常增加，这可能导致服务故障或意外的流量计费。
+## Anti-DRDoS Policy
+Instances exposed to external networks may be abused as stops for Distributed Reflection Denial of Service, or DRDoS attacks, causing service failure or unintentional traffic charges due to abnormal increase in outbound traffic. 
 
-### 什么是DRDoS（Distributed Reflect DoS，分布式反射拒绝服务）？
-DRDoS是由DNS, NTP, SSDP, Memcached等应用程序中薄弱的设置导致的。使用大量的僵尸PC，把小型请求数据包做成大型响应数据包，可以使流量集中于目标服务器，因此是最近黑客入侵中常用的带宽渗透性入侵技术。
+### What is DRDoS (Distributed Reflection Denial of Service)?
+DRDoS occurs due to vulnerable settings of applications, such as DNS, NTP, SSDP, or Memcached. This bandwidth amplifying attack technique is widely used for recent hackings, as it creates a large response packet with small request packets by using a number of zombie computers, and causes traffic to be concentrated at a target server.
 
-### NHN Cloud DRDoS端口阻断策略
-为保护客户宝贵的资产和服务，NHN Cloud对常被恶意用作DRDoS入侵中转站的UDP端口实施阻断策略。
+### Anti-NHN Cloud DRDoS Port Policy
+To protect customer's resources and services, NHN Cloud blocks UDP ports which are frequently abused as stops for DRDoS attacks..
 
-### 阻断端口列表
-| 服务名 | 阻断端口 | 阻断方法 | 备注 |
-| ---- | ---- | ---- | ---- |
-| Chargen | UDP / 19 | 应用Network ACL阻断 | 外部无法访问 |
-| SSDP | UDP / 1900 | 应用Network ACL阻断 | 外部无法访问| 
-| Memcached | UDP / 11211 | 应用Network ACL阻断 | 外部无法访问 |
-
-### List of Blocked Internet Ports
-
-#### List of Blocked Internet Ports (NHN Cloud)
-| Region |Service Name |  Blocked Port  | Blocking Method |Reference|
-| ---- | ---- | ---- | ---- | ---- |
-| KOREA(Pangyo/Pyeongchon) <br> JAPAN(Tokyo) <br> USA(California) | System Terminal port | TCP / 23    | Network ACL | Inaccessible from outside |
-
-#### List of Blocked Internet Ports (TOAST G)
+### List of Blocked Ports
 |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- |
-| System Terminal port | TCP / 22, 23, 3389 | Network ACL | Inaccessible from outside | 
-| DBMS Port | TCP, UDP / 1433(MS-SQL), 1521(Oracle), 3306(MySQL) | Network ACL | Inaccessible from outside | 
-| Netbios Port | TCP, UDP / 135, 137, 138, 139, 445 | Network ACL | Inaccessible from outside | 
-| etc | TCP / 21(FTP), TCP / 5900(VNC) | Network ACL | Inaccessible from outside | 
+|Chargen | UDP / 19    | Network ACL | Inaccessible from outside |
+|SSDP    | UDP / 1900  | Network ACL | Inaccessible from outside |
+|Memcached   | UDP / 11211 | Network ACL | Inaccessible from outside |
 
+
+## Internet Port Blocking Policy (Inbound) 
+To protect customer service, the block-intrusion system is provided as well as security group which is managed under the control of customers.
+
+### TOAST G List of Blocked Ports 
+|Region | Service Name | Blocked Port | Blocking Method | Remarks |
+| ---- | ---- | ---- | ---- | ---- |
+| Korea (Pangyo/Pyeongchon) <br> Japan (Tokyo) <br> US (California) | System Terminal Port | TCP/23 | Blocked by network ACLs | Externally inaccessible |
 
 ### How to Apply for More Ports
 - Download the excel file below and fill in the form.
