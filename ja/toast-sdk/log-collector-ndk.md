@@ -25,10 +25,10 @@ repositories {
 dependencies {
     // ...
     // Add the NHN Cloud Logger dependency
-    implementation 'com.toast.android:toast-logger:0.31.0'
+    implementation 'com.toast.android:toast-logger:0.31.1'
 
     // Add the NHN Cloud Crash Reporter for NDK dependency
-    implementation 'com.toast.android:toast-crash-reporter-ndk:0.31.0'
+    implementation 'com.toast.android:toast-crash-reporter-ndk:0.31.1'
 }
 ```
 

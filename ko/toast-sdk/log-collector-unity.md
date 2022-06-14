@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-logger:0.31.0'
+    implementation 'com.toast.android:toast-unity-logger:0.31.1'
 **DEPS**}
 ```
 

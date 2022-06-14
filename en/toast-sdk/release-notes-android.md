@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 0.31.1 (June 14, 2022)
+
+### TOAST Logger
+
+#### Improved
+
+* Improved the stability of TOAST Logger
+
 ## 0.31.0 (May 10, 2022)
 
 ### TOAST IAP
