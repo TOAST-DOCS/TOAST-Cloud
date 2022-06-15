@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-google:0.31.0'
+  implementation 'com.toast.android:toast-iap-google:0.31.1'
 **DEPS**}
 ```
 
@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-onestore:0.31.0'
+  implementation 'com.toast.android:toast-iap-onestore:0.31.1'
 **DEPS**}
 ```
 
@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-galaxy:0.31.0'
+  implementation 'com.toast.android:toast-iap-galaxy:0.31.1'
 **DEPS**}
 ```
 
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-amazon:0.31.0'
+  implementation 'com.toast.android:toast-iap-amazon:0.31.1'
 **DEPS**}
 ```
 
@@ -97,7 +97,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.huawei.agconnect'
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-huawei:0.31.0'
+  implementation 'com.toast.android:toast-iap-huawei:0.31.1'
 **DEPS**}
 ```
 
