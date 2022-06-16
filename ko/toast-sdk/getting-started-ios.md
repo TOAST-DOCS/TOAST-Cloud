@@ -16,11 +16,11 @@
 
 | Service | Cocoapods Pod Name | Carthage | Framework | Dependency | Build Settings |
 | ------- | ------------------ | -------- | --------- | ---------- | -------------- |
-| All | ToastSDK | binary "https://nh.nu/toast" | ToastCore.framework<br>ToastCommon.framework<br>ToastLogger.framework<br>ToastIAP.framework<br>ToastPush.framework |  |  |
-| Mandatory | ToastCore<br>ToastCommon |  | ToastCore.framework<br>ToastCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
-| Log & Crash | ToastLogger |  | ToastLogger.framework | [External & Optional]<br>\* CrashReporter.framework (Toast) |  |
-| IAP | ToastIAP |  | ToastIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
-| Push | ToastPush |  | ToastPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
+| All | NHNCloudSDK | binary "https://nh.nu/toast" | NHNCloudCore.framework<br>NHNCloudCommon.framework<br>NHNCloudLogger.framework<br>NHNCloudIAP.framework<br>NHNCloudPush.framework |  |  |
+| Mandatory | NHNCloudCore<br>NHNCloudCommon |  | NHNCloudCore.framework<br>NHNCloudCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
+| Log & Crash | NHNCloudLogger |  | NHNCloudLogger.framework | [External & Optional]<br>\* CrashReporter.framework (NHNCloud) |  |
+| IAP | NHNCloudIAP |  | NHNCloudIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
+| Push | NHNCloudPush |  | NHNCloudPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
 
 ## NHN Cloud SDK를 Xcode 프로젝트에 적용
 
@@ -33,7 +33,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
-    pod 'ToastSDK'
+    pod 'NHNCloudSDK'
 end
 ```
 
@@ -101,10 +101,10 @@ binary "https://nh.nu/toast"
 * 사용하려는 프레임워크를 가져옵니다(import).
 
 ```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastLogger/ToastLogger.h>
-#import <ToastIAP/ToastIAP.h>
-#import <ToastPush/ToastPush.h>
+#import <NHNCloudCore/NHNCloudCore.h>
+#import <NHNCloudLogger/NHNCloudLogger.h>
+#import <NHNCloudIAP/NHNCloudIAP.h>
+#import <NHNCloudPush/NHNCloudPush.h>
 ```
 
 ## 사용자 아이디 설정
@@ -122,7 +122,7 @@ binary "https://nh.nu/toast"
 ### 사용자 아이디 설정 사용 예
 
 ```objc
-[ToastSDK setUserID:@"TOAST-USER"];
+[NHNCloudSDK setUserID:@"NHNCloud-USER"];
 ```
 ## 디버그 모드 설정
 
@@ -139,7 +139,7 @@ binary "https://nh.nu/toast"
 ### 디버그 모드 설정 사용 예
 
 ```objc
-[ToastSDK setDebugMode:YES];    // or NO
+[NHNCloudSDK setDebugMode:YES];    // or NO
 ```
 
 > [주의] 어플리케이션 배포시에는 디버그 모드를 `반드시` 비활성화해야 합니다.
