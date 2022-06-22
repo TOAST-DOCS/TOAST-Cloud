@@ -593,7 +593,7 @@ NHN Cloud IAP 콘솔에 등록된 상품의 정보를 확인할 수 있습니다
 ## 에러 코드
 ```objc
 // IAP 기능 관련 에러 코드
-static NSString *const NHNCloudIAPErrorDomain = @"com.toast.iap";
+static NSString *const NHNCloudIAPErrorDomain = @"com.nhncloud.iap";
 
 typedef NS_ENUM(NSUInteger, NHNCloudIAPError) {
     NHNCloudIAPErrorUnknown = 0,                       // 알 수 없음
@@ -618,7 +618,7 @@ typedef NS_ENUM(NSUInteger, NHNCloudIAPError) {
 };
 
 // 네트워크 관련 에러 코드
-static NSString *const NHNCloudHttpErrorDomain = @"com.toast.http";
+static NSString *const NHNCloudHttpErrorDomain = @"com.nhncloud.http";
 
 typedef NS_ENUM(NSUInteger, NHNCloudHttpError) {
     NHNCloudHttpErrorNetworkNotAvailable = 100,        // 네트워크 사용 불가

@@ -592,7 +592,7 @@ NHN Cloud IAPコンソールに登録された商品の情報を確認できま�
 ### エラーコード
 ```objc
 // IAPエラーコード
-static NSString *const NHNCloudIAPErrorDomain = @"com.toast.iap";
+static NSString *const NHNCloudIAPErrorDomain = @"com.nhncloud.iap";
 
 typedef NS_ENUM(NSUInteger, NHNCloudIAPError) {
     NHNCloudIAPErrorUnknown = 0,                       // 不明
@@ -617,7 +617,7 @@ typedef NS_ENUM(NSUInteger, NHNCloudIAPError) {
 };
 
 // Networkエラーコード
-static NSString *const NHNCloudHttpErrorDomain = @"com.toast.http";
+static NSString *const NHNCloudHttpErrorDomain = @"com.nhncloud.http";
 
 typedef NS_ENUM(NSUInteger, NHNCloudHttpError) {
     NHNCloudHttpErrorNetworkNotAvailable = 100,        // ネットワーク使用不可

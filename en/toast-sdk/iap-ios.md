@@ -593,7 +593,7 @@ Lets you check the purchase information.
 ## Error Codes
 ```objc
 // IAP Error
-static NSString *const NHNCloudIAPErrorDomain = @"com.toast.iap";
+static NSString *const NHNCloudIAPErrorDomain = @"com.nhncloud.iap";
 
 typedef NS_ENUM(NSUInteger, NHNCloudIAPError) {
     NHNCloudIAPErrorUnknown = 0,                       // Unknown
@@ -618,7 +618,7 @@ typedef NS_ENUM(NSUInteger, NHNCloudIAPError) {
 };
 
 // Network Error
-static NSString *const NHNCloudHttpErrorDomain = @"com.toast.http";
+static NSString *const NHNCloudHttpErrorDomain = @"com.nhncloud.http";
 
 typedef NS_ENUM(NSUInteger, NHNCloudHttpError) {
     NHNCloudHttpErrorNetworkNotAvailable = 100,        // Network is unavailable
