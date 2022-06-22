@@ -16,7 +16,7 @@
 
 | Service | Cocoapods Pod Name | Carthage | Framework | Dependency | Build Settings |
 | ------- | ------------------ | -------- | --------- | ---------- | -------------- |
-| All | NHNCloudSDK | binary "https://nh.nu/toast" | NHNCloudCore.framework<br>NHNCloudCommon.framework<br>NHNCloudLogger.framework<br>NHNCloudIAP.framework<br>NHNCloudPush.framework |  |  |
+| All | NHNCloudSDK | binary "https://nh.nu/nhncloudsdk" | NHNCloudCore.framework<br>NHNCloudCommon.framework<br>NHNCloudLogger.framework<br>NHNCloudIAP.framework<br>NHNCloudPush.framework |  |  |
 | Mandatory | NHNCloudCore<br>NHNCloudCommon |  | NHNCloudCore.framework<br>NHNCloudCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
 | Log & Crash | NHNCloudLogger |  | NHNCloudLogger.framework | [External & Optional]<br>\* CrashReporter.framework (NHNCloud) |  |
 | IAP | NHNCloudIAP |  | NHNCloudIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
@@ -43,10 +43,10 @@ end
 
 ```sh
 # Full URL
-binary "https://api-storage.cloud.toast.com/v1/AUTH_f9e3dc598ca142d3820e1c19343d5428/carthage/ToastSDK.json"
+binary "https://api-storage.cloud.toast.com/v1/AUTH_f9e3dc598ca142d3820e1c19343d5428/carthage/NHNCloudSDK.json"
 
 # Short URL
-binary "https://nh.nu/toast"
+binary "https://nh.nu/nhncloudsdk"
 ```
 
 * Add the frameworks in the created Carthage/Build folder to the Xcode project.

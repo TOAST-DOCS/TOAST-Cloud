@@ -16,7 +16,7 @@
 
 | Service | Cocoapods Pod Name | Carthage | Framework | Dependency | Build Settings |
 | ------- | ------------------ | -------- | --------- | ---------- | -------------- |
-| All | NHNCloudSDK | binary "https://nh.nu/toast" | NHNCloudCore.framework<br>NHNCloudCommon.framework<br>NHNCloudLogger.framework<br>NHNCloudIAP.framework<br>NHNCloudPush.framework |  |  |
+| All | NHNCloudSDK | binary "https://nh.nu/nhncloudsdk" | NHNCloudCore.framework<br>NHNCloudCommon.framework<br>NHNCloudLogger.framework<br>NHNCloudIAP.framework<br>NHNCloudPush.framework |  |  |
 | Mandatory | NHNCloudCore<br>NHNCloudCommon |  | NHNCloudCore.framework<br>NHNCloudCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
 | Log & Crash | NHNCloudLogger |  | NHNCloudLogger.framework | [External & Optional]<br>\* CrashReporter.framework (NHNCloud) |  |
 | IAP | NHNCloudIAP |  | NHNCloudIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
@@ -43,13 +43,13 @@ end
 
 ```sh
 # Full URL
-binary "https://api-storage.cloud.toast.com/v1/AUTH_f9e3dc598ca142d3820e1c19343d5428/carthage/ToastSDK.json" 
+binary "https://api-storage.cloud.toast.com/v1/AUTH_f9e3dc598ca142d3820e1c19343d5428/carthage/NHNCloudSDK.json" 
 
-# Short URL 
-binary "https://nh.nu/toast"
+# Short URL
+binary "https://nh.nu/nhncloudsdk"
 ```
 
-* 생성된 Carthage/Build 폴더의 Framework를 Xcode 프로젝트에 추가합니다. 
+* 생성된 Carthage/Build 폴더의 Framework를 Xcode 프로젝트에 추가합니다.
 ![carthage_import_framework](http://static.toastoven.net/toastcloud/sdk/ios/carthage01.png)
 
 * 프로젝트에 다음과 같이 프레임워크(framework)가 추가된 것을 확인합니다.
@@ -59,7 +59,7 @@ binary "https://nh.nu/toast"
 * NHN Cloud SDK를 사용하려면 **프레임워크 설정**과 **프로젝트 설정**을 해야합니다.
 
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
-> 서비스별로 필요한 Framework는 [NHN Cloud SDK의 구성](./getting-started-ios/#toast-sdk)에서 확인할 수 있습니다. 
+> 서비스별로 필요한 Framework는 [NHN Cloud SDK의 구성](./getting-started-ios/#toast-sdk)에서 확인할 수 있습니다.
 
 ### 3. 바이너리를 다운로드하여 NHN Cloud SDK 적용
 
