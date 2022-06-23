@@ -1,8 +1,5 @@
 ## NHN Cloud > SDK使用ガイド > Log & Crash > iOS
 
-> [告知]
-> NHN Cloud SDK 0.13.0でarm64eアーキテクチャを使用する機器(iPhone XS、XR、XS Max、iPad Pros 3rd)で発生したクラッシュ集計、分析が可能です。
-
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)をインストールします。
@@ -15,8 +12,8 @@
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
-| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+| Log & Crash | NHNCloudLogger | NHNCloudLogger.framework | [External & Optional]<br/> * CrashReporter.framework (NHNCloud) |  |
+| Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## NHN Cloud Logger SDKをXcodeプロジェクトに適用
 
@@ -29,7 +26,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
-    pod 'ToastLogger'
+    pod 'NHNCloudLogger'
 end
 ```
 
@@ -38,19 +35,19 @@ end
 #### Link Frameworks
 
 * NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページで、全体iOS SDKをダウンロードできます。
-* Xcode Projectに**ToastLogger.framework**、**ToastCore.framework**、**ToastCommon.framework**を追加します。
+* Xcode Projectに**NHNCloudLogger.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework**を追加します。
 * NHN Cloud LoggerのCrash Report機能を使用するには、一緒に配布される**CrashReporter.framework**もプロジェクトに追加する必要があります。
-![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
+![linked_frameworks_logger](https://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger_202206.png)
 
 #### Project Settings
 
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 * **CrashReporter.framewor**を直接ダウンロードするか、ビルドした場合は**Build Settings**の**Enable Bitcode**の値を**NO**に変更する必要があります。
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
-![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。
 
 ## NHN Cloud Symbol Uploader適用
@@ -66,14 +63,14 @@ end
 * Shell(シェル)フィールドの下にあるスクリプトフィールドで新しい実行スクリプトを追加します。
 ```
 if [ "${CONFIGURATION}" = "Debug" ]; then
-    ${PODS_ROOT}/ToastSymbolUploader/toastcloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
+    ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.ios.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
 * LOG_N_CRASH_SEARCH_APPKEYにはLog&Crash SearchのAppKeyを入力する必要があります。
 * Run Scriptセクションの下にあるInput FilesにdSYMの基本パスを設定します。
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
-![symbol_uploader_script_pods_path](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path.png)
+![symbol_uploader_script_pods_path](https://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path_202206.png)
 
 ### Symbol Uploaderを使用して直接アップロード
 
@@ -110,7 +107,7 @@ OPTIONS:
 ### CrashReport 使用時注意事項
 
 * arm64eアーキテクチャを使用する機器のクラッシュ・分析のためにはNHN Cloud Loggerと一緒に配布されるPLCrashReporterを使用しなければなりません。
-      * TOASTの[Downloads](../../../Download/#toast-sdk)ページではない他の場所でダウンロードしたり、直接ビルドしたPLCrashReporterを使用する場合、arm64eアーキテクチャを使用する機器のクラッシュ分析が不可能です。
+      * NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページではない他の場所でダウンロードしたり、直接ビルドしたPLCrashReporterを使用する場合、arm64eアーキテクチャを使用する機器のクラッシュ分析が不可能です。
 
 ## NHN Cloud Logger SDK初期化
 
@@ -120,14 +117,14 @@ OPTIONS:
 
 ``` objc
 // 初期化
-+ (void)initWithConfiguration:(ToastLoggerConfiguration *)configuration;
++ (void)initWithConfiguration:(NHNCloudLoggerConfiguration *)configuration;
 ```
 
 ### 初期化プロセス例
 
 ```objc
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
-[ToastLogger initWithConfiguration:configuration];
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
+[NHNCloudLogger initWithConfiguration:configuration];
 ```
 
 ## ログ送信
@@ -156,7 +153,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### ログ送信API使用例
 
 ```objc
-[ToastLogger info:@"NHN Cloud Log & Crash Search!"];
+[NHNCloudLogger info:@"NHN Cloud Log & Crash Search!"];
 ```
 
 ## ユーザー定義フィールド設定
@@ -183,7 +180,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### ユーザー定義フィールド使用例
 ```objc
 // ユーザー定義フィールド追加
-[ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
+[NHNCloudLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
 ## クラッシュログの収集
@@ -202,18 +199,16 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 #### CrashReporter有効化
 ```objc
 // CrashReporter Enable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
-                                                                        enableCrashReporter:YES];
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
 
-[ToastLogger initWithConfiguration:configuration];
+[NHNCloudLogger initWithConfiguration:configuration];
 ```
 #### CrashReporter無効化
 ```objc
 // CrashReporter Disable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
-                                                                        enableCrashReporter:NO];
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:NO];
 
-[ToastLogger initWithConfiguration:configuration];
+[NHNCloudLogger initWithConfiguration:configuration];
 ```
 
 ## クラッシュ発生時に追加情報を設定して送信
@@ -229,10 +224,10 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### Data Adapter使用例
 
 ```objc
-[ToastLogger setShouldReportCrashHandler:^{
+[NHNCloudLogger setShouldReportCrashHandler:^{
   // ユーザー定義フィールドを通してCrashが発生した状況から得たい情報を一緒に送信
   // ユーザー定義フィールド追加
-  [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
+  [NHNCloudLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 
 }];
 ```
@@ -244,25 +239,25 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 ### Delegate API仕様
 ```objc
-+ (void)setDelegate:(id<ToastLoggerDelegate>) delegate;
++ (void)setDelegate:(id<NHNCloudLoggerDelegate>) delegate;
 ```
 
 ### Delegate API仕様
 
 ``` objc
-@protocol ToastLoggerDelegate <NSObject>
+@protocol NHNCloudLoggerDelegate <NSObject>
 @optional
 // ログ送信成功
-- (void)toastLogDidSuccess:(ToastLog *)log;
+- (void)nhnCloudLogDidSuccess:(NHNCloudLog *)log;
 
 // ログ送信失敗
-- (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error;
+- (void)nhnCloudLogDidFail:(NHNCloudLog *)log error:(NSError *)error;
 
 // ネットワーク切断などの理由でログの送信に失敗した場合、再送信のためにSDK内部保存
-- (void)toastLogDidSave:(ToastLog *)log;
+- (void)nhnCloudLogDidSave:(NHNCloudLog *)log;
 
 // ログフィルタリング
-- (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter;
+- (void)nhnCloudLogDidFilter:(NHNCloudLog *)log logFilter:(NHNCloudLogFilter *)logFilter;
 @end
 ```
 
@@ -270,9 +265,9 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### Delegate使用例
 
 ```objc
-#import <ToastLogger/ToastLogger.h>
+#import <NHNCloudLogger/NHNCloudLogger.h>
 
-@interface AppDelegate () <UIApplicationDelegate, ToastLoggerDelegate>
+@interface AppDelegate () <UIApplicationDelegate, NHNCloudLoggerLoggerDelegate>
 
 @end
 
@@ -284,34 +279,33 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
     // ...
 
     // 初期化
-    ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
-                                                                            enableCrashReporter:YES];
-    [ToastLogger initWithConfiguration:configuration];
+    NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
+    [NHNCloudLogger initWithConfiguration:configuration];
 
     // Delegate設定
-    [[ToastLogger setDelegate:self];
+    [[NHNCloudLogger setDelegate:self];
 
     return YES;
 }
 
-#pragma mark - ToastLoggerDelegate
+#pragma mark - NHNCloudLoggerDelegate
 // ログ送信成功
-- (void)toastLogDidSuccess:(ToastLog *)log {
+- (void)nhnCloudLogDidSuccess:(NHNCloudLog *)log {
       // ...
  }
 
 // ログ送信失敗
-- (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error {
+- (void)nhnCloudLogDidFail:(NHNCloudLog *)log error:(NSError *)error {
       // ...
 }
 
 // ネットワーク切断などの理由でログ送信に失敗した場合、再送信のためにSDK内部保存
-- (void)toastLogDidSave:(ToastLog *)log {
+- (void)nhnCloudLogDidSave:(NHNCloudLog *)log {
       // ...
 }
 
 // ログフィルタリング
-- (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter {
+- (void)nhnCloudLogDidFilter:(NHNCloudLog *)log logFilter:(NHNCloudLogFilter *)logFilter {
       // ...
 }
 

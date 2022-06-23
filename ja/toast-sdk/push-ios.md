@@ -15,8 +15,8 @@
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| NHN Cloud Push | ToastPush | ToastPush.framework | UserNotifications.framework<br/><br/>[ToastVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
-| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+| NHN Cloud Push | NHNCloudPush | NHNCloudPush.framework | UserNotifications.framework<br/><br/>[NHNCloudVoIP]<br/>PushKit.framework<br/>CallKit.framework | |
+| Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## NHN Cloud Push SDKをXcodeプロジェクトに適用
 
@@ -29,7 +29,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
-    pod 'ToastPush'
+    pod 'NHNCloudPush'
 end
 ```
 
@@ -38,30 +38,27 @@ end
 #### フレームワーク設定
 
 * NHN Cloudの [Downloads](../../../Download/#toast-sdk)ベージでiOS SDKをダウンロードできます。
-* Xcode Projectに、**ToastPush.framework**、 **ToastCore.framework**、 **ToastCommon.framework**、 **UserNotifications.framework**を追加します。
+* Xcode Projectに、**NHNCloudPush.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, UserNotifications.framework**を追加します。
 * UserNotifications.frameworkは下記の方法で追加できます。
-![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
+![linked_usernotifications_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications_202206.png)
 
 #### プロジェクト設定
 
 * **Build Settings**の**Other Linker Flags**に、 **-lc++** と **-ObjC**の項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 ### Capabilities設定
 
 * NHN Cloud Pushを使用するには、Capabilitiesで**Push Notification**、 **Background Modes**の項目を有効化する必要があります。
     * **Project Target > Signing & Capabilities > + Capability > Push Notification**
-![add_capability_push_notifications](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications.png)
+![add_capability_push_notifications](https://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications_202206.png)
     * **Project Target > Signing & Capabilities > + Capability > Background Modes**
-![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
+![add_capability_background_modes](https://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes_202206.png)
     * **Background Modes**の項目の中で、**Remote notifications**を有効化してください。
-![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities.png)
+![capabilities](https://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_202206.png)
 
 ## Xcode11 / iOS13の変更点
-* 共通
-    * Xcode11でNHN Cloud SDK 0.18.0未満のバージョンを使用するプロジェクトは、iOS13でトークン登録に失敗する問題が発生します。
-    * `Xcode11以上を使用する場合、NHN Cloud SDK 0.18.0以上のバージョンを利用してください。(Xcode11, iOS13)`
 * VoIP
     * iOS13以上から、VoIPメッセージを受信後に、CallKitへレポートしないとメッセージの受信が制限されます。([PushKit pushRegistryガイド](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
     * CallKitを使用した電話受信画面は、アプリに直接と実装する必要があります。
@@ -77,7 +74,7 @@ end
 
 ``` objc
 // サービスログイン、ユーザーID設定
-[ToastSDK setUserID:@"INPUT_USER_ID"];
+[NHNCloudSDK setUserID:@"INPUT_USER_ID"];
 ```
 
 ### ログアウト
@@ -86,48 +83,48 @@ end
 
 ``` objc
 // サービスログアウト、ユーザーIDをnilに設定
-[ToastSDK setUserID:nil];
+[NHNCloudSDK setUserID:nil];
 ```
 
 ## NHN Cloud Push SDK初期化
 
 * `初期化をしない状態では、トークン登録、および照会機能を使用できません。`
-* [ToastPushConfiguration](./push-ios/#toastpushconfiguration) オブジェクトにNHN Cloudクラウドサーバーで発行されたPush AppKeyを設定します。
-* `開発環境では、必ずToastPushConfigurationのsandboxプロパティをYESに設定しないと、開発用認証書で送信したメッセージの受信ができません。`
+* [NHNCloudPushConfiguration](./push-ios/#nhncloudpushconfiguration) オブジェクトにNHN Cloudクラウドサーバーで発行されたPush AppKeyを設定します。
+* `開発環境では、必ずNHNCloudPushConfigurationのsandboxプロパティをYESに設定しないと、開発用認証書で送信したメッセージの受信ができません。`
 
 ### 初期化APIの明細
 
 ``` objc
 // 初期化、およびDelegate設定
-+ (void)initWithConfiguration:(ToastPushConfiguration *)configuration
-                     delegate:(nullable id<ToastPushDelegate>)delegate;
++ (void)initWithConfiguration:(NHNCloudPushConfiguration *)configuration
+                     delegate:(nullable id<NHNCloudPushDelegate>)delegate;
 
 // 初期化
-+ (void)initWithConfiguration:(ToastPushConfiguration *)configuration;
++ (void)initWithConfiguration:(NHNCloudPushConfiguration *)configuration;
 
 // Delegate設定
-+ (void)setDelegate:(nullable id<ToastPushDelegate>)delegate;
++ (void)setDelegate:(nullable id<NHNCloudPushDelegate>)delegate;
 ```
 
 ### Delegate API明細
-* アプリが実行中の状態で通知メッセージを受信すると、[ToastPushMessage](./push-ios/#toastpushmessage) オブジェクトで受信したメッセージの内容が伝達されます。
-* ユーザーが通知を実行(クリック)してアプリが実行された時、[ToastPushMessage](./push-ios/#toastpushmessage)オブジェクトで実行された通知メッセージの内容がユーザーに通知されます。
-* ユーザーが通知内のボタンを実行(クリック)した時、[ToastPushNotificationAction](./push-ios/#toastpushnotificationaction)オブジェクトが実行されたボタンのアクション情報がシステムに伝達されます。
+* アプリが実行中の状態で通知メッセージを受信すると、[NHNCloudPushMessage](./push-ios/#nhncloudpushmessage) オブジェクトで受信したメッセージの内容が伝達されます。
+* ユーザーが通知を実行(クリック)してアプリが実行された時、[NHNCloudPushMessage](./push-ios/#nhncloudpushmessage)オブジェクトで実行された通知メッセージの内容がユーザーに通知されます。
+* ユーザーが通知内のボタンを実行(クリック)した時、[NHNCloudPushNotificationAction](./push-ios/#nhncloudpushnotificationaction)オブジェクトが実行されたボタンのアクション情報がシステムに伝達されます。
 * `スムーズにメッセージ受信が行えるように、application:didFinishLaunchingWithOptions: 関数でDelegate設定をお勧めいたします。`
 
 ``` objc
-@protocol ToastPushDelegate <NSObject>
+@protocol NHNCloudPushDelegate <NSObject>
 
 @optional
 
 // メッセージ受信
-- (void)didReceiveNotificationWithMessage:(ToastPushMessage *)message;
+- (void)didReceiveNotificationWithMessage:(NHNCloudPushMessage *)message;
 
 // 通知実行(クリック)
-- (void)didReceiveNotificationResponseWithMessage:(ToastPushMessage *)message
+- (void)didReceiveNotificationResponseWithMessage:(NHNCloudPushMessage *)message
 
 // 通知アクション(ボタン)実行
-- (void)didReceiveNotificationAction:(ToastPushNotificationAction *)action
+- (void)didReceiveNotificationAction:(NHNCloudPushNotificationAction *)action
 
 @end
 ```
@@ -135,9 +132,9 @@ end
 ### 初期化、およびDelegate設定例
 
 ``` objc
-#import <ToastPush/ToastPush.h>
+#import <NHNCloudPush/NHNCloudPush.h>
 
-@interface AppDelegate () <UIApplicationDelegate, ToastPushDelegate>
+@interface AppDelegate () <UIApplicationDelegate, NHNCloudPushDelegate>
 
 @end
 
@@ -149,7 +146,7 @@ end
     // ...
 
     // 設定オブジェクトを作成します。
-    ToastPushConfiguration *configuration = [[ToastPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
+    NHNCloudPushConfiguration *configuration = [[NHNCloudPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
 
 #if DEBUG
     // 開発環境(Debug)では、必ず、以下のsandboxプロパティをYESに設定しなければなりません。設定しないと、開発用認証書で送信したメッセージの受信ができなくなります。
@@ -157,32 +154,32 @@ end
 #endif
 
     // 初期化と同時に、Delegateを設定します。
-    [ToastPush initWithConfiguration:configuration
-                            delegate:self];
+    [NHNCloudPush initWithConfiguration:configuration
+                               delegate:self];
 
     return YES;
 }
 
-#pragma mark - ToastPushDelegate
+#pragma mark - NHNCloudPushDelegate
 // メッセージ受信
-- (void)didReceiveNotificationWithMessage:(ToastPushMessage *)message {
+- (void)didReceiveNotificationWithMessage:(NHNCloudPushMessage *)message {
     // ...
 }
 
 // 通知応答(実行)
-- (void)didReceiveNotificationResponseWithMessage:(ToastPushMessage *)message {
+- (void)didReceiveNotificationResponseWithMessage:(NHNCloudPushMessage *)message {
     // ...
 }
 
 // 通知アクション(ボタン、返信)実行
-- (void)didReceiveNotificationAction:(ToastPushNotificationAction *)action {
+- (void)didReceiveNotificationAction:(NHNCloudPushNotificationAction *)action {
     // ...
 }
 ```
 
 ## 通知オプションの設定
 
-* [ToastNotificationOptions](./push-ios/#toastnotificationoptions) オブジェクトで通知オプション設定が可能です。
+* [NHNCloudNotificationOptions](./push-ios/#nhncloudnotificationoptions) オブジェクトで通知オプション設定が可能です。
 
 | オプション名 | 説明 | デフォルト値 |
 | --- | --- | --- |
@@ -194,23 +191,23 @@ end
 ### 通知オプション設定API
 
 ``` objc
-+ (void)setNotificationOptions:(nullable ToastNotificationOptions *)options;
++ (void)setNotificationOptions:(nullable NHNCloudNotificationOptions *)options;
 ```
 
 ### 通知オプションの設定例
 
 ``` objc
-ToastNotificationOptions *options = [[ToastNotificationOptions alloc] init];
+NHNCloudNotificationOptions *options = [[NHNCloudNotificationOptions alloc] init];
 options.foregroundEnabled = YES;    // フォアグラウンド通知使用設定 (default : NO)
 options.badgeEnabled = YES;         // バッジアイコン使用設定 (default : YES)
 options.soundEnabled = YES;         // 通知音使用設定(default : YES)
 
-[ToastPush setNotificationOptions:options];
+[NHNCloudPush setNotificationOptions:options];
 ```
 
 ## トークン登録
 
-* 発行されたトークン情報をNHN Cloudクラウドサーバーに登録します。この時、受信同意(ToastPushAgreement)をパラメーターで伝達します。
+* 発行されたトークン情報をNHN Cloudクラウドサーバーに登録します。この時、受信同意(NHNCloudPushAgreement)をパラメーターで伝達します。
 * 初めて実行される際、ユーザーに通知を許可するかどうかを返信するようリクエストします。ユーザーからの通知許諾が得られなかった場合、トークン登録は失敗します。
 * 初回登録時にユーザーIDが設定されていない場合は、デバイス識別子を使用して登録します。
 
@@ -219,27 +216,27 @@ options.soundEnabled = YES;         // 通知音使用設定(default : YES)
 * 韓国における情報通信網法の規定(第50条から第50条の8)に基づき、トークン登録時の通知/広報性/夜間の広報性Pushメッセージ受信に関して、同意するかも、同時に入力されます。メッセージの送信時に、ユーザーが受信同意をしているかを基準に自動的にフィルタリングします。
     * [KISAガイドへのショートカット（韓国語）](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [法令へ（韓国語）](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* [ToastPushAgreement](./push-ios/#toastpushagreement) オブジェクトにユーザー通知メッセージの同意情報を設定します。
+* [NHNCloudPushAgreement](./push-ios/#nhncloudpushagreement) オブジェクトにユーザー通知メッセージの同意情報を設定します。
 ### トークン登録、および受信同意設定API
 
 ``` objc
 // トークン登録、および受信同意設定
-+ (void)registerWithAgreement:(ToastPushAgreement *)agreement
-            completionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
++ (void)registerWithAgreement:(NHNCloudPushAgreement *)agreement
+            completionHandler:(nullable void (^)(NHNCloudPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 
 // すでに設定された受信同意情報を使用してトークン登録
-+ (void)registerWithCompletionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
++ (void)registerWithCompletionHandler:(nullable void (^)(NHNCloudPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 ```
 
 ### トークン登録、および受信同意設定例
 
 ``` objc
-ToastPushAgreement *agreement = [[ToastPushAgreement alloc] initWithAllowNotifications:YES]; // 通知メッセージの受信同意
+NHNCloudPushAgreement *agreement = [[NHNCloudPushAgreement alloc] initWithAllowNotifications:YES]; // 通知メッセージの受信同意
 agreement.allowAdvertisements = YES;        // 広報性メッセージの受信同意
 agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセージの受信同意
 
-[ToastPush registerWithAgreement:agreement
-               completionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
+[NHNCloudPush registerWithAgreement:agreement
+                  completionHandler:^(NHNCloudPushTokenInfo *tokenInfo, NSError *error) {
 
     if (error == nil) {
         // トークン登録成功
@@ -255,18 +252,18 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 ## トークン情報照会
 
 * 現在のデバイスで最後に登録に成功したトークンと設定情報を照会します。
-* トークン照会が成功すると、 [ToastPushTokenInfo](./push-ios/#toastpushtokeninfo) オブジェクトにトークン設定情報を返します。
+* トークン照会が成功すると、 [NHNCloudPushTokenInfo](./push-ios/#nhncloudpushtokeninfo) オブジェクトにトークン設定情報を返します。
 
 ### トークン情報照会API
 
 ``` objc
-+ (void)queryTokenInfoWithCompletionHandler:(void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
++ (void)queryTokenInfoWithCompletionHandler:(void (^)(NHNCloudPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 ```
 
 ### トークン情報照会の例
 
 ``` objc
-[ToastPush queryTokenInfoWithCompletionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
+[NHNCloudPush queryTokenInfoWithCompletionHandler:^(NHNCloudPushTokenInfo *tokenInfo, NSError *error) {
     if (error == nil) {
         // トークン情報照会成功
         NSLog(@"Successfully query token info : %@", [tokenInfo description]);
@@ -293,10 +290,10 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 ### トークン解除例
 
 ``` objc
-[ToastPush unregisterWithCompletionHandler:^(NSString *deviceToken, NSError *error) {
+[NHNCloudPush unregisterWithCompletionHandler:^(NSString *deviceToken, NSError *error) {
     if (error == nil) {
         // トークン解除成功
-        NSLog(@"Successfully unregistered token : %@", deviceToken);
+        NSLog(@"Successfully unregistered token : %@", deviceToken);
 
     } else {
         // トークン解除失敗
@@ -309,7 +306,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 * リッチメッセージは、通知のタイトル、本文とともにメディア(イメージ、ビデオ、オーディオ)を通知に表現し、ボタン、返信などのアクションを追加します。
 * `リッチメッセージの受信は、iOS 10.0+ 以上からサポートします。`
-* リッチメッセージの表示には、ユーザーアプリケーションにToastPushServiceExtensionを継承するNotification Service Extensionを実装する必要があります。(Notification Service Extensionの追加方法は、[Notification Service Extension](./push-ios/#notification-service-extension) セクションを参照)
+* リッチメッセージの表示には、ユーザーアプリケーションにNHNCloudPushServiceExtensionを継承するNotification Service Extensionを実装する必要があります。(Notification Service Extensionの追加方法は、[Notification Service Extension](./push-ios/#notification-service-extension) セクションを参照)
 
 ### サポートするリッチメッセージ
 
@@ -317,10 +314,10 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 | タイプ | 機能 | アクション |
 | --- | ------- | --- |
-| アプリを開く(OPEN_APP) | アプリケーション実行 | ToastPushNotificationActionOpenApp |
-| URLを開く(OPEN_URL) | URLに移動<br/>(ウェブサイトのURL、またはアプリカスタムスキームを実行) | ToastPushNotificationActionOpenURL |
-| 返信(REPLY) | 通知から返信を転送 | ToastPushNotificationActionReply |
-| 取消(DISMISS) | 現在の通知を取消| ToastPushNotificationActionDismiss |
+| アプリを開く(OPEN_APP) | アプリケーション実行 | NHNCloudPushNotificationActionOpenApp |
+| URLを開く(OPEN_URL) | URLに移動<br/>(ウェブサイトのURL、またはアプリカスタムスキームを実行) | NHNCloudPushNotificationActionOpenURL |
+| 返信(REPLY) | 通知から返信を転送 | NHNCloudPushNotificationActionReply |
+| 取消(DISMISS) | 現在の通知を取消| NHNCloudtPushNotificationActionDismiss |
 
 > ボタンは、メッセージあたり最大 3つまでサポートします。
 
@@ -344,8 +341,8 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 * `受信指標の収集は、iOS 10.0+以上からサポートします。`
 * 受信指標は、Notification Service Extensionに追加したNHN Cloud Push SDKで自動的に収集されます。
-* 受信指標を収集には、ユーザーアプリケーションにToastPushServiceExtensionを継承するNotification Service Extensionを実装しなければなりません。(Notification Service Extension追加方法は、 [Notification Service Extension](./push-ios/#notification-service-extension)セクション参照)
-* Notification Service Extensionの生成者で、[NHN Cloud Push SDK初期化](./push-ios/#toast-push-sdk)、あるいは**エクステンションのinfo.plistファイル**にAppKeyが定義されていないと、受信指標の収集ができません。
+* 受信指標を収集には、ユーザーアプリケーションにNHNCloudPushServiceExtensionを継承するNotification Service Extensionを実装しなければなりません。(Notification Service Extension追加方法は、 [Notification Service Extension](./push-ios/#notification-service-extension)セクション参照)
+* Notification Service Extensionの生成者で、[NHN Cloud Push SDK初期化](./push-ios/#nhncloud-push-sdk)、あるいは**エクステンションのinfo.plistファイル**にAppKeyが定義されていないと、受信指標の収集ができません。
 
 #### 初期化による受信指標収集の設定例
 
@@ -359,9 +356,9 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
     if (self) {
         // 指標送信にのみ使用されるため、AppKeyのみ設定してください。
-        ToastPushConfiguration *configuration = [[ToastPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
+        NHNCloudPushConfiguration *configuration = [[NHNCloudPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY"];
 
-        [ToastPush initWithConfiguration:configuration];
+        [NHNCloudPush initWithConfiguration:configuration];
     }
 
     return self;
@@ -374,7 +371,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 * Property List
 
-![plist_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_plist_ext.png)
+![plist_ext](https://static.toastoven.net/toastcloud/sdk/ios/push_plist_ext_202206.png)
 
 * Source Code
 
@@ -383,9 +380,9 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 
-<key>ToastSDK</key>
+<key>NHNCloudSDK</key>
 <dict>
-    <key>ToastPush</key>
+    <key>NHNCloudPush</key>
     <dict>
         <key>AppKey</key>
         <string>[INPUT_YOUR_APPKEY]</string>
@@ -396,13 +393,13 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 ### 実行(Opened)指標収集設定
 
 * 実行指標は、アプリケーションに追加したNHN Cloud Push SDKから自動的に収集されます。
-* [NHN Cloud Push SDK 初期化](./push-ios/#toast-push-sdk)、あるいは**アプリケーションのinfo.plistファイル**にAppKeyが定義されている場合、実行指標の収集が可能です。
+* [NHN Cloud Push SDK 초기화](./push-ios/#nhncloud-push-sdk)、あるいは**アプリケーションのinfo.plistファイル**にAppKeyが定義されている場合、実行指標の収集が可能です。
 
 #### info.plist定義による受信指標収集の設定例
 
 * Property List
 
-![plist_app](http://static.toastoven.net/toastcloud/sdk/ios/push_plist_app.png)
+![plist_app](https://static.toastoven.net/toastcloud/sdk/ios/push_plist_app_202206.png)
 
 * Source Code
 
@@ -411,9 +408,9 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 
-<key>ToastSDK</key>
+<key>NHNCloudSDK</key>
 <dict>
-    <key>ToastPush</key>
+    <key>NHNCloudPush</key>
     <dict>
         <key>AppKey</key>
         <string>[INPUT_YOUR_APPKEY]</string>
@@ -424,12 +421,12 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 ## Notification Service Extension
 
 * `iOS 10.0+からサポートします。`
-* リッチメッセージ、受信指標を収集するためには、アプリケーションにToastPushServiceExtensionを継承する Notification Service Extension必ず実装してください。
+* リッチメッセージ、受信指標を収集するためには、アプリケーションにNHNCloudPushServiceExtension를を継承する Notification Service Extension必ず実装してください。
 
 ### Notification Service Extensionの作成
 
 * **File New > Target > iOS > Notification Service Extension**
-![create_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_create_ext.png)
+![create_ext](https://static.toastoven.net/toastcloud/sdk/ios/push_create_ext_202206.png)
 
 ### Notification Service Extension設定
 
@@ -438,14 +435,14 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 ### Notification Service Extension設定例
 
-* 作成したNotificationServiceクラスにToastPushServiceExtensionを継承する必要があります。
+* 作成したNotificationServiceクラスにNHNCloudPushServiceExtensionを継承する必要があります。
 * ユーザー定義処理ロジックがない場合は、継承するだけでもリッチメッセージと受信指標の収集機能が動作します。
 
 ``` objc
 #import <UserNotifications/UserNotifications.h>
-#import <ToastPush/ToastPush.h>
+#import <NHNCloudPush/NHNCloudPush.h>
 
-@interface NotificationService : ToastPushServiceExtension
+@interface NotificationService : NHNCloudPushServiceExtension
 
 @end
 ```
@@ -490,8 +487,8 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 [tagIDs addObject:TAG_ID_2];
 
 // ログインされているユーザーIDのタグIDリスト追加
-[ToastPush addUserTagWithIdentifiers:tagIDs
-                    cmpletionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
+[NHNCloudPush addUserTagWithIdentifiers:tagIDs
+                      completionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
 
     if (error == nil) {
         // タグIDリスト追加成功
@@ -501,8 +498,8 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 }];
 
 // ログインされているユーザーIDのタグIDリストアップデート(既存のタグIDリストは削除され、入力した値で設定)
-[ToastPush setUserTagWithIdentifiers:tagIDs
-                    cmpletionHandler:^(NSError *error) {
+[NHNCloudPush setUserTagWithIdentifiers:tagIDs
+                      completionHandler:^(NSError *error) {
 
     if (error == nil) {
         // タグIDリストアップデート成功
@@ -520,7 +517,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ``` objc
 // ログインされているユーザーIDの全タグIDリストを返します。
-[ToastPush getUserTagWithCompletionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
+[NHNCloudPush getUserTagWithCompletionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
     if (error == nil) {
         // タグIDリスト獲得成功
     } else {
@@ -542,8 +539,8 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 [tagIDs addObject:TAG_ID_2];
 
 // ログインされているユーザーIDのタグIDリスト削除
-[ToastPush removeUserTagWithIdentifiers:tagIDs
-                      completionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
+[NHNCloudPush removeUserTagWithIdentifiers:tagIDs
+                         completionHandler:^(NSSet<NSString *> *tagIdentifiers, NSError *error) {
     if (error == nil) {
         // タグIDリスト削除成功
     } else {
@@ -552,7 +549,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 }];
 
 // ログインされているユーザーIDの全タグIDリスト削除
-[ToastPush removeAllUserTagWithCompletionHandler:^(NSError *error) {
+[NHNCloudPush removeAllUserTagWithCompletionHandler:^(NSError *error) {
     if (error == nil) {
         // 全ユーザータグ削除成功
     } else {
@@ -568,17 +565,17 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 * NHN Cloud PushのVoIP機能を使うには、**PushKit.framework**、**CallKit.framework**を追加する必要があります。
 * PushKit.framework、CallKit.frameworkは以下の方法で追加できます。
-![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
-![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
-![linked_frameworks_push](http://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push.png)
+![linked_pushkit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit_202206.png)
+![linked_callkit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit_202206.png)
+![linked_frameworks_push](https://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push_202206.png)
 
 ### Capabilities設定
 
 * **Project Target > Signing & Capabilities > + Capability > Background Modes**
-![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
+![add_capability_background_modes](https://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes_202206.png)
 
 * **Voice over IP**項目を有効化する必要があります。
-![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_voip.png)
+![capabilities](https://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_voip_202206.png)
 
 ### 初期化
 
@@ -587,16 +584,16 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### Delegate設定
 
-* VoIPメッセージを受信すると、[ToastPushMessage](./push-ios/#toastpushmessage)オブジェクトで受信したメッセージの内容が伝達されます。
+* VoIPメッセージを受信すると、[NHNCloudPushMessage](./push-ios/#nhncloudpushmessage)オブジェクトで受信したメッセージの内容が伝達されます。
 * `スムーズにメッセージを受信するために application:didFinishLaunchingWithOptions: 関数でDelegate設定をお勧めします。`
 
 #### Delegate API
 
 ``` objc
-@protocol ToastVoIPDelegate <NSObject>
+@protocol NHNCloudVoIPDelegate <NSObject>
 
 // メッセージ受信
-- (void)didReceiveIncomingVoiceCallWithMessage:(ToastPushMessage *)message;
+- (void)didReceiveIncomingVoiceCallWithMessage:(NHNCloudPushMessage *)message;
 
 @end
 ```
@@ -605,9 +602,9 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ``` objc
 // VoIPサブモジュールを追加します。
-#import <ToastPush/ToastVoIP.h>
+#import <NHNCloudPush/NHNCloudVoIP.h>
 
-@interface AppDelegate () <UIApplicationDelegate, ToastVoIPDelegate>
+@interface AppDelegate () <UIApplicationDelegate, NHNCloudVoIPDelegate>
 
 @end
 
@@ -619,33 +616,33 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
     // ...
 
     // Delegatを設定します。
-    [ToastVoIP setDelegate:self];
+    [NHNCloudVoIP setDelegate:self];
 
     return YES;
 }
 
-#pragma mark - ToastVoIPDelegate
+#pragma mark - NHNCloudVoIPDelegate
 // メッセージ受信
-- (void)didReceiveIncomingVoiceCallWithMessage:(ToastPushMessage *)message {
+- (void)didReceiveIncomingVoiceCallWithMessage:(NHNCloudPushMessage *)message {
     // ...
 }
 ```
 
 ### トークン登録
 
-* 発行されたVoIPトークン情報をTOASTクラウドサーバに登録します。
+* 発行されたVoIPトークン情報をNHN Cloudクラウドサーバに登録します。
 * VoIP機能は別途ユーザー権限あるいは同意情報は必要ありません。
 
 #### トークン登録API
 
 ```objc
-+ (void)registerWithCompletionHandler:(nullable void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
++ (void)registerWithCompletionHandler:(nullable void (^)(NHNCloudPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 ```
 
 #### トークン登録例
 
 ```objc
-[ToastVoIP registerWithCompletionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
+[NHNCloudVoIP registerWithCompletionHandler:^(NHNCloudPushTokenInfo *tokenInfo, NSError *error) {
     if (error == nil) {
         // トークン登録成功
         NSLog(@"Successfully registered : %@", tokenInfo.deviceToken);
@@ -660,19 +657,19 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 ### トークン情報照会
 
 * 現在のデバイスで最後に登録に成功したトークンと設定情報を照会します。
-* トークン照会情報に成功すると、[ToastPushTokenInfo](./push-ios/#toastpushtokeninfo)オブジェクトにトークンの設定情報が返されます。
+* トークン照会情報に成功すると、[NHNCloudPushTokenInfo](./push-ios/#nhncloudpushtokeninfo)オブジェクトにトークンの設定情報が返されます。
 
 #### トークン情報照会API
 
 ```objc
-@interface ToastVoIP : NSObject
-+ (void)queryTokenInfoWithCompletionHandler:(void (^)(ToastPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
+@interface NHNCloudVoIP : NSObject
++ (void)queryTokenInfoWithCompletionHandler:(void (^)(NHNCloudPushTokenInfo * _Nullable tokenInfo, NSError * _Nullable error))completionHandler;
 ```
 
 #### トークン情報照会例
 
 ```objc
-[ToastVoIP queryTokenInfoWithCompletionHandler:^(ToastPushTokenInfo *tokenInfo, NSError *error) {
+[NHNCloudVoIP queryTokenInfoWithCompletionHandler:^(NHNCloudPushTokenInfo *tokenInfo, NSError *error) {
     if (error == nil) {
         // トークン情報照会成功
         NSLog(@"Successfully query token info : %@", [tokenInfo description]);
@@ -698,10 +695,10 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 #### トークン解除例
 
 ```objc
-[ToastVoIP unregisterWithCompletionHandler:^(NSString *deviceToken, NSError *error) {
+[NHNCloudVoIP unregisterWithCompletionHandler:^(NSString *deviceToken, NSError *error) {
     if (error == nil) {
         // トークン解除成功
-        NSLog(@"Successfully unregistered token : %@", deviceToken);
+        NSLog(@"Successfully unregistered token : %@", deviceToken);
 
     } else {
         // トークン解除失敗
@@ -714,50 +711,50 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### Push機能エラーコード
 ```objc
-extern NSErrorDomain const ToastPushErrorDomain;
+extern NSErrorDomain const NHNCloudPushErrorDomain;
 
-typedef NS_ERROR_ENUM(ToastPushErrorDomain, ToastPushError) {
-    ToastPushErrorUnknown = 0,              // 不明
-    ToastPushErrorNotInitialized = 1,       // 初期化していない
-    ToastPushErrorUserInvalid = 2,          // ユーザーID未設定
-    ToastPushErrorPermissionDenied = 3,     // 権限獲得失敗
-    ToastPushErrorSystemFailed = 4,         // システムによる失敗
-    ToastPushErrorTokenInvalid = 5,         // トークン値がないか、無効
-    ToastPushErrorAlreadyInProgress = 6,    // すでに進行中
-    ToastPushErrorParameterInvalid = 7,     // 無効な変数
-    ToastPushErrorNotSupported = 8,         // サポートしていない機能
+typedef NS_ERROR_ENUM(NHNCloudPushErrorDomain, NHNCloudPushError) {
+    NHNCloudPushErrorUnknown = 0,              // 不明
+    NHNCloudPushErrorNotInitialized = 1,       // 初期化していない
+    NHNCloudPushErrorUserInvalid = 2,          // ユーザーID未設定
+    NHNCloudPushErrorPermissionDenied = 3,     // 権限獲得失敗
+    NHNCloudPushErrorSystemFailed = 4,         // システムによる失敗
+    NHNCloudPushErrorTokenInvalid = 5,         // トークン値がないか、無効
+    NHNCloudPushErrorAlreadyInProgress = 6,    // すでに進行中
+    NHNCloudPushErrorParameterInvalid = 7,     // 無効な変数
+    NHNCloudPushErrorNotSupported = 8,         // サポートしていない機能
 };
 ```
 
 ### ネットワークエラーコード
 ``` objc
-extern NSErrorDomain const ToastHttpErrorDomain;
+extern NSErrorDomain const NHNCloudHttpErrorDomain;
 
-typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
-    ToastHttpErrorNetworkNotAvailable = 100,        // ネットワーク使用不可
-    ToastHttpErrorRequestFailed = 101,              // HTTP Status Codeが200でない、あるいはサーバーで要求を正しく読み取れない
-    ToastHttpErrorRequestTimeout = 102,             // タイムアウト
-    ToastHttpErrorRequestInvalid = 103,             // 誤ったリクエスト (パラメーターエラーなど)
-    ToastHttpErrorURLInvalid = 104,                 // URLエラー
-    ToastHttpErrorResponseInvalid = 105,            // サーバー応答エラー
-    ToastHttpErrorAlreadyInprogress = 106,          // 同一リクエストですでに実行中
-    ToastHttpErrorRequiresSecureConnection = 107,   // Allow Arbitrary Loads未設定
+typedef NS_ERROR_ENUM(NHNCloudHttpErrorDomain, NHNCloudHttpError) {
+    NHNCloudHHttpErrorNetworkNotAvailable = 100,        // ネットワーク使用不可
+    NHNCloudHHttpErrorRequestFailed = 101,              // HTTP Status Codeが200でない、あるいはサーバーで要求を正しく読み取れない
+    NHNCloudHHttpErrorRequestTimeout = 102,             // タイムアウト
+    NHNCloudHHttpErrorRequestInvalid = 103,             // 誤ったリクエスト (パラメーターエラーなど)
+    NHNCloudHHttpErrorURLInvalid = 104,                 // URLエラー
+    NHNCloudHHttpErrorResponseInvalid = 105,            // サーバー応答エラー
+    NHNCloudHHttpErrorAlreadyInprogress = 106,          // 同一リクエストですでに実行中
+    NHNCloudHHttpErrorRequiresSecureConnection = 107,   // Allow Arbitrary Loads未設定
 };
 ```
 
 ## NHN Cloud Push Class Reference
 
-### ToastPushConfiguration
+### NHNCloudPushConfiguration
 * NHN Cloud Pushを初期化する際に配信されるPush設定情報です。
 
 ``` objc
-@interface ToastPushConfiguration : NSObject
+@interface NHNCloudPushConfiguration : NSObject
 
 // サービスAppKey
 @property (nonatomic, copy, readonly) NSString *appKey;
 
 // サービスゾーン
-@property (nonatomic) ToastServiceZone serviceZone;
+@property (nonatomic) NHNCloudServiceZone serviceZone;
 
 // 国コード (予約メッセージ送信時、基準時間となる国コード)
 @property (nonatomic, copy) NSString *countryCode;
@@ -779,11 +776,11 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 @end
 ```
 
-### ToastNotificationOptions
+### NHNCloudNotificationOptions
 * NHN Cloud Pushを初期化する際に配信される通知設定情報です。
 
 ``` objc
-@interface ToastNotificationOptions : NSObject
+@interface NHNCloudNotificationOptions : NSObject
 
 // アプリ実行中に通知に表示するか
 @property (nonatomic) BOOL foregroundEnabled;
@@ -798,10 +795,10 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 ```
 
 
-### ToastPushAgreement
+### NHNCloudPushAgreement
 
 ``` objc
-@interface ToastPushAgreement : NSObject
+@interface NHNCloudPushAgreement : NSObject
 
 // 通知表示に同意するか
 @property (nonatomic, assign) BOOL allowNotifications;
@@ -820,11 +817,11 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 @end
 ```
 
-### ToastPushMessage
+### NHNCloudPushMessage
 * メッセージの受信時に返されるオブジェクトです。
 
 ```objc
-@interface ToastPushMessage : NSObject
+@interface NHNCloudPushMessage : NSObject
 
 @property (nonatomic, readonly) NSString *identifier;
 
@@ -834,48 +831,48 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 
 @property (nonatomic, readonly) NSInteger badge;
 
-@property (nonatomic, readonly, nullable) ToastPushRichMessage *richMessage;
+@property (nonatomic, readonly, nullable) NHNCloudPushRichMessage *richMessage;
 
 @property (nonatomic, readonly) NSDictionary<NSString *, NSString *> *payload;
 
 @end
 ```
 
-### ToastPushMessage
+### NHNCloudPushMessage
 * 受信したメッセージの内容のうち、リッチメッセージの内容を含むオブジェクトです。
 
 ```objc
-@interface ToastPushRichMessage : NSObject
+@interface NHNCloudPushRichMessage : NSObject
 
-@property (nonatomic, readonly, nullable) ToastPushMedia *media;
+@property (nonatomic, readonly, nullable) NHNCloudPushMedia *media;
 
-@property (nonatomic, readonly, nullable) NSArray<ToastPushButton *> *buttons;
+@property (nonatomic, readonly, nullable) NSArray<NHNCloudPushButton *> *buttons;
 
 @end
 ```
 
-### ToastPushMedia
+### NHNCloudPushMedia
 * 受信したリッチメッセージの中で、メディアの内容を含むオブジェクトです。
 
 ```objc
-@interface ToastPushMedia : NSObject
+@interface NHNCloudPushMedia : NSObject
 
-@property (nonatomic, readonly) ToastPushMediaType mediaType;
+@property (nonatomic, readonly) NHNCloudPushMediaType mediaType;
 
 @property (nonatomic, readonly) NSString *source;
 
 @end
 ```
 
-### ToastPushButton
+### NHNCloudPushButton
 * 受信したリッチメッセージの内容のうち、ボタンの内容を含むオブジェクトです。
 
 ```objc
-@interface ToastPushButton : NSObject
+@interface NHNCloudPushButton : NSObject
 
 @property (nonatomic, readonly) NSString *identifier;
 
-@property (nonatomic, readonly) ToastPushButtonType buttonType;
+@property (nonatomic, readonly) NHNCloudPushButtonType buttonType;
 
 @property (nonatomic, readonly) NSString *name;
 
@@ -888,46 +885,46 @@ typedef NS_ERROR_ENUM(ToastHttpErrorDomain, ToastHttpError) {
 @end
 ```
 
-### ToastPushNotificationAction
+### NHNCloudPushNotificationAction
 * 通知アクション（ボタン、返信）受信時に返されるオブジェクトです。
 
 ```objc
-typedef NS_ENUM(NSInteger, ToastPushNotificationActionType) {
-    ToastPushNotificationActionDismiss = 0,
-    ToastPushNotificationActionOpenApp = 1,
-    ToastPushNotificationActionOpenURL = 2,
-    ToastPushNotificationActionReply = 3,
+typedef NS_ENUM(NSInteger, NHNCloudPushNotificationActionType) {
+    NHNCloudPushNotificationActionDismiss = 0,
+    NHNCloudPushNotificationActionOpenURL = 2,
+    NHNCloudPushNotificationActionOpenApp = 1,
+    NHNCloudPushNotificationActionReply = 3,
 };
 
 
-@interface ToastPushNotificationAction : NSObject <NSCoding, NSCopying>
+@interface NHNCloudPushNotificationAction : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, readonly) NSString *actionIdentifier;
 
 @property (nonatomic, readonly) NSString *categoryIdentifier;
 
-@property (nonatomic, readonly) ToastPushNotificationActionType actionType;
+@property (nonatomic, readonly) NHNCloudPushNotificationActionType actionType;
 
-@property (nonatomic, readonly) ToastPushButton *button;
+@property (nonatomic, readonly) NHNCloudPushButton *button;
 
-@property (nonatomic, readonly) ToastPushMessage *message;
+@property (nonatomic, readonly) NHNCloudPushMessage *message;
 
 @property (nonatomic, readonly, nullable) NSString *userText;
 
 @end
 ```
 
-### ToastPushTokenInfo
+### NHNCloudPushTokenInfo
 * トークン情報の照会リクエスト時に返されるトークン情報オブジェクトです。
 ``` objc
-typedef NSString *ToastPushType NS_STRING_ENUM;
+typedef NSString *NHNCloudPushType NS_STRING_ENUM;
 // APNSタイプ
-extern ToastPushType const ToastPushTypeAPNS;
+extern NHNCloudPushType const NHNCloudPushTypeAPNS;
 // VoIPタイプ
-extern ToastPushType const ToastPushTypeVoIP;
+extern NHNCloudPushType const NHNCloudPushTypeVoIP;
 
 
-@interface ToastPushTokenInfo : NSObject
+@interface NHNCloudPushTokenInfo : NSObject
 
 // ユーザーID
 @property (nonatomic, readonly) NSString *userID;
@@ -942,7 +939,7 @@ extern ToastPushType const ToastPushTypeVoIP;
 @property (nonatomic, readonly) NSString *languageCode;
 
 // Pushトークンタイプ
-@property (nonatomic, readonly) ToastPushType pushType;
+@property (nonatomic, readonly) NHNCloudPushType pushType;
 
 // 通知表示に同意するか
 @property (nonatomic, readonly) BOOL allowNotifications;
