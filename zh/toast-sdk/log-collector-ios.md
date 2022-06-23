@@ -1,8 +1,5 @@
 ## NHN Cloud > SDK User Guide > Log & Crash > iOS
 
-> [Notice]
-> From NHN Cloud SDK 0.13.0, it is possible to analyze and analyze crashes from devices using arm64e architecture (iPhone XS, XR, XS Max, iPad Pros 3rd).
-
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-ios).
@@ -66,7 +63,7 @@ end
 * In the script field below the Shell field, add a new run script.
 ```
 if [ "${CONFIGURATION}" = "Debug" ]; then
-    ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
+    ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.ios.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
 * In LOG_N_CRASH_SEARCH_APPKEY, enter AppKey of Log & Crash Search.

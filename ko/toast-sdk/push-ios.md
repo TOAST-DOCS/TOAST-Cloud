@@ -59,9 +59,6 @@ end
 ![capabilities](https://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_202206.png)
 
 ## Xcode11 / iOS13 변경 사항
-* 공통
-    * Xcode11부터 NHN Cloud SDK 0.18.0 미만 버전을 사용하는 프로젝트는 iOS13에서 토큰 등록에 실패하는 문제가 발생합니다.
-    * `Xcode11 이상을 사용할 경우 NHN Cloud SDK 0.18.0 이상의 버전을 사용해야 합니다. (Xcode11, iOS13)`
 * VoIP
     * iOS13 이상부터 VoIP 메시지 수신 후에 CallKit 으로 리포트하지 않으면 메시지 수신이 제한됩니다. ([PushKit pushRegistry 가이드](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
     * CallKit 을 사용한 전화 수신 화면은 앱에서 직접 구현해야 합니다.

@@ -59,9 +59,6 @@ end
 ![capabilities](https://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_202206.png)
 
 ## Xcode11 / iOS13の変更点
-* 共通
-    * Xcode11でNHN Cloud SDK 0.18.0未満のバージョンを使用するプロジェクトは、iOS13でトークン登録に失敗する問題が発生します。
-    * `Xcode11以上を使用する場合、NHN Cloud SDK 0.18.0以上のバージョンを利用してください。(Xcode11, iOS13)`
 * VoIP
     * iOS13以上から、VoIPメッセージを受信後に、CallKitへレポートしないとメッセージの受信が制限されます。([PushKit pushRegistryガイド](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry))
     * CallKitを使用した電話受信画面は、アプリに直接と実装する必要があります。
