@@ -1,8 +1,5 @@
 ## NHN Cloud > SDK 사용 가이드 > Log & Crash > iOS
 
-> [공지]
-> NHN Cloud SDK 0.13.0부터 arm64e 아키텍처를 사용하는 기기(iPhone XS, XR, XS Max, iPad Pros 3rd)에서 발생한 크래시의 집계, 분석이 가능합니다.
-
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
@@ -66,7 +63,7 @@ end
 * Shell(셸) 필드 아래에 있는 스크립트 필드에서 새 실행 스크립트를 추가합니다.
 ```
 if [ "${CONFIGURATION}" = "Debug" ]; then
-    ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
+    ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.ios.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
 * LOG_N_CRASH_SEARCH_APPKEY에는 Log&Crash Search의 AppKey를 입력해야합니다.
