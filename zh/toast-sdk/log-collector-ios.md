@@ -15,8 +15,8 @@
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
-| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+| Log & Crash | NHNCloudLogger | NHNCloudLogger.framework | [External & Optional]<br/> * CrashReporter.framework (NHNCloud) |  |
+| Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## Apply NHN Cloud SDK to Xcode Projects
 
@@ -29,7 +29,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
-    pod 'ToastLogger'
+    pod 'NHNCloudLogger'
 end
 ```
 
@@ -38,19 +38,19 @@ end
 #### Link Frameworks
 
 * The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of NHN Cloud.
-* Add **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework** to the Xcode Project.
+* Add **NHNCloudLogger.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework** to the Xcode Project.
 * To enable Crash Report of NHN Cloud Logger, CrashReporter.framework which is distributed as well, must be added to the project.
-![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
+![linked_frameworks_logger](https://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger_202206.png)
 
 #### Project Settings
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 * To directly download or build **CrashReporter.framework**, the **Bitcode** at **Build Settings** must be changed to **NO**.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
-![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of NHN Cloud supports bitCode.
 
 ## Apply NHN Cloud Symbol Uploader
@@ -66,14 +66,14 @@ end
 * In the script field below the Shell field, add a new run script.
 ```
 if [ "${CONFIGURATION}" = "Debug" ]; then
-    ${PODS_ROOT}/ToastSymbolUploader/toastcloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
+    ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
 * In LOG_N_CRASH_SEARCH_APPKEY, enter AppKey of Log & Crash Search.
 * On Input Files under the Run Script section, set the default path of dSYM.
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
-![symbol_uploader_script_pods_path](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path.png)
+![symbol_uploader_script_pods_path](https://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path_202206.png)
 
 ### Upload Manually Using Symbol Uploader
 
@@ -120,14 +120,14 @@ OPTIONS:
 
 ``` objc
 // Initialize
-+ (void)initWithConfiguration:(ToastLoggerConfiguration *)configuration;
++ (void)initWithConfiguration:(NHNCloudLoggerConfiguration *)configuration;
 ```
 
 ### Example of Initialization Procedure
 
 ```objc
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
-[ToastLogger initWithConfiguration:configuration];
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
+[NHNCloudLogger initWithConfiguration:configuration];
 ```
 
 ## Send Logs
@@ -156,7 +156,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### Usage Example of Log Sending API
 
 ```objc
-[ToastLogger info:@"NHN Cloud Log & Crash Search!"];
+[NHNCloudLogger info:@"NHN Cloud Log & Crash Search!"];
 ```
 
 ## Set User-defined Fields
@@ -183,7 +183,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### Usage Example of User-Defined Fields
 ```objc
 // Add User-Defined Field
-[ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
+[NHNCloudLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
 ## Collect Crash Logs
@@ -202,19 +202,17 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 #### Enable CrashReporter
 ```objc
 // CrashReporter Enable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"
-                                                                        enableCrashReporter:YES];
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
 
-[ToastLogger initWithConfiguration:configuration];
+[NHNCloudLogger initWithConfiguration:configuration];
 ```
 #### Disable CrashReporter
 ```objc
 
 // CrashReporter Disable Configuration
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"
-                                                                        enableCrashReporter:NO];
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:NO];
 
-[ToastLogger initWithConfiguration:configuration];
+[NHNCloudLogger initWithConfiguration:configuration];
 ```
 
 ## Set Additional Information in Time for Crash Occurrence before Sending
@@ -230,11 +228,11 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### Usage Example of Data Adapter
 
 ```objc
-[ToastLogger setShouldReportCrashHandler:^{
+[NHNCloudLogger setShouldReportCrashHandler:^{
 
   //Send, via user-defined field, wanted information from crash occurrence
   // Add User-Defined Field
-  [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
+  [NHNCloudLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 
 }];
 ```
@@ -246,25 +244,25 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 ### Specification for Set Delegate API
 ```objc
-+ (void)setDelegate:(id<ToastLoggerDelegate>) delegate;
++ (void)setDelegate:(id<NHNCloudLoggerDelegate>) delegate;
 ```
 
 ### Specification for Delegate API
 
 ``` objc
-@protocol ToastLoggerDelegate <NSObject>
+@protocol NHNCloudLoggerDelegate <NSObject>
 @optional
 // Sending logs succeeded
-- (void)toastLogDidSuccess:(ToastLog *)log;
+- (void)nhnCloudLogDidSuccess:(NHNCloudLog *)log;
 
 // Sending logs failed
-- (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error;
+- (void)nhnCloudLogDidFail:(NHNCloudLog *)log error:(NSError *)error;
 
 // Save within SDK for re-sending if log-sending fails due to network errors
-- (void)toastLogDidSave:(ToastLog *)log;
+- (void)nhnCloudLogDidSave:(NHNCloudLog *)log;
 
 // Filter by filter setting
-- (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter;
+- (void)nhnCloudLogDidFilter:(NHNCloudLog *)log logFilter:(NHNCloudLogFilter *)logFilter;
 @end
 ```
 
@@ -272,9 +270,9 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### Usage Example of Delegate
 
 ```objc
-#import <ToastLogger/ToastLogger.h>
+#import <NHNCloudLogger/NHNCloudLogger.h>
 
-@interface AppDelegate () <UIApplicationDelegate, ToastLoggerDelegate>
+@interface AppDelegate () <UIApplicationDelegate, NHNCloudLoggerLoggerDelegate>
 
 @end
 
@@ -286,34 +284,33 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
     // ...
 
     // Initialize
-    ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"
-                                                                            enableCrashReporter:YES];
-    [ToastLogger initWithConfiguration:configuration];
+    NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
+    [NHNCloudLogger initWithConfiguration:configuration];
 
     // Set Delegate
-    [[ToastLogger setDelegate:self];
+    [[NHNCloudLogger setDelegate:self];
 
     return YES;
 }
 
-#pragma mark - ToastLoggerDelegate
+#pragma mark - NHNCloudLoggerDelegate
 // Sending logs succeeded
-- (void)toastLogDidSuccess:(ToastLog *)log {
+- (void)nhnCloudLogDidSuccess:(NHNCloudLog *)log {
       // ...
  }
 
 // Sending logs failed
-- (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error {
+- (void)nhnCloudLogDidFail:(NHNCloudLog *)log error:(NSError *)error {
       // ...
 }
 
 // Save within SDK for re-sending if log-sending fails due to network errors
-- (void)toastLogDidSave:(ToastLog *)log {
+- (void)nhnCloudLogDidSave:(NHNCloudLog *)log {
       // ...
 }
 
 // Filter by filter setting
-- (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter {
+- (void)nhnCloudLogDidFilter:(NHNCloudLog *)log logFilter:(NHNCloudLogFilter *)logFilter {
       // ...
 }
 

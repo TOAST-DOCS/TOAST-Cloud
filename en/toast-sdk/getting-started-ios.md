@@ -16,11 +16,11 @@
 
 | Service | Cocoapods Pod Name | Carthage | Framework | Dependency | Build Settings |
 | ------- | ------------------ | -------- | --------- | ---------- | -------------- |
-| All | ToastSDK | binary "https://nh.nu/toast" | ToastCore.framework<br>ToastCommon.framework<br>ToastLogger.framework<br>ToastIAP.framework<br>ToastPush.framework |  |  |
-| Mandatory | ToastCore<br>ToastCommon |  | ToastCore.framework<br>ToastCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
-| Log & Crash | ToastLogger |  | ToastLogger.framework | [External & Optional]<br>\* CrashReporter.framework (Toast) |  |
-| IAP | ToastIAP |  | ToastIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
-| Push | ToastPush |  | ToastPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
+| All | NHNCloudSDK | binary "https://nh.nu/nhncloudsdk" | NHNCloudCore.framework<br>NHNCloudCommon.framework<br>NHNCloudLogger.framework<br>NHNCloudIAP.framework<br>NHNCloudPush.framework |  |  |
+| Mandatory | NHNCloudCore<br>NHNCloudCommon |  | NHNCloudCore.framework<br>NHNCloudCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
+| Log & Crash | NHNCloudLogger |  | NHNCloudLogger.framework | [External & Optional]<br>\* CrashReporter.framework (NHNCloud) |  |
+| IAP | NHNCloudIAP |  | NHNCloudIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
+| Push | NHNCloudPush |  | NHNCloudPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
 
 ## Apply NHN Cloud SDK to Xcode Projects
 
@@ -33,7 +33,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
-    pod 'ToastSDK'
+    pod 'NHNCloudSDK'
 end
 ```
 
@@ -43,18 +43,18 @@ end
 
 ```sh
 # Full URL
-binary "https://api-storage.cloud.toast.com/v1/AUTH_f9e3dc598ca142d3820e1c19343d5428/carthage/ToastSDK.json"
+binary "https://api-storage.cloud.toast.com/v1/AUTH_f9e3dc598ca142d3820e1c19343d5428/carthage/NHNCloudSDK.json"
 
 # Short URL
-binary "https://nh.nu/toast"
+binary "https://nh.nu/nhncloudsdk"
 ```
 
 * Add the frameworks in the created Carthage/Build folder to the Xcode project.
-![carthage_import_framework](http://static.toastoven.net/toastcloud/sdk/ios/carthage01.png)
+![carthage_import_framework](https://static.toastoven.net/toastcloud/sdk/ios/carthage01_202206.png)
 
 * Check that the frameworks have been added to the project as shown below.
-![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage02.png)
-![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage03.png)
+![import_carthage_frameworks_complete](https://static.toastoven.net/toastcloud/sdk/ios/carthage02_202206.png)
+![import_carthage_frameworks_complete](https://static.toastoven.net/toastcloud/sdk/ios/carthage03_202206.png)
 
 * To use NHN Cloud SDK, you must perform **Framework setting** and **Project setting**.
 
@@ -66,34 +66,34 @@ binary "https://nh.nu/toast"
 #### Frameworks Setup
 
 * The entire iOS SDK can be downloaded from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud.
-![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder.png)
+![import_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder_202206.png)
 
 * To use the Crash Report feature of Logger, CrashReporter.framework which is released along with the service, must be added to the project.
-![import_external_framework](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_external_folder.png)
+![import_external_framework](https://static.toastoven.net/toastcloud/sdk/ios/overview_import_external_folder_202206.png)
 
 * Check that the frameworks have been added to the project as shown below.
-![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
+![import_frameworks_complete](https://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder_202206.png)
 
 * To use the IAP feature, StoreKit.framework must be added.
-![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
+![linked__storekit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit_202206.png)
 
 * To use the Push feature, UserNotifications.framework must be added.
-![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
+![linked__usernotifications_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications_202206.png)
 
 ##### xcframework
 * Using xcframework allows you to use NHN Cloud SDK even in arm simulator.
-![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework01.png)
-![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework02.png)
+![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework01_202206.png)
+![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework02_202206.png)
 
 #### Project Settings
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** under **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 * If you directly downloaded or built **CrashReporter.framework**, the **Enable Bitcode** under **Build Settings** must be changed to **No**.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
-![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > CrashReporter.framework downloaded from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud supports bitcode.
 
 ### Import Framework
@@ -101,10 +101,10 @@ binary "https://nh.nu/toast"
 * Import the frameworks to use.
 
 ```objc
-#import <ToastCore/ToastCore.h>
-#import <ToastLogger/ToastLogger.h>
-#import <ToastIAP/ToastIAP.h>
-#import <ToastPush/ToastPush.h>
+#import <NHNCloudCore/NHNCloudCore.h>
+#import <NHNCloudLogger/NHNCloudLogger.h>
+#import <NHNCloudIAP/NHNCloudIAP.h>
+#import <NHNCloudPush/NHNCloudPush.h>
 ```
 
 ## Set User ID
@@ -122,7 +122,7 @@ binary "https://nh.nu/toast"
 ### Usage Example of User ID Setting
 
 ```objc
-[ToastSDK setUserID:@"TOAST-USER"];
+[NHNCloudSDK setUserID:@"NHNCLOUD-USER"];
 ```
 ## Set Debug Mode
 
@@ -139,7 +139,7 @@ binary "https://nh.nu/toast"
 ### Usage Example of Debug Mode Setting
 
 ```objc
-[ToastSDK setDebugMode:YES];    // or NO
+[NHNCloudSDK setDebugMode:YES];    // or NO
 ```
 
 > [Caution] The debug mode must be disabled before releasing an app.

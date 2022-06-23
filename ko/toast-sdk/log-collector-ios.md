@@ -15,8 +15,8 @@
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| Log & Crash | ToastLogger | ToastLogger.framework | [External & Optional]<br/> * CrashReporter.framework (Toast) |  |
-| Mandatory   | ToastCore<br/>ToastCommon | ToastCore.framework<br/>ToastCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
+| Log & Crash | NHNCloudLogger | NHNCloudLogger.framework | [External & Optional]<br/> * CrashReporter.framework (NHNCloud) |  |
+| Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 ## NHN Cloud Logger SDK를 Xcode 프로젝트에 적용
 
@@ -29,7 +29,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
-    pod 'ToastLogger'
+    pod 'NHNCloudLogger'
 end
 ```
 
@@ -38,19 +38,19 @@ end
 #### 프레임워크 설정
 
 * NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
-* Xcode Project에 **ToastLogger.framework**, **ToastCore.framework**, **ToastCommon.framework**를 추가합니다.
+* Xcode Project에 **NHNCloudLogger.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework**를 추가합니다.
 * NHN Cloud Logger의 Crash Report 기능을 사용하려면 함께 배포되는 **CrashReporter.framework**도 프로젝트에 추가해야 합니다.
-![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
+![linked_frameworks_logger](https://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger_202206.png)
 
 #### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 * **CrashReporter.framewor**를 직접 다운로드하거나 빌드한 경우에는 **Build Setting**의 **Enable Bitcode**의 값을 **NO**로 변경해야 합니다.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
-![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
 
 ## NHN Cloud Symbol Uploader 적용
@@ -66,14 +66,14 @@ end
 * Shell(셸) 필드 아래에 있는 스크립트 필드에서 새 실행 스크립트를 추가합니다.
 ```
 if [ "${CONFIGURATION}" = "Debug" ]; then
-    ${PODS_ROOT}/ToastSymbolUploader/toastcloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
+    ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
 * LOG_N_CRASH_SEARCH_APPKEY에는 Log&Crash Search의 AppKey를 입력해야합니다.
 * Run Script 섹션 하단의 Input Files에 dSYM의 기본 경로를 설정합니다.
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
-![symbol_uploader_script_pods_path](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path.png)
+![symbol_uploader_script_pods_path](https://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path_202206.png)
 
 ### Symbol Uploader를 사용하여 직접 업로드
 
@@ -120,14 +120,14 @@ OPTIONS:
 
 ``` objc
 // 초기화
-+ (void)initWithConfiguration:(ToastLoggerConfiguration *)configuration;
++ (void)initWithConfiguration:(NHNCloudLoggerConfiguration *)configuration;
 ```
 
 ### 초기화 예
 
 ```objc
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
-[ToastLogger initWithConfiguration:configuration];
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
+[NHNCloudLogger initWithConfiguration:configuration];
 ```
 
 ## 로그 전송
@@ -156,7 +156,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### 로그 전송 API 사용 예
 
 ```objc
-[ToastLogger info:@"NHN Cloud Log & Crash Search!"];
+[NHNCloudLogger info:@"NHN Cloud Log & Crash Search!"];
 ```
 
 ## 사용자 정의 필드 설정
@@ -183,7 +183,7 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### 사용자 정의 필드 사용 예
 ```objc
 // 사용자 정의 필드 추가
-[ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
+[NHNCloudLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
 ## 크래시 로그 수집
@@ -202,18 +202,16 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 #### CrashReporter 활성화
 ```objc
 // CrashReporter 활성화
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
-                                                                        enableCrashReporter:YES];
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
 
-[ToastLogger initWithConfiguration:configuration];
+[NHNCloudLogger initWithConfiguration:configuration];
 ```
 #### CrashReporter 비활성화
 ```objc
 // CrashReporter 비활성화
-ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
-                                                                        enableCrashReporter:NO];
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:NO];
 
-[ToastLogger initWithConfiguration:configuration];
+[NHNCloudLogger initWithConfiguration:configuration];
 ```
 
 ## 크래시 발생 시점에 추가 정보를 설정하여 전송
@@ -229,10 +227,10 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### Data Adapter 사용 예
 
 ```objc
-[ToastLogger setShouldReportCrashHandler:^{
+[NHNCloudLogger setShouldReportCrashHandler:^{
   // 사용자 정의 필드 를 통해 Crash가 발생한 상황에서 얻고자 하는 정보를 함께 전송    
   // 사용자 정의 필드 추가
-  [ToastLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
+  [NHNCloudLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 
 }];
 ```
@@ -244,25 +242,25 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 
 ### Delegate 설정 API 명세
 ```objc
-+ (void)setDelegate:(id<ToastLoggerDelegate>) delegate;
++ (void)setDelegate:(id<NHNCloudLoggerDelegate>) delegate;
 ```
 
 ### Delegate API 명세
 
 ``` objc
-@protocol ToastLoggerDelegate <NSObject>
+@protocol NHNCloudLoggerDelegate <NSObject>
 @optional
 // 로그 전송 성공
-- (void)toastLogDidSuccess:(ToastLog *)log;
+- (void)nhnCloudLogDidSuccess:(NHNCloudLog *)log;
 
 // 로그 전송 실패
-- (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error;
+- (void)nhnCloudLogDidFail:(NHNCloudLog *)log error:(NSError *)error;
 
 // 네트워크 단절 등의 이유로 로그 전송에 실패한 경우 재전송을 위해 SDK 내부 저장
-- (void)toastLogDidSave:(ToastLog *)log;
+- (void)nhnCloudLogDidSave:(NHNCloudLog *)log;
 
 // 로그 필터링
-- (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter;
+- (void)nhnCloudLogDidFilter:(NHNCloudLog *)log logFilter:(NHNCloudLogFilter *)logFilter;
 @end
 ```
 
@@ -270,9 +268,9 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
 ### Delegate 설정 및 사용 예
 
 ```objc
-#import <ToastLogger/ToastLogger.h>
+#import <NHNCloudLogger/NHNCloudLogger.h>
 
-@interface AppDelegate () <UIApplicationDelegate, ToastLoggerDelegate>
+@interface AppDelegate () <UIApplicationDelegate, NHNCloudLoggerLoggerDelegate>
 
 @end
 
@@ -284,34 +282,33 @@ ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configuratio
     // ...
 
     // 초기화
-    ToastLoggerConfiguration *configuration = [ToastLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" 
-                                                                            enableCrashReporter:YES];
-    [ToastLogger initWithConfiguration:configuration];
+    NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY" enableCrashReporter:YES];
+    [NHNCloudLogger initWithConfiguration:configuration];
 
     // Delegate 설정
-    [[ToastLogger setDelegate:self];
+    [[NHNCloudLogger setDelegate:self];
 
     return YES;
 }
 
-#pragma mark - ToastLoggerDelegate
+#pragma mark - NHNCloudLoggerDelegate
 // 로그 전송 성공
-- (void)toastLogDidSuccess:(ToastLog *)log {
+- (void)nhnCloudLogDidSuccess:(NHNCloudLog *)log {
       // ...
  }
 
 // 로그 전송 실패
-- (void)toastLogDidFail:(ToastLog *)log error:(NSError *)error {
+- (void)nhnCloudLogDidFail:(NHNCloudLog *)log error:(NSError *)error {
       // ...
 }
 
 // 네트워크 단절 등의 이유로 로그 전송에 실패한 경우 재전송을 위해 SDK 내부 저장
-- (void)toastLogDidSave:(ToastLog *)log {
+- (void)nhnCloudLogDidSave:(NHNCloudLog *)log {
       // ...
 }
 
 // 로그 필터링
-- (void)toastLogDidFilter:(ToastLog *)log logFilter:(ToastLogFilter *)logFilter {
+- (void)nhnCloudLogDidFilter:(NHNCloudLog *)log logFilter:(NHNCloudLogFilter *)logFilter {
       // ...
 }
 
