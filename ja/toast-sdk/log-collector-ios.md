@@ -40,17 +40,17 @@ end
 * NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページで、全体iOS SDKをダウンロードできます。
 * Xcode Projectに**NHNCloudLogger.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework**を追加します。
 * NHN Cloud LoggerのCrash Report機能を使用するには、一緒に配布される**CrashReporter.framework**もプロジェクトに追加する必要があります。
-![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
+![linked_frameworks_logger](https://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger_202206.png)
 
 #### Project Settings
 
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 * **CrashReporter.framewor**を直接ダウンロードするか、ビルドした場合は**Build Settings**の**Enable Bitcode**の値を**NO**に変更する必要があります。
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
-![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。
 
 ## NHN Cloud Symbol Uploader適用
@@ -73,7 +73,7 @@ fi
 * Run Scriptセクションの下にあるInput FilesにdSYMの基本パスを設定します。
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
-![symbol_uploader_script_pods_path](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path.png)
+![symbol_uploader_script_pods_path](https://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path_202206.png)
 
 ### Symbol Uploaderを使用して直接アップロード
 

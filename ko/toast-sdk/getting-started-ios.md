@@ -50,11 +50,11 @@ binary "https://nh.nu/nhncloudsdk"
 ```
 
 * 생성된 Carthage/Build 폴더의 Framework를 Xcode 프로젝트에 추가합니다.
-![carthage_import_framework](http://static.toastoven.net/toastcloud/sdk/ios/carthage01.png)
+![carthage_import_framework](https://static.toastoven.net/toastcloud/sdk/ios/carthage01_202206.png)
 
 * 프로젝트에 다음과 같이 프레임워크(framework)가 추가된 것을 확인합니다.
-![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage02.png)
-![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage03.png)
+![import_carthage_frameworks_complete](https://static.toastoven.net/toastcloud/sdk/ios/carthage02_202206.png)
+![import_carthage_frameworks_complete](https://static.toastoven.net/toastcloud/sdk/ios/carthage03_202206.png)
 
 * NHN Cloud SDK를 사용하려면 **프레임워크 설정**과 **프로젝트 설정**을 해야합니다.
 
@@ -66,34 +66,34 @@ binary "https://nh.nu/nhncloudsdk"
 #### 프레임워크 설정
 
 * NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
-![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder.png)
+![import_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder_202206.png)
 
 * Logger의 Crash Report 기능을 사용하려면 함께 배포되는 CrashReporter.framework도 프로젝트에 추가해야 합니다.
-![import_external_framework](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_external_folder.png)
+![import_external_framework](https://static.toastoven.net/toastcloud/sdk/ios/overview_import_external_folder_202206.png)
 
 * 프로젝트에 다음과 같이 프레임워크(framework)가 추가된 것을 확인합니다.
-![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
+![import_frameworks_complete](https://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder_202206.png)
 
 * IAP 기능을 사용하려면 StoreKit.framework를 추가해야 합니다.
-![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
+![linked__storekit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit_202206.png)
 
 * Push 기능을 사용하려면 UserNotifications.framework를 추가해야 합니다.
-![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
+![linked__usernotifications_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications_202206.png)
 
 ##### xcframework
 * xcframework를 사용하면 arm simulator에서도 NHN Cloud SDK를 사용할 수 있습니다.
-![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework01.png)
-![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework02.png)
+![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework01_202206.png)
+![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework02_202206.png)
 
 #### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 * **CrashReporter.framewor**를 직접 다운로드하거나 빌드한 경우에는 **Build Setting**의 **Enable Bitcode**의 값을 **NO**로 변경해야 합니다.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
-![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
 
 ### 프레임워크 가져오기

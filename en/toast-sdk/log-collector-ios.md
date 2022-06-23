@@ -40,17 +40,17 @@ end
 * The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of NHN Cloud.
 * Add **NHNCloudLogger.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework** to the Xcode Project.
 * To enable Crash Report of NHN Cloud Logger, CrashReporter.framework which is distributed as well, must be added to the project.
-![linked_frameworks_logger](http://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger.png)
+![linked_frameworks_logger](https://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger_202206.png)
 
 #### Project Settings
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 * To directly download or build **CrashReporter.framework**, the **Bitcode** at **Build Settings** must be changed to **NO**.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
-![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > CrashReporter.framework downloaded from [Downloads](../../../Download/#toast-sdk) of NHN Cloud supports bitCode.
 
 ## Apply NHN Cloud Symbol Uploader
@@ -73,7 +73,7 @@ fi
 * On Input Files under the Run Script section, set the default path of dSYM.
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
-![symbol_uploader_script_pods_path](http://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path.png)
+![symbol_uploader_script_pods_path](https://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path_202206.png)
 
 ### Upload Manually Using Symbol Uploader
 

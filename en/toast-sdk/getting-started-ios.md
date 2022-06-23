@@ -50,11 +50,11 @@ binary "https://nh.nu/nhncloudsdk"
 ```
 
 * Add the frameworks in the created Carthage/Build folder to the Xcode project.
-![carthage_import_framework](http://static.toastoven.net/toastcloud/sdk/ios/carthage01.png)
+![carthage_import_framework](https://static.toastoven.net/toastcloud/sdk/ios/carthage01_202206.png)
 
 * Check that the frameworks have been added to the project as shown below.
-![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage02.png)
-![import_carthage_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/carthage03.png)
+![import_carthage_frameworks_complete](https://static.toastoven.net/toastcloud/sdk/ios/carthage02_202206.png)
+![import_carthage_frameworks_complete](https://static.toastoven.net/toastcloud/sdk/ios/carthage03_202206.png)
 
 * To use NHN Cloud SDK, you must perform **Framework setting** and **Project setting**.
 
@@ -66,34 +66,34 @@ binary "https://nh.nu/nhncloudsdk"
 #### Frameworks Setup
 
 * The entire iOS SDK can be downloaded from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud.
-![import_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder.png)
+![import_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_import_frameworks_folder_202206.png)
 
 * To use the Crash Report feature of Logger, CrashReporter.framework which is released along with the service, must be added to the project.
-![import_external_framework](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_external_folder.png)
+![import_external_framework](https://static.toastoven.net/toastcloud/sdk/ios/overview_import_external_folder_202206.png)
 
 * Check that the frameworks have been added to the project as shown below.
-![import_frameworks_complete](http://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder.png)
+![import_frameworks_complete](https://static.toastoven.net/toastcloud/sdk/ios/overview_import_complete_folder_202206.png)
 
 * To use the IAP feature, StoreKit.framework must be added.
-![linked__storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
+![linked__storekit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit_202206.png)
 
 * To use the Push feature, UserNotifications.framework must be added.
-![linked__usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
+![linked__usernotifications_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications_202206.png)
 
 ##### xcframework
 * Using xcframework allows you to use NHN Cloud SDK even in arm simulator.
-![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework01.png)
-![xcframework01](http://static.toastoven.net/toastcloud/sdk/ios/xcframework02.png)
+![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework01_202206.png)
+![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework02_202206.png)
 
 #### Project Settings
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** under **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 * If you directly downloaded or built **CrashReporter.framework**, the **Enable Bitcode** under **Build Settings** must be changed to **No**.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
-![enable_bitcode](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_bitcode.png)
+![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > CrashReporter.framework downloaded from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud supports bitcode.
 
 ### Import Framework

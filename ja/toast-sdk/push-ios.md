@@ -40,23 +40,23 @@ end
 * NHN Cloudの [Downloads](../../../Download/#toast-sdk)ベージでiOS SDKをダウンロードできます。
 * Xcode Projectに、**NHNCloudPush.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, UserNotifications.framework**を追加します。
 * UserNotifications.frameworkは下記の方法で追加できます。
-![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
+![linked_usernotifications_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications_202206.png)
 
 #### プロジェクト設定
 
 * **Build Settings**の**Other Linker Flags**に、 **-lc++** と **-ObjC**の項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 ### Capabilities設定
 
 * NHN Cloud Pushを使用するには、Capabilitiesで**Push Notification**、 **Background Modes**の項目を有効化する必要があります。
     * **Project Target > Signing & Capabilities > + Capability > Push Notification**
-![add_capability_push_notifications](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications.png)
+![add_capability_push_notifications](https://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications_202206.png)
     * **Project Target > Signing & Capabilities > + Capability > Background Modes**
-![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
+![add_capability_background_modes](https://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes_202206.png)
     * **Background Modes**の項目の中で、**Remote notifications**を有効化してください。
-![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities.png)
+![capabilities](https://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_202206.png)
 
 ## Xcode11 / iOS13の変更点
 * 共通
@@ -374,7 +374,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 * Property List
 
-![plist_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_plist_ext.png)
+![plist_ext](https://static.toastoven.net/toastcloud/sdk/ios/push_plist_ext_202206.png)
 
 * Source Code
 
@@ -402,7 +402,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 * Property List
 
-![plist_app](http://static.toastoven.net/toastcloud/sdk/ios/push_plist_app.png)
+![plist_app](https://static.toastoven.net/toastcloud/sdk/ios/push_plist_app_202206.png)
 
 * Source Code
 
@@ -429,7 +429,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 ### Notification Service Extensionの作成
 
 * **File New > Target > iOS > Notification Service Extension**
-![create_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_create_ext.png)
+![create_ext](https://static.toastoven.net/toastcloud/sdk/ios/push_create_ext_202206.png)
 
 ### Notification Service Extension設定
 
@@ -568,17 +568,17 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 * NHN Cloud PushのVoIP機能を使うには、**PushKit.framework**、**CallKit.framework**を追加する必要があります。
 * PushKit.framework、CallKit.frameworkは以下の方法で追加できます。
-![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
-![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
-![linked_frameworks_push](http://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push.png)
+![linked_pushkit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit_202206.png)
+![linked_callkit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit_202206.png)
+![linked_frameworks_push](https://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push_202206.png)
 
 ### Capabilities設定
 
 * **Project Target > Signing & Capabilities > + Capability > Background Modes**
-![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
+![add_capability_background_modes](https://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes_202206.png)
 
 * **Voice over IP**項目を有効化する必要があります。
-![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_voip.png)
+![capabilities](https://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_voip_202206.png)
 
 ### 初期化
 

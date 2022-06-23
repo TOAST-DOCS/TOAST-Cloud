@@ -38,22 +38,22 @@ end
 * The entire iOS SDK can be downloaded from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud.
 * Add **NHNCloudIAP.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, StoreKit.framework** to the Xcode Project.
 * StoreKit.framework can be added in the following way.
-![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
+![linked_storekit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit_202206.png)
 
-![linked_frameworks_iap](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap.png)
+![linked_frameworks_iap](https://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap_202206.png)
 
 #### Project Setup
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** under **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 
 ### Capabilities Setup
 
 * To use NHN Cloud IAP, you must enable the **In-App Purchase** option in Capabilities.
     * **Project Target > Capabilities > In-App Purchase**
-![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
+![capabilities_iap](https://static.toastoven.net/toastcloud/sdk/ios/capability_iap_202206.png)
 
 ## Service Login
 
@@ -415,7 +415,7 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 
 * To remain compatible with (old) IAP SDK, reprocessing is supported for incomplete purchases created by (old) IAP SDK.
 * >To enable compatibility with (old) IAP SDK, additionally link `sqlite3 Library(libsqlite3.tdb)`.
-![linked_sqlite3](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3.png)
+![linked_sqlite3](https://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3_202206.png)
 
 ### Specification for Reprocessing Incomplete Purchase API
 

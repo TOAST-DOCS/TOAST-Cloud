@@ -38,22 +38,22 @@ end
 * NHN Cloud [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
 * Xcode Project에 **NHNCloudIAP.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, StoreKit.framework**를 추가합니다.
 * StoreKit.framework는 아래 방법으로 추가할 수 있습니다.
-![linked_storekit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit.png)
+![linked_storekit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_StoreKit_202206.png)
 
-![linked_frameworks_iap](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap.png)
+![linked_frameworks_iap](https://static.toastoven.net/toastcloud/sdk/ios/iap_link_frameworks_iap_202206.png)
 
 #### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 
 ### Capabilities 설정
 
 * NHN Cloud IAP를 사용하려면 Capabilities에서 **In-App Purchase** 항목을 활성화해야 합니다.
     * **Project Target > Capabilities > In-App Purchase**
-![capabilities_iap](http://static.toastoven.net/toastcloud/sdk/ios/capability_iap.png)
+![capabilities_iap](https://static.toastoven.net/toastcloud/sdk/ios/capability_iap_202206.png)
 
 ## 서비스 로그인
 
@@ -415,7 +415,7 @@ itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
 
 * (구)IAP SDK와의 호환성을 유지할 수 있게 (구)IAP SDK에서 생성된 미완료 구매 건의 재처리 기능을 제공합니다.
 * (구)IAP SDK와의 호환성 유지 기능을 사용하려면 `sqlite3 Library(libsqlite3.tdb)`를 추가로 연결(link)해야 합니다.
-![linked_sqlite3](http://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3.png)
+![linked_sqlite3](https://static.toastoven.net/toastcloud/sdk/ios/iap_link_sqlite3_202206.png)
 
 ### 미완료 구매 재처리 API 명세
 

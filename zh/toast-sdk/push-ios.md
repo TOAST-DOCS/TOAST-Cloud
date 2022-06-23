@@ -40,23 +40,23 @@ end
 * You can download the full iOS SDK from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud.
 * Add **NHNCloudPush.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, UserNotifications.framework** to your Xcode Project.
 * UserNotifications.framework can be added in the following way.
-![linked_usernotifications_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications.png)
+![linked_usernotifications_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications_202206.png)
 
 #### Project Settings
 
 * Add **-lc++** and **-ObjC** items to **Other Linker Flags** in **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](http://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags.png)
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 ### Capabilities Setup
 
 * To use NHN Cloud Push, you must enable **Push Notification** and **Background Modes** items in Capabilities.
     * **Project Target > Signing & Capabilities > + Capability > Push Notification**
-![add_capability_push_notifications](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications.png)
+![add_capability_push_notifications](https://static.toastoven.net/toastcloud/sdk/ios/add_capability_notifications_202206.png)
     * **Project Target > Signing & Capabilities > + Capability > Background Modes**
-![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
+![add_capability_background_modes](https://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes_202206.png)
     * In **Background Modes** items, **Remote notifications** must be enabled.
-![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities.png)
+![capabilities](https://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_202206.png)
 
 ## Changes for Xcode11/iOS13
 * Common
@@ -376,7 +376,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 
 * Property List
 
-![plist_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_plist_ext.png)
+![plist_ext](https://static.toastoven.net/toastcloud/sdk/ios/push_plist_ext_202206.png)
 
 * Source Code
 
@@ -404,7 +404,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 
 * Property List
 
-![plist_app](http://static.toastoven.net/toastcloud/sdk/ios/push_plist_app.png)
+![plist_app](https://static.toastoven.net/toastcloud/sdk/ios/push_plist_app_202206.png)
 
 * Source Code
 
@@ -431,7 +431,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 ### Create Notification Service Extension
 
 * **File New > Target > iOS > Notification Service Extension**
-![create_ext](http://static.toastoven.net/toastcloud/sdk/ios/push_create_ext.png)
+![create_ext](https://static.toastoven.net/toastcloud/sdk/ios/push_create_ext_202206.png)
 
 ### Notification Service Extension Setting
 
@@ -571,17 +571,17 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 * To use the VoIP function of NHN Cloud Push, you need to add **PushKit.framework** and **CallKit.framework**.
 * PushKit.framework and CallKit.framework can be added in the following way.
-![linked_pushkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit.png)
-![linked_callkit_frameworks](http://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit.png)
-![linked_frameworks_push](http://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push.png)
+![linked_pushkit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_PushKit_202206.png)
+![linked_callkit_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_CallKit_202206.png)
+![linked_frameworks_push](https://static.toastoven.net/toastcloud/sdk/ios/push_link_frameworks_push_202206.png)
 
 ### Capabilities Setup
 
 * **Project Target > Signing & Capabilities > + Capability > Background Modes**
-![add_capability_background_modes](http://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes.png)
+![add_capability_background_modes](https://static.toastoven.net/toastcloud/sdk/ios/add_capability_background_modes_202206.png)
 
 * **Voice over IP** must be enabled.
-![capabilities](http://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_voip.png)
+![capabilities](https://static.toastoven.net/toastcloud/sdk/ios/push_capabilities_voip_202206.png)
 
 ### Initialization
 
