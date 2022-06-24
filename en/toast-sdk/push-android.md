@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.0.0'
     ...
 }
 ```
@@ -39,7 +39,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-adm:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.0.0'
     ...
 }
 ```
@@ -137,38 +137,38 @@ dependencies {
 
 ## Push Initialization
 
-* Initialize NHN Cloud Push by calling ToastPush.initialize.
-* A [ToastPushConfiguration](./push-android/#toastpushconfiguration) object contains push configuration information.
-* A [ToastPushConfiguration](./push-android/#toastpushconfiguration) object can be created using ToastPushConfiguration.Builder.
-* Pass the AppKey issued from the Push console as the parameter of ToastPushConfiguration.newBuilder.
+* Initialize NHN Cloud Push by calling NhnCloudPush.initialize.
+* A [NhnCloudPushConfiguration](./push-android/#nhncloudpushconfiguration) object contains push configuration information.
+* A [NhnCloudPushConfiguration](./push-android/#nhncloudpushconfiguration) object can be created using NhnCloudPushConfiguration.Builder.
+* Pass the AppKey issued from the Push console as the parameter of NhnCloudPushConfiguration.newBuilder.
 * The PushType you want to use must be passed in the initialization call.
 
 ### FCM initialization example
 
 ```java
-ToastPushConfiguration configuration =
-    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+NhnCloudPushConfiguration configuration =
+    NhnCloudPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 
-ToastPush.initialize(PushType.FCM, configuration);
+NhnCloudPush.initialize(PushType.FCM, configuration);
 ```
 
 ### ADM initialization example
 
 ```java
-ToastPushConfiguration configuration =
-    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+NhnCloudPushConfiguration configuration =
+    NhnCloudPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 
-ToastPush.initialize(PushType.ADM, configuration);
+NhnCloudPush.initialize(PushType.ADM, configuration);
 ```
 
-> ToastPush.initialize(ToastPushConfiguration) has been deprecated.
-> PushType is automatically set to FCM when initialized using ToastPush.initialize(ToastPushConfiguration).
+> NhnCloudPush.initialize(NhnCloudPushConfiguration) has been deprecated.
+> PushType is automatically set to FCM when initialized using NhnCloudPush.initialize(NhnCloudPushConfiguration).
 
 ## Service Login
 * All products provided by NHN Cloud SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
-    * You can set the user id with [ToastSdk.setUserId](./getting-started-android/#userid).
+    * You can set the user id with [NhnCloudSdk.setUserId](./getting-started-android/#userid).
 * It is recommended to implement the user ID setting and token registration functions in the service login step.
 * If you set or change the user ID after registering the token, the token information is updated.
 
@@ -177,13 +177,13 @@ ToastPush.initialize(PushType.ADM, configuration);
 ```java
 public void onLogin(String userId) {
     // Login.
-    ToastSdk.setUserId(userId);
+    NhnCloudSdk.setUserId(userId);
     // Token registration, etc.
 }
 ```
 
 ## Token Registration
-* Use the ToastPush.registerToken() method to send a Push token to the NHN Cloud Push server. In this case, pass whether the user agreed to receive (ToastPushAgreement) as a parameter.
+* Use the NhnCloudPush.registerToken() method to send a Push token to the NHN Cloud Push server. In this case, pass whether the user agreed to receive (NhnCloudPushAgreement) as a parameter.
 * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
 * When the token is registered successfully, the user can receive a Push message.
 
@@ -191,18 +191,18 @@ public void onLogin(String userId) {
 * In accordance with the provisions of the Information and Communications Network Act (Articles 50 through 50-8), when registering a token, whether or not to receive notification/advertising/night-time advertising push messages must also be inputted. When sending a message, it is automatically filtered based on whether or not the user agreed to receive it.
     * [Shortcut to KISA Guide](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [Shortcut to the law](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* Set whether or not the user agreed to receive the push in ToastPushAgreementIt and send it to the NHN Cloud Push server when registering tokens.
+* Set whether or not the user agreed to receive the push in NhnCloudPushAgreementIt and send it to the NHN Cloud Push server when registering tokens.
 
 ### Example of token registration and agreement setting
 ```java
 // Create a receiving agreement setting object
-ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // Agree to receive notification messages
+NhnCloudPushAgreement agreement = NhnCloudPushAgreement.newBuilder(true)  // Agree to receive notification messages
         .setAllowAdvertisements(true)       // Agree to receive advertising notification messages
         .setAllowNightAdvertisements(true)  // Agree to receive nigh-time advertising notification messages
         .build();
 
 // Register a token and set receiving agreement
-ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
+NhnCloudPush.registerToken(context, agreement, new RegisterTokenCallback() {
     @Override
     public void onRegister(@NonNull PushResult result,
                            @Nullable String token) {
@@ -223,7 +223,7 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 
 ### Token information query example
 ```java
-ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
+NhnCloudPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
     @Override
     public void onQuery(@NonNull PushResult result,
                         @Nullable TokenInfo tokenInfo) {
@@ -231,7 +231,7 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
         if (result.isSuccess()) {
             // Token information query succeeded
             String token = tokenInfo.getToken();
-            ToastPushAgreement agreement = tokenInfo.getAgreement();
+            NhnCloudPushAgreement agreement = tokenInfo.getAgreement();
         } else {
             // Token information query failed
             int code = result.getCode();
@@ -250,7 +250,7 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 
 ### Token unregistration example
 ```java
-ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
+NhnCloudPush.unregisterToken(mContext, new UnregisterTokenCallback() {
     @Override
     public void onUnregister(@NonNull PushResult result,
                              @Nullable String unregisteredToken) {
@@ -268,8 +268,8 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 
 ## Message Reception
 * You can be notified via OnReceiveMessageListener when a push message is received.
-* A listener for push message reception can be registered using the ToastPush.setOnReceiveMessageListener function.
-* You can check message information through the [ToastPushMessage](./push-android/#toastpushmessage) object passed to OnReceiveMessageListener .
+* A listener for push message reception can be registered using the NhnCloudPush.setOnReceiveMessageListener function.
+* You can check message information through the [NhnCloudPushMessage](./push-android/#nhncloudpushmessage) object passed to OnReceiveMessageListener .
 * To be notified of message reception even when the app is not running, you need to register the listener in `Application#onCreate`.
 
 > When receiving a message, a notification is not exposed if the user is using the app (Foreground).
@@ -282,14 +282,14 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastPush.setOnReceiveMessageListener(new OnReceiveMessageListener() {
+        NhnCloudPush.setOnReceiveMessageListener(new OnReceiveMessageListener() {
             @Override
-            public void onReceive(@NonNull ToastPushMessage message,
+            public void onReceive(@NonNull NhnCloudPushMessage message,
                                   boolean isForeground) {
 
                 // Expose a notification even when the user is using the app
                 if (isForeground) {
-                    ToastNotification.notify(getApplicationContext(), message);
+                    NhnCloudNotification.notify(getApplicationContext(), message);
                 }
             }
         });
@@ -301,7 +301,7 @@ public class MyApplication extends Application {
 
 ## Notification Click
 * You can be notified via OnClickListener when the app is launched after the user clicks on the exposed notification.
-* A listener for notification click can be registered using the ToastNotification.setOnClickListener function.
+* A listener for notification click can be registered using the NhnCloudNotification.setOnClickListener function.
 * To receive notification click notifications even when the app is not running, you need to register the listener in `Application#onCreate`.
 
 ### Example of notification click listener registration
@@ -311,9 +311,9 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastNotification.setOnClickListener(new OnClickListener() {
+        NhnCloudNotification.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(@NonNull ToastPushMessage message) {
+            public void onClick(@NonNull NhnCloudPushMessage message) {
                 // Service logic such as page move can be performed based on the message content.
                 Map<String, String> extras = message.getExtras();
             }
@@ -342,7 +342,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastNotification.setDefaultChannelName(context, "YOUR_CHANNEL_NAME");
+        NhnCloudNotification.setDefaultChannelName(context, "YOUR_CHANNEL_NAME");
 
         // ...
     }
@@ -372,7 +372,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder()
+        NhnCloudNotificationOptions defaultOptions = new NhnCloudNotificationOptions.Builder()
                 .setPriority(NotificationCompat.PRIORITY_HIGH)  // Set notification priority
                 .setColor(0x0085AA)                             // Set notification background color
                 .setLights(Color.RED, 0, 300)                   // Set LED light
@@ -383,7 +383,7 @@ public class MyApplication extends Application {
                 .enableBadge(true)                              // Set badge icon use
                 .build();
 
-        ToastNotification.setDefaultOptions(context, defaultOptions);
+        NhnCloudNotification.setDefaultOptions(context, defaultOptions);
 
         // ...
     }
@@ -398,14 +398,14 @@ public class MyApplication extends Application {
         // ...
 
         // Get the configured default notification options
-        ToastNotificationOptions defaultOptions = ToastNotification.getDefaultOptions(context);
+        NhnCloudNotificationOptions defaultOptions = NhnCloudNotification.getDefaultOptions(context);
 
         // Create a builder from the notification options object
-        ToastNotificationOptions newDefaultOptions = defaultOptions.buildUpon()
+        NhnCloudNotificationOptions newDefaultOptions = defaultOptions.buildUpon()
                 .enableForeground(true)      // Change only the foreground notification exposure status
                 .build();
 
-        ToastNotification.setDefaultOptions(context, newDefaultOptions);
+        NhnCloudNotification.setDefaultOptions(context, newDefaultOptions);
 
         // ...
     }
@@ -500,7 +500,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastNotification.setOnActionListener(new OnActionListener() {
+        NhnCloudNotification.setOnActionListener(new OnActionListener() {
             @Override
             public void onAction(@NonNull PushAction action) {
                 // In case of Reply action, send the content to a service server
@@ -518,26 +518,26 @@ public class MyApplication extends Application {
 ```
 
 ## User-defined Message Handling
-* If you need to perform a separate processing after receiving a message or expose a notification by modifying the content of the received message, you must implement a broadcast that inherits and implements [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver).
-* The broadcast that inherits and implements ToastPushMessageReceiver must also be registered in AndroidManifest.xml.
+* If you need to perform a separate processing after receiving a message or expose a notification by modifying the content of the received message, you must implement a broadcast that inherits and implements [NhnCloudPushMessageReceiver](./push-android/#nhncloudpushmessagereceiver).
+* The broadcast that inherits and implements NhnCloudPushMessageReceiver must also be registered in AndroidManifest.xml.
 * When a message is received, the received message is sent to the onMessageReceived function.
 
 > **(Caution)**
 > 1. If the onMessageReceived function does not request (notify) the notification after receiving the message, the notification is not exposed.
 > 2. If you create a notification manually, you must set the Push service intent as the notification's content intent in order to collect metrics. (See the Adding the Metric Collection Feature section below)
 
-### Example of ToastPushMessagingService implementation code
+### Example of NhnCloudPushMessagingService implementation code
 ```java
-public class MyPushMessageReceiver extends ToastPushMessageReceiver {
+public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
     @Override
     public void onMessageReceived(@NonNull Context context,
-                                  @NonNull ToastRemoteMessage remoteMessage) {
+                                  @NonNull NhnCloudRemoteMessage remoteMessage) {
 
         // Change channel ID
         remoteMessage.setChannelId("channel");
 
         // Modify message content
-        ToastPushMessage message = remoteMessage.getMessage();
+        NhnCloudPushMessage message = remoteMessage.getMessage();
         CharSequence title = message.getTitle();
 
         message.setTitle("[Modified] " + title);
@@ -558,7 +558,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
         } else {
             // Expose a specific UI screen
-            Toast.makeText(context, message.title, Toast.LENGTH_SHORT).show();
+            NhnCloud.makeText(context, message.title, NhnCloud.LENGTH_SHORT).show();
         }
     }
 }
@@ -566,13 +566,13 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ### Example of registering in AndroidManifest.xml
 > **(Caution)**
-> 1. When using ToastPushMessageReceiver, you must set permission.
+> 1. When using NhnCloudPushMessageReceiver, you must set permission.
 > 2. When targeting API level 31 or higher, you must set the 'exported' attribute.
 
 ```xml
 <manifest>
     <application>
-    <receiver android:name=".ToastPushSampleReceiver"
+    <receiver android:name=".NhnCloudPushSampleReceiver"
         android:permission="${applicationId}.toast.push.permission.RECEIVE"
         android:exported="false">
         <intent-filter>
@@ -592,16 +592,16 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 #### Example of adding the metrics collection feature
 ```java
-public class MyPushMessageReceiver extends ToastPushMessageReceiver {
+public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
     private NotificationManager mManager = null;
 
     @Override
     public void onMessageReceived(
             @NonNull Context context,
-            @NonNull ToastRemoteMessage remoteMessage) {
+            @NonNull NhnCloudRemoteMessage remoteMessage) {
 
         // Obtain the message content
-        ToastPushMessage message = remoteMessage.getMessage();
+        NhnCloudPushMessage message = remoteMessage.getMessage();
 
         // Create NotificationManager
         if (mManager == null) {
@@ -665,7 +665,7 @@ tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8-character string)
 tagIds.add(TAG_ID_2);
 
 // Add the tag ID list of the logged-in user ID
-ToastPush.addUserTag(tagIds, new UserTagCallback() {
+NhnCloudPush.addUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -679,7 +679,7 @@ ToastPush.addUserTag(tagIds, new UserTagCallback() {
 });
 
 // Update the tag ID list of the logged-in user ID (Existing tag ID list is deleted and set to the inputted value)
-ToastPush.setUserTag(tagIds, new UserTagCallback() {
+NhnCloudPush.setUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -701,7 +701,7 @@ ToastPush.setUserTag(tagIds, new UserTagCallback() {
 
 ```java
 // Return the whole tag ID list of the logged-in user ID
-ToastPush.getUserTag(new UserTagCallback() {
+NhnCloudPush.getUserTag(new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -728,7 +728,7 @@ tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8-character string)
 tagIds.add(TAG_ID_2);
 
 // Delete the tag ID list of the logged-in user ID
-ToastPush.removeUserTag(tagIds, new UserTagCallback() {
+NhnCloudPush.removeUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -742,7 +742,7 @@ ToastPush.removeUserTag(tagIds, new UserTagCallback() {
 });
 
 // Delete the whole tag ID list of the logged-in user ID
-ToastPush.removeAllUserTag(new UserTagCallback() {
+NhnCloudPush.removeAllUserTag(new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -757,11 +757,11 @@ ToastPush.removeAllUserTag(new UserTagCallback() {
 ```
 
 ## NHN Cloud Push Class Reference
-### ToastPushConfiguration
+### NhnCloudPushConfiguration
 * Push configuration that is passed when NHN Cloud Push is initialized.
 
 ```java
-/* ToastPushConfiguration.java */
+/* NhnCloudPushConfiguration.java */
 public String getAppKey();
 public static Builder newBuilder(@NonNull Context context, @NonNull String appKey);
 ```
@@ -769,7 +769,7 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 | Method | Returns | |
 |---|---|---|
 | getAppKey | String | Returns the Push service Appkey. |
-| static newBuilder | ToastPushConfiguration.Builder | Creates a builder to create a ToastPushConfiguration object. |
+| static newBuilder | NhnCloudPushConfiguration.Builder | Creates a builder to create a NhnCloudPushConfiguration object. |
 
 ### PushResult
 * A result object returned in response to the callback when calling an asynchronous API.
@@ -796,7 +796,7 @@ public boolean isFailure();
 ```java
 /* TokenInfo.java */
 public String getPushType();
-public ToastPushAgreement getAgreement();
+public NhnCloudPushAgreement getAgreement();
 public String getTimeZone();
 public String getCountry();
 public String getLanguage();
@@ -808,7 +808,7 @@ public String getToken();
 | Method | Returns | |
 |---|---|---|
 | getPushType | String | Returns a Push type. |
-| getAgreement | ToastPushAgreement | Returns whether to agree to notifications/advertising/night-time advertising, etc. |
+| getAgreement | NhnCloudPushAgreement | Returns whether to agree to notifications/advertising/night-time advertising, etc. |
 | getTimeZone | String | Returns the timezone. |
 | getCountry | String | Returns the country code. |
 | getLanguage | String | Returns the language code. |
@@ -816,14 +816,14 @@ public String getToken();
 | getActivatedDateTime | Date | Returns the date and time of the token's most recent registration. |
 | getToken | String | Returns a token. |
 
-### ToastRemoteMessage
+### NhnCloudRemoteMessage
 * An object returned when receiving a message from a message reception listener or a custom receiver.
 
 ``` java
-/* ToastRemoteMessage.java */
+/* NhnCloudRemoteMessage.java */
 public String getChannelId();
 public void setChannelId(String channelId);
-public ToastPushMessage getMessage();
+public NhnCloudPushMessage getMessage();
 public String getSenderId();
 ```
 
@@ -831,14 +831,14 @@ public String getSenderId();
 |---|---|---|
 | getChannelId | String | Returns the channel ID. |
 | setChannelId |  | Sets the channel ID. |
-| getMessage | ToastPushMessage | Returns a message object. |
+| getMessage | NhnCloudPushMessage | Returns a message object. |
 | getSenderId | String | Returns the sender ID. (FCM Only) |
 
-### ToastPushMessage
+### NhnCloudPushMessage
 * An object containing the contents of the received message.
 
 ``` java
-/* ToastPushMessage.java */
+/* NhnCloudPushMessage.java */
 public String getMessageId();
 public String getPusyType();
 public String getTitle();
@@ -869,7 +869,7 @@ public Map<String, String> getExtras();
 public ActionType getActionType();
 public String getNotificationId();
 public String getNotificationChannel();
-public ToastPushMessage getMessage();
+public NhnCloudPushMessage getMessage();
 public String getUserText();
 ```
 
@@ -878,37 +878,37 @@ public String getUserText();
 | getActionType | ActionType | Returns the ActionType. |
 | getNotificationId | String | Returns the ID of the notification where the action was executed. |
 | getNotificationChannel | String | Returns the channel of the notification where the action was executed. |
-| getMessage | ToastPushMessage | Returns the message information of the notification where the action was executed. |
+| getMessage | NhnCloudPushMessage | Returns the message information of the notification where the action was executed. |
 | getUserText | RichMessage | Returns the string entered by the user. |
 
-### ToastPushMessageReceiver
+### NhnCloudPushMessageReceiver
 * An object that the user must implement for features such as modifying message content, defining execution intent, and generating notifications manually.
 
 ``` java
-/* ToastPushMessageReceiver.java */
+/* NhnCloudPushMessageReceiver.java */
 public final boolean isAppForeground();
-public final void notify(Context context, ToastRemoteMessage message);
-public final void notify(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
+public final void notify(Context context, NhnCloudRemoteMessage message);
+public final void notify(Context context, NhnCloudRemoteMessage message, PendingIntent contentIntent);
 public final void notify(Context context, int notificationId, Notification notification);
 @Deprecated
-public final PendingIntent getNotificationServiceIntent(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
-public final PendingIntent getContentIntent(Context context, ToastRemoteMessage message, Intent launchIntent);
+public final PendingIntent getNotificationServiceIntent(Context context, NhnCloudRemoteMessage message, PendingIntent contentIntent);
+public final PendingIntent getContentIntent(Context context, NhnCloudRemoteMessage message, Intent launchIntent);
 ```
 
 | Method | Returns | Parameters | |
 |---|---|---|---|
 | isAppForeground | boolean |  | Returns whether the app is currently in use. |
-| notify | | Context, ToastRemoteMessage | Creates and exposes notifications with the default execution intents. |
-| notify | | Context, ToastRemoteMessage, PendingIntent | Creates and exposes notifications with a user execution intent. |
+| notify | | Context, NhnCloudRemoteMessage | Creates and exposes notifications with the default execution intents. |
+| notify | | Context, NhnCloudRemoteMessage, PendingIntent | Creates and exposes notifications with a user execution intent. |
 | notify | | Context, int, Notification | Exposes user notifications with a specific ID. |
-| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | Returns a user launch intent that includes sending metrics. <br> It does not work normally from Android 12 (API level 31) or higher, so you must use getContentIntent() instead. |
-| getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | Returns a user launch intent that includes sending metrics. |
+| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, NhnCloudRemoteMessage, PendingIntent | Returns a user launch intent that includes sending metrics. <br> It does not work normally from Android 12 (API level 31) or higher, so you must use getContentIntent() instead. |
+| getContentIntent | PendingIntent | Context, NhnCloudRemoteMessage, Intent | Returns a user launch intent that includes sending metrics. |
 
-### ToastNotificationOptions
+### NhnCloudNotificationOptions
 * An object that sets priority, small icon, background color, LED, vibration, notification sound, and foreground notification exposure information when setting the default notification options.
 
 ``` java
-/* ToastNotificationOptions.java */
+/* NhnCloudNotificationOptions.java */
 public int getPriority();
 public int getSmallIcon();
 public int getColor();
@@ -934,4 +934,4 @@ public Builder buildUpon();
 | getSound | Uri | | Returns the URI of the notification sound. |
 | isForegroundEnabled | boolean | | Returns whether or not to use foreground notifications. |
 | isBadgeEnabled | boolean | | Returns whether or not to use the badge icon. |
-| buildUpon | ToastNotificationOptions#Builder | | Returns a builder based on the current option information. |
+| buildUpon | NhnCloudNotificationOptions#Builder | | Returns a builder based on the current option information. |
