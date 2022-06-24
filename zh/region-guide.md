@@ -36,7 +36,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Auto Scale | Region | O | O | O | O |
 |  | System Monitoring | Regional | O | O | O | O |
 |  | Virtual Desktop | Regional | O | O |  |  |
-|  | Private Region | Regional | - | - | - | - |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
 | Network | VPC | Region | O | O | O | O |
@@ -70,6 +69,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | CUBRID Insatnce  | Regional | O | O | O | O |
 |  | MariaDB Instance  | Regional | O | O | O | O |
 |  | Tibero Instance   | Regional | O | O | O | O |
+| Hybrid & Private Cloud | NHN Private Cloud | Regional | - | - | - | - |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
 |  | GameStarter | Global | | | | |
