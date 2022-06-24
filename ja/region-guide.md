@@ -36,7 +36,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | System Monitoring | リージョン | O | O | O | O |
 |  | Virtual Desktop | リージョン | O | O |  |  |
-|  | Private Region | リージョン | - | - | - | - |
 | Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
 |  | NHN Container Registry (NCR) | リージョン | O | O |  |  |
 | Network | VPC | リージョン | O | O | O | O |
@@ -70,6 +69,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | CUBRID Insatnce  | リージョン | O | O | O | O |
 |  | MariaDB Instance  | リージョン | O | O | O | O |
 |  | Tibero Instance   | リージョン | O | O | O | O |
+| Hybrid & Private Cloud | NHN Private Cloud | リージョン | - | - | - | - |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
 |  | GameStarter | グローバル |  |  |  |  |
