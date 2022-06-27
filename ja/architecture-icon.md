@@ -6,4 +6,4 @@ NHN Cloudは、顧客がアーキテクチャアーキテクチャダイアグ�
 
 - 次のPowerPointファイルをダウンロードしてご利用ください。
 
-[![](https://static.toastoven.net/prod_architecture_Icon/fileicon_download_ppt.png)](https://static.toastoven.net/prod_architecture_Icon/NHN_Cloud_Architecture_Icons_20220329.pptx)
+[![](https://static.toastoven.net/prod_architecture_Icon/fileicon_download_ppt.png)](https://static.toastoven.net/prod_architecture_Icon/NHN_Cloud_Architecture_Icons_20220630.pptx)
