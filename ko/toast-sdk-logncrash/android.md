@@ -53,7 +53,7 @@ public class YourApplication extends Application {
         // ...
 
         // Initialize TOAST SDK
-        NhnCloudSdk.initialize(getApplicationContext());
+        ToastSdk.initialize(getApplicationContext());
     }
 }
 ```
@@ -67,12 +67,12 @@ Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
 ```java
 // Initialize Logger
-NhnCloudLoggerConfiguration loggerConfiguration = new NhnCloudLoggerConfiguration.Builder()
+ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Builder()
         .setProjectKey(YOUR_PROJECT_KEY)            // Log & Crash Search AppKey
         .setProjectVersion(YOUR_PROJECT_VERSION)    // App Version
         .build();
 
-NhnCloudLogger.initialize(loggerConfiguration);
+ToastLogger.initialize(loggerConfiguration);
 ```
 
 ### Send Log
@@ -81,19 +81,19 @@ TOAST Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 
 ```java
 // DEBUG 레벨 로그
-NhnCloudLogger.debug(tag, message);
+ToastLogger.debug(tag, message);
 
 // INFO 레벨 로그
-NhnCloudLogger.info(tag, message);
+ToastLogger.info(tag, message);
 
 // WARN 레벨 로그
-NhnCloudLogger.warn(tag, message);
+ToastLogger.warn(tag, message);
 
 // ERROR 레벨 로그
-NhnCloudLogger.error(tag, message);
+ToastLogger.error(tag, message);
 
 // FATAL 레벨 로그
-NhnCloudLogger.fatal(tag, message);
+ToastLogger.fatal(tag, message);
 ```
 
 ### Set UserID
@@ -102,7 +102,7 @@ NhnCloudLogger.fatal(tag, message);
 설정된 사용자 아이디는 "UserID" 필드로 Log & Crash Search에서 조회할 수 있습니다.
 
 ```java
-NhnCloudLogger.setUserId(userId);
+ToastLogger.setUserId(userId);
 ```
 
 ### Set User Field
@@ -110,7 +110,7 @@ NhnCloudLogger.setUserId(userId);
 사용자가 원하는 필드를 설정합니다.
 
 ```java
-NhnCloudLogger.setUserField("UserField", "UserValue");
+ToastLogger.setUserField("UserField", "UserValue");
 ```
 
 > 이미 예약된 필드는 사용할 수 없습니다.
@@ -122,7 +122,7 @@ NhnCloudLogger.setUserField("UserField", "UserValue");
 로그를 전송 후 전송 결과를 Callback을 통해 확인할 수 있습니다.
 
 ```java
-NhnCloudLogger.setListener(new NhnCloudLoggerListener() {
+ToastLogger.setListener(new ToastLoggerListener() {
     @Override
     public void onSuccess(LogObject log) {
         // 로그 전송에 성공하였습니다.
@@ -149,11 +149,11 @@ NhnCloudLogger.setListener(new NhnCloudLoggerListener() {
 
 ### Initialize
 
-onCreate() 메소드에서 NhnCloudCrash를 초기화합니다.
+onCreate() 메소드에서 ToastCrash를 초기화합니다.
 
 ```java
 // Initialize Crash
-NhnCloudCrash.initialize();
+ToastCrash.initialize();
 ```
 
 ### Send Handled Exception
@@ -162,19 +162,19 @@ TOAST Crash는 5가지 레벨의 예외 정보를 전송할 수 있습니다.
 
 ```java
 // DEBUG 레벨의 예외 정보 전송
-NhnCloudCrash.debug(tag, message, throwable);
+ToastCrash.debug(tag, message, throwable);
 
 // INFO 레벨의 예외 정보 전송
-NhnCloudCrash.info(tag, message, throwable);
+ToastCrash.info(tag, message, throwable);
 
 // WARN 레벨의 예외 정보 전송
-NhnCloudCrash.warn(tag, message, throwable);
+ToastCrash.warn(tag, message, throwable);
 
 // ERROR 레벨의 예외 정보 전송
-NhnCloudCrash.error(tag, message, throwable);
+ToastCrash.error(tag, message, throwable);
 
 // FATAL 레벨의 예외 정보 전송
-NhnCloudCrash.fatal(tag, message, throwable);
+ToastCrash.fatal(tag, message, throwable);
 ```
 
 #### Using
@@ -183,7 +183,7 @@ NhnCloudCrash.fatal(tag, message, throwable);
 try {
     // User Codes...
 } catch (Exception e) {
-    NhnCloudCrash.debug(TAG, "Handled Exception", e);
+    ToastCrash.debug(TAG, "Handled Exception", e);
 }
 ```
 
@@ -192,7 +192,7 @@ try {
 사용자가 원하는 필드를 설정합니다.
 
 ```java
-NhnCloudCrash.setUserField("UserField", "UserValue");
+ToastCrash.setUserField("UserField", "UserValue");
 ```
 
 > 이미 예약된 필드는 사용할 수 없습니다.
@@ -204,7 +204,7 @@ NhnCloudCrash.setUserField("UserField", "UserValue");
 크래시 발생 시 추가 정보를 설정할 수 있습니다.
 
 ```java
-NhnCloudCrash.setDataAdapter(new CrashDataAdapter() {
+ToastCrash.setDataAdapter(new CrashDataAdapter() {
     @Override
     public Map<String, Object> getUserFields() {
         Map<String, Object> userFields = new HashMap<>();
@@ -219,7 +219,7 @@ NhnCloudCrash.setDataAdapter(new CrashDataAdapter() {
 크래시 정보를 전송 후 전송 결과를 Callback을 통해 확인할 수 있습니다.
 
 ```java
-NhnCloudCrash.setListener(new CrashListener() {
+ToastCrash.setListener(new CrashListener() {
     @Override
     public void onSuccess(LogObject log) {
         // 크래시 정보 전송에 성공하였습니다.
