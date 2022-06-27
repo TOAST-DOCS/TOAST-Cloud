@@ -12,7 +12,7 @@ Must be comprised of 8 or more characters, in combination of alphabets, numbers,
 - null Passwords
 - Comprised only of characters or numbers 
 - Same as user ID 
-- 4 or more consecutive characters or numbers (e.g: 1111, 1234, or abcd)
+- 4 or more consecutive letters or numbers (e.g: 1111, 1234, or abcd)
 - Periodic reuses 
 - Composed of phone number, birthday, account name, or host name, which are easy to guess 
 
