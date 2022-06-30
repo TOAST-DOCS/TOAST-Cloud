@@ -16,7 +16,7 @@ They are classified by the country of choice, and allowed to join when they agre
 | Managed Information | Description | Required |
 | --- | --- | --- |
 | ID | - Valid email address (requires email verification). | O | 
-| Password | -  To be comprised of more than 8 characters, including English, numbers, and special characters.  <br/> - The password cannot be same as your previous one. <br/> - Make a clear distinction between uppercase and lowercase letters. <br/> - You cannot use 4 or more consecutive letters or numbers (for example, 1111, 1234, abcd, etc.). | O | 
+| Password | -  To be comprised of more than 8 characters, including English, numbers, and special characters.  <br/> - The password cannot be same as your previous one. <br/> - Make a clear distinction between uppercase and lowercase letters. <br/> - You cannot use 4 or more consecutive letters or numbers (for example, 1111, 1234, abcd, etc.). <br/> - Please change your password every 90 days. After 90 days, you will be prompted to change your password. | O | 
 | Type of Membership | 1. Individual Members <br/> - Join with simple email and SMS authentication.  <br/> - Individual members can use credit cards for payment. <br/> 2. Business Members <br/> - Further authentication is required for business registration information.  <br/> - Business members can use credit cards and bank transfer for payment; for bank transfer, tax invoice can be issued upon business information registered while joining. | O |
 | Mobile Phone Number | - Valid mobile phone number available for SMS (requires SMS verification). | O |
 | Name | - User's name for NHN Cloud Service.  | O |
@@ -106,9 +106,9 @@ The authentication and management policy of each payment method goes as follows:
 | Country | Membership Type | Payment Method | Authentication Type | Entry Information | Remarks |
 |--------|--------|--------|---|------|---|
 | Korea | Individual | PAYCO Credit Cards | Mobile phone owner authentication |Card number, valid period, and the first two digits of password | To validate credit card, KRW 1,000 shall be paid and cancelled. |
-| | | Credit Cards | Mobile phone owner authentication |Credit card number, valid period, and the first two digits of password | Personal credit card and corporate credit card requiring signature are supported. |
+| | | Credit Cards | Mobile phone owner authentication |Credit card number, valid period, and birthday | Personal credit card and corporate credit card requiring signature are supported. |
 | | Business Owner | PAYCO Credit Cards | Resident registration number of business registration number | Card number, valid period | To validate credit card, KRW 1,000 shall be paid and cancelled. |
-| | | Credit Cards (signature required) | Mobile phone owner authentication | Card number, valid period, and the first 7 digits of resident registration number | Check card is supported. |
+| | | Credit Cards (signature required) | Mobile phone owner authentication | Card number, valid period, and birthday | Check card is supported. |
 | | | Credit Cards (no signature required) | Business registration number | Card number, valid period, and the two digits of password | TBD |
 | | | Bank Transfers | Authenticate with public key certificate | Bank and account number | Personal account must contain same information on the public key certificate of the person <br/> while corporate account must contain same business information on the member profile/corporate account/public key certificate.   |
 | Japan | Individual | Credit Cards | Credit card holder authentication |Card number, valid period, name, and security code | To validate credit card, 2 Yen shall be paid and cancelled. |

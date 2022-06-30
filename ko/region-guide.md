@@ -36,7 +36,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Auto Scale | 리전 | O | O | O | O |
 |  | System Monitoring | 리전 | O | O | O | O |
 |  | Virtual Desktop | 리전 | O | O |  |  |
-|  | Private Region | 리전 | - | - | - | - |
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |  |  |
 |  | NHN Container Registry (NCR) | 리전 | O | O |  |  |
 | Network | VPC | 리전 | O | O | O | O |
@@ -76,6 +75,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | CUBRID Insatnce  | 리전 | O | O | O | O |
 |  | MariaDB Instance  | 리전 | O | O | O | O |
 |  | Tibero Instance   | 리전 | O | O | O | O |
+| Hybrid & Private Cloud | NHN Private Cloud | 리전 | - | - | - | - |
 | Game | Gamebase | 글로벌 |  |  |  |  |
 |  | GameAnvil | 글로벌 |  |  |  |  |
 |  | GameStarter | 글로벌 |  |  |  |  |
