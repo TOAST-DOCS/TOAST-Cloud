@@ -95,7 +95,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | SMS | Regional | O |  |  |  |
 |  | Email | Global |  |  |  |  |
 |  | KakaoTalk Bizmessage | Regional | O |  |  |  |
-| AI Service | Face Recognition | Regional | O | O |  |  |
+| AI Service | Face Recognition | Global |  |  |  |  |
 |  | AI Fashion | Regional | O | O | O |  |  |
 |  | Document Recognizer | Global |  |  |  |  |
 |  | Vehicle Plate Recognizer | Global |  |  |  |  |
