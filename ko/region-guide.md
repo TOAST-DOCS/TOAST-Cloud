@@ -101,7 +101,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | SMS | 리전 | O |  |  |  |
 |  | Email | 글로벌 |  |  |  |  |
 |  | KakaoTalk Bizmessage | 리전 | O |  |  |  |
-| AI Service | Face Recognition | 리전 | O | O |  |  |
+| AI Service | Face Recognition | 글로벌 |  |  |  |  |
 |  | AI Fashion | 리전 | O | O |  O |  |
 |  | Document Recognizer | 글로벌 |  |  |  |  |
 |  | Vehicle Plate Recognizer | 글로벌 |  |  |  |  |
