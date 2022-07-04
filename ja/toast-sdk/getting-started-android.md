@@ -23,16 +23,16 @@ NHN Cloud SDKが提供するサービスの中から、希望する機能を選�
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.toast.android:toast-common:0.31.1       | Common      |
-| com.toast.android:toast-core:0.31.1         | Core        |
-| com.toast.android:toast-logger:0.31.1       | Log & Crash |
-| com.toast.android:toast-crash-reporter-ndk:0.31.1       | Native Crash Reporter |
-| com.toast.android:toast-iap-core:0.31.1     | In-app Purchase Core |
-| com.toast.android:toast-iap-google:0.31.1   | In-app Purchase <br>Google Play Store |
-| com.toast.android:toast-iap-onestore:0.31.1 | In-app Purchase <br>ONE store |
-| com.toast.android:toast-iap-galaxy:0.31.1 | In-app Purchase <br>Galaxy Store |
-| com.toast.android:toast-push-core:0.31.1    | Push Core   |
-| com.toast.android:toast-push-fcm:0.31.1    | Push <br>Firebase Cloud Messaging |
+| com.nhncloud.android:nhncloud-common:1.0.0       | Common      |
+| com.nhncloud.android:nhncloud-core:1.0.0         | Core        |
+| com.nhncloud.android:nhncloud-logger:1.0.0       | Log & Crash |
+| com.nhncloud.android:nhncloud-crash-reporter-ndk:1.0.0       | Native Crash Reporter |
+| com.nhncloud.android:nhncloud-iap-core:1.0.0     | In-app Purchase Core |
+| com.nhncloud.android:nhncloud-iap-google:1.0.0   | In-app Purchase <br>Google Play Store |
+| com.nhncloud.android:nhncloud-iap-onestore:1.0.0 | In-app Purchase <br>ONE store |
+| com.nhncloud.android:nhncloud-iap-galaxy:1.0.0 | In-app Purchase <br>Galaxy Store |
+| com.nhncloud.android:nhncloud-push-core:1.0.0    | Push Core   |
+| com.nhncloud.android:nhncloud-push-fcm:1.0.0    | Push <br>Firebase Cloud Messaging |
 
 ## NHN Cloud SDKをAndroid Studioプロジェクトに適用
 
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android：toast-sdk：0.31.1'
+  implementation 'com.nhncloud.android：nhncloud-sdk：1.0.0'
 }
 ```
 
@@ -68,12 +68,12 @@ Android SDKは[Downloads](../../../Download/#toast-sdk)ページでダウンロ�
 
 NHN Cloud SDKにUserIDを設定できます。
 設定したUserIDは、NHN Cloud SDKの各モジュールで共通使用されます。
-ToastLoggerのログ送信APIを呼び出すたびに、設定したUserIDをログと一緒にサーバーに送信します。
+NhnCloudLoggerのログ送信APIを呼び出すたびに、設定したUserIDをログと一緒にサーバーに送信します。
 
 ### UserID設定API仕様
 
 ```java
-/* ToastSdk.java */
+/* NhnCloudSdk.java */
 public static void setUserId(String userId);
 ```
 
@@ -87,14 +87,14 @@ public static void setUserId(String userId);
 
 ```java
 // Login.
-ToastSdk.setUserId(userId);
+NhnCloudSdk.setUserId(userId);
 ```
 
 #### ログアウト
 
 ```java
 // Logout.
-ToastSdk.setUserId(null);
+NhnCloudSdk.setUserId(null);
 ```
 
 ## デバッグモード設定
@@ -105,7 +105,7 @@ NHN Cloud SDKに関するお問い合わせの際は、デバッグモードを�
 ### デバッグモード設定API仕様
 
 ```java
-/* ToastSdk.java */
+/* NhnCloudSdk.java */
 public static void setDebugMode(boolean debug);
 ```
 
@@ -119,14 +119,14 @@ public static void setDebugMode(boolean debug);
 
 ```java
 // Enable debug mode.
-ToastSdk.setDebugMode(true);
+NhnCloudSdk.setDebugMode(true);
 ```
 
 #### デバッグモード無効化
 
 ```java
 // Disable debug mode.
-ToastSdk.setDebugMode(false);
+NhnCloudSdk.setDebugMode(false);
 ```
 
 > [注意]アプリをリリースする時は、デバッグモードを無効化する必要があります。
