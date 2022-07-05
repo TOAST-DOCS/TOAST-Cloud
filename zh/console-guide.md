@@ -290,6 +290,8 @@ You can grant multiple required permissions to project members.
 | --- | --- | --- |
 | Infrastructure | ADMIN | Create/Read/Update/Delete permission for Infrastructure Service |
 | Infrastructure | MEMBER | Read permission for VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete permission for Other services |
+| Infrastructure | Load Balancer ADMIN | Read permission for VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete permission for Other services |
+| Infrastructure | Security Group ADMIN | Read permission for VPC, Auto Scale, Load Balancer Services. Create/Read/Update/Delete permission for Other services |
 | Virtual Desktop | ADMIN | Create/Read/Update/Delete permission for Virtual Desktop Service |
 | NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete permission for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read permission for NHN Container Registry (NCR) Service |

@@ -51,6 +51,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
 |  | NAS (offline) | Regional | O | O |  | O |
+|  | NAS | Regional | O |  |  |  |
 |  | Object Storage | Regional | O | O | O | O |
 |  | Backup | Regional | O | O | O |  |
 | Database | RDS for MySQL | Regional | O | O | O |  |
@@ -102,7 +103,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | JEUS Instance | Regional | O | O | O | O |
 |  | WebtoB Instance | Regional | O | O | O | O |
 | Mobile Service | IAP | Global |  |  |  |  |
-|  | Mobile Device Info | Global |  |  |  |  |
 | Analytics | Log & Crash Search | Global |  |  |  |  |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |

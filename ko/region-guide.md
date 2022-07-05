@@ -62,6 +62,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | DNS Plus | 글로벌 |  |  |  |  |
 | Storage | Block Storage | 리전 | O | O | O | O |
 |  | NAS (offline) | 리전 | O | O |  | O |
+|  | NAS | 리전 | O |  |  |  |
 |  | Object Storage | 리전 | O | O | O | O |
 |  | Backup | 리전 | O | O | O |  |
 |  | Data transporter | 리전 | O | O |  |  |
@@ -117,7 +118,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | JEUS Instance | 리전 | O | O | O | O |
 |  | WebtoB Instance | 리전 | O | O | O | O |
 | Mobile Service | IAP | 글로벌 |  |  |  |  |
-|  | Mobile Device Info | 글로벌 |  |  |  |  |
 | Search | Cloud Search | 리전 | O |  |  |  |
 |  | Autocomplete | 리전 | O |  |  |  |
 |  | Corporation Search | 리전 | O |  |  |  |

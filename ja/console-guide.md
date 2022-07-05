@@ -288,6 +288,8 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
 | Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| Infrastructure | Load Balancer ADMIN | VPC, Security Group, Auto Scale, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| Infrastructure | Security Group ADMIN | VPC, Auto Scale, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
 | Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り |

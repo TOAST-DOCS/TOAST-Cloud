@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.0.0'
     ...
 }
 ```
@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.0.0'
     ...
 }
 ```
@@ -57,7 +57,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.0.0'
     ...
 }
 ```
@@ -74,7 +74,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-amazon:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.0.0'
     ...
 }
 ```
@@ -117,7 +117,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-huawei:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.0.0'
     ...
 }
 ```
@@ -214,16 +214,16 @@ Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
 
 ## 인앱 결제 설정
 
-* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체는 인앱 결제 설정 정보를 포함하고 있습니다.
-* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체는 [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder)를 사용하여 생성할 수 있습니다.
+* [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체는 인앱 결제 설정 정보를 포함하고 있습니다.
+* [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체는 [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder)를 사용하여 생성할 수 있습니다.
 * IAP 콘솔에서 발급받은 [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 setAppKey 메서드를 사용하여 설정합니다.
 * setStoreCode 메서드를 사용하여 인앱 결제에 사용할 [스토어 코드](./iap-android/#_3)를 설정합니다.
 
 ### 인앱 결제 설정 예시
 
 ```java
-ToastIapConfiguration configuration =
-    ToastIapConfiguration.newBuilder(getApplicationContext())
+NhnCloudIapConfiguration configuration =
+    NhnCloudIapConfiguration.newBuilder(getApplicationContext())
                 .setAppKey(YOUR_APP_KEY)
                 .setStoreCode(IapStoreCode.GOOGLE_PLAY_STORE)
                 .build();
@@ -231,25 +231,25 @@ ToastIapConfiguration configuration =
 
 ## 인앱 결제 초기화
 
-- ToastIap.initialize() 메소드를 호출하여 NHN Cloud IAP를 초기화합니다.
+- NhnCloudIap.initialize() 메소드를 호출하여 NHN Cloud IAP를 초기화합니다.
 
 ### 인앱 결제 초기화 API 명세
 
-* 인앱 결제는 ToastIap.initialize 메서드를 사용하여 초기화합니다.
-* ToastIap.initialize 메서드는 [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder)로 생성된 [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체를 파라미터로 사용합니다.
+* 인앱 결제는 NhnCloudIap.initialize 메서드를 사용하여 초기화합니다.
+* NhnCloudIap.initialize 메서드는 [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder)로 생성된 [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체를 파라미터로 사용합니다.
 
 ```java
-/* ToastIap.java */
-public static void initialize(ToastIapConfiguration configuration)
+/* NhnCloudIap.java */
+public static void initialize(NhnCloudIapConfiguration configuration)
 ```
 
 | Parameters    |                                    |
 | ------------- | ---------------------------------- |
-| configuration | ToastIapConfiguration: 인앱 결제 설정 정보 |
+| configuration | NhnCloudIapConfiguration: 인앱 결제 설정 정보 |
 
 ### 인앱 결제 초기화 예시
 
-- ToastIap를 초기화합니다.
+- NhnCloudIap를 초기화합니다.
 
 > [참고] 초기화는 반드시 Application#onCreate에서 진행해야 합니다.
 
@@ -258,18 +258,18 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initializeToastIap();
+        initializeNhnCloudIap();
     }
 
     /**
-     * ToastIap 를 초기화합니다.
+     * NhnCloudIap 를 초기화합니다.
      */
-    private void initializeToastIap() {
-        ToastIapConfiguration configuration = ToastIapConfiguration.newBuilder(getApplicationContext())
+    private void initializeNhnCloudIap() {
+        NhnCloudIapConfiguration configuration = NhnCloudIapConfiguration.newBuilder(getApplicationContext())
                 .setAppKey(YOUR_APP_KEY)
                 .setStoreCode(IapStoreCode.GOOGLE_PLAY_STORE)
                 .build();
-        ToastIap.initialize(configuration);
+        NhnCloudIap.initialize(configuration);
     }
 }
 ```
@@ -277,7 +277,7 @@ public class MainApplication extends Application {
 ## 서비스 로그인
 
 * NHN Cloud SDK에서 제공하는 모든 상품(IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
-    * [ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
+    * [NhnCloudSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
     * 사용자 아이디를 설정하지 않은 경우, 결제가 진행되지 않습니다.
 * 서비스 로그인 단계에서 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능을 구현하는 것을 권장합니다.
 
@@ -285,22 +285,22 @@ public class MainApplication extends Application {
 
 ```java
 // Login.
-ToastSdk.setUserId(userId);
+NhnCloudSdk.setUserId(userId);
 ```
 
 ### 로그아웃
 
 ```java
 // Logout.
-ToastSdk.setUserId(null);
+NhnCloudSdk.setUserId(null);
 ```
 
 > [참고] 서비스 로그아웃 시 반드시 유저 아이디를 null로 설정해야 프로모션 코드가 리딤되거나 결제 재처리 동작시 잘못된 사용자 아이디로 구매가 진행되는 것을 방지할 수 있습니다.
 
 ## 결제 업데이트 리스너 등록
 
-* 인앱에서 구매한 결제와 구글 플레이 스토어 앱에서 프로모션 리딤 또는 구독 상태 변경(복원, 정기 결제 재신청 등) 시 ToastIap에 설정된 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 결제 결과가 통지됩니다.
-* 결제 업데이트 리스너는 ToastIap.registerPurchasesUpdatedListener 메서드를 사용하여 등록할 수 있습니다.
+* 인앱에서 구매한 결제와 구글 플레이 스토어 앱에서 프로모션 리딤 또는 구독 상태 변경(복원, 정기 결제 재신청 등) 시 NhnCloudIap에 설정된 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 결제 결과가 통지됩니다.
+* 결제 업데이트 리스너는 NhnCloudIap.registerPurchasesUpdatedListener 메서드를 사용하여 등록할 수 있습니다.
 * [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 전달된 [IapPurchaseResult](./iap-android/#iappurchaseresult) 리스트를 통해 결제 정보를 확인할 수 있습니다.
 
 > [참고] 결제 업데이트 리스너는 Activity.onCreate()에서 등록하고 Activity.onDestroy()에서 반드시 해제해야 합니다.
@@ -308,7 +308,7 @@ ToastSdk.setUserId(null);
 ### 결제 업데이트 리스너 등록 API 명세
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void registerPurchasesUpdatedListener(IapService.PurchasesUpdatedListener listener)
 public static void unregisterPurchasesUpdatedListener(IapService.PurchasesUpdatedListener listener)
 ```
@@ -346,14 +346,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // onCreate가 호출되었을 때 Listener를 등록합니다.
-        ToastIap.registerPurchasesUpdatedListener(mPurchaseUpdatedListener);
+        NhnCloudIap.registerPurchasesUpdatedListener(mPurchaseUpdatedListener);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         // onDestroy()가 호출되었을 때 반드시 Listener를 제거합니다.
-        ToastIap.unregisterPurchasesUpdatedListener(mPurchaseUpdatedListener);
+        NhnCloudIap.unregisterPurchasesUpdatedListener(mPurchaseUpdatedListener);
     }
 }
 ```
@@ -370,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
 ### 상품 목록 조회 API 명세
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void queryProductDetails(Activity activity,
                                        IapService.ProductDetailsResponseListener listener)
 ```
@@ -405,23 +405,23 @@ void queryProductDetails() {
                 }
             }
 
-    ToastIap.queryProductDetails(MainActivity.this, responseListener);
+    NhnCloudIap.queryProductDetails(MainActivity.this, responseListener);
 }
 ```
 
 ## 상품 구매
 
 * NHN Cloud IAP는 스토어에 등록된 상품 ID를 사용하여 상품을 구매할 수 있습니다.
-* 상품 정보는 ToastIap.queryProductDetails() 메서드를 호출하여 반환된 [IapProductDetails](./iap-android/#iapproductdetails) 객체에 포함되어있습니다.
+* 상품 정보는 NhnCloudIap.queryProductDetails() 메서드를 호출하여 반환된 [IapProductDetails](./iap-android/#iapproductdetails) 객체에 포함되어있습니다.
 * 상품 ID는 IapProductDetails.getProductId() 메서드를 사용하여 획득할 수 있습니다.
-* 상품 구매는 [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) 객체에 상품 ID를 설정한 후 ToastIap.launchPurchaseFlow() 메서드를 통해 구매 단계를 시작합니다.
+* 상품 구매는 [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) 객체에 상품 ID를 설정한 후 NhnCloudIap.launchPurchaseFlow() 메서드를 통해 구매 단계를 시작합니다.
 * [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) 객체는 [IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder)를 사용하여 생성할 수 있습니다.
-* 상품 구매 결과는 ToastIap에 등록한 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 반환됩니다.
+* 상품 구매 결과는 NhnCloudIap에 등록한 [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener)를 통해 반환됩니다.
 
 ### 상품 구매 IAP 명세
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void launchPurchaseFlow(Activity activity,
                                       IapPurchaseFlowParams params)
 ```
@@ -441,7 +441,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
     IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
             .setProductId(productId)
             .build();
-    ToastIap.launchPurchaseFlow(activity, params);
+    NhnCloudIap.launchPurchaseFlow(activity, params);
 }
 ```
 
@@ -457,7 +457,7 @@ IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
        .setProductId(productId)
        .setDeveloperPayload(userData)
        .build();
-ToastIap.launchPurchaseFlow(activity, params);
+NhnCloudIap.launchPurchaseFlow(activity, params);
 ```
 
 > 구글 플레이 스토어에서 프로모션 코드로 상품을 구매한 경우, 사용자 데이터를 사용할 수 없습니다.
@@ -466,13 +466,13 @@ ToastIap.launchPurchaseFlow(activity, params);
 
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE)과 소비성 구독 상품(CONSUMABLE_AUTO_RENEWABLE) 정보를 조회합니다.
 * 사용자에게 상품을 지급된 후 [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
-* 미소비 결제는 ToastIap.queryConsumablePurchases() 메서드를 사용하여 조회할 수 있습니다.
+* 미소비 결제는 NhnCloudIap.queryConsumablePurchases() 메서드를 사용하여 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.
 
 ### 미소비 결제 조회 API 명세
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void queryConsumablePurchases(Activity activity,
                                             IapService.PurchasesResponseListener listener)
 ```
@@ -501,7 +501,7 @@ void queryConsumablePurchases() {
                     }
                 }
             };
-    ToastIap.queryConsumablePurchases(MainActivity.this, responseListenr);
+    NhnCloudIap.queryConsumablePurchases(MainActivity.this, responseListenr);
 }
 ```
 
@@ -509,7 +509,7 @@ void queryConsumablePurchases() {
 
 * User ID 기준으로 활성화된 구독 상품(AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE)을 조회할 수 있습니다.
 * 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 조회할 수 있습니다.
-* 활성화된 구독은 ToastIap.queryActivatedPurchases() 메서드를 사용하여 조회할 수 있습니다.
+* 활성화된 구독은 NhnCloudIap.queryActivatedPurchases() 메서드를 사용하여 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트를 반환됩니다.
 * iOS에서 구독한 상품을 Android에서도 조회 가능합니다.
 
@@ -518,7 +518,7 @@ void queryConsumablePurchases() {
 ### 활성화된 구독 조회 API 명세
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void queryActivatedPurchases(Activity activity,
                                            PurchasesResponseListener listener)
 ```
@@ -547,7 +547,7 @@ void queryActivatedPurchases() {
                     }
                 }
             };
-    ToastIap.queryActivatedPurchases(MainActivity.this, responseListener);
+    NhnCloudIap.queryActivatedPurchases(MainActivity.this, responseListener);
 }
 ```
 
@@ -555,7 +555,7 @@ void queryActivatedPurchases() {
 
 * User ID 기준으로 구입한 구독 상품의 상태를 조회할 수 있습니다.
 * 만료된 구독 상품은 includeExpiredSubscriptions 설정으로 조회 또는 제외할 수 있습니다. (default: false)
-* 구독 상품 상태는 ToastIap.querySubscriptionsStatus() 메서드를 사용하여 조회할 수 있습니다.
+* 구독 상품 상태는 NhnCloudIap.querySubscriptionsStatus() 메서드를 사용하여 조회할 수 있습니다.
 * 조회 결과는 [IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener)를 통해 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체 리스트를 반환됩니다.
 * [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 사용하는 구독 상태 코드는 [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatuscode)에 정의되어 있습니다.
 
@@ -566,7 +566,7 @@ void queryActivatedPurchases() {
 ### 구독 상태 조회 API 명세
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void querySubscriptionsStatus(Activity activity,
                                             boolean includeExpiredSubscriptions,
                                             IapService.SubscriptionsStatusResponseListener listener)
@@ -597,7 +597,7 @@ private void querySubscriptionsStatus() {
                     }
                 }
             };
-    ToastIap.querySubscriptionsStatus(MainActivity.this, false, listener);
+    NhnCloudIap.querySubscriptionsStatus(MainActivity.this, false, listener);
 }
 ```
 
@@ -617,7 +617,7 @@ private void querySubscriptionsStatus() {
 * **일시중지 (Pause)**: 정기 결제 상품을 일시적으로 중지한 상태
 * **만료 (Expired)**: 정기 결제 상품이 만료된 상태
 
-| 상태 | 미소비 결제 조회<br>(ToastIap.queryConsumablePurchases) | 활성화된 구독 조회<br>(ToastIap.queryActivatedPurchases) | 만료 시간 | 자동 갱신 여부 |
+| 상태 | 미소비 결제 조회<br>(NhnCloudIap.queryConsumablePurchases) | 활성화된 구독 조회<br>(NhnCloudIap.queryActivatedPurchases) | 만료 시간 | 자동 갱신 여부 |
 | --- | --- | --- | --- | --- |
 | 활성화 상태 (Active) | Yes | Yes | 미래시간 | Yes |
 | 취소 (Cancelled) | Yes | Yes | 미래시간 | No |
@@ -637,12 +637,12 @@ private void querySubscriptionsStatus() {
 #### 일반 구독 상품 (AUTO_RENEWABLE))
 
 * 유예 기간 동안 일반 구독 상품은 정기 결제 콘텐츠에 엑세스 할 수 있어야 합니다.
-* 유예 기간 동안 ToastIap.queryActivatedPurchases()로 조회할 수 있습니다.
+* 유예 기간 동안 NhnCloudIap.queryActivatedPurchases()로 조회할 수 있습니다.
 
 #### 소비성 구독 상품 (CONSUMABLE_AUTO_RENEWABLE)
 
 * 유예 기간이 시작되면 구글은 새로운 영수증을 발급하나 결제 수단을 수정하지 않으면 계정 보류 상태가 되거나 취소됩니다.
-* 소비성 구독 상품은 유예 기간 동안 상품을 소비할 수 없도록 ToastIap.queryConsumablePurchases()로 조회되지 않습니다.
+* 소비성 구독 상품은 유예 기간 동안 상품을 소비할 수 없도록 NhnCloudIap.queryConsumablePurchases()로 조회되지 않습니다.
 
 ### 계정 보류
 
@@ -658,12 +658,12 @@ private void querySubscriptionsStatus() {
 #### 일반 구독 상품 (AUTO_RENEWABLE))
 
 * 계정 보류 기간 동안 일반 구독 상품은 정기 결제 콘텐츠에 엑세스 할 수 없습니다.
-* 계정 보류 기간 동안 ToastIap.queryActivatedPurchases()로 조회되지 않습니다.
+* 계정 보류 기간 동안 NhnCloudIap.queryActivatedPurchases()로 조회되지 않습니다.
 
 #### 소비성 구독 상품 (CONSUMABLE_AUTO_RENEWABLE)
 
 * 계정 보류 기간 동안 소비성 구독 상품은 새로운 구매를 생성하지 않습니다.
-* 계정 보류 기간 동안 ToastIap.queryConsumablePurchases()로 새로운 구매가 조회되지 않습니다.
+* 계정 보류 기간 동안 NhnCloudIap.queryConsumablePurchases()로 새로운 구매가 조회되지 않습니다.
 
 ### 일시중지
 
@@ -677,12 +677,12 @@ private void querySubscriptionsStatus() {
 #### 일반 구독 상품 (AUTO_RENEWABLE))
 
 * 일시중지 기간 동안 일반 구독 상품은 정기 결제 콘텐츠에 엑세스 할 수 없습니다.
-* 일시중지 기간 동안 ToastIap.queryActivatedPurchases()로 조회되지 않습니다.
+* 일시중지 기간 동안 NhnCloudIap.queryActivatedPurchases()로 조회되지 않습니다.
 
 #### 소비성 구독 상품 (CONSUMABLE_AUTO_RENEWABLE)
 
 * 일시중지 기간 동안 소비성 구독 상품은 새로운 구매를 생성하지 않습니다.
-* 일시중지 기간 동안 ToastIap.queryConsumablePurchases()로 새로운 구매가 조회되지 않습니다.
+* 일시중지 기간 동안 NhnCloudIap.queryConsumablePurchases()로 새로운 구매가 조회되지 않습니다.
 
 ### 정기 결제 재신청
 
@@ -696,12 +696,12 @@ private void querySubscriptionsStatus() {
 
 ## NHN Cloud IAP Class Reference
 
-### ToastIapConfiguration
+### NhnCloudIapConfiguration
 
 NHN Cloud IAP 초기화 메소드의 파라미터로 사용되는 인앱 결제 설정 정보입니다.
 
 ```java
-/* ToastIapConfiguration.java */
+/* NhnCloudIapConfiguration.java */
 public String getAppKey();
 public String getStoreCode();
 ```
@@ -711,12 +711,12 @@ public String getStoreCode();
 | getAppKey    | String  | IAP 서비스 앱 키                         |
 | getStoreCode | String  | 스토어 코드 정보 ("GG" or "ONESTORE", "GALAXY", ...) |
 
-### ToastIapConfiguration.Builder
+### NhnCloudIapConfiguration.Builder
 
-IAP 서비스 앱 키, 스토어 종류 등을 입력받아 [ToastIapConfiguration](./iap-android/#toastiapconfiguration) 객체를 생성합니다.
+IAP 서비스 앱 키, 스토어 종류 등을 입력받아 [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체를 생성합니다.
 
 ```java
-/* ToastIapConfiguration.java */
+/* NhnCloudIapConfiguration.java */
 public void setAppKey(String appKey)
 public void setStoreCode(String storeCode)
 ```
