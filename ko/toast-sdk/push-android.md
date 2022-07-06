@@ -3,7 +3,7 @@
 ## 사전 준비
 
 1. [NHN Cloud SDK](./getting-started-android)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+2. [NHN Cloud 콘솔](https://console.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
 3. Push 콘솔에서 AppKey를 확인합니다.
 
 ## Push 제공자별 가이드
