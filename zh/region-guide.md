@@ -106,7 +106,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Machine Learning | Deep Learning Instance | Regional | O |  | | |
 | Application Service | Maps | Regional | O |  |  |  |
 |  | ROLE | Global |  |  |  |  |
-|  | API Gateway | Regional | O |  |  |  |
+|  | API Gateway | Regional | O | O |  |  |
 |  | RTCS | Global |  |  |  |  |
 |  | ShortURL | Global |  |  |  |  |
 |  | JEUS Instance | Regional | O | O | O | O |

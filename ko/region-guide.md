@@ -106,7 +106,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Machine Learning | Deep Learning Instance | 리전 | O |  | | |
 | Application Service | Maps | 리전 | O |  |  |  |
 |  | ROLE | 글로벌 |  |  |  |  |
-|  | API Gateway | 리전 | O |  |  |  |
+|  | API Gateway | 리전 | O | O |  |  |
 |  | RTCS | 글로벌 |  |  |  |  |
 |  | ShortURL | 글로벌 |  |  |  |  |
 |  | JEUS Instance | 리전 | O | O | O | O |
