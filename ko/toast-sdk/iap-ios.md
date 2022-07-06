@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
+2. [NHN Cloud 콘솔](https://console.toast.com)에서 [Mobile Service \> IAP를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
 3. IAP에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
 ## NHN Cloud IAP 구성

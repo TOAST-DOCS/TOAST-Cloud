@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. Install [NHN Cloud SDK](./getting-started-ios).
-2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
+2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [NHN Cloud console](https://console.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP.
 
 ## NHN Cloud IAP Components

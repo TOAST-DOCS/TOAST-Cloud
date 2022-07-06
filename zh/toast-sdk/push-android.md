@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. Install [NHN Cloud SDK](./getting-started-android).
-2. [Enable Push service](https://docs.toast.com/en/Notification/Push/en/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
+2. [Enable Push service](https://docs.toast.com/en/Notification/Push/en/console-guide/) in [NHN Cloud console](https://console.toast.com).
 3. Check the AppKey in the Push console.
 
 ## Guide by Push Provider
