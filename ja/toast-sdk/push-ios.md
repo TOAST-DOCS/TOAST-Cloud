@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)を設置します。
-2. [NHN Cloudコンソール](https://console.cloud.toast.com)で [Notification \> Pushを有効化](http://docs.toast.com/ja/Notification/Push/ja/console-guide/)します。
+2. [NHN Cloudコンソール](https://console.toast.com)で [Notification \> Pushを有効化](http://docs.toast.com/ja/Notification/Push/ja/console-guide/)します。
 3. PushでAppKeyを確認します。
 
 ## APNSガイド
