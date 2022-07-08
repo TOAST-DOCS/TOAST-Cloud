@@ -106,7 +106,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Machine Learning | Deep Learning Instance | リージョン | O |  | | |
 | Application Service | Maps | リージョン | O |  |  |  |
 |  | ROLE | グローバル |  |  |  |  |
-|  | API Gateway | リージョン | O |  |  |  |
+|  | API Gateway | リージョン | O | O |  |  |
 |  | RTCS | グローバル |  |  |  |  |
 |  | Short URL | グローバル |  |  |  |  |
 |  | JEUS Instance | リージョン | O | O | O | O |
