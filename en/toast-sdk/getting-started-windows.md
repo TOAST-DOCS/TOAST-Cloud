@@ -4,6 +4,7 @@
 * Windows 7
 * Windows 8
 * Windows 10
+* Windows 11
 
 ## Structure of NHN Cloud SDK
 
@@ -13,8 +14,8 @@ NHN Cloud SDK for Windows C++ has the following structure.
 |---|---|
 | dump_syms.exe| Extract symbol (*.sym) for crash analysis from PDB (*.pdb) file |
 | include| C++ Header file |
-| x86/Release| C++ Windows 32bit library |
-| x64/Release| C++ Windows 64bit library |
+| x86| C++ Windows 32bit library |
+| x64| C++ Windows 64bit library |
 | nhncloudsdk_example | Sample project |
 
 ## Apply NHN Cloud SDK to Visual Studio Projects
