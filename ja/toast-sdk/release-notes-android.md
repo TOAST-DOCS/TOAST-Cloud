@@ -1,5 +1,14 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
+## 1.0.0 (2022. 07. 12.)
+
+### NHN Cloud SDK
+
+#### 기능 개선
+
+* NHN Cloud Android SDK로 모듈명 변경
+	* TOAST Android SDK는 Deprecated 되었습니다.
+
 ## 0.31.1 (2022. 06. 14.)
 
 ### TOAST Logger
