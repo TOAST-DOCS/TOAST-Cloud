@@ -1,4 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Windows C++
+
+## 2.0.0.1 (2022.07.12)
+Download : [nhncloud-sdk-windows-2.0.0.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.1.zip)
+* NHNCloudLogger 모듈명 변경
+	* ToastLogger는 Deprecated 되었습니다.
+* 로그 전송 시 메모리 누수 수정
+* User ID가 MBCS/UNICODE 함수에 따라 다르게 반영되는 문제 수정
+* 크래시 로그 전송 시 로그 유형 필터 설정이 적용되지 않는 문제 수정
+
 ## 1.0.0.5 (2021.03.31)
 Download : [toast-sdk-windows-1.0.0.5.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/1.0.0/toast-sdk-windows-1.0.0.5.zip)
 * Bug fixes
