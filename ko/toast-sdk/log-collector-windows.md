@@ -3,25 +3,25 @@
 ## 사전 준비
 
 1. [Install the NHN Cloud SDK](./getting-started-windows)
-2. [NHN Cloud 콘솔](https://console.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+2. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
 ## NHN Cloud SDK 초기화
 
 Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
 
-```
+```cpp
 ...
-#include "toast/ToastLogger.h"
+#include "NHNCloudLogger.h"
 
-toast::logger::ToastLogger* g_nhncloud_lnc = nullptr;  // NHN Cloud SDK - Log & crash search
+nhncloud::logger::NHNCloudLogger* g_nhncloud_lnc = nullptr; // NHN Cloud SDK - Log & crash search
 ...
 
 // 전역 변수에 NHN Cloud SDK 인스턴스를 할당합니다.
-g_nhncloud_lnc = toast::logger::ToastLogger::GetInstance();
+g_nhncloud_lnc = nhncloud::logger::NHNCloudLogger::GetInstance();
 
-// ToastLogger를 초기화 할 때, 필요한 설정 정보를 입력합니다.
-toast::logger::ToastLoggerConfiguration* loggerConf = toast::logger::ToastLoggerConfiguration::GetInstance();
+// NHNCloudLogger를 초기화 할 때, 필요한 설정 정보를 입력합니다.
+nhncloud::logger::NHNCloudLoggerConfiguration* loggerConf = nhncloud::logger::NHNCloudLoggerConfiguration::GetInstance();
 
 ...
 // Log & Crash Search 콘솔에서 확인한 앱키를 입력합니다.
@@ -46,9 +46,10 @@ if (!g_nhncloud_lnc->initialize(loggerConf))
 UserID를 설정하면, 로그 전송 API를 호출할 때 로그와 함께 사용자 ID도 서버로 전송합니다.
 사용자 ID는 초기화 전/후 상관 없이 설정 할 수 있습니다.
 
-```
-    toast::logger::ToastLogger* pLogger = toast::logger::ToastLogger::GetInstance();
+```cpp
+    nhncloud::logger::NHNCloudLogger* pLogger = nhncloud::logger::NHNCloudLogger::GetInstance();
     pLogger->setUserId(pUserID);
+    pLogger->getUserId();
 ```
 
 * setUserId
@@ -64,24 +65,24 @@ NHN Cloud Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
 * DEBUG, INFO, WARN, ERROR, FATAL 레벨의 로그를 명시적으로 전송
 	* char*, wchar_t* 형을 모두 지원합니다.
 	* userFields는 사용자 정의 필드를 좀 더 쉽게 사용하기 위한 헬퍼 클래스입니다.
-```
-void debug(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
-void info(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
-void warn(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
-void error(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
-void fatal(const wchar_t* message, ToastLoggerUserFields* userFields = NULL);
+```cpp
+void debug(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
+void info(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
+void warn(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
+void error(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
+void fatal(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
 ```
 * 로그 레벨과, 메시지를 명시적으로 전송
-```
-void log(TOAST_LOGGER_LEVEL logLevel, const wchar_t* message, ToastLoggerUserFields* userFields = nullptr);
+```cpp
+void log(NHNCLOUD_LOGGER_LEVEL logLevel, const char* message, NHNCloudLoggerUserFields* userFields = nullptr);
 ```
 
 ## 사용자 정의 필드 추가
-### 방법 1 : ToastLogger 인스턴스 API 사용
+### 방법 1 : NHNCloudLogger 인스턴스 API 사용
 
-* ToastLogger 인스턴스에서 직접 관리하는 사용자 정의 필드입니다.
+* NHNCloudLogger 인스턴스에서 직접 관리하는 사용자 정의 필드입니다.
 
-```
+```cpp
 bool addUserField(const char* key, const wchar_t* value);
 void removeUserField(const char* key);
 void clearUserFileds();
@@ -94,14 +95,14 @@ g_nhncloud_lnc->cleareUserField();
 
 ```
 
-### 방법 2 : ToastLoggerUserFields 클래스 사용
+### 방법 2 : NHNCloudLoggerUserFields 클래스 사용
 
-```
-toast::logger::ToastLoggerUserFields* pUserFieldHelper = toast::logger::ToastLoggerUserFields::GetInstance();	// 사용자 정의 필드 헬퍼 클래스를 얻어옵니다.
+```cpp
+nhncloud::logger::NHNCloudLoggerUserFields* pUserFieldHelper = nhncloud::logger::NHNCloudLoggerUserFields::GetInstance();	// 사용자 정의 필드 헬퍼 클래스를 얻어옵니다.
 
-pUserFieldHelper->insert("userCustomKeyHelper01", L"ToastLoggerUserFields 헬퍼 클래스로 추가한 사용자 정의 필드\r\nCustom fields added with the ToastLoggerUserFields helper class");
+pUserFieldHelper->insert("userCustomKeyHelper01", L"NHNCloudLoggerUserFields 헬퍼 클래스로 추가한 사용자 정의 필드\r\nCustom fields added with the NHNCloudLoggerUserFields helper class");
 pUserFieldHelper->insert("userCustomKeyHelper02", L"clear() 함수로 지금껏 정의한 사용자 필드를 간단히 정리할 수 있어요.\r\nWith the clear() function, you can simply clear the custom fields you have defined so far.");
-pUserFieldHelper->insert("userCustomKeyHelper03", L"log() 함수로 전송시, ToastLoggerUserFields 클래스에 정의한 사용자 필드들은 로그 객체에 복사됩니다.\r\nWhen sending to the log() function, the user fields defined in the ToastLoggerUserFields class are copied to the log object.");
+pUserFieldHelper->insert("userCustomKeyHelper03", L"log() 함수로 전송시, NHNCloudLoggerUserFields 클래스에 정의한 사용자 필드들은 로그 객체에 복사됩니다.\r\nWhen sending to the log() function, the user fields defined in the NHNCloudLoggerUserFields class are copied to the log object.");
 
 g_nhncloud_lnc->log(level, pLogMessage, pUserFieldHelper);	// 사용자 정의 필드와 함께 로그를 전송합니다.
 
@@ -124,18 +125,18 @@ pUserFieldHelper->clear(); // 위에서 설정한 사용자 정의 필드를 모
 
 ### 크래시 로그 수집과 환경 설정
 
-```
+```cpp
 
-#include "toast/ToastLogger.h"
+#include "NHNCloudLogger.h"
 
-toast::logger::ToastLogger* g_nhncloud_lnc = nullptr;  // NHN Cloud SDK - Log & crash search
+nhncloud::logger::NHNCloudLogger* g_nhncloud_lnc = nullptr;  // NHN Cloud SDK - Log & crash search
 ...
 
 // 전역 변수에 NHN Cloud SDK 인스턴스를 할당합니다.
-g_nhncloud_lnc = toast::logger::ToastLogger::GetInstance();
+g_nhncloud_lnc = nhncloud::logger::NHNCloudLogger::GetInstance();
 
-// ToastLogger를 초기화 할 때, 필요한 설정 정보를 입력합니다.
-toast::logger::ToastLoggerConfiguration* loggerConf = toast::logger::ToastLoggerConfiguration::GetInstance();
+// NHNCloudLogger를 초기화 할 때, 필요한 설정 정보를 입력합니다.
+nhncloud::logger::NHNCloudLoggerConfiguration* loggerConf = nhncloud::logger::NHNCloudLoggerConfiguration::GetInstance();
 
 ...
 // Log & Crash Search 콘솔에서 확인한 앱키를 입력합니다.
@@ -151,7 +152,7 @@ loggerConf->enableCrashReporter(true);
 loggerConf->enableSilenceMode(false);
 
 // 별도의 프로세스로 동작하는 크래시 리포터에 노출할 메시지를 정의합니다. 정의하지 않으면 기본 메시지가 보이게 됩니다.
-loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "오류가 발생한 상황...\n");
+loggerConf->setCrashReporterMessage(NHNCLOUD_LANGUAGE_KOREAN, "오류가 발생한 상황...\n");
 
 // 별도의 프로세스로 크래시를 전송하지만, 사용자에 UI를 노출하고 싶지 않을경우는 exposeExternalCrashReporterUI(false)로 설정합니다.
 //loggerConf->exposeExternalCrashReporterUI(false);
@@ -173,7 +174,7 @@ if (!g_nhncloud_lnc->initialize(loggerConf))
 * 크래시 로그 전송을 테스트하려면 실제로 예외(Exception)가 발생해야 합니다.
 * 크래시 로그 전송은 enableCrashReporter가 true인 경우 SDK가 자동으로 실행합니다.
 * Access Violation 예제
-```
+```cpp
 
 void CsampleDlg::OnBnClickedCrash()
 {
