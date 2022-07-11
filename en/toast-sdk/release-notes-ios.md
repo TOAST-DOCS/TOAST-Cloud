@@ -1,5 +1,12 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
+## 1.0.0 (2022.07.12)
+### 공통
+#### 개선 사항
+* 안정성 개선
+* NHN Cloud SDK로 모듈명 변경
+	* TOAST SDK는 Deprecated 되었습니다.
+
 ## 0.30.0 (2022.03.29)
 ### TOAST IAP
 #### Added Features
