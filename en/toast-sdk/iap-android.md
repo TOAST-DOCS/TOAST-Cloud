@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-android).
-2. [Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) in [NHN Cloud console](https://console.cloud.toast.com).
+2. [Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) in [NHN Cloud console](https://console.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP console.
 
 ## In-App Purchase Guide for Each Store Type
@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-google:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.0.0'
     ...
 }
 ```
@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-onestore:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.0.0'
     ...
 }
 ```
@@ -57,7 +57,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-galaxy:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.0.0'
     ...
 }
 ```
@@ -74,7 +74,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-amazon:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.0.0'
     ...
 }
 ```
@@ -117,7 +117,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-iap-huawei:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.0.0'
     ...
 }
 ```
@@ -214,16 +214,16 @@ To use a lower version of Android Gradle Plugin, see [Preparing your Gradle buil
 
 ## In-App Purchase (IAP) Setting
 
-* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object includes IAP setting information.
-* [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object can be created by using [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder).
-* Use the setAppKey method to set [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console.
+* [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object includes IAP setting information.
+* [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object can be created by using [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder).
+* Use the setAppKey method to set [AppKey](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console.
 * Use the setStoreCode method to set [Store Code](./iap-android/#_3) for IAP.
 
 ### Example of IAP Setting
 
 ```java
-ToastIapConfiguration configuration =
-    ToastIapConfiguration.newBuilder(getApplicationContext())
+NhnCloudIapConfiguration configuration =
+    NhnCloudIapConfiguration.newBuilder(getApplicationContext())
                 .setAppKey(YOUR_APP_KEY)
                 .setStoreCode(IapStoreCode.GOOGLE_PLAY_STORE)
                 .build();
@@ -231,25 +231,25 @@ ToastIapConfiguration configuration =
 
 ## Initialize IAP
 
-- Call the ToastIap.initialize() method to initialize NHN Cloud IAP.
+- Call the NhnCloudIap.initialize() method to initialize NHN Cloud IAP.
 
 ### Specification for IAP Initialization API
 
-* IAP is initialized by using the ToastIap.initialize method.
-* The ToastIap.initialize method uses [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object created by [ToastIapConfiguration.Builder](./iap-android/#toastiapconfigurationbuilder) as a parameter.
+* IAP is initialized by using the NhnCloudIap.initialize method.
+* The NhnCloudIap.initialize method uses [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object created by [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder) as a parameter.
 
 ```java
-/* ToastIap.java */
-public static void initialize(ToastIapConfiguration configuration)
+/* NhnCloudIap.java */
+public static void initialize(NhnCloudIapConfiguration configuration)
 ```
 
 | Parameters    |                                    |
 | ------------- | ---------------------------------- |
-| configuration | ToastIapConfiguration: Information for IAP setting |
+| configuration | NhnCloudIapConfiguration: Information for IAP setting |
 
 ### Example of IAP Initialization
 
-- Initialize ToastIap.
+- Initialize NhnCloudIap.
 
 > [Note] Initialization must be performed in Application#onCreate.
 
@@ -258,18 +258,18 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initializeToastIap();
+        initializeNhnCloudIap();
     }
 
     /**
-     * Initialize ToastIap.
+     * Initialize NhnCloudIap.
      */
-    private void initializeToastIap() {
-        ToastIapConfiguration configuration = ToastIapConfiguration.newBuilder(getApplicationContext())
+    private void initializeNhnCloudIap() {
+        NhnCloudIapConfiguration configuration = NhnCloudIapConfiguration.newBuilder(getApplicationContext())
                 .setAppKey(YOUR_APP_KEY)
                 .setStoreCode(IapStoreCode.GOOGLE_PLAY_STORE)
                 .build();
-        ToastIap.initialize(configuration);
+        NhnCloudIap.initialize(configuration);
     }
 }
 ```
@@ -277,7 +277,7 @@ public class MainApplication extends Application {
 ## Service Login
 
 * All products provided by NHN Cloud SDK, such as IAP and Log & Crash, use the same user ID.
-    * User ID can be set with [ToastSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid).
+    * User ID can be set with [NhnCloudSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid).
     * When user ID is not set, purchase cannot proceed.
 * It is recommended to implement the following features in service login step: user ID setting, querying unconsumed purchase history, and querying active subscription products.
 
@@ -285,22 +285,22 @@ public class MainApplication extends Application {
 
 ```java
 // Login.
-ToastSdk.setUserId(userId);
+NhnCloudSdk.setUserId(userId);
 ```
 
 ### Logout
 
 ```java
 // Logout.
-ToastSdk.setUserId(null);
+NhnCloudSdk.setUserId(null);
 ```
 
 > [Note] When the service is logged out, user ID must be set to null. Otherwise, promotion codes might be redeemed or purchase with wrong user ID might occur in purchase reprocessing operation.
 
 ## Register Purchases Update Listener
 
-* When promotion redemption or subscription status change (recovery, resubscription, etc.) occurs on in-app purchases or  Google Play Store app, the purchase result is notified via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) set in ToastIap.
-* Purchases update listener can be registered by using the ToastIap.registerPurchasesUpdatedListener method.
+* When promotion redemption or subscription status change (recovery, resubscription, etc.) occurs on in-app purchases or  Google Play Store app, the purchase result is notified via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) set in NhnCloudIap.
+* Purchases update listener can be registered by using the NhnCloudIap.registerPurchasesUpdatedListener method.
 * Purchase information is available on the list of [IapPurchaseResult](./iap-android/#iappurchaseresult) delivered by [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener).
 
 > Note: Purchases update listener must be registered in Activity.onCreate() and unregistered in Activity.onDestroy().
@@ -308,7 +308,7 @@ ToastSdk.setUserId(null);
 ### Specification for Registering Purchases Update Listener API
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void registerPurchasesUpdatedListener(IapService.PurchasesUpdatedListener listener)
 public static void unregisterPurchasesUpdatedListener(IapService.PurchasesUpdatedListener listener)
 ```
@@ -346,14 +346,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Register the listener when onCreate is called.
-        ToastIap.registerPurchasesUpdatedListener(mPurchaseUpdatedListener);
+        NhnCloudIap.registerPurchasesUpdatedListener(mPurchaseUpdatedListener);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         // Must remove the listener when onDestroy() is called.
-        ToastIap.unregisterPurchasesUpdatedListener(mPurchaseUpdatedListener);
+        NhnCloudIap.unregisterPurchasesUpdatedListener(mPurchaseUpdatedListener);
     }
 }
 ```
@@ -370,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
 ### Specification for Product List Query API
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void queryProductDetails(Activity activity,
                                        IapService.ProductDetailsResponseListener listener)
 ```
@@ -405,23 +405,23 @@ void queryProductDetails() {
                 }
             }
 
-    ToastIap.queryProductDetails(MainActivity.this, responseListener);
+    NhnCloudIap.queryProductDetails(MainActivity.this, responseListener);
 }
 ```
 
 ## Purchase Products
 
 * NHN Cloud IAP supports product purchase by using product ID registered at the store.
-* Product information is included in the [IapProductDetails](./iap-android/#iapproductdetails) object that is returned by calling the ToastIap.queryProductDetails() method.
+* Product information is included in the [IapProductDetails](./iap-android/#iapproductdetails) object that is returned by calling the NhnCloudIap.queryProductDetails() method.
 * Product ID can be obtained by using the IapProductDetails.getProductId() method.
-* Product purchase begins via ToastIap.launchPurchaseFlow(), after setting product ID on [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams).
+* Product purchase begins via NhnCloudIap.launchPurchaseFlow(), after setting product ID on [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams).
 * The [IapPurchaseFlowParams](./iap-android/#iappurchaseflowparams) object can be created by using [IapPurchaseFlowParams.Builder](./iap-android/#iappurchaseflowparamsbuilder).
 * The result of product purchase is returned via [IapService.PurchasesUpdatedListener](./iap-android/#iapservicepurchasesupdatedlistener) registered in TOAST IAP.
 
 ### Specification for Product Purchase IAP
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void launchPurchaseFlow(Activity activity,
                                       IapPurchaseFlowParams params)
 ```
@@ -441,7 +441,7 @@ void launchPurchaseFlow(Activity activity, String productId) {
     IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
             .setProductId(productId)
             .build();
-    ToastIap.launchPurchaseFlow(activity, params);
+    NhnCloudIap.launchPurchaseFlow(activity, params);
 }
 ```
 
@@ -457,7 +457,7 @@ IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
        .setProductId(productId)
        .setDeveloperPayload(userData)
        .build();
-ToastIap.launchPurchaseFlow(activity, params);
+NhnCloudIap.launchPurchaseFlow(activity, params);
 ```
 
 If a user purchased a product with a promotion code from the Google Play Store, the user data cannot be used.
@@ -466,13 +466,13 @@ If a user purchased a product with a promotion code from the Google Play Store, 
 
 * Query the information of unconsumed one-time products (CONSUMABLE) and consumable subscription products (CONSUMABLE_AUTO_RENEWABLE).
 * After a product is provided to a user, the product can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api).
-* Unconsumed purchase can be queried by using the ToastIap.queryConsumablePurchases() method.
+* Unconsumed purchase can be queried by using the NhnCloudIap.queryConsumablePurchases() method.
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
 
 ### Specification for Unconsumed Purchases Query API
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void queryConsumablePurchases(Activity activity,
                                             IapService.PurchasesResponseListener listener)
 ```
@@ -501,7 +501,7 @@ void queryConsumablePurchases() {
                     }
                 }
             };
-    ToastIap.queryConsumablePurchases(MainActivity.this, responseListenr);
+    NhnCloudIap.queryConsumablePurchases(MainActivity.this, responseListenr);
 }
 ```
 
@@ -509,7 +509,7 @@ void queryConsumablePurchases() {
 
 * You can query activated subscription products (AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE) by user ID.
 * Subscription products for which purchase has been completed can be queried as long as usage period remains.
-* Activated subscription can be queried by using the ToastIap.queryActivatedPurchases() method.
+* Activated subscription can be queried by using the NhnCloudIap.queryActivatedPurchases() method.
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
 * Products subscribed in iOS can be queried in Android as well.
 
@@ -518,7 +518,7 @@ void queryConsumablePurchases() {
 ### Specification for Activated Subscription Query API
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void queryActivatedPurchases(Activity activity,
                                            PurchasesResponseListener listener)
 ```
@@ -547,7 +547,7 @@ void queryActivatedPurchases() {
                     }
                 }
             };
-    ToastIap.queryActivatedPurchases(MainActivity.this, responseListener);
+    NhnCloudIap.queryActivatedPurchases(MainActivity.this, responseListener);
 }
 ```
 
@@ -555,7 +555,7 @@ void queryActivatedPurchases() {
 
 * You can query the status of purchased subscription product by user ID.
 * Expired subscription products can be included or excluded from the query with the includeExpiredSubscriptions setting. (default: false)
-* The status of subscription product can be queried by using the ToastIap.querySubscriptionsStatus() method.
+* The status of subscription product can be queried by using the NhnCloudIap.querySubscriptionsStatus() method.
 * Query results are returned as the [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) object list via [IapService.SubscriptionsStatusResponseListener](./iap-android/#iapservicesubscriptionsstatusresponselistener).
 * The subscription status codes used by [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) are defined in [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatuscode).
 
@@ -566,7 +566,7 @@ Subscription products are currently supported by Google Play Store only.
 ### Specification for Subscription Status Query API
 
 ```java
-/* ToastIap.java */
+/* NhnCloudIap.java */
 public static void querySubscriptionsStatus(Activity activity,
                                             boolean includeExpiredSubscriptions,
                                             IapService.SubscriptionsStatusResponseListener listener)
@@ -597,7 +597,7 @@ private void querySubscriptionsStatus() {
                     }
                 }
             };
-    ToastIap.querySubscriptionsStatus(MainActivity.this, false, listener);
+    NhnCloudIap.querySubscriptionsStatus(MainActivity.this, false, listener);
 }
 ```
 
@@ -617,7 +617,7 @@ Subscriptions on the Google Store go through various status changes throughout t
 * **Pause**: A state where a subscription product has been put on pause
 * **Expired**: A state where a subscription product has expired
 
-| Status | Query unconsumed purchases<br>(ToastIap.queryConsumablePurchases) | Query activated subscriptions<br>(ToastIap.queryActivatedPurchases) | Expiry time | Auto-renewal |
+| Status | Query unconsumed purchases<br>(NhnCloudIap.queryConsumablePurchases) | Query activated subscriptions<br>(NhnCloudIap.queryActivatedPurchases) | Expiry time | Auto-renewal |
 | --- | --- | --- | --- | --- |
 | Active | Yes | Yes | Future time | Yes |
 | Cancelled | Yes | Yes | Future time | No |
@@ -637,12 +637,12 @@ For further details, refer to [Grace period](https://developer.android.com/googl
 #### Ordinary subscription product (AUTO_RENEWABLE))
 
 * During grace period, ordinary subscription products must be able to access subscription content.
-* During grace period, they can be queried with ToastIap.queryActivatedPurchases().
+* During grace period, they can be queried with NhnCloudIap.queryActivatedPurchases().
 
 #### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
 
 * Once grace period begins, Google issues a new receipt. However, if a user does not fix the payment method, the payment is placed on hold or cancelled.
-* Consumable subscription products cannot be queried with ToastIap.queryConsumablePurchases() to prevent consumption of the products during grace period.
+* Consumable subscription products cannot be queried with NhnCloudIap.queryConsumablePurchases() to prevent consumption of the products during grace period.
 
 ### Account hold
 
@@ -658,12 +658,12 @@ For further details, refer to [Account hold](https://developer.android.com/googl
 #### Ordinary subscription product (AUTO_RENEWABLE))
 
 * During account hold period, ordinary subscription products cannot access subscription content.
-* During account hold period, they cannot be queried with ToastIap.queryActivatedPurchases().
+* During account hold period, they cannot be queried with NhnCloudIap.queryActivatedPurchases().
 
 #### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
 
 * During account hold period, consumable subscription products do not create new purchases.
-* During account hold period, new purchases cannot be queried using ToastIap.queryConsumablePurchases().
+* During account hold period, new purchases cannot be queried using NhnCloudIap.queryConsumablePurchases().
 
 ### Pause
 
@@ -677,12 +677,12 @@ For further details, refer to [Pause](https://developer.android.com/google/play/
 #### Ordinary subscription product (AUTO_RENEWABLE))
 
 * During pause period, ordinary subscription products cannot access subscription content.
-* During pause period, they cannot be queried with ToastIap.queryActivatedPurchases().
+* During pause period, they cannot be queried with NhnCloudIap.queryActivatedPurchases().
 
 #### Consumable subscription product (CONSUMABLE_AUTO_RENEWABLE)
 
 * During pause period, consumable subscription products do not create new purchases.
-* During pause period, new purchases cannot be queried with ToastIap.queryConsumablePurchases().
+* During pause period, new purchases cannot be queried with NhnCloudIap.queryConsumablePurchases().
 
 ### Resubscription
 
@@ -696,12 +696,12 @@ For further details, refer to [Resubscribe](https://developer.android.com/google
 
 ## NHN Cloud IAP Class Reference
 
-### ToastIapConfiguration
+### NhnCloudIapConfiguration
 
 IAP configuration information which is used as a parameter for the NHN Cloud IAP initialization method.
 
 ```java
-/* ToastIapConfiguration.java */
+/* NhnCloudIapConfiguration.java */
 public String getAppKey();
 public String getStoreCode();
 ```
@@ -711,12 +711,12 @@ public String getStoreCode();
 | getAppKey    | String  | IAP service Appkey                         |
 | getStoreCode | String  | Store code information ("GG" or "ONESTORE", "GALAXY", ...) |
 
-### ToastIapConfiguration.Builder
+### NhnCloudIapConfiguration.Builder
 
-Accepts IAP service Appkey and store type as inputs and creates an [ToastIapConfiguration](./iap-android/#toastiapconfiguration) object.
+Accepts IAP service Appkey and store type as inputs and creates an [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object.
 
 ```java
-/* ToastIapConfiguration.java */
+/* NhnCloudIapConfiguration.java */
 public void setAppKey(String appKey)
 public void setStoreCode(String storeCode)
 ```

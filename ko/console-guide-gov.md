@@ -131,23 +131,23 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
     * 설정한 시간 동안 클릭 등의 작업을 하지 않으면 자동으로 로그아웃됩니다.
     * 너무 길게 설정하면 보안상 좋지 않으니 고려하여 설정하시기 바랍니다.
 
-### 프로젝트 공통 권한 그룹 설정
+### 프로젝트 공통 역할 그룹 설정
 
-조직에 속한 프로젝트에서 공통으로 사용할 권한 그룹을 생성하고 관리할 수 있습니다.
-설정된 권한 그룹은 프로젝트의 권한 그룹 관리에서 NHN Cloud 회원 및 IAM 멤버을 선택해 권한을 일괄 부여할 수 있습니다.
+조직에 속한 프로젝트에서 공통으로 사용할 역할 그룹을 생성하고 관리할 수 있습니다.
+설정된 역할 그룹은 프로젝트의 역할 그룹 관리에서 NHN Cloud 회원 및 IAM 멤버을 선택해 역할을 일괄 부여할 수 있습니다.
 
-1. 조직 설정을 선택한 뒤, 프로젝트 공통 권한 그룹 설정 메뉴를 클릭합니다.
-2. **권한 그룹 추가**를 선택하여, 서비스별 권한을 추가합니다.
-3. 권한 그룹 이름, 설명을 입력하고, 서비스별 권한을 추가합니다.
-    * 권한 그룹 이름은 한글, 영문, 숫자, 특수 문자 모두 사용 가능하며 최대 40자까지 입력할 수 있습니다.
-    * 설명은 권한 그룹에 대한 부연 설명으로 최대 100자까지 입력할 수 있습니다.
-4. 권한은 **서비스별 세분화된 이용 권한**을 선택할 수 있습니다.
-    * 서비스명을 왼쪽 영역에서 검색한 후, 오른쪽 영역에서 권한을 선택합니다.
-5. 선택된 권한을 확인하여 추가하거나 삭제할 수 있습니다.
+1. 조직 설정을 선택한 뒤, 프로젝트 공통 역할 그룹 설정 메뉴를 클릭합니다.
+2. **역할 그룹 추가**를 선택하여, 서비스별 역할을 추가합니다.
+3. 역할 그룹 이름, 설명을 입력하고, 서비스별 역할을 추가합니다.
+    * 역할 그룹 이름은 한글, 영문, 숫자, 특수 문자 모두 사용 가능하며 최대 40자까지 입력할 수 있습니다.
+    * 설명은 역할 그룹에 대한 부연 설명으로 최대 100자까지 입력할 수 있습니다.
+4. 역할은 **서비스별 세분화된 이용 역할**을 선택할 수 있습니다.
+    * 서비스명을 왼쪽 영역에서 검색한 후, 오른쪽 영역에서 역할을 선택합니다.
+5. 선택된 역할을 확인하여 추가하거나 삭제할 수 있습니다.
     * 서비스명 옆 x 버튼을 클릭하여, 선택된 서비스를 삭제할 수 있습니다.
-6. 추가 버튼을 클릭하여 권한 그룹을 추가합니다.
-7. 권한 그룹이 추가되면, 권한 그룹 리스트에 이름이 표기됩니다. 권한 그룹 이름을 선택하여, 상세 권한 내역을 확인할 수 있습니다.
-8. 권한 추가를 클릭하면, 3번 권한 그룹 추가 화면으로 이동합니다. 권한을 추가하거나 삭제할 수 있습니다.
+6. 추가 버튼을 클릭하여 역할 그룹을 추가합니다.
+7. 역할 그룹이 추가되면, 역할 그룹 리스트에 이름이 표기됩니다. 역할 그룹 이름을 선택하여, 상세 역할 내역을 확인할 수 있습니다.
+8. 역할 추가를 클릭하면, 3번 역할 그룹 추가 화면으로 이동합니다. 역할을 추가하거나 삭제할 수 있습니다.
 
 ## 프로젝트 관리
 
@@ -158,7 +158,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 ### 프로젝트 생성
 
 * 프로젝트 생성을 위해서는 조직을 생성해야 합니다.
-* 프로젝트를 생성하는 회원은 프로젝트의 ADMIN 권한을 가집니다.
+* 프로젝트를 생성하는 회원은 프로젝트의 ADMIN 역할을 가집니다.
 * 프로젝트 생성 시, 프로젝트 이름과 프로젝트 설명을 입력합니다.
 * 프로젝트 생성 후, 프로젝트 서비스를 활성화하여 이용할 수 있습니다.
 * 프로젝트 생성 후, 협업이 필요한 경우 프로젝트 멤버로 추가하여 함께 사용할 수 있습니다.
@@ -175,6 +175,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 * Database
 * Security
 * Content Delivery
+* Analytics
 * Management
 
 ### 프로젝트 생성 가이드
@@ -207,7 +208,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 ## 멤버 관리
 
-멤버 관리를 통해 사용자별 인증(로그인) 및 권한 부여를 통해 통제할 수 있습니다.
+멤버 관리를 통해 사용자별 인증(로그인) 및 역할 부여를 통해 통제할 수 있습니다.
 프로젝트와 조직에서 멤버 관리를 별도로 할 수 있습니다.
 멤버는 NHN Cloud 회원과 IAM 멤버으로 구분됩니다.
 
@@ -217,16 +218,16 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | --- | --- | --- |
 | 정의 | - 조직 관리를 위한 멤버<br>- NHN Cloud (공공기관용) 이용 약관에 동의한 NHN Cloud (공공기관용)회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>- NHN Cloud (공공기관용)서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud (공공기관용) 회원으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
 | 멤버 등록 방법 | - 조직의 OWNER나 ADMIN이 NHN Cloud ID를 입력하여 등록 | - 조직의 OWNER나 ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>- SSO 연동/API 연동 등을 통해 등록 |
-| 멤버 권한 | - 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리)<br>- 프로젝트 생성<br>- 프로젝트 삭제 | - 조직 서비스 이용 |
+| 멤버 역할 | - 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리)<br>- 프로젝트 생성<br>- 프로젝트 삭제 | - 조직 서비스 이용 |
 | 콘솔 접근 | - NHN Cloud(공공 기관용) 콘솔 (https://gov-console.toast.com/) 접근<br>- NHN Cloud> 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br>- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 
 ### 조직 멤버
 
-* 조직의 OWNER는 계정의 모든 권한 부여하고 서비스를 신청할 수 있습니다.
-* OWNER는 회원을 등록하여 조직별 관리 권한을 부여할 수 있습니다.
+* 조직의 OWNER는 계정의 모든 역할 부여하고 서비스를 신청할 수 있습니다.
+* OWNER는 회원을 등록하여 조직별 관리 역할을 부여할 수 있습니다.
 
-#### NHN Cloud (공공기관용) 회원의 조직 권한
+#### NHN Cloud (공공기관용) 회원의 조직 역할
 
 | 작업 | 역할 | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -243,12 +244,12 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 |  | 프로젝트 삭제 | O | O |  |  |  |
 | 사용자 Action 로그 관리 | 사용자 Action 로그 조회 | O | O |  |  | O |
 
-#### IAM 멤버의 조직 권한
+#### IAM 멤버의 조직 역할
 
-* 조직 서비스별(Dooray!, CloudTrail 등) 설정할 수 있는 권한이 다릅니다.
-* 클라우드 서비스 권한은 아래와 같습니다.
-    * MEMBER 권한은 원하는 경우에만 선택적으로 부여할 수 있습니다.
-    * MEMBER 권한이 부여되면 프로젝트를 직접 생성할 수 있습니다.
+* 조직 서비스별(Dooray!, CloudTrail 등) 설정할 수 있는 역할이 다릅니다.
+* 클라우드 서비스 역할은 아래와 같습니다.
+    * MEMBER 역할은 원하는 경우에만 선택적으로 부여할 수 있습니다.
+    * MEMBER 역할이 부여되면 프로젝트를 직접 생성할 수 있습니다.
 
 | 작업 | 역할 | MEMBER |
 | --- | --- | --- |
@@ -257,42 +258,45 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 ### 프로젝트 멤버
 
 조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
-프로젝트 멤버에게 필요한 권한을 여러 개 부여할 수 있습니다.
+프로젝트 멤버에게 필요한 역할을 여러 개 부여할 수 있습니다.
 
-#### 프로젝트 관리 권한
+#### 프로젝트 관리 역할
 
-| 권한 | 설명 |
+| 역할 | 설명 |
 | --- | --- |
-| ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| MEMBER | 프로젝트 내 모든 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| BILLING VIEWER | 이용 현황 Read(읽기) 권한 |
-| PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 권한 그룹 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제) 권한 |
-| PROJECT MANAGEMENT VIEWER | 프로젝트 기본 정보 Read(읽기)<br>프로젝트 통합 Appkey Read(읽기)<br>프로젝트 권한 그룹 Read(읽기) 권한 |
-| PROJECT MEMBER ADMIN | 프로젝트 멤버 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| PROJECT MEMBER VIEWER | 프로젝트 멤버 Read(읽기) 권한 |
+| ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| MEMBER | 프로젝트 내 모든 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| BILLING VIEWER | 이용 현황 Read(읽기)  |
+| PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 역할 그룹 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제)  |
+| PROJECT MANAGEMENT VIEWER | 프로젝트 기본 정보 Read(읽기)<br>프로젝트 통합 Appkey Read(읽기)<br>프로젝트 역할 그룹 Read(읽기)  |
+| PROJECT MEMBER ADMIN | 프로젝트 멤버 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| PROJECT MEMBER VIEWER | 프로젝트 멤버 Read(읽기)  |
 
-#### 서비스 이용 권한
+#### 서비스 이용 역할
 
-| 서비스 | 권한 | 설명 |
+| 서비스 | 역할 | 설명 |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Load Balancer ADMIN | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure |  Security Group ADMIN | VPC, Auto Scale, Load Balancer 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry(NCR)| ADMIN | NHN Container Registry(NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry(NCR) | VIEWER | NHN Container Registry(NCR) 서비스 Read(읽기) |
-| DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Security Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| DDoS Guard | ADMIN | DDos Guard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| SIEM | ADMIN | SIEM 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| CDN | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| API Gateway | ADMIN | API Gateway 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Deploy | ADMIN | Deploy 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Managed | ADMIN | Managed 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Security Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| DDoS Guard | ADMIN | DDos Guard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| SIEM | ADMIN | SIEM 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| CDN | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| API Gateway | ADMIN | API Gateway 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Deploy | ADMIN | Deploy 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Managed | ADMIN | Managed 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 
 ## 결제 관리
 

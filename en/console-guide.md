@@ -138,23 +138,23 @@ After the login expires, the user must log in again to access the console.
     * If a user do not perform any actions such as clicking for a configured period of time, the user will be automatically logged out.
     * Setting it too long is not good for security, so please consider setting it to an appropriate value.
 
-### Project Common Permission Group Setting
+### Project Common role Group Setting
 
-You can create and manage permission groups for common use in projects belonging to your organization.
-The configured permission groups can be used to grant permissions in bulk by selecting NHN Cloud members and IAM members in the project's permission group management.
+You can create and manage role groups for common use in projects belonging to your organization.
+The configured role groups can be used to grant roles in bulk by selecting NHN Cloud members and IAM members in the project's role group management.
 
-1. After selecting Organization Setting, click the Project Common Permission Group Setting menu.
-2. Select **Add Permission Group** to add permissions for each service.
-3. Enter the permission group name, description, and add permissions for each service.
-    * The permission group name can include Korean letters, English letters, numbers, and special characters, and can contain up to 40 characters.
-    * Description is a additional description of the permission group, and contain up to 100 characters.
-4. Permissions can be selected from **Detailed Usage Permissions for Each Service**.
-    * After searching for the service name on the left side, select the permission on the right side.
-5. Check the selected permission and add or delete the permission.
+1. After selecting Organization Setting, click the Project Common role Group Setting menu.
+2. Select **Add role Group** to add roles for each service.
+3. Enter the role group name, description, and add roles for each service.
+    * The role group name can include Korean letters, English letters, numbers, and special characters, and can contain up to 40 characters.
+    * Description is a additional description of the role group, and contain up to 100 characters.
+4. roles can be selected from **Detailed Usage roles for Each Service**.
+    * After searching for the service name on the left side, select the role on the right side.
+5. Check the selected role and add or delete the role.
     * You can delete the selected service by clicking the x button next to the service name.
-6. Click the Add button to add a permission group.
-7. When a permission group is added, its name is displayed in the permission group list. You can check the detailed permission details by selecting the permission group name.
-8. Clicking Add Permission leads you to the Add Permission Group screen in Step 3. You can add or delete permissions.
+6. Click the Add button to add a role group.
+7. When a role group is added, its name is displayed in the role group list. You can check the detailed role details by selecting the role group name.
+8. Clicking Add role leads you to the Add role Group screen in Step 3. You can add or delete roles.
 
 ## Project Management
 
@@ -165,7 +165,7 @@ Project services are used on a per-project basis and are billed accordingly.
 ### Create a Project
 
 * To create a project, you need to create an organization.
-* A member who creates a project has ADMIN permission for the project.
+* A member who creates a project has ADMIN role for the project.
 * When creating a project, enter the project name and project description.
 * After creating a project, you can enable project services and use them.
 * After creating a project, if collaboration is required, you can add project members to share the project.
@@ -231,15 +231,15 @@ Members are classified into NHN Cloud members and IAM members.
 | --- | --- | --- |
 | Definition                    | - Members for organization management<br>- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud members even if their organizations are deleted. | - Members for the service use<br>- Members who do not consent to the Terms of Use <br>- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
 | Method of Member Registration | - Owner/Admin of an organization enters NHN Cloud ID for registration | - Owner/Admin of an organization enters unique ID for registration <br>- Register via SSO or API integration |
-| Member Permission              | - Manage organizations (Create/Modify organizations / Manage organization members / Manage organization services /Manage billing)<br>- Create projects<br>- Delete projects | - Use organization services                                 |
+| Member role              | - Manage organizations (Create/Modify organizations / Manage organization members / Manage organization services /Manage billing)<br>- Create projects<br>- Delete projects | - Use organization services                                 |
 | Console Access | - Access NHN Cloud console([https://console.toast.com/])(https://console.toast.com/)<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.toast.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) |
 
 ### Organization Members
 
 * The OWNER of the organization can grant full control of the account and apply for services.
-* OWNER can register members and grant management permission for each organization.
+* OWNER can register members and grant management role for each organization.
 
-#### Organization Permission of NHN Cloud Members 
+#### Organization role of NHN Cloud Members 
 
 | Task               | Role                                              | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
 | -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---- |
@@ -256,12 +256,12 @@ Members are classified into NHN Cloud members and IAM members.
 |                      | Delete Projects                                   | O     | O     |        |                |      |
 | Manage User Action Log | Query User Action Logs                          | O     | O     |        |                |  O   |
 
-#### Organization Permission of IAM Members 
+#### Organization role of IAM Members 
 
-* Permissions that can be set are different for each organization service (Online Contact, Dooray!, etc.).
-* Cloud service permissions are as follows.
-    * The MEMBER permission can be selectively granted only when needed.
-    * If the MEMBER permission is granted, the user can create a project directly.
+* roles that can be set are different for each organization service (Online Contact, Dooray!, etc.).
+* Cloud service roles are as follows.
+    * The MEMBER role can be selectively granted only when needed.
+    * If the MEMBER role is granted, the user can create a project directly.
 
 | Task | Role | MEMBER |
 | --- | --- | --- |
@@ -270,116 +270,118 @@ Members are classified into NHN Cloud members and IAM members.
 ### Project Members
 
 A user can become a member of a project even if the user is not a member of an organization.
-You can grant multiple required permissions to project members.
+You can grant multiple required roles to project members.
 
-#### Project Management Permissions
+#### Project Management roles
 
-| Permission | Description |
+| role | Description |
 | --- | --- |
-| ADMIN | Create/Read/Update/Delete permission for the entire project |
-| MEMBER | Create/Read/Update/Delete permission for all services in the project |
-| BILLING VIEWER | Read permission for usage status |
-| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete permission for project's integrated Appkey<br>Create/Read/Update/Delete permission for project's permission groups<br>Enable/Disable project services<br>Delete for projects |
-| PROJECT MANAGEMENT VIEWER | Read permission for project's basic information<br>Read permission for project's integrated Appkey<br>Read permission for project's permission groups |
-| PROJECT MEMBER ADMIN | Create/Read/Update/Delete permission for project members |
-| PROJECT MEMBER VIEWER | Read permission for project members |
+| ADMIN | Create/Read/Update/Delete for the entire project |
+| MEMBER | Create/Read/Update/Delete for all services in the project |
+| BILLING VIEWER | Read for usage status |
+| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete for project's integrated Appkey<br>Create/Read/Update/Delete for project's role groups<br>Enable/Disable project services<br>Delete for projects |
+| PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey<br>Read for project's role groups |
+| PROJECT MEMBER ADMIN | Create/Read/Update/Delete for project members |
+| PROJECT MEMBER VIEWER | Read for project members |
 
-#### Service Use Permissions
+#### Service Use roles
 
-| Service | Permission | Description |
+| Service | role | Description |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Create/Read/Update/Delete permission for Infrastructure Service |
-| Infrastructure | MEMBER | Read permission for VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete permission for Other services |
-| Virtual Desktop | ADMIN | Create/Read/Update/Delete permission for Virtual Desktop Service |
-| NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete permission for NHN Container Registry (NCR) Service |
-| NHN Container Registry (NCR) | VIEWER | Read permission for NHN Container Registry (NCR) Service |
-| DNS Plus | ADMIN | Create/Read/Update/Delete permission for DNS Plus Service |
-| Object Storage | ADMIN | Create/Read/Update/Delete permission for Object Storage Service |
-| Backup | ADMIN | Create/Read/Update/Delete permission for Backup Service |
-| RDS for MySQL | ADMIN | Create/Read/Update/Delete permission for RDS for MySQL Service |
-| RDS for MySQL | VIEWER | Read permission for RDS for MySQL Service |
-| RDS for MariaDB | ADMIN | Create/Read/Update/Delete permission for RDS for MariaDB Service |
-| RDS for MariaDB | VIEWER | Read permission for RDS for MariaDB Service |
-| RDS for MS-SQL | ADMIN | Create/Read/Update/Delete permission for RDS for MS-SQL Service |
-| EasyCache | ADMIN | Create/Read/Update/Delete permission for EasyCache Service |
-| EasyCache | VIEWER | Read permission for EasyCache Service Replication Group menu, Read permission for Monitoring menu |
-| Gamebase | ADMIN | Create/Read/Update/Delete permission for Gamebase Service |
-| Gamebase | ANALYTICS VIEWER - ALL | Read permission for all metrics |
-| Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | Read permission for all metrics except sales |
-| Gamebase | ANALYTICS VIEWER - ONLY REAL-TIME | Read permission for real-time metrics |
+| Infrastructure | ADMIN | Create/Read/Update/Delete for Infrastructure Service |
+| Infrastructure | MEMBER | Read for VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | Load Balancer ADMIN | Read for VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete for Other services |
+| Infrastructure |  Security Group ADMIN | Read for VPC, Auto Scale, Load Balancer Services. Create/Read/Update/Delete for Other services |
+| Virtual Desktop | ADMIN | Create/Read/Update/Delete for Virtual Desktop Service |
+| NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete for NHN Container Registry (NCR) Service |
+| NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
+| DNS Plus | ADMIN | Create/Read/Update/Delete for DNS Plus Service |
+| Object Storage | ADMIN | Create/Read/Update/Delete for Object Storage Service |
+| Backup | ADMIN | Create/Read/Update/Delete for Backup Service |
+| RDS for MySQL | ADMIN | Create/Read/Update/Delete for RDS for MySQL Service |
+| RDS for MySQL | VIEWER | Read for RDS for MySQL Service |
+| RDS for MariaDB | ADMIN | Create/Read/Update/Delete for RDS for MariaDB Service |
+| RDS for MariaDB | VIEWER | Read for RDS for MariaDB Service |
+| RDS for MS-SQL | ADMIN | Create/Read/Update/Delete for RDS for MS-SQL Service |
+| EasyCache | ADMIN | Create/Read/Update/Delete for EasyCache Service |
+| EasyCache | VIEWER | Read for EasyCache Service Replication Group menu, Read for Monitoring menu |
+| Gamebase | ADMIN | Create/Read/Update/Delete for Gamebase Service |
+| Gamebase | ANALYTICS VIEWER - ALL | Read for all metrics |
+| Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | Read for all metrics except sales |
+| Gamebase | ANALYTICS VIEWER - ONLY REAL-TIME | Read for real-time metrics |
 | Gamebase | APP ADMIN | Create, Read, Update, Delete for APP menu |
-| Gamebase | APP VIEWER | Read permission for APP menu |
+| Gamebase | APP VIEWER | Read for APP menu |
 | Gamebase | BAN ADMIN | Create, Read, Update, Delete for Suspended menu |
-| Gamebase | BAN VIEWER | Read permission for Suspended menu |
+| Gamebase | BAN VIEWER | Read for Suspended menu |
 | Gamebase | COUPON ADMIN | Create, Read, Update, Delete for Coupon menu |
-| Gamebase | COUPON VIEWER | Read permission for Coupon menu |
+| Gamebase | COUPON VIEWER | Read for Coupon menu |
 | Gamebase | CS ADMIN | Create, Read, Update, Delete for Customer Center menu |
-| Gamebase | CS INQUIRY SUPPORT | Read, Update for Contact Customer Center menu, Read permission for member menu |
+| Gamebase | CS INQUIRY SUPPORT | Read, Update for Contact Customer Center menu, Read for member menu |
 | Gamebase | IAP ADMIN | Create, Read, Update, Delete for Purchase menu |
-| Gamebase | IAP VIEWER | Read permission for Purchase menu |
+| Gamebase | IAP VIEWER | Read for Purchase menu |
 | Gamebase | LEADERBOARD ADMIN | Create, Read, Update, Delete for Leaderboard menu |
-| Gamebase | LEADERBOARD VIEWER | Read permission for Leaderboard menu |
+| Gamebase | LEADERBOARD VIEWER | Read for Leaderboard menu |
 | Gamebase | MANAGEMENT ADMIN | Create, Read, Update, Delete for Admin menu |
 | Gamebase | MEMBER ADMIN | Create, Read, Update, Delete for Member menu |
-| Gamebase | MEMBER VIEWER | Read permission for Member menu |
+| Gamebase | MEMBER VIEWER | Read for Member menu |
 | Gamebase | MEMBER FILE DOWNLOAD | Read and Download for menus including Metrics, Sales, Members |
 | Gamebase | OPERATION ADMIN | Create, Read, Update, Delete for Operation menu |
-| Gamebase | OPERATION VIEWER | Read permission for Operation menu |
+| Gamebase | OPERATION VIEWER | Read for Operation menu |
 | Gamebase | PUSH ADMIN | Create, Read, Update, Delete for Push menu |
-| Gamebase | PUSH VIEWER | Read permission for Push Menu |
+| Gamebase | PUSH VIEWER | Read for Push Menu |
 | GameStarter  | ADMIN | Create, Read, Update for menus game settings, distribution |
-| GameStarter  | VIEWER | Read permission for menus game settings, distribution |
-| Leaderboard | ADMIN | Create/Read/Update/Delete permission for Leaderboard Service |
-| Leaderboard | VIEWER | Read permission for Leaderboard Service |
-| Launching | ADMIN | Create/Read/Update/Delete permission for Launching Service |
-| Smart Downloader | ADMIN | Create/Read/Update/Delete permission for Smart Downloader Service |
-| NHN AppGuard | ADMIN | Create/Read/Update/Delete permission for NHN AppGuard Service|
-| App Security Check | ADMIN | Create/Read/Update/Delete permission for App Security Check Service |
-| Server Security Check | ADMIN | Create/Read/Update/Delete permission for Server Security Check  Service |
-| Security Monitoring | ADMIN | Create/Read/Update/Delete permission for Security Monitoring Service |
-| CAPTCHA | ADMIN | Create/Read/Update/Delete permission for CAPTCHA Service |
-| OTP | ADMIN | Create/Read/Update/Delete permission for OTP Service |
-| WEB Firewall | ADMIN | Create/Read/Update/Delete permission for WEB Firewall Service |
-| Vaccine | ADMIN | Create/Read/Update/Delete permission for Vaccine Service |
-| Secure Key Manager | ADMIN | Create/Read/Update/Delete permission for Secure Key Manager Service |
-| Secure Key Manager | VIEWER | Read permission for Secure Key Manager Service |
-| Security Compliance | ADMIN | Create/Read/Update/Delete permission for Security Compliance Service|
-| DDoS Guard | ADMIN | Create/Read/Update/Delete permission for DDoS Guard Service |
-| SIEM | ADMIN | Create/Read/Update/Delete permission for SIEM Service |
-| CDN | ADMIN | Create/Read/Update/Delete permission for CDN Service |
-| Image | ADMIN | Create/Read/Update/Delete permission for Image Service |
-| Push | ADMIN | Create/Read/Update/Delete permission for Push Service |
-| SMS | ADMIN | Create/Read/Update/Delete permission for SMS Service |
-| Email | ADMIN | Create/Read/Update/Delete permission for Email Service |
-| KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete permission for KakaoTalk Bizmessage Service |
-| Face Recognition | ADMIN | Create/Read/Update/Delete permission for Face Recognition Service |
-| AI Fashion |	ADMIN |	Create/Read/Update/Delete permission for AI Fashion Service |
-| Document Recognizer | ADMIN | Create/Read/Update/Delete permission for Document Recognizer | 
-| Vehicle Plate Recognizer | ADMIN | Create/Read/Update/Delete permission for Vehicle Plate Recognizer |
-| Text to Speech | ADMIN | Create/Read/Update/Delete permission for Text to Speech |
-| Speech to Text | ADMIN | Create/Read/Update/Delete permission for Speech to Text |
-| Cheating Detection | ADMIN | Create/Read/Update/Delete permission for Cheating Detection Service |
-| Maps | ADMIN | Create/Read/Update/Delete permission for Maps Service |
-| ROLE | ADMIN | Create/Read/Update/Delete permission for ROLE Service |
-| API Gateway | ADMIN | Create/Read/Update/Delete permission for API Gateway Service |
-| RTCS | ADMIN | Create/Read/Update/Delete permission for RTCS Service |
-| ShortURL | ADMIN | Create/Read/Update/Delete permission for ShortURL Service |
-| IAP | ADMIN | Create/Read/Update/Delete permission for IAP Service |
-| Mobile Device Info | ADMIN | Create/Read/Update/Delete permission for Mobile Device Info Service |
-| Cloud Search | ADMIN | Create/Read/Update/Delete permission for Cloud Search Service |
-| Autocomplete | ADMIN | Create/Read/Update/Delete permission for AutocompleteService |
-| Corporation Search | ADMIN | Create/Read/Update/Delete permission for Corporation Search Service |
-| Address Search | ADMIN | Create/Read/Update/Delete permission for Address Search Service |
-| Log & Crash Search | ADMIN | Create/Read/Update/Delete permission for Log & Crash Search Service |
-| Pipeline | ADMIN | Create/Read/Update/Delete permission for Pipeline Service |
-| Deploy | ADMIN | Create/Read/Update/Delete permission for Deploy Service |
-| Managed | ADMIN | Create/Read/Update/Delete permission for Managed Service |
-| Service Monitoring | ADMIN | Create/Read/Update/Delete permission for Service Monitoring Service |
-| Certificate Manager | ADMIN | Create/Read/Update/Delete permission for Certificate Manager Service |
-| eTax | ADMIN | Create/Read/Update/Delete permission for eTax Service |
-| eTax | VIEWER | Read permission for eTax Service |
-| marketplace | ADMIN | Create/Read/Update/Delete permission for marketplace Project Service |
-| marketplace | ADMIN | Read permission for marketplace Project Service |
+| GameStarter  | VIEWER | Read for menus game settings, distribution |
+| Leaderboard | ADMIN | Create/Read/Update/Delete for Leaderboard Service |
+| Leaderboard | VIEWER | Read for Leaderboard Service |
+| Launching | ADMIN | Create/Read/Update/Delete for Launching Service |
+| Smart Downloader | ADMIN | Create/Read/Update/Delete for Smart Downloader Service |
+| NHN AppGuard | ADMIN | Create/Read/Update/Delete for NHN AppGuard Service|
+| App Security Check | ADMIN | Create/Read/Update/Delete for App Security Check Service |
+| Server Security Check | ADMIN | Create/Read/Update/Delete for Server Security Check  Service |
+| Security Monitoring | ADMIN | Create/Read/Update/Delete for Security Monitoring Service |
+| CAPTCHA | ADMIN | Create/Read/Update/Delete or CAPTCHA Service |
+| OTP | ADMIN | Create/Read/Update/Delete for OTP Service |
+| WEB Firewall | ADMIN | Create/Read/Update/Delete for WEB Firewall Service |
+| Vaccine | ADMIN | Create/Read/Update/Delete for Vaccine Service |
+| Secure Key Manager | ADMIN | Create/Read/Update/Delete for Secure Key Manager Service |
+| Secure Key Manager | VIEWER | Read for Secure Key Manager Service |
+| Security Compliance | ADMIN | Create/Read/Update/Delete for Security Compliance Service|
+| DDoS Guard | ADMIN | Create/Read/Update/Delete for DDoS Guard Service |
+| SIEM | ADMIN | Create/Read/Update/Delete for SIEM Service |
+| CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
+| Image | ADMIN | Create/Read/Update/Delete pfor Image Service |
+| Push | ADMIN | Create/Read/Update/Delete for Push Service |
+| SMS | ADMIN | Create/Read/Update/Delete for SMS Service |
+| Email | ADMIN | Create/Read/Update/Delete for Email Service |
+| KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete for KakaoTalk Bizmessage Service |
+| Face Recognition | ADMIN | Create/Read/Update/Delete for Face Recognition Service |
+| AI Fashion |	ADMIN |	Create/Read/Update/Delete for AI Fashion Service |
+| Document Recognizer | ADMIN | Create/Read/Update/Delete for Document Recognizer | 
+| Vehicle Plate Recognizer | ADMIN | Create/Read/Update/Delete for Vehicle Plate Recognizer |
+| Text to Speech | ADMIN | Create/Read/Update/Delete for Text to Speech |
+| Speech to Text | ADMIN | Create/Read/Update/Delete for Speech to Text |
+| Cheating Detection | ADMIN | Create/Read/Update/Delete for Cheating Detection Service |
+| Maps | ADMIN | Create/Read/Update/Delete for Maps Service |
+| ROLE | ADMIN | Create/Read/Update/Delete for ROLE Service |
+| API Gateway | ADMIN | Create/Read/Update/Delete for API Gateway Service |
+| RTCS | ADMIN | Create/Read/Update/Delete for RTCS Service |
+| ShortURL | ADMIN | Create/Read/Update/Delete for ShortURL Service |
+| IAP | ADMIN | Create/Read/Update/Delete for IAP Service |
+| Mobile Device Info | ADMIN | Create/Read/Update/Delete for Mobile Device Info Service |
+| Cloud Search | ADMIN | Create/Read/Update/Delete for Cloud Search Service |
+| Autocomplete | ADMIN | Create/Read/Update/Delete for AutocompleteService |
+| Corporation Search | ADMIN | Create/Read/Update/Delete for Corporation Search Service |
+| Address Search | ADMIN | Create/Read/Update/Delete for Address Search Service |
+| Log & Crash Search | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
+| Pipeline | ADMIN | Create/Read/Update/Delete for Pipeline Service |
+| Deploy | ADMIN | Create/Read/Update/Delete pfor Deploy Service |
+| Managed | ADMIN | Create/Read/Update/Delete for Managed Service |
+| Service Monitoring | ADMIN | Create/Read/Update/Delete for Service Monitoring Service |
+| Certificate Manager | ADMIN | Create/Read/Update/Delete for Certificate Manager Service |
+| eTax | ADMIN | Create/Read/Update/Delete for eTax Service |
+| eTax | VIEWER | Read  for eTax Service |
+| marketplace | ADMIN | Create/Read/Update/Delete for marketplace Project Service |
+| marketplace | ADMIN | Read for marketplace Project Service |
 
 
 

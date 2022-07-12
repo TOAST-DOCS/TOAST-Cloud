@@ -3,7 +3,7 @@
 ## 사전 준비
 
 1. [NHN Cloud SDK](./getting-started-android)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.cloud.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+2. [NHN Cloud 콘솔](https://console.toast.com)에서 [Push 서비스를 활성화](https://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
 3. Push 콘솔에서 AppKey를 확인합니다.
 
 ## Push 제공자별 가이드
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-fcm:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.0.0'
     ...
 }
 ```
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-push-adm:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.0.0'
     ...
 }
 ```
@@ -136,39 +136,39 @@ dependencies {
 
 ## Push 초기화
 
-* ToastPush.initialize를 호출하여 NHN Cloud Push를 초기화합니다.
-* [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
-* [ToastPushConfiguration](./push-android/#toastpushconfiguration) 객체는 ToastPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
-* Push 콘솔에서 발급받은 AppKey를 ToastPushConfiguration.newBuilder 매개변수로 전달합니다.
+* NhnCloudPush.initialize를 호출하여 NHN Cloud Push를 초기화합니다.
+* [NhnCloudPushConfiguration](./push-android/#nhncloudpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
+* [NhnCloudPushConfiguration](./push-android/#nhncloudpushconfiguration) 객체는 NhnCloudPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
+* Push 콘솔에서 발급받은 AppKey를 NhnCloudPushConfiguration.newBuilder 매개변수로 전달합니다.
 * 사용하기를 원하는 PushType을 초기화 호출시 전달해야 합니다.
 
 ### FCM 초기화 예시
 
 ```java
-ToastPushConfiguration configuration =
-    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+NhnCloudPushConfiguration configuration =
+    NhnCloudPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 
-ToastPush.initialize(PushType.FCM, configuration);
+NhnCloudPush.initialize(PushType.FCM, configuration);
 ```
 
 ### ADM 초기화 예시
 
 ```java
-ToastPushConfiguration configuration =
-    ToastPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+NhnCloudPushConfiguration configuration =
+    NhnCloudPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
             .build();
 
-ToastPush.initialize(PushType.ADM, configuration);
+NhnCloudPush.initialize(PushType.ADM, configuration);
 ```
 
-> ToastPush.initialize(ToastPushConfiguration)는 Deprecated 되었습니다.
-> ToastPush.initialize(ToastPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
+> NhnCloudPush.initialize(NhnCloudPushConfiguration)는 Deprecated 되었습니다.
+> NhnCloudPush.initialize(NhnCloudPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
 
 
 ## 서비스 로그인
 * NHN Cloud SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
-    * [ToastSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
+    * [NhnCloudSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
 * 서비스 로그인 단계에서 사용자 아이디 설정, 토큰 등록 기능을 구현하는 것을 권장합니다.
 * 토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.
 
@@ -177,13 +177,13 @@ ToastPush.initialize(PushType.ADM, configuration);
 ```java
 public void onLogin(String userId) {
     // Login.
-    ToastSdk.setUserId(userId);
+    NhnCloudSdk.setUserId(userId);
     // 토큰 등록 등
 }
 ```
 
 ## 토큰 등록
-* ToastPush.registerToken() 메서드를 사용하여 Push 토큰을 NHN Cloud Push 서버로 전송합니다. 이때 수신 동의 여부(ToastPushAgreement)를 파라미터로 전달합니다.
+* NhnCloudPush.registerToken() 메서드를 사용하여 Push 토큰을 NHN Cloud Push 서버로 전송합니다. 이때 수신 동의 여부(NhnCloudPushAgreement)를 파라미터로 전달합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 * 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
 
@@ -191,18 +191,18 @@ public void onLogin(String userId) {
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
     * [KISA 가이드 바로 가기](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
-* ToastPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 NHN Cloud Push 서버로 전송합니다.
+* NhnCloudPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 NHN Cloud Push 서버로 전송합니다.
 
 ### 토큰 등록 및 수신 동의 설정 예시
 ```java
 // 수신 동의 설정 객체 생성
-ToastPushAgreement agreement = ToastPushAgreement.newBuilder(true)  // 알림 메시지 수신 동의
+NhnCloudPushAgreement agreement = NhnCloudPushAgreement.newBuilder(true)  // 알림 메시지 수신 동의
         .setAllowAdvertisements(true)       // 홍보성 알림 메시지 수신 동의
         .setAllowNightAdvertisements(true)  // 야간 홍보성 아림 메시지 수신 동의
         .build();
 
 // 토큰 등록 및 수신 동의 설정
-ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
+NhnCloudPush.registerToken(context, agreement, new RegisterTokenCallback() {
     @Override
     public void onRegister(@NonNull PushResult result,
                            @Nullable String token) {
@@ -223,7 +223,7 @@ ToastPush.registerToken(context, agreement, new RegisterTokenCallback() {
 
 ### 토큰 정보 조회 예시
 ```java
-ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
+NhnCloudPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
     @Override
     public void onQuery(@NonNull PushResult result,
                         @Nullable TokenInfo tokenInfo) {
@@ -231,7 +231,7 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
         if (result.isSuccess()) {
             // 토큰 정보 조회 성공
             String token = tokenInfo.getToken();
-            ToastPushAgreement agreement = tokenInfo.getAgreement();
+            NhnCloudPushAgreement agreement = tokenInfo.getAgreement();
         } else {
             // 토큰 정보 조회 실패
             int code = result.getCode();
@@ -250,7 +250,7 @@ ToastPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 
 ### 토큰 해제 예시
 ```java
-ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
+NhnCloudPush.unregisterToken(mContext, new UnregisterTokenCallback() {
     @Override
     public void onUnregister(@NonNull PushResult result,
                              @Nullable String unregisteredToken) {
@@ -268,8 +268,8 @@ ToastPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 
 ## 메시지 수신
 * Push 메시지 수신 시 OnReceiveMessageListener 를 통해 통지 받을 수 있습니다.
-* Push 메시지 수신 리스너는 ToastPush.setOnReceiveMessageListener 함수를 사용하여 등록할 수 있습니다.
-* OnReceiveMessageListener 에 전달된 [ToastPushMessage](./push-android/#toastpushmessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
+* Push 메시지 수신 리스너는 NhnCloudPush.setOnReceiveMessageListener 함수를 사용하여 등록할 수 있습니다.
+* OnReceiveMessageListener 에 전달된 [NhnCloudPushMessage](./push-android/#nhncloudpushmessage) 객체를 통해 메시지 정보를 확인 할 수 있습니다.
 * 앱이 실행 중이지 않을 때도 메시지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
 > 메시지 수신 시 사용자가 앱을 사용 중(Foreground)일 경우 알림을 노출하지 않습니다.
@@ -282,14 +282,14 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastPush.setOnReceiveMessageListener(new OnReceiveMessageListener() {
+        NhnCloudPush.setOnReceiveMessageListener(new OnReceiveMessageListener() {
             @Override
-            public void onReceive(@NonNull ToastPushMessage message,
+            public void onReceive(@NonNull NhnCloudPushMessage message,
                                   boolean isForeground) {
 
                 // 사용자가 앱을 사용 중 일 때에도 알림을 노출
                 if (isForeground) {
-                    ToastNotification.notify(getApplicationContext(), message);
+                    NhnCloudNotification.notify(getApplicationContext(), message);
                 }
             }
         });
@@ -301,7 +301,7 @@ public class MyApplication extends Application {
 
 ## 알림 클릭
 * 사용자가 노출된 알림을 클릭하여 앱이 실행되었을 때 OnClickListener 를 통해 통지 받울 수 있습니다.
-* 알림 클릭 리스너는 ToastNotification.setOnClickListener 함수를 사용하여 등록할 수 있습니다.
+* 알림 클릭 리스너는 NhnCloudNotification.setOnClickListener 함수를 사용하여 등록할 수 있습니다.
 * 앱이 실행 중이지 않을 때도 알림 클릭 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
 ### 알림 클릭 리스너 등록 예시
@@ -311,9 +311,9 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastNotification.setOnClickListener(new OnClickListener() {
+        NhnCloudNotification.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(@NonNull ToastPushMessage message) {
+            public void onClick(@NonNull NhnCloudPushMessage message) {
                 // 메시지 내용을 기반으로 페이지 이동 등의 서비스 로직 수행이 가능합니다.
                 Map<String, String> extras = message.getExtras();
             }
@@ -342,7 +342,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastNotification.setDefaultChannelName(context, "YOUR_CHANNEL_NAME");
+        NhnCloudNotification.setDefaultChannelName(context, "YOUR_CHANNEL_NAME");
 
         // ...
     }
@@ -372,7 +372,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastNotificationOptions defaultOptions = new ToastNotificationOptions.Builder()
+        NhnCloudNotificationOptions defaultOptions = new NhnCloudNotificationOptions.Builder()
                 .setPriority(NotificationCompat.PRIORITY_HIGH)  // 알림 우선 순위 설정
                 .setColor(0x0085AA)                             // 알림 배경색 설정
                 .setLights(Color.RED, 0, 300)                   // LED 라이트 설정
@@ -383,7 +383,7 @@ public class MyApplication extends Application {
                 .enableBadge(true)                              // 배지 아이콘 사용 설정
                 .build();
 
-        ToastNotification.setDefaultOptions(context, defaultOptions);
+        NhnCloudNotification.setDefaultOptions(context, defaultOptions);
 
         // ...
     }
@@ -398,14 +398,14 @@ public class MyApplication extends Application {
         // ...
 
         // 설정된 기본 알림 옵션 획득
-        ToastNotificationOptions defaultOptions = ToastNotification.getDefaultOptions(context);
+        NhnCloudNotificationOptions defaultOptions = NhnCloudNotification.getDefaultOptions(context);
 
         // 알림 옵션 객체로부터 빌더 생성
-        ToastNotificationOptions newDefaultOptions = defaultOptions.buildUpon()
+        NhnCloudNotificationOptions newDefaultOptions = defaultOptions.buildUpon()
                 .enableForeground(true)      // 포그라운드 알림 노출 여부 설정만 변경
                 .build();
 
-        ToastNotification.setDefaultOptions(context, newDefaultOptions);
+        NhnCloudNotification.setDefaultOptions(context, newDefaultOptions);
 
         // ...
     }
@@ -500,7 +500,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         // ...
 
-        ToastNotification.setOnActionListener(new OnActionListener() {
+        NhnCloudNotification.setOnActionListener(new OnActionListener() {
             @Override
             public void onAction(@NonNull PushAction action) {
                 // 답장 액션일 경우, 서비스 서버로 해당 내용을 전송
@@ -518,26 +518,26 @@ public class MyApplication extends Application {
 ```
 
 ## 사용자 정의 메시지 처리
-* 메시지 수신 후 별도의 처리 과정을 수행하거나 수신한 메시지의 내용을 수정해 알림을 노출해야하는 경우 [ToastPushMessageReceiver](./push-android/#toastpushmessagereceiver)를 상속 구현하는 브로드캐스트를 구현해야 합니다.
-* ToastPushMessageReceiver를 상속 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
+* 메시지 수신 후 별도의 처리 과정을 수행하거나 수신한 메시지의 내용을 수정해 알림을 노출해야하는 경우 [NhnCloudPushMessageReceiver](./push-android/#nhncloudpushmessagereceiver)를 상속 구현하는 브로드캐스트를 구현해야 합니다.
+* NhnCloudPushMessageReceiver를 상속 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
 * 메시지 수신시 onMessageReceived 함수로 수신된 메시지가 전달됩니다.
 
 > **(주의)**
 > 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다.
 > 2. 알림을 직접 생성할 경우 Push 서비스 인텐트를 알림의 콘텐츠 인텐트로 설정해야만 지표 수집이 가능합니다. (아래 지표 수집 기능 추가 섹션 참고)
 
-### ToastPushMessagingService 구현 코드 예
+### NhnCloudPushMessagingService 구현 코드 예
 ```java
-public class MyPushMessageReceiver extends ToastPushMessageReceiver {
+public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
     @Override
     public void onMessageReceived(@NonNull Context context,
-                                  @NonNull ToastRemoteMessage remoteMessage) {
+                                  @NonNull NhnCloudRemoteMessage remoteMessage) {
 
         // 채널 아이디 변경
         remoteMessage.setChannelId("channel");
 
         // 메세지 내용 수정
-        ToastPushMessage message = remoteMessage.getMessage();
+        NhnCloudPushMessage message = remoteMessage.getMessage();
         CharSequence title = message.getTitle();
 
         message.setTitle("[Modified] " + title);
@@ -558,7 +558,7 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
         } else {
             // 특정 UI 화면 노출
-            Toast.makeText(context, message.title, Toast.LENGTH_SHORT).show();
+            NhnCloud.makeText(context, message.title, NhnCloud.LENGTH_SHORT).show();
         }
     }
 }
@@ -566,13 +566,13 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 ### AndroidManifest.xml 등록 예
 > **(주의)**
-> 1. ToastPushMessageReceiver를 사용하는 경우, 반드시 permission을 설정해야 합니다.
+> 1. NhnCloudPushMessageReceiver를 사용하는 경우, 반드시 permission을 설정해야 합니다.
 > 2. API 레벨 31 이상 타겟팅 시 exported 속성을 설정해야 합니다. 
 
 ```xml
 <manifest>
     <application>
-    <receiver android:name=".ToastPushSampleReceiver"
+    <receiver android:name=".NhnCloudPushSampleReceiver"
         android:permission="${applicationId}.toast.push.permission.RECEIVE"
         android:exported="false">
         <intent-filter>
@@ -592,16 +592,16 @@ public class MyPushMessageReceiver extends ToastPushMessageReceiver {
 
 #### 지표 수집 기능 추가 예
 ```java
-public class MyPushMessageReceiver extends ToastPushMessageReceiver {
+public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
     private NotificationManager mManager = null;
 
     @Override
     public void onMessageReceived(
             @NonNull Context context,
-            @NonNull ToastRemoteMessage remoteMessage) {
+            @NonNull NhnCloudRemoteMessage remoteMessage) {
 
         // 메시지 내용 획득
-        ToastPushMessage message = remoteMessage.getMessage();
+        NhnCloudPushMessage message = remoteMessage.getMessage();
 
         //NotificationManager 생성
         if (mManager == null) {
@@ -665,7 +665,7 @@ tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8자리 문자열)
 tagIds.add(TAG_ID_2);
 
 // 로그인되어 있는 사용자 아이디의 태그 아이디 목록 추가
-ToastPush.addUserTag(tagIds, new UserTagCallback() {
+NhnCloudPush.addUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -679,7 +679,7 @@ ToastPush.addUserTag(tagIds, new UserTagCallback() {
 });
 
 // 로그인되어 있는 사용자 아이디의 태그 아이디 목록 업데이트 (기존 태그 아이디 목록은 삭제되고 입력한 값으로 설정)
-ToastPush.setUserTag(tagIds, new UserTagCallback() {
+NhnCloudPush.setUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -701,7 +701,7 @@ ToastPush.setUserTag(tagIds, new UserTagCallback() {
 
 ```java
 // 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록을 반환
-ToastPush.getUserTag(new UserTagCallback() {
+NhnCloudPush.getUserTag(new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -728,7 +728,7 @@ tagIds.add(TAG_ID_1);   // e.g. "ZZPP00b6" (8자리 문자열)
 tagIds.add(TAG_ID_2);
 
 // 로그인되어 있는 사용자 아이디의 태그 아이디 목록 삭제
-ToastPush.removeUserTag(tagIds, new UserTagCallback() {
+NhnCloudPush.removeUserTag(tagIds, new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -742,7 +742,7 @@ ToastPush.removeUserTag(tagIds, new UserTagCallback() {
 });
 
 // 로그인되어 있는 사용자 아이디의 전체 태그 아이디 목록 삭제
-ToastPush.removeAllUserTag(new UserTagCallback() {
+NhnCloudPush.removeAllUserTag(new UserTagCallback() {
     @Override
     public void onResult(@NonNull PushResult result, @Nullable Set<String> tagIds) {
         if (result.isSuccess()) {
@@ -757,11 +757,11 @@ ToastPush.removeAllUserTag(new UserTagCallback() {
 ```
 
 ## NHN Cloud Push Class Reference
-### ToastPushConfiguration
+### NhnCloudPushConfiguration
 * NHN Cloud Push를 초기화할 때 전달되는 Push 설정 정보입니다.
 
 ```java
-/* ToastPushConfiguration.java */
+/* NhnCloudPushConfiguration.java */
 public String getAppKey();
 public static Builder newBuilder(@NonNull Context context, @NonNull String appKey);
 ```
@@ -769,7 +769,7 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 | Method | Returns | |
 |---|---|---|
 | getAppKey | String | Push 서비스 앱 키를 반환합니다. |
-| static newBuilder | ToastPushConfiguration.Builder | ToastPushConfiguration 객체 생성을 위한 빌더를 생성합니다. |
+| static newBuilder | NhnCloudPushConfiguration.Builder | NhnCloudPushConfiguration 객체 생성을 위한 빌더를 생성합니다. |
 
 ### PushResult
 * 비동기 API 호출시 콜백의 응답으로 반환되는 결과 객체입니다.
@@ -796,7 +796,7 @@ public boolean isFailure();
 ```java
 /* TokenInfo.java */
 public String getPushType();
-public ToastPushAgreement getAgreement();
+public NhnCloudPushAgreement getAgreement();
 public String getTimeZone();
 public String getCountry();
 public String getLanguage();
@@ -808,7 +808,7 @@ public String getToken();
 | Method | Returns | |
 |---|---|---|
 | getPushType | String | Push 타입을 반환합니다. |
-| getAgreement | ToastPushAgreement | 알림/광고/야간 광고 등 동의 여부를 반환합니다. |
+| getAgreement | NhnCloudPushAgreement | 알림/광고/야간 광고 등 동의 여부를 반환합니다. |
 | getTimeZone | String | 타임존을 반환합니다. |
 | getCountry | String | 국가 코드를 반환합니다. |
 | getLanguage | String | 언어 코드를 반환합니다. |
@@ -816,14 +816,14 @@ public String getToken();
 | getActivatedDateTime | Date | 토큰의 최근 등록 일시를 반환합니다. |
 | getToken | String | 토큰을 반환합니다. |
 
-### ToastRemoteMessage
+### NhnCloudRemoteMessage
 * 메세지 수신 리스너, 커스텀 리시버에서 메세지 수신시 반환되는 객체 입니다.
 
 ``` java
-/* ToastRemoteMessage.java */
+/* NhnCloudRemoteMessage.java */
 public String getChannelId();
 public void setChannelId(String channelId);
-public ToastPushMessage getMessage();
+public NhnCloudPushMessage getMessage();
 public String getSenderId();
 ```
 
@@ -831,14 +831,14 @@ public String getSenderId();
 |---|---|---|
 | getChannelId | String | 채널 ID를 반환합니다. |
 | setChannelId |  | 채널 ID를 설정합니다. |
-| getMessage | ToastPushMessage | 메세지 객체를 반환합니다. |
+| getMessage | NhnCloudPushMessage | 메세지 객체를 반환합니다. |
 | getSenderId | String | 발신자 ID를 반환합니다. (FCM Only) |
 
-### ToastPushMessage
+### NhnCloudPushMessage
 * 수신한 메세지 내용을 담는 객체 입니다.
 
 ``` java
-/* ToastPushMessage.java */
+/* NhnCloudPushMessage.java */
 public String getMessageId();
 public String getPusyType();
 public String getTitle();
@@ -869,7 +869,7 @@ public Map<String, String> getExtras();
 public ActionType getActionType();
 public String getNotificationId();
 public String getNotificationChannel();
-public ToastPushMessage getMessage();
+public NhnCloudPushMessage getMessage();
 public String getUserText();
 ```
 
@@ -878,37 +878,37 @@ public String getUserText();
 | getActionType | ActionType | ActionType을 반환합니다. |
 | getNotificationId | String | 액션이 실행된 알림의 ID을 반환합니다. |
 | getNotificationChannel | String | 액션이 실행된 알림의 채널을 반환합니다. |
-| getMessage | ToastPushMessage | 액션이 실행된 알림의 메세지 정보를 반환합니다. |
+| getMessage | NhnCloudPushMessage | 액션이 실행된 알림의 메세지 정보를 반환합니다. |
 | getUserText | RichMessage | 사용자가 입력한 문자열을 반환합니다. |
 
-### ToastPushMessageReceiver
+### NhnCloudPushMessageReceiver
 * 메세지 내용 수정, 실행 인텐트 정의, 알림 직접 생성 등의 기능을 위해서는 사용자가 구현해야하는 객체 입니다.
 
 ``` java
-/* ToastPushMessageReceiver.java */
+/* NhnCloudPushMessageReceiver.java */
 public final boolean isAppForeground();
-public final void notify(Context context, ToastRemoteMessage message);
-public final void notify(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
+public final void notify(Context context, NhnCloudRemoteMessage message);
+public final void notify(Context context, NhnCloudRemoteMessage message, PendingIntent contentIntent);
 public final void notify(Context context, int notificationId, Notification notification);
 @Deprecated
-public final PendingIntent getNotificationServiceIntent(Context context, ToastRemoteMessage message, PendingIntent contentIntent);
-public final PendingIntent getContentIntent(Context context, ToastRemoteMessage message, Intent launchIntent);
+public final PendingIntent getNotificationServiceIntent(Context context, NhnCloudRemoteMessage message, PendingIntent contentIntent);
+public final PendingIntent getContentIntent(Context context, NhnCloudRemoteMessage message, Intent launchIntent);
 ```
 
 | Method | Returns | Parameters | |
 |---|---|---|---|
 | isAppForeground | boolean |  | 현재 앱을 사용중인지 여부를 반환합니다. |
-| notify | | Context, ToastRemoteMessage | 기본 실행 인텐트로 알림을 생성 및 노출합니다. |
-| notify | | Context, ToastRemoteMessage, PendingIntent | 사용자 실행 인텐트로 알림을 생성 및 노출합니다. |
+| notify | | Context, NhnCloudRemoteMessage | 기본 실행 인텐트로 알림을 생성 및 노출합니다. |
+| notify | | Context, NhnCloudRemoteMessage, PendingIntent | 사용자 실행 인텐트로 알림을 생성 및 노출합니다. |
 | notify | | Context, int, Notification | 사용자 알림을 특정 ID로 노출합니다. |
-| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, ToastRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. <br> Android 12 (API 레벨 31) 이상부터 정상 동작 하지 않으며, 대신 getContentIntent()를 사용해야 합니다. |
-| getContentIntent | PendingIntent | Context, ToastRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
+| @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, NhnCloudRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. <br> Android 12 (API 레벨 31) 이상부터 정상 동작 하지 않으며, 대신 getContentIntent()를 사용해야 합니다. |
+| getContentIntent | PendingIntent | Context, NhnCloudRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
 
-### ToastNotificationOptions
+### NhnCloudNotificationOptions
 * 기본 알림 옵션 설정시 우선순위, 작은 아이콘, 배경색, LED, 진동, 알림음, 포그라운드 알림 노출 정보를 설정하는 객체입니다.
 
 ``` java
-/* ToastNotificationOptions.java */
+/* NhnCloudNotificationOptions.java */
 public int getPriority();
 public int getSmallIcon();
 public int getColor();
@@ -934,4 +934,4 @@ public Builder buildUpon();
 | getSound | Uri | | 알림음의 Uri 를 반환합니다. |
 | isForegroundEnabled | boolean | | 포그라운드 알림 사용 여부를 반환합니다. |
 | isBadgeEnabled | boolean | | 배지 아이콘 사용 여부를 반환합니다. |
-| buildUpon | ToastNotificationOptions#Builder | | 현재 옵션 정보를 기반으로 빌더를 반환합니다. |
+| buildUpon | NhnCloudNotificationOptions#Builder | | 현재 옵션 정보를 기반으로 빌더를 반환합니다. |

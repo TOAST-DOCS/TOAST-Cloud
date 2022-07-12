@@ -3,7 +3,7 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-android)をインストールします。
-2. [NHN Cloudコンソール](https://console.cloud.toast.com)で[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+2. [NHN Cloudコンソール](https://console.toast.com)で[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
 3. Log & Crash Searchで[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 
 ## ライブラリ設定
@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-logger:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-logger:1.0.0'
     ...
 }
 ```
@@ -24,17 +24,17 @@ dependencies {
 
 - 初期化は、Application#onCreateで行う必要があります。
 
-> 初期化を行わずにToastLoggerを使用すると、初期化エラーが発生します。
+> 初期化を行わずにNhnCloudLoggerを使用すると、初期化エラーが発生します。
 
 - Log & Crash Searchで発行されたAppKeyを設定します。
 
 ```java
 // Initialize Logger
-ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
+NhnCloudLoggerConfiguration configuration = NhnCloudLoggerConfiguration.newBuilder()
         .setAppKey(YOUR_APP_KEY)            // Log & Crash Search AppKey
         .build();
 
-ToastLogger.initialize(configuration);
+NhnCloudLogger.initialize(configuration);
 ```
 
 ## ログ送信
@@ -63,7 +63,7 @@ static void fatal(String message);
 ### ログ送信API使用例
 
 ```java
-ToastLogger.warn("NHN Cloud Log & Crash Search!");
+NhnCloudLogger.warn("NHN Cloud Log & Crash Search!");
 ```
 
 ## ユーザー定義フィールド設定
@@ -88,7 +88,7 @@ static void setUserField(String field, Object value);
 ### setUserField使用例
 
 ```java
-ToastLogger.setUserField("nickname", "randy");
+NhnCloudLogger.setUserField("nickname", "randy");
 ```
 
 ## ログ送信後、追加作業進行
@@ -98,13 +98,13 @@ ToastLogger.setUserField("nickname", "randy");
 ### setLoggerListener API仕様
 
 ```java
-static void setLoggerListener(ToastLoggerListener listener);
+static void setLoggerListener(NhnCloudLoggerListener listener);
 ```
 
 ### setLoggerListener使用例
 
 ```java
-ToastLogger.setLoggerListener(new ToastLoggerListener() {
+NhnCloudLogger.setLoggerListener(new NhnCloudLoggerListener() {
     @Override
     public void onSuccess(LogEntry log) {
         // ログ送信成功
@@ -137,12 +137,12 @@ NHN Cloud Loggerは、アプリで予期せぬクラッシュが発生した場�
 
 ```java
 // Initialize Logger
-ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
+NhnCloudLoggerConfiguration configuration = NhnCloudLoggerConfiguration.newBuilder()
         .setAppKey(YOUR_APP_KEY)            // Log & Crash Search AppKey
         .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
         .build();
 
-ToastLogger.initialize(configuration);
+NhnCloudLogger.initialize(configuration);
 ```
 
 > UserIDが設定されている場合、Log＆Crash Searchコンソールの`Crash User`セクションでユーザー固有のクラッシュ体験を確認できます。
@@ -173,7 +173,7 @@ try {
     // User Codes...
 } catch (Exception e) {
     Map<String, Object> userFields = new HashMap<>();
-    ToastLogger.report("message", e, userFields);
+    NhnCloudLogger.report("message", e, userFields);
 }
 ```
 
@@ -193,7 +193,7 @@ static void setCrashDataAdapter(CrashDataAdapter adapter);
 ### setCrashDataAdapter使用例
 
 ```java
-ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
+NhnCloudLogger.setCrashDataAdapter(new CrashDataAdapter() {
     @Override
     public Map<String, Object> getUserFields() {
         Map<String, Object> userFields = new HashMap<>();

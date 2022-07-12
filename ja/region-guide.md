@@ -56,6 +56,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | DNS Plus | グローバル |  |  |  |  |
 | Storage | Block Storage | リージョン | O | O | O | O |
 |  | NAS (offline) | リージョン | O | O  |  | O |
+|  | NAS | リージョン | O |   |  |  |
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O  | O |  |
 |  | Data transporter | リージョン | O | O  |  |  |
@@ -105,13 +106,12 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Machine Learning | Deep Learning Instance | リージョン | O |  | | |
 | Application Service | Maps | リージョン | O |  |  |  |
 |  | ROLE | グローバル |  |  |  |  |
-|  | API Gateway | リージョン | O |  |  |  |
+|  | API Gateway | リージョン | O | O |  |  |
 |  | RTCS | グローバル |  |  |  |  |
 |  | Short URL | グローバル |  |  |  |  |
 |  | JEUS Instance | リージョン | O | O | O | O |
 |  | WebtoB Instance | リージョン | O | O | O | O |
 | Mobile Service | IAP | グローバル |  |  |  |  |
-|  | Mobile Device Info | グローバル |  |  |  |  |
 | Search | Cloud Search | リージョン | O |  |  |  |
 |  | Autocomplete | リージョン | O |  |  |  |
 |  | Corporation Search | リージョン | O |  |  |  |

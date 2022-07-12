@@ -135,23 +135,23 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
     * 設定した時間の間にクリックなどの操作を行わなかった場合、自動的にログアウトされます。
     * あまりにも長く設定すると、セキュリティ上良くないため、考慮して設定してください。
 
-### プロジェクト共通権限グループ設定
+### プロジェクト共通役割グループ設定
 
-組織に属しているプロジェクトにおいて共通で使用する権限グループを作成し、管理できます。
-設定された権限グループはプロジェクトの権限グループ管理からNHN Cloud会員およびIAMメンバーを選択して権限を一括付与できます。
+組織に属しているプロジェクトにおいて共通で使用する役割グループを作成し、管理できます。
+設定された役割グループはプロジェクトの役割グループ管理からNHN Cloud会員およびIAMメンバーを選択して役割を一括付与できます。
 
-1. 組織設定を選択した後、プロジェクト共通権限グループ設定メニューをクリックします。
-2. **権限グループ追加**を選択して、サービスごとに権限を追加します。
-3. 権限グループ名、説明を入力し、サービスごとに権限を追加します。
-    * 権限グループ名は日本語、アルファベット、特殊文字を使用可能で、最大40文字まで入力できます。
+1. 組織設定を選択した後、プロジェクト共通役割グループ設定メニューをクリックします。
+2. **役割グループ追加**を選択して、サービスごとに役割を追加します。
+3. 役割グループ名、説明を入力し、サービスごとに役割を追加します。
+    * 役割グループ名は日本語、アルファベット、特殊文字を使用可能で、最大40文字まで入力できます。
     * 説明は最大100文字まで入力できます。
-4. 権限は**サービスごとに細分化された利用権限**を選択できます。
-    * サービス名を左側の領域から検索した後、右側の領域で権限を選択します。
-5. 選択された権限を確認して追加または削除できます。
+4. 役割は**サービスごとに細分化された利用役割**を選択できます。
+    * サービス名を左側の領域から検索した後、右側の領域で役割を選択します。
+5. 選択された役割を確認して追加または削除できます。
     * サービス名の横にあるxボタンをクリックして、選択されたサービスを削除できます。
-6. 追加ボタンをクリックして権限グループを追加します。
-7. 権限グループが追加されると、権限グループリストに名前が表示されます。権限グループ名を選択して、詳細権限内容を確認できます。
-8. 権限追加をクリックすると、3回権限グループ追加画面に移動します。権限を追加または削除できます。
+6. 追加ボタンをクリックして役割グループを追加します。
+7. 役割グループが追加されると、役割グループリストに名前が表示されます。役割グループ名を選択して、詳細役割内容を確認できます。
+8. 役割追加をクリックすると、3回役割グループ追加画面に移動します。役割を追加または削除できます。
 
 ## プロジェクト管理
 
@@ -162,7 +162,7 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 ### プロジェクトの作成
 
 * プロジェクトを作成するには、組織を作成する必要があります。
-* プロジェクトを作成した会員は、プロジェクトのAdmin権限を持ちます。
+* プロジェクトを作成した会員は、プロジェクトのAdmin役割を持ちます。
 * プロジェクト作成時、プロジェクト名とプロジェクトの説明を入力します。
 * プロジェクト作成後、プロジェクトサービスを有効にして利用できます。
 * プロジェクト作成後、協業が必要な場合はプロジェクトメンバーに追加して一緒に使用できます。
@@ -218,7 +218,7 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 
 ## メンバーの管理
 
-メンバーの管理でユーザー別認証(ログイン)と権限付与が行えます。
+メンバーの管理でユーザー別認証(ログイン)と役割付与が行えます。
 プロジェクトと組織でメンバー管理を別々に行えます。
 メンバーはNHN Cloud会員とIAMメンバーに分けられます。
 
@@ -228,16 +228,16 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 | --- | --- | --- |
 | 定義      | - 組織管理のためのメンバー<br>- NHN Cloud利用約款に同意したNHN Cloud会員で、サービス利用に対する責任と義務を有するメンバー<br>- NHN Cloudサービス全体で有効なメンバーで、所属した組織が削除されてもNHN Cloud会員に存在 | - サービス利用のためのメンバー<br>- NHN Cloud利用約款に同意しないメンバー<br>- 組織内でのみ有効なメンバー、所属した組織が削除されると削除されるメンバー | 
 | メンバー登録方法 | - 組織のOWNERまたはAdminがNHN Cloud IDを入力して登録 | - 組織のOWNERまたはAdminが組織内で唯一のIDを入力して登録<br>- SSO連動/API連携などを通して登録 |
-| メンバー権限 | - 組織管理(組織作成/修正/組織メンバー管理/組織サービス管理/決済管理)<br>- プロジェクト作成<br>- プロジェクト削除 | - 組織サービス利用 |
+| メンバー役割 | - 組織管理(組織作成/修正/組織メンバー管理/組織サービス管理/決済管理)<br>- プロジェクト作成<br>- プロジェクト削除 | - 組織サービス利用 |
 | コンソールアクセス | - NHN Cloudコンソール([https://console.toast.com/](https://console.toast.com/)アクセス<br>- NHN Cloud> 会員ID/パスワードでログイン<br>- (任意) 2次(メールまたはSMS)認証 | - IAMコンソール([https://組織ドメイン.console.toast.com/](https://%EC%A1%B0%EC%A7%81%EB%8F%84%EB%A9%94%EC%9D%B8.console.toast.com/))アクセス<br>- (Dooray!、ERPサービスは該当サービスドメインでアクセス)<br>- 組織のOWNER(またはADMIN)が設定したID/PWでログイン- 組織で設定したログインセキュリティ(2次認証、サービス別設定)認証 |
 
 
 ### 組織メンバー
 
-- 組織のOWNERはアカウントのすべての権限を付与し、サービスを申請できます。 
-- OWNERは会員を登録し、組織別の管理権限を付与できます。
+- 組織のOWNERはアカウントのすべての役割を付与し、サービスを申請できます。 
+- OWNERは会員を登録し、組織別の管理役割を付与できます。
 
-#### NHN Cloud会員の組織権限
+#### NHN Cloud会員の組織役割
 
 | 作業 | 役割 | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -254,12 +254,12 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 |  | プロジェクト削除 | O | O |  |  |  |
 | ユーザーActionログの管理 | ユーザーActionログの照会 | O | O |  |  | O |
 
-#### IAMメンバーの組織権限
+#### IAMメンバーの組織役割
 
-* 組織サービスごと(Online Contact、Dooray!など)に設定できる権限が異なります。
-* クラウドサービスの権限は下記のとおりです。
-    * MEMBER権限は、希望する場合にのみ任意で付与できます。 
-    * 権限がないIAMメンバーは、プロジェクト作成や削除、サービスの有効化などを行うことができません。メンバーに登録されたプロジェクトのみサービスを利用できます。 
+* 組織サービスごと(Online Contact、Dooray!など)に設定できる役割が異なります。
+* クラウドサービスの役割は下記のとおりです。
+    * MEMBER役割は、希望する場合にのみ任意で付与できます。 
+    * 役割がないIAMメンバーは、プロジェクト作成や削除、サービスの有効化などを行うことができません。メンバーに登録されたプロジェクトのみサービスを利用できます。 
 
 | 作業 | 役割 | MEMBER |
 | --- | --- | --- |
@@ -268,38 +268,40 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 ### プロジェクトメンバー
 
 組織のメンバーではなくてもプロジェクトのメンバーになることができます。
-プロジェクトメンバーに必要な権限を複数付与できます。 
+プロジェクトメンバーに必要な役割を複数付与できます。 
 
-#### プロジェクト管理権限
+#### プロジェクト管理役割
 
-| 権限 | 説明 |
+| 役割 | 説明 |
 | --- | --- |
-| ADMIN | プロジェクト全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| MEMBER | プロジェクト内のすべてのサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| BILLING VIEWER | 利用状況Read(読み取り)権限 |
-| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <Br> プロジェクト権限グループCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除)権限 |
-| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br> プロジェクト統合Appkey Read(読み取り)<br> プロジェクト権限グループRead(読み取り)権限 |
-| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り)権限 |
+| ADMIN | プロジェクト全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| MEMBER | プロジェクト内のすべてのサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| BILLING VIEWER | 利用状況Read(読み取り) |
+| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <Br> プロジェクト役割グループCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除) |
+| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br> プロジェクト統合Appkey Read(読み取り)<br> プロジェクト役割グループRead(読み取り) |
+| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り) |
 
-#### サービス利用権限
+#### サービス利用役割
 
-| サービス | 権限 | 説明 |
+| サービス | 役割 | 説明 |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
+| Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Infrastructure | Load Balancer ADMIN | VPC, Security Group, Auto Scale, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Infrastructure | Security Group ADMIN | VPC, Auto Scale, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り |
-| DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Object Storage | ADMIN | Object Storageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Backup | ADMIN | Backupサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| RDS for MySQL | ADMIN | RDS for MySQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Object Storage | ADMIN | Object Storageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Backup | ADMIN | Backupサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| RDS for MySQL | ADMIN | RDS for MySQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | RDS for MySQL | VIEWER | RDS for MySQLサービスに対するRead(読み取り) |
-| RDS for MariaDB | ADMIN | RDS for MariaDBサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| RDS for MariaDB | ADMIN | RDS for MariaDBサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | RDS for MariaDB | VIEWER | RDS for MariaDBサービスに対するRead(読み取り) |
-| RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | EasyCache | VIEWER | EasyCacheサービスレプリケーショングループメニューRead(読込)、モニタリングメニューRead(読込) |
 | Gamebase | ADMIN | Gamebase サービス Create(作成), Read(読み取り), Update(更新), Delete(削除) |
 | Gamebase | ANALYTICS VIEWER - ALL | すべての指標Read(読み取り) |
@@ -325,59 +327,59 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 | Gamebase | OPERATION VIEWER | 運営メニューRead(読み取り) |
 | Gamebase | PUSH ADMIN | プッシュメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Gamebase | PUSH VIEWER | プッシュメニューRead(読み取り) |
-| GameStarter  | ADMIN | ゲーム設定, 配布メニュー Create(作成)/ Read(読み取り)/ Update(更新) 権限 |
-| GameStarter  | VIEWER | ゲーム設定, 配布メニュー Read(読み取り) 権限 |
-| Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| GameStarter  | ADMIN | ゲーム設定, 配布メニュー Create(作成)/ Read(読み取り)/ Update(更新)  |
+| GameStarter  | VIEWER | ゲーム設定, 配布メニュー Read(読み取り)  |
+| Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Leaderboard | VIEWER | Leaderboardサービスに対するRead(読み取り) |
-| Launching | ADMIN | Launchingサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Smart Downloader | ADMIN | Smart Downloaderサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| NHN AppGuard | ADMIN | AppGuardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| App Security Check | ADMIN | Security Checkサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Server Security Check | ADMIN | Server Security Check サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Security Monitoring | ADMIN | Security Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| CAPTCHA | ADMIN | CAPTCHAサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| OTP | ADMIN | OTPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| WEB Firewall | ADMIN | WEB Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Vaccine | ADMIN | Vaccineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Secure Key Manager | ADMIN | Secure Key Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
+| Launching | ADMIN | Launchingサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Smart Downloader | ADMIN | Smart Downloaderサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| NHN AppGuard | ADMIN | AppGuardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| App Security Check | ADMIN | Security Checkサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Server Security Check | ADMIN | Server Security Check サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Security Monitoring | ADMIN | Security Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| CAPTCHA | ADMIN | CAPTCHAサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| OTP | ADMIN | OTPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| WEB Firewall | ADMIN | WEB Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Vaccine | ADMIN | Vaccineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Secure Key Manager | ADMIN | Secure Key Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Secure Key Manager | VIEWER | Secure Key Managerサービスに対するRead(読み取り) |
-| Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| DDoS Guard | ADMIN | DDos Guardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| SIEM | ADMIN | SIEMサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Image | ADMIN | Imageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| SMS | ADMIN | SMSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Email | ADMIN | Emailサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| AI Fashion | ADMIN | AI Fashionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 | 
-| Document Recognizer | ADMIN | Document Recognizerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 | 
-| Vehicle Plate Recognizer | ADMIN | Vehicle Plate Recognizerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 | 
-| Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 | 
-| Cheating Detection | ADMIN | Cheating Detectionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| IAP | ADMIN | IAPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Maps | ADMIN | Mapsサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| ROLE | ADMIN | ROLEサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| RTCS | ADMIN | RTCSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| ShortURL | ADMIN | ShortURLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Cloud Search | ADMIN | Cloud Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Autocomplete | ADMIN | Autocompleteサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Corporation Search | ADMIN | Corporation Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Address Search | ADMIN | Address Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Pipeline | ADMIN | Pipelineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Deploy | ADMIN | Deployサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Managed | ADMIN | Managedサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Service Monitoring | ADMIN | Service Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| Certificate Manager | ADMIN | Certificate Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 権限 |
-| eTax | ADMIN | eTax サービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| eTax | VIEWER | eTaxサービスに対するRead(読み取り)権限 |
-| marketplace | ADMIN | marketplaceプロジェクトサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)権限 |
-| marketplace | ADMIN | marketplaceプロジェクトサービスに対するRead(読み取り)権限 |
+| Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| DDoS Guard | ADMIN | DDos Guardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| SIEM | ADMIN | SIEMサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Image | ADMIN | Imageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| SMS | ADMIN | SMSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Email | ADMIN | Emailサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| AI Fashion | ADMIN | AI Fashionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
+| Document Recognizer | ADMIN | Document Recognizerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
+| Vehicle Plate Recognizer | ADMIN | Vehicle Plate Recognizerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
+| Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
+| Cheating Detection | ADMIN | Cheating Detectionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| IAP | ADMIN | IAPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Maps | ADMIN | Mapsサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| ROLE | ADMIN | ROLEサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| RTCS | ADMIN | RTCSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| ShortURL | ADMIN | ShortURLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Cloud Search | ADMIN | Cloud Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Autocomplete | ADMIN | Autocompleteサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Corporation Search | ADMIN | Corporation Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Address Search | ADMIN | Address Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Pipeline | ADMIN | Pipelineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Deploy | ADMIN | Deployサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Managed | ADMIN | Managedサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Service Monitoring | ADMIN | Service Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Certificate Manager | ADMIN | Certificate Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| eTax | ADMIN | eTax サービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| eTax | VIEWER | eTaxサービスに対するRead(読み取り) |
+| marketplace | ADMIN | marketplaceプロジェクトサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| marketplace | ADMIN | marketplaceプロジェクトサービスに対するRead(読み取り) |
 
 
 

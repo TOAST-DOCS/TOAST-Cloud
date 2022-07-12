@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-android)
-2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.cloud.toast.com).
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.toast.com).
 3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) from Log & Crash Search.
 
 ## Library Setting
@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.toast.android:toast-logger:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-logger:1.0.0'
     ...
 }
 ```
@@ -24,17 +24,17 @@ dependencies {
 
 - Initialization must be performed in Application#onCreate.
 
-> If you use ToastLogger without initialization, an initialization error occurs.
+> If you use NhnCloudLogger without initialization, an initialization error occurs.
 
 - Set Appkey issued from Log & Crash Search.
 
 ```java
 // Initialize Logger
-ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
+NhnCloudLoggerConfiguration configuration = NhnCloudLoggerConfiguration.newBuilder()
         .setAppKey(YOUR_APP_KEY)            // Log & Crash Search AppKey
         .build();
 
-ToastLogger.initialize(configuration);
+NhnCloudLogger.initialize(configuration);
 ```
 
 ## Send Logs
@@ -63,7 +63,7 @@ static void fatal(String message);
 ### Usage Example of Log Sending API
 
 ```java
-ToastLogger.warn("NHN Cloud Log & Crash Search!");
+NhnCloudLogger.warn("NHN Cloud Log & Crash Search!");
 ```
 
 ## Set User-Defined Field
@@ -88,7 +88,7 @@ static void setUserField(String field, Object value);
 ### Usage Example of setUserField
 
 ```java
-ToastLogger.setUserField("nickname", "randy");
+NhnCloudLogger.setUserField("nickname", "randy");
 ```
 
 ## Further Tasks after Sending Logs
@@ -98,13 +98,13 @@ With listener registered, further tasks can be executed after logs are sent.
 ### Specification for setLoggerListener API
 
 ```java
-static void setLoggerListener(ToastLoggerListener listener);
+static void setLoggerListener(NhnCloudLoggerListener listener);
 ```
 
 ### Usage Example of setLoggerListener
 
 ```java
-ToastLogger.setLoggerListener(new ToastLoggerListener() {
+NhnCloudLogger.setLoggerListener(new NhnCloudLoggerListener() {
     @Override
     public void onSuccess(LogEntry log) {
         // Sending logs succeeded.
@@ -137,12 +137,12 @@ Sending crash logs can be enabled or disabled by using setEnabledCrashReporter()
 
 ```java
 // Initialize Logger
-ToastLoggerConfiguration configuration = ToastLoggerConfiguration.newBuilder()
+NhnCloudLoggerConfiguration configuration = NhnCloudLoggerConfiguration.newBuilder()
         .setAppKey(YOUR_APP_KEY)            // Log & Crash Search AppKey
         .setEnabledCrashReporter(true)              // Enable or Disable Crash Reporter
         .build();
 
-ToastLogger.initialize(configuration);
+NhnCloudLogger.initialize(configuration);
 ```
 
 > If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log & Crash Search console.
@@ -173,7 +173,7 @@ try {
     // User Codes...
 } catch (Exception e) {
     Map<String, Object> userFields = new HashMap<>();
-    ToastLogger.report("message", e, userFields);
+    NhnCloudLogger.report("message", e, userFields);
 }
 ```
 
@@ -193,7 +193,7 @@ static void setCrashDataAdapter(CrashDataAdapter adapter);
 ### Usage Example of setCrashDataAdapter
 
 ```java
-ToastLogger.setCrashDataAdapter(new CrashDataAdapter() {
+NhnCloudLogger.setCrashDataAdapter(new CrashDataAdapter() {
     @Override
     public Map<String, Object> getUserFields() {
         Map<String, Object> userFields = new HashMap<>();

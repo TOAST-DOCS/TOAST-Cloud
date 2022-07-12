@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [Install the NHN Cloud SDK](./getting-started-unity)
-2. [NHN Cloud コンソール](https://console.cloud.toast.com)で、[Log & Crash Search を有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+2. [NHN Cloud コンソール](https://console.toast.com)で、[Log & Crash Search を有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
 3. Log & Crash Search で、[AppKey を確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 4. [NHN Cloud SDK を初期化](./getting-started-unity#toast-sdk_1)します。
 
@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.toast.android:toast-unity-logger:0.31.1'
+    implementation 'com.nhncloud.android:nhncloud-unity-logger:1.0.0'
 **DEPS**}
 ```
 

@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [Install the NHN Cloud SDK](./getting-started-unity)
-2. [NHN Cloudコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
+2. [NHN Cloudコンソール](https://console.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
 3. IAPで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
 ## Android設定
@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-google:0.31.1'
+  implementation 'com.nhncloud.android:nhncloud-iap-google:1.0.0'
 **DEPS**}
 ```
 
@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-onestore:0.31.1'
+  implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.0.0'
 **DEPS**}
 ```
 
@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-galaxy:0.31.1'
+  implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.0.0'
 **DEPS**}
 ```
 
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-amazon:0.31.1'
+  implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.0.0'
 **DEPS**}
 ```
 
@@ -97,7 +97,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.huawei.agconnect'
 
 dependencies {
-  implementation 'com.toast.android:toast-iap-huawei:0.31.1'
+  implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.0.0'
 **DEPS**}
 ```
 

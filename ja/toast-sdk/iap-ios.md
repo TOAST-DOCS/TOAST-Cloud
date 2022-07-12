@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1\. [NHN Cloud SDK](./getting-started-ios)をインストールします。
-2\. [NHN Cloudコンソール](https://console.cloud.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
+2\. [NHN Cloudコンソール](https://console.toast.com)で[Mobile Service \> IAPを有効化](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/)します。
 3\. IAPで[AppKeyを確認](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)します。
 
 ## NHN Cloud IAP構成
