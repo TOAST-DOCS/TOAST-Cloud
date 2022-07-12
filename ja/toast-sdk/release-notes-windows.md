@@ -2,21 +2,21 @@
 
 ## 2.0.0.1 (2022.07.12)
 Download : [nhncloud-sdk-windows-2.0.0.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.1.zip)
-* NHNCloudLogger 모듈명 변경
-	* ToastLogger는 Deprecated 되었습니다.
-* 로그 전송 시 메모리 누수 수정
-* User ID가 MBCS/UNICODE 함수에 따라 다르게 반영되는 문제 수정
-* 크래시 로그 전송 시 로그 유형 필터 설정이 적용되지 않는 문제 수정
+* NHNCloudLoggerモジュール名の変更
+	* ToastLoggerはDeprecatedになりました。
+* ログ転送時のメモリリークを修正
+* User IDがMBCS/UNICODE関数によって異なる値が反映される問題を修正
+* クラッシュログ転送時、ログタイプフィルタ設定が適用されない問題を修正
 
 ## 1.0.0.5 (2021.03.31)
 Download : [toast-sdk-windows-1.0.0.5.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/1.0.0/toast-sdk-windows-1.0.0.5.zip)
-* 버그 수정
-* 일부 API 인터페이스 수정
-* 사용자 정의 필드 사용시 입력값 검증
-* 간헐적으로 Base64 디코딩 실패하는 경우 수정
-* 외부 프로세스로 크래시덤프 전송시 간헐적으로 실패하는 문제 수정
-* 배포 바이너리 구조 변경
-	* 샘플 프로젝트 포함
+* バグ修正
+* 一部APIのインタフェースを修正
+* ユーザー定義フィールド使用時の入力値を検証
+* 断続的にBase64デコードが失敗する問題を修正
+* 外部プロセスでクラッシュダンプを送信すると断続的に失敗する問題を修正
+* 配布バイナリ構造を 変更
+	* サンプルプロジェクト含む
 
 
 ## 0.9.4.3 (2019.10.10)
