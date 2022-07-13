@@ -373,43 +373,33 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 }
 ```
 
-## Provide Page for Subscription Products
+## 구독 상품 관리 페이지 제공 방법
 
-* For auto-renewable subscription products, users must be provided with a subscription management page.
-> [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
+* 자동 갱신형 구독 상품을 사용할 경우 사용자에게 구독 관리 페이지를 제공해야 합니다.
+> [Apple Guide](https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/subscriptions_and_offers/handling_subscriptions_billing?language=objc)
 
-* Without configuring a separate UI, call URL as below to display subscription management page.
+* 별도의 UI를 구성하지 않고 아래 URL을 호출해 구독 관리 페이지를 표시해야 합니다.
 
-### Connect to Subscription Management Page on Safari
 ```
-https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
+https://apps.apple.com/account/subscriptions
+itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscription
 ```
-```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
-```
-#### Management page on Safari is called in the following order:
-1. Safari Opens
-2. Popup Shows: Want to open in iTunes Store?
-3. iTunes Store Opens
-4. Connected to subscription management page on a popup
 
->  `Safari` appears for Return to Previous App on top left on an iOS Device.
-
-
-### Connect to Subscription Management Page on Scheme
-```
-itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
-```
+### 구독 관리 페이지 연결 방법
 
 ```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://apps.apple.com/account/subscriptions"] options: @{} completionHandler:nil];
 ```
 
-#### Management page on Scheme is called in the following order:
-1. Subscription management page of App Store is directly connected with App-to-App call.
+또는
 
->  `Service App` appears for Return to Previous App on top left on an iOS device.
+```objc
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"] options: @{} completionHandler:nil];
+```
 
+App Store의 구독 관리 페이지로 연결됩니다.
+
+> iOS 기기의 왼쪽 상단의 이전 앱으로 돌아가기에 `Service App`이 나타납니다.
 
 ## Remain Compatible with (old) IAP SDK
 

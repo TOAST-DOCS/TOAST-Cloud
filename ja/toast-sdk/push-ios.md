@@ -342,7 +342,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 * `受信指標の収集は、iOS 10.0+以上からサポートします。`
 * 受信指標は、Notification Service Extensionに追加したNHN Cloud Push SDKで自動的に収集されます。
 * 受信指標を収集には、ユーザーアプリケーションにNHNCloudPushServiceExtensionを継承するNotification Service Extensionを実装しなければなりません。(Notification Service Extension追加方法は、 [Notification Service Extension](./push-ios/#notification-service-extension)セクション参照)
-* Notification Service Extensionの生成者で、[NHN Cloud Push SDK初期化](./push-ios/#nhncloud-push-sdk)、あるいは**エクステンションのinfo.plistファイル**にAppKeyが定義されていないと、受信指標の収集ができません。
+* Notification Service Extensionの生成者で、[NHN Cloud Push SDK初期化](./push-ios/#nhn-cloud-push-sdk)、あるいは**エクステンションのinfo.plistファイル**にAppKeyが定義されていないと、受信指標の収集ができません。
 
 #### 初期化による受信指標収集の設定例
 
@@ -393,7 +393,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 ### 実行(Opened)指標収集設定
 
 * 実行指標は、アプリケーションに追加したNHN Cloud Push SDKから自動的に収集されます。
-* [NHN Cloud Push SDK 초기화](./push-ios/#nhncloud-push-sdk)、あるいは**アプリケーションのinfo.plistファイル**にAppKeyが定義されている場合、実行指標の収集が可能です。
+* [NHN Cloud Push SDK 초기화](./push-ios/#nhn-cloud-push-sdk)、あるいは**アプリケーションのinfo.plistファイル**にAppKeyが定義されている場合、実行指標の収集が可能です。
 
 #### info.plist定義による受信指標収集の設定例
 
@@ -579,7 +579,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### 初期化
 
-* VoIP機能は[NHN Cloud Push SDK 初期化](./push-ios/#toast-push-sdk)がされていなければ使用できません。
+* VoIP機能は[NHN Cloud Push SDK 初期化](./push-ios/#nhn-cloud-push-sdk)がされていなければ使用できません。
 * VoIP機能はNHN Cloud Push SDKのサブモジュールで別途分離されています。
 
 ### Delegate設定
