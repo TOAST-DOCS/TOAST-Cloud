@@ -29,6 +29,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | 분류 | 서비스명 | 글로벌/리전 서비스 | 한국(판교) 리전 | 한국(평촌) 리전 | 일본(도쿄) 리전 | 미국(캘리포니아) 리전 |
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
 | Compute | Instance | 리전 | O | O | O | O |
+|  | Ephemeral Storage Instance | 리전 | O | | O | | 
 |  | GPU Instance | 리전 | O |  |  |  |
 |  | Instance Template | 리전 | O | O | O | O |
 |  | Image | 리전 | O | O | O | O |
