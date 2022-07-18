@@ -29,6 +29,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Category | Service Name | Global/Regional Service | Korea(Pangyo) Region | Korea(Pyeongchon) Region | Japan(Tokyo) Region | US(California) Region |
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
 | Compute | Instance | Regional | O | O | O | O |
+|  | Ephemeral Storage Instance | Regional | O | | O | | 
 |  | GPU Instance | Region | O |  |  |  |
 |  | Image | Region | O | O | O | O |
 |  | Image Builder  | Region | O | O |  |  |
