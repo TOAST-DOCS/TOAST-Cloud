@@ -75,7 +75,7 @@ You can set and manage policies for stable and efficient use of NHN Cloud servic
 #### IP ACL Setting
 When IP ACL is set, the console can be accessed from the allowed IPs (or IP range) only.
 For Dooray! services, IP ACL can be set on the service's console screen.
-![console_guide_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202109_en.png)
+
 
 1. Go to the console and access the Organization Management page of the organization you want to set up.
 2. Select Governance Setting from the submenu.
