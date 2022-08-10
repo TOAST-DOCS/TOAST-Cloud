@@ -1,9 +1,9 @@
 ## 콘솔 사용 가이드
 
-NHN Cloud (공공기관용) Console은 NHN Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을 합니다.
-여기에서는 NHN Cloud (공공기관용) 콘솔의 기본적인 설정과 사용 방법을 안내합니다.
+NHN Government Security Cloud Console은 NHN Government Security Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을 합니다.
+여기에서는 NHN Government Security Cloud 콘솔의 기본적인 설정과 사용 방법을 안내합니다.
 
-NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니다.
+NHN Government Security Cloud Console은 아래와 같은 기능을 제공합니다.
 
 * 서비스를 이용하기 위한 기본 정보 관리(조직, 프로젝트)
 * 서비스 활성화/비활성화
@@ -19,12 +19,12 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 
 ## 조직 관리
 
-조직은 NHN Cloud (공공기관용) 서비스를 효율적으로 사용하고 관리하기 위해 만들어진 그룹입니다.
+조직은 NHN Government Security Cloud 서비스를 효율적으로 사용하고 관리하기 위해 만들어진 그룹입니다.
 조직에서는 동일한 서비스 정책을, 사용자에게 공유하여 사용할 수 있습니다.
 
 ### 조직 생성
 
-* NHN Cloud (공공기관용) 서비스를 이용하기 위해서는 조직을 생성해야 합니다.
+* NHN Government Security Cloud 서비스를 이용하기 위해서는 조직을 생성해야 합니다.
 * 조직은 개인/사업자 회원 모두 생성할 수 있습니다.
 * 조직을 생성하는 회원은 자동으로 조직의 OWNER가 됩니다.
 * 조직을 생성하기 위해서는 회원의 결제 수단이 반드시 등록되어 있어야 합니다.
@@ -36,8 +36,6 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 조직이 생성되면, 서비스를 선택할 수 있습니다.
 조직 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
 
-* Dooray!
-* PaaS-TA
 * CloudTrail
 
 ### 조직 생성 가이드
@@ -51,7 +49,7 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 2. **조직 생성** 창에서 조직 이름을 입력합니다. 조직 이름은 한글, 영문, 특수문자, 숫자 모두 사용 가능합니다.
 3. **확인** 버튼을 클릭하면 조직 생성이 완료됩니다.
 4. 콘솔 상단 메뉴에 생성된 조직 이름이 표시됩니다.
-5. **설정** 버튼을 클릭하여 생성된 조직 정보를 확인합니다. 조직의 추가 정보로 도메인 정보를 입력합니다. 도메인은 NHN Cloud (공공기관용)에서 유일한 값으로 설정해야 합니다.
+5. **설정** 버튼을 클릭하여 생성된 조직 정보를 확인합니다. 조직의 추가 정보로 도메인 정보를 입력합니다. 도메인은 NHN Government Security Cloud에서 유일한 값으로 설정해야 합니다.
 
 ### 조직 삭제
 
@@ -61,12 +59,12 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 
 ### 조직 거버넌스 설정
 
-로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
+NHN Government Security Cloud 서비스를 안정하고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
+
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202208_gov.png)
 
 #### IP ACL 설정
 허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다.
-Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202112.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
 2. 하위 메뉴에서 거버넌스 설정을 선택합니다.
@@ -78,12 +76,25 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
         * 설정 안 함: 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
         * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력합니다.
 
+
+#### 인스턴스 이름 관리 설정 
+Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있습니다. 
+
+* **중복 허용 관리** 선택 시, Instance 명을 사용자가 입력한 이름으로 관리하며 중복된 Instance 명을 허용합니다. 
+* **Unique 관리** 선택 시, Instance 명을 사용자가 입력한 이름과 시스템에서 생성한 문자를 조합하여 유일한 Instacne 명으로 관리합니다. 
+
+#### IaaS 리소스 권한 통제 및 접속 단말 제한 설정 
+운영자가 조직의 IaaS 리소스 중요 정보를 조회 시, 사용자에게 메일을 발송하고 망 분리 PC 에서만 리소스를 확인할 수 있도록 설정할 수 있습니다. 
+
+* **IaaS 리소스 권한 통제 및 접속 단말 제한 설정**에서 **설정 안 함(Defualt)/설정**을 선택할 수 있습니다.
+* IaaS 리소스 권한 통제 및 접속 단말 제한 설정에서 **설정**을 선택하면, 운영자의 IaaS 리소스 조회 기능이 제한됩니다.
+
 ### IAM 거버넌스 설정
 
 #### 로그인 보안 설정
 
 * IAM 멤버의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
-* 모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
+* 모든 조직 서비스(Cloud 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
 ![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202112.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
@@ -96,7 +107,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 * 서비스 설정
     * 공통 설정: 모든 조직 서비스에 동일하게 2차 인증을 설정합니다.
-    * 서비스별 설정: 각 서비스 (Cloud Console, Online Contact, Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
+    * 서비스별 설정: 각 서비스 (Cloud 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
 * 2차 인증 설정
     * 설정 안 함: 2차 인증을 하지 않고, 아이디와 비밀번호 입력만으로 로그인할 수 있습니다.
     * Google OTP: 아이디와 비밀번호를 입력한 후, Google OTP 앱에서 제공한 One Time Password를 입력해 로그인할 수 있습니다.
@@ -151,7 +162,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 ## 프로젝트 관리
 
-프로젝트는 조직 생성 후, NHN Cloud (공공기관용) 서비스를 이용하기 위해서 생성합니다.
+프로젝트는 조직 생성 후, NHN Government Security Cloud 서비스를 이용하기 위해서 생성합니다.
 프로젝트에서는 프로젝트 서비스를 활성화하여 이용할 수 있습니다.
 프로젝트 서비스는 프로젝트 단위로 이용하며, 이에 따라 과금합니다.
 
@@ -173,9 +184,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 * Network
 * Storage
 * Database
-* Security
-* Content Delivery
-* Management
+
 
 ### 프로젝트 생성 가이드
 ![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202107.png)
@@ -215,7 +224,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 | 구분 | [TOAST.com](http://TOAST.com)회원 | IAM 멤버 |
 | --- | --- | --- |
-| 정의 | - 조직 관리를 위한 멤버<br>- NHN Cloud (공공기관용) 이용 약관에 동의한 NHN Cloud (공공기관용)회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>- NHN Cloud (공공기관용)서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud (공공기관용) 회원으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
+| 정의 | - 조직 관리를 위한 멤버<br>- NHN Government Security Cloud 이용 약관에 동의한 NHN Government Security Cloud회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>- NHN Government Security Cloud서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Government Security Cloud 회원으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
 | 멤버 등록 방법 | - 조직의 OWNER나 ADMIN이 NHN Cloud ID를 입력하여 등록 | - 조직의 OWNER나 ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>- SSO 연동/API 연동 등을 통해 등록 |
 | 멤버 역할 | - 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리)<br>- 프로젝트 생성<br>- 프로젝트 삭제 | - 조직 서비스 이용 |
 | 콘솔 접근 | - NHN Cloud(공공 기관용) 콘솔 (https://gov-console.toast.com/) 접근<br>- NHN Cloud> 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.toast.com/) 접근<br>- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
@@ -226,7 +235,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 * 조직의 OWNER는 계정의 모든 역할 부여하고 서비스를 신청할 수 있습니다.
 * OWNER는 회원을 등록하여 조직별 관리 역할을 부여할 수 있습니다.
 
-#### NHN Cloud (공공기관용) 회원의 조직 역할
+#### NHN Government Security Cloud 회원의 조직 역할
 
 | 작업 | 역할 | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -245,7 +254,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 #### IAM 멤버의 조직 역할
 
-* 조직 서비스별(Dooray!, CloudTrail 등) 설정할 수 있는 역할이 다릅니다.
+* 조직 서비스별(CloudTrail 등) 설정할 수 있는 역할이 다릅니다.
 * 클라우드 서비스 역할은 아래와 같습니다.
     * MEMBER 역할은 원하는 경우에만 선택적으로 부여할 수 있습니다.
     * MEMBER 역할이 부여되면 프로젝트를 직접 생성할 수 있습니다.
@@ -284,22 +293,12 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 | DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Security Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| DDoS Guard | ADMIN | DDos Guard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| SIEM | ADMIN | SIEM 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
-| CDN | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| API Gateway | ADMIN | API Gateway 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Deploy | ADMIN | Deploy 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Managed | ADMIN | Managed 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+
 
 ## 결제 관리
 
-NHN Cloud (공공기관용)서비스 이용 요금을 확인하고, 결제할 수 있습니다.
-**내 정보 보기 > 결제 관리** 메뉴에서 결제 수단을 등록한 NHN Cloud (공공기관용) 회원의 청구서와 결제 예정 금액, 사용량 정보를 확인할 수 있습니다.
+NHN Government Security Cloud서비스 이용 요금을 확인하고, 결제할 수 있습니다.
+**내 정보 보기 > 결제 관리** 메뉴에서 결제 수단을 등록한 NHN Government Security Cloud 회원의 청구서와 결제 예정 금액, 사용량 정보를 확인할 수 있습니다.
 
 결제 수단을 통해 해당 월에 결제되는 내역과 함께 아래의 기능을 제공합니다.
 
