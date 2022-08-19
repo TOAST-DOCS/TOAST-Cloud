@@ -67,7 +67,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 
 NHN Cloudサービスを安定的かつ効率的に利用するために必要なポリシーを設定して管理できます。 ログインおよび個人情報など、セキュリティコンプライアンス遵守のための組織の共通ポリシーを策定し、組織内のメンバーがポリシーを遵守できるように管理します。
 
-![console_guide_3_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_20220808_wide_en.png)
+![console_guide_3_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_20220808_jp.png)
 
 #### IP ACL設定
 許可したIP(またはIP帯域)からのみコンソールにアクセスできます。
