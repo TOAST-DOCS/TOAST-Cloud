@@ -42,7 +42,10 @@ repositories {
 }
 
 dependencies {
+    // ONE store v17
     implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.1.0'
+    // ONE store v19
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.1.0'
     ...
 }
 ```
