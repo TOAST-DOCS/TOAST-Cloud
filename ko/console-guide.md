@@ -214,7 +214,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * Content Delivery
 * Notification
 * Mobile Service
-* Data & Analytics
+* Analytics
 * Application Service
 * Search
 * Dev Tool
