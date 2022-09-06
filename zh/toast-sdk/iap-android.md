@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.1.0'
     ...
 }
 ```
@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.1.0'
     ...
 }
 ```
@@ -57,7 +57,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.1.0'
     ...
 }
 ```
@@ -74,7 +74,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.1.0'
     ...
 }
 ```
@@ -117,7 +117,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.1.0'
     ...
 }
 ```
