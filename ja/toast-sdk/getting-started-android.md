@@ -23,16 +23,16 @@ NHN Cloud SDKが提供するサービスの中から、希望する機能を選�
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.nhncloud.android:nhncloud-common:1.0.0       | Common      |
-| com.nhncloud.android:nhncloud-core:1.0.0         | Core        |
-| com.nhncloud.android:nhncloud-logger:1.0.0       | Log & Crash |
-| com.nhncloud.android:nhncloud-crash-reporter-ndk:1.0.0       | Native Crash Reporter |
-| com.nhncloud.android:nhncloud-iap-core:1.0.0     | In-app Purchase Core |
-| com.nhncloud.android:nhncloud-iap-google:1.0.0   | In-app Purchase <br>Google Play Store |
-| com.nhncloud.android:nhncloud-iap-onestore:1.0.0 | In-app Purchase <br>ONE store |
-| com.nhncloud.android:nhncloud-iap-galaxy:1.0.0 | In-app Purchase <br>Galaxy Store |
-| com.nhncloud.android:nhncloud-push-core:1.0.0    | Push Core   |
-| com.nhncloud.android:nhncloud-push-fcm:1.0.0    | Push <br>Firebase Cloud Messaging |
+| com.nhncloud.android:nhncloud-common:1.1.0       | Common      |
+| com.nhncloud.android:nhncloud-core:1.1.0         | Core        |
+| com.nhncloud.android:nhncloud-logger:1.1.0       | Log & Crash |
+| com.nhncloud.android:nhncloud-crash-reporter-ndk:1.1.0       | Native Crash Reporter |
+| com.nhncloud.android:nhncloud-iap-core:1.1.0     | In-app Purchase Core |
+| com.nhncloud.android:nhncloud-iap-google:1.1.0   | In-app Purchase <br>Google Play Store |
+| com.nhncloud.android:nhncloud-iap-onestore:1.1.0 | In-app Purchase <br>ONE store |
+| com.nhncloud.android:nhncloud-iap-galaxy:1.1.0 | In-app Purchase <br>Galaxy Store |
+| com.nhncloud.android:nhncloud-push-core:1.1.0    | Push Core   |
+| com.nhncloud.android:nhncloud-push-fcm:1.1.0    | Push <br>Firebase Cloud Messaging |
 
 ## NHN Cloud SDKをAndroid Studioプロジェクトに適用
 
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android：nhncloud-sdk：1.0.0'
+  implementation 'com.nhncloud.android：nhncloud-sdk：1.1.0'
 }
 ```
 
