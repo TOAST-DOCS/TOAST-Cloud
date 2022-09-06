@@ -14,7 +14,7 @@ NHN Government Security Cloud Console은 아래와 같은 기능을 제공합니
 ## 퀵 가이드
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
 
-![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202107.png)
+![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_01_202209.png)
 
 
 ## 조직 관리
@@ -31,16 +31,10 @@ NHN Government Security Cloud Console은 아래와 같은 기능을 제공합니
 * 조직은 조직명/도메인 정보를 관리합니다.
 * 조직의 도메인 정보는 서비스에서 사용해야 하는 정보로, 고유한 정보여야 합니다.
 
-### 조직 서비스
-
-조직이 생성되면, 서비스를 선택할 수 있습니다.
-조직 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
-
-* CloudTrail
 
 ### 조직 생성 가이드
-![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202107.png)
-![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202112.png)
+![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_02_202209.png)
+![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_03_202209.png)
 
 
 <center>[그림 1] 조직 생성 </center>
@@ -50,6 +44,13 @@ NHN Government Security Cloud Console은 아래와 같은 기능을 제공합니
 3. **확인** 버튼을 클릭하면 조직 생성이 완료됩니다.
 4. 콘솔 상단 메뉴에 생성된 조직 이름이 표시됩니다.
 5. **설정** 버튼을 클릭하여 생성된 조직 정보를 확인합니다. 조직의 추가 정보로 도메인 정보를 입력합니다. 도메인은 NHN Government Security Cloud에서 유일한 값으로 설정해야 합니다.
+
+### 조직 서비스
+
+조직이 생성되면, 서비스를 선택할 수 있습니다.
+조직 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
+
+* CloudTrail
 
 ### 조직 삭제
 
@@ -61,7 +62,7 @@ NHN Government Security Cloud Console은 아래와 같은 기능을 제공합니
 
 NHN Government Security Cloud 서비스를 안정하고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202208_gov.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_04_202209.png)
 
 #### IP ACL 설정
 허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다.
@@ -174,6 +175,20 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * 프로젝트 생성 후, 프로젝트 서비스를 활성화하여 이용할 수 있습니다.
 * 프로젝트 생성 후, 협업이 필요한 경우 프로젝트 멤버로 추가하여 함께 사용할 수 있습니다.
 
+
+
+### 프로젝트 생성 가이드
+![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_05_202209.png)
+![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_06_202209.png)
+
+<center>[그림 2] 프로젝트 생성 </center>
+
+1. 조직을 생성하면 **새 프로젝트 생성하기** 버튼이 활성화됩니다. **새 프로젝트 생성하기** 버튼을 클릭하여 프로젝트를 생성합니다.
+2. **프로젝트 이름**과 **프로젝트 설명**을 입력합니다.
+3. **확인** 버튼을 클릭하여 프로젝트를 생성합니다.
+4. 프로젝트가 생성되면 메뉴에 프로젝트 이름이 표시됩니다.
+5. **프로젝트 설정** 버튼을 클릭하여 프로젝트 정보를 확인합니다.
+
 ### 프로젝트 서비스
 
 프로젝트가 생성되면, 서비스를 선택할 수 있습니다.
@@ -185,27 +200,20 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * Storage
 * Database
 
-
-### 프로젝트 생성 가이드
-![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202107.png)
-![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202107.png)
-
-
-<center>[그림 2] 프로젝트 생성 </center>
-
-1. 프로젝트 생성 후, **서비스 선택** 버튼을 클릭하여 프로젝트에서 사용할 서비스를 선택할 수 있습니다.
-2. 서비스 선택 화면에서 활성화할 서비스를 선택합니다. 서비스를 활성화할지 묻는 메시지가 나타나면 **확인**을 클릭합니다.
-3. 활성화한 서비스 목록은 콘솔 왼쪽 메뉴에서 확인할 수 있습니다. 목록에서 원하는 서비스를 클릭하면 서비스 이용 화면이 나타납니다.
-
 ### 프로젝트 서비스 활성화 가이드
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202107.png)
-
+![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_10_202209.png)
+![console_guide_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_07_202209.png)
+![console_guide_6_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_08_202209.png)
+![console_guide_7_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_09_202209.png)
 <center>[그림 3] 프로젝트 서비스 활성화 </center>
 
 1. 프로젝트 생성 후, **서비스 선택** 버튼을 클릭하여 프로젝트에서 사용할 서비스를 선택할 수 있습니다.
-2. 서비스 선택 화면에서 활성화할 서비스를 선택합니다. 서비스를 활성화할지 묻는 메시지가 나타나면 **확인**을 클릭합니다.
-3. 활성화한 서비스 목록은 콘솔 왼쪽 메뉴에서 확인할 수 있습니다. 목록에서 원하는 서비스를 클릭하면 서비스 이용 화면이 나타납니다.
+2. 서비스 선택 화면에서 활성화할 서비스를 선택합니다. 
+3. 서비스를 활성화할지 묻는 메시지가 나타나면 **확인**을 클릭합니다.
+4. 활성화한 서비스 목록은 콘솔 왼쪽 메뉴에서 확인할 수 있습니다. 목록에서 원하는 서비스를 클릭하면 서비스 이용 화면이 나타납니다.
+
+
 
 ### 프로젝트 삭제
 
