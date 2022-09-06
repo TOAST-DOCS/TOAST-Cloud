@@ -1,5 +1,17 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
+## 1.1.0 (2022. 09. 06.)
+
+### TOAST IAP
+
+#### 기능 추가
+
+* 원스토어 v19 추가
+
+#### 기능 개선
+
+* Google Billing Client 5.0.0 업데이트
+
 ## 1.0.0 (2022. 07. 12.)
 
 ### NHN Cloud SDK
