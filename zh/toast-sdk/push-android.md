@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.1.0'
     ...
 }
 ```
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.1.0'
     ...
 }
 ```

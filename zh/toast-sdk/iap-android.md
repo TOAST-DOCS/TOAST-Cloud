@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.1.0'
     ...
 }
 ```
@@ -35,6 +35,7 @@ dependencies {
 ### ONE store
 
 - To use in-app purchase of ONE store, add dependency to build.gradle as below:
+- ONE store V19의 경우 V19 IAP SDK를 [다운로드](https://github.com/ONE-store/onestore_iap_release/tree/iap19-release/android_app_sample/app/libs)하여 libs 디렉토리에 복사하고 의존성을 함께 추가합니다.
 
 ```groovy
 repositories {
@@ -42,7 +43,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.0.0'
+    // ONE store V17
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.1.0'
+    // ONE store V19
+    implementation files('libs/iap_sdk-v19.00.02.aar')
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.1.0'
     ...
 }
 ```
@@ -57,7 +62,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.1.0'
     ...
 }
 ```
@@ -74,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.1.0'
     ...
 }
 ```
@@ -117,7 +122,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.1.0'
     ...
 }
 ```
