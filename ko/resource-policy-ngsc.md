@@ -32,6 +32,9 @@
 |VPN 게이트웨이(Site-to-Site VPN) 연결 | 서브넷당 | 1개 | 
 |서비스 게이트웨이 | VPC당 | 10개 | 
 |Network Interface | 프로젝트당 | 500개 | 
+|Network ACL | 프로젝트당 | 10개 | 
+|Network ACL 정책 | 프로젝트당 | 100개 | 
+|Network ACL 바인딩 | 프로젝트당 | 100개 | 
 |Load Balancer | 프로젝트당 |10개|
 |IP 접근 제어 그룹	| 프로젝트당   |10개|
 |IP 접근 제어 대상 | IP 접근 제어 그룹당	|1000개|
