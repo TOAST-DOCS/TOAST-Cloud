@@ -116,7 +116,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Search | Cloud Search | リージョン | O |  |  |  |
 |  | Autocomplete | リージョン | O |  |  |  |
 |  | Corporation Search | リージョン | O |  |  |  |
-|  | Address Search | リージョン | O |  |  |  |
 | Analytics | Log & Crash Search | グローバル |  |  |  |  |
 | Dev Tools | Pipeline | リージョン | O | O |  |  |
 |  | Deploy | グローバル |  |  |  |  |
