@@ -92,7 +92,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | DDoS Guard | 리전 | O | O |  |  |
 |  | SIEM | 리전 | O | O |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
-|  | Image | 리전 | O |  |  |  |
+|  | Image Manager | 리전 | O |  |  |  |
 | Notification | Push | 글로벌 |  |  |  |  |
 |  | SMS | 리전 | O |  |  |  |
 |  | Email | 글로벌 |  |  |  |  |
