@@ -389,7 +389,6 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Cloud Search | ADMIN | Cloud Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Autocomplete | ADMIN | Autocomplete 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Corporation Search | ADMIN | Corporation Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Address Search | ADMIN | Address Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Pipeline | ADMIN | Pipeline 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Deploy | ADMIN | Deploy 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |

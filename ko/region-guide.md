@@ -116,7 +116,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Search | Cloud Search | 리전 | O |  |  |  |
 |  | Autocomplete | 리전 | O |  |  |  |
 |  | Corporation Search | 리전 | O |  |  |  |
-|  | Address Search | 리전 | O |  |  |  |
 | Data & Analytics | Log & Crash Search | 글로벌 |  |  |  |  |
 | Dev Tools | Pipeline | 리전 | O | O |  |  |
 |  | Deploy | 글로벌 |  |  |  |  |
