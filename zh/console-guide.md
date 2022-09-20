@@ -218,7 +218,7 @@ Services that can be enabled for each project include the following:
 - Content Delivery
 - Notification
 - Mobile Service
-- Analytics
+- Data & Analytics
 - Application Service
 - Search
 - Dev Tool
@@ -393,7 +393,6 @@ You can grant multiple required roles to project members.
 | Cloud Search | ADMIN | Create/Read/Update/Delete for Cloud Search Service |
 | Autocomplete | ADMIN | Create/Read/Update/Delete for AutocompleteService |
 | Corporation Search | ADMIN | Create/Read/Update/Delete for Corporation Search Service |
-| Address Search | ADMIN | Create/Read/Update/Delete for Address Search Service |
 | Log & Crash Search | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
 | Pipeline | ADMIN | Create/Read/Update/Delete for Pipeline Service |
 | Deploy | ADMIN | Create/Read/Update/Delete pfor Deploy Service |

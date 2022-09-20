@@ -215,7 +215,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 * Content Delivery
 * Notification
 * Mobile Service
-* Analytics
+* Data & Analytics
 * Application Service
 * Search
 * Dev Tool
@@ -392,7 +392,6 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Cloud Search | ADMIN | Cloud Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Autocomplete | ADMIN | Autocompleteサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Corporation Search | ADMIN | Corporation Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Address Search | ADMIN | Address Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Pipeline | ADMIN | Pipelineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Deploy | ADMIN | Deployサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Managed | ADMIN | Managedサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
