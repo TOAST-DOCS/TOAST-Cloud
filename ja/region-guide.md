@@ -92,7 +92,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | DDoS Guard | リージョン | O | O  |  |  |
 |  | SIEM | リージョン | O |O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
-|  | Image | リージョン | O |  |  |  |
+|  | Image Manager| リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |
 |  | SMS | リージョン | O |  |  |  |
 |  | Email | グローバル |  |  |  |  |

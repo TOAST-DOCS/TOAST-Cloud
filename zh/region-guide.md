@@ -92,7 +92,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | DDoS Guard | Regional | O | O |  |  |
 |  | SIEM | Global |  |  |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
-|  | Image | Regional | O |  |  |  |
+|  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |
 |  | SMS | Regional | O |  |  |  |
 |  | Email | Global |  |  |  |  |
