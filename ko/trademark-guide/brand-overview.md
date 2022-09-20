@@ -4,7 +4,6 @@ NHN Cloud의 상표란 NHN Cloud의 상품과 서비스를 나타내고 타사�
 본 가이드라인에서는 NHN Cloud의 상표가 부적절하게 사용되어 당사 브랜드 가치가 손상되거나 희석되지 않도록 NHN Cloud 회원 및 NHN Cloud 파트너에게 올바른 상표 사용 지침을 제시하고자 합니다. 
 본 가이드라인에서 다루지 않은 항목에 대한 문의 사항이 있는 경우 [고객 센터](https://www.toast.com/kr/support/inquiry)로 문의하시기 바랍니다.
 <br>
-<br>
 
 ### 1. NHN Cloud의 상표는 NHN Cloud 회원 및 NHN Cloud 파트너에 한해 사용이 가능합니다.
 
