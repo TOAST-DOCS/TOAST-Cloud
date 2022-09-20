@@ -61,7 +61,7 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Application Service | Various tools are supported for web/app services. |
 | Mobile Service | Developing and testing mobile app services are made more easily. |
 | Search  | Up-to-date data are always available through different search services. |
-| Analytics | Platforms for data analysis and collection are supported. |
+| Data & Analytics | Platforms for data analysis and collection are supported. |
 | Dev Tools | Convenient and efficient development environment is provided. |
 | Management | Professional engineers with the highest technical skills provide systematic server management, while customers can focus more on content development. |
 | Bill | With the Bill service, it is easy and convenient to get a tax invoice. |

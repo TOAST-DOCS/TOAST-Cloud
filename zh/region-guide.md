@@ -116,7 +116,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
-| Analytics | Log & Crash Search | Global |  |  |  |  |
+| Data & Analytics | Log & Crash Search | Global |  |  |  |  |
 | Dev Tools | Pipeline | Regional | O | O |  |  |
 |  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |

@@ -215,7 +215,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 * Content Delivery
 * Notification
 * Mobile Service
-* Analytics
+* Data & Analytics
 * Application Service
 * Search
 * Dev Tool

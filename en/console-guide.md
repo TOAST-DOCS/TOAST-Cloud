@@ -218,7 +218,7 @@ Services that can be enabled for each project include the following:
 - Content Delivery
 - Notification
 - Mobile Service
-- Analytics
+- Data & Analytics
 - Application Service
 - Search
 - Dev Tool
