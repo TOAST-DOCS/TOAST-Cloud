@@ -83,7 +83,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Vaccine | Regional | O | O |  |  |
 |  | Secure Key Manager | Global |  |  |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
-|  | Image | Regional | O |  |  |  |
+|  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |
 |  | SMS | Regional | O |  |  |  |
 |  | Email | Global |  |  |  |  |
