@@ -40,4 +40,3 @@ NHN Cloud의 상표란 NHN Cloud의 상품과 서비스를 나타내고 타사�
 - 당사와 어떠한 경영상/조직상/재정상 또는 계약상 연관 관계가 있는 것처럼 혼동의 여지가 있는 방식으로 상표를 표시하면 안됩니다.
 
 
-[![](https://static.toastoven.net/prod_architecture_Icon/fileicon_download_ppt.png)](https://static.toastoven.net/prod_architecture_Icon/NHN_Cloud_Architecture_Icons_20221004.pptx) [![](https://static.toastoven.net/prod_architecture_Icon/fileicon_download_ppt.png)](https://static.toastoven.net/prod_architecture_Icon/NHN_Cloud_Architecture_Icons_20221004.pptx)
