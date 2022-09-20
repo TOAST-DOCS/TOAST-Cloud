@@ -92,7 +92,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | DDoS Guard | リージョン | O | O  |  |  |
 |  | SIEM | リージョン | O |O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
-|  | Image | リージョン | O |  |  |  |
+|  | Image Manager| リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |
 |  | SMS | リージョン | O |  |  |  |
 |  | Email | グローバル |  |  |  |  |
@@ -116,7 +116,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Search | Cloud Search | リージョン | O |  |  |  |
 |  | Autocomplete | リージョン | O |  |  |  |
 |  | Corporation Search | リージョン | O |  |  |  |
-| Analytics | Log & Crash Search | グローバル |  |  |  |  |
+| Data & Analytics | Log & Crash Search | グローバル |  |  |  |  |
 | Dev Tools | Pipeline | リージョン | O | O |  |  |
 |  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
