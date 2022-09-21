@@ -218,7 +218,7 @@ Services that can be enabled for each project include the following:
 - Content Delivery
 - Notification
 - Mobile Service
-- Analytics
+- Data & Analytics
 - Application Service
 - Search
 - Dev Tool
@@ -371,7 +371,7 @@ You can grant multiple required roles to project members.
 | DDoS Guard | ADMIN | Create/Read/Update/Delete for DDoS Guard Service |
 | SIEM | ADMIN | Create/Read/Update/Delete for SIEM Service |
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
-| Image | ADMIN | Create/Read/Update/Delete pfor Image Service |
+| Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
 | SMS | ADMIN | Create/Read/Update/Delete for SMS Service |
 | Email | ADMIN | Create/Read/Update/Delete for Email Service |
