@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.2.0'
     ...
 }
 ```
@@ -39,7 +39,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.2.0'
     ...
 }
 ```
@@ -112,13 +112,13 @@ apply plugin: 'com.google.gms.google-services'
 ### Download the ADM SDK
 
 * Download the ADM SDK from [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm) of the Amazon Developer site.
-* Save the downloaded **amazon-device-messaging-1.1.0.jar** file to the **amazon/libs** folder of your project.
+* Save the downloaded **amazon-device-messaging-1.2.0.jar** file to the **amazon/libs** folder of your project.
 
 #### App module's build.gradle
 ```groovy
 dependencies {
     //...
-    compileOnly files('amazon/libs/amazon-device-messaging-1.1.0.jar')
+    compileOnly files('amazon/libs/amazon-device-messaging-1.2.0.jar')
 }
 ```
 
@@ -127,7 +127,7 @@ dependencies {
 * If you're using Proguard, add the following to the <b>[proguard-rules.pro](http://proguard-rules.pro)</b> file.
 
 ```groovy
--libraryjars amazon/libs/amazon-device-messaging-1.1.0.jar
+-libraryjars amazon/libs/amazon-device-messaging-1.2.0.jar
 -dontwarn com.amazon.device.messaging.**
 -keep class com.amazon.device.messaging.** { *; }
 -keep public class * extends com.amazon.device.messaging.ADMMessageReceiver

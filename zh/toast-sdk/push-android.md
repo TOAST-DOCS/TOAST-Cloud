@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.2.0'
     ...
 }
 ```
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.2.0'
     ...
 }
 ```
@@ -111,13 +111,13 @@ apply plugin: 'com.google.gms.google-services'
 ### ADM SDK 다운로드
 
 * Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드합니다.
-* 다운로드한 **amazon-device-messaging-1.1.0.jar** 파일을 프로젝트의 **amazon/libs** 폴더에 저장합니다.
+* 다운로드한 **amazon-device-messaging-1.2.0.jar** 파일을 프로젝트의 **amazon/libs** 폴더에 저장합니다.
 
 #### 앱 모듈의 build.gradle
 ```groovy
 dependencies {
     //...
-    compileOnly files('amazon/libs/amazon-device-messaging-1.1.0.jar')
+    compileOnly files('amazon/libs/amazon-device-messaging-1.2.0.jar')
 }
 ```
 
@@ -126,7 +126,7 @@ dependencies {
 * Proguard를 사용하는 경우 <b>[proguard-rules.pro](http://proguard-rules.pro)</b> 파일에 아래와 같이 추가합니다.
 
 ```groovy
--libraryjars amazon/libs/amazon-device-messaging-1.1.0.jar
+-libraryjars amazon/libs/amazon-device-messaging-1.2.0.jar
 -dontwarn com.amazon.device.messaging.**
 -keep class com.amazon.device.messaging.** { *; }
 -keep public class * extends com.amazon.device.messaging.ADMMessageReceiver
