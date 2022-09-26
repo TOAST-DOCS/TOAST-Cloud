@@ -369,7 +369,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | DDoS Guard | ADMIN | DDos Guardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | SIEM | ADMIN | SIEMサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Image | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | SMS | ADMIN | SMSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Email | ADMIN | Emailサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
