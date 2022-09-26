@@ -395,7 +395,9 @@ You can grant multiple required roles to project members.
 | Corporation Search | ADMIN | Create/Read/Update/Delete for Corporation Search Service |
 | Log & Crash Search | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
 | Pipeline | ADMIN | Create/Read/Update/Delete for Pipeline Service |
-| Deploy | ADMIN | Create/Read/Update/Delete pfor Deploy Service |
+| Deploy | ADMIN | Create/Read/Update/Delete for Deploy Service |
+| Deploy | PERMISSION | Enable/disable for Deploy Service |
+| Deploy | VIEWER | Readfor Deploy Service |
 | Managed | ADMIN | Create/Read/Update/Delete for Managed Service |
 | Service Monitoring | ADMIN | Create/Read/Update/Delete for Service Monitoring Service |
 | Certificate Manager | ADMIN | Create/Read/Update/Delete for Certificate Manager Service |
