@@ -366,6 +366,9 @@ You can grant multiple required roles to project members.
 | WEB Firewall | ADMIN | Create/Read/Update/Delete for WEB Firewall Service |
 | Vaccine | ADMIN | Create/Read/Update/Delete for Vaccine Service |
 | Secure Key Manager | ADMIN | Create/Read/Update/Delete for Secure Key Manager Service |
+| Secure Key Manager | APPROVAL ADMIN | Approve/deny/query for approval requests and create/query for approval requests for Secure Key Manager Service |
+| Secure Key Manager | APPROVAL MEMBER | Create/query for approval requests
+ for Secure Key Manager Service |
 | Secure Key Manager | VIEWER | Read for Secure Key Manager Service |
 | Security Compliance | ADMIN | Create/Read/Update/Delete for Security Compliance Service|
 | DDoS Guard | ADMIN | Create/Read/Update/Delete for DDoS Guard Service |
@@ -396,7 +399,6 @@ You can grant multiple required roles to project members.
 | Log & Crash Search | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
 | Pipeline | ADMIN | Create/Read/Update/Delete for Pipeline Service |
 | Deploy | ADMIN | Create/Read/Update/Delete for Deploy Service |
-| Deploy | PERMISSION | Enable/Disable for Deploy Service |
 | Deploy | VIEWER | Read for Deploy Service |
 | Managed | ADMIN | Create/Read/Update/Delete for Managed Service |
 | Service Monitoring | ADMIN | Create/Read/Update/Delete for Service Monitoring Service |
