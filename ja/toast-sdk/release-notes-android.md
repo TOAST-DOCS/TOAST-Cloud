@@ -1,5 +1,22 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
+## 1.2.0 (2022. 10. 04.)
+
+### NHN Cloud SDK
+
+#### 기능 개선
+
+* AndroidX 지원
+    * 최소 지원 버전이 API 16으로 상향되었습니다. 
+
+### NHN Cloud Push
+
+#### 기능 개선
+
+* Android 13 대응
+    * POST_NOTIFICATION 권한을 요청할 수 있는 API가 추가되었습니다.
+    * Notification 채널을 생성할 수 있는 API가 추가되었습니다.  
+
 ## 1.1.0 (2022. 09. 06.)
 
 ### NHN Cloud IAP
