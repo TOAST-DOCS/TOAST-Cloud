@@ -1,16 +1,16 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
-## 1.1.0 (2022. 09. 06.)
+## 1.1.0 (September 6, 2022)
 
 ### NHN Cloud IAP
 
-#### 기능 추가
+#### Added
 
-* 원스토어 v19 추가
+* Added ONE store v19 
 
-#### 기능 개선
+#### Improved
 
-* Google Billing Client 5.0.0 업데이트
+* Google payment library Billing Client 5.0.0 has been applied.
 
 ## 1.0.0 (July 12, 2022)
 
