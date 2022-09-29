@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-google:1.1.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-google:1.2.0'
 **DEPS**}
 ```
 
@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.1.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.2.0'
 **DEPS**}
 ```
 
@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.1.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.2.0'
 **DEPS**}
 ```
 
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.1.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.2.0'
 **DEPS**}
 ```
 
@@ -97,7 +97,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.huawei.agconnect'
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.1.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.2.0'
 **DEPS**}
 ```
 
