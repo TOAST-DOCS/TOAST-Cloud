@@ -582,7 +582,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### 초기화
 
-* VoIP 기능은 [NHN Cloud Push SDK 초기화](./push-ios/#nhn-cloud-push-sdk)가 되어 있어야 사용가능합니다.
+* VoIP 기능은 [NHN Cloud Push SDK 초기화](./push-ios/#nhn-cloud-push-sdk)가 되어 있어야 사용 가능합니다.
 * VoIP 기능은 NHN Cloud Push SDK의 서브모듈로 별도 분리되어 있습니다.
 
 ### Delegate 설정
