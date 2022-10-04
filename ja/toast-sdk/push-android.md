@@ -306,7 +306,7 @@ public class MyApplication extends Application {
 
 ``` java
 if (Build.VERSION.SDK_INT >= 33) {
-    ToastNotification.requestPostNotificationsPermission(this, PERMISSION_REQUEST_CODE);
+    NhnCloudNotification.requestPostNotificationsPermission(this, PERMISSION_REQUEST_CODE);
 }
 ```
 
@@ -319,9 +319,9 @@ if (Build.VERSION.SDK_INT >= 33) {
 
 ``` java
 if (Build.VERSION.SDK_INT >= 33) {
-    NotificationChannel channel = ToastNotification.getNotificationChannel(this);
+    NotificationChannel channel = NhnCloudNotification.getNotificationChannel(this);
     if (channel == null) {
-        ToastNotification.createNotificationChannel(this);
+        NhnCloudNotification.createNotificationChannel(this);
     }
 }
 ```
