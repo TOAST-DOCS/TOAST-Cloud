@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.2.0'
     ...
 }
 ```
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.2.0'
     ...
 }
 ```
@@ -111,13 +111,13 @@ apply plugin: 'com.google.gms.google-services'
 ### ADM SDK 다운로드
 
 * Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드합니다.
-* 다운로드한 **amazon-device-messaging-1.1.0.jar** 파일을 프로젝트의 **amazon/libs** 폴더에 저장합니다.
+* 다운로드한 **amazon-device-messaging-1.2.0.jar** 파일을 프로젝트의 **amazon/libs** 폴더에 저장합니다.
 
 #### 앱 모듈의 build.gradle
 ```groovy
 dependencies {
     //...
-    compileOnly files('amazon/libs/amazon-device-messaging-1.1.0.jar')
+    compileOnly files('amazon/libs/amazon-device-messaging-1.2.0.jar')
 }
 ```
 
@@ -126,7 +126,7 @@ dependencies {
 * Proguard를 사용하는 경우 <b>[proguard-rules.pro](http://proguard-rules.pro)</b> 파일에 아래와 같이 추가합니다.
 
 ```groovy
--libraryjars amazon/libs/amazon-device-messaging-1.1.0.jar
+-libraryjars amazon/libs/amazon-device-messaging-1.2.0.jar
 -dontwarn com.amazon.device.messaging.**
 -keep class com.amazon.device.messaging.** { *; }
 -keep public class * extends com.amazon.device.messaging.ADMMessageReceiver
@@ -299,6 +299,38 @@ public class MyApplication extends Application {
 }
 ```
 
+## 알림 권한
+
+* Android 13(API 레벨 33) 이상에서 알림 표시를 위해 POST\_NOTIFICATIONS 권한이 필요합니다.
+* 기본적으로 NHN Cloud SDK(1.3.0 버전 이상)에는 매니페스트에 POST\_NOTIFICATIONS 권한이 포함되어 있습니다.
+* 앱에서 알림을 표시하려면 런타임 권한을 요청해야 하며 사용자가 이 권한을 부여할 때까지 앱에서 알림을 표시할 수 없습니다.
+
+### Android 13(API 레벨 33) 이상을 타겟팅하는 앱의 알림 권한
+
+* Android 13(API 레벨 33) 이상을 타겟팅 시 requestPostNotificationsPermission API를 이용하여 알림 런타임 권한을 요청할 수 있습니다.
+
+``` java
+if (Build.VERSION.SDK_INT >= 33) {
+    ToastNotification.requestPostNotificationsPermission(this, PERMISSION_REQUEST_CODE);
+}
+```
+
+### Android 12(API 레벨 32) 이하를 타겟팅하는 앱의 알림 권한
+
+* Android 12(API 레벨 32) 이하를 타겟팅 시 앱이 포그라운드에 있을 때 앱에서 알림 채널을 처음 만들면 Android에서 자동으로 사용자에게 권한을 요청합니다.
+* 앱이 백그라운드에서 실행 중일 때 첫 알림 채널을 만드는 경우 앱을 열 때까지 알림이 표시되지 않고 사용자에게 알림 권한을 요청하지 않습니다.
+즉, 앱을 열고 사용자가 권한을 수락하기 전에 알림이 노출되지 않습니다.
+* Android 12(API 레벨 32) 이하를 타겟팅하는 앱은 앱 처음 실행 시에 알림 채널을 생성하여 사용자에게 권한을 요청해야 합니다.
+
+``` java
+if (Build.VERSION.SDK_INT >= 33) {
+    NotificationChannel channel = ToastNotification.getNotificationChannel(this);
+    if (channel == null) {
+        ToastNotification.createNotificationChannel(this);
+    }
+}
+```
+
 ## 알림 클릭
 * 사용자가 노출된 알림을 클릭하여 앱이 실행되었을 때 OnClickListener 를 통해 통지 받울 수 있습니다.
 * 알림 클릭 리스너는 NhnCloudNotification.setOnClickListener 함수를 사용하여 등록할 수 있습니다.
@@ -332,7 +364,7 @@ public class MyApplication extends Application {
 * 알림 기본 옵션 설정시 적용을 위해 기본 알림 채널이 새로 생성됩니다.
 * `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
 
-> 기본 알림 채널명을 설정하지 않으면 어플리케이션의 이름으로 자동 설정됩니다.
+> 기본 알림 채널명을 설정하지 않으면 애플리케이션의 이름으로 자동 설정됩니다.
 
 #### 기본 알림 채널명 설정 예시
 ##### 코드에서 설정 예시
@@ -446,7 +478,7 @@ public class MyApplication extends Application {
 
 ### 알림음 설정
 * Push 메시지 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림음으로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
-* 알림음은 어플리케이션 리소스 폴더 하위의 raw 폴더에 있는 로컬 리소스만 사용 가능합니다.
+* 알림음은 애플리케이션 리소스 폴더 하위의 raw 폴더에 있는 로컬 리소스만 사용 가능합니다.
     * 예) main/res/raw/notification_sound.wav
 
 ## 리치 메시지
@@ -458,7 +490,7 @@ public class MyApplication extends Application {
 #### 버튼
 | 유형 | 기능 | 액션 |
 | --- | ------- | --- |
-| 앱 열기 (OPEN_APP) | 어플리케이션 실행 | PushAction.ActionType.OPEN_APP |
+| 앱 열기 (OPEN_APP) | 애플리케이션 실행 | PushAction.ActionType.OPEN_APP |
 | URL 열기 (OPEN_URL) | URL로 이동<br/>(웹 URL 주소 혹은 앱 커스텀 스킴 실행) | PushAction.ActionType.OPEN_URL |
 | 답장 (REPLY) | 알림에서 답장 전송 | PushAction.ActionType.REPLY |
 | 취소 (DISMISS) | 현재 알림 취소 | PushAction.ActionType.DISMISS |
@@ -468,7 +500,7 @@ public class MyApplication extends Application {
 > 버튼은 메시지당 최대 3개까지 지원합니다.
 
 #### 미디어
-* 어플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
+* 애플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
 * 이미지 외의 동영상, 소리 등의 미디어는 지원하지 않습니다.
 * 이미지는 가로와 세로 비율이 2:1인 이미지를 권장합니다.
     * Small : 512 x 256
@@ -478,7 +510,7 @@ public class MyApplication extends Application {
 > 웹 URL 사용시 미디어 파일 다운로드 시간이 소요됩니다.
 
 #### 큰 아이콘
-* 어플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
+* 애플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
 * 큰 아이콘의 이미지는 1:1 비율을 권장합니다.
 
 > 사용된 이미지가 1:1 비율이 아닌 경우 강제로 1:1로 변경되기 때문에 기대와 다른 이미지가 노출될 수 있습니다.

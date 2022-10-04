@@ -376,40 +376,30 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 ## 구독 상품 관리 페이지 제공 방법
 
 * 자동 갱신형 구독 상품을 사용할 경우 사용자에게 구독 관리 페이지를 제공해야 합니다.
-> [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
+> [Apple Guide](https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/subscriptions_and_offers/handling_subscriptions_billing?language=objc)
 
 * 별도의 UI를 구성하지 않고 아래 URL을 호출해 구독 관리 페이지를 표시해야 합니다.
 
-### Safari를 통한 구독 관리 페이지 연결 방법
 ```
-https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
+https://apps.apple.com/account/subscriptions
+itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscription
 ```
-```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
-```
-#### Safari를 통해 관리 페이지를 호출할 때는 다음과 같은 순서로 관리 페이지가 표시됩니다.
-1. Safari Open
-2. Popup 노출 : itunse Store에서 열겠습니까?
-3. iTunse Store Open
-4. Popup으로 구독 관리 페이지 연결
 
-> iOS 기기의 왼쪽 상단의 이전 앱으로 돌아가기에 `Safari`가 나타납니다.
-
-
-### Scheme을 통한 구독 관리 페이지 연결 방법
-```
-itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
-```
+### 구독 관리 페이지 연결 방법
 
 ```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://apps.apple.com/account/subscriptions"] options: @{} completionHandler:nil];
 ```
 
-#### Scheme을 통해 관리 페이지를 호출할 때는 다음과 같은 순서로 관리 페이지가 표사됩니다.
-1. App Store의 구독 관리 페이지가 App To App 호출로 바로 연결됩니다.
+또는
+
+```objc
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"] options: @{} completionHandler:nil];
+```
+
+App Store의 구독 관리 페이지로 연결됩니다.
 
 > iOS 기기의 왼쪽 상단의 이전 앱으로 돌아가기에 `Service App`이 나타납니다.
-
 
 ## (구)IAP SDK 호환성 유지
 

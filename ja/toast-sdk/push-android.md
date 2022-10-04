@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.2.0'
     ...
 }
 ```
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.2.0'
     ...
 }
 ```
@@ -110,13 +110,13 @@ apply plugin: 'com.google.gms.google-services'
 ### ADM SDKのダウンロード
 
 * Amazon Developerの[Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)からADM SDKをダウンロードします。
-* ダウンロードした**amazon-device-messaging-1.1.0.jar**ファイルをプロジェクトの**amazon/libs**フォルダに保存します。
+* ダウンロードした**amazon-device-messaging-1.2.0.jar**ファイルをプロジェクトの**amazon/libs**フォルダに保存します。
 
 #### アプリモジュールのbuild.gradle
 ```groovy
 dependencies {
     //...
-    compileOnly files('amazon/libs/amazon-device-messaging-1.1.0.jar')
+    compileOnly files('amazon/libs/amazon-device-messaging-1.2.0.jar')
 }
 ```
 
@@ -125,7 +125,7 @@ dependencies {
 * Proguardを使用する場合 <b>[proguard-rules.pro](http://proguard-rules.pro)</b>ファイルに以下のように追加します。
 
 ```groovy
--libraryjars amazon/libs/amazon-device-messaging-1.1.0.jar
+-libraryjars amazon/libs/amazon-device-messaging-1.2.0.jar
 -dontwarn com.amazon.device.messaging.**
 -keep class com.amazon.device.messaging.** { *; }
 -keep public class * extends com.amazon.device.messaging.ADMMessageReceiver
@@ -290,6 +290,38 @@ public class MyApplication extends Application {
         });
 
         // ...
+    }
+}
+```
+
+## 알림 권한
+
+* Android 13 (API 레벨 33) 이상에서 알림 표시를 위해 POST\_NOTIFICATIONS 권한이 필요합니다.
+* 기본적으로 NHN Cloud SDK(버전 1.3.0 이상)에는 매니페스트에 POST\_NOTIFICATIONS 권한이 포함되어 있습니다.
+* 앱에서 알림을 표시하려면 런타임 권한을 요청해야하며 사용자가 이 권한을 부여할 때까지 앱에서 알림을 표시할 수 없습니다.
+
+### Android 13(API 레벨 33) 이상을 타겟팅하는 앱의 알림 권한
+
+* Android 13(API 레벨 33) 이상을 타겟팅 시 requestPostNotificationsPermission API를 이용하여 알림 런타임 권한을 요청할 수 있습니다.
+
+``` java
+if (Build.VERSION.SDK_INT >= 33) {
+    ToastNotification.requestPostNotificationsPermission(this, PERMISSION_REQUEST_CODE);
+}
+```
+
+### Android 12(API 레벨 32) 이하를 타겟팅하는 앱의 알림 권한
+
+* Android 12(API 레벨 32) 이하를 타겟팅 시 앱이 포그라운드에 있을 때 앱에서 알림 채널을 처음 만들면 Android에서 자동으로 사용자에게 권한을 요청합니다.
+* 앱이 백그라운드에서 실행 중일 때 첫 알림 채널을 만드는 경우 앱을 열 때까지 알림이 표시되지 않고 사용자에게 알림 권한을 요청하지 않습니다.
+즉, 앱을 열고 사용자가 권한을 수락하기 전에 알림이 노출되지 않습니다.
+* Android 12(API 레벨 32) 이하를 타겟팅하는 앱은 앱 처음 실행 시에 알림 채널을 생성하여 사용자에게 권한을 요청해야 합니다.
+
+``` java
+if (Build.VERSION.SDK_INT >= 33) {
+    NotificationChannel channel = ToastNotification.getNotificationChannel(this);
+    if (channel == null) {
+        ToastNotification.createNotificationChannel(this);
     }
 }
 ```

@@ -1,12 +1,29 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.2.0 (2022. 10. 04.)
+
+### NHN Cloud SDK
+
+#### 기능 개선
+
+* AndroidX 지원
+    * 최소 지원 버전이 API 16으로 상향되었습니다. 
+
+### NHN Cloud Push
+
+#### 기능 개선
+
+* Android 13 대응
+    * POST_NOTIFICATION 권한을 요청할 수 있는 API가 추가되었습니다.
+    * Notification 채널을 생성할 수 있는 API가 추가되었습니다.  
+
 ## 1.1.0 (2022. 09. 06.)
 
 ### NHN Cloud IAP
 
 #### 기능 추가
 
-* 원스토어 v19 추가
+* ONE store v19 추가
 
 #### 기능 개선
 
@@ -35,7 +52,7 @@
 
 #### 기능 추가
 
-* 원스토어 외부 결제 추가
+* ONE store 외부 결제 추가
 
 ### TOAST Push
 
@@ -49,7 +66,7 @@
 
 #### 기능 개선
 
-* 원스토어 v16 아이템 조회 로직 개선
+* ONE store v16 아이템 조회 로직 개선
 
 ## 0.30.0 (2022. 04. 26.)
 

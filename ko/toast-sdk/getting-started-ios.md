@@ -142,7 +142,7 @@ binary "https://nh.nu/nhncloudsdk"
 [NHNCloudSDK setDebugMode:YES];    // or NO
 ```
 
-> [주의] 어플리케이션 배포시에는 디버그 모드를 `반드시` 비활성화해야 합니다.
+> [주의] 애플리케이션 배포시에는 디버그 모드를 `반드시` 비활성화해야 합니다.
 
 ## NHN Cloud Service 사용
 

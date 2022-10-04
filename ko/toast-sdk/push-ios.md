@@ -308,7 +308,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 * 리치 메시지는 알림의 제목, 본문과 함께 미디어(이미지, 비디오, 오디오)를 알림에 표현하고 버튼, 답장 등의 액션을 추가합니다.
 * `리치 메시지 수신은 iOS 10.0+ 이상부터 지원합니다.`
-* 리치 메시지 표현을 위해서는 사용자 어플리케이션에 NHNCloudPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
+* 리치 메시지 표현을 위해서는 사용자 애플리케이션에 NHNCloudPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
 
 ### 지원하는 리치 메시지
 
@@ -316,7 +316,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 | 유형 | 기능 | 액션 |
 | --- | ------- | --- |
-| 앱 열기 (OPEN_APP) | 어플리케이션 실행 | NHNCloudPushNotificationActionOpenApp |
+| 앱 열기 (OPEN_APP) | 애플리케이션 실행 | NHNCloudPushNotificationActionOpenApp |
 | URL 열기 (OPEN_URL) | URL로 이동<br/>(웹 URL 주소 혹은 앱 커스텀 스킴 실행) | NHNCloudPushNotificationActionOpenURL |
 | 답장 (REPLY) | 알림에서 답장 전송 | NHNCloudPushNotificationActionReply |
 | 취소 (DISMISS) | 현재 알림 취소 | NHNCloudPushNotificationActionDismiss |
@@ -343,12 +343,12 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 * `수신 지표 수집은 iOS 10.0+ 이상부터 지원합니다.`
 * 수신 지표는 Notification Service Extension에 추가한 NHN Cloud Push SDK 에서 자동으로 수집됩니다.
-* 수신 지표 수집을 위해서는 사용자 어플리케이션에 NHNCloudPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
-* Notification Service Extension 생성자에서 [NHN Cloud Push SDK 초기화](./push-ios/#nhncloud-push-sdk) 혹은 **익스텐션의 info.plist 파일**에 앱키가 정의되어 있어야 수신 지표 수집이 가능합니다.
+* 수신 지표 수집을 위해서는 사용자 애플리케이션에 NHNCloudPushServiceExtension를 상속 구현하는 Notification Service Extension을 구현해야 합니다. (Notification Service Extension 추가 방법은 아래 [Notification Service Extension](./push-ios/#notification-service-extension) 섹션 참고)
+* Notification Service Extension 생성자에서 [NHN Cloud Push SDK 초기화](./push-ios/#nhn-cloud-push-sdk) 혹은 **익스텐션의 info.plist 파일**에 앱키가 정의되어 있어야 수신 지표 수집이 가능합니다.
 
 #### 초기화를 통한 수신 지표 수집 설정 예
 
-* `어플리케이션과 익스텐션은 함께 설치되지만 서로 분리된 별도의 샌드박스 환경이기 때문에 어플리케이션에서의 초기화와는 별개로 익스텐션에서도 초기화를 해야합니다.`
+* `애플리케이션과 익스텐션은 함께 설치되지만 서로 분리된 별도의 샌드박스 환경이기 때문에 애플리케이션에서의 초기화와는 별개로 익스텐션에서도 초기화를 해야합니다.`
 
 ``` objc
 @implementation NotificationService
@@ -394,8 +394,8 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 ### 실행(Opened) 지표 수집 설정
 
-* 실행 지표는 어플리케이션에 추가한 NHN Cloud Push SDK 에서 자동으로 수집됩니다.
-* [NHN Cloud Push SDK 초기화](./push-ios/#nhncloud-push-sdk) 혹은 **어플리케이션의 info.plist 파일**에 앱키가 정의되어 있어야 실행 지표 수집이 가능합니다.
+* 실행 지표는 애플리케이션에 추가한 NHN Cloud Push SDK 에서 자동으로 수집됩니다.
+* [NHN Cloud Push SDK 초기화](./push-ios/#nhn-cloud-push-sdk) 혹은 **애플리케이션의 info.plist 파일**에 앱키가 정의되어 있어야 실행 지표 수집이 가능합니다.
 
 #### info.plist 정의를 통한 수신 지표 수집 설정 예
 
@@ -423,7 +423,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 ## Notification Service Extension
 
 * `iOS 10.0+ 부터 지원합니다.`
-* 리치 메시지, 수신 지표 수집을 위해서는 어플리케이션에 NHNCloudPushServiceExtension를 상속 구현하는 Notification Service Extension을 반드시 구현해야 합니다.
+* 리치 메시지, 수신 지표 수집을 위해서는 애플리케이션에 NHNCloudPushServiceExtension를 상속 구현하는 Notification Service Extension을 반드시 구현해야 합니다.
 
 ### Notification Service Extension 생성
 
@@ -582,7 +582,7 @@ NSMutableSet<NSString *> *tagIDs = [NSMutableSet set];
 
 ### 초기화
 
-* VoIP 기능은 [NHN Cloud Push SDK 초기화](./push-ios/#toast-push-sdk)가 되어 있어야 사용가능합니다.
+* VoIP 기능은 [NHN Cloud Push SDK 초기화](./push-ios/#nhn-cloud-push-sdk)가 되어 있어야 사용 가능합니다.
 * VoIP 기능은 NHN Cloud Push SDK의 서브모듈로 별도 분리되어 있습니다.
 
 ### Delegate 설정

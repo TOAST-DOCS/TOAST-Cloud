@@ -372,43 +372,33 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 }
 ```
 
-## 購読商品管理ページの提供方法
+## 구독 상품 관리 페이지 제공 방법
 
-* 自動更新型購読商品を使用する場合、ユーザーに購読管理ページを提供する必要があります。
-> [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
+* 자동 갱신형 구독 상품을 사용할 경우 사용자에게 구독 관리 페이지를 제공해야 합니다.
+> [Apple Guide](https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/subscriptions_and_offers/handling_subscriptions_billing?language=objc)
 
-* 別途のUIを構成せず、下記URLを呼び出して購読管理ページを表示する必要があります。
+* 별도의 UI를 구성하지 않고 아래 URL을 호출해 구독 관리 페이지를 표시해야 합니다.
 
-### Safariで購読管理ページに接続する方法
 ```
-https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
+https://apps.apple.com/account/subscriptions
+itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscription
 ```
-```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
-```
-#### Safariで管理ページを呼び出す時は、次のような順序で管理ページが表示されます。
-1. Safari Open
-2. Popup表示：itunse Storeで開きますか？
-3. iTunse Store Open
-4. Popupで購読管理ページに接続
 
-> iOS端末左上の、以前のアプリに戻るに`Safari`が表示されます。
-
-
-### Schemeから購読管理ページに接続する方法
-```
-itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
-```
+### 구독 관리 페이지 연결 방법
 
 ```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://apps.apple.com/account/subscriptions"] options: @{} completionHandler:nil];
 ```
 
-#### Schemeから管理ページを呼び出す時は、次のような順序で管理ページが表示されます。
-1. App Storeの購読管理ページがApp To App呼び出しですぐに接続されます。
+또는
 
-> iOS端末左上の、以前のアプリに戻るに`Service App`が表示されます。
+```objc
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"] options: @{} completionHandler:nil];
+```
 
+App Store의 구독 관리 페이지로 연결됩니다.
+
+> iOS 기기의 왼쪽 상단의 이전 앱으로 돌아가기에 `Service App`이 나타납니다.
 
 ## (旧)IAP SDK互換性維持
 
