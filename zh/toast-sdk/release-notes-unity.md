@@ -2,7 +2,7 @@
 
 ## 0.26.2 (2022.10.04)
 
-Download : [toast-sdk-unity-0.26.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.26.2/toast-sdk-unity-0.26.2.zip)
+Download : [toast-sdk-unity-0.26.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.26.2/toast-sdk-unity-0.26.2.zip)
 
 ### plugin version
 
