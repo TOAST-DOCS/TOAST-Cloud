@@ -21,13 +21,13 @@
 
 ### NHN Cloud IAP
 
-#### 기능 추가
+#### 機能追加
 
-* 원스토어 v19 추가
+* ONEstore v19追加
 
-#### 기능 개선
+#### 機能改善
 
-* Google Billing Client 5.0.0 업데이트
+* Google Billing Client 5.0.0アップデート
 
 ## 1.0.0 (2022. 07. 12.)
 

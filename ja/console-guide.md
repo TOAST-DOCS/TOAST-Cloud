@@ -215,7 +215,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 * Content Delivery
 * Notification
 * Mobile Service
-* Analytics
+* Data & Analytics
 * Application Service
 * Search
 * Dev Tool
@@ -364,12 +364,14 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | WEB Firewall | ADMIN | WEB Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Vaccine | ADMIN | Vaccineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Secure Key Manager | ADMIN | Secure Key Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager承認要請に対する承認/拒否/照会および承認要請生成/照会  |
+| Secure Key Manager | APPROVAL MEMBER | Secure Key Manager承認要請作成/照会  |
 | Secure Key Manager | VIEWER | Secure Key Managerサービスに対するRead(読み取り) |
 | Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | DDoS Guard | ADMIN | DDos Guardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | SIEM | ADMIN | SIEMサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Image | ADMIN | Imageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | SMS | ADMIN | SMSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Email | ADMIN | Emailサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
@@ -392,9 +394,9 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Cloud Search | ADMIN | Cloud Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Autocomplete | ADMIN | Autocompleteサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Corporation Search | ADMIN | Corporation Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Address Search | ADMIN | Address Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Pipeline | ADMIN | Pipelineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Deploy | ADMIN | Deployサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Deploy | VIEWER | Deployサービスに対するRead(読み取り)  |
 | Managed | ADMIN | Managedサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Service Monitoring | ADMIN | Service Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Certificate Manager | ADMIN | Certificate Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |

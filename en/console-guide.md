@@ -218,7 +218,7 @@ Services that can be enabled for each project include the following:
 - Content Delivery
 - Notification
 - Mobile Service
-- Analytics
+- Data & Analytics
 - Application Service
 - Search
 - Dev Tool
@@ -366,12 +366,14 @@ You can grant multiple required roles to project members.
 | WEB Firewall | ADMIN | Create/Read/Update/Delete for WEB Firewall Service |
 | Vaccine | ADMIN | Create/Read/Update/Delete for Vaccine Service |
 | Secure Key Manager | ADMIN | Create/Read/Update/Delete for Secure Key Manager Service |
+| Secure Key Manager | APPROVAL ADMIN | Approve/deny/query,create/query for approval requests for Secure Key Manager Service |
+| Secure Key Manager | APPROVAL MEMBER | Create/query for approval requests for Secure Key Manager Service |
 | Secure Key Manager | VIEWER | Read for Secure Key Manager Service |
 | Security Compliance | ADMIN | Create/Read/Update/Delete for Security Compliance Service|
 | DDoS Guard | ADMIN | Create/Read/Update/Delete for DDoS Guard Service |
 | SIEM | ADMIN | Create/Read/Update/Delete for SIEM Service |
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
-| Image | ADMIN | Create/Read/Update/Delete pfor Image Service |
+| Image Manager | ADMIN | Create/Read/Update/Delete pfor Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
 | SMS | ADMIN | Create/Read/Update/Delete for SMS Service |
 | Email | ADMIN | Create/Read/Update/Delete for Email Service |
@@ -393,10 +395,10 @@ You can grant multiple required roles to project members.
 | Cloud Search | ADMIN | Create/Read/Update/Delete for Cloud Search Service |
 | Autocomplete | ADMIN | Create/Read/Update/Delete for AutocompleteService |
 | Corporation Search | ADMIN | Create/Read/Update/Delete for Corporation Search Service |
-| Address Search | ADMIN | Create/Read/Update/Delete for Address Search Service |
 | Log & Crash Search | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
 | Pipeline | ADMIN | Create/Read/Update/Delete for Pipeline Service |
-| Deploy | ADMIN | Create/Read/Update/Delete pfor Deploy Service |
+| Deploy | ADMIN | Create/Read/Update/Delete for Deploy Service |
+| Deploy | VIEWER | Read for Deploy Service |
 | Managed | ADMIN | Create/Read/Update/Delete for Managed Service |
 | Service Monitoring | ADMIN | Create/Read/Update/Delete for Service Monitoring Service |
 | Certificate Manager | ADMIN | Create/Read/Update/Delete for Certificate Manager Service |
