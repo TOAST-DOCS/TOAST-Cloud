@@ -364,7 +364,7 @@ public class MyApplication extends Application {
 * 알림 기본 옵션 설정시 적용을 위해 기본 알림 채널이 새로 생성됩니다.
 * `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
 
-> 기본 알림 채널명을 설정하지 않으면 어플리케이션의 이름으로 자동 설정됩니다.
+> 기본 알림 채널명을 설정하지 않으면 애플리케이션의 이름으로 자동 설정됩니다.
 
 #### 기본 알림 채널명 설정 예시
 ##### 코드에서 설정 예시
@@ -478,7 +478,7 @@ public class MyApplication extends Application {
 
 ### 알림음 설정
 * Push 메시지 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림음으로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
-* 알림음은 어플리케이션 리소스 폴더 하위의 raw 폴더에 있는 로컬 리소스만 사용 가능합니다.
+* 알림음은 애플리케이션 리소스 폴더 하위의 raw 폴더에 있는 로컬 리소스만 사용 가능합니다.
     * 예) main/res/raw/notification_sound.wav
 
 ## 리치 메시지
@@ -490,7 +490,7 @@ public class MyApplication extends Application {
 #### 버튼
 | 유형 | 기능 | 액션 |
 | --- | ------- | --- |
-| 앱 열기 (OPEN_APP) | 어플리케이션 실행 | PushAction.ActionType.OPEN_APP |
+| 앱 열기 (OPEN_APP) | 애플리케이션 실행 | PushAction.ActionType.OPEN_APP |
 | URL 열기 (OPEN_URL) | URL로 이동<br/>(웹 URL 주소 혹은 앱 커스텀 스킴 실행) | PushAction.ActionType.OPEN_URL |
 | 답장 (REPLY) | 알림에서 답장 전송 | PushAction.ActionType.REPLY |
 | 취소 (DISMISS) | 현재 알림 취소 | PushAction.ActionType.DISMISS |
@@ -500,7 +500,7 @@ public class MyApplication extends Application {
 > 버튼은 메시지당 최대 3개까지 지원합니다.
 
 #### 미디어
-* 어플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
+* 애플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
 * 이미지 외의 동영상, 소리 등의 미디어는 지원하지 않습니다.
 * 이미지는 가로와 세로 비율이 2:1인 이미지를 권장합니다.
     * Small : 512 x 256
@@ -510,7 +510,7 @@ public class MyApplication extends Application {
 > 웹 URL 사용시 미디어 파일 다운로드 시간이 소요됩니다.
 
 #### 큰 아이콘
-* 어플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
+* 애플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
 * 큰 아이콘의 이미지는 1:1 비율을 권장합니다.
 
 > 사용된 이미지가 1:1 비율이 아닌 경우 강제로 1:1로 변경되기 때문에 기대와 다른 이미지가 노출될 수 있습니다.
