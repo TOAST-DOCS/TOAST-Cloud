@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.2.0'
     ...
 }
 ```
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.2.0'
     ...
 }
 ```
@@ -110,13 +110,13 @@ apply plugin: 'com.google.gms.google-services'
 ### ADM SDKのダウンロード
 
 * Amazon Developerの[Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)からADM SDKをダウンロードします。
-* ダウンロードした**amazon-device-messaging-1.1.0.jar**ファイルをプロジェクトの**amazon/libs**フォルダに保存します。
+* ダウンロードした**amazon-device-messaging-1.2.0.jar**ファイルをプロジェクトの**amazon/libs**フォルダに保存します。
 
 #### アプリモジュールのbuild.gradle
 ```groovy
 dependencies {
     //...
-    compileOnly files('amazon/libs/amazon-device-messaging-1.1.0.jar')
+    compileOnly files('amazon/libs/amazon-device-messaging-1.2.0.jar')
 }
 ```
 
@@ -125,7 +125,7 @@ dependencies {
 * Proguardを使用する場合 <b>[proguard-rules.pro](http://proguard-rules.pro)</b>ファイルに以下のように追加します。
 
 ```groovy
--libraryjars amazon/libs/amazon-device-messaging-1.1.0.jar
+-libraryjars amazon/libs/amazon-device-messaging-1.2.0.jar
 -dontwarn com.amazon.device.messaging.**
 -keep class com.amazon.device.messaging.** { *; }
 -keep public class * extends com.amazon.device.messaging.ADMMessageReceiver
@@ -290,6 +290,38 @@ public class MyApplication extends Application {
         });
 
         // ...
+    }
+}
+```
+
+## 通知権限
+
+* Android 13 (APIレベル33)以上で通知表示のためにPOST\_NOTIFICATIONS権限が必要です。
+* 基本的にNHN Cloud SDK(バージョン1.2.0以上)にはマニフェストにPOST\_NOTIFICATIONS権限が含まれています。
+* アプリで通知を表示するにはランタイム権限をリクエストしなければならず、ユーザーがこの権限を付与するまでアプリで通知を表示できません。
+
+### Android 13(APIレベル33)以上をターゲティングするアプリの通知権限
+
+* Android 13(APIレベル33)以上をターゲティングする時、requestPostNotificationsPermission APIを利用して通知ランタイム権限をリクエストできます。
+
+``` java
+if (Build.VERSION.SDK_INT >= 33) {
+    NhnCloudNotification.requestPostNotificationsPermission(this, PERMISSION_REQUEST_CODE);
+}
+```
+
+### Android 12(APIレベル32)以下をターゲティングするアプリの通知権限
+
+* Android 12(APIレベル32)以下をターゲティングする場合、アプリがフォアグラウンドにする時、アプリで通知チャンネルを初めて作成するとAndroidで自動的にユーザーに権限をリクエストします。
+* アプリがバックグラウンドで実行中の時、最初の通知チャンネルを作る場合、アプリを開くまで通知が表示されず、ユーザーに通知権限をリクエストしません。
+すなわち、アプリを開きユーザーが権限を受け入れる前は通知が表示されません。
+* Android 12(APIレベル32)以下をターゲティングするアプリは、アプリ初回実行時に通知チャンネルを作成してユーザーに権限をリクエストする必要があります。
+
+``` java
+if (Build.VERSION.SDK_INT >= 33) {
+    NotificationChannel channel = NhnCloudNotification.getNotificationChannel(this);
+    if (channel == null) {
+        NhnCloudNotification.createNotificationChannel(this);
     }
 }
 ```

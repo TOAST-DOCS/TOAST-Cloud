@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.2.0'
     ...
 }
 ```
@@ -44,10 +44,10 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.2.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.2.0'
     ...
 }
 ```
@@ -62,7 +62,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.2.0'
     ...
 }
 ```
@@ -79,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.2.0'
     ...
 }
 ```
@@ -122,7 +122,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.2.0'
     ...
 }
 ```
@@ -149,7 +149,7 @@ meta-data를 설정하지 않으면 기본값("full")이 적용됩니다.
 | 전체 결제 화면 | "full" |
 | 팝업 결제 화면 | "popup" |
 
-자세한 정보는 [원스토어 결제 화면 설정](https://dev.onestore.co.kr/devpoc/reference/view/Tools)을 확인하세요.
+자세한 정보는 [ONE store 결제 화면 설정](https://dev.onestore.co.kr/devpoc/reference/view/Tools)을 확인하세요.
 
 ### Android 11 이상을 타겟팅하는 앱 (ONE store, Galaxy Store, Amazon Appstore)
 
@@ -465,7 +465,7 @@ IapPurchaseFlowParams params = IapPurchaseFlowParams.newBuilder()
 NhnCloudIap.launchPurchaseFlow(activity, params);
 ```
 
-> 구글 플레이 스토어에서 프로모션 코드로 상품을 구매한 경우, 사용자 데이터를 사용할 수 없습니다.
+> Google Play Store에서 프로모션 코드로 상품을 구매한 경우, 사용자 데이터를 사용할 수 없습니다.
 
 ## 미소비 결제 조회
 
@@ -518,7 +518,7 @@ void queryConsumablePurchases() {
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트를 반환됩니다.
 * iOS에서 구독한 상품을 Android에서도 조회 가능합니다.
 
-> 현재 구독 상품은 Google Play 스토어만 지원합니다.
+> 현재 구독 상품은 Google Play Store만 지원합니다.
 
 ### 활성화된 구독 조회 API 명세
 
@@ -565,7 +565,7 @@ void queryActivatedPurchases() {
 * [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 사용하는 구독 상태 코드는 [IapSubscriptionStatus.StatusCode](./iap-android/#iapsubscriptionstatusstatuscode)에 정의되어 있습니다.
 
 ```
-현재 구독 상품은 Google Play 스토어만 지원합니다.
+현재 구독 상품은 Google Play Store만 지원합니다.
 ```
 
 ### 구독 상태 조회 API 명세
@@ -606,14 +606,14 @@ private void querySubscriptionsStatus() {
 }
 ```
 
-## 구글 스토어 구독(정기 결제) 기능
+## Google Play Store 구독(정기 결제) 기능
 
 구글 스토어의 구독 결제의 갱신 및 만료와 같은 수명주기에 따른 이벤트를 처리하는 방법을 설명합니다.
 자세한 사항은 [정기 결제별 기능 추가](https://developer.android.com/google/play/billing/billing_subscriptions)을 참고하세요.
 
 ### 구독 수명 주기 처리
 
-구글 스토어의 구독은 수명주기 동안 다양한 상태 변경을 거치며 앱은 각 상태에 따라 대응해야합니다.
+Google Play Store의 구독은 수명주기 동안 다양한 상태 변경을 거치며 앱은 각 상태에 따라 대응해야 합니다.
 
 * **활성화 상태(Active)**: 정기 결제 콘텐츠에 엑세스 할 수 있으며 자동 갱신이 진행되는 상태
 * **취소(Cancelled)**: 정기 결제 콘텐츠에 엑세스 할 수 있으나 사용자가 구독 상품을 더 이상 사용하지 않는다고 취소하여 자동 갱신이 정지된 상태

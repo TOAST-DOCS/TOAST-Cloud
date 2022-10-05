@@ -1,5 +1,22 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
+## 1.2.0 (2022. 10. 04.)
+
+### NHN Cloud SDK
+
+#### 機能改善
+
+* AndroidXサポート
+    * 最小サポートバージョンがAPI 16に変更されました。 
+
+### NHN Cloud Push
+
+#### 機能改善
+
+* Android 13対応
+    * POST_NOTIFICATION権限をリクエストできるAPIが追加されました。
+    * Notificationチャンネルを作成できるAPIが追加されました。  
+
 ## 1.1.0 (2022. 09. 06.)
 
 ### NHN Cloud IAP
@@ -89,7 +106,7 @@
 
 #### 機能追加
 
-* Amazonストア追加
+* Amazon Appstore追加
 
 ### TOAST Push
 
@@ -214,7 +231,7 @@
 
 #### バグ修正
 
-* ギャラクシーストアのアプリ内決済エラー修正
+* Galaxy Storeのアプリ内決済エラー修正
     * Galaxy Apps(Galaxy Store以前のアプリ名称)3.x以下のバージョンでTimeoutが発生するエラーを修正しました。
 
 ## 0.24.0 (2020. 10. 27.)
@@ -223,7 +240,7 @@
 
 #### 機能追加
 
-* ギャラクシーストア追加
+* Galaxy Store追加
 
 #### 機能改善
 
@@ -432,7 +449,7 @@
 
 #### バグ修正
 
-* GooglePlayStoreでのアプリアップデートの際、決済結果が2回以上通知されるエラーを修正しました。
+* Google Play Storeでのアプリアップデートの際、決済結果が2回以上通知されるエラーを修正しました。
 
 ### TOAST Push
 
@@ -581,7 +598,7 @@
 #### 追加事項
 
 * 新規機能追加
-    * Google Playストア(消費性商品、購読商品)
+    * Google Play Store(消費性商品、購読商品)
     * ONE store(消費性商品)
 
 ## 0.11.0 (2018. 11. 20.)
