@@ -297,7 +297,7 @@ public class MyApplication extends Application {
 ## 通知権限
 
 * Android 13 (APIレベル33)以上で通知表示のためにPOST\_NOTIFICATIONS権限が必要です。
-* 基本的にNHN Cloud SDK(バージョン1.3.0以上)にはマニフェストにPOST\_NOTIFICATIONS権限が含まれています。
+* 基本的にNHN Cloud SDK(バージョン1.2.0以上)にはマニフェストにPOST\_NOTIFICATIONS権限が含まれています。
 * アプリで通知を表示するにはランタイム権限をリクエストしなければならず、ユーザーがこの権限を付与するまでアプリで通知を表示できません。
 
 ### Android 13(APIレベル33)以上をターゲティングするアプリの通知権限

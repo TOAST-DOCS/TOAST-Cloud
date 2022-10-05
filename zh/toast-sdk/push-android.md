@@ -301,7 +301,7 @@ public class MyApplication extends Application {
 ## 알림 권한
 
 * Android 13 (API 레벨 33) 이상에서 알림 표시를 위해 POST\_NOTIFICATIONS 권한이 필요합니다.
-* 기본적으로 NHN Cloud SDK(버전 1.3.0 이상)에는 매니페스트에 POST\_NOTIFICATIONS 권한이 포함되어 있습니다.
+* 기본적으로 NHN Cloud SDK(버전 1.2.0 이상)에는 매니페스트에 POST\_NOTIFICATIONS 권한이 포함되어 있습니다.
 * 앱에서 알림을 표시하려면 런타임 권한을 요청해야하며 사용자가 이 권한을 부여할 때까지 앱에서 알림을 표시할 수 없습니다.
 
 ### Android 13(API 레벨 33) 이상을 타겟팅하는 앱의 알림 권한
