@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.2.0'
     ...
 }
 ```
@@ -44,10 +44,10 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.2.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.2.0'
     ...
 }
 ```
@@ -62,7 +62,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.2.0'
     ...
 }
 ```
@@ -79,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.2.0'
     ...
 }
 ```
@@ -122,7 +122,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.1.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.2.0'
     ...
 }
 ```
@@ -149,7 +149,7 @@ AndroidManifest.xmlにmeta-dataを追加して、全決済画面（"full"）ま�
 | 全決済画面 | "full" |
 | ポップアップ決済画面 | "popup" |
 
-詳細については、[ワンストア決済画面設定]https://dev.onestore.co.kr/devpoc/reference/view/Tools）を確認してください。
+詳細については、[ONE store決済画面設定]https://dev.onestore.co.kr/devpoc/reference/view/Tools）を確認してください。
 
 ### Android 11以上をターゲットにするアプリ(ONE store、Galaxy Store、Amazon Appstore)
 
@@ -464,7 +464,7 @@ IapPurchase FlowParams params = IapPurchase FlowParams.newBuilder()
 NhnCloudIap. launchPurchase Flow(activity、params)
 ````
 
-Googleプレイストアでプロモーションコードで商品を購入した場合は、ユーザーデータは利用できません。
+Google Play Storeでプロモーションコードで商品を購入した場合は、ユーザーデータは利用できません。
 
 ## 未消費決済照会
 
@@ -517,7 +517,7 @@ void queryConsumablePurchases() {
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストに返されます。
 * iOSで購読した商品をAndroidでも照会可能です。
 
-> 現在、購読商品はGoogle Playストアのみサポートします。
+> 現在、購読商品はGoogle Play Storeのみサポートします。
 
 ### 有効になっている購読照会API仕様
 
@@ -605,14 +605,14 @@ private void querySubscriptionsStatus() {
 }
 ```
 
-## GooglePlayサブスクリプション(定期決済)機能
+## GooglePlay Storeサブスクリプション(定期決済)機能
 
 GooglePlayのサブスクリプション決済の更新および有効期限などのライフサイクルに応じたイベントを処理する方法を説明します。
 詳細については[定期決済別機能追加](https://developer.android.com/google/play/billing/billing_subscriptions)を参照してください。
 
 ### サブスクリプションのライフサイクル処理
 
-GooglePlayのサブスクリプションは、ライフサイクルの間にさまざまな状態変更を経て、アプリは各状態に応じて対応する必要があります。
+GooglePlay Storeのサブスクリプションは、ライフサイクルの間にさまざまな状態変更を経て、アプリは各状態に応じて対応する必要があります。
 
 * **アクティブ(Active)**：定期決済コンテンツにアクセスすることができ、自動更新が行われている状態
 * **キャンセル(Cancelled)**：定期決済コンテンツにアクセスすることができるが、ユーザーがサブスクリプションキャンセルして自動更新が停止している状態

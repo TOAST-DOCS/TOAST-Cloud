@@ -372,43 +372,33 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 }
 ```
 
-## 購読商品管理ページの提供方法
+## サブスクリプション商品管理ページの提供方法
 
-* 自動更新型購読商品を使用する場合、ユーザーに購読管理ページを提供する必要があります。
-> [Apple Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW19)
+* 自動更新型サブスクリプション商品を使用する場合、ユーザーに購読管理ページを提供する必要があります。
+> [Apple Guide](https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/subscriptions_and_offers/handling_subscriptions_billing?language=objc)
 
-* 別途のUIを構成せず、下記URLを呼び出して購読管理ページを表示する必要があります。
+* 別途のUIを構成せず、以下のURLを呼び出して購読管理ページを表示する必要があります。
 
-### Safariで購読管理ページに接続する方法
 ```
-https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
+https://apps.apple.com/account/subscriptions
+itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscription
 ```
-```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
-```
-#### Safariで管理ページを呼び出す時は、次のような順序で管理ページが表示されます。
-1. Safari Open
-2. Popup表示：itunse Storeで開きますか？
-3. iTunse Store Open
-4. Popupで購読管理ページに接続
 
-> iOS端末左上の、以前のアプリに戻るに`Safari`が表示されます。
-
-
-### Schemeから購読管理ページに接続する方法
-```
-itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions
-```
+### 購読管理ページへのアクセス方法
 
 ```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"]];
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://apps.apple.com/account/subscriptions"] options: @{} completionHandler:nil];
 ```
 
-#### Schemeから管理ページを呼び出す時は、次のような順序で管理ページが表示されます。
-1. App Storeの購読管理ページがApp To App呼び出しですぐに接続されます。
+または
 
-> iOS端末左上の、以前のアプリに戻るに`Service App`が表示されます。
+```objc
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"] options: @{} completionHandler:nil];
+```
 
+App Storeの購読管理ページに移動します。
+
+> iOS端末の左上の以前のアプリに戻ると`Service App`が表示されます。
 
 ## (旧)IAP SDK互換性維持
 
@@ -630,4 +620,3 @@ typedef NS_ENUM(NSUInteger, NHNCloudHttpError) {
     NHNCloudHttpErrorRequiresSecureConnection = 107,   // Allow Arbitrary Loadsを設定しない
 };
 ```
-s

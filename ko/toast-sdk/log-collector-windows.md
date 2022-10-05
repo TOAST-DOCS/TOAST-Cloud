@@ -27,7 +27,7 @@ nhncloud::logger::NHNCloudLoggerConfiguration* loggerConf = nhncloud::logger::NH
 // Log & Crash Search 콘솔에서 확인한 앱키를 입력합니다.
 loggerConf->setProjectKey(appkey);
 
-// 현재 어플리케이션의 버전 정보를 입력합니다. 버전 정보는 심볼 파일 등록하는 과정에서 입력하는 버전 정보와 일치해야 합니다.
+// 현재 애플리케이션의 버전 정보를 입력합니다. 버전 정보는 심볼 파일 등록하는 과정에서 입력하는 버전 정보와 일치해야 합니다.
 loggerConf->setProjectVersion(version);
 ...
 
@@ -142,7 +142,7 @@ nhncloud::logger::NHNCloudLoggerConfiguration* loggerConf = nhncloud::logger::NH
 // Log & Crash Search 콘솔에서 확인한 앱키를 입력합니다.
 loggerConf->setProjectKey(appkey);
 
-// 현재 어플리케이션의 버전 정보를 입력합니다. 버전 정보는 심볼 파일 등록하는 과정에서 입력하는 버전 정보와 일치해야 합니다.
+// 현재 애플리케이션의 버전 정보를 입력합니다. 버전 정보는 심볼 파일 등록하는 과정에서 입력하는 버전 정보와 일치해야 합니다.
 loggerConf->setProjectVersion(version);
 
 // 크래시 수집 활성화 - 기본적으로 활성화 상태입니다. 크래시 수집을 원하지 않는다면 false로 설정합니다.
