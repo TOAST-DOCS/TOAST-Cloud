@@ -299,15 +299,15 @@ public class MyApplication extends Application {
 }
 ```
 
-## 알림 권한
+## Notification Permission
 
-* Android 13 (API 레벨 33) 이상에서 알림 표시를 위해 POST\_NOTIFICATIONS 권한이 필요합니다.
-* 기본적으로 NHN Cloud SDK(버전 1.2.0 이상)에는 매니페스트에 POST\_NOTIFICATIONS 권한이 포함되어 있습니다.
-* 앱에서 알림을 표시하려면 런타임 권한을 요청해야하며 사용자가 이 권한을 부여할 때까지 앱에서 알림을 표시할 수 없습니다.
+* To display notifications in Android 13 (API level 33) or higher, POST\_NOTIFICATIONS permission is required.
+* In NHN Cloud SDK (version 1.2.0 or higher), POST\_NOTIFICATIONS permission is included in the manifest by default.
+* To display notifications for an app, runtime permission must be requested, and notifications cannot be displayed for the app until the user assigns the permission.
 
-### Android 13(API 레벨 33) 이상을 타겟팅하는 앱의 알림 권한
+### Notification Permission of Apps Targeting Android 13(API level 33) or higher
 
-* Android 13(API 레벨 33) 이상을 타겟팅 시 requestPostNotificationsPermission API를 이용하여 알림 런타임 권한을 요청할 수 있습니다.
+* When targeting Android 13 (API level 33) or higher, notification runtime permission can be requested by using the requestPostNotificationsPermission API.
 
 ``` java
 if (Build.VERSION.SDK_INT >= 33) {
@@ -315,12 +315,12 @@ if (Build.VERSION.SDK_INT >= 33) {
 }
 ```
 
-### Android 12(API 레벨 32) 이하를 타겟팅하는 앱의 알림 권한
+### Notification Permission of Apps Targeting Android 12 (API level 32) or lower
 
-* Android 12(API 레벨 32) 이하를 타겟팅 시 앱이 포그라운드에 있을 때 앱에서 알림 채널을 처음 만들면 Android에서 자동으로 사용자에게 권한을 요청합니다.
-* 앱이 백그라운드에서 실행 중일 때 첫 알림 채널을 만드는 경우 앱을 열 때까지 알림이 표시되지 않고 사용자에게 알림 권한을 요청하지 않습니다.
-즉, 앱을 열고 사용자가 권한을 수락하기 전에 알림이 노출되지 않습니다.
-* Android 12(API 레벨 32) 이하를 타겟팅하는 앱은 앱 처음 실행 시에 알림 채널을 생성하여 사용자에게 권한을 요청해야 합니다.
+* When targeting Android 12 (API level 32) or lower and the notification channel is created for the first time in the app in the foreground, Android automatically requests permisssion from the user.
+* If you create the notification channel for the first time while the app is running in the background, you won't get a notification until you open the app and the app does not request notification permission from the user.
+This means that notifications are not displayed until the user opens the app and accepts the permission.
+* When targeting Android 12 (API level 32) or lower, the apps must create the notification channel and request permission from the user when running for the first time.
 
 ``` java
 if (Build.VERSION.SDK_INT >= 33) {
