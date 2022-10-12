@@ -78,7 +78,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 3. 조직 거버넌스 설정의 **IP ACL 설정**에서 IP ACL을 설정하고 관리할 수 있습니다.
     * 서비스 설정
         * 공통 설정: 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
-        * 서비스별 설정: 각 서비스(Cloud Console, Online Contact, Dooray! 등)별로 IP ACL을 설정할 수 있습니다.
+        * 서비스별 설정: 각 서비스(Cloud, Online Contact, Dooray! 등)별로 IP ACL을 설정할 수 있습니다.
     * IP ACL
         * 설정 안 함: 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
         * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력합니다.
@@ -108,7 +108,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 #### 로그인 보안 설정
 
 * IAM 멤버의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
-* 모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
+* 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
 ![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
@@ -121,7 +121,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 
 * 서비스 설정
     * 공통 설정: 모든 조직 서비스에 동일하게 2차 인증을 설정합니다.
-    * 서비스별 설정: 각 서비스 (Cloud Console, Online Contact, Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
+    * 서비스별 설정: 각 서비스 (Cloud, Online Contact, Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
 * 2차 인증 설정
     * 설정 안 함: 2차 인증을 하지 않고, 아이디와 비밀번호 입력만으로 로그인할 수 있습니다.
     * Google OTP: 아이디와 비밀번호를 입력한 후, Google OTP 앱에서 제공한 One Time Password를 입력해 로그인할 수 있습니다.
