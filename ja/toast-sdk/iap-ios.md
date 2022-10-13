@@ -259,8 +259,11 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 ### 有効になっている購読リスト照会API仕様
 
 ``` objc
-// 有効になっている購読リストを照会する
+// 활성화된 앱스토어 구독 목록 조회하기
 + (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
+
+// 활성화된 모든 마켓(앱스토어, 구글플레이, 원스토어...) 구독 목록 조회하기
++ (void)requestAllMarketsActiveSubscriptionsWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 ```
 
 ### 有効になっている購読リスト照会API使用例
@@ -314,8 +317,11 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 ### 未消費購入履歴照会API仕様
 
 ``` objc
-// 未消費購入履歴照会
+// 앱스토어 미소비 구매 내역 조회
 + (void)requestConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
+
+// 모든 마켓(앱스토어, 구글플레이, 원스토어...)의 미소비 구매 내역 조회
++ (void)requestAllMarketsConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 ```
 
 ### 未消費購入履歴照会API使用例
