@@ -261,7 +261,7 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 
 ``` objc
 // 활성화된 앱스토어 구독 목록 조회하기
-+ (void)requestActivePurchasesWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
++ (void)requestActiveSubscriptionsWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
 // 활성화된 모든 마켓(앱스토어, 구글플레이, 원스토어...) 구독 목록 조회하기
 + (void)requestAllMarketsActiveSubscriptionsWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
@@ -270,7 +270,7 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 ### 활성화된 구독 목록 조회 API 사용 예
 
 ``` objc
-[NHNCloudIAP requestActivePurchasesWithCompletionHandler:^(NSArray<NHNCloudPurchaseResult *> *purchases, NSError *error) {
+[NHNCloudIAP requestActiveSubscriptionsWithCompletionHandler:^(NSArray<NHNCloudPurchaseResult *> *purchases, NSError *error) {
     if (error == nil) {
         for (NHNCloudPurchaseResult *purchase in purchases) {
             // 구독 상품 접근 활성화
