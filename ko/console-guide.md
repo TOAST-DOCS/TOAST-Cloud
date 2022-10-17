@@ -67,7 +67,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 NHN Cloud 서비스를 안정적이고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_20220808_wide.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202210_wide.png)
 
 #### IP ACL 설정
 허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다.
@@ -109,7 +109,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 
 * IAM 멤버의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
 * 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
-![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109.png)
+![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202210.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
 2. 하위 메뉴인 거버넌스 설정을 선택합니다.
