@@ -471,6 +471,7 @@ Google Play Storeでプロモーションコードで商品を購入した場合
 * まだ消費されていない一回の商品(CONSUMABLE)と消費性購読商品(CONSUMABLE_AUTO_RENEWABLE)情報を照会します。
 * ユーザーに商品を支給した後、[Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
 * 未消費決済は、NhnCloudIap.queryConsumablePurchases()メソッドを使用して照会できます。
+* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 미소비 결제를 조회할 수 있습니다.
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストで返されます。
 
 ### 未消費決済照会API仕様
@@ -478,12 +479,14 @@ Google Play Storeでプロモーションコードで商品を購入した場合
 ```java
 /* NhnCloudIap.java */
 public static void queryConsumablePurchases(Activity activity,
+                                            IapQueryPurchasesParams params,
                                             IapService.PurchasesResponseListener listener)
 ```
 
 | Method                   | Parameters |                                          |
 | ------------------------ | ---------- | ---------------------------------------- |
 | queryConsumablePurchases | activity   | Activity：現在有効になっているActivity               |
+|                          | params     | IapQueryPurchasesParams: 미소비 구매 내역 조회 파라미터 |
 |                          | listener   | IapService.PurchasesResponseListener: <br>未消費購入履歴照会結果リスナー |
 
 ### 未消費決済照会例
@@ -492,7 +495,10 @@ public static void queryConsumablePurchases(Activity activity,
 /**
  * 未消費決済履歴を照会します。
  */
-void queryConsumablePurchases() {
+void queryConsumablePurchases(boolean isQueryAllStores) {
+    IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
+        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회 : true, 현재 스토어 조회 : false
+        .build();
     PurchasesResponseListener responseListenr =
             new IapService.PurchasesResponseListener() {
                 @Override
@@ -505,7 +511,7 @@ void queryConsumablePurchases() {
                     }
                 }
             };
-    NhnCloudIap.queryConsumablePurchases(MainActivity.this, responseListenr);
+    NhnCloudIap.queryConsumablePurchases(MainActivity.this, params, responseListenr);
 }
 ```
 
@@ -514,6 +520,7 @@ void queryConsumablePurchases() {
 * User IDベースで有効になっている購読商品(AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE)を照会できます。
 * 決済が完了した購読商品は、使用期間が残っている場合、継続して照会できます。
 * 有効になっている購読は、NhnCloudIap.queryActivatedPurchases()メソッドを使用して照会できます。
+* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 활성화된 구독 조회할 수 있습니다.
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストに返されます。
 * iOSで購読した商品をAndroidでも照会可能です。
 
@@ -524,12 +531,14 @@ void queryConsumablePurchases() {
 ```java
 /* NhnCloudIap.java */
 public static void queryActivatedPurchases(Activity activity,
+                                           IapQueryPurchasesParams params,
                                            PurchasesResponseListener listener)
 ```
 
 | Method                  | Parameters |                                          |
 | ----------------------- | ---------- | ---------------------------------------- |
 | queryActivatedPurchases | activity   | Activity：現在有効になっているActivity               |
+|                         | params     | IapQueryPurchasesParams: 활성화된 구독 조회 파라미터 |
 |                         | listener   | IapService.PurchasesResponseListener: <br>有効になっている購読照会結果リスナー |
 
 ### 有効になっている購読照会例
@@ -538,7 +547,10 @@ public static void queryActivatedPurchases(Activity activity,
 /**
  * 有効になっている購読商品照会
  */
-void queryActivatedPurchases() {
+void queryActivatedPurchases(boolean isQueryAllStores) {
+    IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
+        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회 : true, 현재 스토어 조회 : false
+        .build();
     PurchasesResponseListener responseListener =
             new IapService.PurchasesResponseListener() {
                 @Override
@@ -551,7 +563,7 @@ void queryActivatedPurchases() {
                     }
                 }
             };
-    NhnCloudIap.queryActivatedPurchases(MainActivity.this, responseListener);
+    NhnCloudIap.queryActivatedPurchases(MainActivity.this, params, responseListener);
 }
 ```
 
@@ -908,6 +920,32 @@ public void setProductId(String productId)
 | Method       | Parameters |               | Description   |
 | ------------ | ---------- | ------------- | ------------- |
 | setProductId | productId  | String：商品ID | 商品IDを設定します。 |
+
+### IapQueryPurchasesParams
+
+* IapQueryPurchasesParams는 조회 하려는 조건을 설정합니다.
+
+```java
+/* IapQueryPurchasesParams.java */
+public String isQueryAllStores()
+```
+
+| Method           | Returns  |              |
+| ---------------- | -------- | ------------ |
+| isQueryAllStores | boolean  | 모든 스토어 조회 |
+
+### IapQueryPurchasesParams.Builder
+
+* IapQueryPurchasesParams 객체를 생성합니다.
+
+```java
+/* IapQueryPurchasesParams.java */
+public void setQueryAllStores(boolean isQueryAllStores)
+```
+
+| Method            | Parameters        |                       | Description       |
+| ----------------- | ----------------- | --------------------- | ----------------- |
+| setQueryAllStores | isQueryAllStores  | boolean: 모든 스토어 조회 | 조회 범위를 설정합니다. |
 
 ### IapSubscriptionStatus
 

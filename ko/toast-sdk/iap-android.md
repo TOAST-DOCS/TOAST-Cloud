@@ -472,6 +472,7 @@ NhnCloudIap.launchPurchaseFlow(activity, params);
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE)과 소비성 구독 상품(CONSUMABLE_AUTO_RENEWABLE) 정보를 조회합니다.
 * 사용자에게 상품을 지급된 후 [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 * 미소비 결제는 NhnCloudIap.queryConsumablePurchases() 메서드를 사용하여 조회할 수 있습니다.
+* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 미소비 결제를 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.
 
 ### 미소비 결제 조회 API 명세
@@ -479,12 +480,14 @@ NhnCloudIap.launchPurchaseFlow(activity, params);
 ```java
 /* NhnCloudIap.java */
 public static void queryConsumablePurchases(Activity activity,
+                                            IapQueryPurchasesParams params,
                                             IapService.PurchasesResponseListener listener)
 ```
 
 | Method                   | Parameters |                                          |
 | ------------------------ | ---------- | ---------------------------------------- |
 | queryConsumablePurchases | activity   | Activity: 현재 활성화된 Activity               |
+|                          | params     | IapQueryPurchasesParams: 미소비 구매 내역 조회 파라미터 |
 |                          | listener   | IapService.PurchasesResponseListener: <br>미소비 구매 내역 조회 결과 리스너 |
 
 ### 미소비 결제 조회 예시
@@ -493,7 +496,10 @@ public static void queryConsumablePurchases(Activity activity,
 /**
  * 미소비 결제 내역을 조회합니다.
  */
-void queryConsumablePurchases() {
+void queryConsumablePurchases(boolean isQueryAllStores) {
+    IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
+        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회 : true, 현재 스토어 조회 : false
+        .build();
     PurchasesResponseListener responseListenr =
             new IapService.PurchasesResponseListener() {
                 @Override
@@ -506,7 +512,7 @@ void queryConsumablePurchases() {
                     }
                 }
             };
-    NhnCloudIap.queryConsumablePurchases(MainActivity.this, responseListenr);
+    NhnCloudIap.queryConsumablePurchases(MainActivity.this, params, responseListenr);
 }
 ```
 
@@ -515,6 +521,7 @@ void queryConsumablePurchases() {
 * User ID 기준으로 활성화된 구독 상품(AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE)을 조회할 수 있습니다.
 * 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 조회할 수 있습니다.
 * 활성화된 구독은 NhnCloudIap.queryActivatedPurchases() 메서드를 사용하여 조회할 수 있습니다.
+* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 활성화된 구독 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트를 반환됩니다.
 * iOS에서 구독한 상품을 Android에서도 조회 가능합니다.
 
@@ -525,12 +532,14 @@ void queryConsumablePurchases() {
 ```java
 /* NhnCloudIap.java */
 public static void queryActivatedPurchases(Activity activity,
+                                           IapQueryPurchasesParams params,
                                            PurchasesResponseListener listener)
 ```
 
 | Method                  | Parameters |                                          |
 | ----------------------- | ---------- | ---------------------------------------- |
 | queryActivatedPurchases | activity   | Activity: 현재 활성화된 Activity               |
+|                         | params     | IapQueryPurchasesParams: 활성화된 구독 조회 파라미터 |
 |                         | listener   | IapService.PurchasesResponseListener: <br>활성화된 구독 조회 결과 리스너 |
 
 ### 활성화된 구독 조회 예시
@@ -539,7 +548,10 @@ public static void queryActivatedPurchases(Activity activity,
 /**
  * 활성화된 구독 상품 조회
  */
-void queryActivatedPurchases() {
+void queryActivatedPurchases(boolean isQueryAllStores) {
+    IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
+        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회 : true, 현재 스토어 조회 : false
+        .build();
     PurchasesResponseListener responseListener =
             new IapService.PurchasesResponseListener() {
                 @Override
@@ -552,7 +564,7 @@ void queryActivatedPurchases() {
                     }
                 }
             };
-    NhnCloudIap.queryActivatedPurchases(MainActivity.this, responseListener);
+    NhnCloudIap.queryActivatedPurchases(MainActivity.this, params, responseListener);
 }
 ```
 
@@ -911,6 +923,32 @@ public void setProductId(String productId)
 | Method       | Parameters |               | Description   |
 | ------------ | ---------- | ------------- | ------------- |
 | setProductId | productId  | String: 상품 ID | 상품 ID를 설정합니다. |
+
+### IapQueryPurchasesParams
+
+* IapQueryPurchasesParams는 조회 하려는 조건을 설정합니다.
+
+```java
+/* IapQueryPurchasesParams.java */
+public String isQueryAllStores()
+```
+
+| Method           | Returns  |              |
+| ---------------- | -------- | ------------ |
+| isQueryAllStores | boolean  | 모든 스토어 조회 |
+
+### IapQueryPurchasesParams.Builder
+
+* IapQueryPurchasesParams 객체를 생성합니다.
+
+```java
+/* IapQueryPurchasesParams.java */
+public void setQueryAllStores(boolean isQueryAllStores)
+```
+
+| Method            | Parameters        |                       | Description       |
+| ----------------- | ----------------- | --------------------- | ----------------- |
+| setQueryAllStores | isQueryAllStores  | boolean: 모든 스토어 조회 | 조회 범위를 설정합니다. |
 
 ### IapSubscriptionStatus
 
