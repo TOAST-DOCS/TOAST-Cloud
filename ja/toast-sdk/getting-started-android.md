@@ -18,6 +18,7 @@ Android用NHN Cloud SDKの構成は次のとおりです。
 * [In-app Purchase OneStore](./iap-android) SDK
 * Push Core SDK
 * [Push Firebase Cloud Messaging](./push-android) SDK
+* [Credit Card Recognizer](./creditcard-recognizer-android) SDK
 
 NHN Cloud SDKが提供するサービスの中から、希望する機能を選択して適用できます。
 
@@ -33,6 +34,7 @@ NHN Cloud SDKが提供するサービスの中から、希望する機能を選�
 | com.nhncloud.android:nhncloud-iap-galaxy:1.3.0 | In-app Purchase <br>Galaxy Store |
 | com.nhncloud.android:nhncloud-push-core:1.3.0    | Push Core   |
 | com.nhncloud.android:nhncloud-push-fcm:1.3.0    | Push <br>Firebase Cloud Messaging |
+| com.nhncloud.android:nhncloud-creditcard-recognizer:1.3.0    | Credit Card Recognizer |
 
 ## NHN Cloud SDKをAndroid Studioプロジェクトに適用
 
@@ -59,6 +61,7 @@ NHN Cloud SDKが提供するサービス別の設定方法は次のとおりで�
 - [Native Crash Reporterライブラリ設定](./log-collector-ndk/#_1)
 - [In-app Purchaseライブラリ設定](./iap-android/#_2)
 - [Pushライブラリ設定](./push-android/#_2)
+- [Library setting for Credit Card Recognizer](./creditcard-recognizer-android/#_1)
 
 ### 2. AARを使用してAndroidビルド
 
@@ -137,3 +140,4 @@ NhnCloudSdk.setDebugMode(false);
 * [Native Crash Reporter](./log-collector-ndk)使用ガイド
 * [In-app Purchase](./iap-android)使用ガイド
 * [Push](./push-android)使用ガイド
+* [Credit Card Recognizer](./creditcard-recognizer-android)使用ガイド
