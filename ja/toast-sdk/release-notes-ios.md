@@ -1,5 +1,18 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.1.0 (2022.10.25)
+### 공통
+#### 개선 사항
+* 안정성 개선
+
+### NHN Cloud IAP
+#### 기능 추가
+* * [모든스토어] 활성화 구독 조회 및 미소비 결제 내역 조회 API 추가
+
+### NHN Cloud OCR
+#### 기능 추가
+* OCR(Credit Card Recognizer) 추가
+
 ## 1.0.0 (2022.07.12)
 ### 共通
 #### 改善事項
