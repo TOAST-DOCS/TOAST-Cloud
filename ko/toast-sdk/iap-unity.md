@@ -238,17 +238,29 @@ ToastIap.Purchase(productId, developerPayload);
 ### 미소비 결제 조회 API 명세
 
 ```csharp
-public static void RequestConsumablePurchases(ToastCallback<List<IapPurchase>> callback);
+public static void RequestConsumablePurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
 
 ### 미소비 결제 조회 예시
 
 ```csharp
-ToastIap.RequestConsumablePurchases((result, purchases) =>
+// 모든 스토어 조회
+ToastIap.RequestConsumablePurchases(true, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 미소비 결제 조회 성공
+        // 모든 스토어 미소비 결제 조회 성공
+    }
+});
+```
+
+```csharp
+// 현재 스토어 조회
+ToastIap.RequestConsumablePurchases(false, (result, purchases) =>
+{
+    if (result.IsSuccessful)
+    {
+        // 현재 스토어 미소비 결제 조회 성공
     }
 });
 ```
@@ -286,17 +298,29 @@ ToastIap.RequestRestorePurchases((result, purchases) =>
 ### 활성화된 구독 조회 API 명세
 
 ```csharp
-public static void RequestActivatedPurchases(ToastCallback<List<IapPurchase>> callback);
+public static void RequestActivatedPurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
 
 ### 활성화된 구독 조회 예시
 
 ```csharp
-ToastIap.RequestActivatedPurchases((result, purchases) =>
+// 모든 스토어에서 활성화된 구독 조회
+ToastIap.RequestActivatedPurchases(true, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 활성화된 구독 조회 성공
+        // 모든 스토어에서 활성화된 구독 조회
+    }
+});
+```
+
+```csharp
+// 현재 스토어에서 활성화된 구독 조회
+ToastIap.RequestActivatedPurchases(false, (result, purchases) =>
+{
+    if (result.IsSuccessful)
+    {
+        // 현재 스토어에서 활성화된 구독 조회 성공
     }
 });
 ```

@@ -239,17 +239,29 @@ ToastIap.Purchase(productId, developerPayload);
 ### Specification for Unconsumed Purchases Query API
 
 ```csharp
-public static void RequestConsumablePurchases(ToastCallback<List<IapPurchase>> callback);
+public static void RequestConsumablePurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
 
 ### Example of Unconsumed Purchases Query
 
 ```csharp
-ToastIap.RequestConsumablePurchases((result, purchases) =>
+// 모든 스토어 조회
+ToastIap.RequestConsumablePurchases(true, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // Unconsumed purchases query succeeded
+        // 모든 스토어 미소비 결제 조회 성공
+    }
+});
+```
+
+```csharp
+// 현재 스토어 조회
+ToastIap.RequestConsumablePurchases(false, (result, purchases) =>
+{
+    if (result.IsSuccessful)
+    {
+        // 현재 스토어 미소비 결제 조회 성공
     }
 });
 ```
@@ -287,17 +299,29 @@ ToastIap.RequestRestorePurchases((result, purchases) =>
 ### Specification for Activated Subscription Query API
 
 ```csharp
-public static void RequestActivatedPurchases(ToastCallback<List<IapPurchase>> callback);
+public static void RequestActivatedPurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
 
 ### Example of Activated Subscription Query
 
 ```csharp
-ToastIap.RequestActivatedPurchases((result, purchases) =>
+// 모든 스토어에서 활성화된 구독 조회
+ToastIap.RequestActivatedPurchases(true, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // Activated subscription query succeeded
+        // 모든 스토어에서 활성화된 구독 조회
+    }
+});
+```
+
+```csharp
+// 현재 스토어에서 활성화된 구독 조회
+ToastIap.RequestActivatedPurchases(false, (result, purchases) =>
+{
+    if (result.IsSuccessful)
+    {
+        // 현재 스토어에서 활성화된 구독 조회 성공
     }
 });
 ```
