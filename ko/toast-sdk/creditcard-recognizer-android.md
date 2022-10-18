@@ -1,4 +1,4 @@
-## NHN Cloud > SDK 사용 가이드 > Credit Card Recognizer > Android
+## NHN Cloud > SDK 사용 가이드 > Document Recognizer > Credit Card (Android)
 
 ## 사전 준비
 
