@@ -1,4 +1,4 @@
-## NHN Cloud > SDK 사용 가이드 > Credit Card Recognizer > iOS
+## NHN Cloud > SDK 사용 가이드 > Document Recognizer > Credit Card (iOS)
 
 ## Prerequisites
 
