@@ -67,7 +67,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 
 NHN Cloudサービスを安定的かつ効率的に利用するために必要なポリシーを設定して管理できます。 ログインおよび個人情報など、セキュリティコンプライアンス遵守のための組織の共通ポリシーを策定し、組織内のメンバーがポリシーを遵守できるように管理します。
 
-![console_guide_3_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_20220808_jp.png)
+![console_guide_3_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202210_jp.png)
 
 #### IP ACL設定
 許可したIP(またはIP帯域)からのみコンソールにアクセスできます。
@@ -78,7 +78,7 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 3. 組織ガバナンス設定の**IP ACL設定**でIP ACLを設定し、管理できます。
    * サービス設定
        * 共通設定：すべてのサービスに同じようにIP ACLを設定できます。
-       * サービスの設定：各サービス(Cloud Console、Online Contact, Dooray!など)ごとにIP ACLを設定できます。
+       * サービスの設定：各サービス(Cloud、Online Contact, Dooray!など)ごとにIP ACLを設定できます。
    * IP ACL
         * 設定しない：すべてのIP(またはIP帯域)からコンソールにアクセスできます。
         * 許可したIP(またはIP帯域)のみコンソールアクセス：入力したIP(またはIP帯域)からのみコンソールにアクセスできます。アクセスを許可するIPまたはIP帯域を入力します。
@@ -109,8 +109,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 #### ログインセキュリティ設定
 
 * IAMメンバーのコンソール接続セキュリティを強化するために**ログインセキュリティ設定**機能を提供します。
-* すべての組織サービス(コンソール、Online Contact、Dooray!など)に同じように設定したり、サービスごとに設定できます。
-![console_guide_4_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109_jp.png)
+* すべての組織サービス(Cloud、Online Contact、Dooray!など)に同じように設定したり、サービスごとに設定できます。
+![console_guide_4_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202210_jp.png)
 
 1. コンソールに移動した後、設定したい組織の組織管理ページに接続します。
 2. サブメニューのガバナンス設定を選択します。
@@ -122,7 +122,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 
 * サービス設定
     * 共通設定：すべての組織サービスに同じように2次認証を設定します。
-    * サービス別設定：各サービス(Cloud Console, Online Contact, Dooray!など)ごとに2次認証を設定できます。
+    * サービス別設定：各サービス(Cloud, Online Contact, Dooray!など)ごとに2次認証を設定できます。
 * 2次認証設定
     * 設定しない：2次認証を行わず、IDとパスワードの入力だけでログインできます。
     * Google OTP：IDとパスワードを入力した後、Google OTPアプリで提供したOne Time Passwordを入力してログインできます。
@@ -309,7 +309,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | サービス | 役割 | 説明 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scaleサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scaleサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Infrastructure | Load Balancer ADMIN | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Groupサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, Auto Scaleサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |

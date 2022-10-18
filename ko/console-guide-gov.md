@@ -98,7 +98,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 
 * IAM 멤버의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
 * 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
-![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202112.png)
+![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202210_gov.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
 2. 하위 메뉴인 거버넌스 설정을 선택합니다.
@@ -291,9 +291,9 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Load Balancer ADMIN | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure |  Security Group ADMIN | VPC, Auto Scale, Load Balancer 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Security Group, Load Balancer, Auto Scale 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Load Balancer ADMIN | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Security Group 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Load Balancer, Auto Scale 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry(NCR)| ADMIN | NHN Container Registry(NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry(NCR) | VIEWER | NHN Container Registry(NCR) 서비스 Read(읽기) |
 | DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |

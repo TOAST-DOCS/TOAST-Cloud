@@ -70,7 +70,7 @@ Services that can be enabled for each organization include the following:
 
 You can set and manage policies for stable and efficient use of NHN Cloud services. Set up a common organization policy for security compliance such as login and personal information, so that the members within the organization can comply with the policy.
 
-![console_guide_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_20220808_wide_en.png)
+![console_guide_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202210_wide_en.png)
 
 #### IP ACL Setting
 When IP ACL is set, the console can be accessed from the allowed IPs (or IP range) only.
@@ -82,7 +82,7 @@ For Dooray! services, IP ACL can be set on the service's console screen.
 3. You can set and manage IP ACL under **Set IP ACL** in the Organization Governance Setting.
     * Service setting
         * Common Settings: IP ACL can be set globally for all services.
-        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud Console, Online Contact, Dooray!, etc.).
+        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Online Contact, Dooray!, etc.).
     * IP ACL
         * Not Configured: The console can be accessed from any IPs (or IP range).
         * Console Access Only from Allowed IPs (or IP range): The console can be accessed only from the IPs (or IP range) you entered. Enter the IP or IP range to allow access.
@@ -112,8 +112,8 @@ When an operator looks up important information on IaaS resources, the users are
 #### Login Security Setting
 
 * To strengthen the console access security of IAM members, **Login Security Setting** feature is provided.
-* You can set it globally for all organization services (Console, Online Contact, Dooray!, etc.), or set it differently for each service.
-![console_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109_en.png)
+* You can set it globally for all organization services (Cloud, Online Contact, Dooray!, etc.), or set it differently for each service.
+![console_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202210_en.png)
 
 1. Go to the console and access the Organization Management page of the organization you want to set up.
 2. Select Governance Setting from the submenu.
@@ -125,7 +125,7 @@ You can enable two-factor authentication by setting it as a required feature.
 
 * Service setting
     * Common Settings: Set the two-factor authentication globally for all organization services.
-    * Individual Settings for Each Service: You can set two-factor authentication differently for each service (Cloud Console, Online Contact, Dooray!, etc.).
+    * Individual Settings for Each Service: You can set two-factor authentication differently for each service (Cloud, Online Contact, Dooray!, etc.).
 * Two-factor Authentication setting
     * Not Configured: Users can log in by entering their ID and password without two-factor authentication.
     * Google OTP: After entering ID and password, users can log in by entering the One Time Password provided by the Google OTP app.
@@ -311,9 +311,9 @@ You can grant multiple required roles to project members.
 | Service | role | Description |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Create/Read/Update/Delete for Infrastructure Service |
-| Infrastructure | MEMBER | Read for VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scale Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | MEMBER | Read for VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scale Services. Create/Read/Update/Delete for Other services |
 | Infrastructure | Load Balancer ADMIN | Read for VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group Services. Create/Read/Update/Delete for Other services |
-| Infrastructure |  Security Group ADMIN | Read for VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, Auto Scale Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | Security Group ADMIN | Read for VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, Auto Scale Services. Create/Read/Update/Delete for Other services |
 | Virtual Desktop | ADMIN | Create/Read/Update/Delete for Virtual Desktop Service |
 | NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |

@@ -20,22 +20,22 @@
 
 * NHN Cloud SDK 1.0.0 이상 버전에서 ToastPushMessageReceiver 사용시 클릭 이벤트 수신 및 지표 수집 불가 이슈 수정
 
-## 1.2.0 (2022. 10. 04.)
+## 1.2.0 (October 4, 2022)
 
 ### NHN Cloud SDK
 
-#### 기능 개선
+#### Improved
 
-* AndroidX 지원
-    * 최소 지원 버전이 API 16으로 상향되었습니다. 
+* Added AndroidX support
+    * The minimum supported version has increased to API 16.
 
 ### NHN Cloud Push
 
-#### 기능 개선
+#### Improved
 
-* Android 13 대응
-    * POST_NOTIFICATION 권한을 요청할 수 있는 API가 추가되었습니다.
-    * Notification 채널을 생성할 수 있는 API가 추가되었습니다.  
+* Handled issues related to Android 13
+    * Added the API to request POST_NOTIFICATION permission.
+    * Added the API to create Notification channels.  
 
 ## 1.1.0 (September 6, 2022)
 
