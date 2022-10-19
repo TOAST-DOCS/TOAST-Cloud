@@ -1,16 +1,16 @@
 ## NHN Cloud > SDK 사용 가이드 > Document Recognizer > Credit Card (iOS)
 
-## Prerequisites
+## 사전 준비
 
 1. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.toast.com)에서 [AI Service > Document Recognizer] 서비스를 활성화합니다.
+2. [NHN Cloud Console](https://console.toast.com)에서 [AI Service > Document Recognizer] 서비스를 활성화합니다.
 3. Document Recognizer 콘솔에서 AppKey와 SecretKey를 확인합니다.
 
 <br>
 
 ## 지원 환경
 
-NHN Cloud OCR 은 iOS 11.0 이상에서 동작합니다.<br>
+NHN Cloud OCR은 iOS 11.0 이상에서 동작합니다.<br>
 
 ## NHN Cloud OCR 구성
 
@@ -24,7 +24,7 @@ iOS용 NHN Cloud OCR SDK의 구성은 다음과 같습니다.
 
 ## NHN Cloud OCR SDK를 Xcode 프로젝트에 적용
 
-### 1. Cococapods 을 통한 적용
+### 1. Cococapods을 통한 적용
 
 * Podfile을 생성하여 NHN Cloud SDK에 대한 Pod을 추가합니다.
 
@@ -44,9 +44,9 @@ end
 * NHN Cloud [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
 * Xcode Project에 **NHNCloudOCR.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, vision.framework, AVFoundation.framework**를 추가합니다.
 * vision.framework와 AVFoundation.framework는 아래 방법으로 추가할 수 있습니다.
-![linked_vision_frameworks]()
-
-![linked_frameworks_ocr]()
+![linked_vision_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_vision_frameworks.png)
+![linked_avfoundation_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_avfoundation_frameworks.png)
+![linked_frameworks_ocr](https://static.toastoven.net/toastcloud/sdk/ios/linked_frameworks_ocr.png)
 
 #### 프로젝트 설정
 
@@ -55,7 +55,7 @@ end
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 ## NHNCloudOCR SDK 초기화
-* NHNCloud 콘솔에서 발급받은 AppKey와 Secret을 NHNCloudOCRConfiguration 객체에 설정합니다.
+* NHN Cloud Console에서 발급받은 AppKey와 Secret을 NHNCloudOCRConfiguration 객체에 설정합니다.
   * AI Service -> Document Recognizer -> 신용카드
 * NHNCloudOCR은 초기화에 NHNCloudOCRConfiguration 객체를 파라미터로 사용합니다.
 * 카메라 사용 권한을 얻기 위해 info.plist에 아래 내용을 추가합니다.
@@ -77,8 +77,8 @@ Value : [카메라 권한 요청 메세지]
 ```
 
 ### Delegate API 명세
-* NHNCloudCreditCardRecognizerDelegate 를 등록하면 인식 결과에 대한 통지를 받을 수 있습니다.
-* OCR이 실행중일때 화면의 스크린 캡쳐와 동영상 녹화 이벤트를 수신받을 수 있습니다.
+* NHNCloudCreditCardRecognizerDelegate를 등록하면 인식 결과에 대한 통지를 받을 수 있습니다.
+* OCR이 실행 중일 때 화면의 스크린 캡처와 동영상 녹화 이벤트를 수신 받을 수 있습니다.
 
 ``` objc
 @protocol NHNCloudCreditCardRecognizerDelegate <NSObject>
@@ -91,7 +91,7 @@ Value : [카메라 권한 요청 메세지]
 ```
 
 ### 검출 이미지 반환 설정하기
-* OCR 결과인 NHNCloudCreditCardInfo 데이터에 검출된 이미지를 함께 반환 받을 수 있습니다. 
+* OCR 결과인 NHNCloudCreditCardInfo 데이터에 검출된 이미지를 함께 반환받을 수 있습니다. 
     * 기본값은 비활성화입니다. 
 #### 검출 이미지 반환 설정 API 명세 
 ```objc
@@ -130,10 +130,10 @@ Value : [카메라 권한 요청 메세지]
     NSLog(@"didDetectCreditCardInfo : error : %@", error);
 }
 
-// 스크린캡쳐 이벤트 수신
+// 스크린 캡처 이벤트 수신
 - (void)didDetectSecurityEvent:(NHNCloudSecurityEvent)event {
 
-    // 스크린 캡쳐 경고 Alert 출력 예시
+    // 스크린 캡처 경고 Alert 출력 예시
     if (event == NHNCloudSecurityEventScreenshot || event == NHNCloudSecurityEventScreenRecordingOn) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"캡쳐가 감지되었습니다." preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
@@ -141,7 +141,7 @@ Value : [카메라 권한 요청 메세지]
         [self presentViewController:alert animated:YES completion:nil];
     }
     
-    // 동영상 녹화시 빈화면 출력 예시
+    // 동영상 녹화 시 빈 화면 출력 예시
     if (event == NHNCloudSecurityEventScreenRecordingOn || event == NHNCloudSecurityEventScreenRecordingOff) {
         if ([[UIScreen mainScreen] isCaptured] ) {
             [[[UIApplication sharedApplication] windows] firstObject].hidden = YES;
@@ -158,9 +158,9 @@ Value : [카메라 권한 요청 메세지]
 ## NHNCloudCreditCardRecognizerViewController
 
 ### 1. Credit-Card 가이드 설정하기
-* NHNCloudOCR SDK에서 테스트를 위해 제공하는 Credit-Card 가이드를 사용하여 OCR을 테스트 할 수 있습니다.
-  * 신용카드가 Credit-Card 가이드안에 존재 할 경우 OCR이 시작됩니다.
-    * 기본값은 hidden 으로 눈에 보이지 않는 가이드가 존재합니다.
+* NHNCloudOCR SDK에서 테스트를 위해 제공하는 Credit-Card 가이드를 사용하여 OCR을 테스트할 수 있습니다.
+  * 신용카드가 Credit-Card 가이드 안에 존재할 경우 OCR이 시작됩니다.
+    * 기본값은 hidden으로 눈에 보이지 않는 가이드가 존재합니다.
     * `enableTestGuide`를 사용하여 테스트용 가이드를 출력할 수 있습니다. 
 
 #### Credit-Card 가이드 API 명세
@@ -199,10 +199,10 @@ Value : [카메라 권한 요청 메세지]
 
 #### Credit-Card Recognizer ViewController 열기 사용 예
 ```objc
-// SDK에서  Recognizer ViewController 를 열게 합니다.
+// SDK에서  Recognizer ViewController를 열게 합니다.
 [NHNCloudOCR openCreditCardRecognizerViewController];
 
-// SDK에서  Recognizer ViewController 를 반환받아 개발자가 원하는 방법으로 직접 열게 합니다.
+// SDK에서  Recognizer ViewController를 반환받아 개발자가 원하는 방법으로 직접 열게 합니다.
 NHNCloudCreditCardRecognizerViewController *creditCardRecognizerViewController = [NHNCloudOCR creditCardRecognizerViewController];
 [self presentViewController:creditCardRecognizerViewController animated:YES completion:nil];
 
@@ -279,7 +279,7 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 ```
 
 ### 6. 라이트 활성/비활성
-* 디바이스의 카메라 라이트를 활성화하거나 비활성화 합니다.
+* 디바이스의 카메라 라이트를 활성화하거나 비활성화합니다.
 
 #### 라이트 활성/비활성 API 명세
 ```objc
@@ -301,7 +301,7 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
 
 ### 7. 카메라 활성/비활성
-* 디바이스의 카메라를 활성화하거나 비활성화 합니다.
+* 디바이스의 카메라를 활성화하거나 비활성화합니다.
 
 #### 카메라 활성/비활성 API 명세
 ```objc
@@ -322,9 +322,9 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 ```
 
 ## NHNCloudCreditCardRecognizerViewController 커스터마이징
-* NHNCloudCreditCardRecognizerViewController에 커스터마이징을 수행할 수 있습니다.
+* NHNCloudCreditCardRecognizerViewController를 커스터마이징을 수행할 수 있습니다.
   * **Credit-Card 가이드의 경우 미리 정의된 값을 사용하기 때문에 변경이 불가능합니다.**
-* 초기화시에 NHNCloudSDK에서 제공하는 기본 UI를 비활성화 해야 합니다. 
+* 초기화 시에 NHNCloudOCR SDK에서 제공하는 기본 UI를 비활성화해야 합니다. 
 ```
 @interface NHNCloudOCRConfiguration : NSObject
 
@@ -350,7 +350,7 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
 
 ### 1. NHNCloudCreditCardRecognizerViewController 상속 
-* NHNCloudCreditCardRecognizerViewController를 상속구현하여 커스터마이징 할 수 있습니다.
+* NHNCloudCreditCardRecognizerViewController를 상속 구현하여 커스터마이징 할 수 있습니다.
 
 #### Override 함수 명세
 ```objc
@@ -374,7 +374,7 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
     [super viewDidLoad];
     
     [NHNCloudOCR setDelegate:self];
-    // Custom UI 생성 ...
+    // Custom UI 생성
 }
 
 - (void)viewWillAppear:(BOOL)animated {
