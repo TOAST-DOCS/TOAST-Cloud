@@ -208,22 +208,25 @@ Project services are used on a per-project basis and are billed accordingly.
 Once the project is created, you can select services.
 Services that can be enabled for each project include the following:
 
-- Compute
-- Container
-- Network
-- Storage
-- Database
-- Game
-- Security
-- Content Delivery
-- Notification
-- Mobile Service
-- Data & Analytics
-- Application Service
-- Search
-- Dev Tool
-- Management
-- Bill
+* Compute
+* Container
+* Network
+* Storage
+* Database
+* Hybrid & Private Cloud
+* Game
+* Security
+* Content Delivery
+* Notification
+* AI Service
+* Machine Learning
+* Application Service
+* Mobile Service
+* Search
+* Data & Analytics
+* Dev Tools
+* Management
+* Bill
 
 ### Guide to Enabling Project Services
 
@@ -296,9 +299,11 @@ You can grant multiple required roles to project members.
 
 #### Project Management roles
 
-| role | Description |
+| Role | Description |
 | --- | --- |
 | ADMIN | Create/Read/Update/Delete for the entire project |
+| MARKETPLACE_ADMIN | Marketplace Create, Read, Update, and Delete Services |
+| MARKETPLACE_VIEWER | Marketplace Read |
 | MEMBER | Create/Read/Update/Delete for all services in the project |
 | BILLING VIEWER | Read for usage status |
 | PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete for project's integrated Appkey<br>Create/Read/Update/Delete for project's role groups<br>Enable/Disable project services<br>Delete for projects |
@@ -308,7 +313,7 @@ You can grant multiple required roles to project members.
 
 #### Service Use roles
 
-| Service | role | Description |
+| Service | Role | Description |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Create/Read/Update/Delete for Infrastructure Service |
 | Infrastructure | MEMBER | Read for VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scale Services. Create/Read/Update/Delete for Other services |
@@ -411,6 +416,13 @@ You can grant multiple required roles to project members.
 | eTax | VIEWER | Read  for eTax Service |
 | marketplace | ADMIN | Create/Read/Update/Delete for marketplace Project Service |
 | marketplace | ADMIN | Read for marketplace Project Service |
+
+#### Service PERMISSION Role
+Service PERMISSION Role can enable or disable each service.
+
+| Role | Description |
+| --- | --- |
+| Service Name PERMISSION | Service Enable, Disable  |
 
 
 

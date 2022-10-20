@@ -189,8 +189,10 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * Database
 * Security
 * Content Delivery
-* Data & Analytics
+* Application Service
+* Dev Tools
 * Management
+
 
 ### 프로젝트 생성 가이드
 ![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_202107.png)
@@ -279,6 +281,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | 역할 | 설명 |
 | --- | --- |
 | ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| MARKETPLACE_ADMIN | 마켓플레이스 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| MARKETPLACE_VIEWER | 마켓플레이스 서비스 Read(읽기) |
 | MEMBER | 프로젝트 내 모든 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | BILLING VIEWER | 이용 현황 Read(읽기)  |
 | PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 역할 그룹 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제)  |
@@ -312,6 +316,13 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Deploy | VIEWER | Deploy 서비스 Read(읽기) 권한 |
 | Managed | ADMIN | Managed 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+
+#### 서비스 활성화 역할
+서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
+
+| 역할 | 설명 |
+| --- | --- |
+| 서비스명 Permission | 서비스 Enable(활성화), Disable(비활성화)  |
 
 ## 결제 관리
 
