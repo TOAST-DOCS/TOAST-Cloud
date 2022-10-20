@@ -210,15 +210,18 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 * Network
 * Storage
 * Database
+* Hybrid & Private Cloud
 * Game
 * Security
 * Content Delivery
 * Notification
-* Mobile Service
-* Data & Analytics
+* AI Service
+* Machine Learning
 * Application Service
+* Mobile Service
 * Search
-* Dev Tool
+* Data & Analytics
+* Dev Tools
 * Management
 * Bill
 
@@ -297,6 +300,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | 役割 | 説明 |
 | --- | --- |
 | ADMIN | プロジェクト全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| MARKETPLACE_ADMIN | Marketplace サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除) |
+| MARKETPLACE_VIEWER | Marketplace サービス Read(読込) |
 | MEMBER | プロジェクト内のすべてのサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | BILLING VIEWER | 利用状況Read(読み取り) |
 | PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <Br> プロジェクト役割グループCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除) |
@@ -410,7 +415,12 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | marketplace | ADMIN | marketplaceプロジェクトサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | marketplace | ADMIN | marketplaceプロジェクトサービスに対するRead(読み取り) |
 
+#### 서비스 활성화 역할
+サービスPERMISSION役割は、個別サービスを有効化または無効化できます。
 
+| 役割 | 説明 |
+| --- | --- |
+| Service Name PERMISSION | サービス Enable(有効), Disable(無効)  |
 
 ## 決済管理
 
