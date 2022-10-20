@@ -11,16 +11,18 @@
     * [Logger](./log-collector-ios) SDK
     * [In-app Purchase AppStore](./iap-ios) SDK
     * [Push](./push-ios) SDK
+    * [OCR](./creditcard-recognizer-ios) SDK
 
 * NHN Cloud SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용할 수 있습니다.
 
-| Service | Cocoapods Pod Name | Carthage | Framework | Dependency | Build Settings |
-| ------- | ------------------ | -------- | --------- | ---------- | -------------- |
-| All | NHNCloudSDK | binary "https://nh.nu/nhncloudsdk" | NHNCloudCore.framework<br>NHNCloudCommon.framework<br>NHNCloudLogger.framework<br>NHNCloudIAP.framework<br>NHNCloudPush.framework |  |  |
-| Mandatory | NHNCloudCore<br>NHNCloudCommon |  | NHNCloudCore.framework<br>NHNCloudCommon.framework |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
-| Log & Crash | NHNCloudLogger |  | NHNCloudLogger.framework | [External & Optional]<br>\* CrashReporter.framework (NHNCloud) |  |
-| IAP | NHNCloudIAP |  | NHNCloudIAP.framework | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
-| Push | NHNCloudPush |  | NHNCloudPush.framework | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
+| Service | Cocoapods Pod Name | Carthage | Framework | Deployment Target | Dependency | Build Settings |
+| --- | --- | --- | --- | --- | --- | --- |
+| All | NHNCloudSDK | binary "[https://nh.nu/nhncloudsdk](https://nh.nu/nhncloudsdk) | NHNCloudCore.framework<br>NHNCloudCommon.framework<br>NHNCloudLogger.framework<br>NHNCloudIAP.framework<br>NHNCloudPush.framework |  |  |  |
+| Mandatory | NHNCloudCore<br>NHNCloudCommon |  | NHNCloudCore.framework<br>NHNCloudCommon.framework | 9.0 |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
+| Log & Crash | NHNCloudLogger |  | NHNCloudLogger.framework | 9.0 | [External & Optional]<br>\* CrashReporter.framework (NHNCloud) |  |
+| IAP | NHNCloudIAP |  | NHNCloudIAP.framework | 9.0 | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
+| Push | NHNCloudPush |  | NHNCloudPush.framework | 9.0 | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
+| OCR | NHNCloudOCR |  | NHNCloudOCR.framework | 11.0 | \* Vision.framework<br>\* AVFoundation.framework |  |
 
 ## NHN Cloud SDK를 Xcode 프로젝트에 적용
 
@@ -29,7 +31,7 @@
 * Podfile을 생성하여 NHN Cloud SDK에 대한 Pod을 추가합니다.
 
 ```podspec
-platform :ios, '9.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
@@ -105,6 +107,7 @@ binary "https://nh.nu/nhncloudsdk"
 #import <NHNCloudLogger/NHNCloudLogger.h>
 #import <NHNCloudIAP/NHNCloudIAP.h>
 #import <NHNCloudPush/NHNCloudPush.h>
+#import <NHNCloudOCR/NHNCloudOCR.h>
 ```
 
 ## 사용자 아이디 설정
@@ -149,3 +152,4 @@ binary "https://nh.nu/nhncloudsdk"
 * [Log & Crash](./log-collector-ios) 사용 가이드
 * [In-app Purchase](./iap-ios) 사용 가이드
 * [Push](./push-ios) 사용 가이드
+* [OCR](./creditcard-recognizer-ios) 사용 가이드
