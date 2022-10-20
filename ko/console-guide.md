@@ -347,7 +347,12 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Gamebase | OPERATION VIEWER | 운영 메뉴 Read(읽기) |
 | Gamebase | PUSH ADMIN | 푸시 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Gamebase | PUSH VIEWER | 푸시 메뉴 Read(읽기) |
+| GameAnvil  | ADMIN | GameAnvil 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| GameAnvil  | MEMBER | GameAnvil 서비스 Read(읽기), 모니터링 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| GameAnvil  | PERMISSION | GameAnvil 서비스 Enable(활성화), Disable(비활성화) |
+| GameAnvil  | VIEWER | GameAnvil 서비스 Read(읽기)  |
 | GameStarter  | ADMIN | 게임 설정, 배포 메뉴 Create(생성)/ Read(읽기)/ Update(갱신)  |
+| GameStarter  | PERMISSION | GameStarter 서비스 Enable(활성화), Disable(비활성화)  |
 | GameStarter  | VIEWER | 게임 설정, 배포 메뉴 Read(읽기)  |
 | Leaderboard | ADMIN | Leaderboard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Leaderboard | VIEWER | Leaderboard 서비스 Read(읽기) |

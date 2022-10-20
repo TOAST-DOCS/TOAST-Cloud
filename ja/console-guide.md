@@ -349,7 +349,12 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Gamebase | OPERATION VIEWER | 運営メニューRead(読み取り) |
 | Gamebase | PUSH ADMIN | プッシュメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Gamebase | PUSH VIEWER | プッシュメニューRead(読み取り) |
+| GameAnvil  | ADMIN | GameAnvil サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
+| GameAnvil  | MEMBER | GameAnvil サービス Read(読込), モニタリング メニュー Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
+| GameAnvil  | PERMISSION | GameAnvil サービス Enable(有効), Disable(無効) |
+| GameAnvil  | VIEWER | GameAnvil サービス Read(読込)  |
 | GameStarter  | ADMIN | ゲーム設定, 配布メニュー Create(作成)/ Read(読み取り)/ Update(更新)  |
+| GameStarter  | PERMISSION | GameStarter サービス Enable(有効), Disable(無効) |
 | GameStarter  | VIEWER | ゲーム設定, 配布メニュー Read(読み取り)  |
 | Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Leaderboard | VIEWER | Leaderboardサービスに対するRead(読み取り) |
