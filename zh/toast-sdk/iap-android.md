@@ -498,7 +498,7 @@ public static void queryConsumablePurchases(Activity activity,
  */
 void queryConsumablePurchases(boolean isQueryAllStores) {
     IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
-        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회 : true, 현재 스토어 조회 : false
+        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회: true, 현재 스토어 조회: false
         .build();
     PurchasesResponseListener responseListenr =
             new IapService.PurchasesResponseListener() {
@@ -521,7 +521,7 @@ void queryConsumablePurchases(boolean isQueryAllStores) {
 * You can query activated subscription products (AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE) by user ID.
 * Subscription products for which purchase has been completed can be queried as long as usage period remains.
 * Activated subscription can be queried by using the NhnCloudIap.queryActivatedPurchases() method.
-* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 활성화된 구독 조회할 수 있습니다.
+* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 활성화된 구독을 조회할 수 있습니다.
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
 * Products subscribed in iOS can be queried in Android as well.
 
@@ -550,7 +550,7 @@ public static void queryActivatedPurchases(Activity activity,
  */
 void queryActivatedPurchases(boolean isQueryAllStores) {
     IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
-        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회 : true, 현재 스토어 조회 : false
+        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회: true, 현재 스토어 조회: false
         .build();
     PurchasesResponseListener responseListener =
             new IapService.PurchasesResponseListener() {
@@ -926,7 +926,7 @@ public void setProductId(String productId)
 
 ### IapQueryPurchasesParams
 
-* IapQueryPurchasesParams는 조회 하려는 조건을 설정합니다.
+* IapQueryPurchasesParams는 조회하려는 조건을 설정합니다.
 
 ```java
 /* IapQueryPurchasesParams.java */

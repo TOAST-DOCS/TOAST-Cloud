@@ -497,7 +497,7 @@ public static void queryConsumablePurchases(Activity activity,
  */
 void queryConsumablePurchases(boolean isQueryAllStores) {
     IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
-        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회 : true, 현재 스토어 조회 : false
+        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회: true, 현재 스토어 조회: false
         .build();
     PurchasesResponseListener responseListenr =
             new IapService.PurchasesResponseListener() {
@@ -520,7 +520,7 @@ void queryConsumablePurchases(boolean isQueryAllStores) {
 * User IDベースで有効になっている購読商品(AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE)を照会できます。
 * 決済が完了した購読商品は、使用期間が残っている場合、継続して照会できます。
 * 有効になっている購読は、NhnCloudIap.queryActivatedPurchases()メソッドを使用して照会できます。
-* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 활성화된 구독 조회할 수 있습니다.
+* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 활성화된 구독을 조회할 수 있습니다.
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストに返されます。
 * iOSで購読した商品をAndroidでも照会可能です。
 
@@ -549,7 +549,7 @@ public static void queryActivatedPurchases(Activity activity,
  */
 void queryActivatedPurchases(boolean isQueryAllStores) {
     IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
-        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회 : true, 현재 스토어 조회 : false
+        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회: true, 현재 스토어 조회: false
         .build();
     PurchasesResponseListener responseListener =
             new IapService.PurchasesResponseListener() {
@@ -923,7 +923,7 @@ public void setProductId(String productId)
 
 ### IapQueryPurchasesParams
 
-* IapQueryPurchasesParams는 조회 하려는 조건을 설정합니다.
+* IapQueryPurchasesParams는 조회하려는 조건을 설정합니다.
 
 ```java
 /* IapQueryPurchasesParams.java */
