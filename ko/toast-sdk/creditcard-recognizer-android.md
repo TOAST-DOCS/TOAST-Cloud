@@ -2,14 +2,14 @@
 
 ## 사전 준비
 
-1. [NHN Cloud 콘솔](https://console.toast.com)에서 [AI Service > Document Recognizer] 서비스를 활성화합니다.
+1. [NHN Cloud Console](https://console.toast.com)에서 [AI Service > Document Recognizer] 서비스를 활성화합니다.
 2. Document Recognizer 콘솔에서 AppKey와 SecretKey를 확인합니다.
 
 <br>
 
 ## 지원 환경
 
-NHN Cloud Credit Card Recognizer는 Android 5.0 이상 (API level 21 이상)에서 동작합니다.<br>
+NHN Cloud Credit Card Recognizer는 Android 5.0 이상(API level 21 이상)에서 동작합니다.<br>
 
 <br>
 
@@ -90,7 +90,7 @@ firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString(
 ## 신용카드 인식 화면 사용자 정의
 
 신용카드 인식 화면을 사용자 정의하여 사용할 수 있습니다.<br>
-사용자 정의 화면을 구성하려면 CreditCardRecognizer 대신 CreditCardRecognitionService를 사용해야합니다.<br>
+사용자 정의 화면을 구성하려면 CreditCardRecognizer 대신 CreditCardRecognitionService를 사용해야 합니다.<br>
 
 ### CreditCardRecognitionService 인스턴스 생성
 
@@ -121,14 +121,14 @@ creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
 }
 ```
 
-> 카드 인식 후 반드시 creditCardRecognitionService.stop()을 호출하여 서비스를 중지해야합니다.
+> 카드 인식 후 반드시 creditCardRecognitionService.stop()을 호출하여 서비스를 중지해야 합니다.
 
 <br>
 
 ### 인식 결과 처리
 
-CreditCardRecognitionListener으로 전달되는 CreditCardRecognitionData는 신뢰도(Confidence rating)와 상관없이 모든 결과를 반환합니다.<br>
-따라서 아래와 같이 신뢰도(Confidence rating)를 체크하여 보다 정확한 결과를 사용할 수 있습니다.<br>
+CreditCardRecognitionListener으로 전달되는 CreditCardRecognitionData는 신뢰도(confidence rating)와 상관없이 모든 결과를 반환합니다.<br>
+따라서 아래와 같이 신뢰도(confidence rating)를 체크하여 보다 정확한 결과를 사용할 수 있습니다.<br>
 
 ```kotlin
 creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
@@ -202,7 +202,7 @@ Activity 또는 Fragment의 Layout에 아래와 같이 CreditCardRecognitionCame
 
 ### 백그라운드 색상 변경
 
-스캔 가이드 영역을 제외한 영역은 반투명하게 보여집니다.<br>
+스캔 가이드 영역을 제외한 영역은 반투명하게 보입니다.<br>
 이 영역의 색상을 "app:guideBackgroundColor" 속성을 사용하여 설정합니다.<br>
 
 ```xml
@@ -220,7 +220,7 @@ Activity 또는 Fragment의 Layout에 아래와 같이 CreditCardRecognitionCame
 스캔 가이드 뷰를 CreditCardRecognitionCameraPreview의 하위 뷰로 배치하여 자유롭게 정의할 수 있습니다.<br>
 사용자 정의한 가이드 뷰는 "app:guideView" 속성을 사용하여 설정합니다.<br>
 
-> CreditCardRecognitionCameraPreview는 ConstraintLayout을 상속 구현되어있습니다.
+> CreditCardRecognitionCameraPreview는 ConstraintLayout을 상속 구현되어 있습니다.
 
 스캔 가이드 뷰의 사이즈는 자동으로 조정됩니다.<br>
 
@@ -303,7 +303,7 @@ creditCardRecognitionService.release();
 
 ### CreditCardRecognizer Lifecycle 설정
 
-Activity 또는 Fragment의 라이프사이클에 따라 아래와 같이 호출합니다.<br>
+Activity 또는 Fragment의 라이프 사이클에 따라 아래와 같이 호출합니다.<br>
 
 #### Activity
 
@@ -356,9 +356,9 @@ creditCardRecognitionService.scanOrientation =
 
 <br>
 
-### 화면 캡쳐 방지
+### 화면 캡처 방지
 
-화면 캡쳐 방지를 위해서 Activity의 onCreate()에서 setContentView()가 호출되기 전에 **WindowManager.LayoutParams.FLAG\_SECURE**를 추가합니다.<br>
+화면 캡처 방지를 위해서 Activity의 onCreate()에서 setContentView()가 호출되기 전에 **WindowManager.LayoutParams.FLAG\_SECURE**를 추가합니다.<br>
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -375,7 +375,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ### 디바이스 체크
 
-Credit Card Recognition Service를 시작하기 전에 애플리케이션을 실행하는 기기에서 Credit Card Recognition Service를 사용할 수 있는 환경인지 확인 할 수 있습니다.<br>
+Credit Card Recognition Service를 시작하기 전에 애플리케이션을 실행하는 기기에서 Credit Card Recognition Service를 사용할 수 있는 환경인지 확인할 수 있습니다.<br>
 이 검사를 수행하려면 CreditCardRecognitionService.isAvailable(Context) 메서드를 사용합니다.<br>
 
 ```kotlin
@@ -405,7 +405,7 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
 | getOriginBitmap | Bitmap |  | 원본 이미지를 반환합니다. |
-| getDetectedBitmap | Bitmap |  | 검출된 이미지를 반환합니다.<br>(가이드 영역의 이미지가 반환됩니다) |
+| getDetectedBitmap | Bitmap |  | 검출된 이미지를 반환합니다.<br>(가이드 영역의 이미지가 반환됩니다.) |
 | getResolution | String |  | 해상도 정보를 반환합니다.<br>(권장 해상도 이상이면 normal, 미만은 low) |
 | getFullCardNumber | SecureString |  | 전체 카드 번호를 반환합니다. |
 | getCardNumbers | CardNumber[] |  | 카드 번호 데이터(CardNumber)의 배열이 반환됩니다. |
@@ -439,4 +439,4 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
 | getPoints | Point[] |  | 좌표(Point)의 배열을 반환합니다. |
-| getPoint | Point | int | 좌표를 반환합니다.<br>\- LEFT\_TOP : 0<br>\- RIGHT\_TOP : 1<br>\- RIGHT\_BOTTOM : 2<br>\- LEFT\_BOTTOM : 3 |
+| getPoint | Point | int | 좌표를 반환합니다.<br>\- LEFT\_TOP: 0<br>\- RIGHT\_TOP: 1<br>\- RIGHT\_BOTTOM: 2<br>\- LEFT\_BOTTOM: 3 |
