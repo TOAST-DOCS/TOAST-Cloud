@@ -303,7 +303,7 @@ You can grant multiple required roles to project members.
 | --- | --- |
 | ADMIN | Create/Read/Update/Delete for the entire project |
 | MARKETPLACE_ADMIN | Marketplace Create, Read, Update, and Delete Services |
-| MARKETPLACE_VIEWER | MARKETPLACE Read |
+| MARKETPLACE_VIEWER | Marketplace Read |
 | MEMBER | Create/Read/Update/Delete for all services in the project |
 | BILLING VIEWER | Read for usage status |
 | PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete for project's integrated Appkey<br>Create/Read/Update/Delete for project's role groups<br>Enable/Disable project services<br>Delete for projects |
