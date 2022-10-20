@@ -18,7 +18,7 @@
 
 #### 버그 수정
 
-* NHN Cloud SDK 1.0.0 이상 버전에서 ToastPushMessageReceiver 사용시 클릭 이벤트 수신 및 지표 수집 불가 이슈 수정
+* NHN Cloud SDK 1.0.0 이상 버전에서 ToastPushMessageReceiver 사용 시 클릭 이벤트 수신 및 지표 수집 불가 오류 수정
 
 ## 1.2.0 (2022. 10. 04.)
 
