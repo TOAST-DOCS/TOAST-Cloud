@@ -1,20 +1,19 @@
 ## NHN Cloud > SDK User Guide > Document Recognizer > Credit Card (Android)
 
-## 사전 준비
+## 事前準備
 
-1. [NHN Cloud Console](https://console.toast.com)에서 [AI Service > Document Recognizer] 서비스를 활성화합니다.
-2. Document Recognizer 콘솔에서 AppKey와 SecretKey를 확인합니다.
+1. [NHN Cloud Console](https://console.toast.com)で[AI Service > Document Recognizer]サービスを有効にします。
+2. Document RecognizerコンソールdeAppKeyとSecretKeyを確認します。
 
-## 지원 환경
+## サポート環境
 
-NHN Cloud Credit Card Recognizer는 Android 5.0 이상(API level 21 이상)에서 동작합니다.
+NHN Cloud Credit Card RecognizerはAndroid 5.0以上(API level 21以上)で動作します。
 
-## 프로젝트 설정
+## プロジェクト設定
 
-### 의존성 추가
+### 依存関係の追加
 
-앱의 build.gradle 파일에 nhncloud-creditcard-recognizer 의존성을 추가합니다.
-
+アプリのbuild.gradleファイルにnhncloud-creditcard-recognizer依存関係を追加します。
 ```groovy
 dependencies {
     ...
@@ -25,18 +24,18 @@ dependencies {
 
 <br>
 
-### CAMERA 권한
+### CAMERA権限
 
-Credit Card Recognizer를 사용하기 위해서는 **Manifest.permission.CAMERA** 권한이 필요합니다.
-Credit Card Recognizer를 시작하기 전에 카메라 권한을 획득하세요.
+Credit Card Recognizerを使用するには**Manifest.permission.CAMERA**権限が必要です。
+Credit Card Recognizerを始める前にカメラ権限を取得してください。
 
 <br>
 
-## Credit Card Recognizer 사용
+## Credit Card Recognizer使用
 
-### CreditCardRecognizer 인스턴스 생성
+### CreditCardRecognizerインスタンス作成
 
-Credit Card Recognizer 인스턴스를 생성합니다.
+Credit Card Recognizerインスタンスを作成します。
 
 ```kotlin
 val creditCardRecognizer = NhnCloudOcr.newBuilder(context)
@@ -47,9 +46,9 @@ val creditCardRecognizer = NhnCloudOcr.newBuilder(context)
 
 <br>
 
-### CreditCardRecognizer 시작하기
+### CreditCardRecognizerをはじめる
 
-CreditCardRecognizer의 launch(Activity, CreditCardRecognitionCallback) 메서드를 호출하여 신용카드 인식을 시작합니다.
+CreditCardRecognizerのlaunch(Activity, CreditCardRecognitionCallback)メソッドを呼び出してクレジットカードの認識を開始します。
 
 ```kotlin
 creditCardRecognizer.launch(activity) { result, data ->
@@ -63,13 +62,13 @@ creditCardRecognizer.launch(activity) { result, data ->
 
 <br>
 
-### 인식 데이터 사용
+### 認識データ使用
 
-신용카드 인식 성공 시 CreditCardData 객체로 신용카드 인식 데이터가 전달됩니다.
-개인정보 보호를 위해 신용카드 번호와 유효기간은 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
-SecureString.charAt(index) 메서드는 지정된 index에 있는 문자를 반환합니다.
+クレジットカードの認識成功時、CreditCardDataオブジェクトにクレジットカード認識データが伝達されます。
+個人情報保護のために、クレジットカード番号と有効期限は一般文字列ではないSecureStringオブジェクトで返されます。
+SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。
 
-> CreditCardData로 반환되는 신용카드 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약합니다.
+> CreditCardDataで返されるクレジットカード認識情報をStringオブジェクトで作成して使用するとセキュリティに脆弱です。
 
 ```kotlin
 val cardNumbers = creditCardData.cardNumbers
@@ -83,14 +82,14 @@ firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString(
 
 <br>
 
-## 신용카드 인식 화면 사용자 정의
+## クレジットカード認識画面のユーザー定義
 
-신용카드 인식 화면을 사용자 정의하여 사용할 수 있습니다.
-사용자 정의 화면을 구성하려면 CreditCardRecognizer 대신 CreditCardRecognitionService를 사용해야 합니다.
+クレジットカード認識画面をユーザー定義して使用できます。
+ユーザー定義画面を構成するにはCreditCardRecognizerの代わりにCreditCardRecognitionServiceを使用する必要があります。
 
-### CreditCardRecognitionService 인스턴스 생성
+### CreditCardRecognitionServiceインスタンス作成
 
-CreditCardRecognitionService 인스턴스를 생성합니다.
+CreditCardRecognitionServiceインスタンスを作成します。
 
 ```kotlin
 val creditCardRecognitionService = NhnCloudOcrServices.newBuilder(context)
@@ -101,10 +100,10 @@ val creditCardRecognitionService = NhnCloudOcrServices.newBuilder(context)
 
 <br>
 
-### CreditCardRecognitionService 리스너 등록
+### CreditCardRecognitionServiceリスナー登録
 
-setCreditCardRecognitionListener() 메서드를 사용하여 리스너를 등록합니다.
-신용카드가 인식되었을 때 CreditCardRecognitionListener를 통해 결과가 통지됩니다.
+setCreditCardRecognitionListener()メソッドを使用してリスナーを登録します。
+クレジットカードが認識された時、CreditCardRecognitionListenerを通じて結果が通知されます。
 
 ```kotlin
 creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
@@ -117,14 +116,14 @@ creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
 }
 ```
 
-> 카드 인식 후 반드시 creditCardRecognitionService.stop()을 호출하여 서비스를 중지해야 합니다.
+> カード認識後に必ずcreditCardRecognitionService.stop()を呼び出してサービスを停止する必要があります。
 
 <br>
 
-### 인식 결과 처리
+### 認識結果の処理
 
-CreditCardRecognitionListener으로 전달되는 CreditCardRecognitionData는 신뢰도(confidence rating)와 상관없이 모든 결과를 반환합니다.
-따라서 아래와 같이 신뢰도(confidence rating)를 체크하여 보다 정확한 결과를 사용할 수 있습니다.
+CreditCardRecognitionListenerに伝達されるCreditCardRecognitionDataは信頼度(confidence rating)に関係なくすべての結果を返します。
+したがって、以下のように信頼度(confidence rating)をチェックして、より正確な結果を使用できます。
 
 ```kotlin
 creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
@@ -154,13 +153,13 @@ private fun isConfident(data: CreditCardRecognitionData): Boolean {
 
 <br>
 
-### 인식 데이터 사용
+### 認識データの使用
 
-신용카드 인식 성공 시 CreditCardRecognitionData 객체로 신용카드 인식 데이터가 전달됩니다.
-개인정보 보호를 위해 신용카드 번호와 유효기간은 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
-SecureString.charAt(index) 메서드는 지정된 index에 있는 문자를 반환합니다.
+クレジットカードの認識に成功した時、CreditCardRecognitionDataオブジェクトでクレジットカード認識データが伝達されます。
+個人情報保護のためにクレジットカード番号と有効期限は一般文字列ではないSecureStringオブジェクトで返されます。
+SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。
 
-> CreditCardRecognitionData로 반환되는 신용카드 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약합니다.
+> CreditCardRecognitionDataで返されるクレジットカード認識情報をStringオブジェクトで作成して使用するとセキュリティに脆弱です。
 
 ```kotlin
 val cardNumbers = creditCardData.cardNumbers
@@ -174,9 +173,9 @@ firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString(
 
 <br>
 
-### Camera Preview 구성
+### Camera Preview構成
 
-Activity 또는 Fragment의 Layout에 아래와 같이 CreditCardRecognitionCameraPreview 추가하여 Camera Preview를 구성합니다.
+ActivityまたはFragmentのLayoutに以下のようにCreditCardRecognitionCameraPreviewを追加してCamera Previewを構成します。
 
 ```xml
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -196,10 +195,10 @@ Activity 또는 Fragment의 Layout에 아래와 같이 CreditCardRecognitionCame
 
 <br>
 
-### 백그라운드 색상 변경
+### バックグラウンドの色を変更
 
-스캔 가이드 영역을 제외한 영역은 반투명하게 보입니다.
-이 영역의 색상을 "app:guideBackgroundColor" 속성을 사용하여 설정합니다.
+スキャンガイド領域を除く領域は半透明に見えます。
+この領域の色を"app:guideBackgroundColor"プロパティを使用して設定します。
 
 ```xml
 <com.nhncloud.android.ocr.creditcard.view.CreditCardRecognitionCameraPreview
@@ -211,14 +210,14 @@ Activity 또는 Fragment의 Layout에 아래와 같이 CreditCardRecognitionCame
 
 <br>
 
-### 스캔 가이드 뷰 사용자 정의
+### スキャンガイドビューユーザー定義
 
-스캔 가이드 뷰를 CreditCardRecognitionCameraPreview의 하위 뷰로 배치하여 자유롭게 정의할 수 있습니다.
-사용자 정의한 가이드 뷰는 "app:guideView" 속성을 사용하여 설정합니다.
+スキャンガイドビューをCreditCardRecognitionCameraPreviewの下位ビューとして配置して自由に定義できます。
+ユーザー定義したガイドビューは"app:guideView"プロパティを使用して設定します。
 
-> CreditCardRecognitionCameraPreview는 ConstraintLayout을 상속 구현되어 있습니다.
+> CreditCardRecognitionCameraPreviewはConstraintLayoutを継承実装されています。
 
-스캔 가이드 뷰의 사이즈는 자동으로 조정됩니다.
+スキャンガイドビューのサイズは自動的に調整されます。
 
 ```xml
 <com.nhncloud.android.ocr.creditcard.view.CreditCardRecognitionCameraPreview
@@ -240,10 +239,10 @@ Activity 또는 Fragment의 Layout에 아래와 같이 CreditCardRecognitionCame
 
 <br>
 
-### 신용카드 검출 시 가이드 뷰 변경
+### クレジットカード検出時のガイドビュー変更
 
-신용카드가 검출되었을 때 스캔 가이드 뷰의 색상 또는 모양을 변경할 수 있습니다.
-CreditCardDetectable 인터페이스를 상속 구현하여 setDetected(Boolean)으로 전달되는 값에 따라 가이드 뷰의 색상 또는 모양을 변경합니다.
+クレジットカードが検出された時、スキャンガイドビューの色または形を変更できます。
+CreditCardDetectableインタフェースを継承実装してsetDetected(Boolean)に伝達される値に基づいてガイドビューの色または形を変更します。
 
 ```kotlin
 class CustomGuideView(
@@ -263,9 +262,9 @@ class CustomGuideView(
 
 <br>
 
-### 서비스 시작
+### サービス開始
 
-CreditCardRecognitionCameraPreview의 인스턴스를 획득하여 CreditCardRecognitionService 시작합니다.
+CreditCardRecognitionCameraPreviewのインスタンスを取得してCreditCardRecognitionServiceを開始します。
 
 ```kotlin
 val cameraPreview = findViewById<CreditCardRecognitionCameraPreview>(R.id.camera_preview)
@@ -278,9 +277,9 @@ try {
 
 <br>
 
-### 서비스 정지
+### サービス停止
 
-앱이 백그라운드로 진입 또는 신용카드 인식에 성공했을 때 creditCardRecognitionService를 정지합니다.
+アプリがバックグラウンドになるか、クレジットカードの認識に成功した時、creditCardRecognitionServiceを停止します。
 
 ```kotlin
 creditCardRecognitionService.stop()
@@ -288,9 +287,9 @@ creditCardRecognitionService.stop()
 
 <br>
 
-### 서비스 해제
+### サービス解除
 
-Activity 또는 Fragment의 View가 Destory 되었을 때 creditCardRecognitionService를 해제합니다.
+ActivityまたはFragmentのViewがDestoryされた時、creditCardRecognitionServiceを解除します。
 
 ```kotlin
 creditCardRecognitionService.release();
@@ -298,9 +297,9 @@ creditCardRecognitionService.release();
 
 <br>
 
-### CreditCardRecognizer Lifecycle 설정
+### CreditCardRecognizer Lifecycle設定
 
-Activity 또는 Fragment의 라이프 사이클에 따라 아래와 같이 호출합니다.
+ActivityまたはFragmentのライフサイクルに基づいて以下のように呼び出します。
 
 #### Activity
 
@@ -342,9 +341,9 @@ override fun onDestroyView() {
 
 <br>
 
-### 스캔 방향 설정
+### スキャン方向設定
 
-신용카드 스캔 방향을 설정합니다.
+クレジットカードのスキャン方向を設定します。
 
 ```kotlin
 creditCardRecognitionService.scanOrientation =
@@ -353,9 +352,9 @@ creditCardRecognitionService.scanOrientation =
 
 <br>
 
-### 화면 캡처 방지
+### 画面キャプチャ防止
 
-화면 캡처 방지를 위해서 Activity의 onCreate()에서 setContentView()가 호출되기 전에 **WindowManager.LayoutParams.FLAG\_SECURE**를 추가합니다.
+画面キャプチャ防止のためにActivityのonCreate()でsetContentView()が呼び出される前に**WindowManager.LayoutParams.FLAG\_SECURE**を追加します。
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -366,14 +365,14 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-자세한 사항은 [WindowManager.LayoutParams.FLAG\_SECURE](https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE)을 참고하세요.
+詳細については、 [WindowManager.LayoutParams.FLAG\_SECURE](https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE)を参照してください。
 
 <br>
 
-### 디바이스 체크
+### デバイスチェック
 
-Credit Card Recognition Service를 시작하기 전에 애플리케이션을 실행하는 기기에서 Credit Card Recognition Service를 사용할 수 있는 환경인지 확인할 수 있습니다.
-이 검사를 수행하려면 CreditCardRecognitionService.isAvailable(Context) 메서드를 사용합니다.
+Credit Card Recognition Serviceを起動する前に、アプリケーションを実行する端末でCredit Card Recognition Serviceを使用できる環境であることを確認できます。
+この検査を実行するにはCreditCardRecognitionService.isAvailable(Context)メソッドを使用します。
 
 ```kotlin
 if (CreditCardRecognitionService.isAvailable(context)) {
@@ -389,9 +388,9 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getFullCardNumber | SecureString |  | 전체 카드 번호를 반환합니다. |
-| getCardNumbers | SecureString[] |  | 카드 번호 배열을 반환합니다. |
-| getExpirationDate | SecureString |  | 유효 기간을 반환합니다. |
+| getFullCardNumber | SecureString |  | 全てのカード番号を返します。 |
+| getCardNumbers | SecureString[] |  | カード番号配列を返します。 |
+| getExpirationDate | SecureString |  | 有効期限を返します。 |
 
 <br>
 
@@ -399,13 +398,13 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getOriginBitmap | Bitmap |  | 원본 이미지를 반환합니다. |
-| getDetectedBitmap | Bitmap |  | 검출된 이미지를 반환합니다.<br>(가이드 영역의 이미지가 반환됩니다.) |
-| getResolution | String |  | 해상도 정보를 반환합니다.<br>(권장 해상도 이상이면 normal, 미만은 low) |
-| getFullCardNumber | SecureString |  | 전체 카드 번호를 반환합니다. |
-| getCardNumbers | CardNumber[] |  | 카드 번호 데이터(CardNumber)의 배열이 반환됩니다. |
-| getExpirationDate | ExpirationDate |  | 유효 기간 데이터(ExpirationDate)가 반환됩니다. |
-| getOriginJsonData | String |  | 서버 응답 결과를 반환합니다. |
+| getOriginBitmap | Bitmap |  | 原本イメージを返します。 |
+| getDetectedBitmap | Bitmap |  | 検出されたイメージを返します。<br>(ガイド領域のイメージが返されます。) |
+| getResolution | String |  | 解像度情報を返します。<br>(推奨解像度以上の場合はnormal、未満はlow) |
+| getFullCardNumber | SecureString |  | 全てのカード番号を返します。 |
+| getCardNumbers | CardNumber[] |  | カード番号データ(CardNumber)の配列が返されます。 |
+| getExpirationDate | ExpirationDate |  | 有効期限データ(ExpirationDate)が返されます。 |
+| getOriginJsonData | String |  | サーバーレスポンス結果を返します。 |
 
 <br>
 
@@ -413,9 +412,9 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getValue | SecureString |  | 카드 번호 인식 결과를 반환합니다. |
-| getConfidence | String |  | 카드 번호 인식 결과의 신뢰도를 반환합니다. |
-| getCoordinates | Coordinates |  | 카드 번호 인식 영역의 좌표 목록(Coordinates)를 반환합니다. |
+| getValue | SecureString |  | カード番号認識結果を返します。 |
+| getConfidence | String |  | カード番号認識結果の信頼度を返します。 |
+| getCoordinates | Coordinates |  | カード番号認識領域の座標リスト(Coordinates)を返します。 |
 
 <br>
 
@@ -423,9 +422,9 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getValue | SecureString |  | 유효 기간 인식 결과를 반환합니다. |
-| getConfidence | String |  | 유효 기간 인식 결과의 신뢰도를 반환합니다. |
-| getCoordinates | Coordinates |  | 유효 기간 인식 영역의 좌표 목록(Coordinates)를 반환합니다. |
+| getValue | SecureString |  | 有効期限の認識結果を返します。 |
+| getConfidence | String |  | 有効期限の認識結果の信頼度を返します。 |
+| getCoordinates | Coordinates |  | 有効期限認識領域の座標リスト(Coordinates)を返します。 |
 
 <br>
 
@@ -433,7 +432,7 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getPoints | Point[] |  | 좌표(Point)의 배열을 반환합니다. |
-| getPoint | Point | int | 좌표를 반환합니다.<br>\- LEFT\_TOP: 0<br>\- RIGHT\_TOP: 1<br>\- RIGHT\_BOTTOM: 2<br>\- LEFT\_BOTTOM: 3 |
+| getPoints | Point[] |  | 座標(Point)の配列を返します。 |
+| getPoint | Point | int | 座標を返します。<br>\- LEFT\_TOP: 0<br>\- RIGHT\_TOP: 1<br>\- RIGHT\_BOTTOM: 2<br>\- LEFT\_BOTTOM: 3 |
 
 <br>
