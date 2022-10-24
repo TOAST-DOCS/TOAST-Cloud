@@ -4,21 +4,21 @@
 
 ### NHN Cloud OCR
 
-#### 기능 추가
+#### 機能追加
 
-* OCR(Credit Card Recognizer) 추가
+* OCR(Credit Card Recognizer)追加
 
 ### NHN Cloud IAP
 
-#### 기능 추가
+#### 機能追加
 
-* [모든 스토어] 활성화 구독 조회 및 미소비 결제 내역 조회 API 추가
+* [すべてのストア]有効購読照会および未消費決済履歴照会API追加
 
 ### NHN Cloud Push
 
-#### 버그 수정
+#### バグ修正
 
-* NHN Cloud SDK 1.0.0 이상 버전에서 ToastPushMessageReceiver 사용 시 클릭 이벤트 수신 및 지표 수집 불가 오류 수정
+* NHN Cloud SDK 1.0.0以上バージョンでToastPushMessageReceiver使用時、クリックイベント受信および指標収集不可エラーを修正
 
 ## 1.2.0 (2022. 10. 04.)
 
