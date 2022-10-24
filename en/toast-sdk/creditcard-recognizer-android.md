@@ -23,10 +23,14 @@ dependencies {
 }
 ```
 
+<br>
+
 ### CAMERA 권한
 
 Credit Card Recognizer를 사용하기 위해서는 **Manifest.permission.CAMERA** 권한이 필요합니다.
 Credit Card Recognizer를 시작하기 전에 카메라 권한을 획득하세요.
+
+<br>
 
 ## Credit Card Recognizer 사용
 
@@ -41,6 +45,8 @@ val creditCardRecognizer = NhnCloudOcr.newBuilder(context)
         .createCreditCardRecognizer()
 ```
 
+<br>
+
 ### CreditCardRecognizer 시작하기
 
 CreditCardRecognizer의 launch(Activity, CreditCardRecognitionCallback) 메서드를 호출하여 신용카드 인식을 시작합니다.
@@ -54,6 +60,8 @@ creditCardRecognizer.launch(activity) { result, data ->
     }
 }
 ```
+
+<br>
 
 ### 인식 데이터 사용
 
@@ -73,6 +81,8 @@ firstNumberTextView4.text = if (firstNumber.length > 2) firstNumber[2].toString(
 firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString() else ""
 ```
 
+<br>
+
 ## 신용카드 인식 화면 사용자 정의
 
 신용카드 인식 화면을 사용자 정의하여 사용할 수 있습니다.
@@ -88,6 +98,8 @@ val creditCardRecognitionService = NhnCloudOcrServices.newBuilder(context)
         .secretKey(SECRET_KEY)
         .createCreditCardRecognitionService()
 ```
+
+<br>
 
 ### CreditCardRecognitionService 리스너 등록
 
@@ -106,6 +118,8 @@ creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
 ```
 
 > 카드 인식 후 반드시 creditCardRecognitionService.stop()을 호출하여 서비스를 중지해야 합니다.
+
+<br>
 
 ### 인식 결과 처리
 
@@ -138,6 +152,8 @@ private fun isConfident(data: CreditCardRecognitionData): Boolean {
 }
 ```
 
+<br>
+
 ### 인식 데이터 사용
 
 신용카드 인식 성공 시 CreditCardRecognitionData 객체로 신용카드 인식 데이터가 전달됩니다.
@@ -155,6 +171,8 @@ firstNumberTextView2.text = if (firstNumber.length > 1) firstNumber[1].toString(
 firstNumberTextView4.text = if (firstNumber.length > 2) firstNumber[2].toString() else ""
 firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString() else ""
 ```
+
+<br>
 
 ### Camera Preview 구성
 
@@ -176,6 +194,8 @@ Activity 또는 Fragment의 Layout에 아래와 같이 CreditCardRecognitionCame
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
+<br>
+
 ### 백그라운드 색상 변경
 
 스캔 가이드 영역을 제외한 영역은 반투명하게 보입니다.
@@ -188,6 +208,8 @@ Activity 또는 Fragment의 Layout에 아래와 같이 CreditCardRecognitionCame
     android:layout_height="match_parent"
     app:guideBackgroundColor="#33000000" />
 ```
+
+<br>
 
 ### 스캔 가이드 뷰 사용자 정의
 
@@ -216,6 +238,8 @@ Activity 또는 Fragment의 Layout에 아래와 같이 CreditCardRecognitionCame
 </com.nhncloud.android.ocr.creditcard.view.CreditCardRecognitionCameraPreview>
 ```
 
+<br>
+
 ### 신용카드 검출 시 가이드 뷰 변경
 
 신용카드가 검출되었을 때 스캔 가이드 뷰의 색상 또는 모양을 변경할 수 있습니다.
@@ -237,6 +261,8 @@ class CustomGuideView(
 }
 ```
 
+<br>
+
 ### 서비스 시작
 
 CreditCardRecognitionCameraPreview의 인스턴스를 획득하여 CreditCardRecognitionService 시작합니다.
@@ -250,6 +276,8 @@ try {
 }
 ```
 
+<br>
+
 ### 서비스 정지
 
 앱이 백그라운드로 진입 또는 신용카드 인식에 성공했을 때 creditCardRecognitionService를 정지합니다.
@@ -258,6 +286,8 @@ try {
 creditCardRecognitionService.stop()
 ```
 
+<br>
+
 ### 서비스 해제
 
 Activity 또는 Fragment의 View가 Destory 되었을 때 creditCardRecognitionService를 해제합니다.
@@ -265,6 +295,8 @@ Activity 또는 Fragment의 View가 Destory 되었을 때 creditCardRecognitionS
 ```kotlin
 creditCardRecognitionService.release();
 ```
+
+<br>
 
 ### CreditCardRecognizer Lifecycle 설정
 
@@ -308,6 +340,8 @@ override fun onDestroyView() {
 }
 ```
 
+<br>
+
 ### 스캔 방향 설정
 
 신용카드 스캔 방향을 설정합니다.
@@ -316,6 +350,8 @@ override fun onDestroyView() {
 creditCardRecognitionService.scanOrientation =
     CreditCardScanOrientation.HORIZONTAL // or CreditCardScanOrientation.HORIZONTAL
 ```
+
+<br>
 
 ### 화면 캡처 방지
 
@@ -331,6 +367,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ```
 
 자세한 사항은 [WindowManager.LayoutParams.FLAG\_SECURE](https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE)을 참고하세요.
+
+<br>
 
 ### 디바이스 체크
 
@@ -355,6 +393,8 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 | getCardNumbers | SecureString[] |  | 카드 번호 배열을 반환합니다. |
 | getExpirationDate | SecureString |  | 유효 기간을 반환합니다. |
 
+<br>
+
 ### CreditCardRecognitionData
 
 | Method | Returns | Parameters | Descriptions |
@@ -367,6 +407,8 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 | getExpirationDate | ExpirationDate |  | 유효 기간 데이터(ExpirationDate)가 반환됩니다. |
 | getOriginJsonData | String |  | 서버 응답 결과를 반환합니다. |
 
+<br>
+
 ### CreditCardRecognitionData.CardNumber
 
 | Method | Returns | Parameters | Descriptions |
@@ -374,6 +416,8 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 | getValue | SecureString |  | 카드 번호 인식 결과를 반환합니다. |
 | getConfidence | String |  | 카드 번호 인식 결과의 신뢰도를 반환합니다. |
 | getCoordinates | Coordinates |  | 카드 번호 인식 영역의 좌표 목록(Coordinates)를 반환합니다. |
+
+<br>
 
 ### CreditCardRecognitionData.ExpirationDate
 
@@ -383,9 +427,13 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 | getConfidence | String |  | 유효 기간 인식 결과의 신뢰도를 반환합니다. |
 | getCoordinates | Coordinates |  | 유효 기간 인식 영역의 좌표 목록(Coordinates)를 반환합니다. |
 
+<br>
+
 ### CreditCardRecognitionData.Coordinates
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
 | getPoints | Point[] |  | 좌표(Point)의 배열을 반환합니다. |
 | getPoint | Point | int | 좌표를 반환합니다.<br>\- LEFT\_TOP: 0<br>\- RIGHT\_TOP: 1<br>\- RIGHT\_BOTTOM: 2<br>\- LEFT\_BOTTOM: 3 |
+
+<br>
