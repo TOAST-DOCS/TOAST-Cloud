@@ -5,20 +5,15 @@
 1. [NHN Cloud Console](https://console.toast.com)で[AI Service > Document Recognizer]サービスを有効にします。
 2. Document RecognizerコンソールdeAppKeyとSecretKeyを確認します。
 
-<br>
-
 ## サポート環境
 
-NHN Cloud Credit Card RecognizerはAndroid 5.0以上(API level 21以上)で動作します。<br>
-
-<br>
+NHN Cloud Credit Card RecognizerはAndroid 5.0以上(API level 21以上)で動作します。
 
 ## プロジェクト設定
 
 ### 依存関係の追加
 
-アプリのbuild.gradleファイルにnhncloud-creditcard-recognizer依存関係を追加します。<br>
-
+アプリのbuild.gradleファイルにnhncloud-creditcard-recognizer依存関係を追加します。
 ```groovy
 dependencies {
     ...
@@ -31,8 +26,8 @@ dependencies {
 
 ### CAMERA権限
 
-Credit Card Recognizerを使用するには**Manifest.permission.CAMERA**権限が必要です。<br>
-Credit Card Recognizerを始める前にカメラ権限を取得してください。<br>
+Credit Card Recognizerを使用するには**Manifest.permission.CAMERA**権限が必要です。
+Credit Card Recognizerを始める前にカメラ権限を取得してください。
 
 <br>
 
@@ -40,7 +35,7 @@ Credit Card Recognizerを始める前にカメラ権限を取得してくださ�
 
 ### CreditCardRecognizerインスタンス作成
 
-Credit Card Recognizerインスタンスを作成します。<br>
+Credit Card Recognizerインスタンスを作成します。
 
 ```kotlin
 val creditCardRecognizer = NhnCloudOcr.newBuilder(context)
@@ -53,7 +48,7 @@ val creditCardRecognizer = NhnCloudOcr.newBuilder(context)
 
 ### CreditCardRecognizerをはじめる
 
-CreditCardRecognizerのlaunch(Activity, CreditCardRecognitionCallback)メソッドを呼び出してクレジットカードの認識を開始します。<br>
+CreditCardRecognizerのlaunch(Activity, CreditCardRecognitionCallback)メソッドを呼び出してクレジットカードの認識を開始します。
 
 ```kotlin
 creditCardRecognizer.launch(activity) { result, data ->
@@ -69,9 +64,9 @@ creditCardRecognizer.launch(activity) { result, data ->
 
 ### 認識データ使用
 
-クレジットカードの認識成功時、CreditCardDataオブジェクトにクレジットカード認識データが伝達されます。<br>
-個人情報保護のために、クレジットカード番号と有効期限は一般文字列ではないSecureStringオブジェクトで返されます。<br>
-SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。<br>
+クレジットカードの認識成功時、CreditCardDataオブジェクトにクレジットカード認識データが伝達されます。
+個人情報保護のために、クレジットカード番号と有効期限は一般文字列ではないSecureStringオブジェクトで返されます。
+SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。
 
 > CreditCardDataで返されるクレジットカード認識情報をStringオブジェクトで作成して使用するとセキュリティに脆弱です。
 
@@ -89,12 +84,12 @@ firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString(
 
 ## クレジットカード認識画面のユーザー定義
 
-クレジットカード認識画面をユーザー定義して使用できます。<br>
-ユーザー定義画面を構成するにはCreditCardRecognizerの代わりにCreditCardRecognitionServiceを使用する必要があります。<br>
+クレジットカード認識画面をユーザー定義して使用できます。
+ユーザー定義画面を構成するにはCreditCardRecognizerの代わりにCreditCardRecognitionServiceを使用する必要があります。
 
 ### CreditCardRecognitionServiceインスタンス作成
 
-CreditCardRecognitionServiceインスタンスを作成します。<br>
+CreditCardRecognitionServiceインスタンスを作成します。
 
 ```kotlin
 val creditCardRecognitionService = NhnCloudOcrServices.newBuilder(context)
@@ -107,8 +102,8 @@ val creditCardRecognitionService = NhnCloudOcrServices.newBuilder(context)
 
 ### CreditCardRecognitionServiceリスナー登録
 
-setCreditCardRecognitionListener()メソッドを使用してリスナーを登録します。<br>
-クレジットカードが認識された時、CreditCardRecognitionListenerを通じて結果が通知されます。<br>
+setCreditCardRecognitionListener()メソッドを使用してリスナーを登録します。
+クレジットカードが認識された時、CreditCardRecognitionListenerを通じて結果が通知されます。
 
 ```kotlin
 creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
@@ -127,8 +122,8 @@ creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
 
 ### 認識結果の処理
 
-CreditCardRecognitionListenerに伝達されるCreditCardRecognitionDataは信頼度(confidence rating)に関係なくすべての結果を返します。<br>
-したがって、以下のように信頼度(confidence rating)をチェックして、より正確な結果を使用できます。<br>
+CreditCardRecognitionListenerに伝達されるCreditCardRecognitionDataは信頼度(confidence rating)に関係なくすべての結果を返します。
+したがって、以下のように信頼度(confidence rating)をチェックして、より正確な結果を使用できます。
 
 ```kotlin
 creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
@@ -160,9 +155,9 @@ private fun isConfident(data: CreditCardRecognitionData): Boolean {
 
 ### 認識データの使用
 
-クレジットカードの認識に成功した時、CreditCardRecognitionDataオブジェクトでクレジットカード認識データが伝達されます。<br>
-個人情報保護のためにクレジットカード番号と有効期限は一般文字列ではないSecureStringオブジェクトで返されます。<br>
-SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。<br>
+クレジットカードの認識に成功した時、CreditCardRecognitionDataオブジェクトでクレジットカード認識データが伝達されます。
+個人情報保護のためにクレジットカード番号と有効期限は一般文字列ではないSecureStringオブジェクトで返されます。
+SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。
 
 > CreditCardRecognitionDataで返されるクレジットカード認識情報をStringオブジェクトで作成して使用するとセキュリティに脆弱です。
 
@@ -180,7 +175,7 @@ firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString(
 
 ### Camera Preview構成
 
-ActivityまたはFragmentのLayoutに以下のようにCreditCardRecognitionCameraPreviewを追加してCamera Previewを構成します。<br>
+ActivityまたはFragmentのLayoutに以下のようにCreditCardRecognitionCameraPreviewを追加してCamera Previewを構成します。
 
 ```xml
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -202,8 +197,8 @@ ActivityまたはFragmentのLayoutに以下のようにCreditCardRecognitionCame
 
 ### バックグラウンドの色を変更
 
-スキャンガイド領域を除く領域は半透明に見えます。<br>
-この領域の色を"app:guideBackgroundColor"プロパティを使用して設定します。<br>
+スキャンガイド領域を除く領域は半透明に見えます。
+この領域の色を"app:guideBackgroundColor"プロパティを使用して設定します。
 
 ```xml
 <com.nhncloud.android.ocr.creditcard.view.CreditCardRecognitionCameraPreview
@@ -217,12 +212,12 @@ ActivityまたはFragmentのLayoutに以下のようにCreditCardRecognitionCame
 
 ### スキャンガイドビューユーザー定義
 
-スキャンガイドビューをCreditCardRecognitionCameraPreviewの下位ビューとして配置して自由に定義できます。<br>
-ユーザー定義したガイドビューは"app:guideView"プロパティを使用して設定します。<br>
+スキャンガイドビューをCreditCardRecognitionCameraPreviewの下位ビューとして配置して自由に定義できます。
+ユーザー定義したガイドビューは"app:guideView"プロパティを使用して設定します。
 
 > CreditCardRecognitionCameraPreviewはConstraintLayoutを継承実装されています。
 
-スキャンガイドビューのサイズは自動的に調整されます。<br>
+スキャンガイドビューのサイズは自動的に調整されます。
 
 ```xml
 <com.nhncloud.android.ocr.creditcard.view.CreditCardRecognitionCameraPreview
@@ -246,8 +241,8 @@ ActivityまたはFragmentのLayoutに以下のようにCreditCardRecognitionCame
 
 ### クレジットカード検出時のガイドビュー変更
 
-クレジットカードが検出された時、スキャンガイドビューの色または形を変更できます。<br>
-CreditCardDetectableインタフェースを継承実装してsetDetected(Boolean)に伝達される値に基づいてガイドビューの色または形を変更します。<br>
+クレジットカードが検出された時、スキャンガイドビューの色または形を変更できます。
+CreditCardDetectableインタフェースを継承実装してsetDetected(Boolean)に伝達される値に基づいてガイドビューの色または形を変更します。
 
 ```kotlin
 class CustomGuideView(
@@ -264,11 +259,12 @@ class CustomGuideView(
     ...
 }
 ```
+
 <br>
 
 ### サービス開始
 
-CreditCardRecognitionCameraPreviewのインスタンスを取得してCreditCardRecognitionServiceを開始します。<br>
+CreditCardRecognitionCameraPreviewのインスタンスを取得してCreditCardRecognitionServiceを開始します。
 
 ```kotlin
 val cameraPreview = findViewById<CreditCardRecognitionCameraPreview>(R.id.camera_preview)
@@ -283,7 +279,7 @@ try {
 
 ### サービス停止
 
-アプリがバックグラウンドになるか、クレジットカードの認識に成功した時、creditCardRecognitionServiceを停止します。<br>
+アプリがバックグラウンドになるか、クレジットカードの認識に成功した時、creditCardRecognitionServiceを停止します。
 
 ```kotlin
 creditCardRecognitionService.stop()
@@ -293,7 +289,7 @@ creditCardRecognitionService.stop()
 
 ### サービス解除
 
-ActivityまたはFragmentのViewがDestoryされた時、creditCardRecognitionServiceを解除します。<br>
+ActivityまたはFragmentのViewがDestoryされた時、creditCardRecognitionServiceを解除します。
 
 ```kotlin
 creditCardRecognitionService.release();
@@ -303,7 +299,7 @@ creditCardRecognitionService.release();
 
 ### CreditCardRecognizer Lifecycle設定
 
-ActivityまたはFragmentのライフサイクルに基づいて以下のように呼び出します。<br>
+ActivityまたはFragmentのライフサイクルに基づいて以下のように呼び出します。
 
 #### Activity
 
@@ -347,7 +343,7 @@ override fun onDestroyView() {
 
 ### スキャン方向設定
 
-クレジットカードのスキャン方向を設定します。<br>
+クレジットカードのスキャン方向を設定します。
 
 ```kotlin
 creditCardRecognitionService.scanOrientation =
@@ -358,7 +354,7 @@ creditCardRecognitionService.scanOrientation =
 
 ### 画面キャプチャ防止
 
-画面キャプチャ防止のためにActivityのonCreate()でsetContentView()が呼び出される前に**WindowManager.LayoutParams.FLAG\_SECURE**を追加します。<br>
+画面キャプチャ防止のためにActivityのonCreate()でsetContentView()が呼び出される前に**WindowManager.LayoutParams.FLAG\_SECURE**を追加します。
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -369,14 +365,14 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-詳細については、 [WindowManager.LayoutParams.FLAG\_SECURE](https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE)を参照してください。<br>
+詳細については、 [WindowManager.LayoutParams.FLAG\_SECURE](https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE)を参照してください。
 
 <br>
 
 ### デバイスチェック
 
-Credit Card Recognition Serviceを起動する前に、アプリケーションを実行する端末でCredit Card Recognition Serviceを使用できる環境であることを確認できます。<br>
-この検査を実行するにはCreditCardRecognitionService.isAvailable(Context)メソッドを使用します。<br>
+Credit Card Recognition Serviceを起動する前に、アプリケーションを実行する端末でCredit Card Recognition Serviceを使用できる環境であることを確認できます。
+この検査を実行するにはCreditCardRecognitionService.isAvailable(Context)メソッドを使用します。
 
 ```kotlin
 if (CreditCardRecognitionService.isAvailable(context)) {
@@ -385,8 +381,6 @@ if (CreditCardRecognitionService.isAvailable(context)) {
     // Credit card recognition service is not available.
 }
 ```
-
-<br>
 
 ## Class References
 
@@ -440,3 +434,5 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 | --- | --- | --- | --- |
 | getPoints | Point[] |  | 座標(Point)の配列を返します。 |
 | getPoint | Point | int | 座標を返します。<br>\- LEFT\_TOP: 0<br>\- RIGHT\_TOP: 1<br>\- RIGHT\_BOTTOM: 2<br>\- LEFT\_BOTTOM: 3 |
+
+<br>
