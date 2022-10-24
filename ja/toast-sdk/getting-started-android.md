@@ -61,7 +61,7 @@ NHN Cloud SDKが提供するサービス別の設定方法は次のとおりで�
 - [Native Crash Reporterライブラリ設定](./log-collector-ndk/#_1)
 - [In-app Purchaseライブラリ設定](./iap-android/#_2)
 - [Pushライブラリ設定](./push-android/#_2)
-'- [Credit Card Recognizerライブラリ設定](./creditcard-recognizer-android/#_1)
+- [Credit Card Recognizerライブラリ設定](./creditcard-recognizer-android/#_1)
 
 ### 2. AARを使用してAndroidビルド
 
