@@ -1,32 +1,32 @@
 ## NHN Cloud > SDK User Guide > Document Recognizer > Credit Card (iOS)
 
-## 사전 준비
+## 事前準備
 
-1. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
-2. [NHN Cloud Console](https://console.toast.com)에서 [AI Service > Document Recognizer] 서비스를 활성화합니다.
-3. Document Recognizer 콘솔에서 AppKey와 SecretKey를 확인합니다.
+1. [NHN Cloud SDK](./getting-started-ios)をインストールします。
+2. [NHN Cloud Console](https://console.toast.com)で[AI Service > Document Recognizer]サービスを有効にします。
+3. Document RecognizerコンソールでAppKeyとSecretKeyを確認します。
 
 <br>
 
-## 지원 환경
+## サポート環境
 
-NHN Cloud OCR은 iOS 11.0 이상에서 동작합니다.<br>
+NHN Cloud OCRはiOS 11.0以上で動作します。<br>
 
-## NHN Cloud OCR 구성
+## NHN Cloud OCR構成
 
-iOS용 NHN Cloud OCR SDK의 구성은 다음과 같습니다.
+iOS用NHN Cloud OCR SDKの構成は次のとおりです。
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| OCR | NHNCloudOCR | NHNCloudOCR.framework | * Vision.framework<br/> * AVFoundation.framework | |
+| IAP | NHNCloudOCR | NHNCloudOCR.framework | * Vision.framework<br/> * AVFoundation.framework | |
 | Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
-## NHN Cloud OCR SDK를 Xcode 프로젝트에 적용
+## NHN Cloud OCR SDKをXcodeプロジェクトに適用
 
-### 1. Cococapods을 통한 적용
+### 1. Cococapodsを利用した適用
 
-* Podfile을 생성하여 NHN Cloud SDK에 대한 Pod을 추가합니다.
+* Podfileを作成してNHN Cloud SDKに対するPodを追加します。
 
 ```podspec
 platform :ios, '11.0'
@@ -37,48 +37,48 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. 바이너리를 다운로드하여 NHN Cloud SDK 적용
+### 2. バイナリをダウンロードしてNHN Cloud SDK適用
 
-#### 프레임워크 설정
+#### フレームワーク設定
 
-* NHN Cloud [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
-* Xcode Project에 **NHNCloudOCR.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, vision.framework, AVFoundation.framework**를 추가합니다.
-* vision.framework와 AVFoundation.framework는 아래 방법으로 추가할 수 있습니다.
+* NHN Cloud [Downloads](../../../Download/#toast-sdk)ページで全てのiOS SDKをダウンロードできます。
+* Xcode Projectに**NHNCloudOCR.framework**、 **NHNCloudCore.framework**、 **NHNCloudCommon.framework、 vision.framework、 AVFoundation.framework**を追加します。
+* vision.frameworkとAVFoundation.frameworkは、以下の方法で追加できます。
 ![linked_vision_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_vision_frameworks.png)
 ![linked_avfoundation_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_avfoundation_frameworks.png)
 ![linked_frameworks_ocr](https://static.toastoven.net/toastcloud/sdk/ios/linked_frameworks_ocr.png)
 
-#### 프로젝트 설정
+#### プロジェクト設定
 
-* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+* **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
-## NHNCloudOCR SDK 초기화
-* NHN Cloud Console에서 발급받은 AppKey와 Secret을 NHNCloudOCRConfiguration 객체에 설정합니다.
-  * AI Service -> Document Recognizer -> 신용카드
-* NHNCloudOCR은 초기화에 NHNCloudOCRConfiguration 객체를 파라미터로 사용합니다.
-* 카메라 사용 권한을 얻기 위해 info.plist에 아래 내용을 추가합니다.
+## NHNCloudOCR SDK初期化
+* NHN Cloud Consoleで発行されたAppKeyとSecretをNHNCloudOCRConfigurationオブジェクトに設定します。
+  * AI Service -> Document Recognizer -> クレジットカード
+* NHNCloudOCRは初期化にNHNCloudOCRConfigurationオブジェクトをパラメータとして使用します。
+* カメラ使用権限を取得するためにinfo.plistに以下の内容を追加します。
 ```
 Key : NSCameraUsageDescription
-Value : [카메라 권한 요청 메세지]
+Value： [カメラ権限リクエストメッセージ]
 ```
 
-## 초기화 API 명세
+## 初期化API仕様
 
 ``` objc
-// 초기화
+// 初期化
 + (void)initWithConfiguration:(NHNCloudOCRConfiguration *)configuration;
-// Delegate 설정
+// Delegate設定
 + (void)setDelegate:(nullable id<NHNCloudCreditCardRecognizerDelegate>)delegate;
-// 초기화 및 Delegate 설정
+// 初期化およびDelegate設定
 + (void)initWithConfiguration:(NHNCloudOCRConfiguration *)configuration
                      delegate:(nullable id<NHNCloudCreditCardRecognizerDelegate>)delegate;
 ```
 
-### Delegate API 명세
-* NHNCloudCreditCardRecognizerDelegate를 등록하면 인식 결과에 대한 통지를 받을 수 있습니다.
-* OCR이 실행 중일 때 화면의 스크린 캡처와 동영상 녹화 이벤트를 수신 받을 수 있습니다.
+### Delegate API仕様
+* NHNCloudCreditCardRecognizerDelegateを登録すると、認識結果に対する通知を受け取ることができます。
+* OCRが実行中の時、画面のスクリーンキャプチャと動画録画イベントを受信できません。
 
 ``` objc
 @protocol NHNCloudCreditCardRecognizerDelegate <NSObject>
@@ -90,10 +90,10 @@ Value : [카메라 권한 요청 메세지]
 @end
 ```
 
-### 검출 이미지 반환 설정하기
-* OCR 결과인 NHNCloudCreditCardInfo 데이터에 검출된 이미지를 함께 반환받을 수 있습니다. 
-    * 기본값은 비활성화입니다. 
-#### 검출 이미지 반환 설정 API 명세 
+### 検出イメージリターン設定を行う
+* OCR結果であるNHNCloudCreditCardInfoデータに検出されたイメージを一緒に返すことができます。
+    * デフォルト値は無効です。 
+#### 検出イメージリターン設定API仕様 
 ```objc
 @interface NHNCloudOCR : NSObject
 //..
@@ -103,7 +103,7 @@ Value : [카메라 권한 요청 메세지]
 @end
 ```
 
-### 초기화 과정 예
+### 初期化プロセス例
 
 ``` objc
 #import <NHNCloudOCR/NHNCloudOCR.h>
@@ -114,34 +114,34 @@ Value : [카메라 권한 요청 메세지]
 @implementation ViewController
 
 - (void)initializeOCR {
-    // 초기화 및 Delegate 설정
+    // 初期化およびDelegate設定
     NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}"];
 
-    // 검출 이미지 반환 설정 
+    // 検出イメージリターン設定 
     [NHNCloudOCR setDetectedImageReturn:YES];
 
-    // 초기화    
+    // 初期化  
     [NHNCloudOCR initWithConfiguration:configuration delegate:self];
 }
 
-// 신용카드 인식 결과 반환
+// クレジットカード認識結果を返す
 - (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
     NSLog(@"didDetectCreditCardInfo : cardInfo : %@", cardInfo);
     NSLog(@"didDetectCreditCardInfo : error : %@", error);
 }
 
-// 스크린 캡처 이벤트 수신
+// スクリーンキャプチャイベント受信
 - (void)didDetectSecurityEvent:(NHNCloudSecurityEvent)event {
 
-    // 스크린 캡처 경고 Alert 출력 예시
+    // スクリーンキャプチャ警告Alert出力例
     if (event == NHNCloudSecurityEventScreenshot || event == NHNCloudSecurityEventScreenRecordingOn) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"캡쳐가 감지되었습니다." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"キャプチャが検出されました。" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
         
         [self presentViewController:alert animated:YES completion:nil];
     }
     
-    // 동영상 녹화 시 빈 화면 출력 예시
+    // 動画録画時、空の画面出力例
     if (event == NHNCloudSecurityEventScreenRecordingOn || event == NHNCloudSecurityEventScreenRecordingOff) {
         if ([[UIScreen mainScreen] isCaptured] ) {
             [[[UIApplication sharedApplication] windows] firstObject].hidden = YES;
@@ -157,24 +157,24 @@ Value : [카메라 권한 요청 메세지]
 
 ## NHNCloudCreditCardRecognizerViewController
 
-### 1. Credit-Card 가이드 설정하기
-* NHNCloudOCR SDK에서 테스트를 위해 제공하는 Credit-Card 가이드를 사용하여 OCR을 테스트할 수 있습니다.
-  * 신용카드가 Credit-Card 가이드 안에 존재할 경우 OCR이 시작됩니다.
-    * 기본값은 hidden으로 눈에 보이지 않는 가이드가 존재합니다.
-    * `enableTestGuide`를 사용하여 테스트용 가이드를 출력할 수 있습니다. 
+### 1. Credit-Cardガイドの設定
+* NHNCloudOCR SDKでテストのために提供するCredit-Cardガイドを使用してOCRをテストできます。
+  * クレジットカードがCredit-Cardガイド内に存在する場合、OCRが始まります。
+    * デフォルト値はhiddenで、目に見えないガイドが存在します。
+    * `enableTestGuide`を使用してテスト用のガイドを出力できます。 
 
-#### Credit-Card 가이드 API 명세
+#### Credit-CardガイドAPI仕様
 ```objc
 @interface NHNCloudOCRConfiguration : NSObject
 - (void)enableTestGuide;
 @end
 ```
-#### Credit-Card 가이드 사용 예
+#### Credit-Cardガイドの使用例
 
 ```objc
 - (void)initializeOCR {
-    // 초기화 및 Delegate 설정
-    NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}" secure:YES secureMessage:@"화면 캡쳐가 감지되었습니다."];
+    // 初期化およびDelegate設定
+    NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}" secure:YES secureMessage:@"画面キャプチャが検出されました。"];
     
     [configuration enableTestGuide];
         
@@ -183,57 +183,57 @@ Value : [카메라 권한 요청 메세지]
 ```
 
 
-### 2. Credit-Card Recognizer ViewController 열기
-* 신용카드 인식을 위해 신용카드 인식기가 포함된 ViewController를 엽니다.
-* SDK에서 여는 방법과 ViewController를 반환받아 개발자가 원하는 방법으로 직접 여는 방법을 사용할 수 있습니다.
+### 2. Credit-Card Recognizer ViewControllerを開く
+* クレジットカード認識のためにクレジットカードリーダーが含まれるViewControllerを開きます。
+* SDKで開く方法とViewControllerを返し、開発者が好きな方法で直接開く方法を使用できます。
 
-#### Credit-Card Recognizer ViewController 열기 API 명세
+#### Credit-Card Recognizer ViewController開くAPI仕様
 
 ```objc
-// CreditCard Recognizer ViewController을 SDK에서 출력합니다.
+// CreditCard Recognizer ViewControllerをSDKから出力します。
 + (NHNCloudCreditCardRecognizerViewController *)openCreditCardRecognizerViewController;
 
-// CreditCard Recognizer ViewController을 반환합니다. 사용자가 직접 출력하거나 SDK에 활성화된 객체를 반환 받을 수 있습니다.
+// CreditCard Recognizer ViewControllerを返します。ユーザーが直接出力するか、SDKに有効になっているオブジェクトを返すことができます。
 + (nullable NHNCloudCreditCardRecognizerViewController *)creditCardRecognizerViewController;
 ```
 
-#### Credit-Card Recognizer ViewController 열기 사용 예
+#### Credit-Card Recognizer ViewControllerを開く使用例
 ```objc
-// SDK에서  Recognizer ViewController를 열게 합니다.
+// SDKでRecognizer ViewControllerを開きます。
 [NHNCloudOCR openCreditCardRecognizerViewController];
 
-// SDK에서  Recognizer ViewController를 반환받아 개발자가 원하는 방법으로 직접 열게 합니다.
+// SDKでRecognizer ViewControllerを返し、開発者が好きな方法で直接開くようにします。
 NHNCloudCreditCardRecognizerViewController *creditCardRecognizerViewController = [NHNCloudOCR creditCardRecognizerViewController];
 [self presentViewController:creditCardRecognizerViewController animated:YES completion:nil];
 
 ```
 
-### 3. Credit-Card Recognizer ViewController 닫기
-* 신용카드 인식기가 포함된 ViewController를 닫습니다.
+### 3. Credit-Card Recognizer ViewController閉じる
+* クレジットカードリーダーが含まれるViewControllerを閉じます
 
-#### Credit-Card Recognizer ViewController 닫기 API 명세
+#### Credit-Card Recognizer ViewControllerを閉じるAPI仕様
 
 ```objc
 - (void)dismissViewController;
 ```
 
-#### Credit-Card Recognizer ViewController 닫기 사용 예
+#### Credit-Card Recognizer ViewControllerを閉じる使用例
 ```objc
 - (void)closeButton:(id)sender {
     [[NHNCloudOCR creditCardRecognizerViewController] dismissViewController];
 }
 ```
 
-### 4. Credit-Card Recognizer 시작/중지
-* Credit-Card Recognizer를 시작하거나 중지합니다.
+### 4. Credit-Card Recognizerの開始/停止
+* Credit-Card Recognizerを開始または停止します。
 
-#### Credit-Card Recognizer 시작/중지 API 명세
+#### Credit-Card Recognizer開始/停止API仕様
 ```objc
 - (void)startRunning;
 - (void)stopRunning;
 - (BOOL)isRunning;
 ```
-#### Credit-Card Recognizer 시작/중지 사용 예
+#### Credit-Card Recognizer開始/停止の使用例
 ```objc
 
 - (void)openAndStart {
@@ -241,22 +241,22 @@ NHNCloudCreditCardRecognizerViewController *creditCardRecognizerViewController =
   [[NHNCloudOCR creditCardRecognizerViewController] startRunning];
 }
 
-// 신용카드 인식 결과 반환
+// クレジットカード認識結果を返す
 - (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
     [[NHNCloudOCR creditCardRecognizerViewController] stopRunning];
 }
 ```
 
-### 5. Credit-Card 가이드 회전
-* 신용카드의 방향에 맞도록 Credit-Card 가이드를 회전 시킬 수 있습니다.
+### 5. Credit-Cardガイドの回転
+* クレジットカードの方向に合うようにCredit-Cardガイドを回転させることができます。
 
-#### Credit-Card 가이드 회전 API 명세
+#### Credit-Cardガイド回転API仕様
 ```objc
 @property (assign, nonatomic, readonly) CGRect creditCardGuide;
 @property (assign, nonatomic, readonly) NHNCloudCreditCardOrientation creditCardGuideOrientation;
 - (void)rotateCreditCardGuideOrientation;
 ```
-#### Credit-Card 가이드 회전 사용 예
+#### Credit-Cardガイド回転の使用例
 ```objc
 typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
@@ -278,16 +278,16 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
 ```
 
-### 6. 라이트 활성/비활성
-* 디바이스의 카메라 라이트를 활성화하거나 비활성화합니다.
+### 6. フラッシュ有効/無効
+* デバイスのカメラフラッシュを有効または無効にします。
 
-#### 라이트 활성/비활성 API 명세
+#### フラッシュ有効/無効API仕様
 ```objc
 - (void)torchModeOn;
 - (void)torchModeOff;
 - (BOOL)torchMode;
 ```
-#### 라이트 활성/비활성 사용 예
+#### フラッシュ有効/無効の使用例
 ```objc
 - (void)torchButtonAction:(UIButton *)button {    
     if ([[NHNCloudOCR creditCardRecognizerViewController] torchMode] == YES) {
@@ -300,16 +300,16 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 ```
 
 
-### 7. 카메라 활성/비활성
-* 디바이스의 카메라를 활성화하거나 비활성화합니다.
+### 7. カメラ有効/無効
+* デバイスのカメラを有効または無効にします。
 
-#### 카메라 활성/비활성 API 명세
+#### カメラ有効/無効API仕様
 ```objc
 - (void)startRunningCamera;
 - (void)stopRunningCamera;
 - (BOOL)isRunnginCamera;
 ```
-#### 카메라 활성/비활성 사용 예
+#### カメラ有効/無効使用例
 ```objc
 - (void)cameraButtonAction:(UIButton *)button {    
     if ([[NHNCloudOCR creditCardRecognizerViewController] isRunnginCamera] == YES) {
@@ -321,10 +321,10 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
 ```
 
-## NHNCloudCreditCardRecognizerViewController 커스터마이징
-* NHNCloudCreditCardRecognizerViewController를 커스터마이징을 수행할 수 있습니다.
-  * **Credit-Card 가이드의 경우 미리 정의된 값을 사용하기 때문에 변경이 불가능합니다.**
-* 초기화 시에 NHNCloudOCR SDK에서 제공하는 기본 UI를 비활성화해야 합니다. 
+## NHNCloudCreditCardRecognizerViewControllerカスタマイズ
+* NHNCloudCreditCardRecognizerViewControllerをカスタマイズできます。
+  * **Credit-Cardガイドの場合、あらかじめ定義された値を使用するため、変更ができません。**
+* 初期化時にNHNCloudOCR SDKで提供する基本UIを無効にする必要があります。 
 ```
 @interface NHNCloudOCRConfiguration : NSObject
 
@@ -337,22 +337,22 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 @end
 
 - (void)initCustomUI {
-    // 초기화 및 Delegate 설정
+    // 初期化およびDelegate設定
     NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}"];
 
-    // 기본 UI 비활성화
+    // 基本UI無効化
     [configuration disableDefaultUI];
     
-    // 초기화    
+    // 初期化  
     [NHNCloudOCR initWithConfiguration:configuration delegate:self];
 }
 ```
 
 
-### 1. NHNCloudCreditCardRecognizerViewController 상속 
-* NHNCloudCreditCardRecognizerViewController를 상속 구현하여 커스터마이징 할 수 있습니다.
+### 1. NHNCloudCreditCardRecognizerViewController継承 
+* NHNCloudCreditCardRecognizerViewControllerを継承実装してカスタマイズできます。
 
-#### Override 함수 명세
+#### Override関数の仕様
 ```objc
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
@@ -361,7 +361,7 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 - (void)didUpdateCreditCardGuide:(CGRect)rect orientation:(NHNCloudCreditCardOrientation)orientation;
 ```
 
-#### Override 사용 예
+#### Override使用例
 ```objc
 
 @interface OCRViewController : NHNCloudCreditCardRecognizerViewController <NHNCloudCreditCardRecognizerDelegate>
@@ -374,7 +374,7 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
     [super viewDidLoad];
     
     [NHNCloudOCR setDelegate:self];
-    // Custom UI 생성
+    // Custom UI作成
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -394,7 +394,7 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 - (void)didUpdateCreditCardGuide:(CGRect)rect orientation:(NHNCloudCreditCardOrientation)orientation {
     [super didUpdateCreditCardGuide:rect orientation:orientation];
     
-    // Custom UI 갱신  
+    // Custom UI更新 
 }
 
 - (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
