@@ -67,7 +67,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 NHN Cloud 서비스를 안정적이고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_20220808_wide.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202210_wide.png)
 
 #### IP ACL 설정
 허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다.
@@ -78,7 +78,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 3. 조직 거버넌스 설정의 **IP ACL 설정**에서 IP ACL을 설정하고 관리할 수 있습니다.
     * 서비스 설정
         * 공통 설정: 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
-        * 서비스별 설정: 각 서비스(Cloud Console, Online Contact, Dooray! 등)별로 IP ACL을 설정할 수 있습니다.
+        * 서비스별 설정: 각 서비스(Cloud, Online Contact, Dooray! 등)별로 IP ACL을 설정할 수 있습니다.
     * IP ACL
         * 설정 안 함: 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
         * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력합니다.
@@ -108,8 +108,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 #### 로그인 보안 설정
 
 * IAM 멤버의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
-* 모든 조직 서비스(콘솔, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
-![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109.png)
+* 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
+![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202210.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
 2. 하위 메뉴인 거버넌스 설정을 선택합니다.
@@ -121,7 +121,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 
 * 서비스 설정
     * 공통 설정: 모든 조직 서비스에 동일하게 2차 인증을 설정합니다.
-    * 서비스별 설정: 각 서비스 (Cloud Console, Online Contact, Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
+    * 서비스별 설정: 각 서비스 (Cloud, Online Contact, Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
 * 2차 인증 설정
     * 설정 안 함: 2차 인증을 하지 않고, 아이디와 비밀번호 입력만으로 로그인할 수 있습니다.
     * Google OTP: 아이디와 비밀번호를 입력한 후, Google OTP 앱에서 제공한 One Time Password를 입력해 로그인할 수 있습니다.
@@ -209,15 +209,18 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * Network
 * Storage
 * Database
+* Hybrid & Private Cloud
 * Game
 * Security
 * Content Delivery
 * Notification
-* Mobile Service
-* Data & Analytics
+* AI Service
+* Machine Learning
 * Application Service
+* Mobile Service
 * Search
-* Dev Tool
+* Data & Analytics
+* Dev Tools
 * Management
 * Bill
 
@@ -295,6 +298,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | 역할 | 설명 |
 | --- | --- |
 | ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| MARKETPLACE_ADMIN | 마켓플레이스 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| MARKETPLACE_VIEWER | 마켓플레이스 서비스 Read(읽기) |
 | MEMBER | 프로젝트 내 모든 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | BILLING VIEWER | 이용 현황 Read(읽기)  |
 | PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 역할 그룹 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제)  |
@@ -302,14 +307,15 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | PROJECT MEMBER ADMIN | 프로젝트 멤버 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | PROJECT MEMBER VIEWER | 프로젝트 멤버 Read(읽기)  |
 
+
 #### 서비스 이용 역할
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scale 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scale 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Load Balancer ADMIN | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure |  Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, Auto Scale 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, Auto Scale 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR) 서비스 Read(읽기) |
@@ -347,7 +353,12 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Gamebase | OPERATION VIEWER | 운영 메뉴 Read(읽기) |
 | Gamebase | PUSH ADMIN | 푸시 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Gamebase | PUSH VIEWER | 푸시 메뉴 Read(읽기) |
+| GameAnvil  | ADMIN | GameAnvil 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| GameAnvil  | MEMBER | GameAnvil 서비스 Read(읽기), 모니터링 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| GameAnvil  | PERMISSION | GameAnvil 서비스 Enable(활성화), Disable(비활성화) |
+| GameAnvil  | VIEWER | GameAnvil 서비스 Read(읽기)  |
 | GameStarter  | ADMIN | 게임 설정, 배포 메뉴 Create(생성)/ Read(읽기)/ Update(갱신)  |
+| GameStarter  | PERMISSION | GameStarter 서비스 Enable(활성화), Disable(비활성화)  |
 | GameStarter  | VIEWER | 게임 설정, 배포 메뉴 Read(읽기)  |
 | Leaderboard | ADMIN | Leaderboard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Leaderboard | VIEWER | Leaderboard 서비스 Read(읽기) |
@@ -403,6 +414,12 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | marketplace | ADMIN | marketplace 프로젝트 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | marketplace | ADMIN | marketplace 프로젝트 서비스 Read(읽기) |
 
+#### 서비스 활성화 역할
+서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
+
+| 역할 | 설명 |
+| --- | --- |
+| 서비스명 Permission | 서비스 Enable(활성화), Disable(비활성화)  |
 
 
 ## 결제 관리

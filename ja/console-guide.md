@@ -67,7 +67,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 
 NHN Cloudサービスを安定的かつ効率的に利用するために必要なポリシーを設定して管理できます。 ログインおよび個人情報など、セキュリティコンプライアンス遵守のための組織の共通ポリシーを策定し、組織内のメンバーがポリシーを遵守できるように管理します。
 
-![console_guide_3_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_20220808_jp.png)
+![console_guide_3_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202210_jp.png)
 
 #### IP ACL設定
 許可したIP(またはIP帯域)からのみコンソールにアクセスできます。
@@ -78,7 +78,7 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 3. 組織ガバナンス設定の**IP ACL設定**でIP ACLを設定し、管理できます。
    * サービス設定
        * 共通設定：すべてのサービスに同じようにIP ACLを設定できます。
-       * サービスの設定：各サービス(Cloud Console、Online Contact, Dooray!など)ごとにIP ACLを設定できます。
+       * サービスの設定：各サービス(Cloud、Online Contact, Dooray!など)ごとにIP ACLを設定できます。
    * IP ACL
         * 設定しない：すべてのIP(またはIP帯域)からコンソールにアクセスできます。
         * 許可したIP(またはIP帯域)のみコンソールアクセス：入力したIP(またはIP帯域)からのみコンソールにアクセスできます。アクセスを許可するIPまたはIP帯域を入力します。
@@ -109,8 +109,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 #### ログインセキュリティ設定
 
 * IAMメンバーのコンソール接続セキュリティを強化するために**ログインセキュリティ設定**機能を提供します。
-* すべての組織サービス(コンソール、Online Contact、Dooray!など)に同じように設定したり、サービスごとに設定できます。
-![console_guide_4_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202109_jp.png)
+* すべての組織サービス(Cloud、Online Contact、Dooray!など)に同じように設定したり、サービスごとに設定できます。
+![console_guide_4_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202210_jp.png)
 
 1. コンソールに移動した後、設定したい組織の組織管理ページに接続します。
 2. サブメニューのガバナンス設定を選択します。
@@ -122,7 +122,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 
 * サービス設定
     * 共通設定：すべての組織サービスに同じように2次認証を設定します。
-    * サービス別設定：各サービス(Cloud Console, Online Contact, Dooray!など)ごとに2次認証を設定できます。
+    * サービス別設定：各サービス(Cloud, Online Contact, Dooray!など)ごとに2次認証を設定できます。
 * 2次認証設定
     * 設定しない：2次認証を行わず、IDとパスワードの入力だけでログインできます。
     * Google OTP：IDとパスワードを入力した後、Google OTPアプリで提供したOne Time Passwordを入力してログインできます。
@@ -210,15 +210,18 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 * Network
 * Storage
 * Database
+* Hybrid & Private Cloud
 * Game
 * Security
 * Content Delivery
 * Notification
-* Mobile Service
-* Data & Analytics
+* AI Service
+* Machine Learning
 * Application Service
+* Mobile Service
 * Search
-* Dev Tool
+* Data & Analytics
+* Dev Tools
 * Management
 * Bill
 
@@ -297,6 +300,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | 役割 | 説明 |
 | --- | --- |
 | ADMIN | プロジェクト全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| MARKETPLACE_ADMIN | Marketplace サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除) |
+| MARKETPLACE_VIEWER | Marketplace サービス Read(読込) |
 | MEMBER | プロジェクト内のすべてのサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | BILLING VIEWER | 利用状況Read(読み取り) |
 | PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <Br> プロジェクト役割グループCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除) |
@@ -309,7 +314,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | サービス | 役割 | 説明 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scaleサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scaleサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Infrastructure | Load Balancer ADMIN | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Groupサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, Auto Scaleサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
@@ -349,7 +354,12 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Gamebase | OPERATION VIEWER | 運営メニューRead(読み取り) |
 | Gamebase | PUSH ADMIN | プッシュメニューCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Gamebase | PUSH VIEWER | プッシュメニューRead(読み取り) |
+| GameAnvil  | ADMIN | GameAnvil サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
+| GameAnvil  | MEMBER | GameAnvil サービス Read(読込), モニタリング メニュー Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
+| GameAnvil  | PERMISSION | GameAnvil サービス Enable(有効), Disable(無効) |
+| GameAnvil  | VIEWER | GameAnvil サービス Read(読込)  |
 | GameStarter  | ADMIN | ゲーム設定, 配布メニュー Create(作成)/ Read(読み取り)/ Update(更新)  |
+| GameStarter  | PERMISSION | GameStarter サービス Enable(有効), Disable(無効) |
 | GameStarter  | VIEWER | ゲーム設定, 配布メニュー Read(読み取り)  |
 | Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Leaderboard | VIEWER | Leaderboardサービスに対するRead(読み取り) |
@@ -405,7 +415,12 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | marketplace | ADMIN | marketplaceプロジェクトサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | marketplace | ADMIN | marketplaceプロジェクトサービスに対するRead(読み取り) |
 
+#### 서비스 활성화 역할
+サービスPERMISSION役割は、個別サービスを有効化または無効化できます。
 
+| 役割 | 説明 |
+| --- | --- |
+| Service Name PERMISSION | サービス Enable(有効), Disable(無効)  |
 
 ## 決済管理
 

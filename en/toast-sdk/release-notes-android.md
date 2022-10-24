@@ -1,21 +1,41 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
-## 1.2.0 (2022. 10. 04.)
+## 1.3.0 (2022. 10. 25.)
 
-### NHN Cloud SDK
+### NHN Cloud OCR
 
-#### 기능 개선
+#### 기능 추가
 
-* AndroidX 지원
-    * 최소 지원 버전이 API 16으로 상향되었습니다. 
+* OCR(Credit Card Recognizer) 추가
+
+### NHN Cloud IAP
+
+#### 기능 추가
+
+* [모든 스토어] 활성화 구독 조회 및 미소비 결제 내역 조회 API 추가
 
 ### NHN Cloud Push
 
-#### 기능 개선
+#### 버그 수정
 
-* Android 13 대응
-    * POST_NOTIFICATION 권한을 요청할 수 있는 API가 추가되었습니다.
-    * Notification 채널을 생성할 수 있는 API가 추가되었습니다.  
+* NHN Cloud SDK 1.0.0 이상 버전에서 ToastPushMessageReceiver 사용 시 클릭 이벤트 수신 및 지표 수집 불가 오류 수정
+
+## 1.2.0 (October 4, 2022)
+
+### NHN Cloud SDK
+
+#### Improved
+
+* Added AndroidX support
+    * The minimum supported version has increased to API 16.
+
+### NHN Cloud Push
+
+#### Improved
+
+* Handled issues related to Android 13
+    * Added the API to request POST_NOTIFICATION permission.
+    * Added the API to create Notification channels.  
 
 ## 1.1.0 (September 6, 2022)
 
