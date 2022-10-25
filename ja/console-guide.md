@@ -415,7 +415,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | marketplace | ADMIN | marketplaceプロジェクトサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | marketplace | ADMIN | marketplaceプロジェクトサービスに対するRead(読み取り) |
 
-#### 서비스 활성화 역할
+#### サービス 有効化 役割
 サービスPERMISSION役割は、個別サービスを有効化または無効化できます。
 
 | 役割 | 説明 |
