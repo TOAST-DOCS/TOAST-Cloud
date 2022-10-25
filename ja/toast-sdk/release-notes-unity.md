@@ -1,5 +1,18 @@
 ## NHN Cloud > SDK 使用ガイド > リリースノート > Unity
 
+## 0.27.0 (2022.10.25)
+Download : [toast-sdk-unity-0.27.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.27.0/toast-sdk-unity-0.27.0.zip)
+
+### 기능 추가
+
+* TOAST IAP
+    * [모든 스토어] 활성화 구독 조회 및 미소비 결제 내역 조회 API 추가
+
+### plugin version
+
+* Android : 1.3.0
+* iOS : 1.1.0
+
 ## 0.26.2 (2022.10.04)
 
 Download : [toast-sdk-unity-0.26.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.26.2/toast-sdk-unity-0.26.2.zip)

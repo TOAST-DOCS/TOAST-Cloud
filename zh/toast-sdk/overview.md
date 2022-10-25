@@ -9,9 +9,10 @@ Although the SDK provides an integrated development environment for many service
 
 NHN Cloud SDK provides the following services:
 
-- [Log & Crash Search](https://toast.com/service/analytics/log_crash_search)
+- [Log & Crash Search](https://www.toast.com/service/data-analytics/log-crash-search)
 - [IAP](https://www.toast.com/service/mobile-service/iap)
 - [Push](https://www.toast.com/service/notification/push)
+- [Document Recognizer](https://www.toast.com/service/ai-service/document-recognizer)
 
 > Services providing individual SDK are to be supported for development via NHN Cloud SDK.
 
