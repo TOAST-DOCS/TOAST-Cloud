@@ -9,9 +9,10 @@ NHN Cloud SDKは、[NHN Cloud](https://toast.com/)の多様なサービスライ
  
 NHN Cloud SDKは、次のようなサービスを提供します。 
  
-- [Log & Crash Search](https://toast.com/service/analytics/log_crash_search) 
+- [Log & Crash Search](https://www.toast.com/service/data-analytics/log-crash-search)
 - [IAP](https://www.toast.com/service/mobile-service/iap) 
-- [Push](https://www.toast.com/service/notification/push) 
+- [Push](https://www.toast.com/service/notification/push)
+- [Document Recognizer](https://www.toast.com/service/ai-service/document-recognizer)
  
 > 個別SDKを提供するサービスは、今後NHN Cloud SDKを通して開発できるようにサポートする予定です。 
  
