@@ -244,23 +244,23 @@ public static void RequestConsumablePurchases(bool isQueryAllStores, ToastCallba
 ### 未消費決済照会例
 
 ```csharp
-// 모든 스토어 조회
+// すべてのストア照会
 ToastIap.RequestConsumablePurchases(true, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 모든 스토어 미소비 결제 조회 성공
+        // すべてのストア未消費決済照会成功
     }
 });
 ```
 
 ```csharp
-// 현재 스토어 조회
+// 現在ストア照会
 ToastIap.RequestConsumablePurchases(false, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 현재 스토어 미소비 결제 조회 성공
+        // 現在ストア未消費決済照会成功
     }
 });
 ```
@@ -304,23 +304,23 @@ public static void RequestActivatedPurchases(bool isQueryAllStores, ToastCallbac
 ### 有効になっている購読照会例
 
 ```csharp
-// 모든 스토어에서 활성화된 구독 조회
+// すべてのストアで有効になっている購読照会
 ToastIap.RequestActivatedPurchases(true, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 모든 스토어에서 활성화된 구독 조회
+        // すべてのストアで有効になっている購読照会
     }
 });
 ```
 
 ```csharp
-// 현재 스토어에서 활성화된 구독 조회
+// 現在ストアで有効になっている購読照会
 ToastIap.RequestActivatedPurchases(false, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 현재 스토어에서 활성화된 구독 조회 성공
+        // 現在ストアで有効になっている購読照会成功
     }
 });
 ```
