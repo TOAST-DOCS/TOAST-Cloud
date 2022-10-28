@@ -1,24 +1,24 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
-## 1.3.0 (2022. 10. 25.)
+## 1.3.0 (October 25, 2022)
 
 ### NHN Cloud OCR
 
-#### 기능 추가
+#### Added 
 
-* OCR(Credit Card Recognizer) 추가
+* Added OCR(Credit Card Recognizer)
 
 ### NHN Cloud IAP
 
-#### 기능 추가
+#### Added
 
-* [모든 스토어] 활성화 구독 조회 및 미소비 결제 내역 조회 API 추가
+* [All stores] Added APIs for activated subscription query and unconsumed purchase query
 
 ### NHN Cloud Push
 
-#### 버그 수정
+#### Fixed
 
-* NHN Cloud SDK 1.0.0 이상 버전에서 ToastPushMessageReceiver 사용 시 클릭 이벤트 수신 및 지표 수집 불가 오류 수정
+* Fixed a bug where click events and metrics cannot be received when using ToastPushMessageReceiver in NHN Cloud SDK 1.0.0 or higher
 
 ## 1.2.0 (October 4, 2022)
 

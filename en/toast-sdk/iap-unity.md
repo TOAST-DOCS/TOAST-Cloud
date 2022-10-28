@@ -245,23 +245,23 @@ public static void RequestConsumablePurchases(bool isQueryAllStores, ToastCallba
 ### Example of Unconsumed Purchases Query
 
 ```csharp
-// 모든 스토어 조회
+// Query all stores
 ToastIap.RequestConsumablePurchases(true, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 모든 스토어 미소비 결제 조회 성공
+        // Querying unconsumed purchases  for all stores succeeded
     }
 });
 ```
 
 ```csharp
-// 현재 스토어 조회
+// Query the current store
 ToastIap.RequestConsumablePurchases(false, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 현재 스토어 미소비 결제 조회 성공
+        // Querying unconsumed purchases for the current store succeeded
     }
 });
 ```
@@ -305,23 +305,23 @@ public static void RequestActivatedPurchases(bool isQueryAllStores, ToastCallbac
 ### Example of Activated Subscription Query
 
 ```csharp
-// 모든 스토어에서 활성화된 구독 조회
+// Query activated subscriptions for all stores
 ToastIap.RequestActivatedPurchases(true, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 모든 스토어에서 활성화된 구독 조회
+        // Query activated subscriptions for all stores
     }
 });
 ```
 
 ```csharp
-// 현재 스토어에서 활성화된 구독 조회
+// Query activated subscriptions for the current store
 ToastIap.RequestActivatedPurchases(false, (result, purchases) =>
 {
     if (result.IsSuccessful)
     {
-        // 현재 스토어에서 활성화된 구독 조회 성공
+        // Query activated subscriptions for the current store
     }
 });
 ```
