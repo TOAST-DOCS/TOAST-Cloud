@@ -221,7 +221,7 @@ Amazon Appstoreでは'queries'要素の代わりに権限を追加します。
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration)オブジェクトは、アプリ内決済設定情報を含んでいます。
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration)オブジェクトは、[NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder)を使用して作成できます。
-* IAPコンソールで発行された[AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)を、setAppKeyメソッドを使用して設定します。
+* IAPコンソールで発行された[AppKey](https://docs.toast.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)を、setAppKeyメソッドを使用して設定します。
 * setStoreCodeメソッドを使用して、アプリ内決済に使用する[ストアコード](./iap-android/#_3)を設定します。
 
 ### アプリ内決済設定例
