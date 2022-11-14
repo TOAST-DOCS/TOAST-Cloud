@@ -3,8 +3,8 @@
 ## 事前準備
 
 1. [Install the NHN Cloud SDK](./getting-started-windows)
-2. [NHN Cloudコンソール](https://console.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
-3. Log & Crash Searchで[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
+2. [NHN Cloudコンソール](https://console.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+3. Log & Crash Searchで[AppKeyを確認](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 
 ## NHN Cloud Logger SDKの初期化
 
