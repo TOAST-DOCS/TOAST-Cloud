@@ -358,10 +358,8 @@ You can grant multiple required roles to project members.
 | Gamebase | PUSH VIEWER | Read for Push Menu |
 | GameAnvil  | ADMIN | GameAnvil Create, Read, Update, and Delete Services  |
 | GameAnvil  | MEMBER | GameAnvil Read Service. Create, Read, Update, or Delete for Monitoring menu |
-| GameAnvil  | PERMISSION | GameAnvil Enable, Disable |
 | GameAnvil  | VIEWER | GameAnvil Read Services  |
 | GameStarter  | ADMIN | Create, Read, Update for menus game settings, distribution |
-| GameStarter  | PERMISSION | GameStarter Enable, Disable |
 | GameStarter  | VIEWER | Read for menus game settings, distribution |
 | Leaderboard | ADMIN | Create/Read/Update/Delete for Leaderboard Service |
 | Leaderboard | VIEWER | Read for Leaderboard Service |
