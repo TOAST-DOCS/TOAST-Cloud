@@ -18,6 +18,14 @@
 
 * Camera 초기화 시 크래시 이슈 수정
 
+### NHN Cloud Push
+
+#### 기능 개선
+
+* 푸시 이벤트 전송 개선
+* Intent의 flags가 변경되는 이슈 수정
+    * NhnCloudPushMessageReceiver.getContentIntent() 호출 시 전달되는 Intent에 설정된 flags가 유지되지 않는 이슈를 수정합니다.
+
 ## 1.3.0 (October 25, 2022)
 
 ### NHN Cloud OCR
