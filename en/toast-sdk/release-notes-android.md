@@ -1,10 +1,28 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.4.0 (2022. 11. 29.)
+
+### TOAST Logger
+
+#### 기능 추가
+
+* 공공기관용 Logger 지원
+
+### NHN Cloud OCR
+
+#### 기능 개선
+
+* UI 개선
+
+#### 버그 수정
+
+* Camera 초기화 시 크래시 이슈 수정
+
 ## 1.3.0 (October 25, 2022)
 
 ### NHN Cloud OCR
 
-#### Added 
+#### Added
 
 * Added OCR(Credit Card Recognizer)
 
@@ -43,7 +61,7 @@
 
 #### Added
 
-* Added ONE store v19 
+* Added ONE store v19
 
 #### Improved
 
