@@ -2,7 +2,7 @@
 
 ## 1.4.0 (2022. 11. 29.)
 
-### TOAST Logger
+### NHN Cloud Logger
 
 #### 기능 추가
 
