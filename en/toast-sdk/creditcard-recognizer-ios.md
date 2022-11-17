@@ -151,13 +151,32 @@ Value : [Camera Permission Request Message]
     }
 }
 
-
 @end
 ```
 
 ## NHNCloudCreditCardRecognizerViewController
 
-### 1. Set Credit-Card Guide
+### 1. Credit-Card Recognizer ViewController 사용하기
+* NHNCloudCreditCardRecognizerViewController를 상속 구현한 Class를 Storyboard의 ViewController에 연결하여 기본 UI가 적용된 Credit-Card Recognizer를 손쉽게 사용할 수 있습니다.
+
+#### Class 생성
+![default_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/default_viewcontroller.png)
+* NHNCloudCreditCardRecognizerViewController를 subclass로 가지는 ViewController Class를 생성합니다. 
+
+
+#### Storyboard에 연결
+![create_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/create_viewcontroller.png)
+* Storyboard에 ViewController를 추가합니다.
+
+![custom_class](https://static.toastoven.net/toastcloud/sdk/ios/custom_class.png)
+* 추가한 ViewController에 Custom Class에 생성한 Class를 설정합니다.
+
+![segue_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/segue_viewcontroller.png)
+* ViewController Segue Event를 설정합니다. 
+
+* Delegate를 설정하고 구현합니다. 
+
+### 2. 테스트 환경 사용하기 
 * You can test OCR by using the Credit-Card guide provided to test NHNCloudOCR SDK.
   * OCR is initiated when a credit card exists in the Credit-Card guide.
     * Default value is hidden so that there is an invisible guide.
@@ -174,7 +193,7 @@ Value : [Camera Permission Request Message]
 ```objc
 - (void)initializeOCR {
     // Initialize and set Delegate
-    NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}" secure:YES secureMessage:@"Screen capture is detected."];
+    NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}" ];
     
     [configuration enableTestGuide];
         
@@ -182,12 +201,12 @@ Value : [Camera Permission Request Message]
 }
 ```
 
-
-### 2. Open Credit-Card Recognizer ViewController
+### 3. Credit-Card Recognizer ViewController 제어하기
+#### 1. Open Credit-Card Recognizer ViewController
 * For credit card recognition, open ViewController that includes the credit card recognizer.
 * You can open the Credit-Card Recognizer VIewController the way developers want by receiving the opening method and ViewController as a return from the SDK.
 
-#### Specification for Open Credit-Card Recognizer ViewControlle API
+##### Specification for Open Credit-Card Recognizer ViewControlle API
 
 ```objc
 // Output CreditCard Recognizer ViewController from the SDK.
@@ -197,7 +216,7 @@ Value : [Camera Permission Request Message]
 + (nullable NHNCloudCreditCardRecognizerViewController *)creditCardRecognizerViewController;
 ```
 
-#### Example of opening Credit-Card Recognizer ViewController
+##### Example of opening Credit-Card Recognizer ViewController
 ```objc
 // Open Recognizer ViewController from the SDK
 [NHNCloudOCR openCreditCardRecognizerViewController];
@@ -208,32 +227,32 @@ NHNCloudCreditCardRecognizerViewController *creditCardRecognizerViewController =
 
 ```
 
-### 3. Close Credit-Card Recognizer ViewController
+#### 2. Close Credit-Card Recognizer ViewController
 * Close ViewController that includes credit-card recognizer.
 
-#### Specification for Close Credit-Card Recognizer ViewController API
+##### Specification for Close Credit-Card Recognizer ViewController API
 
 ```objc
 - (void)dismissViewController;
 ```
 
-#### Example of Close Credit-Card Recognizer ViewController
+##### Example of Close Credit-Card Recognizer ViewController
 ```objc
 - (void)closeButton:(id)sender {
     [[NHNCloudOCR creditCardRecognizerViewController] dismissViewController];
 }
 ```
 
-### 4. Credit-Card Recognizer Initiate/Stop
+#### 3. Credit-Card Recognizer Initiate/Stop
 * Initiate or stop Credit-Card Recognizer.
 
-#### Specification for Initiate/Stop Credit-Card Recognizer.
+##### Specification for Initiate/Stop Credit-Card Recognizer.
 ```objc
 - (void)startRunning;
 - (void)stopRunning;
 - (BOOL)isRunning;
 ```
-#### Example of initiate or stop Credit-Card Recognizer
+##### Example of initiate or stop Credit-Card Recognizer
 ```objc
 
 - (void)openAndStart {
@@ -247,16 +266,16 @@ NHNCloudCreditCardRecognizerViewController *creditCardRecognizerViewController =
 }
 ```
 
-### 5. Rotate Credit-Card Guide
+#### 4. Rotate Credit-Card Guide
 * You can rotate the Credit-Card guide according to the direction of a credit card.
 
-#### Specification for Rotate Credit-Card Guide
+##### Specification for Rotate Credit-Card Guide
 ```objc
 @property (assign, nonatomic, readonly) CGRect creditCardGuide;
 @property (assign, nonatomic, readonly) NHNCloudCreditCardOrientation creditCardGuideOrientation;
 - (void)rotateCreditCardGuideOrientation;
 ```
-#### Example of using Rotate Credit-Card Guide
+##### Example of using Rotate Credit-Card Guide
 ```objc
 typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
@@ -278,38 +297,38 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
 ```
 
-### 6. Enable/Disable Light
+#### 5. Enable/Disable Light
 * Enable or disable the camera light of a device.
 
-#### Specification for Enable/Disable Light API
+##### Specification for Enable/Disable Light API
 ```objc
-- (void)torchModeOn;
-- (void)torchModeOff;
-- (BOOL)torchMode;
+- (void)enableTorchMode;
+- (void)disableTorchMode;
+- (BOOL)isEnableTorchMode;
 ```
-#### Example of enabling or disabling the camera light of a device.
+##### Example of enabling or disabling the camera light of a device.
 ```objc
 - (void)torchButtonAction:(UIButton *)button {    
-    if ([[NHNCloudOCR creditCardRecognizerViewController] torchMode] == YES) {
-        [[NHNCloudOCR creditCardRecognizerViewController] torchModeOff];
+    if ([[NHNCloudOCR creditCardRecognizerViewController] isEnableTorchMode] == YES) {
+        [[NHNCloudOCR creditCardRecognizerViewController] disableTorchMode];
     } else {
-        [[NHNCloudOCR creditCardRecognizerViewController] torchModeOn];
+        [[NHNCloudOCR creditCardRecognizerViewController] enableTorchMode];
     }
 }
 
 ```
 
 
-### 7. Enable/Disable Camera
+#### 6. Enable/Disable Camera
 * Enable or disable a device’s camera.
 
-#### Specification for Enable/Disable Camera
+##### Specification for Enable/Disable Camera
 ```objc
 - (void)startRunningCamera;
 - (void)stopRunningCamera;
 - (BOOL)isRunnginCamera;
 ```
-#### Example of enabling or disabling camera
+##### Example of enabling or disabling camera
 ```objc
 - (void)cameraButtonAction:(UIButton *)button {    
     if ([[NHNCloudOCR creditCardRecognizerViewController] isRunnginCamera] == YES) {
@@ -321,36 +340,12 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
 ```
 
-## Customizing NHNCloudCreditCardRecognizerViewController
-* You can perform customizing of NHNCloudCreditCardRecognizerViewController.
+## Customizing NHNCloudCreditCardRecognizerServiceViewController
+* You can perform customizing of NHNCloudCreditCardRecognizerServiceViewController.
   * **The Credit-Card guide cannot be changed because pre-defined values are used.**
-* You must disable the default UI provided by NHNCloudOCR SDK when initializing. 
-```
-@interface NHNCloudOCRConfiguration : NSObject
 
-//...
-
-- (void)disableDefaultUI;
-
-//...
-
-@end
-
-- (void)initCustomUI {
-    // Initialize and set Delegate
-    NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}"];
-
-    // Disable the default UI
-    [configuration disableDefaultUI];
-    
-    // Initialize    
-    [NHNCloudOCR initWithConfiguration:configuration delegate:self];
-}
-```
-
-
-### 1. Inherit NHNCloudCreditCardRecognizerViewController 
-* You can perform customizing by implementing inheritance of NHNCloudCreditCardRecognizerViewController.
+### 1. Inherit NHNCloudCreditCardRecognizerServiceViewController 
+* You can perform customizing by implementing inheritance of NHNCloudCreditCardRecognizerServiceViewController.
 
 #### Specification for Override Function
 ```objc
@@ -359,12 +354,13 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)viewDidDisappear:(BOOL)animated;
 - (void)didUpdateCreditCardGuide:(CGRect)rect orientation:(NHNCloudCreditCardOrientation)orientation;
+- (void)imageDidDetect:(BOOL)detected;
 ```
 
 #### Example of using Override
 ```objc
 
-@interface OCRViewController : NHNCloudCreditCardRecognizerViewController <NHNCloudCreditCardRecognizerDelegate>
+@interface OCRViewController : NHNCloudCreditCardRecognizerServiceViewController <NHNCloudCreditCardRecognizerDelegate>
 
 @end
 
@@ -395,6 +391,12 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
     [super didUpdateCreditCardGuide:rect orientation:orientation];
     
     // Update Custom UI  
+}
+
+- (void)imageDidDetect:(BOOL)detected {
+    [super imageDidDetect:detected];
+
+    // 신용카드 인식시 UI 갱신
 }
 
 - (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
