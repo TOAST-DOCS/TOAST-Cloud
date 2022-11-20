@@ -74,6 +74,8 @@ Resource usage is calculated for each project.
 | FriendTalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
 
 ### Resource Provision Policy for Document Recognizer
+Resource usage is calculated for each project.
+
 | Resource | Criteria | Capacity |
 | -------- | -------- | -------- |
 | Requests for Analyzing ID Card | Per Document Recognizer service | 100,000 cases |
