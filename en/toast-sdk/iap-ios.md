@@ -260,10 +260,10 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 ### Specification for Activated Subscription List API
 
 ``` objc
-// 활성화된 앱스토어 구독 목록 조회하기
+// Query an activated subscription list in App Store
 + (void)requestActiveSubscriptionsWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
-// 활성화된 모든 마켓(앱스토어, 구글플레이, 원스토어 등) 구독 목록 조회하기
+// Query the list of activated subscriptions in all markets (such as App Store, Google Play, and ONE Store)
 + (void)requestAllMarketsActiveSubscriptionsWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 ```
 
@@ -318,10 +318,10 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 ### Specification for Unconsumed Purchase Query API
 
 ``` objc
-// 앱스토어 미소비 구매 내역 조회
+// Query unconsumed purchases for App Store
 + (void)requestConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
-// 모든 마켓(앱스토어, 구글플레이, 원스토어 등)의 미소비 구매 내역 조회
+// Query unconsumed purchases for all markets (such as App Store, Google Play, and ONE Store)
 + (void)requestAllMarketsConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 ```
 
