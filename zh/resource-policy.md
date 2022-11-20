@@ -73,6 +73,11 @@ Resource usage is calculated for each project.
 | Alimtalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
 | FriendTalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
 
+### Resource Provision Policy for Document Recognizer
+| Resource | Criteria | Capacity |
+| -------- | -------- | -------- |
+| Requests for Analyzing ID Card | Per Document Recognizer service | 100,000 cases |
+
 ### Resource Provision Policy for API Gateway Service
 Resource usage is calculated for each project, and the policy is applied by the region.
 
