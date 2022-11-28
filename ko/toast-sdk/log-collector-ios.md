@@ -66,7 +66,7 @@ if [ "${CONFIGURATION}" = "Debug" ]; then
     ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.ios.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
-* LOG_N_CRASH_SEARCH_APPKEY에는 Log&Crash Search의 AppKey를 입력해야합니다.
+* LOG_N_CRASH_SEARCH_APPKEY에는 Log & Crash Search의 앱키를 입력해야합니다.
 * Run Script 섹션 하단의 Input Files에 dSYM의 기본 경로를 설정합니다.
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
@@ -193,7 +193,7 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 * NHN Cloud Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
 * 크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다.
 
-> 사용자 아이디가 설정되어 있으면 Log&Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인 할 수 있습니다.
+> 사용자 아이디가 설정되어 있으면 Log & Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인할 수 있습니다.
 > 사용자 아이디 설정은 [시작하기](./getting-started-ios/#사용자-아이디-설정)에서 확인 가능합니다.
 
 #### CrashReporter 활성화
@@ -330,3 +330,41 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 2. **네트워크 인사이트** 메뉴를 클릭합니다.
 3. **URL 설정** 탭을 클릭합니다.
 4. 측정하려는 URL을 입력하고 **추가** 버튼을 클릭합니다.
+
+## 공공기관용 NHN Cloud Logger 
+* NHN Cloud Logger는 공공기관용 클라우드 환경을 지원합니다.
+
+### 공공기관용 NHN Cloud Logger 설정하기 
+* NHNCloudLoggerConfiguration의 cloudEnvironment property로 공공기관용 클라우드 사용 설정이 가능합니다. 
+
+```objc
+typedef NS_ENUM(NSInteger, NHNCloudEnvironment) {
+    NHNCloudEnvironmentPublic = 0,
+    NHNCloudEnvironmentGovernment = 1,
+};
+
+@property (nonatomic) NHNCloudEnvironment cloudEnvironment;
+```
+* 설정하지 않을 경우 기본값은 `NHNCloudEnvironmentPublic`입니다. 
+
+#### 공공기관용 NHN Cloud Logger 초기화 예
+
+```objc
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
+[configuration setCloudEnvironment:NHNCloudEnvironmentGovernment];
+
+[NHNCloudLogger initWithConfiguration:configuration];
+```
+
+### 공공기관용 NHN Cloud Logger 사용 시 주의사항
+
+* 공공기관용 Log & Crash Search는 아래 기능을 지원하지 않습니다.
+    * Console Settings
+        * Console Settings을 사용하도록 설정할 경우 Default Settings이 적용됩니다. 
+            * 모든 Log 전송
+            * 필터 비활성화
+            * Session / Crash Log 비활성화
+            * Network Insight 비활성화
+    * CrashReporter 
+    * Network Insight
+

@@ -332,3 +332,38 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 2. Select [Network Insights].
 3. Click the [URL Setting] tab.
 4. Enter URL to measure and click [Add].
+
+### 공공기관용 NHN Cloud Logger 설정하기 
+* NHNCloudLoggerConfiguration의 cloudEnvironment property로 공공기관용 클라우드 사용 설정이 가능합니다. 
+
+```objc
+typedef NS_ENUM(NSInteger, NHNCloudEnvironment) {
+    NHNCloudEnvironmentPublic = 0,
+    NHNCloudEnvironmentGovernment = 1,
+};
+
+@property (nonatomic) NHNCloudEnvironment cloudEnvironment;
+```
+* 설정하지 않을 경우 기본값은 `NHNCloudEnvironmentPublic`입니다. 
+
+#### 공공기관용 NHN Cloud Logger 초기화 예
+
+```objc
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
+[configuration setCloudEnvironment:NHNCloudEnvironmentGovernment];
+
+[NHNCloudLogger initWithConfiguration:configuration];
+```
+
+### 공공기관용 NHN Cloud Logger 사용 시 주의사항
+
+* 공공기관용 Log & Crash Search는 아래 기능을 지원하지 않습니다.
+    * Console Settings
+        * Console Settings을 사용하도록 설정할 경우 Default Settings이 적용됩니다. 
+            * 모든 Log 전송
+            * 필터 비활성화
+            * Session / Crash Log 비활성화
+            * Network Insight 비활성화
+    * CrashReporter 
+    * Network Insight
+
