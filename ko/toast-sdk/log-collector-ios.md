@@ -66,7 +66,7 @@ if [ "${CONFIGURATION}" = "Debug" ]; then
     ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.ios.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
-* LOG_N_CRASH_SEARCH_APPKEY에는 Log & Crash Search의 AppKey를 입력해야합니다.
+* LOG_N_CRASH_SEARCH_APPKEY에는 Log & Crash Search의 앱키를 입력해야합니다.
 * Run Script 섹션 하단의 Input Files에 dSYM의 기본 경로를 설정합니다.
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
@@ -193,7 +193,7 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 * NHN Cloud Logger를 초기화할 때 사용 여부를 설정할 수 있습니다.
 * 크래시 로그 전송을 기능을 사용하지 않으려면 CrashReporter 기능을 비활성화해야 합니다.
 
-> 사용자 아이디가 설정되어 있으면 Log & Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인 할 수 있습니다.
+> 사용자 아이디가 설정되어 있으면 Log & Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인할 수 있습니다.
 > 사용자 아이디 설정은 [시작하기](./getting-started-ios/#사용자-아이디-설정)에서 확인 가능합니다.
 
 #### CrashReporter 활성화
@@ -356,7 +356,7 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 [NHNCloudLogger initWithConfiguration:configuration];
 ```
 
-### 공공기관용 NHN Cloud Logger 사용시 주의사항
+### 공공기관용 NHN Cloud Logger 사용 시 주의사항
 
 * 공공기관용 Log & Crash Search는 아래 기능을 지원하지 않습니다.
     * Console Settings

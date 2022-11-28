@@ -16,7 +16,7 @@
 
 #### 버그 수정
 
-* Camera 초기화 시 크래시 이슈 수정
+* 카메라 초기화 시 크래시 이슈 수정
 
 ### NHN Cloud Push
 
@@ -24,7 +24,7 @@
 
 * 푸시 이벤트 전송 개선
 * Intent의 flags가 변경되는 이슈 수정
-    * NhnCloudPushMessageReceiver.getContentIntent() 호출 시 전달되는 Intent에 설정된 flags가 유지되지 않는 이슈를 수정합니다.
+    * NhnCloudPushMessageReceiver.getContentIntent() 호출 시 전달되는 Intent에 설정된 flags가 유지되지 않는 이슈가 수정되었습니다.
 
 ## 1.3.0 (2022. 10. 25.)
 

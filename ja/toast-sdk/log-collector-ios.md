@@ -353,7 +353,7 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 [NHNCloudLogger initWithConfiguration:configuration];
 ```
 
-### 공공기관용 NHN Cloud Logger 사용시 주의사항
+### 공공기관용 NHN Cloud Logger 사용 시 주의사항
 
 * 공공기관용 Log & Crash Search는 아래 기능을 지원하지 않습니다.
     * Console Settings

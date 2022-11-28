@@ -396,7 +396,7 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 - (void)imageDidDetect:(BOOL)detected {
     [super imageDidDetect:detected];
 
-    // 신용카드 인식시 UI 갱신
+    // 신용카드 인식 시 UI 갱신
 }
 
 - (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
