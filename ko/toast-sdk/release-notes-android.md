@@ -1,5 +1,31 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 1.4.0 (2022. 11. 29.)
+
+### NHN Cloud Logger
+
+#### 기능 추가
+
+* 공공기관용 Logger 지원
+
+### NHN Cloud OCR
+
+#### 기능 개선
+
+* UI 개선
+
+#### 버그 수정
+
+* 카메라 초기화 시 크래시 이슈 수정
+
+### NHN Cloud Push
+
+#### 기능 개선
+
+* 푸시 이벤트 전송 개선
+* Intent의 flags가 변경되는 이슈 수정
+    * NhnCloudPushMessageReceiver.getContentIntent() 호출 시 전달되는 Intent에 설정된 flags가 유지되지 않는 이슈가 수정되었습니다.
+
 ## 1.3.0 (2022. 10. 25.)
 
 ### NHN Cloud OCR
@@ -27,7 +53,7 @@
 #### 기능 개선
 
 * AndroidX 지원
-    * 최소 지원 버전이 API 16으로 상향되었습니다. 
+    * 최소 지원 버전이 API 16으로 상향되었습니다.
 
 ### NHN Cloud Push
 
