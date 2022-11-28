@@ -2,16 +2,16 @@
 
 ## 1.2.0 (2022.11.29.)
 ### NHN Cloud Logger
-#### 기능 추가
-* 공공기관용 Logger 지원
+#### Added Features
+* Added support for Logger for government agencies
 
 ### NHN Cloud Push
-#### 개선 사항
-* 푸시 이벤트 전송 개선
+#### Improved
+* Improved sending push events
 
 ### NHN Cloud OCR
-#### 개선 사항
-* UI 개선
+#### Improved
+* Improved UI
 
 ## 1.1.0 (2022.10.25.)
 ### Common
