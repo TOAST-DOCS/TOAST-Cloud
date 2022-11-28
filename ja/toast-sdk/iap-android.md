@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.4.0'
     ...
 }
 ```
@@ -44,10 +44,10 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.4.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.4.0'
     ...
 }
 ```
@@ -62,7 +62,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.4.0'
     ...
 }
 ```
@@ -79,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.4.0'
     ...
 }
 ```
@@ -122,7 +122,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.4.0'
     ...
 }
 ```
@@ -221,7 +221,7 @@ Amazon Appstoreでは'queries'要素の代わりに権限を追加します。
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration)オブジェクトは、アプリ内決済設定情報を含んでいます。
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration)オブジェクトは、[NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder)を使用して作成できます。
-* IAPコンソールで発行された[AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)を、setAppKeyメソッドを使用して設定します。
+* IAPコンソールで発行された[AppKey](https://docs.toast.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)を、setAppKeyメソッドを使用して設定します。
 * setStoreCodeメソッドを使用して、アプリ内決済に使用する[ストアコード](./iap-android/#_3)を設定します。
 
 ### アプリ内決済設定例

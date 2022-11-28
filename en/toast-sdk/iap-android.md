@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.4.0'
     ...
 }
 ```
@@ -44,10 +44,10 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.4.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.4.0'
     ...
 }
 ```
@@ -62,7 +62,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.4.0'
     ...
 }
 ```
@@ -79,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.4.0'
     ...
 }
 ```
@@ -122,7 +122,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.4.0'
     ...
 }
 ```
@@ -221,7 +221,7 @@ To use a lower version of Android Gradle Plugin, see [Preparing your Gradle buil
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object includes IAP setting information.
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object can be created by using [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder).
-* Use the setAppKey method to set [AppKey](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console.
+* Use the setAppKey method to set [AppKey](https://docs.toast.com/en/Mobile%20Service/IAP/en/console-guide/#check-appkey) issued from IAP console.
 * Use the setStoreCode method to set [Store Code](./iap-android/#_3) for IAP.
 
 ### Example of IAP Setting
@@ -472,7 +472,7 @@ If a user purchased a product with a promotion code from the Google Play Store, 
 * Query the information of unconsumed one-time products (CONSUMABLE) and consumable subscription products (CONSUMABLE_AUTO_RENEWABLE).
 * After a product is provided to a user, the product can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api).
 * Unconsumed purchase can be queried by using the NhnCloudIap.queryConsumablePurchases() method.
-* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 미소비 결제를 조회할 수 있습니다.
+* Unconsumed purchases for the current store or all stores can be queried by using [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams).
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
 
 ### Specification for Unconsumed Purchases Query API
@@ -487,7 +487,7 @@ public static void queryConsumablePurchases(Activity activity,
 | Method                   | Parameters |                                          |
 | ------------------------ | ---------- | ---------------------------------------- |
 | queryConsumablePurchases | activity   | Activity: Currently active activity               |
-|                          | params     | IapQueryPurchasesParams: 미소비 구매 내역 조회 파라미터 |
+|                          | params     | IapQueryPurchasesParams: Parameter for unconsumed purchase query |
 |                          | listener   | IapService.PurchasesResponseListener: <br>Listener for query result of unconsumed purchase details |
 
 ### Example of Unconsumed Purchases Query
@@ -498,7 +498,7 @@ public static void queryConsumablePurchases(Activity activity,
  */
 void queryConsumablePurchases(boolean isQueryAllStores) {
     IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
-        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회: true, 현재 스토어 조회: false
+        .setQueryAllStores(isQueryAllStores) // Query all stores: true, Query the current store: false
         .build();
     PurchasesResponseListener responseListenr =
             new IapService.PurchasesResponseListener() {
@@ -521,7 +521,7 @@ void queryConsumablePurchases(boolean isQueryAllStores) {
 * You can query activated subscription products (AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE) by user ID.
 * Subscription products for which purchase has been completed can be queried as long as usage period remains.
 * Activated subscription can be queried by using the NhnCloudIap.queryActivatedPurchases() method.
-* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 활성화된 구독을 조회할 수 있습니다.
+* Activated subscription for the current store or all stores can be queried by using [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams).
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
 * Products subscribed in iOS can be queried in Android as well.
 
@@ -539,7 +539,7 @@ public static void queryActivatedPurchases(Activity activity,
 | Method                  | Parameters |                                          |
 | ----------------------- | ---------- | ---------------------------------------- |
 | queryActivatedPurchases | activity   | Activity: Currently active activity               |
-|                         | params     | IapQueryPurchasesParams: 활성화된 구독 조회 파라미터 |
+|                         | params     | IapQueryPurchasesParams: Parameter for activated subscription query |
 |                         | listener   | IapService.PurchasesResponseListener: <br>Listener for query result of activated subscription |
 
 ### Example of Activated Subscription Query
@@ -550,7 +550,7 @@ public static void queryActivatedPurchases(Activity activity,
  */
 void queryActivatedPurchases(boolean isQueryAllStores) {
     IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
-        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회: true, 현재 스토어 조회: false
+        .setQueryAllStores(isQueryAllStores) // Query all stores: true, Query the current store: false
         .build();    
     PurchasesResponseListener responseListener =
             new IapService.PurchasesResponseListener() {
@@ -762,7 +762,7 @@ String HUAWEI_APP_GALLERY
 
 ### IapPurchaseResult
 
-* An object that Includes purchase result and purchase information.
+* An object that includes purchase results and purchase information.
 
 ```java
 /* IapPurchaseResult.java */
@@ -926,7 +926,7 @@ public void setProductId(String productId)
 
 ### IapQueryPurchasesParams
 
-* IapQueryPurchasesParams는 조회하려는 조건을 설정합니다.
+* IapQueryPurchasesParams set up the conditions for query.
 
 ```java
 /* IapQueryPurchasesParams.java */
@@ -935,11 +935,11 @@ public String isQueryAllStores()
 
 | Method           | Returns  |              |
 | ---------------- | -------- | ------------ |
-| isQueryAllStores | boolean  | 모든 스토어 조회 |
+| isQueryAllStores | boolean  | Query all stores |
 
 ### IapQueryPurchasesParams.Builder
 
-* IapQueryPurchasesParams 객체를 생성합니다.
+* Create an IapQueryPurchasesParams object.
 
 ```java
 /* IapQueryPurchasesParams.java */
@@ -948,7 +948,7 @@ public void setQueryAllStores(boolean isQueryAllStores)
 
 | Method            | Parameters        |                       | Description       |
 | ----------------- | ----------------- | --------------------- | ----------------- |
-| setQueryAllStores | isQueryAllStores  | boolean: 모든 스토어 조회 | 조회 범위를 설정합니다. |
+| setQueryAllStores | isQueryAllStores  | boolean: Query all stores | Set the query scope. |
 
 ### IapSubscriptionStatus
 

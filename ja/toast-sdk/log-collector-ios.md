@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)をインストールします。
-2. [NHN Cloudコンソール](https://console.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
-3. Log & Crash Searchで、[AppKeyを確認](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
+2. [NHN Cloudコンソール](https://console.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+3. Log & Crash Searchで、[AppKeyを確認](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 
 ## NHN Cloud Logger構成
 
@@ -66,7 +66,7 @@ if [ "${CONFIGURATION}" = "Debug" ]; then
     ${PODS_ROOT}/NHNCloudSymbolUploader/nhncloud.ios.sdk-*/run --app-key LOG_N_CRASH_SEARCH_DEV_APPKEY
 fi
 ```
-* LOG_N_CRASH_SEARCH_APPKEYにはLog&Crash SearchのAppKeyを入力する必要があります。
+* LOG_N_CRASH_SEARCH_APPKEYにはLog & Crash SearchのAppKeyを入力する必要があります。
 * Run Scriptセクションの下にあるInput FilesにdSYMの基本パスを設定します。
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
@@ -330,3 +330,38 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 2. **ネットワークインサイト**メニューをクリックします。
 3. **URL設定**タブをクリックします。
 4. 測定するにはURLを入力して**追加**ボタンをクリックします。
+
+### 공공기관용 NHN Cloud Logger 설정하기 
+* NHNCloudLoggerConfiguration의 cloudEnvironment property로 공공기관용 클라우드 사용 설정이 가능합니다. 
+
+```objc
+typedef NS_ENUM(NSInteger, NHNCloudEnvironment) {
+    NHNCloudEnvironmentPublic = 0,
+    NHNCloudEnvironmentGovernment = 1,
+};
+
+@property (nonatomic) NHNCloudEnvironment cloudEnvironment;
+```
+* 설정하지 않을 경우 기본값은 `NHNCloudEnvironmentPublic`입니다. 
+
+#### 공공기관용 NHN Cloud Logger 초기화 예
+
+```objc
+NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
+[configuration setCloudEnvironment:NHNCloudEnvironmentGovernment];
+
+[NHNCloudLogger initWithConfiguration:configuration];
+```
+
+### 공공기관용 NHN Cloud Logger 사용 시 주의사항
+
+* 공공기관용 Log & Crash Search는 아래 기능을 지원하지 않습니다.
+    * Console Settings
+        * Console Settings을 사용하도록 설정할 경우 Default Settings이 적용됩니다. 
+            * 모든 Log 전송
+            * 필터 비활성화
+            * Session / Crash Log 비활성화
+            * Network Insight 비활성화
+    * CrashReporter 
+    * Network Insight
+

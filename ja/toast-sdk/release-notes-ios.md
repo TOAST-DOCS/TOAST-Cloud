@@ -1,5 +1,18 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.2.0 (2022.11.29.)
+### NHN Cloud Logger
+#### 기능 추가
+* 공공기관용 Logger 지원
+
+### NHN Cloud Push
+#### 개선 사항
+* 푸시 이벤트 전송 개선
+
+### NHN Cloud OCR
+#### 개선 사항
+* UI 개선
+
 ## 1.1.0 (2022.10.25.)
 ### 共通
 #### 改善事項

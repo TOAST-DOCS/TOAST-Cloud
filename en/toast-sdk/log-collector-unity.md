@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-unity)
-2. [Enable Log & Crash Search](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.toast.com).
-3. [Check AppKey](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
+2. [Enable Log & Crash Search](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.toast.com).
+3. [Check AppKey](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
 4. [Initialize NHN Cloud SDK](./getting-started-unity#toast-sdk_1).
 
 ## Supported Platforms
@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.nhncloud.android:nhncloud-unity-logger:1.3.0'
+    implementation 'com.nhncloud.android:nhncloud-unity-logger:1.4.0'
 **DEPS**}
 ```
 
