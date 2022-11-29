@@ -57,7 +57,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | DNS Plus | グローバル |  |  |  |  |
 | Storage | Block Storage | リージョン | O | O | O | O |
 |  | NAS (offline) | リージョン | O | O  |  | O |
-|  | NAS | リージョン | O |   |  |  |
+|  | NAS | リージョン | O | O  |  |  |
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O  | O |  |
 |  | Data transporter | リージョン | O | O  |  |  |
