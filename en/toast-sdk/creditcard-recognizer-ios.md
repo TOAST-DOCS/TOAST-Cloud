@@ -156,27 +156,27 @@ Value : [Camera Permission Request Message]
 
 ## NHNCloudCreditCardRecognizerViewController
 
-### 1. Credit-Card Recognizer ViewController 사용하기
-* NHNCloudCreditCardRecognizerViewController를 상속 구현한 Class를 Storyboard의 ViewController에 연결하여 기본 UI가 적용된 Credit-Card Recognizer를 손쉽게 사용할 수 있습니다.
+### 1. Use Credit-Card Recognizer ViewController
+* You can easily use Credit-Card Recognizer to which the default UI is applied by connecting the Class implemented with inheritance of NHNCloudCreditCardRecognizerViewController to the ViewController of Storyboard.
 
-#### Class 생성
+#### Create Class 
 ![default_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/default_viewcontroller.png)
-* NHNCloudCreditCardRecognizerViewController를 subclass로 가지는 ViewController Class를 생성합니다. 
+* Create ViewController Class that contains NHNCloudCreditCardRecognizerViewController as Subclass. 
 
 
-#### Storyboard에 연결
+#### Connect to Storyboard
 ![create_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/create_viewcontroller.png)
-* Storyboard에 ViewController를 추가합니다.
+* Add ViewController to Storyboard.
 
 ![custom_class](https://static.toastoven.net/toastcloud/sdk/ios/custom_class.png)
-* 추가한 ViewController에 Custom Class에 생성한 Class를 설정합니다.
+* In the added ViewController, configure the class created in Custom Class.
 
 ![segue_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/segue_viewcontroller.png)
-* ViewController Segue Event를 설정합니다. 
+* Set ViewController Segue Event. 
 
-* Delegate를 설정하고 구현합니다. 
+* Set and implement Delegate. 
 
-### 2. 테스트 환경 사용하기 
+### 2. Use Test Environment 
 * You can test OCR by using the Credit-Card guide provided to test NHNCloudOCR SDK.
   * OCR is initiated when a credit card exists in the Credit-Card guide.
     * Default value is hidden so that there is an invisible guide.
@@ -201,7 +201,7 @@ Value : [Camera Permission Request Message]
 }
 ```
 
-### 3. Credit-Card Recognizer ViewController 제어하기
+### 3. Control Credit-Card Recognizer ViewController
 #### 1. Open Credit-Card Recognizer ViewController
 * For credit card recognition, open ViewController that includes the credit card recognizer.
 * You can open the Credit-Card Recognizer VIewController the way developers want by receiving the opening method and ViewController as a return from the SDK.
@@ -396,7 +396,7 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 - (void)imageDidDetect:(BOOL)detected {
     [super imageDidDetect:detected];
 
-    // 신용카드 인식 시 UI 갱신
+    // Update UI for credit card recognition
 }
 
 - (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
