@@ -138,5 +138,5 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Mobile Contact | リージョン | O |  |  |  |
 |  | Online Contact | グローバル |  |  |  |  |
 | IDC | NCC | リージョン | O |  |  |  |
-| Governance & Audit | CloudTail | グローバル |  |  |  |  |
+| Governance & Audit | CloudTrail | グローバル |  |  |  |  |
 |  | Resource Watcher | グローバル |  |  |  |  |

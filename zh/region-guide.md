@@ -138,6 +138,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Mobile Contact | Regional | O |  |  |  |
 |  | Online Contact | Global |  |  |  |  |
 | IDC | NCC | Regional | O |  |  |  |
-| Governance & Audit | CloudTail | Global |  |  |  |  |
+| Governance & Audit | CloudTrail | Global |  |  |  |  |
 |  | Resource Watcher | Global |  |  |  |  |
 
