@@ -76,7 +76,7 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | ERP  | 整合会计、人事、审批的方便的全公司性资源管理解决方案。|
 | Contact Center | 通过客服中心咨询的综合解决方案，高效处理咨询，提高运营效率，提供最佳的客户体验。|
 | IDC  | 凭借自主技术力在京畿道板桥设计·构建的城市型网络数据中心。|
-| CloudTrail  | 通过NHN Cloud Console及API等，自动收集发生的各种活动日志及事件的免费服务。|
+| Governance & Audit  | A service that manages the governance of organizations and monitors the various activity logs and events that occurred in the cloud. |
 
 ## 服务发布策略
 

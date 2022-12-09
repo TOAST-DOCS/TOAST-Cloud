@@ -129,4 +129,5 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Online Contact | Global |  |  |  |  |
 | Bill | eTax | Regional | O |  |  |  |
 | IDC | TCC | Regional | O |  |  |  |
-| CloudTail | CloudTail | Global |  |  |  |  |
+| Governance & Audit | CloudTrail | Global |  |  |  |  |
+|  | Resource Watcher | Global |  |  |  |  |
