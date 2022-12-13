@@ -380,6 +380,7 @@ You can grant multiple required roles to project members.
 | Security Compliance | ADMIN | Create/Read/Update/Delete for Security Compliance Service|
 | DDoS Guard | ADMIN | Create/Read/Update/Delete for DDoS Guard Service |
 | SIEM | ADMIN | Create/Read/Update/Delete for SIEM Service |
+| Webshell Threat Detector | ADMIN | Create/Read/Update/Delete for Webshell Threat Detector Service |
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
 | Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |

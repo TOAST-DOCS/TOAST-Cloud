@@ -39,6 +39,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Virtual Desktop | Regional | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
+|  | NHN Container Service(NCS)  | Regional | O |  |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | NAT Instance | Regional |  | O |  |  |
 |  | Floating IP | Regional | O | O | O | O |
@@ -68,9 +69,10 @@ All users are provided with the same features, policy, stability and usability, 
 |  | EasyCache | Regional | O | O | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
-|  | CUBRID Insatnce  | Regional | O | O | O | O |
+|  | CUBRID Instance  | Regional | O | O | O | O |
 |  | MariaDB Instance  | Regional | O | O | O | O |
 |  | Tibero Instance   | Regional | O | O | O | O |
+|  | Redis Instance | Regional | O | O | O | O |
 | Hybrid & Private Cloud | NHN Private Cloud | Regional | - | - | - | - |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
@@ -91,6 +93,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Security Compliance | Global |  |  |  |  |
 |  | DDoS Guard | Regional | O | O |  |  |
 |  | SIEM | Global |  |  |  |  |
+|  | Webshell Threat Detector | Regional | O | O |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |
@@ -119,6 +122,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Data & Analytics | Log & Crash Search | Global |  |  |  |  |
 |  | DataFlow | Regional | O |  |  |  |
 |  | DataQuery | Regional | O |  |  |  |
+|  | Kafka Instance | Regional | O | O | O | O |
 | Dev Tools | Pipeline | Regional | O | O |  |  |
 |  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
