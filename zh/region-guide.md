@@ -39,6 +39,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Virtual Desktop | Regional | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
+|  | NHN Container Service(NCS)  | Regional | O |  |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | NAT Instance | Regional |  | O |  |  |
 |  | Floating IP | Regional | O | O | O | O |
@@ -91,6 +92,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Security Compliance | Global |  |  |  |  |
 |  | DDoS Guard | Regional | O | O |  |  |
 |  | SIEM | Global |  |  |  |  |
+|  | Webshell Threat Detector | Regional | O | O |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |

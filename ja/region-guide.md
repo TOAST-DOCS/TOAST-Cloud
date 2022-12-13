@@ -39,6 +39,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Virtual Desktop | リージョン | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
 |  | NHN Container Registry (NCR) | リージョン | O | O |  |  |
+|  | NHN Container Service(NCS)  | リージョン | O |  |  |  |
 | Network | VPC | リージョン | O | O | O | O |
 |  | NAT Instance | リージョン |  | O  |  |  |
 |  | Floating IP | リージョン | O | O | O | O |
@@ -91,6 +92,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Security Compliance | グローバル |  |  |  |  |
 |  | DDoS Guard | リージョン | O | O  |  |  |
 |  | SIEM | リージョン | O |O |  |  |
+|  | Webshell Threat Detector | リージョン | O | O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image Manager| リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |
