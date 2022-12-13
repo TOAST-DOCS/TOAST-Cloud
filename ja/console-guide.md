@@ -394,6 +394,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | IAP | ADMIN | IAPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| DataFlow | ADMIN | DataFlowサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| DataQuery | ADMIN | DataQueryサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Maps | ADMIN | Mapsサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | ROLE | ADMIN | ROLEサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
