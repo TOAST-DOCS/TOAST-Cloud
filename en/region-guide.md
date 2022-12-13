@@ -105,6 +105,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | WebtoB Instance | Regional | O | O | O | O |
 | Mobile Service | IAP | Global |  |  |  |  |
 | Data & Analytics | Log & Crash Search | Global |  |  |  |  |
+|  | DataFlow | Regional | O |  |  |  |
+|  | DataQiuery | Regional | O |  |  |  |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
@@ -129,4 +131,5 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Online Contact | Global |  |  |  |  |
 | Bill | eTax | Regional | O |  |  |  |
 | IDC | TCC | Regional | O |  |  |  |
-| CloudTail | CloudTail | Global |  |  |  |  |
+| Governance & Audit | CloudTrail | Global |  |  |  |  |
+|  | Resource Watcher | Global |  |  |  |  |

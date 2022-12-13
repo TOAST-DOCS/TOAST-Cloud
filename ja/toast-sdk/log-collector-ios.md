@@ -193,7 +193,7 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 * NHN Cloud Loggerを初期化する時、使用するかを設定できます。
 * クラッシュログ送信機能を使用しない場合は、CrashReporter機能を無効にする必要があります。
 
-> UserIDが設定されている場合、Log＆Crash Searchコンソールの`Crash User`セクションでユーザー固有のクラッシュ体験を確認できます。
+> UserIDが設定されている場合、Log ＆Crash Searchコンソールの`Crash User`セクションでユーザー固有のクラッシュ体験を確認できます。
 > UserIDの設定は[開始する]（./getting-started-ios/#UserID設定）で確認できます。
 
 #### CrashReporter有効化
@@ -331,8 +331,8 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 3. **URL設定**タブをクリックします。
 4. 測定するにはURLを入力して**追加**ボタンをクリックします。
 
-### 공공기관용 NHN Cloud Logger 설정하기 
-* NHNCloudLoggerConfiguration의 cloudEnvironment property로 공공기관용 클라우드 사용 설정이 가능합니다. 
+### 公共機関用NHN Cloud Loggerを設定する
+* NHNCloudLoggerConfigurationのcloudEnvironment propertyで公共機関用クラウド使用設定を行うことができます。
 
 ```objc
 typedef NS_ENUM(NSInteger, NHNCloudEnvironment) {
@@ -342,9 +342,9 @@ typedef NS_ENUM(NSInteger, NHNCloudEnvironment) {
 
 @property (nonatomic) NHNCloudEnvironment cloudEnvironment;
 ```
-* 설정하지 않을 경우 기본값은 `NHNCloudEnvironmentPublic`입니다. 
+* 設定しない場合のデフォルト値は`NHNCloudEnvironmentPublic`です。 
 
-#### 공공기관용 NHN Cloud Logger 초기화 예
+#### 公共機関用NHN Cloud Loggerの初期化例
 
 ```objc
 NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration configurationWithAppKey:@"YOUR_APP_KEY"];
@@ -353,15 +353,14 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 [NHNCloudLogger initWithConfiguration:configuration];
 ```
 
-### 공공기관용 NHN Cloud Logger 사용 시 주의사항
+### 公共機関用NHN Cloud Logger使用時の注意事項
 
-* 공공기관용 Log & Crash Search는 아래 기능을 지원하지 않습니다.
+* 公共機関用Log & Crash Searchは、以下の機能をサポートしません。
     * Console Settings
-        * Console Settings을 사용하도록 설정할 경우 Default Settings이 적용됩니다. 
-            * 모든 Log 전송
-            * 필터 비활성화
-            * Session / Crash Log 비활성화
-            * Network Insight 비활성화
+        * Console Settingsを使用するように設定する場合、Default Settingsが適用されます。 
+            * すべてのLogを転送
+            * フィルタ無効
+            * Session / Crash Log無効
+            * Network Insight無効
     * CrashReporter 
     * Network Insight
-

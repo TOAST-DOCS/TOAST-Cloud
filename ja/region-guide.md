@@ -117,6 +117,8 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Autocomplete | リージョン | O |  |  |  |
 |  | Corporation Search | リージョン | O |  |  |  |
 | Data & Analytics | Log & Crash Search | グローバル |  |  |  |  |
+|  | DataFlow | リージョン | O |  |  |  |
+|  | DataQuery | リージョン | O |  |  |  |
 | Dev Tools | Pipeline | リージョン | O | O |  |  |
 |  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
@@ -138,4 +140,5 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Mobile Contact | リージョン | O |  |  |  |
 |  | Online Contact | グローバル |  |  |  |  |
 | IDC | NCC | リージョン | O |  |  |  |
-| CloudTail | CloudTail | グローバル |  |  |  |  |
+| Governance & Audit | CloudTrail | グローバル |  |  |  |  |
+|  | Resource Watcher | グローバル |  |  |  |  |

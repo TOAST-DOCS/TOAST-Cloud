@@ -117,6 +117,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
 | Data & Analytics | Log & Crash Search | Global |  |  |  |  |
+|  | DataFlow | Regional | O |  |  |  |
+|  | DataQuery | Regional | O |  |  |  |
 | Dev Tools | Pipeline | Regional | O | O |  |  |
 |  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
@@ -138,5 +140,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Mobile Contact | Regional | O |  |  |  |
 |  | Online Contact | Global |  |  |  |  |
 | IDC | NCC | Regional | O |  |  |  |
-| CloudTail | CloudTail | Global |  |  |  |  |
+| Governance & Audit | CloudTrail | Global |  |  |  |  |
+|  | Resource Watcher | Global |  |  |  |  |
 
