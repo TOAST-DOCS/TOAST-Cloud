@@ -404,6 +404,8 @@ You can grant multiple required roles to project members.
 | Autocomplete | ADMIN | Create/Read/Update/Delete for AutocompleteService |
 | Corporation Search | ADMIN | Create/Read/Update/Delete for Corporation Search Service |
 | Log & Crash Search | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
+| DataFlow | ADMIN | Create/Read/Update/Delete for DataFlow Service |
+| DataQuery | ADMIN | Create/Read/Update/Delete for DataQuery Service |
 | Pipeline | ADMIN | Create/Read/Update/Delete for Pipeline Service |
 | Deploy | ADMIN | Create/Read/Update/Delete for Deploy Service |
 | Deploy | VIEWER | Read for Deploy Service |
