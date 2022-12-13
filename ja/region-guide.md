@@ -69,9 +69,10 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | MS-SQL Instance | リージョン | O | O | O | O |
 |  | MySQL Instance | リージョン | O | O | O | O |
 |  | PostgreSQL Instance | リージョン | O | O | O | O |
-|  | CUBRID Insatnce  | リージョン | O | O | O | O |
+|  | CUBRID Instance  | リージョン | O | O | O | O |
 |  | MariaDB Instance  | リージョン | O | O | O | O |
 |  | Tibero Instance   | リージョン | O | O | O | O |
+|  | Redis Instance | リージョン | O | O | O | O |
 | Hybrid & Private Cloud | NHN Private Cloud | リージョン | - | - | - | - |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
@@ -121,6 +122,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Data & Analytics | Log & Crash Search | グローバル |  |  |  |  |
 |  | DataFlow | リージョン | O |  |  |  |
 |  | DataQuery | リージョン | O |  |  |  |
+|  | Kafka Instance | リージョン | O | O | O | O |
 | Dev Tools | Pipeline | リージョン | O | O |  |  |
 |  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
