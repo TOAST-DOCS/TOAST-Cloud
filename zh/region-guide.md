@@ -76,6 +76,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Hybrid & Private Cloud | NHN Private Cloud | Regional | - | - | - | - |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
+|  | GameTalk | Global | | | | |
 |  | GameStarter | Global | | | | |
 |  | Leaderboard | Global |  |  |  |  |
 |  | Launching | Global |  |  |  |  |
