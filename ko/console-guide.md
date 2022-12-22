@@ -356,6 +356,13 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | GameAnvil  | ADMIN | GameAnvil 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | GameAnvil  | MEMBER | GameAnvil 서비스 Read(읽기), 모니터링 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | GameAnvil  | VIEWER | GameAnvil 서비스 Read(읽기)  |
+| GameTalk | GameTalk ADMIN | GameTalk 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| GameTalk | GameTalk Channel ADMIN | GameTalk 서비스 채널 목록 메뉴 Read(읽기), 채널 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 채널 태그 메뉴 Read(읽기), 채널 태그 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| GameTalk | GameTalk Channel VIEWER | GameTalk 서비스 채널 목록 메뉴 Read(읽기) |
+| GameTalk | GameTalk Member VIEWER | GameTalk 서비스 멤버 메뉴 Read(읽기) |
+| GameTalk | GameTalk Notice ADMIN | GameTalk 서비스 공지 메뉴 Read(읽기), 공지 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| GameTalk | GameTalk Notice VIEWER | GameTalk 서비스 공지 메뉴 Read(읽기) |
+| GameTalk | GameTalk Setting ADMIN | 일반 설정 메뉴 Read(읽기), 설정 Update(갱신) |
 | GameStarter  | ADMIN | 게임 설정, 배포 메뉴 Create(생성)/ Read(읽기)/ Update(갱신)  |
 | GameStarter  | VIEWER | 게임 설정, 배포 메뉴 Read(읽기)  |
 | Leaderboard | ADMIN | Leaderboard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
