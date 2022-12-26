@@ -3,8 +3,8 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-android)をインストールします。
-2. [NHN Cloudコンソール](https://console.toast.com)で[Log & Crash Searchを有効化](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
-3. Log & Crash Searchで[AppKeyを確認](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
+2. [NHN Cloudコンソール](https://console.toast.com)で[Log & Crash Searchを有効化](https://nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
+3. Log & Crash Searchで[AppKeyを確認](https://nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
 
 ## ライブラリ設定
 - 下記コードをbuild.gradleに追加します。
@@ -152,7 +152,7 @@ NhnCloudLogger.initialize(configuration);
 
 Androidプラットフォームでは、try/catch構文で例外に関する内容を、NHN Cloud LoggerのHandled Exception APIを使用して送信できます。
 このように送信した例外ログは、コンソールで**Log & Crash Search > アプリクラッシュ検索**をクリックし、**エラータイプ**で**Handled**をクリックして照会できます。
-Log & Crashコンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
+Log & Crashコンソールの詳細な使用方法は、[コンソール使用ガイド](http://nhncloud.com/ja/Analytics/Log%20&%20Crash%20Search/ja/console-guide/)を参照してください。
 
 ### Handled Exception Log API仕様
 
