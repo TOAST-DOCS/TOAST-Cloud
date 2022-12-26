@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-1. Enable [AI Service > Document Recognizer] in [NHN Cloud Console](https://console.toast.com)
+1. Enable [AI Service > Document Recognizer] in [NHN Cloud Console](https://console.nhncloud.com)
 2. Check Appkey and SecretKey in Document Recognizer Console.
 
 ## Supported Environment

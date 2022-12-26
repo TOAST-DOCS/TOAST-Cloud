@@ -3,8 +3,8 @@
 ## 사전 준비
 
 1. [NHN Cloud SDK](./getting-started-android)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.toast.com)에서 [IAP 서비스를 활성화](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)합니다.
-3. IAP 콘솔에서 [AppKey를 확인](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
+2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [IAP 서비스를 활성화](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)합니다.
+3. IAP 콘솔에서 [AppKey를 확인](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
 ## 스토어별 인앱 결제 가이드
 
@@ -221,7 +221,7 @@ Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체는 인앱 결제 설정 정보를 포함하고 있습니다.
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체는 [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder)를 사용하여 생성할 수 있습니다.
-* IAP 콘솔에서 발급받은 [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 setAppKey 메서드를 사용하여 설정합니다.
+* IAP 콘솔에서 발급받은 [AppKey](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 setAppKey 메서드를 사용하여 설정합니다.
 * setStoreCode 메서드를 사용하여 인앱 결제에 사용할 [스토어 코드](./iap-android/#_3)를 설정합니다.
 
 ### 인앱 결제 설정 예시
@@ -282,7 +282,7 @@ public class MainApplication extends Application {
 ## 서비스 로그인
 
 * NHN Cloud SDK에서 제공하는 모든 상품(IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
-    * [NhnCloudSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
+    * [NhnCloudSdk.setUserId](https://nhncloud.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
     * 사용자 아이디를 설정하지 않은 경우, 결제가 진행되지 않습니다.
 * 서비스 로그인 단계에서 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능을 구현하는 것을 권장합니다.
 
@@ -470,7 +470,7 @@ NhnCloudIap.launchPurchaseFlow(activity, params);
 ## 미소비 결제 조회
 
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE)과 소비성 구독 상품(CONSUMABLE_AUTO_RENEWABLE) 정보를 조회합니다.
-* 사용자에게 상품을 지급된 후 [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
+* 사용자에게 상품을 지급된 후 [Consume API](https://nhncloud.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 * 미소비 결제는 NhnCloudIap.queryConsumablePurchases() 메서드를 사용하여 조회할 수 있습니다.
 * [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 미소비 결제를 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.

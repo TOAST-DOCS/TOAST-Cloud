@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)をインストールします。
-2. [NHN Cloudコンソール](https://console.toast.com)で、[Log & Crash Searchを有効化](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
-3. Log & Crash Searchで、[AppKeyを確認](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で、[Log & Crash Searchを有効化](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
+3. Log & Crash Searchで、[AppKeyを確認](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
 
 ## NHN Cloud Logger構成
 
@@ -102,7 +102,7 @@ OPTIONS:
 > `同じバージョンのSymbolがすでにアップロードされている場合、SymbolUploaderはアップロードされているSymbolを削除してアップロードを実行します。`
 > この時、2つのSymbolファイルの`ファイル名が異なる場合、アップロードされていたSymbolは削除されません。`
 > Log & Crash SearchコンソールからアップロードされているSymbolを削除する必要があります。
-> https://console.toast.com/→組織選択→プロジェクト選択→ Anaytics → Log & Crash Search →設定→シンボルファイル
+> https://console.nhncloud.com/→組織選択→プロジェクト選択→ Anaytics → Log & Crash Search →設定→シンボルファイル
 
 ### CrashReport 使用時注意事項
 
@@ -319,14 +319,14 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 
 ### Network Insights有効化
 
-1. [NHN Cloud Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+1. [NHN Cloud Console](https://console.nhncloud.com/)で**Log & Crash Search**サービスをクリックします。
 2. **設定**メニューをクリックします。
 3. **ログ送信設定**タブをクリックします。
 4. **Network Insightsログ**を有効にします。
 
 ### URL設定
 
-1. [NHN Cloud Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+1. [NHN Cloud Console](https://console.nhncloud.com/)で**Log & Crash Search**サービスをクリックします。
 2. **ネットワークインサイト**メニューをクリックします。
 3. **URL設定**タブをクリックします。
 4. 測定するにはURLを入力して**追加**ボタンをクリックします。

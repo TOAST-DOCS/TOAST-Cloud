@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-ios).
-2. [Enable Log & Crash Search](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.toast.com).
-3. [Check AppKey](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) in Log & Crash Search.
+2. [Enable Log & Crash Search](https://docs.nhncloud.com/zh/Data%20&%20Analytics/Log%20&%20Crash%20Search/zh/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](https://docs.nhncloud.com/zh/Data%20&%20Analytics/Log%20&%20Crash%20Search/zh/console-guide/#appkey) in Log & Crash Search.
 
 ## Configuration of NHN Cloud Logger
 
@@ -102,7 +102,7 @@ OPTIONS:
 > `If a symbol with the same version has already been uploaded, SymbolUploader removes the uploaded symbol and performs uploading.`
 > At this time, if the filenames of the two symbol files are different, the uploaded symbol will not be removed.
 > You need to remove the uploaded symbol from the Log & Crash Search console.
-> https://console.toast.com/-> Select Organization -> Select Project -> Anaytics -> Log & Crash Search -> Settings -> Symbol Files
+> https://console.nhncloud.com/-> Select Organization -> Select Project -> Anaytics -> Log & Crash Search -> Settings -> Symbol Files
 
 ### Precautions when using CrashReport
 
@@ -321,14 +321,14 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 
 ### Enable Network Insights
 
-1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.nhncloud.com/) and select [Log & Crash Search].
 2. Select [Settings].
 3. Click the [Setting for Sending Logs] tab.
 4. Enable "Network Insights Logs".
 
 ### URL Setting
 
-1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.nhncloud.com/) and select [Log & Crash Search].
 2. Select [Network Insights].
 3. Click the [URL Setting] tab.
 4. Enter URL to measure and click [Add].

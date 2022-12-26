@@ -1,6 +1,6 @@
 ## NHN Cloud > SDK User Guide > Overview
 
-NHN Cloud SDK is an integrated library that lets you conveniently apply various service libraries of [NHN Cloud](https://toast.com/). When you use NHN Cloud services to develop an application, you can apply them all at once without applying each library of individual services.
+NHN Cloud SDK is an integrated library that lets you conveniently apply various service libraries of [NHN Cloud](https://nhncloud.com/). When you use NHN Cloud services to develop an application, you can apply them all at once without applying each library of individual services.
 Although the SDK provides an integrated development environment for many services, you can save storage space by selecting only the required features. NHN Cloud SDK is a library optimized for each programming language and platform of your choice, and provides familiar development environment.
 
 > Currently, NHN Cloud SDK provides development environment for iOS, Android, Unity3D, and Windows C++. More programming languages and platforms are to be supported in the future.
@@ -9,10 +9,10 @@ Although the SDK provides an integrated development environment for many service
 
 NHN Cloud SDK provides the following services:
 
-- [Log & Crash Search](https://www.toast.com/service/data-analytics/log-crash-search)
-- [IAP](https://www.toast.com/service/mobile-service/iap)
-- [Push](https://www.toast.com/service/notification/push)
-- [Document Recognizer](https://www.toast.com/service/ai-service/document-recognizer)
+- [Log & Crash Search](https://www.nhncloud.com/service/data-analytics/log-crash-search)
+- [IAP](https://www.nhncloud.com/service/mobile-service/iap)
+- [Push](https://www.nhncloud.com/service/notification/push)
+- [Document Recognizer](https://www.nhncloud.com/service/ai-service/document-recognizer)
 
 > Services providing individual SDK are to be supported for development via NHN Cloud SDK.
 
@@ -29,31 +29,31 @@ NHN Cloud SDK provides the following services:
 
 NHN Cloud Android SDK is deployed on **mavenCentral** and requires only simple Gradle settings for use.
 
-- [Get started for Android](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-android)
+- [Get started for Android](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/getting-started-android)
 
 ### iOS
 
 NHN Cloud iOS SDK is released on **Github** and requires only simple **Cocoapods**, **Carthage** settings for use.
 
-- [Get started for iOS](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-ios)
+- [Get started for iOS](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/getting-started-ios)
 
 ### Unity
 
 NHN Cloud Unity SDK supports Android and iOS platforms.
 
-- [Get started for Unity](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-unity)
+- [Get started for Unity](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/getting-started-unity)
 
 ### Windows C++
 
 NHN Cloud Windows C++ SDK supports Windows 7 and 10 (32/64 bits) environments.
 
-- [Get started for Windows C++](https://docs.toast.com/en/TOAST/en/toast-sdk/getting-started-windows)
+- [Get started for Windows C++](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/getting-started-windows)
 
 ## Log & Crash
 
 This service provides capability to send logs to a collector server of Log & Crash Search. You can check the collected logs by clicking the **Log & Crash Search** menu on NHN Cloud console.
 
-- [Find out Log & Crash Search Service](https://toast.com/service/analytics/log_crash_search)
+- [Find out Log & Crash Search Service](https://nhncloud.com/service/data-analytics/log-crash-search)
 
 ### Main Features
 
@@ -65,16 +65,16 @@ This service provides capability to send logs to a collector server of Log & Cra
 
 ### User Guides
 
-- User Guide for [Log & Crash > Android](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-android)
-- User Guide for [Log & Crash > iOS](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-ios)
-- User Guide for [Log & Crash > Unity](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-unity)
-- User Guide for [Log & Crash > Windows C++](https://docs.toast.com/en/TOAST/en/toast-sdk/log-collector-windows)
+- User Guide for [Log & Crash > Android](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/log-collector-android)
+- User Guide for [Log & Crash > iOS](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/log-collector-ios)
+- User Guide for [Log & Crash > Unity](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/log-collector-unity)
+- User Guide for [Log & Crash > Windows C++](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/log-collector-windows)
 
 ## NHN Cloud IAP
 
 This service provides integrated mobile in-app payment (IAP) service.
 
-- [Find out IAP Service](https://www.toast.com/service/mobile-service/iap)
+- [Find out IAP Service](https://www.nhncloud.com/service/mobile-service/iap)
 
 ### Main Features
 

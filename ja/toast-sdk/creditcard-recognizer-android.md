@@ -2,7 +2,7 @@
 
 ## 事前準備
 
-1. [NHN Cloud Console](https://console.toast.com)で[AI Service > Document Recognizer]サービスを有効にします。
+1. [NHN Cloud Console](https://console.nhncloud.com)で[AI Service > Document Recognizer]サービスを有効にします。
 2. Document RecognizerコンソールdeAppKeyとSecretKeyを確認します。
 
 ## サポート環境

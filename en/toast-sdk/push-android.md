@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. Install [NHN Cloud SDK](./getting-started-android).
-2. [Enable Push service](https://docs.toast.com/en/Notification/Push/en/console-guide/) in [NHN Cloud console](https://console.toast.com).
+2. [Enable Push service](https://nhncloud.com/en/Notification/Push/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
 3. Check the AppKey in the Push console.
 
 ## Guide by Push Provider
@@ -681,7 +681,7 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 
 ## User Tag
 
-* The [User Tag](https://docs.toast.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
+* The [User Tag](https://nhncloud.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
 * It operates based on the tag ID (8-character string) rather than the tag name, and the tag ID can be created and checked in the Console > Tag menu.
 
 ### Modify User Tags

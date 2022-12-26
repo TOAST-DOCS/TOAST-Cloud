@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install the NHN Cloud SDK](./getting-started-unity)
-2. [NHN Cloud 콘솔](https://console.toast.com)에서 [Log & Crash Search를 활성화](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
-3. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Log & Crash Search를 활성화](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+3. Log & Crash Search에서 [AppKey를 확인](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 4. [NHN Cloud SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
 
 ## 지원 플랫폼
@@ -287,7 +287,7 @@ ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("Unit
 
 NHN Cloud Logger는 일반/크래시 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
 이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 "Handled"로 필터링하여 조회할 수 있습니다.
-자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
+자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.nhncloud.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
 
 ### Handled Exception Log API 명세
 
@@ -318,14 +318,14 @@ Network Insights는 콘솔에 등록한 URL을 호출하여 지연시간 및 응
 
 ### Network Insights 활성화
 
-1. [NHN Cloud Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
+1. [NHN Cloud Console](https://console.nhncloud.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
 2. [설정] 메뉴를 선택합니다.
 3. [로그 전송 설정] 탭을 선택합니다.
 4. "Network Insights 로그"를 활성화합니다.
 
 ### URL 설정
 
-1. [NHN Cloud Console](https://console.toast.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
+1. [NHN Cloud Console](https://console.nhncloud.com/) 에서 [Log & Crash Search] 서비스를 선택합니다.
 2. [네트워크 인사이트] 메뉴를 선택합니다.
 3. [URL 설정] 탭을 선택합니다.
 4. 측정하고 자하는 URL을 입력 후 [추가] 버튼을 클릭합니다.

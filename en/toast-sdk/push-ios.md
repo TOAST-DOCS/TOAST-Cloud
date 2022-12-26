@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. Install [NHN Cloud SDK](./getting-started-ios).
-2. [Enable Notification \> Push](http://docs.toast.com/en/Notification/Push/en/console-guide/) in [NHN Cloud Console](https://console.toast.com).
+2. [Enable Notification \> Push](http://docs.nhncloud.com/en/Notification/Push/en/console-guide/) in [NHN Cloud Console](https://console.nhncloud.com).
 3. Check your AppKey in Push.
 
 ## APNS Guide
@@ -69,7 +69,7 @@ end
 
 ### Login
 
-* `If a user ID is not set at the time of initial token registration, it is registered using the device identifier.` ([Refer to the token registration section](https://docs.toast.com/en/TOAST/ko/toast-sdk/push-ios/#_10))
+* `If a user ID is not set at the time of initial token registration, it is registered using the device identifier.` ([Refer to the token registration section](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/push-ios/#_10))
 * `Setting or changing the user ID after token registration will update token information.`
 
 ``` objc
@@ -451,7 +451,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 
 ## User Tag
 
-* The [User Tag](https://docs.toast.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
+* The [User Tag](https://docs.nhncloud.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
 * It operates based on the tag ID (8-character string) rather than the tag name, and the tag ID can be created and checked in the Console > Tag menu.
 
 ### Specification for User Tag Setting API
