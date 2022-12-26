@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)を設置します。
-2. [NHN Cloudコンソール](https://console.toast.com)で [Notification \> Pushを有効化](http://docs.toast.com/ja/Notification/Push/ja/console-guide/)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で [Notification \> Pushを有効化](http://docs.nhncloud.com/ja/Notification/Push/ja/console-guide/)します。
 3. PushでAppKeyを確認します。
 
 ## APNSガイド
@@ -69,7 +69,7 @@ end
 
 ### ログイン
 
-* `初回トークン登録時に、ユーザーIDが設定されていない場合は、デバイス識別子を使用して登録します。` ([トークン登録セクション参照](https://docs.toast.com/ja/TOAST/ja/toast-sdk/push-ios/#_10))
+* `初回トークン登録時に、ユーザーIDが設定されていない場合は、デバイス識別子を使用して登録します。` ([トークン登録セクション参照](https://docs.nhncloud.com/ja/TOAST/ja/toast-sdk/push-ios/#_10))
 * `トークン登録後、ユーザーIDを設定、または変更すると、トークン情報を更新します。`
 
 ``` objc
@@ -449,7 +449,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 ## ユーザー·タグ
 
-* [ユーザー·タグ](https://docs.toast.com/ja/Notification/Push/ja/console-guide/#_16)能は、複数のユーザー IDをひとつのタグで結びつけ、それを活用してメッセージを送信することができます。
+* [ユーザー·タグ](https://docs.nhncloud.com/ja/Notification/Push/ja/console-guide/#_16)能は、複数のユーザー IDをひとつのタグで結びつけ、それを活用してメッセージを送信することができます。
 * タグ名ではなく、タグID(8桁の文字列)に基づいて動作し、タグIDはコンソール > タグメニューから作成・確認できます。
 
 ### ユーザー·タグ設定API

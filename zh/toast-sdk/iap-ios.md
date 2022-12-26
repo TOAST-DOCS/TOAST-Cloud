@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. Install [NHN Cloud SDK](./getting-started-ios).
-2. [Enable Mobile Service \> IAP](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/) in [NHN Cloud console](https://console.toast.com).
-3. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP.
+2. [Enable Mobile Service \> IAP](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-guide/#appkey) in IAP.
 
 ## NHN Cloud IAP Components
 
@@ -77,7 +77,7 @@ end
 
 ## Initialize NHN Cloud IAP SDK
 
-* Set the [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console on the [NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration) object.
+* Set the [AppKey](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-guide/#appkey) issued from IAP console on the [NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration) object.
 * NHN Cloud IAP uses the [NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration) object as a parameter for initialization.
 
 ### Specification for Initialization API

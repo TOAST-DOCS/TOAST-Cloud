@@ -1,6 +1,6 @@
 ## NHN Cloud > SDK 사용 가이드 > 개요
 
-NHN Cloud SDK는 [NHN Cloud](https://toast.com/)의 다양한 서비스 라이브러리(SDK)를 간편하게 적용할 수 있게 한 통합 라이브러리(SDK)입니다. NHN Cloud 서비스를 사용하여 애플리케이션을 개발할 때, 개별 서비스의 라이브러리를 각각 적용하는 불편함 없이 한 번에 적용할 수 있습니다. 
+NHN Cloud SDK는 [NHN Cloud](https://nhncloud.com/)의 다양한 서비스 라이브러리(SDK)를 간편하게 적용할 수 있게 한 통합 라이브러리(SDK)입니다. NHN Cloud 서비스를 사용하여 애플리케이션을 개발할 때, 개별 서비스의 라이브러리를 각각 적용하는 불편함 없이 한 번에 적용할 수 있습니다. 
 여러 서비스의 통합 개발 환경을 제공하지만, 원하는 기능만 선택할 수 있기 때문에 사용 공간을 절약할 수 있습니다. NHN Cloud SDK는 사용하는 프로그래밍 언어와 플랫폼에 최적화된 라이브러리로, 익숙한 개발 환경을 제공합니다.
 
 > 현재는 iOS, Android, Unity3D, Windows C++의 개발 환경만 제공합니다. 향후 더욱 다양한 프로그래밍 언어와 플랫폼을 지원할 예정입니다.
@@ -9,10 +9,10 @@ NHN Cloud SDK는 [NHN Cloud](https://toast.com/)의 다양한 서비스 라이�
 
 NHN Cloud SDK는 다음과 같은 서비스를 제공합니다.
 
-- [Log & Crash Search](https://www.toast.com/service/data-analytics/log-crash-search)
-- [IAP](https://www.toast.com/service/mobile-service/iap)
-- [Push](https://www.toast.com/service/notification/push)
-- [Document Recognizer](https://www.toast.com/service/ai-service/document-recognizer)
+- [Log & Crash Search](https://www.nhncloud.com/service/data-analytics/log-crash-search)
+- [IAP](https://www.nhncloud.com/service/mobile-service/iap)
+- [Push](https://www.nhncloud.com/service/notification/push)
+- [Document Recognizer](https://www.nhncloud.com/service/ai-service/document-recognizer)
 
 > 개별 SDK를 제공하는 서비스는 앞으로 NHN Cloud SDK를 통해 개발할 수 있게 지원할 예정입니다.
 
@@ -53,7 +53,8 @@ NHN Cloud Windows C++ SDK는 Windows 7, 10(32/64bit) 환경을 지원합니다.
 
 Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합니다. 수집된 로그는 NHN Cloud 콘솔의 **Log & Crash Search** 메뉴를 클릭해 확인할 수 있습니다.
 
-- [Log & Crash Search 서비스 확인](https://toast.com/service/analytics/log_crash_search)
+- [Log & Crash Search 서비스 확인](https://nhncloud.com/service/data-analytics/log-crash-search)
+                                
 
 ### 주요 기능
 
@@ -74,7 +75,7 @@ Log & Crash Search 수집 서버에 로그를 전송하는 기능을 제공합�
 
 모바일 통합 인앱 결제 서비스를 제공합니다.
 
-- [IAP 서비스 확인하기](https://www.toast.com/service/mobile-service/iap)
+- [IAP 서비스 확인하기](https://www.nhncloud.com/service/mobile-service/iap)
 
 ### 주요 기능
 

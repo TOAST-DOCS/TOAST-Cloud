@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. Install [NHN Cloud SDK](./getting-started-ios).
-2. Enable [AI Service > Document Recognizer] in[NHN Cloud Console](https://console.toast.com).
+2. Enable [AI Service > Document Recognizer] in[NHN Cloud Console](https://console.nhncloud.com).
 3. Check Appkey and SecretKey in Document Recognizer Console.
 
 <br>
