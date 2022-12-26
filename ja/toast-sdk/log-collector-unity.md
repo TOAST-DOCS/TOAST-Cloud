@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install the NHN Cloud SDK](./getting-started-unity)
-2. [NHN Cloud コンソール](https://console.toast.com)で、[Log & Crash Search を有効化](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
-3. Log & Crash Search で、[AppKey を確認](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
+2. [NHN Cloud コンソール](https://console.nhncloud.com)で、[Log & Crash Search を有効化](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+3. Log & Crash Search で、[AppKey を確認](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 4. [NHN Cloud SDK を初期化](./getting-started-unity#toast-sdk_1)します。
 
 ## サポートプラットフォーム
@@ -287,7 +287,7 @@ ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("Unit
 
 NHN Cloud Logger は、一般/クラッシュログだけでなく、try/catch 構文で例外に関連する内容を Report API を使用して送信できます。
 こうして送信した例外ログは、"Log & Crash Search コンソール" > "App Crash Search タブ"のエラータイプで"Handled"でフィルタリングして照会できます。
-Log & Crash コンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
+Log & Crash コンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.nhncloud.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
 
 ### Handled Exception Log API 詳細
 
@@ -318,14 +318,14 @@ Network Insights は、コンソールに登録した URL を呼び出して、�
 
 ### Network Insights 有効化
 
-1. [NHN Cloud Console](https://console.toast.com/)で、[Log & Crash Search]サービスを選択します。
+1. [NHN Cloud Console](https://console.nhncloud.com/)で、[Log & Crash Search]サービスを選択します。
 2. [設定]メニューを選択します。
 3. [ログ送信設定]タブを選択します。
 4. "Network Insights ログ"を有効にします。
 
 ### URL 設定
 
-1. [NHN Cloud Console](https://console.toast.com/)で、[Log & Crash Search]サービスを選択します。
+1. [NHN Cloud Console](https://console.nhncloud.com/)で、[Log & Crash Search]サービスを選択します。
 2. [ネットワークインサイト]メニューを選択します。
 3. [URL 設定]タブを選択します。
 4. 測定する URL を入力後、[追加]ボタンをクリックします。
