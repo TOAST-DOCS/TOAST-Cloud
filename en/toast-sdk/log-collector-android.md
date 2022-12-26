@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-android)
-2. [Enable Log & Crash Search](https://nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/) in [NHN Cloud console](https://console.toast.com).
+2. [Enable Log & Crash Search](https://nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
 3. [Check AppKey](https://nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#appkey) from Log & Crash Search.
 
 ## Library Setting
@@ -213,7 +213,7 @@ Network Insights measure delay time and response values by calling URL registere
 
 Network Insights can be enabled as follows.
 
-1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.nhncloud.com/) and select [Log & Crash Search].
 2. Select [Settings].
 3. Click the [Setting for Sending Logs] tab.
 4. Enable "Network Insights Logs".
@@ -222,7 +222,7 @@ Network Insights can be enabled as follows.
 
 URL can be set as follows.
 
-1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.nhncloud.com/) and select [Log & Crash Search].
 2. Select [Network Insights].
 3. Click the [URL Setting] tab.
 4. Enter URL to measure and click [Add].

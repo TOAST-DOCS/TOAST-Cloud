@@ -3,7 +3,7 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-android)をインストールします。
-2. [NHN Cloudコンソール](https://console.toast.com)で[Log & Crash Searchを有効化](https://nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で[Log & Crash Searchを有効化](https://nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
 3. Log & Crash Searchで[AppKeyを確認](https://nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
 
 ## ライブラリ設定
@@ -213,7 +213,7 @@ Network Insightsは、コンソールに登録したURLを呼び出して遅延�
 
 Network Insightsを有効にする方法は次のとおりです。
 
-1. [NHN Cloud Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+1. [NHN Cloud Console](https://console.nhncloud.com/)で**Log & Crash Search**サービスをクリックします。
 2. **設定**メニューをクリックします。
 3. **ログ送信設定**タブをクリックします。
 4. **Network Insightsログ**を有効にします。
@@ -222,7 +222,7 @@ Network Insightsを有効にする方法は次のとおりです。
 
 URLを設定する方法は次のとおりです。
 
-1. [NHN Cloud Console](https://console.toast.com/)で**Log & Crash Search**サービスをクリックします。
+1. [NHN Cloud Console](https://console.nhncloud.com/)で**Log & Crash Search**サービスをクリックします。
 2. **ネットワークインサイト**メニューをクリックします。
 3. **URL設定**タブをクリックします。
 4. 測定するには、URLを入力して**追加**ボタンをクリックします。

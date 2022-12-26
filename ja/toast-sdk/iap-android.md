@@ -3,7 +3,7 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-android)をインストールします。
-2. [NHN Cloudコンソール](https://console.toast.com)で[IAPサービスを有効化](https://nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#iap-appkey)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で[IAPサービスを有効化](https://nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#iap-appkey)します。
 3. IAPコンソールで[AppKeyを確認](https://nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)します。
 
 ## ストア別アプリ内決済ガイド

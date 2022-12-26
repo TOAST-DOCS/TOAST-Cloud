@@ -3,7 +3,7 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-android)をインストールします。
-2. [NHN Cloudコンソール](https://console.toast.com)で、[Pushサービスを有効化](https://nhncloud.com/ja/Notification/Push/ja/console-guide/)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で、[Pushサービスを有効化](https://nhncloud.com/ja/Notification/Push/ja/console-guide/)します。
 3. PushコンソールでAppKeyを確認します。
 
 ## Push提供者別ガイド

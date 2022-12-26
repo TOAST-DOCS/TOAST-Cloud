@@ -3,7 +3,7 @@
 ## 사전 준비
 
 1. [NHN Cloud SDK](./getting-started-android)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.toast.com)에서 [IAP 서비스를 활성화](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)합니다.
+2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [IAP 서비스를 활성화](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)합니다.
 3. IAP 콘솔에서 [AppKey를 확인](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
 ## 스토어별 인앱 결제 가이드

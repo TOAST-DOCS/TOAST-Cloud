@@ -3,7 +3,7 @@
 ## 사전 준비
 
 1. [NHN Cloud SDK](./getting-started-android)을 설치합니다.
-2. [NHN Cloud 콘솔](https://console.toast.com)에서 [Log & Crash Search를 활성화](https://nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Log & Crash Search를 활성화](https://nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3. Log & Crash Search에서 [AppKey를 확인](https://nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
 ## 라이브러리 설정
@@ -213,7 +213,7 @@ Network Insights는 콘솔에 등록한 URL을 호출하여 지연 시간과 응
 
 Network Insights를 활성화하는 방법은 다음과 같습니다.
 
-1. [NHN Cloud Console](https://console.toast.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
+1. [NHN Cloud Console](https://console.nhncloud.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
 2. **설정** 메뉴를 클릭합니다.
 3. **로그 전송 설정** 탭을 클릭합니다.
 4. **Network Insights 로그**를 활성화합니다.
@@ -222,7 +222,7 @@ Network Insights를 활성화하는 방법은 다음과 같습니다.
 
 URL을 설정하는 방법은 다음과 같습니다.
 
-1. [NHN Cloud Console](https://console.toast.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
+1. [NHN Cloud Console](https://console.nhncloud.com/)에서 **Log & Crash Search** 서비스를 클릭합니다.
 2. **네트워크 인사이트** 메뉴를 클릭합니다.
 3. **URL 설정** 탭을 클릭합니다.
 4. 측정하려는 URL을 입력하고 **추가** 버튼을 클릭합니다.
