@@ -1,6 +1,6 @@
 ## NHN Cloud > SDK使用ガイド > 概要 
  
-NHN Cloud SDKは、[NHN Cloud](https://toast.com/)の多様なサービスライブラリ(SDK)を簡単に適用できるようにした統合ライブラリ(SDK)です。 NHN Cloudサービスを使用してアプリケーションを開発する時、個別サービスのライブラリをそれぞれ適用する煩わしさがなく、一度に適用できます。 
+NHN Cloud SDKは、[NHN Cloud](https://nhncloud.com/)の多様なサービスライブラリ(SDK)を簡単に適用できるようにした統合ライブラリ(SDK)です。 NHN Cloudサービスを使用してアプリケーションを開発する時、個別サービスのライブラリをそれぞれ適用する煩わしさがなく、一度に適用できます。 
 複数のサービスの統合開発環境を提供しますが、希望する機能だけを選択できるため、使用スペースを節約できます。NHN Cloud SDKは、使用するプログラミング言語とプラットフォームに最適化されたライブラリで、慣れた開発環境を提供します。 
  
 > 現在はiOS、Android、Unity3D、Windows C++の開発環境のみ提供します。今後さらに多様なプログラミング言語とプラットフォームをサポートする予定です。 
@@ -9,10 +9,10 @@ NHN Cloud SDKは、[NHN Cloud](https://toast.com/)の多様なサービスライ
  
 NHN Cloud SDKは、次のようなサービスを提供します。 
  
-- [Log & Crash Search](https://www.toast.com/service/data-analytics/log-crash-search)
-- [IAP](https://www.toast.com/service/mobile-service/iap) 
-- [Push](https://www.toast.com/service/notification/push)
-- [Document Recognizer](https://www.toast.com/service/ai-service/document-recognizer)
+- [Log & Crash Search](https://www.nhncloud.com/service/data-analytics/log-crash-search)
+- [IAP](https://www.nhncloud.com/service/mobile-service/iap) 
+- [Push](https://www.nhncloud.com/service/notification/push)
+- [Document Recognizer](https://www.nhncloud.com/service/ai-service/document-recognizer)
  
 > 個別SDKを提供するサービスは、今後NHN Cloud SDKを通して開発できるようにサポートする予定です。 
  
@@ -54,7 +54,7 @@ NHN Cloud Windows C++ SDKは、Windows 7、10(32/64bit)環境をサポートし�
  
 Log & Crash Search収集サーバーにログを送信する機能を提供します。収集されたログは、NHN Cloudコンソールの**Log & Crash Search**メニューをクリックして確認できます。 
  
-- [Log & Crash Searchサービス確認](https://toast.com/service/analytics/log_crash_search) 
+- [Log & Crash Searchサービス確認](https://nhncloud.com/service/data-analytics/log-crash-search) 
  
 ### 主な機能 
  
@@ -75,7 +75,7 @@ Log & Crash Search収集サーバーにログを送信する機能を提供し�
  
 モバイル統合アプリ内決済サービスを提供します。 
  
-- [IAPサービスを確認する](https://www.toast.com/service/mobile-service/iap) 
+- [IAPサービスを確認する](https://www.nhncloud.com/service/mobile-service/iap) 
  
 ### 主な機能 
  

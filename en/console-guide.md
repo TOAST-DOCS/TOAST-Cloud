@@ -359,6 +359,13 @@ You can grant multiple required roles to project members.
 | GameAnvil  | ADMIN | GameAnvil Create, Read, Update, and Delete Services  |
 | GameAnvil  | MEMBER | GameAnvil Read Service. Create, Read, Update, or Delete for Monitoring menu |
 | GameAnvil  | VIEWER | GameAnvil Read Services  |
+| GameTalk | GameTalk ADMIN | GameTalk Service Create/Read/Update/Delete |
+| GameTalk | GameTalk Channel ADMIN | GameTalk Service Channel List Menu Create/Read/Update/Delete, Channel Tag Menu Create/Read/Update/Delete |
+| GameTalk | GameTalk Channel VIEWER | GameTalk Service Channel List Menu Read |
+| GameTalk | GameTalk Member VIEWER | GameTalk Service Member Menu Read |
+| GameTalk | GameTalk Notice ADMIN | GameTalk Service Notice Menu Read, Notice Create/Read/Update/Delete |
+| GameTalk | GameTalk Notice VIEWER | GameTalk Service Notice Menu Read |
+| GameTalk | GameTalk Setting ADMIN | GameTalk Service General Settings Menu Read, Settings Update |
 | GameStarter  | ADMIN | Create, Read, Update for menus game settings, distribution |
 | GameStarter  | VIEWER | Read for menus game settings, distribution |
 | Leaderboard | ADMIN | Create/Read/Update/Delete for Leaderboard Service |
@@ -380,6 +387,7 @@ You can grant multiple required roles to project members.
 | Security Compliance | ADMIN | Create/Read/Update/Delete for Security Compliance Service|
 | DDoS Guard | ADMIN | Create/Read/Update/Delete for DDoS Guard Service |
 | SIEM | ADMIN | Create/Read/Update/Delete for SIEM Service |
+| Webshell Threat Detector | ADMIN | Create/Read/Update/Delete for Webshell Threat Detector Service |
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
 | Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |

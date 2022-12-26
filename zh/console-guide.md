@@ -252,12 +252,12 @@ Members are classified into NHN Cloud members and IAM members.
 
 ### Policy for NHN Cloud Members and IAM Members
 
-| Classification | [NHN Cloud](http://TOAST.com) Members | IAM Members |
+| Classification | [NHN Cloud](http://nhncloud.com) Members | IAM Members |
 | --- | --- | --- |
 | Definition                    | - Members for organization management<br>- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud members even if their organizations are deleted. | - Members for the service use<br>- Members who do not consent to the Terms of Use <br>- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
 | Method of Member Registration | - Owner/Admin of an organization enters NHN Cloud ID for registration | - Owner/Admin of an organization enters unique ID for registration <br>- Register via SSO or API integration |
 | Member role              | - Manage organizations (Create/Modify organizations / Manage organization members / Manage organization services /Manage billing)<br>- Create projects<br>- Delete projects | - Use organization services                                 |
-| Console Access | - Access NHN Cloud console([https://console.toast.com/])(https://console.toast.com/)<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.toast.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) |
+| Console Access | - Access NHN Cloud console([https://console.nhncloud.com/])(https://console.nhncloud.com/)<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.nhncloud.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) |
 
 ### Organization Members
 
@@ -359,6 +359,13 @@ You can grant multiple required roles to project members.
 | GameAnvil  | ADMIN | GameAnvil Create, Read, Update, and Delete Services  |
 | GameAnvil  | MEMBER | GameAnvil Read Service. Create, Read, Update, or Delete for Monitoring menu |
 | GameAnvil  | VIEWER | GameAnvil Read Services  |
+| GameTalk | GameTalk ADMIN | GameTalk Service Create/Read/Update/Delete |
+| GameTalk | GameTalk Channel ADMIN | GameTalk Service Channel List Menu Create/Read/Update/Delete, Channel Tag Menu Create/Read/Update/Delete |
+| GameTalk | GameTalk Channel VIEWER | GameTalk Service Channel List Menu Read |
+| GameTalk | GameTalk Member VIEWER | GameTalk Service Member Menu Read |
+| GameTalk | GameTalk Notice ADMIN | GameTalk Service Notice Menu Read, Notice Create/Read/Update/Delete |
+| GameTalk | GameTalk Notice VIEWER | GameTalk Service Notice Menu Read |
+| GameTalk | GameTalk Setting ADMIN | GameTalk Service General Settings Menu Read, Settings Update |
 | GameStarter  | ADMIN | Create, Read, Update for menus game settings, distribution |
 | GameStarter  | VIEWER | Read for menus game settings, distribution |
 | Leaderboard | ADMIN | Create/Read/Update/Delete for Leaderboard Service |
@@ -380,6 +387,7 @@ You can grant multiple required roles to project members.
 | Security Compliance | ADMIN | Create/Read/Update/Delete for Security Compliance Service|
 | DDoS Guard | ADMIN | Create/Read/Update/Delete for DDoS Guard Service |
 | SIEM | ADMIN | Create/Read/Update/Delete for SIEM Service |
+| Webshell Threat Detector | ADMIN | Create/Read/Update/Delete for Webshell Threat Detector Service |
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
 | Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |

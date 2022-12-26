@@ -3,7 +3,7 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-ios)をインストールします。
-2. [NHN Cloud Console](https://console.toast.com)で[AI Service > Document Recognizer]サービスを有効にします。
+2. [NHN Cloud Console](https://console.nhncloud.com)で[AI Service > Document Recognizer]サービスを有効にします。
 3. Document RecognizerコンソールでAppKeyとSecretKeyを確認します。
 
 <br>

@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-android)
-2. [Enable Log & Crash Search](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/) in [NHN Cloud console](https://console.toast.com).
-3. [Check AppKey](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey) from Log & Crash Search.
+2. [Enable Log & Crash Search](https://nhncloud.com/zh/Data%20&%20Analytics/Log%20&%20Crash%20Search/zh/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](https://nhncloud.com/zh/Data%20&%20Analytics/Log%20&%20Crash%20Search/zh/console-guide/#appkey) from Log & Crash Search.
 
 ## Library Setting
 - Add the code as below to build.gradle.
@@ -152,7 +152,7 @@ NhnCloudLogger.initialize(configuration);
 
 For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of NHN Cloud Logger.
 Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
-For more usage details on Log & Cash Console, see [Console User Guide](http://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
+For more usage details on Log & Cash Console, see [Console User Guide](http://nhncloud.com/zh/Analytics/Log%20&%20Crash%20Search/zh/console-guide/).
 
 ### Specification for Handled Exception Log API
 
@@ -213,7 +213,7 @@ Network Insights measure delay time and response values by calling URL registere
 
 Network Insights can be enabled as follows.
 
-1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.nhncloud.com/) and select [Log & Crash Search].
 2. Select [Settings].
 3. Click the [Setting for Sending Logs] tab.
 4. Enable "Network Insights Logs".
@@ -222,7 +222,7 @@ Network Insights can be enabled as follows.
 
 URL can be set as follows.
 
-1. Go to [NHN Cloud Console](https://console.toast.com/) and select [Log & Crash Search].
+1. Go to [NHN Cloud Console](https://console.nhncloud.com/) and select [Log & Crash Search].
 2. Select [Network Insights].
 3. Click the [URL Setting] tab.
 4. Enter URL to measure and click [Add].

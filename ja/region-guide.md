@@ -39,6 +39,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Virtual Desktop | リージョン | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
 |  | NHN Container Registry (NCR) | リージョン | O | O |  |  |
+|  | NHN Container Service(NCS)  | リージョン | O |  |  |  |
 | Network | VPC | リージョン | O | O | O | O |
 |  | NAT Instance | リージョン |  | O  |  |  |
 |  | Floating IP | リージョン | O | O | O | O |
@@ -68,12 +69,14 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | MS-SQL Instance | リージョン | O | O | O | O |
 |  | MySQL Instance | リージョン | O | O | O | O |
 |  | PostgreSQL Instance | リージョン | O | O | O | O |
-|  | CUBRID Insatnce  | リージョン | O | O | O | O |
+|  | CUBRID Instance  | リージョン | O | O | O | O |
 |  | MariaDB Instance  | リージョン | O | O | O | O |
 |  | Tibero Instance   | リージョン | O | O | O | O |
+|  | Redis Instance | リージョン | O | O | O | O |
 | Hybrid & Private Cloud | NHN Private Cloud | リージョン | - | - | - | - |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
+|  | GameTalk | グローバル | | | | |
 |  | GameStarter | グローバル |  |  |  |  |
 |  | Leaderboard | グローバル |  |  |  |  |
 |  | Launching | グローバル |  |  |  |  |
@@ -91,6 +94,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Security Compliance | グローバル |  |  |  |  |
 |  | DDoS Guard | リージョン | O | O  |  |  |
 |  | SIEM | リージョン | O |O |  |  |
+|  | Webshell Threat Detector | リージョン | O | O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image Manager | リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |
@@ -119,6 +123,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Data & Analytics | Log & Crash Search | グローバル |  |  |  |  |
 |  | DataFlow | リージョン | O |  |  |  |
 |  | DataQuery | リージョン | O |  |  |  |
+|  | Kafka Instance | リージョン | O | O | O | O |
 | Dev Tools | Pipeline | リージョン | O | O |  |  |
 |  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |

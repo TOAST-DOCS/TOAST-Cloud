@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.toast.com)에서 [Notification \> Push를 활성화](http://docs.toast.com/ko/Notification/Push/ko/console-guide/)합니다.
+2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Notification \> Push를 활성화](http://docs.nhncloud.com/ko/Notification/Push/ko/console-guide/)합니다.
 3. Push에서 AppKey를 확인합니다.
 
 ## APNS 가이드
@@ -69,7 +69,7 @@ end
 
 ### 로그인
 
-* `최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.` ([토큰 등록 섹션 참고](https://docs.toast.com/ko/TOAST/ko/toast-sdk/push-ios/#_10))
+* `최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.` ([토큰 등록 섹션 참고](https://docs.nhncloud.com/ko/TOAST/ko/toast-sdk/push-ios/#_10))
 * `토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.`
 
 ``` objc
@@ -451,7 +451,7 @@ agreement.allowNightAdvertisements = YES;   // 야간 홍보성 알림 메시지
 
 ## 사용자 태그
 
-* [사용자 태그](https://docs.toast.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
+* [사용자 태그](https://docs.nhncloud.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
 * 태그명이 아닌 태그 아이디(8자리 문자열)를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
 
 ### 사용자 태그 설정 API 명세

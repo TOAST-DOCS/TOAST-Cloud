@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-android).
-2. [Enable IAP service](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey) in [NHN Cloud console](https://console.toast.com).
-3. [Check AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) in IAP console.
+2. [Enable IAP service](https://nhncloud.com/zh/Mobile%20Service/IAP/zh/console-guide/#iap-appkey) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](https://nhncloud.com/zh/Mobile%20Service/IAP/zh/console-guide/#appkey) in IAP console.
 
 ## In-App Purchase Guide for Each Store Type
 
@@ -221,7 +221,7 @@ To use a lower version of Android Gradle Plugin, see [Preparing your Gradle buil
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object includes IAP setting information.
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object can be created by using [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder).
-* Use the setAppKey method to set [AppKey](https://docs.toast.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey) issued from IAP console.
+* Use the setAppKey method to set [AppKey](https://nhncloud.com/zh/Mobile%20Service/IAP/zh/console-guide/#appkey) issued from IAP console.
 * Use the setStoreCode method to set [Store Code](./iap-android/#_3) for IAP.
 
 ### Example of IAP Setting
@@ -282,7 +282,7 @@ public class MainApplication extends Application {
 ## Service Login
 
 * All products provided by NHN Cloud SDK, such as IAP and Log & Crash, use the same user ID.
-    * User ID can be set with [NhnCloudSdk.setUserId](https://docs.toast.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid).
+    * User ID can be set with [NhnCloudSdk.setUserId](https://nhncloud.com/zh/TOAST/zh/toast-sdk/getting-started-android/#userid).
     * When user ID is not set, purchase cannot proceed.
 * It is recommended to implement the following features in service login step: user ID setting, querying unconsumed purchase history, and querying active subscription products.
 
@@ -470,7 +470,7 @@ If a user purchased a product with a promotion code from the Google Play Store, 
 ## Query Unconsumed Purchases
 
 * Query the information of unconsumed one-time products (CONSUMABLE) and consumable subscription products (CONSUMABLE_AUTO_RENEWABLE).
-* After a product is provided to a user, the product can be consumed by using [Consume API](https://docs.toast.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api).
+* After a product is provided to a user, the product can be consumed by using [Consume API](https://nhncloud.com/zh/Mobile%20Service/IAP/zh/api-guide-for-toast-sdk/#consume-api).
 * Unconsumed purchase can be queried by using the NhnCloudIap.queryConsumablePurchases() method.
 * [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 미소비 결제를 조회할 수 있습니다.
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).

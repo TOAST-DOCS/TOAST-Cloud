@@ -38,6 +38,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Virtual Desktop | Regional | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
+|  | NHN Container Service(NCS)  | Regional | O |  |  |  |
 | Network | VPC | Region | O | O | O | O |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
@@ -61,12 +62,14 @@ All users are provided with the same features, policy, stability and usability, 
 |  | EasyCache | Regional | O | O | O |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
-|  | CUBRID Insatnce  | Regional | O | O | O | O |
+|  | CUBRID Instance  | Regional | O | O | O | O |
 |  | MariaDB Instance  | Regional | O | O | O | O |
 |  | Tibero Instance   | Regional | O | O | O | O |
+|  | Redis Instance | Regional | O | O | O | O |
 | Hybrid & Private Cloud | NHN Private Cloud | Regional | - | - | - | - |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
+|  | GameTalk | Global | | | | |
 |  | GameStarter | Global | | | | |
 |  | Leaderboard | Global |  |  |  |  |
 |  | Launching | Global |  |  |  |  |
@@ -82,6 +85,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | DDoS Guard | Regional | O | O |  |  |
 |  | Vaccine | Regional | O | O |  |  |
 |  | Secure Key Manager | Global |  |  |  |  |
+|  | Webshell Threat Detector | Regional | O | O |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |
@@ -107,6 +111,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Data & Analytics | Log & Crash Search | Global |  |  |  |  |
 |  | DataFlow | Regional | O |  |  |  |
 |  | DataQiuery | Regional | O |  |  |  |
+|  | Kafka Instance | Regional | O | O | O | O |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
