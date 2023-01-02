@@ -34,7 +34,7 @@ They are classified by the country of choice, and allowed to join when they agre
 | Landline Phone Number | - Managed for the support of faster services.  | X |
 
 ### How to Join as Member
-Access https://toast.com and click Join on the top right.
+Access https://nhncloud.com and click Join on the top right.
 Follow the procedure to join membership. 
 
 ![userguide_01_202104](https://static.toastoven.net/toast/user_guide/userguide_01_202104_en.png)

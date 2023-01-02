@@ -63,4 +63,4 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 
 - 파일명 “NHN Cloud (공공기관용) 방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
 - 아래 대표 메일로 접수 신청 메일 발송합니다. (접수일 기준으로 3일 이내 처리 및 회신)
-    - NHN Cloud (공공기관용) : [support@gov.toast.com](mailto:support@gov.toast.com)
+    - NHN Cloud (공공기관용) : [support@gov-nhncloud.com](mailto:support@gov-nhncloud.com)
