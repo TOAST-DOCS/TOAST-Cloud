@@ -44,7 +44,7 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 | ---- | ---- | ---- | ---- | ---- |
 | 한국(판교/평촌) <br> 일본(도쿄) <br> 미국(캘리포니아) | 시스템 터미널 포트 | TCP/23 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 
-### TOAST G 차단 포트 목록
+### NHN Cloud(공공기관용) 차단 포트 목록
 |서비스명 |   차단 포트  | 차단 방법 |비고|
 | ---- | ---- | ---- | ---- |
 | 시스템 터미널 포트 | TCP/22, 23, 3389 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가|
@@ -59,5 +59,5 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 
 - 파일명 “NHN Cloud 방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
 - 아래 대표 메일로 접수 신청 메일 발송합니다. (접수일 기준으로 3일 이내 처리 및 회신)
-    - NHN Cloud : support@toast.com
-    - TOAST G : support@gov.toast.com
+    - NHN Cloud : support@nhncloud.com
+    - NHN Cloud(공공기관용) : support@gov-nhncloud.com
