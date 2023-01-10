@@ -411,6 +411,7 @@ You can grant multiple required roles to project members.
 | Cloud Search | ADMIN | Create/Read/Update/Delete for Cloud Search Service |
 | Autocomplete | ADMIN | Create/Read/Update/Delete for AutocompleteService |
 | Corporation Search | ADMIN | Create/Read/Update/Delete for Corporation Search Service |
+| Word Suggestion | ADMIN | Create/Read/Update/Delete for Word Suggestion Service |
 | Log & Crash Search | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
 | DataFlow | ADMIN | Create/Read/Update/Delete for DataFlow Service |
 | DataQuery | ADMIN | Create/Read/Update/Delete for DataQuery Service |
