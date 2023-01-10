@@ -120,7 +120,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Search | Cloud Search | 리전 | O |  |  |  |
 |  | Autocomplete | 리전 | O |  |  |  |
 |  | Corporation Search | 리전 | O |  |  |  |
-|  | Word Suggestion | Word Suggestion | 글로벌 |  |  |  |  |
+|  | Word Suggestion | 글로벌 |  |  |  |  |
 | Data & Analytics | Log & Crash Search | 글로벌 |  |  |  |  |
 |  | DataFlow | 리전 | O |  |  |  |
 |  | DataQuery | 리전 | O |  |  |  |
