@@ -1,4 +1,6 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Unity
+## 0.27.2 (2023.1.11)
+Download : [toast-sdk-unity-0.27.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.27.2/toast-sdk-unity-0.27.2.zip)
 
 ## 0.27.1 (2022.11.29)
 Download : [toast-sdk-unity-0.27.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.27.1/toast-sdk-unity-0.27.1.zip)
