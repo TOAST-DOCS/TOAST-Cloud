@@ -1,14 +1,14 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
-## 1.4.1 (2023. 01. 11.)
+## 1.4.1 (January, 11 2023)
 
 ### NHN Cloud Push
 
-#### 기능 개선
+#### Improved
 
-* 푸시 지표 전송 및 이벤트 처리 개선
+* Improved sending push metrics and processing events
 
-## 1.4.0 (2022. 11. 29.)
+## 1.4.0 (November, 29 2022)
 
 ### NHN Cloud Logger
 
