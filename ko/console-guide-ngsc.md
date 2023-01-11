@@ -294,9 +294,9 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Infrastructure | MEMBER | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | MEMBER | VPC, Security Group, Load Balancer 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Load Balancer ADMIN | VPC, Security Group, Auto Scale, Load Balancer 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure |  Security Group ADMIN | VPC, Auto Scale, Load Balancer 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure |  Security Group ADMIN | VPC, Load Balancer 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry(NCR)| ADMIN | NHN Container Registry(NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry(NCR) | VIEWER | NHN Container Registry(NCR) 서비스 Read(읽기) |
 | Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |

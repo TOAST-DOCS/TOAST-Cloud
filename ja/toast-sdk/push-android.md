@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.4.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.4.1'
     ...
 }
 ```
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.4.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.4.1'
     ...
 }
 ```
@@ -318,7 +318,7 @@ if (Build.VERSION.SDK_INT >= 33) {
 * Android 12(APIレベル32)以下をターゲティングするアプリは、アプリ初回実行時に通知チャンネルを作成してユーザーに権限をリクエストする必要があります。
 
 ``` java
-if (Build.VERSION.SDK_INT >= 33) {
+if (Build.VERSION.SDK_INT <= 32) {
     NotificationChannel channel = NhnCloudNotification.getNotificationChannel(this);
     if (channel == null) {
         NhnCloudNotification.createNotificationChannel(this);

@@ -24,17 +24,17 @@ NHN Cloud SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.nhncloud.android:nhncloud-common:1.4.0       | Common      |
-| com.nhncloud.android:nhncloud-core:1.4.0         | Core        |
-| com.nhncloud.android:nhncloud-logger:1.4.0       | Log & Crash |
-| com.nhncloud.android:nhncloud-crash-reporter-ndk:1.4.0       | Native Crash Reporter |
-| com.nhncloud.android:nhncloud-iap-core:1.4.0     | In-app Purchase Core |
-| com.nhncloud.android:nhncloud-iap-google:1.4.0   | In-app Purchase <br>Google Play Store |
-| com.nhncloud.android:nhncloud-iap-onestore:1.4.0 | In-app Purchase <br>ONE store |
-| com.nhncloud.android:nhncloud-iap-galaxy:1.4.0 | In-app Purchase <br>Galaxy Store |
-| com.nhncloud.android:nhncloud-push-core:1.4.0    | Push Core   |
-| com.nhncloud.android:nhncloud-push-fcm:1.4.0    | Push <br>Firebase Cloud Messaging |
-| com.nhncloud.android:nhncloud-creditcard-recognizer:1.4.0    | Credit Card Recognizer |
+| com.nhncloud.android:nhncloud-common:1.4.1       | Common      |
+| com.nhncloud.android:nhncloud-core:1.4.1         | Core        |
+| com.nhncloud.android:nhncloud-logger:1.4.1       | Log & Crash |
+| com.nhncloud.android:nhncloud-crash-reporter-ndk:1.4.1       | Native Crash Reporter |
+| com.nhncloud.android:nhncloud-iap-core:1.4.1     | In-app Purchase Core |
+| com.nhncloud.android:nhncloud-iap-google:1.4.1   | In-app Purchase <br>Google Play Store |
+| com.nhncloud.android:nhncloud-iap-onestore:1.4.1 | In-app Purchase <br>ONE store |
+| com.nhncloud.android:nhncloud-iap-galaxy:1.4.1 | In-app Purchase <br>Galaxy Store |
+| com.nhncloud.android:nhncloud-push-core:1.4.1    | Push Core   |
+| com.nhncloud.android:nhncloud-push-fcm:1.4.1    | Push <br>Firebase Cloud Messaging |
+| com.nhncloud.android:nhncloud-creditcard-recognizer:1.4.1    | Credit Card Recognizer |
 
 ## NHN Cloud SDK를 Android Studio 프로젝트에 적용
 
@@ -51,7 +51,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-sdk:1.4.0'
+  implementation 'com.nhncloud.android:nhncloud-sdk:1.4.1'
 }
 ```
 
