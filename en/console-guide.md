@@ -316,9 +316,9 @@ You can grant multiple required roles to project members.
 | Service | Role | Description |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Create/Read/Update/Delete for Infrastructure Service |
-| Infrastructure | MEMBER | Read for VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, Auto Scale Services. Create/Read/Update/Delete for Other services |
-| Infrastructure | Load Balancer ADMIN | Read for VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group Services. Create/Read/Update/Delete for Other services |
-| Infrastructure | Security Group ADMIN | Read for VPC, Subnet, Network Interface, Routing, Floating IP, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, Auto Scale Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | MEMBER | Read for VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | Load Balancer ADMIN | Read for VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | Security Group ADMIN | Read for VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer Services. Create/Read/Update/Delete for Other services |
 | Virtual Desktop | ADMIN | Create/Read/Update/Delete for Virtual Desktop Service |
 | NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
@@ -411,6 +411,7 @@ You can grant multiple required roles to project members.
 | Cloud Search | ADMIN | Create/Read/Update/Delete for Cloud Search Service |
 | Autocomplete | ADMIN | Create/Read/Update/Delete for AutocompleteService |
 | Corporation Search | ADMIN | Create/Read/Update/Delete for Corporation Search Service |
+| Word Suggestion | ADMIN | Create/Read/Update/Delete for Word Suggestion Service |
 | Log & Crash Search | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
 | DataFlow | ADMIN | Create/Read/Update/Delete for DataFlow Service |
 | DataQuery | ADMIN | Create/Read/Update/Delete for DataQuery Service |

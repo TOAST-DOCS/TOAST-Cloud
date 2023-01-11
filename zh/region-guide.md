@@ -120,6 +120,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
+|  | Word Suggestion | Global |  |  |  |  |
 | Data & Analytics | Log & Crash Search | Global |  |  |  |  |
 |  | DataFlow | Regional | O |  |  |  |
 |  | DataQuery | Regional | O |  |  |  |
