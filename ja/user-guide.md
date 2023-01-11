@@ -3,7 +3,7 @@
 
 ## NHN Cloud会員登録 
 ### 会員登録方法
-https://toast.comにアクセスし、画面右上にある**会員登録**をクリックします。
+https://nhncloud.comにアクセスし、画面右上にある**会員登録**をクリックします。
 会員登録の方法は次の通りです。
 ![userguide_01_202104](https://static.toastoven.net/toast/user_guide/userguide_01_20210401_ja.png)
 

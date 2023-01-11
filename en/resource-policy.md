@@ -98,7 +98,7 @@ Resource usage is calculated for each project.
 | Size of log (normal log, crash log) | 1 case | 8MB |
 
 ### Request for Capacity Adjustment
-To increase capacity beyond default volume, send a request to NHN Cloud Customer Center [1:1 Inquiry](https://www.toast.com/kr/support/inquiry). 
+To increase capacity beyond default volume, send a request to NHN Cloud Customer Center [1:1 Inquiry](https://nhncloud.com/kr/support/inquiry). 
 It helps a lot if you fill out the items and volume in need. 
 
 Since it takes 2 to 5 days to process a request, it is recommended to send requests in advance.

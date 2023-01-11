@@ -42,10 +42,18 @@ To protect customer's resources and services, NHN Cloud blocks UDP ports which a
 ## Internet Port Blocking Policy (Inbound) 
 To protect customer service, the block-intrusion system is provided as well as security group which is managed under the control of customers.
 
-### TOAST G List of Blocked Ports 
+### NHN Cloud List of Blocked Ports 
 |Region | Service Name | Blocked Port | Blocking Method | Remarks |
 | ---- | ---- | ---- | ---- | ---- |
 | Korea (Pangyo/Pyeongchon) <br> Japan (Tokyo) <br> US (California) | System Terminal Port | TCP/23 | Blocked by network ACLs | Externally inaccessible |
+
+### NHN Cloud(Cloud for public agencies) List of Blocked Ports
+|Service Name | Blocked Port | Blocking Method | Remarks|
+| ---- | ---- | ---- | ---- |
+| System Terminal Port | TCP/22, 23, 3389 | Blocked by network ACLs | Externally inaccessible|
+| DBMS Port | TCP, UDP/1433(MS-SQL), 1521(Oracle), 3306(MySQL)  | Blocked by network ACLs | Externally inaccessible|
+| Netbios Port | TCP, UDP/135, 137, 138, 139, 445 | Blocked by network ACLs | Externally inaccessible |
+| Etc. | TCP/21(FTP), TCP / 5900(VNC) | Blocked by network ACLs | Externally inaccessible |
 
 ### How to Apply for More Ports
 - Download the excel file below and fill in the form.
@@ -54,5 +62,5 @@ To protect customer service, the block-intrusion system is provided as well as s
 
 - Save file name as “Application for Exception from NHN Cloud Firewall and SSL VPN Policy_JP-Agency Name.xlsx”.
 Send the application over the email like below (to be processed and replied within 3 days after received). 
-    - NHN Cloud : support@toast.com
-    - TOAST G : support@gov.toast.com
+    - NHN Cloud : support@nhncloud.com
+    - NHN Cloud(Cloud for public agencies) : support@gov-nhncloud.com
