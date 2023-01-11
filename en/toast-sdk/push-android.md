@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.4.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.4.1'
     ...
 }
 ```
@@ -39,7 +39,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.4.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.4.1'
     ...
 }
 ```
@@ -323,7 +323,7 @@ This means that notifications are not displayed until the user opens the app and
 * When targeting Android 12 (API level 32) or lower, the apps must create the notification channel and request permission from the user when running for the first time.
 
 ``` java
-if (Build.VERSION.SDK_INT >= 33) {
+if (Build.VERSION.SDK_INT <= 32) {
     NotificationChannel channel = NhnCloudNotification.getNotificationChannel(this);
     if (channel == null) {
         NhnCloudNotification.createNotificationChannel(this);
