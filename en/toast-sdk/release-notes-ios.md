@@ -2,13 +2,14 @@
 
 ## 1.2.1 (2023.01.31.)
 ### NHN Cloud Push
-#### 개선 사항
-* 토큰 등록 기능 개선
+
+#### Improved
+* Improved token registration function
 
 ### NHN Cloud OCR
-#### 개선 사항
-* 신용카드 인식 성능 개선
-* 안정성 개선
+#### Improved
+* Improved credit card recognition performance
+* Improved stability
 
 ## 1.2.0 (2022.11.29.)
 ### NHN Cloud Logger
