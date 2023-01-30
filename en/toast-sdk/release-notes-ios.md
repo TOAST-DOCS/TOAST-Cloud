@@ -2,6 +2,7 @@
 
 ## 1.2.1 (2023.01.31.)
 ### NHN Cloud Push
+
 #### Improved
 * Improved token registration function
 
