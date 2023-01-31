@@ -209,7 +209,7 @@ options.soundEnabled = YES;         // Set the use of notification sound (defaul
 ## Token Registration
 
 * Register the issued token information to the NHN Cloud server. At this time,  pass whether or not to agree to receive the push (NHNCloudPushAgreement) as a parameter.
-* If this is the initial execution, request the user for permission to allow notifications. If the permission to allow notifications is not acquired, token registration fails.
+* If this is the initial execution, request the user for permission to allow notifications and register the token.
 * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
 
 ### Agreement Setting

@@ -208,7 +208,7 @@ options.soundEnabled = YES;         // 通知音使用設定(default : YES)
 ## トークン登録
 
 * 発行されたトークン情報をNHN Cloudクラウドサーバーに登録します。この時、受信同意(NHNCloudPushAgreement)をパラメーターで伝達します。
-* 初めて実行される際、ユーザーに通知を許可するかどうかを返信するようリクエストします。ユーザーからの通知許諾が得られなかった場合、トークン登録は失敗します。
+* 初めて実行される際、ユーザーに通知を許可するかどうかを返信するようリクエストし、トークンを登録します。
 * 初回登録時にユーザーIDが設定されていない場合は、デバイス識別子を使用して登録します。
 
 ### 受信同意設定
@@ -393,7 +393,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 ### 実行(Opened)指標収集設定
 
 * 実行指標は、アプリケーションに追加したNHN Cloud Push SDKから自動的に収集されます。
-* [NHN Cloud Push SDK 초기화](./push-ios/#nhn-cloud-push-sdk)、あるいは**アプリケーションのinfo.plistファイル**にAppKeyが定義されている場合、実行指標の収集が可能です。
+* [NHN Cloud Push SDK初期化](./push-ios/#nhn-cloud-push-sdk)、あるいは**アプリケーションのinfo.plistファイル**にAppKeyが定義されている場合、実行指標の収集が可能です。
 
 #### info.plist定義による受信指標収集の設定例
 
@@ -421,7 +421,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 ## Notification Service Extension
 
 * `iOS 10.0+からサポートします。`
-* リッチメッセージ、受信指標を収集するためには、アプリケーションにNHNCloudPushServiceExtension를を継承する Notification Service Extension必ず実装してください。
+* リッチメッセージ、受信指標を収集するためには、アプリケーションにNHNCloudPushServiceExtensionを継承する Notification Service Extension必ず実装してください。
 
 ### Notification Service Extensionの作成
 
