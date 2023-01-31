@@ -2,47 +2,47 @@
 
 ## 1.2.1 (2023.01.31.)
 ### NHN Cloud Push
-#### 개선 사항
-* 토큰 등록 기능 개선
+
+#### Improved
+* Improved token registration function
 
 ### NHN Cloud OCR
-#### 개선 사항
-* 신용카드 인식 성능 개선
-* 안정성 개선
+#### Improved
+* Improved credit card recognition performance
+* Improved stability
 
 ## 1.2.0 (2022.11.29.)
 ### NHN Cloud Logger
-#### 기능 추가
-* 공공기관용 Logger 지원
+#### Added Features
+* Added support for Logger for government agencies
 
 ### NHN Cloud Push
-#### 개선 사항
-* 푸시 이벤트 전송 개선
+#### Improved
+* Improved sending push events
 
 ### NHN Cloud OCR
-#### 개선 사항
-* UI 개선
+#### Improved
+* Improved UI
 
 ## 1.1.0 (2022.10.25.)
-### 공통
-#### 개선 사항
-* 안정성 개선
+### Common
+#### Improvements
+* Improved stability
 
 ### NHN Cloud IAP
-#### 기능 추가
-* [모 든스토어] 활성화 구독 조회 및 미소비 결제 내역 조회 API 추가
+#### Added Features
+* [All stores] Added APIs for activated subscription query and unconsumed purchase query
 
 ### NHN Cloud OCR
-#### 기능 추가
-* OCR(Credit Card Recognizer) 추가
+#### Added Features
+* Added OCR(Credit Card Recognizer)
 
 ## 1.0.0 (2022.07.12.)
-### 공통
-#### 개선 사항
-* 안정성 개선
-* NHN Cloud SDK로 모듈명 변경
-	* TOAST SDK는 Deprecated 되었습니다.
-
+### Common
+#### Improvements
+* Improved stability
+* Changed the module name to NHN Cloud SDK
+	* TOAST SDK has been deprecated.
 ## 0.30.0 (2022.03.29.)
 ### TOAST IAP
 #### Added Features
