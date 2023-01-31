@@ -1,5 +1,15 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
+## 1.2.1 (2023.01.31.)
+### NHN Cloud Push
+#### 개선 사항
+* 토큰 등록 기능 개선
+
+### NHN Cloud OCR
+#### 개선 사항
+* 신용카드 인식 성능 개선
+* 안정성 개선
+
 ## 1.2.0 (2022.11.29.)
 ### NHN Cloud Logger
 #### 기능 추가
