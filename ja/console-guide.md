@@ -409,6 +409,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | RTCS | ADMIN | RTCSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | ShortURL | ADMIN | ShortURLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| File-Crafter | ADMIN | File-Crafterサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Cloud Search | ADMIN | Cloud Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Autocomplete | ADMIN | Autocompleteサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Corporation Search | ADMIN | Corporation Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |

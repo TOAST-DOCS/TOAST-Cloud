@@ -235,7 +235,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | 정의 | - 조직 관리를 위한 멤버<br>- NHN Cloud (공공기관용) 이용 약관에 동의한 NHN Cloud (공공기관용)회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>- NHN Cloud (공공기관용)서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud (공공기관용) 회원으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
 | 멤버 등록 방법 | - 조직의 OWNER나 ADMIN이 NHN Cloud ID를 입력하여 등록 | - 조직의 OWNER나 ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>- SSO 연동/API 연동 등을 통해 등록 |
 | 멤버 역할 | - 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리)<br>- 프로젝트 생성<br>- 프로젝트 삭제 | - 조직 서비스 이용 |
-| 콘솔 접근 | - NHN Cloud(공공기관용) 콘솔([https://gov-console.nhncloud.com/](https://gov-console.nhncloud.com/)) 접근<br>- NHN Cloud(공공기관용))> 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.gov-nhncloud.com/) 접근<br>- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
+| 콘솔 접근 | - NHN Cloud(공공기관용) 콘솔([https://coneole.gov-nhncloud.com/](https://console.gov-nhncloud.com/)) 접근<br>- NHN Cloud(공공기관용))> 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.gov-nhncloud.com/) 접근<br>- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 
 ### 조직 멤버

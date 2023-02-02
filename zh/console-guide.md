@@ -406,6 +406,7 @@ You can grant multiple required roles to project members.
 | API Gateway | ADMIN | Create/Read/Update/Delete for API Gateway Service |
 | RTCS | ADMIN | Create/Read/Update/Delete for RTCS Service |
 | ShortURL | ADMIN | Create/Read/Update/Delete for ShortURL Service |
+| File-Crafter | ADMIN | Create/Read/Update/Delete for File-Crafter Service |
 | IAP | ADMIN | Create/Read/Update/Delete for IAP Service |
 | Mobile Device Info | ADMIN | Create/Read/Update/Delete for Mobile Device Info Service |
 | Cloud Search | ADMIN | Create/Read/Update/Delete for Cloud Search Service |
