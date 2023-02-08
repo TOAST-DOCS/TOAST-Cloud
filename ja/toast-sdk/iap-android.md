@@ -469,7 +469,7 @@ Google Play Storeでプロモーションコードで商品を購入した場合
 ## 未消費決済照会
 
 * まだ消費されていない一回の商品(CONSUMABLE)と消費性購読商品(CONSUMABLE_AUTO_RENEWABLE)情報を照会します。
-* ユーザーに商品を支給した後、[Consume API](https://nhncloud.com/ja/Mobile%20Service/IAP/ja/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
+* ユーザーに商品を支給した後、[Consume API](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
 * 未消費決済は、NhnCloudIap.queryConsumablePurchases()メソッドを使用して照会できます。
 * [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)を利用して現在ストアまたはすべてのストアの未消費決済を照会できます。
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストで返されます。
