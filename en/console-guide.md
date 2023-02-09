@@ -317,9 +317,11 @@ You can grant multiple required roles to project members.
 | Service | Role | Description |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Create/Read/Update/Delete for Infrastructure Service |
-| Infrastructure | MEMBER | Read for VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | MEMBER | Read for VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Container Service(NCS) Services. Create/Read/Update/Delete for Other services |
 | Infrastructure | Load Balancer ADMIN | Read for VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group Services. Create/Read/Update/Delete for Other services |
 | Infrastructure | Security Group ADMIN | Read for VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | NCS ADMIN | Create/Read/Update/Delete for NHN Container Service(NCS) Service |
+| Infrastructure | NCS VIEWER | Read for NHN Container Service(NCS) Service |
 | Virtual Desktop | ADMIN | Create/Read/Update/Delete for Virtual Desktop Service |
 | NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
