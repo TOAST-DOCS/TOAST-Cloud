@@ -57,6 +57,7 @@ Services that can be enabled for each organization include the following:
 - Contact Center
 - IDC
 - CloudTrail
+- Resource Watcher
 
 
 
