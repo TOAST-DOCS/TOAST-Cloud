@@ -470,7 +470,7 @@ If a user purchased a product with a promotion code from the Google Play Store, 
 ## Query Unconsumed Purchases
 
 * Query the information of unconsumed one-time products (CONSUMABLE) and consumable subscription products (CONSUMABLE_AUTO_RENEWABLE).
-* After a product is provided to a user, the product can be consumed by using [Consume API](https://nhncloud.com/zh/Mobile%20Service/IAP/zh/api-guide-for-toast-sdk/#consume-api).
+* After a product is provided to a user, the product can be consumed by using [Consume API](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/api-guide-for-toast-sdk/#consume-api).
 * Unconsumed purchase can be queried by using the NhnCloudIap.queryConsumablePurchases() method.
 * [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 미소비 결제를 조회할 수 있습니다.
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
