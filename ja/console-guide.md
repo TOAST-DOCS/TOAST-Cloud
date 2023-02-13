@@ -305,10 +305,10 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | MARKETPLACE_VIEWER | Marketplace サービス Read(読込) |
 | MEMBER | プロジェクト内のすべてのサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | BILLING VIEWER | 利用状況Read(読み取り) |
-| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <Br> プロジェクト役割グループCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除) |
-| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br> プロジェクト統合Appkey Read(読み取り)<br> プロジェクト役割グループRead(読み取り) |
-| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り) |
+| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)  <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除) |
+| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br> プロジェクト統合Appkey Read(読み取り) |
+| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)<br> プロジェクト役割グループCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り)<br> プロジェクト役割グループRead(読み取り) |
 
 #### サービス利用役割
 
@@ -425,8 +425,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Certificate Manager | ADMIN | Certificate Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | eTax | ADMIN | eTax サービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | eTax | VIEWER | eTaxサービスに対するRead(読み取り) |
-| marketplace | ADMIN | marketplaceプロジェクトサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| marketplace | ADMIN | marketplaceプロジェクトサービスに対するRead(読み取り) |
+
 
 #### サービス 有効化 役割
 サービスPERMISSION役割は、個別サービスを有効化または無効化できます。

@@ -307,10 +307,10 @@ You can grant multiple required roles to project members.
 | MARKETPLACE_VIEWER | Marketplace Read |
 | MEMBER | Create/Read/Update/Delete for all services in the project |
 | BILLING VIEWER | Read for usage status |
-| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete for project's integrated Appkey<br>Create/Read/Update/Delete for project's role groups<br>Enable/Disable project services<br>Delete for projects |
-| PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey<br>Read for project's role groups |
-| PROJECT MEMBER ADMIN | Create/Read/Update/Delete for project members |
-| PROJECT MEMBER VIEWER | Read for project members |
+| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete for project's integrated Appkey<br>Enable/Disable project services<br>Delete for projects |
+| PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey |
+| PROJECT MEMBER ADMIN | Create/Read/Update/Delete for project members<br>Create/Read/Update/Delete for project's role groups |
+| PROJECT MEMBER VIEWER | Read for project members<br>Read for project's role groups |
 
 #### Service Use roles
 
@@ -427,8 +427,7 @@ You can grant multiple required roles to project members.
 | Certificate Manager | ADMIN | Create/Read/Update/Delete for Certificate Manager Service |
 | eTax | ADMIN | Create/Read/Update/Delete for eTax Service |
 | eTax | VIEWER | Read  for eTax Service |
-| marketplace | ADMIN | Create/Read/Update/Delete for marketplace Project Service |
-| marketplace | ADMIN | Read for marketplace Project Service |
+
 
 #### Service PERMISSION Role
 Service PERMISSION Role can enable or disable each service.
