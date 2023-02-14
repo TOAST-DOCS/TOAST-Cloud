@@ -97,6 +97,13 @@ Resource usage is calculated for each project.
 | Number of logs (normal log, crash log) | 1 day | 20,000,000 cases |
 | Size of log (normal log, crash log) | 1 case | 8MB |
 
+### Resource Provision Policy for DataFlow Service
+Resource usage is calculated for each project.
+
+| Resource | Criteria | Capacity |
+| --- | :---: | :---: |
+| Number of running flows | Per project | 10 |
+
 ### Request for Capacity Adjustment
 To increase capacity beyond default volume, send a request to NHN Cloud Customer Center [1:1 Inquiry](https://nhncloud.com/kr/support/inquiry). 
 It helps a lot if you fill out the items and volume in need. 
