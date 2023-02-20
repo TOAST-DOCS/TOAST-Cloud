@@ -100,6 +100,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Speech to Text | Global |  |  |  |  |
 |  | Cheating Detection | Regional | O |  |  |  |
 | Machine Learning | Deep Learning Instance | Regional | O |  | | |
+|  | AI EasyMaker | Regional | O |  |  |  |
 | Application Service | Maps | Regional | O |  |  |  |
 |  | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O | O |  |  |
