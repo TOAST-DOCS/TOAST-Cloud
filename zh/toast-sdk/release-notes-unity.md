@@ -37,8 +37,8 @@ Download : [toast-sdk-unity-0.27.0.zip](https://static.toastoven.net/toastcloud/
 
 ### 기능 추가
 
-* TOAST IAP
-    * [모든 스토어] 활성화 구독 조회 및 미소비 결제 내역 조회 API 추가 
+* TOAST IAP 
+    * [모든 스토어] 활성화 구독 조회 및 미소비 결제 내역 조회 API 추가  
 
 ### plugin version
 
