@@ -14,7 +14,7 @@
 ## Library Setting
 
 ### FCM
-* To use NHN Cloud FCM Push, add dependency to build.gradle as below.
+* To use NHN Cloud FCM Push, add a dependency to build.gradle as follows.
 
 ```groovy
 repositories {
@@ -29,7 +29,8 @@ dependencies {
 ```
 
 ### ADM
-* NHN Cloud ADM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+* To use NHN Cloud ADM Push, add a dependency to build.gradle as follows.
 
 ```groovy
 repositories {
@@ -45,7 +46,7 @@ dependencies {
 
 ## Firebase Cloud Messaging Settings
 
-### Add projects and apps
+### Add the project and app
 
 * Create a project in [Firebase console](https://console.firebase.google.com/?hl=en).
 * Go to **Project Settings** by clicking the gear button at the top of the console.
@@ -57,7 +58,7 @@ dependencies {
 
 ### Set Up build.gradle
 #### Root-level build.gradle
-* Add code below to root-level build.gradle.
+* Add the following code to root-level build.gradle.
 
 ```groovy
 buildscript {
@@ -78,7 +79,7 @@ allprojects {
 ```
 
 #### App module's build.gradle
-* Add the code below to your app module's build.gradle.
+* Add the following code to your app module's build.gradle.
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -91,29 +92,29 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
-## Amazon Device Messaging 설정
+## Amazon Device Messaging Settings
 
-### 프로젝트 및 앱 추가
+### Add the project and app
 
-* [Amazon Developer 콘솔](https://developer.amazon.com/settings/console/home)로 이동합니다.
-* 상단 **Apps & Services**의 **My Apps**로 이동합니다.
-* **Add New App**에서 **Android**를 선택 후 앱 정보를 입력하여 앱을 등록합니다.
-* **Android 패키지 이름**, **앱 닉네임 (선택사항)**을 입력하고 **앱 등록** 버튼을 클릭합니다.
+* Go to the [Amazon Developer Console](https://developer.amazon.com/settings/console/home).
+* Go to **My Apps** in **Apps & Services** at the top.
+* In **Add New App**, select **Android** and enter the app information to register the app.
+* Enter **Android Package Name**, **App Nickname (optional)** and click the **Register App** button.
 
-### API Key 추가
+### Add the API key
 
-* **My Apps**에서 등록한 앱을 선택하고 좌측 메뉴에서 **App Service**를 클릭합니다.
-* Device Messaging에서 **Security Profile**을 생성하고 등록합니다.
-* **View Security Profile**로 이동하여 **Android/Kindle Settings** 메뉴에서 API Key를 생성합니다.
-* 생성한 API Key를 복사하여 프로젝트의 **assets** 폴더에 **api_key.txt** 파일로 저장합니다.
-* 자세한 사항은 [Amazon Device Messaging - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)를 참고하세요.
+* Select the registered app in **My Apps** and click **App Service** in the left menu.
+* Create and register **Security Profile** in Device Messaging.
+* Go to **View Security Profile** and generate API Key from the **Android/Kindle Settings** menu.
+* Copy the generated API Key and save it as **api_key.txt** file in the **assets** folder of your project.
+* For details, refer to [Amazon Device Messaging - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html).
 
-### ADM SDK 다운로드
+### Download the ADM SDK
 
-* Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드합니다.
-* 다운로드한 **amazon-device-messaging-1.2.0.jar** 파일을 프로젝트의 **amazon/libs** 폴더에 저장합니다.
+* Download the ADM SDK from [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm) of the Amazon Developer site.
+* Save the downloaded **amazon-device-messaging-1.2.0.jar** file to the **amazon/libs** folder of your project.
 
-#### 앱 모듈의 build.gradle
+#### App module's build.gradle
 ```groovy
 dependencies {
     //...
@@ -121,9 +122,9 @@ dependencies {
 }
 ```
 
-### Proguard 설정
+### Proguard settings
 
-* Proguard를 사용하는 경우 <b>[proguard-rules.pro](http://proguard-rules.pro)</b> 파일에 아래와 같이 추가합니다.
+* If you're using Proguard, add the following to the <b>[proguard-rules.pro](http://proguard-rules.pro)</b> file.
 
 ```groovy
 -libraryjars amazon/libs/amazon-device-messaging-1.2.0.jar
@@ -152,7 +153,7 @@ NhnCloudPushConfiguration configuration =
 NhnCloudPush.initialize(PushType.FCM, configuration);
 ```
 
-### ADM 초기화 예시
+### ADM initialization example
 
 ```java
 NhnCloudPushConfiguration configuration =
@@ -162,8 +163,8 @@ NhnCloudPushConfiguration configuration =
 NhnCloudPush.initialize(PushType.ADM, configuration);
 ```
 
-> NhnCloudPush.initialize(NhnCloudPushConfiguration)는 Deprecated 되었습니다.
-> NhnCloudPush.initialize(NhnCloudPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
+> NhnCloudPush.initialize(NhnCloudPushConfiguration) has been deprecated.
+> PushType is automatically set to FCM when initialized using NhnCloudPush.initialize(NhnCloudPushConfiguration).
 
 ## Service Login
 * All products provided by NHN Cloud SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
@@ -298,15 +299,15 @@ public class MyApplication extends Application {
 }
 ```
 
-## 알림 권한
+## Notification Permission
 
-* Android 13 (API 레벨 33) 이상에서 알림 표시를 위해 POST\_NOTIFICATIONS 권한이 필요합니다.
-* 기본적으로 NHN Cloud SDK(버전 1.2.0 이상)에는 매니페스트에 POST\_NOTIFICATIONS 권한이 포함되어 있습니다.
-* 앱에서 알림을 표시하려면 런타임 권한을 요청해야하며 사용자가 이 권한을 부여할 때까지 앱에서 알림을 표시할 수 없습니다.
+* To display notifications in Android 13 (API level 33) or higher, POST\_NOTIFICATIONS permission is required.
+* In NHN Cloud SDK (version 1.2.0 or higher), POST\_NOTIFICATIONS permission is included in the manifest by default.
+* To display notifications for an app, runtime permission must be requested, and notifications cannot be displayed for the app until the user assigns the permission.
 
-### Android 13(API 레벨 33) 이상을 타겟팅하는 앱의 알림 권한
+### Notification Permission of Apps Targeting Android 13(API level 33) or higher
 
-* Android 13(API 레벨 33) 이상을 타겟팅 시 requestPostNotificationsPermission API를 이용하여 알림 런타임 권한을 요청할 수 있습니다.
+* When targeting Android 13 (API level 33) or higher, notification runtime permission can be requested by using the requestPostNotificationsPermission API.
 
 ``` java
 if (Build.VERSION.SDK_INT >= 33) {
@@ -314,12 +315,12 @@ if (Build.VERSION.SDK_INT >= 33) {
 }
 ```
 
-### Android 12(API 레벨 32) 이하를 타겟팅하는 앱의 알림 권한
+### Notification Permission of Apps Targeting Android 12 (API level 32) or lower
 
-* Android 12(API 레벨 32) 이하를 타겟팅 시 앱이 포그라운드에 있을 때 앱에서 알림 채널을 처음 만들면 Android에서 자동으로 사용자에게 권한을 요청합니다.
-* 앱이 백그라운드에서 실행 중일 때 첫 알림 채널을 만드는 경우 앱을 열 때까지 알림이 표시되지 않고 사용자에게 알림 권한을 요청하지 않습니다.
-즉, 앱을 열고 사용자가 권한을 수락하기 전에 알림이 노출되지 않습니다.
-* Android 12(API 레벨 32) 이하를 타겟팅하는 앱은 앱 처음 실행 시에 알림 채널을 생성하여 사용자에게 권한을 요청해야 합니다.
+* When targeting Android 12 (API level 32) or lower and the notification channel is created for the first time in the app in the foreground, Android automatically requests permisssion from the user.
+* If you create the notification channel for the first time while the app is running in the background, you won't get a notification until you open the app and the app does not request notification permission from the user.
+This means that notifications are not displayed until the user opens the app and accepts the permission.
+* When targeting Android 12 (API level 32) or lower, the apps must create the notification channel and request permission from the user when running for the first time.
 
 ``` java
 if (Build.VERSION.SDK_INT <= 32) {
