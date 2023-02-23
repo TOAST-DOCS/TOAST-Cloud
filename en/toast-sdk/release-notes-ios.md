@@ -1,11 +1,11 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
-## 1.3.0 (2023.02.28.)
+## 1.3.0 (2023. 02. 28.)
 ### 공통
 #### 개선 사항
 * 안정성 개선
 
-## 1.2.1 (2023.01.31.)
+## 1.2.1 (2023. 01. 31.)
 ### NHN Cloud Push
 
 #### Improved
@@ -16,7 +16,7 @@
 * Improved credit card recognition performance
 * Improved stability
 
-## 1.2.0 (2022.11.29.)
+## 1.2.0 (2022. 11. 29.)
 ### NHN Cloud Logger
 #### Added Features
 * Added support for Logger for government agencies
@@ -29,7 +29,7 @@
 #### Improved
 * Improved UI
 
-## 1.1.0 (2022.10.25.)
+## 1.1.0 (2022. 10. 25.)
 ### Common
 #### Improvements
 * Improved stability
@@ -42,30 +42,30 @@
 #### Added Features
 * Added OCR(Credit Card Recognizer)
 
-## 1.0.0 (2022.07.12.)
+## 1.0.0 (2022. 07. 12.)
 ### Common
 #### Improvements
 * Improved stability
 * Changed the module name to NHN Cloud SDK
 	* TOAST SDK has been deprecated.
 
-## 0.30.0 (2022.03.29.)
+## 0.30.0 (2022. 03. 29.)
 ### TOAST IAP
 #### Added Features
 * Added a property to check whether the payment is sandbox payment or not (sandboxPayment) to ToastPurchaseResult
 
-## 0.29.2 (2021.11.23.)
+## 0.29.2 (2021. 11. 23.)
 ### TOAST Push
 
 #### Improvements
 * Improved stability
 
-## 0.29.1 (2021.10.26.)
+## 0.29.1 (2021. 10. 26.)
 ### TOAST IAP
 #### Improvements
 * Improved stability
 
-## 0.29.0 (2021.07.06.)
+## 0.29.0 (2021. 07. 06.)
 ### Common
 #### Improvements
 * Improved stability
@@ -74,7 +74,7 @@
 #### Added Features
 * Added a monthly payment limit feature
 
-## 0.28.0 (2021.05.25.)
+## 0.28.0 (2021. 05. 25.)
 ### Common
 #### Improvements
 * Added xcframework
@@ -85,7 +85,7 @@
 * Improved the way to classify architectures
     * Fixed an issue where iOS14 Core Library is not symbolicated
 
-## 0.27.2 (2021.03.23.)
+## 0.27.2 (2021. 03. 23.)
 ### Common
 #### Improvements
 * Improved stability
@@ -94,7 +94,7 @@
 #### SymbolUploader (v0.0.1)
 * Added SymbolUploader
 
-## 0.27.1 (2020.11.24.)
+## 0.27.1 (2020. 11. 24.)
 ### TOAST IAP
 #### Improvements
 * Subscription product resubscription error revision (iOS 14 )
@@ -104,7 +104,7 @@
 #### Improvements
 * Improved problem where callback did not occur upon a token disable request and there were no registered tokens
 
-## 0.27.0 (2020.09.11.)
+## 0.27.0 (2020. 09. 11.)
 ### TOAST IAP
 #### Added Features
 * Add localized product information (localizedTitle, localizedDescription) to ToastProduct
@@ -117,12 +117,12 @@
 #### Improvements
 * Improved stability
 
-## 0.26.0 (2020.07.28.)
+## 0.26.0 (2020. 07. 28.)
 ### TOAST Push
 #### Added Features
 * User tag feature support
 
-## 0.25.1 (2020.07.03.)
+## 0.25.1 (2020. 07. 03.)
 ### TOAST Logger
 #### Improvements
 * Improved stability
@@ -131,7 +131,7 @@
 #### Improvements
 * Improved stability
 
-## 0.25.0 (2020.06.23.)
+## 0.25.0 (2020. 06. 23.)
 ### Common
 #### Improvements
 * Improved stability
@@ -140,12 +140,12 @@
 #### Improvements
 * Separate notification options setting interface
 
-## 0.24.1 (2020.05.26.)
+## 0.24.1 (2020. 05. 26.)
 ### TOAST Push
 #### Improvements
 * Improved token registration function
 
-## 0.24.0 (2020.04.28.)
+## 0.24.0 (2020. 04. 28.)
 ### Common
 * Raised the minimum supported version for TOAST SDK (iOS 8.0 -> iOS 9.0)
 * Improved stability
@@ -158,7 +158,7 @@
 #### Improvements
 * Improved stability
 
-## 0.23.0 (2020.03.24.)
+## 0.23.0 (2020. 03. 24.)
 ### TOAST Logger
 #### Improvements
 * Fixed an issue where CrashReport CallStack could contain invalid strings
@@ -168,19 +168,19 @@
 * Added notification option setting function
      * At initialization, it is possible to set whether to expose foreground notifications, use badge icons, and use notification sounds.
 
-## 0.22.1 (2020.02.25.)
+## 0.22.1 (2020. 02. 25.)
 ### TOAST Push
 #### Improvements
 * Improved token registration function
     * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
     * If you set or change the user ID after registering the token, the token information is updated.
 
-## 0.22.0 (2020.02.11.)
+## 0.22.0 (2020. 02. 11.)
 ### TOAST IAP
 #### Improvements
 * Improved stability
 
-## 0.21.0 (2019.12.24.)
+## 0.21.0 (2019. 12. 24.)
 ### TOAST Logger
 #### Improvements
 * Added data to improve the classification method of crash occurrence location
@@ -191,7 +191,7 @@
 * Improved stability
 * Defined Swift interface additionally
 
-## 0.20.1 (2019.12.04.)
+## 0.20.1 (2019. 12. 04.)
 
 ### Common
 
@@ -199,7 +199,7 @@
 
 * Improved initialization logic
 
-## 0.20.0 (2019.11.26.)
+## 0.20.0 (2019. 11. 26.)
 
 ### TOAST Push
 
@@ -210,7 +210,7 @@
 * Separated the VoIP function into a submodule
 * Defined Swift interface additionally
 
-## 0.19.3 (2019.10.29.)
+## 0.19.3 (2019. 10. 29.)
 
 ### Common
 
@@ -218,7 +218,7 @@
 
 * Fixed a linker error that occurs under Xcode 11
 
-## 0.19.2 (2019.10.25.)
+## 0.19.2 (2019. 10. 25.)
 
 ### TOAST Push
 
@@ -226,7 +226,7 @@
 
 * Supports migration of (old) TCPushSDK
 
-## 0.19.1 (2019.10.18.)
+## 0.19.1 (2019. 10. 18.)
 
 ### TOAST Push
 
@@ -234,7 +234,7 @@
 
 * Improved token registration function
 
-## 0.19.0 (2019.10.15.)
+## 0.19.0 (2019. 10. 15.)
 
 ### TOAST Push
 
@@ -242,7 +242,7 @@
 
 * Added notification feature for notification execution
 
-## 0.18.0 (2019.10.01.)
+## 0.18.0 (2019. 10. 01.)
 
 ### Common
 
@@ -273,7 +273,7 @@
 * Fixed a bug where rich messages were not displayed properly when the message reception/checking function is disabled in the console settings
 * Fixed a bug where a device token could not be acquired in environments of iOS 13 or higher
 
-## 0.17.0 (2019.08.27.)
+## 0.17.0 (2019. 08. 27.)
 
 ### Common
 
@@ -296,14 +296,14 @@
 
 * Improved so that the default notification sound is set when sending push messages without setting a notification sounds
 
-## 0.16.1 (2019.07.29.)
+## 0.16.1 (2019. 07. 29.)
 
 ### Common
 
 #### Improvements
 * Fixed an issue where the country code cannot be obtained
 
-## 0.16.0 (2019.07.23.)
+## 0.16.0 (2019. 07. 23.)
 
 ### TOAST Logger
 
@@ -325,7 +325,7 @@
 
 * Changed message/action receiving delegate
 
-## 0.15.0 (2019.06.25.)
+## 0.15.0 (2019. 06. 25.)
 
 ### TOAST IAP
 
@@ -347,7 +347,7 @@
     * Changed to not display notifications while the app is running
         * For the same behavior as before, check [here](./push-ios/#_6).
 
-## 0.14.1 (2019.05.16.)
+## 0.14.1 (2019. 05. 16.)
 
 ### TOAST IAP
 
@@ -361,7 +361,7 @@
 
 * Fixed a bug in which the event occurrence time was incorrectly collected according to the device's calendar setting
 
-## 0.14.0 (2019.05.14.)
+## 0.14.0 (2019. 05. 14.)
 
 ### Common
 
@@ -389,7 +389,7 @@
 * Added message ID information to payload information passed to the message-receiving delegate
 * In the case of VoIP where agreement to receive advertising messages or night-time advertising messages is unnecessary, messages are received regardless of the agreement for message reception.
 
-## 0.13.0 (2019.03.26.)
+## 0.13.0 (2019. 03. 26.)
 
 ### Common
 
@@ -434,7 +434,7 @@
 
 * Added token deletion API
 
-## 0.12.4 (2019.03.19.)
+## 0.12.4 (2019. 03. 19.)
 
 ### TOAST Core
 
@@ -442,7 +442,7 @@
 
 * Added exception handling
 
-## 0.12.3 (2019.02.26.)
+## 0.12.3 (2019. 02. 26.)
 
 ### TOAST Core, Common
 
@@ -457,7 +457,7 @@
 * Added product information caching
 * Added exception handling
 
-## 0.12.2 (2019.02.08.) - Hotfix
+## 0.12.2 (2019. 02. 08.) - Hotfix
 
 ### TOAST Core
 
@@ -465,7 +465,7 @@
 
 * Added defense code to prevent intermittent crashes in ToastTransfer
 
-## 0.12.1 (2019.01.08.)
+## 0.12.1 (2019. 01. 08.)
 
 ### TOAST IAP
 
@@ -473,7 +473,7 @@
 
 * Fixed an issue where reprocessing of payments whose payment status is VerifyEnd did not work under certain circumstances
 
-## 0.12.0 (2018.12.27.)
+## 0.12.0 (2018. 12. 27.)
 
 ### TOAST Core
 
@@ -495,7 +495,7 @@
 * Added defense code to prevent intermittent crashes in ToastOperation
 
 
-## 0.11.1 (2018.12.04.)
+## 0.11.1 (2018. 12. 04.)
 
 ### TOAST IAP
 
@@ -504,7 +504,7 @@
 * Added new features
 
 
-## 0.11.0 (2018.11.20.)
+## 0.11.0 (2018. 11. 20.)
 
 ### TOAST Log & Crash
 
@@ -513,7 +513,7 @@
 * Added Network Insights function
 
 
-## 0.9.0 (2018.09.04.)
+## 0.9.0 (2018. 09. 04.)
 
 ### TOAST Log & Crash
 
