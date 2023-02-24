@@ -1,9 +1,9 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
 ## 1.3.0 (2023. 02. 28.)
-### 공통
-#### 개선 사항
-* 안정성 개선
+### Common
+#### Improved
+* Improved stability
 
 ## 1.2.1 (2023. 01. 31.)
 ### NHN Cloud Push
