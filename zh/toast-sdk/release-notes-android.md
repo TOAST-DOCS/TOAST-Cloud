@@ -1,39 +1,47 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
-## 1.4.1 (2023. 01. 11.)
-
-### NHN Cloud Push
-
-#### 기능 개선
-
-* 푸시 지표 전송 및 이벤트 처리 개선
-
-## 1.4.0 (2022. 11. 29.)
-
-### NHN Cloud Logger
-
-#### 기능 추가
-
-* 공공기관용 Logger 지원
+## 1.4.2 (February 28, 2023)
 
 ### NHN Cloud OCR
 
-#### 기능 개선
+#### Improved 
 
-* UI 개선
+* 안정성 개선
 
-#### 버그 수정
-
-* 카메라 초기화 시 크래시 이슈 수정
+## 1.4.1 (January 11, 2023)
 
 ### NHN Cloud Push
 
-#### 기능 개선
+#### Improved
 
-* 푸시 이벤트 전송 개선
-* Intent의 flags가 변경되는 이슈 수정
-    * NhnCloudPushMessageReceiver.getContentIntent() 호출 시 전달되는 Intent에 설정된 flags가 유지되지 않는 이슈가 수정되었습니다.
+* Improved sending push metrics and processing events
 
+## 1.4.0 (November 29, 2022)
+
+### NHN Cloud Logger
+
+#### Added
+
+* Added support for Logger for government agencies
+
+### NHN Cloud OCR
+
+#### Improved
+
+* Improved UI
+
+#### Fixed
+
+* Fixed a crash issue that occurred when initializing camera
+
+### NHN Cloud Push
+
+#### Improved
+
+* Improved sending push events
+* Fixed an issue of changing flags in Intent
+    * Fixed an issue where, when calling NhnCloudPushMessageReceiver.getContentIntent(), the flags set in the delivered Intent are not maintained. 
+    
 ## 1.3.0 (October 25, 2022)
 
 ### NHN Cloud OCR
