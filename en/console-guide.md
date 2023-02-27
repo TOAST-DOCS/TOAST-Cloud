@@ -57,6 +57,7 @@ Services that can be enabled for each organization include the following:
 - Contact Center
 - IDC
 - CloudTrail
+- Resource Watcher
 
 
 
@@ -306,19 +307,20 @@ You can grant multiple required roles to project members.
 | MARKETPLACE_VIEWER | Marketplace Read |
 | MEMBER | Create/Read/Update/Delete for all services in the project |
 | BILLING VIEWER | Read for usage status |
-| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete for project's integrated Appkey<br>Create/Read/Update/Delete for project's role groups<br>Enable/Disable project services<br>Delete for projects |
-| PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey<br>Read for project's role groups |
-| PROJECT MEMBER ADMIN | Create/Read/Update/Delete for project members |
-| PROJECT MEMBER VIEWER | Read for project members |
+| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete for project's integrated Appkey<br>Enable/Disable project services<br>Delete for projects |
+| PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey |
+| PROJECT MEMBER ADMIN | Create/Read/Update/Delete for project members<br>Create/Read/Update/Delete for project's role groups |
+| PROJECT MEMBER VIEWER | Read for project members<br>Read for project's role groups |
 
 #### Service Use roles
 
 | Service | Role | Description |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Create/Read/Update/Delete for Infrastructure Service |
-| Infrastructure | MEMBER | Read for VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | MEMBER | Read for VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Container Service(NCS) Services. Create/Read/Update/Delete for Other services |
 | Infrastructure | Load Balancer ADMIN | Read for VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group Services. Create/Read/Update/Delete for Other services |
 | Infrastructure | Security Group ADMIN | Read for VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer Services. Create/Read/Update/Delete for Other services |
+| Infrastructure | NCS ADMIN | Read for VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer Services. Create/Read/Update/Delete for Other services |
 | Virtual Desktop | ADMIN | Create/Read/Update/Delete for Virtual Desktop Service |
 | NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
@@ -401,6 +403,7 @@ You can grant multiple required roles to project members.
 | Text to Speech | ADMIN | Create/Read/Update/Delete for Text to Speech |
 | Speech to Text | ADMIN | Create/Read/Update/Delete for Speech to Text |
 | Cheating Detection | ADMIN | Create/Read/Update/Delete for Cheating Detection Service |
+| AI EasyMaker | ADMIN | Create/Read/Update/Delete for AI EasyMaker |
 | Maps | ADMIN | Create/Read/Update/Delete for Maps Service |
 | ROLE | ADMIN | Create/Read/Update/Delete for ROLE Service |
 | API Gateway | ADMIN | Create/Read/Update/Delete for API Gateway Service |
@@ -424,8 +427,7 @@ You can grant multiple required roles to project members.
 | Certificate Manager | ADMIN | Create/Read/Update/Delete for Certificate Manager Service |
 | eTax | ADMIN | Create/Read/Update/Delete for eTax Service |
 | eTax | VIEWER | Read  for eTax Service |
-| marketplace | ADMIN | Create/Read/Update/Delete for marketplace Project Service |
-| marketplace | ADMIN | Read for marketplace Project Service |
+
 
 #### Service PERMISSION Role
 Service PERMISSION Role can enable or disable each service.

@@ -109,6 +109,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Speech to text | グローバル |  |  |  |  |
 |  | Cheating Detection | リージョン | O |  |  |  |
 | Machine Learning | Deep Learning Instance | リージョン | O |  | | |
+|  | AI EasyMaker | Regional | O |  |  |  |
 | Application Service | Maps | リージョン | O |  |  |  |
 |  | ROLE | グローバル |  |  |  |  |
 |  | API Gateway | リージョン | O | O |  |  |
