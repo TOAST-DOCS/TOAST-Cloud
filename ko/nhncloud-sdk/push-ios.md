@@ -69,7 +69,7 @@ end
 
 ### 로그인
 
-* `최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.` ([토큰 등록 섹션 참고](https://docs.nhncloud.com/ko/TOAST/ko/toast-sdk/push-ios/#_10))
+* `최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.` ([토큰 등록 섹션 참고](https://docs.nhncloud.com/ko/nhncloud/ko/toast-sdk/push-ios/#_10))
 * `토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.`
 
 ``` objc
