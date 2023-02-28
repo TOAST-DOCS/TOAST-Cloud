@@ -472,7 +472,7 @@ If a user purchased a product with a promotion code from the Google Play Store, 
 * Query the information of unconsumed one-time products (CONSUMABLE) and consumable subscription products (CONSUMABLE_AUTO_RENEWABLE).
 * After a product is provided to a user, the product can be consumed by using [Consume API](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/api-guide-for-toast-sdk/#consume-api).
 * Unconsumed purchase can be queried by using the NhnCloudIap.queryConsumablePurchases() method.
-* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 미소비 결제를 조회할 수 있습니다.
+* Unconsumed purchases for the current store or all stores can be queried by using [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams).
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
 
 ### Specification for Unconsumed Purchases Query API
@@ -498,7 +498,7 @@ public static void queryConsumablePurchases(Activity activity,
  */
 void queryConsumablePurchases(boolean isQueryAllStores) {
     IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
-        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회: true, 현재 스토어 조회: false
+        .setQueryAllStores(isQueryAllStores) // Query all stores: true, Query the current store: false
         .build();
     PurchasesResponseListener responseListenr =
             new IapService.PurchasesResponseListener() {
@@ -521,7 +521,7 @@ void queryConsumablePurchases(boolean isQueryAllStores) {
 * You can query activated subscription products (AUTO_RENEWABLE & CONSUMABLE_AUTO_RENEWABLE) by user ID.
 * Subscription products for which purchase has been completed can be queried as long as usage period remains.
 * Activated subscription can be queried by using the NhnCloudIap.queryActivatedPurchases() method.
-* [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 활성화된 구독을 조회할 수 있습니다.
+* Activated subscription for the current store or all stores can be queried by using [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams).
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
 * Products subscribed in iOS can be queried in Android as well.
 
@@ -539,7 +539,7 @@ public static void queryActivatedPurchases(Activity activity,
 | Method                  | Parameters |                                          |
 | ----------------------- | ---------- | ---------------------------------------- |
 | queryActivatedPurchases | activity   | Activity: Currently active activity               |
-|                         | params     | IapQueryPurchasesParams: 활성화된 구독 조회 파라미터 |
+|                         | params     | IapQueryPurchasesParams: Parameter for activated subscription |
 |                         | listener   | IapService.PurchasesResponseListener: <br>Listener for query result of activated subscription |
 
 ### Example of Activated Subscription Query
@@ -550,7 +550,7 @@ public static void queryActivatedPurchases(Activity activity,
  */
 void queryActivatedPurchases(boolean isQueryAllStores) {
     IapQueryPurchasesParams params = IapQueryPurchasesParams.newBuilder()
-        .setQueryAllStores(isQueryAllStores) // 모든 스토어 조회: true, 현재 스토어 조회: false
+        .setQueryAllStores(isQueryAllStores) // Query all stores: true, Query the current store: false
         .build();
     PurchasesResponseListener responseListener =
             new IapService.PurchasesResponseListener() {
@@ -935,7 +935,7 @@ public String isQueryAllStores()
 
 | Method           | Returns  |              |
 | ---------------- | -------- | ------------ |
-| isQueryAllStores | boolean  | 모든 스토어 조회 |
+| isQueryAllStores | boolean  | Query all stores |
 
 ### IapQueryPurchasesParams.Builder
 
@@ -948,7 +948,7 @@ public void setQueryAllStores(boolean isQueryAllStores)
 
 | Method            | Parameters        |                       | Description       |
 | ----------------- | ----------------- | --------------------- | ----------------- |
-| setQueryAllStores | isQueryAllStores  | boolean: 모든 스토어 조회 | 조회 범위를 설정합니다. |
+| setQueryAllStores | isQueryAllStores  | boolean: Query all stores |  Set the query scope. |
 
 ### IapSubscriptionStatus
 
