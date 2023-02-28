@@ -35,10 +35,10 @@ Download : [toast-sdk-unity-0.27.1.zip](https://static.toastoven.net/toastcloud/
 ## 0.27.0 (2022. 10. 25.)
 Download : [toast-sdk-unity-0.27.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.27.0/toast-sdk-unity-0.27.0.zip)
 
-### 기능 추가
+### Added Features
 
-* TOAST IAP 
-    * [모든 스토어] 활성화 구독 조회 및 미소비 결제 내역 조회 API 추가  
+* TOAST IAP
+    * [All Stores] Added APIs for activated subscription query and unconsumed purchase query
 
 ### plugin version
 
