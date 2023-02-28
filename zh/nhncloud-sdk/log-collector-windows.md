@@ -152,7 +152,7 @@ loggerConf->enableCrashReporter(true);
 loggerConf->enableSilenceMode(false);
 
 // Defines the message to be exposed to the CrashReporter running as a separate process. If not defined, the default message will be shown.
-loggerConf->setCrashReporterMessage(NHNCLOUD_LANGUAGE_KOREAN, "오류가 발생한 상황...\n");
+loggerConf->setCrashReporterMessage(NHNCLOUD_LANGUAGE_KOREAN, "오류가 발생한 상황... \n");
 
 // If you want to send the crash as a separate process, but do not want to expose the UI to the user, set exposeExternalCrashReporterUI(false).
 //loggerConf->exposeExternalCrashReporterUI(false);
@@ -161,7 +161,7 @@ loggerConf->setCrashReporterMessage(NHNCLOUD_LANGUAGE_KOREAN, "오류가 발생�
 // After initialization is complete, crash collection becomes available.
 if (!g_nhncloud_lnc->initialize(loggerConf))
 {
-	// 초기화가 실패하는 경우는 이미 초기화 되었거나, 앱키를 입력하지 않은 경우에 발생합니다.
+	// 초기화가 실패하는 경우는 이미 초기화 되었거나, 앱키를 입력하지 않은 경우에 발생합니다. 
 	::MessageBox(g_mainWnd, _T("Failed to initialize NHN Cloud SDK."), _T("Alert"), MB_OK);
 	return false;
 }
