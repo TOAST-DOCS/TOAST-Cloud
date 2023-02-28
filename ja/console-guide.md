@@ -315,14 +315,13 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | サービス | 役割 | 説明 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Container Service(NCS)サービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | Load Balancer ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Groupサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancerサービスに対するRead(読み取り. などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | NCS ADMIN | NHN Container Service(NCS)サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Infrastructure | NCS VIEWER | NHN Container Service(NCS)サービスに対するRead(読み取り) |
+| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Container Service(NCS)サービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Infrastructure | Load Balancer ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Groupサービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancerサービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Infrastructure | NCS ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancerサービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り |
+| NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り) |
 | DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Object Storage | ADMIN | Object Storageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Backup | ADMIN | Backupサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |

@@ -69,7 +69,7 @@ end
 
 ### Login
 
-* `If a user ID is not set at the time of initial token registration, it is registered using the device identifier.` ([Refer to the token registration section](https://docs.nhncloud.com/zh/TOAST/zh/toast-sdk/push-ios/#_10))
+* `If a user ID is not set at the time of initial token registration, it is registered using the device identifier.` ([Refer to the token registration section](https://docs.nhncloud.com/zh/nhncloud/zh/toast-sdk/push-ios/#_10))
 * `Setting or changing the user ID after token registration will update token information.`
 
 ``` objc
