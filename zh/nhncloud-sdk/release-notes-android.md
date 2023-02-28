@@ -6,7 +6,7 @@
 
 #### Improved 
 
-* 안정성 개선
+* Improved stability
 
 ## 1.4.1 (January 11, 2023)
 
