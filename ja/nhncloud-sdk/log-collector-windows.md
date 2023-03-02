@@ -3,63 +3,53 @@
 ## 事前準備
 
 1. [Install the NHN Cloud SDK](./getting-started-windows)
-2. [NHN Cloudコンソール](https://console.nhncloud.com)で、[Log & Crash Searchを有効化](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
+2. [NHN Cloudコンソール](https://console.cloud.nhncloud.com)で[Log & Crash Searchを有効化](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
 3. Log & Crash Searchで[AppKeyを確認](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
 
-## NHN Cloud Logger SDKの初期化
+## NHN Cloud SDKの初期化
 
 Log & Crash Searchで発行されたAppKeyをProjectKeyに設定します。
 
-```
+```cpp
 ...
-#include "toast/ToastLogger.h"
+#include "NHNCloudLogger.h"
 
-using namespace toast::logger;
+nhncloud::logger::NHNCloudLogger* g_nhncloud_lnc = nullptr; // NHN Cloud SDK - Log & crash search
 ...
 
-ToastLogger* logger = GetToastLogger();
+// グローバル変数にNHN Cloud SDKインスタンスを割り当てます。
+g_nhncloud_lnc = nhncloud::logger::NHNCloudLogger::GetInstance();
 
-ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
+// NHNCloudLoggerを初期化する時、必要な設定情報を入力します。
+nhncloud::logger::NHNCloudLoggerConfiguration* loggerConf = nhncloud::logger::NHNCloudLoggerConfiguration::GetInstance();
+
 ...
+// Log & Crash Searchコンソールで確認したアプリケーションキーを入力します。
 loggerConf->setProjectKey(appkey);
+
+// 現在アプリケーションのバージョン情報を入力します。バージョン情報はシンボルファイルを登録する過程で入力するバージョン情報と一致する必要があります。
 loggerConf->setProjectVersion(version);
 ...
 
-if (_logger != NULL)
+if (!g_nhncloud_lnc->initialize(loggerConf))
 {
-    if (_logger->initialize(loggerConf))
-	{
-		// success
-	}
-	else
-	{
-		// fail
-	}
+	// すでに初期化されているか、アプリケーションキーを入力していない場合に初期化が失敗します。
+	::MessageBox(g_mainWnd, _T("Failed to initialize NHN Cloud SDK."), _T("Alert"), MB_OK);
+	return false;
 }
-```
-
-## NHN Cloud Logger SDK終了
-
-```
-DestroyToastLogger();
-```
-
-## UserIDの設定
-
-ToastSDKにユーザーIDを設定できます。
-設定したUserIDは、ToastSDKの各モジュールで共通で使用されます。
-ToastLoggerのログ送信APIを呼び出すたびに、設定したユーザーIDをログと一緒にサーバーに送信します。
-
 
 ```
 
-ToastLogger* _logger = GetToastLogger();
+## UserID設定
 
-_logger->setUserId("userId");
+ユーザーIDを設定できます。
+UserIDを設定すると、ログ送信APIを呼び出した時に、ログと一緒にユーザーIDもサーバーに送信します。
+ユーザーIDは初期化前後に関係なく設定できます。
 
-_logger->initialize(loggerConf);
-
-_logger->getUserId();
+```cpp
+    nhncloud::logger::NHNCloudLogger* pLogger = nhncloud::logger::NHNCloudLogger::GetInstance();
+    pLogger->setUserId(pUserID);
+    pLogger->getUserId();
 ```
 
 * setUserId
@@ -72,123 +62,119 @@ _logger->getUserId();
 NHN Cloud Loggerは、5つのレベルのログ送信関数を提供します。
 
 ### ログ送信
-
+* DEBUG、INFO、WARN、ERROR、FATALレベルのログを明示的に送信
+	* char*、wchar_t*型をすべてサポートします。
+	* userFieldsはユーザー定義フィールドをより簡単に使用するためのヘルパークラスです。
+```cpp
+void debug(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
+void info(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
+void warn(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
+void error(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
+void fatal(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
 ```
-// 一般ログ
-_logger->log(level, message, _userFieldMap);
-
-// DEBUGレベルのログ
-_logger->debug(level, message, _userFieldMap);
-
-// INFOレベルのログ
-_logger->info(level, message, _userFieldMap);
-
-// WARNレベルのログ
-_logger->warn(String message);
-
-// ERRORレベルのログ
-_logger->error(String message);
-
-// FATALレベルのログ
-_logger->fatal(String message);
+* ログレベルと、メッセージを明示的に送信
+```cpp
+void log(NHNCLOUD_LOGGER_LEVEL logLevel, const char* message, NHNCloudLoggerUserFields* userFields = nullptr);
 ```
 
 ## ユーザー定義フィールドの追加
+### 方法1：NHNCloudLoggerインスタンスAPI使用
+
+* NHNCloudLoggerインスタンスで直接管理するユーザー定義フィールドです。
+
+```cpp
+bool addUserField(const char* key, const wchar_t* value);
+void removeUserField(const char* key);
+void clearUserFileds();
+
+...
+
+g_nhncloud_lnc->addUserField("nickname", "randy");
+g_nhncloud_lnc->removeUserField("nickname");
+g_nhncloud_lnc->cleareUserField();
 
 ```
 
-ToastLoggerUserFields* _userFieldMap = CreateToastLoggerUserFields();
+### 方法2：NHNCloudLoggerUserFieldsクラス使用
 
-_userFieldMap->insert(key, value);
+```cpp
+nhncloud::logger::NHNCloudLoggerUserFields* pUserFieldHelper = nhncloud::logger::NHNCloudLoggerUserFields::GetInstance();	// ユーザー定義フィールドヘルパークラスを取得します。
 
-if (_userFieldMap != NULL)
-{
-    if (_userFieldMap->size() > 0)
-    {
-        _logger->log(level, message, _userFieldMap);
-    }
-    else
-    {
-        _logger->log(level, message);
-    }
-}
+pUserFieldHelper->insert("userCustomKeyHelper01", L"NHNCloudLoggerUserFieldsヘルパークラスに追加したユーザー定義フィールド\r\nCustom fields added with the NHNCloudLoggerUserFields helper class");
+pUserFieldHelper->insert("userCustomKeyHelper02", L"clear()関数で今まで定義したユーザーフィールドを簡単に整理できます。\r\nWith the clear() function, you can simply clear the custom fields you have defined so far.");
+pUserFieldHelper->insert("userCustomKeyHelper03", L"log()関数で送信する時、NHNCloudLoggerUserFieldsクラスに定義したユーザーフィールドはログオブジェクトにコピーされます。\r\nWhen sending to the log() function, the user fields defined in the NHNCloudLoggerUserFields class are copied to the log object.");
+
+g_nhncloud_lnc->log(level, pLogMessage, pUserFieldHelper);	// ユーザー定義フィールドと一緒にログを送信します。
+
+pUserFieldHelper->clear(); // 上で設定したユーザー定義フィールドをすべて削除します。
+
 ```
-
-* ユーザーフィールドは、特定ログにのみ適用したいフィールド情報を入れます。
-* ToastLoggerUserFieldsは、下記のような関数をサポートします。
-    * insert：データ挿入
-    * erase：データ削除
-    * clear：全体削除
-    * size：サイズ
-    * find：データ探索
-    * empty：空の状態かどうか
 
 * ユーザー定義フィールドは、**Log & Crash Search > ログ検索**をクリックした後、**ログ検索**画面の**選択したフィールド**に表示される値と同じです。
 
-#### カスタムフィールド制約事項
+#### ユーザー定義(カスタム)フィールドの制約事項
 
 * すでに[予約されているフィールド](./log-collector-reserved-fields)は使用できません。
-* フィールド名には'A-Z、a-z、0-9、-、_'を使用できます。最初の文字は'A-Z、a-z'のみ使用できます。
+* フィールド名は"A-Z, a-z"で始まり、"A-Z, a-z, 0-9, -, _"文字を使用できます。
 * フィールド名のスペースは、'_'に置換されます。
 
-### addUserField / removeUserFiled / cleareUserField使用例
-
-```
-_logger->addUserField("nickname", "randy");
-_logger->removeUserField("nickname");
-_logger->cleareUserField();
-```
 
 ## クラッシュログの収集
+* クラッシュが発生すると、SDKを含む実行ファイルからクラッシュダンプを送信するのが基本動作です。
+* クラッシュ発生時、ユーザーにエラー画面を表示して追加情報を収集できます。
 
-クラッシュレポーター(CrashRepoter.exe)は、クラッシュ情報をログに送信する機能を提供します。
-クラッシュが発生すると、クラッシュレポーターからクラッシュ情報をログに送信します。
-ToastLoggerを初期化する時、クラッシュレポーターを使用するかを設定できます。
-クラッシュレポーターダイアログボックスを使用するかどうか、カスタムメッセージを設定できます。
+### クラッシュログの収集と環境設定
 
+```cpp
 
-### クラッシュログ有効化およびクラッシュレポーター
+#include "NHNCloudLogger.h"
 
-```
-...
-#include "toast/ToastLogger.h"
-
-using namespace toast::logger;
+nhncloud::logger::NHNCloudLogger* g_nhncloud_lnc = nullptr;  // NHN Cloud SDK - Log & crash search
 ...
 
-ToastLogger* _logger = GetToastLogger();
+// グローバル変数にNHN Cloud SDKインスタンスを割り当てます。
+g_nhncloud_lnc = nhncloud::logger::NHNCloudLogger::GetInstance();
 
-ToastLoggerConfiguration* loggerConf = GetToastLoggerConfiguration();
+// NHNCloudLoggerを初期化する時、必要な設定情報を入力します。
+nhncloud::logger::NHNCloudLoggerConfiguration* loggerConf = nhncloud::logger::NHNCloudLoggerConfiguration::GetInstance();
+
 ...
-// クラッシュログが有効になっているか
+// Log & Crash Searchコンソールで確認したアプリケーションキーを入力します。
+loggerConf->setProjectKey(appkey);
+
+// 現在アプリケーションのバージョン情報を入力します。バージョン情報はシンボルファイルを登録する過程で入力するバージョン情報と一致する必要があります。
+loggerConf->setProjectVersion(version);
+
+// クラッシュ収集有効 - 基本的に有効状態です。クラッシュの収集を望まない場合はfalseに設定します。
 loggerConf->enableCrashReporter(true);
-// クラッシュレポーターダイアログを使用するか
+
+// 別途のプロセスで動作するクラッシュレポート(CrashReporter.exe)を使用するにはenableSilenceMode(false)に設定します。
 loggerConf->enableSilenceMode(false);
-// クラッシュレポーターダイアログに表示されるメッセージを定義
-// (定義しない場合、基本メッセージが表示される。)
-loggerConf->setCrashReporterMessage(TOAST_LANGUAGE_KOREAN, "エラーが発生した状況…\n");
+
+// 別途のプロセスで動作するクラッシュレポートに表示するメッセージを定義します。定義しない場合は基本メッセージが表示されます。
+loggerConf->setCrashReporterMessage(NHNCLOUD_LANGUAGE_KOREAN, "エラーが発生した状況。\n");
+
+// 別途のプロセスにクラッシュを送信しますが、ユーザーにUIを表示したくない場合はexposeExternalCrashReporterUI(false)に設定します。
+//loggerConf->exposeExternalCrashReporterUI(false);
 ...
 
-if (_logger != NULL)
+// 初期化が終わったら、クラッシュの収集が可能です。
+if (!g_nhncloud_lnc->initialize(loggerConf))
 {
-        bool bInit = _logger->initialize(loggerConf);
-	
-	// x86でpure virtual call / invalid paramenterクラッシュログ追加	
-	if (bInit && enableCrashReport)
-	{
-#ifndef _WIN64
-		SetCrashHandler();
-#endif
-	}
+	// すでに初期化されているか、アプリケーションキーを入力していない場合に初期化が失敗します。
+	::MessageBox(g_mainWnd, _T("Failed to initialize NHN Cloud SDK."), _T("Alert"), MB_OK);
+	return false;
 }
+
+
 ```
 
 ### クラッシュログ送信テスト
 
 * クラッシュログの送信をテストするには、実際に例外(Exception)が発生する必要があります。
 * クラッシュログの送信は、enableCrashReporterがtrueの場合にSDKが自動的に実行します。
-
-```
+* Access Violation例
+```cpp
 
 void CsampleDlg::OnBnClickedCrash()
 {
@@ -200,15 +186,12 @@ void CsampleDlg::OnBnClickedCrash()
 
 ### クラッシュログの解析
 
-TOAST Windows SDKで発生したクラッシュを解析するには、シンボルファイルを作成してWebコンソールにアップロードする必要があります。
+NHN Cloud Windows SDKで発生したクラッシュを解析するには、シンボルファイルを作成してWebコンソールにアップロードする必要があります。
 
-#### シンボルファイル作成
+#### シンボルファイルの作成
 
-* シンボルファイルを作成するには、開発環境に合ったdump_symsが必要です。
-    * [dump\_syms\_vc1600 : vs2010](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1600.zip)
-    * [dump\_syms\_vc1700 : vs2012](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1700.zip)
-    * [dump\_syms\_vc1800 : vs2013](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1800.zip)
-    * [dump\_syms\_vc1900 : vs2015](http://static.toastoven.net/toastcloud/tools/dump_syms_vc1900.zip)
+* シンボルファイルを作成するには、配布ファイルのパスでdump_syms.exeを使用する必要があります。
+* より簡単な例は配布ファイルパスで`nhncloudsdk_example`サンプルプロジェクトのビルド後にイベントをご覧ください。
 * コマンドプロンプトを実行し、下記のような方式で.symファイルを作成します。
     * sampleはサンプルプロジェクトの名称です。
 
