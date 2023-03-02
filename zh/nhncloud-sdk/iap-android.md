@@ -35,7 +35,7 @@ dependencies {
 ### ONE store
 
 - To use in-app purchase of ONE store, add dependency to build.gradle as below:
-- ONE store V19의 경우 V19 IAP SDK를 [다운로드](https://github.com/ONE-store/onestore_iap_release/tree/iap19-release/android_app_sample/app/libs)하여 libs 디렉토리에 복사하고 의존성을 함께 추가합니다.
+- For ONE store v19, [Download](https://github.com/ONE-store/onestore_iap_release/tree/iap19-release/android_app_sample/app/libs) the V19 IAP SDK and copy to the libs directory and add dependency.
 
 ```groovy
 repositories {
@@ -487,7 +487,7 @@ public static void queryConsumablePurchases(Activity activity,
 | Method                   | Parameters |                                          |
 | ------------------------ | ---------- | ---------------------------------------- |
 | queryConsumablePurchases | activity   | Activity: Currently active activity               |
-|                          | params     | IapQueryPurchasesParams: 미소비 구매 내역 조회 파라미터 |
+|                          | params     | IapQueryPurchasesParams: Parameter for unconsumed purchase query |
 |                          | listener   | IapService.PurchasesResponseListener: <br>Listener for query result of unconsumed purchase details |
 
 ### Example of Unconsumed Purchases Query
@@ -539,7 +539,7 @@ public static void queryActivatedPurchases(Activity activity,
 | Method                  | Parameters |                                          |
 | ----------------------- | ---------- | ---------------------------------------- |
 | queryActivatedPurchases | activity   | Activity: Currently active activity               |
-|                         | params     | IapQueryPurchasesParams: Parameter for activated subscription |
+|                         | params     | IapQueryPurchasesParams: Parameter for activated subscription query |
 |                         | listener   | IapService.PurchasesResponseListener: <br>Listener for query result of activated subscription |
 
 ### Example of Activated Subscription Query
@@ -762,7 +762,7 @@ String HUAWEI_APP_GALLERY
 
 ### IapPurchaseResult
 
-* An object that Includes purchase result and purchase information.
+* An object that includes purchase results and purchase information.
 
 ```java
 /* IapPurchaseResult.java */
@@ -926,7 +926,7 @@ public void setProductId(String productId)
 
 ### IapQueryPurchasesParams
 
-* IapQueryPurchasesParams는 조회하려는 조건을 설정합니다.
+* IapQueryPurchasesParams set up the conditions for query.
 
 ```java
 /* IapQueryPurchasesParams.java */
@@ -939,7 +939,7 @@ public String isQueryAllStores()
 
 ### IapQueryPurchasesParams.Builder
 
-* IapQueryPurchasesParams 객체를 생성합니다.
+* Create an IapQueryPurchasesParams object.
 
 ```java
 /* IapQueryPurchasesParams.java */
@@ -948,7 +948,7 @@ public void setQueryAllStores(boolean isQueryAllStores)
 
 | Method            | Parameters        |                       | Description       |
 | ----------------- | ----------------- | --------------------- | ----------------- |
-| setQueryAllStores | isQueryAllStores  | boolean: Query all stores |  Set the query scope. |
+| setQueryAllStores | isQueryAllStores  | boolean: Query all stores | Set the query scope. |
 
 ### IapSubscriptionStatus
 

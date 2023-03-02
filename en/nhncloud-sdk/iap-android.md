@@ -35,7 +35,7 @@ dependencies {
 ### ONE store
 
 - To use in-app purchase of ONE store, add dependency to build.gradle as below:
-- For ONE store v19, [Download] the V19 IAP SDK from (https://github.com/ONE-store/onestore_iap_release/tree/iap19-release/android_app_sample/app/libs) and copy to the libs directory and add dependency.
+- For ONE store v19, [Download](https://github.com/ONE-store/onestore_iap_release/tree/iap19-release/android_app_sample/app/libs) the V19 IAP SDK and copy to the libs directory and add dependency.
 
 ```groovy
 repositories {
