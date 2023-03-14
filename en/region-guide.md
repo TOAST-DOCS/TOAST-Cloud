@@ -94,7 +94,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | KakaoTalk Bizmessage | Regional | O |  |  |  |
 | AI Service | Face Recognition | Global |  |  |  |  |
 |  | AI Fashion | Regional | O | O | O |  |  |
-|  | Document Recognizer | Global |  |  |  |  |
+|  | OCR | Global |  |  |  |  |
 |  | Vehicle Plate Recognizer | Global |  |  |  |  |
 |  | Text to Speech | Global |  |  |  |  |
 |  | Speech to Text | Global |  |  |  |  |
