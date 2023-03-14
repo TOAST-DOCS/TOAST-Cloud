@@ -64,7 +64,7 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 
 NHN Cloud 서비스를 안정하고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202208_gov.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202210_wide.png)
 
 #### IP ACL 설정
 허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다.
@@ -80,6 +80,14 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
         * 설정 안 함: 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
         * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력합니다.
 
+
+#### 승인 프로세스 관리 설정
+서비스 이용 시 승인 프로세스가 필요한 경우 승인 권한 자의 승인 절차를 거치도록 서비스별 기능을 제공합니다.
+
+* **승인 프로세스 관리 설정**에서 **설정 안 함(Default)/설정**을 선택할 수 있습니다.
+* 승인 프로세스 관리 설정에서 **설정**을 선택하면, 각 서비스에서 제공하는 승인 절차를 이용할 수 있습니다.
+* 승인 프로세스 제공 서비스 
+    * Secure Key Manager 
 
 #### 인스턴스 이름 관리 설정 
 Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있습니다. 
