@@ -399,7 +399,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | AI Fashion | ADMIN | AI Fashionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
-| Document Recognizer | ADMIN | Document Recognizerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
+| OCR | ADMIN | OCRサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
 | Vehicle Plate Recognizer | ADMIN | Vehicle Plate Recognizerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
 | Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 

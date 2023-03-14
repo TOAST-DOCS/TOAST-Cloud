@@ -103,7 +103,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | KakaoTalk Bizmessage | リージョン | O |  |  |  |
 | AI Service | Face Recognition | グローバル |  |  |  |  |
 |  | AI Fashion | リージョン | O | O | O |  |  |
-|  | Document Recognizer | グローバル |  |  |  |  |
+|  | OCR | グローバル |  |  |  |  |
 |  | Vehicle Plate Recognizer | グローバル |  |  |  |  |
 |  | Text to Speech | グローバル |  |  |  |  |
 |  | Speech to text | グローバル |  |  |  |  |
