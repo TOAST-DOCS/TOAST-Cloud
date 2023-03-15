@@ -1,10 +1,10 @@
-## NHN Cloud > SDK User Guide > Document Recognizer > Credit Card (iOS)
+## NHN Cloud > SDK User Guide > OCR > Credit Card (iOS)
 
 ## Prerequisites
 
 1. Install [NHN Cloud SDK](./getting-started-ios).
-2. Enable [AI Service > Document Recognizer] in[NHN Cloud Console](https://console.nhncloud.com).
-3. Check Appkey and SecretKey in Document Recognizer Console.
+2. Enable [AI Service > OCR] in[NHN Cloud Console](https://console.nhncloud.com).
+3. Check Appkey and SecretKey in OCR Console.
 
 <br>
 
@@ -56,7 +56,7 @@ end
 
 ## Initialize NHNCLOUDOCR SDK
 * Set AppKey and Secret issued from NHN Cloud Console in NHNCloudOCRConfiguration object.
-  * AI Service > Document Recognizer > Credit Card
+  * AI Service > OCR > Document OCR > Credit Card
 * NHNCloudOCR uses an NHNCloudOCRConfiguration object as a parameter for initialization.
 * To get a permission to use camera, add the following items to info.plist.
 ```
