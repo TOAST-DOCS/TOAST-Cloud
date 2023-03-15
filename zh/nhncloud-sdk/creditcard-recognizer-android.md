@@ -1,9 +1,9 @@
-## NHN Cloud > SDK User Guide > Document Recognizer > Credit Card (Android)
+## NHN Cloud > SDK User Guide > OCR > Credit Card (Android)
 
 ## Prerequisites
 
-1. Enable [AI Service > Document Recognizer] in [NHN Cloud Console](https://console.nhncloud.com)
-2. Check Appkey and SecretKey in Document Recognizer Console.
+1. Enable [AI Service > OCR] in [NHN Cloud Console](https://console.nhncloud.com)
+2. Check Appkey and SecretKey in OCR Console.
 
 ## Supported Environment
 
