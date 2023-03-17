@@ -1,10 +1,10 @@
-## NHN Cloud > SDK 사용 가이드 > Document Recognizer > Credit Card (iOS)
+## NHN Cloud > SDK 사용 가이드 > OCR > Credit Card (iOS)
 
 ## 사전 준비
 
 1. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
-2. [NHN Cloud Console](https://console.nhncloud.com)에서 [AI Service > Document Recognizer] 서비스를 활성화합니다.
-3. Document Recognizer 콘솔에서 AppKey와 SecretKey를 확인합니다.
+2. [NHN Cloud Console](https://console.nhncloud.com)에서 [AI Service > OCR] 서비스를 활성화합니다.
+3. OCR 콘솔에서 AppKey와 SecretKey를 확인합니다.
 
 <br>
 
@@ -56,7 +56,7 @@ end
 
 ## NHNCloudOCR SDK 초기화
 * NHN Cloud Console에서 발급받은 AppKey와 Secret을 NHNCloudOCRConfiguration 객체에 설정합니다.
-  * AI Service -> Document Recognizer -> 신용카드
+  * AI Service -> OCR -> Document OCR -> 신용카드
 * NHNCloudOCR은 초기화에 NHNCloudOCRConfiguration 객체를 파라미터로 사용합니다.
 * 카메라 사용 권한을 얻기 위해 info.plist에 아래 내용을 추가합니다.
 ```

@@ -1,9 +1,9 @@
-## NHN Cloud > SDK User Guide > Document Recognizer > Credit Card (Android)
+## NHN Cloud > SDK User Guide > OCR > Credit Card (Android)
 
 ## 事前準備
 
-1. [NHN Cloud Console](https://console.nhncloud.com)で[AI Service > Document Recognizer]サービスを有効にします。
-2. Document RecognizerコンソールdeAppKeyとSecretKeyを確認します。
+1. [NHN Cloud Console](https://console.nhncloud.com)で[AI Service > OCR]サービスを有効にします。
+2. OCRコンソールdeAppKeyとSecretKeyを確認します。
 
 ## サポート環境
 
