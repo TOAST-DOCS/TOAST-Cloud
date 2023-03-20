@@ -83,7 +83,7 @@ For Dooray! services, IP ACL can be set on the service's console screen.
 3. You can set and manage IP ACL under **Set IP ACL** in the Organization Governance Setting.
     * Service setting
         * Common Settings: IP ACL can be set globally for all services.
-        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Online Contact, Dooray!, etc.).
+        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Online Contact,  etc.).
     * IP ACL
         * Not Configured: The console can be accessed from any IPs (or IP range).
         * Console Access Only from Allowed IPs (or IP range): The console can be accessed only from the IPs (or IP range) you entered. Enter the IP or IP range to allow access.
