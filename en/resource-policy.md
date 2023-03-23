@@ -41,6 +41,10 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Load Balancer | Per project |10|
 |IP Access Control Group    | Per project |10|
 |IP Access Control Target | Per IP access control group    |1000|
+| NAS volume | Per project| 100 |
+| NAS Volume Size | Per project | 30TB |
+| NAS Max Volume Size | Per volum | 10TB |
+| NAS volume Subnet | Per project | 3 |
 
 ### Resource Provision Policy for NHN Kubernetes Service (NKS)  
 Resource usage is calculated for each project, and the policy is applied by the region. 
