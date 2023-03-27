@@ -129,6 +129,21 @@ dependencies {
 
 > Huawei App Gallery 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
 
+### MyCard
+
+- MyCard의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.5.0'
+    ...
+}
+```
+
 ## AndroidManifest 설정
 
 ### ONE store 결제 화면 설정 (옵션)
@@ -193,6 +208,48 @@ Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
 
 > <span style="color:#e11d21">**주의!)**</span> QUERY_ALL_PACKAGES 권한을 Google Play Store에 적용하지 않도록 주의하시기 바랍니다.
 
+### MyCard
+
+#### android:name 설정
+
+android:name을 정의하지 않았었다면 다음과 같이 추가합니다.
+
+```xml
+<application
+  android:name="com.nhncloud.android.iap.mycard.NhnCloudMyCardApplication"
+  ...>
+  ...
+</application>
+```
+
+android:name을 정의했었다면 [Application](https://developer.android.com/reference/android/app/Application) 클래스 대신 NhnCloudMyCardApplication 클래스를 상속합니다.
+
+
+```xml
+<application
+  android:name=".MyApplication"
+  ...>
+  ...
+</application>
+```
+
+```java
+class MyApplication extends NhnCloudMyCardApplication {
+    ...
+}
+```
+
+#### 테스트 결제 모드 (옵션)
+
+결제 테스트를 하려면 'test_mode'를 추가합니다. 'test_mode'를 설정하지 않으면 기본값은 false 입니다.
+
+```xml
+<application
+  ...>
+  <meta-data android:name="iap:test_mode" android:value="true | false"/>
+</application>
+```
+
 ## 스토어 코드
 
 | 스토어         | 코드         |
@@ -202,6 +259,7 @@ Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
 | Galaxy store | "GALAXY" |
 | Amazon Appstore | "AMAZON" |
 | Huawei App Gallery | "HUAWEI" |
+| MyCard | "MYCARD" |
 
 > [참고] 스토어 코드는 [IapStoreCode](./iap-android/#iapstorecode) 클래스에 정의되어 있습니다.
 
@@ -752,6 +810,7 @@ String ONE_STORE
 String GALAXY_STORE
 String AMAZON_APP_STORE
 String HUAWEI_APP_GALLERY
+String MYCARD
 ```
 
 * GOOGLE_PLAY_STORE<br>Google Play 스토어 인앱 결제를 사용합니다.<br>Constant Value: "GG"
@@ -759,6 +818,7 @@ String HUAWEI_APP_GALLERY
 * GALAXY_STORE<br>Galaxy store 인앱 결제를 사용합니다.<br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Amazon Appstore 인앱 결제를 사용합니다.<br>Constant Value: "AMAZON"
 * HUAWEI_APP_GALLERY<br>Huawei App Gallery 인앱 결제를 사용합니다.<br>Constant Value: "HUAWEI"
+* MYCARD<br>MyCard 인앱 결제를 사용합니다.<br>Constant Value: "MYCARD"
 
 ### IapPurchaseResult
 

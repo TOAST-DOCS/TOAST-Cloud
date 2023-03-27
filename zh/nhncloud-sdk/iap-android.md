@@ -129,6 +129,21 @@ dependencies {
 
 > Huawei App Gallery's in-app purchase works on Android 4.4 (API level 19) or higher.
 
+### MyCard
+
+- MyCard의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.5.0'
+    ...
+}
+```
+
 ## AndroidManifest Setting
 
 ### ONE store purchase screen setting (optional)
@@ -193,6 +208,37 @@ To use a lower version of Android Gradle Plugin, see [Preparing your Gradle buil
 
 > <span style="color:#e11d21">**Caution!)**</span> Be careful not to apply the QUERY_ALL_PACKAGES permission to the Google Play Store.
 
+### MyCard
+
+#### android:name 설정
+
+android:name을 정의하지 않았었다면 다음과 같이 추가합니다.
+
+```xml
+<application
+  android:name="com.nhncloud.android.iap.mycard.NhnCloudMyCardApplication"
+  ...>
+  ...
+</application>
+```
+
+android:name을 정의했었다면 [Application](https://developer.android.com/reference/android/app/Application) 클래스 대신 NhnCloudMyCardApplication 클래스를 상속합니다.
+
+
+```xml
+<application
+  android:name=".MyApplication"
+  ...>
+  ...
+</application>
+```
+
+```java
+class MyApplication extends NhnCloudMyCardApplication {
+    ...
+}
+```
+
 ## Store Codes
 
 | Store         | Code         |
@@ -202,6 +248,7 @@ To use a lower version of Android Gradle Plugin, see [Preparing your Gradle buil
 | Galaxy store | "GALAXY" |
 | Amazon Appstore | "AMAZON" |
 | Huawei App Gallery | "HUAWEI" |
+| MyCard | "MYCARD" |
 
 > [Note] Store codes are defined in the [IapStoreCode](./iap-android/#iapstorecode) class.
 
@@ -752,6 +799,7 @@ String ONE_STORE
 String GALAXY_STORE
 String AMAZON_APP_STORE
 String HUAWEI_APP_GALLERY
+String MYCARD
 ```
 
 * GOOGLE_PLAY_STORE<br>Uses Google Play Store in-app purchase.<br>Constant Value: "GG"
@@ -759,6 +807,7 @@ String HUAWEI_APP_GALLERY
 * GALAXY_STORE<br>Uses Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Uses Amazon Appstore in-app purchase.<br>Constant Value: "AMAZON"
 * HUAWEI_APP_GALLERY<br>Uses Huawei App Gallery in-app purchase.<br>Constant Value: "HUAWEI"
+* MYCARD<br>MyCard 인앱 결제를 사용합니다.<br>Constant Value: "MYCARD"
 
 ### IapPurchaseResult
 
