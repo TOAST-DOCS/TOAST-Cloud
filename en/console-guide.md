@@ -71,7 +71,7 @@ Services that can be enabled for each organization include the following:
 
 You can set and manage policies for stable and efficient use of NHN Cloud services. Set up a common organization policy for security compliance such as login and personal information, so that the members within the organization can comply with the policy.
 
-![console_guide_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202303_en.png)
+![console_guide_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202303_en_new.png)
 
 #### IP ACL Setting
 When IP ACL is set, the console can be accessed from the allowed IPs (or IP range) only.
@@ -114,7 +114,7 @@ When an operator looks up important information on resources, the users are noti
 
 * To strengthen the console access security of IAM members, **Login Security Setting** feature is provided.
 * You can set it globally for all organization services (Cloud, Online Contact, Dooray!, etc.), or set it differently for each service.
-![console_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202210_en.png)
+![console_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202303_en.png)
 
 1. Go to the console and access the Organization Management page of the organization you want to set up.
 2. Select Governance Setting from the submenu.

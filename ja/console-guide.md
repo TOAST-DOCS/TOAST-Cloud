@@ -68,7 +68,7 @@ NHN Cloud Consoleは下記の機能を提供します。
 
 NHN Cloudサービスを安定的かつ効率的に利用するために必要なポリシーを設定して管理できます。 ログインおよび個人情報など、セキュリティコンプライアンス遵守のための組織の共通ポリシーを策定し、組織内のメンバーがポリシーを遵守できるように管理します。
 
-![console_guide_3_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202303_jp.png)
+![console_guide_3_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202303_jp_new.png)
 
 #### IP ACL設定
 許可したIP(またはIP帯域)からのみコンソールにアクセスできます。
@@ -111,7 +111,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 
 * IAMメンバーのコンソール接続セキュリティを強化するために**ログインセキュリティ設定**機能を提供します。
 * すべての組織サービス(Cloud、Online Contact、Dooray!など)に同じように設定したり、サービスごとに設定できます。
-![console_guide_4_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202210_jp.png)
+![console_guide_4_jp.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202303_jp.png)
 
 1. コンソールに移動した後、設定したい組織の組織管理ページに接続します。
 2. サブメニューのガバナンス設定を選択します。
