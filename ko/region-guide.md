@@ -55,6 +55,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | NAT Gateway | 리전 | O | O |  |  |
 |  | VPN Gateway(Site-to-Site VPN) | 리전 |  | O |  |  |
 |  | Service Gateway | 리전 | O | O |  |  |
+|  | Traffic Mirroring | 리전 | O | O | | |
 |  | DNS Plus | 글로벌 |  |  |  |  |
 | Storage | Block Storage | 리전 | O | O | O | O |
 |  | NAS (offline) | 리전 | O | O |  | O |
@@ -102,8 +103,8 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Email | 글로벌 |  |  |  |  |
 |  | KakaoTalk Bizmessage | 리전 | O |  |  |  |
 | AI Service | Face Recognition | 글로벌 |  |  |  |  |
-|  | AI Fashion | 리전 | O | O |  O |  |
-|  | Document Recognizer | 글로벌 |  |  |  |  |
+|  | AI Fashion | 리전 | O | O | O | O |
+|  | OCR | 글로벌 |  |  |  |  |
 |  | Vehicle Plate Recognizer | 글로벌 |  |  |  |  |
 |  | Text to Speech | 글로벌 |  |  |  |  |
 |  | Speech to Text | 글로벌 |  |  |  |  |

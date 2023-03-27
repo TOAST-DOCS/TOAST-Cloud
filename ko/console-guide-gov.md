@@ -64,7 +64,9 @@ NHN Cloud (공공기관용) Console은 아래와 같은 기능을 제공합니�
 
 NHN Cloud 서비스를 안정하고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202208_gov.png)
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202303_gov_new2.png)
+
+
 
 #### IP ACL 설정
 허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다.
@@ -72,14 +74,19 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
 2. 하위 메뉴에서 거버넌스 설정을 선택합니다.
-3. 조직 거버넌스 설정의 **IP ACL 설정**에서 IP ACL을 설정하고 관리할 수 있습니다.
-    * 서비스 설정
-        * 공통 설정: 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
-        * 서비스별 설정: 각 서비스(Cloud, Online Contact, Dooray! 등)별로 IP ACL을 설정할 수 있습니다.
+3. 조직 거버넌스 설정의 **IP ACL 설정**에서 IP ACL을 설정하고 관리할 수 있습니다.    
     * IP ACL
         * 설정 안 함: 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
         * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력합니다.
 
+
+#### 승인 프로세스 관리 설정
+서비스 이용 시 승인 프로세스가 필요한 경우 승인 권한 자의 승인 절차를 거치도록 서비스별 기능을 제공합니다.
+
+* **승인 프로세스 관리 설정**에서 **설정 안 함(Default)/설정**을 선택할 수 있습니다.
+* 승인 프로세스 관리 설정에서 **설정**을 선택하면, 각 서비스에서 제공하는 승인 절차를 이용할 수 있습니다.
+* 승인 프로세스 제공 서비스 
+    * Secure Key Manager 
 
 #### 인스턴스 이름 관리 설정 
 Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있습니다. 
@@ -87,19 +94,19 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * **중복 허용 관리** 선택 시, Instance 명을 사용자가 입력한 이름으로 관리하며 중복된 Instance 명을 허용합니다. 
 * **Unique 관리** 선택 시, Instance 명을 사용자가 입력한 이름과 시스템에서 생성한 문자를 조합하여 유일한 Instacne 명으로 관리합니다. 
 
-#### IaaS 리소스 권한 통제 및 접속 단말 제한 설정 
-운영자가 조직의 IaaS 리소스 중요 정보를 조회 시, 사용자에게 메일을 발송하고 망 분리 PC 에서만 리소스를 확인할 수 있도록 설정할 수 있습니다. 
+#### 리소스 권한 통제 및 접속 단말 제한 설정 
+운영자가 조직 리소스의 중요 정보를 조회 시, 사용자에게 메일을 발송하고 망 분리 PC 에서만 리소스를 확인할 수 있도록 설정할 수 있습니다. 
 
-* **IaaS 리소스 권한 통제 및 접속 단말 제한 설정**에서 **설정 안 함(Defualt)/설정**을 선택할 수 있습니다.
-* IaaS 리소스 권한 통제 및 접속 단말 제한 설정에서 **설정**을 선택하면, 운영자의 IaaS 리소스 조회 기능이 제한됩니다.
+* **리소스 권한 통제 및 접속 단말 제한 설정**에서 **설정 안 함(Defualt)/설정**을 선택할 수 있습니다.
+*  리소스 권한 통제 및 접속 단말 제한 설정에서 **설정**을 선택하면, 운영자의 리소스 조회 기능이 제한됩니다.
 
 ### IAM 거버넌스 설정
 
 #### 로그인 보안 설정
 
 * IAM 멤버의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
-* 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
-![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202210_gov.png)
+* 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정됩니다.
+![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202303_gov_new.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
 2. 하위 메뉴인 거버넌스 설정을 선택합니다.
@@ -110,10 +117,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 2차 인증을 필수로 설정하여 사용하게 할 수 있습니다.
 
 * 서비스 설정
-    * 공통 설정: 모든 조직 서비스에 동일하게 2차 인증을 설정합니다.
-    * 서비스별 설정: 각 서비스 (Cloud, Online Contact, Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
+    * 공통 설정: 모든 조직 서비스에 동일하게 2차 인증을 설정합니다.(서비스별 설정 기능 미제공)
 * 2차 인증 설정
-    * 설정 안 함: 2차 인증을 하지 않고, 아이디와 비밀번호 입력만으로 로그인할 수 있습니다.
     * Google OTP: 아이디와 비밀번호를 입력한 후, Google OTP 앱에서 제공한 One Time Password를 입력해 로그인할 수 있습니다.
     * 이메일: 아이디와 비밀번호를 입력한 후, 이메일 주소로 발송된 **인증** 버튼을 클릭해서 인증 후 로그인할 수 있습니다.
 * 예외 IP 설정
@@ -127,7 +132,6 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * 서비스 설정
     * 공통 설정: 모든 조직 서비스에 동일하게 2차 인증을 설정합니다. (서비스별 설정 기능 미제공)
 * 로그인 실패 보안 설정
-    * 설정 안 함: 로그인에 실패하더라도 계속해서 로그인을 시도할 수 있습니다.
     * 설정: 원하는 실패 횟수와 잠금 시간을 입력하면, 설정한 횟수만큼 로그인에 실패했을 때 입력한 잠금 시간 동안 로그인을 시도할 수 없습니다.
 
 #### 로그인 세션
@@ -299,6 +303,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Security Group, Load Balancer서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Load Balancer ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Security Group 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, NAT Instance, Internet Gateway, Peering Gateway, Load Balancer서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Routing ADMIN | VPC, Subnet, Network Interface, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NKS 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
 | NHN Container Registry(NCR)| ADMIN | NHN Container Registry(NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry(NCR) | VIEWER | NHN Container Registry(NCR) 서비스 Read(읽기) |
 | DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
@@ -307,6 +312,10 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Secure Key Manager | ADMIN | Secure Key Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager 서비스 승인 요청에 대한 승인/거부/조회 및 승인 요청 생성/조회  |
+| Secure Key Manager | APPROVAL MEMBER | Secure Key Manager 서비스 승인 요청 생성/조회  |
+| Secure Key Manager | VIEWER | Secure Key Manager 서비스 Read(읽기) |
 | Security Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | DDoS Guard | ADMIN | DDos Guard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | SIEM | ADMIN | SIEM 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |

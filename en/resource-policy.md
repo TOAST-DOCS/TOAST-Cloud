@@ -32,6 +32,8 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |VPN Gateway(Site-to-Site VPN) | Per VPC | 1 | 
 |VPN Gateway(Site-to-Site VPN) Connection | Per subnet | 1 |  
 |Service Gateway | Per VPC | 10 | 
+|Traffic Mirroring Session | Per project | 10 | 
+|Traffic Mirroring Filter Group | Per Mirroring Session | 10 | 
 | Network Interface | Per project | 500 | 
 | Network ACL | Per project | 10 | 
 | Network ACL Policy | Per project | 100 | 
@@ -39,6 +41,10 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Load Balancer | Per project |10|
 |IP Access Control Group    | Per project |10|
 |IP Access Control Target | Per IP access control group    |1000|
+| NAS volume | Per project| 100 |
+| NAS Volume Size | Per project | 30TB |
+| NAS Max Volume Size | Per volum | 10TB |
+| NAS volume Subnet | Per project | 3 |
 
 ### Resource Provision Policy for NHN Kubernetes Service (NKS)  
 Resource usage is calculated for each project, and the policy is applied by the region. 
@@ -73,12 +79,12 @@ Resource usage is calculated for each project.
 | Alimtalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
 | FriendTalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases |
 
-### Resource Provision Policy for Document Recognizer
+### Resource Provision Policy for OCR
 Resource usage is calculated for each project.
 
 | Resource | Criteria | Capacity |
 | -------- | -------- | -------- |
-| Requests for Analyzing ID Card | Per Document Recognizer service | 100,000 cases |
+| Requests for Analyzing ID Card | Per OCR service | 100,000 cases |
 
 ### Resource Provision Policy for API Gateway Service
 Resource usage is calculated for each project, and the policy is applied by the region.

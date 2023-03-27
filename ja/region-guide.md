@@ -55,6 +55,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | NAT Gateway | リージョン | O | O |  |  |
 |  | VPN Gateway(Site-to-Site VPN) | リージョン |  | O |  |  |
 |  | Service Gateway | リージョン | O | O |  |  |
+|  | Traffic Mirroring | リージョン | O | O | | |
 |  | DNS Plus | グローバル |  |  |  |  |
 | Storage | Block Storage | リージョン | O | O | O | O |
 |  | NAS (offline) | リージョン | O | O  |  | O |
@@ -102,8 +103,8 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Email | グローバル |  |  |  |  |
 |  | KakaoTalk Bizmessage | リージョン | O |  |  |  |
 | AI Service | Face Recognition | グローバル |  |  |  |  |
-|  | AI Fashion | リージョン | O | O | O |  |  |
-|  | Document Recognizer | グローバル |  |  |  |  |
+|  | AI Fashion | リージョン | O | O | O | O |
+|  | OCR | グローバル |  |  |  |  |
 |  | Vehicle Plate Recognizer | グローバル |  |  |  |  |
 |  | Text to Speech | グローバル |  |  |  |  |
 |  | Speech to text | グローバル |  |  |  |  |

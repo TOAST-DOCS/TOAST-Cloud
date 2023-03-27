@@ -260,10 +260,10 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 ### Specification for Activated Subscription List API
 
 ``` objc
-// 활성화된 앱스토어 구독 목록 조회하기
+// Query an activated subscription list in App Store
 + (void)requestActiveSubscriptionsWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
-// 활성화된 모든 마켓(앱스토어, 구글플레이, 원스토어 등) 구독 목록 조회하기
+// Query the list of activated subscriptions in all markets (such as App Store, Google Play, and ONE Store)
 + (void)requestAllMarketsActiveSubscriptionsWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 ```
 
@@ -318,10 +318,10 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 ### Specification for Unconsumed Purchase Query API
 
 ``` objc
-// 앱스토어 미소비 구매 내역 조회
+// Query unconsumed purchases for App Store
 + (void)requestConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 
-// 모든 마켓(앱스토어, 구글플레이, 원스토어 등)의 미소비 구매 내역 조회
+// Query unconsumed purchases for all markets (such as App Store, Google Play, and ONE Store)
 + (void)requestAllMarketsConsumablePurchasesWithCompletionHandler:(nullable void (^)(NSArray<NHNCloudPurchaseResult *> * _Nullable purchases, NSError * _Nullable error))completionHandler;
 ```
 
@@ -379,33 +379,33 @@ typedef NS_ENUM(NSInteger, NHNCloudProductType) {
 }
 ```
 
-## 구독 상품 관리 페이지 제공 방법
+## Provide Subscription Product Management Page
 
-* 자동 갱신형 구독 상품을 사용할 경우 사용자에게 구독 관리 페이지를 제공해야 합니다.
+* When auto-renewable subscription products are used, the Manage Subscriptions page must be provided to users.
 > [Apple Guide](https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/subscriptions_and_offers/handling_subscriptions_billing?language=objc)
 
-* 별도의 UI를 구성하지 않고 아래 URL을 호출해 구독 관리 페이지를 표시해야 합니다.
+* Without configuring a separate UI, you must display the Manage Subscriptions page by calling the URL below.
 
 ```
 https://apps.apple.com/account/subscriptions
 itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscription
 ```
 
-### 구독 관리 페이지 연결 방법
+### Connect to Manage Subscription Page
 
 ```objc
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://apps.apple.com/account/subscriptions"] options: @{} completionHandler:nil];
 ```
 
-또는
+Or
 
 ```objc
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"] options: @{} completionHandler:nil];
 ```
 
-App Store의 구독 관리 페이지로 연결됩니다.
+The Manage Subscriptions page of App Store is connected.
 
-> iOS 기기의 왼쪽 상단의 이전 앱으로 돌아가기에 `Service App`이 나타납니다.
+> `Service App` appears in the return to previous app button in the top left corner of an iOS device.
 
 ## Remain Compatible with (old) IAP SDK
 

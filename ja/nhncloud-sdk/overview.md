@@ -12,7 +12,7 @@ NHN Cloud SDKは、次のようなサービスを提供します。
 - [Log & Crash Search](https://www.nhncloud.com/service/data-analytics/log-crash-search)
 - [IAP](https://www.nhncloud.com/service/mobile-service/iap) 
 - [Push](https://www.nhncloud.com/service/notification/push)
-- [Document Recognizer](https://www.nhncloud.com/service/ai-service/document-recognizer)
+- [OCR](https://www.nhncloud.com/service/ai-service/document-recognizer)
  
 > 個別SDKを提供するサービスは、今後NHN Cloud SDKを通して開発できるようにサポートする予定です。 
  
