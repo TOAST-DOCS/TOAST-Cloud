@@ -402,7 +402,6 @@ You can grant multiple required roles to project members.
 | Face Recognition | ADMIN | Create/Read/Update/Delete for Face Recognition Service |
 | AI Fashion |	ADMIN |	Create/Read/Update/Delete for AI Fashion Service |
 | OCR | ADMIN | Create/Read/Update/Delete for OCR | 
-| Vehicle Plate Recognizer | ADMIN | Create/Read/Update/Delete for Vehicle Plate Recognizer |
 | Text to Speech | ADMIN | Create/Read/Update/Delete for Text to Speech |
 | Speech to Text | ADMIN | Create/Read/Update/Delete for Speech to Text |
 | Cheating Detection | ADMIN | Create/Read/Update/Delete for Cheating Detection Service |
