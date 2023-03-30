@@ -55,6 +55,49 @@ NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(N
 #### 회원 가입 완료
 회원 가입이 완료되면 자동으로 로그인됩니다. NHN Cloud 홈페이지와 콘솔을 이용할 수 있습니다.
 
+
+### 로그인 보안 설정
+로그인 시 2단계 로그인 설정이 가능합니다. 
+지원하는 방법은 '이메일 인증, 휴대폰 인증, Google OTP 인증' 입니다. 
+
+#### 로그인 보안 설정 선택
+![userguide_02_20230330](https://static.toastoven.net/toast/user_guide/userguide_10_202303.png)
+마이 페이지 접속 후 로그인 보안 설정 탭을 클릭 합니다.
+사용 중인 로그인 보안 설정을 확인할 수 있고 "변경" 버튼을 클릭하여 변경할 수 있습니다.
+
+- 2단계 로그인 설정
+    - 2단계 로그인 설정 안 함: 최초 상태로 2단계 로그인 보안 설정을 사용하지 않는 상태
+    - 이메일 또는 휴대폰으로 인증 후 로그인: 로그인 시 회원 정보의 이메일 또는 휴대폰 번호로 인증번호를 받아 인증
+    - Google OTP 인증 후 로그인: 로그인 시 Google OTP 앱으로 인증
+
+#### Google OTP 인증 후 로그인 설정 방법
+2단계 로그인 설정에서 Google OTP 인증 후 로그인을 선택 후 "저장" 버튼 클릭 합니다.
+OTP 인증 설정을 차례대로 진행합니다. 
+
+1. OTP 인증 앱을 설치합니다.
+![userguide_03_20230330](https://static.toastoven.net/toast/user_guide/userguide_11_202303.png)
+
+2. OTP 인증 앱에 NHN Cloud 계정을 추가합니다.
+![userguide_04_20230330](https://static.toastoven.net/toast/user_guide/userguide_12_202303.png)
+
+3. OTP 인증 앱 화면에 표시된 NHN Cloud 계정의 인증번호를 입력합니다.
+![userguide_05_20230330](https://static.toastoven.net/toast/user_guide/userguide_13_202303.png)
+
+4. OTP 등록 기기 명을 입력합니다.
+- 이름 입력 기준
+    - 한글, 영어, 일본어, 중국어, 스페이스, 숫자만 입력 가능
+    - 최대 10자
+![userguide_06_20230330](https://static.toastoven.net/toast/user_guide/userguide_14_202303.png)
+
+OTP 인증 설정이 완료되면 2단계 OTP 인증 기기 리스트에 등록된 기기가 표시됩니다.
+![userguide_07_20230330](https://static.toastoven.net/toast/user_guide/userguide_15_202303.png)
+
+- 등록 기준
+    - 최대 5개까지 등록 가능
+- 삭제 기준
+    - OTP 인증 기기가 2개 이상인 경우: OTP 인증 기기 삭제 가능
+    - OTP 인증 기기가 1개인 경우: OTP 인증 기기를 추가하거나 2단계 로그인 설정을 변경해야 삭제가 가능
+    
 ## 결제 수단 등록
 NHN Cloud 서비스를 이용하려면 결제 수단을 등록해야 합니다.
 단, 멤버로 초대된 조직 또는 프로젝트가 있다면 결제 수단 등록 없이 NHN Cloud 서비스를 이용할 수 있습니다.
