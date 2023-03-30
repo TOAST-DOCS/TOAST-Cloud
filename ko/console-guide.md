@@ -320,7 +320,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Infrastructure | Routing ADMIN | VPC, Subnet, Network Interface, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
 | Infrastructure | NAT Gateway ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
 | Infrastructure | Service Gateway ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
-| Infrastructure | NCS ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Infrastructure | NCS ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), Traffic mirroring 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR) 서비스 Read(읽기) |
@@ -399,7 +399,6 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Face Recognition | ADMIN | Face Recognition 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI Fashion | ADMIN | AI Fashion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  | 
 | OCR | ADMIN | OCR 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  | 
-| Vehicle Plate Recognizer | ADMIN | Vehicle Plate Recognizer 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  | 
 | Text to Speech | ADMIN | Text to Speech 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Speech to Text | ADMIN | Speech to Text 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Cheating Detection | ADMIN | Cheating Detection 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |

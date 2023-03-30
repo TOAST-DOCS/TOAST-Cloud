@@ -96,7 +96,6 @@ All users are provided with the same features, policy, stability and usability, 
 | AI Service | Face Recognition | Global |  |  |  |  |
 |  | AI Fashion | Regional | O | O | O | O | 
 |  | OCR | Global |  |  |  |  |
-|  | Vehicle Plate Recognizer | Global |  |  |  |  |
 |  | Text to Speech | Global |  |  |  |  |
 |  | Speech to Text | Global |  |  |  |  |
 |  | Cheating Detection | Regional | O |  |  |  |

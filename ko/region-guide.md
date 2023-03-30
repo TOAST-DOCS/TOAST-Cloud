@@ -105,7 +105,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | AI Service | Face Recognition | 글로벌 |  |  |  |  |
 |  | AI Fashion | 리전 | O | O | O | O |
 |  | OCR | 글로벌 |  |  |  |  |
-|  | Vehicle Plate Recognizer | 글로벌 |  |  |  |  |
 |  | Text to Speech | 글로벌 |  |  |  |  |
 |  | Speech to Text | 글로벌 |  |  |  |  |
 |  | Cheating Detection | 리전 | O |  |  |  |
