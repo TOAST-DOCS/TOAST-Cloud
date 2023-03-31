@@ -83,11 +83,7 @@ OTP 인증 설정을 차례대로 진행합니다.
 3. OTP 인증 앱 화면에 표시된 NHN Cloud 계정의 인증번호를 입력합니다.
 ![userguide_05_20230330](https://static.toastoven.net/toast/user_guide/userguide_13_202303.png)
 
-4. OTP 등록 기기 명을 입력합니다.
-    - 이름 입력 기준
-        - 한글, 영어, 일본어, 중국어, 스페이스, 숫자만 입력 가능
-        - 최대 10자
-
+4. OTP 등록 기기 명을 입력합니다. (한글, 영어, 일본어, 중국어, 스페이스, 숫자만 입력 가능 / 최대 10자)
 ![userguide_06_20230330](https://static.toastoven.net/toast/user_guide/userguide_14_202303.png)
 
 OTP 인증 설정이 완료되면 OTP 인증 기기 리스트에 등록된 기기가 표시됩니다.
