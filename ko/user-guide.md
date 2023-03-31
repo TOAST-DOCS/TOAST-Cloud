@@ -57,8 +57,8 @@ NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(N
 
 
 ### 로그인 보안 설정
-로그인 시 2단계 로그인 설정을 통해 로그인 보안 설정이 가능합니다. 
-지원하는 방법은 '이메일 인증, 휴대폰 인증, Google OTP 인증' 입니다. 
+로그인 보안 설정에서 2단계 로그인 설정이 가능합니다. 
+'이메일 인증, 휴대폰 인증, Google OTP 인증'을 지원합니다.
 
 #### 로그인 보안 설정 선택
 ![userguide_02_20230330](https://static.toastoven.net/toast/user_guide/userguide_10_202303.png)
@@ -84,12 +84,12 @@ OTP 인증 설정을 차례대로 진행합니다.
 ![userguide_05_20230330](https://static.toastoven.net/toast/user_guide/userguide_13_202303.png)
 
 4. OTP 등록 기기 명을 입력합니다.
-- 이름 입력 기준
-    - 한글, 영어, 일본어, 중국어, 스페이스, 숫자만 입력 가능
-    - 최대 10자
+    - 이름 입력 기준
+        - 한글, 영어, 일본어, 중국어, 스페이스, 숫자만 입력 가능
+        - 최대 10자
 ![userguide_06_20230330](https://static.toastoven.net/toast/user_guide/userguide_14_202303.png)
 
-OTP 인증 설정이 완료되면 2단계 OTP 인증 기기 리스트에 등록된 기기가 표시됩니다.
+OTP 인증 설정이 완료되면 OTP 인증 기기 리스트에 등록된 기기가 표시됩니다.
 ![userguide_07_20230330](https://static.toastoven.net/toast/user_guide/userguide_15_202303.png)
 
 - 등록 기준
