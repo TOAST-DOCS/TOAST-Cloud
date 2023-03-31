@@ -105,7 +105,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | AI Service | Face Recognition | グローバル |  |  |  |  |
 |  | AI Fashion | リージョン | O | O | O | O |
 |  | OCR | グローバル |  |  |  |  |
-|  | Vehicle Plate Recognizer | グローバル |  |  |  |  |
 |  | Text to Speech | グローバル |  |  |  |  |
 |  | Speech to text | グローバル |  |  |  |  |
 |  | Cheating Detection | リージョン | O |  |  |  |
