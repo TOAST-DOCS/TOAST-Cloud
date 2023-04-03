@@ -299,7 +299,6 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
-
 | Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Internet Gateway, Peering Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS) 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Load Balancer ADMIN | VPC, Subnet, Network Interface, Routing, Internet Gateway, Peering Gateway, , Security Group 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
