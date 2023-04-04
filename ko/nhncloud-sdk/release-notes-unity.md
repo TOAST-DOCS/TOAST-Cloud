@@ -4,7 +4,7 @@
 Download: [toast-sdk-unity-0.28.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.28.0/toast-sdk-unity-0.28.0.zip)
 
 ### 기능 개선
-* 안전성 개선
+* 안정성 개선
 
 ### plugin version
 

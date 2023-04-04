@@ -131,7 +131,7 @@ dependencies {
 
 ### MyCard
 
-- MyCard의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+- To use in-app purchase of MyCard, add dependency to build.gradle as below.
 
 ```groovy
 repositories {
@@ -210,9 +210,9 @@ To use a lower version of Android Gradle Plugin, see [Preparing your Gradle buil
 
 ### MyCard
 
-#### android:name 설정
+#### android:name Setting
 
-android:name을 정의하지 않은 경우 다음과 같이 추가합니다.
+Add android:name as follows if it is not defined.
 
 ```xml
 <application
@@ -222,7 +222,7 @@ android:name을 정의하지 않은 경우 다음과 같이 추가합니다.
 </application>
 ```
 
-android:name을 정의한 경우 [Application](https://developer.android.com/reference/android/app/Application) 클래스 대신 NhnCloudMyCardApplication 클래스를 상속합니다.
+When the android:name is defined, inherits the NhnCloudMyCardApplication class instead of the [Application](https://developer.android.com/reference/android/app/Application) class.
 
 
 ```xml
@@ -237,6 +237,17 @@ android:name을 정의한 경우 [Application](https://developer.android.com/ref
 class MyApplication extends NhnCloudMyCardApplication {
     ...
 }
+```
+
+#### Test Payment Mode (Option)
+
+Add 'test_mode' to perform payment test. If 'test_mode' is not set, the default value is false.
+
+```xml
+<application
+  ...>
+  <meta-data android:name="iap:test_mode" android:value="true | false"/>
+</application>
 ```
 
 ## Store Codes
@@ -807,7 +818,7 @@ String MYCARD
 * GALAXY_STORE<br>Uses Galaxy store in-app purchase. <br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Uses Amazon Appstore in-app purchase.<br>Constant Value: "AMAZON"
 * HUAWEI_APP_GALLERY<br>Uses Huawei App Gallery in-app purchase.<br>Constant Value: "HUAWEI"
-* MYCARD<br>MyCard 인앱 결제를 사용합니다.<br>Constant Value: "MYCARD"
+* MYCARD<br>Uses MyCard in-app purchase.<br>Constant Value: "MYCARD"
 
 ### IapPurchaseResult
 
