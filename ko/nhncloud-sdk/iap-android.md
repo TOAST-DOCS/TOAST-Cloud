@@ -146,7 +146,7 @@ dependencies {
 
 ## AndroidManifest 설정
 
-### ONE store 결제 화면 설정 (옵션)
+### ONE store 결제 화면 설정(옵션)
 
 ONE store는 전체 결제 화면과 팝업 결제 화면을 지원합니다.
 AndroidManifest.xml에 meta-data를 추가하여 전체 결제 화면("full") 또는 팝업 결제 화면("popup")을 선택할 수 있습니다.
@@ -212,7 +212,7 @@ Amazon Appstore에서는 'queries' 요소 대신 권한을 추가합니다.
 
 #### android:name 설정
 
-android:name을 정의하지 않았었다면 다음과 같이 추가합니다.
+android:name을 정의하지 않은 경우 다음과 같이 추가합니다.
 
 ```xml
 <application
@@ -222,7 +222,7 @@ android:name을 정의하지 않았었다면 다음과 같이 추가합니다.
 </application>
 ```
 
-android:name을 정의했었다면 [Application](https://developer.android.com/reference/android/app/Application) 클래스 대신 NhnCloudMyCardApplication 클래스를 상속합니다.
+android:name을 정의한 경우 [Application](https://developer.android.com/reference/android/app/Application) 클래스 대신 NhnCloudMyCardApplication 클래스를 상속합니다.
 
 
 ```xml
@@ -239,9 +239,9 @@ class MyApplication extends NhnCloudMyCardApplication {
 }
 ```
 
-#### 테스트 결제 모드 (옵션)
+#### 테스트 결제 모드(옵션)
 
-결제 테스트를 하려면 'test_mode'를 추가합니다. 'test_mode'를 설정하지 않으면 기본값은 false 입니다.
+결제 테스트를 하려면 'test_mode'를 추가합니다. 'test_mode'를 설정하지 않으면 기본값은 false입니다.
 
 ```xml
 <application

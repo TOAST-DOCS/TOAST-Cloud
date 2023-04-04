@@ -212,7 +212,7 @@ Amazon Appstoreでは'queries'要素の代わりに権限を追加します。
 
 #### android:name 설정
 
-android:name을 정의하지 않았었다면 다음과 같이 추가합니다.
+android:name을 정의하지 않은 경우 다음과 같이 추가합니다.
 
 ```xml
 <application
@@ -222,7 +222,7 @@ android:name을 정의하지 않았었다면 다음과 같이 추가합니다.
 </application>
 ```
 
-android:name을 정의했었다면 [Application](https://developer.android.com/reference/android/app/Application) 클래스 대신 NhnCloudMyCardApplication 클래스를 상속합니다.
+android:name을 정의한 경우 [Application](https://developer.android.com/reference/android/app/Application) 클래스 대신 NhnCloudMyCardApplication 클래스를 상속합니다.
 
 
 ```xml
