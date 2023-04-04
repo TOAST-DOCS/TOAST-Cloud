@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.4.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.5.0'
     ...
 }
 ```
@@ -44,10 +44,10 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.4.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.5.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.4.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.5.0'
     ...
 }
 ```
@@ -62,7 +62,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.4.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.5.0'
     ...
 }
 ```
@@ -79,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.4.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.5.0'
     ...
 }
 ```
@@ -122,12 +122,27 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.4.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.5.0'
     ...
 }
 ```
 
 > Huawei App Galleryアプリ内決済はAndroid 4.4 (APIレベル19)以上で動作します。
+
+### MyCard
+
+- MyCard의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.5.0'
+    ...
+}
+```
 
 ## AndroidManifest設定
 
@@ -193,6 +208,37 @@ Amazon Appstoreでは'queries'要素の代わりに権限を追加します。
 
 > <span style="color:#e11d21">**注意!)**</span> QUERY_ALL_PACKAGES権限をGoogle Play Storeに適用しないように注意してください。
 
+### MyCard
+
+#### android:name 설정
+
+android:name을 정의하지 않은 경우 다음과 같이 추가합니다.
+
+```xml
+<application
+  android:name="com.nhncloud.android.iap.mycard.NhnCloudMyCardApplication"
+  ...>
+  ...
+</application>
+```
+
+android:name을 정의한 경우 [Application](https://developer.android.com/reference/android/app/Application) 클래스 대신 NhnCloudMyCardApplication 클래스를 상속합니다.
+
+
+```xml
+<application
+  android:name=".MyApplication"
+  ...>
+  ...
+</application>
+```
+
+```java
+class MyApplication extends NhnCloudMyCardApplication {
+    ...
+}
+```
+
 ## ストアコード
 
 | ストア      | コード      |
@@ -202,6 +248,7 @@ Amazon Appstoreでは'queries'要素の代わりに権限を追加します。
 | Galaxy store | "GALAXY" |
 | Amazon Appstore | "AMAZON" |
 | Huawei App Gallery | "HUAWEI" |
+| MyCard | "MYCARD" |
 
 > [参考]ストアコードは[IapStoreCode](./iap-android/#iapstorecode)クラスに定義されています。
 
@@ -751,6 +798,7 @@ String ONE_STORE
 String GALAXY_STORE
 String AMAZON_APP_STORE
 String HUAWEI_APP_GALLERY
+String MYCARD
 ```
 
 * GOOGLE_PLAY_STORE<br>Google Playストアアプリ内決済を使用します。<br>Constant Value: "GG"
@@ -758,6 +806,7 @@ String HUAWEI_APP_GALLERY
 * GALAXY_STORE<br>Galaxy storeアプリ内決済を使用します。<br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Amazon Appstoreアプリ内決済を使用します。<br>Constant Value: "AMAZON"
 * HUAWEI_APP_GALLERY<br>Huawei App Galleryアプリ内決済を使用します。<br>Constant Value: "HUAWEI"
+* MYCARD<br>MyCard 인앱 결제를 사용합니다.<br>Constant Value: "MYCARD"
 
 ### IapPurchaseResult
 
