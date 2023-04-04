@@ -239,6 +239,17 @@ class MyApplication extends NhnCloudMyCardApplication {
 }
 ```
 
+#### 테스트 결제 모드(옵션)
+
+결제 테스트를 하려면 'test_mode'를 추가합니다. 'test_mode'를 설정하지 않으면 기본값은 false입니다.
+
+```xml
+<application
+  ...>
+  <meta-data android:name="iap:test_mode" android:value="true | false"/>
+</application>
+```
+
 ## ストアコード
 
 | ストア      | コード      |
