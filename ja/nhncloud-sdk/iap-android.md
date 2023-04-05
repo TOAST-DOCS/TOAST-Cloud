@@ -131,7 +131,7 @@ dependencies {
 
 ### MyCard
 
-- MyCard의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.
+- MyCardのアプリ内決済を使用するには 以下のようにbuild.gradleに依存関係を追加します。
 
 ```groovy
 repositories {
@@ -210,9 +210,9 @@ Amazon Appstoreでは'queries'要素の代わりに権限を追加します。
 
 ### MyCard
 
-#### android:name 설정
+#### android:name設定
 
-android:name을 정의하지 않은 경우 다음과 같이 추가합니다.
+android:nameを定義していない場合は次のように追加します。
 
 ```xml
 <application
@@ -222,7 +222,7 @@ android:name을 정의하지 않은 경우 다음과 같이 추가합니다.
 </application>
 ```
 
-android:name을 정의한 경우 [Application](https://developer.android.com/reference/android/app/Application) 클래스 대신 NhnCloudMyCardApplication 클래스를 상속합니다.
+android:nameを定義している場合は[Application](https://developer.android.com/reference/android/app/Application)クラスの代わりにNhnCloudMyCardApplicationクラスを継承します。
 
 
 ```xml
@@ -239,9 +239,9 @@ class MyApplication extends NhnCloudMyCardApplication {
 }
 ```
 
-#### 테스트 결제 모드(옵션)
+#### テスト決済モード(オプション)
 
-결제 테스트를 하려면 'test_mode'를 추가합니다. 'test_mode'를 설정하지 않으면 기본값은 false입니다.
+決済テストを行うには'test_mode'を追加します。'test_mode'を設定していない場合のデフォルト値はfalseです。
 
 ```xml
 <application
@@ -817,7 +817,7 @@ String MYCARD
 * GALAXY_STORE<br>Galaxy storeアプリ内決済を使用します。<br>Constant Value: "GALAXY"
 * AMAZON_APP_STORE<br>Amazon Appstoreアプリ内決済を使用します。<br>Constant Value: "AMAZON"
 * HUAWEI_APP_GALLERY<br>Huawei App Galleryアプリ内決済を使用します。<br>Constant Value: "HUAWEI"
-* MYCARD<br>MyCard 인앱 결제를 사용합니다.<br>Constant Value: "MYCARD"
+* MYCARD<br>MyCardアプリ内決済を使用します。<br>Constant Value: "MYCARD"
 
 ### IapPurchaseResult
 

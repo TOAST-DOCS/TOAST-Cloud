@@ -4,23 +4,23 @@
 
 ### NHN Cloud SDK
 
-#### 기능 개선
+#### 機能改善
 
-* 안정성 개선
+* 安定性改善
 
 ### NHN Cloud IAP
 
-#### 기능 추가
+#### 機能追加
 
-* MyCard IAP 추가
+* MyCard IAP追加
 
 ## 1.4.3 (2023. 03. 24.)
 
 ### NHN Cloud OCR
 
-#### 버그 수정
+#### バグ修正
 
-* NoClassDefFoundError 이슈 수정
+* NoClassDefFoundErrorイシューを修正
 
 ## 1.4.2 (2023. 02. 28.)
 
