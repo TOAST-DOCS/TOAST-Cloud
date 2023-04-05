@@ -1,5 +1,16 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Unity
 
+## 0.28.0 (2023. 4. 5.)
+Download: [toast-sdk-unity-0.28.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.28.0/toast-sdk-unity-0.28.0.zip)
+
+### 기능 개선
+* 안정성 개선
+
+### plugin version
+
+* Android: 1.5.0
+* iOS: 1.3.0
+
 ## 0.27.4 (2023. 2. 28.)
 Download : [toast-sdk-unity-0.27.4.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.27.4/toast-sdk-unity-0.27.4.zip)
 

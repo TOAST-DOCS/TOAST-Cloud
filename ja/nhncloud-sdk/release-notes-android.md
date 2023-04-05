@@ -1,5 +1,27 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
+## 1.5.0 (2023. 04. 05.)
+
+### NHN Cloud SDK
+
+#### 機能改善
+
+* 安定性改善
+
+### NHN Cloud IAP
+
+#### 機能追加
+
+* MyCard IAP追加
+
+## 1.4.3 (2023. 03. 24.)
+
+### NHN Cloud OCR
+
+#### バグ修正
+
+* NoClassDefFoundErrorイシューを修正
+
 ## 1.4.2 (2023. 02. 28.)
 
 ### NHN Cloud OCR
