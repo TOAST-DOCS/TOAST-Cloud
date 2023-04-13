@@ -70,7 +70,7 @@ NHN Cloud会員は、会員登録時に選択した国によって韓国会員(N
 OTP認証設定を順番に進めます。 
 
 1. OTP認証アプリをインストールします。コンソール画面に表示されたQRコードをスキャンしてOTP認証アプリダウンロードリンクに移動できます。
-![userguide_03_20230330]([https://static.toastoven.net/toast/user_guide/userguide_11_202303_ja.png)
+![userguide_03_20230330](https://static.toastoven.net/toast/user_guide/userguide_11_202303_ja.png)
 
 2. OTP認証アプリでコンソール画面に表示されたQRコードをスキャンするか、設定キーを入力してNHN Cloudアカウントを追加します。
 ![userguide_04_20230330](https://static.toastoven.net/toast/user_guide/userguide_12_202303_ja.png)
