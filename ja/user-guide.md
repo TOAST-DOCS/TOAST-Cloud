@@ -56,7 +56,7 @@ NHN Cloud会員は、会員登録時に選択した国によって韓国会員(N
 メール認証、携帯電話認証、Google OTP認証をサポートします。 
 
 #### ログインセキュリティ設定の選択
-![userguide_02_20230330](<a href="[https://static.toastoven.net/toast/user_guide/userguide_10_202303_ja.png]
+![userguide_02_20230330](https://static.toastoven.net/toast/user_guide/userguide_10_202303_ja.png)
 **マイページ**にアクセスした後、**ログインセキュリティ設定**タブをクリックします。
 使用中のログインセキュリティ設定を確認したり**変更**をクリックして設定を変更できます。
 
@@ -70,19 +70,19 @@ NHN Cloud会員は、会員登録時に選択した国によって韓国会員(N
 OTP認証設定を順番に進めます。 
 
 1. OTP認証アプリをインストールします。コンソール画面に表示されたQRコードをスキャンしてOTP認証アプリダウンロードリンクに移動できます。
-![userguide_03_20230330](<a href="[https://static.toastoven.net/toast/user_guide/userguide_11_202303_ja.png]
+![userguide_03_20230330]([https://static.toastoven.net/toast/user_guide/userguide_11_202303_ja.png)
 
 2. OTP認証アプリでコンソール画面に表示されたQRコードをスキャンするか、設定キーを入力してNHN Cloudアカウントを追加します。
-![userguide_04_20230330](<a href="[https://static.toastoven.net/toast/user_guide/userguide_12_202303_ja.png]
+![userguide_04_20230330](https://static.toastoven.net/toast/user_guide/userguide_12_202303_ja.png)
 
 3. OTP認証アプリ画面に表示されたNHN CloudアカウントのOTP認証番号を入力します。
-![userguide_05_20230330](<a href="[https://static.toastoven.net/toast/user_guide/userguide_13_202303_ja.png]
+![userguide_05_20230330](https://static.toastoven.net/toast/user_guide/userguide_13_202303_ja.png)
 
 4. OTP登録端末名を入力します。最大10文字以内の文字(ハングル、英語、日本語、中国語)、空白、数字のみ入力できます。
-![userguide_06_20230330](<a href="[https://static.toastoven.net/toast/user_guide/userguide_14_202303_ja.png]
+![userguide_06_20230330](https://static.toastoven.net/toast/user_guide/userguide_14_202303_ja.png)
 
 OTP認証設定が完了すると**OTP認証端末**リストに登録された端末が表示されます。
-![userguide_07_20230330](<a href="[https://static.toastoven.net/toast/user_guide/userguide_15_202303_ja.png]
+![userguide_07_20230330](https://static.toastoven.net/toast/user_guide/userguide_15_202303_ja.png)
 
 - 登録基準
     - 最大5個まで登録可能
