@@ -84,6 +84,45 @@ Following are required for each type of membership:
 #### Joining Completed 
 After you're done with joining, you're automatically signed in. Now, NHN Cloud service is available on its website and console. 
 
+### Login Security Settings
+You can set up 2-level login in Login Security Settings.
+Email verification, mobile verification, and Google OTP are available. 
+
+#### Select Login Security Settings
+![userguide_02_20230330](https://static.toastoven.net/toast/user_guide/userguide_10_202303_en.png)
+Go to **My Page** and click **Login Security Settings**.
+You can check your current login security settings or click **Change** to change the settings.
+
+2-Level Login Setup
+    - Turn off 2-level login setup: The initial state where 2-level login security settings is not in use
+    - Log in after verifying your email or phone number: Verification with a verification code sent to the email or phone number in the member information when logging in
+    - Log in after Google OTP verification: Verification with Google OTP app when logging in
+
+#### Log in after Google OTP verification
+Select **Log in after Google OTP verification** in 2-Level Login Setup and click **Save**.
+Go through the following steps to set up OTP verification. 
+
+1. Install the OTP verification app. Scan the QR code on the console screen and go to the link to download the OTP authentication app.
+![userguide_03_20230330](https://static.toastoven.net/toast/user_guide/userguide_11_202303_en.png)
+
+2. In the OTP app, scan the QR code on the console screen or enter the setup key to add your NHN Cloud account.
+![userguide_05_20230330](https://static.toastoven.net/toast/user_guide/userguide_12_202303_en.png)
+
+3. Enter the OTP verification code of your NHN Cloud account displayed on the OTP screen.
+![userguide_06_20230330](https://static.toastoven.net/toast/user_guide/userguide_13_202303_en.png)
+
+4. Enter a device name for OTP registration. Up to 10 characters (Korean, English, Japanese, and Chinese), spaces, and numbers are allowed.
+![userguide_06_20230330](https://static.toastoven.net/toast/user_guide/userguide_14_202303_en.png)
+
+When OTP verification setup is complete, you'll see the registered devices in the **OTP Verification Device** list.
+![userguide_07_20230330](https://static.toastoven.net/toast/user_guide/userguide_15_202303_en.png)
+
+- Registration Criteria
+    - Up to 5 devices can be registered
+- Deletion Criteria
+    - If you have more than one OTP verification device: You can delete OTP verification devices
+    - If you have one OTP verification device: You must add the OTP verification device or change the 2-level login settings to delete the device
+
 ## Register Payment Methods
 It is required to register a payment method to use NHN Cloud Service. 
 However, for members of existing organizations/projects, no additional registration is required to use NHN Cloud Service.
