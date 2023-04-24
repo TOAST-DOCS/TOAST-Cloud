@@ -120,7 +120,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Dev Tools | Pipeline | Regional | O | O |  |  |
 |  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
-|  | Support Plan | Global |  |  |  |  |
+|  | Support Plan |  Regional | O | O |  | O |
 |  | Service Monitoring | Global |  |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
 | Workplace Dooray! | Project | Global |  |  |  |  |
