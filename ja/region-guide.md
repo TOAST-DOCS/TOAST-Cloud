@@ -129,6 +129,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Dev Tools | Pipeline | リージョン | O | O |  |  |
 |  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
+|  | Support Plan | リージョン | O | O |  | O |
 |  | Service Monitoring | グローバル |  |  |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
 | Bill | eTax | リージョン | O |  |  |  |
