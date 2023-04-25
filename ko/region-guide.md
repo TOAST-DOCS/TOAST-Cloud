@@ -129,7 +129,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Dev Tools | Pipeline | 리전 | O | O |  |  |
 |  | Deploy | 글로벌 |  |  |  |  |
 | Management | Managed | 리전 | O | O |  |  |
-|  | Support Plan | 리전 | O | O |  | O |
+|  | Support Plan | 리전 | O | O |  |  |
 |  | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
 | Bill | eTax | 리전 | O |  |  |  |
