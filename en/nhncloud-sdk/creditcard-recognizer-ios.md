@@ -37,7 +37,22 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### Download binaries and apply to NHN Cloud SDK
+### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
+
+* XCode에서 [File] > [Add Packages...] 메뉴를 선택합니다.
+* Package URL에 'https://github.com/nhn/nhncloud.ios.sdk'를 넣고 Add Package 버튼을 선택합니다.
+* NHNCloudOCR을 선택합니다.
+
+![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
+
+#### 프로젝트 설정
+
+* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+
+### 3. Download binaries and apply to NHN Cloud SDK
 
 #### Set up Framework
 

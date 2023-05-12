@@ -39,7 +39,21 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Carthage를 사용해 NHN Cloud SDK 적용
+### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
+
+* XCode에서 [File] > [Add Packages...] 메뉴를 선택합니다.
+* Package URL에 'https://github.com/nhn/nhncloud.ios.sdk'를 넣고 Add Package 버튼을 선택합니다.
+* 추가를 원하는 Library를 선택합니다
+
+![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
+
+#### 프로젝트 설정
+
+* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+### 3. Carthage를 사용해 NHN Cloud SDK 적용
 
 * Cartfile을 생성하여 NHN Cloud SDK를 추가합니다.
 
@@ -63,7 +77,7 @@ binary "https://nh.nu/nhncloudsdk"
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
 > 서비스별로 필요한 Framework는 [NHN Cloud SDK의 구성](./getting-started-ios/#toast-sdk)에서 확인할 수 있습니다.
 
-### 3. 바이너리를 다운로드하여 NHN Cloud SDK 적용
+### 4. 바이너리를 다운로드하여 NHN Cloud SDK 적용
 
 #### 프레임워크 설정
 
@@ -93,7 +107,7 @@ binary "https://nh.nu/nhncloudsdk"
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
-* **CrashReporter.framewor**를 직접 다운로드하거나 빌드한 경우에는 **Build Setting**의 **Enable Bitcode**의 값을 **NO**로 변경해야 합니다.
+* **CrashReporter.framework**를 직접 다운로드하거나 빌드한 경우에는 **Build Setting**의 **Enable Bitcode**의 값을 **NO**로 변경해야 합니다.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
