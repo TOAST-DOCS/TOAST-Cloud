@@ -1,5 +1,10 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.4.0 (2023. 05. 30.)
+### 공통
+#### 개선 사항
+* SPM(Swift Package Manager) 배포방식 추가
+
 ## 1.3.0 (2023. 02. 28.)
 ### 共通
 #### 改善事項
