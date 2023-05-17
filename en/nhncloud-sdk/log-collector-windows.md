@@ -198,5 +198,5 @@ To interpret crashes occurred in NHN Cloud Windows SDK, a symbol file must be cr
 dump_syms sample.pdb > sample.sym
 ```
 
-* Then, compress sample.sym with zip and [Upload to Console Server](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#_21)
+* Then, compress sample.sym with zip and [Upload to Console Server](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#symbol-file)
     * The version for console uploads must be the same as the version for setProjectVersion.
