@@ -1,5 +1,14 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.5.1 (2023. 05. 30.)
+
+### NHN Cloud IAP
+
+#### 기능 추가
+
+* 결제 상세정보 전송 기능 추가 
+    * IAP Console의 Transaction 탭에서 결제 상세정보를 조회할 수 있습니다.
+
 ## 1.5.0 (April 5, 2023)
 
 ### NHN Cloud SDK
