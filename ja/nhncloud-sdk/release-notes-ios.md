@@ -5,6 +5,17 @@
 #### 개선 사항
 * SPM(Swift Package Manager) 배포방식 추가
 
+### NHN Cloud IAP
+#### 기능 추가
+* 결제 상세정보 전송 기능 추가 
+    * IAP Console의 Transaction 탭에서 결제 상세정보를 조회할 수 있습니다.
+
+## 1.3.1 (2023. 05. 19.) - Hotfix
+### NHN Cloud Push
+#### 개선 사항
+* 토큰 등록 기능 개선
+    * 토큰 등록 시 앱의 알림 설정이 비활성화되어 있을 경우 다시 `NHNCloudPushErrorPermissionDenied`를 반환합니다. 
+
 ## 1.3.0 (2023. 02. 28.)
 ### 共通
 #### 改善事項
