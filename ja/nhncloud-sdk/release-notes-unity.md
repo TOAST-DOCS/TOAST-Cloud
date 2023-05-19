@@ -1,7 +1,7 @@
 ## NHN Cloud > SDK 使用ガイド > リリースノート > Unity
 
-## 0.28.1 (2023. 5. 30.)
-Download: [toast-sdk-unity-0.28.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.28.1/toast-sdk-unity-0.28.1.zip)
+## 0.28.2 (2023. 5. 30.)
+Download: [toast-sdk-unity-0.28.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/unity/0.28.2/toast-sdk-unity-0.28.2.zip)
 
 ### plugin version
 
