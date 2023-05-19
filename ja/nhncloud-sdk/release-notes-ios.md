@@ -4,7 +4,7 @@
 ### NHN Cloud Push
 #### 개선 사항
 * 토큰 등록 기능 개선
-    * 토큰 등록 시 앱의 알림 설정이 비활성화되어 있을 경우 다시 `NHNCloudPushErrorPermissionDenied` 오류를 반환합니다. 
+    * 토큰 등록 시 앱의 알림 설정이 비활성화되어 있을 경우 다시 `NHNCloudPushErrorPermissionDenied`를 반환합니다.
 
 ## 1.3.0 (2023. 02. 28.)
 ### 共通
