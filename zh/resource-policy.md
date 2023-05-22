@@ -55,6 +55,23 @@ Resource usage is calculated for each project, and the policy is applied by the 
 |Worker Node Group	 | Per cluster |3 (including default worker node group)|
 |Worker Node Count	 | Per worker node group  |10|
 
+### Resource Provision Policy for NHN Container Service(NCS) 
+Resource usage is calculated for each project, and the policy is applied by the region. 
+
+|Resources | Criteria | Capacity | 
+|----|----|----|
+| Workload	| Per project |제한 없음|
+| Task | Per workload | 100 | 
+| Template | Per project | 1,000 | 
+| Container | Per template | 10 |
+| CPU | Per template | 16vCore | 
+| CPU | Per project | 24vCore | 
+| Memory | Per template |32,768 MiB |
+| Memory | Per project |	49,152 MiB |
+| GPU | Per template |  7Core | 
+| GPU | Per project | 7Core |
+
+
 ### Resource Provision Policy for DNS Plus Service 
 Resource usage is calculated for each project.
 
