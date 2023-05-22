@@ -60,7 +60,7 @@ Resource usage is calculated for each project, and the policy is applied by the 
 
 |Resources | Criteria | Capacity | 
 |----|----|----|
-| Workload	| Per project |제한 없음|
+| Workload	| Per project |No limit|
 | Task | Per workload | 100 | 
 | Template | Per project | 1,000 | 
 | Container | Per template | 10 |
