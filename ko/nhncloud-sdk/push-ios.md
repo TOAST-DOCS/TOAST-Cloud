@@ -35,8 +35,8 @@ end
 
 ### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
 
-* XCode에서 [File] > [Add Packages...] 메뉴를 선택합니다.
-* Package URL에 'https://github.com/nhn/nhncloud.ios.sdk'를 넣고 Add Package 버튼을 선택합니다.
+* XCode에서 **File > Add Packages...** 메뉴를 선택합니다.
+* Package URL에 'https://github.com/nhn/nhncloud.ios.sdk'를 넣고 **Add Package** 버튼을 선택합니다.
 * NHNCloudPush를 선택합니다.
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
