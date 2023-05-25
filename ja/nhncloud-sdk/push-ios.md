@@ -33,7 +33,21 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. バイナリーをダウンロードしてNHN Cloud SDKに適用
+### 2. Swift Package Managerを使用してNHN Cloud SDK適用
+
+* XCodeで**File > Add Packages...**メニューを選択します。
+* Package URLに'https://github.com/nhn/nhncloud.ios.sdk'を入れて**Add Package**ボタンを選択します。
+* NHNCloudPushを選択します。
+
+![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
+
+#### プロジェクト設定
+
+* **Build Settings**の **Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+### 3. バイナリーをダウンロードしてNHN Cloud SDKに適用
 
 #### フレームワーク設定
 
@@ -208,7 +222,7 @@ options.soundEnabled = YES;         // 通知音使用設定(default : YES)
 ## トークン登録
 
 * 発行されたトークン情報をNHN Cloudクラウドサーバーに登録します。この時、受信同意(NHNCloudPushAgreement)をパラメーターで伝達します。
-* 初めて実行される際、ユーザーに通知を許可するかどうかを返信するようリクエストします。ユーザーからの通知許諾が得られなかった場合、トークン登録は失敗します。
+* 初めて実行される際、ユーザーに通知を許可するかどうかを返信するようリクエストし、トークンを登録します。
 * 初回登録時にユーザーIDが設定されていない場合は、デバイス識別子を使用して登録します。
 
 ### 受信同意設定
