@@ -16,7 +16,7 @@
 
 ## 1.3.1 (2023. 05. 19.) - Hotfix
 ### NHN Cloud Push
-#### 개선 사항
+#### Improved
 * Improved the token registration feature
     * When registering a token, if the notification setting of the app is disabled, `NHNCloudPushErrorPermissionDenied` is returned again.
     

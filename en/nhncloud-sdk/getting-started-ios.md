@@ -39,7 +39,7 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apry NHN Cloud SDK with Swift Package Manager
+### 2. Apply NHN Cloud SDK with Swift Package Manager
 
 * Go to **File > Add Packages...** from XCode.
 * For the Package URL, enter 'https://github.com/nhn/nhncloud.ios.sdk' and select **Add Package**.
