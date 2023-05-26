@@ -33,17 +33,17 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
+### 2. Swift Package Managerを使用してNHN Cloud SDK適用
 
-* XCode에서 **File > Add Packages...** 메뉴를 선택합니다.
-* Package URL에 'https://github.com/nhn/nhncloud.ios.sdk'를 넣고 **Add Package** 버튼을 선택합니다.
-* NHNCloudPush를 선택합니다.
+* XCodeで**File > Add Packages...**メニューを選択します。
+* Package URLに'https://github.com/nhn/nhncloud.ios.sdk'を入れて**Add Package**ボタンを選択します。
+* NHNCloudPushを選択します。
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
-#### 프로젝트 설정
+#### プロジェクト設定
 
-* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+* **Build Settings**の **Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 

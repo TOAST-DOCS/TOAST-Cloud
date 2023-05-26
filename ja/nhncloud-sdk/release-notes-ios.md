@@ -1,24 +1,24 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
 ## 1.4.0 (2023. 05. 30.)
-### 공통
-#### 개선 사항
-* SPM(swift package manager) 배포 방식 추가
+### 共通
+#### 改善事項
+* SPM(swift package manager)配布方式を追加
 
 ### NHN Cloud IAP
-#### 기능 추가
-* 결제 상세정보 전송 기능 추가 
-    * IAP 콘솔의 Transaction 탭에서 결제 상세정보를 조회할 수 있습니다.
+#### 機能追加
+* 決済詳細情報送信機能を追加 
+    * IAPコンソールのTransactionタブで決済詳細情報を照会できます。
 
 #### SymbolUploader(v0.0.2)
-* run script 개선 
-    * Cocoapods, SPM 대응 추가
+* run script改善 
+    * Cocoapods, SPM対応追加
     
 ## 1.3.1 (2023. 05. 19.) - Hotfix
 ### NHN Cloud Push
-#### 개선 사항
-* 토큰 등록 기능 개선
-    * 토큰 등록 시 앱의 알림 설정이 비활성화되어 있을 경우 다시 `NHNCloudPushErrorPermissionDenied`를 반환합니다. 
+#### 改善事項
+* トークン登録機能改善
+    * トークン登録時にアプリの通知設定が無効になっている場合、再度`NHNCloudPushErrorPermissionDenied`を返します。
 
 ## 1.3.0 (2023. 02. 28.)
 ### 共通

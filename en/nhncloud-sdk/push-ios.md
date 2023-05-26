@@ -33,31 +33,30 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
+### 2. Apply NHN Cloud SDK with Swift Package Manager
 
-* XCode에서 **File > Add Packages...** 메뉴를 선택합니다.
-* Package URL에 'https://github.com/nhn/nhncloud.ios.sdk'를 넣고 **Add Package** 버튼을 선택합니다.
-* NHNCloudPush를 선택합니다.
+* Go to **File > Add Packages...** from XCode.
+* For the Package URL, enter 'https://github.com/nhn/nhncloud.ios.sdk' and select **Add Package**.
+* Select NHNCloudPush.
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
-#### 프로젝트 설정
+#### Set up Project
 
-* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+* Add **-lc++** and **-ObjC** entries to **Other Linker Flags** in **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
-
 ### 3. Apply NHN Cloud SDK by Downloading Binaries
 
-#### Frameworks Setup
+#### Set up Framework
 
 * You can download the full iOS SDK from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud.
 * Add **NHNCloudPush.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, UserNotifications.framework** to your Xcode Project.
 * UserNotifications.framework can be added in the following way.
 ![linked_usernotifications_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications_202206.png)
 
-#### Project Settings
+#### Set up Project
 
 * Add **-lc++** and **-ObjC** items to **Other Linker Flags** in **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
@@ -224,7 +223,7 @@ options.soundEnabled = YES;         // Set the use of notification sound (defaul
 ## Token Registration
 
 * Register the issued token information to the NHN Cloud server. At this time,  pass whether or not to agree to receive the push (NHNCloudPushAgreement) as a parameter.
-* If this is the initial execution, request the user for permission to allow notifications and register the token.
+* If this is the initial execution, request the user for permission to allow notifications. If the permission to allow notifications is not acquired, token registration fails.
 * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
 
 ### Agreement Setting

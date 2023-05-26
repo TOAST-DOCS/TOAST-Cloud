@@ -30,31 +30,30 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
+### 2. Apply NHN Cloud SDK with Swift Package Manager
 
-* XCode에서 **File > Add Packages...** 메뉴를 선택합니다.
-* Package URL에 'https://github.com/nhn/nhncloud.ios.sdk'를 넣고 **Add Package** 버튼을 선택합니다.
-* NHNCloudLogger를 선택합니다.
+* Go to **File > Add Packages...** from XCode.
+* For the Package URL, enter 'https://github.com/nhn/nhncloud.ios.sdk' and select **Add Package**.
+* Select NHNCloudLogger.
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
-#### 프로젝트 설정
+#### Set up Project
 
-* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+* Add **-lc++** and **-ObjC** entries to **Other Linker Flags** in **Build Settings**
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
+### 3. Apply NHN Cloud SDK by Downloading Binaries
 
-### 3. Apply NHN Cloud SDK with Binary Downloads
-
-#### Link Frameworks
+#### Set up Framework
 
 * The entire iOS SDK can be downloaded from [Downloads](../../../Download/#toast-sdk) of NHN Cloud.
 * Add **NHNCloudLogger.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework** to the Xcode Project.
 * To enable Crash Report of NHN Cloud Logger, CrashReporter.framework which is distributed as well, must be added to the project.
 ![linked_frameworks_logger](https://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger_202206.png)
 
-#### Project Settings
+#### Set up Project
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** at **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
