@@ -1,5 +1,14 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.5.1 (May 30, 2023)
+
+### NHN Cloud IAP
+
+#### Added
+
+* Added a feature to send payment details
+    * You can view payment details on the Transaction tab in the IAP console.
+
 ## 1.5.0 (April 5, 2023)
 
 ### NHN Cloud SDK
