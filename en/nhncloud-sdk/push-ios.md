@@ -33,16 +33,30 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apply NHN Cloud SDK by Downloading Binaries
+### 2. Apply NHN Cloud SDK with Swift Package Manager
 
-#### Frameworks Setup
+* Go to **File > Add Packages...** from XCode.
+* For the Package URL, enter 'https://github.com/nhn/nhncloud.ios.sdk' and select **Add Package**.
+* Select NHNCloudPush.
+
+![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
+
+#### Set up Project
+
+* Add **-lc++** and **-ObjC** entries to **Other Linker Flags** in **Build Settings**.
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+### 3. Apply NHN Cloud SDK by Downloading Binaries
+
+#### Set up Framework
 
 * You can download the full iOS SDK from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud.
 * Add **NHNCloudPush.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, UserNotifications.framework** to your Xcode Project.
 * UserNotifications.framework can be added in the following way.
 ![linked_usernotifications_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/overview_link_frameworks_UserNotifications_202206.png)
 
-#### Project Settings
+#### Set up Project
 
 * Add **-lc++** and **-ObjC** items to **Other Linker Flags** in **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
