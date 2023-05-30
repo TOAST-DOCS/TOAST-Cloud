@@ -30,7 +30,21 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. 바이너리를 다운로드하여 NHN Cloud SDK 적용
+### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
+
+* XCode에서 **File > Add Packages...** 메뉴를 선택합니다.
+* Package URL에 'https://github.com/nhn/nhncloud.ios.sdk'를 넣고 **Add Package** 버튼을 선택합니다.
+* NHNCloudLogger를 선택합니다.
+
+![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
+
+#### 프로젝트 설정
+
+* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+### 3. 바이너리를 다운로드하여 NHN Cloud SDK 적용
 
 #### 프레임워크 설정
 
@@ -45,7 +59,7 @@ end
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
-* **CrashReporter.framewor**를 직접 다운로드하거나 빌드한 경우에는 **Build Setting**의 **Enable Bitcode**의 값을 **NO**로 변경해야 합니다.
+* **CrashReporter.framework**를 직접 다운로드하거나 빌드한 경우에는 **Build Setting**의 **Enable Bitcode**의 값을 **NO**로 변경해야 합니다.
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.

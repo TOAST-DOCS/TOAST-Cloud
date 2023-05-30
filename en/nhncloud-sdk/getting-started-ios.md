@@ -39,7 +39,21 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Apply NHN Cloud SDK with Carthage
+### 2. Apply NHN Cloud SDK with Swift Package Manager
+
+* Go to **File > Add Packages...** from XCode.
+* For the Package URL, enter 'https://github.com/nhn/nhncloud.ios.sdk' and select **Add Package**.
+* Select a library you want to add.
+
+![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
+
+#### Set up Project
+
+* Add **-lc++** and **-ObjC** entries to **Other Linker Flags** in **Build Settings**.
+    * **Project Target > Build Settings > Linking > Other Linker Flags**
+![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+### 3. Apply NHN Cloud SDK with Carthage
 
 * Create a Cartfile and add NHN Cloud SDK.
 
@@ -63,7 +77,7 @@ binary "https://nh.nu/nhncloudsdk"
 > To use desired features among the services selectively, you need to choose only the required frameworks per service and add them to the project.
 > For details on required frameworks per service, see [NHN Cloud SDK Components](./getting-started-ios/#toast-sdk).
 
-### 3. Apply NHN Cloud SDK by Downloading Binaries
+### 4. Apply NHN Cloud SDK by Downloading Binaries
 
 #### Frameworks Setup
 
