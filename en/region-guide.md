@@ -123,16 +123,16 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Support Plan |  Regional | O | O |  |  |
 |  | Service Monitoring | Global |  |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
-| Workplace Dooray! | Project | Global |  |  |  |  |
+| Dooray! | Project | Global |  |  |  |  |
 |  | Messenger | Global |  |  |  |  |
 |  | Mail | Global |  |  |  |  |
 |  | Calendar | Global |  |  |  |  |
 |  | Drive | Global |  |  |  |  |
 |  | Contacts | Global |  |  |  |  |
 |  | Wiki | Global |  |  |  |  |
-| Workplace \| ERP | Human resources | Regional | O |  |  |  |
+| Dooray! \| ERP | Human resources | Regional | O |  |  |  |
 |  | Finance | Regional | O |  |  |  |
-| Workplace\| Groupware | Communication Board | Regional | O |  |  |  |
+| Dooray! \| Groupware | Communication Board | Regional | O |  |  |  |
 |  | Workflow | Regional | O |  |  |  |
 | Contact Center | Omni Contact | Regional | O |  |  |  |
 |  | Mobile Contact | Regional | O |  |  |  |
