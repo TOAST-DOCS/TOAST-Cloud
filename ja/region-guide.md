@@ -140,9 +140,9 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Drive | グローバル |  |  |  |  |
 |  | Contacts | グローバル |  |  |  |  |
 |  | ウィキ | グローバル |  |  |  |  |
-| Workplace \| ERP | Human resources | リージョン | O |  |  |  |
+| Dooray! \| ERP | Human resources | リージョン | O |  |  |  |
 |  | Finance | リージョン | O |  |  |  |
-| Workplace\| Groupware | Communication Board | リージョン | O |  |  |  |
+| Dooray! \| Groupware | Communication Board | リージョン | O |  |  |  |
 |  | Workflow | リージョン | O |  |  |  |
 | Contact Center | Omni Contact | リージョン | O |  |  |  |
 |  | Mobile Contact | リージョン | O |  |  |  |

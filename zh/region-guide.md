@@ -140,9 +140,9 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Drive | Global |  |  |  |  |
 |  | Contacts | Global |  |  |  |  |
 |  | Wiki | Global |  |  |  |  |
-| Workplace \| ERP | Human resources | Regional | O |  |  |  |
+| Dooray! \| ERP | Human resources | Regional | O |  |  |  |
 |  | Finance | Regional | O |  |  |  |
-| Workplace\| Groupware | Communication Board | Regional | O |  |  |  |
+| Dooray! \| Groupware | Communication Board | Regional | O |  |  |  |
 |  | Workflow | Regional | O |  |  |  |
 | Contact Center | Omni Contact | Regional | O |  |  |  |
 |  | Mobile Contact | Regional | O |  |  |  |
