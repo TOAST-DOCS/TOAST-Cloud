@@ -140,9 +140,9 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Drive | 글로벌 |  |  |  |  |
 |  | Contacts | 글로벌 |  |  |  |  |
 |  | Wiki | 글로벌 |  |  |  |  |
-| Workplace \| ERP | Human resources | 리전 | O |  |  |  |
+| Dooray! \| ERP | Human resources | 리전 | O |  |  |  |
 |  | Finance | 리전 | O |  |  |  |
-| Workplace\| Groupware | Communication Board | 리전 | O |  |  |  |
+| Dooray! \| Groupware | Communication Board | 리전 | O |  |  |  |
 |  | Workflow | 리전 | O |  |  |  |
 | Contact Center | Omni Contact | 리전 | O |  |  |  |
 |  | Mobile Contact | 리전 | O |  |  |  |
