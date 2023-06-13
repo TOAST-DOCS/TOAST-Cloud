@@ -395,7 +395,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | SMS | ADMIN | SMSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| RCS Bizmessage | RCS Bizmessage ADMIN | RCS Bizmessage サービス Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| RCS Bizmessage | ADMIN | RCS Bizmessage サービス Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Email | ADMIN | Emailサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
