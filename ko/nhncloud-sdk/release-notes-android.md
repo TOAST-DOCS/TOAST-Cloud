@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 1.6.0 (2023. 06. 20.)
+
+### NHN Cloud IAP
+
+#### 기능 추가
+
+* ONE store v21 추가
+
 ## 1.5.1 (2023. 05. 30.)
 
 ### NHN Cloud IAP
