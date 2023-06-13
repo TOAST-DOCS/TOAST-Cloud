@@ -394,6 +394,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Image Manager | ADMIN | Image Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Push | ADMIN | Push 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | SMS | ADMIN | SMS 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| RCS Bizmessage | RCS Bizmessage ADMIN | RCS Bizmessage Service Create/Read/Update/Delete |
 | Email | ADMIN | Email 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Face Recognition | ADMIN | Face Recognition 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
