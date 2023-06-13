@@ -40,6 +40,8 @@ dependencies {
 ```groovy
 repositories {
     mavenCentral()
+    // ONE store V21
+    maven { url 'https://repo.onestore.co.kr/repository/onestore-sdk-public' }
 }
 
 dependencies {
@@ -48,6 +50,10 @@ dependencies {
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
     implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.6.0'
+    // ONE store V21
+    implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
+    implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.6.0'
     ...
 }
 ```
