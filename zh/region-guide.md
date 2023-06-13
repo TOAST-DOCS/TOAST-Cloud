@@ -100,6 +100,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |
 |  | SMS | Regional | O |  |  |  |
+|  | RCS Bizmessage | Global |  |  |  |  |
 |  | Email | Global |  |  |  |  |
 |  | KakaoTalk Bizmessage | Regional | O |  |  |  |
 | AI Service | Face Recognition | Global |  |  |  |  |
