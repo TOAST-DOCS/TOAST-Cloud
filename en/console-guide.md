@@ -397,7 +397,7 @@ You can grant multiple required roles to project members.
 | Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
 | SMS | ADMIN | Create/Read/Update/Delete for SMS Service |
-| RCS Bizmessage | RCS Bizmessage ADMIN | RCS Bizmessage Service Create/Read/Update/Delete |
+| RCS Bizmessage | ADMIN | RCS Bizmessage Service Create/Read/Update/Delete |
 | Email | ADMIN | Create/Read/Update/Delete for Email Service |
 | KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete for KakaoTalk Bizmessage Service |
 | Face Recognition | ADMIN | Create/Read/Update/Delete for Face Recognition Service |
