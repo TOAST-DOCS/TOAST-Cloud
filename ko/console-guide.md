@@ -389,6 +389,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Security  Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제))  |
 | DDoS Guard | ADMIN | DDos Guard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | SIEM | ADMIN | SIEM 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Security Advisor | ADMIN | Security Advisor 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) | 
+| Security Advisor | VIEWER | Security Advisor 서비스 Read(읽기) | 
 | Webshell Threat Detector | ADMIN | Webshell Threat Detector 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | CDN | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Image Manager | ADMIN | Image Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
