@@ -167,6 +167,9 @@ end
     configuration.sandbox = YES;
 #endif
 
+    // 알림 허용 권한을 획득하지 못하더라도 토큰을 등록하고 싶은 경우 alwaysAllowTokenRegistration 프로퍼티의 값을 YES로 변경해야합니다. 기본값은 NO입니다.
+    configuration.alwaysAllowTokenRegistration = NO;
+
     // Set Delegate in tandem with the initialization.
     [NHNCloudPush initWithConfiguration:configuration
                                delegate:self];
@@ -223,7 +226,11 @@ options.soundEnabled = YES;         // Set the use of notification sound (defaul
 ## Token Registration
 
 * Register the issued token information to the NHN Cloud server. At this time,  pass whether or not to agree to receive the push (NHNCloudPushAgreement) as a parameter.
-* If this is the initial execution, request the user for permission to allow notifications. If the permission to allow notifications is not acquired, token registration fails.
+* 최초 실행일 경우 사용자에게 알림 허용 권한을 요청합니다. (alwaysAllowTokenRegistration의 기본값은 false입니다.)
+    * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 false 일 경우
+        * 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
+    * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 true 일 경우
+        * 알림 허용 권한을 획득하지 못하더라도 토큰을 등록합니다.
 * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
 
 ### Agreement Setting
@@ -784,6 +791,9 @@ typedef NS_ERROR_ENUM(NHNCloudHttpErrorDomain, NHNCloudHttpError) {
 
 // Sandbox (Debug) environment setting
 @property (nonatomic) BOOL sandbox;
+
+// 사용자가 알림 허용 권한을 거부해도 토큰을 등록할지 여부
+@property (nonatomic) BOOL alwaysAllowTokenRegistration;
 
 
 + (instancetype)configurationWithAppKey:(NSString *)appKey;
