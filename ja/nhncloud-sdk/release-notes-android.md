@@ -4,9 +4,9 @@
 
 ### NHN Cloud IAP
 
-#### 기능 추가
+#### 機能追加
 
-* ONE store v21 추가
+* ONE store v21追加
 
 ## 1.5.1 (2023. 05. 30.)
 
