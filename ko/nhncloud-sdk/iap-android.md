@@ -58,6 +58,8 @@ dependencies {
 }
 ```
 
+> ONE store V21 인앱 결제는 Android 6.0 (API 레벨 23) 이상에서 동작합니다.
+
 ### Galaxy Store
 
 - Galaxy Store의 인앱 결제를 사용하려면 아래와 같이 build.gradle에 의존성을 추가합니다.

@@ -58,6 +58,8 @@ dependencies {
 }
 ```
 
+> ONE store V21 인앱 결제는 Android 6.0 (API 레벨 23) 이상에서 동작합니다.
+
 ### Galaxy Store
 
 - To use in-app purchase of Galaxy Store, add dependency to build.gradle as below:
