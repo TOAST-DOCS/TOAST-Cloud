@@ -58,7 +58,7 @@ dependencies {
 }
 ```
 
-> ONE store V21 인앱 결제는 Android 6.0 (API 레벨 23) 이상에서 동작합니다.
+> ONE store V21アプリ内決済はAndroid 6.0（APIレベル23）以上で動作します。
 
 ### Galaxy Store
 
@@ -75,7 +75,7 @@ dependencies {
 }
 ```
 
-> Galaxy Store in-app purchases works on Android 4.3 (API level 18) or higher.
+> Galaxy Storeのアプリ内決済はAndroid 4.3（APIレベル18）以上で動作します。
 
 ### Amazon Appstore
 
