@@ -390,14 +390,11 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | DDoS Guard | ADMIN | DDos Guardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | SIEM | ADMIN | SIEMサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Security Advisor | ADMIN | Security Advisor サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除) | 
-| Security Advisor | VIEWER | Security Advisor サービス Read(読込) | 
 | Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | SMS | ADMIN | SMSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| RCS Bizmessage | ADMIN | RCS Bizmessage サービス Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Email | ADMIN | Emailサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |

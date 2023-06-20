@@ -87,12 +87,10 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Vaccine | Regional | O | O |  |  |
 |  | Secure Key Manager | Global |  |  |  |  |
 |  | Webshell Threat Detector | Regional | O | O |  |  |
-|  | Secure Advisor | Global |  |  |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |
 |  | SMS | Regional | O |  |  |  |
-|  | RCS Bizmessage | Global |  |  |  |  |
 |  | Email | Global |  |  |  |  |
 |  | KakaoTalk Bizmessage | Regional | O |  |  |  |
 | AI Service | Face Recognition | Global |  |  |  |  |
