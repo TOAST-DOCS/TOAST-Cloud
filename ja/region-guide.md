@@ -101,6 +101,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Image Manager | リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |
 |  | SMS | リージョン | O |  |  |  |
+|  | RCS Bizmessage | グローバル |  |  |  |  |
 |  | Email | グローバル |  |  |  |  |
 |  | KakaoTalk Bizmessage | リージョン | O |  |  |  |
 | AI Service | Face Recognition | グローバル |  |  |  |  |
