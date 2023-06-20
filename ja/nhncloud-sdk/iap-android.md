@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.5.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.6.0'
     ...
 }
 ```
@@ -40,17 +40,25 @@ dependencies {
 ```groovy
 repositories {
     mavenCentral()
+    // ONE store V21
+    maven { url 'https://repo.onestore.co.kr/repository/onestore-sdk-public' }
 }
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.5.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.6.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.5.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.6.0'
+    // ONE store V21
+    implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
+    implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.6.0'
     ...
 }
 ```
+
+> ONE store V21 인앱 결제는 Android 6.0 (API 레벨 23) 이상에서 동작합니다.
 
 ### Galaxy Store
 
@@ -62,7 +70,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.5.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.6.0'
     ...
 }
 ```
@@ -79,7 +87,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.5.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.6.0'
     ...
 }
 ```
@@ -122,7 +130,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.5.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.6.0'
     ...
 }
 ```
@@ -139,7 +147,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.5.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.6.0'
     ...
 }
 ```

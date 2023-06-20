@@ -392,14 +392,11 @@ You can grant multiple required roles to project members.
 | Security Compliance | ADMIN | Create/Read/Update/Delete for Security Compliance Service|
 | DDoS Guard | ADMIN | Create/Read/Update/Delete for DDoS Guard Service |
 | SIEM | ADMIN | Create/Read/Update/Delete for SIEM Service |
-| Security Advisor | ADMIN | Security Advisor Create, Read, Update, and Delete Services | 
-| Security Advisor | VIEWER | Security Advisor VIEWER | 
 | Webshell Threat Detector | ADMIN | Create/Read/Update/Delete for Webshell Threat Detector Service |
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
 | Image Manager | ADMIN | Create/Read/Update/Delete pfor Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
 | SMS | ADMIN | Create/Read/Update/Delete for SMS Service |
-| RCS Bizmessage | ADMIN | RCS Bizmessage Service Create/Read/Update/Delete |
 | Email | ADMIN | Create/Read/Update/Delete for Email Service |
 | KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete for KakaoTalk Bizmessage Service |
 | Face Recognition | ADMIN | Create/Read/Update/Delete for Face Recognition Service |
