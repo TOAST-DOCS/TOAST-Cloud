@@ -31,6 +31,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Compute | Instance | Regional | O | O | O | O |
 |  | Ephemeral Storage Instance | Regional | O | | O | | 
 |  | GPU Instance | Region | O |  |  |  |
+|  | Instance Template | Region | O | O | O | O |
 |  | Image | Region | O | O | O | O |
 |  | Image Builder  | Region | O | O |  |  |
 |  | Auto Scale | Region | O | O | O | O |
@@ -40,6 +41,11 @@ All users are provided with the same features, policy, stability and usability, 
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
 |  | NHN Container Service(NCS)  | Regional | O |  |  |  |
 | Network | VPC | Region | O | O | O | O |
+|  | NAT Instance | Regional |  | O |  |  |
+|  | Floating IP | Regional | O | O | O | O |
+|  | Security Groups | Regional | O | O | O | O |
+|  | Network ACL | Regional |  | O |  |  |
+|  | Network Interface | Regional | O | O | O | O |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
 |  | Physical Load Balancer | Regional | O | O |  |  |
@@ -57,6 +63,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | NAS | Regional | O | O |  |  |
 |  | Object Storage | Regional | O | O | O | O |
 |  | Backup | Regional | O | O | O |  |
+|  | Data transporte | Regional | O | O |  |  |
 | Database | RDS for MySQL | Regional | O | O | O |  |
 |  | RDS for MariaDB | Regional | O |  |  |  |
 |  | RDS for MS-SQL | Regional | O |  |  |  |
@@ -75,18 +82,21 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Leaderboard | Global |  |  |  |  |
 |  | Launching | Global |  |  |  |  |
 |  | Smart Downloader | Global |  |  |  |  |
-| Security | AppGuard | Global |  |  |  |  |
-|  | Security Check | Regional | O |  |  |  |
+| Security | NHN AppGuard | Global |  |  |  |  |
+|  | App Security Check | Regional | O |  |  |  |
+|  | Server Security Check | Regional | O | O |  |  |
 |  | Security Monitoring | Regional | O | O |  |  |
 |  | Basic Security | Regional | O | O |  |  |
 |  | CAPTCHA | Regional | O |  |  |  |
 |  | OTP | Regional | O |  |  |  |
-|  | DBSafer | Regional | O | O  |  |  |
 |  | Web Firewall | Regional | O | O  |  |  |
-|  | DDoS Guard | Regional | O | O |  |  |
 |  | Vaccine | Regional | O | O |  |  |
 |  | Secure Key Manager | Global |  |  |  |  |
+|  | Security Compliance | Global |  |  |  |  |
+|  | DDoS Guard | Regional | O | O |  |  |
+|  | SIEM | Global |  |  |  |  |
 |  | Webshell Threat Detector | Regional | O | O |  |  |
+|  | Security Advisor | Global |  |  |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |
@@ -94,7 +104,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Email | Global |  |  |  |  |
 |  | KakaoTalk Bizmessage | Regional | O |  |  |  |
 | AI Service | Face Recognition | Global |  |  |  |  |
-|  | AI Fashion | Regional | O | O | O | O | 
+|  | AI Fashion | Regional | O | O | O | O |
 |  | OCR | Global |  |  |  |  |
 |  | Text to Speech | Global |  |  |  |  |
 |  | Speech to Text | Global |  |  |  |  |
@@ -109,20 +119,21 @@ All users are provided with the same features, policy, stability and usability, 
 |  | JEUS Instance | Regional | O | O | O | O |
 |  | WebtoB Instance | Regional | O | O | O | O |
 | Mobile Service | IAP | Global |  |  |  |  |
-| Data & Analytics | Log & Crash Search | Global |  |  |  |  |
-|  | DataFlow | Regional | O |  |  |  |
-|  | DataQiuery | Regional | O |  |  |  |
-|  | Kafka Instance | Regional | O | O | O | O |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
 |  | Word Suggestion | Global |  |  |  |  |
+| Data & Analytics | Log & Crash Search | Global |  |  |  |  |
+|  | DataFlow | Regional | O |  |  |  |
+|  | DataQuery | Regional | O |  |  |  |
+|  | Kafka Instance | Regional | O | O | O | O |
 | Dev Tools | Pipeline | Regional | O | O |  |  |
 |  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
 |  | Support Plan |  Regional | O | O |  |  |
 |  | Service Monitoring | Global |  |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
+| Bill | eTax | Regional | O |  |  |  |
 | Dooray! | Project | Global |  |  |  |  |
 |  | Messenger | Global |  |  |  |  |
 |  | Mail | Global |  |  |  |  |
@@ -137,7 +148,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Contact Center | Omni Contact | Regional | O |  |  |  |
 |  | Mobile Contact | Regional | O |  |  |  |
 |  | Online Contact | Global |  |  |  |  |
-| Bill | eTax | Regional | O |  |  |  |
-| IDC | TCC | Regional | O |  |  |  |
+| IDC | NCC | Regional | O |  |  |  |
 | Governance & Audit | CloudTrail | Global |  |  |  |  |
 |  | Resource Watcher | Global |  |  |  |  |
+
