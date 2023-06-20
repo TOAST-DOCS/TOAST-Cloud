@@ -391,6 +391,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | DDoS Guard | ADMIN | DDos Guardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | SIEM | ADMIN | SIEMサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Security Advisor | ADMIN | Security Advisorサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Security Advisor | VIEWER | Security Advisorサービスに対するRead(読み取り)  |
 | CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
