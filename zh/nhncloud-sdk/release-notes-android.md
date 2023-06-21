@@ -1,21 +1,21 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
-## 1.6.0 (2023. 06. 20.)
+## 1.6.0 (June 20, 2023)
 
 ### NHN Cloud IAP
 
-#### 기능 추가
+#### Added
 
-* ONE store v21 추가
+* Added ONE store v21
 
-## 1.5.1 (2023. 05. 30.)
+## 1.5.1 (May 30, 2023)
 
 ### NHN Cloud IAP
 
-#### 기능 추가
+#### Added
 
-* 결제 상세정보 전송 기능 추가 
-    * IAP 콘솔의 Transaction 탭에서 결제 상세정보를 조회할 수 있습니다.
+* Added a feature to send payment details
+    * You can view payment details on the Transaction tab in the IAP console.
 
 ## 1.5.0 (April 5, 2023)
 
