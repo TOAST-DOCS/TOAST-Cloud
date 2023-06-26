@@ -227,9 +227,9 @@ options.soundEnabled = YES;         // 알림음 사용 설정 (default : YES)
 
 * 발급받은 토큰 정보를 NHN Cloud 서버에 등록합니다. 이때 수신 동의 여부(NHNCloudPushAgreement)를 파라미터로 전달합니다.
 * 최초 실행일 경우 사용자에게 알림 허용 권한을 요청합니다. (alwaysAllowTokenRegistration의 기본값은 false입니다.)
-    * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 false 일 경우
+    * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 false일 경우
         * 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
-    * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 true 일 경우
+    * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 true일 경우
         * 알림 허용 권한을 획득하지 못하더라도 토큰을 등록합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 
