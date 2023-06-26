@@ -96,10 +96,12 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | DDoS Guard | リージョン | O | O  |  |  |
 |  | SIEM | リージョン | O |O |  |  |
 |  | Webshell Threat Detector | リージョン | O | O |  |  |
+|  | Security Advisor | グローバル |  |  |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image Manager | リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |
 |  | SMS | リージョン | O |  |  |  |
+|  | RCS Bizmessage | グローバル |  |  |  |  |
 |  | Email | グローバル |  |  |  |  |
 |  | KakaoTalk Bizmessage | リージョン | O |  |  |  |
 | AI Service | Face Recognition | グローバル |  |  |  |  |
