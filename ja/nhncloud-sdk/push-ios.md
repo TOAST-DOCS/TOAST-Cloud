@@ -225,7 +225,7 @@ options.soundEnabled = YES;         // 通知音使用設定(default : YES)
 ## トークン登録
 
 * 発行されたトークン情報をNHN Cloudクラウドサーバーに登録します。この時、受信同意(NHNCloudPushAgreement)をパラメーターで伝達します。
-* 최초 실행일 경우 사용자에게 알림 허용 권한을 요청합니다. (alwaysAllowTokenRegistration의 기본값은 false입니다.)
+* 최초 실행일 경우 사용자에게 알림 허용 권한을 요청합니다(alwaysAllowTokenRegistration의 기본값은 false입니다.).
     * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 false일 경우
         * 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
     * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 true일 경우

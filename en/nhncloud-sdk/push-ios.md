@@ -226,7 +226,7 @@ options.soundEnabled = YES;         // Set the use of notification sound (defaul
 ## Token Registration
 
 * Register the issued token information to the NHN Cloud server. At this time,  pass whether or not to agree to receive the push (NHNCloudPushAgreement) as a parameter.
-* 최초 실행일 경우 사용자에게 알림 허용 권한을 요청합니다. (alwaysAllowTokenRegistration의 기본값은 false입니다.)
+* 최초 실행일 경우 사용자에게 알림 허용 권한을 요청합니다(alwaysAllowTokenRegistration의 기본값은 false입니다.).
     * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 false일 경우
         * 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
     * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 true일 경우
