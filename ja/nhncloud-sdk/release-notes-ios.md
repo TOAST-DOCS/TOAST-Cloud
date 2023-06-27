@@ -1,5 +1,14 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.5.0 (2023. 06. 27.)
+### NHN Cloud Push
+#### 개선 사항
+* 토큰 등록 기능 개선
+    * 앱의 알림 권한과 무관하게 토큰을 등록할 수 있는 옵션을 제공합니다.
+
+#### SymbolUploader(v0.0.3)
+* 안정성 개선
+
 ## 1.4.0 (2023. 05. 30.)
 ### 共通
 #### 改善事項
