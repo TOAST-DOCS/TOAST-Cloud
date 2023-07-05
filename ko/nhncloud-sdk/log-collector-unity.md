@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.nhncloud.android:nhncloud-unity-logger:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-unity-logger:1.7.0'
 **DEPS**}
 ```
 
