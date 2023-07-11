@@ -99,6 +99,9 @@ when (data) {
 
 신분증 진위 확인 결과는 Boolean 타입으로 반환됩니다. 
 
+> 진위 확인에 사용되는 IdCardData의 RequestKey는 일회성 값으로 재사용할 수 없습니다.<br>
+> RequestKey는 발급 이후 1시간 동안 유효하며 그 이후에는 사용할 수 없습니다.
+
 ```kotlin
 val authenticator = nhnCloudOcr.createIdCardAuthenticator()
 viewModelScope.launch(Dispatchers.IO) {
@@ -282,6 +285,9 @@ when (data) {
 신분증 인식 결과인 IdCardRecognitionData를 이용해 진위 확인을 요청할 수 있습니다. 
 
 신분증 진위 확인 결과는 Boolean 타입으로 반환됩니다. 
+
+> 진위 확인에 사용되는 IdCardRecognitionData의 RequestKey는 일회성 값으로 재사용할 수 없습니다.<br>
+> RequestKey는 발급 이후 1시간 동안 유효하며 그 이후에는 사용할 수 없습니다.
 
 ```kotlin
 val service = ocrServices.createIdCardAuthenticityService()
