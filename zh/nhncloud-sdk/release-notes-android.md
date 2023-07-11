@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.7.0 (2023. 07. 11.)
+
+### NHN Cloud OCR
+
+#### 기능 추가
+
+* OCR(ID Card Recognizer) 추가
+
 ## 1.6.0 (June 20, 2023)
 
 ### NHN Cloud IAP

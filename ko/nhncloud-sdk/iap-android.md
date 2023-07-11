@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.7.0'
     ...
 }
 ```
@@ -46,14 +46,14 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.7.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.7.0'
     // ONE store V21
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.7.0'
     ...
 }
 ```
@@ -70,7 +70,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.7.0'
     ...
 }
 ```
@@ -87,7 +87,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.7.0'
     ...
 }
 ```
@@ -114,7 +114,7 @@ buildscript {
     dependencies {
         ...
         // Add the AppGallery Connect plugin configuration. You are advised to use the latest plugin version.
-        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+        classpath 'com.huawei.agconnect:agcp:1.7.0.300'
     }
 }
 ```
@@ -130,7 +130,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.7.0'
     ...
 }
 ```
@@ -147,7 +147,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.7.0'
     ...
 }
 ```
@@ -287,7 +287,7 @@ class MyApplication extends NhnCloudMyCardApplication {
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체는 인앱 결제 설정 정보를 포함하고 있습니다.
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체는 [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder)를 사용하여 생성할 수 있습니다.
-* IAP 콘솔에서 발급받은 [AppKey](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 setAppKey 메서드를 사용하여 설정합니다.
+* IAP 콘솔에서 발급 받은 [AppKey](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 setAppKey 메서드를 사용하여 설정합니다.
 * setStoreCode 메서드를 사용하여 인앱 결제에 사용할 [스토어 코드](./iap-android/#_3)를 설정합니다.
 
 ### 인앱 결제 설정 예시

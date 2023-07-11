@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-google:1.6.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-google:1.7.0'
 **DEPS**}
 ```
 
@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.6.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.7.0'
 **DEPS**}
 ```
 
@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.6.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.7.0'
 **DEPS**}
 ```
 
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.6.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.7.0'
 **DEPS**}
 ```
 
@@ -85,7 +85,7 @@ buildscript {
     ...
 
 		// Huawei App Gallery Plugin
-    classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+    classpath 'com.huawei.agconnect:agcp:1.7.0.300'
 	}
 }
 
@@ -97,7 +97,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.huawei.agconnect'
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.6.0'
+  implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.7.0'
 **DEPS**}
 ```
 

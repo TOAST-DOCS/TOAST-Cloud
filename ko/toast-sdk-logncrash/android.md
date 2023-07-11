@@ -63,7 +63,7 @@ public class YourApplication extends Application {
 ### Initialize
 
 onCreate() 메소드에서 Logger를 초기화합니다.
-Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급 받은 AppKey를 ProjectKey로 설정합니다.
 
 ```java
 // Initialize Logger

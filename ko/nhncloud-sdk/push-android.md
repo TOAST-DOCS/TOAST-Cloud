@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.7.0'
     ...
 }
 ```
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.7.0'
     ...
 }
 ```
@@ -139,7 +139,7 @@ dependencies {
 * NhnCloudPush.initialize를 호출하여 NHN Cloud Push를 초기화합니다.
 * [NhnCloudPushConfiguration](./push-android/#nhncloudpushconfiguration) 객체는 Push 설정 정보를 포함하고 있습니다.
 * [NhnCloudPushConfiguration](./push-android/#nhncloudpushconfiguration) 객체는 NhnCloudPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
-* Push 콘솔에서 발급받은 AppKey를 NhnCloudPushConfiguration.newBuilder 매개변수로 전달합니다.
+* Push 콘솔에서 발급 받은 AppKey를 NhnCloudPushConfiguration.newBuilder 매개변수로 전달합니다.
 * 사용하기를 원하는 PushType을 초기화 호출시 전달해야 합니다.
 
 ### FCM 초기화 예시
@@ -522,7 +522,7 @@ public class MyApplication extends Application {
 ### 알림 액션 리스너 등록
 * 사용자가 알림의 버튼 혹은 답장 전송 버튼 클릭시 알림 액션 리스너로 통지합니다.
 * [PushAction](./push-android/#pushaction) 객체로 액션 정보를 확인 가능합니다.
-* 앱이 실행중이지 않을 때에도 메세지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
+* 앱이 실행중이지 않을 때에도 메시지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
 
 #### 알림 액션 리스너 등록 예시
 
@@ -568,7 +568,7 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
         // 채널 아이디 변경
         remoteMessage.setChannelId("channel");
 
-        // 메세지 내용 수정
+        // 메시지 내용 수정
         NhnCloudPushMessage message = remoteMessage.getMessage();
         CharSequence title = message.getTitle();
 
@@ -849,7 +849,7 @@ public String getToken();
 | getToken | String | 토큰을 반환합니다. |
 
 ### NhnCloudRemoteMessage
-* 메세지 수신 리스너, 커스텀 리시버에서 메세지 수신시 반환되는 객체 입니다.
+* 메시지 수신 리스너, 커스텀 리시버에서 메시지 수신시 반환되는 객체 입니다.
 
 ``` java
 /* NhnCloudRemoteMessage.java */
@@ -863,11 +863,11 @@ public String getSenderId();
 |---|---|---|
 | getChannelId | String | 채널 ID를 반환합니다. |
 | setChannelId |  | 채널 ID를 설정합니다. |
-| getMessage | NhnCloudPushMessage | 메세지 객체를 반환합니다. |
+| getMessage | NhnCloudPushMessage | 메시지 객체를 반환합니다. |
 | getSenderId | String | 발신자 ID를 반환합니다. (FCM Only) |
 
 ### NhnCloudPushMessage
-* 수신한 메세지 내용을 담는 객체 입니다.
+* 수신한 메시지 내용을 담는 객체 입니다.
 
 ``` java
 /* NhnCloudPushMessage.java */
@@ -885,12 +885,12 @@ public Map<String, String> getExtras();
 |---|---|---|
 | getMessageId | String | 메시지 식별자를 반환합니다. |
 | getPusyType | String | PushType을 반환합니다. |
-| getTitle | String | 메세지 타이틀을 반환합니다. |
-| setTitle |  | 메세지 타이틀을 설정합니다. |
-| getBody | String | 메세지 내용을 반환합니다. |
-| setBody |  | 메세지 내용을 설정합니다. |
-| getRichMessage | RichMessage | 리치 메세지 정보를 반환합니다. |
-| getExtras |  | 수신된 메세지 전체를 반환합니다. |
+| getTitle | String | 메시지 타이틀을 반환합니다. |
+| setTitle |  | 메시지 타이틀을 설정합니다. |
+| getBody | String | 메시지 내용을 반환합니다. |
+| setBody |  | 메시지 내용을 설정합니다. |
+| getRichMessage | RichMessage | 리치 메시지 정보를 반환합니다. |
+| getExtras |  | 수신된 메시지 전체를 반환합니다. |
 
 
 ### PushAction
@@ -910,11 +910,11 @@ public String getUserText();
 | getActionType | ActionType | ActionType을 반환합니다. |
 | getNotificationId | String | 액션이 실행된 알림의 ID을 반환합니다. |
 | getNotificationChannel | String | 액션이 실행된 알림의 채널을 반환합니다. |
-| getMessage | NhnCloudPushMessage | 액션이 실행된 알림의 메세지 정보를 반환합니다. |
+| getMessage | NhnCloudPushMessage | 액션이 실행된 알림의 메시지 정보를 반환합니다. |
 | getUserText | RichMessage | 사용자가 입력한 문자열을 반환합니다. |
 
 ### NhnCloudPushMessageReceiver
-* 메세지 내용 수정, 실행 인텐트 정의, 알림 직접 생성 등의 기능을 위해서는 사용자가 구현해야하는 객체 입니다.
+* 메시지 내용 수정, 실행 인텐트 정의, 알림 직접 생성 등의 기능을 위해서는 사용자가 구현해야하는 객체 입니다.
 
 ``` java
 /* NhnCloudPushMessageReceiver.java */
