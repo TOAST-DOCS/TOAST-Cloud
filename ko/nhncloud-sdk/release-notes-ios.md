@@ -1,5 +1,10 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > iOS
 
+## 1.6.0 (2023. 07. 11.)
+### NHN Cloud OCR
+#### 기능 추가
+* OCR(ID Card Recognizer) 추가
+
 ## 1.5.0 (2023. 06. 27.)
 ### NHN Cloud Push
 #### 개선 사항

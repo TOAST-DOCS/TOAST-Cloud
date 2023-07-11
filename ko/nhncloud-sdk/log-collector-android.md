@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-logger:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-logger:1.7.0'
     ...
 }
 ```
@@ -26,7 +26,7 @@ dependencies {
 
 > 초기화를 진행하지 않고, NhnCloudLogger를 사용하는 경우 초기화 오류가 발생합니다.
 
-- Log & Crash Search에서 발급받은 AppKey를 설정합니다.
+- Log & Crash Search에서 발급 받은 AppKey를 설정합니다.
 
 ```java
 // Initialize Logger

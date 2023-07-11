@@ -125,7 +125,7 @@ OPTIONS:
 
 ## NHN Cloud Logger SDK 초기화
 
-* Log & Crash Search에서 발급받은 AppKey를 설정합니다.
+* Log & Crash Search에서 발급 받은 AppKey를 설정합니다.
 
 ### 초기화 API 명세
 

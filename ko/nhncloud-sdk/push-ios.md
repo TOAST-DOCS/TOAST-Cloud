@@ -103,7 +103,7 @@ end
 ## NHN Cloud Push SDK 초기화
 
 * `초기화를 하지 않은 상태에서는 토큰 등록 및 조회 기능을 사용할 수 없습니다.`
-* [NHNCloudPushConfiguration](./push-ios/#nhncloudpushconfiguration) 객체에 NHN Cloud 서버에서 발급받은 Push AppKey를 설정합니다.
+* [NHNCloudPushConfiguration](./push-ios/#nhncloudpushconfiguration) 객체에 NHN Cloud 서버에서 발급 받은 Push AppKey를 설정합니다.
 * `개발환경에서는 반드시 NHNCloudPushConfiguration의 sandbox 프로퍼티를 YES로 설정해야 개발용 인증서로 발송한 메시지의 수신이 가능합니다.`
 
 ### 초기화 API 명세
@@ -225,7 +225,7 @@ options.soundEnabled = YES;         // 알림음 사용 설정 (default : YES)
 
 ## 토큰 등록
 
-* 발급받은 토큰 정보를 NHN Cloud 서버에 등록합니다. 이때 수신 동의 여부(NHNCloudPushAgreement)를 파라미터로 전달합니다.
+* 발급 받은 토큰 정보를 NHN Cloud 서버에 등록합니다. 이때 수신 동의 여부(NHNCloudPushAgreement)를 파라미터로 전달합니다.
 * 최초 실행일 경우 사용자에게 알림 허용 권한을 요청합니다(alwaysAllowTokenRegistration의 기본값은 false입니다.).
     * NHNCloudPushConfiguration의 alwaysAllowTokenRegistration 값이 false일 경우
         * 알림 허용 권한을 획득하지 못한 경우 토큰 등록은 실패합니다.
@@ -846,7 +846,7 @@ typedef NS_ERROR_ENUM(NHNCloudHttpErrorDomain, NHNCloudHttpError) {
 ```
 
 ### NHNCloudPushMessage
-* 메세지 수신시 반환되는 객체입니다.
+* 메시지 수신시 반환되는 객체입니다.
 
 ```objc
 @interface NHNCloudPushMessage : NSObject
@@ -867,7 +867,7 @@ typedef NS_ERROR_ENUM(NHNCloudHttpErrorDomain, NHNCloudHttpError) {
 ```
 
 ### NHNCloudPushMessage
-* 수신한 메세지 내용 중 리치메시지 내용을 담는 객체 입니다.
+* 수신한 메시지 내용 중 리치메시지 내용을 담는 객체 입니다.
 
 ```objc
 @interface NHNCloudPushRichMessage : NSObject
