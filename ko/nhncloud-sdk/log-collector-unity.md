@@ -74,7 +74,7 @@ using Toast.Logger;
 
 ## NHN Cloud Logger SDK 초기화
 
-Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급 받은 AppKey를 ProjectKey로 설정합니다.
 
 ```csharp
 var loggerConfiguration = new ToastLoggerConfiguration

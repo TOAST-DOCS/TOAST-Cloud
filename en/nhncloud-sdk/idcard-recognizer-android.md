@@ -400,7 +400,7 @@ class CustomGuideView(
 
 ### 서비스 시작
 
-IdCardRecognitionCameraPreview의 인스턴스를 획득하여 IdCardRecognitionService 시작합니다.
+IdCardRecognitionCameraPreview의 인스턴스를 획득하여 IdCardRecognitionService를 시작합니다.
 
 ```kotlin
 val cameraPreview = findViewById<IdCardRecognitionCameraPreview>(R.id.camera_preview)

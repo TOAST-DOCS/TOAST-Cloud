@@ -70,13 +70,13 @@ end
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
 ## NHNCloudOCR SDK 초기화
-* NHN Cloud Console에서 발급받은 AppKey와 Secret을 NHNCloudOCRConfiguration 객체에 설정합니다.
+* NHN Cloud Console에서 발급 받은 AppKey와 Secret을 NHNCloudOCRConfiguration 객체에 설정합니다.
   * AI Service -> OCR -> Document OCR -> 신분증
 * NHNCloudOCR은 초기화에 NHNCloudOCRConfiguration 객체를 파라미터로 사용합니다.
 * 카메라 사용 권한을 얻기 위해 info.plist에 아래 내용을 추가합니다.
 ```
 Key : NSCameraUsageDescription
-Value : [카메라 권한 요청 메세지]
+Value : [카메라 권한 요청 메시지]
 ```
 
 ### 초기화 API 명세
@@ -91,8 +91,8 @@ Value : [카메라 권한 요청 메세지]
 
 ### Delegate API 명세
 * NHNCloudIDCardRecognizerDelegate 등록하면 인식 결과에 대한 통지를 받을 수 있습니다.
-* OCR이 실행 중일 때 화면의 스크린 캡처와 동영상 녹화 이벤트를 수신 받을 수 있습니다.
-* SDK에서 제공하는 기본 화면 사용 시(NHNCloudIDCardRecognizerViewController 상속 구현) 닫기, 확인 이벤트를 수신 받을 수 있습니다.
+* OCR이 실행 중일 때 화면의 스크린 캡처와 동영상 녹화 이벤트를 수신할 수 있습니다.
+* SDK에서 제공하는 기본 화면 사용 시(NHNCloudIDCardRecognizerViewController 상속 구현) 닫기, 확인 이벤트를 수신할 수 있습니다.
 
 ``` objc
 @protocol NHNCloudIDCardRecognizerDelegate <NSObject>
@@ -105,17 +105,17 @@ Value : [카메라 권한 요청 메세지]
 // 스크린 캡처 이벤트 수신
 - (void)didDetectIDCardSecurityEvent:(NHNCloudSecurityEvent)event;
 
-// 닫기 버튼 이벤트 수신 (NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 닫기 버튼 이벤트 수신(NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
 - (void)IDCardRecognizerViewControllerCancel;
 
-// 확인 버튼 이벤트 수신 (NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 확인 버튼 이벤트 수신(NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
 - (void)IDCardRecognizerViewControllerConfirm;
 
 @end
 ```
 
 ### 검출 이미지 반환 설정하기
-* OCR 결과인 NHNCloudIDCardInfo 데이터에 검출된 이미지를 함께 반환받을 수 있습니다. 
+* OCR 결과인 NHNCloudIDCardInfo 데이터에 검출된 이미지를 함께 반환 받을 수 있습니다. 
     * 기본값은 비활성화입니다. 
 #### 검출 이미지 반환 설정 API 명세 
 ```objc
@@ -162,7 +162,7 @@ Value : [카메라 권한 요청 메세지]
 
     // 스크린 캡처 경고 Alert 출력 예시
     if (event == NHNCloudSecurityEventScreenshot || event == NHNCloudSecurityEventScreenRecordingOn) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"캡쳐가 감지되었습니다." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"캡처가 감지되었습니다." preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
         
         [self presentViewController:alert animated:YES completion:nil];
@@ -178,14 +178,14 @@ Value : [카메라 권한 요청 메세지]
     }
 }
 
-// 확인 버튼 이벤트 수신 (NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 확인 버튼 이벤트 수신(NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
 - (void)IDCardRecognizerViewControllerConfirm {
     // 신분증 인식 결과 화면에서 확인 버튼을 눌렀을 때의 처리
 }
 
-// 닫기 버튼 이벤트 수신 (NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 닫기 버튼 이벤트 수신(NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
 - (void)IDCardRecognizerViewControllerCancel {
-    // 신분증 인식 혹은 결과 화면에서 닫기 버튼을 눌렀을 때의 처리
+    // 신분증 인식 또는 결과 화면에서 닫기 버튼을 눌렀을 때의 처리
 }
 
 @end
@@ -217,11 +217,11 @@ Value : [카메라 권한 요청 메세지]
 
 
 ### NHNCloudIDCardRecognizerServiceViewController 커스터마이징
-* NHNCloudIDCardRecognizerServiceViewController를 사용하여 UI를 커스터마이징 할 수 있습니다.
+* NHNCloudIDCardRecognizerServiceViewController를 사용하여 UI를 커스터마이징할 수 있습니다.
   * **ID-Card 가이드의 경우 미리 정의된 값을 사용하기 때문에 변경이 불가능합니다.**
 
 #### 1. NHNCloudIDCardRecognizerServiceViewController 상속 
-* NHNCloudIDCardRecognizerServiceViewController를 상속 구현하여 커스터마이징 할 수 있습니다.
+* NHNCloudIDCardRecognizerServiceViewController를 상속 구현하여 커스터마이징할 수 있습니다.
 
 ##### Override 함수 명세
 ```objc
@@ -241,7 +241,7 @@ Value : [카메라 권한 요청 메세지]
 // Custom UI 갱신
 - (void)didUpdateIDCardGuide:(CGRect)rect;
 
-// 신분증 인식시 UI 갱신
+// 신분증 인식 시 UI 갱신
 - (void)imageDidDetect:(BOOL)detected;
 
 ```

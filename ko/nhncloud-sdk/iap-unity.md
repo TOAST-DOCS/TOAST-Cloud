@@ -119,7 +119,7 @@ dependencies {
 | iOS | Apple App Store | 소비성 상품, 구독 상품, 소비성 구독 상품 |
 
 ## NHN Cloud IAP SDK 초기화
-[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 NHN Cloud IAP 콘솔에서 발급받은 Appkey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
+[ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 NHN Cloud IAP 콘솔에서 발급 받은 Appkey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
 
 > **초기화 시점**

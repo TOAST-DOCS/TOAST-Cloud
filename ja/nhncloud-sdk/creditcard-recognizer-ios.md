@@ -91,7 +91,7 @@ Value： [カメラ権限リクエストメッセージ]
 ### Delegate API仕様
 * NHNCloudCreditCardRecognizerDelegateを登録すると、認識結果に対する通知を受け取ることができます。
 * OCRが実行中の時、画面のスクリーンキャプチャと動画録画イベントを受信できません。
-* SDK에서 제공하는 기본 화면 사용 시(NHNCloudCreditCardRecognizerViewController 상속 구현) 닫기, 확인 이벤트를 수신 받을 수 있습니다.
+* SDK에서 제공하는 기본 화면 사용 시(NHNCloudCreditCardRecognizerViewController 상속 구현) 닫기, 확인 이벤트를 수신할 수 있습니다.
 
 ``` objc
 @protocol NHNCloudCreditCardRecognizerDelegate <NSObject>
@@ -104,10 +104,10 @@ Value： [カメラ権限リクエストメッセージ]
 // スクリーンキャプチャイベント受信
 - (void)didDetectCreditCardSecurityEvent:(NHNCloudSecurityEvent)event;
 
-// 닫기 버튼 이벤트 수신 (NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 닫기 버튼 이벤트 수신(NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
 - (void)creditCardRecognizerViewControllerCancel;
 
-// 확인 버튼 이벤트 수신 (NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 확인 버튼 이벤트 수신(NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
 - (void)creditCardRecognizerViewControllerConfirm;
 
 @end
@@ -177,14 +177,14 @@ Value： [カメラ権限リクエストメッセージ]
     }
 }
 
-// 확인 버튼 이벤트 수신 (NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 확인 버튼 이벤트 수신(NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
 - (void)creditCardRecognizerViewControllerConfirm {
     // 신용카드 인식 결과 화면에서 확인 버튼을 눌렀을 때의 처리
 }
 
-// 닫기 버튼 이벤트 수신 (NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 닫기 버튼 이벤트 수신(NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
 - (void)creditCardRecognizerViewControllerCancel {
-    // 신용카드 인식 혹은 결과 화면에서 닫기 버튼을 눌렀을 때의 처리
+    // 신용카드 인식 또는 결과 화면에서 닫기 버튼을 눌렀을 때의 처리
 }
 
 @end
