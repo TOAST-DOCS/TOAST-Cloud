@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.7.0'
     ...
 }
 ```
@@ -46,14 +46,14 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.7.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.7.0'
     // ONE store V21
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.7.0'
     ...
 }
 ```
@@ -70,7 +70,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.7.0'
     ...
 }
 ```
@@ -87,7 +87,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.7.0'
     ...
 }
 ```
@@ -114,7 +114,7 @@ buildscript {
     dependencies {
         ...
         // Add the AppGallery Connect plugin configuration. You are advised to use the latest plugin version.
-        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+        classpath 'com.huawei.agconnect:agcp:1.7.0.300'
     }
 }
 ```
@@ -130,7 +130,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.7.0'
     ...
 }
 ```
@@ -147,7 +147,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.6.0'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.7.0'
     ...
 }
 ```
