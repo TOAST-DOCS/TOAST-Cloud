@@ -257,14 +257,14 @@ Value : [카메라 권한 요청 메시지]
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [NHNCloudOCR setIDCardRecognizerDelegate:self];
     // Custom UI 생성
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     [self startRunning];
 }
 
@@ -278,7 +278,7 @@ Value : [카메라 권한 요청 메시지]
 
 - (void)didUpdateIDCardGuide:(CGRect)rect {
     [super didUpdateIDCardGuide:rect];
-    
+
     // Custom UI 갱신  
 }
 
@@ -289,7 +289,7 @@ Value : [카메라 권한 요청 메시지]
 }
 
 - (void)didDetectIDCardInfo:(nullable NHNCloudIDCardInfo *)cardInfo error:(nullable NSError *)error {
-    
+
     NSLog(@"didDetectIDCardInfo : cardInfo : %@", cardInfo);
     NSLog(@"didDetectIDCardInfo : error : %@", error);
 }
@@ -314,9 +314,9 @@ Value : [카메라 권한 요청 메시지]
 - (void)initializeOCR {
     // 초기화 및 Delegate 설정
     NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}" ];
-    
+
     [configuration enableTestGuide];
-        
+
     [NHNCloudOCR initWithConfiguration:configuration];
     [NHNCloudOCR setIDCardRecognizerDelegate:self];
 }
@@ -371,6 +371,11 @@ Value : [카메라 권한 요청 메시지]
 
 ### 인식된 결과로 진위 확인
 * 인식된 신분증의 진위를 확인합니다.
+* 진위확인에는 신분증 인식의 결과로 받은 requestKey가 필요합니다.
+
+#### requestKey 만료 기준
+* 일회성 값으로 1회 사용 후 만료됩니다.
+* 1시간 후 만료됩니다.
 
 ### 신분증 진위 확인 API 명세
 ```objc

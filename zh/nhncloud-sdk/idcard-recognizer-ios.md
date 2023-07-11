@@ -115,9 +115,9 @@ Value : [카메라 권한 요청 메시지]
 ```
 
 ### 검출 이미지 반환 설정하기
-* OCR 결과인 NHNCloudIDCardInfo 데이터에 검출된 이미지를 함께 반환 받을 수 있습니다. 
-    * 기본값은 비활성화입니다. 
-#### 검출 이미지 반환 설정 API 명세 
+* OCR 결과인 NHNCloudIDCardInfo 데이터에 검출된 이미지를 함께 반환 받을 수 있습니다.
+    * 기본값은 비활성화입니다.
+#### 검출 이미지 반환 설정 API 명세
 ```objc
 @interface NHNCloudOCR : NSObject
 //..
@@ -141,7 +141,7 @@ Value : [카메라 권한 요청 메시지]
     // 초기화 및 Delegate 설정
     NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}"];
 
-    // 검출 이미지 반환 설정 
+    // 검출 이미지 반환 설정
     [NHNCloudOCR setDetectedImageReturn:YES];
 
     // 초기화    
@@ -164,10 +164,10 @@ Value : [카메라 권한 요청 메시지]
     if (event == NHNCloudSecurityEventScreenshot || event == NHNCloudSecurityEventScreenRecordingOn) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"캡처가 감지되었습니다." preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-        
+
         [self presentViewController:alert animated:YES completion:nil];
     }
-    
+
     // 동영상 녹화 시 빈 화면 출력 예시
     if (event == NHNCloudSecurityEventScreenRecordingOn || event == NHNCloudSecurityEventScreenRecordingOff) {
         if ([[UIScreen mainScreen] isCaptured] ) {
@@ -200,7 +200,7 @@ Value : [카메라 권한 요청 메시지]
 
 #### 2. Class 생성
 ![default_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/default_idcard_viewcontroller.png)
-* NHNCloudIDCardRecognizerViewController를 subclass로 가지는 ViewController Class를 생성합니다. 
+* NHNCloudIDCardRecognizerViewController를 subclass로 가지는 ViewController Class를 생성합니다.
 
 
 #### 3. Storyboard에 연결
@@ -211,16 +211,16 @@ Value : [카메라 권한 요청 메시지]
 * 추가한 ViewController에 Custom Class에 생성한 Class를 설정합니다.
 
 ![segue_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/segue_viewcontroller.png)
-* ViewController Segue Event를 설정합니다. 
+* ViewController Segue Event를 설정합니다.
 
-* Delegate를 설정하고 구현합니다. 
+* Delegate를 설정하고 구현합니다.
 
 
 ### NHNCloudIDCardRecognizerServiceViewController 커스터마이징
 * NHNCloudIDCardRecognizerServiceViewController를 사용하여 UI를 커스터마이징할 수 있습니다.
   * **ID-Card 가이드의 경우 미리 정의된 값을 사용하기 때문에 변경이 불가능합니다.**
 
-#### 1. NHNCloudIDCardRecognizerServiceViewController 상속 
+#### 1. NHNCloudIDCardRecognizerServiceViewController 상속
 * NHNCloudIDCardRecognizerServiceViewController를 상속 구현하여 커스터마이징할 수 있습니다.
 
 ##### Override 함수 명세
@@ -257,14 +257,14 @@ Value : [카메라 권한 요청 메시지]
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [NHNCloudOCR setIDCardRecognizerDelegate:self];
     // Custom UI 생성
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     [self startRunning];
 }
 
@@ -278,7 +278,7 @@ Value : [카메라 권한 요청 메시지]
 
 - (void)didUpdateIDCardGuide:(CGRect)rect {
     [super didUpdateIDCardGuide:rect];
-    
+
     // Custom UI 갱신  
 }
 
@@ -289,18 +289,18 @@ Value : [카메라 권한 요청 메시지]
 }
 
 - (void)didDetectIDCardInfo:(nullable NHNCloudIDCardInfo *)cardInfo error:(nullable NSError *)error {
-    
+
     NSLog(@"didDetectIDCardInfo : cardInfo : %@", cardInfo);
     NSLog(@"didDetectIDCardInfo : error : %@", error);
 }
 
 ```
 
-### 테스트 환경 사용하기 
+### 테스트 환경 사용하기
 * NHNCloudOCR SDK에서 테스트를 위해 제공하는 ID-Card 가이드를 사용하여 OCR을 테스트할 수 있습니다.
   * 신분증이 ID-Card 가이드 안에 존재할 경우 OCR이 시작됩니다.
     * 기본값은 hidden으로 눈에 보이지 않는 가이드가 존재합니다.
-    * `enableTestGuide`를 사용하여 테스트용 가이드를 출력할 수 있습니다. 
+    * `enableTestGuide`를 사용하여 테스트용 가이드를 출력할 수 있습니다.
 
 ##### ID-Card 가이드 API 명세
 ```objc
@@ -314,9 +314,9 @@ Value : [카메라 권한 요청 메시지]
 - (void)initializeOCR {
     // 초기화 및 Delegate 설정
     NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}" ];
-    
+
     [configuration enableTestGuide];
-        
+
     [NHNCloudOCR initWithConfiguration:configuration];
     [NHNCloudOCR setIDCardRecognizerDelegate:self];
 }
@@ -371,6 +371,11 @@ Value : [카메라 권한 요청 메시지]
 
 ### 인식된 결과로 진위 확인
 * 인식된 신분증의 진위를 확인합니다.
+* 진위확인에는 신분증 인식의 결과로 받은 requestKey가 필요합니다.
+
+#### requestKey 만료 기준
+* 일회성 값으로 1회 사용 후 만료됩니다.
+* 1시간 후 만료됩니다.
 
 ### 신분증 진위 확인 API 명세
 ```objc
