@@ -2,13 +2,13 @@
 
 ## 1.6.1 (2023. 07. 25.)
 ### NHN Cloud IAP
-#### 개선 사항
-* 결제 상세정보 전송 기능 개선
+#### Improved
+* Improved the feature to send payment details
 
 ## 1.6.0 (2023. 07. 11.)
 ### NHN Cloud OCR
-#### 기능 추가
-* OCR(ID Card Recognizer) 추가
+#### Added Features
+* Added OCR (ID Card Recognizer)
 
 ## 1.5.0 (2023. 06. 27.)
 ### NHN Cloud Push
@@ -26,7 +26,7 @@
 
 ### NHN Cloud IAP
 #### Added Featrues
-* Added a feature to send patment details 
+* Added a feature to send payment details 
     * You can view payment details on the Transaction tab in the IAP console.
 
 #### SymbolUploader(v0.0.2)

@@ -1,33 +1,33 @@
 
-## NHN Cloud > SDK 사용 가이드 > OCR > ID Card (iOS)
+## NHN Cloud > SDK User Guide > OCR > ID Card (iOS)
 
-## 사전 준비
+## Prerequisites
 
-1. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
-2. [NHN Cloud Console](https://console.nhncloud.com)에서 [AI Service > OCR] 서비스를 활성화합니다.
-3. OCR 콘솔에서 AppKey와 SecretKey를 확인합니다.
+1. Install [NHN Cloud SDK](./getting-started-ios).
+2. Enable [AI Service > OCR ] in[NHN Cloud Console](https://console.nhncloud.com).
+3. Check Appkey and SecretKey in the OCR console.
 
 <br>
 
-## 지원 환경
+## Supported Environment
 
-NHN Cloud OCR은 iOS 11.0 이상에서 동작합니다.<br>
+NHN Cloud OCR operates in iOS 11.0 or higher.<br>
 
-## NHN Cloud OCR 구성
+## Configuration of NHN Cloud OCR
 
-iOS용 NHN Cloud OCR SDK의 구성은 다음과 같습니다.
+The configuration of NHN Cloud OCR SDK for iOS is as follows.
 
 | Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
 | --- | --- | --- | --- | --- |
-| OCR | NHNCloudOCR | NHNCloudOCR.framework | * Vision.framework<br/> * AVFoundation.framework | |
+| OCR | NHNCloudOCR | NHNCloudOCR.framework | \* Vision.framework<br/> \* AVFoundation.framework | |
 | Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
-## NHN Cloud OCR SDK를 Xcode 프로젝트에 적용
+## Apply NHN Cloud OCR SDK to Xcode Project
 
-### 1. Cococapods을 통한 적용
+### 1. Apply with Cococapods
 
-* Podfile을 생성하여 NHN Cloud SDK에 대한 Pod을 추가합니다.
+* Add Pod for NHN Cloud SDK by creating a pod file.
 
 ```podspec
 platform :ios, '11.0'
@@ -38,86 +38,86 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
-### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
+### 2. Apply NHN Cloud SDK using Swift Package Manager
 
-* XCode에서 **File > Add Packages...** 메뉴를 선택합니다.
-* Package URL에 'https://github.com/nhn/nhncloud.ios.sdk'를 넣고 **Add Package** 버튼을 선택합니다.
-* NHNCloudOCR을 선택합니다.
+* Go to ** File > Add Packages...** in XCode.
+* Enter https://github.com/nhn/nhncloud.ios.sdk'를https://github.com/nhn/nhncloud.ios.sdk'를and select the ** button.
+* Select NHNCloudOCR.
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
-#### 프로젝트 설정
+#### Set up Project
 
-* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+* Add **-lc++** and **-ObjC** to **Other Linker Flags** of **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
-### 3. 바이너리를 다운로드하여 NHN Cloud SDK 적용
+### Download binaries and apply to NHN Cloud SDK
 
-#### 프레임워크 설정
+#### Set up Framework
 
-* NHN Cloud [Downloads](../../../Download/#toast-sdk) 페이지에서 전체 iOS SDK를 다운로드할 수 있습니다.
-* Xcode Project에 **NHNCloudOCR.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework, vision.framework, AVFoundation.framework**를 추가합니다.
-* vision.framework와 AVFoundation.framework는 아래 방법으로 추가할 수 있습니다.
+* You can download the full iOS SDK from the NHN Cloud [Downloads](../../../Download/#toast-sdk) page.
+* Add **NHNCloudOCR.framework**, **NHNCloudCore.framework**, and **NHNCloudCommon.framework, vision.framework, AVFoundation.framework** to Xcode Project.
+* You can add vision.framework and AVFoundation.framework as follows. 
 ![linked_vision_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_vision_frameworks.png)
 ![linked_avfoundation_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_avfoundation_frameworks.png)
 ![linked_frameworks_ocr](https://static.toastoven.net/toastcloud/sdk/ios/linked_frameworks_ocr.png)
 
-#### 프로젝트 설정
+#### Set up Project
 
-* **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
+* Add **-lc++** and **-ObjC** to **Other Linker Flags** of **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
-## NHNCloudOCR SDK 초기화
-* NHN Cloud Console에서 발급 받은 AppKey와 Secret을 NHNCloudOCRConfiguration 객체에 설정합니다.
-  * AI Service -> OCR -> Document OCR -> 신분증
-* NHNCloudOCR은 초기화에 NHNCloudOCRConfiguration 객체를 파라미터로 사용합니다.
-* 카메라 사용 권한을 얻기 위해 info.plist에 아래 내용을 추가합니다.
+## Initialize NHNCLOUDOCR SDK
+* Set AppKey and Secret issued from NHN Cloud Console in NHNCloudOCRConfiguration object.
+  * AI Service -> OCR -> Document OCR -> ID
+* NHNCloudOCR uses an NHNCloudOCRConfiguration object as a parameter for initialization.
+* To get a permission to use camera, add the following items to info.plist.
 ```
 Key : NSCameraUsageDescription
-Value : [카메라 권한 요청 메시지]
+Value : [Camera Permission Request Message]
 ```
 
-### 초기화 API 명세
+### Specification for Initialization API
 
 ``` objc
-// 초기화
+// reset
 + (void)initWithConfiguration:(NHNCloudOCRConfiguration *)configuration;
 
-// Delegate 설정
+// set delegate
 + (void)setIDCardRecognizerDelegate:(nullable id<NHNCloudIDCardRecognizerDelegate>)delegate;
 ```
 
-### Delegate API 명세
-* NHNCloudIDCardRecognizerDelegate 등록하면 인식 결과에 대한 통지를 받을 수 있습니다.
-* OCR이 실행 중일 때 화면의 스크린 캡처와 동영상 녹화 이벤트를 수신할 수 있습니다.
-* SDK에서 제공하는 기본 화면 사용 시(NHNCloudIDCardRecognizerViewController 상속 구현) 닫기, 확인 이벤트를 수신할 수 있습니다.
+### Specification for Delegate API
+* You can be notified of the recognition result when NHNCloudIDCardRecognizerDelegate is registered.
+* When OCR is running, you can receive screen capture and video recording events.
+* When using the default screen provided by the SDK (implementing inherited NHNCloudIDCardRecognizerViewController), close and confirmation events can be received.
 
 ``` objc
 @protocol NHNCloudIDCardRecognizerDelegate <NSObject>
 
-// 신분증 인식 결과 반환
+// return ID recognition result
 - (void)didDetectIDCardInfo:(nullable NHNCloudIDCardInfo *)cardInfo error:(nullable NSError *)error;
 
 @optional
 
-// 스크린 캡처 이벤트 수신
+// Receive screen capture events
 - (void)didDetectIDCardSecurityEvent:(NHNCloudSecurityEvent)event;
 
-// 닫기 버튼 이벤트 수신(NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// Receive the close button event (can be received only when inheriting NHNCloudIDCardRecognizerViewController)
 - (void)IDCardRecognizerViewControllerCancel;
 
-// 확인 버튼 이벤트 수신(NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// Receive OK button event (can be received only when inheriting NHNCloudIDCardRecognizerViewController)
 - (void)IDCardRecognizerViewControllerConfirm;
 
 @end
 ```
 
-### 검출 이미지 반환 설정하기
-* OCR 결과인 NHNCloudIDCardInfo 데이터에 검출된 이미지를 함께 반환 받을 수 있습니다.
-    * 기본값은 비활성화입니다.
-#### 검출 이미지 반환 설정 API 명세
+### Set up Detected Image Return
+* NHNCloudIDCardInfo data, which is the OCR result, can be returned together with the detected image.
+    * Default is disabled.
+#### Specification for Setting up Detected Image Return API
 ```objc
 @interface NHNCloudOCR : NSObject
 //..
@@ -127,7 +127,7 @@ Value : [카메라 권한 요청 메시지]
 @end
 ```
 
-### 초기화 과정 예
+### Example of Initialization Process
 
 ``` objc
 #import <NHNCloudOCR/NHNCloudOCR.h>
@@ -138,37 +138,37 @@ Value : [카메라 권한 요청 메시지]
 @implementation ViewController
 
 - (void)initializeOCR {
-    // 초기화 및 Delegate 설정
+    // Initialize and Configure Delegate
     NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}"];
 
-    // 검출 이미지 반환 설정
+    // Set Detected Image Return
     [NHNCloudOCR setDetectedImageReturn:YES];
 
-    // 초기화    
+    // Initialize    
     [NHNCloudOCR initWithConfiguration:configuration];
 
-    // Delegate 설정
+    // Configure Delegate
     [NHNCloudOCR setIDCardRecognizerDelegate:self];
 }
 
-// 신분증 인식 결과 반환
+// Return ID Card Recognition Result
 - (void)didDetectIDCardInfo:(NHNCloudIDCardInfo *)cardInfo error:(NSError *)error {
     NSLog(@"didDetectIDCardInfo : cardInfo : %@", cardInfo);
     NSLog(@"didDetectIDCardInfo : error : %@", error);
 }
 
-// 스크린 캡처 이벤트 수신
+// Receive Screen Capture Event
 - (void)didDetectIDCardSecurityEvent:(NHNCloudSecurityEvent)event {
 
-    // 스크린 캡처 경고 Alert 출력 예시
+    // Example of Screen Capture Alert
     if (event == NHNCloudSecurityEventScreenshot || event == NHNCloudSecurityEventScreenRecordingOn) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"캡처가 감지되었습니다." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Capture detected." preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
 
         [self presentViewController:alert animated:YES completion:nil];
     }
 
-    // 동영상 녹화 시 빈 화면 출력 예시
+    // Example of blank screen output when recording video
     if (event == NHNCloudSecurityEventScreenRecordingOn || event == NHNCloudSecurityEventScreenRecordingOff) {
         if ([[UIScreen mainScreen] isCaptured] ) {
             [[[UIApplication sharedApplication] windows] firstObject].hidden = YES;
@@ -178,75 +178,75 @@ Value : [카메라 권한 요청 메시지]
     }
 }
 
-// 확인 버튼 이벤트 수신(NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// Receive Confirm Button Event (Only available for NHNCloudIDCardRecognizerViewController inheritance implementations)
 - (void)IDCardRecognizerViewControllerConfirm {
-    // 신분증 인식 결과 화면에서 확인 버튼을 눌렀을 때의 처리
+    // When you click the confirm button on the ID card recognition result
 }
 
-// 닫기 버튼 이벤트 수신(NHNCloudIDCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// Receive Close Button Event (Only available for NHNCloudIDCardRecognizerViewController inheritance implementations)
 - (void)IDCardRecognizerViewControllerCancel {
-    // 신분증 인식 또는 결과 화면에서 닫기 버튼을 눌렀을 때의 처리
+    // When you click the confirm button on the ID card recognition or result screen
 }
 
 @end
 ```
 
-## ID Card 적용 방법
+## How to Apply ID Card
 
 ### NHNCloudIDCardRecognizerViewController
 
-#### 1. ID-Card Recognizer ViewController 사용하기
-* NHNCloudIDCardRecognizerViewController를 상속 구현한 Class를 Storyboard의 ViewController에 연결하여 기본 UI가 적용된 ID-Card Recognizer를 손쉽게 사용할 수 있습니다.
+#### 1. Use ID-Card Recognizer ViewController
+* You can easily use ID-Card Recognizer with the default UI by connecting a class that inherits and implements NHNCloudIDCardRecognizerViewController to ViewController of Storyboard.
 
-#### 2. Class 생성
+#### 2. Create Class
 ![default_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/default_idcard_viewcontroller.png)
-* NHNCloudIDCardRecognizerViewController를 subclass로 가지는 ViewController Class를 생성합니다.
+* Create a ViewController Class with NHNCloudIDCardRecognizerViewController as a subclass.
 
 
-#### 3. Storyboard에 연결
+#### 3. Connect to Storyboard
 ![create_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/create_viewcontroller.png)
-* Storyboard에 ViewController를 추가합니다.
+* Add ViewController to Storyboard.
 
 ![custom_class](https://static.toastoven.net/toastcloud/sdk/ios/custom_class.png)
-* 추가한 ViewController에 Custom Class에 생성한 Class를 설정합니다.
+* Set the created class in Custom Class in the added ViewController.
 
 ![segue_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/segue_viewcontroller.png)
-* ViewController Segue Event를 설정합니다.
+* Set the ViewController Segue Event.
 
-* Delegate를 설정하고 구현합니다.
+* Set up and implement the Delegate.
 
 
-### NHNCloudIDCardRecognizerServiceViewController 커스터마이징
-* NHNCloudIDCardRecognizerServiceViewController를 사용하여 UI를 커스터마이징할 수 있습니다.
-  * **ID-Card 가이드의 경우 미리 정의된 값을 사용하기 때문에 변경이 불가능합니다.**
+### Customize NHNCloudIDCardRecognizerServiceViewController
+* You can customize the UI using NHNCloudIDCardRecognizerServiceViewController.
+  * **The ID-Card guide cannot be changed because pre-defined values are used.**
 
-#### 1. NHNCloudIDCardRecognizerServiceViewController 상속
-* NHNCloudIDCardRecognizerServiceViewController를 상속 구현하여 커스터마이징할 수 있습니다.
+#### 1. Inherit NHNCloudIDCardRecognizerServiceViewController
+* You can perform customizing by implementing inheritance of NHNCloudIDCardRecognizerServiceViewController.
 
-##### Override 함수 명세
+##### Specification for Override Function
 ```objc
 
-// 뷰가 메모리에 만들어질 때 초기 설정 및 데이터 준비 작업을 수행
+// Perform some initial setup and data prep work when the view is created in memory
 - (void)viewDidLoad;
 
-// 뷰가 화면에 나타나기 직전에 마지막 작업을 수행
+// Perform the last thing right before the view comes on screen
 - (void)viewWillAppear:(BOOL)animated;
 
-// 뷰가 화면에서 사라지기 직전에 정리 작업을 수행
+// Perform some cleanup right before the view disappears from the screen
 - (void)viewWillDisappear:(BOOL)animated;
 
-// 뷰가 화면에서 완전히 사라진 후 추가적인 정리 작업을 수행
+// Perform additional cleanup after the view is completely off the screen
 - (void)viewDidDisappear:(BOOL)animated;
 
-// Custom UI 갱신
+// Update Custom UI
 - (void)didUpdateIDCardGuide:(CGRect)rect;
 
-// 신분증 인식 시 UI 갱신
+// Update UI when recognizing ID
 - (void)imageDidDetect:(BOOL)detected;
 
 ```
 
-##### Override 사용 예
+##### Example of using Override
 ```objc
 
 @interface OCRViewController : NHNCloudIDCardRecognizerServiceViewController <NHNCloudIDCardRecognizerDelegate>
@@ -259,7 +259,7 @@ Value : [카메라 권한 요청 메시지]
     [super viewDidLoad];
 
     [NHNCloudOCR setIDCardRecognizerDelegate:self];
-    // Custom UI 생성
+    // Create Custom UI
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -279,13 +279,13 @@ Value : [카메라 권한 요청 메시지]
 - (void)didUpdateIDCardGuide:(CGRect)rect {
     [super didUpdateIDCardGuide:rect];
 
-    // Custom UI 갱신  
+    // Update Custom UI
 }
 
 - (void)imageDidDetect:(BOOL)detected {
     [super imageDidDetect:detected];
 
-    // 신분증 인식 시 UI 갱신
+    // Update UI when recognizing ID
 }
 
 - (void)didDetectIDCardInfo:(nullable NHNCloudIDCardInfo *)cardInfo error:(nullable NSError *)error {
@@ -296,23 +296,23 @@ Value : [카메라 권한 요청 메시지]
 
 ```
 
-### 테스트 환경 사용하기
-* NHNCloudOCR SDK에서 테스트를 위해 제공하는 ID-Card 가이드를 사용하여 OCR을 테스트할 수 있습니다.
-  * 신분증이 ID-Card 가이드 안에 존재할 경우 OCR이 시작됩니다.
-    * 기본값은 hidden으로 눈에 보이지 않는 가이드가 존재합니다.
-    * `enableTestGuide`를 사용하여 테스트용 가이드를 출력할 수 있습니다.
+### Use Test Environment
+* You can test OCR by using the ID-Card guide provided to test NHNCloudOCR SDK.
+  * OCR is initiated when a credit card exists in the ID-Card guide.
+    * Default value is hidden so that there is an invisible guide.
+    * You can output a guide for testing by using `enableTestGuide`.
 
-##### ID-Card 가이드 API 명세
+##### Specification for ID-Card Guide
 ```objc
 @interface NHNCloudOCRConfiguration : NSObject
 - (void)enableTestGuide;
 @end
 ```
-##### ID-Card 가이드 사용 예
+##### Example of using ID-Card guide
 
 ```objc
 - (void)initializeOCR {
-    // 초기화 및 Delegate 설정
+    // Initialization and Configure Delegate
     NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}" ];
 
     [configuration enableTestGuide];
@@ -321,41 +321,41 @@ Value : [카메라 권한 요청 메시지]
     [NHNCloudOCR setIDCardRecognizerDelegate:self];
 }
 ```
-## ID-Card Recognizer ViewController 제어하기
-> `ID Card 적용 방법`을 보고 NHNCloudIDCardRecognizerViewController 또는 NHNCloudIDCardRecognizerServiceViewController 상속 구현 필요
+## Control ID-Card Recognizer ViewController
+> Inherit and implement NHNCloudIDCardRecognizerViewController or NHNCloudIDCardRecognizerServiceViewController by referring to `How to Apply ID Card`
 
-### 1. ID-Card Recognizer 시작/중지
-* ID-Card Recognizer를 시작하거나 중지합니다.
+### 1. Start/Stop ID-Card Recognizer
+* Start or stop ID-Card Recognizer.
 
-#### ID-Card Recognizer 시작/중지 API 명세
+#### Specification for Start or stop ID-Card Recognizer
 ```objc
 - (void)startRunning;
 - (void)stopRunning;
 - (BOOL)isRunning;
 ```
-#### ID-Card Recognizer 시작/중지 사용 예
+#### Example of Start or stop ID-Card Recognizer
 ```objc
 
 - (void)start {
   [self startRunning];
 }
 
-// 신분증 인식 결과 반환
+// return ID recognition result
 - (void)didDetectIDCardInfo:(nullable NHNCloudIDCardInfo *)cardInfo error:(nullable NSError *)error {
     [self stopRunning];
 }
 ```
 
-### 2. 카메라 활성/비활성
-* 디바이스의 카메라를 활성화하거나 비활성화합니다.
+### 7. Enable/Disable Camera
+* Enable or disable a device’s camera.
 
-#### 카메라 활성/비활성 API 명세
+#### Specification for Enable/Disable Camera
 ```objc
 - (void)startRunningCamera;
 - (void)stopRunningCamera;
 - (BOOL)isRunnginCamera;
 ```
-#### 카메라 활성/비활성 사용 예
+#### Example of Enable/Disable Camera
 ```objc
 - (void)cameraButtonAction:(UIButton *)button {    
     if ([self isRunnginCamera] == YES) {
@@ -367,30 +367,30 @@ Value : [카메라 권한 요청 메시지]
 
 ```
 
-## 신분증 진위 확인
+## Verify ID Card Authenticity
 
-### 인식된 결과로 진위 확인
-* 인식된 신분증의 진위를 확인합니다.
-* 진위확인에는 신분증 인식의 결과로 받은 requestKey가 필요합니다.
+### Verify ID Card with recognition results
+* Verify the authenticity of recognized IDs.
+* requestKey received as a result of ID recognition is required.
 
-#### requestKey 만료 기준
-* 일회성 값으로 1회 사용 후 만료됩니다.
-* 1시간 후 만료됩니다.
+#### Expiration of requestKey
+* Expires after one use as it is a one-time value.
+* Expires after 1 hour.
 
-### 신분증 진위 확인 API 명세
+### Specification for ID Card Authenticity Verification
 ```objc
 + (void)verificateAuthenticityIDCard:(nonnull NHNCloudIDCardInfo *)IDCardInfo
                    completionHandler:(nullable void (^)(BOOL isAuthenticity, NSError * _Nullable error))completionHandler
 ```
 
-### 신분증 진위 확인 API 사용 예
+### Example of using ID Card Authenticity Verification API
 ```objc
-[NHNCloudOCR verificateAuthenticityIDCard:cardInfo // didDetectIDCardInfo의 결과로 받은 cardInfo
-                            completionHandler:^(BOOL isAuthenticity, NSError * _Nullable error) {    
+[NHNCloudOCR verificateAuthenticityIDCard:cardInfo // cardInfo received as a result of didDetectIDCardInfo
+                            completionHandler:^(BOOL isAuthenticity, NSError * _Nullable error) {
     if (isAuthenticity) {
-        // 신분증 인식 성공
+        // ID recognition successful
     } else {
-        // 신분증 인식 실패
+        // ID recognition failed
     }
 }];
 ```
