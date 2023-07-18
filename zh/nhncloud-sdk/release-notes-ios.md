@@ -2,8 +2,8 @@
 
 ## 1.6.1 (2023. 07. 25.)
 ### NHN Cloud IAP
-#### 개선 사항
-* 결제 상세정보 전송 기능 개선
+#### Improved
+* Improved the feature to send payment details
 
 ## 1.6.0 (2023. 07. 11.)
 ### NHN Cloud OCR
