@@ -4,9 +4,9 @@
 
 ### NHN Cloud OCR
 
-#### 기능 추가
+#### 機能追加
 
-* OCR(ID Card Recognizer) 추가
+* OCR(ID Card Recognizer)追加
 
 ## 1.6.0 (2023. 06. 20.)
 
