@@ -311,6 +311,36 @@ You can grant multiple required roles to project members.
 | PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey |
 | PROJECT MEMBER ADMIN | Create/Read/Update/Delete for project members<br>Create/Read/Update/Delete for project's role groups |
 | PROJECT MEMBER VIEWER | Read for project members<br>Read for project's role groups |
+| PROJECT NOTICE GROUP MANAGEMENT ADMIN | Create/Read/Update/Delete for project's Notification Receiver Group Management <br> Read for project members <br> Read for project's role groups|
+| PROJECT NOTICE GROUP MANAGEMENT VIEWER | Read for project's Notification Receiver Group Management <br> Read for project's role groups|
+| PROJECT API SECURITY SETTING ADMIN | Create/Read/Update/Delete for project's API Security Setting|
+
+#### Permissions by Project Management Feature
+
+| Tab | Available Action by Feature  | Project Management ROLE | Service Use ROLE |
+| --- | --- | --- | --- |
+| Dashboard | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | Service ADMIN<br>Service PERMISSION<br>Service VIEWER |
+| Member Management | Read | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
+| | Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
+| Role Group Management | Role Group Read | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
+| | Role Group Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
+| | Role Group Member Tab Read | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
+| | Role Group Member Tab Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
+| | Role Group Role Tab Read | ADMIN<br>PROJECT MEMBER ADMIN<br> PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
+| | Role Group Role Tab Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
+| Notification Receiver Group Management | Read | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER | No Permission |
+| | Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
+| Usage Status | Read | ADMIN<br>BILLING VIEWER | No Permission |
+| Project Management | Basic Project Information Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN| Service PERMISSION |
+| | Basic Project Information Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN | No Permission |
+| | API Security Setting Read | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MEMBER<br>PROJECT API SECURITY SETTING ADMIN | Service PERMISSION  |
+| | API Security Setting Create/Update/Delete | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT API SECURITY SETTING ADMIN | No Permission |
+| | Service in Use(Disable) Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER| Service PERMISSION |
+| | Service in Use(Disable) Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN(Cannot disable for marketplace service) | Service PERMISSION |
+| | Delete Project Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | Service PERMISSION |
+| | Delete Project Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN | No Permission |
+| Quota Management | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | Service ADMIN<br>Service VIEWER |
+| | Request Quota Adjustment | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN | Service ADMIN |
 
 #### Service Use roles
 

@@ -91,7 +91,7 @@ Value： [カメラ権限リクエストメッセージ]
 ### Delegate API仕様
 * NHNCloudCreditCardRecognizerDelegateを登録すると、認識結果に対する通知を受け取ることができます。
 * OCRが実行中の時、画面のスクリーンキャプチャと動画録画イベントを受信できません。
-* SDK에서 제공하는 기본 화면 사용 시(NHNCloudCreditCardRecognizerViewController 상속 구현) 닫기, 확인 이벤트를 수신할 수 있습니다.
+* SDKで提供する基本画面使用時(NHNCloudCreditCardRecognizerViewController継承実装)閉じる、確認イベントを受信できます。
 
 ``` objc
 @protocol NHNCloudCreditCardRecognizerDelegate <NSObject>
@@ -104,10 +104,10 @@ Value： [カメラ権限リクエストメッセージ]
 // スクリーンキャプチャイベント受信
 - (void)didDetectCreditCardSecurityEvent:(NHNCloudSecurityEvent)event;
 
-// 닫기 버튼 이벤트 수신(NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 閉じるボタンイベント受信(NHNCloudCreditCardRecognizerViewController継承実装時にのみ受信可能)
 - (void)creditCardRecognizerViewControllerCancel;
 
-// 확인 버튼 이벤트 수신(NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 確認ボタンイベント受信(NHNCloudCreditCardRecognizerViewController継承実装時にのみ受信可能)
 - (void)creditCardRecognizerViewControllerConfirm;
 
 @end
@@ -177,20 +177,20 @@ Value： [カメラ権限リクエストメッセージ]
     }
 }
 
-// 확인 버튼 이벤트 수신(NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 確認ボタンイベント受信(NHNCloudCreditCardRecognizerViewController継承実装時にのみ受信可能)
 - (void)creditCardRecognizerViewControllerConfirm {
-    // 신용카드 인식 결과 화면에서 확인 버튼을 눌렀을 때의 처리
+    // クレジットカード認識結果画面で確認ボタンを押した場合の処理
 }
 
-// 닫기 버튼 이벤트 수신(NHNCloudCreditCardRecognizerViewController 상속 구현 시에만 수신 가능)
+// 閉じるボタンイベント受信(NHNCloudCreditCardRecognizerViewController継承実装時にのみ受信可能)
 - (void)creditCardRecognizerViewControllerCancel {
-    // 신용카드 인식 또는 결과 화면에서 닫기 버튼을 눌렀을 때의 처리
+    // クレジットカードの認識または結果画面で閉じるボタンを押した時の処理
 }
 
 @end
 ```
 
-## Credit Card 적용 방법
+## Credit Card適用方法
 
 ### NHNCloudCreditCardRecognizerViewController
 
@@ -224,16 +224,16 @@ Value： [カメラ権限リクエストメッセージ]
 ##### Override関数の仕様
 ```objc
 
-// 뷰가 메모리에 만들어질 때 초기 설정 및 데이터 준비 작업을 수행
+// ビューがメモリに作成される時、初期設定やデータの準備作業を実行
 - (void)viewDidLoad;
 
-// 뷰가 화면에 나타나기 직전에 마지막 작업을 수행
+// ビューが画面に表示される直前に最後の処理を実行
 - (void)viewWillAppear:(BOOL)animated;
 
-// 뷰가 화면에서 사라지기 직전에 정리 작업을 수행
+// ビューが画面から消える直前にクリーンアップを実行
 - (void)viewWillDisappear:(BOOL)animated;
 
-// 뷰가 화면에서 완전히 사라진 후 추가적인 정리 작업을 수행
+// ビューが画面から完全に消えた後、追加のクリーンアップを実行
 - (void)viewDidDisappear:(BOOL)animated;
 
 // Custom UI更新 
@@ -323,7 +323,7 @@ Value： [カメラ権限リクエストメッセージ]
 
 ## Credit-Card Recognizer ViewControllerを制御する
 
-> `Credit Card 적용 방법`을 보고 NHNCloudCreditCardRecognizerViewController 또는 NHNCloudCreditCardRecognizerServiceViewController 상속 구현 필요
+> `Credit Card適用方法`を見てNHNCloudCreditCardRecognizerViewControllerまたはNHNCloudCreditCardRecognizerServiceViewController継承実装必要
 
 ### 1. Credit-Card Recognizerの開始/停止
 * Credit-Card Recognizerを開始または停止します。
