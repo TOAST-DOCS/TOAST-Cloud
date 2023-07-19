@@ -1,19 +1,19 @@
-## NHN Cloud > SDK 사용 가이드 > OCR > ID Card (Android)
+## NHN Cloud > SDK使用ガイド > OCR > ID Card (Android)
 
-## 사전 준비
+## 事前準備
 
-1. [NHN Cloud Console](https://console.nhncloud.com)에서 [AI Service > OCR] 서비스를 활성화합니다.
-2. OCR 콘솔에서 AppKey와 SecretKey를 확인합니다.
+1. [NHN Cloud Console](https://console.nhncloud.com)で[AI Service > OCR]サービスを有効にします。
+2. OCRコンソールでAppKeyとSecretKeyを確認します。
 
-## 지원 환경
+## サポート環境
 
-NHN Cloud ID Card Recognizer는 Android 5.0 이상(API level 21 이상)에서 동작합니다.
+NHN Cloud ID Card RecognizerはAndroid 5.0以上(API level 21以上)で動作します。
 
-## 프로젝트 설정
+## プロジェクト設定
 
-### 의존성 추가
+### 依存関係追加
 
-앱의 build.gradle 파일에 nhncloud-idcard-recognizer 의존성을 추가합니다.
+アプリのbuild.gradleファイルにnhncloud-idcard-recognizer依存関係を追加します。
 
 ```groovy
 dependencies {
@@ -25,18 +25,18 @@ dependencies {
 
 <br>
 
-### CAMERA 권한
+### CAMERA権限
 
-ID Card Recognizer를 사용하기 위해서는 **Manifest.permission.CAMERA** 권한이 필요합니다.
-ID Card Recognizer를 시작하기 전에 카메라 권한을 획득하세요.
+ID Card Recognizerを使用するには **Manifest.permission.CAMERA**権限が必要です。
+ID Card Recognizerを起動する前にカメラの権限を取得してください。
 
 <br>
 
-## Id Card Recognizer 사용
+## Id Card Recognizer使用
 
-### IdCardRecognizer 인스턴스 생성
+### IdCardRecognizerインスタンス作成
 
-ID Card Recognizer 인스턴스를 생성합니다.
+ID Card Recognizerインスタンスを作成します。
 
 ```kotlin
 val nhnCloudOcr = NhnCloudOcr.newBuilder(context)
@@ -48,9 +48,9 @@ val idCardRecognizer = nhnCloudOcr.createIdCardRecognizer()
 
 <br>
 
-### IdCardRecognizer 시작하기
+### IdCardRecognizerを始める
 
-IdCardRecognizer의 launch(Activity, IdCardRecognitionCallback) 메서드를 호출하여 신분증 인식을 시작합니다.
+IdCardRecognizerのlaunch(Activity, IdCardRecognitionCallback)メソッドを呼び出して身分証認識を開始します。
 
 ```kotlin
 IdCardRecognizer.launch(activity) { result, data ->
@@ -64,16 +64,16 @@ IdCardRecognizer.launch(activity) { result, data ->
 
 <br>
 
-### 인식 데이터 사용
+### 認識データ使用
 
-신분증 인식 성공 시 IdCardData를 상속 구현한 객체로 신분증 인식 데이터가 전달됩니다.
-신분증 종류에 따라 주민 등록증은 IdCardResidentData 객체로, 운전 면허증은 IdCardDriverData 객체로 반환됩니다. 
+IDカード認識に成功すると、IDCardDataを継承実装したオブジェクトにIDカード認識データが渡されます。
+身分証明書の種類によって、住民登録証はIdCardResidentDataオブジェクト、運転免許証はIdCardDriverDataオブジェクトが返されます。
 
-개인정보 보호를 위해 신분증 데이터는 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
-SecureString.charAt(index) 메서드는 지정된 index에 있는 문자를 반환합니다.
+個人情報保護のために身分証データは一般文字列ではなくSecureStringオブジェクトで返されます。
+SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。
 
-> IdCardData로 반환되는 신분증 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약합니다.<br>
-> 화면에 표시하기 위하여 [SecureTextView 사용](./idcard-recognizer-android/#_18)을 참고하세요.
+> IdCardDataで返される身分証明書認識情報をStringオブジェクトとして作成して使用するとセキュリティに脆弱です。<br>
+> 画面に表示するために[SecureTextView使用](./idcard-recognizer-android/#_18)を参照してください。
 
 ```kotlin
 when (data) {
@@ -92,15 +92,15 @@ when (data) {
 
 <br>
 
-### 신분증 진위 확인
+### 身分証真偽確認
 
-신분증 진위 확인을 위해서 IdCardAuthenticator 인스턴스를 생성합니다. 
-신분증 인식 결과인 IdCardData를 이용해 진위 확인을 요청할 수 있습니다. 
+身分証の真偽確認のためにIdCardAuthenticatorインスタンスを作成します。 
+身分証認識結果であるIdCardDataを利用して真偽確認をリクエストできます。 
 
-신분증 진위 확인 결과는 Boolean 타입으로 반환됩니다. 
+身分証真偽確認結果はBooleanタイプで返されます。 
 
-> 진위 확인에 사용되는 IdCardData의 RequestKey는 일회성 값으로 재사용할 수 없습니다.<br>
-> RequestKey는 발급 이후 1시간 동안 유효하며 그 이후에는 사용할 수 없습니다.
+> 真偽確認に使用されるIdCardDataのRequestKeyは、一度限りの値のため再使用できません。<br>
+> RequestKeyは発行後1時間有効で、その後は使用できません。
 
 ```kotlin
 val authenticator = nhnCloudOcr.createIdCardAuthenticator()
@@ -114,7 +114,7 @@ viewModelScope.launch(Dispatchers.IO) {
 }
 ```
 
-authenticateAsync 메서드로 호출을 원할 경우 IdCardAuthenticityCallback을 구현하여 결과를 받을 수 있습니다. 
+authenticateAsyncメソッドで呼び出したい場合はIdCardAuthenticityCallbackを実装して結果を受け取ることができます。
 
 ```kotlin
 nhnCloudOcr.createIdCardAuthenticator()
@@ -129,14 +129,14 @@ nhnCloudOcr.createIdCardAuthenticator()
 
 <br>
 
-## 신분증 인식 화면 사용자 정의
+## 身分証認識画面ユーザー定義
 
-신분증 인식 화면을 사용자 정의하여 사용할 수 있습니다.
-사용자 정의 화면을 구성하려면 IdCardRecognizer 대신 IdCardRecognitionService를 사용해야 합니다.
+身分証認識画面をユーザー定義して使用できます。
+ユーザー定義画面を構成するにはIdCardRecognizerの代わりにIdCardRecognitionServiceを使用する必要があります。
 
-### IdCardRecognitionService 인스턴스 생성
+### IdCardRecognitionServiceインスタンス作成
 
-IdCardRecognitionService 인스턴스를 생성합니다.
+IdCardRecognitionServiceインスタンスを作成します。
 
 ```kotlin
 val ocrServices = NhnCloudOcrServices.newBuilder(context)
@@ -148,10 +148,10 @@ val IdCardRecognitionService = ocrServices.createIdCardRecognitionService()
 
 <br>
 
-### IdCardRecognitionService 리스너 등록
+### IdCardRecognitionServiceリスナー登録
 
-setIdCardRecognitionListener() 메서드를 사용하여 리스너를 등록합니다.
-신분증이 인식되었을 때 IdCardRecognitionListener를 통해 결과가 통지됩니다.
+setIdCardRecognitionListener()メソッドを使用してリスナーを登録します。
+身分証が認識されるとIdCardRecognitionListenerを通じて結果が通知されます。
 
 ```kotlin
 IdCardRecognitionService.setIdCardRecognitionListener { result, data ->
@@ -164,14 +164,14 @@ IdCardRecognitionService.setIdCardRecognitionListener { result, data ->
 }
 ```
 
-> 신분증 인식 후 반드시 IdCardRecognitionService.stop()을 호출하여 서비스를 중지해야 합니다.
+> 身分証認識後、必ずIdCardRecognitionService.stop()を呼び出してサービスを停止する必要があります。
 
 <br>
 
-### 인식 결과 처리
+### 認識結果処理
 
-IdCardRecognitionListener으로 전달되는 IdCardRecognitionData는 신뢰도(confidence rating)와 상관없이 모든 결과를 반환합니다.
-따라서 아래와 같이 신뢰도(confidence rating)를 체크하여 보다 정확한 결과를 사용할 수 있습니다.
+IdCardRecognitionListenerに渡されるIdCardRecognitionDataは信頼度(confidence rating)に関係なくすべての結果を返します。
+したがって、下記のように信頼度(confidence rating)をチェックして、より正確な結果を使用できます。
 
 ```kotlin
 IdCardRecognitionService.setIdCardRecognitionListener { result, data ->
@@ -250,16 +250,16 @@ private fun isConfident(data: IdCardRecognitionData): Boolean {
 
 <br>
 
-### 인식 데이터 사용
+### 認識データ使用
 
-신분증 인식 성공 시 IdCardRecognitionData 상속 구현한 객체로 신분증 인식 데이터가 전달됩니다.
-신분증 종류에 따라 주민 등록증은 IdCardResidentRecognitionData 객체로, 운전 면허증은 IdCardDriverRecognitionData 객체로 반환됩니다. 
+身分証の認識に成功すると、IdCardRecognitionDataを継承して実装したオブジェクトに身分証の認識データが渡されます。
+身分証明書の種類によって、住民登録証はIdCardResidentRecognitionDataオブジェクト、運転免許証はIdCardDriverRecognitionDataオブジェクトで返されます。
 
-개인정보 보호를 위해 신분증 데이터는 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
-SecureString.charAt(index) 메서드는 지정된 index에 있는 문자를 반환합니다.
+個人情報保護のために身分証データは一般文字列ではなくSecureStringオブジェクトで返されます。
+SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。
 
-> IdCardRecognitionData로 반환되는 신분증 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약합니다.<br>
-> 화면에 표시하기 위하여 [SecureTextView](./idcard-recognizer-android/#_18)사용을 참고하세요.
+> IdCardRecognitionDataで返される身分証認識情報をStringオブジェクトとして作成して使用するとセキュリティに脆弱です。<br>
+> 画面に表示するために[SecureTextView](./idcard-recognizer-android/#_18)使用を参照してください。
 
 ```kotlin
 when (data) {
@@ -279,15 +279,15 @@ when (data) {
 
 <br>
 
-### 신분증 진위 확인
+### 身分証真偽確認
 
-신분증 진위 확인을 위해서 IdCardAuthenticityService 인스턴스를 생성합니다. 
-신분증 인식 결과인 IdCardRecognitionData를 이용해 진위 확인을 요청할 수 있습니다. 
+身分証真偽確認のためにIdCardAuthenticityServiceインスタンスを作成します。 
+身分証認識結果であるIdCardRecognitionDataを利用して真偽確認をリクエストできます。 
 
-신분증 진위 확인 결과는 Boolean 타입으로 반환됩니다. 
+身分証真偽確認結果はBooleanタイプで返されます。 
 
-> 진위 확인에 사용되는 IdCardRecognitionData의 RequestKey는 일회성 값으로 재사용할 수 없습니다.<br>
-> RequestKey는 발급 이후 1시간 동안 유효하며 그 이후에는 사용할 수 없습니다.
+> 真偽確認に使用されるIdCardRecognitionDataのRequestKeyは、一回限りの値のため再使用できません。<br>
+> RequestKeyは発行後1時間有効で、その後は使用できません。
 
 ```kotlin
 val service = ocrServices.createIdCardAuthenticityService()
@@ -301,7 +301,7 @@ viewModelScope.launch(Dispatchers.IO) {
 }
 ```
 
-authenticateAsync 메서드로 호출을 원할 경우 IdCardAuthenticityCallback을 구현하여 결과를 받을 수 있습니다. 
+authenticateAsyncメソッドで呼び出したい場合はIdCardAuthenticityCallbackを実装して結果を受け取ることができます。
 
 ```kotlin
 ocrServices.createIdCardAuthenticityService()
@@ -316,9 +316,9 @@ ocrServices.createIdCardAuthenticityService()
 
 <br>
 
-### Camera Preview 구성
+### Camera Preview構成
 
-Activity 또는 Fragment의 Layout에 아래와 같이 IdCardRecognitionCameraPreview 추가하여 Camera Preview를 구성합니다.
+ActivityまたはFragmentのLayoutに下記のようにIdCardRecognitionCameraPreview追加してCamera Previewを構成します。
 
 ```xml
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -338,10 +338,10 @@ Activity 또는 Fragment의 Layout에 아래와 같이 IdCardRecognitionCameraPr
 
 <br>
 
-### 백그라운드 색상 변경
+### バックグラウンド色の変更
 
-스캔 가이드 영역을 제외한 영역은 반투명하게 보입니다.
-이 영역의 색상을 "app:guideBackgroundColor" 속성을 사용하여 설정합니다.
+スキャンガイド領域を除外した領域は半透明に見えます。
+この領域の色を"app:guideBackgroundColor"プロパティを使用して設定します。
 
 ```xml
 <com.nhncloud.android.ocr.idcard.view.IdCardRecognitionCameraPreview
@@ -353,14 +353,14 @@ Activity 또는 Fragment의 Layout에 아래와 같이 IdCardRecognitionCameraPr
 
 <br>
 
-### 스캔 가이드 뷰 사용자 정의
+### スキャンガイドビューユーザー定義
 
-스캔 가이드 뷰를 IdCardRecognitionCameraPreview의 하위 뷰로 배치하여 자유롭게 정의할 수 있습니다.
-사용자 정의한 가이드 뷰는 "app:guideView" 속성을 사용하여 설정합니다.
+スキャンガイドビューをIdCardRecognitionCameraPreviewのサブビューとして配置して自由に定義することができます。
+カスタマイズしたガイドビューは「app:guideView」プロパティを使用して設定します。
 
-> IdCardRecognitionCameraPreview는 ConstraintLayout을 상속 구현되어 있습니다.
+> IdCardRecognitionCameraPreviewはConstraintLayoutを継承実装されています。
 
-스캔 가이드 뷰의 사이즈는 자동으로 조정됩니다.
+スキャンガイドビューのサイズは自動的に調整されます。
 
 ```xml
 <com.nhncloud.android.ocr.idcard.view.IdCardRecognitionCameraPreview
@@ -382,10 +382,10 @@ Activity 또는 Fragment의 Layout에 아래와 같이 IdCardRecognitionCameraPr
 
 <br>
 
-### 신분증 검출 시 가이드 뷰 변경
+### 身分証検出時のガイドビュー変更
 
-신분증이 검출되었을 때 스캔 가이드 뷰의 색상 또는 모양을 변경할 수 있습니다.
-OcrDetectable 인터페이스를 상속 구현하여 setDetected(Boolean)으로 전달되는 값에 따라 가이드 뷰의 색상 또는 모양을 변경합니다.
+身分証が検出された時、スキャンガイドビューの色または形を変更できます。
+OcrDetectableインターフェイスを継承実装してsetDetected(Boolean)に渡される値に基づいてガイドビューの色または形を変更します。
 
 ```kotlin
 class CustomGuideView(
@@ -404,9 +404,9 @@ class CustomGuideView(
 
 <br>
 
-### 서비스 시작
+### サービス開始
 
-IdCardRecognitionCameraPreview의 인스턴스를 획득하여 IdCardRecognitionService를 시작합니다.
+IdCardRecognitionCameraPreviewのインスタンスを取得してIdCardRecognitionServiceを開始します。
 
 ```kotlin
 val cameraPreview = findViewById<IdCardRecognitionCameraPreview>(R.id.camera_preview)
@@ -419,9 +419,9 @@ try {
 
 <br>
 
-### 서비스 정지
+### サービス停止
 
-앱이 백그라운드로 진입 또는 신분증 인식에 성공했을 때 IdCardRecognitionService를 정지합니다.
+アプリがバックグラウンドに切り替わるか身分証認識に成功したとき、IdCardRecognitionServiceを停止します。
 
 ```kotlin
 idCardRecognitionService.stop()
@@ -429,9 +429,9 @@ idCardRecognitionService.stop()
 
 <br>
 
-### 서비스 해제
+### サービス解除
 
-Activity 또는 Fragment의 View가 Destory 되었을 때 IdCardRecognitionService를 해제합니다.
+ActivityまたはFragmentのViewがDestoryされたとき、IdCardRecognitionServiceを解除します。
 
 ```kotlin
 idCardRecognitionService.release();
@@ -439,9 +439,9 @@ idCardRecognitionService.release();
 
 <br>
 
-### IdCardRecognizer Lifecycle 설정
+### IdCardRecognizer Lifecycle設定
 
-Activity 또는 Fragment의 라이프 사이클에 따라 아래와 같이 호출합니다.
+ActivityまたはFragmentのライフサイクルに基づいて以下のように呼び出します。
 
 #### Activity
 
@@ -483,9 +483,9 @@ override fun onDestroyView() {
 
 <br>
 
-### 화면 캡처 방지
+### 画面キャプチャ防止
 
-화면 캡처 방지를 위해서 Activity의 onCreate()에서 setContentView()가 호출되기 전에 **WindowManager.LayoutParams.FLAG\_SECURE**를 추가합니다.
+画面キャプチャ防止のためにActivityのonCreate()でsetContentView()が呼び出される前に**WindowManager.LayoutParams.FLAG\_SECURE**を追加します。
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -496,14 +496,14 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-자세한 사항은 [WindowManager.LayoutParams.FLAG\_SECURE](https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE)을 참고하세요.
+詳細については、 [WindowManager.LayoutParams.FLAG\_SECURE](https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE)を参照してください。
 
 <br>
 
-### 디바이스 체크
+### デバイスチェック
 
-ID Card Recognition Service를 시작하기 전에 애플리케이션을 실행하는 기기에서 ID Card Recognition Service를 사용할 수 있는 환경인지 확인할 수 있습니다.
-이 검사를 수행하려면 IdCardRecognitionService.isAvailable(Context) 메서드를 사용합니다.
+ID Card Recognition Serviceを開始する前に、アプリケーションを実行するデバイスでID Card Recognition Serviceを使用できる環境かどうかを確認できます。
+この検査を行うには、IdCardRecognitionService.isAvailable(Context)メソッドを使用します。
 
 ```kotlin
 if (IdCardRecognitionService.isAvailable(context)) {
@@ -515,10 +515,10 @@ if (IdCardRecognitionService.isAvailable(context)) {
 
 <br>
 
-## SecureTextView 사용
+## SecureTextView使用
 
-개인정보 보호를 위해 신분증 데이터는 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
-신분증 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약하며, 데이터를 화면에 표시하기 위해 SecureTextView를 사용할 수 있습니다. 
+個人情報保護のために身分証データは一般文字列ではなくSecureStringオブジェクトで返されます。
+身分証明書認識情報をStringオブジェクトとして使用すると、セキュリティに脆弱であり、データを画面に表示するためにSecureTextViewを使用できます。
 
 ```xml
 <com.nhncloud.android.ocr.SecureTextView
@@ -530,7 +530,7 @@ if (IdCardRecognitionService.isAvailable(context)) {
     app:textStyle="bold"/>
 ```
 
-SecureTextView의 setText 메서드를 통해 표시할 텍스트를 설정합니다. 
+SecureTextViewのsetTextメソッドで表示するテキストを設定します。 
 ```kotlin
 val name = idCardData.name
 
@@ -538,8 +538,8 @@ val idCardNameView = findViewById<SecureTextView>(id_card_name_view)
 idCardNameView.setText(name)
 ```
 
-### SecureTextGroup 사용
-여러 줄의 텍스트를 표시해야 한다면 SecureTextGroup을 사용할 수 있습니다. 
+### SecureTextGroup使用
+複数行のテキストを表示する必要がある場合はSecureTextGroupを使用できます。 
 ```xml
 <com.nhncloud.android.ocr.SecureTextGroup
     android:id="@+id/id_card_license_type_view"
@@ -550,7 +550,7 @@ idCardNameView.setText(name)
     app:textStyle="bold"/>
 ```
 
-SecureTextGroup의 addTextViews 메서드는 배열을 파라미터로 받아 하나의 요소마다 한 줄의 텍스트로 설정합니다.
+SecureTextGroupのaddTextViewsメソッドは配列をパラメータとして受け取り、1つの要素ごとに1行のテキストに設定します。
 ```kotlin
 //The license type is a SecureString array.
 val licenseType = idCardData.idCardLicenseType.split('/')
@@ -566,8 +566,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getRequestKey | SecureString |  | 신분증 진위 확인에 사용되는 RequestKey를 반환합니다.  |
-| getIdType | String |  | 신분증 종류를 반환합니다. ("resident" or "driver") |
+| getRequestKey | SecureString |  | 身分証真偽確認に使用されるRequestKeyを返します。  |
+| getIdType | String |  | 身分証の種類を返します。 ("resident" or "driver") |
 
 <br>
 
@@ -575,10 +575,10 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getName | SecureString |  | 이름을 반환합니다. |
-| getResidentNumber | SecureString |  | 주민등록번호를 반환합니다. |
-| getIssueDate | SecureString |  | 발급 일자를 반환합니다. |
-| getIssuer | SecureString |  | 발급 기관을 반환합니다. |
+| getName | SecureString |  | 名前を返します。 |
+| getResidentNumber | SecureString |  | 住民登録番号を返します。 |
+| getIssueDate | SecureString |  | 発行日時を返します。 |
+| getIssuer | SecureString |  | 発行機関を返します。 |
 
 <br>
 
@@ -586,14 +586,14 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getName | SecureString |  | 이름을 반환합니다. |
-| getResidentNumber | SecureString |  | 주민등록번호를 반환합니다. |
-| getIssueDate | SecureString |  | 발급 일자를 반환합니다. |
-| getIssuer | SecureString |  | 발급 기관을 반환합니다. |
-| getDriverLicenseNumber | SecureString |  | 운전 면허 번호를 반환합니다. |
-| getLicenseType | SecureString |  | 면허 종류를 반환합니다.<br>면허 종류가 2개 이상일 경우 문자열 내 "/"로 구분됩니다. |
-| getCondition | SecureString |  | 면허 조건을 반환합니다.<br>운전 면허증에 따라 해당 값이 존재하지 않으면 공백으로 반환됩니다. |
-| getSerialNumber | SecureString |  | 암호 일련 번호를 반환합니다. |
+| getName | SecureString |  | 名前を返します。 |
+| getResidentNumber | SecureString |  | 住民登録番号を返します。 |
+| getIssueDate | SecureString |  | 発行日時を返します。 |
+| getIssuer | SecureString |  | 発行機関を返します。 |
+| getDriverLicenseNumber | SecureString |  | 運転免許番号を返します。 |
+| getLicenseType | SecureString |  | 免許の種類を返します。<br>免許の種類が2つ以上の場合、文字列内で「/」で区切られます。 |
+| getCondition | SecureString |  | 免許条件を返します。<br>運転免許証に応じて該当値が存在しない場合は空白が返されます。 |
+| getSerialNumber | SecureString |  | 暗号一連番号を返します。 |
 
 <br>
 
@@ -602,12 +602,12 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getOriginBitmap | Bitmap |  | 원본 이미지를 반환합니다. |
-| getDetectedBitmap | Bitmap |  | 검출된 이미지를 반환합니다.<br>(가이드 영역의 이미지가 반환됩니다.) |
-| getResolution | String |  | 해상도 정보를 반환합니다.<br>(권장 해상도 이상이면 normal, 미만은 low) |
-| getRequestKey | String |  | 신분증 진위 확인에 사용되는 RequestKey를 반환합니다.  |
-| getIdType | String |  | 신분증 종류를 반환합니다. ("resident" or "driver") |
-| getOriginJsonData | String |  | 서버 응답 결과를 반환합니다. |
+| getOriginBitmap | Bitmap |  | 原本画像を返します。 |
+| getDetectedBitmap | Bitmap |  | 検出された画像を返します。<br>(ガイド領域の画像が返されます。) |
+| getResolution | String |  | 解像度情報を返します。<br>(推奨解像度以上はnormal、未満はlow) |
+| getRequestKey | String |  | 身分証真偽確認に使用されるRequestKeyを返します。  |
+| getIdType | String |  | 身分証の種類を返します。 ("resident" or "driver") |
+| getOriginJsonData | String |  | サーバーレスポンス結果を返します。 |
 
 <br>
 
@@ -615,8 +615,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getValue | SecureString |  | 신분증 인식 결과를 반환합니다. |
-| getConfidence | String |  | 신분증 인식 결과의 신뢰도를 반환합니다. |
+| getValue | SecureString |  | 身分証認識結果を返します。 |
+| getConfidence | String |  | 身分証認識結果の信頼度を返します。 |
 
 <br>
 
@@ -624,10 +624,10 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getName | IdCardValue |  | 이름을 반환합니다. |
-| getResidentNumber | IdCardValue |  | 주민등록번호를 반환합니다. |
-| getIssueDate | IdCardValue |  | 발급 일자를 반환합니다. |
-| getIssuer | IdCardValue |  | 발급 기관을 반환합니다. |
+| getName | IdCardValue |  | 名前を返します。 |
+| getResidentNumber | IdCardValue |  | 住民登録番号を返します。 |
+| getIssueDate | IdCardValue |  | 発行日時を返します。 |
+| getIssuer | IdCardValue |  | 発行機関を返します。 |
 
 <br>
 
@@ -635,14 +635,14 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| getName | IdCardValue |  | 이름을 반환합니다. |
-| getResidentNumber | IdCardValue |  | 주민등록번호를 반환합니다. |
-| getIssueDate | IdCardValue |  | 발급 일자를 반환합니다. |
-| getIssuer | IdCardValue |  | 발급 기관을 반환합니다. |
-| getDriverLicenseNumber | IdCardValue |  | 운전 면허 번호를 반환합니다. |
-| getLicenseType | IdCardValue |  | 면허 종류를 반환합니다.<br>면허 종류가 2개 이상일 경우 문자열 내 "/"로 구분됩니다. |
-| getCondition | IdCardValue |  | 면허 조건을 반환합니다.<br>운전 면허증에 따라 해당 값이 존재하지 않으면 공백으로 반환됩니다. |
-| getSerialNumber | IdCardValue |  | 암호 일련 번호를 반환합니다. |
+| getName | IdCardValue |  | 名前を返します。 |
+| getResidentNumber | IdCardValue |  | 住民登録番号を返します。 |
+| getIssueDate | IdCardValue |  | 発行日時を返します。 |
+| getIssuer | IdCardValue |  | 発行機関を返します。 |
+| getDriverLicenseNumber | IdCardValue |  | 運転免許番号を返します。 |
+| getLicenseType | IdCardValue |  | 免許の種類を返します。<br>免許の種類が2つ以上の場合、文字列内で「/」で区切られます。 |
+| getCondition | IdCardValue |  | 免許条件を返します。<br>運転免許証に応じて該当値が存在しない場合は空白が返されます。 |
+| getSerialNumber | IdCardValue |  | 暗号一連番号を返します。 |
 
 <br>
 
@@ -650,10 +650,10 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| setText |  | SecureString | SecureTextView에 표시할 텍스트를 설정합니다.  |
-| setTextSize | float |  | 텍스트 크기를 설정합니다. <br>크기 단위는 sp, 기본 설정은 14sp입니다. |
-| setTextColor | int |  | 텍스트 색상을 설정합니다. <br>기본 설정은 Color.Black(0xFF000000)입니다. |
-| setTypefaceStyle | Typeface, int |  | 텍스트 서체와 스타일을 설정합니다. <br>기본 스타일 설정은 Typeface.NORMAL입니다.|
+| setText |  | SecureString | SecureTextViewに表示するテキストを設定します。  |
+| setTextSize | float |  | テキストサイズを設定します。 <br>サイズ単位はsp、基本設定は14spです。 |
+| setTextColor | int |  | テキスト色を設定します。 <br>基本設定はColor.Black(0xFF000000)です。 |
+| setTypefaceStyle | Typeface, int |  | テキストの書体とスタイルを設定します。 <br>基本スタイル設定はTypeface.NORMALです。|
 
 <br>
 
@@ -661,10 +661,10 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| addTextView |  | SecureString | SecureTextGroup에 표시할 텍스트를 추가합니다.  |
-| addTextViews |  | SecureString[] | SecureTextGroup에 표시할 텍스트를 추가합니다.  |
-| setTextSize | float |  | 텍스트 크기를 설정합니다. <br>크기 단위는 sp, 기본 설정은 14sp입니다. |
-| setTextColor | int |  | 텍스트 색상을 설정합니다. <br>기본 설정은 Color.Black(0xFF000000)입니다. |
-| setTypefaceStyle | Typeface, int |  | 텍스트 서체와 스타일을 설정합니다. <br>기본 스타일 설정은 Typeface.NORMAL입니다.|
+| addTextView |  | SecureString | SecureTextGroupに表示するテキストを追加します。  |
+| addTextViews |  | SecureString[] | SecureTextGroupに表示するテキストを追加します。  |
+| setTextSize | float |  | テキストサイズを設定します。 <br>サイズ単位はsp、基本設定は14spです。 |
+| setTextColor | int |  | テキスト色を設定します。 <br>基本設定はColor.Black(0xFF000000)です。 |
+| setTypefaceStyle | Typeface, int |  | テキストの書体とスタイルを設定します。 <br>基本スタイル設定はTypeface.NORMALです。|
 
 <br>
