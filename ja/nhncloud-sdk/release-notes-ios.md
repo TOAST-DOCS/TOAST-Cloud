@@ -1,421 +1,560 @@
-## NHN Cloud > SDK User Guide >OCR > Credit Card (iOS)
+## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
-## 事前準備
+## 1.6.1 (2023. 07. 25.)
+### NHN Cloud IAP
+#### 改善事項
+* 決済詳細情報送信機能の改善
 
-1. [NHN Cloud SDK](./getting-started-ios)をインストールします。
-2. [NHN Cloud Console](https://console.nhncloud.com)で[AI Service > OCR]サービスを有効にします。
-3. OCRコンソールでAppKeyとSecretKeyを確認します。
+## 1.6.0 (2023. 07. 11.)
+### NHN Cloud OCR
+#### 機能追加
+* OCR(ID Card Recognizer)追加
 
-<br>
+## 1.5.0 (2023. 06. 27.)
+### NHN Cloud Push
+#### 改善事項
+* トークン登録機能の改善
+    * アプリの通知権限とは関係なくトークンを登録できるオプションを提供します。
 
-## サポート環境
+#### SymbolUploader(v0.0.3)
+* 安定性の改善
 
-NHN Cloud OCRはiOS 11.0以上で動作します。<br>
+## 1.4.0 (2023. 05. 30.)
+### 共通
+#### 改善事項
+* SPM(swift package manager)配布方式を追加
 
-## NHN Cloud OCR構成
+### NHN Cloud IAP
+#### 機能追加
+* 決済詳細情報送信機能を追加 
+    * IAPコンソールのTransactionタブで決済詳細情報を照会できます。
 
-iOS用NHN Cloud OCR SDKの構成は次のとおりです。
-
-| Service  | Cocoapods Pod Name | Framework | Dependency | Build Settings |
-| --- | --- | --- | --- | --- |
-| IAP | NHNCloudOCR | NHNCloudOCR.framework | * Vision.framework<br/> * AVFoundation.framework | |
-| Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
-
-
-## NHN Cloud OCR SDKをXcodeプロジェクトに適用
-
-### 1. Cococapodsを利用した適用
-
-* Podfileを作成してNHN Cloud SDKに対するPodを追加します。
-
-```podspec
-platform :ios, '11.0'
-use_frameworks!
-
-target '{YOUR PROJECT TARGET NAME}' do
-    pod 'NHNCloudOCR'
-end
-```
-
-### 2. Swift Package Managerを使用してNHN Cloud SDK適用
-
-* XCodeで**File > Add Packages...**メニューを選択します。
-* Package URLに'https://github.com/nhn/nhncloud.ios.sdk'を入れて**Add Package**ボタンを選択します。
-* NHNCloudOCRを選択します。
-
-![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
-
-#### プロジェクト設定
-
-* **Build Settings**の **Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
-    * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
-
-### 3. バイナリをダウンロードしてNHN Cloud SDK適用
-
-#### フレームワーク設定
-
-* NHN Cloud [Downloads](../../../Download/#toast-sdk)ページで全てのiOS SDKをダウンロードできます。
-* Xcode Projectに**NHNCloudOCR.framework**、 **NHNCloudCore.framework**、 **NHNCloudCommon.framework、 vision.framework、 AVFoundation.framework**を追加します。
-* vision.frameworkとAVFoundation.frameworkは、以下の方法で追加できます。
-![linked_vision_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_vision_frameworks.png)
-![linked_avfoundation_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_avfoundation_frameworks.png)
-![linked_frameworks_ocr](https://static.toastoven.net/toastcloud/sdk/ios/linked_frameworks_ocr.png)
-
-#### プロジェクト設定
-
-* **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
-    * **Project Target > Build Settings > Linking > Other Linker Flags**
-![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
-
-## NHNCloudOCR SDK初期化
-* NHN Cloud Consoleで発行されたAppKeyとSecretをNHNCloudOCRConfigurationオブジェクトに設定します。
-  * AI Service -> OCR -> Document OCR -> クレジットカード
-* NHNCloudOCRは初期化にNHNCloudOCRConfigurationオブジェクトをパラメータとして使用します。
-* カメラ使用権限を取得するためにinfo.plistに以下の内容を追加します。
-```
-Key : NSCameraUsageDescription
-Value： [カメラ権限リクエストメッセージ]
-```
-
-### 初期化API仕様
-
-``` objc
-// 初期化
-+ (void)initWithConfiguration:(NHNCloudOCRConfiguration *)configuration;
-
-// Delegate設定
-+ (void)setCreditCardRecognizerDelegate:(nullable id<NHNCloudCreditCardRecognizerDelegate>)delegate;
-```
-
-### Delegate API仕様
-* NHNCloudCreditCardRecognizerDelegateを登録すると、認識結果に対する通知を受け取ることができます。
-* OCRが実行中の時、画面のスクリーンキャプチャと動画録画イベントを受信できません。
-* SDKで提供する基本画面使用時(NHNCloudCreditCardRecognizerViewController継承実装)閉じる、確認イベントを受信できます。
-
-``` objc
-@protocol NHNCloudCreditCardRecognizerDelegate <NSObject>
-
-// クレジットカード認識結果を返す
-- (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error;
-
-@optional
-
-// スクリーンキャプチャイベント受信
-- (void)didDetectCreditCardSecurityEvent:(NHNCloudSecurityEvent)event;
-
-// 閉じるボタンイベント受信(NHNCloudCreditCardRecognizerViewController継承実装時にのみ受信可能)
-- (void)creditCardRecognizerViewControllerCancel;
-
-// 確認ボタンイベント受信(NHNCloudCreditCardRecognizerViewController継承実装時にのみ受信可能)
-- (void)creditCardRecognizerViewControllerConfirm;
-
-@end
-```
-
-### 検出イメージリターン設定を行う
-* OCR結果であるNHNCloudCreditCardInfoデータに検出されたイメージを一緒に返すことができます。
-    * デフォルト値は無効です。 
-#### 検出イメージリターン設定API仕様 
-```objc
-@interface NHNCloudOCR : NSObject
-//..
-+ (void)setDetectedImageReturn:(BOOL)enable;
-+ (BOOL)isEnableDetectedImageReturn;
-//..
-@end
-```
-
-### 初期化プロセス例
-
-``` objc
-#import <NHNCloudOCR/NHNCloudOCR.h>
-
-@interface ViewController () <NHNCloudCreditCardRecognizerDelegate>
-@end
-
-@implementation ViewController
-
-- (void)initializeOCR {
-    // 初期化およびDelegate設定
-    NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}"];
-
-    // 検出イメージリターン設定 
-    [NHNCloudOCR setDetectedImageReturn:YES];
-
-    // 初期化  
-    [NHNCloudOCR initWithConfiguration:configuration];
-
-    // Delegate設定
-    [NHNCloudOCR setCreditCardRecognizerDelegate:self];
-}
-
-// クレジットカード認識結果を返す
-- (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
-    NSLog(@"didDetectCreditCardInfo : cardInfo : %@", cardInfo);
-    NSLog(@"didDetectCreditCardInfo : error : %@", error);
-}
-
-// スクリーンキャプチャイベント受信
-- (void)didDetectCreditCardSecurityEvent:(NHNCloudSecurityEvent)event {
-
-    // スクリーンキャプチャ警告Alert出力例
-    if (event == NHNCloudSecurityEventScreenshot || event == NHNCloudSecurityEventScreenRecordingOn) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"キャプチャが検出されました。" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-    }
+#### SymbolUploader(v0.0.2)
+* run script改善 
+    * Cocoapods, SPM対応追加
     
-    // 動画録画時、空の画面出力例
-    if (event == NHNCloudSecurityEventScreenRecordingOn || event == NHNCloudSecurityEventScreenRecordingOff) {
-        if ([[UIScreen mainScreen] isCaptured] ) {
-            [[[UIApplication sharedApplication] windows] firstObject].hidden = YES;
-        } else {
-            [[[UIApplication sharedApplication] windows] firstObject].hidden = NO;
-        }
-    }
-}
+## 1.3.1 (2023. 05. 19.) - Hotfix
+### NHN Cloud Push
+#### 改善事項
+* トークン登録機能改善
+    * トークン登録時にアプリの通知設定が無効になっている場合、再度`NHNCloudPushErrorPermissionDenied`を返します。
 
-// 確認ボタンイベント受信(NHNCloudCreditCardRecognizerViewController継承実装時にのみ受信可能)
-- (void)creditCardRecognizerViewControllerConfirm {
-    // クレジットカード認識結果画面で確認ボタンを押した場合の処理
-}
+## 1.3.0 (2023. 02. 28.)
+### 共通
+#### 改善事項
+* 安定性改善
 
-// 閉じるボタンイベント受信(NHNCloudCreditCardRecognizerViewController継承実装時にのみ受信可能)
-- (void)creditCardRecognizerViewControllerCancel {
-    // クレジットカードの認識または結果画面で閉じるボタンを押した時の処理
-}
+## 1.2.1 (2023. 01. 31.)
+### NHN Cloud Push
+#### 改善事項
+* トークン登録機能の改善
 
-@end
-```
+### NHN Cloud OCR
+#### 改善事項
+* クレジットカード認識性能の改善
+* 安定性の改善
 
-## Credit Card適用方法
+## 1.2.0 (2022. 11. 29.)
+### NHN Cloud Logger
+#### 機能追加
+* 公共機関用Loggerをサポート
 
-### NHNCloudCreditCardRecognizerViewController
+### NHN Cloud Push
+#### 改善事項
+* プッシュイベント転送の改善
 
-#### 1. Credit-Card Recognizer ViewControllerを使用する
-* NHNCloudCreditCardRecognizerViewControllerを継承実装したClassをStoryboardのViewControllerに接続して基本UIが適用されたCredit-Card Recognizerを簡単に使用できます。
+### NHN Cloud OCR
+#### 改善事項
+* UI改善
 
-#### 2. Class作成
-![default_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/default_viewcontroller.png)
-* NHNCloudCreditCardRecognizerViewControllerをsubclassに持つViewController Classを作成します。 
+## 1.1.0 (2022. 10. 25.)
+### 共通
+#### 改善事項
+* 安定性改善
 
+### NHN Cloud IAP
+#### 機能追加
+* [すべてのストア]有効購読照会および未消費決済履歴照会APIの追加
 
-#### 3. Storyboardに接続
-![create_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/create_viewcontroller.png)
-* StoryboardにViewControllerを追加します。
+### NHN Cloud OCR
+#### 機能追加
+* OCR(Credit Card Recognizer)追加
 
-![custom_class](https://static.toastoven.net/toastcloud/sdk/ios/custom_class.png)
-* 追加したViewControllerにCustom Classに作成したClassを設定します。
+## 1.0.0 (2022. 07. 12.)
+### 共通
+#### 改善事項
+* 安定性改善
+* モジュール名NHN Cloud SDKに変更
+    * TOAST SDKはDeprecatedになりました。
 
-![segue_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/segue_viewcontroller.png)
-* ViewController Segue Eventを設定します。 
+## 0.30.0 (2022. 03. 29.)
+### TOAST IAP
+#### 機能追加
+* ToastPurchaseResultにサンドボックス決済かどうかを追加(sandboxPayment)
 
-* Delegateを設定し、実装します。 
+## 0.29.2 (2021. 11. 23.)
+### TOAST Push
+#### 改善事項
+* 安全性の改善
 
-### NHNCloudCreditCardRecognizerServiceViewControllerカスタマイズ
-* NHNCloudCreditCardRecognizerServiceViewControllerを使用してUIをカスタマイズできます。
-  * **Credit-Cardガイドの場合、あらかじめ定義された値を使用するため、変更ができません。**
+## 0.29.1 (2021. 10. 26.)
+### TOAST IAP
+#### 改善事項
+* 安全性の改善
 
-#### 1. NHNCloudCreditCardRecognizerServiceViewController継承 
-* NHNCloudCreditCardRecognizerServiceViewControllerを継承実装してカスタマイズできます。
+## 0.29.0 (2021. 07. 06.)
+### 共通
+#### 改善事項
+* 安全性の改善
 
-##### Override関数の仕様
-```objc
+### TOAST IAP
+#### 機能追加
+* 月決済限度機能の追加
 
-// ビューがメモリに作成される時、初期設定やデータの準備作業を実行
-- (void)viewDidLoad;
+## 0.28.0 (2021. 05. 25.)
+### 共通
+#### 改善事項
+* xcframework追加
+    * arm Simulatorサポートの追加
 
-// ビューが画面に表示される直前に最後の処理を実行
-- (void)viewWillAppear:(BOOL)animated;
+### TOAST Logger
+#### CrashReporter (BuildInfo 20210525)
+* アーキテクチャ分類方式の改善
+    * iOS14 Core Libraryがシンボリケーションされない問題を改善
 
-// ビューが画面から消える直前にクリーンアップを実行
-- (void)viewWillDisappear:(BOOL)animated;
+## 0.27.2 (2021. 03. 23.)
+### 共通
+#### 改善事項
+* 安全性の改善
 
-// ビューが画面から完全に消えた後、追加のクリーンアップを実行
-- (void)viewDidDisappear:(BOOL)animated;
+### TOAST Logger
+#### SymbolUploader (v0.0.1)
+* SymbolUploader追加
 
-// Custom UI更新 
-- (void)didUpdateCreditCardGuide:(CGRect)rect orientation:(NHNCloudCreditCardOrientation)orientation;
-
-// クレジットカード認識時、UI更新
-- (void)imageDidDetect:(BOOL)detected;
-```
-
-##### Override使用例
-```objc
-
-@interface OCRViewController : NHNCloudCreditCardRecognizerServiceViewController <NHNCloudCreditCardRecognizerDelegate>
-
-@end
-
-@implementation OCRViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [NHNCloudOCR setCreditCardRecognizerDelegate:self];
-    // Custom UI作成
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self startRunning];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-
-- (void)didUpdateCreditCardGuide:(CGRect)rect orientation:(NHNCloudCreditCardOrientation)orientation {
-    [super didUpdateCreditCardGuide:rect orientation:orientation];
-    
-    // Custom UI更新 
-}
-
-- (void)imageDidDetect:(BOOL)detected {
-    [super imageDidDetect:detected];
-
-    // クレジットカード認識時、UI更新
-}
-
-- (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
-    
-    NSLog(@"didDetectCreditCardInfo : cardInfo : %@", cardInfo);
-    NSLog(@"didDetectCreditCardInfo : error : %@", error);
-}
-
-```
-
-
-### テスト環境を使用する
-* NHNCloudOCR SDKでテストのために提供するCredit-Cardガイドを使用してOCRをテストできます。
-  * クレジットカードがCredit-Cardガイド内に存在する場合、OCRが始まります。
-    * デフォルト値はhiddenで、目に見えないガイドが存在します。
-    * `enableTestGuide`を使用してテスト用のガイドを出力できます。 
-
-#### Credit-CardガイドAPI仕様
-```objc
-@interface NHNCloudOCRConfiguration : NSObject
-- (void)enableTestGuide;
-@end
-```
-#### Credit-Cardガイドの使用例
-
-```objc
-- (void)initializeOCR {
-    // 初期化およびDelegate設定
-    NHNCloudOCRConfiguration *configuration = [NHNCloudOCRConfiguration configurationWithAppKey:@"{AppKey}" secret:@"{Secret}" ];
-    
-    [configuration enableTestGuide];
-        
-    [NHNCloudOCR initWithConfiguration:configuration];
-
-    [NHNCloudOCR setCreditCardRecognizerDelegate:self];
-}
-```
-
-## Credit-Card Recognizer ViewControllerを制御する
-
-> `Credit Card適用方法`を見てNHNCloudCreditCardRecognizerViewControllerまたはNHNCloudCreditCardRecognizerServiceViewController継承実装必要
-
-### 1. Credit-Card Recognizerの開始/停止
-* Credit-Card Recognizerを開始または停止します。
-
-#### Credit-Card Recognizer開始/停止API仕様
-```objc
-- (void)startRunning;
-- (void)stopRunning;
-- (BOOL)isRunning;
-```
-#### Credit-Card Recognizer開始/停止の使用例
-```objc
-- (void)start {
-  [self startRunning];
-}
-
-// クレジットカード認識結果を返す
-- (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
-    [self stopRunning];
-}
-```
-
-### 2. Credit-Cardガイドの回転
-* クレジットカードの方向に合うようにCredit-Cardガイドを回転させることができます。
-
-#### Credit-Cardガイド回転API仕様
-```objc
-@property (assign, nonatomic, readonly) CGRect creditCardGuide;
-@property (assign, nonatomic, readonly) NHNCloudCreditCardOrientation creditCardGuideOrientation;
-- (void)rotateCreditCardGuideOrientation;
-```
-#### Credit-Cardガイド回転の使用例
-```objc
-typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
-
-    NHNCloudCreditCardOrientationPortrait = 0,
-    NHNCloudCreditCardOrientationLandscape = 1
-};
-
-- (void)rotateButtonAction:(UIButton *)button {
-
-    [self rotateCreditCardGuideOrientation];
-
-    NSLog(@"x: %f y: %f width: %f height: %f", self.creditCardGuide.origin.x,
-          self.creditCardGuide.origin.y,
-          self.creditCardGuide.size.width,
-          self.creditCardGuide.size.height);
-
-    NSLog(@"creditCardGuideOrientation: %ld", self.creditCardGuideOrientation);
-}
-
-```
-
-### 3. フラッシュ有効/無効
-* デバイスのカメラフラッシュを有効または無効にします。
-
-#### フラッシュ有効/無効API仕様
-```objc
-- (void)enableTorchMode;
-- (void)disableTorchMode;
-- (BOOL)isEnableTorchMode;
-```
-#### フラッシュ有効/無効の使用例
-```objc
-- (void)torchButtonAction:(UIButton *)button {    
-    if ([self isEnableTorchMode] == YES) {
-        [self disableTorchMode];
-    } else {
-        [self enableTorchMode];
-    }
-}
-
-```
-
-
-### 4. カメラ有効/無効
-* デバイスのカメラを有効または無効にします。
-
-#### カメラ有効/無効API仕様
-```objc
-- (void)startRunningCamera;
-- (void)stopRunningCamera;
-- (BOOL)isRunnginCamera;
-```
-#### カメラ有効/無効使用例
-```objc
-- (void)cameraButtonAction:(UIButton *)button {    
-    if ([self isRunnginCamera] == YES) {
-        [self stopRunningCamera];
-    } else {
-        [self startRunningCamera];
-    }
-}
-
-```
+## 0.27.1 (2020. 11. 24.) 
+### TOAST IAP 
+#### 改善事項 
+* サブスクリプションプロダクトの再購入エラー修正 (iOS 14 ) 
+- Appstoreからプロダクト情報を得られなかった場合、ToastProductsResponseがnilを返すように変更 
+ 
+### TOAST Push 
+#### 改善事項 
+* トークン解除リクエスト時に、登録されたトークンがない場合、Callbackが発生しない問題の改善 
+ 
+## 0.27.0 (2020. 09. 11.) 
+### TOAST IAP 
+#### 機能追加 
+* ToastProductにローカライズされたプロダクト情報の追加 (localizedTitle、 localizedDescription) 
+ 
+#### 機能改善 
+* iOS 14 beta変更事項に対応  
+    * 決済失敗のDelegateが受信できない問題の改善 
+     
+### TOAST Push 
+#### 改善事項 
+* 安全性の改善 
+     
+## 0.26.0 (2020. 07. 28.) 
+### TOAST Push 
+#### 機能追加 
+* ユーザータグ機能のサポート 
+ 
+## 0.25.1 (2020. 07. 03.) 
+### TOAST Logger  
+#### 改善事項 
+* 安全性の改善 
+ 
+### TOAST Push 
+#### 改善事項 
+* 安全性の改善 
+ 
+## 0.25.0 (2020. 06. 23.) 
+### 共通 
+#### 改善事項 
+* 安全性の改善 
+ 
+### TOAST Push 
+#### 改善事項 
+* 通知オプション設定のインターフェイスを分離 
+ 
+## 0.24.1 (2020. 05. 26.) 
+### TOAST Push 
+#### 機能改善 
+* トークン登録の機能改善 
+ 
+## 0.24.0 (2020. 04. 28.) 
+### 共通 
+* TOAST SDKサポートバージョンの最小バージョンを変更(iOS 8.0 -> iOS 9.0) 
+* 安全性の改善 
+ 
+### TOAST IAP  
+#### 追加事項 
+* プロモーション決済の実行するか選択できるOptional Delegateを追加 
+ 
+### TOAST Push 
+#### 改善事項  
+* 安全性の改善 
+ 
+## 0.23.0 (2020. 03. 24.) 
+### TOAST Logger  
+#### 改善事項 
+* CrashReport CallStackに誤った文字列が含まれて可能性がある問題を修正 
+ 
+### TOAST Push 
+#### 追加事項 
+* 通知オプション設定の機能追加 
+    * 初期化時にフォアグラウンドで通知を表示するか、バッジアイコンの表示するか、通知音を使用するかの設定が可能 
+     
+## 0.22.1 (2020. 02. 25.) 
+### TOAST Push 
+#### 改善事項 
+* トークン登録の機能改善 
+    * 初回トークン登録時にユーザーIDが設定されていない場合は、デバイス識別子を使用して登録します。 
+    * トークンに登録した後、ユーザーIDを設定、または変更すると、トークン情報を更新します。 
+     
+## 0.22.0 (2020. 02. 11.) 
+### TOAST IAP 
+#### 改善事項 
+* 安全性の改善 
+ 
+ 
+## 0.21.0 (2019. 12. 24.) 
+### TOAST Logger 
+#### 改善事項 
+* Crash発生の位置情報の分類方式を改善するため、データを追加 
+ 
+### TOAST IAP 
+#### 改善事項 
+* APIセキュリティ機能の追加
+* 安全性の改善 
+* Swiftインターフェイス追加定義 
+ 
+## 0.20.1 (2019. 12. 04.) 
+ 
+### 共通 
+ 
+#### 改善事項 
+ 
+* 初期化ロジックの改善 
+ 
+## 0.20.0 (2019. 11. 26.) 
+ 
+### TOAST Push 
+ 
+#### 改善事項 
+ 
+* トークン登録/削除結果通知を、コールバック構造に変更、Delegate削除 
+* 以前登録した同意情報でトークンを再登録する機能追加 
+* VoIP機能をサブモジュールに分離 
+* Swiftインターフェイスを追加定義 
+ 
+## 0.19.3 (2019. 10. 29.) 
+ 
+### 共通 
+ 
+#### バグ修正 
+ 
+* Xcode 11未満でリンカーエラー発生の問題を修正 
+ 
+## 0.19.2 (2019. 10. 25.) 
+ 
+### TOAST Push 
+ 
+#### 改善事項 
+ 
+* (旧) TCPushSDKマイグレーションのサポート 
+ 
+## 0.19.1 (2019. 10. 18.) 
+ 
+### TOAST Push 
+ 
+#### 改善事項 
+ 
+* トークン登録の機能改善 
+ 
+## 0.19.0 (2019. 10. 15.) 
+ 
+### TOAST Push 
+ 
+#### 追加事項 
+ 
+* 通知実行に対する通知の機能を追加 
+ 
+## 0.18.0 (2019. 10. 01.) 
+ 
+### 共通 
+ 
+#### 改善事項 
+ 
+* iOS 13 / Xcode 11対応
+ 
+### TOAST IAP 
+ 
+#### 追加事項 
+ 
+* 購入リクエスト時にユーザーデータ設定をの機能を追加 
+ 
+#### 改善事項 
+ 
+* 復元機能を実行した後、復元された決済の項目のみ返すよう変更 
+ 
+### TOAST Push 
+ 
+#### 改善事項 
+ 
+* ToastPushConfigurationオブジェクトのNullabilityプロパティの変更 
+* リッチメッセージ作成ロジックの改善により、ToastPushMediaオブジェクトのsourceType、extensionのプロパティを削除 
+* リッチメッセージのソース情報にハングルURLも対応 
+ 
+#### バグ修正 
+ 
+* コンソール設定で、メッセージ受信/確認の機能が未使用と設定されている場合、リッチメッセージが正常に表示されなかったバグを修正 
+* iOS 13以上の環境でデバイストークンを獲得できないバグを修正 
+ 
+## 0.17.0 (2019. 08. 27.) 
+ 
+### 共通 
+ 
+#### 改善事項  
+* 安全性の改善 
+ 
+### TOAST IAP 
+ 
+#### 追加事項 
+ 
+* 自動更新型の消費性サブスクリプションプロダクトの追加 
+ 
+#### 改善事項 
+ 
+* プロダクト一覧を照会時、invalidProductsに有効な商品が返されていた問題を修正 
+ 
+### TOAST Push 
+ 
+#### 改善事項 
+ 
+* プッシュメッセージに通知音を設定せず、送信時のデフォルト通知音が設定されるよう改善 
+ 
+## 0.16.1 (2019. 07. 29.) 
+ 
+### 共通 
+ 
+#### 改善事項  
+* 国名コードを取得できない問題を修正 
+ 
+## 0.16.0 (2019. 07. 23.) 
+ 
+### TOAST Logger  
+ 
+#### 改善事項  
+* シンボルが存在するバイナリーの場合、CrashReport CallStackにシンボル文字が含まれるよう改善 
+* CrashReport Reasonが出力されない問題の修正 
+ 
+### TOAST IAP 
+ 
+#### 改善事項 
+ 
+* 決済成功状態から以前の決済状態に変更される問題を修正 
+* アプリ内での購入が許可されていない状態で決済がリクエストされていた問題を修正 
+* プロモーション決済の改善 
+ 
+### TOAST Push 
+ 
+#### 改善事項 
+ 
+* メッセージ/アクションの受信delegate変更 
+ 
+## 0.15.0 (2019. 06. 25.) 
+ 
+### TOAST IAP 
+ 
+#### 改善事項 
+ 
+* 新規決済、プロモーション決済、未消費内訳の詳細をリクエストすると、未完了決済のアイテムを再処理するロジックを追加 
+ 
+### TOAST Push 
+ 
+#### 追加事項 
+ 
+* 初期化すると、国、言語コード設定を行う機能を追加 
+* トークン情報のアップデート機能を追加 
+* 通知オプション設定機能を追加 
+ 
+#### 改善事項 
+ 
+* 通知オプションの基本設定の変更 
+    * アプリ実行中は通知を表示しないよう変更 
+        * 以前と同じ動作をするためには[こちら](./push-ios/#_6)を確認してください。 
+         
+## 0.14.1 (2019. 05. 16.) 
+ 
+### TOAST IAP 
+ 
+#### 改善事項 
+ 
+* 処理中の再処理決済件と同一の商品購買時に保有した商品に処理される現象改善 
+ 
+### TOAST Push 
+ 
+#### 改善事項 
+ 
+* 端末機カレンダーの設定によって、地表イベントの発生時間が誤って収集されていたバグ修正 
+ 
+## 0.14.0 (2019. 05. 14.) 
+ 
+### 共通 
+ 
+#### 改善事項 
+ 
+* Networkエラーコードの統合 
+* 安全性改善 
+ 
+### TOAST IAP 
+ 
+#### 改善事項 
+ 
+* 購買復元機能の改善 
+    * AppStore購買内訳をベースに漏れた決済の復元機能を追加  
+    * 復元失敗エラーコード追加 
+* 購入結果クラスへのストア要求(プロモーション)フラグの追加 
+* 再処理対象の拡大 
+* 決済の流れ改善 
+ 
+### TOAST Push 
+ 
+#### 改善事項 
+ 
+* 安全性改善 
+* メッセージ受信Delegate で配信されるpayload 情報にメッセージID 情報追加 
+* 広告性メッセージ受信同意、夜間広告性メッセージ受信同意が不要なVoIPの場合、受信同意可否に関わらずメッセージ受信 
+ 
+## 0.13.0 (2019. 03. 26.) 
+ 
+### 共通 
+ 
+#### 改善事項 
+ 
+* Public Classの使用性改善 
+  * Description追加 
+  * Nullability、 NSCoding、 NSCopyingの支援 
+ 
+### TOAST Core 
+ 
+#### 改善事項 
+ 
+* 内部例外処理追加 
+ 
+### TOAST Logger 
+ 
+#### 追加事項 
+ 
+* arm64eアーキテクチャを使用する機器のCrash分析支援 
+* PLCrashReporter Dependency 変更 
+ 
+#### 改善事項 
+ 
+* Configuration Interface 変更 
+  * Deprecate 
+    * configurationWithProjectKey 
+  * Add 
+    * configurationWithAppKey 
+ 
+* UserIDの設定時点によって転送するLogのUserIDが更新されないかもしれない問題修正 
+ 
+### TOAST IAP 
+ 
+#### 改善事項 
+ 
+* 内部例外処理追加 
+ 
+### TOAST Push 
+ 
+#### 追加事項 
+ 
+* unregisterToken API の追加 
+ 
+## 0.12.4 (2019. 03. 19.) 
+ 
+### TOAST Core 
+ 
+#### 改善事項 
+ 
+* 例外を追加する 
+ 
+## 0.12.3 (2019. 02. 26.) 
+ 
+### TOAST Core、 Common 
+ 
+#### 改善事項 
+ 
+* util関数に例外を追加 
+ 
+### TOAST IAP 
+ 
+#### 改善事項 
+ 
+* 商品情報のキャッシングを追加する 
+* 例外を追加する 
+ 
+## 0.12.2 (2019. 02. 08.) - Hotfix 
+ 
+### TOAST Core 
+ 
+#### 改善事項 
+ 
+* ToastTransferで断続的に発生していたCrashを防止するためのコードを追加 
+ 
+## 0.12.1 (2019. 01. 08.) 
+ 
+### TOAST IAP 
+ 
+#### 改善事項 
+ 
+* 特定状況で決済状態がVerifyEndの決済の再処理が動作しない問題の修正 
+ 
+## 0.12.0 (2018. 12. 27.) 
+ 
+### TOAST CORE 
+ 
+#### 改善事項 
+ 
+* ToastTransferで断続的に発生していたCrashを防止するためのコードを追加 
+ 
+### TOAST Push 
+ 
+#### 追加事項 
+ 
+* 新規機能追加 
+ 
+### TOAST IAP 
+ 
+#### 改善事項 
+ 
+* Appleで再処理するTransactionの処理ができるようにUserID Checkロジックの例外処理を追加 
+* ToastOperationで断続的に発生していたCrashを防止するためのコードを追加  
+ 
+ 
+## 0.11.1 (2018. 12. 04.) 
+ 
+### TOAST IAP 
+ 
+#### 追加事項 
+ 
+* 新規機能追加 
+ 
+ 
+## 0.11.0 (2018. 11. 20.) 
+ 
+### TOAST Log & Crash 
+ 
+#### 追加事項 
+ 
+* Network Insights機能追加 
+ 
+ 
+## 0.9.0 (2018. 09. 04.) 
+ 
+### TOAST Log & Crash 
+ 
+#### 追加事項 
+ 
+* 新規機能追加 
