@@ -1,9 +1,14 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.6.1 (2023. 07. 25.)
+### NHN Cloud IAP
+#### 改善事項
+* 決済詳細情報送信機能の改善
+
 ## 1.6.0 (2023. 07. 11.)
 ### NHN Cloud OCR
-#### 기능 추가
-* OCR(ID Card Recognizer) 추가
+#### 機能追加
+* OCR(ID Card Recognizer)追加
 
 ## 1.5.0 (2023. 06. 27.)
 ### NHN Cloud Push
