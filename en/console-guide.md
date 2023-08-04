@@ -358,6 +358,7 @@ You can grant multiple required roles to project members.
 | NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
 | DNS Plus | ADMIN | Create/Read/Update/Delete for DNS Plus Service |
+| DNS Plus | VIEWER | Read for DNS Plus Service |
 | Object Storage | ADMIN | Create/Read/Update/Delete for Object Storage Service |
 | Backup | ADMIN | Create/Read/Update/Delete for Backup Service |
 | RDS for MySQL | ADMIN | Create/Read/Update/Delete for RDS for MySQL Service |
