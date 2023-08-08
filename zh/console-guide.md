@@ -314,6 +314,8 @@ You can grant multiple required roles to project members.
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | Create/Read/Update/Delete for project's Notification Receiver Group Management <br> Read for project members <br> Read for project's role groups|
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | Read for project's Notification Receiver Group Management <br> Read for project's role groups|
 | PROJECT API SECURITY SETTING ADMIN | Create/Read/Update/Delete for project's API Security Setting|
+| PROJECT QUOTA MANAGEMENT ADMIN| Create/Read/Update/Delete for project's Quota Management|
+| PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
 
 #### Permissions by Project Management Feature
 
@@ -333,15 +335,14 @@ You can grant multiple required roles to project members.
 | Usage Status | Read | ADMIN<br>BILLING VIEWER | No Permission |
 | Project Management | Basic Project Information Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN| Service PERMISSION |
 | | Basic Project Information Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN | No Permission |
-| | API Security Setting Read | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MEMBER<br>PROJECT API SECURITY SETTING ADMIN | Service Permission  |
+| | API Security Setting Read | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MEMBER<br>PROJECT API SECURITY SETTING ADMIN | Service PERMISSION  |
 | | API Security Setting Create/Update/Delete | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT API SECURITY SETTING ADMIN | No Permission |
-| | Service in Use(Disable) Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER| Service PERMISSION |
-| | Service in Use(Disable) Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN(Cannot disable for marketplace service) | Service PERMISSION |
+| | Service in Use(Disable) Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE_ADMIN<br>MARKETPLACE_VIEWER| Service PERMISSION |
+| | Service in Use(Disable) Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN(Cannot disable for marketplace service)<br>MARKETPLACE_ADMIN(Cannot disable for project service) | Service PERMISSION |
 | | Delete Project Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | Service PERMISSION |
 | | Delete Project Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN | No Permission |
-| Quota Management | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | Service ADMIN<br>Service VIEWER |
-| | Request Quota Adjustment | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN | Service ADMIN |
-
+| Quota Management | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT QUOTA MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT VIEWER | Service ADMIN<br>Service VIEWER |
+| | Request Quota Adjustment | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT ADMIN | Service ADMIN |
 #### Service Use roles
 
 | Service | Role | Description |
