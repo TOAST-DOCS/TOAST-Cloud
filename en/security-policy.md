@@ -61,4 +61,4 @@ To protect customer service, the block-intrusion system is provided as well as s
 [![](https://static.toastoven.net/prod_gov_security/fileicon_download_excel.png)](https://static.toastoven.net/prod_gov_security/Application%20for%20Exception%20from%20NHN%20Cloud%20Firewall%20and%20SSL%20VPN%20Policy_Agency%20Name.xlsx)
 
 - Save file name as “Application for Exception from NHN Cloud Firewall and SSL VPN Policy_JP-Agency Name.xlsx”.
-- Submit your inquiry with a file attached via [1:1 Inquiry](https://www.nhncloud.com/kr/support/inquiry?alias=tab3_0) from NHN Cloud (for government agencies). (Processed and replied within 3 days from the date of receipt)
+- Submit your inquiry with a file attached via [1:1 Inquiry](https://www.nhncloud.com/kr/support/inquiry?alias=tab3_08) from NHN Cloud (for government agencies). (Processed and replied within 3 days from the date of receipt)
