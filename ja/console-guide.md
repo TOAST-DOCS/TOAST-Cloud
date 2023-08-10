@@ -312,6 +312,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | プロジェクト通知受信グループの管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | プロジェクト通知受信グループの管理Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
 | PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
+| PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
+| PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
 
 #### プロジェクト管理機能別権限
 
@@ -333,12 +335,12 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | | プロジェクト基本情報Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 権限なし |
 | | APIセキュリティー設定Read(読込) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MEMBER<br>PROJECT API SECURITY SETTING ADMIN | サービスPERMISSION  |
 | | APIセキュリティー設定Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT API SECURITY SETTING ADMIN | 権限なし |
-| | 利用中のサービス(無効)Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | サービスPERMISSION |
-| | 利用中のサービス(無効)Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN(マーケットプレイスサービスは無効化ボタンが無効) | サービスPERMISSION |
+| | 利用中のサービス(無効)Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE_ADMIN<br>MARKETPLACE_VIEWER | サービスPERMISSION |
+| | 利用中のサービス(無効)Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN(マーケットプレイスサービスは無効化ボタンが無効)<br>MARKETPLACE_ADMIN(プロジェクトサービスは無効化ボタンが無効) | サービスPERMISSION |
 | | プロジェクト削除Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | サービスPERMISSION |
 | | プロジェクト削除Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 権限なし |
-| クォーター管理 | Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | サービスADMIN<br>サービスVIEWER |
-| | クォーター調整申請 | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN | サービスADMIN |
+| クォーター管理 | Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT QUOTA MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT VIEWER | サービスADMIN<br>サービスVIEWER |
+| | クォーター調整申請 | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT ADMIN | サービスADMIN |
 
 #### サービス利用ロール
 

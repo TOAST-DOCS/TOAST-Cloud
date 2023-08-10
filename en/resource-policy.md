@@ -33,7 +33,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |VPN Gateway(Site-to-Site VPN) Connection | Per subnet | 1 |  
 |Service Gateway | Per VPC | 10 | 
 |Traffic Mirroring Session | Per project | 10 | 
-|Traffic Mirroring Filter Group | Per Mirroring Session | 10 | 
+|Traffic Mirroring Filter Group | Per project | 10 | 
 | Network Interface | Per project | 500 | 
 | Network ACL | Per project | 10 | 
 | Network ACL Policy | Per project | 100 | 

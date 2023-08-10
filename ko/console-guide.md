@@ -310,6 +310,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | 프로젝트 알림 수신 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | 프로젝트 알림 수신 그룹 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
 | PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
+| PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
+| PROJECT QUOTA MANAGEMENT VIEWER| 프로젝트 쿼터 관리 Read(읽기)|
 
 #### 프로젝트 관리 기능별 권한
 | 탭 | 기능별 수행 동작 | 프로젝트 관리 역할 | 서비스 이용 역할 |
@@ -330,12 +332,12 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | | 프로젝트 기본 정보 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 권한 없음 |
 | | API 보안 설정 Read(읽기) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MEMBER<br>PROJECT API SECURITY SETTING ADMIN | 서비스 PERMISSION  |
 | | API 보안 설정 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT API SECURITY SETTING ADMIN | 권한 없음 |
-| | 이용 중인 서비스(비활성화) Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | 서비스 PERMISSION |
-| | 이용 중인 서비스(비활성화) Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN(마켓플레이스 서비스의 경우 비활성화 불가)  | 서비스 PERMISSION |
+| | 이용 중인 서비스(비활성화) Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE_ADMIN<br>MARKETPLACE_VIEWER | 서비스 PERMISSION |
+| | 이용 중인 서비스(비활성화) Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN(마켓플레이스 서비스의 경우 비활성화 불가)<br>MARKETPLACE_ADMIN(프로젝트 서비스의 경우 비활성화 불가)  | 서비스 PERMISSION |
 | | 프로젝트 삭제 Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | 서비스 PERMISSION |
 | | 프로젝트 삭제 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 권한 없음 |
-| 쿼터 관리 | Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | 서비스 ADMIN<br>서비스 VIEWER |
-| | 쿼터 조정 신청 | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN | 서비스 ADMIN |
+| 쿼터 관리 | Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT QUOTA MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT VIEWER | 서비스 ADMIN<br>서비스 VIEWER |
+| | 쿼터 조정 신청 | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT ADMIN | 서비스 ADMIN |
 
 #### 서비스 이용 역할
 
