@@ -4,10 +4,12 @@ NHN Cloud provides the Resource Provision Policy to provide stable services to a
 ### Resource Provision Policy for Organization/Project 
 Resource usage for organization is calculated based on members who registered payment method. For project, it is calculated based on organizations.  
 
-|Resource | Criteria | Capacity | 
-|----|----|----|
-|Organization    | Per member with registered payment method |3|
-|Project     | Per organization |5|
+|Resource | Membership Type | Criteria | Capacity | 
+|----|----|----|----|
+|Organization    | Individual | Per member with registered payment method |3|
+|   | Business Owner| Per member with registered payment method |5|
+|Project     | Individual | Per organization |5|
+|   | Business Owner | Per organization |10|
 
 ### Resource Provision Policy for Infrastructure Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
