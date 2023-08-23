@@ -175,7 +175,7 @@ Value : [Camera Permission Request Message]
 
     for (NSValue *rectValue in boundingBoxes) {
         CGRect boundingBox = [self dividedRect:rectValue.CGRectValue
-                                         // 디바이스의 해상도를 고려해 scale의 값 만큼 좌표를 나눈다.
+                                         // 디바이스의 해상도를 고려해 scale의 값만큼 좌표를 나눈다.
                                          scale:[UIScreen mainScreen].scale];
         CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
         CGContextSetLineWidth(context, 5.0);

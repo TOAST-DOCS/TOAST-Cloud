@@ -170,7 +170,7 @@ Value： [カメラ権限リクエストメッセージ]
         // 카드 번호의 인식 영역을 그린다.
         for (NSValue *rectValue in cardInfo.numberBoundingBoxes) {
             CGRect scaledBoundingBox = [self dividedRect:rectValue.CGRectValue
-                                                 // 디바이스의 해상도를 고려해 scale의 값 만큼 좌표를 나눈다.
+                                                 // 디바이스의 해상도를 고려해 scale의 값만큼 좌표를 나눈다.
                                                    scale:[UIScreen mainScreen].scale];
             CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
             CGContextSetLineWidth(context, 5.0);
