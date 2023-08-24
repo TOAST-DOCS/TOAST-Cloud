@@ -127,6 +127,75 @@ Value : [カメラ権限リクエストメッセージ]
 @end
 ```
 
+
+### 認識領域を表示する
+
+#### 認識領域返却API
+* OCR結果であるNHNCloudIDCardInfoデータに認識した領域の座標情報を返すことができます。
+
+```objc
+@interface NHNCloudIDCardInfo: NSObject
+
+// 身分証認識領域
+@property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *numberBoundingBoxes;
+
+@end
+
+```
+
+#### 認識領域ImageViewに描画
+
+```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // 認識した画像を返すように設定
+    [NHNCloudOCR setDetectedImageReturn:YES];
+}
+
+// 身分証認識結果を返す
+- (void)didDetectIDCardInfo:(NHNCloudIDCardInfo *)cardInfo error:(NSError *)error {
+
+    if (cardInfo.detectedImage != nil) {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:cardInfo.detectedImage.image];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        // imageViewに認識領域を描写する。
+        [self drawBoundingBoxes:cardInfo.boundingBoxes over:imageView];
+                
+        [self.view addSubview:imageView];
+    }
+}
+
+- (void)drawBoundingBoxes:(NSArray *)boundingBoxes
+                     over:(UIImageView *)imageView {
+    UIGraphicsBeginImageContextWithOptions(imageView.frame.size, NO, 0.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
+
+    for (NSValue *rectValue in boundingBoxes) {
+        CGRect boundingBox = [self dividedRect:rectValue.CGRectValue
+                                         // デバイスの解像度を考慮してscaleの値で座標を分割します。
+                                         scale:[UIScreen mainScreen].scale];
+        CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
+        CGContextSetLineWidth(context, 5.0);
+        CGContextStrokeRect(context, boundingBox);
+    }
+
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    imageView.image = newImage;
+}
+
+- (CGRect)dividedRect:(CGRect)rect
+                scale:(CGFloat)scale {
+    return CGRectMake(rect.origin.x / scale, rect.origin.y / scale,
+                      rect.size.width / scale, rect.size.height / scale);
+}
+
+```
+
 ### 初期化プロセス例
 
 ``` objc
