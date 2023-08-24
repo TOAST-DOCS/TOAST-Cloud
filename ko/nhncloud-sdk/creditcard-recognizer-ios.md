@@ -126,6 +126,81 @@ Value : [카메라 권한 요청 메시지]
 @end
 ```
 
+
+### 인식 영역 표시하기
+
+#### 인식 영역 반환 API
+* OCR 결과인 NHNCloudCreditCardInfo 데이터에 인식된 영역의 좌표 정보를 반환 받을 수 있습니다.
+
+```objc
+@interface NHNCloudCreditCardInfo : NSObject
+
+// 카드 번호 인식 영역
+@property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *numberBoundingBoxes;
+
+// 유효 기간 인식 영역
+@property(nonatomic, assign, readonly) CGRect validThruBoundingBox;
+
+@end
+
+```
+
+#### 인식 영역 ImageView에 그리기
+
+```objc
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // 인식된 이미지를 반환하도록 설정
+    [NHNCloudOCR setDetectedImageReturn:YES];
+}
+
+// 신용카드 인식 결과 반환
+- (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
+
+    if (cardInfo.detectedImage != nil) {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:cardInfo.detectedImage.image];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+          
+        UIGraphicsBeginImageContextWithOptions(imageView.frame.size, NO, 0.0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+
+        [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
+        
+        // 카드 번호의 인식 영역을 그린다.
+        for (NSValue *rectValue in cardInfo.numberBoundingBoxes) {
+            CGRect scaledBoundingBox = [self dividedRect:rectValue.CGRectValue
+                                                 // 디바이스의 해상도를 고려해 scale의 값만큼 좌표를 나눈다.
+                                                   scale:[UIScreen mainScreen].scale];
+            CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
+            CGContextSetLineWidth(context, 5.0);
+            CGContextStrokeRect(context, scaledBoundingBox);
+        }
+
+        CGRect scaledValidThruBoundingBox = [self dividedRect:cardInfo.validThruBoundingBox
+                                                        scale:[UIScreen mainScreen].scale];
+        // 유효 기간의 인식 영역을 그린다.                                                  
+        CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
+        CGContextSetLineWidth(context, 5.0);
+        CGContextStrokeRect(context, scaledValidThruBoundingBox);
+        
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        imageView.image = newImage;
+                
+        [self.view addSubview:imageView];
+    }
+}
+
+- (CGRect)dividedRect:(CGRect)rect
+                scale:(CGFloat)scale {
+    return CGRectMake(rect.origin.x / scale, rect.origin.y / scale,
+                      rect.size.width / scale, rect.size.height / scale);
+}
+
+```
+
 ### 초기화 과정 예
 
 ``` objc

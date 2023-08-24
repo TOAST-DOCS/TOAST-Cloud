@@ -126,7 +126,6 @@ Value： [カメラ権限リクエストメッセージ]
 @end
 ```
 
-
 ### 認識領域を表示する
 
 #### 認識領域返却API
@@ -151,6 +150,7 @@ Value： [カメラ権限リクエストメッセージ]
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // 認識した画像を返すように設定
     [NHNCloudOCR setDetectedImageReturn:YES];
 }
