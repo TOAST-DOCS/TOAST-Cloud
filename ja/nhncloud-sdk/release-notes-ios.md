@@ -1,5 +1,14 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.6.2 (2023. 08. 29.)
+### 共通
+#### 改善事項
+* CountryCode取得に失敗する問題を修正
+
+### NHN Cloud OCR
+#### 機能追加
+* クレジットカード/身分証認識結果データに認識領域を追加
+
 ## 1.6.1 (2023. 07. 25.)
 ### NHN Cloud IAP
 #### 改善事項
