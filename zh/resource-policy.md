@@ -27,10 +27,10 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Routing Table | Per VPC |10|
 |Route | Per routing table |10|
 |Static Route | Per subnet | 20 |
-|Region Peering | Per project |10 | 
-|Project Peering |Per project  |10 | 
+|Region Peering | Per project | 10 | 
+|Project Peering | Per project | 10 |
 |Internet Gateway | Per project |3|
-|NAT Gateway | Per project | 3 | 
+|NAT Gateway | Per project | 3 |
 |VPN Gateway(Site-to-Site VPN) | Per VPC | 1 | 
 |VPN Gateway(Site-to-Site VPN) Connection | Per subnet | 1 |  
 |Service Gateway | Per VPC | 10 | 
@@ -47,6 +47,16 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 | NAS Volume Size | Per project | 30TB |
 | NAS Max Volume Size | Per volum | 10TB |
 | NAS volume Subnet | Per project | 3 |
+| Transit Hub | Per project | 10 |
+| Transit Hub Attachment | Per project | 20 |
+| Transit Hub Allow Project | Per project | 10 |
+| Transit Hub Routing Table | Per project | 20 |
+| Transit Hub Routing Association | Per project | No limit |
+| Transit Hub Routing Propagation | Per project | No limit |
+| Transit Hub Routing Rule | Per project | 100 |
+| Transit Hub Multicast Domain | Per project | 20 |
+| Transit Hub Multicast Association | Per project | No limit |
+| Transit Hub Multicast Group | Per project | 100 |
 
 ### Resource Provision Policy for NHN Kubernetes Service (NKS)  
 Resource usage is calculated for each project, and the policy is applied by the region. 
@@ -56,6 +66,18 @@ Resource usage is calculated for each project, and the policy is applied by the 
 |Cluster	| Per project |3|
 |Worker Node Group	 | Per cluster |3 (including default worker node group)|
 |Worker Node Count	 | Per worker node group  |10|
+
+### Resource Provision Policy for NHN Container Registry(NCR)
+Resource usage is calculated for each project, and the policy is applied by the region. 
+
+|Resources | Criteria | Capacity | 
+|----|----|----|
+| Number of Registries | Per project | 30 |
+| Number of Images | Per registry | 10000 |
+| Number of Artifacts | Per image | 10000 |
+| Number of Tags | Per artifact | 1000 |
+| Number of Scans |  1 day per image | 1 |
+
 
 ### Resource Provision Policy for NHN Container Service(NCS) 
 Resource usage is calculated for each project, and the policy is applied by the region. 
@@ -72,7 +94,6 @@ Resource usage is calculated for each project, and the policy is applied by the 
 | Memory | Per project |	49,152 MiB |
 | GPU | Per template |  7Core | 
 | GPU | Per project | 7Core |
-
 
 ### Resource Provision Policy for DNS Plus Service 
 Resource usage is calculated for each project.
@@ -128,6 +149,7 @@ Resource usage is calculated for each project.
 | Resource | Criteria | Capacity |
 | --- | :---: | :---: |
 | Number of running flows | Per project | 10 |
+
 
 ### Request for Capacity Adjustment
 To increase capacity beyond default volume, send a request to NHN Cloud Customer Center [1:1 Inquiry](https://nhncloud.com/kr/support/inquiry). 
