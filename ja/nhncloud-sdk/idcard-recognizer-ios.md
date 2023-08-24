@@ -127,39 +127,39 @@ Value : [カメラ権限リクエストメッセージ]
 @end
 ```
 
+### 認識領域を表示する
 
-### 인식 영역 표시하기
-
-#### 인식 영역 반환 API
-* OCR 결과인 NHNCloudIDCardInfo 데이터에 인식된 영역의 좌표 정보를 반환 받을 수 있습니다.
+#### 認識領域返却API
+* OCR結果であるNHNCloudIDCardInfoデータに認識した領域の座標情報を返すことができます。
 
 ```objc
 @interface NHNCloudIDCardInfo: NSObject
 
-// 신분증 인식 영역
-@property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *boundingBoxes;
+// 身分証認識領域
+@property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *numberBoundingBoxes;
 
 @end
 
 ```
 
-#### 인식 영역 ImageView에 그리기
+#### 認識領域ImageViewに描画
 
 ```objc
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 인식된 이미지를 반환하도록 설정
+
+    // 認識した画像を返すように設定
     [NHNCloudOCR setDetectedImageReturn:YES];
 }
 
-// 신분증 인식 결과 반환
+// 身分証認識結果を返す
 - (void)didDetectIDCardInfo:(NHNCloudIDCardInfo *)cardInfo error:(NSError *)error {
 
     if (cardInfo.detectedImage != nil) {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:cardInfo.detectedImage.image];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         
-        // imageView에 인식 영역을 그린다.
+        // imageViewに認識領域を描写する。
         [self drawBoundingBoxes:cardInfo.boundingBoxes over:imageView];
                 
         [self.view addSubview:imageView];
@@ -175,7 +175,7 @@ Value : [カメラ権限リクエストメッセージ]
 
     for (NSValue *rectValue in boundingBoxes) {
         CGRect boundingBox = [self dividedRect:rectValue.CGRectValue
-                                         // 디바이스의 해상도를 고려해 scale의 값만큼 좌표를 나눈다.
+                                         // デバイスの解像度を考慮してscaleの値で座標を分割します。
                                          scale:[UIScreen mainScreen].scale];
         CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
         CGContextSetLineWidth(context, 5.0);

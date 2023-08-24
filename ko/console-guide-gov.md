@@ -358,7 +358,6 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Deploy | ADMIN | Deploy 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Deploy | VIEWER | Deploy 서비스 Read(읽기) 권한 |
-| Managed | ADMIN | Managed 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 
 #### 서비스 활성화 역할

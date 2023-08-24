@@ -41,7 +41,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
 |  | NHN Container Service(NCS)  | Regional | O |  |  |  |
 | Network | VPC | Region | O | O | O | O |
-|  | NAT Instance | Regional |  | O |  |  |
+|  | NAT Instance | Regional | O | O |  |  |
 |  | Floating IP | Regional | O | O | O | O |
 |  | Security Groups | Regional | O | O | O | O |
 |  | Network ACL | Regional |  | O |  |  |
@@ -50,6 +50,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
 |  | Physical Load Balancer | Regional | O | O |  |  |
 |  | NAT Instance | Regional |  | O |  |  |
+|  | Transit Hub | Regional | O | O |  |  |
 |  | Internet Gateway | Regional | O | O | O | O |
 |  | Peering Gateway | Regional | O | O | O | O |
 |  | Colocation Gateway | Regional | O | O |  |  |

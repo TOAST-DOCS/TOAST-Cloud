@@ -126,36 +126,36 @@ Value： [カメラ権限リクエストメッセージ]
 @end
 ```
 
+### 認識領域を表示する
 
-### 인식 영역 표시하기
-
-#### 인식 영역 반환 API
-* OCR 결과인 NHNCloudCreditCardInfo 데이터에 인식된 영역의 좌표 정보를 반환 받을 수 있습니다.
+#### 認識領域返却API
+* OCR結果であるNHNCloudCreditCardInfoデータに認識された領域の座標情報を返すことができます。
 
 ```objc
 @interface NHNCloudCreditCardInfo : NSObject
 
-// 카드 번호 인식 영역
+// カード番号認識領域
 @property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *numberBoundingBoxes;
 
-// 유효 기간 인식 영역
+// 有効期限認識領域
 @property(nonatomic, assign, readonly) CGRect validThruBoundingBox;
 
 @end
 
 ```
 
-#### 인식 영역 ImageView에 그리기
+#### 認識領域ImageViewに描画
 
 ```objc
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 인식된 이미지를 반환하도록 설정
+
+    // 認識した画像を返すように設定
     [NHNCloudOCR setDetectedImageReturn:YES];
 }
 
-// 신용카드 인식 결과 반환
+// クレジットカードの認識結果を返す
 - (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
 
     if (cardInfo.detectedImage != nil) {
@@ -167,10 +167,10 @@ Value： [カメラ権限リクエストメッセージ]
 
         [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
         
-        // 카드 번호의 인식 영역을 그린다.
+        // カード番号の認識領域を描画する。
         for (NSValue *rectValue in cardInfo.numberBoundingBoxes) {
             CGRect scaledBoundingBox = [self dividedRect:rectValue.CGRectValue
-                                                 // 디바이스의 해상도를 고려해 scale의 값만큼 좌표를 나눈다.
+                                                 // デバイスの解像度を考慮してscaleの値で座標を分割します。
                                                    scale:[UIScreen mainScreen].scale];
             CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
             CGContextSetLineWidth(context, 5.0);
@@ -179,7 +179,7 @@ Value： [カメラ権限リクエストメッセージ]
 
         CGRect scaledValidThruBoundingBox = [self dividedRect:cardInfo.validThruBoundingBox
                                                         scale:[UIScreen mainScreen].scale];
-        // 유효 기간의 인식 영역을 그린다.                                                  
+        // 有効期限の認識領域を描画する。                 
         CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
         CGContextSetLineWidth(context, 5.0);
         CGContextStrokeRect(context, scaledValidThruBoundingBox);
