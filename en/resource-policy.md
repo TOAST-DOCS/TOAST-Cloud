@@ -51,11 +51,11 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 | Transit Hub Attachment | Per project | 20 |
 | Transit Hub Allow Project | Per project | 10 |
 | Transit Hub Routing Table | Per project | 20 |
-| Transit Hub Routing Association | Per project | No limit |
-| Transit Hub Routing Propagation | Per project | No limit |
+| Transit Hub Routing Association | | No limit |
+| Transit Hub Routing Propagation | | No limit |
 | Transit Hub Routing Rule | Per project | 100 |
 | Transit Hub Multicast Domain | Per project | 20 |
-| Transit Hub Multicast Association | Per project | No limit |
+| Transit Hub Multicast Association | | No limit |
 | Transit Hub Multicast Group | Per project | 100 |
 
 ### Resource Provision Policy for NHN Kubernetes Service (NKS)  
