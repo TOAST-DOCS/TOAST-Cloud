@@ -128,38 +128,38 @@ Value : [Camera Permission Request Message]
 ```
 
 
-### 인식 영역 표시하기
+### Display Recognition Area
 
-#### 인식 영역 반환 API
-* OCR 결과인 NHNCloudIDCardInfo 데이터에 인식된 영역의 좌표 정보를 반환 받을 수 있습니다.
+#### Return Recognition Area API
+* The coordinate information of recognized area in the NHNCloudIDCardInfo data, the OCR result, can be returned.
 
 ```objc
 @interface NHNCloudIDCardInfo: NSObject
 
-// 신분증 인식 영역
+// ID card recognition area
 @property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *boundingBoxes;
 
 @end
 
 ```
 
-#### 인식 영역 ImageView에 그리기
+#### Draw the Recognition area on ImageView
 
 ```objc
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 인식된 이미지를 반환하도록 설정
+    // Set up to return recognized image
     [NHNCloudOCR setDetectedImageReturn:YES];
 }
 
-// 신분증 인식 결과 반환
+// Return ID card recognition result
 - (void)didDetectIDCardInfo:(NHNCloudIDCardInfo *)cardInfo error:(NSError *)error {
 
     if (cardInfo.detectedImage != nil) {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:cardInfo.detectedImage.image];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         
-        // imageView에 인식 영역을 그린다.
+        // Draw recognition area on imageView
         [self drawBoundingBoxes:cardInfo.boundingBoxes over:imageView];
                 
         [self.view addSubview:imageView];
@@ -175,7 +175,7 @@ Value : [Camera Permission Request Message]
 
     for (NSValue *rectValue in boundingBoxes) {
         CGRect boundingBox = [self dividedRect:rectValue.CGRectValue
-                                         // 디바이스의 해상도를 고려해 scale의 값만큼 좌표를 나눈다.
+                                         // Divide the coordinates by the value of scale based on the device's resolution.
                                          scale:[UIScreen mainScreen].scale];
         CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
         CGContextSetLineWidth(context, 5.0);
