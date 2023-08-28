@@ -41,7 +41,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | NHN Container Registry (NCR) | リージョン | O | O |  |  |
 |  | NHN Container Service(NCS)  | リージョン | O |  |  |  |
 | Network | VPC | リージョン | O | O | O | O |
-|  | NAT Instance | リージョン |  | O  |  |  |
+|  | NAT Instance | リージョン | O | O |  |  |
 |  | Floating IP | リージョン | O | O | O | O |
 |  | Security Groups | リージョン | O | O | O | O |
 |  | Network ACL | リージョン | O | O | O | O |
@@ -49,6 +49,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |
 |  | 物理Load Balancer | リージョン | O | O |  |  |
+|  | Transit Hub | リージョン | O | O |  |  |
 |  | Internet Gateway | リージョン | O | O | O | O |
 |  | Peering Gateway | リージョン | O | O | O | O |
 |  | Colocation Gateway | リージョン | O | O |  |  |
