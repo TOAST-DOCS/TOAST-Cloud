@@ -126,6 +126,81 @@ Value : [Camera Permission Request Message]
 @end
 ```
 
+
+### Display Recognition Area
+
+#### Return Recognition Area API
+* The coordinate information of the recognized area in NHNCloudCreditCardInfo, which is the OCR result, can be returned.
+
+```objc
+@interface NHNCloudCreditCardInfo : NSObject
+
+// Card number recognition area
+@property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *numberBoundingBoxes;
+
+// Expiration period recognition area
+@property(nonatomic, assign, readonly) CGRect validThruBoundingBox;
+
+@end
+
+```
+
+#### Draw on the Recognition Area ImageView
+
+```objc
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Set up to return recognized image
+    [NHNCloudOCR setDetectedImageReturn:YES];
+}
+
+// Return credit card recognition result
+- (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
+
+    if (cardInfo.detectedImage != nil) {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:cardInfo.detectedImage.image];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+          
+        UIGraphicsBeginImageContextWithOptions(imageView.frame.size, NO, 0.0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+
+        [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
+        
+        // Draw the recognized area for credit card number.
+        for (NSValue *rectValue in cardInfo.numberBoundingBoxes) {
+            CGRect scaledBoundingBox = [self dividedRect:rectValue.CGRectValue
+                                                 // Divide the coordinates by the value of scale based on the device's resolution.
+                                                   scale:[UIScreen mainScreen].scale];
+            CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
+            CGContextSetLineWidth(context, 5.0);
+            CGContextStrokeRect(context, scaledBoundingBox);
+        }
+
+        CGRect scaledValidThruBoundingBox = [self dividedRect:cardInfo.validThruBoundingBox
+                                                        scale:[UIScreen mainScreen].scale];
+        // Draw the recognized area for expiration period                                                  
+        CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
+        CGContextSetLineWidth(context, 5.0);
+        CGContextStrokeRect(context, scaledValidThruBoundingBox);
+        
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        imageView.image = newImage;
+                
+        [self.view addSubview:imageView];
+    }
+}
+
+- (CGRect)dividedRect:(CGRect)rect
+                scale:(CGFloat)scale {
+    return CGRectMake(rect.origin.x / scale, rect.origin.y / scale,
+                      rect.size.width / scale, rect.size.height / scale);
+}
+
+```
+
 ### Example of Initialization Process
 
 ``` objc

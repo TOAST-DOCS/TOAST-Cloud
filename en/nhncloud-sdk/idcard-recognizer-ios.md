@@ -127,6 +127,75 @@ Value : [Camera Permission Request Message]
 @end
 ```
 
+
+### Display Recognition Area
+
+#### Return Recognition Area API
+* The coordinate information of recognized area in the NHNCloudIDCardInfo data, the OCR result, can be returned.
+
+```objc
+@interface NHNCloudIDCardInfo: NSObject
+
+// ID card recognition area
+@property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *boundingBoxes;
+
+@end
+
+```
+
+#### Draw the Recognition area on ImageView
+
+```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Set up to return recognized image
+    [NHNCloudOCR setDetectedImageReturn:YES];
+}
+
+// Return ID card recognition result
+- (void)didDetectIDCardInfo:(NHNCloudIDCardInfo *)cardInfo error:(NSError *)error {
+
+    if (cardInfo.detectedImage != nil) {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:cardInfo.detectedImage.image];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        // Draw recognition area on imageView
+        [self drawBoundingBoxes:cardInfo.boundingBoxes over:imageView];
+                
+        [self.view addSubview:imageView];
+    }
+}
+
+- (void)drawBoundingBoxes:(NSArray *)boundingBoxes
+                     over:(UIImageView *)imageView {
+    UIGraphicsBeginImageContextWithOptions(imageView.frame.size, NO, 0.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
+
+    for (NSValue *rectValue in boundingBoxes) {
+        CGRect boundingBox = [self dividedRect:rectValue.CGRectValue
+                                         // Divide the coordinates by the value of scale based on the device's resolution.
+                                         scale:[UIScreen mainScreen].scale];
+        CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
+        CGContextSetLineWidth(context, 5.0);
+        CGContextStrokeRect(context, boundingBox);
+    }
+
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    imageView.image = newImage;
+}
+
+- (CGRect)dividedRect:(CGRect)rect
+                scale:(CGFloat)scale {
+    return CGRectMake(rect.origin.x / scale, rect.origin.y / scale,
+                      rect.size.width / scale, rect.size.height / scale);
+}
+
+```
+
 ### Example of Initialization Process
 
 ``` objc

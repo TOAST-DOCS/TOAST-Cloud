@@ -1,5 +1,14 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.7.1 (August 29, 2023)
+
+### NHN Cloud IAP
+
+#### Improved
+
+* Improved MyCard test payment
+* Raised the minimum supported verson of MyCard to API 21.
+
 ## 1.7.0 (July 11, 2023)
 
 ### NHN Cloud OCR
