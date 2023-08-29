@@ -286,12 +286,18 @@ Members are classified into NHN Cloud members and IAM members.
 
 * roles that can be set are different for each organization service (Online Contact, Dooray!, etc.).
 * Cloud service roles are as follows.
-    * The MEMBER role can be selectively granted only when needed.
-    * If the MEMBER role is granted, the user can create a project directly.
 
-| Task | Role | MEMBER |
-| --- | --- | --- |
-| Manage Project | Create Projects | O |
+| Task               | Role                                              | ADMIN | MEMBER | Billing Viewer | Log Viewer |
+| -------------------- | ------------------------------------------------- |  ----- | ------ | -------------- | ---- |
+| Manage Organizations | Modify Organizations                              |  O     |        |                |      |
+| Manage Members       | Register Organization Members                     |  O     |        |                |      |
+|                      | Delete Organization Members                       |  O     |        |                |      |
+| Manage Services      | Enable Organization Services                      |  O     |        |                |      |
+|                      | Disable Organization Services                     |  O     |        |                |      |
+|                      | Status of Service Use                             |  O     |        | O              |      |
+| Manage Projects      | Create Projects                                   |  O     | O      |                |      |
+|                      | Delete Projects                                   |  O     |        |                |      |
+| Manage User Action Log | Query User Action Logs                          |  O     |        |                |  O   |
 
 ### Project Members
 
