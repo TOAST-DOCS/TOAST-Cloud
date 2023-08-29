@@ -47,6 +47,16 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 | NAS Volume Size | Per project | 30TB |
 | NAS Max Volume Size | Per volum | 10TB |
 | NAS volume Subnet | Per project | 3 |
+| Transit Hub | Per project | 10 |
+| Transit Hub Attachment | Per project | 20 |
+| Transit Hub Allow Project | Per project | 10 |
+| Transit Hub Routing Table | Per project | 20 |
+| Transit Hub Routing Association | | No limit |
+| Transit Hub Routing Propagation | | No limit |
+| Transit Hub Routing Rule | Per project | 100 |
+| Transit Hub Multicast Domain | Per project | 20 |
+| Transit Hub Multicast Association | | No limit |
+| Transit Hub Multicast Group | Per project | 100 |
 
 ### Resource Provision Policy for NHN Kubernetes Service (NKS)  
 Resource usage is calculated for each project, and the policy is applied by the region. 
@@ -56,6 +66,17 @@ Resource usage is calculated for each project, and the policy is applied by the 
 |Cluster	| Per project |3|
 |Worker Node Group	 | Per cluster |3 (including default worker node group)|
 |Worker Node Count	 | Per worker node group  |10|
+
+### Resource Provision Policy for NHN Container Registry(NCR)
+Resource usage is calculated for each project, and the policy is applied by the region. 
+
+|Resources | Criteria | Capacity | 
+|----|----|----|
+| Number of Registries | Per project | 30 |
+| Number of Images | Per registry | 10000 |
+| Number of Artifacts | Per image | 10000 |
+| Number of Tags | Per artifact | 1000 |
+| Number of Scans |  1 day per image | 1 |
 
 
 ### Resource Provision Policy for NHN Container Service(NCS) 

@@ -41,7 +41,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | NHN Container Registry (NCR) | 리전 | O | O |  |  |
 |  | NHN Container Service(NCS)  | 리전 | O |  |  |  |
 | Network | VPC | 리전 | O | O | O | O |
-|  | NAT Instance | 리전 |  | O |  |  |
+|  | NAT Instance | 리전 | O | O |  |  |
 |  | Floating IP | 리전 | O | O | O | O |
 |  | Security Groups | 리전 | O | O | O | O |
 |  | Network ACL | 리전 |  | O |  |  |
@@ -49,6 +49,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
 |  | 물리 Load Balancer | 리전 | O | O |  |  |
+|  | Transit Hub | 리전 | O | O |  |  |
 |  | Internet Gateway | 리전 | O | O | O | O |
 |  | Peering Gateway | 리전 | O | O | O | O |
 |  | Colocation Gateway | 리전 | O | O |  |  |

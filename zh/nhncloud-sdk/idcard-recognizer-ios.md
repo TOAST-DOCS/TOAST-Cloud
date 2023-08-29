@@ -127,6 +127,75 @@ Value : [카메라 권한 요청 메시지]
 @end
 ```
 
+
+### 인식 영역 표시하기
+
+#### 인식 영역 반환 API
+* OCR 결과인 NHNCloudIDCardInfo 데이터에 인식된 영역의 좌표 정보를 반환 받을 수 있습니다.
+
+```objc
+@interface NHNCloudIDCardInfo: NSObject
+
+// 신분증 인식 영역
+@property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *boundingBoxes;
+
+@end
+
+```
+
+#### 인식 영역 ImageView에 그리기
+
+```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // 인식된 이미지를 반환하도록 설정
+    [NHNCloudOCR setDetectedImageReturn:YES];
+}
+
+// 신분증 인식 결과 반환
+- (void)didDetectIDCardInfo:(NHNCloudIDCardInfo *)cardInfo error:(NSError *)error {
+
+    if (cardInfo.detectedImage != nil) {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:cardInfo.detectedImage.image];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        // imageView에 인식 영역을 그린다.
+        [self drawBoundingBoxes:cardInfo.boundingBoxes over:imageView];
+                
+        [self.view addSubview:imageView];
+    }
+}
+
+- (void)drawBoundingBoxes:(NSArray *)boundingBoxes
+                     over:(UIImageView *)imageView {
+    UIGraphicsBeginImageContextWithOptions(imageView.frame.size, NO, 0.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
+
+    for (NSValue *rectValue in boundingBoxes) {
+        CGRect boundingBox = [self dividedRect:rectValue.CGRectValue
+                                         // 디바이스의 해상도를 고려해 scale의 값만큼 좌표를 나눈다.
+                                         scale:[UIScreen mainScreen].scale];
+        CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
+        CGContextSetLineWidth(context, 5.0);
+        CGContextStrokeRect(context, boundingBox);
+    }
+
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    imageView.image = newImage;
+}
+
+- (CGRect)dividedRect:(CGRect)rect
+                scale:(CGFloat)scale {
+    return CGRectMake(rect.origin.x / scale, rect.origin.y / scale,
+                      rect.size.width / scale, rect.size.height / scale);
+}
+
+```
+
 ### 초기화 과정 예
 
 ``` objc

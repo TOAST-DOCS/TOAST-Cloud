@@ -126,6 +126,81 @@ Value： [カメラ権限リクエストメッセージ]
 @end
 ```
 
+### 認識領域を表示する
+
+#### 認識領域返却API
+* OCR結果であるNHNCloudCreditCardInfoデータに認識された領域の座標情報を返すことができます。
+
+```objc
+@interface NHNCloudCreditCardInfo : NSObject
+
+// カード番号認識領域
+@property(nonatomic, strong, readonly, nullable) NSArray<NSValue *> *numberBoundingBoxes;
+
+// 有効期限認識領域
+@property(nonatomic, assign, readonly) CGRect validThruBoundingBox;
+
+@end
+
+```
+
+#### 認識領域ImageViewに描画
+
+```objc
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    // 認識した画像を返すように設定
+    [NHNCloudOCR setDetectedImageReturn:YES];
+}
+
+// クレジットカードの認識結果を返す
+- (void)didDetectCreditCardInfo:(nullable NHNCloudCreditCardInfo *)cardInfo error:(nullable NSError *)error {
+
+    if (cardInfo.detectedImage != nil) {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:cardInfo.detectedImage.image];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+          
+        UIGraphicsBeginImageContextWithOptions(imageView.frame.size, NO, 0.0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+
+        [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
+        
+        // カード番号の認識領域を描画する。
+        for (NSValue *rectValue in cardInfo.numberBoundingBoxes) {
+            CGRect scaledBoundingBox = [self dividedRect:rectValue.CGRectValue
+                                                 // デバイスの解像度を考慮してscaleの値で座標を分割します。
+                                                   scale:[UIScreen mainScreen].scale];
+            CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
+            CGContextSetLineWidth(context, 5.0);
+            CGContextStrokeRect(context, scaledBoundingBox);
+        }
+
+        CGRect scaledValidThruBoundingBox = [self dividedRect:cardInfo.validThruBoundingBox
+                                                        scale:[UIScreen mainScreen].scale];
+        // 有効期限の認識領域を描画する。                 
+        CGContextSetStrokeColorWithColor(context, [UIColor orangeColor].CGColor);
+        CGContextSetLineWidth(context, 5.0);
+        CGContextStrokeRect(context, scaledValidThruBoundingBox);
+        
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        imageView.image = newImage;
+                
+        [self.view addSubview:imageView];
+    }
+}
+
+- (CGRect)dividedRect:(CGRect)rect
+                scale:(CGFloat)scale {
+    return CGRectMake(rect.origin.x / scale, rect.origin.y / scale,
+                      rect.size.width / scale, rect.size.height / scale);
+}
+
+```
+
 ### 初期化プロセス例
 
 ``` objc
