@@ -23,10 +23,8 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 | 분류 | 서비스명 | 글로벌/리전 서비스 | 한국(판교) 리전 | 한국(평촌) 리전 | 
 | --- | ---- | :--------: | :-------: | :-------: | 
 | Compute | Instance | 리전 | O | O | 
-|  | GPU Instance | 리전 | O | O |
 |  | Instance Template | 리전 | O | O | 
 |  | Image | 리전 | O | O | 
-|  | Image Builder | 리전 | O | O | 
 |  | Auto Scale | 리전 | O | O | 
 |  | System Monitoring | 리전 | O | O |
 |  | Virtual Desktop | 리전 | O | O | 
@@ -40,22 +38,20 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | 일반 Load Balancer | 리전 | O | O | 
 |  | 전용 Load Balancer | 리전 | O | O | 
 |  | IPSec VPN | 리전 | O |  |
-|  | NAT Instance | 리전 | O | O |
+|  | NAT Instance | 리전 |  | O |
 |  | Internet Gateway | 리전 | O | O | 
 |  | Peering Gateway | 리전 | O | O | 
 |  | Colocation Gateway | 리전 |  | O |
 |  | NAT Gateway | 리전 |  | O |
-|  | VPN Gateway(Site-to-Site VPN) | 리전 |  | O | 
 |  | Service Gateway | 리전 |  | O |
 |  | DNS Plus | 글로벌 |  |  |
 |  | Direct Connect | 리전 | O | O | 
 | Storage | Block Storage | 리전 | O | O | 
-|  | NAS (offline) | 리전 | O |  | 
 |  | NAS | 리전 | O | O | 
 |  | Object Storage | 리전 | O | O |
 |  | Backup | 리전 | O | O | 
 |  | Data transporter | 리전 | O |  | 
-| Database | RDS for MySQL | 리전 | O | O |
+| Database | RDS for MySQL | 리전 | O |  |
 |  | RDS for MariaDB | 리전 | - | - |
 |  | RDS for MS-SQL | 리전 | - | - |
 |  | EasyCache | 리전 | - | - |
@@ -67,18 +63,18 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Tibero Instance   | 리전 | O | O | 
 |  | Redis Instance | 리전 | O | O | 
 | Hybrid & Private Cloud | NHN Private Cloud | 리전 | - | - | 
-| Security | Server Security Check | - | - |
-|  | Security Monitoring | 리전 | O | O | 
+| Security | Server Security Check | 리전 | - | - |
+|  | Security Monitoring | 리전 | O | | 
 |  | Basic Security | 리전 | O | O | 
-|  | Web Firewall | 리전 | O | O |
-|  | Vaccine | 리전 | O | O |
+|  | Web Firewall | 리전 | O |  |
+|  | Vaccine | 리전 | O |  |
 |  | Secure Key Manager | 글로벌 |  |  | 
 |  | Security Compliance | 글로벌 |  |  | 
 |  | SIEM | 리전 | O | O | 
 |  | CSAP SaaS Guidance | 글로벌 |  |  |
 |  | SSL VPN | 리전 | O | O |
-|  | DDoS Guard | 리전 | O | O |
-|  | SIEM | 리전 | O | O | 
+|  | DDoS Guard | 리전 | O |  |
+|  | SIEM | 리전 | O |  | 
 | Content Delivery | CDN | 글로벌 |  |  |
 | AI Service | OCR | 글로벌 |  |  |
 | Machine Learning | Deep Learning Instance | 리전 | - | - |
@@ -88,7 +84,8 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 | Data & Analytics | Log & Crash Search | 글로벌 |  |  |
 |  | Kafka Instance | 리전 | O | O | 
 | Dev Tools | Deploy | 글로벌 |  |  | 
-| Management | Service Monitoring | 글로벌 |  |  |
+| Management | Support Plan | 리전 | O | O |
+|  | Service Monitoring | 글로벌 |  |  |
 |  | Certificate Manager | 글로벌 |  |  | 
 | Dooray! | Project | 글로벌 |  |  |
 |  | Messenger | 글로벌 |  |  | 
