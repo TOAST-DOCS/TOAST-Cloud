@@ -18,7 +18,7 @@ NHN Cloud Credit Card RecognizerはAndroid 5.0以上(API level 21以上)で動�
 dependencies {
     ...
     // NHN Cloud Credit Card Recognizer
-    implementation 'com.nhncloud.android:nhncloud-creditcard-recognizer:1.7.1'
+    implementation 'com.nhncloud.android:nhncloud-creditcard-recognizer:1.8.0'
 }
 ```
 
