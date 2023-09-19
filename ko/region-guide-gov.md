@@ -25,6 +25,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 | Compute | Instance | 리전 | O | O | 
 |  | Instance Template | 리전 | O | O | 
 |  | Image | 리전 | O | O | 
+|  | Image Builder  | 리전 | O | O |
 |  | Auto Scale | 리전 | O | O | 
 |  | System Monitoring | 리전 | O | O |
 |  | Virtual Desktop | 리전 | O | O | 
