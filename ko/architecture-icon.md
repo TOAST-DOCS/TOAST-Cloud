@@ -6,4 +6,4 @@ NHN Cloud는 고객이 아키텍처 다이어그램을 작성하는 데 활용�
 
 - 아래 PowerPoint 파일을 다운로드하여 이용해 주세요.
 
-[![](https://static.toastoven.net/prod_architecture_Icon/fileicon_download_ppt.png)](https://static.toastoven.net/prod_architecture_Icon/NHN_Cloud_Architecture_Icons_20230627.pptx)
+[![](https://static.toastoven.net/prod_architecture_Icon/fileicon_download_ppt.png)](https://static.toastoven.net/prod_architecture_Icon/NHN_Cloud_Architecture_Icons_20230926.pptx)
