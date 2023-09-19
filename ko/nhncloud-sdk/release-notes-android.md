@@ -1,5 +1,21 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 1.8.0 (2023. 09. 26.)
+
+### NHN Cloud IAP
+
+#### 기능 개선
+
+* Google Billing Client 5.2.1 업데이트
+    * 구글 정책에 따라 Android 14 이상을 타겟팅하는 앱은 NHN Cloud IAP 1.8.0 이상으로 업데이트해야 합니다.
+
+### NHN Cloud OCR
+
+#### 기능 개선
+
+* Camera 개선
+    * Camera Preview 화면이 디스플레이를 가득 채우도록 변경합니다.
+
 ## 1.7.1 (2023. 08. 29.)
 
 ### NHN Cloud IAP
