@@ -4,18 +4,18 @@
 
 ### NHN Cloud IAP
 
-#### 기능 개선
+#### 機能改善
 
-* Google Billing Client 5.2.1 업데이트
-    * 구글 정책에 따라 Android 14 이상을 타겟팅하는 앱은 NHN Cloud IAP 1.8.0 이상으로 업데이트해야 합니다.
+* Google Billing Client 5.2.1アップデート
+    * Googleのポリシーにより、Android 14 以上をターゲットとするアプリは NHN Cloud IAP 1.8.0 以上にアップデートする必要があります。
 
 ### NHN Cloud OCR
 
-#### 기능 개선
+#### 機能改善
 
-* Camera 개선
-    * Camera Preview 화면이 디스플레이를 가득 채우도록 변경합니다.
-* 최소 지원 버전이 API 22로 상향되었습니다.
+* Cameraの改善
+    * Camera Preview画面がディスプレイを全て満たすように変更します。
+* 最低サポートバージョンがAPI 22に引き上げられました。
 
 ## 1.7.1 (2023. 08. 29.)
 
@@ -24,7 +24,7 @@
 #### 機能改善
 
 * MyCardテスト決済改善
-* MyCard 최소 지원 버전이 API 21로 상향되었습니다.
+* MyCard の最小サポートバージョンが API 21 に引き上げられました。
 
 ## 1.7.0 (2023. 07. 11.)
 
