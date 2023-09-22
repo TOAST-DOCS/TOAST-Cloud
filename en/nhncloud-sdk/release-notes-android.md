@@ -7,7 +7,7 @@
 #### Improved
 
 * Updated Google Billing Client 5.2.1
-    * According to Google's policy, apps targeting Android 14 or later must be upated to NHN Cloud IAP 1.8.0 or later.
+    * According to Google's policy, apps targeting Android 14 or later must be updated to NHN Cloud IAP 1.8.0 or later.
 
 ### NHN Cloud OCR
 
