@@ -42,6 +42,12 @@
 
 * Added ONE store v21
 
+### NHN Cloud Logger
+
+#### 기능 개선
+
+* Android Gradle Plugin 8.0 지원
+
 ## 1.5.1 (May 30, 2023)
 
 ### NHN Cloud IAP
