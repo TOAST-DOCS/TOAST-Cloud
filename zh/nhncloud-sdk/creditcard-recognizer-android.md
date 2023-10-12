@@ -7,7 +7,7 @@
 
 ## Supported Environment
 
-NHN Cloud Credit Card Recognizer operates in Android 5.0 or higher (API level 21 or higher).
+NHN Cloud Credit Card Recognizer operates in Android 5.1 or higher (API level 22 or higher).
 
 ## Set up Project
 
@@ -136,10 +136,11 @@ creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
 }
 
 private fun isConfident(data: CreditCardRecognitionData): Boolean {
-    // Returns success when the card number is greater than or equal to 4
-    // and the confidence rating is greater than or equal to 0.4.
+    // Returns success if the number of card numbers is greater than or equal to 3
+    // and the confidence is greater than or equal to 0.4.
+    // American Express is in the format 1234-123456-12345.
     with (data.cardNumbers) {
-        if (size < 4) {
+        if (size < 3) {
             return false
         }
         for (cardNumber in this) {

@@ -7,7 +7,7 @@
 
 ## Supported Environment
 
-NHN Cloud ID Card Recognizer operates in Android 5.0 or higher (API level 21 or higher).
+NHN Cloud ID Card Recognizer operates in Android 5.1 or higher (API level 22 or higher).
 
 ## Set up Project
 
