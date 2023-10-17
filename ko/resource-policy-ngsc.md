@@ -30,7 +30,7 @@
 |NAT 게이트웨이 | 프로젝트당 | 3개 | O | |
 |VPN 게이트웨이(Site-to-Site VPN) | VPC당 | 1개 | X | | 
 |VPN 게이트웨이(Site-to-Site VPN) 연결 | 서브넷당 | 1개 | X | | 
-|서비스 게이트웨이 | VPC당 | 10개 | O | | 
+|서비스 게이트웨이 | 프로젝트당 | 10개 | O | | 
 |Network Interface | 프로젝트당 | 500개 | O | | 
 |Network ACL | 프로젝트당 | 10개 | O | | 
 |Network ACL 정책 | 프로젝트당 | 100개 | O | | 

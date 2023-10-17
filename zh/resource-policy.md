@@ -33,7 +33,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |NAT Gateway | Per project | 3 | O | |
 |VPN Gateway(Site-to-Site VPN) | Per VPC | 1 | X | | 
 |VPN Gateway(Site-to-Site VPN) Connection | Per subnet | 1 | X | |
-|Service Gateway | Per VPC | 10 | O | | 
+|Service Gateway | Per project | 10 | O | | 
 |Traffic Mirroring Session | Per project | 10 | O | |
 |Traffic Mirroring Filter Group | Per project | 10 | O | |
 | Network Interface | Per project | 500 | O | | 
