@@ -8,13 +8,13 @@ https://nhncloud.comにアクセスし、画面右上にある**会員登録**�
 ![userguide_01_202104](https://static.toastoven.net/toast/user_guide/userguide_01_20210401_ja.png)
 
 #### 国選択 
-NHN Cloud会員は、会員登録時に選択した国によって韓国会員(NHN Cloud)と日本会員(NHN Japan)に分類されます。
+NHN Cloud会員は、会員登録時に選択した国によって韓国会員(NHN Cloud)と日本会員(NHN Cloud Japan)に分類されます。
 各国の法令に基づいて定めたNHN Cloud利用約款と個人情報保護方針に同意すると、会員登録ができます。
 
 - 韓国会員(NHN Cloud)
     - 会員登録時に「韓国」を選択した会員
     
-- 日本会員(NHN Japan)
+- 日本会員(NHN Cloud Japan)
     - 会員登録時に「日本」を選択した会員
 
 #### 会員タイプ(個人/事業者)選択

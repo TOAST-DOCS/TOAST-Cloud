@@ -11,13 +11,13 @@ https://nhncloud.com에 접속한 후 화면 오른쪽 위에서 **회원 가입
 
 
 #### 국가 선택 
-NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(NHN Cloud)과 일본 회원(NHN Japan)으로 구분됩니다.
+NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(NHN Cloud)과 일본 회원(NHN Cloud Japan)으로 구분됩니다.
 각 국가의 법령에 의한 NHN Cloud 이용약관과 개인 정보 처리 방침에 동의해야 회원으로 가입할 수 있습니다.
 
 - 한국 회원(NHN Cloud)
     - 회원 가입 시 '한국'를 선택한 회원
     
-- 일본 회원(NHN Japan)
+- 일본 회원(NHN Cloud Japan)
     - 회원 가입 시 '일본'을 선택한 회원
 
 #### 회원 유형(개인/사업자) 선택

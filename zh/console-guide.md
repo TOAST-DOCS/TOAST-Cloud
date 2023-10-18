@@ -453,6 +453,8 @@ You can grant multiple required roles to project members.
 | Webshell Threat Detector | ADMIN | Create/Read/Update/Delete for Webshell Threat Detector Service |
 | Security Advisor | ADMIN | Create/Read/Update/Delete for Security Advisor Service |
 | Security Advisor | VIEWER | Read for Security Advisor Service  |
+| Network Firewall | ADMIN | Create/Read/Update/Delete for Network Firewall Service  |
+| Network Firewall | VIEWER | Read for Network Firewall Service  |
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
 | Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
