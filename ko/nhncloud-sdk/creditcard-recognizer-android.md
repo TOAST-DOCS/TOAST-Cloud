@@ -393,9 +393,10 @@ if (CreditCardRecognitionService.isAvailable(context)) {
     android:id="@+id/credit_card_first_number_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:textColor="#ffffff"
-    app:textSize="15sp"
-    app:textStyle="bold"/>
+    app:com_nhncloud_text_color="#ffffff"
+    app:com_nhncloud_text_size="15sp"
+    app:com_nhncloud_text_style="bold"
+    app:com_nhncloud_letter_spacing="0.3"/>
 ```
 
 SecureTextView의 setText 메서드를 통해 표시할 텍스트를 설정합니다. 
@@ -469,5 +470,6 @@ firstNumberView.setText(namfirstNumbere)
 | setTextSize | float |  | 텍스트 크기를 설정합니다. <br>크기 단위는 sp, 기본 설정은 14sp입니다. |
 | setTextColor | int |  | 텍스트 색상을 설정합니다. <br>기본 설정은 Color.Black(0xFF000000)입니다. |
 | setTypefaceStyle | Typeface, int |  | 텍스트 서체와 스타일을 설정합니다. <br>기본 스타일 설정은 Typeface.NORMAL입니다.|
+| setLetterSpacing | float | | 텍스트의 문자 간격을 설정합니다. <br>기본 설정은 0em입니다. 
 
 <br>

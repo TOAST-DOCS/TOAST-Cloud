@@ -523,9 +523,9 @@ If ID recognition information is created and used as a String object, security i
     android:id="@+id/id_card_name_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:textColor="#ffffff"
-    app:textSize="15sp"
-    app:textStyle="bold"/>
+    app:com_nhncloud_text_color="#ffffff"
+    app:com_nhncloud_text_size="15sp"
+    app:com_nhncloud_text_style="bold"/>
 ```
 
 Set the text to be displayed via the setText method of SecureTextView. 
@@ -543,9 +543,9 @@ If you need to display multiple lines of text, you can use SecureTextGroup.
     android:id="@+id/id_card_license_type_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:textColor="#ffffff"
-    app:textSize="15sp"
-    app:textStyle="bold"/>
+    app:com_nhncloud_text_color="#ffffff"
+    app:com_nhncloud_text_size="15sp"
+    app:com_nhncloud_text_style="bold"/>
 ```
 
 SecureTextGroup's addTextViews method takes an array as a parameter and sets each element to one line of text.
@@ -664,5 +664,6 @@ idCardLicenseTypeView.addTextViews(licenseType)
 | setTextSize | float |  | Set the text size. <br>The size unit is sp and defaults to 14sp. |
 | setTextColor | int |  | Set the text color. <br>The default setting is Color.Black (0xFF000000). |
 | setTypefaceStyle | Typeface, int |  | Set the text font and style. <br>The default style setting is Typeface.NORMAL.|
+| setLetterSpacing | float | | 텍스트의 문자 간격을 설정합니다. <br>기본 설정은 0em입니다. 
 
 <br>
