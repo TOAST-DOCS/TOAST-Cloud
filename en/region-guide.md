@@ -111,6 +111,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | OCR | Global |  |  |  |  |
 |  | Text to Speech | Global |  |  |  |  |
 |  | Speech to Text | Global |  |  |  |  |
+|  | Pose Estimation | Global |  |  |  |  |
 |  | Cheating Detection | Global |  |  |  |  |
 | Machine Learning | Deep Learning Instance | Regional | O |  | | |
 |  | AI EasyMaker | Regional | O |  |  |  |
