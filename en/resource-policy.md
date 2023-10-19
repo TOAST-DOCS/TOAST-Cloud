@@ -119,6 +119,12 @@ Resource usage is calculated for each project.
 | Alimtalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases | O | |
 | FriendTalk Delivery Volume | KakaoTalk Channel per day | 1,000 cases | O | |
 
+### Resource Provision Policy for Face Recognition Service
+| Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+| Number of Groups | Per Face Recognition Service | 5 cases | O | |
+| Number of Registered Faces in Group	 | 	Per Face Recognition Service Group | 100,000 cases | O | |
+
 ### Resource Provision Policy for OCR
 Resource usage is calculated for each project.
 
