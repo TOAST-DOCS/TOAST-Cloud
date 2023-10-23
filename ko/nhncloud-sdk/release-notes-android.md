@@ -1,5 +1,15 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 1.8.1 (2023. 10. 31.)
+
+### NHN Cloud OCR
+
+#### 기능 개선
+* Credit Card Recognizer UI 개선
+
+#### 버그 수정
+* Camera Focus 이슈 수정
+
 ## 1.8.0 (2023. 09. 26.)
 
 ### NHN Cloud IAP
