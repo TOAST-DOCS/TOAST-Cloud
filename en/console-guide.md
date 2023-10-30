@@ -161,6 +161,26 @@ After the login expires, the user must log in again to access the console.
     * If a user do not perform any actions such as clicking for a configured period of time, the user will be automatically logged out.
     * Setting it too long is not good for security, so please consider setting it to an appropriate value.
 
+#### Password Policy Settings
+* To set passwords for IAM members, the Password Policy Settings is provided.
+* The password policy is set the same for all organization services (Cloud, Online Contact, Dooray!, etc.).
+* Go to **IAM Governance Setting** \> **Password Policy Settings** to manage password policies.
+    * Default Password Policy
+        * Default password policy is provided as follows.
+            * Consists of at least 8 digits, including alphabets, numbers, and special characters.
+            * Case sensitive.
+            * Unable to use more than four consecutive letters or numbers (for example, 1111, 1234, abcd, etc.).
+            * Passwords must be changed every 90 days, and after 90 days, you'll be guided to change your password.
+    * User Password Policy
+        * Provides password policies that allow you to set minimum password length, password strength, password expiration, password reuse limit, and more.
+            * Minimum Password Length: Set the password minimum length to between 8 and 15 characters. (The maximum length is 15 characters.)
+            * Password Strength: Set the password strength using a combination of consecutive characters, uppercase, lowercase, numbers, special characters, and more.
+            * Password Expiration: Choose whether to expire the password, and set the length of time it expires upon setup, and whether it can be extended upon expiration.
+            * Restrict Password Reuse: Choose whether to restrict password reuse and set the number of reuse limits at setup by choosing between 1 and 3.
+            * When to Apply Password Policy: Set when the password policy is applied by selecting **Apply on Password Change** or **Apply Immediately** .
+                * If **Apply on Password Change** is selected, the new policy applies when an IAM member changes the password.
+                * If **Apply Immediately** is selected, the policy applies immediately after the password is set, making it the new policy at the time of IAM member login.
+
 ### Project Common role Group Setting
 
 You can create and manage role groups for common use in projects belonging to your organization.
@@ -434,6 +454,8 @@ You can grant multiple required roles to project members.
 | Webshell Threat Detector | ADMIN | Create/Read/Update/Delete for Webshell Threat Detector Service |
 | Security Advisor | ADMIN | Create/Read/Update/Delete for Security Advisor Service |
 | Security Advisor | VIEWER | Read for Security Advisor Service  |
+| Network Firewall | ADMIN | Create/Read/Update/Delete for Network Firewall Service  |
+| Network Firewall | VIEWER | Read for Network Firewall Service  |
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
 | Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
@@ -446,6 +468,7 @@ You can grant multiple required roles to project members.
 | OCR | ADMIN | Create/Read/Update/Delete for OCR | 
 | Text to Speech | ADMIN | Create/Read/Update/Delete for Text to Speech |
 | Speech to Text | ADMIN | Create/Read/Update/Delete for Speech to Text |
+| Pose Estimation | ADMIN | Create/Read/Update/Delete for Pose Estimation |
 | Cheating Detection | ADMIN | Create/Read/Update/Delete for Cheating Detection Service |
 | AI EasyMaker | ADMIN | Create/Read/Update/Delete for AI EasyMaker |
 | Maps | ADMIN | Create/Read/Update/Delete for Maps Service |

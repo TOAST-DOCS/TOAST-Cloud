@@ -157,6 +157,27 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
     * 설정한 시간 동안 클릭 등의 작업을 하지 않으면 자동으로 로그아웃됩니다.
     * 너무 길게 설정하면 보안상 좋지 않으니 고려하여 설정하시기 바랍니다.
 
+#### 비밀번호 정책 설정
+* IAM 멤버의 비밀번호를 설정하기 위해 비밀번호 정책 설정 기능을 제공합니다.
+* 비밀번호 정책은 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정됩니다.
+
+* **IAM 거버넌스 설정** > **비밀번호 정책 설정**에서 관리할 수 있습니다.
+    * 기본 비밀번호 정책
+        * 아래와 같은 기본 비밀번호 정책을 제공합니다.
+            * 영문, 숫자, 특수문자를 포함하여 8자리 이상으로 구성합니다.
+            * 대소문자를 구분합니다.
+            * 4자리 이상 연속적인 문자나 숫자(예: 1111, 1234, abcd 등)는 사용 할 수 없습니다.
+            * 비밀번호는 90일마다 변경이 필요하며, 90일이 지나면 비밀번호 변경 안내 화면이 제공됩니다.
+    * 사용자 비밀번호 정책
+        * 비밀번호 최소 길이, 비밀번호 강도, 비밀번호 만료, 비밀번호 재사용 제한 등을 설정할 수 있는 비밀번호 정책을 제공합니다.
+            * 비밀번호 최소 길이: 비밀번호 최소 길이를 8\~15자로 설정합니다. (최대 길이는 15자로 제공됩니다.)
+            * 비밀번호 강도: 연속된 문자, 대문자, 소문자, 숫자, 특수 문자 등을 조합하여 비밀번호 강도를 설정합니다.
+            * 비밀번호 만료: 비밀번호 만료 여부를 선택하고 설정 시 만료 기간, 만료 시 연장 가능 여부를 설정합니다.
+            * 비밀번호 재사용 제한: 비밀번호 재사용 제한 여부를 선택하고 설정 시 재사용 제한 개수를 1\~3개 중 선택하여 설정합니다.
+            * 비밀번호 정책 적용 시점: **비밀번호 변경 시 적용, 즉시 적용** 중 선택하여 비밀번호 정책 적용 시점을 설정합니다.
+                * **비밀번호 변경 시 적용**을 선택한 경우, IAM 멤버 비밀번호 변경 시점에 새로운 정책으로 적용됩니다.
+                * **즉시 적용**을 선택한 경우, 비밀번호 설정 후 즉시 적용되어 IAM 멤버 로그인 시점에 새로운 정책으로 적용됩니다.
+
 ### 프로젝트 공통 역할 그룹 설정
 
 조직에 속한 프로젝트에서 공통으로 사용할 역할 그룹을 생성하고 관리할 수 있습니다.
@@ -429,6 +450,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Webshell Threat Detector | ADMIN | Webshell Threat Detector 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Security Advisor | ADMIN | Security Advisor 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제))  |
 | Security Advisor | VIEWER | Security Advisor 서비스 Read(읽기)  |
+| Network Firewall | ADMIN | Network Firewall 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제))  |
+| Network Firewall | VIEWER | Network Firewall 서비스 Read(읽기)  |
 | CDN | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Image Manager | ADMIN | Image Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Push | ADMIN | Push 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
@@ -441,6 +464,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | OCR | ADMIN | OCR 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  | 
 | Text to Speech | ADMIN | Text to Speech 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Speech to Text | ADMIN | Speech to Text 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Pose Estimation | ADMIN | Pose Estimation 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Cheating Detection | ADMIN | Cheating Detection 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI EasyMaker | ADMIN | AI EasyMaker 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Maps | ADMIN | Maps 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |

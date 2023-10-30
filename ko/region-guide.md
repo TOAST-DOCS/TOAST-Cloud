@@ -98,6 +98,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | SIEM | 리전 | O | O |  |  |
 |  | Webshell Threat Detector | 리전 | O | O |  |  |
 |  | Security Advisor | 글로벌 |  |  |  |  |
+|  | Network Firewall | 리전 | O | O |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image Manager | 리전 | O |  |  |  |
 | Notification | Push | 글로벌 |  |  |  |  |
@@ -110,6 +111,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | OCR | 글로벌 |  |  |  |  |
 |  | Text to Speech | 글로벌 |  |  |  |  |
 |  | Speech to Text | 글로벌 |  |  |  |  |
+|  | Pose Estimation | 글로벌 |  |  |  |  |
 |  | Cheating Detection | 글로벌 | |  |  |  |
 | Machine Learning | Deep Learning Instance | 리전 | O |  | | |
 |  | AI EasyMaker | 리전 | O |  |  |  |

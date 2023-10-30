@@ -158,6 +158,26 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
     * 設定した時間の間にクリックなどの操作を行わなかった場合、自動的にログアウトされます。
     * あまりにも長く設定すると、セキュリティ上良くないため、考慮して設定してください。
 
+#### パスワードポリシー設定
+* IAMメンバーのパスワードを設定するために、パスワードポリシー設定機能を提供します。
+* パスワードポリシーはすべての組織サービス(Cloud, Online Contact, Dooray!など)に同じように設定されます。
+* IAMガバナンス設定 > パスワードポリシー設定で管理できます。
+    * 基本パスワードポリシー
+        * 基本パスワードポリシー下記のような基本パスワードポリシーを提供します。
+            * 英字、数字、特殊文字を含めて8桁以上で構成します。
+            * 大文字/小文字を区別します。
+            * 4桁以上の連続した文字や数字（例：1111、1234、abcdなど）は使用できません。
+            * パスワードは90日ごとに変更する必要があり、90日が過ぎるとパスワード変更案内画面が表示されます。
+    * ユーザーパスワードポリシー
+        * パスワードの最小長さ、パスワードの強度、パスワードの有効期限、パスワードの再利用制限などを設定できるパスワードポリシーを提供します。
+            * パスワードの最小長さ：パスワードの最小長さを8～15文字に設定します。 (最大長さは15文字で提供されます。)
+            * パスワード強度：連続した文字、大文字、小文字、数字、特殊文字などを組み合わせてパスワードの強度を設定します。
+            * パスワードの有効期限：パスワードの有効期限の有無を選択し、設定時に有効期限、有効期限の延長可否を設定します。
+            * パスワードの再使用制限：パスワードの再使用制限の有無を選択し、設定時に再使用制限数を1～3の中から選択して設定します。
+            * パスワードポリシーの適用時期：パスワード変更時に適用、即時適用から選択してパスワードポリシーの適用時期を設定します。
+                * パスワード変更時に適用を選択した場合、IAMメンバーのパスワード変更時に新しいポリシーとして適用されます。
+                * 即時適用を選択した場合、パスワード設定後すぐに適用され、IAMメンバーのログイン時に新しいポリシーとして適用されます。
+
 ### プロジェクト共通ロールグループ設定
 
 組織に属しているプロジェクトにおいて共通で使用するロールグループを作成し、管理できます。
@@ -432,6 +452,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Security Advisor | ADMIN | Security Advisorサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Security Advisor | VIEWER | Security Advisorサービスに対するRead(読み取り)  |
+| Network Firewall | ADMIN | Network Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Network Firewall | VIEWER | Network Firewallサービスに対するRead(読み取り)  |
 | CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
@@ -444,6 +466,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | OCR | ADMIN | OCRサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
 | Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
 | Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
+| Pose Estimation | ADMIN | Pose Estimationサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
 | Cheating Detection | ADMIN | Cheating Detectionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | AI EasyMaker | ADMIN | AI EasyMakerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | IAP | ADMIN | IAPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |

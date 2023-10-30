@@ -98,6 +98,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | SIEM | リージョン | O |O |  |  |
 |  | Webshell Threat Detector | リージョン | O | O |  |  |
 |  | Security Advisor | グローバル |  |  |  |  |
+|  | Network Firewall | リージョン | O | O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image Manager | リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |
@@ -110,6 +111,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | OCR | グローバル |  |  |  |  |
 |  | Text to Speech | グローバル |  |  |  |  |
 |  | Speech to text | グローバル |  |  |  |  |
+|  | Pose Estimation | グローバル |  |  |  |  |
 |  | Cheating Detection | グローバル |  |  |  |  |
 | Machine Learning | Deep Learning Instance | リージョン | O |  | | |
 |  | AI EasyMaker | リージョン | O |  |  |  |
