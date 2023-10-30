@@ -4,13 +4,13 @@
 
 ### NHN Cloud OCR
 
-#### 기능 개선
-* Credit Card Recognizer UI 개선
-    * 보안이 강화된 TextView를 적용합니다.
+#### 機能改善
+* Credit Card Recognizer UI改善
+    * セキュリティが強化されたTextViewを適用します。
 
-#### 버그 수정
-* Camera Focus 이슈 수정
-    * 일부 저사양 디바이스에서 Auto Focus가 동작하지 않는 문제를 수정합니다.
+#### バグ修正
+* Camera Focusの問題を修正
+    * 一部の低仕様デバイスでAuto Focusが動作しない問題を修正します。
 
 ## 1.8.0 (2023. 09. 26.)
 
@@ -56,9 +56,9 @@
 
 ### NHN Cloud Logger
 
-#### 기능 개선
+#### 機能改善
 
-* Android Gradle Plugin 8.0 지원
+* Android Gradle Plugin 8.0をサポート
 
 ## 1.5.1 (2023. 05. 30.)
 
