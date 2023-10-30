@@ -7,7 +7,7 @@
 
 ## 지원 환경
 
-NHN Cloud Credit Card Recognizer는 Android 5.0 이상(API level 21 이상)에서 동작합니다.
+NHN Cloud Credit Card Recognizer는 Android 5.1 이상(API level 22 이상)에서 동작합니다.
 
 ## 프로젝트 설정
 
@@ -19,7 +19,7 @@ NHN Cloud Credit Card Recognizer는 Android 5.0 이상(API level 21 이상)에�
 dependencies {
     ...
     // NHN Cloud Credit Card Recognizer
-    implementation 'com.nhncloud.android:nhncloud-creditcard-recognizer:1.8.0'
+    implementation 'com.nhncloud.android:nhncloud-creditcard-recognizer:1.8.1'
 }
 ```
 
@@ -69,16 +69,15 @@ creditCardRecognizer.launch(activity) { result, data ->
 개인정보 보호를 위해 신용카드 번호와 유효기간은 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
 SecureString.charAt(index) 메서드는 지정된 index에 있는 문자를 반환합니다.
 
-> CreditCardData로 반환되는 신용카드 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약합니다.
+> CreditCardData로 반환되는 신용카드 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약합니다.<br>
+> 화면에 표시하기 위하여 [SecureTextView 사용](./creditcard-recognizer-android/#_18)을 참고하세요.
 
 ```kotlin
 val cardNumbers = creditCardData.cardNumbers
 // firstNumber is a SecureString object.
 val firstNumber = cardNumbers[0]
-firstNumberTextView1.text = if (firstNumber.isNotEmpty()) firstNumber[0].toString() else ""
-firstNumberTextView2.text = if (firstNumber.length > 1) firstNumber[1].toString() else ""
-firstNumberTextView4.text = if (firstNumber.length > 2) firstNumber[2].toString() else ""
-firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString() else ""
+firstNumberSecureTextView.setText(firstNumber)
+...
 ```
 
 <br>
@@ -136,10 +135,11 @@ creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
 }
 
 private fun isConfident(data: CreditCardRecognitionData): Boolean {
-    // Returns success when the card number is greater than or equal to 4
-    // and the confidence rating is greater than or equal to 0.4.
+    // Returns success if the number of card numbers is greater than or equal to 3
+    // and the confidence is greater than or equal to 0.4.
+    // American Express is in the format 1234-123456-12345.
     with (data.cardNumbers) {
-        if (size < 4) {
+        if (size < 3) {
             return false
         }
         for (cardNumber in this) {
@@ -160,16 +160,15 @@ private fun isConfident(data: CreditCardRecognitionData): Boolean {
 개인정보 보호를 위해 신용카드 번호와 유효기간은 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
 SecureString.charAt(index) 메서드는 지정된 index에 있는 문자를 반환합니다.
 
-> CreditCardRecognitionData로 반환되는 신용카드 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약합니다.
+> CreditCardRecognitionData로 반환되는 신용카드 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약합니다.<br>
+> 화면에 표시하기 위하여 [SecureTextView](./creditcard-recognizer-android/#_18)사용을 참고하세요.
 
 ```kotlin
 val cardNumbers = creditCardData.cardNumbers
 // firstCardNumber is a SecureString object.
 val firstNumber = cardNumbers[0].value
-firstNumberTextView1.text = if (firstNumber.isNotEmpty()) firstNumber[0].toString() else ""
-firstNumberTextView2.text = if (firstNumber.length > 1) firstNumber[1].toString() else ""
-firstNumberTextView4.text = if (firstNumber.length > 2) firstNumber[2].toString() else ""
-firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString() else ""
+firstNumberSecureTextView.setText(firstNumber)
+...
 ```
 
 <br>
@@ -382,6 +381,31 @@ if (CreditCardRecognitionService.isAvailable(context)) {
     // Credit card recognition service is not available.
 }
 ```
+<br>
+
+## SecureTextView 사용
+
+개인정보 보호를 위해 신용카드 데이터는 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
+신용카드 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약하며, 데이터를 화면에 표시하기 위해 SecureTextView를 사용할 수 있습니다. 
+
+```xml
+<com.nhncloud.android.ocr.SecureTextView
+    android:id="@+id/credit_card_first_number_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:com_nhncloud_text_color="#ffffff"
+    app:com_nhncloud_text_size="15sp"
+    app:com_nhncloud_text_style="bold"
+    app:com_nhncloud_letter_spacing="0.3"/>
+```
+
+SecureTextView의 setText 메서드를 통해 표시할 텍스트를 설정합니다. 
+```kotlin
+val cardNumbers = creditCardData.cardNumbers
+val firstNumber = cardNumbers[0]
+val firstNumberView = findViewById<SecureTextView>(credit_card_first_number_view)
+firstNumberView.setText(namfirstNumbere)
+```
 
 ## Class References
 
@@ -435,5 +459,17 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 | --- | --- | --- | --- |
 | getPoints | Point[] |  | 좌표(Point)의 배열을 반환합니다. |
 | getPoint | Point | int | 좌표를 반환합니다.<br>\- LEFT\_TOP: 0<br>\- RIGHT\_TOP: 1<br>\- RIGHT\_BOTTOM: 2<br>\- LEFT\_BOTTOM: 3 |
+
+<br>
+
+### SecureTextView
+
+| Method | Returns | Parameters | Descriptions |
+| --- | --- | --- | --- |
+| setText |  | SecureString | SecureTextView에 표시할 텍스트를 설정합니다.  |
+| setTextSize | float |  | 텍스트 크기를 설정합니다. <br>크기 단위는 sp, 기본 설정은 14sp입니다. |
+| setTextColor | int |  | 텍스트 색상을 설정합니다. <br>기본 설정은 Color.Black(0xFF000000)입니다. |
+| setTypefaceStyle | Typeface, int |  | 텍스트 서체와 스타일을 설정합니다. <br>기본 스타일 설정은 Typeface.NORMAL입니다.|
+| setLetterSpacing | float | | 텍스트의 문자 간격을 설정합니다. <br>기본 설정은 0em입니다. 
 
 <br>

@@ -7,7 +7,7 @@
 
 ## 지원 환경
 
-NHN Cloud ID Card Recognizer는 Android 5.0 이상(API level 21 이상)에서 동작합니다.
+NHN Cloud ID Card Recognizer는 Android 5.1 이상(API level 22 이상)에서 동작합니다.
 
 ## 프로젝트 설정
 
@@ -19,7 +19,7 @@ NHN Cloud ID Card Recognizer는 Android 5.0 이상(API level 21 이상)에서 �
 dependencies {
     ...
     // NHN Cloud ID Card Recognizer
-    implementation 'com.nhncloud.android:nhncloud-idcard-recognizer:1.8.0'
+    implementation 'com.nhncloud.android:nhncloud-idcard-recognizer:1.8.1'
 }
 ```
 
@@ -525,9 +525,9 @@ if (IdCardRecognitionService.isAvailable(context)) {
     android:id="@+id/id_card_name_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:textColor="#ffffff"
-    app:textSize="15sp"
-    app:textStyle="bold"/>
+    app:com_nhncloud_text_color="#ffffff"
+    app:com_nhncloud_text_size="15sp"
+    app:com_nhncloud_text_style="bold"/>
 ```
 
 SecureTextView의 setText 메서드를 통해 표시할 텍스트를 설정합니다. 
@@ -545,9 +545,10 @@ idCardNameView.setText(name)
     android:id="@+id/id_card_license_type_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:textColor="#ffffff"
-    app:textSize="15sp"
-    app:textStyle="bold"/>
+    app:com_nhncloud_text_color="#ffffff"
+    app:com_nhncloud_text_size="15sp"
+    app:com_nhncloud_text_style="bold"
+    app:com_nhncloud_letter_spacing="0.3"/>
 ```
 
 SecureTextGroup의 addTextViews 메서드는 배열을 파라미터로 받아 하나의 요소마다 한 줄의 텍스트로 설정합니다.
@@ -666,5 +667,7 @@ idCardLicenseTypeView.addTextViews(licenseType)
 | setTextSize | float |  | 텍스트 크기를 설정합니다. <br>크기 단위는 sp, 기본 설정은 14sp입니다. |
 | setTextColor | int |  | 텍스트 색상을 설정합니다. <br>기본 설정은 Color.Black(0xFF000000)입니다. |
 | setTypefaceStyle | Typeface, int |  | 텍스트 서체와 스타일을 설정합니다. <br>기본 스타일 설정은 Typeface.NORMAL입니다.|
+| setLetterSpacing | float | | 텍스트의 문자 간격을 설정합니다. <br>기본 설정은 0em입니다. 
+
 
 <br>
