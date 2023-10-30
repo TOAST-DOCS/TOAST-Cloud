@@ -68,16 +68,15 @@ creditCardRecognizer.launch(activity) { result, data ->
 個人情報保護のために、クレジットカード番号と有効期限は一般文字列ではないSecureStringオブジェクトで返されます。
 SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。
 
-> CreditCardDataで返されるクレジットカード認識情報をStringオブジェクトで作成して使用するとセキュリティに脆弱です。
+> CreditCardDataで返されるクレジットカード認識情報をStringオブジェクトで作成して使用するとセキュリティに脆弱です。<br>
+> 画面に表示するために[SecureTextView使用](./creditcard-recognizer-android/#_18)を参考してください。
 
 ```kotlin
 val cardNumbers = creditCardData.cardNumbers
 // firstNumber is a SecureString object.
 val firstNumber = cardNumbers[0]
-firstNumberTextView1.text = if (firstNumber.isNotEmpty()) firstNumber[0].toString() else ""
-firstNumberTextView2.text = if (firstNumber.length > 1) firstNumber[1].toString() else ""
-firstNumberTextView4.text = if (firstNumber.length > 2) firstNumber[2].toString() else ""
-firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString() else ""
+firstNumberSecureTextView.setText(firstNumber)
+...
 ```
 
 <br>
@@ -160,16 +159,15 @@ private fun isConfident(data: CreditCardRecognitionData): Boolean {
 個人情報保護のためにクレジットカード番号と有効期限は一般文字列ではないSecureStringオブジェクトで返されます。
 SecureString.charAt(index)メソッドは指定されたindexにある文字を返します。
 
-> CreditCardRecognitionDataで返されるクレジットカード認識情報をStringオブジェクトで作成して使用するとセキュリティに脆弱です。
+> CreditCardRecognitionDataで返されるクレジットカード認識情報をStringオブジェクトで作成して使用するとセキュリティに脆弱です。<br>
+> 画面に表示するために[SecureTextView](./creditcard-recognizer-android/#_18)を参考してください。
 
 ```kotlin
 val cardNumbers = creditCardData.cardNumbers
 // firstCardNumber is a SecureString object.
 val firstNumber = cardNumbers[0].value
-firstNumberTextView1.text = if (firstNumber.isNotEmpty()) firstNumber[0].toString() else ""
-firstNumberTextView2.text = if (firstNumber.length > 1) firstNumber[1].toString() else ""
-firstNumberTextView4.text = if (firstNumber.length > 2) firstNumber[2].toString() else ""
-firstNumberTextView3.text = if (firstNumber.length > 3) firstNumber[3].toString() else ""
+firstNumberSecureTextView.setText(firstNumber)
+...
 ```
 
 <br>
@@ -385,10 +383,10 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 
 <br>
 
-## SecureTextView 사용
+## SecureTextViewの使用
 
-개인정보 보호를 위해 신용카드 데이터는 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
-신용카드 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약하며, 데이터를 화면에 표시하기 위해 SecureTextView를 사용할 수 있습니다. 
+個人情報保護のため、クレジットカードデータは一般的な文字列ではなくSecureStringオブジェクトで返されます。
+クレジットカード認識情報をStringオブジェクトで作成して使うのはセキュリティーに弱いので、データを画面に表示するためSecureTextViewを使うことができます。
 
 ```xml
 <com.nhncloud.android.ocr.SecureTextView
@@ -401,7 +399,7 @@ if (CreditCardRecognitionService.isAvailable(context)) {
     app:com_nhncloud_letter_spacing="0.3"/>
 ```
 
-SecureTextView의 setText 메서드를 통해 표시할 텍스트를 설정합니다. 
+SecureTextViewのsetTextメソッドで表示するテキストを設定します。 
 ```kotlin
 val cardNumbers = creditCardData.cardNumbers
 val firstNumber = cardNumbers[0]
@@ -468,10 +466,10 @@ firstNumberView.setText(namfirstNumbere)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| setText |  | SecureString | SecureTextView에 표시할 텍스트를 설정합니다.  |
-| setTextSize | float |  | 텍스트 크기를 설정합니다. <br>크기 단위는 sp, 기본 설정은 14sp입니다. |
-| setTextColor | int |  | 텍스트 색상을 설정합니다. <br>기본 설정은 Color.Black(0xFF000000)입니다. |
-| setTypefaceStyle | Typeface, int |  | 텍스트 서체와 스타일을 설정합니다. <br>기본 스타일 설정은 Typeface.NORMAL입니다.|
-| setLetterSpacing | float | | 텍스트의 문자 간격을 설정합니다. <br>기본 설정은 0em입니다. 
+| setText |  | SecureString | SecureTextViewに表示するテキストを設定します。  |
+| setTextSize | float |  | テキストサイズを設定します。 <br>サイズ単位はsp、基本設定は14spです。 |
+| setTextColor | int |  | テキスト色を設定します。 <br>基本設定はColor.Black(0xFF000000)です。 |
+| setTypefaceStyle | Typeface, int |  | テキスト書体とスタイルを設定します。 <br>基本スタイル設定はTypeface.NORMALです。|
+| setLetterSpacing | float | | テキストの文字間隔を設定します。 <br>基本設定は0emです。 
 
 <br>
