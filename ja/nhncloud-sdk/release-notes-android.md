@@ -1,5 +1,17 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
+## 1.8.1 (2023. 10. 31.)
+
+### NHN Cloud OCR
+
+#### 機能改善
+* Credit Card Recognizer UI改善
+    * セキュリティが強化されたTextViewを適用します。
+
+#### バグ修正
+* Camera Focusの問題を修正
+    * 一部の低仕様デバイスでAuto Focusが動作しない問題を修正します。
+
 ## 1.8.0 (2023. 09. 26.)
 
 ### NHN Cloud IAP
@@ -44,9 +56,9 @@
 
 ### NHN Cloud Logger
 
-#### 기능 개선
+#### 機能改善
 
-* Android Gradle Plugin 8.0 지원
+* Android Gradle Plugin 8.0をサポート
 
 ## 1.5.1 (2023. 05. 30.)
 
