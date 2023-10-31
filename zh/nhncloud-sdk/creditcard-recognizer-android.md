@@ -7,7 +7,7 @@
 
 ## Supported Environment
 
-NHN Cloud Credit Card Recognizer operates in Android 5.0 or higher (API level 21 or higher).
+NHN Cloud Credit Card Recognizer operates in Android 5.1 or higher (API level 22 or higher).
 
 ## Set up Project
 
@@ -19,7 +19,7 @@ Add dependencies of nhncloud-creditcard-recognizer to the build.gradle file of t
 dependencies {
     ...
     // NHN Cloud Credit Card Recognizer
-    implementation 'com.nhncloud.android:nhncloud-creditcard-recognizer:1.8.0'
+    implementation 'com.nhncloud.android:nhncloud-creditcard-recognizer:1.8.1'
 }
 ```
 
@@ -136,10 +136,11 @@ creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
 }
 
 private fun isConfident(data: CreditCardRecognitionData): Boolean {
-    // Returns success when the card number is greater than or equal to 4
-    // and the confidence rating is greater than or equal to 0.4.
+    // Returns success if the number of card numbers is greater than or equal to 3
+    // and the confidence is greater than or equal to 0.4.
+    // American Express is in the format 1234-123456-12345.
     with (data.cardNumbers) {
-        if (size < 4) {
+        if (size < 3) {
             return false
         }
         for (cardNumber in this) {
@@ -384,6 +385,32 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 }
 ```
 
+<br>
+
+## Use SecureTextView
+
+For privacy reasons, credit card is returned as a SecureString object rather than a plain string.
+If credit card recognition information is created and used as a String object, security is vulnerable, and SecureTextView can be used to display the data on the screen.
+
+```xml
+<com.nhncloud.android.ocr.SecureTextView
+    android:id="@+id/credit_card_first_number_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:com_nhncloud_text_color="#ffffff"
+    app:com_nhncloud_text_size="15sp"
+    app:com_nhncloud_text_style="bold"
+    app:com_nhncloud_letter_spacing="0.3"/>
+```
+
+Set the text to be displayed via the setText method of SecureTextView. 
+```kotlin
+val cardNumbers = creditCardData.cardNumbers
+val firstNumber = cardNumbers[0]
+val firstNumberView = findViewById<SecureTextView>(credit_card_first_number_view)
+firstNumberView.setText(namfirstNumbere)
+```
+
 ## Class References
 
 ### CreditCardData
@@ -436,5 +463,17 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 | --- | --- | --- | --- |
 | getPoints | Point[] |  | Return the array of coordinates (Point). |
 | getPoint | Point | int | Return the coordinates<br>- LEFT_TOP: 0<br>- RIGHT_TOP: 1<br>- RIGHT_BOTTOM: 2<br>- LEFT_BOTTOM: 3 |
+
+<br>
+
+### SecureTextView
+
+| Method | Returns | Parameters | Descriptions |
+| --- | --- | --- | --- |
+| setText |  | SecureString | Set the text to be displayed in SecureTextView.  |
+| setTextSize | float |  | Set the text size. <br>The size unit is sp and defaults to 14sp. |
+| setTextColor | int |  | Set the text color. <br>The default setting is Color.Black (0xFF000000). |
+| setTypefaceStyle | Typeface, int |  | Set the text font and style. <br>The default style setting is Typeface.NORMAL.|
+| setLetterSpacing | float | | Set the character spacing for the text. <br>The default setting is 0em.
 
 <br>
