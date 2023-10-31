@@ -387,10 +387,10 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 
 <br>
 
-## SecureTextView 사용
+## Use SecureTextView
 
-개인정보 보호를 위해 신용카드 데이터는 일반 문자열이 아닌 SecureString 객체로 반환됩니다.
-신용카드 인식 정보를 String 객체로 생성하여 사용하면 보안에 취약하며, 데이터를 화면에 표시하기 위해 SecureTextView를 사용할 수 있습니다. 
+For privacy reasons, credit card is returned as a SecureString object rather than a plain string.
+If credit card recognition information is created and used as a String object, security is vulnerable, and SecureTextView can be used to display the data on the screen.
 
 ```xml
 <com.nhncloud.android.ocr.SecureTextView
@@ -403,7 +403,7 @@ if (CreditCardRecognitionService.isAvailable(context)) {
     app:com_nhncloud_letter_spacing="0.3"/>
 ```
 
-SecureTextView의 setText 메서드를 통해 표시할 텍스트를 설정합니다. 
+Set the text to be displayed via the setText method of SecureTextView. 
 ```kotlin
 val cardNumbers = creditCardData.cardNumbers
 val firstNumber = cardNumbers[0]
@@ -470,10 +470,10 @@ firstNumberView.setText(namfirstNumbere)
 
 | Method | Returns | Parameters | Descriptions |
 | --- | --- | --- | --- |
-| setText |  | SecureString | SecureTextView에 표시할 텍스트를 설정합니다.  |
-| setTextSize | float |  | 텍스트 크기를 설정합니다. <br>크기 단위는 sp, 기본 설정은 14sp입니다. |
-| setTextColor | int |  | 텍스트 색상을 설정합니다. <br>기본 설정은 Color.Black(0xFF000000)입니다. |
-| setTypefaceStyle | Typeface, int |  | 텍스트 서체와 스타일을 설정합니다. <br>기본 스타일 설정은 Typeface.NORMAL입니다.|
-| setLetterSpacing | float | | 텍스트의 문자 간격을 설정합니다. <br>기본 설정은 0em입니다. 
+| setText |  | SecureString | Set the text to be displayed in SecureTextView.  |
+| setTextSize | float |  | Set the text size. <br>The size unit is sp and defaults to 14sp. |
+| setTextColor | int |  | Set the text color. <br>The default setting is Color.Black (0xFF000000). |
+| setTypefaceStyle | Typeface, int |  | Set the text font and style. <br>The default style setting is Typeface.NORMAL.|
+| setLetterSpacing | float | | Set the character spacing for the text. <br>The default setting is 0em.
 
 <br>
