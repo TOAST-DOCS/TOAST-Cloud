@@ -385,6 +385,7 @@ You can grant multiple required roles to project members.
 | Virtual Desktop | ADMIN | Create/Read/Update/Delete for Virtual Desktop Service |
 | NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
+| NHN Container Registry (NCR) | IMAGE UPLOADER | Read for NHN Container Registry (NCR), Upload Image, Create Artifact, Create Tag |
 | DNS Plus | ADMIN | Create/Read/Update/Delete for DNS Plus Service |
 | DNS Plus | VIEWER | Read for DNS Plus Service |
 | Object Storage | ADMIN | Create/Read/Update/Delete for Object Storage Service |
