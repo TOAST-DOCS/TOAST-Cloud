@@ -23,7 +23,7 @@
 * Podfileを作成して、NHN Cloud SDKに対するPodを追加します。
 
 ```podspec
-platform :ios, '9.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do

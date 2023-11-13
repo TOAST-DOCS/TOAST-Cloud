@@ -23,7 +23,7 @@ iOS용 NHN Cloud IAP SDK의 구성은 다음과 같습니다.
 * Podfile을 생성하여 NHN Cloud SDK에 대한 Pod을 추가합니다.
 
 ```podspec
-platform :ios, '9.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do
