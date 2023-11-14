@@ -33,7 +33,7 @@ NHN Cloud Android SDK is deployed on **mavenCentral** and requires only simple G
 
 ### iOS
 
-NHN Cloud iOS SDK is released on **Github** and requires only simple **Cocoapods**, **Carthage** settings for use.
+NHN Cloud iOS SDK is released on **Github** and requires only simple **Cocoapods**, **Carthage**, **Swift Package Manager** settings for use.
 
 - [Get started for iOS](https://docs.nhncloud.com/en/nhncloud/en/toast-sdk/getting-started-ios)
 
