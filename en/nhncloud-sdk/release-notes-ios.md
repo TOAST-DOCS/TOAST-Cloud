@@ -1,16 +1,16 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
 ## 1.7.0 (2023. 11. 14.)
-### 공통
-#### 개선 사항
-* 최소 지원 버전 상향
+### Common
+#### Improved
+* Raised the minimum supported version
     * 9.0 > 11.0
-* 미지원 아키텍처 지원 종료
+* Ended support for architectures
     *  i386, armv7s, armv7
 
 ### NHN Cloud IAP
-#### 개선 사항
-* 결제 검증 방식 변경
+#### Improved
+* Changed payment verification methods
 
 ## 1.6.2 (2023. 08. 29.)
 ### Common
