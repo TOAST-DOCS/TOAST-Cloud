@@ -1,25 +1,25 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
 ## 1.7.0 (2023. 11. 14.)
-### 공통
-#### 개선 사항
-* 최소 지원 버전 상향
+### Common
+#### Improved
+* Raised the minimum supported version
     * 9.0 > 11.0
-* 미지원 아키텍처 지원 종료
+* Ended support for architectures
     *  i386, armv7s, armv7
 
 ### NHN Cloud IAP
-#### 개선 사항
-* 결제 검증 방식 변경
-
+#### Improved
+* Changed payment verification methods
+  
 ## 1.6.2 (2023. 08. 29.)
-### 공통
-#### 개선 사항
-* CountryCode 획득 실패 문제 수정
+### Common
+#### Improved
+* Fixed an issue where CountryCode is not obtained
 
 ### NHN Cloud OCR
-#### 기능 추가
-* 신용카드/신분증 인식 결과 데이터에 인식 영역 추가
+#### Added Features
+* Added recognition area in the result of credit card/ID card recognition
 
 ## 1.6.1 (2023. 07. 25.)
 ### NHN Cloud IAP
