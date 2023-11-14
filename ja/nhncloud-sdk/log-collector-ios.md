@@ -22,7 +22,7 @@
 * Podfileを作成して、Log & Crash SDKに対するpodを追加します。
 
 ```podspec
-platform :ios, '9.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target '{YOUR PROJECT TARGET NAME}' do

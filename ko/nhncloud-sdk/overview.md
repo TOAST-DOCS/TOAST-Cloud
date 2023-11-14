@@ -33,7 +33,7 @@ NHN Cloud Android SDK는 **mavenCentral**를 통해 배포되며 간단한 Gradl
 
 ### iOS
 
-NHN Cloud iOS SDK는 **Github**를 통해 배포되며 간단한 **Cocoapods**, **Carthage** 설정만으로 사용할 수 있습니다.
+NHN Cloud iOS SDK는 **Github**를 통해 배포되며 간단한 **Cocoapods**, **Carthage**, **Swift Package Manager** 설정만으로 사용할 수 있습니다.
 
 - [iOS 시작하기](./getting-started-ios)
 

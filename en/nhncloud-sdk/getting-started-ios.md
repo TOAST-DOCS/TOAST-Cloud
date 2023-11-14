@@ -2,8 +2,8 @@
 
 ## Supported Environment
 
-* iOS 9.0 or higher
-* The latest version of XCode (version 13 or higher)
+* iOS 11.0 or higher
+* The latest version of XCode (version 14 or higher)
 
 ## NHN Cloud SDK Components
 
@@ -18,10 +18,10 @@
 | Service | Cocoapods Pod Name | Carthage | Framework | Deployment Target | Dependency | Build Settings |
 | --- | --- | --- | --- | --- | --- | --- |
 | All | NHNCloudSDK | binary "[https://nh.nu/nhncloudsdk](https://nh.nu/nhncloudsdk) | NHNCloudCore.framework<br>NHNCloudCommon.framework<br>NHNCloudLogger.framework<br>NHNCloudIAP.framework<br>NHNCloudPush.framework |  |  |  |
-| Mandatory | NHNCloudCore<br>NHNCloudCommon |  | NHNCloudCore.framework<br>NHNCloudCommon.framework | 9.0 |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
-| Log & Crash | NHNCloudLogger |  | NHNCloudLogger.framework | 9.0 | [External & Optional]<br>\* CrashReporter.framework (NHNCloud) |  |
-| IAP | NHNCloudIAP |  | NHNCloudIAP.framework | 9.0 | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
-| Push | NHNCloudPush |  | NHNCloudPush.framework | 9.0 | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
+| Mandatory | NHNCloudCore<br>NHNCloudCommon |  | NHNCloudCore.framework<br>NHNCloudCommon.framework | 11.0 |  | OTHER\_LDFLAGS = (<br>"-ObjC",<br>"-lc++"<br>); |
+| Log & Crash | NHNCloudLogger |  | NHNCloudLogger.framework | 11.0 | [External & Optional]<br>\* CrashReporter.framework (NHNCloud) |  |
+| IAP | NHNCloudIAP |  | NHNCloudIAP.framework | 11.0 | \* StoreKit.framework<br><br>[Optional]<br>\* libsqlite3.tdb |  |
+| Push | NHNCloudPush |  | NHNCloudPush.framework | 11.0 | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
 | OCR | NHNCloudOCR |  | NHNCloudOCR.framework | 11.0 | \* Vision.framework<br>\* AVFoundation.framework |  |
 
 ## Apply NHN Cloud SDK to Xcode Projects
