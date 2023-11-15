@@ -76,7 +76,7 @@ Resource usage is calculated for each project, and the policy is applied by the 
 | Number of Images | Per registry | 10000 | O | |
 | Number of Artifacts | Per image | 10000 | O | |
 | Number of Tags | Per artifact | 1000 | O | |
-| Number of Scans |  1 day per image | 1 | O | |
+| Number of Manual Scans |  1 day per image | 1 | O | |
 
 
 ### Resource Provision Policy for NHN Container Service(NCS) 
