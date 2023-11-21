@@ -31,6 +31,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Compute | Instance | 리전 | O | O | O | O |
 |  | Ephemeral Storage Instance | 리전 | O | | O | | 
 |  | GPU Instance | 리전 | O |  |  |  |
+|  | Bare Metal Instance | 리전 | O | | | |
 |  | Instance Template | 리전 | O | O | O | O |
 |  | Image | 리전 | O | O | O | O |
 |  | Image Builder  | 리전 | O | O |  |  |
@@ -57,6 +58,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | VPN Gateway(Site-to-Site VPN) | 리전 |  | O |  |  |
 |  | Service Gateway | 리전 | O | O |  |  |
 |  | Traffic Mirroring | 리전 | O | O | | |
+|  | Private DNS | 리전 | O | O | | |
 |  | DNS Plus | 글로벌 |  |  |  |  |
 | Storage | Block Storage | 리전 | O | O | O | O |
 |  | NAS (offline) | 리전 | O | O |  | O |
