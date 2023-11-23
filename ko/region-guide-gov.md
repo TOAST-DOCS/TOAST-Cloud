@@ -47,6 +47,8 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | NAT Gateway | 리전 |  | O |
 |  | Service Gateway | 리전 |  | O |
 |  | Direct Connect | 리전 | O | O | 
+|  | Traffic Mirroring | 리전 |  | O |
+|  | Transit Hub  | 리전 |  | O |
 | Storage | Block Storage | 리전 | O | O | 
 |  | NAS | 리전 |  | O | 
 |  | NAS(offline) | 리전 | O |  | 
