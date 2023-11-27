@@ -31,6 +31,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Compute | Instance | Regional | O | O | O | O |
 |  | Ephemeral Storage Instance | Regional | O | | O | | 
 |  | GPU Instance | Region | O |  |  |  |
+|  | Bare Metal Instance | Regional | O | | | |
 |  | Instance Template | Region | O | O | O | O |
 |  | Image | Region | O | O | O | O |
 |  | Image Builder  | Region | O | O |  |  |
@@ -58,6 +59,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | VPN Gateway(Site-to-Site VPN) | Regional |  | O |  |  |
 |  | Service Gateway | Regional | O | O |  |  |
 |  | Traffic Mirroring | Regional | O | O | | |
+|  | Private DNS | Regional | O | O | | |
 |  | DNS Plus | Global |  |  |  |  |
 | Storage | Block Storage | Regional | O | O | O | O |
 |  | NAS (offline) | Regional | O | O |  | O |

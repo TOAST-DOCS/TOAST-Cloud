@@ -57,6 +57,8 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 | Transit Hub Multicast Domain | Per project | 20 | O | |
 | Transit Hub Multicast Association | | No limit | | |
 | Transit Hub Multicast Group | Per project | 100 | O | |
+| Private DNS Zone | Per project | 100 | O | |
+| Private DNS Record Set | Per project | 500 | O | |
 
 ### Resource Provision Policy for NHN Kubernetes Service (NKS)  
 Resource usage is calculated for each project, and the policy is applied by the region. 
@@ -76,7 +78,7 @@ Resource usage is calculated for each project, and the policy is applied by the 
 | Number of Images | Per registry | 10000 | O | |
 | Number of Artifacts | Per image | 10000 | O | |
 | Number of Tags | Per artifact | 1000 | O | |
-| Number of Scans |  1 day per image | 1 | O | |
+| Number of Manual Scans |  1 day per image | 1 | O | |
 
 
 ### Resource Provision Policy for NHN Container Service(NCS) 
