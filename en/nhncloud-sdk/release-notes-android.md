@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.8.2 (2023. 12. 19.)
+
+### NHN Cloud OCR
+
+#### 기능 개선
+
+* 안정성 개선
+
 ## 1.8.1 (2023. 10. 31.)
 
 ### NHN Cloud OCR
