@@ -1,5 +1,19 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
+## 1.7.1 (2023. 12. 19.)
+### 공통
+#### 개선 사항
+* 서명 적용
+    * 배포되는 바이너리에 `NHN Cloud Corp.` 서명이 적용되었습니다.
+
+### Logger 
+#### 개선 사항
+* Instance Logger의 NetworkInsight 안정성 개선
+
+### SymbolUploader(v0.0.4)
+#### 개선 사항
+* 안정성 개선
+
 ## 1.7.0 (2023. 11. 14.)
 ### Common
 #### Improved
@@ -10,8 +24,8 @@
 
 ### NHN Cloud IAP
 #### Improved
-* Changed payment verification methods
-  
+* Changed payment verification methods - [(신)영수증 검증 + Notification V2](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-apple-guide/#notification-v2)
+
 ## 1.6.2 (2023. 08. 29.)
 ### Common
 #### Improved
