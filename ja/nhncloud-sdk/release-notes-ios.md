@@ -1,18 +1,18 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
 ## 1.7.1 (2023. 12. 19.)
-### 공통
-#### 개선 사항
-* 서명 적용
-    * 배포되는 바이너리에 `NHN Cloud Corp.` 서명이 적용되었습니다.
+### 共通
+#### 改善事項
+* 署名適用
+    * 配布されるバイナリに`NHN Cloud Corp.`署名が適用されました。
 
 ### Logger 
-#### 개선 사항
-* Instance Logger의 NetworkInsight 안정성 개선 
+#### 改善事項
+* Instance LoggerのNetworkInsight安定性の改善 
 
 ### SymbolUploader(v0.0.4)
-#### 개선 사항
-* 안정성 개선
+#### 改善事項
+* 安定性改善
 
 ## 1.7.0 (2023. 11. 14.)
 ### 共通
