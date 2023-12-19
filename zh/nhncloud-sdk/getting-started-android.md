@@ -24,17 +24,17 @@ You can selectively apply the required feature among the services provided by NH
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.nhncloud.android:nhncloud-common:1.8.1       | Common      |
-| com.nhncloud.android:nhncloud-core:1.8.1         | Core        |
-| com.nhncloud.android:nhncloud-logger:1.8.1       | Log & Crash |
-| com.nhncloud.android:nhncloud-crash-reporter-ndk:1.8.1       | Native Crash Reporter |
-| com.nhncloud.android:nhncloud-iap-core:1.8.1     | In-app Purchase Core |
-| com.nhncloud.android:nhncloud-iap-google:1.8.1   | In-app Purchase <br>Google Play Store |
-| com.nhncloud.android:nhncloud-iap-onestore:1.8.1 | In-app Purchase <br>ONE store |
-| com.nhncloud.android:nhncloud-iap-galaxy:1.8.1 | In-app Purchase <br>Galaxy Store |
-| com.nhncloud.android:nhncloud-push-core:1.8.1    | Push Core   |
-| com.nhncloud.android:nhncloud-push-fcm:1.8.1    | Push <br>Firebase Cloud Messaging |
-| com.nhncloud.android:nhncloud-creditcard-recognizer:1.8.1    | Credit Card Recognizer |
+| com.nhncloud.android:nhncloud-common:1.8.2       | Common      |
+| com.nhncloud.android:nhncloud-core:1.8.2         | Core        |
+| com.nhncloud.android:nhncloud-logger:1.8.2       | Log & Crash |
+| com.nhncloud.android:nhncloud-crash-reporter-ndk:1.8.2       | Native Crash Reporter |
+| com.nhncloud.android:nhncloud-iap-core:1.8.2     | In-app Purchase Core |
+| com.nhncloud.android:nhncloud-iap-google:1.8.2   | In-app Purchase <br>Google Play Store |
+| com.nhncloud.android:nhncloud-iap-onestore:1.8.2 | In-app Purchase <br>ONE store |
+| com.nhncloud.android:nhncloud-iap-galaxy:1.8.2 | In-app Purchase <br>Galaxy Store |
+| com.nhncloud.android:nhncloud-push-core:1.8.2    | Push Core   |
+| com.nhncloud.android:nhncloud-push-fcm:1.8.2    | Push <br>Firebase Cloud Messaging |
+| com.nhncloud.android:nhncloud-creditcard-recognizer:1.8.2    | Credit Card Recognizer |
 
 ## Apply NHN Cloud SDK to Android Studio Projects
 
@@ -51,7 +51,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android:nhncloud-sdk:1.8.1'
+  implementation 'com.nhncloud.android:nhncloud-sdk:1.8.2'
 }
 ```
 

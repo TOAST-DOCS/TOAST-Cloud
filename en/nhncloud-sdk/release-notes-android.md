@@ -1,6 +1,14 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
-## 1.8.1 (2023. 10. 31.)
+## 1.8.2 (December 19, 2023)
+
+### NHN Cloud OCR
+
+#### Improved
+
+* Improved stability
+
+## 1.8.1 (October 31, 2023)
 
 ### NHN Cloud OCR
 
