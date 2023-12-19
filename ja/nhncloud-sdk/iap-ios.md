@@ -1,5 +1,8 @@
 ## NHN Cloud > SDK使用ガイド > IAP > iOS
 
+## 注意事項
+> **(新)領収書検証 + Notification V2** 方式を使用するにはNHN Cloud SDK iOS v1.7.0以上を使用する必要があります。 - [IAPコンソールガイド](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v2)
+
 ## Prerequisites
 
 1\. [NHN Cloud SDK](./getting-started-ios)をインストールします。

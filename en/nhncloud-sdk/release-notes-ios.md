@@ -1,5 +1,19 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
+## 1.7.1 (2023. 12. 19.)
+### Common
+#### Improved
+* Signature applied
+    * Applied the `NHN Cloud Corp.` signature to the binaries being distributed.
+
+### Logger 
+#### Improved
+* Improved NetworkInsight stability of Instance Logger
+
+### SymbolUploader(v0.0.4)
+#### Improved
+* Improved stability
+
 ## 1.7.0 (2023. 11. 14.)
 ### Common
 #### Improved
@@ -10,8 +24,8 @@
 
 ### NHN Cloud IAP
 #### Improved
-* Changed payment verification methods
-  
+* Changed payment verification methods - [(New) Receipt verification + Notification V2](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-apple-guide/#notification-v2)
+
 ## 1.6.2 (2023. 08. 29.)
 ### Common
 #### Improved
