@@ -24,7 +24,7 @@
 
 ### NHN Cloud IAP
 #### Improved
-* Changed payment verification methods - [(신)영수증 검증 + Notification V2](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-apple-guide/#notification-v2)
+* Changed payment verification methods - [(New) Receipt verification + Notification V2](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-apple-guide/#notification-v2)
 
 ## 1.6.2 (2023. 08. 29.)
 ### Common
