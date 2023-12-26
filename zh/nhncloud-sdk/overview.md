@@ -3,7 +3,7 @@
 NHN Cloud SDK is an integrated library that lets you conveniently apply various service libraries of [NHN Cloud](https://nhncloud.com/). When you use NHN Cloud services to develop an application, you can apply them all at once without applying each library of individual services.
 Although the SDK provides an integrated development environment for many services, you can save storage space by selecting only the required features. NHN Cloud SDK is a library optimized for each programming language and platform of your choice, and provides familiar development environment.
 
-> Currently, NHN Cloud SDK provides development environment for iOS, Android, Unity3D, and Windows C++. More programming languages and platforms are to be supported in the future.
+> Currently, NHN Cloud SDK provides development environment for iOS, Android, and Windows C++. More programming languages and platforms are to be supported in the future.
 
 ## Supported Services
 
@@ -19,7 +19,6 @@ NHN Cloud SDK provides the following services:
 ## Features
 
 - Supports build environment that uses Gradle for Android and CocoaPods for iOS.
-- Provides Unity Plugins.
 - Lets you select and apply the whole or part of the services, depending on the needs.
 - Improved the inconvenience of SDK that was separately provided by individual services.
 
@@ -36,12 +35,6 @@ NHN Cloud Android SDK is deployed on **mavenCentral** and requires only simple G
 NHN Cloud iOS SDK is released on **Github** and requires only simple **Cocoapods**, **Carthage**, **Swift Package Manager** settings for use.
 
 - [Get started for iOS](https://docs.nhncloud.com/zh/nhncloud/zh/toast-sdk/getting-started-ios)
-
-### Unity
-
-NHN Cloud Unity SDK supports Android and iOS platforms.
-
-- [Get started for Unity](https://docs.nhncloud.com/zh/nhncloud/zh/toast-sdk/getting-started-unity)
 
 ### Windows C++
 
@@ -67,7 +60,6 @@ This service provides capability to send logs to a collector server of Log & Cra
 
 - User Guide for [Log & Crash > Android](https://docs.nhncloud.com/zh/nhncloud/zh/toast-sdk/log-collector-android)
 - User Guide for [Log & Crash > iOS](https://docs.nhncloud.com/zh/nhncloud/zh/toast-sdk/log-collector-ios)
-- User Guide for [Log & Crash > Unity](https://docs.nhncloud.com/zh/nhncloud/zh/toast-sdk/log-collector-unity)
 - User Guide for [Log & Crash > Windows C++](https://docs.nhncloud.com/zh/nhncloud/zh/toast-sdk/log-collector-windows)
 
 ## NHN Cloud IAP
