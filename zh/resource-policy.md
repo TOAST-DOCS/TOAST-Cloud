@@ -115,6 +115,15 @@ Resource usage is calculated for each project.
 |Endpoint| Per pool | 5 | O | |
 |Health Check    | Per project | 5 | O | |
 
+### Resource Provision Policy for Network Firewall
+| Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+| Number of ACL Policies | Per project | 1,000 | X | | 
+| Number of ACL Policy Rules | Per project | 5,000 | X | | 
+| Maximum Number of ACL Sessions | Per project | 1,000,000 | X | | 
+| Maximum Number of NAT Sessions | Per project | 1,000,000 | X | | 
+| Number of Traffic Logs | Per project | 8,000,000 | X | | 
+
 ### Resource Provision Policy for KakaoTalk Bizmessage Service
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
