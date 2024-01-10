@@ -104,10 +104,10 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image Manager | 리전 | O |  |  |  |
 | Notification | Push | 글로벌 |  |  |  |  |
-|  | SMS | 리전 | O |  |  |  |
+|  | SMS | 글로벌 |  |  |  |  |
 |  | RCS Bizmessage | 글로벌 |  |  |  |  |
 |  | Email | 글로벌 |  |  |  |  |
-|  | KakaoTalk Bizmessage | 리전 | O |  |  |  |
+|  | KakaoTalk Bizmessage | 글로벌 |  |  |  |  |
 | AI Service | Face Recognition | 글로벌 |  |  |  |  |
 |  | AI Fashion | 리전 | O | O | O | O |
 |  | OCR | 글로벌 |  |  |  |  |
