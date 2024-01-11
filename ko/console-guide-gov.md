@@ -371,6 +371,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 | RDS for MySQL | VIEWER | RDS for MySQL 서비스 Read(읽기) |
+| RDS for MariaDB | ADMIN | RDS for MariaDB 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| RDS for MariaDB | VIEWER | RDS for MariaDB 서비스 Read(읽기) |
 | Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 | Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |

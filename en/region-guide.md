@@ -104,10 +104,10 @@ All users are provided with the same features, policy, stability and usability, 
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |
-|  | SMS | Regional | O |  |  |  |
+|  | SMS | Global |  |  |  |  |
 |  | RCS Bizmessage | Global |  |  |  |  |
 |  | Email | Global |  |  |  |  |
-|  | KakaoTalk Bizmessage | Regional | O |  |  |  |
+|  | KakaoTalk Bizmessage | Global |  |  |  |  |
 | AI Service | Face Recognition | Global |  |  |  |  |
 |  | AI Fashion | Regional | O | O | O | O |
 |  | OCR | Global |  |  |  |  |
