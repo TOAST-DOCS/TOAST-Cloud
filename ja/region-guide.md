@@ -91,7 +91,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Security Monitoring | リージョン | O | O |  |  |
 |  | Basic Security | リージョン | O |O |  |  |
 |  | CAPTCHA | リージョン | O |  |  |  |
-|  | OTP | リージョン | O |  |  |  |
 |  | Web Firewall | リージョン | O | O  |  |  |
 |  | Vaccine | リージョン | O | O |  |  |
 |  | Secure Key Manager | グローバル |  |  |  |  |

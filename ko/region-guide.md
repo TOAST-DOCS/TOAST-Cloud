@@ -91,7 +91,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Security Monitoring | 리전 | O | O |  |  |
 |  | Basic Security | 리전 | O | O |  |  |
 |  | CAPTCHA | 리전 | O |  |  |  |
-|  | OTP | 리전 | O |  |  |  |
 |  | Web Firewall | 리전 | O | O |  |  |
 |  | Vaccine | 리전 | O | O |  |  |
 |  | Secure Key Manager | 글로벌 |  |  |  |  |
