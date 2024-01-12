@@ -438,7 +438,6 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Server Security Check | ADMIN | Server Security Check 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | CAPTCHA | ADMIN | CAPTCHA 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| OTP | ADMIN | OTP 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Secure Key Manager | ADMIN | Secure Key Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |

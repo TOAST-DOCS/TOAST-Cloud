@@ -441,7 +441,6 @@ You can grant multiple required roles to project members.
 | Server Security Check | ADMIN | Create/Read/Update/Delete for Server Security Check  Service |
 | Security Monitoring | ADMIN | Create/Read/Update/Delete for Security Monitoring Service |
 | CAPTCHA | ADMIN | Create/Read/Update/Delete or CAPTCHA Service |
-| OTP | ADMIN | Create/Read/Update/Delete for OTP Service |
 | WEB Firewall | ADMIN | Create/Read/Update/Delete for WEB Firewall Service |
 | Vaccine | ADMIN | Create/Read/Update/Delete for Vaccine Service |
 | Secure Key Manager | ADMIN | Create/Read/Update/Delete for Secure Key Manager Service |

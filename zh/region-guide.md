@@ -91,7 +91,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Security Monitoring | Regional | O | O |  |  |
 |  | Basic Security | Regional | O | O |  |  |
 |  | CAPTCHA | Regional | O |  |  |  |
-|  | OTP | Regional | O |  |  |  |
 |  | Web Firewall | Regional | O | O  |  |  |
 |  | Vaccine | Regional | O | O |  |  |
 |  | Secure Key Manager | Global |  |  |  |  |
