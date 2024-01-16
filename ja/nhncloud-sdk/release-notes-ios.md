@@ -2,11 +2,11 @@
 
 ## 1.8.0 (2024. 01. 23.)
 ### NHN Cloud IAP
-#### 개선 사항
-* 결제 검증 방식 개선
-    * 신규 SDK에서도 (구)영수증 검증을 사용 가능하도록 개선 
-        * [(신)영수증 검증 + Notification V2](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v2)
-        * [(구)영수증 검증 + Notification V1 (Deprecated)](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v1-deprecated)
+#### 改善事項
+* 決済検証方式の改善
+    * 新規SDKでも(旧)領収書検証を使用できるように改善
+        * [(新)領収書検証 + Notification V2](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v2)
+        * [(旧)領収書検証 + Notification V1 (Deprecated)](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v1-deprecated)
 
 ## 1.7.1 (2023. 12. 19.)
 ### 共通
@@ -32,7 +32,7 @@
 
 ### NHN Cloud IAP
 #### 改善事項
-* 決済検証方法の変更 - [(신)영수증 검증 + Notification V2](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v2)
+* 決済検証方法の変更 - [(新)領収書検証 + Notification V2](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v2)
 
 ## 1.6.2 (2023. 08. 29.)
 ### 共通

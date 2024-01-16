@@ -4,10 +4,10 @@
 
 ### NHN Cloud IAP
 
-#### 기능 개선
+#### 機能改善
 
-* MyCard SDK 업데이트
-    * Android 14 대응
+* MyCard SDKアップデート
+    * Android 14対応
 
 ## 1.8.2 (2023. 12. 19.)
 
