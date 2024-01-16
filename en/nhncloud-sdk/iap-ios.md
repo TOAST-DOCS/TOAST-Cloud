@@ -1,7 +1,10 @@
 ## NHN Cloud > SDK User Guide > IAP > iOS
 
 ## Cautions
-> To use the **(New) Receipt verification + Notification V2** method, use NHN Cloud SDK iOS v1.7.0 or later. - [IAP Console Guide](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-apple-guide/#notification-v2)
+> To use the **(New) Receipt verification + Notification V2** method, use NHN Cloud SDK iOS v1.7.0 or later.
+
+> NHN Cloud SDK iOS v1.8.0부터 **(신)영수증 검증 + Notification V2** 방식과 **(구)영수증 검증 + Notification V1** 방식을 모두 지원합니다.
+> SDK의 검증 방식은 IAP 콘솔에 설정된 방식에 따라 결정됩니다. - [IAP Console Guide](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-apple-guide/#notification-v2)
 
 ## Prerequisites
 

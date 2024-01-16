@@ -6,6 +6,7 @@
 > NHN Cloud SDK iOS v1.8.0から**(新)領収書検証 + Notification V2**方式と**(旧)領収書検証 + Notification V1**方式の両方をサポートします。
 > SDKの検証方式は、IAPコンソールに設定された方式によって決定されます。- [IAPコンソールガイド](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v2)
 
+
 ## Prerequisites
 
 1\. [NHN Cloud SDK](./getting-started-ios)をインストールします。
