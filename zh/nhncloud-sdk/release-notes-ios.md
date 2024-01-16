@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
+## 1.8.0 (2024. 01. 23.)
+### NHN Cloud IAP
+#### 개선 사항
+* 결제 검증 방식 개선
+    * 신규 SDK에서도 (구)영수증 검증을 사용 가능하도록 개선 
+        * [(신)영수증 검증 + Notification V2](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-apple-guide/#notification-v2)
+        * [(구)영수증 검증 + Notification V1 (Deprecated)](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-apple-guide/#notification-v1-deprecated)
+
 ## 1.7.1 (2023. 12. 19.)
 ### Common
 #### Improved

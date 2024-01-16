@@ -1,5 +1,14 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.8.3 (2024. 01. 23.)
+
+### NHN Cloud IAP
+
+#### 기능 개선
+
+* MyCard SDK 업데이트
+    * Android 14 대응
+
 ## 1.8.2 (December 19, 2023)
 
 ### NHN Cloud OCR
