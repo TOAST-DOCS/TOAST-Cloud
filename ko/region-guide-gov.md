@@ -55,7 +55,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Object Storage | 리전 | O | O |
 |  | Backup | 리전 | O | O | 
 | Database | RDS for MySQL | 리전 | O | O |
-|  | RDS for MariaDB | 리전 | O |  | 
+|  | RDS for MariaDB | 리전 | O | O | 
 |  | MS-SQL Instance | 리전 | O | O | 
 |  | MySQL Instance | 리전 | O | O | 
 |  | PostgreSQL Instance | 리전 | O | O | 

@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
+## 1.8.0 (2024. 01. 23.)
+### NHN Cloud IAP
+#### Improved
+* Improved payment verification methods
+    * Improved to enable (old) receipt verification in new SDKs
+        * [(New) Receipt verification + Notification V2](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-apple-guide/#notification-v2)
+        * [(Old) Receipt verification + Notification V1 (Deprecated)](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-apple-guide/#notification-v1-deprecated)
+
 ## 1.7.1 (2023. 12. 19.)
 ### Common
 #### Improved

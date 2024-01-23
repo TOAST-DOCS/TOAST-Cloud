@@ -1,5 +1,12 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Windows C++
 
+## 2.0.0.2 (2024.01.23)
+Download : [nhncloud-sdk-windows-2.0.0.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.2.zip)
+* Improved duplicate logs filtering
+* Fixed handdle leak issues when executing CrashReporter
+* Improved stability
+
+
 ## 2.0.0.1 (2022.07.12)
 Download : [nhncloud-sdk-windows-2.0.0.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.1.zip)
 * Changed the module name to NHNCloudLogger

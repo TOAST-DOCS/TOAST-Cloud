@@ -1,5 +1,11 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Windows C++
 
+## 2.0.0.2 (2024.01.23)
+Download : [nhncloud-sdk-windows-2.0.0.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.2.zip)
+* 重複ログフィルタリング改善
+* CrashReporter実行時のハンドルリーク問題を修正
+* その他安定性の改善
+
 ## 2.0.0.1 (2022.07.12)
 Download : [nhncloud-sdk-windows-2.0.0.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.1.zip)
 * NHNCloudLoggerモジュール名の変更
