@@ -7,6 +7,7 @@
 #### Improved
 
 * Improved stability
+    * Fixed abnormal termination when Proguard is not applied
 
 ## 1.8.3 (January 23, 2024)
 
