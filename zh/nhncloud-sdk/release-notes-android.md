@@ -7,6 +7,7 @@
 #### Improved
 
 * Improved stability
+    * Proguard 미적용 시 비정상 종료 수정
 
 ## 1.8.3 (January 23, 2024)
 
