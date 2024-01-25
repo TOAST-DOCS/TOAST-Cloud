@@ -1,6 +1,14 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
-## 1.8.3 (2024. 01. 23.)
+## 1.8.4 (January 25, 2024)
+
+### NHN Cloud SDK
+
+#### Improved
+
+* Improved stability
+
+## 1.8.3 (January 23, 2024)
 
 ### NHN Cloud IAP
 
