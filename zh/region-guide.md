@@ -113,7 +113,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Text to Speech | Global |  |  |  |  |
 |  | Speech to Text | Global |  |  |  |  |
 |  | Pose Estimation | Global |  |  |  |  |
-|  | Cheating Detection | Global |  |  |  |  |
 | Machine Learning | Deep Learning Instance | Regional | O |  | | |
 |  | AI EasyMaker | Regional | O |  |  |  |
 | Application Service | Maps | Regional | O |  |  |  |
