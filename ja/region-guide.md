@@ -80,7 +80,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Hybrid & Private Cloud | NHN Private Cloud | リージョン | - | - | - | - |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
-|  | GameTalk | グローバル | | | | |
 |  | GameStarter | グローバル |  |  |  |  |
 |  | Leaderboard | グローバル |  |  |  |  |
 |  | Launching | グローバル |  |  |  |  |

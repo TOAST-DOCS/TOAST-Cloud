@@ -422,13 +422,6 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | GameAnvil  | ADMIN | GameAnvil サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
 | GameAnvil  | MEMBER | GameAnvil サービス Read(読込), モニタリング メニュー Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
 | GameAnvil  | VIEWER | GameAnvil サービス Read(読込)  |
-| GameTalk | GameTalk ADMIN | GameTalk サービス Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| GameTalk | GameTalk Channel ADMIN | チャンネルリストメニューRead(読み取り)、チャンネルCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)、チャンネルタグメニュー Read(読み取り)、チャンネルタグCreate(生成)/Read(読み取り)/Update (更新)/Delete(削除) |
-| GameTalk | GameTalk Channel VIEWER | チャンネルリストメニュー Read(読み取り) |
-| GameTalk | GameTalk Member VIEWER | メンバーメニュー Read(読み取り) |
-| GameTalk | GameTalk Notice ADMIN | お知らせメニュー Read(読み込み)、お知らせ Create(作成)/Read(読み込み)/Update(更新)/Delete(削除)|
-| GameTalk | GameTalk Notice VIEWER | お知らせメニュー Read(読み取り) |
-| GameTalk | GameTalk Setting ADMIN | 一般設定メニュー Read(読み取り)、設定 Update(更新) |
 | GameStarter  | ADMIN | ゲーム設定, 配布メニュー Create(作成)/ Read(読み取り)/ Update(更新)  |
 | GameStarter  | VIEWER | ゲーム設定, 配布メニュー Read(読み取り)  |
 | Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
