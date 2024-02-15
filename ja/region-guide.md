@@ -80,7 +80,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Hybrid & Private Cloud | NHN Private Cloud | リージョン | - | - | - | - |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
-|  | GameTalk | グローバル | | | | |
 |  | GameStarter | グローバル |  |  |  |  |
 |  | Leaderboard | グローバル |  |  |  |  |
 |  | Launching | グローバル |  |  |  |  |
@@ -113,7 +112,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Text to Speech | グローバル |  |  |  |  |
 |  | Speech to text | グローバル |  |  |  |  |
 |  | Pose Estimation | グローバル |  |  |  |  |
-|  | Cheating Detection | グローバル |  |  |  |  |
 | Machine Learning | Deep Learning Instance | リージョン | O |  | | |
 |  | AI EasyMaker | リージョン | O |  |  |  |
 | Application Service | Maps | リージョン | O |  |  |  |

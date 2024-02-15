@@ -422,13 +422,6 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | GameAnvil  | ADMIN | GameAnvil サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
 | GameAnvil  | MEMBER | GameAnvil サービス Read(読込), モニタリング メニュー Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
 | GameAnvil  | VIEWER | GameAnvil サービス Read(読込)  |
-| GameTalk | GameTalk ADMIN | GameTalk サービス Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| GameTalk | GameTalk Channel ADMIN | チャンネルリストメニューRead(読み取り)、チャンネルCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)、チャンネルタグメニュー Read(読み取り)、チャンネルタグCreate(生成)/Read(読み取り)/Update (更新)/Delete(削除) |
-| GameTalk | GameTalk Channel VIEWER | チャンネルリストメニュー Read(読み取り) |
-| GameTalk | GameTalk Member VIEWER | メンバーメニュー Read(読み取り) |
-| GameTalk | GameTalk Notice ADMIN | お知らせメニュー Read(読み込み)、お知らせ Create(作成)/Read(読み込み)/Update(更新)/Delete(削除)|
-| GameTalk | GameTalk Notice VIEWER | お知らせメニュー Read(読み取り) |
-| GameTalk | GameTalk Setting ADMIN | 一般設定メニュー Read(読み取り)、設定 Update(更新) |
 | GameStarter  | ADMIN | ゲーム設定, 配布メニュー Create(作成)/ Read(読み取り)/ Update(更新)  |
 | GameStarter  | VIEWER | ゲーム設定, 配布メニュー Read(読み取り)  |
 | Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
@@ -467,7 +460,6 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
 | Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
 | Pose Estimation | ADMIN | Pose Estimationサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
-| Cheating Detection | ADMIN | Cheating Detectionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | AI EasyMaker | ADMIN | AI EasyMakerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | IAP | ADMIN | IAPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |

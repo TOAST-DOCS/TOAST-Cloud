@@ -170,10 +170,10 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
             * 비밀번호는 90일마다 변경이 필요하며, 90일이 지나면 비밀번호 변경 안내 화면이 제공됩니다.
     * 사용자 비밀번호 정책
         * 비밀번호 최소 길이, 비밀번호 강도, 비밀번호 만료, 비밀번호 재사용 제한 등을 설정할 수 있는 비밀번호 정책을 제공합니다.
-            * 비밀번호 최소 길이: 비밀번호 최소 길이를 8\~15자로 설정합니다. (최대 길이는 15자로 제공됩니다.)
+            * 비밀번호 최소 길이: 비밀번호 최소 길이를 8~15자로 설정합니다. (최대 길이는 15자로 제공됩니다.)
             * 비밀번호 강도: 연속된 문자, 대문자, 소문자, 숫자, 특수 문자 등을 조합하여 비밀번호 강도를 설정합니다.
             * 비밀번호 만료: 비밀번호 만료 여부를 선택하고 설정 시 만료 기간, 만료 시 연장 가능 여부를 설정합니다.
-            * 비밀번호 재사용 제한: 비밀번호 재사용 제한 여부를 선택하고 설정 시 재사용 제한 개수를 1\~3개 중 선택하여 설정합니다.
+            * 비밀번호 재사용 제한: 비밀번호 재사용 제한 여부를 선택하고 설정 시 재사용 제한 개수를 1~3개 중 선택하여 설정합니다.
             * 비밀번호 정책 적용 시점: **비밀번호 변경 시 적용, 즉시 적용** 중 선택하여 비밀번호 정책 적용 시점을 설정합니다.
                 * **비밀번호 변경 시 적용**을 선택한 경우, IAM 멤버 비밀번호 변경 시점에 새로운 정책으로 적용됩니다.
                 * **즉시 적용**을 선택한 경우, 비밀번호 설정 후 즉시 적용되어 IAM 멤버 로그인 시점에 새로운 정책으로 적용됩니다.
@@ -420,13 +420,6 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | GameAnvil  | ADMIN | GameAnvil 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | GameAnvil  | MEMBER | GameAnvil 서비스 Read(읽기), 모니터링 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | GameAnvil  | VIEWER | GameAnvil 서비스 Read(읽기)  |
-| GameTalk | GameTalk ADMIN | GameTalk 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| GameTalk | GameTalk Channel ADMIN | GameTalk 서비스 채널 목록 메뉴 Read(읽기), 채널 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 채널 태그 메뉴 Read(읽기), 채널 태그 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| GameTalk | GameTalk Channel VIEWER | GameTalk 서비스 채널 목록 메뉴 Read(읽기) |
-| GameTalk | GameTalk Member VIEWER | GameTalk 서비스 멤버 메뉴 Read(읽기) |
-| GameTalk | GameTalk Notice ADMIN | GameTalk 서비스 공지 메뉴 Read(읽기), 공지 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| GameTalk | GameTalk Notice VIEWER | GameTalk 서비스 공지 메뉴 Read(읽기) |
-| GameTalk | GameTalk Setting ADMIN | 일반 설정 메뉴 Read(읽기), 설정 Update(갱신) |
 | GameStarter  | ADMIN | 게임 설정, 배포 메뉴 Create(생성)/ Read(읽기)/ Update(갱신)  |
 | GameStarter  | VIEWER | 게임 설정, 배포 메뉴 Read(읽기)  |
 | Leaderboard | ADMIN | Leaderboard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
@@ -465,7 +458,6 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Text to Speech | ADMIN | Text to Speech 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Speech to Text | ADMIN | Speech to Text 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Pose Estimation | ADMIN | Pose Estimation 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Cheating Detection | ADMIN | Cheating Detection 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI EasyMaker | ADMIN | AI EasyMaker 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Maps | ADMIN | Maps 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | ROLE | ADMIN | ROLE 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |

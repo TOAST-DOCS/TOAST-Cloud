@@ -80,7 +80,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Hybrid & Private Cloud | NHN Private Cloud | 리전 | - | - | - | - |
 | Game | Gamebase | 글로벌 |  |  |  |  |
 |  | GameAnvil | 글로벌 |  |  |  |  |
-|  | GameTalk | 글로벌 | | | | |
 |  | GameStarter | 글로벌 |  |  |  |  |
 |  | Leaderboard | 글로벌 |  |  |  |  |
 |  | Launching | 글로벌 |  |  |  |  |
@@ -113,7 +112,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Text to Speech | 글로벌 |  |  |  |  |
 |  | Speech to Text | 글로벌 |  |  |  |  |
 |  | Pose Estimation | 글로벌 |  |  |  |  |
-|  | Cheating Detection | 글로벌 | |  |  |  |
 | Machine Learning | Deep Learning Instance | 리전 | O |  | | |
 |  | AI EasyMaker | 리전 | O |  |  |  |
 | Application Service | Maps | 리전 | O |  |  |  |
