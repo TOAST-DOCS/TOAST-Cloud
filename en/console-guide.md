@@ -453,9 +453,21 @@ You can grant multiple required roles to project members.
 | Image Manager | ADMIN | Create/Read/Update/Delete pfor Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
 | SMS | ADMIN | Create/Read/Update/Delete for SMS Service |
+| SMS | SEND ADMIN | Create/Read in Deliver SMS |
+| SMS | DELIVERY RESULT ADMIN | Read in Retrieve by SMS Request, Create Download Search Result, Read in Retrieve Bulk SMS Delivery, Create Download Retrieve Result, Read in Retrieve Tagged SMS Delivery, Create Download Retrieve Result  |
+| SMS | SETTING ADMIN | Create/Read/Update/Delete in Manage Templates, Create/Read/Update/Delete in Preregistration Outgoing Numbers, Read in Retrieve Outgoing Number, Create/Read/Update/Delete in Manage Tags, Create/Read/Update/Delete in Manage UIDs, Create/Read/Update/Delete in Manage Webhooks, Create/Read/Update/Delete in Set 080 Call Rejects, Create/Read/Update/Delete in Delivery Setting, Create/Read/Update/Delete in Statistics Event Key |
+| SMS | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | RCS Bizmessage | ADMIN | Create/Read/Update/Delete for RCS Bizmessage Service |
 | Email | ADMIN | Create/Read/Update/Delete for Email Service |
+| Email | SEND ADMIN | Create/Read in Deliver Mails |
+| Email | DELIVERY RESULT ADMIN | Read in Retrieve by Mail Request, Create Download Search Result, Read in Retrieve Scheduled Mail Delivery, Create Download Search Result, Read in Retrieve Bulk Mail Delivery, Create Download Search Result, Read in Retrieve Tagged Mail Delivery, Create Download Search Result |
+| Email | SETTING ADMIN | Create/Read/Update/Delete in Manage Templates, Create/Read/Update/Delete in Manage Call Rejects, Create/Read/Update/Delete in Manage Mail Domains, Create/Read/Update/Delete in Manage Tags, Create/Read/Update/Delete in Manage UIDs, Create/Read/Update/Delete in Delivery Setting, Create/Read/Update/Delete in Manage Webhooks |
+| Email | STATISTICS ADMIN | Read in Retrieve Statistics, Create Download Search Result |
 | KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete for KakaoTalk Bizmessage Service |
+| KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create/Read in Send, (FriendTalk)Create/Read in Send |
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result, (AlimTalk) Read in Query Mass Delivery, Create Download Search Result, (FriendTalk)Read in Query Delivery Result, Create Download Search Result, (FriendTalk)Read in Query Mass Delivery, Create Download Search Result |
+| KakaoTalk Bizmessage | SETTING ADMIN | Create/Read/Update/Delete in Manage Senders, (AlimTalk) Create/Read/Update/Delete in Manage Templates, (AlimTalk) Create/Read/Update/Delete in Manage Alternative Delivery, (AlimTalk) Create/Read/Update/Delete in Manage sender profile group, (FriendTalk)Create/Read/Update/Delete in Manage Images, (FriendTalk)Create/Read/Update/Delete in Manage Alternative Delivery |
+| KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | Face Recognition | ADMIN | Create/Read/Update/Delete for Face Recognition Service |
 | AI Fashion |	ADMIN |	Create/Read/Update/Delete for AI Fashion Service |
 | OCR | ADMIN | Create/Read/Update/Delete for OCR | 
