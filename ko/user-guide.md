@@ -194,8 +194,8 @@ NHN Cloud 서비스에서 관리하는 크레딧은 서비스 가입, 리워드,
 - 크레딧은 휴대폰번호, 사업자번호 당 1개만 사용할 수 있으며 회원이 NHN Cloud 운영 정책에 위배되는 행동을 했을 경우, 크레딧을 회수할 수 있습니다.
 - NHN Cloud 이용 금액 발생 시 크레딧이 있으면 자동으로 크레딧만큼 이용 금액을 차감합니다.
 - NHN Cloud 이용 금액이 보유한 크레딧보다 많을 경우, 크레딧에서 차감하고 나머지 금액이 유료 과금됩니다.
-- 가입 축하 크레딧은 NHN Cloud에서 제공하는 서비스 중 아래 서비스의 이용 대금으로 이용할 수 있습니다.
-- 적용 서비스: Compute > Instance, Ephemeral Storage Instance, Network > VPC, 일반 Load Balancer, Storage > Block Storage, NAS (NAS(offline) 제외), Object Storage, Backup
+- 가입 축하 크레딧은 NHN Cloud에서 제공하는 서비스의 요금 지불에 이용할 수 있습니다.
+  - 제외 서비스: Notification, GPU Instance, 마켓플레이스, 별도 문의 서비스 제외
 
 ## 회원 탈퇴
 ### 회원 탈퇴 신청
