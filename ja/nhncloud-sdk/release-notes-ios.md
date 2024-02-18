@@ -1,5 +1,14 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.8.1 (2024. 02. 27.)
+### 공통
+#### 개선 사항
+* Privacy manifest 적용  
+
+### NHN Cloud Push
+#### 개선 사항
+* 특정 환경에서 메시지 클릭 액션이 즉시 동작하지 않는 문제를 수정    
+
 ## 1.8.0 (2024. 01. 23.)
 ### NHN Cloud IAP
 #### 改善事項
