@@ -231,7 +231,7 @@ Credits are operated in accordance with the following policy:
 - Managed by valid period: to be expired after valid period and flexibly managed for each type of saving. 
 - Automatically deducted as much as charged for NHN Cloud Service: if NHN Cloud Service is charged more than your own credits, shortage shall be charged further in cash. 
 - You can use sign-up credits to pay for services provided by NHN Cloud.
- - Inapplicable services: Notification, GPU Instance, Marketplace services, and services that require contact.
+    - Inapplicable services: Notification, GPU Instance, Marketplace services, and services that require contact.
 
 
 ## Withdraw from Membership
