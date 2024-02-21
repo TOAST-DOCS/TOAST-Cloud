@@ -6,7 +6,7 @@
 
 #### Fixed
 
-* 크래시 로그가 중복해서 전송되는 문제를 수정하였습니다.
+* Fixed an issue where crash logs are sent in duplicate.
 
 ## 1.8.4 (January 25, 2024)
 
