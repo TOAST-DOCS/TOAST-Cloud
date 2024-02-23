@@ -25,10 +25,10 @@ repositories {
 dependencies {
     // ...
     // Add the NHN Cloud Logger dependency
-    implementation 'com.nhncloud.android:nhncloud-logger:1.8.4'
+    implementation 'com.nhncloud.android:nhncloud-logger:1.8.5'
 
     // Add the NHN Cloud Crash Reporter for NDK dependency
-    implementation 'com.nhncloud.android:nhncloud-crash-reporter-ndk:1.8.4'
+    implementation 'com.nhncloud.android:nhncloud-crash-reporter-ndk:1.8.5'
 }
 ```
 
