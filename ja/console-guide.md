@@ -337,6 +337,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り)<br> プロジェクトロールグループRead(読み取り) |
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | プロジェクト通知受信グループの管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | プロジェクト通知受信グループの管理Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
+| PROJECT NOTICE MANAGEMENT ADMIN | プロジェクト通知管理 Create(作成)/Read(読取)/Update(更新)/Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
+| PROJECT NOTICE MANAGEMENT VIEWER | プロジェクト通知管理 Read(読取) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
 | PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
@@ -356,6 +358,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | | ロールグループロールタブCreate(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MEMBER ADMIN | 権限なし |
 | 通知受信グループの管理 | Read(読込)| ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER | 権限なし |
 | | Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 権限なし |
+| 通知管理 | Read(読取)| ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | サービス ADMIN<br>サービス VIEWER |
+| | Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN | サービス ADMIN|
 | 利用状況 | Read(読込) | ADMIN<br>BILLING VIEWER | 権限なし |
 | プロジェクト設定 | プロジェクト基本情報Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN | サービスPERMISSION |
 | | プロジェクト基本情報Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 権限なし |

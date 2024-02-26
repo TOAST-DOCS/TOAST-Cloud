@@ -336,6 +336,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | PROJECT MEMBER VIEWER | 프로젝트 멤버 Read(읽기)<br>프로젝트 역할 그룹 Read(읽기)  |
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | 프로젝트 알림 수신 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | 프로젝트 알림 수신 그룹 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
+| PROJECT NOTICE MANAGEMENT ADMIN | 프로젝트 알림 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
+| PROJECT NOTICE MANAGEMENT VIEWER | 프로젝트 알림 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
 | PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT VIEWER| 프로젝트 쿼터 관리 Read(읽기)|
@@ -354,6 +356,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | | 역할 그룹 역할 탭 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MEMBER ADMIN | 권한 없음 |
 | 알림 수신 그룹 관리 | Read(읽기)| ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER | 권한 없음 |
 | | Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 권한 없음 |
+| 알림 관리 | Read(읽기)| ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | 서비스 ADMIN<br>서비스 VIEWER |
+| | Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN | 서비스 ADMIN|
 | 이용 현황 | Read(읽기) | ADMIN<br>BILLING VIEWER | 권한 없음 |
 | 프로젝트 관리 | 프로젝트 기본 정보 Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN | 서비스 PERMISSION |
 | | 프로젝트 기본 정보 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 권한 없음 |
