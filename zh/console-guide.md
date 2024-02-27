@@ -339,6 +339,8 @@ You can grant multiple required roles to project members.
 | PROJECT MEMBER VIEWER | Read for project members<br>Read for project's role groups |
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | Create/Read/Update/Delete for project's Notification Receiver Group Management <br> Read for project members <br> Read for project's role groups|
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | Read for project's Notification Receiver Group Management <br> Read for project's role groups|
+| PROJECT NOTICE MANAGEMENT ADMIN | Create/Read/Update/Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
+| PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT API SECURITY SETTING ADMIN | Create/Read/Update/Delete for project's API Security Setting|
 | PROJECT QUOTA MANAGEMENT ADMIN| Create/Read/Update/Delete for project's Quota Management|
 | PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
@@ -358,6 +360,8 @@ You can grant multiple required roles to project members.
 | | Role Group Role Tab Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
 | Notification Receiver Group Management | Read | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER | No Permission |
 | | Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
+| Notification Management | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | Service ADMIN<br>Service VIEWER |
+| | Create/Update/Delete | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN | Service ADMIN|
 | Usage Status | Read | ADMIN<br>BILLING VIEWER | No Permission |
 | Project Management | Basic Project Information Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN| Service PERMISSION |
 | | Basic Project Information Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN | No Permission |
@@ -452,9 +456,21 @@ You can grant multiple required roles to project members.
 | Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
 | SMS | ADMIN | Create/Read/Update/Delete for SMS Service |
+| SMS | SEND ADMIN | Create/Read in Deliver SMS |
+| SMS | DELIVERY RESULT ADMIN | Read in Retrieve by SMS Request, Create Download Search Result, Read in Retrieve Bulk SMS Delivery, Create Download Retrieve Result, Read in Retrieve Tagged SMS Delivery, Create Download Retrieve Result  |
+| SMS | SETTING ADMIN | Create/Read/Update/Delete in Manage Templates, Create/Read/Update/Delete in Preregistration Outgoing Numbers, Read in Retrieve Outgoing Number, Create/Read/Update/Delete in Manage Tags, Create/Read/Update/Delete in Manage UIDs, Create/Read/Update/Delete in Manage Webhooks, Create/Read/Update/Delete in Set 080 Call Rejects, Create/Read/Update/Delete in Delivery Setting, Create/Read/Update/Delete in Statistics Event Key |
+| SMS | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | RCS Bizmessage | ADMIN | Create/Read/Update/Delete for RCS Bizmessage Service |
 | Email | ADMIN | Create/Read/Update/Delete for Email Service |
+| Email | SEND ADMIN | Create/Read in Deliver Mails |
+| Email | DELIVERY RESULT ADMIN | Read in Retrieve by Mail Request, Create Download Search Result, Read in Retrieve Scheduled Mail Delivery, Create Download Search Result, Read in Retrieve Bulk Mail Delivery, Create Download Search Result, Read in Retrieve Tagged Mail Delivery, Create Download Search Result |
+| Email | SETTING ADMIN | Create/Read/Update/Delete in Manage Templates, Create/Read/Update/Delete in Manage Call Rejects, Create/Read/Update/Delete in Manage Mail Domains, Create/Read/Update/Delete in Manage Tags, Create/Read/Update/Delete in Manage UIDs, Create/Read/Update/Delete in Delivery Setting, Create/Read/Update/Delete in Manage Webhooks |
+| Email | STATISTICS ADMIN | Read in Retrieve Statistics, Create Download Search Result |
 | KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete for KakaoTalk Bizmessage Service |
+| KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create/Read in Send, (FriendTalk)Create/Read in Send |
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result, (AlimTalk) Read in Query Mass Delivery, Create Download Search Result, (FriendTalk)Read in Query Delivery Result, Create Download Search Result, (FriendTalk)Read in Query Mass Delivery, Create Download Search Result |
+| KakaoTalk Bizmessage | SETTING ADMIN | Create/Read/Update/Delete in Manage Senders, (AlimTalk) Create/Read/Update/Delete in Manage Templates, (AlimTalk) Create/Read/Update/Delete in Manage Alternative Delivery, (AlimTalk) Create/Read/Update/Delete in Manage sender profile group, (FriendTalk)Create/Read/Update/Delete in Manage Images, (FriendTalk)Create/Read/Update/Delete in Manage Alternative Delivery |
+| KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | Face Recognition | ADMIN | Create/Read/Update/Delete for Face Recognition Service |
 | AI Fashion |	ADMIN |	Create/Read/Update/Delete for AI Fashion Service |
 | OCR | ADMIN | Create/Read/Update/Delete for OCR | 

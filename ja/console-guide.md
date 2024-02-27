@@ -337,6 +337,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り)<br> プロジェクトロールグループRead(読み取り) |
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | プロジェクト通知受信グループの管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | プロジェクト通知受信グループの管理Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
+| PROJECT NOTICE MANAGEMENT ADMIN | プロジェクト通知管理 Create(作成)/Read(読取)/Update(更新)/Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
+| PROJECT NOTICE MANAGEMENT VIEWER | プロジェクト通知管理 Read(読取) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
 | PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
@@ -356,6 +358,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | | ロールグループロールタブCreate(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MEMBER ADMIN | 権限なし |
 | 通知受信グループの管理 | Read(読込)| ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER | 権限なし |
 | | Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 権限なし |
+| 通知管理 | Read(読取)| ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | サービス ADMIN<br>サービス VIEWER |
+| | Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN | サービス ADMIN|
 | 利用状況 | Read(読込) | ADMIN<br>BILLING VIEWER | 権限なし |
 | プロジェクト設定 | プロジェクト基本情報Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN | サービスPERMISSION |
 | | プロジェクト基本情報Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 権限なし |
@@ -451,9 +455,21 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | SMS | ADMIN | SMSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| SMS | SEND ADMIN | SMSサービス送信メニューCreate(作成)/Read(読み取り) |
+| SMS | DELIVERY RESULT ADMIN | SMSサービスSMSリクエスト別照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成), 大量SMS送信照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成), タグSMS送信照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成)  |
+| SMS | SETTING ADMIN | SMSサービステンプレート管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 発信番号 事前登録 メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 発信番号照会メニューRead(読み取り), タグ管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), UID管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), Webフック管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 080受信拒否設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 送信設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 統計イベントキー設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| SMS | STATISTICS ADMIN | SMSサービス統計メニューRead(読み取り)、照会結果ダウンロードCreate(作成)  |
 | RCS Bizmessage | ADMIN | RCS Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Email | ADMIN | Emailサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Email | SEND ADMIN | Emailサービスメール送信メニューCreate(作成)/Read(読み取り) |
+| Email | DELIVERY RESULT ADMIN | Emailサービスメールリクエスト別照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成), メール予約送信照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成), 大量メール送信照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成), タグメール送信照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成)  |
+| Email | SETTING ADMIN | Emailサービステンプレート管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 受信拒否管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), メールドメイン管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), タグ管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), UID管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 送信設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除), Webフック管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Email | STATISTICS ADMIN | Emailサービス統計照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成)  |
 | KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| KakaoTalk Bizmessage | SEND ADMIN | KakaoTalk Bizmessageサービス(お知らせトーク)送信メニューCreate(作成)/Read(読み取り), (カカともへのメッセージ)送信メニューCreate(作成)/Read(読み取り)  |
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | KakaoTalk Bizmessageサービス(お知らせトーク)送信結果照会 Read(読み取り)、照会履歴のダウンロードCreate(作成), (お知らせトーク)大量送信照会 Read(読み取り)、照会結果ダウンロードCreate(作成), (カカともへのメッセージ)送信結果照会 Read(読み取り)、照会結果ダウンロードCreate(作成), (カカともへのメッセージ)大量送信照会 Read(読み取り)、照会結果ダウンロードCreate(作成)  |
+| KakaoTalk Bizmessage | SETTING ADMIN | KakaoTalk Bizmessageサービス発信プロフィール管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), (お知らせトーク)テンプレート管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), (お知らせトーク)代替送信管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), (お知らせトーク)発信プロフィールグループ管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除), (カカともへのメッセージ)イメージ管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除), (カカともへのメッセージ)代替送信管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 送信設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), Webフック管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 統計イベントキー 設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| KakaoTalk Bizmessage | STATISTICS ADMIN | KakaoTalk Bizmessageサービス統計メニューRead(読み取り)、照会結果ダウンロードCreate(作成)  |
 | Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | AI Fashion | ADMIN | AI Fashionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
 | OCR | ADMIN | OCRサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 

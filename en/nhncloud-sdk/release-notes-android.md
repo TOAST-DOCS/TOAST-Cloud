@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.8.5 (February 27. 2024)
+
+### NHN Cloud Logger
+
+#### Fixed
+
+* Fixed an issue where crash logs are sent in duplicate.
+
 ## 1.8.4 (January 25, 2024)
 
 ### NHN Cloud SDK

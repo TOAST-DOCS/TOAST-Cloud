@@ -232,6 +232,7 @@ Credits are operated in accordance with the following policy:
 - Automatically deducted as much as charged for NHN Cloud Service: if NHN Cloud Service is charged more than your own credits, shortage shall be charged further in cash. 
 
 
+
 ## Withdraw from Membership
 ### Apply for Membership Withdrawal
 To apply for withdrawal from NHN Cloud membership, go to **My Page > Member Profile** and click **Withdraw Membership**.  

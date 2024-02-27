@@ -336,6 +336,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | PROJECT MEMBER VIEWER | 프로젝트 멤버 Read(읽기)<br>프로젝트 역할 그룹 Read(읽기)  |
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | 프로젝트 알림 수신 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | 프로젝트 알림 수신 그룹 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
+| PROJECT NOTICE MANAGEMENT ADMIN | 프로젝트 알림 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
+| PROJECT NOTICE MANAGEMENT VIEWER | 프로젝트 알림 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
 | PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT VIEWER| 프로젝트 쿼터 관리 Read(읽기)|
@@ -354,6 +356,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | | 역할 그룹 역할 탭 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MEMBER ADMIN | 권한 없음 |
 | 알림 수신 그룹 관리 | Read(읽기)| ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER | 권한 없음 |
 | | Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 권한 없음 |
+| 알림 관리 | Read(읽기)| ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | 서비스 ADMIN<br>서비스 VIEWER |
+| | Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN | 서비스 ADMIN|
 | 이용 현황 | Read(읽기) | ADMIN<br>BILLING VIEWER | 권한 없음 |
 | 프로젝트 관리 | 프로젝트 기본 정보 Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN | 서비스 PERMISSION |
 | | 프로젝트 기본 정보 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 권한 없음 |
@@ -449,9 +453,21 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Image Manager | ADMIN | Image Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Push | ADMIN | Push 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | SMS | ADMIN | SMS 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| SMS | SEND ADMIN | SMS 서비스 발송 메뉴 Create(생성)/Read(읽기) |
+| SMS | DELIVERY RESULT ADMIN |  SMS 서비스 SMS 요청별 조회  메뉴 Read(읽기), 조회 결과 다운로드 Create(생성),대량 SMS 발송 조회 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성), 태그 SMS 발송 조회 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성) |
+| SMS | SETTING ADMIN | SMS 서비스 템플릿 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발신번호 사전 등록 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발신번호 조회 메뉴 Read(읽기), 태그 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), UID 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 웹훅 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 080 수신 거부 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발송 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제),통계 이벤트 키 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| SMS | STATISTICS ADMIN | SMS 서비스 통계 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성) |
 | RCS Bizmessage | ADMIN | RCS Bizmessage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Email | ADMIN | Email 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Email | SEND ADMIN | Email 서비스 메일 발송 메뉴 Create(생성)/Read(읽기)  |
+| Email | DELIVERY RESULT ADMIN | Email 서비스 메일 요청별 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성), 메일 예약 발송 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성), 대량 메일 발송 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성), 태그 메일 발송 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성)  |
+| Email | SETTING ADMIN | Email 서비스 템플릿 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 수신 거부 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 메일 도메인 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 태그 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), UID 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발송 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 웹훅 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Email | STATISTICS ADMIN | Email 서비스 통계 조회 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성)  |
 | KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| KakaoTalk Bizmessage | SEND ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 메뉴 Create(생성)/Read(읽기), (친구톡)발송 메뉴 Create(생성)/Read(읽기)  |
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 결과 조회  Read(읽기), 조회 내역 다운로드 Create(생성), (알림톡)대량 발송 조회  Read(읽기), 조회 결과 다운로드 Create(생성), (친구톡)발송 결과 조회  Read(읽기), 조회 결과 다운로드 Create(생성), (친구톡)대량 발송 조회  Read(읽기), 조회 결과 다운로드 Create(생성)  |
+| KakaoTalk Bizmessage | SETTING ADMIN | KakaoTalk Bizmessage 서비스 발신 프로필 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (알림톡)템플릿 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (알림톡)대체 발송 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (알림톡)발신 프로필 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (친구톡)이미지 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (친구톡)대체 발송 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발송 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 웹훅 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 통계 이벤트 키 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| KakaoTalk Bizmessage | STATISTICS ADMIN | KakaoTalk Bizmessage 서비스 통계 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성)  |
 | Face Recognition | ADMIN | Face Recognition 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI Fashion | ADMIN | AI Fashion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  | 
 | OCR | ADMIN | OCR 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  | 

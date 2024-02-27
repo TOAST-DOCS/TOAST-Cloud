@@ -41,6 +41,8 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 | Network ACL Policy | Per project | 100 | O | | 
 | Network ACL Binding | Per project | 100 | O | | 
 |Load Balancer | Per project |10| O | |
+|L7 Policy | Per Listener |10| O | |
+|L7 Rule | Per L7 Policy |10| O | |
 |IP Access Control Group    | Per project |10| O | |
 |IP Access Control Target | Per IP access control group |1000| O | |
 | NAS volume | Per project| 100 | O | |
