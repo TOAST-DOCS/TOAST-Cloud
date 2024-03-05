@@ -1,2 +1,5 @@
 {
+    "prettier.disableLanguages": [
+        "markdown"
+    ]
 }
