@@ -130,7 +130,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | DataFlow | リージョン | O |  |  |  |
 |  | DataQuery | リージョン | O |  |  |  |
 |  | Kafka Instance | リージョン | O | O | O | O |
-| Dev Tools | Pipeline | リージョン | O | O |  |  |
+| Dev Tools | Pipeline | リージョン | O |  |  |  |
 |  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
 |  | Support Plan | リージョン | O | O |  |  |
