@@ -435,7 +435,6 @@ You can grant multiple required roles to project members.
 | Launching | ADMIN | Create/Read/Update/Delete for Launching Service |
 | Smart Downloader | ADMIN | Create/Read/Update/Delete for Smart Downloader Service |
 | NHN AppGuard | ADMIN | Create/Read/Update/Delete for NHN AppGuard Service|
-| App Security Check | ADMIN | Create/Read/Update/Delete for App Security Check Service |
 | Server Security Check | ADMIN | Create/Read/Update/Delete for Server Security Check  Service |
 | Security Monitoring | ADMIN | Create/Read/Update/Delete for Security Monitoring Service |
 | CAPTCHA | ADMIN | Create/Read/Update/Delete or CAPTCHA Service |
@@ -446,8 +445,6 @@ You can grant multiple required roles to project members.
 | Secure Key Manager | APPROVAL MEMBER | Create/query for approval requests for Secure Key Manager Service |
 | Secure Key Manager | VIEWER | Read for Secure Key Manager Service |
 | Security Compliance | ADMIN | Create/Read/Update/Delete for Security Compliance Service|
-| DDoS Guard | ADMIN | Create/Read/Update/Delete for DDoS Guard Service |
-| SIEM | ADMIN | Create/Read/Update/Delete for SIEM Service |
 | Webshell Threat Detector | ADMIN | Create/Read/Update/Delete for Webshell Threat Detector Service |
 | Security Advisor | ADMIN | Create/Read/Update/Delete for Security Advisor Service |
 | Security Advisor | VIEWER | Read for Security Advisor Service  |
