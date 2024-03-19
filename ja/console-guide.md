@@ -433,7 +433,6 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Launching | ADMIN | Launchingサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Smart Downloader | ADMIN | Smart Downloaderサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | NHN AppGuard | ADMIN | AppGuardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| App Security Check | ADMIN | Security Checkサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Server Security Check | ADMIN | Server Security Check サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Security Monitoring | ADMIN | Security Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | CAPTCHA | ADMIN | CAPTCHAサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
@@ -444,8 +443,6 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Secure Key Manager | APPROVAL MEMBER | Secure Key Manager承認要請作成/照会  |
 | Secure Key Manager | VIEWER | Secure Key Managerサービスに対するRead(読み取り) |
 | Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| DDoS Guard | ADMIN | DDos Guardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| SIEM | ADMIN | SIEMサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | Security Advisor | ADMIN | Security Advisorサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Security Advisor | VIEWER | Security Advisorサービスに対するRead(読み取り)  |
