@@ -130,7 +130,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | DataFlow | Regional | O |  |  |  |
 |  | DataQuery | Regional | O |  |  |  |
 |  | Kafka Instance | Regional | O | O | O | O |
-| Dev Tools | Pipeline | Regional | O | O |  |  |
+| Dev Tools | Pipeline | Regional | O |  |  |  |
 |  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
 |  | Support Plan |  Regional | O | O |  |  |
