@@ -67,7 +67,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 | Security | Security Monitoring | 리전 | O |  |
 |  | Basic Security | 리전 | O | O | 
 |  | Web Firewall | 리전 | O |  |
-|  | Vaccine | 리전 | O |  |
+|  | Vaccine | 리전 | O | O |
 |  | Secure Key Manager | 글로벌 |  |  | 
 |  | Security Compliance | 글로벌 |  |  | 
 |  | CSAP SaaS Guidance | 글로벌 |  |  |
