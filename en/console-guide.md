@@ -530,3 +530,22 @@ The details displayed on the payment management invoice are as follows.
     - Korean members: In case of non-payment for the Total Amount of Payment, 2% of the amount
     - Japanese members: There is no late fee in accordance with the Japanese Consumer Contract Law.
 - Total Amount of Payment: (Usage Amount - Discount Amount + Surcharge Amount) + VAT
+
+
+## Manage Notifications
+
+Manage Notifications is a feature that allows you to set the recipients and notification method (Email, SMS) for each notification sent by NHN Cloud.
+
+1. Click **Organization > Manage Notifications** or **Project > Manage Notifications**.
+- You can manage the notifications you receive for each of your organizations and projects.
+
+2. Among notifications, find a notification for which you want to change the recipient and go to **Modify Receiver > Modify**.
+- You can find notifications by selecting from the list on the left, or by searching for the notification name, recipient, and more in the top-right search area.
+- To bulk modify recipients of multiple notifications, select the checkboxes of notifications, then click Bulk Modify Receiver at the top of the notification list.
+
+3. Select who should receive notifications and how they should be **notified (Email, SMS) by member, notification recipient group, and role**.
+- Webhook is not supported for the notifications.
+- Notification methods differ depending on notifications.
+- When you add a notification receiver group to Recipient, the notification method set for that group must match the notification method supported by each notification in order to receive notifications.
+
+4. Click **Save** to save your settings.
