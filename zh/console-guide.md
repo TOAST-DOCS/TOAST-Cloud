@@ -928,6 +928,8 @@ You can grant multiple required roles to project members.
 | Backup | ADMIN | Create/Read/Update/Delete for Backup Service |
 | RDS for MySQL | ADMIN | Create/Read/Update/Delete for RDS for MySQL Service |
 | RDS for MySQL | VIEWER | Read for RDS for MySQL Service |
+| RDS for PostgreSQL | ADMIN | Create/Read/Update/Delete for RDS for PostgreSQL Service |
+| RDS for PostgreSQL | VIEWER | Read for RDS for PostgreSQL Service |
 | RDS for MariaDB | ADMIN | Create/Read/Update/Delete for RDS for MariaDB Service |
 | RDS for MariaDB | VIEWER | Read for RDS for MariaDB Service |
 | RDS for MS-SQL | ADMIN | Create/Read/Update/Delete for RDS for MS-SQL Service |
