@@ -35,7 +35,7 @@ dependencies {
 ### ONE store
 
 - ONE storeのアプリ内決済を使用するには、下記のようにbuild.gradleに依存性を追加します。
-- ONE store V19の場合V19 IAP SDKを[ダウンロード](https://github.com/ONE-store/onestore_iap_release/tree/iap19-release/android_app_sample/app/libs)し、libsディレクトリにコピーして依存関係を一緒に追加します。
+- ONE store V19의 경우 V19 IAP SDK를 [다운로드](https://github.com/ONE-store/onestore_iap_release/tree/iap19-release/android_app_sample/app/libs)하여 libs 디렉토리에 복사하고 의존성을 함께 추가합니다.
 
 ```groovy
 repositories {
