@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## NHN Cloud > Console User Guide
 
 NHN Cloud console serves as a management tool and task window for using NHN Cloud services.
@@ -1082,4 +1081,3 @@ Manage Notifications is a feature that allows you to set the recipients and noti
 - When you add a notification receiver group to Recipient, the notification method set for that group must match the notification method supported by each notification in order to receive notifications.
 
 4. Click **Save** to save your settings.
->>>>>>> alpha
