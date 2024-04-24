@@ -399,6 +399,8 @@ You can grant multiple required roles to project members.
 | RDS for MariaDB | ADMIN | Create/Read/Update/Delete for RDS for MariaDB Service |
 | RDS for MariaDB | VIEWER | Read for RDS for MariaDB Service |
 | RDS for MS-SQL | ADMIN | Create/Read/Update/Delete for RDS for MS-SQL Service |
+| RDS for PostgreSQL | ADMIN | Create/Read/Update/Delete for RDS for PostgreSQL Service |
+| RDS for PostgreSQL | VIEWER | Read for RDS for PostgreSQL Service |
 | EasyCache | ADMIN | Create/Read/Update/Delete for EasyCache Service |
 | EasyCache | VIEWER | Read for EasyCache Service Replication Group menu, Read for Monitoring menu |
 | Gamebase | ADMIN | Create/Read/Update/Delete for Gamebase Service |
@@ -537,15 +539,15 @@ The details displayed on the payment management invoice are as follows.
 Manage Notifications is a feature that allows you to set the recipients and notification method (Email, SMS) for each notification sent by NHN Cloud.
 
 1. Click **Organization > Manage Notifications** or **Project > Manage Notifications**.
-- You can manage the notifications you receive for each of your organizations and projects.
+    - You can manage the notifications you receive for each of your organizations and projects.
 
 2. Among notifications, find a notification for which you want to change the recipient and go to **Modify Receiver > Modify**.
-- You can find notifications by selecting from the list on the left, or by searching for the notification name, recipient, and more in the top-right search area.
-- To bulk modify recipients of multiple notifications, select the checkboxes of notifications, then click Bulk Modify Receiver at the top of the notification list.
+    - You can find notifications by selecting from the list on the left, or by searching for the notification name, recipient, and more in the top-right search area.
+    - To bulk modify recipients of multiple notifications, select the checkboxes of notifications, then click Bulk Modify Receiver at the top of the notification list.
 
 3. Select who should receive notifications and how they should be **notified (Email, SMS) by member, notification recipient group, and role**.
-- Webhook is not supported for the notifications.
-- Notification methods differ depending on notifications.
-- When you add a notification receiver group to Recipient, the notification method set for that group must match the notification method supported by each notification in order to receive notifications.
+    - Webhook is not supported for the notifications.
+    - Notification methods differ depending on notifications.
+    - When you add a notification receiver group to Recipient, the notification method set for that group must match the notification method supported by each notification in order to receive notifications.
 
 4. Click **Save** to save your settings.
