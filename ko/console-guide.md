@@ -395,8 +395,6 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | RDS for MariaDB | ADMIN | RDS for MariaDB 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | RDS for MariaDB | VIEWER | RDS for MariaDB 서비스 Read(읽기) |
 | RDS for MS-SQL | ADMIN | RDS for MS-SQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| RDS for PostgreSQL | ADMIN | RDS for PostgreSQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| RDS for PostgreSQL | VIEWER | RDS for PostgreSQL 서비스 Read(읽기) |
 | EasyCache | ADMIN | EasyCache 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | EasyCache | VIEWER | EasyCache 서비스 복제 그룹 메뉴 Read(읽기), 모니터링 메뉴 Read(읽기) |
 | Gamebase | ADMIN | Gamebase 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |

@@ -399,8 +399,6 @@ You can grant multiple required roles to project members.
 | RDS for MariaDB | ADMIN | Create/Read/Update/Delete for RDS for MariaDB Service |
 | RDS for MariaDB | VIEWER | Read for RDS for MariaDB Service |
 | RDS for MS-SQL | ADMIN | Create/Read/Update/Delete for RDS for MS-SQL Service |
-| RDS for PostgreSQL | ADMIN | Create/Read/Update/Delete for RDS for PostgreSQL Service |
-| RDS for PostgreSQL | VIEWER | Read for RDS for PostgreSQL Service |
 | EasyCache | ADMIN | Create/Read/Update/Delete for EasyCache Service |
 | EasyCache | VIEWER | Read for EasyCache Service Replication Group menu, Read for Monitoring menu |
 | Gamebase | ADMIN | Create/Read/Update/Delete for Gamebase Service |
