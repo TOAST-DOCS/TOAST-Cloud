@@ -107,7 +107,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Email | グローバル |  |  |  |  |
 |  | KakaoTalk Bizmessage | グローバル |  |  |  |  |
 | AI Service | Face Recognition | グローバル |  |  |  |  |
-|  | AI Fashion | リージョン | O | O | O | O |
+|  | AI Fashion | グローバル |  |  |  |  |
 |  | OCR | グローバル |  |  |  |  |
 |  | Text to Speech | グローバル |  |  |  |  |
 |  | Speech to text | グローバル |  |  |  |  |
