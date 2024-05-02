@@ -68,7 +68,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Backup | Regional | O | O | O |  |
 |  | Data transporte | Regional | O | O |  |  |
 | Database | RDS for MySQL | Regional | O | O | O |  |
-|  | RDS for PostgreSQL | Regional | O |  |  |  |
 |  | RDS for MariaDB | Regional | O |  |  |  |
 |  | RDS for MS-SQL | Regional | O |  |  |  |
 |  | EasyCache | Regional | O | O |  |  |
@@ -108,7 +107,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Email | Global |  |  |  |  |
 |  | KakaoTalk Bizmessage | Global |  |  |  |  |
 | AI Service | Face Recognition | Global |  |  |  |  |
-|  | AI Fashion | Regional | O | O | O | O |
+|  | AI Fashion | Global |  |  |  |  |
 |  | OCR | Global |  |  |  |  |
 |  | Text to Speech | Global |  |  |  |  |
 |  | Speech to Text | Global |  |  |  |  |

@@ -67,7 +67,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Backup | 리전 | O | O | O |  |
 |  | Data transporter | 리전 | O | O |  |  |
 | Database | RDS for MySQL | 리전 | O | O | O |  | 
-|  | RDS for PostgreSQL | 리전 | O |  |  |  | 
 |  | RDS for MariaDB | 리전 | O |  |  |  | 
 |  | RDS for MS-SQL | 리전 | O |  |  |  | 
 |  | EasyCache | 리전 | O | O |  |  | 
@@ -108,7 +107,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Email | 글로벌 |  |  |  |  |
 |  | KakaoTalk Bizmessage | 글로벌 |  |  |  |  |
 | AI Service | Face Recognition | 글로벌 |  |  |  |  |
-|  | AI Fashion | 리전 | O | O | O | O |
+|  | AI Fashion | 글로벌 |  |  |  |  |
 |  | OCR | 글로벌 |  |  |  |  |
 |  | Text to Speech | 글로벌 |  |  |  |  |
 |  | Speech to Text | 글로벌 |  |  |  |  |

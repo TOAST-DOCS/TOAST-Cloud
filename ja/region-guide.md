@@ -67,7 +67,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Backup | リージョン | O | O  | O |  |
 |  | Data transporter | リージョン | O | O  |  |  |
 | Database | RDS for MySQL | リージョン | O | O | O |  |
-|  | RDS for PostgreSQL | リージョン | O |  |  |  |
 |  | RDS for MariaDB | リージョン | O |  |  |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
 |  | EasyCache | リージョン | O | O |  |  |
@@ -108,7 +107,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Email | グローバル |  |  |  |  |
 |  | KakaoTalk Bizmessage | グローバル |  |  |  |  |
 | AI Service | Face Recognition | グローバル |  |  |  |  |
-|  | AI Fashion | リージョン | O | O | O | O |
+|  | AI Fashion | グローバル |  |  |  |  |
 |  | OCR | グローバル |  |  |  |  |
 |  | Text to Speech | グローバル |  |  |  |  |
 |  | Speech to text | グローバル |  |  |  |  |
