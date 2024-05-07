@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.8.6 (May 7. 2024)
+
+### NHN Cloud OCR
+
+#### Fixed
+
+* Network Timeout으로 신용카드 인식에 실패하는 문제를 수정하였습니다.
+
 ## 1.8.5 (February 27. 2024)
 
 ### NHN Cloud Logger
