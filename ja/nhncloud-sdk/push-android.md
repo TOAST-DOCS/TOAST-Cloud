@@ -3,7 +3,7 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-android)をインストールします。
-2. [NHN Cloudコンソール](https://console.nhncloud.com)で、[Pushサービスを有効化](https://docs.nhncloud.com/ja/Notification/Push/ja/console-guide/)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で、[Pushサービスを有効化](/Notification/Push/ja/console-guide/)します。
 3. PushコンソールでAppKeyを確認します。
 
 ## Push提供者別ガイド
@@ -681,7 +681,7 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 
 ## ユーザータグ
 
-* [ユーザータグ](https://docs.nhncloud.com/ja/Notification/Push/ja/console-guide/#_16) 機能はさまざまなユーザーIDをひとつのタグでまとめ、それを利用してメッセージを送信することができます。
+* [ユーザータグ](/Notification/Push/ja/console-guide/#_16) 機能はさまざまなユーザーIDをひとつのタグでまとめ、それを利用してメッセージを送信することができます。
 * タグ名ではなく、タグID(8桁の文字列)に基づいて動作します。タグIDはコンソール > タグメニューから作成·確認できます。
 
 ### ユーザータグ修正

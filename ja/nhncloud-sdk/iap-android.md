@@ -3,8 +3,8 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-android)をインストールします。
-2. [NHN Cloudコンソール](https://console.nhncloud.com)で[IAPサービスを有効化](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/)します。
-3. IAPコンソールで[AppKeyを確認](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で[IAPサービスを有効化](/Mobile%20Service/IAP/ja/console-guide/)します。
+3. IAPコンソールで[AppKeyを確認](/Mobile%20Service/IAP/ja/console-guide/#appkey)します。
 
 ## ストア別アプリ内決済ガイド
 
@@ -289,7 +289,7 @@ class MyApplication extends NhnCloudMyCardApplication {
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration)オブジェクトは、アプリ内決済設定情報を含んでいます。
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration)オブジェクトは、[NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder)を使用して作成できます。
-* IAPコンソールで発行された[AppKey](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)を、setAppKeyメソッドを使用して設定します。
+* IAPコンソールで発行された[AppKey](/Mobile%20Service/IAP/ja/console-guide/#appkey)を、setAppKeyメソッドを使用して設定します。
 * setStoreCodeメソッドを使用して、アプリ内決済に使用する[ストアコード](./iap-android/#_3)を設定します。
 
 ### アプリ内決済設定例
@@ -350,7 +350,7 @@ public class MainApplication extends Application {
 ## サービスログイン
 
 * NHN Cloud SDKで提供するすべてのサービス(IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
-    * [NhnCloudSdk.setUserId](https://docs.nhncloud.com/ja/TOAST/ja/toast-sdk/getting-started-android/#userid)でユーザーIDを設定できます。
+    * [NhnCloudSdk.setUserId](/nhncloud/ja/nhncloud-sdk/getting-started-android/#userid)でユーザーIDを設定できます。
     * ユーザーIDを設定していない場合、決済が行われません。
 * サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読商品照会機能を導入することを推奨します。
 
@@ -537,7 +537,7 @@ Google Play Storeでプロモーションコードで商品を購入した場合
 ## 未消費決済照会
 
 * まだ消費されていない一回の商品(CONSUMABLE)と消費性購読商品(CONSUMABLE_AUTO_RENEWABLE)情報を照会します。
-* ユーザーに商品を支給した後、[Consume API](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
+* ユーザーに商品を支給した後、[Consume API](/Mobile%20Service/IAP/ja/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
 * 未消費決済は、NhnCloudIap.queryConsumablePurchases()メソッドを使用して照会できます。
 * [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)を利用して現在ストアまたはすべてのストアの未消費決済を照会できます。
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストで返されます。

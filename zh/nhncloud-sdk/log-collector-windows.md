@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-windows)
-2. [Enable Log & Crash Search](https://docs.nhncloud.com/zh/Data%20&%20Analytics/Log%20&%20Crash%20Search/zh/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
-3. [Check AppKey](https://docs.nhncloud.com/zh/Data%20&%20Analytics/Log%20&%20Crash%20Search/zh/console-guide/#appkey) in Log & Crash Search.
+2. [Enable Log & Crash Search](/Data%20&%20Analytics/Log%20&%20Crash%20Search/zh/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](/Data%20&%20Analytics/Log%20&%20Crash%20Search/zh/console-guide/#check-appkey) in Log & Crash Search.
 
 ## Initialize NHN Cloud Logger SDK
 

@@ -4,14 +4,14 @@
 > **(新)領収書検証 + Notification V2** 方式を使用するにはNHN Cloud SDK iOS v1.7.0以上を使用する必要があります。
 
 > NHN Cloud SDK iOS v1.8.0から**(新)領収書検証 + Notification V2**方式と**(旧)領収書検証 + Notification V1**方式の両方をサポートします。
-> SDKの検証方式は、IAPコンソールに設定された方式によって決定されます。- [IAPコンソールガイド](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v2)
+> SDKの検証方式は、IAPコンソールに設定された方式によって決定されます。- [IAPコンソールガイド](/Mobile%20Service/IAP/ja/console-apple-guide/#notification-v2)
 
 
 ## Prerequisites
 
 1\. [NHN Cloud SDK](./getting-started-ios)をインストールします。
-2\. [NHN Cloudコンソール](https://console.nhncloud.com)で[Mobile Service \> IAPを有効化](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/)します。
-3\. IAPで[AppKeyを確認](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)します。
+2\. [NHN Cloudコンソール](https://console.nhncloud.com)で[Mobile Service \> IAPを有効化](/Mobile%20Service/IAP/ja/console-guide/)します。
+3\. IAPで[AppKeyを確認](/Mobile%20Service/IAP/ja/console-guide/#appkey)します。
 
 ## NHN Cloud IAP構成
 
@@ -98,7 +98,7 @@ end
 
 ## NHN Cloud IAP SDK初期化
 
-* IAPコンソールで発行された[AppKey](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)を[NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration)オブジェクトに設定します。
+* IAPコンソールで発行された[AppKey](/Mobile%20Service/IAP/ja/console-guide/#appkey)を[NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration)オブジェクトに設定します。
 * NHN Cloud IAPは初期化に[NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration)オブジェクトをパラメータとして使用します。
 
 ### 初期化API仕様

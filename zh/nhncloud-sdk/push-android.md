@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. Install [NHN Cloud SDK](./getting-started-android).
-2. [Enable Push service](https://docs.nhncloud.com/zh/Notification/Push/zh/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
+2. [Enable Push service](/Notification/Push/zh/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
 3. Check the AppKey in the Push console.
 
 ## Guide by Push Provider

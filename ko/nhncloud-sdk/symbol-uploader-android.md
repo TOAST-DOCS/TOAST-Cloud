@@ -2,8 +2,8 @@
 
 ## 사전 준비
 
-1. Android 프로젝트에 [NHN Cloud Logger 를 추가](https://docs.nhncloud.com/ko/TOAST/ko/toast-sdk/log-collector-android/) 합니다.
-2. Android 앱에 네이티브 라이브러리가 포함되어 있는 경우 [NHN Cloud Crash Reporter for NDK 를 추가](https://docs.nhncloud.com/ko/TOAST/ko/toast-sdk/log-collector-ndk/) 합니다.
+1. Android 프로젝트에 [NHN Cloud Logger 를 추가](/nhncloud/ko/nhncloud-sdk/log-collector-android/) 합니다.
+2. Android 앱에 네이티브 라이브러리가 포함되어 있는 경우 [NHN Cloud Crash Reporter for NDK 를 추가](/nhncloud/ko/nhncloud-sdk/log-collector-ndk/) 합니다.
 
 ## 라이브러리 설정
 

@@ -4,13 +4,13 @@
 > **(신)영수증 검증 + Notification V2** 방식을 사용하려면 NHN Cloud SDK iOS v1.7.0 이상을 사용해야 합니다.
 
 > NHN Cloud SDK iOS v1.8.0부터 **(신)영수증 검증 + Notification V2** 방식과 **(구)영수증 검증 + Notification V1** 방식을 모두 지원합니다.
-> SDK의 검증 방식은 IAP 콘솔에 설정된 방식에 따라 결정됩니다. - [IAP 콘솔 가이드](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-apple-guide/#notification-v2)
+> SDK의 검증 방식은 IAP 콘솔에 설정된 방식에 따라 결정됩니다. - [IAP 콘솔 가이드](/Mobile%20Service/IAP/ko/console-apple-guide/#notification-v2)
 
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Mobile Service \> IAP를 활성화](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
-3. IAP에서 [AppKey를 확인](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
+2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Mobile Service \> IAP를 활성화](/Mobile%20Service/IAP/ko/console-guide/)합니다.
+3. IAP에서 [AppKey를 확인](/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
 ## NHN Cloud IAP 구성
 
@@ -97,7 +97,7 @@ end
 
 ## NHN Cloud IAP SDK 초기화
 
-* IAP 콘솔에서 발급 받은 [AppKey](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 [NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration) 객체에 설정합니다.
+* IAP 콘솔에서 발급 받은 [AppKey](/Mobile%20Service/IAP/ko/console-guide/#appkey)를 [NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration) 객체에 설정합니다.
 * NHN Cloud IAP는 초기화에 [NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration) 객체를 파라미터로 사용합니다.
 
 ### 초기화 API 명세

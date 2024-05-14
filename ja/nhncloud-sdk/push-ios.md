@@ -470,7 +470,7 @@ agreement.allowNightAdvertisements = YES;   // 夜間広報性通知メッセー
 
 ## ユーザー·タグ
 
-* [ユーザー·タグ](https://docs.nhncloud.com/ja/Notification/Push/ja/console-guide/#_16)能は、複数のユーザー IDをひとつのタグで結びつけ、それを活用してメッセージを送信することができます。
+* [ユーザー·タグ](/Notification/Push/ja/console-guide/#_16)能は、複数のユーザー IDをひとつのタグで結びつけ、それを活用してメッセージを送信することができます。
 * タグ名ではなく、タグID(8桁の文字列)に基づいて動作し、タグIDはコンソール > タグメニューから作成・確認できます。
 
 ### ユーザー·タグ設定API

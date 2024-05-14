@@ -3,7 +3,7 @@
 ## 사전 준비
 
 1. [NHN Cloud SDK](./getting-started-android)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Push 서비스를 활성화](https://docs.nhncloud.com/ko/Notification/Push/ko/console-guide/)합니다.
+2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Push 서비스를 활성화](/Notification/Push/ko/console-guide/)합니다.
 3. Push 콘솔에서 AppKey를 확인합니다.
 
 ## Push 제공자별 가이드
@@ -599,7 +599,7 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 ### AndroidManifest.xml 등록 예
 > **(주의)**
 > 1. NhnCloudPushMessageReceiver를 사용하는 경우, 반드시 permission을 설정해야 합니다.
-> 2. API 레벨 31 이상 타겟팅 시 exported 속성을 설정해야 합니다. 
+> 2. API 레벨 31 이상 타겟팅 시 exported 속성을 설정해야 합니다.
 
 ```xml
 <manifest>
@@ -668,7 +668,7 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true);
-     
+
         notify(context, NotificationUtils.createNewId(), builder.build());
     }
     ...
@@ -681,7 +681,7 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 
 ## 사용자 태그
 
-* [사용자 태그](https://docs.nhncloud.com/ko/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
+* [사용자 태그](/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
 * 태그명이 아닌 태그 아이디(8자리 문자열)를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
 
 ### 사용자 태그 수정
