@@ -32,6 +32,8 @@ dependencies {
 }
 ```
 
+> Google Play 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
+
 ### ONE store
 
 - To use in-app purchase of ONE store, add dependency to build.gradle as below:
