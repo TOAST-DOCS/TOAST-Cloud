@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-android).
-2. [Enable IAP service](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#iap-appkey) in [NHN Cloud console](https://console.nhncloud.com).
+2. [Enable IAP service](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
 3. [Check AppKey](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#appkey) in IAP console.
 
 ## In-App Purchase Guide for Each Store Type
