@@ -681,7 +681,7 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 
 ## User Tag
 
-* The [User Tag](https://docs.nhncloud.com/zh/Notification/Push/zh/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
+* The [User Tag](/Notification/Push/zh/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
 * It operates based on the tag ID (8-character string) rather than the tag name, and the tag ID can be created and checked in the Console > Tag menu.
 
 ### Modify User Tags
