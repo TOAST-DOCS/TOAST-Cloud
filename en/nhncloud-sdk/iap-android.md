@@ -1137,6 +1137,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | PRODUCT_ALREADY_OWNED  | 7    | Failed to purchase an item as it is already owned. |
 | PRODUCT_NOT_OWNED      | 8    | Cannot consume an item as it is not owned. |
 | USER_ID_NOT_REGISTERED | 9    | User ID is not registered. |
+| NETWORK_ERROR          | 12   | A network error occurred during the operation. |
 | UNDEFINED_ERROR        | 9999 | Undefined error.           |
 
 ### Server Error Codes
@@ -1144,7 +1145,6 @@ void onSubscriptionsStatusResponse(IapResult result,
 | RESULT                    | CODE | DESC                                     |
 | ------------------------- | ---- | ---------------------------------------- |
 | INACTIVATED_APP           | 101  | App is not activated.     |
-| NETWORK_NOT_CONNECTED     | 102  | Network is not connected. |
 | VERIFY_PURCHASE_FAILED    | 103  | Failed to verify purchase. |
 | PURCHASE_ALREADY_CONSUMED | 104  | Purchase is already consumed. |
 | PURCHASE_ALREADY_REFUNDED | 105  | Purchase is already refunded. |

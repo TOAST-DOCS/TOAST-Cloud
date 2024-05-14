@@ -1134,6 +1134,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | PRODUCT_ALREADY_OWNED  | 7    | すでに所持している商品のため、購入できませんでした。<br>Failure to purchase since item is already owned. |
 | PRODUCT_NOT_OWNED      | 8    | 所持していない商品のため、消費できません。<br>Failure to consume since item is not owned. |
 | USER_ID_NOT_REGISTERED | 9    | ユーザーIDが登録されていません。<br>User ID Is not registered. |
+| NETWORK_ERROR          | 12   | 네트워크 오류가 발생했습니다.<br>A network error occurred during the operation. |
 | UNDEFINED_ERROR        | 9999 | 定義されていないエラー<br>Undefined error.           |
 
 ### サーバーエラーコード
@@ -1141,7 +1142,6 @@ void onSubscriptionsStatusResponse(IapResult result,
 | RESULT                    | CODE | DESC                                     |
 | ------------------------- | ---- | ---------------------------------------- |
 | INACTIVATED_APP           | 101  | 有効になっていないアプリです。<br>App is not active.     |
-| NETWORK_NOT_CONNECTED     | 102  | ネットワークが接続されていません。<br>Network not connected. |
 | VERIFY_PURCHASE_FAILED    | 103  | 決済の検証に失敗しました。<br>Failure to verify purchase. |
 | PURCHASE_ALREADY_CONSUMED | 104  | すでに消費した購入です。<br>Purchase already consumed. |
 | PURCHASE_ALREADY_REFUNDED | 105  | 返金された購入です。<br>Purchase already refunded. |
