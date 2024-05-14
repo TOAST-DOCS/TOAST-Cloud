@@ -36,7 +36,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image | Region | O | O | O | O |
 |  | Image Builder  | Region | O | O |  |  |
 |  | Auto Scale | Region | O | O | O | O |
-|  | System Monitoring | Regional | O | O | O | O |
 |  | Virtual Desktop | Regional | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
@@ -73,11 +72,14 @@ All users are provided with the same features, policy, stability and usability, 
 |  | EasyCache | Regional | O | O |  |  |
 |  | MS-SQL Instance | Regional | O | O | O | O |
 |  | MySQL Instance | Regional | O | O | O | O |
-|  | PostgreSQL Instance | Regional | O | O | O | O | 
+|  | PostgreSQL Instance  | Regional | O | O | O | O |
 |  | CUBRID Instance  | Regional | O | O | O | O |
 |  | MariaDB Instance  | Regional | O | O | O | O |
 |  | Tibero Instance   | Regional | O | O | O | O |
 |  | Redis Instance | Regional | O | O | O | O |
+| Monitoring | System Monitoring | Region | O | O | O | O |
+|  | Service Gateway | Global |  |  |  |  |
+|  | Cloud Monitoring | Global |  |  |  |  |
 | Hybrid & Private Cloud | NHN Private Cloud | Regional | - | - | - | - |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
@@ -135,7 +137,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Deploy | Global |  |  |  |  |
 | Management | Managed | Regional | O | O |  |  |
 |  | Support Plan |  Regional | O | O |  |  |
-|  | Service Monitoring | Global |  |  |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
 | Bill | eTax | Regional | O |  |  |  |
 | Dooray! | Project | Global |  |  |  |  |

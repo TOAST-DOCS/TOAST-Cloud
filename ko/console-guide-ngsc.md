@@ -221,6 +221,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * Network
 * Storage
 * Database
+* Monitoring
 
 ### 프로젝트 서비스 활성화 가이드
 

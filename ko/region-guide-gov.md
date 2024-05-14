@@ -28,7 +28,6 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Image | 리전 | O | O | 
 |  | Image Builder  | 리전 | O | O |
 |  | Auto Scale | 리전 | O | O | 
-|  | System Monitoring | 리전 | O | O |
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |
 |  | NHN Container Registry (NCR) | 리전 | O | O |
 | Network | VPC | 리전 | O | O |
@@ -64,6 +63,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | MariaDB Instance  | 리전 | O | O | 
 |  | Tibero Instance   | 리전 | O | O | 
 |  | Redis Instance | 리전 | O | O | 
+| Monitoring | System Monitoring | 리전 | O | O |
 | Security | Security Monitoring | 리전 | O |  |
 |  | Basic Security | 리전 | O | O | 
 |  | Web Firewall | 리전 | O |  |
