@@ -36,7 +36,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Image | 리전 | O | O | O | O |
 |  | Image Builder  | 리전 | O | O |  |  |
 |  | Auto Scale | 리전 | O | O | O | O |
-|  | System Monitoring | 리전 | O | O | O | O |
 |  | Virtual Desktop | 리전 | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |  |  |
 |  | NHN Container Registry (NCR) | 리전 | O | O |  |  |
@@ -77,6 +76,9 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | MariaDB Instance  | 리전 | O | O | O | O | 
 |  | Tibero Instance   | 리전 | O | O | O | O | 
 |  | Redis Instance | 리전 | O | O | O | O | 
+| Monitoring | System Monitoring | 리전 | O | O | O | O |
+|  | Service Gateway | 글로벌 |  |  |  |  |
+|  | Cloud Monitoring | 글로벌 |  |  |  |  |
 | Hybrid & Private Cloud | NHN Private Cloud | 리전 | - | - | - | - |
 | Game | Gamebase | 글로벌 |  |  |  |  |
 |  | GameAnvil | 글로벌 |  |  |  |  |
@@ -134,7 +136,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Deploy | 글로벌 |  |  |  |  |
 | Management | Managed | 리전 | O | O |  |  |
 |  | Support Plan | 리전 | O | O |  |  |
-|  | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
 | Bill | eTax | 리전 | O |  |  |  |
 | Dooray! | Project | 글로벌 |  |  |  |  |

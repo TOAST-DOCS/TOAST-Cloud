@@ -36,7 +36,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Image | リージョン | O | O | O | O |
 |  | Image Builder  | リージョン | O | O |  |  |
 |  | Auto Scale | リージョン | O | O | O | O |
-|  | System Monitoring | リージョン | O | O | O | O |
 |  | Virtual Desktop | リージョン | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
 |  | NHN Container Registry (NCR) | リージョン | O | O |  |  |
@@ -66,6 +65,9 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O  | O |  |
 |  | Data transporter | リージョン | O | O  |  |  |
+| Monitoring | System Monitoring | リージョン | O | O | O | O |
+|  | Cloud Monitoring | グローバル |  |  |  |  |
+|  | Service Monitoring | グローバル |  |  |  |  |
 | Database | RDS for MySQL | リージョン | O | O | O |  |
 |  | RDS for MariaDB | リージョン | O |  |  |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
@@ -134,7 +136,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
 |  | Support Plan | リージョン | O | O |  |  |
-|  | Service Monitoring | グローバル |  |  |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
 | Bill | eTax | リージョン | O |  |  |  |
 | Dooray! | Project | グローバル |  |  |  |  |
