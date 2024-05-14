@@ -6,6 +6,17 @@
 2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [IAP 서비스를 활성화](/Mobile%20Service/IAP/ko/console-guide/)합니다.
 3. IAP 콘솔에서 [AppKey를 확인](/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
+## 스토어별 콘솔 가이드
+
+- [Google 콘솔 가이드](/Mobile%20Service/IAP/ko/console-google-guide/)
+- [ONE store 콘솔 가이드](/Mobile%20Service/IAP/ko/console-onestore-guide/)
+- [Galaxy Store 콘솔 가이드](/Mobile%20Service/IAP/ko/console-galaxystore-guide/)
+- [Mycard 콘솔 가이드](/Mobile%20Service/IAP/ko/mycard-guide/)
+- [Amazon 콘솔 가이드](/Mobile%20Service/IAP/ko/console-amazon-guide/)
+- [Huawei 콘솔 가이드](/Mobile%20Service/IAP/ko/console-huawei-guide/)
+
+> Google Play에서 구독 상품을 판매하는 경우 [실시간 구독 상태 수신을 위한 Google 알림 설정](/Mobile%20Service/IAP/ko/console-google-guide/#google_1)을 해야합니다.
+
 ## 스토어별 인앱 결제 가이드
 
 - [Android Developers 인앱 결제](https://developer.android.com/google/play/billing)
