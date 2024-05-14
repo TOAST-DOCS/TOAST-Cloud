@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-android).
-2. [Enable IAP service](https://nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#iap-appkey) in [NHN Cloud console](https://console.nhncloud.com).
-3. [Check AppKey](https://nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#appkey) in IAP console.
+2. [Enable IAP service](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#iap-appkey) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#appkey) in IAP console.
 
 ## In-App Purchase Guide for Each Store Type
 
@@ -289,7 +289,7 @@ Add 'test_mode' to perform payment test. If 'test_mode' is not set, the default 
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object includes IAP setting information.
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object can be created by using [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder).
-* Use the setAppKey method to set [AppKey](https://nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#check-appkey) issued from IAP console.
+* Use the setAppKey method to set [AppKey](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#check-appkey) issued from IAP console.
 * Use the setStoreCode method to set [Store Code](./iap-android/#_3) for IAP.
 
 ### Example of IAP Setting
@@ -350,7 +350,7 @@ public class MainApplication extends Application {
 ## Service Login
 
 * All products provided by NHN Cloud SDK, such as IAP and Log & Crash, use the same user ID.
-    * User ID can be set with [NhnCloudSdk.setUserId](https://nhncloud.com/en/TOAST/en/toast-sdk/getting-started-android/#userid).
+    * User ID can be set with [NhnCloudSdk.setUserId](https://docs.nhncloud.com/en/TOAST/en/toast-sdk/getting-started-android/#userid).
     * When user ID is not set, purchase cannot proceed.
 * It is recommended to implement the following features in service login step: user ID setting, querying unconsumed purchase history, and querying active subscription products.
 
