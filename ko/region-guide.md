@@ -59,6 +59,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Traffic Mirroring | 리전 | O | O | | |
 |  | Private DNS | 리전 | O | O | | |
 |  | DNS Plus | 글로벌 |  |  |  |  |
+|  | Direct Connect | 리전 | O | O | | |
 | Storage | Block Storage | 리전 | O | O | O | O |
 |  | NAS (offline) | 리전 | O | O |  | O |
 |  | NAS | 리전 | O | O |  |  |

@@ -60,6 +60,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Traffic Mirroring | Regional | O | O | | |
 |  | Private DNS | Regional | O | O | | |
 |  | DNS Plus | Global |  |  |  |  |
+|  | Direct Connect | Regional | O | O | | |
 | Storage | Block Storage | Regional | O | O | O | O |
 |  | NAS (offline) | Regional | O | O |  | O |
 |  | NAS | Regional | O | O |  |  |
