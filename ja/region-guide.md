@@ -44,7 +44,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | NAT Instance | リージョン | O | O |  |  |
 |  | Floating IP | リージョン | O | O | O | O |
 |  | Security Groups | リージョン | O | O | O | O |
-|  | Network ACL | リージョン | O | O | O | O |
+|  | Network ACL | リージョン | O | O |  |  |
 |  | Network Interface | リージョン | O | O | O | O |
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |

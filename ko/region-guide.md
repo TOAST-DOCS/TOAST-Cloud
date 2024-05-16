@@ -44,7 +44,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | NAT Instance | 리전 | O | O |  |  |
 |  | Floating IP | 리전 | O | O | O | O |
 |  | Security Groups | 리전 | O | O | O | O |
-|  | Network ACL | 리전 |  | O |  |  |
+|  | Network ACL | 리전 | O | O |  |  |
 |  | Network Interface | 리전 | O | O | O | O |
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
