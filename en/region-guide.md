@@ -44,7 +44,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | NAT Instance | Regional | O | O |  |  |
 |  | Floating IP | Regional | O | O | O | O |
 |  | Security Groups | Regional | O | O | O | O |
-|  | Network ACL | Regional |  | O |  |  |
+|  | Network ACL | Regional | O | O |  |  |
 |  | Network Interface | Regional | O | O | O | O |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
@@ -81,7 +81,8 @@ All users are provided with the same features, policy, stability and usability, 
 | Monitoring | System Monitoring | Region | O | O | O | O |
 |  | Service Gateway | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
-| Hybrid & Private Cloud | NHN Private Cloud | Regional | - | - | - | - |
+| Hybrid & Private Cloud |  NHN Hybrid Cloud | Regional | - | - | - | - |
+|  | NHN Private Cloud | Regional | - | - | - | - |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
 |  | GameStarter | Global | | | | |
