@@ -59,6 +59,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Traffic Mirroring | リージョン | O | O | | |
 |  | Private DNS | リージョン | O | O | | |
 |  | DNS Plus | グローバル |  |  |  |  |
+|  | Direct Connect | リージョン | O | O | | |
 | Storage | Block Storage | リージョン | O | O | O | O |
 |  | NAS (offline) | リージョン | O | O  |  | O |
 |  | NAS | リージョン | O | O  |  |  |

@@ -30,24 +30,26 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Auto Scale | 리전 | O | O | 
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |
 |  | NHN Container Registry (NCR) | 리전 | O | O |
+|  | NHN Container Service(NCS)  | 리전 | O | O |  |  |
 | Network | VPC | 리전 | O | O |
+|  | NAT Instance | 리전 |  | O |
 |  | Floating IP | 리전 | O | O | 
-|  | Network ACL | 리전 |  | O |
 |  | Security Groups | 리전 | O | O | 
+|  | Network ACL | 리전 |  | O |
 |  | Network Interface | 리전 | O | O | 
 |  | 일반 Load Balancer | 리전 | O | O | 
-|  | 전용 Load Balancer | 리전 | O | O | 
+|  | 전용 Load Balancer | 리전 | O | O |
+|  | Transit Hub  | 리전 |  | O |
 |  | IPSec VPN | 리전 | O |  |
-|  | DNS Plus | 글로벌 |  |  |
 |  | Internet Gateway | 리전 | O | O | 
 |  | Peering Gateway | 리전 | O | O | 
-|  | NAT Instance | 리전 |  | O |
 |  | Colocation Gateway | 리전 |  | O |
 |  | NAT Gateway | 리전 |  | O |
 |  | Service Gateway | 리전 |  | O |
-|  | Direct Connect | 리전 | O | O | 
 |  | Traffic Mirroring | 리전 |  | O |
-|  | Transit Hub  | 리전 |  | O |
+|  | Private DNS | 리전 | O | O |
+|  | DNS Plus | 글로벌 |  |  |
+|  | Direct Connect | 리전 | O | O | 
 | Storage | Block Storage | 리전 | O | O | 
 |  | NAS | 리전 |  | O | 
 |  | NAS(offline) | 리전 | O |  | 
