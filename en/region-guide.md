@@ -81,7 +81,8 @@ All users are provided with the same features, policy, stability and usability, 
 | Monitoring | System Monitoring | Region | O | O | O | O |
 |  | Service Gateway | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
-| Hybrid & Private Cloud | NHN Private Cloud | Regional | - | - | - | - |
+| Hybrid & Private Cloud |  NHN Hybrid Cloud | Regional | - | - | - | - |
+|  | NHN Private Cloud | Regional | - | - | - | - |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
 |  | GameStarter | Global | | | | |
