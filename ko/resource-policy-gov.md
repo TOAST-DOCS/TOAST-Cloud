@@ -19,8 +19,8 @@
 |CPU	| 프로젝트당 |100vCore| O | |
 |메모리	 | 프로젝트당 |256GB| O | |
 |키 페어 | 프로젝트당 | 100개 | O | |
-|Block Storage| 프로젝트당 |10TB| O | |
-|볼륨당 최대 크기| volume당 |2048GB| O | | 
+|Block Storage| 프로젝트당 |10240GB| O | |
+|Block Storage - 최대 크기| 블록 스토리지당 |2048GB| O | | 
 |Floating IP | 프로젝트당 |50개| O | |
 |VPC | 프로젝트당 |3개| O | |
 |서브넷 | VPC당 |10개| O | |
