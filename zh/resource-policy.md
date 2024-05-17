@@ -19,8 +19,8 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |CPU    | Per project |100vCore| O | |
 |Memory     | Per project |256GB| O | |
 | Key Pair | Per project | 100 | O | |
-|Block Storage| Per project |10TB| O | |
-|Max Volume Size| Per volume |2048GB| O | |
+|Block Storage| Per project |10240GB| O | |
+|Block Storage - Max Size| Per block storage |2048GB| O | |
 |Floating IP | Per project |50| O | |
 |VPC | Per project |3| O | |
 |Subnet | Per VPC |10| O | |
