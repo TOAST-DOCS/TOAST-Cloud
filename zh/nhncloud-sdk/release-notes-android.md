@@ -10,6 +10,7 @@
     * 구글 정책에 따라 PBL 5.x를 사용하는 앱은 2024년 11월 1일 부터 PBL 6.x로 업데이트 해야 합니다.
         * 신규 앱 출시: 2024년 8월 1일
         * 기존 앱 업데이트: 2024년 11월 1일
+    * Android 4.4(API 19)를 지원하려면 추가 설정이 필요합니다. 자세한 사항은 [NHN Cloud > SDK 사용 가이드 > IAP > Android](./iap-android)를 참고하세요.
 * Google IAP Library(nhncloud-iap-google)의 최소 지원 버전이 19로 상향되었습니다.
 * IapResult.NETWORK_ERROR 코드 추가
     * NHN Cloud IAP 1.9.0부터 기존 IapResult.NETWORK_NOT_CONNECTED 코드가 IapResult.NETWORK_ERROR 코드로 반환됩니다.
