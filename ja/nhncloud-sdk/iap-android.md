@@ -45,6 +45,26 @@ dependencies {
 
 > Google Play 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
 
+#### Android 4.4(API 레벨 19) 이슈
+
+Play Billing Library 6.x를 R8과 함께 사용하는 경우, Android 4.4(API 레벨 19)에서 동작하지 않는 문제가 발생할 수 있습니다.
+이 문제를 해결하고 Android 4.4(API 레벨 19)를 지원하려면 settings.gradle 파일에 아래와 같은 설정을 추가하세요.
+
+```groovy
+buildscript {
+    repositories {
+        // Raw R8 releases.
+        maven {
+            url("https://storage.googleapis.com/r8-releases/raw")
+        }
+    }
+
+    dependencies {
+        classpath("com.android.tools:r8:8.1.46")
+    }
+}
+```
+
 ### ONE store
 
 - ONE storeのアプリ内決済を使用するには、下記のようにbuild.gradleに依存性を追加します。
