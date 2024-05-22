@@ -15,7 +15,7 @@
 - [Amazon 콘솔 가이드](/Mobile%20Service/IAP/ja/console-amazon-guide/)
 - [Huawei 콘솔 가이드](/Mobile%20Service/IAP/ja/console-huawei-guide/)
 
-> Google Play에서 구독 상품을 판매하는 경우 [실시간 구독 상태 수신을 위한 Google 알림 설정](/Mobile%20Service/IAP/ja/console-google-guide/#google_1)을 해야합니다.
+> Google Play에서 구독 상품을 판매하는 경우 [실시간 구독 상태 수신을 위한 Google 알림 설정](/Mobile%20Service/IAP/ja/console-google-guide/#google_1)을 해야 합니다.
 
 ## ストア別アプリ内決済ガイド
 
@@ -43,7 +43,7 @@ dependencies {
 }
 ```
 
-> Google Play 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
+> Google Play 인앱 결제는 Android 4.4(API 레벨 19) 이상에서 동작합니다.
 
 #### Android 4.4(API 레벨 19) 이슈
 

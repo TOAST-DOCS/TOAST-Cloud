@@ -15,7 +15,7 @@
 - [Amazon 콘솔 가이드](/Mobile%20Service/IAP/ko/console-amazon-guide/)
 - [Huawei 콘솔 가이드](/Mobile%20Service/IAP/ko/console-huawei-guide/)
 
-> Google Play에서 구독 상품을 판매하는 경우 [실시간 구독 상태 수신을 위한 Google 알림 설정](/Mobile%20Service/IAP/ko/console-google-guide/#google_1)을 해야합니다.
+> Google Play에서 구독 상품을 판매하는 경우 [실시간 구독 상태 수신을 위한 Google 알림 설정](/Mobile%20Service/IAP/ko/console-google-guide/#google_1)을 해야 합니다.
 
 ## 스토어별 인앱 결제 가이드
 
@@ -43,7 +43,7 @@ dependencies {
 }
 ```
 
-> Google Play 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
+> Google Play 인앱 결제는 Android 4.4(API 레벨 19) 이상에서 동작합니다.
 
 #### Android 4.4(API 레벨 19) 이슈
 
@@ -569,7 +569,7 @@ NhnCloudIap.launchPurchaseFlow(activity, params);
 ## 미소비 결제 조회
 
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE)과 소비성 구독 상품(CONSUMABLE_AUTO_RENEWABLE) 정보를 조회합니다.
-* 사용자에게 상품을 지급된 후 [Consume API](/Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
+* 사용자에게 상품을 지급한 후 [Consume API](/Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 * 미소비 결제는 NhnCloudIap.queryConsumablePurchases() 메서드를 사용하여 조회할 수 있습니다.
 * [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 미소비 결제를 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.

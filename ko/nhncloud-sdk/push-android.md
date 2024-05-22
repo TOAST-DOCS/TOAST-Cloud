@@ -599,7 +599,7 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 ### AndroidManifest.xml 등록 예
 > **(주의)**
 > 1. NhnCloudPushMessageReceiver를 사용하는 경우, 반드시 permission을 설정해야 합니다.
-> 2. API 레벨 31 이상 타겟팅 시 exported 속성을 설정해야 합니다.
+> 2. API 레벨 31 이상 타기팅 시 exported 속성을 설정해야 합니다.
 
 ```xml
 <manifest>
