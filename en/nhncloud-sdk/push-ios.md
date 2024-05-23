@@ -83,7 +83,7 @@ end
 
 ### Login
 
-* `If a user ID is not set at the time of initial token registration, it is registered using the device identifier.` ([Refer to the token registration section](https://docs.nhncloud.com/en/nhncloud/en/toast-sdk/push-ios/#_10))
+* `If a user ID is not set at the time of initial token registration, it is registered using the device identifier.` ([Refer to the token registration section](./push-ios/#token-registration))
 * `Setting or changing the user ID after token registration will update token information.`
 
 ``` objc
@@ -472,7 +472,7 @@ agreement.allowNightAdvertisements = YES;   // Agree to receive night-time adver
 
 ## User Tag
 
-* The [User Tag](https://docs.nhncloud.com/en/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
+* The [User Tag](/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
 * It operates based on the tag ID (8-character string) rather than the tag name, and the tag ID can be created and checked in the Console > Tag menu.
 
 ### Specification for User Tag Setting API

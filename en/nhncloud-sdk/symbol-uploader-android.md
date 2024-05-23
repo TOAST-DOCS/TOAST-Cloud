@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-1. [Add NHN Cloud Logger](https://nhncloud.com/en/TOAST/en/toast-sdk/log-collector-android/) to your Android project.
-2. If your Android app includes native libraries, [add NHN Cloud Crash Reporter for NDK](https://nhncloud.com/en/TOAST/en/toast-sdk/log-collector-ndk/).
+1. [Add NHN Cloud Logger](/nhncloud/en/nhncloud-sdk/log-collector-android/) to your Android project.
+2. If your Android app includes native libraries, [add NHN Cloud Crash Reporter for NDK](/nhncloud/en/nhncloud-sdk/log-collector-ndk/).
 
 ## Library Setting
 

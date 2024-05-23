@@ -28,19 +28,19 @@ NHN Cloud SDK provides the following services:
 
 NHN Cloud Android SDK is deployed on **mavenCentral** and requires only simple Gradle settings for use.
 
-- [Get started for Android](https://docs.nhncloud.com/en/nhncloud/en/toast-sdk/getting-started-android)
+- [Get started for Android](./getting-started-android)
 
 ### iOS
 
 NHN Cloud iOS SDK is released on **Github** and requires only simple **Cocoapods**, **Carthage**, **Swift Package Manager** settings for use.
 
-- [Get started for iOS](https://docs.nhncloud.com/en/nhncloud/en/toast-sdk/getting-started-ios)
+- [Get started for iOS](./getting-started-ios)
 
 ### Windows C++
 
 NHN Cloud Windows C++ SDK supports Windows 7 and 10 (32/64 bits) environments.
 
-- [Get started for Windows C++](https://docs.nhncloud.com/en/nhncloud/en/toast-sdk/getting-started-windows)
+- [Get started for Windows C++](./getting-started-windows)
 
 ## Log & Crash
 
@@ -58,9 +58,9 @@ This service provides capability to send logs to a collector server of Log & Cra
 
 ### User Guides
 
-- User Guide for [Log & Crash > Android](https://docs.nhncloud.com/en/nhncloud/en/toast-sdk/log-collector-android)
-- User Guide for [Log & Crash > iOS](https://docs.nhncloud.com/en/nhncloud/en/toast-sdk/log-collector-ios)
-- User Guide for [Log & Crash > Windows C++](https://docs.nhncloud.com/en/nhncloud/en/toast-sdk/log-collector-windows)
+- User Guide for [Log & Crash > Android](./log-collector-android)
+- User Guide for [Log & Crash > iOS](./log-collector-ios)
+- User Guide for [Log & Crash > Windows C++](./log-collector-windows)
 
 ## NHN Cloud IAP
 
