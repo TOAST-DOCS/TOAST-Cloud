@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-windows)
-2. [Enable Log & Crash Search](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
-3. [Check AppKey](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#appkey) in Log & Crash Search.
+2. [Enable Log & Crash Search](/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#check-appkey) in Log & Crash Search.
 
 ## Initialize NHN Cloud Logger SDK
 
@@ -198,5 +198,5 @@ To interpret crashes occurred in NHN Cloud Windows SDK, a symbol file must be cr
 dump_syms sample.pdb > sample.sym
 ```
 
-* Then, compress sample.sym with zip and [Upload to Console Server](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#symbol-file)
+* Then, compress sample.sym with zip and [Upload to Console Server](/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#symbol-file)
     * The version for console uploads must be the same as the version for setProjectVersion.

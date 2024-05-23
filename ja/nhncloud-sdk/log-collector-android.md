@@ -3,8 +3,8 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-android)をインストールします。
-2. [NHN Cloudコンソール](https://console.nhncloud.com)で[Log & Crash Searchを有効化](https://nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
-3. Log & Crash Searchで[AppKeyを確認](https://nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で[Log & Crash Searchを有効化](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
+3. Log & Crash Searchで[AppKeyを確認](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
 
 ## ライブラリ設定
 - 下記コードをbuild.gradleに追加します。
@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-logger:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-logger:1.9.0'
     ...
 }
 ```

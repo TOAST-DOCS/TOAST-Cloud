@@ -14,8 +14,8 @@
 #### 개선 사항
 * 결제 검증 방식 개선
     * 신규 SDK에서도 (구)영수증 검증을 사용 가능하도록 개선 
-        * [(신)영수증 검증 + Notification V2](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-apple-guide/#notification-v2)
-        * [(구)영수증 검증 + Notification V1 (Deprecated)](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-apple-guide/#notification-v1-deprecated)
+        * [(신)영수증 검증 + Notification V2](/Mobile%20Service/IAP/ko/console-apple-guide/#notification-v2)
+        * [(구)영수증 검증 + Notification V1 (Deprecated)](/Mobile%20Service/IAP/ko/console-apple-guide/#notification-v1-deprecated)
 
 ## 1.7.1 (2023. 12. 19.)
 ### 공통
@@ -41,7 +41,7 @@
 
 ### NHN Cloud IAP
 #### 개선 사항
-* 결제 검증 방식 변경 - [(신)영수증 검증 + Notification V2](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-apple-guide/#notification-v2)
+* 결제 검증 방식 변경 - [(신)영수증 검증 + Notification V2](/Mobile%20Service/IAP/ko/console-apple-guide/#notification-v2)
 
 ## 1.6.2 (2023. 08. 29.)
 ### 공통
