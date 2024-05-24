@@ -79,9 +79,9 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Tibero Instance   | Regional | O | O | O | O |
 |  | Redis Instance | Regional | O | O | O | O |
 | Monitoring | System Monitoring | Region | O | O | O | O |
-|  | Service Gateway | Global |  |  |  |  |
+|  | Service Monitoring | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
-|  | Hybrid & Private Cloud | NHN Hybrid Cloud | Regional | O | - | - | - |
+| Hybrid & Private Cloud |  NHN Hybrid Cloud | Regional | O | - | - | - |
 | | NHN Private Cloud | Regional | - | - | - | - |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
