@@ -6,16 +6,16 @@
 2. [NHN Cloudコンソール](https://console.nhncloud.com)で[IAPサービスを有効化](/Mobile%20Service/IAP/ja/console-guide/)します。
 3. IAPコンソールで[AppKeyを確認](/Mobile%20Service/IAP/ja/console-guide/#appkey)します。
 
-## 스토어별 콘솔 가이드
+## ストア別コンソールガイド
 
-- [Google 콘솔 가이드](/Mobile%20Service/IAP/ja/console-google-guide/)
-- [ONE store 콘솔 가이드](/Mobile%20Service/IAP/ja/console-onestore-guide/)
-- [Galaxy Store 콘솔 가이드](/Mobile%20Service/IAP/ja/console-galaxystore-guide/)
-- [Mycard 콘솔 가이드](/Mobile%20Service/IAP/ja/mycard-guide/)
-- [Amazon 콘솔 가이드](/Mobile%20Service/IAP/ja/console-amazon-guide/)
-- [Huawei 콘솔 가이드](/Mobile%20Service/IAP/ja/console-huawei-guide/)
+- [Googleコンソールガイド](/Mobile%20Service/IAP/ja/console-google-guide/)
+- [ONE storeコンソールガイド](/Mobile%20Service/IAP/ja/console-onestore-guide/)
+- [Galaxy Storeコンソールガイド](/Mobile%20Service/IAP/ja/console-galaxystore-guide/)
+- [Mycardコンソールガイド](/Mobile%20Service/IAP/ja/mycard-guide/)
+- [Amazonコンソールガイド](/Mobile%20Service/IAP/ja/console-amazon-guide/)
+- [Huaweiコンソールガイド](/Mobile%20Service/IAP/ja/console-huawei-guide/)
 
-> Google Play에서 구독 상품을 판매하는 경우 [실시간 구독 상태 수신을 위한 Google 알림 설정](/Mobile%20Service/IAP/ja/console-google-guide/#google_1)을 해야 합니다.
+> Google Playでサブスクリプション商品を販売する場合、[リアルタイム購読状態受信のためのGoogle通知設定](/Mobile%20Service/IAP/ja/console-google-guide/#google_1)を行う必要があります。
 
 ## ストア別アプリ内決済ガイド
 
@@ -43,12 +43,12 @@ dependencies {
 }
 ```
 
-> Google Play 인앱 결제는 Android 4.4(API 레벨 19) 이상에서 동작합니다.
+> Google Playアプリ内決済はAndroid 4.4(APIレベル19)以上で動作します。
 
-#### Android 4.4(API 레벨 19) 이슈
+#### Android 4.4(APIレベル19)イシュー
 
-Play Billing Library 6.x를 R8과 함께 사용하는 경우, Android 4.4(API 레벨 19)에서 동작하지 않는 문제가 발생할 수 있습니다.
-이 문제를 해결하고 Android 4.4(API 레벨 19)를 지원하려면 settings.gradle 파일에 아래와 같은 설정을 추가하세요.
+Play Billing Library 6.xをR8と一緒に使用する場合、Android 4.4(APIレベル19)で動作しない問題が発生する可能性があります。
+この問題を解決し、Android 4.4(APIレベル19)をサポートするには、settings.gradleファイルに以下の設定を追加してください。
 
 ```groovy
 buildscript {
@@ -1165,7 +1165,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | PRODUCT_ALREADY_OWNED  | 7    | すでに所持している商品のため、購入できませんでした。<br>Failure to purchase since item is already owned. |
 | PRODUCT_NOT_OWNED      | 8    | 所持していない商品のため、消費できません。<br>Failure to consume since item is not owned. |
 | USER_ID_NOT_REGISTERED | 9    | ユーザーIDが登録されていません。<br>User ID Is not registered. |
-| NETWORK_ERROR          | 12   | 네트워크 오류가 발생했습니다.<br>A network error occurred during the operation. |
+| NETWORK_ERROR          | 12   | ネットワークエラーが発生しました。<br>A network error occurred during the operation. |
 | UNDEFINED_ERROR        | 9999 | 定義されていないエラー<br>Undefined error.           |
 
 ### サーバーエラーコード
