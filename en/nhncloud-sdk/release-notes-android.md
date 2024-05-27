@@ -6,20 +6,20 @@
 
 #### Improved
 
-* Google Play Billing Library(PBL) 6.2.1 업데이트
-    * Google 정책에 따라 PBL 5.x를 사용하는 앱은 2024년 11월 1일 부터 PBL 6.x로 업데이트 해야 합니다.
-        * 신규 앱 출시: 2024년 8월 1일
-        * 기존 앱 업데이트: 2024년 11월 1일
-    * Android 4.4(API 19)를 지원하려면 추가 설정이 필요합니다. 자세한 사항은 [NHN Cloud > SDK 사용 가이드 > IAP > Android](./iap-android)를 참고하세요.
-* Google IAP Library(nhncloud-iap-google)의 최소 지원 버전이 19로 상향되었습니다.
-* IapResult.NETWORK_ERROR 코드 추가
-    * NHN Cloud IAP 1.9.0부터 기존 IapResult.NETWORK_NOT_CONNECTED 코드가 IapResult.NETWORK_ERROR 코드로 반환됩니다.
-    * IapResult.NETWORK_NOT_CONNECTED 응답 코드가 삭제되었습니다.
-* 결제 히스토리 정보에 **사용자 취소(canceled)**, **결제 보류(pending)** 상태가 추가되었습니다.
+* Updated Google Play Billing Library(PBL) 6.2.1
+    * According to Google's policy, apps using PBL 5.x must be updated to PBL 6.x from November 1, 2024.
+        * New app launched: August 1, 2024
+        * Existing app updated: November 1, 2024
+    * To support Android 4.4 (API 19), additional setings are required. For more information, see [NHN Cloud > SDK User Guide > IAP > Android](./iap-android).
+* Raised the minimum supported version of Google IAP Library(nhncloud-iap-google) to version 19.
+* Added the IapResult.NETWORK_ERROR code
+    * Replaced IapResult.NETWORK_NOT_CONNECTED with IapResult.NETWORK_ERROR from NHN Cloud IAP 1.9.0.
+    * Removed the response code of IapResult.NETWORK_NOT_CONNECTED.
+* Added the statuses of **Canceled by USer** and **Pending Payment** to the payment history information.
 
 #### Fixed
 
-* 원스토어 외부결제 후 화면 방향 전환 시 상태바가 비정상적으로 노출되는 문제를 해결하였습니다.
+* Fixed an issue where, when switching the screen orientation after ONE store external payment, the status bar is displayed abnormally.
 
 ## 1.8.6 (May 7. 2024)
 
@@ -27,7 +27,7 @@
 
 #### Fixed
 
-* 네트워크 시간 초과로 신용카드 인식에 실패하는 문제를 수정하였습니다.
+* Fixed an issue where credit card recognition fails due to network timeout.
 
 ## 1.8.5 (February 27. 2024)
 
