@@ -36,7 +36,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Image | リージョン | O | O | O | O |
 |  | Image Builder  | リージョン | O | O |  |  |
 |  | Auto Scale | リージョン | O | O | O | O |
-|  | System Monitoring | リージョン | O | O | O | O |
 |  | Virtual Desktop | リージョン | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
 |  | NHN Container Registry (NCR) | リージョン | O | O |  |  |
@@ -45,7 +44,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | NAT Instance | リージョン | O | O |  |  |
 |  | Floating IP | リージョン | O | O | O | O |
 |  | Security Groups | リージョン | O | O | O | O |
-|  | Network ACL | リージョン | O | O | O | O |
+|  | Network ACL | リージョン | O | O |  |  |
 |  | Network Interface | リージョン | O | O | O | O |
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |
@@ -60,12 +59,16 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Traffic Mirroring | リージョン | O | O | | |
 |  | Private DNS | リージョン | O | O | | |
 |  | DNS Plus | グローバル |  |  |  |  |
+|  | Direct Connect | リージョン | O | O | | |
 | Storage | Block Storage | リージョン | O | O | O | O |
 |  | NAS (offline) | リージョン | O | O  |  | O |
 |  | NAS | リージョン | O | O  |  |  |
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O  | O |  |
 |  | Data transporter | リージョン | O | O  |  |  |
+| Monitoring | System Monitoring | リージョン | O | O | O | O |
+|  | Cloud Monitoring | グローバル |  |  |  |  |
+|  | Service Monitoring | グローバル |  |  |  |  |
 | Database | RDS for MySQL | リージョン | O | O | O |  |
 |  | RDS for MariaDB | リージョン | O |  |  |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
@@ -77,7 +80,8 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | MariaDB Instance  | リージョン | O | O | O | O |
 |  | Tibero Instance   | リージョン | O | O | O | O |
 |  | Redis Instance | リージョン | O | O | O | O |
-| Hybrid & Private Cloud | NHN Private Cloud | リージョン | - | - | - | - |
+| Hybrid & Private Cloud | NHN Hybrid Cloud | リージョン | O |  |  |  |
+|  | NHN Private Cloud | リージョン | - | - | - | - |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
 |  | GameStarter | グローバル |  |  |  |  |
@@ -134,7 +138,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Deploy | グローバル |  |  |  |  |
 | Management | Managed | リージョン | O | O |  |  |
 |  | Support Plan | リージョン | O | O |  |  |
-|  | Service Monitoring | グローバル |  |  |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
 | Bill | eTax | リージョン | O |  |  |  |
 | Dooray! | Project | グローバル |  |  |  |  |

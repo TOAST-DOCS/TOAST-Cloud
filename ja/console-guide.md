@@ -231,6 +231,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 * Network
 * Storage
 * Database
+* Monitoring
 * Hybrid & Private Cloud
 * Game
 * Security
@@ -348,6 +349,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | タブ | 機能別実行可能動作 | プロジェクト管理ロール | サービス利用ロール |
 | --- | --- | --- | --- |
 | ダッシュボード | Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER| サービスADMIN<br>サービスPERMISSION<br>サービスVIEWER |
+| カスタムダッシュボード | Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | サービス ADMIN<br>サービス PERMISSION<br>サービス VIEWER |
 | メンバー管理 | Read(読込) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 権限なし |
 | | Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MEMBER ADMIN | 権限なし |
 | ロールグループ管理 | ロールグループRead(読込) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 権限なし |

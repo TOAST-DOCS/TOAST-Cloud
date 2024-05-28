@@ -231,6 +231,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * Network
 * Storage
 * Database
+* Monitoring
 * Hybrid & Private Cloud
 * Game
 * Security
@@ -346,6 +347,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | 탭 | 기능별 수행 동작 | 프로젝트 관리 역할 | 서비스 이용 역할 |
 | --- | --- | --- | --- |
 | 대시보드 | Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | 서비스 ADMIN<br>서비스 PERMISSION<br>서비스 VIEWER |
+| 커스텀 대시보드 | Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | 서비스 ADMIN<br>서비스 PERMISSION<br>서비스 VIEWER |
 | 멤버 관리 | Read(읽기) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 권한 없음 |
 | | Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MEMBER ADMIN | 권한 없음 |
 | 역할 그룹 관리 | 역할 그룹 Read(읽기) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 권한 없음 |

@@ -36,7 +36,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Image | 리전 | O | O | O | O |
 |  | Image Builder  | 리전 | O | O |  |  |
 |  | Auto Scale | 리전 | O | O | O | O |
-|  | System Monitoring | 리전 | O | O | O | O |
 |  | Virtual Desktop | 리전 | O | O |  |  |
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |  |  |
 |  | NHN Container Registry (NCR) | 리전 | O | O |  |  |
@@ -45,7 +44,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | NAT Instance | 리전 | O | O |  |  |
 |  | Floating IP | 리전 | O | O | O | O |
 |  | Security Groups | 리전 | O | O | O | O |
-|  | Network ACL | 리전 |  | O |  |  |
+|  | Network ACL | 리전 | O | O |  |  |
 |  | Network Interface | 리전 | O | O | O | O |
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
@@ -60,6 +59,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Traffic Mirroring | 리전 | O | O | | |
 |  | Private DNS | 리전 | O | O | | |
 |  | DNS Plus | 글로벌 |  |  |  |  |
+|  | Direct Connect | 리전 | O | O | | |
 | Storage | Block Storage | 리전 | O | O | O | O |
 |  | NAS (offline) | 리전 | O | O |  | O |
 |  | NAS | 리전 | O | O |  |  |
@@ -77,7 +77,11 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | MariaDB Instance  | 리전 | O | O | O | O | 
 |  | Tibero Instance   | 리전 | O | O | O | O | 
 |  | Redis Instance | 리전 | O | O | O | O | 
-| Hybrid & Private Cloud | NHN Private Cloud | 리전 | - | - | - | - |
+| Monitoring | System Monitoring | 리전 | O | O | O | O |
+|  | Service Monitoring | 글로벌 |  |  |  |  |
+|  | Cloud Monitoring | 글로벌 |  |  |  |  |
+| Hybrid & Private Cloud | NHN Hybrid Cloud | 리전 | O |  |  |  |
+|  | NHN Private Cloud | 리전 | - | - | - | - |
 | Game | Gamebase | 글로벌 |  |  |  |  |
 |  | GameAnvil | 글로벌 |  |  |  |  |
 |  | GameStarter | 글로벌 |  |  |  |  |
@@ -134,7 +138,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Deploy | 글로벌 |  |  |  |  |
 | Management | Managed | 리전 | O | O |  |  |
 |  | Support Plan | 리전 | O | O |  |  |
-|  | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
 | Bill | eTax | 리전 | O |  |  |  |
 | Dooray! | Project | 글로벌 |  |  |  |  |

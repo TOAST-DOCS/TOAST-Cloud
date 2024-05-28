@@ -234,6 +234,7 @@ Services that can be enabled for each project include the following:
 * Network
 * Storage
 * Database
+* Monitoring
 * Hybrid & Private Cloud
 * Game
 * Security
@@ -350,6 +351,7 @@ You can grant multiple required roles to project members.
 | Tab | Available Action by Feature  | Project Management ROLE | Service Use ROLE |
 | --- | --- | --- | --- |
 | Dashboard | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | Service ADMIN<br>Service PERMISSION<br>Service VIEWER |
+| Custom Dashboard | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | Service ADMIN<br>Service PERMISSION<br>Service VIEWER |
 | Member Management | Read | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
 | | Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
 | Role Group Management | Role Group Read | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |

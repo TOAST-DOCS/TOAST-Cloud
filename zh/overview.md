@@ -58,6 +58,7 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Network | 可以构建虚拟专用网络，提供可从外部访问的公用IP。|
 | Storage | 具备高可用性及稳定性的存储服务。|
 | Database | 无复杂的安装及设置过程，可在云环境下使用关系型数据库。|
+| Monitoring | Collect and provide metrics for resources including virtual servers in NHN Cloud, and monitor web services failures. |
 | Hybrid & Private Cloud | NHN Private Cloud is a service for building hybrid and private clouds. |
 | Game | 可以使用游戏开发需要的平台。|
 | Security | 可以使用能够提高安全的平台。|

@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)をインストールします。
-2. [NHN Cloudコンソール](https://console.nhncloud.com)で、[Log & Crash Searchを有効化](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
-3. Log & Crash Searchで、[AppKeyを確認](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で、[Log & Crash Searchを有効化](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
+3. Log & Crash Searchで、[AppKeyを確認](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
 
 ## NHN Cloud Logger構成
 

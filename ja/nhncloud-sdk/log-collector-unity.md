@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install the NHN Cloud SDK](./getting-started-unity)
-2. [NHN Cloud コンソール](https://console.nhncloud.com)で、[Log & Crash Search を有効化](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)します。
-3. Log & Crash Search で、[AppKey を確認](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)します。
+2. [NHN Cloud コンソール](https://console.nhncloud.com)で、[Log & Crash Search を有効化](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
+3. Log & Crash Search で、[AppKey を確認](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
 4. [NHN Cloud SDK を初期化](./getting-started-unity#toast-sdk_1)します。
 
 ## サポートプラットフォーム

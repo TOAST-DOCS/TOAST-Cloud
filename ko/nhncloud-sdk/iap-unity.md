@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install the NHN Cloud SDK](./getting-started-unity)
-2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Mobile Service \> IAP를 활성화](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/)합니다.
-3. IAP에서 [AppKey를 확인](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
+2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Mobile Service \> IAP를 활성화](/Mobile%20Service/IAP/ko/console-guide/)합니다.
+3. IAP에서 [AppKey를 확인](/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
 ## Android 설정
 ### Gradle 빌드 설정

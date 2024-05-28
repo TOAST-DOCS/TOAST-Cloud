@@ -213,6 +213,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 * Network
 * Storage
 * Database
+* Monitoring
 * Security
 * Content Delivery
 * Application Service

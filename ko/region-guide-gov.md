@@ -28,29 +28,30 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Image | 리전 | O | O | 
 |  | Image Builder  | 리전 | O | O |
 |  | Auto Scale | 리전 | O | O | 
-|  | System Monitoring | 리전 | O | O |
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |
 |  | NHN Container Registry (NCR) | 리전 | O | O |
+|  | NHN Container Service(NCS)  | 리전 | O | O |  |  |
 | Network | VPC | 리전 | O | O |
+|  | NAT Instance | 리전 | O | O |
 |  | Floating IP | 리전 | O | O | 
-|  | Network ACL | 리전 |  | O |
 |  | Security Groups | 리전 | O | O | 
+|  | Network ACL | 리전 | O | O |
 |  | Network Interface | 리전 | O | O | 
 |  | 일반 Load Balancer | 리전 | O | O | 
-|  | 전용 Load Balancer | 리전 | O | O | 
+|  | 전용 Load Balancer | 리전 | O | O |
+|  | Transit Hub  | 리전 | O | O |
 |  | IPSec VPN | 리전 | O |  |
-|  | DNS Plus | 글로벌 |  |  |
 |  | Internet Gateway | 리전 | O | O | 
 |  | Peering Gateway | 리전 | O | O | 
-|  | NAT Instance | 리전 |  | O |
-|  | Colocation Gateway | 리전 |  | O |
-|  | NAT Gateway | 리전 |  | O |
-|  | Service Gateway | 리전 |  | O |
+|  | Colocation Gateway | 리전 | O | O |
+|  | NAT Gateway | 리전 | O | O |
+|  | Service Gateway | 리전 | O | O |
+|  | Traffic Mirroring | 리전 | O | O |
+|  | Private DNS | 리전 | O | O |
+|  | DNS Plus | 글로벌 |  |  |
 |  | Direct Connect | 리전 | O | O | 
-|  | Traffic Mirroring | 리전 |  | O |
-|  | Transit Hub  | 리전 |  | O |
 | Storage | Block Storage | 리전 | O | O | 
-|  | NAS | 리전 |  | O | 
+|  | NAS | 리전 | O | O | 
 |  | NAS(offline) | 리전 | O |  | 
 |  | Object Storage | 리전 | O | O |
 |  | Backup | 리전 | O | O | 
@@ -64,6 +65,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | MariaDB Instance  | 리전 | O | O | 
 |  | Tibero Instance   | 리전 | O | O | 
 |  | Redis Instance | 리전 | O | O | 
+| Monitoring | System Monitoring | 리전 | O | O |
 | Security | Security Monitoring | 리전 | O |  |
 |  | Basic Security | 리전 | O | O | 
 |  | Web Firewall | 리전 | O |  |
