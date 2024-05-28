@@ -6,16 +6,16 @@
 2. [Enable IAP service](/Mobile%20Service/IAP/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
 3. [Check AppKey](/Mobile%20Service/IAP/en/console-guide/#check-appkey) in IAP console.
 
-## 스토어별 콘솔 가이드
+## Console Guide for Stores
 
-- [Google 콘솔 가이드](/Mobile%20Service/IAP/en/console-google-guide/)
-- [ONE store 콘솔 가이드](/Mobile%20Service/IAP/en/console-onestore-guide/)
-- [Galaxy Store 콘솔 가이드](/Mobile%20Service/IAP/en/console-galaxystore-guide/)
-- [Mycard 콘솔 가이드](/Mobile%20Service/IAP/en/mycard-guide/)
-- [Amazon 콘솔 가이드](/Mobile%20Service/IAP/en/console-amazon-guide/)
-- [Huawei 콘솔 가이드](/Mobile%20Service/IAP/en/console-huawei-guide/)
+- [Google Console Guide](/Mobile%20Service/IAP/en/console-google-guide/)
+- [ONE store Console Guide](/Mobile%20Service/IAP/en/console-onestore-guide/)
+- [Galaxy Store Console Guide](/Mobile%20Service/IAP/en/console-galaxystore-guide/)
+- [Mycard Console Guide](/Mobile%20Service/IAP/en/mycard-guide/)
+- [Amazon Console Guide](/Mobile%20Service/IAP/en/console-amazon-guide/)
+- [Huawei Console Guide](/Mobile%20Service/IAP/en/console-huawei-guide/)
 
-> Google Play에서 구독 상품을 판매하는 경우 [실시간 구독 상태 수신을 위한 Google 알림 설정](/Mobile%20Service/IAP/en/console-google-guide/#set-up-google-notifications-to-receive-real-time-subscription-status)을 해야 합니다.
+> When selling subscription products from Google Play, must [set up google notifications to receive real-time subscription status](/Mobile%20Service/IAP/en/console-google-guide/#set-up-google-notifications-to-receive-real-time-subscription-status).
 
 ## In-App Purchase Guide for Each Store Type
 
@@ -43,12 +43,12 @@ dependencies {
 }
 ```
 
-> Google Play 인앱 결제는 Android 4.4(API 레벨 19) 이상에서 동작합니다.
+> Google Play in-app purchase functions in Android 4.4 (API level 19) or higher.
 
-#### Android 4.4(API 레벨 19) 이슈
+#### Issue for Android 4.4 (API level 19) 
 
-Play Billing Library 6.x를 R8과 함께 사용하는 경우, Android 4.4(API 레벨 19)에서 동작하지 않는 문제가 발생할 수 있습니다.
-이 문제를 해결하고 Android 4.4(API 레벨 19)를 지원하려면 settings.gradle 파일에 아래와 같은 설정을 추가하세요.
+When using Play Billing Library 6.x with R8, an issue may occur where it does not function with Android 4.4 (API level 19).
+To resolve this issue and support Android 4.4 (API level 19), add the following settings to the settings.gradle file
 
 ```groovy
 buildscript {
