@@ -30,7 +30,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Auto Scale | 리전 | O | O | 
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |
 |  | NHN Container Registry (NCR) | 리전 | O | O |
-|  | NHN Container Service(NCS)  | 리전 | O | O |  |  |
+|  | NHN Container Service(NCS)  | 리전 | O |  |
 | Network | VPC | 리전 | O | O |
 |  | NAT Instance | 리전 | O | O |
 |  | Floating IP | 리전 | O | O | 
@@ -47,7 +47,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | NAT Gateway | 리전 | O | O |
 |  | Service Gateway | 리전 | O | O |
 |  | Traffic Mirroring | 리전 | O | O |
-|  | Private DNS | 리전 | O | O |
+|  | Private DNS | 리전 | O |  |
 |  | DNS Plus | 글로벌 |  |  |
 |  | Direct Connect | 리전 | O | O | 
 | Storage | Block Storage | 리전 | O | O | 
