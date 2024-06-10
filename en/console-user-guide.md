@@ -2,6 +2,7 @@
 
 ### Terminology
 
+
 * Role: A bundle of roles/permissions to use the services and features provided by NHN Cloud
     * Example:The BILLING VIEWER role for a project is created with the related permission of ‘Project.Payment.Get’
 

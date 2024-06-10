@@ -2,6 +2,7 @@
 
 ### 用語定義
 
+
 * ロール(Role)：NHN Cloudが提供するサービスや機能を利用するための役割/権限の束の単位
     * 例：プロジェクトBILLING VIEWERロールは’Project.Payment.Get’関連権限で作成されます。
 
