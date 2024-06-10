@@ -1,4 +1,4 @@
-## NHN Cloud > 콘솔 사용 가이드
+## NHN Cloud > 콘솔 정책 가이드
 
 NHN Cloud Console은 NHN Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을 합니다.
 여기에서는 NHN Cloud 콘솔의 기본적인 설정과 사용 방법을 안내합니다.
