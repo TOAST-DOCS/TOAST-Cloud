@@ -70,6 +70,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Cloud Monitoring | グローバル |  |  |  |  |
 |  | Service Monitoring | グローバル |  |  |  |  |
 | Database | RDS for MySQL | リージョン | O | O | O |  |
+|  | RDS for PostgreSQL  | リージョン | O |  |  |  |
 |  | RDS for MariaDB | リージョン | O |  |  |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
 |  | EasyCache | リージョン | O | O |  |  |
