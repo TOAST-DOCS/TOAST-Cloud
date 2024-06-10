@@ -1,4 +1,4 @@
-## NHN Cloud > コンソール使用ガイド
+## NHN Cloud > コンソールポリシーガイド
 
 NHN Cloud Consoleは、NHN Cloudサービスを利用するための管理ツールと作業ウィンドウの役割を担います。
 ここではNHN Cloudコンソールの基本的な設定と使用方法を案内します。
@@ -281,47 +281,46 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 
 ### 組織メンバー
 
-- 組織のOWNERはアカウントのすべてのロールを付与し、サービスを申請できます。 
-- OWNERは会員を登録し、組織別の管理ロールを付与できます。
+* IAM 멤버는 조직 서비스 별(Online Contact 등) 설정할 수 있는 역할이 다릅니다.
+* NHN Cloud 회원과 IAM 멤버의 클라우드 서비스 역할은 아래와 같습니다.
+* 단, IAM 멤버는 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야합니다.
 
-#### NHN Cloud会員の組織ロール
+#### 조직 관리 역할
 
-| 作業 | ロール | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| --- | --- | --- | --- | --- | --- | --- |
-| 組織管理 | 組織作成 | O |  |  |  |  |
-|  | 組織修正 | O | O |  |  |  |
-|  | 組織削除 | O |  |  |  |  |
-| メンバー管理 | 組織メンバー登録 | O | O |  |  |  |
-|  | 組織メンバー削除 | O | O |  |  |  |
-| サービス管理 | 組織サービス有効化 | O | O |  |  |  |
-|  | 組織サービス無効化 | O | O |  |  |  |
-| 決済管理 | 請求書照会 | O |  |  |  |  |
-|  | 利用状況 | O | O |  | O |  |
-| プロジェクト管理 | プロジェクト作成 | O | O | O |  |  |
-|  | プロジェクト削除 | O | O |  |  |  |
-| ユーザーActionログの管理 | ユーザーActionログの照会 | O | O |  |  | O |
+| 역할 | 설명 |
+| --- | --- |
+| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기) |
+| BILLING\_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기) |
+| BUDGET\_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| BUDGET\_VIEWER | 예산 관리에 대한 Read(읽기) |
+| LOG\_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| ORG\_DASHBOARD\_VIEWER | 조직 대시보드 Read(읽기) |
+| NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 
-#### IAMメンバーの組織ロール
+#### 조직 서비스 이용 역할
 
-* 組織サービスごと(Online Contact、Dooray!など)に設定できるロールが異なります。
-* クラウドサービスのロールは下記のとおりです。
+| 서비스 | 역할 | 설명 |
+| --- | --- | --- |
+| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
+| CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| Resource Watcher | ADMIN | Resource Watcher 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Resource Watcher | VIEWER | Resource Watcher 서비스 Read(읽기) |
 
-| 作業 | ロール | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| --- | --- | --- | --- | --- | --- |
-| 組織管理 | 組織修正 | O |  |  |  |
-| メンバー管理 | 組織メンバー登録 | O |  |  |  |
-|  | 組織メンバー削除 | O |  |  |  |
-| サービス管理 | 組織サービス有効化 | O |  |  |  |
-|  | 組織サービス無効化 | O |  |  |  |
-|  | 利用状況 | O |  | O |  |
-| プロジェクト管理 | プロジェクト作成 | O | O |  |  |
-|  | プロジェクト削除 | O |  |  |  |
-| ユーザーActionログの管理 | ユーザーActionログの照会 | O |  |  | O |
+#### 조직 서비스 활성화 역할
+
+* 조직 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
+* 단, 조직 생성 시 활성화되어있는 서비스(CloudTrail, Resource Watcher 등)는 별도의 PERMISSION 역할을 제공하지 않습니다.
+
+| 역할 | 설명 |
+| --- | --- |
+| 서비스명 PERMISSION | 서비스 Enable(활성화), Disable(비활성화) |
 
 ### プロジェクトメンバー
 
-組織のメンバーではなくてもプロジェクトのメンバーになることができます。
-プロジェクトメンバーに必要なロールを複数付与できます。 
+* プロジェクトメンバーに必要なロールを複数付与できます。 
 
 #### プロジェクト管理ロール
 
@@ -343,36 +342,8 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
+| PROJECT DASHBOARD VIEWER | 프로젝트 대시보드 Read(읽기) |
 
-#### プロジェクト管理機能別権限
-
-| タブ | 機能別実行可能動作 | プロジェクト管理ロール | サービス利用ロール |
-| --- | --- | --- | --- |
-| ダッシュボード | Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER| サービスADMIN<br>サービスPERMISSION<br>サービスVIEWER |
-| カスタムダッシュボード | Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | サービス ADMIN<br>サービス PERMISSION<br>サービス VIEWER |
-| メンバー管理 | Read(読込) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 権限なし |
-| | Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MEMBER ADMIN | 権限なし |
-| ロールグループ管理 | ロールグループRead(読込) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 権限なし |
-| | ロールグループCreate(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MEMBER ADMIN | 権限なし |
-| | ロールグループメンバータブRead(読込) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>PROJECT NOTICE GROUP MANAGEMENT ADMIN| 権限なし |
-| | ロールグループメンバータブCreate(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MEMBER ADMIN | 権限なし |
-| | ロールグループロールタブRead(読込) | ADMIN<br>PROJECT MEMBER ADMIN<br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 権限なし |
-| | ロールグループロールタブCreate(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MEMBER ADMIN | 権限なし |
-| 通知受信グループの管理 | Read(読込)| ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER | 権限なし |
-| | Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 権限なし |
-| 通知管理 | Read(読取)| ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | サービス ADMIN<br>サービス VIEWER |
-| | Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN | サービス ADMIN|
-| 利用状況 | Read(読込) | ADMIN<br>BILLING VIEWER | 権限なし |
-| プロジェクト設定 | プロジェクト基本情報Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN | サービスPERMISSION |
-| | プロジェクト基本情報Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 権限なし |
-| | APIセキュリティー設定Read(読込) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MEMBER<br>PROJECT API SECURITY SETTING ADMIN | サービスPERMISSION  |
-| | APIセキュリティー設定Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT API SECURITY SETTING ADMIN | 権限なし |
-| | 利用中のサービス(無効)Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE_ADMIN<br>MARKETPLACE_VIEWER | サービスPERMISSION |
-| | 利用中のサービス(無効)Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN(マーケットプレイスサービスは無効化ボタンが無効)<br>MARKETPLACE_ADMIN(プロジェクトサービスは無効化ボタンが無効) | サービスPERMISSION |
-| | プロジェクト削除Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | サービスPERMISSION |
-| | プロジェクト削除Create(作成)/Update(更新)/Delete(削除) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 権限なし |
-| クォーター管理 | Read(読込) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT QUOTA MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT VIEWER | サービスADMIN<br>サービスVIEWER |
-| | クォーター調整申請 | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT ADMIN | サービスADMIN |
 
 #### サービス利用ロール
 
