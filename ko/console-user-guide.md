@@ -3,7 +3,7 @@
 ### 용어 정의
 
 * 역할(Role): NHN Cloud에서 제공하는 서비스 및 기능을 이용하기 위한 역할/권한 묶음 단위
-    * 예: CloudTrail VIEWER 역할에 ORG_DASHBOARD_VIEWER 연관 역할과 ‘CloudTrail:EventLog.List’, ‘CloudTrail:ExternalStorageConfig.Get’ 등의 연관 권한으로 만들어짐
+    * 예: CloudTrail VIEWER 역할은 ORG_DASHBOARD_VIEWER 연관 역할과 ‘CloudTrail:EventLog.List’, ‘CloudTrail:ExternalStorageConfig.Get’ 등의 연관 권한으로 만들어짐
 ![term_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_term_01_240610.png)
    * 예: 프로젝트 BILLING VIEWER 역할은 ‘Project.Payment.Get’ 연관 권한으로 만들어짐
 ![term_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_term_02_240610.png)
@@ -27,9 +27,9 @@
     * 멤버에게는 역할 부여가 가능
         * 부여 시 역할에 조건 설정 가능
 
-            | 항목 | 조건 설정 |
-            | --- | ----- |
-            | 역할 | 가능 |
+| 항목 | 조건 설정 |
+| --- | ----- |
+| 역할 | 가능 |
 
 ![org_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_01_240610.png)
    * 예:
@@ -48,10 +48,11 @@
     * 멤버에게는 역할 그룹/역할 부여가 가능
         * 부여 시 각각 역할 그룹/역할에 조건 설정 가능
       
-        | 항목 | 조건 설정 |
-        | --- | ----- |
-        | 역할 그룹 | 가능 |
-        | 역할 | 가능 |
+| 항목 | 조건 설정 |
+| --- | ----- |
+| 역할 그룹 | 가능 |
+| 역할 | 가능 |
+
 ![project_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_01_240610.png)
    * 예:
 ![project_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_02_240610.png)
@@ -67,12 +68,13 @@
     * 멤버에게는 역할 그룹/역할 부여가 가능
         * 부여 시 각각 역할 그룹/역할에 조건 설정 가능
 
-        | 항목 | 거부 설정 | 조건 설정 |
-        | --- | ----- | ----- |
-        | 역할 | 불가능 | 가능 |
-        | 연관 역할 | 가능 | 역할의 조건 상속됨<br>단, 거부 설정한 경우만 별도 조건 속성 가능 |
-        | 연관 권한 | 가능 | 역할의 조건 상속됨<br>단, 거부 설정한 경우만 별도 조건 속성 가능 |
-        | 권한 | 불가능 | 가능 |
+| 항목 | 거부 설정 | 조건 설정 |
+| --- | ----- | ----- |
+| 역할 | 불가능 | 가능 |
+| 연관 역할 | 가능 | 역할의 조건 상속됨<br>단, 거부 설정한 경우만 별도 조건 속성 가능 |
+| 연관 권한 | 가능 | 역할의 조건 상속됨<br>단, 거부 설정한 경우만 별도 조건 속성 가능 |
+| 권한 | 불가능 | 가능 |
+
 ![project_4.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_041_240610.png)
    * 예:
 ![project_5.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_05_240610.png)
