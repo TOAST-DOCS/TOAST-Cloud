@@ -27,9 +27,9 @@
     * Can assign roles to member
         * Can set conditions for roles when assigned
 
-            | Item | Set Conditions |
-            | --- | ----- |
-            | Role | Possible |
+| Item | Set Conditions |
+| --- | ----- |
+| Role | Possible |
 
 ![org_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_01_240610.png)
    * Example:
@@ -47,11 +47,13 @@ the BILLING VIEWER role only from 12:00 to 14:00 on all days of the week.
 * Manage Project Member
     * Can assign role groups/roles to member
         * Can set conditions respectively for role groups/roles when assigned
-      
-        | Item | Set Conditions |
-        | --- | ----- |
-        | Role Group | Possible |
-        | Role | Possible |
+
+| Item | Set Conditions |
+| --- | ----- |
+| Role Group | Possible |
+| Role | Possible |
+
+
 ![project_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_01_240610.png)
    * Example:
 ![project_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_02_240610.png)
@@ -72,12 +74,14 @@ and the BILLING VIEWER role is granted only from 12:00 to 14:00 on all days of t
     * Can assign role groups/roles to member
         * Can set conditions respectively for role groups/roles when assigned
 
-        | Item | Set Deny | Set Conditions |
-        | --- | ----- | ----- |
-        | Role | Not possible | Possible |
-        | Related role | Possible | Role's conditions inherited<br>Separate condition attribute possible, but only if denied |
-        | Related permission | Possible | Role's conditions inherited<br>Separate condition attribute possible, but only if denied |
-        | Permission |  Not possible| Possible |
+| Item | Set Deny | Set Conditions |
+| --- | ----- | ----- |
+| Role | Not possible | Possible |
+| Related role | Possible | Role's conditions inherited<br>Separate condition attribute possible, but only if denied |
+| Related permission | Possible | Role's conditions inherited<br>Separate condition attribute possible, but only if denied |
+| Permission |  Not possible| Possible |
+
+
 ![project_4.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_041_240610.png)
    * Example:
 ![project_5.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_05_240610.png)

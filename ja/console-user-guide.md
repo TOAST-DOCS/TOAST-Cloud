@@ -27,9 +27,9 @@
     * ユーザーにはロール付与が可能
         * 付与時にロールに条件を設定可能
 
-            | 項目 | 条件設定 |
-            | --- | ----- |
-            | ロール | 不可 |
+| 項目 | 条件設定 |
+| --- | ----- |
+| ロール | 不可 |
 
 ![org_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_01_240610.png)
    * 例：
@@ -50,10 +50,12 @@
         * 付与時、それぞれのロールグループ/ロールに条件を設定可能
 
       
-        | 項目 | 条件設定 |
-        | --- | ----- |
-        | ロールグループ | 不可 |
-        | ロール | 不可 |
+| 項目 | 条件設定 |
+| --- | ----- |
+| ロールグループ | 不可 |
+| ロール | 不可 |
+
+
 ![project_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_01_240610.png)
    * 例：
 ![project_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_02_240610.png)
@@ -75,12 +77,14 @@
     * ユーザーにはロールグループ/ロールを付与できます。
         * 付与時、それぞれのロールグループ/ロールに条件を設定可能
 
-        | 項目 | 拒否設定 | 条件設定 |
-        | --- | ----- | ----- |
-        | ロール | 不可 | 可能 |
-        | 関連ロール | 可能 |ロールの条件を継承<br>ただし、拒否設定した場合のみ別途条件属性が可能。 |
-        | 関連権限 | 可能 | ロールの条件を継承<br>ただし、拒否設定した場合のみ別途条件属性が可能。 |
-        | 権限 |  不可| 可能 |
+| 項目 | 拒否設定 | 条件設定 |
+| --- | ----- | ----- |
+| ロール | 不可 | 可能 |
+| 関連ロール | 可能 |ロールの条件を継承<br>ただし、拒否設定した場合のみ別途条件属性が可能。 |
+| 関連権限 | 可能 | ロールの条件を継承<br>ただし、拒否設定した場合のみ別途条件属性が可能。 |
+| 権限 |  不可| 可能 |
+
+
 ![project_4.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_041_240610.png)
    * 例：
 ![project_5.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_05_240610.png)
