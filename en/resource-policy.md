@@ -125,8 +125,11 @@ Resource usage is calculated for each project.
 | Number of ACL Policies | Per project | 1,000 | X | | 
 | Number of ACL Policy Rules | Per project | 5,000 | X | | 
 | Maximum Number of ACL Sessions | Per project | 1,000,000 | X | | 
+| Number of NATs | Per project | 200 | X | | 
 | Maximum Number of NAT Sessions | Per project | 1,000,000 | X | | 
 | Number of Traffic Logs | Per project | 8,000,000 | X | | 
+| Number of Gateways | Per project | 10 | X | | 
+| Number of Tunnels | Per project | 20 | X | | 
 
 ### Resource Provision Policy for KakaoTalk Bizmessage Service
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
