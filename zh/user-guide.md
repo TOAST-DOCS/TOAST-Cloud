@@ -90,7 +90,7 @@ Email verification, mobile verification, and Google OTP are available.
 
 #### Select Login Security Settings
 ![userguide_02_20230330](https://static.toastoven.net/toast/user_guide/userguide_10_202303_en.png)
-Go to **My Page** and click **Login Security Settings**.
+After logging in, select Login Security Settings from the drop-down menu that appears when you click your logged in account in the top right on the screen.
 You can check your current login security settings or click **Change** to change the settings.
 
 2-Level Login Setup
@@ -126,7 +126,7 @@ When OTP verification setup is complete, you'll see the registered devices in th
 ## Register Payment Methods
 It is required to register a payment method to use NHN Cloud Service. 
 However, for members of existing organizations/projects, no additional registration is required to use NHN Cloud Service.
-To register, go to [My Page > Payment Methods].
+You can register a payment method by selecting Payment Method from the drop-down menu in the top right after logging in and clicking your logged in account.
 
 ### Management Policy of Payment Methods
 NHN Cloud provides the following payment methods:
@@ -156,7 +156,7 @@ The authentication and management policy of each payment method goes as follows:
 
 #### PAYCO Credit Cards
 ##### Select Payment Methods
-- Go to **My Page > Payment Methods** and click **Change Payment Methods**.
+- Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Methods** page, select **PAYCO Credit Cards**.
 
 ##### Join PAYCO
@@ -185,15 +185,15 @@ The authentication and management policy of each payment method goes as follows:
     - Enter Credit Card Information: Enter credit card number, valid period, and the first two digits of password, and register it as payment method.
 
 ##### Complete Registration of Payment Methods
-- When a payment method is properly registered, you may check at **My Page > Payment Methods**.
+- If your payment method is successfully registered, you can see it on the Payment Method screen.
 
 ##### Complete Registration of Payment Methods
-- When a payment method is properly registered, check at **My Page > Payment Methods**.
+- If your payment method is successfully registered, you can see it on the Payment Method screen.
 
 #### Bank Transfers
 ##### Select Payment Methods
 - Provided only for business members.
-- Go to **My Page > Payment Methods** and click **Change Payment Methods**.
+- Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Methods** page, click **Bank Transfer**.
 
 ##### Enter Account Information
@@ -204,16 +204,16 @@ The authentication and management policy of each payment method goes as follows:
 - For a corporate account, select a Public Key Certificate registered with the same business information on its account for authentication.
 
 ##### Complete Registration of Payment Methods 
-- When a payment method is properly registered, check at **My Page > Payment Methods**.
+- If your payment method is successfully registered, you can see it on the Payment Method screen.
 
 ### NHN Cloud Japan 
 #### Credit Cards 
 ##### Select Payment Methods 
-- Go to **My Page > Payment Methods** and click **Change Payment Methods**.
+- Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Methods** page, enter **Credit Card Information**(card number, valid period, card holder's name, and security code).
 
 ##### Complete Registration of Payment Methods
-- When a payment method is properly registered, check at, **My Page > Payment Methods**.
+- If your payment method is successfully registered, you can see it on the Payment Method screen.
 
 
 ### Further Functions of Payment Methods
@@ -225,7 +225,7 @@ Select either "Pay by Pricing Plan", or "Pay At Once".
 ## Manage Credits
 Credits managed by NHN Cloud Service are provided free-of-charge, depending on service subscription, rewards, events, or compensation purposes.
 1 credit equals to 1 KRW in cash. 
-To check your credits, go to **My Page > Credits**.
+You can view the credits you have received by logging in and selecting Credit from the drop-down menu that appears on the top right on the screen when you click your logged in account.
 Credits are operated in accordance with the following policy:
 - Non-refundable.
 - Managed by valid period: to be expired after valid period and flexibly managed for each type of saving. 
@@ -234,7 +234,8 @@ Credits are operated in accordance with the following policy:
 
 ## Withdraw from Membership
 ### Apply for Membership Withdrawal
-To apply for withdrawal from NHN Cloud membership, go to **My Page > Member Profile** and click **Withdraw Membership**.  
+You can cancel your NHN Cloud membership by logging in and selecting Member Information from the drop-down menu on the top right on the screen when you click your logged in account.
+Go to the Member Information screen and click the Withdraw button in the bottom right corner.
 Check notes for membership withdrawal, and click **Withdraw**.
 Withdrawal cannot be applied when you're using a service. 
 
