@@ -243,27 +243,28 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 ### RDS for MySQLサービスリソース提供ポリシー 
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
-| DB Instance CPU | プロジェクトごと  | 확인 중 | O | |
-| DB Instance メモリ | プロジェクトごと  | 확인 중 | O | |
-| DB Instance データストレージ | プロジェクトごと  | 확인 중 | O | | 
-| コピーを| DB Instanceごと | 확인 중 | O | |
+| DB Instance CPU | プロジェクトごと  | 100vCore | O | |
+| DB Instance メモリ | プロジェクトごと  | 262,144MB | O | |
+| DB Instance データストレージ | プロジェクトごと  | 10,240GB | O | | 
+| コピーを| DB Instanceごと | 5個 | O | |
 
 ### RDS for MariaDBサービスリソース提供ポリシー
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
-| DB Instance CPU | プロジェクトごと  | 확인 중 | O | |
-| DB Instance メモリ | プロジェクトごと  | 확인 중 | O | |
-| DB Instance データストレージ | プロジェクトごと  | 확인 중 | O | | 
-| コピーを| DB Instanceごと | 확인 중 | O | |
+| DB Instance CPU | プロジェクトごと  | 100vCore | O | |
+| DB Instance メモリ | プロジェクトごと  | 262,144MB | O | |
+| DB Instance データストレージ | プロジェクトごと  | 10,240GB | O | | 
+| コピーを| DB Instanceごと | 5個 | O | |
 
 
 ### RDS for MS-SQLサービスリソース提供ポリシー 
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
-| DB Instance CPU | プロジェクトごと  | 확인 중 | O | |
-| DB Instance メモリ | プロジェクトごと  | 확인 중 | O | |
-| DB Instance データストレージ | プロジェクトごと  | 확인 중 | O | | 
-| コピーを| DB Instanceごと | 확인 중 | O | |
+| DB Instance CPU | プロジェクトごと  | 200vCore | O | |
+| DB Instance メモリ | プロジェクトごと  | 524,288MB | O | |
+| DB Instance データストレージ| DB Instanceごと | 2,048GB | O | |
+| DB Instance データストレージ | プロジェクトごと  | 10,240GB | O | | 
+
 
 ### Network Firewallサービスリソース提供ポリシー
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
