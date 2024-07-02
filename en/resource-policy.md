@@ -21,6 +21,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Key Pair Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | Key Pair | Per project | 100 | O | |
@@ -28,6 +29,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Block Storage Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Block Storage| Per project |10240GB| O | |
@@ -36,6 +38,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Floating IP Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Floating IP | Per project |50| O | |
@@ -43,6 +46,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for VPC Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |VPC | Per project |3| O | |
@@ -50,6 +54,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Subnet Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Subnet | Per VPC |10| O | |
@@ -57,6 +62,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Routing Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Routing Table | Per VPC |10| O | |
@@ -66,6 +72,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Peering Gateway Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Region Peering | Per project  |10 | O | | 
@@ -74,6 +81,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Internet Gateway Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Internet Gateway | Per project |3| O | |
@@ -81,6 +89,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for NAT Gateway Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |NAT Gateway | Per project | 3 | O | |
@@ -88,6 +97,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for VPN Gateway(Site-to-Site VPN) Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |VPN Gateway(Site-to-Site VPN) | Per VPC | 1 | X | | 
@@ -96,6 +106,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Service Gateway Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Service Gateway | Per project | 10 | O | | 
@@ -103,6 +114,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Traffic Mirroring Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Traffic Mirroring Session | Per project | 10 | O | |
@@ -111,6 +123,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Network Interface Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | Network Interface | Per project | 500 | O | | 
@@ -118,6 +131,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Network ACL Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | Network ACL | Per project | 10 | O | | 
@@ -127,6 +141,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Load Balancer Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Load Balancer | Per project |10| O | |
@@ -138,6 +153,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for NAS Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | NAS volume | Per project| 100 | O | |
@@ -148,6 +164,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Transit Hub Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | Transit Hub | Per project | 10 | O | |
@@ -164,6 +181,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Private DNS Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | Private DNS Zone | Per project | 100 | O | |
@@ -302,11 +320,12 @@ Resource usage is calculated for each project.
 | Size of log (normal log, crash log) | 1 case | 8MB | X | |
 
 ### Resource Provision Policy for DataFlow Service
-Resource usage is calculated for each project.
+Resource usage is calculated for each project, and the policy is applied by the region.
 
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
-| Number of running flows | Per project | 10 | O | |
+| CPU | Per project | 10vCore | O | |
+| Memory | Per project | 20GB | O | |
 
 
 ### Request for Capacity Adjustment
