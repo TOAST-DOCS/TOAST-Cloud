@@ -296,6 +296,16 @@ Resource usage is calculated for each project.
 | Number of Groups | Per Face Recognition Service | 5 cases | O | |
 | Number of Registered Faces in Group	 | 	Per Face Recognition Service Group | 100,000 cases | O | |
 
+### Resource Provision Policy for AI Fashion
+Resource usage is calculated for each project.
+
+| Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+| AI Fashion service count | Per project | 5 | O | | 
+| Max Document Count | Per AI Fashion service | 100,000 cases | O | |
+| Indexing Request Document Count | Per indexing request | 10,000 cases | O | |
+| Indexing Input File Size | Per indexing request | 20MB | O | |
+
 ### Resource Provision Policy for OCR
 Resource usage is calculated for each project.
 
