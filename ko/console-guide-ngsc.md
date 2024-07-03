@@ -1,4 +1,4 @@
-## 콘솔 사용 가이드
+## 콘솔 정책 가이드
 
 NHN Government Security Cloud Console은 NHN Government Security Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을 합니다.
 여기에서는 NHN Government Security Cloud 콘솔의 기본적인 설정과 사용 방법을 안내합니다.
@@ -263,46 +263,42 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 
 ### 조직 멤버
 
-* 조직의 OWNER는 계정의 모든 역할 부여하고 서비스를 신청할 수 있습니다.
-* OWNER는 회원을 등록하여 조직별 관리 역할을 부여할 수 있습니다.
+* NHN Government Security Cloud 회원과 IAM 멤버의 클라우드 서비스 역할은 아래와 같습니다.
+* 단, IAM 멤버는 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야합니다.
 
-#### NHN Government Security Cloud 회원의 조직 역할
+#### 조직 관리 역할
 
-| 작업 | 역할 | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| --- | --- | --- | --- | --- | --- | --- |
-| 조직 관리 | 조직 생성 | O |  |  |  |  |
-|  | 조직 수정 | O | O |  |  |  |
-|  | 조직 삭제 | O |  |  |  |  |
-| 멤버 관리 | 조직 멤버 등록 | O | O |  |  |  |
-|  | 조직 멤버 삭제 | O | O |  |  |  |
-| 서비스 관리 | 조직 서비스 활성화 | O | O |  |  |  |
-|  | 조직 서비스 비활성화 | O | O |  |  |  |
-| 결제 관리 | 청구서 조회 | O |  |  |  |  |
-|  | 이용 현황 | O | O |  | O |  |
-| 프로젝트 관리 | 프로젝트 생성 | O | O | O |  |  |
-|  | 프로젝트 삭제 | O | O |  |  |  |
-| 사용자 Action 로그 관리 | 사용자 Action 로그 조회 | O | O |  |  | O |
+| 역할 | 설명 |
+| --- | --- |
+| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기) |
+| BILLING_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기) |
+| BUDGET_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
+| LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| ORG_DASHBOARD_VIEWER | 조직 대시보드 Read(읽기) |
+| NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 
-#### IAM 멤버의 조직 역할
+#### 조직 서비스 이용 역할
 
-* 조직 서비스별(CloudTrail 등) 설정할 수 있는 역할이 다릅니다.
-* 클라우드 서비스 역할은 아래와 같습니다.
+| 서비스 | 역할 | 설명 |
+| --- | --- | --- |
+| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
+| CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 
-| 작업 | 역할 | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| --- | --- | --- | --- | --- | --- |
-| 조직 관리 | 조직 수정 | O |  |  |  |
-| 멤버 관리 | 조직 멤버 등록 | O |  |  |  |
-|  | 조직 멤버 삭제 | O |  |  |  |
-| 서비스 관리 | 조직 서비스 활성화 | O |  |  |  |
-|  | 조직 서비스 비활성화 | O |  |  |  |
-|  | 이용 현황 | O |  | O |  |
-| 프로젝트 관리 | 프로젝트 생성 | O | O |  |  |
-|  | 프로젝트 삭제 | O |  |  |  |
-| 사용자 Action 로그 관리 | 사용자 Action 로그 조회 | O |  |  | O |
+#### 조직 서비스 활성화 역할
+
+* 조직 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
+* 단, 조직 생성 시 활성화되어있는 서비스(CloudTrail 등)는 별도의 PERMISSION 역할을 제공하지 않습니다.
+
+| 역할 | 설명 |
+| --- | --- |
+| 서비스명 PERMISSION | 서비스 Enable(활성화), Disable(비활성화) |
 
 ### 프로젝트 멤버
 
-조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
 프로젝트 멤버에게 필요한 역할을 여러 개 부여할 수 있습니다.
 
 #### 프로젝트 관리 역할
@@ -310,7 +306,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | 역할 | 설명 |
 | --- | --- |
 | ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| MEMBER | 프로젝트 내 모든 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| MEMBER | 프로젝트 내 모든 서비스의 리소스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)   |
 | BILLING VIEWER | 이용 현황 Read(읽기)  |
 | PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제)  |
 | PROJECT MANAGEMENT VIEWER | 프로젝트 기본 정보 Read(읽기)<br>프로젝트 통합 Appkey Read(읽기)  |
@@ -318,11 +314,15 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | PROJECT MEMBER VIEWER | 프로젝트 멤버 Read(읽기)<br>프로젝트 역할 그룹 Read(읽기)  |
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | 프로젝트 알림 수신 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | 프로젝트 알림 수신 그룹 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
-| PROJECT NOTICE MANAGEMENT ADMIN | 프로젝트 알림 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
-| PROJECT NOTICE MANAGEMENT VIEWER | 프로젝트 알림 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
+| PROJECT NOTICE MANAGEMENT ADMIN | 프로젝트 알림 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기) |
+| PROJECT NOTICE MANAGEMENT VIEWER | 프로젝트 알림 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기) |
+| PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
+| PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
+| PROJECT QUOTA MANAGEMENT VIEWER| 프로젝트 쿼터 관리 Read(읽기)|
+| PROJECT DASHBOARD VIEWER | 프로젝트 대시보드 Read(읽기) |
 
 
-#### 서비스 이용 역할
+#### 프로젝트 서비스 이용 역할
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
@@ -339,6 +339,12 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 | RDS for MySQL | VIEWER | RDS for MySQL 서비스 Read(읽기) |
 
+#### 프로젝트 서비스 활성화 역할
+프로젝트 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
+
+| 역할 | 설명 |
+| --- | --- |
+| 서비스명 Permission | 서비스 Enable(활성화), Disable(비활성화)  |
 
 ## 결제 관리
 
