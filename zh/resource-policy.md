@@ -251,7 +251,7 @@ Resource usage is calculated for each project.
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | DB Instance CPU | Per project  | 100vCore | O | |
-| DB Instance 메모리 | Per project  | 262,144MB | O | |
+| DB Instance Memory | Per project  | 262,144MB | O | |
 | DB Instance Data Storage | Per project  | 10,240GB | O | | 
 | Replica | Per DB Instance | 5 | O | |
 
@@ -259,7 +259,7 @@ Resource usage is calculated for each project.
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | DB Instance CPU | Per project  | 100vCore | O | |
-| DB Instance 메모리 | Per project  | 262,144MB | O | |
+| DB Instance Memory | Per project  | 262,144MB | O | |
 | DB Instance Data Storage | Per project  | 10,240GB | O | | 
 | Replica | Per DB Instance | 5 | O | |
 
@@ -268,7 +268,7 @@ Resource usage is calculated for each project.
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | DB Instance CPU | Per project  | 200vCore | O | |
-| DB Instance 메모리 | Per project  | 524,288MB | O | |
+| DB Instance Memory | Per project  | 524,288MB | O | |
 | DB Instance Data Storage | Per DB Instance | 2,048GB | O | |
 | DB Instance Data Storage | Per project  | 10,240GB | O | | 
 
