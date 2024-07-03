@@ -108,6 +108,19 @@ When an operator looks up important information on resources, the users are noti
 * You can select **Not Set (Default)** in **Set control of resource permissions and restriction on terminal access.**
 * If you select **Set** in Set control of resource permissions and restriction on terminal access, the operator is restricted from looking up resources.
 
+#### Privacy Setting
+The privacy setting feature is available if you need to protect your privacy.
+You can mask personal information that is exposed on the service, or if you need to download personal information, you can make it available only in a separate network environment. 
+
+* Privacy Setting
+    * Organization/Project > Manage Member > IAM Member > Download List
+        * If not set, any member who can download the IAM member list can download the member list.
+        *  If set up, the feature to download member lists is disabled and only exceptionally allowed IPs or IP bands can download member lists.
+
+    * Organization > CloudTrail > Privacy
+        * If not set, all members who can view the log list will see the full information in the log list.
+        * If set up, personal information (email, name, ID) in the log list is masked.
+
 ### IAM Governance Setting
 
 #### Login Security Setting
