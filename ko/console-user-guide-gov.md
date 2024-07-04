@@ -21,7 +21,7 @@
 * 역할 그룹(Role Group): 역할, 연관 역할/권한, 권한을 조합해서 생성한 묶음 단위
     * 예: 프로젝트 역할인 PROJECT MEMBER ADMIN과 프로젝트 BILLING VIEWER의 연관 권한인 Project.Payment.Get 권한을 추가하여 역할 그룹 ‘Group A’생성
 
-![term_3.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_term_03_240704.png)
+![term_3.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_term_03_240610.png)
 
 ### 조직
 
@@ -29,7 +29,7 @@
     * 멤버에게는 NHN Cloud에서 제공하는 역할을 부여할 수 있습니다.
     * 역할은 연관 역할과 연관 권한을 포함하고 있습니다.
 
-![org_0.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_00_240704.png)
+![org_0.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_00_240610.png)
 
 * 조직 멤버 관리
     * 멤버에게는 역할 부여가 가능
@@ -39,11 +39,11 @@
 | --- | ----- |
 | 역할 | 가능 |
 
-![org_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_01_240704.png)
+![org_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_01_240610.png)
 
    * 예:
 
-![org_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_02_240704.png)
+![org_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_02_240610.png)
 
    * 위와 같이 조건을 부여한 경우 userA는 아래와 같은 역할을 부여받습니다.
        * CloudTrail VIEWER 역할을 화요일에만 부여받으며, BILLING VIEWER 역할은 모든 요일의 12시~14시에만 부여받게 됩니다.
@@ -54,7 +54,7 @@
     * 사용자는 NHN Cloud에서 제공하는 역할과 권한을 조합하여 역할 그룹을 생성할 수 있습니다.
     * 사용자에게는 사용자가 생성한 역할 그룹이나 NHN Cloud에서 제공하는 역할을 부여할 수 있습니다.
 
-![project_0.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_00_240704.png)
+![project_0.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_00_240610.png)
 
 * 프로젝트 멤버 관리
     * 멤버에게는 역할 그룹/역할 부여가 가능
@@ -65,17 +65,17 @@
 | 역할 그룹 | 가능 |
 | 역할 | 가능 |
 
-![project_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_01_240704.png)
+![project_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_01_240610.png)
 
    * 예:
 
-![project_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_02_240704.png)
+![project_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_02_240610.png)
 
    * 위와 같이 조건을 부여한 경우 userA는 아래와 같은 역할을 부여받습니다.
        * userA는 PROJECT MEMBER ADMIN, SMS ADMIN 역할을 화요일에만 부여받으며, BILLING VIEWER 역할은 모든 요일의 12시~14시에만 부여받게 됩니다.
    * 예:
 
-![project_3.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_03_240704.png)
+![project_3.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_03_240610.png)
 
    * 위와 같이 조건을 부여한 경우 userA는 아래와 같은 역할을 부여받습니다.
        * userA는 ADMIN, SMS ADMIN 역할을 화요일에만 부여받으며, BILLING VIEWER 역할은 화요일의 12시~14시에만 부여받습니다.
@@ -93,11 +93,11 @@
 | 연관 권한 | 가능 | 역할의 조건 상속됨<br>단, 거부 설정한 경우만 별도 조건 속성 가능 |
 | 권한 | 불가능 | 가능 |
 
-![project_4.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_041_240704.png)
+![project_4.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_041_240610.png)
 
    * 예:
 
-![project_5.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_05_240704.png)
+![project_5.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_05_240610.png)
 
    * 위와 같이 조건을 부여한 Group A를 부여받은 멤버는 아래와 같은 역할을 부여받습니다.
        * SMS ADMIN, Project.Delete 역할/권한을 제외한 ADMIN 역할을 부여받습니다.
