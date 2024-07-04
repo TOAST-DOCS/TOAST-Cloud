@@ -173,7 +173,7 @@ The authentication and management policy of each payment method goes as follows:
 
 #### Credit Cards
 ##### Select Payment Methods
-- Go to **May Page > Payment Methods** and click **Change Payment Methods**.
+- Go to Payment Methods and click Change Payment Methods.
 - On the **Register Auto Payment Method** page, select **Credit Cards**.
 
 ##### Select Credit Card Types
@@ -183,9 +183,6 @@ The authentication and management policy of each payment method goes as follows:
 - Corporate Credit Cards Requiring No Signature
     - Check Business Registration Number: Enter business registration number.
     - Enter Credit Card Information: Enter credit card number, valid period, and the first two digits of password, and register it as payment method.
-
-##### Complete Registration of Payment Methods
-- If your payment method is successfully registered, you can see it on the Payment Method screen.
 
 ##### Complete Registration of Payment Methods
 - If your payment method is successfully registered, you can see it on the Payment Method screen.
