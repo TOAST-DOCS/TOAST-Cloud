@@ -173,7 +173,7 @@ The authentication and management policy of each payment method goes as follows:
 
 #### Credit Cards
 ##### Select Payment Methods
-- Go to **May Page > Payment Methods** and click **Change Payment Methods**.
+- Go to Payment Methods and click Change Payment Methods.
 - On the **Register Auto Payment Method** page, select **Credit Cards**.
 
 ##### Select Credit Card Types
@@ -183,9 +183,6 @@ The authentication and management policy of each payment method goes as follows:
 - Corporate Credit Cards Requiring No Signature
     - Check Business Registration Number: Enter business registration number.
     - Enter Credit Card Information: Enter credit card number, valid period, and the first two digits of password, and register it as payment method.
-
-##### Complete Registration of Payment Methods
-- If your payment method is successfully registered, you can see it on the Payment Method screen.
 
 ##### Complete Registration of Payment Methods
 - If your payment method is successfully registered, you can see it on the Payment Method screen.
@@ -225,7 +222,7 @@ Select either "Pay by Pricing Plan", or "Pay At Once".
 ## Manage Credits
 Credits managed by NHN Cloud Service are provided free-of-charge, depending on service subscription, rewards, events, or compensation purposes.
 1 credit equals to 1 KRW in cash. 
-TYou can view the credits you have received by logging in and selecting Credit from the drop-down menu that appears on the top right on the screen when you click your logged in account.
+You can view the credits you have received by logging in and selecting Credit from the drop-down menu that appears on the top right on the screen when you click your logged in account.
 Credits are operated in accordance with the following policy:
 - Non-refundable.
 - Managed by valid period: to be expired after valid period and flexibly managed for each type of saving. 
