@@ -21,7 +21,7 @@
 * 역할 그룹(Role Group): 역할, 연관 역할/권한, 권한을 조합해서 생성한 묶음 단위
     * 예: 프로젝트 역할인 PROJECT MEMBER ADMIN과 프로젝트 BILLING VIEWER의 연관 권한인 Project.Payment.Get 권한을 추가하여 역할 그룹 ‘Group A’생성
 
-![term_3.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_term_03_240610.png)
+![term_3.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_term_03_240704.png)
 
 ### 조직
 
