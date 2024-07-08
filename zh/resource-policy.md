@@ -246,7 +246,6 @@ Resource usage is calculated for each project.
 |Health Check    | Per project | 5 | O | |
 
 
-
 ### Resource Provision Policy for RDS for MySQL 
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
@@ -267,10 +266,10 @@ Resource usage is calculated for each project.
 ### Resource Provision Policy for RDS for MS-SQL 
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
-| DB Instance CPU | Per project  | 확인 중 | O | |
-| DB Instance 메모리 | Per project  | 확인 중 | O | |
-| DB Instance Data Storage | Per project  | 확인 중 | O | | 
-| Replica | Per DB Instance | 확인 중 | O | |
+| DB Instance CPU | Per project  | 200vCore | O | |
+| DB Instance Memory | Per project  | 524,288MB | O | |
+| DB Instance Data Storage | Per DB Instance | 2,048GB | O | |
+| DB Instance Data Storage | Per project  | 10,240GB | O | | 
 
 ### Resource Provision Policy for Network Firewall
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
