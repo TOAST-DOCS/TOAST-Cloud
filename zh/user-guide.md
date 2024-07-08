@@ -173,7 +173,7 @@ The authentication and management policy of each payment method goes as follows:
 
 #### Credit Cards
 ##### Select Payment Methods
-- Go to Payment Methods and click Change Payment Methods.
+- Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Method** page, select **Credit Cards**.
 
 ##### Select Credit Card Types
