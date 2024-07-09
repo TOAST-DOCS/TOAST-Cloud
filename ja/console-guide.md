@@ -435,6 +435,9 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Security Advisor | VIEWER | Security Advisorサービスに対するRead(読み取り)  |
 | Network Firewall | ADMIN | Network Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Network Firewall | VIEWER | Network Firewallサービスに対するRead(読み取り)  |
+| NHN Bastion | ADMIN | NHN Bastionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) | 
+| NHN Bastion | VIEWER | NHN Bastionサービスに対するRead(読み取り) | 
+| NHN Bastion | USER | NHN Bastionサービスターミナルの利用 | 
 | CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
