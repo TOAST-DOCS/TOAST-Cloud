@@ -81,7 +81,8 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 | Application Service | API Gateway | 리전 | O | O | 
 | Data & Analytics | Log & Crash Search | 글로벌 |  |  |
 |  | Kafka Instance | 리전 | O | O | 
-| Dev Tools | Deploy | 글로벌 |  |  | 
+| Dev Tools | Pipeline | 리전 | O |  | 
+|  | Deploy | 글로벌 |  |  | 
 | Management | Certificate Manager | 글로벌 |  |  |
 | Dooray! | Project | 글로벌 |  |  |
 |  | Messenger | 글로벌 |  |  | 
