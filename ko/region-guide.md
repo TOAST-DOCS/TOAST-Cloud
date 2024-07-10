@@ -104,6 +104,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Webshell Threat Detector | 리전 | O | O |  |  |
 |  | Security Advisor | 글로벌 |  |  |  |  |
 |  | Network Firewall | 리전 | O | O |  |  |
+|  | NHN Bastion | 리전 | O | O |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image Manager | 리전 | O |  |  |  |
 | Notification | Push | 글로벌 |  |  |  |  |

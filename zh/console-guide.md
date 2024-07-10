@@ -440,6 +440,9 @@ Members are classified into NHN Cloud members and IAM members.
 | Security Advisor | VIEWER | Read for Security Advisor Service  |
 | Network Firewall | ADMIN | Create/Read/Update/Delete for Network Firewall Service  |
 | Network Firewall | VIEWER | Read for Network Firewall Service  |
+| NHN Bastion | ADMIN | Create/Read/Update/Delete for NHN Bastion Service | 
+| NHN Bastion | VIEWER | Read for NHN Bastion Service | 
+| NHN Bastion | USER | Use NHN Bastion Service Terminal | 
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
 | Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
