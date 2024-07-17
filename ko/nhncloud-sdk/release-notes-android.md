@@ -1,5 +1,13 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 1.9.1 (2024. 07. 23.)
+
+### NHN Cloud IAP
+
+#### 기능 개선
+
+* Amazon 결제 재처리 개선
+
 ## 1.9.0 (2024. 05. 28.)
 
 ### NHN Cloud IAP
