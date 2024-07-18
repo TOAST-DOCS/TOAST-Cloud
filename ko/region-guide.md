@@ -29,7 +29,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | 분류 | 서비스명 | 글로벌/리전 서비스 | 한국(판교) 리전 | 한국(평촌) 리전 | 일본(도쿄) 리전 | 미국(캘리포니아) 리전 |
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
 | Compute | Instance | 리전 | O | O | O | O |
-|  | Ephemeral Storage Instance | 리전 | O | | O | | 
+|  | Ephemeral Storage Instance | 리전 | | | O | | 
 |  | GPU Instance | 리전 | O |  |  |  |
 |  | Bare Metal Instance | 리전 | O | | | |
 |  | Instance Template | 리전 | O | O | O | O |
@@ -67,6 +67,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Backup | 리전 | O | O | O |  |
 |  | Data transporter | 리전 | O | O |  |  |
 | Database | RDS for MySQL | 리전 | O | O | O |  | 
+|  | RDS for PostgreSQL  | 리전 | O |  |  |  |
 |  | RDS for MariaDB | 리전 | O |  |  |  | 
 |  | RDS for MS-SQL | 리전 | O |  |  |  | 
 |  | EasyCache | 리전 | O | O |  |  | 
@@ -78,9 +79,9 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Tibero Instance   | 리전 | O | O | O | O | 
 |  | Redis Instance | 리전 | O | O | O | O | 
 | Monitoring | System Monitoring | 리전 | O | O | O | O |
-|  | Service Gateway | 글로벌 |  |  |  |  |
+|  | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Cloud Monitoring | 글로벌 |  |  |  |  |
-| Hybrid & Private Cloud | NHN Hybrid Cloud | 리전 | - | - | - | - |
+| Hybrid & Private Cloud | NHN Hybrid Cloud | 리전 | O |  |  |  |
 |  | NHN Private Cloud | 리전 | - | - | - | - |
 | Game | Gamebase | 글로벌 |  |  |  |  |
 |  | GameAnvil | 글로벌 |  |  |  |  |
@@ -103,6 +104,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Webshell Threat Detector | 리전 | O | O |  |  |
 |  | Security Advisor | 글로벌 |  |  |  |  |
 |  | Network Firewall | 리전 | O | O |  |  |
+|  | NHN Bastion | 리전 | O | O |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image Manager | 리전 | O |  |  |  |
 | Notification | Push | 글로벌 |  |  |  |  |

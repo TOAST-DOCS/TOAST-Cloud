@@ -68,6 +68,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Backup | Regional | O | O | O |  |
 |  | Data transporter | Regional | O | O |  |  |
 | Database | RDS for MySQL | Regional | O | O | O |  |
+|  | RDS for PostgreSQL  | Regional | O |  |  |  |
 |  | RDS for MariaDB | Regional | O |  |  |  |
 |  | RDS for MS-SQL | Regional | O |  |  |  |
 |  | EasyCache | Regional | O | O |  |  |
@@ -79,9 +80,9 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Tibero Instance   | Regional | O | O | O | O |
 |  | Redis Instance | Regional | O | O | O | O |
 | Monitoring | System Monitoring | Region | O | O | O | O |
-|  | Service Gateway | Global |  |  |  |  |
+|  | Service Monitoring | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
-|  | Hybrid & Private Cloud | NHN Hybrid Cloud | Regional | - | - | - | - |
+| Hybrid & Private Cloud |  NHN Hybrid Cloud | Regional | O |  |  |  |
 | | NHN Private Cloud | Regional | - | - | - | - |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
@@ -104,6 +105,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Webshell Threat Detector | Regional | O | O |  |  |
 |  | Security Advisor | Global |  |  |  |  |
 |  | Network Firewall | Regional | O | O |  |  |
+|  | NHN bastion | Regional | O | O |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |

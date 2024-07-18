@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-android)
-2. [Enable Log & Crash Search](https://nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
-3. [Check AppKey](https://nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#appkey) from Log & Crash Search.
+2. [Enable Log & Crash Search](/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#check-appkey) from Log & Crash Search.
 
 ## Library Setting
 - Add the code as below to build.gradle.
@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-logger:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-logger:1.9.0'
     ...
 }
 ```

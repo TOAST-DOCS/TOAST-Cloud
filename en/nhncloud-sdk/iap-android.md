@@ -3,8 +3,19 @@
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-android).
-2. [Enable IAP service](https://nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#iap-appkey) in [NHN Cloud console](https://console.nhncloud.com).
-3. [Check AppKey](https://nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#appkey) in IAP console.
+2. [Enable IAP service](/Mobile%20Service/IAP/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](/Mobile%20Service/IAP/en/console-guide/#check-appkey) in IAP console.
+
+## Console Guide for Stores
+
+- [Google Console Guide](/Mobile%20Service/IAP/en/console-google-guide/)
+- [ONE store Console Guide](/Mobile%20Service/IAP/en/console-onestore-guide/)
+- [Galaxy Store Console Guide](/Mobile%20Service/IAP/en/console-galaxystore-guide/)
+- [Mycard Console Guide](/Mobile%20Service/IAP/en/mycard-guide/)
+- [Amazon Console Guide](/Mobile%20Service/IAP/en/console-amazon-guide/)
+- [Huawei Console Guide](/Mobile%20Service/IAP/en/console-huawei-guide/)
+
+> When selling subscription products from Google Play, must [set up google notifications to receive real-time subscription status](/Mobile%20Service/IAP/en/console-google-guide/#set-up-google-notifications-to-receive-real-time-subscription-status).
 
 ## In-App Purchase Guide for Each Store Type
 
@@ -27,8 +38,30 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.9.0'
     ...
+}
+```
+
+> Google Play in-app purchase functions in Android 4.4 (API level 19) or higher.
+
+#### Issue for Android 4.4 (API level 19) 
+
+When using Play Billing Library 6.x with R8, an issue may occur where it does not function with Android 4.4 (API level 19).
+To resolve this issue and support Android 4.4 (API level 19), add the following settings to the settings.gradle file
+
+```groovy
+buildscript {
+    repositories {
+        // Raw R8 releases.
+        maven {
+            url("https://storage.googleapis.com/r8-releases/raw")
+        }
+    }
+
+    dependencies {
+        classpath("com.android.tools:r8:8.1.46")
+    }
 }
 ```
 
@@ -46,14 +79,14 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.9.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.9.0'
     // ONE store V21
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.9.0'
     ...
 }
 ```
@@ -70,7 +103,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.9.0'
     ...
 }
 ```
@@ -87,7 +120,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.9.0'
     ...
 }
 ```
@@ -130,7 +163,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.9.0'
     ...
 }
 ```
@@ -147,7 +180,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.9.0'
     ...
 }
 ```
@@ -287,7 +320,7 @@ Add 'test_mode' to perform payment test. If 'test_mode' is not set, the default 
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object includes IAP setting information.
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) object can be created by using [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder).
-* Use the setAppKey method to set [AppKey](https://nhncloud.com/en/Mobile%20Service/IAP/en/console-guide/#check-appkey) issued from IAP console.
+* Use the setAppKey method to set [AppKey](/Mobile%20Service/IAP/en/console-guide/#check-appkey) issued from IAP console.
 * Use the setStoreCode method to set [Store Code](./iap-android/#_3) for IAP.
 
 ### Example of IAP Setting
@@ -348,7 +381,7 @@ public class MainApplication extends Application {
 ## Service Login
 
 * All products provided by NHN Cloud SDK, such as IAP and Log & Crash, use the same user ID.
-    * User ID can be set with [NhnCloudSdk.setUserId](https://nhncloud.com/en/TOAST/en/toast-sdk/getting-started-android/#userid).
+    * User ID can be set with [NhnCloudSdk.setUserId](/nhncloud/en/nhncloud-sdk/getting-started-android/#set-user-id).
     * When user ID is not set, purchase cannot proceed.
 * It is recommended to implement the following features in service login step: user ID setting, querying unconsumed purchase history, and querying active subscription products.
 
@@ -536,7 +569,7 @@ If a user purchased a product with a promotion code from the Google Play Store, 
 ## Query Unconsumed Purchases
 
 * Query the information of unconsumed one-time products (CONSUMABLE) and consumable subscription products (CONSUMABLE_AUTO_RENEWABLE).
-* After a product is provided to a user, the product can be consumed by using [Consume API](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api).
+* After a product is provided to a user, the product can be consumed by using [Consume API](/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/#consume-api).
 * Unconsumed purchase can be queried by using the NhnCloudIap.queryConsumablePurchases() method.
 * Unconsumed purchases for the current store or all stores can be queried by using [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams).
 * Query results are returned as the [IapPurchase](./iap-android/#iappurchase) object list via [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener).
@@ -1135,6 +1168,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | PRODUCT_ALREADY_OWNED  | 7    | Failed to purchase an item as it is already owned. |
 | PRODUCT_NOT_OWNED      | 8    | Cannot consume an item as it is not owned. |
 | USER_ID_NOT_REGISTERED | 9    | User ID is not registered. |
+| NETWORK_ERROR          | 12   | A network error occurred during the operation. |
 | UNDEFINED_ERROR        | 9999 | Undefined error.           |
 
 ### Server Error Codes
@@ -1142,7 +1176,6 @@ void onSubscriptionsStatusResponse(IapResult result,
 | RESULT                    | CODE | DESC                                     |
 | ------------------------- | ---- | ---------------------------------------- |
 | INACTIVATED_APP           | 101  | App is not activated.     |
-| NETWORK_NOT_CONNECTED     | 102  | Network is not connected. |
 | VERIFY_PURCHASE_FAILED    | 103  | Failed to verify purchase. |
 | PURCHASE_ALREADY_CONSUMED | 104  | Purchase is already consumed. |
 | PURCHASE_ALREADY_REFUNDED | 105  | Purchase is already refunded. |

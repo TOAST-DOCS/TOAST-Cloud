@@ -3,8 +3,19 @@
 ## 사전 준비
 
 1. [NHN Cloud SDK](./getting-started-android)를 설치합니다.
-2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [IAP 서비스를 활성화](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#iap-appkey)합니다.
-3. IAP 콘솔에서 [AppKey를 확인](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
+2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [IAP 서비스를 활성화](/Mobile%20Service/IAP/ko/console-guide/)합니다.
+3. IAP 콘솔에서 [AppKey를 확인](/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
+
+## 스토어별 콘솔 가이드
+
+- [Google 콘솔 가이드](/Mobile%20Service/IAP/ko/console-google-guide/)
+- [ONE store 콘솔 가이드](/Mobile%20Service/IAP/ko/console-onestore-guide/)
+- [Galaxy Store 콘솔 가이드](/Mobile%20Service/IAP/ko/console-galaxystore-guide/)
+- [Mycard 콘솔 가이드](/Mobile%20Service/IAP/ko/mycard-guide/)
+- [Amazon 콘솔 가이드](/Mobile%20Service/IAP/ko/console-amazon-guide/)
+- [Huawei 콘솔 가이드](/Mobile%20Service/IAP/ko/console-huawei-guide/)
+
+> Google Play에서 구독 상품을 판매하는 경우 [실시간 구독 상태 수신을 위한 Google 알림 설정](/Mobile%20Service/IAP/ko/console-google-guide/#google_1)을 해야 합니다.
 
 ## 스토어별 인앱 결제 가이드
 
@@ -27,8 +38,30 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.9.0'
     ...
+}
+```
+
+> Google Play 인앱 결제는 Android 4.4(API 레벨 19) 이상에서 동작합니다.
+
+#### Android 4.4(API 레벨 19) 이슈
+
+Play Billing Library 6.x를 R8과 함께 사용하는 경우, Android 4.4(API 레벨 19)에서 동작하지 않는 문제가 발생할 수 있습니다.
+이 문제를 해결하고 Android 4.4(API 레벨 19)를 지원하려면 settings.gradle 파일에 아래와 같은 설정을 추가하세요.
+
+```groovy
+buildscript {
+    repositories {
+        // Raw R8 releases.
+        maven {
+            url("https://storage.googleapis.com/r8-releases/raw")
+        }
+    }
+
+    dependencies {
+        classpath("com.android.tools:r8:8.1.46")
+    }
 }
 ```
 
@@ -46,14 +79,14 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.9.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.9.0'
     // ONE store V21
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.9.0'
     ...
 }
 ```
@@ -70,7 +103,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.9.0'
     ...
 }
 ```
@@ -87,7 +120,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.9.0'
     ...
 }
 ```
@@ -130,7 +163,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.9.0'
     ...
 }
 ```
@@ -147,7 +180,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.9.0'
     ...
 }
 ```
@@ -287,7 +320,7 @@ class MyApplication extends NhnCloudMyCardApplication {
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체는 인앱 결제 설정 정보를 포함하고 있습니다.
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration) 객체는 [NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder)를 사용하여 생성할 수 있습니다.
-* IAP 콘솔에서 발급 받은 [AppKey](https://nhncloud.com/ko/Mobile%20Service/IAP/ko/console-guide/#appkey)를 setAppKey 메서드를 사용하여 설정합니다.
+* IAP 콘솔에서 발급 받은 [AppKey](/Mobile%20Service/IAP/ko/console-guide/#appkey)를 setAppKey 메서드를 사용하여 설정합니다.
 * setStoreCode 메서드를 사용하여 인앱 결제에 사용할 [스토어 코드](./iap-android/#_3)를 설정합니다.
 
 ### 인앱 결제 설정 예시
@@ -348,7 +381,7 @@ public class MainApplication extends Application {
 ## 서비스 로그인
 
 * NHN Cloud SDK에서 제공하는 모든 상품(IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
-    * [NhnCloudSdk.setUserId](https://nhncloud.com/ko/TOAST/ko/toast-sdk/getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
+    * [NhnCloudSdk.setUserId](/nhncloud/ko/nhncloud-sdk/getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
     * 사용자 아이디를 설정하지 않은 경우, 결제가 진행되지 않습니다.
 * 서비스 로그인 단계에서 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능을 구현하는 것을 권장합니다.
 
@@ -536,7 +569,7 @@ NhnCloudIap.launchPurchaseFlow(activity, params);
 ## 미소비 결제 조회
 
 * 아직 소비되지 않은 일회성 상품(CONSUMABLE)과 소비성 구독 상품(CONSUMABLE_AUTO_RENEWABLE) 정보를 조회합니다.
-* 사용자에게 상품을 지급된 후 [Consume API](https://docs.nhncloud.com/ko/Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
+* 사용자에게 상품을 지급한 후 [Consume API](/Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
 * 미소비 결제는 NhnCloudIap.queryConsumablePurchases() 메서드를 사용하여 조회할 수 있습니다.
 * [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)를 이용하여 현재 스토어 또는 모든 스토어의 미소비 결제를 조회할 수 있습니다.
 * 조회 결과는 [IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)를 통해 [IapPurchase](./iap-android/#iappurchase) 객체 리스트로 반환됩니다.
@@ -1135,6 +1168,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | PRODUCT_ALREADY_OWNED  | 7    | 이미 가지고 있는 상품이므로 구매하지 못했습니다.<br>Failure to purchase since item is already owned. |
 | PRODUCT_NOT_OWNED      | 8    | 가지고 있지 않은 상품이므로 소비하지 못합니다.<br>Failure to consume since item is not owned. |
 | USER_ID_NOT_REGISTERED | 9    | 사용자 ID가 등록되지 않았습니다.<br>User ID Is not registered. |
+| NETWORK_ERROR          | 12   | 네트워크 오류가 발생했습니다.<br>A network error occurred during the operation. |
 | UNDEFINED_ERROR        | 9999 | 정의되지 않은 오류<br>Undefined error.           |
 
 ### 서버 오류 코드
@@ -1142,7 +1176,6 @@ void onSubscriptionsStatusResponse(IapResult result,
 | RESULT                    | CODE | DESC                                     |
 | ------------------------- | ---- | ---------------------------------------- |
 | INACTIVATED_APP           | 101  | 활성화되지 않은 앱입니다.<br>App is not active.     |
-| NETWORK_NOT_CONNECTED     | 102  | 네트워크가 연결되지 않았습니다.<br>Network not connected. |
 | VERIFY_PURCHASE_FAILED    | 103  | 결제 검증에 실패했습니다.<br>Failure to verify purchase. |
 | PURCHASE_ALREADY_CONSUMED | 104  | 이미 소비된 구매입니다.<br>Purchase already consumed. |
 | PURCHASE_ALREADY_REFUNDED | 105  | 환불된 구매입니다.<br>Purchase already refunded. |

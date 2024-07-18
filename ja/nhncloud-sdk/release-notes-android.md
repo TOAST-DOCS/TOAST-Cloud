@@ -1,5 +1,34 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
+## 1.9.0 (2024. 05. 07)
+
+### NHN Cloud IAP
+
+#### 機能改善
+
+* Google Play Billing Library(PBL) 6.2.1アップデート
+    * Googleのポリシーにより、PBL 5.xを使用しているアプリは2024年11月1日からPBL 6.xにアップデートする必要があります。
+        * 新規アプリのリリース： 2024年8月1日
+        * 既存アプリアップデート: 2024年11月1日
+    * Android 4.4(API 19)をサポートするには追加設定が必要です。詳細については、 [NHN Cloud > SDK使用ガイド > IAP > Android](./iap-android)を参考してください。
+* Google IAP Library(nhncloud-iap-google)の最小サポートバージョンが19に変更されました。
+* IapResult.NETWORK_ERRORコードを追加
+    * NHN Cloud IAP 1.9.0から既存のIapResult.NETWORK_NOT_CONNECTEDコードがIapResult.NETWORK_ERRORコードとして返されます。
+    * IapResult.NETWORK_NOT_CONNECTEDレスポンスコードが削除されました。
+* 決済ヒストリー情報に**ユーザーキャンセル(canceled)**、**決済保留(pending)**状態が追加されました。
+
+#### バグ修正
+
+* ONEstoreの外部決済後、画面の向きを変更した時にステータスバーが正常に表示されない問題を修正しました。
+
+## 1.8.6 (2024. 05. 07)
+
+### NHN Cloud OCR
+
+#### バグ修正
+
+* ネットワークタイムアウトでクレジットカードの認識に失敗する問題を修正しました。
+
 ## 1.8.5 (2024. 02. 27.)
 
 ### NHN Cloud Logger

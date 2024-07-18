@@ -19,7 +19,7 @@ NHN Cloud ID Card RecognizerはAndroid 5.1以上(API level 22以上)で動作し
 dependencies {
     ...
     // NHN Cloud ID Card Recognizer
-    implementation 'com.nhncloud.android:nhncloud-idcard-recognizer:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-idcard-recognizer:1.9.0'
 }
 ```
 
@@ -666,6 +666,6 @@ idCardLicenseTypeView.addTextViews(licenseType)
 | setTextSize | float |  | テキストサイズを設定します。 <br>サイズ単位はsp、基本設定は14spです。 |
 | setTextColor | int |  | テキスト色を設定します。 <br>基本設定はColor.Black(0xFF000000)です。 |
 | setTypefaceStyle | Typeface, int |  | テキストの書体とスタイルを設定します。 <br>基本スタイル設定はTypeface.NORMALです。|
-| setLetterSpacing | float | | 텍스트의 문자 간격을 설정합니다. <br>기본 설정은 0em입니다. 
+| setLetterSpacing | float | | テキストの文字間隔を設定します。 <br>基本設定は0emです。 |
 
 <br>

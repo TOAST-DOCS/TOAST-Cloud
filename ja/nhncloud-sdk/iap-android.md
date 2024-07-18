@@ -3,8 +3,19 @@
 ## 事前準備
 
 1. [NHN Cloud SDK](./getting-started-android)をインストールします。
-2. [NHN Cloudコンソール](https://console.nhncloud.com)で[IAPサービスを有効化](https://nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#iap-appkey)します。
-3. IAPコンソールで[AppKeyを確認](https://nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)します。
+2. [NHN Cloudコンソール](https://console.nhncloud.com)で[IAPサービスを有効化](/Mobile%20Service/IAP/ja/console-guide/)します。
+3. IAPコンソールで[AppKeyを確認](/Mobile%20Service/IAP/ja/console-guide/#appkey)します。
+
+## ストア別コンソールガイド
+
+- [Googleコンソールガイド](/Mobile%20Service/IAP/ja/console-google-guide/)
+- [ONE storeコンソールガイド](/Mobile%20Service/IAP/ja/console-onestore-guide/)
+- [Galaxy Storeコンソールガイド](/Mobile%20Service/IAP/ja/console-galaxystore-guide/)
+- [Mycardコンソールガイド](/Mobile%20Service/IAP/ja/mycard-guide/)
+- [Amazonコンソールガイド](/Mobile%20Service/IAP/ja/console-amazon-guide/)
+- [Huaweiコンソールガイド](/Mobile%20Service/IAP/ja/console-huawei-guide/)
+
+> Google Playでサブスクリプション商品を販売する場合、[リアルタイム購読状態受信のためのGoogle通知設定](/Mobile%20Service/IAP/ja/console-google-guide/#google_1)を行う必要があります。
 
 ## ストア別アプリ内決済ガイド
 
@@ -27,8 +38,30 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.9.0'
     ...
+}
+```
+
+> Google Playアプリ内決済はAndroid 4.4(APIレベル19)以上で動作します。
+
+#### Android 4.4(APIレベル19)イシュー
+
+Play Billing Library 6.xをR8と一緒に使用する場合、Android 4.4(APIレベル19)で動作しない問題が発生する可能性があります。
+この問題を解決し、Android 4.4(APIレベル19)をサポートするには、settings.gradleファイルに以下の設定を追加してください。
+
+```groovy
+buildscript {
+    repositories {
+        // Raw R8 releases.
+        maven {
+            url("https://storage.googleapis.com/r8-releases/raw")
+        }
+    }
+
+    dependencies {
+        classpath("com.android.tools:r8:8.1.46")
+    }
 }
 ```
 
@@ -46,14 +79,14 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.9.0'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.00.02.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.9.0'
     // ONE store V21
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.9.0'
     ...
 }
 ```
@@ -70,7 +103,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.9.0'
     ...
 }
 ```
@@ -87,7 +120,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.9.0'
     ...
 }
 ```
@@ -130,7 +163,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.9.0'
     ...
 }
 ```
@@ -147,7 +180,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.8.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.9.0'
     ...
 }
 ```
@@ -287,7 +320,7 @@ class MyApplication extends NhnCloudMyCardApplication {
 
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration)オブジェクトは、アプリ内決済設定情報を含んでいます。
 * [NhnCloudIapConfiguration](./iap-android/#nhncloudiapconfiguration)オブジェクトは、[NhnCloudIapConfiguration.Builder](./iap-android/#nhncloudiapconfigurationbuilder)を使用して作成できます。
-* IAPコンソールで発行された[AppKey](https://nhncloud.com/ja/Mobile%20Service/IAP/ja/console-guide/#appkey)を、setAppKeyメソッドを使用して設定します。
+* IAPコンソールで発行された[AppKey](/Mobile%20Service/IAP/ja/console-guide/#appkey)を、setAppKeyメソッドを使用して設定します。
 * setStoreCodeメソッドを使用して、アプリ内決済に使用する[ストアコード](./iap-android/#_3)を設定します。
 
 ### アプリ内決済設定例
@@ -348,7 +381,7 @@ public class MainApplication extends Application {
 ## サービスログイン
 
 * NHN Cloud SDKで提供するすべてのサービス(IAP、Log & Crashなど)は、1つの同じユーザーIDを使用します。
-    * [NhnCloudSdk.setUserId](https://nhncloud.com/ja/TOAST/ja/toast-sdk/getting-started-android/#userid)でユーザーIDを設定できます。
+    * [NhnCloudSdk.setUserId](/nhncloud/ja/nhncloud-sdk/getting-started-android/#userid)でユーザーIDを設定できます。
     * ユーザーIDを設定していない場合、決済が行われません。
 * サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読商品照会機能を導入することを推奨します。
 
@@ -535,7 +568,7 @@ Google Play Storeでプロモーションコードで商品を購入した場合
 ## 未消費決済照会
 
 * まだ消費されていない一回の商品(CONSUMABLE)と消費性購読商品(CONSUMABLE_AUTO_RENEWABLE)情報を照会します。
-* ユーザーに商品を支給した後、[Consume API](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
+* ユーザーに商品を支給した後、[Consume API](/Mobile%20Service/IAP/ja/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
 * 未消費決済は、NhnCloudIap.queryConsumablePurchases()メソッドを使用して照会できます。
 * [IapQueryPurchasesParams](./iap-android/#iapquerypurchasesparams)を利用して現在ストアまたはすべてのストアの未消費決済を照会できます。
 * 照会結果は、[IapService.PurchasesResponseListener](./iap-android/#iapservicepurchasesresponselistener)を通して[IapPurchase](./iap-android/#iappurchase)オブジェクトリストで返されます。
@@ -1132,6 +1165,7 @@ void onSubscriptionsStatusResponse(IapResult result,
 | PRODUCT_ALREADY_OWNED  | 7    | すでに所持している商品のため、購入できませんでした。<br>Failure to purchase since item is already owned. |
 | PRODUCT_NOT_OWNED      | 8    | 所持していない商品のため、消費できません。<br>Failure to consume since item is not owned. |
 | USER_ID_NOT_REGISTERED | 9    | ユーザーIDが登録されていません。<br>User ID Is not registered. |
+| NETWORK_ERROR          | 12   | ネットワークエラーが発生しました。<br>A network error occurred during the operation. |
 | UNDEFINED_ERROR        | 9999 | 定義されていないエラー<br>Undefined error.           |
 
 ### サーバーエラーコード
@@ -1139,7 +1173,6 @@ void onSubscriptionsStatusResponse(IapResult result,
 | RESULT                    | CODE | DESC                                     |
 | ------------------------- | ---- | ---------------------------------------- |
 | INACTIVATED_APP           | 101  | 有効になっていないアプリです。<br>App is not active.     |
-| NETWORK_NOT_CONNECTED     | 102  | ネットワークが接続されていません。<br>Network not connected. |
 | VERIFY_PURCHASE_FAILED    | 103  | 決済の検証に失敗しました。<br>Failure to verify purchase. |
 | PURCHASE_ALREADY_CONSUMED | 104  | すでに消費した購入です。<br>Purchase already consumed. |
 | PURCHASE_ALREADY_REFUNDED | 105  | 返金された購入です。<br>Purchase already refunded. |

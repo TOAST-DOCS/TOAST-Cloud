@@ -70,6 +70,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Cloud Monitoring | グローバル |  |  |  |  |
 |  | Service Monitoring | グローバル |  |  |  |  |
 | Database | RDS for MySQL | リージョン | O | O | O |  |
+|  | RDS for PostgreSQL  | リージョン | O |  |  |  |
 |  | RDS for MariaDB | リージョン | O |  |  |  |
 |  | RDS for MS-SQL | リージョン | O |  |  |  |
 |  | EasyCache | リージョン | O | O |  |  |
@@ -80,7 +81,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | MariaDB Instance  | リージョン | O | O | O | O |
 |  | Tibero Instance   | リージョン | O | O | O | O |
 |  | Redis Instance | リージョン | O | O | O | O |
-| Hybrid & Private Cloud | NHN Hybrid Cloud | リージョン | - | - | - | - |
+| Hybrid & Private Cloud | NHN Hybrid Cloud | リージョン | O |  |  |  |
 |  | NHN Private Cloud | リージョン | - | - | - | - |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
@@ -103,6 +104,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Webshell Threat Detector | リージョン | O | O |  |  |
 |  | Security Advisor | グローバル |  |  |  |  |
 |  | Network Firewall | リージョン | O | O |  |  |
+|  | NHN Bastion | リージョン | O | O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image Manager | リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |

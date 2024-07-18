@@ -4,13 +4,13 @@
 > To use the **(New) Receipt verification + Notification V2** method, use NHN Cloud SDK iOS v1.7.0 or later.
 
 > NHN Cloud SDK iOS v1.8.0 and higher supports both **(New) Receipt Verification + Notification V2** method and **(Old) Receipt Verification + Notification V1** method.
-> How the SDK is verified depends on the IAP console settings. - [IAP Console Guide](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-apple-guide/#notification-v2)
+> How the SDK is verified depends on the IAP console settings. - [IAP Console Guide](/Mobile%20Service/IAP/zh/console-apple-guide/#new-receipt-verification-notification-v2)
 
 ## Prerequisites
 
 1. Install [NHN Cloud SDK](./getting-started-ios).
-2. [Enable Mobile Service \> IAP](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
-3. [Check AppKey](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-guide/#appkey) in IAP.
+2. [Enable Mobile Service \> IAP](/Mobile%20Service/IAP/zh/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
+3. [Check AppKey](/Mobile%20Service/IAP/zh/console-guide/#check-appkey) in IAP.
 
 ## NHN Cloud IAP Components
 
@@ -98,7 +98,7 @@ end
 
 ## Initialize NHN Cloud IAP SDK
 
-* Set the [AppKey](https://docs.nhncloud.com/zh/Mobile%20Service/IAP/zh/console-guide/#appkey) issued from IAP console on the [NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration) object.
+* Set the [AppKey](/Mobile%20Service/IAP/zh/console-guide/#check-appkey) issued from IAP console on the [NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration) object.
 * NHN Cloud IAP uses the [NHNCloudIAPConfiguration](./iap-ios/#nhncloudiapconfiguration) object as a parameter for initialization.
 
 ### Specification for Initialization API

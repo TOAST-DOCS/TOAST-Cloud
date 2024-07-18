@@ -1,4 +1,4 @@
-## 콘솔 사용 가이드
+## 콘솔 정책 가이드
 
 NHN Cloud (공공기관용) Console은 NHN Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을 합니다.
 여기에서는 NHN Cloud (공공기관용) 콘솔의 기본적인 설정과 사용 방법을 안내합니다.
@@ -99,6 +99,18 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 
 * **리소스 권한 통제 및 접속 단말 제한 설정**에서 **설정 안 함(Defualt)/설정**을 선택할 수 있습니다.
 *  리소스 권한 통제 및 접속 단말 제한 설정에서 **설정**을 선택하면, 운영자의 리소스 조회 기능이 제한됩니다.
+
+#### 개인정보 보호 설정
+개인정보 보호 설정 기능은 개인정보 보호가 필요한 경우 사용할 수 있습니다.
+서비스 상에서 노출되는 개인정보를 마스킹 처리하거나 개인정보 다운로드가 필요할 경우 인터넷망 분리 환경에서만 가능하도록 설정할 수 있습니다. 
+
+* 개인정보 보호 설정 기능
+    * 조직/프로젝트 > 멤버 관리 > IAM 멤버 > 멤버 목록 다운로드 기능
+        * 설정 안함 시, IAM 멤버 목록을 다운로드할 수 있는 모든 멤버가 멤버 목록을 다운로드할 수 있습니다.
+        * 설정 시, 멤버 목록 다운로드 기능이 비활성화되며 예외적으로 허용된 IP 또는 IP 대역에서만 멤버 목록 다운로드가 가능합니다.
+    * 조직 > CloudTrail > 개인 정보
+        * 설정 안함 시, 로그 목록 조회가 가능한 모든 멤버에게 로그 목록 내 전체 정보를 제공합니다.
+        * 설정 시, 로그 목록 내 개인 정보(이메일, 이름, ID)가 마스킹 처리되어 제공됩니다.
 
 ### IAM 거버넌스 설정
 
@@ -267,46 +279,45 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 
 ### 조직 멤버
 
-* 조직의 OWNER는 계정의 모든 역할 부여하고 서비스를 신청할 수 있습니다.
-* OWNER는 회원을 등록하여 조직별 관리 역할을 부여할 수 있습니다.
+* IAM 멤버는 조직 서비스 별(Online Contact 등) 설정할 수 있는 역할이 다릅니다.
+* NHN Cloud(공공기관용) 회원과 IAM 멤버의 클라우드 서비스 역할은 아래와 같습니다.
+* 단, IAM 멤버는 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야합니다.
 
-#### NHN Cloud(공공기관용) 회원의 조직 역할
+#### 조직 관리 역할
 
-| 작업 | 역할 | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| --- | --- | --- | --- | --- | --- | --- |
-| 조직 관리 | 조직 생성 | O |  |  |  |  |
-|  | 조직 수정 | O | O |  |  |  |
-|  | 조직 삭제 | O |  |  |  |  |
-| 멤버 관리 | 조직 멤버 등록 | O | O |  |  |  |
-|  | 조직 멤버 삭제 | O | O |  |  |  |
-| 서비스 관리 | 조직 서비스 활성화 | O | O |  |  |  |
-|  | 조직 서비스 비활성화 | O | O |  |  |  |
-| 결제 관리 | 청구서 조회 | O |  |  |  |  |
-|  | 이용 현황 | O | O |  | O |  |
-| 프로젝트 관리 | 프로젝트 생성 | O | O | O |  |  |
-|  | 프로젝트 삭제 | O | O |  |  |  |
-| 사용자 Action 로그 관리 | 사용자 Action 로그 조회 | O | O |  |  | O |
+| 역할 | 설명 |
+| --- | --- |
+| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기) |
+| BILLING_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기) |
+| BUDGET_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
+| LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| ORG_DASHBOARD_VIEWER | 조직 대시보드 Read(읽기) |
+| NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 
-#### IAM 멤버의 조직 역할
+#### 조직 서비스 이용 역할
 
-* 조직 서비스별(Dooray!, CloudTrail 등) 설정할 수 있는 역할이 다릅니다.
-* 클라우드 서비스 역할은 아래와 같습니다.
+| 서비스 | 역할 | 설명 |
+| --- | --- | --- |
+| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
+| CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| Resource Watcher | ADMIN | Resource Watcher 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Resource Watcher | VIEWER | Resource Watcher 서비스 Read(읽기) |
 
-| 작업 | 역할 | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| --- | --- | --- | --- | --- | --- |
-| 조직 관리 | 조직 수정 | O |  |  |  |
-| 멤버 관리 | 조직 멤버 등록 | O |  |  |  |
-|  | 조직 멤버 삭제 | O |  |  |  |
-| 서비스 관리 | 조직 서비스 활성화 | O |  |  |  |
-|  | 조직 서비스 비활성화 | O |  |  |  |
-|  | 이용 현황 | O |  | O |  |
-| 프로젝트 관리 | 프로젝트 생성 | O | O |  |  |
-|  | 프로젝트 삭제 | O |  |  |  |
-| 사용자 Action 로그 관리 | 사용자 Action 로그 조회 | O |  |  | O |
+#### 조직 서비스 활성화 역할
+
+* 조직 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
+* 단, 조직 생성 시 활성화되어있는 서비스(CloudTrail, Resource Watcher 등)는 별도의 PERMISSION 역할을 제공하지 않습니다.
+
+| 역할 | 설명 |
+| --- | --- |
+| 서비스명 PERMISSION | 서비스 Enable(활성화), Disable(비활성화) |
 
 ### 프로젝트 멤버
 
-조직의 멤버가 아니더라도 프로젝트의 멤버가 될 수 있습니다.
 프로젝트 멤버에게 필요한 역할을 여러 개 부여할 수 있습니다.
 
 #### 프로젝트 관리 역할
@@ -316,7 +327,7 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | MARKETPLACE_ADMIN | 마켓플레이스 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 | MARKETPLACE_VIEWER | 마켓플레이스 서비스 Read(읽기) |
-| MEMBER | 프로젝트 내 모든 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| MEMBER | 프로젝트 내 모든 서비스의 리소스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)   |
 | BILLING VIEWER | 이용 현황 Read(읽기)  |
 | PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제)  |
 | PROJECT MANAGEMENT VIEWER | 프로젝트 기본 정보 Read(읽기)<br>프로젝트 통합 Appkey Read(읽기)  |
@@ -329,36 +340,11 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT VIEWER| 프로젝트 쿼터 관리 Read(읽기)|
+| PROJECT DASHBOARD VIEWER | 프로젝트 대시보드 Read(읽기) |
 
-#### 프로젝트 관리 기능별 권한
-| 탭 | 기능별 수행 동작 | 프로젝트 관리 역할 | 서비스 이용 역할 |
-| --- | --- | --- | --- |
-| 대시보드 | Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | 서비스 ADMIN<br>서비스 PERMISSION<br>서비스 VIEWER |
-| 멤버 관리 | Read(읽기) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 권한 없음 |
-| | Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MEMBER ADMIN | 권한 없음 |
-| 역할 그룹 관리 | 역할 그룹 Read(읽기) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 권한 없음 |
-| | 역할 그룹 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MEMBER ADMIN | 권한 없음 |
-| | 역할 그룹 멤버 탭 Read(읽기) | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 권한 없음 |
-| | 역할 그룹 멤버 탭 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MEMBER ADMIN | 권한 없음 |
-| | 역할 그룹 역할 탭 Read(읽기) | ADMIN<br>PROJECT MEMBER ADMIN <br> PROJECT MEMBER VIEWER <br>PROJECT NOTICE GROUP MANAGEMENT ADMIN  | 권한 없음 |
-| | 역할 그룹 역할 탭 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MEMBER ADMIN | 권한 없음 |
-| 알림 수신 그룹 관리 | Read(읽기)| ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER | 권한 없음 |
-| | Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | 권한 없음 |
-| 알림 관리 | Read(읽기)| ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | 서비스 ADMIN<br>서비스 VIEWER |
-| | Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN | 서비스 ADMIN|
-| 이용 현황 | Read(읽기) | ADMIN<br>BILLING VIEWER | 권한 없음 |
-| 프로젝트 관리 | 프로젝트 기본 정보 Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN | 서비스 PERMISSION |
-| | 프로젝트 기본 정보 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 권한 없음 |
-| | API 보안 설정 Read(읽기) | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MEMBER<br>PROJECT API SECURITY SETTING ADMIN | 서비스 PERMISSION  |
-| | API 보안 설정 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT API SECURITY SETTING ADMIN | 권한 없음 |
-| | 이용 중인 서비스(비활성화) Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE_ADMIN<br>MARKETPLACE_VIEWER | 서비스 PERMISSION |
-| | 이용 중인 서비스(비활성화) Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN(마켓플레이스 서비스의 경우 비활성화 불가)<br>MARKETPLACE_ADMIN(프로젝트 서비스의 경우 비활성화 불가)  | 서비스 PERMISSION |
-| | 프로젝트 삭제 Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | 서비스 PERMISSION |
-| | 프로젝트 삭제 Create(생성)/Update(갱신)/Delete(삭제) | ADMIN<br>PROJECT MANAGEMENT ADMIN | 권한 없음 |
-| 쿼터 관리 | Read(읽기) | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT QUOTA MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT VIEWER | 서비스 ADMIN<br>서비스 VIEWER |
-| | 쿼터 조정 신청 | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT ADMIN | 서비스 ADMIN |
 
-#### 서비스 이용 역할
+
+#### 프로젝트 서비스 이용 역할
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
@@ -397,8 +383,8 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | Deploy | VIEWER | Deploy 서비스 Read(읽기) 권한 |
 | Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
 
-#### 서비스 활성화 역할
-서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
+#### 프로젝트 서비스 활성화 역할
+프로젝트 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
 
 | 역할 | 설명 |
 | --- | --- |

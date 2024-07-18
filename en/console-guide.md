@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-## NHN Cloud > Console User Guide
+## NHN Cloud > Console Policy Guide
 
 NHN Cloud console serves as a management tool and task window for using NHN Cloud services.
 This document guides you through the basic setup and use of the NHN Cloud console.
@@ -108,6 +107,19 @@ When an operator looks up important information on resources, the users are noti
 
 * You can select **Not Set (Default)** in **Set control of resource permissions and restriction on terminal access.**
 * If you select **Set** in Set control of resource permissions and restriction on terminal access, the operator is restricted from looking up resources.
+
+#### Privacy Setting
+The privacy setting feature is available if you need to protect your privacy.
+You can mask personal information that is exposed on the service, or if you need to download personal information, you can make it available only in a separate network environment. 
+
+* Privacy Setting
+    * Organization/Project > Manage Member > IAM Member > Download List
+        * If not set, any member who can download the IAM member list can download the member list.
+        *  If set up, the feature to download member lists is disabled and only exceptionally allowed IPs or IP bands can download member lists.
+
+    * Organization > CloudTrail > Privacy
+        * If not set, all members who can view the log list will see the full information in the log list.
+        * If set up, personal information (email, name, ID) in the log list is masked.
 
 ### IAM Governance Setting
 
@@ -283,47 +295,46 @@ Members are classified into NHN Cloud members and IAM members.
 
 ### Organization Members
 
-* The OWNER of the organization can grant full control of the account and apply for services.
-* OWNER can register members and grant management role for each organization.
+* IAM 멤버는 조직 서비스 별(Online Contact 등) 설정할 수 있는 역할이 다릅니다.
+* NHN Cloud 회원과 IAM 멤버의 클라우드 서비스 역할은 아래와 같습니다.
+* 단, IAM 멤버는 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야합니다.
 
-#### Organization role of NHN Cloud Members 
+#### Organization Management Roles
 
-| Task               | Role                                              | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| -------------------- | ------------------------------------------------- | ----- | ----- | ------ | -------------- | ---- |
-| Manage Organizations | Create Organizations                              | O     |       |        |                |      |
-|                      | Modify Organizations                              | O     | O     |        |                |      |
-|                      | Delete Organizations                              | O     |       |        |                |      |
-| Manage Members       | Register Organization Members                     | O     | O     |        |                |      |
-|                      | Delete Organization Members                       | O     | O     |        |                |      |
-| Manage Services      | Enable Organization Services                      | O     | O     |        |                |      |
-|                      | Disable Organization Services                     | O     | O     |        |                |      |
-| Manage Billing       | Query Bills                                       | O     |       |        |                |      |
-|                      | Status of Service Use                             | O     | O     |        | O              |      |
-| Manage Projects      | Create Projects                                    | O     | O     | O      |                |      |
-|                      | Delete Projects                                   | O     | O     |        |                |      |
-| Manage User Action Log | Query User Action Logs                          | O     | O     |        |                |  O   |
+| Role | Description |
+| ---- | ----------- |
+| OWNER | Create, Read, Update, Delete, and Delete organizations across the organization, including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
+| ADMIN | Create/Read/Update/Delete for the entire organization, including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
+| MEMBER | Create project, read organization dashboard, read project |
+| BILLING_VIEWER | Read payment management usage and budget management. |
+| BUDGET_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
+| LOG_VIEWER | Create/Read/Update/Delete user action logs management |
+| ORG_DASHBOARD\_VIEWER | Read organization dashboard |
+| NONE | Read organization dashboard and organization default settings |
 
-#### Organization role of IAM Members 
+#### Service Use roles
 
-* roles that can be set are different for each organization service (Online Contact, Dooray!, etc.).
-* Cloud service roles are as follows.
+| Service | Role | Description |
+| --- | --- | --- |
+| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
+| CloudTrail | External Storage Config ADMIN | Create/Read/Update/Delete CloudTrail external storage settings |
+| Resource Watcher | ADMIN | Resource Watcher 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Resource Watcher | VIEWER | Resource Watcher 서비스 Read(읽기) |
 
-| Task               | Role                                              | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| -------------------- | ------------------------------------------------- |  ----- | ------ | -------------- | ---- |
-| Manage Organizations | Modify Organizations                              |  O     |        |                |      |
-| Manage Members       | Register Organization Members                     |  O     |        |                |      |
-|                      | Delete Organization Members                       |  O     |        |                |      |
-| Manage Services      | Enable Organization Services                      |  O     |        |                |      |
-|                      | Disable Organization Services                     |  O     |        |                |      |
-|                      | Status of Service Use                             |  O     |        | O              |      |
-| Manage Projects      | Create Projects                                   |  O     | O      |                |      |
-|                      | Delete Projects                                   |  O     |        |                |      |
-| Manage User Action Log | Query User Action Logs                          |  O     |        |                |  O   |
+#### Service PERMISSION Role
+
+* Service PERMISSION Role can enable or disable each service.
+* 단, 조직 생성 시 활성화되어있는 서비스(CloudTrail, Resource Watcher 등)는 별도의 PERMISSION 역할을 제공하지 않습니다.
+
+| Role | Description |
+| --- | --- |
+| Service Name PERMISSION | Service Enable, Disable  |
 
 ### Project Members
 
-A user can become a member of a project even if the user is not a member of an organization.
-You can grant multiple required roles to project members.
+* You can grant multiple required roles to project members.
 
 #### Project Management roles
 
@@ -345,35 +356,8 @@ You can grant multiple required roles to project members.
 | PROJECT API SECURITY SETTING ADMIN | Create/Read/Update/Delete for project's API Security Setting|
 | PROJECT QUOTA MANAGEMENT ADMIN| Create/Read/Update/Delete for project's Quota Management|
 | PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
+| PROJECT DASHBOARD VIEWER | Read project dashboard|
 
-#### Permissions by Project Management Feature
-
-| Tab | Available Action by Feature  | Project Management ROLE | Service Use ROLE |
-| --- | --- | --- | --- |
-| Dashboard | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | Service ADMIN<br>Service PERMISSION<br>Service VIEWER |
-| Member Management | Read | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
-| | Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
-| Role Group Management | Role Group Read | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
-| | Role Group Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
-| | Role Group Member Tab Read | ADMIN<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
-| | Role Group Member Tab Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
-| | Role Group Role Tab Read | ADMIN<br>PROJECT MEMBER ADMIN<br> PROJECT MEMBER VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
-| | Role Group Role Tab Create/Update/Delete | ADMIN<br>PROJECT MEMBER ADMIN | No Permission |
-| Notification Receiver Group Management | Read | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER | No Permission |
-| | Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN | No Permission |
-| Notification Management | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER | Service ADMIN<br>Service VIEWER |
-| | Create/Update/Delete | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT NOTICE MANAGEMENT ADMIN | Service ADMIN|
-| Usage Status | Read | ADMIN<br>BILLING VIEWER | No Permission |
-| Project Management | Basic Project Information Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER<br>PROJECT NOTICE GROUP MANAGEMENT ADMIN<br>PROJECT NOTICE GROUP MANAGEMENT VIEWER<br>PROJECT API SECURITY SETTING ADMIN| Service PERMISSION |
-| | Basic Project Information Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN | No Permission |
-| | API Security Setting Read | ADMIN<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MEMBER<br>PROJECT API SECURITY SETTING ADMIN | Service PERMISSION  |
-| | API Security Setting Create/Update/Delete | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT API SECURITY SETTING ADMIN | No Permission |
-| | Service in Use(Disable) Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>MARKETPLACE_ADMIN<br>MARKETPLACE_VIEWER| Service PERMISSION |
-| | Service in Use(Disable) Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN(Cannot disable for marketplace service)<br>MARKETPLACE_ADMIN(Cannot disable for project service) | Service PERMISSION |
-| | Delete Project Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT MEMBER ADMIN <br>PROJECT MEMBER VIEWER <br>BILLING VIEWER <br>MARKETPLACE\_ADMIN <br>MARKETPLACE\_VIEWER | Service PERMISSION |
-| | Delete Project Create/Update/Delete | ADMIN<br>PROJECT MANAGEMENT ADMIN | No Permission |
-| Quota Management | Read | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT MANAGEMENT VIEWER<br>PROJECT QUOTA MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT VIEWER | Service ADMIN<br>Service VIEWER |
-| | Request Quota Adjustment | ADMIN<br>MEMBER<br>PROJECT MANAGEMENT ADMIN<br>PROJECT QUOTA MANAGEMENT ADMIN | Service ADMIN |
 
 #### Service Use roles
 
@@ -451,6 +435,9 @@ You can grant multiple required roles to project members.
 | Security Advisor | VIEWER | Read for Security Advisor Service  |
 | Network Firewall | ADMIN | Create/Read/Update/Delete for Network Firewall Service  |
 | Network Firewall | VIEWER | Read for Network Firewall Service  |
+| NHN Bastion | ADMIN | Create/Read/Update/Delete for NHN Bastion Service | 
+| NHN Bastion | VIEWER | Read for NHN Bastion Service | 
+| NHN Bastion | USER | Use NHN Bastion Service Terminal | 
 | CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
 | Image Manager | ADMIN | Create/Read/Update/Delete pfor Image Manager Service |
 | Push | ADMIN | Create/Read/Update/Delete for Push Service |
@@ -951,6 +938,8 @@ You can grant multiple required roles to project members.
 | Backup | ADMIN | Create/Read/Update/Delete for Backup Service |
 | RDS for MySQL | ADMIN | Create/Read/Update/Delete for RDS for MySQL Service |
 | RDS for MySQL | VIEWER | Read for RDS for MySQL Service |
+| RDS for PostgreSQL | ADMIN | Create/Read/Update/Delete for RDS for PostgreSQL Service |
+| RDS for PostgreSQL | VIEWER | Read for RDS for PostgreSQL Service |
 | RDS for MariaDB | ADMIN | Create/Read/Update/Delete for RDS for MariaDB Service |
 | RDS for MariaDB | VIEWER | Read for RDS for MariaDB Service |
 | RDS for MS-SQL | ADMIN | Create/Read/Update/Delete for RDS for MS-SQL Service |
