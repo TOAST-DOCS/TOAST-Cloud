@@ -81,7 +81,7 @@ dependencies {
     // ONE store V17
     implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.9.1'
     // ONE store V19
-    implementation files('libs/iap_sdk-v19.00.02.aar')
+    implementation files('libs/iap_sdk-v19.01.00.aar')
     implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.9.1'
     // ONE store V21
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
