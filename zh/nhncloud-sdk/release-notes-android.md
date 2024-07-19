@@ -7,6 +7,7 @@
 #### Improved
 
 * Amazon 결제 재처리 개선
+  * 구매 진행 중 앱 종료 또는 네트워크 차단 등으로 실패한 결제가 재처리 시 신규 구매건으로 처리되는 이슈를 개선하였습니다.
 * 원스토어 v19 SDK 업데이트 (v19.01.00)
   * Android 14(API Level 34) 이상을 타겟팅하는 앱은 iap_sdk-v19.01.00.aar을 사용해야합니다.
 
@@ -168,7 +169,7 @@
 
 ### NHN Cloud OCR
 
-#### Improved 
+#### Improved
 
 * Improved stability
 
@@ -204,8 +205,8 @@
 
 * Improved sending push events
 * Fixed an issue of changing flags in Intent
-    * Fixed an issue where, when calling NhnCloudPushMessageReceiver.getContentIntent(), the flags set in the delivered Intent are not maintained. 
-    
+    * Fixed an issue where, when calling NhnCloudPushMessageReceiver.getContentIntent(), the flags set in the delivered Intent are not maintained.
+
 ## 1.3.0 (October 25, 2022)
 
 ### NHN Cloud OCR
