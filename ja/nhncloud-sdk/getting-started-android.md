@@ -51,7 +51,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android：nhncloud-sdk：1.8.5'
+  implementation 'com.nhncloud.android：nhncloud-sdk：1.9.1'
 }
 ```
 
