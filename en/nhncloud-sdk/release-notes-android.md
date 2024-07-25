@@ -9,7 +9,7 @@
 * Improved Amazon payment reprocessing
     * Fixed an issue where, when a payment failed during the purchase process, for example, due to closing the app or blocking the network, the failed payment would be treated as a new purchase when it was reprocessed.
 * Updated ONE store SDK v19 (v19.01.00)
-     * Apps targeting Android 14 (API Level 34) and above must use iap_sdk-v19.01.00.aar.
+    * Apps targeting Android 14 (API Level 34) and above must use iap_sdk-v19.01.00.aar.
 
 ## 1.9.0 (May 28. 2024)
 
