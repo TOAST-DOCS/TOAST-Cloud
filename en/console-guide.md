@@ -365,7 +365,7 @@ Members are classified into NHN Cloud members and IAM members.
 | Service | Role | Description |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Create/Read/Update/Delete for Infrastructure Service |
-| Infrastructure | MEMBER | -Read Network services (except Floating IP), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | MEMBER | Read Network services (except Floating IP), NKS, and NCR. Create, Read, Update, Delete other services |
 | Infrastructure | Routing ADMIN | Read Network services (except Floating IP, Routing Table), NKS, and NCR. Create, Read, Update, Delete other services |
 | Infrastructure | Security Group ADMIN | Read Network services (except Floating IP, Security Groups), NKS, and NCR. Create, Read, Update, Delete other services |
 | Infrastructure | Load Balancer ADMIN | Read Network services (except Floating IP, Load Balancer), NKS, and NCR. Create, Read, Update, Delete other services |
