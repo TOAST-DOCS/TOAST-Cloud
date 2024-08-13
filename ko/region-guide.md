@@ -46,6 +46,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Security Groups | 리전 | O | O | O | O |
 |  | Network ACL | 리전 | O | O |  |  |
 |  | Network Interface | 리전 | O | O | O | O |
+|  | Flow Log | 리전 | O | O |  |  |
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
 |  | 물리 Load Balancer | 리전 | O | O |  |  |

@@ -362,13 +362,16 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | サービス | ロール | 説明 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | Load Balancer ADMIN | VVPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, NHN Container Service(NCS), Traffic mirroring Read(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | Routing ADMIN | VPC, Subnet, Network Interface, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスRead（読込）。 このほか、サービスCreate(作成)、Read(読込)、Update(更新)、Delete(削除)|
-| Infrastructure | NAT Gateway ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスRead（読込）。 このほか、サービスCreate(作成)、Read(読込)、Update(更新)、Delete(削除)|
-| Infrastructure | Service Gateway ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスRead（読込）。 このほか、サービスCreate(作成)、Read(読込)、Update(更新)、Delete(削除)|
-| Infrastructure | NCS ADMIN | PC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), Traffic mirroringサービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Infrastructure | MEMBER | ネットワークサービス(Floating IPを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Routing ADMIN | ネットワークサービス(Floating IP、Routing Tableを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Security Group ADMIN | ネットワークサービス(Floating IP、Security Groupsを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Load Balancer ADMIN | ネットワークサービス(Floating IP、Load Balancerを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Transit Hub ADMIN | ネットワークサービス(Floating IP、Transit Hubを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NAT Gateway ADMIN | ネットワークサービス(Floating IP、NAT Gatewayを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Service Gateway ADMIN | ネットワークサービス(Floating IP、Service Gatewayを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Private DNS ADMIN | ネットワークサービス(Floating IP、Private DNSを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Flow Log ADMIN | ネットワークサービス(Floating IP、Flow Logを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NCS ADMIN | ネットワークサービス(Floating IPを除く)及びNKS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り) |
