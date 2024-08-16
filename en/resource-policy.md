@@ -33,8 +33,10 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Block Storage| Per project |10240GB| O | |
-|Block Storage - Max Size| Per block storage |2048GB| O | |
-
+|Block Storage HDD Type Max Size| Per block storage |2048GB| O | |
+|Block Storage SSD Type Max Size| Per block storage |2048GB| O | |
+|Block Storage Encrypted HDD Type Max Size| Per block storage |2048GB| O | |
+|Block Storage Encrypted SSD Type Max Size| Per block storage |2048GB| O | |
 
 ### Resource Provision Policy for Floating IP Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
@@ -58,6 +60,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Subnet | Per VPC |10| O | |
+|Static Route | Per subnet | 20 | X | |
 
 
 ### Resource Provision Policy for Routing Service  
@@ -67,7 +70,6 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |----|----|----|----|----|
 |Routing Table | Per VPC |10| O | |
 |Route | Per routing table |10| O | 100 |
-|Static Route | Per subnet | 20 | X | |
 
 
 ### Resource Provision Policy for Peering Gateway Service  
@@ -77,6 +79,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |----|----|----|----|----|
 |Region Peering | Per project  |10 | O | | 
 |Project Peering |Per project  |10 | O | |
+|Peering Allowed Target|Per project  |10 | O | |
 
 
 ### Resource Provision Policy for Internet Gateway Service  
@@ -145,10 +148,10 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Load Balancer | Per project |10| O | |
-|L7 Policy | Per Listener |10| O | |
-|L7 Rule | Per L7 Policy |10| O | |
 |IP Access Control Group    | Per project |10| O | |
 |IP Access Control Target | Per IP access control group |1000| O | |
+|L7 Policy | Per Listener |10| O | |
+|L7 Rule | Per L7 Policy |10| O | |
 
 
 ### Resource Provision Policy for NAS Service  
@@ -156,10 +159,10 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
-| NAS volume | Per project| 100 | O | |
-| NAS Volume Size | Per project | 30TB | O | |
-| NAS Max Volume Size | Per volum | 10TB | O | |
-| NAS volume Subnet | Per project | 3 | O | |
+| NAS Storage | Per project| 100 | O | |
+| NAS Storage Size | Per project | 30TB | O | |
+| NAS Storage Max Size | Per NAS storage | 10TB | O | |
+| NAS Storage Subnet | Per project | 3 | O | |
 
 
 ### Resource Provision Policy for Transit Hub Service  
@@ -171,11 +174,8 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 | Transit Hub Attachment | Per project | 20 | O | |
 | Transit Hub Allow Project | Per project | 10 | O | |
 | Transit Hub Routing Table | Per project | 20 | O | |
-| Transit Hub Routing Association | | No limit | | |
-| Transit Hub Routing Propagation | | No limit | | |
 | Transit Hub Routing Rule | Per project | 100 | O | |
 | Transit Hub Multicast Domain | Per project | 20 | O | |
-| Transit Hub Multicast Association | | No limit | | |
 | Transit Hub Multicast Group | Per project | 100 | O | |
 
 
@@ -206,8 +206,6 @@ Resource usage is calculated for each project, and the policy is applied by the 
 | Number of Artifacts | Per image | 10000 | O | |
 | Number of Tags | Per artifact | 1000 | O | |
 | Number of Manual Scans |  1 day per image | 1 | O | |
-| Number of Image Protection Policy | Per registry | No limit |  | |
-| Number of Image Cleanup Policy | Per registry | No limit |  | |
 
 
 ### Resource Provision Policy for NHN Container Service(NCS) 
