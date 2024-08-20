@@ -295,9 +295,9 @@ Members are classified into NHN Cloud members and IAM members.
 
 ### Organization Members
 
-* IAM 멤버는 조직 서비스 별(Online Contact 등) 설정할 수 있는 역할이 다릅니다.
-* NHN Cloud 회원과 IAM 멤버의 클라우드 서비스 역할은 아래와 같습니다.
-* 단, IAM 멤버는 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야합니다.
+* roles that can be set are different for each organization service (Online Contact, Dooray!, etc.).
+* Cloud service roles are as follows.
+* However, IAM members are granted the NONE role upon enrollment, and must be granted the required role through role settings after enrollment.
 
 #### Organization Management Roles
 
@@ -307,8 +307,8 @@ Members are classified into NHN Cloud members and IAM members.
 | ADMIN | Create/Read/Update/Delete for the entire organization, including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
 | MEMBER | Create project, read organization dashboard, read project |
 | BILLING_VIEWER | Read payment management usage and budget management. |
-| BUDGET_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
+| BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
+| BUDGET_VIEWER | Read budget management |
 | LOG_VIEWER | Create/Read/Update/Delete user action logs management |
 | ORG_DASHBOARD\_VIEWER | Read organization dashboard |
 | NONE | Read organization dashboard and organization default settings |
@@ -317,16 +317,16 @@ Members are classified into NHN Cloud members and IAM members.
 
 | Service | Role | Description |
 | --- | --- | --- |
-| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
+| CloudTrail | ADMIN | Create/Read/Update/Delete CloudTrail service |
+| CloudTrail | VIEWER | Read CloudTrail Service |
 | CloudTrail | External Storage Config ADMIN | Create/Read/Update/Delete CloudTrail external storage settings |
-| Resource Watcher | ADMIN | Resource Watcher 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Resource Watcher | VIEWER | Resource Watcher 서비스 Read(읽기) |
+| Resource Watcher | ADMIN | Create, Read, Update, and Delete Resource Watcher Service |
+| Resource Watcher | VIEWER | Read Resource Watcher Service |
 
 #### Service PERMISSION Role
 
-* Service PERMISSION Role can enable or disable each service.
-* 단, 조직 생성 시 활성화되어있는 서비스(CloudTrail, Resource Watcher 등)는 별도의 PERMISSION 역할을 제공하지 않습니다.
+* The Organization Services PERMISSION role can enable or disable individual services.
+* However, services that are enabled at the time of organization creation (CloudTrail, Resource Watcher, etc.) do not provide a separate PERMISSION role.
 
 | Role | Description |
 | --- | --- |

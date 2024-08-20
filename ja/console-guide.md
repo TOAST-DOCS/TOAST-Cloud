@@ -293,42 +293,42 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 
 ### 組織メンバー
 
-* IAM 멤버는 조직 서비스 별(Online Contact 등) 설정할 수 있는 역할이 다릅니다.
-* NHN Cloud 회원과 IAM 멤버의 클라우드 서비스 역할은 아래와 같습니다.
-* 단, IAM 멤버는 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야합니다.
+* 組織サービスごと(Online Contact など)に設定できるロールが異なります。
+* クラウドサービスのロールは下記のとおりです。
+* ただし、IAMメンバーは初回登録時にNoneロールが付与され、登録後にロール設定で必要なロールを付与する必要があります。
 
-#### 조직 관리 역할
+#### 組織管理ロール
 
-| 역할 | 설명 |
+| ロール | 説明 |
 | --- | --- |
-| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기) |
-| BILLING\_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기) |
-| BUDGET\_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| BUDGET\_VIEWER | 예산 관리에 대한 Read(읽기) |
-| LOG\_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| ORG\_DASHBOARD\_VIEWER | 조직 대시보드 Read(읽기) |
-| NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
+| OWNER | 組織作成、組織管理、メンバー管理、組織サービス管理、決済管理、プロジェクト管理など、組織全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| ADMIN | 組織管理、メンバー管理、組織サービス管理、決済管理、プロジェクト管理など組織全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| MEMBER | プロジェクトCreate(作成)、組織ダッシュボードRead(読み取り)、プロジェクトに対するRead(読み取り) |
+| BILLING\_VIEWER | 決済管理利用現況Read(読み取り)、予算管理に対するRead(読み取り) |
+| BUDGET\_ADMIN | 予算管理に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| BUDGET\_VIEWER | 予算管理に対するRead(読み取り) |
+| LOG\_VIEWER | ユーザーActionログ管理Read(読み取り)、リソース管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| ORG\_DASHBOARD\_VIEWER | 組織ダッシュボードRead(読み取り) |
+| NONE | 組織ダッシュボードRead(読み取り)、組織基本設定Read(読み取り) |
 
-#### 조직 서비스 이용 역할
+#### 組織サービス利用ロール
 
-| 서비스 | 역할 | 설명 |
+| サービス | ロール | 説明 |
 | --- | --- | --- |
-| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
-| CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| Resource Watcher | ADMIN | Resource Watcher 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Resource Watcher | VIEWER | Resource Watcher 서비스 Read(읽기) |
+| CloudTrail | ADMIN | CloudTrailサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| CloudTrail | VIEWER | CloudTrailサービスRead(読み取り) |
+| CloudTrail | External Storage Config ADMIN | CloudTrailサービス外部ストレージ設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Resource Watcher | ADMIN | Resource WatcherサービスCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Resource Watcher | VIEWER | Resource WatcherサービスRead(読み取り) |
 
-#### 조직 서비스 활성화 역할
+#### 組織サービス有効化ロール
 
-* 조직 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
-* 단, 조직 생성 시 활성화되어있는 서비스(CloudTrail, Resource Watcher 등)는 별도의 PERMISSION 역할을 제공하지 않습니다.
+* 組織サービスPERMISSIONロールは個別サービスを有効化または無効にできます。
+* ただし、組織作成時に有効になっているサービス(CloudTrail、Resource Watcherなど)は、別途PERMISSIONロールを提供しません。
 
-| 역할 | 설명 |
+| ロール | 説明 |
 | --- | --- |
-| 서비스명 PERMISSION | 서비스 Enable(활성화), Disable(비활성화) |
+| サービス名PERMISSION | サービスEnable(有効化), Disable(無効化) |
 
 ### プロジェクトメンバー
 
@@ -354,7 +354,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
-| PROJECT DASHBOARD VIEWER | 프로젝트 대시보드 Read(읽기) |
+| PROJECT DASHBOARD VIEWER | プロジェクトダッシュボードRead(読み取り) |
 
 
 #### サービス利用ロール
