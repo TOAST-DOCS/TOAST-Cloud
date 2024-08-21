@@ -1,5 +1,21 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.9.2 (August 27, 2024)
+
+### NHN Cloud Logger
+
+#### Fixed
+
+* Fixed Native Crash Reporting errors
+    * Fixed an issue where Native Crash logs were intermittently not reported on certain devices on Android 13 and above.
+
+### NHN Cloud IAP
+
+#### Improved
+
+* Improved Amazon payment reprocessing
+    * Fixed an issue where, while reinstalling the app after uninstalling or deleting app data, failed payments are treated as new purchases when reprocessed.
+  
 ## 1.9.1 (July 23. 2024)
 
 ### NHN Cloud IAP
