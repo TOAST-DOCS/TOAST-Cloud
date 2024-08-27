@@ -46,6 +46,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Security Groups | Regional | O | O | O | O |
 |  | Network ACL | Regional | O | O |  |  |
 |  | Network Interface | Regional | O | O | O | O |
+|  | Flow Log | Regional | O | O |  |  |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
 |  | Physical Load Balancer | Regional | O | O |  |  |

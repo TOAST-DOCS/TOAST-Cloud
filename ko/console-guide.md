@@ -96,13 +96,13 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있습니다. 
 
 * **중복 허용 관리** 선택 시, Instance 명을 사용자가 입력한 이름으로 관리하며 중복된 Instance 명을 허용합니다. 
-* **Unique 관리** 선택 시, Instance 명을 사용자가 입력한 이름과 시스템에서 생성한 문자를 조합하여 유일한 Instacne 명으로 관리합니다. 
+* **Unique 관리** 선택 시, Instance 명을 사용자가 입력한 이름과 시스템에서 생성한 문자를 조합하여 유일한 Instance 명으로 관리합니다. 
 
 #### 리소스 권한 통제 및 접속 단말 제한 설정 
-운영자가 조직 리소스 중요 정보를 조회 시, 사용자에게 메일을 발송하고 망 분리 PC 에서만 리소스를 확인할 수 있도록 설정할 수 있습니다. 
+NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리소스(인스턴스 등) 정보 조회가 필요할 경우, 프로젝트 ADMIN/MEMBER 권한을 가진 사용자에게 이메일 알림 후 보안이 강화된 격리된 환경에서 리소스 정보를 조회하도록 설정합니다.
 
-* **리소스 권한 통제 및 접속 단말 제한 설정**에서 **설정 안 함(Defualt)/설정**을 선택할 수 있습니다.
-* 리소스 권한 통제 및 접속 단말 제한 설정에서 **설정**을 선택하면, 운영자의 리소스 조회 기능이 제한됩니다.
+* 리소스 권한 통제 및 접속 단말 제한 설정에서 설정 안 함(Default)/설정을 선택할 수 있습니다.
+* 설정으로 선택할 경우 NHN Cloud 운영자의 고객 리소스 조회 기능이 제한되어, 장애 등의 긴급 상황에서 응대 지연이 발생할 수 있습니다.
 
 #### 개인정보 보호 설정
 개인정보 보호 설정 기능은 개인정보 보호가 필요한 경우 사용할 수 있습니다.
@@ -361,13 +361,16 @@ Instance 서비스 이용 시, Instance 명 관리 규칙을 설정할 수 있�
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Load Balancer ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Routing ADMIN | VPC, Subnet, Network Interface, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
-| Infrastructure | NAT Gateway ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
-| Infrastructure | Service Gateway ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroring 서비스 Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
-| Infrastructure | NCS ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), Traffic mirroring 서비스 Read(읽기). 이외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Infrastructure | MEMBER | 네트워크 서비스(Floating IP 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Routing ADMIN | 네트워크 서비스(Floating IP, Routing Table 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Security Group ADMIN | 네트워크 서비스(Floating IP, Security Groups 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Load Balancer ADMIN | 네트워크 서비스(Floating IP, Load Balancer 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Transit Hub ADMIN | 네트워크 서비스(Floating IP, Transit Hub 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | NAT Gateway ADMIN | 네트워크 서비스(Floating IP, NAT Gateway 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Service Gateway ADMIN | 네트워크 서비스(Floating IP, Service Gateway 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Private DNS ADMIN | 네트워크 서비스(Floating IP, Private DNS 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Flow Log ADMIN | 네트워크 서비스(Floating IP, Flow Log 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | NCS ADMIN | 네트워크 서비스(Floating IP 제외) 및 NKS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR) 서비스 Read(읽기) |
