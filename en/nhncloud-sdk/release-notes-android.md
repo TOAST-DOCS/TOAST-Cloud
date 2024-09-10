@@ -1,5 +1,32 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.9.2 (August 27, 2024)
+
+### NHN Cloud Logger
+
+#### Fixed
+
+* Fixed Native Crash Reporting errors
+    * Fixed an issue where Native Crash logs were intermittently not reported on certain devices on Android 13 and above.
+
+### NHN Cloud IAP
+
+#### Improved
+
+* Improved Amazon payment reprocessing
+    * Fixed an issue where, while reinstalling the app after uninstalling or deleting app data, failed payments are treated as new purchases when reprocessed.
+  
+## 1.9.1 (July 23. 2024)
+
+### NHN Cloud IAP
+
+#### Improved
+
+* Improved Amazon payment reprocessing
+    * Fixed an issue where, when a payment failed during the purchase process, for example, due to closing the app or blocking the network, the failed payment would be treated as a new purchase when it was reprocessed.
+* Updated ONE store SDK v19 (v19.01.00)
+    * Apps targeting Android 14 (API Level 34) and above must use iap_sdk-v19.01.00.aar.
+
 ## 1.9.0 (May 28. 2024)
 
 ### NHN Cloud IAP
@@ -158,7 +185,7 @@
 
 ### NHN Cloud OCR
 
-#### Improved 
+#### Improved
 
 * Improved stability
 
@@ -194,8 +221,8 @@
 
 * Improved sending push events
 * Fixed an issue of changing flags in Intent
-    * Fixed an issue where, when calling NhnCloudPushMessageReceiver.getContentIntent(), the flags set in the delivered Intent are not maintained. 
-    
+    * Fixed an issue where, when calling NhnCloudPushMessageReceiver.getContentIntent(), the flags set in the delivered Intent are not maintained.
+
 ## 1.3.0 (October 25, 2022)
 
 ### NHN Cloud OCR

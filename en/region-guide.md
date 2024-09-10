@@ -46,6 +46,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Security Groups | Regional | O | O | O | O |
 |  | Network ACL | Regional | O | O |  |  |
 |  | Network Interface | Regional | O | O | O | O |
+|  | Flow Log | Regional | O | O |  |  |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
 |  | Physical Load Balancer | Regional | O | O |  |  |
@@ -105,6 +106,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Webshell Threat Detector | Regional | O | O |  |  |
 |  | Security Advisor | Global |  |  |  |  |
 |  | Network Firewall | Regional | O | O |  |  |
+|  | NHN bastion | Regional | O | O |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Push | Global |  |  |  |  |

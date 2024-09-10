@@ -46,6 +46,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Security Groups | リージョン | O | O | O | O |
 |  | Network ACL | リージョン | O | O |  |  |
 |  | Network Interface | リージョン | O | O | O | O |
+|  | Flow Log | リージョン | O | O |  |  |
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |
 |  | 物理Load Balancer | リージョン | O | O |  |  |
@@ -104,6 +105,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Webshell Threat Detector | リージョン | O | O |  |  |
 |  | Security Advisor | グローバル |  |  |  |  |
 |  | Network Firewall | リージョン | O | O |  |  |
+|  | NHN Bastion | リージョン | O | O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image Manager | リージョン | O |  |  |  |
 | Notification | Push | グローバル |  |  |  |  |

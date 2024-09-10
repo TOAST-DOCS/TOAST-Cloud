@@ -29,7 +29,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | 분류 | 서비스명 | 글로벌/리전 서비스 | 한국(판교) 리전 | 한국(평촌) 리전 | 일본(도쿄) 리전 | 미국(캘리포니아) 리전 |
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
 | Compute | Instance | 리전 | O | O | O | O |
-|  | Ephemeral Storage Instance | 리전 | O | | O | | 
+|  | Ephemeral Storage Instance | 리전 | | | O | | 
 |  | GPU Instance | 리전 | O |  |  |  |
 |  | Bare Metal Instance | 리전 | O | | | |
 |  | Instance Template | 리전 | O | O | O | O |
@@ -46,6 +46,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Security Groups | 리전 | O | O | O | O |
 |  | Network ACL | 리전 | O | O |  |  |
 |  | Network Interface | 리전 | O | O | O | O |
+|  | Flow Log | 리전 | O | O |  |  |
 |  | 일반 Load Balancer | 리전 | O | O | O | O |
 |  | 전용 Load Balancer | 리전 | O | O | O | O |
 |  | 물리 Load Balancer | 리전 | O | O |  |  |
@@ -104,6 +105,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Webshell Threat Detector | 리전 | O | O |  |  |
 |  | Security Advisor | 글로벌 |  |  |  |  |
 |  | Network Firewall | 리전 | O | O |  |  |
+|  | NHN Bastion | 리전 | O | O |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image Manager | 리전 | O |  |  |  |
 | Notification | Push | 글로벌 |  |  |  |  |

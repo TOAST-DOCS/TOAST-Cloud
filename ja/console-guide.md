@@ -97,13 +97,25 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
 Instanceサービス利用時、 Instance名管理ルールを設定できます。
 
 * **重複許可管理**を選択すると、 Instance名をユーザーが入力した名前で管理し、重複したInstance名を許可します。
-* **Unique管理**を選択すると、Instance名をユーザーが入力した名前とシステムで作成した文字を組み合わせて唯一のInstacne名で管理します。
+* **Unique管理**を選択すると、Instance名をユーザーが入力した名前とシステムで作成した文字を組み合わせて唯一のInstance名で管理します。
 
 #### リソース権限制御および接続端末制限設定
-運営者が組織のリソースの重要情報を照会する時、ユーザーにメールを送信し、ネットワーク分離PCからのみリソースを確認できるように設定できます
+NHN Cloud運営者が障害対応など運営上の目的で顧客のリソース(インスタンスなど)情報の照会が必要な場合、プロジェクト ADMIN/MEMBER 権限を持つユーザーにメールで通知した後、セキュリティが強化された隔離された環境でリソース情報を照会するように設定します。
 
-* **リソース権限制御および接続端末制限設定**で**設定しない(Defualt)/設定**を選択できます。
-* リソース権限制御および接続端末制限設定で**設定**を選択すると、運営者のリソース照会機能が制限されます。
+* リソースの権限制御及び接続端末制限設定で設定しない(Default)/設定を選択できます。
+* 設定を選択した場合、NHN Cloud運営者の顧客リソース照会機能が制限され、障害などの緊急時に対応遅延が発生する可能性があります。
+
+#### 個人情報保護設定
+個人情報保護設定機能は、個人情報保護が必要な場合使用できます。
+サービス上で表示される個人情報をマスキング処理したり、個人情報のダウンロードが必要な場合にインターネット網分離環境でのみ可能に設定できます。
+
+* 個人情報保護設定機能
+    * 組織/プロジェクト > メンバー管理 > IAMメンバー > メンバーリストのダウンロード機能
+        * 設定しない場合、IAMメンバーリストをダウンロードできるすべてのメンバーがメンバーリストをダウンロードできます。
+        * 設定すると、メンバーリストのダウンロード機能が無効になり、例外的に許可されたIPまたはIP帯でのみメンバーリストのダウンロードが可能です。
+    * 組織 > CloudTrail > 個人情報
+        * 設定しない場合、ログリスト照会が可能なすべてのメンバーにログリスト内の全情報を提供します。
+        * 設定すると、ログリスト内の個人情報(メール、名前、ID)がマスク処理されて提供されます。
 
 ### IAMガバナンス設定
 
@@ -281,42 +293,42 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 
 ### 組織メンバー
 
-* IAM 멤버는 조직 서비스 별(Online Contact 등) 설정할 수 있는 역할이 다릅니다.
-* NHN Cloud 회원과 IAM 멤버의 클라우드 서비스 역할은 아래와 같습니다.
-* 단, IAM 멤버는 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야합니다.
+* 組織サービスごと(Online Contact など)に設定できるロールが異なります。
+* クラウドサービスのロールは下記のとおりです。
+* ただし、IAMメンバーは初回登録時にNoneロールが付与され、登録後にロール設定で必要なロールを付与する必要があります。
 
-#### 조직 관리 역할
+#### 組織管理ロール
 
-| 역할 | 설명 |
+| ロール | 説明 |
 | --- | --- |
-| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기) |
-| BILLING\_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기) |
-| BUDGET\_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| BUDGET\_VIEWER | 예산 관리에 대한 Read(읽기) |
-| LOG\_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| ORG\_DASHBOARD\_VIEWER | 조직 대시보드 Read(읽기) |
-| NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
+| OWNER | 組織作成、組織管理、メンバー管理、組織サービス管理、決済管理、プロジェクト管理など、組織全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| ADMIN | 組織管理、メンバー管理、組織サービス管理、決済管理、プロジェクト管理など組織全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| MEMBER | プロジェクトCreate(作成)、組織ダッシュボードRead(読み取り)、プロジェクトに対するRead(読み取り) |
+| BILLING\_VIEWER | 決済管理利用現況Read(読み取り)、予算管理に対するRead(読み取り) |
+| BUDGET\_ADMIN | 予算管理に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| BUDGET\_VIEWER | 予算管理に対するRead(読み取り) |
+| LOG\_VIEWER | ユーザーActionログ管理Read(読み取り)、リソース管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| ORG\_DASHBOARD\_VIEWER | 組織ダッシュボードRead(読み取り) |
+| NONE | 組織ダッシュボードRead(読み取り)、組織基本設定Read(読み取り) |
 
-#### 조직 서비스 이용 역할
+#### 組織サービス利用ロール
 
-| 서비스 | 역할 | 설명 |
+| サービス | ロール | 説明 |
 | --- | --- | --- |
-| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
-| CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| Resource Watcher | ADMIN | Resource Watcher 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Resource Watcher | VIEWER | Resource Watcher 서비스 Read(읽기) |
+| CloudTrail | ADMIN | CloudTrailサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| CloudTrail | VIEWER | CloudTrailサービスRead(読み取り) |
+| CloudTrail | External Storage Config ADMIN | CloudTrailサービス外部ストレージ設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Resource Watcher | ADMIN | Resource WatcherサービスCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Resource Watcher | VIEWER | Resource WatcherサービスRead(読み取り) |
 
-#### 조직 서비스 활성화 역할
+#### 組織サービス有効化ロール
 
-* 조직 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
-* 단, 조직 생성 시 활성화되어있는 서비스(CloudTrail, Resource Watcher 등)는 별도의 PERMISSION 역할을 제공하지 않습니다.
+* 組織サービスPERMISSIONロールは個別サービスを有効化または無効にできます。
+* ただし、組織作成時に有効になっているサービス(CloudTrail、Resource Watcherなど)は、別途PERMISSIONロールを提供しません。
 
-| 역할 | 설명 |
+| ロール | 説明 |
 | --- | --- |
-| 서비스명 PERMISSION | 서비스 Enable(활성화), Disable(비활성화) |
+| サービス名PERMISSION | サービスEnable(有効化), Disable(無効化) |
 
 ### プロジェクトメンバー
 
@@ -342,7 +354,7 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
 | PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
-| PROJECT DASHBOARD VIEWER | 프로젝트 대시보드 Read(읽기) |
+| PROJECT DASHBOARD VIEWER | プロジェクトダッシュボードRead(読み取り) |
 
 
 #### サービス利用ロール
@@ -350,13 +362,16 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | サービス | ロール | 説明 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | MEMBER | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | Load Balancer ADMIN | VVPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, NHN Container Service(NCS), Traffic mirroring Read(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | Security Group ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Infrastructure | Routing ADMIN | VPC, Subnet, Network Interface, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスRead（読込）。 このほか、サービスCreate(作成)、Read(読込)、Update(更新)、Delete(削除)|
-| Infrastructure | NAT Gateway ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, VPN Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスRead（読込）。 このほか、サービスCreate(作成)、Read(読込)、Update(更新)、Delete(削除)|
-| Infrastructure | Service Gateway ADMIN | VPC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPN Gateway(Site-to-Site VPN), Security Group, Load Balancer, NHN Kubernetes Service(NKS), NHN Container Service(NCS), Traffic mirroringサービスRead（読込）。 このほか、サービスCreate(作成)、Read(読込)、Update(更新)、Delete(削除)|
-| Infrastructure | NCS ADMIN | PC, Subnet, Network Interface, Routing, Network ACL, Internet Gateway, Peering Gateway, Colocation Gateway, NAT Gateway, VPC Gateway(Site-to-Site VPN), Service Gateway, Security Group, Load Balancer, NHN Kubernetes Service(NKS), Traffic mirroringサービスに対するRead(読み取り). などなどサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Infrastructure | MEMBER | ネットワークサービス(Floating IPを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Routing ADMIN | ネットワークサービス(Floating IP、Routing Tableを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Security Group ADMIN | ネットワークサービス(Floating IP、Security Groupsを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Load Balancer ADMIN | ネットワークサービス(Floating IP、Load Balancerを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Transit Hub ADMIN | ネットワークサービス(Floating IP、Transit Hubを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NAT Gateway ADMIN | ネットワークサービス(Floating IP、NAT Gatewayを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Service Gateway ADMIN | ネットワークサービス(Floating IP、Service Gatewayを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Private DNS ADMIN | ネットワークサービス(Floating IP、Private DNSを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Flow Log ADMIN | ネットワークサービス(Floating IP、Flow Logを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NCS ADMIN | ネットワークサービス(Floating IPを除く)及びNKS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り) |
@@ -423,6 +438,9 @@ Instanceサービス利用時、 Instance名管理ルールを設定できます
 | Security Advisor | VIEWER | Security Advisorサービスに対するRead(読み取り)  |
 | Network Firewall | ADMIN | Network Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Network Firewall | VIEWER | Network Firewallサービスに対するRead(読み取り)  |
+| NHN Bastion | ADMIN | NHN Bastionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) | 
+| NHN Bastion | VIEWER | NHN Bastionサービスに対するRead(読み取り) | 
+| NHN Bastion | USER | NHN Bastionサービスターミナルの利用 | 
 | CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
