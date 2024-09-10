@@ -1,5 +1,11 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.8.4 (2024. 09. 11.)
+### NHN Cloud Push
+#### 개선 사항
+* Notification 중복 수신 문제 개선(iOS 18 Beta)
+    * iOS 18에서 애플리케이션이 Foreground 상태일 때 Notification이 중복 수신되지 않도록 합니다(OS 버그).
+
 ## 1.8.3 (2024. 07. 23.)
 ### 共通
 #### 改善事項
