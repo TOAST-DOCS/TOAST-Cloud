@@ -283,6 +283,11 @@ Resource usage is calculated for each project.
 | Number of Gateways | Per project | 10 | X | | 
 | Number of Tunnels | Per project | 20 | X | | 
 
+### Resource Provision Policy for SMS
+| Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+| Sent Count | Per organization | 5,000 cases | O | |
+
 ### Resource Provision Policy for KakaoTalk Bizmessage Service
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
