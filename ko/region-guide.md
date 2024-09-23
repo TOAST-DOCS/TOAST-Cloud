@@ -114,6 +114,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Email | 글로벌 |  |  |  |  |
 |  | KakaoTalk Bizmessage | 글로벌 |  |  |  |  |
 | AI Service | Face Recognition | 글로벌 |  |  |  |  |
+|  | Face Liveness | 글로벌 |  |  |  |  |
 |  | AI Fashion | 글로벌 |  |  |  |  |
 |  | OCR | 글로벌 |  |  |  |  |
 |  | Text to Speech | 글로벌 |  |  |  |  |
