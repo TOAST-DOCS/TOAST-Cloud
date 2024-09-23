@@ -461,6 +461,7 @@ Members are classified into NHN Cloud members and IAM members.
 | KakaoTalk Bizmessage | SETTING ADMIN | Create/Read/Update/Delete in Manage Senders, (AlimTalk) Create/Read/Update/Delete in Manage Templates, (AlimTalk) Create/Read/Update/Delete in Manage Alternative Delivery, (AlimTalk) Create/Read/Update/Delete in Manage sender profile group, (FriendTalk)Create/Read/Update/Delete in Manage Images, (FriendTalk)Create/Read/Update/Delete in Manage Alternative Delivery |
 | KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | Face Recognition | ADMIN | Create/Read/Update/Delete for Face Recognition Service |
+| Face Liveness | ADMIN | Create/Read/Update/Delete for Face Liveness Service |
 | AI Fashion |	ADMIN |	Create/Read/Update/Delete for AI Fashion Service |
 | OCR | ADMIN | Create/Read/Update/Delete for OCR | 
 | Text to Speech | ADMIN | Create/Read/Update/Delete for Text to Speech |
