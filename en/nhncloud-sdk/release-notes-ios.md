@@ -3,7 +3,7 @@
 ## 1.8.5 (2024. 10. 08.)
 ### NHN Cloud IAP
 #### Improved
-* Improved stability
+* Improved the feature to send payment details
 
 ## 1.8.4 (2024. 09. 11.)
 ### NHN Cloud Push
