@@ -6,7 +6,7 @@
 
 #### 버그 수정
 
-* 원스토어 v19 및 v21에서 IapProductDetails.getLocalizedPrice() 메서드가 반환하는 값에 화폐 단위가 포함되지 않는 문제를 수정하였습니다.
+* 원스토어 v19 및 v21에서 IapProductDetails.getLocalizedPrice() 메서드가 반환하는 값에 통화 기호가 포함되지 않는 문제를 수정하여, 이제 ₩1,000과 같은 로컬 통화 형식으로 반환됩니다.
 
 ### NHN Cloud Push
 
