@@ -129,6 +129,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Short URL | グローバル |  |  |  |  |
 |  | JEUS Instance | リージョン | O | O | O | O |
 |  | WebtoB Instance | リージョン | O | O | O | O |
+|  | Cloud Scheduler | グローバル |  |  |  |  |
 | Mobile Service | IAP | グローバル |  |  |  |  |
 | Search | Cloud Search | リージョン | O |  |  |  |
 |  | Autocomplete | リージョン | O |  |  |  |

@@ -130,6 +130,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | ShortURL | Global |  |  |  |  |
 |  | JEUS Instance | Regional | O | O | O | O |
 |  | WebtoB Instance | Regional | O | O | O | O |
+|  | Cloud Scheduler | Global |  |  |  |  |
 | Mobile Service | IAP | Global |  |  |  |  |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
