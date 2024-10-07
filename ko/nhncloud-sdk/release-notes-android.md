@@ -6,13 +6,16 @@
 
 #### 버그 수정
 
-* 원스토어 v19 및 v21에서 IapProductDetails.getLocalizedPrice() 메서드가 반환하는 값에 통화 기호가 포함되지 않는 문제를 수정하여, 이제 ₩1,000과 같은 로컬 통화 형식으로 반환됩니다.
+* 원스토어 v19 및 v21에서 IapProductDetails.getLocalizedPrice() 메서드가 반환하는 값에 통화 기호가 포함되지 않는 문제 수정
+    * '₩1,000'과 같이 로컬 통화 형식으로 반환되도록 수정하였습니다.
 
 ### NHN Cloud Push
 
 #### 버그 수정
 
-* Google Services 설정 파일(google-services.json) 누락 시 java.lang.IllegalStateException 대신 java.lang.ExceptionInInitializerError가 발생하는 문제를 수정하였습니다. 이제 올바르게 IllegalStateException가 발생합니다.
+* Google Services 설정 파일(google-services.json) 누락 시 잘못된 오류가 발생하는 문제
+    * java.lang.IllegalStateException 대신 java.lang.ExceptionInInitializerError가 발생하는 문제를 수정하였습니다.
+    * 이제 올바르게 IllegalStateException가 발생합니다.
 
 ## 1.9.2 (2024. 08. 27.)
 
