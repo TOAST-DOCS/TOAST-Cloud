@@ -13,9 +13,9 @@
 
 #### 버그 수정
 
-* Google Services 설정 파일(google-services.json) 누락 시 잘못된 오류가 발생하는 문제
+* Google Services 설정 파일(google-services.json) 누락 시 잘못된 오류가 발생하는 문제 수정
     * java.lang.IllegalStateException 대신 java.lang.ExceptionInInitializerError가 발생하는 문제를 수정하였습니다.
-    * 이제 올바르게 IllegalStateException가 발생합니다.
+    * 이제 올바르게 IllegalStateException이 발생합니다.
 
 ## 1.9.2 (2024. 08. 27.)
 
