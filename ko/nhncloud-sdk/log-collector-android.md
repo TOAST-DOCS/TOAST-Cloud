@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-logger:1.9.2'
+    implementation 'com.nhncloud.android:nhncloud-logger:1.9.3'
     ...
 }
 ```

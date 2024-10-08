@@ -1,5 +1,10 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.8.5 (2024. 10. 08.)
+### NHN Cloud IAP
+#### 改善事項
+* 決済詳細情報送信機能の改善
+
 ## 1.8.4 (2024. 09. 11.)
 ### NHN Cloud Push
 #### 改善事項

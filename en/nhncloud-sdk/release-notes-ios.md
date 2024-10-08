@@ -1,5 +1,10 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
+## 1.8.5 (2024. 10. 08.)
+### NHN Cloud IAP
+#### Improved
+* Improved the feature to send payment details
+
 ## 1.8.4 (2024. 09. 11.)
 ### NHN Cloud Push
 #### Improved

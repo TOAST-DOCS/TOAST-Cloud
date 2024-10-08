@@ -1,5 +1,21 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
+## 1.9.3 (2024. 10. 08.)
+### NHN Cloud IAP
+
+#### バグ修正
+
+* ONEstore v19及びv21でIapProductDetails.getLocalizedPrice()メソッドが返す値に通貨記号が含まれない問題を修正
+    * '₩1,000'のようにローカル通貨の形式で返されるように修正しました。
+
+### NHN Cloud Push
+
+#### バグ修正
+
+* Google Services設定ファイル(google-services.json)がない場合に誤ったエラーが発生する問題
+    * java.lang.IllegalStateExceptionの代わりにjava.lang.ExceptionInInitializerErrorが発生する問題を修正しました。
+    * IllegalStateExceptionが正しく発生するようになりました。
+
 ## 1.9.2 (2024. 08. 27.)
 
 ### NHN Cloud Logger
@@ -23,7 +39,7 @@
 #### 機能改善
 
 * Amazon決済再処理の改善
-    * 購入進行中にアプリ終了またはネットワーク遮断などで決済が失敗した場合、失敗した決済が再処理される際に新規購入件として処理される問題を改善しました。
+    * 購入進行中にアプリ終了またはネットワークブロックなどで決済に失敗した場合、その決済を再処理する際に新規購入案件として処理する問題を改善しました。
 * ONEstore v19 SDKアップデート(v19.01.00)
     * Android 14(API Level 34)以上をターゲットとするアプリは、iap_sdk-v19.01.00.aarを使用する必要があります。
 
