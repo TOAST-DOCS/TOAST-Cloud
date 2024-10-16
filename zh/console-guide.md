@@ -304,13 +304,13 @@ Members are classified into NHN Cloud members and IAM members.
 
 | Role | Description |
 | ---- | ----------- |
-| OWNER | Create, Read, Update, Delete, and Delete organizations across the organization, including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
-| ADMIN | Create/Read/Update/Delete for the entire organization, including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
+| OWNER | Create, Read, Update, Delete, and Delete organizations across the organization<br>> including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
+| ADMIN | Create, Read, Update, Delete for the entire organization<br> including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
 | MEMBER | Create project, read organization dashboard, read project |
 | BILLING_VIEWER | Read payment management usage and budget management. |
 | BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
 | BUDGET_VIEWER | Read budget management |
-| LOG_VIEWER | Create/Read/Update/Delete user action logs management |
+| LOG_VIEWER | Create, Read, Update, Delete user action logs management |
 | ORG_DASHBOARD\_VIEWER | Read organization dashboard |
 | NONE | Read organization dashboard and organization default settings |
 
@@ -318,9 +318,9 @@ Members are classified into NHN Cloud members and IAM members.
 
 | Service | Role | Description |
 | --- | --- | --- |
-| CloudTrail | ADMIN | Create/Read/Update/Delete CloudTrail service |
+| CloudTrail | ADMIN | Create, Read, Update, Delete CloudTrail service |
 | CloudTrail | VIEWER | Read CloudTrail Service |
-| CloudTrail | External Storage Config ADMIN | Create/Read/Update/Delete CloudTrail external storage settings |
+| CloudTrail | External Storage Config ADMIN | Create, Read, Update, Delete CloudTrail external storage settings |
 | Resource Watcher | ADMIN | Create, Read, Update, and Delete Resource Watcher Service |
 | Resource Watcher | VIEWER | Read Resource Watcher Service |
 
@@ -344,21 +344,21 @@ Members are classified into NHN Cloud members and IAM members.
 
 | Role | Description |
 | --- | --- |
-| ADMIN | Create/Read/Update/Delete for the entire project |
+| ADMIN | Create, Read, Update, Delete for the entire project |
 | MARKETPLACE_ADMIN | Marketplace Create, Read, Update, and Delete Services |
 | MARKETPLACE_VIEWER | Marketplace Read |
-| MEMBER | Create/Read/Update/Delete for all services in the project |
+| MEMBER | Create, Read, Update, Delete for all services in the project |
 | BILLING VIEWER | Read for usage status |
-| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create/Read/Update/Delete for project's integrated Appkey<br>Enable/Disable project services<br>Delete for projects |
+| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create, Read, Update, Delete for project's integrated Appkey<br>Enable, Disable project services<br>Delete for projects |
 | PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey |
-| PROJECT MEMBER ADMIN | Create/Read/Update/Delete for project members<br>Create/Read/Update/Delete for project's role groups |
+| PROJECT MEMBER ADMIN | Create, Read, Update, Delete for project members<br>Create, Read, Update, Delete for project's role groups |
 | PROJECT MEMBER VIEWER | Read for project members<br>Read for project's role groups |
-| PROJECT NOTICE GROUP MANAGEMENT ADMIN | Create/Read/Update/Delete for project's Notification Receiver Group Management <br> Read for project members <br> Read for project's role groups|
+| PROJECT NOTICE GROUP MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Receiver Group Management <br> Read for project members <br> Read for project's role groups|
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | Read for project's Notification Receiver Group Management <br> Read for project's role groups|
-| PROJECT NOTICE MANAGEMENT ADMIN | Create/Read/Update/Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
+| PROJECT NOTICE MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
-| PROJECT API SECURITY SETTING ADMIN | Create/Read/Update/Delete for project's API Security Setting|
-| PROJECT QUOTA MANAGEMENT ADMIN| Create/Read/Update/Delete for project's Quota Management|
+| PROJECT API SECURITY SETTING ADMIN | Create, Read, Update, Delete for project's API Security Setting|
+| PROJECT QUOTA MANAGEMENT ADMIN| Create, Read, Update, Delete for project's Quota Management|
 | PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
 | PROJECT DASHBOARD VIEWER | Read project dashboard|
 
@@ -367,7 +367,7 @@ Members are classified into NHN Cloud members and IAM members.
 
 | Service | Role | Description |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Create/Read/Update/Delete for Infrastructure Service |
+| Infrastructure | ADMIN | Create, Read, Update, Delete for Infrastructure Service |
 | Infrastructure | MEMBER | Read Network services (except Floating IP), NKS, and NCR. Create, Read, Update, Delete other services |
 | Infrastructure | Routing ADMIN | Read Network services (except Floating IP, Routing Table), NKS, and NCR. Create, Read, Update, Delete other services |
 | Infrastructure | Security Group ADMIN | Read Network services (except Floating IP, Security Groups), NKS, and NCR. Create, Read, Update, Delete other services |
@@ -378,24 +378,24 @@ Members are classified into NHN Cloud members and IAM members.
 | Infrastructure | Private DNS ADMIN | Read Network services (except Floating IP, Private DNS), NKS, and NCR. Create, Read, Update, Delete other services |
 | Infrastructure | Flow Log ADMIN | Read Network services (except Floating IP, Flow Log), NKS, and NCR. Create, Read, Update, Delete other services |
 | Infrastructure | NCS ADMIN | Read Network services (except Floating IP) and NKS. Create, Read, Update, Delete other services |
-| Virtual Desktop | ADMIN | Create/Read/Update/Delete for Virtual Desktop Service |
-| NHN Container Registry (NCR) | ADMIN | Create/Read/Update/Delete for NHN Container Registry (NCR) Service |
+| Virtual Desktop | ADMIN | Create, Read, Update, Delete for Virtual Desktop Service |
+| NHN Container Registry (NCR) | ADMIN | Create, Read, Update, Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | IMAGE UPLOADER | Read for NHN Container Registry (NCR), Upload Image, Create Artifact, Create Tag |
-| DNS Plus | ADMIN | Create/Read/Update/Delete for DNS Plus Service |
+| DNS Plus | ADMIN | Create, Read, Update, Delete for DNS Plus Service |
 | DNS Plus | VIEWER | Read for DNS Plus Service |
-| Object Storage | ADMIN | Create/Read/Update/Delete for Object Storage Service |
-| Backup | ADMIN | Create/Read/Update/Delete for Backup Service |
-| RDS for MySQL | ADMIN | Create/Read/Update/Delete for RDS for MySQL Service |
+| Object Storage | ADMIN | Create, Read, Update, Delete for Object Storage Service |
+| Backup | ADMIN | Create, Read, Update, Delete for Backup Service |
+| RDS for MySQL | ADMIN | Create, Read, Update, Delete for RDS for MySQL Service |
 | RDS for MySQL | VIEWER | Read for RDS for MySQL Service |
-| RDS for PostgreSQL | ADMIN | Create/Read/Update/Delete for RDS for PostgreSQL Service |
-| RDS for PostgreSQL | VIEWER | Read for RDS for PostgreSQL Service |
-| RDS for MariaDB | ADMIN | Create/Read/Update/Delete for RDS for MariaDB Service |
+| RDS for MariaDB | ADMIN | Create, Read, Update, Delete for RDS for MariaDB Service |
 | RDS for MariaDB | VIEWER | Read for RDS for MariaDB Service |
-| RDS for MS-SQL | ADMIN | Create/Read/Update/Delete for RDS for MS-SQL Service |
-| EasyCache | ADMIN | Create/Read/Update/Delete for EasyCache Service |
+| RDS for MS-SQL | ADMIN | Create, Read, Update, Delete for RDS for MS-SQL Service |
+| EasyCache | ADMIN | Create, Read, Update, Delete for EasyCache Service |
 | EasyCache | VIEWER | Read for EasyCache Service Replication Group menu, Read for Monitoring menu |
-| Gamebase | ADMIN | Create/Read/Update/Delete for Gamebase Service |
+| Cloud Monitoring | ADMIN | Create, Read, Update, Delete for Cloud Monitoring |
+| Cloud Monitoring | VIEWER | Read for Cloud Monitoring |
+| Gamebase | ADMIN | Create, Read, Update, Delete for Gamebase Service |
 | Gamebase | ANALYTICS VIEWER - ALL | Read for all metrics |
 | Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | Read for all metrics except sales |
 | Gamebase | ANALYTICS VIEWER - ONLY REAL-TIME | Read for real-time metrics |
@@ -424,78 +424,78 @@ Members are classified into NHN Cloud members and IAM members.
 | GameAnvil  | VIEWER | GameAnvil Read Services  |
 | GameStarter  | ADMIN | Create, Read, Update for menus game settings, distribution |
 | GameStarter  | VIEWER | Read for menus game settings, distribution |
-| Leaderboard | ADMIN | Create/Read/Update/Delete for Leaderboard Service |
+| Leaderboard | ADMIN | Create, Read, Update, Delete for Leaderboard Service |
 | Leaderboard | VIEWER | Read for Leaderboard Service |
-| Launching | ADMIN | Create/Read/Update/Delete for Launching Service |
-| Smart Downloader | ADMIN | Create/Read/Update/Delete for Smart Downloader Service |
-| NHN AppGuard | ADMIN | Create/Read/Update/Delete for NHN AppGuard Service|
-| Server Security Check | ADMIN | Create/Read/Update/Delete for Server Security Check  Service |
-| Security Monitoring | ADMIN | Create/Read/Update/Delete for Security Monitoring Service |
-| CAPTCHA | ADMIN | Create/Read/Update/Delete or CAPTCHA Service |
-| WEB Firewall | ADMIN | Create/Read/Update/Delete for WEB Firewall Service |
-| Vaccine | ADMIN | Create/Read/Update/Delete for Vaccine Service |
-| Secure Key Manager | ADMIN | Create/Read/Update/Delete for Secure Key Manager Service |
-| Secure Key Manager | APPROVAL ADMIN | Approve/deny/query,create/query for approval requests for Secure Key Manager Service |
-| Secure Key Manager | APPROVAL MEMBER | Create/query for approval requests for Secure Key Manager Service |
+| Launching | ADMIN | Create, Read, Update, Delete for Launching Service |
+| Smart Downloader | ADMIN | Create, Read, Update, Delete for Smart Downloader Service |
+| NHN AppGuard | ADMIN | Create, Read, Update, Delete for NHN AppGuard Service|
+| Server Security Check | ADMIN | Create, Read, Update, Delete for Server Security Check  Service |
+| Security Monitoring | ADMIN | Create, Read, Update, Delete for Security Monitoring Service |
+| CAPTCHA | ADMIN | Create, Read, Update, Delete or CAPTCHA Service |
+| WEB Firewall | ADMIN | Create, Read, Update, Delete for WEB Firewall Service |
+| Vaccine | ADMIN | Create, Read, Update, Delete for Vaccine Service |
+| Secure Key Manager | ADMIN | Create, Read, Update, Delete for Secure Key Manager Service |
+| Secure Key Manager | APPROVAL ADMIN | Approve, deny, query,create, query for approval requests for Secure Key Manager Service |
+| Secure Key Manager | APPROVAL MEMBER | Create, query for approval requests for Secure Key Manager Service |
 | Secure Key Manager | VIEWER | Read for Secure Key Manager Service |
-| Security Compliance | ADMIN | Create/Read/Update/Delete for Security Compliance Service|
-| Webshell Threat Detector | ADMIN | Create/Read/Update/Delete for Webshell Threat Detector Service |
-| Security Advisor | ADMIN | Create/Read/Update/Delete for Security Advisor Service |
+| Security Compliance | ADMIN | Create, Read, Update, Delete for Security Compliance Service|
+| Webshell Threat Detector | ADMIN | Create, Read, Update, Delete for Webshell Threat Detector Service |
+| Security Advisor | ADMIN | Create, Read, Update, Delete for Security Advisor Service |
 | Security Advisor | VIEWER | Read for Security Advisor Service  |
-| Network Firewall | ADMIN | Create/Read/Update/Delete for Network Firewall Service  |
+| Network Firewall | ADMIN | Create, Read, Update, Delete for Network Firewall Service  |
 | Network Firewall | VIEWER | Read for Network Firewall Service  |
-| NHN Bastion | ADMIN | Create/Read/Update/Delete for NHN Bastion Service | 
+| NHN Bastion | ADMIN | Create, Read, Update, Delete for NHN Bastion Service | 
 | NHN Bastion | VIEWER | Read for NHN Bastion Service | 
 | NHN Bastion | USER | Use NHN Bastion Service Terminal | 
-| CDN | ADMIN | Create/Read/Update/Delete for CDN Service |
-| Image Manager | ADMIN | Create/Read/Update/Delete for Image Manager Service |
-| Push | ADMIN | Create/Read/Update/Delete for Push Service |
-| SMS | ADMIN | Create/Read/Update/Delete for SMS Service |
-| SMS | SEND ADMIN | Create/Read in Deliver SMS |
+| CDN | ADMIN | Create, Read, Update, Delete for CDN Service |
+| Image Manager | ADMIN | Create, Read, Update, Delete pfor Image Manager Service |
+| Push | ADMIN | Create, Read, Update, Delete for Push Service |
+| SMS | ADMIN | Create, Read, Update, Delete for SMS Service |
+| SMS | SEND ADMIN | Create, Read in Deliver SMS |
 | SMS | DELIVERY RESULT ADMIN | Read in Retrieve by SMS Request, Create Download Search Result, Read in Retrieve Bulk SMS Delivery, Create Download Retrieve Result, Read in Retrieve Tagged SMS Delivery, Create Download Retrieve Result  |
-| SMS | SETTING ADMIN | Create/Read/Update/Delete in Manage Templates, Create/Read/Update/Delete in Preregistration Outgoing Numbers, Read in Retrieve Outgoing Number, Create/Read/Update/Delete in Manage Tags, Create/Read/Update/Delete in Manage UIDs, Create/Read/Update/Delete in Manage Webhooks, Create/Read/Update/Delete in Set 080 Call Rejects, Create/Read/Update/Delete in Delivery Setting, Create/Read/Update/Delete in Statistics Event Key |
+| SMS | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates, Create, Read, Update, Delete in Preregistration Outgoing Numbers, Read in Retrieve Outgoing Number, Create, Read, Update, Delete in Manage Tags, Create, Read, Update, Delete in Manage UIDs, Create, Read, Update, Delete in Manage Webhooks, Create, Read, Update, Delete in Set 080 Call Rejects, Create, Read, Update, Delete in Delivery Setting, Create, Read, Update, Delete in Statistics Event Key |
 | SMS | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
-| RCS Bizmessage | ADMIN | Create/Read/Update/Delete for RCS Bizmessage Service |
-| Email | ADMIN | Create/Read/Update/Delete for Email Service |
-| Email | SEND ADMIN | Create/Read in Deliver Mails |
-| Email | DELIVERY RESULT ADMIN | Read in Retrieve by Mail Request, Create Download Search Result, Read in Retrieve Scheduled Mail Delivery, Create Download Search Result, Read in Retrieve Bulk Mail Delivery, Create Download Search Result, Read in Retrieve Tagged Mail Delivery, Create Download Search Result |
-| Email | SETTING ADMIN | Create/Read/Update/Delete in Manage Templates, Create/Read/Update/Delete in Manage Call Rejects, Create/Read/Update/Delete in Manage Mail Domains, Create/Read/Update/Delete in Manage Tags, Create/Read/Update/Delete in Manage UIDs, Create/Read/Update/Delete in Delivery Setting, Create/Read/Update/Delete in Manage Webhooks |
+| RCS Bizmessage | ADMIN | Create, Read, Update, Delete for RCS Bizmessage Service |
+| Email | ADMIN | Create, Read, Update, Delete for Email Service |
+| Email | SEND ADMIN | Create, Read in Deliver Mails |
+| Email | DELIVERY RESULT ADMIN | Read in Retrieve by Mail Request, Create Download Search Result<br> Read in Retrieve Scheduled Mail Delivery, Create Download Search Result<br> Read in Retrieve Bulk Mail Delivery, Create Download Search Result<br> Read in Retrieve Tagged Mail Delivery, Create Download Search Result |
+| Email | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates<br> Create, Read, Update, Delete in Manage Call Rejects<br> Create, Read, Update, Delete in Manage Mail Domains<br> Create, Read, Update, Delete in Manage Tags<br> Create, Read, Update, Delete in Manage UIDs<br> Create, Read, Update, Delete in Delivery Setting<br> Create, Read, Update, Delete in Manage Webhooks |
 | Email | STATISTICS ADMIN | Read in Retrieve Statistics, Create Download Search Result |
-| KakaoTalk Bizmessage | ADMIN | Create/Read/Update/Delete for KakaoTalk Bizmessage Service |
-| KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create/Read in Send, (FriendTalk)Create/Read in Send |
-| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result, (AlimTalk) Read in Query Mass Delivery, Create Download Search Result, (FriendTalk)Read in Query Delivery Result, Create Download Search Result, (FriendTalk)Read in Query Mass Delivery, Create Download Search Result |
-| KakaoTalk Bizmessage | SETTING ADMIN | Create/Read/Update/Delete in Manage Senders, (AlimTalk) Create/Read/Update/Delete in Manage Templates, (AlimTalk) Create/Read/Update/Delete in Manage Alternative Delivery, (AlimTalk) Create/Read/Update/Delete in Manage sender profile group, (FriendTalk)Create/Read/Update/Delete in Manage Images, (FriendTalk)Create/Read/Update/Delete in Manage Alternative Delivery |
+| KakaoTalk Bizmessage | ADMIN | Create, Read, Update, Delete for KakaoTalk Bizmessage Service |
+| KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create, Read in Send<br> (FriendTalk)Create, Read in Send |
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result<br> (AlimTalk) Read in Query Mass Delivery, Create Download Search Result<br> (FriendTalk)Read in Query Delivery Result, Create Download Search Result<br> (FriendTalk)Read in Query Mass Delivery, Create Download Search Result |
+| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group<br> (FriendTalk)Create, Read, Update, Delete in Manage Images<br> (FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery |
 | KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
-| Face Recognition | ADMIN | Create/Read/Update/Delete for Face Recognition Service |
-| Face Liveness | ADMIN | Create/Read/Update/Delete for Face Liveness Service |
-| AI Fashion |	ADMIN |	Create/Read/Update/Delete for AI Fashion Service |
-| OCR | ADMIN | Create/Read/Update/Delete for OCR | 
-| Text to Speech | ADMIN | Create/Read/Update/Delete for Text to Speech |
-| Speech to Text | ADMIN | Create/Read/Update/Delete for Speech to Text |
-| Pose Estimation | ADMIN | Create/Read/Update/Delete for Pose Estimation |
-| AI EasyMaker | ADMIN | Create/Read/Update/Delete for AI EasyMaker |
-| Maps | ADMIN | Create/Read/Update/Delete for Maps Service |
-| ROLE | ADMIN | Create/Read/Update/Delete for ROLE Service |
-| API Gateway | ADMIN | Create/Read/Update/Delete for API Gateway Service |
-| RTCS | ADMIN | Create/Read/Update/Delete for RTCS Service |
-| ShortURL | ADMIN | Create/Read/Update/Delete for ShortURL Service |
-| File-Crafter | ADMIN | Create/Read/Update/Delete for File-Crafter Service |
-| IAP | ADMIN | Create/Read/Update/Delete for IAP Service |
-| Mobile Device Info | ADMIN | Create/Read/Update/Delete for Mobile Device Info Service |
-| Cloud Search | ADMIN | Create/Read/Update/Delete for Cloud Search Service |
-| Autocomplete | ADMIN | Create/Read/Update/Delete for AutocompleteService |
-| Corporation Search | ADMIN | Create/Read/Update/Delete for Corporation Search Service |
-| Word Suggestion | ADMIN | Create/Read/Update/Delete for Word Suggestion Service |
-| Log & Crash Search | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
-| DataFlow | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
-| DataQuery | ADMIN | Create/Read/Update/Delete for Log & Crash Search Service |
-| Pipeline | ADMIN | Create/Read/Update/Delete for Pipeline Service |
-| Deploy | ADMIN | Create/Read/Update/Delete for Deploy Service |
+| Face Recognition | ADMIN | Create, Read, Update, Delete for Face Recognition Service |
+| Face Liveness | ADMIN | Create, Read, Update, Delete for Face Liveness Service |
+| AI Fashion |	ADMIN |	Create, Read, Update, Delete for AI Fashion Service |
+| OCR | ADMIN | Create, Read, Update, Delete for OCR | 
+| Text to Speech | ADMIN | Create, Read, Update, Delete for Text to Speech |
+| Speech to Text | ADMIN | Create, Read, Update, Delete for Speech to Text |
+| Pose Estimation | ADMIN | Create, Read, Update, Delete for Pose Estimation |
+| AI EasyMaker | ADMIN | Create, Read, Update, Delete for AI EasyMaker |
+| Maps | ADMIN | Create, Read, Update, Delete for Maps Service |
+| ROLE | ADMIN | Create, Read, Update, Delete for ROLE Service |
+| API Gateway | ADMIN | Create, Read, Update, Delete for API Gateway Service |
+| RTCS | ADMIN | Create, Read, Update, Delete for RTCS Service |
+| ShortURL | ADMIN | Create, Read, Update, Delete for ShortURL Service |
+| File-Crafter | ADMIN | Create, Read, Update, Delete for File-Crafter Service |
+| IAP | ADMIN | Create, Read, Update, Delete for IAP Service |
+| Mobile Device Info | ADMIN | Create, Read, Update, Delete for Mobile Device Info Service |
+| Cloud Search | ADMIN | Create, Read, Update, Delete for Cloud Search Service |
+| Autocomplete | ADMIN | Create, Read, Update, Delete for AutocompleteService |
+| Corporation Search | ADMIN | Create, Read, Update, Delete for Corporation Search Service |
+| Word Suggestion | ADMIN | Create, Read, Update, Delete for Word Suggestion Service |
+| Log & Crash Search | ADMIN | Create, Read, Update, Delete for Log & Crash Search Service |
+| DataFlow | ADMIN | Create, Read, Update, Delete for DataFlow Service |
+| DataQuery | ADMIN | Create, Read, Update, Delete for DataQuery Service |
+| Pipeline | ADMIN | Create, Read, Update, Delete for Pipeline Service |
+| Deploy | ADMIN | Create, Read, Update, Delete for Deploy Service |
 | Deploy | VIEWER | Read for Deploy Service |
-| Managed | ADMIN | Create/Read/Update/Delete for Managed Service |
-| Service Monitoring | ADMIN | Create/Read/Update/Delete for Service Monitoring Service |
-| Certificate Manager | ADMIN | Create/Read/Update/Delete for Certificate Manager Service |
-| eTax | ADMIN | Create/Read/Update/Delete for eTax Service |
+| Managed | ADMIN | Create, Read, Update, Delete for Managed Service |
+| Service Monitoring | ADMIN | Create, Read, Update, Delete for Service Monitoring Service |
+| Certificate Manager | ADMIN | Create, Read, Update, Delete for Certificate Manager Service |
+| eTax | ADMIN | Create, Read, Update, Delete for eTax Service |
 | eTax | VIEWER | Read  for eTax Service |
 
 
