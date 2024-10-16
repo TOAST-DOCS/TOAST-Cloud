@@ -338,21 +338,21 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 
 | ロール | 説明 |
 | --- | --- |
-| ADMIN | プロジェクト全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| ADMIN | プロジェクト全体に対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | MARKETPLACE_ADMIN | Marketplace サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除) |
 | MARKETPLACE_VIEWER | Marketplace サービス Read(読込) |
-| MEMBER | プロジェクト内のすべてのサービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| MEMBER | プロジェクト内のすべてのサービスCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | BILLING VIEWER | 利用状況Read(読み取り) |
 | PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)  <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除) |
 | PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br> プロジェクト統合Appkey Read(読み取り) |
-| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)<br> プロジェクトロールグループCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> プロジェクトロールグループCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り)<br> プロジェクトロールグループRead(読み取り) |
-| PROJECT NOTICE GROUP MANAGEMENT ADMIN | プロジェクト通知受信グループの管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
+| PROJECT NOTICE GROUP MANAGEMENT ADMIN | プロジェクト通知受信グループの管理Create(作成), Read(読み取り), Update(更新), Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | プロジェクト通知受信グループの管理Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
-| PROJECT NOTICE MANAGEMENT ADMIN | プロジェクト通知管理 Create(作成)/Read(読取)/Update(更新)/Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
+| PROJECT NOTICE MANAGEMENT ADMIN | プロジェクト通知管理 Create(作成), Read(読取), Update(更新), Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
 | PROJECT NOTICE MANAGEMENT VIEWER | プロジェクト通知管理 Read(読取) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
-| PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
-| PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
+| PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成), Read(読み取り), Update(更新), Delete(削除)|
+| PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成), Read(読み取り), Update(更新), Delete(削除)|
 | PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
 | PROJECT DASHBOARD VIEWER | プロジェクトダッシュボードRead(読み取り) |
 
@@ -361,7 +361,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 
 | サービス | ロール | 説明 |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | Infrastructure | MEMBER | ネットワークサービス(Floating IPを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Routing ADMIN | ネットワークサービス(Floating IP、Routing Tableを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Security Group ADMIN | ネットワークサービス(Floating IP、Security Groupsを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
@@ -372,23 +372,25 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Infrastructure | Private DNS ADMIN | ネットワークサービス(Floating IP、Private DNSを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Flow Log ADMIN | ネットワークサービス(Floating IP、Flow Logを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | NCS ADMIN | ネットワークサービス(Floating IPを除く)及びNKS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
+| NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り) |
 | NHN Container Registry (NCR) | IMAGE UPLOADER | NHN Container Registry (NCR) サービスに対するRead(読み取り), イメージ アップロード , アーティファクト Create(作成), タグ Create(作成) |
-| DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | DNS Plus | VIEWER | DNS Plusサービスに対するRead(読み取り) |
-| Object Storage | ADMIN | Object Storageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Backup | ADMIN | Backupサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| RDS for MySQL | ADMIN | RDS for MySQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Object Storage | ADMIN | Object Storageサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Backup | ADMIN | Backupサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| RDS for MySQL | ADMIN | RDS for MySQLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | RDS for MySQL | VIEWER | RDS for MySQLサービスに対するRead(読み取り) |
-| RDS for PostgreSQL | ADMIN | RDS for PostgreSQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| RDS for PostgreSQL | ADMIN | RDS for PostgreSQLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | RDS for PostgreSQL | VIEWER | RDS for PostgreSQLサービスに対するRead(読み取り) |
-| RDS for MariaDB | ADMIN | RDS for MariaDBサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| RDS for MariaDB | ADMIN | RDS for MariaDBサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | RDS for MariaDB | VIEWER | RDS for MariaDBサービスに対するRead(読み取り) |
-| RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | EasyCache | VIEWER | EasyCacheサービスレプリケーショングループメニューRead(読込)、モニタリングメニューRead(読込) |
+| Cloud Monitoring | ADMIN | Cloud Monitoringサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Cloud Monitoring | VIEWER | Cloud Monitoringサービスに対するRead(読み取り) |
 | Gamebase | ADMIN | Gamebase サービス Create(作成), Read(読み取り), Update(更新), Delete(削除) |
 | Gamebase | ANALYTICS VIEWER - ALL | すべての指標Read(読み取り) |
 | Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | 売上を除くすべての指標Read(読み取り) |
@@ -416,80 +418,80 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | GameAnvil  | ADMIN | GameAnvil サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
 | GameAnvil  | MEMBER | GameAnvil サービス Read(読込), モニタリング メニュー Create(作成)、Read(読込)、Update(更新)、Delete(削除)  |
 | GameAnvil  | VIEWER | GameAnvil サービス Read(読込)  |
-| GameStarter  | ADMIN | ゲーム設定, 配布メニュー Create(作成)/ Read(読み取り)/ Update(更新)  |
+| GameStarter  | ADMIN | ゲーム設定, 配布メニュー Create(作成),  Read(読み取り),  Update(更新)  |
 | GameStarter  | VIEWER | ゲーム設定, 配布メニュー Read(読み取り)  |
-| Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Leaderboard | ADMIN | Leaderboardサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Leaderboard | VIEWER | Leaderboardサービスに対するRead(読み取り) |
-| Launching | ADMIN | Launchingサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Smart Downloader | ADMIN | Smart Downloaderサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| NHN AppGuard | ADMIN | AppGuardサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Server Security Check | ADMIN | Server Security Check サービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Security Monitoring | ADMIN | Security Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| CAPTCHA | ADMIN | CAPTCHAサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| WEB Firewall | ADMIN | WEB Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Vaccine | ADMIN | Vaccineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Secure Key Manager | ADMIN | Secure Key Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager承認要請に対する承認/拒否/照会および承認要請生成/照会  |
-| Secure Key Manager | APPROVAL MEMBER | Secure Key Manager承認要請作成/照会  |
+| Launching | ADMIN | Launchingサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Smart Downloader | ADMIN | Smart Downloaderサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| NHN AppGuard | ADMIN | AppGuardサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Server Security Check | ADMIN | Server Security Check サービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Security Monitoring | ADMIN | Security Monitoringサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| CAPTCHA | ADMIN | CAPTCHAサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| WEB Firewall | ADMIN | WEB Firewallサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Vaccine | ADMIN | Vaccineサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Secure Key Manager | ADMIN | Secure Key Managerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager承認要請に対する承認, 拒否, 照会および承認要請生成, 照会  |
+| Secure Key Manager | APPROVAL MEMBER | Secure Key Manager承認要請作成, 照会  |
 | Secure Key Manager | VIEWER | Secure Key Managerサービスに対するRead(読み取り) |
-| Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| Security Advisor | ADMIN | Security Advisorサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
+| Security Advisor | ADMIN | Security Advisorサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Security Advisor | VIEWER | Security Advisorサービスに対するRead(読み取り)  |
-| Network Firewall | ADMIN | Network Firewallサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Network Firewall | ADMIN | Network Firewallサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Network Firewall | VIEWER | Network Firewallサービスに対するRead(読み取り)  |
-| NHN Bastion | ADMIN | NHN Bastionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) | 
+| NHN Bastion | ADMIN | NHN Bastionサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) | 
 | NHN Bastion | VIEWER | NHN Bastionサービスに対するRead(読み取り) | 
 | NHN Bastion | USER | NHN Bastionサービスターミナルの利用 | 
-| CDN | ADMIN | CDNサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Image Manager | ADMIN | Image Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Push | ADMIN | Pushサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
-| SMS | ADMIN | SMSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| SMS | SEND ADMIN | SMSサービス送信メニューCreate(作成)/Read(読み取り) |
-| SMS | DELIVERY RESULT ADMIN | SMSサービスSMSリクエスト別照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成), 大量SMS送信照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成), タグSMS送信照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成)  |
-| SMS | SETTING ADMIN | SMSサービステンプレート管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 発信番号 事前登録 メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 発信番号照会メニューRead(読み取り), タグ管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), UID管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), Webフック管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 080受信拒否設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 送信設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 統計イベントキー設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| CDN | ADMIN | CDNサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Image Manager | ADMIN | Image Managerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Push | ADMIN | Pushサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
+| SMS | ADMIN | SMSサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| SMS | SEND ADMIN | SMSサービス送信メニューCreate(作成), Read(読み取り) |
+| SMS | DELIVERY RESULT ADMIN | SMSサービスSMSリクエスト別照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成)<br> 大量SMS送信照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成)<br> タグSMS送信照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成)  |
+| SMS | SETTING ADMIN | SMSサービステンプレート管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 発信番号 事前登録 メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 発信番号照会メニューRead(読み取り)<br> タグ管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> UID管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> Webフック管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 080受信拒否設定メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 送信設定メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 統計イベントキー設定メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | SMS | STATISTICS ADMIN | SMSサービス統計メニューRead(読み取り)、照会結果ダウンロードCreate(作成)  |
-| RCS Bizmessage | ADMIN | RCS Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Email | ADMIN | Emailサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Email | SEND ADMIN | Emailサービスメール送信メニューCreate(作成)/Read(読み取り) |
-| Email | DELIVERY RESULT ADMIN | Emailサービスメールリクエスト別照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成), メール予約送信照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成), 大量メール送信照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成), タグメール送信照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成)  |
-| Email | SETTING ADMIN | Emailサービステンプレート管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 受信拒否管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), メールドメイン管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), タグ管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), UID管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 送信設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除), Webフック管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| RCS Bizmessage | ADMIN | RCS Bizmessageサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Email | ADMIN | Emailサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Email | SEND ADMIN | Emailサービスメール送信メニューCreate(作成), Read(読み取り) |
+| Email | DELIVERY RESULT ADMIN | Emailサービスメールリクエスト別照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成)<br> メール予約送信照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成)<br> 大量メール送信照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成)<br> タグメール送信照会メニュー Read(読み取り)、照会結果ダウンロードCreate(作成)  |
+| Email | SETTING ADMIN | Emailサービステンプレート管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 受信拒否管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> メールドメイン管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> タグ管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> UID管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 送信設定Create(作成), Read(読み取り), Update(更新), Delete(削除)<br> Webフック管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Email | STATISTICS ADMIN | Emailサービス統計照会メニューRead(読み取り)、照会結果ダウンロードCreate(作成)  |
-| KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessageサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| KakaoTalk Bizmessage | SEND ADMIN | KakaoTalk Bizmessageサービス(お知らせトーク)送信メニューCreate(作成)/Read(読み取り), (カカともへのメッセージ)送信メニューCreate(作成)/Read(読み取り)  |
-| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | KakaoTalk Bizmessageサービス(お知らせトーク)送信結果照会 Read(読み取り)、照会履歴のダウンロードCreate(作成), (お知らせトーク)大量送信照会 Read(読み取り)、照会結果ダウンロードCreate(作成), (カカともへのメッセージ)送信結果照会 Read(読み取り)、照会結果ダウンロードCreate(作成), (カカともへのメッセージ)大量送信照会 Read(読み取り)、照会結果ダウンロードCreate(作成)  |
-| KakaoTalk Bizmessage | SETTING ADMIN | KakaoTalk Bizmessageサービス発信プロフィール管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), (お知らせトーク)テンプレート管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), (お知らせトーク)代替送信管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), (お知らせトーク)発信プロフィールグループ管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除), (カカともへのメッセージ)イメージ管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除), (カカともへのメッセージ)代替送信管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 送信設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), Webフック管理メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除), 統計イベントキー 設定メニューCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessageサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| KakaoTalk Bizmessage | SEND ADMIN | KakaoTalk Bizmessageサービス(お知らせトーク)送信メニューCreate(作成), Read(読み取り)<br> (カカともへのメッセージ)送信メニューCreate(作成), Read(読み取り)  |
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | KakaoTalk Bizmessageサービス(お知らせトーク)送信結果照会 Read(読み取り)、照会履歴のダウンロードCreate(作成)<br> (お知らせトーク)大量送信照会 Read(読み取り)、照会結果ダウンロードCreate(作成)<br> (カカともへのメッセージ)送信結果照会 Read(読み取り)、照会結果ダウンロードCreate(作成)<br> (カカともへのメッセージ)大量送信照会 Read(読み取り)、照会結果ダウンロードCreate(作成)  |
+| KakaoTalk Bizmessage | SETTING ADMIN | KakaoTalk Bizmessageサービス発信プロフィール管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> (お知らせトーク)テンプレート管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> (お知らせトーク)代替送信管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> (お知らせトーク)発信プロフィールグループ管理Create(作成), Read(読み取り), Update(更新), Delete(削除)<br> (カカともへのメッセージ)イメージ管理Create(作成), Read(読み取り), Update(更新), Delete(削除)<br> (カカともへのメッセージ)代替送信管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 送信設定メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> Webフック管理メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 統計イベントキー 設定メニューCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | KakaoTalk Bizmessage | STATISTICS ADMIN | KakaoTalk Bizmessageサービス統計メニューRead(読み取り)、照会結果ダウンロードCreate(作成)  |
-| Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Face Liveness | ADMIN | Face Livenessサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| AI Fashion | ADMIN | AI Fashionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
-| OCR | ADMIN | OCRサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
-| Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
-| Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
-| Pose Estimation | ADMIN | Pose Estimationサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  | 
-| AI EasyMaker | ADMIN | AI EasyMakerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| IAP | ADMIN | IAPサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| DataFlow | ADMIN | DataFlowサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| DataQuery | ADMIN | DataQueryサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Maps | ADMIN | Mapsサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| ROLE | ADMIN | ROLEサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| RTCS | ADMIN | RTCSサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| ShortURL | ADMIN | ShortURLサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| File-Crafter | ADMIN | File-Crafterサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Cloud Search | ADMIN | Cloud Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Autocomplete | ADMIN | Autocompleteサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Corporation Search | ADMIN | Corporation Searchサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Word Suggestion | ADMIN | Word Suggestionサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Pipeline | ADMIN | Pipelineサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Deploy | ADMIN | Deployサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
+| Face Recognition | ADMIN | Face Recognitionサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Face Liveness | ADMIN | Face Livenessサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| AI Fashion | ADMIN | AI Fashionサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  | 
+| OCR | ADMIN | OCRサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  | 
+| Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  | 
+| Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  | 
+| Pose Estimation | ADMIN | Pose Estimationサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  | 
+| AI EasyMaker | ADMIN | AI EasyMakerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| IAP | ADMIN | IAPサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| DataFlow | ADMIN | DataFlowサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| DataQuery | ADMIN | DataQueryサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Maps | ADMIN | Mapsサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| ROLE | ADMIN | ROLEサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| RTCS | ADMIN | RTCSサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| ShortURL | ADMIN | ShortURLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| File-Crafter | ADMIN | File-Crafterサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Cloud Search | ADMIN | Cloud Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Autocomplete | ADMIN | Autocompleteサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Corporation Search | ADMIN | Corporation Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Word Suggestion | ADMIN | Word Suggestionサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Pipeline | ADMIN | Pipelineサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Deploy | ADMIN | Deployサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Deploy | VIEWER | Deployサービスに対するRead(読み取り)  |
-| Managed | ADMIN | Managedサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Service Monitoring | ADMIN | Service Monitoringサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| Certificate Manager | ADMIN | Certificate Managerサービスに対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除)  |
-| eTax | ADMIN | eTax サービスCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| Managed | ADMIN | Managedサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Service Monitoring | ADMIN | Service Monitoringサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Certificate Manager | ADMIN | Certificate Managerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| eTax | ADMIN | eTax サービスCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | eTax | VIEWER | eTaxサービスに対するRead(読み取り) |
 
 
