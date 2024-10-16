@@ -300,13 +300,13 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 역할 | 설명 |
 | --- | --- |
-| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기) |
 | BILLING_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기) |
-| BUDGET_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| BUDGET_ADMIN | 예산 관리에 대한 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
-| LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | ORG_DASHBOARD_VIEWER | 조직 대시보드 Read(읽기) |
 | NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 
@@ -314,9 +314,9 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
-| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
-| CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Resource Watcher | ADMIN | Resource Watcher 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Resource Watcher | VIEWER | Resource Watcher 서비스 Read(읽기) |
 
@@ -336,21 +336,21 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 역할 | 설명 |
 | --- | --- |
-| ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| MARKETPLACE_ADMIN | 마켓플레이스 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| ADMIN | 프로젝트 전체에 대한 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| MARKETPLACE_ADMIN | 마켓플레이스 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | MARKETPLACE_VIEWER | 마켓플레이스 서비스 Read(읽기) |
-| MEMBER | 프로젝트 내 모든 서비스의 리소스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| MEMBER | 프로젝트 내 모든 서비스의 리소스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | BILLING VIEWER | 이용 현황 Read(읽기)  |
-| PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제)  |
+| PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br>프로젝트 서비스 활성화(Enable), 비활성화(Disable)<br>프로젝트 Delete(삭제)  |
 | PROJECT MANAGEMENT VIEWER | 프로젝트 기본 정보 Read(읽기)<br>프로젝트 통합 Appkey Read(읽기)  |
-| PROJECT MEMBER ADMIN | 프로젝트 멤버 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 역할 그룹 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| PROJECT MEMBER ADMIN | 프로젝트 멤버 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br>프로젝트 역할 그룹 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | PROJECT MEMBER VIEWER | 프로젝트 멤버 Read(읽기)<br>프로젝트 역할 그룹 Read(읽기)  |
-| PROJECT NOTICE GROUP MANAGEMENT ADMIN | 프로젝트 알림 수신 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
+| PROJECT NOTICE GROUP MANAGEMENT ADMIN | 프로젝트 알림 수신 그룹 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | 프로젝트 알림 수신 그룹 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
-| PROJECT NOTICE MANAGEMENT ADMIN | 프로젝트 알림 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
+| PROJECT NOTICE MANAGEMENT ADMIN | 프로젝트 알림 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
 | PROJECT NOTICE MANAGEMENT VIEWER | 프로젝트 알림 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
-| PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
-| PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
+| PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
+| PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT VIEWER| 프로젝트 쿼터 관리 Read(읽기)|
 | PROJECT DASHBOARD VIEWER | 프로젝트 대시보드 Read(읽기) |
 
@@ -360,7 +360,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Infrastructure | ADMIN | Infrastructure 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Infrastructure | MEMBER | 네트워크 서비스(Floating IP 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Routing ADMIN | 네트워크 서비스(Floating IP, Routing Table 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Security Group ADMIN | 네트워크 서비스(Floating IP, Security Groups 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
@@ -371,23 +371,25 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Infrastructure | Private DNS ADMIN | 네트워크 서비스(Floating IP, Private DNS 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Flow Log ADMIN | 네트워크 서비스(Floating IP, Flow Log 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | NCS ADMIN | 네트워크 서비스(Floating IP 제외) 및 NKS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR) 서비스 Read(읽기) |
 | NHN Container Registry (NCR) | IMAGE UPLOADER | NHN Container Registry (NCR) 서비스 Read(읽기), 이미지 업로드, 아티팩트 Create(생성), 태그 Create(생성) |
-| DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| DNS Plus | ADMIN | DNS Plus 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | DNS Plus | VIEWER | DNS Plus 서비스 Read(읽기) |
-| Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| Object Storage | ADMIN | Object Storage 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Backup | ADMIN | Backup 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | RDS for MySQL | VIEWER | RDS for MySQL 서비스 Read(읽기) |
-| RDS for PostgreSQL | ADMIN | RDS for PostgreSQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| RDS for PostgreSQL | ADMIN | RDS for PostgreSQL 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | RDS for PostgreSQL | VIEWER | RDS for PostgreSQL 서비스 Read(읽기) |
-| RDS for MariaDB | ADMIN | RDS for MariaDB 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| RDS for MariaDB | ADMIN | RDS for MariaDB 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | RDS for MariaDB | VIEWER | RDS for MariaDB 서비스 Read(읽기) |
-| RDS for MS-SQL | ADMIN | RDS for MS-SQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| EasyCache | ADMIN | EasyCache 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| RDS for MS-SQL | ADMIN | RDS for MS-SQL 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| EasyCache | ADMIN | EasyCache 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | EasyCache | VIEWER | EasyCache 서비스 복제 그룹 메뉴 Read(읽기), 모니터링 메뉴 Read(읽기) |
+| Cloud Monitoring | ADMIN | Cloud Monitoring 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Cloud Monitoring | VIEWER | Cloud Monitoring Read(읽기) |
 | Gamebase | ADMIN | Gamebase 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Gamebase | ANALYTICS VIEWER - ALL | 모든 지표 Read(읽기) |
 | Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | 매출을 제외한 모든 지표 Read(읽기) |
@@ -415,21 +417,21 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | GameAnvil  | ADMIN | GameAnvil 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | GameAnvil  | MEMBER | GameAnvil 서비스 Read(읽기), 모니터링 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | GameAnvil  | VIEWER | GameAnvil 서비스 Read(읽기)  |
-| GameStarter  | ADMIN | 게임 설정, 배포 메뉴 Create(생성)/ Read(읽기)/ Update(갱신)  |
+| GameStarter  | ADMIN | 게임 설정, 배포 메뉴 Create(생성),  Read(읽기),  Update(갱신)  |
 | GameStarter  | VIEWER | 게임 설정, 배포 메뉴 Read(읽기)  |
-| Leaderboard | ADMIN | Leaderboard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Leaderboard | ADMIN | Leaderboard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Leaderboard | VIEWER | Leaderboard 서비스 Read(읽기) |
-| Launching | ADMIN | Launching 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Smart Downloader | ADMIN | Smart Downloader 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| NHN AppGuard | ADMIN | AppGuard 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Launching | ADMIN | Launching 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Smart Downloader | ADMIN | Smart Downloader 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| NHN AppGuard | ADMIN | AppGuard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Server Security Check | ADMIN | Server Security Check 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| CAPTCHA | ADMIN | CAPTCHA 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Secure Key Manager | ADMIN | Secure Key Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager 서비스 승인 요청에 대한 승인/거부/조회 및 승인 요청 생성/조회  |
-| Secure Key Manager | APPROVAL MEMBER | Secure Key Manager 서비스 승인 요청 생성/조회  |
+| Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| CAPTCHA | ADMIN | CAPTCHA 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Vaccine | ADMIN | Vaccine 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Secure Key Manager | ADMIN | Secure Key Manager 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager 서비스 승인 요청에 대한 승인, 거부, 조회 및 승인 요청 생성, 조회  |
+| Secure Key Manager | APPROVAL MEMBER | Secure Key Manager 서비스 승인 요청 생성, 조회  |
 | Secure Key Manager | VIEWER | Secure Key Manager 서비스 Read(읽기) |
 | Security Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Webshell Threat Detector | ADMIN | Webshell Threat Detector 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
@@ -440,24 +442,24 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | NHN Bastion | ADMIN | NHN Bastion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) | 
 | NHN Bastion | VIEWER | NHN Bastion 서비스 Read(읽기) | 
 | NHN Bastion | USER | NHN Bastion 서비스 터미널 이용 | 
-| CDN | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Image Manager | ADMIN | Image Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Push | ADMIN | Push 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| SMS | ADMIN | SMS 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| SMS | SEND ADMIN | SMS 서비스 발송 메뉴 Create(생성)/Read(읽기) |
-| SMS | DELIVERY RESULT ADMIN |  SMS 서비스 SMS 요청별 조회  메뉴 Read(읽기), 조회 결과 다운로드 Create(생성),대량 SMS 발송 조회 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성), 태그 SMS 발송 조회 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성) |
-| SMS | SETTING ADMIN | SMS 서비스 템플릿 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발신번호 사전 등록 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발신번호 조회 메뉴 Read(읽기), 태그 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), UID 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 웹훅 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 080 수신 거부 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발송 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제),통계 이벤트 키 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| CDN | ADMIN | CDN 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Image Manager | ADMIN | Image Manager 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Push | ADMIN | Push 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| SMS | ADMIN | SMS 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| SMS | SEND ADMIN | SMS 서비스 발송 메뉴 Create(생성), Read(읽기) |
+| SMS | DELIVERY RESULT ADMIN |  SMS 서비스 SMS 요청별 조회  메뉴 Read(읽기), 조회 결과 다운로드 Create(생성) <br> 대량 SMS 발송 조회 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성) <br> 태그 SMS 발송 조회 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성) |
+| SMS | SETTING ADMIN | SMS 서비스 템플릿 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 발신번호 사전 등록 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 발신번호 조회 메뉴 Read(읽기), 태그 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> UID 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 웹훅 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 080 수신 거부 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 발송 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제 <br> 통계 이벤트 키 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | SMS | STATISTICS ADMIN | SMS 서비스 통계 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성) |
-| RCS Bizmessage | ADMIN | RCS Bizmessage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Email | ADMIN | Email 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Email | SEND ADMIN | Email 서비스 메일 발송 메뉴 Create(생성)/Read(읽기)  |
-| Email | DELIVERY RESULT ADMIN | Email 서비스 메일 요청별 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성), 메일 예약 발송 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성), 대량 메일 발송 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성), 태그 메일 발송 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성)  |
-| Email | SETTING ADMIN | Email 서비스 템플릿 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 수신 거부 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 메일 도메인 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 태그 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), UID 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발송 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 웹훅 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| RCS Bizmessage | ADMIN | RCS Bizmessage 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Email | ADMIN | Email 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Email | SEND ADMIN | Email 서비스 메일 발송 메뉴 Create(생성), Read(읽기)  |
+| Email | DELIVERY RESULT ADMIN | Email 서비스 메일 요청별 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성) <br> 메일 예약 발송 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성) <br> 대량 메일 발송 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성) <br> 태그 메일 발송 조회 메뉴  Read(읽기), 조회 결과 다운로드 Create(생성)  |
+| Email | SETTING ADMIN | Email 서비스 템플릿 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 수신 거부 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 메일 도메인 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 태그 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br>UID 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br>발송 설정 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 웹훅 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Email | STATISTICS ADMIN | Email 서비스 통계 조회 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성)  |
-| KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| KakaoTalk Bizmessage | SEND ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 메뉴 Create(생성)/Read(읽기), (친구톡)발송 메뉴 Create(생성)/Read(읽기)  |
-| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 결과 조회  Read(읽기), 조회 내역 다운로드 Create(생성), (알림톡)대량 발송 조회  Read(읽기), 조회 결과 다운로드 Create(생성), (친구톡)발송 결과 조회  Read(읽기), 조회 결과 다운로드 Create(생성), (친구톡)대량 발송 조회  Read(읽기), 조회 결과 다운로드 Create(생성)  |
-| KakaoTalk Bizmessage | SETTING ADMIN | KakaoTalk Bizmessage 서비스 발신 프로필 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (알림톡)템플릿 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (알림톡)대체 발송 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (알림톡)발신 프로필 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (친구톡)이미지 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), (친구톡)대체 발송 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 발송 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 웹훅 관리 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 통계 이벤트 키 설정 메뉴 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessage 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| KakaoTalk Bizmessage | SEND ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 메뉴 Create(생성), Read(읽기)<br> (친구톡)발송 메뉴 Create(생성), Read(읽기)  |
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 결과 조회  Read(읽기), 조회 내역 다운로드 Create(생성)<br> (알림톡)대량 발송 조회  Read(읽기), 조회 결과 다운로드 Create(생성)<br> (친구톡)발송 결과 조회  Read(읽기), 조회 결과 다운로드 Create(생성)<br> (친구톡)대량 발송 조회  Read(읽기), 조회 결과 다운로드 Create(생성)  |
+| KakaoTalk Bizmessage | SETTING ADMIN | KakaoTalk Bizmessage 서비스 발신 프로필 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)템플릿 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)대체 발송 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)발신 프로필 그룹 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (친구톡)이미지 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (친구톡)대체 발송 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 발송 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 웹훅 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 통계 이벤트 키 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | KakaoTalk Bizmessage | STATISTICS ADMIN | KakaoTalk Bizmessage 서비스 통계 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성)  |
 | Face Recognition | ADMIN | Face Recognition 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Face Liveness | ADMIN | Face Liveness 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
@@ -467,27 +469,27 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Speech to Text | ADMIN | Speech to Text 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Pose Estimation | ADMIN | Pose Estimation 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI EasyMaker | ADMIN | AI EasyMaker 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Maps | ADMIN | Maps 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| ROLE | ADMIN | ROLE 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| API Gateway | ADMIN | API Gateway 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| RTCS | ADMIN | RTCS 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Maps | ADMIN | Maps 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| ROLE | ADMIN | ROLE 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| API Gateway | ADMIN | API Gateway 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| RTCS | ADMIN | RTCS 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | ShortURL | ADMIN | ShortURL 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | File-Crafter | ADMIN | File-Crafter 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| IAP | ADMIN | IAP 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| Mobile Device Info | ADMIN | Mobile Device Info 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Cloud Search | ADMIN | Cloud Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Autocomplete | ADMIN | Autocomplete 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Corporation Search | ADMIN | Corporation Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Word Suggestion | ADMIN | Word Suggestion 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| DataFlow | ADMIN | DataFlow 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| DataQuery | ADMIN | DataQuery 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| IAP | ADMIN | IAP 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Mobile Device Info | ADMIN | Mobile Device Info 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Cloud Search | ADMIN | Cloud Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Autocomplete | ADMIN | Autocomplete 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Corporation Search | ADMIN | Corporation Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Word Suggestion | ADMIN | Word Suggestion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| DataFlow | ADMIN | DataFlow 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| DataQuery | ADMIN | DataQuery 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Pipeline | ADMIN | Pipeline 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Deploy | ADMIN | Deploy 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Deploy | ADMIN | Deploy 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Deploy | VIEWER | Deploy 서비스 Read(읽기)|
-| Managed | ADMIN | Managed 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Service Monitoring | ADMIN | Service Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Managed | ADMIN | Managed 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Service Monitoring | ADMIN | Service Monitoring 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | eTax| ADMIN | eTax 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | eTax | VIEWER | eTax 서비스 Read(읽기) |
 
