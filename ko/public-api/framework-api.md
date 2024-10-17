@@ -65,7 +65,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | **GET** |[**/v1/organizations/{org-id}/project-role-groups/{role-group-id}**](#조직의-프로젝트-공통-역할그룹-단건-조회) | 조직의 프로젝트 공통 역할그룹 단건 조회 |
 | **GET** |[**/v1/projects/{project-id}/project-role-groups**](#프로젝트-역할-그룹-전체-조회) | 프로젝트 역할 그룹 전체 조회 |
 | **GET** |[**/v1/organizations/{org-id}/projects**](#조직에-속한-프로젝트-리스트-조회) | 조직에 속한 프로젝트 목록 조회 |
-| **GET** |[**/v1/governances**](#사용중-거버넌스-목록-조회) | 사용중 거버넌스 목록 조회 |
+| **GET** |[**/v1/organizations/{org-id}/governances**](#사용중-거버넌스-목록-조회) | 사용중인 조직 거버넌스 목록 조회 |
 | **POST** |[**/v1/organizations/{org-id}/project-role-groups**](#조직의-프로젝트-공통-역할그룹-생성) | 조직의 프로젝트 공통 역할그룹 생성 |
 | **DELETE** |[**/v1/organizations/{org-id}/project-role-groups**](#조직의-프로젝트-공통-역할그룹-삭제) | 조직의 프로젝트 공통 역할그룹 삭제 |
 | **PUT** |[**/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos**](#조직의-프로젝트-공통-역할그룹-정보-수정) | 조직의 프로젝트 공통 역할그룹 정보 수정 |
@@ -100,7 +100,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 
-#### **프로젝트 멤버 생성 (수정중)**
+#### **프로젝트 멤버 생성**
 > POST "/v1/projects/{project-id}/members"
 * 프로젝트에 멤버를 추가하는 API
 
@@ -120,20 +120,27 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 ###### CreateMemberRequest
+> 주의
+> * 요청 시 memberUuid, email, userCode 중 하나는 반드시 값이 있어야 함
+> * memberUuid > email > userCode 순으로 값이 값이 있는지 체크하고 있으면 해당 멤버를 프로젝트 멤버로 추가함
+> * 한 요청에 한 명의 프로젝트 멤버만 만들 수 있음
 
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
 |   **assignRoles** | **List&lt;UserAssignRoleProtocol>**| **No** | 사용자에게 할당할 역할 목록  |
 |   **memberUuid** | **String**| **No** | 추가할 멤버의 UUID  |
+|   **email** | **String**| **No** | 추가할 멤버의 이메일  |
+|   **userCode** | **String**| **No** | 추가할 IAM 멤버의 ID  |
+
 
 ###### UserAssignRoleProtocol
 
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
+|   **roleId** | **String**| **Yes** | 역할 ID  |
 |   **conditions** | **List&lt;AssignAttributeConditionProtocol>**| **No** | 역할 조건 속성  |
-|   **roleId** | **String**| **No** | 역할 ID  |
 
 
 ###### AssignAttributeConditionProtocol
@@ -141,12 +148,9 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
-|   **attributeId** | **String**| **No** | 조건 속성 ID  |
-|   **attributeOperatorTypeCode** | **String**| **No** | 조건 속성 연산자<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
-|   **attributeValues** | **List**| **No** | 조건 속성 값  |
-
-
-
+|   **attributeId** | **String**| **Yes** | 조건 속성 ID  |
+|   **attributeOperatorTypeCode** | **String**| **Yes** | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   **attributeValues** | **List&lt;String>**| **Yes** | 조건 속성 값  |
 
 
 ##### Response Body
@@ -170,7 +174,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 
-#### **프로젝트 추가 (수정중)**
+#### **프로젝트 추가**
 > POST "/v1/organizations/{org-id}/projects"
 * 조직에 프로젝트를 추가하는 API
 
@@ -275,6 +279,12 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 #### **프로젝트 삭제**
 > DELETE "/v1/projects/{project-id}"
+* 프로젝트를 삭제하는 API
+
+##### 필요 권한
+아래 권한들 중 하나
+* `Organization.Project.Delete`
+* `Project.Delete`
 
 ##### Request Parameters
 
@@ -337,11 +347,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
   "childProducts" : [ {
     "productId" : "productId",
     "productName" : "productName",
-    "statusCode" : "BETA"
-  }, {
-    "productId" : "productId",
-    "productName" : "productName",
-    "statusCode" : "BETA"
+    "statusCode" : "STABLE"
   } ],
   "header" : {
     "isSuccessful" : true,
@@ -370,7 +376,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 
-#### **프로젝트 상품 이용 (수정중)**
+#### **프로젝트 상품 이용**
 > POST "/v1/projects/{project-id}/products/{product-id}/enable"
 * 해당 프로젝트에서 사용자가 지정한 서비스를 이용할 수 있도록 활성화 요청하는 API
 
@@ -401,7 +407,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
   "parentProduct" : {
     "productId" : "productId",
     "productName" : "productName",
-    "statusCode" : "BETA"
+    "statusCode" : "STABLE"
   }
 }
 ```
@@ -432,7 +438,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 #### **조직 역할 목록 조회**
-> GET "/v1/organizations/{org-id}/roles/all"
+> GET "/v1/organizations/{org-id}/roles"
 * 조직 사용자에게 부여할 수 있는 역할 목록을 요청하는 API
 
 ##### 필요 권한
@@ -500,8 +506,17 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 #### **프로젝트 역할 목록 조회**
-> GET "/v1/projects/{project-id}/roles/all"
+> GET "/v1/projects/{project-id}/roles"
 * 프로젝트 사용자에게 부여할 수 있는 역할 목록을 요청하는 API
+
+##### 필요 권한
+* 하위 권한들 중 하나
+  * `Project.RoleGroup.List`
+  * `Project.Role.List`
+  * `$PROJECT_ANY_PRODUCT`
+
+
+> 참고 : `$PROJECT_ANY_PRODUCT`는 프로젝트 내에 활성화되어 있는 서비스들 중 어느 한 서비스의 권한만 가지고 있어도 통과한다는 뜻의 권한
 
 ##### Request Parameters
 
@@ -518,11 +533,34 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 ##### Response Body
 
+```json
+{
+  "roles" : [ {
+    "roleId" : "roleId",
+    "roleName" : "roleName",
+    "categoryKey" : "categoryKey",
+    "description" : "description",
+    "roleCategory" : "ORG_ROLE",
+    "categoryTypeCode" : "ORG_ROLE_GROUP"
+  }],
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  },
+  "totalCount" : 0
+}
+```
 
-[**Response**](#getroleresponse)
+
+###### Response
 
 
-
+| Name | Type | Required | Description | 
+|------------ | ------------- | ------- | ------------ |
+|   **header** | [**공통 Response**](#response)| **Yes** |
+|   **roles** | **List&lt;[RoleProtocol](#roleprotocol)>**| **Yes**  | 역할 목록 |
+|   **totalCount** | **Integer**| **Yes**  | 총 개수 |
 
 
 #### **조직 도메인 검색**
@@ -567,7 +605,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes** |
-|   **domainList** | **List&lt;OrgDomainProtocol>**| **No**  |
+|   **domainList** | **List&lt;OrgDomainProtocol>**| **Yes**  |
 
 
 ###### OrgDomainProtocol
@@ -593,8 +631,8 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |**member-uuid** | **String**| **Yes** | 	조회할 멤버 uuid | 
 |  Path |**org-id** | **String**| **Yes** | 멤버를 조회할 조직 ID | 
+|  Path |**member-uuid** | **String**| **Yes** | 	조회할 멤버 uuid | 
 
 
 
@@ -694,7 +732,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **attributeId** | **String**| **Yes** | 조건 속성 ID |
 |   **attributeName** | **String**| **Yes** | 조건 속성 이름 |
 |   **attributeOperatorTypeCode** | **String**| **Yes** | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
-|   **attributeValues** | **List**| **Yes**| 조건 속성 값 |
+|   **attributeValues** | **List&lt;String>**| **Yes**| 조건 속성 값 |
 
 
 
@@ -732,7 +770,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |------------ | ------------- | ------------- | ------------ |
 |   **limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20  |
 |   **page** | **Integer**| **No** | 대상 페이지, 기본값 1  |
-|   **sort** | **List**| **No** | 정렬 조건<br>ex: [\"필드명\";, \"필드명,ASC\", \"필드명,DESC\";]  |
+|   **sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\";, \"필드명,ASC\", \"필드명,DESC\";]  |
 
 
 
@@ -799,7 +837,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |------------ | ------------- | ------------- | ------------ |
 |   **limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20  |
 |   **page** | **Integer**| **No** | 대상 페이지, 기본값 1  |
-|   **sort** | **List**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"]  |
+|   **sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"]  |
 |   **totalCount** | **Long**| **Yes** | 총 건수  |
 
 
@@ -858,16 +896,15 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 
-###### GetRoleGroupsResponse
+###### Response
 
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | --------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes**  |
-|   **paging** | **PagingResponse**| **Yes**  |
+|   **paging** | [**PagingResponse**](#pagingresponse)| **Yes**  |
 |   **roleGroups** | **List&lt;RoleGroupProtocol>**| **Yes** | 프로젝트에서 사용 가능한 역할 그룹의 목록  |
 
-[**PagingResponse**](#pagingresponse)
 
 ###### RoleGroupProtocol
 
@@ -882,7 +919,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 
-#### **상품 계층 구조 조회 (수정중)**
+#### **상품 계층 구조 조회**
 > GET "/v1/product-uis/hierarchy"
 * 청구서에 노출되는 홈페이지 카테고리, 홈페이지 서비스 정보를 반환하는 API
 
@@ -941,87 +978,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **productId** | **String**| **No**|
 |   **productUiId** | **String**| **No**| 상품 UI 식별키 |
 |   **productUiName** | **String**| **No**|
-
-
-
-#### **프로젝트 사용중인 상품 조회(수정중)**
-> GET "/v1/projects/{project-id}/products/{product-id}"
-* 프로젝트에서 사용중인 특정 서비스 정보를 조회하는 API
-
-##### 필요 권한
-`상품명:ProductAppKey.Get`
-
-##### Request Parameters
-
-
-
-| ParameterType | Name | Type | Required | Description  | 
-|------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |**project-id** | **String**| **Yes** | 조회 대상 프로젝트 ID |
-|  Path |**product-id** | **String**| **Yes** | 조회 대상 서비스 ID |
-
-
-
-
-##### Response Body
-
-```json
-{
-  "hasUpdateSecretKeyPermission" : true,
-  "product" : {
-    "updateDate" : "updateDate",
-    "productAppKeyReissueHookApiStatusCode" : "COMPLETE",
-    "productId" : "productId",
-    "relationDate" : "relationDate",
-    "secretKey" : "secretKey",
-    "externalId" : "externalId",
-    "productSecretKeyCode" : "F",
-    "productName" : "productName",
-    "updateUuid" : "updateUuid",
-    "appKey" : "appKey",
-    "productStatusCode" : "BETA",
-    "productUrl" : "productUrl",
-    "projectId" : "projectId",
-    "statusCode" : "BLOCKED"
-  },
-  "header" : {
-    "isSuccessful" : true,
-    "resultCode" : 0,
-    "resultMessage" : "resultMessage"
-  }
-}
-```
-
-###### Response
-
-
-| Name | Type | Required | Description | 
-|------------ | ------------- | ------- | ------------ |
-|   **header** | [**공통 Response**](#response)| **Yes** |
-|   **hasUpdateSecretKeyPermission** | **Boolean**| **Yes** | 상품 비활성화 가능 여부  |
-|   **product** | **ProjectProductRelationAndProductProtocol**| **Yes**  | 지정한 서비스 ID에 대해서 프로젝트에서 사용중인 서비스 정보를 반환, 오류 시 포함되지 않음 |
-
-
-###### ProjectProductRelationAndProductProtocol
-
-
-| Name | Type | Required | Description | 
-|------------ | ------------- | ------------- | ------------ |
-|   **appKey** | **String**| **Yes** | 해당 프로젝트에서 이용중인 서비스에 대한 appKey 정보  |
-|   **externalId** | **String**| **No** | Tenant ID<br>서비스에 Tenant ID가 존재하는 경우에만 제공 |
-|   **productId** | **String**| **Yes** | 서비스 ID  |
-|   **productName** | **String**| **Yes** | 상품 이름  |
-|   **productSecretKeyCode** | **String**| **No** | secretKey 사용 여부<br>T : 사용함<br>나머지 : 사용하지 않음 (F, N) |
-|   **productStatusCode** | **String**| **Yes** | 서비스 상태 (STABLE, CLOSED) |
-|   **productUrl** | **String**| **No** | 서비스 접근 URL  |
-|   **projectId** | **String**| **Yes** | 해당 서비스를 사용하는 프로젝트 ID  |
-|   **relationDate** | **String**| **Yes** | 서비스 이용 시작일시  |
-|   **secretKey** | **String**| **Yes** | 서비스 SecretKey<br>secretKey를 이용하는 서비스에서만 제공  |
-|   **statusCode** | **String**| **Yes** | 해당 서비스의 이용 상태 (STABLE, CLOSED) |
-|   **updateDate** | **String**| **No** | 서비스 최종 수정일시  |
-|   **updateUuid** | **String**| **No** | 서비스 AppKey 수정자 uuid  |
-
-
 
 
 
@@ -1134,12 +1090,12 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ----------- | ------------ |
-|   **memberStatusCodes** | **List**| **No** | 프로젝트 멤버 상태 코드 (INVITED, STABLE) |
-|   **roleIds** | **List**| **No** | 역할 ID 목록  |
-|   **paging** | **PagingBean**| **No**   |
+|   **memberStatusCodes** | **List&lt;String>**| **No** | 프로젝트 멤버 상태 코드 (INVITED, STABLE) |
+|   **roleIds** | **List&lt;String>**| **No** | 역할 ID 목록  |
+|   **paging** | [**PagingBean**](#pagingbean) | **No**   |
 
 
-[**PagingBean**](#pagingbean)
+
 
 
 ##### Response Body
@@ -1175,10 +1131,10 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes** |
-|   **paging** | **PagingResponse**| **No**  |
-|   **projectMembers** | **List&lt;ProjectMemberProtocol>**| **No** | 프로젝트 멤버  |
+|   **paging** | [**PagingResponse**](#pagingresponse)| **Yes**  |
+|   **projectMembers** | **List&lt;ProjectMemberProtocol>**| **Yes** | 프로젝트 멤버  |
 
-[**PagingResponse**](#pagingresponse)
+
 
 ###### ProjectMemberProtocol
 
@@ -1250,7 +1206,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 }
 ```
 
-###### GetRoleGroupResponse
+###### Response
 
 
 | Name | Type | Required | Description | 
@@ -1266,10 +1222,10 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **roleGroupName** | **String**| **No** | 역할 그룹 이름  |
 |   **description** | **String**| **No** | 역할 그룹 설명  |
 |   **roleGroupType** | **String**| **No** | 역할 그룹 구분 (조직, 프로젝트)  |
-|   **roles** | **List&lt;RoleBundleProtocol>**| **No** | 연관 역할 목록  |
+|   **roles** | **List&lt;[**RoleBundleProtocol**](#rolebundleprotocol)>**| **No** | 연관 역할 목록  |
 |   **regDateTime** | **Date**| **No** | 등록 일시  |
 
-[**RoleBundleProtocol**](#rolebundleprotocol)
+
 
 
 #### **조직의 프로젝트 공통 역할그룹 단건 조회**
@@ -1325,8 +1281,14 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 ```
 
 
+###### Response
 
-[**GetRoleGroupResponse**](#getrolegroupresponse)
+
+| Name | Type | Required | Description | 
+|------------ | ------------- | --------- | ------------ |
+|   **header** | [**공통 Response**](#response)| **Yes** |
+|   **roleGroup** | [**RoleGroupBundleProtocol**](#rolegroupbundleprotocol) | **Yes** | 연관 역할을 포함한 역할 그룹  |
+
 
 
 
@@ -1383,11 +1345,17 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 }
 ```
 
+###### Response
 
-[**GetRoleGroupsResponse**](#getrolegroupsresponse)
+
+| Name | Type | Required | Description | 
+|------------ | ------------- | --------- | ------------ |
+|   **header** | [**공통 Response**](#response)| **Yes**  |
+|   **paging** | [**PagingResponse**](#pagingresponse)| **Yes**  |
+|   **roleGroups** | **List&lt;[RoleGroupProtocol](#rolegroupprotocol)>**| **Yes** | 프로젝트에서 사용 가능한 역할 그룹의 목록  |
 
 
-#### **조직에 속한 프로젝트 목록 조회 (수정중)**
+#### **조직에 속한 프로젝트 목록 조회**
 > GET "/v1/organizations/{org-id}/projects"
 * 특정 조직에 속한 STABLE 한 상태의 프로젝트 목록을 조회하는 API
 
@@ -1442,10 +1410,10 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes** |
-|   **paging** | **PagingResponse**| **Yes** |
+|   **paging** | [**PagingResponse**](#pagingresponse) | **Yes** |
 |   **projectList** | **List&lt;OrgProjectMemberRoleProtocol>**| **Yes** |
 
-[**PagingResponse**](#pagingresponse)
+
 
 ###### OrgProjectMemberRoleProtocol
 
@@ -1462,7 +1430,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 
-#### **사용중인 거버넌스 목록 조회 (수정중)**
+#### **사용중인 조직 거버넌스 목록 조회**
 > GET "/v1/organizations/{org-id}/governances"
 * 활성화된 가버넌스를 조회하는 API
 
@@ -1544,11 +1512,11 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
-|   **conditions** | **List&lt;AssignAttributeConditionProtocol>**| **No** | 역할 조건 속성  |
+|   **conditions** | **List&lt;[AssignAttributeConditionProtocol](#assignattributeconditionprotocol)>**| **No** | 역할 조건 속성  |
 |   **roleApplyPolicyCode** | **String**| **Yes** | 역할 사용 여부  ALLOW, DENY |
 |   **roleId** | **String**| **No** | 역할 ID  |
 
-[**AssignAttributeConditionProtocol**](#assignattributeconditionprotocol)
+
 
 
 ##### Response Body
@@ -1592,7 +1560,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
-|   **roleGroupIds** | **List**| **Yes** | 역할 그룹 ID 목록  |
+|   **roleGroupIds** | **List&lt;String>**| **Yes** | 역할 그룹 ID 목록  |
 
 
 ##### Response Body
@@ -1681,9 +1649,9 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
-|   **roles** | **List&lt;AssignRoleProtocol>**| **Yes** | 역할 그룹에 할당할 역할 목록  |
+|   **roles** | **List&lt;[AssignRoleProtocol](#assignroleprotocol)>**| **Yes** | 역할 그룹에 할당할 역할 목록  |
 
-[**AssignRoleProtocol**](#assignroleprotocol)
+
 
 
 ##### Response Body
@@ -1719,16 +1687,29 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |**project-id** | **String**| **Yes** | 프로젝트 ID | 
-| Request Body | **request** | **CreateRoleGroupRequest**| **Yes** | request |
+| Request Body | **request** | [**CreateRoleGroupRequest**](#createrolegrouprequest)| **Yes** | request |
 
 
-[**CreateRoleGroupRequest**](#createrolegrouprequest)
+
 
 
 ##### Response Body
 
+```json
+{
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  }
+}
+```
 
-[**공통 Response**](#response)
+###### Response
+
+| Name | Type | Required | Description | 
+|------------ | ------------- | ----------- | ------------ |
+|   **header** | [**공통 Response**](#response)| **Yes**   |
 
 
 #### **프로젝트 역할그룹 삭제**
@@ -1745,10 +1726,10 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |**project-id** | **String**| **Yes** | 프로젝트 ID | 
-| Request Body | **request** | **DeleteRoleGroupRequest**| **Yes** | request |
+| Request Body | **request** | [**DeleteRoleGroupRequest**](#deleterolegrouprequest)| **Yes** | request |
 
 
-[**DeleteRoleGroupRequest**](#deleterolegrouprequest)
+
 
 
 ##### Response Body
@@ -1783,11 +1764,10 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |**project-id** | **String**| **Yes** | 프로젝트 ID | 
 |  Path |**role-group-id** | **String**| **Yes** | 역할 그룹 ID | 
-| Request Body | **request** | **UpdateRoleGroupInfoRequest**| **Yes** | request |
+| Request Body | **request** |[**UpdateRoleGroupInfoRequest**](#updaterolegroupinforequest)| **Yes** | request |
 
 
 
-[**UpdateRoleGroupInfoRequest**](#updaterolegroupinforequest)
 
 
 ##### Response Body
@@ -1830,9 +1810,9 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
-|   **roles** | **List&lt;AssignRoleProtocol>**| **Yes** | 역할 그룹에 할당할 역할 목록  |
+|   **roles** | **List&lt;[AssignRoleProtocol](#assignroleprotocol)>**| **Yes** | 역할 그룹에 할당할 역할 목록  |
 
-[**AssignRoleProtocol**](#assignroleprotocol)
+
 
 
 
@@ -1879,10 +1859,10 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
-|   **assignRoles** | **List&lt;UserAssignRoleProtocol>**| **No** | 사용자에게 할당할 역할 목록  |
+|   **assignRoles** | **List&lt;[UserAssignRoleProtocol](#userassignroleprotocol)>**| **No** | 사용자에게 할당할 역할 목록  |
 
 
-[**UserAssignRoleProtocol**](#userassignroleprotocol)
+
 
 
 ##### Response Body
@@ -1917,10 +1897,9 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |**project-id** | **String**| **Yes** | 프로젝트 ID | 
 |  Path |**member-uuid** | **String**| **Yes** | 역할 변경 대상 멤버 uuid | 
-| Request Body | **request** | **UpdateMemberRoleRequest**| **Yes** | request |
+| Request Body | **request** | [**UpdateMemberRoleRequest**](#updatememberrolerequest)| **Yes** | request |
 
 
-[**UpdateMemberRoleRequest**](#updatememberrolerequest)
 
 
 ##### Response Body
@@ -2061,13 +2040,13 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **passwordChangedAt** | **Date**| **No**| 멤버의 마지막 비밀번호 변경 일시, 없을 경우 null 반환 |
 |   **position** | **String**| **No**|
 |   **profileImageUrl** | **String**| **No**|
-|   **roles** | **List&lt;RoleBundleProtocol>**| **No** | 연관 역할 목록 (조건 속성 포함)  |
+|   **roles** | **List&lt;[RoleBundleProtocol](#rolebundleprotocol)>**| **No** | 연관 역할 목록 (조건 속성 포함)  |
 |   **saasRoles** | **List&lt;IamMemberRole>**| **No** | IAM 역할  |
 |   **status** | **String**| **No**| 멤버의 상태 |
 |   **telephone** | **String**| **No** | IAM 사용자 전화번호  |
 |   **userCode** | **String**| **Yes** | IAM 사용자 ID  |
 
-[**RoleBundleProtocol**](#rolebundleprotocol)
+
 
 ###### IamMemberRole
 
@@ -2095,13 +2074,13 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |  Query |**email** | **String**| **No** | IAM 멤버의 이메일 주소 |
 |  Query |**emailLike** | **String**| **No** |  |
 |  Query |**idProviderType** | **String**| **No** | service: IAM 직접 로그인<br>sso : 고객 SSO 연동 |
-|  Query |**limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20 |
 |  Query |**nameLike** | **String**| **No** |  |
-|  Query |**page** | **Integer**| **No** | 대상 페이지, 기본값 1 |
-|  Query |**sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"] |
 |  Query |**statuses** | **List&lt;String>**| **No** |  |
 |  Query |**userCode** | **String**| **No** | IAM 사용자 ID |
 |  Query |**userCodeLike** | **String**| **No** |  |
+|  Query |**limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20 |
+|  Query |**page** | **Integer**| **No** | 대상 페이지, 기본값 1 |
+|  Query |**sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"] |
 
 ##### Response Body
 
@@ -2164,7 +2143,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes**   |
 |   **orgMembers** | **List&lt;IamOrgMemberProtocol>**| **No** | 조직 IAM 멤버 목록  |
-|   **paging** | **PagingResponse**| **No**  |
+|   **paging** | [**PagingResponse**](#pagingresponse)| **No**  |
 
 ###### IamOrgMemberProtocol
 
@@ -2200,11 +2179,11 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | **mobilePhoneCountryCode** | **String** | **No** | **휴대폰 번호 입력 시 필수**  |
 | **organizationId** | **String** | **No** | IAM 사용자 조직 ID |
 | **country** | **String** | **No** |  |
-| **saasRoles** | **List&lt;IamMemberRole>** | **No** | IAM 역할 |
+| **saasRoles** | **List&lt;[IamMemberRole](#iammemberrole)>** | **No** | IAM 역할 |
 
-[**IamMemberRole**](#iammemberrole)
 
-[**PagingResponse**](#pagingresponse)
+
+
 
 
 #### **조직 IAM 멤버 추가**
@@ -2227,9 +2206,9 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ----------- | ------------ |
-|   **member** | **IamOrgMemberProtocol**| **Yes**   |
+|   **member** | [**IamOrgMemberProtocol**](#iamorgmemberprotocol)| **Yes**   |
 
-[**IamOrgMemberProtocol**](#iamorgmemberprotocol)
+
 
 
 ##### Response Body
@@ -2293,7 +2272,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
     "resultCode" : 0,
     "resultMessage" : "resultMessage"
   }
-  }
+}
 ```
 
 ###### Response
@@ -2324,9 +2303,9 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ----------- | ------------ |
-|   **member** | **IamOrgMemberProtocol**| **Yes**   |
+|   **member** | [**IamOrgMemberProtocol**](#iamorgmemberprotocol)| **Yes**   |
 
-[**IamOrgMemberProtocol**](#iamorgmemberprotocol)
+
 
 ##### Response Body
 
@@ -2337,7 +2316,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
     "resultCode" : 0,
     "resultMessage" : "resultMessage"
   }
-  }
+}
 ```
 
 ###### Response
@@ -2347,7 +2326,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **header** | [**공통 Response**](#response)| **Yes**   |
 
 
-#### **조직 IAM 멤버 비밀번호 수정 (수정중)**
+#### **조직 IAM 멤버 비밀번호 수정**
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/set-password"
 * 조직 IAM 멤버의 패스워드를 변경하는 API
 
@@ -2380,7 +2359,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
     "resultCode" : 0,
     "resultMessage" : "resultMessage"
   }
-  }
+}
 ```
 
 ###### Response
@@ -2433,7 +2412,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | --------- | ------------ |
-|   **ips** | **List**| **Yes**  | 허용 IP들 | 
+|   **ips** | **List&lt;String>**| **Yes**  | 허용 IP들 | 
 |   **productId** | **String**| **Yes**  | 상품 ID<br>undefined 이면 공통 설정|
 
 
@@ -2473,12 +2452,12 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 ##### Response
 
-
 | Name | Type | Required | Description | 
-|------------ | ------------- | ----------- | ------------ |
-|   **header** | [**공통 Response**](#response)| **Yes**   |
-|   **content** | **Content** | **Yes**   | 설정 결과 |
+|------------ | ------------- | ------------- | ------------ |
+| **header** | [**공통 Response**](#response)| **Yes**   |
+| **result** | **Content** | **Yes** | 설정 내용 |
 
+###### Content
 
 | Name | Type | Required | Description | 
 |   **multiSessionsLimit** | **Integer**| **Yes** | 허용 멀티 세션 수  |
@@ -2544,12 +2523,12 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes**   |
-|   **content** | **Content**| **No** |  응답 내용 |
+|   **content** | **Content**| **No** |  응답 내용<br>설정한 적이 없으면 `null`이 반환됨 |
 
 ###### Content
 | Name | Type | Required | Description | 
 |------------ | ------------- | ----------- | ------------ |
-|   **range** | **Integer**| **No** | 조직/서비스 여부. organization(공통설정), services(서비스별 설정)  |
+|   **range** | **Integer**| **No** | 조직/서비스 여부<br>organization(공통설정), services(서비스별 설정)  |
 |   **organizationMfaSetting** | **OrganizationMfaSetting**| **No** | 조직 mfa 설정 정보<br>공통 설정 |
 |   **serviceMfaSettings** | **ServiceMfaSettings**| **No** | 서비스별 mfa 설정 정보  |
 
@@ -2618,9 +2597,8 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
-|   **header** | [**공통 Response**](#response)| **Yes**   |
-|   **content** | **Content**| **No** |  응답 내용 |
-
+| **header** | [**공통 Response**](#response)| **Yes**   |
+| **result** | **Content** | **No** | 로그인 실패 보안을 설정한 경우에만 반환되며, 설정하지 않으면 `null`이 반환됨 |
 
 ###### Content
 
@@ -2941,7 +2919,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 
 
-#### **프로젝트 AppKey 등록 (수정중)**
+#### **프로젝트 AppKey 등록**
 > POST "/v1/authentications/projects/{project-id}/project-appkeys"
 * 프로젝트에서 사용할 AppKey를 생성하는 API
 
@@ -2954,6 +2932,7 @@ NHN Cloud 회원이면 호출 가능한 API
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Path | **project-id** | **String**| **Yes** | AppKey를 등록할 프로젝트 ID |
+| Query | **authAlias** | **String**| **Yes** | AppKey 별칭 |
 
 
 ##### Response Body
@@ -2988,7 +2967,7 @@ NHN Cloud 회원이면 호출 가능한 API
 |   **appKey** | **String**| **No** | 프로젝트 appKey |
 
 
-#### **User Access Key 등록 (수정중)**
+#### **User Access Key 등록**
 > POST "/v1/authentications/user-access-keys"
 * 멤버의 user access key 목록을 조회하는 API
 
@@ -3046,7 +3025,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 
 
-#### **프로젝트 AppKey 삭제 (수정중)**
+#### **프로젝트 AppKey 삭제**
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
 
 ##### 필요 권한
@@ -3081,7 +3060,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 
 
-#### **User Access Key 비밀키 재발급 (수정중)**
+#### **User Access Key 비밀키 재발급**
 > PUT "/v1/authentications/user-access-keys/{user-access-key}/secretkey-reissue"
 * User Access Key 의 비밀키 재발급
 
@@ -3127,7 +3106,7 @@ NHN Cloud 회원이면 호출 가능한 API
 |   **userSecretKey** | **String**| **Yes**   | 비밀키 |
 
 
-#### **User Access Key 상태 수정 (수정중)**
+#### **User Access Key 상태 수정**
 > PUT "/v1/authentications/user-access-keys/{user-access-key}"
 * 멤버의 user access key 상태를 변경하는 API
 
@@ -3159,7 +3138,7 @@ NHN Cloud 회원이면 호출 가능한 API
 |   **header** | [**공통 Response**](#response)| **Yes**   |
 
 
-#### **User Access Key 삭제 (수정중)**
+#### **User Access Key 삭제**
 > DELETE "/v1/authentications/user-access-keys/{user-access-key}"
 * User Access Key 의 비밀키 재발급
 
