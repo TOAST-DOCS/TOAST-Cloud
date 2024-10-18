@@ -45,38 +45,36 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | **POST** |[**/v1/projects/{project-id}/members**](#프로젝트-멤버-생성) | 프로젝트 멤버 생성 |
-| **POST** |[**/v1/projects**](#프로젝트-추가) | 프로젝트 추가 |
+| **POST** |[**/v1/organizations/{org-id}/projects**](#프로젝트-추가) | 프로젝트 추가 |
 | **DELETE** |[**/v1/projects/{project-id}/members/{target-uuid}**](#프로젝트-멤버-단건-삭제) | 프로젝트 멤버 단건 삭제 |
 | **DELETE** |[**/v1/projects/{project-id}**](#프로젝트-삭제) | 프로젝트 삭제 |
 | **DELETE** |[**/v1/projects/{project-id}/products/{product-id}/disable**](#프로젝트-상품-종료) | 프로젝트 상품 종료 |
 | **POST** |[**/v1/projects/{project-id}/products/{product-id}/enable**](#프로젝트-상품-이용) | 프로젝트 상품 이용 |
-| **GET** |[**/v1/organizations/{org-id}/roles/all**](#조직-역할-목록-조회) | 조직 역할 목록 조회 |
-| **GET** |[**/v1/projects/{project-id}/roles/all**](#프로젝트-역할-목록-조회) | 프로젝트 역할 목록 조회 |
+| **GET** |[**/v1/organizations/{org-id}/roles**](#조직-역할-목록-조회) | 조직 역할 목록 조회 |
+| **GET** |[**/v1/projects/{project-id}/roles**](#프로젝트-역할-목록-조회) | 프로젝트 역할 목록 조회 |
 | **GET** |[**/v1/organizations/{org-id}/domains**](#조직-도메인-검색) | 조직 도메인 검색 |
 | **GET** |[**/v1/organizations/{org-id}/members/{member-uuid}**](#조직-멤버-단건-조회) | 조직 멤버 단건 조회 |
 | **POST** |[**/v1/organizations/{org-id}/members/search**](#조직-멤버-목록-조회) | 조직 멤버 목록 조회 |
 | **GET** |[**/v1/organizations/{org-id}/project-role-groups**](#조직의-프로젝트-공통-역할그룹-전체-조회) | 조직의 프로젝트 공통 역할그룹 전체 조회 |
 | **GET** |[**/v1/product-uis/hierarchy**](#상품-계층-구조-조회) | 상품 계층 구조 조회 |
 | **GET** |[**/v1/projects/{project-id}/products/{product-id}**](#프로젝트-사용중인-상품-조회) | 프로젝트 사용중인 상품 조회 |
-| **GET** |[**/v1/projects/{project-id}/products**](#프로젝트-사용중인-상품-리스트-조회) | 프로젝트 사용중인 상품 목록 조회 |
 | **GET** |[**/v1/projects/{project-id}/members/{member-uuid}**](#프로젝트-멤버-단건-조회) | 프로젝트 멤버 단건 조회 |
 | **POST** |[**/v1/projects/{project-id}/members/search**](#프로젝트-멤버-목록-조회) | 프로젝트 멤버 목록 조회 |
 | **GET** |[**/v1/projects/{project-id}/project-role-groups/{role-group-id}**](#프로젝트-역할-그룹-단건-조회) | 프로젝트 역할 그룹 단건 조회 |
 | **GET** |[**/v1/organizations/{org-id}/project-role-groups/{role-group-id}**](#조직의-프로젝트-공통-역할그룹-단건-조회) | 조직의 프로젝트 공통 역할그룹 단건 조회 |
 | **GET** |[**/v1/projects/{project-id}/project-role-groups**](#프로젝트-역할-그룹-전체-조회) | 프로젝트 역할 그룹 전체 조회 |
-| **GET** |[**/v1/organizations/{org-id}/projects**](#조직에-속한-프로젝트-리스트-조회) | 조직에 속한 프로젝트 목록 조회 |
-| **GET** |[**/v1/organizations/{org-id}/governances**](#사용중-거버넌스-목록-조회) | 사용중인 조직 거버넌스 목록 조회 |
+| **GET** |[**/v1/organizations/{org-id}/projects**](#조직에-속한-프로젝트-목록-조회) | 조직에 속한 프로젝트 목록 조회 |
+| **GET** |[**/v1/organizations/{org-id}/governances**](#사용중인-조직-거버넌스-목록-조회) | 사용중인 조직 거버넌스 목록 조회 |
 | **POST** |[**/v1/organizations/{org-id}/project-role-groups**](#조직의-프로젝트-공통-역할그룹-생성) | 조직의 프로젝트 공통 역할그룹 생성 |
 | **DELETE** |[**/v1/organizations/{org-id}/project-role-groups**](#조직의-프로젝트-공통-역할그룹-삭제) | 조직의 프로젝트 공통 역할그룹 삭제 |
 | **PUT** |[**/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos**](#조직의-프로젝트-공통-역할그룹-정보-수정) | 조직의 프로젝트 공통 역할그룹 정보 수정 |
 | **PUT** |[**/v1/organizations/{org-id}/project-role-groups/{role-group-id}/roles**](#조직의-프로젝트-공통-역할그룹-역할-수정) | 조직의 프로젝트 공통 역할그룹 역할 수정 |
 | **POST** |[**/v1/projects/{project-id}/project-role-groups**](#프로젝트-역할그룹-생성) | 프로젝트 역할그룹 생성 |
-| **DELETE** |[**/v1/projects/{project-id}/project-role-groups**](#프로젝트역할그룹삭제) | 프로젝트 역할그룹 삭제 |
+| **DELETE** |[**/v1/projects/{project-id}/project-role-groups**](#프로젝트-역할그룹-삭제) | 프로젝트 역할그룹 삭제 |
 | **PUT** |[**/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos**](#프로젝트-역할그룹-정보-수정) | 프로젝트 역할그룹 정보 수정 |
 | **PUT** |[**/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles**](#프로젝트-역할그룹-역할-수정) | 프로젝트 역할그룹 역할 수정 |
 | **PUT** |[**/v1/organizations/{org-id}/members/{member-uuid}**](#조직-멤버-역할-수정) | 조직 멤버 역할 수정 |
 | **PUT** |[**/v1/projects/{project-id}/members/{member-uuid}**](#프로젝트-멤버-역할-수정) | 프로젝트 멤버 역할 수정 |
-| **POST** |[**/v1/relation-keys**](#상품-appkey-생성) | 상품 AppKey 생성 |
 | **GET** |[**/v1/iam/organizations/{org-id}/members/{member-uuid}**](#조직-iam-멤버-단건-조회) | 조직 IAM 멤버 단건 조회 |
 | **GET** |[**/v1/iam/organizations/{org-id}/members**](#조직-iam-멤버-목록-조회) | 조직 IAM 멤버 목록 조회 |
 | **POST** |[**/v1/iam/organizations/{org-id}/members**](#조직-iam-멤버-추가) | 조직 IAM 멤버 추가 |
@@ -86,16 +84,17 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | **GET** |[**/v1/iam/organizations/{org-id}/settings/session**](#조직-iam-로그인-세션-설정-정보를-조회) | 조직 IAM 로그인 세션 설정 정보를 조회 |
 | **GET** |[**/v1/iam/organizations/{org-id}/settings/security-mfa**](#조직-iam-로그인-2차-인증에-대한-설정을-조회) | 조직 IAM 로그인 2차 인증에 대한 설정을 조회 |
 | **GET** |[**/v1/iam/organizations/{org-id}/settings/security-login-fail**](#조직-iam-로그인-실패-보안-설정을-조회) | 조직 IAM 로그인 실패 보안 설정을 조회 |
-| **GET** |[**/v1/organizations/{org-id}/products/ip-acl**](#조직-ip-acl-리스트-조회) | 조직 IP ACL 목록 조회 |
-| **GET** |[**/v1/contracts/basic/products/prices**](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
-| **GET** |[**/v1/contracts/basic/products**](#종량제에-등록된-상품-리스트-조회) | 종량제에 등록된 상품 목록 조회 |
-| **GET** |[**/v1/authentications/project-appkeys**](#프로젝트-appkey-조회) | 프로젝트 AppKey 조회 |
-| **GET** |[**/v1/authentications/user-access-keys**](#user-access-key-id-리스트-조회) | User Access Key 목록 조회 |
-| **POST** |[**/v1/authentications/project-appkeys**](#프로젝트-appkey-등록) | 프로젝트 AppKey 등록 |
-| **POST** |[**/v1/authentications/user-access-keys**](#user-access-key-id-등록) | User Access Key 등록 |
-| **DELETE** |[**/v1/authentications/{auth-id}**](#프로젝트-appkey-삭제) | 프로젝트 AppKey 삭제 |
-| **PUT** |[**/v1/authentications/{auth-id}/secretkey-reissue**](#프로젝트-appkey-비밀키-재발급) | 프로젝트 AppKey 비밀키 재발급 |
-| **PUT** |[**/v1/authentications/{auth-id}**](#프로젝트-appkey-수정) | 프로젝트 AppKey 수정 |
+| **GET** |[**/v1/organizations/{org-id}/products/ip-acl**](#조직-ip-acl-목록-조회) | 조직 IP ACL 목록 조회 |
+| **POST** |[**/v1/contracts/basic/products/prices/search**](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
+| **GET** |[**/v1/contracts/basic/products**](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
+| **GET** |[**/v1/authentications/projects/{project-id}/project-appkeys**](#프로젝트-appkey-조회) | 프로젝트 AppKey 조회 |
+| **GET** |[**/v1/authentications/user-access-keys**](#user-access-key-목록-조회) | User Access Key 목록 조회 |
+| **POST** |[**/v1/authentications/projects/{project-id}/project-appkeys**](#프로젝트-appkey-등록) | 프로젝트 AppKey 등록 |
+| **POST** |[**/v1/authentications/user-access-keys**](#user-access-key-등록) | User Access Key 등록 |
+| **DELETE** |[**/v1/authentications/projects/{project-id}/project-appkeys/{app-key}**](#프로젝트-appkey-삭제) | 프로젝트 AppKey 삭제 |
+| **PUT** |[**/v1/authentications/user-access-keys/{user-access-key}/secretkey-reissue**](#user-access-key-비밀키-재발급) | User Access Key 비밀키 재발급 |
+| **PUT** |[**/v1/authentications/user-access-keys/{user-access-key}**](#user-access-key-상태-수정) | User Access Key 상태 수정 |
+| **DELETE** |[**/v1/authentications/user-access-keys/{user-access-key}**](#user-access-key-삭제) | User Access Key 삭제 |
 
 
 
@@ -978,6 +977,84 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **productId** | **String**| **No**|
 |   **productUiId** | **String**| **No**| 상품 UI 식별키 |
 |   **productUiName** | **String**| **No**|
+
+
+
+#### **프로젝트 사용중인 상품 조회**
+> GET "/v1/projects/{project-id}/products/{product-id}"
+* 프로젝트에서 사용중인 특정 서비스 정보를 조회하는 API
+
+##### 필요 권한
+`상품명:ProductAppKey.Get`
+
+##### Request Parameters
+
+
+
+| ParameterType | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |**project-id** | **String**| **Yes** | 조회 대상 프로젝트 ID |
+|  Path |**product-id** | **String**| **Yes** | 조회 대상 서비스 ID |
+
+
+
+
+##### Response Body
+
+```json
+{
+  "hasUpdateSecretKeyPermission" : true,
+  "product" : {
+    "updateDate" : "updateDate",
+    "productId" : "productId",
+    "relationDate" : "relationDate",
+    "secretKey" : "secretKey",
+    "externalId" : "externalId",
+    "productSecretKeyCode" : "F",
+    "productName" : "productName",
+    "updateUuid" : "updateUuid",
+    "appKey" : "appKey",
+    "productStatusCode" : "STABLE",
+    "productUrl" : "productUrl",
+    "projectId" : "projectId",
+    "statusCode" : "STABLE"
+  },
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  }
+}
+```
+
+###### Response
+
+
+| Name | Type | Required | Description | 
+|------------ | ------------- | ------- | ------------ |
+|   **header** | [**공통 Response**](#response)| **Yes** |
+|   **hasUpdateSecretKeyPermission** | **Boolean**| **Yes** | 상품 비활성화 가능 여부  |
+|   **product** | **ProjectProductRelationAndProductProtocol**| **Yes**  | 지정한 서비스 ID에 대해서 프로젝트에서 사용중인 서비스 정보를 반환, 오류 시 포함되지 않음 |
+
+
+###### ProjectProductRelationAndProductProtocol
+
+
+| Name | Type | Required | Description | 
+|------------ | ------------- | ------------- | ------------ |
+|   **appKey** | **String**| **Yes** | 해당 프로젝트에서 이용중인 서비스에 대한 appKey 정보  |
+|   **externalId** | **String**| **No** | Tenant ID<br>서비스에 Tenant ID가 존재하는 경우에만 제공 |
+|   **productId** | **String**| **Yes** | 서비스 ID  |
+|   **productName** | **String**| **Yes** | 상품 이름  |
+|   **productSecretKeyCode** | **String**| **No** | secretKey 사용 여부<br>T : 사용함<br>나머지 : 사용하지 않음 (F, N) |
+|   **productStatusCode** | **String**| **Yes** | 서비스 상태 (STABLE, CLOSED) |
+|   **productUrl** | **String**| **No** | 서비스 접근 URL  |
+|   **projectId** | **String**| **Yes** | 해당 서비스를 사용하는 프로젝트 ID  |
+|   **relationDate** | **String**| **Yes** | 서비스 이용 시작일시  |
+|   **secretKey** | **String**| **Yes** | 서비스 SecretKey<br>secretKey를 이용하는 서비스에서만 제공  |
+|   **statusCode** | **String**| **Yes** | 해당 서비스의 이용 상태 (STABLE, CLOSED) |
+|   **updateDate** | **String**| **No** | 서비스 최종 수정일시  |
+|   **updateUuid** | **String**| **No** | 서비스 AppKey 수정자 uuid  |
 
 
 
@@ -2460,6 +2537,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 ###### Content
 
 | Name | Type | Required | Description | 
+|------------ | ------------- | ------------- | ------------ |
 |   **multiSessionsLimit** | **Integer**| **Yes** | 허용 멀티 세션 수  |
 |   **sessionTimeoutMinutes** | **Integer**| **Yes** | 	세션 타임아웃 |
 |   **sessionType** | **String**| **Yes** | fixed / idle. 기본값은 fixed  |
@@ -2616,7 +2694,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **blockMinutes** | **Integer**| **No** | 로그인 금지 시간  |
 
 
-#### **종량제에 등록된 상품 가격 조회 (수정중)**
+#### **종량제에 등록된 상품 가격 조회**
 > POST "/v1/contracts/basic/products/prices/search"
 * 카운터에 설정된 단가를 조회하는 API
 * 각 언어별로 노출명, 금액 계산을 위한 종류를 알 수 있음
@@ -2630,8 +2708,20 @@ NHN Cloud 회원이면 호출 가능한 API
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Query |**limit** | **Integer**| **No** |  |
-|  Query |**page** | **Integer**| **No** |  |
-|  Request Body |**counterNames** | **List&lt;String>**| **No** | 상품 메타의 counter Name 목록<br>없을 경우 전체 검색함 |
+| Request Body | **request** | **GetContractProductPriceRequest**| **Yes** | request |
+
+##### GetContractProductPriceRequest
+| Name | Type | Required | Description | 
+|------------ | ------------- | --------- | ------------ |
+|  **counterNames** | **List&lt;String>**| **No** | 상품 메타의 counter Name 목록<br>없을 경우 전체 검색함 |
+|   **paging** | **Paging**| **No**  |
+
+###### Paging
+
+| Name | Type | Required | Description | 
+|------------ | ------------- | ------------- | ------------ |
+|   **limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20  |
+|   **page** | **Integer**| **No** | 대상 페이지, 기본값 1  |
 
 
 ##### Response Body
@@ -2681,9 +2771,9 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------- | ------------ |
-|   **limit** | **Integer**| **No** | 조회되는 개수 제한<br>기본값은 20 |
-|   **page** | **Integer**| **No** |
-|   **totalCount** | **Integer**| **No** |
+|   **limit** | **Integer**| **Yes** | 조회되는 개수 제한<br>기본값은 20 |
+|   **page** | **Integer**| **Yes** |
+|   **totalCount** | **Integer**| **Yes** |
 
 ###### ContractProductPriceProtocol
 
@@ -2804,7 +2894,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 
 
-#### **프로젝트 AppKey 조회 (수정중)**
+#### **프로젝트 AppKey 조회**
 > GET "/v1/authentications/projects/{project-id}/project-appkeys"
 * 프로젝트에서 사용중인 프로젝트 AppKey 목록을 조회하는 API
 
@@ -3027,6 +3117,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 #### **프로젝트 AppKey 삭제**
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
+* 프로젝트 AppKey를 삭제하는 API
 
 ##### 필요 권한
 `Project.ProjectAppKey.Delete`
@@ -3062,7 +3153,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 #### **User Access Key 비밀키 재발급**
 > PUT "/v1/authentications/user-access-keys/{user-access-key}/secretkey-reissue"
-* User Access Key 의 비밀키 재발급
+* User Access Key의 비밀키를 재발급하는 API
 
 
 ### 필요 권한
@@ -3140,7 +3231,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 #### **User Access Key 삭제**
 > DELETE "/v1/authentications/user-access-keys/{user-access-key}"
-* User Access Key 의 비밀키 재발급
+* User Access Key를 삭제하는 API
 
 
 ### 필요 권한
