@@ -94,7 +94,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | **PUT** |[**/v1/authentications/user-access-keys/{user-access-key}/secretkey-reissue**](#user-access-key-비밀키-재발급) | User Access Key 비밀키 재발급 |
 | **PUT** |[**/v1/authentications/user-access-keys/{user-access-key}**](#user-access-key-상태-수정) | User Access Key 상태 수정 |
 | **DELETE** |[**/v1/authentications/user-access-keys/{user-access-key}**](#user-access-key-삭제) | User Access Key 삭제 |
-| **GET** |[**/v1/messages/role**](#엑셀-설명-다국어-조회) | 역할 설명 다국어 조회 |
 
 
 
@@ -3022,7 +3021,13 @@ NHN Cloud 회원이면 호출 가능한 API
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Path | **project-id** | **String**| **Yes** | AppKey를 등록할 프로젝트 ID |
-| Query | **authAlias** | **String**| **Yes** | AppKey 별칭 |
+| Request Body | **request** | **AddProjectAppKeyRequest**| **Yes** | request |
+
+###### AddProjectAppKeyRequest
+
+| Name | Type | Required | Description | 
+|------------ | ------------- | ----------- | ------------ |
+|   **appkeyAlias** | **String** | **Yes**   | 프로젝트 AppKey 별칭<br>100자 제한 |
 
 
 ##### Response Body
@@ -3244,6 +3249,18 @@ NHN Cloud 회원이면 호출 가능한 API
 |  Path | **user-access-key** | **String**| **Yes** | User Access Key | 
 
 
+##### Response Body
+
+```json
+{
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  }
+}
+```
+
 
 ##### Response Body
 
@@ -3263,81 +3280,6 @@ NHN Cloud 회원이면 호출 가능한 API
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes** |
-
-
-
-#### **역할 설명 다국어 조회**
-> DELETE "/v1/messages/role"
-* 약힐 설명 다국어를 조회하는 API
-
-
-### 필요 권한
-누구나 호출 가능
-
-##### Request Parameters
-
-| ParameterType | Name | Type | Required | Description  | 
-|------------- |------------- | ------------- | ------------- | ------------- | 
-| Query | **messageType** | **String**| **No** | 메시지 타입 (MESSAGE, ERROR) | 
-| Query | **languages** | **List&lt;String>**| **No** | 조회하고 싶은 언어<br><ul><li>KO_KR : 한국어</li><li>JA_JP : 일본어</li><li>EN_US : 영어</li><li>ZH_CN : 중국어</li></ul> | 
-| Query | **keyword** | **String**| **No** | 검색 키워드 | 
-| Query | **messageId** | **String**| **No** | 조회하고 싶은 메시지 ID | 
-
-
-
-##### Response Body
-
-```json
-{
-  "header" : {
-    "isSuccessful" : true,
-    "resultCode" : 0,
-    "resultMessage" : "resultMessage"
-  },
-  "messages": [
-    {
-      "i18nMessageSeq": 1,
-      "categoryId": "ROLE",
-      "messageType": "MESSAGE",
-      "messageId": "messageId",
-      "description": null,
-      "jaJp": "jaJp",
-      "enUs": "enUs",
-      "koKr": "koKr",
-      "zhCn": "zhCn"
-    }
-  ],
-  "paging": {
-    "page": 1,
-    "limit": 20,
-    "totalCount": 100
-  }
-}
-```
-
-
-###### Response
-
-
-| Name | Type | Required | Description | 
-|------------ | ------------- | ------- | ------------ |
-|   **header** | [**공통 Response**](#response)| **Yes** |
-|   **messages** | **List&lt;MessageProtocol>**| **Yes** |
-|   **paging** | [**PagingResponse**](#pagingresponse)| **Yes** |
-
-###### MessageProtocol
-
-| Name | Type | Required | Description | 
-|------------ | ------------- | ------- | ------------ |
-|   **i18nMessageSeq** | **String** | **Yes** | 메시지 seq 번호 |
-|   **categoryId** | **String** | **Yes** | 메시지가 속한 카테고리 ID |
-|   **messageType** | **String** | **Yes** |  메시지 타입 (MESSAGE, ERROR) | 
-|   **messageId** | **String** | **Yes** | 메시지 ID |
-|   **description** | **String** | **Yes** | 설명 |
-|   **jaJp** | **String** | **Yes** | 일본어 설명 | 
-|   **enUs** | **String** | **Yes** | 영어 설명 | 
-|   **koKr** | **String** | **Yes** | 한국어 설명 | 
-|   **zhCn** | **String** | **Yes** | 중국어 설명 | 
 
 
 ### 에러 코드
