@@ -3022,7 +3022,13 @@ NHN Cloud 회원이면 호출 가능한 API
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Path | **project-id** | **String**| **Yes** | AppKey를 등록할 프로젝트 ID |
-| Query | **authAlias** | **String**| **Yes** | AppKey 별칭 |
+| Request Body | **request** | **AddProjectAppKeyRequest**| **Yes** | request |
+
+###### AddProjectAppKeyRequest
+
+| Name | Type | Required | Description | 
+|------------ | ------------- | ----------- | ------------ |
+|   **appkeyAlias** | **String** | **Yes**   | 프로젝트 AppKey 별칭<br>100자 제한 |
 
 
 ##### Response Body
