@@ -508,13 +508,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 * 프로젝트 사용자에게 부여할 수 있는 역할 목록을 요청하는 API
 
 ##### 필요 권한
-* 하위 권한들 중 하나
-  * `Project.RoleGroup.List`
-  * `Project.Role.List`
-  * `$PROJECT_ANY_PRODUCT`
-
-
-> 참고 : `$PROJECT_ANY_PRODUCT`는 프로젝트 내에 활성화되어 있는 서비스들 중 어느 한 서비스의 권한만 가지고 있어도 통과한다는 뜻의 권한
+`Project.RoleGroup.List`
 
 ##### Request Parameters
 
@@ -1374,13 +1368,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 * 프로젝트의 역할 그룹을 전체 조회하는 API
 
 ##### 필요 권한
-* 하위 권한들 중 하나
-  * `Project.RoleGroup.List`
-  * `Project.Role.List`
-  * `$PROJECT_ANY_PRODUCT`
-
-
-> 참고 : `$PROJECT_ANY_PRODUCT`는 프로젝트 내에 활성화되어 있는 서비스들 중 어느 한 서비스의 권한만 가지고 있어도 통과한다는 뜻의 권한
+`Project.RoleGroup.List`
 
 ##### Request Parameters
 
