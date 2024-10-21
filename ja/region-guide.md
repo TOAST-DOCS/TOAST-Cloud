@@ -108,7 +108,8 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | NHN Bastion | リージョン | O | O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image Manager | リージョン | O |  |  |  |
-| Notification | Push | グローバル |  |  |  |  |
+| Notification | Notification Hub | グローバル |  |  |  |  |
+|  | Push | グローバル |  |  |  |  |
 |  | SMS | グローバル |  |  |  |  |
 |  | RCS Bizmessage | グローバル |  |  |  |  |
 |  | Email | グローバル |  |  |  |  |

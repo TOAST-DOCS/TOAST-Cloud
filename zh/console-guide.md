@@ -449,6 +449,7 @@ Members are classified into NHN Cloud members and IAM members.
 | NHN Bastion | USER | Use NHN Bastion Service Terminal | 
 | CDN | ADMIN | Create, Read, Update, Delete for CDN Service |
 | Image Manager | ADMIN | Create, Read, Update, Delete pfor Image Manager Service |
+| Notification Hub | ADMIN | Create, Read, Update, Delete for Notification Hub Service |
 | Push | ADMIN | Create, Read, Update, Delete for Push Service |
 | SMS | ADMIN | Create, Read, Update, Delete for SMS Service |
 | SMS | SEND ADMIN | Create, Read in Deliver SMS |

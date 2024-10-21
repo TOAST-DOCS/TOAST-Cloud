@@ -445,6 +445,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | NHN Bastion | USER | NHN Bastionサービスターミナルの利用 | 
 | CDN | ADMIN | CDNサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Image Manager | ADMIN | Image Managerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Notification Hub | ADMIN | Notification Hubサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Push | ADMIN | Pushサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | SMS | ADMIN | SMSサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | SMS | SEND ADMIN | SMSサービス送信メニューCreate(作成), Read(読み取り) |
