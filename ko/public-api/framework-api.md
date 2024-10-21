@@ -3201,7 +3201,14 @@ NHN Cloud 회원이면 호출 가능한 API
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path | **user-access-key** | **String**| **Yes** | User Acess Key | 
-| Query | **status** | **String**| **Yes** | 상태 (STOP: 중지, STABLE: 사용) |
+| Request Body | **request** | **UpdateUserAccessKeyStatusRequest**| **Yes** | request |
+
+
+###### UpdateUserAccessKeyStatusRequest
+
+| Name | Type | Required | Description | 
+|------------ | ------------- | ------------- | ------------ |
+|   **status** | **String**| **Yes** | 변경할 프로젝트 AppKey 상태 (STOP: 중지, STABLE: 사용) |
 
 
 ##### Response Body
