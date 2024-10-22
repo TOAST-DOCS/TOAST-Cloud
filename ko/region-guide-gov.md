@@ -28,6 +28,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Image | 리전 | O | O | 
 |  | Image Builder  | 리전 | O | O |
 |  | Auto Scale | 리전 | O | O | 
+|  | Virtual Desktop | 리전 | O | O | 
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |
 |  | NHN Container Registry (NCR) | 리전 | O | O |
 |  | NHN Container Service(NCS)  | 리전 | O |  |
