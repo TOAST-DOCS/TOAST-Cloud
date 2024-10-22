@@ -1,10 +1,9 @@
 ## NHN Cloud > Public API > 프레임워크 API
 
 ### 개요
-- 관리자를 위한 프레임워크 관련 API입니다.
-- 이 API들을 통해 프로젝트 멤버를 생성하거나 역할을 부여하는 등 조직과 프로젝트를 관리하는 데 필요한 API들을 사용해 주실 수 있습니다.
-- API 사용을 위해선 우선 [API 인증](https://docs.gov-nhncloud.com/ko/nhncloud/ko/public-api/api-authentication)을 통해 발급받은 Bearer 타입의 토큰이 필요합니다.
-
+- 이 API들을 통해 프로젝트 멤버를 생성하거나 역할을 부여하는 등 조직과 프로젝트를 관리할 수 있습니다.
+- API 사용을 위해선 [API 인증](https://docs.gov-nhncloud.com/ko/nhncloud/ko/public-api/api-authentication)을 통해 발급받은 Bearer 타입의 토큰이 필요합니다.
+- API 호출 시, API 인증을 받은 멤버의 권한을 검사합니다.
 
 ### Public API 도메인
 `https://core.api.nhncloudservice.com/`
