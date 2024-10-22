@@ -38,9 +38,26 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **resultCode** | **Integer**| **No** | 결과코드. 성공 시 0이 반환되며, 실패 시 에러코드가 반환  |
 |   **resultMessage** | **String**| **No** | 결과메세지  |
 
+#### 공통 타입
+
+
+| Name | Type | Size | Description | 
+|------------ | ------------- | ------------- | ------------ |
+| org-id | **String** | 16자 | 조직 ID |
+| project-id | **String** | 8자 | 프로젝트 ID |
+| product-id | **String** | 8자 | 서비스 (상품) ID |
+| user-access-key-id | **String** | 20자 | User Access Key ID |
+| project-app-key | **String** | 20자 | 프로젝트의 AppKey |
+| product-app-key | **String** | 16자 | 서비스의 AppKey |
+| uuid | **String** | 36자 | 멤버의 uuid |
+
+
+
 ### API
 
-> 주의 : API의 Response는 가이드에 명시되지 않은 필드가 추가될 수 있으므로, 새로운 필드가 추가되어도 오류가 발생하지 않도록 개발 부탁드립니다.
+> 주의
+> * API의 Response는 가이드에 명시되지 않은 필드가 추가될 수 있으므로, 새로운 필드가 추가되어도 오류가 발생하지 않도록 개발해야 합니다.
+> * DB 저장 시, 컬럼 사이즈가 변경될 수 있으므로 여유있게 설정해야 합니다.
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -88,13 +105,13 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | **POST** |[**/v1/contracts/basic/products/prices/search**](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
 | **GET** |[**/v1/contracts/basic/products**](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
 | **GET** |[**/v1/authentications/projects/{project-id}/project-appkeys**](#프로젝트-appkey-조회) | 프로젝트 AppKey 조회 |
-| **GET** |[**/v1/authentications/user-access-keys**](#user-access-key-목록-조회) | User Access Key 목록 조회 |
+| **GET** |[**/v1/authentications/user-access-keys**](#user-access-key-id-목록-조회) | User Access Key ID 목록 조회 |
 | **POST** |[**/v1/authentications/projects/{project-id}/project-appkeys**](#프로젝트-appkey-등록) | 프로젝트 AppKey 등록 |
-| **POST** |[**/v1/authentications/user-access-keys**](#user-access-key-등록) | User Access Key 등록 |
+| **POST** |[**/v1/authentications/user-access-keys**](#user-access-key-id-등록) | User Access Key ID 등록 |
 | **DELETE** |[**/v1/authentications/projects/{project-id}/project-appkeys/{app-key}**](#프로젝트-appkey-삭제) | 프로젝트 AppKey 삭제 |
-| **PUT** |[**/v1/authentications/user-access-keys/{user-access-key}/secretkey-reissue**](#user-access-key-비밀키-재발급) | User Access Key 비밀키 재발급 |
-| **PUT** |[**/v1/authentications/user-access-keys/{user-access-key}**](#user-access-key-상태-수정) | User Access Key 상태 수정 |
-| **DELETE** |[**/v1/authentications/user-access-keys/{user-access-key}**](#user-access-key-삭제) | User Access Key 삭제 |
+| **PUT** |[**/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue**](#user-access-key-id-비밀키-재발급) | User Access Key ID 비밀키 재발급 |
+| **PUT** |[**/v1/authentications/user-access-keys/{user-access-key-id}**](#user-access-key-id-상태-수정) | User Access Key ID 상태 수정 |
+| **DELETE** |[**/v1/authentications/user-access-keys/{user-access-key-id}**](#user-access-key-id-삭제) | User Access Key ID 삭제 |
 
 
 
@@ -2231,7 +2248,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | **nickname** | **String** | **No** |  |
 | **officeHoursBegin** | **String** | **No** |  |
 | **officeHoursEnd** | **String** | **No** |  |
-| **status** | **String** | **Yes** | **반드시 member를 지정해야 함** |
+| **status** | **String** | **Yes** | 멤버 상태를 변경할 수 있음<br><ul><li>member : 정상 이용 상태</li><li>leaved : 탈퇴 요청</li></ul>**생성 시에는 반드시 member를 지정해야 함** |
 | **creationType** | **String** | **No** |  |
 | **idProviderId** | **String** | **No** |  |
 | **idProviderType** | **String** | **No** | service: IAM 직접 로그인 (기본값)<br>sso : 고객 SSO 연동 (연동되지 않은 경우 설정 불가) |
@@ -2939,9 +2956,9 @@ NHN Cloud 회원이면 호출 가능한 API
 |   **regDatetime** | **Date**| **No** | 생성 일시  |
 
 
-#### **User Access Key 목록 조회**
+#### **User Access Key ID 목록 조회**
 > GET "/v1/authentications/user-access-keys"
-* 멤버의 user access key 목록을 조회하는 API
+* 멤버의 User Access Key ID 목록을 조회하는 API
 
 ##### 필요 권한
 NHN Cloud 회원이면 호출 가능한 API
@@ -2957,8 +2974,8 @@ NHN Cloud 회원이면 호출 가능한 API
     "resultMessage" : "resultMessage"
   },
   "authentications" : [ {
-    "userAccessKey" : "userAccessKey",
-    "userAccessKey" : "userAccessKey",
+    "userAccessKeyID" : "userAccessKeyID",
+    "secretAccessKey" : "secretAccessKey",
     "authStatus" : "STABLE",
     "modDatetime" : "2000-01-23T04:56:07.000+00:00",
     "authId" : "authId",
@@ -2985,8 +3002,8 @@ NHN Cloud 회원이면 호출 가능한 API
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
 |   **authId** | **String**| **No** | 내부적으로 관리하는 인증 수단 아이디  |
-|   **userAccessKey** | **String**| **No** | User Access Key  |
-|   **userSecretKey** | **String**| **No** | 비밀키(마스킹 처리됨)  |
+|   **userAccessKeyID** | **String**| **No** | User Access Key ID  |
+|   **secretAccessKey** | **String**| **No** | 비밀키(마스킹 처리됨)  |
 |   **authStatus** | **String**| **No** | 인증 상태 코드 (STABLE, STOP, BLOCKED) |
 |   **uuid** | **String**| **No** | 사용자 uuid |
 |   **lastUsedDatetime** | **Date**| **No** | 마지막 사용 일시  |
@@ -3051,9 +3068,9 @@ NHN Cloud 회원이면 호출 가능한 API
 |   **appKey** | **String**| **No** | 프로젝트 appKey |
 
 
-#### **User Access Key 등록**
+#### **User Access Key ID 등록**
 > POST "/v1/authentications/user-access-keys"
-* 멤버의 user access key 목록을 조회하는 API
+* 멤버의 User Access Key ID 목록을 조회하는 API
 
 ##### 필요 권한
 NHN Cloud 회원이면 호출 가능한 API
@@ -3082,8 +3099,8 @@ NHN Cloud 회원이면 호출 가능한 API
     "resultMessage" : "resultMessage"
   },
   "authentication" : {
-    "userAccessKey" : "authKey",
-    "userSecretKey" : "secretKey",
+    "userAccessKeyID" : "userAccessKeyID",
+    "secretAccessKey" : "secretAccessKey",
     "authId" : "authId",
     "tokenExpiryPeriod" : 0
   }
@@ -3103,8 +3120,8 @@ NHN Cloud 회원이면 호출 가능한 API
 | Name | Type | Required | Description | 
 |------------ | ------------- | ----- | ------------ |
 |   **authId** | **String**| **No** | 내부적으로 관리하는 인증 수단 아이디  |
-|   **userAccessKey** | **String**| **No** | User Access Key  |
-|   **userSecretKey** | **String**| **No** | 비밀키 |
+|   **userAccessKeyID** | **String**| **No** | User Access Key ID  |
+|   **secretAccessKey** | **String**| **No** | 비밀키 |
 |   **tokenExpiryPeriod** | **Long**| **No** | 토큰 만료 기간 (초단위) |
 
 
@@ -3145,9 +3162,9 @@ NHN Cloud 회원이면 호출 가능한 API
 
 
 
-#### **User Access Key 비밀키 재발급**
-> PUT "/v1/authentications/user-access-keys/{user-access-key}/secretkey-reissue"
-* User Access Key의 비밀키를 재발급하는 API
+#### **User Access Key ID 비밀키 재발급**
+> PUT "/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue"
+* User Access Key ID의 비밀키를 재발급하는 API
 
 
 ### 필요 권한
@@ -3157,7 +3174,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |**user-access-key** | **String**| **Yes** | User Access Key | 
+|  Path |**user-access-key-id** | **String**| **Yes** | User Access Key ID | 
 
 
 ##### Response Body
@@ -3170,7 +3187,7 @@ NHN Cloud 회원이면 호출 가능한 API
     "resultMessage" : "resultMessage"
   },
   "authentication" : {
-    "userSecretKey" : "userSecretKey"
+    "secretAccessKey" : "secretAccessKey"
   }
 }
 ```
@@ -3188,19 +3205,19 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ----------- | ------------ |
-|   **userSecretKey** | **String**| **Yes**   | 비밀키 |
+|   **secretAccessKey** | **String**| **Yes**   | 비밀키 |
 
 
-#### **User Access Key 상태 수정**
-> PUT "/v1/authentications/user-access-keys/{user-access-key}"
-* 멤버의 user access key 상태를 변경하는 API
+#### **User Access Key ID 상태 수정**
+> PUT "/v1/authentications/user-access-keys/{user-access-key-id}"
+* 멤버의 User Access Key ID 상태를 변경하는 API
 
 ##### Request Parameters
 
 
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | **user-access-key** | **String**| **Yes** | User Acess Key | 
+|  Path | **user-access-key-id** | **String**| **Yes** | User Acess Key | 
 | Request Body | **request** | **UpdateUserAccessKeyStatusRequest**| **Yes** | request |
 
 
@@ -3230,9 +3247,9 @@ NHN Cloud 회원이면 호출 가능한 API
 |   **header** | [**공통 Response**](#response)| **Yes**   |
 
 
-#### **User Access Key 삭제**
-> DELETE "/v1/authentications/user-access-keys/{user-access-key}"
-* User Access Key를 삭제하는 API
+#### **User Access Key ID 삭제**
+> DELETE "/v1/authentications/user-access-keys/{user-access-key-id}"
+* User Access Key ID를 삭제하는 API
 
 
 ### 필요 권한
@@ -3242,7 +3259,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | ParameterType | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | **user-access-key** | **String**| **Yes** | User Access Key | 
+|  Path | **user-access-key-id** | **String**| **Yes** | User Access Key ID | 
 
 
 ##### Response Body
