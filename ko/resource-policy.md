@@ -263,8 +263,8 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 
 
 ### Notification Hub 서비스 리소스 제공 정책
- SMS 서비스와 Notification 서비스의 SMS 발송 건수가 합산되어 계산됩니다.
- KakaoTalk Bizmessage 서비스와 Notification Hub 서비스의 알림톡/친구톡 발송 건수가 합산되어 계산됩니다.
+SMS 서비스와 Notification 서비스의 SMS 발송 건수가 합산되어 계산됩니다.
+KakaoTalk Bizmessage 서비스와 Notification Hub 서비스의 알림톡/친구톡 발송 건수가 합산되어 계산됩니다.
 
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
