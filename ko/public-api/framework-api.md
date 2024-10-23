@@ -54,7 +54,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 #### 거버넌스 IP ACL 설정
 
-`조직 관리 > 거버넌스 설정 > 조직 거버넌스 설정 > IP ACL 설정`을 통해 IP ACL을 제한했을 경우, 프레임워크 API 호출 시에도 해당 설정이 적용됩니다.
+`조직 관리 > 거버넌스 설정 > 조직 거버넌스 설정 > IP ACL 설정`을 통해 IP ACL을 설정했을 경우, 프레임워크 API 호출 시에도 해당 설정이 적용됩니다.
 
 
 ### API
@@ -784,7 +784,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |------------ | ------------- | ------------- | ------------ |
 |   **limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20  |
 |   **page** | **Integer**| **No** | 대상 페이지, 기본값 1  |
-|   **sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\";, \"필드명,ASC\", \"필드명,DESC\";]  |
+|   **sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"]  |
 
 
 
@@ -2576,30 +2576,28 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
         "resultMessage": ""
     },
     "result": {
-        "content": {
-            "range": "organization",
-            "organizationMfaSetting": {
-                "type": "email",
-                "bypassByIp": {
-                    "enable": true
-                    "ipList": [
-                        "1.1.1.1",
-                        "1.1.1.1/24"
-                    ]
-                }
-            },
-            "serviceMfaSettings": [{
-                "serviceId": "{toast-service-id}",
-                "type": "totp",
-                "bypassByIp": {
-                    "enable": true
-                    "ipList": [
-                        "1.1.1.1",
-                        "1.1.1.1/24"
-                    ]
-                }
-            }]
-        }
+        "range": "organization",
+        "organizationMfaSetting": {
+            "type": "email",
+            "bypassByIp": {
+                "enable": true
+                "ipList": [
+                    "1.1.1.1",
+                    "1.1.1.1/24"
+                ]
+            }
+        },
+        "serviceMfaSettings": [{
+            "serviceId": "{toast-service-id}",
+            "type": "totp",
+            "bypassByIp": {
+                "enable": true
+                "ipList": [
+                    "1.1.1.1",
+                    "1.1.1.1/24"
+                ]
+            }
+        }]
     }
 }
 ```
@@ -2610,9 +2608,9 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes**   |
-|   **content** | **Content**| **No** |  응답 내용<br>설정한 적이 없으면 `null`이 반환됨 |
+|   **result** | **Result**| **No** |  응답 내용<br>설정한 적이 없으면 `null`이 반환됨 |
 
-###### Content
+###### Result
 | Name | Type | Required | Description | 
 |------------ | ------------- | ----------- | ------------ |
 |   **range** | **Integer**| **No** | 조직/서비스 여부<br>organization(공통설정), services(서비스별 설정)  |
