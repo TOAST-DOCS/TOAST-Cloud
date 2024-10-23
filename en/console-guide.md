@@ -477,6 +477,7 @@ Members are classified into NHN Cloud members and IAM members.
 | RTCS | ADMIN | Create, Read, Update, Delete for RTCS Service |
 | ShortURL | ADMIN | Create, Read, Update, Delete for ShortURL Service |
 | File-Crafter | ADMIN | Create, Read, Update, Delete for File-Crafter Service |
+| Cloud Scheduler | ADMIN | Create, Read, Update, Delete for Cloud Scheduler Service |
 | IAP | ADMIN | Create, Read, Update, Delete for IAP Service |
 | Mobile Device Info | ADMIN | Create, Read, Update, Delete for Mobile Device Info Service |
 | Cloud Search | ADMIN | Create, Read, Update, Delete for Cloud Search Service |
