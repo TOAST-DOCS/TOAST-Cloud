@@ -472,7 +472,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |  Path |**org-id** | **String**| **Yes** | 조직 ID |
 |  Query |**categoryTypeCodes** | **List&lt;String>** | **No** | 역할/권한/역할그룹 카테고리 구분 (ROLE, ROLE_GROUP, PERMISSION) |
 |  Query |**roleNameLike** | **String**| **No** | 역할/권한/역할그룹 명 |
-|  Query |**sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"] |
 |  Query |**limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20 | 
 |  Query |**page** | **Integer**| **No** | 대상 페이지, 기본값 1 |
 
@@ -539,7 +538,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |  Path |**project-id** | **String**| **Yes** | 프로젝트 ID | 
 |  Query |**categoryTypeCodes** | **List&lt;String>** | **No** | 역할/권한/역할그룹 카테고리 구분 (ROLE, ROLE_GROUP, PERMISSION) |
 |  Query |**roleNameLike** | **String**| **No** | 역할/권한/역할그룹 명 |
-|  Query |**sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"] |
 |  Query |**limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20 | 
 |  Query |**page** | **Integer**| **No** | 대상 페이지, 기본값 1 |
 
@@ -783,7 +781,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |------------ | ------------- | ------------- | ------------ |
 |   **limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20  |
 |   **page** | **Integer**| **No** | 대상 페이지, 기본값 1  |
-|   **sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"]  |
 
 
 
@@ -813,7 +810,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
   "paging" : {
     "limit" : 0,
     "page" : 6,
-    "sort" : [ "sort", "sort" ],
     "totalCount" : 1
   }
 }
@@ -850,7 +846,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |------------ | ------------- | ------------- | ------------ |
 |   **limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20  |
 |   **page** | **Integer**| **No** | 대상 페이지, 기본값 1  |
-|   **sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"]  |
 |   **totalCount** | **Long**| **Yes** | 총 건수  |
 
 
@@ -875,7 +870,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |  Query |**roleGroupNameLike** | **String**| **No** | 역할 그룹명 |
 |  Query |**limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20 |
 |  Query |**page** | **Integer**| **No** | 대상 페이지, 기본값 1 |
-|  Query |**sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"] |
 
 
 
@@ -894,7 +888,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
   "paging" : {
     "limit" : 0,
     "page" : 6,
-    "sort" : [ "sort", "sort" ],
     "totalCount" : 1
   },
   "roleGroups" : [ {
@@ -1201,7 +1194,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
   "paging" : {
     "limit" : 0,
     "page" : 6,
-    "sort" : [ "sort", "sort" ],
     "totalCount" : 1
   },
   "projectMembers" : [ {
@@ -1401,7 +1393,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |  Query |**roleGroupNameLike** | **String**| **No** | 역할 그룹명 |
 |  Query |**limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20 |
 |  Query |**page** | **Integer**| **No** | 대상 페이지, 기본값 1 |
-|  Query |**sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"] |
 
 
 
@@ -1417,7 +1408,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
   "paging" : {
     "limit" : 0,
     "page" : 6,
-    "sort" : [ "sort", "sort" ],
     "totalCount" : 1
   },
   "roleGroups" : [ {
@@ -1457,7 +1447,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |  Query |**projectName** | **String**| **No** | 프로젝트 이름 |
 |  Query |**page** | **Integer**| **No** | 대상 페이지, 기본값 1 |
 |  Query |**limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20 |
-|  Query |**sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"] |
 
 
 ##### Response Body
@@ -1482,7 +1471,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
   "paging" : {
     "limit" : 0,
     "page" : 6,
-    "sort" : [ "sort", "sort" ],
     "totalCount" : 1
   }
 }
@@ -2165,7 +2153,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |  Query |**userCodeLike** | **String**| **No** |  |
 |  Query |**limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20 |
 |  Query |**page** | **Integer**| **No** | 대상 페이지, 기본값 1 |
-|  Query |**sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"] |
 
 ##### Response Body
 
@@ -2215,7 +2202,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
   "paging" : {
     "limit" : 0,
     "page" : 6,
-    "sort" : [ "sort", "sort" ],
     "totalCount" : 1
   }
 }
