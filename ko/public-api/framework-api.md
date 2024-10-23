@@ -106,8 +106,8 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | **GET** |[**/v1/iam/organizations/{org-id}/settings/security-mfa**](#조직-iam-로그인-2차-인증에-대한-설정을-조회) | 조직 IAM 로그인 2차 인증에 대한 설정을 조회 |
 | **GET** |[**/v1/iam/organizations/{org-id}/settings/security-login-fail**](#조직-iam-로그인-실패-보안-설정을-조회) | 조직 IAM 로그인 실패 보안 설정을 조회 |
 | **GET** |[**/v1/organizations/{org-id}/products/ip-acl**](#조직-ip-acl-목록-조회) | 조직 IP ACL 목록 조회 |
-| **POST** |[**/v1/contracts/basic/products/prices/search**](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
-| **GET** |[**/v1/contracts/basic/products**](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
+| **POST** |[**/v1/billing/contracts/basic/products/prices/search**](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
+| **GET** |[**/v1/billing/contracts/basic/products**](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
 | **GET** |[**/v1/authentications/projects/{project-id}/project-appkeys**](#프로젝트-appkey-조회) | 프로젝트 AppKey 조회 |
 | **GET** |[**/v1/authentications/user-access-keys**](#user-access-key-id-목록-조회) | User Access Key ID 목록 조회 |
 | **POST** |[**/v1/authentications/projects/{project-id}/project-appkeys**](#프로젝트-appkey-등록) | 프로젝트 AppKey 등록 |
@@ -2704,7 +2704,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 #### **종량제에 등록된 상품 가격 조회**
-> POST "/v1/contracts/basic/products/prices/search"
+> POST "/v1/billing/contracts/basic/products/prices/search"
 * 카운터에 설정된 단가를 조회하는 API
 * 각 언어별로 노출명, 금액 계산을 위한 종류를 알 수 있음
 
@@ -2808,7 +2808,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 
 #### **종량제에 등록된 상품 목록 조회**
-> GET "/v1/contracts/basic/products"
+> GET "/v1/billing/contracts/basic/products"
 * 청구서에 노출되는 메인 카테고리와 서브 카테고리 및 포함되는 카운터의 목록을 제공하는 API
 
 ##### 필요 권한
