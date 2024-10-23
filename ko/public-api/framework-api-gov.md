@@ -105,8 +105,8 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | **GET** |[**/v1/iam/organizations/{org-id}/settings/security-mfa**](#조직-iam-로그인-2차-인증에-대한-설정을-조회) | 조직 IAM 로그인 2차 인증에 대한 설정을 조회 |
 | **GET** |[**/v1/iam/organizations/{org-id}/settings/security-login-fail**](#조직-iam-로그인-실패-보안-설정을-조회) | 조직 IAM 로그인 실패 보안 설정을 조회 |
 | **GET** |[**/v1/organizations/{org-id}/products/ip-acl**](#조직-ip-acl-목록-조회) | 조직 IP ACL 목록 조회 |
-| **POST** |[**/v1/contracts/basic/products/prices/search**](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
-| **GET** |[**/v1/contracts/basic/products**](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
+| **POST** |[**/v1/billing/contracts/basic/products/prices/search**](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
+| **GET** |[**/v1/billing/contracts/basic/products**](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
 | **GET** |[**/v1/authentications/projects/{project-id}/project-appkeys**](#프로젝트-appkey-조회) | 프로젝트 AppKey 조회 |
 | **GET** |[**/v1/authentications/user-access-keys**](#user-access-key-id-목록-조회) | User Access Key ID 목록 조회 |
 | **POST** |[**/v1/authentications/projects/{project-id}/project-appkeys**](#프로젝트-appkey-등록) | 프로젝트 AppKey 등록 |
@@ -783,7 +783,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |------------ | ------------- | ------------- | ------------ |
 |   **limit** | **Integer**| **No** | 페이지당 표시 건수, 기본값 20  |
 |   **page** | **Integer**| **No** | 대상 페이지, 기본값 1  |
-|   **sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\";, \"필드명,ASC\", \"필드명,DESC\";]  |
+|   **sort** | **List&lt;String>**| **No** | 정렬 조건<br>ex: [\"필드명\", \"필드명,ASC\", \"필드명,DESC\"]  |
 
 
 
@@ -2575,30 +2575,28 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
         "resultMessage": ""
     },
     "result": {
-        "content": {
-            "range": "organization",
-            "organizationMfaSetting": {
-                "type": "email",
-                "bypassByIp": {
-                    "enable": true
-                    "ipList": [
-                        "1.1.1.1",
-                        "1.1.1.1/24"
-                    ]
-                }
-            },
-            "serviceMfaSettings": [{
-                "serviceId": "{toast-service-id}",
-                "type": "totp",
-                "bypassByIp": {
-                    "enable": true
-                    "ipList": [
-                        "1.1.1.1",
-                        "1.1.1.1/24"
-                    ]
-                }
-            }]
-        }
+        "range": "organization",
+        "organizationMfaSetting": {
+            "type": "email",
+            "bypassByIp": {
+                "enable": true
+                "ipList": [
+                    "1.1.1.1",
+                    "1.1.1.1/24"
+                ]
+            }
+        },
+        "serviceMfaSettings": [{
+            "serviceId": "{toast-service-id}",
+            "type": "totp",
+            "bypassByIp": {
+                "enable": true
+                "ipList": [
+                    "1.1.1.1",
+                    "1.1.1.1/24"
+                ]
+            }
+        }]
     }
 }
 ```
@@ -2609,9 +2607,9 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes**   |
-|   **content** | **Content**| **No** |  응답 내용<br>설정한 적이 없으면 `null`이 반환됨 |
+|   **result** | **Result**| **No** |  응답 내용<br>설정한 적이 없으면 `null`이 반환됨 |
 
-###### Content
+###### Result
 | Name | Type | Required | Description | 
 |------------ | ------------- | ----------- | ------------ |
 |   **range** | **Integer**| **No** | 조직/서비스 여부<br>organization(공통설정), services(서비스별 설정)  |
@@ -2703,7 +2701,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 
 
 #### **종량제에 등록된 상품 가격 조회**
-> POST "/v1/contracts/basic/products/prices/search"
+> POST "/v1/billing/contracts/basic/products/prices/search"
 * 카운터에 설정된 단가를 조회하는 API
 * 각 언어별로 노출명, 금액 계산을 위한 종류를 알 수 있음
 
@@ -2807,7 +2805,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 
 #### **종량제에 등록된 상품 목록 조회**
-> GET "/v1/contracts/basic/products"
+> GET "/v1/billing/contracts/basic/products"
 * 청구서에 노출되는 메인 카테고리와 서브 카테고리 및 포함되는 카운터의 목록을 제공하는 API
 
 ##### 필요 권한
