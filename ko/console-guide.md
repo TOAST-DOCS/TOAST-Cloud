@@ -476,6 +476,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | RTCS | ADMIN | RTCS 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | ShortURL | ADMIN | ShortURL 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | File-Crafter | ADMIN | File-Crafter 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Cloud Scheduler | ADMIN | Cloud Scheduler 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | IAP | ADMIN | IAP 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Mobile Device Info | ADMIN | Mobile Device Info 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Cloud Search | ADMIN | Cloud Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |

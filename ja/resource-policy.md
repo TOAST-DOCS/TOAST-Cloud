@@ -273,8 +273,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 
 ### Notification Hub サービスリソース提供ポリシー
 
-- SMSサービスとNotification HubサービスのSMS送信件数が合算されて計算されます。
-- KakaoTalk BizmessageサービスとNotification Hubサービスのお知らせトーク/カカともへのメッセージ送信件数が合算されて計算されます。
+SMSサービスとNotification HubサービスのSMS送信件数が合算されて計算されます。
+KakaoTalk BizmessageサービスとNotification Hubサービスのお知らせトーク/カカともへのメッセージ送信件数が合算されて計算されます。
 
 | リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
