@@ -1021,7 +1021,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
     "updateUuid" : "updateUuid",
     "appKey" : "appKey",
     "productStatusCode" : "STABLE",
-    "productUrl" : "productUrl",
     "projectId" : "projectId",
     "statusCode" : "STABLE"
   },
@@ -1054,7 +1053,6 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **productName** | **String**| **Yes** | 상품 이름  |
 |   **productSecretKeyCode** | **String**| **No** | secretKey 사용 여부<br>T : 사용함<br>나머지 : 사용하지 않음 (F, N) |
 |   **productStatusCode** | **String**| **Yes** | 서비스 상태 (STABLE, CLOSED) |
-|   **productUrl** | **String**| **No** | 서비스 접근 URL  |
 |   **projectId** | **String**| **Yes** | 해당 서비스를 사용하는 프로젝트 ID  |
 |   **relationDate** | **Date**| **Yes** | 서비스 이용 시작일시  |
 |   **secretKey** | **String**| **Yes** | 서비스 SecretKey<br>secretKey를 이용하는 서비스에서만 제공  |
