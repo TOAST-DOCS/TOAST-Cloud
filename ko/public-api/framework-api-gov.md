@@ -243,7 +243,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | Name | Type | Required | Description | 
 |------------ | ------------- | --------- | ------------ |
 |   **header** | [**공통 Response**](#response)| **Yes**  |
-|   **regDateTime** | **String**| **Yes**   | 프로젝트 생성일시 | 
+|   **regDateTime** | **Date**| **Yes**   | 프로젝트 생성일시 | 
 |   **description** | **String**| **No**   | 프로젝트 설명 | 
 |   **ownerId** | **String**| **Yes**   | 프로젝트 소유자 멤버 ID | 
 |   **projectName** | **String**| **Yes**   | 프로젝트 이름 | 
@@ -2507,9 +2507,12 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
         "resultMessage": ""
     },
     "result": {
-        "multiSessionsLimit": 0,
-        "sessionTimeoutMinutes": 10,
-        "sessionType": "fixed"
+        "content": {
+            "multiSessionsLimit": 1,
+            "sessionTimeoutMinutes": 10,
+            "mobileSessionTimeoutMinutes": 10,
+            "sessionType": "fixed"
+        }
     }
 }
 ```
@@ -2520,14 +2523,15 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
 | **header** | [**공통 Response**](#response)| **Yes**   |
-| **result** | **Result** | **Yes** | 설정 내용 |
+| **result** | **Content** | **Yes** | 설정 내용 |
 
-###### Result
+###### Content
 
 | Name | Type | Required | Description | 
 |------------ | ------------- | ------------- | ------------ |
 |   **multiSessionsLimit** | **Integer**| **Yes** | 허용 멀티 세션 수  |
 |   **sessionTimeoutMinutes** | **Integer**| **Yes** | 	세션 타임아웃 |
+|   **mobileSessionTimeoutMinutes** | **Integer**| **Yes** | 	모바일 세션 타임아웃 |
 |   **sessionType** | **String**| **Yes** | fixed / idle. 기본값은 fixed  |
 
 
@@ -3315,7 +3319,7 @@ NHN Cloud 회원이면 호출 가능한 API
 | 62009 | 역할 그룹 생성 시 역할들이 유효하지 않은 역할인 경우 발생                                                   | 유효한 역할들을 사용하도록 변경                                       |
 | 62011 | 역할 그룹 삭제 시 알림 그룹에서 사용중이어서 발생                                                        | 알림 그룹 삭제 후 역할 그룹을 삭제하도록 변경                              |
 | 62014 | 역할 그룹 삭제 및 역할 그룹에 역할 추가/삭제 시 역할 그룹을 할당했던 멤버들이 역할을 서비스에 통지하는데 실패                       | 담당자에게 문의                                            |
-| 62019 | 조직 멤버에개게 허용되지 않는 역할을 부여하려는 경우                      | 담당자에게 문의                                            |
+| 62019 | 조직 멤버에게 허용되지 않는 역할을 부여하려는 경우                      | 담당자에게 문의                                            |
 | 72005 | 빌링 관련 API 호출이 실패할 때 발생하는 에러                                                         | 담당자에게 문의                                            |
 | 70013 | 이용중인 서비스가 존재할 때 발생하는 에러                                                             | 이용중인 서비스 비활성화                                           |
 | 70014 | 멤버 탈퇴 조건을 만족하지 않을 경우 발생하는 에러<br> IAM - 1) 사용중인 서비스가 있을 때 2) 삭제되지 않은 프로젝트가 있을 때 3) 해당 멤버가 임의의 프로젝트에 ADMIN 역할로 존재할 때| 각 멤버 타입에 맞는 탈퇴 조건을 만족하도록 설정                          |
