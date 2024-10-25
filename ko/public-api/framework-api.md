@@ -728,7 +728,7 @@ Public API 반환 시 아래 header 부분이 Response Body에 포함됩니다.
 |   **categoryTypeCode** | **String**| **Yes** | 역할그룹/역할/권한 구분 코드 (ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
 |   **conditions** | **List&lt;AttributeConditionProtocol>**| **No** | 조건 속성 목록 |
 |   **roleApplyPolicyCode** | **String**| **Yes** | 역할 사용 여부  ALLOW, DENY |
-|   **regDateTime** | **Date**| **String** |  역할 생성 일시 |
+|   **regDateTime** | **Date**| **Yes** |  역할 생성 일시 |
 
 
 
