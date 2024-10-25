@@ -1,1 +1,1 @@
-## NHN Cloud > Public API > API 인증
+## NHN Cloud > Public API > API 호출 및 인증
