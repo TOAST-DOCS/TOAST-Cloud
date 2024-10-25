@@ -31,7 +31,7 @@
     |---------------|------------- | ------------- | ------------- |-------------------------------------------|------------------------------------------------------------------------| 
     | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
     | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 || 
-    | Request Param |  grant_type | String | Yes | client_credentials                        |                                                                        |
+    | Request Param |  grant_type | String | Yes | client_credentials                        |                                                                    |
 
 * 응답
 
@@ -159,11 +159,11 @@
 > `POST /oauth2/token/revoke`
 * 요청
 
-  | 구분 | 이름 | 타입 | 필수 | 값                                     | 설명                                                                   |
-  |---------------|------------- | ------------- | ------------- |-------------------------------------------|------------------------------------------------------------------------| 
-  | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
-  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 || 
-  | Request Param |  **token** | **String**| **Yes** | access token                              | 발급받은 토큰                                                            |
+  | 구분 | 이름 | 타입 | 필수 | 값 | 설명   |
+  |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
+  | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
+  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 |
+  | Request Param |  token | String| Yes | access token    | 발급받은 토큰    |
 
 * 응답 
   * HttpStatus 200
