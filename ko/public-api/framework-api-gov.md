@@ -98,9 +98,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-iam-멤버-단건-조회) | 조직 IAM 멤버 단건 조회 |
 | GET |[/v1/iam/organizations/{org-id}/members](#조직-iam-멤버-목록-조회) | 조직 IAM 멤버 목록 조회 |
 | POST |[/v1/iam/organizations/{org-id}/members](#조직-iam-멤버-추가) | 조직 IAM 멤버 추가 |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#iam-멤버-패스워드-변경-이메일-전송) | IAM 멤버 패스워드 변경 이메일 전송 |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#iam-멤버-비밀번호-변경-이메일-전송) | IAM 멤버 비밀번호 변경 이메일 전송 |
 | PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-iam-멤버-정보-수정) | 조직 IAM 멤버 정보 수정 |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#조직-iam-멤버-비밀번호-수정) | 조직 IAM 멤버 비밀번호 수정 |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#조직-iam-멤버-비밀번호-변경) | 조직 IAM 멤버 비밀번호 변경 |
 | GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-iam-로그인-세션-설정-정보를-조회) | 조직 IAM 로그인 세션 설정 정보를 조회 |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-iam-로그인-2차-인증에-대한-설정을-조회) | 조직 IAM 로그인 2차 인증에 대한 설정을 조회 |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-iam-로그인-실패-보안-설정을-조회) | 조직 IAM 로그인 실패 보안 설정을 조회 |
@@ -112,7 +112,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | POST |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-appkey-등록) | 프로젝트 AppKey 등록 |
 | POST |[/v1/authentications/user-access-keys](#user-access-key-id-등록) | User Access Key ID 등록 |
 | DELETE |[/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#프로젝트-appkey-삭제) | 프로젝트 AppKey 삭제 |
-| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#user-access-key-id-비밀키-재발급) | User Access Key ID 비밀키 재발급 |
+| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#user-access-key-id-비밀-키-재발급) | User Access Key ID 비밀 키 재발급 |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#user-access-key-id-상태-수정) | User Access Key ID 상태 수정 |
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#user-access-key-id-삭제) | User Access Key ID 삭제 |
 
@@ -121,6 +121,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 #### 프로젝트 멤버 생성
 > POST "/v1/projects/{project-id}/members"
+
 프로젝트에 멤버를 추가하는 API입니다.
 
 ##### 필요 권한
@@ -195,6 +196,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 #### 프로젝트 추가
 > POST "/v1/organizations/{org-id}/projects"
+
 조직에 프로젝트를 추가하는 API입니다.
 
 ##### 필요 권한
@@ -255,7 +257,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 #### 프로젝트 멤버 단건 삭제
 > DELETE "/v1/projects/{project-id}/members/{target-uuid}"
-* 사용자를 해당 프로젝트에서 삭제하는 API
+
+사용자를 해당 프로젝트에서 삭제하는 API입니다.
 
 ##### 필요 권한
 `Project.Member.Delete`
@@ -296,6 +299,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 #### 프로젝트 삭제
 > DELETE "/v1/projects/{project-id}"
+
 프로젝트를 삭제하는 API입니다.
 
 ##### 필요 권한
@@ -340,6 +344,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 #### 프로젝트 상품 종료
 > DELETE "/v1/projects/{project-id}/products/{product-id}/disable"
+
 해당 프로젝트에서 사용자가 지정한 서비스를 더 이상 이용하지 않도록 비활성화하는 API입니다.
 
 ##### 필요 권한
@@ -395,6 +400,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 #### 프로젝트 상품 이용
 > POST "/v1/projects/{project-id}/products/{product-id}/enable"
+
 해당 프로젝트에서 사용자가 지정한 서비스를 이용할 수 있도록 활성화 요청하는 API입니다.
 
 ##### 필요 권한
@@ -752,6 +758,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 #### 조직 멤버 목록 조회
 > POST "/v1/organizations/{org-id}/members/search"
+
 해당 조직에 소속된 NHN Cloud 멤버 목록을 조회하는 API입니다.
 
 ##### 필요 권한
@@ -1158,6 +1165,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 프로젝트 멤버 목록 조회
 > POST "/v1/projects/{project-id}/members/search"
+
 프로젝트에 소속된 멤버 목록을 조회하기 위한 API입니다.
 
 ##### 필요 권한
@@ -1566,6 +1574,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 조직의 프로젝트 공통 역할 그룹 생성
 > POST "/v1/organizations/{org-id}/project-role-groups"
+
 프로젝트 공통 역할 그룹을 생성하는 API입니다.
 
 
@@ -1623,7 +1632,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 조직의 프로젝트 공통 역할 그룹 삭제
 > DELETE "/v1/organizations/{org-id}/project-role-groups"
-* 프로젝트 공통 역할 그룹을 삭제하는 API
+
+프로젝트 공통 역할 그룹을 삭제하는 API입니다.
 
 ##### 필요 권한
 `Organization.Project.RoleGroup.Delete`
@@ -1666,7 +1676,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 조직의 프로젝트 공통 역할 그룹 정보 수정
 > PUT "/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos"
-* 프로젝트 공통 역할 그룹의 이름과 설명을 수정하는 API
+
+프로젝트 공통 역할 그룹의 이름과 설명을 수정하는 API입니다.
 
 ##### 필요 권한
 `Organization.Project.RoleGroup.Update`
@@ -1712,7 +1723,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 조직의 프로젝트 공통 역할 그룹 역할 수정
 > PUT "/v1/organizations/{org-id}/project-role-groups/{role-group-id}/roles"
-* 프로젝트 공통 역할 그룹에 역할을 수정하는 API
+
+프로젝트 공통 역할 그룹의 역할을 수정하는 API입니다.
 
 ##### 필요 권한
 `Organization.Project.RoleGroup.Update`
@@ -1757,7 +1769,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 프로젝트 역할 그룹 생성
 > POST "/v1/projects/{project-id}/project-role-groups"
-* 프로젝트에 역할 그룹을 생성하는 API
+
+프로젝트에 역할 그룹을 생성하는 API입니다.
 
 
 ##### 필요 권한
@@ -1796,7 +1809,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 프로젝트 역할 그룹 삭제
 > DELETE "/v1/projects/{project-id}/project-role-groups"
-* 프로젝트 역할 그룹을 삭제하는 API
+
+프로젝트 역할 그룹을 삭제하는 API입니다.
 
 
 ##### 필요 권한
@@ -1835,7 +1849,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 프로젝트 역할 그룹 정보 수정
 > PUT "/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos"
-* 프로젝트 역할 그룹의 이름과 설명을 수정하는 API
+
+프로젝트 역할 그룹의 이름과 설명을 수정하는 API입니다.
 
 ##### 필요 권한
 `Project.RoleGroup.Update`
@@ -1874,7 +1889,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 프로젝트 역할 그룹 역할 수정
 > PUT "/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles"
-* 프로젝트 공통 역할 그룹에 역할을 수정하는 API
+
+프로젝트 역할 그룹의 역할을 수정하는 API입니다.
 
 ##### 필요 권한
 `Project.RoleGroup.Update`
@@ -1917,9 +1933,10 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 |   header | [공통 Response](#response)| Yes   |
 
 
-#### 조직 멤버 역할 수정
+#### 조직 멤버 역할 변경
 > PUT "/v1/organizations/{org-id}/members/{member-uuid}"
-* 해당 조직에 소속된 멤버의 권한을 수정하는 API
+
+해당 조직에 소속된 멤버의 역할을 수정하는 API입니다.
 
 
 ##### 필요 권한
@@ -1968,7 +1985,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 프로젝트 멤버 역할 수정
 > PUT "/v1/projects/{project-id}/members/{member-uuid}"
-* 프로젝트에서 지정한 멤버의 역할을 변경하는 API
+
+프로젝트에서 지정한 멤버의 역할을 변경하는 API입니다.
 
 ##### 필요 권한
 `Project.Member.Update`
@@ -2006,7 +2024,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 #### 조직 IAM 멤버 단건 조회
 > GET "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
-* 조직에 소속된 IAM 멤버를 조회하는 API
+조직에 소속된 IAM 멤버를 조회하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Get`
@@ -2102,32 +2120,32 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 |   createdAt | Date| No |
 |   creationType | String| No| 멤버의 생성 타입 |
 |   department | String| No|
-|   emailAddress | String| Yes | IAM 사용자 이메일주소  |
+|   emailAddress | String| Yes | IAM 멤버 이메일 주소  |
 |   englishName | String| No|
-|   id | String| Yes | IAM 사용자 UUID  |
+|   id | String| Yes | IAM 멤버 UUID  |
 |   idProviderId | String| No|
 |   idProviderType | String| No| service: IAM 직접 로그인<br>sso: 고객 SSO 연동 |
 |   idProviderUserId | String| No|
 |   lastAccessedAt | Date| No| 멤버의 마지막 접속 일시, 없을 경우 null 반환 |
 |   lastLoggedInAt | Date| No| 멤버의 마지막 로그인 일시, 없을 경우 null 반환 |
 |   lastLoggedInIp | String| No| 멤버의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
-|   maskingEmail | String| No | IAM 사용자 마스킹된 이메일주소  |
-|   mobilePhone | String| No | IAM 사용자 휴대폰 번호  |
+|   maskingEmail | String| No | IAM 멤버의 마스킹된 이메일주소  |
+|   mobilePhone | String| No | IAM 멤버의 휴대폰 번호  |
 |   mobilePhoneCountryCode | String| No|
-|   name | String| Yes | IAM 사용자 이름  |
+|   name | String| Yes | IAM 멤버의 이름  |
 |   nativeName | String| No|
 |   nickname | String| No|
 |   officeHoursBegin | String| No|
 |   officeHoursEnd | String| No|
-|   organizationId | String| Yes | IAM 사용자 조직 ID  |
+|   organizationId | String| Yes | IAM 멤버의 조직 ID  |
 |   passwordChangedAt | Date| No| 멤버의 마지막 비밀번호 변경 일시, 없을 경우 null 반환 |
 |   position | String| No|
 |   profileImageUrl | String| No|
 |   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 연관 역할 목록(조건 속성 포함)  |
-|   saasRoles | List&lt;IamMemberRole>| No | IAM 역할  |
+|   saasRoles | List&lt;IamMemberRole>| No | IAM 멤버 역할  |
 |   status | String| No| 멤버의 상태 |
-|   telephone | String| No | IAM 사용자 전화번호  |
-|   userCode | String| Yes | IAM 사용자 ID  |
+|   telephone | String| No | IAM 멤버의 전화번호  |
+|   userCode | String| Yes | IAM 멤버 ID  |
 
 
 
@@ -2145,7 +2163,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 #### 조직 IAM 멤버 목록 조회
 > GET "/v1/iam/organizations/{org-id}/members"
 
-* 해당 조직에 소속된 멤버 목록을 조회하는 API
+해당 조직에 소속된 IAM 멤버 목록을 조회하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.List`
@@ -2160,7 +2178,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 |  Query |idProviderType | String| No | service: IAM 직접 로그인<br>sso: 고객 SSO 연동 |
 |  Query |nameLike | String| No |  |
 |  Query |statuses | List&lt;String>| No |  |
-|  Query |userCode | String| No | IAM 사용자 ID |
+|  Query |userCode | String| No | IAM 멤버 ID |
 |  Query |userCodeLike | String| No |  |
 |  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
 |  Query |page | Integer| No | 대상 페이지, 기본값 1 |
@@ -2232,13 +2250,13 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
 | header | [공통 Response](#response)| Yes | protocol이 response에 있는 경우에만 필수값 |
-| id | String | No | IAM 사용자 UUID | 
-| userCode | String | Yes | 로그인 시 사용할 IAM 사용자 ID | 
-| name | String | Yes | IAM 사용자 이름 | 
-| emailAddress | String |  Yes | IAM 사용자 이메일주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
-| maskingEmail | String | No | IAM 사용자 마스킹된 이메일주소 |
-| mobilePhone | String | No | IAM 사용자 휴대폰 번호 |
-| telephone | String | No | IAM 사용자 전화번호 |
+| id | String | No | IAM 멤버 UUID | 
+| userCode | String | Yes | 로그인 시 사용할 IAM 멤버 ID | 
+| name | String | Yes | IAM 멤버의 사용자 이름 | 
+| emailAddress | String |  Yes | IAM 멤버의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
+| maskingEmail | String | No | IAM 멤버의 마스킹된 이메일 주소 |
+| mobilePhone | String | No | IAM 멤버의 휴대폰 번호 |
+| telephone | String | No | IAM 멤버 전화번호 |
 | position | String | No |  |
 | department | String | No |  |
 | corporate | String | No |  |
@@ -2259,7 +2277,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 | lastLoggedInIp | String | No | 마지막 로그인 한 IP |
 | passwordChangedAt | Date | No | 비밀번호 변경 일시 |
 | mobilePhoneCountryCode | String | No | 휴대폰 번호 입력 시 필수  |
-| organizationId | String | No | IAM 사용자 조직 ID |
+| organizationId | String | No | IAM 멤버의 조직 ID |
 | country | String | No |  |
 | saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAM 역할 |
 
@@ -2270,7 +2288,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 조직 IAM 멤버 추가
 > POST "/v1/iam/organizations/{org-id}/members"
-* 조직에 IAM 멤버를 추가하는 API
+
+조직에 IAM 멤버를 추가하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Create`
@@ -2318,9 +2337,10 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 
 
-#### IAM 멤버 패스워드 변경 이메일 전송
+#### IAM 멤버 비밀번호 변경 이메일 전송
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail"
-* IAM 멤버의 패스워드를 변경할 수 있는 이메일을 전송하는 API
+
+IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Update`
@@ -2341,8 +2361,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   locale | String| No  | 사용자의 로케일 정보<br>ex: ko |
-|   returnUrl | String| No  | 이메일 변경 알림 메일을 통해서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com 또는 dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
+|   locale | String| No  | 사용자의 로케일 정보<br>예: ko |
+|   returnUrl | String| No  | 이메일 변경 알림 메일을 통해서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com, dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
 
 
 ##### 응답 본문
@@ -2366,7 +2386,8 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 조직 IAM 멤버 정보 수정
 > PUT "/v1/iam/organizations/{org-id}/members/{member-uuid}"
-* 조직의 IAM 멤버 정보를 수정하는 API
+
+조직의 IAM 멤버 정보를 수정하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Update`
@@ -2408,9 +2429,10 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 |   header | [공통 Response](#response)| Yes   |
 
 
-#### 조직 IAM 멤버 비밀번호 수정
+#### 조직 IAM 멤버 비밀번호 변경
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/set-password"
-* 조직 IAM 멤버의 패스워드를 변경하는 API
+
+조직 IAM 멤버의 비밀번호를 변경하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Update`
@@ -2454,7 +2476,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 #### 조직 IP ACL 목록 조회
 > GET "/v1/organizations/{org-id}/products/ip-acl"
 
-* IP ACL 설정을 조회하는 API
+IP ACL 설정을 조회하는 API입니다.
 
 ##### 필요 권한
 `Organization.Governance.IpAcl.List`
@@ -2488,7 +2510,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 Response](#response)| Yes   |
-|   orgIpAcl | List&lt;OrgIpAclProtocol>| Yes  | 설정 결과, 빈 리스트이면 설정이 안된 상태 |
+|   orgIpAcl | List&lt;OrgIpAclProtocol>| Yes  | 설정 결과, 빈 목록이면 설정이 안된 상태 |
 
 ###### OrgIpAclProtocol
 
@@ -2496,13 +2518,13 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
 |   ips | List&lt;String>| Yes  | 허용 IP들 | 
-|   productId | String| Yes  | 상품 ID<br>undefined 이면 공통 설정|
+|   productId | String| Yes  | 상품 ID<br>undefined이면 공통 설정|
 
 
 #### 조직 IAM 로그인 세션 설정 정보를 조회
 > GET "/v1/iam/organizations/{org-id}/settings/session"
 
-* 로그인 세션 설정 정보를 조회하는 API
+로그인 세션 설정 정보를 조회하는 API입니다.
 
 ##### 필요 권한
 `Organization.Setting.Iam.Get`
@@ -2549,13 +2571,13 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 |   multiSessionsLimit | Integer| Yes | 허용 멀티 세션 수  |
 |   sessionTimeoutMinutes | Integer| Yes | 	세션 타임아웃 |
 |   mobileSessionTimeoutMinutes | Integer| Yes | 	모바일 세션 타임아웃 |
-|   sessionType | String| Yes | fixed / idle. 기본값은 fixed  |
+|   sessionType | String| Yes | fixed/idle. 기본값은 fixed  |
 
 
 #### 조직 IAM 로그인 2차 인증에 대한 설정을 조회
 > GET "/v1/iam/organizations/{org-id}/settings/security-mfa"
 
-* 로그인 2차 인증에 대한 설정을 조회하는 API
+로그인 2차 인증에 대한 설정을 조회하는 API입니다.
 
 ##### 필요 권한
 `Organization.Setting.Iam.Get`
@@ -2609,12 +2631,12 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 |   header | [공통 Response](#response)| Yes   |
-|   result | Result| No |  응답 내용<br>설정한 적이 없으면 `null`이 반환됨 |
+|   result | Result| No |  응답 내용<br>설정한 적이 없으면 null이 반환됨 |
 
 ###### Result
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   range | Integer| No | 조직/서비스 여부<br>organization(공통설정), services(서비스별 설정)  |
+|   range | Integer| No | 조직/서비스 여부<br>organization(공통 설정), services(서비스별 설정)  |
 |   organizationMfaSetting | OrganizationMfaSetting| No | 조직 mfa 설정 정보<br>공통 설정 |
 |   serviceMfaSettings | ServiceMfaSettings| No | 서비스별 mfa 설정 정보  |
 
@@ -2623,7 +2645,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   type | String| No | mfa 타입<br>none(설정 안함), totp(Google otp), email(이메일) |
+|   type | String| No | mfa 타입<br>none(설정 안함), totp(Google OTP), email(이메일) |
 |   bypassByIp | BypassByIp| No | 예외 IP  |
 
 ###### ServiceMfaSettings
@@ -2632,21 +2654,21 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 |   serviceId | Sting| No | 서비스 ID  |
-|   type | String| No | mfa 타입<br>none(설정 안함), totp(Google otp), email(이메일) |
+|   type | String| No | mfa 타입<br>none(설정 안함), totp(Google OTP), email(이메일) |
 |   bypassByIp | BypassByIp| No | 서비스 타입. none, totp, email |
 
 ###### BypassByIp
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   enable | Boolean| No | 활성화 여부<br>true(사용중), false(사용 안함)  |
-|   ipList | List&lt;String>| No | 예외 IP 리스트 |
+|   enable | Boolean| No | 활성화 여부<br>true(사용 중), false(사용 안함)  |
+|   ipList | List&lt;String>| No | 예외 IP 목록 |
 
 
 #### 조직 IAM 로그인 실패 보안 설정을 조회
 > GET "/v1/iam/organizations/{org-id}/settings/security-login-fail"
 
-* 로그인 실패 보안 설정을 조회하는 API
+로그인 실패 보안 설정을 조회하는 API입니다.
 
 ##### 필요 권한
 `Organization.Setting.Iam.Get`
@@ -2683,14 +2705,14 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 | header | [공통 Response](#response)| Yes   |
-| result | Result | No | 로그인 실패 보안을 설정한 경우에만 반환되며, 설정하지 않으면 `null`이 반환됨 |
+| result | Result | No | 로그인 실패 보안을 설정한 경우에만 반환되며, 설정하지 않으면 null이 반환됨 |
 
 ###### Result
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   enable | Boolean| Yes | 활성화 여부<br>true(사용중), false(사용 안함)  |
-|   loginFailCount | LoginFailCount| No | Login 실패 보안 설정 |
+|   enable | Boolean| Yes | 활성화 여부<br>true(사용 중), false(사용 안함)  |
+|   loginFailCount | LoginFailCount| No | 로그인 실패 보안 설정 |
 
 
 ###### LoginFailCount
@@ -2703,8 +2725,9 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 #### 종량제에 등록된 상품 가격 조회
 > POST "/v1/billing/contracts/basic/products/prices/search"
-* 카운터에 설정된 단가를 조회하는 API
-* 각 언어별로 노출명, 금액 계산을 위한 종류를 알 수 있음
+
+카운터에 설정된 단가를 조회하는 API입니다.
+각 언어별로 노출명, 금액 계산을 위한 종류를 알 수 있습니다.
 
 
 ##### 필요 권한
@@ -2802,13 +2825,13 @@ NHN Cloud 회원이면 호출 가능한 API
 |   rangeTo | BigDecimal| Yes | 단가에 속하게 되는 사용량 범위 종료(포함)  |
 |   seq | Long| Yes | 일련번호  |
 |   slidingCalculationTypeCode | String| Yes | 슬라이딩 요금 계산 유형<br>NONE, SECTION_SUM, SECTION_SELECTED |
-|   useFixPriceYn | String| Yes | 고정금액 여부(Y: 고정금액, N:단가계산)<br>Y: 범위에 들어올 경우 price가 금액이 됨<br>N: 사용량 X 단가가 금액이 됨 |
+|   useFixPriceYn | String| Yes | 고정 금액  여부(Y: 고정 금액 , N: 단가 계산)<br>Y: 범위에 들어올 경우 price가 금액이 됨<br>N: (사용량 x 단가)가 금액이 됨 |
 
 
 #### 종량제에 등록된 상품 목록 조회
 > GET "/v1/billing/contracts/basic/products"
 
-* 청구서에 노출되는 메인 카테고리와 서브 카테고리 및 포함되는 카운터의 목록을 제공하는 API
+청구서에 노출되는 메인 카테고리와 서브 카테고리 및 포함되는 카운터의 목록을 제공하는 API입니다.
 
 ##### 필요 권한
 NHN Cloud 회원이면 호출 가능한 API
@@ -2868,7 +2891,7 @@ NHN Cloud 회원이면 호출 가능한 API
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 Response](#response)| Yes   |
 |   paging | PagingResponse| Yes  |
-|   products | List&lt;ProductMetadata>| Yes | 상품 메타 정보 리스트  |
+|   products | List&lt;ProductMetadata>| Yes | 상품 메타 정보 목록  |
 
 
 [PagingResponse](#pagingresponse)
@@ -2879,25 +2902,25 @@ NHN Cloud 회원이면 호출 가능한 API
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 |   budgetUsageTypeYn | String| No | 예산 사용량 타입 Yn  Y, N |
-|   calcUnitCode | String| Yes | 금액 계산시 사용할 단위(미터링 단위를 정산단위로 변환하여 금액 계산을 수행함), 명세서에 노출될 단위<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
+|   calcUnitCode | String| Yes | 금액 계산 시 사용할 단위(미터링 단위를 정산 단위로 변환하여 금액 계산을 수행함), 명세서에 노출할 단위<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
 |   categoryMain | String| Yes | 메인 카테고리  |
 |   categorySub | String| Yes | 서브 카테고리  |
 |   chargingTypeId | String| Yes | 과금 유형 ID  |
 |   convertUsageTypeCode | String| Yes | 사용량 변환 타입 코드  NONE, HOUR_AVERAGE, DAY_AVERAGE |
 |   counterName | String| Yes | 카운터  |
-|   counterTypeCode | String| Yes | 사용량의 합산에 대한 방법<br><ul><li>DELTA: 증가값(HOURLY_SUM)</li><li>GAUGE: 시간최대값의합(HOURLY_MAX 로 변경 예정)</li><li>HOURLY_LATEST: 1시간 동안 수집된 데이터 중 가장 나중에 수집된 미터링 데이터의 합</li><li>DAILY_MAX: 일최대값의합</li><li>MONTHLY_MAX: 월최대값</li><li>STATUS: 사용현황</li><ul> |
+|   counterTypeCode | String| Yes | 사용량의 합산에 대한 방법<br><ul><li>DELTA: 증가값(HOURLY_SUM)</li><li>GAUGE: 시간 최대값의 합(HOURLY_MAX로 변경 예정)</li><li>HOURLY_LATEST: 1시간 동안 수집된 데이터 중 가장 나중에 수집된 미터링 데이터의 합</li><li>DAILY_MAX: 일 최대값의 합</li><li>MONTHLY_MAX: 월 최대값</li><li>STATUS: 사용 현황</li><ul> |
 |   description | String| No | 카운터 설명  |
-|   displayOrder | Integer| Yes | 노출순서  |
-|   marketPlaceMandatoryUsePeriod | Integer| No | 마켓플레이스 필수사용기간  |
+|   displayOrder | Integer| Yes | 노출 순서  |
+|   marketPlaceMandatoryUsePeriod | Integer| No | 마켓플레이스 필수 사용 기간  |
 |   meterUnitCode | String| Yes | 서비스에서 미터링 저장 시 사용량 단위<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
 |   minUsage | BigDecimal| Yes | 최소 사용량  |
 |   parentCounterName | String| Yes | 부모 카운터 이름  |
 |   productId | String| Yes | 상품 아이디  |
 |   productMetadataStatusCode | String| Yes | 카운터 상태 코드  STABLE, CLOSED |
-|   productUiId | String| Yes | 홈페이지 카테고리/홈페이지 서비스 식별ID  |
+|   productUiId | String| Yes | 홈페이지 카테고리/홈페이지 서비스 식별 ID  |
 |   regionTypeCode | String| Yes | 카운터네임이 소속된 리전 코드<br><ul><li>GLOBAL: Global 상품에 속한 카운터네임</li><li>NONE: GLOBAL과 동일한 의미</li><li>KR1: KR1 리전에 속한 카운터네임</li><li>KR2: KR2 리전에 속한 카운터네임</li><li>...: 해당 리전에 속한 카운터네임</li><ul>  |
 |   unit | Long| Yes | 정산 단위  |
-|   unitName | String| Yes | 청구서에 노출될 이름  |
+|   unitName | String| Yes | 청구서에 노출할 이름  |
 |   usageAggregationUnitCode | String| No | 사용량 집계 단위<br>RESOURCE_ID, COUNTER_NAME |
 
 
@@ -2905,7 +2928,7 @@ NHN Cloud 회원이면 호출 가능한 API
 #### 프로젝트 AppKey 조회
 > GET "/v1/authentications/projects/{project-id}/project-appkeys"
 
-* 프로젝트에서 사용 중인 프로젝트 AppKey 목록을 조회하는 API
+프로젝트에서 사용 중인 프로젝트 AppKey 목록을 조회하는 API입니다.
 
 ##### 필요 권한
 `Project.ProjectAppKey.List`
@@ -2944,14 +2967,14 @@ NHN Cloud 회원이면 호출 가능한 API
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
 |   header | [공통 응답](#response)| Yes |
-|   authenticationList | List&lt;ProjectAppKeyResponse>| No | 프로젝트 AppKey 리스트 |
+|   authenticationList | List&lt;ProjectAppKeyResponse>| No | 프로젝트 AppKey 목록 |
 
 ###### ProjectAppKeyResponse
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 |   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   appKey | String| No | 콘솔에서 보이는 프로젝트 appkey  |
+|   appKey | String| No | 콘솔에 노출되는 프로젝트 AppKey  |
 |   authStatus | String| No | 인증 상태 코드(STABLE, STOP, BLOCKED) |
 |   projectId | String| No | 프로젝트 ID |
 |   lastUsedDatetime | Date| No | 마지막 사용 일시  |
@@ -2963,7 +2986,7 @@ NHN Cloud 회원이면 호출 가능한 API
 #### User Access Key ID 목록 조회
 > GET "/v1/authentications/user-access-keys"
 
-* 멤버의 User Access Key ID 목록을 조회하는 API
+멤버의 User Access Key ID 목록을 조회하는 API입니다.
 
 ##### 필요 권한
 NHN Cloud 회원이면 호출 가능한 API
@@ -3000,7 +3023,7 @@ NHN Cloud 회원이면 호출 가능한 API
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 Response](#response)| Yes   |
-|   authentications | List&lt;UserAccessKeyResponse>| No | 인증 정보 리스트  |
+|   authentications | List&lt;UserAccessKeyResponse>| No | 인증 정보 목록  |
 
 ###### UserAccessKeyResponse
 
@@ -3008,20 +3031,21 @@ NHN Cloud 회원이면 호출 가능한 API
 |------------ | ------------- | ------------- | ------------ |
 |   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
 |   userAccessKeyID | String| No | User Access Key ID  |
-|   secretAccessKey | String| No | 비밀키(마스킹 처리됨)  |
+|   secretAccessKey | String| No | 비밀 키(마스킹 처리됨)  |
 |   authStatus | String| No | 인증 상태 코드(STABLE, STOP, BLOCKED) |
 |   uuid | String| No | 사용자 UUID |
 |   lastUsedDatetime | Date| No | 마지막 사용 일시  |
 |   modDatetime | Date| No | 삭제 일시  |
 |   reIssueDatetime | Date| No | 재생성 일시  |
 |   regDatetime | Date| No | 생성 일시  |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 주기(초단위)  |
+|   tokenExpiryPeriod | Long| No | 토큰 만료 주기(초 단위)  |
 
 
 
 #### 프로젝트 AppKey 등록
 > POST "/v1/authentications/projects/{project-id}/project-appkeys"
-* 프로젝트에서 사용할 AppKey를 생성하는 API
+
+프로젝트에서 사용할 AppKey를 생성하는 API입니다.
 
 ##### 필요 권한
 `Project.ProjectAppKey.Create`
@@ -3070,12 +3094,13 @@ NHN Cloud 회원이면 호출 가능한 API
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
 |   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   appKey | String| No | 프로젝트 appKey |
+|   appKey | String| No | 프로젝트 AppKey |
 
 
 #### User Access Key ID 등록
 > POST "/v1/authentications/user-access-keys"
-* 멤버의 User Access Key ID 목록을 조회하는 API
+
+멤버의 User Access Key ID를 등록하는 API입니다.
 
 ##### 필요 권한
 NHN Cloud 회원이면 호출 가능한 API
@@ -3091,7 +3116,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 기간<br>초단위이며, 기본값은 하루 |
+|   tokenExpiryPeriod | Long| No | 토큰 만료 기간<br>초 단위이며, 기본값은 하루 |
 
 
 ##### 응답 본문
@@ -3127,13 +3152,14 @@ NHN Cloud 회원이면 호출 가능한 API
 |   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
 |   userAccessKeyID | String| No | User Access Key ID  |
 |   secretAccessKey | String| No | 비밀키 |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 기간(초단위) |
+|   tokenExpiryPeriod | Long| No | 토큰 만료 기간(초 단위) |
 
 
 
 #### 프로젝트 AppKey 삭제
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
-* 프로젝트 AppKey를 삭제하는 API
+
+프로젝트 AppKey를 삭제하는 API입니다.
 
 ##### 필요 권한
 `Project.ProjectAppKey.Delete`
@@ -3167,9 +3193,10 @@ NHN Cloud 회원이면 호출 가능한 API
 
 
 
-#### User Access Key ID 비밀키 재발급
+#### User Access Key ID 비밀 키 재발급
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue"
-* User Access Key ID의 비밀키를 재발급하는 API
+
+User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 
 ### 필요 권한
@@ -3215,14 +3242,15 @@ NHN Cloud 회원이면 호출 가능한 API
 
 #### User Access Key ID 상태 수정
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}"
-* 멤버의 User Access Key ID 상태를 변경하는 API
+
+멤버의 User Access Key ID 상태를 변경하는 API입니다.
 
 ##### 요청 파라미터
 
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | user-access-key-id | String| Yes | User Acess Key | 
+|  Path | user-access-key-id | String| Yes | User Acess Key ID | 
 | Request Body | request | UpdateUserAccessKeyStatusRequest| Yes | 요청 |
 
 
@@ -3254,10 +3282,11 @@ NHN Cloud 회원이면 호출 가능한 API
 
 #### User Access Key ID 삭제
 > DELETE "/v1/authentications/user-access-keys/{user-access-key-id}"
-* User Access Key ID를 삭제하는 API
+
+User Access Key ID를 삭제하는 API입니다.
 
 
-### 필요 권한
+##### 필요 권한
 `Project.ProjectAppKey.Delete`
 
 ##### 요청 파라미터
@@ -3300,9 +3329,9 @@ NHN Cloud 회원이면 호출 가능한 API
 |   header | [공통 응답](#response)| Yes |
 
 
-### 에러 코드
+### 오류 코드
 
-| resultCode | 설명                                                                                  | 조치                                                      |
+| 결과 코드 | 설명                                                                                  | 조치                                                      |
 | ---------- |-------------------------------------------------------------------------------------|---------------------------------------------------------|
 | 80007 | 만료되었거나 존재하지 않는 토큰을 사용해서 호출한 경우 발생하는 에러                                          | 새로운 토큰을 발급하여 사용                                         |
 | -6 | 권한 없는 호출자가 호출한 경우에 발생하는 에러                                                      | 호출자에게 적절한 권한을 부여                                        |
@@ -3310,7 +3339,7 @@ NHN Cloud 회원이면 호출 가능한 API
 | 404 | 없는 API 호출시 발생                                                                       | 호출하는 API의 httpmethod,uri를 확인                            |
 | 400<br>501<br>502<br>503<br>504<br>505 | 요청 파라미터가 적절하지 않을 때 발생하는 에러                                                          | 요청 파라미터의 필수값 및 설정 가능한 값 등을 확인                           |
 | 500 | 비정상 시스템 에러                                                                          | 담당자에게 문의                                            |
-| 1000 | 파라미터가 잘못될 경우 발생하는 에러 <br> 조직 IAM 멤버 API - `IAM 멤버 패스워드 변경 이메일 전송` 요청 값 returnUrl 이 허가된 도메인이 아닐 때 발생(허가된 도메인: toast.com, dooray.com, nhncloud.com) | 요청 파라미터 확인                                              |
+| 1000 | 파라미터가 잘못될 경우 발생하는 에러 <br> 조직 IAM 멤버 API - `IAM 멤버 비밀번호 변경 이메일 전송` 요청 값 returnUrl 이 허가된 도메인이 아닐 때 발생(허가된 도메인: toast.com, dooray.com, nhncloud.com) | 요청 파라미터 확인                                              |
 | 1201 | 서버 내부적인 API 요청이 실패하여 발생하는 에러 |  에러 메시지에 포함된 에러 메시지와 코드를 바탕으로 해결<br>포함된 에러 메시지와 코드만으로는 해결이 어려울 경우 담당자에게 문의                      |
 | 10005<br>70008<br>1104 | 요청 파라미터가 적절하지 않을 때 발생하는 에러 | 요청 파라미터의 필수값 및 설정 가능한 값 등을 확인 |
 | 10009 | 조직 또는 프로젝트에 존재하지 않은 역할을 부여할 때 발생하는 에러                                               | 멤버에게 존재하는 역할을 부여하도록 변경                                  |
