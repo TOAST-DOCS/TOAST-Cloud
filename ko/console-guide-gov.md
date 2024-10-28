@@ -489,15 +489,15 @@ Email, SMS 알림은 조직/프로젝트 역할 기반의 수신 대상 설정 �
                     - Authorization Header 를 확인 하여 수신된 요청이 중간 공격자에 의해 변조되는 것을 방지할 수 있습니다.
         - HTTP Mehod 는 POST이고 Request Body는 아래의 형식으로 제공되며 body 필드는 서비스마다 달라집니다.
 
-        ```json
-          {
-           "id": "String",
-           "source": "String",
-           "specversion": "String",
-           "type": "String",
-           "body" : "Object"
-          }
-        ```
+```json
+   {
+   "id": "String",
+   "source": "String",
+   "specversion": "String",
+   "type": "String",
+   "body" : "Object"
+   }
+```
    
     - 커스텀 웹훅
         - 커스텀 웹훅은 지원하는 서비스 알림시에만 발송 할 수 있습니다.
