@@ -27,19 +27,21 @@
 > `POST /oauth2/token/create`
 * 요청
 
-    | 구분 | 이름 | 타입 | 필수 | 값                                     | 설명                                                                   |
-    |---------------|------------- | ------------- | ------------- |-------------------------------------------|------------------------------------------------------------------------| 
-    | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
-    | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 || 
-    | Request Param |  grant_type | String | Yes | client_credentials                        |                                                                        |
+| 구분 | 이름 | 타입 | 필수 | 값                                     | 설명                                                                   |
+|---------------|------------- | ------------- | ------------- |-------------------------------------------|--------------------------| 
+| Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
+| Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 | 
+| Request Param |  grant_type | String | Yes | client_credentials                        |                                                                    |
 
 * 응답
 
-  | Name | Type        | Required | Description |
-      |------------ |-------------| ------------- | ------------ |
-  | Request Param |  grant_type | String | Yes | client_credentials                        |                                                     |   access_token | String  | Yes | 발급된 Bearer 타입의 인증 토큰  |                   |
-  |   token_type | String  | Yes | 토큰의 타입  |
-  |   expires_in | String  | Yes | 만료까지 남은 초 단위 시간을 의미하며 기본은 86,400초(하루)임  |
+| Name         | Type        | Required | Description                            |
+|--------------|-------------| ------------- |----------------------------------------|
+|  grant_type  | String | Yes | client_credentials                     |   
+| access_token | String  | Yes | 발급된 Bearer 타입의 인증 토큰                   | 
+| token_type   | String  | Yes | 토큰의 타입                                 |
+| expires_in   | String  | Yes | 만료까지 남은 초 단위 시간을 의미하며 기본은 86,400초(하루)임 |
+
 ```json
 {
     "access_token":"luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI",
