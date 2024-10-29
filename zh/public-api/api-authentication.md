@@ -35,7 +35,7 @@
 
 * 응답
 
-| Name         | Type        | Required | Description                            |
+| 이름         | 타입        | 필수 | 설명                            |
 |--------------|-------------| ------------- |----------------------------------------|
 |  grant_type  | String | Yes | client_credentials                     |   
 | access_token | String  | Yes | 발급된 Bearer 타입의 인증 토큰                   | 
@@ -94,14 +94,16 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
 * Spring Cloud의 OpenFeign을 사용하여 자동으로 토큰을 발급 및 갱신하는 경우
   > 이 방법은 Spring Boot 3.0 이상 버전을 사용하는 경우에만 가능합니다. API를 통해 강제로 만료시킨 경우를 대비하기 위해서는 토큰을 다시 발급하는 부분을 직접 구현해야 합니다.
   > * API 를 통해 강제로 만료시킨 경우를 대비하기 위해선 토큰을 다시 발급하는 부분을 **직접 구현**해야 합니다.
-1. 의존성 추가
+
+* 1: 의존성 추가
 ```groovy
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
   implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 }
 ```
-2. Feign 클라이언트 정의
+
+* 2: Feign 클라이언트 정의
 ```java
 @FeignClient(name = "publicApiClient", url = "https://core.api.nhncloudservice.com")
 public interface ExampleApiClient {
@@ -109,7 +111,8 @@ public interface ExampleApiClient {
   String getOrganizations();
 }
 ```
-3. 보안 설정
+
+* 3: 보안 설정
 > 아래는 예시이며, 실제 사용하시는 보안 설정에 맞게 변경해야 합니다.
 ```java
 @Configuration
@@ -123,7 +126,8 @@ public class SecurityConfig {
   }
 }
 ```
-4. oauth2 클라이언트 및 feign 설정
+
+* 4: oauth2 클라이언트 및 feign 설정
 ```java
 @Configuration
 public class Oauth2Config {

@@ -35,7 +35,7 @@
 
 * 응답
 
-| Name         | Type        | Required | Description                            |
+| 이름         | 타입        | 필수 | 설명                            |
 |--------------|-------------| ------------- |----------------------------------------|
 |  grant_type  | String | Yes | client_credentials                     |   
 | access_token | String  | Yes | 발급된 Bearer 타입의 인증 토큰                   | 
@@ -44,9 +44,9 @@
 
 ```json
 {
-  "access_token":"luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI",
-  "token_type":"Bearer",
-  "expires_in":86400
+    "access_token":"luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI",
+    "token_type":"Bearer",
+    "expires_in":86400
 }
 ```
 ##### 케이스별 요청 예시
@@ -94,14 +94,16 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
 * Spring Cloud의 OpenFeign을 사용하여 자동으로 토큰을 발급 및 갱신하는 경우
   > 이 방법은 Spring Boot 3.0 이상 버전을 사용하는 경우에만 가능합니다. API를 통해 강제로 만료시킨 경우를 대비하기 위해서는 토큰을 다시 발급하는 부분을 직접 구현해야 합니다.
   > * API 를 통해 강제로 만료시킨 경우를 대비하기 위해선 토큰을 다시 발급하는 부분을 **직접 구현**해야 합니다.
-1. 의존성 추가
+
+* 1: 의존성 추가
 ```groovy
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
   implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 }
 ```
-2. Feign 클라이언트 정의
+
+* 2: Feign 클라이언트 정의
 ```java
 @FeignClient(name = "publicApiClient", url = "https://core.api.nhncloudservice.com")
 public interface ExampleApiClient {
@@ -109,7 +111,8 @@ public interface ExampleApiClient {
   String getOrganizations();
 }
 ```
-3. 보안 설정
+
+* 3: 보안 설정
 > 아래는 예시이며, 실제 사용하시는 보안 설정에 맞게 변경해야 합니다.
 ```java
 @Configuration
@@ -123,37 +126,38 @@ public class SecurityConfig {
   }
 }
 ```
-4. oauth2 클라이언트 및 feign 설정
+
+* 4: oauth2 클라이언트 및 feign 설정
 ```java
 @Configuration
 public class Oauth2Config {
 
-  @Bean
-  public ClientRegistrationRepository clientRegistrationRepository() {
-    ClientRegistration clientRegistration = ClientRegistration.withRegistrationId("TokenClient")
-                                                                 .clientId("UserAccessKeyID")
-                                                                 .clientSecret("SecretAccessKey")
-                                                                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                                                                 .tokenUri("https://oauth.api.gov-nhncloudservice.com/oauth2/token/create")
-                                                                 .build();
-  
-    return new InMemoryClientRegistrationRepository(clientRegistration);
-  }
-  
-  @Bean
-  public OAuth2AuthorizedClientManager authorizedClientManager(ClientRegistrationRepository clientRegistrationRepository) {
-    OAuth2AuthorizedClientService authorizedClientService = new InMemoryOAuth2AuthorizedClientService(clientRegistrationRepository);
-    return new AuthorizedClientServiceOAuth2AuthorizedClientManager(clientRegistrationRepository, authorizedClientService);
-  }
-  
-  /**
-  * Feign 요청 시 자동으로 발급된 토큰을 자동으로 요청 헤더에 담아서 보내기 위한 인터셉터
-  */
-  @Bean
-  public RequestInterceptor oAuth2AccessTokenInterceptor(OAuth2AuthorizedClientManager authorizedClientManager) {
-    // Public API 요청 시 발급된 토큰을 x-nhn-authorization 헤더에 담아서 요청해야 합니다.
-    return new OAuth2AccessTokenInterceptor("Bearer", "x-nhn-authorization", "TokenClient", authorizedClientManager);
-  }
+	@Bean
+	public ClientRegistrationRepository clientRegistrationRepository() {
+		ClientRegistration clientRegistration = ClientRegistration.withRegistrationId("TokenClient")
+																  .clientId("UserAccessKeyID")
+																  .clientSecret("SecretAccessKey")
+																  .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+																  .tokenUri("https://oauth.api.gov-nhncloudservice.com/oauth2/token/create")
+																  .build();
+
+		return new InMemoryClientRegistrationRepository(clientRegistration);
+	}
+
+	@Bean
+	public OAuth2AuthorizedClientManager authorizedClientManager(ClientRegistrationRepository clientRegistrationRepository) {
+		OAuth2AuthorizedClientService authorizedClientService = new InMemoryOAuth2AuthorizedClientService(clientRegistrationRepository);
+		return new AuthorizedClientServiceOAuth2AuthorizedClientManager(clientRegistrationRepository, authorizedClientService);
+	}
+
+	/**
+	 * Feign 요청 시 자동으로 발급된 토큰을 자동으로 요청 헤더에 담아서 보내기 위한 인터셉터
+	 */
+	@Bean
+	public RequestInterceptor oAuth2AccessTokenInterceptor(OAuth2AuthorizedClientManager authorizedClientManager) {
+		// Public API 요청 시 발급된 토큰을 x-nhn-authorization 헤더에 담아서 요청해야 합니다.
+		return new OAuth2AccessTokenInterceptor("Bearer", "x-nhn-authorization", "TokenClient", authorizedClientManager);
+	}
 }
 ```
 #### 토큰 만료 요청
