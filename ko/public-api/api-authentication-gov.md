@@ -222,4 +222,4 @@
 * 토큰 발급 및 토큰 만료 요청 API 호출 시 반환될 수 있는 오류 코드
   * [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)와 동일한 오류 코드를 반환합니다.
 * 토큰 사용 시 반환될 수 있는 오류 코드
-  * 오류 코드는 [프레임워크 API](framework-api.md) 가이드에서 명시하고 있습니다.
+  * 오류 코드는 [프레임워크 API](framework-api-gov.md) 가이드에서 명시하고 있습니다.
