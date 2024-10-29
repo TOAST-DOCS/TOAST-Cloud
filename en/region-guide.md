@@ -109,7 +109,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | NHN bastion | Regional | O | O |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
-| Notification | Push | Global |  |  |  |  |
+| Notification | Notification Hub | Global |  |  |  |  |
+|  | Push | Global |  |  |  |  |
 |  | SMS | Global |  |  |  |  |
 |  | RCS Bizmessage | Global |  |  |  |  |
 |  | Email | Global |  |  |  |  |
@@ -130,6 +131,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | ShortURL | Global |  |  |  |  |
 |  | JEUS Instance | Regional | O | O | O | O |
 |  | WebtoB Instance | Regional | O | O | O | O |
+|  | Cloud Scheduler | Global |  |  |  |  |
 | Mobile Service | IAP | Global |  |  |  |  |
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |

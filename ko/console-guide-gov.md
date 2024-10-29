@@ -287,13 +287,13 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 역할 | 설명 |
 | --- | --- |
-| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리 <br> 프로젝트 관리 등 조직 전체에 대한 Create(생성),Read(읽기), Update(갱신), Delete(삭제) |
+| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리 <br> 프로젝트 관리 등 조직 전체에 대한 Create(생성),Read(읽기), Update(갱신), Delete(삭제) |
 | MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기) |
 | BILLING_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기) |
-| BUDGET_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| BUDGET_ADMIN | 예산 관리에 대한 Create(생성, Read(읽기), Update(갱신), Delete(삭제) |
 | BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
-| LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기) <br> 리소스 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | ORG_DASHBOARD_VIEWER | 조직 대시보드 Read(읽기) |
 | NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 
@@ -301,9 +301,9 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
-| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| CloudTrail | ADMIN | CloudTrail 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
-| CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Resource Watcher | ADMIN | Resource Watcher 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Resource Watcher | VIEWER | Resource Watcher 서비스 Read(읽기) |
 
@@ -324,21 +324,21 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 역할 | 설명 |
 | --- | --- |
-| ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| MARKETPLACE_ADMIN | 마켓플레이스 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| ADMIN | 프로젝트 전체에 대한 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| MARKETPLACE_ADMIN | 마켓플레이스 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | MARKETPLACE_VIEWER | 마켓플레이스 서비스 Read(읽기) |
-| MEMBER | 프로젝트 내 모든 서비스의 리소스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)   |
+| MEMBER | 프로젝트 내 모든 서비스의 리소스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)   |
 | BILLING VIEWER | 이용 현황 Read(읽기)  |
-| PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제)  |
+| PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br>프로젝트 서비스 활성화(Enable), 비활성화(Disable)<br>프로젝트 Delete(삭제)  |
 | PROJECT MANAGEMENT VIEWER | 프로젝트 기본 정보 Read(읽기)<br>프로젝트 통합 Appkey Read(읽기)  |
-| PROJECT MEMBER ADMIN | 프로젝트 멤버 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 역할 그룹 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| PROJECT MEMBER ADMIN | 프로젝트 멤버 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br>프로젝트 역할 그룹 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | PROJECT MEMBER VIEWER | 프로젝트 멤버 Read(읽기)<br>프로젝트 역할 그룹 Read(읽기)  |
-| PROJECT NOTICE GROUP MANAGEMENT ADMIN | 프로젝트 알림 수신 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
+| PROJECT NOTICE GROUP MANAGEMENT ADMIN | 프로젝트 알림 수신 그룹 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | 프로젝트 알림 수신 그룹 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 
-| PROJECT NOTICE MANAGEMENT ADMIN | 프로젝트 알림 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
+| PROJECT NOTICE MANAGEMENT ADMIN | 프로젝트 알림 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
 | PROJECT NOTICE MANAGEMENT VIEWER | 프로젝트 알림 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
-| PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
-| PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
+| PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
+| PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT VIEWER| 프로젝트 쿼터 관리 Read(읽기)|
 | PROJECT DASHBOARD VIEWER | 프로젝트 대시보드 Read(읽기) |
 
@@ -348,7 +348,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| Infrastructure | ADMIN | Infrastructure 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Infrastructure | MEMBER | 네트워크 서비스(Floating IP 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Routing ADMIN | 네트워크 서비스(Floating IP, Routing Table 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Security Group ADMIN | 네트워크 서비스(Floating IP, Security Groups 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
@@ -358,39 +358,39 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Infrastructure | Service Gateway ADMIN | 네트워크 서비스(Floating IP, Service Gateway 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Private DNS ADMIN | 네트워크 서비스(Floating IP, Private DNS 제외) 및 NKS, NCS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | NCS ADMIN | 네트워크 서비스(Floating IP 제외) 및 NKS Read(읽기). 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) | 
 | NHN Container Registry(NCR) | ADMIN | NHN Container Registry(NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry(NCR) | VIEWER | NHN Container Registry(NCR) 서비스 Read(읽기) |
 | NHN Container Registry (NCR) | IMAGE UPLOADER | NHN Container Registry (NCR) 서비스 Read(읽기), 이미지 업로드, 아티팩트 Create(생성), 태그 Create(생성) |
-| DNS Plus | ADMIN | DNS Plus 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| DNS Plus | ADMIN | DNS Plus 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | DNS Plus | VIEWER | DNS Plus 서비스 Read(읽기) |
-| Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Backup | ADMIN | Backup 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| Object Storage | ADMIN | Object Storage 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
+| Backup | ADMIN | Backup 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
+| RDS for MySQL | ADMIN | RDS for MySQL 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | RDS for MySQL | VIEWER | RDS for MySQL 서비스 Read(읽기) |
-| RDS for MariaDB | ADMIN | RDS for MariaDB 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| RDS for MariaDB | ADMIN | RDS for MariaDB 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | RDS for MariaDB | VIEWER | RDS for MariaDB 서비스 Read(읽기) |
-| EasyCache | ADMIN | EasyCache 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| EasyCache | ADMIN | EasyCache 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | EasyCache | VIEWER | EasyCache 서비스 복제 그룹 메뉴 Read(읽기), 모니터링 메뉴 Read(읽기) |
-| Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Vaccine | ADMIN | Vaccine 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Secure Key Manager | ADMIN | Secure Key Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager 서비스 승인 요청에 대한 승인/거부/조회 및 승인 요청 생성/조회  |
-| Secure Key Manager | APPROVAL MEMBER | Secure Key Manager 서비스 승인 요청 생성/조회  |
+| Cloud Monitoring | ADMIN | Cloud Monitoring 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Cloud Monitoring | VIEWER | Cloud Monitoring Read(읽기) |
+| Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
+| WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
+| Vaccine | ADMIN | Vaccine 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
+| Secure Key Manager | ADMIN | Secure Key Manager 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager 서비스 승인 요청에 대한 승인, 거부, 조회 및 승인 요청 생성, 조회  |
+| Secure Key Manager | APPROVAL MEMBER | Secure Key Manager 서비스 승인 요청 생성, 조회  |
 | Secure Key Manager | VIEWER | Secure Key Manager 서비스 Read(읽기) |
 | Security Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | Network Firewall | ADMIN | Network Firewall 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제))  |
 | Network Firewall | VIEWER | Network Firewall 서비스 Read(읽기)  |
-| NHN Bastion | ADMIN | NHN Bastion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) | 
-| NHN Bastion | VIEWER | NHN Bastion 서비스 Read(읽기) | 
-| NHN Bastion | USER | NHN Bastion 서비스 터미널 이용 | 
-| CDN | ADMIN | CDN 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| API Gateway | ADMIN | API Gateway 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
-| Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| CDN | ADMIN | CDN 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
+| API Gateway | ADMIN | API Gateway 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
+| Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | Pipeline | ADMIN | Pipeline 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Deploy | ADMIN | Deploy 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Deploy | ADMIN | Deploy 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | Deploy | VIEWER | Deploy 서비스 Read(읽기) 권한 |
-| Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 
 #### 프로젝트 서비스 활성화 역할
 프로젝트 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
@@ -439,3 +439,103 @@ NHN Cloud (공공기관용)서비스 이용 요금을 확인하고, 결제할 �
     - 수신 대상을 알림 수신 그룹을 추가할 경우 해당 그룹에 설정된 알림 방법과 각 알림에서 지원하는 알림 방법이 일치해야 해당 방법으로 알림을 수신할 수 있습니다.
 
 4. **저장** 버튼을 클릭하여 설정 내용을 저장합니다.
+
+
+## 알림 수신 그룹 관리
+
+알림 수신 그룹 관리는 NHN Cloud에서 발송하는 알림에 대한 수신 그룹을 설정 하는 기능입니다.
+
+Email, SMS 알림은 조직/프로젝트 역할 기반의 수신 대상 설정 및 멤버에 대한 수신 대상 설정을 통해 지원합니다.
+웹훅 알림은 기본 웹훅과 커스텀 웹훅을 제공합니다.
+해당하는 알림 수신 그룹은 **서비스**에서 알림 설정시 사용할 수 있습니다.
+
+### 알림 수신 그룹 생성 방법
+
+1. **알림 수신 그룹**을 생성하려면 조직 또는 프로젝트 메뉴에 **알림 수신 그룹 관리** 버튼을 클릭합니다.
+2. **+ 알림 수신 그룹 추가** 버튼을 클릭합니다.
+3. **기본 정보** 란에 알림 수신 그룹명, 설명을 입력합니다.
+    - **알림 수신 그룹명**은 한글, 영문자, 숫자, 특수 문자로 최대 40자까지 입력할 수 있습니다.
+    - **설명**은 알림 수신 그룹명을 구분하기 위해 문자 제한 없이 최대 100자까지 입력할 수 있습니다.
+
+4. **수신 역할 설정**
+    - 조직 > 수신 역할 설정
+        * 조직/프로젝트 역할, 프로젝트 역할 그룹, 서비스별 역할에 대한 Email, SMS 알림 설정을 지원합니다.
+    * 프로젝트 > 수신 역할 설정
+        * 프로젝트 역할, 프로젝트 역할 그룹, 서비스별 역할에 대해 Email, SMS 알림 설정을 지원합니다.
+
+5. **수신 대상 직접 설정**
+    - 알림 수신 그룹 추가에 수신 대상을 직접 설정할 수 있습니다.
+    - 멤버 별로 Email, SMS 알림 설정을 지원합니다.
+
+6. **웹훅 설정**
+    - 알림 발송 시 사용자가 원하는 웹훅으로 설정할 수 있습니다.
+    - 유형별로 기본 웹훅과 커스텀 웹훅을 제공합니다.  (5개까지 지원)
+
+### 웹훅 설정
+1. 콘솔 조직, 프로젝트 상단 탭에서 **[알림 수신 그룹 관리]** 탭을 선택합니다.
+2. 하단 **웹훅 설정** 메뉴의 **+웹훅 추가** 버튼을 선택합니다.
+3. **웹훅 추가** 팝업에서는 유형별로 기본 웹훅과 커스텀 웹훅을 제공합니다.
+    - 기본 웹훅
+        - 기본 웹훅은 지원하는 서비스 알림시에만 발송 할 수 있습니다.
+        - 웹훅 이름
+            - 설정할 기본 웹훅의 이름을 문자 제한 없이 최대 40자 이내로 입력할 수 있습니다.
+            - 같은 알림 수신 그룹 내 웹훅 이름은 중복될 수 없습니다.
+        - 수신 대상
+            - 웹훅을 수신할 URL을 입력할 수 있습니다.
+        - 비밀 키
+            - 비밀 키는 URI와 id, source, type, time 을 SHA256 해시 알고리즘으로 암호화할 비밀 키입니다.
+                - 비밀 키가 설정되어 있는 경우에만 기본 웹훅 Header에 Authorization 을 포함하여 전송합니다.
+                - 예시 : Authorization : HMAC-SHA256 Signature={암호화한 문자}"
+                    - Authorization Header 를 확인 하여 수신된 요청이 중간 공격자에 의해 변조되는 것을 방지할 수 있습니다.
+        - HTTP Mehod 는 POST이고 Request Body는 아래의 형식으로 제공되며 body 필드는 서비스마다 달라집니다.
+
+```json
+   {
+   "id": "String",
+   "source": "String",
+   "specversion": "String",
+   "type": "String",
+   "body" : "Object"
+   }
+```
+
+- 커스텀 웹훅
+    - 커스텀 웹훅은 지원하는 서비스 알림시에만 발송 할 수 있습니다.
+    - 웹훅 이름
+        - 설정할 커스텀 웹훅의 이름을 문자 제한 없이 최대 40자 이내로 입력할 수 있습니다.
+        * 같은 알림 수신 그룹 내 웹훅 이름은 중복될 수 없습니다.
+    * 발송 대상
+        * 웹훅을 발송할 대상(커스텀 대시보드 또는 서비스)을 선택할 수 있습니다.
+        * 커스텀 웹훅을 제공하는 메뉴 또는 서비스만 선택할 수 있습니다.
+    * 수신 대상
+        * 웹훅을 수신할 URL과 HTTP Method를 입력할 수 있습니다.
+
+      | 제공 대상 | 제공 범위 | 
+      | -- | -- | 
+      | HTTP Method | POST <br> PUT | 
+      | 전송 프로토콜 | HTTP<br> HTTPS | 
+
+
+  - 요청 데이터
+      - 요청 데이터에는 발송 대상에서 제공하는 파라미터를 입력할 수 있습니다.
+          - Ctrl 키 + 스페이스 바를 눌러 해당 발송 대상이 지원하는 파라미터를 확인할 수 있습니다.
+          - 우측 하단 미리보기를 통해 제공되는 Value를 확인할 수 있습니다.
+              - \"alertId\": \"${alertId}\", <br> \"orgName\" : \"${orgName}\"
+
+  - 헤더
+      - 수신 대상에 전달할 헤더를 입력할 수 있습니다.
+      - 수신 대상에 전달할 Content-type 헤더는 application/json을 지원하며 수정할 수 없습니다.
+
+    | 헤더 항목 | 헤더 값 | 
+    | -- | -- | 
+    | Custom-Header1 | Value1 | 
+    | Custom-Header2 | Value2 | 
+    
+  - 이름, 발송 대상, 수신 대상을 입력한 뒤 **확인** 버튼을 클릭해 웹훅을 생성합니다.
+
+4. 추가한 웹훅은 웹훅 설정 목록에서 확인할 수 있습니다.
+    * **보기** 버튼을 클릭해 웹훅 상세 정보를 확인할 수 있습니다.
+    * 연필 아이콘을 클릭해 웹훅 정보를 수정할 수 있습니다.
+    * 휴지통 아이콘을 클릭해 웹훅을 삭제할 수 있습니다.
+
+5. 생성된 웹훅은 웹훅 발송을 제공하는 서비스에 **알림 수신 그룹**을 추가해 사용할 수 있습니다.

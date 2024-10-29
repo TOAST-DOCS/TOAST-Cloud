@@ -108,7 +108,8 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | NHN Bastion | リージョン | O | O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image Manager | リージョン | O |  |  |  |
-| Notification | Push | グローバル |  |  |  |  |
+| Notification | Notification Hub | グローバル |  |  |  |  |
+|  | Push | グローバル |  |  |  |  |
 |  | SMS | グローバル |  |  |  |  |
 |  | RCS Bizmessage | グローバル |  |  |  |  |
 |  | Email | グローバル |  |  |  |  |
@@ -129,6 +130,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Short URL | グローバル |  |  |  |  |
 |  | JEUS Instance | リージョン | O | O | O | O |
 |  | WebtoB Instance | リージョン | O | O | O | O |
+|  | Cloud Scheduler | グローバル |  |  |  |  |
 | Mobile Service | IAP | グローバル |  |  |  |  |
 | Search | Cloud Search | リージョン | O |  |  |  |
 |  | Autocomplete | リージョン | O |  |  |  |

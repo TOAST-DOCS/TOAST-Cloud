@@ -28,6 +28,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Image | 리전 | O | O | 
 |  | Image Builder  | 리전 | O | O |
 |  | Auto Scale | 리전 | O | O | 
+|  | Virtual Desktop | 리전 | O | O | 
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |
 |  | NHN Container Registry (NCR) | 리전 | O | O |
 |  | NHN Container Service(NCS)  | 리전 | O |  |
@@ -39,14 +40,14 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Network Interface | 리전 | O | O | 
 |  | 일반 Load Balancer | 리전 | O | O | 
 |  | 전용 Load Balancer | 리전 | O | O |
-|  | Transit Hub  | 리전 | O | O |
+|  | Transit Hub  | 리전 | O |  |
 |  | IPSec VPN | 리전 | O |  |
 |  | Internet Gateway | 리전 | O | O | 
 |  | Peering Gateway | 리전 | O | O | 
 |  | Colocation Gateway | 리전 | O | O |
-|  | NAT Gateway | 리전 | O | O |
+|  | NAT Gateway | 리전 | O |  |
 |  | Service Gateway | 리전 | O | O |
-|  | Traffic Mirroring | 리전 | O | O |
+|  | Traffic Mirroring | 리전 | O |  |
 |  | Private DNS | 리전 | O |  |
 |  | DNS Plus | 글로벌 |  |  |
 |  | Direct Connect | 리전 | O | O | 
@@ -55,9 +56,9 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | NAS(offline) | 리전 | O |  | 
 |  | Object Storage | 리전 | O | O |
 |  | Backup | 리전 | O | O | 
-| Database | RDS for MySQL | 리전 | O | O |
-|  | RDS for MariaDB | 리전 | O | O | 
-|  | EasyCache | 리전 | O | O |
+| Database | RDS for MySQL | 리전 | O |  |
+|  | RDS for MariaDB | 리전 | O |  | 
+|  | EasyCache | 리전 | O |  |
 |  | MS-SQL Instance | 리전 | O | O | 
 |  | MySQL Instance | 리전 | O | O | 
 |  | PostgreSQL Instance | 리전 | O | O | 
@@ -75,12 +76,11 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Security Compliance | 글로벌 |  |  | 
 |  | CSAP SaaS Guidance | 글로벌 |  |  |
 |  | SSL VPN | 리전 | O | O |
-|  | DDoS Guard | 리전 | O |  |
+|  | DDoS Guard | 리전 | O | O |
 |  | SIEM | 리전 | O |  | 
 |  | Network Firewall | 리전 | O | O |
-|  | NHN Bastion | 리전 | O |  |  
 | Content Delivery | CDN | 글로벌 |  |  |
-| Application Service | API Gateway | 리전 | O | O | 
+| Application Service | API Gateway | 리전 | O |  | 
 | Data & Analytics | Log & Crash Search | 글로벌 |  |  |
 |  | Kafka Instance | 리전 | O | O | 
 | Dev Tools | Pipeline | 리전 | O |  | 
