@@ -2,7 +2,7 @@
 
 ### 개요
 다음에서 소개하는 API를 통해 프로젝트 멤버를 생성하거나 역할을 부여하는 등 조직과 프로젝트를 관리할 수 있습니다.
-API 사용을 위해서는 [API 호출 및 인증](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-authentication)을 통해 발급받은 Bearer 타입의 토큰이 필요합니다.
+API 사용을 위해서는 [API 호출 및 인증](api-authentication.md)을 통해 발급받은 Bearer 타입의 토큰이 필요합니다.
 API 호출 시, API 인증을 받은 멤버의 권한을 검사합니다.
 
 ### Public API 도메인
