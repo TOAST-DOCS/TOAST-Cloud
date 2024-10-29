@@ -35,7 +35,7 @@
 
 * 응답
 
-| Name         | Type        | Required | Description                            |
+| 이름         | 타입        | 필수 | 설명                            |
 |--------------|-------------| ------------- |----------------------------------------|
 |  grant_type  | String | Yes | client_credentials                     |   
 | access_token | String  | Yes | 발급된 Bearer 타입의 인증 토큰                   | 
@@ -49,32 +49,31 @@
     "expires_in":86400
 }
 ```
-* 케이스별 요청 예시
-    * curl
-      * Header에 인증 정보를 포함하는 경우
+##### 케이스별 요청 예시
+* curl: Header에 인증 정보를 포함하는 경우
+    * 참고: 아래 Authorization에 있는 `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`는 `UserAccessKeyID:SecretAccessKey`를 base64 인코딩한 결과입니다.
 ```sh
 curl --request POST 'https://oauth.api.gov-nhncloudservice.com/oauth2/token/create' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Authorization: Basic dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5' \
   -d 'grant_type=client_credentials'
 ```
-        * 참고: `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`는 `UserAccessKeyID:SecretAccessKey`를 base64 인코딩한 결과입니다.
-      * -u 옵션을 사용하는 경우
+* curl: -u 옵션을 사용하는 경우
 ```sh
 curl --request POST 'https://oauth.api.gov-nhncloudservice.com/oauth2/token/create' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -u 'UserAccessKeyID:SecretAccessKey' \
   -d 'grant_type=client_credentials'
 ```
-  * FeignClient
+* FeignClient
 ```java
-@FeignClient(name = "auth", url = "https://oauth.api.gov-nhncloudservice.com")
+@FeignCl ient(name = "auth", url = "https://oauth.api.gov-nhncloudservice.com")
 public interface AuthClient {
     @PostMapping(value = "/oauth2/token/create", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     TokenResponse createToken(@RequestHeader("Authorization") String authorization, @RequestParam("grant_type") String grantType);
 }
 ```
-  * RestTemplate
+* RestTemplate
 ```java
 @Autowired
 private RestTemplate restTemplate;
@@ -92,26 +91,29 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
     return restTemplate.postForObject("https://oauth.api.gov-nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
-  * Spring Cloud의 OpenFeign을 사용하여 자동으로 토큰을 발급 및 갱신하는 경우
-    > 이 방법은 Spring Boot 3.0 이상 버전을 사용하는 경우에만 가능합니다. API를 통해 강제로 만료시킨 경우를 대비하기 위해서는 토큰을 다시 발급하는 부분을 직접 구현해야 합니다.
-    > * API 를 통해 강제로 만료시킨 경우를 대비하기 위해선 토큰을 다시 발급하는 부분을 **직접 구현**해야 합니다.
-    1. 의존성 추가
+* Spring Cloud의 OpenFeign을 사용하여 자동으로 토큰을 발급 및 갱신하는 경우
+  > 이 방법은 Spring Boot 3.0 이상 버전을 사용하는 경우에만 가능합니다. API를 통해 강제로 만료시킨 경우를 대비하기 위해서는 토큰을 다시 발급하는 부분을 직접 구현해야 합니다.
+  > * API 를 통해 강제로 만료시킨 경우를 대비하기 위해선 토큰을 다시 발급하는 부분을 **직접 구현**해야 합니다.
+
+* 1: 의존성 추가
 ```groovy
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
   implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 }
 ```
-    2. Feign 클라이언트 정의
+
+* 2: Feign 클라이언트 정의
 ```java
-@FeignClient(name = "publicApiClient", url = "https://core.api.gov-nhncloudservice.com")
+@FeignClient(name = "publicApiClient", url = "https://core.api.nhncloudservice.com")
 public interface ExampleApiClient {
   @GetMapping("/v1/organizations")
   String getOrganizations();
 }
 ```
-    3. 보안 설정
-       > 아래는 예시이며, 실제 사용하시는 보안 설정에 맞게 변경하셔야 합니다.
+
+* 3: 보안 설정
+> 아래는 예시이며, 실제 사용하시는 보안 설정에 맞게 변경해야 합니다.
 ```java
 @Configuration
 @EnableWebSecurity
@@ -124,37 +126,38 @@ public class SecurityConfig {
   }
 }
 ```
-    4. oauth2 클라이언트 및 feign 설정
+
+* 4: oauth2 클라이언트 및 feign 설정
 ```java
 @Configuration
 public class Oauth2Config {
 
-  @Bean
-  public ClientRegistrationRepository clientRegistrationRepository() {
-    ClientRegistration clientRegistration = ClientRegistration.withRegistrationId("TokenClient")
-                                                                 .clientId("UserAccessKeyID")
-                                                                 .clientSecret("SecretAccessKey")
-                                                                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                                                                 .tokenUri("https://oauth.api.gov-nhncloudservice.com/oauth2/token/create")
-                                                                 .build();
-  
-    return new InMemoryClientRegistrationRepository(clientRegistration);
-  }
-  
-  @Bean
-  public OAuth2AuthorizedClientManager authorizedClientManager(ClientRegistrationRepository clientRegistrationRepository) {
-    OAuth2AuthorizedClientService authorizedClientService = new InMemoryOAuth2AuthorizedClientService(clientRegistrationRepository);
-    return new AuthorizedClientServiceOAuth2AuthorizedClientManager(clientRegistrationRepository, authorizedClientService);
-  }
-  
-  /**
-  * Feign 요청 시 자동으로 발급된 토큰을 자동으로 요청 헤더에 담아서 보내기 위한 인터셉터
-  */
-  @Bean
-  public RequestInterceptor oAuth2AccessTokenInterceptor(OAuth2AuthorizedClientManager authorizedClientManager) {
-    // Public API 요청 시 발급된 토큰을 x-nhn-authorization 헤더에 담아서 요청해야 합니다.
-    return new OAuth2AccessTokenInterceptor("Bearer", "x-nhn-authorization", "TokenClient", authorizedClientManager);
-  }
+	@Bean
+	public ClientRegistrationRepository clientRegistrationRepository() {
+		ClientRegistration clientRegistration = ClientRegistration.withRegistrationId("TokenClient")
+																  .clientId("UserAccessKeyID")
+																  .clientSecret("SecretAccessKey")
+																  .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+																  .tokenUri("https://oauth.api.gov-nhncloudservice.com/oauth2/token/create")
+																  .build();
+
+		return new InMemoryClientRegistrationRepository(clientRegistration);
+	}
+
+	@Bean
+	public OAuth2AuthorizedClientManager authorizedClientManager(ClientRegistrationRepository clientRegistrationRepository) {
+		OAuth2AuthorizedClientService authorizedClientService = new InMemoryOAuth2AuthorizedClientService(clientRegistrationRepository);
+		return new AuthorizedClientServiceOAuth2AuthorizedClientManager(clientRegistrationRepository, authorizedClientService);
+	}
+
+	/**
+	 * Feign 요청 시 자동으로 발급된 토큰을 자동으로 요청 헤더에 담아서 보내기 위한 인터셉터
+	 */
+	@Bean
+	public RequestInterceptor oAuth2AccessTokenInterceptor(OAuth2AuthorizedClientManager authorizedClientManager) {
+		// Public API 요청 시 발급된 토큰을 x-nhn-authorization 헤더에 담아서 요청해야 합니다.
+		return new OAuth2AccessTokenInterceptor("Bearer", "x-nhn-authorization", "TokenClient", authorizedClientManager);
+	}
 }
 ```
 #### 토큰 만료 요청
@@ -162,31 +165,30 @@ public class Oauth2Config {
 * 요청
 
   | 구분 | 이름 | 타입 | 필수 | 값 | 설명   |
-  |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
+    |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
   | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
   | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 |
   | Request Param |  token | String| Yes | access token    | 발급받은 토큰    |
 
-* 응답 
-  * HttpStatus 200
+* 응답
+    * HttpStatus 200
 
-* 케이스별 요청 예시 
-  * curl 
-    * Header에 인증 정보를 포함하는 경우
+##### 케이스별 요청 예시
+* curl: Header에 인증 정보를 포함하는 경우
 ```sh
 curl --request POST 'https://oauth.api.gov-nhncloudservice.com/oauth2/token/revoke' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Authorization: Basic dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5' \
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
-    * -u 옵션을 사용하는 경우
+* curl: -u 옵션을 사용하는 경우
 ```sh
 curl --request POST 'https://oauth.api.gov-nhncloudservice.com/oauth2/token/revoke' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -u 'UserAccessKeyID:SecretAccessKey' \
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
-  * FeignClient
+* FeignClient
 ```java
 @FeignClient(name = "auth", url = "https://oauth.api.gov-nhncloudservice.com")
 public interface AuthClient {
@@ -194,7 +196,7 @@ public interface AuthClient {
     void revokeToken(@RequestHeader("Authorization") String authorization, @RequestParam("token") String token);
 }
 ```
-  * RestTemplate
+* RestTemplate
 ```java
 @Autowired
 private RestTemplate restTemplate;
@@ -214,7 +216,7 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 ```
 
 ### 토큰 사용
-프레임워크 API 호출 시, 호출자 인증을 위해 `x-nhn-authentication` 헤더에 토큰을 담아서 요청 시 사용합니다.
+프레임워크 API 호출 시, 호출자 인증을 위해 `x-nhn-authentication` 헤더에 토큰을 담아서 요청 시 사용합니다.<br>
 예시
 ```shell
 curl -X GET "https://core.api.gov-nhncloudservice.com/v1.0/organizations" -H "x-nhn-authentication: Bearer {token}"

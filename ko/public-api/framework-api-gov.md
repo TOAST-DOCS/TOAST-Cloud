@@ -81,7 +81,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | POST |[/v1/organizations/{org-id}/members/search](#조직-멤버-목록-조회) | 조직 멤버 목록 조회 |
 | GET |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-전체-조회) | 조직의 프로젝트 공통 역할 그룹 전체 조회 |
 | GET |[/v1/product-uis/hierarchy](#상품-계층-구조-조회) | 상품 계층 구조 조회 |
-| GET |[/v1/projects/{project-id}/products/{product-id}](#프로젝트-사용-중인-상품-조회) | 프로젝트 사용 중인 상품 조회 |
+| GET |[/v1/projects/{project-id}/products/{product-id}](#프로젝트에서-사용-중인-상품-조회) | 프로젝트에서 사용 중인 상품 조회 |
 | GET |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 멤버 단건 조회 |
 | POST |[/v1/projects/{project-id}/members/search](#프로젝트-멤버-목록-조회) | 프로젝트 멤버 목록 조회 |
 | GET |[/v1/projects/{project-id}/project-role-groups/{role-group-id}](#프로젝트-역할-그룹-단건-조회) | 프로젝트 역할 그룹 단건 조회 |
@@ -193,9 +193,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 ###### 응답
 
 
-| 이름 | 타입 | 필수 | 설명 |   
-|------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+| 이름 | 타입           | 필수 | 설명 |   
+|------------ |--------------| ------- | ------------ |
+|   header | [공통 응답](#응답) | Yes |
 
 
 <a id="프로젝트-추가"></a>
@@ -250,7 +250,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 Response](#response)| Yes  |
+|   header | [공통 응답](#응답)| Yes  |
 |   regDateTime | Date| Yes   | 프로젝트 생성 일시 | 
 |   description | String| No   | 프로젝트 설명 | 
 |   ownerId | String| Yes   | 프로젝트 소유자 멤버 ID | 
@@ -299,7 +299,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 
 
 
@@ -345,7 +345,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 
 
 
@@ -393,7 +393,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   childProducts | List&lt;ChildProduct>| No   | 해당 서비스의 하위 서비스 정보로, 하위 서비스가 없으면 포함하지 않음.<br>하위 서비스를 먼저 비활성화하고 해당 서비스를 비활성화해야 함.|
 
 ###### ChildProduct
@@ -450,7 +450,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 AppKey 정보|
 |   parentProduct | ParentProduct| No | 상위 서비스 정보가 있으면 해당 정보를 표시하며, 상위 서비스가 없으면 포함하지 않음 |
 |   secretKey | String| No| 해당 프로젝트에서 이용 중인 서비스에 대한 비밀 키 정보<br> 비밀 키를 이용하는 서비스에서만 제공 |
@@ -521,7 +521,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   roles | List&lt;RoleProtocol>| Yes  | 역할 목록 |
 |   totalCount | Integer| Yes  | 총 개수 |
 
@@ -587,7 +587,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   roles | List&lt;[RoleProtocol](#roleprotocol)>| Yes  | 역할 목록 |
 |   totalCount | Integer| Yes  | 총 개수 |
 
@@ -635,7 +635,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   domainList | List&lt;OrgDomainProtocol>| Yes  |
 
 
@@ -719,7 +719,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   orgMember | OrgMemberRoleBundleProtocol| No  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
 
 ###### OrgMemberRoleBundleProtocol
@@ -843,7 +843,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   orgMembers | List&lt;OrgMemberWithInviteMemberrotocol>| Yes | 조직 멤버 목록 |
 |   paging | PagingResponse| Yes | 페이지 정보 |
 
@@ -933,7 +933,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 Response](#response)| Yes  |
+|   header | [공통 응답](#응답)| Yes  |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   roleGroups | List&lt;RoleGroupProtocol>| Yes | 프로젝트에서 사용 가능한 역할 그룹 목록  |
 
@@ -998,7 +998,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   productUiList | List&lt;ProductUiHierarchyProtocol>| Yes  | 홈페이지 카테고리 상품 UI 목록 |
 
 ###### ProductUiHierarchyProtocol
@@ -1068,7 +1068,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   hasUpdateSecretKeyPermission | Boolean| Yes | 비밀 키 재발급 가능 권한  |
 |   product | ProjectProductRelationAndProductProtocol| Yes  | 지정한 서비스 ID에 대해서 프로젝트에서 사용 중인 서비스 정보를 반환, 오류 시 포함하지 않음 |
 
@@ -1158,7 +1158,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   projectMember | ProjectMemberRoleBundleProtocol| Yes  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
 
 
@@ -1245,7 +1245,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   projectMembers | List&lt;ProjectMemberProtocol>| Yes | 프로젝트 멤버  |
 
@@ -1328,7 +1328,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   roleGroup | RoleGroupBundleProtocol| Yes | 연관 역할을 포함한 역할 그룹  |
 
 ###### RoleGroupBundleProtocol
@@ -1405,7 +1405,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | 연관 역할을 포함한 역할 그룹  |
 
 
@@ -1463,7 +1463,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 Response](#response)| Yes  |
+|   header | [공통 응답](#응답)| Yes  |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)>| Yes | 프로젝트에서 사용 가능한 역할 그룹 목록  |
 
@@ -1522,7 +1522,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   paging | [PagingResponse](#pagingresponse) | Yes |
 |   projectList | List&lt;OrgProjectMemberRoleProtocol>| Yes |
 
@@ -1583,7 +1583,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   usingGovernances | List&lt;GovernanceProtocol>| No | 사용 중인 거버넌스 목록  |
 
 
@@ -1651,7 +1651,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 
 <a id="조직의-프로젝트-공통-역할-그룹-삭제"></a>
@@ -1697,7 +1697,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="조직의-프로젝트-공통-역할-그룹-정보-수정"></a>
 #### 조직의 프로젝트 공통 역할 그룹 정보 수정
@@ -1745,7 +1745,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="조직의-프로젝트-공통-역할-그룹-역할-수정"></a>
 #### 조직의 프로젝트 공통 역할 그룹 역할 수정
@@ -1792,7 +1792,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="프로젝트-역할-그룹-생성"></a>
 #### 프로젝트 역할 그룹 생성
@@ -1833,7 +1833,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="프로젝트-역할-그룹-삭제"></a>
 #### 프로젝트 역할 그룹 삭제
@@ -1874,7 +1874,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="프로젝트-역할-그룹-정보-수정"></a>
 #### 프로젝트 역할 그룹 정보 수정
@@ -1914,7 +1914,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 
 <a id="프로젝트-역할-그룹-역할-수정"></a>
@@ -1962,7 +1962,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="조직-멤버-역할-변경"></a>
 #### 조직 멤버 역할 변경
@@ -2013,7 +2013,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="프로젝트-멤버-역할-수정"></a>
 #### 프로젝트 멤버 역할 수정
@@ -2052,7 +2052,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="조직-IAM-멤버-단건-조회"></a>
 #### 조직 IAM 멤버 단건 조회
@@ -2142,7 +2142,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   orgMember | OrgIamMemberRoleBundleProtocol| No  |
 
 ###### OrgIamMemberRoleBundleProtocol
@@ -2277,7 +2277,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   orgMembers | List&lt;IamOrgMemberProtocol>| No | 조직 IAM 멤버 목록  |
 |   paging | [PagingResponse](#pagingresponse)| No  |
 
@@ -2285,7 +2285,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-| header | [공통 Response](#response)| Yes | protocol이 response에 있는 경우에만 필수값 |
+| header | [공통 응답](#응답)| Yes | protocol이 response에 있는 경우에만 필수값 |
 | id | String | No | IAM 멤버 UUID | 
 | userCode | String | Yes | 로그인 시 사용할 IAM 멤버 ID | 
 | name | String | Yes | IAM 멤버의 사용자 이름 | 
@@ -2367,7 +2367,7 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   uuid | String| No | IAM 멤버 UUID  |
 
 
@@ -2419,7 +2419,7 @@ IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="조직-IAM-멤버-정보-수정"></a>
 #### 조직 IAM 멤버 정보 수정
@@ -2465,7 +2465,7 @@ IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="조직-IAM-멤버-비밀번호-변경"></a>
 #### 조직 IAM 멤버 비밀번호 변경
@@ -2510,7 +2510,7 @@ IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="조직-IP-ACL-목록-조회"></a>
 #### 조직 IP ACL 목록 조회
@@ -2550,7 +2550,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   orgIpAcl | List&lt;OrgIpAclProtocol>| Yes  | 설정 결과, 빈 목록이면 설정이 안된 상태 |
 
 ###### OrgIpAclProtocol
@@ -2582,19 +2582,19 @@ IP ACL 설정을 조회하는 API입니다.
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
-    },
-    "result": {
-        "content": {
-            "multiSessionsLimit": 1,
-            "sessionTimeoutMinutes": 10,
-            "mobileSessionTimeoutMinutes": 10,
-            "sessionType": "fixed"
-        }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "content": {
+      "multiSessionsLimit": 1,
+      "sessionTimeoutMinutes": 10,
+      "mobileSessionTimeoutMinutes": 10,
+      "sessionType": "fixed"
     }
+  }
 }
 ```
 
@@ -2603,7 +2603,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [공통 Response](#response)| Yes   |
+| header | [공통 응답](#응답)| Yes   |
 | result | Content | Yes | 설정 내용 |
 
 ###### Content
@@ -2636,35 +2636,35 @@ IP ACL 설정을 조회하는 API입니다.
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "range": "organization",
+    "organizationMfaSetting": {
+      "type": "email",
+      "bypassByIp": {
+        "enable": true
+        "ipList": [
+          "1.1.1.1",
+          "1.1.1.1/24"
+        ]
+      }
     },
-    "result": {
-        "range": "organization",
-        "organizationMfaSetting": {
-            "type": "email",
-            "bypassByIp": {
-                "enable": true
-                "ipList": [
-                    "1.1.1.1",
-                    "1.1.1.1/24"
-                ]
-            }
-        },
-        "serviceMfaSettings": [{
-            "serviceId": "{toast-service-id}",
-            "type": "totp",
-            "bypassByIp": {
-                "enable": true
-                "ipList": [
-                    "1.1.1.1",
-                    "1.1.1.1/24"
-                ]
-            }
-        }]
-    }
+    "serviceMfaSettings": [{
+      "serviceId": "{toast-service-id}",
+      "type": "totp",
+      "bypassByIp": {
+        "enable": true
+        "ipList": [
+          "1.1.1.1",
+          "1.1.1.1/24"
+        ]
+      }
+    }]
+  }
 }
 ```
 
@@ -2673,7 +2673,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   result | Result| No |  응답 내용<br>설정한 적이 없으면 null이 반환됨 |
 
 ###### Result
@@ -2728,18 +2728,18 @@ IP ACL 설정을 조회하는 API입니다.
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
-    },
-    "result": {
-        "enable": false,
-        "loginFailCount": {
-            "limit": "5",
-            "blockMinutes": "2"
-        }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "enable": false,
+    "loginFailCount": {
+      "limit": "5",
+      "blockMinutes": "2"
     }
+  }
 }
 ```
 
@@ -2748,7 +2748,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [공통 Response](#response)| Yes   |
+| header | [공통 응답](#응답)| Yes   |
 | result | Result | No | 로그인 실패 보안을 설정한 경우에만 반환되며, 설정하지 않으면 null이 반환됨 |
 
 ###### Result
@@ -2838,7 +2838,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   paging | PagingResponse| Yes | 정렬 기준이 없는 페이징 결과 반환  |
 |   prices | List&lt;ContractProductPriceProtocol>| Yes | 카운터의 단가 정보를 배열로 반환<br>오류 시 포함되지 않음  |
 
@@ -2935,12 +2935,10 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
-|   paging | PagingResponse| Yes  |
+|   header | [공통 응답](#응답)| Yes   |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   products | List&lt;ProductMetadata>| Yes | 상품 메타 정보 목록  |
 
-
-[PagingResponse](#pagingresponse)
 
 ###### ProductMetadata
 
@@ -3013,7 +3011,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   authenticationList | List&lt;ProjectAppKeyResponse>| No | 프로젝트 AppKey 목록 |
 
 ###### ProjectAppKeyResponse
@@ -3070,7 +3068,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   authentications | List&lt;UserAccessKeyResponse>| No | 인증 정보 목록  |
 
 ###### UserAccessKeyResponse
@@ -3134,7 +3132,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   authentication | ResponseProtocol| No  |
 
 ###### ResponseProtocol
@@ -3191,7 +3189,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 |   authentication | ResponseProtocol| No  |
 
 ###### ResponseProtocol
@@ -3240,7 +3238,7 @@ NHN Cloud 회원이면 호출 가능한 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 
 <a id="User-Access-Key-ID-비밀-키-재발급"></a>
@@ -3281,7 +3279,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 |   authentication | ResponseProtocol| No  |
 
 ###### ResponseProtocol
@@ -3330,7 +3328,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 Response](#response)| Yes   |
+|   header | [공통 응답](#응답)| Yes   |
 
 <a id="User-Access-Key-ID-삭제"></a>
 #### User Access Key ID 삭제
@@ -3380,7 +3378,7 @@ User Access Key ID를 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#response)| Yes |
+|   header | [공통 응답](#응답)| Yes |
 
 
 ### 오류 코드
