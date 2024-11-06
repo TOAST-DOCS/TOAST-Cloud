@@ -308,6 +308,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | BUDGET\_ADMIN | 予算管理に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | BUDGET\_VIEWER | 予算管理に対するRead(読み取り) |
 | LOG\_VIEWER | ユーザーActionログ管理Read(読み取り)、リソース管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
+| ORG\_DASHBOARD\_ADMIN | 組織ダッシュボードCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | ORG\_DASHBOARD\_VIEWER | 組織ダッシュボードRead(読み取り) |
 | NONE | 組織ダッシュボードRead(読み取り)、組織基本設定Read(読み取り) |
 
