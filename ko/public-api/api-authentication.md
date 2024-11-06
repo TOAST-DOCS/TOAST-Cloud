@@ -1,7 +1,7 @@
 ## NHN Cloud > Public API > API 호출 및 인증
 
 ### 인증 토큰
-사용자 인증을 위한 Bearer 타입의 토큰입니다. 토큰은 기본 1시간 동안 유효하며, 이 시간은 제공되는 프레임워크 API를 통해 변경할 수 있습니다. 변경 시 다음에 발급되는 토큰부터 해당 만료 시간이 반영됩니다.
+사용자 인증을 위한 Bearer 타입의 토큰입니다. 토큰은 기본 하루 동안 유효하며, 이 시간은 제공되는 프레임워크 API를 통해 변경할 수 있습니다. 변경 시 다음에 발급되는 토큰부터 해당 만료 시간이 반영됩니다.
 
 ### 전체 흐름도
 #### 토큰 발급 및 Public API 호출
@@ -51,7 +51,7 @@
 ```
 ##### 케이스별 요청 예시
 * curl: Header에 인증 정보를 포함하는 경우
-  * 참고: 아래 Authorization에 있는 `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`는 `UserAccessKeyID:SecretAccessKey`를 base64 인코딩한 결과입니다.
+    * 참고: 아래 Authorization에 있는 `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`는 `UserAccessKeyID:SecretAccessKey`를 base64 인코딩한 결과입니다.
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/create' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -170,8 +170,8 @@ public class Oauth2Config {
   | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 |
   | Request Param |  token | String| Yes | access token    | 발급받은 토큰    |
 
-* 응답 
-  * HttpStatus 200
+* 응답
+    * HttpStatus 200
 
 ##### 케이스별 요청 예시 
 * curl: Header에 인증 정보를 포함하는 경우
