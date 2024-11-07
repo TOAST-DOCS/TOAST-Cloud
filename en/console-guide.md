@@ -307,7 +307,7 @@ Members are classified into NHN Cloud members and IAM members.
 | BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
 | BUDGET_VIEWER | Read budget management |
 | LOG_VIEWER | Create/Read/Update/Delete user action logs management |
-| ORG_DASHBOARD\_VIEWER | Create, Read, Update, and Delete organization dashboard |
+| ORG_DASHBOARD\_ADMIN | Create, Read, Update, and Delete organization dashboard |
 | ORG_DASHBOARD\_VIEWER | Read organization dashboard |
 | NONE | Read organization dashboard and organization default settings |
 
