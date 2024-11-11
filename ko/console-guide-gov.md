@@ -117,7 +117,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 #### 로그인 보안 설정
 
 * IAM 멤버의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
-* 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정됩니다.
+* 모든 조직 서비스(Cloud, Dooray! 등)에 동일하게 설정됩니다.
 ![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202303_gov_new.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
@@ -164,7 +164,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 #### 비밀번호 정책 설정
 * IAM 멤버의 비밀번호를 설정하기 위해 비밀번호 정책 설정 기능을 제공합니다.
-* 비밀번호 정책은 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정됩니다.
+* 비밀번호 정책은 모든 조직 서비스(Cloud, Dooray! 등)에 동일하게 설정됩니다.
 
 * **IAM 거버넌스 설정** > **비밀번호 정책 설정**에서 관리할 수 있습니다.
     * 기본 비밀번호 정책
