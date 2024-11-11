@@ -80,7 +80,7 @@ For Dooray! services, IP ACL can be set on the service's console screen.
 3. You can set and manage IP ACL under **Set IP ACL** in the Organization Governance Setting.
     * Service setting
         * Common Settings: IP ACL can be set globally for all services.
-        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Online Contact, etc.).
+        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Contiple, etc.).
     * IP ACL
         * Not Configured: The console can be accessed from any IPs (or IP range).
         * Console Access Only from Allowed IPs (or IP range): The console can be accessed only from the IPs (or IP range) you entered. Enter the IP or IP range to allow access.
@@ -123,7 +123,7 @@ You can mask personal information that is exposed on the service, or if you need
 #### Login Security Setting
 
 * To strengthen the console access security of IAM members, **Login Security Setting** feature is provided.
-* You can set it globally for all organization services (Cloud, Online Contact, Dooray!, etc.), or set it differently for each service.
+* You can set it globally for all organization services (Cloud, Contiple, Dooray!, etc.), or set it differently for each service.
 ![console_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202303_en.png)
 
 1. Go to the console and access the Organization Management page of the organization you want to set up.
@@ -136,7 +136,7 @@ You can enable two-factor authentication by setting it as a required feature.
 
 * Service setting
     * Common Settings: Set the two-factor authentication globally for all organization services.
-    * Individual Settings for Each Service: You can set two-factor authentication differently for each service (Cloud, Online Contact, Dooray!, etc.).
+    * Individual Settings for Each Service: You can set two-factor authentication differently for each service (Cloud, Contiple, Dooray!, etc.).
 * Two-factor Authentication setting
     * Not Configured: Users can log in by entering their ID and password without two-factor authentication.
     * Google OTP: After entering ID and password, users can log in by entering the One Time Password provided by the Google OTP app.
@@ -173,7 +173,7 @@ After the login expires, the user must log in again to access the console.
 
 #### Password Policy Settings
 * To set passwords for IAM members, the Password Policy Settings is provided.
-* The password policy is set the same for all organization services (Cloud, Online Contact, Dooray!, etc.).
+* The password policy is set the same for all organization services (Cloud, Contiple, Dooray!, etc.).
 * Go to **IAM Governance Setting** \> **Password Policy Settings** to manage password policies.
     * Default Password Policy
         * Default password policy is provided as follows.
@@ -292,7 +292,7 @@ Members are classified into NHN Cloud members and IAM members.
 
 ### Organization Members
 
-* roles that can be set are different for each organization service (Online Contact, Dooray!, etc.).
+* roles that can be set are different for each organization service (Contiple, Dooray!, etc.).
 * Cloud service roles are as follows.
 * However, IAM members are granted the NONE role upon enrollment, and must be granted the required role through role settings after enrollment.
 

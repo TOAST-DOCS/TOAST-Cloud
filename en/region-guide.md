@@ -160,7 +160,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Workflow | Regional | O |  |  |  |
 | Contact Center | Omni Contact | Regional | O |  |  |  |
 |  | Mobile Contact | Regional | O |  |  |  |
-|  | Online Contact | Global |  |  |  |  |
+|  | Contiple | Global |  |  |  |  |
 | IDC | NCC | Regional | O |  |  |  |
 | Governance & Audit | CloudTrail | Global |  |  |  |  |
 |  | Resource Watcher | Global |  |  |  |  |
