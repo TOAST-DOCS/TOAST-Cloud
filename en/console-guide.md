@@ -341,7 +341,7 @@ Members are classified into NHN Cloud members and IAM members.
 | ADMIN | Create, Read, Update, Delete for the entire project |
 | MARKETPLACE_ADMIN | Marketplace Create, Read, Update, and Delete Services |
 | MARKETPLACE_VIEWER | Marketplace Read |
-| MEMBER | Create, Read, Update, Delete for all services in the project |
+| MEMBER | Create, Read, Update, Delete for all services in the project - Some services excluded (check related roles/permissions)|
 | BILLING VIEWER | Read for usage status |
 | PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create, Read, Update, Delete for project's integrated Appkey<br>Enable, Disable project services<br>Delete for projects |
 | PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey |
