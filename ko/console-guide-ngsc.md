@@ -319,7 +319,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | 역할 | 설명 |
 | --- | --- |
 | ADMIN | 프로젝트 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| MEMBER | 프로젝트 내 모든 서비스의 리소스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)   |
+| MEMBER | 프로젝트 내 모든 서비스의 리소스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) - 일부 서비스 제외(연관 역할/권한 확인)  |
 | BILLING VIEWER | 이용 현황 Read(읽기)  |
 | PROJECT MANAGEMENT ADMIN | 프로젝트 기본 정보 Update(갱신)<br>프로젝트 통합 Appkey Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)<br>프로젝트 서비스 활성화(Enable)/비활성화(Disable)<br>프로젝트 Delete(삭제)  |
 | PROJECT MANAGEMENT VIEWER | 프로젝트 기본 정보 Read(읽기)<br>프로젝트 통합 Appkey Read(읽기)  |
