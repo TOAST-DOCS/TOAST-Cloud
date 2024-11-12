@@ -159,7 +159,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Workflow | 리전 | O |  |  |  |
 | Contact Center | Omni Contact | 리전 | O |  |  |  |
 |  | Mobile Contact | 리전 | O |  |  |  |
-|  | Online Contact | 글로벌 |  |  |  |  |
+|  | Contiple | 글로벌 |  |  |  |  |
 | IDC | NCC | 리전 | O |  |  |  |
 | Governance & Audit | CloudTrail | 글로벌 |  |  |  |  |
 |  | Resource Watcher | 글로벌 |  |  |  |  |

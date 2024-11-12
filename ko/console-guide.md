@@ -79,7 +79,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
 3. 조직 거버넌스 설정의 **IP ACL 설정**에서 IP ACL을 설정하고 관리할 수 있습니다.
     * 서비스 설정
         * 공통 설정: 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
-        * 서비스별 설정: 각 서비스(Cloud, Online Contact 등)별로 IP ACL을 설정할 수 있습니다.
+        * 서비스별 설정: 각 서비스(Cloud, Contiple 등)별로 IP ACL을 설정할 수 있습니다.
     * IP ACL
         * 설정 안 함: 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
         * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력합니다.
@@ -121,7 +121,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 #### 로그인 보안 설정
 
 * IAM 멤버의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
-* 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
+* 모든 조직 서비스(Cloud, Contiple, Dooray! 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
 ![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202303.png)
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
@@ -134,7 +134,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 * 서비스 설정
     * 공통 설정: 모든 조직 서비스에 동일하게 2차 인증을 설정합니다.
-    * 서비스별 설정: 각 서비스 (Cloud, Online Contact, Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
+    * 서비스별 설정: 각 서비스 (Cloud, Contiple, Dooray! 등) 별로 2차 인증을 다르게 설정할 수 있습니다.
 * 2차 인증 설정
     * 설정 안 함: 2차 인증을 하지 않고, 아이디와 비밀번호 입력만으로 로그인할 수 있습니다.
     * Google OTP: 아이디와 비밀번호를 입력한 후, Google OTP 앱에서 제공한 One Time Password를 입력해 로그인할 수 있습니다.
@@ -171,7 +171,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 #### 비밀번호 정책 설정
 * IAM 멤버의 비밀번호를 설정하기 위해 비밀번호 정책 설정 기능을 제공합니다.
-* 비밀번호 정책은 모든 조직 서비스(Cloud, Online Contact, Dooray! 등)에 동일하게 설정됩니다.
+* 비밀번호 정책은 모든 조직 서비스(Cloud, Contiple, Dooray! 등)에 동일하게 설정됩니다.
 
 * **IAM 거버넌스 설정** > **비밀번호 정책 설정**에서 관리할 수 있습니다.
     * 기본 비밀번호 정책
@@ -292,7 +292,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 ### 조직 멤버
 
-* IAM 멤버는 조직 서비스 별(Online Contact 등) 설정할 수 있는 역할이 다릅니다.
+* IAM 멤버는 조직 서비스 별(Contiple 등) 설정할 수 있는 역할이 다릅니다.
 * NHN Cloud 회원과 IAM 멤버의 클라우드 서비스 역할은 아래와 같습니다.
 * 단, IAM 멤버는 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야합니다.
 
@@ -307,6 +307,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | BUDGET_ADMIN | 예산 관리에 대한 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
 | LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| ORG_DASHBOARD_ADMIN | 조직 대시보드 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | ORG_DASHBOARD_VIEWER | 조직 대시보드 Read(읽기) |
 | NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 

@@ -289,6 +289,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | BUDGET_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 | BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
 | LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| ORG_DASHBOARD_ADMIN | 조직 대시보드 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | ORG_DASHBOARD_VIEWER | 조직 대시보드 Read(읽기) |
 | NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 
