@@ -1,46 +1,46 @@
-## NHN Cloud > Public API > API 호출 및 인증
+## NHN Cloud > Public API > API Call and Authentication
 
-### 인증 토큰
-사용자 인증을 위한 Bearer 타입의 토큰입니다. 토큰은 기본 하루 동안 유효하며, 이 시간은 제공되는 프레임워크 API를 통해 변경할 수 있습니다. 변경 시 다음에 발급되는 토큰부터 해당 만료 시간이 반영됩니다.
+### Authentication Token
+A token of type Bearer for user authentication. Tokens are valid for a default of one day, which can be changed via the provided framework API. If changed, the next token issued will reflect that expiration time.
 
-### 전체 흐름도
-#### 토큰 발급 및 Public API 호출
+### Flowchart
+#### Issue Token and Call Public API
 ![img001.png](http://static.toastoven.net/toast/public_api/img01_KO.jpg)
 
-#### 토큰 만료 시 재발급
+#### Reissue on token expiration
 ![img002.png](http://static.toastoven.net/toast/public_api/img02_KO.jpg)
 
 
-### 인증 서버 도메인
+### Authentication server domain
 `https://oauth.api.nhncloudservice.com/`
 
 ### API
-#### 토큰 발급
-##### 사전 작업
-아래 방법에 따라 User Access Key ID와 Secret Access Key를 우선 발급합니다.
-  1. NHN Cloud 콘솔 로그인 후 오른쪽 상단의 메일 주소 > **API 보안 설정** 메뉴 클릭
-  2. **User Access Key ID 생성** 버튼 클릭
-  3. **User Access Key ID와 Secret Access Key 생성**을 선택하고 확인 클릭하여 발급
-     - 발급 후 Secret Access Key는 복사하여 별도 보관해야 합니다.
-     - User Access Key ID는 **API 보안 설정** 페이지에서 확인 가능합니다.
-##### 토큰 발급 요청
+#### Issue Token
+##### Prerequisites
+Follow the steps below to issue a User Access Key ID and Secret Access Key first.
+  1. After logging in to the NHN Cloud Console, click Email address > **API Security Settings** in the upper right corner.
+  2. Click **Generate User Access Key ID**
+  3. Select **Generate User Access Key ID and Secret Access Key** and click Confirm to issue
+     - After issuance, the Secret Access Key should be copied and kept separately.
+     - The User Access Key ID can be found on the **API Security Settings** page.
+##### Request Token Issuance
 > `POST /oauth2/token/create`
-* 요청
+* Request
 
-| 구분 | 이름 | 타입 | 필수 | 값                                     | 설명                                                                   |
+| Category | Name | Type | Required | Value                                     | Description                                                                   |
 |---------------|------------- | ------------- | ------------- |-------------------------------------------|--------------------------| 
 | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
-| Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 | 
+| Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | Use the Base64 encoded result of `UserAccessKeyID:SecretAccessKey` followed by `Basic`  | 
 | Request Param |  grant_type | String | Yes | client_credentials                        |                                                                    |
 
-* 응답
+* Response
 
-| 이름         | 타입        | 필수 | 설명                            |
+| Name         | Type        | Required | Description                            |
 |--------------|-------------| ------------- |----------------------------------------|
 |  grant_type  | String | Yes | client_credentials                     |   
-| access_token | String  | Yes | 발급된 Bearer 타입의 인증 토큰                   | 
-| token_type   | String  | Yes | 토큰의 타입                                 |
-| expires_in   | String  | Yes | 만료까지 남은 초 단위 시간을 의미하며 기본은 86,400초(하루)임 |
+| access_token | String  | Yes | Authentication token of type Bearer issued                   | 
+| token_type   | String  | Yes | Token type                                 |
+| expires_in   | String  | Yes | The time in seconds remaining until expiration, which defaults to 86,400 seconds (one day) |
 
 ```json
 {
@@ -49,16 +49,16 @@
     "expires_in":86400
 }
 ```
-##### 케이스별 요청 예시
-* curl: Header에 인증 정보를 포함하는 경우
-    * 참고: 아래 Authorization에 있는 `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`는 `UserAccessKeyID:SecretAccessKey`를 base64 인코딩한 결과입니다.
+##### Case-specific request examples
+* curl: When including authentication information in the header
+    * Notes: `The dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`in Authorization below is the result of base64 encoding `the UserAccessKeyID:SecretAccessKey`.
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/create' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Authorization: Basic dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5' \
   -d 'grant_type=client_credentials'
 ```
-* curl: -u 옵션을 사용하는 경우
+* curl: When using the -u option
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/create' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -91,11 +91,11 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
     return restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
-* Spring Cloud의 OpenFeign을 사용하여 자동으로 토큰을 발급 및 갱신하는 경우
-  > 이 방법은 Spring Boot 3.0 이상 버전을 사용하는 경우에만 가능합니다. API를 통해 강제로 만료시킨 경우를 대비하기 위해서는 토큰을 다시 발급하는 부분을 직접 구현해야 합니다.
-  > * API 를 통해 강제로 만료시킨 경우를 대비하기 위해선 토큰을 다시 발급하는 부분을 **직접 구현**해야 합니다.
+* When using OpenFeign on Spring Cloud to automatically issue and renew tokens
+  > This method is only possible if you are using Spring Boot 3.0 or later. You will need to implement the part of reissuing the token yourself in case you force it to expire via the API.
+  > * In case you force an expiration through APIs, you must **implement the reissue part yourself**.
 
-* 1: 의존성 추가
+* 1: Add a dependency
 ```groovy
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
@@ -103,7 +103,7 @@ dependencies {
 }
 ```
 
-* 2: Feign 클라이언트 정의
+* 2: Define a Feign client
 ```java
 @FeignClient(name = "publicApiClient", url = "https://core.api.nhncloudservice.com")
 public interface ExampleApiClient {
@@ -112,8 +112,8 @@ public interface ExampleApiClient {
 }
 ```
 
-* 3: 보안 설정
-> 아래는 예시이며, 실제 사용하시는 보안 설정에 맞게 변경해야 합니다.
+* 3: Security Settings
+> The following is an example and should be changed to match your actual security settings.
 ```java
 @Configuration
 @EnableWebSecurity
@@ -127,7 +127,7 @@ public class SecurityConfig {
 }
 ```
 
-* 4: oauth2 클라이언트 및 feign 설정
+* 4: Set up the oauth2 client and feign
 ```java
 @Configuration
 public class Oauth2Config {
@@ -150,38 +150,38 @@ public class Oauth2Config {
     return new AuthorizedClientServiceOAuth2AuthorizedClientManager(clientRegistrationRepository, authorizedClientService);
   }
   
-  /**
-  * Feign 요청 시 자동으로 발급된 토큰을 자동으로 요청 헤더에 담아서 보내기 위한 인터셉터
+  /** * /** * AuthorizedClientManager.
+  * Interceptor for sending the automatically issued token in the request header when making a Feign request.
   */
   @Bean
   public RequestInterceptor oAuth2AccessTokenInterceptor(OAuth2AuthorizedClientManager authorizedClientManager) {
-    // Public API 요청 시 발급된 토큰을 x-nhn-authorization 헤더에 담아서 요청해야 합니다.
+    // Requests the issued token in the x-nhn-authorization header when making a public API request.
     return new OAuth2AccessTokenInterceptor("Bearer", "x-nhn-authorization", "TokenClient", authorizedClientManager);
   }
 }
 ```
-#### 토큰 만료 요청
+#### Request token expiration
 > `POST /oauth2/token/revoke`
-* 요청
+* Request
 
-  | 구분 | 이름 | 타입 | 필수 | 값 | 설명   |
+  | Category | Name | Type | Required | Value | Description   |
   |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
   | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
-  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 |
-  | Request Param |  token | String| Yes | access token    | 발급받은 토큰    |
+  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | Use the Base64 encoded result of `UserAccessKeyID:SecretAccessKey` followed by `Basic`  |
+  | Request Param |  token | String| Yes | access token    | Issued token    |
 
-* 응답
+* Response
     * HttpStatus 200
 
-##### 케이스별 요청 예시 
-* curl: Header에 인증 정보를 포함하는 경우
+##### Case-specific request examples 
+* curl: When including authentication information in the header
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Authorization: Basic dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5' \
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
-* curl: -u 옵션을 사용하는 경우
+* curl: When using the -u option
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -215,15 +215,15 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 }
 ```
 
-### 토큰 사용
-프레임워크 API 호출 시, 호출자 인증을 위해 `x-nhn-authentication` 헤더에 토큰을 담아서 요청 시 사용합니다.<br>
-예시
+### Use Token
+When calling the framework API, a token is included in the `x-nhn-authentication` header to authenticate the caller.<br>
+Example
 ```shell
 curl -X GET "https://core.api.nhncloudservice.com/v1.0/organizations" -H "x-nhn-authentication: Bearer {token}"
 ```
 
-### 오류 코드
-* 토큰 발급 및 토큰 만료 요청 API 호출 시 반환될 수 있는 오류 코드
-  * [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)와 동일한 오류 코드를 반환합니다.
-* 토큰 사용 시 반환될 수 있는 오류 코드
-  * 오류 코드는 [프레임워크 API](framework-api.md) 가이드에서 명시하고 있습니다.
+### Error Code
+* Error codes that may be returned when calling the token issuance and token expiration request APIs
+  * Returns the same error code as [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2).
+* Possible error codes returned when using tokens
+  * Error codes are specified in the [Framework API](framework-api.md) guide.
