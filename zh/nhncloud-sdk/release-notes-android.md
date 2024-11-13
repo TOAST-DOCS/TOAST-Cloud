@@ -1,5 +1,31 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.9.4 (2024. 11. 15.)
+
+### NHN Cloud Push
+
+#### 기능 개선
+
+* Device ID 설정 기능 추가
+    * 사용자의 Device ID를 Push 서비스에서 사용할 수 있도록 설정하는 API(NhnCloudPush.setDeviceId)를 추가했습니다.
+
+## 1.9.3 (2024. 10. 08.)
+
+### NHN Cloud IAP
+
+#### Fixed
+
+* Fixed an issue in ONE store v19 and v21 where the value returned by the IapProductDetails.getLocalizedPrice() method does not include currency symbols.
+    * Fixed to return in local currency format, such as '$1,000'.
+
+### NHN Cloud Push
+
+#### Fixed
+
+* Fixed an incorrect error when the Google Services configuration file (google-services.json) is missing
+    * Fixed an issue where a java.lang.ExceptionInInitializerError occurs instead of a java.lang.IllegalStateException.
+    * IllegalStateException now occurs correctly.
+        
 ## 1.9.2 (August 27, 2024)
 
 ### NHN Cloud Logger
