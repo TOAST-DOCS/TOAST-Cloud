@@ -1,233 +1,233 @@
-## NHN Cloud > Public API > 프레임워크 API
+## NHN Cloud > Public API > Framework API
 
-### 개요
-다음에서 소개하는 API를 통해 프로젝트 멤버를 생성하거나 역할을 부여하는 등 조직과 프로젝트를 관리할 수 있습니다.
-API 사용을 위해서는 [API 호출 및 인증](api-authentication.md)을 통해 발급받은 Bearer 타입의 토큰이 필요합니다.
-API 호출 시, API 인증을 받은 멤버의 권한을 검사합니다.
+### Overview
+The following APIs allow you to manage your organization and projects, such as creating project members and assigning roles.
+To use the APIs, you need a token of type Bearer, which is issued through [API calls and authentication](api-authentication.md).
+When you make an API call, the API checks the permissions of the authenticated member.
 
-### Public API 도메인
+### Public API Domain
 `https://core.api.nhncloudservice.com/`
 
-### 공통
+### Common
 
-#### 요청
-<a id="요청"></a>
-Public API를 호출할 때는 아래 Request Header를 반드시 포함해야 합니다.
+#### Request
+<a id="Request"></a>
+When calling the Public API, you must include the Request Header below.
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Header |  x-nhn-authorization | String| Yes | 사용자가 발급받은 Bearer 타입 토큰 |
+| Header |  x-nhn-authorization | String| Yes | Bearer type token issued to the user |
 
 
-#### 응답
-<a id="응답"></a>
-Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
+#### Response
+<a id="Response"></a>
+When the Public API returns, the header part below is included in the response body.
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   isSuccessful | Boolean | No | 성공 여부  |
-|   resultCode | Integer| No | 결과 코드. 성공 시 0이 반환되며, 실패 시 오류 코드 반환  |
-|   resultMessage | String| No | 결과 메시지  |
+|   isSuccessful | Boolean | No | Successful or not  |
+|   resultCode | Integer| No | Result code. 0 is returned on success, or an error code on failure.  |
+|   resultMessage | String| No | Result message  |
 
-#### 공통 타입
-<a id="공통-타입"></a>
+#### Common Type
+<a id="common-type"></a>
 
 
-| 이름 | 타입 | 크기 | 설명 | 
+| Name | Type | Size | Description | 
 |------------ | ------------- | ------------- | ------------ |
-| org-id | String | 16자 | 조직 ID |
-| project-id | String | 8자 | 프로젝트 ID |
-| product-id | String | 8자 | 서비스(상품) ID |
-| user-access-key-id | String | 20자 | User Access Key ID |
-| project-app-key | String | 20자 | 프로젝트의 AppKey |
-| product-app-key | String | 16자 | 서비스의 AppKey |
-| uuid | String | 36자 | 멤버의 UUID |
+| org-id | String | 16 characters | Organization ID |
+| project-id | String | 8 characters | Project ID |
+| product-id | String | 8 characters | Service (product) ID |
+| user-access-key-id | String | 20 characters | User Access Key ID |
+| project-app-key | String | 20 characters | The project's AppKey |
+| product-app-key | String | 16 characters | The service's AppKey |
+| UUID | String | 36 characters | Member's UUID |
 
 
-#### 거버넌스 IP ACL 설정
-<a id="거버넌스-IP-ACL-설정"></a>
+#### Set up governance IP ACLs
+<a id="Set-governance-IP-ACL"></a>
 
-**조직 관리 > 거버넌스 설정 > 조직 거버넌스 설정 > IP ACL 설정**을 통해 IP ACL을 설정했을 경우, 프레임워크 API 호출 시에도 해당 설정이 적용됩니다.
+If you set IP ACLs through **Organization Management > Governance Settings > Organization Governance Settings > IP ACL Settings**, those settings are also applied to calls to the framework API.
 
 
 ### API
 
-> 주의<br>
-> API의 응답은 가이드에 명시되지 않은 필드가 추가될 수 있으므로, 새로운 필드가 추가되어도 오류가 발생하지 않도록 개발해야 합니다.<br>
-> 또한 DB 저장 시, 칼럼 사이즈가 변경될 수 있으므로 여유 있게 설정해야 합니다.
+> [Caution]<br>
+> Responses from the API can have fields added that are not specified in the guide, so they should be developed so that new fields added do not cause errors.<br>
+> Also, when saving the DB, the column size may change, so you should set it generously.
 
-| 메서드 | HTTP 요청 | 설명 |
+| Method | HTTP Request | Description |
 |------------- | ------------- | -------------|
-| POST |[/v1/projects/{project-id}/members](#프로젝트-멤버-생성) | 프로젝트 멤버 생성 |
-| POST |[/v1/organizations/{org-id}/projects](#프로젝트-추가) | 프로젝트 추가 |
-| DELETE |[/v1/projects/{project-id}/members/{target-uuid}](#프로젝트-멤버-단건-삭제) | 프로젝트 멤버 단건 삭제 |
-| DELETE |[/v1/projects/{project-id}](#프로젝트-삭제) | 프로젝트 삭제 |
-| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#프로젝트-상품-종료) | 프로젝트 상품 종료 |
-| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#프로젝트-상품-이용) | 프로젝트 상품 이용 |
-| GET |[/v1/organizations/{org-id}/roles](#조직-역할-목록-조회) | 조직 역할 목록 조회 |
-| GET |[/v1/projects/{project-id}/roles](#프로젝트-역할-목록-조회) | 프로젝트 역할 목록 조회 |
-| GET |[/v1/organizations/{org-id}/domains](#조직-도메인-검색) | 조직 도메인 검색 |
-| GET |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-단건-조회) | 조직 멤버 단건 조회 |
-| POST |[/v1/organizations/{org-id}/members/search](#조직-멤버-목록-조회) | 조직 멤버 목록 조회 |
-| GET |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-전체-조회) | 조직의 프로젝트 공통 역할 그룹 전체 조회 |
-| GET |[/v1/product-uis/hierarchy](#상품-계층-구조-조회) | 상품 계층 구조 조회 |
-| GET |[/v1/projects/{project-id}/products/{product-id}](#프로젝트에서-사용-중인-상품-조회) | 프로젝트에서 사용 중인 상품 조회 |
-| GET |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 멤버 단건 조회 |
-| POST |[/v1/projects/{project-id}/members/search](#프로젝트-멤버-목록-조회) | 프로젝트 멤버 목록 조회 |
-| GET |[/v1/projects/{project-id}/project-role-groups/{role-group-id}](#프로젝트-역할-그룹-단건-조회) | 프로젝트 역할 그룹 단건 조회 |
-| GET |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}](#조직의-프로젝트-공통-역할-그룹-단건-조회) | 조직의 프로젝트 공통 역할 그룹 단건 조회 |
-| GET |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-전체-조회) | 프로젝트 역할 그룹 전체 조회 |
-| GET |[/v1/organizations/{org-id}/projects](#조직에-속한-프로젝트-목록-조회) | 조직에 속한 프로젝트 목록 조회 |
-| GET |[/v1/organizations/{org-id}/governances](#사용-중인-조직-거버넌스-목록-조회) | 사용 중인 조직 거버넌스 목록 조회 |
-| POST |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-생성) | 조직의 프로젝트 공통 역할 그룹 생성 |
-| DELETE |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-삭제) | 조직의 프로젝트 공통 역할 그룹 삭제 |
-| PUT |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos](#조직의-프로젝트-공통-역할-그룹-정보-수정) | 조직의 프로젝트 공통 역할 그룹 정보 수정 |
-| PUT |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}/roles](#조직의-프로젝트-공통-역할-그룹-역할-수정) | 조직의 프로젝트 공통 역할 그룹 역할 수정 |
-| POST |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-생성) | 프로젝트 역할 그룹 생성 |
-| DELETE |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-삭제) | 프로젝트 역할 그룹 삭제 |
-| PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos](#프로젝트-역할-그룹-정보-수정) | 프로젝트 역할 그룹 정보 수정 |
-| PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#프로젝트-역할-그룹-역할-수정) | 프로젝트 역할 그룹 역할 수정 |
-| PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-역할-수정) | 조직 멤버 역할 수정 |
-| PUT |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-역할-수정) | 프로젝트 멤버 역할 수정 |
-| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-단건-조회) | 조직 IAM 멤버 단건 조회 |
-| GET |[/v1/iam/organizations/{org-id}/members](#조직-IAM-멤버-목록-조회) | 조직 IAM 멤버 목록 조회 |
-| POST |[/v1/iam/organizations/{org-id}/members](#조직-IAM-멤버-추가) | 조직 IAM 멤버 추가 |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#IAM-멤버-비밀번호-변경-이메일-전송) | IAM 멤버 비밀번호 변경 이메일 전송 |
-| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-정보-수정) | 조직 IAM 멤버 정보 수정 |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#조직-IAM-멤버-비밀번호-변경) | 조직 IAM 멤버 비밀번호 변경 |
-| GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-IAM-로그인-세션-설정-정보를-조회) | 조직 IAM 로그인 세션 설정 정보를 조회 |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-IAM-로그인-2차-인증에-대한-설정을-조회) | 조직 IAM 로그인 2차 인증에 대한 설정을 조회 |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-로그인-실패-보안-설정을-조회) | 조직 IAM 로그인 실패 보안 설정을 조회 |
-| GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | 조직 IP ACL 목록 조회 |
-| POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
-| GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
-| GET |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-조회) | 프로젝트 AppKey 조회 |
-| GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-목록-조회) | User Access Key ID 목록 조회 |
-| POST |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-등록) | 프로젝트 AppKey 등록 |
-| POST |[/v1/authentications/user-access-keys](#User-Access-Key-ID-등록) | User Access Key ID 등록 |
-| DELETE |[/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#프로젝트-AppKey-삭제) | 프로젝트 AppKey 삭제 |
-| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#User-Access-Key-ID-비밀-키-재발급) | User Access Key ID 비밀 키 재발급 |
-| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-상태-수정) | User Access Key ID 상태 수정 |
-| DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | User Access Key ID 삭제 |
+| POST |[/v1/projects/{project-id}/members](#프로젝트-멤버-생성) | Create a project member |
+| POST |[/v1/organizations/{org-id}/projects](#프로젝트-추가) | Add a project |
+| DELETE |[/v1/projects/{project-id}/members/{target-uuid}](#프로젝트-멤버-단건-삭제) | Delete a single project member |
+| DELETE |[/v1/projects/{project-id}](#프로젝트-삭제) | Delete a project |
+| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#프로젝트-상품-종료) | End a project product |
+| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#프로젝트-상품-이용) | Use a project product |
+| GET |[/v1/organizations/{org-id}/roles](#조직-역할-목록-조회) | List organization roles |
+| GET |[/v1/projects/{project-id}/roles](#프로젝트-역할-목록-조회) | List project roles |
+| GET |[/v1/organizations/{org-id}/domains](#조직-도메인-검색) | Search for an organization domain |
+| GET |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-단건-조회) | View a organization member |
+| POST |[/v1/organizations/{org-id}/members/search](#조직-멤버-목록-조회) | List organization members |
+| GET |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-전체-조회) | View all common role groups for projects in the organization |
+| GET |[/v1/product-uis/hierarchy](#상품-계층-구조-조회) | View product hierarchy |
+| GET |[/v1/projects/{project-id}/products/{product-id}](#프로젝트에서-사용-중인-상품-조회) | View a product used in the project |
+| GET |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | View a project member |
+| POST |[/v1/projects/{project-id}/members/search](#프로젝트-멤버-목록-조회) | List project members |
+| GET |[/v1/projects/{project-id}/project-role-groups/{role-group-id}](#프로젝트-역할-그룹-단건-조회) | View a project role group |
+| GET |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}](#조직의-프로젝트-공통-역할-그룹-단건-조회) | View a common role group for the project in the organization |
+| GET |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-전체-조회) | View all project role groups |
+| GET |[/v1/organizations/{org-id}/projects](#조직에-속한-프로젝트-목록-조회) | List projects in your organization |
+| GET |[/v1/organizations/{org-id}/governances](#사용-중인-조직-거버넌스-목록-조회) | List organization governance in use |
+| POST |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-생성) | Create a common role group for projects in the organization |
+| DELETE |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-삭제) | Delete a project common role group in the organization |
+| PUT |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos](#조직의-프로젝트-공통-역할-그룹-정보-수정) | Modify your organization's project common role group information |
+| PUT |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}/roles](#조직의-프로젝트-공통-역할-그룹-역할-수정) | Modify your organization's project common roles group roles |
+| POST |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-생성) | Create a project role group |
+| DELETE |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-삭제) | Delete a project role group |
+| PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos](#프로젝트-역할-그룹-정보-수정) | Edit project role group information |
+| PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#프로젝트-역할-그룹-역할-수정) | Modify project role group roles |
+| PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-역할-수정) | Modify organization member roles |
+| PUT |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-역할-수정) | Modify project member roles |
+| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-단건-조회) | View organization IAM members |
+| GET |[/v1/iam/organizations/{org-id}/members](#조직-IAM-멤버-목록-조회) | List organization IAM members |
+| POST |[/v1/iam/organizations/{org-id}/members](#조직-IAM-멤버-추가) | Add an organization IAM member |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#IAM-멤버-비밀번호-변경-이메일-전송) | Send an IAM member password change email |
+| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-정보-수정) | Modify organization IAM member information |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#조직-IAM-멤버-비밀번호-변경) | Change an organization IAM member password |
+| GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-IAM-로그인-세션-설정-정보를-조회) | View organization IAM sign-in session settings information |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-IAM-로그인-2차-인증에-대한-설정을-조회) | View settings for organizational IAM sign-in second factor authentication |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-로그인-실패-보안-설정을-조회) | View Organization IAM Login Failure Security Settings |
+| GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | Listorganization IP ACLs |
+| POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-상품-가격-조회) | Get the price of a product on a pay-as-you-go subscription |
+| GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-상품-목록-조회) | List products enrolled in a pay-as-you-go subscription |
+| GET |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-조회) | Get Project AppKey |
+| GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-목록-조회) | ListUser Access Key IDs |
+| POST |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-등록) | Register a project AppKey |
+| POST |[/v1/authentications/user-access-keys](#User-Access-Key-ID-등록) | Register a User Access Key ID |
+| DELETE |[/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#프로젝트-AppKey-삭제) | Delete a project AppKey |
+| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#User-Access-Key-ID-비밀-키-재발급) | Reissue the User Access Key ID secret key |
+| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-상태-수정) | Modify User Access Key ID status |
+| DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | Delete a User Access Key ID |
 
 
 
 <a id="프로젝트-멤버-생성"></a>
-#### 프로젝트 멤버 생성
+#### Create a project member
 
 > POST "/v1/projects/{project-id}/members"
 
-프로젝트에 멤버를 추가하는 API입니다.
+API to add members to a project.
 
-##### 필요 권한
+##### Required permissions
 `Project.Member.Create`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 멤버를 추가할 프로젝트 ID | 
-| Request Body | request | CreateMemberRequest| Yes | 요청 |
+|  Path |project-id | String| Yes | The project ID to which you want to add the member | 
+| Request Body | request | CreateMemberRequest| Yes | Request |
 
 
 
 
 ###### CreateMemberRequest
-> 주의<br>
-> 요청 시 memberUuid, email, userCode 중 하나는 반드시 값이 있어야 합니다.<br>
-> memberUuid > email > userCode 순으로 값이 있는지 체크하고 있으면 해당 멤버를 프로젝트 멤버로 추가합니다.<br>
-> 한 요청에 한 명의 프로젝트 멤버만 만들 수 있습니다.
+> [Caution]<br>
+> At least one of memberUuid, email, and userCode must have a value when requested.<br>
+> If you're checking for values in the order memberUuid > email > userCode, add that member as a project member.<br>
+> Only one project member can be created in a request.
 
 
-| 이름 | 타입 | 필수 | 설명 |  
+| Name | Type | Required | Description |  
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List&lt;UserAssignRoleProtocol>| Yes | 사용자에게 할당할 역할 목록  |
-|   memberUuid | String| No | 추가할 멤버의 UUID  |
-|   email | String| No | 추가할 멤버의 이메일  |
-|   userCode | String| No | 추가할 IAM 멤버 ID  |
+|   assignRoles | List<UserAssignRoleProtocol>| Yes | List of roles to assign to users  |
+|   memberUuid | String| No | UUID of the member to add  |
+|   email | String| No | The email of the member you want to add  |
+|   userCode | String| No | IAM member ID to add  |
 
 
 ###### UserAssignRoleProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleId | String| Yes | 역할 ID  |
-|   conditions | List&lt;AssignAttributeConditionProtocol>| No | 역할 조건 속성  |
+|   roleId | String| Yes | Role ID  |
+|   conditions | List<AssignAttributeConditionProtocol>| No | Role condition attribute  |
 
 
 ###### AssignAttributeConditionProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   attributeId | String| Yes | 조건 속성 ID  |
-|   attributeOperatorTypeCode | String| Yes | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
-|   attributeValues | List&lt;String>| Yes | 조건 속성 값  |
+|   attributeId | String| Yes | Condition attribute ID  |
+|   attributeOperatorTypeCode | String| Yes | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List<String>| Yes | Condition attribute value  |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입           | 필수 | 설명 |   
+| Name | Type           | Required | Description |   
 |------------ |--------------| ------- | ------------ |
-|   header | [공통 응답](#응답) | Yes |
+|   header | [Common response](#Response) | Yes |
 
 
 <a id="프로젝트-추가"></a>
-#### 프로젝트 추가
+#### Add a project
 
 > POST "/v1/organizations/{org-id}/projects"
 
-조직에 프로젝트를 추가하는 API입니다.
+API to add projects to your organization.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Project.Create`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path |org-id | String| Yes | 프로젝트를 추가할 조직 ID | 
-| Request Body | request | CreateProjectRequest| Yes | 요청 |
+| Path |org-id | String| Yes | Organization ID to add the project to | 
+| Request Body | request | CreateProjectRequest| Yes | Request |
 
 
 ###### CreateProjectRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------ | ------------ |
-|   description | String| No | 프로젝트 설명(최대 100자) |
-|   projectName | String| Yes| 프로젝트 이름(최대 40자) |
+|   description | String| No | Project description (up to 100 characters) |
+|   projectName | String| Yes| Project name (up to 40 characters) |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -246,132 +246,132 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
   }
 }
 ```
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes  |
-|   regDateTime | Date| Yes   | 프로젝트 생성 일시 | 
-|   description | String| No   | 프로젝트 설명 | 
-|   ownerId | String| Yes   | 프로젝트 소유자 멤버 ID | 
-|   projectName | String| Yes   | 프로젝트 이름 | 
-|   projectId | String| Yes   | 프로젝트 ID | 
-|   orgId | String| Yes   | 조직 ID | 
-|   projectStatusCode | String| Yes   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 상품이 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> | 
+|   header | [Common response](#Response)| Yes  |
+|   regDateTime | Date| Yes   | When the project is created | 
+|   description | String| No   | Project description | 
+|   ownerId | String| Yes   | Project owner member ID | 
+|   projectName | String| Yes   | Project name | 
+|   projectId | String| Yes   | Project ID | 
+|   orgId | String| Yes   | Organization ID | 
+|   projectStatusCode | String| Yes   | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All products are closed but not paid for</li></ul> | 
 
 
 <a id="프로젝트-멤버-단건-삭제"></a>
-#### 프로젝트 멤버 단건 삭제
+#### Delete a single project member
 
 > DELETE "/v1/projects/{project-id}/members/{target-uuid}"
 
-사용자를 해당 프로젝트에서 삭제하는 API입니다.
+API to delete a user from a project.
 
-##### 필요 권한
+##### Required permissions
 `Project.Member.Delete`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Path |target-uuid | String| Yes | 삭제 대상 멤버 UUID | 
+|  Path |project-id | String| Yes | Project ID | 
+|  Path |target-uuid | String| Yes | Member UUID to delete | 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [Common response](#Response)| Yes |
 
 
 
 <a id="프로젝트-삭제"></a>
-#### 프로젝트 삭제
+#### Delete a project
 
 > DELETE "/v1/projects/{project-id}"
 
-프로젝트를 삭제하는 API입니다.
+API to delete a project.
 
-##### 필요 권한
-아래 목록 중 하나의 권한이 필요합니다.
+##### Required permissions
+You'll need one permission from the list below
 * `Organization.Project.Delete`
 * `Project.Delete`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 삭제할 프로젝트 ID | 
+|  Path |project-id | String| Yes | Project ID to delete | 
 
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [Common response](#Response)| Yes |
 
 
 
 <a id="프로젝트-상품-종료"></a>
-#### 프로젝트 상품 종료
+#### End a project product
 
 > DELETE "/v1/projects/{project-id}/products/{product-id}/disable"
 
-해당 프로젝트에서 사용자가 지정한 서비스를 더 이상 이용하지 않도록 비활성화하는 API입니다.
+API to disable a user-specified service so that it is no longer used by this project.
 
-##### 필요 권한
-`상품명:Product.Delete`
+##### Required permissions
+`Product Name: Product.Delete`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 서비스를 종료하려는 프로젝트 ID | 
-|  Path |product-id | String| Yes | 서비스 ID | 
+|  Path |project-id | String| Yes | Project ID of the project you want to shut down | 
+|  Path |product-id | String| Yes | Service ID | 
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -388,45 +388,45 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   childProducts | List&lt;ChildProduct>| No   | 해당 서비스의 하위 서비스 정보로, 하위 서비스가 없으면 포함하지 않음.<br>하위 서비스를 먼저 비활성화하고 해당 서비스를 비활성화해야 함.|
+|   header | [Common response](#Response)| Yes |
+|   childProducts | List<ChildProduct>| No   | Subservice information for that service, not included if there are no subservices.<br>Requires you to disable the child service first and then disable the service.|
 
 ###### ChildProduct
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   productId | String| Yes  | 	하위 서비스 ID | 
-|   productName | String| Yes  | 하위 서비스 이름 |
-|   statusCode | String| Yes |   서비스 상태(STABLE, CLOSED) |
+|   productId | String| Yes  | 	Subservice ID | 
+|   productName | String| Yes  | Subservice name |
+|   statusCode | String| Yes |   Service status (STABLE, CLOSED) |
 
 
 <a id="프로젝트-상품-이용"></a>
-#### 프로젝트 상품 이용
+#### Use a project product
 
 > POST "/v1/projects/{project-id}/products/{product-id}/enable"
 
-해당 프로젝트에서 사용자가 지정한 서비스를 이용할 수 있도록 활성화 요청하는 API입니다.
+An API that requests to enable a service you specify to be available in your project.
 
-##### 필요 권한
-`상품명:Product.Create`
+##### Required permissions
+`Product Name: Product.Create`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |product-id | String| Yes | 서비스 ID | 
-|  Path |project-id | String| Yes | 서비스를 이용하려는 프로젝트 ID | 
+|  Path |product-id | String| Yes | Service ID | 
+|  Path |project-id | String| Yes | The ID of the project you want to use the service for | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -445,55 +445,55 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 AppKey 정보|
-|   parentProduct | ParentProduct| No | 상위 서비스 정보가 있으면 해당 정보를 표시하며, 상위 서비스가 없으면 포함하지 않음 |
-|   secretKey | String| No| 해당 프로젝트에서 이용 중인 서비스에 대한 비밀 키 정보<br> 비밀 키를 이용하는 서비스에서만 제공 |
+|   header | [Common response](#Response)| Yes |
+|   appKey | String| Yes | AppKey information for the service your project is using|
+|   parentProduct | ParentProduct| No | Shows parent service information if it exists, or does not include it if no parent service exists |
+|   secretKey | String| No| Secret key information for the service your project is using.<br> Only available for services that use secret keys |
 
 
 ###### ParentProduct
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   productId | String| Yes  | 서비스 ID |
-|   productName | String| Yes  | 서비스 이름 |
-|   statusCode | String| Yes | 서비스 상태(STABLE, CLOSED) |
+|   productId | String| Yes  | Service ID |
+|   productName | String| Yes  | Service name |
+|   statusCode | String| Yes | Service status (STABLE, CLOSED) |
 
 
 
 
 
 <a id="조직-역할-목록-조회"></a>
-#### 조직 역할 목록 조회
+#### List organization roles
 
 > GET "/v1/organizations/{org-id}/roles"
 
-조직 사용자에게 부여할 수 있는 역할 목록을 요청하는 API입니다.
+API to request a list of roles that can be granted to users in your organization.
 
-##### 필요 권한
+##### Required permissions
 `Organization.RoleGroup.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID |
-|  Query |categoryTypeCodes | List&lt;String> | No | 역할/권한/역할 그룹 카테고리 구분(ROLE, PERMISSION, ROLE_GROUP) |
-|  Query |roleNameLike | String| No | 역할/권한/역할 그룹명 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 | 
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |org-id | String| Yes | Organization ID |
+|  Query |categoryTypeCodes | List<String> | No | Role/Permission/Role Group Category Distinction (ROLE, PERMISSION, ROLE_GROUP) |
+|  Query |roleNameLike | String| No | Role/privilege/role group name |
+|  Query |limit | Integer| No | Number of displays per page, default 20 | 
+|  Query |page | Integer| No | Target Page, default 1 |
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -516,51 +516,51 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   roles | List&lt;RoleProtocol>| Yes  | 역할 목록 |
-|   totalCount | Integer| Yes  | 총 개수 |
+|   header | [Common response](#Response)| Yes |
+|   roles | List<RoleProtocol>| Yes  | Roles list |
+|   totalCount | Integer| Yes  | Total count |
 
 ###### RoleProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   categoryKey | String| Yes | 역할/권한 카테고리 분류 키<br><ul><li>RoleGroup: 프로젝트 역할 그룹</li><li>OrgRoleGroup: 조직 역할 그룹</li><li>OrgRole: 조직 역할</li><li>ProjectRole: 프로젝트 역할</li><li>BillingRole: Billing 관련 역할</li><li>OrgServiceRole: 조직 서비스 역할</li><li>ProjectServiceRole: 프로젝트 서비스 역할</li><li>SystemRole: 시스템 생성 역할</li></ul>  |
-|   categoryTypeCode | String| Yes | 역할 그룹/역할/권한 구분 코드(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
-|   description | String| Yes | 역할/권한 설명  |
-|   roleCategory | String| Yes | 역할/권한 카테고리 대분류(ORG_ROLE, ORG_ROLE_GROUP, ORG_SERVICE_ROLE, PROJECT_ROLE, PROJECT_ROLE_GROUP, PROJECT_SERVICE_ROLE, SYSTEM_ROLE) |
-|   roleId | String| Yes | 역할/권한 ID  |
-|   roleName | String| Yes | 역할/권한 이름  |
+|   categoryKey | String| Yes | Role/Privilege Category Taxonomy Key<br><ul><li>RoleGroup: Project role group</li><li>OrgRoleGroup: Organization Role Group</li><li>OrgRole: Organization Role</li><li>ProjectRole: Project role</li><li>BillingRole: Billing-related roles</li><li>OrgServiceRole: Organization Service Role</li><li>ProjectServiceRole: Project service role</li><li>SystemRole: System-generated role</li></ul>  |
+|   categoryTypeCode | String| Yes | Role group/role/privilege distinguishing codes (ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
+|   description | String| Yes | Role/privilege description  |
+|   roleCategory | String| Yes | Role/Privilege Category Broad Classification (ORG_ROLE, ORG_ROLE_GROUP, ORG_SERVICE_ROLE, PROJECT_ROLE, PROJECT_ROLE_GROUP, PROJECT_SERVICE_ROLE, SYSTEM_ROLE) |
+|   roleId | String| Yes | Role/Privilege ID  |
+|   roleName | String| Yes | Role/privilege name  |
 
 
 <a id="프로젝트-역할-목록-조회"></a>
-#### 프로젝트 역할 목록 조회
+#### List project roles
 
 > GET "/v1/projects/{project-id}/roles"
 
-프로젝트 사용자에게 부여할 수 있는 역할 목록을 요청하는 API입니다.
+API to request a list of roles that can be granted to project users.
 
-##### 필요 권한
+##### Required permissions
 `Project.RoleGroup.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Query |categoryTypeCodes | List&lt;String> | No | 역할/권한/역할 그룹 카테고리 구분(ROLE, PERMISSION, ROLE_GROUP) |
-|  Query |roleNameLike | String| No | 역할/권한/역할 그룹명 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 | 
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |project-id | String| Yes | Project ID | 
+|  Query |categoryTypeCodes | List<String> | No | Role/Permission/Role Group Category Distinction (ROLE, PERMISSION, ROLE_GROUP) |
+|  Query |roleNameLike | String| No | Role/privilege/role group name |
+|  Query |limit | Integer| No | Number of displays per page, default 20 | 
+|  Query |page | Integer| No | Target Page, default 1 |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -582,37 +582,37 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 ```
 
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   roles | List&lt;[RoleProtocol](#roleprotocol)>| Yes  | 역할 목록 |
-|   totalCount | Integer| Yes  | 총 개수 |
+|   header | [Common response](#Response)| Yes |
+|   roles | List<[RoleProtocol](#roleprotocol)>| Yes  | Roles list |
+|   totalCount | Integer| Yes  | Total count |
 
 <a id="조직-도메인-검색"></a>
-#### 조직 도메인 검색
+#### Search for an organization domain
 
 > GET "/v1/organizations/{org-id}/domains"
 
-특정 조직의 도메인을 조회하는 API입니다.
+API to look up domains for a specific organization.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Domain.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회할 조직의 ID | 
+|  Path |org-id | String| Yes | The ID of the organization to look up | 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -630,48 +630,48 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   domainList | List&lt;OrgDomainProtocol>| Yes  |
+|   header | [Common response](#Response)| Yes |
+|   domainList | List<OrgDomainProtocol>| Yes  |
 
 
 ###### OrgDomainProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   orgDomainId | String| Yes | 조직 도메인 ID |
-|   orgDomainName | String| Yes | 조직 도메인 이름 |
+|   orgDomainId | String| Yes | Organization domain ID |
+|   orgDomainName | String| Yes | Organization domain name |
 
 
 <a id="조직-멤버-단건-조회"></a>
-#### 조직 멤버 단건 조회
+#### View a organization member
 
 > GET "/v1/organizations/{org-id}/members/{member-uuid}"
 
-조직에 소속된 멤버를 조회하는 API입니다.
+API to get members belonging to an organization.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Member.Get`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 멤버를 조회할 조직 ID | 
-|  Path |member-uuid | String| Yes | 	조회할 멤버 UUID | 
+|  Path |org-id | String| Yes | Organization ID for which you want to look up members | 
+|  Path |member-uuid | String| Yes | 	Member UUID to look up | 
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -714,102 +714,102 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   orgMember | OrgMemberRoleBundleProtocol| No  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
+|   header | [Common response](#Response)| Yes |
+|   orgMember | OrgMemberRoleBundleProtocol| No  | Added member information, not included on error |
 
 ###### OrgMemberRoleBundleProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   email | String| Yes | 멤버 이메일 |
-|   id | String| No | 멤버 ID(IAM 멤버만 제공) |
+|   email | String| Yes | Member email |
+|   id | String| No | Member ID (available only to IAM members) |
 |   inviteStatusCode | String| Yes |   COMPLETE, EXPIRE, UNKNOWN, WAIT |
-|   joinYmdt | Date| Yes | 조직 멤버 등록 일시 |
-|   memberName | String| Yes| 	멤버 이름 |
-|   memberTypeCode | String| Yes| 멤버 구분(TOAST_CLOUD: NHN Cloud 멤버, IAM: IAM 멤버) |
-|   memberUuid | String| Yes| 멤버의 UUID |
-|   recentLoginYmdt | Date| Yes| 마지막 로그인 일시 |
-|   recentPasswordModifyYmdt | Date| No| 마지막 비밀번호 변경 일시 |
-|   roleCode | String| No| 역할 ID |
-|   roles | List&lt;RoleBundleProtocol>| No | 연관 역할 목록(조건 속성 포함)  |
-|   secondFactorCertificationYn | String| No| 2단계 로그인 설정 여부(NHN Cloud 멤버만 제공) |
+|   joinYmdt | Date| Yes | Organization member enrollment date |
+|   memberName | String| Yes| 	Member name |
+|   memberTypeCode | String| Yes| Member classification (TOAST_CLOUD: NHN Cloud member, IAM: IAM member) |
+|   memberUuid | String| Yes| Member's UUID |
+|   recentLoginYmdt | Date| Yes| Last login date |
+|   recentPasswordModifyYmdt | Date| No| Date of last password change |
+|   roleCode | String| No| Role ID |
+|   roles | List<RoleBundleProtocol>| No | List of related roles (with condition attributes)  |
+|   secondFactorCertificationYn | String| No| Whether to set up two-step sign-in (available to NHN Cloud members only) |
 
 
 ###### RoleBundleProtocol
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   roleId | String| Yes |  역할 ID |
-|   roleName | String| Yes |  역할 이름 |
-|   description | String| No |  역할 설명 |
-|   categoryKey | String| Yes | 역할/권한 카테고리 분류 키<br><ul><li>RoleGroup: 프로젝트 역할 그룹</li><li>OrgRoleGroup: 조직 역할 그룹</li><li>OrgRole: 조직 역할</li><li>ProjectRole: 프로젝트 역할</li><li>BillingRole: Billing 관련 역할</li><li>OrgServiceRole: 조직 서비스 역할</li><li>ProjectServiceRole: 프로젝트 서비스 역할</li><li>SystemRole: 시스템 생성 역할</li></ul>  |
-|   categoryTypeCode | String| Yes | 역할 그룹/역할/권한 구분 코드(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
-|   conditions | List&lt;AttributeConditionProtocol>| No | 조건 속성 목록 |
-|   roleApplyPolicyCode | String| Yes | 역할 사용 여부  ALLOW, DENY |
-|   regDateTime | Date| Yes |  역할 생성 일시 |
+|   roleId | String| Yes |  Role ID |
+|   roleName | String| Yes |  Role name |
+|   description | String| No |  Role descriptions |
+|   categoryKey | String| Yes | Role/Privilege Category Taxonomy Key<br><ul><li>RoleGroup: Project role group</li><li>OrgRoleGroup: Organization Role Group</li><li>OrgRole: Organization Role</li><li>ProjectRole: Project role</li><li>BillingRole: Billing-related roles</li><li>OrgServiceRole: Organization Service Role</li><li>ProjectServiceRole: Project service role</li><li>SystemRole: System-generated role</li></ul>  |
+|   categoryTypeCode | String| Yes | Role group/role/privilege distinguishing codes (ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
+|   conditions | List<AttributeConditionProtocol>| No | Condition attributes |
+|   roleApplyPolicyCode | String| Yes | Whether the role is enabled ALLOW, DENY |
+|   regDateTime | Date| Yes |  When the role was created |
 
 
 
 ###### AttributeConditionProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   attributeDataTypeCode | String| Yes |  조건 속성 데이터 타입(BOOLEAN, DATETIME, DAY_OF_WEEK, IPADDRESS, NUMERIC, STRING, TIME) |
-|   attributeDescription | String| No | 조건 속성 설명 |
-|   attributeId | String| Yes | 조건 속성 ID |
-|   attributeName | String| Yes | 조건 속성 이름 |
-|   attributeOperatorTypeCode | String| Yes | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
-|   attributeValues | List&lt;String>| Yes| 조건 속성 값 |
+|   attributeDataTypeCode | String| Yes |  Conditional attribute data type (BOOLEAN, DATETIME, DAY_OF_WEEK, IPADDRESS, NUMERIC, STRING, TIME) |
+|   attributeDescription | String| No | Condition attribute description |
+|   attributeId | String| Yes | Condition attribute ID |
+|   attributeName | String| Yes | Condition attribute name |
+|   attributeOperatorTypeCode | String| Yes | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
+|   attributeValues | List<String>| Yes| Condition attribute value |
 
 
 
 <a id="조직-멤버-목록-조회"></a>
-#### 조직 멤버 목록 조회
+#### List organization members
 
 > POST "/v1/organizations/{org-id}/members/search"
 
-해당 조직에 소속된 NHN Cloud 멤버 목록을 조회하는 API입니다.
+API to get a list of NHN Cloud members belonging to an organization.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Member.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-| Request Body | request | SearchOrgMembersRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | Organization ID | 
+| Request Body | request | SearchOrgMembersRequest| Yes | Request |
 
 
 ###### SearchOrgMembersRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   memberStatusCodes | List&lt;String>| No | 조회할 멤버의 상태<br><ul><li>STABLE: 초대 완료</li><li>INVITED: 초대 중</li><li>BLOCKED</li><li>NOT_EXIST</li><li>WITHDRAW</li></ul> |
-|   roleIds | Set&lt;String>| No  | 멤버들이 부여받은 역할 ID들 |
+|   memberStatusCodes | List<String>| No | Status of the member to look up<br><ul><li>STABLE: Invitation complete</li><li>INVITED: Invited</li><li>BLOCKED</li><li>NOT_EXIST</li><li>Withdraw</li></ul> |
+|   roleIds | Set<String>| No  | Role IDs assigned to members |
 |   paging | PagingBean| No  |
 
 ###### PagingBean
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 페이지당 표시 건수, 기본값 20  |
-|   page | Integer| No | 대상 페이지, 기본값 1  |
+|   limit | Integer| No | Number of displays per page, default 20  |
+|   page | Integer| No | Target Page, default 1  |
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -838,71 +838,71 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
   }
 }
 ```
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   orgMembers | List&lt;OrgMemberWithInviteMemberrotocol>| Yes | 조직 멤버 목록 |
-|   paging | PagingResponse| Yes | 페이지 정보 |
+|   header | [Common response](#Response)| Yes |
+|   orgMembers | List<OrgMemberWithInviteMemberrotocol>| Yes | Organization member list |
+|   paging | PagingResponse| Yes | About the page |
 
 ###### OrgMemberWithInviteMemberProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   email | String| Yes | 멤버의 이메일 주소 |
-|   inviteStatusCode | String| No | 멤버의 초대 상태(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   joinYmdt | Date| Yes | 멤버 가입 일시 |
-|   maskingEmail | String| Yes | 멤버의 마스킹된 이메일  |
-|   memberName | String| Yes| 멤버의 이름 |
-|   memberTypeCode | String| Yes| 멤버 구분(TOAST_CLOUD: NHN Cloud 멤버, IAM: IAM 멤버) |
-|   memberUuid | String| No| 멤버의 UUID<br>초대 중인 경우 값을 반환하지 않음 |
-|   recentLoginYmdt | Date| Yes| 마지막 로그인 일시 |
-|   recentPasswordModifyYmdt | Date| No| 마지막 비밀번호 변경 일시 |
-|   secondFactorCertificationYn | String| No|  2단계 로그인 설정 여부(NHN Cloud 멤버만 제공) |
+|   email | String| Yes | The member's email address |
+|   inviteStatusCode | String| No | Member's invitation status (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   joinYmdt | Date| Yes | When you joined |
+|   maskingEmail | String| Yes | Member's masked email  |
+|   memberName | String| Yes| Member's name |
+|   memberTypeCode | String| Yes| Member classification (TOAST_CLOUD: NHN Cloud member, IAM: IAM member) |
+|   memberUuid | String| No| Member's UUID<br>Doesn't return a value if you're inviting |
+|   recentLoginYmdt | Date| Yes| Last login date |
+|   recentPasswordModifyYmdt | Date| No| Date of last password change |
+|   secondFactorCertificationYn | String| No|  Whether to set up two-step sign-in (available to NHN Cloud members only) |
 
 ###### PagingResponse
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 페이지당 표시 건수, 기본값 20  |
-|   page | Integer| No | 대상 페이지, 기본값 1  |
-|   totalCount | Long| Yes | 총 건수  |
+|   limit | Integer| No | Number of displays per page, default 20  |
+|   page | Integer| No | Target Page, default 1  |
+|   totalCount | Long| Yes | Total number of cases  |
 
 
 
 
 <a id="조직의-프로젝트-공통-역할-그룹-전체-조회"></a>
-#### 조직의 프로젝트 공통 역할 그룹 전체 조회
+#### View all common role groups for projects in the organization
 
 > GET "/v1/organizations/{org-id}/project-role-groups"
 
-조직에서 설정한 프로젝트 공통 역할 그룹 목록을 조회하는 API입니다.
+API to get a list of project common role groups set up by your organization.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Project.RoleGroup.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회 대상 조직 ID | 
-|  Query |descriptionLike | String| No | 설명 | 
-|  Query |roleGroupNameLike | String| No | 역할 그룹명 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |org-id | String| Yes | Organization ID for the lookup | 
+|  Query |descriptionLike | String| No | Description | 
+|  Query |roleGroupNameLike | String| No | Role group name |
+|  Query |limit | Integer| No | Number of displays per page, default 20 |
+|  Query |page | Integer| No | Target Page, default 1 |
 
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -928,52 +928,52 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes  |
+|   header | [Common response](#Response)| Yes  |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   roleGroups | List&lt;RoleGroupProtocol>| Yes | 프로젝트에서 사용 가능한 역할 그룹 목록  |
+|   roleGroups | List<RoleGroupProtocol>| Yes | List of available role groups in your project  |
 
 
 ###### RoleGroupProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   description | String| No | 역할 그룹 설명 |
-|   regDateTime | Date| Yes | 역할 그룹 생성 일시 |
-|   roleGroupId | String| Yes | 역할 그룹 ID |
-|   roleGroupName | String| Yes| 역할 그룹의 이름 |
-|   roleGroupType | String| Yes | 역할 그룹의 종류<br><ul><li>ORG: 프로젝트 공통 역할 그룹</li><li>ORG_ROLE_GROUP: 조직 역할 그룹</li><li>PROJECT: 프로젝트 역할 그룹</li> |
+|   description | String| No | Role group descriptions |
+|   regDateTime | Date| Yes | When the role group was created |
+|   roleGroupId | String| Yes | Role group ID |
+|   roleGroupName | String| Yes| Name of the role group |
+|   roleGroupType | String| Yes | Types of role groups<br><ul><li>ORG: Project common role group</li><li>ORG_ROLE_GROUP: Organization role group</li><li>PROJECT: Project role group</li> |
 
 
 <a id="상품-계층-구조-조회"></a>
-#### 상품 계층 구조 조회
+#### View product hierarchy
 
 > GET "/v1/product-uis/hierarchy"
 
-청구서에 노출되는 홈페이지 카테고리, 홈페이지 서비스 정보를 반환하는 API입니다.
+API to return homepage category, homepage service information that is exposed on the bill.
 
-##### 필요 권한
-NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다.<br>
-단, 조직 상품을 조회하는 경우에는 해당 조직이나 조직 하위에 있는 프로젝트 멤버여야만 합니다.
+##### Required permissions
+This API can be called without specific permissions if you are an NHN Cloud member.<br>
+However, if you're viewing an organization's products, you must be a member of a project in that organization or a project under that organization.
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |productUiType | String| Yes | 상품 UI 타입<br><ul><li>PROJECT: 프로젝트 상품</li><li>ORG: 조직 상품</li><li>MARKET_PLACE: 마켓플레이스 상품</li></ul> |
-|  Query |orgId | String| No | 상품 UI 타입이 ORG인 경우, 조직 ID를 반드시 입력해야 함 |
+|  Query |productUiType | String| Yes | Product UI Types<br><ul><li>PROJECT: Project product</li><li>ORG: Organization Products</li><li>MARKET_PLACE: Marketplace products</li></ul> |
+|  Query |orgId | String| No | Organization ID must be entered if the product UI type is ORG |
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -993,50 +993,50 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   productUiList | List&lt;ProductUiHierarchyProtocol>| Yes  | 홈페이지 카테고리 상품 UI 목록 |
+|   header | [Common response](#Response)| Yes |
+|   productUiList | List<ProductUiHierarchyProtocol>| Yes  | Homepage Category Product UI List |
 
 ###### ProductUiHierarchyProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   children | List&lt;ProductUiHierarchyProtocol>| No | 홈페이지 서비스 상품 UI 목록 |
+|   children | List<ProductUiHierarchyProtocol>| No | Homepage Service Product UI List |
 |   manualLink | String| No|
-|   parentProductUiId | String| No| 상품 UI 구분 |
+|   parentProductUiId | String| No| Product UI divisions |
 |   productId | String| No|
-|   productUiId | String| No| 상품 UI 식별 키 |
+|   productUiId | String| No| Product UI identification key |
 |   productUiName | String| No|
 
 
 <a id="프로젝트에서-사용-중인-상품-조회"></a>
-#### 프로젝트에서 사용 중인 상품 조회
+#### View a product used in the project
 
 > GET "/v1/projects/{project-id}/products/{product-id}"
 
-* 프로젝트에서 사용 중인 특정 서비스 정보를 조회하는 API
+* APIs to get information about specific services used by your project
 
-##### 필요 권한
-`상품명:ProductAppKey.Get`
+##### Required permissions
+`Product Name: ProductAppKey.Get`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회 대상 프로젝트 ID |
-|  Path |product-id | String| Yes | 조회 대상 서비스 ID |
+|  Path |project-id | String| Yes | Project ID to look up |
+|  Path |product-id | String| Yes | Service ID to look up |
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -1063,58 +1063,58 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   hasUpdateSecretKeyPermission | Boolean| Yes | 비밀 키 재발급 가능 권한  |
-|   product | ProjectProductRelationAndProductProtocol| Yes  | 지정한 서비스 ID에 대해서 프로젝트에서 사용 중인 서비스 정보를 반환, 오류 시 포함하지 않음 |
+|   header | [Common response](#Response)| Yes |
+|   hasUpdateSecretKeyPermission | Boolean| Yes | Permission to reissue secret keys  |
+|   product | ProjectProductRelationAndProductProtocol| Yes  | Returns information about the services being used by the project for the specified service ID, not including on error |
 
 
 ###### ProjectProductRelationAndProductProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 AppKey 정보  |
-|   externalId | String| No | 테넌트 ID<br>서비스에 테넌트 ID가 존재하는 경우에만 제공 |
-|   productId | String| Yes | 서비스 ID  |
-|   productName | String| Yes | 상품 이름  |
-|   productSecretKeyCode | String| No | 비밀 키 사용 여부<br>T: 사용함<br>나머지: 사용하지 않음(F, N) |
-|   productStatusCode | String| Yes | 서비스 상태(STABLE, CLOSED) |
-|   projectId | String| Yes | 해당 서비스를 사용하는 프로젝트 ID  |
-|   relationDate | Date| Yes | 서비스 이용 시작 일시  |
-|   secretKey | String| Yes | 서비스 SecretKey<br>secretKey를 이용하는 서비스에서만 제공  |
-|   statusCode | String| Yes | 해당 서비스의 이용 상태(STABLE, CLOSED) |
-|   updateDate | Date| No | 서비스 최종 수정 일시  |
-|   updateUuid | String| No | 서비스 AppKey 수정자 UUID  |
+|   appKey | String| Yes | AppKey information for the service your project is using  |
+|   externalId | String| No | Tenant ID<br>Only available if the tenant ID exists for the service |
+|   productId | String| Yes | Service ID  |
+|   productName | String| Yes | Product name  |
+|   productSecretKeyCode | String| No | Whether to use a secret key<br>T: Enabled<br>Others: Not used (F, N) |
+|   productStatusCode | String| Yes | Service status (STABLE, CLOSED) |
+|   projectId | String| Yes | The project ID that uses the service  |
+|   relationDate | Date| Yes | When you started using the service  |
+|   secretKey | String| Yes | Service SecretKey<br>Only available on services that use secretKey  |
+|   statusCode | String| Yes | The service's usage status (STABLE, CLOSED) |
+|   updateDate | Date| No | Service last modified date  |
+|   updateUuid | String| No | Service AppKey Modifier UUID  |
 
 
 <a id="프로젝트-멤버-단건-조회"></a>
-#### 프로젝트 멤버 단건 조회
+#### View a project member
 
 > GET "/v1/projects/{project-id}/members/{member-uuid}"
 
-프로젝트에 소속된 특정 멤버를 조회하는 API입니다.
+API to get a specific member of a project.
 
-##### 필요 권한
+##### Required permissions
 `Project.Member.Get`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 멤버를 조회할 프로젝트 ID |
-|  Path |member-uuid | String| Yes | 조회할 멤버 UUID |
+|  Path |project-id | String| Yes | Project ID to look up members |
+|  Path |member-uuid | String| Yes | Member UUID to look up |
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -1153,28 +1153,28 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 ```
 
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   projectMember | ProjectMemberRoleBundleProtocol| Yes  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
+|   header | [Common response](#Response)| Yes |
+|   projectMember | ProjectMemberRoleBundleProtocol| Yes  | Added member information, not included on error |
 
 
 ###### ProjectMemberRoleBundleProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   emailAddress | String| No | 멤버 이메일 주소  |
-|   maskingEmail | String| No | 멤버의 마스킹된 이메일  |
-|   memberName | String| No | 멤버 이름  |
-|   memberTypeCode | String| No | 멤버 구분(IAM, TOAST_CLOUD) |
-|   relationDateTime | Date| No | 멤버 추가 시간  |
-|   roles | List&lt;RoleBundleProtocol>| No | 연관 역할 목록(조건 속성 포함)  |
-|   statusCode | String| No | 초대 상태 코드(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   uuid | String| No | 멤버 UUID  |
+|   emailAddress | String| No | Member email address  |
+|   maskingEmail | String| No | Member's masked email  |
+|   memberName | String| No | Member name  |
+|   memberTypeCode | String| No | Member Distinction (IAM, TOAST_CLOUD) |
+|   relationDateTime | Date| No | Time to add members  |
+|   roles | List<RoleBundleProtocol>| No | List of related roles (with condition attributes)  |
+|   statusCode | String| No | Invitation status codes (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   UUID | String| No | Member UUID  |
 
 
 [RoleBundleProtocol](#rolebundleprotocol)
@@ -1182,39 +1182,39 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 
 <a id="프로젝트-멤버-목록-조회"></a>
-#### 프로젝트 멤버 목록 조회
+#### List project members
 
 > POST "/v1/projects/{project-id}/members/search"
 
-프로젝트에 소속된 멤버 목록을 조회하기 위한 API입니다.
+API for getting a list of members belonging to a project.
 
-##### 필요 권한
+##### Required permissions
 `Project.Member.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회할 프로젝트 ID | 
-| Request Body | request | SearchProjectMembersRequest| Yes | 요청 |
+|  Path |project-id | String| Yes | Project ID to look up | 
+| Request Body | request | SearchProjectMembersRequest| Yes | Request |
 
 
 
 ###### SearchProjectMembersRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   memberStatusCodes | List&lt;String>| No | 프로젝트 멤버 상태 코드(INVITED, STABLE) |
-|   roleIds | List&lt;String>| No | 역할 ID 목록  |
+|   memberStatusCodes | List<String>| No | Project member status codes (INVITED, STABLE) |
+|   roleIds | List<String>| No | List of role IDs  |
 |   paging | [PagingBean](#pagingbean) | No   |
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -1240,54 +1240,54 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [Common response](#Response)| Yes |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   projectMembers | List&lt;ProjectMemberProtocol>| Yes | 프로젝트 멤버  |
+|   projectMembers | List<ProjectMemberProtocol>| Yes | Project members  |
 
 
 
 ###### ProjectMemberProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   emailAddress | String| No | 멤버 이메일 주소  |
-|   maskingEmail | String| No | 멤버의 마스킹된 이메일  |
-|   memberName | String| No | 멤버 이름  |
-|   memberTypeCode | String| No | 멤버 구분 |
-|   relationDateTime | Date| No | 멤버 추가 시간  |
-|   statusCode | String| No | 초대 상태 코드(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   uuid | String| No | 멤버 UUID  |
+|   emailAddress | String| No | Member email address  |
+|   maskingEmail | String| No | Member's masked email  |
+|   memberName | String| No | Member name  |
+|   memberTypeCode | String| No | Separate members |
+|   relationDateTime | Date| No | Time to add members  |
+|   statusCode | String| No | Invitation status codes (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   UUID | String| No | Member UUID  |
 
 
 <a id="프로젝트-역할-그룹-단건-조회"></a>
-#### 프로젝트 역할 그룹 단건 조회
+#### View a project role group
 
 > GET "/v1/projects/{project-id}/project-role-groups/{role-group-id}"
 
-프로젝트의 역할 그룹을 조회하는 API입니다.
+API to get a project's role groups.
 
-##### 필요 권한
+##### Required permissions
 `Project.RoleGroup.Get`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회 대상 프로젝트 ID | 
-|  Path |role-group-id | String| Yes | 프로젝트 역할 그룹 ID<br>프로젝트 공통 역할 그룹 ID는 조회 불가 | 
+|  Path |project-id | String| Yes | Project ID to look up | 
+|  Path |role-group-id | String| Yes | Project role group ID<br>Project common role group IDs cannot be looked up | 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -1323,47 +1323,47 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   roleGroup | RoleGroupBundleProtocol| Yes | 연관 역할을 포함한 역할 그룹  |
+|   header | [Common response](#Response)| Yes |
+|   roleGroup | RoleGroupBundleProtocol| Yes | Role groups with related roles  |
 
 ###### RoleGroupBundleProtocol
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleGroupId | String| No | 역할 그룹 ID  |
-|   roleGroupName | String| No | 역할 그룹 이름  |
-|   description | String| No | 역할 그룹 설명  |
-|   roleGroupType | String| No | 역할 그룹 구분(조직, 프로젝트)  |
-|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 연관 역할 목록  |
-|   regDateTime | Date| No | 등록 일시  |
+|   roleGroupId | String| No | Role group ID  |
+|   roleGroupName | String| No | Role group name  |
+|   description | String| No | Role group descriptions  |
+|   roleGroupType | String| No | Role group distinction (organization, project)  |
+|   roles | [List<RoleBundleProtocol>](#rolebundleprotocol)| No | List related roles  |
+|   regDateTime | Date| No | Registered date and time  |
 
 
 
 <a id="조직의-프로젝트-공통-역할-그룹-단건-조회"></a>
-#### 조직의 프로젝트 공통 역할 그룹 단건 조회
+#### View a common role group for the project in the organization
 
 > GET "/v1/organizations/{org-id}/project-role-groups/{role-group-id}"
 
-프로젝트 공통 역할 그룹을 조회하는 API입니다.
+API to get project common role groups.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Project.RoleGroup.Get`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회 대상 조직 ID | 
-|  Path |role-group-id | String| Yes | 프로젝트 공통 역할 그룹 ID | 
+|  Path |org-id | String| Yes | Organization ID for the lookup | 
+|  Path |role-group-id | String| Yes | Project common role group ID | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -1400,41 +1400,41 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 ```
 
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | 연관 역할을 포함한 역할 그룹  |
+|   header | [Common response](#Response)| Yes |
+|   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | Role groups with related roles  |
 
 
 
 
 <a id="프로젝트-역할-그룹-전체-조회"></a>
-#### 프로젝트 역할 그룹 전체 조회
+#### View all project role groups
 
 > GET "/v1/projects/{project-id}/project-role-groups"
 
-프로젝트의 역할 그룹을 전체 조회하는 API입니다.
+API to get all role groups in a project.
 
-##### 필요 권한
+##### Required permissions
 `Project.RoleGroup.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회 대상 프로젝트 ID | 
-|  Query |descriptionLike | String| No | 설명 |
-|  Query |roleGroupNameLike | String| No | 역할 그룹명 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |project-id | String| Yes | Project ID to look up | 
+|  Query |descriptionLike | String| No | Description |
+|  Query |roleGroupNameLike | String| No | Role group name |
+|  Query |limit | Integer| No | Number of displays per page, default 20 |
+|  Query |page | Integer| No | Target Page, default 1 |
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -1458,38 +1458,38 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes  |
+|   header | [Common response](#Response)| Yes  |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)>| Yes | 프로젝트에서 사용 가능한 역할 그룹 목록  |
+|   roleGroups | List<[RoleGroupProtocol](#rolegroupprotocol)>| Yes | List of available role groups in your project  |
 
 <a id="조직에-속한-프로젝트-목록-조회"></a>
-#### 조직에 속한 프로젝트 목록 조회
+#### List projects in your organization
 
 > GET "/v1/organizations/{org-id}/projects"
 
-특정 조직에 속한 STABLE 한 상태의 프로젝트 목록을 조회하는 API입니다.
+API to get a list of projects in a STABLE state that belong to a specific organization.
 
-##### 필요 권한
-조직의 멤버
+##### Required permissions
+Members of an organization
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회할 조직의 ID | 
-|  Query |memberUuid | String| No | 조직의 멤버 UUID |
-|  Query |projectName | String| No | 프로젝트 이름 |
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
+|  Path |org-id | String| Yes | The ID of the organization to look up | 
+|  Query |memberUuid | String| No | Organization member UUID |
+|  Query |projectName | String| No | Project name |
+|  Query |page | Integer| No | Target Page, default 1 |
+|  Query |limit | Integer| No | Number of displays per page, default 20 |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -1517,50 +1517,50 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 ```
 
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [Common response](#Response)| Yes |
 |   paging | [PagingResponse](#pagingresponse) | Yes |
-|   projectList | List&lt;OrgProjectMemberRoleProtocol>| Yes |
+|   projectList | List<OrgProjectMemberRoleProtocol>| Yes |
 
 
 
 ###### OrgProjectMemberRoleProtocol
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   delDateTime | Date| No | 프로젝트 삭제 일시 |
-|   description | String| No | 프로젝트 설명 |
-|   modDateTime | Date| No| 프로젝트 수정 일시 |
-|   orgId | String| Yes| 프로젝트가 속한 조직 ID |
-|   projectId | String| Yes| 프로젝트 ID |
-|   projectName | String| Yes| 프로젝트 이름 |
-|   projectStatusCode | String| Yes | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 상품이 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> |
-|   regDateTime | Date| Yes| 프로젝트 등록 일시 |
+|   delDateTime | Date| No | Project deletion date |
+|   description | String| No | Project description |
+|   modDateTime | Date| No| Project modification date |
+|   orgId | String| Yes| The organization ID the project belongs to |
+|   projectId | String| Yes| Project ID |
+|   projectName | String| Yes| Project name |
+|   projectStatusCode | String| Yes | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All products are closed but not paid for</li></ul> |
+|   regDateTime | Date| Yes| Project registration date |
 
 
 <a id="사용-중인-조직-거버넌스-목록-조회"></a>
-#### 사용 중인 조직 거버넌스 목록 조회
+#### List organization governance in use
 
 > GET "/v1/organizations/{org-id}/governances"
 
-활성화된 거버넌스를 조회하는 API입니다.
+API to get the active governance.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Governance.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회 대상 조직 ID | 
+|  Path |org-id | String| Yes | Organization ID for the lookup | 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -1578,502 +1578,502 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 
 
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   usingGovernances | List&lt;GovernanceProtocol>| No | 사용 중인 거버넌스 목록  |
+|   header | [Common response](#Response)| Yes   |
+|   usingGovernances | List<GovernanceProtocol>| No | List governance in use  |
 
 
 ###### GovernanceProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   governanceTypeCode | String| No | 거버넌스 타입  |
-|   regDatetime | Date| No | 거버넌스 사용 설정 일시  |
+|   governanceTypeCode | String| No | Governance type  |
+|   regDatetime | Date| No | When to enable governance  |
 
 
 <a id="조직의-프로젝트-공통-역할-그룹-생성"></a>
-#### 조직의 프로젝트 공통 역할 그룹 생성
+#### Create a common role group for projects in the organization
 
 > POST "/v1/organizations/{org-id}/project-role-groups"
 
-프로젝트 공통 역할 그룹을 생성하는 API입니다.
+API to create project common role groups.
 
 
-##### 필요 권한
+##### Required permissions
 `Organization.Project.RoleGroup.Create`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-| Request Body | request | CreateRoleGroupRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | Organization ID | 
+| Request Body | request | CreateRoleGroupRequest| Yes | Request |
 
 ###### CreateRoleGroupRequest
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   description | String| No | 역할 그룹 설명  |
-|   roleGroupName | String| Yes | 역할 그룹 이름  |
-|   roles | List&lt;AssignRoleProtocol>| Yes | 역할 그룹에 할당할 역할 목록  |
+|   description | String| No | Role group descriptions  |
+|   roleGroupName | String| Yes | Role group name  |
+|   roles | List<AssignRoleProtocol>| Yes | List roles to assign to a role group  |
 
 
 ###### AssignRoleProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   conditions | List&lt;[AssignAttributeConditionProtocol](#assignattributeconditionprotocol)>| No | 역할 조건 속성  |
-|   roleApplyPolicyCode | String| Yes | 역할 사용 여부  ALLOW, DENY |
-|   roleId | String| Yes | 역할 ID  |
+|   conditions | List<[AssignAttributeConditionProtocol](#assignattributeconditionprotocol)>| No | Role condition attribute  |
+|   roleApplyPolicyCode | String| Yes | Whether the role is enabled ALLOW, DENY |
+|   roleId | String| Yes | Role ID  |
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 
 <a id="조직의-프로젝트-공통-역할-그룹-삭제"></a>
-#### 조직의 프로젝트 공통 역할 그룹 삭제
+#### Delete a project common role group in the organization
 
 > DELETE "/v1/organizations/{org-id}/project-role-groups"
 
-프로젝트 공통 역할 그룹을 삭제하는 API입니다.
+API to delete a project common role group.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Project.RoleGroup.Delete`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-| Request Body | request | DeleteRoleGroupRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | Organization ID | 
+| Request Body | request | DeleteRoleGroupRequest| Yes | Request |
 
 
 ###### DeleteRoleGroupRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleGroupIds | List&lt;String>| Yes | 역할 그룹 ID 목록  |
+|   roleGroupIds | List<String>| Yes | List of role group IDs  |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="조직의-프로젝트-공통-역할-그룹-정보-수정"></a>
-#### 조직의 프로젝트 공통 역할 그룹 정보 수정
+#### Modify your organization's project common role group information
 
 > PUT "/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos"
 
-프로젝트 공통 역할 그룹의 이름과 설명을 수정하는 API입니다.
+API to modify the name and description of a project's common role group.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Project.RoleGroup.Update`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-|  Path |role-group-id | String| Yes | 역할 그룹 ID | 
-| Request Body | request | UpdateRoleGroupInfoRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | Organization ID | 
+|  Path |role-group-id | String| Yes | Role group ID | 
+| Request Body | request | UpdateRoleGroupInfoRequest| Yes | Request |
 
 
 ###### UpdateRoleGroupInfoRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   description | String| No | 역할 그룹 설명  |
-|   roleGroupName | String| Yes | 역할 그룹 이름  |
+|   description | String| No | Role group descriptions  |
+|   roleGroupName | String| Yes | Role group name  |
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="조직의-프로젝트-공통-역할-그룹-역할-수정"></a>
-#### 조직의 프로젝트 공통 역할 그룹 역할 수정
+#### Modify your organization's project common roles group roles
 
 > PUT "/v1/organizations/{org-id}/project-role-groups/{role-group-id}/roles"
 
-프로젝트 공통 역할 그룹의 역할을 수정하는 API입니다.
+API to modify roles in the project common roles group.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Project.RoleGroup.Update`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-|  Path |role-group-id | String| Yes | 역할 그룹 ID | 
-| Request Body | request | UpdateRoleGroupRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | Organization ID | 
+|  Path |role-group-id | String| Yes | Role group ID | 
+| Request Body | request | UpdateRoleGroupRequest| Yes | Request |
 
 
 ###### UpdateRoleGroupRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Yes | 역할 그룹에 할당할 역할 목록  |
+|   roles | List<[AssignRoleProtocol](#assignroleprotocol)>| Yes | List roles to assign to a role group  |
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="프로젝트-역할-그룹-생성"></a>
-#### 프로젝트 역할 그룹 생성
+#### Create a project role group
 
 > POST "/v1/projects/{project-id}/project-role-groups"
 
-프로젝트에 역할 그룹을 생성하는 API입니다.
+API to create role groups in your project.
 
 
-##### 필요 권한
+##### Required permissions
 `Project.RoleGroup.Create`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest)| Yes | 요청 |
+|  Path |project-id | String| Yes | Project ID | 
+| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest)| Yes | Request |
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="프로젝트-역할-그룹-삭제"></a>
-#### 프로젝트 역할 그룹 삭제
+#### Delete a project role group
 
 > DELETE "/v1/projects/{project-id}/project-role-groups"
 
-프로젝트 역할 그룹을 삭제하는 API입니다.
+API to delete a project role group.
 
 
-##### 필요 권한
+##### Required permissions
 `Project.RoleGroup.Delete`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest)| Yes | 요청 |
+|  Path |project-id | String| Yes | Project ID | 
+| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest)| Yes | Request |
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="프로젝트-역할-그룹-정보-수정"></a>
-#### 프로젝트 역할 그룹 정보 수정
+#### Edit project role group information
 
 > PUT "/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos"
 
-프로젝트 역할 그룹의 이름과 설명을 수정하는 API입니다.
+API to modify the name and description of a project role group.
 
-##### 필요 권한
+##### Required permissions
 `Project.RoleGroup.Update`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Path |role-group-id | String| Yes | 역할 그룹 ID | 
-| Request Body | request |[UpdateRoleGroupInfoRequest](#updaterolegroupinforequest)| Yes | 요청 |
+|  Path |project-id | String| Yes | Project ID | 
+|  Path |role-group-id | String| Yes | Role group ID | 
+| Request Body | request |[UpdateRoleGroupInfoRequest](#updaterolegroupinforequest)| Yes | Request |
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 
 <a id="프로젝트-역할-그룹-역할-수정"></a>
-#### 프로젝트 역할 그룹 역할 수정
+#### Modify project role group roles
 
 > PUT "/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles"
 
-프로젝트 역할 그룹의 역할을 수정하는 API입니다.
+API to modify roles in the project role group.
 
-##### 필요 권한
+##### Required permissions
 `Project.RoleGroup.Update`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Path |role-group-id | String| Yes | 역할 그룹 ID | 
-| Request Body | request | UpdateRoleGroupRequest| Yes | 요청 |
+|  Path |project-id | String| Yes | Project ID | 
+|  Path |role-group-id | String| Yes | Role group ID | 
+| Request Body | request | UpdateRoleGroupRequest| Yes | Request |
 
 ###### UpdateRoleGroupRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Yes | 역할 그룹에 할당할 역할 목록  |
+|   roles | List<[AssignRoleProtocol](#assignroleprotocol)>| Yes | List roles to assign to a role group  |
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="조직-멤버-역할-변경"></a>
-#### 조직 멤버 역할 변경
+#### Change organization member roles
 
 > PUT "/v1/organizations/{org-id}/members/{member-uuid}"
 
-해당 조직에 소속된 멤버의 역할을 수정하는 API입니다.
+API to modify the roles of members who belong to this organization.
 
 
-##### 필요 권한
+##### Required permissions
 `Organization.Member.Update`
 
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-|  Path |member-uuid | String| Yes | 수정할 멤버의 UUID | 
-| Request Body | request | UpdateMemberRoleRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | Organization ID | 
+|  Path |member-uuid | String| Yes | UUID of the member to modify | 
+| Request Body | request | UpdateMemberRoleRequest| Yes | Request |
 
 
 ###### UpdateMemberRoleRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List&lt;[UserAssignRoleProtocol](#userassignroleprotocol)>| Yes | 사용자에게 할당할 역할 목록  |
+|   assignRoles | List<[UserAssignRoleProtocol](#userassignroleprotocol)>| Yes | List of roles to assign to users  |
 
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="프로젝트-멤버-역할-수정"></a>
-#### 프로젝트 멤버 역할 수정
+#### Modify project member roles
 
 > PUT "/v1/projects/{project-id}/members/{member-uuid}"
 
-프로젝트에서 지정한 멤버의 역할을 변경하는 API입니다.
+API to change the role of a specified member in a project.
 
-##### 필요 권한
+##### Required permissions
 `Project.Member.Update`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Path |member-uuid | String| Yes | 역할 변경 대상 멤버 UUID | 
-| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | 요청 |
+|  Path |project-id | String| Yes | Project ID | 
+|  Path |member-uuid | String| Yes | Member UUID to change role to | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | Request |
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="조직-IAM-멤버-단건-조회"></a>
-#### 조직 IAM 멤버 단건 조회
+#### View organization IAM members
 
 > GET "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
-조직에 소속된 IAM 멤버를 조회하는 API입니다.
+API to get the IAM members in your organization.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Member.Iam.Get`
 
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회할 조직 ID | 
-|  Path |member-uuid | String| Yes | 조회할 조직의 IAM 멤버 UUID | 
+|  Path |org-id | String| Yes | Organization ID to look up | 
+|  Path |member-uuid | String| Yes | The IAM member UUID of the organization to look up | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -2138,88 +2138,88 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 |   orgMember | OrgIamMemberRoleBundleProtocol| No  |
 
 ###### OrgIamMemberRoleBundleProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
 |   corporate | String| No |
 |   country | String| No |
 |   createdAt | Date| No |
-|   creationType | String| No| 멤버의 생성 타입 |
+|   creationType | String| No| Member's creation type |
 |   department | String| No|
-|   emailAddress | String| Yes | IAM 멤버 이메일 주소  |
+|   emailAddress | String| Yes | IAM member email address  |
 |   englishName | String| No|
-|   id | String| Yes | IAM 멤버 UUID  |
+|   id | String| Yes | IAM member UUID  |
 |   idProviderId | String| No|
-|   idProviderType | String| No| service: IAM 직접 로그인<br>sso: 고객 SSO 연동 |
+|   idProviderType | String| No| service: IAM direct sign-in<br>SSO: Customer SSO integration |
 |   idProviderUserId | String| No|
-|   lastAccessedAt | Date| No| 멤버의 마지막 접속 일시, 없을 경우 null 반환 |
-|   lastLoggedInAt | Date| No| 멤버의 마지막 로그인 일시, 없을 경우 null 반환 |
-|   lastLoggedInIp | String| No| 멤버의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
-|   maskingEmail | String| No | IAM 멤버의 마스킹된 이메일주소  |
-|   mobilePhone | String| No | IAM 멤버의 휴대폰 번호  |
+|   lastAccessedAt | Date| No| The member's last access date, returning null if not present |
+|   lastLoggedInAt | Date| No| The member's last login date, returning null if not found |
+|   lastLoggedInIp | String| No| The member's last login IP address, returning null if not present |
+|   maskingEmail | String| No | Masked email addresses for IAM members  |
+|   mobilePhone | String| No | IAM member's cell phone number  |
 |   mobilePhoneCountryCode | String| No|
-|   name | String| Yes | IAM 멤버의 이름  |
+|   name | String| Yes | Name of the IAM member  |
 |   nativeName | String| No|
 |   nickname | String| No|
 |   officeHoursBegin | String| No|
 |   officeHoursEnd | String| No|
-|   organizationId | String| Yes | IAM 멤버의 조직 ID  |
-|   passwordChangedAt | Date| No| 멤버의 마지막 비밀번호 변경 일시, 없을 경우 null 반환 |
+|   organizationId | String| Yes | Organization ID of the IAM member  |
+|   passwordChangedAt | Date| No| When the member's last password was changed, returning null if none |
 |   position | String| No|
 |   profileImageUrl | String| No|
-|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 연관 역할 목록(조건 속성 포함)  |
-|   saasRoles | List&lt;IamMemberRole>| No | IAM 멤버 역할  |
-|   status | String| No| 멤버의 상태 |
-|   telephone | String| No | IAM 멤버의 전화번호  |
-|   userCode | String| Yes | IAM 멤버 ID  |
+|   roles | [List<RoleBundleProtocol>](#rolebundleprotocol)| No | List of related roles (with condition attributes)  |
+|   saasRoles | List<IamMemberRole>| No | IAM member roles  |
+|   String | String| No| Member's status |
+|   telephone | String| No | IAM member's phone number  |
+|   userCode | String| Yes | IAM member ID  |
 
 
 
 ###### IamMemberRole
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
 |   productId | String| No |
 |   productName | String| No |
-|   role | String| No |
+|   String | String| No |
 
 
 <a id="조직-IAM-멤버-목록-조회"></a>
-#### 조직 IAM 멤버 목록 조회
+#### List organization IAM members
 
 > GET "/v1/iam/organizations/{org-id}/members"
 
-해당 조직에 소속된 IAM 멤버 목록을 조회하는 API입니다.
+API to get a list of IAM members that belong to this organization.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Member.Iam.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-|  Query |email | String| No | IAM 멤버의 이메일 주소 |
+|  Path |org-id | String| Yes | Organization ID | 
+|  Query |email | String| No | IAM member's email address |
 |  Query |emailLike | String| No |  |
-|  Query |idProviderType | String| No | service: IAM 직접 로그인<br>sso: 고객 SSO 연동 |
+|  Query |idProviderType | String| No | service: IAM direct sign-in<br>SSO: Customer SSO integration |
 |  Query |nameLike | String| No |  |
-|  Query |statuses | List&lt;String>| No |  |
-|  Query |userCode | String| No | IAM 멤버 ID |
+|  Query |statuses | List<String>| No |  |
+|  Query |userCode | String| No | IAM member ID |
 |  Query |userCodeLike | String| No |  |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Query |limit | Integer| No | Number of displays per page, default 20 |
+|  Query |page | Integer| No | Target Page, default 1 |
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -2273,26 +2273,26 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 ```
 
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   orgMembers | List&lt;IamOrgMemberProtocol>| No | 조직 IAM 멤버 목록  |
+|   header | [Common response](#Response)| Yes   |
+|   orgMembers | List<IamOrgMemberProtocol>| No | Organization IAM member list  |
 |   paging | [PagingResponse](#pagingresponse)| No  |
 
 ###### IamOrgMemberProtocol
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-| header | [공통 응답](#응답)| Yes | protocol이 response에 있는 경우에만 필수값 |
-| id | String | No | IAM 멤버 UUID | 
-| userCode | String | Yes | 로그인 시 사용할 IAM 멤버 ID | 
-| name | String | Yes | IAM 멤버의 사용자 이름 | 
-| emailAddress | String |  Yes | IAM 멤버의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
-| maskingEmail | String | No | IAM 멤버의 마스킹된 이메일 주소 |
-| mobilePhone | String | No | IAM 멤버의 휴대폰 번호 |
-| telephone | String | No | IAM 멤버 전화번호 |
+| header | [Common response](#Response)| Yes | Required only if protocol is in response |
+| id | String | No | IAM member UUID | 
+| userCode | String | Yes | IAM member ID to use for sign-in | 
+| name | String | Yes | Username of the IAM member | 
+| emailAddress | String |  Yes | IAM member's email address<br>Used to receive notifications or to change your password. |
+| maskingEmail | String | No | Masked email addresses for IAM members |
+| mobilePhone | String | No | IAM member's cell phone number |
+| telephone | String | No | IAM member phone number |
 | position | String | No |  |
 | department | String | No |  |
 | corporate | String | No |  |
@@ -2302,54 +2302,54 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 | nickname | String | No |  |
 | officeHoursBegin | String | No |  |
 | officeHoursEnd | String | No |  |
-| status | String | Yes | 멤버 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
+| String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
 | creationType | String | No |  |
 | idProviderId | String | No |  |
-| idProviderType | String | No | service: IAM 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
+| idProviderType | String | No | service: IAM direct sign-in (default)<br>SSO: Customer SSO integration (cannot be set up if not integrated) |
 | idProviderUserId | String | No |  |
-| createdAt | Date | No | 생성 일시 |
-| lastAccessedAt | Date | No | 마지막 접속일시 |
-| lastLoggedInAt | Date | No | 마지막 로그인일시 |
-| lastLoggedInIp | String | No | 마지막 로그인 한 IP |
-| passwordChangedAt | Date | No | 비밀번호 변경 일시 |
-| mobilePhoneCountryCode | String | No | 휴대폰 번호 입력 시 필수  |
-| organizationId | String | No | IAM 멤버의 조직 ID |
+| createdAt | Date | No | Date and time of creation |
+| lastAccessedAt | Date | No | Date of last access |
+| lastLoggedInAt | Date | No | Date of last login |
+| lastLoggedInIp | String | No | Last logged in IP |
+| passwordChangedAt | Date | No | When to change your password |
+| mobilePhoneCountryCode | String | No | Required when entering a mobile phone number  |
+| organizationId | String | No | Organization ID of the IAM member |
 | country | String | No |  |
-| saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAM 역할 |
+| saasRoles | List<[IamMemberRole](#iammemberrole)> | No | IAM roles |
 
 
 
 
 
 <a id="조직-IAM-멤버-추가"></a>
-#### 조직 IAM 멤버 추가
+#### Add an organization IAM member
 
 > POST "/v1/iam/organizations/{org-id}/members"
 
-조직에 IAM 멤버를 추가하는 API입니다.
+API to add IAM members to your organization.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Member.Iam.Create`
 
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-| Request Body | request | AddIamOrgMemberRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | Organization ID | 
+| Request Body | request | AddIamOrgMemberRequest| Yes | Request |
 
 ###### AddIamOrgMemberRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
 |   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
 
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -2363,173 +2363,173 @@ NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다
 ```
 
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   uuid | String| No | IAM 멤버 UUID  |
+|   header | [Common response](#Response)| Yes   |
+|   UUID | String| No | IAM member UUID  |
 
 
 
 
 <a id="IAM-멤버-비밀번호-변경-이메일-전송"></a>
-#### IAM 멤버 비밀번호 변경 이메일 전송
+#### Send an IAM member password change email
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail"
 
-IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API입니다.
+API to send an email to an IAM member to change their password.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Member.Iam.Update`
 
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 대상이 되는 조직 ID | 
-|  Path |member-id | String| Yes | 비밀번호를 변경하려는 IAM 멤버의 UUID | 
-| Request Body | request | SendPasswordSetupMailRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | Target organization ID | 
+|  Path |member-id | String| Yes | UUID of the IAM member whose password you want to change | 
+| Request Body | request | SendPasswordSetupMailRequest| Yes | Request |
 
 
 
 ###### SendPasswordSetupMailRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   locale | String| No  | 사용자의 로케일 정보<br>예: ko |
-|   returnUrl | String| No  | 이메일 변경 알림 메일을 통해서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com, dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
+|   locale | String| No  | User's locale information<br>Example: en |
+|   returnUrl | String| No  | The address of the page you'll be directed to after you change your password via email change notification.<br>You must enter the toast.com, dooray.com, or nhncloud.com domain in the Go To address information |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="조직-IAM-멤버-정보-수정"></a>
-#### 조직 IAM 멤버 정보 수정
+#### Modify organization IAM member information
 
 > PUT "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
-조직의 IAM 멤버 정보를 수정하는 API입니다.
+API to modify your organization's IAM member information.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Member.Iam.Update`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 	대상이 되는 조직 ID | 
-|  Path |member-uuid | String| Yes | 변경하려는 IAM 멤버의 UUID | 
-| Request Body | request | UpdateIamMemberRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | 	Target organization ID | 
+|  Path |member-uuid | String| Yes | UUID of the IAM member you want to change | 
+| Request Body | request | UpdateIamMemberRequest| Yes | Request |
 
 
 ###### UpdateIamMemberRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
 |   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="조직-IAM-멤버-비밀번호-변경"></a>
-#### 조직 IAM 멤버 비밀번호 변경
+#### Change an organization IAM member password
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/set-password"
 
-조직 IAM 멤버의 비밀번호를 변경하는 API입니다.
+API to change the password of an organization IAM member.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Member.Iam.Update`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 대상이 되는 조직 ID | 
-|  Path |member-id | String| Yes | 비밀번호를 변경하려는 IAM 멤버의 UUID | 
-| Request Body | request | UpdateIamPasswordRequest| Yes | 요청 |
+|  Path |org-id | String| Yes | Target organization ID | 
+|  Path |member-id | String| Yes | UUID of the IAM member whose password you want to change | 
+| Request Body | request | UpdateIamPasswordRequest| Yes | Request |
 
 
 ###### UpdateIamPasswordRequest
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   password | String| Yes  | 설정할 비밀번호 | 
+|   password | String| Yes  | Password to set | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="조직-IP-ACL-목록-조회"></a>
-#### 조직 IP ACL 목록 조회
+#### Listorganization IP ACLs
 
 > GET "/v1/organizations/{org-id}/products/ip-acl"
 
-IP ACL 설정을 조회하는 API입니다.
+API to get IP ACL settings.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Governance.IpAcl.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
+|  Path |org-id | String| Yes | Organization ID | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -2546,39 +2546,39 @@ IP ACL 설정을 조회하는 API입니다.
 ```
 
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   orgIpAcl | List&lt;OrgIpAclProtocol>| Yes  | 설정 결과, 빈 목록이면 설정이 안된 상태 |
+|   header | [Common response](#Response)| Yes   |
+|   orgIpAcl | List<OrgIpAclProtocol>| Yes  | If the result is an empty list, the setting is not set. |
 
 ###### OrgIpAclProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   ips | List&lt;String>| Yes  | 허용 IP들 | 
-|   productId | String| Yes  | 상품 ID<br>undefined이면 공통 설정|
+|   ips | List<String>| Yes  | Allowed IPs | 
+|   productId | String| Yes  | Product ID<br>If undefined, set to Common Settings|
 
 <a id="조직-IAM-로그인-세션-설정-정보를-조회"></a>
-#### 조직 IAM 로그인 세션 설정 정보를 조회
+#### View organization IAM sign-in session settings information
 
 > GET "/v1/iam/organizations/{org-id}/settings/session"
 
-로그인 세션 설정 정보를 조회하는 API입니다.
+API to get login session settings information.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Setting.Iam.Get`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
+|  Path |org-id | String| Yes | Organization ID | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -2599,40 +2599,40 @@ IP ACL 설정을 조회하는 API입니다.
 ```
 
 
-##### 응답
+##### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [공통 응답](#응답)| Yes   |
-| result | Content | Yes | 설정 내용 |
+| header | [Common response](#Response)| Yes   |
+| result | Content | Yes | Setup contents |
 
 ###### Content
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   multiSessionsLimit | Integer| Yes | 허용 멀티 세션 수  |
-|   sessionTimeoutMinutes | Integer| Yes | 	세션 타임아웃 |
-|   mobileSessionTimeoutMinutes | Integer| Yes | 	모바일 세션 타임아웃 |
-|   sessionType | String| Yes | fixed/idle. 기본값은 fixed  |
+|   multiSessionsLimit | Integer| Yes | Number of multisessions allowed  |
+|   sessionTimeoutMinutes | Integer| Yes | 	Session timeouts |
+|   mobileSessionTimeoutMinutes | Integer| Yes | 	Mobile session timeout |
+|   sessionType | String| Yes | fixed/idle. The default is fixed  |
 
 <a id="조직-IAM-로그인-2차-인증에-대한-설정을-조회"></a>
-#### 조직 IAM 로그인 2차 인증에 대한 설정을 조회
+#### View settings for organizational IAM sign-in second factor authentication
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-mfa"
 
-로그인 2차 인증에 대한 설정을 조회하는 API입니다.
+API to get settings for login two-factor authentication.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Setting.Iam.Get`
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
+|  Path |org-id | String| Yes | Organization ID | 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -2669,62 +2669,62 @@ IP ACL 설정을 조회하는 API입니다.
 ```
 
 
-##### 응답
+##### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   result | Result| No |  응답 내용<br>설정한 적이 없으면 null이 반환됨 |
+|   header | [Common response](#Response)| Yes   |
+|   result | Result| No |  Response content<br>If never set, null is returned |
 
 ###### Result
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   range | Integer| No | 조직/서비스 여부<br>organization(공통 설정), services(서비스별 설정)  |
-|   organizationMfaSetting | OrganizationMfaSetting| No | 조직 mfa 설정 정보<br>공통 설정 |
-|   serviceMfaSettings | ServiceMfaSettings| No | 서비스별 mfa 설정 정보  |
+|   range | Integer| No | Organization/Service status<br>organization (common settings), services (service-specific settings)  |
+|   organizationMfaSetting | OrganizationMfaSetting| No | About organizational MFA settings<br>Common Settings |
+|   serviceMfaSettings | ServiceMfaSettings| No | About service-specific MFA settings  |
 
 
 ###### OrganizationMfaSetting
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   type | String| No | mfa 타입<br>none(설정 안함), totp(Google OTP), email(이메일) |
-|   bypassByIp | BypassByIp| No | 예외 IP  |
+|   String | String| No | MFA type<br>none (no setting), totp (Google OTP), email (email) |
+|   bypassByIp | BypassByIp| No | Exception IP  |
 
 ###### ServiceMfaSettings
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   serviceId | Sting| No | 서비스 ID  |
-|   type | String| No | mfa 타입<br>none(설정 안함), totp(Google OTP), email(이메일) |
-|   bypassByIp | BypassByIp| No | 서비스 타입. none, totp, email |
+|   serviceId | Sting| No | Service ID  |
+|   String | String| No | MFA type<br>none (no setting), totp (Google OTP), email (email) |
+|   bypassByIp | BypassByIp| No | Service type. none, totp, email |
 
 ###### BypassByIp
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   enable | Boolean| No | 활성화 여부<br>true(사용 중), false(사용 안함)  |
-|   ipList | List&lt;String>| No | 예외 IP 목록 |
+|   String | Boolean| No | Activated or not<br>true (enabled), false (disabled)  |
+|   ipList | List<String>| No | List of exception IPs |
 
 <a id="조직-IAM-로그인-실패-보안-설정을-조회"></a>
-#### 조직 IAM 로그인 실패 보안 설정을 조회
+#### View Organization IAM Login Failure Security Settings
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-login-fail"
 
-로그인 실패 보안 설정을 조회하는 API입니다.
+API to get login failure security settings.
 
-##### 필요 권한
+##### Required permissions
 `Organization.Setting.Iam.Get`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
+|  Path |org-id | String| Yes | Organization ID | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -2744,62 +2744,62 @@ IP ACL 설정을 조회하는 API입니다.
 ```
 
 
-##### 응답
+##### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [공통 응답](#응답)| Yes   |
-| result | Result | No | 로그인 실패 보안을 설정한 경우에만 반환되며, 설정하지 않으면 null이 반환됨 |
+| header | [Common response](#Response)| Yes   |
+| result | Result | No | Returned only if login failure security is set, otherwise null is returned |
 
 ###### Result
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   enable | Boolean| Yes | 활성화 여부<br>true(사용 중), false(사용 안함)  |
-|   loginFailCount | LoginFailCount| No | 로그인 실패 보안 설정 |
+|   String | Boolean| Yes | Activated or not<br>true (enabled), false (disabled)  |
+|   loginFailCount | LoginFailCount| No | Setting up login failure security |
 
 
 ###### LoginFailCount
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 시도 허용 횟수 |
-|   blockMinutes | Integer| No | 로그인 금지 시간  |
+|   limit | Integer| No | Number of attempts allowed |
+|   blockMinutes | Integer| No | Login ban time  |
 
 <a id="종량제에-등록된-상품-가격-조회"></a>
-#### 종량제에 등록된 상품 가격 조회
+#### Get the price of a product on a pay-as-you-go subscription
 
 > POST "/v1/billing/contracts/basic/products/prices/search"
 
-카운터에 설정된 단가를 조회하는 API입니다.
-각 언어별로 노출명, 금액 계산을 위한 종류를 알 수 있습니다.
+API to get the unit price set on a counter.
+For each language, you can get the impression name and type for calculating the amount.
 
 
-##### 필요 권한
-NHN Cloud 회원이면 호출 가능한 API
+##### Required permissions
+APIs that can be called by NHN Cloud members
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Query |limit | Integer| No |  |
-| Request Body | request | GetContractProductPriceRequest| Yes | 요청 |
+| Request Body | request | GetContractProductPriceRequest| Yes | Request |
 
 ##### GetContractProductPriceRequest
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|  counterNames | List&lt;String>| No | 상품 메타의 counter Name 목록<br>없을 경우 전체 검색함 |
+|  counterNames | List<String>| No | List of counter names in the product meta<br>Full search box if not found |
 |   paging | Paging| No  |
 
 ###### Paging
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 페이지당 표시 건수, 기본값 20  |
-|   page | Integer| No | 대상 페이지, 기본값 1  |
+|   limit | Integer| No | Number of displays per page, default 20  |
+|   page | Integer| No | Target Page, default 1  |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -2834,63 +2834,63 @@ NHN Cloud 회원이면 호출 가능한 API
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   paging | PagingResponse| Yes | 정렬 기준이 없는 페이징 결과 반환  |
-|   prices | List&lt;ContractProductPriceProtocol>| Yes | 카운터의 단가 정보를 배열로 반환<br>오류 시 포함되지 않음  |
+|   header | [Common response](#Response)| Yes   |
+|   paging | PagingResponse| Yes | Return paging results with no sorting criteria  |
+|   prices | List<ContractProductPriceProtocol>| Yes | Returns unit price information from counters as an array<br>Not included on error  |
 
 ###### PagingResponse
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   limit | Integer| Yes | 조회되는 개수 제한<br>기본값은 20 |
+|   limit | Integer| Yes | Limit the number of views<br>Default value is 1. |
 |   page | Integer| Yes |
 |   totalCount | Integer| Yes |
 
 ###### ContractProductPriceProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   contractDiscountPolicyId | String| Yes | 약정 요금 정책 아이디  |
-|   contractId | String| Yes | 약정 아이디  |
-|   counterName | String| Yes | 카운터  |
-|   displayNameEn | String| No | 	카운터의 영어 이름  |
-|   displayNameJa | String| No | 카운터의 일본어 이름  |
-|   displayNameKo | String| Yes | 카운터의 한국어 이름  |
-|   displayNameZh | String| No | 	카운터의 중국어 이름<br>현재는 영어로 노출됨 |
-|   monthFrom | String| Yes | 단가 정보가 유효한 시작월(포함)  |
-|   monthTo | String| Yes | 단가 정보가 유효한 종료월(미포함)  |
-|   originalPrice | BigDecimal| Yes | 단가  |
-|   price | BigDecimal| Yes | 단가  |
-|   rangeFrom | BigDecimal| Yes | 단가에 속하게 되는 사용량 범위 시작(미포함)  |
-|   rangeTo | BigDecimal| Yes | 단가에 속하게 되는 사용량 범위 종료(포함)  |
-|   seq | Long| Yes | 일련번호  |
-|   slidingCalculationTypeCode | String| Yes | 슬라이딩 요금 계산 유형<br>NONE, SECTION_SUM, SECTION_SELECTED |
-|   useFixPriceYn | String| Yes | 고정 금액  여부(Y: 고정 금액 , N: 단가 계산)<br>Y: 범위에 들어올 경우 price가 금액이 됨<br>N: (사용량 x 단가)가 금액이 됨 |
+|   contractDiscountPolicyId | String| Yes | Commitment Rate Policy ID  |
+|   contractId | String| Yes | Commitment ID  |
+|   counterName | String| Yes | Counters  |
+|   displayNameEn | String| No | 	English name of the counter  |
+|   displayNameJa | String| No | Japanese name of the counter  |
+|   displayNameKo | String| Yes | Korean name of the counter  |
+|   displayNameZh | String| No | 	Chinese name of the counter<br>Currently exposed in English |
+|   monthFrom | String| Yes | The start month for which unit price information is valid (inclusive)  |
+|   monthTo | String| Yes | Ending month for which unit price information is valid (not included)  |
+|   originalPrice | BigDecimal| Yes | Unit price  |
+|   price | BigDecimal| Yes | Unit price  |
+|   rangeFrom | BigDecimal| Yes | Start of usage range that falls under unit price (not included)  |
+|   rangeTo | BigDecimal| Yes | Ending usage ranges that fall under unit pricing (inclusive)  |
+|   seq | Long| Yes | Serial number  |
+|   slidingCalculationTypeCode | String| Yes | Types of sliding fee calculations<br>NONE, SECTION_SUM, SECTION_SELECTED |
+|   useFixPriceYn | String| Yes | Fixed amount or not (Y: Fixed amount , N: Unit price calculation)<br>Y: price becomes an amount if it falls in the range<br>N: (Usage x Unit Price) becomes an amount |
 
 <a id="종량제에-등록된-상품-목록-조회"></a>
-#### 종량제에 등록된 상품 목록 조회
+#### List products enrolled in a pay-as-you-go subscription
 
 > GET "/v1/billing/contracts/basic/products"
 
-청구서에 노출되는 메인 카테고리와 서브 카테고리 및 포함되는 카운터의 목록을 제공하는 API입니다.
+API that provides a list of the main categories and subcategories exposed in the bill, and the counters they contain.
 
-##### 필요 권한
-NHN Cloud 회원이면 호출 가능한 API
+##### Required permissions
+APIs that can be called by NHN Cloud members
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |limit | Integer| No | 조회되는 개수 제한<br>기본값은 20 |
+|  Query |limit | Integer| No | Limit the number of views<br>Default value is 1. |
 |  Query |page | Integer| No |  |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -2931,61 +2931,61 @@ NHN Cloud 회원이면 호출 가능한 API
 ```
 
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   products | List&lt;ProductMetadata>| Yes | 상품 메타 정보 목록  |
+|   products | List<ProductMetadata>| Yes | Product meta information list  |
 
 
 ###### ProductMetadata
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   budgetUsageTypeYn | String| No | 예산 사용량 타입 Yn  Y, N |
-|   calcUnitCode | String| Yes | 금액 계산 시 사용할 단위(미터링 단위를 정산 단위로 변환하여 금액 계산을 수행함), 명세서에 노출할 단위<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
-|   categoryMain | String| Yes | 메인 카테고리  |
-|   categorySub | String| Yes | 서브 카테고리  |
-|   chargingTypeId | String| Yes | 과금 유형 ID  |
-|   convertUsageTypeCode | String| Yes | 사용량 변환 타입 코드  NONE, HOUR_AVERAGE, DAY_AVERAGE |
-|   counterName | String| Yes | 카운터  |
-|   counterTypeCode | String| Yes | 사용량의 합산에 대한 방법<br><ul><li>DELTA: 증가값(HOURLY_SUM)</li><li>GAUGE: 시간 최대값의 합(HOURLY_MAX로 변경 예정)</li><li>HOURLY_LATEST: 1시간 동안 수집된 데이터 중 가장 나중에 수집된 미터링 데이터의 합</li><li>DAILY_MAX: 일 최대값의 합</li><li>MONTHLY_MAX: 월 최대값</li><li>STATUS: 사용 현황</li><ul> |
-|   description | String| No | 카운터 설명  |
-|   displayOrder | Integer| Yes | 노출 순서  |
-|   marketPlaceMandatoryUsePeriod | Integer| No | 마켓플레이스 필수 사용 기간  |
-|   meterUnitCode | String| Yes | 서비스에서 미터링 저장 시 사용량 단위<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
-|   minUsage | BigDecimal| Yes | 최소 사용량  |
-|   parentCounterName | String| Yes | 부모 카운터 이름  |
-|   productId | String| Yes | 상품 아이디  |
-|   productMetadataStatusCode | String| Yes | 카운터 상태 코드  STABLE, CLOSED |
-|   productUiId | String| Yes | 홈페이지 카테고리/홈페이지 서비스 식별 ID  |
-|   regionTypeCode | String| Yes | 카운터네임이 소속된 리전 코드<br><ul><li>GLOBAL: Global 상품에 속한 카운터네임</li><li>NONE: GLOBAL과 동일한 의미</li><li>KR1: KR1 리전에 속한 카운터네임</li><li>KR2: KR2 리전에 속한 카운터네임</li><li>...: 해당 리전에 속한 카운터네임</li><ul>  |
-|   unit | Long| Yes | 정산 단위  |
-|   unitName | String| Yes | 청구서에 노출할 이름  |
-|   usageAggregationUnitCode | String| No | 사용량 집계 단위<br>RESOURCE_ID, COUNTER_NAME |
+|   budgetUsageTypeYn | String| No | Budget Usage Type Yn Y, N |
+|   calcUnitCode | String| Yes | Units to use when calculating amounts (converts metering units to settlement units to calculate amounts), units to expose on statements<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
+|   categoryMain | String| Yes | Main Categories  |
+|   categorySub | String| Yes | Subcategories  |
+|   chargingTypeId | String| Yes | Billing type ID  |
+|   convertUsageTypeCode | String| Yes | Usage conversion type codes NONE, HOUR_AVERAGE, DAY_AVERAGE |
+|   counterName | String| Yes | Counters  |
+|   counterTypeCode | String| Yes | Methods for summing usage<br><ul><li>DELTA: Incremental value (HOURLY_SUM)</li><li>GAUGE: Sum of hourly maximums (to be changed to HOURLY_MAX)</li><li>HOURLY_LATEST: The sum of the latest metering data collected in a one-hour period.</li><li>DAILY_MAX: Sum of daily maximums</li><li>MONTHLY_MAX: Monthly maximum</li><li>STATUS: Usage status</li><ul> |
+|   description | String| No | Counter descriptions  |
+|   displayOrder | Integer| Yes | Exposure order  |
+|   marketPlaceMandatoryUsePeriod | Integer| No | Marketplace mandatory usage period  |
+|   meterUnitCode | String| Yes | Usage units when storing metering in a service<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
+|   minUsage | BigDecimal| Yes | Minimum usage  |
+|   parentCounterName | String| Yes | Parent counter name  |
+|   productId | String| Yes | Product ID  |
+|   productMetadataStatusCode | String| Yes | Counter status codes STABLE, CLOSED |
+|   productUiId | String| Yes | Homepage Category/Homepage Service Identification ID  |
+|   regionTypeCode | String| Yes | The region code the countername belongs to<br><ul><li>GLOBAL: Countername belonging to the Global product</li><li>NONE: Same meaning as GLOBAL</li><li>KR1: Countername belonging to the KR1 region</li><li>KR2: Countername belonging to the KR2 region</li><li>If you are not sure which region you are in, you can use the following...: Counternames that belong to this region</li><ul>  |
+|   unit | Long| Yes | Settlement units  |
+|   unitName | String| Yes | Name to appear on the invoice  |
+|   usageAggregationUnitCode | String| No | Usage aggregation units<br>RESOURCE_ID, COUNTER_NAME |
 
 
 <a id="프로젝트-AppKey-조회"></a>
-#### 프로젝트 AppKey 조회
+#### Get Project AppKey
 
 > GET "/v1/authentications/projects/{project-id}/project-appkeys"
 
-프로젝트에서 사용 중인 프로젝트 AppKey 목록을 조회하는 API입니다.
+API to get a list of project AppKeys being used by the project.
 
-##### 필요 권한
+##### Required permissions
 `Project.ProjectAppKey.List`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회 대상 프로젝트 ID | 
+|  Path |project-id | String| Yes | Project ID to look up | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -3007,38 +3007,38 @@ NHN Cloud 회원이면 호출 가능한 API
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   authenticationList | List&lt;ProjectAppKeyResponse>| No | 프로젝트 AppKey 목록 |
+|   header | [Common response](#Response)| Yes |
+|   authenticationList | List<ProjectAppKeyResponse>| No | Project AppKey List |
 
 ###### ProjectAppKeyResponse
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   appKey | String| No | 콘솔에 노출되는 프로젝트 AppKey  |
-|   authStatus | String| No | 인증 상태 코드(STABLE, STOP, BLOCKED) |
-|   projectId | String| No | 프로젝트 ID |
-|   lastUsedDatetime | Date| No | 마지막 사용 일시  |
-|   modDatetime | Date| No | 삭제 일시  |
-|   reIssueDatetime | Date| No | 재생성 일시  |
-|   regDatetime | Date| No | 생성 일시  |
+|   authId | String| No | Internally managed authentication method ID  |
+|   appKey | String| No | Project AppKey exposed to the console  |
+|   authStatus | String| No | Authentication status codes (STABLE, STOP, BLOCKED) |
+|   projectId | String| No | Project ID |
+|   lastUsedDatetime | Date| No | Date of last use  |
+|   modDatetime | Date| No | Date and time of deletion  |
+|   reIssueDatetime | Date| No | Regeneration time  |
+|   regDatetime | Date| No | Date and time of creation  |
 
 <a id="User-Access-Key-ID-목록-조회"></a>
-#### User Access Key ID 목록 조회
+#### ListUser Access Key IDs
 
 > GET "/v1/authentications/user-access-keys"
 
-멤버의 User Access Key ID 목록을 조회하는 API입니다.
+API to get a list of a member's User Access Key IDs.
 
-##### 필요 권한
-NHN Cloud 회원이면 호출 가능한 API
+##### Required permissions
+APIs that can be called by NHN Cloud members
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -3063,56 +3063,56 @@ NHN Cloud 회원이면 호출 가능한 API
 ```
 
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   authentications | List&lt;UserAccessKeyResponse>| No | 인증 정보 목록  |
+|   header | [Common response](#Response)| Yes   |
+|   authentications | List<UserAccessKeyResponse>| No | List credentials  |
 
 ###### UserAccessKeyResponse
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
+|   authId | String| No | Internally managed authentication method ID  |
 |   userAccessKeyID | String| No | User Access Key ID  |
-|   secretAccessKey | String| No | 비밀 키(마스킹 처리됨)  |
-|   authStatus | String| No | 인증 상태 코드(STABLE, STOP, BLOCKED) |
-|   uuid | String| No | 사용자 UUID |
-|   lastUsedDatetime | Date| No | 마지막 사용 일시  |
-|   modDatetime | Date| No | 삭제 일시  |
-|   reIssueDatetime | Date| No | 재생성 일시  |
-|   regDatetime | Date| No | 생성 일시  |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 주기(초 단위)  |
+|   secretAccessKey | String| No | Secret key (masked)  |
+|   authStatus | String| No | Authentication status codes (STABLE, STOP, BLOCKED) |
+|   UUID | String| No | User UUID |
+|   lastUsedDatetime | Date| No | Date of last use  |
+|   modDatetime | Date| No | Date and time of deletion  |
+|   reIssueDatetime | Date| No | Regeneration time  |
+|   regDatetime | Date| No | Date and time of creation  |
+|   tokenExpiryPeriod | Long| No | Token expiration cycle (in seconds)  |
 
 
 <a id="프로젝트-AppKey-등록"></a>
-#### 프로젝트 AppKey 등록
+#### Register a project AppKey
 
 > POST "/v1/authentications/projects/{project-id}/project-appkeys"
 
-프로젝트에서 사용할 AppKey를 생성하는 API입니다.
+API to generate an AppKey for use in your project.
 
-##### 필요 권한
+##### Required permissions
 `Project.ProjectAppKey.Create`
 
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path | project-id | String| Yes | AppKey를 등록할 프로젝트 ID |
-| Request Body | request | AddProjectAppKeyRequest| Yes | 요청 |
+| Path | project-id | String| Yes | The project ID where you want to register the AppKey |
+| Request Body | request | AddProjectAppKeyRequest| Yes | Request |
 
 ###### AddProjectAppKeyRequest
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   appkeyAlias | String | Yes   | 프로젝트 AppKey 별칭<br>100자 제한 |
+|   appkeyAlias | String | Yes   | Project AppKey aliases<br>100-character limit |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -3128,46 +3128,46 @@ NHN Cloud 회원이면 호출 가능한 API
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 |   authentication | ResponseProtocol| No  |
 
 ###### ResponseProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   appKey | String| No | 프로젝트 AppKey |
+|   authId | String| No | Internally managed authentication method ID  |
+|   appKey | String| No | Project AppKey |
 
 <a id="User-Access-Key-ID-등록"></a>
-#### User Access Key ID 등록
+#### Register a User Access Key ID
 
 > POST "/v1/authentications/user-access-keys"
 
-멤버의 User Access Key ID를 등록하는 API입니다.
+API to register a member's User Access Key ID.
 
-##### 필요 권한
-NHN Cloud 회원이면 호출 가능한 API
+##### Required permissions
+APIs that can be called by NHN Cloud members
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Request Body | PostUserAppKeyRequest | PostUserAppKeyRequest| Yes |  | |
 
 
 ###### PostUserAppKeyRequest
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 기간<br>초 단위이며, 기본값은 하루 |
+|   tokenExpiryPeriod | Long| No | Token expiration period<br>seconds, with a default of |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -3185,81 +3185,81 @@ NHN Cloud 회원이면 호출 가능한 API
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 |   authentication | ResponseProtocol| No  |
 
 ###### ResponseProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
+|   authId | String| No | Internally managed authentication method ID  |
 |   userAccessKeyID | String| No | User Access Key ID  |
-|   secretAccessKey | String| No | 비밀키 |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 기간(초 단위) |
+|   secretAccessKey | String| No | Secret key |
+|   tokenExpiryPeriod | Long| No | Token expiration period (in seconds) |
 
 
 <a id="프로젝트-AppKey-삭제"></a>
-#### 프로젝트 AppKey 삭제
+#### Delete a project AppKey
 
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
 
-프로젝트 AppKey를 삭제하는 API입니다.
+API to delete a project AppKey.
 
-##### 필요 권한
+##### Required permissions
 `Project.ProjectAppKey.Delete`
 
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path | project-id | String| Yes | 대상 프로젝트 ID |
-|  Path |app-key | String| Yes | 삭제할 프로젝트 AppKey | 
+| Path | project-id | String| Yes | Target project ID |
+|  Path |app-key | String| Yes | Project AppKey to delete | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 
 <a id="User-Access-Key-ID-비밀-키-재발급"></a>
-#### User Access Key ID 비밀 키 재발급
+#### Reissue the User Access Key ID secret key
 
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue"
 
-User Access Key ID의 비밀 키를 재발급하는 API입니다.
+API to reissue the secret key for a User Access Key ID.
 
 
-### 필요 권한
+### Required permissions
 `Project.ProjectAppKey.UpdateSecretKey`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |user-access-key-id | String| Yes | User Access Key ID | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
@@ -3274,161 +3274,161 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [Common response](#Response)| Yes |
 |   authentication | ResponseProtocol| No  |
 
 ###### ResponseProtocol
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   secretAccessKey | String| Yes   | 비밀키 |
+|   secretAccessKey | String| Yes   | Secret key |
 
 <a id="User-Access-Key-ID-상태-수정"></a>
-#### User Access Key ID 상태 수정
+#### Modify User Access Key ID status
 
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}"
 
-멤버의 User Access Key ID 상태를 변경하는 API입니다.
+API to change the state of a member's User Access Key ID.
 
-##### 요청 파라미터
+##### Request Parameter
 
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path | user-access-key-id | String| Yes | User Acess Key ID | 
-| Request Body | request | UpdateUserAccessKeyStatusRequest| Yes | 요청 |
+| Request Body | request | UpdateUserAccessKeyStatusRequest| Yes | Request |
 
 
 ###### UpdateUserAccessKeyStatusRequest
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   status | String| Yes | 변경할 프로젝트 AppKey 상태(STOP: 중지, STABLE: 사용) |
+|   String | String| Yes | Project AppKey state to change (STOP: Stop, STABLE: Enable) |
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [Common response](#Response)| Yes   |
 
 <a id="User-Access-Key-ID-삭제"></a>
-#### User Access Key ID 삭제
+#### Delete a User Access Key ID
 
 > DELETE "/v1/authentications/user-access-keys/{user-access-key-id}"
 
-User Access Key ID를 삭제하는 API입니다.
+API to delete a User Access Key ID.
 
 
-##### 필요 권한
+##### Required permissions
 `Project.ProjectAppKey.Delete`
 
-##### 요청 파라미터
+##### Request Parameter
 
-| 구분 | 이름 | 타입 | 필수 | 설명  | 
+| In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path | user-access-key-id | String| Yes | User Access Key ID | 
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
 
-##### 응답 본문
+##### Response Body
 
 ```json
 {
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "resultMessage"
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
   }
 }
 ```
 
-###### 응답
+###### Response
 
 
-| 이름 | 타입 | 필수 | 설명 |   
+| Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [Common response](#Response)| Yes |
 
 
-### 오류 코드
+### Error Code
 
-| 결과 코드 | 설명                                                                                  | 조치                                                      |
+| Result code | Description                                                                                  | Actions                                                      |
 | ---------- |-------------------------------------------------------------------------------------|---------------------------------------------------------|
-| 80007 | 만료되었거나 존재하지 않는 토큰을 사용해서 호출한 경우 발생하는 오류                                          | 새로운 토큰을 발급하여 사용                                         |
-| -6 | 권한 없는 호출자가 호출한 경우에 발생하는 오류                                                      | 호출자에게 적절한 권한을 부여                                        |
-| -8 | 조직 IP ACL 정책에 의해 IP 검증이 실패한 경우 발생하는 오류                                              | 조직 IP ACL에 해당 IP가 등록되었는지 확인                            |
-| 404 | 없는 API 호출 시 발생                                                                       | 호출하는 API의 httpmethod,uri를 확인                            |
-| 400<br>501<br>502<br>503<br>504<br>505 | 요청 파라미터가 적절하지 않을 때 발생하는 오류                                                          | 요청 파라미터의 필수값 및 설정 가능한 값 등을 확인                           |
-| 500 | 비정상 시스템 오류                                                                          | 담당자에게 문의                                            |
-| 1000 | 파라미터가 잘못될 경우 발생하는 오류 <br> 조직 IAM 멤버 API - `IAM 멤버 비밀번호 변경 이메일 전송` 요청 값 returnUrl 이 허가된 도메인이 아닐 때 발생(허가된 도메인: toast.com, dooray.com, nhncloud.com) | 요청 파라미터 확인                                              |
-| 1201 | 서버 내부적인 API 요청이 실패하여 발생하는 오류 |  오류 메시지에 포함된 오류 메시지와 코드를 바탕으로 해결<br>포함된 오류 메시지와 코드만으로는 해결이 어려울 경우 담당자에게 문의                      |
-| 10005<br>70008<br>1104 | 요청 파라미터가 적절하지 않을 때 발생하는 오류 | 요청 파라미터의 필수값 및 설정 가능한 값 등을 확인 |
-| 10009 | 조직 또는 프로젝트에 존재하지 않은 역할을 부여할 때 발생하는 오류                                               | 멤버에게 존재하는 역할을 부여하도록 변경                                  |
-| 10010 | 역할 그룹 삭제 시, 프로젝트 멤버(초대중인 멤버 포함)에 해당 역할 그룹만 부여된 경우 발생하는 오류<br>프로젝트 멤버 역할 변경 시, 아무 역할도 부여하지 않을 때 발생하는 오류| 1) 삭제하려는 역할 그룹`만` 가진 프로젝트 멤버 멤버(초대중인 멤버 포함)들의 역할을 다른 역할로 변경 또는 해당 멤버들 삭제 <br> 2) 프로젝트 멤버 역할 변경 시, 요청에 역할에 대한 값을 설정하여 요청 |
-| 10012 | 프로젝트 멤버 삭제 시, 해당 멤버가 삭제되면서 해당 프로젝트에 ADMIN 역할을 가진 멤버가 더 이상 존재하지 않을 경우 발생하는 오류        | 1) 삭제 대상이 아닌 다른 프로젝트 멤버에게 ADMIN 역할 부여 <br>2) ADMIN 역할이 아닌 대상을 삭제|
-| 12100 | 프로젝트 멤버가 존재하지 않을 때 발생하는 오류                                                          | 존재하는 프로젝트 멤버 UUID 사용                                    |
-| 12107 | 요청 uuid와 대상 uuid가 동일한 것이 허용되지 않는 API에서 동일할 경우 발생하는 오류                              | 대상 uuid와 요청 uuid를 다르게 설정                               |
-| 12400 | 존재하지 않거나 삭제된 프로젝트에 멤버를 추가할 경우 발생하는 오류                                               | 존재하는 프로젝에 멤버 추가하도록 변경                                  |
-| 12401 | 프로젝트 생성 시, 해당 프로젝트의 조직 OWNER 계정에 설정된 프로젝트 생성 개수 제한을 초과했을 경우 발생하는 오류                    | 1) 사용하지 않는 프로젝트를 삭제하여 생성 가능한 프로젝트 수 확보 <br>2) 담당자를 통해 프로젝트 최대 생성 개수 조정 요청 |
-| 12500 | 프로젝트 삭제 시, 사용 중인 서비스가 존재할 때 발생하는 오류                                                  | 해당 프로젝트의 사용 중인 서비스 전부 비활성화 처리 후 프로젝트 삭제 처리 시도             |
-| 13001 | 서비스 활성화/비활성화 실패 시 발생하는 오류                                                           | 담당자에게 문의                                           |
-| 13002 | 이미 활성화 상태인 서비스를 다시 활성화했을 경우 발생하는 오류                                    | 기존에 활성화된 서비스를 활용              |
-| 13004 | 활성화 불가능한 서비스를 활성화했을 경우 발생하는 오류                                                     | 활성화 가능한 서비스에 대해 활성화                                    |
-| 13006 | 법인 전용 서비스 활성화, 조직 OWNER의 멤버 타입이 법인이 아닐 경우 발생하는 오류                                    | 법인 계정 타입을 가진 조직 OWNER의 조직 하위 프로젝트에서 서비스 활성화 시도             |
-| 22006 | 추가 시 이미 존재하는 경우 발생 | 중복된 요청이 오지 않도록 처리 |
-| 22013 | 조직 OWNER의 역할을 변경 시도했을 때 발생하는 오류                                                        | 조직 오너를 대상으로 역할 변경은 불가능                                |
-| 22016 | 조직이 존재하지 않을 때 발생하는 오류                                                              | 존재하는 조직의 orgId로 요청하는지 확인                              |
-| 23005 | 조직 ID에 해당하는 조직이 존재하지 않을 때 발생하는 오류                                                   | 담당자 문의                                             |
-| 30015 | 프로젝트 AppKey의 생성 제한 횟수를 초과할 경우 발생하는 오류 <br> 프로젝트 AppKey API - `프로젝트 AppKey 생성`에서 생성되는 프로젝트 AppKey의 생성 가능 횟수는 3개이며 3개를 초과할 경우 오류 발생 | 사용하지 않은 프로젝트 AppKey 삭제 후 재시도                               |
-| 40017 | 프로젝트가 존재하지 않을 경우 발생하는 오류                                                           | 존재하는 프로젝트에 대해 API 요청                                   |
-| 40028<br>13003 | 프로젝트가 존재하지 않을 경우(생성했다가 삭제한 경우) 발생하는 오류                                              | 존재하는 프로젝트에 대해 API 요청                                   |
-| 40054 | 서비스 활성화 시, 먼저 활성화되어야 하는 서비스가 활성화 되어있지 않은 경우 발생하는 오류                               | 먼저 활성화가 되어야 하는 서비스 활성화 처리                               |
-| 40057 | 서비스 비활성화 시, 먼저 비활성화 되어야 하는 서비스가 비활성화 되어있지 않은 경우 발생하는 오류                            | 먼저 비활성화가 되어야 하는 서비스 비활성화 처리                              |
-| 50007 | 유효하지 않은 멤버일 때, 발생하는 오류<br>(존재하지 않는 멤버이거나, 휴면 및 탈퇴 상태의 멤버는 유효하지 않음)<br>조직 생성 API - API 호출 시, uuid가 유효하지 않을 경우 | 유효한 멤버의 uuid로 수정                                 |
-| 60003 | DB에 데이터가 없을 경우 발생하는 오류<br>프로젝트 AppKey API - `프로젝트 AppKey 삭제` 에서 삭제할 AppKey가 없을 경우 발생하는 오류 | 1) 담당자 문의 <br>2) 존재하는 AppKey를 삭제 대상 AppKey 값으로 설정  |
-| 62004 | 역할 그룹 생성 시 동일한 이름의 역할 그룹이 존재하는 경우 발생하는 오류                                           | 중복되지 않은 이름으로 변경                                         |
-| 62008 | 역할 그룹 수정, 삭제 및 역할 그룹에 역할 추가/삭제 시 역할 그룹 ID가 존재하지 않는 경우 발생                            | 존재하는 역할 그룹 ID를 사용하도록 변경                                |
-| 62009 | 역할 그룹 생성 시 역할이 유효하지 않은 역할인 경우 발생                                                   | 유효한 역할을 사용하도록 변경                                       |
-| 62011 | 역할 그룹 삭제 시 알림 그룹에서 사용 중이어서 발생                                                        | 알림 그룹 삭제 후 역할 그룹을 삭제하도록 변경                              |
-| 62014 | 역할 그룹 삭제 및 역할 그룹에 역할 추가/삭제 시 역할 그룹을 할당했던 멤버들이 역할을 서비스에 통지하는데 실패                       | 담당자에게 문의                                            |
-| 62019 | 조직 멤버에게 허용되지 않는 역할을 부여하려는 경우                      | 담당자에게 문의                                            |
-| 72005 | 빌링 관련 API 호출이 실패할 때 발생하는 오류                                                         | 담당자에게 문의                                            |
-| 70013 | 이용 중인 서비스가 존재할 때 발생하는 오류                                                             | 이용 중인 서비스 비활성화                                           |
-| 70014 | 멤버 탈퇴 조건을 만족하지 않을 경우 발생하는 오류<br> IAM - 1) 사용 중인 서비스가 있을 때 2) 삭제되지 않은 프로젝트가 있을 때 3) 해당 멤버가 임의의 프로젝트에 ADMIN 역할로 존재할 때| 각 멤버 타입에 맞는 탈퇴 조건을 만족하도록 설정                          |
-| 70024 | 결제 수단이 정상적으로 등록되지 않았을 때 발생하는 오류                                                     | 결제수단 등록                                                 |
-| 70032 | 미납으로 인해 멤버 블록이 되었을 경우 발생하는 오류                                                       | 해당 계정이 가진 미납 청구서 결제                                     |
-| -200201 | user-code 길이 조건이 맞지 않는 경우 발생하는 오류                                                           | 20자 이내의 소문자, 숫자, 특수문자(-, _, .) 사용 가능.<br>특수문자(-, _, .)는 제일 앞과 제일 뒤에는 사용할 수 없음.|
-| -200202 | user-code 포맷 조건이 맞지 않는 경우 발생하는 오류                                                | 소문자, 숫자, 특수문자(-, _, .) 사용 가능.<br>특수문자(-, _, .)는 제일 앞과 제일 뒤에는 사용할 수 없음.|
-| -200203 | 이름 길이 조건이 맞지 않는 경우 발생하는 오류                                                       | 60자 이내의 길이 요건을 만족하도록 이름 길이 수정                           |
-| -200204 | 멤버 생성 수정시 user-code가 겹치는 경우 발생하는 오류                                                | 중복되지 않는 user-code로 변경하여 요청                             |
+| 80007 | Errors when calling with an expired or non-existent token                                          | Issue and redeem a new token                                         |
+| -6 | Errors that occur when invoked by unauthorized callers                                                      | Give callers the right permissions                                        |
+| -8 | Errors that occur when IP validation fails by an organization's IP ACL policy                                              | Verify that the IP is registered in your organization's IP ACLs                            |
+| 404 | Fired on API calls without                                                                       | Check the httpmethod,uri of the API you're calling                            |
+| 400<br>501<br>502<br>503<br>Server connection failed<br>505 | Errors that occur when request parameters are not appropriate                                                          | Check request parameters for required and configurable values, etc.                           |
+| 500 | Abnormal system errors                                                                          | Contact a representative                                            |
+| 1000 | Errors that occur when parameters are incorrect <br> Organization `IAM` member API - `IAM member password change email send` request value returnUrl is not an authorized domain (authorized domains: toast.com, dooray.com, nhncloud.com) | Verify request parameters                                              |
+| 1201 | Errors caused by failed API requests internal to the server |  Resolve based on the error message and code in the error message<br>Contact your representative if the included error message and code are not sufficient for resolution.                      |
+| 10005<br>70008<br>1104 | Errors that occur when request parameters are not appropriate | Check request parameters for required and configurable values, etc. |
+| 10009 | Errors when granting roles that don't exist in an organization or project                                               | Change to give members an existing role                                  |
+| 10010 | Error when deleting a role group, when project members (including those being invited) are granted only that role group<br>Error when changing project member roles and not granting any roles| 1) Change the roles of project members (including those you're inviting) whose only role `groups` are the ones you want to delete to other roles, or delete them <br> 2) When changing the project member role, set the value for the role in the request by setting the Request |
+| 10012 | Error when deleting a project member, if the member is deleted and the project no longer has a member with the ADMIN role.        | 1) Give the ADMIN role to another project member who is not targeted for deletion <br>2) Delete targets that are not in the ADMIN role|
+| 12100 | Errors when project members don't exist                                                          | Use existing project member UUIDs                                    |
+| 12107 | Error when request uuid and target uuid are the same in APIs that don't allow them to be the same                              | Make the target UUID different from the request UUID                               |
+| 12400 | Errors when adding members to a non-existent or deleted project                                               | Change to add members to an existing project                                  |
+| 12401 | Error when creating a project and exceeding the limit on the number of projects created set in the project's organization OWNER account                    | 1) Delete unused projects to free up the number of projects you can create <br>2) Request an adjustment to the maximum number of projects created through your representative |
+| 12500 | When deleting a project, an error occurs when a service in use exists                                                  | Disable all services in use for the project and then attempt to process the project deletion             |
+| 13001 | Errors that occur when enabling/disabling a service fails                                                           | Contact a representative                                           |
+| 13002 | Errors that occur when you reactivate a service that is already active                                    | Leverage services that are already active              |
+| 13004 | Error when enabling an unenabled service                                                     | Enable for activatable services                                    |
+| 13006 | Enable Entity-only service, error when Organization OWNER's member type is not Entity                                    | Attempting to activate a service in an organization subproject of an organization OWNER with an entity account type             |
+| 22006 | Fires if it already exists when added | Prevent duplicate requests from coming in |
+| 22013 | Error when attempting to change the organization OWNER's role                                                        | You can't change roles for organization owners                                |
+| 22016 | Errors that occur when an organization doesn't exist                                                              | Make sure you're requesting with the orgId of an existing organization                              |
+| 23005 | Errors that occur when an organization does not exist for an organization ID                                                   | Contact a representative                                             |
+| 30015 | Error when exceeding the limit on the number of generated project AppKeys <br> Project AppKey API - The number of project AppKeys generated `by Generate Project AppKey`is 3, and an error occurs if more than 3 are generated. | Delete an unused project AppKey and retry                               |
+| 40017 | Errors that occur when a project doesn't exist                                                           | Make an API request for an existing project                                   |
+| 40028<br>13003 | Errors that occur when a project doesn't exist (created and then deleted)                                              | Make an API request for an existing project                                   |
+| 40054 | Error when activating a service, if a service that should be activated first is not activated                               | Handle activating services that need to be activated first                               |
+| 40057 | When disabling a service, an error occurs if a service that should be disabled first is not disabled                            | Handle disabling services that should be disabled first                              |
+| 50007 | Invalid members, errors that occur<br>(Members that don't exist, are dormant, or are withdrawn are not valid)<br>Organization creation API - When making API calls, if the uuid is invalid | Modify with the UUID of a valid member                                 |
+| 60003 | Errors that occur when there is no data in the DB<br>Error when there are no AppKeys to delete in Project `AppKey` API - `Delete Project AppKeys`  | 1) Contact a representative <br>2) Set the existing AppKey to the value of the AppKey to be deleted  |
+| 62004 | Error when creating a role group if a role group with the same name exists                                           | Change to a non-duplicate name                                         |
+| 62008 | Role group ID does not exist when editing, deleting, and adding/deleting roles to a role group                            | Change to use an existing role group ID                                |
+| 62009 | Occurs if the role is an invalid role when creating a role group                                                   | Change to use a valid role                                       |
+| 62011 | Role group deletion caused by being used by a notification group                                                        | Change to delete role groups after deleting notification groups                              |
+| 62014 | When deleting a role group and adding/deleting roles to a role group, members who were assigned to the role group failed to notify the service of the roles.                       | Contact a representative                                            |
+| 62019 | If you want to grant an organization member an unallowed role                      | Contact a representative                                            |
+| 72005 | Errors that occur when billing-related API calls fail                                                         | Contact a representative                                            |
+| 70013 | Errors that occur when a service you're using exists                                                             | Disable a service you're using                                           |
+| 70014 | Error when member withdrawal conditions are not met<br> IAM - 1) when a service is in use 2) when a project exists that has not been deleted 3) when the member exists in the ADMIN role on any project| Set up withdrawal conditions for each member type                          |
+| 70024 | Errors that occur when a payment method is not properly registered                                                     | Register a payment method                                                 |
+| 70032 | Error when becoming a member block due to non-payment                                                       | Pay outstanding bills for that account                                     |
+| -200201 | Errors that occur when the user-code length condition is not met                                                           | Lowercase letters, numbers, and special characters (-, \_, .) within 20 characters.<br>Special characters (-, \_, .) are not allowed in leading and trailing positions.|
+| -200202 | Errors that occur when user-code formatting conditions are not met                                                | Accept lowercase letters, numbers, and special characters (-, \_, .).<br>Special characters (-, \_, .) are not allowed in leading and trailing positions.|
+| -200203 | Errors that occur when the name length condition is not met                                                       | Modify the name length to meet the 60-character length requirement                           |
+| -200204 | Error with overlapping user-code when modifying member creation                                                | Change to non-duplicate user-code to request                             |
