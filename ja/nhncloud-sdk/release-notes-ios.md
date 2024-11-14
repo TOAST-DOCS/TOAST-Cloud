@@ -2,8 +2,8 @@
 
 ## 1.8.6 (2024. 11. 15.)
 ### NHN Cloud Push
-#### 개선 사항
-* DeviceID를 설정할 수 있는 API 추가 
+#### 改善事項
+* DeviceIDを設定できるAPIを追加 
 
 ## 1.8.5 (2024. 10. 08.)
 ### NHN Cloud IAP
