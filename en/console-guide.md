@@ -341,7 +341,7 @@ Members are classified into NHN Cloud members and IAM members.
 | ADMIN | Create, Read, Update, Delete for the entire project |
 | MARKETPLACE_ADMIN | Marketplace Create, Read, Update, and Delete Services |
 | MARKETPLACE_VIEWER | Marketplace Read |
-| MEMBER | Create, Read, Update, Delete for all services in the project |
+| MEMBER | Create, Read, Update, Delete for all services in the project - Some services excluded (check related roles/permissions)|
 | BILLING VIEWER | Read for usage status |
 | PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create, Read, Update, Delete for project's integrated Appkey<br>Enable, Disable project services<br>Delete for projects |
 | PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey |
@@ -362,16 +362,16 @@ Members are classified into NHN Cloud members and IAM members.
 | Service | Role | Description |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Create, Read, Update, Delete for Infrastructure Service |
-| Infrastructure | MEMBER | Read Network services (except Floating IP), NKS, and NCR. Create, Read, Update, Delete other services |
-| Infrastructure | Routing ADMIN | Read Network services (except Floating IP, Routing Table), NKS, and NCR. Create, Read, Update, Delete other services |
-| Infrastructure | Security Group ADMIN | Read Network services (except Floating IP, Security Groups), NKS, and NCR. Create, Read, Update, Delete other services |
-| Infrastructure | Load Balancer ADMIN | Read Network services (except Floating IP, Load Balancer), NKS, and NCR. Create, Read, Update, Delete other services |
-| Infrastructure | Transit Hub ADMIN | Read Network services (except Floating IP, Transit Hub), NKS, and NCR. Create, Read, Update, Delete other services |
-| Infrastructure | NAT Gateway ADMIN | Read Network services (except Floating IP, NAT Gateway), NKS, and NCR. Create, Read, Update, Delete other services |
-| Infrastructure | Service Gateway ADMIN | Read Network services (except Floating IP, Service Gateway), NKS, and NCR. Create, Read, Update, Delete other services |
-| Infrastructure | Private DNS ADMIN | Read Network services (except Floating IP, Private DNS), NKS, and NCR. Create, Read, Update, Delete other services |
-| Infrastructure | Flow Log ADMIN | Read Network services (except Floating IP, Flow Log), NKS, and NCR. Create, Read, Update, Delete other services |
-| Infrastructure | NCS ADMIN | Read Network services (except Floating IP) and NKS. Create, Read, Update, Delete other services |
+| Infrastructure | MEMBER | Read Network services (except Network Interface, Floating IP), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | Routing ADMIN | Read Network services (except Network Interface, Floating IP, Routing Table), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | Security Group ADMIN | Read Network services (except Network Interface, Floating IP, Security Groups), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | Load Balancer ADMIN | Read Network services (except Network Interface, Floating IP, Load Balancer), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | Transit Hub ADMIN | Read Network services (except Network Interface, Floating IP, Transit Hub), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | NAT Gateway ADMIN | Read Network services (except Network Interface, Floating IP, NAT Gateway), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | Service Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Service Gateway), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | Private DNS ADMIN | Read Network services (except Network Interface, Floating IP, Private DNS), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | Flow Log ADMIN | Read Network services (except Network Interface, Floating IP, Flow Log), NKS, and NCR. Create, Read, Update, Delete other services |
+| Infrastructure | NCS ADMIN | Read Network services (except Network Interface, Floating IP) and NKS. Create, Read, Update, Delete other services |
 | Virtual Desktop | ADMIN | Create, Read, Update, Delete for Virtual Desktop Service |
 | NHN Container Registry (NCR) | ADMIN | Create, Read, Update, Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |

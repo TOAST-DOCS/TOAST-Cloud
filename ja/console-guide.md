@@ -342,7 +342,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | ADMIN | プロジェクト全体に対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | MARKETPLACE_ADMIN | Marketplace サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除) |
 | MARKETPLACE_VIEWER | Marketplace サービス Read(読込) |
-| MEMBER | プロジェクト内のすべてのサービスCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
+| MEMBER | プロジェクト内のすべてのサービスCreate(作成), Read(読み取り), Update(更新), Delete(削除) - 一部のサービスを除く(関連するロール/権限の確認) |
 | BILLING VIEWER | 利用状況Read(読み取り) |
 | PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)  <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除) |
 | PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br> プロジェクト統合Appkey Read(読み取り) |
@@ -363,16 +363,16 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | サービス | ロール | 説明 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
-| Infrastructure | MEMBER | ネットワークサービス(Floating IPを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Routing ADMIN | ネットワークサービス(Floating IP、Routing Tableを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Security Group ADMIN | ネットワークサービス(Floating IP、Security Groupsを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Load Balancer ADMIN | ネットワークサービス(Floating IP、Load Balancerを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Transit Hub ADMIN | ネットワークサービス(Floating IP、Transit Hubを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | NAT Gateway ADMIN | ネットワークサービス(Floating IP、NAT Gatewayを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Service Gateway ADMIN | ネットワークサービス(Floating IP、Service Gatewayを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Private DNS ADMIN | ネットワークサービス(Floating IP、Private DNSを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Flow Log ADMIN | ネットワークサービス(Floating IP、Flow Logを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | NCS ADMIN | ネットワークサービス(Floating IPを除く)及びNKS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | MEMBER | ネットワークサービス(Network Interface, Floating IPを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Routing ADMIN | ネットワークサービス(Network Interface, Floating IP、Routing Tableを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Security Group ADMIN | ネットワークサービス(Network Interface, Floating IP、Security Groupsを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Load Balancer ADMIN | ネットワークサービス(Network Interface, Floating IP、Load Balancerを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Transit Hub ADMIN | ネットワークサービス(Network Interface, Floating IP、Transit Hubを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NAT Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、NAT Gatewayを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Service Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、Service Gatewayを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Private DNS ADMIN | ネットワークサービス(Network Interface, Floating IP、Private DNSを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Flow Log ADMIN | ネットワークサービス(Network Interface, Floating IP、Flow Logを除く)及びNKS、NCS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NCS ADMIN | ネットワークサービス(Network Interface, Floating IPを除く)及びNKS Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り) |

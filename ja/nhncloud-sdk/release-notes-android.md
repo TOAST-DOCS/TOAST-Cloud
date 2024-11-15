@@ -1,5 +1,14 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
+## 1.9.4 (2024. 11. 15.)
+
+### NHN Cloud Push
+
+#### 機能改善
+
+* Device ID設定機能を追加
+    * ユーザーのDevice IDをPushサービスで使用できるように設定するAPI(NhnCloudPush.setDeviceId)を追加しました。
+    
 ## 1.9.3 (2024. 10. 08.)
 ### NHN Cloud IAP
 
