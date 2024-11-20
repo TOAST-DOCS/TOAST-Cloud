@@ -4,10 +4,10 @@
 
 ### NHN Cloud Push
 
-#### 기능 개선
+#### Improved
 
-* Device ID 설정 기능 추가
-    * 사용자의 Device ID를 Push 서비스에서 사용할 수 있도록 설정하는 API(NhnCloudPush.setDeviceId)를 추가했습니다.
+* Added the feature to set device ID
+    * Added the NhnCloudPush.setDeviceId API to set a user's device ID in the Push service.
 
 ## 1.9.3 (2024. 10. 08.)
 
