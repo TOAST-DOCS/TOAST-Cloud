@@ -379,6 +379,11 @@ Members are classified into NHN Cloud members and IAM members.
 | DNS Plus | ADMIN | Create, Read, Update, Delete for DNS Plus Service |
 | DNS Plus | VIEWER | Read for DNS Plus Service |
 | Object Storage | ADMIN | Create, Read, Update, Delete for Object Storage Service |
+| Object Storage | Container OPERATOR | Read all details for containers in the Object Storage service, Create, Update, Delete container management  |
+| Object Storage | Container VIEWER | Read containers in the Object Storage service  |
+| Object Storage | Object READER | Read all details for containers in the Object Storage service, Read containers and detailed informatio and object download  |
+| Object Storage | Object WRITER | Read all details for containers in the Object Storage service, Create, Update, Delete object management  |
+| Object Storage | Object VIEWER | Read all details for containers in the Object Storage service, Read objects and detailed information  |
 | Backup | ADMIN | Create, Read, Update, Delete for Backup Service |
 | RDS for MySQL | ADMIN | Create, Read, Update, Delete for RDS for MySQL Service |
 | RDS for MySQL | VIEWER | Read for RDS for MySQL Service |
