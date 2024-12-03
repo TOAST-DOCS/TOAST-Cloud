@@ -380,7 +380,6 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | DNS Plus | VIEWER | DNS Plusサービスに対するRead(読み取り) |
 | Object Storage | ADMIN | Object Storageサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Object Storage | Container OPERATOR | Object Storageサービス内のコンテナリストおよび、すべての情報詳細を照会Read(読み取り)。コンテナ管理Create(作成)、Update(更新)、Delete(削除)  |
 | Object Storage | Container VIEWER | Object Storageサービス内のコンテナリストを照会Read(読み取り)  |
 | Object Storage | Object READER | Object Storageサービス内のコンテナリストおよび、一部の情報詳細を照会Read(読み取り)。オブジェクトリストおよび詳細照会Read(読み取り)、オブジェクトダウンロードRead(読み取り)  |
 | Object Storage | Object WRITER | Object Storageサービス内のコンテナリストおよび、一部の情報詳細を照会Read(読み取り)。オブジェクト管理Create(作成)、Update(更新)、Delete(削除)  |
