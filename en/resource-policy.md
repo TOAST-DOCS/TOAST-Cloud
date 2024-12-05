@@ -243,7 +243,15 @@ Resource usage is calculated for each project.
 | DB Instance CPU | Per project  | 100vCore | O | |
 | DB Instance Memory | Per project  | 262,144MB | O | |
 | DB Instance Data Storage | Per project  | 10,240GB | O | | 
-| Replica | Per DB Instance | 5 | O | |
+| Replica | Per DB Instance Group | 5 | O | |
+
+### Resource Provision Policy for RDS for PostgreSQL 
+|Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+| DB Instance CPU | Per project  | 100vCore | O | |
+| DB Instance Memory | Per project  | 262,144MB | O | |
+| DB Instance Data Storage | Per project  | 10,240GB | O | | 
+| Replica | Per DB Instance Group | 5 | O | |
 
 ### Resource Provision Policy for RDS for MariaDB
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
@@ -251,7 +259,7 @@ Resource usage is calculated for each project.
 | DB Instance CPU | Per project  | 100vCore | O | |
 | DB Instance Memory | Per project  | 262,144MB | O | |
 | DB Instance Data Storage | Per project  | 10,240GB | O | | 
-| Replica | Per DB Instance | 5 | O | |
+| Replica | Per DB Instance Group | 5 | O | |
 
 
 ### Resource Provision Policy for RDS for MS-SQL 
