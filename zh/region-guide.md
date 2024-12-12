@@ -31,7 +31,6 @@ All users are provided with the same features, policy, stability and usability, 
 | Compute | Instance | Regional | O | O | O | O |
 |  | Ephemeral Storage Instance | Regional | O | | O | | 
 |  | GPU Instance | Region | O |  |  |  |
-|  | Bare Metal Instance | Regional | O | | | |
 |  | Instance Template | Region | O | O | O | O |
 |  | Image | Region | O | O | O | O |
 |  | Image Builder  | Region | O | O |  |  |
