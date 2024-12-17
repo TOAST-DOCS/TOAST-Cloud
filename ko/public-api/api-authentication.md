@@ -5,10 +5,10 @@
 
 ### 전체 흐름도
 #### 토큰 발급 및 Public API 호출
-![img001.png](http://static.toastoven.net/toast/public_api/img01_KO.jpg)
+![img001.png](http://static.toastoven.net/toast/public_api/img01_KO.png)
 
 #### 토큰 만료 시 재발급
-![img002.png](http://static.toastoven.net/toast/public_api/img02_KO.jpg)
+![img002.png](http://static.toastoven.net/toast/public_api/img02_KO.png)
 
 
 ### 인증 서버 도메인

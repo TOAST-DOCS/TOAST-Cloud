@@ -958,7 +958,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 청구서에 노출되는 홈페이지 카테고리, 홈페이지 서비스 정보를 반환하는 API입니다.
 
 ##### 필요 권한
-NHN Cloud 멤버이면 특정한 권한 없이 호출할 수 있는 API입니다.<br>
+회원이면 특정한 권한 없이 호출할 수 있는 API입니다.<br>
 단, 조직 상품을 조회하는 경우에는 해당 조직이나 조직 하위에 있는 프로젝트 멤버여야만 합니다.
 
 ##### 요청 파라미터
@@ -2776,7 +2776,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 
 ##### 필요 권한
-NHN Cloud 회원이면 호출 가능한 API
+회원이면 호출 가능한 API
 
 ##### 요청 파라미터
 
@@ -2880,7 +2880,7 @@ NHN Cloud 회원이면 호출 가능한 API
 청구서에 노출되는 메인 카테고리와 서브 카테고리 및 포함되는 카운터의 목록을 제공하는 API입니다.
 
 ##### 필요 권한
-NHN Cloud 회원이면 호출 가능한 API
+회원이면 호출 가능한 API
 
 ##### 요청 파라미터
 
@@ -3035,7 +3035,7 @@ NHN Cloud 회원이면 호출 가능한 API
 멤버의 User Access Key ID 목록을 조회하는 API입니다.
 
 ##### 필요 권한
-NHN Cloud 회원이면 호출 가능한 API
+회원이면 호출 가능한 API
 
 
 ##### 응답 본문
@@ -3151,7 +3151,7 @@ NHN Cloud 회원이면 호출 가능한 API
 멤버의 User Access Key ID를 등록하는 API입니다.
 
 ##### 필요 권한
-NHN Cloud 회원이면 호출 가능한 API
+회원이면 호출 가능한 API
 
 ##### 요청 파라미터
 
@@ -3250,7 +3250,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 
 ### 필요 권한
-`Project.ProjectAppKey.UpdateSecretKey`
+자신의 User Access Key ID 비밀 키만 재발급 가능
 
 ##### 요청 파라미터
 
@@ -3296,6 +3296,9 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 멤버의 User Access Key ID 상태를 변경하는 API입니다.
 
+### 필요 권한
+자신의 User Access Key ID만 수정 가능
+
 ##### 요청 파라미터
 
 
@@ -3337,9 +3340,8 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 User Access Key ID를 삭제하는 API입니다.
 
-
 ##### 필요 권한
-`Project.ProjectAppKey.Delete`
+자신의 User Access Key ID만 삭제 가능
 
 ##### 요청 파라미터
 
