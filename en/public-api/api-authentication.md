@@ -5,10 +5,10 @@ A token of type Bearer for user authentication. Tokens are valid for a default o
 
 ### Flowchart
 #### Issue Token and Call Public API
-![img001.png](http://static.toastoven.net/toast/public_api/img01_KO.jpg)
+![img001.png](http://static.toastoven.net/toast/public_api/img01_EN.png)
 
 #### Reissue on token expiration
-![img002.png](http://static.toastoven.net/toast/public_api/img02_KO.jpg)
+![img002.png](http://static.toastoven.net/toast/public_api/img02_EN.png)
 
 
 ### Authentication server domain
