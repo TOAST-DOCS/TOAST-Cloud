@@ -958,7 +958,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 請求書に表示されるWebサイトカテゴリー、 Webサイトサービス情報を返すAPIです。
 
 ##### 必要権限
-NHN Cloudメンバーであれば、特定の権限なしで呼び出すことができるAPIです。
+会員であれば、特定の権限なしで呼び出すことができるAPIです。
 ただし、組織商品を照会する場合は、その組織や組織の下にあるプロジェクトメンバーでなければなりません。
 
 ##### リクエストパラメータ
@@ -2776,7 +2776,7 @@ IP ACL設定を照会するAPIです。
 
 
 ##### 必要権限
-NHN Cloud会員であれば呼び出し可能なAPI
+会員であれば呼び出し可能なAPI
 
 ##### リクエストパラメータ
 
@@ -2880,7 +2880,7 @@ NHN Cloud会員であれば呼び出し可能なAPI
 請求書に表示されるメインカテゴリーとサブカテゴリー及び含まれるカウンターのリストを提供するAPIです。
 
 ##### 必要権限
-NHN Cloud会員であれば呼び出し可能なAPI
+会員であれば呼び出し可能なAPI
 
 ##### リクエストパラメータ
 
@@ -3035,7 +3035,7 @@ NHN Cloud会員であれば呼び出し可能なAPI
 メンバーのUser Access Key IDリストを照会するAPIです。
 
 ##### 必要権限
-NHN Cloud会員であれば呼び出し可能なAPI
+会員であれば呼び出し可能なAPI
 
 
 ##### レスポンス本文
@@ -3151,7 +3151,7 @@ NHN Cloud会員であれば呼び出し可能なAPI
 メンバーのUser Access Key IDを登録するAPIです。
 
 ##### 必要権限
-NHN Cloud会員であれば呼び出し可能なAPI
+会員であれば呼び出し可能なAPI
 
 ##### リクエストパラメータ
 
@@ -3250,7 +3250,7 @@ User Access Key IDの秘密鍵を再発行するAPIです。
 
 
 ### 必要権限
-`Project.ProjectAppKey.UpdateSecretKey`
+自分のUser Access Key ID秘密鍵のみ再発行可能
 
 ##### リクエストパラメータ
 
@@ -3296,6 +3296,9 @@ User Access Key IDの秘密鍵を再発行するAPIです。
 
 メンバーのUser Access Key IDの状態を変更するAPIです。
 
+### 必要権限
+自分のUser Access Key IDのみ修正可能
+
 ##### リクエストパラメータ
 
 
@@ -3337,9 +3340,8 @@ User Access Key IDの秘密鍵を再発行するAPIです。
 
 User Access Key IDを削除するAPIです。
 
-
 ##### 必要権限
-`Project.ProjectAppKey.Delete`
+自分のUser Access Key IDのみ削除可能
 
 ##### リクエストパラメータ
 
