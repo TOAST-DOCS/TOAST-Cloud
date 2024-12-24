@@ -957,8 +957,8 @@ API to get a list of project common role groups set up by your organization.
 
 API to return homepage category, homepage service information that is exposed on the bill.
 
-##### Required permissions
-This API can be called without specific permissions if you are an NHN Cloud member.<br>
+##### Required Permissions
+This API can be called without specific permissions if you are signed up to NHN Cloud.<br>
 However, if you're viewing an organization's products, you must be a member of a project in that organization or a project under that organization.
 
 ##### Request Parameter
@@ -2776,7 +2776,7 @@ For each language, you can get the impression name and type for calculating the 
 
 
 ##### Required permissions
-APIs that can be called by NHN Cloud members
+APIs that can be called if you have signed up to NHN Cloud
 
 ##### Request Parameter
 
@@ -2880,7 +2880,7 @@ APIs that can be called by NHN Cloud members
 API that provides a list of the main categories and subcategories exposed in the bill, and the counters they contain.
 
 ##### Required permissions
-APIs that can be called by NHN Cloud members
+APIs that can be called if you have signed up to NHN Cloud
 
 ##### Request Parameter
 
@@ -3035,7 +3035,7 @@ API to get a list of project AppKeys being used by the project.
 API to get a list of a member's User Access Key IDs.
 
 ##### Required permissions
-APIs that can be called by NHN Cloud members
+APIs that can be called if you have signed up to NHN Cloud
 
 
 ##### Response Body
@@ -3151,7 +3151,7 @@ API to generate an AppKey for use in your project.
 API to register a member's User Access Key ID.
 
 ##### Required permissions
-APIs that can be called by NHN Cloud members
+APIs that can be called if you have signed up to NHN Cloud
 
 ##### Request Parameter
 
@@ -3249,8 +3249,8 @@ API to delete a project AppKey.
 API to reissue the secret key for a User Access Key ID.
 
 
-### Required permissions
-`Project.ProjectAppKey.UpdateSecretKey`
+### Required Permissions
+Can only reissue the secret key for the user's own User Access Key ID
 
 ##### Request Parameter
 
@@ -3296,6 +3296,9 @@ API to reissue the secret key for a User Access Key ID.
 
 API to change the state of a member's User Access Key ID.
 
+### Required Permissions
+Can only modify the user's own User Access Key ID
+
 ##### Request Parameter
 
 
@@ -3337,9 +3340,8 @@ API to change the state of a member's User Access Key ID.
 
 API to delete a User Access Key ID.
 
-
 ##### Required permissions
-`Project.ProjectAppKey.Delete`
+Can only delete the user's own User Access Key ID
 
 ##### Request Parameter
 

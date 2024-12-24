@@ -31,7 +31,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Compute | Instance | リージョン | O | O | O | O |
 |  | Ephemeral Storage Instance | リージョン | O | | O | | 
 |  | GPU Instance | リージョン | O |  |  |  |
-|  | Bare Metal Instance | リージョン | O | | | |
 |  | Instance Template | リージョン | O | O | O | O |
 |  | Image | リージョン | O | O | O | O |
 |  | Image Builder  | リージョン | O | O |  |  |

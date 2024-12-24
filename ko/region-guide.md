@@ -31,7 +31,6 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Compute | Instance | 리전 | O | O | O | O |
 |  | Ephemeral Storage Instance | 리전 | | | O | | 
 |  | GPU Instance | 리전 | O |  |  |  |
-|  | Bare Metal Instance | 리전 | O | | | |
 |  | Instance Template | 리전 | O | O | O | O |
 |  | Image | 리전 | O | O | O | O |
 |  | Image Builder  | 리전 | O | O |  |  |
