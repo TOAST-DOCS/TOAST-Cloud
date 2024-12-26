@@ -411,6 +411,7 @@ public class MyApplication extends Application {
                 .setSmallIcon(R.drawable.ic_notification)       // 작은 아이콘 설정
                 .setSound(context, R.raw.dingdong1)             // 알림음 설정
                 .setVibratePattern(new long[] {500, 700, 1000}) // 진동 패턴 설정
+                .enableVibration(true)                          // 진동 여부 설정
                 .enableForeground(true)                         // 포그라운드 알림 노출 설정
                 .enableBadge(true)                              // 배지 아이콘 사용 설정
                 .build();
@@ -468,6 +469,9 @@ public class MyApplication extends Application {
 <!-- 진동 패턴 -->
 <meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern"
            android:resource="@array/default_vibrate_pattern"/>
+<!-- 진동 여부 설정 -->
+<meta-data android:name="com.toast.sdk.push.notification.vibration_enabled"
+           android:resource="true"/>
 <!-- 배지 아이콘 사용 -->
 <meta-data android:name="com.toast.sdk.push.notification.badge_enabled"
            android:value="true"/>
