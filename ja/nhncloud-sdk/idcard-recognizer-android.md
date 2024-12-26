@@ -19,7 +19,7 @@ NHN Cloud ID Card RecognizerはAndroid 5.1以上(API level 22以上)で動作し
 dependencies {
     ...
     // NHN Cloud ID Card Recognizer
-    implementation 'com.nhncloud.android:nhncloud-idcard-recognizer:1.9.4'
+    implementation 'com.nhncloud.android:nhncloud-idcard-recognizer:1.9.5'
 }
 ```
 
