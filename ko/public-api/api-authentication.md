@@ -25,13 +25,14 @@
      - User Access Key ID는 **API 보안 설정** 페이지에서 확인 가능합니다.
 ##### 토큰 발급 요청
 > `POST /oauth2/token/create`
+
 * 요청
 
 | 구분 | 이름 | 타입 | 필수 | 값                                     | 설명                                                                   |
 |---------------|------------- | ------------- | ------------- |-------------------------------------------|--------------------------| 
 | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
 | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 | 
-| Request Param |  grant_type | String | Yes | client_credentials                        |                                                                    |
+| Request Body |  grant_type | String | Yes | client_credentials                        | <ul><li>토큰 발급 grant_type은 client_credentials만 제공되고 있음</li><li>발급 요청 시 `grand_type=client_credentials`와 같이 사용</li></ul> |
 
 * 응답
 
@@ -83,17 +84,17 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
     headers.setBasicAuth(userAccessKeyID, secretAccessKey);
 
-    MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-    params.add("grant_type", "client_credentials");
+    MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+    map.add("grant_type", "client_credentials");
 
-    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
     return restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
 * Spring Cloud의 OpenFeign을 사용하여 자동으로 토큰을 발급 및 갱신하는 경우
-  > 이 방법은 Spring Boot 3.0 이상 버전을 사용하는 경우에만 가능합니다. API를 통해 강제로 만료시킨 경우를 대비하기 위해서는 토큰을 다시 발급하는 부분을 직접 구현해야 합니다.
-  > * API 를 통해 강제로 만료시킨 경우를 대비하기 위해선 토큰을 다시 발급하는 부분을 **직접 구현**해야 합니다.
+  > 이 방법은 Spring Boot 3.0 이상 버전을 사용하는 경우에만 가능합니다.
+  > API를 이용해 강제로 만료시킨 경우를 대비하려면 토큰을 다시 발급하는 부분을 직접 구현해야 합니다.
 
 * 1: 의존성 추가
 ```groovy
@@ -162,13 +163,14 @@ public class Oauth2Config {
 ```
 #### 토큰 만료 요청
 > `POST /oauth2/token/revoke`
+
 * 요청
 
   | 구분 | 이름 | 타입 | 필수 | 값 | 설명   |
   |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
   | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
   | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 |
-  | Request Param |  token | String| Yes | access token    | 발급받은 토큰    |
+  | Request Body |  token | String| Yes | access token    | <ul><li>발급 받은 토큰</li><li>만료 요청 시 `token=발급받은_토큰`과 같이 사용</li></ul>      |
 
 * 응답
     * HttpStatus 200
@@ -206,10 +208,10 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
     headers.setBasicAuth(userAccessKeyID, secretAccessKey);
 
-    MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-    params.add("token", token);
+    MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+    map.add("token", token);
 
-    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
     restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/revoke", request, Void.class);
 }
