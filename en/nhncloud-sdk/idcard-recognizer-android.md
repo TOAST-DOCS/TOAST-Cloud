@@ -19,7 +19,7 @@ Add dependencies of nhncloud-idcard-recognizer to the build.gradle file of the a
 dependencies {
     ...
     // NHN Cloud ID Card Recognizer
-    implementation 'com.nhncloud.android:nhncloud-idcard-recognizer:1.9.3'
+    implementation 'com.nhncloud.android:nhncloud-idcard-recognizer:1.9.5'
 }
 ```
 

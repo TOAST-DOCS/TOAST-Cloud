@@ -5,10 +5,10 @@
 
 ### 全体フローチャート
 #### トークン発行及びPublic API呼び出し
-![img001.png](http://static.toastoven.net/toast/public_api/img01_KO.jpg)
+![img001.png](http://static.toastoven.net/toast/public_api/img01_JA.png)
 
 #### トークン有効期限切れ時の再発行
-![img002.png](http://static.toastoven.net/toast/public_api/img02_KO.jpg)
+![img002.png](http://static.toastoven.net/toast/public_api/img02_JA.png)
 
 
 ### 認証サーバードメイン

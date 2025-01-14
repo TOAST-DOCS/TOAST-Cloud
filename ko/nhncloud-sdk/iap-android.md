@@ -38,32 +38,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.9.3'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.9.5'
     ...
 }
 ```
 
-> Google Play 인앱 결제는 Android 4.4(API 레벨 19) 이상에서 동작합니다.
-
-#### Android 4.4(API 레벨 19) 이슈
-
-Play Billing Library 6.x를 R8과 함께 사용하는 경우, Android 4.4(API 레벨 19)에서 동작하지 않는 문제가 발생할 수 있습니다.
-이 문제를 해결하고 Android 4.4(API 레벨 19)를 지원하려면 settings.gradle 파일에 아래와 같은 설정을 추가하세요.
-
-```groovy
-buildscript {
-    repositories {
-        // Raw R8 releases.
-        maven {
-            url("https://storage.googleapis.com/r8-releases/raw")
-        }
-    }
-
-    dependencies {
-        classpath("com.android.tools:r8:8.1.46")
-    }
-}
-```
+> Google Play 인앱 결제는 Android 5.0(API 레벨 21) 이상에서 동작합니다.
 
 ### ONE store
 
@@ -79,14 +59,14 @@ repositories {
 
 dependencies {
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.9.3'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.9.5'
     // ONE store V19
     implementation files('libs/iap_sdk-v19.01.00.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.9.3'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.9.5'
     // ONE store V21
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.9.3'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.9.5'
     ...
 }
 ```
@@ -103,7 +83,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.9.3'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.9.5'
     ...
 }
 ```
@@ -120,7 +100,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.9.3'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.9.5'
     ...
 }
 ```
@@ -163,7 +143,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.9.3'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.9.5'
     ...
 }
 ```
@@ -180,7 +160,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.9.3'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.9.5'
     ...
 }
 ```

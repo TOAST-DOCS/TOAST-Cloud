@@ -1,5 +1,10 @@
 ## NHN Cloud > SDK User Guide > Release Notes > iOS
 
+## 1.8.6 (2024. 11. 15.)
+### NHN Cloud Push
+#### Improved
+* Added API to set device ID 
+
 ## 1.8.5 (2024. 10. 08.)
 ### NHN Cloud IAP
 #### Improved
