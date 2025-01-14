@@ -1,5 +1,10 @@
 ## NHN Cloud > Public API > Release Notes
 
+### January 21, 2025
+#### Feature Updates
+
+- Fixed incorrect descriptions of token issuance and expiration requests
+
 ### December 24, 2024
 #### Feature Updates
 

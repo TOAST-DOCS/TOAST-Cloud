@@ -25,13 +25,14 @@ Follow the steps below to issue a User Access Key ID and Secret Access Key first
      - The User Access Key ID can be found on the **API Security Settings** page.
 ##### Request Token Issuance
 > `POST /oauth2/token/create`
+
 * Request
 
 | Category | Name | Type | Required | Value                                     | Description                                                                   |
 |---------------|------------- | ------------- | ------------- |-------------------------------------------|--------------------------| 
 | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
 | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | Use the Base64 encoded result of `UserAccessKeyID:SecretAccessKey` followed by `Basic`  | 
-| Request Param |  grant_type | String | Yes | client_credentials                        |                                                                    |
+| Request Body |  grant_type | String | Yes | client_credentials                        | <ul><li>Token issuance grant_type is only client_credentials</li><li>To request issuance, type like `grand_type=client_credentials`</li></ul> |
 
 * Response
 
@@ -83,17 +84,17 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
     headers.setBasicAuth(userAccessKeyID, secretAccessKey);
 
-    MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-    params.add("grant_type", "client_credentials");
+    MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+    map.add("grant_type", "client_credentials");
 
-    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
     return restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
 * When using OpenFeign on Spring Cloud to automatically issue and renew tokens
-  > This method is only possible if you are using Spring Boot 3.0 or later. You will need to implement the part of reissuing the token yourself in case you force it to expire via the API.
-  > * In case you force an expiration through APIs, you must **implement the reissue part yourself**.
+  > This method is only possible if you are using Spring Boot 3.0 or later.
+  > * In case you force an expiration using APIs, you must implement the reissue part yourself.
 
 * 1: Add a dependency
 ```groovy
@@ -162,13 +163,14 @@ public class Oauth2Config {
 ```
 #### Request token expiration
 > `POST /oauth2/token/revoke`
+
 * Request
 
   | Category | Name | Type | Required | Value | Description   |
   |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
   | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
   | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | Use the Base64 encoded result of `UserAccessKeyID:SecretAccessKey` followed by `Basic`  |
-  | Request Param |  token | String| Yes | access token    | Issued token    |
+  | Request Body |  token | String| Yes | access token    | To request expiration of the <ul><li>issued token</li><li>, type like `token=issued_token`</li></ul>     |
 
 * Response
     * HttpStatus 200
@@ -206,10 +208,10 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
     headers.setBasicAuth(userAccessKeyID, secretAccessKey);
 
-    MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-    params.add("token", token);
+    MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+    map.add("token", token);
 
-    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
     restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/revoke", request, Void.class);
 }
