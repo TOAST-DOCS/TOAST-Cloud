@@ -115,12 +115,10 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Email | Global |  |  |  |  |
 |  | KakaoTalk Bizmessage | Global |  |  |  |  |
 | AI Service | Face Recognition | Global |  |  |  |  |
-|  | Face Liveness | Global |  |  |  |  |
 |  | AI Fashion | Global |  |  |  |  |
 |  | OCR | Global |  |  |  |  |
 |  | Text to Speech | Global |  |  |  |  |
 |  | Speech to Text | Global |  |  |  |  |
-|  | Pose Estimation | Global |  |  |  |  |
 | Machine Learning | Deep Learning Instance | Regional | O |  | | |
 |  | AI EasyMaker | Regional | O |  |  |  |
 | Application Service | Maps | Regional | O |  |  |  |
@@ -135,7 +133,6 @@ All users are provided with the same features, policy, stability and usability, 
 | Search | Cloud Search | Regional | O |  |  |  |
 |  | Autocomplete | Regional | O |  |  |  |
 |  | Corporation Search | Regional | O |  |  |  |
-|  | Word Suggestion | Global |  |  |  |  |
 | Data & Analytics | Log & Crash Search | Global |  |  |  |  |
 |  | DataFlow | Regional | O |  |  |  |
 |  | DataQuery | Regional | O |  |  |  |
