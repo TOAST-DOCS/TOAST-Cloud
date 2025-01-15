@@ -114,12 +114,10 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Email | グローバル |  |  |  |  |
 |  | KakaoTalk Bizmessage | グローバル |  |  |  |  |
 | AI Service | Face Recognition | グローバル |  |  |  |  |
-|  | Face Liveness | グローバル |  |  |  |  |
 |  | AI Fashion | グローバル |  |  |  |  |
 |  | OCR | グローバル |  |  |  |  |
 |  | Text to Speech | グローバル |  |  |  |  |
 |  | Speech to text | グローバル |  |  |  |  |
-|  | Pose Estimation | グローバル |  |  |  |  |
 | Machine Learning | Deep Learning Instance | リージョン | O |  | | |
 |  | AI EasyMaker | リージョン | O |  |  |  |
 | Application Service | Maps | リージョン | O |  |  |  |
@@ -134,7 +132,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Search | Cloud Search | リージョン | O |  |  |  |
 |  | Autocomplete | リージョン | O |  |  |  |
 |  | Corporation Search | リージョン | O |  |  |  |
-|  | Word Suggestion | グローバル |  |  |  |  |
 | Data & Analytics | Log & Crash Search | グローバル |  |  |  |  |
 |  | DataFlow | リージョン | O |  |  |  |
 |  | DataQuery | リージョン | O |  |  |  |

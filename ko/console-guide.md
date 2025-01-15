@@ -468,12 +468,10 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | KakaoTalk Bizmessage | SETTING ADMIN | KakaoTalk Bizmessage 서비스 발신 프로필 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)템플릿 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)대체 발송 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)발신 프로필 그룹 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (친구톡)이미지 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (친구톡)대체 발송 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 발송 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 웹훅 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 통계 이벤트 키 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | KakaoTalk Bizmessage | STATISTICS ADMIN | KakaoTalk Bizmessage 서비스 통계 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성)  |
 | Face Recognition | ADMIN | Face Recognition 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Face Liveness | ADMIN | Face Liveness 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI Fashion | ADMIN | AI Fashion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  | 
 | OCR | ADMIN | OCR 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  | 
 | Text to Speech | ADMIN | Text to Speech 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Speech to Text | ADMIN | Speech to Text 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Pose Estimation | ADMIN | Pose Estimation 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI EasyMaker | ADMIN | AI EasyMaker 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Maps | ADMIN | Maps 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | ROLE | ADMIN | ROLE 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
@@ -487,7 +485,6 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Cloud Search | ADMIN | Cloud Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Autocomplete | ADMIN | Autocomplete 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Corporation Search | ADMIN | Corporation Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Word Suggestion | ADMIN | Word Suggestion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | DataFlow | ADMIN | DataFlow 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | DataQuery | ADMIN | DataQuery 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
