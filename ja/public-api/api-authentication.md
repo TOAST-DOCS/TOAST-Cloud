@@ -25,13 +25,14 @@
      - User Access Key IDは**APIセキュリティ設定**ページで確認できます。
 ##### トークン発行リクエスト
 > `POST /oauth2/token/create`
+
 * リクエスト
 
 | 区分 | 名前 | タイプ | 必須 | 値                                    | 説明                                                                  |
 |---------------|------------- | ------------- | ------------- |-------------------------------------------|--------------------------| 
 | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
 | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey`をBase64エンコードした結果を`Basic`の後ろに貼り付けて使用 | 
-| Request Param |  grant_type | String | Yes | client_credentials                        |                                                                    |
+| Request Body |  grant_type | String | Yes | client_credentials                        | <ul><li>トークン発行grant_typeはclient_credentialsのみ提供されている</li><li>発行リクエスト時に`grand_type=client_credentials`のように使用</li></ul> |
 
 * レスポンス
 
@@ -83,17 +84,17 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
     headers.setBasicAuth(userAccessKeyID, secretAccessKey);
 
-    MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-    params.add("grant_type", "client_credentials");
+    MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+    map.add("grant_type", "client_credentials");
 
-    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
     return restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
 * Spring CloudのOpenFeignを使用して自動的にトークンを発行及び更新する場合
-  > この方法はSpring Boot 3.0以上のバージョンを使用する場合のみ可能です。APIを通じて強制的に期限切れさせた場合に備えて、トークンを再発行する部分を直接実装する必要があります。
-  > * APIを通じて強制的に期限切れにした場合に備えて、トークンを再発行する部分を**直接実装**する必要があります。
+  > この方法はSpring Boot 3.0以上のバージョンを使用する場合のみ可能です。
+  > APIを利用して強制的に期限切れにした場合に備えて、トークンを再発行する部分を直接実装する必要があります。
 
 * 1:依存関係追加
 ```groovy
@@ -162,13 +163,14 @@ public class Oauth2Config {
 ```
 #### トークン有効期限切れリクエスト
 > `POST /oauth2/token/revoke`
+
 * リクエスト
 
   | 区分 | 名前 | タイプ | 必須 | 値 | 説明  |
   |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
   | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
   | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey`をBase64エンコードした結果を`Basic`の後ろに貼り付けて使用 |
-  | Request Param |  token | String| Yes | access token    | 発行されたトークン |
+  | Request Body |  token | String| Yes | access token    | <ul><li>発行されたトークン</li><li>期限切れリクエスト時に`token=発行された_トークン`のように使用</li></ul>      |
 
 * レスポンス
     * HttpStatus 200
@@ -206,10 +208,10 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
     headers.setBasicAuth(userAccessKeyID, secretAccessKey);
 
-    MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-    params.add("token", token);
+    MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+    map.add("token", token);
 
-    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
     restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/revoke", request, Void.class);
 }
