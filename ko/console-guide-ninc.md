@@ -265,7 +265,6 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 ### NHN Cloud 회원과 IAM 멤버 정책
 
-| 구분 | [NHN Cloud](https://ninc.go.kr)회원 | IAM 멤버 |
 | 구분 | [NHN Cloud](http://ninc.go.kr)회원 | IAM 멤버 |
 | --- | --- | --- |
 | 정의 | - 조직 관리를 위한 멤버<br>- NHN Cloud 이용 약관에 동의한 NHN Cloud회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>- NHN Cloud서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud 회원으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
