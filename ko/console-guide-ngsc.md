@@ -14,7 +14,7 @@ NHN Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을
 ## 퀵 가이드
 콘솔에서 제공하는 기본 기능에 대한 퀵 가이드입니다. 
 
-![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_01_202209.png)
+![tutorial_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_01_202209.png)
 
 
 ## 조직 관리
@@ -33,8 +33,8 @@ NHN Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을
 
 
 ### 조직 생성 가이드
-![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_02_202209.png)
-![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_03_202209.png)
+![tutorial_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_02_202209.png)
+![tutorial_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_03_202209.png)
 
 
 <center>[그림 1] 조직 생성 </center>
@@ -62,8 +62,7 @@ NHN Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을
 
 NHN Cloud 서비스를 안정하고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
 
-![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_04_202209.png)
-
+![console_guide_3_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_04_202209.png)
 #### IP ACL 설정
 허용한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다.
 
@@ -108,7 +107,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 * IAM 멤버의 콘솔 접속 보안을 강화하기 위해 **로그인 보안 설정** 기능을 제공합니다.
 * 모든 조직 서비스(Cloud 등)에 동일하게 설정하거나, 각 서비스별로 다르게 설정할 수 있습니다.
-![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_11_202209.png)
+![console_guide_4_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_11_202209.png)
 
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
@@ -212,8 +211,8 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 
 ### 프로젝트 생성 가이드
-![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_05_202209.png)
-![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_06_202209.png)
+![tutorial_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_05_202209.png)
+![console_guide_1_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_06_202209.png)
 
 <center>[그림 2] 프로젝트 생성 </center>
 
@@ -237,10 +236,10 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 ### 프로젝트 서비스 활성화 가이드
 
-![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_10_202209.png)
-![console_guide_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_07_202209.png)
-![console_guide_6_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_08_202209.png)
-![console_guide_7_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_NHN Cloud_09_202209.png)
+![console_guide_2_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_10_202209.png)
+![console_guide_5_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_07_202209.png)
+![console_guide_6_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_08_202209.png)
+![console_guide_7_ko.png](http://static.toastoven.net/toast/console_guide/consoleguide_ngsc_09_202209.png)
 <center>[그림 3] 프로젝트 서비스 활성화 </center>
 
 1. 프로젝트 생성 후, **서비스 선택** 버튼을 클릭하여 프로젝트에서 사용할 서비스를 선택할 수 있습니다.
@@ -265,12 +264,12 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 ### NHN Cloud 회원과 IAM 멤버 정책
 
-| 구분 | [NHN Cloud](https://ngsc.go.kr)회원 | IAM 멤버 |
+| 구분 | [NHN Cloud](http://ngsc.go.kr)회원 | IAM 멤버 |
 | --- | --- | --- |
 | 정의 | - 조직 관리를 위한 멤버<br>- NHN Cloud 이용 약관에 동의한 NHN Cloud회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>- NHN Cloud서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud 회원으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
 | 멤버 등록 방법 | - 조직의 OWNER나 ADMIN이 NHN Cloud ID를 입력하여 등록 | - 조직의 OWNER나 ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>- SSO 연동/API 연동 등을 통해 등록 |
 | 멤버 역할 | - 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리)<br>- 프로젝트 생성<br>- 프로젝트 삭제 | - 조직 서비스 이용 |
-| 콘솔 접근 | - NHN Cloud 콘솔 (https://console.NHN Cloud-nhncloud.com/) 접근<br>- NHN Cloud > 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.NHN Cloud-nhncloud.com/) 접근<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
+| 콘솔 접근 | - NHN Cloud 콘솔 (https://console.ngsc.go.kr) 접근<br>- NHN Cloud > 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.ngsc.go.kr) 접근<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 
 ### 조직 멤버
