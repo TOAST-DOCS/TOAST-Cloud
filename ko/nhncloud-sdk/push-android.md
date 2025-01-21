@@ -953,6 +953,7 @@ public int getLightOnMs();
 public int getLightOffMs();
 public long[] getVibratePattern();
 public Uri getSound();
+public boolean isVibrationEnabled();
 public boolean isForegroundEnabled();
 public boolean isBadgeEnabled();
 public Builder buildUpon();
@@ -968,6 +969,7 @@ public Builder buildUpon();
 | getLightOffMs | int | | LED 불이 나갈 때의 시간을 반환합니다. |
 | getVibratePattern | long[] | | 진동의 패턴을 반환합니다. |
 | getSound | Uri | | 알림음의 Uri 를 반환합니다. |
+| isVibrationEnabled | boolean | | 진동 여부를 반환합니다. |
 | isForegroundEnabled | boolean | | 포그라운드 알림 사용 여부를 반환합니다. |
 | isBadgeEnabled | boolean | | 배지 아이콘 사용 여부를 반환합니다. |
 | buildUpon | NhnCloudNotificationOptions#Builder | | 현재 옵션 정보를 기반으로 빌더를 반환합니다. |

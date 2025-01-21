@@ -17,7 +17,7 @@
 
 * 알림 진동 설정 API 추가
     * 알림 수신 시 진동 여부를 설정할 수 있는 기능이 추가되었습니다.
-    * NhnCloudNotificationOptions.Builder의 enableVibration(boolean)를 사용해 진동 여부를 설정할 수 있습니다.
+    * NhnCloudNotificationOptions.Builder의 enableVibration(boolean)을 사용해 진동 여부를 설정할 수 있습니다.
 
 ## 1.9.4 (2024. 11. 15.)
 
