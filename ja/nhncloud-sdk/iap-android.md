@@ -43,27 +43,7 @@ dependencies {
 }
 ```
 
-> Google Playアプリ内決済はAndroid 4.4(APIレベル19)以上で動作します。
-
-#### Android 4.4(APIレベル19)イシュー
-
-Play Billing Library 6.xをR8と一緒に使用する場合、Android 4.4(APIレベル19)で動作しない問題が発生する可能性があります。
-この問題を解決し、Android 4.4(APIレベル19)をサポートするには、settings.gradleファイルに以下の設定を追加してください。
-
-```groovy
-buildscript {
-    repositories {
-        // Raw R8 releases.
-        maven {
-            url("https://storage.googleapis.com/r8-releases/raw")
-        }
-    }
-
-    dependencies {
-        classpath("com.android.tools:r8:8.1.46")
-    }
-}
-```
+> Google Playアプリ内決済はAndroid 5.0(APIレベル21)以上で動作します。
 
 ### ONE store
 
