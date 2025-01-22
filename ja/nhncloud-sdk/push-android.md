@@ -187,7 +187,7 @@ public void onLogin(String userId) {
 ### 受信同意設定
 * 韓国情報通信網法規定(第50条から第50条の8)に従い、トークン登録時の通知/広告性/夜間広告性プッシュメッセージ受信に同意するかも一緒に入力を受けます。メッセージ送信時に受信に同意しているかを基準に自動的にフィルタリングします。
     * [KISAガイドへ](https://www.kisa.or.kr/2060301/form?postSeq=19)
-    * [法令へ（韓国語）](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+    * [法令へ（韓国語）](http://www.law.go.kr/法令/情報通信網利用促進及び情報保護などに関する法律/%2820130218,11322,20120217%29/第50条)
 * NhnCloudPushAgreementに受信同意の可否を設定し、トークン登録時にNHN Cloud Pushサーバーに転送します。
 
 ### トークン登録例
@@ -410,6 +410,7 @@ public class MyApplication extends Application {
                 .setSmallIcon(R.drawable.ic_notification)       // 小さなアイコン設定
                 .setSound(context, R.raw.dingdong1)             // 通知音設定
                 .setVibratePattern(new long[] {500, 700, 1000}) // 振動パターン設定
+                .enableVibration(true)                          // 振動設定              
                 .enableForeground(true)                         // フォアグラウンド通知表示設定
                 .enableBadge(true)                              // バッジアイコン使用設定
                 .build();
@@ -467,6 +468,9 @@ public class MyApplication extends Application {
 <!-- 振動パターン -->
 <meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern"
            android:resource="@array/default_vibrate_pattern"/>
+<!-- 振動設定 -->
+<meta-data android:name="com.toast.sdk.push.notification.vibration_enabled"
+           android:resource="true"/>           
 <!-- バッジアイコン使用 -->
 <meta-data android:name="com.toast.sdk.push.notification.badge_enabled"
            android:value="true"/>
@@ -949,6 +953,7 @@ public int getLightOnMs();
 public int getLightOffMs();
 public long[] getVibratePattern();
 public Uri getSound();
+public boolean isVibrationEnabled();
 public boolean isForegroundEnabled();
 public boolean isBadgeEnabled();
 public Builder buildUpon();
@@ -964,6 +969,7 @@ public Builder buildUpon();
 | getLightOffMs | int | | LEDライトが消える時の時間を返します。 |
 | getVibratePattern | long[] | | 振動のパターンを返します。|
 | getSound | Uri | | 通知音のUriを返します。 |
+| isVibrationEnabled | boolean | | 振動するかどうかを返します。 |
 | isForegroundEnabled | boolean | | フォアグラウンド通知の使用するかを返します。|
 | isBadgeEnabled | boolean | | バッジアイコンの使用の有無を返します。 |
 | buildUpon | NhnCloudNotificationOptions#Builder | | 現在のオプション情報に基づき、ビルダーを返します。 |
