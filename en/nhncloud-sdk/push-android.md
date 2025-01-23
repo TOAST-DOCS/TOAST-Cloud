@@ -411,6 +411,7 @@ public class MyApplication extends Application {
                 .setSmallIcon(R.drawable.ic_notification)       // Set small icon
                 .setSound(context, R.raw.dingdong1)             // Set notification sound
                 .setVibratePattern(new long[] {500, 700, 1000}) // Set vibration pattern
+                .enableVibration(true)                          // Set vibration
                 .enableForeground(true)                         // Set foreground notification exposure
                 .enableBadge(true)                              // Set badge icon use
                 .build();
@@ -468,6 +469,9 @@ public class MyApplication extends Application {
 <!-- Vibration pattern -->
 <meta-data android:name="com.toast.sdk.push.notification.default_vibrate_pattern"
            android:resource="@array/default_vibrate_pattern"/>
+<!-- Vibration setup -->
+<meta-data android:name="com.toast.sdk.push.notification.vibration_enabled"
+           android:resource="true"/>
 <!-- Badge icon use -->
 <meta-data android:name="com.toast.sdk.push.notification.badge_enabled"
            android:value="true"/>
@@ -949,6 +953,7 @@ public int getLightOnMs();
 public int getLightOffMs();
 public long[] getVibratePattern();
 public Uri getSound();
+public boolean isVibrationEnabled();
 public boolean isForegroundEnabled();
 public boolean isBadgeEnabled();
 public Builder buildUpon();
@@ -964,6 +969,7 @@ public Builder buildUpon();
 | getLightOffMs | int | | Returns the time when the LED light is turned off. |
 | getVibratePattern | long[] | | Returns the pattern of vibrations. |
 | getSound | Uri | | Returns the URI of the notification sound. |
+| isVibrationEnabled | boolean | | Returns whether or not to enable vibration. |
 | isForegroundEnabled | boolean | | Returns whether or not to use foreground notifications. |
 | isBadgeEnabled | boolean | | Returns whether or not to use the badge icon. |
 | buildUpon | NhnCloudNotificationOptions#Builder | | Returns a builder based on the current option information. |
