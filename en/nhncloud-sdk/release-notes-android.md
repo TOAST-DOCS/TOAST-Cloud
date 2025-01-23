@@ -1,5 +1,24 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
+## 1.9.5 (2025. 01. 23.)
+
+### NHN Cloud IAP
+
+#### Improved
+
+* Updated Google Play Billing Library(PBL)
+    * Updated Google Play Billing Library(PBL) to 7.1.1.
+* Raised the minimum supported version for NHN Cloud IAP Google Library
+    * Raised the minimum supported version for NHN Cloud IAP Google Library(nhncloud-iap-google) to 21.
+
+### NHN Cloud Push
+
+#### Improved
+
+* Added Enable Vibration API
+    * Added the feature to set whether to vibrate when you receive a notification.
+    * You can use enableVibration(boolean) in NhnCloudNotificationOptions.Builder to set whether or not to vibrate.
+
 ## 1.9.4 (2024. 11. 15.)
 
 ### NHN Cloud Push
