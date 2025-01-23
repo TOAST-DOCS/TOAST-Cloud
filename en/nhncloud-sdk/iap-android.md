@@ -43,27 +43,7 @@ dependencies {
 }
 ```
 
-> Google Play in-app purchase functions in Android 4.4 (API level 19) or higher.
-
-#### Issue for Android 4.4 (API level 19) 
-
-When using Play Billing Library 6.x with R8, an issue may occur where it does not function with Android 4.4 (API level 19).
-To resolve this issue and support Android 4.4 (API level 19), add the following settings to the settings.gradle file
-
-```groovy
-buildscript {
-    repositories {
-        // Raw R8 releases.
-        maven {
-            url("https://storage.googleapis.com/r8-releases/raw")
-        }
-    }
-
-    dependencies {
-        classpath("com.android.tools:r8:8.1.46")
-    }
-}
-```
+> Google Play in-app purchase functions in Android 5.0 (API level 21) or higher.
 
 ### ONE store
 
