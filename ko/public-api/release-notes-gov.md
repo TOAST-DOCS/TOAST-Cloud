@@ -1,5 +1,11 @@
 ## NHN Cloud > Public API > 릴리스 노트
 
+### 2025. 03. 04.
+#### 기능 개선 및 추가
+
+- User Access Key ID API 관련 API 스펙 수정
+- 토큰 목록 조회 및 만료 기능을 Public API 로 제공
+
 ### 2025. 01. 21.
 #### 기능 개선
 

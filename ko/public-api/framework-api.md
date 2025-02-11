@@ -119,6 +119,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#User-Access-Key-ID-비밀-키-재발급) | User Access Key ID 비밀 키 재발급 |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-상태-수정) | User Access Key ID 상태 수정 |
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | User Access Key ID 삭제 |
+| GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-목록-조회)                               | 토큰 목록 조회                    |
+| DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료)                               | 토큰 다건 만료                    |
 
 
 
@@ -2399,8 +2401,8 @@ IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   locale | String| No  | 사용자의 로케일 정보<br>예: ko |
-|   returnUrl | String| No  | 이메일 변경 알림 메일을 통해서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com, dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
+|   locale | String| Yes | 사용자의 로케일 정보<br>예: ko |
+|   returnUrl | String| Yes | 이메일 변경 알림 메일을 통해서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com, dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
 
 
 ##### 응답 본문
@@ -3057,7 +3059,9 @@ IP ACL 설정을 조회하는 API입니다.
     "tokenExpiryPeriod": 0,
     "lastUsedDatetime": "2000-01-23T04:56:07.000+00:00",
     "reIssueDatetime": "2000-01-23T04:56:07.000+00:00",
-    "regDatetime": "2000-01-23T04:56:07.000+00:00"
+    "regDatetime": "2000-01-23T04:56:07.000+00:00",
+    "lastTokenUsedDatetime": "2025-02-11T01:30:56.771Z",
+    "validTokenCount": 0
   } ]
 }
 ```
@@ -3080,11 +3084,13 @@ IP ACL 설정을 조회하는 API입니다.
 |   secretAccessKey | String| No | 비밀 키(마스킹 처리됨)  |
 |   authStatus | String| No | 인증 상태 코드(STABLE, STOP, BLOCKED) |
 |   uuid | String| No | 사용자 UUID |
-|   lastUsedDatetime | Date| No | 마지막 사용 일시  |
+|   lastUsedDatetime | Date| No | User Access Key ID 로 인증한 마지막 일시 |
 |   modDatetime | Date| No | 삭제 일시  |
 |   reIssueDatetime | Date| No | 재생성 일시  |
 |   regDatetime | Date| No | 생성 일시  |
 |   tokenExpiryPeriod | Long| No | 토큰 만료 주기(초 단위)  |
+|   lastTokenUsedDatetime | Long| No | 토큰으로 인증/인가한 마지막 일시              |
+|   validTokenCount | Long| No | 유효한 토큰 개수                       |
 
 
 <a id="프로젝트-AppKey-등록"></a>
@@ -3257,7 +3263,14 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |user-access-key-id | String| Yes | User Access Key ID | 
+| Request Body | request | ReissueSecretKeyRequest| Yes | 요청 |
 
+
+###### ReissueSecretKeyRequest
+
+| 이름 | 타입      | 필수 | 설명                                                |   
+|------------ |---------|----|---------------------------------------------------|
+|   needExpireTokens | Boolean | No | 발급받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 false |
 
 ##### 응답 본문
 
@@ -3313,6 +3326,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 |   status | String| Yes | 변경할 프로젝트 AppKey 상태(STOP: 중지, STABLE: 사용) |
+|   needExpireTokens | Boolean | No  | 발급받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 true |
 
 
 ##### 응답 본문
@@ -3361,6 +3375,98 @@ User Access Key ID를 삭제하는 API입니다.
   }
 }
 ```
+
+###### 응답
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [공통 응답](#응답)| Yes |
+
+
+<a id="토큰-목록-조회"></a>
+#### 토큰 목록 조회
+
+> GET "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
+
+User Access Key ID로 발급한 토큰 목록을 조회하는 API입니다.
+
+##### 필요 권한
+자신의 User Access Key ID로 발급한 토큰만 조회 가능
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수  | 설명                                                                           | 
+|------------- |------------- | ------------- |-----|------------------------------------------------------------------------------| 
+|  Path | user-access-key-id | String| Yes | User Access Key ID                                                           | 
+|  Query | token | String| No  | 토큰 전문<br>부분 검색은 지원하지 않음                                                        | 
+|  Query | status | String| No  | 토큰 상태<br>ACTIVE: 활성, EXPIRED: 만료                                             | 
+|  Query | lastAccessDatetimeFrom | Date| No  | 토큰 마지막 사용 일시<br>지정한 시간보다 크거나 같은 시간에 사용된 토큰을 조회<br>예시) `2025-02-11T00:56:50.902Z` | 
+|  Query | expireDatetimeFrom | Date| No  | 토큰 만료 일시<br>지정한 시간보다 크거나 같은 시간에 만료된 토큰을 조회<br>예시) `2025-02-11T00:56:50.902Z`   | 
+|  Query | regDatetimeFrom | Date| No  | 토큰 등록 일시<br>지정한 시간보다 크거나 같은 시간에 생성된 토큰을 조회<br>예시) `2025-02-11T00:56:50.902Z`   |
+|  Query | page | Integer| No  | 대상 페이지<br>기본값 1                                                                |
+|  Query | limit | Integer| No  | 페이지당 표시 건수<br>기본값 20                                                            |
+
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "tokens": [
+    {
+      "accessToken": "string",
+      "expireDatetime": "2025-02-11T00:56:50.902Z",
+      "lastAccessDatetime": "2025-02-11T00:56:50.902Z",
+      "regDatetime": "2025-02-11T00:56:50.902Z",
+      "status": "ACTIVE",
+      "tokenId": 0
+    }
+  ],
+  "totalItems": 0
+}
+```
+
+###### 응답
+
+
+| 이름 | 타입           | 필수  | 설명                 |   
+|------------ |--------------|-----|--------------------|
+|   header | [공통 응답](#응답) | Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   accessToken | String       | Yes | 마스킹 처리된 토큰         |
+|   expireDatetime | Date         | No  | 토큰 만료일             |
+|   lastAccessDatetime | Date         | Yes | 토큰으로 인증/인가한 마지막 일시 |
+|   regDatetime | Date         | Yes | 토큰 생성 일시           |
+|   status | String       | Yes | 토큰 상태              |
+|   tokenId | Long         | Yes | 토큰 ID              |
+
+
+<a id="토큰-다건-만료"></a>
+#### 토큰 다건 만료
+
+> DELETE "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
+
+User Access Key ID로 발급한 토큰을 다건 만료시키는 API입니다.<br>
+요청에서 토큰 ID와 토큰 목록이 모두 빈 상태면 해당 User Access Key ID로 발급된 모든 토큰이 만료됩니다.<br>
+토큰 ID와 토큰 목록이 모두 있으면 둘 모두가 일치하는 토큰만 삭제되며,<br>
+요청에 담긴 User Access Key ID의 주인이 아닌 다른 사용자가 호출 시 토큰이 만료되지 않습니다.
+
+##### 필요 권한
+자신의 User Access Key ID로 발급한 토큰만 만료 가능
+
+##### 요청 파라미터
+
+| 구분           | 이름                 | 타입              | 필수  | 설명                 | 
+|--------------|--------------------|-----------------|-----|--------------------| 
+| Path         | user-access-key-id | String          | Yes | User Access Key ID | 
+| Request Body | tokenIds           | List&lt;Long>   | No  | 토큰 ID 목록           | 
+| Request Body         | tokens             | List&lt;String> | No   | 토큰 목록          | 
 
 
 ##### 응답 본문
