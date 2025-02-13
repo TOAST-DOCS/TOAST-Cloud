@@ -3084,7 +3084,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   secretAccessKey | String| No | 비밀 키(마스킹 처리됨)  |
 |   authStatus | String| No | 인증 상태 코드(STABLE, STOP, BLOCKED) |
 |   uuid | String| No | 사용자 UUID |
-|   lastUsedDatetime | Date| No | User Access Key ID 로 인증한 마지막 일시 |
+|   lastUsedDatetime | Date| No | User Access Key ID로 인증한 마지막 일시 |
 |   modDatetime | Date| No | 삭제 일시  |
 |   reIssueDatetime | Date| No | 재생성 일시  |
 |   regDatetime | Date| No | 생성 일시  |
