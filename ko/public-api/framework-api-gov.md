@@ -3270,7 +3270,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 이름 | 타입      | 필수 | 설명                                                |   
 |------------ |---------|----|---------------------------------------------------|
-|   needExpireTokens | Boolean | No | 발급받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 false |
+|   needExpireTokens | Boolean | No | 발급 받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 false |
 
 ##### 응답 본문
 
@@ -3326,7 +3326,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 |   status | String| Yes | 변경할 프로젝트 AppKey 상태(STOP: 중지, STABLE: 사용) |
-|   needExpireTokens | Boolean | No  | 발급받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 true |
+|   needExpireTokens | Boolean | No  | 발급 받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 true |
 
 
 ##### 응답 본문
@@ -3401,9 +3401,9 @@ User Access Key ID로 발급한 토큰 목록을 조회하는 API입니다.
 |  Path | user-access-key-id | String| Yes | User Access Key ID                                                           | 
 |  Query | token | String| No  | 토큰 전문<br>부분 검색은 지원하지 않음                                                        | 
 |  Query | status | String| No  | 토큰 상태<br>ACTIVE: 활성, EXPIRED: 만료                                             | 
-|  Query | lastAccessDatetimeFrom | Date| No  | 토큰 마지막 사용 일시<br>지정한 시간보다 크거나 같은 시간에 사용된 토큰을 조회<br>예시) `2025-02-11T00:56:50.902Z` | 
-|  Query | expireDatetimeFrom | Date| No  | 토큰 만료 일시<br>지정한 시간보다 크거나 같은 시간에 만료된 토큰을 조회<br>예시) `2025-02-11T00:56:50.902Z`   | 
-|  Query | regDatetimeFrom | Date| No  | 토큰 등록 일시<br>지정한 시간보다 크거나 같은 시간에 생성된 토큰을 조회<br>예시) `2025-02-11T00:56:50.902Z`   |
+|  Query | lastAccessDatetimeFrom | Date| No  | 토큰 마지막 사용 일시<br>지정한 시간보다 크거나 같은 시간에 사용된 토큰을 조회<br>예: `2025-02-11T00:56:50.902Z` | 
+|  Query | expireDatetimeFrom | Date| No  | 토큰 만료 일시<br>지정한 시간보다 크거나 같은 시간에 만료된 토큰을 조회<br>예: `2025-02-11T00:56:50.902Z`   | 
+|  Query | regDatetimeFrom | Date| No  | 토큰 등록 일시<br>지정한 시간보다 크거나 같은 시간에 생성된 토큰을 조회<br>예: `2025-02-11T00:56:50.902Z`   |
 |  Query | page | Integer| No  | 대상 페이지<br>기본값 1                                                                |
 |  Query | limit | Integer| No  | 페이지당 표시 건수<br>기본값 20                                                            |
 
