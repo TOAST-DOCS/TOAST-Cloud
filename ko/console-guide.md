@@ -372,6 +372,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Infrastructure | Private DNS ADMIN | 네트워크 서비스(Network Interface, Floating IP, Private DNS 제외) 및 NKS, NCS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Flow Log ADMIN | 네트워크 서비스(Network Interface, Floating IP, Flow Log 제외) 및 NKS, NCS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | NCS ADMIN | 네트워크 서비스(Network Interface, Floating IP 제외) 및 NKS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | NKS ADMIN | 네트워크 서비스(Network Interface, Floating IP 제외) 및 NCS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR) 서비스 Read(읽기) |
