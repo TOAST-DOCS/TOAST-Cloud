@@ -372,6 +372,7 @@ Members are classified into NHN Cloud members and IAM members.
 | Infrastructure | Private DNS ADMIN | Read Network services (except Network Interface, Floating IP, Private DNS), NKS, and NCR. Create, Read, Update, Delete other services |
 | Infrastructure | Flow Log ADMIN | Read Network services (except Network Interface, Floating IP, Flow Log), NKS, and NCR. Create, Read, Update, Delete other services |
 | Infrastructure | NCS ADMIN | Read Network services (except Network Interface, Floating IP) and NKS. Create, Read, Update, Delete other services |
+| Infrastructure | NKS ADMIN | Read Network services (except Network Interface, Floating IP) and NCS. Create, Read, Update, Delete other services |
 | Virtual Desktop | ADMIN | Create, Read, Update, Delete for Virtual Desktop Service |
 | NHN Container Registry (NCR) | ADMIN | Create, Read, Update, Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
