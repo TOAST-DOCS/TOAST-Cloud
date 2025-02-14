@@ -30,6 +30,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Block Storage SSD Type Max Size| Per block storage |2048GB| O | |
 |Block Storage Encrypted HDD Type Max Size| Per block storage |2048GB| O | |
 |Block Storage Encrypted SSD Type Max Size| Per block storage |2048GB| O | |
+|Snapshot| Per block storage |3| X | |
 
 ### Resource Provision Policy for Floating IP Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 

@@ -30,7 +30,7 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |Block Storage SSD Type 最大サイズ| ブロックストレージ毎 |2048GB| O | |
 |Block Storage Encrypted HDD Type 最大サイズ| ブロックストレージ毎 |2048GB| O | |
 |Block Storage Encrypted SSD Type 最大サイズ| ブロックストレージ毎 |2048GB| O | |
-
+|Snapshot| ブロックストレージ毎 |3個| X | |
 
 ### Floating IPリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
