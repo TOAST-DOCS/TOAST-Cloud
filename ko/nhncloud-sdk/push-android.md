@@ -471,7 +471,7 @@ public class MyApplication extends Application {
            android:resource="@array/default_vibrate_pattern"/>
 <!-- 진동 여부 설정 -->
 <meta-data android:name="com.toast.sdk.push.notification.vibration_enabled"
-           android:resource="true"/>
+           android:value="true"/>
 <!-- 배지 아이콘 사용 -->
 <meta-data android:name="com.toast.sdk.push.notification.badge_enabled"
            android:value="true"/>
