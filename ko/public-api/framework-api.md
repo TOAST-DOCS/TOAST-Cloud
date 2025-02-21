@@ -3326,7 +3326,6 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 |   status | String| Yes | 변경할 프로젝트 AppKey 상태(STOP: 중지, STABLE: 사용) |
-|   needExpireTokens | Boolean | No  | 발급 받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 true |
 
 
 ##### 응답 본문

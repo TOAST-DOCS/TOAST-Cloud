@@ -3326,7 +3326,6 @@ User Access Key IDの秘密鍵を再発行するAPIです。
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
 |   status | String| Yes | 変更するプロジェクトAppKey状態(STOP:停止、 STABLE:使用) |
-|   needExpireTokens | Boolean | No | 発行されたトークンが期限切れかどうか(true:期限切れ、false:期限切れではない)<br>デフォルト値true |
 
 ##### レスポンス本文
 
