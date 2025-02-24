@@ -66,6 +66,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | NAS | Regional | O | O |  |  |
 |  | Object Storage | Regional | O | O | O | O |
 |  | Backup | Regional | O | O | O |  |
+|  | Storage Gateway | Regional | O | | | |
 |  | Data transporter | Regional | O | O |  |  |
 | Database | RDS for MySQL | Regional | O | O | O |  |
 |  | RDS for PostgreSQL  | Regional | O |  |  |  |
