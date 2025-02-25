@@ -163,7 +163,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
-| Gateway | Per project| 3 | X | |
+| Storage Gateway | Per project| 3 | X | |
 | Share | Per gateway | 10 | X | |
 
 ### Resource Provision Policy for Transit Hub Service  
