@@ -65,6 +65,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | NAS | リージョン | O | O  |  |  |
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O  | O |  |
+|  | Storage Gateway | リージョン | O | | | |
 |  | Data transporter | リージョン | O | O  |  |  |
 | Monitoring | System Monitoring | リージョン | O | O | O | O |
 |  | Cloud Monitoring | グローバル |  |  |  |  |
