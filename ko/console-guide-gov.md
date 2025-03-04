@@ -388,6 +388,8 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Secure Key Manager | APPROVAL MEMBER | Secure Key Manager 서비스 승인 요청 생성, 조회  |
 | Secure Key Manager | VIEWER | Secure Key Manager 서비스 Read(읽기) |
 | Security Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
+| Security Advisor | ADMIN | Security Advisor 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Security Advisor | VIEWER | Security Advisor 서비스 Read(읽기)  |
 | Network Firewall | ADMIN | Network Firewall 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제))  |
 | Network Firewall | VIEWER | Network Firewall 서비스 Read(읽기)  |
 | NHN Bastion | ADMIN | NHN Bastion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) | 
