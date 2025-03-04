@@ -62,10 +62,11 @@ All users are provided with the same features, policy, stability and usability, 
 |  | DNS Plus | Global |  |  |  |  |
 |  | Direct Connect | Regional | O | O | | |
 | Storage | Block Storage | Regional | O | O | O | O |
-|  | NAS (offline) | Regional | O | O |  | O |
+|  | NAS (offline) | Regional |  | O |  | O |
 |  | NAS | Regional | O | O |  |  |
 |  | Object Storage | Regional | O | O | O | O |
 |  | Backup | Regional | O | O | O |  |
+|  | Storage Gateway | Regional | O | | | |
 |  | Data transporter | Regional | O | O |  |  |
 | Database | RDS for MySQL | Regional | O | O | O |  |
 |  | RDS for PostgreSQL  | Regional | O |  |  |  |

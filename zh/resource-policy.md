@@ -158,6 +158,13 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 | NAS Storage Max Size | Per NAS storage | 10TB | O | |
 | NAS Storage Subnet | Per project | 3 | O | |
 
+### Resource Provision Policy for Storage Gateway Service  
+Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
+|Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+| Storage Gateway | Per project| 3 | X | |
+| Share | Per gateway | 10 | X | |
 
 ### Resource Provision Policy for Transit Hub Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 

@@ -1,5 +1,14 @@
 ## NHN Cloud > Public API > Release Notes
 
+### March 4, 2025
+#### Feature Updates
+
+- Modified API specification for the User Access Key ID API
+
+#### Added Features
+
+- Provided public APIs for getting token list and expiration feature 
+
 ### January 21, 2025
 #### Feature Updates
 

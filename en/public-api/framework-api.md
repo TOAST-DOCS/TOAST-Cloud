@@ -119,7 +119,8 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#User-Access-Key-ID-비밀-키-재발급) | Reissue the User Access Key ID secret key |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-상태-수정) | Modify User Access Key ID status |
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | Delete a User Access Key ID |
-
+| GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-목록-조회)                               | Get Token list                    |
+| DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료)                               | Expire multiple tokens                    |
 
 
 <a id="프로젝트-멤버-생성"></a>
@@ -2399,8 +2400,8 @@ API to send an email to an IAM member to change their password.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   locale | String| No  | User's locale information<br>Example: en |
-|   returnUrl | String| No  | The address of the page you'll be directed to after you change your password via email change notification.<br>You must enter the toast.com, dooray.com, or nhncloud.com domain in the Go To address information |
+|   locale | String| Yes  | User's locale information<br>Example: en |
+|   returnUrl | String| Yes  | The address of the page you'll be directed to after you change your password via email change notification.<br>You must enter the toast.com, dooray.com, or nhncloud.com domain in the Go To address information |
 
 
 ##### Response Body
@@ -3057,7 +3058,9 @@ APIs that can be called if you have signed up to NHN Cloud
     "tokenExpiryPeriod": 0,
     "lastUsedDatetime": "2000-01-23T04:56:07.000+00:00",
     "reIssueDatetime": "2000-01-23T04:56:07.000+00:00",
-    "regDatetime": "2000-01-23T04:56:07.000+00:00"
+    "regDatetime": "2000-01-23T04:56:07.000+00:00",
+    "lastTokenUsedDatetime": "2025-02-11T01:30:56.771Z",
+    "validTokenCount": 0
   } ]
 }
 ```
@@ -3080,11 +3083,13 @@ APIs that can be called if you have signed up to NHN Cloud
 |   secretAccessKey | String| No | Secret key (masked)  |
 |   authStatus | String| No | Authentication status codes (STABLE, STOP, BLOCKED) |
 |   UUID | String| No | User UUID |
-|   lastUsedDatetime | Date| No | Date of last use  |
+|   lastUsedDatetime | Date| No | Date of last use you authenticated with User Access Key ID  |
 |   modDatetime | Date| No | Date and time of deletion  |
 |   reIssueDatetime | Date| No | Regeneration time  |
 |   regDatetime | Date| No | Date and time of creation  |
 |   tokenExpiryPeriod | Long| No | Token expiration cycle (in seconds)  |
+|   lastTokenUsedDatetime | Long| No | Last time you authenticated/authorized with a token              |
+|   validTokenCount | Long| No | Number of valid tokens                      |
 
 
 <a id="프로젝트-AppKey-등록"></a>
@@ -3257,7 +3262,14 @@ Can only reissue the secret key for the user's own User Access Key ID
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |user-access-key-id | String| Yes | User Access Key ID | 
+| Request Body | request | ReissueSecretKeyRequest| Yes | Request |
 
+
+###### ReissueSecretKeyRequest
+
+| Name | Type | Required | Description  |                                               |   
+|------------ |---------|----|---------------------------------------------------|
+|   needExpireTokens | Boolean | No | Issued token expired or not(true: Expired, false: Not expired)<br>Default false |
 
 ##### Response Body
 
@@ -3314,7 +3326,6 @@ Can only modify the user's own User Access Key ID
 |------------ | ------------- | ------------- | ------------ |
 |   String | String| Yes | Project AppKey state to change (STOP: Stop, STABLE: Enable) |
 
-
 ##### Response Body
 
 ```json
@@ -3362,6 +3373,97 @@ Can only delete the user's own User Access Key ID
 }
 ```
 
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+
+
+<a id="토큰-목록-조회"></a>
+#### Get a List of Tokens
+
+> GET "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
+
+API to get a list of tokens issued with a User Access Key ID.
+
+##### Required Permissions
+Only tokens issued with your own User Access Key ID can be viewed
+
+##### Request Parameters
+
+| In | Name | Type | Required  | Description                                                                           | 
+|------------- |------------- | ------------- |-----|------------------------------------------------------------------------------| 
+|  Path | user-access-key-id | String| Yes | User Access Key ID                                                           | 
+|  Query | token | String| No  | Token body<br>Partial search not supported                                                        | 
+|  Query | String | String| No  | Token status<br>ACTIVE: Active, EXPIRED: Expired                                             | 
+|  Query | lastAccessDatetimeFrom | Date| No  | Date of last token use<br>Get  tokens used at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z` | 
+|  Query | expireDatetimeFrom | Date| No  | Token expiration date<br>Get  tokens expired at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   | 
+|  Query | regDatetimeFrom | Date| No  | Token registration date<br>Get  tokens created at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   |
+|  Query | page | Integer| No  | Target page<br>Default 1                                                                |
+|  Query | limit | Integer| No  | Items per page<br>Default 20                                                            |
+
+
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "tokens": [
+    {
+      "accessToken": "string",
+      "expireDatetime": "2025-02-11T00:56:50.902Z",
+      "lastAccessDatetime": "2025-02-11T00:56:50.902Z",
+      "regDatetime": "2025-02-11T00:56:50.902Z",
+      "status": "ACTIVE",
+      "tokenId": 0
+    }
+  ],
+  "totalItems": 0
+}
+```
+
+###### Response
+
+
+| Name | Type           | Required  | Description                 |   
+|------------ |--------------|-----|--------------------|
+|   header | [Common response](#응답) | Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   accessToken | String       | Yes | Masked token         |
+|   expireDatetime | Date         | No  | Token expiration date             |
+|   lastAccessDatetime | Date         | Yes | Last time you authenticated/authorized with a token |
+|   regDatetime | Date         | Yes | Token creation date           |
+|   String | String       | Yes | Token status              |
+|   tokenId | Long         | Yes | Token ID              |
+
+
+<a id="토큰-다건-만료"></a>
+#### Expire multiple tokens
+
+> DELETE "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
+
+API to expire multiple tokens issued with a User Access Key ID.<br>
+If both the token ID and token list are empty in the request, all tokens issued to that User Access Key ID will expire.<br>
+If you have both a token ID and a list of tokens, only tokens that match both are deleted,<br>
+Tokens do not expire when invoked by a user other than the owner of the User Access Key ID in the request.
+
+##### Required Permissions
+Only tokens issued with your own User Access Key ID can expire
+
+##### Request Parameters
+
+| In           | Name                 | Type              | Required  | Description                 | 
+|--------------|--------------------|-----------------|-----|--------------------| 
+| Path         | user-access-key-id | String          | Yes | User Access Key ID | 
+| Request Body | tokenIds           | List<Long>   | No  | List of token IDs           | 
+| Request Body         | tokens             | List<String> | No   | List of tokens          | 
 
 ##### Response Body
 
