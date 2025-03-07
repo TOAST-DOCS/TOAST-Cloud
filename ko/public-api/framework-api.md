@@ -99,16 +99,16 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#프로젝트-역할-그룹-역할-수정) | 프로젝트 역할 그룹 역할 수정 |
 | PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-역할-수정) | 조직 멤버 역할 수정 |
 | PUT |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-역할-수정) | 프로젝트 멤버 역할 수정 |
-| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-단건-조회) | 조직 IAM 멤버 단건 조회 |
-| GET |[/v1/iam/organizations/{org-id}/members](#조직-IAM-멤버-목록-조회) | 조직 IAM 멤버 목록 조회 |
-| POST |[/v1/iam/organizations/{org-id}/members](#조직-IAM-멤버-추가) | 조직 IAM 멤버 추가 |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#IAM-멤버-비밀번호-변경-이메일-전송) | IAM 멤버 비밀번호 변경 이메일 전송 |
-| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-정보-수정) | 조직 IAM 멤버 정보 수정 |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#조직-IAM-멤버-비밀번호-변경) | 조직 IAM 멤버 비밀번호 변경 |
-| GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-IAM-로그인-세션-설정-정보를-조회) | 조직 IAM 로그인 세션 설정 정보를 조회 |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-IAM-로그인-2차-인증에-대한-설정을-조회) | 조직 IAM 로그인 2차 인증에 대한 설정을 조회 |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-로그인-실패-보안-설정을-조회) | 조직 IAM 로그인 실패 보안 설정을 조회 |
-| GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#조직-IAM-비밀번호-정책-조회) | 조직 IAM 비밀번호 정책 조회 |
+| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-계정-단건-조회) | 조직 IAM 계정 단건 조회 |
+| GET |[/v1/iam/organizations/{org-id}/members](#조직-IAM-계정-목록-조회) | 조직 IAM 계정 목록 조회 |
+| POST |[/v1/iam/organizations/{org-id}/members](#조직-IAM-계정-추가) | 조직 IAM 계정 추가 |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#IAM-계정-비밀번호-변경-이메일-전송) | IAM 계정 비밀번호 변경 이메일 전송 |
+| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-계정-정보-수정) | 조직 IAM 계정 정보 수정 |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#조직-IAM-계정-비밀번호-변경) | 조직 IAM 계정 비밀번호 변경 |
+| GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-IAM-계정-로그인-세션-설정-정보를-조회) | 조직 IAM 계정 로그인 세션 설정 정보를 조회 |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-IAM-계정-로그인-2차-인증에-대한-설정을-조회) | 조직 IAM 계정 로그인 2차 인증에 대한 설정을 조회 |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-계정-로그인-실패-보안-설정을-조회) | 조직 IAM 계정 로그인 실패 보안 설정을 조회 |
+| GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#조직-IAM-계정-비밀번호-정책-조회) | 조직 IAM 계정 비밀번호 정책 조회 |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | 조직 IP ACL 목록 조회 |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
 | GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
@@ -731,17 +731,17 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
 |   email | String| Yes | 멤버 이메일 |
-|   id | String| No | 멤버 ID(IAM 멤버만 제공) |
+|   id | String| No | 멤버 ID(IAM 계정만 제공) |
 |   inviteStatusCode | String| Yes |   COMPLETE, EXPIRE, UNKNOWN, WAIT |
 |   joinYmdt | Date| Yes | 조직 멤버 등록 일시 |
 |   memberName | String| Yes| 	멤버 이름 |
-|   memberTypeCode | String| Yes| 멤버 구분(TOAST_CLOUD: NHN Cloud 멤버, IAM: IAM 멤버) |
+|   memberTypeCode | String| Yes| 계정 구분(TOAST_CLOUD: NHN Cloud 계정, IAM: IAM 계정) |
 |   memberUuid | String| Yes| 멤버의 UUID |
 |   recentLoginYmdt | Date| Yes| 마지막 로그인 일시 |
 |   recentPasswordModifyYmdt | Date| No| 마지막 비밀번호 변경 일시 |
 |   roleCode | String| No| 역할 ID |
 |   roles | List&lt;RoleBundleProtocol>| No | 연관 역할 목록(조건 속성 포함)  |
-|   secondFactorCertificationYn | String| No| 2단계 로그인 설정 여부(NHN Cloud 멤버만 제공) |
+|   secondFactorCertificationYn | String| No| 2단계 로그인 설정 여부(NHN Cloud 계정만 제공) |
 
 
 ###### RoleBundleProtocol
@@ -860,7 +860,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   joinYmdt | Date| Yes | 멤버 가입 일시 |
 |   maskingEmail | String| Yes | 멤버의 마스킹된 이메일  |
 |   memberName | String| Yes| 멤버의 이름 |
-|   memberTypeCode | String| Yes| 멤버 구분(TOAST_CLOUD: NHN Cloud 멤버, IAM: IAM 멤버) |
+|   memberTypeCode | String| Yes| 멤버 구분(TOAST_CLOUD: NHN Cloud 계정, IAM: IAM 계정) |
 |   memberUuid | String| No| 멤버의 UUID<br>초대 중인 경우 값을 반환하지 않음 |
 |   recentLoginYmdt | Date| Yes| 마지막 로그인 일시 |
 |   recentPasswordModifyYmdt | Date| No| 마지막 비밀번호 변경 일시 |
@@ -2057,12 +2057,12 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-<a id="조직-IAM-멤버-단건-조회"></a>
-#### 조직 IAM 멤버 단건 조회
+<a id="조직-IAM-계정-단건-조회"></a>
+#### 조직 IAM 계정 단건 조회
 
 > GET "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
-조직에 소속된 IAM 멤버를 조회하는 API입니다.
+조직에 소속된 IAM 계정을 조회하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Get`
@@ -2073,7 +2073,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 조회할 조직 ID | 
-|  Path |member-uuid | String| Yes | 조회할 조직의 IAM 멤버 UUID | 
+|  Path |member-uuid | String| Yes | 조회할 조직의 IAM 계정 UUID | 
 
 
 ##### 응답 본문
@@ -2156,34 +2156,34 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   corporate | String| No |
 |   country | String| No |
 |   createdAt | Date| No |
-|   creationType | String| No| 멤버의 생성 타입 |
+|   creationType | String| No| 계정의 생성 타입 |
 |   department | String| No|
-|   emailAddress | String| Yes | IAM 멤버 이메일 주소  |
+|   emailAddress | String| Yes | IAM 계정 이메일 주소  |
 |   englishName | String| No|
-|   id | String| Yes | IAM 멤버 UUID  |
+|   id | String| Yes | IAM 계정 UUID  |
 |   idProviderId | String| No|
 |   idProviderType | String| No| service: IAM 직접 로그인<br>sso: 고객 SSO 연동 |
 |   idProviderUserId | String| No|
-|   lastAccessedAt | Date| No| 멤버의 마지막 접속 일시, 없을 경우 null 반환 |
-|   lastLoggedInAt | Date| No| 멤버의 마지막 로그인 일시, 없을 경우 null 반환 |
-|   lastLoggedInIp | String| No| 멤버의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
-|   maskingEmail | String| No | IAM 멤버의 마스킹된 이메일주소  |
-|   mobilePhone | String| No | IAM 멤버의 휴대폰 번호  |
+|   lastAccessedAt | Date| No| 계정의 마지막 접속 일시, 없을 경우 null 반환 |
+|   lastLoggedInAt | Date| No| 계정의 마지막 로그인 일시, 없을 경우 null 반환 |
+|   lastLoggedInIp | String| No| 계정의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
+|   maskingEmail | String| No | IAM 계정의 마스킹된 이메일주소  |
+|   mobilePhone | String| No | IAM 계정의 휴대폰 번호  |
 |   mobilePhoneCountryCode | String| No|
-|   name | String| Yes | IAM 멤버의 이름  |
+|   name | String| Yes | IAM 계정의 이름  |
 |   nativeName | String| No|
 |   nickname | String| No|
 |   officeHoursBegin | String| No|
 |   officeHoursEnd | String| No|
-|   organizationId | String| Yes | IAM 멤버의 조직 ID  |
-|   passwordChangedAt | Date| No| 멤버의 마지막 비밀번호 변경 일시, 없을 경우 null 반환 |
+|   organizationId | String| Yes | IAM 계정의 조직 ID  |
+|   passwordChangedAt | Date| No| 계정의 마지막 비밀번호 변경 일시, 없을 경우 null 반환 |
 |   position | String| No|
 |   profileImageUrl | String| No|
 |   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 연관 역할 목록(조건 속성 포함)  |
-|   saasRoles | List&lt;IamMemberRole>| No | IAM 멤버 역할  |
-|   status | String| No| 멤버의 상태 |
-|   telephone | String| No | IAM 멤버의 전화번호  |
-|   userCode | String| Yes | IAM 멤버 ID  |
+|   saasRoles | List&lt;IamMemberRole>| No | IAM 계정 역할  |
+|   status | String| No| 계정의 상태 |
+|   telephone | String| No | IAM 계정의 전화번호  |
+|   userCode | String| Yes | IAM 계정 ID  |
 
 
 
@@ -2197,12 +2197,12 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   role | String| No |
 
 
-<a id="조직-IAM-멤버-목록-조회"></a>
-#### 조직 IAM 멤버 목록 조회
+<a id="조직-IAM-계정-목록-조회"></a>
+#### 조직 IAM 계정 목록 조회
 
 > GET "/v1/iam/organizations/{org-id}/members"
 
-해당 조직에 소속된 IAM 멤버 목록을 조회하는 API입니다.
+해당 조직에 소속된 IAM 계정 목록을 조회하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.List`
@@ -2212,12 +2212,12 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 조직 ID | 
-|  Query |email | String| No | IAM 멤버의 이메일 주소 |
+|  Query |email | String| No | IAM 계정의 이메일 주소 |
 |  Query |emailLike | String| No |  |
 |  Query |idProviderType | String| No | service: IAM 직접 로그인<br>sso: 고객 SSO 연동 |
 |  Query |nameLike | String| No |  |
 |  Query |statuses | List&lt;String>| No |  |
-|  Query |userCode | String| No | IAM 멤버 ID |
+|  Query |userCode | String| No | IAM 계정 ID |
 |  Query |userCodeLike | String| No |  |
 |  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
 |  Query |page | Integer| No | 대상 페이지, 기본값 1 |
@@ -2281,7 +2281,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
-|   orgMembers | List&lt;IamOrgMemberProtocol>| No | 조직 IAM 멤버 목록  |
+|   orgMembers | List&lt;IamOrgMemberProtocol>| No | 조직 IAM 계정 목록  |
 |   paging | [PagingResponse](#pagingresponse)| No  |
 
 ###### IamOrgMemberProtocol
@@ -2289,13 +2289,13 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
 | header | [공통 응답](#응답)| Yes | protocol이 response에 있는 경우에만 필수값 |
-| id | String | No | IAM 멤버 UUID | 
-| userCode | String | Yes | 로그인 시 사용할 IAM 멤버 ID | 
-| name | String | Yes | IAM 멤버의 사용자 이름 | 
-| emailAddress | String |  Yes | IAM 멤버의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
-| maskingEmail | String | No | IAM 멤버의 마스킹된 이메일 주소 |
-| mobilePhone | String | No | IAM 멤버의 휴대폰 번호 |
-| telephone | String | No | IAM 멤버 전화번호 |
+| id | String | No | IAM 계정 UUID | 
+| userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
+| name | String | Yes | IAM 계정의 사용자 이름 | 
+| emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
+| maskingEmail | String | No | IAM 계정의 마스킹된 이메일 주소 |
+| mobilePhone | String | No | IAM 계정의 휴대폰 번호 |
+| telephone | String | No | IAM 계정 전화번호 |
 | position | String | No |  |
 | department | String | No |  |
 | corporate | String | No |  |
@@ -2305,7 +2305,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | nickname | String | No |  |
 | officeHoursBegin | String | No |  |
 | officeHoursEnd | String | No |  |
-| status | String | Yes | 멤버 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
+| status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
 | creationType | String | No |  |
 | idProviderId | String | No |  |
 | idProviderType | String | No | service: IAM 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
@@ -2316,7 +2316,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | lastLoggedInIp | String | No | 마지막 로그인 한 IP |
 | passwordChangedAt | Date | No | 비밀번호 변경 일시 |
 | mobilePhoneCountryCode | String | No | 휴대폰 번호 입력 시 필수  |
-| organizationId | String | No | IAM 멤버의 조직 ID |
+| organizationId | String | No | IAM 계정의 조직 ID |
 | country | String | No |  |
 | saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAM 역할 |
 
@@ -2324,12 +2324,12 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-<a id="조직-IAM-멤버-추가"></a>
-#### 조직 IAM 멤버 추가
+<a id="조직-IAM-계정-추가"></a>
+#### 조직 IAM 계정 추가
 
 > POST "/v1/iam/organizations/{org-id}/members"
 
-조직에 IAM 멤버를 추가하는 API입니다.
+조직에 IAM 계정을 추가하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Create`
@@ -2371,17 +2371,17 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
-|   uuid | String| No | IAM 멤버 UUID  |
+|   uuid | String| No | IAM 계정 UUID  |
 
 
 
 
-<a id="IAM-멤버-비밀번호-변경-이메일-전송"></a>
-#### IAM 멤버 비밀번호 변경 이메일 전송
+<a id="IAM-계정-비밀번호-변경-이메일-전송"></a>
+#### IAM 계정 비밀번호 변경 이메일 전송
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail"
 
-IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API입니다.
+IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Update`
@@ -2392,7 +2392,7 @@ IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 대상이 되는 조직 ID | 
-|  Path |member-id | String| Yes | 비밀번호를 변경하려는 IAM 멤버의 UUID | 
+|  Path |member-id | String| Yes | 비밀번호를 변경하려는 IAM 계정의 UUID | 
 | Request Body | request | SendPasswordSetupMailRequest| Yes | 요청 |
 
 
@@ -2424,12 +2424,12 @@ IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-<a id="조직-IAM-멤버-정보-수정"></a>
-#### 조직 IAM 멤버 정보 수정
+<a id="조직-IAM-계정-정보-수정"></a>
+#### 조직 IAM 계정 정보 수정
 
 > PUT "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
-조직의 IAM 멤버 정보를 수정하는 API입니다.
+조직의 IAM 계정 정보를 수정하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Update`
@@ -2439,7 +2439,7 @@ IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 	대상이 되는 조직 ID | 
-|  Path |member-uuid | String| Yes | 변경하려는 IAM 멤버의 UUID | 
+|  Path |member-uuid | String| Yes | 변경하려는 IAM 계정의 UUID | 
 | Request Body | request | UpdateIamMemberRequest| Yes | 요청 |
 
 
@@ -2470,12 +2470,12 @@ IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-<a id="조직-IAM-멤버-비밀번호-변경"></a>
-#### 조직 IAM 멤버 비밀번호 변경
+<a id="조직-IAM-계정-비밀번호-변경"></a>
+#### 조직 IAM 계정 비밀번호 변경
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/set-password"
 
-조직 IAM 멤버의 비밀번호를 변경하는 API입니다.
+조직 IAM 계정의 비밀번호를 변경하는 API입니다.
 
 ##### 필요 권한
 `Organization.Member.Iam.Update`
@@ -2485,7 +2485,7 @@ IAM 멤버의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 대상이 되는 조직 ID | 
-|  Path |member-id | String| Yes | 비밀번호를 변경하려는 IAM 멤버의 UUID | 
+|  Path |member-id | String| Yes | 비밀번호를 변경하려는 IAM 계정의 UUID | 
 | Request Body | request | UpdateIamPasswordRequest| Yes | 요청 |
 
 
@@ -2564,8 +2564,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   ips | List&lt;String>| Yes  | 허용 IP들 | 
 |   productId | String| Yes  | 상품 ID<br>undefined이면 공통 설정|
 
-<a id="조직-IAM-로그인-세션-설정-정보를-조회"></a>
-#### 조직 IAM 로그인 세션 설정 정보를 조회
+<a id="조직-IAM-계정-로그인-세션-설정-정보를-조회"></a>
+#### 조직 IAM 계정 로그인 세션 설정 정보를 조회
 
 > GET "/v1/iam/organizations/{org-id}/settings/session"
 
@@ -2618,8 +2618,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   mobileSessionTimeoutMinutes | Integer| Yes | 	모바일 세션 타임아웃 |
 |   sessionType | String| Yes | fixed/idle. 기본값은 fixed  |
 
-<a id="조직-IAM-로그인-2차-인증에-대한-설정을-조회"></a>
-#### 조직 IAM 로그인 2차 인증에 대한 설정을 조회
+<a id="조직-IAM-계정-로그인-2차-인증에-대한-설정을-조회"></a>
+#### 조직 IAM 계정 로그인 2차 인증에 대한 설정을 조회
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-mfa"
 
@@ -2710,8 +2710,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   enable | Boolean| No | 활성화 여부<br>true(사용 중), false(사용 안함)  |
 |   ipList | List&lt;String>| No | 예외 IP 목록 |
 
-<a id="조직-IAM-로그인-실패-보안-설정을-조회"></a>
-#### 조직 IAM 로그인 실패 보안 설정을 조회
+<a id="조직-IAM-계정-로그인-실패-보안-설정을-조회"></a>
+#### 조직 IAM 계정 로그인 실패 보안 설정을 조회
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-login-fail"
 
@@ -2769,8 +2769,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   limit | Integer| No | 시도 허용 횟수 |
 |   blockMinutes | Integer| No | 로그인 금지 시간  |
 
-<a id="조직-IAM-비밀번호-정책-조회"></a>
-#### 조직 IAM 비밀번호 정책 조회
+<a id="조직-IAM-계정-비밀번호-정책-조회"></a>
+#### 조직 IAM 계정 비밀번호 정책 조회
 
 > GET "/v1/iam/organizations/{org-id}/settings/password-rule"
 
@@ -2842,28 +2842,28 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| ruleType | String | Yes | 비밀번호 정책<br> (기본 비밀번호 정책), custom (사용자 비밀번호 정책) |
+| ruleType | String | Yes | 비밀번호 정책<br>default(기본 비밀번호 정책), custom(사용자 비밀번호 정책) |
 | passwordConstraints | PasswordConstraints | Yes | 비밀번호 강도 |
 | passwordExpiry | PasswordExpiry | Yes | 비밀번호 만료 |
 | limitPasswordReuse | LimitPasswordReuse | Yes | 비밀번호 재사용 제한 |
-| applyRule | String | Yes | 비밀번호 정책 적용 시점<br>onChangePassword (비밀번호 변경 시 적용), onLogin (즉시 적용) |
+| applyRule | String | Yes | 비밀번호 정책 적용 시점<br>onChangePassword(비밀번호 변경 시 적용), onLogin(즉시 적용) |
 
 ###### PasswordConstraints
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 | minLength | integer | Yes | 비밀번호 최소 길이 |
-| mustNotIncludeIllegalSequence | boolean | Yes | 영문자 1개 이상<br>true(설정), false(설정 안함) |
-| mustIncludeUpperCase | boolean | Yes | 영문 대문자 1개 이상<br>true(설정), false(설정 안함) |
-| mustIncludeLowerCase | boolean | Yes | 영문 소문자 1개 이상<br>true(설정), false(설정 안함) |
-| mustIncludeNumberCase | boolean | Yes | 숫자 1개 이상<br>true(설정), false(설정 안함) |
-| mustIncludeSpecialCase | boolean | Yes | 특수 문자 1개 이상<br>true(설정), false(설정 안함) |
+| mustNotIncludeIllegalSequence | boolean | Yes | 영문자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeUpperCase | boolean | Yes | 영문 대문자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeLowerCase | boolean | Yes | 영문 소문자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeNumberCase | boolean | Yes | 숫자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeSpecialCase | boolean | Yes | 특수 문자 1개 이상<br>true(설정), false(설정 안 함) |
 
 ###### PasswordExpiry
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안함) |
+| enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안 함) |
 | expiryDays | Integer | Yes | 만료 기간 |
 | allowExpend | Boolean | Yes | 만료 시 연장 가능 여부<br>true(가능), false(불가능) |
 
@@ -2871,7 +2871,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안함) |
+| enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안 함) |
 | limitCount | Integer | Yes | 재사용 제한 횟수 |
 
 <a id="종량제에-등록된-상품-가격-조회"></a>
@@ -3604,7 +3604,7 @@ User Access Key ID로 발급한 토큰을 다건 만료시키는 API입니다.<b
 | 404 | 없는 API 호출 시 발생                                                                       | 호출하는 API의 httpmethod,uri를 확인                            |
 | 400<br>501<br>502<br>503<br>504<br>505 | 요청 파라미터가 적절하지 않을 때 발생하는 오류                                                          | 요청 파라미터의 필수값 및 설정 가능한 값 등을 확인                           |
 | 500 | 비정상 시스템 오류                                                                          | 담당자에게 문의                                            |
-| 1000 | 파라미터가 잘못될 경우 발생하는 오류 <br> 조직 IAM 멤버 API - `IAM 멤버 비밀번호 변경 이메일 전송` 요청 값 returnUrl 이 허가된 도메인이 아닐 때 발생(허가된 도메인: toast.com, dooray.com, nhncloud.com) | 요청 파라미터 확인                                              |
+| 1000 | 파라미터가 잘못될 경우 발생하는 오류 <br> 조직 IAM 계정 API - `IAM 계정 비밀번호 변경 이메일 전송` 요청 값 returnUrl 이 허가된 도메인이 아닐 때 발생(허가된 도메인: toast.com, dooray.com, nhncloud.com) | 요청 파라미터 확인                                              |
 | 1201 | 서버 내부적인 API 요청이 실패하여 발생하는 오류 |  오류 메시지에 포함된 오류 메시지와 코드를 바탕으로 해결<br>포함된 오류 메시지와 코드만으로는 해결이 어려울 경우 담당자에게 문의                      |
 | 10005<br>70008<br>1104 | 요청 파라미터가 적절하지 않을 때 발생하는 오류 | 요청 파라미터의 필수값 및 설정 가능한 값 등을 확인 |
 | 10009 | 조직 또는 프로젝트에 존재하지 않은 역할을 부여할 때 발생하는 오류                                               | 멤버에게 존재하는 역할을 부여하도록 변경                                  |
