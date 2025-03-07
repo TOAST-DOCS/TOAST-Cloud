@@ -108,6 +108,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-IAM-로그인-세션-설정-정보를-조회) | 조직 IAM 로그인 세션 설정 정보를 조회 |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-IAM-로그인-2차-인증에-대한-설정을-조회) | 조직 IAM 로그인 2차 인증에 대한 설정을 조회 |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-로그인-실패-보안-설정을-조회) | 조직 IAM 로그인 실패 보안 설정을 조회 |
+| GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#조직-IAM-비밀번호-정책-조회) | 조직 IAM 비밀번호 정책 조회 |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | 조직 IP ACL 목록 조회 |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
 | GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
@@ -2767,6 +2768,111 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ------------- | ------------ |
 |   limit | Integer| No | 시도 허용 횟수 |
 |   blockMinutes | Integer| No | 로그인 금지 시간  |
+
+<a id="조직-IAM-비밀번호-정책-조회"></a>
+#### 조직 IAM 비밀번호 정책 조회
+
+> GET "/v1/iam/organizations/{org-id}/settings/password-rule"
+
+비밀번호 정책에 대한 설정을 조회하는 API입니다.
+
+##### 필요 권한
+`Organization.Setting.Iam.Get`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | 조직 ID | 
+
+
+##### 응답 본문
+
+```json
+{
+   "header": {
+      "isSuccessful": true,
+      "resultCode": 0,
+      "resultMessage": ""
+   },
+   "result": {
+      "content": {
+         "schemaVersion": 1,
+         "value": {
+            "ruleType": "default",
+            "passwordConstraints": {
+               "minLength": 8,
+               "mustNotIncludeIllegalSequence": true,
+               "mustIncludeUpperCase": true,
+               "mustIncludeLowerCase": true,
+               "mustIncludeNumberCase": true,
+               "mustIncludeSpecialCase": true
+            },
+            "passwordExpiry": {
+               "enabled": true,
+               "expiryDays": 90,
+               "allowExpend": true
+            },
+            "limitPasswordReuse": {
+               "enabled": true,
+               "limitCount": 1
+            },
+            "applyRule": "onChangePassword"
+         }
+      }
+   }
+}
+```
+
+##### 응답
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+| header | [공통 응답](#응답)| Yes   |
+| result | Content | Yes | 설정 내용 |
+
+###### Content
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+| schemaVersion | Integer| Yes | 스키마 버전  |
+| value | Value| Yes |  비밀번호 정책 |
+
+###### Value
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+| ruleType | String | Yes | 비밀번호 정책<br> (기본 비밀번호 정책), custom (사용자 비밀번호 정책) |
+| passwordConstraints | PasswordConstraints | Yes | 비밀번호 강도 |
+| passwordExpiry | PasswordExpiry | Yes | 비밀번호 만료 |
+| limitPasswordReuse | LimitPasswordReuse | Yes | 비밀번호 재사용 제한 |
+| applyRule | String | Yes | 비밀번호 정책 적용 시점<br>onChangePassword (비밀번호 변경 시 적용), onLogin (즉시 적용) |
+
+###### PasswordConstraints
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+| minLength | integer | Yes | 비밀번호 최소 길이 |
+| mustNotIncludeIllegalSequence | boolean | Yes | 영문자 1개 이상<br>true(설정), false(설정 안함) |
+| mustIncludeUpperCase | boolean | Yes | 영문 대문자 1개 이상<br>true(설정), false(설정 안함) |
+| mustIncludeLowerCase | boolean | Yes | 영문 소문자 1개 이상<br>true(설정), false(설정 안함) |
+| mustIncludeNumberCase | boolean | Yes | 숫자 1개 이상<br>true(설정), false(설정 안함) |
+| mustIncludeSpecialCase | boolean | Yes | 특수 문자 1개 이상<br>true(설정), false(설정 안함) |
+
+###### PasswordExpiry
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+| enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안함) |
+| expiryDays | Integer | Yes | 만료 기간 |
+| allowExpend | Boolean | Yes | 만료 시 연장 가능 여부<br>true(가능), false(불가능) |
+
+###### LimitPasswordReuse
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+| enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안함) |
+| limitCount | Integer | Yes | 재사용 제한 횟수 |
 
 <a id="종량제에-등록된-상품-가격-조회"></a>
 #### 종량제에 등록된 상품 가격 조회
