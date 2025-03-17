@@ -290,7 +290,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리 <br> 프로젝트 관리 등 조직 전체에 대한 Create(생성),Read(읽기), Update(갱신), Delete(삭제) |
 | ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리 <br> 프로젝트 관리 등 조직 전체에 대한 Create(생성),Read(읽기), Update(갱신), Delete(삭제) |
 | MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기)|
-| BILLING_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기) |
+| BILLING_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기), 조직 하위 프로젝트의 이용 현황 Read(읽기)|
 | BUDGET_ADMIN | 예산 관리에 대한 Create(생성, Read(읽기), Update(갱신), Delete(삭제) |
 | BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
 | LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기) <br> 리소스 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
