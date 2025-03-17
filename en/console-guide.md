@@ -303,7 +303,7 @@ Members are classified into NHN Cloud members and IAM members.
 | OWNER | Create, Read, Update, Delete, and Delete organizations across the organization, including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
 | ADMIN | Create/Read/Update/Delete for the entire organization, including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
 | MEMBER | Create project, read organization dashboard, read project |
-| BILLING_VIEWER | Read payment management usage and budget management. |
+| BILLING_VIEWER | Read payment management usage and budget management, and usage status of project in organization. |
 | BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
 | BUDGET_VIEWER | Read budget management |
 | LOG_VIEWER | Create/Read/Update/Delete user action logs management |
