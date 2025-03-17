@@ -4,7 +4,7 @@
 #### 기능 개선/변경
 
 - `IAM 멤버` -> `IAM 계정` 용어 변경
-- `NHN Cloud 멤버` -> `NHN Cloud` 계정 용어 변경
+- `NHN Cloud 회원` -> `NHN Cloud 계정` 용어 변경
 
 #### 신규 기능 추가
 

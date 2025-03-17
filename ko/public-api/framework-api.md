@@ -159,7 +159,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   assignRoles | List&lt;UserAssignRoleProtocol>| Yes | 사용자에게 할당할 역할 목록  |
 |   memberUuid | String| No | 추가할 멤버의 UUID  |
 |   email | String| No | 추가할 멤버의 이메일  |
-|   userCode | String| No | 추가할 IAM 멤버 ID  |
+|   userCode | String| No | 추가할 IAM 계정 ID  |
 
 
 ###### UserAssignRoleProtocol
@@ -2162,7 +2162,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   englishName | String| No|
 |   id | String| Yes | IAM 계정 UUID  |
 |   idProviderId | String| No|
-|   idProviderType | String| No| service: IAM 직접 로그인<br>sso: 고객 SSO 연동 |
+|   idProviderType | String| No| service: IAM 계정 직접 로그인<br>sso: 고객 SSO 연동 |
 |   idProviderUserId | String| No|
 |   lastAccessedAt | Date| No| 계정의 마지막 접속 일시, 없을 경우 null 반환 |
 |   lastLoggedInAt | Date| No| 계정의 마지막 로그인 일시, 없을 경우 null 반환 |
@@ -2214,7 +2214,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |  Path |org-id | String| Yes | 조직 ID | 
 |  Query |email | String| No | IAM 계정의 이메일 주소 |
 |  Query |emailLike | String| No |  |
-|  Query |idProviderType | String| No | service: IAM 직접 로그인<br>sso: 고객 SSO 연동 |
+|  Query |idProviderType | String| No | service: IAM 계정 직접 로그인<br>sso: 고객 SSO 연동 |
 |  Query |nameLike | String| No |  |
 |  Query |statuses | List&lt;String>| No |  |
 |  Query |userCode | String| No | IAM 계정 ID |
@@ -2308,7 +2308,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
 | creationType | String | No |  |
 | idProviderId | String | No |  |
-| idProviderType | String | No | service: IAM 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
+| idProviderType | String | No | service: IAM 계정 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
 | idProviderUserId | String | No |  |
 | createdAt | Date | No | 생성 일시 |
 | lastAccessedAt | Date | No | 마지막 접속일시 |
@@ -2318,7 +2318,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | mobilePhoneCountryCode | String | No | 휴대폰 번호 입력 시 필수  |
 | organizationId | String | No | IAM 계정의 조직 ID |
 | country | String | No |  |
-| saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAM 역할 |
+| saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAM 계정 역할 |
 
 
 
@@ -2691,7 +2691,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   type | String| No | mfa 타입<br>none(설정 안함), totp(Google OTP), email(이메일) |
+|   type | String| No | mfa 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
 |   bypassByIp | BypassByIp| No | 예외 IP  |
 
 ###### ServiceMfaSettings
@@ -2700,7 +2700,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 |   serviceId | Sting| No | 서비스 ID  |
-|   type | String| No | mfa 타입<br>none(설정 안함), totp(Google OTP), email(이메일) |
+|   type | String| No | mfa 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
 |   bypassByIp | BypassByIp| No | 서비스 타입. none, totp, email |
 
 ###### BypassByIp
@@ -3638,7 +3638,7 @@ User Access Key ID로 발급한 토큰을 다건 만료시키는 API입니다.<b
 | 62019 | 조직 멤버에게 허용되지 않는 역할을 부여하려는 경우                      | 담당자에게 문의                                            |
 | 72005 | 빌링 관련 API 호출이 실패할 때 발생하는 오류                                                         | 담당자에게 문의                                            |
 | 70013 | 이용 중인 서비스가 존재할 때 발생하는 오류                                                             | 이용 중인 서비스 비활성화                                           |
-| 70014 | 멤버 탈퇴 조건을 만족하지 않을 경우 발생하는 오류<br> IAM - 1) 사용 중인 서비스가 있을 때 2) 삭제되지 않은 프로젝트가 있을 때 3) 해당 멤버가 임의의 프로젝트에 ADMIN 역할로 존재할 때| 각 멤버 타입에 맞는 탈퇴 조건을 만족하도록 설정                          |
+| 70014 | 멤버 탈퇴 조건을 만족하지 않을 경우 발생하는 오류<br> IAM 계정 - 1) 사용 중인 서비스가 있을 때 2) 삭제되지 않은 프로젝트가 있을 때 3) 해당 멤버가 임의의 프로젝트에 ADMIN 역할로 존재할 때| 각 멤버 타입에 맞는 탈퇴 조건을 만족하도록 설정                          |
 | 70024 | 결제 수단이 정상적으로 등록되지 않았을 때 발생하는 오류                                                     | 결제수단 등록                                                 |
 | 70032 | 미납으로 인해 멤버 블록이 되었을 경우 발생하는 오류                                                       | 해당 계정이 가진 미납 청구서 결제                                     |
 | -200201 | user-code 길이 조건이 맞지 않는 경우 발생하는 오류                                                           | 20자 이내의 소문자, 숫자, 특수문자(-, _, .) 사용 가능.<br>특수문자(-, _, .)는 제일 앞과 제일 뒤에는 사용할 수 없음.|
