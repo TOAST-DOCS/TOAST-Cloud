@@ -218,10 +218,10 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 ```
 
 ### 토큰 사용
-프레임워크 API 호출 시, 호출자 인증을 위해 `x-nhn-authentication` 헤더에 토큰을 담아서 요청 시 사용합니다.<br>
+프레임워크 API 호출 시, 호출자 인증을 위해 `x-nhn-authorization` 헤더에 토큰을 담아서 요청 시 사용합니다.<br>
 예시
 ```shell
-curl -X GET "https://core.api.gov-nhncloudservice.com/v1.0/organizations" -H "x-nhn-authentication: Bearer {token}"
+curl -X GET "https://core.api.gov-nhncloudservice.com/v1.0/organizations" -H "x-nhn-authorization: Bearer {token}"
 ```
 
 ### 오류 코드
