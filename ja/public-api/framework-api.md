@@ -99,15 +99,16 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#プロジェクト-ロール-グループ-ロール-修正) | プロジェクトロールグループロール修正 |
 | PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#組織-メンバー-ロール-修正) | 組織メンバーロール修正 |
 | PUT |[/v1/projects/{project-id}/members/{member-uuid}](#プロジェクト-メンバー-ロール-修正) | プロジェクトメンバーロール修正 |
-| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#組織-IAM-メンバー-単件-照会) | 組織IAMメンバー単件照会 |
-| GET |[/v1/iam/organizations/{org-id}/members](#組織-IAM-メンバー-リスト-照会) | 組織IAMメンバーリスト照会 |
-| POST |[/v1/iam/organizations/{org-id}/members](#組織-IAM-メンバー-追加) | 組織IAMメンバー追加 |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#IAM-メンバー-パスワード-変更-メール-送信) | IAMメンバーパスワード変更メール送信 |
-| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#組織-IAM-メンバー-情報-修正) | 組織IAMメンバー情報修正 |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#組織-IAM-メンバー-パスワード-変更) | 組織IAMメンバーパスワード変更 |
-| GET |[/v1/iam/organizations/{org-id}/settings/session](#組織-IAM-ログイン-セッション-設定-情報を-照会) | 組織IAMログインセッション設定情報を照会 |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#組織-IAM-ログイン-2次-認証-の-設定を-照会) | 組織IAMログイン2段階認証の設定を照会 |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#組織-IAM-ログイン-失敗-セキュリティ-設定を-照会) | 組織IAMログイン失敗セキュリティ設定を照会 |
+| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#組織-IAM-アカウント-単件-照会) | 組織IAMアカウント単件照会 |
+| GET |[/v1/iam/organizations/{org-id}/members](#組織-IAM-アカウント-リスト-照会) | 組織IAMアカウントリスト照会 |
+| POST |[/v1/iam/organizations/{org-id}/members](#組織-IAM-アカウント-追加) | 組織IAMアカウント追加 |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#IAM-アカウント-パスワード-変更-メール-送信) | IAMアカウントパスワード変更メール 送信 |
+| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#組織-IAM-アカウント-情報-修正) | 組織IAMアカウント情報修正 |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#組織-IAM-アカウント-パスワード-変更) | 組織IAMアカウントパスワード変更 |
+| GET |[/v1/iam/organizations/{org-id}/settings/session](#組織-IAM-アカウント-ログイン-セッション-設定-情報を-照会) | 組織IAMアカウントログインセッション設定情報を照会 |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#組織-IAM-アカウント-ログイン-2次-認証-の-設定を-照会) | 組織IAMアカウントログイン2段階認証の設定を照会 |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#組織-IAM-アカウント-ログイン-失敗-セキュリティ-設定を-照会) | 組織IAMアカウントログイン失敗セキュリティ設定を照会 |
+| GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#組織-IAM-アカウント-パスワード-ポリシー-照会) | 組織IAMアカウントパスワードポリシー照会 |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#組織-IP-ACL-リスト-照会) | 組織IP ACLリスト照会 |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#従量制に-登録された-商品-価格-照会) | 従量制に登録された商品価格照会 |
 | GET |[/v1/billing/contracts/basic/products](#従量制に-登録された-商品-リスト-照会) | 従量制に登録された商品リスト照会 |
@@ -157,7 +158,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   assignRoles | List&lt;UserAssignRoleProtocol>| Yes | ユーザーに割り当てるロールリスト |
 |   memberUuid | String| No | 追加するメンバーのUUID  |
 |   email | String| No | 追加するメンバーのメールアドレス |
-|   userCode | String| No | 追加するIAMメンバーID  |
+|   userCode | String| No | 追加するIAMアカウントID  |
 
 
 ###### UserAssignRoleProtocol
@@ -729,17 +730,17 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
 |   email | String| Yes | メンバーメール |
-|   id | String| No | メンバーID(IAMメンバーのみ提供) |
+|   id | String| No | メンバーID(IAMアカウントのみ提供) |
 |   inviteStatusCode | String| Yes |   COMPLETE, EXPIRE, UNKNOWN, WAIT |
 |   joinYmdt | Date| Yes | 組織メンバー登録日時 |
 |   memberName | String| Yes| 	メンバー名 |
-|   memberTypeCode | String| Yes| メンバー区分(TOAST_CLOUD: NHN Cloudメンバー、 IAM: IAMメンバー) |
+|   memberTypeCode | String| Yes| アカウント区分(TOAST_CLOUD: NHN Cloudアカウント、 IAM: IAMアカウント) |
 |   memberUuid | String| Yes| メンバーのUUID |
 |   recentLoginYmdt | Date| Yes| 最後のログイン日時 |
 |   recentPasswordModifyYmdt | Date| No| 最後のパスワード変更日時 |
 |   roleCode | String| No| ロールID |
 |   roles | List&lt;RoleBundleProtocol>| No | 関連ロールリスト(条件属性を含む)  |
-|   secondFactorCertificationYn | String| No| 2段階ログイン設定の有無(NHN Cloudメンバーのみ提供) |
+|   secondFactorCertificationYn | String| No| 2段階ログイン設定の有無(NHN Cloudアカウントのみ提供) |
 
 
 ###### RoleBundleProtocol
@@ -858,7 +859,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   joinYmdt | Date| Yes | メンバー加入日時 |
 |   maskingEmail | String| Yes | メンバーのマスキングされたメール |
 |   memberName | String| Yes| メンバーの名前 |
-|   memberTypeCode | String| Yes| メンバー区分(TOAST_CLOUD: NHN Cloudメンバー、 IAM: IAMメンバー) |
+|   memberTypeCode | String| Yes| メンバー区分(TOAST_CLOUD: NHN Cloudアカウント、 IAM: IAMアカウント) |
 |   memberUuid | String| No| メンバーのUUID<br>招待中の場合は値を返しません。 |
 |   recentLoginYmdt | Date| Yes| 最後のログイン日時 |
 |   recentPasswordModifyYmdt | Date| No| 最後のパスワード変更日時 |
@@ -2055,12 +2056,12 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes   |
 
-<a id="組織-IAM-メンバー-単件-照会"></a>
-#### 組織IAMメンバー単件照会
+<a id="組織-IAM-アカウント-単件-照会"></a>
+#### 組織IAMアカウント単件照会
 
 > GET "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
-組織に所属するIAMメンバーを照会するAPIです。
+組織に所属するIAMアカウントを照会するAPIです。
 
 ##### 必要権限
 `Organization.Member.Iam.Get`
@@ -2071,7 +2072,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 照会する組織ID | 
-|  Path |member-uuid | String| Yes | 照会する組織のIAMメンバーUUID | 
+|  Path |member-uuid | String| Yes | 照会する組織のIAMアカウントUUID | 
 
 
 ##### レスポンス本文
@@ -2154,34 +2155,34 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   corporate | String| No |
 |   country | String| No |
 |   createdAt | Date| No |
-|   creationType | String| No| メンバーの作成タイプ |
+|   creationType | String| No| アカウントの作成タイプ |
 |   department | String| No|
-|   emailAddress | String| Yes | IAMメンバーメールアドレス |
+|   emailAddress | String| Yes | IAMアカウントメールアドレス |
 |   englishName | String| No|
-|   id | String| Yes | IAMメンバーUUID  |
+|   id | String| Yes | IAMアカウントUUID  |
 |   idProviderId | String| No|
-|   idProviderType | String| No| service: IAM直接ログイン<br>sso:顧客SSO連動 |
+|   idProviderType | String| No| service: IAMアカウント直接ログイン<br>sso:顧客SSO連動 |
 |   idProviderUserId | String| No|
 |   lastAccessedAt | Date| No| メンバーの最後の接続日時、ない場合はnullを返す |
-|   lastLoggedInAt | Date| No| メンバーの最後のログイン日時、ない場合はnullを返す |
-|   lastLoggedInIp | String| No| メンバーの最後のログインIPアドレス、ない場合はnullを返す |
-|   maskingEmail | String| No | IAMメンバーのマスキングされたメールアドレス |
-|   mobilePhone | String| No | IAMメンバーの携帯電話番号 |
+|   lastLoggedInAt | Date| No| アカウントの最後のログイン日時、ない場合はnullを返す |
+|   lastLoggedInIp | String| No| アカウントの最後のログインIPアドレス、ない場合はnullを返す |
+|   maskingEmail | String| No | IAMアカウントのマスキングされたメールアドレス |
+|   mobilePhone | String| No | IAMアカウントの携帯電話番号 |
 |   mobilePhoneCountryCode | String| No|
-|   name | String| Yes | IAMメンバーの名前 |
+|   name | String| Yes | IAMアカウントの名前 |
 |   nativeName | String| No|
 |   nickname | String| No|
 |   officeHoursBegin | String| No|
 |   officeHoursEnd | String| No|
-|   organizationId | String| Yes | IAMメンバーの組織ID  |
-|   passwordChangedAt | Date| No| メンバーの最後のパスワード変更日時、ない場合はnullを返す |
+|   organizationId | String| Yes | IAMアカウントの組織ID  |
+|   passwordChangedAt | Date| No| アカウントの最後のパスワード変更日時、ない場合はnullを返す |
 |   position | String| No|
 |   profileImageUrl | String| No|
 |   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 関連ロールリスト(条件属性を含む)  |
-|   saasRoles | List&lt;IamMemberRole>| No | IAMメンバーロール |
-|   status | String| No| メンバーの状態 |
-|   telephone | String| No | IAMメンバーの電話番号 |
-|   userCode | String| Yes | IAMメンバーID  |
+|   saasRoles | List&lt;IamMemberRole>| No | IAMアカウントロール |
+|   status | String| No| アカウントの状態 |
+|   telephone | String| No | IAMアカウントの電話番号 |
+|   userCode | String| Yes | IAMアカウントID  |
 
 
 
@@ -2195,12 +2196,12 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   role | String| No |
 
 
-<a id="組織-IAM-メンバー-リスト-照会"></a>
-#### 組織IAMメンバーリスト照会
+<a id="組織-IAM-アカウント-リスト-照会"></a>
+#### 組織IAMアカウントリスト照会
 
 > GET "/v1/iam/organizations/{org-id}/members"
 
-該当組織に所属するIAMメンバーリストを照会するAPIです。
+該当組織に所属するIAMアカウントリストを照会するAPIです。
 
 ##### 必要権限
 `Organization.Member.Iam.List`
@@ -2210,12 +2211,12 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 組織ID | 
-|  Query |email | String| No | IAMメンバーのメールアドレス |
+|  Query |email | String| No | IAMアカウントのメールアドレス |
 |  Query |emailLike | String| No |  |
 |  Query |idProviderType | String| No | service: IAM直接ログイン<br>sso:顧客SSO連動 |
 |  Query |nameLike | String| No |  |
 |  Query |statuses | List&lt;String>| No |  |
-|  Query |userCode | String| No | IAMメンバーID |
+|  Query |userCode | String| No | IAMアカウントID |
 |  Query |userCodeLike | String| No |  |
 |  Query |limit | Integer| No | 1ページあたりの表示件数、デフォルト値20 |
 |  Query |page | Integer| No | 対象ページ、デフォルト値1 |
@@ -2279,7 +2280,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes   |
-|   orgMembers | List&lt;IamOrgMemberProtocol>| No | 組織IAMメンバーリスト |
+|   orgMembers | List&lt;IamOrgMemberProtocol>| No | 組織IAMアカウントリスト |
 |   paging | [PagingResponse](#pagingresponse)| No  |
 
 ###### IamOrgMemberProtocol
@@ -2287,13 +2288,13 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
 | header | [共通レスポンス](#レスポンス)| Yes | protocolがresponseにある場合にのみ必須値 |
-| id | String | No | IAMメンバーUUID | 
-| userCode | String | Yes | ログイン時に使用するIAMメンバーID | 
-| name | String | Yes | IAMメンバーのユーザー名 | 
-| emailAddress | String |  Yes | IAMメンバーのメールアドレス<br>告知を受信したり、パスワード変更案内メール受信する際に使用されます |
-| maskingEmail | String | No | IAMメンバーのマスキングされたメールアドレス |
-| mobilePhone | String | No | IAMメンバーの携帯電話番号 |
-| telephone | String | No | IAMメンバー電話番号 |
+| id | String | No | IAMアカウントUUID | 
+| userCode | String | Yes | ログイン時に使用するIAMアカウントID | 
+| name | String | Yes | IAMアカウントのユーザー名 | 
+| emailAddress | String |  Yes | IAMアカウントのメールアドレス<br>告知を受信したり、パスワード変更案内メール受信する際に使用されます |
+| maskingEmail | String | No | IAMアカウントのマスキングされたメールアドレス |
+| mobilePhone | String | No | IAMアカウントの携帯電話番号 |
+| telephone | String | No | IAMアカウント電話番号 |
 | position | String | No |  |
 | department | String | No |  |
 | corporate | String | No |  |
@@ -2303,10 +2304,10 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | nickname | String | No |  |
 | officeHoursBegin | String | No |  |
 | officeHoursEnd | String | No |  |
-| status | String | Yes | メンバーの状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要があります |
+| status | String | Yes | アカウントの状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要があります |
 | creationType | String | No |  |
 | idProviderId | String | No |  |
-| idProviderType | String | No | service: IAM直接ログイン(デフォルト値)<br>sso:顧客SSO連動(連動されていない場合は設定不可) |
+| idProviderType | String | No | service: IAMアカウント直接ログイン(デフォルト値)<br>sso:顧客SSO連動(連動されていない場合は設定不可) |
 | idProviderUserId | String | No |  |
 | createdAt | Date | No | 作成日時 |
 | lastAccessedAt | Date | No | 最終接続日時 |
@@ -2314,20 +2315,20 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | lastLoggedInIp | String | No | 最後にログインしたIP |
 | passwordChangedAt | Date | No | パスワード変更日時 |
 | mobilePhoneCountryCode | String | No | 携帯電話番号入力時、必須 |
-| organizationId | String | No | IAMメンバーの組織ID |
+| organizationId | String | No | IAMアカウントの組織ID |
 | country | String | No |  |
-| saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAMロール |
+| saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAMアカウントロール |
 
 
 
 
 
-<a id="組織-IAM-メンバー-追加"></a>
-#### 組織IAMメンバー追加
+<a id="組織-IAM-アカウント-追加"></a>
+#### 組織IAMアカウント追加
 
 > POST "/v1/iam/organizations/{org-id}/members"
 
-組織にIAMメンバーを追加するAPIです。
+組織にIAMアカウントを追加するAPIです。
 
 ##### 必要権限
 `Organization.Member.Iam.Create`
@@ -2369,17 +2370,17 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes   |
-|   uuid | String| No | IAMメンバーUUID  |
+|   uuid | String| No | IAMアカウントUUID  |
 
 
 
 
-<a id="IAM-メンバー-パスワード-変更-メール-送信"></a>
-#### IAMメンバーパスワード変更メール送信
+<a id="IAM-アカウント-パスワード-変更-メール-送信"></a>
+#### IAMアカウントパスワード変更メール送信
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail"
 
-IAMメンバーのパスワードを変更できるメールを送信するAPIです。
+IAMアカウントのパスワードを変更できるメールを送信するAPIです。
 
 ##### 必要権限
 `Organization.Member.Iam.Update`
@@ -2390,7 +2391,7 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 対象となる組織ID | 
-|  Path |member-id | String| Yes | パスワードを変更するIAMメンバーのUUID | 
+|  Path |member-id | String| Yes | パスワードを変更するIAMアカウントのUUID | 
 | Request Body | request | SendPasswordSetupMailRequest| Yes | リクエスト |
 
 
@@ -2422,12 +2423,12 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes   |
 
-<a id="組織-IAM-メンバー-情報-修正"></a>
-#### 組織IAMメンバー情報修正
+<a id="組織-IAM-アカウント-情報-修正"></a>
+#### 組織IAMアカウント情報修正
 
 > PUT "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
-組織のIAMメンバー情報を修正するAPIです。
+組織のIAMアカウント情報を修正するAPIです。
 
 ##### 必要権限
 `Organization.Member.Iam.Update`
@@ -2437,7 +2438,7 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 	対象となる組織ID | 
-|  Path |member-uuid | String| Yes | 変更するIAMメンバーのUUID | 
+|  Path |member-uuid | String| Yes | 変更するIAMアカウントのUUID | 
 | Request Body | request | UpdateIamMemberRequest| Yes | リクエスト |
 
 
@@ -2468,12 +2469,12 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes   |
 
-<a id="組織-IAM-メンバー-パスワード-変更"></a>
-#### 組織IAMメンバーパスワード変更
+<a id="組織-IAM-アカウント-パスワード-変更"></a>
+#### 組織IAMアカウントパスワード変更
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/set-password"
 
-組織IAMメンバーのパスワードを変更するAPIです。
+組織IAMアカウントのパスワードを変更するAPIです。
 
 ##### 必要権限
 `Organization.Member.Iam.Update`
@@ -2483,7 +2484,7 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 対象となる組織ID | 
-|  Path |member-id | String| Yes | パスワードを変更するIAMメンバーのUUID | 
+|  Path |member-id | String| Yes | パスワードを変更するIAMアカウントのUUID | 
 | Request Body | request | UpdateIamPasswordRequest| Yes | リクエスト |
 
 
@@ -2562,8 +2563,8 @@ IP ACL設定を照会するAPIです。
 |   ips | List&lt;String>| Yes  | 許可IP | 
 |   productId | String| Yes  | 商品ID<br>undefinedの場合、共通設定|
 
-<a id="組織-IAM-ログイン-セッション-設定-情報を-照会"></a>
-#### 組織IAMログインセッション設定情報を照会
+<a id="組織-IAM-アカウント-ログイン-セッション-設定-情報を-照会"></a>
+#### 組織IAMアカウント-ログインセッション設定情報を照会
 
 > GET "/v1/iam/organizations/{org-id}/settings/session"
 
@@ -2616,8 +2617,8 @@ IP ACL設定を照会するAPIです。
 |   mobileSessionTimeoutMinutes | Integer| Yes | 	モバイルセッションタイムアウト |
 |   sessionType | String| Yes | fixed/idle. デフォルト値はfixed  |
 
-<a id="組織-IAM-ログイン-2次-認証-の-設定を-照会"></a>
-#### 組織IAMログイン2段階認証の設定を照会
+<a id="組織-IAM-アカウント-ログイン-2次-認証-の-設定を-照会"></a>
+#### 組織IAMアカウントログイン2段階認証の設定を照会
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-mfa"
 
@@ -2708,8 +2709,8 @@ IP ACL設定を照会するAPIです。
 |   enable | Boolean| No | 有効化かどうか<br>true(使用中), false(使用しない)  |
 |   ipList | List&lt;String>| No | 例外IPリスト |
 
-<a id="組織-IAM-ログイン-失敗-セキュリティ-設定を-照会"></a>
-#### 組織IAMログイン失敗セキュリティ設定を照会
+<a id="組織-IAM-アカウント-ログイン-失敗-セキュリティ-設定を-照会"></a>
+#### 組織IAMアカウントログイン失敗セキュリティ設定を照会
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-login-fail"
 
@@ -2766,6 +2767,110 @@ IP ACL設定を照会するAPIです。
 |------------ | ------------- | ------------- | ------------ |
 |   limit | Integer| No | 試行許可回数 |
 |   blockMinutes | Integer| No | ログイン禁止時間 |
+
+<a id="組織-IAM-アカウント-パスワード-ポリシー-照会"></a>
+#### 組織IAMアカウントパスワードポリシー照会
+
+> GET "/v1/iam/organizations/{org-id}/settings/password-rule"
+パスワードポリシーの設定を照会するAPIです。
+
+##### 必要権限
+`Organization.Setting.Iam.Get`
+
+##### リクエストパラメータ
+
+| 区分 | 名前 | タイプ | 必須 | 説明 | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | 組織ID | 
+
+
+##### レスポンス本文
+
+```json
+{
+   "header": {
+      "isSuccessful": true,
+      "resultCode": 0,
+      "resultMessage": ""
+   },
+   "result": {
+      "content": {
+         "schemaVersion": 1,
+         "value": {
+            "ruleType": "default",
+            "passwordConstraints": {
+               "minLength": 8,
+               "mustNotIncludeIllegalSequence": true,
+               "mustIncludeUpperCase": true,
+               "mustIncludeLowerCase": true,
+               "mustIncludeNumberCase": true,
+               "mustIncludeSpecialCase": true
+            },
+            "passwordExpiry": {
+               "enabled": true,
+               "expiryDays": 90,
+               "allowExpend": true
+            },
+            "limitPasswordReuse": {
+               "enabled": true,
+               "limitCount": 1
+            },
+            "applyRule": "onChangePassword"
+         }
+      }
+   }
+}
+```
+
+##### レスポンス
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| header | [共通レスポンス](#レスポンス)| Yes   |
+| result | Content | Yes | 設定内容 |
+
+###### Content
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| schemaVersion | Integer| Yes | スキーマバージョン |
+| value | Value| Yes | パスワードポリシー |
+
+###### Value
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| ruleType | String | Yes | パスワードポリシー<br>default(基本パスワードポリシー)、custom(ユーザーパスワードポリシー) |
+| passwordConstraints | PasswordConstraints | Yes | パスワードの強度 |
+| passwordExpiry | PasswordExpiry | Yes | パスワード期限切れ |
+| limitPasswordReuse | LimitPasswordReuse | Yes | パスワード再使用制限 |
+| applyRule | String | Yes | パスワードポリシー適用時点<br>onChangePassword(パスワード変更時に適用)、onLogin(即時適用) |
+
+###### PasswordConstraints
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| minLength | integer | Yes | パスワード最小長さ |
+| mustNotIncludeIllegalSequence | boolean | Yes | 英字1個以上<br>true(設定)、false(設定しない) |
+| mustIncludeUpperCase | boolean | Yes | 英字大文字1個以上<br>true(設定)、false(設定しない) |
+| mustIncludeLowerCase | boolean | Yes | 英字小文字1個以上<br>true(設定)、false(設定しない) |
+| mustIncludeNumberCase | boolean | Yes | 数字1個以上<br>true(設定)、false(設定しない) |
+| mustIncludeSpecialCase | boolean | Yes | 特殊文字1個以上<br>true(設定)、false(設定しない) |
+
+###### PasswordExpiry
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| enable | Boolean | Yes | 使用有無<br>true(設定)、false(設定しない) |
+| expiryDays | Integer | Yes | 有効期限 |
+| allowExpend | Boolean | Yes | 有効期限の延長可否<br>true(可能)、false(不可) |
+
+###### LimitPasswordReuse
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| enable | Boolean | Yes | 使用有無<br>true(設定)、false(設定しない) |
+| limitCount | Integer | Yes | 再使用制限回数 |
 
 <a id="従量制に-登録された-商品-価格-照会"></a>
 #### 従量制に登録された商品価格照会
@@ -3494,7 +3599,7 @@ User Access Key IDで発行したトークンを複数期限切れにするAPI�
 | 404 | 存在しないAPI呼び出し時に発生                                                                   | 呼び出すAPIのhttpmethod,uriを確認                        |
 | 400<br>501<br>502<br>503<br>504<br>505 | リクエストパラメータが適切でない場合に発生するエラー                                                      | リクエストパラメータの必須値及び設定可能な値を確認                       |
 | 500 | 異常システムエラー                                                                      | 担当者にお問い合わせください。                                         |
-| 1000 | パラメータが正しくない場合に発生するエラー <br> 組織IAMメンバーAPI - `IAMメンバーパスワード変更メール送信`リクエスト値returnUrlが許可されたドメインでない場合に発生(許可されたドメイン: toast.com, dooray.com, nhncloud.com) | リクエストパラメータ確認                                          |
+| 1000 | パラメータが正しくない場合に発生するエラー <br> 組織IAMアカウントAPI - `IAMアカウントパスワード変更メール送信`リクエスト値returnUrlが許可されたドメインでない場合に発生(許可されたドメイン: toast.com, dooray.com, nhncloud.com) | リクエストパラメータ確認                                         |
 | 1201 | サーバーの内部的なAPIリクエストが失敗して発生するエラー | エラーメッセージに含まれるエラーメッセージとコードをもとに解決<br>含まれるエラーメッセージとコードだけでは解決が難しい場合は、担当者にお問い合わせください。                   |
 | 10005<br>70008<br>1104 | リクエストパラメータが適切でない場合に発生するエラー｜リクエストパラメータの必須値や設定可能な値などを確認 |
 | 10009 | 組織またはプロジェクトに存在しないロールを付与する際に発生するエラー｜メンバーに存在するロールを付与するように変更                              |
@@ -3528,7 +3633,7 @@ User Access Key IDで発行したトークンを複数期限切れにするAPI�
 | 62019 | 組織メンバーに許可されていないロールを付与しようとする場合                  | 担当者にお問い合わせください                                        |
 | 72005 | ビリング関連APIの呼び出しが失敗したときに発生するエラー                                                     | 担当者にお問い合わせください                                        |
 | 70013 | 利用中のサービスが存在するときに発生するエラー                                                         | 利用中のサービス無効化                                       |
-| 70014 | メンバー退会条件を満たさない場合に発生するエラー<br> IAM - 1)使用中のサービスがある場合2)削除されていないプロジェクトがある場合3)該当メンバーが任意のプロジェクトにADMINロールで存在する場合 | 各メンバータイプに合った退会条件を満たすように設定                      |
+| 70014 | メンバー退会条件を満たさない場合に発生するエラー<br> IAMアカウント - 1)使用中のサービスがある場合2)削除されていないプロジェクトがある場合3)該当メンバーが任意のプロジェクトにADMINロールで存在する場合 | 各メンバータイプに合った退会条件を満たすように設定                     |
 | 70024 | 決済手段が正常に登録されていない場合に発生するエラー                                                 | 決済手段を登録                                             |
 | 70032 | 未払でメンバーブロックになった場合に発生するエラー                                                   | 該当アカウントが持っている未払の請求書の決済                                 |
 | -200201 | user-code長さ条件が合わない場合に発生するエラー                                                       | 20文字以内の小文字、数字、特殊文字(-, _, .)使用可能。<br>特殊文字(-, _, .)は最初と最後には使用できない。|
