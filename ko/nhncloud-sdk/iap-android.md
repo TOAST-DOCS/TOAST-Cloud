@@ -53,7 +53,7 @@ dependencies {
 ```groovy
 repositories {
     mavenCentral()
-    // ONE store 통합 버전 (V21)
+    // ONE store 통합 버전(V21)
     maven { url 'https://repo.onestore.co.kr/repository/onestore-sdk-public' }
 }
 
