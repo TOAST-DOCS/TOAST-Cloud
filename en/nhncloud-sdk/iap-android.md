@@ -73,7 +73,7 @@ dependencies {
 }
 ```
 
-> ONE store v21 In-app purchase functions in Android (API level 23) 6.0 or higher.
+> ONE store v21 In-app purchase functions in Android(API level 23) 6.0 or higher.
 
 ### Galaxy Store
 
