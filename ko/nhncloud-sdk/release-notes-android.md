@@ -13,7 +13,7 @@
         * nhncloud-iap-onestore
         * nhncloud-iap-onestore-v19
         * nhncloud-iap-onestore-v21
-* 원스토어 구독 지원
+* ONE store 구독 지원
     * 원스토어 통합 버전(nhncloud-iap-onestore2)에서 구독형 상품을 지원합니다.
     * 이를 통해 ONE store에서도 정기 결제 기반의 상품을 제공할 수 있습니다.
 
