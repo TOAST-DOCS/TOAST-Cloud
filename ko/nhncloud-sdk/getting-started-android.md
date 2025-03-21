@@ -34,7 +34,7 @@ NHN Cloud SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용
 | com.nhncloud.android:nhncloud-iap-onestore:1.10.0 | In-app Purchase <br>ONE store(v17) |
 | com.nhncloud.android:nhncloud-iap-onestore-v16:1.10.0 | In-app Purchase <br>ONE store(v16) |
 | com.nhncloud.android:nhncloud-iap-onestore-v19:1.10.0 | In-app Purchase <br>ONE store(v19) |
-| com.nhncloud.android:nhncloud-iap-onestore-v21:1.10.0 | In-app Purchase <br>ONE store (v21) |
+| com.nhncloud.android:nhncloud-iap-onestore-v21:1.10.0 | In-app Purchase <br>ONE store(v21) |
 | com.nhncloud.android:nhncloud-iap-galaxy:1.10.0 | In-app Purchase <br>Galaxy Store |
 | com.nhncloud.android:nhncloud-push-core:1.10.0    | Push Core   |
 | com.nhncloud.android:nhncloud-push-fcm:1.10.0    | Push <br>Firebase Cloud Messaging |
