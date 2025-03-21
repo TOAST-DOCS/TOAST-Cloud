@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-    // ONE store 통합 버전 (V21)
+    // ONE store 통합 버전(V21)
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
     implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.10.0'
