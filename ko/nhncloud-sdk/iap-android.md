@@ -20,7 +20,7 @@
 ## 스토어별 인앱 결제 가이드
 
 - [Android Developers 인앱 결제](https://developer.android.com/google/play/billing)
-- [원스토어 인앱결제 API V7 (SDK V21) 안내 및 다운로드](https://onestore-dev.gitbook.io/dev/tools/tools)
+- [ONE store 인앱 결제 API V7(SDK V21) 안내 및 다운로드](https://onestore-dev.gitbook.io/dev/tools/tools)
 - [Galaxy Store 인앱 결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
 - [Amazon Appstore 인앱 결제 API 안내 및 다운로드](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 - [Huawei App Gallery 인앱 결제 API 안내 및 다운로드](https://developer.huawei.com/consumer/kr/hms/huawei-iap)
