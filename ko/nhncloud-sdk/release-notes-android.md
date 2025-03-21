@@ -7,7 +7,7 @@
 #### 기능 추가
 
 * ONE store 버전 통합
-    * 원스토어 v17, v19, v21버전을 하나로 통합하였습니다.
+    * ONE store v17, v19, v21 버전을 하나로 통합하였습니다.
     * nhncloud-iap-onestore2 모듈을 사용하면 원스토어 IAP SDK를 통합된 버전으로 업데이트하여 사용할 수 있습니다.
     * 통합 대상:
         * nhncloud-iap-onestore
