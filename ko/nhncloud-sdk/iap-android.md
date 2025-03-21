@@ -20,7 +20,7 @@
 ## 스토어별 인앱 결제 가이드
 
 - [Android Developers 인앱 결제](https://developer.android.com/google/play/billing)
-- [ONE store 인앱 결제 API V5 (SDK V17) 안내 및 다운로드](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [ONE store 인앱 결제 API V7(SDK V21) 안내 및 다운로드](https://onestore-dev.gitbook.io/dev/tools/tools)
 - [Galaxy Store 인앱 결제 API 안내 및 다운로드](https://developer.samsung.com/iap/overview.html)
 - [Amazon Appstore 인앱 결제 API 안내 및 다운로드](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 - [Huawei App Gallery 인앱 결제 API 안내 및 다운로드](https://developer.huawei.com/consumer/kr/hms/huawei-iap)
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.10.0'
     ...
 }
 ```
@@ -53,25 +53,27 @@ dependencies {
 ```groovy
 repositories {
     mavenCentral()
-    // ONE store V21
+    // ONE store 통합 버전(V21)
     maven { url 'https://repo.onestore.co.kr/repository/onestore-sdk-public' }
 }
 
 dependencies {
-    // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.9.5'
-    // ONE store V19
-    implementation files('libs/iap_sdk-v19.01.00.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.9.5'
-    // ONE store V21
+    // ONE store 통합 버전(V21)
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.10.0'
+
+    // ONE store V17
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.10.0'
+    
+    // ONE store V19
+    implementation files('libs/iap_sdk-v19.01.00.aar')
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.10.0'
     ...
 }
 ```
 
-> ONE store V21 인앱 결제는 Android 6.0 (API 레벨 23) 이상에서 동작합니다.
+> ONE store 통합 버전(V21) 인앱 결제는 Android 6.0(API 레벨 23) 이상에서 동작합니다.
 
 ### Galaxy Store
 
@@ -83,7 +85,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.10.0'
     ...
 }
 ```
@@ -100,7 +102,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.10.0'
     ...
 }
 ```
@@ -143,7 +145,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.10.0'
     ...
 }
 ```
@@ -160,7 +162,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.10.0'
     ...
 }
 ```
