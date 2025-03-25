@@ -20,7 +20,7 @@
 ## ストア別アプリ内決済ガイド
 
 - [Android Developersアプリ内決済](https://developer.android.com/google/play/billing)
-- [ONE storeアプリ内決済API V5 (SDK V17)案内およびダウンロード](https://dev.onestore.co.kr/devpoc/reference/view/Tools)
+- [ONE storeアプリ内決済API V7 (SDK V21)案内およびダウンロード](https://onestore-dev.gitbook.io/dev/tools/tools)
 - [Galaxy Storeアプリ内課金APIのご案内とダウンロード](https://developer.samsung.com/iap/overview.html)
 - [Amazon Appstoreアプリ内決済APIの案内とダウンロード](https://developer.amazon.com/docs/in-app-purchasing/iap-overview.html)
 - [Huawei App Galleryアプリ内決済API案内およびダウンロード](https://developer.huawei.com/consumer/jp/hms/huawei-iap)
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.10.0'
     ...
 }
 ```
@@ -53,20 +53,22 @@ dependencies {
 ```groovy
 repositories {
     mavenCentral()
-    // ONE store V21
+    // ONE store 통합 버전(V21)
     maven { url 'https://repo.onestore.co.kr/repository/onestore-sdk-public' }
 }
 
 dependencies {
-    // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.9.5'
-    // ONE store V19
-    implementation files('libs/iap_sdk-v19.01.00.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.9.5'
-    // ONE store V21
+    // ONE store 통합 버전(V21)
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v21:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.10.0'
+
+    // ONE store V17
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.10.0'
+    
+    // ONE store V19
+    implementation files('libs/iap_sdk-v19.01.00.aar')
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.10.0'
     ...
 }
 ```
@@ -83,7 +85,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.10.0'
     ...
 }
 ```
@@ -100,7 +102,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.10.0'
     ...
 }
 ```
@@ -143,7 +145,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.10.0'
     ...
 }
 ```
@@ -160,7 +162,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.9.5'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.10.0'
     ...
 }
 ```

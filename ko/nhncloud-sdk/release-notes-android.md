@@ -1,5 +1,27 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 1.10.0 (2025. 03. 25.)
+
+### NHN Cloud IAP
+
+#### 기능 추가
+
+* ONE store 버전 통합
+    * ONE store v17, v19, v21 버전을 하나로 통합하였습니다.
+    * nhncloud-iap-onestore2 모듈을 사용하면 ONE store IAP SDK를 통합된 버전으로 업데이트하여 사용할 수 있습니다.
+    * 통합 대상:
+        * nhncloud-iap-onestore
+        * nhncloud-iap-onestore-v19
+        * nhncloud-iap-onestore-v21
+* ONE store 구독 지원
+    * ONE store 통합 버전(nhncloud-iap-onestore2)에서 구독형 상품을 지원합니다.
+    * 이를 통해 ONE store에서도 정기 결제 기반의 상품을 제공할 수 있습니다.
+
+#### 기능 개선
+
+* ONE store 결제 히스토리 로그 지원
+    * ONE store 통합 버전(nhncloud-iap-onestore2)부터 콘솔에서 결제 히스토리 로그를 확인할 수 있습니다.
+
 ## 1.9.5 (2025. 01. 23.)
 
 ### NHN Cloud IAP
