@@ -53,12 +53,12 @@ dependencies {
 ```groovy
 repositories {
     mavenCentral()
-    // ONE store 통합 버전(V21)
+    // ONE store統合バージョン(V21)
     maven { url 'https://repo.onestore.co.kr/repository/onestore-sdk-public' }
 }
 
 dependencies {
-    // ONE store 통합 버전(V21)
+    // ONE store統合バージョン(V21)
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
     implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.10.0'
@@ -73,7 +73,7 @@ dependencies {
 }
 ```
 
-> ONE store V21アプリ内決済はAndroid 6.0（APIレベル23）以上で動作します。
+> ONE store統合バージョン(V21)アプリ内決済はAndroid 6.0（APIレベル23）以上で動作します。
 
 ### Galaxy Store
 

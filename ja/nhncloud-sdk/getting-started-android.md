@@ -30,7 +30,7 @@ NHN Cloud SDKが提供するサービスの中から、希望する機能を選�
 | com.nhncloud.android:nhncloud-crash-reporter-ndk:1.10.0       | Native Crash Reporter |
 | com.nhncloud.android:nhncloud-iap-core:1.10.0     | In-app Purchase Core |
 | com.nhncloud.android:nhncloud-iap-google:1.10.0   | In-app Purchase <br>Google Play Store |
-| com.nhncloud.android:nhncloud-iap-onestore2:1.10.0 | In-app Purchase <br>ONE store(통합 버전) |
+| com.nhncloud.android:nhncloud-iap-onestore2:1.10.0 | In-app Purchase <br>ONE store(統合バージョン) |
 | com.nhncloud.android:nhncloud-iap-onestore:1.10.0 | In-app Purchase <br>ONE store(v17) |
 | com.nhncloud.android:nhncloud-iap-onestore-v16:1.10.0 | In-app Purchase <br>ONE store(v16) |
 | com.nhncloud.android:nhncloud-iap-onestore-v19:1.10.0 | In-app Purchase <br>ONE store(v19) |
