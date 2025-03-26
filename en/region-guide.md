@@ -80,8 +80,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | MariaDB Instance  | Regional | O | O | O | O |
 |  | Tibero Instance   | Regional | O | O | O | O |
 |  | Redis Instance | Regional | O | O | O | O |
-| Monitoring | System Monitoring | Region | O | O | O | O |
-|  | Service Monitoring | Global |  |  |  |  |
+| Monitoring | Service Monitoring | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
 | Hybrid & Private Cloud |  NHN Hybrid Cloud | Regional | O |  |  |  |
 |  | NHN Private Cloud | Regional | - | - | - | - |
