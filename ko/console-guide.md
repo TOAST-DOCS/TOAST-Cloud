@@ -69,7 +69,7 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 NHN Cloud 서비스를 안정적이고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
 
 #### IP ACL 설정
-설정된 IP로 NHN Cloud 서비스를 이용할 수 있습니다.(적용 대상: 콘솔, 프레임워크 API, Notification Hub API)
+설정된 IP로 NHN Cloud 서비스를 이용할 수 있습니다.(적용 대상: 콘솔, [프레임워크 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/), [Notification Hub API](https://docs.nhncloud.com/ko/Notification/Notification%20Hub/ko/api-guide-v1x0/common-info/))
 Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
