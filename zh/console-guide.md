@@ -71,10 +71,9 @@ Services that can be enabled for each organization include the following:
 
 You can set and manage policies for stable and efficient use of NHN Cloud services. Set up a common organization policy for security compliance such as login and personal information, so that the members within the organization can comply with the policy.
 
-![console_guide_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_15_202303_en_new.png)
 
 #### IP ACL Setting
-When IP ACL is set, the console can be accessed from the allowed IPs (or IP range) only.
+You can use NHN Cloud services with the set IPs (Applicable to: Console, Framework API, Notification Hub API)
 For Dooray! services, IP ACL can be set on the service's console screen.
 
 
