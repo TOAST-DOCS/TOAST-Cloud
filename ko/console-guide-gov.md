@@ -66,7 +66,7 @@ NHN Cloud 서비스를 안정하고 효율적으로 이용하기 위해 필요�
 
 
 #### IP ACL 설정
-설정된 IP로 NHN Cloud 서비스를 이용할 수 있습니다.(적용 대상: 콘솔, 프레임워크 API)
+설정된 IP로 NHN Cloud 서비스를 이용할 수 있습니다.(적용 대상: 콘솔, [프레임워크 API](https://docs.gov-nhncloud.com/ko/nhncloud/ko/public-api/framework-api-gov/))
 Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
 
 1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
