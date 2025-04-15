@@ -141,17 +141,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Support Plan | 리전 | O | O |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
 | Bill | eTax | 리전 | O |  |  |  |
-| Dooray! | Project | 글로벌 |  |  |  |  |
-|  | Messenger | 글로벌 |  |  |  |  |
-|  | Mail | 글로벌 |  |  |  |  |
-|  | Calendar | 글로벌 |  |  |  |  |
-|  | Drive | 글로벌 |  |  |  |  |
-|  | Contacts | 글로벌 |  |  |  |  |
-|  | Wiki | 글로벌 |  |  |  |  |
-| Dooray! \| ERP | Human resources | 리전 | O |  |  |  |
-|  | Finance | 리전 | O |  |  |  |
-| Dooray! \| Groupware | Communication Board | 리전 | O |  |  |  |
-|  | Workflow | 리전 | O |  |  |  |
+| Collaboration | Dooray! | 글로벌 |  |  |  |  |
 | Contact Center | Omni Contact | 리전 | O |  |  |  |
 |  | Mobile Contact | 리전 | O |  |  |  |
 |  | Contiple | 글로벌 |  |  |  |  |
