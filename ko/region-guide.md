@@ -79,8 +79,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | MariaDB Instance  | 리전 | O | O | O | O | 
 |  | Tibero Instance   | 리전 | O | O | O | O | 
 |  | Redis Instance | 리전 | O | O | O | O | 
-| Monitoring | System Monitoring | 리전 | O | O | O | O |
-|  | Service Monitoring | 글로벌 |  |  |  |  |
+| Monitoring | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Cloud Monitoring | 글로벌 |  |  |  |  |
 | Hybrid & Private Cloud | NHN Hybrid Cloud | 리전 | O |  |  |  |
 |  | NHN Private Cloud | 리전 | - | - | - | - |
