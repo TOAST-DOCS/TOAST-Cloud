@@ -48,7 +48,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Flow Log | Regional | O | O |  |  |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
-|  | Physical Load Balancer | Regional | O | O |  |  |
 |  | NAT Instance | Regional |  | O |  |  |
 |  | Transit Hub | Regional | O | O |  |  |
 |  | Internet Gateway | Regional | O | O | O | O |
