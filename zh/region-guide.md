@@ -79,11 +79,12 @@ All users are provided with the same features, policy, stability and usability, 
 |  | MariaDB Instance  | Regional | O | O | O | O |
 |  | Tibero Instance   | Regional | O | O | O | O |
 |  | Redis Instance | Regional | O | O | O | O |
-| Monitoring | System Monitoring | Region | O | O | O | O |
+| Monitoring | System Monitoring | Regional | O | O | O | O |
 |  | Service Monitoring | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
-| Hybrid & Private Cloud |  NHN Hybrid Cloud | Regional | O |  |  |  |
-| | NHN Private Cloud | Regional | - | - | - | - |
+| Hybrid & Private Cloud | NHN Cloud Private Station | Regional | - | - | - | - |
+|  | NHN Cloud Private Region | Regional | - | - | - | - |
+|  | NHN Hybrid Cloud | Regional | O |  |  |  |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
 |  | GameStarter | Global | | | | |
