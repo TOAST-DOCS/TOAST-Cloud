@@ -141,17 +141,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Support Plan | リージョン | O | O |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
 | Bill | eTax | リージョン | O |  |  |  |
-| Dooray! | Project | グローバル |  |  |  |  |
-|  | Messenger | グローバル |  |  |  |  |
-|  | Mail | グローバル |  |  |  |  |
-|  | Calendar | グローバル |  |  |  |  |
-|  | Drive | グローバル |  |  |  |  |
-|  | Contacts | グローバル |  |  |  |  |
-|  | ウィキ | グローバル |  |  |  |  |
-| Dooray! \| ERP | Human resources | リージョン | O |  |  |  |
-|  | Finance | リージョン | O |  |  |  |
-| Dooray! \| Groupware | Communication Board | リージョン | O |  |  |  |
-|  | Workflow | リージョン | O |  |  |  |
+| Collaboration | Dooray! | グローバル |  |  |  |  |
 | Contact Center | Omni Contact | リージョン | O |  |  |  |
 |  | Mobile Contact | リージョン | O |  |  |  |
 |  | Contiple | グローバル |  |  |  |  |
