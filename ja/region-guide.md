@@ -80,8 +80,9 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | MariaDB Instance  | リージョン | O | O | O | O |
 |  | Tibero Instance   | リージョン | O | O | O | O |
 |  | Redis Instance | リージョン | O | O | O | O |
-| Hybrid & Private Cloud | NHN Hybrid Cloud | リージョン | O |  |  |  |
-|  | NHN Private Cloud | リージョン | - | - | - | - |
+| Hybrid & Private Cloud | NHN Cloud Private Station | リージョン | - | - | - | - |
+|  | NHN Cloud Private Region | リージョン | - | - | - | - |
+|  | NHN Hybrid Cloud | リージョン | O |  |  |  |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
 |  | GameStarter | グローバル |  |  |  |  |
