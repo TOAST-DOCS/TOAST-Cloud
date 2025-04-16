@@ -142,17 +142,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Support Plan |  Regional | O | O |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
 | Bill | eTax | Regional | O |  |  |  |
-| Dooray! | Project | Global |  |  |  |  |
-|  | Messenger | Global |  |  |  |  |
-|  | Mail | Global |  |  |  |  |
-|  | Calendar | Global |  |  |  |  |
-|  | Drive | Global |  |  |  |  |
-|  | Contacts | Global |  |  |  |  |
-|  | Wiki | Global |  |  |  |  |
-| Dooray! \| ERP | Human resources | Regional | O |  |  |  |
-|  | Finance | Regional | O |  |  |  |
-| Dooray! \| Groupware | Communication Board | Regional | O |  |  |  |
-|  | Workflow | Regional | O |  |  |  |
+| Collaboration | Dooray! | Global |  |  |  |  |
 | Contact Center | Omni Contact | Regional | O |  |  |  |
 |  | Mobile Contact | Regional | O |  |  |  |
 |  | Contiple | Global |  |  |  |  |
