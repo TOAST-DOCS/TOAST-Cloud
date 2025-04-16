@@ -48,7 +48,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Flow Log | Regional | O | O |  |  |
 |  | Shared Load Balancer | Regional | O | O | O | O |
 |  | Dedicated Load Balancer | Regional | O | O | O | O |
-|  | Physical Load Balancer | Regional | O | O |  |  |
 |  | NAT Instance | Regional |  | O |  |  |
 |  | Transit Hub | Regional | O | O |  |  |
 |  | Internet Gateway | Regional | O | O | O | O |
@@ -82,8 +81,9 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Redis Instance | Regional | O | O | O | O |
 | Monitoring | Service Monitoring | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
-| Hybrid & Private Cloud |  NHN Hybrid Cloud | Regional | O |  |  |  |
-|  | NHN Private Cloud | Regional | - | - | - | - |
+| Hybrid & Private Cloud | NHN Cloud Private Station | Regional | - | - | - | - |
+|  | NHN Cloud Private Region | Regional | - | - | - | - |
+|  | NHN Hybrid Cloud | Regional | O |  |  |  |
 | Game | Gamebase | Global |  |  |  |  |
 |  | GameAnvil | Global | | | | |
 |  | GameStarter | Global | | | | |
@@ -143,17 +143,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Support Plan |  Regional | O | O |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
 | Bill | eTax | Regional | O |  |  |  |
-| Dooray! | Project | Global |  |  |  |  |
-|  | Messenger | Global |  |  |  |  |
-|  | Mail | Global |  |  |  |  |
-|  | Calendar | Global |  |  |  |  |
-|  | Drive | Global |  |  |  |  |
-|  | Contacts | Global |  |  |  |  |
-|  | Wiki | Global |  |  |  |  |
-| Dooray! \| ERP | Human resources | Regional | O |  |  |  |
-|  | Finance | Regional | O |  |  |  |
-| Dooray! \| Groupware | Communication Board | Regional | O |  |  |  |
-|  | Workflow | Regional | O |  |  |  |
+| Collaboration | Dooray! | Global |  |  |  |  |
 | Contact Center | Omni Contact | Regional | O |  |  |  |
 |  | Mobile Contact | Regional | O |  |  |  |
 |  | Contiple | Global |  |  |  |  |

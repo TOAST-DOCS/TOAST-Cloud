@@ -48,7 +48,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Flow Log | リージョン | O | O |  |  |
 |  | 一般Load Balancer | リージョン | O | O | O | O |
 |  | 専用Load Balancer | リージョン | O | O | O | O |
-|  | 物理Load Balancer | リージョン | O | O |  |  |
 |  | Transit Hub | リージョン | O | O |  |  |
 |  | Internet Gateway | リージョン | O | O | O | O |
 |  | Peering Gateway | リージョン | O | O | O | O |
@@ -81,8 +80,9 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | MariaDB Instance  | リージョン | O | O | O | O |
 |  | Tibero Instance   | リージョン | O | O | O | O |
 |  | Redis Instance | リージョン | O | O | O | O |
-| Hybrid & Private Cloud | NHN Hybrid Cloud | リージョン | O |  |  |  |
-|  | NHN Private Cloud | リージョン | - | - | - | - |
+| Hybrid & Private Cloud | NHN Cloud Private Station | リージョン | - | - | - | - |
+|  | NHN Cloud Private Region | リージョン | - | - | - | - |
+|  | NHN Hybrid Cloud | リージョン | O |  |  |  |
 | Game | Gamebase | グローバル |  |  |  |  |
 |  | GameAnvil | グローバル |  |  |  |  |
 |  | GameStarter | グローバル |  |  |  |  |
@@ -142,17 +142,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Support Plan | リージョン | O | O |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
 | Bill | eTax | リージョン | O |  |  |  |
-| Dooray! | Project | グローバル |  |  |  |  |
-|  | Messenger | グローバル |  |  |  |  |
-|  | Mail | グローバル |  |  |  |  |
-|  | Calendar | グローバル |  |  |  |  |
-|  | Drive | グローバル |  |  |  |  |
-|  | Contacts | グローバル |  |  |  |  |
-|  | ウィキ | グローバル |  |  |  |  |
-| Dooray! \| ERP | Human resources | リージョン | O |  |  |  |
-|  | Finance | リージョン | O |  |  |  |
-| Dooray! \| Groupware | Communication Board | リージョン | O |  |  |  |
-|  | Workflow | リージョン | O |  |  |  |
+| Collaboration | Dooray! | グローバル |  |  |  |  |
 | Contact Center | Omni Contact | リージョン | O |  |  |  |
 |  | Mobile Contact | リージョン | O |  |  |  |
 |  | Contiple | グローバル |  |  |  |  |

@@ -49,8 +49,6 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 조직 단위로 활성화할 수 있는 서비스는 다음과 같습니다.
 
 - Dooray!
-- ERP
-- Groupware
 - Contact Center
 - IDC
 - CloudTrail
