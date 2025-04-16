@@ -73,7 +73,7 @@ You can set and manage policies for stable and efficient use of NHN Cloud servic
 
 
 #### IP ACL Setting
-You can use NHN Cloud services with the set IPs (Applicable to: Console, [Framework API](https://docs.nhncloud.com/en/nhncloud/ko/public-api/framework-api/), [Notification Hub API](https://docs.nhncloud.com/en/Notification/Notification%20Hub/ko/api-guide-v1x0/common-info/))
+You can use NHN Cloud services with the set IPs (Applicable to: Console, [Framework API](https://docs.nhncloud.com/en/nhncloud/enko/public-api/framework-api/), [Notification Hub API](https://docs.nhncloud.com/en/Notification/Notification%20Hub/enko/api-guide-v1x0/common-info/))
 For Dooray! services, IP ACL can be set on the service's console screen.
 
 
