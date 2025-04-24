@@ -167,9 +167,9 @@ NhnCloudPush.initialize(PushType.ADM, configuration);
 
 ## Notification Hub 사용 시 설정
 
-NHN Cloud Push SDK는 Notification Hub를 지원합니다.
-Notification Hub를 사용하려면 NhnCloudPushConfiguration.Builder.setServiceType(PushServiceType.NOTIFICATION_HUB)을 설정해야 합니다.
-기본값은 PushServiceType.PUSH이며, 설정하지 않으면 기존 Push 방식이 적용됩니다.
+* NHN Cloud Push SDK는 Notification Hub를 지원합니다.
+* Notification Hub를 사용하려면 NhnCloudPushConfiguration.Builder.setServiceType(PushServiceType.NOTIFICATION_HUB)을 설정해야 합니다.
+* 기본값은 PushServiceType.PUSH이며, 설정하지 않으면 기존 Push 방식이 적용됩니다.
 
 ### Notification Hub + FCM 초기화 예시
 

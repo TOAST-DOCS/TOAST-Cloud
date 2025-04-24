@@ -8,7 +8,7 @@
 
 * Notification Hub 지원
     * NHN Cloud Push SDK에서 Notification Hub 사용을 지원합니다.
-    * NhnCloudPushConfiguration.Builder.setServiceType(String) 메서드에 PushServiceType.NOTIFICATION_HUB을 설정하여 사용할 수 있습니다.
+    * NhnCloudPushConfiguration.Builder.setServiceType(String) 메서드에 PushServiceType.NOTIFICATION_HUB를 설정하여 사용할 수 있습니다.
 
 ## 1.10.0 (2025. 03. 25.)
 
