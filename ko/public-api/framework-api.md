@@ -122,11 +122,11 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | User Access Key ID 삭제 |
 | GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-목록-조회)                               | 토큰 목록 조회                    |
 | DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료)                               | 토큰 다건 만료                    |
-| POST |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-멤버-생성) | 프로젝트 IAM 멤버 생성 |
-| DELETE |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-멤버-다건-삭제) | 프로젝트 IAM 멤버 다건 삭제 |
-| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 IAM 멤버 단건 조회 |
-| GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-멤버-목록-조회) | 프로젝트 IAM 멤버 목록 조회 |
-| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-멤버-역할-수정) | 프로젝트 IAM 멤버 역할 수정 |
+| POST |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-생성) | 프로젝트 IAM 계정 생성 |
+| DELETE |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-다건-삭제) | 프로젝트 IAM 계정 다건 삭제 |
+| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 IAM 계정 단건 조회 |
+| GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | 프로젝트 IAM 계정 목록 조회 |
+| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | 프로젝트 IAM 계정 역할 수정 |
 
 
 
@@ -3599,12 +3599,12 @@ User Access Key ID로 발급한 토큰을 다건 만료시키는 API입니다.<b
 |   header | [공통 응답](#응답)| Yes |
 
 
-<a id="프로젝트-IAM-멤버-생성"></a>
-#### 프로젝트 IAM 멤버 생성
+<a id="프로젝트-IAM-계정-생성"></a>
+#### 프로젝트 IAM 계정 생성
 
 > POST "/v1/iam/projects/{project-id}/members"
 
-IAM 계정을 프로젝트에 멤버를 추가하는 API입니다.
+IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
 
 ##### 필요 권한
 `Project.Member.Iam.Create`
@@ -3671,8 +3671,8 @@ IAM 계정을 프로젝트에 멤버를 추가하는 API입니다.
 |   header | [공통 응답](#응답) | Yes |
 
 
-<a id="프로젝트-IAM-멤버-다건-삭제"></a>
-#### 프로젝트 IAM 멤버 다건 삭제
+<a id="프로젝트-IAM-계정-다건-삭제"></a>
+#### 프로젝트 IAM 계정 다건 삭제
 
 > DELETE "/v1/iam/projects/{project-id}/members"
 
@@ -3696,7 +3696,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |  
 |------------ | ------------- | ------------- | ------------ |
-|   memberUuids | List&lt;String>| Yes | 삭제할 대상 계정의 uuid 리스트 |
+|   memberUuids | List&lt;String>| Yes | 삭제할 대상 계정의 UUID 리스트 |
 
 
 ##### 응답 본문
@@ -3719,8 +3719,8 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   header | [공통 응답](#응답)| Yes |
 
 
-<a id="프로젝트-IAM-멤버-단건-조회"></a>
-#### 프로젝트 IAM 멤버 단건 조회
+<a id="프로젝트-IAM-계정-단건-조회"></a>
+#### 프로젝트 IAM 계정 단건 조회
 
 > GET "/v1/iam/projects/{project-id}/members/{member-uuid}"
 
@@ -3802,7 +3802,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   relationDateTime | Date| No | 멤버 추가 시간  |
 |   joinYmdt | Date| No | 가입 일시  |
 |   recentLoginYmdt | Date| No | 최근 로그인 일시  |
-|   recentPasswordModifyYmdt | Date| No | 최근 비빌번호 변경 일시  |
+|   recentPasswordModifyYmdt | Date| No | 최근 비밀번호 변경 일시  |
 |   roles | List&lt;RoleBundleProtocol>| No | 연관 역할 목록(조건 속성 포함)  |
 
 
@@ -3810,8 +3810,8 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 
 
-<a id="프로젝트-IAM-멤버-목록-조회"></a>
-#### 프로젝트 IAM 멤버 목록 조회
+<a id="프로젝트-IAM-계정-목록-조회"></a>
+#### 프로젝트 IAM 계정 목록 조회
 
 > GET "/v1/iam/projects/{project-id}/members"
 
@@ -3883,11 +3883,11 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   relationDateTime | Date| No | 멤버 추가 시간  |
 |   joinYmdt | Date| No | 가입 일시  |
 |   recentLoginYmdt | Date| No | 최근 로그인 일시  |
-|   recentPasswordModifyYmdt | Date| No | 최근 비빌번호 변경 일시  |
+|   recentPasswordModifyYmdt | Date| No | 최근 비밀번호 변경 일시  |
 
 
-<a id="프로젝트-IAM-멤버-역할-수정"></a>
-#### 프로젝트 IAM 멤버 역할 수정
+<a id="프로젝트-IAM-계정-역할-수정"></a>
+#### 프로젝트 IAM 계정 역할 수정
 
 > PUT "/v1/iam/projects/{project-id}/members/{member-uuid}"
 
