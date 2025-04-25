@@ -143,6 +143,17 @@ end
 @end
 ```
 
+### Notification Hub使用時設定
+* NHN Cloud Push SDKはNotification Hubをサポートします。
+* Notification Hubを使用するにはNHNCloudPushConfigurationのserviceTypeプロパティにNHNCloudPushServiceTypeNotificationHub値を設定する必要があります。
+* デフォルト値はNHNCloudPushServiceTypePushであり、設定しない場合は既存Push方式が適用されます。
+### Notification Hub初期化例
+```objc
+NHNCloudPushConfiguration *configuration = [[NHNCloudPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY" 
+                                                                                 serviceType:NHNCloudPushServiceTypeNotificationHub];
+[NHNCloudPush initWithConfiguration:configuration];
+```
+
 ### 初期化、およびDelegate設定例
 
 ``` objc
@@ -236,7 +247,7 @@ options.soundEnabled = YES;         // 通知音使用設定(default : YES)
 
 * 韓国における情報通信網法の規定(第50条から第50条の8)に基づき、トークン登録時の通知/広報性/夜間の広報性Pushメッセージ受信に関して、同意するかも、同時に入力されます。メッセージの送信時に、ユーザーが受信同意をしているかを基準に自動的にフィルタリングします。
     * [KISAガイドへのショートカット（韓国語）](https://www.kisa.or.kr/2060301/form?postSeq=19)
-    * [法令へ（韓国語）](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
+    * [法令へ（韓国語）](http://www.law.go.kr/法令/情報通信網利用促進及び情報保護などに関する法律/%2820130218,11322,20120217%29/第50条)
 * [NHNCloudPushAgreement](./push-ios/#nhncloudpushagreement) オブジェクトにユーザー通知メッセージの同意情報を設定します。
 ### トークン登録、および受信同意設定API
 
