@@ -1,5 +1,12 @@
 ## NHN Cloud > User Guide for SDK > Release Notes > iOS
 
+## 1.9.0 (2025. 04. 29.)
+### NHN Cloud Push
+#### 機能追加 
+* Notification Hubサポート 
+    * NHNCloudPush SDKでNotification Hubを利用できます。
+    * NHNCloudPushConfigurationのserviceTypeプロパティにNHNCloudPushServiceTypeNotificationHub値を設定して使用可能です。
+
 ## 1.8.6 (2024. 11. 15.)
 ### NHN Cloud Push
 #### 改善事項

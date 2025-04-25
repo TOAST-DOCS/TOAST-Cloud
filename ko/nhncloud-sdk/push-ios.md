@@ -143,6 +143,20 @@ end
 @end
 ```
 
+### Notification Hub 사용 시 설정
+
+* NHN Cloud Push SDK는 Notification Hub를 지원합니다.
+* Notification Hub를 사용하려면 NHNCloudPushConfiguration의 serviceType 프로퍼티에 NHNCloudPushServiceTypeNotificationHub 값을 설정해야 합니다.
+* 기본값은 NHNCloudPushServiceTypePush이며, 설정하지 않으면 기존 Push 방식이 적용됩니다.
+
+### Notification Hub 초기화 예시
+
+```objc
+NHNCloudPushConfiguration *configuration = [[NHNCloudPushConfiguration alloc] initWithAppKey:@"INPUT_YOUR_APPKEY" 
+                                                                                 serviceType:NHNCloudPushServiceTypeNotificationHub];
+[NHNCloudPush initWithConfiguration:configuration];
+```
+
 ### 초기화 및 Delegate 설정 예
 
 ``` objc
