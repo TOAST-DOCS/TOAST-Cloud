@@ -88,12 +88,6 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 | Dev Tools | Pipeline | 리전 | O |  | 
 |  | Deploy | 글로벌 |  |  | 
 | Management | Certificate Manager | 글로벌 |  |  |
-| Dooray! | Project | 글로벌 |  |  |
-|  | Messenger | 글로벌 |  |  | 
-|  | Mail | 글로벌 |  |  | 
-|  | Calendar | 글로벌 |  |  |
-|  | Drive | 글로벌 |  |  |
-|  | Contacts | 글로벌 |  |  |
-|  | Wiki | 글로벌 |  |  |
+| Collaboration | Dooray! | 글로벌 |  |  |
 | Governance & Audit | CloudTrail | 글로벌 |  |  | 
 |  | Resource Watcher | 글로벌 |  |  |

@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.10.0'
+    implementation 'com.nhncloud.android:nhncloud-push-fcm:1.11.0'
     ...
 }
 ```
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-push-adm:1.10.0'
+    implementation 'com.nhncloud.android:nhncloud-push-adm:1.11.0'
     ...
 }
 ```
@@ -165,6 +165,22 @@ NhnCloudPush.initialize(PushType.ADM, configuration);
 > NhnCloudPush.initialize(NhnCloudPushConfiguration)는 Deprecated 되었습니다.
 > NhnCloudPush.initialize(NhnCloudPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
 
+## Notification Hub 사용 시 설정
+
+* NHN Cloud Push SDK는 Notification Hub를 지원합니다.
+* Notification Hub를 사용하려면 NhnCloudPushConfiguration.Builder.setServiceType(PushServiceType.NOTIFICATION_HUB)을 설정해야 합니다.
+* 기본값은 PushServiceType.PUSH이며, 설정하지 않으면 기존 Push 방식이 적용됩니다.
+
+### Notification Hub + FCM 초기화 예시
+
+```java
+NhnCloudPushConfiguration configuration =
+    NhnCloudPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+            .setServiceType(PushServiceType.NOTIFICATION_HUB)
+            .build();
+
+NhnCloudPush.initialize(PushType.FCM, configuration);
+```
 
 ## 서비스 로그인
 * NHN Cloud SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.

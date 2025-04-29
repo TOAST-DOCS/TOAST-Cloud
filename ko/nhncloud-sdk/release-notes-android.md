@@ -1,5 +1,15 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 1.11.0 (2025. 04. 29.)
+
+### NHN Cloud Push
+
+#### 기능 추가
+
+* Notification Hub 지원
+    * NHN Cloud Push SDK에서 Notification Hub 사용을 지원합니다.
+    * NhnCloudPushConfiguration.Builder.setServiceType(String) 메서드에 PushServiceType.NOTIFICATION_HUB를 설정하여 사용할 수 있습니다.
+
 ## 1.10.0 (2025. 03. 25.)
 
 ### NHN Cloud IAP

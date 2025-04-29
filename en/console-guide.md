@@ -49,8 +49,6 @@ Once the organization is created, you can select services.
 Services that can be enabled for each organization include the following:
 
 - Dooray!
-- ERP
-- Groupware
 - Contact Center
 - IDC
 - CloudTrail

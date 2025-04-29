@@ -121,6 +121,12 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-削除) | User Access Key ID削除 |
 | GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#トークン-リスト-照会)                               | トークンリスト照会                 |
 | DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#トークン-複数-期限切れ)                               | トークン複数期限切れ                  |
+| POST |[/v1/iam/projects/{project-id}/members](#プロジェクト-IAM-アカウント-作成) | プロジェクトIAMアカウント作成 |
+| DELETE |[/v1/iam/projects/{project-id}/members](#プロジェクト-IAM-アカウント-一括-削除) | プロジェクトIAMアカウント一括削除 |
+| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#プロジェクト-メンバー-単件-照会) | プロジェクトIAMアカウント単件照会 |
+| GET |[/v1/iam/projects/{project-id}/members](#プロジェクト-IAM-アカウント-リスト-照会) | プロジェクトIAMアカウントリスト照会 |
+| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#プロジェクト-IAM-アカウント-ロール-修正) | プロジェクトIAMアカウントロール修正 |
+
 
 
 <a id="プロジェクト-メンバー-作成"></a>
@@ -3482,6 +3488,328 @@ User Access Key IDで発行したトークンを複数期限切れにするAPI�
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes |
+
+
+<a id="プロジェクト-IAM-アカウント-作成"></a>
+#### プロジェクトIAMアカウント作成
+
+> POST "/v1/iam/projects/{project-id}/members"
+IAMアカウントをプロジェクトメンバーとして追加するAPIです。
+
+##### 必要権限
+`Project.Member.Iam.Create`
+
+##### リクエストパラメータ
+
+
+
+| 区分 | 名前 | タイプ | 必須 | 説明 | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | メンバーを追加するプロジェクトID | 
+| Request Body | request | AddIamProjectMemberRequest| Yes | リクエスト |
+
+
+
+
+###### AddIamProjectMemberRequest
+> 注意<br>
+> 1つのリクエストで1名のプロジェクトメンバーを作成できます。
+
+| 名前 | タイプ | 必須 | 説明 |  
+|------------ | ------------- | ------------- | ------------ |
+|   assignRoles | List&lt;UserAssignRoleProtocol>| Yes | ユーザーに割り当てるロールリスト |
+|   memberUuid | String| Yes | 追加するメンバーのUUID  |
+
+
+###### UserAssignRoleProtocol
+
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+|   roleId | String| Yes | ロールID  |
+|   conditions | List&lt;AssignAttributeConditionProtocol>| No | ロール条件属性 |
+
+
+###### AssignAttributeConditionProtocol
+
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+|   attributeId | String| Yes | 条件属性ID  |
+|   attributeOperatorTypeCode | String| Yes | 条件属性演算子<br>条件属性のデータ型によって使用できる演算子が異なります。<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List&lt;String>| Yes | 条件属性値 |
+
+
+##### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### レスポンス
+
+
+| 名前 | タイプ         | 必須 | 説明 |   
+|------------ |--------------| ------- | ------------ |
+|   header | [共通レスポンス](#レスポンス) | Yes |
+
+
+<a id="プロジェクト-IAM-アカウント-一括-削除"></a>
+#### プロジェクトIAMアカウント一括削除
+
+> DELETE "/v1/iam/projects/{project-id}/members"
+IAMアカウントを該当プロジェクトから削除するAPIです。
+
+##### 必要権限
+`Project.Member.Iam.Delete`
+
+##### リクエストパラメータ
+
+
+
+| 区分 | 名前 | タイプ | 必須 | 説明 | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | プロジェクトID | 
+|  Request Body |request | DeleteMembersRequest | Yes | リクエスト | 
+
+
+###### DeleteMembersRequest
+
+
+| 名前 | タイプ | 必須 | 説明 |  
+|------------ | ------------- | ------------- | ------------ |
+|   memberUuids | List&lt;String>| Yes | 削除する対象アカウントのUUIDリスト |
+
+
+##### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### レスポンス
+
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [共通レスポンス](#レスポンス)| Yes |
+
+
+<a id="プロジェクト-IAM-アカウント-単件-照会"></a>
+#### プロジェクトIAMアカウント単件照会
+
+> GET "/v1/iam/projects/{project-id}/members/{member-uuid}"
+プロジェクトに所属する特定IAMアカウントを照会するAPIです。
+
+##### 必要権限
+`Project.Member.Iam.Get`
+
+##### リクエストパラメータ
+
+
+
+| 区分 | 名前 | タイプ | 必須 | 説明 | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | メンバーを照会するプロジェクトID |
+|  Path |member-uuid | String| Yes | 照会するメンバーUUID |
+
+
+
+
+##### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "projectMember": {
+    "uuid": "uuid",
+    "id": "id",
+    "emailAddress": "emailAddress",
+    "maskingEmail": "maskingEmail",
+    "name": "memberName",
+    "relationDateTime": "2000-01-23T04:56:07.000+00:00",
+    "roles": [ {
+      "regDateTime": "2000-01-23T04:56:07.000+00:00",
+      "roleApplyPolicyCode": "ALLOW",
+      "roleId": "roleId",
+      "roleName": "roleName",
+      "categoryKey": "categoryKey",
+      "description": "description",
+      "categoryTypeCode": "ORG_ROLE_GROUP",
+      "conditions": [ {
+        "attributeId": "attributeId",
+        "attributeOperatorTypeCode": "ALLOW",
+        "attributeValues": [ "attributeValues", "attributeValues" ],
+        "attributeDescription": "attributeDescription",
+        "attributeName": "attributeName",
+        "attributeDataTypeCode": "BOOLEAN"
+      } ]
+    } ]
+  }
+}
+```
+
+
+###### レスポンス
+
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [共通レスポンス](#レスポンス)| Yes |
+|   projectMember | ProjectIamMemberRoleBundleProtocol| Yes  | 追加されたメンバー情報、エラー時は含まれません。 |
+
+
+###### ProjectMemberRoleBundleProtocol
+
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+|   uuid | String| Yes | メンバーUUID  |
+|   id | String| Yes | ID  |
+|   name | String| No | 名前 |
+|   emailAddress | String| No | メンバーメールアドレス |
+|   maskingEmail | String| No | メンバーのマスキングされたメールアドレス |
+|   mobilePhone | String| No | 電話番号 |
+|   relationDateTime | Date| No | メンバー追加時間 |
+|   joinYmdt | Date| No | 加入日時 |
+|   recentLoginYmdt | Date| No | 最近のログイン日時 |
+|   recentPasswordModifyYmdt | Date| No | 最近のパスワード変更日時 |
+|   roles | List&lt;RoleBundleProtocol>| No | 関連ロールリスト(条件属性含む)  |
+
+
+[RoleBundleProtocol](#rolebundleprotocol)
+
+
+
+<a id="プロジェクト-IAM-アカウント-リスト-照会"></a>
+#### プロジェクトIAMアカウントリスト照会
+
+> GET "/v1/iam/projects/{project-id}/members"
+プロジェクトに所属するIAMアカウントリストを照会するためのAPIです。
+
+##### 必要権限
+`Project.Member.Iam.List`
+
+##### リクエストパラメータ
+
+
+| 区分 | 名前 | タイプ | 必須 | 説明 | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | 照会するプロジェクトID | 
+|  Query |limit | Integer| No | 1ページあたりの表示件数、デフォルト値20 |
+|  Query |page | Integer| No | 対象ページ、デフォルト値1 |
+
+
+
+
+
+##### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+  "projectMembers": [ {
+    "uuid": "uuid",
+    "id": "id",
+    "emailAddress": "emailAddress",
+    "maskingEmail": "maskingEmail",
+    "memberName": "memberName",
+    "relationDateTime": "2000-01-23T04:56:07.000+00:00"
+  } ]
+}
+```
+
+###### レスポンス
+
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [共通レスポンス](#レスポンス)| Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   projectMembers | List&lt;IamProjectMemberProtocol>| Yes | プロジェクトメンバーリスト |
+
+
+
+###### IamProjectMemberProtocol
+
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+|   uuid | String| Yes | メンバーUUID  |
+|   id | String| Yes | ID  |
+|   name | String| No | 名前 |
+|   emailAddress | String| No | メンバーメールアドレス |
+|   maskingEmail | String| No | メンバーのマスキングされたメール |
+|   mobilePhone | String| No | 電話番号 |
+|   relationDateTime | Date| No | メンバー追加時間 |
+|   joinYmdt | Date| No | 加入日時 |
+|   recentLoginYmdt | Date| No | 最近のログイン日時 |
+|   recentPasswordModifyYmdt | Date| No | 最近のパスワード変更日時 |
+
+
+<a id="プロジェクト-IAM-アカウント-ロール-修正"></a>
+#### プロジェクトIAMアカウントロール修正
+
+> PUT "/v1/iam/projects/{project-id}/members/{member-uuid}"
+プロジェクトで指定したIAMアカウントのロールを変更するAPIです。
+
+##### 必要権限
+`Project.Member.Iam.Update`
+
+##### リクエストパラメータ
+
+| 区分 | 名前 | タイプ | 必須 | 説明 | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | プロジェクトID | 
+|  Path |member-uuid | String| Yes | ロール変更対象メンバーUUID | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | リクエスト |
+
+
+
+
+##### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### レスポンス
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [共通レスポンス](#レスポンス)| Yes   |
+
 
 
 ### エラーコード
