@@ -1,218 +1,246 @@
-## TOAST > TOAST使用指南
-介绍NHN打造的云服务TOAST使用方法的用户指南。
+## NHN Cloud > User Guide
+This document is the user guide of NHN Cloud, which is the cloud service of NHN Cloud.
 
-## 注册TOAST会员
-可以选择使用服务的国家。 
-TOAST会员分为个人会员和企业会员。
-个人会员通过简单的电子邮件验证和SMS验证注册。
-企业会员可基于企业信息注册。
-TOAST会员管理信息及注册步骤如下。
+## Join NHN Cloud
+You may choose a country to use services.  
+NHN Cloud membership is provided for individuals and businesses.
+Individual members can join with simple email and SMS authentication. 
+Business members can join upon business information. 
+NHN Cloud member information for management, as well as how to join are as follows: 
 
-### 会员管理信息
-TOAST会员根据服务提供主体，分为韩国会员(NHN)与日本会员(NHN Japan)。
-根据注册会员时选择的国家分类，必须同意符合各国法令的服务条款及个人信息处理方针，方可注册为会员。
+### Members management Information
+NHN Cloud members are classified into NHN Cloud Korea (NHN Cloud) and NHN Cloud Japan (NHN Cloud Japan) depending on who provides the service. 
+They are classified by the country of choice, and allowed to join when they agree with Terms of Services, as well as Privacy Policy set by regulations of each country.  
 
-#### 韩国会员
-| 管理信息 | 说明 | 必须输入 |
+#### Members of NHN Cloud Korea
+| Managed Information | Description | Required |
 | --- | --- | --- |
-| ID | - 可接收电子邮件的邮箱（必须进行电子邮件验证） | O |
-| 密码| - 含英文、数字、特殊字符，最少由8位以上构成。<br/> - 不可使用与之前相同的密码。<br/> - 区分大小写。  | O |
-| 会员注册类型 | 1.个人 <br/> - 通过简单的电子邮件验证、手机SMS验证注册会员。<br/> - 个人会员可使用信用卡作为付款方式。<br/> - 外国人可注册个人会员。 <br/> 2. 企业 <br/> - 注册会员时，需要补充进行营业执照信息验证。<br/> - 企业会员可使用信用卡及银行转账作为付款方式，使用银行转账时，可根据注册时登记的企业信息开具税务发票。 | O |
-| 手机号 | - 可确认SMS的手机号（必须进行手机SMS验证）。 | O |
-| 姓名 | - TOAST服务中使用的用户姓名。  | O |
-| 地址 | - 由邮编、基本地址、详细地址构成。  | X |
-| 座机 | - 为快速提供服务而进行管理。  | X |
-| 企业信息 | -  企业会员的必须管理项目。<br/> - 管理公司名、营业执照号、代表人姓名、行业/业态、地址、座机信息。<br/> - 应与营业执照中记载的信息一致。  | O |
+| ID | - Valid email address (requires email verification). | O | 
+| Password | -  To be comprised of more than 8 characters, including English, numbers, and special characters.  <br/> - The password cannot be same as your previous one. <br/> - Make a clear distinction between uppercase and lowercase letters. <br/> - You cannot use 4 or more consecutive letters or numbers (for example, 1111, 1234, abcd, etc.). <br/> - Please change your password every 90 days. After 90 days, you will be prompted to change your password. | O | 
+| Type of Membership | 1. Individual Members <br/> - Join with simple email and SMS authentication.  <br/> - Individual members can use credit cards for payment. <br/> 2. Business Members <br/> - Further authentication is required for business registration information. You can register a payment method after verification has been completed. <br/> - Business members can use credit cards and bank transfer for payment; for bank transfer, tax invoice can be issued upon business information registered while joining. | O |
+| Mobile Phone Number | - Valid mobile phone number available for SMS (requires SMS verification). | O |
+| Name | - User's name for NHN Cloud Service.  | O |
+| Address | - Comprised of zip code, basic address, and detail address.  | X |
+| Landline Phone Number | - Managed for the support of faster services.  | X |
+| Business Information | - Required for business members. <br/> - Information, such as company name, business registration number, name of representative, business type/item, and landline phone number are managed. <br/> - Such information must coincide with those of business registration certificate.  | O |
 
-#### 日本会员
-| 管理信息 | 说明 | 必须输入 |
+#### Members of NHN Cloud Japan 
+| Managed Information | Description | Required |
 | --- | --- | --- |
-| ID | - 可接收电子邮件的邮箱（必须进行电子邮件验证） | O |
-| 密码| - 组合英文、数字、特殊字符中2种以上，由8位以上构成。<br/> - 不可使用与之前相同的密码。<br/> - 区分大小写。  | O |
-| 手机号 | - 可确认SMS的手机号（必须进行手机SMS验证）。 | O |
-| 姓名 | - TOAST服务中使用的用户姓名。  | O |
-| 座机 | - 输入座机号，可快速获得服务支持。 | X |
+| ID | - Valid email address (requires email verification). | O |
+| Password | - Comprised of at least eight characters, in  combination of two or more of English, numbers, and special characters. <br/> - The password cannot be same as your previous one. <br/> - Make a clear distinction between uppercase and lowercase letters.  | O |
+| Mobile Phone Number | - Valid mobile phone number available for SMS (requires SMS verification). | O |
+| Name | - User's name for NHN Cloud Service.  | O |
+| Landline Phone Number | - Managed for the support of faster services.  | X |
 
-### 会员注册步骤
-访问https://toast.com后，在界面右上方点击**注册会员**。
-会员注册步骤如下。
+### How to Join as Member
+Access https://nhncloud.com and click Join on the top right.
+Follow the procedure to join membership. 
 
-#### 韩国会员
+![userguide_01_202104](https://static.toastoven.net/toast/user_guide/userguide_01_202104_en.png)
 
-- 注册个人会员
 
-![userguide_01_201812](https://static.toastoven.net/toast/user_guide/userguide_01_20200710.png)
+#### Select Country
 
-- 注册企业会员
+Each country provides different member information and payment methods.  
 
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_02_20200710.png)
+- Type of Membership 
+    - NHN Cloud Korea: Individual/Business Members
+    - NHN Cloud Japan: Individual Members
+- Payment Method 
+    - NHN Cloud Korea 
+        - Individual: PAYCO on credit cards, Credit cards 
+        - Business: PAYCO on credit cards, Credit cards, Bank transfer
+    - NHN Cloud Japan
+        - Credit cards
 
-#### 日本会员
 
-![userguide_02_201812](https://static.toastoven.net/toast/user_guide/userguide_03_20200710.png)
+#### Select Type of Membership (Individual/Business) 
 
-#### 选择国家 
 
-根据国家信息，会员信息及可用付款方式可能有所不同。
+Following are required for each type of membership:
 
-- 会员类型
-    - 韩国会员：个人/企业
-    - 日本会员：个人
-- 付款方式
-    - 韩国会员
-        - 个人：PAYCO信用卡、信用卡
-        - 企业：  PAYCO信用卡、信用卡、转账
-    - 日本会员
-        - 信用卡
+- Individual Members
+    - Valid email address
+    - Valid mobile phone that properly receives SMS
+- Business Members (NHN Cloud Korea)
+    - Valid email address  
+    - Valid mobile phone that properly receives SMS
+    - Copy of Business Registration Certificate
 
-#### 选择会员类型（个人/企业）
+#### Consent to Terms of Use  
 
-根据会员类型，注册时所需事项如下。
+- NHN Cloud Terms of Use (Required): It is required to consent to the Terms of Use, to use NHN Cloud service. 
+- Consent to Collecting/Using Personal Information (Required): It is required to consent to collecting/using personal information to use NHN Cloud service. 
+- Consent to Receiving Promotional Information (Optional): It is optional to consent to receiving events or promotions of NHN Cloud. It can be modified on My Profile after joining NHN Cloud. 
 
-- 个人会员
-    - 可接收电子邮件的邮箱
-    - 可确认SMS的手机
--  企业会员（韩国会员）
-    - 可接收电子邮件的邮箱
-    - 可确认SMS的手机
-    - 营业执照副本
 
-#### 同意使用条款
+#### Enter Member Information
+- Personal Members
+    - Verify email and mobile phone via SMS
+- Business members (NHN Cloud Korea)
+    - Attach a copy of Business Registration Certificate
 
-- TOAST使用条款（必需）：必须同意使用TOAST服务的条款。  
-- 同意收集/使用个人信息（必须）：必须同意使用TOAST服务所需的个人信息收集/使用方案。
-- 同意接收宣传性信息（可选）：同意接收TOAST举行的活动、促销、服务宣传等信息，为可选同意事项。注册会员后可在会员信息中修改同意接收宣传性信息选项。
+#### Joining Completed 
+After you're done with joining, you're automatically signed in. Now, NHN Cloud service is available on its website and console. 
 
-#### 输入会员信息
-- 个人会员
-    - 电子邮件验证、手机SMS验证
-- 企业会员（韩国会员）
-    - 附上营业执照副本
+### Login Security Settings
+You can set up 2-level login in Login Security Settings.
+Email verification, mobile verification, and Google OTP are available. 
 
-#### 会员注册完成
+#### Select Login Security Settings
+![userguide_02_20230330](https://static.toastoven.net/toast/user_guide/userguide_10_202303_en.png)
+After logging in, select Login Security Settings from the drop-down menu that appears when you click your logged in account in the top right on the screen.
+You can check your current login security settings or click **Change** to change the settings.
 
-会员注册完成后自动登录。在可使用TOAST服务的状态下，可使用TOAST官网及控制台。
+2-Level Login Setup
+    - Turn off 2-level login setup: The initial state where 2-level login security settings is not in use
+    - Log in after verifying your email or phone number: Verification with a verification code sent to the email or phone number in the member information when logging in
+    - Log in after Google OTP verification: Verification with Google OTP app when logging in
 
-## 登记付款方式
-为使用TOAST服务，需要登记付款方式。
-但已创建的组织、项目的成员，无需登记付款方式即可使用TOAST服务。
-付款方式可在[我的页面 > 付款方式]中登记。
+#### Log in after Google OTP verification
+Select **Log in after Google OTP verification** in 2-Level Login Setup and click **Save**.
+Go through the following steps to set up OTP verification. 
 
-### 付款方式管理政策
-TOAST提供的付款方式如下。
+1. Install the OTP verification app. Scan the QR code on the console screen and go to the link to download the OTP authentication app.
+![userguide_03_20230330](https://static.toastoven.net/toast/user_guide/userguide_11_202303_en.png)
 
-#### 韩国会员
-- PAYCO信用卡：可用PAYCO账号使用PAYCO提供的简便付款方式。<br/>
-- 信用卡：按照信用卡公司提供的验证政策进行验证（手机本人验证），将信用卡登记为付款方式。<br/>
-- 银行转账：仅向企业会员提供的付款方式，输入银行账户并按照银行政策验证（电子证书验证）后登记为付款方式。<br/>
+2. In the OTP app, scan the QR code on the console screen or enter the setup key to add your NHN Cloud account.
+![userguide_05_20230330](https://static.toastoven.net/toast/user_guide/userguide_12_202303_en.png)
 
-#### 日本会员
-- 信用卡：按照信用卡公司提供的验证政策进行验证（信用卡有效性验证），将信用卡登记为付款方式。 
+3. Enter the OTP verification code of your NHN Cloud account displayed on the OTP screen.
+![userguide_06_20230330](https://static.toastoven.net/toast/user_guide/userguide_13_202303_en.png)
 
-### 各付款方式的管理政策
-各付款方式的验证及管理政策如下。
+4. Enter a device name for OTP registration. Up to 10 characters (Korean, English, Japanese, and Chinese), spaces, and numbers are allowed.
+![userguide_06_20230330](https://static.toastoven.net/toast/user_guide/userguide_14_202303_en.png)
 
-| 国家 | 会员类型 | 付款方式 | 验证方式 | 输入信息 | 备注 |
+When OTP verification setup is complete, you'll see the registered devices in the **OTP Verification Device** list.
+![userguide_07_20230330](https://static.toastoven.net/toast/user_guide/userguide_15_202303_en.png)
+
+- Registration Criteria
+    - Up to 5 devices can be registered
+- Deletion Criteria
+    - If you have more than one OTP verification device: You can delete OTP verification devices
+    - If you have one OTP verification device: You must add the OTP verification device or change the 2-level login settings to delete the device
+
+## Register Payment Methods
+It is required to register a payment method to use NHN Cloud Service. 
+However, for members of existing organizations/projects, no additional registration is required to use NHN Cloud Service.
+You can register a payment method by selecting Payment Method from the drop-down menu in the top right after logging in and clicking your logged in account.
+
+### Management Policy of Payment Methods
+NHN Cloud provides the following payment methods:
+
+#### NHN Cloud Korea
+- PAYCO Credit Cards: A simplified method of payment provided by PAYCO, available on PAYCO account.  <br/>
+- Credit Cards: Authentication (authentication of the holder via mobile phone) is required in accordance with the issuing entity’s authentication policy, in order to register a credit card as payment method. <br/>
+- Bank Transfers: The method is provided only to business members, who are required to enter account information and authenticate (Public Key Certificate) it in accordance with bank’s policy before registering it as payment method.<br/>
+
+#### NHN Cloud Japan 
+- Credit Cards: Authentication (for card validity) is required in accordance with the issuing entity's authentication policy, in order to register a credit card as payment method.  
+
+### Management Policy per Payment Method
+The authentication and management policy of each payment method goes as follows:
+
+| Country | Membership Type | Payment Method | Authentication Type | Entry Information | Remarks |
 |--------|--------|--------|---|------|---|
-| 韩国 | 个人 | PAYCO信用卡 | 手机本人验证 | 卡号、有效期、密码前2位 | 为验证信用卡有效性，支付1,000韩元后取消处理 |
-|  |  | 信用卡 | 手机本人验证 |卡号、有效期、密码前2位 | |
-|  | 企业 | PAYCO信用卡 | 身份证号或营业执照号 | 卡号、有效期 | 为验证信用卡有效性，支付1,000韩元后取消处理 |
-|  |  | 信用卡（记名） | 手机本人验证 | 卡号、有效期、身份证号前7位 | |
-|  |  | 信用卡（不记名） | 营业执照号 | 卡号、有效期、密码前2位 | |
-|  |  | 银行转账 | 电子证书验证 | 银行、账号 | 个人账户应与个人电子证书 <br/> 法人账户应与会员/法人账号/电子证书的企业信息一致 |
-| 日本 | 个人 | 信用卡 | 信用卡所属验证 | 卡号、有效期、姓名、安全码 | 为验证信用卡有效性，支付2日元后取消处理 |
+| Korea | Individual | PAYCO Credit Cards | Mobile phone owner authentication |Card number, valid period, and the first two digits of password | To validate credit card, KRW 1,000 shall be paid and cancelled. |
+| | | Credit Cards | Mobile phone owner authentication |Credit card number, valid period, and birthday | Personal credit card and corporate credit card requiring signature are supported. |
+| | Business Owner | PAYCO Credit Cards | Resident registration number of business registration number | Card number, valid period | To validate credit card, KRW 1,000 shall be paid and cancelled. |
+| | | Credit Cards (signature required) | Mobile phone owner authentication | Card number, valid period, and birthday |  |
+| | | Credit Cards (no signature required) | Business registration number | Card number, valid period, and the two digits of password | TBD |
+| | | Bank Transfers | Authenticate with public key certificate | Bank and account number | Personal account must contain same information on the public key certificate of the person <br/> while corporate account must contain same business information on the member profile/corporate account/public key certificate.   |
+| Japan | Individual | Credit Cards | Credit card holder authentication |Card number, valid period, name, and security code | To validate credit card, 2 Yen shall be paid and cancelled. |
+
+### NHN Cloud Korea 
+
+#### PAYCO Credit Cards
+##### Select Payment Methods
+- Go to **Payment Methods** and click **Change Payment Methods**.
+- On the **Register Auto Payment Methods** page, select **PAYCO Credit Cards**.
+
+##### Join PAYCO
+- You may use your own mobile phone number or email as PAYCO ID.  
+- Enter ID and password, and you're a member of PAYCO. A129
+
+##### Authenticate Holder and Register Payment Methods
+- To register a payment method for the first time, the owner needs to be authenticated via mobile phone.
+- After authenticated, enter information for payment method and consent, and registration is completed. 
+- Password may be required depending on the type of payment method.  
+
+##### Pay with PAYCO
+- Select a payment method and enter password for payment, and then registration is completed. 
+
+#### Credit Cards
+##### Select Payment Methods
+- Go to **Payment Methods** and click **Change Payment Methods**.
+- On the **Register Auto Payment Method** page, select **Credit Cards**.
+
+##### Select Credit Card Types
+- Personal/Corporate Credit Cards Requiring Signature
+    - User Authentication via Mobile Phone: Enter name, gender, birthday, and mobile phone number to authenticate the user. 
+    - Enter Credit Card Information: Enter credit card number, valid period, and birthday, and register it as payment method.
+- Corporate Credit Cards Requiring No Signature
+    - Check Business Registration Number: Enter business registration number.
+    - Enter Credit Card Information: Enter credit card number, valid period, and the first two digits of password, and register it as payment method.
+
+##### Complete Registration of Payment Methods
+- If your payment method is successfully registered, you can see it on the Payment Method screen.
+
+#### Bank Transfers
+##### Select Payment Methods
+- Provided only for business members.
+- Go to **Payment Methods** and click **Change Payment Methods**.
+- On the **Register Auto Payment Methods** page, click **Bank Transfer**.
+
+##### Enter Account Information
+- Enter your account information.
+
+##### Authenticate Public Key Certificates
+- For s personal account, select a personal Public Key Certificate for authentication.
+- For a corporate account, select a Public Key Certificate registered with the same business information on its account for authentication.
+
+##### Complete Registration of Payment Methods 
+- If your payment method is successfully registered, you can see it on the Payment Method screen.
+
+### NHN Cloud Japan 
+#### Credit Cards 
+##### Select Payment Methods 
+- Go to **Payment Methods** and click **Change Payment Methods**.
+- On the **Register Auto Payment Methods** page, enter **Credit Card Information**(card number, valid period, card holder's name, and security code).
+
+##### Complete Registration of Payment Methods
+- If your payment method is successfully registered, you can see it on the Payment Method screen.
 
 
-### 韩国会员
-#### PAYCO信用卡
-##### 选择付款方式
-- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
-- 在**登记自动付款方式**界面中选择**PAYCO信用卡**。
+### Further Functions of Payment Methods
+#### Manage Receipt of Email Invoices
+Register your email address to receive invoices. 
+#### Set Unit of Payment
+Select either "Pay by Pricing Plan", or "Pay At Once". 
 
-##### 注册PAYCO
-- PAYCO ID可使用本人的手机号或电子邮箱。
-- 输入要使用的ID和密码，完成注册。
-
-##### 本人验证并登记付款方式
-- 最初登记付款方式时，进行手机本人验证。
-- 本人验证后，输入付款方式信息并经过同意步骤，完成登记。
-- 根据付款方式类型，可能需要输入付款密码。
-
-##### 使用PAYCO付款
-- 选择付款方式后，输入付款密码，完成付款方式登记。
-
-#### 信用卡
-##### 选择付款方式
-- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
-- 在**登记自动付款方式**界面中选择**信用卡**。
-
-##### 选择信用卡类型
-- 个人/记名法人卡
-    - 手机本人验证：输入姓名、性别、出生年月日、手机号，进行本人验证。
-    - 输入信用卡信息：输入卡号、信用卡有效期、出生年月日后，登记付款方式。
-- 不记名法人卡
-    - 确认营业执照号：输入营业执照号。
-    - 输入信用卡信息：输入卡号、信用卡有效期、密码前2位后，登记付款方式。
-
-##### 付款方式登记完成
-‘- 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
+## Manage Credits
+Credits managed by NHN Cloud Service are provided free-of-charge, depending on service subscription, rewards, events, or compensation purposes.
+1 credit equals to 1 KRW in cash. 
+You can view the credits you have received by logging in and selecting Credit from the drop-down menu that appears on the top right on the screen when you click your logged in account.
+Credits are operated in accordance with the following policy:
+- Non-refundable.
+- Managed by valid period: to be expired after valid period and flexibly managed for each type of saving. 
+- Automatically deducted as much as charged for NHN Cloud Service: if NHN Cloud Service is charged more than your own credits, shortage shall be charged further in cash. 
 
 
-##### 付款方式登记完成
-- 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
 
-#### 银行转账
-##### 选择付款方式
-- 仅企业会员可使用的付款方式。
-- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
-- 在**登记自动付款方式**界面中选择**银行转账**。
+## Withdraw from Membership
+### Apply for Membership Withdrawal
+You can cancel your NHN Cloud membership by logging in and selecting Member Information from the drop-down menu on the top right on the screen when you click your logged in account.
+Go to the **Member Information** screen and click the **Withdraw** button in the bottom right corner.
+Check notes for membership withdrawal, and click **Withdraw**.
+Withdrawal cannot be applied when you're using a service. 
 
-##### 输入账户信息
-- 输入账户信息
+### Verify Membership Withdrawal
+After applied, withdrawal can be processed after information as below is confirmed. <br/>
+- If there is any charge left unpaid, it shall be paid on a date of auto payment (8th of the month) before withdrawal is processed. 
 
-##### 电子证书验证
-- 对于个人账户，选择个人电子证书进行验证。
-- 对于法人账户，选择按照与账户的企业信息相同的企业信息来登记的电子证书进行验证。
-
-##### 付款方式登记完成
-- 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
-
-### 日本会员 
-#### 信用卡
-##### 选择付款方式
-- 在**我的页面 > 付款方式**界面上单击**更改付款方式**按钮。
-- 在**登记自动付款方式**界面中输入**信用卡信息**（卡号、有效期、信用卡名义、安全码）。
-
-##### 付款方式登记完成
-- 付款方式正常登记后，可在**我的页面 > 付款方式**中确认。
-
-### 付款方式附加功能
-#### 电子邮件明细表收信管理
-登记接收电子邮件明细表的邮箱。
-#### 设置付款单位
-按照不同的费用合约制度，选择**付款**或**一次性付款**。
-
-## 积分管理
-TOAST服务管理的积分是根据注册服务、奖励、活动、补偿目的无偿支付的积分。
-积分相当于现金1韩元。
-积分可在**我的页面 > 积分**中查询。
-积分按照以下政策运营。
-- 不可兑换现金。
-- 管理有效期。有效期后作废，按照累积类型流动式运营。
-- 产生TOAST使用金额时，若有积分，自动按照使用金额从积分中扣减。若TOAST使用金额超过拥有的积分，从积分中扣减后，对剩余费用收费。
-
-## 退出会员
-### 申请退出会员
-退出TOAST会员在**我的页面 > 会员信息**中单击**退出会员**按钮申请。
-确认退出会员注意事项后，单击**退出会员**。
-若有正在使用的服务，无法申请退出会员。
-
-### 验证退出会员
-申请退出会员后，确认以下信息并处理退出会员。<br/>
-
-- 若有未支付的使用费用，自动付款日（每月8日）付款后进行退出会员处理。
-
-### 会员退出完成
-会员退出完成后，向申请退出会员时登记的电子邮箱发送退出明细。
-退出会员时，删除所有使用信息，删除的数据无法恢复。
-
+### Complete Membership Withdrawal
+When withdrawal is completed, it shall be notified via email registered at the time of withdrawal application.
+With withdrawal, all information regarding service use shall be deleted and cannot be recovered.

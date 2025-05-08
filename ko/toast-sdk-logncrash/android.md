@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
-1\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log&Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+1. [TOAST 콘솔](https://console.toast.com)에서 [Log&Crash Search를 활성화](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 
-2\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+2. Log & Crash Search에서 [AppKey를 확인](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
 ## Component SDKs
 
@@ -63,7 +63,7 @@ public class YourApplication extends Application {
 ### Initialize
 
 onCreate() 메소드에서 Logger를 초기화합니다.
-Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급 받은 AppKey를 ProjectKey로 설정합니다.
 
 ```java
 // Initialize Logger
@@ -96,7 +96,7 @@ ToastLogger.error(tag, message);
 ToastLogger.fatal(tag, message);
 ```
 
-### Set UserID 
+### Set UserID
 
 사용자 아이디를 설정합니다.
 설정된 사용자 아이디는 "UserID" 필드로 Log & Crash Search에서 조회할 수 있습니다.
