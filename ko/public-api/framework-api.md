@@ -127,6 +127,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 IAM 계정 단건 조회 |
 | GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | 프로젝트 IAM 계정 목록 조회 |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | 프로젝트 IAM 계정 역할 수정 |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-리스트-조회) | 조직 하위 멤버 인증정보 리스트 조회 |
 
 
 
@@ -3924,6 +3925,102 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
+
+
+<a id="조직-하위-멤버의-모든-인증정보-리스트-조회"></a>
+#### 조직 하위 멤버 인증정보 리스트 조회
+
+> GET "/v1/authentications/organizations/{org-id}/user-access-keys"
+
+조직에 소속된 멤버 및 프로젝트 멤버의 인증정보를 조회하는 API입니다.
+
+##### 필요 권한
+`Organization.UserAccessKey.List`
+
+##### 요청 파라미터
+
+
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | UserAccessKey를 조회할 조직 ID |
+|  Query |paging | Paging| No | 페이지당 표시 건수, 기본값 20 |
+
+
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "authenticationList": [
+    {
+      "authAlias": "string",
+      "authCategory": "NULL",
+      "authId": "string",
+      "authKey": "string",
+      "authStatus": "STABLE",
+      "authType": "NULL",
+      "ipAclList": [
+        "string"
+      ],
+      "lastTokenUsedDatetime": "2025-05-08T07:04:55.874Z",
+      "lastUsedDatetime": "2025-05-08T07:04:55.874Z",
+      "modDatetime": "2025-05-08T07:04:55.874Z",
+      "reIssueDatetime": "2025-05-08T07:04:55.874Z",
+      "referenceId": "string",
+      "regDatetime": "2025-05-08T07:04:55.874Z",
+      "secretAccessKey": "string",
+      "secretKey": "string",
+      "tokenExpiryPeriod": 9007199254740991,
+      "userAccessKeyID": "string",
+      "uuid": "string",
+      "validTokenCount": 9007199254740991
+    }
+  ],
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+}
+```
+
+
+###### 응답
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [공통 응답](#응답)| Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   authenticationList | List&lt;UserAccessKeyResponseV7>| Yes  | 멤버별 인증키 정보 |
+
+
+###### UserAccessKeyResponseV7
+
+| 이름 | 타입 | 필수 | 설명 |
+|------------|--------|------|-----------------------------|
+| authId | String | Yes | 인증 수단 아이디 (마스킹처리) |
+| uuid | String | Yes | 사용자 UUID |
+| userAccessKeyID | String | Yes | User Access Key ID (마스킹처리) |
+| secretAccessKey | String | No | 비밀키 (공백처리) |
+| authStatusCode | String | Yes | 인증 상태 코드 (STABLE, STOP, BLOCKED) |
+| authCategoryCode | String | Yes | 인증 카테고리 코드 (NULL , BASIC_AUTH, ID_PW) <br> NULL : 기본 인증 (auth_key만 확인) <br> BASIC_AUTH : 기본 인증 (auth_key만 확인) <br> ID_PW : 아이디/비밀번호 방식 (auth_key + secret_key 확인)   |
+| tokenExpiryPeriod | Long | No | 토큰 만료 주기 |
+| regDatetime | Date | No | 생성 일시 |
+| modDatetime | Date | No | 삭제 일시 |
+| lastUsedDatetime | Date | No | 마지막 사용 일시 |
+| reIssueDatetime | Date | No | 재생성 일시 |
+| lastTokenUsedDatetime | Date | No | 토큰 마지막 사용 일시 |
+| validTokenCount | Long | No | 유효한 토큰 개수 |
+
+
 
 
 
