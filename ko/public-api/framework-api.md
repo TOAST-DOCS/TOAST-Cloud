@@ -3960,27 +3960,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
   },
   "authenticationList": [
     {
-      "authAlias": "string",
-      "authCategory": "NULL",
-      "authId": "string",
-      "authKey": "string",
-      "authStatus": "STABLE",
-      "authType": "NULL",
-      "ipAclList": [
-        "string"
-      ],
-      "lastTokenUsedDatetime": "2025-05-08T07:04:55.874Z",
-      "lastUsedDatetime": "2025-05-08T07:04:55.874Z",
-      "modDatetime": "2025-05-08T07:04:55.874Z",
-      "reIssueDatetime": "2025-05-08T07:04:55.874Z",
-      "referenceId": "string",
-      "regDatetime": "2025-05-08T07:04:55.874Z",
-      "secretAccessKey": "string",
-      "secretKey": "string",
-      "tokenExpiryPeriod": 9007199254740991,
-      "userAccessKeyID": "string",
-      "uuid": "string",
-      "validTokenCount": 9007199254740991
+      "authId": "makedAuthId",
+      "uuid": "uuid",
+      "userAccessKeyID": "maskedUserAccessKeyID",
+      "secretAccessKey": "",
+      "tokenExpiryPeriod": 86400,
+      "regDatetime": "2024-05-03T10:27:58.000+00:00",
+      "modDatetime": "2024-05-03T10:27:58.000+00:00",
+      "lastUsedDatetime": "2024-08-16T14:09:37.000+00:00",
+      "reIssueDatetime": "2024-08-29T12:00:45.000+00:00",
+      "lastTokenUsedDatetime": null,
+      "validTokenCount": null,
+      "authStatus": "STABLE"
     }
   ],
   "paging": {
@@ -4011,12 +4002,11 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | userAccessKeyID | String | Yes | User Access Key ID (마스킹처리) |
 | secretAccessKey | String | No | 비밀키 (공백처리) |
 | authStatusCode | String | Yes | 인증 상태 코드 (STABLE, STOP, BLOCKED) |
-| authCategoryCode | String | Yes | 인증 카테고리 코드 (NULL , BASIC_AUTH, ID_PW) <br> NULL : 기본 인증 (auth_key만 확인) <br> BASIC_AUTH : 기본 인증 (auth_key만 확인) <br> ID_PW : 아이디/비밀번호 방식 (auth_key + secret_key 확인)   |
 | tokenExpiryPeriod | Long | No | 토큰 만료 주기 |
 | regDatetime | Date | No | 생성 일시 |
 | modDatetime | Date | No | 삭제 일시 |
 | lastUsedDatetime | Date | No | 마지막 사용 일시 |
-| reIssueDatetime | Date | No | 재생성 일시 |
+| reIssueDatetime | Date | No | secretAccessKey 재생성 일시 |
 | lastTokenUsedDatetime | Date | No | 토큰 마지막 사용 일시 |
 | validTokenCount | Long | No | 유효한 토큰 개수 |
 
