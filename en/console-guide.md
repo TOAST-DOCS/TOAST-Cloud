@@ -80,6 +80,18 @@ For Dooray! services, IP ACL can be set on the service's console screen.
     * IP ACL
         * Not Configured: The console can be accessed from any IPs (or IP range).
         * Console Access Only from Allowed IPs (or IP range): The console can be accessed only from the IPs (or IP range) you entered. Enter the IP or IP range to allow access.
+ * Caution: If you also set up overseas access block, even if an IP is registered in the IP ACL, access to the console can be restricted if it is not included in the access allowed countries.
+
+#### Overseas Access Block Settings
+If you need to block overseas access, we provide the feature to make the console accessible only from access-allowed countries.
+
+* You can enable or disable the feature in **Overseas Access Block Settings**.
+    * Disable: Console access is available in all countries.
+    * Enable: Console access is only available in access allowed countries.
+* Access Allowed Countries
+    * If you have overseas access block set up, you can set which countries are allowed to access.
+    * You must select at least one country to allow access.
+* Caution: If you set IP ACL together, access to the console can be restricted if the IP ACLs do not include IPs from countries that are allowed to access.       
 
 #### Set approval process management
 If you need an approval process when using a service, a feature to establish an approval process of the approver is provided for each service.
