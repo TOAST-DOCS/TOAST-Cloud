@@ -79,6 +79,18 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
     * IP ACL
         * 설정 안 함: 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
         * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력합니다.
+* 주의: 해외 접속 차단을 함께 설정하는 경우 IP ACL에 등록된 IP라도 접속 허용 국가에 포함되지 않으면 콘솔 접속이 제한될 수 있습니다.
+
+#### 해외 접속 차단 설정
+해외 접속 차단이 필요한 경우 접속 허용 국가에서만 콘솔에 접근하도록 설정하는 기능을 제공합니다.
+
+* **해외 접속 차단 설정**에서 설정 여부를 선택할 수 있습니다.
+    * 설정 안 함: 모든 국가에서 콘솔 접근이 가능합니다.
+    * 설정: 접속 허용 국가에서만 콘솔 접근이 가능합니다.
+* 접속 허용 국가
+    * 해외 접속 차단을 설정한 경우 접속 허용 국가를 설정할 수 있습니다.
+    * 최소 1개 이상의 접속 허용 국가를 선택해야 합니다.
+* 주의: IP ACL을 함께 설정하는 경우 접속 허용 국가 IP가 IP ACL에 포함되지 않으면 콘솔 접속이 제한될 수 있습니다.
 
 #### 승인 프로세스 관리 설정
 서비스 이용 시 승인 프로세스가 필요한 경우 승인 권한 자의 승인 절차를 거치도록 서비스별 기능을 제공합니다.
@@ -357,12 +369,15 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Infrastructure 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Infrastructure | ADMIN | 기본 인프라 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Infrastructure | MEMBER | 네트워크 서비스(Network Interface, Floating IP 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | VIEWER | 기본 인프라 서비스(Key Pair, Direct Connect, NAS (Offline) 제외) Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Routing ADMIN | 네트워크 서비스(Network Interface, Floating IP, Routing Table 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Security Group ADMIN | 네트워크 서비스(Network Interface, Floating IP, Security Groups 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Load Balancer ADMIN | 네트워크 서비스(Network Interface, Floating IP, Load Balancer 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Transit Hub ADMIN | 네트워크 서비스(Network Interface, Floating IP, Transit Hub 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Peering Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, Peering Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Colocation Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, Colocation Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | NAT Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, NAT Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Service Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, Service Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Private DNS ADMIN | 네트워크 서비스(Network Interface, Floating IP, Private DNS 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |

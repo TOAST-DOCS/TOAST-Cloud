@@ -79,7 +79,18 @@ Dooray!サービスは各サービスコンソール画面からIP ACLを設定�
    * IP ACL
         * 設定しない：すべてのIP(またはIP帯域)からコンソールにアクセスできます。
         * 許可したIP(またはIP帯域)のみコンソールアクセス：入力したIP(またはIP帯域)からのみコンソールにアクセスできます。アクセスを許可するIPまたはIP帯域を入力します。
+* 注意：海外接続遮断を同時に設定する場合、IP ACLに登録されたIPアドレスであっても、接続許可国に含まれていない場合はコンソール接続が制限される可能性があります。
 
+#### 海外接続遮断設定
+海外からの接続を制限したい場合、接続許可国からのみコンソールにアクセスできるように設定する機能を提供します。
+
+* **海外接続遮断設定**で設定するかどうかを選択できます。
+    * 設定しない：すべての国からコンソールアクセスが可能です。
+    * 設定する：接続許可国からのみコンソールアクセスが可能です。
+* 接続許可国
+    * 海外接続遮断を設定した場合、接続を許可する国を設定できます。
+    * 少なくとも1か国以上の接続許可国を選択する必要があります。
+* 注意：IP ACLを同時に設定する場合、接続許可国のIPがIP ACLに含まれていないとコンソール接続が制限される可能性があります。
 
 #### 承認プロセス管理設定
 サービス利用時、承認プロセスが必要な場合、承認権限者の承認手続きを進めるサービス別機能を提供します。
@@ -360,10 +371,13 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | Infrastructure | MEMBER | ネットワークサービス(Network Interface, Floating IPを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | VIEWER | 基本インフラサービス(Key Pair、Direct Connect、NAS (Offline)を除く)はRead(読み取り)。それ以外のサービスはCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Routing ADMIN | ネットワークサービス(Network Interface, Floating IP、Routing Tableを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Security Group ADMIN | ネットワークサービス(Network Interface, Floating IP、Security Groupsを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Load Balancer ADMIN | ネットワークサービス(Network Interface, Floating IP、Load Balancerを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Transit Hub ADMIN | ネットワークサービス(Network Interface, Floating IP、Transit Hubを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Peering Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、Peering Gatewayを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Colocation Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、Colocation Gatewayを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | NAT Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、NAT Gatewayを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Service Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、Service Gatewayを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Private DNS ADMIN | ネットワークサービス(Network Interface, Floating IP、Private DNSを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
@@ -542,7 +556,6 @@ NHN Cloudサービス利用料金を確認し、決済できます。
     - 受信対象を通知受信グループを追加する場合、そのグループに設定された通知方法と各通知でサポートする通知方法が一致しなければ、その方法で通知を受信できません。
 
 4. **保存**ボタンをクリックして設定内容を保存します。
-
 
 ## 通知受信グループ管理
 通知受信グループ管理は、NHN Cloudから送信する通知の受信グループを設定する機能です。
