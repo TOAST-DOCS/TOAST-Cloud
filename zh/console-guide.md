@@ -371,6 +371,8 @@ Members are classified into NHN Cloud members and IAM members.
 | Infrastructure | Security Group ADMIN | Read Network services (except Network Interface, Floating IP, Security Groups), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | Load Balancer ADMIN | Read Network services (except Network Interface, Floating IP, Load Balancer), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | Transit Hub ADMIN | Read Network services (except Network Interface, Floating IP, Transit Hub), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Peering Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Peering Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Colocation Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Colocation Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | NAT Gateway ADMIN | Read Network services (except Network Interface, Floating IP, NAT Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | Service Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Service Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | Private DNS ADMIN | Read Network services (except Network Interface, Floating IP, Private DNS), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
