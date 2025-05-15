@@ -93,8 +93,6 @@ If you need to block overseas access, we provide the feature to make the console
     * You must select at least one country to allow access.
 * Caution: If you set IP ACL together, access to the console can be restricted if the IP ACLs do not include IPs from countries that are allowed to access.       
 
- * Caution: If you also set up overseas access block, even if an IP is registered in the IP ACL, access to the console can be restricted if it is not included in the access allowed countries.
-
 #### Overseas Access Block Settings
 If you need to block overseas access, we provide the feature to make the console accessible only from access-allowed countries.
 
