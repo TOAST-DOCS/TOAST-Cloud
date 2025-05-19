@@ -313,15 +313,16 @@ Members are classified into NHN Cloud members and IAM members.
 
 | Role | Description |
 | ---- | ----------- |
-| OWNER | Create, Read, Update, Delete, and Delete organizations across the organization<br>> including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
-| ADMIN | Create, Read, Update, Delete for the entire organization<br> including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
+| OWNER | Create, Read, Update, Delete, and Delete organizations across the organization, including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
+| ADMIN | Create/Read/Update/Delete for the entire organization, including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
 | MEMBER | Create project, read organization dashboard, read project |
 | BILLING_VIEWER | Read payment management usage and budget management, and usage status of project in organization. |
 | BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
 | BUDGET_VIEWER | Read budget management |
-| LOG_VIEWER | Create, Read, Update, Delete user action logs management |
+| LOG_VIEWER | Create/Read/Update/Delete user action logs management |
 | ORG_DASHBOARD\_ADMIN | Create, Read, Update, and Delete organization dashboard |
 | ORG_DASHBOARD\_VIEWER | Read organization dashboard |
+| ORG_SUPPORT_ADMIN | Create organization inquiry |
 | NONE | Read organization dashboard and organization default settings |
 
 #### Service Use roles
@@ -368,10 +369,11 @@ Members are classified into NHN Cloud members and IAM members.
 | PROJECT NOTICE MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT API SECURITY SETTING ADMIN | Create, Read, Update, Delete for project's API Security Setting|
+| PROJECT API SECURITY SETTING ADMIN | Read for project's API Security Setting|
 | PROJECT QUOTA MANAGEMENT ADMIN| Create, Read, Update, Delete for project's Quota Management|
 | PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
+| PROJECT_SUPPORT_ADMIN| Create project inquiry|
 | PROJECT DASHBOARD VIEWER | Read project dashboard|
-
 
 #### Service Use roles
 
