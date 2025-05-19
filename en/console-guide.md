@@ -317,6 +317,7 @@ Members are classified into NHN Cloud members and IAM members.
 | LOG_VIEWER | Create/Read/Update/Delete user action logs management |
 | ORG_DASHBOARD\_ADMIN | Create, Read, Update, and Delete organization dashboard |
 | ORG_DASHBOARD\_VIEWER | Read organization dashboard |
+| ORG_SUPPORT_ADMIN | Create organization inquiry |
 | NONE | Read organization dashboard and organization default settings |
 
 #### Service Use roles
@@ -329,14 +330,17 @@ Members are classified into NHN Cloud members and IAM members.
 | Resource Watcher | ADMIN | Create, Read, Update, and Delete Resource Watcher Service |
 | Resource Watcher | VIEWER | Read Resource Watcher Service |
 
+
 #### Service PERMISSION Role
 
 * The Organization Services PERMISSION role can enable or disable individual services.
 * However, services that are enabled at the time of organization creation (CloudTrail, Resource Watcher, etc.) do not provide a separate PERMISSION role.
 
+
 | Role | Description |
 | --- | --- |
 | Service Name PERMISSION | Service Enable, Disable  |
+
 
 ### Project Members
 
@@ -360,8 +364,10 @@ Members are classified into NHN Cloud members and IAM members.
 | PROJECT NOTICE MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT API SECURITY SETTING ADMIN | Create, Read, Update, Delete for project's API Security Setting|
+| PROJECT API SECURITY SETTING ADMIN | Read for project's API Security Setting|
 | PROJECT QUOTA MANAGEMENT ADMIN| Create, Read, Update, Delete for project's Quota Management|
 | PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
+| PROJECT_SUPPORT_ADMIN| Create project inquiry|
 | PROJECT DASHBOARD VIEWER | Read project dashboard|
 
 

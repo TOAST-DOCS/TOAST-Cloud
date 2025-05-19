@@ -317,6 +317,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | LOG\_VIEWER | ユーザーActionログ管理Read(読み取り)、リソース管理Create(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | ORG\_DASHBOARD\_ADMIN | 組織ダッシュボードCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | ORG\_DASHBOARD\_VIEWER | 組織ダッシュボードRead(読み取り) |
+| ORG_SUPPORT_ADMIN | 組織お問い合わせCreate(作成) |
 | NONE | 組織ダッシュボードRead(読み取り)、組織基本設定Read(読み取り) |
 
 #### 組織サービス利用ロール
@@ -360,8 +361,10 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | PROJECT NOTICE MANAGEMENT ADMIN | プロジェクト通知管理 Create(作成), Read(読取), Update(更新), Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
 | PROJECT NOTICE MANAGEMENT VIEWER | プロジェクト通知管理 Read(読取) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
 | PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成), Read(読み取り), Update(更新), Delete(削除)|
+| PROJECT API SECURITY SETTING VIEWER | ロジェクトAPIセキュリティー設定Read(読み取り)|
 | PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成), Read(読み取り), Update(更新), Delete(削除)|
 | PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
+| PROJECT_SUPPORT_ADMIN| プロジェクトお問い合わせCreate(作成)|
 | PROJECT DASHBOARD VIEWER | プロジェクトダッシュボードRead(読み取り) |
 
 
