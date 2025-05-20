@@ -126,6 +126,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#プロジェクト-メンバー-単件-照会) | プロジェクトIAMアカウント単件照会 |
 | GET |[/v1/iam/projects/{project-id}/members](#プロジェクト-IAM-アカウント-リスト-照会) | プロジェクトIAMアカウントリスト照会 |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#プロジェクト-IAM-アカウント-ロール-修正) | プロジェクトIAMアカウントロール修正 |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#組織-下位-メンバーの-全ての-認証情報-リスト-照会) | 組織下位メンバー認証情報リスト照会 |
 
 
 
@@ -3809,6 +3810,90 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes   |
+
+
+<a id="組織-下位-メンバーの-全ての-認証情報-リスト-照会"></a>
+#### 組織下位メンバー認証情報リスト照会
+
+> GET "/v1/authentications/organizations/{org-id}/user-access-keys"
+組織に所属するメンバー及びプロジェクトメンバーの認証情報を照会するAPIです。
+
+##### 必要権限
+`Organization.UserAccessKey.List`
+
+##### リクエストパラメータ
+
+
+
+| 区分 | 名前 | タイプ | 必須 | 説明 | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | UserAccessKeyを照会する組織ID |
+|  Query |paging | Paging| No | 1ページあたりの表示件数、デフォルト値20 |
+
+
+
+
+##### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "authenticationList": [
+    {
+      "authId": "makedAuthId",
+      "uuid": "uuid",
+      "userAccessKeyID": "maskedUserAccessKeyID",
+      "secretAccessKey": "",
+      "tokenExpiryPeriod": 86400,
+      "regDatetime": "2024-05-03T10:27:58.000+00:00",
+      "modDatetime": "2024-05-03T10:27:58.000+00:00",
+      "lastUsedDatetime": "2024-08-16T14:09:37.000+00:00",
+      "reIssueDatetime": "2024-08-29T12:00:45.000+00:00",
+      "lastTokenUsedDatetime": null,
+      "validTokenCount": null,
+      "authStatus": "STABLE"
+    }
+  ],
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+}
+```
+
+
+###### レスポンス
+
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [共通レスポンス](#レスポンス)| Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   authenticationList | List&lt;UserAccessKeyResponseV7>| Yes  | メンバーごとの認証キー情報 |
+
+
+###### UserAccessKeyResponseV7
+
+| 名前 | タイプ | 必須 | 説明 |
+|------------|--------|------|-----------------------------|
+| authId | String | Yes | 認証手段ID(マスキング処理) |
+| uuid | String | Yes | ユーザーUUID |
+| userAccessKeyID | String | Yes | User Access Key ID(マスキング処理) |
+| secretAccessKey | String | No | 秘密鍵(空白処理) |
+| authStatusCode | String | Yes | 認証ステータスコード(STABLE, STOP, BLOCKED) |
+| tokenExpiryPeriod | Long | No | トークン有効期限 |
+| regDatetime | Date | No | 作成日時 |
+| modDatetime | Date | No | 削除日時 |
+| lastUsedDatetime | Date | No | 最終使用日時 |
+| reIssueDatetime | Date | No | secretAccessKey再作成日時 |
+| lastTokenUsedDatetime | Date | No | トークン最終使用日時 |
+| validTokenCount | Long | No | 有効なトークン数 |
+
 
 
 
