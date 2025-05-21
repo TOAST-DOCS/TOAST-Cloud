@@ -669,3 +669,37 @@ The corresponding notification receiver groups are available when setting up not
     * You can delete a webhook by clicking the trash can icon.
 
 5. The created webhook is available by adding a **notification receiver group** to the service that provides webhook delivery.
+
+
+## Technical support
+
+Technical support is a feature that allows you to register or manage inquiries with members of your organization or project.
+Registered inquiries are visible to all members within the same organization or project. If necessary, you can leave additional questions to an inquiry registered by another member.
+
+For individual inquiries, use the NHN Cloud Customer Center [1:1](https://www.nhncloud.com/en/support/inquiry) Inquiry.
+
+### List of Inquiries
+
+1. In the console, click **Organization > Technical Support** or **Project > Technical Support**.
+    * You can see a **list of inquiries** received from organizations and projects.
+
+### Submit Inquiry
+
+1. On the **list** screen, click **Submit Inquiry**.
+2. Select the type of inquiry you want to submit and complete each field as instructed.
+    * The input fields can vary depending on the type of inquiry.
+3. Click **Accept** at the bottom.
+    * If validation (such as required values) fails, a warning message is exposed in the corresponding input field.
+
+### Submit Additional Questions
+
+1. On the **Inquiry list** screen, click the row of the inquiry that you want to accept additional questions for.
+2. Fill out an **additional question** at the bottom of the **Details of Inquiry** section.
+3. Click **Submit** in the **Additional Question** section.
+    * The additional question and phone number are required.
+    * If the phone number listed in the member information exists, the input field is populated with the default value.
+
+### Check Response to Inquiry
+
+1. On the **Inquiry list** screen, click the row of the inquiry you want to see the answer to.
+2. You can view your inquiry, additional questions, and answers on the **Details of Inquiry** screen.
