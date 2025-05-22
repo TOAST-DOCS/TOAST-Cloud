@@ -127,7 +127,7 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | View a project IAM account |
 | GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | View project IAM accounts |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | Modify project IAM account roles |
-| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-리스트-조회) | View organization submember credentials |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-리스트-조회) | View all credentials of members under organizations |
 
 
 
@@ -3927,7 +3927,7 @@ API to change the role of a specified IAM account in a project.
 
 
 <a id="조직-하위-멤버의-모든-인증정보-리스트-조회"></a>
-#### View organization submember credentials
+#### View all credentials of members under organizations
 
 > GET "/v1/authentications/organizations/{org-id}/user-access-keys"
 
