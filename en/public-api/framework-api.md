@@ -108,6 +108,7 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-IAM-로그인-세션-설정-정보를-조회) | View organization IAM sign-in session settings information |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-IAM-로그인-2차-인증에-대한-설정을-조회) | View settings for organizational IAM sign-in second factor authentication |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-로그인-실패-보안-설정을-조회) | View Organization IAM Login Failure Security Settings |
+| GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#조직-IAM-계정-비밀번호-정책-조회) | Get your organization's IAM account password policy |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | Listorganization IP ACLs |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-상품-가격-조회) | Get the price of a product on a pay-as-you-go subscription |
 | GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-상품-목록-조회) | List products enrolled in a pay-as-you-go subscription |
@@ -121,6 +122,13 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | Delete a User Access Key ID |
 | GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-목록-조회)                               | Get Token list                    |
 | DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료)                               | Expire multiple tokens                    |
+| POST |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-생성) | Create a project IAM account |
+| DELETE |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-다건-삭제) | Delete multiple project IAM accounts |
+| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | View a project IAM account |
+| GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | View project IAM accounts |
+| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | Modify project IAM account roles |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-리스트-조회) | View organization submember credentials |
+
 
 
 <a id="프로젝트-멤버-생성"></a>
@@ -2767,6 +2775,111 @@ API to get login failure security settings.
 |   limit | Integer| No | Number of attempts allowed |
 |   blockMinutes | Integer| No | Login ban time  |
 
+<a id="조직-IAM-계정-비밀번호-정책-조회"></a>
+#### Get your organization's IAM account password policy
+
+> GET "/v1/iam/organizations/{org-id}/settings/password-rule"
+
+API to get settings for password policies.
+
+##### Required permissions
+`Organization.Setting.Iam.Get`
+
+##### Request Parameter
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | Organization ID | 
+
+
+##### Response Body
+
+```json
+{
+   "header": {
+      "isSuccessful": true,
+      "resultCode": 0,
+      "resultMessage": ""
+   },
+   "result": {
+      "content": {
+         "schemaVersion": 1,
+         "value": {
+            "ruleType": "default",
+            "passwordConstraints": {
+               "minLength": 8,
+               "mustNotIncludeIllegalSequence": true,
+               "mustIncludeUpperCase": true,
+               "mustIncludeLowerCase": true,
+               "mustIncludeNumberCase": true,
+               "mustIncludeSpecialCase": true
+            },
+            "passwordExpiry": {
+               "enabled": true,
+               "expiryDays": 90,
+               "allowExpend": true
+            },
+            "limitPasswordReuse": {
+               "enabled": true,
+               "limitCount": 1
+            },
+            "applyRule": "onChangePassword"
+         }
+      }
+   }
+}
+```
+
+##### Response
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| header | [Common response](#응답)| Yes   |
+| result | Content | Yes | Setup contents |
+
+###### Content
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| schemaVersion | Integer| Yes | Schema version  |
+| value | Value| Yes |  Password policy |
+
+###### Value
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| ruleType | String | Yes | Password policy<br>default (default password policy), custom (user password policy) |
+| passwordConstraints | PasswordConstraints | Yes | Password strength |
+| passwordExpiry | PasswordExpiry | Yes | Password expiration |
+| limitPasswordReuse | LimitPasswordReuse | Yes | Limit password reuse |
+| applyRule | String | Yes | When to enforce password policies<br>onChangePassword (applies when password changes), onLogin (applies immediately) |
+
+###### PasswordConstraints
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| minLength | integer | Yes | Password minimum length |
+| mustNotIncludeIllegalSequence | boolean | Yes | At least one alphanumeric character<br>true (set), false (not set) |
+| mustIncludeUpperCase | boolean | Yes | At least one uppercase letter<br>true (set), false (not set) |
+| mustIncludeLowerCase | boolean | Yes | At least one lowercase letter<br>true (set), false (not set) |
+| mustIncludeNumberCase | boolean | Yes | At least one number<br>true (set), false (not set) |
+| mustIncludeSpecialCase | boolean | Yes | One or more special characters<br>true (set), false (not set) |
+
+###### PasswordExpiry
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| String | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
+| expiryDays | Integer | Yes | Expiration period |
+| allowExpend | Boolean | Yes | Extendable on expiration<br>true (possible), false (impossible) |
+
+###### LimitPasswordReuse
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| String | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
+| limitCount | Integer | Yes | Number of reuse limits |
+
 <a id="종량제에-등록된-상품-가격-조회"></a>
 #### Get the price of a product on a pay-as-you-go subscription
 
@@ -3326,6 +3439,7 @@ Can only modify the user's own User Access Key ID
 |------------ | ------------- | ------------- | ------------ |
 |   String | String| Yes | Project AppKey state to change (STOP: Stop, STABLE: Enable) |
 
+
 ##### Response Body
 
 ```json
@@ -3483,6 +3597,421 @@ Only tokens issued with your own User Access Key ID can expire
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [Common response](#Response)| Yes |
+
+
+<a id="프로젝트-IAM-계정-생성"></a>
+#### Create a project IAM account
+
+> POST "/v1/iam/projects/{project-id}/members"
+
+API to add an IAM account as a project member.
+
+##### Required permissions
+`Project.Member.Iam.Create`
+
+##### Request Parameter
+
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | The project ID to which you want to add the member | 
+| Request Body | request | AddIamProjectMemberRequest| Yes | Request |
+
+
+
+
+###### AddIamProjectMemberRequest
+> [Caution]<br>
+> Only one project member can be created in a request.
+
+
+| Name | Type | Required | Description |  
+|------------ | ------------- | ------------- | ------------ |
+|   assignRoles | List<UserAssignRoleProtocol>| Yes | List of roles to assign to users  |
+|   memberUuid | String| Yes | UUID of the member to add  |
+
+
+###### UserAssignRoleProtocol
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   roleId | String| Yes | Role ID  |
+|   conditions | List<AssignAttributeConditionProtocol>| No | Role condition attribute  |
+
+
+###### AssignAttributeConditionProtocol
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   attributeId | String| Yes | Condition attribute ID  |
+|   attributeOperatorTypeCode | String| Yes | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List<String>| Yes | Condition attribute value  |
+
+
+##### Response Body
+
+```json
+{
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  }
+}
+```
+
+###### Response
+
+
+| Name | Type           | Required | Description |   
+|------------ |--------------| ------- | ------------ |
+|   header | [Common response](#응답) | Yes |
+
+
+<a id="프로젝트-IAM-계정-다건-삭제"></a>
+#### Delete multiple project IAM accounts
+
+> DELETE "/v1/iam/projects/{project-id}/members"
+
+API to delete IAM accounts from a project.
+
+##### Required permissions
+`Project.Member.Iam.Delete`
+
+##### Request Parameter
+
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | Project ID | 
+|  Request Body |request | DeleteMembersRequest | Yes | Request | 
+
+
+###### DeleteMembersRequest
+
+
+| Name | Type | Required | Description |  
+|------------ | ------------- | ------------- | ------------ |
+|   memberUuids | List<String>| Yes | List of UUIDs of the target accounts to delete |
+
+
+##### Response Body
+
+```json
+{
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  }
+}
+```
+
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+
+
+<a id="프로젝트-IAM-계정-단건-조회"></a>
+#### View a project IAM account
+
+> GET "/v1/iam/projects/{project-id}/members/{member-uuid}"
+
+API to get a specific IAM account who is part of a project.
+
+##### Required permissions
+`Project.Member.Iam.Get`
+
+##### Request Parameter
+
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | Project ID to look up members |
+|  Path |member-uuid | String| Yes | Member UUID to look up |
+
+
+
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "projectMember": {
+    "uuid": "uuid",
+    "id": "id",
+    "emailAddress": "emailAddress",
+    "maskingEmail": "maskingEmail",
+    "name": "memberName",
+    "relationDateTime": "2000-01-23T04:56:07.000+00:00",
+    "roles": [ {
+      "regDateTime": "2000-01-23T04:56:07.000+00:00",
+      "roleApplyPolicyCode": "ALLOW",
+      "roleId": "roleId",
+      "roleName": "roleName",
+      "categoryKey": "categoryKey",
+      "description": "description",
+      "categoryTypeCode": "ORG_ROLE_GROUP",
+      "conditions": [ {
+        "attributeId": "attributeId",
+        "attributeOperatorTypeCode": "ALLOW",
+        "attributeValues": [ "attributeValues", "attributeValues" ],
+        "attributeDescription": "attributeDescription",
+        "attributeName": "attributeName",
+        "attributeDataTypeCode": "BOOLEAN"
+      } ]
+    } ]
+  }
+}
+```
+
+
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+|   projectMember | ProjectIamMemberRoleBundleProtocol| Yes  | Added member information, not included on error |
+
+
+###### ProjectMemberRoleBundleProtocol
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   UUID | String| Yes | Member UUID  |
+|   id | String| Yes | ID  |
+|   name | String| No | Name  |
+|   emailAddress | String| No | Member email address  |
+|   maskingEmail | String| No | Member's masked email  |
+|   mobilePhone | String| No | Phone number  |
+|   relationDateTime | Date| No | Time to add members  |
+|   joinYmdt | Date| No | Date to joined  |
+|   recentLoginYmdt | Date| No | Date of last login  |
+|   recentPasswordModifyYmdt | Date| No | Date of last password change  |
+|   roles | List<RoleBundleProtocol>| No | List of related roles (with condition attributes)  |
+
+
+[RoleBundleProtocol](#rolebundleprotocol)
+
+
+
+<a id="프로젝트-IAM-계정-목록-조회"></a>
+#### View project IAM accounts
+
+> GET "/v1/iam/projects/{project-id}/members"
+
+API to get a list of IAM accounts who are part of a project.
+
+##### Required permissions
+`Project.Member.Iam.List`
+
+##### Request Parameter
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | Project ID to look up | 
+|  Query |limit | Integer| No | Number of displays per page, default 20 |
+|  Query |page | Integer| No | Target Page, default 1 |
+
+
+
+
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+  "projectMembers": [ {
+    "uuid": "uuid",
+    "id": "id",
+    "emailAddress": "emailAddress",
+    "maskingEmail": "maskingEmail",
+    "memberName": "memberName",
+    "relationDateTime": "2000-01-23T04:56:07.000+00:00"
+  } ]
+}
+```
+
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   projectMembers | List<IamProjectMemberProtocol>| Yes | Project member list  |
+
+
+
+###### IamProjectMemberProtocol
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   UUID | String| Yes | Member UUID  |
+|   id | String| Yes | ID  |
+|   name | String| No | Name  |
+|   emailAddress | String| No | Member email address  |
+|   maskingEmail | String| No | Member's masked email  |
+|   mobilePhone | String| No | Phone number  |
+|   relationDateTime | Date| No | Time to add members  |
+|   joinYmdt | Date| No | Date to joined  |
+|   recentLoginYmdt | Date| No | Date of last login  |
+|   recentPasswordModifyYmdt | Date| No | Date of last password change  |
+
+
+<a id="프로젝트-IAM-계정-역할-수정"></a>
+#### Modify project IAM account roles
+
+> PUT "/v1/iam/projects/{project-id}/members/{member-uuid}"
+
+API to change the role of a specified IAM account in a project.
+
+##### Required permissions
+`Project.Member.Iam.Update`
+
+##### Request Parameter
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | Project ID | 
+|  Path |member-uuid | String| Yes | Member UUID to change role to | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | Request |
+
+
+
+
+##### Response Body
+
+```json
+{
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [Common response](#응답)| Yes   |
+
+
+<a id="조직-하위-멤버의-모든-인증정보-리스트-조회"></a>
+#### View organization submember credentials
+
+> GET "/v1/authentications/organizations/{org-id}/user-access-keys"
+
+API to get the credentials of members in the organization or project.
+
+##### Required permissions
+`Organization.UserAccessKey.List`
+
+##### Request Parameter
+
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | Organization ID to look up the UserAccessKey for |
+|  Query |paging | Paging| No | Number of displays per page, default 20 |
+
+
+
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "authenticationList": [
+    {
+      "authId": "makedAuthId",
+      "uuid": "uuid",
+      "userAccessKeyID": "maskedUserAccessKeyID",
+      "secretAccessKey": "",
+      "tokenExpiryPeriod": 86400,
+      "regDatetime": "2024-05-03T10:27:58.000+00:00",
+      "modDatetime": "2024-05-03T10:27:58.000+00:00",
+      "lastUsedDatetime": "2024-08-16T14:09:37.000+00:00",
+      "reIssueDatetime": "2024-08-29T12:00:45.000+00:00",
+      "lastTokenUsedDatetime": null,
+      "validTokenCount": null,
+      "authStatus": "STABLE"
+    }
+  ],
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+}
+```
+
+
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   authenticationList | List<UserAccessKeyResponseV7>| Yes  | Member-specific authentication key information |
+
+
+###### UserAccessKeyResponseV7
+
+| Name | Type | Required | Description |
+|------------|--------|------|-----------------------------|
+| authId | String | Yes | Authentication Method ID (masked) |
+| UUID | String | Yes | User UUID |
+| userAccessKeyID | String | Yes | User Access Key ID (masked) |
+| secretAccessKey | String | No | Secret key (whitespace) |
+| authStatusCode | String | Yes | Authentication status codes (STABLE, STOP, BLOCKED) |
+| tokenExpiryPeriod | Long | No | Token expiration cycle |
+| regDatetime | Date | No | Date and time of creation |
+| modDatetime | Date | No | Date and time of deletion |
+| lastUsedDatetime | Date | No | Date of last use |
+| reIssueDatetime | Date | No | secretAccessKey regeneration timeout |
+| lastTokenUsedDatetime | Date | No | Date of last token use |
+| validTokenCount | Long | No | Number of valid tokens |
+
+
+
+
 
 
 ### Error Code
