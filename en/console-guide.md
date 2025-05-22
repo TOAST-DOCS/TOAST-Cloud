@@ -676,7 +676,8 @@ The corresponding notification receiver groups are available when setting up not
 Technical support is a feature that allows you to register or manage inquiries with members of your organization or project.
 Registered inquiries are visible to all members within the same organization or project. If necessary, you can leave additional questions to an inquiry registered by another member.
 
-For individual inquiries, use the NHN Cloud Customer Center [1:1](https://www.nhncloud.com/en/support/inquiry) Inquiry.
+For individual inquiries, use the NHN Cloud Customer Center [1:1](https://www.nhncloud.com/kr/support/inquiry) Inquiry.
+
 
 ### List of Inquiries
 
