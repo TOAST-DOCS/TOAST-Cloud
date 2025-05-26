@@ -84,6 +84,18 @@ For Dooray! services, IP ACL can be set on the service's console screen.
     * IP ACL
         * Not Configured: The console can be accessed from any IPs (or IP range).
         * Console Access Only from Allowed IPs (or IP range): The console can be accessed only from the IPs (or IP range) you entered. Enter the IP or IP range to allow access.
+ * Caution: If you also set up overseas access block, even if an IP is registered in the IP ACL, access to the console can be restricted if it is not included in the access allowed countries.
+
+#### Overseas Access Block Settings
+If you need to block overseas access, we provide the feature to make the console accessible only from access-allowed countries.
+
+* You can enable or disable the feature in **Overseas Access Block Settings**.
+    * Disable: Console access is available in all countries.
+    * Enable: Console access is only available in access allowed countries.
+* Access Allowed Countries
+    * If you have overseas access block set up, you can set which countries are allowed to access.
+    * You must select at least one country to allow access.
+* Caution: If you set IP ACL together, access to the console can be restricted if the IP ACLs do not include IPs from countries that are allowed to access.       
 
 #### Set approval process management
 If you need an approval process when using a service, a feature to establish an approval process of the approver is provided for each service.
@@ -301,15 +313,16 @@ Members are classified into NHN Cloud members and IAM members.
 
 | Role | Description |
 | ---- | ----------- |
-| OWNER | Create, Read, Update, Delete, and Delete organizations across the organization<br>> including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
-| ADMIN | Create, Read, Update, Delete for the entire organization<br> including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
+| OWNER | Create, Read, Update, Delete, and Delete organizations across the organization, including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
+| ADMIN | Create/Read/Update/Delete for the entire organization, including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
 | MEMBER | Create project, read organization dashboard, read project |
 | BILLING_VIEWER | Read payment management usage and budget management, and usage status of project in organization. |
 | BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
 | BUDGET_VIEWER | Read budget management |
-| LOG_VIEWER | Create, Read, Update, Delete user action logs management |
+| LOG_VIEWER | Create/Read/Update/Delete user action logs management |
 | ORG_DASHBOARD\_ADMIN | Create, Read, Update, and Delete organization dashboard |
 | ORG_DASHBOARD\_VIEWER | Read organization dashboard |
+| ORG_SUPPORT_ADMIN | Create organization inquiry |
 | NONE | Read organization dashboard and organization default settings |
 
 #### Service Use roles
@@ -356,10 +369,11 @@ Members are classified into NHN Cloud members and IAM members.
 | PROJECT NOTICE MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT API SECURITY SETTING ADMIN | Create, Read, Update, Delete for project's API Security Setting|
+| PROJECT API SECURITY SETTING ADMIN | Read for project's API Security Setting|
 | PROJECT QUOTA MANAGEMENT ADMIN| Create, Read, Update, Delete for project's Quota Management|
 | PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
+| PROJECT_SUPPORT_ADMIN| Create project inquiry|
 | PROJECT DASHBOARD VIEWER | Read project dashboard|
-
 
 #### Service Use roles
 
@@ -371,6 +385,8 @@ Members are classified into NHN Cloud members and IAM members.
 | Infrastructure | Security Group ADMIN | Read Network services (except Network Interface, Floating IP, Security Groups), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | Load Balancer ADMIN | Read Network services (except Network Interface, Floating IP, Load Balancer), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | Transit Hub ADMIN | Read Network services (except Network Interface, Floating IP, Transit Hub), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Peering Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Peering Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Colocation Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Colocation Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | NAT Gateway ADMIN | Read Network services (except Network Interface, Floating IP, NAT Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | Service Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Service Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | Private DNS ADMIN | Read Network services (except Network Interface, Floating IP, Private DNS), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
