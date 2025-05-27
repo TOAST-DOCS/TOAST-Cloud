@@ -66,8 +66,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | MariaDB Instance  | 리전 | O | O | 
 |  | Tibero Instance   | 리전 | O | O | 
 |  | Redis Instance | 리전 | O | O | 
-| Monitoring | System Monitoring | 리전 | O | O |
-|  | Cloud Monitoring | 글로벌 |  |  | 
+| Monitoring | Cloud Monitoring | 글로벌 |  |  | 
 | Security | Security Monitoring | 리전 | O |  |
 |  | Basic Security | 리전 | O | O | 
 |  | Web Firewall | 리전 | O |  |
@@ -83,7 +82,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | NHN Bastion | 리전 | O |  |
 | Content Delivery | CDN | 글로벌 |  |  |
 | Application Service | API Gateway | 리전 | O |  | 
-| Data & Analytics | Log & Crash Search | 글로벌 |  |  |
+| Data & Analytics | Log & Crash Search | 글로벌 |  |  | 
 |  | Kafka Instance | 리전 | O | O | 
 | Dev Tools | Pipeline | 리전 | O |  | 
 |  | Deploy | 글로벌 |  |  | 
