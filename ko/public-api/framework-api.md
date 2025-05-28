@@ -2175,7 +2175,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   lastLoggedInIp | String| No| 계정의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
 |   maskingEmail | String| No | IAM 계정의 마스킹된 이메일주소  |
 |   mobilePhone | String| No | IAM 계정의 휴대폰 번호  |
-|   mobilePhoneCountryCode | String| No|
+|   mobilePhoneCountryCode | String| No| 휴대 전화 번호 국가 코드 2자리 영문자 |
 |   name | String| Yes | IAM 계정의 이름  |
 |   nativeName | String| No| 모국어 이름 |
 |   nickname | String| No| 사용자 별명 |
