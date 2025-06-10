@@ -127,7 +127,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 IAM 계정 단건 조회 |
 | GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | 프로젝트 IAM 계정 목록 조회 |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | 프로젝트 IAM 계정 역할 수정 |
-| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-리스트-조회) | 조직 하위 멤버 인증 정보 리스트 조회 |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-목록-조회) | 조직 하위 멤버 인증 정보 목록 조회 |
 
 
 
@@ -2159,32 +2159,32 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   corporate | String| No |
-|   country | String| No |
-|   createdAt | Date| No |
+|   corporate | String| No | 회사명 |
+|   country | String| No | 국적(조직 Owner의 국적) |
+|   createdAt | Date| No | 생성 일시 |
 |   creationType | String| No| 계정의 생성 타입 |
-|   department | String| No|
+|   department | String| No| 부서명 |
 |   emailAddress | String| Yes | IAM 계정 이메일 주소  |
-|   englishName | String| No|
+|   englishName | String| No| 영어 이름 | 
 |   id | String| Yes | IAM 계정 UUID  |
-|   idProviderId | String| No|
+|   idProviderId | String| No| 외부 인증을 사용하는 경우, 인증기관 ID |
 |   idProviderType | String| No| service: IAM 계정 직접 로그인<br>sso: 고객 SSO 연동 |
-|   idProviderUserId | String| No|
+|   idProviderUserId | String| No| 외부 인증기관이 제공한 사용자 ID |
 |   lastAccessedAt | Date| No| 계정의 마지막 접속 일시, 없을 경우 null 반환 |
 |   lastLoggedInAt | Date| No| 계정의 마지막 로그인 일시, 없을 경우 null 반환 |
 |   lastLoggedInIp | String| No| 계정의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
 |   maskingEmail | String| No | IAM 계정의 마스킹된 이메일주소  |
-|   mobilePhone | String| No | IAM 계정의 휴대폰 번호  |
-|   mobilePhoneCountryCode | String| No|
+|   mobilePhone | String| No | IAM 계정의 휴대전화 번호  |
+|   mobilePhoneCountryCode | String| No| 휴대전화 번호 국가 코드 2자리 영문자 |
 |   name | String| Yes | IAM 계정의 이름  |
-|   nativeName | String| No|
-|   nickname | String| No|
-|   officeHoursBegin | String| No|
-|   officeHoursEnd | String| No|
+|   nativeName | String| No| 모국어 이름 |
+|   nickname | String| No| 사용자 별명 |
+|   officeHoursBegin | String| No| 업무 시작 시간 예: 09:00 |
+|   officeHoursEnd | String| No| 업무 종료 시간 예: 18:00 |
 |   organizationId | String| Yes | IAM 계정의 조직 ID  |
 |   passwordChangedAt | Date| No| 계정의 마지막 비밀번호 변경 일시, 없을 경우 null 반환 |
-|   position | String| No|
-|   profileImageUrl | String| No|
+|   position | String| No| 직위 |
+|   profileImageUrl | String| No| 프로필 이미지 URL |
 |   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 연관 역할 목록(조건 속성 포함)  |
 |   saasRoles | List&lt;IamMemberRole>| No | IAM 계정 역할  |
 |   status | String| No| 계정의 상태 |
@@ -2249,11 +2249,6 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
     "mobilePhoneCountryCode": "mobilePhoneCountryCode",
     "id": "id",
     "department": "department",
-    "saasRoles": [ {
-      "role": "role",
-      "productId": "productId",
-      "productName": "productName"
-    } ],
     "profileImageUrl": "profileImageUrl",
     "lastAccessedAt": "2000-01-23T04:56:07.000+00:00",
     "maskingEmail": "maskingEmail",
@@ -2294,37 +2289,35 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-| header | [공통 응답](#응답)| Yes | protocol이 response에 있는 경우에만 필수값 |
 | id | String | No | IAM 계정 UUID | 
 | userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
 | name | String | Yes | IAM 계정의 사용자 이름 | 
 | emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
 | maskingEmail | String | No | IAM 계정의 마스킹된 이메일 주소 |
-| mobilePhone | String | No | IAM 계정의 휴대폰 번호 |
-| telephone | String | No | IAM 계정 전화번호 |
-| position | String | No |  |
-| department | String | No |  |
-| corporate | String | No |  |
-| profileImageUrl | String | No |  |
-| englishName | String | No |  |
-| nativeName | String | No |  |
-| nickname | String | No |  |
-| officeHoursBegin | String | No |  |
-| officeHoursEnd | String | No |  |
+| mobilePhone | String | No | IAM 계정의 휴대전화 번호 |
+| telephone | String | No | IAM 계정의 전화번호 |
+| position | String | No | 직위 |
+| department | String | No | 부서명 |
+| corporate | String | No | 회사명  |
+| profileImageUrl | String | No | 프로필 이미지 URL |
+| englishName | String | No | 영문 이름 |
+| nativeName | String | No | 모국어 이름 |
+| nickname | String | No | 사용자 별명 |
+| officeHoursBegin | String | No | 업무 시작 시간 예: 09:00 |
+| officeHoursEnd | String | No | 업무 종료 시간 예: 18:00 |
 | status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
-| creationType | String | No |  |
-| idProviderId | String | No |  |
+| creationType | String | No | 생성 일시 |
+| idProviderId | String | No | 외부 인증을 사용하는 경우, 인증기관 ID |
 | idProviderType | String | No | service: IAM 계정 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
-| idProviderUserId | String | No |  |
+| idProviderUserId | String | No | 외부 인증기관이 제공한 사용자 ID |
 | createdAt | Date | No | 생성 일시 |
 | lastAccessedAt | Date | No | 마지막 접속일시 |
 | lastLoggedInAt | Date | No | 마지막 로그인일시 |
 | lastLoggedInIp | String | No | 마지막 로그인 한 IP |
 | passwordChangedAt | Date | No | 비밀번호 변경 일시 |
-| mobilePhoneCountryCode | String | No | 휴대폰 번호 입력 시 필수  |
+| mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자  |
 | organizationId | String | No | IAM 계정의 조직 ID |
-| country | String | No |  |
-| saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAM 계정 역할 |
+| country | String | No | 국적(조직 Owner의 국적) |
 
 
 
@@ -2353,8 +2346,30 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Yes   |
 
+
+###### AddIamOrgMemberProtocol
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
+| name | String | Yes | IAM 계정의 사용자 이름 | 
+| emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
+| mobilePhone | String | No | IAM 계정의 휴대전화 번호 |
+| telephone | String | No | IAM 계정의 전화번호 |
+| position | String | No | 직위 |
+| department | String | No | 부서명 |
+| corporate | String | No | 회사명 |
+| profileImageUrl | String | No | 프로필 이미지 URL |
+| englishName | String | No | 영문 이름 |
+| nativeName | String | No | 모국어 이름 |
+| nickname | String | No | 사용자 별명 |
+| officeHoursBegin | String | No | 업무 시작 시간 예: 09:00 |
+| officeHoursEnd | String | No | 업무 종료 시간 예: 18:00 |
+| status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
+| creationType | String | No | 연동(sso), 초대(invited), 등록(registred) |
+| mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수  |
 
 
 
@@ -2454,8 +2469,31 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Yes   |
 
+
+###### UpdateIamOrgMemberProtocol
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
+| name | String | Yes | IAM 계정의 사용자 이름 | 
+| emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
+| mobilePhone | String | No | IAM 계정의 휴대전화 번호 |
+| telephone | String | No | IAM 계정의 전화번호 |
+| position | String | No | 직위 |
+| department | String | No | 부서명 |
+| corporate | String | No | 회사명 |
+| profileImageUrl | String | No | 프로필 이미지 URL |
+| englishName | String | No | 영문 이름 |
+| nativeName | String | No | 모국어 이름 |
+| nickname | String | No | 사용자 별명 |
+| officeHoursBegin | String | No | 업무 시작 시간 예: 09:00 |
+| officeHoursEnd | String | No | 업무 종료 시간 예: 18:00 |
+| status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
+| creationType | String | No | 연동(sso), 초대(invited), 등록(registred) |
+| idProviderUserId | String | No | 외부 인증기관이 제공한 사용자 ID |
+| mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수 |
 
 
 ##### 응답 본문
@@ -3697,7 +3735,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |  
 |------------ | ------------- | ------------- | ------------ |
-|   memberUuids | List&lt;String>| Yes | 삭제할 대상 계정의 UUID 리스트 |
+|   memberUuids | List&lt;String>| Yes | 삭제할 대상 계정의 UUID 목록 |
 
 
 ##### 응답 본문
@@ -3927,8 +3965,8 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   header | [공통 응답](#응답)| Yes   |
 
 
-<a id="조직-하위-멤버의-모든-인증정보-리스트-조회"></a>
-#### 조직 하위 멤버 인증 정보 리스트 조회
+<a id="조직-하위-멤버의-모든-인증정보-목록-조회"></a>
+#### 조직 하위 멤버 인증 정보 목록 조회
 
 > GET "/v1/authentications/organizations/{org-id}/user-access-keys"
 
