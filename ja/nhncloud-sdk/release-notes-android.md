@@ -1,6 +1,15 @@
 ## NHN Cloud > SDK使用ガイド > リリースノート > Android
 
-  ## 1.11.0 (2025. 04. 29.)
+## 1.11.1 (2025. 06. 05.)
+
+### NHN Cloud Push
+
+#### バグ修正
+
+* Notification Hub APIドメインエラー修正
+    * 誤って設定されたNotification Hub APIドメインを修正し、API呼び出しエラーを解消しました。
+    
+## 1.11.0 (2025. 04. 29.)
 
 ### NHN Cloud Push
 
