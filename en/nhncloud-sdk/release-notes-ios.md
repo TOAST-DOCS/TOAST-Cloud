@@ -4,7 +4,7 @@
 ### NHN Cloud Push
 #### Added Features 
 * Added Notification Hub 
-    * NHN Cloud Push SDK supports Notification Hub.
+    * NHN Cloud Push SDK supports Notification Hub
     * You can use it by setting the value NHNCloudPushServiceTypeNotificationHub in the serviceType property of NHNCloudPushConfiguration.
 
 ## 1.8.6 (2024. 11. 15.)
