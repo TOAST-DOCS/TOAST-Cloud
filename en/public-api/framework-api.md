@@ -2159,37 +2159,37 @@ API to get the IAM members in your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   corporate | String| No |
-|   country | String| No |
-|   createdAt | Date| No |
-|   creationType | String| No| Member's creation type |
-|   department | String| No|
-|   emailAddress | String| Yes | IAM member email address  |
-|   englishName | String| No|
-|   id | String| Yes | IAM member UUID  |
-|   idProviderId | String| No|
+|   corporate | String| No |Company name |
+|   country | String| No | Nationality (nationality of the organization owner) |
+|   createdAt | Date| No | Date and time of creation |
+|   creationType | String| No| Account creation type |
+|   department | String| No|Department name |
+|   emailAddress | String| Yes | IAM account email address  |
+|   englishName | String| No| English name | 
+|   id | String| Yes | IAM account UUID  |
+|   idProviderId | String| No| Certification Authority ID (if using external authentication) |
 |   idProviderType | String| No| service: IAM direct sign-in<br>SSO: Customer SSO integration |
-|   idProviderUserId | String| No|
-|   lastAccessedAt | Date| No| The member's last access date, returning null if not present |
-|   lastLoggedInAt | Date| No| The member's last login date, returning null if not found |
-|   lastLoggedInIp | String| No| The member's last login IP address, returning null if not present |
-|   maskingEmail | String| No | Masked email addresses for IAM members  |
-|   mobilePhone | String| No | IAM member's cell phone number  |
-|   mobilePhoneCountryCode | String| No|
-|   name | String| Yes | Name of the IAM member  |
-|   nativeName | String| No|
-|   nickname | String| No|
-|   officeHoursBegin | String| No|
-|   officeHoursEnd | String| No|
-|   organizationId | String| Yes | Organization ID of the IAM member  |
-|   passwordChangedAt | Date| No| When the member's last password was changed, returning null if none |
-|   position | String| No|
-|   profileImageUrl | String| No|
+|   idProviderUserId | String| No|User ID provided by an external certification authority |
+|   lastAccessedAt | Date| No| The account's last access date, returning null if not present |
+|   lastLoggedInAt | Date| No| The account's last login date, returning null if not found |
+|   lastLoggedInIp | String| No| The account's last login IP address, returning null if not present |
+|   maskingEmail | String| No | Masked email addresses for IAM accounts  |
+|   mobilePhone | String| No | IAM account's mobile phone number  |
+|   mobilePhoneCountryCode | String| No|Country code for mobile phone numbers |
+|   name | String| Yes | Name of the IAM account  |
+|   nativeName | String| No| Native language name |
+|   nickname | String| No| User nickname |
+|   officeHoursBegin | String| No| Work start time example: 09:00 |
+|   officeHoursEnd | String| No| Work end time example: 18:00 |
+|   organizationId | String| Yes | Organization ID for the IAM account  |
+|   passwordChangedAt | Date| No| When the account's last password was changed, returning null if none |
+|   position | String| No| Position |
+|   profileImageUrl | String| No| Profile image URL |
 |   roles | [List<RoleBundleProtocol>](#rolebundleprotocol)| No | List of related roles (with condition attributes)  |
-|   saasRoles | List<IamMemberRole>| No | IAM member roles  |
-|   String | String| No| Member's status |
-|   telephone | String| No | IAM member's phone number  |
-|   userCode | String| Yes | IAM member ID  |
+|   saasRoles | List<IamMemberRole>| No | IAM account roles  |
+|   String | String| No| Account's status |
+|   telephone | String| No | IAM account's phone number  |
+|   userCode | String| Yes | IAM account ID  |
 
 
 
@@ -2249,11 +2249,6 @@ API to get a list of IAM members that belong to this organization.
     "mobilePhoneCountryCode": "mobilePhoneCountryCode",
     "id": "id",
     "department": "department",
-    "saasRoles": [ {
-      "role": "role",
-      "productId": "productId",
-      "productName": "productName"
-    } ],
     "profileImageUrl": "profileImageUrl",
     "lastAccessedAt": "2000-01-23T04:56:07.000+00:00",
     "maskingEmail": "maskingEmail",
@@ -2294,37 +2289,35 @@ API to get a list of IAM members that belong to this organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-| header | [Common response](#Response)| Yes | Required only if protocol is in response |
-| id | String | No | IAM member UUID | 
-| userCode | String | Yes | IAM member ID to use for sign-in | 
-| name | String | Yes | Username of the IAM member | 
-| emailAddress | String |  Yes | IAM member's email address<br>Used to receive notifications or to change your password. |
-| maskingEmail | String | No | Masked email addresses for IAM members |
-| mobilePhone | String | No | IAM member's cell phone number |
-| telephone | String | No | IAM member phone number |
-| position | String | No |  |
-| department | String | No |  |
-| corporate | String | No |  |
-| profileImageUrl | String | No |  |
-| englishName | String | No |  |
-| nativeName | String | No |  |
-| nickname | String | No |  |
-| officeHoursBegin | String | No |  |
-| officeHoursEnd | String | No |  |
+| id | String | No | IAM account UUID | 
+| userCode | String | Yes | IAM account ID to use for sign-in | 
+| name | String | Yes | Username of the IAM account | 
+| emailAddress | String |  Yes | IAM account's email address<br>Used to receive notifications or to change your password. |
+| maskingEmail | String | No | Masked email addresses for IAM accounts |
+| mobilePhone | String | No | IAM account's mobile phone number |
+| telephone | String | No | IAM account's phone number |
+| position | String | No | Position |
+| department | String | No | Department name |
+| corporate | String | No | Company name  |
+| profileImageUrl | String | No | Profile image URL |
+| englishName | String | No | English name |
+| nativeName | String | No | Native language name |
+| nickname | String | No | User nickname |
+| officeHoursBegin | String | No | Work start time example: 09:00 |
+| officeHoursEnd | String | No | Work end time example: 18:00 |
 | String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
-| creationType | String | No |  |
-| idProviderId | String | No |  |
+| creationType | String | No | Date and time of creation |
+| idProviderId | String | No | Certification Authority ID (if using external authentication) |
 | idProviderType | String | No | service: IAM direct sign-in (default)<br>SSO: Customer SSO integration (cannot be set up if not integrated) |
-| idProviderUserId | String | No |  |
+| idProviderUserId | String | No | User ID provided by an external certification authority |
 | createdAt | Date | No | Date and time of creation |
 | lastAccessedAt | Date | No | Date of last access |
 | lastLoggedInAt | Date | No | Date of last login |
 | lastLoggedInIp | String | No | Last logged in IP |
 | passwordChangedAt | Date | No | When to change your password |
-| mobilePhoneCountryCode | String | No | Required when entering a mobile phone number  |
-| organizationId | String | No | Organization ID of the IAM member |
-| country | String | No |  |
-| saasRoles | List<[IamMemberRole](#iammemberrole)> | No | IAM roles |
+| mobilePhoneCountryCode | String | No | Country code for mobile phone numbers  |
+| organizationId | String | No | Organization ID of the IAM account |
+| country | String | No | Nationality (nationality of the organization owner) |
 
 
 
@@ -2353,8 +2346,30 @@ API to add IAM members to your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Yes   |
 
+
+###### AddIamOrgMemberProtocol
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | The IAM account ID to use for signing in | 
+| name | String | Yes | Username of the IAM account | 
+| emailAddress | String |  Yes | Email address of the IAM account<br>Used to receive notifications or password change. |
+| mobilePhone | String | No | IAM account's mobile phone number |
+| telephone | String | No | IAM account's phone number |
+| position | String | No | Position |
+| department | String | No | Department name |
+| corporate | String | No | Company name |
+| profileImageUrl | String | No | Profile image URL |
+| englishName | String | No | English name |
+| nativeName | String | No | Native language name |
+| nickname | String | No | User nickname |
+| officeHoursBegin | String | No | Work start time example: 09:00 |
+| officeHoursEnd | String | No | Work end time example: 18:00 |
+| String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| creationType | String | No | SSO, invited, and registered |
+| mobilePhoneCountryCode | String | No | Country code for mobile phone numbers, required when entering a mobile phone number  |
 
 
 
@@ -2454,8 +2469,31 @@ API to modify your organization's IAM member information.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Yes   |
 
+
+###### UpdateIamOrgMemberProtocol
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | IAM account ID to use for signing in | 
+| name | String | Yes | Username of the IAM account | 
+| emailAddress | String |  Yes | Email address of the IAM account<br>Used to receive notifications or password change. |
+| mobilePhone | String | No | IAM account's mobile phone number |
+| telephone | String | No | IAM account's phone number |
+| position | String | No | Position |
+| department | String | No | Department name |
+| corporate | String | No | Company name |
+| profileImageUrl | String | No | Profile image URL |
+| englishName | String | No | English name |
+| nativeName | String | No | Native language name |
+| nickname | String | No | User nickname |
+| officeHoursBegin | String | No | Work start time example: 09:00 |
+| officeHoursEnd | String | No | Work end time example: 18:00 |
+| String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| creationType | String | No | SSO, invited, and registered |
+| idProviderUserId | String | No | User ID provided by an external certification authority |
+| mobilePhoneCountryCode | String | No | Country code for mobile phone numbers, required when entering a mobile phone number |
 
 
 ##### Response Body
@@ -3926,7 +3964,7 @@ API to change the role of a specified IAM account in a project.
 |   header | [Common response](#응답)| Yes   |
 
 
-<a id="조직-하위-멤버의-모든-인증정보-리스트-조회"></a>
+<a id="조직-하위-멤버의-모든-인증정보-목록-조회"></a>
 #### View all credentials of members under organizations
 
 > GET "/v1/authentications/organizations/{org-id}/user-access-keys"
