@@ -122,6 +122,12 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | User Access Key ID 삭제 |
 | GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-목록-조회)                               | 토큰 목록 조회                    |
 | DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료)                               | 토큰 다건 만료                    |
+| POST |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-생성) | 프로젝트 IAM 계정 생성 |
+| DELETE |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-다건-삭제) | 프로젝트 IAM 계정 다건 삭제 |
+| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 IAM 계정 단건 조회 |
+| GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | 프로젝트 IAM 계정 목록 조회 |
+| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | 프로젝트 IAM 계정 역할 수정 |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-목록-조회) | 조직 하위 멤버 인증 정보 목록 조회 |
 
 
 
@@ -2153,32 +2159,32 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   corporate | String| No |
-|   country | String| No |
-|   createdAt | Date| No |
+|   corporate | String| No | 회사명 |
+|   country | String| No | 국적(조직 Owner의 국적) |
+|   createdAt | Date| No | 생성 일시 |
 |   creationType | String| No| 계정의 생성 타입 |
-|   department | String| No|
+|   department | String| No| 부서명 |
 |   emailAddress | String| Yes | IAM 계정 이메일 주소  |
-|   englishName | String| No|
+|   englishName | String| No| 영어 이름 | 
 |   id | String| Yes | IAM 계정 UUID  |
-|   idProviderId | String| No|
+|   idProviderId | String| No| 외부 인증을 사용하는 경우, 인증기관 ID |
 |   idProviderType | String| No| service: IAM 계정 직접 로그인<br>sso: 고객 SSO 연동 |
-|   idProviderUserId | String| No|
+|   idProviderUserId | String| No| 외부 인증기관이 제공한 사용자 ID |
 |   lastAccessedAt | Date| No| 계정의 마지막 접속 일시, 없을 경우 null 반환 |
 |   lastLoggedInAt | Date| No| 계정의 마지막 로그인 일시, 없을 경우 null 반환 |
 |   lastLoggedInIp | String| No| 계정의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
 |   maskingEmail | String| No | IAM 계정의 마스킹된 이메일주소  |
-|   mobilePhone | String| No | IAM 계정의 휴대폰 번호  |
-|   mobilePhoneCountryCode | String| No|
+|   mobilePhone | String| No | IAM 계정의 휴대전화 번호  |
+|   mobilePhoneCountryCode | String| No| 휴대전화 번호 국가 코드 2자리 영문자 |
 |   name | String| Yes | IAM 계정의 이름  |
-|   nativeName | String| No|
-|   nickname | String| No|
-|   officeHoursBegin | String| No|
-|   officeHoursEnd | String| No|
+|   nativeName | String| No| 모국어 이름 |
+|   nickname | String| No| 사용자 별명 |
+|   officeHoursBegin | String| No| 업무 시작 시간 예: 09:00 |
+|   officeHoursEnd | String| No| 업무 종료 시간 예: 18:00 |
 |   organizationId | String| Yes | IAM 계정의 조직 ID  |
 |   passwordChangedAt | Date| No| 계정의 마지막 비밀번호 변경 일시, 없을 경우 null 반환 |
-|   position | String| No|
-|   profileImageUrl | String| No|
+|   position | String| No| 직위 |
+|   profileImageUrl | String| No| 프로필 이미지 URL |
 |   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 연관 역할 목록(조건 속성 포함)  |
 |   saasRoles | List&lt;IamMemberRole>| No | IAM 계정 역할  |
 |   status | String| No| 계정의 상태 |
@@ -2243,11 +2249,6 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
     "mobilePhoneCountryCode": "mobilePhoneCountryCode",
     "id": "id",
     "department": "department",
-    "saasRoles": [ {
-      "role": "role",
-      "productId": "productId",
-      "productName": "productName"
-    } ],
     "profileImageUrl": "profileImageUrl",
     "lastAccessedAt": "2000-01-23T04:56:07.000+00:00",
     "maskingEmail": "maskingEmail",
@@ -2288,37 +2289,35 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-| header | [공통 응답](#응답)| Yes | protocol이 response에 있는 경우에만 필수값 |
 | id | String | No | IAM 계정 UUID | 
 | userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
 | name | String | Yes | IAM 계정의 사용자 이름 | 
 | emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
 | maskingEmail | String | No | IAM 계정의 마스킹된 이메일 주소 |
-| mobilePhone | String | No | IAM 계정의 휴대폰 번호 |
-| telephone | String | No | IAM 계정 전화번호 |
-| position | String | No |  |
-| department | String | No |  |
-| corporate | String | No |  |
-| profileImageUrl | String | No |  |
-| englishName | String | No |  |
-| nativeName | String | No |  |
-| nickname | String | No |  |
-| officeHoursBegin | String | No |  |
-| officeHoursEnd | String | No |  |
+| mobilePhone | String | No | IAM 계정의 휴대전화 번호 |
+| telephone | String | No | IAM 계정의 전화번호 |
+| position | String | No | 직위 |
+| department | String | No | 부서명 |
+| corporate | String | No | 회사명  |
+| profileImageUrl | String | No | 프로필 이미지 URL |
+| englishName | String | No | 영문 이름 |
+| nativeName | String | No | 모국어 이름 |
+| nickname | String | No | 사용자 별명 |
+| officeHoursBegin | String | No | 업무 시작 시간 예: 09:00 |
+| officeHoursEnd | String | No | 업무 종료 시간 예: 18:00 |
 | status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
-| creationType | String | No |  |
-| idProviderId | String | No |  |
+| creationType | String | No | 생성 일시 |
+| idProviderId | String | No | 외부 인증을 사용하는 경우, 인증기관 ID |
 | idProviderType | String | No | service: IAM 계정 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
-| idProviderUserId | String | No |  |
+| idProviderUserId | String | No | 외부 인증기관이 제공한 사용자 ID |
 | createdAt | Date | No | 생성 일시 |
 | lastAccessedAt | Date | No | 마지막 접속일시 |
 | lastLoggedInAt | Date | No | 마지막 로그인일시 |
 | lastLoggedInIp | String | No | 마지막 로그인 한 IP |
 | passwordChangedAt | Date | No | 비밀번호 변경 일시 |
-| mobilePhoneCountryCode | String | No | 휴대폰 번호 입력 시 필수  |
+| mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자  |
 | organizationId | String | No | IAM 계정의 조직 ID |
-| country | String | No |  |
-| saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAM 계정 역할 |
+| country | String | No | 국적(조직 Owner의 국적) |
 
 
 
@@ -2347,8 +2346,30 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Yes   |
 
+
+###### AddIamOrgMemberProtocol
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
+| name | String | Yes | IAM 계정의 사용자 이름 | 
+| emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
+| mobilePhone | String | No | IAM 계정의 휴대전화 번호 |
+| telephone | String | No | IAM 계정의 전화번호 |
+| position | String | No | 직위 |
+| department | String | No | 부서명 |
+| corporate | String | No | 회사명 |
+| profileImageUrl | String | No | 프로필 이미지 URL |
+| englishName | String | No | 영문 이름 |
+| nativeName | String | No | 모국어 이름 |
+| nickname | String | No | 사용자 별명 |
+| officeHoursBegin | String | No | 업무 시작 시간 예: 09:00 |
+| officeHoursEnd | String | No | 업무 종료 시간 예: 18:00 |
+| status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
+| creationType | String | No | 연동(sso), 초대(invited), 등록(registred) |
+| mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수  |
 
 
 
@@ -2448,8 +2469,31 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Yes   |
 
+
+###### UpdateIamOrgMemberProtocol
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
+| name | String | Yes | IAM 계정의 사용자 이름 | 
+| emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
+| mobilePhone | String | No | IAM 계정의 휴대전화 번호 |
+| telephone | String | No | IAM 계정의 전화번호 |
+| position | String | No | 직위 |
+| department | String | No | 부서명 |
+| corporate | String | No | 회사명 |
+| profileImageUrl | String | No | 프로필 이미지 URL |
+| englishName | String | No | 영문 이름 |
+| nativeName | String | No | 모국어 이름 |
+| nickname | String | No | 사용자 별명 |
+| officeHoursBegin | String | No | 업무 시작 시간 예: 09:00 |
+| officeHoursEnd | String | No | 업무 종료 시간 예: 18:00 |
+| status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
+| creationType | String | No | 연동(sso), 초대(invited), 등록(registred) |
+| idProviderUserId | String | No | 외부 인증기관이 제공한 사용자 ID |
+| mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수 |
 
 
 ##### 응답 본문
@@ -3592,6 +3636,420 @@ User Access Key ID로 발급한 토큰을 다건 만료시키는 API입니다.<b
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [공통 응답](#응답)| Yes |
+
+
+<a id="프로젝트-IAM-계정-생성"></a>
+#### 프로젝트 IAM 계정 생성
+
+> POST "/v1/iam/projects/{project-id}/members"
+
+IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
+
+##### 필요 권한
+`Project.Member.Iam.Create`
+
+##### 요청 파라미터
+
+
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | 멤버를 추가할 프로젝트 ID | 
+| Request Body | request | AddIamProjectMemberRequest| Yes | 요청 |
+
+
+
+
+###### AddIamProjectMemberRequest
+> 주의<br>
+> 한 요청에 한 명의 프로젝트 멤버만 만들 수 있습니다.
+
+
+| 이름 | 타입 | 필수 | 설명 |  
+|------------ | ------------- | ------------- | ------------ |
+|   assignRoles | List&lt;UserAssignRoleProtocol>| Yes | 사용자에게 할당할 역할 목록  |
+|   memberUuid | String| Yes | 추가할 멤버의 UUID  |
+
+
+###### UserAssignRoleProtocol
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+|   roleId | String| Yes | 역할 ID  |
+|   conditions | List&lt;AssignAttributeConditionProtocol>| No | 역할 조건 속성  |
+
+
+###### AssignAttributeConditionProtocol
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+|   attributeId | String| Yes | 조건 속성 ID  |
+|   attributeOperatorTypeCode | String| Yes | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List&lt;String>| Yes | 조건 속성 값  |
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### 응답
+
+
+| 이름 | 타입           | 필수 | 설명 |   
+|------------ |--------------| ------- | ------------ |
+|   header | [공통 응답](#응답) | Yes |
+
+
+<a id="프로젝트-IAM-계정-다건-삭제"></a>
+#### 프로젝트 IAM 계정 다건 삭제
+
+> DELETE "/v1/iam/projects/{project-id}/members"
+
+IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
+
+##### 필요 권한
+`Project.Member.Iam.Delete`
+
+##### 요청 파라미터
+
+
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | 프로젝트 ID | 
+|  Request Body |request | DeleteMembersRequest | Yes | 요청 | 
+
+
+###### DeleteMembersRequest
+
+
+| 이름 | 타입 | 필수 | 설명 |  
+|------------ | ------------- | ------------- | ------------ |
+|   memberUuids | List&lt;String>| Yes | 삭제할 대상 계정의 UUID 목록 |
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### 응답
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [공통 응답](#응답)| Yes |
+
+
+<a id="프로젝트-IAM-계정-단건-조회"></a>
+#### 프로젝트 IAM 계정 단건 조회
+
+> GET "/v1/iam/projects/{project-id}/members/{member-uuid}"
+
+프로젝트에 소속된 특정 IAM 멤버를 조회하는 API입니다.
+
+##### 필요 권한
+`Project.Member.Iam.Get`
+
+##### 요청 파라미터
+
+
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | 멤버를 조회할 프로젝트 ID |
+|  Path |member-uuid | String| Yes | 조회할 멤버 UUID |
+
+
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "projectMember": {
+    "uuid": "uuid",
+    "id": "id",
+    "emailAddress": "emailAddress",
+    "maskingEmail": "maskingEmail",
+    "name": "memberName",
+    "relationDateTime": "2000-01-23T04:56:07.000+00:00",
+    "roles": [ {
+      "regDateTime": "2000-01-23T04:56:07.000+00:00",
+      "roleApplyPolicyCode": "ALLOW",
+      "roleId": "roleId",
+      "roleName": "roleName",
+      "categoryKey": "categoryKey",
+      "description": "description",
+      "categoryTypeCode": "ORG_ROLE_GROUP",
+      "conditions": [ {
+        "attributeId": "attributeId",
+        "attributeOperatorTypeCode": "ALLOW",
+        "attributeValues": [ "attributeValues", "attributeValues" ],
+        "attributeDescription": "attributeDescription",
+        "attributeName": "attributeName",
+        "attributeDataTypeCode": "BOOLEAN"
+      } ]
+    } ]
+  }
+}
+```
+
+
+###### 응답
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [공통 응답](#응답)| Yes |
+|   projectMember | ProjectIamMemberRoleBundleProtocol| Yes  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
+
+
+###### ProjectMemberRoleBundleProtocol
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+|   uuid | String| Yes | 멤버 UUID  |
+|   id | String| Yes | 아이디  |
+|   name | String| No | 이름  |
+|   emailAddress | String| No | 멤버 이메일 주소  |
+|   maskingEmail | String| No | 멤버의 마스킹된 이메일  |
+|   mobilePhone | String| No | 전화 번호  |
+|   relationDateTime | Date| No | 멤버 추가 시간  |
+|   joinYmdt | Date| No | 가입 일시  |
+|   recentLoginYmdt | Date| No | 최근 로그인 일시  |
+|   recentPasswordModifyYmdt | Date| No | 최근 비밀번호 변경 일시  |
+|   roles | List&lt;RoleBundleProtocol>| No | 연관 역할 목록(조건 속성 포함)  |
+
+
+[RoleBundleProtocol](#rolebundleprotocol)
+
+
+
+<a id="프로젝트-IAM-계정-목록-조회"></a>
+#### 프로젝트 IAM 계정 목록 조회
+
+> GET "/v1/iam/projects/{project-id}/members"
+
+프로젝트에 소속된 IAM 멤버 목록을 조회하기 위한 API입니다.
+
+##### 필요 권한
+`Project.Member.Iam.List`
+
+##### 요청 파라미터
+
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | 조회할 프로젝트 ID | 
+|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
+|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+
+
+
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+  "projectMembers": [ {
+    "uuid": "uuid",
+    "id": "id",
+    "emailAddress": "emailAddress",
+    "maskingEmail": "maskingEmail",
+    "memberName": "memberName",
+    "relationDateTime": "2000-01-23T04:56:07.000+00:00"
+  } ]
+}
+```
+
+###### 응답
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [공통 응답](#응답)| Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   projectMembers | List&lt;IamProjectMemberProtocol>| Yes | 프로젝트 멤버 목록  |
+
+
+
+###### IamProjectMemberProtocol
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+|   uuid | String| Yes | 멤버 UUID  |
+|   id | String| Yes | 아이디  |
+|   name | String| No | 이름  |
+|   emailAddress | String| No | 멤버 이메일 주소  |
+|   maskingEmail | String| No | 멤버의 마스킹된 이메일  |
+|   mobilePhone | String| No | 전화 번호  |
+|   relationDateTime | Date| No | 멤버 추가 시간  |
+|   joinYmdt | Date| No | 가입 일시  |
+|   recentLoginYmdt | Date| No | 최근 로그인 일시  |
+|   recentPasswordModifyYmdt | Date| No | 최근 비밀번호 변경 일시  |
+
+
+<a id="프로젝트-IAM-계정-역할-수정"></a>
+#### 프로젝트 IAM 계정 역할 수정
+
+> PUT "/v1/iam/projects/{project-id}/members/{member-uuid}"
+
+프로젝트에서 지정한 IAM 멤버의 역할을 변경하는 API입니다.
+
+##### 필요 권한
+`Project.Member.Iam.Update`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | 프로젝트 ID | 
+|  Path |member-uuid | String| Yes | 역할 변경 대상 멤버 UUID | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | 요청 |
+
+
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [공통 응답](#응답)| Yes   |
+
+
+<a id="조직-하위-멤버의-모든-인증정보-목록-조회"></a>
+#### 조직 하위 멤버 인증 정보 목록 조회
+
+> GET "/v1/authentications/organizations/{org-id}/user-access-keys"
+
+조직에 소속된 멤버 및 프로젝트 멤버의 인증 정보를 조회하는 API입니다.
+
+##### 필요 권한
+`Organization.UserAccessKey.List`
+
+##### 요청 파라미터
+
+
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | UserAccessKey를 조회할 조직 ID |
+|  Query |paging | Paging| No | 페이지당 표시 건수, 기본값 20 |
+
+
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "authenticationList": [
+    {
+      "authId": "makedAuthId",
+      "uuid": "uuid",
+      "userAccessKeyID": "maskedUserAccessKeyID",
+      "secretAccessKey": "",
+      "tokenExpiryPeriod": 86400,
+      "regDatetime": "2024-05-03T10:27:58.000+00:00",
+      "modDatetime": "2024-05-03T10:27:58.000+00:00",
+      "lastUsedDatetime": "2024-08-16T14:09:37.000+00:00",
+      "reIssueDatetime": "2024-08-29T12:00:45.000+00:00",
+      "lastTokenUsedDatetime": null,
+      "validTokenCount": null,
+      "authStatus": "STABLE"
+    }
+  ],
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+}
+```
+
+
+###### 응답
+
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [공통 응답](#응답)| Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   authenticationList | List&lt;UserAccessKeyResponseV7>| Yes  | 멤버별 인증 키 정보 |
+
+
+###### UserAccessKeyResponseV7
+
+| 이름 | 타입 | 필수 | 설명 |
+|------------|--------|------|-----------------------------|
+| authId | String | Yes | 인증 수단 ID(마스킹 처리) |
+| uuid | String | Yes | 사용자 UUID |
+| userAccessKeyID | String | Yes | User Access Key ID(마스킹 처리) |
+| secretAccessKey | String | No | 비밀 키(공백 처리) |
+| authStatusCode | String | Yes | 인증 상태 코드(STABLE, STOP, BLOCKED) |
+| tokenExpiryPeriod | Long | No | 토큰 만료 주기 |
+| regDatetime | Date | No | 생성 일시 |
+| modDatetime | Date | No | 삭제 일시 |
+| lastUsedDatetime | Date | No | 마지막 사용 일시 |
+| reIssueDatetime | Date | No | secretAccessKey 재생성 일시 |
+| lastTokenUsedDatetime | Date | No | 토큰 마지막 사용 일시 |
+| validTokenCount | Long | No | 유효한 토큰 개수 |
+
+
+
 
 
 ### 오류 코드

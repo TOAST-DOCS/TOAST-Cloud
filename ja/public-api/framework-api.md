@@ -2158,15 +2158,15 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   corporate | String| No |
-|   country | String| No |
-|   createdAt | Date| No |
+|   corporate | String| No | 会社名 |
+|   country | String| No | 国籍(組織Ownerの国籍) |
+|   createdAt | Date| No | 作成日時 |
 |   creationType | String| No| メンバーの作成タイプ |
-|   department | String| No|
+|   department | String| No| 部署名 |
 |   emailAddress | String| Yes | IAMメンバーメールアドレス |
-|   englishName | String| No|
+|   englishName | String| No| 英語名 | 
 |   id | String| Yes | IAMメンバーUUID  |
-|   idProviderId | String| No|
+|   idProviderId | String| No| 外部認証を使用する場合、認証機関ID |
 |   idProviderType | String| No| service: IAM直接ログイン<br>sso:顧客SSO連動 |
 |   idProviderUserId | String| No|
 |   lastAccessedAt | Date| No| メンバーの最後の接続日時、ない場合はnullを返す |
@@ -2174,7 +2174,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   lastLoggedInIp | String| No| メンバーの最後のログインIPアドレス、ない場合はnullを返す |
 |   maskingEmail | String| No | IAMメンバーのマスキングされたメールアドレス |
 |   mobilePhone | String| No | IAMメンバーの携帯電話番号 |
-|   mobilePhoneCountryCode | String| No|
+|   mobilePhoneCountryCode | String| No| 携帯電話番号国コード2桁英字 |
 |   name | String| Yes | IAMメンバーの名前 |
 |   nativeName | String| No|
 |   nickname | String| No|
@@ -2182,8 +2182,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   officeHoursEnd | String| No|
 |   organizationId | String| Yes | IAMメンバーの組織ID  |
 |   passwordChangedAt | Date| No| メンバーの最後のパスワード変更日時、ない場合はnullを返す |
-|   position | String| No|
-|   profileImageUrl | String| No|
+|   position | String| No| 役職 |
+|   profileImageUrl | String| No| プロフィールイメージURL |
 |   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 関連ロールリスト(条件属性を含む)  |
 |   saasRoles | List&lt;IamMemberRole>| No | IAMメンバーロール |
 |   status | String| No| メンバーの状態 |
@@ -2248,11 +2248,6 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
     "mobilePhoneCountryCode": "mobilePhoneCountryCode",
     "id": "id",
     "department": "department",
-    "saasRoles": [ {
-      "role": "role",
-      "productId": "productId",
-      "productName": "productName"
-    } ],
     "profileImageUrl": "profileImageUrl",
     "lastAccessedAt": "2000-01-23T04:56:07.000+00:00",
     "maskingEmail": "maskingEmail",
@@ -2293,7 +2288,6 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-| header | [共通レスポンス](#レスポンス)| Yes | protocolがresponseにある場合にのみ必須値 |
 | id | String | No | IAMメンバーUUID | 
 | userCode | String | Yes | ログイン時に使用するIAMメンバーID | 
 | name | String | Yes | IAMメンバーのユーザー名 | 
@@ -2301,29 +2295,28 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | maskingEmail | String | No | IAMメンバーのマスキングされたメールアドレス |
 | mobilePhone | String | No | IAMメンバーの携帯電話番号 |
 | telephone | String | No | IAMメンバー電話番号 |
-| position | String | No |  |
-| department | String | No |  |
-| corporate | String | No |  |
-| profileImageUrl | String | No |  |
-| englishName | String | No |  |
-| nativeName | String | No |  |
-| nickname | String | No |  |
-| officeHoursBegin | String | No |  |
-| officeHoursEnd | String | No |  |
+| position | String | No | 役職 |
+| department | String | No | 部署名 |
+| corporate | String | No | 会社名 |
+| profileImageUrl | String | No | プロフィールイメージURL |
+| englishName | String | No | 英語名 |
+| nativeName | String | No | 母国語名 |
+| nickname | String | No | ユーザーニックネーム |
+| officeHoursBegin | String | No | 業務開始時間例：09:00 |
+| officeHoursEnd | String | No | 業務終了時間例：18:00 |
 | status | String | Yes | メンバーの状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要があります |
-| creationType | String | No |  |
-| idProviderId | String | No |  |
+| creationType | String | No | 作成日時 |
+| idProviderId | String | No | 外部認証を使用する場合、認証機関ID |
 | idProviderType | String | No | service: IAM直接ログイン(デフォルト値)<br>sso:顧客SSO連動(連動されていない場合は設定不可) |
-| idProviderUserId | String | No |  |
+| idProviderUserId | String | No | 外部認証機関が提供したユーザーID |
 | createdAt | Date | No | 作成日時 |
 | lastAccessedAt | Date | No | 最終接続日時 |
 | lastLoggedInAt | Date | No | 最終ログイン日時 |
 | lastLoggedInIp | String | No | 最後にログインしたIP |
 | passwordChangedAt | Date | No | パスワード変更日時 |
-| mobilePhoneCountryCode | String | No | 携帯電話番号入力時、必須 |
+| mobilePhoneCountryCode | String | No | 携帯電話番号国コード2桁英字 |
 | organizationId | String | No | IAMメンバーの組織ID |
-| country | String | No |  |
-| saasRoles | List&lt;[IamMemberRole](#iammemberrole)> | No | IAMロール |
+| country | String | No | 国籍(組織Ownerの国籍) |
 
 
 
@@ -2352,8 +2345,30 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Yes   |
 
+
+###### AddIamOrgMemberProtocol
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | ログイン時に使用するIAMアカウントID | 
+| name | String | Yes | IAMアカウントのユーザー名 | 
+| emailAddress | String |  Yes | IAMアカウントのメールアドレス<br>告知を受信したりパスワード変更案内メールを受信するのに使用される |
+| mobilePhone | String | No | IAMアカウントの携帯電話番号 |
+| telephone | String | No | IAMアカウントの電話番号 |
+| position | String | No | 役職 |
+| department | String | No | 部署名 |
+| corporate | String | No | 会社名 |
+| profileImageUrl | String | No | プロフィールイメージURL |
+| englishName | String | No | 英語名 |
+| nativeName | String | No | 母国語名 |
+| nickname | String | No | ユーザーニックネーム |
+| officeHoursBegin | String | No | 業務開始時間例：09:00 |
+| officeHoursEnd | String | No | 業務終了時間例：18:00 |
+| status | String | Yes | アカウント状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要がある |
+| creationType | String | No | 連動(sso)、招待(invited)、登録(registred) |
+| mobilePhoneCountryCode | String | No | 携帯電話番号国コード2桁英字、携帯電話番号を入力する場合は必須 |
 
 
 
@@ -2453,8 +2468,30 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Yes   |
 
+###### UpdateIamOrgMemberProtocol
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | ログイン時に使用するIAMアカウントID | 
+| name | String | Yes | IAMアカウントのユーザー名 | 
+| emailAddress | String |  Yes | IAMアカウントのメールアドレス<br>告知を受信したりパスワード変更案内メールを受信するのに使用される |
+| mobilePhone | String | No | IAMアカウントの携帯電話番号 |
+| telephone | String | No | IAMアカウントの電話番号 |
+| position | String | No | 役職 |
+| department | String | No | 部署名 |
+| corporate | String | No | 会社名 |
+| profileImageUrl | String | No | プロフィールイメージURL |
+| englishName | String | No | 英語名 |
+| nativeName | String | No | 母国語名 |
+| nickname | String | No | ユーザーニックネーム |
+| officeHoursBegin | String | No | 業務開始時間例：09:00 |
+| officeHoursEnd | String | No | 業務終了時間例：18:00 |
+| status | String | Yes | アカウント状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要がある |
+| creationType | String | No | 連動(sso)、招待(invited)、登録(registred) |
+| idProviderUserId | String | No | 外部認証機関が提供したユーザーID |
+| mobilePhoneCountryCode | String | No | 携帯電話番号国コード2桁英字、携帯電話番号を入力する場合は必須 |
 
 
 ##### レスポンス本文

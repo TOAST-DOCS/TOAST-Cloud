@@ -166,6 +166,23 @@ NhnCloudPush.initialize(PushType.ADM, configuration);
 > NhnCloudPush.initialize(NhnCloudPushConfiguration) has been deprecated.
 > PushType is automatically set to FCM when initialized using NhnCloudPush.initialize(NhnCloudPushConfiguration).
 
+## Settings when using Notification Hub
+
+* NHN Cloud Push SDK supports Notification Hub.
+* You can use it by setting NhnCloudPushConfiguration.Builder.setServiceType(PushServiceType.NOTIFICATION_HUB).
+* The default value is PushServiceType.PUSH, and if not set, the existing Push method is applied.
+
+### Notification Hub + FCM initialization example
+
+```java
+NhnCloudPushConfiguration configuration =
+    NhnCloudPushConfiguration.newBuilder(context, "YOUR_APP_KEY")
+            .setServiceType(PushServiceType.NOTIFICATION_HUB)
+            .build();
+
+NhnCloudPush.initialize(PushType.FCM, configuration);
+```
+
 ## Service Login
 * All products provided by NHN Cloud SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
     * You can set the user id with [NhnCloudSdk.setUserId](./getting-started-android/#userid).
