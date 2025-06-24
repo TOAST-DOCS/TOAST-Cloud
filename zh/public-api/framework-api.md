@@ -108,6 +108,7 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-IAM-로그인-세션-설정-정보를-조회) | View organization IAM sign-in session settings information |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-IAM-로그인-2차-인증에-대한-설정을-조회) | View settings for organizational IAM sign-in second factor authentication |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-로그인-실패-보안-설정을-조회) | View Organization IAM Login Failure Security Settings |
+| GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#조직-IAM-계정-비밀번호-정책-조회) | Get your organization's IAM account password policy |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | Listorganization IP ACLs |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-상품-가격-조회) | Get the price of a product on a pay-as-you-go subscription |
 | GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-상품-목록-조회) | List products enrolled in a pay-as-you-go subscription |
@@ -119,6 +120,14 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#User-Access-Key-ID-비밀-키-재발급) | Reissue the User Access Key ID secret key |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-상태-수정) | Modify User Access Key ID status |
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | Delete a User Access Key ID |
+| GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-목록-조회)                               | Get Token list                    |
+| DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료)                               | Expire multiple tokens                    |
+| POST |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-생성) | Create a project IAM account |
+| DELETE |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-다건-삭제) | Delete multiple project IAM accounts |
+| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | View a project IAM account |
+| GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | View project IAM accounts |
+| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | Modify project IAM account roles |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-리스트-조회) | View all credentials of members under organizations |
 
 
 
@@ -2150,37 +2159,37 @@ API to get the IAM members in your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   corporate | String| No |
-|   country | String| No |
-|   createdAt | Date| No |
-|   creationType | String| No| Member's creation type |
-|   department | String| No|
-|   emailAddress | String| Yes | IAM member email address  |
-|   englishName | String| No|
-|   id | String| Yes | IAM member UUID  |
-|   idProviderId | String| No|
+|   corporate | String| No |Company name |
+|   country | String| No | Nationality (nationality of the organization owner) |
+|   createdAt | Date| No | Date and time of creation |
+|   creationType | String| No| Account creation type |
+|   department | String| No|Department name |
+|   emailAddress | String| Yes | IAM account email address  |
+|   englishName | String| No| English name | 
+|   id | String| Yes | IAM account UUID  |
+|   idProviderId | String| No| Certification Authority ID (if using external authentication) |
 |   idProviderType | String| No| service: IAM direct sign-in<br>SSO: Customer SSO integration |
-|   idProviderUserId | String| No|
-|   lastAccessedAt | Date| No| The member's last access date, returning null if not present |
-|   lastLoggedInAt | Date| No| The member's last login date, returning null if not found |
-|   lastLoggedInIp | String| No| The member's last login IP address, returning null if not present |
-|   maskingEmail | String| No | Masked email addresses for IAM members  |
-|   mobilePhone | String| No | IAM member's cell phone number  |
-|   mobilePhoneCountryCode | String| No|
-|   name | String| Yes | Name of the IAM member  |
-|   nativeName | String| No|
-|   nickname | String| No|
-|   officeHoursBegin | String| No|
-|   officeHoursEnd | String| No|
-|   organizationId | String| Yes | Organization ID of the IAM member  |
-|   passwordChangedAt | Date| No| When the member's last password was changed, returning null if none |
-|   position | String| No|
-|   profileImageUrl | String| No|
+|   idProviderUserId | String| No|User ID provided by an external certification authority |
+|   lastAccessedAt | Date| No| The account's last access date, returning null if not present |
+|   lastLoggedInAt | Date| No| The account's last login date, returning null if not found |
+|   lastLoggedInIp | String| No| The account's last login IP address, returning null if not present |
+|   maskingEmail | String| No | Masked email addresses for IAM accounts  |
+|   mobilePhone | String| No | IAM account's mobile phone number  |
+|   mobilePhoneCountryCode | String| No|Country code for mobile phone numbers |
+|   name | String| Yes | Name of the IAM account  |
+|   nativeName | String| No| Native language name |
+|   nickname | String| No| User nickname |
+|   officeHoursBegin | String| No| Work start time example: 09:00 |
+|   officeHoursEnd | String| No| Work end time example: 18:00 |
+|   organizationId | String| Yes | Organization ID for the IAM account  |
+|   passwordChangedAt | Date| No| When the account's last password was changed, returning null if none |
+|   position | String| No| Position |
+|   profileImageUrl | String| No| Profile image URL |
 |   roles | [List<RoleBundleProtocol>](#rolebundleprotocol)| No | List of related roles (with condition attributes)  |
-|   saasRoles | List<IamMemberRole>| No | IAM member roles  |
-|   String | String| No| Member's status |
-|   telephone | String| No | IAM member's phone number  |
-|   userCode | String| Yes | IAM member ID  |
+|   saasRoles | List<IamMemberRole>| No | IAM account roles  |
+|   String | String| No| Account's status |
+|   telephone | String| No | IAM account's phone number  |
+|   userCode | String| Yes | IAM account ID  |
 
 
 
@@ -2240,11 +2249,6 @@ API to get a list of IAM members that belong to this organization.
     "mobilePhoneCountryCode": "mobilePhoneCountryCode",
     "id": "id",
     "department": "department",
-    "saasRoles": [ {
-      "role": "role",
-      "productId": "productId",
-      "productName": "productName"
-    } ],
     "profileImageUrl": "profileImageUrl",
     "lastAccessedAt": "2000-01-23T04:56:07.000+00:00",
     "maskingEmail": "maskingEmail",
@@ -2285,37 +2289,35 @@ API to get a list of IAM members that belong to this organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-| header | [Common response](#Response)| Yes | Required only if protocol is in response |
-| id | String | No | IAM member UUID | 
-| userCode | String | Yes | IAM member ID to use for sign-in | 
-| name | String | Yes | Username of the IAM member | 
-| emailAddress | String |  Yes | IAM member's email address<br>Used to receive notifications or to change your password. |
-| maskingEmail | String | No | Masked email addresses for IAM members |
-| mobilePhone | String | No | IAM member's cell phone number |
-| telephone | String | No | IAM member phone number |
-| position | String | No |  |
-| department | String | No |  |
-| corporate | String | No |  |
-| profileImageUrl | String | No |  |
-| englishName | String | No |  |
-| nativeName | String | No |  |
-| nickname | String | No |  |
-| officeHoursBegin | String | No |  |
-| officeHoursEnd | String | No |  |
+| id | String | No | IAM account UUID | 
+| userCode | String | Yes | IAM account ID to use for sign-in | 
+| name | String | Yes | Username of the IAM account | 
+| emailAddress | String |  Yes | IAM account's email address<br>Used to receive notifications or to change your password. |
+| maskingEmail | String | No | Masked email addresses for IAM accounts |
+| mobilePhone | String | No | IAM account's mobile phone number |
+| telephone | String | No | IAM account's phone number |
+| position | String | No | Position |
+| department | String | No | Department name |
+| corporate | String | No | Company name  |
+| profileImageUrl | String | No | Profile image URL |
+| englishName | String | No | English name |
+| nativeName | String | No | Native language name |
+| nickname | String | No | User nickname |
+| officeHoursBegin | String | No | Work start time example: 09:00 |
+| officeHoursEnd | String | No | Work end time example: 18:00 |
 | String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
-| creationType | String | No |  |
-| idProviderId | String | No |  |
+| creationType | String | No | Date and time of creation |
+| idProviderId | String | No | Certification Authority ID (if using external authentication) |
 | idProviderType | String | No | service: IAM direct sign-in (default)<br>SSO: Customer SSO integration (cannot be set up if not integrated) |
-| idProviderUserId | String | No |  |
+| idProviderUserId | String | No | User ID provided by an external certification authority |
 | createdAt | Date | No | Date and time of creation |
 | lastAccessedAt | Date | No | Date of last access |
 | lastLoggedInAt | Date | No | Date of last login |
 | lastLoggedInIp | String | No | Last logged in IP |
 | passwordChangedAt | Date | No | When to change your password |
-| mobilePhoneCountryCode | String | No | Required when entering a mobile phone number  |
-| organizationId | String | No | Organization ID of the IAM member |
-| country | String | No |  |
-| saasRoles | List<[IamMemberRole](#iammemberrole)> | No | IAM roles |
+| mobilePhoneCountryCode | String | No | Country code for mobile phone numbers  |
+| organizationId | String | No | Organization ID of the IAM account |
+| country | String | No | Nationality (nationality of the organization owner) |
 
 
 
@@ -2344,8 +2346,30 @@ API to add IAM members to your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Yes   |
 
+
+###### AddIamOrgMemberProtocol
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | The IAM account ID to use for signing in | 
+| name | String | Yes | Username of the IAM account | 
+| emailAddress | String |  Yes | Email address of the IAM account<br>Used to receive notifications or password change. |
+| mobilePhone | String | No | IAM account's mobile phone number |
+| telephone | String | No | IAM account's phone number |
+| position | String | No | Position |
+| department | String | No | Department name |
+| corporate | String | No | Company name |
+| profileImageUrl | String | No | Profile image URL |
+| englishName | String | No | English name |
+| nativeName | String | No | Native language name |
+| nickname | String | No | User nickname |
+| officeHoursBegin | String | No | Work start time example: 09:00 |
+| officeHoursEnd | String | No | Work end time example: 18:00 |
+| String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| creationType | String | No | SSO, invited, and registered |
+| mobilePhoneCountryCode | String | No | Country code for mobile phone numbers, required when entering a mobile phone number  |
 
 
 
@@ -2399,8 +2423,8 @@ API to send an email to an IAM member to change their password.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   locale | String| No  | User's locale information<br>Example: en |
-|   returnUrl | String| No  | The address of the page you'll be directed to after you change your password via email change notification.<br>You must enter the toast.com, dooray.com, or nhncloud.com domain in the Go To address information |
+|   locale | String| Yes  | User's locale information<br>Example: en |
+|   returnUrl | String| Yes  | The address of the page you'll be directed to after you change your password via email change notification.<br>You must enter the toast.com, dooray.com, or nhncloud.com domain in the Go To address information |
 
 
 ##### Response Body
@@ -2445,8 +2469,31 @@ API to modify your organization's IAM member information.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [IamOrgMemberProtocol](#iamorgmemberprotocol)| Yes   |
+|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Yes   |
 
+
+###### UpdateIamOrgMemberProtocol
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | --------- | ------------ |
+| userCode | String | Yes | IAM account ID to use for signing in | 
+| name | String | Yes | Username of the IAM account | 
+| emailAddress | String |  Yes | Email address of the IAM account<br>Used to receive notifications or password change. |
+| mobilePhone | String | No | IAM account's mobile phone number |
+| telephone | String | No | IAM account's phone number |
+| position | String | No | Position |
+| department | String | No | Department name |
+| corporate | String | No | Company name |
+| profileImageUrl | String | No | Profile image URL |
+| englishName | String | No | English name |
+| nativeName | String | No | Native language name |
+| nickname | String | No | User nickname |
+| officeHoursBegin | String | No | Work start time example: 09:00 |
+| officeHoursEnd | String | No | Work end time example: 18:00 |
+| String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| creationType | String | No | SSO, invited, and registered |
+| idProviderUserId | String | No | User ID provided by an external certification authority |
+| mobilePhoneCountryCode | String | No | Country code for mobile phone numbers, required when entering a mobile phone number |
 
 
 ##### Response Body
@@ -2766,6 +2813,111 @@ API to get login failure security settings.
 |   limit | Integer| No | Number of attempts allowed |
 |   blockMinutes | Integer| No | Login ban time  |
 
+<a id="조직-IAM-계정-비밀번호-정책-조회"></a>
+#### Get your organization's IAM account password policy
+
+> GET "/v1/iam/organizations/{org-id}/settings/password-rule"
+
+API to get settings for password policies.
+
+##### Required permissions
+`Organization.Setting.Iam.Get`
+
+##### Request Parameter
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | Organization ID | 
+
+
+##### Response Body
+
+```json
+{
+   "header": {
+      "isSuccessful": true,
+      "resultCode": 0,
+      "resultMessage": ""
+   },
+   "result": {
+      "content": {
+         "schemaVersion": 1,
+         "value": {
+            "ruleType": "default",
+            "passwordConstraints": {
+               "minLength": 8,
+               "mustNotIncludeIllegalSequence": true,
+               "mustIncludeUpperCase": true,
+               "mustIncludeLowerCase": true,
+               "mustIncludeNumberCase": true,
+               "mustIncludeSpecialCase": true
+            },
+            "passwordExpiry": {
+               "enabled": true,
+               "expiryDays": 90,
+               "allowExpend": true
+            },
+            "limitPasswordReuse": {
+               "enabled": true,
+               "limitCount": 1
+            },
+            "applyRule": "onChangePassword"
+         }
+      }
+   }
+}
+```
+
+##### Response
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| header | [Common response](#응답)| Yes   |
+| result | Content | Yes | Setup contents |
+
+###### Content
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| schemaVersion | Integer| Yes | Schema version  |
+| value | Value| Yes |  Password policy |
+
+###### Value
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| ruleType | String | Yes | Password policy<br>default (default password policy), custom (user password policy) |
+| passwordConstraints | PasswordConstraints | Yes | Password strength |
+| passwordExpiry | PasswordExpiry | Yes | Password expiration |
+| limitPasswordReuse | LimitPasswordReuse | Yes | Limit password reuse |
+| applyRule | String | Yes | When to enforce password policies<br>onChangePassword (applies when password changes), onLogin (applies immediately) |
+
+###### PasswordConstraints
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| minLength | integer | Yes | Password minimum length |
+| mustNotIncludeIllegalSequence | boolean | Yes | At least one alphanumeric character<br>true (set), false (not set) |
+| mustIncludeUpperCase | boolean | Yes | At least one uppercase letter<br>true (set), false (not set) |
+| mustIncludeLowerCase | boolean | Yes | At least one lowercase letter<br>true (set), false (not set) |
+| mustIncludeNumberCase | boolean | Yes | At least one number<br>true (set), false (not set) |
+| mustIncludeSpecialCase | boolean | Yes | One or more special characters<br>true (set), false (not set) |
+
+###### PasswordExpiry
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| String | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
+| expiryDays | Integer | Yes | Expiration period |
+| allowExpend | Boolean | Yes | Extendable on expiration<br>true (possible), false (impossible) |
+
+###### LimitPasswordReuse
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+| String | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
+| limitCount | Integer | Yes | Number of reuse limits |
+
 <a id="종량제에-등록된-상품-가격-조회"></a>
 #### Get the price of a product on a pay-as-you-go subscription
 
@@ -3057,7 +3209,9 @@ APIs that can be called if you have signed up to NHN Cloud
     "tokenExpiryPeriod": 0,
     "lastUsedDatetime": "2000-01-23T04:56:07.000+00:00",
     "reIssueDatetime": "2000-01-23T04:56:07.000+00:00",
-    "regDatetime": "2000-01-23T04:56:07.000+00:00"
+    "regDatetime": "2000-01-23T04:56:07.000+00:00",
+    "lastTokenUsedDatetime": "2025-02-11T01:30:56.771Z",
+    "validTokenCount": 0
   } ]
 }
 ```
@@ -3080,11 +3234,13 @@ APIs that can be called if you have signed up to NHN Cloud
 |   secretAccessKey | String| No | Secret key (masked)  |
 |   authStatus | String| No | Authentication status codes (STABLE, STOP, BLOCKED) |
 |   UUID | String| No | User UUID |
-|   lastUsedDatetime | Date| No | Date of last use  |
+|   lastUsedDatetime | Date| No | Date of last use you authenticated with User Access Key ID  |
 |   modDatetime | Date| No | Date and time of deletion  |
 |   reIssueDatetime | Date| No | Regeneration time  |
 |   regDatetime | Date| No | Date and time of creation  |
 |   tokenExpiryPeriod | Long| No | Token expiration cycle (in seconds)  |
+|   lastTokenUsedDatetime | Long| No | Last time you authenticated/authorized with a token              |
+|   validTokenCount | Long| No | Number of valid tokens                      |
 
 
 <a id="프로젝트-AppKey-등록"></a>
@@ -3257,7 +3413,14 @@ Can only reissue the secret key for the user's own User Access Key ID
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |user-access-key-id | String| Yes | User Access Key ID | 
+| Request Body | request | ReissueSecretKeyRequest| Yes | Request |
 
+
+###### ReissueSecretKeyRequest
+
+| Name | Type | Required | Description  |                                               |   
+|------------ |---------|----|---------------------------------------------------|
+|   needExpireTokens | Boolean | No | Issued token expired or not(true: Expired, false: Not expired)<br>Default false |
 
 ##### Response Body
 
@@ -3362,6 +3525,97 @@ Can only delete the user's own User Access Key ID
 }
 ```
 
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+
+
+<a id="토큰-목록-조회"></a>
+#### Get a List of Tokens
+
+> GET "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
+
+API to get a list of tokens issued with a User Access Key ID.
+
+##### Required Permissions
+Only tokens issued with your own User Access Key ID can be viewed
+
+##### Request Parameters
+
+| In | Name | Type | Required  | Description                                                                           | 
+|------------- |------------- | ------------- |-----|------------------------------------------------------------------------------| 
+|  Path | user-access-key-id | String| Yes | User Access Key ID                                                           | 
+|  Query | token | String| No  | Token body<br>Partial search not supported                                                        | 
+|  Query | String | String| No  | Token status<br>ACTIVE: Active, EXPIRED: Expired                                             | 
+|  Query | lastAccessDatetimeFrom | Date| No  | Date of last token use<br>Get  tokens used at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z` | 
+|  Query | expireDatetimeFrom | Date| No  | Token expiration date<br>Get  tokens expired at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   | 
+|  Query | regDatetimeFrom | Date| No  | Token registration date<br>Get  tokens created at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   |
+|  Query | page | Integer| No  | Target page<br>Default 1                                                                |
+|  Query | limit | Integer| No  | Items per page<br>Default 20                                                            |
+
+
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "tokens": [
+    {
+      "accessToken": "string",
+      "expireDatetime": "2025-02-11T00:56:50.902Z",
+      "lastAccessDatetime": "2025-02-11T00:56:50.902Z",
+      "regDatetime": "2025-02-11T00:56:50.902Z",
+      "status": "ACTIVE",
+      "tokenId": 0
+    }
+  ],
+  "totalItems": 0
+}
+```
+
+###### Response
+
+
+| Name | Type           | Required  | Description                 |   
+|------------ |--------------|-----|--------------------|
+|   header | [Common response](#응답) | Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   accessToken | String       | Yes | Masked token         |
+|   expireDatetime | Date         | No  | Token expiration date             |
+|   lastAccessDatetime | Date         | Yes | Last time you authenticated/authorized with a token |
+|   regDatetime | Date         | Yes | Token creation date           |
+|   String | String       | Yes | Token status              |
+|   tokenId | Long         | Yes | Token ID              |
+
+
+<a id="토큰-다건-만료"></a>
+#### Expire multiple tokens
+
+> DELETE "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
+
+API to expire multiple tokens issued with a User Access Key ID.<br>
+If both the token ID and token list are empty in the request, all tokens issued to that User Access Key ID will expire.<br>
+If you have both a token ID and a list of tokens, only tokens that match both are deleted,<br>
+Tokens do not expire when invoked by a user other than the owner of the User Access Key ID in the request.
+
+##### Required Permissions
+Only tokens issued with your own User Access Key ID can expire
+
+##### Request Parameters
+
+| In           | Name                 | Type              | Required  | Description                 | 
+|--------------|--------------------|-----------------|-----|--------------------| 
+| Path         | user-access-key-id | String          | Yes | User Access Key ID | 
+| Request Body | tokenIds           | List<Long>   | No  | List of token IDs           | 
+| Request Body         | tokens             | List<String> | No   | List of tokens          | 
 
 ##### Response Body
 
@@ -3381,6 +3635,421 @@ Can only delete the user's own User Access Key ID
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [Common response](#Response)| Yes |
+
+
+<a id="프로젝트-IAM-계정-생성"></a>
+#### Create a project IAM account
+
+> POST "/v1/iam/projects/{project-id}/members"
+
+API to add an IAM account as a project member.
+
+##### Required permissions
+`Project.Member.Iam.Create`
+
+##### Request Parameter
+
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | The project ID to which you want to add the member | 
+| Request Body | request | AddIamProjectMemberRequest| Yes | Request |
+
+
+
+
+###### AddIamProjectMemberRequest
+> [Caution]<br>
+> Only one project member can be created in a request.
+
+
+| Name | Type | Required | Description |  
+|------------ | ------------- | ------------- | ------------ |
+|   assignRoles | List<UserAssignRoleProtocol>| Yes | List of roles to assign to users  |
+|   memberUuid | String| Yes | UUID of the member to add  |
+
+
+###### UserAssignRoleProtocol
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   roleId | String| Yes | Role ID  |
+|   conditions | List<AssignAttributeConditionProtocol>| No | Role condition attribute  |
+
+
+###### AssignAttributeConditionProtocol
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   attributeId | String| Yes | Condition attribute ID  |
+|   attributeOperatorTypeCode | String| Yes | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List<String>| Yes | Condition attribute value  |
+
+
+##### Response Body
+
+```json
+{
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  }
+}
+```
+
+###### Response
+
+
+| Name | Type           | Required | Description |   
+|------------ |--------------| ------- | ------------ |
+|   header | [Common response](#응답) | Yes |
+
+
+<a id="프로젝트-IAM-계정-다건-삭제"></a>
+#### Delete multiple project IAM accounts
+
+> DELETE "/v1/iam/projects/{project-id}/members"
+
+API to delete IAM accounts from a project.
+
+##### Required permissions
+`Project.Member.Iam.Delete`
+
+##### Request Parameter
+
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | Project ID | 
+|  Request Body |request | DeleteMembersRequest | Yes | Request | 
+
+
+###### DeleteMembersRequest
+
+
+| Name | Type | Required | Description |  
+|------------ | ------------- | ------------- | ------------ |
+|   memberUuids | List<String>| Yes | List of UUIDs of the target accounts to delete |
+
+
+##### Response Body
+
+```json
+{
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  }
+}
+```
+
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+
+
+<a id="프로젝트-IAM-계정-단건-조회"></a>
+#### View a project IAM account
+
+> GET "/v1/iam/projects/{project-id}/members/{member-uuid}"
+
+API to get a specific IAM account who is part of a project.
+
+##### Required permissions
+`Project.Member.Iam.Get`
+
+##### Request Parameter
+
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | Project ID to look up members |
+|  Path |member-uuid | String| Yes | Member UUID to look up |
+
+
+
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "projectMember": {
+    "uuid": "uuid",
+    "id": "id",
+    "emailAddress": "emailAddress",
+    "maskingEmail": "maskingEmail",
+    "name": "memberName",
+    "relationDateTime": "2000-01-23T04:56:07.000+00:00",
+    "roles": [ {
+      "regDateTime": "2000-01-23T04:56:07.000+00:00",
+      "roleApplyPolicyCode": "ALLOW",
+      "roleId": "roleId",
+      "roleName": "roleName",
+      "categoryKey": "categoryKey",
+      "description": "description",
+      "categoryTypeCode": "ORG_ROLE_GROUP",
+      "conditions": [ {
+        "attributeId": "attributeId",
+        "attributeOperatorTypeCode": "ALLOW",
+        "attributeValues": [ "attributeValues", "attributeValues" ],
+        "attributeDescription": "attributeDescription",
+        "attributeName": "attributeName",
+        "attributeDataTypeCode": "BOOLEAN"
+      } ]
+    } ]
+  }
+}
+```
+
+
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+|   projectMember | ProjectIamMemberRoleBundleProtocol| Yes  | Added member information, not included on error |
+
+
+###### ProjectMemberRoleBundleProtocol
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   UUID | String| Yes | Member UUID  |
+|   id | String| Yes | ID  |
+|   name | String| No | Name  |
+|   emailAddress | String| No | Member email address  |
+|   maskingEmail | String| No | Member's masked email  |
+|   mobilePhone | String| No | Phone number  |
+|   relationDateTime | Date| No | Time to add members  |
+|   joinYmdt | Date| No | Date to joined  |
+|   recentLoginYmdt | Date| No | Date of last login  |
+|   recentPasswordModifyYmdt | Date| No | Date of last password change  |
+|   roles | List<RoleBundleProtocol>| No | List of related roles (with condition attributes)  |
+
+
+[RoleBundleProtocol](#rolebundleprotocol)
+
+
+
+<a id="프로젝트-IAM-계정-목록-조회"></a>
+#### View project IAM accounts
+
+> GET "/v1/iam/projects/{project-id}/members"
+
+API to get a list of IAM accounts who are part of a project.
+
+##### Required permissions
+`Project.Member.Iam.List`
+
+##### Request Parameter
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | Project ID to look up | 
+|  Query |limit | Integer| No | Number of displays per page, default 20 |
+|  Query |page | Integer| No | Target Page, default 1 |
+
+
+
+
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+  "projectMembers": [ {
+    "uuid": "uuid",
+    "id": "id",
+    "emailAddress": "emailAddress",
+    "maskingEmail": "maskingEmail",
+    "memberName": "memberName",
+    "relationDateTime": "2000-01-23T04:56:07.000+00:00"
+  } ]
+}
+```
+
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   projectMembers | List<IamProjectMemberProtocol>| Yes | Project member list  |
+
+
+
+###### IamProjectMemberProtocol
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   UUID | String| Yes | Member UUID  |
+|   id | String| Yes | ID  |
+|   name | String| No | Name  |
+|   emailAddress | String| No | Member email address  |
+|   maskingEmail | String| No | Member's masked email  |
+|   mobilePhone | String| No | Phone number  |
+|   relationDateTime | Date| No | Time to add members  |
+|   joinYmdt | Date| No | Date to joined  |
+|   recentLoginYmdt | Date| No | Date of last login  |
+|   recentPasswordModifyYmdt | Date| No | Date of last password change  |
+
+
+<a id="프로젝트-IAM-계정-역할-수정"></a>
+#### Modify project IAM account roles
+
+> PUT "/v1/iam/projects/{project-id}/members/{member-uuid}"
+
+API to change the role of a specified IAM account in a project.
+
+##### Required permissions
+`Project.Member.Iam.Update`
+
+##### Request Parameter
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |project-id | String| Yes | Project ID | 
+|  Path |member-uuid | String| Yes | Member UUID to change role to | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | Request |
+
+
+
+
+##### Response Body
+
+```json
+{
+  "header" : {
+    "isSuccessful" : true,
+    "resultCode" : 0,
+    "resultMessage" : "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [Common response](#응답)| Yes   |
+
+
+<a id="조직-하위-멤버의-모든-인증정보-목록-조회"></a>
+#### View all credentials of members under organizations
+
+> GET "/v1/authentications/organizations/{org-id}/user-access-keys"
+
+API to get the credentials of members in the organization or project.
+
+##### Required permissions
+`Organization.UserAccessKey.List`
+
+##### Request Parameter
+
+
+
+| In | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | Organization ID to look up the UserAccessKey for |
+|  Query |paging | Paging| No | Number of displays per page, default 20 |
+
+
+
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "authenticationList": [
+    {
+      "authId": "makedAuthId",
+      "uuid": "uuid",
+      "userAccessKeyID": "maskedUserAccessKeyID",
+      "secretAccessKey": "",
+      "tokenExpiryPeriod": 86400,
+      "regDatetime": "2024-05-03T10:27:58.000+00:00",
+      "modDatetime": "2024-05-03T10:27:58.000+00:00",
+      "lastUsedDatetime": "2024-08-16T14:09:37.000+00:00",
+      "reIssueDatetime": "2024-08-29T12:00:45.000+00:00",
+      "lastTokenUsedDatetime": null,
+      "validTokenCount": null,
+      "authStatus": "STABLE"
+    }
+  ],
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+}
+```
+
+
+###### Response
+
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------- | ------------ |
+|   header | [Common response](#응답)| Yes |
+|   paging | [PagingResponse](#pagingresponse)| Yes  |
+|   authenticationList | List<UserAccessKeyResponseV7>| Yes  | Member-specific authentication key information |
+
+
+###### UserAccessKeyResponseV7
+
+| Name | Type | Required | Description |
+|------------|--------|------|-----------------------------|
+| authId | String | Yes | Authentication Method ID (masked) |
+| UUID | String | Yes | User UUID |
+| userAccessKeyID | String | Yes | User Access Key ID (masked) |
+| secretAccessKey | String | No | Secret key (whitespace) |
+| authStatusCode | String | Yes | Authentication status codes (STABLE, STOP, BLOCKED) |
+| tokenExpiryPeriod | Long | No | Token expiration cycle |
+| regDatetime | Date | No | Date and time of creation |
+| modDatetime | Date | No | Date and time of deletion |
+| lastUsedDatetime | Date | No | Date of last use |
+| reIssueDatetime | Date | No | secretAccessKey regeneration timeout |
+| lastTokenUsedDatetime | Date | No | Date of last token use |
+| validTokenCount | Long | No | Number of valid tokens |
+
+
+
+
 
 
 ### Error Code
