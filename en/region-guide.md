@@ -81,7 +81,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Redis Instance | Regional | O | O | O | O |
 | Monitoring | Service Monitoring | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
-| Hybrid & Private Cloud | NHN Cloud Private Station | Regional | - | - | - | - |
+| Hybrid & Private Cloud | NHN Cloud Private Deck | Regional | - | - | - | - |
+|  | NHN Cloud Private Station | Regional | - | - | - | - |
 |  | NHN Cloud Private Region | Regional | - | - | - | - |
 |  | NHN Hybrid Cloud | Regional | O |  |  |  |
 | Game | Gamebase | Global |  |  |  |  |
