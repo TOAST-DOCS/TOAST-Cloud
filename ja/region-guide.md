@@ -106,6 +106,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Security Advisor | グローバル |  |  |  |  |
 |  | Network Firewall | リージョン | O | O |  |  |
 |  | NHN Bastion | リージョン | O | O |  |  |
+|  | Cloud Access | リージョン | O | O |  |  |
 | Content Delivery | CDN | グローバル |  |  |  |  |
 |  | Image Manager | リージョン | O |  |  |  |
 | Notification | Notification Hub | グローバル |  |  |  |  |
