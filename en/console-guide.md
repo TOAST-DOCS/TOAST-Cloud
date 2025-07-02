@@ -474,6 +474,8 @@ Members are classified into NHN Cloud members and IAM members.
 | NHN Bastion | ADMIN | Create, Read, Update, Delete for NHN Bastion Service | 
 | NHN Bastion | VIEWER | Read for NHN Bastion Service | 
 | NHN Bastion | USER | Use NHN Bastion Service Terminal | 
+| Cloud Access | ADMIN | Create, Read, Update, Delete for Cloud Access Service | 
+| Cloud Access | VIEWER | Read for Cloud Access Service | 
 | CDN | ADMIN | Create, Read, Update, Delete for CDN Service |
 | Image Manager | ADMIN | Create, Read, Update, Delete pfor Image Manager Service |
 | Notification Hub | ADMIN | Create, Read, Update, Delete for Notification Hub Service |

@@ -460,7 +460,9 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Network Firewall | VIEWER | Network Firewall 서비스 Read(읽기)  |
 | NHN Bastion | ADMIN | NHN Bastion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) | 
 | NHN Bastion | VIEWER | NHN Bastion 서비스 Read(읽기) | 
-| NHN Bastion | USER | NHN Bastion 서비스 터미널 이용 | 
+| NHN Bastion | USER | NHN Bastion 서비스 터미널 이용 |
+| Cloud Access | ADMIN | Cloud Access 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Cloud Access | VIEWER | Cloud Access 서비스 Read(읽기) | 
 | CDN | ADMIN | CDN 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Image Manager | ADMIN | Image Manager 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Notification Hub | ADMIN | Notification Hub 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |

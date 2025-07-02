@@ -107,6 +107,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Security Advisor | Global |  |  |  |  |
 |  | Network Firewall | Regional | O | O |  |  |
 |  | NHN bastion | Regional | O | O |  |  |
+|  | Cloud Access | Regional | O | O |  |  |
 | Content Delivery | CDN | Global |  |  |  |  |
 |  | Image Manager | Regional | O |  |  |  |
 | Notification | Notification Hub | Global |  |  |  |  |
