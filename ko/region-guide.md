@@ -90,7 +90,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Leaderboard | 글로벌 |  |  |  |  |
 |  | Launching | 글로벌 |  |  |  |  |
 |  | Smart Downloader | 글로벌 |  |  |  |  |
-| Security |NHN AppGuard | 글로벌 |  |  |  |  |
+| Security | NHN AppGuard | 글로벌 |  |  |  |  |
 |  | App Security Check | 리전 | O |  |  |  |
 |  | Server Security Check | 리전 | O | O |  |  |
 |  | Security Monitoring | 리전 | O | O |  |  |
@@ -106,6 +106,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Security Advisor | 글로벌 |  |  |  |  |
 |  | Network Firewall | 리전 | O | O |  |  |
 |  | NHN Bastion | 리전 | O | O |  |  |
+|  | Cloud Access | 리전 | O | O |  |  |
 | Content Delivery | CDN | 글로벌 |  |  |  |  |
 |  | Image Manager | 리전 | O |  |  |  |
 | Notification | Notification Hub | 글로벌 |  |  |  |  |
