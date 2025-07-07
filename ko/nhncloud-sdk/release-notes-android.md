@@ -1,5 +1,22 @@
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Android
 
+## 1.12.0 (2025.07.29.)
+
+## NHN Cloud SDK
+
+### 기능 개선
+
+* 최소 지원 버전 상향
+    * 최소 지원 Android 버전이 API 16(Android 4.1)에서 API 21(Android 5.0)로 상향되었습니다.
+    * NHN Cloud Android SDK에서 사용하는 일부 API는 곧 TLS 1.0 및 TLS 1.1 지원이 종료될 예정이며, TLS 1.2 이상만 지원됩니다.
+    * 이는 보안 강화를 위한 조치이며, SDK를 업데이트하지 않더라도 v1.12.0 미만 버전을 Android 5.0(API 21) 미만 환경에서 사용할 경우 일부 API가 정상적으로 동작하지 않을 수 있습니다.
+* 16KB 페이지 크기 지원
+    * 2025년 11월 1일부터 Google Play에 제출되는 Android 15(API 34) 이상 기기를 타겟팅하는 모든 신규 앱 및 기존 앱 업데이트는 64비트 기기에서 16KB 페이지 크기 지원이 필수입니다.
+    * 이에 따라 NHN Cloud SDK는 16KB 페이지 크기를 지원합니다.
+    * 지원 모듈
+        * NHN Cloud Logger
+        * NHN Cloud OCR
+
 ## 1.11.1 (2025. 06. 05.)
 
 ### NHN Cloud Push
