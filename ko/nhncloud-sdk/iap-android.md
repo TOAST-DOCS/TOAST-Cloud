@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.12.0'
     ...
 }
 ```
@@ -61,14 +61,14 @@ dependencies {
     // ONE store 통합 버전(V21)
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.12.0'
 
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.12.0'
     
     // ONE store V19
     implementation files('libs/iap_sdk-v19.01.00.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.12.0'
     ...
 }
 ```
@@ -85,7 +85,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.12.0'
     ...
 }
 ```
@@ -102,7 +102,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.12.0'
     ...
 }
 ```
@@ -145,7 +145,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.12.0'
     ...
 }
 ```
@@ -162,7 +162,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.12.0'
     ...
 }
 ```
