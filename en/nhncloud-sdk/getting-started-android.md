@@ -2,8 +2,7 @@
 
 ## Supported Environment
 
-* Android 4.0.3 or higher
-* The latest version of Android Studio (version 2.2 or higher)
+* Android 5.0(API 21) or higher
 
 ## NHN Cloud SDK Components
 

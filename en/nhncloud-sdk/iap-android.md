@@ -43,8 +43,6 @@ dependencies {
 }
 ```
 
-> Google Play in-app purchase functions in Android 5.0 (API level 21) or higher.
-
 ### ONE store
 
 - To use in-app purchase of ONE store, add dependency to build.gradle as below:
@@ -89,8 +87,6 @@ dependencies {
     ...
 }
 ```
-
-> Galaxy Store in-app purchase works on Android 4.3 (API level 18) or higher.
 
 ### Amazon Appstore
 
@@ -149,8 +145,6 @@ dependencies {
     ...
 }
 ```
-
-> Huawei App Gallery's in-app purchase works on Android 4.4 (API level 19) or higher.
 
 ### MyCard
 
