@@ -43,8 +43,6 @@ dependencies {
 }
 ```
 
-> Google Play 인앱 결제는 Android 4.4(API 레벨 19) 이상에서 동작합니다.
-
 #### Android 4.4(API 레벨 19) 이슈
 
 Play Billing Library 6.x를 R8과 함께 사용하는 경우, Android 4.4(API 레벨 19)에서 동작하지 않는 문제가 발생할 수 있습니다.
@@ -108,8 +106,6 @@ dependencies {
 }
 ```
 
-> Galaxy Store in-app purchase works on Android 4.3 (API level 18) or higher.
-
 ### Amazon Appstore
 
 - To use in-app purchase of Amazon Appstore, add dependency to build.gradle as follows:
@@ -167,8 +163,6 @@ dependencies {
     ...
 }
 ```
-
-> Huawei App Gallery's in-app purchase works on Android 4.4 (API level 19) or higher.
 
 ### MyCard
 

@@ -43,8 +43,6 @@ dependencies {
 }
 ```
 
-> Google Playアプリ内決済はAndroid 5.0(APIレベル21)以上で動作します。
-
 ### ONE store
 
 - ONE storeのアプリ内決済を使用するには、下記のようにbuild.gradleに依存性を追加します。
@@ -89,8 +87,6 @@ dependencies {
     ...
 }
 ```
-
-> Galaxy Storeのアプリ内決済はAndroid 4.3（APIレベル18）以上で動作します。
 
 ### Amazon Appstore
 
@@ -149,8 +145,6 @@ dependencies {
     ...
 }
 ```
-
-> Huawei App Galleryアプリ内決済はAndroid 4.4 (APIレベル19)以上で動作します。
 
 ### MyCard
 

@@ -2,8 +2,7 @@
 
 ## 지원 환경
 
-* Android 4.0.3 이상
-* Android Studio 최신 버전(버전 2.2 이상)
+* Android 5.0(API 21) 이상
 
 ## NHN Cloud SDK의 구성
 
