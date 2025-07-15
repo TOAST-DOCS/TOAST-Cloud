@@ -462,6 +462,8 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | NHN Bastion | ADMIN | NHN Bastionサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) | 
 | NHN Bastion | VIEWER | NHN Bastionサービスに対するRead(読み取り) | 
 | NHN Bastion | USER | NHN Bastionサービスターミナルの利用 | 
+| Cloud Access | ADMIN | Cloud Accessサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) | 
+| Cloud Access | VIEWER | Cloud Accessサービスに対するRead(読み取り) | 
 | CDN | ADMIN | CDNサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Image Manager | ADMIN | Image Managerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Notification Hub | ADMIN | Notification Hubサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |

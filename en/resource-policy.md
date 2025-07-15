@@ -291,6 +291,24 @@ Resource usage is calculated for each project.
 | Number of Gateways | Per project | 10 | X | | 
 | Number of Tunnels | Per project | 20 | X | | 
 
+### Resource Provision Policy for Cloud Access
+| Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+| Number of User Accounts | Per Project | 20 | X | |
+| Number of Concurrent Users | Per Project | 20 | X | |
+| Number of ACL Policies | Per Project | 100 | X | |
+| Number of ACL Policy Rules | Per Project | 500 | X | |
+| Maximum Number of ACL Sessions | Per Project | 10,000 | X | |
+| Maximum Number of Tunnel Sessions | Per Project | 10,000 | X | |
+| Number of User Policies | Per Project | 50 | X | |
+| Number of Accessible Bands | Per User Policy | 3 | X | |
+| Number of Internet Block Exception IPs | Per User Policy | 100 | X | |
+| Number of Required Software Registrations | Per User Policy | 50 | X | |
+| Number of Blocked Software Registrations | Per User Policy | 50 | X | |
+| Number of Vaccine Test Registrations | Per User Policy | 50 | X | |
+| Number of Traffic Logs | Per Project | 50,000 | X | |
+| Number of User Logs | Per Project | 200,000 | X | |
+
 ### Resource Provision Policy for Notification Hub
 
 The number of messages sent by the SMS service and the Notification Hub service are added up.
