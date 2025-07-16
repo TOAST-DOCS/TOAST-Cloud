@@ -36,6 +36,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Image Builder  | Region | O | O |  |  |
 |  | Auto Scale | Region | O | O | O | O |
 |  | Virtual Desktop | Regional | O | O |  |  |
+|  | Cloud Functions | Regional | O |  |  |  |
 | Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
 |  | NHN Container Registry (NCR) | Regional | O | O |  |  |
 |  | NHN Container Service(NCS)  | Regional | O |  |  |  |

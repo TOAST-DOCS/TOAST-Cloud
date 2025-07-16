@@ -36,6 +36,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Image Builder  | リージョン | O | O |  |  |
 |  | Auto Scale | リージョン | O | O | O | O |
 |  | Virtual Desktop | リージョン | O | O |  |  |
+|  | Cloud Functions | リージョン | O |  |  |  |
 | Container | NHN Kubernetes Service(NKS) | リージョン | O | O |  |  |
 |  | NHN Container Registry (NCR) | リージョン | O | O |  |  |
 |  | NHN Container Service(NCS)  | リージョン | O |  |  |  |
