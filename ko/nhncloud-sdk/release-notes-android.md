@@ -17,6 +17,13 @@
         * NHN Cloud Logger
         * NHN Cloud OCR
 
+### NHN Cloud OCR
+
+#### 버그 수정
+
+* 카메라 프리뷰 화면 동기화 이슈 개선
+    * 카메라 프리뷰 화면과 Surface 버퍼 해상도의 동기화 로직을 개선하였습니다.
+
 ## 1.11.1 (2025. 06. 05.)
 
 ### NHN Cloud Push
