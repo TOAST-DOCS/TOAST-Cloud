@@ -2,7 +2,7 @@
 
 ## Supported Environment
 
-* Android 5.0(API 21) or higher
+* Android 5.1(API 22) or higher
 
 ## NHN Cloud SDK Components
 
