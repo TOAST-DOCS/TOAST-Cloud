@@ -38,12 +38,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.12.0'
     ...
 }
 ```
-
-> Google Play in-app purchase functions in Android 5.0 (API level 21) or higher.
 
 ### ONE store
 
@@ -61,14 +59,14 @@ dependencies {
     // ONE store 통합 버전(V21)
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.12.0'
 
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.12.0'
     
     // ONE store V19
     implementation files('libs/iap_sdk-v19.01.00.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.12.0'
     ...
 }
 ```
@@ -85,12 +83,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.12.0'
     ...
 }
 ```
-
-> Galaxy Store in-app purchase works on Android 4.3 (API level 18) or higher.
 
 ### Amazon Appstore
 
@@ -102,7 +98,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.12.0'
     ...
 }
 ```
@@ -145,12 +141,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.12.0'
     ...
 }
 ```
-
-> Huawei App Gallery's in-app purchase works on Android 4.4 (API level 19) or higher.
 
 ### MyCard
 
@@ -162,7 +156,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.12.0'
     ...
 }
 ```

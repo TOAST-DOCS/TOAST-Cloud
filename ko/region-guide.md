@@ -36,6 +36,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Image Builder  | 리전 | O | O |  |  |
 |  | Auto Scale | 리전 | O | O | O | O |
 |  | Virtual Desktop | 리전 | O | O |  |  |
+|  | Cloud Functions | 리전 | O |  |  |  |
 | Container | NHN Kubernetes Service(NKS) | 리전 | O | O |  |  |
 |  | NHN Container Registry (NCR) | 리전 | O | O |  |  |
 |  | NHN Container Service(NCS)  | 리전 | O |  |  |  |

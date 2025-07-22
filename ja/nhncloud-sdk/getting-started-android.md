@@ -2,8 +2,7 @@
 
 ## サポート環境
 
-* Android 4.0.3以上
-* Android Studio最新バージョン(バージョン2.2以上)
+* Android 5.1(API 22)以上
 
 ## NHN Cloud SDKの構成
 
@@ -24,21 +23,21 @@ NHN Cloud SDKが提供するサービスの中から、希望する機能を選�
 
 | Gradle Dependency                           | Service           |
 | ------------------------------------------- | ----------------- |
-| com.nhncloud.android:nhncloud-common:1.11.1       | Common      |
-| com.nhncloud.android:nhncloud-core:1.11.1         | Core        |
-| com.nhncloud.android:nhncloud-logger:1.11.1       | Log & Crash |
-| com.nhncloud.android:nhncloud-crash-reporter-ndk:1.11.1       | Native Crash Reporter |
-| com.nhncloud.android:nhncloud-iap-core:1.11.1     | In-app Purchase Core |
-| com.nhncloud.android:nhncloud-iap-google:1.11.1   | In-app Purchase <br>Google Play Store |
-| com.nhncloud.android:nhncloud-iap-onestore2:1.11.1 | In-app Purchase <br>ONE store(統合バージョン) |
-| com.nhncloud.android:nhncloud-iap-onestore:1.11.1 | In-app Purchase <br>ONE store(v17) |
-| com.nhncloud.android:nhncloud-iap-onestore-v16:1.11.1 | In-app Purchase <br>ONE store(v16) |
-| com.nhncloud.android:nhncloud-iap-onestore-v19:1.11.1 | In-app Purchase <br>ONE store(v19) |
-| com.nhncloud.android:nhncloud-iap-onestore-v21:1.11.1 | In-app Purchase <br>ONE store(v21) |
-| com.nhncloud.android:nhncloud-iap-galaxy:1.11.1 | In-app Purchase <br>Galaxy Store |
-| com.nhncloud.android:nhncloud-push-core:1.11.1    | Push Core   |
-| com.nhncloud.android:nhncloud-push-fcm:1.11.1    | Push <br>Firebase Cloud Messaging |
-| com.nhncloud.android:nhncloud-creditcard-recognizer:1.11.1    | Credit Card Recognizer |
+| com.nhncloud.android:nhncloud-common:1.12.0       | Common      |
+| com.nhncloud.android:nhncloud-core:1.12.0         | Core        |
+| com.nhncloud.android:nhncloud-logger:1.12.0       | Log & Crash |
+| com.nhncloud.android:nhncloud-crash-reporter-ndk:1.12.0       | Native Crash Reporter |
+| com.nhncloud.android:nhncloud-iap-core:1.12.0     | In-app Purchase Core |
+| com.nhncloud.android:nhncloud-iap-google:1.12.0   | In-app Purchase <br>Google Play Store |
+| com.nhncloud.android:nhncloud-iap-onestore2:1.12.0 | In-app Purchase <br>ONE store(統合バージョン) |
+| com.nhncloud.android:nhncloud-iap-onestore:1.12.0 | In-app Purchase <br>ONE store(v17) |
+| com.nhncloud.android:nhncloud-iap-onestore-v16:1.12.0 | In-app Purchase <br>ONE store(v16) |
+| com.nhncloud.android:nhncloud-iap-onestore-v19:1.12.0 | In-app Purchase <br>ONE store(v19) |
+| com.nhncloud.android:nhncloud-iap-onestore-v21:1.12.0 | In-app Purchase <br>ONE store(v21) |
+| com.nhncloud.android:nhncloud-iap-galaxy:1.12.0 | In-app Purchase <br>Galaxy Store |
+| com.nhncloud.android:nhncloud-push-core:1.12.0    | Push Core   |
+| com.nhncloud.android:nhncloud-push-fcm:1.12.0    | Push <br>Firebase Cloud Messaging |
+| com.nhncloud.android:nhncloud-creditcard-recognizer:1.12.0    | Credit Card Recognizer |
 
 ## NHN Cloud SDKをAndroid Studioプロジェクトに適用
 
@@ -55,7 +54,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.nhncloud.android：nhncloud-sdk：1.11.1'
+  implementation 'com.nhncloud.android：nhncloud-sdk：1.12.0'
 }
 ```
 

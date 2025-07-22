@@ -38,12 +38,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-google:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-google:1.12.0'
     ...
 }
 ```
-
-> Google Play 인앱 결제는 Android 5.0(API 레벨 21) 이상에서 동작합니다.
 
 ### ONE store
 
@@ -61,14 +59,14 @@ dependencies {
     // ONE store 통합 버전(V21)
     implementation 'com.onestorecorp.sdk:sdk-iap:21.00.01'
     implementation 'com.onestorecorp.sdk:sdk-configuration-kr:1.0.0'
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore2:1.12.0'
 
     // ONE store V17
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.12.0'
     
     // ONE store V19
     implementation files('libs/iap_sdk-v19.01.00.aar')
-    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-onestore-v19:1.12.0'
     ...
 }
 ```
@@ -85,12 +83,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-galaxy:1.12.0'
     ...
 }
 ```
-
-> Galaxy Store 인앱 결제는 Android 4.3 (API 레벨 18) 이상에서 동작합니다.
 
 ### Amazon Appstore
 
@@ -102,7 +98,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.12.0'
     ...
 }
 ```
@@ -145,12 +141,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-huawei:1.12.0'
     ...
 }
 ```
-
-> Huawei App Gallery 인앱 결제는 Android 4.4 (API 레벨 19) 이상에서 동작합니다.
 
 ### MyCard
 
@@ -162,7 +156,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.11.1'
+    implementation 'com.nhncloud.android:nhncloud-iap-mycard:1.12.0'
     ...
 }
 ```
