@@ -16,7 +16,14 @@
     * サポートモジュール
         * NHN Cloud Logger
         * NHN Cloud OCR
-        
+
+### NHN Cloud OCR
+
+#### バグ修正
+
+* カメラプレビュー画面の同期問題の改善
+    * カメラプレビュー画面とSurfaceバッファの解像度の同期ロジックを改善しました。
+
 ## 1.11.1 (2025. 06. 05.)
 
 ### NHN Cloud Push
