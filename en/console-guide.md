@@ -415,6 +415,7 @@ Members are classified into NHN Cloud members and IAM members.
 | Infrastructure | NCS ADMIN | Read Network services (except Network Interface, Floating IP), NKS and Storage Gateway. Create, Read, Update, Delete other services |
 | Infrastructure | NKS ADMIN | Read Network services (except Network Interface, Floating IP), NCS and Storage Gateway. Create, Read, Update, Delete other services |
 | Virtual Desktop | ADMIN | Create, Read, Update, Delete for Virtual Desktop Service |
+| Cloud Functions | ADMIN | Create, Read, Update, Delete for Cloud Functions Service |
 | NHN Container Registry (NCR) | ADMIN | Create, Read, Update, Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | IMAGE UPLOADER | Read for NHN Container Registry (NCR), Upload Image, Create Artifact, Create Tag |
