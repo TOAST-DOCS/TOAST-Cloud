@@ -458,6 +458,7 @@ Members are classified into NHN Cloud members and IAM members.
 | Smart Downloader | ADMIN | Create, Read, Update, Delete for Smart Downloader Service |
 | NHN AppGuard | ADMIN | Create, Read, Update, Delete for NHN AppGuard Service|
 | Server Security Check | ADMIN | Create, Read, Update, Delete for Server Security Check  Service |
+| Server Security Check | VIEWER | Read for Server Security Check  Service |
 | Security Monitoring | ADMIN | Create, Read, Update, Delete for Security Monitoring Service |
 | CAPTCHA | ADMIN | Create, Read, Update, Delete or CAPTCHA Service |
 | WEB Firewall | ADMIN | Create, Read, Update, Delete for WEB Firewall Service |

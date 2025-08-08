@@ -445,6 +445,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Smart Downloader | ADMIN | Smart Downloader 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | NHN AppGuard | ADMIN | AppGuard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Server Security Check | ADMIN | Server Security Check 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Server Security Check | VIEWER | Server Security Check 서비스 Read(읽기)|
 | Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | CAPTCHA | ADMIN | CAPTCHA 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
