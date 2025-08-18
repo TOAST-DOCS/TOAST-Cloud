@@ -63,6 +63,7 @@ NHN Cloud 서비스를 이용하기 위한 관리 툴과 작업 창의 역할을
 NHN Cloud 서비스를 안정하고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
 
 
+
 #### IP ACL 설정
 설정된 IP로 NHN Cloud 서비스를 이용할 수 있습니다.(적용 대상: 콘솔)
 
@@ -264,12 +265,12 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 ### NHN Cloud 회원과 IAM 멤버 정책
 
-| 구분 | [NHN Cloud](https://gncloud.go.kr)회원 | IAM 멤버 |
+| 구분 | [NHN Cloud](https://ninc.go.kr)회원 | IAM 멤버 |
 | --- | --- | --- |
 | 정의 | - 조직 관리를 위한 멤버<br>- NHN Cloud 이용 약관에 동의한 NHN Cloud회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>- NHN Cloud서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud 회원으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
 | 멤버 등록 방법 | - 조직의 OWNER나 ADMIN이 NHN Cloud ID를 입력하여 등록 | - 조직의 OWNER나 ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>- SSO 연동/API 연동 등을 통해 등록 |
 | 멤버 역할 | - 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리)<br>- 프로젝트 생성<br>- 프로젝트 삭제 | - 조직 서비스 이용 |
-| 콘솔 접근 | - NHN Cloud 콘솔 (https://console.gncloud.go.kr) 접근<br>- NHN Cloud > 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.gncloud.go.kr) 접근<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
+| 콘솔 접근 | - NHN Cloud 콘솔 (https://console.ninc.go.kr) 접근<br>- NHN Cloud > 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.ninc.go.kr) 접근<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 
 ### 조직 멤버
@@ -284,13 +285,12 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 | ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 | MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기) |
-| BILLING_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기), 조직 하위 프로젝트의 이용 현황 Read(읽기)|
+| BILLING_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기), 조직 하위 프로젝트의 이용 현황 Read(읽기) |
 | BUDGET_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 | BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
 | LOG_VIEWER | 사용자 Action 로그 관리 Read(읽기), 리소스 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 | ORG_DASHBOARD_ADMIN | 조직 대시보드 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | ORG_DASHBOARD_VIEWER | 조직 대시보드 Read(읽기) |
-| ORG_SUPPORT_ADMIN | 조직 문의 Create(생성) |
 | NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 
 #### 조직 서비스 이용 역할
@@ -330,12 +330,10 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | PROJECT NOTICE MANAGEMENT ADMIN | 프로젝트 알림 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) <br> 프로젝트 멤버 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기) |
 | PROJECT NOTICE MANAGEMENT VIEWER | 프로젝트 알림 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기) |
 | PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
-| PROJECT API SECURITY SETTING VIEWER | 프로젝트 API 보안 설정 Read(읽기)|
-| PROJECT AUTHENTICATION MANAGEMENT ADMIN | 프로젝트 인증 정보 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
-| PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
+| PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT VIEWER| 프로젝트 쿼터 관리 Read(읽기)|
-| PROJECT_SUPPORT_ADMIN| 프로젝트 문의 Create(생성)|
 | PROJECT DASHBOARD VIEWER | 프로젝트 대시보드 Read(읽기) |
+
 
 #### 프로젝트 서비스 이용 역할
 
@@ -343,12 +341,9 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructure 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | Infrastructure | MEMBER | 네트워크 서비스(Network Interface, Floating IP 제외) 및 NKS, NCS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | VIEWER | 기본 인프라 서비스(Key Pair, Direct Connect, NAS (Offline) 제외) Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Routing ADMIN | 네트워크 서비스(Network Interface, Floating IP, Routing Table 제외) 및 NKS, NCS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Security Group ADMIN | 네트워크 서비스(Network Interface, Floating IP, Security Groups 제외) 및 NKS, NCS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Load Balancer ADMIN | 네트워크 서비스(Network Interface, Floating IP, Load Balancer 제외) 및 NKS, NCS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Peering Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, Peering Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Colocation Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, Colocation Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | NAT Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, NAT Gateway 제외) 및 NKS, NCS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Service Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, Service Gateway 제외) 및 NKS, NCS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | NCS ADMIN | 네트워크 서비스(Network Interface, Floating IP 제외) 및 NKS Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
@@ -366,7 +361,6 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | RDS for MySQL | VIEWER | RDS for MySQL 서비스 Read(읽기) |
 | Cloud Monitoring | ADMIN | Cloud Monitoring 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Cloud Monitoring | VIEWER | Cloud Monitoring Read(읽기) |
-
 
 #### 프로젝트 서비스 활성화 역할
 프로젝트 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
@@ -412,37 +406,3 @@ NHN Cloud서비스 이용 요금을 확인하고, 결제할 수 있습니다.
     - 수신 대상을 알림 수신 그룹을 추가할 경우 해당 그룹에 설정된 알림 방법과 각 알림에서 지원하는 알림 방법이 일치해야 해당 방법으로 알림을 수신할 수 있습니다.
 
 4. **저장** 버튼을 클릭하여 설정 내용을 저장합니다.
-
-## 기술 지원
-
-기술 지원은 조직 또는 프로젝트 멤버와 함께 문의를 등록하거나 관리할 수 있는 기능입니다.
-등록한 문의는 같은 조직 또는 프로젝트 내 모든 멤버가 확인할 수 있습니다. 필요한 경우 다른 멤버가 등록한 문의에 추가 질문을 남길 수 있습니다.
-
-개별 문의가 필요한 경우 NHN Cloud 고객 센터 [1:1 문의](https://www.gncloud.go.kr/kr/support/inquiry)를 이용하세요.
-
-### 문의 목록
-
-1. Console에서 **조직 > 기술 지원** 또는 **프로젝트 > 기술 지원** 탭을 클릭합니다.
-    * 각 조직, 프로젝트에서 접수한 **문의 목록**을 확인할 수 있습니다.
-
-### 문의 접수
-
-1. **문의 목록** 화면에서 **문의 접수** 버튼을 클릭합니다.
-2. 접수할 문의의 유형을 선택하고 각 필드를 안내에 따라 작성합니다.
-    * 문의 유형별로 입력 필드가 달라질 수 있습니다.
-3. 하단에 **접수** 버튼을 클릭합니다.
-    * 유효성 검증(필수값 등) 실패 시 해당 입력 필드에 경고 메시지가 노출됩니다.
-
-### 추가 질문 접수
-
-1. **문의 목록** 화면의 기존 문의 목록에서 추가 질문을 접수할 문의 행을 클릭합니다.
-2. **상세 문의** 내역 화면 하단의 **추가 질문** 접수 폼을 입력합니다.
-3. **추가 질문** 접수 폼 내부의 **접수** 버튼을 클릭합니다.
-    * 추가 질문 내용과 전화번호는 필수값입니다.
-    * 회원 정보에 등록된 전화번호가 존재하는 경우 입력 필드에 기본값으로 채워집니다.
-
-### 문의 답변 내용 확인
-
-1. **문의 목록** 화면의 문의 목록에서 답변 내용을 확인할 문의 행을 클릭합니다.
-2. **상세 문의** 내역 화면에서 문의 내용, 추가 질문 내용, 답변 내용을 확인할 수 있습니다.
-
