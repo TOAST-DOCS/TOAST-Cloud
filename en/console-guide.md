@@ -376,6 +376,7 @@ Members are classified into NHN Cloud members and IAM members.
 | PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT API SECURITY SETTING ADMIN | Create, Read, Update, Delete for project's API Security Setting|
 | PROJECT API SECURITY SETTING VIEWER | Read for project's API Security Setting|
+| PROJECT AUTHENTICATION MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Authentication Info Management|
 | PROJECT QUOTA MANAGEMENT ADMIN| Create, Read, Update, Delete for project's Quota Management|
 | PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
 | PROJECT_SUPPORT_ADMIN| Create project inquiry|
