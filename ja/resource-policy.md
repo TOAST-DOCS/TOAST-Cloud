@@ -90,8 +90,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
-|VPN ゲートウェイ(Site-to-Site VPN) | VPCごと | 1 | X | | 
-|VPN(Site-to-Site VPN) 接続 | サブネットごと | 1 | X | |  
+|VPN ゲートウェイ(Site-to-Site VPN) | プロジェクトごと | 3 | X | | 
+|VPN(Site-to-Site VPN) 接続 | プロジェクトごと | 30 | X | |  
 
 
 

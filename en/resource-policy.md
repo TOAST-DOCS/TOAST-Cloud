@@ -97,8 +97,8 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
-|VPN Gateway(Site-to-Site VPN) | Per VPC | 1 | X | | 
-|VPN(Site-to-Site VPN) Connection | Per subnet | 1 | X | |
+|VPN Gateway(Site-to-Site VPN) | Per project | 3 | X | | 
+|VPN(Site-to-Site VPN) Connection | Per project | 30 | X | |
 
 
 ### Resource Provision Policy for Service Gateway Service  
