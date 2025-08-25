@@ -362,6 +362,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | PROJECT NOTICE MANAGEMENT VIEWER | プロジェクト通知管理 Read(読取) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
 | PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成), Read(読み取り), Update(更新), Delete(削除)|
 | PROJECT API SECURITY SETTING VIEWER | ロジェクトAPIセキュリティー設定Read(読み取り)|
+| PROJECT AUTHENTICATION MANAGEMENT ADMIN | プロジェクト認証情報管理Create(作成), Read(読み取り), Update(更新), Delete(削除)|
 | PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成), Read(読み取り), Update(更新), Delete(削除)|
 | PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
 | PROJECT_SUPPORT_ADMIN| プロジェクトお問い合わせCreate(作成)|
@@ -446,6 +447,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Smart Downloader | ADMIN | Smart Downloaderサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | NHN AppGuard | ADMIN | AppGuardサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Server Security Check | ADMIN | Server Security Check サービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Server Security Check | VIEWER |Server Security Check サービスに対するRead(読み取り) |
 | Security Monitoring | ADMIN | Security Monitoringサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | CAPTCHA | ADMIN | CAPTCHAサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | WEB Firewall | ADMIN | WEB Firewallサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |

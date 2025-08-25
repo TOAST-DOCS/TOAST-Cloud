@@ -361,6 +361,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | PROJECT NOTICE MANAGEMENT VIEWER | 프로젝트 알림 관리 Read(읽기) <br> 프로젝트 역할 그룹 Read(읽기)| 프로젝트 알림 수신 그룹 관리 Read(읽기)
 | PROJECT API SECURITY SETTING ADMIN | 프로젝트 API 보안 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)|
 | PROJECT API SECURITY SETTING VIEWER | 프로젝트 API 보안 설정 Read(읽기)|
+| PROJECT AUTHENTICATION MANAGEMENT ADMIN | 프로젝트 인증 정보 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT ADMIN| 프로젝트 쿼터 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)|
 | PROJECT QUOTA MANAGEMENT VIEWER| 프로젝트 쿼터 관리 Read(읽기)|
 | PROJECT_SUPPORT_ADMIN| 프로젝트 문의 Create(생성)|
@@ -445,6 +446,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Smart Downloader | ADMIN | Smart Downloader 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | NHN AppGuard | ADMIN | AppGuard 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Server Security Check | ADMIN | Server Security Check 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Server Security Check | VIEWER | Server Security Check 서비스 Read(읽기)|
 | Security Monitoring | ADMIN | Security Monitoring 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | CAPTCHA | ADMIN | CAPTCHA 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | WEB Firewall | ADMIN | WEB Firewall 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
