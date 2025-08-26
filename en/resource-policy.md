@@ -120,6 +120,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 
 ### Resource Provision Policy for Network Interface Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+Network Interface console also displays resources other than user projects, and the resources are not included in the amount.
 
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
