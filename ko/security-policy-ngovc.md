@@ -56,11 +56,5 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 | Netbios 관련 포트 | TCP, UDP/135, 137, 138, 139, 445 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 | 기타 | TCP/21(FTP), TCP / 5900(VNC) | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 
-### 포트 추가/허용 신청 절차
-- 아래 엑셀 파일을 다운로드하여 작성합니다.
 
-[![](https://static.toastoven.net/prod_gov_security/fileicon_download_excel.png)](https://static.toastoven.net/toast/download%20files/NHN%20Government%20Security%20Cloud%20%EB%B0%A9%ED%99%94%EB%B2%BD%20%EB%B0%8F%20SSL%20VPN%20%EC%A0%95%EC%B1%85%20%EC%8B%A0%EC%B2%AD%EC%84%9C.xlsx)
-
-- 파일명 “방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
-- [1:1 문의](https://www.ngovc.com/kr/support/inquiry)로 파일을 첨부하여 접수를 신청합니다. (접수일 기준으로 3일 이내 처리 및 회신)
 
