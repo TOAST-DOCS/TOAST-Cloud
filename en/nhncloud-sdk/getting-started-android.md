@@ -45,9 +45,6 @@ You can selectively apply the required feature among the services provided by NH
 
 To use all NHN Cloud SDK services, set dependency as shown below.
 
-> If you are using Unity, separate dependency setting is required.
-> For more details, see [Guide for Unity](./getting-started-unity/#android).
-
 ```groovy
 repositories {
   mavenCentral()
