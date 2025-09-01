@@ -45,9 +45,6 @@ NHN Cloud SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용
 
 NHN Cloud SDK의 모든 서비스를 사용하려면 아래와 같이 종속성(dependency)을 설정합니다.
 
-> 유니티를 사용하는 경우, 별도의 종속성 설정을 해야합니다.
-> 자세한 내용은 [유니티 가이드](./getting-started-unity/#android)를 참고해주세요.
-
 ```groovy
 repositories {
   mavenCentral()
