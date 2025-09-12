@@ -123,8 +123,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Speech to text | グローバル |  |  |  |  |
 | Machine Learning | Deep Learning Instance | リージョン | O |  | | |
 |  | AI EasyMaker | リージョン | O |  |  |  |
-| Application Service | Maps | リージョン | O |  |  |  |
-|  | ROLE | グローバル |  |  |  |  |
+| Application Service | ROLE | グローバル |  |  |  |  |
 |  | API Gateway | リージョン | O | O |  |  |
 |  | RTCS | グローバル |  |  |  |  |
 |  | Short URL | グローバル |  |  |  |  |
