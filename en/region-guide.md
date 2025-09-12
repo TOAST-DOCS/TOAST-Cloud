@@ -124,8 +124,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Speech to Text | Global |  |  |  |  |
 | Machine Learning | Deep Learning Instance | Regional | O |  | | |
 |  | AI EasyMaker | Regional | O |  |  |  |
-| Application Service | Maps | Regional | O |  |  |  |
-|  | ROLE | Global |  |  |  |  |
+| Application Service | ROLE | Global |  |  |  |  |
 |  | API Gateway | Regional | O | O |  |  |
 |  | RTCS | Global |  |  |  |  |
 |  | ShortURL | Global |  |  |  |  |
