@@ -492,7 +492,6 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Text to Speech | ADMIN | Text to Speech 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Speech to Text | ADMIN | Speech to Text 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI EasyMaker | ADMIN | AI EasyMaker 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Maps | ADMIN | Maps 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | ROLE | ADMIN | ROLE 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | API Gateway | ADMIN | API Gateway 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | RTCS | ADMIN | RTCS 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |

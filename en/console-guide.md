@@ -505,7 +505,6 @@ Members are classified into NHN Cloud members and IAM members.
 | Text to Speech | ADMIN | Create, Read, Update, Delete for Text to Speech |
 | Speech to Text | ADMIN | Create, Read, Update, Delete for Speech to Text |
 | AI EasyMaker | ADMIN | Create, Read, Update, Delete for AI EasyMaker |
-| Maps | ADMIN | Create, Read, Update, Delete for Maps Service |
 | ROLE | ADMIN | Create, Read, Update, Delete for ROLE Service |
 | API Gateway | ADMIN | Create, Read, Update, Delete for API Gateway Service |
 | RTCS | ADMIN | Create, Read, Update, Delete for RTCS Service |
