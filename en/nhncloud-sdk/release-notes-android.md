@@ -8,6 +8,7 @@
 
 * Respond for foldable devices (Fold series)
     * Fixed an issue where the portrait mode guide area would go off screen during credit card recognition.
+* Improved the camera preview synchronization
 
 ## 1.12.0 (July 29, 2025)
 
