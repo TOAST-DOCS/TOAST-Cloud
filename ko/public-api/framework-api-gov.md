@@ -125,9 +125,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | POST |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-생성) | 프로젝트 IAM 계정 생성 |
 | DELETE |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-다건-삭제) | 프로젝트 IAM 계정 다건 삭제 |
 | GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 IAM 계정 단건 조회 |
-| GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | 프로젝트 IAM 계정 목록 조회 |
-| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | 프로젝트 IAM 계정 역할 수정 |
-| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-목록-조회) | 조직 하위 멤버 인증 정보 목록 조회 |
+| GET |[/v1/organizations](#조직-목록-조회) | 조직 목록 조회 |
+| POST |[/v1/organizations](#조직-추가) | 조직 추가 |
+| DELETE |[/v1/organizations/{org-id}](#조직-단건-삭제) | 조직 단건 삭제 |
 
 
 
@@ -4048,8 +4048,231 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | lastTokenUsedDatetime | Date | No | 토큰 마지막 사용 일시 |
 | validTokenCount | Long | No | 유효한 토큰 개수 |
 
+<a id="조직-목록-조회"></a>
+#### 조직 목록 조회
+
+**[Method, URL]**
+```
+GET /v1/organizations
+```
+
+**[Request Header]**
+
+| 이름 | 값 | 필수 |
+|---|---|---|
+| x-nhn-authorization | 사용자 Bearer 토큰 | Yes |
+
+**[Query Parameter]**
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| orgName | String | No | 조직 이름 |
+| orgNameMatchTypeCode | String | No | 조직 이름 검색 타입 (EXACT: 정확히 일치, LIKE: 부분 일치, 기본값: LIKE) |
+| page | Integer | No | 대상 페이지, 기본값 1 |
+| limit | Integer | No | 페이지당 표시 건수, 기본값 20 |
+| sort | List&lt;String> | No | 정렬 조건 (필드명, 필드명,ASC, 필드명,DESC) |
+
+**[Response Body]**
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "orgList": [
+    {
+      "org": {
+        "orgId": "org-id",
+        "orgName": "organization-name",
+        "orgStatusCode": "STABLE",
+        "ownerUuid": "owner-uuid",
+        "regDateTime": "2023-01-01T00:00:00+09:00",
+        "remainingJobCode": "NONE",
+        "ipAclTypeCode": "COMMON",
+        "orgDomainList": [
+          {
+            "domainId": "domain-id",
+            "domainName": "domain-name"
+          }
+        ]
+      },
+      "orgMember": {
+        "existOrgMember": true,
+        "orgOwner": true
+      },
+      "orgOwner": {
+        "email": "owner@example.com",
+        "name": "owner-name",
+        "restrictStatusCode": "STABLE",
+        "country": "KR",
+        "restrictTypes": []
+      }
+    }
+  ],
+  "paging": {
+    "page": 1,
+    "limit": 20,
+    "totalCount": 1
+  }
+}
+```
+
+**[Response Body 설명]**
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| header | [공통 응답](#응답) | Yes | |
+| orgList | List&lt;OrgMemberRelationProtocol> | Yes | 조직 목록 정보 |
+| paging | [PagingResponse](#pagingresponse) | Yes | 페이징 정보 |
+
+###### OrgMemberRelationProtocol
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| org | OrgProtocol | Yes | 조직 정보 |
+| orgMember | OrgMemberProtocol | Yes | 조직/프로젝트 멤버 정보 |
+| orgOwner | OwnerProtocol | Yes | 조직 오너 정보 |
+
+###### OrgProtocol
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| orgId | String | Yes | 조직 ID |
+| orgName | String | Yes | 조직 이름 |
+| orgStatusCode | String | Yes | 조직 상태 코드 (STABLE, CLOSED) |
+| ownerUuid | String | Yes | 조직 오너 UUID |
+| regDateTime | Date | Yes | 조직 생성일시 |
+| remainingJobCode | String | Yes | 조직 후속 작업 (NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
+| ipAclTypeCode | String | Yes | 조직 IP ACL 타입 코드 (COMMON, INDIVIDUAL) |
+| orgDomainList | List&lt;OrgDomainProtocol> | Yes | 조직 도메인 목록 |
+
+###### OrgMemberProtocol
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| existOrgMember | Boolean | Yes | 조직 멤버 존재 여부 |
+| orgOwner | Boolean | Yes | 조직 오너 여부 |
+
+###### OwnerProtocol
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| email | String | Yes | 조직 오너 이메일 |
+| name | String | Yes | 조직 오너 이름 |
+| restrictStatusCode | String | Yes | 조직 오너 제약 상태 (HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
+| country | String | Yes | 조직 오너 국가 코드 |
+| restrictTypes | List&lt;String> | Yes | 조직 오너 제약 목록 |
+
+###### OrgDomainProtocol
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| domainId | String | Yes | 조직 도메인 ID |
+| domainName | String | Yes | 조직 도메인 이름 |
 
 
+<a id="조직-추가"></a>
+#### 조직 추가
+
+**[Method, URL]**
+```
+POST /v1/organizations
+```
+
+**[Request Header]**
+
+| 이름 | 값 | 필수 |
+|---|---|---|
+| x-nhn-authorization | 사용자 Bearer 토큰 | Yes |
+
+**[Request Body]**
+```json
+{
+  "orgName": "organization-name"
+}
+```
+
+**[Request Body 설명]**
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| orgName | String | Yes | 생성할 조직 이름 (최대 200자) |
+
+**[Response Body]**
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "orgId": "org-id",
+  "orgName": "organization-name",
+  "owner": {
+    "email": "owner@example.com",
+    "name": "owner-name",
+    "ownerId": "owner-uuid",
+    "restrictTypes": []
+  }
+}
+```
+
+**[Response Body 설명]**
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| header | [공통 응답](#응답) | Yes | |
+| orgId | String | Yes | 조직 ID |
+| orgName | String | Yes | 조직 이름 |
+| owner | Owner | Yes | 조직 오너 정보 |
+
+###### Owner
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| email | String | Yes | 조직 오너 이메일 |
+| name | String | Yes | 조직 오너 이름 |
+| ownerId | String | Yes | 조직 오너 ID |
+| restrictTypes | List&lt;String> | Yes | 제약 대상 목록 |
+
+
+<a id="조직-단건-삭제"></a>
+#### 조직 단건 삭제
+
+**[Method, URL]**
+```
+DELETE /v1/organizations/{orgId}
+```
+
+**[Request Header]**
+
+| 이름 | 값 | 필수 |
+|---|---|---|
+| x-nhn-authorization | 사용자 Bearer 토큰 | Yes |
+
+**[Path Variable]**
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| orgId | String | Yes | 조직 ID |
+
+**[Response Body]**
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+**[Response Body 설명]**
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| header | [공통 응답](#응답) | Yes | |
 
 
 ### 오류 코드
