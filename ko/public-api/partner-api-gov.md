@@ -1472,13 +1472,14 @@ DELETE /v1/billing/partners/{partnerId}/meters
 ### 요청
 
 ```
-GET /v1/billing/partners/meters/jobs/{asyncJobId}
+GET /v1/billing/partners/{partnerId}/meters/jobs/{asyncJobId}
 ```
 
 ### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
 | asyncJobId | Path | String | Y | 실행한 비동기 작업의 ID |
 
 ### 요청 본문
