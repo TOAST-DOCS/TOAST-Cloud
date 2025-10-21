@@ -1626,7 +1626,7 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
-| orgName | String | Y | 생성할 조직 이름 (최대 200자) |
+| orgName | String | Y | 생성할 조직 이름 (최대 120자) |
 
 ### 응답
 

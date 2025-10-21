@@ -4197,7 +4197,7 @@ POST /v1/organizations
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| orgName | String | Yes | 생성할 조직 이름 (최대 200자) |
+| orgName | String | Yes | 생성할 조직 이름 (최대 120자) |
 
 **[Response Body]**
 ```json
