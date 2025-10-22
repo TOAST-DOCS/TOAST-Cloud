@@ -4073,7 +4073,6 @@ GET /v1/organizations
 | orgNameMatchTypeCode | String | No | 조직 이름 검색 타입 (EXACT: 정확히 일치, LIKE: 부분 일치, 기본값: LIKE) |
 | page | Integer | No | 대상 페이지, 기본값 1 |
 | limit | Integer | No | 페이지당 표시 건수, 기본값 20 |
-| sort | List&lt;String> | No | 정렬 조건 (필드명, 필드명,ASC, 필드명,DESC) |
 
 **[Response Body]**
 ```json
