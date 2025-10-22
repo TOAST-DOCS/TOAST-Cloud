@@ -533,7 +533,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | month | Path | String | Y | 결제월 (yyyy-MM 형식) |
 | projectId | Path | String | Y | 프로젝트 ID |
 | lang | Header | String | N | 언어 설정 (기본값: ko_KR) |
-| usageSchemaTypeCode | Query | String | N | 사용량 포함여부<br>사용량 조회방식을 기존방식으로 할지, 신규 그룹핑된 방식으로 할지 결정<br>(기본값: NO_GROUP)<br><br>- NO_GROUP: 기존 방식<br>- GROUP_BY_PARENT_RESOURCE: 그룹핑 방식<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES: 그룹핑+사용량 포함 |
+| usageSchemaTypeCode | Query | String | N | 사용량 포함여부<br>사용량 조회방식을 기존방식으로 할지, 신규 그룹핑된 방식으로 할지 결정<br>(기본값: NO_GROUP)<br><br>- NO_GROUP: 기존 방식<br>- GROUP_BY_PARENT_RESOURCE: usageGroups 별 맵핑은 되지만 사용량은 제공하지 않는 방식<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES: usageGroups 별 맵핑에 세부 사용량까지 제공되는 방식 |
 | page | Query | Integer | N | 선택한 페이지 (기본값: 1, 최소: 1) |
 | itemsPerPage | Query | Integer | N | 페이지에 노출될 항목 개수, 미기입 시 전체 조회 (최소: 0) |
 | categoryMain | Query | String | N | 메인 카테고리 |
@@ -1172,6 +1172,7 @@ POST /v1/billing/partners/{partnerId}/usages/monthly/search
 - 상품 ID, 카운터 네임, 프로젝트 ID, 조직 ID 넷 중 하나는 반드시 존재해야 함
 - usedDateFrom과 usedDateTo는 특정 달의 1일부터 그 다음달의 1일이어야 함
 - 권한이 없는 상품 ID, 카운터 네임, 조직 ID를 입력하는 경우 API가 실패함
+- 2달 뒤의 사용량은 조회할 수 없음
 
 <details>
   <summary><strong>예시 코드</strong></summary>
@@ -1394,123 +1395,6 @@ GET /v1/billing/partners/{partnerId}/meters
 | meterList[].stationId | String | 스테이션 ID |
 | meterList[].timestamp | String | 미터링 발생 시각 |
 | totalItems | Integer | 전체 항목 수 |
-
----
-
-## 파트너 사용자의 미터링 삭제
-
-파트너가 접근 가능한 파트너 유저의 미터링에 대해서 삭제합니다.<br>
-접근 가능한 이란 의미는 상품을 등록한 경우에는 상품에 포함된 counterName들은 모두 삭제 가능하며 다른 상품의 counterName들은 삭제가 불가능하다는 의미입니다.<br>
-이미 청구서가 생성된 이후의 미터링은 삭제를 해도 반영이 되지 않음을 유의해야 합니다.<br>
-상품인 경우에도 상품 별로 사전에 권한 등록을 요청해야하며, 권한 등록 관련해서는 운영팀에 문의하여 진행하시면 됩니다.<br><br>
-
-삭제는 오래 걸릴수 있는 작업이므로 비동기로 동작하며, 삭제 API 호출 이후 반환된 asyncJobId 로 상태 조회를 하여 완료가 되었는지를 알 수 있습니다.
-
-!!! danger "주의"
-이 작업은 되돌릴 수 없습니다. 신중하게 사용하세요.
-
-!!! info "파트너 계약 검증"
-해당 파트너와 파트너 사용자가 삭제 대상 기간에 파트너 계약을 맺은 상태였는지 확인합니다.
-
-##### 필요 권한
-`Partner.Meter.Delete`
-
-### 요청
-
-```
-DELETE /v1/billing/partners/{partnerId}/meters
-```
-
-### 요청 파라미터
-
-!!! warning "제약 사항"
-- 상품 ID, 카운터 네임, 앱키 셋 중 하나는 반드시 존재해야 함
-- 상품 ID와 앱키를 동시에 입력하여 요청할 수 없음
-
-| 이름 | 구분 | 타입 | 필수 | 설명 |
-| --- | --- | --- | --- | --- |
-| partnerId | Path | String | Y | 파트너 ID |
-| partnerUserUuid | Query | String | Y | 파트너 사용자 UUID |
-| from | Query | String | Y | 삭제 시작일 (포함) (yyyy-MM-dd) |
-| to | Query | String | Y | 삭제 종료일 (미포함) (yyyy-MM-dd) |
-| counterNames | Query | List&lt;Object&gt; | N | 삭제할 counterName 목록 (최대 100개, 최소 0개, 중복 불가) |
-| productId | Query | String | N | 상품 ID |
-| appKey | Query | String | N | 상품 AppKey |
-
-### 요청 본문
-
-이 API는 요청 본문을 요구하지 않습니다.
-
-### 응답
-
-<details>
-  <summary><strong>응답 예시</strong></summary>
-
-```json
-{
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "SUCCESS"
-  },
-  "asyncJobId": "job-123456"
-}
-```
-
-</details>
-
-| 이름 | 타입 | 설명 |
-| --- | --- | --- |
-| asyncJobId | String | 실행한 비동기 작업의 ID |
-
----
-
-## 파트너 사용자의 미터링 삭제 확인
-
-파트너 사용자의 미터링 삭제 작업 상태를 확인할 수 있으며, 삭제 API 호출 후 **5초 이후** 호출하는 것이 안전합니다.<br>
-또한, 5초 주기로 호출하여 상태 확인을 하는 것이 부하를 줄일수 있어 권장됩니다.
-
-##### 필요 권한
-권한이 필요하지 않은 API입니다.
-
-### 요청
-
-```
-GET /v1/billing/partners/{partnerId}/meters/jobs/{asyncJobId}
-```
-
-### 요청 파라미터
-
-| 이름 | 구분 | 타입 | 필수 | 설명 |
-| --- | --- | --- | --- | --- |
-| partnerId | Path | String | Y | 파트너 ID |
-| asyncJobId | Path | String | Y | 실행한 비동기 작업의 ID |
-
-### 요청 본문
-
-이 API는 요청 본문을 요구하지 않습니다.
-
-### 응답
-
-<details>
-  <summary><strong>응답 예시</strong></summary>
-
-```json
-{
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": "SUCCESS"
-  },
-  "statusCode": "SUCCESS"
-}
-```
-
-</details>
-
-| 이름 | 타입 | 설명 |
-| --- | --- | --- |
-| statusCode | String | 작업 상태 코드<br><br>- IN_PROGRESS: 진행 중<br>- ERROR: 오류<br>- SUCCESS: 성공 |
 
 ---
 
