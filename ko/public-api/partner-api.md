@@ -1169,10 +1169,11 @@ POST /v1/billing/partners/{partnerId}/usages/monthly/search
 ### 요청 본문
 
 !!! warning "제약 사항"
-    - 상품 ID, 카운터 네임, 프로젝트 ID, 조직 ID 넷 중 하나는 반드시 존재해야 함
-    - usedDateFrom과 usedDateTo는 특정 달의 1일부터 그 다음달의 1일이어야 함
-    - 권한이 없는 상품 ID, 카운터 네임, 조직 ID를 입력하는 경우 API가 실패함
-    - 2달 뒤의 사용량은 조회할 수 없음
+- 상품 ID, 카운터 네임, 프로젝트 ID, 조직 ID 넷 중 하나는 반드시 존재해야 함
+- 단, 카운터 네임이나 상품 ID 만으로 사용량을 조회하려면 운영자를 통해 관련 권한을 먼저 부여받아야 함
+- usedDateFrom과 usedDateTo는 특정 달의 1일부터 그 다음달의 1일이어야 함
+- 권한이 없는 상품 ID, 카운터 네임, 조직 ID를 입력하는 경우 API가 실패함
+- 2달 뒤의 사용량은 조회할 수 없음
 
 <details>
   <summary><strong>예시 코드</strong></summary>
@@ -1268,9 +1269,10 @@ POST /v1/billing/partners/{partnerId}/usages/daily/search
 ### 요청 파라미터 및 응답
 
 !!! warning "제약 사항"
-    - 상품 ID, 카운터 네임, 프로젝트 ID, 조직 ID 넷 중 하나는 반드시 존재해야 함
-    - usedDateFrom과 usedDateTo는 같은 월이어야 함
-    - 권한이 없는 상품 ID, 카운터 네임, 조직 ID를 입력하는 경우 API가 실패함
+- 상품 ID, 카운터 네임, 프로젝트 ID, 조직 ID 넷 중 하나는 반드시 존재해야 함
+- 단, 카운터 네임이나 상품 ID 만으로 사용량을 조회하려면 운영자를 통해 관련 권한을 먼저 부여받아야 함
+- usedDateFrom과 usedDateTo는 같은 날이어야 하며, 하루 치에 대해서만 조회할 수 있음
+- 권한이 없는 상품 ID, 카운터 네임, 조직 ID를 입력하는 경우 API가 실패함
 
 [파트너 사용자의 월별 사용량 조회](#파트너-유저의-월별-사용량-조회)와 동일합니다.
 
@@ -1298,9 +1300,10 @@ POST /v1/billing/partners/{partnerId}/usages/hourly/search
 ### 요청 파라미터 및 응답
 
 !!! warning "제약 사항"
-    - 상품 ID, 카운터 네임, 프로젝트 ID, 조직 ID 넷 중 하나는 반드시 존재해야 함
-    - usedDateFrom과 usedDateTo는 같은 날이어야 함
-    - 권한이 없는 상품 ID, 카운터 네임, 조직 ID를 입력하는 경우 API가 실패함
+- 상품 ID, 카운터 네임, 프로젝트 ID, 조직 ID 넷 중 하나는 반드시 존재해야 함
+- 단, 카운터 네임이나 상품 ID 만으로 사용량을 조회하려면 운영자를 통해 관련 권한을 먼저 부여받아야 함
+- usedDateFrom과 usedDateTo는 같은 날이어야 함
+- 권한이 없는 상품 ID, 카운터 네임, 조직 ID를 입력하는 경우 API가 실패함
 
 [파트너 사용자의 월별 사용량 조회](#파트너-유저의-월별-사용량-조회)와 동일합니다.
 
