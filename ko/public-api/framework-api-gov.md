@@ -49,8 +49,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | project-id | String | 8자 | 프로젝트 ID |
 | product-id | String | 8자 | 서비스(상품) ID |
 | user-access-key-id | String | 20자 | User Access Key ID |
-| project-app-key | String | 20자 | 프로젝트의 AppKey |
-| product-app-key | String | 16자 | 서비스의 AppKey |
+| project-app-key | String | 20자 | 프로젝트의 앱키 |
+| product-app-key | String | 16자 | 서비스의 앱키 |
 | uuid | String | 36자 | 멤버의 UUID |
 
 
@@ -112,22 +112,25 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | 조직 IP ACL 목록 조회 |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
 | GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
-| GET |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-조회) | 프로젝트 AppKey 조회 |
+| GET | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-앱키-조회) | 프로젝트 앱키 조회 |
 | GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-목록-조회) | User Access Key ID 목록 조회 |
-| POST |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-등록) | 프로젝트 AppKey 등록 |
+| POST | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-앱키-등록) | 프로젝트 앱키 등록 |
 | POST |[/v1/authentications/user-access-keys](#User-Access-Key-ID-등록) | User Access Key ID 등록 |
-| DELETE |[/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#프로젝트-AppKey-삭제) | 프로젝트 AppKey 삭제 |
+| DELETE | [/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#프로젝트-앱키-삭제) | 프로젝트 앱키 삭제 |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#User-Access-Key-ID-비밀-키-재발급) | User Access Key ID 비밀 키 재발급 |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-상태-수정) | User Access Key ID 상태 수정 |
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | User Access Key ID 삭제 |
-| GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-목록-조회)                               | 토큰 목록 조회                    |
-| DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료)                               | 토큰 다건 만료                    |
+| GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-목록-조회) | 토큰 목록 조회 |
+| DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료) | 토큰 다건 만료 |
 | POST |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-생성) | 프로젝트 IAM 계정 생성 |
 | DELETE |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-다건-삭제) | 프로젝트 IAM 계정 다건 삭제 |
 | GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 IAM 계정 단건 조회 |
-| GET |[/v1/organizations](#조직-목록-조회) | 조직 목록 조회 |
-| POST |[/v1/organizations](#조직-추가) | 조직 추가 |
-| DELETE |[/v1/organizations/{org-id}](#조직-단건-삭제) | 조직 단건 삭제 |
+| GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | 프로젝트 IAM 계정 목록 조회 |
+| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | 프로젝트 IAM 계정 역할 수정 |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-목록-조회) | 조직 하위 멤버 인증 정보 목록 조회 |
+| GET | [/v1/organizations](#자신의-조직-목록-조회) | 자신의 조직 목록 조회 |
+| POST | [/v1/organizations](#자신의-조직-추가) | 자신의 조직 추가 |
+| DELETE | [/v1/organizations/{org-id}](#조직-단건-삭제) | 조직 단건 삭제 |
 
 
 
@@ -460,7 +463,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [공통 응답](#응답)| Yes |
-|   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 AppKey 정보|
+|   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 앱키 정보|
 |   parentProduct | ParentProduct| No | 상위 서비스 정보가 있으면 해당 정보를 표시하며, 상위 서비스가 없으면 포함하지 않음 |
 |   secretKey | String| No| 해당 프로젝트에서 이용 중인 서비스에 대한 비밀 키 정보<br> 비밀 키를 이용하는 서비스에서만 제공 |
 
@@ -1087,7 +1090,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 AppKey 정보  |
+|   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 앱키 정보  |
 |   externalId | String| No | 테넌트 ID<br>서비스에 테넌트 ID가 존재하는 경우에만 제공 |
 |   productId | String| Yes | 서비스 ID  |
 |   productName | String| Yes | 상품 이름  |
@@ -1098,7 +1101,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   secretKey | String| Yes | 서비스 SecretKey<br>secretKey를 이용하는 서비스에서만 제공  |
 |   statusCode | String| Yes | 해당 서비스의 이용 상태(STABLE, CLOSED) |
 |   updateDate | Date| No | 서비스 최종 수정 일시  |
-|   updateUuid | String| No | 서비스 AppKey 수정자 UUID  |
+|   updateUuid | String| No | 서비스 앱키 수정자 UUID  |
 
 
 <a id="프로젝트-멤버-단건-조회"></a>
@@ -3120,12 +3123,12 @@ IP ACL 설정을 조회하는 API입니다.
 |   usageAggregationUnitCode | String| No | 사용량 집계 단위<br>RESOURCE_ID, COUNTER_NAME |
 
 
-<a id="프로젝트-AppKey-조회"></a>
-#### 프로젝트 AppKey 조회
+<a id="프로젝트-앱키-조회"></a>
+#### 프로젝트 앱키 조회
 
 > GET "/v1/authentications/projects/{project-id}/project-appkeys"
 
-프로젝트에서 사용 중인 프로젝트 AppKey 목록을 조회하는 API입니다.
+프로젝트에서 사용 중인 프로젝트 앱키 목록을 조회하는 API입니다.
 
 ##### 필요 권한
 `Project.ProjectAppKey.List`
@@ -3164,14 +3167,14 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
 |   header | [공통 응답](#응답)| Yes |
-|   authenticationList | List&lt;ProjectAppKeyResponse>| No | 프로젝트 AppKey 목록 |
+|   authenticationList | List&lt;ProjectAppKeyResponse>| No | 프로젝트 앱키 목록 |
 
 ###### ProjectAppKeyResponse
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
 |   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   appKey | String| No | 콘솔에 노출되는 프로젝트 AppKey  |
+|   appKey | String| No | 콘솔에 노출되는 프로젝트 앱키  |
 |   authStatus | String| No | 인증 상태 코드(STABLE, STOP, BLOCKED) |
 |   projectId | String| No | 프로젝트 ID |
 |   lastUsedDatetime | Date| No | 마지막 사용 일시  |
@@ -3243,8 +3246,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   validTokenCount | Long| No | 유효한 토큰 개수                       |
 
 
-<a id="프로젝트-AppKey-등록"></a>
-#### 프로젝트 AppKey 등록
+<a id="프로젝트-앱키-등록"></a>
+#### 프로젝트 앱키 등록
 
 > POST "/v1/authentications/projects/{project-id}/project-appkeys"
 
@@ -3265,7 +3268,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   appkeyAlias | String | Yes   | 프로젝트 AppKey 별칭<br>100자 제한 |
+|   appkeyAlias | String | Yes   | 프로젝트 앱키 별칭<br>100자 제한 |
 
 
 ##### 응답 본문
@@ -3297,7 +3300,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
 |   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   appKey | String| No | 프로젝트 AppKey |
+|   appKey | String| No | 프로젝트 앱키 |
 
 <a id="User-Access-Key-ID-등록"></a>
 #### User Access Key ID 등록
@@ -3359,8 +3362,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   tokenExpiryPeriod | Long| No | 토큰 만료 기간(초 단위) |
 
 
-<a id="프로젝트-AppKey-삭제"></a>
-#### 프로젝트 AppKey 삭제
+<a id="프로젝트-앱키-삭제"></a>
+#### 프로젝트 앱키 삭제
 
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
 
@@ -3376,7 +3379,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Path | project-id | String| Yes | 대상 프로젝트 ID |
-|  Path |app-key | String| Yes | 삭제할 프로젝트 AppKey | 
+|  Path |app-key | String| Yes | 삭제할 프로젝트 앱키 | 
 
 
 ##### 응답 본문
@@ -3475,7 +3478,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   status | String| Yes | 변경할 프로젝트 AppKey 상태(STOP: 중지, STABLE: 사용) |
+|   status | String| Yes | 변경할 프로젝트 앱키 상태(STOP: 중지, STABLE: 사용) |
 
 
 ##### 응답 본문
@@ -4048,19 +4051,16 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | lastTokenUsedDatetime | Date | No | 토큰 마지막 사용 일시 |
 | validTokenCount | Long | No | 유효한 토큰 개수 |
 
-<a id="조직-목록-조회"></a>
-#### 조직 목록 조회
+<a id="자신의-조직-목록-조회"></a>
+#### 자신의 조직 목록 조회
 
 **[Method, URL]**
 ```
 GET /v1/organizations
 ```
 
-**[Request Header]**
-
-| 이름 | 값 | 필수 |
-|---|---|---|
-| x-nhn-authorization | 사용자 Bearer 토큰 | Yes |
+##### 필요 권한
+회원이면 호출 가능한 API
 
 **[Query Parameter]**
 
@@ -4131,7 +4131,7 @@ GET /v1/organizations
 |---|---|---|---|
 | org | OrgProtocol | Yes | 조직 정보 |
 | orgMember | OrgMemberProtocol | Yes | 조직/프로젝트 멤버 정보 |
-| orgOwner | OwnerProtocol | Yes | 조직 오너 정보 |
+| orgOwner | OwnerProtocol | Yes | 조직 Owner 정보 |
 
 ###### OrgProtocol
 
@@ -4140,7 +4140,7 @@ GET /v1/organizations
 | orgId | String | Yes | 조직 ID |
 | orgName | String | Yes | 조직 이름 |
 | orgStatusCode | String | Yes | 조직 상태 코드 (STABLE, CLOSED) |
-| ownerUuid | String | Yes | 조직 오너 UUID |
+| ownerUuid | String | Yes | 조직 Owner UUID |
 | regDateTime | Date | Yes | 조직 생성일시 |
 | remainingJobCode | String | Yes | 조직 후속 작업 (NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
 | ipAclTypeCode | String | Yes | 조직 IP ACL 타입 코드 (COMMON, INDIVIDUAL) |
@@ -4151,17 +4151,17 @@ GET /v1/organizations
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
 | existOrgMember | Boolean | Yes | 조직 멤버 존재 여부 |
-| orgOwner | Boolean | Yes | 조직 오너 여부 |
+| orgOwner | Boolean | Yes | 조직 Owner 여부 |
 
 ###### OwnerProtocol
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| email | String | Yes | 조직 오너 이메일 |
-| name | String | Yes | 조직 오너 이름 |
-| restrictStatusCode | String | Yes | 조직 오너 제약 상태 (HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
-| country | String | Yes | 조직 오너 국가 코드 |
-| restrictTypes | List&lt;String> | Yes | 조직 오너 제약 목록 |
+| email | String | Yes | 조직 Owner 이메일 |
+| name | String | Yes | 조직 Owner 이름 |
+| restrictStatusCode | String | Yes | 조직 Owner 제약 상태 (HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
+| country | String | Yes | 조직 Owner 국가 코드 |
+| restrictTypes | List&lt;String> | Yes | 조직 Owner 제약 목록 |
 
 ###### OrgDomainProtocol
 
@@ -4172,18 +4172,15 @@ GET /v1/organizations
 
 
 <a id="조직-추가"></a>
-#### 조직 추가
+#### 자신의 조직 추가
 
 **[Method, URL]**
 ```
 POST /v1/organizations
 ```
 
-**[Request Header]**
-
-| 이름 | 값 | 필수 |
-|---|---|---|
-| x-nhn-authorization | 사용자 Bearer 토큰 | Yes |
+##### 필요 권한
+회원이면 호출 가능한 API
 
 **[Request Body]**
 ```json
@@ -4224,15 +4221,15 @@ POST /v1/organizations
 | header | [공통 응답](#응답) | Yes | |
 | orgId | String | Yes | 조직 ID |
 | orgName | String | Yes | 조직 이름 |
-| owner | Owner | Yes | 조직 오너 정보 |
+| owner | Owner | Yes | 조직 Owner 정보 |
 
 ###### Owner
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| email | String | Yes | 조직 오너 이메일 |
-| name | String | Yes | 조직 오너 이름 |
-| ownerId | String | Yes | 조직 오너 ID |
+| email | String | Yes | 조직 Owner 이메일 |
+| name | String | Yes | 조직 Owner 이름 |
+| ownerId | String | Yes | 조직 Owner ID |
 | restrictTypes | List&lt;String> | Yes | 제약 대상 목록 |
 
 
@@ -4241,20 +4238,17 @@ POST /v1/organizations
 
 **[Method, URL]**
 ```
-DELETE /v1/organizations/{orgId}
+DELETE /v1/organizations/{org-id}
 ```
 
-**[Request Header]**
-
-| 이름 | 값 | 필수 |
-|---|---|---|
-| x-nhn-authorization | 사용자 Bearer 토큰 | Yes |
+##### 필요 권한
+`Organization.Delete`
 
 **[Path Variable]**
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| orgId | String | Yes | 조직 ID |
+| org-id | String | Yes | 조직 ID |
 
 **[Response Body]**
 ```json
@@ -4303,13 +4297,13 @@ DELETE /v1/organizations/{orgId}
 | 22013 | 조직 OWNER의 역할을 변경 시도했을 때 발생하는 오류                                                        | 조직 오너를 대상으로 역할 변경은 불가능                                |
 | 22016 | 조직이 존재하지 않을 때 발생하는 오류                                                              | 존재하는 조직의 orgId로 요청하는지 확인                              |
 | 23005 | 조직 ID에 해당하는 조직이 존재하지 않을 때 발생하는 오류                                                   | 담당자 문의                                             |
-| 30015 | 프로젝트 AppKey의 생성 제한 횟수를 초과할 경우 발생하는 오류 <br> 프로젝트 AppKey API - `프로젝트 AppKey 생성`에서 생성되는 프로젝트 AppKey의 생성 가능 횟수는 3개이며 3개를 초과할 경우 오류 발생 | 사용하지 않은 프로젝트 AppKey 삭제 후 재시도                               |
+| 30015 | 프로젝트 AppKey의 생성 제한 횟수를 초과할 경우 발생하는 오류 <br> 프로젝트 앱키 API - `프로젝트 앱키 생성`에서 생성되는 프로젝트 AppKey의 생성 가능 횟수는 3개이며 3개를 초과할 경우 오류 발생 | 사용하지 않은 프로젝트 앱키 삭제 후 재시도                               |
 | 40017 | 프로젝트가 존재하지 않을 경우 발생하는 오류                                                           | 존재하는 프로젝트에 대해 API 요청                                   |
 | 40028<br>13003 | 프로젝트가 존재하지 않을 경우(생성했다가 삭제한 경우) 발생하는 오류                                              | 존재하는 프로젝트에 대해 API 요청                                   |
 | 40054 | 서비스 활성화 시, 먼저 활성화되어야 하는 서비스가 활성화 되어있지 않은 경우 발생하는 오류                               | 먼저 활성화가 되어야 하는 서비스 활성화 처리                               |
 | 40057 | 서비스 비활성화 시, 먼저 비활성화 되어야 하는 서비스가 비활성화 되어있지 않은 경우 발생하는 오류                            | 먼저 비활성화가 되어야 하는 서비스 비활성화 처리                              |
 | 50007 | 유효하지 않은 멤버일 때, 발생하는 오류<br>(존재하지 않는 멤버이거나, 휴면 및 탈퇴 상태의 멤버는 유효하지 않음)<br>조직 생성 API - API 호출 시, uuid가 유효하지 않을 경우 | 유효한 멤버의 uuid로 수정                                 |
-| 60003 | DB에 데이터가 없을 경우 발생하는 오류<br>프로젝트 AppKey API - `프로젝트 AppKey 삭제` 에서 삭제할 AppKey가 없을 경우 발생하는 오류 | 1) 담당자 문의 <br>2) 존재하는 AppKey를 삭제 대상 AppKey 값으로 설정  |
+| 60003 | DB에 데이터가 없을 경우 발생하는 오류<br>프로젝트 앱키 API - `프로젝트 앱키 삭제` 에서 삭제할 AppKey가 없을 경우 발생하는 오류 | 1) 담당자 문의 <br>2) 존재하는 AppKey를 삭제 대상 앱키 값으로 설정  |
 | 62004 | 역할 그룹 생성 시 동일한 이름의 역할 그룹이 존재하는 경우 발생하는 오류                                           | 중복되지 않은 이름으로 변경                                         |
 | 62008 | 역할 그룹 수정, 삭제 및 역할 그룹에 역할 추가/삭제 시 역할 그룹 ID가 존재하지 않는 경우 발생                            | 존재하는 역할 그룹 ID를 사용하도록 변경                                |
 | 62009 | 역할 그룹 생성 시 역할이 유효하지 않은 역할인 경우 발생                                                   | 유효한 역할을 사용하도록 변경                                       |

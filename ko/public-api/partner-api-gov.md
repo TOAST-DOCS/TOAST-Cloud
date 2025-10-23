@@ -58,17 +58,16 @@
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
 | header.isSuccessful | Boolean | 성공 여부 |
-| header.resultCode | Integer | 결과 코드 (성공 시 0) |
+| header.resultCode | Integer | 결과 코드(성공 시 0) |
 | header.resultMessage | String | 결과 메시지 |
 
 !!! warning "API 응답 필드 확장성"
-API Response는 아래에 명시되지 않은 필드가 추가될 수 있습니다. 새로운 필드가 추가되어도 오류가 발생하지 않도록 개발 부탁드립니다.
+API Response는 아래에 명시되지 않은 필드가 추가될 수 있습니다. 새로운 필드가 추가되어도 오류가 발생하지 않도록 주의하세요.
 
----
 
 ## 파트너 사용자의 조직 사용량 목록 조회
 
-파트너 사용자의 청구금액, 조직별 사용금액, 상품별 사용금액, 할증정보를 제공합니다.
+파트너 사용자의 청구금액, 조직별 사용금액, 상품별 사용금액, 할증 정보를 제공합니다.
 
 !!! info "기존에 제공되던 API 명칭"
 파트너 사용자의 청구서 조회
@@ -77,9 +76,9 @@ API Response는 아래에 명시되지 않은 필드가 추가될 수 있습니�
 해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지 확인합니다.
 
 !!! tip "알아두기"
-결제월은 yyyy-MM 형식으로 입력해야 합니다.
+이용월은 yyyy-MM 형식으로 입력해야 합니다.
 
-##### 필요 권한
+### 필요 권한
 `Partner.Payment.Get`
 
 ### 요청
@@ -93,9 +92,9 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
-| month | Path | String | Y | 결제월 (yyyy-MM 형식) |
+| month | Path | String | Y | 이용월(yyyy-MM 형식) |
 | partnerUserUuid | Query | String | Y | 파트너 사용자 UUID |
-| lang | Header | String | N | 언어 설정 (기본값: ko_KR) |
+| lang | Header | String | N | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US) |
 
 ### 요청 본문
 
@@ -153,9 +152,9 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | --- | --- | --- |
 | payment | Object | 결제 정보 |
 | payment.charge | Long | 사용 금액 + 프로젝트 할증금액 |
-| payment.totalAmount | Long | 청구 금액 (사용금액 + 부가세액) |
+| payment.totalAmount | Long | 청구 금액(사용금액 + 부가세액) |
 | payment.taxAmount | Long | 부가세액 |
-| payment.currency | String | 통화<br>locale 에 따라서 해당하는 언어로 반환됨 |
+| payment.currency | String | 통화<br>lang에 따라서 해당하는 언어로 반환됨 |
 | payment.orgList | List&lt;Object&gt; | 조직별 사용량 목록 |
 | payment.usageSummaryList | List&lt;Object&gt; | 사용량 요약 목록 |
 | payment.extraSummaryList | List&lt;Object&gt; | 프로젝트 할증 요약 목록 |
@@ -177,10 +176,10 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | --- | --- | --- |
 | categoryMain | String | 메인 카테고리 |
 | categorySub | String | 서브 카테고리 |
-| counterName | String | 카운터 네임 |
-| displayName | String | 과금 단위 노출 이름 (locale별) |
+| counterName | String | 카운터 이름 |
+| displayName | String | 과금 단위 노출 이름(locale별) |
 | displayOrder | Integer | 표시순서 |
-| price | Long | 이용금액 (파트너용이므로 약정금액은 제공하지 않음) |
+| price | Long | 이용금액(파트너용이므로 약정금액은 제공하지 않음) |
 | productUiId | String | 홈페이지 서비스 UI ID |
 | usage | BigDecimal | 사용량 |
 
@@ -196,7 +195,6 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 
 </details>
 
----
 
 ## 파트너 사용자의 조직 목록 조회
 
@@ -205,7 +203,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 !!! info "파트너 계약 검증"
 해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지 확인합니다.
 
-##### 필요 권한
+### 필요 권한
 `Partner.Organization.List`
 
 ### 요청
@@ -219,7 +217,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
-| month | Path | String | Y | 결제월 (yyyy-MM 형식) |
+| month | Path | String | Y | 이용월(yyyy-MM 형식) |
 | partnerUserUuid | Query | String | Y | 파트너 사용자 UUID |
 
 ### 요청 본문
@@ -257,11 +255,10 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 | organizations | List&lt;Object&gt; | 조직 목록 |
 | organizations[].orgId | String | 조직 ID |
 | organizations[].orgName | String | 조직 이름 |
-| organizations[].orgStatusCode | String | 조직 상태 (STABLE: 정상 상태, CLOSED: 삭제된 상태) |
-| organizations[].orgCreationType | String | 조직 생성 타입 (USER: 고객이 생성한 조직, SYSTEM: 시스템에서 만든 조직) |
+| organizations[].orgStatusCode | String | 조직 상태(STABLE: 정상 상태, CLOSED: 삭제된 상태) |
+| organizations[].orgCreationType | String | 조직 생성 타입(USER: 고객이 생성한 조직, SYSTEM: 시스템에서 만든 조직) |
 | organizations[].cloudType | String | 클라우드 타입 |
 
----
 
 ## 파트너 사용자의 조직별 청구 금액 조회
 
@@ -270,7 +267,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 !!! info "파트너 계약 검증"
 해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지, 그리고 해당 조직의 owner가 해당 달에 파트너 사용자였는지 확인합니다.
 
-##### 필요 권한
+### 필요 권한
 `Partner.Organization.Usage.Get`
 
 ### 요청
@@ -284,9 +281,9 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
-| month | Path | String | Y | 결제월 (yyyy-MM 형식) |
+| month | Path | String | Y | 이용월(yyyy-MM 형식) |
 | orgId | Path | String | Y | 조직 ID |
-| lang | Header | String | N | 언어 설정 (기본값: ko_KR) |
+| lang | Header | String | N | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US) |
 
 ### 요청 본문
 
@@ -361,7 +358,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
 | org | Object | 조직 정보 |
-| org.orgId | String | 조직 아이디 |
+| org.orgId | String | 조직 ID |
 | org.orgName | String | 조직 이름 |
 | org.totalAmount | Long | 조직 최종 금액 |
 | org.usagePrice | Long | 이용 금액 |
@@ -394,7 +391,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | --- | --- | --- |
 | totalAdjustment | Long | 할인 금액 합계 |
 | details | List&lt;Object&gt; | 상세 내역 |
-| details[].projectId | String | 프로젝트 아이디 |
+| details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할인 금액 |
 | details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
@@ -409,7 +406,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | --- | --- | --- |
 | totalAdjustment | Long | 할증 금액 합계 |
 | details | List&lt;Object&gt; | 상세 내역 |
-| details[].projectId | String | 프로젝트 아이디 |
+| details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할증 금액 |
 | details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
@@ -422,7 +419,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| projectId | String | 프로젝트 아이디 |
+| projectId | String | 프로젝트 ID |
 | projectName | String | 프로젝트 이름 |
 | totalAmount | Long | 프로젝트 최종 금액 |
 | usagePrice | Long | 프로젝트 이용 금액 합계 |
@@ -430,7 +427,6 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 
 </details>
 
----
 
 ## 파트너 사용자의 프로젝트 목록 조회
 
@@ -439,7 +435,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 !!! info "파트너 계약 검증"
 해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지 확인합니다.
 
-##### 필요 권한
+### 필요 권한
 `Partner.Project.List`
 
 ### 요청
@@ -453,7 +449,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
-| month | Path | String | Y | 결제월 (yyyy-MM 형식) |
+| month | Path | String | Y | 이용월(yyyy-MM 형식) |
 | partnerUserUuid | Query | String | Y | 파트너 사용자 UUID |
 
 ### 요청 본문
@@ -494,14 +490,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 | projects | List&lt;Object&gt; | 프로젝트 목록 |
 | projects[].orgId | String | 조직 ID |
 | projects[].orgName | String | 조직 이름 |
-| projects[].orgCreationType | String | 조직 생성 타입<br><br>- USER: 고객이 생성한 조직<br>- SYSTEM: 시스템에서 만든 조직 (주로 회원형 마켓플레이스에 사용) |
+| projects[].orgCreationType | String | 조직 생성 타입<br><br>- USER: 고객이 생성한 조직<br>- SYSTEM: 시스템에서 만든 조직(주로 회원형 마켓플레이스에 사용) |
 | projects[].orgStatusCode | String | 조직 상태<br><br>- STABLE: 정상 상태<br>- CLOSED: 삭제된 상태 |
 | projects[].projectId | String | 프로젝트 ID |
 | projects[].projectName | String | 프로젝트 이름 |
-| projects[].projectCreationType | String | 프로젝트 생성 타입<br><br>- USER: 고객이 생성한 프로젝트<br>- SYSTEM: 시스템에서 만든 프로젝트 (주로 조직 상품, 회원형 마켓플레이스에서 사용) |
+| projects[].projectCreationType | String | 프로젝트 생성 타입<br><br>- USER: 고객이 생성한 프로젝트<br>- SYSTEM: 시스템에서 만든 프로젝트(주로 조직 상품, 회원형 마켓플레이스에서 사용) |
 | projects[].projectStatusCode | String | 프로젝트 상태<br><br>- STABLE: 정상 상태<br>- CLOSED: 삭제된 상태 |
 
----
 
 ## 파트너 사용자의 프로젝트 상세 사용량 조회
 
@@ -516,7 +511,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 !!! info "파트너 계약 검증"
 해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지, 그리고 해당 프로젝트가 속한 조직의 owner가 해당 달에 파트너 사용자였는지 확인합니다.
 
-##### 필요 권한
+### 필요 권한
 `Partner.Project.Usage.Get`
 
 ### 요청
@@ -530,14 +525,14 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
-| month | Path | String | Y | 결제월 (yyyy-MM 형식) |
+| month | Path | String | Y | 이용월(yyyy-MM 형식) |
 | projectId | Path | String | Y | 프로젝트 ID |
-| lang | Header | String | N | 언어 설정 (기본값: ko_KR) |
+| lang | Header | String | N | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US) |
 | usageSchemaTypeCode | Query | String | N | 사용량 포함여부<br>사용량 조회방식을 기존방식으로 할지, 신규 그룹핑된 방식으로 할지 결정<br>(기본값: NO_GROUP)<br><br>- NO_GROUP: 기존 방식<br>- GROUP_BY_PARENT_RESOURCE: usageGroups 별 맵핑은 되지만 사용량은 제공하지 않는 방식<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES: usageGroups 별 맵핑에 세부 사용량까지 제공되는 방식 |
-| page | Query | Integer | N | 선택한 페이지 (기본값: 1, 최소: 1) |
-| itemsPerPage | Query | Integer | N | 페이지에 노출될 항목 개수, 미기입 시 전체 조회 (최소: 0) |
+| page | Query | Integer | N | 선택한 페이지(기본값: 1, 최소: 1) |
+| itemsPerPage | Query | Integer | N | 페이지에 노출될 항목 개수, 미기입 시 전체 조회(최소: 0) |
 | categoryMain | Query | String | N | 메인 카테고리 |
-| regionTypeCode | Query | String | N | 리전 타입 코드 (최대 20자) |
+| regionTypeCode | Query | String | N | 리전 타입 코드(최대 20자) |
 
 ### 요청 본문
 
@@ -663,7 +658,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
 | project | Object | 프로젝트 정보 |
-| project.projectId | String | 프로젝트 아이디 |
+| project.projectId | String | 프로젝트 ID |
 | project.projectName | String | 프로젝트 이름 |
 | project.totalAmount | Long | 프로젝트 최종 금액 |
 | project.usagePrice | Long | 이용 금액 |
@@ -682,8 +677,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| balanceTypeCode | String | 캠페인 유형 (돈통 유형) |
-| balanceTypeName | String | 캠페인 유형 이름 (돈통 유형 이름) |
+| balanceTypeCode | String | 캠페인 유형(돈통 유형) |
+| balanceTypeName | String | 캠페인 유형 이름(돈통 유형 이름) |
 | i18nBalanceTypeNameMap | Object | 캠페인 유형 이름 다국어 코드 |
 | usageAmount | Long | 크레딧 사용 금액 |
 
@@ -696,7 +691,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | --- | --- | --- |
 | totalAdjustment | Long | 할인 금액 합계 |
 | details | List&lt;Object&gt; | 상세 내역 |
-| details[].projectId | String | 프로젝트 아이디 |
+| details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할인 금액 |
 | details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
@@ -711,7 +706,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | --- | --- | --- |
 | totalAdjustment | Long | 할증 금액 합계 |
 | details | List&lt;Object&gt; | 상세 내역 |
-| details[].projectId | String | 프로젝트 아이디 |
+| details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할증 금액 |
 | details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
@@ -727,7 +722,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
 | categoryMain | String | 메인 카테고리 |
-| stationId | String | 스테이션 아이디 |
+| stationId | String | 스테이션 ID |
 | stationName | String | 스테이션 이름 |
 | regionTypeCode | String | 리전 |
 | needType | Boolean | 구분 컬럼 노출 여부 |
@@ -744,7 +739,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | --- | --- | --- |
 | parentResourceId | String | 구분을 위한 parent resource ID |
 | parentResourceName | String | 구분을 위한 parent resource Name |
-| usages | List&lt;Object&gt; | 상세 사용량 목록 (UsageDTO 스키마) |
+| usages | List&lt;Object&gt; | 상세 사용량 목록(UsageDTO 스키마) |
 
 <details>
 <summary><strong>UsageDTO 스키마</strong></summary>
@@ -757,23 +752,23 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | contractPrice | Long | 약정으로 계산된 이용금액 |
 | contractUnitPrice | BigDecimal | 약정 단가 |
 | counterName | String | Counter Name |
-| displayNameEn | String | 과금 단위 노출 이름 (en) |
-| displayNameJa | String | 과금 단위 노출 이름 (ja) |
-| displayNameKo | String | 과금 단위 노출 이름 (ko) |
-| displayNameZh | String | 과금 단위 노출 이름 (zh) |
+| displayNameEn | String | 과금 단위 노출 이름(en) |
+| displayNameJa | String | 과금 단위 노출 이름(ja) |
+| displayNameKo | String | 과금 단위 노출 이름(ko) |
+| displayNameZh | String | 과금 단위 노출 이름(zh) |
 | displayOrder | Long | 표시순서 |
-| parentResourceId | String | 부모 리소스 아이디 |
+| parentResourceId | String | 부모 리소스 ID |
 | parentResourceName | String | 부모 리소스 이름 |
 | price | Long | 이용금액 |
 | productUiId | String | 홈페이지 상품 Ui Id |
-| projectId | String | 프로젝트 아이디 |
+| projectId | String | 프로젝트 ID |
 | projectName | String | 프로젝트 이름 |
 | rangeFrom | BigDecimal | 적용 시작 범위 |
 | regionTypeCode | String | 리전 |
-| resourceId | String | 리소스 아이디 |
+| resourceId | String | 리소스 ID |
 | resourceName | String | 리소스 이름 |
 | seq | Long | seq |
-| stationId | String | 스테이션 아이디 |
+| stationId | String | 스테이션 ID |
 | stationName | String | 스테이션 이름 |
 | unit | Long | 과금 단위 |
 | unitName | String | 단위명 |
@@ -790,13 +785,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| counterName | String | 카운터 네임 |
+| counterName | String | 카운터 이름 |
 | counterType | String | 카운터 타입 |
-| productId | String | 상품 아이디 |
-| projectId | String | 프로젝트 아이디 |
-| resourceId | String | 리소스 아이디 |
+| productId | String | 상품 ID |
+| projectId | String | 프로젝트 ID |
+| resourceId | String | 리소스 ID |
 | resourceName | String | 리소스 이름 |
-| parentResourceId | String | 부모 리소스 아이디 |
+| parentResourceId | String | 부모 리소스 ID |
 | usage | BigDecimal | 사용량 |
 | usedTime | String | 사용 시각 |
 
@@ -804,7 +799,6 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 
 </details>
 
----
 
 ## 파트너의 청구서 조회
 
@@ -813,7 +807,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 !!! info "파트너 계약 검증"
 해당 파트너가 지정된 월에 유효한 파트너 계약 상태였는지 확인합니다.
 
-##### 필요 권한
+### 필요 권한
 `Partner.Statement.Get`
 
 ### 요청
@@ -827,8 +821,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
-| month | Path | String | Y | 결제월 (yyyy-MM 형식) |
-| lang | Header | String | N | 언어 설정 (기본값: ko_KR) |
+| month | Path | String | Y | 이용월(yyyy-MM 형식) |
+| lang | Header | String | N | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US) |
 
 ### 요청 본문
 
@@ -972,7 +966,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
 | uuid | String | 회원 UUID |
-| autoPaymentTypeCode | String | 결제 수단 타입<br><br>- PAYCO_CREDIT_CARD: 페이코 신용카드<br>- CREDIT_CARD: 신용카드<br>- INTER_CREDIT_CARD: 해외 신용카드<br>- UNION_PAY: 유니온페이<br>- JAPAN_BILLING: 일본 빌링<br>- ACCOUNT_TRANSFER: 계좌 이체<br>- CREDIT_ALL: 일반 크레딧<br>- CREDIT_LIMIT: 이벤트 크레딧<br>- ESM: 내부 비용<br>- ONETIME_PAYMENT: 일회성 결제<br>- TAX_BILL: 세금 계산서 발행<br>- CONTRACT_BILL: 세금 계산서 발행 (별도 계약으로 청구 금액 조정 발생)<br>- NONE: 없음 |
+| autoPaymentTypeCode | String | 결제 수단 타입<br><br>- PAYCO_CREDIT_CARD: 페이코 신용카드<br>- CREDIT_CARD: 신용카드<br>- INTER_CREDIT_CARD: 해외 신용카드<br>- UNION_PAY: 유니온페이<br>- JAPAN_BILLING: 일본 빌링<br>- ACCOUNT_TRANSFER: 계좌 이체<br>- CREDIT_ALL: 일반 크레딧<br>- CREDIT_LIMIT: 이벤트 크레딧<br>- ESM: 내부 비용<br>- ONETIME_PAYMENT: 일회성 결제<br>- TAX_BILL: 세금 계산서 발행<br>- CONTRACT_BILL: 세금 계산서 발행(별도 계약으로 청구 금액 조정 발생)<br>- NONE: 없음 |
 | isAutoPayment | Boolean | 자동 결제 수단 여부 |
 | paymentInfo | String | 결제 수단 정보 |
 | statements | List&lt;Object&gt; | 빌링 그룹별 결제 내역 목록 |
@@ -984,7 +978,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| paymentGroupId | String | 결제 그룹 아이디 |
+| paymentGroupId | String | 결제 그룹 ID |
 | month | String | 이용월 |
 | charge | Long | 사용금액 |
 | supplyAmount | Long | 공급가액 |
@@ -1016,7 +1010,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| billingGroupId | String | 빌링 그룹 아이디 |
+| billingGroupId | String | 빌링 그룹 ID |
 | billingGroupName | String | 빌링 그룹 이름 |
 | charge | Long | 이용 금액 |
 | contractDiscount | Long | 약정 할인 금액 |
@@ -1042,8 +1036,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| balanceTypeCode | String | 캠페인 유형 (돈통 유형) |
-| balanceTypeName | String | 캠페인 유형 이름 (돈통 유형 이름) |
+| balanceTypeCode | String | 캠페인 유형(돈통 유형) |
+| balanceTypeName | String | 캠페인 유형 이름(돈통 유형 이름) |
 | i18nBalanceTypeNameMap | Object | 캠페인 유형 이름 다국어 코드 |
 | usageAmount | Long | 크레딧 사용 금액 |
 
@@ -1054,7 +1048,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| orgId | String | 조직 아이디 |
+| orgId | String | 조직 ID |
 | orgName | String | 조직 이름 |
 | totalAmount | Long | 조직 최종 금액 |
 
@@ -1068,7 +1062,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | categoryMain | String | 메인 카테고리 |
 | needType | Boolean | 구분 컬럼 노출 여부 |
 | regionTypeCode | String | 리전 |
-| stationId | String | 스테이션 아이디 |
+| stationId | String | 스테이션 ID |
 | stationName | String | 스테이션 이름 |
 | totalItems | Integer | UsageGroup별 Usage 총 개수 |
 | totalPrice | Long | 약정 할인 적용된 이용 금액 합계 |
@@ -1111,7 +1105,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | --- | --- | --- |
 | totalAdjustment | Long | 할인 금액 합계 |
 | details | List&lt;Object&gt; | 상세 내역 |
-| details[].projectId | String | 프로젝트 아이디 |
+| details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할인 금액 |
 | details[].adjustmentTypeCode | String | 할인 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
@@ -1126,7 +1120,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | --- | --- | --- |
 | totalAdjustment | Long | 할증 금액 합계 |
 | details | List&lt;Object&gt; | 상세 내역 |
-| details[].projectId | String | 프로젝트 아이디 |
+| details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할증 금액 |
 | details[].adjustmentTypeCode | String | 할증 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
@@ -1136,7 +1130,6 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 
 </details> 
 
----
 
 ## 솔루션 파트너의 자기 상품 미터링 조회
 
@@ -1145,7 +1138,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 !!! info "솔루션 파트너 검증"
 솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여받은 사용자만 호출 가능합니다.
 
-##### 필요 권한
+### 필요 권한
 `Partner.Meter.List`
 
 ### 요청
@@ -1160,12 +1153,12 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
 | productId | Path | String | Y | 상품 ID |
-| from | Query | String | Y | 조회 시작일 (yyyy-MM-ddThh:mm:ss.sssZ) |
-| to | Query | String | Y | 조회 종료일 (yyyy-MM-ddThh:mm:ss.sssZ) |
-| counterName | Query | String | Y | 카운터 네임 |
+| from | Query | String | Y | 조회 시작일(yyyy-MM-ddThh:mm:ss.sssZ, 포함) |
+| to | Query | String | Y | 조회 종료일(yyyy-MM-ddThh:mm:ss.sssZ, 미포함) |
+| counterName | Query | String | Y | 카운터 이름 |
 | meterTimeTypeCode | Query | String | N | 미터 시간 타입 코드<br><br>- INSERT_TIME: 미터링 삽입 시간 기준<br>- USED_TIME: 미터링 발생 시간 기준 |
-| page | Query | Integer | Y | 선택한 페이지 (최소: 1) |
-| limit | Query | Integer | Y | 페이지에 노출될 항목 개수 (최소: 1, 최대: 2000) |
+| page | Query | Integer | Y | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | Y | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
 
 ### 요청 본문
 
@@ -1206,11 +1199,11 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
 | meterList | List&lt;Object&gt; | 미터링 목록 |
-| meterList[].appKey | String | 상품 AppKey |
+| meterList[].appKey | String | 상품 앱키 |
 | meterList[].counterName | String | 카운터 이름 |
-| meterList[].counterType | String | 카운터 타입<br><br>- DELTA: 증분값<br>- GAUGE: 현재값<br>- HOURLY_LATEST: 시간별 최신값<br>- DAILY_MAX: 일별 최대값<br>- MONTHLY_MAX: 월별 최대값<br>- STATUS: 상태값 |
+| meterList[].counterType | String | 카운터 타입<br><br>- DELTA: 증분 값<br>- GAUGE: 현재 값<br>- HOURLY_LATEST: 시간별 최신 값<br>- DAILY_MAX: 일별 최댓값<br>- MONTHLY_MAX: 월별 최댓값<br>- STATUS: 상태 값 |
 | meterList[].counterUnit | String | 카운터 단위 |
-| meterList[].counterValue | String | 사용현황 (counterType이 STATUS인 경우에만 사용) |
+| meterList[].counterValue | String | 사용 현황(counterType이 STATUS인 경우에만 사용) |
 | meterList[].counterVolume | BigDecimal | 카운터 볼륨 |
 | meterList[].gmid | String | 글로벌 미터링 ID |
 | meterList[].insertTime | String | 미터링 삽입 시각 |
@@ -1225,7 +1218,6 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | meterList[].timestamp | String | 미터링 발생 시각 |
 | totalItems | Integer | 전체 항목 수 |
 
----
 
 ## 파트너 사용자의 조직 생성
 
@@ -1234,7 +1226,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 !!! info "파트너 계약 검증"
 API를 호출한 월에 해당 파트너와 파트너 사용자가 파트너 계약 관계였는지 확인합니다.
 
-##### 필요 권한
+### 필요 권한
 `Partner.Organization.Create`
 
 ### 요청
@@ -1254,7 +1246,7 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
-| orgName | String | Y | 생성할 조직 이름 (최대 120자) |
+| orgName | String | Y | 생성할 조직 이름(최대 120자) |
 
 ### 응답
 
@@ -1281,10 +1273,9 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 | --- | --- | --- |
 | orgId | String | 생성된 조직 ID |
 | orgName | String | 조직 이름 |
-| ownerId | String | 조직 오너 UUID |
-| regDateTime | String | 등록일시 (ISO 8601 형식) |
+| ownerId | String | 조직 Owner UUID |
+| regDateTime | String | 등록일시(ISO 8601 형식) |
 
----
 
 ## 파트너 사용자의 조직 삭제
 
@@ -1293,7 +1284,7 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 !!! info "파트너 계약 검증"
 API를 호출한 월에 해당 파트너와 파트너 사용자가 파트너 계약 관계였는지, 그리고 삭제 대상이 파트너 사용자의 조직인지 확인합니다.
 
-##### 필요 권한
+### 필요 권한
 `Partner.Organization.Delete`
 
 ### 요청
@@ -1331,31 +1322,31 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 
 </details>
 
-## 에러 코드
+## 오류 코드
 
 | resultCode | 설명 | 조치 |
 | --- | --- | --- |
 | -14 | 허용되지 않은 국가의 IP에서 요청 | 허용된 국가에서 요청하거나, 국가별 IP 제한 정책을 확인 |
 | -8 | 요청 IP가 허용되지 않음 또는 조직 IP ACL 정책에 의해 IP 검증 실패 | 조직 IP ACL에 해당 IP가 등록되었는지 확인하고, 허용된 IP 대역에서 요청 |
 | -7 | 권한이 허용되지 않음 | 해당 작업에 대한 권한이 허용되지 않으므로, 시스템 관리자에게 문의 |
-| -6 | 호출한 API에 대해 호출자의 인가가 실패했을 때 발생하는 에러 또는 파트너 권한 검증 실패 | 호출자가 API 호출 권한이 있는지 확인하고, 필요하다면 시스템 관리자에게 문의하여 호출 권한을 요청. 호출 계정 권한과 요청 스코프 파트너 ID 점검 |
+| -6 | 호출한 API에 대해 호출자의 인가가 실패했을 때 발생하는 오류 또는 파트너 권한 검증 실패  | 호출자가 API 호출 권한이 있는지 확인하고, 필요하다면 시스템 관리자에게 문의하여 호출 권한을 요청. 호출 계정 권한과 요청 스코프 파트너 ID 점검 |
 | -5 | 권한 거부 - 소유자가 아님 또는 삭제하려는 조직의 실제 오너가 요청한 파트너 사용자와 다름 | 요청자가 해당 조직의 소유자인지 확인하고, 대상 조직이 해당 파트너 사용자 소유인지 확인 |
 | -4 | 권한 거부 - 멤버가 아님 | 요청자가 해당 파트너의 멤버인지 확인하고, 적절한 권한을 부여받은 후 재시도 |
 | 404 | 없는 API 호출시 발생 | 호출하는 API의 HTTP 메서드, URI를 확인 |
-| 500 | 비정상 시스템 에러 | 시스템 관리자에게 문의 |
+| 500 | 비정상 시스템 오류 | 시스템 관리자에게 문의 |
 | 501 | 잘못된 날짜 형식 | 날짜 파라미터를 올바른 형식으로 제공 |
 | 502 | 잘못된 파라미터 | 요청 파라미터의 값과 형식 확인 |
 | 503 | 서비스 사용 불가 또는 조회 기간 규칙 위반 | 서비스가 일시적으로 사용 불가능한 상태이므로 잠시 후 재시도하거나, 조회 기간 규칙을 준수하여 요청 |
 | 504 | JSON 파싱 실패 | 요청 본문의 JSON 형식 확인 |
 | 505 | 검증 실패 | 요청의 필드 유효성 검증 확인 |
-| 1000 | 파라미터가 잘못될 경우 발생하는 에러 | 요청 파라미터의 형식과 값을 확인하여 올바른 값으로 재시도 |
+| 1000 | 파라미터가 잘못될 경우 발생하는 오류 | 요청 파라미터의 형식과 값을 확인하여 올바른 값으로 재시도 |
 | 1200 | API 호출 실패 | 잠시 후 재시도하거나, 시스템 상태를 확인 |
-| 10005 | 요청 파라미터가 적절하지 않을 때 발생하는 에러 | 요청 파라미터의 필수값 및 설정 가능한 값 등을 확인 |
+| 10005 | 요청 파라미터가 적절하지 않을 때 발생하는 오류 | 요청 파라미터의 필수 값 및 설정 가능한 값 등을 확인 |
 | 11010 | 사용량 조회 권한 부족 | 상품/카운터/조직에 대한 권한 확인 및 부여 |
 | 11012 | 조직 접근 권한 없음 | 사용자에게 해당 조직 접근 권한 부여 |
 | 11013 | 멤버가 파트너 사용자가 아님 또는 지정한 파트너 ID와 파트너 사용자 UUID가 매칭되지 않음 | 해당 멤버가 지정된 기간에 파트너 사용자인지 확인하고, 파트너 관계를 재설정. 파트너 사용자가 해당 파트너에 승인·연결돼 있는지 확인 |
 | 12000 | 프로젝트를 찾을 수 없음 | 요청한 프로젝트 ID가 존재하는지 확인하고, 올바른 프로젝트 ID로 재시도 |
-| 12100 | 프로젝트 멤버가 존재하지 않을 때 발생하는 에러 | 존재하는 프로젝트 멤버 uuid 사용 |
+| 12100 | 프로젝트 멤버가 존재하지 않을 때 발생하는 오류 | 존재하는 프로젝트 멤버 UUID 사용 |
 | 13000 | 조직을 찾을 수 없음 | 요청한 조직 ID가 존재하는지 확인하고, 올바른 조직 ID로 재시도 |
 | 17001 | 앱키를 찾을 수 없음 | 앱키가 정상 발급되었는지 확인 후 필요시 재발급 |
 | 17003 | 앱키와 프로젝트/상품 연결 없음 | 앱키를 올바른 프로젝트/상품과 연결 |
@@ -1368,14 +1359,14 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 | 22005 | 솔루션 파트너 아님 | 파트너가 솔루션 파트너 자격을 갖추었는지 확인 |
 | 22021 | 조직 생성 시, 조직 오너 계정에 설정된 조직 생성 갯수 제한을 초과했을 경우 발생하는 에러 | 1) 사용하지 않은 조직을 삭제하여 생성 가능한 조직 갯수 확보 <br>2) 시스템 관리자를 통해 조직 생성 최대 개수 조정 |
 | 22023 | MSP 파트너 한도를 초과하여 조직 생성이 제한됨 | MSP 파트너 한도 조정 또는 조직 정리 |
-| 23005 | 조직 ID에 해당하는 조직이 존재하지 않을 때 발생하는 에러 | 시스템 관리자 문의 |
+| 23005 | 조직 ID에 해당하는 조직이 존재하지 않을 때 발생하는 오류 | 시스템 관리자에게 문의 |
 | 24000 | API 연동 실패 | 시스템 관리자에게 문의 |
 | 24001 | 앱키 유효성 검증 실패 | 앱키 유효성 확인 |
 | 24002 | 멤버 정보 유효성 검증 실패 | 멤버 정보 확인 |
 | 24005 | 프로젝트 멤버 없음 | 해당 멤버가 프로젝트에 속해있는지 확인 |
 | 24007 | 프로젝트 없음 | 프로젝트 ID 확인 혹은 시스템 관리자에게 문의 |
 | 25001 | 국가별 세율 정책 없음 | 시스템 관리자에게 문의 |
-| 70013 | 이용중인 서비스가 존재할 때 발생하는 에러 | 이용중인 서비스 비활성화 |
+| 70013 | 이용 중인서비스가 존재할 때 발생하는 오류 | 이용 중인서비스 비활성화 |
 | 70032 | 미납 제재로 조직 생성이 차단됨 | 미납 해소 및 제재 해제 요청 후 재시도 |
 | 80400 | 잘못된 요청 | 요청 파라미터 형식 및 필수값 확인 |
 | 80401 | 인증 실패 | 인증 토큰 유효성 및 로그인 상태 확인 |
