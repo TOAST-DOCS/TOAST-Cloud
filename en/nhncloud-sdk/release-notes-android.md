@@ -1,6 +1,16 @@
 ## NHN Cloud > SDK User Guide > Release Notes > Android
 
-## 1.12.0 (2025. 07. 29.)
+## 1.12.1 (October 28, 2025)
+
+### NHN Cloud OCR
+
+#### Bug Fixes
+
+* Respond for foldable devices (Fold series)
+    * Fixed an issue where the portrait mode guide area would go off screen during credit card recognition.
+* Improved the camera preview synchronization
+
+## 1.12.0 (July 29, 2025)
 
 ### NHN Cloud SDK
 
@@ -24,7 +34,7 @@
 * Improved the camera preview synchronization
     * Enhanced the synchronization logic between the camera preview display and the Surface buffer resolution.
 
-## 1.11.1 (2025. 06. 05.)
+## 1.11.1 (June 5, 2025)
 
 ### NHN Cloud Push
 
@@ -33,7 +43,7 @@
 * Fixed Notification Hub API domain errors
     * Fixed an incorrectly set Notification Hub API domain to resolve an API call error.
 
-## 1.11.0 (2025. 04. 29.)
+## 1.11.0 (April 29, 2025)
 
 ### NHN Cloud Push
 
@@ -43,7 +53,7 @@
     * NHN Cloud Push SDK supports Notification Hub.
     * You can use it by setting PushServiceType.NOTIFICATION_HUB in the NhnCloudPushConfiguration.Builder.setServiceType(String) method.
 
-## 1.10.0 (2025. 03. 25.)
+## 1.10.0 (March 25, 2025)
 
 ### NHN Cloud IAP
 
@@ -65,7 +75,7 @@
 * Supports ONE store payment history logs
     * You can check the payment history logs in the console from ONE store integrated version (nhncloud-iap-onestore2).
 
-## 1.9.5 (2025. 01. 23.)
+## 1.9.5 (January 23, 2025)
 
 ### NHN Cloud IAP
 
@@ -84,7 +94,7 @@
     * Added the feature to set whether to vibrate when you receive a notification.
     * You can use enableVibration(boolean) in NhnCloudNotificationOptions.Builder to set whether or not to vibrate.
 
-## 1.9.4 (2024. 11. 15.)
+## 1.9.4 (November 15, 2024)
 
 ### NHN Cloud Push
 
@@ -93,7 +103,7 @@
 * Added the feature to set device ID
     * Added the NhnCloudPush.setDeviceId API to set a user's device ID in the Push service.
     
-## 1.9.3 (2024. 10. 08.)
+## 1.9.3 (October 8, 2024)
 
 ### NHN Cloud IAP
 

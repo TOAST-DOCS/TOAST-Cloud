@@ -49,8 +49,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | project-id | String | 8文字 | プロジェクトID |
 | product-id | String | 8文字 | サービス(商品) ID |
 | user-access-key-id | String | 20文字 | User Access Key ID |
-| project-app-key | String | 20文字 | プロジェクトのAppKey |
-| product-app-key | String | 16文字 | サービスのAppKey |
+| project-app-key | String | 20文字 | プロジェクトのアプリキー |
+| product-app-key | String | 16文字 | サービスのアプリキー |
 | uuid | String | 36文字 | メンバーのUUID |
 
 
@@ -111,11 +111,11 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#組織-IP-ACL-リスト-照会) | 組織IP ACLリスト照会 |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#従量制に-登録された-商品-価格-照会) | 従量制に登録された商品価格照会 |
 | GET |[/v1/billing/contracts/basic/products](#従量制に-登録された-商品-リスト-照会) | 従量制に登録された商品リスト照会 |
-| GET |[/v1/authentications/projects/{project-id}/project-appkeys](#プロジェクト-AppKey-照会) | プロジェクトAppKey照会 |
+| GET |[/v1/authentications/projects/{project-id}/project-appkeys](#プロジェクト-アプリキー-照会) | プロジェクトアプリキー照会 |
 | GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-リスト-照会) | User Access Key IDリスト照会 |
-| POST |[/v1/authentications/projects/{project-id}/project-appkeys](#プロジェクト-AppKey-登録) | プロジェクトAppKey登録 |
+| POST |[/v1/authentications/projects/{project-id}/project-appkeys](#プロジェクト-アプリキー-登録) | プロジェクトアプリキー登録 |
 | POST |[/v1/authentications/user-access-keys](#User-Access-Key-ID-登録) | User Access Key ID登録 |
-| DELETE |[/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#プロジェクト-AppKey-削除) | プロジェクトAppKey削除 |
+| DELETE |[/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#プロジェクト-アプリキー-削除) | プロジェクトアプリキー削除 |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#User-Access-Key-ID-秘密-鍵-再発行) | User Access Key ID秘密鍵の再発行 |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-状態-修正) | User Access Key ID状態修正 |
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-削除) | User Access Key ID削除 |
@@ -127,6 +127,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | GET |[/v1/iam/projects/{project-id}/members](#プロジェクト-IAM-アカウント-リスト-照会) | プロジェクトIAMアカウントリスト照会 |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#プロジェクト-IAM-アカウント-ロール-修正) | プロジェクトIAMアカウントロール修正 |
 | GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#組織-下位-メンバーの-全ての-認証情報-リスト-照会) | 組織下位メンバー認証情報リスト照会 |
+| GET | [/v1/organizations](#自分の組織一覧の照会) | 自分の組織一覧の照会 |
+| POST | [/v1/organizations](#自分の組織の追加) | 自分の組織の追加 |
+| DELETE | [/v1/organizations/{org-id}](#組織の個別削除) | 組織の個別削除 |
 
 
 
@@ -459,7 +462,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes |
-|   appKey | String| Yes | 該当プロジェクトで利用中のサービスのAppKey情報|
+|   appKey | String| Yes | 該当プロジェクトで利用中のサービスのアプリキー情報|
 |   parentProduct | ParentProduct| No | 上位サービス情報がある場合はその情報を表示し、上位サービスがない場合は含みません。 |
 |   secretKey | String| No| 該当プロジェクトで利用中のサービスの秘密鍵情報<br> 秘密鍵を利用するサービスでのみ提供 |
 
@@ -1086,7 +1089,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   appKey | String| Yes | 該当プロジェクトで利用中のサービスのAppKey情報 |
+|   appKey | String| Yes | 該当プロジェクトで利用中のサービスのアプリキー情報 |
 |   externalId | String| No | テナントID<br>サービスにテナントIDが存在する場合にのみ提供 |
 |   productId | String| Yes | サービスID  |
 |   productName | String| Yes | 商品名 |
@@ -1097,7 +1100,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   secretKey | String| Yes | サービスSecretKey<br>secretKeyを利用するサービスでのみ提供 |
 |   statusCode | String| Yes | 該当サービスの利用状態(STABLE, CLOSED) |
 |   updateDate | Date| No | サービス最終修正日時 |
-|   updateUuid | String| No | サービスAppKey修正者UUID  |
+|   updateUuid | String| No | サービスアプリキー修正者UUID  |
 
 
 <a id="プロジェクト-メンバー-単件-照会"></a>
@@ -3013,12 +3016,12 @@ IP ACL設定を照会するAPIです。
 |   usageAggregationUnitCode | String| No | 使用量集計単位<br>RESOURCE_ID, COUNTER_NAME |
 
 
-<a id="プロジェクト-AppKey-照会"></a>
-#### プロジェクトAppKey照会
+<a id="プロジェクト-アプリキー-照会"></a>
+#### プロジェクトアプリキー照会
 
 > GET "/v1/authentications/projects/{project-id}/project-appkeys"
 
-プロジェクトで使用中のプロジェクトAppKeyリストを照会するAPIです。
+プロジェクトで使用中のプロジェクトアプリキーリストを照会するAPIです。
 
 ##### 必要権限
 `Project.ProjectAppKey.List`
@@ -3057,14 +3060,14 @@ IP ACL設定を照会するAPIです。
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes |
-|   authenticationList | List&lt;ProjectAppKeyResponse>| No | プロジェクトAppKeyリスト |
+|   authenticationList | List&lt;ProjectAppKeyResponse>| No | プロジェクトアプリキーリスト |
 
 ###### ProjectAppKeyResponse
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
 |   authId | String| No | 内部的に管理する認証手段ID  |
-|   appKey | String| No | コンソールに表示されるプロジェクトAppKey  |
+|   appKey | String| No | コンソールに表示されるプロジェクトアプリキー  |
 |   authStatus | String| No | 認証ステータスコード(STABLE, STOP, BLOCKED) |
 |   projectId | String| No | プロジェクトID |
 |   lastUsedDatetime | Date| No | 最終使用日時 |
@@ -3136,12 +3139,12 @@ IP ACL設定を照会するAPIです。
 |   lastTokenUsedDatetime | Long| No | トークンで最後に認証/認可した日時           |
 |   validTokenCount | Long| No | 有効なトークン数                    |
 
-<a id="プロジェクト-AppKey-登録"></a>
-#### プロジェクトAppKey登録
+<a id="プロジェクト-アプリキー-登録"></a>
+#### プロジェクトアプリキー登録
 
 > POST "/v1/authentications/projects/{project-id}/project-appkeys"
 
-プロジェクトで使用するAppKeyを作成するAPIです。
+プロジェクトで使用するアプリキーを作成するAPIです。
 
 ##### 必要権限
 `Project.ProjectAppKey.Create`
@@ -3152,13 +3155,13 @@ IP ACL設定を照会するAPIです。
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Path | project-id | String| Yes | AppKeyを登録するプロジェクトID |
-| Request Body | request | AddProjectAppKeyRequest| Yes | リクエスト |
+| Request Body | request | AddProjectアプリキーRequest| Yes | リクエスト |
 
 ###### AddProjectAppKeyRequest
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   appkeyAlias | String | Yes   | プロジェクトAppKeyエイリアス<br>100文字制限 |
+|   appkeyAlias | String | Yes   | プロジェクトアプリキーエイリアス<br>100文字制限 |
 
 
 ##### レスポンス本文
@@ -3190,7 +3193,7 @@ IP ACL設定を照会するAPIです。
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
 |   authId | String| No | 内部的に管理する認証手段ID  |
-|   appKey | String| No | プロジェクトAppKey |
+|   appKey | String| No | プロジェクトアプリキー |
 
 <a id="User-Access-Key-ID-登録"></a>
 #### User Access Key ID登録
@@ -3252,12 +3255,12 @@ IP ACL設定を照会するAPIです。
 |   tokenExpiryPeriod | Long| No | トークンの有効期限(秒単位) |
 
 
-<a id="プロジェクト-AppKey-削除"></a>
-#### プロジェクトAppKey削除
+<a id="プロジェクト-アプリキー-削除"></a>
+#### プロジェクトアプリキー削除
 
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
 
-プロジェクトAppKeyを削除するAPIです。
+プロジェクトアプリキーを削除するAPIです。
 
 ##### 必要権限
 `Project.ProjectAppKey.Delete`
@@ -3269,7 +3272,7 @@ IP ACL設定を照会するAPIです。
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Path | project-id | String| Yes | 対象プロジェクトID |
-|  Path |app-key | String| Yes | 削除するプロジェクトAppKey | 
+|  Path |app-key | String| Yes | 削除するプロジェクトアプリキー | 
 
 
 ##### レスポンス本文
@@ -3369,7 +3372,7 @@ User Access Key IDの秘密鍵を再発行するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   status | String| Yes | 変更するプロジェクトAppKey状態(STOP:停止、 STABLE:使用) |
+|   status | String| Yes | 変更するプロジェクトアプリキー状態(STOP:停止、 STABLE:使用) |
 
 ##### レスポンス本文
 
@@ -3931,7 +3934,221 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 | lastTokenUsedDatetime | Date | No | トークン最終使用日時 |
 | validTokenCount | Long | No | 有効なトークン数 |
 
+<a id="自分の組織一覧の照会"></a>
+#### 自分の組織一覧の照会
 
+**[Method, URL]**
+```
+GET /v1/organizations
+```
+
+##### 必要な権限
+会員であれば呼び出し可能なAPI
+
+**[Query Parameter]**
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| orgName | String | No | 組織名 |
+| orgNameMatchTypeCode | String | No | 組織名の検索タイプ(EXACT:完全一致、LIKE:部分一致、デフォルト値: LIKE) |
+| page | Integer | No | 対象ページ、デフォルト1 |
+| limit | Integer | No | ページあたりの表示件数、デフォルト20 |
+
+**[Response Body]**
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "orgList": [
+    {
+      "org": {
+        "orgId": "org-id",
+        "orgName": "organization-name",
+        "orgStatusCode": "STABLE",
+        "ownerUuid": "owner-uuid",
+        "regDateTime": "2023-01-01T00:00:00+09:00",
+        "remainingJobCode": "NONE",
+        "ipAclTypeCode": "COMMON",
+        "orgDomainList": [
+          {
+            "domainId": "domain-id",
+            "domainName": "domain-name"
+          }
+        ]
+      },
+      "orgMember": {
+        "existOrgMember": true,
+        "orgOwner": true
+      },
+      "orgOwner": {
+        "email": "owner@example.com",
+        "name": "owner-name",
+        "restrictStatusCode": "STABLE",
+        "country": "KR",
+        "restrictTypes": []
+      }
+    }
+  ],
+  "paging": {
+    "page": 1,
+    "limit": 20,
+    "totalCount": 1
+  }
+}
+```
+
+**[Response Bodyの説明]**
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| header | [共通レスポンス](#レスポンス) | Yes | |
+| orgList | List&lt;OrgMemberRelationProtocol> | Yes | 組織一覧情報 |
+| paging | [PagingResponse](#pagingresponse) | Yes | ページング情報 |
+
+###### OrgMemberRelationProtocol
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| org | OrgProtocol | Yes | 組織情報 |
+| orgMember | OrgMemberProtocol | Yes | 組織/プロジェクトメンバー情報 |
+| orgOwner | OwnerProtocol | Yes | 組織オーナー情報 |
+
+###### OrgProtocol
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| orgId | String | Yes | 組織ID |
+| orgName | String | Yes | 組織名 |
+| orgStatusCode | String | Yes | 組織ステータスコード(STABLE, CLOSED) |
+| ownerUuid | String | Yes | 組織オーナーUUID |
+| regDateTime | Date | Yes | 組織作成日時 |
+| remainingJobCode | String | Yes | 組織の残りタスク(NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
+| ipAclTypeCode | String | Yes | 組織IP ACLタイプコード(COMMON, INDIVIDUAL) |
+| orgDomainList | List&lt;OrgDomainProtocol> | Yes | 組織ドメイン一覧 |
+
+###### OrgMemberProtocol
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| existOrgMember | Boolean | Yes | 組織メンバーの存在有無 |
+| orgOwner | Boolean | Yes | 組織オーナーかどうか |
+
+###### OwnerProtocol
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| email | String | Yes | 組織オーナーのメールアドレス |
+| name | String | Yes | 組織オーナーの名前 |
+| restrictStatusCode | String | Yes | 組織オーナーの制約ステータス(HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
+| country | String | Yes | 組織オーナーの国コード |
+| restrictTypes | List&lt;String> | Yes | 組織オーナーの制約一覧 |
+
+###### OrgDomainProtocol
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| domainId | String | Yes | 組織ドメインID |
+| domainName | String | Yes | 組織ドメイン名 |
+
+
+<a id="組織追加"></a>
+#### 自分の組織の追加
+
+**[Method, URL]**
+```
+POST /v1/organizations
+```
+
+##### 必要な権限
+会員であれば呼び出し可能なAPI
+
+**[Request Body]**
+```json
+{
+  "orgName": "organization-name"
+}
+```
+
+**[Request Bodyの説明]**
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| orgName | String | Yes | 作成する組織名(最大120文字) |
+
+**[Response Body]**
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "orgId": "org-id",
+  "orgName": "organization-name",
+  "owner": {
+    "email": "owner@example.com",
+    "name": "owner-name",
+    "ownerId": "owner-uuid",
+    "restrictTypes": []
+  }
+}
+```
+
+**[Response Bodyの説明]**
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| header | [共通レスポンス](#レスポンス) | Yes | |
+| orgId | String | Yes | 組織ID |
+| orgName | String | Yes | 組織名 |
+| owner | Owner | Yes | 組織オーナー情報 |
+
+###### Owner
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| email | String | Yes | 組織オーナーのメールアドレス |
+| name | String | Yes | 組織オーナーの名前 |
+| ownerId | String | Yes | 組織オーナーID |
+| restrictTypes | List&lt;String> | Yes | 制約対象一覧 |
+
+
+<a id="組織個別削除"></a>
+#### 組織の個別削除
+
+**[Method, URL]**
+```
+DELETE /v1/organizations/{org-id}
+```
+
+##### 必要な権限
+`Organization.Delete`
+
+**[Path Variable]**
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| org-id | String | Yes | 組織ID |
+
+**[Response Body]**
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+**[Response Bodyの説明]**
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| header | [共通レスポンス](#レスポンス) | Yes | |
 
 
 ### エラーコード
@@ -3963,13 +4180,13 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 | 22013 | 組織OWNERのロールを変更しようとしたときに発生するエラー                                                    | 組織オーナーを対象にロールの変更はできません                            |
 | 22016 | 組織が存在しない場合に発生するエラー                                                          | 存在する組織のorgIdでリクエストしているか確認                          |
 | 23005 | 組織IDに該当する組織が存在しない場合に発生するエラー                                               | 担当者お問い合わせください                                         |
-| 30015 | プロジェクトAppKeyの作成制限回数を超えた場合に発生するエラー <br> プロジェクトAppKey API - `プロジェクトAppKey作成`で作成されるプロジェクトAppKeyの作成可能回数は3つで、3つを超えるとエラー発生 | 使用しないプロジェクトAppKeyを削除して再試行                           |
+| 30015 | プロジェクトアプリキーの作成制限回数を超えた場合に発生するエラー <br> プロジェクトアプリキー API - `プロジェクトアプリキー作成`で作成されるプロジェクトアプリキーの作成可能回数は3つで、3つを超えるとエラー発生 | 使用しないプロジェクトアプリキーを削除して再試行                           |
 | 40017 | プロジェクトが存在しない場合に発生するエラー                                                       | 存在するプロジェクトに対してAPIリクエスト                               |
 | 40028<br>13003 | プロジェクトが存在しない場合(作成した後に削除した場合)発生するエラー                                          | 存在するプロジェクトに対してAPIリクエスト                               |
 | 40054 | サービスを有効化する際、先に有効化されるべきサービスが有効化されていない場合に発生するエラー                           | 先に有効化されるべきサービスの有効化処理                           |
 | 40057 | サービスを無効化する際、先に無効化されるべきサービスが無効化されていない場合に発生するエラー                           | 先に無効化されるべきサービスの無効化処理                           |
 | 50007 | 有効ではないメンバーの場合に発生するエラー<br>(存在しないメンバー、休眠及び退会状態のメンバーは無効)<br>組織作成API - API呼び出し時、 uuidが有効ではない場合 | 有効なメンバーのuuidに修正                             |
-| 60003 | DBにデータがない場合に発生するエラー<br>プロジェクトAppKey API - `プロジェクトAppKey削除`で削除するAppKeyがない場合に発生するエラー | 1)担当者にお問い合わせください <br>2)存在するAppKeyを削除対象AppKey値として設定 |
+| 60003 | DBにデータがない場合に発生するエラー<br>プロジェクトアプリキー API - `プロジェクトアプリキー削除`で削除するアプリキーがない場合に発生するエラー | 1)担当者にお問い合わせください <br>2)存在するアプリキーを削除対象アプリキー値として設定 |
 | 62004 | ロールグループ作成時に同じ名前のロールグループが存在する場合に発生するエラー                                       | 重複していない名前に変更                                     |
 | 62008 | ロールグループ修正、削除及びロールグループにロール追加/削除時にロールグループIDが存在しない場合に発生                        | 存在するロールグループIDを使用するように変更                            |
 | 62009 | ロールグループを作成する際、ロールが無効である場合に発生                                               | 有効なロールを使用するように変更                                   |
