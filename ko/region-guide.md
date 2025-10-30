@@ -143,6 +143,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Management | Managed | 리전 | O | O |  |  |
 |  | Support Plan | 리전 | O | O |  |  |
 |  | Certificate Manager | 글로벌 |  |  |  |  |
+|  | Private CA | 리전 | O |  |  |  |
 | Bill | eTax | 리전 | O |  |  |  |
 | Collaboration | Dooray! | 글로벌 |  |  |  |  |
 | Contact Center | Omni Contact | 리전 | O |  |  |  |

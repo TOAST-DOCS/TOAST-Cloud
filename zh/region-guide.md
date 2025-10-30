@@ -145,6 +145,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Management | Managed | Regional | O | O |  |  |
 |  | Support Plan |  Regional | O | O |  |  |
 |  | Certificate Manager | Global |  |  |  |  |
+|  | Private CA | Regional | O |  |  |  |
 | Bill | eTax | Regional | O |  |  |  |
 | Collaboration | Dooray! | Global |  |  |  |  |
 | Contact Center | Omni Contact | Regional | O |  |  |  |
