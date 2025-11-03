@@ -124,7 +124,7 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료)                               | Expire multiple tokens                    |
 | POST |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-생성) | Create a project IAM account |
 | DELETE |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-다건-삭제) | Delete multiple project IAM accounts |
-| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | View a project IAM account |
+| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | View a single project IAM account |
 | GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | View project IAM accounts |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | Modify project IAM account roles |
 | GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-리스트-조회) | View all credentials of members under organizations |
@@ -3903,7 +3903,7 @@ API to get a list of IAM accounts who are part of a project.
 |------------ | ------------- | ------- | ------------ |
 |   header | [Common response](#응답)| Yes |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   projectMembers | List<IamProjectMemberProtocol>| Yes | Project member list  |
+|   projectMembers | List&lt;IamProjectMemberProtocol>| Yes | Project member list  |
 
 
 
