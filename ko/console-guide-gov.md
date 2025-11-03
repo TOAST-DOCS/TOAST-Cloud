@@ -413,6 +413,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Cloud Access | ADMIN | Cloud Access 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Cloud Access | VIEWER | Cloud Access 서비스 Read(읽기) | 
 | CDN | ADMIN | CDN 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
+| AI EasyMaker | ADMIN | AI EasyMaker 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | API Gateway | ADMIN | API Gateway 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | Pipeline | ADMIN | Pipeline 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
