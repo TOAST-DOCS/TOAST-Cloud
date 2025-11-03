@@ -82,6 +82,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | NHN Bastion | 리전 | O |  |
 |  | Cloud Access | 리전 | O |  |
 | Content Delivery | CDN | 글로벌 |  |  |
+| Machine Learning | AI EasyMaker | 리전 | O |  | | |
 | Application Service | API Gateway | 리전 | O |  | 
 | Data & Analytics | Log & Crash Search | 글로벌 |  |  | 
 |  | Kafka Instance | 리전 | O | O | 
