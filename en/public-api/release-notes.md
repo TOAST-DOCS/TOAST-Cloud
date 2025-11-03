@@ -1,5 +1,13 @@
 ## NHN Cloud > Public API > Release Notes
 
+### October 28, 2025
+#### Added New Features
+
+- Framework API
+  - New API for viewing organization lists, adding organizations, and deleting individual organizations
+- Partner Management API
+  - New API guide only for partner
+
 ### June 24, 2025
 #### Feature Updates
 
