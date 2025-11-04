@@ -97,6 +97,12 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | DELETE |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-삭제) | 프로젝트 역할 그룹 삭제 |
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos](#프로젝트-역할-그룹-정보-수정) | 프로젝트 역할 그룹 정보 수정 |
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#프로젝트-역할-그룹-역할-수정) | 프로젝트 역할 그룹 역할 수정 |
+| GET |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-전체-조회) | 조직 역할 그룹 전체 조회 |
+| GET |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}](#조직-역할-그룹-단건-조회) | 조직 역할 그룹 단건 조회 |
+| POST |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-생성) | 조직 역할 그룹 생성 |
+| DELETE |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-삭제) | 조직 역할 그룹 삭제 |
+| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos](#조직-역할-그룹-정보-수정) | 조직 역할 그룹 정보 수정 |
+| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles](#조직-역할-그룹-역할-수정) | 조직 역할 그룹 역할 수정 |
 | PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-역할-수정) | 조직 멤버 역할 수정 |
 | PUT |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-역할-수정) | 프로젝트 멤버 역할 수정 |
 | GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-계정-단건-조회) | 조직 IAM 계정 단건 조회 |
@@ -1976,6 +1982,290 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
+
+
+<a id="조직-역할-그룹-전체-조회"></a>
+
+#### 조직 역할 그룹 전체 조회
+
+> GET "/v1/organizations/{org-id}/org-role-groups"
+
+조직의 역할 그룹을 전체 조회하는 API입니다.
+
+##### 필요 권한
+
+`Organization.RoleGroup.List`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명 |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | 조회 대상 조직 ID |
+| Query | descriptionLike | String | No | 설명 |
+| Query | roleGroupNameLike | String | No | 역할 그룹명 |
+| Query | limit | Integer | No | 페이지당 표시 건수, 기본값 20 |
+| Query | page | Integer | No | 대상 페이지, 기본값 1 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+  "roleGroups": [
+    {
+      "regDateTime": "2000-01-23T04:56:07.000+00:00",
+      "roleGroupType": "ORG_ROLE_GROUP",
+      "description": "description",
+      "roleGroupName": "roleGroupName",
+      "roleGroupId": "roleGroupId"
+    }
+  ]
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |
+| ------------ | ------------- | --------- | ------------ |
+| header | [공통 응답](#응답) | Yes | |
+| paging | [PagingResponse](#pagingresponse) | Yes | |
+| roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | 조직에서 사용 가능한 역할 그룹 목록 |
+
+<a id="조직-역할-그룹-단건-조회"></a>
+
+#### 조직 역할 그룹 단건 조회
+
+> GET "/v1/organizations/{org-id}/org-role-groups/{role-group-id}"
+
+조직의 역할 그룹을 조회하는 API입니다.
+
+##### 필요 권한
+
+`Organization.RoleGroup.Get`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명 |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | 조회 대상 조직 ID |
+| Path | role-group-id | String | Yes | 조직 역할 그룹 ID | 
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "roleGroup": {
+    "regDateTime": "2000-01-23T04:56:07.000+00:00",
+    "roleGroupType": "ORG_ROLE_GROUP",
+    "roles": [
+      {
+        "regDateTime": "2000-01-23T04:56:07.000+00:00",
+        "roleApplyPolicyCode": "ALLOW",
+        "roleId": "roleId",
+        "roleName": "roleName",
+        "categoryKey": "categoryKey",
+        "description": "description",
+        "categoryTypeCode": "ROLE",
+        "conditions": [
+          {
+            "attributeId": "attributeId",
+            "attributeOperatorTypeCode": "ALLOW",
+            "attributeValues": [
+              "attributeValues",
+              "attributeValues"
+            ],
+            "attributeDescription": "attributeDescription",
+            "attributeName": "attributeName",
+            "attributeDataTypeCode": "BOOLEAN"
+          }
+        ]
+      }
+    ],
+    "description": "description",
+    "roleGroupName": "roleGroupName",
+    "roleGroupId": "roleGroupId"
+  }
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |
+| ------------ | ------------- | --------- | ------------ |
+| header | [공통 응답](#응답) | Yes | |
+| roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | 연관 역할을 포함한 역할 그룹 |
+
+<a id="조직-역할-그룹-생성"></a>
+
+#### 조직 역할 그룹 생성
+
+> POST "/v1/organizations/{org-id}/org-role-groups"
+
+조직에 역할 그룹을 생성하는 API입니다.
+
+##### 필요 권한
+
+`Organization.RoleGroup.Create`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명 |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | 조직 ID |
+| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | 요청 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [공통 응답](#응답) | Yes | |
+
+<a id="조직-역할-그룹-삭제"></a>
+
+#### 조직 역할 그룹 삭제
+
+> DELETE "/v1/organizations/{org-id}/org-role-groups"
+
+조직 역할 그룹을 삭제하는 API입니다.
+
+##### 필요 권한
+
+`Organization.RoleGroup.Delete`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명 |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | 조직 ID |
+| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | 요청 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [공통 응답](#응답) | Yes | |
+
+<a id="조직-역할-그룹-정보-수정"></a>
+
+#### 조직 역할 그룹 정보 수정
+
+> PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos"
+
+조직 역할 그룹의 이름과 설명을 수정하는 API입니다.
+
+##### 필요 권한
+
+`Organization.RoleGroup.Update`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명 |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | 조직 ID |
+| Path | role-group-id | String | Yes | 역할 그룹 ID |
+| Request Body | request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | 요청 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [공통 응답](#응답) | Yes | |
+
+
+<a id="조직-역할-그룹-역할-수정"></a>
+
+#### 조직 역할 그룹 역할 수정
+
+> PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles"
+
+조직 역할 그룹의 역할을 수정하는 API입니다.
+
+##### 필요 권한
+
+`Organization.RoleGroup.Update`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명 |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | 조직 ID |
+| Path | role-group-id | String | Yes | 역할 그룹 ID |
+| Request Body | request | UpdateRoleGroupRequest | Yes | 요청 |
+
+###### UpdateRoleGroupRequest
+
+| 이름 | 타입 | 필수 | 설명 |
+| ------------ | ------------- | ------------- | ------------ |
+| roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Yes | 역할 그룹에 할당할 역할 목록 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [공통 응답](#응답) | Yes | |
+
 
 <a id="조직-멤버-역할-수정"></a>
 #### 조직 멤버 역할 수정
