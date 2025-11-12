@@ -397,6 +397,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | DNS Plus | ADMIN | DNS Plus 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | DNS Plus | VIEWER | DNS Plus 서비스 Read(읽기) |
 | Object Storage | ADMIN | Object Storage 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Object Storage | Container OPERATOR | Object Storage 서비스 내 컨테이너 목록 및 모든 정보 상세 조회 Read(읽기). 컨테이너 관리 Create(생성), Update(갱신), Delete(삭제) |
 | Object Storage | Container VIEWER | Object Storage 서비스 내 컨테이너 목록 조회 Read(읽기)  |
 | Object Storage | Object READER | Object Storage 서비스 내 컨테이너 목록 및 일부 정보 상세 조회 Read(읽기) <br> 객체 목록 및 상세 조회 Read(읽기) <br> 객체 다운로드 Read(읽기)  |
 | Object Storage | Object WRITER | Object Storage 서비스 내 컨테이너 목록 및 일부 정보 상세 조회 Read(읽기) <br> 객체 관리 Create(생성), Update(갱신), Delete(삭제)  |
