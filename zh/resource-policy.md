@@ -143,6 +143,8 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Load Balancer | Per project |10| O | |
+|Load Balancer Listener| Per Load Balancer |50| O | |
+|Load Balancer Member Group| Per Load Balancer |50| O | |
 |IP Access Control Group    | Per project |10| O | |
 |IP Access Control Target | Per IP access control group |1000| O | |
 |L7 Policy | Per Listener |10| O | |
