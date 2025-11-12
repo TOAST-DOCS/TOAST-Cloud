@@ -139,6 +139,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
 |Load Balancer | プロジェクトごと |10個| O | |
+|Load Balancer Listener | Load Balancer ごと |50個| O | |
+|Load Balancer Member Group| Load Balancer ごと |50個| O | |
 |IPアクセス制御グループ	| プロジェクトごと |10個| O | |
 |IPアクセス制御対象 | IPアクセス制御グループごと |1000個| O | |
 |L7 ポリシー | リスナー毎 |10個| O | |

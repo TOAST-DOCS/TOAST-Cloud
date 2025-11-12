@@ -26,18 +26,19 @@
 ### 조직
 
 * 정책
-    * 멤버에게는 NHN Cloud에서 제공하는 역할을 부여할 수 있습니다.
-    * 역할은 연관 역할과 연관 권한을 포함하고 있습니다.
+    * OWNER/ADMIN/ORG_MEMBER_ADMIN 역할은 NHN Cloud에서 제공하는 역할과 권한을 조합하여 조직 역할 그룹을 생성할 수 있습니다.
+    * 조직 멤버에게는 생성된 조직 역할 그룹이나 NHN Cloud에서 제공하는 역할을 부여할 수 있습니다.
 
 ![org_0.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_00_240610.png)
 
 * 조직 멤버 관리
-    * 멤버에게는 역할 부여가 가능
-        * 부여 시 역할에 조건 설정 가능
+    * 멤버에게는 역할 그룹/역할 부여가 가능
+        * 부여 시 각각 역할 그룹/역할에 조건 설정 가능
 
 | 항목 | 조건 설정 |
 | --- | ----- |
 | 역할 | 가능 |
+| 역할 그룹 | 가능 |
 
 ![org_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_01_240610.png)
 
@@ -48,11 +49,15 @@
    * 위와 같이 조건을 부여한 경우 userA는 아래와 같은 역할을 부여받습니다.
        * CloudTrail VIEWER 역할을 화요일에만 부여받으며, BILLING VIEWER 역할은 모든 요일의 12시~14시에만 부여받게 됩니다.
 
+* 조직 역할 그룹 관리
+    * 멤버에게는 역할 그룹/역할 부여가 가능
+        * 부여 시 각각 역할 그룹/역할에 조건 설정 가능
+
 ### 프로젝트
 
 * 정책
-    * 사용자는 NHN Cloud에서 제공하는 역할과 권한을 조합하여 역할 그룹을 생성할 수 있습니다.
-    * 사용자에게는 사용자가 생성한 역할 그룹이나 NHN Cloud에서 제공하는 역할을 부여할 수 있습니다.
+    * ADMIN/PROJECT MEMBER ADMIN 역할은 NHN Cloud에서 제공하는 역할과 권한을 조합하여 프로젝트 역할 그룹을 생성할 수 있습니다.
+    * 프로젝트 멤버에게는 생성된 프로젝트 역할 그룹이나 NHN Cloud에서 제공하는 역할을 부여할 수 있습니다.
 
 ![project_0.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_00_240610.png)
 
@@ -89,9 +94,9 @@
 | 항목 | 거부 설정 | 조건 설정 |
 | --- | ----- | ----- |
 | 역할 | 불가능 | 가능 |
-| 연관 역할 | 가능 | 역할의 조건 상속됨<br>단, 거부 설정한 경우만 별도 조건 속성 가능 |
-| 연관 권한 | 가능 | 역할의 조건 상속됨<br>단, 거부 설정한 경우만 별도 조건 속성 가능 |
-| 권한 | 불가능 | 가능 |
+| 연관 역할 | 가능 | 불가능<br>상위 역할에 설정된 조건이 적용 가능한 조건일 경우 상속되어 적용 |
+| 연관 권한 | 가능 | 불가능<br>상위 역할에 설정된 조건이 적용 가능한 조건일 경우 상속되어 적용  |
+| 권한 | 불가능<br>단, 해당 권한이 연관 권한으로 거부 설정되어 있는 경우 동일하게 거부 처리 | 가능 |
 
 ![project_4.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_041_240610.png)
 
