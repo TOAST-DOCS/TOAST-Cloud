@@ -131,6 +131,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET | [/v1/organizations](#자신의-조직-목록-조회) | 자신의 조직 목록 조회 |
 | POST | [/v1/organizations](#자신의-조직-추가) | 자신의 조직 추가 |
 | DELETE | [/v1/organizations/{org-id}](#조직-단건-삭제) | 조직 단건 삭제 |
+| GET | [/v1/products](#상품-정보-목록-조회) | 상품 정보 목록 조회 |
 
 
 
@@ -2632,19 +2633,19 @@ IP ACL 설정을 조회하는 API입니다.
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
-    },
-    "result": {
-        "content": {
-            "multiSessionsLimit": 1,
-            "sessionTimeoutMinutes": 10,
-            "mobileSessionTimeoutMinutes": 10,
-            "sessionType": "fixed"
-        }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "content": {
+      "multiSessionsLimit": 1,
+      "sessionTimeoutMinutes": 10,
+      "mobileSessionTimeoutMinutes": 10,
+      "sessionType": "fixed"
     }
+  }
 }
 ```
 
@@ -2686,35 +2687,35 @@ IP ACL 설정을 조회하는 API입니다.
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "range": "organization",
+    "organizationMfaSetting": {
+      "type": "email",
+      "bypassByIp": {
+        "enable": true
+        "ipList": [
+          "1.1.1.1",
+          "1.1.1.1/24"
+        ]
+      }
     },
-    "result": {
-        "range": "organization",
-        "organizationMfaSetting": {
-            "type": "email",
-            "bypassByIp": {
-                "enable": true
-                "ipList": [
-                    "1.1.1.1",
-                    "1.1.1.1/24"
-                ]
-            }
-        },
-        "serviceMfaSettings": [{
-            "serviceId": "{toast-service-id}",
-            "type": "totp",
-            "bypassByIp": {
-                "enable": true
-                "ipList": [
-                    "1.1.1.1",
-                    "1.1.1.1/24"
-                ]
-            }
-        }]
-    }
+    "serviceMfaSettings": [{
+      "serviceId": "{toast-service-id}",
+      "type": "totp",
+      "bypassByIp": {
+        "enable": true
+        "ipList": [
+          "1.1.1.1",
+          "1.1.1.1/24"
+        ]
+      }
+    }]
+  }
 }
 ```
 
@@ -2778,18 +2779,18 @@ IP ACL 설정을 조회하는 API입니다.
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
-    },
-    "result": {
-        "enable": false,
-        "loginFailCount": {
-            "limit": "5",
-            "blockMinutes": "2"
-        }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "enable": false,
+    "loginFailCount": {
+      "limit": "5",
+      "blockMinutes": "2"
     }
+  }
 }
 ```
 
@@ -2837,37 +2838,37 @@ IP ACL 설정을 조회하는 API입니다.
 
 ```json
 {
-   "header": {
-      "isSuccessful": true,
-      "resultCode": 0,
-      "resultMessage": ""
-   },
-   "result": {
-      "content": {
-         "schemaVersion": 1,
-         "value": {
-            "ruleType": "default",
-            "passwordConstraints": {
-               "minLength": 8,
-               "mustNotIncludeIllegalSequence": true,
-               "mustIncludeUpperCase": true,
-               "mustIncludeLowerCase": true,
-               "mustIncludeNumberCase": true,
-               "mustIncludeSpecialCase": true
-            },
-            "passwordExpiry": {
-               "enabled": true,
-               "expiryDays": 90,
-               "allowExpend": true
-            },
-            "limitPasswordReuse": {
-               "enabled": true,
-               "limitCount": 1
-            },
-            "applyRule": "onChangePassword"
-         }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "content": {
+      "schemaVersion": 1,
+      "value": {
+        "ruleType": "default",
+        "passwordConstraints": {
+          "minLength": 8,
+          "mustNotIncludeIllegalSequence": true,
+          "mustIncludeUpperCase": true,
+          "mustIncludeLowerCase": true,
+          "mustIncludeNumberCase": true,
+          "mustIncludeSpecialCase": true
+        },
+        "passwordExpiry": {
+          "enabled": true,
+          "expiryDays": 90,
+          "allowExpend": true
+        },
+        "limitPasswordReuse": {
+          "enabled": true,
+          "limitCount": 1
+        },
+        "applyRule": "onChangePassword"
       }
-   }
+    }
+  }
 }
 ```
 
@@ -4054,10 +4055,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 <a id="자신의-조직-목록-조회"></a>
 #### 자신의 조직 목록 조회
 
-**[Method, URL]**
-```
-GET /v1/organizations
-```
+> GET /v1/organizations
 
 ##### 필요 권한
 회원이면 호출 가능한 API
@@ -4174,28 +4172,29 @@ GET /v1/organizations
 <a id="조직-추가"></a>
 #### 자신의 조직 추가
 
-**[Method, URL]**
-```
-POST /v1/organizations
-```
+> POST /v1/organizations
+
+자신의 조직을 추가하는 API입니다.
 
 ##### 필요 권한
 회원이면 호출 가능한 API
 
-**[Request Body]**
-```json
-{
-  "orgName": "organization-name"
-}
-```
+##### 요청 파라미터
 
-**[Request Body 설명]**
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+| Request Body | request | [CreateOrgRequest](#createorgrequest)| Yes | 요청 |
+
+
+###### CreateOrgRequest
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
 | orgName | String | Yes | 생성할 조직 이름(최대 120자) |
 
-**[Response Body]**
+
+##### 응답 본문
+
 ```json
 {
   "header": {
@@ -4214,14 +4213,15 @@ POST /v1/organizations
 }
 ```
 
-**[Response Body 설명]**
+###### 응답
+
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
 | header | [공통 응답](#응답) | Yes | |
 | orgId | String | Yes | 조직 ID |
 | orgName | String | Yes | 조직 이름 |
-| owner | Owner | Yes | 조직 Owner 정보 |
+| owner | [Owner](#owner) | Yes | 조직 Owner 정보 |
 
 ###### Owner
 
@@ -4236,21 +4236,22 @@ POST /v1/organizations
 <a id="조직-단건-삭제"></a>
 #### 조직 단건 삭제
 
-**[Method, URL]**
-```
-DELETE /v1/organizations/{org-id}
-```
+> DELETE /v1/organizations/{org-id}
+
+자신의 조직을 삭제하는 API입니다.
 
 ##### 필요 권한
 `Organization.Delete`
 
-**[Path Variable]**
+##### 요청 파라미터
 
-| 이름 | 타입 | 필수 | 설명 |
-|---|---|---|---|
-| org-id | String | Yes | 조직 ID |
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | 조직 ID |
 
-**[Response Body]**
+
+##### 응답 본문
+
 ```json
 {
   "header": {
@@ -4261,11 +4262,77 @@ DELETE /v1/organizations/{org-id}
 }
 ```
 
-**[Response Body 설명]**
+###### 응답
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
 | header | [공통 응답](#응답) | Yes | |
+
+
+<a id="상품-정보-목록-조회"></a>
+#### 상품 정보 목록 조회
+
+> GET /v1/products
+
+제공되고 있는 상품 목록들을 조회하는 API입니다.
+
+##### 필요 권한
+회원이면 호출 가능한 API
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|---|---|---|---|---|
+|  Query | productId | String | No | 상품 ID |
+|  Query | productCategoryCode | String | No | 상품 카테고리 코드 (PROJECT, ORG, MARKET_PLACE) |
+|  Query | productName | String | No | 상품 이름 |
+|  Query | productNameLike | String | No | 상품 이름 Like 검색 |
+|  Query | limit | Integer| No | 페이지당 표시 건수, 기본값 20 | 
+|  Query | page | Integer| No | 대상 페이지, 기본값 1 |
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 1,
+    "page": 1,
+    "totalCount": 1
+  },
+  "products": [
+    {
+      "parentProductId": "productId",
+      "productCategoryCode": "PROJECT",
+      "productId": "productId",
+      "productName": "productName"
+    }
+  ]
+}
+```
+
+###### 응답
+
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| header | [공통 응답](#응답) | Yes | |
+| paging | [PagingResponse](#pagingresponse)| Yes | |
+| products | List&lt;Product> | Yes | 상품 정보 목록 |
+
+###### Product
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| parentProductId | String | No | 부모 상품 ID |
+| productCategoryCode | String | Yes | 상품 카테고리 코드 (PROJECT, ORG, MARKET_PLACE) |
+| productId | String | Yes | 상품 ID |
+| productName | String | Yes | 상품 이름 |
 
 
 ### 오류 코드

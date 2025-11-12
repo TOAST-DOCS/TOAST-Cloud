@@ -378,7 +378,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할인 금액 |
-| details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할인 내역 |
 
 **projectExtra**
@@ -390,7 +390,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할증 금액 |
-| details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할증 내역 |
 
 **projects**
@@ -663,7 +663,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할인 금액 |
-| details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할인 내역 |
 
 **projectExtra**
@@ -675,7 +675,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할증 금액 |
-| details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할증 내역 |
 
 **usageGroups**
@@ -1015,7 +1015,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | totalAdjustment | Long | 할인 금액 |
 | details | List&lt;Object&gt; | 상세 내역 |
 | details[].adjustment | Long | 할인 금액 |
-| details[].adjustmentTypeCode | String | 할인 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할인 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할인 내역 |
 
 **billingGroupExtra**
@@ -1025,7 +1025,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | totalAdjustment | Long | 할증 금액 |
 | details | List&lt;Object&gt; | 상세 내역 |
 | details[].adjustment | Long | 할증 금액 |
-| details[].adjustmentTypeCode | String | 할증 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할증 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할증 내역 |
 
 **projectDiscount**
@@ -1037,7 +1037,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할인 금액 |
-| details[].adjustmentTypeCode | String | 할인 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할인 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할인 내역 |
 
 **projectExtra**
@@ -1049,7 +1049,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할증 금액 |
-| details[].adjustmentTypeCode | String | 할증 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할증 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할증 내역 |
 
 

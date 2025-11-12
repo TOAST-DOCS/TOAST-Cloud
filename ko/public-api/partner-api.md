@@ -378,7 +378,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할인 금액 |
-| details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할인 내역 |
 
 **projectExtra**
@@ -390,7 +390,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할증 금액 |
-| details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할증 내역 |
 
 **projects**
@@ -663,7 +663,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할인 금액 |
-| details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할인 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할인 내역 |
 
 **projectExtra**
@@ -675,7 +675,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할증 금액 |
-| details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할증 내역 |
 
 **usageGroups**
@@ -712,7 +712,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | contractId | String | 약정ID |
 | contractPrice | Long | 약정으로 계산된 이용금액 |
 | contractUnitPrice | BigDecimal | 약정 단가 |
-| counterName | String | Counter Name |
+| counterName | String | 카운터 이름 |
 | displayNameEn | String | 과금 단위 노출 이름(en) |
 | displayNameJa | String | 과금 단위 노출 이름(ja) |
 | displayNameKo | String | 과금 단위 노출 이름(ko) |
@@ -1015,7 +1015,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | totalAdjustment | Long | 할인 금액 |
 | details | List&lt;Object&gt; | 상세 내역 |
 | details[].adjustment | Long | 할인 금액 |
-| details[].adjustmentTypeCode | String | 할인 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할인 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할인 내역 |
 
 **billingGroupExtra**
@@ -1025,7 +1025,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | totalAdjustment | Long | 할증 금액 |
 | details | List&lt;Object&gt; | 상세 내역 |
 | details[].adjustment | Long | 할증 금액 |
-| details[].adjustmentTypeCode | String | 할증 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할증 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할증 내역 |
 
 **projectDiscount**
@@ -1037,7 +1037,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할인 금액 |
-| details[].adjustmentTypeCode | String | 할인 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할인 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할인 내역 |
 
 **projectExtra**
@@ -1049,7 +1049,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | details[].projectId | String | 프로젝트 ID |
 | details[].projectName | String | 프로젝트 이름 |
 | details[].adjustment | Long | 할증 금액 |
-| details[].adjustmentTypeCode | String | 할증 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절삭 |
+| details[].adjustmentTypeCode | String | 할증 타입<br><br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사 |
 | details[].description | String | 할증 내역 |
 
 
@@ -1243,6 +1243,296 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 ```
 
 </details>
+
+
+## 일별 이용 금액 조회
+
+파트너 사용자의 일별 이용 금액 상세 내역을 조회합니다.
+
+!!! tip "파트너 계약 검증"
+    해당 파트너가 주어진 프로젝트나 조직의 Owner이거나, Owner와 조회 대상 일자에 파트너 계약을 맺은 상태였는지 확인합니다.
+
+!!! note "조회 범위 제약"
+    - projectId 또는 orgId 중 하나는 반드시 설정되어야 합니다.
+    - projectId와 orgId를 동시에 설정할 수 없습니다.
+
+### 필요 권한
+`Partner.Daily.Usage.List`
+
+### 요청
+
+```
+GET /v1/billing/partners/{partnerId}/daily-usage-prices
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| projectId | Query | String | N | 프로젝트 ID<br>orgId와 동시에 설정 불가 |
+| orgId | Query | String | N | 조직 ID<br>projectId와 동시에 설정 불가 |
+| counterName | Query | String | N | 카운터 이름 |
+| date | Query | String | Y | 조회일(yyyy-MM-dd 형식) |
+| page | Query | Integer | Y | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | Y | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+### 요청 본문
+
+이 API는 요청 본문을 요구하지 않습니다.
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "SUCCESS"
+  },
+  "projectDailyUsagePrices": [
+    {
+      "basicPrice": 0,
+      "billingGroupId": "billing123",
+      "contractId": "contract123",
+      "contractPrice": 0,
+      "counterName": "c2.small",
+      "deltaBasicPrice": 0,
+      "deltaContractPrice": 0,
+      "deltaUsage": 0,
+      "metadata": {},
+      "orgId": "org123",
+      "parentResourceId": "parent-resource-123",
+      "parentResourceName": "부모 리소스",
+      "paymentGroupId": "payment123",
+      "priceInformation": [
+        {}
+      ],
+      "projectId": "project123",
+      "resourceId": "resource123",
+      "resourceName": "test-resource",
+      "usage": 0,
+      "usedDate": "2024-01-01",
+      "uuid": "user123"
+    }
+  ],
+  "totalItems": 1
+}
+```
+
+</details>
+
+#### 기본 응답 구조
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| projectDailyUsagePrices | List&lt;Object&gt; | 일별 이용 금액 목록 |
+| totalItems | Integer | 조회된 결과 개수 |
+
+**projectDailyUsagePrices**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| basicPrice | Long | 종량제 금액 |
+| billingGroupId | String | 빌링 그룹 ID |
+| contractId | String | 약정 ID |
+| contractPrice | Long | 약정 금액 |
+| counterName | String | 카운터 이름 |
+| deltaBasicPrice | Long | 일별 종량제 금액 |
+| deltaContractPrice | Long | 일별 약정 금액 |
+| deltaUsage | BigDecimal | 일별 사용량 |
+| metadata | Object | 메타데이터 |
+| orgId | String | 조직 ID |
+| parentResourceId | String | 부모 리소스 ID |
+| parentResourceName | String | 부모 리소스 이름 |
+| paymentGroupId | String | 결제 그룹 ID |
+| priceInformation | List&lt;Object&gt; | 단가 정보 |
+| projectId | String | 프로젝트 ID |
+| resourceId | String | 리소스 ID |
+| resourceName | String | 리소스 이름 |
+| usage | BigDecimal | 사용량 |
+| usedDate | String | 사용일시 |
+| uuid | String | 회원 UUID |
+
+
+## 태그 별 리소스 이용 금액 조회
+
+태그별로 분류된 리소스의 이용 금액을 조회합니다.
+
+!!! tip "파트너 계약 검증"
+    해당 파트너가 주어진 프로젝트나 조직의 Owner이거나, Owner와 조회 대상 일자에 파트너 계약을 맺은 상태였는지 확인합니다.
+
+!!! note "조회 범위 제약"
+    - projectId 또는 orgId 중 하나는 반드시 제공되어야 합니다.
+    - tagIds 또는 groupIds 중 하나는 반드시 제공되어야 합니다.
+
+### 필요 권한
+`Partner.Daily.Usage.List`
+
+### 요청
+
+```
+POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| page | Query | Integer | Y | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | Y | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+### 요청 본문
+
+<details>
+  <summary><strong>요청 예시</strong></summary>
+
+```json
+{
+  "date": "2024-01-01",
+  "groupIds": [
+    "group123"
+  ],
+  "orgId": "org123",
+  "projectId": "project123",
+  "searchType": "RESOURCE",
+  "tagIds": [
+    1001
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| date | String | Y | 조회 시작일(yyyy-MM-dd 형식) |
+| groupIds | List&lt;String&gt; | N | 그룹 ID 목록<br>tagIds 또는 groupIds 중 하나는 반드시 필요 |
+| orgId | String | N | 조직 ID<br>projectId 또는 orgId 중 하나는 반드시 필요 |
+| projectId | String | N | 프로젝트 ID<br>projectId 또는 orgId 중 하나는 반드시 필요 |
+| searchType | String | Y | 조회 유형<br><br>- RESOURCE: 리소스별<br>- DAILY: 일별 |
+| tagIds | List&lt;Long&gt; | N | 태그 ID 목록<br>tagIds 또는 groupIds 중 하나는 반드시 필요 |
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "SUCCESS"
+  },
+  "resourceUsagePrices": [
+    {
+      "basicPrice": 100000,
+      "billingGroupId": "billing123",
+      "billingGroupName": "기본 빌링 그룹",
+      "categoryMain": "COMPUTE",
+      "categorySub": "INSTANCE",
+      "contractId": "contract123",
+      "contractPrice": 95000,
+      "counterName": "c2.small",
+      "country": "KR",
+      "displayOrder": "1",
+      "orgId": "org123",
+      "orgName": "테스트 조직",
+      "parentResourceId": "parent-resource-123",
+      "paymentGroupId": "payment123",
+      "priceInformation": "단가정보",
+      "priceInformations": [
+        {
+          "basicUnitPrice": 1000.0,
+          "contractUnitPrice": 950.0,
+          "displayName": {
+            "displayNameEn": "c2.small Instance",
+            "displayNameJa": "c2.small インスタンス",
+            "displayNameKo": "c2.small 인스턴스",
+            "displayNameZh": "c2.small 实例"
+          },
+          "rangeFrom": 0,
+          "slidingCalculationTypeCode": "NONE",
+          "unit": 1,
+          "unitName": "hours"
+        }
+      ],
+      "productId": "compute",
+      "productUiId": "compute-instance",
+      "projectId": "project123",
+      "projectName": "테스트 프로젝트",
+      "regionTypeCode": "KR",
+      "resourceId": "resource123",
+      "usage": 100.0,
+      "useFixPriceYn": "N",
+      "usedDate": "2024-01-01"
+    }
+  ],
+  "totalItems": 1,
+  "totalPrice": 95000
+}
+```
+
+</details>
+
+#### 기본 응답 구조
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| resourceUsagePrices | List&lt;Object&gt; | 리소스 이용 금액 목록 |
+| totalItems | Integer | 조회된 결과 개수 |
+| totalPrice | Long | 전체 이용 금액 |
+
+**resourceUsagePrices**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| basicPrice | Long | 종량제 금액 |
+| billingGroupId | String | 빌링 그룹 ID |
+| billingGroupName | String | 빌링 그룹 이름 |
+| categoryMain | String | 메인 카테고리 |
+| categorySub | String | 서브 카테고리 |
+| contractId | String | 약정 ID |
+| contractPrice | Long | 약정 금액 |
+| counterName | String | 카운터 이름 |
+| country | String | 서비스 국가 |
+| displayOrder | String | 청구서 노출 순서 |
+| orgId | String | 조직 ID |
+| orgName | String | 조직 이름 |
+| parentResourceId | String | 부모 리소스 ID |
+| paymentGroupId | String | 결제 그룹 ID |
+| priceInformation | String | 단가 정보 |
+| priceInformations | List&lt;Object&gt; | 단가 정보(상세) |
+| productId | String | 상품 ID |
+| productUiId | String | 홈페이지 서비스 UI ID |
+| projectId | String | 프로젝트 ID |
+| projectName | String | 프로젝트 이름 |
+| regionTypeCode | String | 리전 타입 코드 |
+| resourceId | String | 리소스 ID |
+| usage | BigDecimal | 사용량 |
+| useFixPriceYn | String | 정액 요금 사용 여부 |
+| usedDate | String | 사용일자 |
+
+**priceInformations**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| basicUnitPrice | BigDecimal | 종량제 단위 가격 |
+| contractUnitPrice | BigDecimal | 약정제 단위 가격 |
+| displayName | Object | 청구서 노출명 |
+| displayName.displayNameEn | String | 청구서 노출명(영어) |
+| displayName.displayNameJa | String | 청구서 노출명(일본어) |
+| displayName.displayNameKo | String | 청구서 노출명(한국어) |
+| displayName.displayNameZh | String | 청구서 노출명(중국어) |
+| rangeFrom | BigDecimal | 시작 범위 |
+| slidingCalculationTypeCode | String | 슬라이딩 요금 계산 유형<br><br>- NONE: 없음<br>- SECTION_SUM: 구간 합계<br>- SECTION_SELECTED: 구간 선택 |
+| unit | Long | 단위 |
+| unitName | String | 단위명 |
 
 ## 오류 코드
 
