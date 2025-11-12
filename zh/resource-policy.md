@@ -54,7 +54,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Subnet | Per VPC |10| O | |
-|Static Route | Per subnet | 20 | X | |
+|Static Route | Per subnet | 20 | O | |
 
 
 ### Resource Provision Policy for Routing Service  
