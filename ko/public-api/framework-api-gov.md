@@ -1035,7 +1035,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 * 프로젝트에서 사용 중인 특정 서비스 정보를 조회하는 API
 
 ##### 필요 권한
-`상품명:ProductAppKey.Get`
+`서비스명:ProductAppKey.Get`
 
 ##### 요청 파라미터
 

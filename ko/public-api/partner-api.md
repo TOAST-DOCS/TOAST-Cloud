@@ -67,7 +67,7 @@
 
 ## 파트너 사용자의 조직 사용량 목록 조회
 
-파트너 사용자의 청구금액, 조직별 사용금액, 서비스별 사용금액, 할증 정보를 제공합니다.
+파트너 사용자의 청구 금액, 조직별 사용 금액, 서비스별 사용 금액, 할증 정보를 제공합니다.
 
 !!! tip "파트너 계약 검증"
     해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지 확인합니다.
@@ -153,8 +153,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| charge | Long | 사용 금액 + 프로젝트 할증금액 |
-| totalAmount | Long | 청구 금액(사용금액 + 부가세액) |
+| charge | Long | 사용 금액+프로젝트 할증 금액 |
+| totalAmount | Long | 청구 금액(사용 금액+부가세액) |
 | taxAmount | Long | 부가세액 |
 | currency | String | 통화<br>lang에 따라서 해당하는 언어로 반환됨 |
 | orgList | List&lt;GetPartnerUserOrgUsages&gt; | 조직별 사용량 목록 |
@@ -177,7 +177,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | counterName | String | 카운터 이름 |
 | displayName | String | 과금 단위 노출 이름(locale별) |
 | displayOrder | Integer | 표시순서 |
-| price | Long | 이용금액(파트너용이므로 약정금액은 제공하지 않음) |
+| price | Long | 이용 금액(파트너용이므로 약정금액은 제공하지 않음) |
 | productUiId | String | 홈페이지 서비스 UI ID |
 | usage | BigDecimal | 사용량 |
 
@@ -186,7 +186,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
 | description | String | 할증 설명 |
-| extraPrice | Long | 프로젝트 할증금액 |
+| extraPrice | Long | 프로젝트 할증 금액 |
 
 
 ## 파트너 사용자의 조직 목록 조회
@@ -260,7 +260,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 
 ## 파트너 사용자의 조직별 청구 금액 조회
 
-특정 조직의 상세한 이용금액, 할인 및 할증 금액을 조회합니다.
+특정 조직의 상세한 이용 금액, 할인 및 할증 금액을 조회합니다.
 
 !!! tip "파트너 계약 검증"
     해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지, 그리고 해당 조직의 owner가 해당 달에 파트너 사용자였는지 확인합니다.
@@ -718,8 +718,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | --- | --- | --- |
 | categoryMain | String | 메인 카테고리 |
 | categorySub | String | 서브 카테고리 |
-| contractId | String | 약정ID |
-| contractPrice | Long | 약정으로 계산된 이용금액 |
+| contractId | String | 약정 ID |
+| contractPrice | Long | 약정으로 계산된 이용 금액 |
 | contractUnitPrice | BigDecimal | 약정 단가 |
 | counterName | String | 카운터 이름 |
 | displayNameEn | String | 과금 단위 노출 이름(en) |
@@ -729,7 +729,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | displayOrder | Long | 표시순서 |
 | parentResourceId | String | 부모 리소스 ID |
 | parentResourceName | String | 부모 리소스 이름 |
-| price | Long | 이용금액 |
+| price | Long | 이용 금액 |
 | productUiId | String | 홈페이지 서비스 Ui Id |
 | projectId | String | 프로젝트 ID |
 | projectName | String | 프로젝트 이름 |
@@ -744,7 +744,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | unitName | String | 단위명 |
 | unitPrice | BigDecimal | 단위당 가격 |
 | usage | BigDecimal | 사용량 |
-| useFixPrice | Boolean | 고정금액여부 |
+| useFixPrice | Boolean | 고정 금액 여부 |
 
 **Usage**
 
@@ -937,19 +937,19 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | --- | --- | --- |
 | paymentGroupId | String | 결제 그룹 ID |
 | month | String | 이용월 |
-| charge | Long | 사용금액 |
+| charge | Long | 사용 금액 |
 | supplyAmount | Long | 공급가액 |
 | taxAmount | Long | 부가세액 |
 | totalAmount | Long | 최종금액 |
-| totalCredit | Long | 전체 크레딧 사용금액 |
+| totalCredit | Long | 전체 크레딧 사용 금액 |
 | totalDiscount | Long | 할인금액 |
-| totalExtra | Long | 할증금액 |
-| freeCredit | Long | 무료 크레딧 사용금액 |
-| freeCreditAll | Long | 무료전체형 크레딧 사용금액 |
-| freeCreditLimit | Long | 무료제한형 크레딧 사용금액 |
-| paidCredit | Long | 유료 크레딧 사용금액 |
-| paidCreditAll | Long | 유료전체형 크레딧 사용금액 |
-| paidCreditLimit | Long | 유료제한형 크레딧 사용금액 |
+| totalExtra | Long | 할증 금액 |
+| freeCredit | Long | 무료 크레딧 사용 금액 |
+| freeCreditAll | Long | 무료전체형 크레딧 사용 금액 |
+| freeCreditLimit | Long | 무료제한형 크레딧 사용 금액 |
+| paidCredit | Long | 유료 크레딧 사용 금액 |
+| paidCreditAll | Long | 유료전체형 크레딧 사용 금액 |
+| paidCreditLimit | Long | 유료제한형 크레딧 사용 금액 |
 | paymentStatusCode | String | 결제 상태<br><br>- REGISTERED: 등록<br>- READY: 결제 대기<br>- PAID: 결제 완료<br>- ERROR: 운영자 확인 필요 상태 |
 | country | String | 국가 코드 |
 | cutoff | Long | cutoff |
@@ -957,8 +957,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | realSupplyAmount | Long | 실 공급가액 |
 | realTaxAmount | Long | 실 결제된 부가세 |
 | receiptStatusCode | String | 매출 전표 상태 코드<br><br>- NONE: 아직 회계팀으로 매출 보고가 되지 않아, 매출 전표를 볼 수 없는 상태<br>- EXIST: 최종 금액 조정이 끝난 후, 회계팀으로 매출 보고가 되어, 매출 전표를 볼 수 있는 상태 |
-| refundAccountRegisterStatusCode | String | 환불 계좌 등록 여부 상태<br><br>- ALLOW: 환불 계좌등록 Open 상태<br>- DENY: Default, 환불 계좌등록 Close 상태 |
-| details | List&lt;PaymentStatementDetail&gt; | 빌링 그룹별 상세내역 목록 |
+| refundAccountRegisterStatusCode | String | 환불 계좌 등록 여부 상태<br><br>- ALLOW: 환불 계좌 등록 Open 상태<br>- DENY: Default, 환불 계좌 등록 Close 상태 |
+| details | List&lt;PaymentStatementDetail&gt; | 빌링 그룹별 상세 내역 목록 |
 
 **PaymentStatementDetail**
 
@@ -1134,7 +1134,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | projectId | String | 프로젝트 ID |
 | resourceId | String | 리소스 ID |
 | resourceName | String | 리소스 이름 |
-| source | String | 미터링이 발생한 IP 혹은 호스트 이름 |
+| source | String | 미터링이 발생한 IP 또는 호스트 이름 |
 | stationId | String | 스테이션 ID |
 | timestamp | String | 미터링 발생 시각 |
 
@@ -1356,7 +1356,7 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 | uuid | String | 회원 UUID |
 
 
-## 태그 별 리소스 이용 금액 조회
+## 태그별 리소스 이용 금액 조회
 
 태그별로 분류된 리소스의 이용 금액을 조회합니다.
 
