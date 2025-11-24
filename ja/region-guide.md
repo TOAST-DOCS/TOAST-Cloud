@@ -143,6 +143,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Management | Managed | リージョン | O | O |  |  |
 |  | Support Plan | リージョン | O | O |  |  |
 |  | Certificate Manager | グローバル |  |  |  |  |
+|  | Private CA | リージョン | O |  |  |  |
 | Bill | eTax | リージョン | O |  |  |  |
 | Collaboration | Dooray! | グローバル |  |  |  |  |
 | Contact Center | Omni Contact | リージョン | O |  |  |  |

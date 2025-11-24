@@ -47,7 +47,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ------------- | ------------ |
 | org-id | String | 16자 | 조직 ID |
 | project-id | String | 8자 | 프로젝트 ID |
-| product-id | String | 8자 | 서비스(상품) ID |
+| product-id | String | 8자 | 서비스 ID |
 | user-access-key-id | String | 20자 | User Access Key ID |
 | project-app-key | String | 20자 | 프로젝트의 앱키 |
 | product-app-key | String | 16자 | 서비스의 앱키 |
@@ -72,16 +72,16 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | POST |[/v1/organizations/{org-id}/projects](#프로젝트-추가) | 프로젝트 추가 |
 | DELETE |[/v1/projects/{project-id}/members/{target-uuid}](#프로젝트-멤버-단건-삭제) | 프로젝트 멤버 단건 삭제 |
 | DELETE |[/v1/projects/{project-id}](#프로젝트-삭제) | 프로젝트 삭제 |
-| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#프로젝트-상품-종료) | 프로젝트 상품 종료 |
-| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#프로젝트-상품-이용) | 프로젝트 상품 이용 |
+| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#프로젝트-서비스-종료) | 프로젝트 서비스 종료 |
+| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#프로젝트-서비스-이용) | 프로젝트 서비스 이용 |
 | GET |[/v1/organizations/{org-id}/roles](#조직-역할-목록-조회) | 조직 역할 목록 조회 |
 | GET |[/v1/projects/{project-id}/roles](#프로젝트-역할-목록-조회) | 프로젝트 역할 목록 조회 |
 | GET |[/v1/organizations/{org-id}/domains](#조직-도메인-검색) | 조직 도메인 검색 |
 | GET |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-단건-조회) | 조직 멤버 단건 조회 |
 | POST |[/v1/organizations/{org-id}/members/search](#조직-멤버-목록-조회) | 조직 멤버 목록 조회 |
 | GET |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-전체-조회) | 조직의 프로젝트 공통 역할 그룹 전체 조회 |
-| GET |[/v1/product-uis/hierarchy](#상품-계층-구조-조회) | 상품 계층 구조 조회 |
-| GET |[/v1/projects/{project-id}/products/{product-id}](#프로젝트에서-사용-중인-상품-조회) | 프로젝트에서 사용 중인 상품 조회 |
+| GET |[/v1/product-uis/hierarchy](#서비스-계층-구조-조회) | 서비스 계층 구조 조회 |
+| GET |[/v1/projects/{project-id}/products/{product-id}](#프로젝트에서-사용-중인-서비스-조회) | 프로젝트에서 사용 중인 서비스 조회 |
 | GET |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | 프로젝트 멤버 단건 조회 |
 | POST |[/v1/projects/{project-id}/members/search](#프로젝트-멤버-목록-조회) | 프로젝트 멤버 목록 조회 |
 | GET |[/v1/projects/{project-id}/project-role-groups/{role-group-id}](#프로젝트-역할-그룹-단건-조회) | 프로젝트 역할 그룹 단건 조회 |
@@ -110,8 +110,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-계정-로그인-실패-보안-설정을-조회) | 조직 IAM 계정 로그인 실패 보안 설정을 조회 |
 | GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#조직-IAM-계정-비밀번호-정책-조회) | 조직 IAM 계정 비밀번호 정책 조회 |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | 조직 IP ACL 목록 조회 |
-| POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-상품-가격-조회) | 종량제에 등록된 상품 가격 조회 |
-| GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-상품-목록-조회) | 종량제에 등록된 상품 목록 조회 |
+| POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-서비스-가격-조회) | 종량제에 등록된 서비스 가격 조회 |
+| GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-서비스-목록-조회) | 종량제에 등록된 서비스 목록 조회 |
 | GET | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-앱키-조회) | 프로젝트 앱키 조회 |
 | GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-목록-조회) | User Access Key ID 목록 조회 |
 | POST | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-앱키-등록) | 프로젝트 앱키 등록 |
@@ -131,6 +131,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET | [/v1/organizations](#자신의-조직-목록-조회) | 자신의 조직 목록 조회 |
 | POST | [/v1/organizations](#자신의-조직-추가) | 자신의 조직 추가 |
 | DELETE | [/v1/organizations/{org-id}](#조직-단건-삭제) | 조직 단건 삭제 |
+| GET | [/v1/products](#서비스-정보-목록-조회) | 서비스 정보 목록 조회 |
 
 
 
@@ -269,7 +270,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   projectName | String| Yes   | 프로젝트 이름 | 
 |   projectId | String| Yes   | 프로젝트 ID | 
 |   orgId | String| Yes   | 조직 ID | 
-|   projectStatusCode | String| Yes   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 상품이 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> | 
+|   projectStatusCode | String| Yes   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> | 
 
 
 <a id="프로젝트-멤버-단건-삭제"></a>
@@ -361,15 +362,15 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-<a id="프로젝트-상품-종료"></a>
-#### 프로젝트 상품 종료
+<a id="프로젝트-서비스-종료"></a>
+#### 프로젝트 서비스 종료
 
 > DELETE "/v1/projects/{project-id}/products/{product-id}/disable"
 
 해당 프로젝트에서 사용자가 지정한 서비스를 더 이상 이용하지 않도록 비활성화하는 API입니다.
 
 ##### 필요 권한
-`상품명:Product.Delete`
+`서비스명:Product.Delete`
 
 ##### 요청 파라미터
 
@@ -418,15 +419,15 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   statusCode | String| Yes |   서비스 상태(STABLE, CLOSED) |
 
 
-<a id="프로젝트-상품-이용"></a>
-#### 프로젝트 상품 이용
+<a id="프로젝트-서비스-이용"></a>
+#### 프로젝트 서비스 이용
 
 > POST "/v1/projects/{project-id}/products/{product-id}/enable"
 
 해당 프로젝트에서 사용자가 지정한 서비스를 이용할 수 있도록 활성화 요청하는 API입니다.
 
 ##### 필요 권한
-`상품명:Product.Create`
+`서비스명:Product.Create`
 
 ##### 요청 파라미터
 
@@ -962,8 +963,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   roleGroupType | String| Yes | 역할 그룹의 종류<br><ul><li>ORG: 프로젝트 공통 역할 그룹</li><li>ORG_ROLE_GROUP: 조직 역할 그룹</li><li>PROJECT: 프로젝트 역할 그룹</li> |
 
 
-<a id="상품-계층-구조-조회"></a>
-#### 상품 계층 구조 조회
+<a id="서비스-계층-구조-조회"></a>
+#### 서비스 계층 구조 조회
 
 > GET "/v1/product-uis/hierarchy"
 
@@ -971,7 +972,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 ##### 필요 권한
 회원이면 특정한 권한 없이 호출할 수 있는 API입니다.<br>
-단, 조직 상품을 조회하는 경우에는 해당 조직이나 조직 하위에 있는 프로젝트 멤버여야만 합니다.
+단, 조직 서비스를 조회하는 경우에는 해당 조직이나 조직 하위에 있는 프로젝트 멤버여야만 합니다.
 
 ##### 요청 파라미터
 
@@ -979,8 +980,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |productUiType | String| Yes | 상품 UI 타입<br><ul><li>PROJECT: 프로젝트 상품</li><li>ORG: 조직 상품</li><li>MARKET_PLACE: 마켓플레이스 상품</li></ul> |
-|  Query |orgId | String| No | 상품 UI 타입이 ORG인 경우, 조직 ID를 반드시 입력해야 함 |
+|  Query |productUiType | String| Yes | 서비스 UI 타입<br><ul><li>PROJECT: 프로젝트 서비스</li><li>ORG: 조직 서비스</li><li>MARKET_PLACE: 마켓플레이스 서비스</li></ul> |
+|  Query |orgId | String| No | 서비스 UI 타입이 ORG인 경우, 조직 ID를 반드시 입력해야 함 |
 
 
 
@@ -1011,30 +1012,30 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [공통 응답](#응답)| Yes |
-|   productUiList | List&lt;ProductUiHierarchyProtocol>| Yes  | 홈페이지 카테고리 상품 UI 목록 |
+|   productUiList | List&lt;ProductUiHierarchyProtocol>| Yes  | 홈페이지 카테고리 서비스 UI 목록 |
 
 ###### ProductUiHierarchyProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   children | List&lt;ProductUiHierarchyProtocol>| No | 홈페이지 서비스 상품 UI 목록 |
+|   children | List&lt;ProductUiHierarchyProtocol>| No | 홈페이지 서비스 서비스 UI 목록 |
 |   manualLink | String| No|
-|   parentProductUiId | String| No| 상품 UI 구분 |
+|   parentProductUiId | String| No| 서비스 UI 구분 |
 |   productId | String| No|
-|   productUiId | String| No| 상품 UI 식별 키 |
+|   productUiId | String| No| 서비스 UI 식별 키 |
 |   productUiName | String| No|
 
 
-<a id="프로젝트에서-사용-중인-상품-조회"></a>
-#### 프로젝트에서 사용 중인 상품 조회
+<a id="프로젝트에서-사용-중인-서비스-조회"></a>
+#### 프로젝트에서 사용 중인 서비스 조회
 
 > GET "/v1/projects/{project-id}/products/{product-id}"
 
 * 프로젝트에서 사용 중인 특정 서비스 정보를 조회하는 API
 
 ##### 필요 권한
-`상품명:ProductAppKey.Get`
+`서비스명:ProductAppKey.Get`
 
 ##### 요청 파라미터
 
@@ -1093,7 +1094,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 앱키 정보  |
 |   externalId | String| No | 테넌트 ID<br>서비스에 테넌트 ID가 존재하는 경우에만 제공 |
 |   productId | String| Yes | 서비스 ID  |
-|   productName | String| Yes | 상품 이름  |
+|   productName | String| Yes | 서비스 이름  |
 |   productSecretKeyCode | String| No | 비밀 키 사용 여부<br>T: 사용함<br>나머지: 사용하지 않음(F, N) |
 |   productStatusCode | String| Yes | 서비스 상태(STABLE, CLOSED) |
 |   projectId | String| Yes | 해당 서비스를 사용하는 프로젝트 ID  |
@@ -1550,7 +1551,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   orgId | String| Yes| 프로젝트가 속한 조직 ID |
 |   projectId | String| Yes| 프로젝트 ID |
 |   projectName | String| Yes| 프로젝트 이름 |
-|   projectStatusCode | String| Yes | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 상품이 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> |
+|   projectStatusCode | String| Yes | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> |
 |   regDateTime | Date| Yes| 프로젝트 등록 일시 |
 
 
@@ -2609,7 +2610,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
 |   ips | List&lt;String>| Yes  | 허용 IP들 | 
-|   productId | String| Yes  | 상품 ID<br>undefined이면 공통 설정|
+|   productId | String| Yes  | 서비스 ID<br>undefined이면 공통 설정|
 
 <a id="조직-IAM-계정-로그인-세션-설정-정보를-조회"></a>
 #### 조직 IAM 계정 로그인 세션 설정 정보를 조회
@@ -2921,8 +2922,8 @@ IP ACL 설정을 조회하는 API입니다.
 | enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안 함) |
 | limitCount | Integer | Yes | 재사용 제한 횟수 |
 
-<a id="종량제에-등록된-상품-가격-조회"></a>
-#### 종량제에 등록된 상품 가격 조회
+<a id="종량제에-등록된-서비스-가격-조회"></a>
+#### 종량제에 등록된 서비스 가격 조회
 
 > POST "/v1/billing/contracts/basic/products/prices/search"
 
@@ -2943,7 +2944,7 @@ IP ACL 설정을 조회하는 API입니다.
 ##### GetContractProductPriceRequest
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|  counterNames | List&lt;String>| No | 상품 메타의 counter Name 목록<br>없을 경우 전체 검색함 |
+|  counterNames | List&lt;String>| No | 서비스 메타의 counter Name 목록<br>없을 경우 전체 검색함 |
 |   paging | Paging| No  |
 
 ###### Paging
@@ -3027,8 +3028,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   slidingCalculationTypeCode | String| Yes | 슬라이딩 요금 계산 유형<br>NONE, SECTION_SUM, SECTION_SELECTED |
 |   useFixPriceYn | String| Yes | 고정 금액  여부(Y: 고정 금액 , N: 단가 계산)<br>Y: 범위에 들어올 경우 price가 금액이 됨<br>N:(사용량 x 단가)가 금액이 됨 |
 
-<a id="종량제에-등록된-상품-목록-조회"></a>
-#### 종량제에 등록된 상품 목록 조회
+<a id="종량제에-등록된-서비스-목록-조회"></a>
+#### 종량제에 등록된 서비스 목록 조회
 
 > GET "/v1/billing/contracts/basic/products"
 
@@ -3092,7 +3093,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   products | List&lt;ProductMetadata>| Yes | 상품 메타 정보 목록  |
+|   products | List&lt;ProductMetadata>| Yes | 서비스 메타 정보 목록  |
 
 
 ###### ProductMetadata
@@ -3114,10 +3115,10 @@ IP ACL 설정을 조회하는 API입니다.
 |   meterUnitCode | String| Yes | 서비스에서 미터링 저장 시 사용량 단위<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
 |   minUsage | BigDecimal| Yes | 최소 사용량  |
 |   parentCounterName | String| Yes | 부모 카운터 이름  |
-|   productId | String| Yes | 상품 아이디  |
+|   productId | String| Yes | 서비스 아이디  |
 |   productMetadataStatusCode | String| Yes | 카운터 상태 코드  STABLE, CLOSED |
 |   productUiId | String| Yes | 홈페이지 카테고리/홈페이지 서비스 식별 ID  |
-|   regionTypeCode | String| Yes | 카운터네임이 소속된 리전 코드<br><ul><li>GLOBAL: Global 상품에 속한 카운터네임</li><li>NONE: GLOBAL과 동일한 의미</li><li>KR1: KR1 리전에 속한 카운터네임</li><li>KR2: KR2 리전에 속한 카운터네임</li><li>...: 해당 리전에 속한 카운터네임</li><ul>  |
+|   regionTypeCode | String| Yes | 카운터네임이 소속된 리전 코드<br><ul><li>GLOBAL: Global 서비스에 속한 카운터네임</li><li>NONE: GLOBAL과 동일한 의미</li><li>KR1: KR1 리전에 속한 카운터네임</li><li>KR2: KR2 리전에 속한 카운터네임</li><li>...: 해당 리전에 속한 카운터네임</li><ul>  |
 |   unit | Long| Yes | 정산 단위  |
 |   unitName | String| Yes | 청구서에 노출할 이름  |
 |   usageAggregationUnitCode | String| No | 사용량 집계 단위<br>RESOURCE_ID, COUNTER_NAME |
@@ -4054,10 +4055,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 <a id="자신의-조직-목록-조회"></a>
 #### 자신의 조직 목록 조회
 
-**[Method, URL]**
-```
-GET /v1/organizations
-```
+> GET /v1/organizations
 
 ##### 필요 권한
 회원이면 호출 가능한 API
@@ -4174,28 +4172,29 @@ GET /v1/organizations
 <a id="조직-추가"></a>
 #### 자신의 조직 추가
 
-**[Method, URL]**
-```
-POST /v1/organizations
-```
+> POST /v1/organizations
+
+자신의 조직을 추가하는 API입니다.
 
 ##### 필요 권한
 회원이면 호출 가능한 API
 
-**[Request Body]**
-```json
-{
-  "orgName": "organization-name"
-}
-```
+##### 요청 파라미터
 
-**[Request Body 설명]**
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+| Request Body | request | [CreateOrgRequest](#createorgrequest)| Yes | 요청 |
+
+
+###### CreateOrgRequest
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| orgName | String | Yes | 생성할 조직 이름(최대 120자) |
+| orgName | String | Yes | 생성할 조직 이름(최대 70자) |
 
-**[Response Body]**
+
+##### 응답 본문
+
 ```json
 {
   "header": {
@@ -4214,14 +4213,15 @@ POST /v1/organizations
 }
 ```
 
-**[Response Body 설명]**
+###### 응답
+
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
 | header | [공통 응답](#응답) | Yes | |
 | orgId | String | Yes | 조직 ID |
 | orgName | String | Yes | 조직 이름 |
-| owner | Owner | Yes | 조직 Owner 정보 |
+| owner | [Owner](#owner) | Yes | 조직 Owner 정보 |
 
 ###### Owner
 
@@ -4236,21 +4236,22 @@ POST /v1/organizations
 <a id="조직-단건-삭제"></a>
 #### 조직 단건 삭제
 
-**[Method, URL]**
-```
-DELETE /v1/organizations/{org-id}
-```
+> DELETE /v1/organizations/{org-id}
+
+자신의 조직을 삭제하는 API입니다.
 
 ##### 필요 권한
 `Organization.Delete`
 
-**[Path Variable]**
+##### 요청 파라미터
 
-| 이름 | 타입 | 필수 | 설명 |
-|---|---|---|---|
-| org-id | String | Yes | 조직 ID |
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | 조직 ID |
 
-**[Response Body]**
+
+##### 응답 본문
+
 ```json
 {
   "header": {
@@ -4261,12 +4262,77 @@ DELETE /v1/organizations/{org-id}
 }
 ```
 
-**[Response Body 설명]**
+###### 응답
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
 | header | [공통 응답](#응답) | Yes | |
 
+
+<a id="서비스-정보-목록-조회"></a>
+#### 서비스 정보 목록 조회
+
+> GET /v1/products
+
+제공되는 서비스 목록들을 조회하는 API입니다.
+
+##### 필요 권한
+회원이면 호출 가능한 API
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|---|---|---|---|---|
+|  Query | productId | String | No | 서비스 ID |
+|  Query | productCategoryCode | String | No | 서비스 카테고리 코드(PROJECT, ORG, MARKET_PLACE) |
+|  Query | productName | String | No | 서비스 이름 |
+|  Query | productNameLike | String | No | 서비스 이름 Like 검색 |
+|  Query | limit | Integer| No | 페이지당 표시 건수, 기본값 20 | 
+|  Query | page | Integer| No | 대상 페이지, 기본값 1 |
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 1,
+    "page": 1,
+    "totalCount": 1
+  },
+  "products": [
+    {
+      "parentProductId": "productId",
+      "productCategoryCode": "PROJECT",
+      "productId": "productId",
+      "productName": "productName"
+    }
+  ]
+}
+```
+
+###### 응답
+
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| header | [공통 응답](#응답) | Yes | |
+| paging | [PagingResponse](#pagingresponse)| Yes | |
+| products | List&lt;Product> | Yes | 서비스 정보 목록 |
+
+###### Product
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| parentProductId | String | No | 부모 서비스 ID |
+| productCategoryCode | String | Yes | 서비스 카테고리 코드(PROJECT, ORG, MARKET_PLACE) |
+| productId | String | Yes | 서비스 ID |
+| productName | String | Yes | 서비스 이름 |
 
 ### 오류 코드
 

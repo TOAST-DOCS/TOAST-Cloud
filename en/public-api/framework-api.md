@@ -128,7 +128,9 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | View project IAM accounts |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | Modify project IAM account roles |
 | GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-리스트-조회) | View all credentials of members under organizations |
-
+| GET | [/v1/organizations](#자신의-조직-목록-조회) | View your own organization list |
+| POST | [/v1/organizations](#자신의-조직-추가) | Add your own organization |
+| DELETE | [/v1/organizations/{org-id}](#조직-단건-삭제) | Delete a single organization |
 
 
 <a id="프로젝트-멤버-생성"></a>
@@ -2872,7 +2874,7 @@ API to get settings for password policies.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [Common response](#응답)| Yes   |
+| header | [Common response](#response)| Yes   |
 | result | Content | Yes | Setup contents |
 
 ###### Content
@@ -4047,9 +4049,221 @@ API to get the credentials of members in the organization or project.
 | lastTokenUsedDatetime | Date | No | Date of last token use |
 | validTokenCount | Long | No | Number of valid tokens |
 
+<a id="자신의-조직-목록-조회"></a>
+#### View your Own Organization List
+
+**[Method, URL]**
+```
+GET /v1/organizations
+```
+
+##### Required Permission
+API that can be called by members
+
+**[Query Parameter]**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| orgName | String | No | Organization name |
+| orgNameMatchTypeCode | String | No | Search type for organization name (EXACT: exact match, LIKE: partial match, default: LIKE) |
+| page | Integer | No | Target page, default: 1 |
+| limit | Integer | No | No. of views per page, default: 20 |
+
+**[Response Body]**
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "orgList": [
+    {
+      "org": {
+        "orgId": "org-id",
+        "orgName": "organization-name",
+        "orgStatusCode": "STABLE",
+        "ownerUuid": "owner-uuid",
+        "regDateTime": "2023-01-01T00:00:00+09:00",
+        "remainingJobCode": "NONE",
+        "ipAclTypeCode": "COMMON",
+        "orgDomainList": [
+          {
+            "domainId": "domain-id",
+            "domainName": "domain-name"
+          }
+        ]
+      },
+      "orgMember": {
+        "existOrgMember": true,
+        "orgOwner": true
+      },
+      "orgOwner": {
+        "email": "owner@example.com",
+        "name": "owner-name",
+        "restrictStatusCode": "STABLE",
+        "country": "KR",
+        "restrictTypes": []
+      }
+    }
+  ],
+  "paging": {
+    "page": 1,
+    "limit": 20,
+    "totalCount": 1
+  }
+}
+```
+
+**[Response Body Description]**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| header | [Common response](#response) | Yes | |
+| orgList | List&lt;OrgMemberRelationProtocol> | Yes | Organization lilst info |
+| paging | [PagingResponse](#pagingresponse) | Yes | Paging info |
+
+###### OrgMemberRelationProtocol
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| org | OrgProtocol | Yes | Organization info |
+| orgMember | OrgMemberProtocol | Yes | Organization/project member info |
+| orgOwner | OwnerProtocol | Yes | Organization Owner info |
+
+###### OrgProtocol
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| orgId | String | Yes | Organization ID |
+| orgName | String | Yes | Organization name |
+| orgStatusCode | String | Yes | Organization status code (STABLE, CLOSED) |
+| ownerUuid | String | Yes | Organization Owner UUID |
+| regDateTime | Date | Yes | Organization created on |
+| remainingJobCode | String | Yes | Organization follow-up actions (NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
+| ipAclTypeCode | String | Yes | Type code for organization IP ACL (COMMON, INDIVIDUAL) |
+| orgDomainList | List&lt;OrgDomainProtocol> | Yes | Organization domain list |
+
+###### OrgMemberProtocol
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| existOrgMember | Boolean | Yes | Organization member exists |
+| orgOwner | Boolean | Yes | Organization Owner |
+
+###### OwnerProtocol
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| email | String | Yes | Organization Owner email |
+| name | String | Yes | Organization Owner name |
+| restrictStatusCode | String | Yes | Organization Owner restriction status (HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
+| country | String | Yes | Organization Owner country code |
+| restrictTypes | List&lt;String> | Yes | Organization Owner restriction list |
+
+###### OrgDomainProtocol
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| domainId | String | Yes | Organization domain ID |
+| domainName | String | Yes | Organization domain name |
 
 
+<a id="조직-추가"></a>
+#### Add your own organization
 
+**[Method, URL]**
+```
+POST /v1/organizations
+```
+
+##### Required Permission
+API that can be called by members
+
+**[Request Body]**
+```json
+{
+  "orgName": "organization-name"
+}
+```
+
+**[Request Body Description]**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| orgName | String | Yes | Organization name to create (up to 120 characters) |
+
+**[Response Body]**
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "orgId": "org-id",
+  "orgName": "organization-name",
+  "owner": {
+    "email": "owner@example.com",
+    "name": "owner-name",
+    "ownerId": "owner-uuid",
+    "restrictTypes": []
+  }
+}
+```
+
+**[Response Body Description]**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| header | [Common response](#response) | Yes | |
+| orgId | String | Yes | Organization ID |
+| orgName | String | Yes | Organization name |
+| owner | Owner | Yes | Organization Owner info |
+
+###### Owner
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| email | String | Yes | Organization Owner email |
+| name | String | Yes | Organization Owner name |
+| ownerId | String | Yes | Organization Owner ID |
+| restrictTypes | List&lt;String> | Yes | List for restriction targets |
+
+
+<a id="조직-단건-삭제"></a>
+#### Delete a single organization
+
+**[Method, URL]**
+```
+DELETE /v1/organizations/{org-id}
+```
+
+##### Required Permission
+`Organization.Delete`
+
+**[Path Variable]**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| org-id | String | Yes | Organization ID |
+
+**[Response Body]**
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+**[Response Body Description]**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| header | [common response](#response) | Yes | |
 
 
 ### Error Code

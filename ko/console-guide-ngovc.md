@@ -268,7 +268,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | 구분 | NHN Cloud 회원 | IAM 멤버 |
 | --- | --- | --- |
 | 정의 | - 조직 관리를 위한 멤버<br>- NHN Cloud 이용 약관에 동의한 NHN Cloud회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>- NHN Cloud서비스 전체에서 유효한 멤버로 소속된 조직이 삭제되어도 NHN Cloud 회원으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
-| 멤버 등록 방법 | - 조직의 OWNER나 ADMIN이 NHN Cloud ID를 입력하여 등록 | - 조직의 OWNER나 ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>- SSO 연동/API 연동 등을 통해 등록 |
+| 멤버 등록 방법 | - 조직의 OWNER나 ADMIN, ORG_MEMBER_ADMIN이 NHN Cloud ID를 입력하여 등록 | - 조직의 OWNER나 ADMIN, ORG_MEMBER_ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>- SSO 연동/API 연동 등을 통해 등록 |
 | 멤버 역할 | - 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리)<br>- 프로젝트 생성<br>- 프로젝트 삭제 | - 조직 서비스 이용 |
 | 콘솔 접근 | - NHN Cloud 콘솔 접근<br>- NHN Cloud > 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔 접근<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
@@ -282,9 +282,11 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 역할 | 설명 |
 | --- | --- |
-| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
-| ADMIN | 조직 관리, 멤버 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
+| OWNER | 조직 생성, 조직 관리, 멤버 관리, 조직 역할 그룹 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| ADMIN | 조직 관리, 멤버 관리, 조직 역할 그룹 관리, 조직 서비스 관리, 결제 관리, 프로젝트 관리 등 조직 전체에 대한 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | MEMBER | 프로젝트 Create(생성), 조직 대시보드 Read(읽기), 프로젝트에 대한 Read(읽기) |
+| ORG_MEMBER_ADMIN | 조직 멤버 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br>조직 역할 그룹 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| ORG_MEMBER_VIEWER | 조직 멤버 Read(읽기)<br>조직 역할 그룹 Read(읽기) |
 | BILLING_VIEWER | 결제 관리 이용현황 Read(읽기), 예산 관리에 대한 Read(읽기), 조직 하위 프로젝트의 이용 현황 Read(읽기) |
 | BUDGET_ADMIN | 예산 관리에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 | BUDGET_VIEWER | 예산 관리에 대한 Read(읽기) |
@@ -352,6 +354,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | NHN Container Registry(NCR) | VIEWER | NHN Container Registry(NCR) 서비스 Read(읽기) |
 | NHN Container Registry(NCR) | IMAGE UPLOADER | NHN Container Registry (NCR) 서비스 Read(읽기), 이미지 업로드, 아티팩트 Create(생성), 태그 Create(생성) |
 | Object Storage | ADMIN | Object Storage 서비스 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) 권한 |
+| Object Storage | Container OPERATOR | Object Storage 서비스 내 컨테이너 목록 및 모든 정보 상세 조회 Read(읽기). 컨테이너 관리 Create(생성), Update(갱신), Delete(삭제) |
 | Object Storage | Container VIEWER | Object Storage 서비스 내 컨테이너 목록 조회 Read(읽기)  |
 | Object Storage | Object READER | Object Storage 서비스 내 컨테이너 목록 및 일부 정보 상세 조회 Read(읽기) <br> 객체 목록 및 상세 조회 Read(읽기) <br> 객체 다운로드 Read(읽기)  |
 | Object Storage | Object WRITER | Object Storage 서비스 내 컨테이너 목록 및 일부 정보 상세 조회 Read(읽기) <br> 객체 관리 Create(생성), Update(갱신), Delete(삭제)  |
