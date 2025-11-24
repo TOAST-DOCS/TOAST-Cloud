@@ -483,7 +483,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 | orgStatusCode | String | 조직 상태<br><br>- STABLE: 정상 상태<br>- CLOSED: 삭제된 상태 |
 | projectId | String | 프로젝트 ID |
 | projectName | String | 프로젝트 이름 |
-| projectCreationType | String | 프로젝트 생성 타입<br><br>- USER: 고객이 생성한 프로젝트<br>- SYSTEM: 시스템에서 만든 프로젝트(주로 조직 상품, 회원형 마켓플레이스에서 사용) |
+| projectCreationType | String | 프로젝트 생성 타입<br><br>- USER: 고객이 생성한 프로젝트<br>- SYSTEM: 시스템에서 만든 프로젝트(주로 조직 서비스, 회원형 마켓플레이스에서 사용) |
 | projectStatusCode | String | 프로젝트 상태<br><br>- STABLE: 정상 상태<br>- CLOSED: 삭제된 상태 |
 
 
@@ -730,7 +730,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | parentResourceId | String | 부모 리소스 ID |
 | parentResourceName | String | 부모 리소스 이름 |
 | price | Long | 이용금액 |
-| productUiId | String | 홈페이지 상품 Ui Id |
+| productUiId | String | 홈페이지 서비스 Ui Id |
 | projectId | String | 프로젝트 ID |
 | projectName | String | 프로젝트 이름 |
 | rangeFrom | BigDecimal | 적용 시작 범위 |
@@ -752,7 +752,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | --- | --- | --- |
 | counterName | String | 카운터 이름 |
 | counterType | String | 카운터 타입 |
-| productId | String | 상품 ID |
+| productId | String | 서비스 ID |
 | projectId | String | 프로젝트 ID |
 | resourceId | String | 리소스 ID |
 | resourceName | String | 리소스 이름 |
@@ -1046,7 +1046,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | description | String | 할인/할증 내역 |
 
 
-## 솔루션 파트너의 자기 상품 미터링 조회
+## 솔루션 파트너의 자기 서비스 미터링 조회
 
 솔루션 파트너가 자신의 상품에 대한 미터링 정보를 조회합니다.
 
@@ -1067,7 +1067,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
-| productId | Path | String | Y | 상품 ID |
+| productId | Path | String | Y | 서비스 ID |
 | from | Query | String | Y | 조회 시작일(yyyy-MM-ddThh:mm:ss.sssZ, 포함) |
 | to | Query | String | Y | 조회 종료일(yyyy-MM-ddThh:mm:ss.sssZ, 미포함) |
 | counterName | Query | String | Y | 카운터 이름 |
@@ -1120,7 +1120,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| appKey | String | 상품 앱키 |
+| appKey | String | 서비스 앱키 |
 | counterName | String | 카운터 이름 |
 | counterType | String | 카운터 타입<br><br>- DELTA: 증분 값<br>- GAUGE: 현재 값<br>- HOURLY_LATEST: 시간별 최신 값<br>- DAILY_MAX: 일별 최댓값<br>- MONTHLY_MAX: 월별 최댓값<br>- STATUS: 상태 값 |
 | counterUnit | String | 카운터 단위 |
@@ -1130,7 +1130,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | insertTime | String | 미터링 삽입 시각 |
 | orgId | String | 조직 ID |
 | parentResourceId | String | 부모 리소스 ID |
-| productId | String | 상품 ID |
+| productId | String | 서비스 ID |
 | projectId | String | 프로젝트 ID |
 | resourceId | String | 리소스 ID |
 | resourceName | String | 리소스 이름 |
@@ -1262,19 +1262,19 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 | 1000 | 파라미터가 잘못될 경우 발생하는 오류 | 요청 파라미터의 형식과 값을 확인하여 올바른 값으로 재시도 |
 | 1200 | API 호출 실패 | 잠시 후 재시도하거나, 시스템 상태를 확인 |
 | 10005 | 요청 파라미터가 적절하지 않을 때 발생하는 오류 | 요청 파라미터의 필수 값 및 설정 가능한 값 등을 확인 |
-| 11010 | 사용량 조회 권한 부족 | 상품/카운터/조직에 대한 권한 확인 및 부여 |
+| 11010 | 사용량 조회 권한 부족 | 서비스/카운터/조직에 대한 권한 확인 및 부여 |
 | 11012 | 조직 접근 권한 없음 | 사용자에게 해당 조직 접근 권한 부여 |
 | 11013 | 멤버가 파트너 사용자가 아님 또는 지정한 파트너 ID와 파트너 사용자 UUID가 매칭되지 않음 | 해당 멤버가 지정된 기간에 파트너 사용자인지 확인하고, 파트너 관계를 재설정. 파트너 사용자가 해당 파트너에 승인·연결돼 있는지 확인 |
 | 12000 | 프로젝트를 찾을 수 없음 | 요청한 프로젝트 ID가 존재하는지 확인하고, 올바른 프로젝트 ID로 재시도 |
 | 12100 | 프로젝트 멤버가 존재하지 않을 때 발생하는 오류 | 존재하는 프로젝트 멤버 UUID 사용 |
 | 17001 | 앱키를 찾을 수 없음 | 앱키가 정상 발급되었는지 확인 후 필요 시 재발급 |
-| 17003 | 앱키와 프로젝트/상품 연결 없음 | 앱키를 올바른 프로젝트/상품과 연결 |
+| 17003 | 앱키와 프로젝트/서비스 연결 없음 | 앱키를 올바른 프로젝트/서비스와 연결 |
 | 17501 | 조직을 찾을 수 없음 | 조직 ID 존재 여부 확인 |
 | 18001 | 프로젝트를 찾을 수 없음 | 프로젝트 ID 존재 여부 확인 |
 | 22001 | 파트너 기본 그룹 없음 | 파트너 기본 그룹 설정 확인 |
 | 22002 | 파트너 결제 그룹 없음 | 파트너 결제 그룹 설정 확인 |
 | 22003 | 파트너 조정값 범위 오류 | 파트너 조정값이 허용 범위 내인지 확인 |
-| 22004 | 솔루션 파트너 상품 아님 | 요청 상품이 해당 솔루션 파트너 상품인지 확인 |
+| 22004 | 솔루션 파트너 서비스 아님 | 요청 서비스가 해당 솔루션 파트너 상품인지 확인 |
 | 22005 | 솔루션 파트너 아님 | 파트너가 솔루션 파트너 자격을 갖추었는지 확인 |
 | 22021 | 조직 생성 시, 조직 오너 계정에 설정된 조직 생성 개수 제한을 초과했을 경우 발생하는 오류 | 1) 사용하지 않은 조직을 삭제하여 생성 가능한 조직 개수 확보 <br>2) 시스템 관리자를 통해 조직 생성 최대 개수 조정 |
 | 22023 | MSP 파트너 한도를 초과하여 조직 생성이 제한됨 | MSP 파트너 한도 조정 또는 조직 정리 |
