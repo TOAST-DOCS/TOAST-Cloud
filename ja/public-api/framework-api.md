@@ -47,7 +47,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |------------ | ------------- | ------------- | ------------ |
 | org-id | String | 16文字 | 組織ID |
 | project-id | String | 8文字 | プロジェクトID |
-| product-id | String | 8文字 | サービス(商品) ID |
+| product-id | String | 8文字 | サービスID |
 | user-access-key-id | String | 20文字 | User Access Key ID |
 | project-app-key | String | 20文字 | プロジェクトのアプリキー |
 | product-app-key | String | 16文字 | サービスのアプリキー |
@@ -72,16 +72,16 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | POST |[/v1/organizations/{org-id}/projects](#プロジェクト-追加) | プロジェクト追加 |
 | DELETE |[/v1/projects/{project-id}/members/{target-uuid}](#プロジェクト-メンバー-単件-削除) | プロジェクトメンバー単件削除 |
 | DELETE |[/v1/projects/{project-id}](#プロジェクト-削除) | プロジェクト削除 |
-| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#プロジェクト-商品-終了) | プロジェクト商品終了 |
-| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#プロジェクト-商品-利用) | プロジェクト商品利用 |
+| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#プロジェクト-サービス-終了) | プロジェクトサービス終了 |
+| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#プロジェクト-サービス-利用) | プロジェクトサービス利用 |
 | GET |[/v1/organizations/{org-id}/roles](#組織-ロール-リスト-照会) | 組織ロールリスト照会 |
 | GET |[/v1/projects/{project-id}/roles](#プロジェクト-ロール-リスト-照会) | プロジェクトロールリスト照会 |
 | GET |[/v1/organizations/{org-id}/domains](#組織-ドメイン-検索) | 組織ドメイン検索 |
 | GET |[/v1/organizations/{org-id}/members/{member-uuid}](#組織-メンバー-単件-照会) | 組織メンバー単件照会 |
 | POST |[/v1/organizations/{org-id}/members/search](#組織-メンバー-リスト-照会) | 組織メンバーリスト照会 |
 | GET |[/v1/organizations/{org-id}/project-role-groups](#組織の-プロジェクト-共通-ロール-グループ-全体-照会) | 組織のプロジェクト共通ロールグループ全体照会 |
-| GET |[/v1/product-uis/hierarchy](#商品-階層-構造-照会) | 商品階層構造照会 |
-| GET |[/v1/projects/{project-id}/products/{product-id}](#プロジェクトで-使用-中の-商品-照会) | プロジェクトで使用中の商品照会 |
+| GET |[/v1/product-uis/hierarchy](#サービス-階層-構造-照会) | サービス階層構造照会 |
+| GET |[/v1/projects/{project-id}/products/{product-id}](#プロジェクトで-使用-中の-サービス-照会) | プロジェクトで使用中のサービス照会 |
 | GET |[/v1/projects/{project-id}/members/{member-uuid}](#プロジェクト-メンバー-単件-照会) | プロジェクトメンバー単件照会 |
 | POST |[/v1/projects/{project-id}/members/search](#プロジェクト-メンバー-リスト-照会) | プロジェクトメンバーリスト照会 |
 | GET |[/v1/projects/{project-id}/project-role-groups/{role-group-id}](#プロジェクト-ロール-グループ-単件-照会) | プロジェクトロールグループ単件照会 |
@@ -109,8 +109,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#組織-IAM-ログイン-2次-認証-の-設定を-照会) | 組織IAMログイン2段階認証の設定を照会 |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#組織-IAM-ログイン-失敗-セキュリティ-設定を-照会) | 組織IAMログイン失敗セキュリティ設定を照会 |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#組織-IP-ACL-リスト-照会) | 組織IP ACLリスト照会 |
-| POST |[/v1/billing/contracts/basic/products/prices/search](#従量制に-登録された-商品-価格-照会) | 従量制に登録された商品価格照会 |
-| GET |[/v1/billing/contracts/basic/products](#従量制に-登録された-商品-リスト-照会) | 従量制に登録された商品リスト照会 |
+| POST |[/v1/billing/contracts/basic/products/prices/search](#従量制に-登録された-サービス-価格-照会) | 従量制に登録されたサービス価格照会 |
+| GET |[/v1/billing/contracts/basic/products](#従量制に-登録された-サービス-リスト-照会) | 従量制に登録されたサービスリスト照会 |
 | GET |[/v1/authentications/projects/{project-id}/project-appkeys](#プロジェクト-アプリキー-照会) | プロジェクトアプリキー照会 |
 | GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-リスト-照会) | User Access Key IDリスト照会 |
 | POST |[/v1/authentications/projects/{project-id}/project-appkeys](#プロジェクト-アプリキー-登録) | プロジェクトアプリキー登録 |
@@ -268,7 +268,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   projectName | String| Yes   | プロジェクト名 | 
 |   projectId | String| Yes   | プロジェクトID | 
 |   orgId | String| Yes   | 組織ID | 
-|   projectStatusCode | String| Yes   | プロジェクトの状態<br><ul><li>STABLE：正常に使用中の状態</li><li>CLOSED：支払いが完了し、プロジェクトが正常に閉じた状態</li><li>BLOCKED：管理者によって使用が禁止された状態</li><li>TERMINATED：延滞により、全てのリソースが削除された状態</li><li>DISABLED：全ての商品が閉じた状態であるが、値が支払われていない状態</li></ul> | 
+|   projectStatusCode | String| Yes   | プロジェクトの状態<br><ul><li>STABLE：正常に使用中の状態</li><li>CLOSED：支払いが完了し、プロジェクトが正常に閉じた状態</li><li>BLOCKED：管理者によって使用が禁止された状態</li><li>TERMINATED：延滞により、全てのリソースが削除された状態</li><li>DISABLED：全てのサービスが閉じた状態であるが、値が支払われていない状態</li></ul> | 
 
 
 <a id="プロジェクト-メンバー-単件-削除"></a>
@@ -360,15 +360,15 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 
 
-<a id="プロジェクト-商品-終了"></a>
-#### プロジェクト商品終了
+<a id="プロジェクト-サービス-終了"></a>
+#### プロジェクトサービス終了
 
 > DELETE "/v1/projects/{project-id}/products/{product-id}/disable"
 
 当該プロジェクトでユーザーが指定したサービスを利用しないように無効にするAPIです。
 
 ##### 必要権限
-`商品名:Product.Delete`
+`サービス名:Product.Delete`
 
 ##### リクエストパラメータ
 
@@ -417,15 +417,15 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   statusCode | String| Yes | サービス状態(STABLE, CLOSED) |
 
 
-<a id="プロジェクト-商品-利用"></a>
-#### プロジェクト商品利用
+<a id="プロジェクト-サービス-利用"></a>
+#### プロジェクトサービス利用
 
 > POST "/v1/projects/{project-id}/products/{product-id}/enable"
 
 該当プロジェクトでユーザーが指定したサービスを利用できるように有効化リクエストするAPIです。
 
 ##### 必要権限
-`商品名:Product.Create`
+`サービス名:Product.Create`
 
 ##### リクエストパラメータ
 
@@ -961,8 +961,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   roleGroupType | String| Yes | ロールグループの種類<br><ul><li>ORG:プロジェクト共通ロールグループ</li><li>ORG_ROLE_GROUP:組織ロールグループ</li><li>PROJECT:プロジェクトロールグループ</li> |
 
 
-<a id="商品-階層-構造-照会"></a>
-#### 商品階層構造照会
+<a id="サービス-階層-構造-照会"></a>
+#### サービス階層構造照会
 
 > GET "/v1/product-uis/hierarchy"
 
@@ -970,7 +970,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 ##### 必要権限
 会員であれば、特定の権限なしで呼び出すことができるAPIです。
-ただし、組織商品を照会する場合は、その組織や組織の下にあるプロジェクトメンバーでなければなりません。
+ただし、組織サービスを照会する場合は、その組織や組織の下にあるプロジェクトメンバーでなければなりません。
 
 ##### リクエストパラメータ
 
@@ -978,8 +978,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |productUiType | String| Yes | 商品UIタイプ<br><ul><li>PROJECT:プロジェクト商品</li><li>ORG:組織商品</li><li>MARKET_PLACE:マーケットプレイス商品</li></ul> |
-|  Query |orgId | String| No | 商品UIタイプがORGの場合、組織IDを必ず入力する必要があります。 |
+|  Query |productUiType | String| Yes | サービスUIタイプ<br><ul><li>PROJECT:プロジェクトサービス</li><li>ORG:組織サービス</li><li>MARKET_PLACE:マーケットプレイスサービス</li></ul> |
+|  Query |orgId | String| No | サービスUIタイプがORGの場合、組織IDを必ず入力する必要があります。 |
 
 
 
@@ -1010,30 +1010,30 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes |
-|   productUiList | List&lt;ProductUiHierarchyProtocol>| Yes  | Webサイトカテゴリー商品UIリスト |
+|   productUiList | List&lt;ProductUiHierarchyProtocol>| Yes  | WebサイトカテゴリーサービスUIリスト |
 
 ###### ProductUiHierarchyProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   children | List&lt;ProductUiHierarchyProtocol>| No | Webサイトサービス商品UIリスト |
+|   children | List&lt;ProductUiHierarchyProtocol>| No | WebサイトサービスサービスUIリスト |
 |   manualLink | String| No|
-|   parentProductUiId | String| No| 商品UI区分 |
+|   parentProductUiId | String| No| サービスUI区分 |
 |   productId | String| No|
-|   productUiId | String| No| 商品UI識別キー |
+|   productUiId | String| No| サービスUI識別キー |
 |   productUiName | String| No|
 
 
-<a id="プロジェクトで-使用-中の-商品-照会"></a>
-#### プロジェクトで使用中の商品照会
+<a id="プロジェクトで-使用-中の-サービス-照会"></a>
+#### プロジェクトで使用中のサービス照会
 
 > GET "/v1/projects/{project-id}/products/{product-id}"
 
 * プロジェクトで使用中の特定サービス情報を照会するAPI
 
 ##### 必要権限
-`商品名:ProductAppKey.Get`
+`サービス名:ProductAppKey.Get`
 
 ##### リクエストパラメータ
 
@@ -1092,7 +1092,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   appKey | String| Yes | 該当プロジェクトで利用中のサービスのアプリキー情報 |
 |   externalId | String| No | テナントID<br>サービスにテナントIDが存在する場合にのみ提供 |
 |   productId | String| Yes | サービスID  |
-|   productName | String| Yes | 商品名 |
+|   productName | String| Yes | サービス名 |
 |   productSecretKeyCode | String| No | 秘密鍵使用有無<br>T:使用する<br>その他:使用しない(F, N) |
 |   productStatusCode | String| Yes | サービス状態(STABLE, CLOSED) |
 |   projectId | String| Yes | 該当サービスを使用するプロジェクトID  |
@@ -1549,7 +1549,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   orgId | String| Yes| プロジェクトが属する組織ID |
 |   projectId | String| Yes| プロジェクトID |
 |   projectName | String| Yes| プロジェクト名 |
-|   projectStatusCode | String| Yes   | プロジェクトの状態<br><ul><li>STABLE：正常に使用中の状態</li><li>CLOSED：支払いが完了し、プロジェクトが正常に閉じた状態</li><li>BLOCKED：管理者によって使用が禁止された状態</li><li>TERMINATED：延滞により、全てのリソースが削除された状態</li><li>DISABLED：全ての商品が閉じた状態であるが、値が支払われていない状態</li></ul> | 
+|   projectStatusCode | String| Yes   | プロジェクトの状態<br><ul><li>STABLE：正常に使用中の状態</li><li>CLOSED：支払いが完了し、プロジェクトが正常に閉じた状態</li><li>BLOCKED：管理者によって使用が禁止された状態</li><li>TERMINATED：延滞により、全てのリソースが削除された状態</li><li>DISABLED：全てのサービスが閉じた状態であるが、値が支払われていない状態</li></ul> | 
 |   regDateTime | Date| Yes| プロジェクト登録日時 |
 
 
@@ -2607,7 +2607,7 @@ IP ACL設定を照会するAPIです。
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
 |   ips | List&lt;String>| Yes  | 許可IP | 
-|   productId | String| Yes  | 商品ID<br>undefinedの場合、共通設定|
+|   productId | String| Yes  | サービスID<br>undefinedの場合、共通設定|
 
 <a id="組織-IAM-ログイン-セッション-設定-情報を-照会"></a>
 #### 組織IAMログインセッション設定情報を照会
@@ -2630,19 +2630,19 @@ IP ACL設定を照会するAPIです。
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
-    },
-    "result": {
-        "content": {
-            "multiSessionsLimit": 1,
-            "sessionTimeoutMinutes": 10,
-            "mobileSessionTimeoutMinutes": 10,
-            "sessionType": "fixed"
-        }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "content": {
+      "multiSessionsLimit": 1,
+      "sessionTimeoutMinutes": 10,
+      "mobileSessionTimeoutMinutes": 10,
+      "sessionType": "fixed"
     }
+  }
 }
 ```
 
@@ -2684,35 +2684,35 @@ IP ACL設定を照会するAPIです。
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
-    },
-    "result": {
-        "range": "organization",
-        "organizationMfaSetting": {
-            "type": "email",
-            "bypassByIp": {
-                "enable": true
-                "ipList": [
-                    "1.1.1.1",
-                    "1.1.1.1/24"
-                ]
-            }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "range": "organization",
+    "organizationMfaSetting": {
+      "type": "email",
+      "bypassByIp": {
+        "enable": true
+        "ipList": [
+          "1.1.1.1",
+          "1.1.1.1/24"
+        ]
+      }
         },
-        "serviceMfaSettings": [{
-            "serviceId": "{toast-service-id}",
-            "type": "totp",
-            "bypassByIp": {
-                "enable": true
-                "ipList": [
-                    "1.1.1.1",
-                    "1.1.1.1/24"
-                ]
-            }
-        }]
-    }
+    "serviceMfaSettings": [{
+      "serviceId": "{toast-service-id}",
+      "type": "totp",
+      "bypassByIp": {
+        "enable": true
+        "ipList": [
+          "1.1.1.1",
+          "1.1.1.1/24"
+        ]
+      }
+    }]
+  }
 }
 ```
 
@@ -2776,18 +2776,18 @@ IP ACL設定を照会するAPIです。
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
-    },
-    "result": {
-        "enable": false,
-        "loginFailCount": {
-            "limit": "5",
-            "blockMinutes": "2"
-        }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "enable": false,
+    "loginFailCount": {
+      "limit": "5",
+      "blockMinutes": "2"
     }
+  }
 }
 ```
 
@@ -2854,32 +2854,35 @@ IP ACL設定を照会するAPIです。
   "header": {
     "isSuccessful": true,
     "resultCode": 0,
-    "resultMessage": "resultMessage"
+    "resultMessage": ""
   },
-  "paging": {
-    "limit": 6,
-    "page": 1,
-    "totalCount": 5
-  },
-  "prices": [ {
-    "contractDiscountPolicyId": "jxzEL2C09G20oDX3",
-    "originalPrice": 0.8008281904610115,
-    "monthFrom": "monthFrom",
-    "displayNameJa": "displayNameJa",
-    "rangeFrom": 1.4658129805029452,
-    "monthTo": "monthTo",
-    "counterName": "counterName",
-    "slidingCalculationTypeCode": "NONE",
-    "rangeTo": 5.962133916683182,
-    "displayNameZh": "displayNameZh",
-    "price": 6.027456183070403,
-    "contractId": "3YVRwIVU",
-    "displayNameEn": "displayNameEn",
-    "displayNameKo": "displayNameKo",
-    "seq": 5,
-    "useFixPriceYn": "N"
-  } ]
-}
+  "result": {
+    "content": {
+      "schemaVersion": 1,
+      "value": {
+        "ruleType": "default",
+        "passwordConstraints": {
+          "minLength": 8,
+          "mustNotIncludeIllegalSequence": true,
+          "mustIncludeUpperCase": true,
+          "mustIncludeLowerCase": true,
+          "mustIncludeNumberCase": true,
+          "mustIncludeSpecialCase": true
+        },
+        "passwordExpiry": {
+          "enabled": true,
+          "expiryDays": 90,
+          "allowExpend": true
+        },
+        "limitPasswordReuse": {
+          "enabled": true,
+          "limitCount": 1
+        },
+        "applyRule": "onChangePassword"
+      }
+    }
+  }
+}      
 ```
 
 ###### レスポンス
@@ -2920,8 +2923,8 @@ IP ACL設定を照会するAPIです。
 |   slidingCalculationTypeCode | String| Yes | スライディング料金計算タイプ<br>NONE, SECTION_SUM, SECTION_SELECTED |
 |   useFixPriceYn | String| Yes | 固定金額かどうか(Y:固定金額、 N:単価計算)<br>Y:範囲に入る場合priceが金額になる<br>N: (使用量x単価)が金額になる |
 
-<a id="従量制に-登録された-商品-リスト-照会"></a>
-#### 従量制に登録された商品リスト照会
+<a id="従量制に-登録された-サービス-リスト-照会"></a>
+#### 従量制に登録されたサービスリスト照会
 
 > GET "/v1/billing/contracts/basic/products"
 
@@ -2985,7 +2988,7 @@ IP ACL設定を照会するAPIです。
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes   |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   products | List&lt;ProductMetadata>| Yes | 商品メタ情報リスト |
+|   products | List&lt;ProductMetadata>| Yes | サービスメタ情報リスト |
 
 
 ###### ProductMetadata
@@ -3007,10 +3010,10 @@ IP ACL設定を照会するAPIです。
 |   meterUnitCode | String| Yes | サービスでメータリング保存時の使用量単位<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
 |   minUsage | BigDecimal| Yes | 最小使用量 |
 |   parentCounterName | String| Yes | 親カウンター名 |
-|   productId | String| Yes | 商品ID  |
+|   productId | String| Yes | サービスID  |
 |   productMetadataStatusCode | String| Yes | カウンターステータスコードSTABLE, CLOSED |
 |   productUiId | String| Yes | Webサイトカテゴリー/Webサイトサービス識別ID  |
-|   regionTypeCode | String| Yes | カウンターネームが所属するリージョンコード<br><ul><li>GLOBAL: Global商品に属するカウンターネーム</li><li>NONE: GLOBALと同じ意味</li><li>KR1: KR1リージョンに属するカウンターネーム</li><li>KR2: KR2リージョンに属するカウンターネーム</li><li>...:該当リージョンに属するカウンターネーム</li><ul>  |
+|   regionTypeCode | String| Yes | カウンターネームが所属するリージョンコード<br><ul><li>GLOBAL: Globalサービスに属するカウンターネーム</li><li>NONE: GLOBALと同じ意味</li><li>KR1: KR1リージョンに属するカウンターネーム</li><li>KR2: KR2リージョンに属するカウンターネーム</li><li>...:該当リージョンに属するカウンターネーム</li><ul>  |
 |   unit | Long| Yes | 精算単位 |
 |   unitName | String| Yes | 請求書に表示する名前 |
 |   usageAggregationUnitCode | String| No | 使用量集計単位<br>RESOURCE_ID, COUNTER_NAME |
@@ -4057,28 +4060,28 @@ GET /v1/organizations
 <a id="組織追加"></a>
 #### 自分の組織の追加
 
-**[Method, URL]**
-```
-POST /v1/organizations
-```
+> POST /v1/organizations
+自身の組織を追加するAPIです。
 
 ##### 必要な権限
 会員であれば呼び出し可能なAPI
 
-**[Request Body]**
-```json
-{
-  "orgName": "organization-name"
-}
-```
+##### リクエストパラメータ
 
-**[Request Bodyの説明]**
+| 区分 | 名前 | タイプ | 必須 | 説明  |
+|------------- |------------- | ------------- | ------------- | ------------- | 
+| Request Body | request | [CreateOrgRequest](#createorgrequest)| Yes | リクエスト |
+
+
+###### CreateOrgRequest
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| orgName | String | Yes | 作成する組織名(最大120文字) |
+| orgName | String | Yes | 作成する組織名(最大70文字) |
 
-**[Response Body]**
+
+##### レスポンス本文
+
 ```json
 {
   "header": {
@@ -4097,14 +4100,14 @@ POST /v1/organizations
 }
 ```
 
-**[Response Bodyの説明]**
+###### レスポンス
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
 | header | [共通レスポンス](#レスポンス) | Yes | |
 | orgId | String | Yes | 組織ID |
 | orgName | String | Yes | 組織名 |
-| owner | Owner | Yes | 組織オーナー情報 |
+| owner | [Owner](#owner) | Yes | 組織オーナー情報 |
 
 ###### Owner
 
@@ -4119,21 +4122,21 @@ POST /v1/organizations
 <a id="組織個別削除"></a>
 #### 組織の個別削除
 
-**[Method, URL]**
-```
-DELETE /v1/organizations/{org-id}
-```
+> DELETE /v1/organizations/{org-id}
+自身の組織を削除するAPIです。
 
 ##### 必要な権限
 `Organization.Delete`
 
-**[Path Variable]**
+##### リクエストパラメータ
 
-| 名前 | 型 | 必須 | 説明 |
-|---|---|---|---|
-| org-id | String | Yes | 組織ID |
+| 区分 | 名前 | タイプ | 必須 | 説明  |
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | 組織ID |
 
-**[Response Body]**
+
+##### レスポンス本文
+
 ```json
 {
   "header": {
@@ -4144,11 +4147,76 @@ DELETE /v1/organizations/{org-id}
 }
 ```
 
-**[Response Bodyの説明]**
+###### レスポンス
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
 | header | [共通レスポンス](#レスポンス) | Yes | |
+
+
+<a id="サービス情報一覧照会"></a>
+#### サービス情報一覧照会
+
+> GET /v1/products
+提供されるサービス一覧を照会するAPIです。
+
+##### 必要な権限
+会員であれば呼び出し可能なAPI
+
+##### リクエストパラメータ
+
+| 区分 | 名前 | タイプ | 必須 | 説明  |
+|---|---|---|---|---|
+|  Query | productId | String | No | サービスID |
+|  Query | productCategoryCode | String | No | サービスカテゴリーコード(PROJECT、ORG、MARKET_PLACE) |
+|  Query | productName | String | No | サービス名 |
+|  Query | productNameLike | String | No | サービス名Like検索 |
+|  Query | limit | Integer| No | ページごとの表示件数、デフォルト値20 |
+|  Query | page | Integer| No | 対象ページ、デフォルト値1 |
+
+
+##### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 1,
+    "page": 1,
+    "totalCount": 1
+  },
+  "products": [
+    {
+      "parentProductId": "productId",
+      "productCategoryCode": "PROJECT",
+      "productId": "productId",
+      "productName": "productName"
+    }
+  ]
+}
+```
+
+###### レスポンス
+
+
+| 名前 | 型 | 必須 | 説明 |
+|---|---|---|---|
+| header | [共通レスポンス](#レスポンス) | Yes | |
+| paging | [PagingResponse](#pagingresponse)| Yes | |
+| products | List&lt;Product> | Yes | サービス情報一覧 |
+
+###### Product
+
+| 名前 | タイプ | 必須 | 説明 |
+|---|---|---|---|
+| parentProductId | String | No | 親サービスID |
+| productCategoryCode | String | Yes | サービスカテゴリーコード(PROJECT、ORG、MARKET_PLACE) |
+| productId | String | Yes | サービスID |
+| productName | String | Yes | サービス名 |
 
 
 ### エラーコード
