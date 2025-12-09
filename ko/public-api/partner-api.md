@@ -1149,6 +1149,9 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 !!! warning "정산 수행 시 주의사항"
     정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
 
+### 필요 권한
+`Partner.Hourly.Usage.List`
+
 ### 요청
 
 ```
@@ -1257,6 +1260,9 @@ POST /v1/billing/partners/{partnerId}/products/{productId}/usages/hourly/search
 
 !!! warning "정산 수행 시 주의사항"
     정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
+
+### 필요 권한
+`Partner.Daily.Usage.List`
 
 ### 요청
 
@@ -1367,6 +1373,9 @@ POST /v1/billing/partners/{partnerId}/products/{productId}/usages/daily/search
 !!! warning "정산 수행 시 주의사항"
     정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
 
+### 필요 권한
+`Partner.Monthly.Usage.List`
+
 ### 요청
 
 ```
@@ -1475,6 +1484,9 @@ POST /v1/billing/partners/{partnerId}/products/{productId}/usages/monthly/search
 !!! tip "솔루션 파트너 검증"
     솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여받은 사용자만 호출 가능합니다.
 
+### 필요 권한
+`Partner.Meter.Delete`
+
 ### 요청
 
 ```
@@ -1546,6 +1558,9 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 
 !!! tip "솔루션 파트너 검증"
     솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여받은 사용자만 호출 가능합니다.
+
+### 필요 권한
+`Partner.Meter.Delete`
 
 ### 요청
 
@@ -1991,6 +2006,9 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 
 미터링 정보를 조회합니다.
 
+### 필요 권한
+`Partner.Meter.List`
+
 ### 요청
 
 ```
@@ -2109,6 +2127,9 @@ POST /v1/billing/partners/{partnerId}/meters/search
 !!! warning "정산 수행 시 주의사항"
     정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
 
+### 필요 권한
+`Partner.Hourly.Usage.List`
+
 ### 요청
 
 ```
@@ -2222,6 +2243,9 @@ POST /v1/billing/partners/{partnerId}/usages/hourly/search
 !!! warning "정산 수행 시 주의사항"
     정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
 
+### 필요 권한
+`Partner.Daily.Usage.List`
+
 ### 요청
 
 ```
@@ -2333,6 +2357,9 @@ POST /v1/billing/partners/{partnerId}/usages/daily/search
 
 !!! warning "정산 수행 시 주의사항"
     정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
+
+### 필요 권한
+`Partner.Monthly.Usage.List`
 
 ### 요청
 
