@@ -2002,10 +2002,10 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 구분 | 이름 | 타입 | 필수 | 설명 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Path | org-id | String | Yes | 조회 대상 조직 ID |
-| Query | descriptionLike | String | No | 설명 |
-| Query | roleGroupNameLike | String | No | 역할 그룹명 |
-| Query | limit | Integer | No | 페이지당 표시 건수, 기본값 20 |
-| Query | page | Integer | No | 대상 페이지, 기본값 1 |
+| Query | descriptionLike | String | No | 설명 (해당 문자열이 포함된 결과 조회) |
+| Query | roleGroupNameLike | String | No | 역할 그룹명 (해당 문자열이 포함된 결과 조회) |
+| Query | limit | Integer | No | 페이지당 표시 건수 (기본값: 20, 최솟값: 1, 최댓값: 2000) |
+| Query | page | Integer | No | 대상 페이지 (기본값: 1, 최솟값: 1) |
 
 ##### 응답 본문
 
