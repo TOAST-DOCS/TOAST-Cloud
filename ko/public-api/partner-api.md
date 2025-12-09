@@ -1068,8 +1068,8 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
 | productId | Path | String | Y | 서비스 ID |
-| from | Query | String | Y | 조회 시작일(ISO 8601 형식, 포함) |
-| to | Query | String | Y | 조회 종료일(ISO 8601 형식, 미포함) |
+| from | Query | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
+| to | Query | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함) |
 | counterName | Query | String | Y | 카운터 이름 |
 | meterTimeTypeCode | Query | String | N | 미터 시간 타입 코드<br><br>- INSERT_TIME: 미터링 삽입 시간 기준<br>- USED_TIME: 미터링 발생 시간 기준 |
 | page | Query | Integer | Y | 선택한 페이지(최소: 1) |
@@ -1152,7 +1152,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 ### 요청
 
 ```
-POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/hourly/search
+POST /v1/billing/partners/{partnerId}/products/{productId}/usages/hourly/search
 ```
 
 ### 요청 파라미터
@@ -1242,7 +1242,7 @@ POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/hourly/searc
 | parentResourceId | String | 부모 리소스 ID |
 | productId | String | 서비스 ID |
 | projectId | String | 프로젝트 ID |
-| resourceId | String | 서비스에서 제공하는 리소스 ID |
+| resourceId | String | 리소스 ID |
 | resourceName | String | 리소스 이름 |
 | usage | BigDecimal | 사용량 |
 | usedTime | String | 사용 시각 |
@@ -1261,7 +1261,7 @@ POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/hourly/searc
 ### 요청
 
 ```
-POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/daily/search
+POST /v1/billing/partners/{partnerId}/products/{productId}/usages/daily/search
 ```
 
 ### 요청 파라미터
@@ -1351,7 +1351,7 @@ POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/daily/search
 | parentResourceId | String | 부모 리소스 ID |
 | productId | String | 서비스 ID |
 | projectId | String | 프로젝트 ID |
-| resourceId | String | 서비스에서 제공하는 리소스 ID |
+| resourceId | String | 리소스 ID |
 | resourceName | String | 리소스 이름 |
 | usage | BigDecimal | 사용량 |
 | usedTime | String | 사용 시각 |
@@ -1370,7 +1370,7 @@ POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/daily/search
 ### 요청
 
 ```
-POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/monthly/search
+POST /v1/billing/partners/{partnerId}/products/{productId}/usages/monthly/search
 ```
 
 ### 요청 파라미터
@@ -1460,7 +1460,7 @@ POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/monthly/sear
 | parentResourceId | String | 부모 리소스 ID |
 | productId | String | 서비스 ID |
 | projectId | String | 프로젝트 ID |
-| resourceId | String | 서비스에서 제공하는 리소스 ID |
+| resourceId | String | 리소스 ID |
 | resourceName | String | 리소스 이름 |
 | usage | BigDecimal | 사용량 |
 | usedTime | String | 사용 시각 |
@@ -1470,7 +1470,7 @@ POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/monthly/sear
 
 솔루션 파트너가 자신의 서비스에 대한 미터링을 삭제합니다.<br>
 이미 청구서가 생성된 이후의 미터링은 삭제를 해도 반영이 되지 않음을 유의해야 하며, 솔루션 파트너가 자신의 서비스 외에 다른 서비스들의 미터링을 삭제하는 것은 불가능합니다.<br>
-삭제는 오래 걸릴수 있는 작업이므로 비동기로 동작하며, 삭제 API 호출 이후 반환되 asyncJobId로 상태 조회를 하여 완료가 되었는지를 알 수 있습니다.
+삭제는 오래 걸릴수 있는 작업이므로 비동기로 동작하며, 삭제 API 호출 이후 반환된 asyncJobId로 상태 조회를 하여 완료가 되었는지를 알 수 있습니다.
 
 !!! tip "솔루션 파트너 검증"
     솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여받은 사용자만 호출 가능합니다.
@@ -1478,7 +1478,7 @@ POST /v1/billing/partners/{partner-id}/products/{product-id}/usages/monthly/sear
 ### 요청
 
 ```
-DELETE /v1/billing/partners/{partner-id}/products/{product-id}/meters
+DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 ```
 
 ### 요청 파라미터
@@ -1497,7 +1497,7 @@ DELETE /v1/billing/partners/{partner-id}/products/{product-id}/meters
 ```json
 {
   "from": "2023-12-01T10:00:00Z",
-  "to": "2023-12-01T10:00:00Z",
+  "to": "2023-12-02T10:00:00Z",
   "appKey": "string",
   "counterNames": [
     "string"
@@ -1541,7 +1541,7 @@ DELETE /v1/billing/partners/{partner-id}/products/{product-id}/meters
 ## 솔루션 파트너의 미터링 삭제 확인
 
 미터링 삭제 후 삭제가 완료되었는지 확인합니다.<br>
-삭제 API 호출 후 5 초 이후 호출하는 것이 안전하며, 바로 호출하게 되면 싫패할 수 있으니 주의가 필요합니다.<br>
+삭제 API 호출 후 5초 이후 호출하는 것이 안전하며, 바로 호출하게 되면 실패할 수 있으니 주의가 필요합니다.<br>
 이후 5초 주기로 호출하여 상태를 확인하는 것을 권장합니다.
 
 !!! tip "솔루션 파트너 검증"
@@ -1550,7 +1550,7 @@ DELETE /v1/billing/partners/{partner-id}/products/{product-id}/meters
 ### 요청
 
 ```
-GET /v1/billing/partners/{partner-id}/meters/jobs/{async-job-id}
+GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 ```
 
 ### 요청 파라미터
@@ -1994,7 +1994,7 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 ### 요청
 
 ```
-POST /v1/billing/partners/{partner-id}/meters/search
+POST /v1/billing/partners/{partnerId}/meters/search
 ```
 
 ### 요청 파라미터
@@ -2014,7 +2014,7 @@ POST /v1/billing/partners/{partner-id}/meters/search
 ```json
 {
   "from": "2023-12-01T10:00:00Z",
-  "to": "2023-12-01T10:00:00Z",
+  "to": "2023-12-02T10:00:00Z",
   "appKeys": [
     "string"
   ],
@@ -2093,7 +2093,7 @@ POST /v1/billing/partners/{partner-id}/meters/search
 | parentResourceId | String | 부모 리소스 ID |
 | productId | String | 서비스 ID |
 | projectId | String | 프로젝트 ID |
-| resourceId | String | 서비스에서 제공하는 리소스 ID |
+| resourceId | String | 리소스 ID |
 | resourceName | String | 리소스 이름 |
 | stationId | String | 스테이션 ID |
 | timestamp | String | 사용한 시간 |
@@ -2112,7 +2112,7 @@ POST /v1/billing/partners/{partner-id}/meters/search
 ### 요청
 
 ```
-POST /v1/billing/partners/{partner-id}/usages/hourly/search
+POST /v1/billing/partners/{partnerId}/usages/hourly/search
 ```
 
 ### 요청 파라미터
@@ -2132,7 +2132,7 @@ POST /v1/billing/partners/{partner-id}/usages/hourly/search
 ```json
 {
   "from": "2023-12-01T10:00:00Z",
-  "to": "2023-12-01T10:00:00Z",
+  "to": "2023-12-01T20:00:00Z",
   "counterNames": [
     "string"
   ],
@@ -2225,7 +2225,7 @@ POST /v1/billing/partners/{partner-id}/usages/hourly/search
 ### 요청
 
 ```
-POST /v1/billing/partners/{partner-id}/usages/daily/search
+POST /v1/billing/partners/{partnerId}/usages/daily/search
 ```
 
 ### 요청 파라미터
@@ -2244,8 +2244,8 @@ POST /v1/billing/partners/{partner-id}/usages/daily/search
 
 ```json
 {
-  "from": "2023-12-01T10:00:00Z",
-  "to": "2023-12-01T10:00:00Z",
+  "from": "2023-12-01T00:00:00Z",
+  "to": "2023-12-02T00:00:00Z",
   "counterNames": [
     "string"
   ],
@@ -2337,7 +2337,7 @@ POST /v1/billing/partners/{partner-id}/usages/daily/search
 ### 요청
 
 ```
-POST /v1/billing/partners/{partner-id}/usages/monthly/search
+POST /v1/billing/partners/{partnerId}/usages/monthly/search
 ```
 
 ### 요청 파라미터
@@ -2356,8 +2356,8 @@ POST /v1/billing/partners/{partner-id}/usages/monthly/search
 
 ```json
 {
-  "from": "2023-12-01T10:00:00Z",
-  "to": "2023-12-01T10:00:00Z",
+  "from": "2023-11-01T00:00:00Z",
+  "to": "2023-12-01T00:00:00Z",
   "counterNames": [
     "string"
   ],
