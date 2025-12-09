@@ -132,6 +132,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | POST | [/v1/organizations](#자신의-조직-추가) | 자신의 조직 추가 |
 | DELETE | [/v1/organizations/{org-id}](#조직-단건-삭제) | 조직 단건 삭제 |
 | GET | [/v1/products](#서비스-정보-목록-조회) | 서비스 정보 목록 조회 |
+| GET | [/v1/messages/role](#역할-설명-다국어-조회) | 역할 설명 다국어 조회 |
 
 
 
@@ -1605,7 +1606,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   governanceTypeCode | String| No | 거버넌스 타입  |
+|   governanceTypeCode | String| No | 거버넌스 타입<br>- APPROVE_PROCESS: 승인 처리<br>- BLOCK_STORAGE_SNAPSHOT: BlockStorage의 Snapshot 기능 사용 여부<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAAS 리소스 권한 통제 및 접속 단말 제한 설정<br>- PRIVACY_PROTECTION: 개인 정보 보호<br>- UNIQUE_INSTANCE_NAME: 인스턴스명 중복 방지 |
 |   regDatetime | Date| No | 거버넌스 사용 설정 일시  |
 
 
@@ -1977,8 +1978,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-<a id="조직-멤버-역할-변경"></a>
-#### 조직 멤버 역할 변경
+<a id="조직-멤버-역할-수정"></a>
+#### 조직 멤버 역할 수정
 
 > PUT "/v1/organizations/{org-id}/members/{member-uuid}"
 
@@ -2932,7 +2933,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 
 ##### 필요 권한
-회원이면 호출 가능한 API
+회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
 ##### 요청 파라미터
 
@@ -3036,7 +3037,7 @@ IP ACL 설정을 조회하는 API입니다.
 청구서에 노출되는 메인 카테고리와 서브 카테고리 및 포함되는 카운터의 목록을 제공하는 API입니다.
 
 ##### 필요 권한
-회원이면 호출 가능한 API
+회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
 ##### 요청 파라미터
 
@@ -3191,7 +3192,7 @@ IP ACL 설정을 조회하는 API입니다.
 멤버의 User Access Key ID 목록을 조회하는 API입니다.
 
 ##### 필요 권한
-회원이면 호출 가능한 API
+회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
 
 ##### 응답 본문
@@ -3311,7 +3312,7 @@ IP ACL 설정을 조회하는 API입니다.
 멤버의 User Access Key ID를 등록하는 API입니다.
 
 ##### 필요 권한
-회원이면 호출 가능한 API
+회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
 ##### 요청 파라미터
 
@@ -4058,7 +4059,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 > GET /v1/organizations
 
 ##### 필요 권한
-회원이면 호출 가능한 API
+회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
 **[Query Parameter]**
 
@@ -4169,7 +4170,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | domainName | String | Yes | 조직 도메인 이름 |
 
 
-<a id="조직-추가"></a>
+<a id="자신의-조직-추가"></a>
 #### 자신의 조직 추가
 
 > POST /v1/organizations
@@ -4177,7 +4178,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 자신의 조직을 추가하는 API입니다.
 
 ##### 필요 권한
-회원이면 호출 가능한 API
+회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
 ##### 요청 파라미터
 
@@ -4277,7 +4278,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 제공되는 서비스 목록들을 조회하는 API입니다.
 
 ##### 필요 권한
-회원이면 호출 가능한 API
+회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
 ##### 요청 파라미터
 
@@ -4333,6 +4334,83 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | productCategoryCode | String | Yes | 서비스 카테고리 코드(PROJECT, ORG, MARKET_PLACE) |
 | productId | String | Yes | 서비스 ID |
 | productName | String | Yes | 서비스 이름 |
+
+
+<a id="역할-설명-다국어-조회"></a>
+#### 역할 설명 다국어 조회
+
+> GET /v1/messages/role
+
+역할의 다국어 목록을 가져오는 API입니다.
+
+##### 필요 권한
+회원이면 특정한 권한 없이 호출 가능한 API입니다.
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+| Query |messageType | String| No | 메시지 타입<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
+| Query |languages | List&lt;String>| No | 언어<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
+| Query |keyword | String| No | 검색 키워드 |
+| Query |messageId | String| No | 메시지 ID |
+| Query |limit | Integer| Yes | 페이지당 표시 건수 | 
+| Query |page | Integer| Yes | 대상 페이지 |
+
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "messages": [
+    {
+      "i18nMessageSeq": 0,
+      "categoryId": "categoryId",
+      "messageId": "messageId",
+      "messageType": "MESSAGE",
+      "description": "description",
+      "koKr": "한국어 메시지",
+      "enUs": "English message",
+      "jaJp": "日本語メッセージ",
+      "zhCn": "中文消息"
+    }
+  ],
+  "paging": {
+    "limit": 10,
+    "page": 1,
+    "totalCount": 100
+  }
+}
+```
+
+###### 응답
+
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| header | [공통 응답](#응답) | Yes | |
+| messages | List&lt;MessageProtocol> | Yes | 메시지 목록 |
+| paging | [PagingResponse](#pagingresponse)| Yes | |
+
+###### MessageProtocol
+
+| 이름 | 타입 | 필수 | 설명 |
+|---|---|---|---|
+| i18nMessageSeq | Long | No | 메시지 순번 |
+| categoryId | String | No | 카테고리 ID |
+| messageId | String | No | 메시지 ID |
+| messageType | String | No | 메시지 타입(MESSAGE, ERROR) |
+| description | String | No | 설명 |
+| koKr | String | No | 한국어 메시지 |
+| enUs | String | No | 영어 메시지 |
+| jaJp | String | No | 일본어 메시지 |
+| zhCn | String | No | 중국어 메시지 |
+
 
 ### 오류 코드
 
