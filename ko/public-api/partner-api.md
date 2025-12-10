@@ -2002,7 +2002,7 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | displayNameZh | String | 청구서 노출명(중국어) |
 
 
-## 파트너 혹은 파트너 유저의 활성화된 조직/프로젝트 상품 미터링 조회
+## 파트너 혹은 파트너 사용자의 활성화된 조직/프로젝트 상품 미터링 조회
 
 미터링 정보를 조회합니다.
 
