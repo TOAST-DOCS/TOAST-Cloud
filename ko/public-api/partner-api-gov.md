@@ -515,10 +515,10 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | projectId | Path | String | Y | 프로젝트 ID |
 | lang | Header | String | N | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US) |
 | usageSchemaTypeCode | Query | String | N | 사용량 포함여부<br>사용량 조회방식을 기존방식으로 할지, 신규 그룹핑된 방식으로 할지 결정<br>(기본값: NO_GROUP)<br><br>- NO_GROUP: 사용량이 그룹핑되지 않고 그대로 노출되는 방식 <br>- GROUP_BY_PARENT_RESOURCE: 부모 리소스 별로 그룹핑은 되지만 구체적인 사용량은 제공하지 않는 방식. 반환되는 totalItems를 통해 부모 리소스가 몇개 존재하는지 확인 가능<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES: 부모 리소스 별로 그룹핑 후 어떤 부모 리소스로 그룹핑 되었는지와 그 세부 사용량까지 제공되는 방식 |
-| page | Query | Integer | N | 선택한 페이지(기본값: 1, 최소: 1)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
-| itemsPerPage | Query | Integer | N | 페이지에 노출될 항목 개수, 미기입 시 전체 조회(최소: 0)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
 | categoryMain | Query | String | N | 메인 카테고리<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
 | regionTypeCode | Query | String | N | 리전 타입 코드(최대 20자)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
+| page | Query | Integer | N | 선택한 페이지(기본값: 1, 최소: 1)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
+| limit | Query | Integer | N | 페이지에 노출될 항목 개수, 미기입 시 전체 조회(기본값: 0, 최소:0)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
 
 ### 요청 본문
 
@@ -1068,8 +1068,8 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | 파트너 ID |
 | productId | Path | String | Y | 서비스 ID |
-| from | Query | String | Y | 조회 시작일(yyyy-MM-ddThh:mm:ss.sssZ, 포함) |
-| to | Query | String | Y | 조회 종료일(yyyy-MM-ddThh:mm:ss.sssZ, 미포함) |
+| from | Query | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
+| to | Query | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함) |
 | counterName | Query | String | Y | 카운터 이름 |
 | meterTimeTypeCode | Query | String | N | 미터 시간 타입 코드<br><br>- INSERT_TIME: 미터링 삽입 시간 기준<br>- USED_TIME: 미터링 발생 시간 기준 |
 | page | Query | Integer | Y | 선택한 페이지(최소: 1) |
@@ -1138,6 +1138,469 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | stationId | String | 스테이션 ID |
 | timestamp | String | 미터링 발생 시각 |
 
+
+## 솔루션 파트너의 시간별 사용량 조회
+
+솔루션 파트너가 자신의 서비스에 대한 시간별 사용량 정보를 조회합니다.
+
+!!! tip "솔루션 파트너 검증"
+    솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여받은 사용자만 호출 가능합니다.
+
+!!! warning "정산 수행 시 주의사항"
+    정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
+
+### 필요 권한
+`Partner.Hourly.Usage.List`
+
+### 요청
+
+```
+POST /v1/billing/partners/{partnerId}/products/{productId}/usages/hourly/search
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| productId | Path | String | Y | 서비스 ID |
+| page | Query | Integer | N | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+
+### 요청 본문
+
+<details>
+  <summary><strong>예시 코드</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T10:00:00Z",
+  "to": "2023-12-01T19:00:00Z",
+  "counterNames": [
+    "string"
+  ],
+  "orgIds": [
+    "string"
+  ],
+  "projectIds": [
+    "string"
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| from | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
+| to | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함)<br>from과 같은 날이어야 함 |
+| counterNames | List&lt;String&gt; | N | 카운터 이름 목록<br>솔루션 파트너의 상품에 포함된 카운터 이름들만 조회 가능하며, 다른 상품의 카운터 이름들은 조회 불가능 |
+| orgIds | List&lt;String&gt; | N | 조직 ID 목록 |
+| projectIds | List&lt;String&gt; | N | 프로젝트 ID 목록 |
+
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "totalCount": 0,
+  "usages": [
+    {
+      "counterName": "string",
+      "counterType": "string",
+      "parentResourceId": "string",
+      "productId": "string",
+      "projectId": "string",
+      "resourceId": "string",
+      "resourceName": "string",
+      "usage": 0,
+      "usedTime": "string"
+    }
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| totalCount | Integer | 총 개수 |
+| usages | List&lt;Usage&gt; | 사용량 목록 |
+
+**Usage**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| counterName | String | 카운터 이름 |
+| counterType | String | 카운터 타입<br><br>- DELTA: 증분 값<br>- GAUGE: 현재 값<br>- HOURLY_LATEST: 시간별 최신 값<br>- DAILY_MAX: 일별 최댓값<br>- MONTHLY_MAX: 월별 최댓값<br>- STATUS: 상태 값 |
+| parentResourceId | String | 부모 리소스 ID |
+| productId | String | 서비스 ID |
+| projectId | String | 프로젝트 ID |
+| resourceId | String | 리소스 ID |
+| resourceName | String | 리소스 이름 |
+| usage | BigDecimal | 사용량 |
+| usedTime | String | 사용 시각 |
+
+
+## 솔루션 파트너의 일별 사용량 조회
+
+솔루션 파트너가 자신의 서비스에 대한 일별 사용량 정보를 조회합니다.
+
+!!! tip "솔루션 파트너 검증"
+    솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여받은 사용자만 호출 가능합니다.
+
+!!! warning "정산 수행 시 주의사항"
+    정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
+
+### 필요 권한
+`Partner.Daily.Usage.List`
+
+### 요청
+
+```
+POST /v1/billing/partners/{partnerId}/products/{productId}/usages/daily/search
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| productId | Path | String | Y | 서비스 ID |
+| page | Query | Integer | N | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+
+### 요청 본문
+
+<details>
+  <summary><strong>예시 코드</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T00:00:00Z",
+  "to": "2023-12-02T00:00:00Z",
+  "counterNames": [
+    "string"
+  ],
+  "orgIds": [
+    "string"
+  ],
+  "projectIds": [
+    "string"
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| from | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
+| to | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함)<br>from과 하루 차이가 나야함 |
+| counterNames | List&lt;String&gt; | N | 카운터 이름 목록<br>솔루션 파트너의 상품에 포함된 카운터 이름들만 조회 가능하며, 다른 상품의 카운터 이름들은 조회 불가능 |
+| orgIds | List&lt;String&gt; | N | 조직 ID 목록 |
+| projectIds | List&lt;String&gt; | N | 프로젝트 ID 목록 |
+
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "totalCount": 0,
+  "usages": [
+    {
+      "counterName": "string",
+      "counterType": "string",
+      "parentResourceId": "string",
+      "productId": "string",
+      "projectId": "string",
+      "resourceId": "string",
+      "resourceName": "string",
+      "usage": 0,
+      "usedTime": "string"
+    }
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| totalCount | Integer | 총 개수 |
+| usages | List&lt;Usage&gt; | 사용량 목록 |
+
+**Usage**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| counterName | String | 카운터 이름 |
+| counterType | String | 카운터 타입<br><br>- DELTA: 증분 값<br>- GAUGE: 현재 값<br>- HOURLY_LATEST: 시간별 최신 값<br>- DAILY_MAX: 일별 최댓값<br>- MONTHLY_MAX: 월별 최댓값<br>- STATUS: 상태 값 |
+| parentResourceId | String | 부모 리소스 ID |
+| productId | String | 서비스 ID |
+| projectId | String | 프로젝트 ID |
+| resourceId | String | 리소스 ID |
+| resourceName | String | 리소스 이름 |
+| usage | BigDecimal | 사용량 |
+| usedTime | String | 사용 시각 |
+
+
+## 솔루션 파트너의 월별 사용량 조회
+
+솔루션 파트너가 자신의 서비스에 대한 월별 사용량 정보를 조회합니다.
+
+!!! tip "솔루션 파트너 검증"
+    솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여받은 사용자만 호출 가능합니다.
+
+!!! warning "정산 수행 시 주의사항"
+    정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
+
+### 필요 권한
+`Partner.Monthly.Usage.List`
+
+### 요청
+
+```
+POST /v1/billing/partners/{partnerId}/products/{productId}/usages/monthly/search
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| productId | Path | String | Y | 서비스 ID |
+| page | Query | Integer | N | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+
+### 요청 본문
+
+<details>
+  <summary><strong>예시 코드</strong></summary>
+
+```json
+{
+  "from": "2023-11-01T00:00:00Z",
+  "to": "2023-12-01T00:00:00Z",
+  "counterNames": [
+    "string"
+  ],
+  "orgIds": [
+    "string"
+  ],
+  "projectIds": [
+    "string"
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| from | String | Y | 조회 시작 시간(ISO 8601 형식, 포함)<br>해당 달의 1일로 설정되어야 함 |
+| to | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함)<br>from과 한달 차이가 나야하며, 해당 달의 1일로 설정되어야 함 |
+| counterNames | List&lt;String&gt; | N | 카운터 이름 목록<br>솔루션 파트너의 상품에 포함된 카운터 이름들만 조회 가능하며, 다른 상품의 카운터 이름들은 조회 불가능 |
+| orgIds | List&lt;String&gt; | N | 조직 ID 목록 |
+| projectIds | List&lt;String&gt; | N | 프로젝트 ID 목록 |
+
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "totalCount": 0,
+  "usages": [
+    {
+      "counterName": "string",
+      "counterType": "string",
+      "parentResourceId": "string",
+      "productId": "string",
+      "projectId": "string",
+      "resourceId": "string",
+      "resourceName": "string",
+      "usage": 0,
+      "usedTime": "string"
+    }
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| totalCount | Integer | 총 개수 |
+| usages | List&lt;Usage&gt; | 사용량 목록 |
+
+**Usage**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| counterName | String | 카운터 이름 |
+| counterType | String | 카운터 타입<br><br>- DELTA: 증분 값<br>- GAUGE: 현재 값<br>- HOURLY_LATEST: 시간별 최신 값<br>- DAILY_MAX: 일별 최댓값<br>- MONTHLY_MAX: 월별 최댓값<br>- STATUS: 상태 값 |
+| parentResourceId | String | 부모 리소스 ID |
+| productId | String | 서비스 ID |
+| projectId | String | 프로젝트 ID |
+| resourceId | String | 리소스 ID |
+| resourceName | String | 리소스 이름 |
+| usage | BigDecimal | 사용량 |
+| usedTime | String | 사용 시각 |
+
+
+## 솔루션 파트너의 미터링 삭제
+
+솔루션 파트너가 자신의 서비스에 대한 미터링을 삭제합니다.<br>
+이미 청구서가 생성된 이후의 미터링은 삭제를 해도 반영이 되지 않음을 유의해야 하며, 솔루션 파트너가 자신의 서비스 외에 다른 서비스들의 미터링을 삭제하는 것은 불가능합니다.<br>
+삭제는 오래 걸릴수 있는 작업이므로 비동기로 동작하며, 삭제 API 호출 이후 반환된 asyncJobId로 상태 조회를 하여 완료가 되었는지를 알 수 있습니다.
+
+!!! tip "솔루션 파트너 검증"
+    솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여받은 사용자만 호출 가능합니다.
+
+### 필요 권한
+`Partner.Meter.Delete`
+
+### 요청
+
+```
+DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| productId | Path | String | Y | 서비스 ID |
+
+
+### 요청 본문
+
+<details>
+  <summary><strong>예시 코드</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T10:00:00Z",
+  "to": "2023-12-02T10:00:00Z",
+  "appKey": "string",
+  "counterNames": [
+    "string"
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| from | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
+| to | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함) |
+| appKey | String | N | 상품 앱키 |
+| counterNames | List&lt;String&gt; | N | 삭제할 카운터 이름 목록 |
+
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "asyncJobId": "string",
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  }
+}
+```
+
+</details>
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| asyncJobId | String | 실행한 비동기 작업의 ID |
+
+
+## 솔루션 파트너의 미터링 삭제 확인
+
+미터링 삭제 후 삭제가 완료되었는지 확인합니다.<br>
+삭제 API 호출 후 5초 이후 호출하는 것이 안전하며, 바로 호출하게 되면 실패할 수 있으니 주의가 필요합니다.<br>
+이후 5초 주기로 호출하여 상태를 확인하는 것을 권장합니다.
+
+!!! tip "솔루션 파트너 검증"
+    솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여받은 사용자만 호출 가능합니다.
+
+### 필요 권한
+`Partner.Meter.Delete`
+
+### 요청
+
+```
+GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| asyncJobId | Path | String | Y | 실행한 비동기 작업의 ID |
+
+
+### 요청 본문
+
+이 API는 요청 본문을 요구하지 않습니다.
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "statusCode": "IN_PROGRESS"
+}
+```
+
+</details>
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| statusCode | String | 삭제 상태 (IN_PROGRESS: 삭제 진행 중, ERROR: 삭제 중 에러 발생, SUCCESS: 삭제 성공) |
 
 ## 파트너 사용자의 조직 생성
 
@@ -1242,6 +1705,468 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 
 </details>
 
+
+## 파트너 혹은 파트너 사용자의 활성화된 조직/프로젝트 상품 미터링 조회
+
+미터링 정보를 조회합니다.
+
+### 필요 권한
+`Partner.Meter.List`
+
+### 요청
+
+```
+POST /v1/billing/partners/{partnerId}/meters/search
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| page | Query | Integer | N | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+
+### 요청 본문
+
+<details>
+  <summary><strong>예시 코드</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T10:00:00Z",
+  "to": "2023-12-02T10:00:00Z",
+  "appKeys": [
+    "string"
+  ],
+  "counterNames": [
+    "string"
+  ],
+  "meterTimeTypeCode": "INSERT_TIME"
+}
+```
+
+</details>
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| from | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
+| to | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함) |
+| appKeys | List&lt;String&gt; | N | 앱키 목록<br>앱키, 혹은 카운터 이름 중 하나는 반드시 있어야 함 |
+| counterNames | List&lt;String&gt; | N | 카운터 이름 목록<br>앱키, 혹은 카운터 이름 중 하나는 반드시 있어야 함 |
+| meterTimeTypeCode | String | N | 미터 시간 타입 코드<br>from, to에 대해서 사용 시간으로 검색을 할지, 아니면 요청이 인입된 시간으로 검색을 할지 결정<br>(USED_TIME: 사용 시간(기본값), INSERT_TIME: 인입된 시간) |
+
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "meterList": [
+    {
+      "appKey": "string",
+      "counterName": "string",
+      "counterType": "DELTA",
+      "counterUnit": "string",
+      "counterValue": "string",
+      "counterVolume": 0,
+      "insertTime": "2023-12-01T10:00:00Z",
+      "orgId": "string",
+      "parentResourceId": "string",
+      "productId": "string",
+      "projectId": "string",
+      "resourceId": "string",
+      "resourceName": "string",
+      "stationId": "string",
+      "timestamp": "2023-12-01T10:00:00Z"
+    }
+  ],
+  "totalItems": 0
+}
+```
+
+</details>
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| meterList | List&lt;MeterProtocol&gt; | 미터링 목록 |
+| totalItems | Integer | 총 개수 |
+
+**MeterProtocol**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appKey | String | 앱키 |
+| counterName | String | 카운터 이름 |
+| counterType | String | 카운터 타입<br><br>- DELTA: 증분 값<br>- GAUGE: 현재 값<br>- HOURLY_LATEST: 시간별 최신 값<br>- DAILY_MAX: 일별 최댓값<br>- MONTHLY_MAX: 월별 최댓값<br>- STATUS: 상태 값 |
+| counterUnit | String | 사용량 단위 (KB, HOUR 등) |
+| counterValue | String | 사용현황<br>카운터 타입이 STATUS인 경우에만 사용 |
+| counterVolume | BigDecimal | 사용량 |
+| insertTime | String | 서비스에서 빌링 시스템으로 보낸 시간 |
+| orgId | String | 조직 ID |
+| parentResourceId | String | 부모 리소스 ID |
+| productId | String | 서비스 ID |
+| projectId | String | 프로젝트 ID |
+| resourceId | String | 리소스 ID |
+| resourceName | String | 리소스 이름 |
+| stationId | String | 스테이션 ID |
+| timestamp | String | 사용한 시간 |
+
+
+## 파트너의 시간별 사용량 조회
+
+파트너가 자신이 접근 가능한 조직 및 프로젝트 서비스의 시간별 사용량 정보를 조회합니다.
+
+!!! info "파트너 계약 검증"
+    해당 파트너와 파트너 사용자가 조회 기간에 파트너 계약을 맺은 상태였는지 확인합니다.
+
+!!! warning "정산 수행 시 주의사항"
+    정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
+
+### 필요 권한
+`Partner.Hourly.Usage.List`
+
+### 요청
+
+```
+POST /v1/billing/partners/{partnerId}/usages/hourly/search
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| page | Query | Integer | N | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+
+### 요청 본문
+
+<details>
+  <summary><strong>예시 코드</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T10:00:00Z",
+  "to": "2023-12-01T20:00:00Z",
+  "counterNames": [
+    "string"
+  ],
+  "orgIds": [
+    "string"
+  ],
+  "projectIds": [
+    "string"
+  ],
+  "productIds": [
+    "string"
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| from | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
+| to | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함) |
+| counterNames | List&lt;String&gt; | N | 카운터 이름 목록 |
+| orgIds | List&lt;String&gt; | N | 조직 ID 목록<br>프로젝트 ID나 조직 ID 중 하나는 반드시 있어야 함 |
+| projectIds | List&lt;String&gt; | N | 프로젝트 ID 목록<br>프로젝트 ID나 조직 ID 중 하나는 반드시 있어야 함 |
+| productIds | List&lt;String&gt; | N | 서비스 ID 목록 |
+
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "totalCount": 0,
+  "usages": [
+    {
+      "counterName": "string",
+      "counterType": "string",
+      "parentResourceId": "string",
+      "productId": "string",
+      "projectId": "string",
+      "resourceId": "string",
+      "resourceName": "string",
+      "usage": 0,
+      "usedTime": "string"
+    }
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| totalCount | Integer | 총 개수 |
+| usages | List&lt;Usage&gt; | 사용량 목록 |
+
+**Usage**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| counterName | String | 카운터 이름 |
+| counterType | String | 카운터 타입<br><br>- DELTA: 증분 값<br>- GAUGE: 현재 값<br>- HOURLY_LATEST: 시간별 최신 값<br>- DAILY_MAX: 일별 최댓값<br>- MONTHLY_MAX: 월별 최댓값<br>- STATUS: 상태 값 |
+| parentResourceId | String | 부모 리소스 ID |
+| productId | String | 서비스 ID |
+| projectId | String | 프로젝트 ID |
+| resourceId | String | 리소스 ID |
+| resourceName | String | 리소스 이름 |
+| usage | BigDecimal | 사용량 |
+| usedTime | String | 사용 시각 |
+
+
+
+## 파트너의 일별 사용량 조회
+
+파트너가 자신이 접근 가능한 조직 및 프로젝트 서비스의 일별 사용량 정보를 조회합니다.
+
+!!! info "파트너 계약 검증"
+    해당 파트너와 파트너 사용자가 조회 기간에 파트너 계약을 맺은 상태였는지 확인합니다.
+
+!!! warning "정산 수행 시 주의사항"
+    정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
+
+### 필요 권한
+`Partner.Daily.Usage.List`
+
+### 요청
+
+```
+POST /v1/billing/partners/{partnerId}/usages/daily/search
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | 파트너 ID |
+| page | Query | Integer | N | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+
+### 요청 본문
+
+<details>
+  <summary><strong>예시 코드</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T00:00:00Z",
+  "to": "2023-12-02T00:00:00Z",
+  "counterNames": [
+    "string"
+  ],
+  "orgIds": [
+    "string"
+  ],
+  "projectIds": [
+    "string"
+  ],
+  "productIds": [
+    "string"
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| from | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
+| to | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함) |
+| counterNames | List&lt;String&gt; | N | 카운터 이름 목록 |
+| orgIds | List&lt;String&gt; | N | 조직 ID 목록<br>프로젝트 ID나 조직 ID 중 하나는 반드시 있어야 함 |
+| projectIds | List&lt;String&gt; | N | 프로젝트 ID 목록<br>프로젝트 ID나 조직 ID 중 하나는 반드시 있어야 함 |
+| productIds | List&lt;String&gt; | N | 서비스 ID 목록 |
+
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "totalCount": 0,
+  "usages": [
+    {
+      "counterName": "string",
+      "counterType": "string",
+      "parentResourceId": "string",
+      "productId": "string",
+      "projectId": "string",
+      "resourceId": "string",
+      "resourceName": "string",
+      "usage": 0,
+      "usedTime": "string"
+    }
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| totalCount | Integer | 총 개수 |
+| usages | List&lt;Usage&gt; | 사용량 목록 |
+
+**Usage**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| counterName | String | 카운터 이름 |
+| counterType | String | 카운터 타입<br><br>- DELTA: 증분 값<br>- GAUGE: 현재 값<br>- HOURLY_LATEST: 시간별 최신 값<br>- DAILY_MAX: 일별 최댓값<br>- MONTHLY_MAX: 월별 최댓값<br>- STATUS: 상태 값 |
+| parentResourceId | String | 부모 리소스 ID |
+| productId | String | 서비스 ID |
+| projectId | String | 프로젝트 ID |
+| resourceId | String | 리소스 ID |
+| resourceName | String | 리소스 이름 |
+| usage | BigDecimal | 사용량 |
+| usedTime | String | 사용 시각 |
+
+
+## 파트너의 월별 사용량 조회
+
+파트너가 자신이 접근 가능한 조직 및 프로젝트 서비스의 월별 사용량 정보를 조회합니다.
+
+!!! info "파트너 계약 검증"
+    해당 파트너와 파트너 사용자가 조회 기간에 파트너 계약을 맺은 상태였는지 확인합니다.
+
+!!! warning "정산 수행 시 주의사항"
+    정산 수행 시에는 부정확한 데이터를 조회할 수 있음을 유의해야 합니다.
+
+### 필요 권한
+`Partner.Monthly.Usage.List`
+
+### 요청
+
+```
+POST /v1/billing/partners/{partnerId}/usages/monthly/search
+```
+
+### 요청 파라미터
+
+| 이름 | 구분 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y |  |
+| page | Query | Integer | N | 선택한 페이지(최소: 1) |
+| limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+
+### 요청 본문
+
+<details>
+  <summary><strong>예시 코드</strong></summary>
+
+```json
+{
+  "from": "2023-11-01T00:00:00Z",
+  "to": "2023-12-01T00:00:00Z",
+  "counterNames": [
+    "string"
+  ],
+  "orgIds": [
+    "string"
+  ],
+  "projectIds": [
+    "string"
+  ],
+  "productIds": [
+    "string"
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| from | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
+| to | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함) |
+| counterNames | List&lt;String&gt; | N | 카운터 이름 목록 |
+| orgIds | List&lt;String&gt; | N | 조직 ID 목록<br>프로젝트 ID나 조직 ID 중 하나는 반드시 있어야 함 |
+| projectIds | List&lt;String&gt; | N | 프로젝트 ID 목록<br>프로젝트 ID나 조직 ID 중 하나는 반드시 있어야 함 |
+| productIds | List&lt;String&gt; | N | 서비스 ID 목록 |
+
+
+### 응답
+
+<details>
+  <summary><strong>응답 예시</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "totalCount": 0,
+  "usages": [
+    {
+      "counterName": "string",
+      "counterType": "string",
+      "parentResourceId": "string",
+      "productId": "string",
+      "projectId": "string",
+      "resourceId": "string",
+      "resourceName": "string",
+      "usage": 0,
+      "usedTime": "string"
+    }
+  ]
+}
+```
+
+</details>
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| totalCount | Integer | 총 개수 |
+| usages | List&lt;Usage&gt; | 사용량 목록 |
+
+**Usage**
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| counterName | String | 카운터 이름 |
+| counterType | String | 카운터 타입<br><br>- DELTA: 증분 값<br>- GAUGE: 현재 값<br>- HOURLY_LATEST: 시간별 최신 값<br>- DAILY_MAX: 일별 최댓값<br>- MONTHLY_MAX: 월별 최댓값<br>- STATUS: 상태 값 |
+| parentResourceId | String | 부모 리소스 ID |
+| productId | String | 서비스 ID |
+| projectId | String | 프로젝트 ID |
+| resourceId | String | 리소스 ID |
+| resourceName | String | 리소스 이름 |
+| usage | BigDecimal | 사용량 |
+| usedTime | String | 사용 시각 |
+
+
 ## 오류 코드
 
 | resultCode | 설명 | 조치 |
@@ -1252,6 +2177,7 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 | -6 | 호출한 API에 대해 호출자의 인가가 실패했을 때 발생하는 오류 또는 파트너 권한 검증 실패  | 호출자가 API 호출 권한이 있는지 확인하고, 필요하다면 시스템 관리자에게 문의하여 호출 권한을 요청. 호출 계정 권한과 요청 스코프 파트너 ID 점검 |
 | -5 | 권한 거부 - 소유자가 아님 또는 삭제하려는 조직의 실제 오너가 요청한 파트너 사용자와 다름 | 요청자가 해당 조직의 소유자인지 확인하고, 대상 조직이 해당 파트너 사용자 소유인지 확인 |
 | -4 | 권한 거부 - 멤버가 아님 | 요청자가 해당 파트너의 멤버인지 확인하고, 적절한 권한을 부여받은 후 재시도 |
+| -2 | 파라미터가 잘못될 경우 발생하는 오류 | 요청 파라미터의 형식과 값을 확인하여 올바른 값으로 재시도 |
 | 404 | 없는 API 호출 시 발생 | 호출하는 API의 HTTP 메서드, URI를 확인 |
 | 500 | 비정상 시스템 오류 | 시스템 관리자에게 문의 |
 | 501 | 잘못된 날짜 형식 | 날짜 파라미터를 올바른 형식으로 제공 |
@@ -1267,6 +2193,7 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 | 11013 | 멤버가 파트너 사용자가 아님 또는 지정한 파트너 ID와 파트너 사용자 UUID가 매칭되지 않음 | 해당 멤버가 지정된 기간에 파트너 사용자인지 확인하고, 파트너 관계를 재설정. 파트너 사용자가 해당 파트너에 승인·연결돼 있는지 확인 |
 | 12000 | 프로젝트를 찾을 수 없음 | 요청한 프로젝트 ID가 존재하는지 확인하고, 올바른 프로젝트 ID로 재시도 |
 | 12100 | 프로젝트 멤버가 존재하지 않을 때 발생하는 오류 | 존재하는 프로젝트 멤버 UUID 사용 |
+| 16500 | 비동기 작업을 찾을 수 없음 | 잘못된 비동기 ID로 요청했는지 확인 |
 | 17001 | 앱키를 찾을 수 없음 | 앱키가 정상 발급되었는지 확인 후 필요 시 재발급 |
 | 17003 | 앱키와 프로젝트/서비스 연결 없음 | 앱키를 올바른 프로젝트/서비스와 연결 |
 | 17501 | 조직을 찾을 수 없음 | 조직 ID 존재 여부 확인 |
@@ -1276,6 +2203,9 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 | 22003 | 파트너 조정값 범위 오류 | 파트너 조정값이 허용 범위 내인지 확인 |
 | 22004 | 솔루션 파트너 서비스 아님 | 요청 서비스가 해당 솔루션 파트너 서비스인지 확인 |
 | 22005 | 솔루션 파트너 아님 | 파트너가 솔루션 파트너 자격을 갖추었는지 확인 |
+| 22007 | 해당 파트너에게 접근 권한이 없음 | 파트너가 해당 리소스에 접근할 권한이 없는 상태이며, 조회 대상인 리소스가 본인의 리소스거나 아니면 본인이 조회 가능한 대상의 리소스가 맞는지 확인 |
+| 22008 | 해당 서비스의 앱키가 아님 | 잘못된 앱키로 요청했는지 확인 |
+| 22009 | 해당 서비스의 카운터 이름이 아님 | 잘못된 카운터 이름으로 요청했는지 확인 |
 | 22021 | 조직 생성 시, 조직 오너 계정에 설정된 조직 생성 개수 제한을 초과했을 경우 발생하는 오류 | 1) 사용하지 않은 조직을 삭제하여 생성 가능한 조직 개수 확보 <br>2) 시스템 관리자를 통해 조직 생성 최대 개수 조정 |
 | 22023 | MSP 파트너 한도를 초과하여 조직 생성이 제한됨 | MSP 파트너 한도 조정 또는 조직 정리 |
 | 23005 | 조직 ID에 해당하는 조직이 존재하지 않을 때 발생하는 오류 | 시스템 관리자에게 문의 |
