@@ -4,13 +4,12 @@
 
 
 * Role: A bundle of roles/permissions to use the services and features provided by NHN Cloud
-    * Example:The BILLING VIEWER role for a project is created with the related permission of ‘Project.Payment.Get’
+    * The CloudTrail VIEWER role is created with the related role of ORG_DASHBOARD_VIEWER and related permissions such as 'CloudTrail:EventLog.List', 'CloudTrail:ExternalStorageConfig.Get', etc.
 
-![term_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_term_01_240610.png)
+![term_1.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_01_251124.png)
+* Example: The BILLING VIEWER role for a project is created with the related permission of ‘Project.Payment.Get’
 
-   * The CloudTrail VIEWER role is created with the related role of ORG_DASHBOARD_VIEWER and related permissions such as 'CloudTrail:EventLog.List', 'CloudTrail:ExternalStorageConfig.Get', etc.
-
-![term_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_term_02_240610.png)
+![term_2.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_02_251124.png)
 
 * Permission: Minimum unit to use NHN Cloud services and features
     * You can bundle permissions to create role groups
@@ -21,90 +20,84 @@
 * A bundled unit created by combining roles, related roles/permissions, and permissions
     * Example: Create a role group 'Group A' by adding the project role PROJECT MEMBER ADMIN and the related permission Project.Payment.Get for the project BILLING VIEWER
 
-![term_3.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_term_03_240610.png)
+![term_3.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_03_251124.png)
 
 ### Organization 
 
 * Policy
-    * Members can be assigned roles provided by NHN Cloud.
-    * Roles include related roles and permissions.
+    * OWNER/ADMIN/ORG_MEMEBER__ADMIN can create an organization role group by combining roles and permissions provided by NHN Cloud.
+    * Organization members can be granted roles from created organization role groups or roles provided by NHN Cloud.
 
-![org_0.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_00_240610.png)
+![org_0.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_org_00_251124.png)
 
 * Manage Organization Member
-    * Can assign roles to member
-        * Can set conditions for roles when assigned
+    * Members can be granted role groups and roles.
 
 | Item | Set Conditions |
 | --- | ----- |
-| Role | Possible |
+| Role Group | Unavailable |
+| Role | Available |
 
-![org_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_01_240610.png)
+![org_1.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_org_01_251124.png)
 
-   * Example:
+* Example:
 
-![org_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_org_02_240610.png)
+![org_2.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_org_02_251124.png)
 
-   * If the conditions are granted as above, User A will only be granted the CloudTrail VIEWER role on Tuesdays,
-the BILLING VIEWER role only from 12:00 to 14:00 on all days of the week.
-
+* When conditions are given as above, User A is granted the following role groups:
+    * The BILLING VIEWER role is granted only between 12PM and 2PM on all days of the week, and the CloudTrail VIEWER role is granted only on Tuesdays.
+* Manage Organization Role Group
+    * Members can be granted role groups and roles.
 
 ### Project
 
 * Policy
-    * Users can create role groups with any combination of roles and permissions provided by NHN Cloud
-    * Users can be granted roles from role groups you create or roles provided by NHN Cloud.
+    * ADMIN/PROJECT MEMBER ADMIN can create a project role group by combining roles and permissions provided by NHN Cloud.
+    * Project members can be granted roles from created organization role groups or roles provided by NHN Cloud.
 
-![project_0.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_00_240610.png)
+![project_0.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_project_00_251124.png)
 
 * Manage Project Member
-    * Can assign role groups/roles to member
-        * Can set conditions respectively for role groups/roles when assigned
+    * Members can be granted role groups and roles.
 
 | Item | Set Conditions |
 | --- | ----- |
-| Role Group | Possible |
-| Role | Possible |
+| Role Group | Unavailable |
+| Role | Available |
 
 
-![project_1.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_01_240610.png)
-
-   * Example:
-
-![project_2.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_02_240610.png)
-
-   * If the conditions are granted as above, User A will be granted the following roles. 
-       * User A is granted the PROJECT MEMBER ADMIN and SMS ADMIN roles only on Tuesdays, and the BILLING VIEWER role is granted only from 12:00 to 14:00 on all days of the week
+![project_1.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_project_01_251124.png)
 
    * Example:
 
-![project_3.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_03_240610.png)
+![project_2.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_project_02_251124.png)
 
-   * If the conditions are given as above, User A will be granted the following roles
-       * User A is granted the ADMIN, and SMS ADMIN roles only on Tuesdays, the BILLING VIEWER role is granted only on Tuesdays from 12:00 to 14:00
+   * When conditions are given as above, User A is granted the following role groups and roles:
+       * User A is granted the ADMIN and BILLING VIEWER roles only on Tuesdays, and the PROJECT SUPPORT ADMIN role only between 12AM and 2PM on all days of the week.
 
    * Notes
-       * BILLING VIEWER is a related role to ADMIN, so it is granted a role whose conditions are set to the intersection of ADMIN's conditions and BILLING VIEWER's conditions.
-
+       * Since the condition is set for ADMIN, which is the parent role of BILLING VIEWER, BILLING VIEWER inherits and applies the condition of ADMIN.
 
 * Manage Project Role Group
     * Can assign role groups/roles to member
-        * Can set conditions respectively for role groups/roles when assigned
+        * Can set conditions respectively for role groups/roles when assigned.
 
 | Item | Set Deny | Set Conditions |
 | --- | ----- | ----- |
-| Role | Not possible | Possible |
-| Related role | Possible | Role's conditions inherited<br>Separate condition attribute possible, but only if denied |
-| Related permission | Possible | Role's conditions inherited<br>Separate condition attribute possible, but only if denied |
-| Permission |  Not possible| Possible |
+| Role | Unavailable | Available |
+| Related role | Available | Unavailable<br>If the conditions set in the upper role are applicable, they are inherited and applied |
+| Related permission | Available | Unavailable<br>If the conditions set in the upper role are applicable, they are inherited and applied. |
+| Permission | Unavailable<br>However, the permission is already denied as the related permission, so it is also denied.| Available |
 
 
-![project_4.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_041_240610.png)
+![project_3.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_project_03_251124.png)
 
    * Example:
 
-![project_5.png](http://static.toastoven.net/toast/console_guide/consoleuserguide_project_05_240610.png)
+![project_4.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_project_04_251124.png)
 
-   * User who is granted Group A with the conditions as above are granted the following roles.
-       * ADMIN roles except SMS ADMIN and Project.Delete roles/permissions are granted.
-       * However, the SMS ADMIN role is only granted on Tuesdays between 12:00 and 14:00, and not at other times
+   * Members who are granted Role Group A with the conditions as above are granted the following roles:
+       * The ADMIN role is granted only on Tuesdays.
+       * The PROJECT MEMBER ADMIN role and Project.Product.List permissions inherit the ADMIN role's conditions and are applied accordingly.
+       * However, the Project.RoleGroup.Create permission is already denied as the related permission of ADMIN, so it is also denied.
+       
