@@ -5,10 +5,18 @@
 
 * Role: A bundle of roles/permissions to use the services and features provided by NHN Cloud
     * The CloudTrail VIEWER role is created with the related role of ORG_DASHBOARD_VIEWER and related permissions such as 'CloudTrail:EventLog.List', 'CloudTrail:ExternalStorageConfig.Get', etc.
+<<<<<<< HEAD
 
 ![term_1.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_01_251124.png)
 * Example: The BILLING VIEWER role for a project is created with the related permission of ‘Project.Payment.Get’
 
+=======
+
+![term_1.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_01_251124.png)
+
+    * Example:The BILLING VIEWER role for a project is created with the related permission of ‘Project.Payment.Get’
+
+>>>>>>> origin/alpha
 ![term_2.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_02_251124.png)
 
 * Permission: Minimum unit to use NHN Cloud services and features

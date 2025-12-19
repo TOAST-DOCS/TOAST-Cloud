@@ -8,7 +8,11 @@
 
 ![term_1.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_01_251124.png)
 
+<<<<<<< HEAD
 * 例：プロジェクトBILLING VIEWERロールは’Project.Payment.Get’関連権限で作成されます。
+=======
+    * 例：プロジェクトBILLING VIEWERロールは’Project.Payment.Get’関連権限で作成されます。
+>>>>>>> origin/alpha
 ![term_2.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_02_251124.png)
 
 * 権限(Permission)： NHN Cloudサービスと機能を利用するための最小単位
