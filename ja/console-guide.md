@@ -311,6 +311,8 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | OWNER | 組織作成、組織管理、メンバー管理、組織サービス管理、決済管理、プロジェクト管理など、組織全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | ADMIN | 組織管理、メンバー管理、組織サービス管理、決済管理、プロジェクト管理など組織全体に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | MEMBER | プロジェクトCreate(作成)、組織ダッシュボードRead(読み取り)、プロジェクトに対するRead(読み取り) |
+| ORG_MEMBER_ADMIN | 組織メンバーCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> 組織ロールグループCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
+| ORG_MEMBER_VIEWER | 組織メンバーRead(読み取り)<br> 組織ロールグループRead(読み取り) |
 | BILLING\_VIEWER | 決済管理利用現況Read(読み取り)、予算管理に対するRead(読み取り), 組織下位プロジェクトの利用状況 Read(読む) |
 | BUDGET\_ADMIN | 予算管理に対するCreate(作成)/Read(読み取り)/Update(更新)/Delete(削除) |
 | BUDGET\_VIEWER | 予算管理に対するRead(読み取り) |
