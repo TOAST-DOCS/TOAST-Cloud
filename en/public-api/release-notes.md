@@ -1,5 +1,13 @@
 ## NHN Cloud > Public API > Release Notes
 
+### November 25, 2025
+#### Feature Updates
+
+- Framework API
+    - Added the API to view service information lists
+- Partner Management API
+    - Added the API for daily usage amount inquiry and resource usage amount inquiry by tag
+
 ### October 28, 2025
 #### Added New Features
 
