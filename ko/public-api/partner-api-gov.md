@@ -1420,8 +1420,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | --- | --- | --- | --- |
 | from | String | Y | 조회 시작 시간(ISO 8601 형식, 포함) |
 | to | String | Y | 조회 종료 시간(ISO 8601 형식, 미포함) |
-| appKeys | List&lt;String&gt; | N | 앱키 목록<br>앱키, 혹은 카운터 이름 중 하나는 반드시 있어야 함 |
-| counterNames | List&lt;String&gt; | N | 카운터 이름 목록<br>앱키, 혹은 카운터 이름 중 하나는 반드시 있어야 함 |
+| appKeys | List&lt;String&gt; | N | 앱키 목록 |
+| counterNames | List&lt;String&gt; | N | 카운터 이름 목록 |
 | meterTimeTypeCode | String | N | 미터 시간 타입 코드<br>from, to에 대해서 사용 시간으로 검색을 할지, 아니면 요청이 인입된 시간으로 검색을 할지 결정<br>(USED_TIME: 사용 시간(기본값), INSERT_TIME: 인입된 시간) |
 
 
