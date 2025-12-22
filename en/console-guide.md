@@ -335,6 +335,8 @@ Members are classified into NHN Cloud members and IAM members.
 | OWNER | Create, Read, Update, Delete, and Delete organizations across the organization, including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
 | ADMIN | Create/Read/Update/Delete for the entire organization, including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
 | MEMBER | Create project, read organization dashboard, read project |
+| ORG_MEMBER_ADMIN | Create, Read, Update, Delete for organization members<br>Create, Read, Update, Delete for organization's role groups |
+| ORG_MEMBER_VIEWER | Read for organization members<br>Read for organization's role groups |
 | BILLING_VIEWER | Read payment management usage and budget management, and usage status of project in organization. |
 | BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
 | BUDGET_VIEWER | Read budget management |
@@ -614,7 +616,7 @@ The corresponding notification receiver groups are available when setting up not
 
 4. **Receiving Role Setting**
     - Organization > Receiving Role Setting
-        * Supports setting up email and SMS notifications for organization/project roles, project role groups, and service-specific roles.
+        * Supports setting up email and SMS notifications for organization/project roles, organization/project role groups, and service-specific roles.
     * Project > Receiving Role Setting
         * Supports setting up email and SMS notifications for project roles, project role groups, and service-specific roles.
 
