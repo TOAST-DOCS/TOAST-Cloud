@@ -47,7 +47,7 @@ When the Public API returns, the header part below is included in the response b
 |------------ | ------------- | ------------- | ------------ |
 | org-id | String | 16 characters | Organization ID |
 | project-id | String | 8 characters | Project ID |
-| product-id | String | 8 characters | Service (product) ID |
+| product-id | String | 8 characters | Service ID |
 | user-access-key-id | String | 20 characters | User Access Key ID |
 | project-app-key | String | 20 characters | The project's AppKey |
 | product-app-key | String | 16 characters | The service's AppKey |
@@ -72,16 +72,16 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | POST |[/v1/organizations/{org-id}/projects](#프로젝트-추가) | Add a project |
 | DELETE |[/v1/projects/{project-id}/members/{target-uuid}](#프로젝트-멤버-단건-삭제) | Delete a single project member |
 | DELETE |[/v1/projects/{project-id}](#프로젝트-삭제) | Delete a project |
-| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#프로젝트-상품-종료) | End a project product |
-| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#프로젝트-상품-이용) | Use a project product |
+| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#프로젝트-서비스-종료) | End a project service |
+| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#프로젝트-서비스-이용) | Use a project service |
 | GET |[/v1/organizations/{org-id}/roles](#조직-역할-목록-조회) | List organization roles |
 | GET |[/v1/projects/{project-id}/roles](#프로젝트-역할-목록-조회) | List project roles |
 | GET |[/v1/organizations/{org-id}/domains](#조직-도메인-검색) | Search for an organization domain |
 | GET |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-단건-조회) | View a organization member |
 | POST |[/v1/organizations/{org-id}/members/search](#조직-멤버-목록-조회) | List organization members |
 | GET |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-전체-조회) | View all common role groups for projects in the organization |
-| GET |[/v1/product-uis/hierarchy](#상품-계층-구조-조회) | View product hierarchy |
-| GET |[/v1/projects/{project-id}/products/{product-id}](#프로젝트에서-사용-중인-상품-조회) | View a product used in the project |
+| GET |[/v1/product-uis/hierarchy](#서비스-계층-구조-조회) | View service hierarchy |
+| GET |[/v1/projects/{project-id}/products/{product-id}](#프로젝트에서-사용-중인-서비스-조회) | View a service used in the project |
 | GET |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | View a project member |
 | POST |[/v1/projects/{project-id}/members/search](#프로젝트-멤버-목록-조회) | List project members |
 | GET |[/v1/projects/{project-id}/project-role-groups/{role-group-id}](#프로젝트-역할-그룹-단건-조회) | View a project role group |
@@ -110,8 +110,8 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-로그인-실패-보안-설정을-조회) | View Organization IAM Login Failure Security Settings |
 | GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#조직-IAM-계정-비밀번호-정책-조회) | Get your organization's IAM account password policy |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | Listorganization IP ACLs |
-| POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-상품-가격-조회) | Get the price of a product on a pay-as-you-go subscription |
-| GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-상품-목록-조회) | List products enrolled in a pay-as-you-go subscription |
+| POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-서비스-가격-조회) | Get the price of a service on a pay-as-you-go subscription |
+| GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-서비스-목록-조회) | List services enrolled in a pay-as-you-go subscription |
 | GET |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-조회) | Get Project AppKey |
 | GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-목록-조회) | ListUser Access Key IDs |
 | POST |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-등록) | Register a project AppKey |
@@ -131,6 +131,7 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | GET | [/v1/organizations](#자신의-조직-목록-조회) | View your own organization list |
 | POST | [/v1/organizations](#자신의-조직-추가) | Add your own organization |
 | DELETE | [/v1/organizations/{org-id}](#조직-단건-삭제) | Delete a single organization |
+| GET | [/v1/products](#서비스-정보-목록-조회) | View service information lists |
 
 
 <a id="프로젝트-멤버-생성"></a>
@@ -268,7 +269,7 @@ API to add projects to your organization.
 |   projectName | String| Yes   | Project name | 
 |   projectId | String| Yes   | Project ID | 
 |   orgId | String| Yes   | Organization ID | 
-|   projectStatusCode | String| Yes   | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All products are closed but not paid for</li></ul> | 
+|   projectStatusCode | String| Yes   | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All services are closed but not paid for</li></ul> | 
 
 
 <a id="프로젝트-멤버-단건-삭제"></a>
@@ -360,15 +361,15 @@ You'll need one permission from the list below
 
 
 
-<a id="프로젝트-상품-종료"></a>
-#### End a project product
+<a id="프로젝트-서비스-종료"></a>
+#### End a project service
 
 > DELETE "/v1/projects/{project-id}/products/{product-id}/disable"
 
 API to disable a user-specified service so that it is no longer used by this project.
 
 ##### Required permissions
-`Product Name: Product.Delete`
+`Service Name: Product.Delete`
 
 ##### Request Parameter
 
@@ -417,15 +418,15 @@ API to disable a user-specified service so that it is no longer used by this pro
 |   statusCode | String| Yes |   Service status (STABLE, CLOSED) |
 
 
-<a id="프로젝트-상품-이용"></a>
-#### Use a project product
+<a id="프로젝트-서비스-이용"></a>
+#### Use a service product
 
 > POST "/v1/projects/{project-id}/products/{product-id}/enable"
 
 An API that requests to enable a service you specify to be available in your project.
 
 ##### Required permissions
-`Product Name: Product.Create`
+`Service Name: Product.Create`
 
 ##### Request Parameter
 
@@ -961,8 +962,8 @@ API to get a list of project common role groups set up by your organization.
 |   roleGroupType | String| Yes | Types of role groups<br><ul><li>ORG: Project common role group</li><li>ORG_ROLE_GROUP: Organization role group</li><li>PROJECT: Project role group</li> |
 
 
-<a id="상품-계층-구조-조회"></a>
-#### View product hierarchy
+<a id="서비스-계층-구조-조회"></a>
+#### View service hierarchy
 
 > GET "/v1/product-uis/hierarchy"
 
@@ -970,7 +971,7 @@ API to return homepage category, homepage service information that is exposed on
 
 ##### Required Permissions
 This API can be called without specific permissions if you are signed up to NHN Cloud.<br>
-However, if you're viewing an organization's products, you must be a member of a project in that organization or a project under that organization.
+However, if you're viewing an organization's services, you must be a member of a project in that organization or a project under that organization.
 
 ##### Request Parameter
 
@@ -978,7 +979,7 @@ However, if you're viewing an organization's products, you must be a member of a
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |productUiType | String| Yes | Product UI Types<br><ul><li>PROJECT: Project product</li><li>ORG: Organization Products</li><li>MARKET_PLACE: Marketplace products</li></ul> |
+|  Query |productUiType | String| Yes | Service UI Types<br><ul><li>PROJECT: Project service</li><li>ORG: Organization services</li><li>MARKET_PLACE: Marketplace services</li></ul> |
 |  Query |orgId | String| No | Organization ID must be entered if the product UI type is ORG |
 
 
@@ -1010,30 +1011,30 @@ However, if you're viewing an organization's products, you must be a member of a
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [Common response](#Response)| Yes |
-|   productUiList | List<ProductUiHierarchyProtocol>| Yes  | Homepage Category Product UI List |
+|   productUiList | List<ProductUiHierarchyProtocol>| Yes  | Homepage Category Service UI List |
 
 ###### ProductUiHierarchyProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   children | List<ProductUiHierarchyProtocol>| No | Homepage Service Product UI List |
+|   children | List<ProductUiHierarchyProtocol>| No | Homepage Service UI List |
 |   manualLink | String| No|
-|   parentProductUiId | String| No| Product UI divisions |
+|   parentProductUiId | String| No| Service UI divisions |
 |   productId | String| No|
-|   productUiId | String| No| Product UI identification key |
+|   productUiId | String| No| Service UI identification key |
 |   productUiName | String| No|
 
 
-<a id="프로젝트에서-사용-중인-상품-조회"></a>
-#### View a product used in the project
+<a id="프로젝트에서-사용-중인-서비스-조회"></a>
+#### View a service used in the project
 
 > GET "/v1/projects/{project-id}/products/{product-id}"
 
 * APIs to get information about specific services used by your project
 
 ##### Required permissions
-`Product Name: ProductAppKey.Get`
+`Service Name: ProductAppKey.Get`
 
 ##### Request Parameter
 
@@ -1092,7 +1093,7 @@ However, if you're viewing an organization's products, you must be a member of a
 |   appKey | String| Yes | AppKey information for the service your project is using  |
 |   externalId | String| No | Tenant ID<br>Only available if the tenant ID exists for the service |
 |   productId | String| Yes | Service ID  |
-|   productName | String| Yes | Product name  |
+|   productName | String| Yes | Service name  |
 |   productSecretKeyCode | String| No | Whether to use a secret key<br>T: Enabled<br>Others: Not used (F, N) |
 |   productStatusCode | String| Yes | Service status (STABLE, CLOSED) |
 |   projectId | String| Yes | The project ID that uses the service  |
@@ -1549,7 +1550,7 @@ Members of an organization
 |   orgId | String| Yes| The organization ID the project belongs to |
 |   projectId | String| Yes| Project ID |
 |   projectName | String| Yes| Project name |
-|   projectStatusCode | String| Yes | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All products are closed but not paid for</li></ul> |
+|   projectStatusCode | String| Yes | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All services are closed but not paid for</li></ul> |
 |   regDateTime | Date| Yes| Project registration date |
 
 
@@ -2608,7 +2609,7 @@ API to get IP ACL settings.
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
 |   ips | List<String>| Yes  | Allowed IPs | 
-|   productId | String| Yes  | Product ID<br>If undefined, set to Common Settings|
+|   productId | String| Yes  | Service ID<br>If undefined, set to Common Settings|
 
 <a id="조직-IAM-로그인-세션-설정-정보를-조회"></a>
 #### View organization IAM sign-in session settings information
@@ -2631,19 +2632,19 @@ API to get login session settings information.
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
-    },
-    "result": {
-        "content": {
-            "multiSessionsLimit": 1,
-            "sessionTimeoutMinutes": 10,
-            "mobileSessionTimeoutMinutes": 10,
-            "sessionType": "fixed"
-        }
+"header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "content": {
+      "multiSessionsLimit": 1,
+      "sessionTimeoutMinutes": 10,
+      "mobileSessionTimeoutMinutes": 10,
+      "sessionType": "fixed"
     }
+  }
 }
 ```
 
@@ -2685,35 +2686,35 @@ API to get settings for login two-factor authentication.
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "range": "organization",
+    "organizationMfaSetting": {
+      "type": "email",
+      "bypassByIp": {
+        "enable": true
+        "ipList": [
+          "1.1.1.1",
+          "1.1.1.1/24"
+        ]
+      }
     },
-    "result": {
-        "range": "organization",
-        "organizationMfaSetting": {
-            "type": "email",
-            "bypassByIp": {
-                "enable": true
-                "ipList": [
-                    "1.1.1.1",
-                    "1.1.1.1/24"
-                ]
-            }
-        },
-        "serviceMfaSettings": [{
-            "serviceId": "{toast-service-id}",
-            "type": "totp",
-            "bypassByIp": {
-                "enable": true
-                "ipList": [
-                    "1.1.1.1",
-                    "1.1.1.1/24"
-                ]
-            }
-        }]
-    }
+    "serviceMfaSettings": [{
+      "serviceId": "{toast-service-id}",
+      "type": "totp",
+      "bypassByIp": {
+        "enable": true
+        "ipList": [
+          "1.1.1.1",
+          "1.1.1.1/24"
+        ]
+      }
+    }]
+  }
 }
 ```
 
@@ -2777,18 +2778,18 @@ API to get login failure security settings.
 
 ```json
 {
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": ""
-    },
-    "result": {
-        "enable": false,
-        "loginFailCount": {
-            "limit": "5",
-            "blockMinutes": "2"
-        }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "enable": false,
+    "loginFailCount": {
+      "limit": "5",
+      "blockMinutes": "2"
     }
+  }
 }
 ```
 
@@ -2836,37 +2837,36 @@ API to get settings for password policies.
 
 ```json
 {
-   "header": {
-      "isSuccessful": true,
-      "resultCode": 0,
-      "resultMessage": ""
-   },
-   "result": {
-      "content": {
-         "schemaVersion": 1,
-         "value": {
-            "ruleType": "default",
-            "passwordConstraints": {
-               "minLength": 8,
-               "mustNotIncludeIllegalSequence": true,
-               "mustIncludeUpperCase": true,
-               "mustIncludeLowerCase": true,
-               "mustIncludeNumberCase": true,
-               "mustIncludeSpecialCase": true
-            },
-            "passwordExpiry": {
-               "enabled": true,
-               "expiryDays": 90,
-               "allowExpend": true
-            },
-            "limitPasswordReuse": {
-               "enabled": true,
-               "limitCount": 1
-            },
-            "applyRule": "onChangePassword"
-         }
-      }
-   }
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "content": {
+      "schemaVersion": 1,
+      "value": {
+        "ruleType": "default",
+        "passwordConstraints": {
+          "minLength": 8,
+          "mustNotIncludeIllegalSequence": true,
+          "mustIncludeUpperCase": true,
+          "mustIncludeLowerCase": true,
+          "mustIncludeNumberCase": true,
+          "mustIncludeSpecialCase": true
+        },
+        "passwordExpiry": {
+          "enabled": true,
+          "expiryDays": 90,
+          "allowExpend": true
+        },
+        "limitPasswordReuse": {
+          "enabled": true,
+          "limitCount": 1
+        },
+        "applyRule": "onChangePassword"
+    }
+  }
 }
 ```
 
@@ -2920,8 +2920,8 @@ API to get settings for password policies.
 | String | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
 | limitCount | Integer | Yes | Number of reuse limits |
 
-<a id="종량제에-등록된-상품-가격-조회"></a>
-#### Get the price of a product on a pay-as-you-go subscription
+<a id="종량제에-등록된-서비스-가격-조회"></a>
+#### Get the price of a service on a pay-as-you-go subscription
 
 > POST "/v1/billing/contracts/basic/products/prices/search"
 
@@ -2942,7 +2942,7 @@ APIs that can be called if you have signed up to NHN Cloud
 ##### GetContractProductPriceRequest
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|  counterNames | List<String>| No | List of counter names in the product meta<br>Full search box if not found |
+|  counterNames | List<String>| No | List of counter names in the service meta<br>Full search box if not found |
 |   paging | Paging| No  |
 
 ###### Paging
@@ -3026,8 +3026,8 @@ APIs that can be called if you have signed up to NHN Cloud
 |   slidingCalculationTypeCode | String| Yes | Types of sliding fee calculations<br>NONE, SECTION_SUM, SECTION_SELECTED |
 |   useFixPriceYn | String| Yes | Fixed amount or not (Y: Fixed amount , N: Unit price calculation)<br>Y: price becomes an amount if it falls in the range<br>N: (Usage x Unit Price) becomes an amount |
 
-<a id="종량제에-등록된-상품-목록-조회"></a>
-#### List products enrolled in a pay-as-you-go subscription
+<a id="종량제에-등록된-서비스-목록-조회"></a>
+#### List services enrolled in a pay-as-you-go subscription
 
 > GET "/v1/billing/contracts/basic/products"
 
@@ -3091,7 +3091,7 @@ APIs that can be called if you have signed up to NHN Cloud
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   products | List<ProductMetadata>| Yes | Product meta information list  |
+|   products | List<ProductMetadata>| Yes | Service meta information list  |
 
 
 ###### ProductMetadata
@@ -3113,10 +3113,10 @@ APIs that can be called if you have signed up to NHN Cloud
 |   meterUnitCode | String| Yes | Usage units when storing metering in a service<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
 |   minUsage | BigDecimal| Yes | Minimum usage  |
 |   parentCounterName | String| Yes | Parent counter name  |
-|   productId | String| Yes | Product ID  |
+|   productId | String| Yes | Service ID  |
 |   productMetadataStatusCode | String| Yes | Counter status codes STABLE, CLOSED |
 |   productUiId | String| Yes | Homepage Category/Homepage Service Identification ID  |
-|   regionTypeCode | String| Yes | The region code the countername belongs to<br><ul><li>GLOBAL: Countername belonging to the Global product</li><li>NONE: Same meaning as GLOBAL</li><li>KR1: Countername belonging to the KR1 region</li><li>KR2: Countername belonging to the KR2 region</li><li>If you are not sure which region you are in, you can use the following...: Counternames that belong to this region</li><ul>  |
+|   regionTypeCode | String| Yes | The region code the countername belongs to<br><ul><li>GLOBAL: Countername belonging to the Global service</li><li>NONE: Same meaning as GLOBAL</li><li>KR1: Countername belonging to the KR1 region</li><li>KR2: Countername belonging to the KR2 region</li><li>If you are not sure which region you are in, you can use the following...: Counternames that belong to this region</li><ul>  |
 |   unit | Long| Yes | Settlement units  |
 |   unitName | String| Yes | Name to appear on the invoice  |
 |   usageAggregationUnitCode | String| No | Usage aggregation units<br>RESOURCE_ID, COUNTER_NAME |
@@ -4052,10 +4052,7 @@ API to get the credentials of members in the organization or project.
 <a id="자신의-조직-목록-조회"></a>
 #### View your Own Organization List
 
-**[Method, URL]**
-```
-GET /v1/organizations
-```
+> GET /v1/organizations
 
 ##### Required Permission
 API that can be called by members
@@ -4172,28 +4169,28 @@ API that can be called by members
 <a id="조직-추가"></a>
 #### Add your own organization
 
-**[Method, URL]**
-```
-POST /v1/organizations
-```
+> POST /v1/organizations
+
+An API to add your own organization.
 
 ##### Required Permission
 API that can be called by members
 
-**[Request Body]**
-```json
-{
-  "orgName": "organization-name"
-}
-```
+##### Request Parameter
 
-**[Request Body Description]**
+| Category | Name | Type | Required | Description |
+|------------- |------------- | ------------- | ------------- | ------------- |
+| Request Body | request | [CreateOrgRequest](#createorgrequest)| Yes | Request |
+
+###### CreateOrgRequest
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| orgName | String | Yes | Organization name to create (up to 120 characters) |
+| orgName | String | Yes | Organization name to create (up to 70 characters) |
 
-**[Response Body]**
+
+##### Response Body
+
 ```json
 {
   "header": {
@@ -4212,14 +4209,15 @@ API that can be called by members
 }
 ```
 
-**[Response Body Description]**
+###### Response
+
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | header | [Common response](#response) | Yes | |
 | orgId | String | Yes | Organization ID |
 | orgName | String | Yes | Organization name |
-| owner | Owner | Yes | Organization Owner info |
+| owner | [Owner](#owner) | Yes | Organization Owner info |
 
 ###### Owner
 
@@ -4234,36 +4232,99 @@ API that can be called by members
 <a id="조직-단건-삭제"></a>
 #### Delete a single organization
 
-**[Method, URL]**
-```
-DELETE /v1/organizations/{org-id}
-```
+> DELETE /v1/organizations/{org-id}
+
+An API to delete your own organization.
 
 ##### Required Permission
 `Organization.Delete`
 
-**[Path Variable]**
+##### Request Parameters
+
+| Category | Name | Type | Required | Description |
+|------------- |------------- | ------------- | ------------- | ------------- |
+| Path |org-id | String | Yes | Organization ID |
+
+##### Response Body
+
+```json
+{
+"header": {
+"isSuccessful": true,
+"resultCode": 0,
+"resultMessage": "resultMessage"
+}
+}
+```
+
+###### Response
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| org-id | String | Yes | Organization ID |
+| header | [Common Response](#Response) | Yes | |
 
-**[Response Body]**
+<a id="Service-Information-List-Query"></a>
+#### Retrieve Service Information List
+
+> GET /v1/products
+
+This API retrieves a list of available services.
+
+##### Required Permissions
+Any registered user can call this API.
+
+##### Request Parameters
+
+| Category | Name | Type | Required | Description |
+|---|---|---|---|---|
+| Query | productId | String | No | Service ID |
+| Query | productCategoryCode | String | No | Service Category Code (PROJECT, ORG, MARKET_PLACE) |
+| Query | productName | String | No | Service Name |
+| Query | productNameLike | String | No | Service Name Like Search |
+| Query | limit | Integer | No | Number of items displayed per page, default 20 |
+| Query | page | Integer | No | Target page, default 1 |
+
+##### Response body
+
 ```json
 {
   "header": {
     "isSuccessful": true,
     "resultCode": 0,
     "resultMessage": "resultMessage"
-  }
+  },
+  "paging": {
+    "limit": 1,
+    "page": 1,
+    "totalCount": 1
+  },
+  "products": [
+    {
+      "parentProductId": "productId",
+      "productCategoryCode": "PROJECT",
+      "productId": "productId",
+      "productName": "productName"
+    }
+  ]
 }
 ```
 
-**[Response Body Description]**
+###### Response
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | header | [common response](#response) | Yes | |
+| paging | [PagingResponse](#pagingresponse) | Yes | |
+| products | List<Product> | Yes | Service Information List |
+
+###### Product
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| parentProductId | String | No | Parent Service ID |
+| productCategoryCode | String | Yes | Service Category Code (PROJECT, ORG, MARKET_PLACE) |
+| productId | String | Yes | Service ID |
+| productName | String | Yes | Service Name |
 
 
 ### Error Code

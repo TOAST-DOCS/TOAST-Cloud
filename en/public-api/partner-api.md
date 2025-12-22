@@ -67,7 +67,7 @@ All APIs have the following common response structure:
 
 ## View Organization Usage List of Partner Users
 
-Provide the partner user's billing amount, usage fee per organization, usage fee per product, and surcharge information.
+Provide the partner user's billing amount, usage fee per organization, usage fee per service, and surcharge information.
 
 !!! tip "Verify Partner Agreement"
     Verify that the partner and partner user entered into a partnership agreement in the specified month.
@@ -147,23 +147,28 @@ This API does not require a request body.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| payment | Object | Payment info |
-| payment.charge | Long | Amount used + project surcharge |
-| payment.totalAmount | Long | Billing amount (usage amount + VAT) |
-| payment.taxAmount | Long | VAT |
-| payment.currency | String | Currency<br>Returns in the corresponding language based on lang |
-| payment.orgList | List<Object> | Usage list per organization |
-| payment.usageSummaryList | List<Object> | Usage summary list |
-| payment.extraSummaryList | List<Object> | Project surcharge summary list |
+| payment | PartnerUserOrgUsage | Payment info |
 
-**orgList**
+**PartnerUserOrgUsage**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| charge | Long | Usage Amount + Project Surcharge Amount |
+| totalAmount | Long | Charge Amount (Usage Amount + VAT) |
+| taxAmount | Long | VAT |
+| currency | String | Currency<br>Returned in the appropriate language based on lang |
+| orgList | List&lt;GetPartnerUserOrgUsages&gt; | Usage List by Organization |
+| usageSummaryList | List&lt;UsageSummary&gt; | Usage Summary List |
+| extraSummaryList | List&lt;ProjectExtra&gt; | Project Surcharge Summary List |
+
+**GetPartnerUserOrgUsages**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | orgName | String | Organization name |
 | charge | Long | Amount used by organization |
 
-**usageSummaryList**
+**UsageSummary**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -176,7 +181,7 @@ This API does not require a request body.
 | productUiId | String | Homepage service UI ID |
 | usage | BigDecimal | Usage amount |
 
-**extraSummaryList**
+**ProjectExtra**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -240,12 +245,17 @@ This API does not require a request body.
 
  Name | Type | Description |
 | --- | --- | --- |
-| organizations | List;Object&gt; | Organization list |
-| organizations[].orgId | String | Organization ID |
-| organizations[].orgName | String | Organization name |
-| organizations[].orgStatusCode | String | Organization status (STABLE: normal status, CLOSED: deleted status |
-| organizations[].orgCreationType | String | Organization creation type (USER: customer-created organization, SYSTEM: organization created by the system) |
-| organizations[].cloudType | String | Cloud type |
+| organizations | List&lt;OrganizationProtocol&gt; | Organization List |
+
+**OrganizationProtocol**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| orgId | String | Organization ID |
+| orgName | String | Organization name |
+| orgStatusCode | String | Organization status (STABLE: normal status, CLOSED: deleted status) |
+| orgCreationType | String | Organization creation type (USER: organization created by customer, SYSTEM: organization created by system) |
+| cloudType | String | Cloud type |
 
 
 ## Retrieve the Billing Amount per Organizations of Partner Users
@@ -345,55 +355,53 @@ This API does not require a request body.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| org | Object | Organization information |
-| org.orgId | String | Organization ID |
-| org.orgName | String | Organization name |
-| org.totalAmount | Long | Organization total amount |
-| org.usagePrice | Long | Amount used |
-| org.contractUsagePrice | Long | Total amount used with commitment-based discounts/commitment underutilization charge |
-| org.contractDiscountPrice | Long | Amount discounted by commitment |
-| org.contractExtraPrice | Long | Amount surcharged by commitment |
-| org.totalCredit | Long | Total Credit Amount |
-| org.country | String | Country code |
-| org.creditUsages | List<Object> | Credit usage amount |
-| org.projectDiscount | Object | List of discount details by project |
-| org.projectExtra | Object | List of surcharge details by project |
-| org.projects | List<Object> | List of projects |
+| org | Organization | Organization information |
 
-**creditUsages**
+**Organization**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| orgId | String | Organization ID |
+| orgName | String | Organization name |
+| totalAmount | Long | Organization final amount |
+| usagePrice | Long | Usage amount |
+| contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
+| contractDiscountPrice | Long | Amount discounted by contract |
+| contractExtraPrice | Long | Amount surcharged by contract |
+| totalCredit | Long | Credit final amount |
+| country | String | Country code |
+| creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage amount |
+| projectDiscount | PaymentStatementProjectAdjustment | List of discount details by project |
+| projectExtra | PaymentStatementProjectAdjustment | List of surcharge details by project |
+| projects | List&lt;Project&gt; | Project List |
+
+**CreditUsageProtocol**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | balanceTypeCode | String | Campaign type |
 | balanceTypeName | String | Campaign type name |
-| i18nBalanceTypeNameMap | Object | Campaign type name multilingual code |
+| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | Campaign type name multilingual code |
 | usageAmount | Long | Credit usage amount |
 
-**projectDiscount**
+**PaymentStatementProjectAdjustment**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | totalAdjustment | Long | Total discount amount |
-| details | List<Object> | Details |
-| details\[].projectId | String | Project ID |
-| details\[].projectName | String | Project name |
-| details\[].adjustment | Long | Discount amount |
-| details\[].adjustmentTypeCode | String | Discount type<br>\- CONTRACT\_EXTRA: Commitment underutilization charge<br>\- CONTRACT\_PENALTY: Cancellation fee<br>\- CONTRACT\_DISCOUNT: Commitment-based discount<br>\- CONTRACT\_PAYBACK: Partner payback<br>\- STATIC\_EXTRA: Fixed amount surcharge<br>\- PERCENT\_DISCOUNT: Percentage discount<br>\- COUPON: Coupon<br>\- STATIC\_DISCOUNT: Fixed amount discount<br>\- CUTOFF: cutoff under 500 won |
-| details\[].description | String | Discount details |
+| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | Details |
 
-**projectExtra**
+**PaymentStatementProjectAdjustmentDetail**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| totalAdjustment | Long | Total surcharge |
-| details | List<Object> | Details |
-| details\[].projectId | String | Project ID |
-| details\[].projectName | String | Project name |
-| details\[].adjustment | Long | Surcharge |
-| details\[].adjustmentTypeCode | String | Surcharge type<br>\- CONTRACT\_EXTRA: Commitment underutilization charge<br>\- CONTRACT\_PENALTY: Cancellation fee<br>\- CONTRACT\_DISCOUNT: Commitment-based discount<br>\- CONTRACT\_PAYBACK: Partner payback<br>\- STATIC\_EXTRA: Fixed amount surcharge<br>\- PERCENT\_DISCOUNT: Percentage discount<br>\- COUPON: Coupon<br>\- STATIC\_DISCOUNT: Fixed amount discount<br>\- CUTOFF: cutoff under 500 won |
-| details\[].description | String | Surcharge details |
+| projectId | String | Project ID |
+| projectName | String | Project name |
+| adjustment | Long | Discount/surcharge amount |
+| adjustmentTypeCode | String | Discount/surcharge type<br>- CONTRACT_EXTRA: Contract surcharge<br>- CONTRACT_PENALTY: Contract penalty<br>- CONTRACT_DISCOUNT: Contract discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: Truncate less than 500 won |
+| description | String | Discount/surcharge details |
 
-**projects**
+**Project**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -463,15 +471,20 @@ This API does not require a request body.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| projects | List<Object> | Project list |
-| projects[].orgId | String | Organization ID |
-| projects[].orgName | String | Organization name |
-| projects[].orgCreationType | String | Organization creation type<br><br>- USER: organization created by customer<br>- SYSTEM: organization created by system (mainly used for member marketplaces) |
-| projects[].orgStatusCode | String | Organization status<br><br>- STABLE: normal status<br>- CLOSED: deleted status |
-| projects[].projectId | String | Project ID |
-| projects[].projectName | String | Project name |
-| projects[].projectCreationType | String | Project creation type<br><br>- USER: project created by customer<br>- SYSTEM: project created in the system (mainly used for organization products and member marketplaces) |
-| projects[].projectStatusCode | String | Project status<br><br>- STABLE: normal status<br>- CLOSED: deleted status |
+| projects | List&lt;ProjectProtocol&gt; | Project List |
+
+**ProjectProtocol**
+
+| Name | Type | Description |
+| --- | --- |
+| orgId | String | Organization ID |
+| orgName | String | Organization Name |
+| orgCreationType | String | Organization Creation Type<br><br>- USER: Customer-created organization<br>- SYSTEM: system-created organization (primarily used in membership marketplaces) |
+| orgStatusCode | String | Organization Status<br><br>- STABLE: normal status<br>- CLOSED: Deleted status |
+| projectId | String | Project ID |
+| projectName | String | Project Name |
+| projectCreationType | String | Project Creation Type<br><br>- USER: Customer-created project<br>- SYSTEM: System-created project (primarily used in organization services and membership marketplaces) |
+| projectStatusCode | String | Project Status<br><br>- STABLE: normal status<br>- CLOSED: Deleted status |
 
 
 ## Retrieve Project Usage Details for Partner User
@@ -630,57 +643,53 @@ This API does not require a request body.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| project | Object | Project information |
-| project.projectId | String | Project ID |
-| project.projectName | String | Project name |
-| project.totalAmount | Long | Project total amount |
-| project.usagePrice | Long | Amount used |
-| project.contractUsagePrice | Long | Total usage amount with commitment-based discount/commitment underutilization charge applied |
-| project.contractDiscountPrice | Long | Amount discounted by contract |
-| project.contractExtraPrice | Long | Amount of commitment underutilization charge |
-| project.totalCredit | Long | Total credit amount |
-| project.country | String | Country code |
-| project.creditUsages | List<Object> | Credit Usage Amount |
-| project.projectDiscount | Object | Discount details by project |
-| project.projectExtra | Object | Surcharge details by project |
-| project.usageGroups | List<Object> | List of usage groups |
+| project | Project | Project Information |
 
-**creditUsages**
+**Project**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| projectId | String | Project ID |
+| projectName | String | Project Name |
+| totalAmount | Long | Project Final Amount |
+| usagePrice | Long | Usage Amount |
+| contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
+| contractDiscountPrice | Long | Amount discounted by contract |
+| contractExtraPrice | Long | Amount surcharged by contract |
+| totalCredit | Long | Final credit amount |
+| country | String | Country Code |
+| creditUsages | List&lt;CreditUsageProtocol&gt; | Credit Usage Amount |
+| projectDiscount | PaymentStatementProjectAdjustment | Project-specific discount details |
+| projectExtra | PaymentStatementProjectAdjustment | Project-specific surcharge details |
+| usageGroups | List&lt;UsageGroup&gt; | Usage Group List |
+
+**CreditUsageProtocol**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | balanceTypeCode | String | Campaign type (balance type) |
 | balanceTypeName | String | Campaign type name (balance type name) |
-| i18nBalanceTypeNameMap | Object | Campaign type name multilingual code |
+| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | Campaign type name multilingual code |
 | usageAmount | Long | Credit amount used |
 
-**projectDiscount**
+**PaymentStatementProjectAdjustment**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| totalAdjustment | Long | Total discount amount |
-| details | List<Object> | Details |
-| details[].projectId | String | Project ID |
-| details[].projectName | String | Project name |
-| details[].adjustment | Long | Discount amount |
-| details[].adjustmentTypeCode | String | Discount type<br>- CONTRACT_EXTRA: Commitment underutilization charge<br>- CONTRACT_PENALTY: Cancellation fee<br>- CONTRACT_DISCOUNT: Commitment-based discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: cutoff under 500 won |
-| details[].description | String | Discount details |
+| totalAdjustment | Long | Total discount/surcharge amount |
+| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | Details |
 
-**projectExtra**
+**PaymentStatementProjectAdjustmentDetail**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| totalAdjustment | Long | Total surcharge |
-| details | List<Object> | Details |
-| details[].projectId | String | Project ID |
-| details[].projectName | String | Project name |
-| details[].adjustment | Long | Surcharge |
-| details[].adjustmentTypeCode | String | Surcharge type<br>- CONTRACT_EXTRA: Commitment underutilization charge<br>- CONTRACT_PENALTY: Cancellation fee<br>- CONTRACT_DISCOUNT: Commitment-based discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: cutoff under 500 won |
-| details[].description | String | Surcharge details |
+| projectId | String | Project ID |
+| projectName | String | Project name |
+| adjustment | Long | Discount/surcharge amount |
+| adjustmentTypeCode | String | Discount/surcharge type<br>- CONTRACT_EXTRA: contract surcharge<br>- CONTRACT_PENALTY: contract penalty<br>- CONTRACT_DISCOUNT: contract discount<br>- CONTRACT_PAYBACK: partner payback<br>- STATIC_EXTRA: fixed amount surcharge<br>- PERCENT_DISCOUNT: percentage discount<br>- COUPON: coupon<br>- STATIC_DISCOUNT: fixed amount discount<br>- CUTOFF: truncate less than 500 won |
+| description | String | Discount/surcharge details |
 
-**usageGroups**
-
-#### usageGroups Basic Information
+**UsageGroup**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -692,18 +701,18 @@ This API does not require a request body.
 | totalItems | Integer | Total number of usages by UsageGroup |
 | totalPrice | Long | Total usage amount with commitment-based discount applied |
 | usagePrice | Long | Total usage amount |
-| usageResourceGroups | List<Object> | Grouped usage list |
-| usages | List<Object> | Detailed usage list |
+| usageResourceGroups | List&lt;UsageGroup.UsageResourceGroup&gt; | Grouped usage list |
+| usages | List&lt;Usage&gt; | Detailed usage list |
 
-**usageResourceGroups**
+**UsageGroup.UsageResourceGroup**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | parentResourceId | String | Parent resource ID for identification |
 | parentResourceName | String | Parent resource Name for identification |
-| usages | List<Object> | Detailed usage list (UsageDTO schema) |
+| usages | List<Object> | Detailed Usage |
 
-**UsageDTO Schema**
+**Usage**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -721,7 +730,7 @@ This API does not require a request body.
 | parentResourceId | String | Parent resource ID |
 | parentResourceName | String | Parent resource name |
 | price | Long | Usage amount |
-| productUiId | String | Homepage product UI ID |
+| productUiId | String | Homepage service UI ID |
 | projectId | String | Project ID |
 | projectName | String | Project name |
 | rangeFrom | BigDecimal | Starting range |
@@ -737,13 +746,13 @@ This API does not require a request body.
 | usage | BigDecimal | Usage |
 | useFixPrice | Boolean | Fixed price |
 
-**usages**
+**Usage**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | counterName | String | Counter name |
 | counterType | String | Counter type |
-| productId | String | Product ID |
+| productId | String | Service ID |
 | projectId | String | Project ID |
 | resourceId | String | Resource ID |
 | resourceName | String | Resource name |
@@ -910,9 +919,9 @@ This API does not require a request body.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| paymentStatements | List<Object> | List of bills |
+| paymentStatements | List&lt;PaymentStatement&gt; | List of bills |
 
-**paymentStatements**
+**PaymentStatement**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -920,11 +929,9 @@ This API does not require a request body.
 | autoPaymentTypeCode | String | Payment method<br><br>- PAYCO_CREDIT_CARD: Payco credit card<br>- CREDIT_CARD: credit card<br>- INTER_CREDIT_CARD: international credit card<br>- UNION_PAY: Union Pay<br>- JAPAN_BILLING: Japanese billing<br>- ACCOUNT_TRANSFER: account transfer<br>- CREDIT_ALL: general credit<br>- CREDIT_LIMIT: event credit<br>- ESM: Internal cost<br>- ONETIME_PAYMENT: One-time payment<br>- TAX_BILL: Issue a tax bill<br>- CONTRACT_BILL: Issue a tax bill (The amount of the bill may be adjusted through a separate contract)<br>- NONE: none |
 | isAutoPayment | Boolean | Whether automatic payment is enabled |
 | paymentInfo | String | Payment method information |
-| statements | List<Object> | List of payment details by billing group |
+| statements | List&lt;PaymentStatement&gt; | List of payment details by billing group |
 
-**statements**
-
-#### statements Basic Information
+**PaymentStatement**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -951,11 +958,11 @@ This API does not require a request body.
 | realTaxAmount | Long | Actual VAT Paid |
 | receiptStatusCode | String | Sales Voucher Status Code<br><br>- NONE: sales have not yet been reported to the accounting team, so sales receipts cannot be viewed.<br>- EXIST: after the final amount adjustment is completed, the sales report is sent to the accounting team, and the sales voucher can be viewed. |
 | refundAccountRegisterStatusCode | String | Status of whether the refund account has been registered<br><br>- ALLOW: Open status of refund account registration<br>- DENY: Default, Close status of register refund accounts |
-| details | List<Object> | List of details by billing group |
+| details | List&lt;PaymentStatementDetail&gt; | List of details by billing group |
 
 **details**
 
-#### Basic Information for Details
+**PaymentStatementDetail**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -968,24 +975,24 @@ This API does not require a request body.
 | totalCredit | Long | Total credit usage amount |
 | totalDiscount | Long | Discount amount |
 | totalExtra | Long | Surcharge amount |
-| creditUsages | List<Object> | Credit usage amount |
-| orgList | List<Object> | List of organizations |
-| usageGroups | List<Object> | List of usage groups |
-| billingGroupDiscount | Object | Billing group discount details |
-| billingGroupExtra | Object | Billing group surcharge details |
-| projectDiscount | Object | Project-specific discount details |
-| projectExtra | Object | Project-specific surcharge details |
+| creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage amount |
+| orgList | List&lt;Organization&gt; | List of organizations |
+| usageGroups | List&lt;UsageGroup&gt; | List of usage groups |
+| billingGroupDiscount | PaymentStatementBillingGroupAdjustment  | Billing group discount details |
+| billingGroupExtra | PaymentStatementBillingGroupAdjustment  | Billing group surcharge details |
+| projectDiscount | PaymentStatementProjectAdjustment  | Project-specific discount details |
+| projectExtra | PaymentStatementProjectAdjustment  | Project-specific surcharge details |
 
-**creditUsages**
+**CreditUsageProtocol**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | balanceTypeCode | String | Campaign type (balance type) |
 | balanceTypeName | String | Campaign type name (balance type name) |
-| i18nBalanceTypeNameMap | Object | Campaign type name multilingual code |
+| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | Campaign type name multilingual code |
 | usageAmount | Long | Credit amount used |
 
-**orgList**
+**Organization**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -993,7 +1000,7 @@ This API does not require a request body.
 | orgName | String | Organization name |
 | totalAmount | Long | Organization total amount |
 
-**usageGroups**
+**UsageGroup**
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -1005,57 +1012,45 @@ This API does not require a request body.
 | totalItems | Integer | Total number of usages by UsageGroup |
 | totalPrice | Long | Total usage amount with commitment-based discount discount applied |
 | usagePrice | Long | Total usage amount |
-| usageResourceGroups | List<Object> | Grouped usage list |
-| usages | List<Object> | Detailed usage list |
+| usageResourceGroups | List&lt;UsageGroup.UsageResourceGroup&gt; | Grouped usage list |
+| usages | List&lt;Usage&gt; | Detailed usage list |
 
-**billingGroupDiscount**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| totalAdjustment | Long | Discount amount |
-| details | List<Object> | Details |
-| details[].adjustment | Long | Discount amount |
-| details[].adjustmentTypeCode | String | Discount type<br><br>- CONTRACT_EXTRA: Commitment underutilization charge<br>- CONTRACT_PENALTY: Cancellation fee<br>- CONTRACT_DISCOUNT: Commitment-based discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: cutoff under 500 won |
-| details[].description | String | Discount details |
-
-**billingGroupExtra**
+**PaymentStatementBillingGroupAdjustment**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| totalAdjustment | Long | Surcharge amount |
-| details | List<Object> | details |
-| details[].adjustment | Long | Surcharge amount |
-| details[].adjustmentTypeCode | String | Surcharge type<br><br>- CONTRACT_EXTRA: Commitment underutilization charge<br>- CONTRACT_PENALTY: Cancellation fee<br>- CONTRACT_DISCOUNT: Commitment-based discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: cutoff under 500 won |
-| details[].description | String | Surcharge details |
+| totalAdjustment | Long | Discount/surcharge amount |
+| details | List&lt;PaymentStatementAdjustment&gt; | Details |
 
-**projectDiscount**
+**PaymentStatementAdjustment**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| totalAdjustment | Long | Total discount amount |
-| details | List<Object> | Details |
-| details[].projectId | String | Project ID |
-| details[].projectName | String | Project name |
-| details[].adjustment | Long | Discount amount |
-| details[].adjustmentTypeCode | String | Discount type<br><br>- CONTRACT_EXTRA: Commitment underutilization charge<br>- CONTRACT_PENALTY: Cancellation fee<br>- CONTRACT_DISCOUNT: Commitment-based discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: cutoff under 500 won |
-| details[].description | String | Discount details |
+| adjustment | Long | Discount/surcharge amount |
+| adjustmentTypeCode | String | Discount/surcharge type<br><br>- CONTRACT_EXTRA: Contract surcharge<br>- CONTRACT_PENALTY: Contract penalty<br>- CONTRACT_DISCOUNT: Contract discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: Truncate less than 500 won |
+| description | String | Discount/surcharge details |
 
-**projectExtra**
+**PaymentStatementProjectAdjustment**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| totalAdjustment | Long | Total surcharge |
-| details | List<Object> | Details |
-| details[].projectId | String | Project ID |
-| details[].projectName | String | Project name |
-| details[].adjustment | Long | Surcharge |
-| details[].adjustmentTypeCode | String | Surcharge type<br><br>- CONTRACT_EXTRA: Commitment underutilization charge<br>- CONTRACT_PENALTY: Cancellation fee<br>- CONTRACT_DISCOUNT: Commitment-based discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: cutoff under 500 won |
-| details[].description | String | Surcharge details |
+| totalAdjustment | Long | Total Discount/Surcharge |
+| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | Details |
+
+**PaymentStatementProjectAdjustmentDetail**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| projectId | String | Project ID |
+| projectName | String | Project name |
+| adjustment | Long | Discount/surcharge amount |
+| adjustmentTypeCode | String | Discount/surcharge type<br><br>- CONTRACT_EXTRA: Contract surcharge<br>- CONTRACT_PENALTY: Contract penalty<br>- CONTRACT_DISCOUNT: Contract discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: Truncate less than 500 won |
+| description | String | Discount/surcharge details |
 
 
-## Retrieve Self-Product Metering of Solutions Partner
+## Retrieve Self-Service Metering of Solutions Partner
 
-Retrieve metering information for their products by a solution partner.
+Retrieve metering information for their services by a solution partner.
 
 !!! tip "Verify Solution Partner"
     Only solution partners or users authorized by a solution partner can call this feature.
@@ -1074,7 +1069,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | Partner ID |
-| productId | Path | String | Y | Product ID |
+| productId | Path | String | Y | Service ID |
 | from | Query | String | Y | Query start date (yyyy-MM-ddThh:mm:ss.sssZ, inclusive) |
 | to | Query | String | Y | Query end date (yyyy-MM-ddThh:mm:ss.sssZ, exclusive) |
 | counterName | Query | String | Y | Counter name |
@@ -1120,26 +1115,30 @@ This API does not require a request body.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| meterList | List<Object> | Metering list |
-| meterList[].appKey | String | Product App Key |
-| meterList[].counterName | String | Counter name |
-| meterList[].counterType | String | Counter type<br><br>- DELTA: increment value<br>- GAUGE: current value<br>- HOURLY_LATEST: hourly latest value<br>- DAILY_MAX: daily maximum value<br>- MONTHLY_MAX: Monthly maximum value<br>- STATUS: status value |
-| meterList[].counterUnit | String | Counter unit |
-| meterList[].counterValue | String | Usage status (only used when counterType is STATUS) |
-| meterList[].counterVolume | BigDecimal | Counter volume |
-| meterList[].gmid | String | Global metering ID |
-| meterList[].insertTime | String | Metering insert time |
-| meterList[].orgId | String | Organization ID |
-| meterList[].parentResourceId | String | Parent resource ID |
-| meterList[].productId | String | Product ID |
-| meterList[].projectId | String | Project ID |
-| meterList[].resourceId | String | Resource ID |
-| meterList[].resourceName | String | Resource name |
-| meterList[].source | String | IP or host name where metering occurred |
-| meterList[].stationId | String | Station ID |
-| meterList[].timestamp | String | Metering occurrence time |
+| meterList | List&lt;MeterProtocol&gt; | Metering list |
 | totalItems | Integer | Total number of items |
 
+**MeterProtocol**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| appKey | String | Service app key |
+| counterName | String | Counter name |
+| counterType | String | Counter type <br><br>- DELTA: Incremental value <br>- GAUGE: Current value <br>- HOURLY_LATEST: Latest hourly value <br>- DAILY_MAX: Daily maximum value <br>- MONTHLY_MAX: Monthly maximum value <br>- STATUS: Status value |
+| counterUnit | String | Counter unit |
+| counterValue | String | Usage status (only used when counterType is STATUS) |
+| counterVolume | BigDecimal | Counter volume |
+| gmid | String | Global metering ID |
+| insertTime | String | Metering insert time |
+| orgId | String | Organization ID |
+| parentResourceId | String | Parent resource ID |
+| productId | String | Service ID |
+| projectId | String | Project ID |
+| resourceId | String | Resource ID |
+| resourceName | String | Resource name |
+| source | String | IP or hostname where metering occurred |
+| stationId | String | Station ID |
+| timestamp | String | Metering occurrence time |
 
 ## Create Organization for Partner User
 
@@ -1244,6 +1243,302 @@ This API does not require a request body.
 
 </details>
 
+
+## Daily Usage Pricing
+
+Retrieve details of a partner user's daily usage fees.
+
+!!! tip "Verify Partner Agreement"
+Checks whether the partner is the owner of a given project or organization, or has a partner agreement with the owner on the date being queried.
+
+!!! note "Query Scope Restrictions"
+- Either projectId or orgId must be set.
+- Both projectId and orgId cannot be set simultaneously.
+
+### Required Permissions
+`Partner.Daily.Usage.List`
+
+### Request
+
+```
+GET /v1/billing/partners/{partnerId}/daily-usage-prices
+```
+
+### Request Parameters
+
+| Name | Category | Type | Required | Description |
+| --- | --- | --- | --- |
+| partnerId | Path | String | Y | Partner ID |
+| projectId | Query | String | N | Project ID<br>Cannot be set simultaneously with orgId |
+| orgId | Query | String | N | Organization ID<br>Cannot be set simultaneously with projectId |
+| counterName | Query | String | N | Counter name |
+| date | Query | String | Y | View date (yyyy-MM-dd format) |
+| page | Query | Integer | Y | Selected page (minimum: 1) |
+| limit | Query | Integer | Y | Number of items to display on the page (minimum: 1, maximum: 2,000) |
+
+### Request Body
+
+This API does not require a request body.
+
+### Response
+
+<details>
+<summary><strong>Example Response</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "SUCCESS"
+  },
+  "projectDailyUsagePrices": [
+    {
+      "basicPrice": 0,
+      "billingGroupId": "billing123",
+      "contractId": "contract123",
+      "contractPrice": 0,
+      "counterName": "c2.small",
+      "deltaBasicPrice": 0,
+      "deltaContractPrice": 0,
+      "deltaUsage": 0,
+      "metadata": {},
+      "orgId": "org123",
+      "parentResourceId": "parent-resource-123",
+      "parentResourceName": "parent resource",
+      "paymentGroupId": "payment123",
+      "priceInformation": [
+        {}
+      ],
+      "projectId": "project123",
+      "resourceId": "resource123",
+      "resourceName": "test-resource",
+      "usage": 0,
+      "usedDate": "2024-01-01",
+      "uuid": "user123"
+    }
+  ],
+  "totalItems": 1
+}
+```
+
+</details>
+
+#### Basic Response Structure
+
+| Name | Type | Description |
+| --- | --- | --- |
+| projectDailyUsagePrices | List&lt;DailyUsagePrice&gt; | List of daily usage prices |
+| totalItems | Integer | Number of results retrieved |
+
+**DailyUsagePrice**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| basicPrice | Long | Pay-as-you-go price |
+| billingGroupId | String | Billing group ID |
+| contractId | String | Agreement ID |
+| contractPrice | Long | Agreement price |
+| counterName | String | Counter name |
+| deltaBasicPrice | Long | Daily Pay-as-you-go price |
+| deltaContractPrice | Long | Daily Agreement price |
+| deltaUsage | BigDecimal | Daily usage |
+| metadata | Map&lt;String, Object&gt; | Metadata |
+| orgId | String | Organization ID |
+| parentResourceId | String | Parent Resource ID |
+| parentResourceName | String | Parent Resource Name |
+| paymentGroupId | String | Payment Group ID |
+| priceInformation | List&lt;Map&lt;String, Object&gt;&gt; | Unit Price Information |
+| projectId | String | Project ID |
+| resourceId | String | Resource ID |
+| resourceName | String | Resource Name |
+| usage | BigDecimal | Usage |
+| usedDate | String | Usage Date |
+| uuid | String | Member UUID |
+
+
+## Retrieve Resource Usage Prices by Tag
+
+Retrieve resource usage prices categorized by tag.
+
+!!! tip "Verify Partner Agreement"
+Checks whether the partner is the owner of the given project or organization, or has a partner agreement with the owner on the date of the query.
+
+!!! note "Query Scope Restrictions"
+- Either projectId or orgId must be provided.
+- Both projectId and orgId cannot be set simultaneously.
+- Either tagIds or groupIds must be provided.
+
+### Required Permissions
+`Partner.Daily.Usage.List`
+
+### Request
+
+```
+POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
+```
+
+### Request Parameters
+
+| Name | Category | Type | Required | Description |
+| --- | --- | --- | --- |
+| partnerId | Path | String | Y | Partner ID |
+| page | Query | Integer | Y | Selected page (minimum: 1) |
+| limit | Query | Integer | Y | Number of items to display on the page (minimum: 1, maximum: 2,000) |
+
+### Request Body
+
+<details>
+<summary><strong>Example Request</strong></summary>
+
+```json
+{
+  "date": "2024-01-01",
+  "groupIds": [
+    "group123"
+  ],
+  "orgId": "org123",
+  "projectId": "project123",
+  "searchType": "RESOURCE",
+  "tagIds": [
+    1001
+  ]
+}
+```
+
+</details>
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| date | String | Y | Query start date (in yyyy-MM-dd format) |
+| groupIds | List&lt;String&gt; | N | List of group IDs<br>Either tagIds or groupIds is required |
+| orgId | String | N | Organization ID<br>Either projectId or orgId is required |
+| projectId | String | N | Project ID<br>Either projectId or orgId is required |
+| searchType | String | Y | Query type<br><br>- RESOURCE: By resource<br>- DAILY: By day |
+| tagIds | List&lt;Long&gt; | N | List of tag IDs<br>Either tagIds or groupIds is required |
+
+### Response
+
+<details>
+<summary><strong>Example Response</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "SUCCESS"
+  },
+  "resourceUsagePrices": [
+    {
+      "basicPrice": 100000,
+      "billingGroupId": "billing123",
+      "billingGroupName": "basic billing group",
+      "categoryMain": "COMPUTE",
+      "categorySub": "INSTANCE",
+      "contractId": "contract123",
+      "contractPrice": 95000,
+      "counterName": "c2.small",
+      "country": "KR",
+      "displayOrder": "1",
+      "orgId": "org123",
+      "orgName": "test organization",
+      "parentResourceId": "parent-resource-123",
+      "paymentGroupId": "payment123",
+      "priceInformation": "unit price info",
+      "priceInformations": [
+        {
+          "basicUnitPrice": 1000.0,
+          "contractUnitPrice": 950.0,
+          "displayName": {
+            "displayNameEn": "c2.small Instance",
+            "displayNameJa": "c2.small インスタンス",
+            "displayNameKo": "c2.small 인스턴스",
+            "displayNameZh": "c2.small 实例"
+          },
+          "rangeFrom": 0,
+          "slidingCalculationTypeCode": "NONE",
+          "unit": 1,
+          "unitName": "hours"
+        }
+      ],
+      "productId": "compute",
+      "productUiId": "compute-instance",
+      "projectId": "project123",
+      "projectName": "test project",
+      "regionTypeCode": "KR",
+      "resourceId": "resource123",
+      "usage": 100.0,
+      "useFixPriceYn": "N",
+      "usedDate": "2024-01-01"
+    }
+  ],
+  "totalItems": 1,
+  "totalPrice": 95000
+}
+```
+
+</details>
+
+#### Basic Response Structure
+
+| Name | Type | Description |
+| --- | --- | --- |
+| resourceUsagePrices | List&lt;ResourceUsagePrice&gt; | List of resource usage prices |
+| totalItems | Integer | Number of results retrieved |
+| totalPrice | Long | Total usage price |
+
+**ResourceUsagePrice**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| basicPrice | Long | Pay-as-you-go price |
+| billingGroupId | String | Billing group ID |
+| billingGroupName | String | Billing group name |
+| categoryMain | String | Main category |
+| categorySub | String | Subcategory |
+| contractId | String | Agreement ID |
+| contractPrice | Long | Agreement price |
+| counterName | String | Counter name |
+| country | String | Service country |
+| displayOrder | String | Bill Display Order |
+| orgId | String | Organization ID |
+| orgName | String | Organization Name |
+| parentResourceId | String | Parent Resource ID |
+| paymentGroupId | String | Payment Group ID |
+| priceInformation | String | Unit Price Information |
+| priceInformations | List&lt;PriceInfo&gt; | Unit Price Information (Details) |
+| productId | String | Service ID |
+| productUiId | String | Homepage Service UI ID |
+| projectId | String | Project ID |
+| projectName | String | Project Name |
+| regionTypeCode | String | Region Type Code |
+| resourceId | String | Resource ID |
+| usage | BigDecimal | Usage |
+| useFixPriceYn | String | Whether to use a flat rate |
+| usedDate | String | Usage Date |
+
+**PriceInfo**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| basicUnitPrice | BigDecimal | Metered Unit Price |
+| contractUnitPrice | BigDecimal | Contracted Unit Price |
+| displayName | DisplayName | Bill Display Name |
+| rangeFrom | BigDecimal | Starting Range |
+| slidingCalculationTypeCode | String | Sliding Calculation Type <br><br>- NONE: None <br>- SECTION_SUM: Section Sum <br>- SECTION_SELECTED: Section Selection |
+| unit | Long | Unit |
+| unitName | String | Unit Name |
+
+**DisplayName**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| displayNameEn | String | Bill Display Name (English) |
+| displayNameJa | String | Bill Display Name (Japanese) |
+| displayNameKo | String | Bill Display Name (Korean) |
+| displayNameZh | String | Invoice Exposure Name (Chinese) |
+
 ## Error Code
 
 | resultCode | Description | Action |
@@ -1254,6 +1549,7 @@ This API does not require a request body.
 | -6 | An error occurs when the caller's authorization for the called API fails, or partner authorization verification fails | Check if the caller has permission to make API calls and, if necessary, contact your system administrator to request permission. Check the calling account permissions and request scope partner ID |
 | -5 | Permission denied - Not the owner or the actual owner of the organization being deleted is different from the requesting partner user | Verify that the requester is the owner of the organization and that the target organization is owned by the partner user |
 | -4 | Permission denied - Not a member | Verify that the requester is a member of the partner organization, obtain the appropriate permissions, and retry |
+| -2 | Error when parameters are invalid | Check the format and values ​​of the request parameters and retry with the correct values ​​|
 | 404 | Occurs when calling a non-existent API | Check the HTTP method and URI of the calling API |
 | 500 | Abnormal system error | Contact your system administrator |
 | 501 | Invalid date format | The date parameter was provided in the correct format |
@@ -1264,19 +1560,19 @@ This API does not require a request body.
 | 1,000 | Error when parameters are incorrect | Check the format and values ​​of the request parameters and retry with the correct values ​​|
 | 1,200 | API call failed | Retry later or check the system status |
 | 10,005 | Error when request parameters are incorrect | Check the required and configurable values ​​for the request parameters |
-| 11,010 | Insufficient permissions to view usage | Check and grant permissions for products/counters/organizations |
+| 11,010 | Insufficient permissions to view usage | Check and grant permissions for services/counters/organizations |
 | 11,012 | No access to the organization | Grant the user access to the organization |
 | 11,013 | The member is not a partner user, or the specified partner ID does not match the partner user UUID | Check whether the member was a partner user during the specified period and reset the partnership. Verify that the partner user is authorized and linked to the partner. |
 | 12,000 | Project not found | Verify that the requested project ID exists and retry with the correct project ID. |
 | 12,100 | Error when a project member does not exist. | Use an existing project member UUID. |
 | 17,001 | App key not found | Verify that the app key was issued correctly and reissue it if necessary. |
-| 17,003 | No association between the app key and project/product. | Associate the app key with the correct project/product. |
+| 17,003 | No association between the app key and project/service. | Associate the app key with the correct project/service. |
 | 17,501 | Organization not found | Verify that the organization ID exists. |
 | 18,001 | Project not found | Verify that the project ID exists. |
 | 22,001 | No partner default group. | Verify the partner default group settings. |
 | 22,002 | No partner payment group. | Verify the partner payment group settings. |
 | 22,003 | Partner adjustment range error. Verify that the partner adjustment value is within the allowable range |
-| 22,004 | Not a solution partner product | Verify that the requested product is a solution partner product |
+| 22,004 | Not a solution partner service | Verify that the requested service is a solution partner service |
 | 22,005 | Not a solution partner | Verify that the partner qualifies as a solution partner |
 | 22,021 | An error occurs when the number of organizations created exceeds the limit set for the organization owner account when creating an organization | 1) Delete unused organizations to secure the number of organizations that can be created. <br>2) Adjust the maximum number of organization creations through the system administrator |
 | 22,023 | Organization creation is restricted due to exceeding the MSP partner limit | Adjust the MSP partner limit or organize the organization |
