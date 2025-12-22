@@ -132,6 +132,7 @@ If you set IP ACLs through **Organization Management > Governance Settings > Org
 | POST | [/v1/organizations](#자신의-조직-추가) | Add your own organization |
 | DELETE | [/v1/organizations/{org-id}](#조직-단건-삭제) | Delete a single organization |
 | GET | [/v1/products](#서비스-정보-목록-조회) | View service information lists |
+| GET | [/v1/messages/role](#역할-설명-다국어-조회) | Retrieve role descriptions in multiple languages |
 
 
 <a id="프로젝트-멤버-생성"></a>
@@ -1604,7 +1605,7 @@ API to get the active governance.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   governanceTypeCode | String| No | Governance type  |
+|   governanceTypeCode | String| No | Governonce type<br>- APPROVE_PROCESS: approval processing<br>- BLOCK_STORAGE_SNAPSHOT: whether to use blockStorage's snapshot function<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAAS resource permission control and access terminal restriction settings<br>- PRIVACY_PROTECTION: personal information protection<br>- UNIQUE_INSTANCE_NAME: prevent instance name duplication |
 |   regDatetime | Date| No | When to enable governance  |
 
 
@@ -1976,8 +1977,8 @@ API to modify roles in the project role group.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-<a id="조직-멤버-역할-변경"></a>
-#### Change organization member roles
+<a id="조직-멤버-역할-수정"></a>
+#### Modify organization member roles
 
 > PUT "/v1/organizations/{org-id}/members/{member-uuid}"
 
@@ -2930,7 +2931,7 @@ For each language, you can get the impression name and type for calculating the 
 
 
 ##### Required permissions
-APIs that can be called if you have signed up to NHN Cloud
+Available to all members. No specific permissions required.
 
 ##### Request Parameter
 
@@ -3034,7 +3035,7 @@ APIs that can be called if you have signed up to NHN Cloud
 API that provides a list of the main categories and subcategories exposed in the bill, and the counters they contain.
 
 ##### Required permissions
-APIs that can be called if you have signed up to NHN Cloud
+Available to all members. No specific permissions required.
 
 ##### Request Parameter
 
@@ -3189,7 +3190,7 @@ API to get a list of project AppKeys being used by the project.
 API to get a list of a member's User Access Key IDs.
 
 ##### Required permissions
-APIs that can be called if you have signed up to NHN Cloud
+Available to all members. No specific permissions required.
 
 
 ##### Response Body
@@ -3309,7 +3310,7 @@ API to generate an AppKey for use in your project.
 API to register a member's User Access Key ID.
 
 ##### Required permissions
-APIs that can be called if you have signed up to NHN Cloud
+Available to all members. No specific permissions required.
 
 ##### Request Parameter
 
@@ -4055,7 +4056,7 @@ API to get the credentials of members in the organization or project.
 > GET /v1/organizations
 
 ##### Required Permission
-API that can be called by members
+Available to all members. No specific permissions required.
 
 **[Query Parameter]**
 
@@ -4166,7 +4167,7 @@ API that can be called by members
 | domainName | String | Yes | Organization domain name |
 
 
-<a id="조직-추가"></a>
+<a id="자신의-조직-추가"></a>
 #### Add your own organization
 
 > POST /v1/organizations
@@ -4174,7 +4175,7 @@ API that can be called by members
 An API to add your own organization.
 
 ##### Required Permission
-API that can be called by members
+Available to all members. No specific permissions required.
 
 ##### Request Parameter
 
@@ -4271,7 +4272,7 @@ An API to delete your own organization.
 This API retrieves a list of available services.
 
 ##### Required Permissions
-Any registered user can call this API.
+Available to all members. No specific permissions required.
 
 ##### Request Parameters
 
@@ -4325,6 +4326,82 @@ Any registered user can call this API.
 | productCategoryCode | String | Yes | Service Category Code (PROJECT, ORG, MARKET_PLACE) |
 | productId | String | Yes | Service ID |
 | productName | String | Yes | Service Name |
+
+
+<a id="역할-설명-다국어-조회"></a>
+#### Retrieve Role Descriptions in Multiple Languages
+
+> GET /v1/messages/role
+
+This API retrieves a list of role descriptions in multiple languages.
+
+##### Required Permission
+Available to all members. No specific permissions required.
+
+##### Request Parameter
+
+| Category | Name | Type | Required | Description |
+|------------- |------------- | ------------- | ------------- | ------------- |
+| Query |messageType | String| No | Message Type<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
+| Query |languages ​​| List&lt;String>| No | Language<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
+| Query |keyword | String| No | Search Keyword |
+| Query |messageId | String| No | Message ID |
+| Query |limit | Integer| Yes | Number of Displays per Page |
+| Query |page | Integer| Yes | Target Page |
+
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "messages": [
+    {
+      "i18nMessageSeq": 0,
+      "categoryId": "categoryId",
+      "messageId": "messageId",
+      "messageType": "MESSAGE",
+      "description": "description",
+      "koKr": "한국어 메시지",
+      "enUs": "English message",
+      "jaJp": "日本語メッセージ",
+      "zhCn": "中文消息"
+    }
+  ],
+  "paging": {
+    "limit": 10,
+    "page": 1,
+    "totalCount": 100
+  }
+}
+```
+
+###### Response
+
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| header | [Common Response](#Response) | Yes | |
+| messages | List<MessageProtocol> | Yes | Message list |
+| paging | [PagingResponse](#pagingresponse)| Yes | |
+
+###### MessageProtocol
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| i18nMessageSeq | Long | No | Message sequence |
+| categoryId | String | No | Category ID |
+| messageId | String | No | Message ID |
+| messageType | String | No | Message type (MESSAGE, ERROR) |
+| description | String | No | Description |
+| koKr | String | No | Korean message |
+| enUs | String | No | English message |
+| jaJp | String | No | Japanese message |
+| zhCn | String | No | Chinese message |
 
 
 ### Error Code
