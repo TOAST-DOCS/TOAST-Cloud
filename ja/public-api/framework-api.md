@@ -136,7 +136,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | GET | [/v1/organizations](#自分の組織一覧の照会) | 自分の組織一覧の照会 |
 | POST | [/v1/organizations](#自分の組織の追加) | 自分の組織の追加 |
 | DELETE | [/v1/organizations/{org-id}](#組織の個別削除) | 組織の個別削除 |
-| GET | [/v1/messages/role](#役割-説明-多言語-照会) | 役割説明多言語照会 |
+| GET | [/v1/messages/role](#ロール-説明-多言語-照会) | ロール説明多言語照会 |
 
 
 <a id="プロジェクト-メンバー-作成"></a>
@@ -4502,11 +4502,11 @@ GET /v1/organizations
 | productName | String | Yes | サービス名 |
 
 
-<a id="役割-説明-多言語-照会"></a>
-#### 役割説明多言語照会
+<a id="ロール-説明-多言語-照会"></a>
+#### ロール説明多言語照会
 
 > GET /v1/messages/role
-役割の多言語リストを取得するAPIです。
+ロールの多言語リストを取得するAPIです。
 
 ##### 必要権限
 会員であれば特定の権限なしで呼び出し可能なAPIです。
