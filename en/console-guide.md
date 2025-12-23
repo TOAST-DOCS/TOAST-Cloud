@@ -511,9 +511,9 @@ Members are classified into NHN Cloud members and IAM members.
 | Email | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates<br> Create, Read, Update, Delete in Manage Call Rejects<br> Create, Read, Update, Delete in Manage Mail Domains<br> Create, Read, Update, Delete in Manage Tags<br> Create, Read, Update, Delete in Manage UIDs<br> Create, Read, Update, Delete in Delivery Setting<br> Create, Read, Update, Delete in Manage Webhooks |
 | Email | STATISTICS ADMIN | Read in Retrieve Statistics, Create Download Search Result |
 | KakaoTalk Bizmessage | ADMIN | Create, Read, Update, Delete for KakaoTalk Bizmessage Service |
-| KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create, Read in Send<br> (FriendTalk)Create, Read in Send |
-| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result<br> (AlimTalk) Read in Query Mass Delivery, Create Download Search Result<br> (FriendTalk)Read in Query Delivery Result, Create Download Search Result<br> (FriendTalk)Read in Query Mass Delivery, Create Download Search Result |
-| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group<br> (FriendTalk)Create, Read, Update, Delete in Manage Images<br> (FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery |
+| KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create, Read in Send|
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result<br> (AlimTalk) Read in Query Mass Delivery, Create Download Search Result|
+| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group|
 | KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | Face Recognition | ADMIN | Create, Read, Update, Delete for Face Recognition Service |
 | AI Fashion |	ADMIN |	Create, Read, Update, Delete for AI Fashion Service |
