@@ -315,13 +315,12 @@ Resource usage is calculated for each project.
 ### Resource Provision Policy for Notification Hub
 
 The number of messages sent by the SMS service and the Notification Hub service are added up.
-The number of AlimTalk/ FriendTalk messages sent by KakaoTalk Bizmessage service and Notification Hub service are added up.
+The number of AlimTalk messages sent by KakaoTalk Bizmessage service and Notification Hub service are added up.
 
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | SMS Sent Count | Per organization | 5,000 cases | O | |
 | Alimtalk Sent Count | KakaoTalk Channel per day | 1,000 cases | O | |
-| FriendTalk Sent Count | KakaoTalk Channel per day | 1,000 cases | O | |
 
 ### Resource Provision Policy for SMS
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
@@ -332,7 +331,6 @@ The number of AlimTalk/ FriendTalk messages sent by KakaoTalk Bizmessage service
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | Alimtalk Sent Count | KakaoTalk Channel per day | 1,000 cases | O | |
-| FriendTalk Sent Count | KakaoTalk Channel per day | 1,000 cases | O | |
 
 ### Resource Provision Policy for Face Recognition Service
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
