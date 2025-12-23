@@ -61,7 +61,7 @@ All APIs have the following common response structure:
 | header.resultCode | Integer | Result code (for success) |
 | header.resultMessage | String | Result message |
 
-!!! warning "API Response Field Extensibility"
+!!! danger "API Response Field Extensibility"
     API Responses may contain additional fields not specified below. Be careful that new fields are added and no error occurs.
 
 
@@ -515,10 +515,10 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | projectId | Path | String | Y | Project ID |
 | lang | Header | String | N | Language setting (default: ko_KR, configurable values: ko_KR, ja_JP, en_US) |
 | usageSchemaTypeCode | Query | String | N | Include usage<br>Decide whether to use the existing usage inquiry method or the new grouping method<br>(Default: NO_GROUP)<br><br>- NO_GROUP: usage is displayed as is, without being grouped. <br>- GROUP_BY_PARENT_RESOURCE: grouping is done by parent resource, but specific usage is not provided. The totalItems returned allows you to check how many parent resources exist.<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES: after grouping parent resources separately, which parent resource is grouped as and how it is used in detail |
-| page | Query | Integer | N | Selected page (default: 1, minimum: 1)<br>if usageSchemaTypeCode is NO_GROUP, it is unavailable |
-| itemsPerPage | Query | Integer | N | Number of items to be displayed on the page, if not entered, full view (minimum: 0)<br>Not available when usageSchemaTypeCode is NO_GROUP |
 | categoryMain | Query | String | N | Main category<br>If usageSchemaTypeCode is NO_GROUP, it cannot be used |
 | regionTypeCode | Query | String | N | Region type code (up to 20 characters)<br>If usageSchemaTypeCode is NO_GROUP, it cannot be used |
+| page | Query | Integer | N | Selected page (default: 1, minimum: 1)<br>if usageSchemaTypeCode is NO_GROUP, it is unavailable |
+| limit | Query | Integer | N | Number of items to be displayed on the page, if not entered, full view ((default: 0, minimum: 0)<br>Not available when usageSchemaTypeCode is NO_GROUP |
 
 ### Request Body
 
@@ -1070,8 +1070,8 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | Partner ID |
 | productId | Path | String | Y | Service ID |
-| from | Query | String | Y | Query start date (yyyy-MM-ddThh:mm:ss.sssZ, inclusive) |
-| to | Query | String | Y | Query end date (yyyy-MM-ddThh:mm:ss.sssZ, exclusive) |
+| from | Query | String | Y | Query start time (ISO 8601 format, inclusive) |
+| to | Query | String | Y | Query end time (ISO 8601 format, exclusive) |
 | counterName | Query | String | Y | Counter name |
 | meterTimeTypeCode | Query | String | N | Meter time type code<br><br>- INSERT_TIME: based on metering insertion time<br>- USED_TIME: based on metering insertion time |
 | page | Query | Integer | Y | Selected page (minimum: 1) |
@@ -1139,6 +1139,137 @@ This API does not require a request body.
 | source | String | IP or hostname where metering occurred |
 | stationId | String | Station ID |
 | timestamp | String | Metering occurrence time |
+
+
+## Delete Metering for Solution Partners
+
+Deletes metering data for a service owned by the solution partner.<br>
+Deletions will not be reflected in invoices that have already been created. Partners are strictly limited to managing their own services and cannot delete metering data for services owned by others.<br>
+This is an asynchronous operation due to the potential processing time. After calling the Delete API, use the returned asyncJobId to poll the job status and verify completion.
+
+!!! tip "Verify Solution Partner"
+    Only Solution Partners or users authorized by a Solution Partner can call this.
+
+### Required Permission
+`Partner.Meter.Delete`
+
+### Request
+
+```
+DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
+```
+
+### Request Parameter
+
+| Name | Category | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | Partner ID |
+| productId | Path | String | Y | Service ID |
+
+
+### Request Body
+
+<details>
+  <summary><strong>Example code</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T10:00:00Z",
+  "to": "2023-12-02T10:00:00Z",
+  "appKey": "string",
+  "counterNames": [
+    "string"
+  ]
+}
+```
+
+</details>
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| from | String | Y | Query start time (ISO 8601 format, inclusive) |
+| to | String | Y | Query end time (ISO 8601 format, exclusive) |
+| appKey | String | N | Product App Key<br>Either the app key or counter name must be present |
+| counterNames | List&lt;String&gt; | N | List of counter names to delete<br>Either the app key or counter name must be present |
+
+
+### Response
+
+<details>
+  <summary><strong>Response example</strong></summary>
+
+```json
+{
+  "asyncJobId": "string",
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  }
+}
+```
+
+</details>
+
+| Name | Type | Description |
+| --- | --- | --- |
+| asyncJobId | String | ID of the asynchronous job being executed |
+
+
+## Confirm Deletion of Solution Partner's Metering
+
+Verifies that the deletion is complete.<br>
+It is recommended to wait at least 5 seconds before the first verification call, as immediate requests may fail due to processing time.<br>
+We suggest polling every 5 seconds thereafter to check the status.
+
+!!! tip "Verify Soltion Partner"
+    Access is restricted to Solution Partners and their authorized users.
+
+!!! danger "Cautions for Deleting Metering Configurations"
+    Once a deletion is confirmed, the deletion job is removed. This endpoint can only be called once; subsequent attempts will return a 16500 error.
+
+### Required Permission
+`Partner.Meter.Delete`
+
+### Request
+
+```
+GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
+```
+
+### Request Parameter
+
+| Name | Category | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | Partner ID |
+| asyncJobId | Path | String | Y | ID of the asynchronous job executed |
+
+
+### Request Body
+
+This API does not require a request body.
+
+### Response
+
+<details>
+  <summary><strong>Response example</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "statusCode": "IN_PROGRESS"
+}
+```
+
+</details>
+
+| Name | Type | Description |
+| --- | --- | --- |
+| statusCode | String | Deletion status (IN_PROGRESS: deletion in progress, ERROR: an error occurred during deletion, SUCCESS: deleted successfully) |
 
 ## Create Organization for Partner User
 
@@ -1273,8 +1404,8 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 | orgId | Query | String | N | Organization ID<br>Cannot be set simultaneously with projectId |
 | counterName | Query | String | N | Counter name |
 | date | Query | String | Y | View date (yyyy-MM-dd format) |
-| page | Query | Integer | Y | Selected page (minimum: 1) |
-| limit | Query | Integer | Y | Number of items to display on the page (minimum: 1, maximum: 2,000) |
+| page | Query | Integer | N | Selected page (minimum: 1) |
+| limit | Query | Integer | N | Number of items to display on the page (minimum: 1, maximum: 2,000) |
 
 ### Request Body
 
@@ -1364,7 +1495,7 @@ Retrieve resource usage prices categorized by tag.
 !!! tip "Verify Partner Agreement"
 Checks whether the partner is the owner of the given project or organization, or has a partner agreement with the owner on the date of the query.
 
-!!! note "Query Scope Restrictions"
+!!! tip "Query Scope Restrictions"
 - Either projectId or orgId must be provided.
 - Both projectId and orgId cannot be set simultaneously.
 - Either tagIds or groupIds must be provided.
@@ -1383,8 +1514,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- |
 | partnerId | Path | String | Y | Partner ID |
-| page | Query | Integer | Y | Selected page (minimum: 1) |
-| limit | Query | Integer | Y | Number of items to display on the page (minimum: 1, maximum: 2,000) |
+| page | Query | Integer | N | Selected page (minimum: 1) |
+| limit | Query | Integer | N | Number of items to display on the page (minimum: 1, maximum: 2,000) |
 
 ### Request Body
 
@@ -1539,6 +1670,120 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | displayNameKo | String | Bill Display Name (Korean) |
 | displayNameZh | String | Invoice Exposure Name (Chinese) |
 
+## Retrieve Active Organization/Project Product Metering for Partners or Partner Users
+
+Retrieve the metering information.
+
+### Required Permission
+`Partner.Meter.List`
+
+### Request
+
+```
+POST /v1/billing/partners/{partnerId}/meters/search
+```
+
+### Request Parameter
+
+| Name | Category | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | Partner ID |
+| page | Query | Integer | N | Selected page (minimum: 1) |
+| limit | Query | Integer | N | Number of items to display on the page (minimum: 1, maximum: 2,000) |
+
+
+### Request Body
+
+<details>
+  <summary><strong>Example Code</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T10:00:00Z",
+  "to": "2023-12-02T10:00:00Z",
+  "appKeys": [
+    "string"
+  ],
+  "counterNames": [
+    "string"
+  ],
+  "meterTimeTypeCode": "INSERT_TIME"
+}
+```
+
+</details>
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| from | String | Y | Query start time (ISO 8601 format, inclusive) |
+| to | String | Y | Query end time (ISO 8601 format, exclusive) |
+| appKeys | List&lt;String&gt; | N | List of app keys<br>Either app key or counter name must be present |
+| counterNames | List&lt;String&gt; | N | List of counter names<br>Either app key or counter name must be present |
+| meterTimeTypeCode | String | N | Meter time type code<br>Determines whether to search by used time or by the time the request was inserted for from and to<br>(USED_TIME: used time (default), INSERT_TIME: inserted time) |
+
+
+### Response
+
+<details>
+  <summary><strong>Response example</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "meterList": [
+    {
+      "appKey": "string",
+      "counterName": "string",
+      "counterType": "DELTA",
+      "counterUnit": "string",
+      "counterValue": "string",
+      "counterVolume": 0,
+      "insertTime": "2023-12-01T10:00:00Z",
+      "orgId": "string",
+      "parentResourceId": "string",
+      "productId": "string",
+      "projectId": "string",
+      "resourceId": "string",
+      "resourceName": "string",
+      "stationId": "string",
+      "timestamp": "2023-12-01T10:00:00Z"
+    }
+  ],
+  "totalItems": 0
+}
+```
+
+</details>
+
+| Name | Type | Description |
+| --- | --- | --- |
+| meterList | List&lt;MeterProtocol&gt; | Metering List |
+| totalItems | Integer | Total Count |
+
+**MeterProtocol**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| appKey | String | App Key |
+| counterName | String | Counter Name |
+| counterType | String | Counter Type <br><br>- DELTA: incremental value <br>- GAUGE: current value <br>- HOURLY_LATEST: latest hourly value <br>- DAILY_MAX: maximum daily value <br>- MONTHLY_MAX: maximum monthly value <br>- STATUS: status value |
+| counterUnit | String | Usage Unit (KB, HOUR, etc.) |
+| counterValue | String | Usage Status<br>Used only when counter type is STATUS |
+| counterVolume | BigDecimal | Usage |
+| insertTime | String | Time spent from service to billing system |
+| orgId | String | Organization ID |
+| parentResourceId | String | Parent resource ID |
+| productId | String | Service ID |
+| projectId | String | Project ID |
+| resourceId | String | Resource ID |
+| resourceName | String | Resource name |
+| stationId | String | Station ID |
+| timestamp | String | Usage time |
+
 ## Error Code
 
 | resultCode | Description | Action |
@@ -1565,6 +1810,7 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | 11,013 | The member is not a partner user, or the specified partner ID does not match the partner user UUID | Check whether the member was a partner user during the specified period and reset the partnership. Verify that the partner user is authorized and linked to the partner. |
 | 12,000 | Project not found | Verify that the requested project ID exists and retry with the correct project ID. |
 | 12,100 | Error when a project member does not exist. | Use an existing project member UUID. |
+| 16500 | Asynchronous Job Not Found | The specified Asynchronous ID is invalid or does not exist. Verify that you have entered the correct Async ID |
 | 17,001 | App key not found | Verify that the app key was issued correctly and reissue it if necessary. |
 | 17,003 | No association between the app key and project/service. | Associate the app key with the correct project/service. |
 | 17,501 | Organization not found | Verify that the organization ID exists. |
@@ -1574,6 +1820,9 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | 22,003 | Partner adjustment range error. Verify that the partner adjustment value is within the allowable range |
 | 22,004 | Not a solution partner service | Verify that the requested service is a solution partner service |
 | 22,005 | Not a solution partner | Verify that the partner qualifies as a solution partner |
+| 22,007 | The partner does not have permission to access the resource | Verify that the target resource belongs to you or that you have the necessary access rights |
+| 22,008 | The request was made with an incorrect AppKey | Check if the AppKey associated with the service is valid and correctly entered |
+| 22,009 | The requested counter name is not recognized | Verify the counter name for the service and try again |
 | 22,021 | An error occurs when the number of organizations created exceeds the limit set for the organization owner account when creating an organization | 1) Delete unused organizations to secure the number of organizations that can be created. <br>2) Adjust the maximum number of organization creations through the system administrator |
 | 22,023 | Organization creation is restricted due to exceeding the MSP partner limit | Adjust the MSP partner limit or organize the organization |
 | 23,005 | An error occurs when an organization corresponding to the organization ID does not exist | Contact the system administrator |
