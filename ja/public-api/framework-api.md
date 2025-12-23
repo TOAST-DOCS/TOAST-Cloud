@@ -130,7 +130,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | GET | [/v1/organizations](#自分の組織一覧の照会) | 自分の組織一覧の照会 |
 | POST | [/v1/organizations](#自分の組織の追加) | 自分の組織の追加 |
 | DELETE | [/v1/organizations/{org-id}](#組織の個別削除) | 組織の個別削除 |
-
+| GET | [/v1/messages/role](#役割-説明-多言語-照会) | 役割説明多言語照会 |
 
 
 <a id="プロジェクト-メンバー-作成"></a>
@@ -1603,7 +1603,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   governanceTypeCode | String| No | ガバナンスタイプ |
+|   governanceTypeCode | String| No | ガバナンスタイプ<br>- APPROVE_PROCESS: 承認処理<br>- BLOCK_STORAGE_SNAPSHOT: BlockStorageのSnapshot機能使用可否<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAASリソース権限制御及び接続端末制限設定<br>- PRIVACY_PROTECTION: 個人情報保護<br>- UNIQUE_INSTANCE_NAME: インスタンス名重複防止 |
 |   regDatetime | Date| No | ガバナンス使用設定日時 |
 
 
@@ -1975,8 +1975,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#レスポンス)| Yes   |
 
-<a id="組織-メンバー-ロール-変更"></a>
-#### 組織メンバーロール変更
+<a id="組織-メンバー-ロール-修正"></a>
+#### 組織メンバーロール修正
 
 > PUT "/v1/organizations/{org-id}/members/{member-uuid}"
 
@@ -2824,7 +2824,7 @@ IP ACL設定を照会するAPIです。
 
 
 ##### 必要権限
-会員であれば呼び出し可能なAPI
+会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 ##### リクエストパラメータ
 
@@ -2931,7 +2931,7 @@ IP ACL設定を照会するAPIです。
 請求書に表示されるメインカテゴリーとサブカテゴリー及び含まれるカウンターのリストを提供するAPIです。
 
 ##### 必要権限
-会員であれば呼び出し可能なAPI
+会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 ##### リクエストパラメータ
 
@@ -3086,7 +3086,7 @@ IP ACL設定を照会するAPIです。
 メンバーのUser Access Key IDリストを照会するAPIです。
 
 ##### 必要権限
-会員であれば呼び出し可能なAPI
+会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 
 ##### レスポンス本文
@@ -3206,7 +3206,7 @@ IP ACL設定を照会するAPIです。
 メンバーのUser Access Key IDを登録するAPIです。
 
 ##### 必要権限
-会員であれば呼び出し可能なAPI
+会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 ##### リクエストパラメータ
 
@@ -3946,7 +3946,7 @@ GET /v1/organizations
 ```
 
 ##### 必要な権限
-会員であれば呼び出し可能なAPI
+会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 **[Query Parameter]**
 
@@ -4057,14 +4057,14 @@ GET /v1/organizations
 | domainName | String | Yes | 組織ドメイン名 |
 
 
-<a id="組織追加"></a>
+<a id="自分の-組織-追加"></a>
 #### 自分の組織の追加
 
 > POST /v1/organizations
 自身の組織を追加するAPIです。
 
 ##### 必要な権限
-会員であれば呼び出し可能なAPI
+会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 ##### リクエストパラメータ
 
@@ -4161,7 +4161,7 @@ GET /v1/organizations
 提供されるサービス一覧を照会するAPIです。
 
 ##### 必要な権限
-会員であれば呼び出し可能なAPI
+会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 ##### リクエストパラメータ
 
@@ -4217,6 +4217,81 @@ GET /v1/organizations
 | productCategoryCode | String | Yes | サービスカテゴリーコード(PROJECT、ORG、MARKET_PLACE) |
 | productId | String | Yes | サービスID |
 | productName | String | Yes | サービス名 |
+
+
+<a id="役割-説明-多言語-照会"></a>
+#### 役割説明多言語照会
+
+> GET /v1/messages/role
+役割の多言語リストを取得するAPIです。
+
+##### 必要権限
+会員であれば特定の権限なしで呼び出し可能なAPIです。
+
+##### リクエストパラメータ
+
+| 区分 | 名前 | タイプ | 必須 | 説明  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+| Query |messageType | String| No | メッセージタイプ<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
+| Query |languages | List&lt;String>| No | 言語<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
+| Query |keyword | String| No | 検索キーワード |
+| Query |messageId | String| No | メッセージID |
+| Query |limit | Integer| Yes | ページあたりの表示件数 | 
+| Query |page | Integer| Yes | 対象ページ |
+
+
+##### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "messages": [
+    {
+      "i18nMessageSeq": 0,
+      "categoryId": "categoryId",
+      "messageId": "messageId",
+      "messageType": "MESSAGE",
+      "description": "description",
+      "koKr": "韓国語メッセージ",
+      "enUs": "English message",
+      "jaJp": "日本語メッセージ",
+      "zhCn": "中文消息"
+    }
+  ],
+  "paging": {
+    "limit": 10,
+    "page": 1,
+    "totalCount": 100
+  }
+}
+```
+
+###### レスポンス
+
+
+| 名前 | タイプ | 必須 | 説明 |
+|---|---|---|---|
+| header | [共通レスポンス](#レスポンス) | Yes | |
+| messages | List&lt;MessageProtocol> | Yes | メッセージリスト |
+| paging | [PagingResponse](#pagingresponse)| Yes | |
+
+###### MessageProtocol
+
+| 名前 | タイプ | 必須 | 説明 |
+|---|---|---|---|
+| i18nMessageSeq | Long | No | メッセージ連番 |
+| categoryId | String | No | カテゴリーID |
+| messageId | String | No | メッセージID |
+| messageType | String | No | メッセージタイプ(MESSAGE, ERROR) |
+| description | String | No | 説明 |
+| koKr | String | No | 韓国語メッセージ |
+| enUs | String | No | 英語メッセージ |
+| jaJp | String | No | 日本語メッセージ |
+| zhCn | String | No | 中国語メッセージ |
 
 
 ### エラーコード
