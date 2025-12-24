@@ -6,7 +6,7 @@
 - Framework API
     - Added multilingual role description inquiry API
 - Partner Management API
-    - Added APIs for usage inquiry, metering inquiry, and metering deletion
+    - Added APIs for metering inquiry, and metering deletion
 
 ### November 25, 2025
 #### Feature Updates

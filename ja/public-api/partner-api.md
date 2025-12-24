@@ -1081,6 +1081,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | from | Query | String | Y | 照会開始時間(ISO 8601形式、含む) |
 | to | Query | String | Y | 照会終了時間(ISO 8601形式、含まない) |
 | counterName | Query | String | Y | カウンター名 |
+| appKey | Query | String | N | アプリキーリスト |
 | meterTimeTypeCode | Query | String | N | メーター時間タイプコード<br><br>- INSERT_TIME:メータリング挿入時間基準<br>- USED_TIME:メータリング発生時間基準 |
 | page | Query | Integer | Y | 選択したページ(最小: 1) |
 | limit | Query | Integer | Y | ページに表示される項目数(最小: 1、最大: 2000) |
@@ -1724,8 +1725,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | --- | --- | --- | --- |
 | from | String | Y | 照会開始時間(ISO 8601形式、含む) |
 | to | String | Y | 照会終了時間(ISO 8601形式、含まない) |
-| appKeys | List&lt;String&gt; | N | アプリキーリスト<br>アプリキー、またはカウンター名のいずれかは必須 |
-| counterNames | List&lt;String&gt; | N | カウンター名リスト<br>アプリキー、またはカウンター名のいずれかは必須 |
+| appKeys | List&lt;String&gt; | N | アプリキーリスト |
+| counterNames | List&lt;String&gt; | N | カウンター名リスト |
 | meterTimeTypeCode | String | N | メーター時間タイプコード<br>from、toに対して使用時間で検索するか、またはリクエストが流入した時間で検索するかを決定<br>(USED_TIME: 使用時間(デフォルト値)、INSERT_TIME: 流入した時間) |
 
 

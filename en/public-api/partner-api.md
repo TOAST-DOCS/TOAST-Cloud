@@ -1073,6 +1073,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | from | Query | String | Y | Query start time (ISO 8601 format, inclusive) |
 | to | Query | String | Y | Query end time (ISO 8601 format, exclusive) |
 | counterName | Query | String | Y | Counter name |
+| appKey | Query | String | N | Product App Key |
 | meterTimeTypeCode | Query | String | N | Meter time type code<br><br>- INSERT_TIME: based on metering insertion time<br>- USED_TIME: based on metering insertion time |
 | page | Query | Integer | Y | Selected page (minimum: 1) |
 | limit | Query | Integer | Y | number of items to be displayed on the page (minimum: 1, max: 2,000) |
@@ -1717,8 +1718,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | --- | --- | --- | --- |
 | from | String | Y | Query start time (ISO 8601 format, inclusive) |
 | to | String | Y | Query end time (ISO 8601 format, exclusive) |
-| appKeys | List&lt;String&gt; | N | List of app keys<br>Either app key or counter name must be present |
-| counterNames | List&lt;String&gt; | N | List of counter names<br>Either app key or counter name must be present |
+| appKeys | List&lt;String&gt; | N | List of app keys |
+| counterNames | List&lt;String&gt; | N | List of counter names |
 | meterTimeTypeCode | String | N | Meter time type code<br>Determines whether to search by used time or by the time the request was inserted for from and to<br>(USED_TIME: used time (default), INSERT_TIME: inserted time) |
 
 
