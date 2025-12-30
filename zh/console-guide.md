@@ -50,7 +50,6 @@ Services that can be enabled for each organization include the following:
 
 - Dooray!
 - Contact Center
-- IDC
 - CloudTrail
 - Resource Watcher
 
