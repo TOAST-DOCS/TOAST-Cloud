@@ -335,6 +335,8 @@ Members are classified into NHN Cloud members and IAM members.
 | OWNER | Create, Read, Update, Delete, and Delete organizations across the organization, including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
 | ADMIN | Create/Read/Update/Delete for the entire organization, including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
 | MEMBER | Create project, read organization dashboard, read project |
+| ORG_MEMBER_ADMIN | Create, Read, Update, Delete for organization members<br>Create, Read, Update, Delete for organization's role groups |
+| ORG_MEMBER_VIEWER | Read for organization members<br>Read for organization's role groups |
 | BILLING_VIEWER | Read payment management usage and budget management, and usage status of project in organization. |
 | BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
 | BUDGET_VIEWER | Read budget management |
@@ -509,9 +511,9 @@ Members are classified into NHN Cloud members and IAM members.
 | Email | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates<br> Create, Read, Update, Delete in Manage Call Rejects<br> Create, Read, Update, Delete in Manage Mail Domains<br> Create, Read, Update, Delete in Manage Tags<br> Create, Read, Update, Delete in Manage UIDs<br> Create, Read, Update, Delete in Delivery Setting<br> Create, Read, Update, Delete in Manage Webhooks |
 | Email | STATISTICS ADMIN | Read in Retrieve Statistics, Create Download Search Result |
 | KakaoTalk Bizmessage | ADMIN | Create, Read, Update, Delete for KakaoTalk Bizmessage Service |
-| KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create, Read in Send<br> (FriendTalk)Create, Read in Send |
-| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result<br> (AlimTalk) Read in Query Mass Delivery, Create Download Search Result<br> (FriendTalk)Read in Query Delivery Result, Create Download Search Result<br> (FriendTalk)Read in Query Mass Delivery, Create Download Search Result |
-| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group<br> (FriendTalk)Create, Read, Update, Delete in Manage Images<br> (FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery |
+| KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create, Read in Send|
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result<br> (AlimTalk) Read in Query Mass Delivery, Create Download Search Result <br> (FriendTalk)Read in Query Delivery Result, Create Download Search Result|
+| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group <br>(FriendTalk)Read, Delete in Manage Images <br>(FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery|
 | KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | Face Recognition | ADMIN | Create, Read, Update, Delete for Face Recognition Service |
 | AI Fashion |	ADMIN |	Create, Read, Update, Delete for AI Fashion Service |
@@ -614,7 +616,7 @@ The corresponding notification receiver groups are available when setting up not
 
 4. **Receiving Role Setting**
     - Organization > Receiving Role Setting
-        * Supports setting up email and SMS notifications for organization/project roles, project role groups, and service-specific roles.
+        * Supports setting up email and SMS notifications for organization/project roles, organization/project role groups, and service-specific roles.
     * Project > Receiving Role Setting
         * Supports setting up email and SMS notifications for project roles, project role groups, and service-specific roles.
 
