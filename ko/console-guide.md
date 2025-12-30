@@ -50,7 +50,6 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 - Dooray!
 - Contact Center
-- IDC
 - CloudTrail
 - Resource Watcher
 
