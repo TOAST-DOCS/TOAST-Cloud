@@ -50,7 +50,6 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 
 - Dooray!
 - Contact Center
-- IDC
 - CloudTrail
 - Resource Watcher
 
@@ -485,9 +484,9 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Email | SETTING ADMIN | Email 서비스 템플릿 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 수신 거부 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 메일 도메인 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 태그 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br>UID 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br>발송 설정 Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br> 웹훅 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Email | STATISTICS ADMIN | Email 서비스 통계 조회 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성)  |
 | KakaoTalk Bizmessage | ADMIN | KakaoTalk Bizmessage 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| KakaoTalk Bizmessage | SEND ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 메뉴 Create(생성), Read(읽기)<br> (친구톡)발송 메뉴 Create(생성), Read(읽기)  |
-| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 결과 조회  Read(읽기), 조회 내역 다운로드 Create(생성)<br> (알림톡)대량 발송 조회  Read(읽기), 조회 결과 다운로드 Create(생성)<br> (친구톡)발송 결과 조회  Read(읽기), 조회 결과 다운로드 Create(생성)<br> (친구톡)대량 발송 조회  Read(읽기), 조회 결과 다운로드 Create(생성)  |
-| KakaoTalk Bizmessage | SETTING ADMIN | KakaoTalk Bizmessage 서비스 발신 프로필 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)템플릿 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)대체 발송 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)발신 프로필 그룹 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (친구톡)이미지 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (친구톡)대체 발송 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 발송 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 웹훅 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 통계 이벤트 키 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| KakaoTalk Bizmessage | SEND ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 메뉴 Create(생성), Read(읽기)|
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | KakaoTalk Bizmessage 서비스 (알림톡)발송 결과 조회  Read(읽기), 조회 내역 다운로드 Create(생성)<br> (알림톡)대량 발송 조회  Read(읽기), 조회 결과 다운로드 Create(생성)<br> (친구톡)발송 결과 조회  Read(읽기), 조회 결과 다운로드 Create(생성) |
+| KakaoTalk Bizmessage | SETTING ADMIN | KakaoTalk Bizmessage 서비스 발신 프로필 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)템플릿 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)대체 발송 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (알림톡)발신 프로필 그룹 관리 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> (친구톡)이미지 관리 Read(읽기), Delete(삭제) <br> (친구톡)대체 발송 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 발송 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 웹훅 관리 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)<br> 통계 이벤트 키 설정 메뉴 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | KakaoTalk Bizmessage | STATISTICS ADMIN | KakaoTalk Bizmessage 서비스 통계 메뉴 Read(읽기), 조회 결과 다운로드 Create(생성)  |
 | Face Recognition | ADMIN | Face Recognition 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI Fashion | ADMIN | AI Fashion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  | 

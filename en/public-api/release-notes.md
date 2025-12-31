@@ -1,5 +1,13 @@
 ## NHN Cloud > Public API > Release Notes
 
+### December 23, 2025
+#### Added Features
+
+- Framework API
+    - Added multilingual role description inquiry API
+- Partner Management API
+    - Added APIs for metering inquiry, and metering deletion
+
 ### November 25, 2025
 #### Feature Updates
 

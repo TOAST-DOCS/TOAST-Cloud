@@ -61,7 +61,7 @@
 | header.resultCode | Integer | 結果コード(成功時: 0) |
 | header.resultMessage | String | 結果メッセージ |
 
-!!! warning "APIレスポンスフィールドの拡張性"
+!!! danger "APIレスポンスフィールドの拡張性"
     APIレスポンスには、以下に明記されていないフィールドが追加されることがあります。新しいフィールドが追加されてもエラーが発生しないように注意してください。
 
 
@@ -515,10 +515,10 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | projectId | Path | String | Y | プロジェクトID |
 | lang | Header | String | N | 言語設定(デフォルト: ko_KR、設定可能な値: ko_KR、ja_JP、en_US) |
 | usageSchemaTypeCode | Query | String | N | 使用量の包含有無<br>使用量の照会方法を従来の方法にするか、新規にグループ化された方法にするかを決定します<br>(デフォルト: NO_GROUP)<br><br>- NO_GROUP:使用量がグループ化されずにそのまま表示される方式 <br>- GROUP_BY_PARENT_RESOURCE:親リソース別にグループ化はされるが、具体的な使用量は提供されない方式。返されるtotalItemsを通じて親リソースがいくつ存在するか確認可能<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES:親リソース別にグループ化した後、どの親リソースでグループ化されたかとその詳細な使用量まで提供される方式 |
-| page | Query | Integer | N | 選択したページ(デフォルト: 1、最小: 1)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
-| itemsPerPage | Query | Integer | N | ページに表示される項目数、未記入の場合は全て照会(最小: 0)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
 | categoryMain | Query | String | N | メインカテゴリー<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
 | regionTypeCode | Query | String | N | リージョンタイプコード(最大20文字)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
+| page | Query | Integer | N | 選択したページ(デフォルト: 1、最小: 1)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
+| limit | Query | Integer | N | ページに表示される項目数、未記入時は全件照会(デフォルト値: 0、最小:0)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用不可 |
 
 ### リクエストボディ
 
@@ -1078,9 +1078,10 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | パートナーID |
 | productId | Path | String | Y | サービスID |
-| from | Query | String | Y | 照会開始日(yyyy-MM-ddThh:mm:ss.sssZ、含む) |
-| to | Query | String | Y | 照会終了日(yyyy-MM-ddThh:mm:ss.sssZ、含まない) |
+| from | Query | String | Y | 照会開始時間(ISO 8601形式、含む) |
+| to | Query | String | Y | 照会終了時間(ISO 8601形式、含まない) |
 | counterName | Query | String | Y | カウンター名 |
+| appKey | Query | String | N | アプリキーリスト |
 | meterTimeTypeCode | Query | String | N | メーター時間タイプコード<br><br>- INSERT_TIME:メータリング挿入時間基準<br>- USED_TIME:メータリング発生時間基準 |
 | page | Query | Integer | Y | 選択したページ(最小: 1) |
 | limit | Query | Integer | Y | ページに表示される項目数(最小: 1、最大: 2000) |
@@ -1148,6 +1149,135 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | stationId | String | ステーションID |
 | timestamp | String | メータリング発生時刻 |
 
+## ソリューションパートナーのメータリング削除
+
+ソリューションパートナーが自身のサービスに対するメータリングを削除します。<br>
+すでに請求書が生成された後のメータリングは削除しても反映されない点に留意する必要があり、ソリューションパートナーが自身のサービス以外の他のサービスのメータリングを削除することはできません。<br>
+削除は時間がかかる作業であるため非同期で動作し、削除API呼び出し後に返却されたasyncJobIdでステータスを照会し、完了可否を確認できます。
+
+!!! tip "ソリューションパートナー検証"
+    ソリューションパートナー、またはソリューションパートナーから権限を付与されたユーザーのみ呼び出し可能です。
+
+### 必要権限
+`Partner.Meter.Delete`
+
+### リクエスト
+
+```
+DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
+```
+
+### リクエストパラメータ
+
+| 名前 | 区分 | タイプ | 必須 | 説明 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | パートナーID |
+| productId | Path | String | Y | サービスID |
+
+
+### リクエスト本文
+
+<details>
+  <summary><strong>例示コード</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T10:00:00Z",
+  "to": "2023-12-02T10:00:00Z",
+  "appKey": "string",
+  "counterNames": [
+    "string"
+  ]
+}
+```
+
+</details>
+
+| 名前 | タイプ | 必須 | 説明 |
+| --- | --- | --- | --- |
+| from | String | Y | 照会開始時間(ISO 8601形式、含む) |
+| to | String | Y | 照会終了時間(ISO 8601形式、含まない) |
+| appKey | String | N | 商品アプリキー<br>アプリキー、 またはカウンター名のいずれかは必須 |
+| counterNames | List&lt;String&gt; | N | 削除するカウンター名リスト<br>アプリキー、またはカウンター名のいずれかは必須 |
+
+
+### レスポンス
+
+<details>
+  <summary><strong>レスポンス例</strong></summary>
+
+```json
+{
+  "asyncJobId": "string",
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  }
+}
+```
+
+</details>
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| asyncJobId | String | 実行した非同期作業のID |
+
+
+## ソリューションパートナーのメータリング削除確認
+
+メータリング削除後、削除が完了したか確認します。<br>
+削除API呼び出し後、5秒以降に呼び出すのが安全であり、すぐに呼び出すと失敗する可能性があるため注意が必要です。<br>
+その後、5秒周期で呼び出してステータスを確認することを推奨します。
+
+!!! tip "ソリューションパートナー検証"
+    ソリューションパートナー、またはソリューションパートナーから権限を付与されたユーザーのみ呼び出し可能です。
+
+!!! danger "メータリング削除確認時の注意事項"
+    一度正常削除を確認した後は削除jobが消えるため一度のみ呼び出し可能であり、2回目の呼び出しからは16500エラーが返却されます。
+
+### 必要権限
+`Partner.Meter.Delete`
+
+### リクエスト
+
+```
+GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
+```
+
+### リクエストパラメータ
+
+| 名前 | 区分 | タイプ | 必須 | 説明 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | パートナーID |
+| asyncJobId | Path | String | Y | 実行した非同期作業のID |
+
+
+### リクエスト本文
+
+このAPIはリクエスト本文を要求しません。
+
+### レスポンス
+
+<details>
+  <summary><strong>レスポンス例</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "statusCode": "IN_PROGRESS"
+}
+```
+
+</details>
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| statusCode | String | 削除ステータス(IN_PROGRESS: 削除進行中、ERROR: 削除中にエラー発生、SUCCESS: 削除成功) |
 
 ## パートナーユーザーの組織作成
 
@@ -1259,7 +1389,7 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 !!! tip "パートナー契約検証"
     該当パートナーが指定されたプロジェクトや組織のOwnerであるか、Ownerと照会対象日にパートナー契約を締結した状態であったかを確認します。
 
-!!! note "照会範囲制約"
+!!! tip "照会範囲制約"
     - projectIdまたはorgIdのいずれかは必ず設定する必要があります。
     - projectIdとorgIdを同時に設定することはできません。
 
@@ -1281,8 +1411,8 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 | orgId | Query | String | N | 組織ID<br>projectIdと同時に設定不可 |
 | counterName | Query | String | N | カウンター名 |
 | date | Query | String | Y | 照会日(yyyy-MM-dd形式) |
-| page | Query | Integer | Y | 選択したページ(最小: 1) |
-| limit | Query | Integer | Y | ページに表示される項目数(最小: 1、最大: 2000) |
+| page | Query | Integer | N | 選択したページ(最小: 1) |
+| limit | Query | Integer | N | ページに表示される項目数(最小: 1、最大: 2000) |
 
 ### リクエスト本文
 
@@ -1372,7 +1502,7 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 !!! tip "パートナー契約検証"
     該当パートナーが指定されたプロジェクトや組織のOwnerであるか、Ownerと照会対象日にパートナー契約を締結した状態であったかを確認します。
 
-!!! note "照会範囲制約"
+!!! tip "照会範囲制約"
     - projectIdまたはorgIdのいずれかは必ず提供する必要があります。
     - projectIdとorgIdを同時に設定することはできません。
     - tagIdsまたはgroupIdsのいずれかは必ず提供する必要があります。
@@ -1391,8 +1521,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | パートナーID |
-| page | Query | Integer | Y | 選択したページ(最小: 1) |
-| limit | Query | Integer | Y | ページに表示される項目数(最小: 1、最大: 2000) |
+| page | Query | Integer | N | 選択したページ(最小: 1) |
+| limit | Query | Integer | N | ページに表示される項目数(最小: 1、最大: 2000) |
 
 ### リクエスト本文
 
@@ -1546,6 +1676,121 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | displayNameJa | String | 請求書表示名(日本語) |
 | displayNameKo | String | 請求書表示名(韓国語) |
 | displayNameZh | String | 請求書表示名(中国語) |
+
+
+## パートナーまたはパートナーユーザーの有効化された組織/プロジェクト商品メータリング照会
+
+メータリング情報を照会します。
+
+### 必要権限
+`Partner.Meter.List`
+
+### リクエスト
+
+```
+POST /v1/billing/partners/{partnerId}/meters/search
+```
+
+### リクエストパラメータ
+
+| 名前 | 区分 | タイプ | 必須 | 説明 |
+| --- | --- | --- | --- | --- |
+| partnerId | Path | String | Y | パートナーID |
+| page | Query | Integer | N | 選択したページ(最小: 1) |
+| limit | Query | Integer | N | ページに表示される項目数(最小: 1、最大: 2000) |
+
+
+### リクエスト本文
+
+<details>
+  <summary><strong>例示コード</strong></summary>
+
+```json
+{
+  "from": "2023-12-01T10:00:00Z",
+  "to": "2023-12-02T10:00:00Z",
+  "appKeys": [
+    "string"
+  ],
+  "counterNames": [
+    "string"
+  ],
+  "meterTimeTypeCode": "INSERT_TIME"
+}
+```
+
+</details>
+
+| 名前 | タイプ | 必須 | 説明 |
+| --- | --- | --- | --- |
+| from | String | Y | 照会開始時間(ISO 8601形式、含む) |
+| to | String | Y | 照会終了時間(ISO 8601形式、含まない) |
+| appKeys | List&lt;String&gt; | N | アプリキーリスト |
+| counterNames | List&lt;String&gt; | N | カウンター名リスト |
+| meterTimeTypeCode | String | N | メーター時間タイプコード<br>from、toに対して使用時間で検索するか、またはリクエストが流入した時間で検索するかを決定<br>(USED_TIME: 使用時間(デフォルト値)、INSERT_TIME: 流入した時間) |
+
+
+### レスポンス
+
+<details>
+  <summary><strong>レスポンス例</strong></summary>
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "string"
+  },
+  "meterList": [
+    {
+      "appKey": "string",
+      "counterName": "string",
+      "counterType": "DELTA",
+      "counterUnit": "string",
+      "counterValue": "string",
+      "counterVolume": 0,
+      "insertTime": "2023-12-01T10:00:00Z",
+      "orgId": "string",
+      "parentResourceId": "string",
+      "productId": "string",
+      "projectId": "string",
+      "resourceId": "string",
+      "resourceName": "string",
+      "stationId": "string",
+      "timestamp": "2023-12-01T10:00:00Z"
+    }
+  ],
+  "totalItems": 0
+}
+```
+
+</details>
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| meterList | List&lt;MeterProtocol&gt; | メータリングリスト |
+| totalItems | Integer | 総個数 |
+
+**MeterProtocol**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| appKey | String | アプリキー |
+| counterName | String | カウンター名 |
+| counterType | String | カウンタータイプ<br><br>- DELTA: 増分値<br>- GAUGE: 現在値<br>- HOURLY_LATEST: 時間別最新値<br>- DAILY_MAX: 日別最大値<br>- MONTHLY_MAX: 月別最大値<br>- STATUS: ステータス値 |
+| counterUnit | String | 使用量単位(KB、HOURなど) |
+| counterValue | String | 使用現況<br>カウンタータイプがSTATUSの場合のみ使用 |
+| counterVolume | BigDecimal | 使用量 |
+| insertTime | String | サービスから課金システムに送信した時間 |
+| orgId | String | 組織ID |
+| parentResourceId | String | 親リソースID |
+| productId | String | サービスID |
+| projectId | String | プロジェクトID |
+| resourceId | String | リソースID |
+| resourceName | String | リソース名 |
+| stationId | String | ステーションID |
+| timestamp | String | 使用した時間 |
 
 ## エラーコード
 
