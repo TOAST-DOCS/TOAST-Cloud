@@ -68,7 +68,6 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Bill | With the Bill service, it is easy and convenient to get a tax invoice. |
 | Collaboration | Convenient tools of collaboration are supported, including mail, issue tracker, schedule management, and chatting. |
 | Contact Center | An integrated solution for call center services helps process inquiries more efficiently, and provides elevated operational efficiency and optimized customer experience. |
-| IDC  | The urban data center, designed on its own technology and established in Pangyo, provides optimized operational efficiency. |
 | Governance & Audit  | A service that manages the governance of organizations and monitors the various activity logs and events that occurred in the cloud. |
 
 

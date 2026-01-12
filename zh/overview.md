@@ -75,7 +75,6 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Bill | 可以轻松便利地签发税务发票。|
 | Collaboration  | 作为合作所需的便利服务，同时支持邮件、问题跟踪器、日程管理、聊天，可以实现轻松合作。|
 | Contact Center | 通过客服中心咨询的综合解决方案，高效处理咨询，提高运营效率，提供最佳的客户体验。|
-| IDC  | 凭借自主技术力在京畿道板桥设计·构建的城市型网络数据中心。|
 | Governance & Audit  | A service that manages the governance of organizations and monitors the various activity logs and events that occurred in the cloud. |
 
 ## 服务发布策略
