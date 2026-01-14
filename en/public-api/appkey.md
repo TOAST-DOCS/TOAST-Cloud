@@ -7,10 +7,10 @@ Appkey는 NHN Cloud의 각 서비스별로 발급되는 고유 인증 키로 API
 Appkey는 서비스별로 발급되며, NHN Cloud 콘솔의 각 서비스 화면에서 확인할 수 있습니다.<br>
 이 문서에서는 Instance 서비스의 콘솔 화면을 예시로 사용합니다.
 
-1. NHN Cloud 콘솔의 각 서비스 화면 우측 상단에서 **URL & Appkey**를 클릭합니다.
+1. NHN Cloud 콘솔의 각 서비스 화면 우측 상단에서 **URL & Appkey**를 클릭합니다.<br>
 ![C_Appkey_1_en](http://static.toastoven.net/toast/public_api/C_Appkey_1_en.png)
 
-2. **URL & Appkey - {서비스명}** 모달 창에서 Appkey를 확인하거나 복사한 뒤 **확인**을 클릭합니다.
+2. **URL & Appkey - {서비스명}** 모달 창에서 Appkey를 확인하거나 복사한 뒤 **확인**을 클릭합니다.<br>
 ![C_Appkey_2_en](http://static.toastoven.net/toast/public_api/C_Appkey_2_en.png)
 
 !!! danger "주의"
@@ -21,10 +21,10 @@ NHN Cloud의 일부 서비스에서는 API에 대한 접근 제어를 위해 Sec
 SecretKey는 Appkey와 같이 SecretKey를 지원하는 서비스 화면에서 확인할 수 있습니다.<br>
 이 문서에서는 CDN 서비스의 콘솔 화면을 예시로 사용합니다.
 
-1. NHN Cloud 콘솔의 서비스 화면 우측 상단에서 **URL & Appkey**를 클릭합니다.
+1. NHN Cloud 콘솔의 서비스 화면 우측 상단에서 **URL & Appkey**를 클릭합니다.<br>
 ![C_SecretKey_1_en](http://static.toastoven.net/toast/public_api/C_SecretKey_1_en.png)
 
-2. **URL & Appkey - {서비스명}** 모달 창에서 SecretKey를 복사한 뒤 **확인**을 클릭합니다.
+2. **URL & Appkey - {서비스명}** 모달 창에서 SecretKey를 복사한 뒤 **확인**을 클릭합니다.<br>
 ![C_SecretKey_2_en](http://static.toastoven.net/toast/public_api/C_SecretKey_2_en.png)
 
 ## API 요청 방식
