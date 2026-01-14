@@ -8,10 +8,10 @@ Appkey는 서비스별로 발급되며, NHN Cloud 콘솔의 각 서비스 화면
 이 문서에서는 Instance 서비스의 콘솔 화면을 예시로 사용합니다.
 
 1. NHN Cloud 콘솔의 각 서비스 화면 우측 상단에서 **URL & Appkey**를 클릭합니다.
-[C_Appkey_1_ko](http://static.toastoven.net/toast/public_api/C_Appkey_1_ko.png)
+![C_Appkey_1_ko](http://static.toastoven.net/toast/public_api/C_Appkey_1_ko.png)
 
 2. **URL & Appkey - {서비스명}** 모달 창에서 Appkey를 확인하거나 복사한 뒤 **확인**을 클릭합니다.
-[C_Appkey_2_ko](http://static.toastoven.net/toast/public_api/C_Appkey_2_ko.png)
+![C_Appkey_2_ko](http://static.toastoven.net/toast/public_api/C_Appkey_2_ko.png)
 
 !!! danger "주의"
     Appkey가 유출되었거나 유출이 의심되는 경우 [고객 센터 > 1:1 문의](https://www.gov-nhncloud.com/kr/support/inquiry)에서 **유형**을 **{서비스명}/기타**로 선택하여 Appkey 재발급을 신청하세요.
@@ -22,10 +22,10 @@ SecretKey는 Appkey와 같이 SecretKey를 지원하는 서비스 화면에서 �
 이 문서에서는 CDN 서비스의 콘솔 화면을 예시로 사용합니다.
 
 1. NHN Cloud 콘솔의 서비스 화면 우측 상단에서 **URL & Appkey**를 클릭합니다.
-[C_SecretKey_1_ko](http://static.toastoven.net/toast/public_api/C_SecretKey_1_ko.png)
+![C_SecretKey_1_ko](http://static.toastoven.net/toast/public_api/C_SecretKey_1_ko.png)
 
 2. **URL & Appkey - {서비스명}** 모달 창에서 SecretKey를 복사한 뒤 **확인**을 클릭합니다.
-[C_SecretKey_2_ko](http://static.toastoven.net/toast/public_api/C_SecretKey_2_ko.png)
+![C_SecretKey_2_ko](http://static.toastoven.net/toast/public_api/C_SecretKey_2_ko.png)
 
 ## API 요청 방식
 ### Appkey
