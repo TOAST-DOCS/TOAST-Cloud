@@ -29,9 +29,9 @@ API 요청에 포함되는 테넌트 ID는 **Compute > Instance** 페이지의 *
 NHN Cloud 기본 인프라 서비스 API를 사용하려면 NHN Cloud 계정 비밀번호와는 별개로 API 비밀번호를 설정해야 합니다. API 비밀번호는 계정별로 생성됩니다. 한 프로젝트에서 설정된 비밀번호는 사용자가 속한 모든 프로젝트에서 사용할 수 있습니다.
 
 1. **Compute > Instance** 페이지의 **API 엔드포인트 설정**을 클릭합니다.
-[C_IaaS_apiendpointsettings_en](http://static.toastoven.net/toast/public_api/C_IaaS_apiendpointsettings_en.png)
+![C_IaaS_apiendpointsettings_en](http://static.toastoven.net/toast/public_api/C_IaaS_apiendpointsettings_en.png)
 2. **API 엔드포인트 설정** 모달 창 아래의 **API 비밀번호 설정**에 원하는 API 비밀번호를 지정합니다.
-[C_IaaS_setapipassword_0_en](http://static.toastoven.net/toast/public_api/C_IaaS_setapipassword_0_en.png)
+![C_IaaS_setapipassword_0_en](http://static.toastoven.net/toast/public_api/C_IaaS_setapipassword_0_en.png)
 
 !!! tip "알아두기"
     * 현재 사용 중인 비밀번호로는 변경할 수 없습니다.
