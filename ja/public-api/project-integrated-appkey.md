@@ -7,10 +7,10 @@
 NHN Cloud 콘솔의 각 프로젝트 화면에서 프로젝트 통합 Appkey를 생성하고 관리할 수 있습니다.
 1. NHN Cloud 콘솔에서 프로젝트를 선택한 뒤 **프로젝트 관리** 탭을 클릭합니다.
 2. **API 보안 설정**에서 **+ Appkey 생성**을 클릭합니다.
-[C_project_API security_ja](http://static.toastoven.net/toast/public_api/C_project_API security_ja.png)
+![C_project_API security_ja](http://static.toastoven.net/toast/public_api/C_project_API security_ja.png)
 
 3. **Appkey 생성** 모달 창에서 **Appkey 이름** 입력 필드에 생성할 프로젝트 통합 Appkey의 이름을 입력한 뒤 **확인**을 클릭합니다.
-[C_project_API security_2_ja](http://static.toastoven.net/toast/public_api/C_project_API security_2_ja.png)
+![C_project_API security_2_ja](http://static.toastoven.net/toast/public_api/C_project_API security_2_ja.png)
 
 !!! danger "주의"
     프로젝트 통합 Appkey가 외부에 노출될 경우 해당 프로젝트 내 모든 서비스 API가 무단 호출될 수 있으므로 보안 관리에 각별한 주의가 필요합니다. 프로젝트 통합 Appkey를 외부 저장소 또는 코드에 포함하지 않도록 안전하게 보관하고, 유출되었거나 유출이 의심되는 경우 기존 Appkey를 삭제한 뒤 새로운 Appkey를 생성해 교체하세요.
