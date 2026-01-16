@@ -372,6 +372,9 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | RDS for PostgreSQL | VIEWER | RDS for PostgreSQL 서비스 Read(읽기) |
 | Cloud Monitoring | ADMIN | Cloud Monitoring 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Cloud Monitoring | VIEWER | Cloud Monitoring Read(읽기) |
+| NHN Bastion | ADMIN | NHN Bastion 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) | 
+| NHN Bastion | VIEWER | NHN Bastion 서비스 Read(읽기) | 
+| NHN Bastion | USER | NHN Bastion 서비스 터미널 이용 |
 
 #### 프로젝트 서비스 활성화 역할
 프로젝트 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
