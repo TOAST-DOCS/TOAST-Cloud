@@ -1,6 +1,6 @@
-# API 인증 방식
+# Authentication Overview
 
-**NHN Cloud > Public API > API 인증 방식**
+**NHN Cloud > Public API > API Authentication Method > Authentication Overview**
 
 Public API는 각 서비스에서 설정한 인증 방식에 따라 요청을 검증한 뒤 API 백엔드로 전달합니다. 이 문서에서는 NHN Cloud Public API에서 사용되는 인증 방식을 설명합니다.
 
@@ -16,7 +16,7 @@ NHN Cloud의 Public API는 인증을 위해 User Access Key 토큰, IaaS 토큰,
 | 프로젝트 통합 Appkey | 프로젝트 단위 통합 인증 | 인증 | 프로젝트당 최대 3개 | 없음 |
 
 !!! tip "알아두기"
-    NHN Cloud Object Storage 서비스는 AWS의 Amazon S3 API와 호환되는 API를 제공합니다. Amazon S3 호환 API를 사용하려면 AWS EC2 형태의 S3 API 자격 증명을 발급해야 합니다. S3 API 자격 증명에 대한 자세한 설명은 [S3 API 자격 증명(S3 API Credential)](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#s3-api-s3-api-credential)에서 확인할 수 있습니다. 
+    NHN Cloud Object Storage 서비스는 AWS의 Amazon S3 API와 호환되는 API를 제공합니다. Amazon S3 호환 API를 사용하려면 AWS EC2 형태의 S3 API 자격 증명을 발급해야 합니다. S3 API 자격 증명에 대한 자세한 설명은 [S3 API Credentials](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#s3-api-credentials)에서 확인할 수 있습니다. 
 
-NHN Cloud Public API는 API마다 서로 다른 인증 방식을 지원합니다. [인증 방식 지원 현황](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-auth-method/supported-authentication-methods)에서 각 API가 제공하는 인증 방식을 확인한 뒤, 해당 인증 방식을 사용해 API 요청을 인증하세요.
+NHN Cloud Public API는 API마다 서로 다른 인증 방식을 지원합니다. [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/supported-authentication-methods)에서 각 API가 제공하는 인증 방식을 확인한 뒤, 해당 인증 방식을 사용해 API 요청을 인증하세요.
 
