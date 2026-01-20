@@ -8,12 +8,12 @@ NHN Cloud의 Public API는 NHN Cloud의 서비스와 리소스를 외부 시스�
 
 !!! tip "알아두기"
     * 서비스마다 API의 동작 방식과 응답 형식이 다르므로 자세한 내용은 각 서비스의 API 가이드를 참고하세요.
-    * 프레임워크 API, 파트너 관리 API, 각 서비스마다 지원하는 API 인증 방식이 다르며, 일부 인증 방식은 특정 서비스에서만 지원합니다. 각 Public API별 지원되는 인증 방식은 [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/api-auth-method/supported-authentication-methods)에서 확인할 수 있습니다.
+    * 프레임워크 API, 파트너 관리 API, 각 서비스마다 지원하는 API 인증 방식이 다르며, 일부 인증 방식은 특정 서비스에서만 지원합니다. 각 Public API별 지원되는 인증 방식은 [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/supported-authentication-methods)에서 확인할 수 있습니다.
 
 ## Public API 시작하기
 
-* [API Authentication Method](https://docs.nhncloud.com/en/nhncloud/en/public-api/api-auth-method)
-* [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/api-auth-method/supported-authentication-methods)
+* [Authentication Overview](https://docs.nhncloud.com/en/nhncloud/en/public-api/auth-method-overview)
+* [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/supported-authentication-methods)
 * [Service API](https://docs.nhncloud.com/en/nhncloud/en/public-api/service-api)
 * [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/)
 * [Partner Management API Guide](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/)
