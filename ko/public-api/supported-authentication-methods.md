@@ -7,7 +7,7 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 
 ## 프레임워크 API 및 파트너 관리 API 인증 방식 확인하기
 
-프레임워크 API 및 파트너 관리 API는 인증을 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰 발급 및 API 호출에 대한 자세한 내용은 [User Access Key 토큰](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method/user-access-key-token)을 참고하세요.
+프레임워크 API 및 파트너 관리 API는 인증을 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰 발급 및 API 호출에 대한 자세한 내용은 [User Access Key 토큰](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-auth-method/user-access-key-token)을 참고하세요.
 
 프레임워크 API 및 파트너 관리 API 사용에 대한 자세한 내용은 각각 [프레임워크 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)와 [파트너 관리 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)를 참고하세요.
 

@@ -8,12 +8,12 @@ NHN Cloud의 Public API는 NHN Cloud의 서비스와 리소스를 외부 시스�
 
 !!! tip "알아두기"
     * 서비스마다 API의 동작 방식과 응답 형식이 다르므로 자세한 내용은 각 서비스의 API 가이드를 참고하세요.
-    * 프레임워크 API, 파트너 관리 API, 각 서비스마다 지원하는 API 인증 방식이 다르며, 일부 인증 방식은 특정 서비스에서만 지원합니다. 각 Public API별 지원되는 인증 방식은 [인증 방식 지원 현황](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method/supported-authentication-methods)에서 확인할 수 있습니다.
+    * 프레임워크 API, 파트너 관리 API, 각 서비스마다 지원하는 API 인증 방식이 다르며, 일부 인증 방식은 특정 서비스에서만 지원합니다. 각 Public API별 지원되는 인증 방식은 [인증 방식 지원 현황](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-auth-method/supported-authentication-methods)에서 확인할 수 있습니다.
 
 ## Public API 시작하기
 
-* [API 인증 방식](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method)
-* [인증 방식 지원 현황](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method/supported-authentication-methods)
+* [API 인증 방식](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-auth-method)
+* [인증 방식 지원 현황](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-auth-method/supported-authentication-methods)
 * [서비스 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/service-api)
 * [프레임워크 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)
 * [파트너 관리 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)
@@ -31,6 +31,4 @@ NHN Cloud의 Public API는 NHN Cloud의 서비스와 리소스를 외부 시스�
 | 인가(Authorization) | 인증을 통해 신원이 확인된 주체에게 특정 리소스나 기능에 접근하거나 동작을 수행할 권한이 있는지 확인하고 허용하는 과정 |
 | Bearer 토큰 | 토큰을 소유한 사용자에게 접근 권한을 부여하는 보안 토큰의 유형 | 
 | Keystone | OpenStack의 인증 및 권한 부여 작업을 담당하는 서비스. 사용자와 서비스의 신원을 확인하고 적절한 권한을 부여하여 리소스에 대한 안전한 접근을 보장함 |
-
-
 

@@ -18,7 +18,7 @@
 |                  | Security Groups             | https://docs.gov-nhncloud.com/ko/Network/Security%20Groups/ko/public-api-gov/   |
 |                  | Load Balancer               | https://docs.gov-nhncloud.com/ko/Network/Load%20Balancer/ko/public-api-gov/     |
 |                  | Transit Hub                 | https://docs.gov-nhncloud.com/ko/Network/Transit%20Hub/ko/public-api-gov/       |
-|                  | Internet Gateway            | https://docs.nhncloud.com/ko/Network/Internet%20Gateway/ko/public-api/          |
+|                  | Internet Gateway            | https://docs.gov-nhncloud.com/ko/Network/Internet%20Gateway/ko/public-api-gov/  |
 |                  | Colocation Gateway          | https://docs.gov-nhncloud.com/ko/Network/Colocation%20Gateway/ko/public-api-gov/|
 |                  | NAT Gateway                 | https://docs.gov-nhncloud.com/ko/Network/NAT%20Gateway/ko/public-api-gov/       |
 |                  | Service Gateway             | https://docs.gov-nhncloud.com/ko/Network/Service%20Gateway/ko/public-api-gov/   |

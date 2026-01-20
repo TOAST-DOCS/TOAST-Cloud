@@ -18,5 +18,5 @@ NHN Cloud의 Public API는 인증을 위해 User Access Key 토큰, IaaS 토큰,
 !!! tip "알아두기"
     NHN Cloud Object Storage 서비스는 AWS의 Amazon S3 API와 호환되는 API를 제공합니다. Amazon S3 호환 API를 사용하려면 AWS EC2 형태의 S3 API 자격 증명을 발급해야 합니다. S3 API 자격 증명에 대한 자세한 설명은 [S3 API 자격 증명(S3 API Credential)](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/s3-api-guide/#s3-api-s3-api-credential)에서 확인할 수 있습니다. 
 
-NHN Cloud Public API는 API마다 서로 다른 인증 방식을 지원합니다. [認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/auth-method/supported-authentication-methods)에서 각 API가 제공하는 인증 방식을 확인한 뒤, 해당 인증 방식을 사용해 API 요청을 인증하세요.
+NHN Cloud Public API는 API마다 서로 다른 인증 방식을 지원합니다. [認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/api-auth-method/supported-authentication-methods)에서 각 API가 제공하는 인증 방식을 확인한 뒤, 해당 인증 방식을 사용해 API 요청을 인증하세요.
 

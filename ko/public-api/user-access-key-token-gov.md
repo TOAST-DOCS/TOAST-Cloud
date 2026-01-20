@@ -92,7 +92,7 @@ curl --request POST 'https://oauth.api.gov-nhncloudservice.com/oauth2/token/crea
 ```
 #### FeignClient
 ```java
-@FeignCl ient(name = "auth", url = "https://oauth.api.gov-nhncloudservice.com")
+@FeignClient(name = "auth", url = "https://oauth.api.gov-nhncloudservice.com")
 public interface AuthClient {
     @PostMapping(value = "/oauth2/token/create", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     TokenResponse createToken(@RequestHeader("Authorization") String authorization, @RequestParam("grant_type") String grantType);

@@ -93,7 +93,7 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/create' 
 ```
 #### FeignClient
 ```java
-@FeignCl ient(name = "auth", url = "https://oauth.api.nhncloudservice.com")
+@FeignClient(name = "auth", url = "https://oauth.api.nhncloudservice.com")
 public interface AuthClient {
     @PostMapping(value = "/oauth2/token/create", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     TokenResponse createToken(@RequestHeader("Authorization") String authorization, @RequestParam("grant_type") String grantType);
@@ -245,10 +245,10 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 ```
 
 ### Use Token
-When calling the framework API, a token is included in the `x-nhn-authentication` header to authenticate the caller.<br>
+When calling the framework API, a token is included in the `x-nhn-authorization` header to authenticate the caller.<br>
 Example
 ```shell
-curl -X GET "https://core.api.nhncloudservice.com/v1.0/organizations" -H "x-nhn-authentication: Bearer {token}"
+curl -X GET "https://core.api.nhncloudservice.com/v1.0/organizations" -H "x-nhn-authorization: Bearer {token}"
 ```
 
 ## User Access Key 토큰 사용하기
