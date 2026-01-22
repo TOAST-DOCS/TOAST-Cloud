@@ -27,26 +27,31 @@ API 요청에 포함되는 테넌트 ID는 **Compute > Instance** 페이지의 *
 
 NHN Cloud 기본 인프라 서비스 API를 사용하려면 NHN Cloud 계정 비밀번호와는 별개로 API 비밀번호를 설정해야 합니다. API 비밀번호는 계정별로 생성됩니다. 한 프로젝트에서 설정된 비밀번호는 사용자가 속한 모든 프로젝트에서 사용할 수 있습니다.
 
-1. **Compute > Instance** 페이지의 **API 엔드포인트 설정**을 클릭합니다.<br>
-![C_IaaS_apiendpointsettings_ko](http://static.toastoven.net/toast/public_api/C_IaaS_apiendpointsettings_ko.png)
-2. **API 엔드포인트 설정** 모달 창 아래의 **API 비밀번호 설정**에 원하는 API 비밀번호를 지정합니다.<br>
-![C_IaaS_setapipassword_0_ko](http://static.toastoven.net/toast/public_api/C_IaaS_setapipassword_0_ko.png)
 
+1) **Compute > Instance** 페이지의 **API 엔드포인트 설정**을 클릭합니다.<br>
+![C_IaaS_apiendpointsettings_ko](http://static.toastoven.net/toast/public_api/C_IaaS_apiendpointsettings_ko.png)
+
+2) **API 엔드포인트 설정** 모달 창 아래의 **API 비밀번호 설정**에 원하는 API 비밀번호를 지정합니다.<br>
+![C_IaaS_setapipassword_0_ko](http://static.toastoven.net/toast/public_api/C_IaaS_setapipassword_0_ko.png)
+ 
 !!! tip "알아두기"
     * 현재 사용 중인 비밀번호로는 변경할 수 없습니다.
     * API 비밀번호 변경 시 기존 인증 토큰은 더 이상 사용할 수 없으며, 재발급이 필요합니다.
+
 
 ## IaaS 토큰 발급 요청하기
 토큰 발급은 `identity` 타입 엔드포인트를 이용합니다. `identity` 서비스 엔드포인트는 리전에 관계없이 `https://api-identity-infrastructure.gov-nhncloudservice.com`입니다.<br>
 API를 호출할 때 필요한 토큰을 발급합니다. NHN Cloud에서는 프로젝트 한정 토큰(project-scoped token)을 사용합니다.
 
+
 !!! danger "주의"
-   * 사용자가 프로젝트에서 권한을 잃을 경우 해당 자격 증명은 만료되어 사용할 수 없습니다.
-   * NHN Cloud를 탈퇴하여 계정이 삭제되는 경우 해당 계정으로 발급한 모든 자격 증명은 만료되어 사용할 수 없습니다.
+    * 사용자가 프로젝트에서 권한을 잃을 경우 해당 자격 증명은 만료되어 사용할 수 없습니다.
+    * NHN Cloud를 탈퇴하여 계정이 삭제되는 경우 해당 계정으로 발급한 모든 자격 증명은 만료되어 사용할 수 없습니다.
 
 ```
 POST /v2.0/tokens
 ```
+
 
 ### 요청
 
@@ -75,6 +80,7 @@ POST /v2.0/tokens
 
 </p>
 </details>
+
 
 ### 응답
 
