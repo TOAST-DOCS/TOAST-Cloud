@@ -6,6 +6,7 @@ NHN Cloud의 Public API는 NHN Cloud의 서비스와 리소스를 외부 시스�
 
 이 문서는 Public API 호출 시 필요한 인증 방법, Public API별 인증 방식 지원 현황, 프레임워크 API, 파트너 관리 API 등 Public API 활용에 필요한 전반인 내용을 설명합니다. NHN Cloud Public API를 연동하고자 하는 개발자, API 인증 방식을 이해하고자 하는 서비스 기획자, API 기반으로 자동화를 고려하는 시스템 운영자가 이 문서를 활용할 수 있습니다.
 
+
 !!! tip "알아두기"
     * 서비스마다 API의 동작 방식과 응답 형식이 다르므로 자세한 내용은 각 서비스의 API 가이드를 참고하세요.
     * 프레임워크 API, 파트너 관리 API, 각 서비스마다 지원하는 API 인증 방식이 다르며, 일부 인증 방식은 특정 서비스에서만 지원합니다. 각 Public API별 지원되는 인증 방식은 [인증 방식 지원 현황](https://docs.gov-nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods-gov)에서 확인할 수 있습니다.

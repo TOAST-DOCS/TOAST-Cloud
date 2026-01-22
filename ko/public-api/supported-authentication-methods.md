@@ -12,7 +12,8 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 프레임워크 API 및 파트너 관리 API 사용에 대한 자세한 내용은 각각 [프레임워크 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)와 [파트너 관리 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)를 참고하세요.
 
 
-## 서비스별 인증 방식 확인하기
+## 서비스 API별 인증 방식 확인하기
+
 사용할 서비스에서 지원하는 API 인증 방식을 확인하세요.
 
 
@@ -80,6 +81,7 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 |                         | Resource Watcher                               |                    |         | O               | O      |                |
 
 
+<br>
 
 !!! tip "알아두기"
     <span style="color:red">*</span> Object Storage 서비스는 AWS의 Amazon S3 API와 호환되는 API를 제공합니다. Amazon S3 호환 API를 사용하려면 AWS EC2 형태의 S3 API 자격 증명을 발급해야 합니다. S3 API 자격 증명에 대한 자세한 설명은 [S3 API 자격 증명(S3 API Credential)](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#s3-api-s3-api-credential)에서 확인할 수 있습니다.
