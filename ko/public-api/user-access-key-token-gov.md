@@ -274,10 +274,9 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 User Access Key 토큰은 HTTP 요청 헤더에 포함해 전달합니다. API 호출 시 아래 예시와 같이 요청 헤더에 User Access Key 토큰을 설정해 호출하세요.
 
 * HTTP 헤더 형식 예시
-
-  ```
-  X-NHN-Authorization: Bearer {Access Token}
-  ```
+```
+X-NHN-Authorization: Bearer {Access Token}
+```
 
 사용자가  HTTP 헤더에 키를 담아 서버에 요청을 보내면 서버가 토큰의 유효성을 확인한 뒤 요청을 승인하거나 거부합니다.
 

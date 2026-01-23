@@ -215,7 +215,6 @@ POST /v2.0/tokens
 IaaS 토큰은 HTTP 요청 헤더에 포함해 전달합니다. API 호출 시 아래 예시와 같이 요청 헤더에 IaaS 토큰을 설정해 호출하세요.
 
 * HTTP 헤더 형식 예시
-
 ```
 X-Auth-Token: {IaaS Token}
 ```

@@ -40,11 +40,10 @@ User Access Key는 HTTP 요청 헤더에 포함하여 전달합니다. API 호�
 
 
 * HTTP 헤더 형식 예시
-
 ```
-  X-TC-AUTHENTICATION-ID: {User Access Key}
-  X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
-  ```
+X-TC-AUTHENTICATION-ID: {User Access Key}
+X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
+```
 
 
 사용자가 HTTP 헤더에 키를 담아 서버에 요청을 보내면 서버는 해당 키의 유효성 및 권한을 확인한 뒤 요청을 승인하거나 거부합니다.
