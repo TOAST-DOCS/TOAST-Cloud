@@ -146,8 +146,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Private CA | リージョン | O |  |  |  |
 | Bill | eTax | リージョン | O |  |  |  |
 | Collaboration | Dooray! | グローバル |  |  |  |  |
-| Contact Center | Omni Contact | リージョン | O |  |  |  |
-|  | Mobile Contact | リージョン | O |  |  |  |
-|  | Contiple | グローバル |  |  |  |  |
+| Contact Center | Contiple | グローバル |  |  |  |  |
 | Governance & Audit | CloudTrail | グローバル |  |  |  |  |
 |  | Resource Watcher | グローバル |  |  |  |  |
