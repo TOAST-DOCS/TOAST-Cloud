@@ -147,9 +147,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Private CA | Regional | O |  |  |  |
 | Bill | eTax | Regional | O |  |  |  |
 | Collaboration | Dooray! | Global |  |  |  |  |
-| Contact Center | Omni Contact | Regional | O |  |  |  |
-|  | Mobile Contact | Regional | O |  |  |  |
-|  | Contiple | Global |  |  |  |  |
+| Contact Center | Contiple | Global |  |  |  |  |
 | Governance & Audit | CloudTrail | Global |  |  |  |  |
 |  | Resource Watcher | Global |  |  |  |  |
 
