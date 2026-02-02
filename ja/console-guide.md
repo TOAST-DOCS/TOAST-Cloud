@@ -515,6 +515,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Managed | ADMIN | Managedサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Service Monitoring | ADMIN | Service Monitoringサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Certificate Manager | ADMIN | Certificate Managerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Certificate Manager | VIEWER | Certificate Managerサービスに対するRead(読み取り)  |
 | Private CA | ADMIN | Private CAサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Private CA | VIEWER | Private CAサービスに対するRead(読み取り)  |
 | eTax | ADMIN | eTax サービスCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
