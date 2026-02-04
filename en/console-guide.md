@@ -540,7 +540,6 @@ Members are classified into NHN Cloud members and IAM members.
 | Managed | ADMIN | Create, Read, Update, Delete for Managed Service |
 | Service Monitoring | ADMIN | Create, Read, Update, Delete for Service Monitoring Service |
 | Certificate Manager | ADMIN | Create, Read, Update, Delete for Certificate Manager Service |
-| Certificate Manager | VIEWER | Read for Certificate Manager Service |
 | Private CA | ADMIN | Create, Read, Update, Delete for Service Private CA |
 | Private CA | VIEWER | Read for Private CA Service |
 | eTax | ADMIN | Create, Read, Update, Delete for eTax Service |
