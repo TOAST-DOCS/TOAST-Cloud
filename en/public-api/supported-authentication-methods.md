@@ -2,22 +2,22 @@
 
 **NHN Cloud > Public API > API Authentication Method > Supported Authentication Methods**
 
-NHN Cloud의 Public API는 인증을 위해 User Access Key 토큰, IaaS 토큰, User Access Key, Appkey, 프로젝트 통합 Appkey를 지원합니다.
-Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식은 특정 API에서만 지원합니다.
+NHN Cloud Public APIs support User Access Key tokens, IaaS tokens, User Access Keys, Appkeys, and Project Integrated Appkeys.
+Authentication methods vary across Public APIs, and certain methods are only supported by specific APIs.
 
-## 프레임워크 API 및 파트너 관리 API 인증 방식 확인하기
+## Check Authentication Methods for Framework and Partner Management APIs
 
-프레임워크 API 및 파트너 관리 API는 인증을 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰 발급 및 API 호출에 대한 자세한 내용은 [User Access Key Token](https://docs.nhncloud.com/en/nhncloud/en/public-api/user-access-key-token)을 참고하세요.
+Framework APIs and Partner Management APIs use User Access Key tokens for authentication. For more information on issuing User Access Key tokens and making API calls, please refer to the [User Access Key Token](https://docs.nhncloud.com/en/nhncloud/en/public-api/user-access-key-token) documentation
 
-프레임워크 API 및 파트너 관리 API 사용에 대한 자세한 내용은 각각 [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/)와 [Partner Management API](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/)를 참고하세요.
-
-
-## 서비스 API별 인증 방식 확인하기
-
-사용할 서비스에서 지원하는 API 인증 방식을 확인하세요.
+For more information on using Framework APIs and Partner Management APIs, please refer to the [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/) and [Partner Management API](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/) documentation, respectively.
 
 
-| 서비스 카테고리           | 서비스                                          | User Access Key 토큰 | IaaS 토큰 | User Access Key | Appkey | 프로젝트 통합 Appkey |
+## Check Authentication Methods for Each Service API
+
+Check the API authentication methods supported by the service you intend to use.
+
+
+| Service Category           | Service                                          | User Access Key Token | IaaS Token | User Access Key | Appkey | Project Integrated Appkey |
 | ----------------------- | ---------------------------------------------- | ------------------ | ------- | --------------- | ------ | -------------- |
 | **Compute**             | Instance                                       |                    | O       |                 |        |                |
 |                         | Image                                          |                    | O       |                 |        |                |
@@ -83,8 +83,8 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 
 <br>
 
-!!! tip "알아두기"
-    <span style="color:red">*</span> Object Storage 서비스는 AWS의 Amazon S3 API와 호환되는 API를 제공합니다. Amazon S3 호환 API를 사용하려면 AWS EC2 형태의 S3 API 자격 증명을 발급해야 합니다. S3 API 자격 증명에 대한 자세한 설명은 [S3 API Credential](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#s3-api-credentials)에서 확인할 수 있습니다.
+!!! tip "Note"
+<span style="color:red">*</span> Object Storage service provides APIs compatible with the Amazon S3 API. To use these S3-compatible APIs, you must issue S3 API credentials in the AWS EC2 format. Detailed information can be found in [S3 API Credential](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#s3-api-credentials).
 
 
 
