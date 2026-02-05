@@ -2,55 +2,55 @@
 
 **NHN Cloud > Public API > API認証方式 > IaaSトークン**
 
-IaaS 토큰은 NHN Cloud의 OpenStack 기반 인프라 서비스(IaaS)에서 사용하는 인증 토큰입니다. Keystone 인증 서버를 통해 발급되며 Compute, Block Storage, Network 등 인프라 리소스 제어 API를 호출할 때 사용합니다.
+IaaSトークンは、NHN CloudのOpenStackベースのインフラサービス(IaaS)で使用する認証トークンです。Keystone認証サーバーを通じて発行され、Compute、Block Storage、Networkなどのインフラリソース制御APIを呼び出す際に使用します。
 
-## 사전 작업
-### API 엔드포인트 확인
+## 事前作業
+### APIエンドポイントの確認
 
-NHN Cloud 기본 인프라 서비스 API는 타입과 리전별로 엔드포인트가 분리되어 있습니다. 단, Identity API는 모든 리전에서 동일한 엔드포인트를 사용합니다.
+NHN Cloudの基本インフラサービスAPIは、タイプとリージョンごとにエンドポイントが分かれています。ただし、Identity APIは全てのリージョンで同一のエンドポイントを使用します。
 
-| 타입         | 리전                                                 | 엔드포인트                                             |
+| タイプ        | リージョン                                                | エンドポイント                                            |
 | ------------ | ---------------------------------------------------- | ------------------------------------------------------- |
-| identity     | 모든 리전                                            | https://api-identity-infrastructure.nhncloudservice.com |
-| compute      | 한국(판교) 리전<br>한국(평촌) 리전<br>일본(도쿄) 리전<br>미국(캘리포니아) 리전 | https://kr1-api-instance-infrastructure.nhncloudservice.com<br>https://kr2-api-instance-infrastructure.nhncloudservice.com<br>https://jp1-api-instance-infrastructure.nhncloudservice.com<br>https://us1-api-instance-infrastructure.nhncloudservice.com |
-| network      | 한국(판교) 리전<br>한국(평촌) 리전<br>일본(도쿄) 리전<br>미국(캘리포니아) 리전 | https://kr1-api-network-infrastructure.nhncloudservice.com<br>https://kr2-api-network-infrastructure.nhncloudservice.com<br>https://jp1-api-network-infrastructure.nhncloudservice.com<br>https://us1-api-network-infrastructure.nhncloudservice.com |
-| image        | 한국(판교) 리전<br>한국(평촌) 리전<br>일본(도쿄) 리전<br>미국(캘리포니아) 리전 | https://kr1-api-image-infrastructure.nhncloudservice.com<br>https://kr2-api-image-infrastructure.nhncloudservice.com<br>https://jp1-api-image-infrastructure.nhncloudservice.com<br>https://us1-api-image-infrastructure.nhncloudservice.com |
-| volumev2     | 한국(판교) 리전<br>한국(평촌) 리전<br>일본(도쿄) 리전<br> | https://kr1-api-block-storage-infrastructure.nhncloudservice.com<br>https://kr2-api-block-storage-infrastructure.nhncloudservice.com<br>https://jp1-api-block-storage-infrastructure.nhncloudservice.com<br>https://us1-api-block-storage-infrastructure.nhncloudservice.com |
-| nasv1        | 한국(판교) 리전<br>한국(평촌) 리전                    | https://kr1-api-nas-infrastructure.nhncloudservice.com<br>https://kr2-api-nas-infrastructure.nhncloudservice.com |
-| object-store | 한국(판교) 리전<br>한국(평촌) 리전<br>일본(도쿄) 리전<br> | https://kr1-api-object-storage.nhncloudservice.com<br>https://kr2-api-object-storage.nhncloudservice.com<br>https://jp1-api-object-storage.nhncloudservice.com<br>https://us1-api-object-storage.nhncloudservice.com |
-| key-manager  | 한국(판교) 리전<br>한국(평촌) 리전<br>일본(도쿄) 리전<br> | https://kr1-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr2-api-key-manager-infrastructure.nhncloudservice.com<br>https://jp1-api-key-manager-infrastructure.nhncloudservice.com<br>https://us1-api-key-manager-infrastructure.nhncloudservice.com |
+| identity     | 全リージョン                                            | https://api-identity-infrastructure.nhncloudservice.com |
+| compute      | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>日本(東京)リージョン<br>米国(カリフォルニア)リージョン | https://kr1-api-instance-infrastructure.nhncloudservice.com<br>https://kr2-api-instance-infrastructure.nhncloudservice.com<br>https://jp1-api-instance-infrastructure.nhncloudservice.com<br>https://us1-api-instance-infrastructure.nhncloudservice.com |
+| network      | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>日本(東京)リージョン<br>米国(カリフォルニア)リージョン | https://kr1-api-network-infrastructure.nhncloudservice.com<br>https://kr2-api-network-infrastructure.nhncloudservice.com<br>https://jp1-api-network-infrastructure.nhncloudservice.com<br>https://us1-api-network-infrastructure.nhncloudservice.com |
+| image        | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>日本(東京)リージョン<br>米国(カリフォルニア)リージョン | https://kr1-api-image-infrastructure.nhncloudservice.com<br>https://kr2-api-image-infrastructure.nhncloudservice.com<br>https://jp1-api-image-infrastructure.nhncloudservice.com<br>https://us1-api-image-infrastructure.nhncloudservice.com |
+| volumev2     | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>日本(東京)リージョン<br> | https://kr1-api-block-storage-infrastructure.nhncloudservice.com<br>https://kr2-api-block-storage-infrastructure.nhncloudservice.com<br>https://jp1-api-block-storage-infrastructure.nhncloudservice.com<br>https://us1-api-block-storage-infrastructure.nhncloudservice.com |
+| nasv1        | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン                    | https://kr1-api-nas-infrastructure.nhncloudservice.com<br>https://kr2-api-nas-infrastructure.nhncloudservice.com |
+| object-store | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>日本(東京)リージョン<br> | https://kr1-api-object-storage.nhncloudservice.com<br>https://kr2-api-object-storage.nhncloudservice.com<br>https://jp1-api-object-storage.nhncloudservice.com<br>https://us1-api-object-storage.nhncloudservice.com |
+| key-manager  | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>日本(東京)リージョン<br> | https://kr1-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr2-api-key-manager-infrastructure.nhncloudservice.com<br>https://jp1-api-key-manager-infrastructure.nhncloudservice.com<br>https://us1-api-key-manager-infrastructure.nhncloudservice.com |
 
-### 테넌트 ID 확인
+### テナントIDの確認
 
-API 요청에 포함되는 테넌트 ID는 **Compute > Instance** 페이지의 **API 엔드포인트 설정**에서 확인합니다.
+APIリクエストに含まれるテナントIDは、**Compute > Instance** ページの **APIエンドポイント設定** で確認します。
 
-### API 비밀번호 설정
+### APIパスワード設定
 
-NHN Cloud 기본 인프라 서비스 API를 사용하려면 NHN Cloud 계정 비밀번호와는 별개로 API 비밀번호를 설정해야 합니다. API 비밀번호는 계정별로 생성됩니다. 한 프로젝트에서 설정된 비밀번호는 사용자가 속한 모든 프로젝트에서 사용할 수 있습니다.
+NHN Cloudの基本インフラサービスAPIを使用するには、NHN Cloudアカウントのパスワードとは別にAPIパスワードを設定する必要があります。APIパスワードはアカウントごとに作成されます。あるプロジェクトで設定されたパスワードは、ユーザーが所属する全てのプロジェクトで使用できます。
 
-1) **Compute > Instance** 페이지의 **API 엔드포인트 설정**을 클릭합니다.
+1) **Compute > Instance** ページの **APIエンドポイント設定**をクリックします。
 
 ![C_IaaS_apiendpointsettings_ja](http://static.toastoven.net/toast/public_api/C_IaaS_apiendpointsettings_ja.png)
 
-2) **API 엔드포인트 설정** 모달 창 아래의 **API 비밀번호 설정**에 원하는 API 비밀번호를 지정합니다.
+2) **APIエンドポイント設定** モーダルウィンドウ下部の **APIパスワード設定** で任意のAPIパスワードを指定します。
 
 ![C_IaaS_setapipassword_0_ja](http://static.toastoven.net/toast/public_api/C_IaaS_setapipassword_0_ja.png)
 
 
-!!! tip "알아두기"
-    * 현재 사용 중인 비밀번호로는 변경할 수 없습니다.
-    * API 비밀번호 변경 시 기존 인증 토큰은 더 이상 사용할 수 없으며, 재발급이 필요합니다.
+!!! tip 「ポイント」
+    * 現在使用中のパスワードには変更できません。
+    * APIパスワード変更時、既存の認証トークンは使用できなくなるため、再発行が必要です。
 
 
-## IaaS 토큰 발급 요청하기
+## IaaSトークンの発行リクエスト
 
-토큰 발급은 `identity` 타입 엔드포인트를 이용합니다. `identity` 서비스 엔드포인트는 리전에 관계없이 `https://api-identity-infrastructure.nhncloudservice.com`입니다.<br>
-API를 호출할 때 필요한 토큰을 발급합니다. NHN Cloud에서는 프로젝트 한정 토큰(project-scoped token)을 사용합니다.
+トークン発行は `identity` タイプのエンドポイントを利用します。`identity` サービスのエンドポイントは、リージョンに関係なく `https://api-identity-infrastructure.nhncloudservice.com` です。<br>
+APIを呼び出す際に必要なトークンを発行します。NHN Cloudではプロジェクト限定トークン(project-scoped token)を使用します。
 
 
-!!! danger "주의"
-    * 사용자가 프로젝트에서 권한을 잃을 경우 해당 자격 증명은 만료되어 사용할 수 없습니다.
-    * NHN Cloud를 탈퇴하여 계정이 삭제되는 경우 해당 계정으로 발급한 모든 자격 증명은 만료되어 사용할 수 없습니다.
+!!! danger "注意"
+    * ユーザーがプロジェクトでの権限を失った場合、該当のクレデンシャルは無効となり使用できません。
+    * NHN Cloudを退会してアカウントが削除された場合、そのアカウントで発行した全てのクレデンシャルは無効となり使用できません。
 
 
 ```
@@ -58,17 +58,17 @@ POST /v2.0/tokens
 ```
 
 
-### 요청
+### リクエスト
 
-| 이름                | 구분 | 타입  | 필수 | 설명                                       |
+| 名前                | 区分 | タイプ  | 必須 | 説明                                       |
 | ------------------- | ---- | ------ | ---- | ------------------------------------------ |
-| tenantId            | Body | String | O    | 토큰을 발급 받을 테넌트 ID                  |
-| passwordCredentials | Body | Object | O    | 인증을 위한 사용자 정보 객체                |
-| username            | Body | String	| O    | NHN Cloud 계정 ID(이메일 형식), IAM 계정 ID |
-| password            | Body | String	| O    | API 비밀번호                                |
+| tenantId            | Body | String | O    | トークンを発行するテナントID                  |
+| passwordCredentials | Body | Object | O    | 認証のためのユーザー情報オブジェクト                |
+| username            | Body | String	| O    | NHN CloudアカウントID(メール形式)、IAMアカウントID |
+| password            | Body | String	| O    | APIパスワード                               |
 
  
-<details><summary>예시</summary>
+<details><summary>例</summary>
 <p>
 
 ```json
@@ -87,30 +87,30 @@ POST /v2.0/tokens
 </details>
 
 
-### 응답
+### レスポンス
 
-| 이름 | 종류 | 속성 | 설명 |
+| 名前 | 種類 | 属性 | 説明 |
 |---|---|---|---|
-| access | Body | Object | `access` 객체 |
-| access.token | Body | Object | `token` 객체 |
-| access.token.issued_at | Body | Datetime | 토큰 발급 시간(UTC)<br>`YYYY-MM-DDThh:mm:ss.SSSSSS`의 형태 |
-| access.token.expires | Body | Datetime | 토큰 만료 시간(UTC)<br>`YYYY-MM-DDThh:mm:ssZ`의 형태 |
-| access.token.id | Body | String | 토큰 ID |
-| access.token.tenant | Body | Object | `tenant` 객체 |
-| access.token.tenant.description | Body | String | 테넌트 설명 |
-| access.token.tenant.enabled | Body | String | 테넌트의 활성화 여부<br>활성화되지 않으면 토큰 발급 및 API 호출 불가 |
-| access.token.tenant.id | Body | String | 테넌트 ID |
-| access.token.tenant.name | Body | String | 테넌트 이름 |
-| access.serviceCatalog | Body | Object | `serviceCatalog` 객체 |
-| access.serviceCatalog.endpoints | Body | Object | `endpoint` 객체 |
-| access.serviceCatalog.endpoints_links | Body | String | 엔드포인트 링크 |
-| access.serviceCatalog.type | Body | String | 엔드포인트 서비스 타입 |
-| access.serviceCatalog.name | Body | String | 엔드포인트 서비스 이름 |
-| access.user | Body | Object | `user` 객체 |
-| access.metadata | Body | Object | `metadata` 객체 |
+| access | Body | Object | `access` オブジェクト |
+| access.token | Body | Object | `token` オブジェクト |
+| access.token.issued_at | Body | Datetime | トークン発行時刻(UTC)<br>`YYYY-MM-DDThh:mm:ss.SSSSSS`の形式 |
+| access.token.expires | Body | Datetime | トークン有効期限(UTC)<br>`YYYY-MM-DDThh:mm:ssZ`の形式 |
+| access.token.id | Body | String | トークンID |
+| access.token.tenant | Body | Object | `tenant` オブジェクト |
+| access.token.tenant.description | Body | String | テナント説明 |
+| access.token.tenant.enabled | Body | String | テナントの有効化状態<br>有効化されていない場合、トークン発行及びAPI呼び出し不可 |
+| access.token.tenant.id | Body | String | テナントID |
+| access.token.tenant.name | Body | String | テナント名 |
+| access.serviceCatalog | Body | Object | `serviceCatalog` オブジェクト |
+| access.serviceCatalog.endpoints | Body | Object | `endpoint` オブジェクト |
+| access.serviceCatalog.endpoints_links | Body | String | エンドポイントリンク |
+| access.serviceCatalog.type | Body | String | エンドポイントサービスタイプ |
+| access.serviceCatalog.name | Body | String | エンドポイントサービス名 |
+| access.user | Body | Object | `user` オブジェクト |
+| access.metadata | Body | Object | `metadata` オブジェクト |
 
 
-<details><summary>예시</summary>
+<details><summary>例</summary>
 <p>
 
 ```json
@@ -236,16 +236,13 @@ POST /v2.0/tokens
 </details>
 
 
-## IaaS 토큰 사용하기
+## IaaSトークンの使用
 
-IaaS 토큰은 HTTP 요청 헤더에 포함해 전달합니다. API 호출 시 아래 예시와 같이 요청 헤더에 IaaS 토큰을 설정해 호출하세요.
+IaaSトークンはHTTPリクエストヘッダに含めて送信します。API呼び出し時、以下の例のようにリクエストヘッダにIaaSトークンを設定して呼び出してください。
 
-* HTTP 헤더 형식 예시
+* HTTPヘッダ形式の例
 ```
 X-Auth-Token: {IaaS Token}
 ```
 
-사용자가 HTTP 헤더에 토큰을 담아 서버에 요청을 보내면 서버가 토큰의 유효성을 확인한 뒤 요청을 승인하거나 거부합니다.
-
-
-
+ユーザーがHTTPヘッダにトークンを含めてサーバーにリクエストを送信すると、サーバーはトークンの有効性を確認した後、リクエストを承認または拒否します。
