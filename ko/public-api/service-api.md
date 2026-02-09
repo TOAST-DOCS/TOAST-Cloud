@@ -1,6 +1,6 @@
 # 서비스 API
 
-**NHN Cloud > Public API > 서비스 API**
+**NHN Cloud > Public API 사용 가이드 > 서비스 API**
 
 ## 서비스 API 가이드 바로 가기
 

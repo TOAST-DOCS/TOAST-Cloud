@@ -1,6 +1,6 @@
 # User Access Key
 
-**NHN Cloud > Public API > API Authentication Method > User Access Key**
+**NHN Cloud > Public API User Guide > API Authentication Method > User Access Key**
 
 A User Access Key is an authentication key issued based on an NHN Cloud or IAM account. It is used in conjunction with a Secret Access Key to authenticate API requests. API requests can be authenticated on a per-user basis, allowing for granular access control. API calls are restricted based on the roles and permissions assigned to authenticated NHN Cloud or IAM accounts. Please note that authorization may not be supported depending on the API version.
 

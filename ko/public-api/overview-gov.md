@@ -1,6 +1,6 @@
 # Public API 개요
 
-**NHN Cloud > Public API > Public API 개요**
+**NHN Cloud > Public API 사용 가이드 > Public API 개요**
 
 NHN Cloud의 Public API는 NHN Cloud의 서비스와 리소스를 외부 시스템 또는 사용자 애플리케이션에서 제어하거나 연동할 수 있도록 제공하는 REST API입니다.
 

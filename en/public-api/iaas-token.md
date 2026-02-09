@@ -1,6 +1,6 @@
 # IaaS Token
 
-**NHN Cloud > Public API > API Authentication Method > IaaS Token**
+**NHN Cloud > Public API User Guide > API Authentication Method > IaaS Token**
 
 The IaaS token is an authentication token used for NHN Cloud's OpenStack-based infrastructure services (IaaS). Issued through the Keystone authentication server, these tokens are used to call APIs for controlling infrastructure resources such as Compute, Block Storage, and Network.
 

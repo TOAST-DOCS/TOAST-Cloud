@@ -1,6 +1,6 @@
 # Authentication Overview
 
-**NHN Cloud > Public API > API Authentication Method > Authentication Overview**
+**NHN Cloud > Public API User Guide > API Authentication Method > Authentication Overview**
 
 Public APIs validate requests based on the authentication method configured for each service before forwarding them to the API backend. This document describes the authentication methods used for NHN Cloud Public APIs.
 

@@ -1,6 +1,6 @@
 # User Access Key
 
-**NHN Cloud > Public API > API 인증 방식 > User Access Key**
+**NHN Cloud > Public API 사용 가이드 > API 인증 방식 > User Access Key**
 
 User Access Key는 NHN Cloud 계정 또는 IAM 계정을 기반으로 발급되는 인증 키로, Secret Access Key와 함께 사용하여 API 요청에 대한 인증 수단으로 활용됩니다. API 요청 시 사용자 단위로 접근 권한을 인증할 수 있으며, 사용자별 세밀한 권한 제어가 가능합니다. 인증된 NHN Cloud 계정 또는 IAM 계정에 부여된 역할 및 권한에 따라 API 호출이 제한되지만, API 버전에 따라 인가 기능이 적용되지 않을 수도 있습니다.
 
