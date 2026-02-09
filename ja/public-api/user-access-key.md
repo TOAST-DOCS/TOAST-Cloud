@@ -26,13 +26,13 @@ NHN Cloudが提供するAPIを使用するには、User Access Keyを発行す�
 
 
 !!! danger "注意"
-    * モーダルウィンドウを閉じた後は、Secret Access Keyを再度確認することはできません。Secret Access Keyを忘れた場合は再作成が必要になるため、必ずコピーして別途管理してください。
-    * User Access KeyまたはSecret Access Keyのいずれかでも流出した、または流出が疑われる場合、そのキーを破棄して新たに発行する必要があります。
+    * モーダルウィンドウを閉じた後は、Secret Access Keyを再度確認することはできません。Secret Access Keyを忘れた場合は再作成が必要になるため、必ずコピーして別途管理してください。
+    * User Access KeyまたはSecret Access Keyのいずれかでも流出した、または流出が疑われる場合、そのキーを破棄して新たに発行する必要があります。
 
 
 !!! tip "参考"
-    * User Access Keyは、NHN CloudアカウントとIAMアカウントごとにそれぞれ5個まで発行できます。
-    * User Access Key IDは90日ごとに変更することを推奨します。
+    * User Access Keyは、NHN CloudアカウントとIAMアカウントごとにそれぞれ5個まで発行できます。
+    * User Access Key IDは90日ごとに変更することを推奨します。
 
 
 ## APIの呼び出し

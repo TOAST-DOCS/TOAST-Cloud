@@ -1,5 +1,5 @@
 # Project Integrated Appkey
-**NHN Cloud > Public API > API Authentication Method > Project Integrated Appkey**
+**NHN Cloud > Public API User Guide > API Authentication Method > Project Integrated Appkey**
 
 Project Integrated Appkey is a common authentication key that can be used across multiple services within a single NHN Cloud project. Instead of managing individual keys for each service, a single integrated key allows you to efficiently call APIs for all services active in that project. This reduces the number of keys to manage and provides flexibility and efficiency by allowing users to create or delete Appkeys directly
 

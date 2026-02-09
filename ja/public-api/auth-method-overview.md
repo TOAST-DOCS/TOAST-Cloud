@@ -18,7 +18,7 @@ NHN CloudのPublic APIは、認証のためにUser Access Keyトークン、IaaS
 
 
 !!! tip "参考"
-    NHN Cloud Object Storageサービスは、AWSのAmazon S3 APIと互換性のあるAPIを提供します。Amazon S3互換APIを使用するには、AWS EC2形式のS3 APIクレデンシャルを発行する必要があります。S3 APIクレデンシャルに関する詳細な説明は、[S3 APIクレデンシャル(S3 API Credential)](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/s3-api-guide/#s3-api-s3-api-credential)で確認できます。
+    NHN Cloud Object Storageサービスは、AWSのAmazon S3 APIと互換性のあるAPIを提供します。Amazon S3互換APIを使用するには、AWS EC2形式のS3 APIクレデンシャルを発行する必要があります。S3 APIクレデンシャルに関する詳細な説明は、[S3 APIクレデンシャル(S3 API Credential)](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/s3-api-guide/#s3-api-s3-api-credential)で確認できます。
 
 
 NHN Cloud Public APIは、APIごとに異なる認証方式をサポートします。[認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/supported-authentication-methods)で各APIが提供する認証方式を確認した後、該当する認証方式を使用してAPIリクエストを認証してください。

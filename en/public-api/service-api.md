@@ -1,6 +1,6 @@
 # Service API
 
-**NHN Cloud > Public API > Service API**
+**NHN Cloud > Public API User Guide > Service API**
 
 ## Go to Service API Guide
 

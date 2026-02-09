@@ -22,9 +22,9 @@ User Access Keyトークンの発行及びAPI呼び出しは、次のような�
 
 
 !!! tip "ポイント"
-    トークンの有効期間は、NHN Cloudコンソールの **APIセキュリティ設定** メニューで変更できます。
-    トークンの有効期間は60秒～86,400秒(24時間)以内で設定できます。
-    有効期間を変更する前に発行されたトークンの有効期間は変更されず、トークン有効期間の変更後に新規発行されるトークンから変更後の有効期間が適用されます。
+    トークンの有効期間は、NHN Cloudコンソールの **APIセキュリティ設定** メニューで変更できます。
+    トークンの有効期間は60秒～86,400秒(24時間)以内で設定できます。
+    有効期間を変更する前に発行されたトークンの有効期間は変更されず、トークン有効期間の変更後に新規発行されるトークンから変更後の有効期間が適用されます。
 
 
 ## 事前作業
@@ -44,8 +44,8 @@ User Access Keyトークンを発行するには、まずUser Access Key IDとSe
 
 
 !!! danger "注意"
-    * モーダルウィンドウを閉じた後は、Secret Access Keyを再度確認することはできません。Secret Access Keyを忘れた場合は再作成が必要になるため、必ずコピーして別途管理してください。
-    * User Access KeyまたはSecret Access Keyのいずれかでも流出した、または流出が疑われる場合、そのキーを破棄して新たに発行する必要があります。
+    * モーダルウィンドウを閉じた後は、Secret Access Keyを再度確認することはできません。Secret Access Keyを忘れた場合は再作成が必要になるため、必ずコピーして別途管理してください。
+    * User Access KeyまたはSecret Access Keyのいずれかでも流出した、または流出が疑われる場合、そのキーを破棄して新たに発行する必要があります。
 
 
 ## 認証サーバードメイン
@@ -89,7 +89,7 @@ https://oauth.api.nhncloudservice.com/
 
 
 !!! tip "参考"
-    以下のAuthorizationにある `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5` は、`UserAccessKeyID:SecretAccessKey` をbase64エンコードした結果です。
+    以下のAuthorizationにある `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5` は、`UserAccessKeyID:SecretAccessKey` をbase64エンコードした結果です。
 
 
 ```sh
@@ -139,8 +139,8 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
 
 
 !!! tip "参考"
-    * この方法は、Spring Boot 3.0以上のバージョンを使用する場合にのみ可能です。
-    * APIを利用して強制的に期限切れにした場合に備えるには、トークンを再発行する部分を直接実装する必要があります。
+    * この方法は、Spring Boot 3.0以上のバージョンを使用する場合にのみ可能です。
+    * APIを利用して強制的に期限切れにした場合に備えるには、トークンを再発行する部分を直接実装する必要があります。
 
 
 1) 依存関係の追加
@@ -284,6 +284,6 @@ X-NHN-Authorization: Bearer {Access Token}
 
 
 !!! tip "参考"
-    User Access Keyトークンは、エラー発生時に [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)と同様のエラーコードを返します。トークンリクエストAPI呼び出し、トークン失効リクエストAPI呼び出し、トークン使用などの状況で返される可能性のあるエラーコードは、[フレームワークAPIガイド](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281)で確認できます。
+    User Access Keyトークンは、エラー発生時に [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)と同様のエラーコードを返します。トークンリクエストAPI呼び出し、トークン失効リクエストAPI呼び出し、トークン使用などの状況で返される可能性のあるエラーコードは、[フレームワークAPIガイド](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281)で確認できます。
 
     

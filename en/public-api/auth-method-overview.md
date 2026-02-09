@@ -18,7 +18,7 @@ NHN Cloud Public APIs support User Access Key tokens, IaaS tokens, User Access K
 
 
 !!! tip "Note"
-NHN Cloud Object Storage service provides APIs compatible with the Amazon S3 API. To use these S3-compatible APIs, you must issue S3 API credentials in the AWS EC2 format. Detailed information can be found in [S3 API Credentials](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#s3-api-credentials). 
+    NHN Cloud Object Storage service provides APIs compatible with the Amazon S3 API. To use these S3-compatible APIs, you must issue S3 API credentials in the AWS EC2 format. Detailed information can be found in [S3 API Credentials](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#s3-api-credentials). 
 
 
 NHN Cloud Public APIs support different authentication methods for each API. After checking the authentication methods provided by each API in [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/supported-authentication-methods), use the corresponding method to authenticate your API requests.
