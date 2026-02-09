@@ -1,6 +1,6 @@
 # User Access Key Token
 
-**NHN Cloud > Public API > API Authentication Methods > User Access Key Token**
+**NHN Cloud > Public API User Guide > API Authentication Methods > User Access Key Token**
 
 User Access Key tokens are temporary Bearer tokens issued based on a User Access Key. A Bearer token is a type of security token that grants access to any party in possession of the token. By setting an expiration time, you can ensure the security of your resources.
 These tokens operate using Attribute-Based Access Control (ABAC). When using a token, the specific roles and permissions assigned to the NHN Cloud or IAM account are applied, restricting API calls to the authorized scope of that account. Furthermore, you can achieve fine-grained access control by configuring detailed role conditions.

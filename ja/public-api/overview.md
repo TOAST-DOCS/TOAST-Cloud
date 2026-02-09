@@ -8,8 +8,8 @@ NHN CloudのPublic APIは、NHN Cloudのサービスとリソースを外部シ�
 
 
 !!! tip "参考"
-    * サービスごとにAPIの動作方式やレスポンス形式が異なるため、詳細は各サービスのAPIガイドを参照してください。
-    * フレームワークAPI、パートナー管理API、各サービスごとにサポートするAPI認証方式が異なり、一部の認証方式は特定のサービスでのみサポートされます。各Public APIでサポートされる認証方式は[認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/supported-authentication-methods)で確認できます。
+    * サービスごとにAPIの動作方式やレスポンス形式が異なるため、詳細は各サービスのAPIガイドを参照してください。
+    * フレームワークAPI、パートナー管理API、各サービスごとにサポートするAPI認証方式が異なり、一部の認証方式は特定のサービスでのみサポートされます。各Public APIでサポートされる認証方式は[認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/supported-authentication-methods)で確認できます。
 
 ## Public APIを始める
 

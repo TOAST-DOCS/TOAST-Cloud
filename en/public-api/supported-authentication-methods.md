@@ -1,6 +1,6 @@
 # Supported Authentication Methods
 
-**NHN Cloud > Public API > API Authentication Method > Supported Authentication Methods**
+**NHN Cloud > Public API User Guide > API Authentication Method > Supported Authentication Methods**
 
 NHN Cloud Public APIs support User Access Key tokens, IaaS tokens, User Access Keys, Appkeys, and Project Integrated Appkeys.
 Authentication methods vary across Public APIs, and certain methods are only supported by specific APIs.
