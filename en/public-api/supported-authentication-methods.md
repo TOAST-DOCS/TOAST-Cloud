@@ -23,6 +23,7 @@ Check the API authentication methods supported by the service you intend to use.
 |                         | Key Pair                                       |                    | O       |                 |        |                |
 |                         | GPU Instance                                   |                    | O       |                 |        |                |
 |                         | Image                                          |                    | O       |                 |        |                |
+|                         | Virtual Desktop                                |                    | O       |                 |        |                |
 | **Container**           | NHN Kubernetes Service (NKS)                   |                    | O       |                 |        |                |
 |                         | NHN Container Registry (NCR)                   | O                  |         | O               |        |                |
 |                         | NHN Container Service (NCS)                    | O                  |         |                 |        |                |

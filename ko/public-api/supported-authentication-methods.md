@@ -23,6 +23,7 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 |                         | Key Pair                                       |                    | O       |                 |        |                |
 |                         | GPU Instance                                   |                    | O       |                 |        |                |
 |                         | Image                                          |                    | O       |                 |        |                |
+|                         | Virtual Desktop                                |                    | O       |                 |        |                |
 | **Container**           | NHN Kubernetes Service (NKS)                   |                    | O       |                 |        |                |
 |                         | NHN Container Registry (NCR)                   | O                  |         | O               |        |                |
 |                         | NHN Container Service (NCS)                    | O                  |         |                 |        |                |

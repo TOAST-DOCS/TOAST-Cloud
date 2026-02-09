@@ -216,11 +216,11 @@ public class Oauth2Config {
 
 * リクエスト
 
-  | 区分 | 名前 | タイプ | 必須 | 値 | 説明   |
-  |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
-  | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
-  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` をBase64エンコードした結果を `Basic ` の後ろに付けて使用 |
-  | Request Body |  token | String| Yes | access token    | <ul><li>発行されたトークン</li><li>失効リクエスト時に `token=発行されたトークン` のように使用</li></ul>      |
+| 区分 | 名前 | タイプ | 必須 | 値 | 説明   |
+|---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
+| Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
+| Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` をBase64エンコードした結果を `Basic ` の後ろに付けて使用 |
+| Request Body |  token | String| Yes | access token    | <ul><li>発行されたトークン</li><li>失効リクエスト時に `token=発行されたトークン` のように使用</li></ul>      |
 
 * レスポンス
     * HttpStatus 200
