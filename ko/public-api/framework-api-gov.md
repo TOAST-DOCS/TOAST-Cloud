@@ -1,4 +1,4 @@
-## NHN Cloud > Public API > 프레임워크 API
+## NHN Cloud > Public API 사용 가이드 > 프레임워크 API
 
 ### 개요
 다음에서 소개하는 API를 통해 프로젝트 멤버를 생성하거나 역할을 부여하는 등 조직과 프로젝트를 관리할 수 있습니다.

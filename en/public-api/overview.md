@@ -1,6 +1,6 @@
 # Public API Overview
 
-**NHN Cloud > Public API > Public API Overview**
+**NHN Cloud > Public API User Guide > Public API Overview**
 
 NHN Cloud Public APIs are REST APIs that allow external systems or user applications to control and integrate with NHN Cloud services and resources.
 

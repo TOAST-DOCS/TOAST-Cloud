@@ -1,6 +1,6 @@
 # User Access Keyトークン
 
-**NHN Cloud > Public API > API認証方式 > User Access Keyトークン**
+**NHN Cloud > Public API使用ガイド > API認証方式 > User Access Keyトークン**
 
 User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。Bearerトークンは、トークンを所有するユーザーであれば誰でもアクセス権限が付与されるセキュリティトークンの一種で、有効期限を設定できるためリソースを安全に保護できます。
 User Access Keyトークンは、属性ベースのアクセス制御方式(ABAC, Attribute-Based Access Control)で動作し、トークンを使用する場合、NHN CloudアカウントまたはIAMアカウントに付与されたロール及び権限が適用されます。したがって、呼び出し可能なAPIは、そのアカウントのロール及び権限の範囲内に制限されます。また、ロールの詳細条件を設定することで精密なアクセス制御が可能です。
@@ -21,7 +21,7 @@ User Access Keyトークンの発行及びAPI呼び出しは、次のような�
 発行されたトークンは有効期間中のみ使用でき(デフォルト: 24時間)、期限切れ後は新たに発行する必要があります。トークンが流出した、または流出が疑われる場合、そのトークンを直ちに失効処理し、必要に応じて再発行する必要があります。
 
 
-!!! tip 「ポイント」
+!!! tip "ポイント"
     トークンの有効期間は、NHN Cloudコンソールの **APIセキュリティ設定** メニューで変更できます。
     トークンの有効期間は60秒～86,400秒(24時間)以内で設定できます。
     有効期間を変更する前に発行されたトークンの有効期間は変更されず、トークン有効期間の変更後に新規発行されるトークンから変更後の有効期間が適用されます。
@@ -34,13 +34,13 @@ User Access Keyトークンを発行するには、まずUser Access Key IDとSe
 1) NHN Cloudコンソールの右上にあるアカウントにマウスカーソルを合わせると表示されるドロップダウンメニューから **APIセキュリティ設定** をクリックします。
 
 2) **+ User Access Key作成**をクリックします。<br>
-![C_userAccessKey_1_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_ko.png)
+![C_userAccessKey_1_ja](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_ja.png)
 
 3) **User Access Key作成** モーダルウィンドウで **トークン有効期間**を設定した後、**作成** をクリックします。<br>
-![C_userAccessKey_2_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_ko.png)
+![C_userAccessKey_2_ja](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_ja.png)
 
 4) **User Access Key発行完了** モーダルウィンドウで **Secret Access Key**をコピーした後 **確認**をクリックします。<br>
-![C_userAccessKey_3_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_3_ko.png)
+![C_userAccessKey_3_ja](http://static.toastoven.net/toast/public_api/C_userAccessKey_3_ja.png)
 
 
 !!! danger "注意"
@@ -283,7 +283,7 @@ X-NHN-Authorization: Bearer {Access Token}
 ユーザーがHTTPヘッダにキーを含めてサーバーにリクエストを送信すると、サーバーはトークンの有効性を確認した後、リクエストを承認または拒否します。
 
 
-!!! tip 「ポイント」
+!!! tip "参考"
     User Access Keyトークンは、エラー発生時に [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)と同様のエラーコードを返します。トークンリクエストAPI呼び出し、トークン失効リクエストAPI呼び出し、トークン使用などの状況で返される可能性のあるエラーコードは、[フレームワークAPIガイド](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281)で確認できます。
 
     

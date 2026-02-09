@@ -1,6 +1,6 @@
 # IaaSトークン
 
-**NHN Cloud > Public API > API認証方式 > IaaSトークン**
+**NHN Cloud > Public API使用ガイド > API認証方式 > IaaSトークン**
 
 IaaSトークンは、NHN CloudのOpenStackベースのインフラサービス(IaaS)で使用する認証トークンです。Keystone認証サーバーを通じて発行され、Compute、Block Storage、Networkなどのインフラリソース制御APIを呼び出す際に使用します。
 
@@ -37,7 +37,7 @@ NHN Cloudの基本インフラサービスAPIを使用するには、NHN Cloud�
 ![C_IaaS_setapipassword_0_ja](http://static.toastoven.net/toast/public_api/C_IaaS_setapipassword_0_ja.png)
 
 
-!!! tip 「ポイント」
+!!! tip "参考"
     * 現在使用中のパスワードには変更できません。
     * APIパスワード変更時、既存の認証トークンは使用できなくなるため、再発行が必要です。
 

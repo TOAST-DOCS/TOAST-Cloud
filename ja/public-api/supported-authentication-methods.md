@@ -1,6 +1,6 @@
 # 認証方式のサポート状況
 
-**NHN Cloud > Public API > API認証方式 > 認証方式のサポート状況**
+**NHN Cloud > Public API使用ガイド > API認証方式 > 認証方式のサポート状況**
 
 NHN CloudのPublic APIは、認証のためにUser Access Keyトークン、IaaSトークン、User Access Key、Appkey、プロジェクト統合Appkeyをサポートします。
 Public APIごとにサポートする認証方式が異なり、一部の認証方式は特定のAPIでのみサポートされます。
@@ -20,68 +20,82 @@ Public APIごとにサポートする認証方式が異なり、一部の認証�
 | サービスカテゴリー          | サービス                                         | User Access Keyトークン | IaaSトークン | User Access Key | Appkey | プロジェクト統合Appkey |
 | ----------------------- | ---------------------------------------------- | ------------------ | ------- | --------------- | ------ | -------------- |
 | **Compute**             | Instance                                       |                    | O       |                 |        |                |
+|                         | Key Pair                                       |                    | O       |                 |        |                |
+|                         | GPU Instance                                   |                    | O       |                 |        |                |
 |                         | Image                                          |                    | O       |                 |        |                |
 | **Container**           | NHN Kubernetes Service (NKS)                   |                    | O       |                 |        |                |
-|                         | NHN Container Registry (NCR)                   |                    |         | O               |        |                |
+|                         | NHN Container Registry (NCR)                   | O                  |         | O               |        |                |
 |                         | NHN Container Service (NCS)                    | O                  |         |                 |        |                |
 | **Network**             | VPC                                            |                    | O       |                 |        |                |
+|                         | Subnet                                         |                    | O       |                 |        |                |
+|                         | Network Interface                              |                    | O       |                 |        |                |
 |                         | Flow Log                                       |                    | O       |                 |        |                |
+|                         | Routing                                        |                    | O       |                 |        |                |
 |                         | Floating IP                                    |                    | O       |                 |        |                |
 |                         | Network ACL                                    |                    | O       |                 |        |                |
 |                         | Security Groups                                |                    | O       |                 |        |                |
 |                         | Load Balancer                                  |                    | O       |                 |        |                |
 |                         | Transit Hub                                    |                    | O       |                 |        |                |
+|                         | Internet Gateway                               |                    | O       |                 |        |                |
+|                         | Peering Gateway                                |                    | O       |                 |        |                |
+|                         | Colocation Gateway                             |                    | O       |                 |        |                |
+|                         | NAT Gateway                                    |                    | O       |                 |        |                |
+|                         | VPN Gateway(Site-to-Site VPN)                  |                    | O       |                 |        |                |
 |                         | Service Gateway                                |                    | O       |                 |        |                |
+|                         | Traffic Mirroring                              |                    | O       |                 |        |                |
+|                         | Private DNS                                    |                    | O       |                 |        |                |
 |                         | DNS Plus                                       |                    |         |                 | O      | O              |
 | **Storage**             | Block Storage                                  |                    | O       |                 |        |                |
+|                         | NAS                                            |                    | O       |                 |        |                |
 |                         | Object Storage<span style="color:red">*</span> |                    | O       |                 |        |                |
 | **Database**            | RDS for MySQL                                  |                    |         | O               | O      | O              |
 |                         | RDS for MariaDB                                |                    |         | O               | O      | O              |
 |                         | RDS for PostgreSQL                             | O                  |         |                 |        |                |
 | **Monitoring**          | Service Monitoring                             |                    |         |                 | O      |                |
-| **Game**                | Gamebase                                       |                    |         |                 | O      |                |
-|                         | Leaderboard                                    |                    |         |                 | O      |                |
+| **Game**                | Leaderboard                                    |                    |         |                 | O      |                |
 |                         | Launching                                      |                    |         |                 | O      |                |
+|                         | Smart Downloader                               |                    |         |                 | O      |                |
 | **Security**            | NHN AppGuard                                   |                    |         | O               | O      |                |
 |                         | Server Security Check                          |                    |         |                 | O      |                |
-|                         | Webshell Threat Detector                       |                    |         |                 | O      |                |
 |                         | Security Monitoring                            |                    |         |                 | O      |                |
-|                         | Security Compliance                            |                    |         |                 | O      |                |
+|                         | Secure Key Manager API v1.0                    |                    |         |                 | O      | O              |
+|                         | Secure Key Manager API v1.2                    |                    |         | O               | O      | O              |
 |                         | Security Advisor                               |                    |         |                 | O      |                |
-|                         | NHN Bastion                                    |                    |         |                 | O      |                |
-|                         | Secure Key Manager                             |                    |         | O               | O      | O              |
 | **Content Delivery**    | CDN                                            |                    |         |                 | O      | O              |
 |                         | Image Manager                                  |                    |         |                 | O      | O              |
-| **Notification**        | Push                                           |                    |         |                 | O      |                |
+| **Notification**        | Notification Hub                               | O                  |         |                 |        |                |
+|                         | Push                                           |                    |         |                 | O      |                |
 |                         | SMS                                            |                    |         |                 | O      |                |
 |                         | RCS Bizmessage                                 |                    |         |                 | O      |                |
 |                         | Email                                          |                    |         |                 | O      |                |
 |                         | KakaoTalk Bizmessage                           |                    |         |                 | O      |                |
-|                         | Notification Hub                               | O                  |         |                 |        |                |
-| **AI Service**          | Face Recognition                               |                    |         |                 | O      |                |
-|                         | AI Fashion                                     |                    |         |                 | O      |                |
-|                         | OCR                                            |                    |         |                 | O      |                |
-|                         | Text to Speech                                 |                    |         |                 | O      |                |
-|                         | Speech to Text                                 |                    |         |                 | O      |                |
-| **Machine Learning**    | AI EasyMaker                                   |                    |         |                 | O      | O              |
+| **AI Service**          | Face Recognition                               |                    |         |                 | O      | O              |
+|                         | AI Fashion                                     |                    |         |                 | O      | O              |
+|                         | OCR                                            |                    |         |                 | O      | O              |
+|                         | Text to Speech                                 |                    |         |                 | O      | O              |
+|                         | Speech to Text                                 |                    |         |                 | O      | O              |
+| **Machine Learning**    | AI EasyMaker                                   | O                  |         |                 |        |                |
 | **Application Service** | ROLE                                           |                    |         |                 | O      | O              |
 |                         | API Gateway                                    |                    |         |                 | O      | O              |
+|                         | RTCS                                           |                    |         |                 | O      |                |
 |                         | ShortURL                                       |                    |         |                 | O      |                |
 |                         | File-Crafter                                   |                    |         |                 | O      |                |
-| **Mobile Service**      | IAP                                            |                    |         |                 | O      |                |
 | **Search**              | Cloud Search                                   |                    |         |                 | O      |                |
 |                         | Autocomplete                                   |                    |         |                 | O      |                |
 |                         | Corporation Search                             |                    |         |                 | O      |                |
 | **Data & Analytics**    | Log & Crash Search                             |                    |         |                 | O      |                |
 | **Dev Tools**           | Pipeline                                       |                    |         | O               |        |                |
 |                         | Deploy                                         |                    |         | O               | O      |                |
-| **Management**          | Certificate Manager                            |                    |         | O               | O      |                |
-| **Contact Center**      | Contiple                                       |                    |         |                 | O      |                |
+| **Management**          | Certificate Manager API v1.0                   |                    |         |                 | O      |                |
+|                         | Certificate Manager API v1.1                   |                    |O        |                 |        |                |
+|                         | Certificate Manager API v1.2                   |                    |         |                 | O      |                |
+|                         | Certificate Manager API v1.3                   | O                  |         |                 |        |                |
+| **Bill**                | e-Tax                                          |                    |         |                 | O      |                |
 | **Governance & Audit**  | CloudTrail                                     |                    |         | O               | O      |                |
 |                         | Resource Watcher                               |                    |         | O               | O      |                |
 
 
 <br>
 
-!!! tip 「ポイント」
+!!! tip "参考"
     <span style="color:red">*</span> Object Storageサービスは、AWSのAmazon S3 APIと互換性のあるAPIを提供します。Amazon S3互換APIを使用するには、AWS EC2形式のS3 APIクレデンシャルを発行する必要があります。S3 APIクレデンシャルに関する詳細な説明は、[S3 APIクレデンシャル(S3 API Credential)](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/s3-api-guide/#s3-api-s3-api-credential)で確認できます。

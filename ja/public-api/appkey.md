@@ -1,5 +1,5 @@
 # Appkey
-**NHN Cloud > Public API > API認証方式 > Appkey**
+**NHN Cloud > Public API使用ガイド > API認証方式 > Appkey**
 
 Appkeyは、NHN Cloudの各サービスごとに発行される固有の認証キーであり、APIリクエスト時にサービスの識別と有効性検証に使用されます。認証のための別途のユーザー登録、トークンリクエスト、更新手続きなどは不要で、APIリクエスト時にAppkeyを含めるだけでよいため、認証プロセスが比較的簡単です。
 

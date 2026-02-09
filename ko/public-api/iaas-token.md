@@ -1,6 +1,6 @@
 # IaaS 토큰
 
-**NHN Cloud > Public API > API 인증 방식 > IaaS 토큰**
+**NHN Cloud > Public API 사용 가이드 > API 인증 방식 > IaaS 토큰**
 
 IaaS 토큰은 NHN Cloud의 OpenStack 기반 인프라 서비스(IaaS)에서 사용하는 인증 토큰입니다. Keystone 인증 서버를 통해 발급되며 Compute, Block Storage, Network 등 인프라 리소스 제어 API를 호출할 때 사용합니다.
 

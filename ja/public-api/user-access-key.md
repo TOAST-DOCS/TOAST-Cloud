@@ -1,13 +1,13 @@
 # User Access Key
 
-**NHN Cloud > Public API > API認証方式 > User Access Key**
+**NHN Cloud > Public API使用ガイド > API認証方式 > User Access Key**
 
 User Access Keyは、NHN CloudアカウントまたはIAMアカウントに基づいて発行される認証キーであり、Secret Access Keyとともに使用してAPIリクエストの認証手段として活用されます。APIリクエスト時にユーザー単位でアクセス権限を認証でき、ユーザーごとの細かい権限制御が可能です。認証されたNHN CloudアカウントまたはIAMアカウントに付与されたロール及び権限によってAPI呼び出しが制限されますが、APIバージョンによっては認可機能が適用されない場合もあります。
 
 
 !!! danger "注意"
-    * User Access KeyとSecret Access Keyは有効期限のない固定キーベースの認証方式であり、キーが外部に流出した場合、そのアカウントのロール及び権限の範囲内の全てのAPIが無断で呼び出される可能性があります。
-    * キーは外部ストレージやコードに含まれないよう安全に保管し、流出が疑われる場合は直ちに破棄して再発行する必要があります。
+    * User Access KeyとSecret Access Keyは有効期限のない固定キーベースの認証方式であり、キーが外部に流出した場合、そのアカウントのロール及び権限の範囲内の全てのAPIが無断で呼び出される可能性があります。
+    * キーは外部ストレージやコードに含まれないよう安全に保管し、流出が疑われる場合は直ちに破棄して再発行する必要があります。
 
 
 ## User Access Keyの発行
@@ -30,7 +30,7 @@ NHN Cloudが提供するAPIを使用するには、User Access Keyを発行す�
     * User Access KeyまたはSecret Access Keyのいずれかでも流出した、または流出が疑われる場合、そのキーを破棄して新たに発行する必要があります。
 
 
-!!! tip 「ポイント」
+!!! tip "参考"
     * User Access Keyは、NHN CloudアカウントとIAMアカウントごとにそれぞれ5個まで発行できます。
     * User Access Key IDは90日ごとに変更することを推奨します。
 
@@ -47,3 +47,5 @@ X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
 
 
 ユーザーがHTTPヘッダにキーを含めてサーバーにリクエストを送信すると、サーバーは該当キーの有効性及び権限を確認した後、リクエストを承認または拒否します。
+
+

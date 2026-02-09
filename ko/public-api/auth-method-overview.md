@@ -1,6 +1,6 @@
 # 인증 방식 개요
 
-**NHN Cloud > Public API > API 인증 방식 > 인증 방식 개요**
+**NHN Cloud > Public API 사용 가이드 > API 인증 방식 > 인증 방식 개요**
 
 Public API는 각 서비스에서 설정한 인증 방식에 따라 요청을 검증한 뒤 API 백엔드로 전달합니다. 이 문서에서는 NHN Cloud Public API에서 사용되는 인증 방식을 설명합니다.
 

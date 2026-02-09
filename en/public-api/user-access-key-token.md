@@ -34,13 +34,13 @@ To issue a User Access Key Token, you must first generate a User Access Key ID a
 1) In the drop-down menu that appears when you hover over your account in the upper-right corner of the NHN Cloud console, click **API Security Settings**.
 
 2) Click **+ Create User Access Key ID**<br>
-![C_userAccessKey_1_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_ko.png)
+![C_userAccessKey_1_en](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_en.png)
 
 3) In the **Create User Access Key** modal window, set the **Token Expiration Time**, and then click **Create**.<br>
-![C_userAccessKey_2_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_ko.png)
+![C_userAccessKey_2_en](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_en.png)
 
 4) In the **User Access Key Issued** modal, copy the **Secret Access Key** and then click **OK**.<br>
-![C_userAccessKey_3_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_3_ko.png)
+![C_userAccessKey_3_en](http://static.toastoven.net/toast/public_api/C_userAccessKey_3_en.png)
 
 
 !!! danger "Caution"
@@ -283,6 +283,6 @@ When a user sends a request with a key in the HTTP header, the server validates 
 
 
 !!! tip "Note"
-User Access Key Tokens return the same error codes as defined in [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2). For details on error codes returned during token issuance, revocation, or usage, please refer to the [Framework API Guide](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281).
+    User Access Key Tokens return the same error codes as defined in [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2). For details on error codes returned during token issuance, revocation, or usage, please refer to the [Framework API Guide](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281).
 
     

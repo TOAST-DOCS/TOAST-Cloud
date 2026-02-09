@@ -1,5 +1,5 @@
 # Appkey
-**NHN Cloud > Public API > API Authentication Method > Appkey**
+**NHN Cloud > Public API User Guide > API Authentication Method > Appkey**
 
 An Appkey is a unique authentication key issued for each NHN Cloud service, used to identify the service and validate API requests. The authentication process is simplified as it only requires an Appkey in the API request, eliminating the need for separate user registration, token requests, or renewal procedures.
 
@@ -52,7 +52,7 @@ X-TC-APP-KEY: {Appkey}
 
 
 !!! danger "Caution"
-Appkeys are static keys with no expiration and no built-in authorization features. If a key is exposed, it could lead to unauthorized API calls. Store your keys securely and ensure they are never included in source code or public repositories. If you suspect a leak, you must request a reissuance immediately. You can request a reissuance by navigating to [Customer Support > Contact Us](https://www.nhncloud.com/kr/support/inquiry) and selecting **{Service Name}/Others** as the **Inquiry Type**.
+    Appkeys are static keys with no expiration and no built-in authorization features. If a key is exposed, it could lead to unauthorized API calls. Store your keys securely and ensure they are never included in source code or public repositories. If you suspect a leak, you must request a reissuance immediately. You can request a reissuance by navigating to [Customer Support > Contact Us](https://www.nhncloud.com/kr/support/inquiry) and selecting **{Service Name}/Others** as the **Inquiry Type**.
 
 
 ### SecretKey
