@@ -1,6 +1,6 @@
 # Partner Management API Guide
 
-**NHN Cloud > Public API > Partner Management API Guide**
+**NHN Cloud > Public API User Guide > Partner Management API Guide**
 
 ## Common Information for Partner Management API
 

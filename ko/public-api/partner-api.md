@@ -1,6 +1,6 @@
 # 파트너 관리 API 가이드
 
-**NHN Cloud > Public API > 파트너 관리 API 가이드**
+**NHN Cloud > Public API 사용 가이드 > 파트너 관리 API 가이드**
 
 ## 파트너 관리 API 공통 정보
 

@@ -1,4 +1,4 @@
-## NHN Cloud > Public API > Framework API
+## NHN Cloud > Public API User Guide > Framework API
 
 ### Overview
 The following APIs allow you to manage your organization and projects, such as creating project members and assigning roles.
@@ -10,8 +10,9 @@ When you make an API call, the API checks the permissions of the authenticated m
 
 ### Common
 
-#### Request
 <a id="Request"></a>
+
+#### Request
 When calling the Public API, you must include the Request Header below.
 
 
@@ -19,9 +20,9 @@ When calling the Public API, you must include the Request Header below.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Header |  x-nhn-authorization | String| Yes | Bearer type token issued to the user |
 
+<a id="Response"></a>
 
 #### Response
-<a id="Response"></a>
 When the Public API returns, the header part below is included in the response body.
 ```json
 {
@@ -54,17 +55,16 @@ When the Public API returns, the header part below is included in the response b
 | UUID | String | 36 characters | Member's UUID |
 
 
-#### Set up governance IP ACLs
-<a id="Set-governance-IP-ACL"></a>
-
-If you set IP ACLs through **Organization Management > Governance Settings > Organization Governance Settings > IP ACL Settings**, those settings are also applied to calls to the framework API.
+!!! danger "Caution"
+    If you set IP ACLs through **Organization Management > Governance Settings > Organization Governance Settings > IP ACL Settings**, those settings are also applied to calls to the framework API.
 
 
 ### API
 
-> [Caution]<br>
-> Responses from the API can have fields added that are not specified in the guide, so they should be developed so that new fields added do not cause errors.<br>
-> Also, when saving the DB, the column size may change, so you should set it generously.
+
+!!! danger "Caution"
+    Responses from the API can have fields added that are not specified in the guide, so they should be developed so that new fields added do not cause errors.<br>Also, when saving the DB, the column size may change, so you should set it generously.
+
 
 | Method | HTTP Request | Description |
 |------------- | ------------- | -------------|
@@ -158,10 +158,10 @@ API to add members to a project.
 
 
 ###### CreateMemberRequest
-> [Caution]<br>
-> At least one of memberUuid, email, and userCode must have a value when requested.<br>
-> If you're checking for values in the order memberUuid > email > userCode, add that member as a project member.<br>
-> Only one project member can be created in a request.
+
+
+!!! danger "Caution"
+    At least one of memberUuid, email, and userCode must have a value when requested.<br>If you're checking for values in the order memberUuid > email > userCode, add that member as a project member.<br>Only one project member can be created in a request.
 
 
 | Name | Type | Required | Description |  
@@ -3408,7 +3408,7 @@ API to delete a project AppKey.
 API to reissue the secret key for a User Access Key ID.
 
 
-### Required Permissions
+##### Required Permissions
 Can only reissue the secret key for the user's own User Access Key ID
 
 ##### Request Parameter
@@ -3462,7 +3462,7 @@ Can only reissue the secret key for the user's own User Access Key ID
 
 API to change the state of a member's User Access Key ID.
 
-### Required Permissions
+##### Required Permissions
 Can only modify the user's own User Access Key ID
 
 ##### Request Parameter
@@ -3663,8 +3663,10 @@ API to add an IAM account as a project member.
 
 
 ###### AddIamProjectMemberRequest
-> [Caution]<br>
-> Only one project member can be created in a request.
+
+
+!!! danger "Caution"
+    Only one project member can be created in a request.
 
 
 | Name | Type | Required | Description |  
