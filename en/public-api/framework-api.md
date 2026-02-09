@@ -1,4 +1,4 @@
-## NHN Cloud > Public API > Framework API
+## NHN Cloud > Public API User Guide > Framework API
 
 ### Overview
 The following APIs allow you to manage your organization and projects, such as creating project members and assigning roles.
