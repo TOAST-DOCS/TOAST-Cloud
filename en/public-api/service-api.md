@@ -1,13 +1,13 @@
 # Service API
 
-**NHN Cloud > Public API > Service API**
+**NHN Cloud > Public API User Guide > Service API**
 
-## 서비스 API 가이드 바로 가기
+## Go to Service API Guide
 
-서비스 API는 NHN Cloud에서 제공하는 개별 서비스와 해당 서비스의 리소스를 외부 시스템 또는 사용자 애플리케이션에서 제어하거나 연동할 수 있도록 지원하는 API입니다.
-개별 서비스의 API Guide는 해당 서비스 카테고리 하위에서 확인할 수 있습니다.
+Service APIs allow external systems or user applications to control and integrate with individual NHN Cloud services and their resources.
+You can find the API Guide for each service under its respective service category.
 
-| 카테고리          | 서비스                       | API Guide 바로 가기 |
+| Category          | Service                       | Go to API Guide |
 | ----------------- | ---------------------------- | -------------------- |
 | Compute           | Instance                     | [Instance API v2 Guide](https://docs.nhncloud.com/en/Compute/Instance/en/public-api/) |
 |                   | Image                        | [Image API v2 Guide](https://docs.nhncloud.com/en/Compute/Image/en/public-api/) |

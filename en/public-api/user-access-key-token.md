@@ -1,79 +1,79 @@
-# User Access Key 토큰
+# User Access Key Token
 
-**NHN Cloud > Public API > API 인증 방식 > User Access Key 토큰**
+**NHN Cloud > Public API User Guide > API Authentication Methods > User Access Key Token**
 
-User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. Bearer 토큰은 토큰을 소유한 사용자라면 누구나 접근 권한을 부여 받는 보안 토큰의 한 종류로, 유효 기간을 설정할 수 있어 리소스를 안전하게 보호할 수 있습니다.
-User Access Key 토큰은 역할 기반 접근 제어 방식(ABAC, attribute-Based Access Control)으로 동작하여 토큰을 사용할 경우 NHN Cloud 계정 또는 IAM 계정에 부여된 역할 및 권한이 적용됩니다. 따라서 호출 가능한 API가 해당 계정의 역할 및 권한 범위 내로 제한됩니다. 또한 역할 상세 조건을 설정하여 정밀한 접근 제어가 가능합니다.
+User Access Key tokens are temporary Bearer tokens issued based on a User Access Key. A Bearer token is a type of security token that grants access to any party in possession of the token. By setting an expiration time, you can ensure the security of your resources.
+These tokens operate using Attribute-Based Access Control (ABAC). When using a token, the specific roles and permissions assigned to the NHN Cloud or IAM account are applied, restricting API calls to the authorized scope of that account. Furthermore, you can achieve fine-grained access control by configuring detailed role conditions.
 
-## User Access Key 토큰 발급 및 Public API 호출 개요
+## Overview of User Access Key Token Issuance and Public API Calls
 
-User Access Key 토큰 발급 및 API 호출은 다음과 같은 흐름으로 동작합니다.
+Issuing a User Access Key token and calling the API works in the following flow:
 
-### 신규 토큰 발급 및 API 호출
+### Issue new tokens and making API calls
 
 ![img001.png](http://static.toastoven.net/toast/public_api/img01_EN.png)
 
-### 토큰 만료 시 재발급 및 API 호출
+### Reissue and API calls on token expiration
 
 ![img002.png](http://static.toastoven.net/toast/public_api/img02_EN.png)
 
 
-발급한 토큰은 유효 기간 동안만 사용할 수 있으며(기본값: 24시간), 만료 후에는 새로 발급해야 합니다. 토큰이 유출되었거나 유출이 의심되는 경우 해당 토큰을 즉시 만료 처리하고 필요시 재발급해야 합니다.
+Issued tokens are valid only during their expiration period (default: 24 hours) and must be reissued upon expiration. If a token is leaked or suspected to be compromised, you must revoke it immediately and reissue a new one if necessary.
 
 
-!!! tip "알아두기"
-    토큰의 유효 시간은 NHN Cloud 콘솔의 **API 보안 설정** 메뉴에서 변경할 수 있습니다.
-    토큰 유효 시간은 60초~86,400초(24시간) 내에서 설정할 수 있습니다.
-    유효 시간을 수정하기 전에 발급된 토큰의 유효 시간은 변경되지 않으며, 토큰 유효 시간 수정 후 신규로 발급하는 토큰부터 변경된 토큰 유효 시간이 적용됩니다.
+!!! tip "Note"
+    You can modify the Token Expiration Time in the **API Security Settings** menu of the NHN Cloud Console.
+    The expiration time can be set between 60 seconds and 86,400 seconds (24 hours).
+    Changes to the expiration time do not affect tokens issued prior to the update. The new setting will only apply to tokens issued after the modification is saved.
 
 
-## 사전 작업
+## Prerequisites
 
-User Access Key 토큰을 발급하려면 먼저 User Access Key ID와 Secret Access Key를 먼저 발급해야 합니다. NHN Cloud 콘솔의 **API 보안 설정** 메뉴에서 User Access Key별 토큰 정보를 확인하고 관리할 수 있습니다.
+To issue a User Access Key Token, you must first generate a User Access Key ID and Secret Access Key. You can view and manage token information for each User Access Key in the **API Security Settings** menu of the NHN Cloud Console.
 
-1) NHN Cloud 콘솔에서 우측 상단의 계정에 마우스 포인터를 올리면 표시되는 드롭다운 메뉴에서 **API 보안 설정**을 클릭합니다.
+1) In the drop-down menu that appears when you hover over your account in the upper-right corner of the NHN Cloud console, click **API Security Settings**.
 
-2) **+ User Access Key 생성**을 클릭합니다.<br>
-![C_userAccessKey_1_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_ko.png)
+2) Click **+ Create User Access Key ID**<br>
+![C_userAccessKey_1_en](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_en.png)
 
-3) **User Access Key 생성** 모달 창에서 **토큰 유효 시간**을 설정한 뒤 **생성**을 클릭합니다.<br>
-![C_userAccessKey_2_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_ko.png)
+3) In the **Create User Access Key** modal window, set the **Token Expiration Time**, and then click **Create**.<br>
+![C_userAccessKey_2_en](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_en.png)
 
-4) **User Access Key 발급 완료** 모달 창에서 **Secret Access Key**를 복사한 뒤 **확인**을 클릭합니다.<br>
-![C_userAccessKey_3_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_3_ko.png)
-
-
-!!! danger "주의"
-    * 모달 창을 닫은 뒤에는 Secret Access Key를 다시 확인할 수 없습니다. Secret Access Key를 잊어버릴 경우 재생성해야 하므로 반드시 복사한 뒤 별도로 관리하세요.
-    * User Access Key 또는 Secret Access Key 중 하나라도 유출되었거나 유출이 의심되는 경우 해당 키를 폐기하고 새로 발급 받아야 합니다.
+4) In the **User Access Key Issued** modal, copy the **Secret Access Key** and then click **OK**.<br>
+![C_userAccessKey_3_en](http://static.toastoven.net/toast/public_api/C_userAccessKey_3_en.png)
 
 
-## 인증 서버 도메인
-인증 서버의 도메인은 다음과 같습니다.
+!!! danger "Caution"
+    * The Secret Access Key cannot be recovered or viewed once the modal window is closed. If lost, the key must be regenerated; please ensure you copy and store it in a secure location.
+    * If either the User Access Key or Secret Access Key is leaked or suspected to be compromised, you must immediately revoke the key and issue a new one.
+
+
+## Authentication Server Domain
+The authentication domain is as follows:
 
 ```
 https://oauth.api.nhncloudservice.com/
 ```
 
-## User Access Key 토큰 발급 요청하기
+## Request User Access Key Token Issuance
 > `POST /oauth2/token/create`
 
-* 요청
+* Request
 
-| 구분 | 이름 | 타입 | 필수 | 값                                     | 설명                                                                   |
+| Category | Name | Type | Required | Value                                     | Description                                                                   |
 |---------------|------------- | ------------- | ------------- |-------------------------------------------|--------------------------| 
 | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
-| Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 | 
-| Request Body |  grant_type | String | Yes | client_credentials                        | <ul><li>토큰 발급 grant_type은 client_credentials만 제공되고 있음</li><li>발급 요청 시 `grand_type=client_credentials`와 같이 사용</li></ul> |
+| Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | Use the Base64 encoded result of `UserAccessKeyID:SecretAccessKey` followed by `Basic`  | 
+| Request Body |  grant_type | String | Yes | client_credentials                        | <ul><li>Only the client_credentials grant type is currently supported for token issuance</li><li>When requesting a token, use the parameter as follows: `grand_type=client_credentials`</li></ul> |
 
-* 응답
+* Response
 
-| 이름         | 타입        | 필수 | 설명                            |
+| Name         | Type        | Required | Description                            |
 |--------------|-------------| ------------- |----------------------------------------|
 |  grant_type  | String | Yes | client_credentials                     |   
-| access_token | String  | Yes | 발급된 Bearer 타입의 인증 토큰                   | 
-| token_type   | String  | Yes | 토큰의 타입                                 |
-| expires_in   | String  | Yes | 만료까지 남은 초 단위 시간을 의미하며 기본은 86,400초(하루)임 |
+| access_token | String  | Yes | Authentication token of type Bearer issued                   | 
+| token_type   | String  | Yes | Token type                                 |
+| expires_in   | String  | Yes | The time in seconds remaining until expiration, which defaults to 86,400 seconds (one day) |
 
 ```json
 {
@@ -83,12 +83,12 @@ https://oauth.api.nhncloudservice.com/
 }
 ```
 
-### 케이스별 요청 예시
-#### curl: Header에 인증 정보를 포함하는 경우
+### Case-specific request examples
+#### curl: When including authentication information in the header
 
 
-!!! tip "참고"
-    아래 Authorization에 있는 `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`는 `UserAccessKeyID:SecretAccessKey`를 base64 인코딩한 결과입니다.
+!!! tip "Notes"
+    `The dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`in Authorization below is the result of base64 encoding `the UserAccessKeyID:SecretAccessKey`.
 
 
 ```sh
@@ -98,7 +98,7 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/create' 
   -d 'grant_type=client_credentials'
 ```
 
-#### curl: -u 옵션을 사용하는 경우
+#### curl: When using -u option
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/create' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -134,15 +134,15 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
 }
 ```
 
-#### Spring Cloud의 OpenFeign을 사용하여 자동으로 토큰을 발급 및 갱신하는 경우
+#### When using OpenFeign on Spring Cloud to automatically issue and renew tokens
 
 
-!!! tip "참고"
-    * 이 방법은 Spring Boot 3.0 이상 버전을 사용하는 경우에만 가능합니다.
-    * API를 이용해 강제로 만료시킨 경우를 대비하려면 토큰을 다시 발급하는 부분을 직접 구현해야 합니다.
+!!! tip "Note"
+    * This method is only possible if you are using Spring Boot 3.0 or later.
+    * You will need to implement the part of reissuing the token yourself in case you force it to expire via the API.
 
 
-1) 의존성 추가
+1) Add Dependency
 ```groovy
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
@@ -151,7 +151,7 @@ dependencies {
 ```
 
 
-2) Feign 클라이언트 정의
+2) Define a Feign client
 ```java
 @FeignClient(name = "publicApiClient", url = "https://core.api.nhncloudservice.com")
 public interface ExampleApiClient {
@@ -160,8 +160,8 @@ public interface ExampleApiClient {
 }
 ```
 
-3) 보안 설정
-아래는 예시이며, 실제 사용하시는 보안 설정에 맞게 변경해야 합니다.
+3) Security Settings
+The following is an example and should be changed to match your actual security settings:
 ```java
 @Configuration
 @EnableWebSecurity
@@ -175,7 +175,7 @@ public class SecurityConfig {
 }
 ```
 
-4) oauth2 클라이언트 및 feign 설정
+4) Set up the oauth2 client and feign
 ```java
 @Configuration
 public class Oauth2Config {
@@ -199,34 +199,34 @@ public class Oauth2Config {
   }
   
   /**
-  * Feign 요청 시 자동으로 발급된 토큰을 자동으로 요청 헤더에 담아서 보내기 위한 인터셉터
+  * Interceptor that automatically retrieves an access token and adds it to the request header for Feign clients
   */
   @Bean
   public RequestInterceptor oAuth2AccessTokenInterceptor(OAuth2AuthorizedClientManager authorizedClientManager) {
-    // Public API 요청 시 발급된 토큰을 x-nhn-authorization 헤더에 담아서 요청해야 합니다.
+    // When making a Public API request, you must include the issued token in the x-nhn-authorization header.
     return new OAuth2AccessTokenInterceptor("Bearer", "x-nhn-authorization", "TokenClient", authorizedClientManager);
   }
 }
 ```
 
 
-## User Access Key 토큰 만료 요청하기
+## Request User Access Key Token Revocation
 > `POST /oauth2/token/revoke`
 
-* 요청
+* Request
 
-  | 구분 | 이름 | 타입 | 필수 | 값 | 설명   |
+  | Category | Name | Type | Required | Value | Description   |
   |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
   | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
-  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 |
-  | Request Body |  token | String| Yes | access token    | <ul><li>발급 받은 토큰</li><li>만료 요청 시 `token=발급받은_토큰`과 같이 사용</li></ul>      |
+  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | Use the Base64 encoded result of `UserAccessKeyID:SecretAccessKey` followed by `Basic`  |
+  | Request Body |  token | String| Yes | access token    | <ul><li>Issued token</li><li>When requesting revocation, use the parameter as follows: `token=issued_token`</li></ul>      |
 
-* 응답
+* Response
     * HttpStatus 200
 
 
-### 케이스별 요청 예시 
-#### curl: Header에 인증 정보를 포함하는 경우
+### Case-specific request examples 
+#### curl: When including authentication information in the header
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -234,7 +234,7 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' 
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
 
-#### curl: -u 옵션을 사용하는 경우
+#### curl: When using the -u option
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -271,18 +271,18 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 ```
 
 
-## User Access Key 토큰 사용하기
-User Access Key 토큰은 HTTP 요청 헤더에 포함해 전달합니다. API 호출 시 아래 예시와 같이 요청 헤더에 User Access Key 토큰을 설정해 호출하세요.
+## Use User Access Key token
+User Access Key token is passed via the HTTP request header. When calling an API, include the User Access Key token in the example header as shown in the example below:
 
-* HTTP 헤더 형식 예시
+* HTTP header format examples
 ```
 X-NHN-Authorization: Bearer {Access Token}
 ```
 
-사용자가  HTTP 헤더에 키를 담아 서버에 요청을 보내면 서버가 토큰의 유효성을 확인한 뒤 요청을 승인하거나 거부합니다.
+When a user sends a request with a key in the HTTP header, the server validates the token and then approves or rejects the request.
 
 
-!!! tip "알아두기"
-    User Access Key 토큰은 오류 발생 시 [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)와 동일한 오류 코드를 반환합니다. 토큰 요청 API 호출, 토큰 만료 요청 API 호출, 토큰 사용 등의 상황에 반환될 수 있는 오류 코드는 [프레임워크 API 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281)에서 확인할 수 있습니다.
+!!! tip "Note"
+    User Access Key Tokens return the same error codes as defined in [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2). For details on error codes returned during token issuance, revocation, or usage, please refer to the [Framework API Guide](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281).
 
     

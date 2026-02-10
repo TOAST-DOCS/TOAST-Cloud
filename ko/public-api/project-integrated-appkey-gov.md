@@ -1,5 +1,5 @@
 # 프로젝트 통합 Appkey
-**NHN Cloud > Public API > API 인증 방식 > 프로젝트 통합 Appkey**
+**NHN Cloud > Public API 사용 가이드 > API 인증 방식 > 프로젝트 통합 Appkey**
 
 프로젝트 통합 Appkey는 NHN Cloud에서 하나의 프로젝트 내 여러 서비스에 대해 공통으로 사용할 수 있는 인증 키입니다. 각 서비스마다 Appkey를 개별로 관리할 필요 없이 프로젝트 통합 Appkey 하나로 해당 프로젝트에서 사용 중인 모든 서비스의 API를 효율적으로 호출할 수 있습니다. 따라서 관리 대상 키의 수를 줄이고, 사용자가 직접 Appkey를 생성하거나 삭제할 수 있어 키 관리가 유연하고 효율적입니다.
 

@@ -1,13 +1,13 @@
 # サービスAPI
 
-**NHN Cloud > Public API > サービスAPI**
+**NHN Cloud > Public API使用ガイド > サービスAPI**
 
-## 서비스 API 가이드 바로 가기
+## サービスAPIガイドへ
 
-서비스 API는 NHN Cloud에서 제공하는 개별 서비스와 해당 서비스의 리소스를 외부 시스템 또는 사용자 애플리케이션에서 제어하거나 연동할 수 있도록 지원하는 API입니다.
-개별 서비스의 API ガイド는 해당 서비스 카테고리 하위에서 확인할 수 있습니다.
+サービスAPIは、NHN Cloudが提供する個別サービスと該当サービスのリソースを外部システムまたはユーザーアプリケーションから制御または連携できるようサポートするAPIです。
+個別サービスのAPIガイドは、該当サービスカテゴリー内で確認できます。
 
-| 카테고리          | 서비스                       | API ガイド 바로 가기 |
+| カテゴリー         | サービス                      | APIガイドへ |
 | ----------------- | ---------------------------- | -------------------- |
 | Compute           | Instance                     | [Instance API v2 ガイド](https://docs.nhncloud.com/ja/Compute/Instance/ja/public-api/) |
 |                   | Image                        | [Image API v2 ガイド](https://docs.nhncloud.com/ja/Compute/Image/ja/public-api/) |
@@ -73,5 +73,3 @@
 | Contact Center       | Contiple             | [Contiple Open API ガイド](https://docs.nhncloud.com/ja/Contact%20Center/ja/online-contact-api-guide-openapi-overview/) |
 | Governance & Audit   | CloudTrail           | [CloudTrail API ガイド](https://docs.nhncloud.com/ja/Governance%20&%20Audit/CloudTrail/ja/api-guide/) |
 |                      | Resource Watcher     | [Resource Watcher API ガイド](https://docs.nhncloud.com/ja/Governance%20&%20Audit/Resource%20Watcher/ja/api-guide/)<br>[Resource Watcher API v2 ガイド](https://docs.nhncloud.com/ja/Governance%20&%20Audit/Resource%20Watcher/ja/api-v2-guide/) |
-
-
