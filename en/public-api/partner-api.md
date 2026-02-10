@@ -15,7 +15,7 @@ This API can only be called by partners or users authorized by partners, and can
 
 ### Authentication and Permission
 
-Partner Management API uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/en/nhncloud/en/public-api/user-access-key-token).
+Partner Management API uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/nhncloud/en/public-api/user-access-key-token).
 
 | Header name | Description |
 | --- | --- |

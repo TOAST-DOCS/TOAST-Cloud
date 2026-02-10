@@ -4,7 +4,7 @@
 
 ## 概要
 以下で紹介するAPIを通じて、プロジェクトメンバーを作成したり、ロールを付与するなど、組織とプロジェクトを管理できます。
-フレームワークAPIは、呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](/ja/nhncloud/ja/public-api/user-access-key-token)を参照してください。
+フレームワークAPIは、呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](/nhncloud/ja/public-api/user-access-key-token)を参照してください。
 
 ### Public APIドメイン
 `https://core.api.nhncloudservice.com/`
