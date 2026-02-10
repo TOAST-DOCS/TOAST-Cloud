@@ -1,9 +1,10 @@
-## NHN Cloud > Public API使用ガイド > フレームワークAPI
+# フレームワークAPI
 
-### 概要
+**NHN Cloud > Public API使用ガイド > フレームワークAPI**
+
+## 概要
 以下で紹介するAPIを通じて、プロジェクトメンバーを作成したり、ロールを付与するなど、組織とプロジェクトを管理できます。
-APIを使用するためには、[API呼び出しと認証](api-authentication.md)で発行されたBearerタイプのトークンが必要です。
-API呼び出し時、API認証を受けたメンバーの権限を検査します。
+フレームワークAPIは、呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](/nhncloud/ja/public-api/user-access-key-token)を参照してください。
 
 ### Public APIドメイン
 `https://core.api.nhncloudservice.com/`
