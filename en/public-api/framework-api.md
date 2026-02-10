@@ -4,7 +4,7 @@
 
 ## Overview
 The following APIs allow you to manage your organization and projects, such as creating project members and assigning roles.
-Framework API uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/en/nhncloud/en/public-api/user-access-key-token).
+Framework API uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/nhncloud/en/public-api/user-access-key-token).
 
 ### Public API Domain
 `https://core.api.nhncloudservice.com/`
