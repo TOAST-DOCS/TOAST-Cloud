@@ -15,11 +15,11 @@
 
 ### 認証及び権限
 
-パートナー管理APIを使用するには、以下の認証ヘッダが必要です。
+パートナー管理APIは、API呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](/nhncloud/ja/public-api/user-access-key-token)を参照してください。
 
 | ヘッダ名 | 説明 |
 | --- | --- |
-| x-nhn-authorization | API認証のためのトークン([API認証](api-authentication.md)を参照) |
+| x-nhn-authorization | API認証のためのトークン |
 
 ### レスポンス共通情報
 

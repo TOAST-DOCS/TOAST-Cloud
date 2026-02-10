@@ -1,9 +1,10 @@
-## NHN Cloud > Public API 사용 가이드 > 프레임워크 API
+# 프레임워크 API
 
-### 개요
+**NHN Cloud > Public API 사용 가이드 > 프레임워크 API**
+
+## 개요
 다음에서 소개하는 API를 통해 프로젝트 멤버를 생성하거나 역할을 부여하는 등 조직과 프로젝트를 관리할 수 있습니다.
-API 사용을 위해서는 [API 호출 및 인증](api-authentication-gov.md)을 통해 발급받은 Bearer 타입의 토큰이 필요합니다.
-API 호출 시, API 인증을 받은 멤버의 권한을 검사합니다.
+프레임워크 API는 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](/nhncloud/ko/public-api/user-access-key-token-gov)을 참고하세요.
 
 ### Public API 도메인
 `https://core.api.gov-nhncloudservice.com/`
