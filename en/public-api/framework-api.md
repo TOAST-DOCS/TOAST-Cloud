@@ -1,9 +1,10 @@
-## NHN Cloud > Public API User Guide > Framework API
+# Framework API
 
-### Overview
+**NHN Cloud > Public API User Guide > Framework API**
+
+## Overview
 The following APIs allow you to manage your organization and projects, such as creating project members and assigning roles.
-To use the APIs, you need a token of type Bearer, which is issued through [API calls and authentication](api-authentication.md).
-When you make an API call, the API checks the permissions of the authenticated member.
+Framework API uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/en/nhncloud/en/public-api/user-access-key-token).
 
 ### Public API Domain
 `https://core.api.nhncloudservice.com/`
