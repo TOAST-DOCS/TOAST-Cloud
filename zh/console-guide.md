@@ -1,348 +1,712 @@
-## TOAST > 控制台使用指南
+## NHN Cloud > Console Policy Guide
 
-TOAST Console起到使用TOAST服务的管理工具及操作窗口的作用。
-下面介绍TOAST控制台的基本设置及使用方法。
+NHN Cloud console serves as a management tool and task window for using NHN Cloud services.
+This document guides you through the basic setup and use of the NHN Cloud console.
 
-TOAST Console提供如下功能。
+NHN Cloud console provides the following features:
 
-- 管理使用服务所需的基本信息（组织、项目）
-- 启用/禁用服务
-- 管理使用服务的会员
-- 提供付款信息
+- Manage basic information to use services (organization, project)
+- Enable/disable services
+- Manage members who use services
+- Provide billing information
 
-## 控制台快捷指南
-针对控制台提供的基本功能的快捷指南。 
+## Quick Guide
+This is a quick guide to the basic features provided by the console.
 
-![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_201812_en.png)
-![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_201812_en.png)
-![tutorial_3_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_201812_en.png)
-![tutorial_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_201812_en.png)
-![tutorial_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_05_201812_en.png)
+![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202109_en.png)
+![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202109_en.png)
 
 
-## 组织管理
+## Organization Management
 
-组织是为高效使用并管理TOAST服务所创建的组。
-在组织中用户可以共享并使用相同的服务策略。
-通过组织可以高效使用各种TOAST服务。
+An organization is a group that is created to use and manage NHN Cloud services efficiently.
+In an organization, users can share and use the same service policy.
 
-### 创建组织
+### Create an Organization
 
-- 为使用TOAST服务，需要创建组织。
-- 个人/企业会员均可创建组织。
-- 创建组织的会员自动成为组织的OWNER。
-- 为创建组织，必须登记会员的付款方式。
-- 组织管理组织名/域信息。
-- 组织的域信息应为必须在服务中使用的信息以及固有信息。
+- To use NHN Cloud services, an organization must be created.
+- Both personal and business members can create organizations.
+- A member who creates an organization automatically becomes the OWNER of the organization.
+- To create an organization, a member's payment method must be registered.
+- An organization manages organization name and domain information.
+- Domain information of an organization must be unique, because it is required for use by services.
 
-### 组织服务
+### Guide to Creating an Organization
 
-创建组织后，可选择服务。
-可以以组织为单位启用的服务如下。
+![console_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202109_en.png)
+![console_guide_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202109_en.png)
 
-- ERP
+1. Go to the console and click the **+** button next to **Create an Organization** in the top menu.
+2. In the **Create Organization** window, enter a name for your organization. The organization name can include Korean letters, English letters, special characters, and numbers.
+3. Click the **OK** button to complete the organization creation.
+4. The created organization name is displayed in the top menu of the console.
+5. Click the **Settings** button to check information of the created organization. Enter your domain information as additional information for your organization. The domain must be set as a unique value in NHN Cloud.
+
+
+### Organization Services
+
+Once the organization is created, you can select services.
+Services that can be enabled for each organization include the following:
+
 - Dooray!
 - Contact Center
-- IDC
 - CloudTrail
-
-### 创建组织指南
-
-![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_201812_en.png)
-
-<center>[图 1] 创建组织 </center>
-
-1. 移动至控制台后，在上端菜单中单击**请创建组织。**旁的**+**按钮。
-2. 在**创建组织**窗口中输入组织名称。组织名称可使用韩文、英文、特殊字符、数字。
-3. 单击**确认**按钮，组织创建完成。
-4. 控制台上端菜单中显示创建的组织名称。
-5. 单击**设置**按钮，确认创建的组织信息。作为组织的补充信息，输入域信息。域应设置为TOAST中唯一的值。  
-
-### 删除组织
-
-- 仅组织的OWNER可删除组织。
-- 为删除组织，应删除所有使用的服务。
-- 删除组织时，组织的所有信息将被删除，且无法恢复。
-
-## 管理项目
-
-创建组织后，为使用TOAST服务而创建项目。
-在项目中启用项目服务方可使用服务。
-项目服务以项目为单位使用，并以此为基准收费。
-
-### 创建项目
-
-- 为创建项目，应创建组织。
-- 创建项目的会员拥有项目的ADMIN权限。
-- 创建项目时，输入项目名称与项目说明。
-- 创建项目后，启用项目服务方可使用服务。
-- 创建项目后，若需要合作，可添加为项目会员一起使用。
-
-### 项目服务
-
-创建项目后，可选择服务。
-可以以项目为单位启用的服务如下。
-
-- Compute
-- Storage
-- Network
-- Database
-- Security
-- Content Delivery
-- Dev Tool
-- Management
-- Game
-- Notification
-- Analytics
-- Application Service
-- Search
-- Mobile Service
-- Bill
-
-### 创建项目指南
-
-![console_guide_7_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_201812_en.png)
-
-<center>[图2] 创建项目 </center>
-
-1. 创建组织后，**创建新项目**按钮激活。单击**创建新项目**按钮，创建项目。
-2. 输入**项目名称**与**项目说明**。
-3. 单击**确认**按钮，创建项目。
-4. 创建项目后，菜单中显示项目名称。
-5. 单击**项目设置**按钮，确认项目信息。
-
-### 启用项目服务指南
-
-![console_guide_8_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_201812_en.png)
-
-<center>[图3] 启用项目服务 </center>
-
-1. 创建项目后，单击**选择服务**按钮，可以选择项目中要使用的服务。
-2. 在选择服务界面中选择要激活的服务。显示询问是否要激活服务的信息后，单击**确认**。显示提示移动至可以使用服务的页面信息后，单击**确认**按钮。
-3. 启用的服务列表可以在控制台左侧菜单中确认。在列表中单击所需服务，显示服务使用界面。
-
-### 删除项目
-
-若项目中没有正在使用的服务，可删除项目。
-删除项目时，项目的所有资源将被删除，且无法恢复。
-截至目前使用的所有资源的使用明细，可立即付款并删除。
-但若不立即付款而删除时，截至目前使用的费用明细将在下一付款日自动要求付款。
-
-## 管理会员 
-利用管理会员，可通过各用户验证（登录）及权限赋予进行控制。 
-在项目及组织中，可分开管理会员。 
-会员分为TOAST会员及IAM会员。
-
-### TOAST会员与IAM会员政策
-
-| 分类           | TOAST.com会员                                               | IAM会员                               |
-| :------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 定义           | \- 针对组织管理的会员<br>\- 同意TOAST使用条款的TOAST会员，具有服务使用责任及义务的会员 <br>\- 在整体TOAST服务中，即使有效会员所属组织被删除，但仍旧作为TOAST会员存在 | \- 针对服务使用的会员<br>\- 不同意TOAST使用条款的会员<br>\- 仅在组织内有效的会员，若所属的组织删除也会被删除的会员 |
-| 会员登记方法 | \- 组织的OWNER或ADMIN输入TOAST ID登记          | \- 组织的OWNER或ADMIN输入组织内唯一的ID登记<br>\- 通过与SSO关联/API关联等登记 |
-| 会员权限      | \- 组织管理（组织创建/修改/组织会员管理/组织服务管理/付款管理\）<br>\- 创建项目<br>\- 删除项目 | \- 使用组织服务 |
-| 访问控制台      | \- 访问TOAST控制台(https://console.toast.com/) <br>\- TOAST> 以会员ID/PW登录<br> | \- 访问IAM控制台（https://组织域.console.toast.com/）<br> \- （Dooray!、ERP服务以相应服务域访问）<br> \- 以组织的OWNER（或ADMIN）设置的ID/PW登录 \- 组织中设置的登录安全（2次验证，按服务设置）验证 |
+- Resource Watcher
 
 
-### 组织会员
 
-- 组织的OWNER可赋予所有权限，申请服务。 
-- OWNER可登记会员，赋予各组织管理权限。
+### Delete an Organization
 
-| 操作          | 作用                                | OWNER | ADMIN | MEMBER | Billing Viewer | Log Viewer |
-| ------------- | ----------------------------------- | ----- | ----- | ------ | -------------- | -------- |
-| 管理组织     | 创建组织                           | O     |       |        |                |  |
-|               | 修改组织                           | O     | O     |        |                |  |
-|               | 删除组织                           | O     |       |        |                |  |
-| 管理会员     | 登记组织会员                      | O     | O     |        |                |  |
-|               | 删除组织会员                      | O     | O     |        |                |  |
-| 管理服务   | 启用组织服务                  | O     | O     |        |                |  |
-|               | 禁用组织服务                | O     | O     |        |                |  |
-| 管理付款     | 查询申请书                         | O     |       |        |                |  |
-|               | 使用现状                           | O     | O     |        | O              |  |
-| 管理项目 | 创建项目                       | O     | O     | O      |                |  |
-|               | 删除项目（组织的所有项目） | O     | O     |        |                |  |
-|               | 删除项目（创建的项目）     | O     | O     | O      |                |  |
-| 管理用户Action日志 | 查询用户Action日志            | O     | O     |       |                | O |
+- An organization can be deleted only by the OWNER of the organization.
+- To delete an organization, all the services being used must be deleted.
+- When an organization is deleted, all information of the organization is deleted and cannot be restored.
 
-### 项目会员
+### Organization Governance Setting
 
-即使不是组织的会员，也可以成为项目的会员。
+You can set and manage policies for stable and efficient use of NHN Cloud services. Set up a common organization policy for security compliance such as login and personal information, so that the members within the organization can comply with the policy.
 
-| 操作        | 作用                                     | ADMIN | MEMBER |  Billing Viewer |
-| ----------- | ---------------------------------------- | ----- | ------ |  -------------- |
-| 管理登记Member| 登记项目会员                             | O     |        |              |                         
-|             | 删除项目会员                              | O     |        |                                     
-| 管理服务 | 启用服务                                     | O     |        |                      |                
-|             | 使用服务                                 | O     | O      |                      |                
-|             | 禁用服务                                 | O     |        |                      |                
-| 使用现状     | 使用现状                                 | O     |        | O                  |               
-| 管理项目     | 删除项目                                 | O      |          |                   | 
-
-## IAM Console
-
-### IAM控制台登录安全设置
-为增强IAM会员的控制台访问安全，提供[登录安全设置]功能。 
-
-![iam_console_login_security_setting_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_201903_en.png)
-
-1.访问要在控制台中设置的组织的组织设置页面。 
-2.单击IAM控制台的[登录安全设置]按钮。 
-
-#### 2次验证
-2次验证可设置为必须。
-
-- 服务
-    - 通用设置
-    - 按服务（User Console、Dooray、ERP等）类别设置
-- 2次验证
-    - 不设置：  不进行2次验证，仅输入ID和密码即可登录。 
-    - Google OTP：  输入ID和密码，然后输入Google OTP应用提供的One Time Password（一次性密码）并通过验证后即可登录。  
-    - 电子邮件：输入ID和密码后，单击发送到电子邮箱的验证按钮，通过验证后即可登录。 
-- Exclusion IP
-    - 不设置
-    - 设置
-
-#### 登录失败安全
-可设置为若登录一直失败，等待一定时间后可再次登录。
-
-- 服务
-    - 登录失败安全设置无法按服务类别进行不同的设置。仅提供通用设置功能。  
-- 登录失败安全
-    - 不设置：即使登录失败也可继续尝试登录。 
-    - 设置：输入需要的失败次数和锁定时间，登录失败达到该次数时，在相应的锁定时间内无法尝试登录。 
-
-#### 登录会话
-根据登录会话设置，登录会话会保持或自动过期。
-登录过期后应重新登录方可访问控制台。
-
-- 服务
-    - 登录失败安全设置无法按服务类别进行不同的设置。仅提供通用设置功能。
-- 登录会话数
-    - 设置可以在多个设备中以相同ID同时登录的个数。 
-    - 设置为1个时，不可以相同ID同时登录PC、智能手机等其他设备。 
-        - 例）PC- 保持登录，智能手机 - 自动退出
-- 登录会话保持时间 
-    - 设置即使无单击等任何操作也可保持登录的时间。 
-    - 若在设置的时间内不进行单击等操作，则自动退出。 
-    - 若设置时间过长，则存在安全问题，因此请考虑后设置。
+#### IP ACL Setting
+You can use NHN Cloud services with the set IPs (Applicable to: Console, [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/), [Notification Hub API](https://docs.nhncloud.com/en/Notification/Notification%20Hub/en/api-guide-v1x0/common-info/))
+For Dooray! services, IP ACL can be set on the service's console screen.
 
 
-#### IP ACL 
-仅允许使用的IP（或IP段）可访问IAM控制台。 
+1. Go to the console and access the Organization Management page of the organization you want to set up.
+2. Select Governance Setting from the submenu.
+3. You can set and manage IP ACL under **Set IP ACL** in the Organization Governance Setting.
+    * Service setting
+        * Common Settings: IP ACL can be set globally for all services.
+        * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Contiple, etc.).
+    * IP ACL
+        * Not Configured: The console can be accessed from any IPs (or IP range).
+        * Console Access Only from Allowed IPs (or IP range): The console can be accessed only from the IPs (or IP range) you entered. Enter the IP or IP range to allow access.
+ * Caution: If you also set up overseas access block, even if an IP is registered in the IP ACL, access to the console can be restricted if it is not included in the access allowed countries.
 
-- 服务
-    - 通用设置
-    - 按服务（User Console、Dooray、ERP等）类别设置
-- IP ACL
-    - 不设置：所有IP（或IP段）都可访问IAM控制台。 
-    - 仅允许使用的IP（或IP段）访问控制台：仅输入的IP（或IP段）可访问控制台。输入允许访问的IP或IP段即可。 
-    
-#### Organization Role of IAM Members 
-- Each organization service (e.g. Online Contact, Dooray!) provides different configuration role. 
-- IAM members have the following roles for the use of the Cloud console. 
-    - The role of MEMBER is selectively provided only when needed. 
-    - IAM members without role cannot create or delete a project, or activate service. Only registered project members can use service.  
+#### Overseas Access Block Settings
+If you need to block overseas access, we provide the feature to make the console accessible only from access-allowed countries.
 
-| Task     | Role                           | MEMBER |
-| ------------- | ----------------------------------- | ----- |
-| Service Management | Activating project service | O     |
-|               | Deactivating project service | O     |
-| Project Management | Creating projects | O     |
-|              | Deleting projects (which have been created) | O     |
+* You can enable or disable the feature in **Overseas Access Block Settings**.
+    * Disable: Console access is available in all countries.
+    * Enable: Console access is only available in access allowed countries.
+* Access Allowed Countries
+    * If you have overseas access block set up, you can set which countries are allowed to access.
+    * You must select at least one country to allow access.
+* Caution: If you set IP ACL together, access to the console can be restricted if the IP ACLs do not include IPs from countries that are allowed to access.       
 
-### Project Members
-Even a non-organization member can serve as project member. 
-A project member can be given with many roles.  
-However, ADMIN and MEMBER who have the same role as SUPER ADMIN with access to all services, cannot have other roles at the same time. 
+#### Overseas Access Block Settings
+If you need to block overseas access, we provide the feature to make the console accessible only from access-allowed countries.
 
-#### Role of Project Management 
-| Task    | Role                                | ADMIN | MEMBER |  BILLING VIEWER |
-| ----------- | ---------------------------------------- | ----- | ------ | -------------------- |
-| Member Management | Register project members     | O     |        |                   |
-|             | Delete project members         | O     |        |                      |
-| Service Management | Activate service          | O     |        |                      |
-|             | Use service                 | O     | O      |                      |
-|             | Deactivate service       | O     |        |                      |
-| Usage Status | Status of service use           | O     |       | O                    |
-| Project Management | Delete projects           | O     |       |                      |
-|              | Delete projects (which have been created) |      | O       |                     |
+* You can enable or disable the feature in **Overseas Access Block Settings**.
+    * Disable: Console access is available in all countries.
+    * Enable: Console access is only available in access allowed countries.
+* Access Allowed Countries
+    * If you have overseas access block set up, you can set which countries are allowed to access.
+    * You must select at least one country to allow access.
+* Caution: If you set IP ACL together, access to the console can be restricted if the IP ACLs do not include IPs from countries that are allowed to access.       
 
+#### Set approval process management
+If you need an approval process when using a service, a feature to establish an approval process of the approver is provided for each service.
 
-#### Role of Service Use
+* You can select **Not Set (Default)** in **Set approval process management.**
+* If you select **Set** in Set approval process management, you can use the approval process provided by each service. 
+* Services that provide an approval process
+    * Secure Key Manager 
+
+#### Set instance name management
+When using the instance service, you can set instance name management rules. 
+
+* When selecting **Duplicate allowed management**, the instance name is managed as the name entered by the user, and duplicate instance names are allowed.
+* When selecting **Unique management**, the instance name is managed as a unique instance name by combining the name entered by the user and the characters generated by the system.
+
+#### Set control of resource permissions and restriction on terminal access
+When NHN Cloud administrator need to view customer's resources (instance, etc.) information for operational purposes, such as responding to failures, users with project ADMIN/MEMBER permissions will be notified by email and the administrator can view the resource information in an isolated environment with enhanced security.
+
+* You can select Disable (Default) in the Set control of resource permissions and restriction on terminal access.
+* This setting limits the feature to view customer resources by NHN Cloud administrator, which may cause delays in response in emergency situations such as failures.
+
+#### Privacy Setting
+The privacy setting feature is available if you need to protect your privacy.
+You can mask personal information that is exposed on the service, or if you need to download personal information, you can make it available only in a separate network environment. 
+
+* Privacy Setting
+    * Organization/Project > Manage Member > IAM Member > Download List
+        * If not set, any member who can download the IAM member list can download the member list.
+        *  If set up, the feature to download member lists is disabled and only exceptionally allowed IPs or IP bands can download member lists.
+
+    * Organization > CloudTrail > Privacy
+        * If not set, all members who can view the log list will see the full information in the log list.
+        * If set up, personal information (email, name, ID) in the log list is masked.
+
+### IAM Governance Setting
+
+#### Login Security Setting
+
+* To strengthen the console access security of IAM members, **Login Security Setting** feature is provided.
+* You can set it globally for all organization services (Cloud, Contiple, Dooray!, etc.), or set it differently for each service.
+![console_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202303_en.png)
+
+1. Go to the console and access the Organization Management page of the organization you want to set up.
+2. Select Governance Setting from the submenu.
+3. You can set and manage login security setting in IAM Governance Setting.
+
+#### Two-factor Authentication
+
+You can enable two-factor authentication by setting it as a required feature.
+
+* Service setting
+    * Common Settings: Set the two-factor authentication globally for all organization services.
+    * Individual Settings for Each Service: You can set two-factor authentication differently for each service (Cloud, Contiple, Dooray!, etc.).
+* Two-factor Authentication setting
+    * Not Configured: Users can log in by entering their ID and password without two-factor authentication.
+    * Google OTP: After entering ID and password, users can log in by entering the One Time Password provided by the Google OTP app.
+    * Email: After entering ID and password, users can log in by clicking the **Verify** button sent to their email address for authentication.
+* Exclusion IP setting
+    * Not Configured: When logging in, users can log in after two-factor authentication from all IP ranges.
+    * Configured: Users can log in without two-factor authentication when logging in from the configured IP or IP range.
+
+#### Security for Failed Logins
+
+You can adjust setting so that users can log in again after a certain period of time when they failed to log in repeatedly.
+
+* Service setting
+    * Common Setting: Set the two-factor authentication globally for all organization services. (Individual Settings for Each Service is not provided)
+* Failure Login Security setting
+    * Not Configured: Users can continue to try to log in even if login fails.
+    * Configured: If you enter the desired number of failures and lock time, if users fail to log in for the configured number of times, users will not be able to log in during the entered lock time.
+
+#### Login Session
+
+Depending on the login session setting, a login session will be maintained or expire automatically.
+After the login expires, the user must log in again to access the console.
+
+* Service setting
+    * Common Setting: Set the two-factor authentication globally for all organization services. (Individual Settings for Each Service is not provided)
+* Login Session Count
+    * Set the number of simultaneous logins with the same ID on multiple devices.
+    * If this is set to 1, users cannot log in with the same ID on other devices such as PC or smartphone at the same time.
+    E.g.) PC - maintain login, Smartphone - automatically logged out
+* Login Session Maintenance Time
+    * Set the amount of time to maintain login without any action such as clicking.
+    * If a user do not perform any actions such as clicking for a configured period of time, the user will be automatically logged out.
+    * Setting it too long is not good for security, so please consider setting it to an appropriate value.
+
+#### Password Policy Settings
+* To set passwords for IAM members, the Password Policy Settings is provided.
+* The password policy is set the same for all organization services (Cloud, Contiple, Dooray!, etc.).
+* Go to **IAM Governance Setting** \> **Password Policy Settings** to manage password policies.
+    * Default Password Policy
+        * Default password policy is provided as follows.
+            * Consists of at least 8 digits, including alphabets, numbers, and special characters.
+            * Case sensitive.
+            * Unable to use more than four consecutive letters or numbers (for example, 1111, 1234, abcd, etc.).
+            * Passwords must be changed every 90 days, and after 90 days, you'll be guided to change your password.
+    * User Password Policy
+        * Provides password policies that allow you to set minimum password length, password strength, password expiration, password reuse limit, and more.
+            * Minimum Password Length: Set the password minimum length to between 8 and 15 characters. (The maximum length is 15 characters.)
+            * Password Strength: Set the password strength using a combination of consecutive characters, uppercase, lowercase, numbers, special characters, and more.
+            * Password Expiration: Choose whether to expire the password, and set the length of time it expires upon setup, and whether it can be extended upon expiration.
+            * Restrict Password Reuse: Choose whether to restrict password reuse and set the number of reuse limits at setup by choosing between 1 and 3.
+            * When to Apply Password Policy: Set when the password policy is applied by selecting **Apply on Password Change** or **Apply Immediately** .
+                * If **Apply on Password Change** is selected, the new policy applies when an IAM member changes the password.
+                * If **Apply Immediately** is selected, the policy applies immediately after the password is set, making it the new policy at the time of IAM member login.
+
+### Project Common role Group Setting
+
+You can create and manage role groups for common use in projects belonging to your organization.
+The configured role groups can be used to grant roles in bulk by selecting NHN Cloud members and IAM members in the project's role group management.
+
+1. After selecting Organization Setting, click the Project Common role Group Setting menu.
+2. Select **Add role Group** to add roles for each service.
+3. Enter the role group name, description, and add roles for each service.
+    * The role group name can include Korean letters, English letters, numbers, and special characters, and can contain up to 40 characters.
+    * Description is a additional description of the role group, and contain up to 100 characters.
+4. roles can be selected from **Detailed Usage roles for Each Service**.
+    * After searching for the service name on the left side, select the role on the right side.
+5. Check the selected role and add or delete the role.
+    * You can delete the selected service by clicking the x button next to the service name.
+6. Click the Add button to add a role group.
+7. When a role group is added, its name is displayed in the role group list. You can check the detailed role details by selecting the role group name.
+8. Clicking Add role leads you to the Add role Group screen in Step 3. You can add or delete roles.
+
+## Project Management
+
+After creating an organization, you can create a project to use NHN Cloud services.
+In a project, you can enable project services and use them.
+Project services are used on a per-project basis and are billed accordingly.
+
+### Create a Project
+
+* To create a project, you need to create an organization.
+* A member who creates a project has ADMIN role for the project.
+* When creating a project, enter the project name and project description.
+* After creating a project, you can enable project services and use them.
+* After creating a project, if collaboration is required, you can add project members to share the project.
+
+### Guide to Creating a Project
+
+![console_guide_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202109_en.png)
+![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202109_en.png)
+
+1. After an organization is created, a **Create New Project** button is enabled. Click the **Create New Project** button to create a project.
+2. Enter **Project Name** and **Project Description**.
+3. Click **Confirm** to create a project.
+4. The project name is displayed on the console menu when the project is created.
+5. Click the **Project Settings** button to check project information.
+
+### Project Services
+
+Once the project is created, you can select services.
+Services that can be enabled for each project include the following:
+
+* Compute
+* Container
+* Network
+* Storage
+* Database
+* Hybrid & Private Cloud
+* Game
+* Security
+* Content Delivery
+* Notification
+* AI Service
+* Machine Learning
+* Application Service
+* Mobile Service
+* Search
+* Data & Analytics
+* Dev Tools
+* Management
+* Bill
+
+### Guide to Enabling Project Services
+
+![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202109_en.png)
+![console_guide_7_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_202109_en.png)
+
+1. After creating a project, click the **Select Service** button to select the service to be used in the project.
+2. On the Select Service screen, select the service you want to enable. When prompted to enable the service, click **Confirm**.
+3. A list of enabled services can be found in the menu on the left side of the console. Click the desired service from the list to display the service page.
+
+### Delete a Project
+
+A project can be deleted if there is no service in use in the project.
+When a project is deleted, all resources of the project are deleted and cannot be restored.
+You can immediately pay for and delete the usage history for all the resources you have used so far.
+However, if you delete the project without paying immediately, the bills used so far will be automatically charged on the next billing date.
+
+## Member Management
+
+Member management allows you to control per-user authentication (login) and authorization.
+You can manage members separately in projects and organizations.
+Members are classified into NHN Cloud members and IAM members.
+
+### Policy for NHN Cloud Members and IAM Members
+
+| Classification | [NHN Cloud](http://nhncloud.com) Members | IAM Members |
+| --- | --- | --- |
+| Definition                    | - Members for organization management<br>- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud members even if their organizations are deleted. | - Members for the service use<br>- Members who do not consent to the Terms of Use <br>- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
+| Method of Member Registration | - Owner/Admin of an organization enters NHN Cloud ID for registration | - Owner/Admin of an organization enters unique ID for registration <br>- Register via SSO or API integration |
+| Member role              | - Manage organizations (Create/Modify organizations / Manage organization members / Manage organization services /Manage billing)<br>- Create projects<br>- Delete projects | - Use organization services                                 |
+| Console Access | - Access NHN Cloud console([https://console.nhncloud.com/](https://console.nhncloud.com/))<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.nhncloud.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) |
+
+### Organization Members
+
+* roles that can be set are different for each organization service (Contiple, Dooray!, etc.).
+* Cloud service roles are as follows.
+* However, IAM members are granted the NONE role upon enrollment, and must be granted the required role through role settings after enrollment.
+
+#### Organization Management Roles
+
+| Role | Description |
+| ---- | ----------- |
+| OWNER | Create, Read, Update, Delete, and Delete organizations across the organization, including Organization Management, Member Management, Organization Services Management, Payment Management, and Project Management. |
+| ADMIN | Create/Read/Update/Delete for the entire organization, including Organization Management, Member Management, Organization Services Management, Payment Management, Project Management, and more. |
+| MEMBER | Create project, read organization dashboard, read project |
+| BILLING_VIEWER | Read payment management usage and budget management, and usage status of project in organization. |
+| BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
+| BUDGET_VIEWER | Read budget management |
+| LOG_VIEWER | Create/Read/Update/Delete user action logs management |
+| ORG_DASHBOARD\_ADMIN | Create, Read, Update, and Delete organization dashboard |
+| ORG_DASHBOARD\_VIEWER | Read organization dashboard |
+| ORG_SUPPORT_ADMIN | Create organization inquiry |
+| NONE | Read organization dashboard and organization default settings |
+
+#### Service Use roles
+
 | Service | Role | Description |
 | --- | --- | --- |
-| Infrastructure | ADMIN |  Create/Read/Update/Delete Infrastructure Service  |
-| Infrastructure | MEMBER | Viewer VPC, Security Group, Auto Scale, Load Balancer Services. Create/Read/Update/Delete Other services |
-| Container Registry | ADMIN | Create/Read/Update/Delete Container Registry Service |
-| Container Registry | MEMBER | Read Container Registry Service  |
-| DNS Plus | ADMIN | Create/Read/Update/Delete DNS Plus Service  |
-| Object Storage | ADMIN | Create/Read/Update/Delete Object Storage Service   |
-| Backup | ADMIN |  Create/Read/Update/Delete Backup Service |
-| RDS for MySQL | ADMIN | Create/Read/Update/Delete RDS for MySQL Service |
-| RDS for MS-SQL | ADMIN | Create/Read/Update/Delete RDS for MS-SQL Service |
-| EasyCache | ADMIN | Create/Read/Update/Delete EasyCache Service |
-| Gamebase | ADMIN | Create/Read/Update/Delete Gamebase Service |
-| Leaderboard | ADMIN | Create/Read/Update/Delete Leaderboard Service |
-| Leaderboard | MEMBER |  Read Leaderboard Service |
-| Launching  | ADMIN | Create/Read/Update/Delete Launching Service  |
-| Smart Downloader | ADMIN |  Create/Read/Update/Delete Smart Downloader Service |
-| AppGuard  | ADMIN | Create/Read/Update/Delete AppGuard Service |
-| Security Check  | ADMIN | Create/Read/Update/Delete Security Check Service |
-| Security Monitoring  | ADMIN | Create/Read/Update/Delete Security Monitoring Service |
-| Basic Security  | ADMIN |Create/Read/Update/Delete  Basic Security Service |
-| Mal-URL Detector  | ADMIN | Create/Read/Update/Delete Mal-URL Detector Service |
-| CAPTCHA  | ADMIN |  Create/Read/Update/Delete CAPTCHA Service  |
-| OTP  | ADMIN | Create/Read/Update/Delete OTP Service |
-| DBSafer  | ADMIN | Create/Read/Update/Delete  DBSafer Service |
-| WEB Firewall  | ADMIN |   Create/Read/Update/Delete WEB Firewall Service |
-| Vaccine  | ADMIN |  Create/Read/Update/Delete Vaccine Service |
-| Secure Key Manager  | ADMIN |  Create/Read/Update/Delete Secure Key Manager Service |
-| Secure Key Manager  | MEMBER |  Read Secure Key Manager Service |
-| CDN   | ADMIN |  Create/Read/Update/Delete CDN Service  |
-| Image  | ADMIN |  Create/Read/Update/Delete Image Service |
-| Push  | ADMIN |  Create/Read/Update/Delete Push Service  |
-| SMS  | ADMIN |Create/Read/Update/Delete  SMS  Service |
-| Email  | ADMIN |  Create/Read/Update/Delete Email Service |
-| KakaoTalk Bizmessage  | ADMIN |  Create/Read/Update/Delete KakaoTalk Bizmessage Service |
-| IAP  | ADMIN |  Create/Read/Update/Delete IAP Service  |
-| Mobile Device Info  | ADMIN |  Create/Read/Update/Delete Mobile Device Info Service |
-| Log & Crash Search  | ADMIN |   Create/Read/Update/Delete Log & Crash Search Service |
-| Maps  | ADMIN |  Create/Read/Update/Delete Maps Service |
-| ROLE  | ADMIN |  Create/Read/Update/Delete ROLE Service |
-| API Gateway  | ADMIN | Create/Read/Update/Delete API Gateway Service |
-| RTCS  | ADMIN |   Create/Read/Update/Delete RTCS Service |
-| Cloud Search  | ADMIN | Create/Read/Update/Delete Cloud Search Service |
-| Autocomplete  | ADMIN | Create/Read/Update/Delete AutocompleteService |
-| Corporation Search  | ADMIN |  Create/Read/Update/Delete Corporation Search Service |
-| Address Search  | ADMIN |   Create/Read/Update/Delete Address Search Service |
-| Deploy  | ADMIN |  Create/Read/Update/Delete Deploy Service |
-| Managed  | ADMIN | Create/Read/Update/Delete Managed Service |
-| Service Monitoring  | ADMIN | Create/Read/Update/Delete Service Monitoring Service |
-| Certificate Manager  | ADMIN | Create/Read/Update/Delete Certificate Manager Service |
-| Bill (e-Tax)  | ADMIN |  Create/Read/Update/Delete Bill (e-Tax) Service |
-| Bill (e-Tax)  | MEMBER |  Read Bill (e-Tax) Service |
+| CloudTrail | ADMIN | Create, Read, Update, Delete CloudTrail service |
+| CloudTrail | VIEWER | Read CloudTrail Service |
+| CloudTrail | External Storage Config ADMIN | Create, Read, Update, Delete CloudTrail external storage settings |
+| Resource Watcher | ADMIN | Create, Read, Update, and Delete Resource Watcher Service |
+| Resource Watcher | VIEWER | Read Resource Watcher Service |
+
+
+#### Service PERMISSION Role
+
+* The Organization Services PERMISSION role can enable or disable individual services.
+* However, services that are enabled at the time of organization creation (CloudTrail, Resource Watcher, etc.) do not provide a separate PERMISSION role.
+
+
+| Role | Description |
+| --- | --- |
+| Service Name PERMISSION | Service Enable, Disable  |
+
+
+### Project Members
+
+* You can grant multiple required roles to project members.
+
+#### Project Management roles
+
+| Role | Description |
+| --- | --- |
+| ADMIN | Create, Read, Update, Delete for the entire project |
+| MARKETPLACE_ADMIN | Marketplace Create, Read, Update, and Delete Services |
+| MARKETPLACE_VIEWER | Marketplace Read |
+| MEMBER | Create, Read, Update, Delete for all services in the project - Some services excluded (check related roles/permissions)|
+| BILLING VIEWER | Read for usage status |
+| PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create, Read, Update, Delete for project's integrated Appkey<br>Enable, Disable project services<br>Delete for projects |
+| PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey |
+| PROJECT MEMBER ADMIN | Create, Read, Update, Delete for project members<br>Create, Read, Update, Delete for project's role groups |
+| PROJECT MEMBER VIEWER | Read for project members<br>Read for project's role groups |
+| PROJECT NOTICE GROUP MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Receiver Group Management <br> Read for project members <br> Read for project's role groups|
+| PROJECT NOTICE GROUP MANAGEMENT VIEWER | Read for project's Notification Receiver Group Management <br> Read for project's role groups|
+| PROJECT NOTICE MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
+| PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
+| PROJECT API SECURITY SETTING ADMIN | Create, Read, Update, Delete for project's API Security Setting|
+| PROJECT API SECURITY SETTING VIEWER | Read for project's API Security Setting|
+| PROJECT AUTHENTICATION MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Authentication Info Management|
+| PROJECT QUOTA MANAGEMENT ADMIN| Create, Read, Update, Delete for project's Quota Management|
+| PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
+| PROJECT_SUPPORT_ADMIN| Create project inquiry|
+| PROJECT DASHBOARD VIEWER | Read project dashboard|
+
+
+#### Service Use roles
+
+| Service | Role | Description |
+| --- | --- | --- |
+| Infrastructure | ADMIN | Create, Read, Update, Delete for Infrastructure Service |
+| Infrastructure | MEMBER | Read Network services (except Network Interface, Floating IP), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | VIEWER | Read in basic infrastructure services (Key Pair, Direct Connect, NAS (Offline) excluded). Create, Read, Update, and Delete in other services. |
+| Infrastructure | Routing ADMIN | RRead Network services (except Network Interface, Floating IP, Routing Table), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Security Group ADMIN | Read Network services (except Network Interface, Floating IP, Security Groups), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Load Balancer ADMIN | Read Network services (except Network Interface, Floating IP, Load Balancer), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Transit Hub ADMIN | Read Network services (except Network Interface, Floating IP, Transit Hub), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Peering Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Peering Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Colocation Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Colocation Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | NAT Gateway ADMIN | Read Network services (except Network Interface, Floating IP, NAT Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Service Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Service Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Private DNS ADMIN | Read Network services (except Network Interface, Floating IP, Private DNS), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | Flow Log ADMIN | Read Network services (except Network Interface, Floating IP, Flow Log), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | NCS ADMIN | Read Network services (except Network Interface, Floating IP), NKS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | NKS ADMIN | Read Network services (except Network Interface, Floating IP), NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Virtual Desktop | ADMIN | Create, Read, Update, Delete for Virtual Desktop Service |
+| Cloud Functions | ADMIN | Create, Read, Update, Delete for Cloud Functions Service |
+| NHN Container Registry (NCR) | ADMIN | Create, Read, Update, Delete for NHN Container Registry (NCR) Service |
+| NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
+| NHN Container Registry (NCR) | IMAGE UPLOADER | Read for NHN Container Registry (NCR), Upload Image, Create Artifact, Create Tag |
+| DNS Plus | ADMIN | Create, Read, Update, Delete for DNS Plus Service |
+| DNS Plus | VIEWER | Read for DNS Plus Service |
+| Object Storage | ADMIN | Create, Read, Update, Delete for Object Storage Service |
+| Object Storage | Container OPERATOR | Read a detailed list of containers in the Object Storage service and all their information. Create, Update, and Delete container management |
+| Object Storage | Container VIEWER | Read a list of containers in the Object Storage service  |
+| Object Storage | Object READER | Read a list of containers in the Object Storage service and details of some of their information. Read a list of objects and their details. Read object download |
+| Object Storage | Object WRITER | Read a list of containers in the Object Storage service and details of some of their information. Create, Update, and Delete container management  |
+| Object Storage | Object VIEWER | Read a list of containers in the Object Storage service and details of some of their information. Read a list of objects and their details |
+| Backup | ADMIN | Create, Read, Update, Delete for Backup Service |
+| RDS for MySQL | ADMIN | Create, Read, Update, Delete for RDS for MySQL Service |
+| RDS for MySQL | VIEWER | Read for RDS for MySQL Service |
+| RDS for MariaDB | ADMIN | Create, Read, Update, Delete for RDS for MariaDB Service |
+| RDS for MariaDB | VIEWER | Read for RDS for MariaDB Service |
+| RDS for MS-SQL | ADMIN | Create, Read, Update, Delete for RDS for MS-SQL Service |
+| EasyCache | ADMIN | Create, Read, Update, Delete for EasyCache Service |
+| EasyCache | VIEWER | Read for EasyCache Service Replication Group menu, Read for Monitoring menu |
+| Cloud Monitoring | ADMIN | Create, Read, Update, Delete for Cloud Monitoring |
+| Cloud Monitoring | VIEWER | Read for Cloud Monitoring |
+| Gamebase | ADMIN | Create, Read, Update, Delete for Gamebase Service |
+| Gamebase | ANALYTICS VIEWER - ALL | Read for all metrics |
+| Gamebase | ANALYTICS VIEWER - EXCLUDING SALES | Read for all metrics except sales |
+| Gamebase | ANALYTICS VIEWER - ONLY REAL-TIME | Read for real-time metrics |
+| Gamebase | APP ADMIN | Create, Read, Update, Delete for APP menu |
+| Gamebase | APP VIEWER | Read for APP menu |
+| Gamebase | BAN ADMIN | Create, Read, Update, Delete for Suspended menu |
+| Gamebase | BAN VIEWER | Read for Suspended menu |
+| Gamebase | COUPON ADMIN | Create, Read, Update, Delete for Coupon menu |
+| Gamebase | COUPON VIEWER | Read for Coupon menu |
+| Gamebase | CS ADMIN | Create, Read, Update, Delete for Customer Center menu |
+| Gamebase | CS INQUIRY SUPPORT | Read, Update for Contact Customer Center menu, Read for member menu |
+| Gamebase | IAP ADMIN | Create, Read, Update, Delete for Purchase menu |
+| Gamebase | IAP VIEWER | Read for Purchase menu |
+| Gamebase | LEADERBOARD ADMIN | Create, Read, Update, Delete for Leaderboard menu |
+| Gamebase | LEADERBOARD VIEWER | Read for Leaderboard menu |
+| Gamebase | MANAGEMENT ADMIN | Create, Read, Update, Delete for Admin menu |
+| Gamebase | MEMBER ADMIN | Create, Read, Update, Delete for Member menu |
+| Gamebase | MEMBER VIEWER | Read for Member menu |
+| Gamebase | MEMBER FILE DOWNLOAD | Read and Download for menus including Metrics, Sales, Members |
+| Gamebase | OPERATION ADMIN | Create, Read, Update, Delete for Operation menu |
+| Gamebase | OPERATION VIEWER | Read for Operation menu |
+| Gamebase | PUSH ADMIN | Create, Read, Update, Delete for Push menu |
+| Gamebase | PUSH VIEWER | Read for Push Menu |
+| GameAnvil  | ADMIN | GameAnvil Create, Read, Update, and Delete Services  |
+| GameAnvil  | MEMBER | GameAnvil Read Service. Create, Read, Update, or Delete for Monitoring menu |
+| GameAnvil  | VIEWER | GameAnvil Read Services  |
+| GameStarter  | ADMIN | Create, Read, Update for menus game settings, distribution |
+| GameStarter  | VIEWER | Read for menus game settings, distribution |
+| Leaderboard | ADMIN | Create, Read, Update, Delete for Leaderboard Service |
+| Leaderboard | VIEWER | Read for Leaderboard Service |
+| Launching | ADMIN | Create, Read, Update, Delete for Launching Service |
+| Smart Downloader | ADMIN | Create, Read, Update, Delete for Smart Downloader Service |
+| NHN AppGuard | ADMIN | Create, Read, Update, Delete for NHN AppGuard Service|
+| Server Security Check | ADMIN | Create, Read, Update, Delete for Server Security Check  Service |
+| Server Security Check | VIEWER | Read for Server Security Check  Service |
+| Security Monitoring | ADMIN | Create, Read, Update, Delete for Security Monitoring Service |
+| CAPTCHA | ADMIN | Create, Read, Update, Delete or CAPTCHA Service |
+| WEB Firewall | ADMIN | Create, Read, Update, Delete for WEB Firewall Service |
+| Vaccine | ADMIN | Create, Read, Update, Delete for Vaccine Service |
+| Secure Key Manager | ADMIN | Create, Read, Update, Delete for Secure Key Manager Service |
+| Secure Key Manager | APPROVAL ADMIN | Approve, deny, query,create, query for approval requests for Secure Key Manager Service |
+| Secure Key Manager | APPROVAL MEMBER | Create, query for approval requests for Secure Key Manager Service |
+| Secure Key Manager | VIEWER | Read for Secure Key Manager Service |
+| Security Compliance | ADMIN | Create, Read, Update, Delete for Security Compliance Service|
+| Webshell Threat Detector | ADMIN | Create, Read, Update, Delete for Webshell Threat Detector Service |
+| Security Advisor | ADMIN | Create, Read, Update, Delete for Security Advisor Service |
+| Security Advisor | VIEWER | Read for Security Advisor Service  |
+| Network Firewall | ADMIN | Create, Read, Update, Delete for Network Firewall Service  |
+| Network Firewall | VIEWER | Read for Network Firewall Service  |
+| NHN Bastion | ADMIN | Create, Read, Update, Delete for NHN Bastion Service | 
+| NHN Bastion | VIEWER | Read for NHN Bastion Service | 
+| NHN Bastion | USER | Use NHN Bastion Service Terminal | 
+| Cloud Access | ADMIN | Create, Read, Update, Delete for Cloud Access Service | 
+| Cloud Access | VIEWER | Read for Cloud Access Service | 
+| CDN | ADMIN | Create, Read, Update, Delete for CDN Service |
+| Image Manager | ADMIN | Create, Read, Update, Delete pfor Image Manager Service |
+| Notification Hub | ADMIN | Create, Read, Update, Delete for Notification Hub Service |
+| Push | ADMIN | Create, Read, Update, Delete for Push Service |
+| SMS | ADMIN | Create, Read, Update, Delete for SMS Service |
+| SMS | SEND ADMIN | Create, Read in Deliver SMS |
+| SMS | DELIVERY RESULT ADMIN | Read in Retrieve by SMS Request, Create Download Search Result, Read in Retrieve Bulk SMS Delivery, Create Download Retrieve Result, Read in Retrieve Tagged SMS Delivery, Create Download Retrieve Result  |
+| SMS | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates, Create, Read, Update, Delete in Preregistration Outgoing Numbers, Read in Retrieve Outgoing Number, Create, Read, Update, Delete in Manage Tags, Create, Read, Update, Delete in Manage UIDs, Create, Read, Update, Delete in Manage Webhooks, Create, Read, Update, Delete in Set 080 Call Rejects, Create, Read, Update, Delete in Delivery Setting, Create, Read, Update, Delete in Statistics Event Key |
+| SMS | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
+| RCS Bizmessage | ADMIN | Create, Read, Update, Delete for RCS Bizmessage Service |
+| Email | ADMIN | Create, Read, Update, Delete for Email Service |
+| Email | SEND ADMIN | Create, Read in Deliver Mails |
+| Email | DELIVERY RESULT ADMIN | Read in Retrieve by Mail Request, Create Download Search Result<br> Read in Retrieve Scheduled Mail Delivery, Create Download Search Result<br> Read in Retrieve Bulk Mail Delivery, Create Download Search Result<br> Read in Retrieve Tagged Mail Delivery, Create Download Search Result |
+| Email | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates<br> Create, Read, Update, Delete in Manage Call Rejects<br> Create, Read, Update, Delete in Manage Mail Domains<br> Create, Read, Update, Delete in Manage Tags<br> Create, Read, Update, Delete in Manage UIDs<br> Create, Read, Update, Delete in Delivery Setting<br> Create, Read, Update, Delete in Manage Webhooks |
+| Email | STATISTICS ADMIN | Read in Retrieve Statistics, Create Download Search Result |
+| KakaoTalk Bizmessage | ADMIN | Create, Read, Update, Delete for KakaoTalk Bizmessage Service |
+| KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create, Read in Send|
+| KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result<br> (AlimTalk) Read in Query Mass Delivery, Create Download Search Result <br> (FriendTalk)Read in Query Delivery Result, Create Download Search Result|
+| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group <br>(FriendTalk)Read, Delete in Manage Images <br>(FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery|
+| KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
+| Face Recognition | ADMIN | Create, Read, Update, Delete for Face Recognition Service |
+| AI Fashion |	ADMIN |	Create, Read, Update, Delete for AI Fashion Service |
+| OCR | ADMIN | Create, Read, Update, Delete for OCR | 
+| Text to Speech | ADMIN | Create, Read, Update, Delete for Text to Speech |
+| Speech to Text | ADMIN | Create, Read, Update, Delete for Speech to Text |
+| AI EasyMaker | ADMIN | Create, Read, Update, Delete for AI EasyMaker |
+| ROLE | ADMIN | Create, Read, Update, Delete for ROLE Service |
+| API Gateway | ADMIN | Create, Read, Update, Delete for API Gateway Service |
+| RTCS | ADMIN | Create, Read, Update, Delete for RTCS Service |
+| ShortURL | ADMIN | Create, Read, Update, Delete for ShortURL Service |
+| File-Crafter | ADMIN | Create, Read, Update, Delete for File-Crafter Service |
+| Cloud Scheduler | ADMIN | Create, Read, Update, Delete for Cloud Scheduler Service |
+| IAP | ADMIN | Create, Read, Update, Delete for IAP Service |
+| Mobile Device Info | ADMIN | Create, Read, Update, Delete for Mobile Device Info Service |
+| Cloud Search | ADMIN | Create, Read, Update, Delete for Cloud Search Service |
+| Autocomplete | ADMIN | Create, Read, Update, Delete for AutocompleteService |
+| Corporation Search | ADMIN | Create, Read, Update, Delete for Corporation Search Service |
+| Log & Crash Search | ADMIN | Create, Read, Update, Delete for Log & Crash Search Service |
+| DataFlow | ADMIN | Create, Read, Update, Delete for DataFlow Service |
+| DataQuery | ADMIN | Create, Read, Update, Delete for DataQuery Service |
+| Pipeline | ADMIN | Create, Read, Update, Delete for Pipeline Service |
+| Deploy | ADMIN | Create, Read, Update, Delete for Deploy Service |
+| Deploy | VIEWER | Read for Deploy Service |
+| Managed | ADMIN | Create, Read, Update, Delete for Managed Service |
+| Service Monitoring | ADMIN | Create, Read, Update, Delete for Service Monitoring Service |
+| Certificate Manager | ADMIN | Create, Read, Update, Delete for Certificate Manager Service |
+| Private CA | ADMIN | Create, Read, Update, Delete for Service Private CA |
+| Private CA | VIEWER | Read for Private CA Service |
+| eTax | ADMIN | Create, Read, Update, Delete for eTax Service |
+| eTax | VIEWER | Read  for eTax Service |
+
+
+#### Service PERMISSION Role
+Service PERMISSION Role can enable or disable each service.
+
+| Role | Description |
+| --- | --- |
+| Service Name PERMISSION | Service Enable, Disable  |
 
 
 
+## Billing Management
 
-## 付款管理
+You can check the usage fee for NHN Cloud service and make payment.
+In the **View My Info > Manage Billing** menu, you can check the bill, expected payment amount, and usage information of the NHN Cloud member who registered a payment method.
 
-可确认TOAST服务使用费用并付款。
-在**查看我的信息 > 付款管理**菜单中可以查看登记付款方式的TOAST会员的申请书与预计付款金额、使用量信息。
+The following features are provided along with the billing details of the payment method for the month.
 
-提供相应月通过付款方式付款的明细以及以下功能。
+- Immediate Payment: You can pay with the immediate payment feature before automatic payment that occurs on the 8th of every month.
+- Sales slip: If you paid by credit card, you can view the sales slip.
+- Tax Invoice: If you paid by bank transfer, you can view your tax invoice.
 
-- 即时付款：每月8日自动付款前，可通过即时付款功能付款。
-- 销售凭证：使用信用卡付款时，可查询销售凭证。
-- 税单：使用转账付款时，可查询税务发票。
+The details displayed on the payment management invoice are as follows.
 
-付款管理请求书中查询到的明细如下。
+- Usage Amount: The amount calculated by service usage and unit price
+- Discount/Surcharge Amount: Contract discount, manager discount/surcharge, etc.
+- VAT: 10% of (Usage Amount - Discount Amount + Surcharge Amount)
+- Late Fee
+    - Korean members: In case of non-payment for the Total Amount of Payment, 2% of the amount
+    - Japanese members: There is no late fee in accordance with the Japanese Consumer Contract Law.
+- Total Amount of Payment: (Usage Amount - Discount Amount + Surcharge Amount) + VAT
 
-- 使用金额：计算服务使用量与单价的金额
-- 折扣/附加金额：协议折扣、管理员折扣/附加金额等
-- 附加税：（使用金额 - 折扣金额 + 附加金额）的10%
-- 滞纳金
-    - 韩国会员：未缴纳最终金额时，相应金额的2%
-    - 日本会员：依据日本消费者合同法，不产生滞纳金。
-- 最终付款金额：（使用金额 - 折扣金额 + 附加金额）+ 附加税
 
+
+## Manage Notifications
+
+Manage Notifications is a feature that allows you to set the recipients and notification method (Email, SMS) for each notification sent by NHN Cloud.
+
+1. Click **Organization > Manage Notifications** or **Project > Manage Notifications**.
+    - You can manage the notifications you receive for each of your organizations and projects.
+
+2. Among notifications, find a notification for which you want to change the recipient and go to **Modify Receiver > Modify**.
+    - You can find notifications by selecting from the list on the left, or by searching for the notification name, recipient, and more in the top-right search area.
+    - To bulk modify recipients of multiple notifications, select the checkboxes of notifications, then click Bulk Modify Receiver at the top of the notification list.
+
+3. Select who should receive notifications and how they should be **notified (Email, SMS) by member, notification recipient group, and role**.
+    - Webhook is not supported for the notifications.
+    - Notification methods differ depending on notifications.
+    - When you add a notification receiver group to Recipient, the notification method set for that group must match the notification method supported by each notification in order to receive notifications.
+
+4. Click **Save** to save your settings.
+
+
+## Notification Receiver Group Management
+
+Notification Receiver Group Management allows you to set up receiver groups for notifications sent by NHN Cloud.
+
+Email and SMS notifications are supported with receiver settings based on organization/project roles and receiver settings for members.
+Webhook notifications provide default webhooks and custom webhooks.
+The corresponding notification receiver groups are available when setting up notifications in the **service**.
+
+### Create Notification Receiver Group
+
+1. To create a **notification receiver group**, click **Notification Receiver Group Management** in the organization or project menu.
+2. Click ** + Add Notification Receiver Group**.
+3. In **Basic information**, enter a name and description for the group receiving notifications.
+    - In **Notifications Receiver Group Name**, enter up to 40 characters of Korean, alphanumeric characters, numbers, and special characters
+    - In **Description**, enter up to 100 characters without character limit to distinguish the notification receiver group name.
+
+4. **Receiving Role Setting**
+    - Organization > Receiving Role Setting
+        * Supports setting up email and SMS notifications for organization/project roles, project role groups, and service-specific roles.
+    * Project > Receiving Role Setting
+        * Supports setting up email and SMS notifications for project roles, project role groups, and service-specific roles.
+
+5. **Receiving Target Manual Setting**
+    - You can set your own receivers in Add Notification Receiver Group.
+    - Supports setting up email and SMS notifications for each member.
+
+6. **Webhook Settings**
+    - When sending out notifications, you can set them to a webhook of your choice.
+    - Provides default and custom webhooks by type.  (maximum 5)
+
+### Webhook Settings
+1. On the Organization, Project tab, select the ** Notification Receiver Group Management** tab.
+2. Select ** +Add Webhook** in the **Webhook Settings** menu at the bottom.
+3. The **+ Add webhook** popup provides default and custom webhooks by type.
+    - Default Webhook
+        - The default webhook can only be sent on service notifications that it supports.
+        - Webhook name
+            - You can enter a name for the default webhook you want to set up, with no character limit and up to 40 characters.
+            - Webhook names cannot be duplicated within the same notification receiver group.
+        - Target
+            - You can enter a URL to receive the webhook.
+        - Secret Key
+            - The secret key to encrypt the URI and the id, source, type, and time with the SHA256 hash algorithm.
+                - Send Authorization in the default webhook header only if a secret key is set.
+                - Example: Authorization : HMAC-SHA256 Signature={encrypted character}"
+                    - You can prevent received requests from being tampered with by man-in-the-middle attackers by checking the Authorization Header.
+        - The HTTP Mehod is POST and the Request Body is in the format below, with the body field varying by service.
+       ```json
+       {
+          "id": "String",
+          "source": "String",
+          "specversion": "String",
+          "type": "String",
+          "body" : "Object"
+         }
+        ```
+    - Custom Webhook
+        - Custom webhooks can only be sent on service notifications that support them.
+        - Webhook name
+            - You can enter a name for the custom webhook you want to set up, up to 40 characters long, with no character limit.
+            * Webhook names cannot be duplicated within the same notification receiver group.
+        * Send to
+            * You can select a destination (custom dashboard or service) to send the webhook to.
+            * You can only select menus or services that offer custom webhooks.
+        * Target
+            * You can enter a URL and HTTP Method to receive the webhook.
+
+          | Target to offer | Range to offer |
+          | -- | -- |
+          | HTTP Method | POST <br> PUT |
+          | Transport Protocol | HTTP<br> HTTPS | 
+        - Request data
+            - In Request data, you can enter parameters that are provided by the target.
+                - You can click Ctrl + Space to see which parameters are supported by that the target.
+                - You can see the Value provided in the bottom-right preview.
+                    - "alertId": "${alertId}" ,"orgName": "${orgName}"
+        - Header
+            - You can enter headers to pass to the target.
+            - The Content-type header to pass to the target supports application/json and cannot be modified.
+
+          | Header Item | Header Value |
+          | -- | -- |
+          | Custom-Header1 | Value1 |
+          | Custom-Header2 | Value2 | 
+
+        - Enter a name, send to, and receive to, then click **Confirm** to create the webhook.
+
+4. The webhooks you added can be found in the webhook settings list.
+    * You can click **View** to see the webhook details.
+    * You can edit the webhook information by clicking the pencil icon.
+    * You can delete a webhook by clicking the trash can icon.
+
+5. The created webhook is available by adding a **notification receiver group** to the service that provides webhook delivery.
+
+
+## Technical support
+
+Technical support is a feature that allows you to register or manage inquiries with members of your organization or project.
+Registered inquiries are visible to all members within the same organization or project. If necessary, you can leave additional questions to an inquiry registered by another member.
+
+For individual inquiries, use the NHN Cloud Customer Center [1:1](https://www.nhncloud.com/kr/support/inquiry) Inquiry.
+
+
+### List of Inquiries
+
+1. In the console, click **Organization > Technical Support** or **Project > Technical Support**.
+    * You can see a **list of inquiries** received from organizations and projects.
+
+### Submit Inquiry
+
+1. On the **list** screen, click **Submit Inquiry**.
+2. Select the type of inquiry you want to submit and complete each field as instructed.
+    * The input fields can vary depending on the type of inquiry.
+3. Click **Accept** at the bottom.
+    * If validation (such as required values) fails, a warning message is exposed in the corresponding input field.
+
+### Submit Additional Questions
+
+1. On the **Inquiry list** screen, click the row of the inquiry that you want to accept additional questions for.
+2. Fill out an **additional question** at the bottom of the **Details of Inquiry** section.
+3. Click **Submit** in the **Additional Question** section.
+    * The additional question and phone number are required.
+    * If the phone number listed in the member information exists, the input field is populated with the default value.
+
+### Check Response to Inquiry
+
+1. On the **Inquiry list** screen, click the row of the inquiry you want to see the answer to.
+2. You can view your inquiry, additional questions, and answers on the **Details of Inquiry** screen.

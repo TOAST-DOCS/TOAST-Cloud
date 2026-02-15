@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
-1\. [TOAST 콘솔](https://console.cloud.toast.com)에서 [Log&Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
+1. [TOAST 콘솔](https://console.toast.com)에서 [Log&Crash Search를 활성화](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 
-2\. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+2. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
 ## Component SDKs
 
@@ -33,7 +33,7 @@
 
 ### Initialize TOAST SDK
 
-1\. Adding the TOAST SDK Component
+1. Adding the TOAST SDK Component
 
 * 유니티 에디터에서, 새로운 GameObject를 생성합니다.
 * GameObject의 이름을 "TOAST SDK Initializer"로 변경합니다.
@@ -41,13 +41,13 @@
 
 ![toast_sdk_initializer](http://static.toastoven.net/toastcloud/sdk/unity/unity_setup_toast_sdk_initializer.png)
 
-2\. initializing TOAST SDK
+2. initializing TOAST SDK
 
 * ToastSDK 스크립트에 ProjectKey와 ProjectVersion을 입력합니다.
 
 ![input_project_settings](http://static.toastoven.net/toastcloud/sdk/unity/unity_setup_input_project_settings.png)
 
-3\. Configure Unity Build and Player Settings
+3. Configure Unity Build and Player Settings
 
 
 
@@ -55,7 +55,7 @@
 
 ### Initialize
 
-Log & Crash Search에서 발급받은 AppKey를 ProjectKey로 설정합니다.
+Log & Crash Search에서 발급 받은 AppKey를 ProjectKey로 설정합니다.
 
 ```cs
 // Initialize Logger
