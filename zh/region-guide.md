@@ -119,7 +119,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Email | Global |  |  |  |  |
 |  | KakaoTalk Bizmessage | Global |  |  |  |  |
 | AI Service | Face Recognition | Global |  |  |  |  |
-|  | AI Fashion | Global |  |  |  |  |
 |  | OCR | Global |  |  |  |  |
 |  | Text to Speech | Global |  |  |  |  |
 |  | Speech to Text | Global |  |  |  |  |
