@@ -71,7 +71,6 @@ Check the API authentication methods supported by the service you intend to use.
 |                         | Email                                          |                    |         |                 | O      |                |
 |                         | KakaoTalk Bizmessage                           |                    |         |                 | O      |                |
 | **AI Service**          | Face Recognition                               |                    |         |                 | O      | O              |
-|                         | AI Fashion                                     |                    |         |                 | O      | O              |
 |                         | OCR                                            |                    |         |                 | O      | O              |
 |                         | Text to Speech                                 |                    |         |                 | O      | O              |
 |                         | Speech to Text                                 |                    |         |                 | O      | O              |
