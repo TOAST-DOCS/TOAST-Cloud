@@ -349,6 +349,8 @@ Members are classified into NHN Cloud members and IAM members.
 
 | Service | Role | Description |
 | --- | --- | --- |
+| Contiple | ADMIN | Create, Read, Update, Delete Contiple service |
+| Contiple | VIEWER | Read Contiple Service |
 | CloudTrail | ADMIN | Create, Read, Update, Delete CloudTrail service |
 | CloudTrail | VIEWER | Read CloudTrail Service |
 | CloudTrail | External Storage Config ADMIN | Create, Read, Update, Delete CloudTrail external storage settings |
@@ -515,7 +517,6 @@ Members are classified into NHN Cloud members and IAM members.
 | KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group <br>(FriendTalk)Read, Delete in Manage Images <br>(FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery|
 | KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | Face Recognition | ADMIN | Create, Read, Update, Delete for Face Recognition Service |
-| AI Fashion |	ADMIN |	Create, Read, Update, Delete for AI Fashion Service |
 | OCR | ADMIN | Create, Read, Update, Delete for OCR | 
 | Text to Speech | ADMIN | Create, Read, Update, Delete for Text to Speech |
 | Speech to Text | ADMIN | Create, Read, Update, Delete for Speech to Text |
@@ -540,6 +541,7 @@ Members are classified into NHN Cloud members and IAM members.
 | Managed | ADMIN | Create, Read, Update, Delete for Managed Service |
 | Service Monitoring | ADMIN | Create, Read, Update, Delete for Service Monitoring Service |
 | Certificate Manager | ADMIN | Create, Read, Update, Delete for Certificate Manager Service |
+| Certificate Manager | VIEWER | Read for Certificate Manager Service |
 | Private CA | ADMIN | Create, Read, Update, Delete for Service Private CA |
 | Private CA | VIEWER | Read for Private CA Service |
 | eTax | ADMIN | Create, Read, Update, Delete for eTax Service |

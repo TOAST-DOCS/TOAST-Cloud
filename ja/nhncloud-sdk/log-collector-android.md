@@ -152,7 +152,7 @@ NhnCloudLogger.initialize(configuration);
 
 Androidプラットフォームでは、try/catch構文で例外に関する内容を、NHN Cloud LoggerのHandled Exception APIを使用して送信できます。
 このように送信した例外ログは、コンソールで**Log & Crash Search > アプリクラッシュ検索**をクリックし、**エラータイプ**で**Handled**をクリックして照会できます。
-Log & Crashコンソールの詳細な使用方法は、[コンソール使用ガイド](http://nhncloud.com/ja/Analytics/Log%20&%20Crash%20Search/ja/console-guide/)を参照してください。
+Log & Crashコンソールの詳細な使用方法は、[コンソール使用ガイド](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)を参照してください。
 
 ### Handled Exception Log API仕様
 

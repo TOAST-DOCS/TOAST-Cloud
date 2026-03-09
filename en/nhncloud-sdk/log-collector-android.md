@@ -152,7 +152,7 @@ NhnCloudLogger.initialize(configuration);
 
 For Android platforms, exceptions from a try/catch sentence can be sent by using Handled Exception API of NHN Cloud Logger.
 Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
-For more usage details on Log & Cash Console, see [Console User Guide](http://nhncloud.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
+For more usage details on Log & Cash Console, see [Console User Guide](/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/).
 
 ### Specification for Handled Exception Log API
 
