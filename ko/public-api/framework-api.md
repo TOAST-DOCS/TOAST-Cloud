@@ -3502,6 +3502,7 @@ IP ACL 설정을 조회하는 API입니다.
     "authId": "authId",
     "uuid": "uuid",
     "tokenExpiryPeriod": 0,
+    "tokenFormatCode" : "OPAQUE",
     "lastUsedDatetime": "2000-01-23T04:56:07.000+00:00",
     "reIssueDatetime": "2000-01-23T04:56:07.000+00:00",
     "regDatetime": "2000-01-23T04:56:07.000+00:00",
@@ -3534,6 +3535,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   reIssueDatetime | Date| No | 재생성 일시  |
 |   regDatetime | Date| No | 생성 일시  |
 |   tokenExpiryPeriod | Long| No | 토큰 만료 주기(초 단위)  |
+|   tokenFormatCode | String | No | 토큰 포맷 코드(OPAQUE, JWT)  |
 |   lastTokenUsedDatetime | Long| No | 토큰으로 인증/인가한 마지막 일시              |
 |   validTokenCount | Long| No | 유효한 토큰 개수                       |
 
@@ -3615,7 +3617,8 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 기간<br>초 단위이며, 기본값은 하루 |
+|   tokenFormatCode | String | No | 토큰 포맷 코드<br>OPAQUE와 JWT 포맷을 제공하며, 현재 JWT 포맷 토큰은 EasyQueue 서비스에서만 사용 가능함<br>기본값은 QPAQUE |
+|   tokenExpiryPeriod | Long| No | 토큰 만료 기간<br>초 단위이며, OPAQUE 포맷 토큰일 경우 기본값은 하루이고, JWT 토큰은 1시간<br>OPAQUE 포맷 토큰은 최소 1분, 최대 하루까지 유효한 토큰을 생성 가능하고, JWT 포맷 토큰은 최소 1분, 최대 1시간까지 유효한 토큰을 생성 가능함 |
 
 
 ##### 응답 본문
@@ -3631,7 +3634,8 @@ IP ACL 설정을 조회하는 API입니다.
     "userAccessKeyID": "userAccessKeyID",
     "secretAccessKey": "secretAccessKey",
     "authId": "authId",
-    "tokenExpiryPeriod": 0
+    "tokenExpiryPeriod": 0,
+    "tokenFormatCode": "OPAQUE"
   }
 }
 ```
@@ -3651,8 +3655,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
 |   userAccessKeyID | String| No | User Access Key ID  |
 |   secretAccessKey | String| No | 비밀키 |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 기간(초 단위) |
-
+|   tokenExpiryPeriod | Long| No | 토큰 만료 기간(초 단위)
+|   tokenFormatCode | String | No | 토큰 포맷 코드(OPAQUE, JWT) |
 
 <a id="프로젝트-앱키-삭제"></a>
 #### 프로젝트 앱키 삭제
@@ -3752,7 +3756,9 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}"
 
-멤버의 User Access Key ID 상태를 변경하는 API입니다.
+멤버의 User Access Key ID 상태를 변경하는 API입니다.<br>
+OPAQUE 토큰용 User Access Key ID을 중지시키면 OPAQUE 토큰도 같이 만료되며, <br>
+JWT 토큰용 User Access Key ID은 중지해도 JWT 토큰이 만료되지 않습니다.
 
 ##### 필요 권한
 자신의 User Access Key ID만 수정 가능
@@ -3833,7 +3839,7 @@ User Access Key ID를 삭제하는 API입니다.
 
 > GET "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
 
-User Access Key ID로 발급한 토큰 목록을 조회하는 API입니다.
+User Access Key ID로 발급한 OPAQUE 토큰 목록을 조회하는 API입니다.
 
 ##### 필요 권한
 자신의 User Access Key ID로 발급한 토큰만 조회 가능
@@ -3896,7 +3902,8 @@ User Access Key ID로 발급한 토큰 목록을 조회하는 API입니다.
 
 > DELETE "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
 
-User Access Key ID로 발급한 토큰을 다건 만료시키는 API입니다.<br>
+User Access Key ID로 발급한 OPAQUE 토큰을 다건 만료시키는 API입니다.<br>
+JWT 토큰을 발급한 User Access Key ID로 요청해도 JWT 토큰은 만료되지 않습니다.<br>
 요청에서 토큰 ID와 토큰 목록이 모두 빈 상태면 해당 User Access Key ID로 발급된 모든 토큰이 만료됩니다.<br>
 토큰 ID와 토큰 목록이 모두 있으면 둘 모두가 일치하는 토큰만 삭제되며,<br>
 요청에 담긴 User Access Key ID의 주인이 아닌 다른 사용자가 호출 시 토큰이 만료되지 않습니다.

@@ -1,5 +1,13 @@
 ## NHN Cloud > Public API > 릴리스 노트
 
+### 2026. 03. 24.
+#### 신규 기능 추가
+
+- User Access Key 토큰
+    - JWT 토큰 추가
+- 프레임워크 API
+    - JWT 토큰을 발급받기 위한 User Access Key ID 발급, 조회 방법 추가
+
 ### 2025. 12. 23.
 #### 신규 기능 추가
 
