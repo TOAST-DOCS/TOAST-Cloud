@@ -5,9 +5,9 @@
 User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. Bearer 토큰은 토큰을 소유한 사용자라면 누구나 접근 권한을 부여 받는 보안 토큰의 한 종류로, 유효 기간을 설정할 수 있어 리소스를 안전하게 보호할 수 있습니다.
 User Access Key 토큰은 역할 기반 접근 제어 방식(ABAC, attribute-Based Access Control)으로 동작하여 토큰을 사용할 경우 NHN Cloud 계정 또는 IAM 계정에 부여된 역할 및 권한이 적용됩니다. 따라서 호출 가능한 API가 해당 계정의 역할 및 권한 범위 내로 제한됩니다. 또한 역할 상세 조건을 설정하여 정밀한 접근 제어가 가능합니다.
 
-NHN Cloud는 두 가지 타입의 토큰을 제공합니다:
+NHN Cloud는 두 가지 타입의 토큰을 제공합니다.
 - **Opaque 토큰**: 일반적인 NHN Cloud API 호출에 사용되는 기본 토큰 타입
-- **JWT 토큰**: 현재 EasyQueue 상품의 메시지 전송/수신 시애만 사용 가능한 토큰 타입
+- **JWT 토큰**: 현재 EasyQueue 서비스의 메시지 전송/수신 시에만 사용 가능한 토큰 타입
 
 ## User Access Key 토큰 발급 및 Public API 호출 개요
 
@@ -39,9 +39,9 @@ User Access Key 토큰을 발급하려면 먼저 User Access Key ID와 Secret Ac
 
 2) **+ User Access Key 생성**을 클릭합니다.<br>
 ![C_userAccessKey_1_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_ko.png)
-3. **User Access Key 생성** 모달 창에서 **토큰 타입**과 **토큰 유효 시간**을 설정한 뒤 **생성**을 클릭합니다.<br>
-    - **Opaque 토큰 (기본)**: **Opaque 타입 User Access Key ID와 Secret Access Key 생성**을 선택
-    - **JWT 토큰**: **JWT 타입 User Access Key ID와 Secret Access Key 생성**을 선택 (현재 EasyQueue 제품만 지원)<br>
+3) **User Access Key 생성** 모달 창에서 **토큰 타입**과 **토큰 유효 시간**을 설정한 뒤 **생성**을 클릭합니다.<br>
+    - **Opaque 토큰(기본)**: **Opaque 타입 User Access Key ID와 Secret Access Key 생성**을 선택
+    - **JWT 토큰**: **JWT 타입 User Access Key ID와 Secret Access Key 생성**을 선택(현재 EasyQueue 서비스만 지원)<br>
 ![C_userAccessKey_2_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_ko.png)
 
 4) **User Access Key 발급 완료** 모달 창에서 **Secret Access Key**를 복사한 뒤 **확인**을 클릭합니다.<br>
@@ -91,16 +91,17 @@ https://oauth.api.nhncloudservice.com/
 
 ### JWT 타입 토큰 발급 요청하기
 
-> **현재 EasyQueue 상품만 JWT 토큰을 사용할 수 있습니다.**
+!!! tip "알아두기"
+    현재 EasyQueue 서비스만 JWT 토큰을 사용할 수 있습니다.
 
 * 요청
 
   | 구분 | 이름 | 타입 | 필수 | 값                                     | 설명                                                                   |
   |---------------|------------- | ------------- | ------------- |-------------------------------------------|--------------------------|
   | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |                                                                        |
-  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 |
+  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey`를 Base64 인코딩한 결과를 `Basic` 뒤에 붙여서 사용 |
   | Request Body |  grant_type | String | Yes | client_credentials                        | <ul><li>토큰 발급 grant_type은 client_credentials만 제공되고 있음</li><li>발급 요청 시 `grand_type=client_credentials`와 같이 사용</li></ul> |
-  | Request Body |  scope | String | Yes | appKey:{appKey}                | <ul><li>서비스 활성화 후 발급받은 앱키</li><li>발급 요청 시 `scope=appKey:{appKey}`와 같이 사용</li></ul> |
+  | Request Body |  scope | String | Yes | appKey:{appKey}                | <ul><li>서비스 활성화 후 발급 받은 앱키</li><li>발급 요청 시 `scope=appKey:{appKey}`와 같이 사용</li></ul> |
 
 * 응답
 
@@ -123,7 +124,7 @@ https://oauth.api.nhncloudservice.com/
 
 
 !!! tip "참고"
-아래 Authorization에 있는 `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`는 `UserAccessKeyID:SecretAccessKey`를 base64 인코딩한 결과입니다.
+    아래 Authorization에 있는 `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`는 `UserAccessKeyID:SecretAccessKey`를 base64 인코딩한 결과입니다.
 
 * Opaque 타입 토큰
 
@@ -307,15 +308,16 @@ public class Oauth2Config {
 
 ## User Access Key 토큰 만료 요청하기
 > `POST /oauth2/token/revoke`
->
-> **JWT 토큰은 토큰 만료를 지원하지 않습니다.**
+
+!!! tip "알아두기"
+    JWT 토큰은 토큰 만료를 지원하지 않습니다.
 
 * 요청
 
   | 구분 | 이름 | 타입 | 필수 | 값 | 설명   |
   |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
   | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
-  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 |
+  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey`를 Base64 인코딩한 결과를 `Basic` 뒤에 붙여서 사용 |
   | Request Body |  token | String| Yes | access token    | <ul><li>발급 받은 토큰</li><li>만료 요청 시 `token=발급받은_토큰`과 같이 사용</li></ul>      |
 
 * 응답
@@ -381,8 +383,9 @@ X-NHN-Authorization: Bearer {Access Token}
     
 ## JWT Public Key 조회
 > `GET /oauth2/jwks`
->
-> JWT 토큰의 서명을 검증하기 위한 Public Key 목록을 조회합니다.
+
+!!! tip "알아두기"
+    JWT 토큰의 서명을 검증하기 위한 Public Key 목록을 조회합니다.
 
 * 응답
 
@@ -391,10 +394,10 @@ X-NHN-Authorization: Bearer {Access Token}
 | 이름 | 타입 | 필수 | 설명 |
 |------|------|------|------|
 | keys | Array | Yes | Public Key 목록 |
-| keys[].kty | String | Yes | Key Type (예: RSA) |
-| keys[].use | String | Yes | Public Key 사용 목적 (예: sig) |
+| keys[].kty | String | Yes | Key Type(예: RSA) |
+| keys[].use | String | Yes | Public Key 사용 목적(예: sig) |
 | keys[].kid | String | Yes | Key ID |
-| keys[].alg | String | Yes | 알고리즘 (예: RS256) |
+| keys[].alg | String | Yes | 알고리즘(예: RS256) |
 | keys[].n | String | Yes | RSA Public Key의 Modulus |
 | keys[].e | String | Yes | RSA Public Key의 Exponent |
 
