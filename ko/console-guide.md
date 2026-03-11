@@ -66,18 +66,25 @@ NHN Cloud Console은 아래와 같은 기능을 제공합니다.
 NHN Cloud 서비스를 안정적이고 효율적으로 이용하기 위해 필요한 정책을 설정하여 관리할 수 있습니다. 로그인 및 개인정보 등 보안 컴플라이언스 준수를 위한 조직의 공통된 정책을 수립하여 조직 내 멤버가 정책을 준수할 수 있도록 관리합니다.
 
 #### IP ACL 설정
-설정된 IP로 NHN Cloud 서비스를 이용할 수 있습니다.(적용 대상: 콘솔, [프레임워크 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/), [Notification Hub API](https://docs.nhncloud.com/ko/Notification/Notification%20Hub/ko/api-guide-v1x0/common-info/))
+IP ACL 설정에 등록된 IP에서만 NHN Cloud 서비스를 이용할 수 있습니다.
+콘솔 접속 및 User Access Key 토큰 인증 방식의 Public API 호출 시 IP ACL이 적용됩니다. [인증 방식 지원 현황 보기](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods/)
 Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
 
-1. 콘솔로 이동한 뒤 설정을 원하는 조직의 조직 관리 페이지에 접속합니다.
-2. 하위 메뉴에서 거버넌스 설정을 선택합니다.
+1. **콘솔**로 이동한 뒤 설정을 원하는 조직의 **조직 관리** 페이지에 접속합니다.
+2. 하위 탭 메뉴에서 **거버넌스 설정**을 선택합니다.
 3. 조직 거버넌스 설정의 **IP ACL 설정**에서 IP ACL을 설정하고 관리할 수 있습니다.
-    * 서비스 설정
+    * 서비스
         * 공통 설정: 모든 서비스에 동일하게 IP ACL을 설정할 수 있습니다.
         * 서비스별 설정: 각 서비스(Cloud, Contiple 등)별로 IP ACL을 설정할 수 있습니다.
-    * IP ACL
-        * 설정 안 함: 모든 IP(또는 IP 대역)에서 콘솔에 접근할 수 있습니다.
-        * 허용한 IP(또는 IP 대역)만 콘솔 접근: 입력한 IP(또는 IP 대역)에서만 콘솔에 접근할 수 있습니다. 접근을 허용할 IP 또는 IP 대역을 입력합니다.
+    * IP ACL 설정
+        * 설정 안 함: 모든 IP(또는 IP 대역)에서 콘솔 접근 및 API 호출이 허용됩니다.
+        * 허용한 IP 또는 서비스 게이트웨이만 접근 허용: 등록된 IP(또는 IP 대역)과 서비스 게이트웨이에서만 콘솔 접근 및 API 호출이 허용됩니다.
+            * IP/IP 대역: 허용할 IP 또는 IP 대역을 입력합니다.
+            * 서비스 게이트웨이: 서비스 게이트웨이 ID를 입력합니다.
+                * API Gateway 서비스 연결 및 NAT IP 고정이 설정된 서비스 게이트웨이인 경우에만 IP ACL이 적용됩니다.
+                * 서비스 게이트웨이 ID가 등록된 경우 해당 서비스 게이트웨이에 설정된 NAT IP를 조회하여 IP ACL에 적용됩니다.
+
+
 * 주의: 해외 접속 차단을 함께 설정하는 경우 IP ACL에 등록된 IP라도 접속 허용 국가에 포함되지 않으면 콘솔 접속이 제한될 수 있습니다.
 
 #### 해외 접속 차단 설정
