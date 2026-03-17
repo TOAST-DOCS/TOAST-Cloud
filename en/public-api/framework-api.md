@@ -3631,6 +3631,7 @@ Available to all members. No specific permissions required.
   "authentication": {
     "userAccessKeyID": "userAccessKeyID",
     "secretAccessKey": "secretAccessKey",
+    "authId": "authId",
     "tokenExpiryPeriod": 0,
     "tokenFormatCode": "OPAQUE"
   }

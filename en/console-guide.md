@@ -66,19 +66,25 @@ Services that can be enabled for each organization include the following:
 You can set and manage policies for stable and efficient use of NHN Cloud services. Set up a common organization policy for security compliance such as login and personal information, so that the members within the organization can comply with the policy.
 
 #### IP ACL Setting
-You can use NHN Cloud services with the set IPs (Applicable to: Console, [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/), [Notification Hub API](https://docs.nhncloud.com/en/Notification/Notification%20Hub/en/api-guide-v1x0/common-info/))
+NHN Cloud services are accessible only from IP addresses registered in the IP ACL settings.
+IP ACLs are applied to both console access and Public API calls using User Access Key tokens. [View Supported Authentication Methods](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods/)
 For Dooray! services, IP ACL can be set on the service's console screen.
 
-
-1. Go to the console and access the Organization Management page of the organization you want to set up.
-2. Select Governance Setting from the submenu.
+1. Go to **Console** and access the **Organization Management** page of the organization you want to set up.
+2. In the sub-tab menu, select **Governance Settings**.
 3. You can set and manage IP ACL under **Set IP ACL** in the Organization Governance Setting.
-    * Service setting
+    * Service
         * Common Settings: IP ACL can be set globally for all services.
         * Individual Settings for Each Service: IP ACL can be set for each service (Cloud, Contiple, etc.).
     * IP ACL
-        * Not Configured: The console can be accessed from any IPs (or IP range).
-        * Console Access Only from Allowed IPs (or IP range): The console can be accessed only from the IPs (or IP range) you entered. Enter the IP or IP range to allow access.
+        * Disabled: Console access and API calls are allowed from all IP addresses (or IP ranges).
+        * Allow registered IPs or service gateways only: Console access and API calls are allowed only from registered IP addresses (or IP ranges) and service gateways.
+            * IP/IP range: Enter an IP or IP range you want to allow.
+            * Service Gateway: Enter the Service Gateway ID.
+                * IP ACL is applied only to service gateways with API Gateway service connection and NAT IP fixed settings configured.
+                * If a service gateway ID is registered, the NAT IP configured for the service gateway is retrieved and applied to the IP ACL.
+
+
  * Caution: If you also set up overseas access block, even if an IP is registered in the IP ACL, access to the console can be restricted if it is not included in the access allowed countries.
 
 #### Overseas Access Block Settings
@@ -119,7 +125,7 @@ If you need to block overseas access, we provide the feature to make the console
 #### Set approval process management
 If you need an approval process when using a service, a feature to establish an approval process of the approver is provided for each service.
 
-* You can select **Not Set (Default)** in **Set approval process management.**
+* You can select Disabled/Enabled in **Set approval process management.**
 * If you select **Set** in Set approval process management, you can use the approval process provided by each service. 
 * Services that provide an approval process
     * Secure Key Manager 
@@ -133,7 +139,7 @@ When using the instance service, you can set instance name management rules.
 #### Set control of resource permissions and restriction on terminal access
 When NHN Cloud administrator need to view customer's resources (instance, etc.) information for operational purposes, such as responding to failures, users with project ADMIN/MEMBER permissions will be notified by email and the administrator can view the resource information in an isolated environment with enhanced security.
 
-* You can select Disable (Default) in the Set control of resource permissions and restriction on terminal access.
+* You can select Disabled/Enabled in the Set control of resource permissions and restriction on terminal access.
 * This setting limits the feature to view customer resources by NHN Cloud administrator, which may cause delays in response in emergency situations such as failures.
 
 #### Privacy Setting
@@ -141,8 +147,8 @@ The privacy setting feature is available if you need to protect your privacy.
 You can mask personal information that is exposed on the service, or if you need to download personal information, you can make it available only in a separate network environment. 
 
 * Privacy Setting
-    * Organization/Project > Manage Member > IAM Member > Download List
-        * If not set, any member who can download the IAM member list can download the member list.
+    * Organization/Project > Manage Member > IAM Account > Download List
+        * If not set, any member who can download the IAM account list can download the member list.
         *  If set up, the feature to download member lists is disabled and only exceptionally allowed IPs or IP bands can download member lists.
 
     * Organization > CloudTrail > Privacy
@@ -153,7 +159,7 @@ You can mask personal information that is exposed on the service, or if you need
 
 #### Login Security Setting
 
-* To strengthen the console access security of IAM members, **Login Security Setting** feature is provided.
+* To strengthen the console access security of IAM accounts, Login Security Setting feature is provided.
 * You can set it globally for all organization services (Cloud, Contiple, Dooray!, etc.), or set it differently for each service.
 ![console_guide_4_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_06_202303_en.png)
 
@@ -165,24 +171,24 @@ You can mask personal information that is exposed on the service, or if you need
 
 You can enable two-factor authentication by setting it as a required feature.
 
-* Service setting
+* Service
     * Common Settings: Set the two-factor authentication globally for all organization services.
     * Individual Settings for Each Service: You can set two-factor authentication differently for each service (Cloud, Contiple, Dooray!, etc.).
-* Two-factor Authentication setting
+* Two-factor Authentication
     * Not Configured: Users can log in by entering their ID and password without two-factor authentication.
     * Google OTP: After entering ID and password, users can log in by entering the One Time Password provided by the Google OTP app.
-    * Email: After entering ID and password, users can log in by clicking the **Verify** button sent to their email address for authentication.
-* Exclusion IP setting
+    * Email/Phone: After entering ID and password, users can log in by clicking the **Verify** button sent to their email address for authentication.
+* Exclusion IP
     * Not Configured: When logging in, users can log in after two-factor authentication from all IP ranges.
     * Configured: Users can log in without two-factor authentication when logging in from the configured IP or IP range.
 
-#### Security for Failed Logins
+#### Maximum Login Attempts
 
 You can adjust setting so that users can log in again after a certain period of time when they failed to log in repeatedly.
 
-* Service setting
-    * Common Setting: Set the two-factor authentication globally for all organization services. (Individual Settings for Each Service is not provided)
-* Failure Login Security setting
+* Service
+    * Common Setting: Applies the maximum login attempt settings uniformly across all organization services. (Individual Settings for Each Service is not provided)
+* Maximum login attempts
     * Not Configured: Users can continue to try to log in even if login fails.
     * Configured: If you enter the desired number of failures and lock time, if users fail to log in for the configured number of times, users will not be able to log in during the entered lock time.
 
@@ -190,20 +196,18 @@ You can adjust setting so that users can log in again after a certain period of 
 
 Depending on the login session setting, a login session will be maintained or expire automatically.
 After the login expires, the user must log in again to access the console.
-
-* Service setting
-    * Common Setting: Set the two-factor authentication globally for all organization services. (Individual Settings for Each Service is not provided)
+This setting is a common configuration that applies uniformly to the IAM console and does not support per-service configuration.
 * Login Session Count
     * Set the number of simultaneous logins with the same ID on multiple devices.
     * If this is set to 1, users cannot log in with the same ID on other devices such as PC or smartphone at the same time.
-    E.g.) PC - maintain login, Smartphone - automatically logged out
+    E.g., PC - maintain login, Smartphone - automatically logged out
 * Login Session Maintenance Time
     * Set the amount of time to maintain login without any action such as clicking.
     * If a user do not perform any actions such as clicking for a configured period of time, the user will be automatically logged out.
     * Setting it too long is not good for security, so please consider setting it to an appropriate value.
 
 #### Password Policy Settings
-* To set passwords for IAM members, the Password Policy Settings is provided.
+* To set passwords for IAM accounts, the Password Policy Settings is provided.
 * The password policy is set the same for all organization services (Cloud, Contiple, Dooray!, etc.).
 * Go to **IAM Governance Setting** \> **Password Policy Settings** to manage password policies.
     * Default Password Policy
@@ -219,13 +223,13 @@ After the login expires, the user must log in again to access the console.
             * Password Expiration: Choose whether to expire the password, and set the length of time it expires upon setup, and whether it can be extended upon expiration.
             * Restrict Password Reuse: Choose whether to restrict password reuse and set the number of reuse limits at setup by choosing between 1 and 3.
             * When to Apply Password Policy: Set when the password policy is applied by selecting **Apply on Password Change** or **Apply Immediately** .
-                * If **Apply on Password Change** is selected, the new policy applies when an IAM member changes the password.
-                * If **Apply Immediately** is selected, the policy applies immediately after the password is set, making it the new policy at the time of IAM member login.
+                * If **Apply on Password Change** is selected, the new policy applies when an IAM account changes the password.
+                * If **Apply Immediately** is selected, the policy applies immediately after the password is set, making it the new policy at the time of IAM account login.
 
 ### Project Common role Group Setting
 
 You can create and manage role groups for common use in projects belonging to your organization.
-The configured role groups can be used to grant roles in bulk by selecting NHN Cloud members and IAM members in the project's role group management.
+The configured role groups can be used to grant roles in bulk by selecting NHN Cloud accounts and IAM accounts in the project's role group management.
 
 1. After selecting Organization Setting, click the Project Common role Group Setting menu.
 2. Select **Add role Group** to add roles for each service.
@@ -308,24 +312,24 @@ However, if you delete the project without paying immediately, the bills used so
 
 ## Member Management
 
-Member management allows you to control per-user authentication (login) and authorization.
+Member management allows you to control per-user authentication (login) and role.
 You can manage members separately in projects and organizations.
-Members are classified into NHN Cloud members and IAM members.
+Members are classified into NHN Cloud accounts and IAM accounts.
 
-### Policy for NHN Cloud Members and IAM Members
+### Policy for NHN Cloud Accounts and IAM Accounts
 
-| Classification | [NHN Cloud](http://nhncloud.com) Members | IAM Members |
+| Classification | [NHN Cloud](http://nhncloud.com) Accounts | IAM Accounts |
 | --- | --- | --- |
-| Definition                    | - Members for organization management<br>- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud members even if their organizations are deleted. | - Members for the service use<br>- Members who do not consent to the Terms of Use <br>- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
+| Definition                    | - Members for organization management<br>- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud accounts even if their organizations are deleted. | - Members for the service use<br>- Members who do not consent to the Terms of Use <br>- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
 | Method of Member Registration | - Owner/Admin of an organization enters NHN Cloud ID for registration | - Owner/Admin of an organization enters unique ID for registration <br>- Register via SSO or API integration |
 | Member role              | - Manage organizations (Create/Modify organizations / Manage organization members / Manage organization services /Manage billing)<br>- Create projects<br>- Delete projects | - Use organization services                                 |
 | Console Access | - Access NHN Cloud console([https://console.nhncloud.com/](https://console.nhncloud.com/))<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.nhncloud.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) |
 
 ### Organization Members
 
-* roles that can be set are different for each organization service (Contiple, Dooray!, etc.).
-* Cloud service roles are as follows.
-* However, IAM members are granted the NONE role upon enrollment, and must be granted the required role through role settings after enrollment.
+* IAM accounts have different roles that can be configured for each organization service (e.g., Contiple).
+* The cloud service roles for NHN Cloud accounts and IAM accounts are as follows.
+* However, IAM accounts are granted the NONE role upon enrollment, and must be granted the required role through role settings after enrollment.
 
 #### Organization Management Roles
 
@@ -560,7 +564,7 @@ Service PERMISSION Role can enable or disable each service.
 ## Billing Management
 
 You can check the usage fee for NHN Cloud service and make payment.
-In the **View My Info > Manage Billing** menu, you can check the bill, expected payment amount, and usage information of the NHN Cloud member who registered a payment method.
+In the **View My Info > Manage Billing** menu, you can check the bill, expected payment amount, and usage information of the NHN Cloud account who registered a payment method.
 
 The following features are provided along with the billing details of the payment method for the month.
 
