@@ -13,6 +13,7 @@
 
 - Framework API
     - Added multilingual role description inquiry API
+    - Added API for `organization role group`
 - Partner Management API
     - Added APIs for metering inquiry, and metering deletion
 

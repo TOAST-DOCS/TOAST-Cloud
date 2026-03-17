@@ -98,6 +98,12 @@ When the Public API returns, the header part below is included in the response b
 | DELETE |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-삭제) | Delete a project role group |
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos](#프로젝트-역할-그룹-정보-수정) | Edit project role group information |
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#프로젝트-역할-그룹-역할-수정) | Modify project role group roles |
+| GET |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-전체-조회) | View all organization role groups |
+| GET |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}](#조직-역할-그룹-단건-조회) | View a single organization role group |
+| POST |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-생성) | Create an organization role group |
+| DELETE |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-삭제) | Delete an organization role group |
+| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos](#조직-역할-그룹-정보-수정) | Modify an organization role group information |
+| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles](#조직-역할-그룹-역할-수정) | Modify an organization role group's role |
 | PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-역할-수정) | Modify organization member roles |
 | PUT |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-역할-수정) | Modify project member roles |
 | GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-단건-조회) | View organization IAM members |
@@ -1978,6 +1984,290 @@ API to modify roles in the project role group.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
+
+<a id="조직-역할-그룹-전체-조회"></a>
+
+#### View All Organization Role Groups
+
+> GET "/v1/organizations/{org-id}/org-role-groups"
+
+An API to view all organization role groups.
+
+##### Required Permission
+
+`Organization.RoleGroup.List`
+
+##### Request Parameter
+
+| Category | name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID to be searched |
+| Query | descriptionLike | String | No | Description (view results containing that string) |
+| Query | roleGroupNameLike | String | No | Role group name (search for results containing that string) |
+| Query | limit | Integer | No | Number of views per page (default: 20, minimum: 1, maximum: 2,000) |
+| Query | page | Integer | No | target page (default: 1, minimum: 1) |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+  "roleGroups": [
+    {
+      "regDateTime": "2000-01-23T04:56:07.000+00:00",
+      "roleGroupType": "ORG_ROLE_GROUP",
+      "description": "description",
+      "roleGroupName": "roleGroupName",
+      "roleGroupId": "roleGroupId"
+    }
+  ]
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | --------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+| paging | [PagingResponse](#pagingresponse) | Yes | |
+| roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | List of role groups available in your organization |
+
+<a id="조직-역할-그룹-단건-조회"></a>
+
+#### View a Single Organization Role Group
+
+> GET "/v1/organizations/{org-id}/org-role-groups/{role-group-id}"
+
+An API to view an organization's role group.
+
+##### Required Permission
+
+`Organization.RoleGroup.Get`
+
+##### Request Parameter
+
+| Category | name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID to be searched |
+| Path | role-group-id | String | Yes | Organization role group ID |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "roleGroup": {
+    "regDateTime": "2000-01-23T04:56:07.000+00:00",
+    "roleGroupType": "ORG_ROLE_GROUP",
+    "roles": [
+      {
+        "regDateTime": "2000-01-23T04:56:07.000+00:00",
+        "roleApplyPolicyCode": "ALLOW",
+        "roleId": "roleId",
+        "roleName": "roleName",
+        "categoryKey": "categoryKey",
+        "description": "description",
+        "categoryTypeCode": "ROLE",
+        "conditions": [
+          {
+            "attributeId": "attributeId",
+            "attributeOperatorTypeCode": "ALLOW",
+            "attributeValues": [
+              "attributeValues",
+              "attributeValues"
+            ],
+            "attributeDescription": "attributeDescription",
+            "attributeName": "attributeName",
+            "attributeDataTypeCode": "BOOLEAN"
+          }
+        ]
+      }
+    ],
+    "description": "description",
+    "roleGroupName": "roleGroupName",
+    "roleGroupId": "roleGroupId"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | --------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+| roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | Role group with associated roles |
+
+<a id="조직-역할-그룹-생성"></a>
+
+#### Create Organization Role Group
+
+> POST "/v1/organizations/{org-id}/org-role-groups"
+
+An API to create a role group in the organization.
+
+##### Required Permission
+
+`Organization.RoleGroup.Create`
+
+##### Request Parameter
+
+| Category | Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID |
+| Request Body | Request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | Request |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+
+<a id="조직-역할-그룹-삭제"></a>
+
+#### Delete Organization Role Group
+
+> DELETE "/v1/organizations/{org-id}/org-role-groups"
+
+An API to delete organization role groups.
+
+##### Required Permission
+
+`Organization.RoleGroup.Delete`
+
+##### Request Parameter
+
+| Category | Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID |
+| Request Body | Request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | Request |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+
+<a id="조직-역할-그룹-정보-수정"></a>
+
+#### Modify Organization Role Group Information
+
+> PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos"
+
+An API to modify the name and description of an organization role group.
+
+##### Required Permission
+
+`Organization.RoleGroup.Update`
+
+##### Request Parameter
+
+| Category | name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID |
+| Path | role-group-id | String | Yes | Role group ID |
+| Request Body | Request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | Request |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [Common Response](#Response)| Yes | |
+
+
+<a id="조직-역할-그룹-역할-수정"></a>
+
+#### Modify an Organization Role Group's Role
+
+> PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles"
+
+An API to modify roles in an organization role group.
+
+##### Required Permission
+
+`Organization.RoleGroup.Update`
+
+##### Request Parameter
+
+| Category | name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID |
+| Path | role-group-id | String | Yes | Role group ID |
+| Request Body | request | UpdateRoleGroupRequest | Yes | Request |
+
+###### UpdateRoleGroupRequest
+
+| name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------ |
+| roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Yes | List of roles to assign to role group |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+
+
 <a id="조직-멤버-역할-수정"></a>
 #### Modify organization member roles
 
@@ -2034,7 +2324,7 @@ API to modify the roles of members who belong to this organization.
 
 > PUT "/v1/projects/{project-id}/members/{member-uuid}"
 
-API to change the role of a specified member in a project.
+API to modify the role of a specified member in a project.
 
 ##### Required permissions
 `Project.Member.Update`
