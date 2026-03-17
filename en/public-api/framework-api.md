@@ -3340,7 +3340,12 @@ Available to all members. No specific permissions required.
     "userAccessKeyID": "userAccessKeyID",
     "secretAccessKey": "secretAccessKey",
     "authId": "authId",
+<<<<<<< HEAD
     "tokenExpiryPeriod": 0
+=======
+    "tokenExpiryPeriod": 0,
+    "tokenFormatCode": "OPAQUE"
+>>>>>>> 92bc722c (Merge pull request #326 from jongmin31-31/beta)
   }
 }
 ```
