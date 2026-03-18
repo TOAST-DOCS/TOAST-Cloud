@@ -137,6 +137,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Data & Analytics | Log & Crash Search | Global |  |  |  |  |
 |  | DataFlow | Regional | O |  |  |  |
 |  | DataQuery | Regional | O |  |  |  |
+|  | EasyQueue | Regional | O | O |  |  |
 |  | Kafka Instance | Regional | O | O | O | O |
 | Dev Tools | Pipeline | Regional | O |  |  |  |
 |  | Deploy | Global |  |  |  |  |
