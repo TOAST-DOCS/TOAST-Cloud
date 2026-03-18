@@ -515,6 +515,9 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Log & Crash Search | ADMIN | Create, Read, Update, Delete for Log & Crash Search Service |
 | DataFlow | ADMIN | Create, Read, Update, Delete for DataFlow Service |
 | DataQuery | ADMIN | Create, Read, Update, Delete for DataQuery Service |
+| EasyQueue | ADMIN | Create, Read, Update, Delete and Send/Receive Messages EasyQueue Service |
+| EasyQueue | CLIENT | Read EasyQueue Service, Send/Receive Messages |
+| EasyQueue | VIEWER | EasyQueue Service Read |
 | Pipeline | ADMIN | Create, Read, Update, Delete for Pipeline Service |
 | Deploy | ADMIN | Create, Read, Update, Delete for Deploy Service |
 | Deploy | VIEWER | Read for Deploy Service |
