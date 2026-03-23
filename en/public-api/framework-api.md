@@ -98,6 +98,12 @@ When the Public API returns, the header part below is included in the response b
 | DELETE |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-삭제) | Delete a project role group |
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos](#프로젝트-역할-그룹-정보-수정) | Edit project role group information |
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#프로젝트-역할-그룹-역할-수정) | Modify project role group roles |
+| GET |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-전체-조회) | View all organization role groups |
+| GET |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}](#조직-역할-그룹-단건-조회) | View a single organization role group |
+| POST |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-생성) | Create an organization role group |
+| DELETE |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-삭제) | Delete an organization role group |
+| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos](#조직-역할-그룹-정보-수정) | Modify an organization role group information |
+| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles](#조직-역할-그룹-역할-수정) | Modify an organization role group's role |
 | PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-역할-수정) | Modify organization member roles |
 | PUT |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-역할-수정) | Modify project member roles |
 | GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-단건-조회) | View organization IAM members |
@@ -1978,6 +1984,290 @@ API to modify roles in the project role group.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
+
+<a id="조직-역할-그룹-전체-조회"></a>
+
+#### View All Organization Role Groups
+
+> GET "/v1/organizations/{org-id}/org-role-groups"
+
+An API to view all organization role groups.
+
+##### Required Permission
+
+`Organization.RoleGroup.List`
+
+##### Request Parameter
+
+| Category | name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID to be searched |
+| Query | descriptionLike | String | No | Description (view results containing that string) |
+| Query | roleGroupNameLike | String | No | Role group name (search for results containing that string) |
+| Query | limit | Integer | No | Number of views per page (default: 20, minimum: 1, maximum: 2,000) |
+| Query | page | Integer | No | target page (default: 1, minimum: 1) |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 0,
+    "page": 6,
+    "totalCount": 1
+  },
+  "roleGroups": [
+    {
+      "regDateTime": "2000-01-23T04:56:07.000+00:00",
+      "roleGroupType": "ORG_ROLE_GROUP",
+      "description": "description",
+      "roleGroupName": "roleGroupName",
+      "roleGroupId": "roleGroupId"
+    }
+  ]
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | --------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+| paging | [PagingResponse](#pagingresponse) | Yes | |
+| roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | List of role groups available in your organization |
+
+<a id="조직-역할-그룹-단건-조회"></a>
+
+#### View a Single Organization Role Group
+
+> GET "/v1/organizations/{org-id}/org-role-groups/{role-group-id}"
+
+An API to view an organization's role group.
+
+##### Required Permission
+
+`Organization.RoleGroup.Get`
+
+##### Request Parameter
+
+| Category | name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID to be searched |
+| Path | role-group-id | String | Yes | Organization role group ID |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "roleGroup": {
+    "regDateTime": "2000-01-23T04:56:07.000+00:00",
+    "roleGroupType": "ORG_ROLE_GROUP",
+    "roles": [
+      {
+        "regDateTime": "2000-01-23T04:56:07.000+00:00",
+        "roleApplyPolicyCode": "ALLOW",
+        "roleId": "roleId",
+        "roleName": "roleName",
+        "categoryKey": "categoryKey",
+        "description": "description",
+        "categoryTypeCode": "ROLE",
+        "conditions": [
+          {
+            "attributeId": "attributeId",
+            "attributeOperatorTypeCode": "ALLOW",
+            "attributeValues": [
+              "attributeValues",
+              "attributeValues"
+            ],
+            "attributeDescription": "attributeDescription",
+            "attributeName": "attributeName",
+            "attributeDataTypeCode": "BOOLEAN"
+          }
+        ]
+      }
+    ],
+    "description": "description",
+    "roleGroupName": "roleGroupName",
+    "roleGroupId": "roleGroupId"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | --------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+| roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | Role group with associated roles |
+
+<a id="조직-역할-그룹-생성"></a>
+
+#### Create Organization Role Group
+
+> POST "/v1/organizations/{org-id}/org-role-groups"
+
+An API to create a role group in the organization.
+
+##### Required Permission
+
+`Organization.RoleGroup.Create`
+
+##### Request Parameter
+
+| Category | Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID |
+| Request Body | Request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | Request |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+
+<a id="조직-역할-그룹-삭제"></a>
+
+#### Delete Organization Role Group
+
+> DELETE "/v1/organizations/{org-id}/org-role-groups"
+
+An API to delete organization role groups.
+
+##### Required Permission
+
+`Organization.RoleGroup.Delete`
+
+##### Request Parameter
+
+| Category | Name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID |
+| Request Body | Request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | Request |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+
+<a id="조직-역할-그룹-정보-수정"></a>
+
+#### Modify Organization Role Group Information
+
+> PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos"
+
+An API to modify the name and description of an organization role group.
+
+##### Required Permission
+
+`Organization.RoleGroup.Update`
+
+##### Request Parameter
+
+| Category | name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID |
+| Path | role-group-id | String | Yes | Role group ID |
+| Request Body | Request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | Request |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [Common Response](#Response)| Yes | |
+
+
+<a id="조직-역할-그룹-역할-수정"></a>
+
+#### Modify an Organization Role Group's Role
+
+> PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles"
+
+An API to modify roles in an organization role group.
+
+##### Required Permission
+
+`Organization.RoleGroup.Update`
+
+##### Request Parameter
+
+| Category | name | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Path | org-id | String | Yes | Organization ID |
+| Path | role-group-id | String | Yes | Role group ID |
+| Request Body | request | UpdateRoleGroupRequest | Yes | Request |
+
+###### UpdateRoleGroupRequest
+
+| name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------ |
+| roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Yes | List of roles to assign to role group |
+
+##### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  }
+}
+```
+
+###### Response
+
+| Name | Type | Required | Description |
+| ------------ | ------------- | ----------- | ------------ |
+| header | [Common Response](#Response) | Yes | |
+
+
 <a id="조직-멤버-역할-수정"></a>
 #### Modify organization member roles
 
@@ -2034,7 +2324,7 @@ API to modify the roles of members who belong to this organization.
 
 > PUT "/v1/projects/{project-id}/members/{member-uuid}"
 
-API to change the role of a specified member in a project.
+API to modify the role of a specified member in a project.
 
 ##### Required permissions
 `Project.Member.Update`
@@ -3124,12 +3414,12 @@ Available to all members. No specific permissions required.
 |   usageAggregationUnitCode | String| No | Usage aggregation units<br>RESOURCE_ID, COUNTER_NAME |
 
 
-<a id="프로젝트-AppKey-조회"></a>
-#### Get Project AppKey
+<a id="프로젝트-Integrated-AppKey-조회"></a>
+#### Get Project Integrated AppKey
 
 > GET "/v1/authentications/projects/{project-id}/project-appkeys"
 
-API to get a list of project AppKeys being used by the project.
+API to get a list of project integrated AppKeys being used by the project.
 
 ##### Required permissions
 `Project.ProjectAppKey.List`
@@ -3168,14 +3458,14 @@ API to get a list of project AppKeys being used by the project.
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
 |   header | [Common response](#Response)| Yes |
-|   authenticationList | List<ProjectAppKeyResponse>| No | Project AppKey List |
+|   authenticationList | List<ProjectAppKeyResponse>| No | Project integrated AppKey List |
 
 ###### ProjectAppKeyResponse
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
 |   authId | String| No | Internally managed authentication method ID  |
-|   appKey | String| No | Project AppKey exposed to the console  |
+|   appKey | String| No | Project integrated AppKey exposed to the console  |
 |   authStatus | String| No | Authentication status codes (STABLE, STOP, BLOCKED) |
 |   projectId | String| No | Project ID |
 |   lastUsedDatetime | Date| No | Date of last use  |
@@ -3243,12 +3533,13 @@ Available to all members. No specific permissions required.
 |   reIssueDatetime | Date| No | Regeneration time  |
 |   regDatetime | Date| No | Date and time of creation  |
 |   tokenExpiryPeriod | Long| No | Token expiration cycle (in seconds)  |
+|   tokenFormatCode | String | No | Token format code (OPAQUE, JWT)  |
 |   lastTokenUsedDatetime | Long| No | Last time you authenticated/authorized with a token              |
 |   validTokenCount | Long| No | Number of valid tokens                      |
 
 
-<a id="프로젝트-AppKey-등록"></a>
-#### Register a project AppKey
+<a id="Project-Integrated-AppKey-Registration"></a>
+#### Register a integrated project AppKey
 
 > POST "/v1/authentications/projects/{project-id}/project-appkeys"
 
@@ -3269,7 +3560,7 @@ API to generate an AppKey for use in your project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   appkeyAlias | String | Yes   | Project AppKey aliases<br>100-character limit |
+|   appkeyAlias | String | Yes   | Project integrated AppKey aliases<br>100-character limit |
 
 
 ##### Response Body
@@ -3301,7 +3592,7 @@ API to generate an AppKey for use in your project.
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
 |   authId | String| No | Internally managed authentication method ID  |
-|   appKey | String| No | Project AppKey |
+|   appKey | String| No | Project integrated AppKey |
 
 <a id="User-Access-Key-ID-등록"></a>
 #### Register a User Access Key ID
@@ -3324,7 +3615,8 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   tokenExpiryPeriod | Long| No | Token expiration period<br>seconds, with a default of |
+|   tokenFormatCode | String | No | Token format code<br>Supports OPAQUE and JWT formats. Currently, JWT format tokens are available only in the EasyQueue service.<br>Default value is OPAQUE |
+|   tokenExpiryPeriod | Long| No | Token expiry period<br>Specified in seconds. For OPAQUE format tokens, the default is one day; for JWT tokens, the default is one hour.<br>OPAQUE format tokens can be issued with a validity period of at least one minute and up to one day. JWT format tokens can be issued with a validity period of at least one minute and up to one hour. |
 
 
 ##### Response Body
@@ -3340,12 +3632,8 @@ Available to all members. No specific permissions required.
     "userAccessKeyID": "userAccessKeyID",
     "secretAccessKey": "secretAccessKey",
     "authId": "authId",
-<<<<<<< HEAD
-    "tokenExpiryPeriod": 0
-=======
     "tokenExpiryPeriod": 0,
     "tokenFormatCode": "OPAQUE"
->>>>>>> 92bc722c (Merge pull request #326 from jongmin31-31/beta)
   }
 }
 ```
@@ -3366,10 +3654,11 @@ Available to all members. No specific permissions required.
 |   userAccessKeyID | String| No | User Access Key ID  |
 |   secretAccessKey | String| No | Secret key |
 |   tokenExpiryPeriod | Long| No | Token expiration period (in seconds) |
+|   tokenFormatCode | String | No | Token format code (OPAQUE, JWT) |
 
 
-<a id="프로젝트-AppKey-삭제"></a>
-#### Delete a project AppKey
+<a id="Project-AppKey-Deletion"></a>
+#### Delete a project integrated AppKey
 
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
 
@@ -3385,7 +3674,7 @@ API to delete a project AppKey.
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Path | project-id | String| Yes | Target project ID |
-|  Path |app-key | String| Yes | Project AppKey to delete | 
+|  Path |app-key | String| Yes | Project integrated AppKey to delete | 
 
 
 ##### Response Body
@@ -3466,7 +3755,8 @@ Can only reissue the secret key for the user's own User Access Key ID
 
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}"
 
-API to change the state of a member's User Access Key ID.
+API to change the state of a member's User Access Key ID.<br>
+If you deactivate the User Access Key ID for OPAQUE tokens, the OPAQUE tokens also expire. However, deactivating the User Access Key ID for JWT tokens does not expire the JWT tokens.
 
 ##### Required Permissions
 Can only modify the user's own User Access Key ID
@@ -3483,8 +3773,8 @@ Can only modify the user's own User Access Key ID
 ###### UpdateUserAccessKeyStatusRequest
 
 | Name | Type | Required | Description |   
-|------------ | ------------- | ------------- | ------------ |
-|   String | String| Yes | Project AppKey state to change (STOP: Stop, STABLE: Enable) |
+|----------- | ------------- | ------------- | ------------ |
+| String | String| Yes | State to change (STOP: Stop, STABLE: Enable) |
 
 
 ##### Response Body
@@ -3547,7 +3837,7 @@ Can only delete the user's own User Access Key ID
 
 > GET "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
 
-API to get a list of tokens issued with a User Access Key ID.
+API to get a list of OPAQUE tokens issued with a User Access Key ID.
 
 ##### Required Permissions
 Only tokens issued with your own User Access Key ID can be viewed
@@ -3610,10 +3900,10 @@ Only tokens issued with your own User Access Key ID can be viewed
 
 > DELETE "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
 
-API to expire multiple tokens issued with a User Access Key ID.<br>
+API to expire multiple OPAQUE tokens issued with a User Access Key ID.<br>
+Even if you make a request using the User Access Key ID that issued the JWT tokens, the JWT tokens do not expire.<br>
 If both the token ID and token list are empty in the request, all tokens issued to that User Access Key ID will expire.<br>
-If you have both a token ID and a list of tokens, only tokens that match both are deleted,<br>
-Tokens do not expire when invoked by a user other than the owner of the User Access Key ID in the request.
+If you have both a token ID and a list of tokens, only tokens that match both are deleted. Tokens do not expire when a request is made by a user other than the owner of the User Access Key ID in the request.
 
 ##### Required Permissions
 Only tokens issued with your own User Access Key ID can expire
@@ -4440,13 +4730,13 @@ Available to all members. No specific permissions required.
 | 22013 | Error when attempting to change the organization OWNER's role                                                        | You can't change roles for organization owners                                |
 | 22016 | Errors that occur when an organization doesn't exist                                                              | Make sure you're requesting with the orgId of an existing organization                              |
 | 23005 | Errors that occur when an organization does not exist for an organization ID                                                   | Contact a representative                                             |
-| 30015 | Error when exceeding the limit on the number of generated project AppKeys <br> Project AppKey API - The number of project AppKeys generated `by Generate Project AppKey`is 3, and an error occurs if more than 3 are generated. | Delete an unused project AppKey and retry                               |
+| 30015 | Error when exceeding the limit on the number of generated project integrated AppKeys <br> Project integrated AppKey API - The number of project integrated AppKeys generated `by Generate Project AppKey`is 3, and an error occurs if more than 3 are generated. | Delete an unused project integrated AppKey and retry                               |
 | 40017 | Errors that occur when a project doesn't exist                                                           | Make an API request for an existing project                                   |
 | 40028<br>13003 | Errors that occur when a project doesn't exist (created and then deleted)                                              | Make an API request for an existing project                                   |
 | 40054 | Error when activating a service, if a service that should be activated first is not activated                               | Handle activating services that need to be activated first                               |
 | 40057 | When disabling a service, an error occurs if a service that should be disabled first is not disabled                            | Handle disabling services that should be disabled first                              |
 | 50007 | Invalid members, errors that occur<br>(Members that don't exist, are dormant, or are withdrawn are not valid)<br>Organization creation API - When making API calls, if the uuid is invalid | Modify with the UUID of a valid member                                 |
-| 60003 | Errors that occur when there is no data in the DB<br>Error when there are no AppKeys to delete in Project `AppKey` API - `Delete Project AppKeys`  | 1) Contact a representative <br>2) Set the existing AppKey to the value of the AppKey to be deleted  |
+| 60003 | Errors that occur when there is no data in the DB<br>Error when there are no integrated AppKeys to delete in Project `AppKey` API - `Delete Project Integrated AppKeys`  | 1) Contact a representative <br>2) Set the existing AppKey to the value of the AppKey to be deleted  |
 | 62004 | Error when creating a role group if a role group with the same name exists                                           | Change to a non-duplicate name                                         |
 | 62008 | Role group ID does not exist when editing, deleting, and adding/deleting roles to a role group                            | Change to use an existing role group ID                                |
 | 62009 | Occurs if the role is an invalid role when creating a role group                                                   | Change to use a valid role                                       |
