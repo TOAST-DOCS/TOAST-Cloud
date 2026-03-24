@@ -49,8 +49,12 @@ Check the API authentication methods supported by the service you intend to use.
 | **Storage**             | Block Storage                                  |                    | O       |                 |        |                |
 |                         | NAS                                            |                    | O       |                 |        |                |
 |                         | Object Storage<span style="color:red">*</span> |                    | O       |                 |        |                |
-| **Database**            | RDS for MySQL                                  |                    |         | O               | O      | O              |
-|                         | RDS for MariaDB                                |                    |         | O               | O      | O              |
+| **Database**            | RDS for MySQL API v2.0                         |                    |         |                 | O      | O              |
+|                         | RDS for MySQL API v3.0                         |                    |         | O               |        |                |
+|                         | RDS for MySQL API v2.0                         | O                  |         |                 |        |                |
+|                         | RDS for MariaDB API v2.0                       |                    |         |                 | O      | O              |
+|                         | RDS for MariaDB API v3.0                       |                    |         | O               |        |                |
+|                         | RDS for MariaDB API v4.0                       | O                  |         |                 |        |                |
 |                         | RDS for PostgreSQL                             | O                  |         |                 |        |                |
 | **Monitoring**          | Service Monitoring                             |                    |         |                 | O      |                |
 | **Game**                | Leaderboard                                    |                    |         |                 | O      |                |
@@ -61,6 +65,7 @@ Check the API authentication methods supported by the service you intend to use.
 |                         | Security Monitoring                            |                    |         |                 | O      |                |
 |                         | Secure Key Manager API v1.0                    |                    |         |                 | O      | O              |
 |                         | Secure Key Manager API v1.2                    |                    |         | O               | O      | O              |
+|                         | Secure Key Manager API v1.3                    | O                  |         |                 |        |                |
 |                         | Security Advisor                               |                    |         |                 | O      |                |
 | **Content Delivery**    | CDN                                            |                    |         |                 | O      | O              |
 |                         | Image Manager                                  |                    |         |                 | O      | O              |
@@ -70,8 +75,17 @@ Check the API authentication methods supported by the service you intend to use.
 |                         | RCS Bizmessage                                 |                    |         |                 | O      |                |
 |                         | Email                                          |                    |         |                 | O      |                |
 |                         | KakaoTalk Bizmessage                           |                    |         |                 | O      |                |
-| **AI Service**          | Face Recognition                               |                    |         |                 | O      | O              |
-|                         | OCR                                            |                    |         |                 | O      | O              |
+| **AI Service**          | Face Recognition API v1.0                      |                    |         |                 | O      | O              |
+|                         | Face Recognition API v2.0                      |                    |         |                 | O      | O              |
+|                         | Face Recognition API v2.1                      | O                  |         |                 | O      | O              | 
+|                         | OCR-General OCR API v1.0                       |                    |         |                 | O      | O              |
+|                         | OCR-General OCR API v1.1                       | O                  |         |                 |        |                |
+|                         | OCR-Document OCR API v1.0                      |                    |         |                 | O      | O              |
+|                         | OCR-Document OCR API v1.1                      | O                  |         |                 |        |                |
+|                         | OCR-Document OCR API v2.0                      |                    |         |                 | O      | O              |
+|                         | OCR-Document OCR API v2.1                      | O                  |         |                 |        |                |
+|                         | OCR-Document AI API v1.0                       |                    |         |                 | O      | O              |
+|                         | OCR-Document AI API v1.1                       | O                  |         |                 |        |                |
 |                         | Text to Speech                                 |                    |         |                 | O      | O              |
 |                         | Speech to Text                                 |                    |         |                 | O      | O              |
 | **Machine Learning**    | AI EasyMaker                                   | O                  |         |                 |        |                |
@@ -87,9 +101,10 @@ Check the API authentication methods supported by the service you intend to use.
 | **Dev Tools**           | Pipeline                                       |                    |         | O               |        |                |
 |                         | Deploy                                         |                    |         | O               | O      |                |
 | **Management**          | Certificate Manager API v1.0                   |                    |         |                 | O      |                |
-|                         | Certificate Manager API v1.1                   |                    |O        |                 |        |                |
+|                         | Certificate Manager API v1.1                   |                    | O       |                 |        |                |
 |                         | Certificate Manager API v1.2                   |                    |         |                 | O      |                |
 |                         | Certificate Manager API v1.3                   | O                  |         |                 |        |                |
+|                         | Private CA                                     | O                  |         |                 |        |                |
 | **Bill**                | e-Tax                                          |                    |         |                 | O      |                |
 | **Governance & Audit**  | CloudTrail                                     |                    |         | O               | O      |                |
 |                         | Resource Watcher                               |                    |         | O               | O      |                |
