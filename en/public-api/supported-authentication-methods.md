@@ -51,7 +51,7 @@ Check the API authentication methods supported by the service you intend to use.
 |                         | Object Storage<span style="color:red">*</span> |                    | O       |                 |        |                |
 | **Database**            | RDS for MySQL API v2.0                         |                    |         |                 | O      | O              |
 |                         | RDS for MySQL API v3.0                         |                    |         | O               |        |                |
-|                         | RDS for MySQL API v2.0                         | O                  |         |                 |        |                |
+|                         | RDS for MySQL API v4.0                         | O                  |         |                 |        |                |
 |                         | RDS for MariaDB API v2.0                       |                    |         |                 | O      | O              |
 |                         | RDS for MariaDB API v3.0                       |                    |         | O               |        |                |
 |                         | RDS for MariaDB API v4.0                       | O                  |         |                 |        |                |
