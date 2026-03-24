@@ -11,7 +11,7 @@ NHN Cloud users are allowed to select regions depending on the service area and 
 
 ## Location of TOAT Regions 
 NHN Cloud is expanding its regions to make its service globally available.  
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Region_guide_2021.png)
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_EN.png)
 
 ## NHN Cloud Regional Service 
 
@@ -26,128 +26,126 @@ All users are provided with the same features, policy, stability and usability, 
 
 **Globally/Regionally Available Services**
 
-| Category | Service Name | Global/Regional Service | Korea(Pangyo) Region | Korea(Pyeongchon) Region | Japan(Tokyo) Region | US(California) Region |
+| Category | Service Name | Global/Regional Service | Korea(Pangyo) Region | Korea(Pyeongchon) Region | Korea(Gwangju) Region | Japan(Tokyo) Region |
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
-| Compute | Instance | Regional | O | O | O | O |
-|  | Ephemeral Storage Instance | Regional | O | | O | | 
-|  | GPU Instance | Region | O |  |  |  |
-|  | Instance Template | Region | O | O | O | O |
-|  | Image | Region | O | O | O | O |
-|  | Image Builder  | Region | O | O |  |  |
-|  | Auto Scale | Region | O | O | O | O |
-|  | Virtual Desktop | Regional | O | O |  |  |
-|  | Cloud Functions | Regional | O |  |  |  |
-| Container | NHN Kubernetes Service(NKS) | Regional | O | O |  |  |
-|  | NHN Container Registry (NCR) | Regional | O | O |  |  |
-|  | NHN Container Service(NCS)  | Regional | O |  |  |  |
-| Network | VPC | Region | O | O | O | O |
-|  | NAT Instance | Regional | O | O |  |  |
-|  | Floating IP | Regional | O | O | O | O |
+| Compute | Instance | Regional | O | O | O | O | 
+|  | Ephemeral Storage Instance | Regional | | | | O |  
+|  | GPU Instance | Regional | O |  | O |  | 
+|  | Instance Template | Regional | O | O | O | O |
+|  | Image | Regional | O | O | O | O | O |
+|  | Image Builder  | Regional | O | O | O | |  
+|  | Auto Scale | Regional | O | O | O | O | 
+|  | Virtual Desktop | Regional | O | O |  |  | 
+|  | Cloud Functions | Regional | O |  |  |  | 
+| Container | NHN Kubernetes Service(NKS) | Regional | O | O | O |  |  
+|  | NHN Container Registry (NCR) | Regional | O | O | O |  |  
+|  | NHN Container Service(NCS)  | Regional | O |  | O |  |  
+| Network | VPC | Regional | O | O | O | O |
+|  | NAT Instance | Regional | O | O | O |  |  
+|  | Floating IP | Regional | O | O | O | O | 
 |  | Security Groups | Regional | O | O | O | O |
-|  | Network ACL | Regional | O | O |  |  |
-|  | Network Interface | Regional | O | O | O | O |
-|  | Flow Log | Regional | O | O |  |  |
-|  | Shared Load Balancer | Regional | O | O | O | O |
-|  | Dedicated Load Balancer | Regional | O | O | O | O |
-|  | NAT Instance | Regional |  | O |  |  |
-|  | Transit Hub | Regional | O | O |  |  |
-|  | Internet Gateway | Regional | O | O | O | O |
-|  | Peering Gateway | Regional | O | O | O | O |
-|  | Colocation Gateway | Regional | O | O |  |  |
-|  | NAT Gateway | Regional | O | O |  |  |
-|  | VPN Gateway(Site-to-Site VPN) | Regional |  | O |  |  |
-|  | Service Gateway | Regional | O | O |  |  |
-|  | Traffic Mirroring | Regional | O | O | | |
-|  | Private DNS | Regional | O | O | | |
+|  | Network ACL | Regional | O | O | O | |  
+|  | Network Interface | Regional | O | O | O | O | 
+|  | Flow Log | Regional | O | O |  |  | 
+|  | Shared Load Balancer | Regional | O | O | O | O | 
+|  | Dedicated Load Balancer | Regional | O | O | O | O | 
+|  | Transit Hub | Regional | O | O | O |  |  
+|  | Internet Gateway | Regional | O | O | O | O | 
+|  | Peering Gateway | Regional | O | O | O | O | 
+|  | Colocation Gateway | Regional | O | O | O |  | 
+|  | NAT Gateway | Regional | O | O | O |  | 
+|  | VPN Gateway(Site-to-Site VPN) | Regional | O | O | O |  | 
+|  | Service Gateway | Regional | O | O | O |  |  
+|  | Traffic Mirroring | Regional | O | O | O | | 
+|  | Private DNS | Regional | O | O | O | | 
 |  | DNS Plus | Global |  |  |  |  |
-|  | Direct Connect | Regional | O | O | | |
-| Storage | Block Storage | Regional | O | O | O | O |
-|  | NAS (offline) | Regional |  | O | O | O |
-|  | NAS | Regional | O | O |  |  |
+|  | Direct Connect | Regional | O | O | O |  | 
+| Storage | Block Storage | Regional | O | O | O | O | 
+|  | NAS (offline) | Regional |  | O |  | O | 
+|  | NAS | Regional | O | O | O |  |  
 |  | Object Storage | Regional | O | O | O | O |
-|  | Backup | Regional | O | O | O |  |
-|  | Storage Gateway | Regional | O | | | |
-|  | Data transporter | Regional | O | O |  |  |
-| Database | RDS for MySQL | Regional | O | O | O |  |
-|  | RDS for PostgreSQL  | Regional | O |  |  |  |
-|  | RDS for MariaDB | Regional | O |  |  |  |
-|  | RDS for MS-SQL | Regional | O |  |  |  |
-|  | EasyCache | Regional | O | O |  |  |
-|  | MS-SQL Instance | Regional | O | O | O | O |
+|  | Backup | Regional | O | O | O | O | 
+|  | Storage Gateway | Regional | O | | |  | 
+|  | Data transporter | Regional | O | O |  |  |   
+| Database | RDS for MySQL | Regional | O | O | O |  
+|  | RDS for PostgreSQL  | Regional | O |  |  |  |   
+|  | RDS for MariaDB | Regional | O |  |  |   | 
+|  | RDS for MS-SQL | Regional | O |  |  |   |
+|  | EasyCache | Regional | O | O |  |   |
+|  | MS-SQL Instance | Regional | O | O | O | O | 
 |  | MySQL Instance | Regional | O | O | O | O |
-|  | PostgreSQL Instance  | Regional | O | O | O | O |
-|  | CUBRID Instance  | Regional | O | O | O | O |
-|  | MariaDB Instance  | Regional | O | O | O | O |
-|  | Tibero Instance   | Regional | O | O | O | O |
+|  | PostgreSQL Instance | Regional | O | O | O | O |
+|  | CUBRID Instance  | Regional | O | O | O | O | 
+|  | MariaDB Instance  | Regional | O | O | O | O | 
+|  | Tibero Instance   | Regional | O | O | O | O | 
 |  | Redis Instance | Regional | O | O | O | O |
 | Monitoring | Service Monitoring | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
-| Hybrid & Private Cloud | NHN Cloud Private Deck | Regional | - | - | - | - |
-|  | NHN Cloud Private Station | Regional | - | - | - | - |
-|  | NHN Cloud Private Region | Regional | - | - | - | - |
-|  | NHN Hybrid Cloud | Regional | O |  |  |  |
-| Game | Gamebase | Global |  |  |  |  |
-|  | GameAnvil | Global | | | | |
-|  | GameStarter | Global | | | | |
-|  | Leaderboard | Global |  |  |  |  |
-|  | Launching | Global |  |  |  |  |
-|  | Smart Downloader | Global |  |  |  |  |
-| Security | NHN AppGuard | Global |  |  |  |  |
-|  | App Security Check | Regional | O |  |  |  |
-|  | Server Security Check | Regional | O | O |  |  |
-|  | Security Monitoring | Regional | O | O |  |  |
-|  | Basic Security | Regional | O | O |  |  |
-|  | CAPTCHA | Regional | O |  |  |  |
-|  | Web Firewall | Regional | O | O  |  |  |
-|  | Vaccine | Regional | O | O |  |  |
-|  | Secure Key Manager | Global |  |  |  |  |
-|  | Security Compliance | Global |  |  |  |  |
-|  | DDoS Guard | Regional | O | O |  |  |
-|  | SIEM | Global |  |  |  |  |
-|  | Webshell Threat Detector | Regional | O | O |  |  |
-|  | Security Advisor | Global |  |  |  |  |
-|  | Network Firewall | Regional | O | O |  |  |
-|  | NHN bastion | Regional | O | O |  |  |
-|  | Cloud Access | Regional | O | O |  |  |
-| Content Delivery | CDN | Global |  |  |  |  |
-|  | Image Manager | Regional | O |  |  |  |
-| Notification | Notification Hub | Global |  |  |  |  |
-|  | Push | Global |  |  |  |  |
-|  | SMS | Global |  |  |  |  |
-|  | RCS Bizmessage | Global |  |  |  |  |
-|  | Email | Global |  |  |  |  |
-|  | KakaoTalk Bizmessage | Global |  |  |  |  |
-| AI Service | Face Recognition | Global |  |  |  |  |
-|  | OCR | Global |  |  |  |  |
-|  | Text to Speech | Global |  |  |  |  |
-|  | Speech to Text | Global |  |  |  |  |
-| Machine Learning | Deep Learning Instance | Regional | O |  | | |
-|  | AI EasyMaker | Regional | O |  |  |  |
-| Application Service | ROLE | Global |  |  |  |  |
-|  | API Gateway | Regional | O | O |  |  |
-|  | RTCS | Global |  |  |  |  |
-|  | ShortURL | Global |  |  |  |  |
-|  | JEUS Instance | Regional | O | O | O | O |
-|  | WebtoB Instance | Regional | O | O | O | O |
-|  | Cloud Scheduler | Global |  |  |  |  |
-| Mobile Service | IAP | Global |  |  |  |  |
-| Search | Cloud Search | Regional | O |  |  |  |
-|  | Autocomplete | Regional | O |  |  |  |
-|  | Corporation Search | Regional | O |  |  |  |
-| Data & Analytics | Log & Crash Search | Global |  |  |  |  |
-|  | DataFlow | Regional | O |  |  |  |
-|  | DataQuery | Regional | O |  |  |  |
-|  | EasyQueue | Regional | O | O |  |  |
-|  | Kafka Instance | Regional | O | O | O | O |
-| Dev Tools | Pipeline | Regional | O |  |  |  |
-|  | Deploy | Global |  |  |  |  |
-| Management | Managed | Regional | O | O |  |  |
-|  | Support Plan |  Regional | O | O |  |  |
-|  | Certificate Manager | Global |  |  |  |  |
-|  | Private CA | Regional | O |  |  |  |
-| Bill | eTax | Regional | O |  |  |  |
-| Collaboration | Dooray! | Global |  |  |  |  |
-| Contact Center | Contiple | Global |  |  |  |  |
-| Governance & Audit | CloudTrail | Global |  |  |  |  |
+| Hybrid & Private Cloud | NHN Cloud Private Deck | Regional | - | - | - | - | 
+|  | NHN Cloud Private Station | Regional | - | - | - | - | 
+|  | NHN Cloud Private Region | Regional | - | - | - | - | 
+|  | NHN Hybrid Cloud | Regional | O |  |  |  | 
+| Game | Gamebase | Global |  |  |  |  | 
+|  | GameAnvil | Global |  |  |  |  | 
+|  | GameStarter | Global |  |  |  |  | 
+|  | Leaderboard | Global |  |  |  |  | 
+|  | Launching | Global |  |  |  |  | 
+|  | Smart Downloader | Global |  |  |  |  |  
+| Security | NHN AppGuard | Global |  |  |  |  |  
+|  | App Security Check | Regional | O |  |  |  | 
+|  | Server Security Check | Regional | O | O |  | |   
+|  | Security Monitoring | Regional | O | O | O |  | 
+|  | Basic Security | Regional | O | O |  |  | 
+|  | CAPTCHA | Regional | O |  |  |  |  | 
+|  | Web Firewall | Regional | O | O | O | | 
+|  | Vaccine | Regional | O | O |  |  | 
+|  | Secure Key Manager | Global |  |  |  |  |  
+|  | Security Compliance | Global |  |  |  |  | 
+|  | DDoS Guard | Regional | O | O |  |  | 
+|  | SIEM | Regional | O | O |  |  | 
+|  | Webshell Threat Detector | Regional | O | O |  |  | 
+|  | Security Advisor | Global |  |  |  |  | 
+|  | Network Firewall | Regional | O | O |  |  | 
+|  | NHN Bastion | Regional | O | O |  |  | 
+|  | Cloud Access | Regional | O | O |  |  | 
+| Content Delivery | CDN | Global |  |  |  |  |  
+|  | Image Manager | Regional | O |  |  |  |  
+| Notification | Notification Hub | Global |  |  |  |  | 
+|  | Push | Global |  |  |  |  | 
+|  | SMS | Global |  |  |  |  | 
+|  | RCS Bizmessage | Global |  |  |  |  |   
+|  | Email | Global |  |  |  |  | 
+|  | KakaoTalk Bizmessage | Global |  |  |  |  | 
+| AI Service | Face Recognition | Global |  |  |  |   | 
+|  | OCR | Global |  |  |  |  | 
+|  | Text to Speech | Global |  |  |  |  |   
+|  | Speech to Text | Global |  |  |  |  | 
+| Machine Learning | Deep Learning Instance | Regional | O |  | O | |  
+|  | AI EasyMaker | Regional | O |  | O |  |  
+| Application Service | ROLE | Global |  |  |  |  | 
+|  | API Gateway | Regional | O | O | O |  |  
+|  | RTCS | Global |  |  |  |  | 
+|  | ShortURL | Global |  |  |  |  | 
+|  | JEUS Instance | Regional | O | O |  | O | 
+|  | WebtoB Instance | Regional | O | O |  | O | 
+|  | Cloud Scheduler | Global |  |  |  |  |  
+| Mobile Service | IAP | Global |  |  |  |  | 
+| Search | Cloud Search | Regional | O |  |  |  | 
+|  | Autocomplete | Regional | O |  |  |   | 
+|  | Corporation Search | Regional | O |  |  |   | 
+| Data & Analytics | Log & Crash Search | Global |  |  |  |  | 
+|  | DataFlow | Regional | O |  | O |  |  
+|  | DataQuery | Regional | O |  | O |  |  
+|  | EasyQueue | Regional | O | O |  |  | 
+|  | Kafka Instance | Regional | O | O | O | O | 
+| Dev Tools | Pipeline | Regional | O |  | O |  |  
+|  | Deploy | Global |  |  |  |  | 
+| Management | Managed | Regional | O | O |  |  | 
+|  | Support Plan | Regional | O | O |  |  | 
+|  | Certificate Manager | Global |  |  |  |  |   
+|  | Private CA | Regional | O |  |  |  | 
+| Bill | eTax | Regional | O |  |  |  | 
+| Collaboration | Dooray! | Global |  |  |  |  | 
+| Contact Center | Contiple | Global |  |  |  |  | 
+| Governance & Audit | CloudTrail | Global |  |  |  |  | 
 |  | Resource Watcher | Global |  |  |  |  |
-
