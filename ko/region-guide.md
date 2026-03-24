@@ -12,7 +12,7 @@ NHN Cloud 유저는 서비스 지역과 목적에 따라 사용할 리전을 선
 
 ## NHN Cloud 리전 위치
 NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전을 확대하고 있습니다.
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Region_guide_2021.png)
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_KR.png)
 
 ## NHN Cloud 리전 서비스
 **리전 서비스**
@@ -26,126 +26,126 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 
 **글로벌/리전별 제공 서비스**
 
-| 분류 | 서비스명 | 글로벌/리전 서비스 | 한국(판교) 리전 | 한국(평촌) 리전 | 일본(도쿄) 리전 | 미국(캘리포니아) 리전 |
+| 분류 | 서비스명 | 글로벌/리전 서비스 | 한국(판교) 리전 | 한국(평촌) 리전 | 한국(광주) 리전 | 일본(도쿄) 리전 | 
 | --- | ---- | :--------: | :-------: | :-------: | :-------: | :----------: |
-| Compute | Instance | 리전 | O | O | O | O |
-|  | Ephemeral Storage Instance | 리전 | | | O | | 
-|  | GPU Instance | 리전 | O |  |  |  |
+| Compute | Instance | 리전 | O | O | O | O | 
+|  | Ephemeral Storage Instance | 리전 | | | | O |  
+|  | GPU Instance | 리전 | O |  | O |  | 
 |  | Instance Template | 리전 | O | O | O | O |
-|  | Image | 리전 | O | O | O | O |
-|  | Image Builder  | 리전 | O | O |  |  |
-|  | Auto Scale | 리전 | O | O | O | O |
-|  | Virtual Desktop | 리전 | O | O |  |  |
-|  | Cloud Functions | 리전 | O |  |  |  |
-| Container | NHN Kubernetes Service(NKS) | 리전 | O | O |  |  |
-|  | NHN Container Registry (NCR) | 리전 | O | O |  |  |
-|  | NHN Container Service(NCS)  | 리전 | O |  |  |  |
+|  | Image | 리전 | O | O | O | O | O |
+|  | Image Builder  | 리전 | O | O | O | |  
+|  | Auto Scale | 리전 | O | O | O | O | 
+|  | Virtual Desktop | 리전 | O | O |  |  | 
+|  | Cloud Functions | 리전 | O |  |  |  | 
+| Container | NHN Kubernetes Service(NKS) | 리전 | O | O | O |  |  
+|  | NHN Container Registry (NCR) | 리전 | O | O | O |  |  
+|  | NHN Container Service(NCS)  | 리전 | O |  | O |  |  
 | Network | VPC | 리전 | O | O | O | O |
-|  | NAT Instance | 리전 | O | O |  |  |
-|  | Floating IP | 리전 | O | O | O | O |
+|  | NAT Instance | 리전 | O | O | O |  |  
+|  | Floating IP | 리전 | O | O | O | O | 
 |  | Security Groups | 리전 | O | O | O | O |
-|  | Network ACL | 리전 | O | O |  |  |
-|  | Network Interface | 리전 | O | O | O | O |
-|  | Flow Log | 리전 | O | O |  |  |
-|  | 일반 Load Balancer | 리전 | O | O | O | O |
-|  | 전용 Load Balancer | 리전 | O | O | O | O |
-|  | Transit Hub | 리전 | O | O |  |  |
-|  | Internet Gateway | 리전 | O | O | O | O |
-|  | Peering Gateway | 리전 | O | O | O | O |
-|  | Colocation Gateway | 리전 | O | O |  |  |
-|  | NAT Gateway | 리전 | O | O |  |  |
-|  | VPN Gateway(Site-to-Site VPN) | 리전 |  | O |  |  |
-|  | Service Gateway | 리전 | O | O |  |  |
-|  | Traffic Mirroring | 리전 | O | O | | |
-|  | Private DNS | 리전 | O | O | | |
+|  | Network ACL | 리전 | O | O | O | |  
+|  | Network Interface | 리전 | O | O | O | O | 
+|  | Flow Log | 리전 | O | O |  |  | 
+|  | 일반 Load Balancer | 리전 | O | O | O | O | 
+|  | 전용 Load Balancer | 리전 | O | O | O | O | 
+|  | Transit Hub | 리전 | O | O | O |  |  
+|  | Internet Gateway | 리전 | O | O | O | O | 
+|  | Peering Gateway | 리전 | O | O | O | O | 
+|  | Colocation Gateway | 리전 | O | O | O |  | 
+|  | NAT Gateway | 리전 | O | O | O |  | 
+|  | VPN Gateway(Site-to-Site VPN) | 리전 | O | O | O |  | 
+|  | Service Gateway | 리전 | O | O | O |  |  
+|  | Traffic Mirroring | 리전 | O | O | O | | 
+|  | Private DNS | 리전 | O | O | O | | 
 |  | DNS Plus | 글로벌 |  |  |  |  |
-|  | Direct Connect | 리전 | O | O | | |
-| Storage | Block Storage | 리전 | O | O | O | O |
-|  | NAS (offline) | 리전 |  | O | O | O |
-|  | NAS | 리전 | O | O |  |  |
+|  | Direct Connect | 리전 | O | O | O |  | 
+| Storage | Block Storage | 리전 | O | O | O | O | 
+|  | NAS (offline) | 리전 |  | O |  | O | 
+|  | NAS | 리전 | O | O | O |  |  
 |  | Object Storage | 리전 | O | O | O | O |
-|  | Backup | 리전 | O | O | O |  |
-|  | Storage Gateway | 리전 | O | | | |
-|  | Data transporter | 리전 | O | O |  |  |
-| Database | RDS for MySQL | 리전 | O | O | O |  | 
-|  | RDS for PostgreSQL  | 리전 | O |  |  |  |
-|  | RDS for MariaDB | 리전 | O |  |  |  | 
-|  | RDS for MS-SQL | 리전 | O |  |  |  | 
-|  | EasyCache | 리전 | O | O |  |  | 
+|  | Backup | 리전 | O | O | O | O | 
+|  | Storage Gateway | 리전 | O | | |  | 
+|  | Data transporter | 리전 | O | O |  |  |   
+| Database | RDS for MySQL | 리전 | O | O | O |  
+|  | RDS for PostgreSQL  | 리전 | O |  |  |  |   
+|  | RDS for MariaDB | 리전 | O |  |  |   | 
+|  | RDS for MS-SQL | 리전 | O |  |  |   |
+|  | EasyCache | 리전 | O | O |  |   |
 |  | MS-SQL Instance | 리전 | O | O | O | O | 
-|  | MySQL Instance | 리전 | O | O | O | O | 
-|  | PostgreSQL Instance | 리전 | O | O | O | O | 
+|  | MySQL Instance | 리전 | O | O | O | O |
+|  | PostgreSQL Instance | 리전 | O | O | O | O |
 |  | CUBRID Instance  | 리전 | O | O | O | O | 
 |  | MariaDB Instance  | 리전 | O | O | O | O | 
 |  | Tibero Instance   | 리전 | O | O | O | O | 
-|  | Redis Instance | 리전 | O | O | O | O | 
+|  | Redis Instance | 리전 | O | O | O | O |
 | Monitoring | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Cloud Monitoring | 글로벌 |  |  |  |  |
-| Hybrid & Private Cloud | NHN Cloud Private Deck | 리전 | - | - | - | - |
-|  | NHN Cloud Private Station | 리전 | - | - | - | - |
-|  | NHN Cloud Private Region | 리전 | - | - | - | - |
-|  | NHN Hybrid Cloud | 리전 | O |  |  |  |
-| Game | Gamebase | 글로벌 |  |  |  |  |
-|  | GameAnvil | 글로벌 |  |  |  |  |
-|  | GameStarter | 글로벌 |  |  |  |  |
-|  | Leaderboard | 글로벌 |  |  |  |  |
-|  | Launching | 글로벌 |  |  |  |  |
-|  | Smart Downloader | 글로벌 |  |  |  |  |
-| Security | NHN AppGuard | 글로벌 |  |  |  |  |
-|  | App Security Check | 리전 | O |  |  |  |
-|  | Server Security Check | 리전 | O | O |  |  |
-|  | Security Monitoring | 리전 | O | O |  |  |
-|  | Basic Security | 리전 | O | O |  |  |
-|  | CAPTCHA | 리전 | O |  |  |  |
-|  | Web Firewall | 리전 | O | O |  |  |
-|  | Vaccine | 리전 | O | O |  |  |
-|  | Secure Key Manager | 글로벌 |  |  |  |  |
-|  | Security Compliance | 글로벌 |  |  |  |  |
-|  | DDoS Guard | 리전 | O | O |  |  |
-|  | SIEM | 리전 | O | O |  |  |
-|  | Webshell Threat Detector | 리전 | O | O |  |  |
-|  | Security Advisor | 글로벌 |  |  |  |  |
-|  | Network Firewall | 리전 | O | O |  |  |
-|  | NHN Bastion | 리전 | O | O |  |  |
-|  | Cloud Access | 리전 | O | O |  |  |
-| Content Delivery | CDN | 글로벌 |  |  |  |  |
-|  | Image Manager | 리전 | O |  |  |  |
-| Notification | Notification Hub | 글로벌 |  |  |  |  |
-|  | Push | 글로벌 |  |  |  |  |
-|  | SMS | 글로벌 |  |  |  |  |
-|  | RCS Bizmessage | 글로벌 |  |  |  |  |
-|  | Email | 글로벌 |  |  |  |  |
-|  | KakaoTalk Bizmessage | 글로벌 |  |  |  |  |
-| AI Service | Face Recognition | 글로벌 |  |  |  |  |
-|  | OCR | 글로벌 |  |  |  |  |
-|  | Text to Speech | 글로벌 |  |  |  |  |
-|  | Speech to Text | 글로벌 |  |  |  |  |
-| Machine Learning | Deep Learning Instance | 리전 | O |  | | |
-|  | AI EasyMaker | 리전 | O |  |  |  |
-| Application Service | ROLE | 글로벌 |  |  |  |  |
-|  | API Gateway | 리전 | O | O |  |  |
-|  | RTCS | 글로벌 |  |  |  |  |
-|  | ShortURL | 글로벌 |  |  |  |  |
-|  | JEUS Instance | 리전 | O | O | O | O |
-|  | WebtoB Instance | 리전 | O | O | O | O |
-|  | Cloud Scheduler | 글로벌 |  |  |  |  |
-| Mobile Service | IAP | 글로벌 |  |  |  |  |
-| Search | Cloud Search | 리전 | O |  |  |  |
-|  | Autocomplete | 리전 | O |  |  |  |
-|  | Corporation Search | 리전 | O |  |  |  |
-| Data & Analytics | Log & Crash Search | 글로벌 |  |  |  |  |
-|  | DataFlow | 리전 | O |  |  |  |
-|  | DataQuery | 리전 | O |  |  |  |
-|  | EasyQueue | 리전 | O | O |  |  |
-|  | Kafka Instance | 리전 | O | O | O | O |
-| Dev Tools | Pipeline | 리전 | O |  |  |  |
-|  | Deploy | 글로벌 |  |  |  |  |
-| Management | Managed | 리전 | O | O |  |  |
-|  | Support Plan | 리전 | O | O |  |  |
-|  | Certificate Manager | 글로벌 |  |  |  |  |
-|  | Private CA | 리전 | O |  |  |  |
-| Bill | eTax | 리전 | O |  |  |  |
-| Collaboration | Dooray! | 글로벌 |  |  |  |  |
-| Contact Center | Contiple | 글로벌 |  |  |  |  |
-| Governance & Audit | CloudTrail | 글로벌 |  |  |  |  |
-|  | Resource Watcher | 글로벌 |  |  |  |  |
+| Hybrid & Private Cloud | NHN Cloud Private Deck | 리전 | - | - | - | - | 
+|  | NHN Cloud Private Station | 리전 | - | - | - | - | 
+|  | NHN Cloud Private Region | 리전 | - | - | - | - | 
+|  | NHN Hybrid Cloud | 리전 | O |  |  |  | 
+| Game | Gamebase | 글로벌 |  |  |  |  | 
+|  | GameAnvil | 글로벌 |  |  |  |  | 
+|  | GameStarter | 글로벌 |  |  |  |  | 
+|  | Leaderboard | 글로벌 |  |  |  |  | 
+|  | Launching | 글로벌 |  |  |  |  | 
+|  | Smart Downloader | 글로벌 |  |  |  |  |  
+| Security | NHN AppGuard | 글로벌 |  |  |  |  |  
+|  | App Security Check | 리전 | O |  |  |  | 
+|  | Server Security Check | 리전 | O | O |  | |   
+|  | Security Monitoring | 리전 | O | O | O |  | 
+|  | Basic Security | 리전 | O | O |  |  | 
+|  | CAPTCHA | 리전 | O |  |  |  |  | 
+|  | Web Firewall | 리전 | O | O | O | | 
+|  | Vaccine | 리전 | O | O |  |  | 
+|  | Secure Key Manager | 글로벌 |  |  |  |  |  
+|  | Security Compliance | 글로벌 |  |  |  |  | 
+|  | DDoS Guard | 리전 | O | O |  |  | 
+|  | SIEM | 리전 | O | O |  |  | 
+|  | Webshell Threat Detector | 리전 | O | O |  |  | 
+|  | Security Advisor | 글로벌 |  |  |  |  | 
+|  | Network Firewall | 리전 | O | O |  |  | 
+|  | NHN Bastion | 리전 | O | O |  |  | 
+|  | Cloud Access | 리전 | O | O |  |  | 
+| Content Delivery | CDN | 글로벌 |  |  |  |  |  
+|  | Image Manager | 리전 | O |  |  |  |  
+| Notification | Notification Hub | 글로벌 |  |  |  |  | 
+|  | Push | 글로벌 |  |  |  |  | 
+|  | SMS | 글로벌 |  |  |  |  | 
+|  | RCS Bizmessage | 글로벌 |  |  |  |  |   
+|  | Email | 글로벌 |  |  |  |  | 
+|  | KakaoTalk Bizmessage | 글로벌 |  |  |  |  | 
+| AI Service | Face Recognition | 글로벌 |  |  |  |   | 
+|  | OCR | 글로벌 |  |  |  |  | 
+|  | Text to Speech | 글로벌 |  |  |  |  |   
+|  | Speech to Text | 글로벌 |  |  |  |  | 
+| Machine Learning | Deep Learning Instance | 리전 | O |  | O | |  
+|  | AI EasyMaker | 리전 | O |  | O |  |  
+| Application Service | ROLE | 글로벌 |  |  |  |  | 
+|  | API Gateway | 리전 | O | O | O |  |  
+|  | RTCS | 글로벌 |  |  |  |  | 
+|  | ShortURL | 글로벌 |  |  |  |  | 
+|  | JEUS Instance | 리전 | O | O |  | O | 
+|  | WebtoB Instance | 리전 | O | O |  | O | 
+|  | Cloud Scheduler | 글로벌 |  |  |  |  |  
+| Mobile Service | IAP | 글로벌 |  |  |  |  | 
+| Search | Cloud Search | 리전 | O |  |  |  | 
+|  | Autocomplete | 리전 | O |  |  |   | 
+|  | Corporation Search | 리전 | O |  |  |   | 
+| Data & Analytics | Log & Crash Search | 글로벌 |  |  |  |  | 
+|  | DataFlow | 리전 | O |  | O |  |  
+|  | DataQuery | 리전 | O |  | O |  |  
+|  | EasyQueue | 리전 | O | O |  |  | 
+|  | Kafka Instance | 리전 | O | O | O | O | 
+| Dev Tools | Pipeline | 리전 | O |  | O |  |  
+|  | Deploy | 글로벌 |  |  |  |  | 
+| Management | Managed | 리전 | O | O |  |  | 
+|  | Support Plan | 리전 | O | O |  |  | 
+|  | Certificate Manager | 글로벌 |  |  |  |  |   
+|  | Private CA | 리전 | O |  |  |  | 
+| Bill | eTax | 리전 | O |  |  |  | 
+| Collaboration | Dooray! | 글로벌 |  |  |  |  | 
+| Contact Center | Contiple | 글로벌 |  |  |  |  | 
+| Governance & Audit | CloudTrail | 글로벌 |  |  |  |  | 
+|  | Resource Watcher | 글로벌 |  |  |  |  | 
