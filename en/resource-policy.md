@@ -371,6 +371,15 @@ Resource usage is calculated for each project, and the policy is applied by the 
 | CPU | Per project | 10vCore | O | |
 | Memory | Per project | 20GB | O | |
 
+### Resource Provision Policy for EasyQueue Service
+Resource usage is calculated for each project, and the policy is applied by the region.
+
+| Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+| Number of Topics | Per project | 10 | X | |
+| Number of Partitions | Per project | 64 | X | |
+| Number of Partitions | Per Topic | 16 | X | |
+
 
 ### Request for Capacity Adjustment
 To increase capacity beyond default volume, send a request to NHN Cloud Customer Center [1:1 Inquiry](https://nhncloud.com/kr/support/inquiry). 

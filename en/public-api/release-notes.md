@@ -1,10 +1,19 @@
 ## NHN Cloud > Public API > Release Notes
 
+### March 24, 2026
+#### Added Features
+
+- User Access Key token
+    - Added JWT token
+- Framework API
+    - Added a method to issue and retrieve a User Access Key ID for issuing JWT tokens
+
 ### December 23, 2025
 #### Added Features
 
 - Framework API
     - Added multilingual role description inquiry API
+    - Added API for `organization role group`
 - Partner Management API
     - Added APIs for metering inquiry, and metering deletion
 
