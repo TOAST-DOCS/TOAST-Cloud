@@ -217,7 +217,7 @@ public class Oauth2Config {
   | 구분 | 이름 | 타입 | 필수 | 값 | 설명   |
     |---------------|------------- | ------------- | ------------- |-------------------------------------------|---|
   | Header        |  Content-Type | String | Yes | application/x-www-form-urlencoded         |         |
-  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey` 를 Base64 인코딩한 결과를 `Basic ` 뒤에 붙여서 사용 |
+  | Header        |  Authorization | String | Yes | Basic Base64(UserAccessKeyID:SecretAccessKey) | `UserAccessKeyID:SecretAccessKey`를 Base64 인코딩한 결과를 `Basic` 뒤에 붙여서 사용 |
   | Request Body |  token | String| Yes | access token    | <ul><li>발급 받은 토큰</li><li>만료 요청 시 `token=발급받은_토큰`과 같이 사용</li></ul>      |
 
 * 응답
