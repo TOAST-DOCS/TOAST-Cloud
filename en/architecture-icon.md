@@ -4,6 +4,6 @@ NHN Cloud provides architecture icons that customers can use to create architect
 
 ### Download Architecture Icon
 
-- Please download and use the PowerPoint file below.
+- Please download and use the PowerPoint file below.abc
 
 [![](https://static.toastoven.net/prod_architecture_Icon/fileicon_download_ppt.png)](https://static.toastoven.net/prod_architecture_Icon/NHN_Cloud_Architecture_Icons_20251028.pptx)
