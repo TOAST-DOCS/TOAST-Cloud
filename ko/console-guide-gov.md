@@ -407,7 +407,6 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Vaccine | ADMIN | Vaccine 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | Secure Key Manager | ADMIN | Secure Key Manager 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Secure Key Manager | APPROVAL ADMIN | Secure Key Manager 서비스 승인 요청에 대한 승인, 거부, 조회 및 승인 요청 생성, 조회  |
-| Secure Key Manager | APPROVAL MEMBER | Secure Key Manager 서비스 승인 요청 생성, 조회  |
 | Secure Key Manager | VIEWER | Secure Key Manager 서비스 Read(읽기) |
 | Security Compliance | ADMIN | Security  Compliance 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | Security Advisor | ADMIN | Security Advisor 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
