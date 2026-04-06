@@ -463,7 +463,6 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Vaccine | ADMIN | Create, Read, Update, Delete for Vaccine Service |
 | Secure Key Manager | ADMIN | Create, Read, Update, Delete for Secure Key Manager Service |
 | Secure Key Manager | APPROVAL ADMIN | Approve, deny, query,create, query for approval requests for Secure Key Manager Service |
-| Secure Key Manager | APPROVAL MEMBER | Create, query for approval requests for Secure Key Manager Service |
 | Secure Key Manager | VIEWER | Read for Secure Key Manager Service |
 | Security Compliance | ADMIN | Create, Read, Update, Delete for Security Compliance Service|
 | Webshell Threat Detector | ADMIN | Create, Read, Update, Delete for Webshell Threat Detector Service |
