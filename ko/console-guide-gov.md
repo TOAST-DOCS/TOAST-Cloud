@@ -289,13 +289,26 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | 콘솔 접근 | - NHN Cloud(공공기관용) 콘솔([https://console.gov-nhncloud.com/](https://console.gov-nhncloud.com/)) 접근<br>- NHN Cloud(공공기관용) > 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.gov-nhncloud.com/) 접근<br>- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 
-### 조직 멤버
+
+### 회원 역할
+
+ * NHN Cloud 회원이 보유한 역할을 다른 NHN Cloud 회원에게 부여할 수 있습니다.
+
+| 역할 | 설명 |
+| --- | --- |
+| OWNER | 결제 관리, 스테이션 관리 등 회원 계정의 전체 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| BILLING VIEWER | 결제 관리에 대한 Read(읽기)  |
+| STATION VIEWER | 스테이션 목록 및 상세 정보 Read(읽기) |
+
+
+
+### 조직 멤버 역할
 
 * IAM 계정은 조직 서비스별로 설정할 수 있는 역할이 다릅니다.
 * NHN Cloud(공공기관용) 계정과 IAM 계정의 클라우드 서비스 역할은 아래와 같습니다.
 * 단, IAM 계정은 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야 합니다.
 
-#### 조직 관리 역할
+#### 조직 관리 
 
 | 역할 | 설명 |
 | --- | --- |
@@ -313,7 +326,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | ORG_SUPPORT_ADMIN | 조직 문의 Create(생성) |
 | NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 
-#### 조직 서비스 이용 역할
+#### 조직 서비스 이용 
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
@@ -323,7 +336,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Resource Watcher | ADMIN | Resource Watcher 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Resource Watcher | VIEWER | Resource Watcher 서비스 Read(읽기) |
 
-#### 조직 서비스 활성화 역할
+#### 조직 서비스 활성화 
 
 * 조직 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
 * 단, 조직 생성 시 활성화되어있는 서비스(CloudTrail, Resource Watcher 등)는 별도의 PERMISSION 역할을 제공하지 않습니다.
@@ -332,11 +345,11 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | --- | --- |
 | 서비스명 PERMISSION | 서비스 Enable(활성화), Disable(비활성화) |
 
-### 프로젝트 멤버
+### 프로젝트 멤버 역할
 
 프로젝트 멤버에게 필요한 역할을 여러 개 부여할 수 있습니다.
 
-#### 프로젝트 관리 역할
+#### 프로젝트 관리 
 
 | 역할 | 설명 |
 | --- | --- |
@@ -363,7 +376,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 
 
-#### 프로젝트 서비스 이용 역할
+#### 프로젝트 서비스 이용 
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
@@ -428,7 +441,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Certificate Manager | ADMIN | Certificate Manager 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) 권한 |
 | Certificate Manager | VIEWER | Certificate Manager 서비스 Read(읽기) 권한 |
 
-#### 프로젝트 서비스 활성화 역할
+#### 프로젝트 서비스 활성화 
 프로젝트 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
 
 | 역할 | 설명 |
