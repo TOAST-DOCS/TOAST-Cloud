@@ -313,7 +313,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | STATION VIEWER | Read Station List and Detail |
 
 
-### Organization Members Roles
+### Organization Member Roles
 
 * IAM accounts have different roles that can be configured for each organization service (e.g., Contiple).
 * The cloud service roles for NHN Cloud accounts and IAM accounts are as follows.
@@ -361,7 +361,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Service Name PERMISSION | Service Enable, Disable  |
 
 
-### Project Members Roles
+### Project Member Roles
 
 * You can grant multiple required roles to project members.
 
