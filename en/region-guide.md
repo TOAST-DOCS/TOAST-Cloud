@@ -135,7 +135,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Corporation Search | Regional | O |  |  |   | 
 | Data & Analytics | Log & Crash Search | Global |  |  |  |  | 
 |  | DataFlow | Regional | O |  | O |  |  
-|  | DataQuery | Regional | O |  | O |  |  
+|  | DataQuery | Regional | O |  | O |  | 
+|  | Data Lake Storage | Regional |  |  | O |  |  
 |  | EasyQueue | Regional | O | O |  |  | 
 |  | Kafka Instance | Regional | O | O | O | O | 
 | Dev Tools | Pipeline | Regional | O |  | O |  |  
