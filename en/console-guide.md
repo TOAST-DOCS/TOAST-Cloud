@@ -309,7 +309,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Role | Description |
 | --- | --- |
 | OWNER | Create/Read/Update/Delete All Member Account Services, Including Payment Management and Station Management  |
-| BILLING VIEWER | Read Member Payment, Including Payment Management View, Invoice Receipt, and Payment Failure Notification Receipt  |
+| BILLING VIEWER | Read Member Payment |
 | STATION VIEWER | Read Station List and Detail |
 
 
