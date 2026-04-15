@@ -310,7 +310,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | 역할 | 설명 |
 | --- | --- |
 | OWNER | 결제 관리, 스테이션 관리 등 회원 계정의 전체 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
-| BILLING VIEWER | 결제 관리 조회, 명세서 수신, 결제 실패 알림 수신 등 회원 결제에 대한 Read(읽기)  |
+| BILLING VIEWER | 결제 관리에 대한 Read(읽기)  |
 | STATION VIEWER | 스테이션 목록 및 상세 정보 Read(읽기) |
 
 
