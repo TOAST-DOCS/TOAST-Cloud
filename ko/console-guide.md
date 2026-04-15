@@ -525,6 +525,9 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | DataFlow | ADMIN | DataFlow 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | DataQuery | ADMIN | DataQuery 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Data Lake Storage | ADMIN | Data Lake Storage 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| Data Lake Storage | OPERATOR | Data Lake Storage 서비스 내 버킷 목록 및 모든 정보 상세 조회 Read(읽기). 버킷 관리 Create(생성), Update(갱신), Delete(삭제)  |
+| Data Lake Storage | VIEWER | Data Lake Storage 서비스 내 버킷 목록 및 모든 정보 상세 조회 Read(읽기)  |
 | EasyQueue | ADMIN | EasyQueue 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제), 메시지 송/수신  |
 | EasyQueue | CLIENT | EasyQueue 서비스 Read(읽기), 메시지 송/수신  |
 | EasyQueue | VIEWER | EasyQueue 서비스 Read(읽기) |

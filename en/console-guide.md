@@ -526,6 +526,9 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Log & Crash Search | ADMIN | Create, Read, Update, Delete for Log & Crash Search Service |
 | DataFlow | ADMIN | Create, Read, Update, Delete for DataFlow Service |
 | DataQuery | ADMIN | Create, Read, Update, Delete for DataQuery Service |
+| Data Lake Storage | ADMIN | Create, Read, Update, Delete for Data Lake Storage Service |
+| Data Lake Storage | OPERATOR | Read a detailed list of buckets in the Data Lake Storage service and all their information. Create, Update, and Delete bucket management. |
+| Data Lake Storage | VIEWER | Read a detailed list of buckets in the Data Lake Storage service and all their information. |
 | EasyQueue | ADMIN | Create, Read, Update, Delete and Send/Receive Messages EasyQueue Service |
 | EasyQueue | CLIENT | Read EasyQueue Service, Send/Receive Messages |
 | EasyQueue | VIEWER | EasyQueue Service Read |
