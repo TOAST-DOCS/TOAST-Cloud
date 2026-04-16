@@ -307,7 +307,11 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 * The cloud service roles for NHN Cloud accounts and IAM accounts are as follows.
 * However, IAM accounts are granted the NONE role upon enrollment, and must be granted the required role through role settings after enrollment.
 
+<<<<<<< HEAD
 #### Organization Management Roles
+=======
+#### Organization Management    
+>>>>>>> e514450a (Merge branch 'alpha' into beta)
 
 | Role | Description |
 | ---- | ----------- |
