@@ -335,6 +335,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | ORG_DASHBOARD\_ADMIN | Create, Read, Update, and Delete organization dashboard |
 | ORG_DASHBOARD\_VIEWER | Read organization dashboard |
 | ORG_SUPPORT_ADMIN | Create organization inquiry |
+| ORG_AUTHENTICATION_MANAGEMENT_ADMIN | Create, Read, Update, and Delete in organization authentication management |
 | NONE | Read organization dashboard and organization default settings |
 
 #### Service Use 

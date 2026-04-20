@@ -66,6 +66,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | MariaDB Instance  | 리전 | O | O | 
 |  | Tibero Instance   | 리전 | O | O | 
 |  | Redis Instance | 리전 | O | O | 
+|  | Valkey Instance | 리전 | O | O |
 | Monitoring | Cloud Monitoring | 글로벌 |  |  | 
 | Security | Security Monitoring | 리전 | O |  |
 |  | Basic Security | 리전 | O | O | 
