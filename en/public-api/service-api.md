@@ -60,7 +60,7 @@ You can find the API Guide for each service under its respective service categor
 |                      | RTCS                 | [RTCS API Guide](https://docs.nhncloud.com/en/Application%20Service/RTCS/en/api-guide/) |
 |                      | ShortURL             | [ShortURL API Guide](https://docs.nhncloud.com/en/Application%20Service/ShortURL/en/api-guide/) |
 |                      | File Crafter         | [File Crafter API Guide](https://docs.nhncloud.com/en/Application%20Service/File%20Crafter/en/api-guide/)<br>[File Crafter Callback API Guide](https://docs.nhncloud.com/en/Application%20Service/File%20Crafter/en/callback-api-guide/) |
-| Mobile Service       | IAP                  | [IAP API Guide)](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/) |
+| Mobile Service       | IAP                  | [IAP API Guide](https://docs.nhncloud.com/en/Mobile%20Service/IAP/en/api-guide-for-toast-sdk/) |
 | Search               | Cloud Search         | [Cloud Search API v2.0 Guide](https://docs.nhncloud.com/en/Search/Cloud%20Search/en/api-guide/api-v2.0-guide/) |
 |                      | Autocomplete         | [Autocomplete API v2.0 Guide](https://docs.nhncloud.com/en/Search/Autocomplete/en/api-guide/api-v2.0-guide/) |
 |                      | Corporation Search   | [Corporation Search API Guide](https://docs.nhncloud.com/en/Search/Corporation%20Search/en/api-guide/) |

@@ -60,7 +60,7 @@
 |                      | RTCS                 | [RTCS API ガイド](https://docs.nhncloud.com/ja/Application%20Service/RTCS/ja/api-guide/) |
 |                      | ShortURL             | [ShortURL API ガイド](https://docs.nhncloud.com/ja/Application%20Service/ShortURL/ja/api-guide/) |
 |                      | File Crafter         | [File Crafter API ガイド](https://docs.nhncloud.com/ja/Application%20Service/File%20Crafter/ja/api-guide/)<br>[File Crafter Callback API ガイド](https://docs.nhncloud.com/ja/Application%20Service/File%20Crafter/ja/callback-api-guide/) |
-| Mobile Service       | IAP                  | [IAP API ガイド)](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/api-guide-for-toast-sdk/) |
+| Mobile Service       | IAP                  | [IAP API ガイド](https://docs.nhncloud.com/ja/Mobile%20Service/IAP/ja/api-guide-for-toast-sdk/) |
 | Search               | Cloud Search         | [Cloud Search API v2.0 ガイド](https://docs.nhncloud.com/ja/Search/Cloud%20Search/ja/api-guide/api-v2.0-guide/) |
 |                      | Autocomplete         | [Autocomplete API v2.0 ガイド](https://docs.nhncloud.com/ja/Search/Autocomplete/ja/api-guide/api-v2.0-guide/) |
 |                      | Corporation Search   | [Corporation Search API ガイド](https://docs.nhncloud.com/ja/Search/Corporation%20Search/ja/api-guide/) |
