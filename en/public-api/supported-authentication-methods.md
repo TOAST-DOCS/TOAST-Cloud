@@ -48,7 +48,7 @@ Check the API authentication methods supported by the service you intend to use.
 |                         | DNS Plus                                       |                    |         |                 | O      | O              |
 | **Storage**             | Block Storage                                  |                    | O       |                 |        |                |
 |                         | NAS                                            |                    | O       |                 |        |                |
-|                         | Object Storage<span style="color:red">*</span> |                    | O       |                 |        |                |
+|                         | Object Storage                                 |                    | O       |                 |        |                |
 | **Database**            | RDS for MySQL API v2.0                         |                    |         |                 | O      | O              |
 |                         | RDS for MySQL API v3.0                         |                    |         | O               |        |                |
 |                         | RDS for MySQL API v4.0                         | O                  |         |                 |        |                |
@@ -116,7 +116,7 @@ Check the API authentication methods supported by the service you intend to use.
 <br>
 
 !!! tip "Note"
-    <span style="color:red">*</span> NHN Cloud's Object Storage and Data Lake Storage services provide APIs compatible with the Amazon S3 API. To use these S3-compatible APIs, you must issue S3 API credentials in the AWS EC2 format. Detailed information can be found in [S3 API Credentials](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#s3-api-credentials).
+    NHN Cloud's Object Storage and Data Lake Storage services provide APIs compatible with the Amazon S3 API. To use these S3-compatible APIs, you must issue S3 API credentials in the AWS EC2 format. Detailed information can be found in [S3 API Credentials](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#s3-api-credentials).
 
 
 
