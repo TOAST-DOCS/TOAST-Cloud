@@ -42,7 +42,7 @@
 |                   | Server Security Check  | [Server Security Check API ガイド](https://docs.nhncloud.com/ja/Security/Server%20Security%20Check/ja/api-guide/) |
 |                   | Security Monitoring    | [Security Monitoring API v1.1 ガイド](https://docs.nhncloud.com/ja/Security/Security%20Monitoring/ja/api-guide-v1.1/) |
 |                   | CAPTCHA                | [CAPTCHA API ガイド](https://docs.nhncloud.com/ja/Security/CAPTCHA/ja/api-guide/) |
-|                   | Secure Key Manager     | [Secure Key Manager API v1.0 ガイド](https://docs.nhncloud.com/ja/Security/Secure%20Key%20Manager/ja/api-guide-v1.0/)<br>[Secure Key Manager API v1.2 ガイド](https://docs.nhncloud.com/ja/Security/Secure%20Key%20Manager/ja/api-guide-v1.2/) |
+|                   | Secure Key Manager     | [Secure Key Manager API v1.0 ガイド](https://docs.nhncloud.com/ja/Security/Secure%20Key%20Manager/ja/api-guide-v1.0/)<br>[Secure Key Manager API v1.2 ガイド](https://docs.nhncloud.com/ja/Security/Secure%20Key%20Manager/ja/api-guide-v1.2/)<br>[Secure Key Manager API v1.3 ガイド](https://docs.alpha-nhncloud.com/ja/Security/Secure%20Key%20Manager/ja/api-guide-v1.3/) |
 |                   | Security Advisor       | [Security Advisor API ガイド](https://docs.nhncloud.com/ja/Security/Security%20Advisor/ja/public-api/) |
 | Content Delivery  | CDN                    | [CDN API v1.5 ガイド](https://docs.nhncloud.com/ja/Contents%20Delivery/CDN/ja/api-guide-v1.5/)<br>[CDN API v2.0 ガイド](https://docs.nhncloud.com/ja/Contents%20Delivery/CDN/ja/api-guide-v2.0/) |
 |                   | Image Manager          | [Image Manager API ガイド](https://docs.nhncloud.com/ja/Contents%20Delivery/Image%20Manager/ja/api-guide/) |
@@ -65,8 +65,8 @@
 |                      | Autocomplete         | [Autocomplete API v2.0 ガイド](https://docs.nhncloud.com/ja/Search/Autocomplete/ja/api-guide/api-v2.0-guide/) |
 |                      | Corporation Search   | [Corporation Search API ガイド](https://docs.nhncloud.com/ja/Search/Corporation%20Search/ja/api-guide/) |
 | Data & Analytics     | Log & Crash Search   | [Log & Crash Search API ガイド](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/api-guide/) |
-| Dev Tools            | Pipeline             | [Pipeline API ガイド](https://docs.nhncloud.com/ja/Dev%20Tools/Pipeline/ja/api-guide/) |
-|                      | Deploy               | [Deploy API v1.0 ガイド](https://docs.nhncloud.com/ja/Dev%20Tools/Deploy/ja/api-guide-v1.0/)<br>[Deploy API v2.0 ガイド](https://docs.nhncloud.com/ja/Dev%20Tools/Deploy/ja/api-guide-v2.0/) |
+| Dev Tools            | Pipeline             | [Pipeline API v1.0 ガイド](https://docs.alpha-nhncloud.com/ja/Dev%20Tools/Pipeline/ja/api-guide-v1-0/)<br>[Pipeline API v1.1 ガイド](https://docs.alpha-nhncloud.com/ja/Dev%20Tools/Pipeline/ja/api-guide-v1-1/) |
+|                      | Deploy               | [Deploy API v1.0 ガイド](https://docs.nhncloud.com/ja/Dev%20Tools/Deploy/ja/api-guide-v1.0/)<br>[Deploy API v2.0 ガイド](https://docs.nhncloud.com/ja/Dev%20Tools/Deploy/ja/api-guide-v2.0/)<br>[Deploy API v2.1 ガイド](https://docs.alpha-nhncloud.com/ja/Dev%20Tools/Deploy/ja/api-guide-v2.1/) |
 | Management           | Certificate Manager  | [Certificate Manager API v1.0 ガイド](https://docs.nhncloud.com/ja/Management/Certificate%20Manager/ja/api-guide-v1.0/)<br>[Certificate Manager API v1.1 ガイド](https://docs.nhncloud.com/ja/Management/Certificate%20Manager/ja/api-guide-v1.1/)<br>[Certificate Manager API v1.2 ガイド](https://docs.nhncloud.com/ja/Management/Certificate%20Manager/ja/api-guide-v1.2/) |
 |                      | Private CA           | [Private CA API v2.0 ガイド](https://docs.nhncloud.com/ja/Management/Private%20CA/ja/api-guide-v2.0/) |
 | Contact Center       | Contiple             | [Contiple Open API ガイド](https://docs.nhncloud.com/ja/Contact%20Center/ja/online-contact-api-guide-openapi-overview/) |
