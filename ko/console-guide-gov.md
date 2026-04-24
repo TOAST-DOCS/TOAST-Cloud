@@ -287,7 +287,6 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | 콘솔 접근 | - NHN Cloud(공공기관용) 콘솔([https://console.gov-nhncloud.com/](https://console.gov-nhncloud.com/)) 접근<br>- NHN Cloud(공공기관용) > 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.gov-nhncloud.com/) 접근<br>- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 
-
 ### 회원 역할
 
  * NHN Cloud 회원이 보유한 역할을 다른 NHN Cloud 회원에게 부여할 수 있습니다.
@@ -297,7 +296,6 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | OWNER | 결제 관리, 스테이션 관리 등 회원 계정의 전체 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | BILLING VIEWER | 결제 관리에 대한 Read(읽기)  |
 | STATION VIEWER | 스테이션 목록 및 상세 정보 Read(읽기) |
-
 
 
 ### 조직 멤버 역할
