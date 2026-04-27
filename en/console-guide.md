@@ -301,13 +301,33 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Member role              | - Manage organizations (Create/Modify organizations / Manage organization members / Manage organization services /Manage billing)<br>- Create projects<br>- Delete projects | - Use organization services                                 |
 | Console Access | - Access NHN Cloud console([https://console.nhncloud.com/](https://console.nhncloud.com/))<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.nhncloud.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) |
 
-### Organization Members
+
+### Member Roles
+
+ * You can grant roles held by an NHN Cloud member to other NHN Cloud members.
+
+| Role | Description |
+| --- | --- |
+| OWNER | Create/Read/Update/Delete All Member Account Services, Including Payment Management and Station Management  |
+| BILLING VIEWER | Read Member Payment |
+| STATION VIEWER | Read Station List and Detail |
+
+
+### Organization Member Roles
 
 * IAM accounts have different roles that can be configured for each organization service (e.g., Contiple).
 * The cloud service roles for NHN Cloud accounts and IAM accounts are as follows.
 * However, IAM accounts are granted the NONE role upon enrollment, and must be granted the required role through role settings after enrollment.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 #### Organization Management Roles
+=======
+#### Organization Management    
+>>>>>>> e514450a (Merge branch 'alpha' into beta)
+=======
+#### Organization Management    
+>>>>>>> beta
 
 | Role | Description |
 | ---- | ----------- |
@@ -323,9 +343,10 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | ORG_DASHBOARD\_ADMIN | Create, Read, Update, and Delete organization dashboard |
 | ORG_DASHBOARD\_VIEWER | Read organization dashboard |
 | ORG_SUPPORT_ADMIN | Create organization inquiry |
+| ORG_AUTHENTICATION_MANAGEMENT_ADMIN | Create, Read, Update, and Delete in organization authentication management |
 | NONE | Read organization dashboard and organization default settings |
 
-#### Service Use roles
+#### Service Use 
 
 | Service | Role | Description |
 | --- | --- | --- |
@@ -338,7 +359,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Resource Watcher | VIEWER | Read Resource Watcher Service |
 
 
-#### Service PERMISSION Role
+#### Service PERMISSION 
 
 * The Organization Services PERMISSION role can enable or disable individual services.
 * However, services that are enabled at the time of organization creation (CloudTrail, Resource Watcher, etc.) do not provide a separate PERMISSION role.
@@ -349,11 +370,11 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Service Name PERMISSION | Service Enable, Disable  |
 
 
-### Project Members
+### Project Member Roles
 
 * You can grant multiple required roles to project members.
 
-#### Project Management roles
+#### Project Management 
 
 | Role | Description |
 | --- | --- |
@@ -379,7 +400,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | PROJECT DASHBOARD VIEWER | Read project dashboard|
 
 
-#### Service Use roles
+#### Service Use 
 
 | Service | Role | Description |
 | --- | --- | --- |
@@ -514,6 +535,9 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Log & Crash Search | ADMIN | Create, Read, Update, Delete for Log & Crash Search Service |
 | DataFlow | ADMIN | Create, Read, Update, Delete for DataFlow Service |
 | DataQuery | ADMIN | Create, Read, Update, Delete for DataQuery Service |
+| Data Lake Storage | ADMIN | Create, Read, Update, Delete for Data Lake Storage Service |
+| Data Lake Storage | OPERATOR | Read a detailed list of buckets in the Data Lake Storage service and all their information. Create, Update, and Delete bucket management. |
+| Data Lake Storage | VIEWER | Read a detailed list of buckets in the Data Lake Storage service and all their information. |
 | EasyQueue | ADMIN | Create, Read, Update, Delete and Send/Receive Messages EasyQueue Service |
 | EasyQueue | CLIENT | Read EasyQueue Service, Send/Receive Messages |
 | EasyQueue | VIEWER | EasyQueue Service Read |
@@ -530,7 +554,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | eTax | VIEWER | Read  for eTax Service |
 
 
-#### Service PERMISSION Role
+#### Service PERMISSION 
 Service PERMISSION Role can enable or disable each service.
 
 | Role | Description |

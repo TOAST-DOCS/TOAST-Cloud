@@ -79,6 +79,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | MariaDB Instance  | 리전 | O | O | O | O | 
 |  | Tibero Instance   | 리전 | O | O | O | O | 
 |  | Redis Instance | 리전 | O | O | O | O |
+|  | Valkey Instance | 리전 | O | O | O | O |
 | Monitoring | Service Monitoring | 글로벌 |  |  |  |  |
 |  | Cloud Monitoring | 글로벌 |  |  |  |  |
 | Hybrid & Private Cloud | NHN Cloud Private Deck | 리전 | - | - | - | - | 
@@ -136,6 +137,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 | Data & Analytics | Log & Crash Search | 글로벌 |  |  |  |  | 
 |  | DataFlow | 리전 | O |  | O |  |  
 |  | DataQuery | 리전 | O |  | O |  |  
+|  | Data Lake Storage | 리전 |  |  | O | |  
 |  | EasyQueue | 리전 | O | O |  |  | 
 |  | Kafka Instance | 리전 | O | O | O | O | 
 | Dev Tools | Pipeline | 리전 | O |  | O |  |  

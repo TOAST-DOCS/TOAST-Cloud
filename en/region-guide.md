@@ -79,6 +79,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | MariaDB Instance  | Regional | O | O | O | O | 
 |  | Tibero Instance   | Regional | O | O | O | O | 
 |  | Redis Instance | Regional | O | O | O | O |
+|  | Valkey Instance | Regional | O | O | O | O |
 | Monitoring | Service Monitoring | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
 | Hybrid & Private Cloud | NHN Cloud Private Deck | Regional | - | - | - | - | 
@@ -135,7 +136,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Corporation Search | Regional | O |  |  |   | 
 | Data & Analytics | Log & Crash Search | Global |  |  |  |  | 
 |  | DataFlow | Regional | O |  | O |  |  
-|  | DataQuery | Regional | O |  | O |  |  
+|  | DataQuery | Regional | O |  | O |  | 
+|  | Data Lake Storage | Regional |  |  | O |  |  
 |  | EasyQueue | Regional | O | O |  |  | 
 |  | Kafka Instance | Regional | O | O | O | O | 
 | Dev Tools | Pipeline | Regional | O |  | O |  |  

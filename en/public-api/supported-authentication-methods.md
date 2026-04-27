@@ -48,7 +48,7 @@ Check the API authentication methods supported by the service you intend to use.
 |                         | DNS Plus                                       |                    |         |                 | O      | O              |
 | **Storage**             | Block Storage                                  |                    | O       |                 |        |                |
 |                         | NAS                                            |                    | O       |                 |        |                |
-|                         | Object Storage<span style="color:red">*</span> |                    | O       |                 |        |                |
+|                         | Object Storage                                 |                    | O       |                 |        |                |
 | **Database**            | RDS for MySQL API v2.0                         |                    |         |                 | O      | O              |
 |                         | RDS for MySQL API v3.0                         |                    |         | O               |        |                |
 |                         | RDS for MySQL API v4.0                         | O                  |         |                 |        |                |
@@ -65,7 +65,7 @@ Check the API authentication methods supported by the service you intend to use.
 |                         | Security Monitoring                            |                    |         |                 | O      |                |
 |                         | Secure Key Manager API v1.0                    |                    |         |                 | O      | O              |
 |                         | Secure Key Manager API v1.2                    |                    |         | O               | O      | O              |
-|                         | Secure Key Manager API v1.3                    | O                  |         |                 |        |                |
+|                         | Secure Key Manager API v1.3                    | O                  |         |                 | O      | O              |
 |                         | Security Advisor                               |                    |         |                 | O      |                |
 | **Content Delivery**    | CDN                                            |                    |         |                 | O      | O              |
 |                         | Image Manager                                  |                    |         |                 | O      | O              |
@@ -98,8 +98,11 @@ Check the API authentication methods supported by the service you intend to use.
 |                         | Autocomplete                                   |                    |         |                 | O      |                |
 |                         | Corporation Search                             |                    |         |                 | O      |                |
 | **Data & Analytics**    | Log & Crash Search                             |                    |         |                 | O      |                |
-| **Dev Tools**           | Pipeline                                       |                    |         | O               |        |                |
-|                         | Deploy                                         |                    |         | O               | O      |                |
+| **Dev Tools**           | Pipeline API v1.0                              |                    |         | O               |        |                |
+|                         | Pipeline API v1.1                              | O                  |         |                 |        |                |
+|                         | Deploy API v1.0                                |                    |         | O               | O      |                |
+|                         | Deploy API v2.0                                |                    |         | O               | O      |                |
+|                         | Deploy API v2.1                                | O                  |         |                 |        |                |
 | **Management**          | Certificate Manager API v1.0                   |                    |         |                 | O      |                |
 |                         | Certificate Manager API v1.1                   |                    | O       |                 |        |                |
 |                         | Certificate Manager API v1.2                   |                    |         |                 | O      |                |
@@ -113,7 +116,8 @@ Check the API authentication methods supported by the service you intend to use.
 <br>
 
 !!! tip "Note"
-    <span style="color:red">*</span> Object Storage service provides APIs compatible with the Amazon S3 API. To use these S3-compatible APIs, you must issue S3 API credentials in the AWS EC2 format. Detailed information can be found in [S3 API Credential](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#s3-api-credentials).
+    NHN Cloud's Object Storage and Data Lake Storage services provide APIs compatible with the Amazon S3 API. To use these S3-compatible APIs, you must issue S3 API credentials in the AWS EC2 format. Detailed information can be found in [S3 API Credentials](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#s3-api-credentials).
+
 
 
 
