@@ -149,6 +149,15 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |IP Access Control Target | Per IP access control group |1000| O | |
 |L7 Policy | Per Listener |10| O | |
 |L7 Rule | Per L7 Policy |10| O | |
+|SSL Policy | Per project |10| O | |
+
+### Resource Provision Policy for Load Balancer(DSR) Service  
+Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
+|Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+|Load Balancer(DSR) | Per project |10| O | |
+|Load Balancer(DSR) Member| Per Load Balancer(DSR) |30| O | |
 
 
 ### Resource Provision Policy for NAS Service  
