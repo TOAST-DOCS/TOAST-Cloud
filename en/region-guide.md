@@ -48,7 +48,8 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Network Interface | Regional | O | O | O | O | 
 |  | Flow Log | Regional | O | O |  |  | 
 |  | Shared Load Balancer | Regional | O | O | O | O | 
-|  | Dedicated Load Balancer | Regional | O | O | O | O | 
+|  | Dedicated Load Balancer | Regional | O | O | O | O |
+|  | Load Balancer(DSR) | Regional | O | O |  |  | 
 |  | Transit Hub | Regional | O | O | O |  |  
 |  | Internet Gateway | Regional | O | O | O | O | 
 |  | Peering Gateway | Regional | O | O | O | O | 

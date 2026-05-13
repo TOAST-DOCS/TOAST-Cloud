@@ -40,6 +40,7 @@ NHN Cloud(공공기관용) 유저는 서비스 지역과 목적에 따라 사용
 |  | Network Interface | 리전 | O | O | 
 |  | 일반 Load Balancer | 리전 | O | O | 
 |  | 전용 Load Balancer | 리전 | O | O |
+|  | Load Balancer(DSR) | 리전 | O |  | 
 |  | Transit Hub  | 리전 | O |  |
 |  | IPSec VPN | 리전 | O |  |
 |  | Internet Gateway | 리전 | O | O | 

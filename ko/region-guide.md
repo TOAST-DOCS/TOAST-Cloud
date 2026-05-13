@@ -49,6 +49,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Flow Log | 리전 | O | O |  |  | 
 |  | 일반 Load Balancer | 리전 | O | O | O | O | 
 |  | 전용 Load Balancer | 리전 | O | O | O | O | 
+|  | Load Balancer(DSR) | 리전 | O | O |  |  | 
 |  | Transit Hub | 리전 | O | O | O |  |  
 |  | Internet Gateway | 리전 | O | O | O | O | 
 |  | Peering Gateway | 리전 | O | O | O | O | 
