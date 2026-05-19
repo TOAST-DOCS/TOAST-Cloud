@@ -64,6 +64,7 @@ All users are provided with the same features, policy, stability and usability, 
 | Storage | Block Storage | Regional | O | O | O | O | 
 |  | NAS (offline) | Regional |  | O |  | O | 
 |  | NAS | Regional | O | O | O |  |  
+|  | NAS for BigData | Regional |  |  | O |  |  
 |  | Object Storage | Regional | O | O | O | O |
 |  | Backup | Regional | O | O | O | O | 
 |  | Storage Gateway | Regional | O | | |  | 

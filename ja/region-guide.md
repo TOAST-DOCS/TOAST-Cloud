@@ -64,6 +64,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Storage | Block Storage | リージョン | O | O | O | O | 
 |  | NAS (offline) | リージョン |  | O |  | O | 
 |  | NAS | リージョン | O | O | O |  |  
+|  | NAS for BigData | リージョン |  |  | O |  |  
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O | O | O | 
 |  | Storage Gateway | リージョン | O | | |  | 
