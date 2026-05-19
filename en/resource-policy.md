@@ -161,6 +161,15 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 | NAS Storage Max Size | Per NAS storage | 10TB | O | |
 | NAS Storage Subnet | Per project | 3 | O | |
 
+### Resource Provision Policy for NAS for BigData Service  
+Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
+
+|Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|----|----|----|----|----|
+| NAS Volume | Per project| 100 | O | |
+| NAS Volume Size | Per project | 50TB | O | |
+| NAS Volume Max Size | Per NAS Volume | 5TB | O | |
+
 ### Resource Provision Policy for Storage Gateway Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
 
