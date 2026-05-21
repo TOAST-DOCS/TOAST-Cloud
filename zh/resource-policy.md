@@ -149,7 +149,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |IP Access Control Target | Per IP access control group |1000| O | |
 |L7 Policy | Per Listener |10| O | |
 |L7 Rule | Per L7 Policy |10| O | |
-
+|SSL Policy | Per project |10| O | |
 
 ### Resource Provision Policy for NAS Service  
 Resource usage is calculated by the project, and the Resource Provision Policy is applied for each region. 
