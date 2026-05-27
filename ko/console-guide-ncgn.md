@@ -279,7 +279,9 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | OWNER | 결제 관리, 스테이션 관리 등 회원 계정의 전체 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
 | BILLING VIEWER | 결제 관리에 대한 Read(읽기)  |
 | STATION VIEWER | 스테이션 목록 및 상세 정보 Read(읽기) |
-
+| MEMBER NOTICE_GROUP MANAGEMENT ADMIN | 회원 알림 수신 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 회원 목록 Read(읽기) | 
+| MEMBER NOTICE_GROUP MANAGEMENT VIEWER | 회원 알림 수신 그룹 관리 Read(읽기), 회원 목록 Read(읽기) |
+ 
 ### 조직 멤버 역할 
 
 * NHN Cloud 계정과 IAM 계정의 클라우드 서비스 역할은 아래와 같습니다.
