@@ -49,6 +49,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Flow Log | リージョン | O | O |  |  | 
 |  | 一般 Load Balancer | リージョン | O | O | O | O | 
 |  | 専用 Load Balancer | リージョン | O | O | O | O | 
+|  | Load Balancer(DSR) | リージョン | O | O |  |  | 
 |  | Transit Hub | リージョン | O | O | O |  |  
 |  | Internet Gateway | リージョン | O | O | O | O | 
 |  | Peering Gateway | リージョン | O | O | O | O | 
@@ -63,6 +64,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Storage | Block Storage | リージョン | O | O | O | O | 
 |  | NAS (offline) | リージョン |  | O |  | O | 
 |  | NAS | リージョン | O | O | O |  |  
+|  | NAS for BigData | リージョン |  |  | O |  |  
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O | O | O | 
 |  | Storage Gateway | リージョン | O | | |  | 
