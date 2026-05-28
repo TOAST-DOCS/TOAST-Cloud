@@ -311,6 +311,8 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | OWNER | Create/Read/Update/Delete All Member Account Services, Including Payment Management and Station Management  |
 | BILLING VIEWER | Read Member Payment |
 | STATION VIEWER | Read Station List and Detail |
+| MEMBER NOTICE_GROUP MANAGEMENT ADMIN | Create/Read/Update/Delete Member Notification Group Management, Read for Member List | 
+| MEMBER NOTICE_GROUP MANAGEMENT VIEWER | Read Member Notification Group Management, Read for Member List |
 
 
 ### Organization Member Roles

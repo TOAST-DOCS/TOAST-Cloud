@@ -310,6 +310,8 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | OWNER | 決済管理、ステーション管理などメンバーアカウントの全サービスに関する作成(Create)/参照(Read)/更新(Update)/削除(Delete)  |
 | BILLING VIEWER | メンバー決済管理の参照(Read)  |
 | STATION VIEWER | ステーション一覧及び詳細情報の参照(Read) |
+| MEMBER NOTICE_GROUP MANAGEMENT ADMIN | メンバー通知受信グループ管理の作成(Create)/参照(Read)/更新(Update)/削除(Delete)、メンバー一覧の参照(Read) | 
+| MEMBER NOTICE_GROUP MANAGEMENT VIEWER | メンバー通知受信グループ管理の参照(Read)、メンバー一覧の参照(Read) |
 
 
 ### 組織メンバーロール
