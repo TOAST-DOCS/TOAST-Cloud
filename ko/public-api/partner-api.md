@@ -376,7 +376,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | usagePrice | Long | 이용 금액 |
 | contractUsagePrice | Long | 약정 할인/할증이 적용된 이용 금액 합계 |
 | contractDiscountPrice | Long | 약정으로 할인된 금액 |
-| ocpDiscountPrice | Long | OCP 할인 금액 |
+| ocpDiscountPrice | Long | OCPs 할인 금액 |
 | contractExtraPrice | Long | 약정으로 할증된 금액 |
 | totalDiscount | Long | 총 할인 금액 |
 | totalExtra | Long | 총 할증 금액 |
@@ -407,7 +407,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | usagePrice | Long | 프로젝트 이용 금액 합계 |
 | contractUsagePrice | Long | 약정 할인/할증을 적용한 이용 금액 합계 |
 | contractDiscountPrice | Long | 약정으로 할인된 금액 |
-| ocpDiscountPrice | Long | OCP 할인 금액 |
+| ocpDiscountPrice | Long | OCPs 할인 금액 |
 | contractExtraPrice | Long | 약정으로 할증된 금액 |
 | prePaidTotalAmount | Long | 선결제 이용 금액 |
 
@@ -532,7 +532,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | projectId | Path | String | Y | 프로젝트 ID |
 | lang | Header | String | N | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US) |
 | isHideContract | Query | Boolean | N | 약정 정보 숨김 여부(기본값: false / true: 파트너 마스킹 적용 및 creditUsages 제외) |
-| usageSchemaTypeCode | Query | String | N | 사용량 포함여부<br>사용량 조회방식을 기존방식으로 할지, 신규 그룹핑된 방식으로 할지 결정<br>(기본값: NO_GROUP)<br><br>- NO_GROUP: 사용량이 그룹핑되지 않고 그대로 노출되는 방식 <br>- GROUP_BY_PARENT_RESOURCE: 부모 리소스 별로 그룹핑은 되지만 구체적인 사용량은 제공하지 않는 방식. 반환되는 totalItems를 통해 부모 리소스가 몇개 존재하는지 확인 가능<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES: 부모 리소스 별로 그룹핑 후 어떤 부모 리소스로 그룹핑 되었는지와 그 세부 사용량까지 제공되는 방식 |
+| usageSchemaTypeCode | Query | String | N | 사용량 포함 여부<br>사용량 조회 방식을 기존 방식으로 할지, 신규 그룹핑된 방식으로 할지 결정<br>(기본값: NO_GROUP)<br><br>- NO_GROUP: 사용량이 그룹핑되지 않고 그대로 노출되는 방식 <br>- GROUP_BY_PARENT_RESOURCE: 부모 리소스별로 그룹핑은 되지만 구체적인 사용량은 제공하지 않는 방식. 반환되는 totalItems를 통해 부모 리소스가 몇 개 존재하는지 확인 가능<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES: 부모 리소스별로 그룹핑 후 어떤 부모 리소스로 그룹핑되었는지와 그 세부 사용량까지 제공되는 방식 |
 | categoryMain | Query | String | N | 메인 카테고리<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
 | regionTypeCode | Query | String | N | 리전 타입 코드(최대 20자)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
 | stationId | Query | String | N | 스테이션 ID<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
@@ -674,7 +674,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | usagePrice | Long | 이용 금액 |
 | contractUsagePrice | Long | 약정 할인/할증이 적용된 이용 금액 합계 |
 | contractDiscountPrice | Long | 약정으로 할인된 금액 |
-| ocpDiscountPrice | Long | OCP 할인 금액 |
+| ocpDiscountPrice | Long | OCPs 할인 금액 |
 | contractExtraPrice | Long | 약정으로 할증된 금액 |
 | totalAmount | Long | 프로젝트 최종 금액 |
 | totalDiscount | Long | 총 할인 금액 |
@@ -720,7 +720,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | regionTypeCode | String | 리전 |
 | stationId | String | 스테이션 ID |
 | stationName | String | 스테이션 이름 |
-| needType | Boolean | 구분 컬럼 노출 여부 |
+| needType | Boolean | 구분 칼럼 노출 여부 |
 | usagePrice | Long | 이용 금액 합계 |
 | totalPrice | Long | 약정 할인 적용된 이용 금액 합계 |
 | totalDiscount | Long | 총 할인 금액 |
@@ -769,7 +769,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | discountPrice | Long | 할인 금액 |
 | discountTypeCode | String | 할인 타입 코드<br>BASIC, CONTRACT, OCP |
 | prePaidAmount | Long | 선결제 이용 금액 |
-| costPlanOrderId | String | OCP 주문 ID |
+| costPlanOrderId | String | OCPs 주문 ID |
 
 
 ## 파트너의 청구서 조회
@@ -984,7 +984,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | totalAmount | Long | 최종 금액 |
 | contractDiscount | Long | 약정 할인 금액 |
 | contractExtra | Long | 약정 할증 금액 |
-| ocpDiscount | Long | OCP 할인 금액 |
+| ocpDiscount | Long | OCPs 할인 금액 |
 | prePaidTotalAmount | Long | 선결제 이용 금액 |
 | totalCredit | Long | 크레딧 총 사용 금액 |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | 크레딧 사용 금액 |
@@ -1021,7 +1021,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | regionTypeCode | String | 리전 |
 | stationId | String | 스테이션 ID |
 | stationName | String | 스테이션 이름 |
-| needType | Boolean | 구분 컬럼 노출 여부 |
+| needType | Boolean | 구분 칼럼 노출 여부 |
 | usagePrice | Long | 이용 금액 합계 |
 | totalPrice | Long | 약정 할인 적용된 이용 금액 합계 |
 | totalDiscount | Long | 총 할인 금액 |
