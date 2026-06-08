@@ -376,7 +376,7 @@ This API does not require a request body.
 | usagePrice | Long | Usage amount |
 | contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
 | contractDiscountPrice | Long | Amount discounted by contract |
-| ocpDiscountPrice | Long | OCPs discount amount |
+| ocpDiscountPrice | Long | Optimized Cost Plan(OCPs) discount amount |
 | contractExtraPrice | Long | Amount surcharged by contract |
 | totalDiscount | Long | Total discount amount |
 | totalExtra | Long | Total surcharge amount |
@@ -407,7 +407,7 @@ This API does not require a request body.
 | usagePrice | Long | Project usage amount total |
 | contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
 | contractDiscountPrice | Long | Amount discounted by contract |
-| ocpDiscountPrice | Long | OCPs discount amount |
+| ocpDiscountPrice | Long | Optimized Cost Plan(OCPs) discount amount |
 | contractExtraPrice | Long | Amount surcharged by contract |
 | prePaidTotalAmount | Long | Pre-paid used amount |
 
@@ -674,7 +674,7 @@ This API does not require a request body.
 | usagePrice | Long | Usage amount |
 | contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
 | contractDiscountPrice | Long | Amount discounted by contract |
-| ocpDiscountPrice | Long | OCPs discount amount |
+| ocpDiscountPrice | Long | Optimized Cost Plan(OCPs) discount amount |
 | contractExtraPrice | Long | Amount surcharged by contract |
 | totalAmount | Long | Project final amount |
 | totalDiscount | Long | Total discount amount |
@@ -769,7 +769,7 @@ This API does not require a request body.
 | discountPrice | Long | Discount amount |
 | discountTypeCode | String | Discount type code<br>BASIC, CONTRACT, OCP |
 | prePaidAmount | Long | Pre-paid used amount |
-| costPlanOrderId | String | OCPs order ID |
+| costPlanOrderId | String | Optimized Cost Plan(OCPs) order ID |
 
 
 ## Retrieve Partner’s Bill
@@ -984,7 +984,7 @@ This API does not require a request body.
 | totalAmount | Long | Final amount |
 | contractDiscount | Long | Commitment-based discount amount |
 | contractExtra | Long | Commitment underutilization charge amount |
-| ocpDiscount | Long | OCPs discount amount |
+| ocpDiscount | Long | Optimized Cost Plan(OCPs) discount amount |
 | prePaidTotalAmount | Long | Pre-paid used amount |
 | totalCredit | Long | Total credit usage amount |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage list |

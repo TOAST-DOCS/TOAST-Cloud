@@ -376,7 +376,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | usagePrice | Long | 이용 금액 |
 | contractUsagePrice | Long | 약정 할인/할증이 적용된 이용 금액 합계 |
 | contractDiscountPrice | Long | 약정으로 할인된 금액 |
-| ocpDiscountPrice | Long | OCPs 할인 금액 |
+| ocpDiscountPrice | Long | Optimized Cost Plan(OCPs) 할인 금액 |
 | contractExtraPrice | Long | 약정으로 할증된 금액 |
 | totalDiscount | Long | 총 할인 금액 |
 | totalExtra | Long | 총 할증 금액 |
@@ -407,7 +407,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | usagePrice | Long | 프로젝트 이용 금액 합계 |
 | contractUsagePrice | Long | 약정 할인/할증을 적용한 이용 금액 합계 |
 | contractDiscountPrice | Long | 약정으로 할인된 금액 |
-| ocpDiscountPrice | Long | OCPs 할인 금액 |
+| ocpDiscountPrice | Long | Optimized Cost Plan(OCPs) 할인 금액 |
 | contractExtraPrice | Long | 약정으로 할증된 금액 |
 | prePaidTotalAmount | Long | 선결제 이용 금액 |
 
@@ -674,7 +674,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | usagePrice | Long | 이용 금액 |
 | contractUsagePrice | Long | 약정 할인/할증이 적용된 이용 금액 합계 |
 | contractDiscountPrice | Long | 약정으로 할인된 금액 |
-| ocpDiscountPrice | Long | OCPs 할인 금액 |
+| ocpDiscountPrice | Long | Optimized Cost Plan(OCPs) 할인 금액 |
 | contractExtraPrice | Long | 약정으로 할증된 금액 |
 | totalAmount | Long | 프로젝트 최종 금액 |
 | totalDiscount | Long | 총 할인 금액 |
@@ -769,7 +769,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | discountPrice | Long | 할인 금액 |
 | discountTypeCode | String | 할인 타입 코드<br>BASIC, CONTRACT, OCP |
 | prePaidAmount | Long | 선결제 이용 금액 |
-| costPlanOrderId | String | OCPs 주문 ID |
+| costPlanOrderId | String | Optimized Cost Plan(OCPs) 주문 ID |
 
 
 ## 파트너의 청구서 조회
@@ -984,7 +984,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | totalAmount | Long | 최종 금액 |
 | contractDiscount | Long | 약정 할인 금액 |
 | contractExtra | Long | 약정 할증 금액 |
-| ocpDiscount | Long | OCPs 할인 금액 |
+| ocpDiscount | Long | Optimized Cost Plan(OCPs) 할인 금액 |
 | prePaidTotalAmount | Long | 선결제 이용 금액 |
 | totalCredit | Long | 크레딧 총 사용 금액 |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | 크레딧 사용 금액 |
