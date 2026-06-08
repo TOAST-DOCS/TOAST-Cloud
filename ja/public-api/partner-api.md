@@ -377,7 +377,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | contractUsagePrice | Long | 約定割引/割増が適用された利用金額合計 |
 | contractDiscountPrice | Long | 約定により割引された金額 |
 | contractExtraPrice | Long | 約定により割増された金額 |
-| ocpDiscountPrice | Long | Optimized Cost Plan(OCPs) 할인 금액 |
+| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 할인 금액 |
 | totalDiscount | Long | 총 할인 금액 |
 | totalExtra | Long | 총 할증 금액 |
 | prePaidTotalAmount | Long | 선결제 이용 금액 |
@@ -424,7 +424,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | usagePrice | Long | プロジェクト利用金額の合計 |
 | contractUsagePrice | Long | 契約割引/割増を適用した利用金額の合計 |
 | contractDiscountPrice | Long | 약정 할인 금액 |
-| ocpDiscountPrice | Long | Optimized Cost Plan(OCPs) 할인 금액 |
+| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 할인 금액 |
 | contractExtraPrice | Long | 약정 할증 금액 |
 | prePaidTotalAmount | Long | 선결제 이용 금액 |
 
@@ -675,7 +675,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | contractUsagePrice | Long | 約定割引/割増が適用された利用金額合計 |
 | contractDiscountPrice | Long | 約定により割引された金額 |
 | contractExtraPrice | Long | 約定により割増された金額 |
-| ocpDiscountPrice | Long | Optimized Cost Plan(OCPs) 할인 금액 |
+| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 할인 금액 |
 | totalDiscount | Long | 총 할인 금액 |
 | totalExtra | Long | 총 할증 금액 |
 | prePaidTotalAmount | Long | 선결제 이용 금액 |
@@ -779,7 +779,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | discountPrice | Long | 할인 금액 |
 | discountTypeCode | String | 할인 타입 코드<br>BASIC, CONTRACT, OCP |
 | prePaidAmount | Long | 선결제 이용 금액 |
-| costPlanOrderId | String | Optimized Cost Plan(OCPs) 주문 ID |
+| costPlanOrderId | String | Optimized Cost Plans(OCPs) 주문 ID |
 
 **Usage**
 
@@ -1007,7 +1007,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | charge | Long | 利用金額 |
 | contractDiscount | Long | 契約割引金額 |
 | contractExtra | Long | 契約割増金額 |
-| ocpDiscount | Long | Optimized Cost Plan(OCPs) 할인 금액 |
+| ocpDiscount | Long | Optimized Cost Plans(OCPs) 할인 금액 |
 | totalAmount | Long | 最終金額 |
 | totalCredit | Long | クレジット総使用金額 |
 | totalDiscount | Long | 割引金額 |
