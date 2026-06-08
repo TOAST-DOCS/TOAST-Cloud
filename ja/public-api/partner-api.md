@@ -282,7 +282,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | month | Path | String | Y | 利用月(yyyy-MM形式) |
 | orgId | Path | String | Y | 組織ID |
 | lang | Header | String | N | 言語設定(デフォルト: ko_KR、設定可能な値: ko_KR、ja_JP、en_US) |
-| isHideContract | Query | Boolean | N | 약정 정보 숨김 여부 (기본 false / true: partner 마스킹 적용) |
+| isHideContract | Query | Boolean | N | 約定情報の非表示の有無 (デフォルト false / true: partner マスキング適用) |
 
 ### リクエストボディ
 
@@ -377,10 +377,10 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | contractUsagePrice | Long | 約定割引/割増が適用された利用金額合計 |
 | contractDiscountPrice | Long | 約定により割引された金額 |
 | contractExtraPrice | Long | 約定により割増された金額 |
-| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 할인 금액 |
-| totalDiscount | Long | 총 할인 금액 |
-| totalExtra | Long | 총 할증 금액 |
-| prePaidTotalAmount | Long | 선결제 이용 금액 |
+| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 割引金額 |
+| totalDiscount | Long | 総割引金額 |
+| totalExtra | Long | 総割増金額 |
+| prePaidTotalAmount | Long | 前払い利用金額 |
 | totalCredit | Long | クレジット最終金額 |
 | country | String | 国コード |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | クレジット使用金額 |
@@ -423,10 +423,10 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | totalAmount | Long | プロジェクトの最終金額 |
 | usagePrice | Long | プロジェクト利用金額の合計 |
 | contractUsagePrice | Long | 契約割引/割増を適用した利用金額の合計 |
-| contractDiscountPrice | Long | 약정 할인 금액 |
-| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 할인 금액 |
-| contractExtraPrice | Long | 약정 할증 금액 |
-| prePaidTotalAmount | Long | 선결제 이용 금액 |
+| contractDiscountPrice | Long | 約定割引金額 |
+| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 割引金額 |
+| contractExtraPrice | Long | 約定割増金額 |
+| prePaidTotalAmount | Long | 前払い利用金額 |
 
 
 ## パートナーユーザーのプロジェクト一覧の照会
@@ -531,8 +531,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | month | Path | String | Y | 利用月(yyyy-MM形式) |
 | projectId | Path | String | Y | プロジェクトID |
 | lang | Header | String | N | 言語設定(デフォルト: ko_KR、設定可能な値: ko_KR、ja_JP、en_US) |
-| isHideContract | Query | Boolean | N | 약정 정보 숨김 여부 |
-| stationId | Query | String | N | 스테이션 ID 필터 |
+| isHideContract | Query | Boolean | N | 約定情報の非表示の有無 |
+| stationId | Query | String | N | ステーションIDフィルタ |
 | usageSchemaTypeCode | Query | String | N | 使用量の包含有無<br>使用量の照会方法を従来の方法にするか、新規にグループ化された方法にするかを決定します<br>(デフォルト: NO_GROUP)<br><br>- NO_GROUP:使用量がグループ化されずにそのまま表示される方式 <br>- GROUP_BY_PARENT_RESOURCE:親リソース別にグループ化はされるが、具体的な使用量は提供されない方式。返されるtotalItemsを通じて親リソースがいくつ存在するか確認可能<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES:親リソース別にグループ化した後、どの親リソースでグループ化されたかとその詳細な使用量まで提供される方式 |
 | categoryMain | Query | String | N | メインカテゴリー<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
 | regionTypeCode | Query | String | N | リージョンタイプコード(最大20文字)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
@@ -675,12 +675,12 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | contractUsagePrice | Long | 約定割引/割増が適用された利用金額合計 |
 | contractDiscountPrice | Long | 約定により割引された金額 |
 | contractExtraPrice | Long | 約定により割増された金額 |
-| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 할인 금액 |
-| totalDiscount | Long | 총 할인 금액 |
-| totalExtra | Long | 총 할증 금액 |
-| prePaidTotalAmount | Long | 선결제 이용 금액 |
+| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 割引金額 |
+| totalDiscount | Long | 総割引金額 |
+| totalExtra | Long | 総割増金額 |
+| prePaidTotalAmount | Long | 前払い利用金額 |
 | totalCredit | Long | クレジット最終金額 |
-| country | String | 国コード(국가코드) |
+| country | String | 国コード |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | クレジット使用金額 |
 | projectDiscount | PaymentStatementProjectAdjustment | プロジェクト別割引詳細明細 |
 | projectExtra | PaymentStatementProjectAdjustment | プロジェクト別割増詳細明細 |
@@ -776,10 +776,10 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | unitPrice | BigDecimal | 単価 |
 | usage | Double | 使用量 |
 | useFixPrice | Boolean | 固定金額かどうか |
-| discountPrice | Long | 할인 금액 |
-| discountTypeCode | String | 할인 타입 코드<br>BASIC, CONTRACT, OCP |
-| prePaidAmount | Long | 선결제 이용 금액 |
-| costPlanOrderId | String | Optimized Cost Plans(OCPs) 주문 ID |
+| discountPrice | Long | 割引金額 |
+| discountTypeCode | String | 割引タイプコード<br>BASIC, CONTRACT, OCP |
+| prePaidAmount | Long | 前払い利用金額 |
+| costPlanOrderId | String | Optimized Cost Plans(OCPs) 注文ID |
 
 **Usage**
 
@@ -979,7 +979,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | totalCredit | Long | クレジット総使用金額 |
 | totalDiscount | Long | 割引金額 |
 | totalExtra | Long | 割増金額 |
-| prePaidTotalAmount | Long | 선결제 이용 금액 |
+| prePaidTotalAmount | Long | 前払い利用金額 |
 | freeCredit | Long | 無料クレジット使用金額 |
 | freeCreditAll | Long | 無料全体型クレジット使用金額 |
 | freeCreditLimit | Long | 無料制限型クレジット使用金額 |
@@ -1007,12 +1007,12 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | charge | Long | 利用金額 |
 | contractDiscount | Long | 契約割引金額 |
 | contractExtra | Long | 契約割増金額 |
-| ocpDiscount | Long | Optimized Cost Plans(OCPs) 할인 금액 |
+| ocpDiscount | Long | Optimized Cost Plans(OCPs) 割引金額 |
 | totalAmount | Long | 最終金額 |
 | totalCredit | Long | クレジット総使用金額 |
 | totalDiscount | Long | 割引金額 |
 | totalExtra | Long | 割増金額 |
-| prePaidTotalAmount | Long | 선결제 이용 금액 |
+| prePaidTotalAmount | Long | 前払い利用金額 |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | クレジット使用金額 |
 | orgList | List&lt;Organization&gt; | 組織一覧 |
 | usageGroups | List&lt;UsageGroup&gt; | 使用量グループ一覧 |
@@ -1037,7 +1037,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | orgId | String | 組織ID |
 | orgName | String | 組織名 |
 | totalAmount | Long | 組織の最終金額 |
-| prePaidTotalAmount | Long | 선결제 이용 금액 |
+| prePaidTotalAmount | Long | 前払い利用金額 |
 
 **UsageGroup**
 
@@ -1051,8 +1051,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | totalItems | Integer | UsageGroupごとのUsage総数 |
 | totalPrice | Long | 契約割引が適用された利用金額の合計 |
 | usagePrice | Long | 利用金額の合計 |
-| totalDiscount | Long | 총 할인 금액 |
-| prePaidTotalAmount | Long | 선결제 이용 금액 |
+| totalDiscount | Long | 総割引金額 |
+| prePaidTotalAmount | Long | 前払い利用金額 |
 | usageResourceGroups | List&lt;UsageGroup.UsageResourceGroup&gt; | グルーピングされた使用量一覧 |
 | usages | List&lt;Usage&gt; | 詳細使用量一覧 |
 
