@@ -283,6 +283,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | orgId | Path | String | Y | Organization ID |
 | lang | Header | String | N | Language settings (default: ko_KR, selectable values: ko_KR, ja_JP, en_US) |
 | isHideContract | Query | Boolean | N | Whether to hide contract information (default: false / true: apply partner masking and exclude creditUsages) |
+| isHideContract | Query | Boolean | N | Whether to hide commitment information (default: false / true: partner masking applied and creditUsages excluded) |
 
 ### Request Body
 
@@ -376,13 +377,13 @@ This API does not require a request body.
 | usagePrice | Long | Usage amount |
 | contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
 | contractDiscountPrice | Long | Amount discounted by contract |
-| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) discount amount |
+| ocpDiscountPrice | Long | Optimized Cost Plans (OCPs) discount amount |
 | contractExtraPrice | Long | Amount surcharged by contract |
 | totalDiscount | Long | Total discount amount |
 | totalExtra | Long | Total surcharge amount |
-| totalAmount | Long | Organization final amount |
-| prePaidTotalAmount | Long | Pre-paid used amount |
-| totalCredit | Long | Credit final amount |
+| totalAmount | Long | Final organization amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
+| totalCredit | Long | Final credit amount |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage list |
 | projects | List&lt;Project&gt; | Project list |
 | projectDiscount | PaymentStatementProjectAdjustment | List of discount details by project |
@@ -403,13 +404,13 @@ This API does not require a request body.
 | --- | --- | --- |
 | projectId | String | Project ID |
 | projectName | String | Project name |
-| totalAmount | Long | Project final amount |
+| totalAmount | Long | Final project amount |
 | usagePrice | Long | Project usage amount total |
 | contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
 | contractDiscountPrice | Long | Amount discounted by contract |
 | ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) discount amount |
 | contractExtraPrice | Long | Amount surcharged by contract |
-| prePaidTotalAmount | Long | Pre-paid used amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 
 **PaymentStatementProjectAdjustment**
 
@@ -676,10 +677,10 @@ This API does not require a request body.
 | contractDiscountPrice | Long | Amount discounted by contract |
 | ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) discount amount |
 | contractExtraPrice | Long | Amount surcharged by contract |
-| totalAmount | Long | Project final amount |
+| totalAmount | Long | Final project amount |
 | totalDiscount | Long | Total discount amount |
 | totalExtra | Long | Total surcharge amount |
-| prePaidTotalAmount | Long | Pre-paid used amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 | totalCredit | Long | Final credit amount |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage list |
 | projectDiscount | PaymentStatementProjectAdjustment | Project-specific discount details |
@@ -724,7 +725,7 @@ This API does not require a request body.
 | usagePrice | Long | Total usage amount |
 | totalPrice | Long | Total usage amount with commitment-based discount applied |
 | totalDiscount | Long | Total discount amount |
-| prePaidTotalAmount | Long | Pre-paid used amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 | totalItems | Integer | Total number of usages per UsageGroup |
 | usages | List&lt;Usage&gt; | Detailed usage list |
 | usageResourceGroups | List&lt;UsageResourceGroup&gt; | Grouped usage list |
@@ -768,7 +769,7 @@ This API does not require a request body.
 | contractPrice | Long | Usage amount calculated by commitment |
 | discountPrice | Long | Discount amount |
 | discountTypeCode | String | Discount type code<br>BASIC, CONTRACT, OCP |
-| prePaidAmount | Long | Pre-paid used amount |
+| prePaidAmount | Long | Prepayment usage amount |
 | costPlanOrderId | String | Optimized Cost Plans(OCPs) order ID |
 
 
@@ -965,7 +966,7 @@ This API does not require a request body.
 | country | String | Country Code |
 | cutoff | Long | cutoff |
 | lateFee | Long | Overdue Amount |
-| prePaidTotalAmount | Long | Pre-paid used amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 | realSupplyAmount | Long | Actual Supply Amount |
 | realTaxAmount | Long | Actual VAT Paid |
 | receiptStatusCode | String | Sales Voucher Status Code<br><br>- NONE: sales have not yet been reported to the accounting team, so sales receipts cannot be viewed.<br>- EXIST: after the final amount adjustment is completed, the sales report is sent to the accounting team, and the sales voucher can be viewed. |
@@ -985,7 +986,7 @@ This API does not require a request body.
 | contractDiscount | Long | Commitment-based discount amount |
 | contractExtra | Long | Commitment underutilization charge amount |
 | ocpDiscount | Long | Optimized Cost Plans(OCPs) discount amount |
-| prePaidTotalAmount | Long | Pre-paid used amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 | totalCredit | Long | Total credit usage amount |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage list |
 | orgList | List&lt;Organization&gt; | List of organizations |
@@ -1011,7 +1012,7 @@ This API does not require a request body.
 | orgId | String | Organization ID |
 | orgName | String | Organization name |
 | totalAmount | Long | Organization total amount |
-| prePaidTotalAmount | Long | Pre-paid used amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 
 **UsageGroup**
 
@@ -1025,7 +1026,7 @@ This API does not require a request body.
 | usagePrice | Long | Total usage amount |
 | totalPrice | Long | Total usage amount with commitment-based discount applied |
 | totalDiscount | Long | Total discount amount |
-| prePaidTotalAmount | Long | Pre-paid used amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 | totalItems | Integer | Total number of usages per UsageGroup |
 | usages | List&lt;Usage&gt; | Detailed usage list |
 | usageResourceGroups | List&lt;UsageResourceGroup&gt; | Grouped usage list |
