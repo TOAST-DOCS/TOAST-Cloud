@@ -20,6 +20,8 @@ NHN CloudのPublic APIは、NHN Cloudのサービスとリソースを外部シ�
 * [パートナー管理APIガイド](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/partner-api/)
 * [リリースノート](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/release-notes/)
 
+<a id="glossary"></a>
+
 ## 用語集
 
 | 用語 | 説明 |
