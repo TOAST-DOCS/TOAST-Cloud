@@ -1,5 +1,7 @@
 ## NHN Cloud > SDK使用ガイド > Log & Crash > Android (NDK)
 
+<a id="android-ndk-crash-report"></a>
+
 ## Android NDKクラッシュレポート
 
 Androidアプリにネイティブライブラリーが含まれる場合、簡単なビルド設定でネイティブコードに対する全体スタック追跡と詳細なエラーレポートを利用できるようになります。
@@ -10,9 +12,13 @@ Androidアプリにネイティブライブラリーが含まれる場合、簡�
 * NHN Cloud Crash Reporter for NDKは NHN Cloud Loggerの初期化時にクラッシュの検知を開始します。
 * NHN Cloud Crash Reporter for NDKを使用するためには、**r17c以上のNDK**が必要です。
 
+<a id="prerequisites"></a>
+
 ### 事前準備
 
 1. [NHN Cloud Log & Crash](./log-collector-android)事前準備
+
+<a id="library-setting"></a>
 
 ### ライブラリー設定
 - アプリレベルbuild.gradleで、依存性を追加します。
@@ -32,6 +38,8 @@ dependencies {
 }
 ```
 
+<a id="crash-analysis"></a>
+
 ### クラッシュ分析
 
 * Nativeクラッシュが発生すると、ダンプ(.dmp)ファイルが生成されます。
@@ -39,11 +47,15 @@ dependencies {
 * 正確なスタック追跡のためには、必ずシンボルファイルをアップロードしてください。
 * シンボルファイルがアップロードされたら、クラッシュ発生時にLog & Crash Searchのコンソールにおいて、分析されたクラッシュ情報を閲覧できます。
 
+<a id="symbol-upload"></a>
+
 #### シンボルファイルのアップロード
 
 * シンボルファイルはProjectの特定パスに {library name}.soというファイル名で作成されます。
 * アップロードファイルの最大サイズは、500MBです。
 * {library name}.soを {library name}.so.zipに圧縮して、[Log & Crash Search > 設定 > シンボルファイル]からアップロードします。
+
+<a id="symbol-file-path"></a>
 
 #### シンボルファイルのパス
 
