@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=54f6cf9a3243 -->
+
 ## TOAST Cloud Getting Started
 
 TOAST Cloud 웹 페이지는 [표 1]과 같이 **Dev Center, Console 2가지**가 있습니다.
@@ -8,6 +10,8 @@ TOAST Cloud 웹 페이지는 [표 1]과 같이 **Dev Center, Console 2가지**�
 |Console|http://console.cloud.toast.com|프로젝트 생성/삭제, 사용정보, 상품 사용, 빌링 정보, 계정 관리 기능 제공|
 
 [표1 TOAST Cloud 제공 웹 페이지]
+
+<a id="section-1"></a>
 
 ## 상품정보
 
@@ -22,9 +26,13 @@ Dev Center는 상품 정보를 제공합니다. 상품 정보 외에 개발자 �
 |<br>관리|1. 개인 정보 수정<br> 2. 결제 카드 등록<br> 3. 통합 Appkey 관리|
 
 <br>
+<a id="console"></a>
+
 ## Console 주요기능 및 사용 방법
 
 이 문서에서는 Console에서의 주요 기능의 구체적인 사용 방법에 대하여 알아보겠습니다.
+
+<a id="console-2"></a>
 
 ### Console 접속
 
@@ -41,6 +49,8 @@ Console 메인 페이지로 접속한 후 [Login] 버튼을 클릭하여 로그�
 
 ![그림 1 TOAST Cloud 로그인 화면](http://static.toastoven.net/toastcloud/static/common/img/cms_img/wconsole/img_paycoadd.png)
 <center>[그림 1 TOAST Cloud 로그인 화면]</center>
+
+<a id="console-1"></a>
 
 ### 프로젝트 생성
 
@@ -65,6 +75,8 @@ Console 메인 페이지로 접속한 후 [Login] 버튼을 클릭하여 로그�
 ![그림 4 프로젝트 상품 이용 내역](http://static.toastoven.net/toastcloud/static/common/img/cms_img/wconsole/img_helloproject.png)
 <center>[그림 4 프로젝트 상품 이용 내역]</center>
 
+<a id="console-2-2"></a>
+
 ### 프로젝트 삭제
 
 프로젝트를 삭제하고자 하는 경우 기존의 이용 중인 모든 상품을 “이용 종료” 시켜야 하며, 프로젝트 삭제 전에 [그림 5]와 같이 전체 상품 상태가 “이용중”이 아닌지 확인합니다. 프로젝트 모든 상품이 비활성화 되어 있으면, 프로젝트명 옆의 [삭제]버튼을 클릭하여 삭제를 수행합니다.
@@ -72,11 +84,15 @@ Console 메인 페이지로 접속한 후 [Login] 버튼을 클릭하여 로그�
 ![그림 5 프로젝트 상품 비활상화 상태 확인](http://static.toastoven.net/toastcloud/static/common/img/cms_img/wconsole/img_hellostatus.png)
 <center>[그림 5 프로젝트 상품 비활상화 상태 확인]</center>
 
+<a id="console-3"></a>
+
 ### 상품 이용내역
 
 처음 프로젝트를 생성하면 다음과 같이 상품이용 내역이 나옵니다. 모든 상품은 이용하기 전 상태임을 알 수 있습니다.
 
 ![](http://static.toastoven.net/toastcloud/static/common/img/cms_img/wconsole/img_status.png)
+
+<a id="console-4"></a>
 
 ### 상품 활성화
 
@@ -88,7 +104,11 @@ Console 메인 페이지로 접속한 후 [Login] 버튼을 클릭하여 로그�
 > 참고
 > 각 상품별 사용법은 [TOAST Cloud > DOCUMENTS]를 참고해 주십시오.
 
+<a id="section-2"></a>
+
 ## 프로젝트 멤버 관리
+
+<a id="section-2-1"></a>
 
 ### 프로젝트 멤버 추가
 
@@ -108,6 +128,8 @@ Console 메인 페이지로 접속한 후 [Login] 버튼을 클릭하여 로그�
 <center>[그림 8 프로젝트 멤버 추가]</center>
 
 [확인] 버튼 클릭을 클릭하면 프로젝트에 권한 추가가 완료 됩니다. 추가한 사용자 아이디로 로그인하면 권한을 부여받은 프로젝트를 리스트에서 확인할 수 있습니다.
+
+<a id="section-2-2"></a>
 
 ### 프로젝트 권한
 
@@ -139,7 +161,11 @@ Console 메인 페이지로 접속한 후 [Login] 버튼을 클릭하여 로그�
 
 [표 3 상품 프로젝트 admin/멤버 권한]
 
+<a id="section-3"></a>
+
 ## 프로젝트 결제 관리
+
+<a id="section-3-1"></a>
 
 ### 프로젝트 결제 수단 추가
 
@@ -153,7 +179,11 @@ Console 메인 페이지로 접속한 후 [Login] 버튼을 클릭하여 로그�
 ![그림 9 결제수단 관리](http://static.toastoven.net/toastcloud/static/common/img/cms_img/wconsole/img_creditadd1.png)
 <center>[그림 9 결제수단 관리]</center>
 
+<a id="appkey"></a>
+
 ## 프로젝트 통합 Appkey 관리
+
+<a id="appkey-2"></a>
 
 ### 프로젝트 통합 Appkey 추가
 
@@ -168,6 +198,8 @@ Console 메인 페이지로 접속한 후 [Login] 버튼을 클릭하여 로그�
 
 ![그림 10 인증 관리](http://static.toastoven.net/toastcloud/static/common/img/cms_img/wconsole/img_appkey.png)
 <center>[그림 10 인증 관리]</center>
+
+<a id="section-4"></a>
 
 ## 맺음말
 
