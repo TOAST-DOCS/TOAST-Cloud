@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=4991a06c6138 -->
+
 ## NHN Cloud > SDK 사용 가이드 > Push > Android
+
+<a id="prerequisites"></a>
 
 ## 사전 준비
 
@@ -6,12 +10,18 @@
 2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Push 서비스를 활성화](/Notification/Push/ko/console-guide/)합니다.
 3. Push 콘솔에서 AppKey를 확인합니다.
 
+<a id="guide-by-push-provider"></a>
+
 ## Push 제공자별 가이드
 
 * [Firebase Cloud Messaging (이하 FCM) 가이드](https://firebase.google.com/docs/cloud-messaging/)
 * `Tencent Push Notification (QQ) 2020년 11월 서비스 종료`
 
+<a id="library-setting"></a>
+
 ## 라이브러리 설정
+
+<a id="fcm"></a>
 
 ### FCM
 * NHN Cloud FCM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
@@ -28,6 +38,8 @@ dependencies {
 }
 ```
 
+<a id="adm"></a>
+
 ### ADM
 * NHN Cloud ADM Push를 사용하기 위해 아래와 같이 build.gradle에 의존성을 추가합니다.
 
@@ -43,7 +55,11 @@ dependencies {
 }
 ```
 
+<a id="firebase-cloud-messaging-settings"></a>
+
 ## Firebase Cloud Messaging 설정
+
+<a id="add-the-project-and-app"></a>
 
 ### 프로젝트 및 앱 추가
 
@@ -55,7 +71,11 @@ dependencies {
 * 다운로드 받은 **google-services.json** 파일을 앱의 모듈(앱 수준) 디렉터리로 이동합니다.
 * 자세한 사항은 [Android 프로젝트에 Firebase 추가](https://firebase.google.com/docs/android/setup)을 참고하세요.
 
+<a id="set-up-buildgradle"></a>
+
 ### build.gradle 설정
+<a id="root-level-buildgradle"></a>
+
 #### 루트 수준의 build.gradle
 * 루트 수준의 build.gradle에 아래 코드를 추가합니다.
 
@@ -77,6 +97,8 @@ allprojects {
 }
 ```
 
+<a id="app-modules-buildgradle"></a>
+
 #### 앱 모듈의 build.gradle
 * 앱 모듈의 build.gradle에 아래 코드를 추가합니다.
 
@@ -91,7 +113,11 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
+<a id="amazon-device-messaging-settings"></a>
+
 ## Amazon Device Messaging 설정
+
+<a id="add-the-project-and-app-2"></a>
 
 ### 프로젝트 및 앱 추가
 
@@ -99,6 +125,8 @@ apply plugin: 'com.google.gms.google-services'
 * 상단 **Apps & Services**의 **My Apps**로 이동합니다.
 * **Add New App**에서 **Android**를 선택 후 앱 정보를 입력하여 앱을 등록합니다.
 * **Android 패키지 이름**, **앱 닉네임 (선택사항)**을 입력하고 **앱 등록** 버튼을 클릭합니다.
+
+<a id="add-the-api-key"></a>
 
 ### API Key 추가
 
@@ -108,10 +136,14 @@ apply plugin: 'com.google.gms.google-services'
 * 생성한 API Key를 복사하여 프로젝트의 **assets** 폴더에 **api_key.txt** 파일로 저장합니다.
 * 자세한 사항은 [Amazon Device Messaging - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html)를 참고하세요.
 
+<a id="download-the-adm-sdk"></a>
+
 ### ADM SDK 다운로드
 
 * Amazon Developer의 [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm)에서 ADM SDK를 다운로드합니다.
 * 다운로드한 **amazon-device-messaging-1.2.0.jar** 파일을 프로젝트의 **amazon/libs** 폴더에 저장합니다.
+
+<a id="app-modules-buildgradle-2"></a>
 
 #### 앱 모듈의 build.gradle
 ```groovy
@@ -120,6 +152,8 @@ dependencies {
     compileOnly files('amazon/libs/amazon-device-messaging-1.2.0.jar')
 }
 ```
+
+<a id="proguard-settings"></a>
 
 ### Proguard 설정
 
@@ -134,6 +168,8 @@ dependencies {
 -keep public class * extends com.amazon.device.messaging.ADMMessageHandlerJobBase
 ```
 
+<a id="push-initialization"></a>
+
 ## Push 초기화
 
 * NhnCloudPush.initialize를 호출하여 NHN Cloud Push를 초기화합니다.
@@ -141,6 +177,8 @@ dependencies {
 * [NhnCloudPushConfiguration](./push-android/#nhncloudpushconfiguration) 객체는 NhnCloudPushConfiguration.Builder를 사용하여 생성할 수 있습니다.
 * Push 콘솔에서 발급 받은 AppKey를 NhnCloudPushConfiguration.newBuilder 매개변수로 전달합니다.
 * 사용하기를 원하는 PushType을 초기화 호출시 전달해야 합니다.
+
+<a id="fcm-initialization-example"></a>
 
 ### FCM 초기화 예시
 
@@ -151,6 +189,8 @@ NhnCloudPushConfiguration configuration =
 
 NhnCloudPush.initialize(PushType.FCM, configuration);
 ```
+
+<a id="adm-initialization-example"></a>
 
 ### ADM 초기화 예시
 
@@ -165,11 +205,15 @@ NhnCloudPush.initialize(PushType.ADM, configuration);
 > NhnCloudPush.initialize(NhnCloudPushConfiguration)는 Deprecated 되었습니다.
 > NhnCloudPush.initialize(NhnCloudPushConfiguration)를 사용하여 초기화할 경우 PushType은 자동으로 FCM으로 설정됩니다.
 
+<a id="settings-when-using-notification-hub"></a>
+
 ## Notification Hub 사용 시 설정
 
 * NHN Cloud Push SDK는 Notification Hub를 지원합니다.
 * Notification Hub를 사용하려면 NhnCloudPushConfiguration.Builder.setServiceType(PushServiceType.NOTIFICATION_HUB)을 설정해야 합니다.
 * 기본값은 PushServiceType.PUSH이며, 설정하지 않으면 기존 Push 방식이 적용됩니다.
+
+<a id="notification-hub-fcm-initialization-example"></a>
 
 ### Notification Hub + FCM 초기화 예시
 
@@ -182,11 +226,15 @@ NhnCloudPushConfiguration configuration =
 NhnCloudPush.initialize(PushType.FCM, configuration);
 ```
 
+<a id="service-login"></a>
+
 ## 서비스 로그인
 * NHN Cloud SDK에서 제공하는 모든 상품(Push, IAP, Log & Crash등)은 하나의 동일한 사용자 아이디를 사용합니다.
     * [NhnCloudSdk.setUserId](./getting-started-android/#userid)로 사용자 아이디를 설정할 수 있습니다.
 * 서비스 로그인 단계에서 사용자 아이디 설정, 토큰 등록 기능을 구현하는 것을 권장합니다.
 * 토큰 등록 후 사용자 아이디를 설정 또는 변경하면 토큰 정보를 갱신합니다.
+
+<a id="service-login-example"></a>
 
 ### 서비스 로그인 예제
 
@@ -198,16 +246,22 @@ public void onLogin(String userId) {
 }
 ```
 
+<a id="token-registration"></a>
+
 ## 토큰 등록
 * NhnCloudPush.registerToken() 메서드를 사용하여 Push 토큰을 NHN Cloud Push 서버로 전송합니다. 이때 수신 동의 여부(NhnCloudPushAgreement)를 파라미터로 전달합니다.
 * 최초 토큰 등록 시 사용자 아이디가 설정되어 있지 않으면, 단말기 식별자를 사용하여 등록합니다.
 * 토큰이 성공적으로 등록되면, Push 메시지를 수신할 수 있습니다.
+
+<a id="consent-setting"></a>
 
 ### 수신 동의 설정
 * 정보통신망법 규정(제50조부터 제50조의 8)에 따라 토큰 등록 시 알림/홍보성/야간홍보성 Push 메시지 수신에 관한 동의 여부도 함께 입력받습니다. 메시지 발송 시 수신 동의 여부를 기준으로 자동으로 필터링합니다.
     * [KISA 가이드 바로 가기](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [법령 바로 가기](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * NhnCloudPushAgreement에 수신 동의 여부를 설정하여 토큰 등록 시 NHN Cloud Push 서버로 전송합니다.
+
+<a id="example-of-token-registration-and-agreement-setting"></a>
 
 ### 토큰 등록 및 수신 동의 설정 예시
 ```java
@@ -234,8 +288,12 @@ NhnCloudPush.registerToken(context, agreement, new RegisterTokenCallback() {
 });
 ```
 
+<a id="token-information-query"></a>
+
 ## 토큰 정보 조회
 * NHN Cloud Push 서버에 등록된 토큰 정보를 조회합니다.
+
+<a id="token-information-query-example"></a>
 
 ### 토큰 정보 조회 예시
 ```java
@@ -257,12 +315,16 @@ NhnCloudPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 });
 ```
 
+<a id="token-unregistration"></a>
+
 ## 토큰 해제
 * NHN Cloud Push 서버에 등록된 토큰을 해제합니다. 해제된 토큰은 메시지 발송 대상에서 제외됩니다.
 * `서비스 로그아웃 후에 메시지 수신을 원치 않으시면 토큰을 해제해야 합니다.`
 * `토큰이 해제되어도 단말기 상에 알림 권한은 회수되지 않습니다.`
 
 > 이미 해제된 토큰을 해제하면 "이미 해제된 토큰입니다(Already a token has been unregistered)" 라는 메시지와 함께 성공이 반환됩니다.
+
+<a id="token-unregistration-example"></a>
 
 ### 토큰 해제 예시
 ```java
@@ -282,6 +344,8 @@ NhnCloudPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 });
 ```
 
+<a id="message-reception"></a>
+
 ## 메시지 수신
 * Push 메시지 수신 시 OnReceiveMessageListener 를 통해 통지 받을 수 있습니다.
 * Push 메시지 수신 리스너는 NhnCloudPush.setOnReceiveMessageListener 함수를 사용하여 등록할 수 있습니다.
@@ -290,6 +354,8 @@ NhnCloudPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 
 > 메시지 수신 시 사용자가 앱을 사용 중(Foreground)일 경우 알림을 노출하지 않습니다.
 > Foreground 여부는 OnReceiveMessageListener#onReceive 에 전달되는 isForeground 를 통해 확인 할 수 있습니다.
+
+<a id="example-of-registering-a-message-reception-listener"></a>
 
 ### 메시지 수신 리스너 등록 예시
 ``` java
@@ -315,11 +381,15 @@ public class MyApplication extends Application {
 }
 ```
 
+<a id="notification-permission"></a>
+
 ## 알림 권한
 
 * Android 13(API 레벨 33) 이상에서 알림 표시를 위해 POST\_NOTIFICATIONS 권한이 필요합니다.
 * 기본적으로 NHN Cloud SDK(1.2.0 버전 이상)에는 매니페스트에 POST\_NOTIFICATIONS 권한이 포함되어 있습니다.
 * 앱에서 알림을 표시하려면 런타임 권한을 요청해야 하며 사용자가 이 권한을 부여할 때까지 앱에서 알림을 표시할 수 없습니다.
+
+<a id="notification-permission-of-apps-targeting-android-13api-level-33-or-higher"></a>
 
 ### Android 13(API 레벨 33) 이상을 타겟팅하는 앱의 알림 권한
 
@@ -330,6 +400,8 @@ if (Build.VERSION.SDK_INT >= 33) {
     NhnCloudNotification.requestPostNotificationsPermission(this, PERMISSION_REQUEST_CODE);
 }
 ```
+
+<a id="notification-permission-of-apps-targeting-android-12-api-level-32-or-lower"></a>
 
 ### Android 12(API 레벨 32) 이하를 타겟팅하는 앱의 알림 권한
 
@@ -347,10 +419,14 @@ if (Build.VERSION.SDK_INT <= 32) {
 }
 ```
 
+<a id="notification-click"></a>
+
 ## 알림 클릭
 * 사용자가 노출된 알림을 클릭하여 앱이 실행되었을 때 OnClickListener 를 통해 통지 받울 수 있습니다.
 * 알림 클릭 리스너는 NhnCloudNotification.setOnClickListener 함수를 사용하여 등록할 수 있습니다.
 * 앱이 실행 중이지 않을 때도 알림 클릭 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
+
+<a id="example-of-notification-click-listener-registration"></a>
 
 ### 알림 클릭 리스너 등록 예시
 ```java
@@ -372,7 +448,11 @@ public class MyApplication extends Application {
 }
 ```
 
+<a id="notification-settings"></a>
+
 ## 알림 설정
+
+<a id="default-notification-channel-name-setting"></a>
 
 ### 기본 알림 채널명 설정
 * 알림 채널명은 안드로이드 8.0(API 레벨 26) 이상 단말기의 알림 설정에 노출되는 채널의 이름입니다.
@@ -381,6 +461,8 @@ public class MyApplication extends Application {
 * `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
 
 > 기본 알림 채널명을 설정하지 않으면 애플리케이션의 이름으로 자동 설정됩니다.
+
+<a id="example-of-setting-the-default-notification-channel-name"></a>
 
 #### 기본 알림 채널명 설정 예시
 ##### 코드에서 설정 예시
@@ -404,12 +486,16 @@ public class MyApplication extends Application {
            android:value="@string/default_notification_channel_name"/>
 ```
 
+<a id="notification-preferences-setting"></a>
+
 ### 알림 기본 옵션 설정
 * 알림의 우선 순위, 작은 아이콘, 배경색, LED 라이트, 진동, 알림음을 설정합니다.
 * 앱이 포그라운드 상태일 때의 알림 노출 여부를 설정합니다.
 * 배지 아이콘의 사용 여부를 설정합니다.
 * 안드로이드 8.0(API 레벨 26) 이상 단말기에서는 기본 알림 채널에만 옵션이 적용 됩니다.
 * `Application#onCreate` 에서 등록하거나 AndroidManifest.xml 파일에 메타 데이터로 정의할 수 있습니다.
+
+<a id="example-of-setting-notification-default-options"></a>
 
 #### 알림 기본 옵션 설정 예시
 ##### 코드에서 설정 예시
@@ -496,16 +582,24 @@ public class MyApplication extends Application {
            android:value="false"/>
 ```
 
+<a id="notification-sound-setting"></a>
+
 ### 알림음 설정
 * Push 메시지 발송 시 sound 필드를 추가하면 로컬 리소스(mp3, wav)를 알림음으로 설정할 수 있습니다. (안드로이드 8.0 미만에서만 동작)
 * 알림음은 애플리케이션 리소스 폴더 하위의 raw 폴더에 있는 로컬 리소스만 사용 가능합니다.
     * 예) main/res/raw/notification_sound.wav
 
+<a id="rich-message"></a>
+
 ## 리치 메시지
 
 * 리치 메시지는 알림의 제목, 본문과 함께 이미지를 알림에 표현하고 버튼, 답장 등의 액션을 추가합니다.
 
+<a id="supported-rich-messages"></a>
+
 ### 지원하는 리치 메시지
+
+<a id="button"></a>
 
 #### 버튼
 | 유형 | 기능 | 액션 |
@@ -519,6 +613,8 @@ public class MyApplication extends Application {
 
 > 버튼은 메시지당 최대 3개까지 지원합니다.
 
+<a id="media"></a>
+
 #### 미디어
 * 애플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
 * 이미지 외의 동영상, 소리 등의 미디어는 지원하지 않습니다.
@@ -529,20 +625,28 @@ public class MyApplication extends Application {
 
 > 웹 URL 사용시 미디어 파일 다운로드 시간이 소요됩니다.
 
+<a id="large-icon"></a>
+
 #### 큰 아이콘
 * 애플리케이션내의 리소스 아이디, 안드로이드 Assets 파일 경로, URL로 파일 지정이 가능합니다.
 * 큰 아이콘의 이미지는 1:1 비율을 권장합니다.
 
 > 사용된 이미지가 1:1 비율이 아닌 경우 강제로 1:1로 변경되기 때문에 기대와 다른 이미지가 노출될 수 있습니다.
 
+<a id="group"></a>
+
 #### 그룹
 * 동일한 그룹키를 갖는 알림들이 그룹핑되어 표현됩니다.
 * 안드로이드 7.0(API 레벨 24) 이상부터 사용 가능합니다.
+
+<a id="register-notification-action-listener"></a>
 
 ### 알림 액션 리스너 등록
 * 사용자가 알림의 버튼 혹은 답장 전송 버튼 클릭시 알림 액션 리스너로 통지합니다.
 * [PushAction](./push-android/#pushaction) 객체로 액션 정보를 확인 가능합니다.
 * 앱이 실행중이지 않을 때에도 메시지 수신 통지를 받기 위해서는 `Application#onCreate` 에서 등록해야 합니다.
+
+<a id="example-of-notification-action-listener-registration"></a>
 
 #### 알림 액션 리스너 등록 예시
 
@@ -569,6 +673,8 @@ public class MyApplication extends Application {
 }
 ```
 
+<a id="user-defined-message-handling"></a>
+
 ## 사용자 정의 메시지 처리
 * 메시지 수신 후 별도의 처리 과정을 수행하거나 수신한 메시지의 내용을 수정해 알림을 노출해야하는 경우 [NhnCloudPushMessageReceiver](./push-android/#nhncloudpushmessagereceiver)를 상속 구현하는 브로드캐스트를 구현해야 합니다.
 * NhnCloudPushMessageReceiver를 상속 구현한 브로트캐스트는 AndroidManifest.xml 에도 반드시 등록해야 합니다.
@@ -577,6 +683,8 @@ public class MyApplication extends Application {
 > **(주의)**
 > 1. onMessageReceived 함수에서 메시지 수신 후 알림 노출을 요청(notify)하지 않으면 알림이 노출되지 않습니다.
 > 2. 알림을 직접 생성할 경우 Push 서비스 인텐트를 알림의 콘텐츠 인텐트로 설정해야만 지표 수집이 가능합니다. (아래 지표 수집 기능 추가 섹션 참고)
+
+<a id="example-of-nhncloudpushmessagingservice-implementation-code"></a>
 
 ### NhnCloudPushMessagingService 구현 코드 예
 ```java
@@ -616,6 +724,8 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 }
 ```
 
+<a id="example-of-registering-in-androidmanifestxml"></a>
+
 ### AndroidManifest.xml 등록 예
 > **(주의)**
 > 1. NhnCloudPushMessageReceiver를 사용하는 경우, 반드시 permission을 설정해야 합니다.
@@ -639,8 +749,12 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 </manifest>
 ```
 
+<a id="adding-the-metric-collection-feature-fcm-only"></a>
+
 ### 지표 수집 기능 추가 (FCM Only)
 * 알림을 직접 생성하는 경우, 지표 수집 기능을 사용하려면 getContentIntent() 함수를 사용하여 생성한 인텐트를 알림의 콘텐츠 인텐트로 설정해야 합니다.
+
+<a id="example-of-adding-the-metrics-collection-feature"></a>
 
 #### 지표 수집 기능 추가 예
 ```java
@@ -695,16 +809,24 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 }
 ```
 
+<a id="using-emoji"></a>
+
 ## Emoji 사용
 > **(주의)**
 > 기기에서 지원하지 않는 emoji를 사용한 경우, 표시되지 않을 수 있습니다.
+
+<a id="user-tag"></a>
 
 ## 사용자 태그
 
 * [사용자 태그](/Notification/Push/ko/console-guide/#_16) 기능은 여러 사용자 아이디를 하나의 태그로 묶고 이를 활용하여 메시지 발송이 가능합니다.
 * 태그명이 아닌 태그 아이디(8자리 문자열)를 기반으로 동작하며, 태그 아이디는 콘솔 > 태그 메뉴에서 생성 및 확인 가능합니다.
 
+<a id="modify-user-tags"></a>
+
 ### 사용자 태그 수정
+
+<a id="example-of-modifying-user-tags"></a>
 
 #### 사용자 태그 수정 예
 
@@ -745,9 +867,13 @@ NhnCloudPush.setUserTag(tagIds, new UserTagCallback() {
 });
 ```
 
+<a id="retrieve-user-tags"></a>
+
 ### 사용자 태그 획득
 
 * 현재 사용자에 등록된 모든 태그 아이디 목록을 반환합니다.
+
+<a id="example-of-retrieving-user-tags"></a>
 
 #### 사용자 태그 획득 예
 
@@ -767,7 +893,11 @@ NhnCloudPush.getUserTag(new UserTagCallback() {
 });
 ```
 
+<a id="delete-user-tag"></a>
+
 ### 사용자 태그 삭제
+
+<a id="example-of-deleting-user-tags"></a>
 
 #### 사용자 태그 삭제 예
 
@@ -808,7 +938,11 @@ NhnCloudPush.removeAllUserTag(new UserTagCallback() {
 });
 ```
 
+<a id="nhn-cloud-push-class-reference"></a>
+
 ## NHN Cloud Push Class Reference
+<a id="nhncloudpushconfiguration"></a>
+
 ### NhnCloudPushConfiguration
 * NHN Cloud Push를 초기화할 때 전달되는 Push 설정 정보입니다.
 
@@ -822,6 +956,8 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 |---|---|---|
 | getAppKey | String | Push 서비스 앱 키를 반환합니다. |
 | static newBuilder | NhnCloudPushConfiguration.Builder | NhnCloudPushConfiguration 객체 생성을 위한 빌더를 생성합니다. |
+
+<a id="pushresult"></a>
 
 ### PushResult
 * 비동기 API 호출시 콜백의 응답으로 반환되는 결과 객체입니다.
@@ -841,6 +977,8 @@ public boolean isFailure();
 | getMessage | int | 결과 메시지를 반환합니다. |
 | isSuccess | boolean | 성공 여부를 반환합니다. |
 | isFailure | boolean | 실패 여부를 반환합니다. |
+
+<a id="tokeninfo"></a>
 
 ### TokenInfo
 * 토큰 정보 조회 요청시 반환되는 토큰 정보 객체입니다.
@@ -868,6 +1006,8 @@ public String getToken();
 | getActivatedDateTime | Date | 토큰의 최근 등록 일시를 반환합니다. |
 | getToken | String | 토큰을 반환합니다. |
 
+<a id="nhncloudremotemessage"></a>
+
 ### NhnCloudRemoteMessage
 * 메시지 수신 리스너, 커스텀 리시버에서 메시지 수신시 반환되는 객체 입니다.
 
@@ -885,6 +1025,8 @@ public String getSenderId();
 | setChannelId |  | 채널 ID를 설정합니다. |
 | getMessage | NhnCloudPushMessage | 메시지 객체를 반환합니다. |
 | getSenderId | String | 발신자 ID를 반환합니다. (FCM Only) |
+
+<a id="nhncloudpushmessage"></a>
 
 ### NhnCloudPushMessage
 * 수신한 메시지 내용을 담는 객체 입니다.
@@ -913,6 +1055,8 @@ public Map<String, String> getExtras();
 | getExtras |  | 수신된 메시지 전체를 반환합니다. |
 
 
+<a id="pushaction"></a>
+
 ### PushAction
 * 알림 액션 수신시 반환되는 객체 입니다.
 
@@ -932,6 +1076,8 @@ public String getUserText();
 | getNotificationChannel | String | 액션이 실행된 알림의 채널을 반환합니다. |
 | getMessage | NhnCloudPushMessage | 액션이 실행된 알림의 메시지 정보를 반환합니다. |
 | getUserText | RichMessage | 사용자가 입력한 문자열을 반환합니다. |
+
+<a id="nhncloudpushmessagereceiver"></a>
 
 ### NhnCloudPushMessageReceiver
 * 메시지 내용 수정, 실행 인텐트 정의, 알림 직접 생성 등의 기능을 위해서는 사용자가 구현해야하는 객체 입니다.
@@ -955,6 +1101,8 @@ public final PendingIntent getContentIntent(Context context, NhnCloudRemoteMessa
 | notify | | Context, int, Notification | 사용자 알림을 특정 ID로 노출합니다. |
 | @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, NhnCloudRemoteMessage, PendingIntent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. <br> Android 12 (API 레벨 31) 이상부터 정상 동작 하지 않으며, 대신 getContentIntent()를 사용해야 합니다. |
 | getContentIntent | PendingIntent | Context, NhnCloudRemoteMessage, Intent | 지표 전송을 포함하는 사용자 실행 인텐트를 반환합니다. |
+
+<a id="nhncloudnotificationoptions"></a>
 
 ### NhnCloudNotificationOptions
 * 기본 알림 옵션 설정시 우선순위, 작은 아이콘, 배경색, LED, 진동, 알림음, 포그라운드 알림 노출 정보를 설정하는 객체입니다.
