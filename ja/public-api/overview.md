@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=49cdd69ef3b0 -->
+
 # Public API 概要
 
 **NHN Cloud > Public API使用ガイド > Public API 概要**
@@ -19,6 +21,8 @@ NHN CloudのPublic APIは、NHN Cloudのサービスとリソースを外部シ�
 * [フレームワークAPI](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/framework-api/)
 * [パートナー管理APIガイド](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/partner-api/)
 * [リリースノート](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/release-notes/)
+
+<a id="glossary"></a>
 
 ## 用語集
 
