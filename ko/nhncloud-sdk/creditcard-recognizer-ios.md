@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=5686df8dc3c5 -->
+
 ## NHN Cloud > SDK 사용 가이드 > OCR > Credit Card (iOS)
+
+<a id="prerequisites"></a>
 
 ## 사전 준비
 
@@ -8,9 +12,13 @@
 
 <br>
 
+<a id="supported-environment"></a>
+
 ## 지원 환경
 
 NHN Cloud OCR은 iOS 11.0 이상에서 동작합니다.<br>
+
+<a id="configuration-of-nhn-cloud-ocr"></a>
 
 ## NHN Cloud OCR 구성
 
@@ -22,7 +30,11 @@ iOS용 NHN Cloud OCR SDK의 구성은 다음과 같습니다.
 | Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
+<a id="apply-nhn-cloud-ocr-sdk-to-xcode-project"></a>
+
 ## NHN Cloud OCR SDK를 Xcode 프로젝트에 적용
+
+<a id="apply-with-cococapods"></a>
 
 ### 1. Cococapods을 통한 적용
 
@@ -37,6 +49,8 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
+<a id="apply-nhn-cloud-sdk-using-swift-package-manager"></a>
+
 ### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
 
 * XCode에서 **File > Add Packages...** 메뉴를 선택합니다.
@@ -45,13 +59,19 @@ end
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
+<a id="set-up-project"></a>
+
 #### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
+<a id="download-binaries-and-apply-to-nhn-cloud-sdk"></a>
+
 ### 3. 바이너리를 다운로드하여 NHN Cloud SDK 적용
+
+<a id="set-up-framework"></a>
 
 #### 프레임워크 설정
 
@@ -62,11 +82,15 @@ end
 ![linked_avfoundation_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_avfoundation_frameworks.png)
 ![linked_frameworks_ocr](https://static.toastoven.net/toastcloud/sdk/ios/linked_frameworks_ocr.png)
 
+<a id="set-up-project-2"></a>
+
 #### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+<a id="initialize-nhncloudocr-sdk"></a>
 
 ## NHNCloudOCR SDK 초기화
 * NHN Cloud Console에서 발급 받은 AppKey와 Secret을 NHNCloudOCRConfiguration 객체에 설정합니다.
@@ -78,6 +102,8 @@ Key : NSCameraUsageDescription
 Value : [카메라 권한 요청 메시지]
 ```
 
+<a id="specification-for-initialization-api"></a>
+
 ### 초기화 API 명세
 
 ``` objc
@@ -87,6 +113,8 @@ Value : [카메라 권한 요청 메시지]
 // Delegate 설정
 + (void)setCreditCardRecognizerDelegate:(nullable id<NHNCloudCreditCardRecognizerDelegate>)delegate;
 ```
+
+<a id="specification-for-delegate-api"></a>
 
 ### Delegate API 명세
 * NHNCloudCreditCardRecognizerDelegate를 등록하면 인식 결과에 대한 통지를 받을 수 있습니다.
@@ -113,9 +141,13 @@ Value : [카메라 권한 요청 메시지]
 @end
 ```
 
+<a id="set-up-detected-image-return"></a>
+
 ### 검출 이미지 반환 설정하기
 * OCR 결과인 NHNCloudCreditCardInfo 데이터에 검출된 이미지를 함께 반환 받을 수 있습니다. 
     * 기본값은 비활성화입니다. 
+<a id="specification-for-setting-up-detected-image-return-api"></a>
+
 #### 검출 이미지 반환 설정 API 명세 
 ```objc
 @interface NHNCloudOCR : NSObject
@@ -127,7 +159,11 @@ Value : [카메라 권한 요청 메시지]
 ```
 
 
+<a id="display-recognition-area"></a>
+
 ### 인식 영역 표시하기
+
+<a id="return-recognition-area-api"></a>
 
 #### 인식 영역 반환 API
 * OCR 결과인 NHNCloudCreditCardInfo 데이터에 인식된 영역의 좌표 정보를 반환 받을 수 있습니다.
@@ -144,6 +180,8 @@ Value : [카메라 권한 요청 메시지]
 @end
 
 ```
+
+<a id="draw-on-the-recognition-area-imageview"></a>
 
 #### 인식 영역 ImageView에 그리기
 
@@ -200,6 +238,8 @@ Value : [카메라 권한 요청 메시지]
 }
 
 ```
+
+<a id="example-of-initialization-process"></a>
 
 ### 초기화 과정 예
 
@@ -267,17 +307,27 @@ Value : [카메라 권한 요청 메시지]
 ```
 
 
+<a id="how-to-apply-credit-card"></a>
+
 ## Credit Card 적용 방법
+
+<a id="nhncloudcreditcardrecognizerviewcontroller"></a>
 
 ### NHNCloudCreditCardRecognizerViewController
 
+<a id="use-credit-card-recognizer-viewcontroller"></a>
+
 #### 1. Credit-Card Recognizer ViewController 사용하기
 * NHNCloudCreditCardRecognizerViewController를 상속 구현한 Class를 Storyboard의 ViewController에 연결하여 기본 UI가 적용된 Credit-Card Recognizer를 손쉽게 사용할 수 있습니다.
+
+<a id="create-class"></a>
 
 #### 2. Class 생성
 ![default_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/default_viewcontroller.png)
 * NHNCloudCreditCardRecognizerViewController를 subclass로 가지는 ViewController Class를 생성합니다. 
 
+
+<a id="connect-to-storyboard"></a>
 
 #### 3. Storyboard에 연결
 ![create_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/create_viewcontroller.png)
@@ -291,9 +341,13 @@ Value : [카메라 권한 요청 메시지]
 
 * Delegate를 설정하고 구현합니다. 
 
+<a id="customize-nhncloudcreditcardrecognizerserviceviewcontroller"></a>
+
 ### NHNCloudCreditCardRecognizerServiceViewController 커스터마이징
 * NHNCloudCreditCardRecognizerServiceViewController를 사용하여 UI를 커스터마이징할 수 있습니다.
   * **Credit-Card 가이드의 경우 미리 정의된 값을 사용하기 때문에 변경이 불가능합니다.**
+
+<a id="inherit-nhncloudcreditcardrecognizerserviceviewcontroller"></a>
 
 #### 1. NHNCloudCreditCardRecognizerServiceViewController 상속 
 * NHNCloudCreditCardRecognizerServiceViewController를 상속 구현하여 커스터마이징할 수 있습니다.
@@ -370,11 +424,15 @@ Value : [카메라 권한 요청 메시지]
 
 ```
 
+<a id="use-test-environment"></a>
+
 ### 테스트 환경 사용하기
 * NHNCloudOCR SDK에서 테스트를 위해 제공하는 Credit-Card 가이드를 사용하여 OCR을 테스트할 수 있습니다.
   * 신용카드가 Credit-Card 가이드 안에 존재할 경우 OCR이 시작됩니다.
     * 기본값은 hidden으로 눈에 보이지 않는 가이드가 존재합니다.
     * `enableTestGuide`를 사용하여 테스트용 가이드를 출력할 수 있습니다. 
+
+<a id="specification-for-credit-card-guide"></a>
 
 #### Credit-Card 가이드 API 명세
 ```objc
@@ -382,6 +440,8 @@ Value : [카메라 권한 요청 메시지]
 - (void)enableTestGuide;
 @end
 ```
+<a id="example-of-using-credit-card-guide"></a>
+
 #### Credit-Card 가이드 사용 예
 
 ```objc
@@ -397,12 +457,18 @@ Value : [카메라 권한 요청 메시지]
 }
 ```
 
+<a id="control-credit-card-recognizer-viewcontroller"></a>
+
 ## Credit-Card Recognizer ViewController 제어하기
 
 > `Credit Card 적용 방법`을 보고 NHNCloudCreditCardRecognizerViewController 또는 NHNCloudCreditCardRecognizerServiceViewController 상속 구현 필요
 
+<a id="credit-card-recognizer-startstop"></a>
+
 ### 1. Credit-Card Recognizer 시작/중지
 * Credit-Card Recognizer를 시작하거나 중지합니다.
+
+<a id="specification-for-start-or-stop-credit-card-recognizer"></a>
 
 #### Credit-Card Recognizer 시작/중지 API 명세
 ```objc
@@ -410,6 +476,8 @@ Value : [카메라 권한 요청 메시지]
 - (void)stopRunning;
 - (BOOL)isRunning;
 ```
+<a id="example-of-start-or-stop-credit-card-recognizer"></a>
+
 #### Credit-Card Recognizer 시작/중지 사용 예
 ```objc
 - (void)start {
@@ -422,8 +490,12 @@ Value : [카메라 권한 요청 메시지]
 }
 ```
 
+<a id="rotate-credit-card-guide"></a>
+
 ### 2. Credit-Card 가이드 회전
 * 신용카드의 방향에 맞도록 Credit-Card 가이드를 회전시킬 수 있습니다.
+
+<a id="specification-for-rotate-credit-card-guide"></a>
 
 #### Credit-Card 가이드 회전 API 명세
 ```objc
@@ -431,6 +503,8 @@ Value : [카메라 권한 요청 메시지]
 @property (assign, nonatomic, readonly) NHNCloudCreditCardOrientation creditCardGuideOrientation;
 - (void)rotateCreditCardGuideOrientation;
 ```
+<a id="example-of-using-rotate-credit-card-guide"></a>
+
 #### Credit-Card 가이드 회전 사용 예
 ```objc
 typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
@@ -453,8 +527,12 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
 ```
 
+<a id="light-enabledisable"></a>
+
 ### 3. 라이트 활성/비활성
 * 디바이스의 카메라 라이트를 활성화하거나 비활성화합니다.
+
+<a id="specification-for-enabledisable-light-api"></a>
 
 #### 라이트 활성/비활성 API 명세
 ```objc
@@ -462,6 +540,8 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 - (void)disableTorchMode;
 - (BOOL)isEnableTorchMode;
 ```
+<a id="example-of-enable-or-disable-the-camera-light-of-a-device"></a>
+
 #### 라이트 활성/비활성 사용 예
 ```objc
 - (void)torchButtonAction:(UIButton *)button {    
@@ -475,8 +555,12 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 ```
 
 
+<a id="enabledisable-camera"></a>
+
 ### 4. 카메라 활성/비활성
 * 디바이스의 카메라를 활성화하거나 비활성화합니다.
+
+<a id="specification-for-enabledisable-camera"></a>
 
 #### 카메라 활성/비활성 API 명세
 ```objc
@@ -484,6 +568,8 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 - (void)stopRunningCamera;
 - (BOOL)isRunnginCamera;
 ```
+<a id="example-of-enabledisable-camera"></a>
+
 #### 카메라 활성/비활성 사용 예
 ```objc
 - (void)cameraButtonAction:(UIButton *)button {    
