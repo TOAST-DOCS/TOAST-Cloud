@@ -1,8 +1,12 @@
 ## NHN Cloud > SDK使用ガイド > 開始する > Android
 
+<a id="supported-environment"></a>
+
 ## サポート環境
 
 * Android 5.1(API 22)以上
+
+<a id="nhn-cloud-sdk-components"></a>
 
 ## NHN Cloud SDKの構成
 
@@ -39,7 +43,11 @@ NHN Cloud SDKが提供するサービスの中から、希望する機能を選�
 | com.nhncloud.android:nhncloud-push-fcm:1.12.0    | Push <br>Firebase Cloud Messaging |
 | com.nhncloud.android:nhncloud-creditcard-recognizer:1.12.0    | Credit Card Recognizer |
 
+<a id="apply-nhn-cloud-sdk-to-android-studio-projects"></a>
+
 ## NHN Cloud SDKをAndroid Studioプロジェクトに適用
+
+<a id="build-android-with-gradle"></a>
 
 ### 1. Gradleを使用してAndroidビルド
 
@@ -63,15 +71,21 @@ NHN Cloud SDKが提供するサービス別の設定方法は次のとおりで�
 - [Pushライブラリ設定](./push-android/#_2)
 - [Credit Card Recognizerライブラリ設定](./creditcard-recognizer-android/#_1)
 
+<a id="build-android-with-aar"></a>
+
 ### 2. AARを使用してAndroidビルド
 
 Android SDKは[Downloads](../../../Download/#toast-sdk)ページでダウンロードできます。
+
+<a id="set-user-id"></a>
 
 ## UserID設定
 
 NHN Cloud SDKにUserIDを設定できます。
 設定したUserIDは、NHN Cloud SDKの各モジュールで共通使用されます。
 NhnCloudLoggerのログ送信APIを呼び出すたびに、設定したUserIDをログと一緒にサーバーに送信します。
+
+<a id="specification-for-user-id-setting-api"></a>
 
 ### UserID設定API仕様
 
@@ -84,7 +98,11 @@ public static void setUserId(String userId);
 | -- | -- |
 | userId | String：ユーザーID|
 
+<a id="example-of-user-id-setting"></a>
+
 ### UserID設定例
+
+<a id="login"></a>
 
 #### ログイン
 
@@ -93,6 +111,8 @@ public static void setUserId(String userId);
 NhnCloudSdk.setUserId(userId);
 ```
 
+<a id="logout"></a>
+
 #### ログアウト
 
 ```java
@@ -100,10 +120,14 @@ NhnCloudSdk.setUserId(userId);
 NhnCloudSdk.setUserId(null);
 ```
 
+<a id="set-debug-mode"></a>
+
 ## デバッグモード設定
 
 NHN Cloud SDKの内部ログを確認するために、デバッグモードを設定できます。
 NHN Cloud SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
+
+<a id="specification-for-debug-mode-setting-api"></a>
 
 ### デバッグモード設定API仕様
 
@@ -116,7 +140,11 @@ public static void setDebugMode(boolean debug);
 | -- | -- |
 | debug | boolean：デバッグモードを有効にするにはtrue、無効にする場合はfalse。|
 
+<a id="usage-example-of-debug-mode-setting"></a>
+
 ### デバッグモード設定使用例
+
+<a id="enable-debug-mode"></a>
 
 #### デバッグモード有効化
 
@@ -124,6 +152,8 @@ public static void setDebugMode(boolean debug);
 // Enable debug mode.
 NhnCloudSdk.setDebugMode(true);
 ```
+
+<a id="disable-debug-mode"></a>
 
 #### デバッグモード無効化
 
@@ -133,6 +163,8 @@ NhnCloudSdk.setDebugMode(false);
 ```
 
 > [注意]アプリをリリースする時は、デバッグモードを無効化する必要があります。
+
+<a id="use-nhn-cloud-services"></a>
 
 ## NHN Cloudサービス使用
 
