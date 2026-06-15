@@ -1,6 +1,12 @@
+<!-- pre-align:aligned sig=db8892d30f02 -->
+
 ## NHN Cloud > Public API > Release Notes
 
+<a id="march-24-2026"></a>
+
 ### March 24, 2026
+<a id="added-features"></a>
+
 #### Added Features
 
 - User Access Key token
@@ -8,7 +14,11 @@
 - Framework API
     - Added a method to issue and retrieve a User Access Key ID for issuing JWT tokens
 
+<a id="december-23-2025"></a>
+
 ### December 23, 2025
+<a id="added-features-2"></a>
+
 #### Added Features
 
 - Framework API
@@ -17,15 +27,27 @@
 - Partner Management API
     - Added APIs for metering inquiry, and metering deletion
 
+<a id="november-25-2025"></a>
+
 ### November 25, 2025
-#### Feature Updates
+<a id="added-features-3"></a>
+
+#### Added Features
+
+<!-- TODO: translate body -->
+
+**Feature Updates**
 
 - Framework API
     - Added the API to view service information lists
 - Partner Management API
     - Added the API for daily usage amount inquiry and resource usage amount inquiry by tag
 
+<a id="october-28-2025"></a>
+
 ### October 28, 2025
+<a id="added-new-features"></a>
+
 #### Added New Features
 
 - Framework API
@@ -33,42 +55,90 @@
 - Partner Management API
   - New API guide only for partner
 
+<a id="june-24-2025"></a>
+
 ### June 24, 2025
+<a id="feature-updates"></a>
+
 #### Feature Updates
 
 - Improved requests and responses related to `Organizational IAM account`
 
 
+<a id="may-27-2025"></a>
+
 ### May 27, 2025
+<a id="feature-updates-2"></a>
+
 #### Feature Updates
 
 - Added `view all credentials of members under organizations` API
 
+<a id="april-29-2025"></a>
+
 ### April 29, 2025
+<a id="feature-updates-3"></a>
+
 #### Feature Updates
 
 - Added APIs related to`project IAM accounts`
 
+<a id="march-25-2025"></a>
+
+### March 25, 2025
+
+<!-- TODO: translate body -->
+
+<a id="feature-improvements"></a>
+
+#### Feature improvements
+
+<!-- TODO: translate body -->
+
+<a id="added-features-4"></a>
+
+#### Added Features
+
+<!-- TODO: translate body -->
+
+<a id="march-4-2025"></a>
+
 ### March 4, 2025
+<a id="feature-updates-4"></a>
+
 #### Feature Updates
 
 - Modified API specification for the User Access Key ID API
+
+<a id="added-features-5"></a>
 
 #### Added Features
 
 - Provided public APIs for getting token list and expiration feature 
 
+<a id="january-21-2025"></a>
+
 ### January 21, 2025
+<a id="feature-updates-5"></a>
+
 #### Feature Updates
 
 - Fixed incorrect descriptions of token issuance and expiration requests
 
+<a id="december-24-2024"></a>
+
 ### December 24, 2024
+<a id="feature-updates-6"></a>
+
 #### Feature Updates
 
 - Fixed invalid links to permissions and image
 
+<a id="oct-29-2024"></a>
+
 ### Oct 29, 2024
+<a id="added-features-6"></a>
+
 #### Added Features
 
 - Added Framework Public API
