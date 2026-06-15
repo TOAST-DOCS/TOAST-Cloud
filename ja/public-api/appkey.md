@@ -18,6 +18,8 @@ Appkeyはサービスごとに発行され、NHN Cloudコンソールの各サ�
     Appkeyが流出した、または流出が疑われる場合、[サポート > お問い合わせ](https://www.nhncloud.com/jp/support/inquiry)で **お問い合わせタイプ** を **{サービス名}/その他** に選択し、Appkeyの再発行を申請してください。
 
 
+<a id="view-secretkey"></a>
+
 ## SecretKeyの確認
 NHN Cloudの一部のサービスでは、APIへのアクセス制御のためにSecretKey(秘密鍵)をサポートしています。
 SecretKeyはAppkeyと同様に、SecretKeyをサポートするサービス画面で確認できます。
@@ -30,9 +32,15 @@ SecretKeyはAppkeyと同様に、SecretKeyをサポートするサービス画�
 ![C_SecretKey_2_ja](http://static.toastoven.net/toast/public_api/C_SecretKey_2_ja.png)
 
 
+<a id="making-api-calls"></a>
+
 ## APIの呼び出し
+<a id="appkey"></a>
+
 ### Appkey
 APIリクエスト時、AppkeyはパスパラメータまたはHTTPヘッダに含まれますが、サービスによって使用方法が異なる場合があります。APIリクエスト時に使用するパス形式またはHTTPヘッダフィールド名は、該当サービスのAPIガイドを参照してください。
+
+<a id="path-parameter-method"></a>
 
 #### パスパラメータ方式
 AppkeyをAPIリクエストの一部として含める方式です。
@@ -41,6 +49,8 @@ AppkeyをAPIリクエストの一部として含める方式です。
 ```
 POST /v1.0/appkeys/{appKey}/
 ```
+
+<a id="http-header-based-authentication"></a>
 
 #### HTTPヘッダ方式
 Appkeyをリクエストのヘッダに含めてサービスの有効性を検証する方式です。
@@ -55,8 +65,12 @@ X-TC-APP-KEY: {Appkey}
     Appkeyは有効期限のない固定キーベースの認証方式であり、認可機能がないため、キーが外部に流出した場合、無断でAPIが呼び出される可能性があります。キーは外部ストレージやコードに含まれないよう安全に保管し、流出が疑われる場合は直ちに再発行を依頼する必要があります。[サポート > お問い合わせ](https://www.nhncloud.com/jp/support/inquiry)で **お問い合わせタイプ** を **{サービス名}/その他** に選択し、Appkeyの再発行を依頼できます。
 
 
+<a id="secretkey"></a>
+
 ### SecretKey
 APIリクエスト時、SecretKeyはアクセス制御のために使用され、サービスによって使用方法が異なる場合があります。APIリクエスト時に使用するHTTPヘッダフィールド名は、該当サービスのAPIガイドを参照してください。
+
+<a id="http-header-based-authentication-2"></a>
 
 #### HTTPヘッダ方式
 SecretKeyをリクエストのヘッダに含めてサービスの有効性を検証する方式です。
