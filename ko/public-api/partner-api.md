@@ -1,8 +1,12 @@
+<!-- pre-align:aligned sig=f34bfe96e5d6 -->
+
 # 파트너 관리 API 가이드
 
 **NHN Cloud > Public API 사용 가이드 > 파트너 관리 API 가이드**
 
 ## 파트너 관리 API 공통 정보
+
+<a id="api-endpoint"></a>
 
 ### API 엔드포인트
 
@@ -13,6 +17,8 @@
 |--------| ----- |
 | Global | https://core.api.nhncloudservice.com/ |
 
+<a id="authentication-and-permission"></a>
+
 ### 인증 및 권한
 
 파트너 관리 API는 API 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
@@ -20,6 +26,8 @@
 | 헤더명 | 설명 |
 | --- | --- |
 | x-nhn-authorization | API 인증을 위한 토큰 |
+
+<a id="response-common-information"></a>
 
 ### 응답 공통 정보
 
@@ -65,6 +73,8 @@
     API Response는 아래에 명시되지 않은 필드가 추가될 수 있습니다. 새로운 필드가 추가되어도 오류가 발생하지 않도록 주의하세요.
 
 
+<a id="view-organization-usage-list-of-partner-users"></a>
+
 ## 파트너 사용자의 조직 사용량 목록 조회
 
 파트너 사용자의 청구 금액, 조직별 사용 금액, 서비스별 사용 금액, 할증 정보를 제공합니다.
@@ -75,14 +85,20 @@
 !!! tip "알아두기"
     이용월은 yyyy-MM 형식으로 입력해야 합니다.
 
+<a id="required-permission"></a>
+
 ### 필요 권한
 `Partner.Payment.Get`
+
+<a id="request"></a>
 
 ### 요청
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}
 ```
+
+<a id="request-parameter"></a>
 
 ### 요청 파라미터
 
@@ -93,9 +109,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | partnerUserUuid | Query | String | Y | 파트너 사용자 UUID |
 | lang | Header | String | N | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US) |
 
+<a id="request-body"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response"></a>
 
 ### 응답
 
@@ -143,6 +163,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 
 </details>
 
+<a id="default-response-structure"></a>
+
 #### 기본 응답 구조
 
 | 이름 | 타입 | 설명 |
@@ -189,6 +211,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | extraPrice | Long | 프로젝트 할증 금액 |
 
 
+<a id="retrieve-organization-lists-of-partner-users"></a>
+
 ## 파트너 사용자의 조직 목록 조회
 
 파트너 사용자의 조직 목록을 조회합니다.
@@ -196,14 +220,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 !!! tip "파트너 계약 검증"
     해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지 확인합니다.
 
+<a id="required-permission-2"></a>
+
 ### 필요 권한
 `Partner.Organization.List`
+
+<a id="request-2"></a>
 
 ### 요청
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 ```
+
+<a id="request-parameter-2"></a>
 
 ### 요청 파라미터
 
@@ -213,9 +243,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 | month | Path | String | Y | 이용월(yyyy-MM 형식) |
 | partnerUserUuid | Query | String | Y | 파트너 사용자 UUID |
 
+<a id="request-body-2"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response-2"></a>
 
 ### 응답
 
@@ -258,6 +292,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 | cloudType | String | 클라우드 타입 |
 
 
+<a id="retrieve-the-billing-amount-per-organizations-of-partner-users"></a>
+
 ## 파트너 사용자의 조직별 청구 금액 조회
 
 특정 조직의 상세한 이용 금액, 할인 및 할증 금액을 조회합니다.
@@ -265,14 +301,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 !!! tip "파트너 계약 검증"
     해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지, 그리고 해당 조직의 owner가 해당 달에 파트너 사용자였는지 확인합니다.
 
+<a id="required-permission-3"></a>
+
 ### 필요 권한
 `Partner.Organization.Usage.Get`
+
+<a id="request-3"></a>
 
 ### 요청
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usage
 ```
+
+<a id="request-parameter-3"></a>
 
 ### 요청 파라미터
 
@@ -284,9 +326,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | lang | Header | String | N | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US) |
 | isHideContract | Query | Boolean | N | 약정 정보 숨김 여부(기본값: false / true: 파트너 마스킹 적용 및 creditUsages 제외) |
 
+<a id="request-body-3"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response-3"></a>
 
 ### 응답
 
@@ -360,6 +406,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 
 </details>
 
+<a id="default-response-structure-2"></a>
+
 #### 기본 응답 구조
 
 | 이름 | 타입 | 설명 |
@@ -429,6 +477,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | description | String | 할인/할증 내역 |
 
 
+<a id="retrieve-project-lists-of-partner-users"></a>
+
 ## 파트너 사용자의 프로젝트 목록 조회
 
 파트너 사용자의 프로젝트 목록을 조회합니다.
@@ -436,14 +486,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 !!! tip "파트너 계약 검증"
     해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지 확인합니다.
 
+<a id="required-permission-4"></a>
+
 ### 필요 권한
 `Partner.Project.List`
+
+<a id="request-4"></a>
 
 ### 요청
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 ```
+
+<a id="request-parameter-4"></a>
 
 ### 요청 파라미터
 
@@ -453,9 +509,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 | month | Path | String | Y | 이용월(yyyy-MM 형식) |
 | partnerUserUuid | Query | String | Y | 파트너 사용자 UUID |
 
+<a id="request-body-4"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response-4"></a>
 
 ### 응답
 
@@ -504,6 +564,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 | projectStatusCode | String | 프로젝트 상태<br><br>- STABLE: 정상 상태<br>- CLOSED: 삭제된 상태 |
 
 
+<a id="retrieve-project-usage-details-for-partner-user"></a>
+
 ## 파트너 사용자의 프로젝트 상세 사용량 조회
 
 특정 프로젝트의 상세 사용량을 조회합니다.
@@ -514,14 +576,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 !!! tip "파트너 계약 검증"
     해당 파트너와 파트너 사용자가 지정된 월에 파트너 계약을 맺은 상태였는지, 그리고 해당 프로젝트가 속한 조직의 owner가 해당 달에 파트너 사용자였는지 확인합니다.
 
+<a id="required-permission-5"></a>
+
 ### 필요 권한
 `Partner.Project.Usage.Get`
+
+<a id="request-5"></a>
 
 ### 요청
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 ```
+
+<a id="request-parameter-5"></a>
 
 ### 요청 파라미터
 
@@ -539,9 +607,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | page | Query | Integer | N | 선택한 페이지(기본값: 1, 최소: 1)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
 | limit | Query | Integer | N | 페이지에 노출될 항목 개수, 미기입 시 전체 조회(기본값: 0, 최소:0)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
 
+<a id="request-body-5"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response-5"></a>
 
 ### 응답
 
@@ -658,6 +730,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 
 </details>
 
+<a id="default-response-structure-3"></a>
+
 #### 기본 응답 구조
 
 | 이름 | 타입 | 설명 |
@@ -772,6 +846,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | costPlanOrderId | String | Optimized Cost Plans(OCPs) 주문 ID |
 
 
+<a id="retrieve-partners-bill"></a>
+
 ## 파트너의 청구서 조회
 
 파트너의 전체 청구서를 조회합니다.
@@ -779,14 +855,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 !!! tip "파트너 계약 검증"
     해당 파트너가 지정된 월에 유효한 파트너 계약 상태였는지 확인합니다.
 
+<a id="required-permission-6"></a>
+
 ### 필요 권한
 `Partner.Statement.Get`
+
+<a id="request-6"></a>
 
 ### 요청
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 ```
+
+<a id="request-parameter-6"></a>
 
 ### 요청 파라미터
 
@@ -796,9 +878,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | month | Path | String | Y | 이용월(yyyy-MM 형식) |
 | lang | Header | String | N | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US) |
 
+<a id="request-body-6"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response-6"></a>
 
 ### 응답
 
@@ -925,6 +1011,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 ```
 
 </details>
+
+<a id="default-response-structure-4"></a>
 
 #### 기본 응답 구조
 
@@ -1063,6 +1151,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | description | String | 할인/할증 내역 |
 
 
+<a id="retrieve-self-service-metering-of-solutions-partner"></a>
+
 ## 솔루션 파트너의 자기 서비스 미터링 조회
 
 솔루션 파트너가 자신의 서비스에 대한 미터링 정보를 조회합니다.
@@ -1070,14 +1160,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 !!! tip "솔루션 파트너 검증"
     솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여 받은 사용자만 호출 가능합니다.
 
+<a id="required-permission-7"></a>
+
 ### 필요 권한
 `Partner.Meter.List`
+
+<a id="request-7"></a>
 
 ### 요청
 
 ```
 GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 ```
+
+<a id="request-parameter-7"></a>
 
 ### 요청 파라미터
 
@@ -1093,9 +1189,13 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | page | Query | Integer | Y | 선택한 페이지(최소: 1) |
 | limit | Query | Integer | Y | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
 
+<a id="request-body-7"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response-7"></a>
 
 ### 응답
 
@@ -1157,6 +1257,8 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | timestamp | String | 미터링 발생 시각 |
 
 
+<a id="delete-metering-for-solution-partners"></a>
+
 ## 솔루션 파트너의 미터링 삭제
 
 솔루션 파트너가 자신의 서비스에 대한 미터링을 삭제합니다.<br>
@@ -1166,14 +1268,20 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 !!! tip "솔루션 파트너 검증"
     솔루션 파트너이거나, 솔루션 파트너에게 권한을 부여 받은 사용자만 호출 가능합니다.
 
+<a id="required-permission-8"></a>
+
 ### 필요 권한
 `Partner.Meter.Delete`
+
+<a id="request-8"></a>
 
 ### 요청
 
 ```
 DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 ```
+
+<a id="request-parameter-8"></a>
 
 ### 요청 파라미터
 
@@ -1182,6 +1290,8 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 | partnerId | Path | String | Y | 파트너 ID |
 | productId | Path | String | Y | 서비스 ID |
 
+
+<a id="request-body-8"></a>
 
 ### 요청 본문
 
@@ -1209,6 +1319,8 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 | counterNames | List&lt;String&gt; | N | 삭제할 카운터 이름 목록<br>앱키, 혹은 카운터 이름 중 하나는 반드시 있어야 함 |
 
 
+<a id="response-8"></a>
+
 ### 응답
 
 <details>
@@ -1232,6 +1344,8 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 | asyncJobId | String | 실행한 비동기 작업의 ID |
 
 
+<a id="confirm-deletion-of-solution-partners-metering"></a>
+
 ## 솔루션 파트너의 미터링 삭제 확인
 
 미터링 삭제 후 삭제가 완료되었는지 확인합니다.<br>
@@ -1244,14 +1358,20 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 !!! danger "미터링 삭제 확인 시 주의 사항"
     한번 정상 삭제를 확인한 후에는 삭제 job이 사라지므로 한번만 호출 가능하며, 두 번째 호출부터는 16500 오류가 반환됩니다.
 
+<a id="required-permission-9"></a>
+
 ### 필요 권한
 `Partner.Meter.Delete`
+
+<a id="request-9"></a>
 
 ### 요청
 
 ```
 GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 ```
+
+<a id="request-parameter-9"></a>
 
 ### 요청 파라미터
 
@@ -1261,9 +1381,13 @@ GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 | asyncJobId | Path | String | Y | 실행한 비동기 작업의 ID |
 
 
+<a id="request-body-9"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response-9"></a>
 
 ### 응답
 
@@ -1287,6 +1411,8 @@ GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 | --- | --- | --- |
 | statusCode | String | 삭제 상태(IN_PROGRESS: 삭제 진행 중, ERROR: 삭제 중 오류 발생, SUCCESS: 삭제 성공) |
 
+<a id="create-organization-for-partner-user"></a>
+
 ## 파트너 사용자의 조직 생성
 
 파트너가 파트너 사용자의 조직을 생성합니다.
@@ -1294,14 +1420,20 @@ GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 !!! tip "파트너 계약 검증"
     API를 호출한 월에 해당 파트너와 파트너 사용자가 파트너 계약 관계였는지 확인합니다.
 
+<a id="required-permission-10"></a>
+
 ### 필요 권한
 `Partner.Organization.Create`
+
+<a id="request-10"></a>
 
 ### 요청
 
 ```
 POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 ```
+
+<a id="request-parameter-10"></a>
 
 ### 요청 파라미터
 
@@ -1310,11 +1442,15 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 | partnerId | Path | String | Y | 파트너 ID |
 | partnerUserUuid | Path | String | Y | 파트너 사용자 UUID |
 
+<a id="request-body-10"></a>
+
 ### 요청 본문
 
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | orgName | String | Y | 생성할 조직 이름(최대 120자) |
+
+<a id="response-10"></a>
 
 ### 응답
 
@@ -1345,6 +1481,8 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 | regDateTime | String | 등록일시(ISO 8601 형식) |
 
 
+<a id="delete-organization-of-partner-user"></a>
+
 ## 파트너 사용자의 조직 삭제
 
 파트너가 파트너 사용자의 조직을 삭제합니다.
@@ -1352,14 +1490,20 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 !!! tip "파트너 계약 검증"
     API를 호출한 월에 해당 파트너와 파트너 사용자가 파트너 계약 관계였는지, 그리고 삭제 대상이 파트너 사용자의 조직인지 확인합니다.
 
+<a id="required-permission-11"></a>
+
 ### 필요 권한
 `Partner.Organization.Delete`
+
+<a id="request-11"></a>
 
 ### 요청
 
 ```
 DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{orgId}
 ```
+
+<a id="request-parameter-11"></a>
 
 ### 요청 파라미터
 
@@ -1369,9 +1513,13 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 | partnerUserUuid | Path | String | Y | 파트너 사용자 UUID |
 | orgId | Path | String | Y | 삭제할 조직 ID |
 
+<a id="request-body-11"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response-11"></a>
 
 ### 응답
 
@@ -1391,6 +1539,8 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 </details>
 
 
+<a id="daily-usage-pricing"></a>
+
 ## 일별 이용 금액 조회
 
 파트너 사용자의 일별 이용 금액 상세 내역을 조회합니다.
@@ -1402,14 +1552,20 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
     - projectId 또는 orgId 중 하나는 반드시 설정되어야 합니다.
     - projectId와 orgId를 동시에 설정할 수 없습니다.
 
+<a id="required-permissions"></a>
+
 ### 필요 권한
 `Partner.Daily.Usage.List`
+
+<a id="request-12"></a>
 
 ### 요청
 
 ```
 GET /v1/billing/partners/{partnerId}/daily-usage-prices
 ```
+
+<a id="request-parameters"></a>
 
 ### 요청 파라미터
 
@@ -1423,9 +1579,13 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 | page | Query | Integer | N | 선택한 페이지(최소: 1) |
 | limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
 
+<a id="request-body-12"></a>
+
 ### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
+
+<a id="response-12"></a>
 
 ### 응답
 
@@ -1471,6 +1631,8 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 
 </details>
 
+<a id="basic-response-structure"></a>
+
 #### 기본 응답 구조
 
 | 이름 | 타입 | 설명 |
@@ -1504,6 +1666,8 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 | uuid | String | 회원 UUID |
 
 
+<a id="retrieve-resource-usage-prices-by-tag"></a>
+
 ## 태그별 리소스 이용 금액 조회
 
 태그별로 분류된 리소스의 이용 금액을 조회합니다.
@@ -1516,14 +1680,20 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
     - projectId와 orgId를 동시에 설정할 수 없습니다.
     - tagIds 또는 groupIds 중 하나는 반드시 제공되어야 합니다.
 
+<a id="required-permissions-2"></a>
+
 ### 필요 권한
 `Partner.Daily.Usage.List`
+
+<a id="request-13"></a>
 
 ### 요청
 
 ```
 POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 ```
+
+<a id="request-parameters-2"></a>
 
 ### 요청 파라미터
 
@@ -1532,6 +1702,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | partnerId | Path | String | Y | 파트너 ID |
 | page | Query | Integer | N | 선택한 페이지(최소: 1) |
 | limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
+
+<a id="request-body-13"></a>
 
 ### 요청 본문
 
@@ -1563,6 +1735,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | projectId | String | N | 프로젝트 ID<br>projectId 또는 orgId 중 하나는 반드시 필요 |
 | searchType | String | Y | 조회 유형<br><br>- RESOURCE: 리소스별<br>- DAILY: 일별 |
 | tagIds | List&lt;Long&gt; | N | 태그 ID 목록<br>tagIds 또는 groupIds 중 하나는 반드시 필요 |
+
+<a id="response-13"></a>
 
 ### 응답
 
@@ -1627,6 +1801,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 
 </details>
 
+<a id="basic-response-structure-2"></a>
+
 #### 기본 응답 구조
 
 | 이름 | 타입 | 설명 |
@@ -1687,18 +1863,26 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | displayNameZh | String | 청구서 노출명(중국어) |
 
 
+<a id="retrieve-active-organizationproject-product-metering-for-partners-or-partner-users"></a>
+
 ## 파트너 또는 파트너 사용자의 활성화된 조직/프로젝트 상품 미터링 조회
 
 미터링 정보를 조회합니다.
 
+<a id="required-permission-12"></a>
+
 ### 필요 권한
 `Partner.Meter.List`
+
+<a id="request-14"></a>
 
 ### 요청
 
 ```
 POST /v1/billing/partners/{partnerId}/meters/search
 ```
+
+<a id="request-parameter-12"></a>
 
 ### 요청 파라미터
 
@@ -1708,6 +1892,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | page | Query | Integer | N | 선택한 페이지(최소: 1) |
 | limit | Query | Integer | N | 페이지에 노출될 항목 개수(최소: 1, 최대: 2000) |
 
+
+<a id="request-body-14"></a>
 
 ### 요청 본문
 
@@ -1738,6 +1924,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | counterNames | List&lt;String&gt; | N | 카운터 이름 목록 |
 | meterTimeTypeCode | String | N | 미터 시간 타입 코드<br>from, to에 대해서 사용 시간으로 검색을 할지, 아니면 요청이 인입된 시간으로 검색을 할지 결정<br>(USED_TIME: 사용 시간(기본값), INSERT_TIME: 인입된 시간) |
 
+
+<a id="response-14"></a>
 
 ### 응답
 
@@ -1800,6 +1988,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | resourceName | String | 리소스 이름 |
 | stationId | String | 스테이션 ID |
 | timestamp | String | 사용한 시간 |
+
+<a id="error-code"></a>
 
 ## 오류 코드
 
