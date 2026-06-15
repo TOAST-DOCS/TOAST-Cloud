@@ -1,9 +1,15 @@
+<!-- pre-align:aligned sig=d8ddfaa7a83d -->
+
 ## NHN Cloud > SDK 사용 가이드 > 시작하기 > iOS
+
+<a id="supported-environment"></a>
 
 ## 지원 환경
 
 * iOS 11.0 이상
 * XCode 최신 버전(버전 14 이상)
+
+<a id="nhn-cloud-sdk-components"></a>
 
 ## NHN Cloud SDK의 구성
 
@@ -24,7 +30,11 @@
 | Push | NHNCloudPush |  | NHNCloudPush.framework | 11.0 | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
 | OCR | NHNCloudOCR |  | NHNCloudOCR.framework | 11.0 | \* Vision.framework<br>\* AVFoundation.framework |  |
 
+<a id="apply-nhn-cloud-sdk-to-xcode-projects"></a>
+
 ## NHN Cloud SDK를 Xcode 프로젝트에 적용
+
+<a id="apply-nhn-cloud-sdk-with-cococapods"></a>
 
 ### 1. Cococapods를 사용해 NHN Cloud SDK 적용
 
@@ -39,6 +49,8 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
+<a id="apply-nhn-cloud-sdk-with-swift-package-manager"></a>
+
 ### 2. Swift Package Manager를 사용해 NHN Cloud SDK 적용
 
 * XCode에서 **File > Add Packages...** 메뉴를 선택합니다.
@@ -47,11 +59,15 @@ end
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
+<a id="set-up-project"></a>
+
 #### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+<a id="apply-nhn-cloud-sdk-with-carthage"></a>
 
 ### 3. Carthage를 사용해 NHN Cloud SDK 적용
 
@@ -77,7 +93,11 @@ binary "https://nh.nu/nhncloudsdk"
 > 서비스 중 원하는 기능을 선택하여 사용하기 위해서는 서비스별로 필요한 Framework만 선택하여 프로젝트에 추가해야 합니다.
 > 서비스별로 필요한 Framework는 [NHN Cloud SDK의 구성](./getting-started-ios/#toast-sdk)에서 확인할 수 있습니다.
 
+<a id="apply-nhn-cloud-sdk-by-downloading-binaries"></a>
+
 ### 4. 바이너리를 다운로드하여 NHN Cloud SDK 적용
+
+<a id="frameworks-setup"></a>
 
 #### 프레임워크 설정
 
@@ -101,6 +121,8 @@ binary "https://nh.nu/nhncloudsdk"
 ![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework01_202206.png)
 ![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework02_202206.png)
 
+<a id="project-settings"></a>
+
 #### 프로젝트 설정
 
 * **Build Settings**의 **Other Linker Flags**에 **-lc++**와 **-ObjC** 항목을 추가합니다.
@@ -111,6 +133,8 @@ binary "https://nh.nu/nhncloudsdk"
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > NHN Cloud의 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드한 CrashReporter.framework는 bitCode를 지원합니다.
+
+<a id="import-framework"></a>
 
 ### 프레임워크 가져오기
 
@@ -124,11 +148,15 @@ binary "https://nh.nu/nhncloudsdk"
 #import <NHNCloudOCR/NHNCloudOCR.h>
 ```
 
+<a id="set-user-id"></a>
+
 ## 사용자 아이디 설정
 
 * NHN Cloud SDK에 사용자 아이디를 설정할 수 있습니다.
 * 설정한 사용자 아이디는 NHN Cloud SDK의 각 모듈에서 공통으로 사용됩니다.
 * NHN Cloud Logger의 로그 전송 API를 호출할 때마다 설정한 사용자 아이디를 로그와 함께 서버로 전송합니다.
+
+<a id="specification-for-user-id-setting-api"></a>
 
 ### 사용자 아이디 설정 API 명세
 
@@ -136,15 +164,21 @@ binary "https://nh.nu/nhncloudsdk"
 + (void)setUserID:(NSString *)userID;
 ```
 
+<a id="usage-example-of-user-id-setting"></a>
+
 ### 사용자 아이디 설정 사용 예
 
 ```objc
 [NHNCloudSDK setUserID:@"NHNCloud-USER"];
 ```
+<a id="set-debug-mode"></a>
+
 ## 디버그 모드 설정
 
 * NHN Cloud SDK의 내부 로그를 확인하기 위해 디버그 모드를 설정할 수 있습니다.
 * NHN Cloud SDK와 관련해 문의하실 때는 디버그 모드를 활성화한 후 콘솔 로그를 전달해 주시면 빠르게 지원해드릴 수 있습니다.
+
+<a id="specification-for-debug-mode-api"></a>
 
 ### 디버그 모드 설정 API 명세
 
@@ -153,6 +187,8 @@ binary "https://nh.nu/nhncloudsdk"
 + (void)setDebugMode:(BOOL)debugMode;
 ```
 
+<a id="usage-example-of-debug-mode-setting"></a>
+
 ### 디버그 모드 설정 사용 예
 
 ```objc
@@ -160,6 +196,8 @@ binary "https://nh.nu/nhncloudsdk"
 ```
 
 > [주의] 애플리케이션 배포시에는 디버그 모드를 `반드시` 비활성화해야 합니다.
+
+<a id="use-nhn-cloud-service"></a>
 
 ## NHN Cloud Service 사용
 
