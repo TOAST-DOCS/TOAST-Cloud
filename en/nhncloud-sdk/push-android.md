@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=4991a06c6138 -->
+
 ## NHN Cloud > SDK User Guide > Push > Android
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
@@ -6,12 +10,18 @@
 2. [Enable Push service](/Notification/Push/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
 3. Check the AppKey in the Push console.
 
+<a id="guide-by-push-provider"></a>
+
 ## Guide by Push Provider
 
 * [Firebase Cloud Messaging (FCM) Guide](https://firebase.google.com/docs/cloud-messaging/)
 * `Tencent Push Notification (QQ) service ended in November 2020`
 
+<a id="library-setting"></a>
+
 ## Library Setting
+
+<a id="fcm"></a>
 
 ### FCM
 * To use NHN Cloud FCM Push, add a dependency to build.gradle as follows.
@@ -27,6 +37,8 @@ dependencies {
     ...
 }
 ```
+
+<a id="adm"></a>
 
 ### ADM
 
@@ -44,7 +56,11 @@ dependencies {
 }
 ```
 
+<a id="firebase-cloud-messaging-settings"></a>
+
 ## Firebase Cloud Messaging Settings
+
+<a id="add-the-project-and-app"></a>
 
 ### Add the project and app
 
@@ -56,7 +72,11 @@ dependencies {
 * Move the downloaded **google-services.json** file to your app's module (app level) directory.
 * For details, see [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup).
 
+<a id="set-up-buildgradle"></a>
+
 ### Set Up build.gradle
+<a id="root-level-buildgradle"></a>
+
 #### Root-level build.gradle
 * Add the following code to root-level build.gradle.
 
@@ -78,6 +98,8 @@ allprojects {
 }
 ```
 
+<a id="app-modules-buildgradle"></a>
+
 #### App module's build.gradle
 * Add the following code to your app module's build.gradle.
 
@@ -92,7 +114,11 @@ android {
 apply plugin: 'com.google.gms.google-services'
 ```
 
+<a id="amazon-device-messaging-settings"></a>
+
 ## Amazon Device Messaging Settings
+
+<a id="add-the-project-and-app-2"></a>
 
 ### Add the project and app
 
@@ -100,6 +126,8 @@ apply plugin: 'com.google.gms.google-services'
 * Go to **My Apps** in **Apps & Services** at the top.
 * In **Add New App**, select **Android** and enter the app information to register the app.
 * Enter **Android Package Name**, **App Nickname (optional)** and click the **Register App** button.
+
+<a id="add-the-api-key"></a>
 
 ### Add the API key
 
@@ -109,10 +137,14 @@ apply plugin: 'com.google.gms.google-services'
 * Copy the generated API Key and save it as **api_key.txt** file in the **assets** folder of your project.
 * For details, refer to [Amazon Device Messaging - Obtain Credentials](https://developer.amazon.com/docs/adm/obtain-credentials.html).
 
+<a id="download-the-adm-sdk"></a>
+
 ### Download the ADM SDK
 
 * Download the ADM SDK from [Amazon Device Messaging (ADM) SDKs](https://developer.amazon.com/docs/apps-and-games/sdk-downloads.html#adm) of the Amazon Developer site.
 * Save the downloaded **amazon-device-messaging-1.2.0.jar** file to the **amazon/libs** folder of your project.
+
+<a id="app-modules-buildgradle-2"></a>
 
 #### App module's build.gradle
 ```groovy
@@ -121,6 +153,8 @@ dependencies {
     compileOnly files('amazon/libs/amazon-device-messaging-1.2.0.jar')
 }
 ```
+
+<a id="proguard-settings"></a>
 
 ### Proguard settings
 
@@ -135,6 +169,8 @@ dependencies {
 -keep public class * extends com.amazon.device.messaging.ADMMessageHandlerJobBase
 ```
 
+<a id="push-initialization"></a>
+
 ## Push Initialization
 
 * Initialize NHN Cloud Push by calling NhnCloudPush.initialize.
@@ -142,6 +178,8 @@ dependencies {
 * A [NhnCloudPushConfiguration](./push-android/#nhncloudpushconfiguration) object can be created using NhnCloudPushConfiguration.Builder.
 * Pass the AppKey issued from the Push console as the parameter of NhnCloudPushConfiguration.newBuilder.
 * The PushType you want to use must be passed in the initialization call.
+
+<a id="fcm-initialization-example"></a>
 
 ### FCM initialization example
 
@@ -152,6 +190,8 @@ NhnCloudPushConfiguration configuration =
 
 NhnCloudPush.initialize(PushType.FCM, configuration);
 ```
+
+<a id="adm-initialization-example"></a>
 
 ### ADM initialization example
 
@@ -166,11 +206,15 @@ NhnCloudPush.initialize(PushType.ADM, configuration);
 > NhnCloudPush.initialize(NhnCloudPushConfiguration) has been deprecated.
 > PushType is automatically set to FCM when initialized using NhnCloudPush.initialize(NhnCloudPushConfiguration).
 
+<a id="settings-when-using-notification-hub"></a>
+
 ## Settings when using Notification Hub
 
 * NHN Cloud Push SDK supports Notification Hub.
 * You can use it by setting NhnCloudPushConfiguration.Builder.setServiceType(PushServiceType.NOTIFICATION_HUB).
 * The default value is PushServiceType.PUSH, and if not set, the existing Push method is applied.
+
+<a id="notification-hub-fcm-initialization-example"></a>
 
 ### Notification Hub + FCM initialization example
 
@@ -183,11 +227,15 @@ NhnCloudPushConfiguration configuration =
 NhnCloudPush.initialize(PushType.FCM, configuration);
 ```
 
+<a id="service-login"></a>
+
 ## Service Login
 * All products provided by NHN Cloud SDK (Push, IAP, Log & Crash, etc.) use the same user ID.
     * You can set the user id with [NhnCloudSdk.setUserId](./getting-started-android/#userid).
 * It is recommended to implement the user ID setting and token registration functions in the service login step.
 * If you set or change the user ID after registering the token, the token information is updated.
+
+<a id="service-login-example"></a>
 
 ### Service login example
 
@@ -199,16 +247,22 @@ public void onLogin(String userId) {
 }
 ```
 
+<a id="token-registration"></a>
+
 ## Token Registration
 * Use the NhnCloudPush.registerToken() method to send a Push token to the NHN Cloud Push server. In this case, pass whether the user agreed to receive (NhnCloudPushAgreement) as a parameter.
 * If a user ID is not set at the time of initial token registration, it is registered using the device identifier.
 * When the token is registered successfully, the user can receive a Push message.
+
+<a id="consent-setting"></a>
 
 ### Consent Setting
 * In accordance with the provisions of the Information and Communications Network Act (Articles 50 through 50-8), when registering a token, whether or not to receive notification/advertising/night-time advertising push messages must also be inputted. When sending a message, it is automatically filtered based on whether or not the user agreed to receive it.
     * [Shortcut to KISA Guide](https://www.kisa.or.kr/2060301/form?postSeq=19)
     * [Shortcut to the law](http://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률/%2820130218,11322,20120217%29/제50조)
 * Set whether or not the user agreed to receive the push in NhnCloudPushAgreementIt and send it to the NHN Cloud Push server when registering tokens.
+
+<a id="example-of-token-registration-and-agreement-setting"></a>
 
 ### Example of token registration and agreement setting
 ```java
@@ -235,8 +289,12 @@ NhnCloudPush.registerToken(context, agreement, new RegisterTokenCallback() {
 });
 ```
 
+<a id="token-information-query"></a>
+
 ## Token Information Query
 * Query the token information registered in the NHN Cloud Push server.
+
+<a id="token-information-query-example"></a>
 
 ### Token information query example
 ```java
@@ -258,12 +316,16 @@ NhnCloudPush.queryTokenInfo(context, new QueryTokenInfoCallback() {
 });
 ```
 
+<a id="token-unregistration"></a>
+
 ## Token Unregistration
 * Unregister the token registered in the NHN Cloud Push server. Unregistered tokens are excluded from targets for sending messages.
 * `If you do not want to receive messages after the service logout, you must unregister the token.`
 * `Even if the token is unregistered, the notification permission on the device is not revoked.`
 
 > Unregistering a token that has already been unregistered returns success with the message "Already a token has been unregistered".
+
+<a id="token-unregistration-example"></a>
 
 ### Token unregistration example
 ```java
@@ -283,6 +345,8 @@ NhnCloudPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 });
 ```
 
+<a id="message-reception"></a>
+
 ## Message Reception
 * You can be notified via OnReceiveMessageListener when a push message is received.
 * A listener for push message reception can be registered using the NhnCloudPush.setOnReceiveMessageListener function.
@@ -291,6 +355,8 @@ NhnCloudPush.unregisterToken(mContext, new UnregisterTokenCallback() {
 
 > When receiving a message, a notification is not exposed if the user is using the app (Foreground).
 > Foreground status can be checked by isForeground passed to OnReceiveMessageListener#onReceive.
+
+<a id="example-of-registering-a-message-reception-listener"></a>
 
 ### Example of registering a message reception listener
 ``` java
@@ -316,11 +382,15 @@ public class MyApplication extends Application {
 }
 ```
 
+<a id="notification-permission"></a>
+
 ## Notification Permission
 
 * To display notifications in Android 13 (API level 33) or higher, POST\_NOTIFICATIONS permission is required.
 * In NHN Cloud SDK (version 1.2.0 or higher), POST\_NOTIFICATIONS permission is included in the manifest by default.
 * To display notifications for an app, runtime permission must be requested, and notifications cannot be displayed for the app until the user assigns the permission.
+
+<a id="notification-permission-of-apps-targeting-android-13api-level-33-or-higher"></a>
 
 ### Notification Permission of Apps Targeting Android 13(API level 33) or higher
 
@@ -331,6 +401,8 @@ if (Build.VERSION.SDK_INT >= 33) {
     NhnCloudNotification.requestPostNotificationsPermission(this, PERMISSION_REQUEST_CODE);
 }
 ```
+
+<a id="notification-permission-of-apps-targeting-android-12-api-level-32-or-lower"></a>
 
 ### Notification Permission of Apps Targeting Android 12 (API level 32) or lower
 
@@ -348,10 +420,14 @@ if (Build.VERSION.SDK_INT <= 32) {
 }
 ```
 
+<a id="notification-click"></a>
+
 ## Notification Click
 * You can be notified via OnClickListener when the app is launched after the user clicks on the exposed notification.
 * A listener for notification click can be registered using the NhnCloudNotification.setOnClickListener function.
 * To receive notification click notifications even when the app is not running, you need to register the listener in `Application#onCreate`.
+
+<a id="example-of-notification-click-listener-registration"></a>
 
 ### Example of notification click listener registration
 ```java
@@ -373,7 +449,11 @@ public class MyApplication extends Application {
 }
 ```
 
+<a id="notification-settings"></a>
+
 ## Notification Settings
+
+<a id="default-notification-channel-name-setting"></a>
 
 ### Default Notification Channel Name Setting
 * The notification channel name is the name of the channel exposed in the notification settings in devices running on Android 8.0 (API level 26) or higher.
@@ -382,6 +462,8 @@ public class MyApplication extends Application {
 * It can be registered in `Application#onCreate` or defined as metadata in the AndroidManifest.xml file.
 
 > If you do not set the default notification channel name, it is automatically set as the name of the application.
+
+<a id="example-of-setting-the-default-notification-channel-name"></a>
 
 #### Example of setting the default notification channel name
 ##### Example of setting in code
@@ -405,12 +487,16 @@ public class MyApplication extends Application {
            android:value="@string/default_notification_channel_name"/>
 ```
 
+<a id="notification-preferences-setting"></a>
+
 ### Notification Preferences Setting
 * Set the priority of notifications, small icon, background color, LED light, vibration, and sound.
 * Set whether to display notifications when the app is in the foreground state.
 * Set whether to use the badge icon.
 * In devices running on Android 8.0 (API level 26) or higher, the option is applied only to the default notification channel.
 * It can be registered in `Application#onCreate` or defined as metadata in the AndroidManifest.xml file.
+
+<a id="example-of-setting-notification-default-options"></a>
 
 #### Example of setting notification default options
 ##### Example of setting in code
@@ -497,16 +583,24 @@ public class MyApplication extends Application {
            android:value="false"/>
 ```
 
+<a id="notification-sound-setting"></a>
+
 ### Notification Sound Setting
 * If you add a sound field when sending a push message, you can set a local resource (mp3, wav) as a notification sound. (Only works in versions below Android 8.0)
 * For notification sound, only the local resources in the raw folder under the application resource folder can be used.
     * Example: main/res/raw/notification_sound.wav
 
+<a id="rich-message"></a>
+
 ## Rich Message
 
 * Rich messages represent an image in the notification, along with the notification's subject and body, and add actions such as buttons and replies.
 
+<a id="supported-rich-messages"></a>
+
 ### Supported Rich Messages
+
+<a id="button"></a>
 
 #### Button
 | Type | Feature | Action |
@@ -520,6 +614,8 @@ public class MyApplication extends Application {
 
 > Up to 3 buttons per message are supported.
 
+<a id="media"></a>
+
 #### Media
 * You can specify a file by resource ID in the app, Android Assets file path, or URL.
 * Media other than images, such as video and sound, is not supported.
@@ -530,20 +626,28 @@ public class MyApplication extends Application {
 
 > It takes time to download media files when using a web URL.
 
+<a id="large-icon"></a>
+
 #### Large Icon
 * You can specify a file by resource ID in the app, Android Assets file path, or URL.
 * For images of large icons, a 1:1 ratio is recommended.
 
 > If the image used is not 1:1 ratio, the image may be displayed differently from what you expect because it is forcibly changed to 1:1.
 
+<a id="group"></a>
+
 #### Group
 * Notifications with the same group key are grouped and displayed.
 * This feature is available in Android 7.0 (API level 24) or higher.
+
+<a id="register-notification-action-listener"></a>
 
 ### Register notification action listener
 * Notifies the notification action listener when the user clicks the button in the notification or the send reply button.
 * You can check the action information with the [PushAction](./push-android/#pushaction) object.
 * To be notified of receiving messages even when the app is not running, you must register in `Application#onCreate`.
+
+<a id="example-of-notification-action-listener-registration"></a>
 
 #### Example of notification action listener registration
 
@@ -570,6 +674,8 @@ public class MyApplication extends Application {
 }
 ```
 
+<a id="user-defined-message-handling"></a>
+
 ## User-defined Message Handling
 * If you need to perform a separate processing after receiving a message or expose a notification by modifying the content of the received message, you must implement a broadcast that inherits and implements [NhnCloudPushMessageReceiver](./push-android/#nhncloudpushmessagereceiver).
 * The broadcast that inherits and implements NhnCloudPushMessageReceiver must also be registered in AndroidManifest.xml.
@@ -578,6 +684,8 @@ public class MyApplication extends Application {
 > **(Caution)**
 > 1. If the onMessageReceived function does not request (notify) the notification after receiving the message, the notification is not exposed.
 > 2. If you create a notification manually, you must set the Push service intent as the notification's content intent in order to collect metrics. (See the Adding the Metric Collection Feature section below)
+
+<a id="example-of-nhncloudpushmessagingservice-implementation-code"></a>
 
 ### Example of NhnCloudPushMessagingService implementation code
 ```java
@@ -617,6 +725,8 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 }
 ```
 
+<a id="example-of-registering-in-androidmanifestxml"></a>
+
 ### Example of registering in AndroidManifest.xml
 > **(Caution)**
 > 1. When using NhnCloudPushMessageReceiver, you must set permission.
@@ -640,8 +750,12 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 </manifest>
 ```
 
+<a id="adding-the-metric-collection-feature-fcm-only"></a>
+
 ### Adding the Metric Collection Feature (FCM Only)
 * If you create a notification manually, to use the metric collection feature, you must set the intent you created using the getContentIntent() function as the notification's content intent.
+
+<a id="example-of-adding-the-metrics-collection-feature"></a>
 
 #### Example of adding the metrics collection feature
 ```java
@@ -696,16 +810,24 @@ public class MyPushMessageReceiver extends NhnCloudPushMessageReceiver {
 }
 ```
 
+<a id="using-emoji"></a>
+
 ## Using Emoji
 > **(Caution)**
 > If an emoji that is not supported by the device is used, it may not be displayed.
+
+<a id="user-tag"></a>
 
 ## User Tag
 
 * The [User Tag](/Notification/Push/en/console-guide/#tags) feature binds multiple user IDs in one tag and uses it to send messages.
 * It operates based on the tag ID (8-character string) rather than the tag name, and the tag ID can be created and checked in the Console > Tag menu.
 
+<a id="modify-user-tags"></a>
+
 ### Modify User Tags
+
+<a id="example-of-modifying-user-tags"></a>
 
 #### Example of modifying user tags
 
@@ -746,9 +868,13 @@ NhnCloudPush.setUserTag(tagIds, new UserTagCallback() {
 });
 ```
 
+<a id="retrieve-user-tags"></a>
+
 ### Retrieve User Tags
 
 * Returns a list of all tag IDs registered to the current user.
+
+<a id="example-of-retrieving-user-tags"></a>
 
 #### Example of retrieving user tags
 
@@ -768,7 +894,11 @@ NhnCloudPush.getUserTag(new UserTagCallback() {
 });
 ```
 
+<a id="delete-user-tag"></a>
+
 ### Delete user tag
+
+<a id="example-of-deleting-user-tags"></a>
 
 #### Example of deleting user tags
 
@@ -809,7 +939,11 @@ NhnCloudPush.removeAllUserTag(new UserTagCallback() {
 });
 ```
 
+<a id="nhn-cloud-push-class-reference"></a>
+
 ## NHN Cloud Push Class Reference
+<a id="nhncloudpushconfiguration"></a>
+
 ### NhnCloudPushConfiguration
 * Push configuration that is passed when NHN Cloud Push is initialized.
 
@@ -823,6 +957,8 @@ public static Builder newBuilder(@NonNull Context context, @NonNull String appKe
 |---|---|---|
 | getAppKey | String | Returns the Push service Appkey. |
 | static newBuilder | NhnCloudPushConfiguration.Builder | Creates a builder to create a NhnCloudPushConfiguration object. |
+
+<a id="pushresult"></a>
 
 ### PushResult
 * A result object returned in response to the callback when calling an asynchronous API.
@@ -842,6 +978,8 @@ public boolean isFailure();
 | getMessage | int | Returns the result message. |
 | isSuccess | boolean | Returns whether or not it succeeded. |
 | isFailure | boolean | Returns whether or not it failed. |
+
+<a id="tokeninfo"></a>
 
 ### TokenInfo
 * Token information object returned when requesting a token information query.
@@ -869,6 +1007,8 @@ public String getToken();
 | getActivatedDateTime | Date | Returns the date and time of the token's most recent registration. |
 | getToken | String | Returns a token. |
 
+<a id="nhncloudremotemessage"></a>
+
 ### NhnCloudRemoteMessage
 * An object returned when receiving a message from a message reception listener or a custom receiver.
 
@@ -886,6 +1026,8 @@ public String getSenderId();
 | setChannelId |  | Sets the channel ID. |
 | getMessage | NhnCloudPushMessage | Returns a message object. |
 | getSenderId | String | Returns the sender ID. (FCM Only) |
+
+<a id="nhncloudpushmessage"></a>
 
 ### NhnCloudPushMessage
 * An object containing the contents of the received message.
@@ -914,6 +1056,8 @@ public Map<String, String> getExtras();
 | getExtras |  | Returns all received messages. |
 
 
+<a id="pushaction"></a>
+
 ### PushAction
 * An object returned when notification action is received.
 
@@ -933,6 +1077,8 @@ public String getUserText();
 | getNotificationChannel | String | Returns the channel of the notification where the action was executed. |
 | getMessage | NhnCloudPushMessage | Returns the message information of the notification where the action was executed. |
 | getUserText | RichMessage | Returns the string entered by the user. |
+
+<a id="nhncloudpushmessagereceiver"></a>
 
 ### NhnCloudPushMessageReceiver
 * An object that the user must implement for features such as modifying message content, defining execution intent, and generating notifications manually.
@@ -956,6 +1102,8 @@ public final PendingIntent getContentIntent(Context context, NhnCloudRemoteMessa
 | notify | | Context, int, Notification | Exposes user notifications with a specific ID. |
 | @Deprecated <br>getNotificationServiceIntent | PendingIntent | Context, NhnCloudRemoteMessage, PendingIntent | Returns a user launch intent that includes sending metrics. <br> It does not work normally from Android 12 (API level 31) or higher, so you must use getContentIntent() instead. |
 | getContentIntent | PendingIntent | Context, NhnCloudRemoteMessage, Intent | Returns a user launch intent that includes sending metrics. |
+
+<a id="nhncloudnotificationoptions"></a>
 
 ### NhnCloudNotificationOptions
 * An object that sets priority, small icon, background color, LED, vibration, notification sound, and foreground notification exposure information when setting the default notification options.
