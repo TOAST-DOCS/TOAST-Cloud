@@ -1,11 +1,15 @@
 ## NHN Cloud > SDK 使用ガイド > Log & Crash > Unity
 
+<a id="prerequisites"></a>
+
 ## Prerequisites
 
 1. [Install the NHN Cloud SDK](./getting-started-unity)
 2. [NHN Cloud コンソール](https://console.nhncloud.com)で、[Log & Crash Search を有効化](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
 3. Log & Crash Search で、[AppKey を確認](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
 4. [NHN Cloud SDK を初期化](./getting-started-unity#toast-sdk_1)します。
+
+<a id="supported-platforms"></a>
 
 ## サポートプラットフォーム
 
@@ -14,7 +18,11 @@
 - Standalone
 - WebGL
 
+<a id="for-android"></a>
+
 ## Android 設定
+
+<a id="gradle-build-settings"></a>
 
 ### Gradle ビルド設定
 
@@ -36,7 +44,11 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="for-ios"></a>
+
 ## iOS 設定
+
+<a id="player-settings"></a>
 
 ### Player Settings 設定
 
@@ -66,11 +78,15 @@ dependencies {
 - **Slow and Safe**値を推奨します。
   - Runtime C# Crash ログを収集したい場合、Slow and Safe に設定する必要があります。
 
+<a id="nhn-cloud-logger-namespace"></a>
+
 ## NHN Cloud Logger namespace
 
 ```csharp
 using Toast.Logger;
 ```
+
+<a id="initialize-nhn-cloud-logger-sdk"></a>
 
 ## NHN Cloud Logger SDK 初期化
 
@@ -85,10 +101,14 @@ var loggerConfiguration = new ToastLoggerConfiguration
 ToastLogger.Initialize(loggerConfiguration);
 ```
 
+<a id="send-logs"></a>
+
 ## ログを送信する
 
 NHN Cloud Logger は、5 つのレベルのログを送信できます。
 ユーザーフィールドを追加して送ることもできます。
+
+<a id="specification-for-log-sending-api"></a>
 
 ### ログ送信 API 仕様
 
@@ -114,6 +134,8 @@ ToastLogger.Fatal(message);
 ToastLogger.Fatal(message, userFields);
 ```
 
+<a id="usage-example-of-log-sending-api"></a>
+
 ### ログ送信 API 使用例
 
 ```csharp
@@ -123,10 +145,14 @@ ToastLogger.Debug("NHN Cloud Log & Crash Search!", new Dictionary<string, string
 });
 ```
 
+<a id="set-user-defined-fields"></a>
+
 ## ユーザー定義フィールドを設定する
 
 希望するユーザー定義フィールドを設定します。
 ユーザー定義フィールドを設定すると、ログ送信 API を呼び出すたびに設定した値をログと一緒にサーバーに送信します。
+
+<a id="specification-for-user-defined-field-setting-api"></a>
 
 ### ユーザー定義フィールド設定 API 仕様
 
@@ -137,11 +163,15 @@ ToastLogger.SetUserField(userField, userValue);
 - ユーザー定義フィールドは、"Log & Crash Search コンソール" > "Log Search タブ"の"選択したフィールド"に表示される値と同じです。
 - 同じキーの値を複数回変更すると、最後に変更した値が適用されます。
 
+<a id="restrictions-of-user-defined-fields"></a>
+
 #### カスタムフィールド制約事項
 
 - すでに[予約されているフィールド](./log-collector-reserved-fields)は使用できません。
 - フィールド名には'A-Z、a-z、0-9、-、\_'を使用できます。最初の文字は'A-Z、a-z'のみ使用できます。
 - フィールド名のスペースは、'\_'に置換されます。
+
+<a id="usage-example-of-user-defined-field-setting-api"></a>
 
 ### ユーザー定義フィールド設定 API 使用例
 
@@ -149,9 +179,13 @@ ToastLogger.SetUserField(userField, userValue);
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
 
+<a id="further-tasks-after-sending-logs"></a>
+
 ## ログ送信後、追加作業を進行する
 
 - リスナーを登録すると、ログ送信後に追加作業を進行します。
+
+<a id="specification-for-setloggerlistener-api"></a>
 
 ### SetLoggerListener API 仕様
 
@@ -166,6 +200,8 @@ public interface IToastLoggerListener
 
 static void SetLoggerListener(IToastLoggerListener listener);
 ```
+
+<a id="usage-example-of-setloggerlistener"></a>
 
 ### SetLoggerListener 使用例
 
@@ -196,6 +232,8 @@ public class SampleLoggerListener : IToastLoggerListener
 ToastLogger.SetLoggerListener(new SampleLoggerListener());
 ```
 
+<a id="collect-crash-logs"></a>
+
 ## クラッシュログの収集
 
 NHN Cloud Logger では、Unity のクラッシュを大きく 2 つに分類します。
@@ -225,12 +263,16 @@ var loggerConfiguration = new ToastLoggerConfiguration
 > UserID が設定されている場合、Log＆Crash Search コンソールの`Crash User`セクションでユーザー固有のクラッシュ体験を確認できます。
 > UserID の設定は[開始する]（./getting-started-unity/＃userid）で確認できます。
 
+<a id="further-tasks-after-sending-crash-logs"></a>
+
 ## クラッシュログを送信後、追加作業を進行する
 
 - クラッシュリスナーを登録すると、クラッシュログ送信後に追加作業を進行できます。
 
 > **Unity で予期せぬ例外が発生した場合にのみ動作します。**
 > ネイティブプラットフォームで発生したクラッシュに対するリスナーは提供しません。
+
+<a id="specification-for-setcrashlistener-api"></a>
 
 ### SetCrashListener API 仕様
 
@@ -239,6 +281,8 @@ public delegate void CrashListener(bool isSuccess, LogEntry logEntry);
 
 public static void SetCrashListener(CrashListener listener);
 ```
+
+<a id="usage-example-of-setcrashlistener-api"></a>
 
 ### SetCrashListener API 使用例
 
@@ -252,11 +296,15 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 });
 ```
 
+<a id="filtering-the-crash-log"></a>
+
 ## クラッシュログフィルタリングを行う
 
 - Unityを利用していると、収集を望まない例外ログやクラッシュログが収集されることがあります。
 - NHN Cloud Loggerは、収集を望まないクラッシュログをフィルタリングする機能をサポートします。
   - この機能はUnityの例外に限定した機能です。
+
+<a id="specification-for-addcrashfilter-api"></a>
 
 ### AddCrashFilter APIの仕様
 
@@ -277,17 +325,23 @@ public static void AddCrashFilter(CrashFilter filter);
 
 - CrashLogDataのプロパティは、[Application.LogCallbackの引数と同じ](https://docs.unity3d.com/ScriptReference/Application.LogCallback.html)です。
 
+<a id="usage-example-of-addcrashfilter-api"></a>
+
 ### AddCrashFilter APIの使用例
 
 ```csharp
 ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("UnityEngine.Debug.Log"));
 ```
 
+<a id="send-handled-exceptions"></a>
+
 ## Handled Exception 送信
 
 NHN Cloud Logger は、一般/クラッシュログだけでなく、try/catch 構文で例外に関連する内容を Report API を使用して送信できます。
 こうして送信した例外ログは、"Log & Crash Search コンソール" > "App Crash Search タブ"のエラータイプで"Handled"でフィルタリングして照会できます。
 Log & Crash コンソールの詳細な使用方法は、[コンソール使用ガイド](http://docs.nhncloud.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)を参照してください。
+
+<a id="specification-for-handled-exception-log-api"></a>
 
 ### Handled Exception Log API 詳細
 
@@ -296,6 +350,8 @@ Log & Crash コンソールの詳細な使用方法は、[コンソール使用�
 var logLevel = ToastLogLevel.ERROR;
 ToastLogger.Report(logLevel, message, exception);
 ```
+
+<a id="usage-example-of-handled-exception-log-api"></a>
 
 ### Handled Exception Log API 使用例
 
@@ -310,11 +366,15 @@ try
 }
 ```
 
+<a id="network-insights"></a>
+
 ## Network Insights
 
 Network Insights は、コンソールに登録した URL を呼び出して、遅延時間およびレスポンス値を測定します。これを活用して複数の国(デバイスの国コード基準)での遅延時間とレスポンス値を測定できます。
 
 > コンソールから Network Insights 機能を有効にすると、NHN Cloud Logger 初期化時に、コンソールに登録した URL で 1 回要請します。
+
+<a id="enable-network-insights"></a>
 
 ### Network Insights 有効化
 
@@ -322,6 +382,8 @@ Network Insights は、コンソールに登録した URL を呼び出して、�
 2. [設定]メニューを選択します。
 3. [ログ送信設定]タブを選択します。
 4. "Network Insights ログ"を有効にします。
+
+<a id="url-setting"></a>
 
 ### URL 設定
 
