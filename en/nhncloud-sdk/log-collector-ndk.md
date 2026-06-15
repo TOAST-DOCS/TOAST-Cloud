@@ -1,5 +1,7 @@
 ## NHN Cloud > SDK User Guide > Log & Crash > Android (NDK)
 
+<a id="android-ndk-crash-report"></a>
+
 ## Android NDK Crash Report
 
 If your Android app includes native libraries, a simple build setup will enable full stack traces and detailed error reports for native code.
@@ -10,9 +12,13 @@ If your Android app includes native libraries, a simple build setup will enable 
 * NHN Cloud Crash Reporter for NDK starts crash detection at NHN Cloud Logger initialization.
 * NHN Cloud Crash Reporter for NDK requires **NDK r17c or higher**.
 
+<a id="prerequisites"></a>
+
 ### Prerequisites
 
 1. Install [NHN Cloud Log & Crash](./log-collector-android).
+
+<a id="library-setting"></a>
 
 ### Library Setting
 - Add dependencies in the app-level build.gradle.
@@ -32,6 +38,8 @@ dependencies {
 }
 ```
 
+<a id="crash-analysis"></a>
+
 ### Crash Analysis
 
 * When native crash occurs, dump (.dmp) file is generated.
@@ -39,11 +47,15 @@ dependencies {
 * You must upload a symbol file for an accurate stack trace.
 * When the symbol file is uploaded, you can check the crash information analyzed in Log & Crash Search Console when a crash occurs.
 
+<a id="symbol-upload"></a>
+
 #### Symbol Upload
 
 * A symbol file is generated as a {library name}.so file in the project's specific path.
 * The maximum size of the upload file is 500 MB.
 * Compress {library name}.so into {library name}.so.zip and upload it from [Log & Crash Search > Settings > Symbol File].
+
+<a id="symbol-file-path"></a>
 
 #### Symbol File Path
 
