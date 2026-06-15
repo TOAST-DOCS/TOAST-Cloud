@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=522c249f15a2 -->
+
 ## Analytics > Log & Crash Search > TOAST SDK 사용 가이드 > Android
 
 <a id="section-1"></a>
