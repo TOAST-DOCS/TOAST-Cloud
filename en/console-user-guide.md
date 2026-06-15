@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=fe1df9cbf57b -->
+
 ## NHN Cloud > Console User Guide
+
+<a id="terminology"></a>
 
 ### Terminology
 
@@ -22,6 +26,8 @@
     * Example: Create a role group 'Group A' by adding the project role PROJECT MEMBER ADMIN and the related permission Project.Payment.Get for the project BILLING VIEWER
 
 ![term_3.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_03_251124.png)
+
+<a id="organization"></a>
 
 ### Organization 
 
@@ -49,6 +55,8 @@
     * The BILLING VIEWER role is granted only between 12PM and 2PM on all days of the week, and the CloudTrail VIEWER role is granted only on Tuesdays.
 * Manage Organization Role Group
     * Members can be granted role groups and roles.
+
+<a id="project"></a>
 
 ### Project
 
