@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=ec416b7f4d48 -->
+
 # 인증 방식 개요
 
 **NHN Cloud > Public API 사용 가이드 > API 인증 방식 > 인증 방식 개요**
