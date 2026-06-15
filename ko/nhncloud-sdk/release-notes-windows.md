@@ -1,10 +1,16 @@
+<!-- pre-align:aligned sig=68b848be7257 -->
+
 ## NHN Cloud > SDK 사용 가이드 > 릴리스 노트 > Windows C++
+
+<a id="002-20240123"></a>
 
 ## 2.0.0.2 (2024.01.23)
 Download : [nhncloud-sdk-windows-2.0.0.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.2.zip)
 * 중복 로그 필터링 개선
 * CrashReporter 실행 시 핸들 누수 문제 수정
 * 기타 안정성 개선
+
+<a id="001-20220712"></a>
 
 ## 2.0.0.1 (2022.07.12)
 Download : [nhncloud-sdk-windows-2.0.0.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.1.zip)
@@ -13,6 +19,8 @@ Download : [nhncloud-sdk-windows-2.0.0.1.zip](https://static.toastoven.net/toast
 * 로그 전송 시 메모리 누수 수정
 * User ID가 MBCS/UNICODE 함수에 따라 다르게 반영되는 문제 수정
 * 크래시 로그 전송 시 로그 유형 필터 설정이 적용되지 않는 문제 수정
+
+<a id="005-20210331"></a>
 
 ## 1.0.0.5 (2021.03.31)
 Download : [toast-sdk-windows-1.0.0.5.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/1.0.0/toast-sdk-windows-1.0.0.5.zip)
@@ -25,19 +33,31 @@ Download : [toast-sdk-windows-1.0.0.5.zip](https://static.toastoven.net/toastclo
 	* 샘플 프로젝트 포함
 
 
+<a id="943-20191010"></a>
+
 ## 0.9.4.3 (2019.10.10)
 Download : [toast-sdk-windows-0.9.4.3.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.4/toast-sdk-windows-0.9.4.3.zip)
 
+<a id="toast-log-crash"></a>
+
 ### TOAST Log & Crash
+
+<a id="bug-fixes"></a>
 
 #### 버그 수정
 
 * x86에서 pure virtual call / invalid parameter 크래쉬로그가 남지 않는 현상 처리
 
+<a id="930-20190723"></a>
+
 ## 0.9.3.0 (2019.07.23)
 Download : [toast-sdk-windows-0.9.3.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.3/toast-sdk-windows-0.9.3.0.zip)
 
+<a id="toast-log-crash-2"></a>
+
 ### TOAST Log & Crash
+
+<a id="added-features"></a>
 
 #### 추가 사항
 
@@ -49,10 +69,16 @@ Download : [toast-sdk-windows-0.9.3.0.zip](https://static.toastoven.net/toastclo
 	* visual studio 2015 (vc14) 버전 제공
 * xp 버전 제공
 
+<a id="9012-20180904"></a>
+
 ## 0.9.0.12 (2018.09.04)
 Download : [toast-sdk-windows-0.9.0.12.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.0/toast-sdk-windows-0.9.0.12.zip)
 
+<a id="toast-log-crash-3"></a>
+
 ### TOAST Log & Crash
+
+<a id="added"></a>
 
 #### 추가 사항
 
