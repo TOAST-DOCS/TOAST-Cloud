@@ -149,6 +149,8 @@ allprojects {
 }
 ```
 
+<a id="when-an-ndk-related-error-occurs"></a>
+
 #### NDK関連エラー発生時
 - Gradleを設定してビルドを行うと、下記のようなエラーが発生することがあります。
 > No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
