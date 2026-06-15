@@ -1,15 +1,23 @@
 ## NHN Cloud > SDK User Guide > OCR > Credit Card (Android)
 
+<a id="prerequisites"></a>
+
 ## 事前準備
 
 1. [NHN Cloud Console](https://console.nhncloud.com)で[AI Service > OCR]サービスを有効にします。
 2. OCRコンソールdeAppKeyとSecretKeyを確認します。
 
+<a id="supported-environment"></a>
+
 ## サポート環境
 
 NHN Cloud Credit Card RecognizerはAndroid 5.1以上(API level 22以上)で動作します。
 
+<a id="set-up-project"></a>
+
 ## プロジェクト設定
+
+<a id="add-dependency"></a>
 
 ### 依存関係の追加
 
@@ -24,6 +32,8 @@ dependencies {
 
 <br>
 
+<a id="camera-permission"></a>
+
 ### CAMERA権限
 
 Credit Card Recognizerを使用するには**Manifest.permission.CAMERA**権限が必要です。
@@ -31,7 +41,11 @@ Credit Card Recognizerを始める前にカメラ権限を取得してくださ�
 
 <br>
 
+<a id="use-credit-card-recognizer"></a>
+
 ## Credit Card Recognizer使用
+
+<a id="create-creditcardrecognizer-instance"></a>
 
 ### CreditCardRecognizerインスタンス作成
 
@@ -45,6 +59,8 @@ val creditCardRecognizer = NhnCloudOcr.newBuilder(context)
 ```
 
 <br>
+
+<a id="initiate-creditcardrecognizer"></a>
 
 ### CreditCardRecognizerをはじめる
 
@@ -61,6 +77,8 @@ creditCardRecognizer.launch(activity) { result, data ->
 ```
 
 <br>
+
+<a id="use-recognition-data"></a>
 
 ### 認識データ使用
 
@@ -81,10 +99,14 @@ firstNumberSecureTextView.setText(firstNumber)
 
 <br>
 
+<a id="customize-credit-card-recognition-screen"></a>
+
 ## クレジットカード認識画面のユーザー定義
 
 クレジットカード認識画面をユーザー定義して使用できます。
 ユーザー定義画面を構成するにはCreditCardRecognizerの代わりにCreditCardRecognitionServiceを使用する必要があります。
+
+<a id="create-creditcardrecognitionservice-instance"></a>
 
 ### CreditCardRecognitionServiceインスタンス作成
 
@@ -98,6 +120,8 @@ val creditCardRecognitionService = NhnCloudOcrServices.newBuilder(context)
 ```
 
 <br>
+
+<a id="register-creditcardrecognitionservice-listner"></a>
 
 ### CreditCardRecognitionServiceリスナー登録
 
@@ -118,6 +142,8 @@ creditCardRecognitionService.setCreditCardRecognitionListener { result, data ->
 > カード認識後に必ずcreditCardRecognitionService.stop()を呼び出してサービスを停止する必要があります。
 
 <br>
+
+<a id="process-recognition-result"></a>
 
 ### 認識結果の処理
 
@@ -153,6 +179,8 @@ private fun isConfident(data: CreditCardRecognitionData): Boolean {
 
 <br>
 
+<a id="use-recognition-data-2"></a>
+
 ### 認識データの使用
 
 クレジットカードの認識に成功した時、CreditCardRecognitionDataオブジェクトでクレジットカード認識データが伝達されます。
@@ -171,6 +199,8 @@ firstNumberSecureTextView.setText(firstNumber)
 ```
 
 <br>
+
+<a id="configure-camera-preview"></a>
 
 ### Camera Preview構成
 
@@ -194,6 +224,8 @@ ActivityまたはFragmentのLayoutに以下のようにCreditCardRecognitionCame
 
 <br>
 
+<a id="change-background-color"></a>
+
 ### バックグラウンドの色を変更
 
 スキャンガイド領域を除く領域は半透明に見えます。
@@ -208,6 +240,8 @@ ActivityまたはFragmentのLayoutに以下のようにCreditCardRecognitionCame
 ```
 
 <br>
+
+<a id="customize-scan-guide-view"></a>
 
 ### スキャンガイドビューユーザー定義
 
@@ -238,6 +272,8 @@ ActivityまたはFragmentのLayoutに以下のようにCreditCardRecognitionCame
 
 <br>
 
+<a id="change-guide-view-when-credit-card-is-detected"></a>
+
 ### クレジットカード検出時のガイドビュー変更
 
 クレジットカードが検出された時、スキャンガイドビューの色または形を変更できます。
@@ -261,6 +297,8 @@ class CustomGuideView(
 
 <br>
 
+<a id="initiate-service"></a>
+
 ### サービス開始
 
 CreditCardRecognitionCameraPreviewのインスタンスを取得してCreditCardRecognitionServiceを開始します。
@@ -276,6 +314,8 @@ try {
 
 <br>
 
+<a id="stop-service"></a>
+
 ### サービス停止
 
 アプリがバックグラウンドになるか、クレジットカードの認識に成功した時、creditCardRecognitionServiceを停止します。
@@ -285,6 +325,8 @@ creditCardRecognitionService.stop()
 ```
 
 <br>
+
+<a id="release-service"></a>
 
 ### サービス解除
 
@@ -296,9 +338,13 @@ creditCardRecognitionService.release();
 
 <br>
 
+<a id="set-creditcardrecognizer-lifecycle"></a>
+
 ### CreditCardRecognizer Lifecycle設定
 
 ActivityまたはFragmentのライフサイクルに基づいて以下のように呼び出します。
+
+<a id="activity"></a>
 
 #### Activity
 
@@ -318,6 +364,8 @@ override fun onDestroy() {
     creditCardRecognitionService.release()
 }
 ```
+
+<a id="fragment"></a>
 
 #### Fragment
 
@@ -340,6 +388,8 @@ override fun onDestroyView() {
 
 <br>
 
+<a id="set-scan-direction"></a>
+
 ### スキャン方向設定
 
 クレジットカードのスキャン方向を設定します。
@@ -350,6 +400,8 @@ creditCardRecognitionService.scanOrientation =
 ```
 
 <br>
+
+<a id="prevent-screen-capture"></a>
 
 ### 画面キャプチャ防止
 
@@ -368,6 +420,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 <br>
 
+<a id="device-check"></a>
+
 ### デバイスチェック
 
 Credit Card Recognition Serviceを起動する前に、アプリケーションを実行する端末でCredit Card Recognition Serviceを使用できる環境であることを確認できます。
@@ -382,6 +436,8 @@ if (CreditCardRecognitionService.isAvailable(context)) {
 ```
 
 <br>
+
+<a id="use-securetextview"></a>
 
 ## SecureTextViewの使用
 
@@ -407,7 +463,11 @@ val firstNumberView = findViewById<SecureTextView>(credit_card_first_number_view
 firstNumberView.setText(namfirstNumbere)
 ```
 
+<a id="class-references"></a>
+
 ## Class References
+
+<a id="creditcarddata"></a>
 
 ### CreditCardData
 
@@ -418,6 +478,8 @@ firstNumberView.setText(namfirstNumbere)
 | getExpirationDate | SecureString |  | 有効期限を返します。 |
 
 <br>
+
+<a id="creditcardrecognitiondata"></a>
 
 ### CreditCardRecognitionData
 
@@ -433,6 +495,8 @@ firstNumberView.setText(namfirstNumbere)
 
 <br>
 
+<a id="creditcardrecognitiondatacardnumber"></a>
+
 ### CreditCardRecognitionData.CardNumber
 
 | Method | Returns | Parameters | Descriptions |
@@ -442,6 +506,8 @@ firstNumberView.setText(namfirstNumbere)
 | getCoordinates | Coordinates |  | カード番号認識領域の座標リスト(Coordinates)を返します。 |
 
 <br>
+
+<a id="creditcardrecognitiondataexpirationdate"></a>
 
 ### CreditCardRecognitionData.ExpirationDate
 
@@ -453,6 +519,8 @@ firstNumberView.setText(namfirstNumbere)
 
 <br>
 
+<a id="creditcardrecognitiondatacoordinates"></a>
+
 ### CreditCardRecognitionData.Coordinates
 
 | Method | Returns | Parameters | Descriptions |
@@ -461,6 +529,8 @@ firstNumberView.setText(namfirstNumbere)
 | getPoint | Point | int | 座標を返します。<br>\- LEFT\_TOP: 0<br>\- RIGHT\_TOP: 1<br>\- RIGHT\_BOTTOM: 2<br>\- LEFT\_BOTTOM: 3 |
 
 <br>
+
+<a id="securetextview"></a>
 
 ### SecureTextView
 
