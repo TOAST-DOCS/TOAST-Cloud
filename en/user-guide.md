@@ -235,41 +235,43 @@ The authentication and management policy of each payment method goes as follows:
 #### Complete Registration of Payment Methods
 - If your payment method is successfully registered, you can see it on the Payment Method screen.
 
-<a id="bank-transfers"></a>
+<a id="how-to-register-payment-methods-1"></a>
 
 ### Bank Transfers
-<a id="select-payment-methods-3"></a>
+<a id="authenticate-public-key-certificates"></a>
 
 #### Select Payment Methods
 - Provided only for business members.
 - Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Methods** page, click **Bank Transfer**.
 
-<a id="enter-account-information"></a>
+<a id="complete-registration-of-payment-methods-2"></a>
 
 #### Enter Account Information
 - Enter your account information.
 
-<a id="authenticate-public-key-certificates"></a>
+<a id="select-payment-methods-4"></a>
 
 #### Authenticate Public Key Certificates
 - For s personal account, select a personal Public Key Certificate for authentication.
 - For a corporate account, select a Public Key Certificate registered with the same business information on its account for authentication.
 
-<a id="complete-registration-of-payment-methods-2"></a>
+<a id="complete-registration-of-payment-methods-3"></a>
 
 #### Complete Registration of Payment Methods 
 - If your payment method is successfully registered, you can see it on the Payment Method screen.
 
 **NHN Cloud Japan **
+<a id="bank-transfers"></a>
+
 ### Credit Cards 
-<a id="select-payment-methods-4"></a>
+<a id="select-payment-methods-3"></a>
 
 #### Select Payment Methods 
 - Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Methods** page, enter **Credit Card Information**(card number, valid period, card holder's name, and security code).
 
-<a id="complete-registration-of-payment-methods-3"></a>
+<a id="enter-account-information"></a>
 
 #### Complete Registration of Payment Methods
 - If your payment method is successfully registered, you can see it on the Payment Method screen.
