@@ -1,10 +1,14 @@
 ## NHN Cloud > SDK 사용 가이드 > Log & Crash > Windows C++
 
+<a id="prerequisites"></a>
+
 ## 사전 준비
 
 1. [Install the NHN Cloud SDK](./getting-started-windows)
 2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Log & Crash Search를 활성화](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3. Log & Crash Search에서 [AppKey를 확인](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+
+<a id="initialize-nhn-cloud-logger-sdk"></a>
 
 ## NHN Cloud SDK 초기화
 
@@ -40,6 +44,8 @@ if (!g_nhncloud_lnc->initialize(loggerConf))
 
 ```
 
+<a id="set-userid"></a>
+
 ## UserID 설정
 
 사용자 ID를 설정할 수 있습니다.
@@ -57,9 +63,13 @@ UserID를 설정하면, 로그 전송 API를 호출할 때 로그와 함께 사�
 * getUserId
     * 현재 설정된 사용자 ID를 얻어옵니다.
 
+<a id="send-logs"></a>
+
 ## 로그 전송
 
 NHN Cloud Logger는 5가지 레벨의 로그 전송 함수를 제공합니다.
+
+<a id="send-logs-2"></a>
 
 ### 로그 전송
 * DEBUG, INFO, WARN, ERROR, FATAL 레벨의 로그를 명시적으로 전송
@@ -77,7 +87,11 @@ void fatal(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
 void log(NHNCLOUD_LOGGER_LEVEL logLevel, const char* message, NHNCloudLoggerUserFields* userFields = nullptr);
 ```
 
+<a id="add-user-defined-fields"></a>
+
 ## 사용자 정의 필드 추가
+<a id="method-1-use-the-nhncloudlogger-instance-api"></a>
+
 ### 방법 1 : NHNCloudLogger 인스턴스 API 사용
 
 * NHNCloudLogger 인스턴스에서 직접 관리하는 사용자 정의 필드입니다.
@@ -94,6 +108,8 @@ g_nhncloud_lnc->removeUserField("nickname");
 g_nhncloud_lnc->cleareUserField();
 
 ```
+
+<a id="method-2-use-the-nhncloudloggeruserfields-class"></a>
 
 ### 방법 2 : NHNCloudLoggerUserFields 클래스 사용
 
@@ -112,6 +128,8 @@ pUserFieldHelper->clear(); // 위에서 설정한 사용자 정의 필드를 모
 
 *  사용자 정의 필드는 **Log & Crash Search > 로그 검색**을 클릭한 후 **로그 검색** 화면의 **선택한 필드**에 표시되는 값과 같습니다.
 
+<a id="restrictions-for-user-defined-fields"></a>
+
 #### 사용자 정의(커스텀) 필드 제약사항
 
 * 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.
@@ -119,9 +137,13 @@ pUserFieldHelper->clear(); // 위에서 설정한 사용자 정의 필드를 모
 * 필드명 내에 공백은 "_"로 치환됩니다.
 
 
+<a id="collect-crash-logs"></a>
+
 ## 크래시 로그 수집
 * 크래시가 발생하면, SDK를 포함한 실행 파일에서 크래시 덤프를 전송하는 것이 기본동작입니다.
 * 크래시 발생시 사용자에 오류 화면을 노출하고 추가 정보를 수집할 수 있습니다.
+
+<a id="crash-log-collection-and-configuration"></a>
 
 ### 크래시 로그 수집과 환경 설정
 
@@ -169,6 +191,8 @@ if (!g_nhncloud_lnc->initialize(loggerConf))
 
 ```
 
+<a id="test-sending-crash-logs"></a>
+
 ### 크래시 로그 전송 테스트
 
 * 크래시 로그 전송을 테스트하려면 실제로 예외(Exception)가 발생해야 합니다.
@@ -184,9 +208,13 @@ void CsampleDlg::OnBnClickedCrash()
 }
 ```
 
+<a id="interpret-crash-logs"></a>
+
 ### 크래시 로그 해석
 
 NHN Cloud Windows SDK에서 발생한 크래시를 해석하려면 심벌 파일을 생성해 웹 콘솔에 업로드해야 합니다.
+
+<a id="create-symbol-files"></a>
 
 #### 심벌 파일 생성
 
