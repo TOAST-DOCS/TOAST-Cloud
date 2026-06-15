@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=26da38889d53 -->
+
 # User Access Key 토큰
 
 **NHN Cloud > Public API 사용 가이드 > API 인증 방식 > User Access Key 토큰**
@@ -13,9 +15,13 @@ NHN Cloud는 두 가지 타입의 토큰을 제공합니다.
 
 User Access Key 토큰 발급 및 API 호출은 다음과 같은 흐름으로 동작합니다.
 
+<a id="issue-new-tokens-and-making-api-calls"></a>
+
 ### 신규 토큰 발급 및 API 호출
 
 ![img001.png](http://static.toastoven.net/toast/public_api/img01_KO.png)
+
+<a id="reissue-and-api-calls-on-token-expiration"></a>
 
 ### 토큰 만료 시 재발급 및 API 호출
 
@@ -30,6 +36,8 @@ User Access Key 토큰 발급 및 API 호출은 다음과 같은 흐름으로 �
     Opaque 토큰 유효 시간은 60초 ~ 86,400초(24시간) 내에서 설정할 수 있고, JWT 토큰 유효 시간은 60초 ~ 3,600초(1시간) 내에서 설정할 수 있습니다.
     유효 시간을 수정하기 전에 발급된 토큰의 유효 시간은 변경되지 않으며, 토큰 유효 시간 수정 후 신규로 발급하는 토큰부터 변경된 토큰 유효 시간이 적용됩니다.
 
+
+<a id="prerequisites"></a>
 
 ## 사전 작업
 
@@ -53,6 +61,8 @@ User Access Key 토큰을 발급하려면 먼저 User Access Key ID와 Secret Ac
     * User Access Key 또는 Secret Access Key 중 하나라도 유출되었거나 유출이 의심되는 경우 해당 키를 폐기하고 새로 발급 받아야 합니다.
 
 
+<a id="authentication-server-domain"></a>
+
 ## 인증 서버 도메인
 인증 서버의 도메인은 다음과 같습니다.
 
@@ -61,8 +71,12 @@ https://oauth.api.nhncloudservice.com/
 ```
 
 
+<a id="request-user-access-key-token-issuance"></a>
+
 ## User Access Key 토큰 발급 요청하기
 > `POST /oauth2/token/create`
+
+<a id="request-opaque-token-issuance"></a>
 
 ### Opaque 타입 토큰 발급 요청하기
 * 요청
@@ -88,6 +102,8 @@ https://oauth.api.nhncloudservice.com/
     "expires_in":86400
 }
 ```
+
+<a id="request-jwt-token-issuance"></a>
 
 ### JWT 타입 토큰 발급 요청하기
 
@@ -119,7 +135,11 @@ https://oauth.api.nhncloudservice.com/
 }
 ```
 
+<a id="case-specific-request-examples"></a>
+
 ### 케이스별 요청 예시
+<a id="curl-when-including-authentication-information-in-the-header"></a>
+
 #### curl: Header에 인증 정보를 포함하는 경우
 
 
@@ -145,6 +165,8 @@ curl -X POST "https://oauth.api.nhncloudservice.com/oauth2/token/create" \
   -d "scope=appKey:r9Zd7vDEmWMfQb00"
 ```
 
+<a id="curl-when-using--u-option"></a>
+
 #### curl: -u 옵션을 사용하는 경우
 
 * Opaque 타입 토큰
@@ -164,6 +186,8 @@ curl -X POST "https://oauth.api.nhncloudservice.com/oauth2/token/create" \
   -d "grant_type=client_credentials" \
   -d "scope=appKey:r9Zd7vDEmWMfQb00"
 ```
+
+<a id="feignclient"></a>
 
 #### FeignClient
 
@@ -188,6 +212,8 @@ public interface AuthClient {
                               @RequestParam("scope") String scope);
 }
 ```
+
+<a id="resttemplate"></a>
 
 #### RestTemplate
 
@@ -229,6 +255,8 @@ public TokenResponse createJwtToken(String userAccessKeyID, String secretAccessK
     return restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
+
+<a id="when-using-openfeign-on-spring-cloud-to-automatically-issue-and-renew-tokens"></a>
 
 #### Spring Cloud의 OpenFeign을 사용하여 자동으로 토큰을 발급 및 갱신하는 경우
 
@@ -306,6 +334,8 @@ public class Oauth2Config {
 ```
 
 
+<a id="request-user-access-key-token-revocation"></a>
+
 ## User Access Key 토큰 만료 요청하기
 > `POST /oauth2/token/revoke`
 
@@ -324,7 +354,11 @@ public class Oauth2Config {
     * HttpStatus 200
 
 
+<a id="case-specific-request-examples-2"></a>
+
 ### 케이스별 요청 예시 
+<a id="curl-when-including-authentication-information-in-the-header-2"></a>
+
 #### curl: Header에 인증 정보를 포함하는 경우
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' \
@@ -332,6 +366,8 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' 
   -H 'Authorization: Basic dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5' \
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
+
+<a id="curl-when-using-the--u-option"></a>
 
 #### curl: -u 옵션을 사용하는 경우
 ```sh
@@ -341,6 +377,8 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' 
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
 
+<a id="feignclient-2"></a>
+
 #### FeignClient
 ```java
 @FeignClient(name = "auth", url = "https://oauth.api.nhncloudservice.com")
@@ -349,6 +387,8 @@ public interface AuthClient {
     void revokeToken(@RequestHeader("Authorization") String authorization, @RequestParam("token") String token);
 }
 ```
+
+<a id="resttemplate-2"></a>
 
 #### RestTemplate
 ```java
@@ -370,6 +410,8 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 ```
 
 
+<a id="use-user-access-key-token"></a>
+
 ## User Access Key 토큰 사용하기
 User Access Key 토큰은 HTTP 요청 헤더에 포함해 전달합니다. API 호출 시 아래 예시와 같이 요청 헤더에 User Access Key 토큰을 설정해 호출하세요.
 
@@ -381,6 +423,8 @@ X-NHN-Authorization: Bearer {Access Token}
 사용자가  HTTP 헤더에 키를 담아 서버에 요청을 보내면 서버가 토큰의 유효성을 확인한 뒤 요청을 승인하거나 거부합니다.
 
     
+<a id="get-jwt-public-key"></a>
+
 ## JWT Public Key 조회
 > `GET /oauth2/jwks`
 
@@ -416,11 +460,15 @@ X-NHN-Authorization: Bearer {Access Token}
 }
 ```
 
+<a id="request-example"></a>
+
 ### 요청 예시
 * curl
 ```sh
 curl -X GET "https://oauth.api.nhncloudservice.com/oauth2/jwks"
 ```
+
+<a id="public-key-usage-example"></a>
 
 ### Public Key 활용 예시
 조회한 Public Key를 사용하여 JWT 토큰의 서명을 검증할 수 있습니다. 대부분의 JWT 라이브러리에서 JWKS 형식을 지원합니다.
