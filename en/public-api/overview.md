@@ -20,6 +20,8 @@ This document provides a comprehensive overview of NHN Cloud Public API usage, i
 * [Partner Management API Guide](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/)
 * [Release Notes](https://docs.nhncloud.com/en/nhncloud/en/public-api/release-notes/)
 
+<a id="glossary"></a>
+
 ## Glossary
 
 | Terms | Description |
