@@ -1,5 +1,7 @@
 ## NHN Cloud > 콘솔 사용 가이드
 
+<a id="terminology"></a>
+
 ### 용어 정의
 
 
@@ -22,6 +24,8 @@
     * 예: 프로젝트 역할인 PROJECT MEMBER ADMIN과 프로젝트 BILLING VIEWER의 연관 권한인 Project.Payment.Get 권한을 추가하여 역할 그룹 ‘Group A’생성
 
 ![term_3.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_03_251124.png)
+
+<a id="organization"></a>
 
 ### 조직
 
@@ -50,6 +54,8 @@
 
 * 조직 역할 그룹 관리
     * 멤버에게는 역할 그룹과 역할 부여가 가능합니다.
+
+<a id="project"></a>
 
 ### 프로젝트
 
