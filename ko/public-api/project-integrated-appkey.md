@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=d85731c000d8 -->
+
 # 프로젝트 통합 Appkey
 **NHN Cloud > Public API 사용 가이드 > API 인증 방식 > 프로젝트 통합 Appkey**
 
@@ -23,6 +25,8 @@ NHN Cloud 콘솔의 각 프로젝트 화면에서 프로젝트 통합 Appkey를 
     * 프로젝트 통합 Appkey가 모든 Public API에서 지원되지는 않습니다. 동일한 X-TC-APP-KEY 헤더를 사용하더라도 일부 API는 서비스별 Appkey만 지원하므로 프로젝트 통합 Appkey는 적용되지 않을 수 있습니다. 해당 API의 가이드를 통해 지원 여부를 확인하세요.
     * 프로젝트 통합 Appkey는 프로젝트당 최대 3개까지 생성할 수 있습니다.
 
+
+<a id="making-api-calls"></a>
 
 ## API 호출하기
 프로젝트 통합 Appkey는 HTTP 요청 헤더에 포함해 전달합니다. API 호출 시 아래 예시와 같이 요청 헤더에 프로젝트 통합 Appkey를 설정해 호출하세요.
