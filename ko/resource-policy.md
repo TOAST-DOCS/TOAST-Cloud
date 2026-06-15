@@ -1,5 +1,9 @@
+<!-- pre-align:aligned sig=4faf0b5550ec -->
+
 ## NHN Cloud > 리소스 제공 정책 
 NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도치 않은 리소스 생성으로 인해 발생할 수 있는 지출 등으로부터 사용자를 보호하기 위해 리소스 제공 정책을 아래와 같이 적용합니다.
+
+<a id="resource-provision-policy-for-organizationproject"></a>
 
 ### 조직/프로젝트 리소스 제공 정책
 조직의 리소스는 결제 수단을 등록한 회원을 기준으로 계산되며, 프로젝트는 조직을 기준으로 계산됩니다.
@@ -11,6 +15,8 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |프로젝트	 | 개인 | 조직당 |5개|
 |	 | 사업자 | 조직당 |10개|
 
+<a id="resource-provision-policy-for-instance-service"></a>
+
 ### Instance 서비스 리소스 제공 정책 
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
@@ -19,6 +25,8 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |CPU	| 프로젝트당 |100vCore| O | |
 |메모리	 | 프로젝트당 |262,144MB| O | |
 
+
+<a id="resource-provision-policy-for-block-storage-service"></a>
 
 ### Block Storage 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
@@ -32,6 +40,8 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |블록 스토리지 Encrypted SSD 타입 최대 크기| 블록 스토리지당 |2048GB| O | |
 |블록 스토리지 당 스냅숏| 블록 스토리지당 |3개| X | |
 
+<a id="resource-provision-policy-for-floating-ip-service"></a>
+
 ### Floating IP 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
@@ -39,12 +49,16 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |----|----|----|----|----|
 |플로팅 IP | 프로젝트당 |50개| O | |
 
+<a id="resource-provision-policy-for-vpc-service"></a>
+
 ### VPC 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
 |리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
 |VPC | 프로젝트당 |3개| O | |
+
+<a id="resource-provision-policy-for-subnet-service"></a>
 
 ### Subnet 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
@@ -54,6 +68,8 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |서브넷 | VPC당 |10개| O | |
 |정적 라우트 | 서브넷당 | 20개 | O | |
 
+<a id="resource-provision-policy-for-routing-service"></a>
+
 ### Routing 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
@@ -61,6 +77,8 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |----|----|----|----|----|
 |라우팅 테이블 | VPC당 |10개| O | |
 |라우트 | 라우팅 테이블당 |10개| O | 100개 |
+
+<a id="resource-provision-policy-for-peering-gateway-service"></a>
 
 ### Peering Gateway 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
@@ -71,6 +89,8 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |프로젝트 피어링 | 프로젝트당 |10개| O | | 
 |피어링 허용 대상 목록| 프로젝트당 |10개| O | | 
 
+<a id="resource-provision-policy-for-internet-gateway-service"></a>
+
 ### Internet Gateway 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
@@ -78,12 +98,16 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |----|----|----|----|----|
 |인터넷 게이트웨이 | 프로젝트당	|3개| O | |
 
+<a id="resource-provision-policy-for-nat-gateway-service"></a>
+
 ### NAT Gateway 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
 |리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
 |NAT 게이트웨이 | 프로젝트당 | 3개 | O | | 
+
+<a id="resource-provision-policy-for-vpn-gatewaysite-to-site-vpn-service"></a>
 
 ### VPN Gateway(Site-to-Site VPN) 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
@@ -93,12 +117,16 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |VPN 게이트웨이(Site-to-Site VPN) | 프로젝트당 | 3개 | X | |
 |VPN(Site-to-Site VPN) 연결| 프로젝트당 | 30개 | X | |
 
+<a id="resource-provision-policy-for-service-gateway-service"></a>
+
 ### Service Gateway 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
 |리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
 |서비스 게이트웨이 | 프로젝트당 | 10개 | O | |
+
+<a id="resource-provision-policy-for-traffic-mirroring-service"></a>
 
 ### Traffic Mirroring 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
@@ -108,6 +136,8 @@ NHN Cloud는 모든 고객에게 안정적인 서비스를 제공하고, 의도�
 |트래픽 미러링 세션 | 프로젝트당 | 10개 | O | | 
 |트래픽 미러링 필터 그룹 | 프로젝트당 | 10개 | O | | 
 
+<a id="resource-provision-policy-for-network-interface-service"></a>
+
 ### Network Interface 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다.
 Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 표시될 수 있으며, 해당 리소스는 제공량에 포함되지 않습니다.
@@ -115,6 +145,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 |리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
 | 네트워크 인터페이스 | 프로젝트당 | 500개 | O | | 
+
+<a id="resource-provision-policy-for-network-acl-service"></a>
 
 ### Network ACL 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
@@ -124,6 +156,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | Network ACL | 프로젝트당 | 10개 | O | | 
 | Network ACL 정책 | 프로젝트당 | 100개 | O | | 
 | Network ACL 바인딩 | 프로젝트당 | 100개 | O | | 
+
+<a id="resource-provision-policy-for-load-balancer-service"></a>
 
 ### Load Balancer 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
@@ -139,6 +173,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 |로드 밸런서 L7 조건 | L7 규칙당 |10개| O | |
 |SSL 정책 | 프로젝트당 |10개| O | |
 
+<a id="resource-provision-policy-for-load-balancerdsr-service"></a>
+
 ### Load Balancer(DSR) 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
@@ -147,6 +183,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 |로드 밸런서(DSR) | 프로젝트당 |10개| O | |
 |로드 밸런서(DSR) 멤버 | 로드밸런서(DSR)당 |30개| O | |
 
+
+<a id="resource-provision-policy-for-nas-service"></a>
 
 ### NAS 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
@@ -158,6 +196,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | NAS 볼륨 최대 크기 | NAS 볼륨당 | 10,000 GB | O | |
 | NAS 볼륨 서브넷 | 프로젝트당 | 3개 | O | |
 
+<a id="resource-provision-policy-for-nas-for-bigdata-service"></a>
+
 ### NAS for BigData 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
@@ -167,6 +207,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | NAS for BigData 볼륨 크기 | 프로젝트당 | 500,000 GB | O | |
 | NAS for BigData 볼륨 최대 크기 | NAS 볼륨당 | 50,000 GB | O | |
 
+<a id="resource-provision-policy-for-storage-gateway-service"></a>
+
 ### Storage Gateway 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
@@ -174,6 +216,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 |----|----|----|----|----|
 | 스토리지 게이트웨이 | 프로젝트당 | 3개 | X | |
 | 공유 | 게이트웨이당 | 10개 | X | |
+
+<a id="resource-provision-policy-for-transit-hub-service"></a>
 
 ### Transit Hub 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
@@ -188,6 +232,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | 트랜짓 허브 멀티캐스트 도메인 | 프로젝트당 | 20개 | O | |
 | 트랜짓 허브 멀티캐스트 그룹 | 프로젝트당 | 100개 | O | |
 
+<a id="resource-provision-policy-for-private-dns-service"></a>
+
 ### Private DNS 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다. 
 
@@ -195,6 +241,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 |----|----|----|----|----|
 | Private DNS Zone | 프로젝트당 | 100개 | O | |
 | Private DNS 레코드 세트 | 프로젝트당 | 500개 | O | |
+
+<a id="resource-provision-policy-for-nhn-kubernetes-service-nks"></a>
 
 ### NHN Kubernetes Service(NKS) 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다.
@@ -204,6 +252,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 |클러스터	| 프로젝트당 |3개| O | |
 |워커 노드 그룹	 | 클러스터당 |3개(기본 워커 노드 그룹 포함)| O | |
 |워커 노드 수	 | 워커 노드 그룹당 |10개| O | |
+
+<a id="resource-provision-policy-for-nhn-container-registryncr"></a>
 
 ### NHN Container Registry(NCR) 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다.
@@ -216,6 +266,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | 태그 수 | 아티팩트당 | 1000개 | O | |
 | 수동 스캔 수 | 이미지당 1일 | 1개 | O | |
 
+
+<a id="resource-provision-policy-for-nhn-container-servicencs"></a>
 
 ### NHN Container Service(NCS) 리소스 제공 정책 
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다.
@@ -234,13 +286,19 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | GPU | 프로젝트당 | 7Core | O | |
 
 
+<a id="resource-provision-policy-for-dns-plus-service"></a>
+
 ### DNS Plus 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산됩니다.
+
+<a id="dns"></a>
 
 #### DNS
 |리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
 |레코드 세트	| DNS Zone당 |5,000개| O | |
+
+<a id="gslb"></a>
 
 #### GSLB
 |리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
@@ -253,6 +311,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 |헬스 체크	| 프로젝트당 | 5개 | O | |
 
 
+<a id="resource-provision-policy-for-rds-for-mysql"></a>
+
 ### RDS for MySQL 서비스 리소스 제공 정책 
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
@@ -261,6 +321,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | DB 인스턴스 Data Storage | 프로젝트당 | 10,240GB | O | | 
 | 복제본 | DB 인스턴스 그룹당 | 5개 | O | |
 
+<a id="resource-provision-policy-for-rds-for-postgresql"></a>
+
 ### RDS for PostgreSQL 서비스 리소스 제공 정책 
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
@@ -268,6 +330,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | DB 인스턴스 메모리 | 프로젝트당 | 262,144MB | O | |
 | DB 인스턴스 Data Storage | 프로젝트당 | 10,240GB | O | | 
 | 복제본 | DB 인스턴스 그룹당 | 5개 | O | |
+
+<a id="resource-provision-policy-for-rds-for-mariadb"></a>
 
 ### RDS for MariaDB 서비스 리소스 제공 정책 
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
@@ -278,6 +342,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | 복제본 | DB 인스턴스 그룹당 | 5개 | O | |
 
 
+<a id="resource-provision-policy-for-rds-for-ms-sql"></a>
+
 ### RDS for MS-SQL 서비스 리소스 제공 정책 
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
@@ -286,6 +352,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | DB 인스턴스 Data Storage | DB 인스턴스당 | 2,048GB | O | | 
 | DB 인스턴스 Data Storage | 프로젝트당 | 10,240GB | O | |
 
+
+<a id="resource-provision-policy-for-network-firewall"></a>
 
 ### Network Firewall 서비스 리소스 제공 정책
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
@@ -299,6 +367,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | 게이트웨이 개수 | 프로젝트당 | 10개 | X | |
 | 터널 개수 | 프로젝트당 | 20개 | X | |
 
+
+<a id="resource-provision-policy-for-cloud-access"></a>
 
 ### Cloud Access 서비스 리소스 제공 정책
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
@@ -319,6 +389,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | 사용자 로그 건수 | 프로젝트당 | 200,000개 | X | |
 
 
+<a id="resource-provision-policy-for-notification-hub"></a>
+
 ### Notification Hub 서비스 리소스 제공 정책
 SMS 서비스와 Notification Hub 서비스의 SMS 발송 건수가 합산되어 계산됩니다.
 KakaoTalk Bizmessage 서비스와 Notification Hub 서비스의 알림톡 발송 건수가 합산되어 계산됩니다.
@@ -328,15 +400,21 @@ KakaoTalk Bizmessage 서비스와 Notification Hub 서비스의 알림톡 발송
 | SMS 발송 건수 | 조직 당 | 5,000건 | O | | 
 | 알림톡 발송 건수 | 카카오톡 채널당 1일 | 1,000건 | O | | 
 
+<a id="resource-provision-policy-for-sms"></a>
+
 ### SMS 서비스 리소스 제공 정책
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
 | 발송 건수 | 조직 당 | 5,000건 | O | | 
 
+<a id="resource-provision-policy-for-kakaotalk-bizmessage-service"></a>
+
 ### KakaoTalk Bizmessage 서비스 리소스 제공 정책
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
 | 알림톡 발송 건수 | 카카오톡 채널당 1일 | 1,000건 | O | | 
+
+<a id="resource-provision-policy-for-face-recognition-service"></a>
 
 ### Face Recognition 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산됩니다.
@@ -346,12 +424,16 @@ KakaoTalk Bizmessage 서비스와 Notification Hub 서비스의 알림톡 발송
 | 그룹 개수 | Face Recognition 서비스당 | 5건 | O | | 
 | 그룹 내 얼굴 등록개수 | Face Recognition 서비스 그룹당 | 100,000건 | O | |
 
+<a id="resource-provision-policy-for-ocr"></a>
+
 ### OCR 서비스 리소스 제공 정책
 리소스 사용량은 프로젝트별로 계산됩니다.
 
 | 리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
 |----|----|----|----|----|
 | 신분증 분석 요청 건수 | OCR 서비스당 | 100,000건 | X | | 
+
+<a id="resource-provision-policy-for-api-gateway-service"></a>
 
 ### API Gateway 서비스 리소스 제공 정책 
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다.
@@ -362,6 +444,8 @@ KakaoTalk Bizmessage 서비스와 Notification Hub 서비스의 알림톡 발송
 | 스테이지 | API Gateway 서비스당 | 10개 | O | |
 | 리소스 메서드 | API Gateway 서비스당 | 100개 | O | 300개 |
 
+<a id="resource-provision-policy-for-log-crash-search-service"></a>
+
 ### Log & Crash Search 서비스 리소스 제공 정책 
 리소스 사용량은 프로젝트별로 계산됩니다.
 
@@ -369,6 +453,8 @@ KakaoTalk Bizmessage 서비스와 Notification Hub 서비스의 알림톡 발송
 |----|----|----|----|----|
 | 로그(일반 로그, 크래시 로그) 건 수 | 1일 | 20,000,000 건 | O | |
 | 로그(일반 로그, 크래시 로그) 크기 | 1건 | 8MB | X | |
+
+<a id="resource-provision-policy-for-dataflow-service"></a>
 
 ### DataFlow 서비스 리소스 제공 정책 
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다.
@@ -378,6 +464,8 @@ KakaoTalk Bizmessage 서비스와 Notification Hub 서비스의 알림톡 발송
 | CPU | 프로젝트당 | 10vCore | O | |
 | Memory | 프로젝트당 | 20GB | O | |
 
+<a id="resource-provision-policy-for-easyqueue-service"></a>
+
 ### EasyQueue 서비스 리소스 제공 정책 
 리소스 사용량은 프로젝트별로 계산되며, 리전별로 구분하여 정책이 적용됩니다.
 
@@ -386,6 +474,8 @@ KakaoTalk Bizmessage 서비스와 Notification Hub 서비스의 알림톡 발송
 | 토픽 수 | 프로젝트당 | 10개 | X | |
 | 파티션 수 | 프로젝트당 | 64개 | X | |
 | 파티션 수 | 토픽 당 | 16개 | X | |
+
+<a id="request-for-capacity-adjustment"></a>
 
 ### 리소스 제공량 증설 요청  
 제공 정책의 사용량 증설을 원하는 경우 NHN Cloud 고객 센터 [1:1문의](https://nhncloud.com/kr/support/inquiry)로 문의하시면 됩니다. 
