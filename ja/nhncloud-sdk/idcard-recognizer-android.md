@@ -1,15 +1,23 @@
 ## NHN Cloud > SDK使用ガイド > OCR > ID Card (Android)
 
+<a id="prerequisites"></a>
+
 ## 事前準備
 
 1. [NHN Cloud Console](https://console.nhncloud.com)で[AI Service > OCR]サービスを有効にします。
 2. OCRコンソールでAppKeyとSecretKeyを確認します。
 
+<a id="supported-environment"></a>
+
 ## サポート環境
 
 NHN Cloud ID Card RecognizerはAndroid 5.1以上(API level 22以上)で動作します。
 
+<a id="set-up-project"></a>
+
 ## プロジェクト設定
+
+<a id="add-dependency"></a>
 
 ### 依存関係追加
 
@@ -25,6 +33,8 @@ dependencies {
 
 <br>
 
+<a id="camera-permission"></a>
+
 ### CAMERA権限
 
 ID Card Recognizerを使用するには **Manifest.permission.CAMERA**権限が必要です。
@@ -32,7 +42,11 @@ ID Card Recognizerを起動する前にカメラの権限を取得してくだ�
 
 <br>
 
+<a id="use-id-card-recognizer"></a>
+
 ## Id Card Recognizer使用
+
+<a id="create-idcardrecognizer-instance"></a>
 
 ### IdCardRecognizerインスタンス作成
 
@@ -47,6 +61,8 @@ val idCardRecognizer = nhnCloudOcr.createIdCardRecognizer()
 ```
 
 <br>
+
+<a id="get-started-with-creditcardrecognizer"></a>
 
 ### IdCardRecognizerを始める
 
@@ -63,6 +79,8 @@ IdCardRecognizer.launch(activity) { result, data ->
 ```
 
 <br>
+
+<a id="use-recognition-data"></a>
 
 ### 認識データ使用
 
@@ -91,6 +109,8 @@ when (data) {
 ```
 
 <br>
+
+<a id="verify-id-card-authenticity"></a>
 
 ### 身分証真偽確認
 
@@ -129,10 +149,14 @@ nhnCloudOcr.createIdCardAuthenticator()
 
 <br>
 
+<a id="customize-id-recognition-screen"></a>
+
 ## 身分証認識画面ユーザー定義
 
 身分証認識画面をユーザー定義して使用できます。
 ユーザー定義画面を構成するにはIdCardRecognizerの代わりにIdCardRecognitionServiceを使用する必要があります。
+
+<a id="create-idcardrecognitionservice-instance"></a>
 
 ### IdCardRecognitionServiceインスタンス作成
 
@@ -147,6 +171,8 @@ val IdCardRecognitionService = ocrServices.createIdCardRecognitionService()
 ```
 
 <br>
+
+<a id="register-idcardrecognitionservice-listner"></a>
 
 ### IdCardRecognitionServiceリスナー登録
 
@@ -167,6 +193,8 @@ IdCardRecognitionService.setIdCardRecognitionListener { result, data ->
 > 身分証認識後、必ずIdCardRecognitionService.stop()を呼び出してサービスを停止する必要があります。
 
 <br>
+
+<a id="process-recognition-result"></a>
 
 ### 認識結果処理
 
@@ -250,6 +278,8 @@ private fun isConfident(data: IdCardRecognitionData): Boolean {
 
 <br>
 
+<a id="use-recognition-data-2"></a>
+
 ### 認識データ使用
 
 身分証の認識に成功すると、IdCardRecognitionDataを継承して実装したオブジェクトに身分証の認識データが渡されます。
@@ -278,6 +308,8 @@ when (data) {
 ```
 
 <br>
+
+<a id="verify-id-card-authenticity-2"></a>
 
 ### 身分証真偽確認
 
@@ -316,6 +348,8 @@ ocrServices.createIdCardAuthenticityService()
 
 <br>
 
+<a id="configure-camera-preview"></a>
+
 ### Camera Preview構成
 
 ActivityまたはFragmentのLayoutに下記のようにIdCardRecognitionCameraPreview追加してCamera Previewを構成します。
@@ -338,6 +372,8 @@ ActivityまたはFragmentのLayoutに下記のようにIdCardRecognitionCameraPr
 
 <br>
 
+<a id="change-background-color"></a>
+
 ### バックグラウンド色の変更
 
 スキャンガイド領域を除外した領域は半透明に見えます。
@@ -352,6 +388,8 @@ ActivityまたはFragmentのLayoutに下記のようにIdCardRecognitionCameraPr
 ```
 
 <br>
+
+<a id="user-defined-scan-guide-view"></a>
 
 ### スキャンガイドビューユーザー定義
 
@@ -382,6 +420,8 @@ ActivityまたはFragmentのLayoutに下記のようにIdCardRecognitionCameraPr
 
 <br>
 
+<a id="change-guide-view-when-id-card-is-detected"></a>
+
 ### 身分証検出時のガイドビュー変更
 
 身分証が検出された時、スキャンガイドビューの色または形を変更できます。
@@ -404,6 +444,8 @@ class CustomGuideView(
 
 <br>
 
+<a id="start-service"></a>
+
 ### サービス開始
 
 IdCardRecognitionCameraPreviewのインスタンスを取得してIdCardRecognitionServiceを開始します。
@@ -419,6 +461,8 @@ try {
 
 <br>
 
+<a id="stop-service"></a>
+
 ### サービス停止
 
 アプリがバックグラウンドに切り替わるか身分証認識に成功したとき、IdCardRecognitionServiceを停止します。
@@ -428,6 +472,8 @@ idCardRecognitionService.stop()
 ```
 
 <br>
+
+<a id="release-service"></a>
 
 ### サービス解除
 
@@ -439,9 +485,13 @@ idCardRecognitionService.release();
 
 <br>
 
+<a id="set-idcardrecognizer-lifecycle"></a>
+
 ### IdCardRecognizer Lifecycle設定
 
 ActivityまたはFragmentのライフサイクルに基づいて以下のように呼び出します。
+
+<a id="activity"></a>
 
 #### Activity
 
@@ -461,6 +511,8 @@ override fun onDestroy() {
     idCardRecognitionService.release()
 }
 ```
+
+<a id="fragment"></a>
 
 #### Fragment
 
@@ -483,6 +535,8 @@ override fun onDestroyView() {
 
 <br>
 
+<a id="prevent-screen-capture"></a>
+
 ### 画面キャプチャ防止
 
 画面キャプチャ防止のためにActivityのonCreate()でsetContentView()が呼び出される前に**WindowManager.LayoutParams.FLAG\_SECURE**を追加します。
@@ -500,6 +554,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 <br>
 
+<a id="device-check"></a>
+
 ### デバイスチェック
 
 ID Card Recognition Serviceを開始する前に、アプリケーションを実行するデバイスでID Card Recognition Serviceを使用できる環境かどうかを確認できます。
@@ -514,6 +570,8 @@ if (IdCardRecognitionService.isAvailable(context)) {
 ```
 
 <br>
+
+<a id="use-securetextview"></a>
 
 ## SecureTextView使用
 
@@ -538,6 +596,8 @@ val idCardNameView = findViewById<SecureTextView>(id_card_name_view)
 idCardNameView.setText(name)
 ```
 
+<a id="use-securetextgroup"></a>
+
 ### SecureTextGroup使用
 複数行のテキストを表示する必要がある場合はSecureTextGroupを使用できます。 
 ```xml
@@ -560,7 +620,11 @@ idCardLicenseTypeView.addTextViews(licenseType)
 ```
 
 
+<a id="class-references"></a>
+
 ## Class References
+
+<a id="idcarddata"></a>
 
 ### IdCardData
 
@@ -570,6 +634,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 | getIdType | String |  | 身分証の種類を返します。 ("resident" or "driver") |
 
 <br>
+
+<a id="idcardresidentdata"></a>
 
 ### IdCardResidentData
 
@@ -581,6 +647,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 | getIssuer | SecureString |  | 発行機関を返します。 |
 
 <br>
+
+<a id="idcarddriverdata"></a>
 
 ### IdCardDriverData
 
@@ -598,6 +666,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 <br>
 
 
+<a id="idcardrecognitiondata"></a>
+
 ### IdCardRecognitionData
 
 | Method | Returns | Parameters | Descriptions |
@@ -611,6 +681,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 <br>
 
+<a id="idcardrecognitiondataidcardvalue"></a>
+
 ### IdCardRecognitionData.IdCardValue
 
 | Method | Returns | Parameters | Descriptions |
@@ -619,6 +691,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 | getConfidence | String |  | 身分証認識結果の信頼度を返します。 |
 
 <br>
+
+<a id="idcardresidentrecognitiondata"></a>
 
 ### IdCardResidentRecognitionData
 
@@ -630,6 +704,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 | getIssuer | IdCardValue |  | 発行機関を返します。 |
 
 <br>
+
+<a id="idcarddriverrecognitiondata"></a>
 
 ### IdCardDriverRecognitionData
 
@@ -646,6 +722,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 
 <br>
 
+<a id="securetextview"></a>
+
 ### SecureTextView
 
 | Method | Returns | Parameters | Descriptions |
@@ -656,6 +734,8 @@ idCardLicenseTypeView.addTextViews(licenseType)
 | setTypefaceStyle | Typeface, int |  | テキストの書体とスタイルを設定します。 <br>基本スタイル設定はTypeface.NORMALです。|
 
 <br>
+
+<a id="securetextgroup"></a>
 
 ### SecureTextGroup
 
