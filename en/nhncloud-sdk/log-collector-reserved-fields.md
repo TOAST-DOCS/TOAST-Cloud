@@ -1,10 +1,16 @@
+<!-- pre-align:aligned sig=5169d5b90928 -->
+
 ## NHN Cloud > SDK User Guide > Log & Crash > Reserved Fields
+
+<a id="definition-of-reserved-fields"></a>
 
 ### Definition of Reserved Fields
 
 Reserved fields refer to field names which are defined and used within NHN Cloud SDK.
 To use reserved fields in NHN Cloud SDK, 'reserved_" is added to a field name.
 Inspection conditions of a reserved field regard to comparing character strings, regardless of the letter case.
+
+<a id="usage-example-of-reserved-fields"></a>
 
 ### Usage Example of Reserved Fields
 
@@ -21,6 +27,8 @@ sendTime -> reserved_sendTime
 SENDTIME -> reserved_SENDTIME
 
 ```
+
+<a id="list-of-reserved-fields"></a>
 
 ### List of Reserved Fields
 
