@@ -5,6 +5,8 @@
 IaaSトークンは、NHN CloudのOpenStackベースのインフラサービス(IaaS)で使用する認証トークンです。Keystone認証サーバーを通じて発行され、Compute、Block Storage、Networkなどのインフラリソース制御APIを呼び出す際に使用します。
 
 ## 事前作業
+<a id="verify-api-endpoints"></a>
+
 ### APIエンドポイントの確認
 
 NHN Cloudの基本インフラサービスAPIは、タイプとリージョンごとにエンドポイントが分かれています。ただし、Identity APIは全てのリージョンで同一のエンドポイントを使用します。
@@ -20,9 +22,13 @@ NHN Cloudの基本インフラサービスAPIは、タイプとリージョン�
 | object-store | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>韓国(光州)リージョン<br>日本(東京)リージョン | https://kr1-api-object-storage.nhncloudservice.com<br>https://kr2-api-object-storage.nhncloudservice.com<br>https://kr3-api-object-storage.nhncloudservice.com<br>https://jp1-api-object-storage.nhncloudservice.com |
 | key-manager  | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>韓国(光州)リージョン<br>日本(東京)リージョン | https://kr1-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr2-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr3-api-key-manager-infrastructure.nhncloudservice.com<br>https://jp1-api-key-manager-infrastructure.nhncloudservice.com |
 
+<a id="verify-tenant-id"></a>
+
 ### テナントIDの確認
 
 APIリクエストに含まれるテナントIDは、**Compute > Instance** ページの **APIエンドポイント設定** で確認します。
+
+<a id="set-the-api-password"></a>
 
 ### APIパスワード設定
 
@@ -42,6 +48,8 @@ NHN Cloudの基本インフラサービスAPIを使用するには、NHN Cloud�
     * APIパスワード変更時、既存の認証トークンは使用できなくなるため、再発行が必要です。
 
 
+<a id="request-iaas-token-issuance"></a>
+
 ## IaaSトークンの発行リクエスト
 
 トークン発行は `identity` タイプのエンドポイントを利用します。`identity` サービスのエンドポイントは、リージョンに関係なく `https://api-identity-infrastructure.nhncloudservice.com` です。<br>
@@ -57,6 +65,8 @@ APIを呼び出す際に必要なトークンを発行します。NHN Cloudで�
 POST /v2.0/tokens
 ```
 
+
+<a id="request"></a>
 
 ### リクエスト
 
@@ -86,6 +96,8 @@ POST /v2.0/tokens
 </p>
 </details>
 
+
+<a id="response"></a>
 
 ### レスポンス
 
@@ -235,6 +247,8 @@ POST /v2.0/tokens
 </p>
 </details>
 
+
+<a id="use-iaas-tokens"></a>
 
 ## IaaSトークンの使用
 
