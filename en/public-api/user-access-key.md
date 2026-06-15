@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=d85731c000d8 -->
+
 # User Access Key
 
 **NHN Cloud > Public API User Guide > API Authentication Method > User Access Key**
@@ -34,6 +36,8 @@ To use NHN Cloud APIs, you must first issue a User Access Key. User Access Keys 
     * Up to five User Access Keys can be issued per NHN Cloud or IAM account.
     * It is recommended to rotate (change) your User Access Key ID every 90 days.
 
+
+<a id="making-api-calls"></a>
 
 ## Making API Calls
 User Access Key is passed via the HTTP request header. When calling an API, include the User Access Key in the header as shown in the example below.
