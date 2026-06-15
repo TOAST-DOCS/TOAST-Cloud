@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=6ff6816d660d -->
+
 ## NHN Cloud > SDK User Guide > IAP > Unity
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
@@ -6,12 +10,18 @@
 2. [Enable Mobile Service \> IAP](/Mobile%20Service/IAP/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
 3. [Check AppKey](/Mobile%20Service/IAP/en/console-guide/#check-appkey) in IAP.
 
+<a id="android-setup"></a>
+
 ## Android Setup
+<a id="set-up-gradle-build"></a>
+
 ### Set Up Gradle Build
 - In the Unity Editor, open the Build Settings windows (Player Settings > Publishing Settings > Build).
 - Select Gradle from the Build System drop-down menu.
 - Use the Custom Gradle Template by selecting the checkbox under Build System.
 - Add the code below to dependencies of mainTemplate.gradle.
+
+<a id="google-play-store"></a>
 
 #### Google Play Store
 
@@ -26,6 +36,8 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="one-store"></a>
+
 #### One Store
 
 ```groovy
@@ -37,6 +49,8 @@ dependencies {
   implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.7.0'
 **DEPS**}
 ```
+
+<a id="galaxy-store"></a>
 
 #### Galaxy Store
 
@@ -50,6 +64,8 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="amazon-appstore"></a>
+
 #### Amazon Appstore
 
 ```groovy
@@ -61,6 +77,8 @@ dependencies {
   implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.7.0'
 **DEPS**}
 ```
+
+<a id="huawei-app-gallery"></a>
 
 #### Huawei App Gallery
 
@@ -101,14 +119,22 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="ios-setup"></a>
+
 ## iOS Setup
+<a id="set-up-capabilities"></a>
+
 ### Set Up Capabilities
 - Select the Capabilities tab in the XCode project settings.
 - Set In-App Purchase to ON.
 
+<a id="add-a-required-framework"></a>
+
 ### Add a Required Framework
 - To use the IAP feature in iOS, StoreKit.framework is required.
 - Add Storekit.framework in XCode project settings.
+
+<a id="supported-stores-and-product-types"></a>
 
 ## Supported Stores and Product Types
 
@@ -118,6 +144,8 @@ dependencies {
 | Android | ONE store | Consumable products |
 | iOS | Apple App Store | Consumable products, subscription products, consumable subscription products |
 
+<a id="nhn-cloud-iap-sdk-initialization"></a>
+
 ## NHN Cloud IAP SDK Initialization
 Use [ToastIapConfiguration](./iap-unity/#toastiapconfiguration) to set the AppKey issued from the NHN Cloud IAP console and store code ([StoreCode](./iap-unity/#storecode)).
 During initialization, register PurchaseUpdateListener that can receive the purchase result.
@@ -126,12 +154,16 @@ During initialization, register PurchaseUpdateListener that can receive the purc
 > NHN Cloud IAP SDK initialization must be performed only once immediately after app execution,
 > and before setting the user ID (see [Service Login](./iap-unity/#_4)).
 
+<a id="specification-for-initialization-api"></a>
+
 ### Specification for Initialization API
 ```csharp
 public delegate void PurchaseUpdateListener(string transactionId, ToastResult result, IapPurchase purchase);
 
 public static void Initialize(ToastIapConfiguration configuration, PurchaseUpdateListener listener);
 ```
+
+<a id="example-of-initialization"></a>
 
 ### Example of Initialization
 
@@ -154,11 +186,15 @@ ToastIap.Initialize(new ToastIapConfiguration
 ```
 
 
+<a id="service-login"></a>
+
 ## Service Login
 - All products provided by NHN Cloud SDK (IAP, Log & Crash, etc.) use the same user ID.
     - User ID can be set with ToastSdk.UserId.
     - When user ID is not set, purchase cannot proceed.
 - It is recommended to implement the following features in service login step: user ID setting, querying unconsumed purchase history, and querying active subscription products.
+
+<a id="login"></a>
 
 ### Login
 
@@ -166,6 +202,8 @@ ToastIap.Initialize(new ToastIapConfiguration
 // Login
 ToastSdk.UserId = "USER_ID";
 ```
+
+<a id="logout"></a>
 
 ### Logout
 
@@ -176,16 +214,22 @@ ToastSdk.UserId = null;
 
 > [Note] When the service is logged out, user ID must be set to null. Otherwise, promotion codes might be redeemed or purchase with wrong user ID might occur in purchase reprocessing operation.
 
+<a id="query-product-list"></a>
+
 ## Query Product List
 - Query the list of available products among the ones registered in ICP console.
     - Products that can be purchased among the ones registered in ICP console are returned as the Product property ([IapProduct](./iap-unity/#iapproduct)) of [ProductDetailsResult](./iap-unity/#productdetailsresult).
     - Products that are not registered in the store among the ones registered in ICP console are returned as the InvalidProducts property ([IapProduct](./iap-unity/#iapproduct)) of [ProductDetailsResult](./iap-unity/#productdetailsresult).
+
+<a id="specification-for-product-list-query-api"></a>
 
 ### Specification for Product List Query API
 
 ```csharp
 public static void RequestProductDetails(ToastCallback<ProductDetailsResult> callback);
 ```
+
+<a id="example-of-product-list-query"></a>
 
 ### Example of Product List Query
 
@@ -205,11 +249,15 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 });
 ```
 
+<a id="purchase-products"></a>
+
 ## Purchase Products
 - NHN Cloud IAP supports product purchase by using product ID registered at the store.
     - Product ID can be retrieved when querying the product list.
 - The result of product purchase is returned via PurchaseUpdateListener registered during the initialization.
     - The purchase result returns [IapPurchase](./iap-unity/#iappurchase).
+
+<a id="specification-for-product-purchase-api"></a>
 
 ### Specification for Product Purchase API
 
@@ -218,6 +266,8 @@ public static void Purchase(string productId, developerPayload = "");
 ```
 
 - NHN Cloud IAP can add user information with developerPayload when requesting purchase.
+
+<a id="example-of-product-purchase"></a>
 
 ### Example of Product Purchase
 
@@ -231,16 +281,22 @@ var productId = userSelectedProductId;
 ToastIap.Purchase(productId, developerPayload);
 ```
 
+<a id="query-unconsumed-purchases"></a>
+
 ## Query Unconsumed Purchases
 - Query information on consumable products that are not consumed yet.
     - The result of unconsumed purchases query is returned as a list of [IapPurchase](./iap-unity/#iappurchase) object.
 - After a product is provided to a user, the product can be consumed by using [Consume API](../../../Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api).
+
+<a id="specification-for-unconsumed-purchases-query-api"></a>
 
 ### Specification for Unconsumed Purchases Query API
 
 ```csharp
 public static void RequestConsumablePurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
+
+<a id="example-of-unconsumed-purchases-query"></a>
 
 ### Example of Unconsumed Purchases Query
 
@@ -266,17 +322,23 @@ ToastIap.RequestConsumablePurchases(false, (result, purchases) =>
 });
 ```
 
+<a id="restore-subscription"></a>
+
 ## Restore Subscription
 - You can restore an activated subscription product by user ID.
     - Subscription products for which purchase has been completed can be restored as long as usage period remains.
     - The result of subscription product restoration query is returned as a list of [IapPurchase](./iap-unity/#iappurchase) object.
 - Only the products subscribed in iOS can be restored.
 
+<a id="specification-for-subscription-restoration-api"></a>
+
 ### Specification for Subscription Restoration API
 
 ```csharp
 public static void RequestRestorePurchases(ToastCallback<List<IapPurchase>> callback);
 ```
+
+<a id="subscription-restoration-example"></a>
 
 ### Subscription Restoration Example
 
@@ -290,17 +352,23 @@ ToastIap.RequestRestorePurchases((result, purchases) =>
 });
 ```
 
+<a id="query-activated-subscription"></a>
+
 ## Query Activated Subscription
 - You can query an activated subscription product by user ID.
     - Subscription products for which purchase has been completed can be queried as long as usage period remains.
     - The result of activated subscription query is returned as a list of [IapPurchase](./iap-unity/#iappurchase) object.
 - You can query products subscribed on Android in iOS, or products subscribed on iOS in Android.
 
+<a id="specification-for-activated-subscription-query-api"></a>
+
 ### Specification for Activated Subscription Query API
 
 ```csharp
 public static void RequestActivatedPurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
+
+<a id="example-of-activated-subscription-query"></a>
 
 ### Example of Activated Subscription Query
 
@@ -326,12 +394,16 @@ ToastIap.RequestActivatedPurchases(false, (result, purchases) =>
 });
 ```
 
+<a id="query-subscription-status"></a>
+
 ## Query Subscription Status
 
 - You can query the status of purchased subscription product by user ID.
 - The result of subscription status query is returned as a list of [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) object.
 - Subscription status can be checked with the [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus).GetStatus() method.
 - Subscription status codes are defined in  [IapSubscriptionStatus.Status](./iap-android/#iapsubscriptionstatusstatus).
+
+<a id="specification-for-subscription-status-query-api"></a>
 
 ### Specification for Subscription Status Query API
 
@@ -340,6 +412,8 @@ public static void RequestSubscriptionsStatus(
             bool includeExpiredSubscriptions,
             ToastCallback<List<IapSubscriptionStatus>> callback);
 ```
+
+<a id="example-of-subscription-status-query"></a>
 
 ### Example of Subscription Status Query
 
@@ -353,7 +427,11 @@ ToastIap.RequestSubscriptionsStatus(true, (result, subscriptionsStatus) =>
 });
 ```
 
+<a id="nhn-cloud-iap-class-reference"></a>
+
 ## NHN Cloud IAP Class Reference
+
+<a id="toastiapconfiguration"></a>
 
 ### ToastIapConfiguration
 
@@ -370,6 +448,8 @@ public class ToastIapConfiguration
 | AppKey | string | Set IAP service Appkey. |
 | StoreCode | StoreCode | Set the store code. |
 
+
+<a id="storecode"></a>
 
 ### StoreCode
 
@@ -392,6 +472,8 @@ public enum StoreCode
 | AmazonAppStore | Amazon Appstore (Android Only) |
 | HuaweiAppGallery | Huawei App Gallery (Android Only) |
 
+<a id="toastresultt"></a>
+
 ### ToastResult<T>
 ```csharp
 public class ToastResult
@@ -408,6 +490,8 @@ public class ToastResult
 | Code | int | Returns a result code. <br/> (0 for success) |
 | Message | string | Returns a result message. |
 
+<a id="productdetailsresult"></a>
+
 ### ProductDetailsResult
 ```csharp
 public class ProductDetailsResult
@@ -422,6 +506,8 @@ public class ProductDetailsResult
 | Products | List<IapProduct> | Returns information of available products. |
 | InvalidProducts | List<IapProduct> | Returns products that are registered in NHN Cloud IAP console but not registered in the store. |
 
+
+<a id="iapproduct"></a>
 
 ### IapProduct
 ```csharp
@@ -446,6 +532,8 @@ public class IapProduct
 | Price | float | Price |
 | Currency | string | Currency |
 | LocalizedPrice | string | Local price |
+
+<a id="iappurchase"></a>
 
 ### IapPurchase
 ```csharp
@@ -478,6 +566,8 @@ public class IapPurchase
 | AccessToken | string | Token used for consumption |
 | PurchaseTime | long | Product purchase time |
 | ExpiryTime | long | Expiry time for subscription product |
+
+<a id="iapsubscriptionstatus"></a>
 
 ### IapSubscriptionStatus
 
@@ -518,6 +608,8 @@ public class IapSubscriptionStatus
 | GetStatus | Status | Subscription status |
 | GetStatusDescription | string | Subscription status description |
 
+<a id="iapsubscriptionstatusstatus"></a>
+
 ### IapSubscriptionStatus.Status
 
 ```csharp
@@ -545,7 +637,11 @@ public enum Status
 | Expired | 13 | Expired | Subscription has expired. |
 | Unknown | 9999 | Undefined | Undefined status. |
 
+<a id="error-code"></a>
+
 ## Error code
+
+<a id="common-error-codes"></a>
 
 ### Common Error Codes
 | Error code | Description |
@@ -565,6 +661,8 @@ public enum Status
 | 50105 | Purchase limit exceeded |
 | 59999 | Unknown error. Please check error message |
 
+<a id="server-error-code"></a>
+
 ### Server error code
 
 | Error code | Description |
@@ -575,6 +673,8 @@ public enum Status
 | 10004 | Timeout occurred |
 | 10005 | Invalid server return value |
 | 10010 | App not activated |
+
+<a id="app-store-error-code"></a>
 
 ### App store error code
 
@@ -587,6 +687,8 @@ public enum Status
 | 50013 | Recovery failed |
 | 50014 | Cannot make purchases now. (e.g. in-app purchase restrictions) |
 
+<a id="one-store-error-code"></a>
+
 ### ONE store error code
 
 | Error code | Description |
@@ -595,6 +697,8 @@ public enum Status
 | 51001 | ONE Store service has not been updated or installed |
 | 51002 | Payment requested from abnormal app |
 | 51003 | Payment request failed |
+
+<a id="galaxy-store-error-codes"></a>
 
 ### Galaxy Store Error Codes
 
@@ -605,11 +709,19 @@ public enum Status
 | 53002 | Payment requested from abnormal app |
 | 51003 | Payment request failed |
 
+<a id="faq"></a>
+
 ## FAQ
+<a id="android"></a>
+
 ### Android
+
+<a id="question1"></a>
 
 #### Question.1
 **If I switch an app to the background during purchase (or immediately after the purchase is complete) and re-enter the app with the app icon, a user cancellation error is returned as a callback. What should I do?**
+
+<a id="answer1"></a>
 
 #### Answer.1
 This issue occurs because the launchMode of the Unity activity is singleTask . As the payment window is destroyed, it is recognized as a user cancellation, so a user cancellation error is returned.
