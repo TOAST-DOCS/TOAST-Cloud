@@ -1,8 +1,12 @@
+<!-- pre-align:aligned sig=f34bfe96e5d6 -->
+
 # パートナー管理APIガイド
 
 **NHN Cloud > Public API使用ガイド > パートナー管理APIガイド**
 
 ## パートナー管理APIの共通情報
+
+<a id="api-endpoint"></a>
 
 ### APIエンドポイント
 
@@ -13,6 +17,8 @@
 |--------| ----- |
 | Global | https://core.api.nhncloudservice.com/ |
 
+<a id="authentication-and-permission"></a>
+
 ### 認証及び権限
 
 パートナー管理APIは、API呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](/nhncloud/ja/public-api/user-access-key-token)を参照してください。
@@ -20,6 +26,8 @@
 | ヘッダ名 | 説明 |
 | --- | --- |
 | x-nhn-authorization | API認証のためのトークン |
+
+<a id="response-common-information"></a>
 
 ### レスポンス共通情報
 
@@ -65,6 +73,8 @@
     APIレスポンスには、以下に明記されていないフィールドが追加されることがあります。新しいフィールドが追加されてもエラーが発生しないように注意してください。
 
 
+<a id="view-organization-usage-list-of-partner-users"></a>
+
 ## パートナーユーザーの組織使用量一覧の照会
 
 パートナーユーザーの請求金額、組織別使用金額、サービス別使用金額、割増情報を提供します。
@@ -75,14 +85,20 @@
 !!! tip 「ポイント」
     利用月はyyyy-MM形式で入力する必要があります。
 
+<a id="required-permission"></a>
+
 ### 必要な権限
 `Partner.Payment.Get`
+
+<a id="request"></a>
 
 ### リクエスト
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}
 ```
+
+<a id="request-parameter"></a>
 
 ### リクエストパラメータ
 
@@ -93,9 +109,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | partnerUserUuid | Query | String | Y | パートナーユーザーUUID |
 | lang | Header | String | N | 言語設定(デフォルト: ko_KR、設定可能な値: ko_KR、ja_JP、en_US) |
 
+<a id="request-body"></a>
+
 ### リクエストボディ
 
 このAPIはリクエストボディを要求しません。
+
+<a id="response"></a>
 
 ### レスポンス
 
@@ -143,6 +163,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 
 </details>
 
+<a id="default-response-structure"></a>
+
 #### 基本レスポンス構造
 
 | 名前 | 型 | 説明 |
@@ -189,6 +211,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | extraPrice | Long | プロジェクト割増金額 |
 
 
+<a id="retrieve-organization-lists-of-partner-users"></a>
+
 ## パートナーユーザーの組織一覧の照会
 
 パートナーユーザーの組織一覧を照会します。
@@ -196,14 +220,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 !!! tip "パートナー契約の検証"
     当該パートナーとパートナーユーザーが、指定された月にパートナー契約を結んでいた状態であるかを確認します。
 
+<a id="required-permission-2"></a>
+
 ### 必要な権限
 `Partner.Organization.List`
+
+<a id="request-2"></a>
 
 ### リクエスト
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 ```
+
+<a id="request-parameter-2"></a>
 
 ### リクエストパラメータ
 
@@ -213,9 +243,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 | month | Path | String | Y | 利用月(yyyy-MM形式) |
 | partnerUserUuid | Query | String | Y | パートナーユーザーUUID |
 
+<a id="request-body-2"></a>
+
 ### リクエストボディ
 
 このAPIはリクエストボディを要求しません。
+
+<a id="response-2"></a>
 
 ### レスポンス
 
@@ -258,6 +292,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 | cloudType | String | クラウドタイプ |
 
 
+<a id="retrieve-the-billing-amount-per-organizations-of-partner-users"></a>
+
 ## パートナーユーザーの組織別請求金額の照会
 
 特定組織の詳細な利用金額、割引及び割増金額を照会します。
@@ -265,14 +301,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 !!! tip "パートナー契約の検証"
     当該パートナーとパートナーユーザーが指定された月にパートナー契約を結んでいたか、また当該組織のオーナーがその月にパートナーユーザーであったかを確認します。
 
+<a id="required-permission-3"></a>
+
 ### 必要な権限
 `Partner.Organization.Usage.Get`
+
+<a id="request-3"></a>
 
 ### リクエスト
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usage
 ```
+
+<a id="request-parameter-3"></a>
 
 ### リクエストパラメータ
 
@@ -283,9 +325,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | orgId | Path | String | Y | 組織ID |
 | lang | Header | String | N | 言語設定(デフォルト: ko_KR、設定可能な値: ko_KR、ja_JP、en_US) |
 
+<a id="request-body-3"></a>
+
 ### リクエストボディ
 
 このAPIはリクエストボディを要求しません。
+
+<a id="response-3"></a>
 
 ### レスポンス
 
@@ -351,6 +397,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 
 </details>
 
+<a id="default-response-structure-2"></a>
+
 #### 基本レスポンス構造
 
 | 名前 | 型 | 説明 |
@@ -412,6 +460,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | contractUsagePrice | Long | 契約割引/割増を適用した利用金額の合計 |
 
 
+<a id="retrieve-project-lists-of-partner-users"></a>
+
 ## パートナーユーザーのプロジェクト一覧の照会
 
 パートナーユーザーのプロジェクト一覧を照会します。
@@ -419,14 +469,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 !!! tip "パートナー契約の検証"
     当該パートナーとパートナーユーザーが、指定された月にパートナー契約を結んでいた状態であるかを確認します。
 
+<a id="required-permission-4"></a>
+
 ### 必要な権限
 `Partner.Project.List`
+
+<a id="request-4"></a>
 
 ### リクエスト
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 ```
+
+<a id="request-parameter-4"></a>
 
 ### リクエストパラメータ
 
@@ -436,9 +492,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 | month | Path | String | Y | 利用月(yyyy-MM形式) |
 | partnerUserUuid | Query | String | Y | パートナーユーザーUUID |
 
+<a id="request-body-4"></a>
+
 ### リクエストボディ
 
 このAPIはリクエストボディを要求しません。
+
+<a id="response-4"></a>
 
 ### レスポンス
 
@@ -487,6 +547,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 | projectStatusCode | String | プロジェクトステータス<br><br>- STABLE: 正常状態<br>- CLOSED: 削除された状態 |
 
 
+<a id="retrieve-project-usage-details-for-partner-user"></a>
+
 ## パートナーユーザーのプロジェクト詳細使用量の照会
 
 特定プロジェクトの詳細な使用量を照会します。
@@ -497,14 +559,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 !!! tip "パートナー契約の検証"
     当該パートナーとパートナーユーザーが指定された月にパートナー契約を結んでいたか、また当該プロジェクトが属する組織のオーナーがその月にパートナーユーザーであったかを確認します。
 
+<a id="required-permission-5"></a>
+
 ### 必要な権限
 `Partner.Project.Usage.Get`
+
+<a id="request-5"></a>
 
 ### リクエスト
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 ```
+
+<a id="request-parameter-5"></a>
 
 ### リクエストパラメータ
 
@@ -520,9 +588,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | page | Query | Integer | N | 選択したページ(デフォルト: 1、最小: 1)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
 | limit | Query | Integer | N | ページに表示される項目数、未記入時は全件照会(デフォルト値: 0、最小:0)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用不可 |
 
+<a id="request-body-5"></a>
+
 ### リクエストボディ
 
 このAPIはリクエストボディを要求しません。
+
+<a id="response-5"></a>
 
 ### レスポンス
 
@@ -639,6 +711,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 
 </details>
 
+<a id="default-response-structure-3"></a>
+
 #### 基本レスポンス構造
 
 | 名前 | 型 | 説明 |
@@ -697,7 +771,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 
 **UsageGroup**
 
-#### usageGroupsの基本情報
+**usageGroupsの基本情報**
 
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
@@ -769,6 +843,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | usedTime | String | 使用時刻 |
 
 
+<a id="retrieve-partners-bill"></a>
+
 ## パートナーの請求書照会
 
 パートナーの全請求書を照会します。
@@ -776,14 +852,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 !!! tip "パートナー契約の検証"
     当該パートナーが指定された月に有効なパートナー契約状態であったかを確認します。
 
+<a id="required-permission-6"></a>
+
 ### 必要な権限
 `Partner.Statement.Get`
+
+<a id="request-6"></a>
 
 ### リクエスト
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 ```
+
+<a id="request-parameter-6"></a>
 
 ### リクエストパラメータ
 
@@ -793,9 +875,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | month | Path | String | Y | 利用月(yyyy-MM形式) |
 | lang | Header | String | N | 言語設定(デフォルト: ko_KR、設定可能な値: ko_KR、ja_JP、en_US) |
 
+<a id="request-body-6"></a>
+
 ### リクエストボディ
 
 このAPIはリクエストボディを要求しません。
+
+<a id="response-6"></a>
 
 ### レスポンス
 
@@ -923,6 +1009,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 
 </details>
 
+<a id="default-response-structure-4"></a>
+
 #### 基本レスポンス構造
 
 | 名前 | 型 | 説明 |
@@ -970,7 +1058,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 
 **PaymentStatementDetail**
 
-#### detailsの基本情報
+**detailsの基本情報**
 
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
@@ -1056,6 +1144,8 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | description | String | 割引/割増明細 |
 
 
+<a id="retrieve-self-service-metering-of-solutions-partner"></a>
+
 ## ソリューションパートナーの自社サービスメータリング照会
 
 ソリューションパートナーが自社のサービスに関するメータリング情報を照会します。
@@ -1063,14 +1153,20 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 !!! tip "ソリューションパートナーの検証"
     ソリューションパートナー、またはソリューションパートナーから権限を付与されたユーザーのみが呼び出し可能です。
 
+<a id="required-permission-7"></a>
+
 ### 必要な権限
 `Partner.Meter.List`
+
+<a id="request-7"></a>
 
 ### リクエスト
 
 ```
 GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 ```
+
+<a id="request-parameter-7"></a>
 
 ### リクエストパラメータ
 
@@ -1086,9 +1182,13 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | page | Query | Integer | Y | 選択したページ(最小: 1) |
 | limit | Query | Integer | Y | ページに表示される項目数(最小: 1、最大: 2000) |
 
+<a id="request-body-7"></a>
+
 ### リクエストボディ
 
 このAPIはリクエストボディを要求しません。
+
+<a id="response-7"></a>
 
 ### レスポンス
 
@@ -1149,6 +1249,8 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | stationId | String | ステーションID |
 | timestamp | String | メータリング発生時刻 |
 
+<a id="delete-metering-for-solution-partners"></a>
+
 ## ソリューションパートナーのメータリング削除
 
 ソリューションパートナーが自身のサービスに対するメータリングを削除します。<br>
@@ -1158,14 +1260,20 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 !!! tip "ソリューションパートナー検証"
     ソリューションパートナー、またはソリューションパートナーから権限を付与されたユーザーのみ呼び出し可能です。
 
+<a id="required-permission-8"></a>
+
 ### 必要権限
 `Partner.Meter.Delete`
+
+<a id="request-8"></a>
 
 ### リクエスト
 
 ```
 DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 ```
+
+<a id="request-parameter-8"></a>
 
 ### リクエストパラメータ
 
@@ -1174,6 +1282,8 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 | partnerId | Path | String | Y | パートナーID |
 | productId | Path | String | Y | サービスID |
 
+
+<a id="request-body-8"></a>
 
 ### リクエスト本文
 
@@ -1201,6 +1311,8 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 | counterNames | List&lt;String&gt; | N | 削除するカウンター名リスト<br>アプリキー、またはカウンター名のいずれかは必須 |
 
 
+<a id="response-8"></a>
+
 ### レスポンス
 
 <details>
@@ -1224,6 +1336,8 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 | asyncJobId | String | 実行した非同期作業のID |
 
 
+<a id="confirm-deletion-of-solution-partners-metering"></a>
+
 ## ソリューションパートナーのメータリング削除確認
 
 メータリング削除後、削除が完了したか確認します。<br>
@@ -1236,14 +1350,20 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 !!! danger "メータリング削除確認時の注意事項"
     一度正常削除を確認した後は削除jobが消えるため一度のみ呼び出し可能であり、2回目の呼び出しからは16500エラーが返却されます。
 
+<a id="required-permission-9"></a>
+
 ### 必要権限
 `Partner.Meter.Delete`
+
+<a id="request-9"></a>
 
 ### リクエスト
 
 ```
 GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 ```
+
+<a id="request-parameter-9"></a>
 
 ### リクエストパラメータ
 
@@ -1253,9 +1373,13 @@ GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 | asyncJobId | Path | String | Y | 実行した非同期作業のID |
 
 
+<a id="request-body-9"></a>
+
 ### リクエスト本文
 
 このAPIはリクエスト本文を要求しません。
+
+<a id="response-9"></a>
 
 ### レスポンス
 
@@ -1279,6 +1403,8 @@ GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 | --- | --- | --- |
 | statusCode | String | 削除ステータス(IN_PROGRESS: 削除進行中、ERROR: 削除中にエラー発生、SUCCESS: 削除成功) |
 
+<a id="create-organization-for-partner-user"></a>
+
 ## パートナーユーザーの組織作成
 
 パートナーがパートナーユーザーの組織を作成します。
@@ -1286,14 +1412,20 @@ GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 !!! tip "パートナー契約の検証"
     APIを呼び出した月に、当該パートナーとパートナーユーザーがパートナー契約関係にあったかを確認します。
 
+<a id="required-permission-10"></a>
+
 ### 必要な権限
 `Partner.Organization.Create`
+
+<a id="request-10"></a>
 
 ### リクエスト
 
 ```
 POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 ```
+
+<a id="request-parameter-10"></a>
 
 ### リクエストパラメータ
 
@@ -1302,11 +1434,15 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 | partnerId | Path | String | Y | パートナーID |
 | partnerUserUuid | Path | String | Y | パートナーユーザーUUID |
 
+<a id="request-body-10"></a>
+
 ### リクエストボディ
 
 | 名前 | 型 | 必須 | 説明 |
 | --- | --- | --- | --- |
 | orgName | String | Y | 作成する組織名(最大120文字) |
+
+<a id="response-10"></a>
 
 ### レスポンス
 
@@ -1337,6 +1473,8 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 | regDateTime | String | 登録日時(ISO 8601形式) |
 
 
+<a id="delete-organization-of-partner-user"></a>
+
 ## パートナーユーザーの組織削除
 
 パートナーがパートナーユーザーの組織を削除します。
@@ -1344,14 +1482,20 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 !!! tip "パートナー契約の検証"
     APIを呼び出した月に当該パートナーとパートナーユーザーがパートナー契約関係にあったか、また削除対象がパートナーユーザーの組織であるかを確認します。
 
+<a id="required-permission-11"></a>
+
 ### 必要な権限
 `Partner.Organization.Delete`
+
+<a id="request-11"></a>
 
 ### リクエスト
 
 ```
 DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{orgId}
 ```
+
+<a id="request-parameter-11"></a>
 
 ### リクエストパラメータ
 
@@ -1361,9 +1505,13 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 | partnerUserUuid | Path | String | Y | パートナーユーザーUUID |
 | orgId | Path | String | Y | 削除する組織ID |
 
+<a id="request-body-11"></a>
+
 ### リクエストボディ
 
 このAPIはリクエストボディを要求しません。
+
+<a id="response-11"></a>
 
 ### レスポンス
 
@@ -1382,6 +1530,8 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 
 </details>
 
+<a id="daily-usage-pricing"></a>
+
 ## 日別利用金額照会
 
 パートナーユーザーの日別利用金額詳細明細を照会します。
@@ -1393,14 +1543,20 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
     - projectIdまたはorgIdのいずれかは必ず設定する必要があります。
     - projectIdとorgIdを同時に設定することはできません。
 
+<a id="required-permissions"></a>
+
 ### 必要な権限
 `Partner.Daily.Usage.List`
+
+<a id="request-12"></a>
 
 ### リクエスト
 
 ```
 GET /v1/billing/partners/{partnerId}/daily-usage-prices
 ```
+
+<a id="request-parameters"></a>
 
 ### リクエストパラメータ
 
@@ -1414,9 +1570,13 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 | page | Query | Integer | N | 選択したページ(最小: 1) |
 | limit | Query | Integer | N | ページに表示される項目数(最小: 1、最大: 2000) |
 
+<a id="request-body-12"></a>
+
 ### リクエスト本文
 
 このAPIはリクエスト本文を要求しません。
+
+<a id="response-12"></a>
 
 ### レスポンス
 
@@ -1462,6 +1622,8 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 
 </details>
 
+<a id="basic-response-structure"></a>
+
 #### 基本レスポンス構造
 
 | 名前 | タイプ | 説明 |
@@ -1495,6 +1657,8 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 | uuid | String | 会員UUID |
 
 
+<a id="retrieve-resource-usage-prices-by-tag"></a>
+
 ## タグ別リソース利用金額照会
 
 タグ別に分類されたリソースの利用金額を照会します。
@@ -1507,14 +1671,20 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
     - projectIdとorgIdを同時に設定することはできません。
     - tagIdsまたはgroupIdsのいずれかは必ず提供する必要があります。
 
+<a id="required-permissions-2"></a>
+
 ### 必要な権限
 `Partner.Daily.Usage.List`
+
+<a id="request-13"></a>
 
 ### リクエスト
 
 ```
 POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 ```
+
+<a id="request-parameters-2"></a>
 
 ### リクエストパラメータ
 
@@ -1523,6 +1693,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | partnerId | Path | String | Y | パートナーID |
 | page | Query | Integer | N | 選択したページ(最小: 1) |
 | limit | Query | Integer | N | ページに表示される項目数(最小: 1、最大: 2000) |
+
+<a id="request-body-13"></a>
 
 ### リクエスト本文
 
@@ -1554,6 +1726,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | projectId | String | N | プロジェクトID<br>projectIdまたはorgIdのいずれかは必須 |
 | searchType | String | Y | 照会タイプ<br><br>- RESOURCE: リソース別<br>- DAILY: 日別 |
 | tagIds | List&lt;Long&gt; | N | タグIDリスト<br>tagIdsまたはgroupIdsのいずれかは必須 |
+
+<a id="response-13"></a>
 
 ### レスポンス
 
@@ -1618,6 +1792,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 
 </details>
 
+<a id="basic-response-structure-2"></a>
+
 #### 基本レスポンス構造
 
 | 名前 | タイプ | 説明 |
@@ -1678,18 +1854,26 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | displayNameZh | String | 請求書表示名(中国語) |
 
 
+<a id="retrieve-active-organizationproject-product-metering-for-partners-or-partner-users"></a>
+
 ## パートナーまたはパートナーユーザーの有効化された組織/プロジェクト商品メータリング照会
 
 メータリング情報を照会します。
 
+<a id="required-permission-12"></a>
+
 ### 必要権限
 `Partner.Meter.List`
+
+<a id="request-14"></a>
 
 ### リクエスト
 
 ```
 POST /v1/billing/partners/{partnerId}/meters/search
 ```
+
+<a id="request-parameter-12"></a>
 
 ### リクエストパラメータ
 
@@ -1699,6 +1883,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | page | Query | Integer | N | 選択したページ(最小: 1) |
 | limit | Query | Integer | N | ページに表示される項目数(最小: 1、最大: 2000) |
 
+
+<a id="request-body-14"></a>
 
 ### リクエスト本文
 
@@ -1729,6 +1915,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | counterNames | List&lt;String&gt; | N | カウンター名リスト |
 | meterTimeTypeCode | String | N | メーター時間タイプコード<br>from、toに対して使用時間で検索するか、またはリクエストが流入した時間で検索するかを決定<br>(USED_TIME: 使用時間(デフォルト値)、INSERT_TIME: 流入した時間) |
 
+
+<a id="response-14"></a>
 
 ### レスポンス
 
@@ -1791,6 +1979,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | resourceName | String | リソース名 |
 | stationId | String | ステーションID |
 | timestamp | String | 使用した時間 |
+
+<a id="error-code"></a>
 
 ## エラーコード
 
