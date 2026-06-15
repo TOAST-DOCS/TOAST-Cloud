@@ -24,6 +24,8 @@ You can create and manage Project Integrated Appkeys from each project screen in
     * You can create a maximum of three Project Integrated Appkeys per project.
 
 
+<a id="making-api-calls"></a>
+
 ## Making API Calls
 Project Integrated Appkey is passed via the HTTP request header. When calling an API, include the Project Integrated Appkey in the request header as shown in the example below.
 
