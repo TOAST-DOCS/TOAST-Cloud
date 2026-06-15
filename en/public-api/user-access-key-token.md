@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=26da38889d53 -->
+
 # User Access Key Token
 
 **NHN Cloud > Public API User Guide > API Authentication Methods > User Access Key Token**
@@ -13,9 +15,13 @@ NHN Cloud provides two token types:
 
 Issuing a User Access Key token and calling the API works in the following flow:
 
+<a id="issue-new-tokens-and-making-api-calls"></a>
+
 ### Issue new tokens and making API calls
 
 ![img001.png](http://static.toastoven.net/toast/public_api/img01_EN.png)
+
+<a id="reissue-and-api-calls-on-token-expiration"></a>
 
 ### Reissue and API calls on token expiration
 
@@ -30,6 +36,8 @@ Issued tokens are valid only during their expiration period (default: 24 hours) 
     The expiration time for Opaque tokens can be set between 60 seconds and 86,400 seconds (24 hours), and the expiration time for JWT tokens can be set between 60 seconds and 3,600 seconds (one hour).
     Changes to the expiration time do not affect tokens issued prior to the update. The new setting will only apply to tokens issued after the modification is saved.
 
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
@@ -54,6 +62,8 @@ To issue a User Access Key Token, you must first generate a User Access Key ID a
     * If either the User Access Key or Secret Access Key is leaked or suspected to be compromised, you must immediately revoke the key and issue a new one.
 
 
+<a id="authentication-server-domain"></a>
+
 ## Authentication Server Domain
 The authentication domain is as follows:
 
@@ -61,8 +71,12 @@ The authentication domain is as follows:
 https://oauth.api.nhncloudservice.com/
 ```
 
+<a id="request-user-access-key-token-issuance"></a>
+
 ## Request User Access Key Token Issuance
 > `POST /oauth2/token/create`
+
+<a id="request-opaque-token-issuance"></a>
 
 ### Request Opaque Token Issuance
 * Request
@@ -88,6 +102,8 @@ https://oauth.api.nhncloudservice.com/
     "expires_in":86400
 }
 ```
+
+<a id="request-jwt-token-issuance"></a>
 
 ### Request JWT Token Issuance
 
@@ -119,7 +135,11 @@ https://oauth.api.nhncloudservice.com/
 }
 ```
 
+<a id="case-specific-request-examples"></a>
+
 ### Case-specific request examples
+<a id="curl-when-including-authentication-information-in-the-header"></a>
+
 #### curl: When including authentication information in the header
 
 
@@ -145,6 +165,8 @@ curl -X POST "https://oauth.api.nhncloudservice.com/oauth2/token/create" \
   -d "scope=appKey:r9Zd7vDEmWMfQb00"
 ```
 
+<a id="curl-when-using--u-option"></a>
+
 #### curl: When using -u option
 
 * Opaque token
@@ -164,6 +186,8 @@ curl -X POST "https://oauth.api.nhncloudservice.com/oauth2/token/create" \
   -d "grant_type=client_credentials" \
   -d "scope=appKey:r9Zd7vDEmWMfQb00"
 ```
+
+<a id="feignclient"></a>
 
 #### FeignClient
 
@@ -188,6 +212,8 @@ public interface AuthClient {
                               @RequestParam("scope") String scope);
 }
 ```
+
+<a id="resttemplate"></a>
 
 #### RestTemplate
 
@@ -229,6 +255,8 @@ public TokenResponse createJwtToken(String userAccessKeyID, String secretAccessK
     return restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
+
+<a id="when-using-openfeign-on-spring-cloud-to-automatically-issue-and-renew-tokens"></a>
 
 #### When using OpenFeign on Spring Cloud to automatically issue and renew tokens
 
@@ -306,6 +334,8 @@ public class Oauth2Config {
 ```
 
 
+<a id="request-user-access-key-token-revocation"></a>
+
 ## Request User Access Key Token Revocation
 > `POST /oauth2/token/revoke`
 
@@ -324,7 +354,11 @@ public class Oauth2Config {
     * HttpStatus 200
 
 
+<a id="case-specific-request-examples-2"></a>
+
 ### Case-specific request examples 
+<a id="curl-when-including-authentication-information-in-the-header-2"></a>
+
 #### curl: When including authentication information in the header
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' \
@@ -332,6 +366,8 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' 
   -H 'Authorization: Basic dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5' \
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
+
+<a id="curl-when-using-the--u-option"></a>
 
 #### curl: When using the -u option
 ```sh
@@ -341,6 +377,8 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' 
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
 
+<a id="feignclient-2"></a>
+
 #### FeignClient
 ```java
 @FeignClient(name = "auth", url = "https://oauth.api.nhncloudservice.com")
@@ -349,6 +387,8 @@ public interface AuthClient {
     void revokeToken(@RequestHeader("Authorization") String authorization, @RequestParam("token") String token);
 }
 ```
+
+<a id="resttemplate-2"></a>
 
 #### RestTemplate
 ```java
@@ -370,6 +410,8 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 ```
 
 
+<a id="use-user-access-key-token"></a>
+
 ## Use User Access Key token
 User Access Key token is passed via the HTTP request header. When calling an API, include the User Access Key token in the example header as shown in the example below:
 
@@ -381,6 +423,8 @@ X-NHN-Authorization: Bearer {Access Token}
 When a user sends a request with a key in the HTTP header, the server validates the token and then approves or rejects the request.
 
     
+<a id="get-jwt-public-key"></a>
+
 ## Get JWT Public Key
 > `GET /oauth2/jwks`
 
@@ -416,11 +460,15 @@ Returns a list of public keys in [JWKS(JSON Web Key Set)](https://datatracker.ie
 }
 ```
 
+<a id="request-example"></a>
+
 ### Request Example
 * curl
 ```sh
 curl -X GET "https://oauth.api.nhncloudservice.com/oauth2/jwks"
 ```
+
+<a id="public-key-usage-example"></a>
 
 ### Public Key Usage Example 
 Public Key Usage Example / You can verify JWT token signatures using the retrieved public keys. Most JWT libraries support the JWKS format.
