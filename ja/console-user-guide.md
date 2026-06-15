@@ -1,5 +1,7 @@
 ## NHN Cloud > リソース提供ポリシー
 
+<a id="terminology"></a>
+
 ### 用語定義
 
 
@@ -21,6 +23,8 @@
     * 例： プロジェクトのロールであるPROJECT MEMBER ADMINとプロジェクトBILLING VIEWERの関連権限であるProject.Payment.Get権限を追加して、ロールグループ「Group A」を作成します。
 
 ![term_3.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_03_251124.png)
+
+<a id="organization"></a>
 
 ### Organization 
 
@@ -50,6 +54,8 @@
     * メンバーには、ロールグループとロールの付与が可能です。
 
 
+
+<a id="project"></a>
 
 ### Project
 
