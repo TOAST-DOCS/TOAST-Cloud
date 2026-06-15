@@ -2,6 +2,8 @@
 
 NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which provides everything necessary for your business operation and service development. 
 
+<a id="features"></a>
+
 ## Features
 
 - It is an easy-to-use cloud service for anyone.
@@ -9,11 +11,15 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 - You can use the service with a simple click on a web browser.
 - You can use the infrastructure and platform at a reasonable cost.
 
+<a id="composed-of-various-services"></a>
+
 ### Composed of Various Services
 
 - We provide various services required for infrastructure, development, test, operations and technology support, and running a business.
 - From internal messenger and project management, to HR/finance/resource management, services are available for IT infrastructure of a company.
 - The urban data center, designed on its own technology and established in Pangyo, provides optimized operational efficiency.
+
+<a id="platform-oriented-cloud"></a>
 
 ### Platform-oriented Cloud
 
@@ -22,17 +28,29 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 - Functions required to develop and operate applications are provided.
 - Companies are supported for easy development in the cloud environment.
 
+<a id="reasonable-prices"></a>
+
 ### Reasonable Prices
 
 - You'll be charged by pay-as-you-go. (Some services are charged by basic flat rate.)
 - Contract-based pricing plan provides more discount benefits.
 - Complementary services are free-of-charge.
 
+<a id="powerful-technology-support"></a>
+
 ### Powerful Technology Support
 
 - Stable services are ensured with experienced IT operations accumulated for over a decade with Hangame, Bugs, and PAYCO services.
 - Consulting service is provided to establish plans to introduce the cloud environment.
 - Professional engineers are supported 24/7.
+
+<a id="global-cloud"></a>
+
+### Global Cloud
+
+<!-- TODO: translate body -->
+
+<a id="service-targets"></a>
 
 ## Service Targets  
 
@@ -41,6 +59,8 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 - Companies wanting to efficiently make use of infrastructure
 - Mid-and large-size shopping mall owners
 - Businesses in need of integrated messaging services, including SMS, Push and email
+
+<a id="service-composition"></a>
 
 ## Service Composition
 
@@ -70,6 +90,8 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Contact Center | An integrated solution for call center services helps process inquiries more efficiently, and provides elevated operational efficiency and optimized customer experience. |
 | Governance & Audit  | A service that manages the governance of organizations and monitors the various activity logs and events that occurred in the cloud. |
 
+
+<a id="service-release-policy"></a>
 
 ## Service Release Policy
 
