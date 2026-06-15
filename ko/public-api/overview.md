@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=49cdd69ef3b0 -->
+
 # Public API 개요
 
 **NHN Cloud > Public API 사용 가이드 > Public API 개요**
@@ -19,6 +21,8 @@ NHN Cloud의 Public API는 NHN Cloud의 서비스와 리소스를 외부 시스�
 * [프레임워크 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)
 * [파트너 관리 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)
 * [릴리스 노트](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/release-notes/)
+
+<a id="glossary"></a>
 
 ## 용어 정리
 
