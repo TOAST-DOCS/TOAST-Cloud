@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=eddd49bbcebe -->
+
 # 프레임워크 API
 
 **NHN Cloud > Public API 사용 가이드 > 프레임워크 API**
