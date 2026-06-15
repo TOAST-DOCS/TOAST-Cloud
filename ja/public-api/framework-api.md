@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=eddd49bbcebe -->
+
 # フレームワークAPI
 
 **NHN Cloud > Public API使用ガイド > フレームワークAPI**
@@ -4289,11 +4291,15 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 GET /v1/organizations
 ```
 
-##### 필요 권한
+##### 必要権限
 
 <!-- TODO: translate body -->
 
-##### 必要な権限
+**필요 권한**
+
+<!-- TODO: translate body -->
+
+**必要な権限**
 会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 **[Query Parameter]**
@@ -4411,11 +4417,15 @@ GET /v1/organizations
 > POST /v1/organizations
 自身の組織を追加するAPIです。
 
-##### 필요 권한
+##### 必要権限
 
 <!-- TODO: translate body -->
 
-##### 必要な権限
+**필요 권한**
+
+<!-- TODO: translate body -->
+
+**必要な権限**
 会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 ##### リクエストパラメータ
@@ -4477,11 +4487,15 @@ GET /v1/organizations
 > DELETE /v1/organizations/{org-id}
 自身の組織を削除するAPIです。
 
-##### 필요 권한
+##### 必要権限
 
 <!-- TODO: translate body -->
 
-##### 必要な権限
+**필요 권한**
+
+<!-- TODO: translate body -->
+
+**必要な権限**
 `Organization.Delete`
 
 ##### リクエストパラメータ
@@ -4516,11 +4530,15 @@ GET /v1/organizations
 > GET /v1/products
 提供されるサービス一覧を照会するAPIです。
 
-##### 필요 권한
+##### 必要権限
 
 <!-- TODO: translate body -->
 
-##### 必要な権限
+**필요 권한**
+
+<!-- TODO: translate body -->
+
+**必要な権限**
 会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 ##### リクエストパラメータ
@@ -4585,11 +4603,15 @@ GET /v1/organizations
 > GET /v1/messages/role
 ロールの多言語リストを取得するAPIです。
 
-##### 필요 권한
+##### 必要権限
 
 <!-- TODO: translate body -->
 
-##### 必要権限
+**필요 권한**
+
+<!-- TODO: translate body -->
+
+**必要権限**
 会員であれば特定の権限なしで呼び出し可能なAPIです。
 
 ##### リクエストパラメータ
