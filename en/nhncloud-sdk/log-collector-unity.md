@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=c0fef3006554 -->
+
 ## NHN Cloud > SDK User Guide > Log & Crash > Unity
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
@@ -7,6 +11,8 @@
 3. [Check AppKey](/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#check-appkey) in Log & Crash Search.
 4. [Initialize NHN Cloud SDK](./getting-started-unity#toast-sdk_1).
 
+<a id="supported-platforms"></a>
+
 ## Supported Platforms
 
 - iOS
@@ -14,7 +20,11 @@
 - Standalone
 - WebGL
 
+<a id="for-android"></a>
+
 ## For Android
+
+<a id="gradle-build-settings"></a>
 
 ### Gradle Build Settings
 
@@ -36,7 +46,11 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="for-ios"></a>
+
 ## For iOS
+
+<a id="player-settings"></a>
 
 ### Player Settings
 
@@ -66,11 +80,15 @@ dependencies {
 - **Slow and Safe** is recommended.
   - To collect Runtime C# Crash logs, Slow and Safe must be enabled.
 
+<a id="nhn-cloud-logger-namespace"></a>
+
 ## NHN Cloud Logger namespace
 
 ```csharp
 using Toast.Logger;
 ```
+
+<a id="initialize-nhn-cloud-logger-sdk"></a>
 
 ## Initialize NHN Cloud Logger SDK
 
@@ -85,10 +103,14 @@ var loggerConfiguration = new ToastLoggerConfiguration
 ToastLogger.Initialize(loggerConfiguration);
 ```
 
+<a id="send-logs"></a>
+
 ## Send Logs
 
 NHN Cloud Logger can send logs of five levels.
 User fields may be additionally sent.
+
+<a id="specification-for-log-sending-api"></a>
 
 ### Specification for Log Sending API
 
@@ -114,6 +136,8 @@ ToastLogger.Fatal(message);
 ToastLogger.Fatal(message, userFields);
 ```
 
+<a id="usage-example-of-log-sending-api"></a>
+
 ### Usage Example of Log Sending API
 
 ```csharp
@@ -123,10 +147,14 @@ ToastLogger.Debug("NHN Cloud Log & Crash Search!", new Dictionary<string, string
 });
 ```
 
+<a id="set-user-defined-fields"></a>
+
 ## Set User-Defined Fields
 
 Set a user-defined field as wanted.
 With user-defined field setting, set values are sent to server along with logs, every time Log Sending API is called.
+
+<a id="specification-for-user-defined-field-setting-api"></a>
 
 ### Specification for User-Defined Field Setting API
 
@@ -137,11 +165,15 @@ ToastLogger.SetUserField(userField, userValue);
 - User-defined field is same as the value exposed as "Selected Field" in "Log & Crash Search Console" > "Log Search Tab".
 - If a key is changed for many times, the final value shall be applied.
 
+<a id="restrictions-of-user-defined-fields"></a>
+
 #### Restrictions of User-Defined Fields
 
 - Cannot use already [Reserved Fields](./log-collector-reserved-fields).
 - Use characters from "A-Z, a-z, 0-9, -, and \_" for a field name, starting with "A-Z, or a-z".
 - Replace spaces within a field name by "\_".
+
+<a id="usage-example-of-user-defined-field-setting-api"></a>
 
 ### Usage Example of User-Defined Field Setting API
 
@@ -149,9 +181,13 @@ ToastLogger.SetUserField(userField, userValue);
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
 
+<a id="further-tasks-after-sending-logs"></a>
+
 ## Further Tasks after Sending Logs
 
 - With listener registered, further tasks can be executed after logs are sent.
+
+<a id="specification-for-setloggerlistener-api"></a>
 
 ### Specification for SetLoggerListener API
 
@@ -166,6 +202,8 @@ public interface IToastLoggerListener
 
 static void SetLoggerListener(IToastLoggerListener listener);
 ```
+
+<a id="usage-example-of-setloggerlistener"></a>
 
 ### Usage Example of SetLoggerListener
 
@@ -196,6 +234,8 @@ public class SampleLoggerListener : IToastLoggerListener
 ToastLogger.SetLoggerListener(new SampleLoggerListener());
 ```
 
+<a id="collect-crash-logs"></a>
+
 ## Collect Crash Logs
 
 NHN Cloud Logger classifies Unity's crashes into two categories.
@@ -225,12 +265,16 @@ var loggerConfiguration = new ToastLoggerConfiguration
 > If the User ID is set, you can check the user-specific crash experience in the 'Crash User' section of the Log & Crash Search console.
 > User ID setting can be checked in [Getting Started](./getting-started-unity/#set-userid).
 
+<a id="further-tasks-after-sending-crash-logs"></a>
+
 ## Further Tasks after Sending Crash logs
 
 - With crash listener registered, further tasks can be executed after crash logs are sent.
 
 > ** Crash listener only works when it occurs unexpected exception in Unity **
 > Crash listener is not supported for crashes on the native platform.
+
+<a id="specification-for-setcrashlistener-api"></a>
 
 ### Specification for SetCrashListener API
 
@@ -239,6 +283,8 @@ public delegate void CrashListener(bool isSuccess, LogEntry logEntry);
 
 public static void SetCrashListener(CrashListener listener);
 ```
+
+<a id="usage-example-of-setcrashlistener-api"></a>
 
 ### Usage Example of SetCrashListener API
 
@@ -252,11 +298,15 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 });
 ```
 
+<a id="filtering-the-crash-log"></a>
+
 ## Filtering the Crash Log
 
 - While using Unity, exception logs or crash logs that you do not want to collect may be collected.
 - NHN Cloud Logger supports the feature to filter out the crash logs that you do not want to collect.
   - This feature is specific to exceptions of Unity.
+
+<a id="specification-for-addcrashfilter-api"></a>
 
 ### Specification for AddCrashFilter API
 
@@ -277,17 +327,23 @@ public static void AddCrashFilter(CrashFilter filter);
 
 - The properties of CrashLogData is the same as the parameters of [Application.LogCallback](https://docs.unity3d.com/ScriptReference/Application.LogCallback.html).
 
+<a id="usage-example-of-addcrashfilter-api"></a>
+
 ### Usage Example of AddCrashFilter API
 
 ```csharp
 ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("UnityEngine.Debug.Log"));
 ```
 
+<a id="send-handled-exceptions"></a>
+
 ## Send Handled Exceptions
 
 Exceptions from a try/catch sentence, as well as general/crash logs, can be sent by using Report API of NHN Cloud Logger.
 Such exception logs can be queried by filtering for Handled, from error type of "Log & Crash Search Console" > "App Crash Search Tab".
 For more usage details on Log & Crash Console, see [Console User Guide](http://docs.nhncloud.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/).
+
+<a id="specification-for-handled-exception-log-api"></a>
 
 ### Specification for Handled Exception Log API
 
@@ -296,6 +352,8 @@ For more usage details on Log & Crash Console, see [Console User Guide](http://d
 var logLevel = ToastLogLevel.ERROR;
 ToastLogger.Report(logLevel, message, exception);
 ```
+
+<a id="usage-example-of-handled-exception-log-api"></a>
 
 ### Usage Example of Handled Exception Log API
 
@@ -310,11 +368,15 @@ try
 }
 ```
 
+<a id="network-insights"></a>
+
 ## Network Insights
 
 Network Insights measure delay time and response values by calling URL registered in console. They may be applied to measure delays and response values of many countries around the world (according to national codes on a device).
 
 > With Network Insights enabled in console, it is requested for one time via URL registered in the console when NHN Cloud Logger is initialized.
+
+<a id="enable-network-insights"></a>
 
 ### Enable Network Insights
 
@@ -322,6 +384,8 @@ Network Insights measure delay time and response values by calling URL registere
 2. Select [Settings].
 3. Click the [Setting for Sending Logs] tab.
 4. Enable "Network Insights Logs".
+
+<a id="url-setting"></a>
 
 ### URL Setting
 
