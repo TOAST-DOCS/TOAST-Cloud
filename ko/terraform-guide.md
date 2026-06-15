@@ -19,6 +19,8 @@ Terraform은 인프라를 손쉽게 구축하고 안전하게 변경하고, 효�
     * 인프라를 구축하는 데 드는 시간을 절약할 수 있고, 실수도 줄일 수 있습니다.
 
 
+<a id="supported-resources"></a>
+
 #### Resources 지원
 
 * Compute
@@ -52,6 +54,8 @@ Terraform은 인프라를 손쉽게 구축하고 안전하게 변경하고, 효�
     * nhncloud_kubernetes_nodegroup_v1
     * nhncloud_kubernetes_cluster_resize_v1
     * nhncloud_kubernetes_nodegroup_upgrade_v1
+
+<a id="supported-data-sources"></a>
 
 #### Data sources 지원
 
@@ -1459,6 +1463,8 @@ resource "nhncloud_kubernetes_nodegroup_upgrade_v1" "upgrde_nodegroup" {
 | version | String | O | 목표 Kubernetes 버전        |
 | num_buffer_nodes | Integer | - | 버퍼 노드 수. 최솟값: 0, 최댓값: (워커 노드 그룹당 최대 노드 수 쿼터-해당 워커 노드 그룹의 현재 노드 수), 기본값: 1 |
 | num_max_unavailable_nodes | Integer | - | 최대 서비스 불가 노드 수. 최솟값: 1, 최댓값: 해당 워커 노드 그룹의 현재 노드 수, 기본값: 1 |
+
+<a id="reference"></a>
 
 ## 참고 사이트
 Terraform Documentation - [https://www.terraform.io/docs/providers/index.html](https://www.terraform.io/docs/providers/index.html)
