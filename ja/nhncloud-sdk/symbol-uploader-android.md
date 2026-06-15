@@ -1,9 +1,15 @@
+<!-- pre-align:aligned sig=f489a938dab7 -->
+
 ## NHN Cloud > SDK使用ガイド > Log & Crash > Android (Symbol Uploader)
+
+<a id="prerequisites"></a>
 
 ## 事前準備
 
 1. Androidプロジェクトに[NHN Cloud Loggerを追加](/nhncloud/ja/nhncloud-sdk/log-collector-android/)します。
 2. Androidアプリにネイティブライブラリが含まれている場合は、[NHN Cloud Crash Reporter for NDKを追加](/nhncloud/ja/nhncloud-sdk/log-collector-ndk/)します。
+
+<a id="library-setting"></a>
 
 ## ライブラリ設定
 
@@ -31,6 +37,8 @@ buildscript {
 apply plugin: 'com.toast.android.toast-services'
 ```
 
+<a id="enable-mappingtxt-file-upload"></a>
+
 ## mapping.txtファイルアップロード使用設定
 
 ProGuard、R8でコード難読化されているスタックトレースを人が読むことができるコードにレンダリングするには、ビルド時に作成されたマッピングファイルをNHN Cloud Log & Crash Searchにアップロードする必要があります。
@@ -48,6 +56,8 @@ toastServices {
 }
 ```
 
+<a id="enable-native-symbol-file-upload"></a>
+
 ## Native symbolファイルのアップロード使用設定
 
 NDK異常終了から読み取り可能なスタックトレースを作成するには、NHN Cloud Log & Crash Searchでネイティブバイナリのシンボルについて把握する必要があります。
@@ -64,6 +74,8 @@ toastServices {
     }
 }
 ```
+
+<a id="configure-build-variants"></a>
 
 ## ビルド変形構成
 
@@ -100,6 +112,8 @@ toastServices {
     }
 }
 ```
+
+<a id="execute-the-file-upload-task"></a>
 
 ## ファイルアップロードタスク実行
 
