@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=ec416b7f4d48 -->
+
 # Authentication Overview
 
 **NHN Cloud > Public API User Guide > API Authentication Method > Authentication Overview**
