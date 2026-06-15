@@ -24,6 +24,8 @@ NHN Cloud 콘솔의 각 프로젝트 화면에서 프로젝트 통합 Appkey를 
     * 프로젝트 통합 Appkey는 프로젝트당 최대 3개까지 생성할 수 있습니다.
 
 
+<a id="making-api-calls"></a>
+
 ## API 호출하기
 프로젝트 통합 Appkey는 HTTP 요청 헤더에 포함해 전달합니다. API 호출 시 아래 예시와 같이 요청 헤더에 프로젝트 통합 Appkey를 설정해 호출하세요.
 
