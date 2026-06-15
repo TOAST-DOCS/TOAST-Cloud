@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=099483b2128a -->
+
 # 認証方式のサポート状況
 
 **NHN Cloud > Public API使用ガイド > API認証方式 > 認証方式のサポート状況**
@@ -11,6 +13,8 @@ Public APIごとにサポートする認証方式が異なり、一部の認証�
 
 フレームワークAPI及びパートナー管理APIの使用に関する詳細は、それぞれ[フレームワークAPI](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/framework-api/)と[パートナー管理APIガイド](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/partner-api/)を参照してください。
 
+
+<a id="check-authentication-methods-for-each-service-api"></a>
 
 ## サービスAPI別認証方式の確認
 
