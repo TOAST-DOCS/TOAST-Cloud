@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=099483b2128a -->
+
 # Supported Authentication Methods
 
 **NHN Cloud > Public API User Guide > API Authentication Method > Supported Authentication Methods**
@@ -11,6 +13,8 @@ Framework APIs and Partner Management APIs use User Access Key tokens for authen
 
 For more information on using Framework APIs and Partner Management APIs, please refer to the [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/) and [Partner Management API](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/) documentation, respectively.
 
+
+<a id="check-authentication-methods-for-each-service-api"></a>
 
 ## Check Authentication Methods for Each Service API
 
