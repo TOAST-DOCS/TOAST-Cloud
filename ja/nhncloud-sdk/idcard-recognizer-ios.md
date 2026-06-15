@@ -1,5 +1,8 @@
+<!-- pre-align:aligned sig=baf2528eea97 -->
 
 ## NHN Cloud > SDK使用ガイド > OCR > ID Card (iOS)
+
+<a id="prerequisites"></a>
 
 ## 事前準備
 
@@ -9,9 +12,13 @@
 
 <br>
 
+<a id="supported-environment"></a>
+
 ## サポート環境
 
 NHN Cloud OCRはiOS 11.0以上で動作します。<br>
+
+<a id="configuration-of-nhn-cloud-ocr"></a>
 
 ## NHN Cloud OCR構成
 
@@ -23,7 +30,11 @@ iOS用NHN Cloud OCR SDKの構成は次のとおりです。
 | Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
+<a id="apply-nhn-cloud-ocr-sdk-to-xcode-project"></a>
+
 ## NHN Cloud OCR SDKをXcodeプロジェクトに適用
+
+<a id="apply-with-cococapods"></a>
 
 ### 1. Cococapodsを利用して適用
 
@@ -38,6 +49,8 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
+<a id="apply-nhn-cloud-sdk-using-swift-package-manager"></a>
+
 ### 2. Swift Package Managerを使用してNHN Cloud SDK適用
 
 * Xcodeで**File > Add Packages...**メニューを選択します。
@@ -46,13 +59,19 @@ end
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
+<a id="set-up-project"></a>
+
 #### プロジェクト設定
 
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
+<a id="download-binaries-and-apply-to-nhn-cloud-sdk"></a>
+
 ### 3. バイナリをダウンロードしてNHN Cloud SDK適用
+
+<a id="set-up-framework"></a>
 
 #### フレームワーク設定
 
@@ -63,11 +82,15 @@ end
 ![linked_avfoundation_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_avfoundation_frameworks.png)
 ![linked_frameworks_ocr](https://static.toastoven.net/toastcloud/sdk/ios/linked_frameworks_ocr.png)
 
+<a id="set-up-project-2"></a>
+
 #### プロジェクト設定
 
 * **Build Settings**の **Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+<a id="initialize-nhncloudocr-sdk"></a>
 
 ## NHNCloudOCR SDK初期化
 * NHN Cloud Consoleで発行されたAppKeyとSecretをNHNCloudOCRConfigurationオブジェクトに設定します。
@@ -79,6 +102,8 @@ Key : NSCameraUsageDescription
 Value : [カメラ権限リクエストメッセージ]
 ```
 
+<a id="specification-for-initialization-api"></a>
+
 ### 初期化APIの仕様
 
 ``` objc
@@ -88,6 +113,8 @@ Value : [カメラ権限リクエストメッセージ]
 // Delegate設定
 + (void)setIDCardRecognizerDelegate:(nullable id<NHNCloudIDCardRecognizerDelegate>)delegate;
 ```
+
+<a id="specification-for-delegate-api"></a>
 
 ### Delegate APIの仕様
 * NHNCloudIDCardRecognizerDelegate登録すると、認識結果の通知を受け取ることができます。
@@ -114,9 +141,13 @@ Value : [カメラ権限リクエストメッセージ]
 @end
 ```
 
+<a id="set-up-detected-image-return"></a>
+
 ### 検出画像を返す設定を行う
 * OCR結果であるNHNCloudIDCardInfoデータに検出された画像を一緒に返すことができます。
     * デフォルト値は無効です。
+<a id="specification-for-setting-up-detected-image-return-api"></a>
+
 #### 検出画像を返す設定APIの仕様
 ```objc
 @interface NHNCloudOCR : NSObject
@@ -127,7 +158,11 @@ Value : [カメラ権限リクエストメッセージ]
 @end
 ```
 
+<a id="display-recognition-area"></a>
+
 ### 認識領域を表示する
+
+<a id="return-recognition-area-api"></a>
 
 #### 認識領域返却API
 * OCR結果であるNHNCloudIDCardInfoデータに認識した領域の座標情報を返すことができます。
@@ -141,6 +176,8 @@ Value : [カメラ権限リクエストメッセージ]
 @end
 
 ```
+
+<a id="draw-the-recognition-area-on-imageview"></a>
 
 #### 認識領域ImageViewに描画
 
@@ -195,6 +232,8 @@ Value : [カメラ権限リクエストメッセージ]
 }
 
 ```
+
+<a id="example-of-initialization-process"></a>
 
 ### 初期化プロセス例
 
@@ -260,17 +299,27 @@ Value : [カメラ権限リクエストメッセージ]
 @end
 ```
 
+<a id="how-to-apply-id-card"></a>
+
 ## ID Card適用方法
+
+<a id="nhncloudidcardrecognizerviewcontroller"></a>
 
 ### NHNCloudIDCardRecognizerViewController
 
+<a id="use-id-card-recognizer-viewcontroller"></a>
+
 #### 1. ID-Card Recognizer ViewControllerを使用する
 * NHNCloudIDCardRecognizerViewControllerを継承実装したClassをStoryboardのViewControllerに接続して基本UIが適用されたID-Card Recognizerを簡単に使用できます。
+
+<a id="create-class"></a>
 
 #### 2. Class作成
 ![default_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/default_idcard_viewcontroller.png)
 * NHNCloudIDCardRecognizerViewControllerをsubclassに持つViewController Classを作成します。
 
+
+<a id="connect-to-storyboard"></a>
 
 #### 3. Storyboardに接続
 ![create_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/create_viewcontroller.png)
@@ -285,9 +334,13 @@ Value : [カメラ権限リクエストメッセージ]
 * Delegateを設定し、実装します。
 
 
+<a id="customize-nhncloudidcardrecognizerserviceviewcontroller"></a>
+
 ### NHNCloudIDCardRecognizerServiceViewControllerのカスタマイズ
 * NHNCloudIDCardRecognizerServiceViewControllerを使用してUIをカスタマイズできます。
   * **ID-Cardガイドの場合、あらかじめ定義された値を使用するため、変更ができません。**
+
+<a id="inherit-nhncloudidcardrecognizerserviceviewcontroller"></a>
 
 #### 1. NHNCloudIDCardRecognizerServiceViewController継承
 * NHNCloudIDCardRecognizerServiceViewControllerを継承実装してカスタマイズできます。
@@ -365,6 +418,8 @@ Value : [カメラ権限リクエストメッセージ]
 
 ```
 
+<a id="use-test-environment"></a>
+
 ### テスト環境を使う
 * NHNCloudOCR SDKでテストのために提供するID-Cardガイドを使用してOCRをテストできます。
   * 身分証がID-Cardガイド内に存在する場合、OCRが始まります。
@@ -390,11 +445,17 @@ Value : [カメラ権限リクエストメッセージ]
     [NHNCloudOCR setIDCardRecognizerDelegate:self];
 }
 ```
+<a id="control-id-card-recognizer-viewcontroller"></a>
+
 ## ID-Card Recognizer ViewControllerを制御する
 > `ID Card適用方法`を見てNHNCloudIDCardRecognizerViewControllerまたはNHNCloudIDCardRecognizerServiceViewController継承実装必要
 
+<a id="startstop-id-card-recognizer"></a>
+
 ### 1. ID-Card Recognizerの開始/停止
 * ID-Card Recognizerを開始または停止します。
+
+<a id="specification-for-start-or-stop-id-card-recognizer"></a>
 
 #### ID-Card Recognizer開始/停止APIの仕様
 ```objc
@@ -402,6 +463,8 @@ Value : [カメラ権限リクエストメッセージ]
 - (void)stopRunning;
 - (BOOL)isRunning;
 ```
+<a id="example-of-start-or-stop-id-card-recognizer"></a>
+
 #### ID-Card Recognizer開始/停止の使用例
 ```objc
 
@@ -415,8 +478,12 @@ Value : [カメラ権限リクエストメッセージ]
 }
 ```
 
+<a id="enabledisable-camera"></a>
+
 ### 2. カメラ有効/無効
 * デバイスのカメラを有効化または無効化します。
+
+<a id="specification-for-enabledisable-camera"></a>
 
 #### カメラ有効/無効APIの仕様
 ```objc
@@ -424,6 +491,8 @@ Value : [カメラ権限リクエストメッセージ]
 - (void)stopRunningCamera;
 - (BOOL)isRunnginCamera;
 ```
+<a id="example-of-enabledisable-camera"></a>
+
 #### カメラ有効/無効使用例
 ```objc
 - (void)cameraButtonAction:(UIButton *)button {    
@@ -436,21 +505,31 @@ Value : [カメラ権限リクエストメッセージ]
 
 ```
 
+<a id="verify-id-card-authenticity"></a>
+
 ## 身分証真偽確認
+
+<a id="verify-id-card-with-recognition-results"></a>
 
 ### 認識された結果で真偽確認
 * 認識された身分証の真偽を確認します。
 * 真正性確認には、身分証明書認識の結果として受け取ったrequestKeyが必要です。
 
+<a id="expiration-of-requestkey"></a>
+
 #### requestKeyの有効期限
 * 1回限りの値で1回使用後、有効期限が切れます。
 * 1時間後に有効期限が切れます。
+
+<a id="specification-for-id-card-authenticity-verification"></a>
 
 ### 身分証真偽確認APIの仕様
 ```objc
 + (void)verificateAuthenticityIDCard:(nonnull NHNCloudIDCardInfo *)IDCardInfo
                    completionHandler:(nullable void (^)(BOOL isAuthenticity, NSError * _Nullable error))completionHandler
 ```
+
+<a id="example-of-using-id-card-authenticity-verification-api"></a>
 
 ### 身分証真偽確認APIの使用例
 ```objc
