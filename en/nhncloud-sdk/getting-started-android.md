@@ -1,8 +1,14 @@
+<!-- pre-align:aligned sig=48d2b659f224 -->
+
 ## NHN Cloud > SDK User Guide > Getting Started > Android
+
+<a id="supported-environment"></a>
 
 ## Supported Environment
 
 * Android 5.1(API 22) or higher
+
+<a id="nhn-cloud-sdk-components"></a>
 
 ## NHN Cloud SDK Components
 
@@ -39,7 +45,11 @@ You can selectively apply the required feature among the services provided by NH
 | com.nhncloud.android:nhncloud-push-fcm:1.12.0    | Push <br>Firebase Cloud Messaging |
 | com.nhncloud.android:nhncloud-creditcard-recognizer:1.12.0    | Credit Card Recognizer |
 
+<a id="apply-nhn-cloud-sdk-to-android-studio-projects"></a>
+
 ## Apply NHN Cloud SDK to Android Studio Projects
+
+<a id="build-android-with-gradle"></a>
 
 ### 1. Build Android with Gradle
 
@@ -63,15 +73,21 @@ The following describes how to set dependency for each product of NHN Cloud SDK.
 - [Library setting for Push](./push-android/#_2)
 - [Library setting for Credit Card Recognizer](./creditcard-recognizer-android/#_1)
 
+<a id="build-android-with-aar"></a>
+
 ### 2. Build Android with AAR
 
 Android SDK can be downloaded from the [Downloads](../../../Download/#toast-sdk) page.
+
+<a id="set-user-id"></a>
 
 ## Set User ID
 
 User ID can be set for NHN Cloud SDK.
 The configured User ID is commonly used in each module of NHN Cloud SDK.
 Whenever Log Sending API of NhnCloudLogger is called, the configured User ID is sent to a server along with logs.
+
+<a id="specification-for-user-id-setting-api"></a>
 
 ### Specification for User ID Setting API
 
@@ -84,7 +100,11 @@ public static void setUserId(String userId);
 | -- | -- |
 | userId | String: User ID|
 
+<a id="example-of-user-id-setting"></a>
+
 ### Example of User ID Setting
+
+<a id="login"></a>
 
 #### Login
 
@@ -93,6 +113,8 @@ public static void setUserId(String userId);
 NhnCloudSdk.setUserId(userId);
 ```
 
+<a id="logout"></a>
+
 #### Logout
 
 ```java
@@ -100,10 +122,14 @@ NhnCloudSdk.setUserId(userId);
 NhnCloudSdk.setUserId(null);
 ```
 
+<a id="set-debug-mode"></a>
+
 ## Set Debug Mode
 
 To check internal logs of NHN Cloud SDK, the debug mode can be set.
 When you make an inquiry regarding NHN Cloud SDK, sending the logs with the debug mode enabled can be helpful for faster response.
+
+<a id="specification-for-debug-mode-setting-api"></a>
 
 ### Specification for Debug Mode Setting API
 
@@ -116,7 +142,11 @@ public static void setDebugMode(boolean debug);
 | -- | -- |
 | debug | boolean: true to enable debug mode, false otherwise.|
 
+<a id="usage-example-of-debug-mode-setting"></a>
+
 ### Usage Example of Debug Mode Setting
+
+<a id="enable-debug-mode"></a>
 
 #### Enable Debug Mode
 
@@ -124,6 +154,8 @@ public static void setDebugMode(boolean debug);
 // Enable debug mode.
 NhnCloudSdk.setDebugMode(true);
 ```
+
+<a id="disable-debug-mode"></a>
 
 #### Disable Debug Mode
 
@@ -133,6 +165,8 @@ NhnCloudSdk.setDebugMode(false);
 ```
 
 > [Caution] The debug mode must be disabled before releasing an app.
+
+<a id="use-nhn-cloud-services"></a>
 
 ## Use NHN Cloud Services
 
