@@ -1,11 +1,15 @@
 ## NHN Cloud > SDK 사용 가이드 > Log & Crash > Unity
 
+<a id="prerequisites"></a>
+
 ## Prerequisites
 
 1. [Install the NHN Cloud SDK](./getting-started-unity)
 2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Log & Crash Search를 활성화](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 3. Log & Crash Search에서 [AppKey를 확인](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 4. [NHN Cloud SDK를 초기화](./getting-started-unity#toast-sdk_1)합니다.
+
+<a id="supported-platforms"></a>
 
 ## 지원 플랫폼
 
@@ -14,7 +18,11 @@
 - Standalone
 - WebGL
 
+<a id="for-android"></a>
+
 ## Android 설정
+
+<a id="gradle-build-settings"></a>
 
 ### Gradle 빌드 설정
 
@@ -36,7 +44,11 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="for-ios"></a>
+
 ## iOS 설정
+
+<a id="player-settings"></a>
 
 ### Player Settings 설정
 
@@ -66,11 +78,15 @@ dependencies {
 - **Slow and Safe** 값을 권장합니다.
   - Runtime C# Crash 로그를 수집하고자 하는 경우 Slow and Safe로 설정해야 합니다.
 
+<a id="nhn-cloud-logger-namespace"></a>
+
 ## NHN Cloud Logger 네임스페이스
 
 ```csharp
 using Toast.Logger;
 ```
+
+<a id="initialize-nhn-cloud-logger-sdk"></a>
 
 ## NHN Cloud Logger SDK 초기화
 
@@ -85,10 +101,14 @@ var loggerConfiguration = new ToastLoggerConfiguration
 ToastLogger.Initialize(loggerConfiguration);
 ```
 
+<a id="send-logs"></a>
+
 ## 로그 전송하기
 
 NHN Cloud Logger는 5가지 레벨의 로그를 전송할 수 있습니다.
 사용자 필드를 추가해서 보낼 수도 있습니다.
+
+<a id="specification-for-log-sending-api"></a>
 
 ### 로그 전송 API 명세
 
@@ -114,6 +134,8 @@ ToastLogger.Fatal(message);
 ToastLogger.Fatal(message, userFields);
 ```
 
+<a id="usage-example-of-log-sending-api"></a>
+
 ### 로그 전송 API 사용 예
 
 ```csharp
@@ -123,10 +145,14 @@ ToastLogger.Debug("NHN Cloud Log & Crash Search!", new Dictionary<string, string
 });
 ```
 
+<a id="set-user-defined-fields"></a>
+
 ## 사용자 정의 필드 설정하기
 
 원하는 사용자 정의 필드를 설정합니다.
 사용자 정의 필드를 설정하면 로그 전송 API를 호출할 때마다 설정한 값을 로그와 함께 서버로 전송합니다.
+
+<a id="specification-for-user-defined-field-setting-api"></a>
 
 ### 사용자 정의 필드 설정 API 명세
 
@@ -137,11 +163,15 @@ ToastLogger.SetUserField(userField, userValue);
 - 사용자 정의 필드는 "Log & Crash Search 콘솔" > "Log Search 탭"에 "선택한 필드"로 노출되는 값과 동일합니다.
 - 동일한 키에 대해 값을 여러 번 변경하면, 최종으로 변경한 값이 적용됩니다.
 
+<a id="restrictions-of-user-defined-fields"></a>
+
 #### 커스텀 필드 제약사항
 
 - 이미 [예약된 필드](./log-collector-reserved-fields)는 사용할 수 없습니다.
 - 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, \_" 문자를 사용할 수 있습니다.
 - 필드명 내에 공백은 "\_" 로 치환됩니다.
+
+<a id="usage-example-of-user-defined-field-setting-api"></a>
 
 ### 사용자 정의 필드 설정 API 사용 예
 
@@ -149,9 +179,13 @@ ToastLogger.SetUserField(userField, userValue);
 ToastLogger.SetUserField("GameObject", gameObject.name);
 ```
 
+<a id="further-tasks-after-sending-logs"></a>
+
 ## 로그 전송 후 추가작업 진행하기
 
 - 리스너를 등록하면 로그 전송 후 추가 작업을 진행할 수 있습니다.
+
+<a id="specification-for-setloggerlistener-api"></a>
 
 ### SetLoggerListener API 명세
 
@@ -166,6 +200,8 @@ public interface IToastLoggerListener
 
 static void SetLoggerListener(IToastLoggerListener listener);
 ```
+
+<a id="usage-example-of-setloggerlistener"></a>
 
 ### SetLoggerListener 사용 예
 
@@ -196,6 +232,8 @@ public class SampleLoggerListener : IToastLoggerListener
 ToastLogger.SetLoggerListener(new SampleLoggerListener());
 ```
 
+<a id="collect-crash-logs"></a>
+
 ## 크래시 로그 수집
 
 NHN Cloud Logger 에서는 유니티의 크래시를 크게 두 가지로 분류합니다.
@@ -225,12 +263,16 @@ var loggerConfiguration = new ToastLoggerConfiguration
 > User ID가 설정되어 있으면 Log&Crash Search 콘솔의 `크래시 사용자` 항목에서 사용자별 크래시 경험을 확인 할 수 있습니다.
 > User ID 설정은 [시작하기](./getting-started-unity/#userid)에서 확인 가능합니다.
 
+<a id="further-tasks-after-sending-crash-logs"></a>
+
 ## 크래시 로그 전송 후 추가작업 진행하기
 
 - 크래시 리스너를 등록하면 크래시 로그 전송 후 추가 작업을 진행할 수 있습니다.
 
 > **유니티에서 예기치 못한 예외가 발생했을 경우에만 동작합니다.**
 > 네이티브 플랫폼에서 발생한 크래시에 대한 리스너는 제공하지 않습니다.
+
+<a id="specification-for-setcrashlistener-api"></a>
 
 ### SetCrashListener API 명세
 
@@ -239,6 +281,8 @@ public delegate void CrashListener(bool isSuccess, LogEntry logEntry);
 
 public static void SetCrashListener(CrashListener listener);
 ```
+
+<a id="usage-example-of-setcrashlistener-api"></a>
 
 ### SetCrashListener API 사용 예
 
@@ -252,11 +296,15 @@ ToastLogger.SetCrashListener((isSuccess, log) =>
 });
 ```
 
+<a id="filtering-the-crash-log"></a>
+
 ## 크래시 로그 필터링하기
 
 - 유니티를 이용하다보면 수집을 원하지 않는 예외 로그 혹은 크래시 로그들이 수집될 수 있습니다.
 - NHN Cloud Logger는 수집을 원하지 않는 크래시 로그를 필터링 하는 기능을 지원합니다.
   - 해당 기능은 유니티 예외에 한정된 기능입니다.
+
+<a id="specification-for-addcrashfilter-api"></a>
 
 ### AddCrashFilter API 명세
 
@@ -277,17 +325,23 @@ public static void AddCrashFilter(CrashFilter filter);
 
 - CrashLogData의 프로퍼티들은 [Application.LogCallback의 매개변수와 동일](https://docs.unity3d.com/ScriptReference/Application.LogCallback.html)합니다.
 
+<a id="usage-example-of-addcrashfilter-api"></a>
+
 ### AddCrashFilter API 사용 예
 
 ```csharp
 ToastLogger.AddCrashFilter(crashLogData => crashLogData.Condition.Contains("UnityEngine.Debug.Log"));
 ```
 
+<a id="send-handled-exceptions"></a>
+
 ## Handled Exception 전송하기
 
 NHN Cloud Logger는 일반/크래시 로그 뿐만 아니라, try/catch 구문에서 예외와 관련된 내용을 Report API를 사용하여 전송할 수 있습니다.
 이렇게 전송한 예외 로그는 "Log & Crash Search 콘솔" > "App Crash Search 탭"의 오류 유형에서 "Handled"로 필터링하여 조회할 수 있습니다.
 자세한 Log & Crash 콘솔 사용 방법은 [콘솔 사용 가이드](http://docs.nhncloud.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/)를 참고하세요.
+
+<a id="specification-for-handled-exception-log-api"></a>
 
 ### Handled Exception Log API 명세
 
@@ -296,6 +350,8 @@ NHN Cloud Logger는 일반/크래시 로그 뿐만 아니라, try/catch 구문�
 var logLevel = ToastLogLevel.ERROR;
 ToastLogger.Report(logLevel, message, exception);
 ```
+
+<a id="usage-example-of-handled-exception-log-api"></a>
 
 ### Handled Exception Log API 사용 예
 
@@ -310,11 +366,15 @@ try
 }
 ```
 
+<a id="network-insights"></a>
+
 ## Network Insights
 
 Network Insights는 콘솔에 등록한 URL을 호출하여 지연시간 및 응답 값을 측정합니다. 이를 활용하여 세계 여러 나라(디바이스의 국가 코드 기준)에서의 지연시간과 응답 값을 측정할 수 있습니다.
 
 > 콘솔을 통해 Network Insights 기능을 활성화하면 NHN Cloud Logger 초기화 시에, 콘솔에 등록한 URL로 1회 요청합니다.
+
+<a id="enable-network-insights"></a>
 
 ### Network Insights 활성화
 
@@ -322,6 +382,8 @@ Network Insights는 콘솔에 등록한 URL을 호출하여 지연시간 및 응
 2. [설정] 메뉴를 선택합니다.
 3. [로그 전송 설정] 탭을 선택합니다.
 4. "Network Insights 로그"를 활성화합니다.
+
+<a id="url-setting"></a>
 
 ### URL 설정
 
