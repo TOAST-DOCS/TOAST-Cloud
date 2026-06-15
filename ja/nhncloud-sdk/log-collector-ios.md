@@ -1,10 +1,16 @@
+<!-- pre-align:aligned sig=754cf2cb5d13 -->
+
 ## NHN Cloud > SDK使用ガイド > Log & Crash > iOS
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
 1. [NHN Cloud SDK](./getting-started-ios)をインストールします。
 2. [NHN Cloudコンソール](https://console.nhncloud.com)で、[Log & Crash Searchを有効化](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/)します。
 3. Log & Crash Searchで、[AppKeyを確認](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/console-guide/#appkey)します。
+
+<a id="configuration-of-nhn-cloud-logger"></a>
 
 ## NHN Cloud Logger構成
 
@@ -15,7 +21,11 @@
 | Log & Crash | NHNCloudLogger | NHNCloudLogger.framework | [External & Optional]<br/> * CrashReporter.framework (NHNCloud) |  |
 | Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
+<a id="apply-nhn-cloud-sdk-to-xcode-projects"></a>
+
 ## NHN Cloud Logger SDKをXcodeプロジェクトに適用
+
+<a id="apply-cococapods"></a>
 
 ### 1. Cococapods適用
 
@@ -30,6 +40,8 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
+<a id="apply-nhn-cloud-sdk-with-swift-package-manager"></a>
+
 ### 2. Swift Package Managerを使用してNHN Cloud SDK適用
 
 * XCodeで**File > Add Packages...**メニューを選択します。
@@ -38,13 +50,19 @@ end
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
+<a id="set-up-project"></a>
+
 #### プロジェクト設定
 
 * **Build Settings**の **Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
+<a id="apply-nhn-cloud-sdk-by-downloading-binaries"></a>
+
 ### 2. バイナリをダウンロードしてNHN Cloud SDK適用
+
+<a id="set-up-framework"></a>
 
 #### Link Frameworks
 
@@ -52,6 +70,8 @@ end
 * Xcode Projectに**NHNCloudLogger.framework**, **NHNCloudCore.framework**, **NHNCloudCommon.framework**を追加します。
 * NHN Cloud LoggerのCrash Report機能を使用するには、一緒に配布される**CrashReporter.framework**もプロジェクトに追加する必要があります。
 ![linked_frameworks_logger](https://static.toastoven.net/toastcloud/sdk/ios/logger_link_frameworks_logger_202206.png)
+
+<a id="set-up-project-2"></a>
 
 #### Project Settings
 
@@ -64,11 +84,17 @@ end
 ![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページでダウンロードしたCrashReporter.frameworkは、bitCodeをサポートします。
 
+<a id="apply-nhn-cloud-symbol-uploader"></a>
+
 ## NHN Cloud Symbol Uploader適用
+
+<a id="change-project-debug-settings"></a>
 
 ### プロジェクトのデバッグ設定を変更
 * ビルド設定を変更してプロジェクトのデバッグ情報形式を変更する必要があります。
 * Xcode -> Project Target -> Build Settings -> Debug Information Format -> Debug -> DWARF with dSYM File
+
+<a id="upload-automatically-using-run-script-in-development-environment"></a>
 
 ### 開発環境でRun Scriptを使用して自動アップロード
 
@@ -85,6 +111,8 @@ fi
     * ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
 
 ![symbol_uploader_script_pods_path](https://static.toastoven.net/toastcloud/sdk/ios/symbol_uploader_guide_script_pods_path_202206.png)
+
+<a id="upload-manually-using-symbol-uploader"></a>
 
 ### Symbol Uploaderを使用して直接アップロード
 
@@ -118,14 +146,20 @@ OPTIONS:
 > Log & Crash SearchコンソールからアップロードされているSymbolを削除する必要があります。
 > https://console.nhncloud.com/→組織選択→プロジェクト選択→ Anaytics → Log & Crash Search →設定→シンボルファイル
 
+<a id="precautions-when-using-crashreport"></a>
+
 ### CrashReport 使用時注意事項
 
 * arm64eアーキテクチャを使用する機器のクラッシュ・分析のためにはNHN Cloud Loggerと一緒に配布されるPLCrashReporterを使用しなければなりません。
       * NHN Cloudの[Downloads](../../../Download/#toast-sdk)ページではない他の場所でダウンロードしたり、直接ビルドしたPLCrashReporterを使用する場合、arm64eアーキテクチャを使用する機器のクラッシュ分析が不可能です。
 
+<a id="initialize-nhn-cloud-logger-sdk"></a>
+
 ## NHN Cloud Logger SDK初期化
 
 * Log & Crash Searchで発行されたAppKeyを設定します。
+
+<a id="specification-for-initialization-api"></a>
 
 ### 初期化API仕様
 
@@ -134,6 +168,8 @@ OPTIONS:
 + (void)initWithConfiguration:(NHNCloudLoggerConfiguration *)configuration;
 ```
 
+<a id="example-of-initialization-procedure"></a>
+
 ### 初期化プロセス例
 
 ```objc
@@ -141,9 +177,13 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 [NHNCloudLogger initWithConfiguration:configuration];
 ```
 
+<a id="send-logs"></a>
+
 ## ログ送信
 
 * NHN Cloud Loggerは、5つのレベルのログ送信関数を提供します。
+
+<a id="specification-for-log-sending-api"></a>
 
 ### ログ送信API仕様
 
@@ -164,16 +204,22 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 + (void)fatal:(NSString *)message;
 ```
 
+<a id="usage-example-of-log-sending-api"></a>
+
 ### ログ送信API使用例
 
 ```objc
 [NHNCloudLogger info:@"NHN Cloud Log & Crash Search!"];
 ```
 
+<a id="set-user-defined-fields"></a>
+
 ## ユーザー定義フィールド設定
 
 * 希望するユーザー定義フィールドを設定します。
 * ユーザー定義フィールドを設定すると、ログ送信APIを呼び出すたびに設定した値をログと一緒にサーバーに送信します。
+
+<a id="specification-for-user-defined-field-setting-api"></a>
 
 ### ユーザー定義フィールドAPI仕様
 
@@ -184,6 +230,8 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 
 * ユーザー定義フィールドは、**Log & Crash Search > ログ検索**をクリックした後、**ログ検索**画面の**選択したフィールド**に表示される値と同じです。
 
+<a id="restrictions-for-user-defined-fields"></a>
+
 #### ユーザー定義フィールド制約事項
 
 * すでに[予約されているフィールド](./log-collector-reserved-fields)は使用できません。
@@ -191,16 +239,22 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 * フィールド名のスペースは、'_'に置換されます。
 
 
+<a id="usage-example-of-user-defined-fields"></a>
+
 ### ユーザー定義フィールド使用例
 ```objc
 // ユーザー定義フィールド追加
 [NHNCloudLogger setUserFieldWithValue:@"USER_VALUE" forKey:@"USER_KEY"];
 ```
 
+<a id="collect-crash-logs"></a>
+
 ## クラッシュログの収集
 * NHN Cloud Loggerは、クラッシュ情報をログに送信する機能を提供します。
 * NHN Cloud Loggerを初期化する時、一緒に有効になり、使用するかを設定できます。
 * クラッシュログを送信するには、PLCrashReporterを使用します。
+
+<a id="set-whether-to-enable-crashreporter"></a>
 
 ### CrashReporter使用するかの設定
 * CrashReporter機能は、基本的にNHN Cloud Loggerを初期化する時に一緒に有効になります。
@@ -210,6 +264,8 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 > UserIDが設定されている場合、Log ＆Crash Searchコンソールの`Crash User`セクションでユーザー固有のクラッシュ体験を確認できます。
 > UserIDの設定は[開始する]（./getting-started-ios/#UserID設定）で確認できます。
 
+<a id="enable-crashreporter"></a>
+
 #### CrashReporter有効化
 ```objc
 // CrashReporter Enable Configuration
@@ -217,6 +273,8 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 
 [NHNCloudLogger initWithConfiguration:configuration];
 ```
+<a id="disable-crashreporter"></a>
+
 #### CrashReporter無効化
 ```objc
 // CrashReporter Disable Configuration
@@ -225,15 +283,21 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 [NHNCloudLogger initWithConfiguration:configuration];
 ```
 
+<a id="set-additional-information-in-time-for-crash-occurrence-before-sending"></a>
+
 ## クラッシュ発生時に追加情報を設定して送信
 
 * クラッシュ発生直後、追加情報を設定できます。
 * setShouldReportCrashHandlerのBlockでユーザー定義フィールドを設定すると、正確にクラッシュが発生した時点に追加情報を設定できます。
 
+<a id="specification-for-data-adapter-api"></a>
+
 ### Data Adapter API仕様
 ```objc
 + (void)setShouldReportCrashHandler:(void (^)(void))handler;
 ```
+
+<a id="usage-example-of-data-adapter"></a>
 
 ### Data Adapter使用例
 
@@ -246,15 +310,21 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 }];
 ```
 
+<a id="further-tasks-after-sending-logs"></a>
+
 ## ログ送信後、追加作業進行
 
 * Delegateを登録すると、ログ送信後に追加作業を進行できます。
 
 
+<a id="specification-for-set-delegate-api"></a>
+
 ### Delegate API仕様
 ```objc
 + (void)setDelegate:(id<NHNCloudLoggerDelegate>) delegate;
 ```
+
+<a id="specification-for-delegate-api"></a>
 
 ### Delegate API仕様
 
@@ -275,6 +345,8 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 @end
 ```
 
+
+<a id="usage-example-of-delegate"></a>
 
 ### Delegate使用例
 
@@ -326,10 +398,14 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 @end
 ```
 
+<a id="network-insights"></a>
+
 ## Network Insights
 * Network Insightsは、コンソールに登録したURLを呼び出して、遅延時間とレスポンス値を測定します。これを活用して複数の国(デバイスの国コード基準)からの遅延時間とレスポンス値を測定できます。
 
 > コンソールからNetwork Insights機能を有効にすると、NHN Cloud Loggerを初期化する時、コンソールに登録したURLで1回要請します。
+
+<a id="enable-network-insights"></a>
 
 ### Network Insights有効化
 
@@ -338,12 +414,22 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 3. **ログ送信設定**タブをクリックします。
 4. **Network Insightsログ**を有効にします。
 
+<a id="url-setting"></a>
+
 ### URL設定
 
 1. [NHN Cloud Console](https://console.nhncloud.com/)で**Log & Crash Search**サービスをクリックします。
 2. **ネットワークインサイト**メニューをクリックします。
 3. **URL設定**タブをクリックします。
 4. 測定するにはURLを入力して**追加**ボタンをクリックします。
+
+<a id="nhn-cloud-logger-for-government-agencies"></a>
+
+## 公共機関用NHN Cloud Logger
+
+<!-- TODO: translate body -->
+
+<a id="set-nhn-cloud-logger-for-government-agencies"></a>
 
 ### 公共機関用NHN Cloud Loggerを設定する
 * NHNCloudLoggerConfigurationのcloudEnvironment propertyで公共機関用クラウド使用設定を行うことができます。
@@ -358,6 +444,8 @@ typedef NS_ENUM(NSInteger, NHNCloudEnvironment) {
 ```
 * 設定しない場合のデフォルト値は`NHNCloudEnvironmentPublic`です。 
 
+<a id="example-of-initializing-nhn-cloud-logger-for-government-agencies"></a>
+
 #### 公共機関用NHN Cloud Loggerの初期化例
 
 ```objc
@@ -366,6 +454,8 @@ NHNCloudLoggerConfiguration *configuration = [NHNCloudLoggerConfiguration config
 
 [NHNCloudLogger initWithConfiguration:configuration];
 ```
+
+<a id="precautions-when-using-nhn-cloud-logger-for-government-agencies"></a>
 
 ### 公共機関用NHN Cloud Logger使用時の注意事項
 
