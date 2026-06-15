@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=eddd49bbcebe -->
+
 # Framework API
 
 **NHN Cloud > Public API User Guide > Framework API**
