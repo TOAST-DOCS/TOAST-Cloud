@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=68b848be7257 -->
+
 ## NHN Cloud > SDK User Guide > Release Notes > Windows C++
+
+<a id="002-20240123"></a>
 
 ## 2.0.0.2 (2024.01.23)
 Download : [nhncloud-sdk-windows-2.0.0.2.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.2.zip)
@@ -7,6 +11,8 @@ Download : [nhncloud-sdk-windows-2.0.0.2.zip](https://static.toastoven.net/toast
 * Improved stability
 
 
+<a id="001-20220712"></a>
+
 ## 2.0.0.1 (2022.07.12)
 Download : [nhncloud-sdk-windows-2.0.0.1.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/2.0.0/nhncloud-sdk-windows-2.0.0.1.zip)
 * Changed the module name to NHNCloudLogger
@@ -14,6 +20,8 @@ Download : [nhncloud-sdk-windows-2.0.0.1.zip](https://static.toastoven.net/toast
 * Fixed issues of memory leak when sending logs
 * Fixed an issue where User ID is reflected differently according to MBCS or Unicode functions
 * Fixed an issue where setting Log Types Filter is not applied when sending crash logs
+
+<a id="005-20210331"></a>
 
 ## 1.0.0.5 (2021.03.31)
 Download : [toast-sdk-windows-1.0.0.5.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/1.0.0/toast-sdk-windows-1.0.0.5.zip)
@@ -25,20 +33,32 @@ Download : [toast-sdk-windows-1.0.0.5.zip](https://static.toastoven.net/toastclo
 * Changed the structure of distributed binary
 	* Sample project included
 
+<a id="943-20191010"></a>
+
 ## 0.9.4.3 (2019.10.10)
 Download : [toast-sdk-windows-0.9.4.3.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.4/toast-sdk-windows-0.9.4.3.zip)
 
 
+<a id="toast-log-crash"></a>
+
 ### TOAST Log & Crash
+
+<a id="bug-fixes"></a>
 
 #### Bug Fixes
 
 * Fixed an issue where no crash log remains for pure virtual call / invalid parameter on x86
 
+<a id="930-20190723"></a>
+
 ## 0.9.3.0 (2019.07.23)
 Download : [toast-sdk-windows-0.9.3.0.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.3/toast-sdk-windows-0.9.3.0.zip)
 
+<a id="toast-log-crash-2"></a>
+
 ### TOAST Log & Crash
+
+<a id="added-features"></a>
 
 #### Added Features
 
@@ -50,10 +70,16 @@ Download : [toast-sdk-windows-0.9.3.0.zip](https://static.toastoven.net/toastclo
 	* Visual studio 2015 (vc14) version provided
 * Provides xp version
 
+<a id="9012-20180904"></a>
+
 ## 0.9.0.12 (2018.09.04)
 Download : [toast-sdk-windows-0.9.0.12.zip](https://static.toastoven.net/toastcloud/sdk_download/toast/windows/0.9.0/toast-sdk-windows-0.9.0.12.zip)
 
+<a id="toast-log-crash-3"></a>
+
 ### TOAST Log & Crash
+
+<a id="added"></a>
 
 #### Added
 
