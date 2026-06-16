@@ -1,10 +1,16 @@
+<!-- pre-align:aligned sig=d17880a2d123 -->
+
 ## Analytics > Log & Crash Search > TOAST SDK 사용 가이드 > Android
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
 1. [TOAST 콘솔](https://console.toast.com)에서 [Log&Crash Search를 활성화](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/)합니다.
 
 2. Log & Crash Search에서 [AppKey를 확인](/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
+
+<a id="component-sdks"></a>
 
 ## Component SDKs
 
@@ -20,12 +26,18 @@ Android용 TOAST SDK는 다음과 같은 SDK로 구성되어 있습니다.
 | com.toast.android:toast-logger:1.0.0 | Log Collection |
 | com.toast.android:toast-crash:1.0.0 | Crash Reporter |
 
+<a id="getting-started-android-sdk"></a>
+
 ## Getting Started Android SDK
+
+<a id="environments"></a>
 
 ### Environments
 
 * Android 4.0.3 이상
 * Android Studio 최신 버전 (버전 2.2 이상)
+
+<a id="add-toast-sdk-to-your-project"></a>
 
 ### Add TOAST SDK to Your Project
 
@@ -40,6 +52,8 @@ dependencies {
   // ...
 }
 ```
+
+<a id="intiailize-toast-sdk"></a>
 
 ### Intiailize TOAST SDK
 
@@ -58,7 +72,11 @@ public class YourApplication extends Application {
 }
 ```
 
+<a id="log-collector"></a>
+
 ## Log Collector
+
+<a id="initialize"></a>
 
 ### Initialize
 
@@ -74,6 +92,8 @@ ToastLoggerConfiguration loggerConfiguration = new ToastLoggerConfiguration.Buil
 
 ToastLogger.initialize(loggerConfiguration);
 ```
+
+<a id="send-log"></a>
 
 ### Send Log
 
@@ -96,6 +116,8 @@ ToastLogger.error(tag, message);
 ToastLogger.fatal(tag, message);
 ```
 
+<a id="set-userid"></a>
+
 ### Set UserID
 
 사용자 아이디를 설정합니다.
@@ -104,6 +126,8 @@ ToastLogger.fatal(tag, message);
 ```java
 ToastLogger.setUserId(userId);
 ```
+
+<a id="set-user-field"></a>
 
 ### Set User Field
 
@@ -116,6 +140,8 @@ ToastLogger.setUserField("UserField", "UserValue");
 > 이미 예약된 필드는 사용할 수 없습니다.
 > 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 > 필드명 내에 공백은 "\_" 로 치환됩니다.
+
+<a id="log-callback"></a>
 
 ### Log Callback
 
@@ -145,7 +171,11 @@ ToastLogger.setListener(new ToastLoggerListener() {
 });
 ```
 
+<a id="crash-reporter"></a>
+
 ## Crash Reporter
+
+<a id="initialize-2"></a>
 
 ### Initialize
 
@@ -155,6 +185,8 @@ onCreate() 메소드에서 ToastCrash를 초기화합니다.
 // Initialize Crash
 ToastCrash.initialize();
 ```
+
+<a id="send-handled-exception"></a>
 
 ### Send Handled Exception
 
@@ -177,6 +209,8 @@ ToastCrash.error(tag, message, throwable);
 ToastCrash.fatal(tag, message, throwable);
 ```
 
+<a id="using"></a>
+
 #### Using
 
 ```java
@@ -186,6 +220,8 @@ try {
     ToastCrash.debug(TAG, "Handled Exception", e);
 }
 ```
+
+<a id="set-user-field-2"></a>
 
 ### Set User Field
 
@@ -198,6 +234,8 @@ ToastCrash.setUserField("UserField", "UserValue");
 > 이미 예약된 필드는 사용할 수 없습니다.
 > 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 > 필드명 내에 공백은 "\_" 로 치환됩니다.
+
+<a id="set-data-adapter"></a>
 
 ### Set Data Adapter
 
@@ -213,6 +251,8 @@ ToastCrash.setDataAdapter(new CrashDataAdapter() {
     }
 });
 ```
+
+<a id="crash-callback"></a>
 
 ### Crash Callback
 
