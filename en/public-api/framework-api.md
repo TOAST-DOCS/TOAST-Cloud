@@ -6,16 +6,12 @@
 The following APIs allow you to manage your organization and projects, such as creating project members and assigning roles.
 Framework API uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/nhncloud/en/public-api/user-access-key-token).
 
-<a id="public-api-domain"></a>
-
 ### Public API Domain
 `https://core.api.nhncloudservice.com/`
 
-<a id="common"></a>
-
 ### Common
 
-<a id="요청"></a>
+<a id="Request"></a>
 
 #### Request
 When calling the Public API, you must include the Request Header below.
@@ -25,7 +21,7 @@ When calling the Public API, you must include the Request Header below.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Header |  x-nhn-authorization | String| Yes | Bearer type token issued to the user |
 
-<a id="응답"></a>
+<a id="Response"></a>
 
 #### Response
 When the Public API returns, the header part below is included in the response body.
@@ -45,8 +41,6 @@ When the Public API returns, the header part below is included in the response b
 |   resultCode | Integer| No | Result code. 0 is returned on success, or an error code on failure.  |
 |   resultMessage | String| No | Result message  |
 
-<a id="common-type"></a>
-
 #### Common Type
 <a id="common-type"></a>
 
@@ -65,8 +59,6 @@ When the Public API returns, the header part below is included in the response b
 !!! danger "Caution"
     If you set IP ACLs through **Organization Management > Governance Settings > Organization Governance Settings > IP ACL Settings**, those settings are also applied to calls to the framework API.
 
-
-<a id="api"></a>
 
 ### API
 
@@ -2366,7 +2358,7 @@ API to modify the role of a specified member in a project.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-<a id="조직-IAM-계정-단건-조회"></a>
+<a id="조직-IAM-멤버-단건-조회"></a>
 #### View organization IAM members
 
 > GET "/v1/iam/organizations/{org-id}/members/{member-uuid}"
@@ -2506,7 +2498,7 @@ API to get the IAM members in your organization.
 |   String | String| No |
 
 
-<a id="조직-IAM-계정-목록-조회"></a>
+<a id="조직-IAM-멤버-목록-조회"></a>
 #### List organization IAM members
 
 > GET "/v1/iam/organizations/{org-id}/members"
@@ -2626,7 +2618,7 @@ API to get a list of IAM members that belong to this organization.
 
 
 
-<a id="조직-IAM-계정-추가"></a>
+<a id="조직-IAM-멤버-추가"></a>
 #### Add an organization IAM member
 
 > POST "/v1/iam/organizations/{org-id}/members"
@@ -2700,7 +2692,7 @@ API to add IAM members to your organization.
 
 
 
-<a id="IAM-계정-비밀번호-변경-이메일-전송"></a>
+<a id="IAM-멤버-비밀번호-변경-이메일-전송"></a>
 #### Send an IAM member password change email
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail"
@@ -2748,7 +2740,7 @@ API to send an email to an IAM member to change their password.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-<a id="조직-IAM-계정-정보-수정"></a>
+<a id="조직-IAM-멤버-정보-수정"></a>
 #### Modify organization IAM member information
 
 > PUT "/v1/iam/organizations/{org-id}/members/{member-uuid}"
@@ -2817,7 +2809,7 @@ API to modify your organization's IAM member information.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-<a id="조직-IAM-계정-비밀번호-변경"></a>
+<a id="조직-IAM-멤버-비밀번호-변경"></a>
 #### Change an organization IAM member password
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/set-password"
@@ -2911,7 +2903,7 @@ API to get IP ACL settings.
 |   ips | List<String>| Yes  | Allowed IPs | 
 |   productId | String| Yes  | Service ID<br>If undefined, set to Common Settings|
 
-<a id="조직-IAM-계정-로그인-세션-설정-정보를-조회"></a>
+<a id="조직-IAM-로그인-세션-설정-정보를-조회"></a>
 #### View organization IAM sign-in session settings information
 
 > GET "/v1/iam/organizations/{org-id}/settings/session"
@@ -2965,7 +2957,7 @@ API to get login session settings information.
 |   mobileSessionTimeoutMinutes | Integer| Yes | 	Mobile session timeout |
 |   sessionType | String| Yes | fixed/idle. The default is fixed  |
 
-<a id="조직-IAM-계정-로그인-2차-인증에-대한-설정을-조회"></a>
+<a id="조직-IAM-로그인-2차-인증에-대한-설정을-조회"></a>
 #### View settings for organizational IAM sign-in second factor authentication
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-mfa"
@@ -3057,7 +3049,7 @@ API to get settings for login two-factor authentication.
 |   String | Boolean| No | Activated or not<br>true (enabled), false (disabled)  |
 |   ipList | List<String>| No | List of exception IPs |
 
-<a id="조직-IAM-계정-로그인-실패-보안-설정을-조회"></a>
+<a id="조직-IAM-로그인-실패-보안-설정을-조회"></a>
 #### View Organization IAM Login Failure Security Settings
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-login-fail"
@@ -3422,7 +3414,7 @@ Available to all members. No specific permissions required.
 |   usageAggregationUnitCode | String| No | Usage aggregation units<br>RESOURCE_ID, COUNTER_NAME |
 
 
-<a id="프로젝트-통합-Appkey-조회"></a>
+<a id="프로젝트-Integrated-AppKey-조회"></a>
 #### Get Project Integrated AppKey
 
 > GET "/v1/authentications/projects/{project-id}/project-appkeys"
@@ -3546,7 +3538,7 @@ Available to all members. No specific permissions required.
 |   validTokenCount | Long| No | Number of valid tokens                      |
 
 
-<a id="프로젝트-통합-Appkey-등록"></a>
+<a id="Project-Integrated-AppKey-Registration"></a>
 #### Register a integrated project AppKey
 
 > POST "/v1/authentications/projects/{project-id}/project-appkeys"
@@ -3665,7 +3657,7 @@ Available to all members. No specific permissions required.
 |   tokenFormatCode | String | No | Token format code (OPAQUE, JWT) |
 
 
-<a id="프로젝트-통합-Appkey-삭제"></a>
+<a id="Project-AppKey-Deletion"></a>
 #### Delete a project integrated AppKey
 
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
@@ -4570,7 +4562,7 @@ An API to delete your own organization.
 |---|---|---|---|
 | header | [Common Response](#Response) | Yes | |
 
-<a id="서비스-정보-목록-조회"></a>
+<a id="Service-Information-List-Query"></a>
 #### Retrieve Service Information List
 
 > GET /v1/products
@@ -4708,8 +4700,6 @@ Available to all members. No specific permissions required.
 | jaJp | String | No | Japanese message |
 | zhCn | String | No | Chinese message |
 
-
-<a id="error-code"></a>
 
 ### Error Code
 
