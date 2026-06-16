@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=6ff6816d660d -->
+
 ## NHN Cloud > SDK 사용 가이드 > IAP > Unity
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
@@ -6,12 +10,18 @@
 2. [NHN Cloud 콘솔](https://console.nhncloud.com)에서 [Mobile Service \> IAP를 활성화](/Mobile%20Service/IAP/ko/console-guide/)합니다.
 3. IAP에서 [AppKey를 확인](/Mobile%20Service/IAP/ko/console-guide/#appkey)합니다.
 
+<a id="android-setup"></a>
+
 ## Android 설정
+<a id="set-up-gradle-build"></a>
+
 ### Gradle 빌드 설정
 - Unity Editor에서, Build Settings 창을 엽니다. (Player Settings > Publishing Settings > Build).
 - Build System 목록에서 Gradle을 선택합니다.
 - Build System 하위의 체크 박스를 선택하여 Custom Gradle Template을 사용합니다.
 - mainTemplate.gradle의 dependencies 항목에 아래 내용을 추가합니다.
+
+<a id="google-play-store"></a>
 
 #### Google Play Store
 
@@ -26,6 +36,8 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="one-store"></a>
+
 #### One Store
 
 ```groovy
@@ -37,6 +49,8 @@ dependencies {
   implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.7.0'
 **DEPS**}
 ```
+
+<a id="galaxy-store"></a>
 
 #### Galaxy Store
 
@@ -50,6 +64,8 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="amazon-appstore"></a>
+
 #### Amazon Appstore
 
 ```groovy
@@ -61,6 +77,8 @@ dependencies {
   implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.7.0'
 **DEPS**}
 ```
+
+<a id="huawei-app-gallery"></a>
 
 #### Huawei App Gallery
 
@@ -101,14 +119,22 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="ios-setup"></a>
+
 ## iOS 설정
+<a id="set-up-capabilities"></a>
+
 ### Capabilities 설정
 - XCode 프로젝트의 설정에서 Capabilities 탭을 선택합니다.
 - In-App Purchase 항목을 ON 합니다.
 
+<a id="add-a-required-framework"></a>
+
 ### 필수 프레임워크 추가
 - iOS에서 IAP 기능을 사용하기 위해서는 Storekit.framework가 반드시 필요합니다.
 - XCode 프로젝트의 설정에서 Storekit.framework을 추가해주세요.
+
+<a id="supported-stores-and-product-types"></a>
 
 ## 지원하는 스토어 및 상품 종류
 
@@ -118,6 +144,8 @@ dependencies {
 | Android | One Store | 소비성 상품 |
 | iOS | Apple App Store | 소비성 상품, 구독 상품, 소비성 구독 상품 |
 
+<a id="nhn-cloud-iap-sdk-initialization"></a>
+
 ## NHN Cloud IAP SDK 초기화
 [ToastIapConfiguration](./iap-unity/#toastiapconfiguration)을 이용해서 NHN Cloud IAP 콘솔에서 발급 받은 Appkey와 스토어 코드([StoreCode](./iap-unity/#storecode))를 설정합니다.
 초기화와 함께 구매 결과를 받을 수 있는 PurchaseUpdateListener를 등록합니다.
@@ -126,12 +154,16 @@ dependencies {
 > NHN Cloud IAP SDK 초기화는 반드시 앱 실행 직후 최초 1회만 해야 하며,
 > 사용자 ID를 설정(아래 [서비스 로그인](./iap-unity/#_4) 항목 참고)하기 전에 초기화를 해야 합니다.
 
+<a id="specification-for-initialization-api"></a>
+
 ### 초기화 API 명세
 ```csharp
 public delegate void PurchaseUpdateListener(string transactionId, ToastResult result, IapPurchase purchase);
 
 public static void Initialize(ToastIapConfiguration configuration, PurchaseUpdateListener listener);
 ```
+
+<a id="example-of-initialization"></a>
 
 ### 초기화 예시
 
@@ -153,11 +185,15 @@ ToastIap.Initialize(new ToastIapConfiguration
 });
 ```
 
+<a id="service-login"></a>
+
 ## 서비스 로그인
 - NHN Cloud SDK에서 제공하는 모든 상품(IAP, Log & Crash 등)은 하나의 동일한 사용자 아이디를 사용합니다.
     - ToastSdk.UserId 로 사용자 아이디를 설정할 수 있습니다.
     - 사용자 아이디를 설정하지 않은 경우, 결제가 진행되지 않습니다.
 - 서비스 로그인 단계에서 사용자 아이디 설정, 미소비 결제 내역 조회, 활성화된 구독 상품 조회 기능을 구현하는 것을 권장합니다.
+
+<a id="login"></a>
 
 ### 로그인
 
@@ -165,6 +201,8 @@ ToastIap.Initialize(new ToastIapConfiguration
 // Login
 ToastSdk.UserId = "USER_ID";
 ```
+
+<a id="logout"></a>
 
 ### 로그아웃
 
@@ -175,16 +213,22 @@ ToastSdk.UserId = null;
 
 > [참고] 서비스 로그아웃 시 반드시 유저 아이디를 null로 설정해야 프로모션 코드가 리딤되거나 결제 재처리 동작시 잘못된 사용자 아이디로 구매가 진행되는 것을 방지할 수 있습니다.
 
+<a id="query-product-list"></a>
+
 ## 상품 목록 조회
 - IAP 콘솔에 등록된 상품 중 사용 가능한 상품 목록을 조회합니다.
     - IAP 콘솔에 등록된 상품 중 구매 가능한 상품은 [ProductDetailsResult](./iap-unity/#productdetailsresult)의 Product 프로퍼티([IapProduct](./iap-unity/#iapproduct))로 반환됩니다.
     - IAP 콘솔에 등록된 상품 중 스토어에 등록되지 않은 상품은 [ProductDetailsResult](./iap-unity/#productdetailsresult) InvalidProducts 프로퍼티([IapProduct](./iap-unity/#iapproduct))로 반환됩니다.
+
+<a id="specification-for-product-list-query-api"></a>
 
 ### 상품 목록 조회 API 명세
 
 ```csharp
 public static void RequestProductDetails(ToastCallback<ProductDetailsResult> callback);
 ```
+
+<a id="example-of-product-list-query"></a>
 
 ### 상품 목록 조회 예시
 
@@ -204,11 +248,15 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 });
 ```
 
+<a id="purchase-products"></a>
+
 ## 상품 구매
 - NHN Cloud IAP는 스토어에 등록된 상품 ID를 사용하여 상품을 구매할 수 있습니다.
     - 상품 ID는 상품 목록 조회시 획득할 수 있습니다.
 - 상품 구매 결과는 초기화시 등록한 PurchaseUpdateListener를 통해 반환됩니다.
     - 구매 결과는 [IapPurchase](./iap-unity/#iappurchase)를 반환합니다.
+
+<a id="specification-for-product-purchase-api"></a>
 
 ### 상품 구매 API 명세
 
@@ -217,6 +265,8 @@ public static void Purchase(string productId, developerPayload = "");
 ```
 
 - NHN Cloud IAP는 구매 요청 시 developerPayload를 통해 사용자 정보를 추가할 수 있습니다.
+
+<a id="example-of-product-purchase"></a>
 
 ### 상품 구매 예시
 
@@ -230,16 +280,22 @@ var productId = userSelectedProductId;
 ToastIap.Purchase(productId, developerPayload);
 ```
 
+<a id="query-unconsumed-purchases"></a>
+
 ## 미소비 결제 조회
 - 아직 소비되지 않은 소비성 상품 정보를 조회합니다.
     - 미소비 결제 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
 - 사용자에게 상품을 지급된 후 [Consume API](../../../Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)를 사용하여 상품을 소비합니다.
+
+<a id="specification-for-unconsumed-purchases-query-api"></a>
 
 ### 미소비 결제 조회 API 명세
 
 ```csharp
 public static void RequestConsumablePurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
+
+<a id="example-of-unconsumed-purchases-query"></a>
 
 ### 미소비 결제 조회 예시
 
@@ -265,17 +321,23 @@ ToastIap.RequestConsumablePurchases(false, (result, purchases) =>
 });
 ```
 
+<a id="restore-subscription"></a>
+
 ## 구독 복원
 - User ID 기준으로 활성화된 구독 상품을 복원할 수 있습니다.
     - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 복원할 수 있습니다.
     - 구독 상품 복원 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
 - iOS에서만 구독한 상품을 복원 가능합니다.
 
+<a id="specification-for-subscription-restoration-api"></a>
+
 ### 구독 복원 API 명세
 
 ```csharp
 public static void RequestRestorePurchases(ToastCallback<List<IapPurchase>> callback);
 ```
+
+<a id="subscription-restoration-example"></a>
 
 ### 구독 복원 예시
 
@@ -289,17 +351,23 @@ ToastIap.RequestRestorePurchases((result, purchases) =>
 });
 ```
 
+<a id="query-activated-subscription"></a>
+
 ## 활성화된 구독 조회
 - User ID 기준으로 활성화된 구독 상품을 조회할 수 있습니다.
     - 결제가 완료된 구독 상품은 사용 기간이 남아 있는 경우 계속해서 조회할 수 있습니다.
     - 활성화된 구독 조회의 결과는 [IapPurchase](./iap-unity/#iappurchase) 객체의 리스트로 반환됩니다.
 - Android에서 구독한 상품을 iOS에서도, 혹은 iOS에서 구독한 상품을 Android에서도 조회 가능합니다.
 
+<a id="specification-for-activated-subscription-query-api"></a>
+
 ### 활성화된 구독 조회 API 명세
 
 ```csharp
 public static void RequestActivatedPurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
+
+<a id="example-of-activated-subscription-query"></a>
 
 ### 활성화된 구독 조회 예시
 
@@ -325,12 +393,16 @@ ToastIap.RequestActivatedPurchases(false, (result, purchases) =>
 });
 ```
 
+<a id="query-subscription-status"></a>
+
 ## 구독 상태 조회
 
 - User ID 기준으로 구입한 구독 상품의 상태를 조회할 수 있습니다.
 - 구독 상태 조회 결과는 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus) 객체의 리스트로 반환됩니다.
 - 구독 상태는 [IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus).GetStatus() 메서드로 확인할 수 있습니다.
 - 구독 상태 코드는 [IapSubscriptionStatus.Status](./iap-android/#iapsubscriptionstatusstatus)에 정의되어 있습니다.
+
+<a id="specification-for-subscription-status-query-api"></a>
 
 ### 구독 상태 조회 API 명세
 
@@ -339,6 +411,8 @@ public static void RequestSubscriptionsStatus(
             bool includeExpiredSubscriptions,
             ToastCallback<List<IapSubscriptionStatus>> callback);
 ```
+
+<a id="example-of-subscription-status-query"></a>
 
 ### 구독 상태 조회 예시
 
@@ -352,7 +426,11 @@ ToastIap.RequestSubscriptionsStatus(true, (result, subscriptionsStatus) =>
 });
 ```
 
+<a id="nhn-cloud-iap-class-reference"></a>
+
 ## NHN Cloud IAP Class Reference
+
+<a id="toastiapconfiguration"></a>
 
 ### ToastIapConfiguration
 
@@ -369,6 +447,8 @@ public class ToastIapConfiguration
 | AppKey | string | IAP 서비스 앱 키를 설정합니다. |
 | StoreCode | StoreCode | 스토어 코드를 설정합니다. |
 
+
+<a id="storecode"></a>
 
 ### StoreCode
 
@@ -391,6 +471,8 @@ public enum StoreCode
 | AmazonAppStore | 아마존 앱스토어 (Android Only) |
 | HuaweiAppGallery | Huawei App Gallery (Android Only) |
 
+<a id="toastresultt"></a>
+
 ### ToastResult<T>
 ```csharp
 public class ToastResult
@@ -407,6 +489,8 @@ public class ToastResult
 | Code | int | 결과 코드를 반환합니다. <br/> (성공은 0을 반환) |
 | Message | string | 결과 메시지를 반환합니다. |
 
+<a id="productdetailsresult"></a>
+
 ### ProductDetailsResult
 ```csharp
 public class ProductDetailsResult
@@ -421,6 +505,8 @@ public class ProductDetailsResult
 | Products | List<IapProduct> | 사용가능한 상품 정보들을 반환합니다. |
 | InvalidProducts | List<IapProduct> | NHN Cloud IAP 콘솔에 상품을 등록하였지만 스토어에 등록되지 않은 상품들을 반환합니다. |
 
+
+<a id="iapproduct"></a>
 
 ### IapProduct
 ```csharp
@@ -445,6 +531,8 @@ public class IapProduct
 | Price | float | 가격 |
 | Currency | string | 통화 |
 | LocalizedPrice | string | 현지 가격 |
+
+<a id="iappurchase"></a>
 
 ### IapPurchase
 ```csharp
@@ -477,6 +565,8 @@ public class IapPurchase
 | AccessToken | string | 소비에 사용되는 토큰 |
 | PurchaseTime | long | 상품 구매 시간 |
 | ExpiryTime | long | 구독 상품의 남은 시간 |
+
+<a id="iapsubscriptionstatus"></a>
 
 ### IapSubscriptionStatus
 
@@ -517,6 +607,8 @@ public class IapSubscriptionStatus
 | GetStatus | Status | 구독 상태 |
 | GetStatusDescription | string | 구독 상태 설명 |
 
+<a id="iapsubscriptionstatusstatus"></a>
+
 ### IapSubscriptionStatus.Status
 
 ```csharp
@@ -544,7 +636,11 @@ public enum Status
 | Expired | 13 | 만료 | 정기 결제가 만료되었습니다. |
 | Unknown | 9999 | 미정의 | 정의 되지 않은 상태입니다. |
 
+<a id="error-code"></a>
+
 ## 오류 코드
+
+<a id="common-error-codes"></a>
 
 ### 공통 오류 코드
 | 에러 코드 | 설명 |
@@ -564,6 +660,8 @@ public enum Status
 | 50105 | 구매 한도를 초과했습니다. |
 | 59999 | 알 수 없는 에러입니다. 에러 메시지를 확인해주세요. |
 
+<a id="server-error-code"></a>
+
 ### 서버 오류 코드
 
 | 에러 코드 | 설명 |
@@ -574,6 +672,8 @@ public enum Status
 | 10004 | 타임아웃이 발생했습니다. |
 | 10005 | 유효하지 않은 서버 응답값입니다. |
 | 10010 | 활성화 되지 않은 앱입니다. |
+
+<a id="app-store-error-code"></a>
 
 ### App store 오류 코드
 
@@ -586,6 +686,8 @@ public enum Status
 | 50013 | 복원에 실패했습니다. |
 | 50014 | 구매 진행 불가 상태입니다. (e.g. 앱 내 구입 제한 설정) |
 
+<a id="one-store-error-code"></a>
+
 ### ONE store 오류 코드
 
 | 에러 코드 | 설명 |
@@ -594,6 +696,8 @@ public enum Status
 | 51001 | ONE store 서비스가 업데이트 또는 설치되지 않았습니다. |
 | 51002 | 비정상 앱에서 결제를 요청하였습니다. |
 | 51003 | 결제 요청에 실패했습니다. |
+
+<a id="galaxy-store-error-codes"></a>
 
 ### Galaxy store 오류 코드
 
@@ -604,11 +708,19 @@ public enum Status
 | 53002 | 비정상 앱에서 결제를 요청하였습니다. |
 | 51003 | 결제 요청에 실패했습니다. |
 
+<a id="faq"></a>
+
 ## FAQ
+<a id="android"></a>
+
 ### Android
+
+<a id="question1"></a>
 
 #### Question.1
 **구매 중(혹은 구매 완료 직후)에 앱을 백그라운드로 전환했다가 앱 아이콘으로 앱에 다시 진입하면 사용자 취소 에러가 콜백으로 반환됩니다. 어떻게 해야할까요?**
+
+<a id="answer1"></a>
 
 #### Answer.1
 유니티 액티비티의 launchMode가 singleTask 이기 때문에 발생하는 문제입니다. 결제창이 파괴되면서 사용자 취소로 인식하기 때문에 사용자 취소 에러가 반환됩니다.
