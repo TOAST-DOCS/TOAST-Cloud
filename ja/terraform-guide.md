@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=15db7b09ad9d -->
+
 <a id="third-party-user-guide-terraform-user-guide"></a>
 ## サードパーティー使用ガイド > Terraform使用ガイド
 この文書はTerraformでNHN Cloudを使用する方法を説明します。
@@ -116,8 +118,7 @@ Terraform NHN Cloud providerは次のような**OS/アーキテクチャ**の互
   * [1.0.2](https://static.toastoven.net/prod_cloud_terraform_provider/windows_amd64/terraform-provider-nhncloud_v1.0.2)
 
 
-<a id="local-provider"></a>
-### Local provider設定
+**Local provider設定**
 
 Local provider設定を通じてTerraform NHN Cloud providerを使用できます。
 
@@ -231,7 +232,7 @@ provider.tf
 $ terraform init
 ```
 
-### Local providerの交換
+**Local providerの交換**
 
 新しいバージョンのlocal providerがリリースされた場合、変更するバージョンに[local provider設定](#local-provider)を行った後、`init`コマンドの`--upgrade`オプションでプラグインをアップグレードできます。
 
