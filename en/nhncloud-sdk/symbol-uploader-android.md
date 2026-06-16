@@ -1,9 +1,15 @@
+<!-- pre-align:aligned sig=f489a938dab7 -->
+
 ## NHN Cloud > SDK User Guide > Log & Crash > Android (Symbol Uploader)
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
 1. [Add NHN Cloud Logger](/nhncloud/en/nhncloud-sdk/log-collector-android/) to your Android project.
 2. If your Android app includes native libraries, [add NHN Cloud Crash Reporter for NDK](/nhncloud/en/nhncloud-sdk/log-collector-ndk/).
+
+<a id="library-setting"></a>
 
 ## Library Setting
 
@@ -31,6 +37,8 @@ Apply the TOAST Gradle Plugin to your app-level build.gradle file.
 apply plugin: 'com.toast.android.toast-services'
 ```
 
+<a id="enable-mappingtxt-file-upload"></a>
+
 ## Enable mapping.txt File Upload
 
 To render the stack trace obfuscated with ProGuard and R8 into clear human-readable code, the mapping file generated at build time must be uploaded to TOAST Log & Crash Search.
@@ -48,6 +56,8 @@ toastServices {
 }
 ```
 
+<a id="enable-native-symbol-file-upload"></a>
+
 ## Enable Native Symbol File Upload
 
 To generate readable stack trace from NDK crashes, NHN Cloud Log & Crash Search needs to know the symbols of native binaries.
@@ -64,6 +74,8 @@ toastServices {
     }
 }
 ```
+
+<a id="configure-build-variants"></a>
 
 ## Configure Build Variants
 
@@ -100,6 +112,8 @@ toastServices {
     }
 }
 ```
+
+<a id="execute-the-file-upload-task"></a>
 
 ## Execute the File Upload Task
 
