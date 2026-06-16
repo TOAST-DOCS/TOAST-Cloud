@@ -6,12 +6,8 @@
 다음에서 소개하는 API를 통해 프로젝트 멤버를 생성하거나 역할을 부여하는 등 조직과 프로젝트를 관리할 수 있습니다.
 프레임워크 API는 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
 
-<a id="public-api-domain"></a>
-
 ### Public API 도메인
 `https://core.api.nhncloudservice.com/`
-
-<a id="common"></a>
 
 ### 공통
 
@@ -45,8 +41,6 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   resultCode | Integer| No | 결과 코드. 성공 시 0이 반환되며, 실패 시 오류 코드 반환  |
 |   resultMessage | String| No | 결과 메시지  |
 
-<a id="common-type"></a>
-
 #### 공통 타입
 <a id="공통-타입"></a>
 
@@ -65,8 +59,6 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 !!! danger "주의"
     * **조직 관리 > 거버넌스 설정 > 조직 거버넌스 설정 > IP ACL 설정**을 통해 IP ACL을 설정했을 경우, 프레임워크 API 호출 시에도 해당 설정이 적용됩니다.
 
-
-<a id="api"></a>
 
 ### API
 
@@ -4716,8 +4708,6 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | jaJp | String | No | 일본어 메시지 |
 | zhCn | String | No | 중국어 메시지 |
 
-
-<a id="error-code"></a>
 
 ### 오류 코드
 
