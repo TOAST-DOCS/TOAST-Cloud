@@ -1,6 +1,12 @@
+<!-- pre-align:aligned sig=627f15794079 -->
+
 ## NHN Cloud > Public API > リリースノート
 
+<a id="march-24-2026"></a>
+
 ### 2026. 03. 24.
+<a id="added-features"></a>
+
 #### 新規機能の追加
 
 - User Access Keyトークン
@@ -8,7 +14,11 @@
 - フレームワークAPI
 - JWTトークンを発行するためのUser Access Key IDの発行及び照会方法を追加
     
+<a id="december-23-2025"></a>
+
 ### 2025. 12. 23.
+<a id="added-features-2"></a>
+
 #### 新機能追加
 
 - フレームワークAPI
@@ -17,7 +27,11 @@
 - パートナー管理API
     - メータリング照会、メータリング削除API追加
     
+<a id="november-25-2025"></a>
+
 ### 2025. 11. 25.
+<a id="feature-updates"></a>
+
 #### 新機能追加
 
 - フレームワークAPI
@@ -25,7 +39,11 @@
 - パートナー管理API
     - 日別利用金額照会、タグ別リソース利用金額照会API追加
     
+<a id="october-28-2025"></a>
+
 ### 2025. 10. 28.
+<a id="added-new-features"></a>
+
 #### 新機能の追加
 
 - フレームワークAPI
@@ -33,42 +51,90 @@
 - パートナー管理API
     - パートナー専用APIガイドを新規提供
   
+<a id="june-24-2025"></a>
+
 ### 2025. 06. 24.
+<a id="feature-updates-2"></a>
+
 #### 機能改善/変更
 
 - `組織IAMアカウント`関連リクエスト、レスポンス補完
 
 
+<a id="may-27-2025"></a>
+
 ### 2025. 05. 27.
+<a id="feature-updates-3"></a>
+
 #### 機能改善/変更
 
 - `組織下位メンバー認証情報リスト照会` API追加
 
+<a id="april-29-2025"></a>
+
 ### 2025. 04. 29.
+<a id="feature-updates-4"></a>
+
 #### 機能改善/変更
 
 - `プロジェクトIAMアカウント`関連API追加
 
+<a id="march-25-2025"></a>
+
+### 2025. 03. 25.
+
+<!-- TODO: translate body -->
+
+<a id="feature-improvements"></a>
+
+#### 機能改善/変更
+
+<!-- TODO: translate body -->
+
+<a id="added-features-3"></a>
+
+#### 新規機能追加
+
+<!-- TODO: translate body -->
+
+<a id="march-4-2025"></a>
+
 ### 2025. 03. 04.
+<a id="feature-updates-5"></a>
+
 #### 機能改善/変更
 
 - User Access Key ID API関連APIスペック修正
+
+<a id="added-features-4"></a>
 
 #### 新機能追加
 
 - トークンリスト照会及び期限切れ機能をPublic APIで提供
 
+<a id="january-21-2025"></a>
+
 ### 2025. 01. 21.
+<a id="feature-updates-6"></a>
+
 #### 機能改善/変更
 
 - トークン発行と期限切れリクエストの誤った説明を修正
 
+<a id="december-24-2024"></a>
+
 ### 2024. 12. 24.
+<a id="feature-updates-7"></a>
+
 #### 機能改善/変更
 
 - 誤った権限と画像リンクの修正
 
+<a id="oct-29-2024"></a>
+
 ### 2024. 10. 29.
+<a id="added-features-5"></a>
+
 #### 新規機能追加
 
 - フレームワークPublic API追加
