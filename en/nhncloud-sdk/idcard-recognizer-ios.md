@@ -1,5 +1,8 @@
+<!-- pre-align:aligned sig=baf2528eea97 -->
 
 ## NHN Cloud > SDK User Guide > OCR > ID Card (iOS)
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
@@ -9,9 +12,13 @@
 
 <br>
 
+<a id="supported-environment"></a>
+
 ## Supported Environment
 
 NHN Cloud OCR operates in iOS 11.0 or higher.<br>
+
+<a id="configuration-of-nhn-cloud-ocr"></a>
 
 ## Configuration of NHN Cloud OCR
 
@@ -23,7 +30,11 @@ The configuration of NHN Cloud OCR SDK for iOS is as follows.
 | Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
+<a id="apply-nhn-cloud-ocr-sdk-to-xcode-project"></a>
+
 ## Apply NHN Cloud OCR SDK to Xcode Project
+
+<a id="apply-with-cococapods"></a>
 
 ### 1. Apply with Cococapods
 
@@ -38,6 +49,8 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
+<a id="apply-nhn-cloud-sdk-using-swift-package-manager"></a>
+
 ### 2. Apply NHN Cloud SDK using Swift Package Manager
 
 * Go to ** File > Add Packages...** in XCode.
@@ -46,13 +59,19 @@ end
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
+<a id="set-up-project"></a>
+
 #### Set up Project
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** of **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
+<a id="download-binaries-and-apply-to-nhn-cloud-sdk"></a>
+
 ### Download binaries and apply to NHN Cloud SDK
+
+<a id="set-up-framework"></a>
 
 #### Set up Framework
 
@@ -63,11 +82,15 @@ end
 ![linked_avfoundation_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_avfoundation_frameworks.png)
 ![linked_frameworks_ocr](https://static.toastoven.net/toastcloud/sdk/ios/linked_frameworks_ocr.png)
 
+<a id="set-up-project-2"></a>
+
 #### Set up Project
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** of **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+<a id="initialize-nhncloudocr-sdk"></a>
 
 ## Initialize NHNCLOUDOCR SDK
 * Set AppKey and Secret issued from NHN Cloud Console in NHNCloudOCRConfiguration object.
@@ -79,6 +102,8 @@ Key : NSCameraUsageDescription
 Value : [Camera Permission Request Message]
 ```
 
+<a id="specification-for-initialization-api"></a>
+
 ### Specification for Initialization API
 
 ``` objc
@@ -88,6 +113,8 @@ Value : [Camera Permission Request Message]
 // set delegate
 + (void)setIDCardRecognizerDelegate:(nullable id<NHNCloudIDCardRecognizerDelegate>)delegate;
 ```
+
+<a id="specification-for-delegate-api"></a>
 
 ### Specification for Delegate API
 * You can be notified of the recognition result when NHNCloudIDCardRecognizerDelegate is registered.
@@ -114,9 +141,13 @@ Value : [Camera Permission Request Message]
 @end
 ```
 
+<a id="set-up-detected-image-return"></a>
+
 ### Set up Detected Image Return
 * NHNCloudIDCardInfo data, which is the OCR result, can be returned together with the detected image.
     * Default is disabled.
+<a id="specification-for-setting-up-detected-image-return-api"></a>
+
 #### Specification for Setting up Detected Image Return API
 ```objc
 @interface NHNCloudOCR : NSObject
@@ -128,7 +159,11 @@ Value : [Camera Permission Request Message]
 ```
 
 
+<a id="display-recognition-area"></a>
+
 ### Display Recognition Area
+
+<a id="return-recognition-area-api"></a>
 
 #### Return Recognition Area API
 * The coordinate information of recognized area in the NHNCloudIDCardInfo data, the OCR result, can be returned.
@@ -142,6 +177,8 @@ Value : [Camera Permission Request Message]
 @end
 
 ```
+
+<a id="draw-the-recognition-area-on-imageview"></a>
 
 #### Draw the Recognition area on ImageView
 
@@ -195,6 +232,8 @@ Value : [Camera Permission Request Message]
 }
 
 ```
+
+<a id="example-of-initialization-process"></a>
 
 ### Example of Initialization Process
 
@@ -260,17 +299,27 @@ Value : [Camera Permission Request Message]
 @end
 ```
 
+<a id="how-to-apply-id-card"></a>
+
 ## How to Apply ID Card
+
+<a id="nhncloudidcardrecognizerviewcontroller"></a>
 
 ### NHNCloudIDCardRecognizerViewController
 
+<a id="use-id-card-recognizer-viewcontroller"></a>
+
 #### 1. Use ID-Card Recognizer ViewController
 * You can easily use ID-Card Recognizer with the default UI by connecting a class that inherits and implements NHNCloudIDCardRecognizerViewController to ViewController of Storyboard.
+
+<a id="create-class"></a>
 
 #### 2. Create Class
 ![default_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/default_idcard_viewcontroller.png)
 * Create a ViewController Class with NHNCloudIDCardRecognizerViewController as a subclass.
 
+
+<a id="connect-to-storyboard"></a>
 
 #### 3. Connect to Storyboard
 ![create_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/create_viewcontroller.png)
@@ -285,9 +334,13 @@ Value : [Camera Permission Request Message]
 * Set up and implement the Delegate.
 
 
+<a id="customize-nhncloudidcardrecognizerserviceviewcontroller"></a>
+
 ### Customize NHNCloudIDCardRecognizerServiceViewController
 * You can customize the UI using NHNCloudIDCardRecognizerServiceViewController.
   * **The ID-Card guide cannot be changed because pre-defined values are used.**
+
+<a id="inherit-nhncloudidcardrecognizerserviceviewcontroller"></a>
 
 #### 1. Inherit NHNCloudIDCardRecognizerServiceViewController
 * You can perform customizing by implementing inheritance of NHNCloudIDCardRecognizerServiceViewController.
@@ -365,6 +418,8 @@ Value : [Camera Permission Request Message]
 
 ```
 
+<a id="use-test-environment"></a>
+
 ### Use Test Environment
 * You can test OCR by using the ID-Card guide provided to test NHNCloudOCR SDK.
   * OCR is initiated when a credit card exists in the ID-Card guide.
@@ -390,11 +445,17 @@ Value : [Camera Permission Request Message]
     [NHNCloudOCR setIDCardRecognizerDelegate:self];
 }
 ```
+<a id="control-id-card-recognizer-viewcontroller"></a>
+
 ## Control ID-Card Recognizer ViewController
 > Inherit and implement NHNCloudIDCardRecognizerViewController or NHNCloudIDCardRecognizerServiceViewController by referring to `How to Apply ID Card`
 
+<a id="startstop-id-card-recognizer"></a>
+
 ### 1. Start/Stop ID-Card Recognizer
 * Start or stop ID-Card Recognizer.
+
+<a id="specification-for-start-or-stop-id-card-recognizer"></a>
 
 #### Specification for Start or stop ID-Card Recognizer
 ```objc
@@ -402,6 +463,8 @@ Value : [Camera Permission Request Message]
 - (void)stopRunning;
 - (BOOL)isRunning;
 ```
+<a id="example-of-start-or-stop-id-card-recognizer"></a>
+
 #### Example of Start or stop ID-Card Recognizer
 ```objc
 
@@ -415,8 +478,12 @@ Value : [Camera Permission Request Message]
 }
 ```
 
+<a id="enabledisable-camera"></a>
+
 ### 7. Enable/Disable Camera
 * Enable or disable a device’s camera.
+
+<a id="specification-for-enabledisable-camera"></a>
 
 #### Specification for Enable/Disable Camera
 ```objc
@@ -424,6 +491,8 @@ Value : [Camera Permission Request Message]
 - (void)stopRunningCamera;
 - (BOOL)isRunnginCamera;
 ```
+<a id="example-of-enabledisable-camera"></a>
+
 #### Example of Enable/Disable Camera
 ```objc
 - (void)cameraButtonAction:(UIButton *)button {    
@@ -436,21 +505,31 @@ Value : [Camera Permission Request Message]
 
 ```
 
+<a id="verify-id-card-authenticity"></a>
+
 ## Verify ID Card Authenticity
+
+<a id="verify-id-card-with-recognition-results"></a>
 
 ### Verify ID Card with recognition results
 * Verify the authenticity of recognized IDs.
 * requestKey received as a result of ID recognition is required.
 
+<a id="expiration-of-requestkey"></a>
+
 #### Expiration of requestKey
 * Expires after one use as it is a one-time value.
 * Expires after 1 hour.
+
+<a id="specification-for-id-card-authenticity-verification"></a>
 
 ### Specification for ID Card Authenticity Verification
 ```objc
 + (void)verificateAuthenticityIDCard:(nonnull NHNCloudIDCardInfo *)IDCardInfo
                    completionHandler:(nullable void (^)(BOOL isAuthenticity, NSError * _Nullable error))completionHandler
 ```
+
+<a id="example-of-using-id-card-authenticity-verification-api"></a>
 
 ### Example of using ID Card Authenticity Verification API
 ```objc
