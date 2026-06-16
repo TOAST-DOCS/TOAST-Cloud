@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=ec416b7f4d48 -->
+
 # 서비스 API
 
 **NHN Cloud > Public API 사용 가이드 > 서비스 API**
