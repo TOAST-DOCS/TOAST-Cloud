@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=26da38889d53 -->
+
 # User Access Keyトークン
 
 **NHN Cloud > Public API使用ガイド > API認証方式 > User Access Keyトークン**
@@ -13,9 +15,13 @@ NHN Cloudは2種類のタイプのトークンを提供します。
 
 User Access Keyトークンの発行及びAPI呼び出しは、次のようなフローで動作します。
 
+<a id="issue-new-tokens-and-making-api-calls"></a>
+
 ### 新規トークン発行及びAPI呼び出し
 
 ![img001.png](http://static.toastoven.net/toast/public_api/img01_JA.png)
+
+<a id="reissue-and-api-calls-on-token-expiration"></a>
 
 ### トークン期限切れ時の再発行及びAPI呼び出し
 
@@ -30,6 +36,8 @@ User Access Keyトークンの発行及びAPI呼び出しは、次のような�
     Opaqueトークンの有効時間は60秒～86,400秒(24時間)の範囲で設定でき、JWTトークンの有効時間は60秒～3,600秒(1時間)の範囲で設定できます。
     有効期間を変更する前に発行されたトークンの有効期間は変更されず、トークン有効期間の変更後に新規発行されるトークンから変更後の有効期間が適用されます。
 
+
+<a id="prerequisites"></a>
 
 ## 事前作業
 
@@ -54,6 +62,8 @@ User Access Keyトークンを発行するには、まずUser Access Key IDとSe
     * User Access KeyまたはSecret Access Keyのいずれかでも流出した、または流出が疑われる場合、そのキーを破棄して新たに発行する必要があります。
 
 
+<a id="authentication-server-domain"></a>
+
 ## 認証サーバードメイン
 認証サーバーのドメインは次のとおりです。
 
@@ -62,9 +72,13 @@ https://oauth.api.nhncloudservice.com/
 ```
 
 
+<a id="request-user-access-key-token-issuance"></a>
+
 ## User Access Keyトークンの発行リクエスト
 > `POST /oauth2/token/create`
 
+
+<a id="request-opaque-token-issuance"></a>
 
 ### Opaqueタイプトークンの発行リクエスト
 * リクエスト
@@ -90,6 +104,8 @@ https://oauth.api.nhncloudservice.com/
     "expires_in":86400
 }
 ```
+
+<a id="request-jwt-token-issuance"></a>
 
 ### JWTタイプトークンの発行リクエスト
 
@@ -121,7 +137,11 @@ https://oauth.api.nhncloudservice.com/
 }
 ```
 
+<a id="case-specific-request-examples"></a>
+
 ### ケース別リクエスト例
+<a id="curl-when-including-authentication-information-in-the-header"></a>
+
 #### curl: Headerに認証情報を含める場合
 
 
@@ -147,6 +167,8 @@ curl -X POST "https://oauth.api.nhncloudservice.com/oauth2/token/create" \
   -d "scope=appKey:r9Zd7vDEmWMfQb00"
 ```
 
+<a id="curl-when-using--u-option"></a>
+
 #### curl: -uオプションを使用する場合
 
 * Opaqueタイプのトークン
@@ -166,6 +188,8 @@ curl -X POST "https://oauth.api.nhncloudservice.com/oauth2/token/create" \
   -d "grant_type=client_credentials" \
   -d "scope=appKey:r9Zd7vDEmWMfQb00"
 ```
+
+<a id="feignclient"></a>
 
 #### FeignClient
 
@@ -190,6 +214,8 @@ public interface AuthClient {
                               @RequestParam("scope") String scope);
 }
 ```
+
+<a id="resttemplate"></a>
 
 #### RestTemplate
 
@@ -232,6 +258,8 @@ public TokenResponse createJwtToken(String userAccessKeyID, String secretAccessK
     return restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
+
+<a id="when-using-openfeign-on-spring-cloud-to-automatically-issue-and-renew-tokens"></a>
 
 #### Spring CloudのOpenFeignを使用して自動的にトークンを発行及び更新する場合
 
@@ -309,6 +337,8 @@ public class Oauth2Config {
 ```
 
 
+<a id="request-user-access-key-token-revocation"></a>
+
 ## User Access Keyトークンの失効リクエスト
 > `POST /oauth2/token/revoke`
 
@@ -327,7 +357,11 @@ public class Oauth2Config {
     * HttpStatus 200
 
 
+<a id="case-specific-request-examples-2"></a>
+
 ### ケース別リクエスト例
+<a id="curl-when-including-authentication-information-in-the-header-2"></a>
+
 #### curl: Headerに認証情報を含める場合
 ```sh
 curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' \
@@ -335,6 +369,8 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' 
   -H 'Authorization: Basic dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5' \
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
+
+<a id="curl-when-using-the--u-option"></a>
 
 #### curl: -uオプションを使用する場合
 ```sh
@@ -344,6 +380,8 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' 
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
 ```
 
+<a id="feignclient-2"></a>
+
 #### FeignClient
 ```java
 @FeignClient(name = "auth", url = "https://oauth.api.nhncloudservice.com")
@@ -352,6 +390,8 @@ public interface AuthClient {
     void revokeToken(@RequestHeader("Authorization") String authorization, @RequestParam("token") String token);
 }
 ```
+
+<a id="resttemplate-2"></a>
 
 #### RestTemplate
 ```java
@@ -373,6 +413,8 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 ```
 
 
+<a id="use-user-access-key-token"></a>
+
 ## User Access Keyトークンの使用
 User Access KeyトークンはHTTPリクエストヘッダに含めて送信します。API呼び出し時、以下の例のようにリクエストヘッダにUser Access Keyトークンを設定して呼び出してください。
 
@@ -383,6 +425,8 @@ X-NHN-Authorization: Bearer {Access Token}
 
 ユーザーがHTTPヘッダにキーを含めてサーバーにリクエストを送信すると、サーバーはトークンの有効性を確認した後、リクエストを承認または拒否します。
 
+
+<a id="get-jwt-public-key"></a>
 
 ## JWT Public Key照会
 > `GET /oauth2/jwks`
@@ -419,11 +463,15 @@ JWTトークンの署名を検証するためのPublic Key一覧を照会しま�
 }
 ```
 
+<a id="request-example"></a>
+
 ### リクエスト例
 * curl
 ```sh
 curl -X GET "https://oauth.api.nhncloudservice.com/oauth2/jwks"
 ```
+
+<a id="public-key-usage-example"></a>
 
 ### Public Key活用例
 照会したPublic Keyを使用して、JWTトークンの署名を検証できます。ほとんどのJWTライブラリでJWKS形式をサポートしています。
