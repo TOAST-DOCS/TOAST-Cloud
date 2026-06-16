@@ -1,5 +1,9 @@
+<!-- pre-align:aligned sig=4faf0b5550ec -->
+
 ## NHN Cloud > リソース提供ポリシー
 NHN Cloudは、全てのお客様に安定的なサービスを提供し、意図しないリソース生成によって発生する支出などからユーザーを保護するためにリソース使用量ポリシーを設定しています。 
+
+<a id="resource-provision-policy-for-organizationproject"></a>
 
 ### 組織/プロジェクトリソース提供ポリシー
 組織のリソースは決済方法を登録した会員を基準に計算され、プロジェクトは組織を基準に計算されます。
@@ -11,6 +15,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |プロジェクト	 | 個人 | 組織ごと |5個|
 |	 | 事業者 | 組織ごと |10個|
 
+<a id="resource-provision-policy-for-instance-service"></a>
+
 ### Instanceリソース提供ポリシー 
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
@@ -19,6 +25,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |CPU	| プロジェクトごと |100vCore| O | |
 |メモリ	 | プロジェクトごと |262,144MB| O | |
 
+
+<a id="resource-provision-policy-for-block-storage-service"></a>
 
 ### Block Storageリソース提供ポリシー 
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
@@ -32,12 +40,16 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |Block Storage Encrypted SSD Type 最大サイズ| ブロックストレージ毎 |2048GB| O | |
 |Snapshot| ブロックストレージ毎 |3個| X | |
 
+<a id="resource-provision-policy-for-floating-ip-service"></a>
+
 ### Floating IPリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
 |Floating IP | プロジェクトごと |50個| O | |
+
+<a id="resource-provision-policy-for-vpc-service"></a>
 
 ### VPCリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
@@ -47,6 +59,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |VPC | プロジェクトごと |3個| O | |
 
 
+<a id="resource-provision-policy-for-subnet-service"></a>
+
 ### Subnetリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
@@ -55,6 +69,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |サブネット | VPCごと |10個| O | |
 |静的ルート | サブネットごと | 20個 | O | |
 
+
+<a id="resource-provision-policy-for-routing-service"></a>
 
 ### Routingリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
@@ -66,6 +82,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 
 
 
+<a id="resource-provision-policy-for-peering-gateway-service"></a>
+
 ### Peering Gatewayリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
@@ -76,6 +94,14 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |ピアリング 許可 対象 | プロジェクトごと |10個 | O | | 
 
 
+<a id="resource-provision-policy-for-internet-gateway-service"></a>
+
+### Internet Gatewayサービスリソース提供ポリシー
+
+<!-- TODO: translate body -->
+
+<a id="resource-provision-policy-for-nat-gateway-service"></a>
+
 ### NAT Gatewayリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
@@ -84,6 +110,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |NATゲートウェイ | プロジェクトごと | 3個 | O | | 
 
 
+
+<a id="resource-provision-policy-for-vpn-gatewaysite-to-site-vpn-service"></a>
 
 ### VPN Gateway(Site-to-Site VPN)リソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
@@ -95,6 +123,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 
 
 
+<a id="resource-provision-policy-for-service-gateway-service"></a>
+
 ### Service Gatewayリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
@@ -103,6 +133,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |サービスゲートウェイ | プロジェクトごと | 10個 | O | | 
 
 
+
+<a id="resource-provision-policy-for-traffic-mirroring-service"></a>
 
 ### Traffic Mirroringリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
@@ -113,6 +145,8 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 |トラフィックミラーリングフィルタグループ | プロジェクトごと | 10個 | O | | 
 
 
+<a id="resource-provision-policy-for-network-interface-service"></a>
+
 ### Network Interfaceリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 Network Interface コンソールには、ユーザープロジェクト以外のリソースも表示される場合がありますが、それらのリソースは提供量には含まれません。
@@ -121,6 +155,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 |----|----|----|----|----|
 | Network Interface | プロジェクトごと | 500個 | O | | 
 
+
+<a id="resource-provision-policy-for-network-acl-service"></a>
 
 ### Network ACLリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
@@ -132,6 +168,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | Network ACLバインディング | プロジェクトごと | 100個 | O | | 
 
 
+
+<a id="resource-provision-policy-for-load-balancer-service"></a>
 
 ### Load Balancerリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
@@ -147,6 +185,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 |L7 ルール | L7ポリシー毎 |10個| O | |
 |SSL ポリシー| プロジェクトごと |10個| O | |
 
+<a id="resource-provision-policy-for-load-balancerdsr-service"></a>
+
 ### Load Balancer(DSR)リソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
@@ -156,6 +196,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 |Load Balancer(DSR) Member| Load Balancer(DSR) ごと |30個| O | |
 
 
+
+<a id="resource-provision-policy-for-nas-service"></a>
 
 ### NASリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
@@ -167,6 +209,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | NAS ボリューム 最大サイズ | NAS ボリュームごと | 10,000 GB | O | |
 | NAS ボリューム サブネット | プロジェクトごと | 3個 | O | |
 
+<a id="resource-provision-policy-for-nas-for-bigdata-service"></a>
+
 ### NAS for BigDataリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
@@ -176,6 +220,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | NAS for BigData ボリューム サイズ | プロジェクトごと | 500,000 GB | O | |
 | NAS for BigData ボリューム 最大サイズ | NAS ボリュームごと  | 50,000 GB | O | |
 
+<a id="resource-provision-policy-for-storage-gateway-service"></a>
+
 ### Storage Gatewayリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
@@ -183,6 +229,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 |----|----|----|----|----|
 | ストレージゲートウェイ | プロジェクトごと| 3個 | X | |
 | 共有 | ゲートウェイ毎 | 10個 | X | |
+
+<a id="resource-provision-policy-for-transit-hub-service"></a>
 
 ### Transit Hubリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
@@ -197,6 +245,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | トランジットハブマルチキャストドメイン | プロジェクトごと | 20個 | O | |
 | トランジットハブマルチキャストグループ | プロジェクトごと | 100個 | O | |
 
+<a id="resource-provision-policy-for-private-dns-service"></a>
+
 ### Private DNSリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとにそれぞれのリソース使用量制限ポリシーが適用されます。
 
@@ -204,6 +254,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 |----|----|----|----|----|
 | Private DNS Zone | プロジェクトごと | 100個 | O | |
 | Private DNS レコードセット | プロジェクトごと | 500個 | O | |
+
+<a id="resource-provision-policy-for-nhn-kubernetes-service-nks"></a>
 
 ### NHN Kubernetes Service(NKS)リソース提供ポリシー 
 リソース使用量はプロジェクトごとに計算され、リージョンごとにポリシーが適用されます。
@@ -213,6 +265,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 |クラスター	| プロジェクトごと |3個| O | |
 |ワーカーノードグループ	 | クラスターごと |3個(基本ワーカーノードグループを含む)| O | |
 |ワーカーノード数	 | ワーカーノードグループ毎 |10個| O | |
+
+<a id="resource-provision-policy-for-nhn-container-registryncr"></a>
 
 ### NHN Container Registry(NCR)リソース提供ポリシー 
 リソース使用量はプロジェクトごとに計算され、リージョンごとにポリシーが適用されます。
@@ -225,6 +279,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | タグ数 | アーティファクト毎 | 1000個 | O | |
 | 手動スキャン数 | イメージ毎1日 | 1個 | O | |
 
+
+<a id="resource-provision-policy-for-nhn-container-servicencs"></a>
 
 ### NHN Container Service(NCS)リソース提供ポリシー 
 リソース使用量はプロジェクトごとに計算され、リージョンごとにポリシーが適用されます。
@@ -243,13 +299,19 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | GPU | プロジェクトごと | 7Core | O | |
 
 
+<a id="resource-provision-policy-for-dns-plus-service"></a>
+
 ### DNS Plusサービスリソース提供ポリシー
 リソース使用量はリージョンの区別なくプロジェクトごとに計算されます。
+
+<a id="dns"></a>
 
 #### DNS
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
 |レコードセット	| DNS Zoneごと |5,000個| O | |
+
+<a id="gslb"></a>
 
 #### GSLB
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
@@ -262,6 +324,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 |ヘルスチェック	| プロジェクトごと | 5個 | O | |
 
 
+<a id="resource-provision-policy-for-rds-for-mysql"></a>
+
 ### RDS for MySQLサービスリソース提供ポリシー 
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
@@ -270,6 +334,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | DB Instance データストレージ | プロジェクトごと  | 10,240GB | O | | 
 | コピーを| DBインスタンスグループごと | 5個 | O | |
 
+<a id="resource-provision-policy-for-rds-for-postgresql"></a>
+
 ### RDS for PostgreSQLサービスリソース提供ポリシー 
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
@@ -277,6 +343,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | DB Instance メモリ | プロジェクトごと  | 262,144MB | O | |
 | DB Instance データストレージ | プロジェクトごと  | 10,240GB | O | | 
 | コピーを| DBインスタンスグループごと | 5個 | O | |
+
+<a id="resource-provision-policy-for-rds-for-mariadb"></a>
 
 ### RDS for MariaDBサービスリソース提供ポリシー
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
@@ -287,6 +355,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | コピーを| DBインスタンスグループごと | 5個 | O | |
 
 
+<a id="resource-provision-policy-for-rds-for-ms-sql"></a>
+
 ### RDS for MS-SQLサービスリソース提供ポリシー 
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
@@ -295,6 +365,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | DB Instance データストレージ| DB Instanceごと | 2,048GB | O | |
 | DB Instance データストレージ | プロジェクトごと  | 10,240GB | O | | 
 
+
+<a id="resource-provision-policy-for-network-firewall"></a>
 
 ### Network Firewallサービスリソース提供ポリシー
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
@@ -308,6 +380,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | ゲートウェイ数 | プロジェクトごと | 10個 | X | |
 | トンネル数 | プロジェクトごと | 20個 | X | |
 
+
+<a id="resource-provision-policy-for-cloud-access"></a>
 
 ### Cloud Access サービスリソース提供ポリシー
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
@@ -328,6 +402,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | ユーザーログ件数 | プロジェクト毎 | 200,000個 | X | |
 
 
+<a id="resource-provision-policy-for-notification-hub"></a>
+
 ### Notification Hub サービスリソース提供ポリシー
 
 SMSサービスとNotification HubサービスのSMS送信件数が合算されて計算されます。
@@ -338,15 +414,21 @@ KakaoTalk BizmessageサービスとNotification Hubサービスのお知らせ�
 | SMS 送信件数 | 組織ごと  | 5,000件 | O | |
 | お知らせトーク送信件数 |  KakaoTalk Channel 1日毎 | 1,000件 | O | |
 
+<a id="resource-provision-policy-for-sms"></a>
+
 ### SMSサービスリソース提供ポリシー
 | リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
 | 送信件数 | 組織ごと  | 5,000件 | O | |
 
+<a id="resource-provision-policy-for-kakaotalk-bizmessage-service"></a>
+
 ### KakaoTalk Bizmessageサービスリソース提供ポリシー
 | リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
 | お知らせトーク送信件数 |  KakaoTalk Channel 1日毎 | 1,000件 | O | |
+
+<a id="resource-provision-policy-for-face-recognition-service"></a>
 
 ### Face Recognitionサービスリソース提供ポリシー
 | リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
@@ -354,12 +436,16 @@ KakaoTalk BizmessageサービスとNotification Hubサービスのお知らせ�
 | グループ数 |  Face Recognitionサービスごと | 5件 | O | |
 | グループ 内の顔登録数 |  Face Recognitionサービスグループごと | 100,000件 | O | |
 
+<a id="resource-provision-policy-for-ocr"></a>
+
 ### OCRサービスリソース提供ポリシー
 リソース使用量はリージョンの区別なくプロジェクトごとに計算されます。
 
 | リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
 | 身分証分析リクエスト件数 | OCRサービス毎 | 100,000件 | X | |
+
+<a id="resource-provision-policy-for-api-gateway-service"></a>
 
 ### API Gatewayサービスリソース提供ポリシー 
 リソース使用量はプロジェクトごとに計算され、リージョンごとに区分してポリシーが適用されます。
@@ -370,6 +456,8 @@ KakaoTalk BizmessageサービスとNotification Hubサービスのお知らせ�
 | ステージ | API Gatewayサービス毎 | 10個 | O | |
 | リソースメソッド | API Gatewayサービス毎 | 100個 | O | 300個 |
 
+<a id="resource-provision-policy-for-log-crash-search-service"></a>
+
 ### Log & Crash Search サービスリソース提供ポリシー
 リソース使用量はリージョンの区別なくプロジェクトごとに計算されます。
 
@@ -377,6 +465,8 @@ KakaoTalk BizmessageサービスとNotification Hubサービスのお知らせ�
 |----|----|----|----|----|
 | ログ(一般ログ、クラッシュログ) 送信数 | 1日 | 20,000,000 件 | O | |
 | ログ(一般ログ、クラッシュログ) 容量 | 1件 | 8MB | X | |
+
+<a id="resource-provision-policy-for-dataflow-service"></a>
 
 ### DataFlow サービスリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとに区分してポリシーが適用されます。
@@ -386,6 +476,8 @@ KakaoTalk BizmessageサービスとNotification Hubサービスのお知らせ�
 | CPU | プロジェクト当たり | 10vCore | O | |
 | メモリ | プロジェクト当たり | 20GB | O | |
 
+<a id="resource-provision-policy-for-easyqueue-service"></a>
+
 ### EasyQueue サービスリソース提供ポリシー
 リソース使用量はプロジェクトごとに計算され、リージョンごとに区分してポリシーが適用されます。
 
@@ -394,6 +486,8 @@ KakaoTalk BizmessageサービスとNotification Hubサービスのお知らせ�
 | トピック数 | プロジェクトごと | 10個 | X | |
 | パーティション数 | プロジェクトごと | 64個 | X | |
 | パーティション数 | トピックごと | 16個 | X | |
+
+<a id="request-for-capacity-adjustment"></a>
 
 ### リソース提供量調整の申請
 ※　2020年4月以降、個人のお客様に対しての提供量調整はFloating IPのみ受け付けております。
