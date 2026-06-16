@@ -1,10 +1,16 @@
+<!-- pre-align:aligned sig=62278382e522 -->
+
 ## NHN Cloud > Security Policy 
 
 NHN Cloud guides for security products, security policy, and vulnerability information, to provide safer security environment.
 Security policy is provided as below, to protect customer's resources from new and various types of attacks and security vulnerabilities, and prepare against frequent accidents and threats in the cloud.
 
+<a id="password-policy"></a>
+
 ## Password Policy 
 To set passwords for user accounts (both root and general accounts), general passwords that are easy to guess may be cracked by unauthorized users and obtain role for general or root accounts and access systems. As this may result in the leakage of important data saved in the server or abused as hackers' stop, a safe password must be set and managed. .
+
+<a id="safe-passwords"></a>
 
 ### Safe Passwords
 Must be comprised of 8 or more characters, in combination of alphabets, numbers, and special characters. Following passwords should be avoided as they are easy to guess: 
@@ -16,20 +22,28 @@ Must be comprised of 8 or more characters, in combination of alphabets, numbers,
 - Periodic reuses 
 - Composed of phone number, birthday, account name, or host name, which are easy to guess 
 
+<a id="nhn-cloud-password-policy"></a>
+
 ### NHN Cloud Password Policy 
 To protect customer's resources and services, NHN Cloud applies the following as the basic password policy.
 
 - Combined with three types: Alphabets, Numbers, and Special Characters
 - Has more than 8 characters
 
+<a id="anti-drdos-policy"></a>
+
 ## Anti-DRDoS Policy
 Instances exposed to external networks may be abused as stops for Distributed Reflection Denial of Service, or DRDoS attacks, causing service failure or unintentional traffic charges due to abnormal increase in outbound traffic. 
+
+<a id="what-is-drdos-distributed-reflection-denial-of-service"></a>
 
 ### What is DRDoS (Distributed Reflection Denial of Service)?
 DRDoS occurs due to vulnerable settings of applications, such as DNS, NTP, SSDP, or Memcached. This bandwidth amplifying attack technique is widely used for recent hackings, as it creates a large response packet with small request packets by using a number of zombie computers, and causes traffic to be concentrated at a target server.
 
-### Anti-NHN Cloud DRDoS Port Policy
+**Anti-NHN Cloud DRDoS Port Policy**
 To protect customer's resources and services, NHN Cloud blocks UDP ports which are frequently abused as stops for DRDoS attacks..
+
+<a id="list-of-blocked-ports"></a>
 
 ### List of Blocked Ports
 |Service Name |  Blocked Port  | Blocking Method |Reference|
@@ -39,13 +53,19 @@ To protect customer's resources and services, NHN Cloud blocks UDP ports which a
 |Memcached   | UDP / 11211 | Network ACL | Inaccessible from outside |
 
 
+<a id="internet-port-blocking-policy-inbound"></a>
+
 ## Internet Port Blocking Policy (Inbound) 
 To protect customer service, the block-intrusion system is provided as well as security group which is managed under the control of customers.
+
+<a id="nhn-cloud-list-of-blocked-ports"></a>
 
 ### NHN Cloud List of Blocked Ports 
 |Region | Service Name | Blocked Port | Blocking Method | Remarks |
 | ---- | ---- | ---- | ---- | ---- |
 | Korea (Pangyo/Pyeongchon/Gwangju) <br> Japan (Tokyo) | System Terminal Port | TCP/23 | Blocked by network ACLs | Externally inaccessible |
+
+<a id="nhn-cloudcloud-for-public-agencies-list-of-blocked-ports"></a>
 
 ### NHN Cloud(Cloud for public agencies) List of Blocked Ports
 |Service Name | Blocked Port | Blocking Method | Remarks|
@@ -54,6 +74,8 @@ To protect customer service, the block-intrusion system is provided as well as s
 | DBMS Port | TCP, UDP/1433(MS-SQL), 1521(Oracle), 3306(MySQL)  | Blocked by network ACLs | Externally inaccessible|
 | Netbios Port | TCP, UDP/135, 137, 138, 139, 445 | Blocked by network ACLs | Externally inaccessible |
 | Etc. | TCP/21(FTP), TCP / 5900(VNC) | Blocked by network ACLs | Externally inaccessible |
+
+<a id="how-to-apply-for-more-ports"></a>
 
 ### How to Apply for More Ports
 - Download the excel file below and fill in the form.
