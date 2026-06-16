@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=d85731c000d8 -->
+
 # User Access Key
 
 **NHN Cloud > Public API使用ガイド > API認証方式 > User Access Key**
@@ -34,6 +36,8 @@ NHN Cloudが提供するAPIを使用するには、User Access Keyを発行す�
     * User Access Keyは、NHN CloudアカウントとIAMアカウントごとにそれぞれ5個まで発行できます。
     * User Access Key IDは90日ごとに変更することを推奨します。
 
+
+<a id="making-api-calls"></a>
 
 ## APIの呼び出し
 User Access KeyはHTTPリクエストヘッダに含めて送信します。API呼び出し時、以下の例のようにヘッダにUser Access Keyを設定して呼び出してください。
