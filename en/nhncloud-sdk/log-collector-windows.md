@@ -1,10 +1,16 @@
+<!-- pre-align:aligned sig=e0af4daa264a -->
+
 ## NHN Cloud > SDK User Guide > Log & Crash > Windows C++
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
 1. [Install NHN Cloud SDK](./getting-started-windows)
 2. [Enable Log & Crash Search](/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/) in [NHN Cloud console](https://console.nhncloud.com).
 3. [Check AppKey](/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/console-guide/#check-appkey) in Log & Crash Search.
+
+<a id="initialize-nhn-cloud-logger-sdk"></a>
 
 ## Initialize NHN Cloud Logger SDK
 
@@ -41,6 +47,8 @@ if (!g_nhncloud_lnc->initialize(loggerConf))
 
 ```
 
+<a id="set-userid"></a>
+
 ## Set UserID
 
 User ID can be set for NHN Cloud SDK.
@@ -58,9 +66,13 @@ Set User ID is sent to server, along with logs, every time Log Sending API is ca
 * getUserId
     * Get user ID of current setting.
 
+<a id="send-logs"></a>
+
 ## Send Logs
 
 NHN Cloud Logger provides log sending functions of five levels.
+
+<a id="send-logs-2"></a>
 
 ### Send Logs
 * Send logs of DEBUG, INFO, WARN, ERROR, FATAL levels explicitly
@@ -78,7 +90,11 @@ void fatal(const wchar_t* message, NHNCloudLoggerUserFields* userFields = NULL);
 void log(NHNCLOUD_LOGGER_LEVEL logLevel, const char* message, NHNCloudLoggerUserFields* userFields = nullptr);
 ```
 
+<a id="add-user-defined-fields"></a>
+
 ## Add User-Defined Fields
+<a id="method-1-use-the-nhncloudlogger-instance-api"></a>
+
 ### Method 1: Use the NHNCloudLogger instance API
 
 * A user-defined field that is managed directly by the NHNCloudLogger instance.
@@ -94,6 +110,8 @@ g_nhncloud_lnc->removeUserField("nickname");
 g_nhncloud_lnc->cleareUserField();
 
 ```
+
+<a id="method-2-use-the-nhncloudloggeruserfields-class"></a>
 
 ### Method 2 : Use the NHNCloudLoggerUserFields class
 
@@ -112,6 +130,8 @@ pUserFieldHelper->clear(); // Delete all user-defined fields configured above.
 
 *  User-defined field is same as the value exposed as "Selected Field" in "Log & Crash Search Console" > "Log Search Tab".
 
+<a id="restrictions-for-user-defined-fields"></a>
+
 #### Restrictions for User-Defined Fields
 
 * Cannot use already [Reserved Fields](./log-collector-reserved-fields).
@@ -119,9 +139,13 @@ pUserFieldHelper->clear(); // Delete all user-defined fields configured above.
 * Replace spaces within a field name by "_".
 
 
+<a id="collect-crash-logs"></a>
+
 ## Collect Crash Logs
 * When a crash occurs, the default behavior is to send a crash dump from the executable file including the SDK.
 * When a crash occurs, you can expose an error screen to the user and collect additional information.
+
+<a id="crash-log-collection-and-configuration"></a>
 
 ### Crash Log Collection and Configuration
 
@@ -168,6 +192,8 @@ if (!g_nhncloud_lnc->initialize(loggerConf))
 
 ```
 
+<a id="test-sending-crash-logs"></a>
+
 ###  Test Sending Crash Logs
 
 * To test on crash logs sending, an exception must occur.
@@ -183,9 +209,13 @@ void CsampleDlg::OnBnClickedCrash()
 }
 ```
 
+<a id="interpret-crash-logs"></a>
+
 ### Interpret Crash Logs
 
 To interpret crashes occurred in NHN Cloud Windows SDK, a symbol file must be created and uploaded to a web console.
+
+<a id="create-symbol-files"></a>
 
 #### Create Symbol Files
 
