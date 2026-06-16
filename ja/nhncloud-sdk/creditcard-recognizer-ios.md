@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=5686df8dc3c5 -->
+
 ## NHN Cloud > SDK User Guide >OCR > Credit Card (iOS)
+
+<a id="prerequisites"></a>
 
 ## 事前準備
 
@@ -8,9 +12,13 @@
 
 <br>
 
+<a id="supported-environment"></a>
+
 ## サポート環境
 
 NHN Cloud OCRはiOS 11.0以上で動作します。<br>
+
+<a id="configuration-of-nhn-cloud-ocr"></a>
 
 ## NHN Cloud OCR構成
 
@@ -22,7 +30,11 @@ iOS用NHN Cloud OCR SDKの構成は次のとおりです。
 | Mandatory   | NHNCloudCore<br/>NHNCloudCommon | NHNCloudCore.framework<br/>NHNCloudCommon.framework | | OTHER_LDFLAGS = (<br/>    "-ObjC",<br/>    "-lc++" <br/>); |
 
 
+<a id="apply-nhn-cloud-ocr-sdk-to-xcode-project"></a>
+
 ## NHN Cloud OCR SDKをXcodeプロジェクトに適用
+
+<a id="apply-with-cococapods"></a>
 
 ### 1. Cococapodsを利用した適用
 
@@ -37,6 +49,8 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
+<a id="apply-nhn-cloud-sdk-using-swift-package-manager"></a>
+
 ### 2. Swift Package Managerを使用してNHN Cloud SDK適用
 
 * XCodeで**File > Add Packages...**メニューを選択します。
@@ -45,13 +59,19 @@ end
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
+<a id="set-up-project"></a>
+
 #### プロジェクト設定
 
 * **Build Settings**の **Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 
+<a id="download-binaries-and-apply-to-nhn-cloud-sdk"></a>
+
 ### 3. バイナリをダウンロードしてNHN Cloud SDK適用
+
+<a id="set-up-framework"></a>
 
 #### フレームワーク設定
 
@@ -62,11 +82,15 @@ end
 ![linked_avfoundation_frameworks](https://static.toastoven.net/toastcloud/sdk/ios/linked_avfoundation_frameworks.png)
 ![linked_frameworks_ocr](https://static.toastoven.net/toastcloud/sdk/ios/linked_frameworks_ocr.png)
 
+<a id="set-up-project-2"></a>
+
 #### プロジェクト設定
 
 * **Build Settings**の**Other Linker Flags**に**-lc++**と**-ObjC**項目を追加します。
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+<a id="initialize-nhncloudocr-sdk"></a>
 
 ## NHNCloudOCR SDK初期化
 * NHN Cloud Consoleで発行されたAppKeyとSecretをNHNCloudOCRConfigurationオブジェクトに設定します。
@@ -78,6 +102,8 @@ Key : NSCameraUsageDescription
 Value： [カメラ権限リクエストメッセージ]
 ```
 
+<a id="specification-for-initialization-api"></a>
+
 ### 初期化API仕様
 
 ``` objc
@@ -87,6 +113,8 @@ Value： [カメラ権限リクエストメッセージ]
 // Delegate設定
 + (void)setCreditCardRecognizerDelegate:(nullable id<NHNCloudCreditCardRecognizerDelegate>)delegate;
 ```
+
+<a id="specification-for-delegate-api"></a>
 
 ### Delegate API仕様
 * NHNCloudCreditCardRecognizerDelegateを登録すると、認識結果に対する通知を受け取ることができます。
@@ -113,9 +141,13 @@ Value： [カメラ権限リクエストメッセージ]
 @end
 ```
 
+<a id="set-up-detected-image-return"></a>
+
 ### 検出イメージリターン設定を行う
 * OCR結果であるNHNCloudCreditCardInfoデータに検出されたイメージを一緒に返すことができます。
     * デフォルト値は無効です。 
+<a id="specification-for-setting-up-detected-image-return-api"></a>
+
 #### 検出イメージリターン設定API仕様 
 ```objc
 @interface NHNCloudOCR : NSObject
@@ -126,7 +158,11 @@ Value： [カメラ権限リクエストメッセージ]
 @end
 ```
 
+<a id="display-recognition-area"></a>
+
 ### 認識領域を表示する
+
+<a id="return-recognition-area-api"></a>
 
 #### 認識領域返却API
 * OCR結果であるNHNCloudCreditCardInfoデータに認識された領域の座標情報を返すことができます。
@@ -143,6 +179,8 @@ Value： [カメラ権限リクエストメッセージ]
 @end
 
 ```
+
+<a id="draw-on-the-recognition-area-imageview"></a>
 
 #### 認識領域ImageViewに描画
 
@@ -200,6 +238,8 @@ Value： [カメラ権限リクエストメッセージ]
 }
 
 ```
+
+<a id="example-of-initialization-process"></a>
 
 ### 初期化プロセス例
 
@@ -265,17 +305,27 @@ Value： [カメラ権限リクエストメッセージ]
 @end
 ```
 
+<a id="how-to-apply-credit-card"></a>
+
 ## Credit Card適用方法
+
+<a id="nhncloudcreditcardrecognizerviewcontroller"></a>
 
 ### NHNCloudCreditCardRecognizerViewController
 
+<a id="use-credit-card-recognizer-viewcontroller"></a>
+
 #### 1. Credit-Card Recognizer ViewControllerを使用する
 * NHNCloudCreditCardRecognizerViewControllerを継承実装したClassをStoryboardのViewControllerに接続して基本UIが適用されたCredit-Card Recognizerを簡単に使用できます。
+
+<a id="create-class"></a>
 
 #### 2. Class作成
 ![default_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/default_viewcontroller.png)
 * NHNCloudCreditCardRecognizerViewControllerをsubclassに持つViewController Classを作成します。 
 
+
+<a id="connect-to-storyboard"></a>
 
 #### 3. Storyboardに接続
 ![create_viewcontroller](https://static.toastoven.net/toastcloud/sdk/ios/create_viewcontroller.png)
@@ -289,9 +339,13 @@ Value： [カメラ権限リクエストメッセージ]
 
 * Delegateを設定し、実装します。 
 
+<a id="customize-nhncloudcreditcardrecognizerserviceviewcontroller"></a>
+
 ### NHNCloudCreditCardRecognizerServiceViewControllerカスタマイズ
 * NHNCloudCreditCardRecognizerServiceViewControllerを使用してUIをカスタマイズできます。
   * **Credit-Cardガイドの場合、あらかじめ定義された値を使用するため、変更ができません。**
+
+<a id="inherit-nhncloudcreditcardrecognizerserviceviewcontroller"></a>
 
 #### 1. NHNCloudCreditCardRecognizerServiceViewController継承 
 * NHNCloudCreditCardRecognizerServiceViewControllerを継承実装してカスタマイズできます。
@@ -369,11 +423,15 @@ Value： [カメラ権限リクエストメッセージ]
 ```
 
 
+<a id="use-test-environment"></a>
+
 ### テスト環境を使用する
 * NHNCloudOCR SDKでテストのために提供するCredit-Cardガイドを使用してOCRをテストできます。
   * クレジットカードがCredit-Cardガイド内に存在する場合、OCRが始まります。
     * デフォルト値はhiddenで、目に見えないガイドが存在します。
     * `enableTestGuide`を使用してテスト用のガイドを出力できます。 
+
+<a id="specification-for-credit-card-guide"></a>
 
 #### Credit-CardガイドAPI仕様
 ```objc
@@ -381,6 +439,8 @@ Value： [カメラ権限リクエストメッセージ]
 - (void)enableTestGuide;
 @end
 ```
+<a id="example-of-using-credit-card-guide"></a>
+
 #### Credit-Cardガイドの使用例
 
 ```objc
@@ -396,12 +456,18 @@ Value： [カメラ権限リクエストメッセージ]
 }
 ```
 
+<a id="control-credit-card-recognizer-viewcontroller"></a>
+
 ## Credit-Card Recognizer ViewControllerを制御する
 
 > `Credit Card適用方法`を見てNHNCloudCreditCardRecognizerViewControllerまたはNHNCloudCreditCardRecognizerServiceViewController継承実装必要
 
+<a id="credit-card-recognizer-startstop"></a>
+
 ### 1. Credit-Card Recognizerの開始/停止
 * Credit-Card Recognizerを開始または停止します。
+
+<a id="specification-for-start-or-stop-credit-card-recognizer"></a>
 
 #### Credit-Card Recognizer開始/停止API仕様
 ```objc
@@ -409,6 +475,8 @@ Value： [カメラ権限リクエストメッセージ]
 - (void)stopRunning;
 - (BOOL)isRunning;
 ```
+<a id="example-of-start-or-stop-credit-card-recognizer"></a>
+
 #### Credit-Card Recognizer開始/停止の使用例
 ```objc
 - (void)start {
@@ -421,8 +489,12 @@ Value： [カメラ権限リクエストメッセージ]
 }
 ```
 
+<a id="rotate-credit-card-guide"></a>
+
 ### 2. Credit-Cardガイドの回転
 * クレジットカードの方向に合うようにCredit-Cardガイドを回転させることができます。
+
+<a id="specification-for-rotate-credit-card-guide"></a>
 
 #### Credit-Cardガイド回転API仕様
 ```objc
@@ -430,6 +502,8 @@ Value： [カメラ権限リクエストメッセージ]
 @property (assign, nonatomic, readonly) NHNCloudCreditCardOrientation creditCardGuideOrientation;
 - (void)rotateCreditCardGuideOrientation;
 ```
+<a id="example-of-using-rotate-credit-card-guide"></a>
+
 #### Credit-Cardガイド回転の使用例
 ```objc
 typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
@@ -452,8 +526,12 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 
 ```
 
+<a id="light-enabledisable"></a>
+
 ### 3. フラッシュ有効/無効
 * デバイスのカメラフラッシュを有効または無効にします。
+
+<a id="specification-for-enabledisable-light-api"></a>
 
 #### フラッシュ有効/無効API仕様
 ```objc
@@ -461,6 +539,8 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 - (void)disableTorchMode;
 - (BOOL)isEnableTorchMode;
 ```
+<a id="example-of-enable-or-disable-the-camera-light-of-a-device"></a>
+
 #### フラッシュ有効/無効の使用例
 ```objc
 - (void)torchButtonAction:(UIButton *)button {    
@@ -474,8 +554,12 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 ```
 
 
+<a id="enabledisable-camera"></a>
+
 ### 4. カメラ有効/無効
 * デバイスのカメラを有効または無効にします。
+
+<a id="specification-for-enabledisable-camera"></a>
 
 #### カメラ有効/無効API仕様
 ```objc
@@ -483,6 +567,8 @@ typedef NS_ENUM(NSInteger, NHNCloudCreditCardOrientation) {
 - (void)stopRunningCamera;
 - (BOOL)isRunnginCamera;
 ```
+<a id="example-of-enabledisable-camera"></a>
+
 #### カメラ有効/無効使用例
 ```objc
 - (void)cameraButtonAction:(UIButton *)button {    
