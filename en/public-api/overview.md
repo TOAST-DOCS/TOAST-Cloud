@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=49cdd69ef3b0 -->
+
 # Public API Overview
 
 **NHN Cloud > Public API User Guide > Public API Overview**
@@ -19,6 +21,8 @@ This document provides a comprehensive overview of NHN Cloud Public API usage, i
 * [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/)
 * [Partner Management API Guide](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/)
 * [Release Notes](https://docs.nhncloud.com/en/nhncloud/en/public-api/release-notes/)
+
+<a id="glossary"></a>
 
 ## Glossary
 
