@@ -1,6 +1,9 @@
+<!-- pre-align:aligned sig=f1f5ab11e097 -->
 
 ## NHN Cloud > 아키텍처 아이콘
 NHN Cloud는 고객이 아키텍처 다이어그램을 작성하는 데 활용할 수 있도록 아키텍처 아이콘을 제공합니다.
+
+<a id="download-architecture-icon"></a>
 
 ### 아키텍처 아이콘 다운로드
 
