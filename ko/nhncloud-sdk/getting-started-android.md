@@ -1,8 +1,14 @@
+<!-- pre-align:aligned sig=48d2b659f224 -->
+
 ## NHN Cloud > SDK 사용 가이드 > 시작하기 > Android
+
+<a id="supported-environment"></a>
 
 ## 지원 환경
 
 * Android 5.1(API 22) 이상
+
+<a id="nhn-cloud-sdk-components"></a>
 
 ## NHN Cloud SDK의 구성
 
@@ -39,7 +45,11 @@ NHN Cloud SDK가 제공하는 서비스 중 원하는 기능을 선택해 적용
 | com.nhncloud.android:nhncloud-push-fcm:1.12.0    | Push <br>Firebase Cloud Messaging |
 | com.nhncloud.android:nhncloud-creditcard-recognizer:1.12.0    | Credit Card Recognizer |
 
+<a id="apply-nhn-cloud-sdk-to-android-studio-projects"></a>
+
 ## NHN Cloud SDK를 Android Studio 프로젝트에 적용
+
+<a id="build-android-with-gradle"></a>
 
 ### 1. Gradle을 사용하여 Android 빌드
 
@@ -63,15 +73,21 @@ NHN Cloud SDK가 제공하는 상품별 설정 방법은 다음과 같습니다.
 - [Push 라이브러리 설정](./push-android/#_2)
 - [Credit Card Recognizer 라이브러리 설정](./creditcard-recognizer-android/#_1)
 
+<a id="build-android-with-aar"></a>
+
 ### 2. AAR을 사용하여 Android 빌드
 
 Android SDK는 [Downloads](../../../Download/#toast-sdk) 페이지에서 다운로드할 수 있습니다.
+
+<a id="set-user-id"></a>
 
 ## UserID 설정
 
 NHN Cloud SDK에 UserID를 설정할 수 있습니다.
 설정한 UserID는 NHN Cloud SDK의 각 모듈에서 공통으로 사용됩니다.
 NhnCloudLogger의 로그 전송 API를 호출할 때마다 설정한 UserID를 로그와 함께 서버로 전송합니다.
+
+<a id="specification-for-user-id-setting-api"></a>
 
 ### UserID 설정 API 명세
 
@@ -84,7 +100,11 @@ public static void setUserId(String userId);
 | -- | -- |
 | userId | String: 사용자 아이디.|
 
+<a id="example-of-user-id-setting"></a>
+
 ### UserID 설정 예
+
+<a id="login"></a>
 
 #### 로그인
 
@@ -93,6 +113,8 @@ public static void setUserId(String userId);
 NhnCloudSdk.setUserId(userId);
 ```
 
+<a id="logout"></a>
+
 #### 로그아웃
 
 ```java
@@ -100,10 +122,14 @@ NhnCloudSdk.setUserId(userId);
 NhnCloudSdk.setUserId(null);
 ```
 
+<a id="set-debug-mode"></a>
+
 ## 디버그 모드 설정
 
 NHN Cloud SDK의 내부 로그를 확인하려면 디버그 모드를 설정할 수 있습니다.
 NHN Cloud SDK와 관련해 문의하실 때는 디버그 모드를 활성화해서 전달해 주시면 빠르게 지원해드릴 수 있습니다.
+
+<a id="specification-for-debug-mode-setting-api"></a>
 
 ### 디버그 모드 설정 API 명세
 
@@ -116,7 +142,11 @@ public static void setDebugMode(boolean debug);
 | -- | -- |
 | debug | boolean: 디버그 모드를 활성화하려면 true, 아니면 false.|
 
+<a id="usage-example-of-debug-mode-setting"></a>
+
 ### 디버그 모드 설정 사용 예
+
+<a id="enable-debug-mode"></a>
 
 #### 디버그 모드 활성화
 
@@ -124,6 +154,8 @@ public static void setDebugMode(boolean debug);
 // Enable debug mode.
 NhnCloudSdk.setDebugMode(true);
 ```
+
+<a id="disable-debug-mode"></a>
 
 #### 디버그 모드 비활성화
 
@@ -133,6 +165,8 @@ NhnCloudSdk.setDebugMode(false);
 ```
 
 > [주의] 앱을 릴리스할 때는 반드시 디버그 모드를 비활성화해야 합니다.
+
+<a id="use-nhn-cloud-services"></a>
 
 ## NHN Cloud 서비스 사용
 
