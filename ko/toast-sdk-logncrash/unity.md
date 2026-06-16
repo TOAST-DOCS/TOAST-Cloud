@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=d42bc8cdc3b9 -->
+
 ## Analytics > Log & Crash Search > TOAST SDK 사용 가이드 > Unity
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
@@ -6,13 +10,19 @@
 
 2. Log & Crash Search에서 [AppKey를 확인](https://docs.toast.com/ko/Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)합니다.
 
+<a id="component-sdks"></a>
+
 ## Component SDKs
 
 
 
+<a id="getting-started-unity-sdk"></a>
+
 ## Getting Started Unity SDK
 
 
+
+<a id="add-toast-sdk-to-your-project"></a>
 
 ### Add TOAST SDK to Your Project
 
@@ -30,6 +40,8 @@
 다운로드 받은 "toast-unity-sdk.unitypackage"를 더블 클릭하여 프로젝트에 포함합니다.
 
 ![import_unitypackage](http://static.toastoven.net/toastcloud/sdk/unity/unity_setup_import_unitypackage.png)
+
+<a id="initialize-toast-sdk"></a>
 
 ### Initialize TOAST SDK
 
@@ -51,7 +63,11 @@
 
 
 
+<a id="log-collector"></a>
+
 ## Log Collector
+
+<a id="initialize"></a>
 
 ### Initialize
 
@@ -65,6 +81,8 @@ configuration.setProjectVersion (YOUR_PROJECT_VERSION);
 
 ToastLogger.initialize (configuration);
 ```
+
+<a id="send-log"></a>
 
 ### Send Log
 
@@ -87,6 +105,8 @@ ToastLogger.error(tag, message);
 ToastLogger.fatal(tag, message);
 ```
 
+<a id="set-userid"></a>
+
 ### Set UserID
 
 사용자 아이디를 설정합니다.
@@ -95,6 +115,8 @@ ToastLogger.fatal(tag, message);
 ```cs
 ToastLogger.setUserId(userId);
 ```
+
+<a id="set-user-field"></a>
 
 ### Set User Field
 
@@ -108,7 +130,11 @@ ToastLogger.setUserField("UserField", "UserValue");
 > 필드명은 "A-Z, a-z"로 시작하고 "A-Z, a-z, 0-9, -, _" 문자를 사용할 수 있습니다.
 > 필드명 내에 공백은 "\_" 로 치환됩니다.
 
+<a id="crash-reporter"></a>
+
 ## Crash Reporter
+
+<a id="initialize-2"></a>
 
 ### Initialize
 
@@ -118,6 +144,8 @@ ToastCrash를 초기화합니다.
 // Initialize Crash
 ToastCrash.initialize();
 ```
+
+<a id="send-handled-exception"></a>
 
 ### Send Handled Exception
 
@@ -140,6 +168,8 @@ ToastCrash.error(tag, message, stackTrace);
 ToastCrash.fatal(tag, message, stackTrace);
 ```
 
+<a id="use"></a>
+
 #### Using
 
 ```cs
@@ -149,6 +179,8 @@ try {
     ToastCrash.fatal(TAG, "Handled Exception", stackTrace);
 }
 ```
+
+<a id="log-collection-via-applicationregisterlogcallback"></a>
 
 #### Application.RegisterLogCallback을 통한 로그 수집
 
@@ -191,6 +223,8 @@ public class ExampleClass : MonoBehaviour {
 
 }
 ```
+
+<a id="set-user-field-2"></a>
 
 ### Set User Field
 
