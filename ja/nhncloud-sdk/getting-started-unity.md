@@ -1,15 +1,11 @@
 ## NHN Cloud > SDK使用ガイド > 開始するUnity
 
-<a id="supported-environment"></a>
-
 ## サポート環境
 
 * Unity 5.5.0以上
 * Android 4.0.3以上
 * iOS 8.0以上
 * XCode最新バージョン(バージョン9以上)
-
-<a id="nhn-cloud-sdk-components"></a>
 
 ## NHN Cloud SDKの構成
 
@@ -26,8 +22,6 @@ NHN Cloud SDKが提供するサービスの中から、希望する機能を選�
 | TOAST-IAP-UnityPlugin.unitypackage | IAP |
 | TOAST-Sample-UnityPlugin.unitypackage | Sample |
 
-<a id="structure-of-unity-package"></a>
-
 ### Unity package構造
 
 Unity用NHN Cloud SDKは、次のようなフォルダ構造になっています。
@@ -40,19 +34,13 @@ Unity用NHN Cloud SDKは、次のようなフォルダ構造になっていま�
 | Toast/IAP | IAPモジュールフォルダ | IAP, Sample |
 | Toast/Sample | SDKサンプルフォルダ | Sample |
 
-<a id="apply-nhn-cloud-sdk-to-unity-projects"></a>
-
 ## NHN Cloud SDKをUnityプロジェクトに適用
 
 NHN Cloudの[Download](../../../Download/#toast-sdk)ページでNHN Cloud SDK Unityをダウンロードします。
 
-<a id="import-unity-package"></a>
-
 ### Unity packageのインポート
 
 ダウンロードしたUnity Packageをダブルクリックしてプロジェクトに含めます。
-
-<a id="run-the-sample"></a>
 
 ### Sample実行
 
@@ -66,20 +54,14 @@ Unity用NHN Cloud SDKは、別途のSample Unity Packageがあります。Sample
 > (注意) Unity SDKは現在Android、iOSのみをサポートします。
 > Unity Editorでは正常に動作しません。 (サポート予定)
 
-**設定**
+## 設定
 
-<a id="android-build-setup"></a>
-
-## Android
-
-<a id="unity-play-services-resolver"></a>
+### Android
 
 ### Unity Play Services Resolver  
 
 * NHN Cloud SDK Unity(0.19.0～)バージョンはUnity Play Services Resolverライブラリと一緒に配布されます。  
 * このライブラリはAndroid関連ライブラリ(例：AAR)の依存関係を自動的に解決してUnityプロジェクトにコピーされます。  
-
-<a id="using-gradle-build-settings"></a>
 
 #### Gradleビルド設定を使用する場合
 
@@ -89,8 +71,6 @@ Unity用NHN Cloud SDKは、別途のSample Unity Packageがあります。Sample
 	2. 設定で"Enable Auto-Resolution"と"Enable Resolution On Build"オプションをオフにします。
 	3. Assets/Plugins/AndroidにあるAARファイルを削除します。
 
-<a id="using-the-provided-aar-libraries"></a>
-
 #### AARライブラリ提供
 
 * AARライブラリなどを圧縮ファイルで添付して提供しています。
@@ -99,21 +79,15 @@ Unity用NHN Cloud SDKは、別途のSample Unity Packageがあります。Sample
 	2. 設定で"Enable Auto-Resolution"と"Enable Resolution On Build"オプションをオフにします。
 	3. Assets/Plugins/AndroidにあるAARファイルを削除します。
 
-<a id="gradle-build-setup"></a>
-
 ### Gradle Build設定
 
 * NHN Cloud SDKは、Androidビルド時にGradleビルドを使用します。
-
-<a id="how-to-set-up-gradle-build"></a>
 
 #### Gradleビルド設定方法
 1. **File > Build Settings > Android**を選択します。
 2. **Build System**を**Gradle (New)**に選択
 3. Build
     - Signing関連エラーが発生する場合、Development BuildオプションをOnにしてビルドを進行してください。
-
-<a id="create-a-gradle-template-file"></a>
 
 #### Gradle Templateファイル作成
 ##### 2017.2以上
@@ -126,8 +100,6 @@ Unity用NHN Cloud SDKは、別途のSample Unity Packageがあります。Sample
 
 > Windows： (Unityインストールフォルダ)\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates
 > macOS： (Unityインストールフォルダ)/PlaybackEngines/AndroidPlayer/Tools/GradleTemplates
-
-<a id="set-up-maintemplategradle"></a>
 
 #### mainTemplate.gradle設定
 - mainTemplate.gradleにmavenCentralとGoogleリポジトリを追加します。
@@ -157,53 +129,21 @@ allprojects {
     - 特定UnityバージョンではAndroid Gradle Pluginをアップデートできないため、Android SDKがインストールされたフォルダのndk-bundleフォルダを削除すると問題が解決します。
     - IL2CPPビルドに必要なNDKは、Android SDKの下位ではなく、別途のフォルダで管理するとバージョン管理が容易です。
 
-<a id="proguard-setup"></a>
-
 ### Proguard設定
 - Android Unity Plugin 0.12.0以上のバージョンを使用する場合は、別途の設定が不要です。
     - Proguardを適用したい場合、 0.12.0以上にアップデートしてください。
 
 
-<a id="android-build-issue-faq"></a>
-
-### Androidビルド失敗FAQ
-
-<!-- TODO: translate body -->
-
-<a id="when-library-conflict-occurs"></a>
-
-#### ライブラリ競合発生時
-
-<!-- TODO: translate body -->
-
-##### support-annotationsバージョンが27.1.1以下の場合
-
-<!-- TODO: translate body -->
-
-##### support-annotationsバージョンが27.1.1超過の場合
-
-<!-- TODO: translate body -->
-
-<a id="ios-build-setup"></a>
-
-## iOS
-
-<a id="modify-xcode-build-settings"></a>
+### iOS
 
 ### Xcodeビルド設定修正
 * iOSでNHN Cloud SDKを使用するには、Xcodeで下記の設定を追加する必要があります。
 
-<a id="other-linker-flag-option"></a>
-
 #### Other Linker Flagオプション
 * Other Linker Flagオプションに**-ObjC**、**-lc++**を追加します。
 
-<a id="enable-bitcode-option"></a>
-
 #### Enable Bitcodeオプション
 * Enable Bitcodeオプションを**NO**に設定します。
-
-<a id="unity-play-services-resolver-2"></a>
 
 ### Unity Play Services Resolver  
 
@@ -215,16 +155,12 @@ allprojects {
 * Unity 5.6以上を使用する場合、必要なTOAST SDK native pluginを含むxcworkspaceが作成されます。標準xcodeプロジェクトの代わりに作成されたxcworkspaceを使用する必要があります。
 * 以前のバージョンのUnityを使用する時、依存関係が標準Xcodeプロジェクトに含まれます。
 
-<a id="using-the-provided-ios-framework"></a>
-
 #### iOS framework提供
 
 * iOS frameworkなどを圧縮ファイルで添付して提供しています。
 * 以下のようにオプションを削除して使用してください。
 	1. UnityエディタでAssets(アセット) > Play Services Resolver(Playサービスレゾルバ) > iOS Resolver(iOSレゾルバ) > Settings(セッティング)を選択します。
 	2. 設定ですべてのオプションをオフにします。
-
-<a id="initialize-nhn-cloud-sdk"></a>
 
 ## NHN Cloud SDK初期化
 
@@ -242,36 +178,26 @@ public class GameStartBehaviour : MonoBehaviour
 }
 ```
 
-<a id="set-user-id"></a>
-
 ## UserID設定
 
 NHN Cloud SDKにユーザーIDを設定できます。
 設定したUserIDは、NHN Cloud SDKの各モジュールで共通使用されます。
 ToastLoggerのログ送信APIを呼び出すたびに、設定したユーザーIDをログと一緒にサーバーに送信します。
 
-<a id="specification-for-user-id-setting-api"></a>
-
 ### UserID設定API仕様
 ```csharp
 ToastSdk.UserId = userId;
 ```
-
-<a id="usage-example-of-user-id-setting"></a>
 
 ### UserID設定使用例
 ```csharp
 ToastSdk.UserId = "TOAST";
 ```
 
-<a id="set-debug-mode"></a>
-
 ## デバッグモードを設定する
 
 NHN Cloud SDKの内部ログ確認するために、デバッグモードを設定できます。
 NHN Cloud SDKに関するお問い合わせの際は、デバッグモードを有効にしていただくと、迅速にサポートできます。
-
-<a id="specification-for-debug-mode-setting-api"></a>
 
 ### デバッグモード設定API仕様
 ```csharp
@@ -279,8 +205,6 @@ ToastSdk.DebugMode = true; // or false
 ```
 
 > (注意)ゲームをリリースする場合、必ずデバッグモードを無効にする必要があります。
-
-<a id="use-nhn-cloud-service"></a>
 
 ## NHN Cloud Serviceを使用する
 
