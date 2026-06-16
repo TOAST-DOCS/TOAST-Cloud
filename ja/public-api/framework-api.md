@@ -15,7 +15,7 @@
 
 ### 共通
 
-<a id="リクエスト"></a>
+<a id="요청"></a>
 
 #### リクエスト
 Public APIを呼び出す時、下記のRequest Headerを必ず含める必要があります。
@@ -25,7 +25,7 @@ Public APIを呼び出す時、下記のRequest Headerを必ず含める必要�
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Header |  x-nhn-authorization | String| Yes | ユーザーが発行されたBearerタイプトークン |
 
-<a id="요청"></a>
+<a id="응답"></a>
 
 #### レスポンス
 Public APIの返却時、下記のヘッダ部分がレスポンス本文に含まれます。
@@ -45,7 +45,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |   resultCode | Integer| No | 結果コード。成功した場合は0が返され、失敗した場合はエラーコードを返します。  |
 |   resultMessage | String| No | 結果メッセージ |
 
-<a id="응답"></a>
+<a id="common-type"></a>
 
 #### 共通タイプ
 <a id="共通-タイプ"></a>
@@ -62,6 +62,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | uuid | String | 36文字 | メンバーのUUID |
 
 
+<!-- pre-align: ko에 대응 섹션 없음 — 검토 필요 (ガバナンスIP ACL設定 has no corresponding ko heading under 共通; k3's subheadings are only k4/k5/k6) -->
 <a id="common-type"></a>
 
 #### ガバナンスIP ACL設定
@@ -3112,6 +3113,48 @@ IP ACL設定を照会するAPIです。
 |   blockMinutes | Integer| No | ログイン禁止時間 |
 
 <a id="조직-IAM-계정-비밀번호-정책-조회"></a>
+
+#### 組織IAMアカウントパスワードポリシー照会
+
+<!-- TODO: translate body -->
+
+##### 必要権限
+
+<!-- TODO: translate body -->
+
+##### リクエストパラメータ
+
+<!-- TODO: translate body -->
+
+##### レスポンス本文
+
+<!-- TODO: translate body -->
+
+##### レスポンス
+
+<!-- TODO: translate body -->
+
+###### Content
+
+<!-- TODO: translate body -->
+
+###### Value
+
+<!-- TODO: translate body -->
+
+###### PasswordConstraints
+
+<!-- TODO: translate body -->
+
+###### PasswordExpiry
+
+<!-- TODO: translate body -->
+
+###### LimitPasswordReuse
+
+<!-- TODO: translate body -->
+
+<a id="종량제에-등록된-서비스-가격-조회"></a>
 #### 従量制に登録された商品価格照会
 
 > POST "/v1/billing/contracts/basic/products/prices/search"
