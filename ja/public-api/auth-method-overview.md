@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=ec416b7f4d48 -->
+
 # 認証方式概要
 
 **NHN Cloud > Public API使用ガイド > API認証方式 > 認証方式概要**
