@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=6ff6816d660d -->
+
 ## NHN Cloud > SDK使用ガイド > IAP > Unity
+
+<a id="prerequisites"></a>
 
 ## Prerequisites
 
@@ -6,12 +10,18 @@
 2. [NHN Cloudコンソール](https://console.nhncloud.com)で[Mobile Service \> IAPを有効化](/Mobile%20Service/IAP/ja/console-guide/)します。
 3. IAPで[AppKeyを確認](/Mobile%20Service/IAP/ja/console-guide/#appkey)します。
 
+<a id="android-setup"></a>
+
 ## Android設定
+<a id="set-up-gradle-build"></a>
+
 ### Gradleビルド設定
 - Unity Editorで、Build Settingsウィンドウを開きます。 （Player Settings> Publishing Settings> Build）。
 - Build SystemリストからGradleを選択します。
 - Build Systemサブのチェックボックスを選択して、Custom Gradle Templateを使用します。
 - mainTemplate.gradleのdependencies項目に下記の内容を追加します。
+
+<a id="google-play-store"></a>
 
 #### Google Play Store
 
@@ -26,6 +36,8 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="one-store"></a>
+
 #### One Store
 
 ```groovy
@@ -37,6 +49,8 @@ dependencies {
   implementation 'com.nhncloud.android:nhncloud-iap-onestore:1.7.0'
 **DEPS**}
 ```
+
+<a id="galaxy-store"></a>
 
 #### Galaxy Store
 
@@ -50,6 +64,8 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="amazon-appstore"></a>
+
 #### Amazon Appstore
 
 ```groovy
@@ -61,6 +77,8 @@ dependencies {
   implementation 'com.nhncloud.android:nhncloud-iap-amazon:1.7.0'
 **DEPS**}
 ```
+
+<a id="huawei-app-gallery"></a>
 
 #### Huawei App Gallery
 
@@ -101,14 +119,22 @@ dependencies {
 **DEPS**}
 ```
 
+<a id="ios-setup"></a>
+
 ## iOS設定
+<a id="set-up-capabilities"></a>
+
 ### Capabilities設定
 - XCodeプロジェクトの設定でCapabilitiesタブを選択します。
 - In-App Purchase項目をONにします。
 
+<a id="add-a-required-framework"></a>
+
 ### 必須フレームワーク追加
 - iOSでIAP機能を使用するには、Storekit.frameworkが必要です。
 - XCodeプロジェクトの設定でStorekit.frameworkを追加してください。
+
+<a id="supported-stores-and-product-types"></a>
 
 ## サポートするストアおよび商品の種類
 
@@ -118,6 +144,8 @@ dependencies {
 | Android | One Store | 消費性商品 |
 | iOS | Apple App Store | 消費性商品、購読商品, 消費性購読商品 |
 
+<a id="nhn-cloud-iap-sdk-initialization"></a>
+
 ## NHN Cloud IAP SDK初期化
 [ToastIapConfiguration](./iap-unity/#toastiapconfiguration)を利用してNHN Cloud IAPコンソールで発行されたAppKeyとストアコード([StoreCode](./iap-unity/#storecode))を設定します。
 初期化と同時に購入結果を受け取れるPurchaseUpdateListenerを登録します。
@@ -126,12 +154,16 @@ dependencies {
 > NHN Cloud IAP SDKの初期化は、アプリ実行直後、最初の1回のみ行う必要があり、
 > ユーザーIDを設定(下記[サービスログイン](./iap-unity/#_4)項目参照)する前に行う必要があります。
 
+<a id="specification-for-initialization-api"></a>
+
 ### 初期化API仕様
 ```csharp
 public delegate void PurchaseUpdateListener(string transactionId, ToastResult result, IapPurchase purchase);
 
 public static void Initialize(ToastIapConfiguration configuration, PurchaseUpdateListener listener);
 ```
+
+<a id="example-of-initialization"></a>
 
 ### 初期化例
 
@@ -153,11 +185,15 @@ ToastIap.Initialize(new ToastIapConfiguration
 });
 ```
 
+<a id="service-login"></a>
+
 ## サービスログイン
 - NHN Cloud SDKで提供するすべてのサービス(IAP, Log & Crashなど)は、1つの同じユーザーIDを使用します。
     - ToastSdk.UserIdでユーザーIDを設定できます。
     - ユーザーIDを設定しない場合、決済が行われません。
 - サービスログイン段階でユーザーID設定、未消費決済履歴照会、有効になっている購読商品照会機能の実装を推奨します。
+
+<a id="login"></a>
 
 ### ログイン
 
@@ -165,6 +201,8 @@ ToastIap.Initialize(new ToastIapConfiguration
 // Login
 ToastSdk.UserId = "USER_ID";
 ```
+
+<a id="logout"></a>
 
 ### ログアウト
 
@@ -175,16 +213,22 @@ ToastSdk.UserId = null;
 
 > [参考]サービスログアウト時に、必ずユーザーIDをnullに設定してください。プロモーションコードが使われたり、決済再処理動作時に誤ったユーザーIDで購入が行われることを防止できます。
 
+<a id="query-product-list"></a>
+
 ## 商品リスト照会
 - IAPコンソールに登録された商品のうち、使用可能な商品リストを照会します。
     - IAPコンソールに登録された商品のうち、購入可能な商品は[ProductDetailsResult](./iap-unity/#productdetailsresult)のProductプロパティ([IapProduct](./iap-unity/#iapproduct))で返されます。
     - IAPコンソールに登録された商品のうち、ストアに登録されていない商品は[ProductDetailsResult](./iap-unity/#productdetailsresult) InvalidProductsプロパティ([IapProduct](./iap-unity/#iapproduct))で返されます。
+
+<a id="specification-for-product-list-query-api"></a>
 
 ### 商品リスト照会API仕様
 
 ```csharp
 public static void RequestProductDetails(ToastCallback<ProductDetailsResult> callback);
 ```
+
+<a id="example-of-product-list-query"></a>
 
 ### 商品リスト照会例
 
@@ -204,11 +248,15 @@ ToastIap.RequestProductDetails((result, productDetailsResult) =>
 });
 ```
 
+<a id="purchase-products"></a>
+
 ## 商品購入
 - NHN Cloud IAPは、ストアに登録された商品IDを使用して商品を購入できます。
     - 商品IDは、商品リスト照会時に取得できます。
 - 商品購入結果は、初期化時に登録したPurchaseUpdateListenerを通して返されます。
     - 購入結果は[IapPurchase](./iap-unity/#iappurchase)を返します。
+
+<a id="specification-for-product-purchase-api"></a>
 
 ### 商品購入API仕様
 
@@ -217,6 +265,8 @@ public static void Purchase(string productId, developerPayload = "");
 ```
 
 - NHN Cloud IAPは購入リクエスト時にdeveloperPayloadを介してユーザー情報を追加できます。
+
+<a id="example-of-product-purchase"></a>
 
 ### 商品購入例
 
@@ -230,16 +280,22 @@ var productId = userSelectedProductId;
 ToastIap.Purchase(productId, developerPayload);
 ```
 
+<a id="query-unconsumed-purchases"></a>
+
 ## 未消費決済照会
 - まだ消費されていない消費性商品情報を照会します。
     - 未消費決済照会の結果は[IapPurchase](./iap-unity/#iappurchase)オブジェクトのリストで返されます。
 - ユーザーに商品を支給した後[Consume API](../../../Mobile%20Service/IAP/ko/api-guide-for-toast-sdk/#consume-api)を使用して商品を消費します。
+
+<a id="specification-for-unconsumed-purchases-query-api"></a>
 
 ### 未消費決済照会API仕様
 
 ```csharp
 public static void RequestConsumablePurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
+
+<a id="example-of-unconsumed-purchases-query"></a>
 
 ### 未消費決済照会例
 
@@ -265,17 +321,23 @@ ToastIap.RequestConsumablePurchases(false, (result, purchases) =>
 });
 ```
 
+<a id="restore-subscription"></a>
+
 ## サブスクリプションの復元
 - User IDごとにサブスクリプション商品を復元できます。
     - 決済が完了したサブスクリプション商品は、使用期間が残っている場合、継続して復元できます。
     - サブスクリプション商品の復元照会の結果は[IapPurchase](./iap-unity/#iappurchase)オブジェクトのリストで返されます。
 - iOSでのみ購読した商品を復元できます。
 
+<a id="specification-for-subscription-restoration-api"></a>
+
 ### サブスクリプション復元APIの仕様
 
 ```csharp
 public static void RequestRestorePurchases(ToastCallback<List<IapPurchase>> callback);
 ```
+
+<a id="subscription-restoration-example"></a>
 
 ### サブスクリプションの復元例
 
@@ -289,17 +351,23 @@ ToastIap.RequestRestorePurchases((result, purchases) =>
 });
 ```
 
+<a id="query-activated-subscription"></a>
+
 ## 有効になっている購読照会
 - User ID基準で有効になっている購読商品を照会できます。
     - 決済が完了した購読商品は、使用期間が残っている場合、継続して照会できます。
     - 有効になっている購読照会の結果は[IapPurchase](./iap-unity/#iappurchase)オブジェクトのリストで返されます。
 - Androidで購読した商品をiOSでも、またはiOSで購読した商品をAndroidでも照会できます。
 
+<a id="specification-for-activated-subscription-query-api"></a>
+
 ### 有効になっている購読照会API仕様
 
 ```csharp
 public static void RequestActivatedPurchases(bool isQueryAllStores, ToastCallback<List<IapPurchase>> callback);
 ```
+
+<a id="example-of-activated-subscription-query"></a>
 
 ### 有効になっている購読照会例
 
@@ -325,12 +393,16 @@ ToastIap.RequestActivatedPurchases(false, (result, purchases) =>
 });
 ```
 
+<a id="query-subscription-status"></a>
+
 ## サブスクリプション状態照会
 
 - 各User IDで購入したサブスクリプション商品の状態を照会できます。
 - サブスクリプション状態の照会結果は[IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus)オブジェクトのリストで返されます。
 - サブスクリプションの状態は[IapSubscriptionStatus](./iap-android/#iapsubscriptionstatus).GetStatus()メソッドで確認できます。
 - サブスクリプションのステータスコードは[IapSubscriptionStatus.Status](./iap-android/#iapsubscriptionstatusstatus)に定義されています。
+
+<a id="specification-for-subscription-status-query-api"></a>
 
 ### サブスクリプション状態照会APIの仕様
 
@@ -339,6 +411,8 @@ public static void RequestSubscriptionsStatus(
             bool includeExpiredSubscriptions,
             ToastCallback<List<IapSubscriptionStatus>> callback);
 ```
+
+<a id="example-of-subscription-status-query"></a>
 
 ### サブスクリプションの状態照会例
 
@@ -352,7 +426,11 @@ ToastIap.RequestSubscriptionsStatus(true, (result, subscriptionsStatus) =>
 });
 ```
 
+<a id="nhn-cloud-iap-class-reference"></a>
+
 ## NHN Cloud IAP Class Reference
+
+<a id="toastiapconfiguration"></a>
 
 ### ToastIapConfiguration
 
@@ -369,6 +447,8 @@ public class ToastIapConfiguration
 | AppKey | string | IAPサービスアプリキーを設定します。 |
 | StoreCode | StoreCode | ストアコードを設定します。 |
 
+
+<a id="storecode"></a>
 
 ### StoreCode
 
@@ -391,6 +471,8 @@ public enum StoreCode
 | AmazonAppStore | Amazon Appstore (Android Only) |
 | HuaweiAppGallery | Huawei App Gallery (Android Only) |
 
+<a id="toastresultt"></a>
+
 ### ToastResult<T>
 ```csharp
 public class ToastResult
@@ -407,6 +489,8 @@ public class ToastResult
 | Code | int | 結果コードを返します。 <br/> (成功は0を返す) |
 | Message | string | 結果メッセージを返します。 |
 
+<a id="productdetailsresult"></a>
+
 ### ProductDetailsResult
 ```csharp
 public class ProductDetailsResult
@@ -421,6 +505,8 @@ public class ProductDetailsResult
 | Products | List<IapProduct> | 使用可能な商品情報を返します。 |
 | InvalidProducts | List<IapProduct> | NHN Cloud IAPコンソールに商品を登録しましたが、ストアに登録されていない商品を返します。 |
 
+
+<a id="iapproduct"></a>
 
 ### IapProduct
 ```csharp
@@ -445,6 +531,8 @@ public class IapProduct
 | Price | float | 価格 |
 | Currency | string | 通貨 |
 | LocalizedPrice | string | 現地価格 |
+
+<a id="iappurchase"></a>
 
 ### IapPurchase
 ```csharp
@@ -477,6 +565,8 @@ public class IapPurchase
 | AccessToken | string | 消費に使用されるトークン |
 | PurchaseTime | long | 商品購入時間 |
 | ExpiryTime | long | 購読商品の残り時間 |
+
+<a id="iapsubscriptionstatus"></a>
 
 ### IapSubscriptionStatus
 
@@ -517,6 +607,8 @@ public class IapSubscriptionStatus
 | GetStatus | Status | サブスクリプションの状態 |
 | GetStatusDescription | string | サブスクリプション状態の説明 |
 
+<a id="iapsubscriptionstatusstatus"></a>
+
 ### IapSubscriptionStatus.Status
 
 ```csharp
@@ -544,7 +636,11 @@ public enum Status
 | Expired | 13 | 有効期限切れ | 定期決済の期限が切れました。 |
 | Unknown | 9999 | 未定義 | 定義されていない状態です。 |
 
+<a id="error-code"></a>
+
 ## エラーコード
+
+<a id="common-error-codes"></a>
 
 ### 共通エラーコード
 | エラーコード | 説明 |
@@ -564,6 +660,8 @@ public enum Status
 | 50105 | 購入限度を超過しました。 |
 | 59999 | 不明なエラーです。エラーメッセージを確認してください。 |
 
+<a id="server-error-code"></a>
+
 ### サーバーエラーコード
 
 | エラーコード | 説明 |
@@ -574,6 +672,8 @@ public enum Status
 | 10004 | タイムアウトが発生しました。 |
 | 10005 | 有効ではないサーバーレスポンス値です。 |
 | 10010 | 有効になっていないアプリです。 |
+
+<a id="app-store-error-code"></a>
 
 ### App storeエラーコード
 
@@ -586,6 +686,8 @@ public enum Status
 | 50013 | 復元に失敗しました。 |
 | 50014 | 購入進行不可状態です。 (e.g. アプリ内の購入制限設定) |
 
+<a id="one-store-error-code"></a>
+
 ### ONE storeエラーコード
 
 | エラーコード | 説明 |
@@ -594,6 +696,8 @@ public enum Status
 | 51001 | ONE storeサービスが更新またはインストールされていません。 |
 | 51002 | 正常ではないアプリから決済をリクエストしました。 |
 | 51003 | 決済のリクエストに失敗しました。 |
+
+<a id="galaxy-store-error-codes"></a>
 
 ### Galaxy storeエラーコード
 
@@ -604,11 +708,19 @@ public enum Status
 | 53002 | 正常ではないアプリから決済をリクエストしました。 |
 | 51003 | 決済のリクエストに失敗しました。 |
 
+<a id="faq"></a>
+
 ## FAQ
+<a id="android"></a>
+
 ### Android
+
+<a id="question1"></a>
 
 #### Question.1
 **購入中(または購入完了直後)にアプリをバックグラウンドに変更し、アプリアイコンでアプリを再び起動するとユーザーキャンセルエラーがコールバックで返されます。どうしたらいいですか？**
+
+<a id="answer1"></a>
 
 #### Answer.1
 UnityアクティビティのlaunchModeがsingleTaskのため発生する問題です。決済ウィンドウが破壊されるとユーザーキャンセルと認識するため、ユーザーキャンセルエラーが返されます。
