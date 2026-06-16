@@ -1,9 +1,15 @@
+<!-- pre-align:aligned sig=d8ddfaa7a83d -->
+
 ## NHN Cloud > SDK User Guide > Getting Started > iOS
+
+<a id="supported-environment"></a>
 
 ## Supported Environment
 
 * iOS 11.0 or higher
 * The latest version of XCode (version 14 or higher)
+
+<a id="nhn-cloud-sdk-components"></a>
 
 ## NHN Cloud SDK Components
 
@@ -24,7 +30,11 @@
 | Push | NHNCloudPush |  | NHNCloudPush.framework | 11.0 | \* UserNotifications.framework<br><br>[Optional]<br>\* PushKit.framework |  |
 | OCR | NHNCloudOCR |  | NHNCloudOCR.framework | 11.0 | \* Vision.framework<br>\* AVFoundation.framework |  |
 
+<a id="apply-nhn-cloud-sdk-to-xcode-projects"></a>
+
 ## Apply NHN Cloud SDK to Xcode Projects
+
+<a id="apply-nhn-cloud-sdk-with-cococapods"></a>
 
 ### 1. Apply NHN Cloud SDK with Cococapods
 
@@ -39,6 +49,8 @@ target '{YOUR PROJECT TARGET NAME}' do
 end
 ```
 
+<a id="apply-nhn-cloud-sdk-with-swift-package-manager"></a>
+
 ### 2. Apply NHN Cloud SDK with Swift Package Manager
 
 * Go to **File > Add Packages...** from XCode.
@@ -47,11 +59,15 @@ end
 
 ![swift_package_manager](https://static.toastoven.net/toastcloud/sdk/ios/swiftpackagemanager01.png)
 
+<a id="set-up-project"></a>
+
 #### Set up Project
 
 * Add **-lc++** and **-ObjC** entries to **Other Linker Flags** in **Build Settings**.
     * **Project Target > Build Settings > Linking > Other Linker Flags**
 ![other_linker_flags](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
+
+<a id="apply-nhn-cloud-sdk-with-carthage"></a>
 
 ### 3. Apply NHN Cloud SDK with Carthage
 
@@ -77,7 +93,11 @@ binary "https://nh.nu/nhncloudsdk"
 > To use desired features among the services selectively, you need to choose only the required frameworks per service and add them to the project.
 > For details on required frameworks per service, see [NHN Cloud SDK Components](./getting-started-ios/#toast-sdk).
 
+<a id="apply-nhn-cloud-sdk-by-downloading-binaries"></a>
+
 ### 4. Apply NHN Cloud SDK by Downloading Binaries
+
+<a id="frameworks-setup"></a>
 
 #### Frameworks Setup
 
@@ -101,6 +121,8 @@ binary "https://nh.nu/nhncloudsdk"
 ![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework01_202206.png)
 ![xcframework01](https://static.toastoven.net/toastcloud/sdk/ios/xcframework02_202206.png)
 
+<a id="project-settings"></a>
+
 #### Project Settings
 
 * Add **-lc++** and **-ObjC** to **Other Linker Flags** under **Build Settings**.
@@ -111,6 +133,8 @@ binary "https://nh.nu/nhncloudsdk"
     * **Project Target > Build Settings > Build Options > Enable Bitcode**
 ![enable_bitcode](https://static.toastoven.net/toastcloud/sdk/ios/overview_settings_flags_202206.png)
 > CrashReporter.framework downloaded from the [Downloads](../../../Download/#toast-sdk) page of NHN Cloud supports bitcode.
+
+<a id="import-framework"></a>
 
 ### Import Framework
 
@@ -124,11 +148,15 @@ binary "https://nh.nu/nhncloudsdk"
 #import <NHNCloudOCR/NHNCloudOCR.h>
 ```
 
+<a id="set-user-id"></a>
+
 ## Set User ID
 
 * User ID can be set for NHN Cloud SDK.
 * The configured User ID is commonly used in each module of NHN Cloud SDK.
 * Whenever Log Sending API of NHN Cloud Logger is called, the configured User ID is sent to a server along with logs.
+
+<a id="specification-for-user-id-setting-api"></a>
 
 ### Specification for User ID Setting API
 
@@ -136,15 +164,21 @@ binary "https://nh.nu/nhncloudsdk"
 + (void)setUserID:(NSString *)userID;
 ```
 
+<a id="usage-example-of-user-id-setting"></a>
+
 ### Usage Example of User ID Setting
 
 ```objc
 [NHNCloudSDK setUserID:@"NHNCLOUD-USER"];
 ```
+<a id="set-debug-mode"></a>
+
 ## Set Debug Mode
 
 * To check logs within NHN Cloud SDK, the debug mode can be set.
 * When you make an inquiry regarding NHN Cloud SDK, sending the logs with the debug mode enabled can be helpful for faster response.
+
+<a id="specification-for-debug-mode-api"></a>
 
 ### Specification for Debug Mode API
 
@@ -153,6 +187,8 @@ binary "https://nh.nu/nhncloudsdk"
 + (void)setDebugMode:(BOOL)debugMode;
 ```
 
+<a id="usage-example-of-debug-mode-setting"></a>
+
 ### Usage Example of Debug Mode Setting
 
 ```objc
@@ -160,6 +196,8 @@ binary "https://nh.nu/nhncloudsdk"
 ```
 
 > [Caution] The debug mode must be disabled before releasing an app.
+
+<a id="use-nhn-cloud-service"></a>
 
 ## Use NHN Cloud Service
 
