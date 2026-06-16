@@ -1,8 +1,11 @@
+<!-- pre-align:aligned sig=8cf708d3d5b2 -->
 
 ## NHN Cloud > 리전 가이드
 리전은 독립적이고 지리적으로 격리된 서버의 물리적 위치를 의미합니다.
 일반적으로 리전은 가용성 영역이라고 부르는 독립된 전원 및 네트워크를 갖춘 데이터 센터로 구성되며, 사용하려는 지역과 서비스에 따라 리전을 선택할 수 있습니다.
 인터넷으로 언제 어디서나 자유롭게 리전을 선택하여 NHN Cloud 서비스를 이용하세요.
+
+<a id="nhn-cloud-regions"></a>
 
 ## NHN Cloud 리전
 
@@ -10,9 +13,13 @@ NHN Cloud는 안정적인 글로벌 서비스 제공을 위해 4개의 리전을
 고가용성을 지원하기 위해서는 여러 가용성 영역 혹은 복수의 리전에 애플리케이션을 배포해야 합니다.
 NHN Cloud 유저는 서비스 지역과 목적에 따라 사용할 리전을 선택할 수 있으며, 일반적으로 서비스 대상이 주로 위치한 지역의 리전을 이용하면 짧은 응답 시간을 기대할 수 있습니다.
 
+<a id="location-of-toat-regions"></a>
+
 ## NHN Cloud 리전 위치
 NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리전을 확대하고 있습니다.
 ![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_KR.png)
+
+<a id="nhn-cloud-regional-service"></a>
 
 ## NHN Cloud 리전 서비스
 **리전 서비스**
