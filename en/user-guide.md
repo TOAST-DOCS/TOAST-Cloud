@@ -1,8 +1,6 @@
 ## NHN Cloud > User Guide
 This document is the user guide of NHN Cloud, which is the cloud service of NHN Cloud.
 
-<a id="join-nhn-cloud"></a>
-
 ## Join NHN Cloud
 You may choose a country to use services.  
 NHN Cloud membership is provided for individuals and businesses.
@@ -10,11 +8,11 @@ Individual members can join with simple email and SMS authentication.
 Business members can join upon business information. 
 NHN Cloud member information for management, as well as how to join are as follows: 
 
-**Members management Information**
+### Members management Information
 NHN Cloud members are classified into NHN Cloud Korea (NHN Cloud) and NHN Cloud Japan (NHN Cloud Japan) depending on who provides the service. 
 They are classified by the country of choice, and allowed to join when they agree with Terms of Services, as well as Privacy Policy set by regulations of each country.  
 
-**Members of NHN Cloud Korea**
+#### Members of NHN Cloud Korea
 | Managed Information | Description | Required |
 | --- | --- | --- |
 | ID | - Valid email address (requires email verification). | O | 
@@ -26,7 +24,7 @@ They are classified by the country of choice, and allowed to join when they agre
 | Landline Phone Number | - Managed for the support of faster services.  | X |
 | Business Information | - Required for business members. <br/> - Information, such as company name, business registration number, name of representative, business type/item, and landline phone number are managed. <br/> - Such information must coincide with those of business registration certificate.  | O |
 
-**Members of NHN Cloud Japan **
+#### Members of NHN Cloud Japan 
 | Managed Information | Description | Required |
 | --- | --- | --- |
 | ID | - Valid email address (requires email verification). | O |
@@ -35,16 +33,12 @@ They are classified by the country of choice, and allowed to join when they agre
 | Name | - User's name for NHN Cloud Service.  | O |
 | Landline Phone Number | - Managed for the support of faster services.  | X |
 
-<a id="how-to-join-as-member"></a>
-
 ### How to Join as Member
 Access https://nhncloud.com and click Join on the top right.
 Follow the procedure to join membership. 
 
 ![userguide_01_202104](https://static.toastoven.net/toast/user_guide/userguide_01_202104_en.png)
 
-
-<a id="select-country"></a>
 
 #### Select Country
 
@@ -61,8 +55,6 @@ Each country provides different member information and payment methods.
         - Credit cards
 
 
-<a id="select-type-of-membership-individualbusiness"></a>
-
 #### Select Type of Membership (Individual/Business) 
 
 
@@ -76,8 +68,6 @@ Following are required for each type of membership:
     - Valid mobile phone that properly receives SMS
     - Copy of Business Registration Certificate
 
-<a id="consent-to-terms-of-use"></a>
-
 #### Consent to Terms of Use  
 
 - NHN Cloud Terms of Use (Required): It is required to consent to the Terms of Use, to use NHN Cloud service. 
@@ -85,26 +75,18 @@ Following are required for each type of membership:
 - Consent to Receiving Promotional Information (Optional): It is optional to consent to receiving events or promotions of NHN Cloud. It can be modified on My Profile after joining NHN Cloud. 
 
 
-<a id="enter-member-information"></a>
-
 #### Enter Member Information
 - Personal Members
     - Verify email and mobile phone via SMS
 - Business members (NHN Cloud Korea)
     - Attach a copy of Business Registration Certificate
 
-<a id="joining-completed"></a>
-
 #### Joining Completed 
 After you're done with joining, you're automatically signed in. Now, NHN Cloud service is available on its website and console. 
-
-<a id="login-security-settings"></a>
 
 ### Login Security Settings
 You can set up 2-level login in Login Security Settings.
 Email verification, mobile verification, and Google OTP are available. 
-
-<a id="select-login-security-settings"></a>
 
 #### Select Login Security Settings
 ![userguide_02_20230330](https://static.toastoven.net/toast/user_guide/userguide_10_202303_en.png)
@@ -115,8 +97,6 @@ You can check your current login security settings or click **Change** to change
     - Turn off 2-level login setup: The initial state where 2-level login security settings is not in use
     - Log in after verifying your email or phone number: Verification with a verification code sent to the email or phone number in the member information when logging in
     - Log in after Google OTP verification: Verification with Google OTP app when logging in
-
-<a id="log-in-after-google-otp-verification"></a>
 
 #### Log in after Google OTP verification
 Select **Log in after Google OTP verification** in 2-Level Login Setup and click **Save**.
@@ -143,25 +123,21 @@ When OTP verification setup is complete, you'll see the registered devices in th
     - If you have more than one OTP verification device: You can delete OTP verification devices
     - If you have one OTP verification device: You must add the OTP verification device or change the 2-level login settings to delete the device
 
-<a id="register-payment-methods"></a>
-
 ## Register Payment Methods
 It is required to register a payment method to use NHN Cloud Service. 
 However, for members of existing organizations/projects, no additional registration is required to use NHN Cloud Service.
 You can register a payment method by selecting Payment Method from the drop-down menu in the top right after logging in and clicking your logged in account.
 
-**Management Policy of Payment Methods**
+### Management Policy of Payment Methods
 NHN Cloud provides the following payment methods:
 
-**NHN Cloud Korea**
+#### NHN Cloud Korea
 - PAYCO Credit Cards: A simplified method of payment provided by PAYCO, available on PAYCO account.  <br/>
 - Credit Cards: Authentication (authentication of the holder via mobile phone) is required in accordance with the issuing entity’s authentication policy, in order to register a credit card as payment method. <br/>
 - Bank Transfers: The method is provided only to business members, who are required to enter account information and authenticate (Public Key Certificate) it in accordance with bank’s policy before registering it as payment method.<br/>
 
-**NHN Cloud Japan **
+#### NHN Cloud Japan 
 - Credit Cards: Authentication (for card validity) is required in accordance with the issuing entity's authentication policy, in order to register a credit card as payment method.  
-
-<a id="management-policy-per-payment-method"></a>
 
 ### Management Policy per Payment Method
 The authentication and management policy of each payment method goes as follows:
@@ -176,53 +152,31 @@ The authentication and management policy of each payment method goes as follows:
 | | | Bank Transfers | Authenticate with public key certificate | Bank and account number | Personal account must contain same information on the public key certificate of the person <br/> while corporate account must contain same business information on the member profile/corporate account/public key certificate.   |
 | Japan | Individual | Credit Cards | Credit card holder authentication |Card number, valid period, name, and security code | To validate credit card, 2 Yen shall be paid and cancelled. |
 
-<a id="how-to-register-payment-methods"></a>
+### NHN Cloud Korea 
 
-## How to Register Payment Methods
-
-<!-- TODO: translate body -->
-
-**NHN Cloud Korea **
-
-<a id="payco-credit-cards"></a>
-
-### PAYCO Credit Cards
-<a id="select-payment-methods"></a>
-
-#### Select Payment Methods
+#### PAYCO Credit Cards
+##### Select Payment Methods
 - Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Methods** page, select **PAYCO Credit Cards**.
 
-<a id="join-payco"></a>
-
-#### Join PAYCO
+##### Join PAYCO
 - You may use your own mobile phone number or email as PAYCO ID.  
 - Enter ID and password, and you're a member of PAYCO. A129
 
-<a id="authenticate-holder-and-register-payment-methods"></a>
-
-#### Authenticate Holder and Register Payment Methods
+##### Authenticate Holder and Register Payment Methods
 - To register a payment method for the first time, the owner needs to be authenticated via mobile phone.
 - After authenticated, enter information for payment method and consent, and registration is completed. 
 - Password may be required depending on the type of payment method.  
 
-<a id="pay-with-payco"></a>
-
-#### Pay with PAYCO
+##### Pay with PAYCO
 - Select a payment method and enter password for payment, and then registration is completed. 
 
-<a id="credit-cards"></a>
-
-### Credit Cards
-<a id="select-payment-methods-2"></a>
-
-#### Select Payment Methods
+#### Credit Cards
+##### Select Payment Methods
 - Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Method** page, select **Credit Cards**.
 
-<a id="select-credit-card-types"></a>
-
-#### Select Credit Card Types
+##### Select Credit Card Types
 - Personal/Corporate Credit Cards Requiring Signature
     - User Authentication via Mobile Phone: Enter name, gender, birthday, and mobile phone number to authenticate the user. 
     - Enter Credit Card Information: Enter credit card number, valid period, and birthday, and register it as payment method.
@@ -230,58 +184,40 @@ The authentication and management policy of each payment method goes as follows:
     - Check Business Registration Number: Enter business registration number.
     - Enter Credit Card Information: Enter credit card number, valid period, and the first two digits of password, and register it as payment method.
 
-<a id="complete-registration-of-payment-methods"></a>
-
-#### Complete Registration of Payment Methods
+##### Complete Registration of Payment Methods
 - If your payment method is successfully registered, you can see it on the Payment Method screen.
 
-<a id="bank-transfers"></a>
-
-### Bank Transfers
-<a id="select-payment-methods-3"></a>
-
-#### Select Payment Methods
+#### Bank Transfers
+##### Select Payment Methods
 - Provided only for business members.
 - Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Methods** page, click **Bank Transfer**.
 
-<a id="enter-account-information"></a>
-
-#### Enter Account Information
+##### Enter Account Information
 - Enter your account information.
 
-<a id="authenticate-public-key-certificates"></a>
-
-#### Authenticate Public Key Certificates
+##### Authenticate Public Key Certificates
 - For s personal account, select a personal Public Key Certificate for authentication.
 - For a corporate account, select a Public Key Certificate registered with the same business information on its account for authentication.
 
-<a id="complete-registration-of-payment-methods-2"></a>
-
-#### Complete Registration of Payment Methods 
+##### Complete Registration of Payment Methods 
 - If your payment method is successfully registered, you can see it on the Payment Method screen.
 
-**NHN Cloud Japan **
-### Credit Cards 
-<a id="select-payment-methods-4"></a>
-
-#### Select Payment Methods 
+### NHN Cloud Japan 
+#### Credit Cards 
+##### Select Payment Methods 
 - Go to **Payment Methods** and click **Change Payment Methods**.
 - On the **Register Auto Payment Methods** page, enter **Credit Card Information**(card number, valid period, card holder's name, and security code).
 
-<a id="complete-registration-of-payment-methods-3"></a>
-
-#### Complete Registration of Payment Methods
+##### Complete Registration of Payment Methods
 - If your payment method is successfully registered, you can see it on the Payment Method screen.
 
 
-**Further Functions of Payment Methods**
-**Manage Receipt of Email Invoices**
+### Further Functions of Payment Methods
+#### Manage Receipt of Email Invoices
 Register your email address to receive invoices. 
-**Set Unit of Payment**
+#### Set Unit of Payment
 Select either "Pay by Pricing Plan", or "Pay At Once". 
-
-<a id="manage-credits"></a>
 
 ## Manage Credits
 Credits managed by NHN Cloud Service are provided free-of-charge, depending on service subscription, rewards, events, or compensation purposes.
@@ -294,24 +230,16 @@ Credits are operated in accordance with the following policy:
 
 
 
-<a id="withdraw-from-membership"></a>
-
 ## Withdraw from Membership
-<a id="apply-for-membership-withdrawal"></a>
-
 ### Apply for Membership Withdrawal
 You can cancel your NHN Cloud membership by logging in and selecting Member Information from the drop-down menu on the top right on the screen when you click your logged in account.
 Go to the **Member Information** screen and click the **Withdraw** button in the bottom right corner.
 Check notes for membership withdrawal, and click **Withdraw**.
 Withdrawal cannot be applied when you're using a service. 
 
-<a id="verify-membership-withdrawal"></a>
-
 ### Verify Membership Withdrawal
 After applied, withdrawal can be processed after information as below is confirmed. <br/>
 - If there is any charge left unpaid, it shall be paid on a date of auto payment (8th of the month) before withdrawal is processed. 
-
-<a id="complete-membership-withdrawal"></a>
 
 ### Complete Membership Withdrawal
 When withdrawal is completed, it shall be notified via email registered at the time of withdrawal application.
