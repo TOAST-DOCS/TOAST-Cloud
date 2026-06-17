@@ -65,6 +65,8 @@
 |                      | Autocomplete         | [Autocomplete API v2.0 가이드](https://docs.nhncloud.com/ko/Search/Autocomplete/ko/api-guide/api-v2.0-guide/) |
 |                      | Corporation Search   | [Corporation Search API 가이드](https://docs.nhncloud.com/ko/Search/Corporation%20Search/ko/api-guide/) |
 | Data & Analytics     | Log & Crash Search   | [Log & Crash Search API 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/) |
+|                      | Data Lake Storage    | [Data Lake Storage API 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/) |
+|                      | EasyQueue            | [EasyQueue API v1.0 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/EasyQueue/ko/public-api/) |
 | Dev Tools            | Pipeline             | [Pipeline API v1.0 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Pipeline/ko/api-guide-v1-0/)<br>[Pipeline API v1.1 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Pipeline/ko/api-guide-v1-1/) |
 |                      | Deploy               | [Deploy API v1.0 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Deploy/ko/api-guide-v1.0/)<br>[Deploy API v2.0 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Deploy/ko/api-guide-v2.0/)<br>[Deploy API v2.1 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Deploy/ko/api-guide-v2.1/) |
 | Management           | Certificate Manager  | [Certificate Manager API v1.0 가이드](https://docs.nhncloud.com/ko/Management/Certificate%20Manager/ko/api-guide-v1.0/)<br>[Certificate Manager API v1.1 가이드](https://docs.nhncloud.com/ko/Management/Certificate%20Manager/ko/api-guide-v1.1/)<br>[Certificate Manager API v1.2 가이드](https://docs.nhncloud.com/ko/Management/Certificate%20Manager/ko/api-guide-v1.2/) |
