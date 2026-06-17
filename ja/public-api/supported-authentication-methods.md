@@ -24,9 +24,9 @@ Public APIごとにサポートする認証方式が異なり、一部の認証�
 |                         | GPU Instance                                   |                    | O       |                 |        |                |
 |                         | Image                                          |                    | O       |                 |        |                |
 |                         | Virtual Desktop                                |                    | O       |                 |        |                |
-| **Container**           | NHN Kubernetes Service (NKS)                   |                    | O       |                 |        |                |
-|                         | NHN Container Registry (NCR)                   | O                  |         | O               |        |                |
-|                         | NHN Container Service (NCS)                    | O                  |         |                 |        |                |
+| **Container**           | NHN Kubernetes Service(NKS)                    |                    | O       |                 |        |                |
+|                         | NHN Container Registry(NCR)                    | O                  |         | O               |        |                |
+|                         | NHN Container Service(NCS)                     | O                  |         |                 |        |                |
 | **Network**             | VPC                                            |                    | O       |                 |        |                |
 |                         | Subnet                                         |                    | O       |                 |        |                |
 |                         | Network Interface                              |                    | O       |                 |        |                |
@@ -36,6 +36,7 @@ Public APIごとにサポートする認証方式が異なり、一部の認証�
 |                         | Network ACL                                    |                    | O       |                 |        |                |
 |                         | Security Groups                                |                    | O       |                 |        |                |
 |                         | Load Balancer                                  |                    | O       |                 |        |                |
+|                         | Load Balancer(DSR)                             |                    | O       |                 |        |                |
 |                         | Transit Hub                                    |                    | O       |                 |        |                |
 |                         | Internet Gateway                               |                    | O       |                 |        |                |
 |                         | Peering Gateway                                |                    | O       |                 |        |                |
@@ -98,6 +99,7 @@ Public APIごとにサポートする認証方式が異なり、一部の認証�
 |                         | Autocomplete                                   |                    |         |                 | O      |                |
 |                         | Corporation Search                             |                    |         |                 | O      |                |
 | **Data & Analytics**    | Log & Crash Search                             |                    |         |                 | O      |                |
+|                         | EasyQueue                                      | O                  |         |                 |        |                |
 | **Dev Tools**           | Pipeline API v1.0                              |                    |         | O               |        |                |
 |                         | Pipeline API v1.1                              | O                  |         |                 |        |                |
 |                         | Deploy API v1.0                                |                    |         | O               | O      |                |

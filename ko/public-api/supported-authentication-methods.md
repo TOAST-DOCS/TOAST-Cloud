@@ -36,6 +36,7 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 |                         | Network ACL                                    |                    | O       |                 |        |                |
 |                         | Security Groups                                |                    | O       |                 |        |                |
 |                         | Load Balancer                                  |                    | O       |                 |        |                |
+|                         | Load Balancer(DSR)                             |                    | O       |                 |        |                |
 |                         | Transit Hub                                    |                    | O       |                 |        |                |
 |                         | Internet Gateway                               |                    | O       |                 |        |                |
 |                         | Peering Gateway                                |                    | O       |                 |        |                |
@@ -98,6 +99,7 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 |                         | Autocomplete                                   |                    |         |                 | O      |                |
 |                         | Corporation Search                             |                    |         |                 | O      |                |
 | **Data & Analytics**    | Log & Crash Search                             |                    |         |                 | O      |                |
+|                         | EasyQueue                                      | O                  |         |                 |        |                |
 | **Dev Tools**           | Pipeline API v1.0                              |                    |         | O               |        |                |
 |                         | Pipeline API v1.1                              | O                  |         |                 |        |                |
 |                         | Deploy API v1.0                                |                    |         | O               | O      |                |
