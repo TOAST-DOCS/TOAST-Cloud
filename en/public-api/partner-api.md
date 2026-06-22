@@ -280,8 +280,10 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | Partner ID |
 | month | Path | String | Y | Usage month (yyyy-MM format) |
-| orgId | Path | String | Y | organization ID |
-| lang | Header | String | N | Language Settings (default: ko\_KR, setable value: ko\_KR, ja\_JP, en\_US)
+| orgId | Path | String | Y | Organization ID |
+| lang | Header | String | N | Language settings (default: ko_KR, selectable values: ko_KR, ja_JP, en_US) |
+| isHideContract | Query | Boolean | N | Whether to hide contract information (default: false / true: apply partner masking and exclude creditUsages) |
+| isHideContract | Query | Boolean | N | Whether to hide commitment information (default: false / true: partner masking applied and creditUsages excluded) |
 
 ### Request Body
 
@@ -302,13 +304,17 @@ This API does not require a request body.
   "org": {
     "orgId": "org123",
     "orgName": "테스트 조직",
-    "totalAmount": 95000,
+    "country": "KR",
     "usagePrice": 100000,
     "contractUsagePrice": 95000,
     "contractDiscountPrice": 5000,
+    "ocpDiscountPrice": 0,
     "contractExtraPrice": 0,
+    "totalDiscount": 5000,
+    "totalExtra": 0,
+    "totalAmount": 95000,
+    "prePaidTotalAmount": 0,
     "totalCredit": 0,
-    "country": "KR",
     "creditUsages": [
       {
         "balanceTypeCode": "FREE_CREDIT",
@@ -318,6 +324,19 @@ This API does not require a request body.
           "en_US": "Free Credit"
         },
         "usageAmount": 5000
+      }
+    ],
+    "projects": [
+      {
+        "projectId": "project123",
+        "projectName": "테스트 프로젝트",
+        "totalAmount": 95000,
+        "usagePrice": 100000,
+        "contractUsagePrice": 95000,
+        "contractDiscountPrice": 5000,
+        "ocpDiscountPrice": 0,
+        "contractExtraPrice": 0,
+        "prePaidTotalAmount": 0
       }
     ],
     "projectDiscount": {
@@ -335,16 +354,7 @@ This API does not require a request body.
     "projectExtra": {
       "totalAdjustment": 0,
       "details": []
-    },
-    "projects": [
-      {
-        "projectId": "project123",
-        "projectName": "테스트 프로젝트",
-        "totalAmount": 95000,
-        "usagePrice": 100000,
-        "contractUsagePrice": 95000
-      }
-    ]
+    }
   }
 }
 ```
@@ -363,32 +373,50 @@ This API does not require a request body.
 | --- | --- | --- |
 | orgId | String | Organization ID |
 | orgName | String | Organization name |
-| totalAmount | Long | Organization final amount |
+| country | String | Country code |
 | usagePrice | Long | Usage amount |
 | contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
 | contractDiscountPrice | Long | Amount discounted by contract |
+| ocpDiscountPrice | Long | Optimized Cost Plans (OCPs) discount amount |
 | contractExtraPrice | Long | Amount surcharged by contract |
-| totalCredit | Long | Credit final amount |
-| country | String | Country code |
-| creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage amount |
+| totalDiscount | Long | Total discount amount |
+| totalExtra | Long | Total surcharge amount |
+| totalAmount | Long | Final organization amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
+| totalCredit | Long | Final credit amount |
+| creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage list |
+| projects | List&lt;Project&gt; | Project list |
 | projectDiscount | PaymentStatementProjectAdjustment | List of discount details by project |
 | projectExtra | PaymentStatementProjectAdjustment | List of surcharge details by project |
-| projects | List&lt;Project&gt; | Project List |
 
 **CreditUsageProtocol**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| balanceTypeCode | String | Campaign type |
-| balanceTypeName | String | Campaign type name |
-| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | Campaign type name multilingual code |
+| balanceTypeCode | String | Campaign type (balance type) |
+| balanceTypeName | String | Campaign type name (balance type name) |
+| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | Campaign type name multilingual map |
 | usageAmount | Long | Credit usage amount |
+
+**Project**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| projectId | String | Project ID |
+| projectName | String | Project name |
+| totalAmount | Long | Final project amount |
+| usagePrice | Long | Project usage amount total |
+| contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
+| contractDiscountPrice | Long | Amount discounted by contract |
+| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) discount amount |
+| contractExtraPrice | Long | Amount surcharged by contract |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 
 **PaymentStatementProjectAdjustment**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| totalAdjustment | Long | Total discount amount |
+| totalAdjustment | Long | Total discount/surcharge amount |
 | details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | Details |
 
 **PaymentStatementProjectAdjustmentDetail**
@@ -400,16 +428,6 @@ This API does not require a request body.
 | adjustment | Long | Discount/surcharge amount |
 | adjustmentTypeCode | String | Discount/surcharge type<br>- CONTRACT_EXTRA: Contract surcharge<br>- CONTRACT_PENALTY: Contract penalty<br>- CONTRACT_DISCOUNT: Contract discount<br>- CONTRACT_PAYBACK: Partner payback<br>- STATIC_EXTRA: Fixed amount surcharge<br>- PERCENT_DISCOUNT: Percentage discount<br>- COUPON: Coupon<br>- STATIC_DISCOUNT: Fixed amount discount<br>- CUTOFF: Truncate less than 500 won |
 | description | String | Discount/surcharge details |
-
-**Project**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| projectId | String | Project ID |
-| projectName | String | Project name |
-| totalAmount | Long | Project final amount |
-| usagePrice | Long | Project usage amount total |
-| contractUsagePrice | Long | Usage amount total with commitment-based discount/commitment underutilization charge applied |
 
 
 ## Retrieve Project Lists of Partner Users
@@ -476,7 +494,7 @@ This API does not require a request body.
 **ProjectProtocol**
 
 | Name | Type | Description |
-| --- | --- |
+| --- | --- | --- |
 | orgId | String | Organization ID |
 | orgName | String | Organization Name |
 | orgCreationType | String | Organization Creation Type<br><br>- USER: Customer-created organization<br>- SYSTEM: system-created organization (primarily used in membership marketplaces) |
@@ -514,11 +532,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | month | Path | String | Y | Month of use (yyyy-MM format) |
 | projectId | Path | String | Y | Project ID |
 | lang | Header | String | N | Language setting (default: ko_KR, configurable values: ko_KR, ja_JP, en_US) |
+| isHideContract | Query | Boolean | N | Whether to hide contract information (default: false / true: apply partner masking and exclude creditUsages) |
 | usageSchemaTypeCode | Query | String | N | Include usage<br>Decide whether to use the existing usage inquiry method or the new grouping method<br>(Default: NO_GROUP)<br><br>- NO_GROUP: usage is displayed as is, without being grouped. <br>- GROUP_BY_PARENT_RESOURCE: grouping is done by parent resource, but specific usage is not provided. The totalItems returned allows you to check how many parent resources exist.<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES: after grouping parent resources separately, which parent resource is grouped as and how it is used in detail |
 | categoryMain | Query | String | N | Main category<br>If usageSchemaTypeCode is NO_GROUP, it cannot be used |
 | regionTypeCode | Query | String | N | Region type code (up to 20 characters)<br>If usageSchemaTypeCode is NO_GROUP, it cannot be used |
+| stationId | Query | String | N | Station ID<br>If usageSchemaTypeCode is NO_GROUP, it cannot be used |
 | page | Query | Integer | N | Selected page (default: 1, minimum: 1)<br>if usageSchemaTypeCode is NO_GROUP, it is unavailable |
-| limit | Query | Integer | N | Number of items to be displayed on the page, if not entered, full view ((default: 0, minimum: 0)<br>Not available when usageSchemaTypeCode is NO_GROUP |
+| limit | Query | Integer | N | Number of items to be displayed on the page, if not entered, full view (default: 0, minimum: 0)<br>Not available when usageSchemaTypeCode is NO_GROUP |
 
 ### Request Body
 
@@ -650,18 +670,22 @@ This API does not require a request body.
 | Name | Type | Description |
 | --- | --- | --- |
 | projectId | String | Project ID |
-| projectName | String | Project Name |
-| totalAmount | Long | Project Final Amount |
-| usagePrice | Long | Usage Amount |
+| projectName | String | Project name |
+| country | String | Country code |
+| usagePrice | Long | Usage amount |
 | contractUsagePrice | Long | Total usage amount with contract discounts/surcharges applied |
 | contractDiscountPrice | Long | Amount discounted by contract |
+| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) discount amount |
 | contractExtraPrice | Long | Amount surcharged by contract |
+| totalAmount | Long | Final project amount |
+| totalDiscount | Long | Total discount amount |
+| totalExtra | Long | Total surcharge amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 | totalCredit | Long | Final credit amount |
-| country | String | Country Code |
-| creditUsages | List&lt;CreditUsageProtocol&gt; | Credit Usage Amount |
+| creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage list |
 | projectDiscount | PaymentStatementProjectAdjustment | Project-specific discount details |
 | projectExtra | PaymentStatementProjectAdjustment | Project-specific surcharge details |
-| usageGroups | List&lt;UsageGroup&gt; | Usage Group List |
+| usageGroups | List&lt;UsageGroup&gt; | Usage group list |
 
 **CreditUsageProtocol**
 
@@ -669,7 +693,7 @@ This API does not require a request body.
 | --- | --- | --- |
 | balanceTypeCode | String | Campaign type (balance type) |
 | balanceTypeName | String | Campaign type name (balance type name) |
-| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | Campaign type name multilingual code |
+| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | Campaign type name multilingual map |
 | usageAmount | Long | Credit amount used |
 
 **PaymentStatementProjectAdjustment**
@@ -694,71 +718,59 @@ This API does not require a request body.
 | Name | Type | Description |
 | --- | --- | --- |
 | categoryMain | String | Main category |
+| regionTypeCode | String | Region |
 | stationId | String | Station ID |
 | stationName | String | Station name |
-| regionTypeCode | String | Region |
 | needType | Boolean | Whether to display the category column |
-| totalItems | Integer | Total number of usages by UsageGroup |
-| totalPrice | Long | Total usage amount with commitment-based discount applied |
 | usagePrice | Long | Total usage amount |
-| usageResourceGroups | List&lt;UsageGroup.UsageResourceGroup&gt; | Grouped usage list |
+| totalPrice | Long | Total usage amount with commitment-based discount applied |
+| totalDiscount | Long | Total discount amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
+| totalItems | Integer | Total number of usages per UsageGroup |
 | usages | List&lt;Usage&gt; | Detailed usage list |
+| usageResourceGroups | List&lt;UsageResourceGroup&gt; | Grouped usage list |
 
-**UsageGroup.UsageResourceGroup**
+**UsageResourceGroup**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | parentResourceId | String | Parent resource ID for identification |
-| parentResourceName | String | Parent resource Name for identification |
-| usages | List<Object> | Detailed Usage |
+| parentResourceName | String | Parent resource name for identification |
+| usages | List&lt;Usage&gt; | Detailed usage list |
 
 **Usage**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| categoryMain | String | Main category |
-| categorySub | String | Sub category |
-| contractId | String | Agreement ID |
-| contractPrice | Long | Usage amount calculated by commitment |
-| contractUnitPrice | BigDecimal | Commitment use discount |
-| counterName | String | Counter Name |
-| displayNameEn | String | Billing unit display name (en) |
-| displayNameJa | String | Billing unit display name (ja) |
-| displayNameKo | String | Billing unit display name (ko) |
-| displayNameZh | String | Billing unit display name (zh) |
-| displayOrder | Long | Display order |
-| parentResourceId | String | Parent resource ID |
-| parentResourceName | String | Parent resource name |
-| price | Long | Usage amount |
-| productUiId | String | Homepage service UI ID |
 | projectId | String | Project ID |
 | projectName | String | Project name |
-| rangeFrom | BigDecimal | Starting range |
-| regionTypeCode | String | Region |
 | resourceId | String | Resource ID |
-| resourceName | String | Resource name |
-| seq | Long | seq |
-| stationId | String | Station ID |
-| stationName | String | Station name |
-| unit | Long | Charging unit |
-| unitName | String | Unit name |
-| unitPrice | BigDecimal | Price per unit |
-| usage | BigDecimal | Usage |
-| useFixPrice | Boolean | Fixed price |
-
-**Usage**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| counterName | String | Counter name |
-| counterType | String | Counter type |
-| productId | String | Service ID |
-| projectId | String | Project ID |
-| resourceId | String | Resource ID |
-| resourceName | String | Resource name |
 | parentResourceId | String | Parent resource ID |
-| usage | BigDecimal | Usage amount |
-| usedTime | String | Usage time |
+| resourceName | String | Resource name |
+| parentResourceName | String | Parent resource name |
+| counterName | String | Counter name |
+| categoryMain | String | Main category |
+| categorySub | String | Sub category |
+| productUiId | String | Homepage service UI ID |
+| regionTypeCode | String | Region |
+| displayNameKo | String | Billing unit display name (ko) |
+| displayNameEn | String | Billing unit display name (en) |
+| displayNameJa | String | Billing unit display name (ja) |
+| displayNameZh | String | Billing unit display name (zh) |
+| usage | Double | Usage |
+| unit | Long | Charging unit |
+| unitPrice | Double | Price per unit |
+| unitName | String | Unit name |
+| price | Long | Usage amount |
+| useFixPrice | Boolean | Fixed price |
+| displayOrder | Long | Display order |
+| contractId | String | Agreement ID |
+| contractUnitPrice | Double | Commitment unit price |
+| contractPrice | Long | Usage amount calculated by commitment |
+| discountPrice | Long | Discount amount |
+| discountTypeCode | String | Discount type code<br>BASIC, CONTRACT, OCP |
+| prePaidAmount | Long | Prepayment usage amount |
+| costPlanOrderId | String | Optimized Cost Plans(OCPs) order ID |
 
 
 ## Retrieve Partner’s Bill
@@ -954,13 +966,12 @@ This API does not require a request body.
 | country | String | Country Code |
 | cutoff | Long | cutoff |
 | lateFee | Long | Overdue Amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 | realSupplyAmount | Long | Actual Supply Amount |
 | realTaxAmount | Long | Actual VAT Paid |
 | receiptStatusCode | String | Sales Voucher Status Code<br><br>- NONE: sales have not yet been reported to the accounting team, so sales receipts cannot be viewed.<br>- EXIST: after the final amount adjustment is completed, the sales report is sent to the accounting team, and the sales voucher can be viewed. |
 | refundAccountRegisterStatusCode | String | Status of whether the refund account has been registered<br><br>- ALLOW: Open status of refund account registration<br>- DENY: Default, Close status of register refund accounts |
 | details | List&lt;PaymentStatementDetail&gt; | List of details by billing group |
-
-**details**
 
 **PaymentStatementDetail**
 
@@ -969,19 +980,21 @@ This API does not require a request body.
 | billingGroupId | String | Billing group ID |
 | billingGroupName | String | Billing group name |
 | charge | Long | Amount used |
-| contractDiscount | Long | Commitment-based discount amount |
-| contractExtra | Long | Commitment underutilization charge amount |
-| totalAmount | Long | Final amount |
-| totalCredit | Long | Total credit usage amount |
 | totalDiscount | Long | Discount amount |
 | totalExtra | Long | Surcharge amount |
-| creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage amount |
+| totalAmount | Long | Final amount |
+| contractDiscount | Long | Commitment-based discount amount |
+| contractExtra | Long | Commitment underutilization charge amount |
+| ocpDiscount | Long | Optimized Cost Plans(OCPs) discount amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
+| totalCredit | Long | Total credit usage amount |
+| creditUsages | List&lt;CreditUsageProtocol&gt; | Credit usage list |
 | orgList | List&lt;Organization&gt; | List of organizations |
 | usageGroups | List&lt;UsageGroup&gt; | List of usage groups |
-| billingGroupDiscount | PaymentStatementBillingGroupAdjustment  | Billing group discount details |
-| billingGroupExtra | PaymentStatementBillingGroupAdjustment  | Billing group surcharge details |
-| projectDiscount | PaymentStatementProjectAdjustment  | Project-specific discount details |
-| projectExtra | PaymentStatementProjectAdjustment  | Project-specific surcharge details |
+| billingGroupDiscount | PaymentStatementBillingGroupAdjustment | Billing group discount details |
+| billingGroupExtra | PaymentStatementBillingGroupAdjustment | Billing group surcharge details |
+| projectDiscount | PaymentStatementProjectAdjustment | Project-specific discount details |
+| projectExtra | PaymentStatementProjectAdjustment | Project-specific surcharge details |
 
 **CreditUsageProtocol**
 
@@ -989,7 +1002,7 @@ This API does not require a request body.
 | --- | --- | --- |
 | balanceTypeCode | String | Campaign type (balance type) |
 | balanceTypeName | String | Campaign type name (balance type name) |
-| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | Campaign type name multilingual code |
+| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | Campaign type name multilingual map |
 | usageAmount | Long | Credit amount used |
 
 **Organization**
@@ -999,27 +1012,30 @@ This API does not require a request body.
 | orgId | String | Organization ID |
 | orgName | String | Organization name |
 | totalAmount | Long | Organization total amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
 
 **UsageGroup**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | categoryMain | String | Main category |
-| needType | Boolean | Whether to display the category column |
 | regionTypeCode | String | Region |
 | stationId | String | Station ID |
 | stationName | String | Station name |
-| totalItems | Integer | Total number of usages by UsageGroup |
-| totalPrice | Long | Total usage amount with commitment-based discount discount applied |
+| needType | Boolean | Whether to display the category column |
 | usagePrice | Long | Total usage amount |
-| usageResourceGroups | List&lt;UsageGroup.UsageResourceGroup&gt; | Grouped usage list |
+| totalPrice | Long | Total usage amount with commitment-based discount applied |
+| totalDiscount | Long | Total discount amount |
+| prePaidTotalAmount | Long | Prepayment usage amount |
+| totalItems | Integer | Total number of usages per UsageGroup |
 | usages | List&lt;Usage&gt; | Detailed usage list |
+| usageResourceGroups | List&lt;UsageResourceGroup&gt; | Grouped usage list |
 
 **PaymentStatementBillingGroupAdjustment**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| totalAdjustment | Long | Discount/surcharge amount |
+| totalAdjustment | Long | Total discount/surcharge amount |
 | details | List&lt;PaymentStatementAdjustment&gt; | Details |
 
 **PaymentStatementAdjustment**
@@ -1034,7 +1050,7 @@ This API does not require a request body.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| totalAdjustment | Long | Total Discount/Surcharge |
+| totalAdjustment | Long | Total discount/surcharge amount |
 | details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | Details |
 
 **PaymentStatementProjectAdjustmentDetail**
