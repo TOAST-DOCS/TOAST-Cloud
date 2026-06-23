@@ -320,6 +320,8 @@ To test payments, add 'test_mode'. If 'test_mode' is not set, the default value 
 
 > [Note] Store codes are defined in the [IapStoreCode](./iap-android/#iapstorecode) class.
 
+<a id="product-types"></a>
+
 ## Product Types
 
 - There are currently three supported product types: consumable products, subscription products, and consumable subscription products.
