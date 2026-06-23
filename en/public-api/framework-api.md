@@ -15,7 +15,7 @@ Framework APIs use User Access Key tokens for authentication/authorization when 
 
 ### Common
 
-<a id="요청"></a>
+<a id="request"></a>
 
 #### Request
 When calling the Public API, you must include the following Request Header.
@@ -25,7 +25,7 @@ When calling the Public API, you must include the following Request Header.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Header |  x-nhn-authorization | String| Yes | Bearer-type token issued to the user |
 
-<a id="응답"></a>
+<a id="response"></a>
 
 #### Response
 When the Public API returns a response, the following header is included in the response body.
@@ -45,7 +45,7 @@ When the Public API returns a response, the following header is included in the 
 |   resultCode | Integer| No | Result code. Returns 0 on success, or an error code on failure.  |
 |   resultMessage | String| No | Result message  |
 
-<a id="common-type"></a>
+<a id="common-types"></a>
 
 #### Common Types
 <a id="공통-타입"></a>
@@ -77,81 +77,81 @@ When the Public API returns a response, the following header is included in the 
 
 | Method | HTTP Request | Description |
 |------------- | ------------- | -------------|
-| POST |[/v1/projects/{project-id}/members](#프로젝트-멤버-생성) | Create project member |
-| POST |[/v1/organizations/{org-id}/projects](#프로젝트-추가) | Add project |
-| DELETE |[/v1/projects/{project-id}/members/{target-uuid}](#프로젝트-멤버-단건-삭제) | Delete a single project member |
-| DELETE |[/v1/projects/{project-id}](#프로젝트-삭제) | Delete project |
-| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#프로젝트-서비스-종료) | Disable project service |
-| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#프로젝트-서비스-이용) | Enable project service |
-| GET |[/v1/organizations/{org-id}/roles](#조직-역할-목록-조회) | List organization roles |
-| GET |[/v1/projects/{project-id}/roles](#프로젝트-역할-목록-조회) | List project roles |
-| GET |[/v1/organizations/{org-id}/domains](#조직-도메인-검색) | Search organization domains |
-| GET |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-단건-조회) | Get a single organization member |
-| POST |[/v1/organizations/{org-id}/members/search](#조직-멤버-목록-조회) | List organization members |
-| GET |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-전체-조회) | List all project common role groups in an organization |
-| GET |[/v1/product-uis/hierarchy](#서비스-계층-구조-조회) | Retrieve service hierarchy |
-| GET |[/v1/projects/{project-id}/products/{product-id}](#프로젝트에서-사용-중인-서비스-조회) | Retrieve services in use in a project |
-| GET |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | Get a single project member |
-| POST |[/v1/projects/{project-id}/members/search](#프로젝트-멤버-목록-조회) | List project members |
-| GET |[/v1/projects/{project-id}/project-role-groups/{role-group-id}](#프로젝트-역할-그룹-단건-조회) | Get a single project role group |
-| GET |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}](#조직의-프로젝트-공통-역할-그룹-단건-조회) | Get a single project common role group in an organization |
-| GET |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-전체-조회) | List all project role groups |
-| GET |[/v1/organizations/{org-id}/projects](#조직에-속한-프로젝트-목록-조회) | List projects in an organization |
-| GET |[/v1/organizations/{org-id}/governances](#사용-중인-조직-거버넌스-목록-조회) | List organization governances in use |
-| POST |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-생성) | Create project common role group in an organization |
-| DELETE |[/v1/organizations/{org-id}/project-role-groups](#조직의-프로젝트-공통-역할-그룹-삭제) | Delete project common role groups in an organization |
-| PUT |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos](#조직의-프로젝트-공통-역할-그룹-정보-수정) | Modify project common role group information in an organization |
-| PUT |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}/roles](#조직의-프로젝트-공통-역할-그룹-역할-수정) | Modify roles in a project common role group in an organization |
-| POST |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-생성) | Create project role group |
-| DELETE |[/v1/projects/{project-id}/project-role-groups](#프로젝트-역할-그룹-삭제) | Delete project role groups |
-| PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos](#프로젝트-역할-그룹-정보-수정) | Modify project role group information |
-| PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#프로젝트-역할-그룹-역할-수정) | Modify roles in a project role group |
-| GET |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-전체-조회) | List all organization role groups |
-| GET |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}](#조직-역할-그룹-단건-조회) | Get a single organization role group |
-| POST |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-생성) | Create organization role group |
-| DELETE |[/v1/organizations/{org-id}/org-role-groups](#조직-역할-그룹-삭제) | Delete organization role groups |
-| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos](#조직-역할-그룹-정보-수정) | Modify organization role group information |
-| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles](#조직-역할-그룹-역할-수정) | Modify roles in an organization role group |
-| PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#조직-멤버-역할-수정) | Modify organization member roles |
-| PUT |[/v1/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-역할-수정) | Modify project member roles |
-| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-계정-단건-조회) | Get a single organization IAM account |
-| GET |[/v1/iam/organizations/{org-id}/members](#조직-IAM-계정-목록-조회) | List organization IAM accounts |
-| POST |[/v1/iam/organizations/{org-id}/members](#조직-IAM-계정-추가) | Add organization IAM account |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#IAM-계정-비밀번호-변경-이메일-전송) | Send IAM account password change email |
-| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-계정-정보-수정) | Modify organization IAM account information |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#조직-IAM-계정-비밀번호-변경) | Change organization IAM account password |
-| GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-IAM-계정-로그인-세션-설정-정보를-조회) | View organization IAM sign-in session settings information |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-IAM-계정-로그인-2차-인증에-대한-설정을-조회) | View settings for organizational IAM sign-in second factor authentication |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-계정-로그인-실패-보안-설정을-조회) | View Organization IAM Login Failure Security Settings |
-| GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#조직-IAM-계정-비밀번호-정책-조회) | Retrieve organization IAM account password policy |
-| GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | List organization IP ACLs |
-| POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-서비스-가격-조회) | Retrieve service prices registered under the pay-as-you-go plan |
-| GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-서비스-목록-조회) | List services registered under the pay-as-you-go plan |
-| GET | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-통합-Appkey-조회) | Retrieve project integrated Appkey |
-| GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-목록-조회) | List User Access Key IDs |
-| POST | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-통합-Appkey-등록) | Register project integrated Appkey |
-| POST |[/v1/authentications/user-access-keys](#User-Access-Key-ID-등록) | Register User Access Key ID |
-| DELETE | [/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#프로젝트-통합-Appkey-삭제) | Delete project integrated Appkey |
-| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#User-Access-Key-ID-비밀-키-재발급) | Reissue the User Access Key ID secret key |
-| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-상태-수정) | Modify User Access Key ID status |
-| DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-삭제) | Delete User Access Key ID |
-| GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-목록-조회) | List tokens |
-| DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#토큰-다건-만료) | Expire multiple tokens |
-| POST |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-생성) | Create project IAM account |
-| DELETE |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-다건-삭제) | Delete multiple project IAM accounts |
-| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-멤버-단건-조회) | Get a single project IAM account |
-| GET |[/v1/iam/projects/{project-id}/members](#프로젝트-IAM-계정-목록-조회) | List project IAM accounts |
-| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#프로젝트-IAM-계정-역할-수정) | Modify project IAM account roles |
-| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-목록-조회) | List authentication credentials of organization sub-members |
-| GET | [/v1/organizations](#자신의-조직-목록-조회) | List your organizations |
-| POST | [/v1/organizations](#자신의-조직-추가) | Add your organization |
-| DELETE | [/v1/organizations/{org-id}](#조직-단건-삭제) | Delete a single organization |
-| GET | [/v1/products](#서비스-정보-목록-조회) | List service information |
-| GET | [/v1/messages/role](#역할-설명-다국어-조회) | Retrieve multilingual role descriptions |
+| POST |[/v1/projects/{project-id}/members](#create-project-member) | Create project member |
+| POST |[/v1/organizations/{org-id}/projects](#add-project) | Add project |
+| DELETE |[/v1/projects/{project-id}/members/{target-uuid}](#delete-a-single-project-member) | Delete a single project member |
+| DELETE |[/v1/projects/{project-id}](#delete-a-project) | Delete project |
+| DELETE |[/v1/projects/{project-id}/products/{product-id}/disable](#disable-project-service) | Disable project service |
+| POST |[/v1/projects/{project-id}/products/{product-id}/enable](#enable-service-for-project) | Enable project service |
+| GET |[/v1/organizations/{org-id}/roles](#list-organization-roles) | List organization roles |
+| GET |[/v1/projects/{project-id}/roles](#list-project-roles) | List project roles |
+| GET |[/v1/organizations/{org-id}/domains](#search-organization-domains) | Search organization domains |
+| GET |[/v1/organizations/{org-id}/members/{member-uuid}](#get-organization-member) | Get a single organization member |
+| POST |[/v1/organizations/{org-id}/members/search](#list-organization-members) | List organization members |
+| GET |[/v1/organizations/{org-id}/project-role-groups](#view-all-common-role-groups-for-projects-in-the-organization) | List all project common role groups in an organization |
+| GET |[/v1/product-uis/hierarchy](#get-service-hierarchy) | Retrieve service hierarchy |
+| GET |[/v1/projects/{project-id}/products/{product-id}](#get-service-used-by-project) | Retrieve services in use in a project |
+| GET |[/v1/projects/{project-id}/members/{member-uuid}](#get-project-member) | Get a single project member |
+| POST |[/v1/projects/{project-id}/members/search](#list-project-members) | List project members |
+| GET |[/v1/projects/{project-id}/project-role-groups/{role-group-id}](#get-project-role-group) | Get a single project role group |
+| GET |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}](#view-a-common-role-group-for-the-project-in-the-organization) | Get a single project common role group in an organization |
+| GET |[/v1/projects/{project-id}/project-role-groups](#list-all-project-role-groups) | List all project role groups |
+| GET |[/v1/organizations/{org-id}/projects](#list-projects-in-organization) | List projects in an organization |
+| GET |[/v1/organizations/{org-id}/governances](#list-organization-governance-in-use) | List organization governances in use |
+| POST |[/v1/organizations/{org-id}/project-role-groups](#create-a-common-role-group-for-projects-in-the-organization) | Create project common role group in an organization |
+| DELETE |[/v1/organizations/{org-id}/project-role-groups](#delete-a-project-common-role-group-in-the-organization) | Delete project common role groups in an organization |
+| PUT |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos](#modify-your-organizations-project-common-role-group-information) | Modify project common role group information in an organization |
+| PUT |[/v1/organizations/{org-id}/project-role-groups/{role-group-id}/roles](#modify-your-organizations-project-common-roles-group-roles) | Modify roles in a project common role group in an organization |
+| POST |[/v1/projects/{project-id}/project-role-groups](#create-project-role-group) | Create project role group |
+| DELETE |[/v1/projects/{project-id}/project-role-groups](#delete-project-role-group) | Delete project role groups |
+| PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos](#edit-project-role-group-information) | Modify project role group information |
+| PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#modify-project-role-group-roles) | Modify roles in a project role group |
+| GET |[/v1/organizations/{org-id}/org-role-groups](#list-all-organization-role-groups) | List all organization role groups |
+| GET |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}](#get-an-organization-role-group) | Get a single organization role group |
+| POST |[/v1/organizations/{org-id}/org-role-groups](#create-organization-role-group) | Create organization role group |
+| DELETE |[/v1/organizations/{org-id}/org-role-groups](#delete-organization-role-group) | Delete organization role groups |
+| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos](#modify-organization-role-group-information) | Modify organization role group information |
+| PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles](#modify-organization-role-group-roles) | Modify roles in an organization role group |
+| PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#modify-organization-member-role) | Modify organization member roles |
+| PUT |[/v1/projects/{project-id}/members/{member-uuid}](#modify-project-member-role) | Modify project member roles |
+| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#get-organization-iam-account) | Get a single organization IAM account |
+| GET |[/v1/iam/organizations/{org-id}/members](#list-organization-iam-accounts) | List organization IAM accounts |
+| POST |[/v1/iam/organizations/{org-id}/members](#add-organization-iam-account) | Add organization IAM account |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#send-iam-account-password-change-email) | Send IAM account password change email |
+| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#modify-organization-iam-account) | Modify organization IAM account information |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#change-organization-iam-account-password) | Change organization IAM account password |
+| GET |[/v1/iam/organizations/{org-id}/settings/session](#view-organization-iam-account-sign-in-session-settings-information) | View organization IAM sign-in session settings information |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#view-settings-for-organizational-iam-account-login-two-factor-authentication) | View settings for organizational IAM sign-in second factor authentication |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#view-organization-iam-account-login-failure-security-settings) | View Organization IAM Login Failure Security Settings |
+| GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#get-organization-iam-account-password-policy) | Retrieve organization IAM account password policy |
+| GET |[/v1/organizations/{org-id}/products/ip-acl](#list-organization-ip-acls) | List organization IP ACLs |
+| POST |[/v1/billing/contracts/basic/products/prices/search](#get-service-prices-registered-in-pay-as-you-go) | Retrieve service prices registered under the pay-as-you-go plan |
+| GET |[/v1/billing/contracts/basic/products](#list-services-registered-for-pay-as-you-go) | List services registered under the pay-as-you-go plan |
+| GET | [/v1/authentications/projects/{project-id}/project-appkeys](#list-project-integrated-appkeys) | Retrieve project integrated Appkey |
+| GET |[/v1/authentications/user-access-keys](#list-user-access-key-ids) | List User Access Key IDs |
+| POST | [/v1/authentications/projects/{project-id}/project-appkeys](#register-a-project-integrated-appkey) | Register project integrated Appkey |
+| POST |[/v1/authentications/user-access-keys](#register-user-access-key-id) | Register User Access Key ID |
+| DELETE | [/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#delete-project-integrated-appkey) | Delete project integrated Appkey |
+| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#reissue-the-user-access-key-id-secret-key) | Reissue the User Access Key ID secret key |
+| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#modify-user-access-key-id-status) | Modify User Access Key ID status |
+| DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#delete-a-user-access-key-id) | Delete User Access Key ID |
+| GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#list-tokens) | List tokens |
+| DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#expire-multiple-tokens) | Expire multiple tokens |
+| POST |[/v1/iam/projects/{project-id}/members](#create-project-iam-account) | Create project IAM account |
+| DELETE |[/v1/iam/projects/{project-id}/members](#delete-multiple-project-iam-accounts) | Delete multiple project IAM accounts |
+| GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#get-project-member) | Get a single project IAM account |
+| GET |[/v1/iam/projects/{project-id}/members](#list-project-iam-accounts) | List project IAM accounts |
+| PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#modify-project-iam-account-role) | Modify project IAM account roles |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#view-all-credentials-of-members-under-organizations) | List authentication credentials of organization sub-members |
+| GET | [/v1/organizations](#list-my-organizations) | List your organizations |
+| POST | [/v1/organizations](#add-your-own-organization) | Add your organization |
+| DELETE | [/v1/organizations/{org-id}](#delete-organization) | Delete a single organization |
+| GET | [/v1/products](#list-service-information) | List service information |
+| GET | [/v1/messages/role](#list-role-multilingual-descriptions) | Retrieve multilingual role descriptions |
 
 
 
-<a id="프로젝트-멤버-생성"></a>
+<a id="create-project-member"></a>
 
 #### Create Project Member
 
@@ -225,10 +225,10 @@ API to add a member to a project.
 
 | Name | Type           | Required | Description |   
 |------------ |--------------| ------- | ------------ |
-|   header | [Common Response](#응답) | Yes |
+|   header | [Common Response](#response) | Yes |
 
 
-<a id="프로젝트-추가"></a>
+<a id="add-project"></a>
 
 #### Add Project
 
@@ -281,7 +281,7 @@ Adds a project to an organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#응답) | Yes  |
+|   header | [Common response](#response) | Yes  |
 |   regDateTime | Date | Yes   | Project creation date and time | 
 |   description | String | No   | Project description | 
 |   ownerId | String | Yes   | Project owner member ID | 
@@ -291,7 +291,7 @@ Adds a project to an organization.
 |   projectStatusCode | String | Yes   | Project status<br><ul><li>STABLE: The project is in normal use.</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: The project has been blocked by an administrator.</li><li>TERMINATED: All resources have been deleted due to overdue payment.</li><li>DISABLED: All services are closed but the payment has not been made.</li></ul> | 
 
 
-<a id="프로젝트-멤버-단건-삭제"></a>
+<a id="delete-a-single-project-member"></a>
 
 #### Delete a Single Project Member
 
@@ -331,11 +331,11 @@ API to delete a user from a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 
 
 
-<a id="프로젝트-삭제"></a>
+<a id="delete-a-project"></a>
 
 #### Delete a Project
 
@@ -378,11 +378,11 @@ You'll need one permission from the list below
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 
 
 
-<a id="프로젝트-서비스-종료"></a>
+<a id="disable-project-service"></a>
 
 #### Disable Project Service
 
@@ -427,7 +427,7 @@ API to disable a user-specified service so that it is no longer used by this pro
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   childProducts | List&lt;ChildProduct>| No   | Subservice information for that service, not included if there are no subservices.<br>Requires you to disable the child service first and then disable the service.|
 
 ###### ChildProduct
@@ -440,7 +440,7 @@ API to disable a user-specified service so that it is no longer used by this pro
 |   statusCode | String| Yes |   Service status (STABLE, CLOSED) |
 
 
-<a id="프로젝트-서비스-이용"></a>
+<a id="enable-service-for-project"></a>
 
 #### Enable Service for Project
 
@@ -485,7 +485,7 @@ This API requests activation to enable a service specified by the user in the pr
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   appKey | String| Yes | AppKey information for the service your project is using|
 |   parentProduct | ParentProduct| No | Shows parent service information if it exists, or does not include it if no parent service exists |
 |   secretKey | String| No| Secret key information for the service your project is using<br> Provided only for services that use a secret key |
@@ -504,7 +504,7 @@ This API requests activation to enable a service specified by the user in the pr
 
 
 
-<a id="조직-역할-목록-조회"></a>
+<a id="list-organization-roles"></a>
 
 #### List Organization Roles
 
@@ -557,7 +557,7 @@ API to request a list of roles that can be granted to users in your organization
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   roles | List&lt;RoleProtocol>| Yes  | Role list |
 |   totalCount | Integer| Yes  | Total count |
 
@@ -574,7 +574,7 @@ API to request a list of roles that can be granted to users in your organization
 |   roleName | String| Yes | Role/privilege name  |
 
 
-<a id="프로젝트-역할-목록-조회"></a>
+<a id="list-project-roles"></a>
 
 #### List Project Roles
 
@@ -624,11 +624,11 @@ API to request a list of roles that can be granted to project users.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   roles | List&lt;[RoleProtocol](#roleprotocol)>| Yes  | Role list |
 |   totalCount | Integer| Yes  | Total count |
 
-<a id="조직-도메인-검색"></a>
+<a id="search-organization-domains"></a>
 
 #### Search Organization Domains
 
@@ -673,7 +673,7 @@ API to look up domains for a specific organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   domainList | List&lt;OrgDomainProtocol>| Yes  |
 
 
@@ -686,7 +686,7 @@ API to look up domains for a specific organization.
 |   orgDomainName | String| Yes | Organization domain name |
 
 
-<a id="조직-멤버-단건-조회"></a>
+<a id="get-organization-member"></a>
 
 #### Get Organization Member
 
@@ -758,7 +758,7 @@ Retrieves a member belonging to the organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   orgMember | OrgMemberRoleBundleProtocol| No  | Member information; not included on error |
 
 ###### OrgMemberRoleBundleProtocol
@@ -808,7 +808,7 @@ Retrieves a member belonging to the organization.
 
 
 
-<a id="조직-멤버-목록-조회"></a>
+<a id="list-organization-members"></a>
 
 #### List Organization Members
 
@@ -883,7 +883,7 @@ API to get a list of NHN Cloud members that belong to this organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   orgMembers | List&lt;OrgMemberWithInviteMemberrotocol>| Yes | Organization member list |
 |   paging | PagingResponse| Yes | Paging information |
 
@@ -915,7 +915,7 @@ API to get a list of NHN Cloud members that belong to this organization.
 
 
 
-<a id="조직의-프로젝트-공통-역할-그룹-전체-조회"></a>
+<a id="view-all-common-role-groups-for-projects-in-the-organization"></a>
 
 #### View all common role groups for projects in the organization
 
@@ -974,7 +974,7 @@ API to get a list of project common role groups set up by your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#응답)| Yes  |
+|   header | [Common response](#response)| Yes  |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   roleGroups | List&lt;RoleGroupProtocol>| Yes | List of available role groups in your project  |
 
@@ -991,7 +991,7 @@ API to get a list of project common role groups set up by your organization.
 |   roleGroupType | String| Yes | Type of role group<br><ul><li>ORG: Project common role group</li><li>ORG_ROLE_GROUP: Organization role group</li><li>PROJECT: Project role group</li> |
 
 
-<a id="서비스-계층-구조-조회"></a>
+<a id="get-service-hierarchy"></a>
 
 #### Get Service Hierarchy
 
@@ -1040,7 +1040,7 @@ However, if you're viewing an organization's services, you must be a member of a
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#응답)| Yes |
+|   header | [Common response](#response)| Yes |
 |   productUiList | List&lt;ProductUiHierarchyProtocol>| Yes  | Homepage category service UI list |
 
 ###### ProductUiHierarchyProtocol
@@ -1056,7 +1056,7 @@ However, if you're viewing an organization's services, you must be a member of a
 |   productUiName | String| No|
 
 
-<a id="프로젝트에서-사용-중인-서비스-조회"></a>
+<a id="get-service-used-by-project"></a>
 
 #### Get Service Used by Project
 
@@ -1111,7 +1111,7 @@ However, if you're viewing an organization's services, you must be a member of a
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   hasUpdateSecretKeyPermission | Boolean| Yes | Permission to reissue the secret key  |
 |   product | ProjectProductRelationAndProductProtocol| Yes  | Returns information about the services being used by the project for the specified service ID, not including on error |
 
@@ -1135,7 +1135,7 @@ However, if you're viewing an organization's services, you must be a member of a
 |   updateUuid | String| No | UUID of the user who last modified the service AppKey  |
 
 
-<a id="프로젝트-멤버-단건-조회"></a>
+<a id="get-project-member"></a>
 
 #### Get Project Member
 
@@ -1202,7 +1202,7 @@ API to get a specific member of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   projectMember | ProjectMemberRoleBundleProtocol| Yes  | Added member information, not included on error |
 
 
@@ -1225,7 +1225,7 @@ API to get a specific member of a project.
 
 
 
-<a id="프로젝트-멤버-목록-조회"></a>
+<a id="list-project-members"></a>
 
 #### List Project Members
 
@@ -1290,7 +1290,7 @@ API for getting a list of members belonging to a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   projectMembers | List&lt;ProjectMemberProtocol>| Yes | Project members  |
 
@@ -1310,7 +1310,7 @@ API for getting a list of members belonging to a project.
 |   uuid | String| No | Member UUID  |
 
 
-<a id="프로젝트-역할-그룹-단건-조회"></a>
+<a id="get-project-role-group"></a>
 
 #### Get Project Role Group
 
@@ -1374,7 +1374,7 @@ API to get a project role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#응답)| Yes |
+|   header | [Common response](#response)| Yes |
 |   roleGroup | RoleGroupBundleProtocol| Yes | Role group including associated roles  |
 
 ###### RoleGroupBundleProtocol
@@ -1390,7 +1390,7 @@ API to get a project role group.
 
 
 
-<a id="조직의-프로젝트-공통-역할-그룹-단건-조회"></a>
+<a id="view-a-common-role-group-for-the-project-in-the-organization"></a>
 
 #### View a Common Role Group for the Project in the Organization
 
@@ -1452,13 +1452,13 @@ API to get a project common role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | Role group including associated roles  |
 
 
 
 
-<a id="프로젝트-역할-그룹-전체-조회"></a>
+<a id="list-all-project-role-groups"></a>
 
 #### List All Project Role Groups
 
@@ -1511,11 +1511,11 @@ API to get all role groups in a project.
 
 | Name | Type | Required | Description |
 |------------ | ------------- | --------- | ------------ |
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 | paging | [PagingResponse](#pagingresponse) | Yes | |
 | roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | List of available role groups in your project |
 
-<a id="조직에-속한-프로젝트-목록-조회"></a>
+<a id="list-projects-in-organization"></a>
 
 #### List Projects in Organization
 
@@ -1571,7 +1571,7 @@ Organization members
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   paging | [PagingResponse](#pagingresponse) | Yes |
 |   projectList | List&lt;OrgProjectMemberRoleProtocol>| Yes |
 
@@ -1591,7 +1591,7 @@ Organization members
 |   regDateTime | Date| Yes| Project registration date and time |
 
 
-<a id="사용-중인-조직-거버넌스-목록-조회"></a>
+<a id="list-organization-governance-in-use"></a>
 
 #### List organization governance in use
 
@@ -1633,7 +1633,7 @@ Retrieves active governance settings.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 |   usingGovernances | List&lt;GovernanceProtocol>| No | List of governance in use  |
 
 
@@ -1645,7 +1645,7 @@ Retrieves active governance settings.
 |   governanceTypeCode | String| No | Governance type<br>- APPROVE_PROCESS: Approval processing<br>- BLOCK_STORAGE_SNAPSHOT: Whether to use the Snapshot feature of BlockStorage<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: Set control of IaaS resource permissions and restriction on terminal access<br>- PRIVACY_PROTECTION: Privacy protection<br>- UNIQUE_INSTANCE_NAME: Prevention of duplicate instance names |
 |   regDatetime | Date| No | Date and time when the governance was enabled  |
 
-<a id="조직의-프로젝트-공통-역할-그룹-생성"></a>
+<a id="create-a-common-role-group-for-projects-in-the-organization"></a>
 
 #### Create a common role group for projects in the organization
 
@@ -1701,10 +1701,10 @@ API to create project common role groups.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
 
-<a id="조직의-프로젝트-공통-역할-그룹-삭제"></a>
+<a id="delete-a-project-common-role-group-in-the-organization"></a>
 
 #### Delete a project common role group in the organization
 
@@ -1748,9 +1748,9 @@ API to delete a project common role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
-<a id="조직의-프로젝트-공통-역할-그룹-정보-수정"></a>
+<a id="modify-your-organizations-project-common-role-group-information"></a>
 
 #### Modify your organization's project common role group information
 
@@ -1797,9 +1797,9 @@ API to modify the name and description of a project's common role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
-<a id="조직의-프로젝트-공통-역할-그룹-역할-수정"></a>
+<a id="modify-your-organizations-project-common-roles-group-roles"></a>
 
 #### Modify your organization's project common roles group roles
 
@@ -1845,9 +1845,9 @@ API to modify roles in the project common roles group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
-<a id="프로젝트-역할-그룹-생성"></a>
+<a id="create-project-role-group"></a>
 
 #### Create Project Role Group
 
@@ -1887,9 +1887,9 @@ API to create role groups in your project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#응답)| Yes   |
+|   header | [Common response](#response)| Yes   |
 
-<a id="프로젝트-역할-그룹-삭제"></a>
+<a id="delete-project-role-group"></a>
 
 #### Delete project role group
 
@@ -1929,9 +1929,9 @@ API to delete a project role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
-<a id="프로젝트-역할-그룹-정보-수정"></a>
+<a id="edit-project-role-group-information"></a>
 
 #### Edit project role group information
 
@@ -1967,10 +1967,10 @@ API to modify the name and description of a project role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
 
-<a id="프로젝트-역할-그룹-역할-수정"></a>
+<a id="modify-project-role-group-roles"></a>
 
 #### Modify Project Role Group Roles
 
@@ -2013,10 +2013,10 @@ API to modify roles in the project role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
 
-<a id="조직-역할-그룹-전체-조회"></a>
+<a id="list-all-organization-role-groups"></a>
 
 #### List All Organization Role Groups
 
@@ -2068,11 +2068,11 @@ API to get all role groups in an organization.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | --------- | ------------ |
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 | paging | [PagingResponse](#pagingresponse) | Yes | |
 | roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | List of role groups available in the organization |
 
-<a id="조직-역할-그룹-단건-조회"></a>
+<a id="get-an-organization-role-group"></a>
 
 #### Get an Organization Role Group
 
@@ -2138,10 +2138,10 @@ API to get an organization's role groups.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | --------- | ------------ |
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 | roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | Role groups with related roles |
 
-<a id="조직-역할-그룹-생성"></a>
+<a id="create-organization-role-group"></a>
 
 #### Create Organization Role Group
 
@@ -2176,9 +2176,9 @@ Creates role groups in an organization.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [Common response](#응답) | Yes | |
+| header | [Common response](#response) | Yes | |
 
-<a id="조직-역할-그룹-삭제"></a>
+<a id="delete-organization-role-group"></a>
 
 #### Delete Organization Role Group
 
@@ -2213,9 +2213,9 @@ API to delete an organization role group.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 
-<a id="조직-역할-그룹-정보-수정"></a>
+<a id="modify-organization-role-group-information"></a>
 
 #### Modify Organization Role Group Information
 
@@ -2251,10 +2251,10 @@ API to modify the name and description of an organization role group.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [Common response](#응답) | Yes | |
+| header | [Common response](#response) | Yes | |
 
 
-<a id="조직-역할-그룹-역할-수정"></a>
+<a id="modify-organization-role-group-roles"></a>
 
 #### Modify Organization Role Group Roles
 
@@ -2296,10 +2296,10 @@ API to modify roles in the organization role group.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 
 
-<a id="조직-멤버-역할-수정"></a>
+<a id="modify-organization-member-role"></a>
 
 #### Modify Organization Member Role
 
@@ -2346,9 +2346,9 @@ API to modify the roles of members in the organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
-<a id="프로젝트-멤버-역할-수정"></a>
+<a id="modify-project-member-role"></a>
 
 #### Modify Project Member Role
 
@@ -2386,9 +2386,9 @@ API to modify the role of a specified member in a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#응답)| Yes   |
+|   header | [Common response](#response)| Yes   |
 
-<a id="조직-IAM-계정-단건-조회"></a>
+<a id="get-organization-iam-account"></a>
 
 #### Get Organization IAM Account
 
@@ -2477,7 +2477,7 @@ Retrieves an IAM account that belongs to an organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 |   orgMember | OrgIamMemberRoleBundleProtocol| No  |
 
 ###### OrgIamMemberRoleBundleProtocol
@@ -2529,7 +2529,7 @@ Retrieves an IAM account that belongs to an organization.
 |   role | String| No |
 
 
-<a id="조직-IAM-계정-목록-조회"></a>
+<a id="list-organization-iam-accounts"></a>
 
 #### List Organization IAM Accounts
 
@@ -2608,7 +2608,7 @@ API to get a list of IAM accounts that belong to this organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#응답)| Yes   |
+|   header | [Common response](#response)| Yes   |
 |   orgMembers | List&lt;IamOrgMemberProtocol>| No | List of organization IAM accounts  |
 |   paging | [PagingResponse](#pagingresponse)| No  |
 
@@ -2649,7 +2649,7 @@ API to get a list of IAM accounts that belong to this organization.
 
 
 
-<a id="조직-IAM-계정-추가"></a>
+<a id="add-organization-iam-account"></a>
 
 #### Add Organization IAM Account
 
@@ -2718,13 +2718,13 @@ Adds an IAM account to an organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 |   uuid | String| No | IAM account UUID  |
 
 
 
 
-<a id="IAM-계정-비밀번호-변경-이메일-전송"></a>
+<a id="send-iam-account-password-change-email"></a>
 
 #### Send IAM Account Password Change Email
 
@@ -2771,9 +2771,9 @@ API to send an email to an IAM account to change their password.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#응답)| Yes   |
+|   header | [Common response](#response)| Yes   |
 
-<a id="조직-IAM-계정-정보-수정"></a>
+<a id="modify-organization-iam-account"></a>
 
 #### Modify Organization IAM Account
 
@@ -2841,9 +2841,9 @@ Modifies the IAM account information of an organization.
 
 | Name | Type | Required | Description |
 |------------ | ------------- | ----------- | ------------ |
-| header | [Common response](#응답) | Yes | |
+| header | [Common response](#response) | Yes | |
 
-<a id="조직-IAM-계정-비밀번호-변경"></a>
+<a id="change-organization-iam-account-password"></a>
 
 #### Change Organization IAM Account Password
 
@@ -2887,9 +2887,9 @@ API to change the password of an organization IAM account.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#응답)| Yes   |
+|   header | [Common response](#response)| Yes   |
 
-<a id="조직-IP-ACL-목록-조회"></a>
+<a id="list-organization-ip-acls"></a>
 
 #### List Organization IP ACLs
 
@@ -2928,7 +2928,7 @@ API to get IP ACL settings.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#응답)| Yes   |
+|   header | [Common response](#response)| Yes   |
 |   orgIpAcl | List&lt;OrgIpAclProtocol>| Yes  | If the result is an empty list, the setting is not set. |
 
 ###### OrgIpAclProtocol
@@ -2939,7 +2939,7 @@ API to get IP ACL settings.
 |   ips | List&lt;String>| Yes  | Allowed IPs | 
 |   productId | String| Yes  | Service ID<br>If undefined, applies the common setting|
 
-<a id="조직-IAM-계정-로그인-세션-설정-정보를-조회"></a>
+<a id="view-organization-iam-account-sign-in-session-settings-information"></a>
 
 #### View Organization IAM Account Sign-in Session Settings Information
 
@@ -2982,7 +2982,7 @@ API to get login session settings information.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [Common Response](#응답)| Yes   |
+| header | [Common Response](#response)| Yes   |
 | result | Content | Yes | Settings content |
 
 ###### Content
@@ -2994,7 +2994,7 @@ API to get login session settings information.
 |   mobileSessionTimeoutMinutes | Integer| Yes | Mobile session timeout (minutes) |
 |   sessionType | String| Yes | fixed/idle. The default is fixed.  |
 
-<a id="조직-IAM-계정-로그인-2차-인증에-대한-설정을-조회"></a>
+<a id="view-settings-for-organizational-iam-account-login-two-factor-authentication"></a>
 
 #### View Settings for Organizational IAM Account Login Two-Factor Authentication
 
@@ -3053,7 +3053,7 @@ API to get settings for login two-factor authentication.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 |   result | Result| No |  Response content<br>If never set, null is returned |
 
 ###### Result
@@ -3087,7 +3087,7 @@ API to get settings for login two-factor authentication.
 |   enable | Boolean| No | Whether enabled<br>true (enabled), false (disabled)  |
 |   ipList | List&lt;String>| No | Exception IP list |
 
-<a id="조직-IAM-계정-로그인-실패-보안-설정을-조회"></a>
+<a id="view-organization-iam-account-login-failure-security-settings"></a>
 
 #### View Organization IAM Account Login Failure Security Settings
 
@@ -3129,7 +3129,7 @@ API to get login failure security settings.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [Common Response](#응답)| Yes   |
+| header | [Common Response](#response)| Yes   |
 | result | Result | No | Returned only if login failure security is set, otherwise null is returned |
 
 ###### Result
@@ -3147,7 +3147,7 @@ API to get login failure security settings.
 |   limit | Integer| No | Number of allowed attempts |
 |   blockMinutes | Integer| No | Login lockout duration |
 
-<a id="조직-IAM-계정-비밀번호-정책-조회"></a>
+<a id="get-organization-iam-account-password-policy"></a>
 
 #### Get Organization IAM Account Password Policy
 
@@ -3207,7 +3207,7 @@ Retrieves the password policy settings.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [Common Response](#응답)| Yes   |
+| header | [Common Response](#response)| Yes   |
 | result | Content | Yes | Settings |
 
 ###### Content
@@ -3253,7 +3253,7 @@ Retrieves the password policy settings.
 | enable | Boolean | Yes | Whether to enable<br>true (enabled), false (disabled) |
 | limitCount | Integer | Yes | Password reuse limit count |
 
-<a id="종량제에-등록된-서비스-가격-조회"></a>
+<a id="get-service-prices-registered-in-pay-as-you-go"></a>
 
 #### Get Service Prices Registered in Pay-as-You-Go
 
@@ -3326,7 +3326,7 @@ Available to all members.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 |   paging | PagingResponse| Yes | Returns pagination results with no sort order  |
 |   prices | List&lt;ContractProductPriceProtocol>| Yes | Returns the unit price information of the counter as an array<br>Not included in case of error  |
 
@@ -3360,7 +3360,7 @@ Available to all members.
 |   slidingCalculationTypeCode | String| Yes | Sliding rate calculation type<br>NONE, SECTION_SUM, SECTION_SELECTED |
 |   useFixPriceYn | String| Yes | Fixed amount or not (Y: Fixed amount , N: Unit price calculation)<br>Y: If within range, the price becomes the amount<br>N: (Usage × unit price) becomes the amount |
 
-<a id="종량제에-등록된-서비스-목록-조회"></a>
+<a id="list-services-registered-for-pay-as-you-go"></a>
 
 #### List Services Registered for Pay-as-You-Go
 
@@ -3424,7 +3424,7 @@ Any member can call this API without specific permissions.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   products | List&lt;ProductMetadata>| Yes | List of service metadata  |
 
@@ -3457,7 +3457,7 @@ Any member can call this API without specific permissions.
 |   usageAggregationUnitCode | String| No | Usage aggregation unit<br>RESOURCE_ID, COUNTER_NAME |
 
 
-<a id="프로젝트-통합-Appkey-조회"></a>
+<a id="list-project-integrated-appkeys"></a>
 
 #### List Project Integrated Appkeys
 
@@ -3501,7 +3501,7 @@ API to get a list of project integrated Appkeys being used by the project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   authenticationList | List&lt;ProjectAppKeyResponse>| No | List of project integrated Appkeys |
 
 ###### ProjectAppKeyResponse
@@ -3517,7 +3517,7 @@ API to get a list of project integrated Appkeys being used by the project.
 |   reIssueDatetime | Date| No | Reissue date and time  |
 |   regDatetime | Date| No | Creation date and time  |
 
-<a id="User-Access-Key-ID-목록-조회"></a>
+<a id="list-user-access-key-ids"></a>
 
 #### List User Access Key IDs
 
@@ -3562,7 +3562,7 @@ Available to all members.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 |   authentications | List&lt;UserAccessKeyResponse>| No | Authentication information list  |
 
 ###### UserAccessKeyResponse
@@ -3584,7 +3584,7 @@ Available to all members.
 |   validTokenCount | Long| No | Number of valid tokens                       |
 
 
-<a id="프로젝트-통합-Appkey-등록"></a>
+<a id="register-a-project-integrated-appkey"></a>
 
 #### Register a Project Integrated Appkey
 
@@ -3630,7 +3630,7 @@ API to generate an AppKey for use in your project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 |   authentication | ResponseProtocol| No  |
 
 ###### ResponseProtocol
@@ -3641,7 +3641,7 @@ API to generate an AppKey for use in your project.
 |   authId | String| No | Internally managed authentication method ID  |
 |   appKey | String| No | Project Integrated Appkey |
 
-<a id="User-Access-Key-ID-등록"></a>
+<a id="register-user-access-key-id"></a>
 
 #### Register User Access Key ID
 
@@ -3690,7 +3690,7 @@ Available to all members.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 |   authentication | ResponseProtocol| No  |
 
 ###### ResponseProtocol
@@ -3704,7 +3704,7 @@ Available to all members.
 |   tokenExpiryPeriod | Long| No | Token validity period (in seconds)
 |   tokenFormatCode | String | No | Token format code (OPAQUE, JWT) |
 
-<a id="프로젝트-통합-Appkey-삭제"></a>
+<a id="delete-project-integrated-appkey"></a>
 
 #### Delete Project Integrated Appkey
 
@@ -3740,10 +3740,10 @@ API to delete a project AppKey.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
 
-<a id="User-Access-Key-ID-비밀-키-재발급"></a>
+<a id="reissue-the-user-access-key-id-secret-key"></a>
 
 #### Reissue the User Access Key ID Secret Key
 
@@ -3789,7 +3789,7 @@ Only your own User Access Key ID secret key can be reissued.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   authentication | ResponseProtocol| No  |
 
 ###### ResponseProtocol
@@ -3799,7 +3799,7 @@ Only your own User Access Key ID secret key can be reissued.
 |------------ | ------------- | ----------- | ------------ |
 |   secretAccessKey | String| Yes   | Secret key |
 
-<a id="User-Access-Key-ID-상태-수정"></a>
+<a id="modify-user-access-key-id-status"></a>
 
 #### Modify User Access Key ID Status
 
@@ -3843,9 +3843,9 @@ You can only modify your own User Access Key ID.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#응답)| Yes   |
+|   header | [Common response](#response)| Yes   |
 
-<a id="User-Access-Key-ID-삭제"></a>
+<a id="delete-a-user-access-key-id"></a>
 
 #### Delete a User Access Key ID
 
@@ -3880,10 +3880,10 @@ You can only delete your own User Access Key ID.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 
 
-<a id="토큰-목록-조회"></a>
+<a id="list-tokens"></a>
 
 #### List Tokens
 
@@ -3937,7 +3937,7 @@ Only tokens issued with your own User Access Key ID can be retrieved.
 
 | Name | Type           | Required  | Description                 |   
 |------------ |--------------|-----|--------------------|
-|   header | [Common Response](#응답) | Yes |
+|   header | [Common Response](#response) | Yes |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   accessToken | String       | Yes | Masked token         |
 |   expireDatetime | Date         | No  | Token expiration date             |
@@ -3947,7 +3947,7 @@ Only tokens issued with your own User Access Key ID can be retrieved.
 |   tokenId | Long         | Yes | Token ID              |
 
 
-<a id="토큰-다건-만료"></a>
+<a id="expire-multiple-tokens"></a>
 
 #### Expire Multiple Tokens
 
@@ -3987,10 +3987,10 @@ Only tokens issued with your own User Access Key ID can expire
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#응답)| Yes |
+|   header | [Common response](#response)| Yes |
 
 
-<a id="프로젝트-IAM-계정-생성"></a>
+<a id="create-project-iam-account"></a>
 
 #### Create Project IAM Account
 
@@ -4062,10 +4062,10 @@ API to add an IAM account as a project member.
 
 | Name | Type           | Required | Description |   
 |------------ |--------------| ------- | ------------ |
-|   header | [Common response](#응답) | Yes |
+|   header | [Common response](#response) | Yes |
 
 
-<a id="프로젝트-IAM-계정-다건-삭제"></a>
+<a id="delete-multiple-project-iam-accounts"></a>
 
 #### Delete Multiple Project IAM Accounts
 
@@ -4111,10 +4111,10 @@ API to delete IAM accounts from a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 
 
-<a id="프로젝트-IAM-계정-단건-조회"></a>
+<a id="get-project-iam-account"></a>
 
 #### Get Project IAM Account
 
@@ -4180,7 +4180,7 @@ API to get a specific IAM account who is part of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   projectMember | ProjectIamMemberRoleBundleProtocol| Yes  | Added member information, not included on error |
 
 
@@ -4206,7 +4206,7 @@ API to get a specific IAM account who is part of a project.
 
 
 
-<a id="프로젝트-IAM-계정-목록-조회"></a>
+<a id="list-project-iam-accounts"></a>
 
 #### List Project IAM Accounts
 
@@ -4259,7 +4259,7 @@ API for getting a list of IAM members belonging to a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common Response](#응답)| Yes |
+|   header | [Common Response](#response)| Yes |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   projectMembers | List&lt;IamProjectMemberProtocol>| Yes | Project member list  |
 
@@ -4282,7 +4282,7 @@ API for getting a list of IAM members belonging to a project.
 |   recentPasswordModifyYmdt | Date| No | Date and time of most recent password change  |
 
 
-<a id="프로젝트-IAM-계정-역할-수정"></a>
+<a id="modify-project-iam-account-role"></a>
 
 #### Modify Project IAM Account Role
 
@@ -4320,10 +4320,10 @@ API to change the role of a specified IAM member in a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common Response](#응답)| Yes   |
+|   header | [Common Response](#response)| Yes   |
 
 
-<a id="조직-하위-멤버의-모든-인증정보-목록-조회"></a>
+<a id="view-all-credentials-of-members-under-organizations"></a>
 
 #### View all credentials of members under organizations
 
@@ -4385,7 +4385,7 @@ API to get the credentials of members in an organization or project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#응답)| Yes |
+|   header | [Common response](#response)| Yes |
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   authenticationList | List&lt;UserAccessKeyResponseV7>| Yes  | Authentication key information per member |
 
@@ -4407,7 +4407,7 @@ API to get the credentials of members in an organization or project.
 | lastTokenUsedDatetime | Date | No | Token last used at |
 | validTokenCount | Long | No | Number of valid tokens |
 
-<a id="자신의-조직-목록-조회"></a>
+<a id="list-my-organizations"></a>
 
 #### List My Organizations
 
@@ -4475,7 +4475,7 @@ Available to all members.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 | orgList | List&lt;OrgMemberRelationProtocol> | Yes | Organization list information |
 | paging | [PagingResponse](#pagingresponse) | Yes | Paging information |
 
@@ -4525,7 +4525,7 @@ Available to all members.
 | domainName | String | Yes | Organization domain name |
 
 
-<a id="자신의-조직-추가"></a>
+<a id="add-your-own-organization"></a>
 
 #### Add Your Own Organization
 
@@ -4575,7 +4575,7 @@ Available to all members.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 | orgId | String | Yes | Organization ID |
 | orgName | String | Yes | Organization name |
 | owner | [Owner](#owner) | Yes | Organization Owner information |
@@ -4590,7 +4590,7 @@ Available to all members.
 | restrictTypes | List&lt;String> | Yes | List of restricted targets |
 
 
-<a id="조직-단건-삭제"></a>
+<a id="delete-organization"></a>
 
 #### Delete Organization
 
@@ -4624,10 +4624,10 @@ Deletes the organization.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 
 
-<a id="서비스-정보-목록-조회"></a>
+<a id="list-service-information"></a>
 
 #### List Service Information
 
@@ -4680,7 +4680,7 @@ Available to all members.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 | paging | [PagingResponse](#pagingresponse) | Yes | |
 | products | List&lt;Product> | Yes | List of service information |
 
@@ -4694,7 +4694,7 @@ Available to all members.
 | productName | String | Yes | Service name |
 
 
-<a id="역할-설명-다국어-조회"></a>
+<a id="list-role-multilingual-descriptions"></a>
 
 #### List Role Multilingual Descriptions
 
@@ -4752,7 +4752,7 @@ Available to all members.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [Common Response](#응답) | Yes | |
+| header | [Common Response](#response) | Yes | |
 | messages | List&lt;MessageProtocol> | Yes | Message list |
 | paging | [PagingResponse](#pagingresponse)| Yes | |
 
@@ -4771,7 +4771,7 @@ Available to all members.
 | zhCn | String | No | Chinese message |
 
 
-<a id="error-code"></a>
+<a id="error-codes"></a>
 
 ### Error Codes
 
