@@ -734,10 +734,6 @@ void queryActivatedPurchases(boolean isQueryAllStores) {
 
 <a id="query-subscription-status"></a>
 
-## 구독 상태 조회
-
-* User ID 기準으로 구입한 구독 상품의 상태를 조회할 수 있습니다。
-
 ## サブスクリプション状態の照会
 
 * User ID を基準に購入したサブスクリプション商品の状態を照会できます。
