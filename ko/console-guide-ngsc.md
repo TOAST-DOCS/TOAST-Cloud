@@ -272,12 +272,24 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | 콘솔 접근 | - NHN Cloud 콘솔 (https://console.ngsc.go.kr) 접근<br>- NHN Cloud > 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.ngsc.go.kr) 접근<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
 
-### 조직 멤버
+ ### 회원 역할
+
+ * NHN Cloud 회원이 보유한 역할을 다른 NHN Cloud 회원에게 부여할 수 있습니다.
+
+| 역할 | 설명 |
+| --- | --- |
+| OWNER | 결제 관리, 스테이션 관리 등 회원 계정의 전체 서비스에 대한 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제)  |
+| BILLING VIEWER | 결제 관리에 대한 Read(읽기)  |
+| MEMBER NOTICE_GROUP MANAGEMENT ADMIN | 회원 알림 수신 그룹 관리 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제), 회원 목록 Read(읽기) | 
+| MEMBER NOTICE_GROUP MANAGEMENT VIEWER | 회원 알림 수신 그룹 관리 Read(읽기), 회원 목록 Read(읽기) |
+
+
+### 조직 멤버 역할
 
 * NHN Cloud 회원과 IAM 멤버의 클라우드 서비스 역할은 아래와 같습니다.
 * 단, IAM 멤버는 최초 등록 시 None 역할을 부여받으며, 등록 후 역할 설정을 통해 필요한 역할을 부여해야합니다.
 
-#### 조직 관리 역할
+#### 조직 관리 
 
 | 역할 | 설명 |
 | --- | --- |
@@ -294,7 +306,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | ORG_DASHBOARD_VIEWER | 조직 대시보드 Read(읽기) |
 | NONE | 조직 대시보드 Read(읽기), 조직 기본 설정 Read(읽기) |
 
-#### 조직 서비스 이용 역할
+#### 조직 서비스 이용 
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
@@ -302,7 +314,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | CloudTrail | VIEWER | CloudTrail 서비스 Read(읽기) |
 | CloudTrail | External Storage Config ADMIN | CloudTrail 서비스 외부 저장소 설정 Create(생성)/Read(읽기)/Update(갱신)/Delete(삭제) |
 
-#### 조직 서비스 활성화 역할
+#### 조직 서비스 활성화 
 
 * 조직 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
 * 단, 조직 생성 시 활성화되어있는 서비스(CloudTrail 등)는 별도의 PERMISSION 역할을 제공하지 않습니다.
@@ -311,11 +323,11 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | --- | --- |
 | 서비스명 PERMISSION | 서비스 Enable(활성화), Disable(비활성화) |
 
-### 프로젝트 멤버
+### 프로젝트 멤버 역할
 
 프로젝트 멤버에게 필요한 역할을 여러 개 부여할 수 있습니다.
 
-#### 프로젝트 관리 역할
+#### 프로젝트 관리 
 
 | 역할 | 설명 |
 | --- | --- |
@@ -336,7 +348,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | PROJECT DASHBOARD VIEWER | 프로젝트 대시보드 Read(읽기) |
 
 
-#### 프로젝트 서비스 이용 역할
+#### 프로젝트 서비스 이용 
 
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
@@ -376,7 +388,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Secure Key Manager | APPROVAL MEMBER | Secure Key Manager 서비스 승인 요청 생성, 조회  |
 | Secure Key Manager | VIEWER | Secure Key Manager 서비스 Read(읽기) |
 
-#### 프로젝트 서비스 활성화 역할
+#### 프로젝트 서비스 활성화 
 프로젝트 서비스 PERMISSION 역할은 개별 서비스를 활성화 또는 비활성화할 수 있습니다.
 
 | 역할 | 설명 |
