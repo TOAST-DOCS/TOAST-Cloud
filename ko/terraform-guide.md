@@ -38,6 +38,7 @@ Terraform은 인프라를 손쉽게 구축하고 안전하게 변경하고, 효�
     * nhncloud_networking_vpcsubnet_v2
     * nhncloud_networking_routingtable_v2
     * nhncloud_networking_routingtable_attach_gateway_v2
+    * nhncloud_networking_internet_gateway_v2
     * nhncloud_networking_secgroup_v2
     * nhncloud_networking_secgroup_rule_v2
     * nhncloud_keymanager_secret_v1
@@ -63,6 +64,7 @@ Terraform은 인프라를 손쉽게 구축하고 안전하게 변경하고, 효�
 * nhncloud_networking_vpc_v2
 * nhncloud_networking_vpcsubnet_v2
 * nhncloud_networking_routingtable_v2
+* nhncloud_networking_internet_gateway_v2
 * nhncloud_networking_secgroup_v2
 * nhncloud_keymanager_secret_v1
 * nhncloud_keymanager_container_v1
@@ -531,6 +533,27 @@ data "nhncloud_networking_routingtable_v2" "default_rt" {
 | name | String | - | 조회할 라우팅 테이블 이름   |
 
 
+<a id="internet-gateway"></a>
+### 인터넷 게이트웨이
+
+인터넷 게이트웨이의 ID는 NHN Cloud 콘솔 **Network > Internet Gateway**에서 확인 가능합니다.
+
+```
+data "nhncloud_networking_internet_gateway_v2" "default_igw" {
+  name = "tf-igw-01"
+}
+```
+
+| 이름 | 타입 | 필수 | 설명                  |
+| --- | --- |---|---------------------|
+| region | String | - | 조회할 인터넷 게이트웨이가 속한 리전 이름 |
+| tenant\_id | String | - | 조회할 인터넷 게이트웨이가 속한 테넌트 ID |
+| id | String | - | 조회할 인터넷 게이트웨이 ID |
+| name | String | - | 조회할 인터넷 게이트웨이 이름 |
+| external\_network\_id | String | - | 조회할 인터넷 게이트웨이가 연결한 외부 네트워크 ID |
+| routingtable\_id | String | - | 조회할 인터넷 게이트웨이를 연결한 라우팅 테이블 ID |
+
+
 <a id="security-group"></a>
 ### 보안 그룹
 ```
@@ -839,6 +862,7 @@ NHN Cloud는 Terraform으로 아래 자원에 대한 생성을 지원합니다.
 * 네트워크 포트
 * 플로팅 IP
 * 라우팅 테이블
+* 인터넷 게이트웨이
 
 이외의 VPC 자원은 콘솔에서 생성해야 합니다.
 
@@ -979,11 +1003,30 @@ resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
 | vpc_id | String  | O  | 라우팅 테이블이 속할 VPC ID                                             |
 | distributed   | Boolean | -  | 라우팅 테이블의 라우팅 방식 </br>`true`: 분산형, `false`: 중앙 집중형(기본값: `true`) |
 
+<a id="create-internet-gateway"></a>
+### 인터넷 게이트웨이 생성
+
+지정한 외부 네트워크에 연결되는 인터넷 게이트웨이를 생성합니다.
+외부 네트워크 ID는 NHN Cloud 콘솔 **Network > Internet Gateway**에서 확인하거나, 외부 네트워크 조회 API로 확인할 수 있습니다.
+
+```
+resource "nhncloud_networking_internet_gateway_v2" "resource-igw-01" {
+  name = "tf-igw-01"
+  external_network_id = "50687905-7b9d-423a-b929-ab8b296a7f35"
+}
+```
+
+| 이름     | 타입      | 필수 | 설명                          |
+|--------|---------|----|-----------------------------|
+| name   | String  | O  | 인터넷 게이트웨이 이름                 |
+| external_network_id | String | O | 인터넷 게이트웨이가 연결할 외부 네트워크 ID |
+| region | String  | -  | 인터넷 게이트웨이의 리전 이름            |
+
 <a id="associate-internet-gateway-with-routing-table"></a>
 ### 라우팅 테이블에 인터넷 게이트웨이 연결하기
 
 라우팅 테이블에 인터넷 게이트웨이를 연결합니다.
-인터넷 게이트웨이는 NHN Cloud 콘솔에서 생성할 수 있습니다. 인터넷 게이트웨이를 생성하는 방법은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Internet%20Gateway/ko/console-guide/#_2)를 참고하세요.
+인터넷 게이트웨이는 위 인터넷 게이트웨이 생성 예시처럼 Terraform으로 생성하거나 NHN Cloud 콘솔에서 생성할 수 있습니다. 콘솔에서 생성하는 방법은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Internet%20Gateway/ko/console-guide/#_2)를 참고하세요.
 
 ```
 resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
