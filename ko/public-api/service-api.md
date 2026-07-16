@@ -30,7 +30,7 @@
 |                   | DNS Plus                     | [DNS Plus API 가이드](https://docs.nhncloud.com/ko/Network/DNS%20Plus/ko/api-guide/) |
 | Storage           | Block Storage                | [Block Storage API v2 가이드](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/public-api/) |
 |                   | NAS                          | [NAS API 가이드](https://docs.nhncloud.com/ko/Storage/NAS/ko/api-guide/) |
-|                   | Object Storage               | [Object Storage API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/api-guide/) |
+|                   | Object Storage               | [Object Storage API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/api-guide/)<br>[Object Storage Amazon S3 호환 API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/) |
 | Database          | RDS for MySQL          | [RDS for MySQL API v2.0 가이드](https://docs.nhncloud.com/ko/Database/RDS%20for%20MySQL/ko/api-guide-v2.0/)<br>[RDS for MySQL API v3.0 가이드](https://docs.nhncloud.com/ko/Database/RDS%20for%20MySQL/ko/api-guide-v3.0/) |
 |                   | RDS for PostgreSQL     | [RDS for PostgreSQL API 가이드](https://docs.nhncloud.com/ko/Database/RDS%20for%20PostgreSQL/ko/api-guide-v1.0/) |
 |                   | RDS for MariaDB        | [RDS for MariaDB API v2.0 가이드](https://docs.nhncloud.com/ko/Database/RDS%20for%20MariaDB/ko/api-guide-v2.0/)<br>[RDS for MariaDB API v3.0 가이드](https://docs.nhncloud.com/ko/Database/RDS%20for%20MariaDB/ko/api-guide-v3.0/) |
@@ -65,7 +65,7 @@
 |                      | Autocomplete         | [Autocomplete API v2.0 가이드](https://docs.nhncloud.com/ko/Search/Autocomplete/ko/api-guide/api-v2.0-guide/) |
 |                      | Corporation Search   | [Corporation Search API 가이드](https://docs.nhncloud.com/ko/Search/Corporation%20Search/ko/api-guide/) |
 | Data & Analytics     | Log & Crash Search   | [Log & Crash Search API 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/) |
-|                      | Data Lake Storage    | [Data Lake Storage API 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/) |
+|                      | Data Lake Storage    | [Data Lake Storage Amazon S3 호환 API 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/) |
 |                      | EasyQueue            | [EasyQueue API v1.0 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/EasyQueue/ko/public-api/) |
 | Dev Tools            | Pipeline             | [Pipeline API v1.0 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Pipeline/ko/api-guide-v1-0/)<br>[Pipeline API v1.1 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Pipeline/ko/api-guide-v1-1/) |
 |                      | Deploy               | [Deploy API v1.0 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Deploy/ko/api-guide-v1.0/)<br>[Deploy API v2.0 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Deploy/ko/api-guide-v2.0/)<br>[Deploy API v2.1 가이드](https://docs.nhncloud.com/ko/Dev%20Tools/Deploy/ko/api-guide-v2.1/) |
