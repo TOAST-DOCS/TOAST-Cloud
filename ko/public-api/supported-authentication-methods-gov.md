@@ -19,15 +19,12 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 | 서비스 카테고리           | 서비스                                          | User Access Key 토큰 | IaaS 토큰 | User Access Key | Appkey | 프로젝트 통합 Appkey | S3 API 자격 증명 |
 | ----------------------- | ---------------------------------------------- | ------------------ | ------- | --------------- | ------ | -------------- | ------------------ |
 | **Compute**             | Instance                                       |                    | O       |                 |        |                |                    |
-|                         | GPU Instance                                   |                    | O       |                 |        |                |                    |
 |                         | Image                                          |                    | O       |                 |        |                |                    |
 |                         | Virtual Desktop                                |                    | O       |                 |        |                |                    |
 | **Container**           | NHN Kubernetes Service (NKS)                   |                    | O       |                 |        |                |                    |
 |                         | NHN Container Registry (NCR)                   | O                  |         | O               |        |                |                    |
 |                         | NHN Container Service (NCS)                    | O                  |         |                 |        |                |                    |
 | **Network**             | VPC                                            |                    | O       |                 |        |                |                    |
-|                         | Network Interface                              |                    | O       |                 |        |                |                    |
-|                         | Routing                                        |                    | O       |                 |        |                |                    |
 |                         | Floating IP                                    |                    | O       |                 |        |                |                    |
 |                         | Network ACL                                    |                    | O       |                 |        |                |                    |
 |                         | Security Groups                                |                    | O       |                 |        |                |                    |
@@ -49,7 +46,6 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 |                         | Secure Key Manager                             | O                  |         | O               | O      | O              |                    |
 |                         | Security Advisor                               |                    |         |                 | O      |                |                    |
 | **Content Delivery**    | CDN                                            |                    |         |                 | O      | O              |                    |
-| **Machine Learning**    | AI EasyMaker                                   | O                  |         |                 |        |                |                    |
 | **Application Service** | API Gateway                                    |                    |         |                 | O      | O              |                    |
 | **Data & Analytics**    | Log & Crash Search                             |                    |         |                 | O      |                |                    |
 | **Dev Tools**           | Pipeline                                       | O                  |         | O               |        |                |                    |

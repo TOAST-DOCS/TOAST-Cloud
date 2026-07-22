@@ -21,12 +21,9 @@ S3 API 자격 증명은 NHN Cloud에서 Amazon S3 호환 API를 지원하는 서
 
 Amazon S3 호환 API를 지원하는 서비스 콘솔에서 S3 API 자격 증명을 발급할 수 있습니다. 콘솔에서 발급할 경우 Secret Key는 발급 직후에만 확인할 수 있으므로 반드시 별도로 보관하세요. 자세한 내용은 각 서비스의 콘솔 가이드를 참고하세요.
 
-* [Object Storage 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/console-guide/#s3-api)
-* [Data Lake Storage 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Data%20Lake%20Storage/ko/console-user-guide/#_10)
-
 ### API로 발급하기
 
-API를 이용해 S3 API 자격 증명을 발급하려면 인증 토큰이 필요합니다. 인증 토큰 발급 방법은 [IaaS 토큰](/ko/public-api/iaas-token/)을 참고하세요.
+API를 이용해 S3 API 자격 증명을 발급하려면 인증 토큰이 필요합니다. 인증 토큰 발급 방법은 [IaaS 토큰](/nhncloud/ko/public-api/iaas-token/)을 참고하세요.
 
 ```
 POST https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{api-user-id}/credentials/OS-EC2
@@ -162,6 +159,3 @@ X-Auth-Token: {token-id}
 ## S3 API 자격 증명 사용하기
 
 S3 API 자격 증명은 S3 호환 API 호출 시 AWS Signature Version 4 서명 방식으로 인증에 사용됩니다. 발급받은 Access Key와 Secret Key를 AWS SDK 또는 S3 호환 클라이언트에 설정하여 S3 호환 API를 호출할 수 있습니다. 자세한 사용 방법은 각 서비스의 S3 호환 API 가이드를 참고하세요.
-
-* [Object Storage S3 호환 API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/)
-* [Data Lake Storage S3 호환 API 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)

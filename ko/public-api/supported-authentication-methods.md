@@ -21,26 +21,22 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 | 서비스 카테고리           | 서비스                                          | User Access Key 토큰 | IaaS 토큰 | User Access Key | Appkey | 프로젝트 통합 Appkey | S3 API 자격 증명 |
 | ----------------------- | ---------------------------------------------- | ------------------ | ------- | --------------- | ------ | -------------- | ------------------ |
 | **Compute**             | Instance                                       |                    | O       |                 |        |                |                    |
-|                         | GPU Instance                                   |                    | O       |                 |        |                |                    |
+|                         | Cloud Functions                                | O                  |         |                 |        |                |                    |
 |                         | Image                                          |                    | O       |                 |        |                |                    |
 |                         | Virtual Desktop                                |                    | O       |                 |        |                |                    |
 | **Container**           | NHN Kubernetes Service (NKS)                   |                    | O       |                 |        |                |                    |
 |                         | NHN Container Registry (NCR)                   | O                  |         | O               |        |                |                    |
 |                         | NHN Container Service (NCS)                    | O                  |         |                 |        |                |                    |
 | **Network**             | VPC                                            |                    | O       |                 |        |                |                    |
-|                         | Network Interface                              |                    | O       |                 |        |                |                    |
 |                         | Flow Log                                       |                    | O       |                 |        |                |                    |
-|                         | Routing                                        |                    | O       |                 |        |                |                    |
 |                         | Floating IP                                    |                    | O       |                 |        |                |                    |
 |                         | Network ACL                                    |                    | O       |                 |        |                |                    |
 |                         | Security Groups                                |                    | O       |                 |        |                |                    |
 |                         | Load Balancer                                  |                    | O       |                 |        |                |                    |
-|                         | Load Balancer(DSR)                             |                    | O       |                 |        |                |                    |
 |                         | Transit Hub                                    |                    | O       |                 |        |                |                    |
 |                         | Internet Gateway                               |                    | O       |                 |        |                |                    |
 |                         | Colocation Gateway                             |                    | O       |                 |        |                |                    |
 |                         | NAT Gateway                                    |                    | O       |                 |        |                |                    |
-|                         | VPN Gateway(Site-to-Site VPN)                  |                    | O       |                 |        |                |                    |
 |                         | Service Gateway                                |                    | O       |                 |        |                |                    |
 |                         | Traffic Mirroring                              |                    | O       |                 |        |                |                    |
 |                         | Private DNS                                    |                    | O       |                 |        |                |                    |
@@ -49,12 +45,12 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 |                         | NAS                                            |                    | O       |                 |        |                |                    |
 |                         | Object Storage                                 |                    | O       |                 |        |                | O                  |
 | **Database**            | RDS for MySQL                                  | O                  |         | O               | O      | O              |                    |
-|                         | RDS for PostgreSQL                             | O                  |         |                 |        |                |                    |
 |                         | RDS for MariaDB                                | O                  |         | O               | O      | O              |                    |
+|                         | RDS for PostgreSQL                             | O                  |         |                 |        |                |                    |
 | **Monitoring**          | Service Monitoring                             |                    |         |                 | O      |                |                    |
-| **Game**                | Leaderboard                                    |                    |         |                 | O      |                |                    |
+| **Game**                | Gamebase                                       |                    |         |                 | O      |                |                    |
+|                         | Leaderboard                                    |                    |         |                 | O      |                |                    |
 |                         | Launching                                      |                    |         |                 | O      |                |                    |
-|                         | Smart Downloader                               |                    |         |                 | O      |                |                    |
 | **Security**            | NHN AppGuard                                   |                    |         | O               | O      |                |                    |
 |                         | Server Security Check                          |                    |         |                 | O      |                |                    |
 |                         | Security Monitoring                            |                    |         |                 | O      |                |                    |
@@ -72,7 +68,6 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 |                         | OCR                                            | O                  |         |                 | O      | O              |                    |
 |                         | Text to Speech                                 |                    |         |                 | O      | O              |                    |
 |                         | Speech to Text                                 |                    |         |                 | O      | O              |                    |
-| **Machine Learning**    | AI EasyMaker                                   | O                  |         |                 |        |                |                    |
 | **Application Service** | ROLE                                           |                    |         |                 | O      | O              |                    |
 |                         | API Gateway                                    |                    |         |                 | O      | O              |                    |
 |                         | RTCS                                           |                    |         |                 | O      |                |                    |
@@ -88,7 +83,6 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 |                         | Deploy                                         | O                  |         | O               | O      |                |                    |
 | **Management**          | Certificate Manager                            | O                  | O       |                 | O      |                |                    |
 |                         | Private CA                                     | O                  |         |                 |        |                |                    |
-| **Bill**                | e-Tax                                          |                    |         |                 | O      |                |                    |
 | **Governance & Audit**  | CloudTrail                                     |                    |         | O               | O      |                |                    |
 |                         | Resource Watcher                               |                    |         | O               | O      |                |                    |
 

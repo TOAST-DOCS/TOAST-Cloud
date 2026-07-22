@@ -19,11 +19,11 @@ S3 API 자격 증명은 NHN Cloud Object Storage에서 Amazon S3 호환 API를 �
 
 ### 콘솔에서 발급하기
 
-NHN Cloud 콘솔의 Object Storage 서비스 화면에서 S3 API 자격 증명을 발급할 수 있습니다. 콘솔에서 발급할 경우 Secret Key는 발급 직후에만 확인할 수 있으므로 반드시 별도로 보관하세요. 자세한 내용은 [Object Storage 콘솔 사용 가이드](https://docs.gov-nhncloud.com/ko/Storage/Object%20Storage/ko/console-guide-gov/#s3-api)를 참고하세요.
+Amazon S3 호환 API를 지원하는 서비스 콘솔에서 S3 API 자격 증명을 발급할 수 있습니다. 콘솔에서 발급할 경우 Secret Key는 발급 직후에만 확인할 수 있으므로 반드시 별도로 보관하세요. 자세한 내용은 각 서비스의 콘솔 가이드를 참고하세요.
 
 ### API로 발급하기
 
-API를 이용해 S3 API 자격 증명을 발급하려면 인증 토큰이 필요합니다. 인증 토큰 발급 방법은 [IaaS 토큰](/ko/public-api/iaas-token-gov/)을 참고하세요.
+API를 이용해 S3 API 자격 증명을 발급하려면 인증 토큰이 필요합니다. 인증 토큰 발급 방법은 [IaaS 토큰](/nhncloud/ko/public-api/iaas-token-gov/)을 참고하세요.
 
 ```
 POST https://api-identity-infrastructure.gov-nhncloudservice.com/v2.0/users/{api-user-id}/credentials/OS-EC2
@@ -158,4 +158,4 @@ X-Auth-Token: {token-id}
 
 ## S3 API 자격 증명 사용하기
 
-S3 API 자격 증명은 S3 호환 API 호출 시 AWS Signature Version 4 서명 방식으로 인증에 사용됩니다. 발급받은 Access Key와 Secret Key를 AWS SDK 또는 S3 호환 클라이언트에 설정하여 S3 호환 API를 호출할 수 있습니다. 자세한 사용 방법은 [Object Storage S3 호환 API 가이드](https://docs.gov-nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide-gov/)를 참고하세요.
+S3 API 자격 증명은 S3 호환 API 호출 시 AWS Signature Version 4 서명 방식으로 인증에 사용됩니다. 발급받은 Access Key와 Secret Key를 AWS SDK 또는 S3 호환 클라이언트에 설정하여 S3 호환 API를 호출할 수 있습니다. 자세한 사용 방법은 각 서비스의 S3 호환 API 가이드를 참고하세요.
