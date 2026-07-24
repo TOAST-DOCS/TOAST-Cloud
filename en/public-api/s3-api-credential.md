@@ -2,7 +2,7 @@
 
 **NHN Cloud > Public API User Guide > Authentication Methods > S3 API Credentials**
 
-S3 API credentials are AWS EC2-format authentication keys used to call the service APIs that support the Amazon S3-compatible API in NHN Cloud. They consist of an Access Key and a Secret Key, and are used as the authentication method when calling the S3-compatible API. You can issue S3 API credentials directly from the NHN Cloud console or through the API.
+S3 API credentials are AWS EC2-format authentication keys used to call the service APIs that support the Amazon S3 Compatible API in NHN Cloud. They consist of an Access Key and a Secret Key, and are used as the authentication method when calling the S3 compatible API. You can issue S3 API credentials directly from the NHN Cloud console or through the API.
 
 
 !!! danger "Caution"
@@ -19,11 +19,11 @@ S3 API credentials are AWS EC2-format authentication keys used to call the servi
 
 ### Issue via Console
 
-You can issue S3 API credentials from the console of a service that supports the Amazon S3-compatible API. When issuing credentials from the console, the Secret Key can only be checked immediately after issuance, so be sure to store it separately. For more information, see the console guide for each service.
+You can issue S3 API credentials from the console of a service that supports the Amazon S3 Compatible API. When issuing credentials from the console, the Secret Key can only be checked immediately after issuance, so be sure to store it separately. For more information, see the console guide for each service.
 
 ### Issue via API
 
-To obtain credentials using the API, an authentication token is required. To obtain the authentication token, refer to [IaaS Token](/nhncloud/ko/public-api/iaas-token/).
+To obtain credentials using the API, an authentication token is required. To obtain the authentication token, refer to [IaaS Token](/nhncloud/en/public-api/iaas-token/).
 
 ```
 POST https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{api-user-id}/credentials/OS-EC2
@@ -158,4 +158,4 @@ X-Auth-Token: {token-id}
 
 ## Use S3 API Credentials
 
-S3 API credentials are used for authentication with the AWS Signature Version 4 signing method when calling the S3-compatible API. You can call the S3-compatible API by configuring the issued Access Key and Secret Key in an AWS SDK or an S3-compatible client. For more information about how to use, see the S3-compatible API guide for each service.
+S3 API credentials are used for authentication with the AWS Signature Version 4 signing method when calling the S3 compatible API. You can call the S3 compatible API by configuring the issued Access Key and Secret Key in an AWS SDK or an S3 compatible client. For more information about how to use, see the S3 compatible API guide for each service.

@@ -30,7 +30,7 @@ You can find the API Guide for each service under its respective service categor
 |                   | DNS Plus                     | [DNS Plus API Guide](https://docs.nhncloud.com/en/Network/DNS%20Plus/en/api-guide/) |
 | Storage           | Block Storage                | [Block Storage API v2 Guide](https://docs.nhncloud.com/en/Storage/Block%20Storage/en/public-api/) |
 |                   | NAS                          | [NAS API Guide](https://docs.nhncloud.com/en/Storage/NAS/en/api-guide/) |
-|                   | Object Storage               | [Object Storage API Guide](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/api-guide/)<br>[Object Storage Amazon S3-Compatible API Guide](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/) |
+|                   | Object Storage               | [Object Storage API Guide](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/api-guide/)<br>[Object Storage Amazon S3 Compatible API Guide](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/) |
 | Database          | RDS for MySQL          | [RDS for MySQL API v2.0 Guide](https://docs.nhncloud.com/en/Database/RDS%20for%20MySQL/en/api-guide-v2.0/)<br>[RDS for MySQL API v3.0 Guide](https://docs.nhncloud.com/en/Database/RDS%20for%20MySQL/en/api-guide-v3.0/) |
 |                   | RDS for PostgreSQL     | [RDS for PostgreSQL API Guide](https://docs.nhncloud.com/en/Database/RDS%20for%20PostgreSQL/en/api-guide-v1.0/) |
 |                   | RDS for MariaDB        | [RDS for MariaDB API v2.0 Guide](https://docs.nhncloud.com/en/Database/RDS%20for%20MariaDB/en/api-guide-v2.0/)<br>[RDS for MariaDB API v3.0 Guide](https://docs.nhncloud.com/en/Database/RDS%20for%20MariaDB/en/api-guide-v3.0/) |
@@ -65,7 +65,7 @@ You can find the API Guide for each service under its respective service categor
 |                      | Autocomplete         | [Autocomplete API v2.0 Guide](https://docs.nhncloud.com/en/Search/Autocomplete/en/api-guide/api-v2.0-guide/) |
 |                      | Corporation Search   | [Corporation Search API Guide](https://docs.nhncloud.com/en/Search/Corporation%20Search/en/api-guide/) |
 | Data & Analytics     | Log & Crash Search   | [Log & Crash Search API Guide](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/api-guide/) |
-|                      | Data Lake Storage    | [Data Lake Storage Amazon S3-Compatible API Guide](https://docs.nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/en/api-guide-common/) |
+|                      | Data Lake Storage    | [Data Lake Storage Amazon S3 Compatible API Guide](https://docs.nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/en/api-guide-common/) |
 |                      | EasyQueue            | [EasyQueue API v1.0 Guide](https://docs.nhncloud.com/en/Data%20&%20Analytics/EasyQueue/en/public-api/) |
 | Dev Tools            | Pipeline             | [Pipeline API v1.0 Guide](https://docs.nhncloud.com/en/Dev%20Tools/Pipeline/en/api-guide-v1-0/)<br>[Pipeline API v1.1 Guide](https://docs.nhncloud.com/en/Dev%20Tools/Pipeline/en/api-guide-v1-1/) |
 |                      | Deploy               | [Deploy API v1.0 Guide](https://docs.nhncloud.com/en/Dev%20Tools/Deploy/en/api-guide-v1.0/)<br>[Deploy API v2.0 Guide](https://docs.nhncloud.com/en/Dev%20Tools/Deploy/en/api-guide-v2.0/)<br>[Deploy API v2.1 Guide](https://docs.nhncloud.com/en/Dev%20Tools/Deploy/en/api-guide-v2.1/) |
