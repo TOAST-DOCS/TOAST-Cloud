@@ -489,7 +489,7 @@ data "nhncloud_networking_vpc_v2" "default_network" {
 | 이름 | 타입 | 필수 | 설명         |
 | --- | --- |---|------------|
 | region | String | - | 조회할 VPC가 속한 리전 이름 |
-| tenant\_id | String | - | 조회할 VPC가 속한 테넌트 ID |
+| tenant_id | String | - | 조회할 VPC가 속한 테넌트 ID |
 | id | String | - | 조회할 VPC의 ID |
 | name | String | - | 조회할 VPC 이름 |
 
@@ -512,7 +512,7 @@ data "nhncloud_networking_vpcsubnet_v2" "default_subnet" {
 | 이름 | 타입 | 필수 | 설명         |
 | --- | --- |---|------------|
 | region | String | - | 조회할 서브넷이 속한 리전 이름 |
-| tenant\_id | String | - | 조회할 서브넷이 속한 테넌트 ID |
+| tenant_id | String | - | 조회할 서브넷이 속한 테넌트 ID |
 | id | String | - | 조회할 서브넷 ID |
 | name | String | - | 조회할 서브넷 이름 |
 | shared | Bool | - | 조회할 서브넷의 공유 여부 |
@@ -528,7 +528,7 @@ data "nhncloud_networking_routingtable_v2" "default_rt" {
 
 | 이름 | 타입 | 필수 | 설명                  |
 | --- | --- |---|---------------------|
-| tenant\_id | String | - | 조회할 라우팅 테이블이 속한 테넌트 ID |
+| tenant_id | String | - | 조회할 라우팅 테이블이 속한 테넌트 ID |
 | id | String | - | 조회할 라우팅 테이블 ID      |
 | name | String | - | 조회할 라우팅 테이블 이름   |
 
@@ -547,11 +547,11 @@ data "nhncloud_networking_internet_gateway_v2" "default_igw" {
 | 이름 | 타입 | 필수 | 설명                  |
 | --- | --- |---|---------------------|
 | region | String | - | 조회할 인터넷 게이트웨이가 속한 리전 이름 |
-| tenant\_id | String | - | 조회할 인터넷 게이트웨이가 속한 테넌트 ID |
+| tenant_id | String | - | 조회할 인터넷 게이트웨이가 속한 테넌트 ID |
 | id | String | - | 조회할 인터넷 게이트웨이 ID |
 | name | String | - | 조회할 인터넷 게이트웨이 이름 |
-| external\_network\_id | String | - | 조회할 인터넷 게이트웨이가 연결한 외부 네트워크 ID |
-| routingtable\_id | String | - | 조회할 인터넷 게이트웨이를 연결한 라우팅 테이블 ID |
+| external_network_id | String | - | 조회할 인터넷 게이트웨이가 연결한 외부 네트워크 ID |
+| routingtable_id | String | - | 조회할 인터넷 게이트웨이를 연결한 라우팅 테이블 ID |
 
 
 <a id="security-group"></a>
@@ -565,7 +565,7 @@ data "nhncloud_networking_secgroup_v2" "default_sg" {
 | 이름 | 타입 | 필수 | 설명                 |
 | --- | --- |---|--------------------|
 | region | String | - | 조회할 보안 그룹이 속한 리전 이름 |
-| tenant\_id | String | - | 조회할 보안 그룹이 속한 테넌트 ID |
+| tenant_id | String | - | 조회할 보안 그룹이 속한 테넌트 ID |
 | name | String | - | 조회할 보안 그룹 이름       |
 
 
@@ -884,7 +884,7 @@ resource "nhncloud_networking_vpc_v2" "resource-vpc-01" {
 | name | String | O | VPC 이름 |
 | cidrv4 | String | O | VPC IP 대역 |
 | region | String | - | VPC의 리전 이름 |
-| tenant\_id | String | - | VPC의 tenant ID |
+| tenant_id | String | - | VPC의 tenant ID |
 
 
 <a id="create-vpc-subnet-and-attach-routing-table"></a>
@@ -904,12 +904,12 @@ resource "nhncloud_networking_vpcsubnet_v2" "resource-vpcsubnet-01" {
 
 | 이름 | 타입 | 필수 | 설명         |
 | --- | --- |---|------------|
-| vpc\_id | String | O | 서브넷이 할당될 VPC ID |
+| vpc_id | String | O | 서브넷이 할당될 VPC ID |
 | cidr | String | O | 서브넷의 IP 대역 |
 | name | String | O | 서브넷의 이름    |
 | region | String | - | 서브넷이 할당될 리전 이름 |
-| tenant\_id | String | - | 서브넷이 할당될 테넌트 ID |
-| routingtable\_id | String | - | 라우팅 테이블 ID |
+| tenant_id | String | - | 서브넷이 할당될 테넌트 ID |
+| routingtable_id | String | - | 라우팅 테이블 ID |
 
 
 <a id="create-network-port"></a>
@@ -1026,7 +1026,6 @@ resource "nhncloud_networking_internet_gateway_v2" "resource-igw-01" {
 ### 라우팅 테이블에 인터넷 게이트웨이 연결하기
 
 라우팅 테이블에 인터넷 게이트웨이를 연결합니다.
-인터넷 게이트웨이는 위 인터넷 게이트웨이 생성 예시처럼 Terraform으로 생성하거나 NHN Cloud 콘솔에서 생성할 수 있습니다. 콘솔에서 생성하는 방법은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Internet%20Gateway/ko/console-guide/#_2)를 참고하세요.
 
 ```
 resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
