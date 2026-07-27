@@ -29,7 +29,7 @@
 |  | DNS Plus | [DNS Plus API 가이드](https://docs.gov-nhncloud.com/ko/Network/DNS%20Plus/ko/api-guide-gov/) |
 | Storage | Block Storage | [Block Storage API 가이드](https://docs.gov-nhncloud.com/ko/Storage/Block%20Storage/ko/public-api-gov/) |
 |  | NAS | [NAS API 가이드](https://docs.gov-nhncloud.com/ko/Storage/NAS%20(online)/ko/api-guide-gov/) |
-|  | Object Storage | [Object Storage API 가이드](https://docs.gov-nhncloud.com/ko/Storage/Object%20Storage/ko/api-guide-gov/) |
+|  | Object Storage | [Object Storage API 가이드](https://docs.gov-nhncloud.com/ko/Storage/Object%20Storage/ko/api-guide-gov/)<br>[Object Storage Amazon S3 호환 API 가이드](https://docs.gov-nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide-gov/) |
 | Database | RDS for MySQL | [RDS for MySQL API 가이드 v2.0](https://docs.gov-nhncloud.com/ko/Database/RDS%20for%20MySQL/ko/api-guide-v2.0-gov/)<br>[RDS for MySQL API 가이드 v3.0](https://docs.gov-nhncloud.com/ko/Database/RDS%20for%20MySQL/ko/api-guide-v3.0-gov/) |
 |  | RDS for MariaDB | [RDS for MariaDB API 가이드 v2.0](https://docs.gov-nhncloud.com/ko/Database/RDS%20for%20MariaDB/ko/api-guide-v2.0-gov/)<br>[RDS for MariaDB API 가이드 v3.0](https://docs.gov-nhncloud.com/ko/Database/RDS%20for%20MariaDB/ko/api-guide-v3.0-gov/) |
 | Security | Secure Key Manager | [Secure Key Manager API v1.0가이드](https://docs.gov-nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/api-guide-v1.0-gov/)<br>[Secure Key Manager API v1.2 가이드](https://docs.gov-nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/api-guide-v1.2-gov/)<br>[Secure Key Manager API v1.3 가이드](https://docs.gov-nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/api-guide-v1.3-gov/) |
