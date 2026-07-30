@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=84ac22d367fd -->
+
 # Supported Authentication Methods
 
 **NHN Cloud > Public API User Guide > API Authentication Method > Supported Authentication Methods**
@@ -5,14 +7,16 @@
 NHN Cloud Public APIs support User Access Key tokens, IaaS tokens, User Access Keys, Appkeys, Project Integrated Appkeys, and S3 API Credentials.
 Authentication methods vary across Public APIs, and certain methods are only supported by specific versions.
 
-## Check Authentication Methods for Framework and Partner Management APIs
+<a id="check-authentication-methods-for-framework-and-partner-management-apis"></a>
+## Check Authentication Methods for Framework and Partner Management APIs { #check-authentication-methods-for-framework-and-partner-management-apis }
 
 Framework APIs and Partner Management APIs use User Access Key tokens for authentication. For more information on issuing User Access Key tokens and making API calls, please refer to the [User Access Key Token](https://docs.nhncloud.com/en/nhncloud/en/public-api/user-access-key-token) documentation
 
 For more information on using Framework APIs and Partner Management APIs, please refer to the [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/) and [Partner Management API](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/) documentation, respectively.
 
 
-## Check Authentication Methods for Each Service API
+<a id="check-authentication-methods-for-each-service-api"></a>
+## Check Authentication Methods for Each Service API { #check-authentication-methods-for-each-service-api }
 
 Check the API authentication methods supported by the service you intend to use.
 The following table shows all the authentication methods supported by each service API. Supported authentication methods may vary depending on the API version or type, so check the authentication methods supported in the API guide for the version you are using.

@@ -1,10 +1,13 @@
+<!-- pre-align:aligned sig=2ab3282ba364 -->
+
 # 認証方式概要
 
 **NHN Cloud > Public API使用ガイド > API認証方式 > 認証方式概要**
 
 Public APIは、各サービスで設定された認証方式に従ってリクエストを検証した後、APIバックエンドに転送します。このドキュメントでは、NHN Cloud Public APIで使用される認証方式について説明します。
 
-## 認証方式の比較
+<a id="compare-authentication-methods"></a>
+## 認証方式の比較 { #compare-authentication-methods }
 
 NHN CloudのPublic APIは、認証のためにUser Access Keyトークン、IaaSトークン、User Access Key、Appkey、プロジェクト統合Appkey、S3 API 認証情報をサポートしており、各認証方式は適用範囲、発行数、有効期限の有無などに違いがあります。
 

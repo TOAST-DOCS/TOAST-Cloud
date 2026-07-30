@@ -1,19 +1,25 @@
-## NHN Cloud > リージョンガイド
+<!-- pre-align:aligned sig=3a1734fcb5e6 -->
+
+<a id="nhn-cloud-guide-to-nhn-cloud-regions"></a>
+## NHN Cloud > リージョンガイド { #nhn-cloud-guide-to-nhn-cloud-regions }
 リージョンは、独立していて地理的に隔離されたサーバーの物理的な位置を意味します。
 一般的にリージョンは、アベイラビリティゾーンと呼ぶ独立した電源およびネットワークを持つデータセンターで構成され、使用したい地域とサービスに応じてリージョンを選択できます。 <br>
 インターネットで、いつどこでも自由にリージョンを選択してNHN Cloudサービスを利用できます。
 
-## NHN Cloudリージョン
+<a id="nhn-cloud-regions"></a>
+## NHN Cloudリージョン { #nhn-cloud-regions }
 
 NHN Cloudは、安定的なグローバルサービスを提供するために、4個のリージョンを運用しています。
 高可用性をサポートするには、複数のアベイラビリティゾーンまたは複数のリージョンにアプリケーションを配布する必要があります。
 NHN Cloudユーザーは、サービス地域と目的に応じて使用するリージョンを選択できます。一般的に主なサービス対象になる地域のリージョンを利用すると、短いレスポンス時間が期待できます。
 
-## NHN Cloudリージョン位置
+<a id="location-of-toat-regions"></a>
+## NHN Cloudリージョン位置 { #location-of-toat-regions }
 NHN Cloudは、グローバルなサービスを提供するために、多くの地域にリージョンを拡大しています。
 ![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_JP.png)
 
-## NHN Cloudリージョンサービス
+<a id="nhn-cloud-regional-service"></a>
+## NHN Cloudリージョンサービス { #nhn-cloud-regional-service }
 
 **リージョンサービス**
 リージョンサービスは、サービスを提供するリージョンのインフラ環境と国/地域/法律/商品でサービスする内容の制限により、特定地域にのみ提供されるサービスです。

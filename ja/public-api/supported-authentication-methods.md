@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=84ac22d367fd -->
+
 # 認証方式のサポート状況
 
 **NHN Cloud > Public API使用ガイド > API認証方式 > 認証方式のサポート状況**
@@ -5,14 +7,16 @@
 NHN CloudのPublic APIは、認証のためにUser Access Keyトークン、IaaSトークン、User Access Key、Appkey、プロジェクト統合Appkey、S3 API 認証情報をサポートします。
 Public APIごとにサポートする認証方式が異なり、一部の認証方式は特定のバージョンでのみサポートされます。
 
-## フレームワークAPI及びパートナー管理APIの認証方式の確認
+<a id="check-authentication-methods-for-framework-and-partner-management-apis"></a>
+## フレームワークAPI及びパートナー管理APIの認証方式の確認 { #check-authentication-methods-for-framework-and-partner-management-apis }
 
 フレームワークAPI及びパートナー管理APIは、認証のためにUser Access Keyトークンを使用します。User Access Keyトークンの発行及びAPI呼び出しに関する詳細は、[User Access Keyトークン](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/user-access-key-token)を参照してください。
 
 フレームワークAPI及びパートナー管理APIの使用に関する詳細は、それぞれ[フレームワークAPI](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/framework-api/)と[パートナー管理APIガイド](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/partner-api/)を参照してください。
 
 
-## サービスAPI別認証方式の確認
+<a id="check-authentication-methods-for-each-service-api"></a>
+## サービスAPI別認証方式の確認 { #check-authentication-methods-for-each-service-api }
 
 使用するサービスでサポートされているAPI認証方式を確認してください。
 次の表には、各サービスAPIがサポートする認証方式が全て記載されています。APIのバージョンやタイプによってサポートする認証方式が異なる場合があるため、使用中のバージョンのAPIガイドでサポートする認証方式を確認してください。

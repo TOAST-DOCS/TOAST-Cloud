@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=7667f092f65e -->
+
 # User Access Key
 
 **NHN Cloud > Public API 사용 가이드 > API 인증 방식 > User Access Key**
@@ -10,7 +12,8 @@ User Access Key는 NHN Cloud 계정 또는 IAM 계정을 기반으로 발급되�
     * 키는 외부 저장소 또는 코드에 포함되지 않도록 안전하게 보관하고, 유출이 의심될 경우 즉시 폐기하고 재발급해야 합니다.
 
 
-## User Access Key 발급하기
+<a id="issue-a-user-access-key"></a>
+## User Access Key 발급하기 { #issue-a-user-access-key }
 NHN Cloud에서 제공하는 API를 사용하려면 User Access Key를 발급해야 합니다. User Access Key는 NHN Cloud 콘솔의 **API 보안 설정**에서 발급할 수 있습니다.
 
 1) NHN Cloud 콘솔에서 우측 상단의 계정에 마우스 포인터를 올리면 표시되는 드롭다운 메뉴에서 **API 보안 설정**을 클릭합니다.
@@ -35,7 +38,8 @@ NHN Cloud에서 제공하는 API를 사용하려면 User Access Key를 발급해
     * User Access Key ID는 90일마다 변경할 것을 권장합니다.
 
 
-## API 호출하기
+<a id="making-api-calls"></a>
+## API 호출하기 { #making-api-calls }
 User Access Key는 HTTP 요청 헤더에 포함하여 전달합니다. API 호출 시 아래 예시와 같이 헤더에 User Access Key를 설정해 호출하세요.
 
 

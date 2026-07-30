@@ -1,10 +1,13 @@
+<!-- pre-align:aligned sig=2ab3282ba364 -->
+
 # Authentication Overview
 
 **NHN Cloud > Public API User Guide > API Authentication Method > Authentication Overview**
 
 Public APIs validate requests based on the authentication method configured for each service before forwarding them to the API backend. This document describes the authentication methods used for NHN Cloud Public APIs.
 
-## Compare Authentication Methods
+<a id="compare-authentication-methods"></a>
+## Compare Authentication Methods { #compare-authentication-methods }
 
 NHN Cloud Public APIs support User Access Key tokens, IaaS tokens, User Access Keys, Appkeys, Project Integrated Appkeys, and S3 API Credentials. Each method varies in terms of scope, issuance limits, and expiration policy.
 

@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=65978a09ad39 -->
+
 # Public API 개요
 
 **NHN Cloud > Public API 사용 가이드 > Public API 개요**
@@ -11,7 +13,8 @@ NHN Cloud의 Public API는 NHN Cloud의 서비스와 리소스를 외부 시스�
     * 서비스마다 API의 동작 방식과 응답 형식이 다르므로 자세한 내용은 각 서비스의 API 가이드를 참고하세요.
     * 프레임워크 API, 파트너 관리 API, 각 서비스마다 지원하는 API 인증 방식이 다르며, 일부 인증 방식은 특정 서비스에서만 지원합니다. 각 Public API별 지원되는 인증 방식은 [인증 방식 지원 현황](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods)에서 확인할 수 있습니다.
 
-## Public API 시작하기
+<a id="getting-started-with-public-api"></a>
+## Public API 시작하기 { #getting-started-with-public-api }
 
 * [인증 방식 개요](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method-overview)
 * [인증 방식 지원 현황](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods)
@@ -20,7 +23,8 @@ NHN Cloud의 Public API는 NHN Cloud의 서비스와 리소스를 외부 시스�
 * [파트너 관리 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)
 * [릴리스 노트](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/release-notes/)
 
-## 용어 정리
+<a id="glossary"></a>
+## 용어 정리 { #glossary }
 
 | 용어 | 설명 |
 | --- | --- |

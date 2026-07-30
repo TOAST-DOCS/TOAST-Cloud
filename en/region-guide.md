@@ -1,19 +1,25 @@
-## NHN Cloud > Guide to NHN Cloud Regions
+<!-- pre-align:aligned sig=3a1734fcb5e6 -->
+
+<a id="nhn-cloud-guide-to-nhn-cloud-regions"></a>
+## NHN Cloud > Guide to NHN Cloud Regions { #nhn-cloud-guide-to-nhn-cloud-regions }
 A region refers to the physical location of an independent and geologically separated server. 
 Generally, a region is comprised of a standalone power, the so-called available area, and datacenter equipped with a network, and the user may select a region depending on the region and service. 
 Feel free to select your region anytime and anywhere to enjoy NHN Cloud services. 
 
-## NHN Cloud Regions
+<a id="nhn-cloud-regions"></a>
+## NHN Cloud Regions { #nhn-cloud-regions }
 
 NHN Cloud operates four regions to provide stable global services. 
 To support for high availability, an application must be deployed to many available areas or multiple regions. 
 NHN Cloud users are allowed to select regions depending on the service area and purpose, but recommended to select those regions where service targets are mainly located so as to get fast response.   
 
-## Location of TOAT Regions 
+<a id="location-of-toat-regions"></a>
+## Location of TOAT Regions { #location-of-toat-regions }
 NHN Cloud is expanding its regions to make its service globally available.  
 ![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_EN.png)
 
-## NHN Cloud Regional Service 
+<a id="nhn-cloud-regional-service"></a>
+## NHN Cloud Regional Service { #nhn-cloud-regional-service }
 
 **Regional Service**
 Regional Service refers to services that are provided only for particular regions due to restrictions in infrastructure and service content of eacy country/region/law/product. 
