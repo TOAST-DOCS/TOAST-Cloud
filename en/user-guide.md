@@ -189,10 +189,6 @@ The authentication and management policy of each payment method goes as follows:
 - Enter your account information.
 
 <a id="bank-transfers-select-payment-methods"></a>
-
-### Account Transfer { #bank-transfers }
-<a id="bank-transfers-select-payment-methods"></a>
-
 #### Authenticate Public Key Certificates
 - For s personal account, select a personal Public Key Certificate for authentication.
 - For a corporate account, select a Public Key Certificate registered with the same business information on its account for authentication.
