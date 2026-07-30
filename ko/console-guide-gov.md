@@ -70,6 +70,7 @@ IP ACL 설정에 등록된 IP에서만 NHN Cloud 서비스를 이용할 수 있�
 콘솔 접속 및 User Access Key 토큰 인증 방식의 Public API 호출 시 IP ACL이 적용됩니다. [인증 방식 지원 현황 보기](https://docs.gov-nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods-gov/)
 Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 수 있습니다.
 
+
 1. **콘솔**로 이동한 뒤 설정을 원하는 조직의 **조직 관리** 페이지에 접속합니다.
 2. 하위 탭 메뉴에서 **거버넌스 설정**을 선택합니다.
 3. 조직 거버넌스 설정의 **IP ACL 설정**에서 IP ACL을 설정하고 관리할 수 있습니다.    
@@ -79,6 +80,7 @@ Dooray! 서비스는 해당 서비스 콘솔 화면에서 IP ACL을 설정할 �
         * 서비스 게이트웨이: 서비스 게이트웨이 ID를 입력합니다.
             * API Gateway 서비스 연결 및 NAT IP 고정이 설정된 서비스 게이트웨이인 경우에만 IP ACL이 적용됩니다.
             * 서비스 게이트웨이 ID가 등록된 경우 해당 서비스 게이트웨이에 설정된 NAT IP를 조회하여 IP ACL에 적용됩니다.
+
 * 주의: 해외 접속 차단을 함께 설정하는 경우 IP ACL에 등록된 IP라도 접속 허용 국가에 포함되지 않으면 콘솔 접속이 제한될 수 있습니다.
 
 #### 해외 접속 차단 설정
@@ -285,6 +287,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | 멤버 등록 방법 | - 조직의 OWNER나 ADMIN, ORG_MEMBER_ADMIN이 NHN Cloud ID를 입력하여 등록 | - 조직의 OWNER나 ADMIN, ORG_MEMBER_ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>- SSO 연동/API 연동 등을 통해 등록 |
 | 멤버 역할 | - 조직 관리(조직 생성/수정/조직 멤버 관리/조직 서비스 관리/결제 관리)<br>- 프로젝트 생성<br>- 프로젝트 삭제 | - 조직 서비스 이용 |
 | 콘솔 접근 | - NHN Cloud(공공기관용) 콘솔([https://console.gov-nhncloud.com/](https://console.gov-nhncloud.com/)) 접근<br>- NHN Cloud(공공기관용) > 회원 ID/비밀번호로 로그인<br>- (선택) 2차(이메일 또는 SMS) 인증 | - IAM 콘솔(https://조직도메인.console.gov-nhncloud.com/) 접근<br>- (Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근)<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/PW로 로그인 - 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
+
 
 
 ### 회원 역할
