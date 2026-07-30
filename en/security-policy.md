@@ -1,12 +1,15 @@
-## NHN Cloud > Security Policy 
+<a id="nhn-cloud-security-policy"></a>
+## NHN Cloud > Security Policy { #nhn-cloud-security-policy }
 
 NHN Cloud guides for security products, security policy, and vulnerability information, to provide safer security environment.
 Security policy is provided as below, to protect customer's resources from new and various types of attacks and security vulnerabilities, and prepare against frequent accidents and threats in the cloud.
 
-## Password Policy 
+<a id="password-policy"></a>
+## Password Policy { #password-policy }
 To set passwords for user accounts (both root and general accounts), general passwords that are easy to guess may be cracked by unauthorized users and obtain role for general or root accounts and access systems. As this may result in the leakage of important data saved in the server or abused as hackers' stop, a safe password must be set and managed. .
 
-### Safe Passwords
+<a id="safe-passwords"></a>
+### Safe Passwords { #safe-passwords }
 Must be comprised of 8 or more characters, in combination of alphabets, numbers, and special characters. Following passwords should be avoided as they are easy to guess: 
 
 - null Passwords
@@ -16,22 +19,23 @@ Must be comprised of 8 or more characters, in combination of alphabets, numbers,
 - Periodic reuses 
 - Composed of phone number, birthday, account name, or host name, which are easy to guess 
 
-### NHN Cloud Password Policy 
+<a id="nhn-cloud-password-policy"></a>
+### NHN Cloud Password Policy { #nhn-cloud-password-policy }
 To protect customer's resources and services, NHN Cloud applies the following as the basic password policy.
 
 - Combined with three types: Alphabets, Numbers, and Special Characters
 - Has more than 8 characters
 
-## Anti-DRDoS Policy
+<a id="anti-drdos-policy"></a>
+## Anti-DRDoS Policy { #anti-drdos-policy }
 Instances exposed to external networks may be abused as stops for Distributed Reflection Denial of Service, or DRDoS attacks, causing service failure or unintentional traffic charges due to abnormal increase in outbound traffic. 
 
-### What is DRDoS (Distributed Reflection Denial of Service)?
+<a id="what-is-drdos-distributed-reflection-denial-of-service"></a>
+### What is DRDoS (Distributed Reflection Denial of Service)? { #what-is-drdos-distributed-reflection-denial-of-service }
 DRDoS occurs due to vulnerable settings of applications, such as DNS, NTP, SSDP, or Memcached. This bandwidth amplifying attack technique is widely used for recent hackings, as it creates a large response packet with small request packets by using a number of zombie computers, and causes traffic to be concentrated at a target server.
 
-### Anti-NHN Cloud DRDoS Port Policy
-To protect customer's resources and services, NHN Cloud blocks UDP ports which are frequently abused as stops for DRDoS attacks..
-
-### List of Blocked Ports
+<a id="list-of-blocked-ports"></a>
+### List of Blocked Ports { #list-of-blocked-ports }
 |Service Name |  Blocked Port  | Blocking Method |Reference|
 | ---- | ---- | ---- | ---- |
 |Chargen | UDP / 19    | Network ACL | Inaccessible from outside |
@@ -39,15 +43,18 @@ To protect customer's resources and services, NHN Cloud blocks UDP ports which a
 |Memcached   | UDP / 11211 | Network ACL | Inaccessible from outside |
 
 
-## Internet Port Blocking Policy (Inbound) 
+<a id="internet-port-blocking-policy-inbound"></a>
+## Internet Port Blocking Policy (Inbound) { #internet-port-blocking-policy-inbound }
 To protect customer service, the block-intrusion system is provided as well as security group which is managed under the control of customers.
 
-### NHN Cloud List of Blocked Ports 
+<a id="nhn-cloud-list-of-blocked-ports"></a>
+### NHN Cloud List of Blocked Ports { #nhn-cloud-list-of-blocked-ports }
 |Region | Service Name | Blocked Port | Blocking Method | Remarks |
 | ---- | ---- | ---- | ---- | ---- |
 | Korea (Pangyo/Pyeongchon/Gwangju) <br> Japan (Tokyo) | System Terminal Port | TCP/23 | Blocked by network ACLs | Externally inaccessible |
 
-### NHN Cloud(Cloud for public agencies) List of Blocked Ports
+<a id="nhn-cloudcloud-for-public-agencies-list-of-blocked-ports"></a>
+### NHN Cloud(Cloud for public agencies) List of Blocked Ports { #nhn-cloudcloud-for-public-agencies-list-of-blocked-ports }
 |Service Name | Blocked Port | Blocking Method | Remarks|
 | ---- | ---- | ---- | ---- |
 | System Terminal Port | TCP/22, 23, 3389 | Blocked by network ACLs | Externally inaccessible|
@@ -55,7 +62,8 @@ To protect customer service, the block-intrusion system is provided as well as s
 | Netbios Port | TCP, UDP/135, 137, 138, 139, 445 | Blocked by network ACLs | Externally inaccessible |
 | Etc. | TCP/21(FTP), TCP / 5900(VNC) | Blocked by network ACLs | Externally inaccessible |
 
-### How to Apply for More Ports
+<a id="how-to-apply-for-more-ports"></a>
+### How to Apply for More Ports { #how-to-apply-for-more-ports }
 - Download the excel file below and fill in the form.
 
 [![](https://static.toastoven.net/prod_gov_security/fileicon_download_excel.png)](https://static.toastoven.net/prod_gov_security/Application%20for%20Exception%20from%20NHN%20Cloud%20Firewall%20and%20SSL%20VPN%20Policy_Agency%20Name.xlsx)

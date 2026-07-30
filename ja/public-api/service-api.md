@@ -1,8 +1,11 @@
+<!-- pre-align:aligned sig=290ed037fa78 -->
+
 # サービスAPI
 
 **NHN Cloud > Public API使用ガイド > サービスAPI**
 
-## サービスAPIガイドへ
+<a id="go-to-service-api-guide"></a>
+## サービスAPIガイドへ { #go-to-service-api-guide }
 
 サービスAPIは、NHN Cloudが提供する個別サービスと該当サービスのリソースを外部システムまたはユーザーアプリケーションから制御または連携できるようサポートするAPIです。
 個別サービスのAPIガイドは、該当サービスカテゴリー内で確認できます。

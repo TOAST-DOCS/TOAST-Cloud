@@ -1,6 +1,10 @@
-## NHN Cloud > リソース提供ポリシー
+<!-- pre-align:aligned sig=e42ad12c254a -->
 
-### 用語定義
+<a id="nhn-cloud-console-user-guide"></a>
+## NHN Cloud > リソース提供ポリシー { #nhn-cloud-console-user-guide }
+
+<a id="terminology"></a>
+### 用語定義 { #terminology }
 
 
 * ロール(Role)：NHN Cloudが提供するサービスや機能を利用するための役割/権限の束の単位
@@ -22,7 +26,8 @@
 
 ![term_3.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_03_251124.png)
 
-### Organization 
+<a id="organization"></a>
+### Organization { #organization }
 
 * ポリシー
     * OWNER/ADMIN/ORG_MEMEBER__ADMINは、NHN Cloudで提供するロールと権限を組み合わせて、組織ロールグループを作成できます。
@@ -51,7 +56,8 @@
 
 
 
-### Project
+<a id="project"></a>
+### Project { #project }
 
 * ポリシー
     * ADMIN/PROJECT MEMBER ADMINは、NHN Cloudで提供するロールと権限を組み合わせて、プロジェクトロールグループを作成できます。

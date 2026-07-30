@@ -1,8 +1,11 @@
+<!-- pre-align:aligned sig=290ed037fa78 -->
+
 # 서비스 API
 
 **NHN Cloud > Public API 사용 가이드 > 서비스 API**
 
-## 서비스 API 가이드 바로 가기
+<a id="go-to-service-api-guide"></a>
+## 서비스 API 가이드 바로 가기 { #go-to-service-api-guide }
 
 서비스 API는 NHN Cloud에서 제공하는 개별 서비스와 해당 서비스의 리소스를 외부 시스템 또는 사용자 애플리케이션에서 제어하거나 연동할 수 있도록 지원하는 API입니다.
 개별 서비스의 API 가이드는 해당 서비스 카테고리 하위에서 확인할 수 있습니다.

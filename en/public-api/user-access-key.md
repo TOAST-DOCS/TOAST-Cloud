@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=7667f092f65e -->
+
 # User Access Key
 
 **NHN Cloud > Public API User Guide > API Authentication Method > User Access Key**
@@ -10,7 +12,8 @@ A User Access Key is an authentication key issued based on an NHN Cloud or IAM a
     * Keep keys secure and ensure they are not hard-coded or stored in public repositories. If a leak is suspected, the keys must be revoked and reissued immediately.
 
 
-## Issue a User Access Key
+<a id="issue-a-user-access-key"></a>
+## Issue a User Access Key { #issue-a-user-access-key }
 To use NHN Cloud APIs, you must first issue a User Access Key. User Access Keys can be issued in the **API Security Settings** of the NHN Cloud Console.
 
 1) In the drop-down menu that appears when you hover over your account in the upper-right corner of the NHN Cloud console, click **API Security Settings**.
@@ -35,7 +38,8 @@ To use NHN Cloud APIs, you must first issue a User Access Key. User Access Keys 
     * It is recommended to rotate (change) your User Access Key ID every 90 days.
 
 
-## Making API Calls
+<a id="making-api-calls"></a>
+## Making API Calls { #making-api-calls }
 User Access Key is passed via the HTTP request header. When calling an API, include the User Access Key in the header as shown in the example below.
 
 

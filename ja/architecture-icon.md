@@ -1,8 +1,11 @@
+<!-- pre-align:aligned sig=88b3d1b8336c -->
 
-## NHN Cloud > アーキテクチャアイコン
+<a id="nhn-cloud-architecture-icon"></a>
+## NHN Cloud > アーキテクチャアイコン { #nhn-cloud-architecture-icon }
 NHN Cloudは、顧客がアーキテクチャアーキテクチャダイアグラムを作成するときに活用できるようにアーキテクチャアイコンを提供します。
 
-### アーキテクチャアイコンのダウンロード
+<a id="download-architecture-icon"></a>
+### アーキテクチャアイコンのダウンロード { #download-architecture-icon }
 
 - 次のPowerPointファイルをダウンロードしてご利用ください。
 
