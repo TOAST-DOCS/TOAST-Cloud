@@ -72,12 +72,13 @@
 <a id="march-25-2025-feature-updates"></a>
 #### 機能改善/変更
 
-<!-- TODO: translate body -->
+- `IAM メンバー` -> `IAM アカウント` 用語変更
+- `NHN Cloud 会員` -> `NHN Cloud アカウント` 用語変更
 
 <a id="march-25-2025-added-features"></a>
 #### 新規機能追加
 
-<!-- TODO: translate body -->
+- 組織 IAM アカウントのパスワードポリシー照会機能を Public API として提供
 
 <a id="march-4-2025"></a>
 ### 2025. 03. 04. { #march-4-2025 }

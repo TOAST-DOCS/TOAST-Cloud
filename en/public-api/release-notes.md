@@ -69,6 +69,17 @@
 
 <!-- TODO: translate body -->
 
+<a id="march-25-2025-feature-updates"></a>
+#### Feature Updates
+
+- `IAM 멤버` -> `IAM 계정` terminology change
+- `NHN Cloud 회원` -> `NHN Cloud 계정` terminology change
+
+<a id="march-25-2025-added-features"></a>
+#### Added Features
+
+- Provided a public API for querying the organization IAM account password policy
+
 <a id="march-4-2025"></a>
 ### March 4, 2025 { #march-4-2025 }
 <a id="march-4-2025-feature-updates"></a>
