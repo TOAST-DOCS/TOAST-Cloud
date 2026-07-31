@@ -1,16 +1,22 @@
+<!-- pre-align:aligned sig=252b1c33d7f4 -->
+
 # 프레임워크 API
 
 **NHN Cloud > Public API 사용 가이드 > 프레임워크 API**
 
+<a id="overview"></a>
 ## 개요 { #overview }
 다음에서 소개하는 API를 통해 프로젝트 멤버를 생성하거나 역할을 부여하는 등 조직과 프로젝트를 관리할 수 있습니다.
 프레임워크 API는 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
 
+<a id="public-api-domain"></a>
 ### Public API 도메인 { #public-api-domain }
 `https://core.api.nhncloudservice.com/`
 
+<a id="common"></a>
 ### 공통 { #common }
 
+<a id="common-request"></a>
 #### 요청
 Public API를 호출할 때는 아래 Request Header를 반드시 포함해야 합니다.
 
@@ -19,6 +25,7 @@ Public API를 호출할 때는 아래 Request Header를 반드시 포함해야 �
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Header |  x-nhn-authorization | String| Yes | 사용자가 발급받은 Bearer 타입 토큰 |
 
+<a id="common-response"></a>
 #### 응답
 Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 ```json
@@ -37,6 +44,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   resultCode | Integer| No | 결과 코드. 성공 시 0이 반환되며, 실패 시 오류 코드 반환  |
 |   resultMessage | String| No | 결과 메시지  |
 
+<a id="common-type"></a>
 #### 공통 타입
 
 
@@ -55,6 +63,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
     * **조직 관리 > 거버넌스 설정 > 조직 거버넌스 설정 > IP ACL 설정**을 통해 IP ACL을 설정했을 경우, 프레임워크 API 호출 시에도 해당 설정이 적용됩니다.
 
 
+<a id="api"></a>
 ### API { #api }
 
 
@@ -138,15 +147,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 프로젝트 멤버 생성
+<a id="create-a-project-member"></a>
+### 프로젝트 멤버 생성 { #create-a-project-member }
 
 > POST "/v1/projects/{project-id}/members"
 
 프로젝트에 멤버를 추가하는 API입니다.
 
+<a id="create-a-project-member-required-permissions"></a>
 #### 필요 권한
 `Project.Member.Create`
 
+<a id="create-a-project-member-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -193,6 +205,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   attributeValues | List&lt;String>| Yes | 조건 속성 값  |
 
 
+<a id="create-a-project-member-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -213,15 +226,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   header | [공통 응답](#응답) | Yes |
 
 
-### 프로젝트 추가
+<a id="add-a-project"></a>
+### 프로젝트 추가 { #add-a-project }
 
 > POST "/v1/organizations/{org-id}/projects"
 
 조직에 프로젝트를 추가하는 API입니다.
 
+<a id="add-a-project-required-permissions"></a>
 #### 필요 권한
 `Organization.Project.Create`
 
+<a id="add-a-project-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -241,6 +257,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   projectName | String| Yes| 프로젝트 이름(최대 40자) |
 
 
+<a id="add-a-project-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -274,15 +291,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   projectStatusCode | String| Yes   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> | 
 
 
-### 프로젝트 멤버 단건 삭제
+<a id="delete-a-single-project-member"></a>
+### 프로젝트 멤버 단건 삭제 { #delete-a-single-project-member }
 
 > DELETE "/v1/projects/{project-id}/members/{target-uuid}"
 
 사용자를 해당 프로젝트에서 삭제하는 API입니다.
 
+<a id="delete-a-single-project-member-required-permissions"></a>
 #### 필요 권한
 `Project.Member.Delete`
 
+<a id="delete-a-single-project-member-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -295,6 +315,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="delete-a-single-project-member-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -316,17 +337,20 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 프로젝트 삭제
+<a id="delete-a-project"></a>
+### 프로젝트 삭제 { #delete-a-project }
 
 > DELETE "/v1/projects/{project-id}"
 
 프로젝트를 삭제하는 API입니다.
 
+<a id="delete-a-project-required-permissions"></a>
 #### 필요 권한
 아래 목록 중 하나의 권한이 필요합니다.
 * `Organization.Project.Delete`
 * `Project.Delete`
 
+<a id="delete-a-project-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -340,6 +364,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="delete-a-project-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -361,15 +386,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 프로젝트 서비스 종료
+<a id="end-a-project-service"></a>
+### 프로젝트 서비스 종료 { #end-a-project-service }
 
 > DELETE "/v1/projects/{project-id}/products/{product-id}/disable"
 
 해당 프로젝트에서 사용자가 지정한 서비스를 더 이상 이용하지 않도록 비활성화하는 API입니다.
 
+<a id="end-a-project-service-required-permissions"></a>
 #### 필요 권한
 `서비스명:Product.Delete`
 
+<a id="end-a-project-service-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -382,6 +410,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="end-a-project-service-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -417,15 +446,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   statusCode | String| Yes |   서비스 상태(STABLE, CLOSED) |
 
 
-### 프로젝트 서비스 이용
+<a id="use-a-service-product"></a>
+### 프로젝트 서비스 이용 { #use-a-service-product }
 
 > POST "/v1/projects/{project-id}/products/{product-id}/enable"
 
 해당 프로젝트에서 사용자가 지정한 서비스를 이용할 수 있도록 활성화 요청하는 API입니다.
 
+<a id="use-a-service-product-required-permissions"></a>
 #### 필요 권한
 `서비스명:Product.Create`
 
+<a id="use-a-service-product-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -436,6 +468,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |  Path |project-id | String| Yes | 서비스를 이용하려는 프로젝트 ID | 
 
 
+<a id="use-a-service-product-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -479,15 +512,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 조직 역할 목록 조회
+<a id="list-organization-roles"></a>
+### 조직 역할 목록 조회 { #list-organization-roles }
 
 > GET "/v1/organizations/{org-id}/roles"
 
 조직 사용자에게 부여할 수 있는 역할 목록을 요청하는 API입니다.
 
+<a id="list-organization-roles-required-permissions"></a>
 #### 필요 권한
 `Organization.RoleGroup.List`
 
+<a id="list-organization-roles-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -502,6 +538,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="list-organization-roles-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -547,15 +584,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   roleName | String| Yes | 역할/권한 이름  |
 
 
-### 프로젝트 역할 목록 조회
+<a id="list-project-roles"></a>
+### 프로젝트 역할 목록 조회 { #list-project-roles }
 
 > GET "/v1/projects/{project-id}/roles"
 
 프로젝트 사용자에게 부여할 수 있는 역할 목록을 요청하는 API입니다.
 
+<a id="list-project-roles-required-permissions"></a>
 #### 필요 권한
 `Project.RoleGroup.List`
 
+<a id="list-project-roles-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -568,6 +608,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |  Query |page | Integer| No | 대상 페이지, 기본값 1 |
 
 
+<a id="list-project-roles-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -599,15 +640,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   roles | List&lt;[RoleProtocol](#roleprotocol)>| Yes  | 역할 목록 |
 |   totalCount | Integer| Yes  | 총 개수 |
 
-### 조직 도메인 검색
+<a id="search-for-an-organization-domain"></a>
+### 조직 도메인 검색 { #search-for-an-organization-domain }
 
 > GET "/v1/organizations/{org-id}/domains"
 
 특정 조직의 도메인을 조회하는 API입니다.
 
+<a id="search-for-an-organization-domain-required-permissions"></a>
 #### 필요 권한
 `Organization.Domain.List`
 
+<a id="search-for-an-organization-domain-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -619,6 +663,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="search-for-an-organization-domain-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -655,15 +700,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   orgDomainName | String| Yes | 조직 도메인 이름 |
 
 
-### 조직 멤버 단건 조회
+<a id="view-a-organization-member"></a>
+### 조직 멤버 단건 조회 { #view-a-organization-member }
 
 > GET "/v1/organizations/{org-id}/members/{member-uuid}"
 
 조직에 소속된 멤버를 조회하는 API입니다.
 
+<a id="view-a-organization-member-required-permissions"></a>
 #### 필요 권한
 `Organization.Member.Get`
 
+<a id="view-a-organization-member-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -677,6 +725,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="view-a-organization-member-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -775,15 +824,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 조직 멤버 목록 조회
+<a id="list-organization-members"></a>
+### 조직 멤버 목록 조회 { #list-organization-members }
 
 > POST "/v1/organizations/{org-id}/members/search"
 
 해당 조직에 소속된 NHN Cloud 멤버 목록을 조회하는 API입니다.
 
+<a id="list-organization-members-required-permissions"></a>
 #### 필요 권한
 `Organization.Member.List`
 
+<a id="list-organization-members-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -814,6 +866,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="list-organization-members-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -880,15 +933,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 조직의 프로젝트 공통 역할 그룹 전체 조회
+<a id="view-all-common-role-groups-for-projects-in-the-organization"></a>
+### 조직의 프로젝트 공통 역할 그룹 전체 조회 { #view-all-common-role-groups-for-projects-in-the-organization }
 
 > GET "/v1/organizations/{org-id}/project-role-groups"
 
 조직에서 설정한 프로젝트 공통 역할 그룹 목록을 조회하는 API입니다.
 
+<a id="view-all-common-role-groups-for-projects-in-the-organization-required-permissions"></a>
 #### 필요 권한
 `Organization.Project.RoleGroup.List`
 
+<a id="view-all-common-role-groups-for-projects-in-the-organization-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -906,6 +962,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="view-all-common-role-groups-for-projects-in-the-organization-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -954,16 +1011,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   roleGroupType | String| Yes | 역할 그룹의 종류<br><ul><li>ORG: 프로젝트 공통 역할 그룹</li><li>ORG_ROLE_GROUP: 조직 역할 그룹</li><li>PROJECT: 프로젝트 역할 그룹</li> |
 
 
-### 서비스 계층 구조 조회
+<a id="view-service-hierarchy"></a>
+### 서비스 계층 구조 조회 { #view-service-hierarchy }
 
 > GET "/v1/product-uis/hierarchy"
 
 청구서에 노출되는 홈페이지 카테고리, 홈페이지 서비스 정보를 반환하는 API입니다.
 
+<a id="view-service-hierarchy-required-permissions"></a>
 #### 필요 권한
 회원이면 특정한 권한 없이 호출할 수 있는 API입니다.<br>
 단, 조직 서비스를 조회하는 경우에는 해당 조직이나 조직 하위에 있는 프로젝트 멤버여야만 합니다.
 
+<a id="view-service-hierarchy-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -976,6 +1036,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="view-service-hierarchy-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1017,15 +1078,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   productUiName | String| No|
 
 
-### 프로젝트에서 사용 중인 서비스 조회
+<a id="view-a-service-used-in-the-project"></a>
+### 프로젝트에서 사용 중인 서비스 조회 { #view-a-service-used-in-the-project }
 
 > GET "/v1/projects/{project-id}/products/{product-id}"
 
 * 프로젝트에서 사용 중인 특정 서비스 정보를 조회하는 API
 
+<a id="view-a-service-used-in-the-project-required-permissions"></a>
 #### 필요 권한
 `서비스명:ProductAppKey.Get`
 
+<a id="view-a-service-used-in-the-project-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1038,6 +1102,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="view-a-service-used-in-the-project-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1094,15 +1159,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   updateUuid | String| No | 서비스 앱키 수정자 UUID  |
 
 
-### 프로젝트 멤버 단건 조회
+<a id="view-a-project-member"></a>
+### 프로젝트 멤버 단건 조회 { #view-a-project-member }
 
 > GET "/v1/projects/{project-id}/members/{member-uuid}"
 
 프로젝트에 소속된 특정 멤버를 조회하는 API입니다.
 
+<a id="view-a-project-member-required-permissions"></a>
 #### 필요 권한
 `Project.Member.Get`
 
+<a id="view-a-project-member-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1115,6 +1183,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="view-a-project-member-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1182,15 +1251,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 프로젝트 멤버 목록 조회
+<a id="list-project-members"></a>
+### 프로젝트 멤버 목록 조회 { #list-project-members }
 
 > POST "/v1/projects/{project-id}/members/search"
 
 프로젝트에 소속된 멤버 목록을 조회하기 위한 API입니다.
 
+<a id="list-project-members-required-permissions"></a>
 #### 필요 권한
 `Project.Member.List`
 
+<a id="list-project-members-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1214,6 +1286,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="list-project-members-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1265,15 +1338,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   uuid | String| No | 멤버 UUID  |
 
 
-### 프로젝트 역할 그룹 단건 조회
+<a id="view-a-project-role-group"></a>
+### 프로젝트 역할 그룹 단건 조회 { #view-a-project-role-group }
 
 > GET "/v1/projects/{project-id}/project-role-groups/{role-group-id}"
 
 프로젝트의 역할 그룹을 조회하는 API입니다.
 
+<a id="view-a-project-role-group-required-permissions"></a>
 #### 필요 권한
 `Project.RoleGroup.Get`
 
+<a id="view-a-project-role-group-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1286,6 +1362,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="view-a-project-role-group-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1343,15 +1420,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 조직의 프로젝트 공통 역할 그룹 단건 조회
+<a id="view-a-common-role-group-for-the-project-in-the-organization"></a>
+### 조직의 프로젝트 공통 역할 그룹 단건 조회 { #view-a-common-role-group-for-the-project-in-the-organization }
 
 > GET "/v1/organizations/{org-id}/project-role-groups/{role-group-id}"
 
 프로젝트 공통 역할 그룹을 조회하는 API입니다.
 
+<a id="view-a-common-role-group-for-the-project-in-the-organization-required-permissions"></a>
 #### 필요 권한
 `Organization.Project.RoleGroup.Get`
 
+<a id="view-a-common-role-group-for-the-project-in-the-organization-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1361,6 +1441,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |  Path |role-group-id | String| Yes | 프로젝트 공통 역할 그룹 ID | 
 
 
+<a id="view-a-common-role-group-for-the-project-in-the-organization-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1409,15 +1490,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 프로젝트 역할 그룹 전체 조회
+<a id="view-all-project-role-groups"></a>
+### 프로젝트 역할 그룹 전체 조회 { #view-all-project-role-groups }
 
 > GET "/v1/projects/{project-id}/project-role-groups"
 
 프로젝트의 역할 그룹을 전체 조회하는 API입니다.
 
+<a id="view-all-project-role-groups-required-permissions"></a>
 #### 필요 권한
 `Project.RoleGroup.List`
 
+<a id="view-all-project-role-groups-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1431,6 +1515,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="view-all-project-role-groups-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1464,15 +1549,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)>| Yes | 프로젝트에서 사용 가능한 역할 그룹 목록  |
 
-### 조직에 속한 프로젝트 목록 조회
+<a id="list-projects-in-your-organization"></a>
+### 조직에 속한 프로젝트 목록 조회 { #list-projects-in-your-organization }
 
 > GET "/v1/organizations/{org-id}/projects"
 
 특정 조직에 속한 STABLE 한 상태의 프로젝트 목록을 조회하는 API입니다.
 
+<a id="list-projects-in-your-organization-required-permissions"></a>
 #### 필요 권한
 조직의 멤버
 
+<a id="list-projects-in-your-organization-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1485,6 +1573,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
 
 
+<a id="list-projects-in-your-organization-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1538,15 +1627,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   regDateTime | Date| Yes| 프로젝트 등록 일시 |
 
 
-### 사용 중인 조직 거버넌스 목록 조회
+<a id="list-organization-governance-in-use"></a>
+### 사용 중인 조직 거버넌스 목록 조회 { #list-organization-governance-in-use }
 
 > GET "/v1/organizations/{org-id}/governances"
 
 활성화된 거버넌스를 조회하는 API입니다.
 
+<a id="list-organization-governance-in-use-required-permissions"></a>
 #### 필요 권한
 `Organization.Governance.List`
 
+<a id="list-organization-governance-in-use-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -1555,6 +1647,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="list-organization-governance-in-use-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1590,16 +1683,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   governanceTypeCode | String| No | 거버넌스 타입<br>- APPROVE_PROCESS: 승인 처리<br>- BLOCK_STORAGE_SNAPSHOT: BlockStorage의 Snapshot 기능 사용 여부<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAAS 리소스 권한 통제 및 접속 단말 제한 설정<br>- PRIVACY_PROTECTION: 개인 정보 보호<br>- UNIQUE_INSTANCE_NAME: 인스턴스명 중복 방지 |
 |   regDatetime | Date| No | 거버넌스 사용 설정 일시  |
 
-### 조직의 프로젝트 공통 역할 그룹 생성
+<a id="create-a-common-role-group-for-projects-in-the-organization"></a>
+### 조직의 프로젝트 공통 역할 그룹 생성 { #create-a-common-role-group-for-projects-in-the-organization }
 
 > POST "/v1/organizations/{org-id}/project-role-groups"
 
 프로젝트 공통 역할 그룹을 생성하는 API입니다.
 
 
+<a id="create-a-common-role-group-for-projects-in-the-organization-required-permissions"></a>
 #### 필요 권한
 `Organization.Project.RoleGroup.Create`
 
+<a id="create-a-common-role-group-for-projects-in-the-organization-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -1628,6 +1724,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="create-a-common-role-group-for-projects-in-the-organization-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1647,15 +1744,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   header | [공통 응답](#응답)| Yes   |
 
 
-### 조직의 프로젝트 공통 역할 그룹 삭제
+<a id="delete-a-project-common-role-group-in-the-organization"></a>
+### 조직의 프로젝트 공통 역할 그룹 삭제 { #delete-a-project-common-role-group-in-the-organization }
 
 > DELETE "/v1/organizations/{org-id}/project-role-groups"
 
 프로젝트 공통 역할 그룹을 삭제하는 API입니다.
 
+<a id="delete-a-project-common-role-group-in-the-organization-required-permissions"></a>
 #### 필요 권한
 `Organization.Project.RoleGroup.Delete`
 
+<a id="delete-a-project-common-role-group-in-the-organization-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1673,6 +1773,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   roleGroupIds | List&lt;String>| Yes | 역할 그룹 ID 목록  |
 
 
+<a id="delete-a-project-common-role-group-in-the-organization-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1691,15 +1792,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 조직의 프로젝트 공통 역할 그룹 정보 수정
+<a id="modify-your-organizations-project-common-role-group-information"></a>
+### 조직의 프로젝트 공통 역할 그룹 정보 수정 { #modify-your-organizations-project-common-role-group-information }
 
 > PUT "/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos"
 
 프로젝트 공통 역할 그룹의 이름과 설명을 수정하는 API입니다.
 
+<a id="modify-your-organizations-project-common-role-group-information-required-permissions"></a>
 #### 필요 권한
 `Organization.Project.RoleGroup.Update`
 
+<a id="modify-your-organizations-project-common-role-group-information-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1720,6 +1824,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="modify-your-organizations-project-common-role-group-information-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1738,15 +1843,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 조직의 프로젝트 공통 역할 그룹 역할 수정
+<a id="modify-your-organizations-project-common-roles-group-roles"></a>
+### 조직의 프로젝트 공통 역할 그룹 역할 수정 { #modify-your-organizations-project-common-roles-group-roles }
 
 > PUT "/v1/organizations/{org-id}/project-role-groups/{role-group-id}/roles"
 
 프로젝트 공통 역할 그룹의 역할을 수정하는 API입니다.
 
+<a id="modify-your-organizations-project-common-roles-group-roles-required-permissions"></a>
 #### 필요 권한
 `Organization.Project.RoleGroup.Update`
 
+<a id="modify-your-organizations-project-common-roles-group-roles-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -1766,6 +1874,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="modify-your-organizations-project-common-roles-group-roles-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1784,16 +1893,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 프로젝트 역할 그룹 생성
+<a id="create-a-project-role-group"></a>
+### 프로젝트 역할 그룹 생성 { #create-a-project-role-group }
 
 > POST "/v1/projects/{project-id}/project-role-groups"
 
 프로젝트에 역할 그룹을 생성하는 API입니다.
 
 
+<a id="create-a-project-role-group-required-permissions"></a>
 #### 필요 권한
 `Project.RoleGroup.Create`
 
+<a id="create-a-project-role-group-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1806,6 +1918,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="create-a-project-role-group-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1824,16 +1937,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 프로젝트 역할 그룹 삭제
+<a id="delete-a-project-role-group"></a>
+### 프로젝트 역할 그룹 삭제 { #delete-a-project-role-group }
 
 > DELETE "/v1/projects/{project-id}/project-role-groups"
 
 프로젝트 역할 그룹을 삭제하는 API입니다.
 
 
+<a id="delete-a-project-role-group-required-permissions"></a>
 #### 필요 권한
 `Project.RoleGroup.Delete`
 
+<a id="delete-a-project-role-group-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -1846,6 +1962,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="delete-a-project-role-group-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1864,15 +1981,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 프로젝트 역할 그룹 정보 수정
+<a id="edit-project-role-group-information"></a>
+### 프로젝트 역할 그룹 정보 수정 { #edit-project-role-group-information }
 
 > PUT "/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos"
 
 프로젝트 역할 그룹의 이름과 설명을 수정하는 API입니다.
 
+<a id="edit-project-role-group-information-required-permissions"></a>
 #### 필요 권한
 `Project.RoleGroup.Update`
 
+<a id="edit-project-role-group-information-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -1885,6 +2005,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="edit-project-role-group-information-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1904,15 +2025,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   header | [공통 응답](#응답)| Yes   |
 
 
-### 프로젝트 역할 그룹 역할 수정
+<a id="modify-project-role-group-roles"></a>
+### 프로젝트 역할 그룹 역할 수정 { #modify-project-role-group-roles }
 
 > PUT "/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles"
 
 프로젝트 역할 그룹의 역할을 수정하는 API입니다.
 
+<a id="modify-project-role-group-roles-required-permissions"></a>
 #### 필요 권한
 `Project.RoleGroup.Update`
 
+<a id="modify-project-role-group-roles-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -1932,6 +2056,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="modify-project-role-group-roles-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -1951,16 +2076,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   header | [공통 응답](#응답)| Yes   |
 
 
-### 조직 역할 그룹 전체 조회
+<a id="view-all-organization-role-groups"></a>
+### 조직 역할 그룹 전체 조회 { #view-all-organization-role-groups }
 
 > GET "/v1/organizations/{org-id}/org-role-groups"
 
 조직의 역할 그룹을 전체 조회하는 API입니다.
 
+<a id="view-all-organization-role-groups-required-permission"></a>
 #### 필요 권한
 
 `Organization.RoleGroup.List`
 
+<a id="view-all-organization-role-groups-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
@@ -1971,6 +2099,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | Query | limit | Integer | No | 페이지당 표시 건수(기본값: 20, 최솟값: 1, 최댓값: 2000) |
 | Query | page | Integer | No | 대상 페이지(기본값: 1, 최솟값: 1) |
 
+<a id="view-all-organization-role-groups-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2005,16 +2134,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | paging | [PagingResponse](#pagingresponse) | Yes | |
 | roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | 조직에서 사용 가능한 역할 그룹 목록 |
 
-### 조직 역할 그룹 단건 조회
+<a id="view-a-single-organization-role-group"></a>
+### 조직 역할 그룹 단건 조회 { #view-a-single-organization-role-group }
 
 > GET "/v1/organizations/{org-id}/org-role-groups/{role-group-id}"
 
 조직의 역할 그룹을 조회하는 API입니다.
 
+<a id="view-a-single-organization-role-group-required-permission"></a>
 #### 필요 권한
 
 `Organization.RoleGroup.Get`
 
+<a id="view-a-single-organization-role-group-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
@@ -2022,6 +2154,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | Path | org-id | String | Yes | 조회 대상 조직 ID |
 | Path | role-group-id | String | Yes | 조직 역할 그룹 ID | 
 
+<a id="view-a-single-organization-role-group-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2072,16 +2205,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | header | [공통 응답](#응답) | Yes | |
 | roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | 연관 역할을 포함한 역할 그룹 |
 
-### 조직 역할 그룹 생성
+<a id="create-organization-role-group"></a>
+### 조직 역할 그룹 생성 { #create-organization-role-group }
 
 > POST "/v1/organizations/{org-id}/org-role-groups"
 
 조직에 역할 그룹을 생성하는 API입니다.
 
+<a id="create-organization-role-group-required-permission"></a>
 #### 필요 권한
 
 `Organization.RoleGroup.Create`
 
+<a id="create-organization-role-group-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
@@ -2089,6 +2225,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | Path | org-id | String | Yes | 조직 ID |
 | Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | 요청 |
 
+<a id="create-organization-role-group-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2107,16 +2244,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | ------------ | ------------- | ----------- | ------------ |
 | header | [공통 응답](#응답) | Yes | |
 
-### 조직 역할 그룹 삭제
+<a id="delete-organization-role-group"></a>
+### 조직 역할 그룹 삭제 { #delete-organization-role-group }
 
 > DELETE "/v1/organizations/{org-id}/org-role-groups"
 
 조직 역할 그룹을 삭제하는 API입니다.
 
+<a id="delete-organization-role-group-required-permission"></a>
 #### 필요 권한
 
 `Organization.RoleGroup.Delete`
 
+<a id="delete-organization-role-group-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
@@ -2124,6 +2264,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | Path | org-id | String | Yes | 조직 ID |
 | Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | 요청 |
 
+<a id="delete-organization-role-group-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2142,16 +2283,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | ------------ | ------------- | ----------- | ------------ |
 | header | [공통 응답](#응답) | Yes | |
 
-### 조직 역할 그룹 정보 수정
+<a id="modify-organization-role-group-information"></a>
+### 조직 역할 그룹 정보 수정 { #modify-organization-role-group-information }
 
 > PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos"
 
 조직 역할 그룹의 이름과 설명을 수정하는 API입니다.
 
+<a id="modify-organization-role-group-information-required-permission"></a>
 #### 필요 권한
 
 `Organization.RoleGroup.Update`
 
+<a id="modify-organization-role-group-information-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
@@ -2160,6 +2304,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | Path | role-group-id | String | Yes | 역할 그룹 ID |
 | Request Body | request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | 요청 |
 
+<a id="modify-organization-role-group-information-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2179,16 +2324,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | header | [공통 응답](#응답) | Yes | |
 
 
-### 조직 역할 그룹 역할 수정
+<a id="modify-an-organization-role-groups-role"></a>
+### 조직 역할 그룹 역할 수정 { #modify-an-organization-role-groups-role }
 
 > PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles"
 
 조직 역할 그룹의 역할을 수정하는 API입니다.
 
+<a id="modify-an-organization-role-groups-role-required-permission"></a>
 #### 필요 권한
 
 `Organization.RoleGroup.Update`
 
+<a id="modify-an-organization-role-groups-role-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
@@ -2203,6 +2351,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | ------------ | ------------- | ------------- | ------------ |
 | roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Yes | 역할 그룹에 할당할 역할 목록 |
 
+<a id="modify-an-organization-role-groups-role-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2222,17 +2371,20 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | header | [공통 응답](#응답) | Yes | |
 
 
-### 조직 멤버 역할 수정
+<a id="modify-organization-member-roles"></a>
+### 조직 멤버 역할 수정 { #modify-organization-member-roles }
 
 > PUT "/v1/organizations/{org-id}/members/{member-uuid}"
 
 해당 조직에 소속된 멤버의 역할을 수정하는 API입니다.
 
 
+<a id="modify-organization-member-roles-required-permissions"></a>
 #### 필요 권한
 `Organization.Member.Update`
 
 
+<a id="modify-organization-member-roles-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -2254,6 +2406,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="modify-organization-member-roles-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2272,15 +2425,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 프로젝트 멤버 역할 수정
+<a id="modify-project-member-roles"></a>
+### 프로젝트 멤버 역할 수정 { #modify-project-member-roles }
 
 > PUT "/v1/projects/{project-id}/members/{member-uuid}"
 
 프로젝트에서 지정한 멤버의 역할을 수정하는 API입니다.
 
+<a id="modify-project-member-roles-required-permissions"></a>
 #### 필요 권한
 `Project.Member.Update`
 
+<a id="modify-project-member-roles-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -2292,6 +2448,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="modify-project-member-roles-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2310,16 +2467,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 조직 IAM 계정 단건 조회
+<a id="view-organization-iam-members"></a>
+### 조직 IAM 계정 단건 조회 { #view-organization-iam-members }
 
 > GET "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
 조직에 소속된 IAM 계정을 조회하는 API입니다.
 
+<a id="view-organization-iam-members-required-permissions"></a>
 #### 필요 권한
 `Organization.Member.Iam.Get`
 
 
+<a id="view-organization-iam-members-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -2328,6 +2488,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |  Path |member-uuid | String| Yes | 조회할 조직의 IAM 계정 UUID | 
 
 
+<a id="view-organization-iam-members-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2449,15 +2610,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   role | String| No |
 
 
-### 조직 IAM 계정 목록 조회
+<a id="list-organization-iam-members"></a>
+### 조직 IAM 계정 목록 조회 { #list-organization-iam-members }
 
 > GET "/v1/iam/organizations/{org-id}/members"
 
 해당 조직에 소속된 IAM 계정 목록을 조회하는 API입니다.
 
+<a id="list-organization-iam-members-required-permissions"></a>
 #### 필요 권한
 `Organization.Member.Iam.List`
 
+<a id="list-organization-iam-members-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -2473,6 +2637,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
 |  Query |page | Integer| No | 대상 페이지, 기본값 1 |
 
+<a id="list-organization-iam-members-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2568,16 +2733,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### 조직 IAM 계정 추가
+<a id="add-an-organization-iam-member"></a>
+### 조직 IAM 계정 추가 { #add-an-organization-iam-member }
 
 > POST "/v1/iam/organizations/{org-id}/members"
 
 조직에 IAM 계정을 추가하는 API입니다.
 
+<a id="add-an-organization-iam-member-required-permissions"></a>
 #### 필요 권한
 `Organization.Member.Iam.Create`
 
 
+<a id="add-an-organization-iam-member-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -2617,6 +2785,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
+<a id="add-an-organization-iam-member-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2641,16 +2810,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 
 
-### IAM 계정 비밀번호 변경 이메일 전송
+<a id="send-an-iam-member-password-change-email"></a>
+### IAM 계정 비밀번호 변경 이메일 전송 { #send-an-iam-member-password-change-email }
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail"
 
 IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API입니다.
 
+<a id="send-an-iam-member-password-change-email-required-permissions"></a>
 #### 필요 권한
 `Organization.Member.Iam.Update`
 
 
+<a id="send-an-iam-member-password-change-email-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -2670,6 +2842,7 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 |   returnUrl | String| Yes | 이메일 변경 알림 메일을 통해서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com, dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
 
 
+<a id="send-an-iam-member-password-change-email-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2688,15 +2861,18 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 조직 IAM 계정 정보 수정
+<a id="modify-organization-iam-member-information"></a>
+### 조직 IAM 계정 정보 수정 { #modify-organization-iam-member-information }
 
 > PUT "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
 조직의 IAM 계정 정보를 수정하는 API입니다.
 
+<a id="modify-organization-iam-member-information-required-permissions"></a>
 #### 필요 권한
 `Organization.Member.Iam.Update`
 
+<a id="modify-organization-iam-member-information-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -2738,6 +2914,7 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 | mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수 |
 
 
+<a id="modify-organization-iam-member-information-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2756,15 +2933,18 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 조직 IAM 계정 비밀번호 변경
+<a id="change-an-organization-iam-member-password"></a>
+### 조직 IAM 계정 비밀번호 변경 { #change-an-organization-iam-member-password }
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/set-password"
 
 조직 IAM 계정의 비밀번호를 변경하는 API입니다.
 
+<a id="change-an-organization-iam-member-password-required-permissions"></a>
 #### 필요 권한
 `Organization.Member.Iam.Update`
 
+<a id="change-an-organization-iam-member-password-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -2782,6 +2962,7 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 |   password | String| Yes  | 설정할 비밀번호 | 
 
 
+<a id="change-an-organization-iam-member-password-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2800,15 +2981,18 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### 조직 IP ACL 목록 조회
+<a id="listorganization-ip-acls"></a>
+### 조직 IP ACL 목록 조회 { #listorganization-ip-acls }
 
 > GET "/v1/organizations/{org-id}/products/ip-acl"
 
 IP ACL 설정을 조회하는 API입니다.
 
+<a id="listorganization-ip-acls-required-permissions"></a>
 #### 필요 권한
 `Organization.Governance.IpAcl.List`
 
+<a id="listorganization-ip-acls-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -2816,6 +3000,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Path |org-id | String| Yes | 조직 ID | 
 
 
+<a id="listorganization-ip-acls-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2848,15 +3033,18 @@ IP ACL 설정을 조회하는 API입니다.
 |   ips | List&lt;String>| Yes  | 허용 IP들 | 
 |   productId | String| Yes  | 서비스 ID<br>undefined이면 공통 설정|
 
-### 조직 IAM 계정 로그인 세션 설정 정보를 조회
+<a id="view-organization-iam-sign-in-session-settings-information"></a>
+### 조직 IAM 계정 로그인 세션 설정 정보를 조회 { #view-organization-iam-sign-in-session-settings-information }
 
 > GET "/v1/iam/organizations/{org-id}/settings/session"
 
 로그인 세션 설정 정보를 조회하는 API입니다.
 
+<a id="view-organization-iam-sign-in-session-settings-information-required-permissions"></a>
 #### 필요 권한
 `Organization.Setting.Iam.Get`
 
+<a id="view-organization-iam-sign-in-session-settings-information-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -2864,6 +3052,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Path |org-id | String| Yes | 조직 ID | 
 
 
+<a id="view-organization-iam-sign-in-session-settings-information-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2885,6 +3074,7 @@ IP ACL 설정을 조회하는 API입니다.
 ```
 
 
+<a id="view-organization-iam-sign-in-session-settings-information-response"></a>
 #### 응답
 
 | 이름 | 타입 | 필수 | 설명 |   
@@ -2901,15 +3091,18 @@ IP ACL 설정을 조회하는 API입니다.
 |   mobileSessionTimeoutMinutes | Integer| Yes | 	모바일 세션 타임아웃 |
 |   sessionType | String| Yes | fixed/idle. 기본값은 fixed  |
 
-### 조직 IAM 계정 로그인 2차 인증에 대한 설정을 조회
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication"></a>
+### 조직 IAM 계정 로그인 2차 인증에 대한 설정을 조회 { #view-settings-for-organizational-iam-sign-in-second-factor-authentication }
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-mfa"
 
 로그인 2차 인증에 대한 설정을 조회하는 API입니다.
 
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-required-permissions"></a>
 #### 필요 권한
 `Organization.Setting.Iam.Get`
 
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -2917,6 +3110,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | 조직 ID | 
 
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -2954,6 +3148,7 @@ IP ACL 설정을 조회하는 API입니다.
 ```
 
 
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-response"></a>
 #### 응답
 
 | 이름 | 타입 | 필수 | 설명 |   
@@ -2992,15 +3187,18 @@ IP ACL 설정을 조회하는 API입니다.
 |   enable | Boolean| No | 활성화 여부<br>true(사용 중), false(사용 안함)  |
 |   ipList | List&lt;String>| No | 예외 IP 목록 |
 
-### 조직 IAM 계정 로그인 실패 보안 설정을 조회
+<a id="view-organization-iam-login-failure-security-settings"></a>
+### 조직 IAM 계정 로그인 실패 보안 설정을 조회 { #view-organization-iam-login-failure-security-settings }
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-login-fail"
 
 로그인 실패 보안 설정을 조회하는 API입니다.
 
+<a id="view-organization-iam-login-failure-security-settings-required-permissions"></a>
 #### 필요 권한
 `Organization.Setting.Iam.Get`
 
+<a id="view-organization-iam-login-failure-security-settings-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -3008,6 +3206,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Path |org-id | String| Yes | 조직 ID | 
 
 
+<a id="view-organization-iam-login-failure-security-settings-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3028,6 +3227,7 @@ IP ACL 설정을 조회하는 API입니다.
 ```
 
 
+<a id="view-organization-iam-login-failure-security-settings-response"></a>
 #### 응답
 
 | 이름 | 타입 | 필수 | 설명 |   
@@ -3050,15 +3250,18 @@ IP ACL 설정을 조회하는 API입니다.
 |   limit | Integer| No | 시도 허용 횟수 |
 |   blockMinutes | Integer| No | 로그인 금지 시간  |
 
-### 조직 IAM 계정 비밀번호 정책 조회
+<a id="get-your-organizations-iam-account-password-policy"></a>
+### 조직 IAM 계정 비밀번호 정책 조회 { #get-your-organizations-iam-account-password-policy }
 
 > GET "/v1/iam/organizations/{org-id}/settings/password-rule"
 
 비밀번호 정책에 대한 설정을 조회하는 API입니다.
 
+<a id="get-your-organizations-iam-account-password-policy-required-permissions"></a>
 #### 필요 권한
 `Organization.Setting.Iam.Get`
 
+<a id="get-your-organizations-iam-account-password-policy-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -3066,6 +3269,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Path |org-id | String| Yes | 조직 ID | 
 
 
+<a id="get-your-organizations-iam-account-password-policy-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3104,6 +3308,7 @@ IP ACL 설정을 조회하는 API입니다.
 }
 ```
 
+<a id="get-your-organizations-iam-account-password-policy-response"></a>
 #### 응답
 
 | 이름 | 타입 | 필수 | 설명 |   
@@ -3154,7 +3359,8 @@ IP ACL 설정을 조회하는 API입니다.
 | enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안 함) |
 | limitCount | Integer | Yes | 재사용 제한 횟수 |
 
-### 종량제에 등록된 서비스 가격 조회
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription"></a>
+### 종량제에 등록된 서비스 가격 조회 { #get-the-price-of-a-service-on-a-pay-as-you-go-subscription }
 
 > POST "/v1/billing/contracts/basic/products/prices/search"
 
@@ -3162,9 +3368,11 @@ IP ACL 설정을 조회하는 API입니다.
 각 언어별로 노출명, 금액 계산을 위한 종류를 알 수 있습니다.
 
 
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-required-permissions"></a>
 #### 필요 권한
 회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -3172,6 +3380,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Query |limit | Integer| No |  |
 | Request Body | request | GetContractProductPriceRequest| Yes | 요청 |
 
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-getcontractproductpricerequest"></a>
 #### GetContractProductPriceRequest
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
@@ -3186,6 +3395,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   page | Integer| No | 대상 페이지, 기본값 1  |
 
 
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3259,15 +3469,18 @@ IP ACL 설정을 조회하는 API입니다.
 |   slidingCalculationTypeCode | String| Yes | 슬라이딩 요금 계산 유형<br>NONE, SECTION_SUM, SECTION_SELECTED |
 |   useFixPriceYn | String| Yes | 고정 금액  여부(Y: 고정 금액 , N: 단가 계산)<br>Y: 범위에 들어올 경우 price가 금액이 됨<br>N:(사용량 x 단가)가 금액이 됨 |
 
-### 종량제에 등록된 서비스 목록 조회
+<a id="list-services-enrolled-in-a-pay-as-you-go-subscription"></a>
+### 종량제에 등록된 서비스 목록 조회 { #list-services-enrolled-in-a-pay-as-you-go-subscription }
 
 > GET "/v1/billing/contracts/basic/products"
 
 청구서에 노출되는 메인 카테고리와 서브 카테고리 및 포함되는 카운터의 목록을 제공하는 API입니다.
 
+<a id="list-services-enrolled-in-a-pay-as-you-go-subscription-required-permissions"></a>
 #### 필요 권한
 회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
+<a id="list-services-enrolled-in-a-pay-as-you-go-subscription-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -3276,6 +3489,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Query |page | Integer| No |  |
 
 
+<a id="list-services-enrolled-in-a-pay-as-you-go-subscription-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3354,15 +3568,18 @@ IP ACL 설정을 조회하는 API입니다.
 |   usageAggregationUnitCode | String| No | 사용량 집계 단위<br>RESOURCE_ID, COUNTER_NAME |
 
 
-### 프로젝트 통합 Appkey 조회
+<a id="get-project-integrated-appkey"></a>
+### 프로젝트 통합 Appkey 조회 { #get-project-integrated-appkey }
 
 > GET "/v1/authentications/projects/{project-id}/project-appkeys"
 
 프로젝트에서 사용 중인 프로젝트 통합 Appkey 목록을 조회하는 API입니다.
 
+<a id="get-project-integrated-appkey-required-permissions"></a>
 #### 필요 권한
 `Project.ProjectAppKey.List`
 
+<a id="get-project-integrated-appkey-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -3370,6 +3587,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Path |project-id | String| Yes | 조회 대상 프로젝트 ID | 
 
 
+<a id="get-project-integrated-appkey-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3412,16 +3630,19 @@ IP ACL 설정을 조회하는 API입니다.
 |   reIssueDatetime | Date| No | 재생성 일시  |
 |   regDatetime | Date| No | 생성 일시  |
 
-### User Access Key ID 목록 조회
+<a id="listuser-access-key-ids"></a>
+### User Access Key ID 목록 조회 { #listuser-access-key-ids }
 
 > GET "/v1/authentications/user-access-keys"
 
 멤버의 User Access Key ID 목록을 조회하는 API입니다.
 
+<a id="listuser-access-key-ids-required-permissions"></a>
 #### 필요 권한
 회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
 
+<a id="listuser-access-key-ids-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3477,16 +3698,19 @@ IP ACL 설정을 조회하는 API입니다.
 |   validTokenCount | Long| No | 유효한 토큰 개수                       |
 
 
-### 프로젝트 통합 Appkey 등록
+<a id="register-a-integrated-project-appkey"></a>
+### 프로젝트 통합 Appkey 등록 { #register-a-integrated-project-appkey }
 
 > POST "/v1/authentications/projects/{project-id}/project-appkeys"
 
 프로젝트에서 사용할 AppKey를 생성하는 API입니다.
 
+<a id="register-a-integrated-project-appkey-required-permissions"></a>
 #### 필요 권한
 `Project.ProjectAppKey.Create`
 
 
+<a id="register-a-integrated-project-appkey-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -3501,6 +3725,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   appkeyAlias | String | Yes   | 프로젝트 통합 Appkey 별칭<br>100자 제한 |
 
 
+<a id="register-a-integrated-project-appkey-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3532,15 +3757,18 @@ IP ACL 설정을 조회하는 API입니다.
 |   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
 |   appKey | String| No | 프로젝트 통합 Appkey |
 
-### User Access Key ID 등록
+<a id="register-a-user-access-key-id"></a>
+### User Access Key ID 등록 { #register-a-user-access-key-id }
 
 > POST "/v1/authentications/user-access-keys"
 
 멤버의 User Access Key ID를 등록하는 API입니다.
 
+<a id="register-a-user-access-key-id-required-permissions"></a>
 #### 필요 권한
 회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
+<a id="register-a-user-access-key-id-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -3556,6 +3784,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   tokenExpiryPeriod | Long| No | 토큰 만료 기간<br>초 단위이며, OPAQUE 포맷 토큰일 경우 기본값은 하루이고, JWT 토큰은 1시간<br>OPAQUE 포맷 토큰은 최소 1분, 최대 하루까지 유효한 토큰을 생성 가능하고, JWT 포맷 토큰은 최소 1분, 최대 1시간까지 유효한 토큰을 생성 가능함 |
 
 
+<a id="register-a-user-access-key-id-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3593,16 +3822,19 @@ IP ACL 설정을 조회하는 API입니다.
 |   tokenExpiryPeriod | Long| No | 토큰 만료 기간(초 단위)
 |   tokenFormatCode | String | No | 토큰 포맷 코드(OPAQUE, JWT) |
 
-### 프로젝트 통합 Appkey 삭제
+<a id="delete-a-project-integrated-appkey"></a>
+### 프로젝트 통합 Appkey 삭제 { #delete-a-project-integrated-appkey }
 
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
 
 프로젝트 AppKey를 삭제하는 API입니다.
 
+<a id="delete-a-project-integrated-appkey-required-permissions"></a>
 #### 필요 권한
 `Project.ProjectAppKey.Delete`
 
 
+<a id="delete-a-project-integrated-appkey-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -3612,6 +3844,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Path |app-key | String| Yes | 삭제할 프로젝트 통합 Appkey | 
 
 
+<a id="delete-a-project-integrated-appkey-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3630,16 +3863,19 @@ IP ACL 설정을 조회하는 API입니다.
 |   header | [공통 응답](#응답)| Yes   |
 
 
-### User Access Key ID 비밀 키 재발급
+<a id="reissue-the-user-access-key-id-secret-key"></a>
+### User Access Key ID 비밀 키 재발급 { #reissue-the-user-access-key-id-secret-key }
 
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue"
 
 User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 
+<a id="reissue-the-user-access-key-id-secret-key-required-permissions"></a>
 #### 필요 권한
 자신의 User Access Key ID 비밀 키만 재발급 가능
 
+<a id="reissue-the-user-access-key-id-secret-key-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -3654,6 +3890,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 |------------ |---------|----|---------------------------------------------------|
 |   needExpireTokens | Boolean | No | 발급 받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 false |
 
+<a id="reissue-the-user-access-key-id-secret-key-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3684,16 +3921,19 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 |------------ | ------------- | ----------- | ------------ |
 |   secretAccessKey | String| Yes   | 비밀키 |
 
-### User Access Key ID 상태 수정
+<a id="modify-user-access-key-id-status"></a>
+### User Access Key ID 상태 수정 { #modify-user-access-key-id-status }
 
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}"
 
 멤버의 User Access Key ID 상태를 변경하는 API입니다.<br>
 OPAQUE 토큰용 User Access Key ID를 중지시키면 OPAQUE 토큰도 같이 만료되며, JWT 토큰용 User Access Key ID는 중지해도 JWT 토큰이 만료되지 않습니다.
 
+<a id="modify-user-access-key-id-status-required-permissions"></a>
 #### 필요 권한
 자신의 User Access Key ID만 수정 가능
 
+<a id="modify-user-access-key-id-status-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -3710,6 +3950,7 @@ OPAQUE 토큰용 User Access Key ID를 중지시키면 OPAQUE 토큰도 같이 �
 | status | String| Yes | 변경할 상태(STOP: 중지, STABLE: 사용) |
 
 
+<a id="modify-user-access-key-id-status-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3728,15 +3969,18 @@ OPAQUE 토큰용 User Access Key ID를 중지시키면 OPAQUE 토큰도 같이 �
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Yes   |
 
-### User Access Key ID 삭제
+<a id="delete-a-user-access-key-id"></a>
+### User Access Key ID 삭제 { #delete-a-user-access-key-id }
 
 > DELETE "/v1/authentications/user-access-keys/{user-access-key-id}"
 
 User Access Key ID를 삭제하는 API입니다.
 
+<a id="delete-a-user-access-key-id-required-permissions"></a>
 #### 필요 권한
 자신의 User Access Key ID만 삭제 가능
 
+<a id="delete-a-user-access-key-id-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -3744,6 +3988,7 @@ User Access Key ID를 삭제하는 API입니다.
 |  Path | user-access-key-id | String| Yes | User Access Key ID | 
 
 
+<a id="delete-a-user-access-key-id-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3764,15 +4009,18 @@ User Access Key ID를 삭제하는 API입니다.
 |   header | [공통 응답](#응답)| Yes |
 
 
-### 토큰 목록 조회
+<a id="get-a-list-of-tokens"></a>
+### 토큰 목록 조회 { #get-a-list-of-tokens }
 
 > GET "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
 
 User Access Key ID로 발급한 OPAQUE 토큰 목록을 조회하는 API입니다.
 
+<a id="get-a-list-of-tokens-required-permissions"></a>
 #### 필요 권한
 자신의 User Access Key ID로 발급한 토큰만 조회 가능
 
+<a id="get-a-list-of-tokens-request-parameters"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수  | 설명                                                                           | 
@@ -3788,6 +4036,7 @@ User Access Key ID로 발급한 OPAQUE 토큰 목록을 조회하는 API입니�
 
 
 
+<a id="get-a-list-of-tokens-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3826,7 +4075,8 @@ User Access Key ID로 발급한 OPAQUE 토큰 목록을 조회하는 API입니�
 |   tokenId | Long         | Yes | 토큰 ID              |
 
 
-### 토큰 다건 만료
+<a id="expire-multiple-tokens"></a>
+### 토큰 다건 만료 { #expire-multiple-tokens }
 
 > DELETE "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
 
@@ -3835,9 +4085,11 @@ JWT 토큰을 발급한 User Access Key ID로 요청해도 JWT 토큰은 만료�
 요청에서 토큰 ID와 토큰 목록이 모두 빈 상태면 해당 User Access Key ID로 발급된 모든 토큰이 만료됩니다.<br>
 토큰 ID와 토큰 목록이 모두 있으면 둘 모두가 일치하는 토큰만 삭제되며, 요청에 담긴 User Access Key ID의 주인이 아닌 다른 사용자가 호출 시 토큰이 만료되지 않습니다.
 
+<a id="expire-multiple-tokens-required-permissions"></a>
 #### 필요 권한
 자신의 User Access Key ID로 발급한 토큰만 만료 가능
 
+<a id="expire-multiple-tokens-request-parameters"></a>
 #### 요청 파라미터
 
 | 구분           | 이름                 | 타입              | 필수  | 설명                 | 
@@ -3847,6 +4099,7 @@ JWT 토큰을 발급한 User Access Key ID로 요청해도 JWT 토큰은 만료�
 | Request Body         | tokens             | List&lt;String> | No   | 토큰 목록          | 
 
 
+<a id="expire-multiple-tokens-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3867,15 +4120,18 @@ JWT 토큰을 발급한 User Access Key ID로 요청해도 JWT 토큰은 만료�
 |   header | [공통 응답](#응답)| Yes |
 
 
-### 프로젝트 IAM 계정 생성
+<a id="create-a-project-iam-account"></a>
+### 프로젝트 IAM 계정 생성 { #create-a-project-iam-account }
 
 > POST "/v1/iam/projects/{project-id}/members"
 
 IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
 
+<a id="create-a-project-iam-account-required-permissions"></a>
 #### 필요 권한
 `Project.Member.Iam.Create`
 
+<a id="create-a-project-iam-account-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -3920,6 +4176,7 @@ IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
 |   attributeValues | List&lt;String>| Yes | 조건 속성 값  |
 
 
+<a id="create-a-project-iam-account-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3940,15 +4197,18 @@ IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
 |   header | [공통 응답](#응답) | Yes |
 
 
-### 프로젝트 IAM 계정 다건 삭제
+<a id="delete-multiple-project-iam-accounts"></a>
+### 프로젝트 IAM 계정 다건 삭제 { #delete-multiple-project-iam-accounts }
 
 > DELETE "/v1/iam/projects/{project-id}/members"
 
 IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
+<a id="delete-multiple-project-iam-accounts-required-permissions"></a>
 #### 필요 권한
 `Project.Member.Iam.Delete`
 
+<a id="delete-multiple-project-iam-accounts-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -3967,6 +4227,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   memberUuids | List&lt;String>| Yes | 삭제할 대상 계정의 UUID 목록 |
 
 
+<a id="delete-multiple-project-iam-accounts-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -3987,15 +4248,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   header | [공통 응답](#응답)| Yes |
 
 
-### 프로젝트 IAM 계정 단건 조회
+<a id="view-a-project-iam-account"></a>
+### 프로젝트 IAM 계정 단건 조회 { #view-a-project-iam-account }
 
 > GET "/v1/iam/projects/{project-id}/members/{member-uuid}"
 
 프로젝트에 소속된 특정 IAM 멤버를 조회하는 API입니다.
 
+<a id="view-a-project-iam-account-required-permissions"></a>
 #### 필요 권한
 `Project.Member.Iam.Get`
 
+<a id="view-a-project-iam-account-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -4008,6 +4272,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 
 
+<a id="view-a-project-iam-account-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -4077,15 +4342,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 
 
-### 프로젝트 IAM 계정 목록 조회
+<a id="view-project-iam-accounts"></a>
+### 프로젝트 IAM 계정 목록 조회 { #view-project-iam-accounts }
 
 > GET "/v1/iam/projects/{project-id}/members"
 
 프로젝트에 소속된 IAM 멤버 목록을 조회하기 위한 API입니다.
 
+<a id="view-project-iam-accounts-required-permissions"></a>
 #### 필요 권한
 `Project.Member.Iam.List`
 
+<a id="view-project-iam-accounts-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -4099,6 +4367,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 
 
+<a id="view-project-iam-accounts-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -4152,15 +4421,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   recentPasswordModifyYmdt | Date| No | 최근 비밀번호 변경 일시  |
 
 
-### 프로젝트 IAM 계정 역할 수정
+<a id="modify-project-iam-account-roles"></a>
+### 프로젝트 IAM 계정 역할 수정 { #modify-project-iam-account-roles }
 
 > PUT "/v1/iam/projects/{project-id}/members/{member-uuid}"
 
 프로젝트에서 지정한 IAM 멤버의 역할을 변경하는 API입니다.
 
+<a id="modify-project-iam-account-roles-required-permissions"></a>
 #### 필요 권한
 `Project.Member.Iam.Update`
 
+<a id="modify-project-iam-account-roles-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -4172,6 +4444,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 
 
+<a id="modify-project-iam-account-roles-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -4191,15 +4464,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   header | [공통 응답](#응답)| Yes   |
 
 
-### 조직 하위 멤버 인증 정보 목록 조회
+<a id="view-all-credentials-of-members-under-organizations"></a>
+### 조직 하위 멤버 인증 정보 목록 조회 { #view-all-credentials-of-members-under-organizations }
 
 > GET "/v1/authentications/organizations/{org-id}/user-access-keys"
 
 조직에 소속된 멤버 및 프로젝트 멤버의 인증 정보를 조회하는 API입니다.
 
+<a id="view-all-credentials-of-members-under-organizations-required-permissions"></a>
 #### 필요 권한
 `Organization.UserAccessKey.List`
 
+<a id="view-all-credentials-of-members-under-organizations-request-parameter"></a>
 #### 요청 파라미터
 
 
@@ -4212,6 +4488,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 
 
+<a id="view-all-credentials-of-members-under-organizations-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -4273,10 +4550,12 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | lastTokenUsedDatetime | Date | No | 토큰 마지막 사용 일시 |
 | validTokenCount | Long | No | 유효한 토큰 개수 |
 
-### 자신의 조직 목록 조회
+<a id="view-your-own-organization-list"></a>
+### 자신의 조직 목록 조회 { #view-your-own-organization-list }
 
 > GET /v1/organizations
 
+<a id="view-your-own-organization-list-required-permission"></a>
 #### 필요 권한
 회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
@@ -4389,15 +4668,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | domainName | String | Yes | 조직 도메인 이름 |
 
 
-### 자신의 조직 추가
+<a id="add-your-own-organization"></a>
+### 자신의 조직 추가 { #add-your-own-organization }
 
 > POST /v1/organizations
 
 자신의 조직을 추가하는 API입니다.
 
+<a id="add-your-own-organization-required-permission"></a>
 #### 필요 권한
 회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
+<a id="add-your-own-organization-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -4412,6 +4694,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | orgName | String | Yes | 생성할 조직 이름(최대 70자) |
 
 
+<a id="add-your-own-organization-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -4452,15 +4735,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | restrictTypes | List&lt;String> | Yes | 제약 대상 목록 |
 
 
-### 조직 단건 삭제
+<a id="delete-a-single-organization"></a>
+### 조직 단건 삭제 { #delete-a-single-organization }
 
 > DELETE /v1/organizations/{org-id}
 
 자신의 조직을 삭제하는 API입니다.
 
+<a id="delete-a-single-organization-required-permission"></a>
 #### 필요 권한
 `Organization.Delete`
 
+<a id="delete-a-single-organization-request-parameters"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -4468,6 +4754,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |  Path |org-id | String| Yes | 조직 ID |
 
 
+<a id="delete-a-single-organization-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -4487,15 +4774,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | header | [공통 응답](#응답) | Yes | |
 
 
-### 서비스 정보 목록 조회
+<a id="retrieve-service-information-list"></a>
+### 서비스 정보 목록 조회 { #retrieve-service-information-list }
 
 > GET /v1/products
 
 제공되는 서비스 목록들을 조회하는 API입니다.
 
+<a id="retrieve-service-information-list-required-permissions"></a>
 #### 필요 권한
 회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
+<a id="retrieve-service-information-list-request-parameters"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -4508,6 +4798,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |  Query | page | Integer| No | 대상 페이지, 기본값 1 |
 
 
+<a id="retrieve-service-information-list-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -4552,15 +4843,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | productName | String | Yes | 서비스 이름 |
 
 
-### 역할 설명 다국어 조회
+<a id="view-role-descriptions-by-multiple-language"></a>
+### 역할 설명 다국어 조회 { #view-role-descriptions-by-multiple-language }
 
 > GET /v1/messages/role
 
 역할의 다국어 목록을 가져오는 API입니다.
 
+<a id="view-role-descriptions-by-multiple-language-required-permission"></a>
 #### 필요 권한
 회원이면 특정한 권한 없이 호출 가능한 API입니다.
 
+<a id="view-role-descriptions-by-multiple-language-request-parameter"></a>
 #### 요청 파라미터
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
@@ -4573,6 +4867,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | Query |page | Integer| Yes | 대상 페이지 |
 
 
+<a id="view-role-descriptions-by-multiple-language-response-body"></a>
 #### 응답 본문
 
 ```json
@@ -4627,6 +4922,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 | zhCn | String | No | 중국어 메시지 |
 
 
+<a id="error-code"></a>
 ### 오류 코드 { #error-code }
 
 | 결과 코드 | 설명                                                                                  | 조치                                                      |

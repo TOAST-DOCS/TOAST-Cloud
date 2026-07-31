@@ -1,16 +1,22 @@
+<!-- pre-align:aligned sig=252b1c33d7f4 -->
+
 # Framework API
 
 **NHN Cloud > Public API User Guide > Framework API**
 
+<a id="overview"></a>
 ## Overview { #overview }
 The following APIs allow you to manage your organization and projects, such as creating project members and assigning roles.
 Framework API uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/nhncloud/en/public-api/user-access-key-token).
 
+<a id="public-api-domain"></a>
 ### Public API Domain { #public-api-domain }
 `https://core.api.nhncloudservice.com/`
 
+<a id="common"></a>
 ### Common { #common }
 
+<a id="common-request"></a>
 #### Request
 When calling the Public API, you must include the Request Header below.
 
@@ -19,6 +25,7 @@ When calling the Public API, you must include the Request Header below.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 | Header |  x-nhn-authorization | String| Yes | Bearer type token issued to the user |
 
+<a id="common-response"></a>
 #### Response
 When the Public API returns, the header part below is included in the response body.
 ```json
@@ -37,6 +44,7 @@ When the Public API returns, the header part below is included in the response b
 |   resultCode | Integer| No | Result code. 0 is returned on success, or an error code on failure.  |
 |   resultMessage | String| No | Result message  |
 
+<a id="common-type"></a>
 #### Common Type
 
 
@@ -55,6 +63,7 @@ When the Public API returns, the header part below is included in the response b
     If you set IP ACLs through **Organization Management > Governance Settings > Organization Governance Settings > IP ACL Settings**, those settings are also applied to calls to the framework API.
 
 
+<a id="api"></a>
 ### API { #api }
 
 
@@ -137,15 +146,18 @@ When the Public API returns, the header part below is included in the response b
 | GET | [/v1/messages/role](#역할-설명-다국어-조회) | View role descriptions in multiple languages |
 
 
-### Create a project member
+<a id="create-a-project-member"></a>
+### Create a project member { #create-a-project-member }
 
 > POST "/v1/projects/{project-id}/members"
 
 API to add members to a project.
 
+<a id="create-a-project-member-required-permissions"></a>
 #### Required permissions
 `Project.Member.Create`
 
+<a id="create-a-project-member-request-parameter"></a>
 #### Request Parameter
 
 
@@ -192,6 +204,7 @@ API to add members to a project.
 |   attributeValues | List<String>| Yes | Condition attribute value  |
 
 
+<a id="create-a-project-member-response-body"></a>
 #### Response Body
 
 ```json
@@ -212,15 +225,18 @@ API to add members to a project.
 |   header | [Common response](#Response) | Yes |
 
 
-### Add a project
+<a id="add-a-project"></a>
+### Add a project { #add-a-project }
 
 > POST "/v1/organizations/{org-id}/projects"
 
 API to add projects to your organization.
 
+<a id="add-a-project-required-permissions"></a>
 #### Required permissions
 `Organization.Project.Create`
 
+<a id="add-a-project-request-parameter"></a>
 #### Request Parameter
 
 
@@ -240,6 +256,7 @@ API to add projects to your organization.
 |   projectName | String| Yes| Project name (up to 40 characters) |
 
 
+<a id="add-a-project-response-body"></a>
 #### Response Body
 
 ```json
@@ -273,15 +290,18 @@ API to add projects to your organization.
 |   projectStatusCode | String| Yes   | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All services are closed but not paid for</li></ul> | 
 
 
-### Delete a single project member
+<a id="delete-a-single-project-member"></a>
+### Delete a single project member { #delete-a-single-project-member }
 
 > DELETE "/v1/projects/{project-id}/members/{target-uuid}"
 
 API to delete a user from a project.
 
+<a id="delete-a-single-project-member-required-permissions"></a>
 #### Required permissions
 `Project.Member.Delete`
 
+<a id="delete-a-single-project-member-request-parameter"></a>
 #### Request Parameter
 
 
@@ -294,6 +314,7 @@ API to delete a user from a project.
 
 
 
+<a id="delete-a-single-project-member-response-body"></a>
 #### Response Body
 
 ```json
@@ -315,17 +336,20 @@ API to delete a user from a project.
 
 
 
-### Delete a project
+<a id="delete-a-project"></a>
+### Delete a project { #delete-a-project }
 
 > DELETE "/v1/projects/{project-id}"
 
 API to delete a project.
 
+<a id="delete-a-project-required-permissions"></a>
 #### Required permissions
 You'll need one permission from the list below
 * `Organization.Project.Delete`
 * `Project.Delete`
 
+<a id="delete-a-project-request-parameter"></a>
 #### Request Parameter
 
 
@@ -339,6 +363,7 @@ You'll need one permission from the list below
 
 
 
+<a id="delete-a-project-response-body"></a>
 #### Response Body
 
 ```json
@@ -360,15 +385,18 @@ You'll need one permission from the list below
 
 
 
-### End a project service
+<a id="end-a-project-service"></a>
+### End a project service { #end-a-project-service }
 
 > DELETE "/v1/projects/{project-id}/products/{product-id}/disable"
 
 API to disable a user-specified service so that it is no longer used by this project.
 
+<a id="end-a-project-service-required-permissions"></a>
 #### Required permissions
 `Service Name: Product.Delete`
 
+<a id="end-a-project-service-request-parameter"></a>
 #### Request Parameter
 
 
@@ -381,6 +409,7 @@ API to disable a user-specified service so that it is no longer used by this pro
 
 
 
+<a id="end-a-project-service-response-body"></a>
 #### Response Body
 
 ```json
@@ -416,15 +445,18 @@ API to disable a user-specified service so that it is no longer used by this pro
 |   statusCode | String| Yes |   Service status (STABLE, CLOSED) |
 
 
-### Use a service product
+<a id="use-a-service-product"></a>
+### Use a service product { #use-a-service-product }
 
 > POST "/v1/projects/{project-id}/products/{product-id}/enable"
 
 An API that requests to enable a service you specify to be available in your project.
 
+<a id="use-a-service-product-required-permissions"></a>
 #### Required permissions
 `Service Name: Product.Create`
 
+<a id="use-a-service-product-request-parameter"></a>
 #### Request Parameter
 
 
@@ -435,6 +467,7 @@ An API that requests to enable a service you specify to be available in your pro
 |  Path |project-id | String| Yes | The ID of the project you want to use the service for | 
 
 
+<a id="use-a-service-product-response-body"></a>
 #### Response Body
 
 ```json
@@ -478,15 +511,18 @@ An API that requests to enable a service you specify to be available in your pro
 
 
 
-### List organization roles
+<a id="list-organization-roles"></a>
+### List organization roles { #list-organization-roles }
 
 > GET "/v1/organizations/{org-id}/roles"
 
 API to request a list of roles that can be granted to users in your organization.
 
+<a id="list-organization-roles-required-permissions"></a>
 #### Required permissions
 `Organization.RoleGroup.List`
 
+<a id="list-organization-roles-request-parameter"></a>
 #### Request Parameter
 
 
@@ -501,6 +537,7 @@ API to request a list of roles that can be granted to users in your organization
 
 
 
+<a id="list-organization-roles-response-body"></a>
 #### Response Body
 
 ```json
@@ -546,15 +583,18 @@ API to request a list of roles that can be granted to users in your organization
 |   roleName | String| Yes | Role/privilege name  |
 
 
-### List project roles
+<a id="list-project-roles"></a>
+### List project roles { #list-project-roles }
 
 > GET "/v1/projects/{project-id}/roles"
 
 API to request a list of roles that can be granted to project users.
 
+<a id="list-project-roles-required-permissions"></a>
 #### Required permissions
 `Project.RoleGroup.List`
 
+<a id="list-project-roles-request-parameter"></a>
 #### Request Parameter
 
 
@@ -567,6 +607,7 @@ API to request a list of roles that can be granted to project users.
 |  Query |page | Integer| No | Target Page, default 1 |
 
 
+<a id="list-project-roles-response-body"></a>
 #### Response Body
 
 ```json
@@ -598,15 +639,18 @@ API to request a list of roles that can be granted to project users.
 |   roles | List<[RoleProtocol](#roleprotocol)>| Yes  | Roles list |
 |   totalCount | Integer| Yes  | Total count |
 
-### Search for an organization domain
+<a id="search-for-an-organization-domain"></a>
+### Search for an organization domain { #search-for-an-organization-domain }
 
 > GET "/v1/organizations/{org-id}/domains"
 
 API to look up domains for a specific organization.
 
+<a id="search-for-an-organization-domain-required-permissions"></a>
 #### Required permissions
 `Organization.Domain.List`
 
+<a id="search-for-an-organization-domain-request-parameter"></a>
 #### Request Parameter
 
 
@@ -618,6 +662,7 @@ API to look up domains for a specific organization.
 
 
 
+<a id="search-for-an-organization-domain-response-body"></a>
 #### Response Body
 
 ```json
@@ -654,15 +699,18 @@ API to look up domains for a specific organization.
 |   orgDomainName | String| Yes | Organization domain name |
 
 
-### View a organization member
+<a id="view-a-organization-member"></a>
+### View a organization member { #view-a-organization-member }
 
 > GET "/v1/organizations/{org-id}/members/{member-uuid}"
 
 API to get members belonging to an organization.
 
+<a id="view-a-organization-member-required-permissions"></a>
 #### Required permissions
 `Organization.Member.Get`
 
+<a id="view-a-organization-member-request-parameter"></a>
 #### Request Parameter
 
 
@@ -676,6 +724,7 @@ API to get members belonging to an organization.
 
 
 
+<a id="view-a-organization-member-response-body"></a>
 #### Response Body
 
 ```json
@@ -774,15 +823,18 @@ API to get members belonging to an organization.
 
 
 
-### List organization members
+<a id="list-organization-members"></a>
+### List organization members { #list-organization-members }
 
 > POST "/v1/organizations/{org-id}/members/search"
 
 API to get a list of NHN Cloud members belonging to an organization.
 
+<a id="list-organization-members-required-permissions"></a>
 #### Required permissions
 `Organization.Member.List`
 
+<a id="list-organization-members-request-parameter"></a>
 #### Request Parameter
 
 
@@ -813,6 +865,7 @@ API to get a list of NHN Cloud members belonging to an organization.
 
 
 
+<a id="list-organization-members-response-body"></a>
 #### Response Body
 
 ```json
@@ -879,15 +932,18 @@ API to get a list of NHN Cloud members belonging to an organization.
 
 
 
-### View all common role groups for projects in the organization
+<a id="view-all-common-role-groups-for-projects-in-the-organization"></a>
+### View all common role groups for projects in the organization { #view-all-common-role-groups-for-projects-in-the-organization }
 
 > GET "/v1/organizations/{org-id}/project-role-groups"
 
 API to get a list of project common role groups set up by your organization.
 
+<a id="view-all-common-role-groups-for-projects-in-the-organization-required-permissions"></a>
 #### Required permissions
 `Organization.Project.RoleGroup.List`
 
+<a id="view-all-common-role-groups-for-projects-in-the-organization-request-parameter"></a>
 #### Request Parameter
 
 
@@ -905,6 +961,7 @@ API to get a list of project common role groups set up by your organization.
 
 
 
+<a id="view-all-common-role-groups-for-projects-in-the-organization-response-body"></a>
 #### Response Body
 
 ```json
@@ -953,16 +1010,19 @@ API to get a list of project common role groups set up by your organization.
 |   roleGroupType | String| Yes | Types of role groups<br><ul><li>ORG: Project common role group</li><li>ORG_ROLE_GROUP: Organization role group</li><li>PROJECT: Project role group</li> |
 
 
-### View service hierarchy
+<a id="view-service-hierarchy"></a>
+### View service hierarchy { #view-service-hierarchy }
 
 > GET "/v1/product-uis/hierarchy"
 
 API to return homepage category, homepage service information that is exposed on the bill.
 
+<a id="view-service-hierarchy-required-permissions"></a>
 #### Required Permissions
 This API can be called without specific permissions if you are signed up to NHN Cloud.<br>
 However, if you're viewing an organization's services, you must be a member of a project in that organization or a project under that organization.
 
+<a id="view-service-hierarchy-request-parameter"></a>
 #### Request Parameter
 
 
@@ -975,6 +1035,7 @@ However, if you're viewing an organization's services, you must be a member of a
 
 
 
+<a id="view-service-hierarchy-response-body"></a>
 #### Response Body
 
 ```json
@@ -1016,15 +1077,18 @@ However, if you're viewing an organization's services, you must be a member of a
 |   productUiName | String| No|
 
 
-### View a service used in the project
+<a id="view-a-service-used-in-the-project"></a>
+### View a service used in the project { #view-a-service-used-in-the-project }
 
 > GET "/v1/projects/{project-id}/products/{product-id}"
 
 * APIs to get information about specific services used by your project
 
+<a id="view-a-service-used-in-the-project-required-permissions"></a>
 #### Required permissions
 `Service Name: ProductAppKey.Get`
 
+<a id="view-a-service-used-in-the-project-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1037,6 +1101,7 @@ However, if you're viewing an organization's services, you must be a member of a
 
 
 
+<a id="view-a-service-used-in-the-project-response-body"></a>
 #### Response Body
 
 ```json
@@ -1093,15 +1158,18 @@ However, if you're viewing an organization's services, you must be a member of a
 |   updateUuid | String| No | Service AppKey Modifier UUID  |
 
 
-### View a project member
+<a id="view-a-project-member"></a>
+### View a project member { #view-a-project-member }
 
 > GET "/v1/projects/{project-id}/members/{member-uuid}"
 
 API to get a specific member of a project.
 
+<a id="view-a-project-member-required-permissions"></a>
 #### Required permissions
 `Project.Member.Get`
 
+<a id="view-a-project-member-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1114,6 +1182,7 @@ API to get a specific member of a project.
 
 
 
+<a id="view-a-project-member-response-body"></a>
 #### Response Body
 
 ```json
@@ -1181,15 +1250,18 @@ API to get a specific member of a project.
 
 
 
-### List project members
+<a id="list-project-members"></a>
+### List project members { #list-project-members }
 
 > POST "/v1/projects/{project-id}/members/search"
 
 API for getting a list of members belonging to a project.
 
+<a id="list-project-members-required-permissions"></a>
 #### Required permissions
 `Project.Member.List`
 
+<a id="list-project-members-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1213,6 +1285,7 @@ API for getting a list of members belonging to a project.
 
 
 
+<a id="list-project-members-response-body"></a>
 #### Response Body
 
 ```json
@@ -1264,15 +1337,18 @@ API for getting a list of members belonging to a project.
 |   UUID | String| No | Member UUID  |
 
 
-### View a project role group
+<a id="view-a-project-role-group"></a>
+### View a project role group { #view-a-project-role-group }
 
 > GET "/v1/projects/{project-id}/project-role-groups/{role-group-id}"
 
 API to get a project's role groups.
 
+<a id="view-a-project-role-group-required-permissions"></a>
 #### Required permissions
 `Project.RoleGroup.Get`
 
+<a id="view-a-project-role-group-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1285,6 +1361,7 @@ API to get a project's role groups.
 
 
 
+<a id="view-a-project-role-group-response-body"></a>
 #### Response Body
 
 ```json
@@ -1342,15 +1419,18 @@ API to get a project's role groups.
 
 
 
-### View a common role group for the project in the organization
+<a id="view-a-common-role-group-for-the-project-in-the-organization"></a>
+### View a common role group for the project in the organization { #view-a-common-role-group-for-the-project-in-the-organization }
 
 > GET "/v1/organizations/{org-id}/project-role-groups/{role-group-id}"
 
 API to get project common role groups.
 
+<a id="view-a-common-role-group-for-the-project-in-the-organization-required-permissions"></a>
 #### Required permissions
 `Organization.Project.RoleGroup.Get`
 
+<a id="view-a-common-role-group-for-the-project-in-the-organization-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1360,6 +1440,7 @@ API to get project common role groups.
 |  Path |role-group-id | String| Yes | Project common role group ID | 
 
 
+<a id="view-a-common-role-group-for-the-project-in-the-organization-response-body"></a>
 #### Response Body
 
 ```json
@@ -1408,15 +1489,18 @@ API to get project common role groups.
 
 
 
-### View all project role groups
+<a id="view-all-project-role-groups"></a>
+### View all project role groups { #view-all-project-role-groups }
 
 > GET "/v1/projects/{project-id}/project-role-groups"
 
 API to get all role groups in a project.
 
+<a id="view-all-project-role-groups-required-permissions"></a>
 #### Required permissions
 `Project.RoleGroup.List`
 
+<a id="view-all-project-role-groups-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1430,6 +1514,7 @@ API to get all role groups in a project.
 
 
 
+<a id="view-all-project-role-groups-response-body"></a>
 #### Response Body
 
 ```json
@@ -1463,15 +1548,18 @@ API to get all role groups in a project.
 |   paging | [PagingResponse](#pagingresponse)| Yes  |
 |   roleGroups | List<[RoleGroupProtocol](#rolegroupprotocol)>| Yes | List of available role groups in your project  |
 
-### List projects in your organization
+<a id="list-projects-in-your-organization"></a>
+### List projects in your organization { #list-projects-in-your-organization }
 
 > GET "/v1/organizations/{org-id}/projects"
 
 API to get a list of projects in a STABLE state that belong to a specific organization.
 
+<a id="list-projects-in-your-organization-required-permissions"></a>
 #### Required permissions
 Members of an organization
 
+<a id="list-projects-in-your-organization-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1484,6 +1572,7 @@ Members of an organization
 |  Query |limit | Integer| No | Number of displays per page, default 20 |
 
 
+<a id="list-projects-in-your-organization-response-body"></a>
 #### Response Body
 
 ```json
@@ -1537,15 +1626,18 @@ Members of an organization
 |   regDateTime | Date| Yes| Project registration date |
 
 
-### List organization governance in use
+<a id="list-organization-governance-in-use"></a>
+### List organization governance in use { #list-organization-governance-in-use }
 
 > GET "/v1/organizations/{org-id}/governances"
 
 API to get the active governance.
 
+<a id="list-organization-governance-in-use-required-permissions"></a>
 #### Required permissions
 `Organization.Governance.List`
 
+<a id="list-organization-governance-in-use-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -1554,6 +1646,7 @@ API to get the active governance.
 
 
 
+<a id="list-organization-governance-in-use-response-body"></a>
 #### Response Body
 
 ```json
@@ -1590,16 +1683,19 @@ API to get the active governance.
 |   regDatetime | Date| No | When to enable governance  |
 
 
-### Create a common role group for projects in the organization
+<a id="create-a-common-role-group-for-projects-in-the-organization"></a>
+### Create a common role group for projects in the organization { #create-a-common-role-group-for-projects-in-the-organization }
 
 > POST "/v1/organizations/{org-id}/project-role-groups"
 
 API to create project common role groups.
 
 
+<a id="create-a-common-role-group-for-projects-in-the-organization-required-permissions"></a>
 #### Required permissions
 `Organization.Project.RoleGroup.Create`
 
+<a id="create-a-common-role-group-for-projects-in-the-organization-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -1628,6 +1724,7 @@ API to create project common role groups.
 
 
 
+<a id="create-a-common-role-group-for-projects-in-the-organization-response-body"></a>
 #### Response Body
 
 ```json
@@ -1647,15 +1744,18 @@ API to create project common role groups.
 |   header | [Common response](#Response)| Yes   |
 
 
-### Delete a project common role group in the organization
+<a id="delete-a-project-common-role-group-in-the-organization"></a>
+### Delete a project common role group in the organization { #delete-a-project-common-role-group-in-the-organization }
 
 > DELETE "/v1/organizations/{org-id}/project-role-groups"
 
 API to delete a project common role group.
 
+<a id="delete-a-project-common-role-group-in-the-organization-required-permissions"></a>
 #### Required permissions
 `Organization.Project.RoleGroup.Delete`
 
+<a id="delete-a-project-common-role-group-in-the-organization-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1673,6 +1773,7 @@ API to delete a project common role group.
 |   roleGroupIds | List<String>| Yes | List of role group IDs  |
 
 
+<a id="delete-a-project-common-role-group-in-the-organization-response-body"></a>
 #### Response Body
 
 ```json
@@ -1691,15 +1792,18 @@ API to delete a project common role group.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Modify your organization's project common role group information
+<a id="modify-your-organizations-project-common-role-group-information"></a>
+### Modify your organization's project common role group information { #modify-your-organizations-project-common-role-group-information }
 
 > PUT "/v1/organizations/{org-id}/project-role-groups/{role-group-id}/infos"
 
 API to modify the name and description of a project's common role group.
 
+<a id="modify-your-organizations-project-common-role-group-information-required-permissions"></a>
 #### Required permissions
 `Organization.Project.RoleGroup.Update`
 
+<a id="modify-your-organizations-project-common-role-group-information-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1720,6 +1824,7 @@ API to modify the name and description of a project's common role group.
 
 
 
+<a id="modify-your-organizations-project-common-role-group-information-response-body"></a>
 #### Response Body
 
 ```json
@@ -1738,15 +1843,18 @@ API to modify the name and description of a project's common role group.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Modify your organization's project common roles group roles
+<a id="modify-your-organizations-project-common-roles-group-roles"></a>
+### Modify your organization's project common roles group roles { #modify-your-organizations-project-common-roles-group-roles }
 
 > PUT "/v1/organizations/{org-id}/project-role-groups/{role-group-id}/roles"
 
 API to modify roles in the project common roles group.
 
+<a id="modify-your-organizations-project-common-roles-group-roles-required-permissions"></a>
 #### Required permissions
 `Organization.Project.RoleGroup.Update`
 
+<a id="modify-your-organizations-project-common-roles-group-roles-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -1766,6 +1874,7 @@ API to modify roles in the project common roles group.
 
 
 
+<a id="modify-your-organizations-project-common-roles-group-roles-response-body"></a>
 #### Response Body
 
 ```json
@@ -1784,16 +1893,19 @@ API to modify roles in the project common roles group.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Create a project role group
+<a id="create-a-project-role-group"></a>
+### Create a project role group { #create-a-project-role-group }
 
 > POST "/v1/projects/{project-id}/project-role-groups"
 
 API to create role groups in your project.
 
 
+<a id="create-a-project-role-group-required-permissions"></a>
 #### Required permissions
 `Project.RoleGroup.Create`
 
+<a id="create-a-project-role-group-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1806,6 +1918,7 @@ API to create role groups in your project.
 
 
 
+<a id="create-a-project-role-group-response-body"></a>
 #### Response Body
 
 ```json
@@ -1824,16 +1937,19 @@ API to create role groups in your project.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Delete a project role group
+<a id="delete-a-project-role-group"></a>
+### Delete a project role group { #delete-a-project-role-group }
 
 > DELETE "/v1/projects/{project-id}/project-role-groups"
 
 API to delete a project role group.
 
 
+<a id="delete-a-project-role-group-required-permissions"></a>
 #### Required permissions
 `Project.RoleGroup.Delete`
 
+<a id="delete-a-project-role-group-request-parameter"></a>
 #### Request Parameter
 
 
@@ -1846,6 +1962,7 @@ API to delete a project role group.
 
 
 
+<a id="delete-a-project-role-group-response-body"></a>
 #### Response Body
 
 ```json
@@ -1864,15 +1981,18 @@ API to delete a project role group.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Edit project role group information
+<a id="edit-project-role-group-information"></a>
+### Edit project role group information { #edit-project-role-group-information }
 
 > PUT "/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos"
 
 API to modify the name and description of a project role group.
 
+<a id="edit-project-role-group-information-required-permissions"></a>
 #### Required permissions
 `Project.RoleGroup.Update`
 
+<a id="edit-project-role-group-information-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -1885,6 +2005,7 @@ API to modify the name and description of a project role group.
 
 
 
+<a id="edit-project-role-group-information-response-body"></a>
 #### Response Body
 
 ```json
@@ -1904,15 +2025,18 @@ API to modify the name and description of a project role group.
 |   header | [Common response](#Response)| Yes   |
 
 
-### Modify project role group roles
+<a id="modify-project-role-group-roles"></a>
+### Modify project role group roles { #modify-project-role-group-roles }
 
 > PUT "/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles"
 
 API to modify roles in the project role group.
 
+<a id="modify-project-role-group-roles-required-permissions"></a>
 #### Required permissions
 `Project.RoleGroup.Update`
 
+<a id="modify-project-role-group-roles-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -1932,6 +2056,7 @@ API to modify roles in the project role group.
 
 
 
+<a id="modify-project-role-group-roles-response-body"></a>
 #### Response Body
 
 ```json
@@ -1951,16 +2076,19 @@ API to modify roles in the project role group.
 |   header | [Common response](#Response)| Yes   |
 
 
-### View All Organization Role Groups
+<a id="view-all-organization-role-groups"></a>
+### View All Organization Role Groups { #view-all-organization-role-groups }
 
 > GET "/v1/organizations/{org-id}/org-role-groups"
 
 An API to view all organization role groups.
 
+<a id="view-all-organization-role-groups-required-permission"></a>
 #### Required Permission
 
 `Organization.RoleGroup.List`
 
+<a id="view-all-organization-role-groups-request-parameter"></a>
 #### Request Parameter
 
 | Category | name | Type | Required | Description |
@@ -1971,6 +2099,7 @@ An API to view all organization role groups.
 | Query | limit | Integer | No | Number of views per page (default: 20, minimum: 1, maximum: 2,000) |
 | Query | page | Integer | No | target page (default: 1, minimum: 1) |
 
+<a id="view-all-organization-role-groups-response-body"></a>
 #### Response Body
 
 ```json
@@ -2005,16 +2134,19 @@ An API to view all organization role groups.
 | paging | [PagingResponse](#pagingresponse) | Yes | |
 | roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | List of role groups available in your organization |
 
-### View a Single Organization Role Group
+<a id="view-a-single-organization-role-group"></a>
+### View a Single Organization Role Group { #view-a-single-organization-role-group }
 
 > GET "/v1/organizations/{org-id}/org-role-groups/{role-group-id}"
 
 An API to view an organization's role group.
 
+<a id="view-a-single-organization-role-group-required-permission"></a>
 #### Required Permission
 
 `Organization.RoleGroup.Get`
 
+<a id="view-a-single-organization-role-group-request-parameter"></a>
 #### Request Parameter
 
 | Category | name | Type | Required | Description |
@@ -2022,6 +2154,7 @@ An API to view an organization's role group.
 | Path | org-id | String | Yes | Organization ID to be searched |
 | Path | role-group-id | String | Yes | Organization role group ID |
 
+<a id="view-a-single-organization-role-group-response-body"></a>
 #### Response Body
 
 ```json
@@ -2072,16 +2205,19 @@ An API to view an organization's role group.
 | header | [Common Response](#Response) | Yes | |
 | roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | Role group with associated roles |
 
-### Create Organization Role Group
+<a id="create-organization-role-group"></a>
+### Create Organization Role Group { #create-organization-role-group }
 
 > POST "/v1/organizations/{org-id}/org-role-groups"
 
 An API to create a role group in the organization.
 
+<a id="create-organization-role-group-required-permission"></a>
 #### Required Permission
 
 `Organization.RoleGroup.Create`
 
+<a id="create-organization-role-group-request-parameter"></a>
 #### Request Parameter
 
 | Category | Name | Type | Required | Description |
@@ -2089,6 +2225,7 @@ An API to create a role group in the organization.
 | Path | org-id | String | Yes | Organization ID |
 | Request Body | Request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | Request |
 
+<a id="create-organization-role-group-response-body"></a>
 #### Response Body
 
 ```json
@@ -2107,16 +2244,19 @@ An API to create a role group in the organization.
 | ------------ | ------------- | ----------- | ------------ |
 | header | [Common Response](#Response) | Yes | |
 
-### Delete Organization Role Group
+<a id="delete-organization-role-group"></a>
+### Delete Organization Role Group { #delete-organization-role-group }
 
 > DELETE "/v1/organizations/{org-id}/org-role-groups"
 
 An API to delete organization role groups.
 
+<a id="delete-organization-role-group-required-permission"></a>
 #### Required Permission
 
 `Organization.RoleGroup.Delete`
 
+<a id="delete-organization-role-group-request-parameter"></a>
 #### Request Parameter
 
 | Category | Name | Type | Required | Description |
@@ -2124,6 +2264,7 @@ An API to delete organization role groups.
 | Path | org-id | String | Yes | Organization ID |
 | Request Body | Request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | Request |
 
+<a id="delete-organization-role-group-response-body"></a>
 #### Response Body
 
 ```json
@@ -2142,16 +2283,19 @@ An API to delete organization role groups.
 | ------------ | ------------- | ----------- | ------------ |
 | header | [Common Response](#Response) | Yes | |
 
-### Modify Organization Role Group Information
+<a id="modify-organization-role-group-information"></a>
+### Modify Organization Role Group Information { #modify-organization-role-group-information }
 
 > PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos"
 
 An API to modify the name and description of an organization role group.
 
+<a id="modify-organization-role-group-information-required-permission"></a>
 #### Required Permission
 
 `Organization.RoleGroup.Update`
 
+<a id="modify-organization-role-group-information-request-parameter"></a>
 #### Request Parameter
 
 | Category | name | Type | Required | Description |
@@ -2160,6 +2304,7 @@ An API to modify the name and description of an organization role group.
 | Path | role-group-id | String | Yes | Role group ID |
 | Request Body | Request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | Request |
 
+<a id="modify-organization-role-group-information-response-body"></a>
 #### Response Body
 
 ```json
@@ -2179,16 +2324,19 @@ An API to modify the name and description of an organization role group.
 | header | [Common Response](#Response)| Yes | |
 
 
-### Modify an Organization Role Group's Role
+<a id="modify-an-organization-role-groups-role"></a>
+### Modify an Organization Role Group's Role { #modify-an-organization-role-groups-role }
 
 > PUT "/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles"
 
 An API to modify roles in an organization role group.
 
+<a id="modify-an-organization-role-groups-role-required-permission"></a>
 #### Required Permission
 
 `Organization.RoleGroup.Update`
 
+<a id="modify-an-organization-role-groups-role-request-parameter"></a>
 #### Request Parameter
 
 | Category | name | Type | Required | Description |
@@ -2203,6 +2351,7 @@ An API to modify roles in an organization role group.
 | ------------ | ------------- | ------------- | ------------ |
 | roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Yes | List of roles to assign to role group |
 
+<a id="modify-an-organization-role-groups-role-response-body"></a>
 #### Response Body
 
 ```json
@@ -2222,17 +2371,20 @@ An API to modify roles in an organization role group.
 | header | [Common Response](#Response) | Yes | |
 
 
-### Modify organization member roles
+<a id="modify-organization-member-roles"></a>
+### Modify organization member roles { #modify-organization-member-roles }
 
 > PUT "/v1/organizations/{org-id}/members/{member-uuid}"
 
 API to modify the roles of members who belong to this organization.
 
 
+<a id="modify-organization-member-roles-required-permissions"></a>
 #### Required permissions
 `Organization.Member.Update`
 
 
+<a id="modify-organization-member-roles-request-parameter"></a>
 #### Request Parameter
 
 
@@ -2254,6 +2406,7 @@ API to modify the roles of members who belong to this organization.
 
 
 
+<a id="modify-organization-member-roles-response-body"></a>
 #### Response Body
 
 ```json
@@ -2272,15 +2425,18 @@ API to modify the roles of members who belong to this organization.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Modify project member roles
+<a id="modify-project-member-roles"></a>
+### Modify project member roles { #modify-project-member-roles }
 
 > PUT "/v1/projects/{project-id}/members/{member-uuid}"
 
 API to modify the role of a specified member in a project.
 
+<a id="modify-project-member-roles-required-permissions"></a>
 #### Required permissions
 `Project.Member.Update`
 
+<a id="modify-project-member-roles-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -2292,6 +2448,7 @@ API to modify the role of a specified member in a project.
 
 
 
+<a id="modify-project-member-roles-response-body"></a>
 #### Response Body
 
 ```json
@@ -2310,16 +2467,19 @@ API to modify the role of a specified member in a project.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### View organization IAM members
+<a id="view-organization-iam-members"></a>
+### View organization IAM members { #view-organization-iam-members }
 
 > GET "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
 API to get the IAM members in your organization.
 
+<a id="view-organization-iam-members-required-permissions"></a>
 #### Required permissions
 `Organization.Member.Iam.Get`
 
 
+<a id="view-organization-iam-members-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -2328,6 +2488,7 @@ API to get the IAM members in your organization.
 |  Path |member-uuid | String| Yes | The IAM member UUID of the organization to look up | 
 
 
+<a id="view-organization-iam-members-response-body"></a>
 #### Response Body
 
 ```json
@@ -2449,15 +2610,18 @@ API to get the IAM members in your organization.
 |   String | String| No |
 
 
-### List organization IAM members
+<a id="list-organization-iam-members"></a>
+### List organization IAM members { #list-organization-iam-members }
 
 > GET "/v1/iam/organizations/{org-id}/members"
 
 API to get a list of IAM members that belong to this organization.
 
+<a id="list-organization-iam-members-required-permissions"></a>
 #### Required permissions
 `Organization.Member.Iam.List`
 
+<a id="list-organization-iam-members-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -2473,6 +2637,7 @@ API to get a list of IAM members that belong to this organization.
 |  Query |limit | Integer| No | Number of displays per page, default 20 |
 |  Query |page | Integer| No | Target Page, default 1 |
 
+<a id="list-organization-iam-members-response-body"></a>
 #### Response Body
 
 ```json
@@ -2568,16 +2733,19 @@ API to get a list of IAM members that belong to this organization.
 
 
 
-### Add an organization IAM member
+<a id="add-an-organization-iam-member"></a>
+### Add an organization IAM member { #add-an-organization-iam-member }
 
 > POST "/v1/iam/organizations/{org-id}/members"
 
 API to add IAM members to your organization.
 
+<a id="add-an-organization-iam-member-required-permissions"></a>
 #### Required permissions
 `Organization.Member.Iam.Create`
 
 
+<a id="add-an-organization-iam-member-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -2617,6 +2785,7 @@ API to add IAM members to your organization.
 
 
 
+<a id="add-an-organization-iam-member-response-body"></a>
 #### Response Body
 
 ```json
@@ -2641,16 +2810,19 @@ API to add IAM members to your organization.
 
 
 
-### Send an IAM member password change email
+<a id="send-an-iam-member-password-change-email"></a>
+### Send an IAM member password change email { #send-an-iam-member-password-change-email }
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail"
 
 API to send an email to an IAM member to change their password.
 
+<a id="send-an-iam-member-password-change-email-required-permissions"></a>
 #### Required permissions
 `Organization.Member.Iam.Update`
 
 
+<a id="send-an-iam-member-password-change-email-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -2670,6 +2842,7 @@ API to send an email to an IAM member to change their password.
 |   returnUrl | String| Yes  | The address of the page you'll be directed to after you change your password via email change notification.<br>You must enter the toast.com, dooray.com, or nhncloud.com domain in the Go To address information |
 
 
+<a id="send-an-iam-member-password-change-email-response-body"></a>
 #### Response Body
 
 ```json
@@ -2688,15 +2861,18 @@ API to send an email to an IAM member to change their password.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Modify organization IAM member information
+<a id="modify-organization-iam-member-information"></a>
+### Modify organization IAM member information { #modify-organization-iam-member-information }
 
 > PUT "/v1/iam/organizations/{org-id}/members/{member-uuid}"
 
 API to modify your organization's IAM member information.
 
+<a id="modify-organization-iam-member-information-required-permissions"></a>
 #### Required permissions
 `Organization.Member.Iam.Update`
 
+<a id="modify-organization-iam-member-information-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -2738,6 +2914,7 @@ API to modify your organization's IAM member information.
 | mobilePhoneCountryCode | String | No | Country code for mobile phone numbers, required when entering a mobile phone number |
 
 
+<a id="modify-organization-iam-member-information-response-body"></a>
 #### Response Body
 
 ```json
@@ -2756,15 +2933,18 @@ API to modify your organization's IAM member information.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Change an organization IAM member password
+<a id="change-an-organization-iam-member-password"></a>
+### Change an organization IAM member password { #change-an-organization-iam-member-password }
 
 > POST "/v1/iam/organizations/{org-id}/members/{member-id}/set-password"
 
 API to change the password of an organization IAM member.
 
+<a id="change-an-organization-iam-member-password-required-permissions"></a>
 #### Required permissions
 `Organization.Member.Iam.Update`
 
+<a id="change-an-organization-iam-member-password-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -2782,6 +2962,7 @@ API to change the password of an organization IAM member.
 |   password | String| Yes  | Password to set | 
 
 
+<a id="change-an-organization-iam-member-password-response-body"></a>
 #### Response Body
 
 ```json
@@ -2800,15 +2981,18 @@ API to change the password of an organization IAM member.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Listorganization IP ACLs
+<a id="listorganization-ip-acls"></a>
+### Listorganization IP ACLs { #listorganization-ip-acls }
 
 > GET "/v1/organizations/{org-id}/products/ip-acl"
 
 API to get IP ACL settings.
 
+<a id="listorganization-ip-acls-required-permissions"></a>
 #### Required permissions
 `Organization.Governance.IpAcl.List`
 
+<a id="listorganization-ip-acls-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -2816,6 +3000,7 @@ API to get IP ACL settings.
 |  Path |org-id | String| Yes | Organization ID | 
 
 
+<a id="listorganization-ip-acls-response-body"></a>
 #### Response Body
 
 ```json
@@ -2848,15 +3033,18 @@ API to get IP ACL settings.
 |   ips | List<String>| Yes  | Allowed IPs | 
 |   productId | String| Yes  | Service ID<br>If undefined, set to Common Settings|
 
-### View organization IAM sign-in session settings information
+<a id="view-organization-iam-sign-in-session-settings-information"></a>
+### View organization IAM sign-in session settings information { #view-organization-iam-sign-in-session-settings-information }
 
 > GET "/v1/iam/organizations/{org-id}/settings/session"
 
 API to get login session settings information.
 
+<a id="view-organization-iam-sign-in-session-settings-information-required-permissions"></a>
 #### Required permissions
 `Organization.Setting.Iam.Get`
 
+<a id="view-organization-iam-sign-in-session-settings-information-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -2864,6 +3052,7 @@ API to get login session settings information.
 |  Path |org-id | String| Yes | Organization ID | 
 
 
+<a id="view-organization-iam-sign-in-session-settings-information-response-body"></a>
 #### Response Body
 
 ```json
@@ -2885,6 +3074,7 @@ API to get login session settings information.
 ```
 
 
+<a id="view-organization-iam-sign-in-session-settings-information-response"></a>
 #### Response
 
 | Name | Type | Required | Description |   
@@ -2901,15 +3091,18 @@ API to get login session settings information.
 |   mobileSessionTimeoutMinutes | Integer| Yes | 	Mobile session timeout |
 |   sessionType | String| Yes | fixed/idle. The default is fixed  |
 
-### View settings for organizational IAM sign-in second factor authentication
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication"></a>
+### View settings for organizational IAM sign-in second factor authentication { #view-settings-for-organizational-iam-sign-in-second-factor-authentication }
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-mfa"
 
 API to get settings for login two-factor authentication.
 
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-required-permissions"></a>
 #### Required permissions
 `Organization.Setting.Iam.Get`
 
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-request-parameter"></a>
 #### Request Parameter
 
 
@@ -2917,6 +3110,7 @@ API to get settings for login two-factor authentication.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Yes | Organization ID | 
 
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-response-body"></a>
 #### Response Body
 
 ```json
@@ -2954,6 +3148,7 @@ API to get settings for login two-factor authentication.
 ```
 
 
+<a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-response"></a>
 #### Response
 
 | Name | Type | Required | Description |   
@@ -2992,15 +3187,18 @@ API to get settings for login two-factor authentication.
 |   String | Boolean| No | Activated or not<br>true (enabled), false (disabled)  |
 |   ipList | List<String>| No | List of exception IPs |
 
-### View Organization IAM Login Failure Security Settings
+<a id="view-organization-iam-login-failure-security-settings"></a>
+### View Organization IAM Login Failure Security Settings { #view-organization-iam-login-failure-security-settings }
 
 > GET "/v1/iam/organizations/{org-id}/settings/security-login-fail"
 
 API to get login failure security settings.
 
+<a id="view-organization-iam-login-failure-security-settings-required-permissions"></a>
 #### Required permissions
 `Organization.Setting.Iam.Get`
 
+<a id="view-organization-iam-login-failure-security-settings-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -3008,6 +3206,7 @@ API to get login failure security settings.
 |  Path |org-id | String| Yes | Organization ID | 
 
 
+<a id="view-organization-iam-login-failure-security-settings-response-body"></a>
 #### Response Body
 
 ```json
@@ -3028,6 +3227,7 @@ API to get login failure security settings.
 ```
 
 
+<a id="view-organization-iam-login-failure-security-settings-response"></a>
 #### Response
 
 | Name | Type | Required | Description |   
@@ -3050,15 +3250,18 @@ API to get login failure security settings.
 |   limit | Integer| No | Number of attempts allowed |
 |   blockMinutes | Integer| No | Login ban time  |
 
-### Get your organization's IAM account password policy
+<a id="get-your-organizations-iam-account-password-policy"></a>
+### Get your organization's IAM account password policy { #get-your-organizations-iam-account-password-policy }
 
 > GET "/v1/iam/organizations/{org-id}/settings/password-rule"
 
 API to get settings for password policies.
 
+<a id="get-your-organizations-iam-account-password-policy-required-permissions"></a>
 #### Required permissions
 `Organization.Setting.Iam.Get`
 
+<a id="get-your-organizations-iam-account-password-policy-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -3066,6 +3269,7 @@ API to get settings for password policies.
 |  Path |org-id | String| Yes | Organization ID | 
 
 
+<a id="get-your-organizations-iam-account-password-policy-response-body"></a>
 #### Response Body
 
 ```json
@@ -3103,6 +3307,7 @@ API to get settings for password policies.
 }
 ```
 
+<a id="get-your-organizations-iam-account-password-policy-response"></a>
 #### Response
 
 | Name | Type | Required | Description |   
@@ -3153,7 +3358,8 @@ API to get settings for password policies.
 | String | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
 | limitCount | Integer | Yes | Number of reuse limits |
 
-### Get the price of a service on a pay-as-you-go subscription
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription"></a>
+### Get the price of a service on a pay-as-you-go subscription { #get-the-price-of-a-service-on-a-pay-as-you-go-subscription }
 
 > POST "/v1/billing/contracts/basic/products/prices/search"
 
@@ -3161,9 +3367,11 @@ API to get the unit price set on a counter.
 For each language, you can get the impression name and type for calculating the amount.
 
 
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-required-permissions"></a>
 #### Required permissions
 Available to all members. No specific permissions required.
 
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -3171,6 +3379,7 @@ Available to all members. No specific permissions required.
 |  Query |limit | Integer| No |  |
 | Request Body | request | GetContractProductPriceRequest| Yes | Request |
 
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-getcontractproductpricerequest"></a>
 #### GetContractProductPriceRequest
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
@@ -3185,6 +3394,7 @@ Available to all members. No specific permissions required.
 |   page | Integer| No | Target Page, default 1  |
 
 
+<a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-response-body"></a>
 #### Response Body
 
 ```json
@@ -3258,15 +3468,18 @@ Available to all members. No specific permissions required.
 |   slidingCalculationTypeCode | String| Yes | Types of sliding fee calculations<br>NONE, SECTION_SUM, SECTION_SELECTED |
 |   useFixPriceYn | String| Yes | Fixed amount or not (Y: Fixed amount , N: Unit price calculation)<br>Y: price becomes an amount if it falls in the range<br>N: (Usage x Unit Price) becomes an amount |
 
-### List services enrolled in a pay-as-you-go subscription
+<a id="list-services-enrolled-in-a-pay-as-you-go-subscription"></a>
+### List services enrolled in a pay-as-you-go subscription { #list-services-enrolled-in-a-pay-as-you-go-subscription }
 
 > GET "/v1/billing/contracts/basic/products"
 
 API that provides a list of the main categories and subcategories exposed in the bill, and the counters they contain.
 
+<a id="list-services-enrolled-in-a-pay-as-you-go-subscription-required-permissions"></a>
 #### Required permissions
 Available to all members. No specific permissions required.
 
+<a id="list-services-enrolled-in-a-pay-as-you-go-subscription-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -3275,6 +3488,7 @@ Available to all members. No specific permissions required.
 |  Query |page | Integer| No |  |
 
 
+<a id="list-services-enrolled-in-a-pay-as-you-go-subscription-response-body"></a>
 #### Response Body
 
 ```json
@@ -3353,15 +3567,18 @@ Available to all members. No specific permissions required.
 |   usageAggregationUnitCode | String| No | Usage aggregation units<br>RESOURCE_ID, COUNTER_NAME |
 
 
-### Get Project Integrated AppKey
+<a id="get-project-integrated-appkey"></a>
+### Get Project Integrated AppKey { #get-project-integrated-appkey }
 
 > GET "/v1/authentications/projects/{project-id}/project-appkeys"
 
 API to get a list of project integrated AppKeys being used by the project.
 
+<a id="get-project-integrated-appkey-required-permissions"></a>
 #### Required permissions
 `Project.ProjectAppKey.List`
 
+<a id="get-project-integrated-appkey-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -3369,6 +3586,7 @@ API to get a list of project integrated AppKeys being used by the project.
 |  Path |project-id | String| Yes | Project ID to look up | 
 
 
+<a id="get-project-integrated-appkey-response-body"></a>
 #### Response Body
 
 ```json
@@ -3411,16 +3629,19 @@ API to get a list of project integrated AppKeys being used by the project.
 |   reIssueDatetime | Date| No | Regeneration time  |
 |   regDatetime | Date| No | Date and time of creation  |
 
-### ListUser Access Key IDs
+<a id="listuser-access-key-ids"></a>
+### ListUser Access Key IDs { #listuser-access-key-ids }
 
 > GET "/v1/authentications/user-access-keys"
 
 API to get a list of a member's User Access Key IDs.
 
+<a id="listuser-access-key-ids-required-permissions"></a>
 #### Required permissions
 Available to all members. No specific permissions required.
 
 
+<a id="listuser-access-key-ids-response-body"></a>
 #### Response Body
 
 ```json
@@ -3475,16 +3696,19 @@ Available to all members. No specific permissions required.
 |   validTokenCount | Long| No | Number of valid tokens                      |
 
 
-### Register a integrated project AppKey
+<a id="register-a-integrated-project-appkey"></a>
+### Register a integrated project AppKey { #register-a-integrated-project-appkey }
 
 > POST "/v1/authentications/projects/{project-id}/project-appkeys"
 
 API to generate an AppKey for use in your project.
 
+<a id="register-a-integrated-project-appkey-required-permissions"></a>
 #### Required permissions
 `Project.ProjectAppKey.Create`
 
 
+<a id="register-a-integrated-project-appkey-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -3499,6 +3723,7 @@ API to generate an AppKey for use in your project.
 |   appkeyAlias | String | Yes   | Project integrated AppKey aliases<br>100-character limit |
 
 
+<a id="register-a-integrated-project-appkey-response-body"></a>
 #### Response Body
 
 ```json
@@ -3530,15 +3755,18 @@ API to generate an AppKey for use in your project.
 |   authId | String| No | Internally managed authentication method ID  |
 |   appKey | String| No | Project integrated AppKey |
 
-### Register a User Access Key ID
+<a id="register-a-user-access-key-id"></a>
+### Register a User Access Key ID { #register-a-user-access-key-id }
 
 > POST "/v1/authentications/user-access-keys"
 
 API to register a member's User Access Key ID.
 
+<a id="register-a-user-access-key-id-required-permissions"></a>
 #### Required permissions
 Available to all members. No specific permissions required.
 
+<a id="register-a-user-access-key-id-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -3554,6 +3782,7 @@ Available to all members. No specific permissions required.
 |   tokenExpiryPeriod | Long| No | Token expiry period<br>Specified in seconds. For OPAQUE format tokens, the default is one day; for JWT tokens, the default is one hour.<br>OPAQUE format tokens can be issued with a validity period of at least one minute and up to one day. JWT format tokens can be issued with a validity period of at least one minute and up to one hour. |
 
 
+<a id="register-a-user-access-key-id-response-body"></a>
 #### Response Body
 
 ```json
@@ -3592,16 +3821,19 @@ Available to all members. No specific permissions required.
 |   tokenFormatCode | String | No | Token format code (OPAQUE, JWT) |
 
 
-### Delete a project integrated AppKey
+<a id="delete-a-project-integrated-appkey"></a>
+### Delete a project integrated AppKey { #delete-a-project-integrated-appkey }
 
 > DELETE "/v1/authentications/projects/{project-id}/project-appkeys/{app-key}"
 
 API to delete a project AppKey.
 
+<a id="delete-a-project-integrated-appkey-required-permissions"></a>
 #### Required permissions
 `Project.ProjectAppKey.Delete`
 
 
+<a id="delete-a-project-integrated-appkey-request-parameter"></a>
 #### Request Parameter
 
 
@@ -3611,6 +3843,7 @@ API to delete a project AppKey.
 |  Path |app-key | String| Yes | Project integrated AppKey to delete | 
 
 
+<a id="delete-a-project-integrated-appkey-response-body"></a>
 #### Response Body
 
 ```json
@@ -3629,16 +3862,19 @@ API to delete a project AppKey.
 |   header | [Common response](#Response)| Yes   |
 
 
-### Reissue the User Access Key ID secret key
+<a id="reissue-the-user-access-key-id-secret-key"></a>
+### Reissue the User Access Key ID secret key { #reissue-the-user-access-key-id-secret-key }
 
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue"
 
 API to reissue the secret key for a User Access Key ID.
 
 
+<a id="reissue-the-user-access-key-id-secret-key-required-permissions"></a>
 #### Required Permissions
 Can only reissue the secret key for the user's own User Access Key ID
 
+<a id="reissue-the-user-access-key-id-secret-key-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -3653,6 +3889,7 @@ Can only reissue the secret key for the user's own User Access Key ID
 |------------ |---------|----|---------------------------------------------------|
 |   needExpireTokens | Boolean | No | Issued token expired or not(true: Expired, false: Not expired)<br>Default false |
 
+<a id="reissue-the-user-access-key-id-secret-key-response-body"></a>
 #### Response Body
 
 ```json
@@ -3683,16 +3920,19 @@ Can only reissue the secret key for the user's own User Access Key ID
 |------------ | ------------- | ----------- | ------------ |
 |   secretAccessKey | String| Yes   | Secret key |
 
-### Modify User Access Key ID status
+<a id="modify-user-access-key-id-status"></a>
+### Modify User Access Key ID status { #modify-user-access-key-id-status }
 
 > PUT "/v1/authentications/user-access-keys/{user-access-key-id}"
 
 API to change the state of a member's User Access Key ID.<br>
 If you deactivate the User Access Key ID for OPAQUE tokens, the OPAQUE tokens also expire. However, deactivating the User Access Key ID for JWT tokens does not expire the JWT tokens.
 
+<a id="modify-user-access-key-id-status-required-permissions"></a>
 #### Required Permissions
 Can only modify the user's own User Access Key ID
 
+<a id="modify-user-access-key-id-status-request-parameter"></a>
 #### Request Parameter
 
 
@@ -3709,6 +3949,7 @@ Can only modify the user's own User Access Key ID
 | String | String| Yes | State to change (STOP: Stop, STABLE: Enable) |
 
 
+<a id="modify-user-access-key-id-status-response-body"></a>
 #### Response Body
 
 ```json
@@ -3727,15 +3968,18 @@ Can only modify the user's own User Access Key ID
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#Response)| Yes   |
 
-### Delete a User Access Key ID
+<a id="delete-a-user-access-key-id"></a>
+### Delete a User Access Key ID { #delete-a-user-access-key-id }
 
 > DELETE "/v1/authentications/user-access-keys/{user-access-key-id}"
 
 API to delete a User Access Key ID.
 
+<a id="delete-a-user-access-key-id-required-permissions"></a>
 #### Required permissions
 Can only delete the user's own User Access Key ID
 
+<a id="delete-a-user-access-key-id-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -3743,6 +3987,7 @@ Can only delete the user's own User Access Key ID
 |  Path | user-access-key-id | String| Yes | User Access Key ID | 
 
 
+<a id="delete-a-user-access-key-id-response-body"></a>
 #### Response Body
 
 ```json
@@ -3763,15 +4008,18 @@ Can only delete the user's own User Access Key ID
 |   header | [Common response](#응답)| Yes |
 
 
-### Get a List of Tokens
+<a id="get-a-list-of-tokens"></a>
+### Get a List of Tokens { #get-a-list-of-tokens }
 
 > GET "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
 
 API to get a list of OPAQUE tokens issued with a User Access Key ID.
 
+<a id="get-a-list-of-tokens-required-permissions"></a>
 #### Required Permissions
 Only tokens issued with your own User Access Key ID can be viewed
 
+<a id="get-a-list-of-tokens-request-parameters"></a>
 #### Request Parameters
 
 | In | Name | Type | Required  | Description                                                                           | 
@@ -3787,6 +4035,7 @@ Only tokens issued with your own User Access Key ID can be viewed
 
 
 
+<a id="get-a-list-of-tokens-response-body"></a>
 #### Response Body
 
 ```json
@@ -3825,7 +4074,8 @@ Only tokens issued with your own User Access Key ID can be viewed
 |   tokenId | Long         | Yes | Token ID              |
 
 
-### Expire multiple tokens
+<a id="expire-multiple-tokens"></a>
+### Expire multiple tokens { #expire-multiple-tokens }
 
 > DELETE "/v1/authentications/user-access-keys/{user-access-key-id}/tokens"
 
@@ -3834,9 +4084,11 @@ Even if you make a request using the User Access Key ID that issued the JWT toke
 If both the token ID and token list are empty in the request, all tokens issued to that User Access Key ID will expire.<br>
 If you have both a token ID and a list of tokens, only tokens that match both are deleted. Tokens do not expire when a request is made by a user other than the owner of the User Access Key ID in the request.
 
+<a id="expire-multiple-tokens-required-permissions"></a>
 #### Required Permissions
 Only tokens issued with your own User Access Key ID can expire
 
+<a id="expire-multiple-tokens-request-parameters"></a>
 #### Request Parameters
 
 | In           | Name                 | Type              | Required  | Description                 | 
@@ -3845,6 +4097,7 @@ Only tokens issued with your own User Access Key ID can expire
 | Request Body | tokenIds           | List<Long>   | No  | List of token IDs           | 
 | Request Body         | tokens             | List<String> | No   | List of tokens          | 
 
+<a id="expire-multiple-tokens-response-body"></a>
 #### Response Body
 
 ```json
@@ -3865,15 +4118,18 @@ Only tokens issued with your own User Access Key ID can expire
 |   header | [Common response](#Response)| Yes |
 
 
-### Create a project IAM account
+<a id="create-a-project-iam-account"></a>
+### Create a project IAM account { #create-a-project-iam-account }
 
 > POST "/v1/iam/projects/{project-id}/members"
 
 API to add an IAM account as a project member.
 
+<a id="create-a-project-iam-account-required-permissions"></a>
 #### Required permissions
 `Project.Member.Iam.Create`
 
+<a id="create-a-project-iam-account-request-parameter"></a>
 #### Request Parameter
 
 
@@ -3918,6 +4174,7 @@ API to add an IAM account as a project member.
 |   attributeValues | List<String>| Yes | Condition attribute value  |
 
 
+<a id="create-a-project-iam-account-response-body"></a>
 #### Response Body
 
 ```json
@@ -3938,15 +4195,18 @@ API to add an IAM account as a project member.
 |   header | [Common response](#응답) | Yes |
 
 
-### Delete multiple project IAM accounts
+<a id="delete-multiple-project-iam-accounts"></a>
+### Delete multiple project IAM accounts { #delete-multiple-project-iam-accounts }
 
 > DELETE "/v1/iam/projects/{project-id}/members"
 
 API to delete IAM accounts from a project.
 
+<a id="delete-multiple-project-iam-accounts-required-permissions"></a>
 #### Required permissions
 `Project.Member.Iam.Delete`
 
+<a id="delete-multiple-project-iam-accounts-request-parameter"></a>
 #### Request Parameter
 
 
@@ -3965,6 +4225,7 @@ API to delete IAM accounts from a project.
 |   memberUuids | List<String>| Yes | List of UUIDs of the target accounts to delete |
 
 
+<a id="delete-multiple-project-iam-accounts-response-body"></a>
 #### Response Body
 
 ```json
@@ -3985,15 +4246,18 @@ API to delete IAM accounts from a project.
 |   header | [Common response](#응답)| Yes |
 
 
-### View a project IAM account
+<a id="view-a-project-iam-account"></a>
+### View a project IAM account { #view-a-project-iam-account }
 
 > GET "/v1/iam/projects/{project-id}/members/{member-uuid}"
 
 API to get a specific IAM account who is part of a project.
 
+<a id="view-a-project-iam-account-required-permissions"></a>
 #### Required permissions
 `Project.Member.Iam.Get`
 
+<a id="view-a-project-iam-account-request-parameter"></a>
 #### Request Parameter
 
 
@@ -4006,6 +4270,7 @@ API to get a specific IAM account who is part of a project.
 
 
 
+<a id="view-a-project-iam-account-response-body"></a>
 #### Response Body
 
 ```json
@@ -4075,15 +4340,18 @@ API to get a specific IAM account who is part of a project.
 
 
 
-### View project IAM accounts
+<a id="view-project-iam-accounts"></a>
+### View project IAM accounts { #view-project-iam-accounts }
 
 > GET "/v1/iam/projects/{project-id}/members"
 
 API to get a list of IAM accounts who are part of a project.
 
+<a id="view-project-iam-accounts-required-permissions"></a>
 #### Required permissions
 `Project.Member.Iam.List`
 
+<a id="view-project-iam-accounts-request-parameter"></a>
 #### Request Parameter
 
 
@@ -4097,6 +4365,7 @@ API to get a list of IAM accounts who are part of a project.
 
 
 
+<a id="view-project-iam-accounts-response-body"></a>
 #### Response Body
 
 ```json
@@ -4150,15 +4419,18 @@ API to get a list of IAM accounts who are part of a project.
 |   recentPasswordModifyYmdt | Date| No | Date of last password change  |
 
 
-### Modify project IAM account roles
+<a id="modify-project-iam-account-roles"></a>
+### Modify project IAM account roles { #modify-project-iam-account-roles }
 
 > PUT "/v1/iam/projects/{project-id}/members/{member-uuid}"
 
 API to change the role of a specified IAM account in a project.
 
+<a id="modify-project-iam-account-roles-required-permissions"></a>
 #### Required permissions
 `Project.Member.Iam.Update`
 
+<a id="modify-project-iam-account-roles-request-parameter"></a>
 #### Request Parameter
 
 | In | Name | Type | Required | Description  | 
@@ -4170,6 +4442,7 @@ API to change the role of a specified IAM account in a project.
 
 
 
+<a id="modify-project-iam-account-roles-response-body"></a>
 #### Response Body
 
 ```json
@@ -4189,15 +4462,18 @@ API to change the role of a specified IAM account in a project.
 |   header | [Common response](#응답)| Yes   |
 
 
-### View all credentials of members under organizations
+<a id="view-all-credentials-of-members-under-organizations"></a>
+### View all credentials of members under organizations { #view-all-credentials-of-members-under-organizations }
 
 > GET "/v1/authentications/organizations/{org-id}/user-access-keys"
 
 API to get the credentials of members in the organization or project.
 
+<a id="view-all-credentials-of-members-under-organizations-required-permissions"></a>
 #### Required permissions
 `Organization.UserAccessKey.List`
 
+<a id="view-all-credentials-of-members-under-organizations-request-parameter"></a>
 #### Request Parameter
 
 
@@ -4210,6 +4486,7 @@ API to get the credentials of members in the organization or project.
 
 
 
+<a id="view-all-credentials-of-members-under-organizations-response-body"></a>
 #### Response Body
 
 ```json
@@ -4271,10 +4548,12 @@ API to get the credentials of members in the organization or project.
 | lastTokenUsedDatetime | Date | No | Date of last token use |
 | validTokenCount | Long | No | Number of valid tokens |
 
-### View your Own Organization List
+<a id="view-your-own-organization-list"></a>
+### View your Own Organization List { #view-your-own-organization-list }
 
 > GET /v1/organizations
 
+<a id="view-your-own-organization-list-required-permission"></a>
 #### Required Permission
 Available to all members. No specific permissions required.
 
@@ -4387,15 +4666,18 @@ Available to all members. No specific permissions required.
 | domainName | String | Yes | Organization domain name |
 
 
-### Add your own organization
+<a id="add-your-own-organization"></a>
+### Add your own organization { #add-your-own-organization }
 
 > POST /v1/organizations
 
 An API to add your own organization.
 
+<a id="add-your-own-organization-required-permission"></a>
 #### Required Permission
 Available to all members. No specific permissions required.
 
+<a id="add-your-own-organization-request-parameter"></a>
 #### Request Parameter
 
 | Category | Name | Type | Required | Description |
@@ -4409,6 +4691,7 @@ Available to all members. No specific permissions required.
 | orgName | String | Yes | Organization name to create (up to 70 characters) |
 
 
+<a id="add-your-own-organization-response-body"></a>
 #### Response Body
 
 ```json
@@ -4449,21 +4732,25 @@ Available to all members. No specific permissions required.
 | restrictTypes | List&lt;String> | Yes | List for restriction targets |
 
 
-### Delete a single organization
+<a id="delete-a-single-organization"></a>
+### Delete a single organization { #delete-a-single-organization }
 
 > DELETE /v1/organizations/{org-id}
 
 An API to delete your own organization.
 
+<a id="delete-a-single-organization-required-permission"></a>
 #### Required Permission
 `Organization.Delete`
 
+<a id="delete-a-single-organization-request-parameters"></a>
 #### Request Parameters
 
 | Category | Name | Type | Required | Description |
 |------------- |------------- | ------------- | ------------- | ------------- |
 | Path |org-id | String | Yes | Organization ID |
 
+<a id="delete-a-single-organization-response-body"></a>
 #### Response Body
 
 ```json
@@ -4482,15 +4769,18 @@ An API to delete your own organization.
 |---|---|---|---|
 | header | [Common Response](#Response) | Yes | |
 
-### Retrieve Service Information List
+<a id="retrieve-service-information-list"></a>
+### Retrieve Service Information List { #retrieve-service-information-list }
 
 > GET /v1/products
 
 This API retrieves a list of available services.
 
+<a id="retrieve-service-information-list-required-permissions"></a>
 #### Required Permissions
 Available to all members. No specific permissions required.
 
+<a id="retrieve-service-information-list-request-parameters"></a>
 #### Request Parameters
 
 | Category | Name | Type | Required | Description |
@@ -4502,6 +4792,7 @@ Available to all members. No specific permissions required.
 | Query | limit | Integer | No | Number of items displayed per page, default 20 |
 | Query | page | Integer | No | Target page, default 1 |
 
+<a id="retrieve-service-information-list-response-body"></a>
 #### Response body
 
 ```json
@@ -4544,15 +4835,18 @@ Available to all members. No specific permissions required.
 | productId | String | Yes | Service ID |
 | productName | String | Yes | Service Name |
 
-### View Role Descriptions by Multiple Language
+<a id="view-role-descriptions-by-multiple-language"></a>
+### View Role Descriptions by Multiple Language { #view-role-descriptions-by-multiple-language }
 
 > GET /v1/messages/role
 
 This API retrieves a list of role descriptions in multiple languages.
 
+<a id="view-role-descriptions-by-multiple-language-required-permission"></a>
 #### Required Permission
 Available to all members. No specific permissions required.
 
+<a id="view-role-descriptions-by-multiple-language-request-parameter"></a>
 #### Request parameter
 
 | Category | Name | Type | Required | Description |
@@ -4565,6 +4859,7 @@ Available to all members. No specific permissions required.
 | Query |page | Integer| Yes | Target page |
 
 
+<a id="view-role-descriptions-by-multiple-language-response-body"></a>
 #### Response body
 
 ```json
@@ -4619,6 +4914,7 @@ Available to all members. No specific permissions required.
 | zhCn | String | No | Chinese message |
 
 
+<a id="error-code"></a>
 ### Error Code { #error-code }
 
 | Result code | Description                                                                                  | Actions                                                      |
