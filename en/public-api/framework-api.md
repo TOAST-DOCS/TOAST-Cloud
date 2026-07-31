@@ -110,24 +110,24 @@ When the Public API returns, the header part below is included in the response b
 | PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/roles](#modify-an-organization-role-groups-role) | Modify an organization role group's role |
 | PUT |[/v1/organizations/{org-id}/members/{member-uuid}](#modify-organization-member-roles) | Modify organization member roles |
 | PUT |[/v1/projects/{project-id}/members/{member-uuid}](#modify-project-member-roles) | Modify project member roles |
-| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-단건-조회) | View organization IAM members |
-| GET |[/v1/iam/organizations/{org-id}/members](#조직-IAM-멤버-목록-조회) | List organization IAM members |
-| POST |[/v1/iam/organizations/{org-id}/members](#조직-IAM-멤버-추가) | Add an organization IAM member |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#IAM-멤버-비밀번호-변경-이메일-전송) | Send an IAM member password change email |
-| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#조직-IAM-멤버-정보-수정) | Modify organization IAM member information |
-| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#조직-IAM-멤버-비밀번호-변경) | Change an organization IAM member password |
-| GET |[/v1/iam/organizations/{org-id}/settings/session](#조직-IAM-로그인-세션-설정-정보를-조회) | View organization IAM sign-in session settings information |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#조직-IAM-로그인-2차-인증에-대한-설정을-조회) | View settings for organizational IAM sign-in second factor authentication |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#조직-IAM-로그인-실패-보안-설정을-조회) | View Organization IAM Login Failure Security Settings |
+| GET |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#view-organization-iam-members) | View organization IAM members |
+| GET |[/v1/iam/organizations/{org-id}/members](#list-organization-iam-members) | List organization IAM members |
+| POST |[/v1/iam/organizations/{org-id}/members](#add-an-organization-iam-member) | Add an organization IAM member |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/send-password-setup-mail](#send-an-iam-member-password-change-email) | Send an IAM member password change email |
+| PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#modify-organization-iam-member-information) | Modify organization IAM member information |
+| POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#change-an-organization-iam-member-password) | Change an organization IAM member password |
+| GET |[/v1/iam/organizations/{org-id}/settings/session](#view-organization-iam-sign-in-session-settings-information) | View organization IAM sign-in session settings information |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#view-settings-for-organizational-iam-sign-in-second-factor-authentication) | View settings for organizational IAM sign-in second factor authentication |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#view-organization-iam-login-failure-security-settings) | View Organization IAM Login Failure Security Settings |
 | GET |[/v1/iam/organizations/{org-id}/settings/password-rule](#get-your-organizations-iam-account-password-policy) | Get your organization's IAM account password policy |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#listorganization-ip-acls) | Listorganization IP ACLs |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#get-the-price-of-a-service-on-a-pay-as-you-go-subscription) | Get the price of a service on a pay-as-you-go subscription |
 | GET |[/v1/billing/contracts/basic/products](#list-services-enrolled-in-a-pay-as-you-go-subscription) | List services enrolled in a pay-as-you-go subscription |
-| GET |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-조회) | Get Project AppKey |
+| GET |[/v1/authentications/projects/{project-id}/project-appkeys](#get-project-integrated-appkey) | Get Project AppKey |
 | GET |[/v1/authentications/user-access-keys](#listuser-access-key-ids) | ListUser Access Key IDs |
-| POST |[/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-AppKey-등록) | Register a project AppKey |
+| POST |[/v1/authentications/projects/{project-id}/project-appkeys](#register-a-integrated-project-appkey) | Register a project AppKey |
 | POST |[/v1/authentications/user-access-keys](#register-a-user-access-key-id) | Register a User Access Key ID |
-| DELETE |[/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#프로젝트-AppKey-삭제) | Delete a project AppKey |
+| DELETE |[/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#delete-a-project-integrated-appkey) | Delete a project AppKey |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#reissue-the-user-access-key-id-secret-key) | Reissue the User Access Key ID secret key |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#modify-user-access-key-id-status) | Modify User Access Key ID status |
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#delete-a-user-access-key-id) | Delete a User Access Key ID |
@@ -138,7 +138,7 @@ When the Public API returns, the header part below is included in the response b
 | GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#view-a-project-member) | View a project IAM account |
 | GET |[/v1/iam/projects/{project-id}/members](#view-project-iam-accounts) | View project IAM accounts |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#modify-project-iam-account-roles) | Modify project IAM account roles |
-| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-리스트-조회) | View all credentials of members under organizations |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#view-all-credentials-of-members-under-organizations) | View all credentials of members under organizations |
 | GET | [/v1/organizations](#view-your-own-organization-list) | View your own organization list |
 | POST | [/v1/organizations](#add-your-own-organization) | Add your own organization |
 | DELETE | [/v1/organizations/{org-id}](#delete-a-single-organization) | Delete a single organization |

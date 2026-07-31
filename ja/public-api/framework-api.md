@@ -98,8 +98,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | DELETE |[/v1/projects/{project-id}/project-role-groups](#delete-a-project-role-group) | プロジェクトロールグループ削除 |
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/infos](#edit-project-role-group-information) | プロジェクトロールグループ情報修正 |
 | PUT |[/v1/projects/{project-id}/project-role-groups/{role-group-id}/roles](#modify-project-role-group-roles) | プロジェクトロールグループロール修正 |
-| GET |[/v1/organizations/{org-id}/org-role-groups](#組織-ロール-グループ-全体-照会) | 組織ロールグループ全体照会 |
-| GET |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}](#組織-ロール-グループ-単件-照会) | 組織ロールグループ単件照会 |
+| GET |[/v1/organizations/{org-id}/org-role-groups](#view-all-organization-role-groups) | 組織ロールグループ全体照会 |
+| GET |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}](#view-a-single-organization-role-group) | 組織ロールグループ単件照会 |
 | POST |[/v1/organizations/{org-id}/org-role-groups](#create-organization-role-group) | 組織ロールグループ作成 |
 | DELETE |[/v1/organizations/{org-id}/org-role-groups](#delete-organization-role-group) | 組織ロールグループ削除 |
 | PUT |[/v1/organizations/{org-id}/org-role-groups/{role-group-id}/infos](#modify-organization-role-group-information) | 組織ロールグループ情報修正 |
@@ -113,10 +113,10 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | PUT |[/v1/iam/organizations/{org-id}/members/{member-uuid}](#modify-organization-iam-member-information) | 組織IAMメンバー情報修正 |
 | POST |[/v1/iam/organizations/{org-id}/members/{member-id}/set-password](#change-an-organization-iam-member-password) | 組織IAMメンバーパスワード変更 |
 | GET |[/v1/iam/organizations/{org-id}/settings/session](#view-organization-iam-sign-in-session-settings-information) | 組織IAMログインセッション設定情報を照会 |
-| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#組織-IAM-ログイン-2次-認証-の-設定を-照会) | 組織IAMログイン2段階認証の設定を照会 |
+| GET |[/v1/iam/organizations/{org-id}/settings/security-mfa](#view-settings-for-organizational-iam-sign-in-second-factor-authentication) | 組織IAMログイン2段階認証の設定を照会 |
 | GET |[/v1/iam/organizations/{org-id}/settings/security-login-fail](#view-organization-iam-login-failure-security-settings) | 組織IAMログイン失敗セキュリティ設定を照会 |
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#listorganization-ip-acls) | 組織IP ACLリスト照会 |
-| POST |[/v1/billing/contracts/basic/products/prices/search](#従量制に-登録された-サービス-価格-照会) | 従量制に登録されたサービス価格照会 |
+| POST |[/v1/billing/contracts/basic/products/prices/search](#get-the-price-of-a-service-on-a-pay-as-you-go-subscription) | 従量制に登録されたサービス価格照会 |
 | GET |[/v1/billing/contracts/basic/products](#list-services-enrolled-in-a-pay-as-you-go-subscription) | 従量制に登録されたサービスリスト照会 |
 | GET |[/v1/authentications/projects/{project-id}/project-appkeys](#get-project-integrated-appkey) | プロジェクト統合-Appkey照会 |
 | GET |[/v1/authentications/user-access-keys](#listuser-access-key-ids) | User Access Key IDリスト照会 |
@@ -124,7 +124,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | POST |[/v1/authentications/user-access-keys](#register-a-user-access-key-id) | User Access Key ID登録 |
 | DELETE |[/v1/authentications/projects/{project-id}/project-appkeys/{app-key}](#delete-a-project-integrated-appkey) | プロジェクト統合-Appkey削除 |
 | PUT |[/v1/authentications/user-access-keys/{user-access-key-id}/secretkey-reissue](#reissue-the-user-access-key-id-secret-key) | User Access Key ID秘密鍵の再発行 |
-| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#User-Access-Key-ID-状態-修正) | User Access Key ID状態修正 |
+| PUT |[/v1/authentications/user-access-keys/{user-access-key-id}](#modify-user-access-key-id-status) | User Access Key ID状態修正 |
 | DELETE |[/v1/authentications/user-access-keys/{user-access-key-id}](#delete-a-user-access-key-id) | User Access Key ID削除 |
 | GET    | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#get-a-list-of-tokens)                               | トークンリスト照会                 |
 | DELETE | [/v1/authentications/user-access-keys/{user-access-key-id}/tokens](#expire-multiple-tokens)                               | トークン複数期限切れ                  |
@@ -133,7 +133,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#view-a-project-member) | プロジェクトIAMアカウント単件照会 |
 | GET |[/v1/iam/projects/{project-id}/members](#view-project-iam-accounts) | プロジェクトIAMアカウントリスト照会 |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#modify-project-iam-account-roles) | プロジェクトIAMアカウントロール修正 |
-| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#組織-下位-メンバーの-全ての-認証情報-リスト-照会) | 組織下位メンバー認証情報リスト照会 |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#view-all-credentials-of-members-under-organizations) | 組織下位メンバー認証情報リスト照会 |
 | GET | [/v1/organizations](#view-your-own-organization-list) | 自分の組織一覧の照会 |
 | POST | [/v1/organizations](#add-your-own-organization) | 自分の組織の追加 |
 | DELETE | [/v1/organizations/{org-id}](#delete-a-single-organization) | 組織の個別削除 |
