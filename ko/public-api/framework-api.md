@@ -138,7 +138,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/iam/projects/{project-id}/members/{member-uuid}](#view-a-project-member) | 프로젝트 IAM 계정 단건 조회 |
 | GET |[/v1/iam/projects/{project-id}/members](#view-project-iam-accounts) | 프로젝트 IAM 계정 목록 조회 |
 | PUT |[/v1/iam/projects/{project-id}/members/{member-uuid}](#modify-project-iam-account-roles) | 프로젝트 IAM 계정 역할 수정 |
-| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#조직-하위-멤버의-모든-인증정보-목록-조회) | 조직 하위 멤버 인증 정보 목록 조회 |
+| GET |[/v1/authentications/organizations/{org-id}/user-access-keys](#view-all-credentials-of-members-under-organizations) | 조직 하위 멤버 인증 정보 목록 조회 |
 | GET | [/v1/organizations](#view-your-own-organization-list) | 자신의 조직 목록 조회 |
 | POST | [/v1/organizations](#add-your-own-organization) | 자신의 조직 추가 |
 | DELETE | [/v1/organizations/{org-id}](#delete-a-single-organization) | 조직 단건 삭제 |
