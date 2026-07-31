@@ -1,11 +1,15 @@
+<!-- pre-align:aligned sig=07d03063e3a6 -->
+
 # IaaSトークン
 
 **NHN Cloud > Public API使用ガイド > API認証方式 > IaaSトークン**
 
 IaaSトークンは、NHN CloudのOpenStackベースのインフラサービス(IaaS)で使用する認証トークンです。Keystone認証サーバーを通じて発行され、Compute、Block Storage、Networkなどのインフラリソース制御APIを呼び出す際に使用します。
 
-## 事前作業
-### APIエンドポイントの確認
+<a id="prerequisites"></a>
+## 事前作業 { #prerequisites }
+<a id="verify-api-endpoints"></a>
+### APIエンドポイントの確認 { #verify-api-endpoints }
 
 NHN Cloudの基本インフラサービスAPIは、タイプとリージョンごとにエンドポイントが分かれています。ただし、Identity APIは全てのリージョンで同一のエンドポイントを使用します。
 
@@ -20,11 +24,13 @@ NHN Cloudの基本インフラサービスAPIは、タイプとリージョン�
 | object-store | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>韓国(光州)リージョン<br>日本(東京)リージョン | https://kr1-api-object-storage.nhncloudservice.com<br>https://kr2-api-object-storage.nhncloudservice.com<br>https://kr3-api-object-storage.nhncloudservice.com<br>https://jp1-api-object-storage.nhncloudservice.com |
 | key-manager  | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>韓国(光州)リージョン<br>日本(東京)リージョン | https://kr1-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr2-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr3-api-key-manager-infrastructure.nhncloudservice.com<br>https://jp1-api-key-manager-infrastructure.nhncloudservice.com |
 
-### テナントIDの確認
+<a id="verify-tenant-id"></a>
+### テナントIDの確認 { #verify-tenant-id }
 
 APIリクエストに含まれるテナントIDは、**Compute > Instance** ページの **APIエンドポイント設定** で確認します。
 
-### APIパスワード設定
+<a id="set-the-api-password"></a>
+### APIパスワード設定 { #set-the-api-password }
 
 NHN Cloudの基本インフラサービスAPIを使用するには、NHN Cloudアカウントのパスワードとは別にAPIパスワードを設定する必要があります。APIパスワードはアカウントごとに作成されます。あるプロジェクトで設定されたパスワードは、ユーザーが所属する全てのプロジェクトで使用できます。
 
@@ -42,7 +48,8 @@ NHN Cloudの基本インフラサービスAPIを使用するには、NHN Cloud�
     * APIパスワード変更時、既存の認証トークンは使用できなくなるため、再発行が必要です。
 
 
-## IaaSトークンの発行リクエスト
+<a id="request-iaas-token-issuance"></a>
+## IaaSトークンの発行リクエスト { #request-iaas-token-issuance }
 
 トークン発行は `identity` タイプのエンドポイントを利用します。`identity` サービスのエンドポイントは、リージョンに関係なく `https://api-identity-infrastructure.nhncloudservice.com` です。<br>
 APIを呼び出す際に必要なトークンを発行します。NHN Cloudではプロジェクト限定トークン(project-scoped token)を使用します。
@@ -58,7 +65,8 @@ POST /v2.0/tokens
 ```
 
 
-### リクエスト
+<a id="request"></a>
+### リクエスト { #request }
 
 | 名前                | 区分 | タイプ  | 必須 | 説明                                       |
 | ------------------- | ---- | ------ | ---- | ------------------------------------------ |
@@ -87,7 +95,8 @@ POST /v2.0/tokens
 </details>
 
 
-### レスポンス
+<a id="response"></a>
+### レスポンス { #response }
 
 | 名前 | 種類 | 属性 | 説明 |
 |---|---|---|---|
@@ -236,7 +245,8 @@ POST /v2.0/tokens
 </details>
 
 
-## IaaSトークンの使用
+<a id="use-iaas-tokens"></a>
+## IaaSトークンの使用 { #use-iaas-tokens }
 
 IaaSトークンはHTTPリクエストヘッダに含めて送信します。API呼び出し時、以下の例のようにリクエストヘッダにIaaSトークンを設定して呼び出してください。
 

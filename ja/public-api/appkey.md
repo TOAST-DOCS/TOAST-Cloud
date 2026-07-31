@@ -1,9 +1,12 @@
+<!-- pre-align:aligned sig=c06c60d0d587 -->
+
 # Appkey
 **NHN Cloud > Public API使用ガイド > API認証方式 > Appkey**
 
 Appkeyは、NHN Cloudの各サービスごとに発行される固有の認証キーであり、APIリクエスト時にサービスの識別と有効性検証に使用されます。認証のための別途のユーザー登録、トークンリクエスト、更新手続きなどは不要で、APIリクエスト時にAppkeyを含めるだけでよいため、認証プロセスが比較的簡単です。
 
-## Appkeyの確認
+<a id="view-appkey"></a>
+## Appkeyの確認 { #view-appkey }
 Appkeyはサービスごとに発行され、NHN Cloudコンソールの各サービス画面で確認できます。
 このドキュメントでは、Instanceサービスのコンソール画面を例として使用します。
 
@@ -18,7 +21,8 @@ Appkeyはサービスごとに発行され、NHN Cloudコンソールの各サ�
     Appkeyが流出した、または流出が疑われる場合、[サポート > お問い合わせ](https://www.nhncloud.com/jp/support/inquiry)で **お問い合わせタイプ** を **{サービス名}/その他** に選択し、Appkeyの再発行を申請してください。
 
 
-## SecretKeyの確認
+<a id="view-secretkey"></a>
+## SecretKeyの確認 { #view-secretkey }
 NHN Cloudの一部のサービスでは、APIへのアクセス制御のためにSecretKey(秘密鍵)をサポートしています。
 SecretKeyはAppkeyと同様に、SecretKeyをサポートするサービス画面で確認できます。
 このドキュメントでは、CDNサービスのコンソール画面を例として使用します。
@@ -30,10 +34,13 @@ SecretKeyはAppkeyと同様に、SecretKeyをサポートするサービス画�
 ![C_SecretKey_2_ja](http://static.toastoven.net/toast/public_api/C_SecretKey_2_ja.png)
 
 
-## APIの呼び出し
-### Appkey
+<a id="making-api-calls"></a>
+## APIの呼び出し { #making-api-calls }
+<a id="appkey"></a>
+### Appkey { #appkey }
 APIリクエスト時、AppkeyはパスパラメータまたはHTTPヘッダに含まれますが、サービスによって使用方法が異なる場合があります。APIリクエスト時に使用するパス形式またはHTTPヘッダフィールド名は、該当サービスのAPIガイドを参照してください。
 
+<a id="appkey-path-parameter-method"></a>
 #### パスパラメータ方式
 AppkeyをAPIリクエストの一部として含める方式です。
 
@@ -42,6 +49,7 @@ AppkeyをAPIリクエストの一部として含める方式です。
 POST /v1.0/appkeys/{appKey}/
 ```
 
+<a id="appkey-http-header-based-authentication"></a>
 #### HTTPヘッダ方式
 Appkeyをリクエストのヘッダに含めてサービスの有効性を検証する方式です。
 
@@ -55,9 +63,11 @@ X-TC-APP-KEY: {Appkey}
     Appkeyは有効期限のない固定キーベースの認証方式であり、認可機能がないため、キーが外部に流出した場合、無断でAPIが呼び出される可能性があります。キーは外部ストレージやコードに含まれないよう安全に保管し、流出が疑われる場合は直ちに再発行を依頼する必要があります。[サポート > お問い合わせ](https://www.nhncloud.com/jp/support/inquiry)で **お問い合わせタイプ** を **{サービス名}/その他** に選択し、Appkeyの再発行を依頼できます。
 
 
-### SecretKey
+<a id="secretkey"></a>
+### SecretKey { #secretkey }
 APIリクエスト時、SecretKeyはアクセス制御のために使用され、サービスによって使用方法が異なる場合があります。APIリクエスト時に使用するHTTPヘッダフィールド名は、該当サービスのAPIガイドを参照してください。
 
+<a id="secretkey-http-header-based-authentication"></a>
 #### HTTPヘッダ方式
 SecretKeyをリクエストのヘッダに含めてサービスの有効性を検証する方式です。
 

@@ -1,12 +1,17 @@
-## NHN Cloud > セキュリティーポリシー
+<!-- pre-align:aligned sig=10ba220cbb2f -->
+
+<a id="nhn-cloud-security-policy"></a>
+## NHN Cloud > セキュリティーポリシー { #nhn-cloud-security-policy }
 
 NHN Cloudはより安全なセキュリティー環境を提供するため、セキュリティーサービス、セキュリティーポリシー、脆弱性情報などを案内しています。
 多様な新しい攻撃技法とセキュリティー脆弱性から顧客の資産を守るため、クラウド環境で頻繁に発生するセキュリティー事故および脅威に備えられる下記のセキュリティーポリシーを提供します。
 
-## パスワードポリシー
+<a id="password-policy"></a>
+## パスワードポリシー { #password-policy }
 ユーザーアカウント(rootおよびすべての一般アカウント)パスワード設定時、一般的に推測しやすいパスワードを設定すると、悪意を持つユーザーがパスワード代入攻撃により、一般アカウントまたはroot役割を獲得してシステムにアクセスできます。これによりサーバーに保存された重要なデータが流出したり、ハッキング経由地サーバーに悪用される場合があるので、安全なパスワードを設定して管理する必要があります。
 
-### 安全なパスワードとは
+<a id="safe-passwords"></a>
+### 安全なパスワードとは { #safe-passwords }
 アルファベット、数字、特殊文字を組み合わせて8文字以上で構成します。次のように推測できるパスワードを使用してはいけません。
 
 - nullパスワード
@@ -16,37 +21,41 @@ NHN Cloudはより安全なセキュリティー環境を提供するため、�
 - 周期的にパスワードを再使用
 - 電話番号、誕生日、アカウント名、ホスト名など、推測しやすいパスワード
 
-### NHN Cloudパスワードポリシー
+<a id="nhn-cloud-password-policy"></a>
+### NHN Cloudパスワードポリシー { #nhn-cloud-password-policy }
 NHN Cloudは顧客の大切な資産とサービスを保護するために、下記のパスワードポリシーを基本適用します。
 
 - アルファベット、数字、特殊文字の3種類を組み合わせる
 - 8文字以上
 
-## DRDoS攻撃遮断ポリシー
+<a id="anti-drdos-policy"></a>
+## DRDoS攻撃遮断ポリシー { #anti-drdos-policy }
 外部ネットワークにオープンされたインスタンスがDRDoS攻撃の経由地に悪用される場合、 アウトバウンドトラフィックの異常な増加によりサービス障害や意図せぬトラフィック課金が発生する場合があります。
 
-### DRDoS(Distributed Reflect DoS、Dosリフレクション攻撃)とは？
+<a id="what-is-drdos-distributed-reflection-denial-of-service"></a>
+### DRDoS(Distributed Reflect DoS、Dosリフレクション攻撃)とは？ { #what-is-drdos-distributed-reflection-denial-of-service }
 DRDoSはDNS、NTP、SSDP、Memcachedなど、 アプリケーションの設定の脆弱性により発生します。 多数のゾンビコンピューターを利用して小さな要請パケットで大きなレスポンスパケットを作り、対象サーバーにトラフィックを集中させることができるため、最近ハッキング攻撃で多用されている帯域幅侵食型攻撃技法です。
 
-### NHN Cloud DRDoSポート遮断ポリシー
-NHN Cloudは顧客の大切な資産とサービスを保護するために、DRDoS攻撃の経由地に頻繁に悪用されるUDPポートに対する遮断ポリシーを適用しています。
-
-### 遮断ポートリスト
+<a id="list-of-blocked-ports"></a>
+### 遮断ポートリスト { #list-of-blocked-ports }
 | サービス名 |  遮断ポート | 遮断方法 | 備考 |
 | ---- | ---- | ---- | ---- |
 | Chargen | UDP / 19    | Network ACL遮断適用 |   外部から接続不可 |
 | SSDP    | UDP / 1900  | Network ACL遮断適用 | 外部から接続不可 |
 | Memcached   | UDP / 11211 | Network ACL遮断適用 | 外部から接続不可 |
 
-## インターネットポート遮断ポリシー(inbound)
+<a id="internet-port-blocking-policy-inbound"></a>
+## インターネットポート遮断ポリシー(inbound) { #internet-port-blocking-policy-inbound }
 顧客サービス保護のため、顧客が直接管理できるセキュリティグループ(security group)機能のほか、侵入遮断システムを利用して重要サービスのポートにおいて接続を遮断しています。
 
-### NHN Cloud遮断ポートリスト
+<a id="nhn-cloud-list-of-blocked-ports"></a>
+### NHN Cloud遮断ポートリスト { #nhn-cloud-list-of-blocked-ports }
 |適用リージョン | サービス名 | 遮断ポート | 遮断方法 | 備考 |
 | ---- | ---- | ---- | ---- | ---- |
 | 韓国(パンギョ/ピョンチョン/光州) <br> 日本(東京) | システムターミナルポート | TCP/23 | ネットワークACL遮断適用 | 外部から接続不可 |
 
-### NHN Cloud(公共機関用)遮断ポートリスト
+<a id="nhn-cloudcloud-for-public-agencies-list-of-blocked-ports"></a>
+### NHN Cloud(公共機関用)遮断ポートリスト { #nhn-cloudcloud-for-public-agencies-list-of-blocked-ports }
 |サービス名 |  遮断ポート | 遮断方法 |備考|
 | ---- | ---- | ---- | ---- |
 | システムターミナルポート | TCP/22, 23, 3389 | ネットワークACL遮断適用 | 外部から接続不可|
@@ -56,7 +65,8 @@ NHN Cloudは顧客の大切な資産とサービスを保護するために、DR
 
 ポート遮断ポリシーの詳細については、カスタマーセンターまでお問い合わせください。
 
-### ポート追加/許可申請手順
+<a id="how-to-apply-for-more-ports"></a>
+### ポート追加/許可申請手順 { #how-to-apply-for-more-ports }
 - 下記Excelファイルをダウンロードして作成します。
 
 [![](https://static.toastoven.net/prod_gov_security/fileicon_download_excel.png)](https://static.toastoven.net/prod_gov_security/NHN%20Cloud%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%8A%E3%82%88%E3%81%B2%E3%82%99SSL%20VPN%E3%83%9B%E3%82%9A%E3%83%AA%E3%82%B7%E3%83%BC%E7%94%B3%E8%AB%8B%E6%9B%B8_JP.xlsx)
