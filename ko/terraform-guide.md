@@ -142,11 +142,9 @@ provider "nhncloud" {
     * NHN Cloud 콘솔의 **Compute > Instance > 관리** 메뉴에서 **API 엔드포인트 설정** 버튼을 클릭해 신원 서비스(identity) URL을 확인합니다.
 * **region**
     * NHN Cloud 리소스를 관리할 리전 정보를 입력합니다.
-    * **KR1**: 한국(판교) 리전
-{% if "gov" not in build_flags -%}
+    * **KR1**: 한국(판교) 리전{% if "gov" not in build_flags %}
     * **KR2**: 한국(평촌) 리전
-    * **JP1**: 일본(도쿄) 리전
-{%- endif %}
+    * **JP1**: 일본(도쿄) 리전{% endif %}
 
 공급자 설정 파일이 있는 경로에서 `init` 명령을 이용해 Terraform을 초기화합니다.
 
