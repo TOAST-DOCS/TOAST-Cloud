@@ -3,30 +3,69 @@
 <a id="nhn-cloud-overview"></a>
 ## NHN Cloud > 개요 { #nhn-cloud-overview }
 
-NHN Cloud에서 제공하는 “통합 클라우드 서비스”이며, 기업의 운영과 서비스 개발을 위해 필요한 모든 것을 제공합니다. 
+{% if "gov" in build_flags -%}
+NHN Cloud (공공기관용)은 NHN Cloud에서 제공하는 “공공 기관을 위한 최적의 클라우드 서비스”이며, 공공기관 클라우드 컨설팅, 마이그레이션 등 차별화된 서비스를 제공합니다.
+{%- elif "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+NHN Cloud에서 제공하는 “국가 행정망 연계가 가능한 최적의 민관협력형 공공 클라우드 서비스”이며, 행정기관 클라우드 컨설팅, 마이그레이션 등 차별화된 서비스를 제공합니다.
+{%- elif "ngoic" in build_flags or "ngovc" in build_flags -%}
+NHN Cloud에서 제공하는 “국가 공공망 연계가 가능한 최적의 민관협력형 공공 클라우드 서비스”이며, 공공기관 클라우드 컨설팅, 마이그레이션 등 차별화된 서비스를 제공합니다.
+{%- else -%}
+NHN Cloud에서 제공하는 “통합 클라우드 서비스”이며, 기업의 운영과 서비스 개발을 위해 필요한 모든 것을 제공합니다.
+{%- endif %}
 
 <a id="features"></a>
 ## 특징 { #features }
 
+{% if "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags -%}
+- 망분리 환경에서만 접속이 되고, 허가를 받은 사용자만 사용 가능한 보안이 강화된 클라우드 서비스입니다.
+{%- else -%}
 - 누구나 쉽게 사용할 수 있는 클라우드 서비스입니다.
+{%- endif %}
 - 개발에만 전념할 수 있도록 편리한 인프라와 플랫폼을 제공합니다.
 - 웹 브라우저상에서 간단한 클릭만으로 서비스를 사용할 수 있습니다.
 - 합리적인 비용으로 인프라와 플랫폼을 이용할 수 있습니다.
+{% if "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+- 국제침해사고대응협의체(FIRST)를 통해 검증된 침해사고 대응 체계로 행정기관용 클라우드 서비스의 안정성을 보장합니다.
+{%- elif "ngoic" in build_flags or "ngovc" in build_flags -%}
+- 국제침해사고대응협의체(FIRST)를 통해 검증된 침해사고 대응 체계로 공공기관용 클라우드 서비스의 안정성을 보장합니다.
+{%- endif %}
 
 <a id="composed-of-various-services"></a>
 ### 다양한 서비스 구성 { #composed-of-various-services }
 
+{% if "gov" in build_flags -%}
+- 인프라, 개발, 테스트, 운영과 기술 지원, 사업화에 필요한 다양한 서비스를 제공합니다.
+- 사내 메신저, 프로젝트 관리부터, 인사/재무/자원 관리까지, 기업의 IT 인프라를 위한 서비스를 이용할 수 있습니다.
+- 자체 기술력으로 설계, 구축한 도심형 데이터 센터로 하이브리드 클라우드 구성이 가능합니다.
+{%- elif "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+- 인프라, 개발, 테스트, 운영과 기술 지원 등 다양한 서비스를 제공합니다.
+- 프로젝트 관리부터 자원 관리까지 행정 업무의 IT 인프라를 위한 서비스를 이용할 수 있습니다.
+- 자체 기술력으로 설계, 구축한 도심형 데이터 센터로 하이브리드 클라우드 구성이 가능합니다.
+{%- elif "ngoic" in build_flags or "ngovc" in build_flags -%}
+- 인프라, 개발, 테스트, 운영과 기술 지원 등 다양한 서비스를 제공합니다.
+- 프로젝트 관리부터 자원 관리까지 공공 업무의 IT 인프라를 위한 서비스를 이용할 수 있습니다.
+- 자체 기술력으로 설계, 구축한 도심형 데이터 센터로 하이브리드 클라우드 구성이 가능합니다.
+{%- else -%}
 - 인프라, 개발, 테스트, 운영과 기술 지원, 사업화에 필요한 다양한 서비스를 제공합니다.
 - 사내 메신저, 프로젝트 관리부터, 인사/재무/자원 관리 까지, 기업의 IT인프라를 위한 서비스를 이용할 수 있습니다.
 - 자체 기술력으로 설계, 구축한 도심형 데이터 센터로 하이브리드 클라우드 구성이 가능합니다.
+{%- endif %}
 
 <a id="platform-oriented-cloud"></a>
 ### 플랫폼 중심 클라우드 { #platform-oriented-cloud }
 
 - 인프라에 기반한 플랫폼 중심 클라우드입니다.
+{% if "gov" in build_flags or "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags -%}
+- 인프라, 콘텐츠, 분석, 보안, 기타 애플리케이션을 운영할 때 필요한 각종 기능을 제공합니다.
+{%- else -%}
 - 인프라, 콘텐츠, 분석, 게임, 보안, 알림 메시지, 기타 애플리케이션을 운영할 때 필요한 각종 기능을 제공합니다.
+{%- endif %}
 - 애플리케이션 개발과 운영에 필요한 다양한 기능을 제공합니다.
+{% if "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags -%}
+- 클라우드에서 쉽게 개발할 수 있는 생태계를 만들어갈 수 있습니다.
+{%- else -%}
 - 기업이 클라우드에서 쉽게 개발할 수 있는 생태계를 만들어갈 수 있습니다.
+{%- endif %}
 
 <a id="reasonable-prices"></a>
 ### 합리적인 가격 { #reasonable-prices }
@@ -42,21 +81,37 @@ NHN Cloud에서 제공하는 “통합 클라우드 서비스”이며, 기업�
 - 클라우드 도입 전략 수립을 위한 컨설팅을 제공합니다.
 - 전문 엔지니어가 24시간/365일 상담해드립니다.
 
+{% if not ("gov" in build_flags or "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 <a id="global-cloud"></a>
 ### 글로벌 클라우드 { #global-cloud }
 - 국내 기업의 일본 진출을 지원합니다.
 - 현지 기업에게는 10년 이상 축적된 강력한 기술과 서비스를 제공합니다.
 - 성공적인 해외 서비스를 위한 글로벌 플랫폼을 지원합니다.
 
+{% endif -%}
 <a id="service-targets"></a>
 ## 서비스 대상 { #service-targets }
 
+{% if "gov" in build_flags -%}
+- 인프라 구축에 어려움을 느껴 1:1 기술 컨설팅이 필요하신 업체
+- 보안이 중요한 서비스를 운영하고 있는 기업이나 공공기관
+- 인프라를 효율적으로 이용하고 싶은 업체
+{%- elif "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+- 인프라 구축에 어려움을 느껴 1:1 기술 컨설팅이 필요하신 행정기관
+- 보안이 중요한 서비스를 운영하고 있는 행정기관
+- 인프라를 효율적으로 이용하고 싶은 행정기관
+{%- elif "ngoic" in build_flags or "ngovc" in build_flags -%}
+- 인프라 구축에 어려움을 느껴 1:1 기술 컨설팅이 필요하신 공공기관
+- 보안이 중요한 서비스를 운영하고 있는 공공기관
+- 인프라를 효율적으로 이용하고 싶은 공공기관
+{%- else -%}
 - 인프라 구축에 어려움을 느껴 1:1 기술 컨설팅이 필요하신 업체
 - 보안이 중요한 서비스를 운영하고 있는 기업이나 공공기관
 - 인프라를 효율적으로 이용하고 싶은 업체
 - 중/대형 쇼핑몰 업체
 - 글로벌 시장 진출을 목표로 하고 있는 업체
 - SMS, Push, Email 등의 통합 메시지 서비스가 필요한 업체
+{%- endif %}
 
 <a id="service-composition"></a>
 ## 서비스 구성 { #service-composition }
@@ -69,25 +124,50 @@ NHN Cloud에서 제공하는 “통합 클라우드 서비스”이며, 기업�
 | Storage | 고가용성과 안정성을 가진 스토리지 서비스입니다. |
 | Database | 복잡한 설치 및 설정 과정 없이, 클라우드 환경에서 관계형 데이터베이스를 사용할 수 있습니다. |
 | Monitoring | 가상 서버를 비롯한 NHN Cloud 내 리소스에 대한 지표를 수집 및 제공하고, 웹 서비스의 장애 여부를 모니터링할 수 있습니다. |
+{% if not ("gov" in build_flags or "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 | Hybrid & Private Cloud | 하이브리드와 프라이빗 클라우드 구축을 위한 서비스입니다. |
 | Game | 게임 개발에 필요한 플랫폼을 사용할 수 있습니다. |
+{% endif -%}
 | Security | 보안을 강화할 수 있는 플랫폼을 사용할 수 있습니다. |
+{% if not ("ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 | Content Delivery | 이미지 저장 및 빠른 콘텐츠 배포가 가능한 플랫폼입니다. |
+{% endif -%}
+{% if not ("gov" in build_flags or "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 | Notification | 모바일 푸시 및 SMS 플랫폼을 사용할 수 있습니다. |
 | AI Service | 최신 기술 기반의 AI 서비스를 쉽고 편리하게 구축할 수 있습니다. |
 | Machine Learning | 머신러닝 애플리케이션 개발을 위한 서비스입니다. |
+{% endif -%}
+{% if not ("ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 | Application Service | 웹/앱 서비스에 필요한 다양한 도구들을 제공합니다. |
+{% endif -%}
+{% if not ("gov" in build_flags or "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 | Mobile Service | 모바일 앱 서비스 개발과 테스트를 쉽게 할 수 있도록 돕는 서비스입니다. |
 | Search  | 다양한 검색 서비스를 통해 업데이트 걱정 없이 항상 최신 데이터를 이용할 수 있습니다. |
+{% endif -%}
+{% if not ("ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 | Data & Analytics | 데이터 분석 및 수집에 필요한 플랫폼을 사용할 수 있습니다. |
 | Dev Tools | 편리하고 효율적인 개발 환경을 제공하는 서비스입니다. |
 | Management | 최고 기술력을 보유한 전문 엔지니어가 체계적으로 서버를 관리해 고객은 콘텐츠 개발에 더 집중할 수 있습니다. |
+{% endif -%}
+{% if not ("gov" in build_flags or "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 | Bill | 쉽고 편리하게 세금계산서를 발행할 수 있습니다. |
+{% endif -%}
+{% if not ("ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 | Collaboration  | 협업을 위한 편리한 서비스로, 메일, 이슈 트래커, 일정 관리, 채팅까지 함께 지원해 쉽게 협업할 수 있습니다. |
+{% endif -%}
+{% if not ("gov" in build_flags or "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 | Contact Center | 콜센터 상담 통합 솔루션으로 효율적인 문의 처리를 통해 운영 효율성을 높이고 최적의 고객 경험을 제공할 수 있습니다. |
+{% endif -%}
+{% if "gov" in build_flags -%}
+| PaaS-TA | 애플리케이션 개발과 운영을 위해 필요한 플랫폼을 온라인 환경에서 제공하는 공개형 PaaS 플랫폼입니다. |
+{% endif -%}
+{% if "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags -%}
+| CloudTrail | 다양한 활동 로그 및 이벤트를 자동으로 수집해주는 무료 서비스입니다. |
+{%- else -%}
 | Governance & Audit  | 조직의 거버넌스를 관리하고 클라우드에서 발생한 다양한 활동 로그 및 이벤트를 감시하는 서비스입니다. |
+{%- endif %}
 
-
+{% if not ("ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 <a id="service-release-policy"></a>
 ## 서비스 릴리스 정책 { #service-release-policy }
 
@@ -111,3 +191,4 @@ NHN Cloud 서비스는 아래와 같은 릴리스 정책에 따라 관리합니�
 | GA | O | O | - |
 
 - 알파, 베타 기간은 연장 혹은 단축될 수 있습니다.
+{%- endif %}
