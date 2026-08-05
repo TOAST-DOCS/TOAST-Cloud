@@ -5,7 +5,6 @@
      else "support@ngsc-nhncloud.com" if "ngsc" in build_flags
      else "support@ninc-nhncloud.com" if "ninc" in build_flags
      else "" %}
-{%- set homepage_url = "https://gov-nhncloud.com" if "gov" in build_flags else "https://nhncloud.com" %}
 <a id="nhn-cloud-user-guide"></a>
 ## NHN Cloud > 사용 가이드 { #nhn-cloud-user-guide }
 {% if "gov" in build_flags -%}
@@ -45,7 +44,11 @@ NHN Cloud 회원 관리 정보와 가입 절차는 아래와 같습니다.
 
 {% if "gov" in build_flags or "ncgn" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
 ### 회원 가입 절차
-$[ homepage_url ]$에 접속한 후 화면 오른쪽 위에서 **회원 가입**을 클릭합니다.
+{% if "gov" in build_flags -%}
+https://gov-nhncloud.com에 접속한 후 화면 오른쪽 위에서 **회원 가입**을 클릭합니다.
+{%- else -%}
+홈페이지에 접속한 후 화면 오른쪽 위에서 **회원 가입**을 클릭합니다.
+{%- endif %}
 
 #### 회원 정보 입력
 {% if "gov" in build_flags -%}
