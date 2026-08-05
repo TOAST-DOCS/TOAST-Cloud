@@ -1,9 +1,29 @@
+{%- set inquiry_url = {
+    "gov":   "https://www.gov-nhncloud.com/kr/support/inquiry?alias=tab3_08",
+    "ncgn":  "https://www.gncloud.go.kr/kr/support/inquiry",
+}.get(
+    "gov"  if "gov"  in build_flags else
+    "ncgn" if "ncgn" in build_flags else "",
+    "https://www.nhncloud.com/kr/support/inquiry?alias=tab3_08") -%}
+{%- set excel_url = {
+    "gov":  "https://static.toastoven.net/prod_gov_security/NHN%20Cloud%20%28%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%9A%A9%29%20%EB%B0%A9%ED%99%94%EB%B2%BD%20%EB%B0%8F%20SSL%20VPN%20%EC%A0%95%EC%B1%85%20%EC%8B%A0%EC%B2%AD%EC%84%9C.xlsx",
+    "ncgn": "https://static.toastoven.net/toast/download%20files/NHN%20Government%20Security%20Cloud%20%EB%B0%A9%ED%99%94%EB%B2%BD%20%EB%B0%8F%20SSL%20VPN%20%EC%A0%95%EC%B1%85%20%EC%8B%A0%EC%B2%AD%EC%84%9C.xlsx",
+}.get(
+    "gov"  if "gov"  in build_flags else
+    "ncgn" if "ncgn" in build_flags else "",
+    "https://static.toastoven.net/prod_gov_security/NHN%20Cloud%20%EB%B0%A9%ED%99%94%EB%B2%BD%20%EB%B0%8F%20SSL%20VPN%20%EC%A0%95%EC%B1%85%20%EC%8B%A0%EC%B2%AD%EC%84%9C.xlsx") -%}
 <!-- pre-align:aligned sig=10ba220cbb2f -->
 
 <a id="nhn-cloud-security-policy"></a>
 ## NHN Cloud > 보안 정책 { #nhn-cloud-security-policy }
 
+{% if "gov" in build_flags -%}
+NHN Cloud (공공기관용)는 보다 안전한 보안 환경을 제공하고자 보안 상품, 보안 정책, 취약점 정보 등을 안내하고 있습니다.
+{%- elif "ncgn" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+보다 안전한 보안 환경을 제공하고자 보안 상품, 보안 정책, 취약점 정보 등을 안내하고 있습니다.
+{%- else -%}
 NHN Cloud는 보다 안전한 보안 환경을 제공하고자 보안 상품, 보안 정책, 취약점 정보 등을 안내하고 있습니다.
+{%- endif %}
 다양하고 새로운 공격 기법과 보안 취약점으로부터 고객의 자산을 보호하기 위해, 클라우드 환경에서 자주 발생하는 보안 사고 및 위협에 대비할 수 있는 보안 정책을 아래와 같이 제공합니다.
 
 <a id="password-policy"></a>
@@ -12,7 +32,7 @@ NHN Cloud는 보다 안전한 보안 환경을 제공하고자 보안 상품, �
 
 <a id="safe-passwords"></a>
 ### 안전한 비밀번호란 { #safe-passwords }
-영문자, 숫자, 특수문자를 조합하여 최소 8자 이상으로 구성합니다. 다음과 같이 추측 가능한 비밀번호를 사용하지 않아야 합니다.
+영문자, 숫자, 특수문자를 조합하여 최소 {% if "gov" in build_flags or "ncgn" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags %}9{% else %}8{% endif %}자 이상으로 구성합니다. 다음과 같이 추측 가능한 비밀번호를 사용하지 않아야 합니다.
 
 - null 비밀번호
 - 문자 또는 숫자만으로 구성
@@ -23,15 +43,27 @@ NHN Cloud는 보다 안전한 보안 환경을 제공하고자 보안 상품, �
 
 <a id="nhn-cloud-password-policy"></a>
 ### 비밀번호 정책 { #nhn-cloud-password-policy }
+{% if "gov" in build_flags -%}
+NHN Cloud (공공기관용)는 고객의 소중한 자산과 서비스를 보호하기 위하여 아래와 같이 비밀번호 정책을 기본 적용합니다.
+{%- elif "ncgn" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+고객의 소중한 자산과 서비스를 보호하기 위하여 아래와 같이 비밀번호 정책을 기본 적용합니다.
+{%- else -%}
 NHN Cloud는 고객의 소중한 자산과 서비스를 보호하기 위하여 아래와 같이 비밀번호 정책을 기본 적용합니다.
+{%- endif %}
 
 - 영문자, 숫자, 특수문자 3종류로 조합
-- 최소 8자리 이상
+- 최소 {% if "gov" in build_flags or "ncgn" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags %}9{% else %}8{% endif %}자리 이상
 
 <a id="anti-drdos-policy"></a>
 ## DRDoS 공격 차단 정책 { #anti-drdos-policy }
 외부 네트워크에 오픈된 인스턴스가 DRDoS 공격 경유지로 악용될 경우 아웃바운드 트래픽의 비정상적인 증가로 인해 서비스 장애나 및 의도하지 않은 트래픽 과금이 발생할 수 있습니다.
+{% if "gov" in build_flags -%}
+NHN Cloud (공공기관용)는 고객의 소중한 자산과 서비스를 보호하기 위하여 DRDoS 공격 경유지로 자주 악용되는 UDP 포트에 대한 차단 정책을 적용하고 있습니다.
+{%- elif "ncgn" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+고객의 소중한 자산과 서비스를 보호하기 위하여 DRDoS 공격 경유지로 자주 악용되는 UDP 포트에 대한 차단 정책을 적용하고 있습니다.
+{%- else -%}
 NHN Cloud는 고객의 소중한 자산과 서비스를 보호하기 위하여 DRDoS 공격 경유지로 자주 악용되는 UDP 포트에 대한 차단 정책을 적용하고 있습니다.
+{%- endif %}
 
 <a id="what-is-drdos-distributed-reflection-denial-of-service"></a>
 ### DRDoS(Distributed Reflect DoS, 분산 반사 서비스 거부 공격)란? { #what-is-drdos-distributed-reflection-denial-of-service }
@@ -49,14 +81,22 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 ## 인터넷 포트 차단 정책(inbound) { #internet-port-blocking-policy-inbound }
 고객 서비스 보호를 위해 고객이 직접 관리할 수 있는 보안 그룹(security group) 기능 외 침입 차단 시스템을 이용하여 중요 서비스 포트에 대해 차단하고 있습니다.
 
+{% if not ("gov" in build_flags or "ncgn" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags) -%}
 <a id="nhn-cloud-list-of-blocked-ports"></a>
 ### NHN Cloud 차단 포트 목록 { #nhn-cloud-list-of-blocked-ports }
 |적용 리전 | 서비스명 | 차단 포트 | 차단 방법 | 비고 |
 | ---- | ---- | ---- | ---- | ---- |
 | 한국(판교/평촌/광주) <br> 일본(도쿄) | 시스템 터미널 포트 | TCP/23 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 
+{% endif -%}
 <a id="nhn-cloudcloud-for-public-agencies-list-of-blocked-ports"></a>
+{% if "gov" in build_flags -%}
+### NHN Cloud (공공기관용) 차단 포트 목록 { #nhn-cloudcloud-for-public-agencies-list-of-blocked-ports }
+{%- elif "ncgn" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+### 차단 포트 목록 { #nhn-cloudcloud-for-public-agencies-list-of-blocked-ports }
+{%- else -%}
 ### NHN Cloud(공공기관용) 차단 포트 목록 { #nhn-cloudcloud-for-public-agencies-list-of-blocked-ports }
+{%- endif %}
 |서비스명 |   차단 포트  | 차단 방법 |비고|
 | ---- | ---- | ---- | ---- |
 | 시스템 터미널 포트 | TCP/22, 23, 3389 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가|
@@ -64,11 +104,21 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 | Netbios 관련 포트 | TCP, UDP/135, 137, 138, 139, 445 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 | 기타 | TCP/21(FTP), TCP / 5900(VNC) | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 
+{% if not ("ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags) -%}
 <a id="how-to-apply-for-more-ports"></a>
 ### 포트 추가/허용 신청 절차 { #how-to-apply-for-more-ports }
 - 아래 엑셀 파일을 다운로드하여 작성합니다.
 
-[![](https://static.toastoven.net/prod_gov_security/fileicon_download_excel.png)](https://static.toastoven.net/prod_gov_security/NHN%20Cloud%20%EB%B0%A9%ED%99%94%EB%B2%BD%20%EB%B0%8F%20SSL%20VPN%20%EC%A0%95%EC%B1%85%20%EC%8B%A0%EC%B2%AD%EC%84%9C.xlsx)
+[![](https://static.toastoven.net/prod_gov_security/fileicon_download_excel.png)]($[ excel_url ]$)
 
+{% if "gov" in build_flags -%}
+- 파일명 “NHN Cloud (공공기관용) 방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
+- NHN Cloud (공공기관용) [1:1 문의]($[ inquiry_url ]$)로 파일을 첨부하여 접수를 신청합니다. (접수일 기준으로 3일 이내 처리 및 회신)
+{%- elif "ncgn" in build_flags -%}
+- 파일명 “방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
+- [1:1 문의]($[ inquiry_url ]$)로 파일을 첨부하여 접수를 신청합니다. (접수일 기준으로 3일 이내 처리 및 회신)
+{%- else -%}
 - 파일명 “NHN Cloud 방화벽 및 SSL VPN 정책 신청서-기관명.xlsx”으로 저장합니다.
-- NHN Cloud [1:1 문의](https://www.nhncloud.com/kr/support/inquiry?alias=tab3_08)로 파일을 첨부하여 접수를 신청합니다. (접수일 기준으로 3일 이내 처리 및 회신)
+- NHN Cloud [1:1 문의]($[ inquiry_url ]$)로 파일을 첨부하여 접수를 신청합니다. (접수일 기준으로 3일 이내 처리 및 회신)
+{%- endif %}
+{%- endif %}
