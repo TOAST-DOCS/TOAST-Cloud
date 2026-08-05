@@ -167,7 +167,7 @@ NHN Cloud에서 제공하는 “통합 클라우드 서비스”이며, 기업�
 | Governance & Audit  | 조직의 거버넌스를 관리하고 클라우드에서 발생한 다양한 활동 로그 및 이벤트를 감시하는 서비스입니다. |
 {%- endif %}
 
-{% if not ("ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
+{% if not ("gov" in build_flags or "ncgn" in build_flags or "ngsc" in build_flags or "ninc" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags) -%}
 <a id="service-release-policy"></a>
 ## 서비스 릴리스 정책 { #service-release-policy }
 
