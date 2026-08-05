@@ -125,7 +125,7 @@ provider "nhncloud" {
   user_name   = "terraform-guide@nhncloud.com"
   tenant_id   = "aaa4c0a12fd84edeb68965d320d17129"
   password    = "difficultpassword"
-  auth_url    = "https://api-identity-infrastructure.nhncloudservice.com/v2.0"
+  auth_url    = "https://api-identity-infrastructure.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/v2.0"
   region      = "KR1"
 }
 ```
@@ -143,8 +143,10 @@ provider "nhncloud" {
 * **region**
     * NHN Cloud 리소스를 관리할 리전 정보를 입력합니다.
     * **KR1**: 한국(판교) 리전
+{% if "gov" not in build_flags -%}
     * **KR2**: 한국(평촌) 리전
     * **JP1**: 일본(도쿄) 리전
+{%- endif %}
 
 공급자 설정 파일이 있는 경로에서 `init` 명령을 이용해 Terraform을 초기화합니다.
 
