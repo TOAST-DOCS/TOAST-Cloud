@@ -18,7 +18,7 @@ Appkey는 서비스별로 발급되며, NHN Cloud 콘솔의 각 서비스 화면
 
 
 !!! danger "주의"
-    Appkey가 유출되었거나 유출이 의심되는 경우 [고객지원 > 문의하기](https://www.nhncloud.com/kr/support/inquiry)에서 **유형**을 **{서비스명}/기타**로 선택하여 Appkey 재발급을 신청하세요.
+    Appkey가 유출되었거나 유출이 의심되는 경우 [고객지원 > 문의하기](https://www.{% if "gov" in build_flags %}gov-{% endif %}nhncloud.com/kr/support/inquiry)에서 **유형**을 **{서비스명}/기타**로 선택하여 Appkey 재발급을 신청하세요.
 
 
 <a id="view-secretkey"></a>
@@ -60,7 +60,7 @@ X-TC-APP-KEY: {Appkey}
 
 
 !!! danger "주의"
-    Appkey는 유효 기간이 없는 고정 키 기반 인증 방식으로 인가 기능이 없어 키가 외부에 노출될 경우 무단으로 API가 호출될 수 있습니다. 키는 외부 저장소 또는 코드에 포함되지 않도록 안전하게 보관하고, 유출이 의심될 경우 즉시 재발급을 요청해야 합니다. [고객지원 > 문의하기](https://www.nhncloud.com/kr/support/inquiry)에서 **유형**을 **{서비스명}/기타**로 선택하여 Appkey 재발급을 요청할 수 있습니다.
+    Appkey는 유효 기간이 없는 고정 키 기반 인증 방식으로 인가 기능이 없어 키가 외부에 노출될 경우 무단으로 API가 호출될 수 있습니다. 키는 외부 저장소 또는 코드에 포함되지 않도록 안전하게 보관하고, 유출이 의심될 경우 즉시 재발급을 요청해야 합니다. [고객지원 > 문의하기](https://www.{% if "gov" in build_flags %}gov-{% endif %}nhncloud.com/kr/support/inquiry)에서 **유형**을 **{서비스명}/기타**로 선택하여 Appkey 재발급을 요청할 수 있습니다.
 
 
 <a id="secretkey"></a>

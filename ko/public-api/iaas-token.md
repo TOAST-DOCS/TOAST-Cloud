@@ -1,3 +1,4 @@
+{%- set host = "gov-nhncloudservice.com" if "gov" in build_flags else "nhncloudservice.com" -%}
 <!-- pre-align:aligned sig=07d03063e3a6 -->
 
 # IaaS 토큰
@@ -15,14 +16,16 @@ NHN Cloud 기본 인프라 서비스 API는 타입과 리전별로 엔드포인�
 
 | 타입         | 리전                                                 | 엔드포인트                                             |
 | ------------ | ---------------------------------------------------- | ------------------------------------------------------- |
-| identity     | 모든 리전                                            | https://api-identity-infrastructure.nhncloudservice.com |
-| compute      | 한국(판교) 리전<br>한국(평촌) 리전<br>한국(광주) 리전<br>일본(도쿄) 리전 | https://kr1-api-instance-infrastructure.nhncloudservice.com<br>https://kr2-api-instance-infrastructure.nhncloudservice.com<br>https://kr3-api-instance-infrastructure.nhncloudservice.com<br>https://jp1-api-instance-infrastructure.nhncloudservice.com |
-| network      | 한국(판교) 리전<br>한국(평촌) 리전<br>한국(광주) 리전<br>일본(도쿄) 리전 | https://kr1-api-network-infrastructure.nhncloudservice.com<br>https://kr2-api-network-infrastructure.nhncloudservice.com<br>https://kr3-api-network-infrastructure.nhncloudservice.com<br>https://jp1-api-network-infrastructure.nhncloudservice.com |
-| image        | 한국(판교) 리전<br>한국(평촌) 리전<br>한국(광주) 리전<br>일본(도쿄) 리전 | https://kr1-api-image-infrastructure.nhncloudservice.com<br>https://kr2-api-image-infrastructure.nhncloudservice.com<br>https://kr3-api-image-infrastructure.nhncloudservice.com<br>https://jp1-api-image-infrastructure.nhncloudservice.com |
-| volumev2     | 한국(판교) 리전<br>한국(평촌) 리전<br>한국(광주) 리전<br>일본(도쿄) 리전 | https://kr1-api-block-storage-infrastructure.nhncloudservice.com<br>https://kr2-api-block-storage-infrastructure.nhncloudservice.com<br>https://kr3-api-block-storage-infrastructure.nhncloudservice.com<br>https://jp1-api-block-storage-infrastructure.nhncloudservice.com |
-| nasv1        | 한국(판교) 리전<br>한국(평촌) 리전<br>한국(광주) 리전 | https://kr1-api-nas-infrastructure.nhncloudservice.com<br>https://kr2-api-nas-infrastructure.nhncloudservice.com<br>https://kr3-api-nas-infrastructure.nhncloudservice.com |
-| object-store | 한국(판교) 리전<br>한국(평촌) 리전<br>한국(광주) 리전<br>일본(도쿄) 리전 | https://kr1-api-object-storage.nhncloudservice.com<br>https://kr2-api-object-storage.nhncloudservice.com<br>https://kr3-api-object-storage.nhncloudservice.com<br>https://jp1-api-object-storage.nhncloudservice.com |
-| key-manager  | 한국(판교) 리전<br>한국(평촌) 리전<br>한국(광주) 리전<br>일본(도쿄) 리전 | https://kr1-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr2-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr3-api-key-manager-infrastructure.nhncloudservice.com<br>https://jp1-api-key-manager-infrastructure.nhncloudservice.com |
+| identity     | 모든 리전                                            | https://api-identity-infrastructure.$[ host ]$ |
+| compute      | 한국(판교) 리전<br>한국(평촌) 리전{% if "gov" not in build_flags %}<br>한국(광주) 리전<br>일본(도쿄) 리전{% endif %} | https://kr1-api-instance-infrastructure.$[ host ]$<br>https://kr2-api-instance-infrastructure.$[ host ]${% if "gov" not in build_flags %}<br>https://kr3-api-instance-infrastructure.$[ host ]$<br>https://jp1-api-instance-infrastructure.$[ host ]${% endif %} |
+| network      | 한국(판교) 리전<br>한국(평촌) 리전{% if "gov" not in build_flags %}<br>한국(광주) 리전<br>일본(도쿄) 리전{% endif %} | https://kr1-api-network-infrastructure.$[ host ]$<br>https://kr2-api-network-infrastructure.$[ host ]${% if "gov" not in build_flags %}<br>https://kr3-api-network-infrastructure.$[ host ]$<br>https://jp1-api-network-infrastructure.$[ host ]${% endif %} |
+| image        | 한국(판교) 리전<br>한국(평촌) 리전{% if "gov" not in build_flags %}<br>한국(광주) 리전<br>일본(도쿄) 리전{% endif %} | https://kr1-api-image-infrastructure.$[ host ]$<br>https://kr2-api-image-infrastructure.$[ host ]${% if "gov" not in build_flags %}<br>https://kr3-api-image-infrastructure.$[ host ]$<br>https://jp1-api-image-infrastructure.$[ host ]${% endif %} |
+| volumev2     | 한국(판교) 리전<br>한국(평촌) 리전{% if "gov" not in build_flags %}<br>한국(광주) 리전<br>일본(도쿄) 리전{% endif %} | https://kr1-api-block-storage-infrastructure.$[ host ]$<br>https://kr2-api-block-storage-infrastructure.$[ host ]${% if "gov" not in build_flags %}<br>https://kr3-api-block-storage-infrastructure.$[ host ]$<br>https://jp1-api-block-storage-infrastructure.$[ host ]${% endif %} |
+| nasv1        | 한국(판교) 리전<br>한국(평촌) 리전{% if "gov" not in build_flags %}<br>한국(광주) 리전{% endif %} | https://kr1-api-nas-infrastructure.$[ host ]$<br>https://kr2-api-nas-infrastructure.$[ host ]${% if "gov" not in build_flags %}<br>https://kr3-api-nas-infrastructure.$[ host ]${% endif %} |
+{%- if "gov" not in build_flags %}
+| object-store | 한국(판교) 리전<br>한국(평촌) 리전<br>한국(광주) 리전<br>일본(도쿄) 리전 | https://kr1-api-object-storage.$[ host ]$<br>https://kr2-api-object-storage.$[ host ]$<br>https://kr3-api-object-storage.$[ host ]$<br>https://jp1-api-object-storage.$[ host ]$ |
+{%- endif %}
+| key-manager  | 한국(판교) 리전<br>한국(평촌) 리전{% if "gov" not in build_flags %}<br>한국(광주) 리전<br>일본(도쿄) 리전{% endif %} | https://kr1-api-key-manager-infrastructure.$[ host ]$<br>https://kr2-api-key-manager-infrastructure.$[ host ]${% if "gov" not in build_flags %}<br>https://kr3-api-key-manager-infrastructure.$[ host ]$<br>https://jp1-api-key-manager-infrastructure.$[ host ]${% endif %} |
 
 <a id="verify-tenant-id"></a>
 ### 테넌트 ID 확인 { #verify-tenant-id }
@@ -51,7 +54,7 @@ NHN Cloud 기본 인프라 서비스 API를 사용하려면 NHN Cloud 계정 비
 <a id="request-iaas-token-issuance"></a>
 ## IaaS 토큰 발급 요청하기 { #request-iaas-token-issuance }
 
-토큰 발급은 `identity` 타입 엔드포인트를 이용합니다. `identity` 서비스 엔드포인트는 리전에 관계없이 `https://api-identity-infrastructure.nhncloudservice.com`입니다.<br>
+토큰 발급은 `identity` 타입 엔드포인트를 이용합니다. `identity` 서비스 엔드포인트는 리전에 관계없이 `https://api-identity-infrastructure.$[ host ]$`입니다.<br>
 API를 호출할 때 필요한 토큰을 발급합니다. NHN Cloud에서는 프로젝트 한정 토큰(project-scoped token)을 사용합니다.
 
 
@@ -141,13 +144,15 @@ POST /v2.0/tokens
     "serviceCatalog": [
       {
         "endpoints": [
+{%- if "gov" not in build_flags %}
           {
             "region": "KR2",
-            "publicURL": "https://kr2-api-instance-infrastructure.nhncloudservice.com/v2/f5073eaa26b64cffbee89411df94ce01"
+            "publicURL": "https://kr2-api-instance-infrastructure.$[ host ]$/v2/f5073eaa26b64cffbee89411df94ce01"
           },
+{%- endif %}
           {
             "region": "KR1",
-            "publicURL": "https://kr1-api-instance-infrastructure.nhncloudservice.com/v2/f5073eaa26b64cffbee89411df94ce01"
+            "publicURL": "https://kr1-api-instance-infrastructure.$[ host ]$/v2/f5073eaa26b64cffbee89411df94ce01"
           }
         ],
         "type": "compute",
@@ -155,13 +160,15 @@ POST /v2.0/tokens
       },
       {
         "endpoints": [
+{%- if "gov" not in build_flags %}
           {
             "region": "KR2",
-            "publicURL": "https://kr2-api-image-infrastructure.nhncloudservice.com"
+            "publicURL": "https://kr2-api-image-infrastructure.$[ host ]$"
           },
+{%- endif %}
           {
             "region": "KR1",
-            "publicURL": "https://kr1-api-image-infrastructure.nhncloudservice.com"
+            "publicURL": "https://kr1-api-image-infrastructure.$[ host ]$"
           }
         ],
         "type": "image",
@@ -171,7 +178,7 @@ POST /v2.0/tokens
         "endpoints": [
           {
             "region": "KR1",
-            "publicURL": "https://api-identity-infrastructure.nhncloudservice.com/v2.0"
+            "publicURL": "https://api-identity-infrastructure.$[ host ]$/v2.0"
           }
         ],
         "type": "identity",
@@ -179,13 +186,15 @@ POST /v2.0/tokens
       },
       {
         "endpoints": [
+{%- if "gov" not in build_flags %}
           {
             "region": "KR2",
-            "publicURL": "https://kr2-api-key-manager-infrastructure.nhncloudservice.com"
+            "publicURL": "https://kr2-api-key-manager-infrastructure.$[ host ]$"
           },
+{%- endif %}
           {
             "region": "KR1",
-            "publicURL": "https://kr1-api-key-manager-infrastructure.nhncloudservice.com"
+            "publicURL": "https://kr1-api-key-manager-infrastructure.$[ host ]$"
           }
         ],
         "type": "key-manager",
@@ -193,13 +202,15 @@ POST /v2.0/tokens
       },
       {
         "endpoints": [
+{%- if "gov" not in build_flags %}
           {
             "region": "KR2",
-            "publicURL": "https://kr2-api-block-storage-infrastructure.nhncloudservice.com/v2/f5073eaa26b64cffbee89411df94ce01"
+            "publicURL": "https://kr2-api-block-storage-infrastructure.$[ host ]$/v2/f5073eaa26b64cffbee89411df94ce01"
           },
+{%- endif %}
           {
             "region": "KR1",
-            "publicURL": "https://kr1-api-block-storage-infrastructure.nhncloudservice.com/v2/f5073eaa26b64cffbee89411df94ce01"
+            "publicURL": "https://kr1-api-block-storage-infrastructure.$[ host ]$/v2/f5073eaa26b64cffbee89411df94ce01"
           }
         ],
         "type": "volumev2",
@@ -207,13 +218,15 @@ POST /v2.0/tokens
       },
       {
         "endpoints": [
+{%- if "gov" not in build_flags %}
           {
             "region": "KR2",
-            "publicURL": "https://kr2-api-network-infrastructure.nhncloudservice.com"
+            "publicURL": "https://kr2-api-network-infrastructure.$[ host ]$"
           },
+{%- endif %}
           {
             "region": "KR1",
-            "publicURL": "https://kr1-api-network-infrastructure.nhncloudservice.com"
+            "publicURL": "https://kr1-api-network-infrastructure.$[ host ]$"
           }
         ],
         "type": "network",
@@ -256,5 +269,4 @@ X-Auth-Token: {IaaS Token}
 ```
 
 사용자가 HTTP 헤더에 토큰을 담아 서버에 요청을 보내면 서버가 토큰의 유효성을 확인한 뒤 요청을 승인하거나 거부합니다.
-
 

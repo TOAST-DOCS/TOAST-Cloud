@@ -11,7 +11,7 @@
 
 <a id="public-api-domain"></a>
 ### Public API 도메인 { #public-api-domain }
-`https://core.api.nhncloudservice.com/`
+`https://core.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/`
 
 <a id="common"></a>
 ### 공통 { #common }

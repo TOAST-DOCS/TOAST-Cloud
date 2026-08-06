@@ -15,7 +15,7 @@
 
 | 리전     | 엔드포인트 |
 |--------| ----- |
-| Global | https://core.api.nhncloudservice.com/ |
+| Global | https://core.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/ |
 
 <a id="authentication-and-permission"></a>
 ### 인증 및 권한 { #authentication-and-permission }
@@ -1467,6 +1467,7 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 </details>
 
 
+{% if not "gov" in build_flags %}
 <a id="daily-usage-pricing"></a>
 ## 일별 이용 금액 조회 { #daily-usage-pricing }
 
@@ -1775,6 +1776,7 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | displayNameJa | String | 청구서 노출명(일본어) |
 | displayNameKo | String | 청구서 노출명(한국어) |
 | displayNameZh | String | 청구서 노출명(중국어) |
+{% endif %}
 
 
 <a id="retrieve-active-organizationproject-product-metering-for-partners-or-partner-users"></a>

@@ -1,6 +1,7 @@
 <a id="nhn-cloud-public-api-release-notes"></a>
 ## NHN Cloud > Public API > 릴리스 노트 { #nhn-cloud-public-api-release-notes }
 
+{% if "gov" not in build_flags -%}
 <a id="march-24-2026"></a>
 ### 2026. 03. 24. { #march-24-2026 }
 <a id="march-24-2026-added-features"></a>
@@ -11,6 +12,7 @@
 - 프레임워크 API
     - JWT 토큰을 발급 받기 위한 User Access Key ID 발급 및 조회 방법 추가
 
+{% endif -%}
 <a id="december-23-2025"></a>
 ### 2025. 12. 23. { #december-23-2025 }
 <a id="december-23-2025-added-features"></a>
@@ -29,9 +31,10 @@
 
 - 프레임워크 API
     - 서비스 정보 목록 조회 API 추가
+{% if "gov" not in build_flags -%}
 - 파트너 관리 API
     - 일별 이용 금액 조회, 태그별 리소스 이용 금액 조회 API 추가
-
+{% endif %}
 <a id="october-28-2025"></a>
 ### 2025. 10. 28. { #october-28-2025 }
 <a id="october-28-2025-added-new-features"></a>

@@ -31,7 +31,7 @@ Amazon S3 호환 API를 지원하는 서비스 콘솔에서 S3 API 자격 증명
 API를 이용해 S3 API 자격 증명을 발급하려면 인증 토큰이 필요합니다. 인증 토큰 발급 방법은 [IaaS 토큰](/nhncloud/ko/public-api/iaas-token/)을 참고하세요.
 
 ```
-POST https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{api-user-id}/credentials/OS-EC2
+POST https://api-identity-infrastructure.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/v2.0/users/{api-user-id}/credentials/OS-EC2
 
 Content-Type: application/json
 X-Auth-Token: {token-id}
@@ -98,7 +98,7 @@ X-Auth-Token: {token-id}
 발급된 S3 API 자격 증명 목록을 조회합니다.
 
 ```
-GET https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{user-id}/credentials/OS-EC2
+GET https://api-identity-infrastructure.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/v2.0/users/{user-id}/credentials/OS-EC2
 
 X-Auth-Token: {token-id}
 ```
@@ -153,7 +153,7 @@ X-Auth-Token: {token-id}
 발급된 S3 API 자격 증명을 삭제합니다. 유출이 의심되는 경우 해당 자격 증명을 삭제한 뒤 새로 발급하세요.
 
 ```
-DELETE https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{user-id}/credentials/OS-EC2/{access}
+DELETE https://api-identity-infrastructure.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/v2.0/users/{user-id}/credentials/OS-EC2/{access}
 
 X-Auth-Token: {token-id}
 ```
