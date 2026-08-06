@@ -10,9 +10,9 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 <a id="check-authentication-methods-for-framework-and-partner-management-apis"></a>
 ## 프레임워크 API 및 파트너 관리 API 인증 방식 확인하기 { #check-authentication-methods-for-framework-and-partner-management-apis }
 
-프레임워크 API 및 파트너 관리 API는 인증을 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰 발급 및 API 호출에 대한 자세한 내용은 [User Access Key 토큰](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
+프레임워크 API 및 파트너 관리 API는 인증을 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰 발급 및 API 호출에 대한 자세한 내용은 [User Access Key 토큰](https://docs.{% if "gov" in build_flags %}gov-{% endif %}nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
 
-프레임워크 API 및 파트너 관리 API 사용에 대한 자세한 내용은 각각 [프레임워크 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)와 [파트너 관리 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)를 참고하세요.
+프레임워크 API 및 파트너 관리 API 사용에 대한 자세한 내용은 각각 [프레임워크 API](https://docs.{% if "gov" in build_flags %}gov-{% endif %}nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)와 [파트너 관리 API](https://docs.{% if "gov" in build_flags %}gov-{% endif %}nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)를 참고하세요.
 
 
 <a id="check-authentication-methods-for-each-service-api"></a>
@@ -25,14 +25,18 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 | 서비스 카테고리           | 서비스                                          | User Access Key 토큰 | IaaS 토큰 | User Access Key | Appkey | 프로젝트 통합 Appkey | S3 API 자격 증명 |
 | ----------------------- | ---------------------------------------------- | ------------------ | ------- | --------------- | ------ | -------------- | ------------------ |
 | **Compute**             | Instance                                       |                    | O       |                 |        |                |                    |
+{%- if "gov" not in build_flags %}
 |                         | Cloud Functions                                | O                  |         |                 |        |                |                    |
+{%- endif %}
 |                         | Image                                          |                    | O       |                 |        |                |                    |
 |                         | Virtual Desktop                                |                    | O       |                 |        |                |                    |
 | **Container**           | NHN Kubernetes Service (NKS)                   |                    | O       |                 |        |                |                    |
 |                         | NHN Container Registry (NCR)                   | O                  |         | O               |        |                |                    |
 |                         | NHN Container Service (NCS)                    | O                  |         |                 |        |                |                    |
 | **Network**             | VPC                                            |                    | O       |                 |        |                |                    |
+{%- if "gov" not in build_flags %}
 |                         | Flow Log                                       |                    | O       |                 |        |                |                    |
+{%- endif %}
 |                         | Floating IP                                    |                    | O       |                 |        |                |                    |
 |                         | Network ACL                                    |                    | O       |                 |        |                |                    |
 |                         | Security Groups                                |                    | O       |                 |        |                |                    |
@@ -50,6 +54,7 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 |                         | Object Storage                                 |                    | O       |                 |        |                | O                  |
 | **Database**            | RDS for MySQL                                  | O                  |         | O               | O      | O              |                    |
 |                         | RDS for MariaDB                                | O                  |         | O               | O      | O              |                    |
+{%- if "gov" not in build_flags %}
 |                         | RDS for PostgreSQL                             | O                  |         |                 |        |                |                    |
 | **Monitoring**          | Service Monitoring                             |                    |         |                 | O      |                |                    |
 | **Game**                | Gamebase                                       |                    |         |                 | O      |                |                    |
@@ -58,9 +63,13 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 | **Security**            | NHN AppGuard                                   |                    |         | O               | O      |                |                    |
 |                         | Server Security Check                          |                    |         |                 | O      |                |                    |
 |                         | Security Monitoring                            |                    |         |                 | O      |                |                    |
+{%- else %}
+| **Security**            | Security Monitoring                            |                    |         |                 | O      |                |                    |
+{%- endif %}
 |                         | Secure Key Manager                             | O                  |         | O               | O      | O              |                    |
 |                         | Security Advisor                               |                    |         |                 | O      |                |                    |
 | **Content Delivery**    | CDN                                            |                    |         |                 | O      | O              |                    |
+{%- if "gov" not in build_flags %}
 |                         | Image Manager                                  |                    |         |                 | O      | O              |                    |
 | **Notification**        | Notification Hub                               | O                  |         |                 |        |                |                    |
 |                         | Push                                           |                    |         |                 | O      |                |                    |
@@ -80,16 +89,22 @@ Public API마다 지원하는 인증 방식이 다르며, 일부 인증 방식�
 | **Search**              | Cloud Search                                   |                    |         |                 | O      |                |                    |
 |                         | Autocomplete                                   |                    |         |                 | O      |                |                    |
 |                         | Corporation Search                             |                    |         |                 | O      |                |                    |
+{%- else %}
+| **Application Service** | API Gateway                                    |                    |         |                 | O      | O              |                    |
+{%- endif %}
 | **Data & Analytics**    | Log & Crash Search                             |                    |         |                 | O      |                |                    |
+{%- if "gov" not in build_flags %}
 |                         | EasyQueue                                      | O                  |         |                 |        |                |                    |
 |                         | Data Lake Storage                              |                    |         |                 |        |                | O                  |
+{%- endif %}
 | **Dev Tools**           | Pipeline                                       | O                  |         | O               |        |                |                    |
 |                         | Deploy                                         | O                  |         | O               | O      |                |                    |
 | **Management**          | Certificate Manager                            | O                  | O       |                 | O      |                |                    |
+{%- if "gov" not in build_flags %}
 |                         | Private CA                                     | O                  |         |                 |        |                |                    |
+{%- endif %}
 | **Governance & Audit**  | CloudTrail                                     |                    |         | O               | O      |                |                    |
 |                         | Resource Watcher                               |                    |         | O               | O      |                |                    |
-
 
 
 

@@ -7,9 +7,11 @@
 User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. Bearer 토큰은 토큰을 소유한 사용자라면 누구나 접근 권한을 부여 받는 보안 토큰의 한 종류로, 유효 기간을 설정할 수 있어 리소스를 안전하게 보호할 수 있습니다.
 User Access Key 토큰은 역할 기반 접근 제어 방식(ABAC, attribute-Based Access Control)으로 동작하여 토큰을 사용할 경우 NHN Cloud 계정 또는 IAM 계정에 부여된 역할 및 권한이 적용됩니다. 따라서 호출 가능한 API가 해당 계정의 역할 및 권한 범위 내로 제한됩니다. 또한 역할 상세 조건을 설정하여 정밀한 접근 제어가 가능합니다.
 
+{% if "gov" not in build_flags %}
 NHN Cloud는 두 가지 타입의 토큰을 제공합니다.
 - **Opaque 토큰**: 일반적인 NHN Cloud API 호출에 사용되는 기본 토큰 타입
 - **JWT 토큰**: 현재 EasyQueue 서비스의 메시지 전송/수신 시에만 사용 가능한 토큰 타입
+{% endif %}
 
 <a id="overview-of-user-access-key-token-issuance-and-public-api-calls"></a>
 ## User Access Key 토큰 발급 및 Public API 호출 개요 { #overview-of-user-access-key-token-issuance-and-public-api-calls }
@@ -32,7 +34,11 @@ User Access Key 토큰 발급 및 API 호출은 다음과 같은 흐름으로 �
 
 !!! tip "알아두기"
     토큰의 유효 시간은 NHN Cloud 콘솔의 **API 보안 설정** 메뉴에서 변경할 수 있습니다.
+{% if "gov" not in build_flags %}
     Opaque 토큰 유효 시간은 60초 ~ 86,400초(24시간) 내에서 설정할 수 있고, JWT 토큰 유효 시간은 60초 ~ 3,600초(1시간) 내에서 설정할 수 있습니다.
+{% else %}
+    토큰 유효 시간은 60초~86,400초(24시간) 내에서 설정할 수 있습니다.
+{% endif %}
     유효 시간을 수정하기 전에 발급된 토큰의 유효 시간은 변경되지 않으며, 토큰 유효 시간 수정 후 신규로 발급하는 토큰부터 변경된 토큰 유효 시간이 적용됩니다.
 
 
@@ -45,10 +51,15 @@ User Access Key 토큰을 발급하려면 먼저 User Access Key ID와 Secret Ac
 
 2) **+ User Access Key 생성**을 클릭합니다.<br>
 ![C_userAccessKey_1_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_ko.png)
+{% if "gov" not in build_flags %}
 3) **User Access Key 생성** 모달 창에서 **토큰 타입**과 **토큰 유효 시간**을 설정한 뒤 **생성**을 클릭합니다.<br>
     - **Opaque 토큰(기본)**: **Opaque 타입 User Access Key ID와 Secret Access Key 생성**을 선택
     - **JWT 토큰**: **JWT 타입 User Access Key ID와 Secret Access Key 생성**을 선택(현재 EasyQueue 서비스만 지원)<br>
 ![C_userAccessKey_2_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_ko.png)
+{% else %}
+3) **User Access Key 생성** 모달 창에서 **토큰 유효 시간**을 설정한 뒤 **생성**을 클릭합니다.<br>
+![C_userAccessKey_2_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_ko.png)
+{% endif %}
 
 4) **User Access Key 발급 완료** 모달 창에서 **Secret Access Key**를 복사한 뒤 **확인**을 클릭합니다.<br>
 ![C_userAccessKey_3_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_3_ko.png)
@@ -64,7 +75,7 @@ User Access Key 토큰을 발급하려면 먼저 User Access Key ID와 Secret Ac
 인증 서버의 도메인은 다음과 같습니다.
 
 ```
-https://oauth.api.nhncloudservice.com/
+https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/
 ```
 
 
@@ -72,8 +83,10 @@ https://oauth.api.nhncloudservice.com/
 ## User Access Key 토큰 발급 요청하기 { #request-user-access-key-token-issuance }
 > `POST /oauth2/token/create`
 
+{% if "gov" not in build_flags %}
 <a id="request-opaque-token-issuance"></a>
 ### Opaque 타입 토큰 발급 요청하기 { #request-opaque-token-issuance }
+{% endif %}
 * 요청
 
 | 구분 | 이름 | 타입 | 필수 | 값                                     | 설명                                                                   |
@@ -98,6 +111,7 @@ https://oauth.api.nhncloudservice.com/
 }
 ```
 
+{% if "gov" not in build_flags %}
 <a id="request-jwt-token-issuance"></a>
 ### JWT 타입 토큰 발급 요청하기 { #request-jwt-token-issuance }
 
@@ -128,6 +142,7 @@ https://oauth.api.nhncloudservice.com/
     "expires_in":3600
 }
 ```
+{% endif %}
 
 <a id="case-specific-request-examples"></a>
 ### 케이스별 요청 예시 { #case-specific-request-examples }
@@ -138,15 +153,18 @@ https://oauth.api.nhncloudservice.com/
 !!! tip "참고"
     아래 Authorization에 있는 `dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5`는 `UserAccessKeyID:SecretAccessKey`를 base64 인코딩한 결과입니다.
 
+{% if "gov" not in build_flags %}
 * Opaque 타입 토큰
+{% endif %}
 
 ```sh
-curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/create' \
+curl --request POST 'https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/oauth2/token/create' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Authorization: Basic dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5' \
   -d 'grant_type=client_credentials'
 ```
 
+{% if "gov" not in build_flags %}
 * JWT 타입 토큰
 
 ```sh
@@ -156,18 +174,22 @@ curl -X POST "https://oauth.api.nhncloudservice.com/oauth2/token/create" \
   -d "grant_type=client_credentials" \
   -d "scope=appKey:r9Zd7vDEmWMfQb00"
 ```
+{% endif %}
 
 <a id="case-specific-request-examples-curl-when-using--u-option"></a>
 #### curl: -u 옵션을 사용하는 경우
 
+{% if "gov" not in build_flags %}
 * Opaque 타입 토큰
+{% endif %}
 
 ```sh
-curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/create' \
+curl --request POST 'https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/oauth2/token/create' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -u 'UserAccessKeyID:SecretAccessKey' \
   -d 'grant_type=client_credentials'
 ```
+{% if "gov" not in build_flags %}
 * JWT 타입 토큰
 
 ```sh
@@ -177,20 +199,24 @@ curl -X POST "https://oauth.api.nhncloudservice.com/oauth2/token/create" \
   -d "grant_type=client_credentials" \
   -d "scope=appKey:r9Zd7vDEmWMfQb00"
 ```
+{% endif %}
 
 <a id="case-specific-request-examples-feignclient"></a>
 #### FeignClient
 
+{% if "gov" not in build_flags %}
 * Opaque 타입 토큰
+{% endif %}
 
 ```java
-@FeignClient(name = "auth", url = "https://oauth.api.nhncloudservice.com")
+@FeignClient(name = "auth", url = "https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com")
 public interface AuthClient {
     @PostMapping(value = "/oauth2/token/create", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     TokenResponse createToken(@RequestHeader("Authorization") String authorization, @RequestParam("grant_type") String grantType);
 }
 ```
 
+{% if "gov" not in build_flags %}
 * JWT 타입 토큰
 
 ```java
@@ -202,11 +228,14 @@ public interface AuthClient {
                               @RequestParam("scope") String scope);
 }
 ```
+{% endif %}
 
 <a id="case-specific-request-examples-resttemplate"></a>
 #### RestTemplate
 
+{% if "gov" not in build_flags %}
 * Opaque 토큰 발급
+{% endif %}
 
 ```java
 @Autowired
@@ -222,9 +251,10 @@ public TokenResponse createToken(String userAccessKeyID, String secretAccessKey)
 
     HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
-    return restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
+    return restTemplate.postForObject("https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
+{% if "gov" not in build_flags %}
 * JWT 토큰 발급
 
 ```java
@@ -244,6 +274,7 @@ public TokenResponse createJwtToken(String userAccessKeyID, String secretAccessK
     return restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/create", request, TokenResponse.class);
 }
 ```
+{% endif %}
 
 <a id="case-specific-request-examples-when-using-openfeign-on-spring-cloud-to-automatically-issue-and-renew-tokens"></a>
 #### Spring Cloud의 OpenFeign을 사용하여 자동으로 토큰을 발급 및 갱신하는 경우
@@ -298,7 +329,7 @@ public class Oauth2Config {
                                                                  .clientId("UserAccessKeyID")
                                                                  .clientSecret("SecretAccessKey")
                                                                  .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                                                                 .tokenUri("https://oauth.api.nhncloudservice.com/oauth2/token/create")
+                                                                 .tokenUri("https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/oauth2/token/create")
                                                                  .build();
   
     return new InMemoryClientRegistrationRepository(clientRegistration);
@@ -326,8 +357,10 @@ public class Oauth2Config {
 ## User Access Key 토큰 만료 요청하기 { #request-user-access-key-token-revocation }
 > `POST /oauth2/token/revoke`
 
+{% if "gov" not in build_flags %}
 !!! tip "알아두기"
     JWT 토큰은 토큰 만료를 지원하지 않습니다.
+{% endif %}
 
 * 요청
 
@@ -346,7 +379,7 @@ public class Oauth2Config {
 <a id="request-user-access-key-token-revocation-case-specific-request-examples-curl-when-including-authentication-information-in-the-header"></a>
 #### curl: Header에 인증 정보를 포함하는 경우
 ```sh
-curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' \
+curl --request POST 'https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/oauth2/token/revoke' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Authorization: Basic dXNlckFjY2Vzc0tleTp1c2VyU2VjcmV0S2V5' \
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
@@ -355,7 +388,7 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' 
 <a id="request-user-access-key-token-revocation-case-specific-request-examples-curl-when-using-the--u-option"></a>
 #### curl: -u 옵션을 사용하는 경우
 ```sh
-curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' \
+curl --request POST 'https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/oauth2/token/revoke' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -u 'UserAccessKeyID:SecretAccessKey' \
   -d 'token=luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI'
@@ -364,7 +397,7 @@ curl --request POST 'https://oauth.api.nhncloudservice.com/oauth2/token/revoke' 
 <a id="request-user-access-key-token-revocation-case-specific-request-examples-feignclient"></a>
 #### FeignClient
 ```java
-@FeignClient(name = "auth", url = "https://oauth.api.nhncloudservice.com")
+@FeignClient(name = "auth", url = "https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com")
 public interface AuthClient {
     @PostMapping(value = "/oauth2/token/revoke", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     void revokeToken(@RequestHeader("Authorization") String authorization, @RequestParam("token") String token);
@@ -387,7 +420,7 @@ public void revokeToken(String userAccessKeyID, String secretAccessKey, String t
 
     HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
-    restTemplate.postForObject("https://oauth.api.nhncloudservice.com/oauth2/token/revoke", request, Void.class);
+    restTemplate.postForObject("https://oauth.api.{% if "gov" in build_flags %}gov-{% endif %}nhncloudservice.com/oauth2/token/revoke", request, Void.class);
 }
 ```
 
@@ -403,6 +436,7 @@ X-NHN-Authorization: Bearer {Access Token}
 
 사용자가  HTTP 헤더에 키를 담아 서버에 요청을 보내면 서버가 토큰의 유효성을 확인한 뒤 요청을 승인하거나 거부합니다.
 
+{% if "gov" not in build_flags %}
     
 <a id="get-jwt-public-key"></a>
 ## JWT Public Key 조회 { #get-jwt-public-key }
@@ -474,8 +508,9 @@ public void verifyToken(String token) throws Exception {
     boolean isValid = signedJWT.verify(verifier);
 }
 ```
+{% endif %}
 
 !!! tip "알아두기"
-    User Access Key 토큰은 오류 발생 시 [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)와 동일한 오류 코드를 반환합니다. 토큰 요청 API 호출, 토큰 만료 요청 API 호출, 토큰 사용 등의 상황에 반환될 수 있는 오류 코드는 [프레임워크 API 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281)에서 확인할 수 있습니다.
+    User Access Key 토큰은 오류 발생 시 [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)와 동일한 오류 코드를 반환합니다. 토큰 요청 API 호출, 토큰 만료 요청 API 호출, 토큰 사용 등의 상황에 반환될 수 있는 오류 코드는 [프레임워크 API 가이드](https://docs.{% if "gov" in build_flags %}gov-{% endif %}nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281)에서 확인할 수 있습니다.
 
     
