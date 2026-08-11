@@ -1,6 +1,14 @@
 <a id="nhn-cloud-public-api-release-notes"></a>
 ## NHN Cloud > Public API > 릴리스 노트 { #nhn-cloud-public-api-release-notes }
 
+<a id="september-29-2026"></a>
+### 2026. 09. 29. { #september-29-2026 }
+<a id="september-29-2026-added-features"></a>
+#### 신규 기능 추가
+
+- 프레임워크 API
+    - 청구서 조회, 조직 사용량 조회, 프로젝트 사용량 조회 API 추가
+
 <a id="march-24-2026"></a>
 ### 2026. 03. 24. { #march-24-2026 }
 <a id="march-24-2026-added-features"></a>

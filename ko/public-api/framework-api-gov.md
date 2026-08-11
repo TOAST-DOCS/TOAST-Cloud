@@ -119,6 +119,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | 조직 IP ACL 목록 조회 |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-서비스-가격-조회) | 종량제에 등록된 서비스 가격 조회 |
 | GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-서비스-목록-조회) | 종량제에 등록된 서비스 목록 조회 |
+| GET |[/v1/billing/members/payments/{month}/statements](#청구서-조회) | 청구서 조회 |
+| GET |[/v1/billing/members/payments/{month}/organizations/{org-id}/usage](#조직-사용량-조회) | 조직 사용량 조회 |
+| GET |[/v1/billing/members/payments/{month}/projects/{project-id}/usage](#프로젝트-사용량-조회) | 프로젝트 사용량 조회 |
 | GET | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-통합-Appkey-조회) | 프로젝트 통합 Appkey 조회 |
 | GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-목록-조회) | User Access Key ID 목록 조회 |
 | POST | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-통합-Appkey-등록) | 프로젝트 통합 Appkey 등록 |
@@ -3415,6 +3418,471 @@ IP ACL 설정을 조회하는 API입니다.
 |   unitName | String| Yes | 청구서에 노출할 이름  |
 |   usageAggregationUnitCode | String| No | 사용량 집계 단위<br>RESOURCE_ID, COUNTER_NAME |
 
+
+<a id="청구서-조회"></a>
+#### 청구서 조회
+
+> GET "/v1/billing/members/payments/{month}/statements"
+
+월별 청구서 목록을 조회하는 API입니다.
+
+##### 필요 권한
+`Member.PaymentStatement.Get`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+| Path | month | String | Yes | 결제월(yyyy-MM) |
+| Header | x-nhn-resource-owner-uuid | String | No | 청구서 소유자의 UUID<br>미입력 시 로그인한 사용자의 UUID로 조회 |
+| Header | lang | String | No | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US, zh_CN) |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paymentStatements": [ {
+    "uuid": "uuid",
+    "paymentInfo": "536148******1588",
+    "autoPaymentTypeCode": "CREDIT_CARD",
+    "isAutoPayment": true,
+    "statements": [ {
+      "paymentGroupId": "paymentGroupId",
+      "paymentStatusCode": "REGISTERED",
+      "month": "2000-01-23T00:00:00.000+00:00",
+      "country": "KR",
+      "charge": 10000,
+      "totalDiscount": 1000,
+      "totalExtra": 0,
+      "totalCredit": 0,
+      "freeCredit": 0,
+      "paidCredit": 0,
+      "taxAmount": 900,
+      "supplyAmount": 9000,
+      "lateFee": 0,
+      "totalAmount": 9900,
+      "prePaidTotalAmount": 0,
+      "receiptStatusCode": "NONE",
+      "cutoff": 0,
+      "refundAccountRegisterStatusCode": "DENY",
+      "details": [ ]
+    } ]
+  } ]
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [공통 응답](#응답)| Yes   |
+|   paymentStatements | List&lt;MemberPaymentStatement>| Yes | 청구서 목록  |
+
+###### MemberPaymentStatement
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   uuid | String| Yes | 회원 UUID  |
+|   paymentInfo | String| Yes | 결제 수단 정보  |
+|   autoPaymentTypeCode | String| Yes | 결제 수단 타입<br><br>- PAYCO_CREDIT_CARD: 페이코 신용카드<br>- CREDIT_CARD: 신용카드<br>- INTER_CREDIT_CARD: 해외 신용카드<br>- UNION_PAY: 유니온페이<br>- JAPAN_BILLING: 일본 빌링<br>- ACCOUNT_TRANSFER: 계좌 이체<br>- CREDIT_ALL: 일반 크레딧<br>- CREDIT_LIMIT: 이벤트 크레딧<br>- ESM: 내부 비용<br>- ONETIME_PAYMENT: 일회성 결제<br>- TAX_BILL: 세금 계산서 발행<br>- CONTRACT_BILL: 세금 계산서 발행(별도 계약으로 청구 금액 조정 발생)<br>- NONE: 없음  |
+|   isAutoPayment | Boolean| Yes | 자동 결제 수단 여부  |
+|   statements | List&lt;PaymentStatement>| Yes | 빌링 그룹별 결제 내역 목록  |
+
+###### PaymentStatement
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   paymentGroupId | String| Yes | 결제 그룹 ID  |
+|   paymentStatusCode | String| Yes | 결제 상태<br><br>- REGISTERED: 등록<br>- READY: 결제 대기<br>- PAID: 결제 완료<br>- ERROR: 운영자 확인 필요 상태  |
+|   month | Date| Yes | 이용월  |
+|   country | String| Yes | 국가 코드  |
+|   charge | Long| Yes | 사용 금액  |
+|   totalDiscount | Long| Yes | 할인금액  |
+|   totalExtra | Long| Yes | 할증 금액  |
+|   totalCredit | Long| Yes | 전체 크레딧 사용 금액  |
+|   freeCredit | Long| Yes | 무료 크레딧 사용 금액  |
+|   paidCredit | Long| Yes | 유료 크레딧 사용 금액  |
+|   freeCreditAll | Long| Yes | 무료전체형 크레딧 사용 금액  |
+|   freeCreditLimit | Long| Yes | 무료제한형 크레딧 사용 금액  |
+|   paidCreditAll | Long| Yes | 유료전체형 크레딧 사용 금액  |
+|   paidCreditLimit | Long| Yes | 유료제한형 크레딧 사용 금액  |
+|   taxAmount | Long| Yes | 부가세액  |
+|   supplyAmount | Long| Yes | 공급가액  |
+|   lateFee | Long| Yes | 연체금액  |
+|   totalAmount | Long| Yes | 최종금액  |
+|   prePaidTotalAmount | Long| Yes | 선결제 이용 금액  |
+|   realSupplyAmount | Long| Yes | 실 공급가액  |
+|   realTaxAmount | Long| Yes | 실 결제된 부가세  |
+|   receiptStatusCode | String| Yes | 매출 전표 상태 코드<br><br>- NONE: 아직 회계팀으로 매출 보고가 되지 않아, 매출 전표를 볼 수 없는 상태<br>- EXIST: 최종 금액 조정이 끝난 후, 회계팀으로 매출 보고가 되어, 매출 전표를 볼 수 있는 상태  |
+|   cutoff | Long| Yes | cutoff  |
+|   refundAccountRegisterStatusCode | String| No | 환불 계좌 등록 여부 상태<br><br>- ALLOW: 환불 계좌 등록 Open 상태<br>- DENY: Default, 환불 계좌 등록 Close 상태  |
+|   details | List&lt;PaymentStatementDetail>| Yes | 빌링 그룹별 상세 내역 목록  |
+
+###### PaymentStatementDetail
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   billingGroupId | String| Yes | 빌링 그룹 ID  |
+|   billingGroupName | String| Yes | 빌링 그룹 이름  |
+|   charge | Long| Yes | 이용 금액  |
+|   totalDiscount | Long| Yes | 할인 금액  |
+|   totalExtra | Long| Yes | 할증 금액  |
+|   totalAmount | Long| Yes | 최종 금액  |
+|   contractDiscount | Long| Yes | 약정 할인 금액  |
+|   contractExtra | Long| Yes | 약정 할증 금액  |
+|   ocpDiscount | Long| Yes | Optimized Cost Plans(OCPs) 할인 금액  |
+|   prePaidTotalAmount | Long| Yes | 선결제 이용 금액  |
+|   totalCredit | Long| Yes | 크레딧 총 사용 금액  |
+|   billingGroupDiscount | [BillingGroupAdjustment](#billing-group-adjustment-gov)| Yes | 빌링 그룹 할인 상세 내역  |
+|   billingGroupExtra | [BillingGroupAdjustment](#billing-group-adjustment-gov)| Yes | 빌링 그룹 할증 상세 내역  |
+|   projectDiscount | [Adjustment](#adjustment-gov)| Yes | 프로젝트별 할인 상세 내역  |
+|   projectExtra | [Adjustment](#adjustment-gov)| Yes | 프로젝트별 할증 상세 내역  |
+|   orgList | List&lt;Org>| Yes | 조직 목록  |
+|   usageGroups | List&lt;[UsageGroup](#usage-group-gov)>| Yes | 사용량 그룹 목록  |
+|   creditUsages | List&lt;[CreditUsage](#credit-usage-gov)>| Yes | 크레딧 사용 금액  |
+
+###### Org
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   orgId | String| Yes | 조직 ID  |
+|   orgName | String| Yes | 조직 이름  |
+|   totalAmount | Long| Yes | 조직 최종 금액  |
+|   prePaidTotalAmount | Long| Yes | 선결제 이용 금액  |
+
+<a id="조직-사용량-조회"></a>
+#### 조직 사용량 조회
+
+> GET "/v1/billing/members/payments/{month}/organizations/{org-id}/usage"
+
+월별 조직 사용량 및 금액 정보를 조회하는 API입니다.
+
+##### 필요 권한
+`Member.PaymentStatement.Get`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+| Path | month | String | Yes | 결제월(yyyy-MM) |
+| Path | org-id | String | Yes | 조직 ID |
+| Header | x-nhn-resource-owner-uuid | String | No | 조직 접근 권한을 확인할 소유자의 UUID<br>미입력 시 로그인한 사용자의 UUID로 확인 |
+| Header | lang | String | No | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US, zh_CN) |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "org": {
+    "orgId": "eNWZ3jZq2FsMSHaQ",
+    "orgName": "orgName",
+    "country": "KR",
+    "usagePrice": 10000,
+    "contractDiscountPrice": 0,
+    "ocpDiscountPrice": 0,
+    "contractExtraPrice": 0,
+    "totalDiscount": 1000,
+    "totalExtra": 0,
+    "totalAmount": 9000,
+    "totalCredit": 0,
+    "prePaidTotalAmount": 0,
+    "creditUsages": [ ],
+    "projects": [ {
+      "projectId": "projectId",
+      "projectName": "projectName",
+      "totalAmount": 9000,
+      "usagePrice": 10000,
+      "contractDiscountPrice": 0,
+      "ocpDiscountPrice": 0,
+      "contractExtraPrice": 0,
+      "prePaidTotalAmount": 0
+    } ],
+    "usageGroups": [ ],
+    "projectDiscount": {
+      "totalAdjustment": 1000,
+      "details": [ ]
+    },
+    "projectExtra": {
+      "totalAdjustment": 0,
+      "details": [ ]
+    }
+  }
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [공통 응답](#응답)| Yes   |
+|   org | Organization| No | 조직 사용량 정보  |
+
+###### Organization
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   orgId | String| Yes | 조직 ID  |
+|   orgName | String| Yes | 조직 이름  |
+|   country | String| Yes | 국가 코드  |
+|   usagePrice | Long| Yes | 이용 금액  |
+|   contractDiscountPrice | Long| Yes | 약정으로 할인된 금액  |
+|   ocpDiscountPrice | Long| Yes | Optimized Cost Plans(OCPs) 할인 금액  |
+|   contractExtraPrice | Long| Yes | 약정으로 할증된 금액  |
+|   totalDiscount | Long| Yes | 총 할인 금액  |
+|   totalExtra | Long| Yes | 총 할증 금액  |
+|   totalAmount | Long| Yes | 조직 최종 금액  |
+|   totalCredit | Long| Yes | 크레딧 최종 금액  |
+|   prePaidTotalAmount | Long| Yes | 선결제 이용 금액  |
+|   creditUsages | List&lt;[CreditUsage](#credit-usage-gov)>| Yes | 크레딧 사용 금액  |
+|   projects | List&lt;Project>| Yes | 프로젝트 목록  |
+|   usageGroups | List&lt;[UsageGroup](#usage-group-gov)>| Yes | 사용량 그룹 목록  |
+|   projectDiscount | [Adjustment](#adjustment-gov)| Yes | 프로젝트별 할인 상세 내역 목록  |
+|   projectExtra | [Adjustment](#adjustment-gov)| Yes | 프로젝트별 할증 상세 내역 목록  |
+
+###### Project
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   projectId | String| Yes | 프로젝트 ID  |
+|   projectName | String| Yes | 프로젝트 이름  |
+|   totalAmount | Long| Yes | 프로젝트 최종 금액  |
+|   usagePrice | Long| Yes | 프로젝트 이용 금액 합계  |
+|   contractDiscountPrice | Long| Yes | 약정으로 할인된 금액  |
+|   ocpDiscountPrice | Long| Yes | Optimized Cost Plans(OCPs) 할인 금액  |
+|   contractExtraPrice | Long| Yes | 약정으로 할증된 금액  |
+|   prePaidTotalAmount | Long| Yes | 선결제 이용 금액  |
+
+<a id="프로젝트-사용량-조회"></a>
+#### 프로젝트 사용량 조회
+
+> GET "/v1/billing/members/payments/{month}/projects/{project-id}/usage"
+
+월별 프로젝트 사용량 및 금액 정보를 조회하는 API입니다.
+
+##### 필요 권한
+`Member.PaymentStatement.Get`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+| Path | month | String | Yes | 결제월(yyyy-MM) |
+| Path | project-id | String | Yes | 프로젝트 ID |
+| Header | x-nhn-resource-owner-uuid | String | No | 프로젝트 접근 권한을 확인할 소유자의 UUID<br>미입력 시 로그인한 사용자의 UUID로 확인 |
+| Header | lang | String | No | 언어 설정(기본값: ko_KR, 설정 가능한 값: ko_KR, ja_JP, en_US, zh_CN) |
+| Query | usageSchemaTypeCode | String | No | 사용량 포함 여부<br>사용량 조회 방식을 기존 방식으로 할지, 신규 그룹핑된 방식으로 할지 결정<br>(기본값: NO_GROUP)<br><br>- NO_GROUP: 사용량이 그룹핑되지 않고 그대로 노출되는 방식 <br>- GROUP_BY_PARENT_RESOURCE: 부모 리소스별로 그룹핑은 되지만 구체적인 사용량은 제공하지 않는 방식. 반환되는 totalItems를 통해 부모 리소스가 몇 개 존재하는지 확인 가능<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES: 부모 리소스별로 그룹핑 후 어떤 부모 리소스로 그룹핑되었는지와 그 세부 사용량까지 제공되는 방식 |
+| Query | categoryMain | String | No | 메인 카테고리<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
+| Query | regionTypeCode | String | No | 리전 타입 코드(최대 20자)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
+| Query | page | Integer | No | 선택한 페이지(기본값: 1, 최소: 1)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
+| Query | limit | Integer | No | 페이지에 노출될 항목 개수, 미기입 시 전체 조회(기본값: 0, 최소: 0)<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
+| Query | stationId | String | No | 스테이션 ID<br>usageSchemaTypeCode가 NO_GROUP인 경우엔 사용 불가능 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "project": {
+    "projectId": "projectId",
+    "projectName": "projectName",
+    "country": "KR",
+    "usagePrice": 10000,
+    "contractDiscountPrice": 0,
+    "ocpDiscountPrice": 0,
+    "contractExtraPrice": 0,
+    "totalAmount": 9000,
+    "totalDiscount": 1000,
+    "totalExtra": 0,
+    "totalCredit": 0,
+    "prePaidTotalAmount": 0,
+    "creditUsages": [ ],
+    "projectDiscount": {
+      "totalAdjustment": 1000,
+      "details": [ ]
+    },
+    "projectExtra": {
+      "totalAdjustment": 0,
+      "details": [ ]
+    },
+    "usageGroups": [ {
+      "categoryMain": "categoryMain",
+      "regionTypeCode": "KR1",
+      "stationId": "stationId",
+      "stationName": "stationName",
+      "needType": false,
+      "usagePrice": 10000,
+      "totalPrice": 9000,
+      "totalDiscount": 1000,
+      "prePaidTotalAmount": 0,
+      "totalItems": 1,
+      "usages": [ {
+        "projectId": "projectId",
+        "projectName": "projectName",
+        "resourceId": "resourceId",
+        "resourceName": "resourceName",
+        "counterName": "c2.small",
+        "categoryMain": "categoryMain",
+        "categorySub": "categorySub",
+        "regionTypeCode": "KR1",
+        "displayNameKo": "displayNameKo",
+        "usage": 10.0,
+        "unit": 1,
+        "unitPrice": 100,
+        "unitName": "hours",
+        "price": 1000,
+        "useFixPrice": false,
+        "displayOrder": 0,
+        "discountPrice": 0,
+        "discountTypeCode": "BASIC",
+        "prePaidAmount": 0
+      } ],
+      "usageResourceGroups": [ ]
+    } ]
+  }
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [공통 응답](#응답)| Yes   |
+|   project | ProjectUsage| Yes | 프로젝트 사용량 정보  |
+
+###### ProjectUsage
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   projectId | String| Yes | 프로젝트 ID  |
+|   projectName | String| Yes | 프로젝트 이름  |
+|   country | String| Yes | 국가 코드  |
+|   usagePrice | Long| Yes | 이용 금액  |
+|   contractDiscountPrice | Long| Yes | 약정으로 할인된 금액  |
+|   ocpDiscountPrice | Long| Yes | Optimized Cost Plans(OCPs) 할인 금액  |
+|   contractExtraPrice | Long| Yes | 약정으로 할증된 금액  |
+|   totalAmount | Long| Yes | 프로젝트 최종 금액  |
+|   totalDiscount | Long| Yes | 총 할인 금액  |
+|   totalExtra | Long| Yes | 총 할증 금액  |
+|   totalCredit | Long| Yes | 크레딧 최종 금액  |
+|   prePaidTotalAmount | Long| Yes | 선결제 이용 금액  |
+|   creditUsages | List&lt;[CreditUsage](#credit-usage-gov)>| Yes | 크레딧 사용 금액  |
+|   projectDiscount | [Adjustment](#adjustment-gov)| Yes | 프로젝트별 할인 상세 내역  |
+|   projectExtra | [Adjustment](#adjustment-gov)| Yes | 프로젝트별 할증 상세 내역  |
+|   usageGroups | List&lt;[UsageGroup](#usage-group-gov)>| Yes | 사용량 그룹 목록  |
+
+<a id="usage-group-gov"></a>
+###### UsageGroup
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   categoryMain | String| Yes | 메인 카테고리  |
+|   regionTypeCode | String| Yes | 리전  |
+|   stationId | String| Yes | 스테이션 ID  |
+|   stationName | String| Yes | 스테이션 이름  |
+|   needType | Boolean| Yes | 구분 칼럼 노출 여부  |
+|   usagePrice | Long| Yes | 이용 금액 합계  |
+|   totalPrice | Long| Yes | 약정 할인 적용된 이용 금액 합계  |
+|   totalDiscount | Long| Yes | 총 할인 금액  |
+|   prePaidTotalAmount | Long| Yes | 선결제 이용 금액  |
+|   totalItems | Integer| Yes | UsageGroup별 Usage 총 개수  |
+|   usages | List&lt;Usage>| Yes | 상세 사용량 목록  |
+|   usageResourceGroups | List&lt;UsageResourceGroup>| Yes | 그룹핑된 사용량 목록  |
+
+###### Usage
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   projectId | String| Yes | 프로젝트 ID  |
+|   projectName | String| Yes | 프로젝트 이름  |
+|   resourceId | String| Yes | 리소스 ID  |
+|   parentResourceId | String| Yes | 부모 리소스 ID  |
+|   resourceName | String| Yes | 리소스 이름  |
+|   parentResourceName | String| Yes | 부모 리소스 이름  |
+|   counterName | String| Yes | 카운터 이름  |
+|   categoryMain | String| Yes | 메인 카테고리  |
+|   categorySub | String| Yes | 서브 카테고리  |
+|   productUiId | String| No | 홈페이지 서비스 UI ID  |
+|   regionTypeCode | String| Yes | 리전  |
+|   displayNameKo | String| Yes | 과금 단위 노출 이름(ko)  |
+|   displayNameEn | String| Yes | 과금 단위 노출 이름(en)  |
+|   displayNameJa | String| Yes | 과금 단위 노출 이름(ja)  |
+|   displayNameZh | String| Yes | 과금 단위 노출 이름(zh)  |
+|   usage | Double| Yes | 사용량  |
+|   unit | Long| Yes | 과금 단위  |
+|   unitPrice | BigDecimal| Yes | 단위당 가격  |
+|   unitName | String| Yes | 단위명  |
+|   price | Long| Yes | 이용 금액  |
+|   useFixPrice | Boolean| Yes | 고정 금액 여부  |
+|   displayOrder | Long| Yes | 표시 순서  |
+|   contractId | String| No | 약정 ID  |
+|   contractUnitPrice | BigDecimal| No | 약정 단가  |
+|   contractPrice | Long| No | 약정으로 계산된 이용 금액  |
+|   discountPrice | Long| No | 할인 금액  |
+|   discountTypeCode | String| No | 할인 타입 코드<br>BASIC, CONTRACT, OCP  |
+|   prePaidAmount | Long| No | 선결제 이용 금액  |
+|   costPlanOrderId | String| No | Optimized Cost Plans(OCPs) 주문 ID  |
+
+<a id="credit-usage-gov"></a>
+###### CreditUsage
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   balanceTypeCode | String| No | 캠페인 유형(돈통 유형)  |
+|   balanceTypeName | String| No | 캠페인 유형 이름(돈통 유형 이름)  |
+|   i18nBalanceTypeNameMap | Map&lt;String, String>| No | 캠페인 유형 이름 다국어 코드  |
+|   usageAmount | Long| No | 크레딧 사용 금액  |
+
+<a id="adjustment-gov"></a>
+###### Adjustment
+
+할인/할증 상세 내역을 나타냅니다.
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   totalAdjustment | Long| Yes | 할인/할증 금액 합계  |
+|   details | List&lt;AdjustmentDetail>| Yes | 상세 내역  |
+
+###### AdjustmentDetail
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   projectId | String| Yes | 프로젝트 ID  |
+|   projectName | String| Yes | 프로젝트 이름  |
+|   adjustmentTypeCode | String| Yes | 할인/할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사<br>- OCP: OCP 할인  |
+|   adjustment | Long| Yes | 할인/할증 금액  |
+|   description | String| Yes | 할인/할증 내역  |
+
+<a id="billing-group-adjustment-gov"></a>
+###### BillingGroupAdjustment
+
+빌링 그룹 단위 할인/할증 상세 내역을 나타냅니다.
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   totalAdjustment | Long| Yes | 할인/할증 금액 합계  |
+|   details | List&lt;BillingGroupAdjustmentDetail>| Yes | 상세 내역  |
+
+###### BillingGroupAdjustmentDetail
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   adjustmentTypeCode | String| Yes | 할인/할증 타입<br>- CONTRACT_EXTRA: 약정 할증<br>- CONTRACT_PENALTY: 약정 위약금<br>- CONTRACT_DISCOUNT: 약정 할인<br>- CONTRACT_PAYBACK: 파트너 페이백<br>- STATIC_EXTRA: 고정 금액 할증<br>- PERCENT_DISCOUNT: 퍼센트 할인<br>- COUPON: 쿠폰<br>- STATIC_DISCOUNT: 고정 금액 할인<br>- CUTOFF: 500원 미만 절사<br>- OCP: OCP 할인  |
+|   adjustment | Long| Yes | 할인/할증 금액  |
+|   description | String| Yes | 할인/할증 내역  |
 
 <a id="프로젝트-통합-Appkey-조회"></a>
 #### 프로젝트 통합 Appkey 조회
