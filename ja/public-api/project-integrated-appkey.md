@@ -1,9 +1,12 @@
+<!-- pre-align:aligned sig=4e3dc80a7441 -->
+
 # プロジェクト統合Appkey
 **NHN Cloud > Public API使用ガイド > API認証方式 > プロジェクト統合Appkey**
 
 プロジェクト統合Appkeyは、NHN Cloudで1つのプロジェクト内の複数のサービスに対して共通して使用できる認証キーです。サービスごとにAppkeyを個別に管理する必要なく、1つのプロジェクト統合Appkeyで該当プロジェクトで使用中の全てのサービスのAPIを効率的に呼び出すことができます。そのため、管理対象のキー数を減らし、ユーザーが直接Appkeyを作成または削除できるため、キー管理が柔軟かつ効率的です。
 
-## プロジェクト統合Appkeyの作成
+<a id="create-a-project-integrated-appkey"></a>
+## プロジェクト統合Appkeyの作成 { #create-a-project-integrated-appkey }
 NHN Cloudコンソールの各プロジェクト画面でプロジェクト統合Appkeyを作成及び管理できます。
 
 1) NHN Cloudコンソールでプロジェクトを選択した後、**プロジェクト管理** タブをクリックします。
@@ -24,7 +27,8 @@ NHN Cloudコンソールの各プロジェクト画面でプロジェクト統�
     * プロジェクト統合Appkeyはプロジェクトあたり最大3個まで作成できます。
 
 
-## APIの呼び出し
+<a id="making-api-calls"></a>
+## APIの呼び出し { #making-api-calls }
 プロジェクト統合AppkeyはHTTPリクエストヘッダに含めて送信します。API呼び出し時、以下の例のようにリクエストヘッダにプロジェクト統合Appkeyを設定して呼び出してください。
 
 * HTTPヘッダ形式の例

@@ -1,11 +1,15 @@
+<!-- pre-align:aligned sig=07d03063e3a6 -->
+
 # IaaS Token
 
 **NHN Cloud > Public API User Guide > API Authentication Method > IaaS Token**
 
 The IaaS token is an authentication token used for NHN Cloud's OpenStack-based infrastructure services (IaaS). Issued through the Keystone authentication server, these tokens are used to call APIs for controlling infrastructure resources such as Compute, Block Storage, and Network.
 
-## Prerequisites
-### Verify API endpoints
+<a id="prerequisites"></a>
+## Prerequisites { #prerequisites }
+<a id="verify-api-endpoints"></a>
+### Verify API endpoints { #verify-api-endpoints }
 
 The NHN Cloud basic infrastructure service APIs have separate endpoints for each type and region. However, the Identity API uses the same endpoint in all regions.
 
@@ -20,11 +24,13 @@ The NHN Cloud basic infrastructure service APIs have separate endpoints for each
 | object-store | Korea (Pangyo) region<br>Korea (Pyeongchon) region<br>Korea(Gwangju) region<br>Japan (Tokyo) region | https://kr1-api-object-storage.nhncloudservice.com<br>https://kr2-api-object-storage.nhncloudservice.com<br>https://kr3-api-object-storage.nhncloudservice.com<br>https://jp1-api-object-storage.nhncloudservice.com |
 | key-manager  | Korea (Pangyo) region<br>Korea (Pyeongchon) region<br>Korea(Gwangju) region<br>Japan (Tokyo) region | https://kr1-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr2-api-key-manager-infrastructure.nhncloudservice.com<br>https://kr3-api-key-manager-infrastructure.nhncloudservice.com<br>https://jp1-api-key-manager-infrastructure.nhncloudservice.com |
 
-### Verify Tenant ID
+<a id="verify-tenant-id"></a>
+### Verify Tenant ID { #verify-tenant-id }
 
 The tenant ID that is included in the API request is found in the **Set API Endpoint** on the **Compute > Instance** page.
 
-### Set the API Password
+<a id="set-the-api-password"></a>
+### Set the API Password { #set-the-api-password }
 
 To use NHN Cloud infrastructure service APIs, you must set an API password separately from your NHN Cloud account password. API passwords are created per account; once set, a password can be used across all projects to which the user belongs.
 
@@ -42,7 +48,8 @@ To use NHN Cloud infrastructure service APIs, you must set an API password separ
     * Even if you change your API password, the previously issued authentication token will no longer be available and will need to be reissued.
 
 
-## Request IaaS Token Issuance
+<a id="request-iaas-token-issuance"></a>
+## Request IaaS Token Issuance { #request-iaas-token-issuance }
 
 To issue tokens, use the `identity`-type endpoint. The `identity` service endpoint is `https://api-identity-infrastructure.nhncloudservice.com`, which remains the same regardless of the region.<br>
 This process issues the tokens required to call APIs. NHN Cloud uses project-scoped tokens.
@@ -58,7 +65,8 @@ POST /v2.0/tokens
 ```
 
 
-### Request
+<a id="request"></a>
+### Request { #request }
 
 | Name                | Category | Type  | Required | Description                                       |
 | ------------------- | ---- | ------ | ---- | ------------------------------------------ |
@@ -87,7 +95,8 @@ POST /v2.0/tokens
 </details>
 
 
-### Response
+<a id="response"></a>
+### Response { #response }
 
 | Name | Type | Property | Description |
 |---|---|---|---|
@@ -236,7 +245,8 @@ POST /v2.0/tokens
 </details>
 
 
-## Use IaaS tokens
+<a id="use-iaas-tokens"></a>
+## Use IaaS tokens { #use-iaas-tokens }
 
 IaaS tokens are included in the HTTP request header. When calling an API, set the IaaS token in the request header as shown in the example below.
 

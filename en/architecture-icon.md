@@ -1,8 +1,11 @@
+<!-- pre-align:aligned sig=88b3d1b8336c -->
 
-## NHN Cloud > Architecture Icon
+<a id="nhn-cloud-architecture-icon"></a>
+## NHN Cloud > Architecture Icon { #nhn-cloud-architecture-icon }
 NHN Cloud provides architecture icons that customers can use to create architecture diagrams.
 
-### Download Architecture Icon
+<a id="download-architecture-icon"></a>
+### Download Architecture Icon { #download-architecture-icon }
 
 - Please download and use the PowerPoint file below.
 

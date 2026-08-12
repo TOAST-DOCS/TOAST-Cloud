@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=3b7c984c2dfe -->
+
 # S3 API Credentials
 
 **NHN Cloud > Public API User Guide > Authentication Methods > S3 API Credentials**
@@ -15,13 +17,16 @@ S3 API credentials are AWS EC2-format authentication keys used to call the servi
     Up to 3 S3 API credentials can be issued per project for each user.
 
 
-## Issue S3 API Credentials
+<a id="issue-s3-api-credentials"></a>
+## Issue S3 API Credentials { #issue-s3-api-credentials }
 
-### Issue via Console
+<a id="issue-via-console"></a>
+### Issue via Console { #issue-via-console }
 
 You can issue S3 API credentials from the console of a service that supports the Amazon S3 Compatible API. When issuing credentials from the console, the Secret Key can only be checked immediately after issuance, so be sure to store it separately. For more information, see the console guide for each service.
 
-### Issue via API
+<a id="issue-via-api"></a>
+### Issue via API { #issue-via-api }
 
 To obtain credentials using the API, an authentication token is required. To obtain the authentication token, refer to [IaaS Token](/nhncloud/en/public-api/iaas-token/).
 
@@ -32,6 +37,7 @@ Content-Type: application/json
 X-Auth-Token: {token-id}
 ```
 
+<a id="issue-via-api-request"></a>
 #### Request
 
 | Name | Category | Type | Required | Description |
@@ -53,6 +59,7 @@ X-Auth-Token: {token-id}
 </details>
 
 
+<a id="issue-via-api-response"></a>
 #### Response
 
 | Name | Type | Property | Description |
@@ -85,7 +92,8 @@ X-Auth-Token: {token-id}
 </details>
 
 
-## Get S3 API Credentials
+<a id="get-s3-api-credentials"></a>
+## Get S3 API Credentials { #get-s3-api-credentials }
 
 Retrieves a list of issued S3 API credentials.
 
@@ -95,6 +103,7 @@ GET https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{user-id}
 X-Auth-Token: {token-id}
 ```
 
+<a id="get-s3-api-credentials-request"></a>
 #### Request
 
 | Name | Category | Type | Required | Description |
@@ -103,6 +112,7 @@ X-Auth-Token: {token-id}
 | X-Auth-Token | Header | String | O | Issued authentication token ID |
 
 
+<a id="get-s3-api-credentials-response"></a>
 #### Response
 
 | Name | Type | Property | Description |
@@ -137,7 +147,8 @@ X-Auth-Token: {token-id}
 </details>
 
 
-## Delete S3 API Credentials
+<a id="delete-s3-api-credentials"></a>
+## Delete S3 API Credentials { #delete-s3-api-credentials }
 
 Deletes the issued S3 API credentials. If a leak is suspected, delete the credentials, and then reissue them.
 
@@ -147,6 +158,7 @@ DELETE https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{user-
 X-Auth-Token: {token-id}
 ```
 
+<a id="delete-s3-api-credentials-request"></a>
 #### Request
 
 | Name | Category | Type | Required | Description |
@@ -156,6 +168,7 @@ X-Auth-Token: {token-id}
 | X-Auth-Token | Header | String | O | Issued authentication token ID |
 
 
-## Use S3 API Credentials
+<a id="use-s3-api-credentials"></a>
+## Use S3 API Credentials { #use-s3-api-credentials }
 
 S3 API credentials are used for authentication with the AWS Signature Version 4 signing method when calling the S3 compatible API. You can call the S3 compatible API by configuring the issued Access Key and Secret Key in an AWS SDK or an S3 compatible client. For more information about how to use, see the S3 compatible API guide for each service.

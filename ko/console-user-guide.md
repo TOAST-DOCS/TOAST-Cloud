@@ -1,6 +1,10 @@
-## NHN Cloud > 콘솔 사용 가이드
+<!-- pre-align:aligned sig=e42ad12c254a -->
 
-### 용어 정의
+<a id="nhn-cloud-console-user-guide"></a>
+## NHN Cloud > 콘솔 사용 가이드 { #nhn-cloud-console-user-guide }
+
+<a id="terminology"></a>
+### 용어 정의 { #terminology }
 
 
 * 역할(Role): NHN Cloud에서 제공하는 서비스 및 기능을 이용하기 위한 역할/권한 묶음 단위
@@ -23,7 +27,8 @@
 
 ![term_3.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_03_251124.png)
 
-### 조직
+<a id="organization"></a>
+### 조직 { #organization }
 
 * 정책
     * OWNER/ADMIN/ORG_MEMBER_ADMIN 역할은 NHN Cloud에서 제공하는 역할과 권한을 조합하여 조직 역할 그룹을 생성할 수 있습니다.
@@ -51,7 +56,8 @@
 * 조직 역할 그룹 관리
     * 멤버에게는 역할 그룹과 역할 부여가 가능합니다.
 
-### 프로젝트
+<a id="project"></a>
+### 프로젝트 { #project }
 
 * 정책
     * ADMIN/PROJECT MEMBER ADMIN 역할은 NHN Cloud에서 제공하는 역할과 권한을 조합하여 프로젝트 역할 그룹을 생성할 수 있습니다.

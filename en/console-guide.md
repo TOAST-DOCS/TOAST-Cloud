@@ -1,4 +1,7 @@
-## NHN Cloud > Console Policy Guide
+<!-- pre-align:aligned sig=687c0a9962be -->
+
+<a id="nhn-cloud-console-policy-guide"></a>
+## NHN Cloud > Console Policy Guide { #nhn-cloud-console-policy-guide }
 
 NHN Cloud console serves as a management tool and task window for using NHN Cloud services.
 This document guides you through the basic setup and use of the NHN Cloud console.
@@ -10,19 +13,22 @@ NHN Cloud console provides the following features:
 - Manage members who use services
 - Provide billing information
 
-## Quick Guide
+<a id="quick-guide"></a>
+## Quick Guide { #quick-guide }
 This is a quick guide to the basic features provided by the console.
 
 ![tutorial_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_01_202109_en.png)
 ![tutorial_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_02_202109_en.png)
 
 
-## Organization Management
+<a id="organization-management"></a>
+## Organization Management { #organization-management }
 
 An organization is a group that is created to use and manage NHN Cloud services efficiently.
 In an organization, users can share and use the same service policy.
 
-### Create an Organization
+<a id="create-an-organization"></a>
+### Create an Organization { #create-an-organization }
 
 - To use NHN Cloud services, an organization must be created.
 - Both personal and business members can create organizations.
@@ -31,7 +37,8 @@ In an organization, users can share and use the same service policy.
 - An organization manages organization name and domain information.
 - Domain information of an organization must be unique, because it is required for use by services.
 
-### Guide to Creating an Organization
+<a id="guide-to-creating-an-organization"></a>
+### Guide to Creating an Organization { #guide-to-creating-an-organization }
 
 ![console_guide_1_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_03_202109_en.png)
 ![console_guide_2_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_04_202109_en.png)
@@ -43,7 +50,8 @@ In an organization, users can share and use the same service policy.
 5. Click the **Settings** button to check information of the created organization. Enter your domain information as additional information for your organization. The domain must be set as a unique value in NHN Cloud.
 
 
-### Organization Services
+<a id="organization-services"></a>
+### Organization Services { #organization-services }
 
 Once the organization is created, you can select services.
 Services that can be enabled for each organization include the following:
@@ -55,16 +63,19 @@ Services that can be enabled for each organization include the following:
 
 
 
-### Delete an Organization
+<a id="delete-an-organization"></a>
+### Delete an Organization { #delete-an-organization }
 
 - An organization can be deleted only by the OWNER of the organization.
 - To delete an organization, all the services being used must be deleted.
 - When an organization is deleted, all information of the organization is deleted and cannot be restored.
 
-### Organization Governance Setting
+<a id="organization-governance-setting"></a>
+### Organization Governance Setting { #organization-governance-setting }
 
 You can set and manage policies for stable and efficient use of NHN Cloud services. Set up a common organization policy for security compliance such as login and personal information, so that the members within the organization can comply with the policy.
 
+<a id="organization-governance-setting-ip-acl-setting"></a>
 #### IP ACL Setting
 NHN Cloud services are accessible only from IP addresses registered in the IP ACL settings.
 IP ACLs are applied to both console access and Public API calls using User Access Key tokens. [View Supported Authentication Methods](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods/)
@@ -87,6 +98,7 @@ For Dooray! services, IP ACL can be set on the service's console screen.
 
  * Caution: If you also set up overseas access block, even if an IP is registered in the IP ACL, access to the console can be restricted if it is not included in the access allowed countries.
 
+<a id="organization-governance-setting-overseas-access-block-settings"></a>
 #### Overseas Access Block Settings
 If you need to block overseas access, we provide the feature to make the console accessible only from access-allowed countries.
 
@@ -98,6 +110,7 @@ If you need to block overseas access, we provide the feature to make the console
     * You must select at least one country to allow access.
 * Caution: If you set IP ACL together, access to the console can be restricted if the IP ACLs do not include IPs from countries that are allowed to access.
 
+<a id="organization-governance-setting-set-approval-process-management"></a>
 #### Set approval process management
 If you need an approval process when using a service, a feature to establish an approval process of the approver is provided for each service.
 
@@ -106,18 +119,21 @@ If you need an approval process when using a service, a feature to establish an 
 * Services that provide an approval process
     * Secure Key Manager 
 
+<a id="organization-governance-setting-set-instance-name-management"></a>
 #### Set instance name management
 When using the instance service, you can set instance name management rules. 
 
 * When selecting **Duplicate allowed management**, the instance name is managed as the name entered by the user, and duplicate instance names are allowed.
 * When selecting **Unique management**, the instance name is managed as a unique instance name by combining the name entered by the user and the characters generated by the system.
 
+<a id="organization-governance-setting-set-control-of-resource-permissions-and-restriction-on-terminal-access"></a>
 #### Set control of resource permissions and restriction on terminal access
 When NHN Cloud administrator need to view customer's resources (instance, etc.) information for operational purposes, such as responding to failures, users with project ADMIN/MEMBER permissions will be notified by email and the administrator can view the resource information in an isolated environment with enhanced security.
 
 * You can select Disabled/Enabled in the Set control of resource permissions and restriction on terminal access.
 * This setting limits the feature to view customer resources by NHN Cloud administrator, which may cause delays in response in emergency situations such as failures.
 
+<a id="organization-governance-setting-privacy-setting"></a>
 #### Privacy Setting
 The privacy setting feature is available if you need to protect your privacy.
 You can mask personal information that is exposed on the service, or if you need to download personal information, you can make it available only in a separate network environment. 
@@ -131,8 +147,10 @@ You can mask personal information that is exposed on the service, or if you need
         * If not set, all members who can view the log list will see the full information in the log list.
         * If set up, personal information (email, name, ID) in the log list is masked.
 
-### IAM Governance Setting
+<a id="iam-governance-setting"></a>
+### IAM Governance Setting { #iam-governance-setting }
 
+<a id="iam-governance-setting-login-security-setting"></a>
 #### Login Security Setting
 
 * To strengthen the console access security of IAM accounts, Login Security Setting feature is provided.
@@ -143,6 +161,7 @@ You can mask personal information that is exposed on the service, or if you need
 2. Select Governance Setting from the submenu.
 3. You can set and manage login security setting in IAM Governance Setting.
 
+<a id="iam-governance-setting-two-factor-authentication"></a>
 #### Two-factor Authentication
 
 You can enable two-factor authentication by setting it as a required feature.
@@ -158,6 +177,7 @@ You can enable two-factor authentication by setting it as a required feature.
     * Not Configured: When logging in, users can log in after two-factor authentication from all IP ranges.
     * Configured: Users can log in without two-factor authentication when logging in from the configured IP or IP range.
 
+<a id="iam-governance-setting-maximum-login-attempts"></a>
 #### Maximum Login Attempts
 
 You can adjust setting so that users can log in again after a certain period of time when they failed to log in repeatedly.
@@ -168,6 +188,7 @@ You can adjust setting so that users can log in again after a certain period of 
     * Not Configured: Users can continue to try to log in even if login fails.
     * Configured: If you enter the desired number of failures and lock time, if users fail to log in for the configured number of times, users will not be able to log in during the entered lock time.
 
+<a id="iam-governance-setting-login-session"></a>
 #### Login Session
 
 Depending on the login session setting, a login session will be maintained or expire automatically.
@@ -182,6 +203,7 @@ This setting is a common configuration that applies uniformly to the IAM console
     * If a user do not perform any actions such as clicking for a configured period of time, the user will be automatically logged out.
     * Setting it too long is not good for security, so please consider setting it to an appropriate value.
 
+<a id="iam-governance-setting-password-policy-settings"></a>
 #### Password Policy Settings
 * To set passwords for IAM accounts, the Password Policy Settings is provided.
 * The password policy is set the same for all organization services (Cloud, Contiple, Dooray!, etc.).
@@ -202,7 +224,8 @@ This setting is a common configuration that applies uniformly to the IAM console
                 * If **Apply on Password Change** is selected, the new policy applies when an IAM account changes the password.
                 * If **Apply Immediately** is selected, the policy applies immediately after the password is set, making it the new policy at the time of IAM account login.
 
-### Project Common role Group Setting
+<a id="project-common-role-group-setting"></a>
+### Project Common role Group Setting { #project-common-role-group-setting }
 
 You can create and manage role groups for common use in projects belonging to your organization.
 The configured role groups can be used to grant roles in bulk by selecting NHN Cloud accounts and IAM accounts in the project's role group management.
@@ -220,13 +243,15 @@ The configured role groups can be used to grant roles in bulk by selecting NHN C
 7. When a role group is added, its name is displayed in the role group list. You can check the detailed role details by selecting the role group name.
 8. Clicking Add role leads you to the Add role Group screen in Step 3. You can add or delete roles.
 
-## Project Management
+<a id="project-management"></a>
+## Project Management { #project-management }
 
 After creating an organization, you can create a project to use NHN Cloud services.
 In a project, you can enable project services and use them.
 Project services are used on a per-project basis and are billed accordingly.
 
-### Create a Project
+<a id="create-a-project"></a>
+### Create a Project { #create-a-project }
 
 * To create a project, you need to create an organization.
 * A member who creates a project has ADMIN role for the project.
@@ -234,7 +259,8 @@ Project services are used on a per-project basis and are billed accordingly.
 * After creating a project, you can enable project services and use them.
 * After creating a project, if collaboration is required, you can add project members to share the project.
 
-### Guide to Creating a Project
+<a id="create-a-project-guide-to-creating-a-project"></a>
+#### Guide to Creating a Project
 
 ![console_guide_5_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_07_202109_en.png)
 ![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_08_202109_en.png)
@@ -245,7 +271,8 @@ Project services are used on a per-project basis and are billed accordingly.
 4. The project name is displayed on the console menu when the project is created.
 5. Click the **Project Settings** button to check project information.
 
-### Project Services
+<a id="project-services"></a>
+### Project Services { #project-services }
 
 Once the project is created, you can select services.
 Services that can be enabled for each project include the following:
@@ -270,7 +297,8 @@ Services that can be enabled for each project include the following:
 * Management
 * Bill
 
-### Guide to Enabling Project Services
+<a id="guide-to-enabling-project-services"></a>
+### Guide to Enabling Project Services { #guide-to-enabling-project-services }
 
 ![console_guide_6_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_09_202109_en.png)
 ![console_guide_7_en.png](http://static.toastoven.net/toast/console_guide/consoleguide_10_202109_en.png)
@@ -279,20 +307,23 @@ Services that can be enabled for each project include the following:
 2. On the Select Service screen, select the service you want to enable. When prompted to enable the service, click **Confirm**.
 3. A list of enabled services can be found in the menu on the left side of the console. Click the desired service from the list to display the service page.
 
-### Delete a Project
+<a id="delete-a-project"></a>
+### Delete a Project { #delete-a-project }
 
 A project can be deleted if there is no service in use in the project.
 When a project is deleted, all resources of the project are deleted and cannot be restored.
 You can immediately pay for and delete the usage history for all the resources you have used so far.
 However, if you delete the project without paying immediately, the bills used so far will be automatically charged on the next billing date.
 
-## Member Management
+<a id="member-management"></a>
+## Member Management { #member-management }
 
 Member management allows you to control per-user authentication (login) and role.
 You can manage members separately in projects and organizations.
 Members are classified into NHN Cloud accounts and IAM accounts.
 
-### Policy for NHN Cloud Accounts and IAM Accounts
+<a id="policy-for-nhn-cloud-accounts-and-iam-accounts"></a>
+### Policy for NHN Cloud Accounts and IAM Accounts { #policy-for-nhn-cloud-accounts-and-iam-accounts }
 
 | Classification | [NHN Cloud](http://nhncloud.com) Accounts | IAM Accounts |
 | --- | --- | --- |
@@ -302,7 +333,8 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Console Access | - Access NHN Cloud console([https://console.nhncloud.com/](https://console.nhncloud.com/))<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.nhncloud.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) |
 
 
-### Member Roles
+<a id="member-roles"></a>
+### Member Roles { #member-roles }
 
  * You can grant roles held by an NHN Cloud member to other NHN Cloud members.
 
@@ -315,12 +347,14 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | MEMBER NOTICE_GROUP MANAGEMENT VIEWER | Read Member Notification Group Management, Read for Member List |
 
 
-### Organization Member Roles
+<a id="organization-member-roles"></a>
+### Organization Member Roles { #organization-member-roles }
 
 * IAM accounts have different roles that can be configured for each organization service (e.g., Contiple).
 * The cloud service roles for NHN Cloud accounts and IAM accounts are as follows.
 * However, IAM accounts are granted the NONE role upon enrollment, and must be granted the required role through role settings after enrollment.
 
+<a id="organization-member-roles-organization-management"></a>
 #### Organization Management    
 
 | Role | Description |
@@ -340,6 +374,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | ORG_AUTHENTICATION_MANAGEMENT_ADMIN | Create, Read, Update, and Delete in organization authentication management |
 | NONE | Read organization dashboard and organization default settings |
 
+<a id="organization-member-roles-service-use"></a>
 #### Service Use 
 
 | Service | Role | Description |
@@ -353,6 +388,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Resource Watcher | VIEWER | Read Resource Watcher Service |
 
 
+<a id="organization-member-roles-service-permission"></a>
 #### Service PERMISSION 
 
 * The Organization Services PERMISSION role can enable or disable individual services.
@@ -364,10 +400,12 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | Service Name PERMISSION | Service Enable, Disable  |
 
 
-### Project Member Roles
+<a id="project-member-roles"></a>
+### Project Member Roles { #project-member-roles }
 
 * You can grant multiple required roles to project members.
 
+<a id="project-member-roles-project-management"></a>
 #### Project Management 
 
 | Role | Description |
@@ -394,6 +432,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | PROJECT DASHBOARD VIEWER | Read project dashboard|
 
 
+<a id="project-member-roles-service-use"></a>
 #### Service Use 
 
 | Service | Role | Description |
@@ -548,6 +587,7 @@ Members are classified into NHN Cloud accounts and IAM accounts.
 | eTax | VIEWER | Read  for eTax Service |
 
 
+<a id="project-member-roles-service-permission"></a>
 #### Service PERMISSION 
 Service PERMISSION Role can enable or disable each service.
 
@@ -557,7 +597,8 @@ Service PERMISSION Role can enable or disable each service.
 
 
 
-## Billing Management
+<a id="billing-management"></a>
+## Billing Management { #billing-management }
 
 You can check the usage fee for NHN Cloud service and make payment.
 In the **View My Info > Manage Billing** menu, you can check the bill, expected payment amount, and usage information of the NHN Cloud account who registered a payment method.
@@ -580,7 +621,8 @@ The details displayed on the payment management invoice are as follows.
 
 
 
-## Manage Notifications
+<a id="manage-notifications"></a>
+## Manage Notifications { #manage-notifications }
 
 Manage Notifications is a feature that allows you to set the recipients and notification method (Email, SMS) for each notification sent by NHN Cloud.
 
@@ -599,7 +641,8 @@ Manage Notifications is a feature that allows you to set the recipients and noti
 4. Click **Save** to save your settings.
 
 
-## Notification Receiver Group Management
+<a id="notification-receiver-group-management"></a>
+## Notification Receiver Group Management { #notification-receiver-group-management }
 
 Notification Receiver Group Management allows you to set up receiver groups for notifications sent by NHN Cloud.
 
@@ -607,7 +650,8 @@ Email and SMS notifications are supported with receiver settings based on organi
 Webhook notifications provide default webhooks and custom webhooks.
 The corresponding notification receiver groups are available when setting up notifications in the **service**.
 
-### Create Notification Receiver Group
+<a id="create-notification-receiver-group"></a>
+### Create Notification Receiver Group { #create-notification-receiver-group }
 
 1. To create a **notification receiver group**, click **Notification Receiver Group Management** in the organization or project menu.
 2. Click ** + Add Notification Receiver Group**.
@@ -629,7 +673,8 @@ The corresponding notification receiver groups are available when setting up not
     - When sending out notifications, you can set them to a webhook of your choice.
     - Provides default and custom webhooks by type.  (maximum 5)
 
-### Webhook Settings
+<a id="webhook-settings"></a>
+### Webhook Settings { #webhook-settings }
 1. On the Organization, Project tab, select the ** Notification Receiver Group Management** tab.
 2. Select ** +Add Webhook** in the **Webhook Settings** menu at the bottom.
 3. The **+ Add webhook** popup provides default and custom webhooks by type.
@@ -694,7 +739,8 @@ The corresponding notification receiver groups are available when setting up not
 5. The created webhook is available by adding a **notification receiver group** to the service that provides webhook delivery.
 
 
-## Technical support
+<a id="technical-support"></a>
+## Technical support { #technical-support }
 
 Technical support is a feature that allows you to register or manage inquiries with members of your organization or project.
 Registered inquiries are visible to all members within the same organization or project. If necessary, you can leave additional questions to an inquiry registered by another member.
@@ -702,12 +748,14 @@ Registered inquiries are visible to all members within the same organization or 
 For individual inquiries, use the NHN Cloud Customer Center [1:1](https://www.nhncloud.com/kr/support/inquiry) Inquiry.
 
 
-### List of Inquiries
+<a id="list-of-inquiries"></a>
+### List of Inquiries { #list-of-inquiries }
 
 1. In the console, click **Organization > Technical Support** or **Project > Technical Support**.
     * You can see a **list of inquiries** received from organizations and projects.
 
-### Submit Inquiry
+<a id="submit-inquiry"></a>
+### Submit Inquiry { #submit-inquiry }
 
 1. On the **list** screen, click **Submit Inquiry**.
 2. Select the type of inquiry you want to submit and complete each field as instructed.
@@ -715,7 +763,8 @@ For individual inquiries, use the NHN Cloud Customer Center [1:1](https://www.nh
 3. Click **Accept** at the bottom.
     * If validation (such as required values) fails, a warning message is exposed in the corresponding input field.
 
-### Submit Additional Questions
+<a id="submit-additional-questions"></a>
+### Submit Additional Questions { #submit-additional-questions }
 
 1. On the **Inquiry list** screen, click the row of the inquiry that you want to accept additional questions for.
 2. Fill out an **additional question** at the bottom of the **Details of Inquiry** section.
@@ -723,7 +772,8 @@ For individual inquiries, use the NHN Cloud Customer Center [1:1](https://www.nh
     * The additional question and phone number are required.
     * If the phone number listed in the member information exists, the input field is populated with the default value.
 
-### Check Response to Inquiry
+<a id="check-response-to-inquiry"></a>
+### Check Response to Inquiry { #check-response-to-inquiry }
 
 1. On the **Inquiry list** screen, click the row of the inquiry you want to see the answer to.
 2. You can view your inquiry, additional questions, and answers on the **Details of Inquiry** screen.

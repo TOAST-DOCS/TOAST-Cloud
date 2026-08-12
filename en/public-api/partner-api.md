@@ -1,10 +1,14 @@
+<!-- pre-align:aligned sig=a874d1711b7d -->
+
 # Partner Management API Guide
 
 **NHN Cloud > Public API User Guide > Partner Management API Guide**
 
-## Common Information for Partner Management API
+<a id="common-information-for-partner-management-api"></a>
+## Common Information for Partner Management API { #common-information-for-partner-management-api }
 
-### API Endpoint
+<a id="api-endpoint"></a>
+### API Endpoint { #api-endpoint }
 
 An endpoint information for calling partner management API.<br>
 This API can only be called by partners or users authorized by partners, and cannot be used by general users.
@@ -13,7 +17,8 @@ This API can only be called by partners or users authorized by partners, and can
 |--------| ----- |
 | Global | https://core.api.nhncloudservice.com/ |
 
-### Authentication and Permission
+<a id="authentication-and-permission"></a>
+### Authentication and Permission { #authentication-and-permission }
 
 Partner Management API uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/nhncloud/en/public-api/user-access-key-token).
 
@@ -21,7 +26,8 @@ Partner Management API uses User Access Key tokens for authentication and author
 | --- | --- |
 | x-nhn-authorization | Refer to the token for API authentication |
 
-### Response Common Information
+<a id="response-common-information"></a>
+### Response Common Information { #response-common-information }
 
 All APIs have the following common response structure:
 
@@ -65,7 +71,8 @@ All APIs have the following common response structure:
     API Responses may contain additional fields not specified below. Be careful that new fields are added and no error occurs.
 
 
-## View Organization Usage List of Partner Users
+<a id="view-organization-usage-list-of-partner-users"></a>
+## View Organization Usage List of Partner Users { #view-organization-usage-list-of-partner-users }
 
 Provide the partner user's billing amount, usage fee per organization, usage fee per service, and surcharge information.
 
@@ -75,16 +82,19 @@ Provide the partner user's billing amount, usage fee per organization, usage fee
 !!! tip "Notice"
     The month of use must be entered in yyyy-MM format.
 
-### Required Permission
+<a id="required-permission"></a>
+### Required Permission { #required-permission }
 `Partner.Payment.Get`
 
-### Request
+<a id="request"></a>
+### Request { #request }
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}
 ```
 
-### Request Parameter
+<a id="request-parameter"></a>
+### Request Parameter { #request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -93,11 +103,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}
 | partnerUserUuid | Query | String | Y | Partner user UUID |
 | lang | Header | String | N | Language setting (default: ko_KR, selectable value: ko_KR, ja_JP, en_US) |
 
-### Request Body
+<a id="request-body"></a>
+### Request Body { #request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="response"></a>
+### Response { #response }
 
 <details>
   <summary><strong>Response Example</strong></summary>
@@ -143,6 +155,7 @@ This API does not require a request body.
 
 </details>
 
+<a id="response-default-response-structure"></a>
 #### Default Response Structure
 
 | Name | Type | Description |
@@ -189,23 +202,27 @@ This API does not require a request body.
 | extraPrice | Long | Project surcharge |
 
 
-## Retrieve Organization Lists of Partner Users
+<a id="retrieve-organization-lists-of-partner-users"></a>
+## Retrieve Organization Lists of Partner Users { #retrieve-organization-lists-of-partner-users }
 
 Retrieve the list of organization users of the partner.
 
 !!! tip "Verify Partner Agreement"
     Verify that the partner and partner user entered into a partnership agreement in the specified month.
 
-### Required Permission
+<a id="retrieve-organization-lists-of-partner-users-required-permission"></a>
+### Required Permission { #retrieve-organization-lists-of-partner-users-required-permission }
 `Partner.Organization.List`
 
-### Request
+<a id="retrieve-organization-lists-of-partner-users-request"></a>
+### Request { #retrieve-organization-lists-of-partner-users-request }
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 ```
 
-### Request Parameter
+<a id="retrieve-organization-lists-of-partner-users-request-parameter"></a>
+### Request Parameter { #retrieve-organization-lists-of-partner-users-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -213,11 +230,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations
 | month | Path | String | Y | Usage period (yyyy-MM format) |
 | partnerUserUuid | Query | String | Y | Partner User UUID |
 
-### Request Body
+<a id="retrieve-organization-lists-of-partner-users-request-body"></a>
+### Request Body { #retrieve-organization-lists-of-partner-users-request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="retrieve-organization-lists-of-partner-users-response"></a>
+### Response { #retrieve-organization-lists-of-partner-users-response }
 
 <details>
   <summary><strong>Response Example</strong></summary>
@@ -258,23 +277,27 @@ This API does not require a request body.
 | cloudType | String | Cloud type |
 
 
-## Retrieve the Billing Amount per Organizations of Partner Users
+<a id="retrieve-the-billing-amount-per-organizations-of-partner-users"></a>
+## Retrieve the Billing Amount per Organizations of Partner Users { #retrieve-the-billing-amount-per-organizations-of-partner-users }
 
 Retrieve the details of the specific organization's amount used, discount, and surcharge amounts.
 
 !!! tip "Verify Partner Agreement"
     Verify that the partner and partner user in question had a partner agreement in the specified month, and that the owner of the organization in question was a partner user in that month.
 
-### Required Permission
+<a id="retrieve-the-billing-amount-per-organizations-of-partner-users-required-permission"></a>
+### Required Permission { #retrieve-the-billing-amount-per-organizations-of-partner-users-required-permission }
 `Partner.Organization.Usage.Get`
 
-### Request
+<a id="retrieve-the-billing-amount-per-organizations-of-partner-users-request"></a>
+### Request { #retrieve-the-billing-amount-per-organizations-of-partner-users-request }
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usage
 ```
 
-### Request Parameter
+<a id="retrieve-the-billing-amount-per-organizations-of-partner-users-request-parameter"></a>
+### Request Parameter { #retrieve-the-billing-amount-per-organizations-of-partner-users-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -285,11 +308,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | isHideContract | Query | Boolean | N | Whether to hide contract information (default: false / true: apply partner masking and exclude creditUsages) |
 | isHideContract | Query | Boolean | N | Whether to hide commitment information (default: false / true: partner masking applied and creditUsages excluded) |
 
-### Request Body
+<a id="retrieve-the-billing-amount-per-organizations-of-partner-users-request-body"></a>
+### Request Body { #retrieve-the-billing-amount-per-organizations-of-partner-users-request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="retrieve-the-billing-amount-per-organizations-of-partner-users-response"></a>
+### Response { #retrieve-the-billing-amount-per-organizations-of-partner-users-response }
 
 <details>
   <summary><strong>Response Example</strong></summary>
@@ -361,6 +386,7 @@ This API does not require a request body.
 
 </details>
 
+<a id="retrieve-the-billing-amount-per-organizations-of-partner-users-response-default-response-structure"></a>
 #### Default Response Structure
 
 | Name | Type | Description |
@@ -430,23 +456,27 @@ This API does not require a request body.
 | description | String | Discount/surcharge details |
 
 
-## Retrieve Project Lists of Partner Users
+<a id="retrieve-project-lists-of-partner-users"></a>
+## Retrieve Project Lists of Partner Users { #retrieve-project-lists-of-partner-users }
 
 Retrieves a list of projects of partner users.
 
 !!! tip "Verify Partner Agreement"
     Verify that the partner and partner user entered into a partnership agreement in the specified month.
 
-### Required Permission
+<a id="retrieve-project-lists-of-partner-users-required-permission"></a>
+### Required Permission { #retrieve-project-lists-of-partner-users-required-permission }
 `Partner.Project.List`
 
-### Request
+<a id="retrieve-project-lists-of-partner-users-request"></a>
+### Request { #retrieve-project-lists-of-partner-users-request }
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 ```
 
-### Request Parameter
+<a id="retrieve-project-lists-of-partner-users-request-parameter"></a>
+### Request Parameter { #retrieve-project-lists-of-partner-users-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -454,11 +484,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects
 | month | Path | String | Y | Usage period (yyyy-MM format) |
 | partnerUserUuid | Query | String | Y | Partner User UUID |
 
-### Request Body
+<a id="retrieve-project-lists-of-partner-users-request-body"></a>
+### Request Body { #retrieve-project-lists-of-partner-users-request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="retrieve-project-lists-of-partner-users-response"></a>
+### Response { #retrieve-project-lists-of-partner-users-response }
 
 <details>
   <summary><strong>Response Example</strong></summary>
@@ -505,7 +537,8 @@ This API does not require a request body.
 | projectStatusCode | String | Project Status<br><br>- STABLE: normal status<br>- CLOSED: Deleted status |
 
 
-## Retrieve Project Usage Details for Partner User
+<a id="retrieve-project-usage-details-for-partner-user"></a>
+## Retrieve Project Usage Details for Partner User { #retrieve-project-usage-details-for-partner-user }
 
 Retrieve the detailed usage of a specific project.
 
@@ -515,16 +548,19 @@ Retrieve the detailed usage of a specific project.
 !!! tip "Verify Partner Agreement"
     Verify that the partner and partner user in question had a partner agreement in the specified month, and that the owner of the organization to which the project belongs was a partner user in that month.
 
-### Required Permission
+<a id="retrieve-project-usage-details-for-partner-user-required-permission"></a>
+### Required Permission { #retrieve-project-usage-details-for-partner-user-required-permission }
 `Partner.Project.Usage.Get`
 
-### Request
+<a id="retrieve-project-usage-details-for-partner-user-request"></a>
+### Request { #retrieve-project-usage-details-for-partner-user-request }
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 ```
 
-### Request Parameter
+<a id="retrieve-project-usage-details-for-partner-user-request-parameter"></a>
+### Request Parameter { #retrieve-project-usage-details-for-partner-user-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -540,11 +576,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | page | Query | Integer | N | Selected page (default: 1, minimum: 1)<br>if usageSchemaTypeCode is NO_GROUP, it is unavailable |
 | limit | Query | Integer | N | Number of items to be displayed on the page, if not entered, full view (default: 0, minimum: 0)<br>Not available when usageSchemaTypeCode is NO_GROUP |
 
-### Request Body
+<a id="retrieve-project-usage-details-for-partner-user-request-body"></a>
+### Request Body { #retrieve-project-usage-details-for-partner-user-request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="retrieve-project-usage-details-for-partner-user-response"></a>
+### Response { #retrieve-project-usage-details-for-partner-user-response }
 
 <details>
   <summary><strong>Response Example</strong></summary>
@@ -659,6 +697,7 @@ This API does not require a request body.
 
 </details>
 
+<a id="retrieve-project-usage-details-for-partner-user-response-default-response-structure"></a>
 #### Default Response Structure
 
 | Name | Type | Description |
@@ -773,23 +812,27 @@ This API does not require a request body.
 | costPlanOrderId | String | Optimized Cost Plans(OCPs) order ID |
 
 
-## Retrieve Partner’s Bill
+<a id="retrieve-partners-bill"></a>
+## Retrieve Partner’s Bill { #retrieve-partners-bill }
 
 Retrieve the partner's full bill.
 
 !!! tip "Verify Partner Agreement"
     Verify that the partner in question had a valid partner agreement in the specified month.
 
-### Required Permission
+<a id="retrieve-partners-bill-required-permission"></a>
+### Required Permission { #retrieve-partners-bill-required-permission }
 `Partner.Statement.Get`
 
-### Request
+<a id="retrieve-partners-bill-request"></a>
+### Request { #retrieve-partners-bill-request }
 
 ```
 GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 ```
 
-### Request Parameter
+<a id="retrieve-partners-bill-request-parameter"></a>
+### Request Parameter { #retrieve-partners-bill-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -797,11 +840,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 | month | Path | String | Y | Month of use (yyyy-MM format) |
 | lang | Header | String | N | Language setting (default: ko_KR, configurable values: ko_KR, ja_JP, en_US) |
 
-### Request Body
+<a id="retrieve-partners-bill-request-body"></a>
+### Request Body { #retrieve-partners-bill-request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="retrieve-partners-bill-response"></a>
+### Response { #retrieve-partners-bill-response }
 
 <details>
   <summary><strong>Response Example</strong></summary>
@@ -927,6 +972,7 @@ This API does not require a request body.
 
 </details>
 
+<a id="retrieve-partners-bill-response-default-response-structure"></a>
 #### Default Response Structure
 
 | Name | Type | Description |
@@ -1064,23 +1110,27 @@ This API does not require a request body.
 | description | String | Discount/surcharge details |
 
 
-## Retrieve Self-Service Metering of Solutions Partner
+<a id="retrieve-self-service-metering-of-solutions-partner"></a>
+## Retrieve Self-Service Metering of Solutions Partner { #retrieve-self-service-metering-of-solutions-partner }
 
 Retrieve metering information for their services by a solution partner.
 
 !!! tip "Verify Solution Partner"
     Only solution partners or users authorized by a solution partner can call this feature.
 
-### Required Permission
+<a id="retrieve-self-service-metering-of-solutions-partner-required-permission"></a>
+### Required Permission { #retrieve-self-service-metering-of-solutions-partner-required-permission }
 `Partner.Meter.List`
 
-### Request
+<a id="retrieve-self-service-metering-of-solutions-partner-request"></a>
+### Request { #retrieve-self-service-metering-of-solutions-partner-request }
 
 ```
 GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 ```
 
-### Request Parameter
+<a id="retrieve-self-service-metering-of-solutions-partner-request-parameter"></a>
+### Request Parameter { #retrieve-self-service-metering-of-solutions-partner-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -1094,11 +1144,13 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 | page | Query | Integer | Y | Selected page (minimum: 1) |
 | limit | Query | Integer | Y | number of items to be displayed on the page (minimum: 1, max: 2,000) |
 
-### Request Body
+<a id="retrieve-self-service-metering-of-solutions-partner-request-body"></a>
+### Request Body { #retrieve-self-service-metering-of-solutions-partner-request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="retrieve-self-service-metering-of-solutions-partner-response"></a>
+### Response { #retrieve-self-service-metering-of-solutions-partner-response }
 
 <details>
   <summary><strong>Response Example</strong></summary>
@@ -1158,7 +1210,8 @@ This API does not require a request body.
 | timestamp | String | Metering occurrence time |
 
 
-## Delete Metering for Solution Partners
+<a id="delete-metering-for-solution-partners"></a>
+## Delete Metering for Solution Partners { #delete-metering-for-solution-partners }
 
 Deletes metering data for a service owned by the solution partner.<br>
 Deletions will not be reflected in invoices that have already been created. Partners are strictly limited to managing their own services and cannot delete metering data for services owned by others.<br>
@@ -1167,16 +1220,19 @@ This is an asynchronous operation due to the potential processing time. After ca
 !!! tip "Verify Solution Partner"
     Only Solution Partners or users authorized by a Solution Partner can call this.
 
-### Required Permission
+<a id="delete-metering-for-solution-partners-required-permission"></a>
+### Required Permission { #delete-metering-for-solution-partners-required-permission }
 `Partner.Meter.Delete`
 
-### Request
+<a id="delete-metering-for-solution-partners-request"></a>
+### Request { #delete-metering-for-solution-partners-request }
 
 ```
 DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 ```
 
-### Request Parameter
+<a id="delete-metering-for-solution-partners-request-parameter"></a>
+### Request Parameter { #delete-metering-for-solution-partners-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -1184,7 +1240,8 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 | productId | Path | String | Y | Service ID |
 
 
-### Request Body
+<a id="delete-metering-for-solution-partners-request-body"></a>
+### Request Body { #delete-metering-for-solution-partners-request-body }
 
 <details>
   <summary><strong>Example code</strong></summary>
@@ -1210,7 +1267,8 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 | counterNames | List&lt;String&gt; | N | List of counter names to delete<br>Either the app key or counter name must be present |
 
 
-### Response
+<a id="delete-metering-for-solution-partners-response"></a>
+### Response { #delete-metering-for-solution-partners-response }
 
 <details>
   <summary><strong>Response example</strong></summary>
@@ -1233,7 +1291,8 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 | asyncJobId | String | ID of the asynchronous job being executed |
 
 
-## Confirm Deletion of Solution Partner's Metering
+<a id="confirm-deletion-of-solution-partners-metering"></a>
+## Confirm Deletion of Solution Partner's Metering { #confirm-deletion-of-solution-partners-metering }
 
 Verifies that the deletion is complete.<br>
 It is recommended to wait at least 5 seconds before the first verification call, as immediate requests may fail due to processing time.<br>
@@ -1245,16 +1304,19 @@ We suggest polling every 5 seconds thereafter to check the status.
 !!! danger "Cautions for Deleting Metering Configurations"
     Once a deletion is confirmed, the deletion job is removed. This endpoint can only be called once; subsequent attempts will return a 16500 error.
 
-### Required Permission
+<a id="confirm-deletion-of-solution-partners-metering-required-permission"></a>
+### Required Permission { #confirm-deletion-of-solution-partners-metering-required-permission }
 `Partner.Meter.Delete`
 
-### Request
+<a id="confirm-deletion-of-solution-partners-metering-request"></a>
+### Request { #confirm-deletion-of-solution-partners-metering-request }
 
 ```
 GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 ```
 
-### Request Parameter
+<a id="confirm-deletion-of-solution-partners-metering-request-parameter"></a>
+### Request Parameter { #confirm-deletion-of-solution-partners-metering-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -1262,11 +1324,13 @@ GET /v1/billing/partners/{partnerId}/meters/jobs/{async-job-id}
 | asyncJobId | Path | String | Y | ID of the asynchronous job executed |
 
 
-### Request Body
+<a id="confirm-deletion-of-solution-partners-metering-request-body"></a>
+### Request Body { #confirm-deletion-of-solution-partners-metering-request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="confirm-deletion-of-solution-partners-metering-response"></a>
+### Response { #confirm-deletion-of-solution-partners-metering-response }
 
 <details>
   <summary><strong>Response example</strong></summary>
@@ -1288,36 +1352,42 @@ This API does not require a request body.
 | --- | --- | --- |
 | statusCode | String | Deletion status (IN_PROGRESS: deletion in progress, ERROR: an error occurred during deletion, SUCCESS: deleted successfully) |
 
-## Create Organization for Partner User
+<a id="create-organization-for-partner-user"></a>
+## Create Organization for Partner User { #create-organization-for-partner-user }
 
 A partner creates the organization of the partner user.
 
 !!! tip "Verify Partner Agreement"
     Verify if the partner and partner user had a partner contract relationship in the month in which the API was called.
 
-### Required Permission
+<a id="create-organization-for-partner-user-required-permission"></a>
+### Required Permission { #create-organization-for-partner-user-required-permission }
 `Partner.Organization.Create`
 
-### Request
+<a id="create-organization-for-partner-user-request"></a>
+### Request { #create-organization-for-partner-user-request }
 
 ```
 POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 ```
 
-### Request Parameter
+<a id="create-organization-for-partner-user-request-parameter"></a>
+### Request Parameter { #create-organization-for-partner-user-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | Partner ID |
 | partnerUserUuid | Path | String | Y | Partner user UUID |
 
-### Request Body
+<a id="create-organization-for-partner-user-request-body"></a>
+### Request Body { #create-organization-for-partner-user-request-body }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | orgName | String | Y | Organization name (up to 120 characters) |
 
-### Response
+<a id="create-organization-for-partner-user-response"></a>
+### Response { #create-organization-for-partner-user-response }
 
 <details>
   <summary><strong>Response Example</strong></summary>
@@ -1346,23 +1416,27 @@ POST /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations
 | regDateTime | String | Registration date and time (ISO 8601 format) |
 
 
-## Delete Organization of Partner User
+<a id="delete-organization-of-partner-user"></a>
+## Delete Organization of Partner User { #delete-organization-of-partner-user }
 
 The partner deletes the organization of the partner user.
 
 !!! tip "Verify Partner Agreement"
     Verify whether the partner and partner user had a partner contract relationship in the month the API was called, and whether the target of the deletion is the partner user's organization.
 
-### Required Permission
+<a id="delete-organization-of-partner-user-required-permission"></a>
+### Required Permission { #delete-organization-of-partner-user-required-permission }
 `Partner.Organization.Delete`
 
-### Request
+<a id="delete-organization-of-partner-user-request"></a>
+### Request { #delete-organization-of-partner-user-request }
 
 ```
 DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{orgId}
 ```
 
-### Request Parameter
+<a id="delete-organization-of-partner-user-request-parameter"></a>
+### Request Parameter { #delete-organization-of-partner-user-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -1370,11 +1444,13 @@ DELETE /v1/partners/{partnerId}/partner-users/{partnerUserUuid}/organizations/{o
 | partnerUserUuid | Path | String | Y | Partner User UUID |
 | orgId | Path | String | Y | Organization ID to delete |
 
-### Request Body
+<a id="delete-organization-of-partner-user-request-body"></a>
+### Request Body { #delete-organization-of-partner-user-request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="delete-organization-of-partner-user-response"></a>
+### Response { #delete-organization-of-partner-user-response }
 
 <details>
   <summary><strong>Response Example</strong></summary>
@@ -1392,7 +1468,8 @@ This API does not require a request body.
 </details>
 
 
-## Daily Usage Pricing
+<a id="daily-usage-pricing"></a>
+## Daily Usage Pricing { #daily-usage-pricing }
 
 Retrieve details of a partner user's daily usage fees.
 
@@ -1403,16 +1480,19 @@ Checks whether the partner is the owner of a given project or organization, or h
 - Either projectId or orgId must be set.
 - Both projectId and orgId cannot be set simultaneously.
 
-### Required Permissions
+<a id="required-permissions"></a>
+### Required Permissions { #required-permissions }
 `Partner.Daily.Usage.List`
 
-### Request
+<a id="daily-usage-pricing-request"></a>
+### Request { #daily-usage-pricing-request }
 
 ```
 GET /v1/billing/partners/{partnerId}/daily-usage-prices
 ```
 
-### Request Parameters
+<a id="request-parameters"></a>
+### Request Parameters { #request-parameters }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- |
@@ -1424,11 +1504,13 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 | page | Query | Integer | N | Selected page (minimum: 1) |
 | limit | Query | Integer | N | Number of items to display on the page (minimum: 1, maximum: 2,000) |
 
-### Request Body
+<a id="daily-usage-pricing-request-body"></a>
+### Request Body { #daily-usage-pricing-request-body }
 
 This API does not require a request body.
 
-### Response
+<a id="daily-usage-pricing-response"></a>
+### Response { #daily-usage-pricing-response }
 
 <details>
 <summary><strong>Example Response</strong></summary>
@@ -1472,6 +1554,7 @@ This API does not require a request body.
 
 </details>
 
+<a id="daily-usage-pricing-response-basic-response-structure"></a>
 #### Basic Response Structure
 
 | Name | Type | Description |
@@ -1505,7 +1588,8 @@ This API does not require a request body.
 | uuid | String | Member UUID |
 
 
-## Retrieve Resource Usage Prices by Tag
+<a id="retrieve-resource-usage-prices-by-tag"></a>
+## Retrieve Resource Usage Prices by Tag { #retrieve-resource-usage-prices-by-tag }
 
 Retrieve resource usage prices categorized by tag.
 
@@ -1517,16 +1601,19 @@ Checks whether the partner is the owner of the given project or organization, or
 - Both projectId and orgId cannot be set simultaneously.
 - Either tagIds or groupIds must be provided.
 
-### Required Permissions
+<a id="retrieve-resource-usage-prices-by-tag-required-permissions"></a>
+### Required Permissions { #retrieve-resource-usage-prices-by-tag-required-permissions }
 `Partner.Daily.Usage.List`
 
-### Request
+<a id="retrieve-resource-usage-prices-by-tag-request"></a>
+### Request { #retrieve-resource-usage-prices-by-tag-request }
 
 ```
 POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 ```
 
-### Request Parameters
+<a id="retrieve-resource-usage-prices-by-tag-request-parameters"></a>
+### Request Parameters { #retrieve-resource-usage-prices-by-tag-request-parameters }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- |
@@ -1534,7 +1621,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | page | Query | Integer | N | Selected page (minimum: 1) |
 | limit | Query | Integer | N | Number of items to display on the page (minimum: 1, maximum: 2,000) |
 
-### Request Body
+<a id="retrieve-resource-usage-prices-by-tag-request-body"></a>
+### Request Body { #retrieve-resource-usage-prices-by-tag-request-body }
 
 <details>
 <summary><strong>Example Request</strong></summary>
@@ -1565,7 +1653,8 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | searchType | String | Y | Query type<br><br>- RESOURCE: By resource<br>- DAILY: By day |
 | tagIds | List&lt;Long&gt; | N | List of tag IDs<br>Either tagIds or groupIds is required |
 
-### Response
+<a id="retrieve-resource-usage-prices-by-tag-response"></a>
+### Response { #retrieve-resource-usage-prices-by-tag-response }
 
 <details>
 <summary><strong>Example Response</strong></summary>
@@ -1628,6 +1717,7 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 
 </details>
 
+<a id="retrieve-resource-usage-prices-by-tag-response-basic-response-structure"></a>
 #### Basic Response Structure
 
 | Name | Type | Description |
@@ -1687,20 +1777,24 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 | displayNameKo | String | Bill Display Name (Korean) |
 | displayNameZh | String | Invoice Exposure Name (Chinese) |
 
-## Retrieve Active Organization/Project Product Metering for Partners or Partner Users
+<a id="retrieve-active-organizationproject-product-metering-for-partners-or-partner-users"></a>
+## Retrieve Active Organization/Project Product Metering for Partners or Partner Users { #retrieve-active-organizationproject-product-metering-for-partners-or-partner-users }
 
 Retrieve the metering information.
 
-### Required Permission
+<a id="retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-required-permission"></a>
+### Required Permission { #retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-required-permission }
 `Partner.Meter.List`
 
-### Request
+<a id="retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-request"></a>
+### Request { #retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-request }
 
 ```
 POST /v1/billing/partners/{partnerId}/meters/search
 ```
 
-### Request Parameter
+<a id="retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-request-parameter"></a>
+### Request Parameter { #retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-request-parameter }
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -1709,7 +1803,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | limit | Query | Integer | N | Number of items to display on the page (minimum: 1, maximum: 2,000) |
 
 
-### Request Body
+<a id="retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-request-body"></a>
+### Request Body { #retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-request-body }
 
 <details>
   <summary><strong>Example Code</strong></summary>
@@ -1739,7 +1834,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | meterTimeTypeCode | String | N | Meter time type code<br>Determines whether to search by used time or by the time the request was inserted for from and to<br>(USED_TIME: used time (default), INSERT_TIME: inserted time) |
 
 
-### Response
+<a id="retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-response"></a>
+### Response { #retrieve-active-organizationproject-product-metering-for-partners-or-partner-users-response }
 
 <details>
   <summary><strong>Response example</strong></summary>
@@ -1801,7 +1897,8 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | stationId | String | Station ID |
 | timestamp | String | Usage time |
 
-## Error Code
+<a id="error-code"></a>
+## Error Code { #error-code }
 
 | resultCode | Description | Action |
 | --- | --- | --- |
