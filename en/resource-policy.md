@@ -122,6 +122,7 @@ Resource usage is calculated by the project, and the Resource Provision Policy i
 |Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 |Service Gateway | Per project | 10 | O | | 
+|Custom Endpoint | Per project | 5 | O | | 
 
 
 <a id="resource-provision-policy-for-traffic-mirroring-service"></a>
