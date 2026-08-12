@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=f6a05dd4ce5a -->
+
 <a id="nhn-cloud-public-api-release-notes"></a>
 ## NHN Cloud > Public API > Release Notes { #nhn-cloud-public-api-release-notes }
 
