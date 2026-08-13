@@ -395,23 +395,25 @@ You can manage members separately in projects and organizations.
 
 #### Service Use 
 
+* For detailed permissions by role for the [basic infrastructure service (Infrastructure)](../en/overview.md), see [View Full Permission Matrix](../etc/infrastructure_roles_guide.html){:target="_blank" rel="noopener"}.
+
 | Service | Role | Description |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Create, Read, Update, Delete for Infrastructure Service |
-| Infrastructure | MEMBER | Read Network services (except Network Interface, Floating IP), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | VIEWER | Read in basic infrastructure services (Key Pair, Direct Connect, NAS (Offline) excluded). Create, Read, Update, and Delete in other services. |
-| Infrastructure | Routing ADMIN | RRead Network services (except Network Interface, Floating IP, Routing Table), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | Security Group ADMIN | Read Network services (except Network Interface, Floating IP, Security Groups), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | Load Balancer ADMIN | Read Network services (except Network Interface, Floating IP, Load Balancer), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | Transit Hub ADMIN | Read Network services (except Network Interface, Floating IP, Transit Hub), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | Peering Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Peering Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | Colocation Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Colocation Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | NAT Gateway ADMIN | Read Network services (except Network Interface, Floating IP, NAT Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | Service Gateway ADMIN | Read Network services (except Network Interface, Floating IP, Service Gateway), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | Private DNS ADMIN | Read Network services (except Network Interface, Floating IP, Private DNS), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | Flow Log ADMIN | Read Network services (except Network Interface, Floating IP, Flow Log), NKS, NCS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | NCS ADMIN | Read Network services (except Network Interface, Floating IP), NKS and Storage Gateway. Create, Read, Update, Delete other services |
-| Infrastructure | NKS ADMIN | Read Network services (except Network Interface, Floating IP), NCS and Storage Gateway. Create, Read, Update, Delete other services |
+| Infrastructure | ADMIN | Create, Read, Update, and Delete access to basic infrastructure services |
+| Infrastructure | MEMBER | Read access to network services (excluding Network Interface, Floating IP, and Direct Connect) and to NKS, NCS, and Storage Gateway. <br> Create, Read, Update, and Delete access to all other basic infrastructure services.|
+| Infrastructure | VIEWER | Create, Read, Update, and Delete access to Key Pair, Direct Connect, and NAS (Offline). <br> Read access to all other basic infrastructure services. |
+| Infrastructure | Routing ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Routing |
+| Infrastructure | Security Group ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Security Groups |
+| Infrastructure | Load Balancer ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Load Balancer |
+| Infrastructure | Transit Hub ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Transit Hub |
+| Infrastructure | Peering Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Peering Gateway |
+| Infrastructure | Colocation Gateway ADMIN |Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Colocation Gateway |
+| Infrastructure | NAT Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NAT Gateway |
+| Infrastructure | Service Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Service Gateway |
+| Infrastructure | Private DNS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Private DNS |
+| Infrastructure | Flow Log ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Flow Log |
+| Infrastructure | NCS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NCS |
+| Infrastructure | NKS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NKS |
 | Virtual Desktop | ADMIN | Create, Read, Update, Delete for Virtual Desktop Service |
 | Cloud Functions | ADMIN | Create, Read, Update, Delete for Cloud Functions Service |
 | NHN Container Registry (NCR) | ADMIN | Create, Read, Update, Delete for NHN Container Registry (NCR) Service |
