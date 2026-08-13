@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infrastructure Service Role-Based Permissions (R / CRUD)</title>
+<style>
+  /* Design tokens sourced from the NCUI icon/component catalogs (--ncui-* values) */
+  :root{
+    --ncui-color-white:#ffffff; --ncui-color-black:#222222;
+    --ncui-color-gray-1:#f9f9f9; --ncui-color-gray-2:#f4f4f4; --ncui-color-gray-3:#eeeeee;
+    --ncui-color-gray-4:#e5e5e5; --ncui-color-gray-8:#999999; --ncui-color-gray-9:#777777; --ncui-color-gray-10:#555555;
+    --ncui-color-primary-1:#e9f1ff; --ncui-color-primary-7:#125de6; --ncui-color-primary-8:#1446c8;
+    --ncui-border-radius-4:4px; --ncui-border-radius-max:1000px;
+    --ncui-box-shadow-component:0 2px 4px 0 rgba(0,0,0,0.1);
+    --ncui-font-family-base:Pretendard,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+
+    --bg:var(--ncui-color-gray-1); --card:var(--ncui-color-white); --line:var(--ncui-color-gray-4);
+    --text:var(--ncui-color-black);
+    /* CRUD badges unified to a single neutral color (black text / light gray background) */
+    --crud-bg2:var(--ncui-color-gray-3); --crud-tx:var(--ncui-color-black);
+    --read-bg:var(--ncui-color-gray-3); --read-tx:var(--ncui-color-black);
+    --update-bg:var(--ncui-color-gray-3); --update-tx:var(--ncui-color-black);
+    --delete-bg:var(--ncui-color-gray-3); --delete-tx:var(--ncui-color-black);
+    --na-bg:var(--ncui-color-gray-2); --na-tx:var(--ncui-color-gray-8);
+
+    /* NCUI Table component spec (from the component catalog's .grid-tbl example) */
+    --tbl-border:var(--ncui-color-gray-3);        /* neutral-3, default cell divider */
+    --tbl-border-strong:var(--ncui-color-gray-4); /* neutral-4, header bottom rule */
+    --tbl-header-bg:var(--ncui-color-gray-2);     /* neutral-2 */
+    --tbl-header-fg:var(--ncui-color-gray-10);    /* neutral-10, fg-sub */
+    --tbl-row-height:36px;                        /* --ncui-sizing-grid-row-min-height */
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:var(--ncui-font-family-base);
+    font-size:13px;line-height:1.5;padding:24px;
+    display:flex;flex-direction:column;overflow:hidden;}
+
+  /* ---- Matrix (styled as an NCUI Table/DataGrid) ---- */
+  .mwrap{border:1px solid var(--line);border-radius:var(--ncui-border-radius-4);background:var(--card);
+    box-shadow:var(--ncui-box-shadow-component);overflow:auto;flex:1 1 auto;min-height:0}
+  table.matrix{border-collapse:collapse;font-size:12px;width:100%}
+  table.matrix th,table.matrix td{border-bottom:1px solid var(--tbl-border);border-right:1px solid var(--tbl-border);padding:0 10px;height:var(--tbl-row-height);text-align:center;white-space:nowrap}
+  table.matrix thead th{position:sticky;top:0;z-index:3;background:var(--tbl-header-bg);color:var(--tbl-header-fg);font-weight:700;border-bottom:1px solid var(--tbl-border-strong);vertical-align:middle;text-align:center}
+  table.matrix thead th.role{font-size:11.5px;height:auto;padding:8px 6px;cursor:pointer;white-space:normal;min-width:120px;vertical-align:middle;text-align:center;line-height:1.35}
+  table.matrix .cat{position:sticky;left:0;z-index:2;background:var(--ncui-color-gray-3);text-align:left;font-weight:700;padding:0 10px;color:var(--text);border-top:1px solid var(--tbl-border-strong)}
+  tr.catrow td.cat{background:var(--ncui-color-gray-3);border-top:1px solid var(--tbl-border-strong)}
+  table.matrix .svc{position:sticky;left:0;z-index:2;background:var(--card);text-align:left;font-weight:400;color:var(--text);min-width:190px}
+  table.matrix .corner{position:sticky;left:0;top:0;z-index:5;background:var(--tbl-header-bg);text-align:left;color:var(--tbl-header-fg);border-bottom:1px solid var(--tbl-border-strong)}
+  table.matrix tbody tr:not(.catrow):hover td.svc,
+  table.matrix tbody tr:not(.catrow):hover td.c,
+  table.matrix tbody tr:not(.catrow):hover td.r,
+  table.matrix tbody tr:not(.catrow):hover td.n{background:var(--ncui-color-gray-1)}
+  td.c{background:var(--card)}
+  td.r{background:var(--card);color:var(--read-tx);font-weight:700}
+  td.n{background:var(--card);color:var(--na-tx);font-weight:400}
+  .cellpills{display:inline-flex;gap:5px;font-size:11px;font-weight:700}
+  .cellpills .c{color:var(--crud-tx)}
+  .cellpills .r{color:var(--read-tx)}
+  .cellpills .u{color:var(--update-tx)}
+  .cellpills .d{color:var(--delete-tx)}
+  table.matrix td.hicol,table.matrix th.hicol{box-shadow:inset 2px 0 0 var(--ncui-color-primary-7),inset -2px 0 0 var(--ncui-color-primary-7)}
+  table.matrix th.role.hicol{background:var(--ncui-color-primary-1);color:var(--ncui-color-primary-8)}
+
+  /* ---- Legend (NCUI Badge/Chip pill style) ---- */
+  .legend{display:flex;flex-wrap:wrap;gap:16px;align-items:center;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--ncui-border-radius-4);
+    box-shadow:var(--ncui-box-shadow-component);
+    padding:10px 16px;margin-bottom:14px;font-size:12.5px}
+  .legend .item{display:flex;align-items:center;gap:6px}
+  .legend .key{display:inline-flex;align-items:center;justify-content:center;
+    min-width:20px;height:20px;padding:0 8px;border-radius:var(--ncui-border-radius-max);font-weight:700;font-size:11.5px}
+  .legend .key.c{background:var(--crud-bg2);color:var(--crud-tx)}
+  .legend .key.r{background:var(--read-bg);color:var(--read-tx)}
+  .legend .key.u{background:var(--update-bg);color:var(--update-tx)}
+  .legend .key.d{background:var(--delete-bg);color:var(--delete-tx)}
+  .legend .key.n{background:var(--na-bg);color:var(--na-tx);font-weight:500}
+</style>
+</head>
+<body>
+
+  <div class="legend">
+    <div class="item"><span class="key c">C</span> Create</div>
+    <div class="item"><span class="key r">R</span> Read</div>
+    <div class="item"><span class="key u">U</span> Update</div>
+    <div class="item"><span class="key d">D</span> Delete</div>
+    <div class="item"><span class="key n">–</span> No permission</div>
+  </div>
+
+  <div class="mwrap"><table class="matrix" id="mtable"></table></div>
+
+<script>
+/*
+ * ============================================================================
+ *  권한 데이터 (여기만 수정하면 됩니다 / EDIT DATA HERE ONLY)
+ * ============================================================================
+ *  - 새 "서비스"를 추가하려면: 1) SERVICE_CATEGORIES 에 서비스명을 추가하고,
+ *    2) PERMISSIONS 의 모든 역할(role) 객체에 그 서비스에 대한 값을 추가하세요.
+
+ *  - 새 "역할(Role)"을 추가하려면: PERMISSIONS 에 새 키를 추가하고, 그 안에
+ *    모든 서비스에 대한 CRUD 값을 채워 넣으세요.
+ 
+ *  - 값은 'C' (Create/Read/Update/Delete 전체), 'R' (읽기 전용), 'N' (권한 없음)
+ *    중 하나입니다. 계산이나 함수 로직은 없으며, 아래 값이 곧 화면에 그려집니다.
+ * ============================================================================
+ */
+
+// 서비스 분류 및 표시 순서 (표의 행 그룹 순서를 결정)
+const SERVICE_CATEGORIES = {
+  'Compute': ['Instance', 'Key Pair', 'GPU Instance', 'Instance Template', 'Image', 'Image Builder', 'Auto Scale'],
+  'Container': ['NKS', 'NCS'],
+  'Network': ['VPC', 'Subnet', 'Network ACL', 'Routing', 'Security Groups', 'Load Balancer', 'NAT Instance', 'NAT Gateway', 'Transit Hub', 'Internet Gateway', 'Peering Gateway', 'Service Gateway', 'Traffic Mirroring', 'Private DNS', 'Direct Connect', 'Network Interface', 'Floating IP', 'Colocation Gateway'],
+  'Storage': ['Block Storage', 'NAS', 'NAS (offline)'],
+  'Database': ['MS-SQL Instance', 'MySQL Instance', 'PostgreSQL Instance', 'CUBRID Instance', 'MariaDB Instance', 'Tibero Instance', 'Redis Instance', 'Valkey Instance'],
+  'Machine Learning': ['Deep Learning Instance'],
+  'Data & Analytics': ['Kafka Instance'],
+};
+
+// 역할(Role)별 서비스별 CRUD 권한. 표의 열(Column) 순서는 아래 키 순서를 따릅니다.
+const PERMISSIONS = {
+  'Infrastructure ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'C', 'NCS': 'C',
+    // Network
+    'VPC': 'C', 'Subnet': 'C', 'Network ACL': 'C', 'Routing': 'C', 'Security Groups': 'C', 'Load Balancer': 'C', 'NAT Instance': 'C', 'NAT Gateway': 'C', 'Transit Hub': 'C', 'Internet Gateway': 'C', 'Peering Gateway': 'C', 'Service Gateway': 'C', 'Traffic Mirroring': 'C', 'Private DNS': 'C', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'C',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'C', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure MEMBER': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure VIEWER': {
+    // Compute
+    'Instance': 'R', 'Key Pair': 'C', 'GPU Instance': 'R', 'Instance Template': 'R', 'Image': 'R', 'Image Builder': 'R', 'Auto Scale': 'R',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'R', 'Floating IP': 'R', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'R', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'R', 'MySQL Instance': 'R', 'PostgreSQL Instance': 'R', 'CUBRID Instance': 'R', 'MariaDB Instance': 'R', 'Tibero Instance': 'R', 'Redis Instance': 'R', 'Valkey Instance': 'R',
+    // Machine Learning
+    'Deep Learning Instance': 'R',
+    // Data & Analytics
+    'Kafka Instance': 'R',
+  },
+  'Infrastructure Routing ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'C', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure Security Group ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'C', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure Load Balancer ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'C', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure Transit Hub ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'C', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure Peering Gateway ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'C', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure Colocation Gateway ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'C',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure NAT Gateway ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'C', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure Service Gateway ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'C', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure Private DNS ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'C', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure NCS ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'C',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure NKS ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'C', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'C', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'R', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+  'Infrastructure NAS ADMIN': {
+    // Compute
+    'Instance': 'C', 'Key Pair': 'C', 'GPU Instance': 'C', 'Instance Template': 'C', 'Image': 'C', 'Image Builder': 'C', 'Auto Scale': 'C',
+    // Container
+    'NKS': 'R', 'NCS': 'R',
+    // Network
+    'VPC': 'R', 'Subnet': 'R', 'Network ACL': 'R', 'Routing': 'R', 'Security Groups': 'R', 'Load Balancer': 'R', 'NAT Instance': 'R', 'NAT Gateway': 'R', 'Transit Hub': 'R', 'Internet Gateway': 'R', 'Peering Gateway': 'R', 'Service Gateway': 'R', 'Traffic Mirroring': 'R', 'Private DNS': 'R', 'Direct Connect': 'C', 'Network Interface': 'C', 'Floating IP': 'C', 'Colocation Gateway': 'R',
+    // Storage
+    'Block Storage': 'C', 'NAS': 'C', 'NAS (offline)': 'C',
+    // Database
+    'MS-SQL Instance': 'C', 'MySQL Instance': 'C', 'PostgreSQL Instance': 'C', 'CUBRID Instance': 'C', 'MariaDB Instance': 'C', 'Tibero Instance': 'C', 'Redis Instance': 'C', 'Valkey Instance': 'C',
+    // Machine Learning
+    'Deep Learning Instance': 'C',
+    // Data & Analytics
+    'Kafka Instance': 'C',
+  },
+};
+
+// 값(C/R/N) -> 셀에 표시할 HTML. 계산 로직 없이 단순 매핑만 수행합니다.
+const CELL_LABEL = {
+  C: '<span class="cellpills"><span class="c">C</span><span class="r">R</span><span class="u">U</span><span class="d">D</span></span>',
+  R: 'R',
+  N: '–',
+};
+
+/* ---------- 아래부터는 렌더링 전용 코드입니다 (수정 불필요) ---------- */
+(function(){
+  const roleNames = Object.keys(PERMISSIONS);
+  const t = document.getElementById('mtable');
+  let h = '';
+  h += '<thead><tr><th class="corner">Service</th>';
+  roleNames.forEach((name, i) => h += `<th class="role" data-col="${i}">${name}</th>`);
+  h += '</tr></thead><tbody>';
+  for (const [cat, svcs] of Object.entries(SERVICE_CATEGORIES)) {
+    h += `<tr class="catrow"><td class="cat">${cat}</td>` + roleNames.map((r, i) => `<td class="cat" data-col="${i}"></td>`).join('') + '</tr>';
+    svcs.forEach(svc => {
+      h += `<tr><td class="svc">${svc}</td>`;
+      roleNames.forEach((name, i) => {
+        const value = PERMISSIONS[name][svc];
+        h += `<td class="${value.toLowerCase()}" data-col="${i}">${CELL_LABEL[value]}</td>`;
+      });
+      h += '</tr>';
+    });
+  }
+  h += '</tbody>';
+  t.innerHTML = h;
+  t.querySelectorAll('th.role').forEach(th => {
+    th.onclick = () => {
+      const col = th.dataset.col;
+      const on = th.classList.contains('hicol');
+      t.querySelectorAll('.hicol').forEach(x => x.classList.remove('hicol'));
+      if (!on) t.querySelectorAll('[data-col="' + col + '"]').forEach(x => x.classList.add('hicol'));
+    };
+  });
+})();
+</script>
+
+</body>
+</html>

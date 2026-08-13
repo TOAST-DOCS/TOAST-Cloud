@@ -78,6 +78,16 @@ NHN Cloudが提供する「統合クラウドサービス」です。企業の�
 | Contact Center | コールセンターの効率的なお問い合わせ処理をサポートする統合ソリューションです。 |
 | Governance & Audit  | 組織のガバナンスを管理し、クラウドで発生したさまざまな活動ログおよびイベントを監視するサービスです。 |
 
+#### 基本インフラサービス
+| サービスカテゴリ | サービス |
+| ---- | --- |
+| Compute | Instance, Key Pair, GPU Instance, Instance Template, Image, Image Builder, Auto Scale |
+| Container | NKS, NCS |
+| Network | VPC, Subnet, Network ACL, Routing, Flow Log, Security Groups, Load Balancer, NAT Instance, NAT Gateway, Transit Hub, Internet Gateway, Peering Gateway, VPN Gateway, Service Gateway, Traffic Mirroring, Private DNS, Direct Connect, Network Interface, Floating IP, Colocation Gateway |
+| Storage | Block Storage, NAS, NAS (Offline), Storage Gateway |
+| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Redis Instance, Valkey Instance |
+| Machine Learning | Deep Learning Instance |
+| Data \& Analytics | Kafka Instance |
 
 ## サービスリリースポリシー
 

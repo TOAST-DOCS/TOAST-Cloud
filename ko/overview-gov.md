@@ -51,3 +51,14 @@
 | Collaboration | 협업을 위한 편리한 서비스로, 메일, 이슈 트래커, 일정 관리, 채팅까지 함께 지원해 쉽게 협업할 수 있습니다. |
 | PaaS-TA | 애플리케이션 개발과 운영을 위해 필요한 플랫폼을 온라인 환경에서 제공하는 공개형 PaaS 플랫폼입니다. |
 | Governance & Audit  | 조직의 거버넌스를 관리하고 클라우드에서 발생한 다양한 활동 로그 및 이벤트를 감시하는 서비스입니다. |
+
+#### 기본 인프라 서비스
+| 서비스 카테고리 | 서비스 |
+| ---- | --- |
+| Compute | Instance, Key Pair, GPU Instance, Instance Template, Image, Image Builder, Auto Scale |
+| Container | NKS, NCS |
+| Network | VPC, Subnet, Network ACL, Routing, Security Groups, Load Balancer, NAT Instance, NAT Gateway, Transit Hub, Internet Gateway, Peering Gateway, Service Gateway, Traffic Mirroring, Private DNS, Direct Connect, Network Interface, Floating IP, Colocation Gateway |
+| Storage | Block Storage, NAS, NAS (Offline) |
+| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Redis Instance, Valkey Instance |
+| Machine Learning | Deep Learning Instance |
+| Data & Analytics | Kafka Instance |
