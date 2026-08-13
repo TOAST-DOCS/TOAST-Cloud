@@ -435,21 +435,21 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 
 | サービス | ロール | 説明 |
 | --- | --- | --- |
-| Infrastructure | ADMIN | Infrastructureサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
-| Infrastructure | MEMBER | ネットワークサービス(Network Interface, Floating IPを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | VIEWER | 基本インフラサービス(Key Pair、Direct Connect、NAS (Offline)を除く)はRead(読み取り)。それ以外のサービスはCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Routing ADMIN | ネットワークサービス(Network Interface, Floating IP、Routing Tableを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Security Group ADMIN | ネットワークサービス(Network Interface, Floating IP、Security Groupsを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Load Balancer ADMIN | ネットワークサービス(Network Interface, Floating IP、Load Balancerを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Transit Hub ADMIN | ネットワークサービス(Network Interface, Floating IP、Transit Hubを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Peering Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、Peering Gatewayを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Colocation Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、Colocation Gatewayを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | NAT Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、NAT Gatewayを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Service Gateway ADMIN | ネットワークサービス(Network Interface, Floating IP、Service Gatewayを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Private DNS ADMIN | ネットワークサービス(Network Interface, Floating IP、Private DNSを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | Flow Log ADMIN | ネットワークサービス(Network Interface, Floating IP、Flow Logを除く)及びNKS、NCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | NCS ADMIN | ネットワークサービス(Network Interface, Floating IPを除く)及びNKS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | NKS ADMIN | ネットワークサービス(Network Interface, Floating IPを除く)及びNCS、Storage Gateway Read(読み取り)。その他のサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | ADMIN | 基本インフラサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | MEMBER | ネットワークサービス(Network Interface、フローティングIP、Direct Connectを除く)及びNKS、NCS、Storage Gateway Read(読み取り)<br> その他の基本インフラサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | VIEWER | Key Pair、Direct Connect、NAS (Offline) Create(作成)、Read(読み取り)、Update(更新)、Delete(削除)<br> その他の基本インフラサービス Read(読み取り) |
+| Infrastructure | Routing ADMIN | Infrastructure MEMBER ロール及びRouting Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Security Group ADMIN | Infrastructure MEMBER ロール及びSecurity Groups Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Load Balancer ADMIN | Infrastructure MEMBER ロール及びLoad Balancer Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Transit Hub ADMIN | Infrastructure MEMBER ロール及びTransit Hub Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Peering Gateway ADMIN | Infrastructure MEMBER ロール及びPeering Gateway Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Colocation Gateway ADMIN | Infrastructure MEMBER ロール及びColocation Gateway Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NAT Gateway ADMIN | Infrastructure MEMBER ロール及びNAT Gateway Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Service Gateway ADMIN | Infrastructure MEMBER ロール及びService Gateway Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Private DNS ADMIN | Infrastructure MEMBER ロール及びPrivate DNS Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | Flow Log ADMIN | Infrastructure MEMBER ロール及びFlow Log Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NCS ADMIN | Infrastructure MEMBER ロール及びNCS Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NKS ADMIN | Infrastructure MEMBER ロール及びNKS Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | Cloud Functions | ADMIN | Cloud Functionsサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
