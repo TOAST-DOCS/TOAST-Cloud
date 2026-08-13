@@ -381,6 +381,8 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 #### 프로젝트 서비스 이용 
 
+* [기본 인프라 서비스(Infrastructure)](../ko/overview-gov.md)의 역할별 상세 권한은 [전체 권한 매트릭스 보기](../etc/infrastructure_roles_guide-gov.html){:target="_blank" rel="noopener"}을 참조하세요.
+
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Infrastructure 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |

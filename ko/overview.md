@@ -87,6 +87,16 @@ NHN Cloud에서 제공하는 “통합 클라우드 서비스”이며, 기업�
 | Contact Center | 콜센터 상담 통합 솔루션으로 효율적인 문의 처리를 통해 운영 효율성을 높이고 최적의 고객 경험을 제공할 수 있습니다. |
 | Governance & Audit  | 조직의 거버넌스를 관리하고 클라우드에서 발생한 다양한 활동 로그 및 이벤트를 감시하는 서비스입니다. |
 
+#### 기본 인프라 서비스
+| 서비스 카테고리 | 서비스 |
+| ---- | --- |
+| Compute | Instance, Key Pair, GPU Instance, Instance Template, Image, Image Builder, Auto Scale |
+| Container | NKS, NCS |
+| Network | VPC, Subnet, Network ACL, Routing, Flow Log, Security Groups, Load Balancer, NAT Instance, NAT Gateway, Transit Hub, Internet Gateway, Peering Gateway, VPN Gateway, Service Gateway, Traffic Mirroring, Private DNS, Direct Connect, Network Interface, Floating IP, Colocation Gateway |
+| Storage | Block Storage, NAS, NAS (Offline), Storage Gateway |
+| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Redis Instance, Valkey Instance |
+| Machine Learning | Deep Learning Instance |
+| Data \& Analytics | Kafka Instance |
 
 <a id="service-release-policy"></a>
 ## 서비스 릴리스 정책 { #service-release-policy }
