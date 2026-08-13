@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=5c042ac82e65 -->
+
 <a id="nhn-cloud-user-guide"></a>
 ## NHN Cloud > 사용 가이드 { #nhn-cloud-user-guide }
 이 가이드에서는 NHN Cloud 이용 방법을 자세히 설명합니다.

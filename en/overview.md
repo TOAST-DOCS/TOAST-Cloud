@@ -85,6 +85,16 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Contact Center | An integrated solution for call center services helps process inquiries more efficiently, and provides elevated operational efficiency and optimized customer experience. |
 | Governance & Audit  | A service that manages the governance of organizations and monitors the various activity logs and events that occurred in the cloud. |
 
+#### Default Infrastructure Services
+| Service Category | Service |
+| ---- | --- |
+| Compute | Instance, Key Pair, GPU Instance, Instance Template, Image, Image Builder, Auto Scale |
+| Container | NKS, NCS |
+| Network | VPC, Subnet, Network ACL, Routing, Flow Log, Security Groups, Load Balancer, NAT Instance, NAT Gateway, Transit Hub, Internet Gateway, Peering Gateway, VPN Gateway, Service Gateway, Traffic Mirroring, Private DNS, Direct Connect, Network Interface, Floating IP, Colocation Gateway |
+| Storage | Block Storage, NAS, NAS (Offline), Storage Gateway |
+| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Redis Instance, Valkey Instance |
+| Machine Learning | Deep Learning Instance |
+| Data \& Analytics | Kafka Instance |
 
 <a id="service-release-policy"></a>
 ## Service Release Policy { #service-release-policy }

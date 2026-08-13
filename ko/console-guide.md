@@ -433,23 +433,25 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 <a id="project-member-roles-service-use"></a>
 #### 프로젝트 서비스 이용 
 
+* [기본 인프라 서비스(Infrastructure)](../ko/overview.md#service-composition) 의 역할별 상세 권한은 [전체 권한 매트릭스 보기](../etc/infrastructure_roles_guide.html){:target="_blank" rel="noopener"}을 참조하세요.
+
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | 기본 인프라 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Infrastructure | MEMBER | 네트워크 서비스(Network Interface, Floating IP 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | VIEWER | 기본 인프라 서비스(Key Pair, Direct Connect, NAS (Offline) 제외) Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Routing ADMIN | 네트워크 서비스(Network Interface, Floating IP, Routing Table 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Security Group ADMIN | 네트워크 서비스(Network Interface, Floating IP, Security Groups 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Load Balancer ADMIN | 네트워크 서비스(Network Interface, Floating IP, Load Balancer 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Transit Hub ADMIN | 네트워크 서비스(Network Interface, Floating IP, Transit Hub 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Peering Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, Peering Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Colocation Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, Colocation Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | NAT Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, NAT Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Service Gateway ADMIN | 네트워크 서비스(Network Interface, Floating IP, Service Gateway 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Private DNS ADMIN | 네트워크 서비스(Network Interface, Floating IP, Private DNS 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | Flow Log ADMIN | 네트워크 서비스(Network Interface, Floating IP, Flow Log 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | NCS ADMIN | 네트워크 서비스(Network Interface, Floating IP 제외) 및 NKS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
-| Infrastructure | NKS ADMIN | 네트워크 서비스(Network Interface, Floating IP 제외) 및 NCS, Storage Gateway Read(읽기) <br> 이 외 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | MEMBER | 네트워크 서비스(Network Interface, Floating IP, Direct Connect 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 기본 인프라 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | VIEWER | Key Pair, Direct Connect, NAS (Offline) Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br>  이 외 기본 인프라 서비스 Read(읽기) |
+| Infrastructure | Routing ADMIN | Infrastructure MEMBER 역할 및 Routing Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Security Group ADMIN | Infrastructure MEMBER 역할 및 Security Groups Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Load Balancer ADMIN | Infrastructure MEMBER 역할 및 Load Balancer Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Transit Hub ADMIN | Infrastructure MEMBER 역할 및 Transit Hub Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Peering Gateway ADMIN | Infrastructure MEMBER 역할 및 Peering Gateway Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Colocation Gateway ADMIN | Infrastructure MEMBER 역할 및 Colocation Gateway Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | NAT Gateway ADMIN | Infrastructure MEMBER 역할 및 NAT Gateway Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Service Gateway ADMIN | Infrastructure MEMBER 역할 및 Service Gateway Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Private DNS ADMIN | Infrastructure MEMBER 역할 및 Private DNS Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | Flow Log ADMIN | Infrastructure MEMBER 역할 및 Flow Log Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | NCS ADMIN | Infrastructure MEMBER 역할 및 NCS Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | NKS ADMIN | Infrastructure MEMBER 역할 및 NKS Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Cloud Functions | ADMIN | Cloud Functions 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
