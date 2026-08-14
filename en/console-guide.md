@@ -414,6 +414,7 @@ You can manage members separately in projects and organizations.
 | Infrastructure | Flow Log ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Flow Log |
 | Infrastructure | NCS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NCS |
 | Infrastructure | NKS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NKS |
+| Infrastructure | NAS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NAS |
 | Virtual Desktop | ADMIN | Create, Read, Update, Delete for Virtual Desktop Service |
 | Cloud Functions | ADMIN | Create, Read, Update, Delete for Cloud Functions Service |
 | NHN Container Registry (NCR) | ADMIN | Create, Read, Update, Delete for NHN Container Registry (NCR) Service |

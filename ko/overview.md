@@ -85,7 +85,7 @@ NHN Cloud에서 제공하는 “통합 클라우드 서비스”이며, 기업�
 | Storage | Block Storage, NAS, NAS (Offline), Storage Gateway |
 | Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Redis Instance, Valkey Instance |
 | Machine Learning | Deep Learning Instance |
-| Data \& Analytics | Kafka Instance |
+| Data & Analytics | Kafka Instance |
 
 ## 서비스 릴리스 정책
 

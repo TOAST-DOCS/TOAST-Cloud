@@ -412,6 +412,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Infrastructure | Flow Log ADMIN | Infrastructure MEMBER 역할 및 Flow Log Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | NCS ADMIN | Infrastructure MEMBER 역할 및 NCS Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | NKS ADMIN | Infrastructure MEMBER 역할 및 NKS Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | NAS ADMIN | Infrastructure MEMBER 역할 및 NAS Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Virtual Desktop | ADMIN | Virtual Desktop 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Cloud Functions | ADMIN | Cloud Functions 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR) 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |

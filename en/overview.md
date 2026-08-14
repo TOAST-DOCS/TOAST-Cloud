@@ -79,7 +79,7 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Storage | Block Storage, NAS, NAS (Offline), Storage Gateway |
 | Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Redis Instance, Valkey Instance |
 | Machine Learning | Deep Learning Instance |
-| Data \& Analytics | Kafka Instance |
+| Data & Analytics | Kafka Instance |
 
 ## Service Release Policy
 

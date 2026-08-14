@@ -412,6 +412,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Infrastructure | Flow Log ADMIN | Infrastructure MEMBER ロール及びFlow Log Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | NCS ADMIN | Infrastructure MEMBER ロール及びNCS Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | NKS ADMIN | Infrastructure MEMBER ロール及びNKS Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | NAS ADMIN | Infrastructure MEMBER ロール及びNAS Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Virtual Desktop | ADMIN | Virtual Desktopサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | Cloud Functions | ADMIN | Cloud Functionsサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
