@@ -297,7 +297,6 @@ However, if you delete the project without paying immediately, the bills used so
 
 Member management allows you to control per-user authentication (login) and authorization.
 You can manage members separately in projects and organizations.
-Members are classified into NHN Cloud members and IAM members.
 
 ### Policy for NHN Cloud Members, IAM Members, and Service Accounts
 
