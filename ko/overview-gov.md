@@ -59,6 +59,6 @@
 | Container | NKS, NCS |
 | Network | VPC, Subnet, Network ACL, Routing, Security Groups, Load Balancer, NAT Instance, NAT Gateway, Transit Hub, Internet Gateway, Peering Gateway, Service Gateway, Traffic Mirroring, Private DNS, Direct Connect, Network Interface, Floating IP, Colocation Gateway |
 | Storage | Block Storage, NAS, NAS (Offline) |
-| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Redis Instance, Valkey Instance |
+| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Valkey Instance |
 | Machine Learning | Deep Learning Instance |
 | Data & Analytics | Kafka Instance |
