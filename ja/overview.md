@@ -85,7 +85,7 @@ NHN Cloudが提供する「統合クラウドサービス」です。企業の�
 | Container | NKS, NCS |
 | Network | VPC, Subnet, Network ACL, Routing, Flow Log, Security Groups, Load Balancer, NAT Instance, NAT Gateway, Transit Hub, Internet Gateway, Peering Gateway, VPN Gateway, Service Gateway, Traffic Mirroring, Private DNS, Direct Connect, Network Interface, Floating IP, Colocation Gateway |
 | Storage | Block Storage, NAS, NAS (Offline), Storage Gateway |
-| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Redis Instance, Valkey Instance |
+| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Valkey Instance |
 | Machine Learning | Deep Learning Instance |
 | Data & Analytics | Kafka Instance |
 
