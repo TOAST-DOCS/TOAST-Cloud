@@ -881,7 +881,7 @@ resource "nhncloud_networking_vpc_v2" "resource-vpc-01" {
 | name | String | O | VPC 이름 |
 | cidrv4 | String | O | VPC IP 대역 |
 | region | String | - | VPC의 리전 이름 |
-| tenant_id | String | - | VPC의 tenant ID |
+| tenant_id | String | - | VPC의 테넌트 ID |
 
 
 <a id="create-vpc-subnet-and-attach-routing-table"></a>
