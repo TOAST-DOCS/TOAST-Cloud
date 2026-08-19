@@ -533,7 +533,7 @@ data "nhncloud_networking_routingtable_v2" "default_rt" {
 
 
 <a id="internet-gateway"></a>
-### 인터넷 게이트웨이
+### 인터넷 게이트웨이 { #internet-gateway }
 
 인터넷 게이트웨이의 ID는 NHN Cloud 콘솔 **Network > Internet Gateway**에서 확인 가능합니다.
 
@@ -1001,7 +1001,7 @@ resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
 | distributed   | Boolean | -  | 라우팅 테이블의 라우팅 방식 </br>`true`: 분산형, `false`: 중앙 집중형(기본값: `true`) |
 
 <a id="create-internet-gateway"></a>
-### 인터넷 게이트웨이 생성
+### 인터넷 게이트웨이 생성 { #create-internet-gateway }
 
 지정한 외부 네트워크에 연결되는 인터넷 게이트웨이를 생성합니다.
 외부 네트워크 ID는 NHN Cloud 콘솔 **Network > Internet Gateway**에서 확인하거나, 외부 네트워크 조회 API로 확인할 수 있습니다.

@@ -565,7 +565,7 @@ data "nhncloud_networking_routingtable_v2" "default_rt" {
 
 <a id="internet-gateway"></a>
 
-### インターネットゲートウェイ
+### インターネットゲートウェイ { #internet-gateway }
 
 インターネットゲートウェイの ID は、NHN Cloud コンソールの **Network > Internet Gateway** で確認できます。
 
@@ -1037,7 +1037,7 @@ resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
 
 <a id="create-internet-gateway"></a>
 
-### インターネットゲートウェイ作成
+### インターネットゲートウェイ作成 { #create-internet-gateway }
 
 指定した外部ネットワークに接続するインターネットゲートウェイを作成します。
 外部ネットワーク ID は、NHN Cloud コンソールの **Network > Internet Gateway** で確認するか、外部ネットワーク照会 API で確認できます。
