@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=660ef5a6860f -->
 
 <a id="third-party-user-guide-terraform-user-guide"></a>
@@ -20,14 +22,14 @@ Terraformはインフラを簡単に構築し、安全に変更し、効率的�
     * 複数の場所に同じ構成のインフラを構築し、変更できるように自動化できます。
     * インフラを構築するのにかかる時間を節約することができ、失敗も減らすことができます。
 
-
 <a id="terraform-supported-resources"></a>
-#### Resourcesサポート
+
+#### Resources サポート
 
 * Compute
     * nhncloud_compute_instance_v2
     * nhncloud_compute_volume_attach_v2
-    * nhncloud_compute_keypair_v2    
+    * nhncloud_compute_keypair_v2
 * Network
     * nhncloud_lb_loadbalancer_v2
     * nhncloud_lb_listener_v2
@@ -40,7 +42,8 @@ Terraformはインフラを簡単に構築し、安全に変更し、効率的�
     * nhncloud_networking_vpc_v2
     * nhncloud_networking_vpcsubnet_v2
     * nhncloud_networking_routingtable_v2
-    * nhncloud_networking_routingtable_attach_gateway_v2    
+    * nhncloud_networking_routingtable_attach_gateway_v2
+    * nhncloud_networking_internet_gateway_v2
     * nhncloud_networking_secgroup_v2
     * nhncloud_networking_secgroup_rule_v2
     * nhncloud_keymanager_secret_v1
@@ -55,9 +58,10 @@ Terraformはインフラを簡単に構築し、安全に変更し、効率的�
     * nhncloud_kubernetes_nodegroup_v1
     * nhncloud_kubernetes_cluster_resize_v1
     * nhncloud_kubernetes_nodegroup_upgrade_v1
-    
+
 <a id="terraform-supported-data-sources"></a>
-#### Data sourcesサポート
+
+#### Data sources サポート
 
 * nhncloud_images_image_v2
 * nhncloud_blockstorage_volume_v2
@@ -67,13 +71,16 @@ Terraformはインフラを簡単に構築し、安全に変更し、効率的�
 * nhncloud_networking_vpc_v2
 * nhncloud_networking_vpcsubnet_v2
 * nhncloud_networking_routingtable_v2
+* nhncloud_networking_internet_gateway_v2
 * nhncloud_networking_secgroup_v2
 * nhncloud_keymanager_secret_v1
 * nhncloud_keymanager_container_v1
 * nhncloud_kubernetes_cluster_v1
 * nhncloud_kubernetes_nodegroup_v1
 
+
 <a id="note"></a>
+
 ### 注意 { #note }
 
 * **下記例のすべてのデータは実際の情報ではありません。必ず正確な情報に修正して使用します。**
@@ -494,6 +501,7 @@ data "nhncloud_blockstorage_snapshot_v2" "my_snapshot" {
 
 
 <a id="vpc"></a>
+
 ### VPC { #vpc }
 
 VPCネットワークのUUIDは、**NHN CloudコンソールNetwork > VPC**でVPCを選択して確認可能です。
@@ -510,12 +518,13 @@ data "nhncloud_networking_vpc_v2" "default_network" {
 | 名前 | タイプ | 必須 | 説明       |
 | --- | --- |---|------------|
 | region | String | - | 照会するVPCが属するリージョン名 |
-| tenant\_id | String | - | 照会するVPCが属するテナントID |
+| tenant_id | String | - | 照会するVPCが属するテナントID |
 | id | String | - | 照会するVPCのID |
 | name | String | - | 照会するVPCの名前 |
 
 
 <a id="vpc-subnet"></a>
+
 ### VPCサブネット { #vpc-subnet }
 
 サブネットIDはNHN Cloudコンソール **Network > サブネット**でサブネットを選択して確認可能です。
@@ -533,12 +542,13 @@ data "nhncloud_networking_vpcsubnet_v2" "default_subnet" {
 | 名前 | タイプ | 必須 | 説明       |
 | --- | --- |---|------------|
 | region | String | - | 照会するサブネットが属するリージョン名 |
-| tenant\_id | String | - | 照会するサブネットが属するテナントID |
+| tenant_id | String | - | 照会するサブネットが属するテナントID |
 | id | String | - | 照会するサブネットID |
 | name | String | - | 照会するサブネットの名前 |
 | shared | Bool | - | 照会するサブネットの共有有無 |
 
 <a id="routing-table"></a>
+
 ### ルーティングテーブル { #routing-table }
 ```
 data "nhncloud_networking_routingtable_v2" "default_rt" {
@@ -548,12 +558,35 @@ data "nhncloud_networking_routingtable_v2" "default_rt" {
 
 | 名前 | タイプ | 必須 | 説明                 |
 | --- | --- |---|---------------------|
-| tenant\_id | String | - | 照会するルーティングテーブルが属するテナント ID
+| tenant_id | String | - | 照会するルーティングテーブルが属するテナントID |
 | id | String | - | 照会するルーティングテーブルID      |
 | name | String | - | 照会するルーティングテーブルの名前
 
 
+<a id="internet-gateway"></a>
+
+### インターネットゲートウェイ
+
+インターネットゲートウェイの ID は、NHN Cloud コンソールの **Network > Internet Gateway** で確認できます。
+
+```
+data "nhncloud_networking_internet_gateway_v2" "default_igw" {
+  name = "tf-igw-01"
+}
+```
+
+| 名前 | タイプ | 必須 | 説明                  |
+| --- | --- |---|---------------------|
+| region | String | - | 照会するインターネットゲートウェイが属するリージョン名 |
+| tenant_id | String | - | 照会するインターネットゲートウェイが属するテナント ID |
+| id | String | - | 照会するインターネットゲートウェイ ID |
+| name | String | - | 照会するインターネットゲートウェイ名 |
+| external_network_id | String | - | 照会するインターネットゲートウェイが接続する外部ネットワーク ID |
+| routingtable_id | String | - | 照会するインターネットゲートウェイを接続しているルーティングテーブル ID |
+
+
 <a id="security-group"></a>
+
 ### セキュリティグループ { #security-group }
 ```
 data "nhncloud_networking_secgroup_v2" "default_sg" {
@@ -564,7 +597,7 @@ data "nhncloud_networking_secgroup_v2" "default_sg" {
 | 名前 | タイプ | 必須 | 説明                |
 | --- | --- |---|--------------------|
 | region | String | - | 照会するセキュリティグループが属するリージョン名 |
-| tenant\_id | String | - | 照会するセキュリティグループが属するテナントID |
+| tenant_id | String | - | 照会するセキュリティグループが属するテナントID |
 | name | String | - | 照会するセキュリティグループの名前      |
 
 
@@ -656,12 +689,13 @@ VPC
 次のセッションでは各リソースを使用する方法を説明します。
 
 <a id="resources-note"></a>
-### 特記事項 { #resources-note }
 
-* オブジェクトストレージリソースの使い方は、[ユーザーガイド > Storage > Object Storage > サードパーティツール使用ガイド](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/third-party-tools-guide/)を参照してください。
+### 注意 { #resources-note }
 
+* オブジェクトストレージリソースの使用方法については、[ユーザーガイド > Storage > Object Storage > サードパーティツール使用ガイド](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/third-party-tools-guide/)を参照してください。
 
 <a id="resources-instance"></a>
+
 ## Resources - インスタンス { #resources-instance }
 
 <a id="create-instance"></a>
@@ -751,29 +785,32 @@ resource "nhncloud_compute_volume_attach_v2" "volume_to_instance"{
 | instance_id | String | O  | ブロックストレージを接続する対象インスタンス |
 | volume_id | String | O  | 接続するブロックストレージUUID |
 
-
 <a id="resources-instance-key-pair"></a>
+
 ### キーペア { #resources-instance-key-pair }
 ```
 resource "nhncloud_compute_keypair_v2" "tf_kp_01" {
   name = "tf_kp_01"
 }
-# public_key指定
+
+# public_key を指定
 resource "nhncloud_compute_keypair_v2" "tf_kp_02" {
   name = "tf_kp_02"
   public_key = "ssh-rsa ... Generated-by-Nova"
 }
 ```
 
-| 名前      | タイプ | 必須 | 説明                           |
+| 名前 | タイプ | 必須 | 説明 |
 |-----------| --- |----|--------------------------------|
-| name      | String | O  | 作成するキーペア名                   |
-| public_key | String | -  | 登録する公開鍵<br>省略すると、新しい公開鍵を作成 |
+| name | String | O | 作成するキーペア名 |
+| public_key | String | - | 登録する公開キー<br>省略すると新しい公開キーを生成します |
 
 > [注意]
-> Terraformを通じてキーペアを作成する場合、秘密鍵は状態ファイル(terraform.tfstate)に**暗号化されていない状態**で保存されます。
+> Terraform を使用してキーペアを作成する場合、秘密キーは状態ファイル (terraform.tfstate) に**暗号化されていない状態**で保存されます。
+
 
 <a id="resources-block-storage"></a>
+
 ## Resources - ブロックストレージ { #resources-block-storage }
 
 <a id="create-block-storage"></a>
@@ -846,20 +883,23 @@ Import successful!
 
 
 <a id="resources-vpc"></a>
+
 ## Resources - VPC { #resources-vpc }
 
 NHN CloudはTerraformを通して、下記のリソースの作成をサポートします。
 
 * VPC
-* VPCサブネット
+* VPC サブネット
 * ネットワークポート
 * Floating IP
 * ルーティングテーブル
+* インターネットゲートウェイ
 
 これ以外のVPCリソースは、コンソールで作成する必要があります。
 
 
 <a id="create-vpc"></a>
+
 ### VPC作成 { #create-vpc }
 
 指定したIP帯域のVPCを作成します。
@@ -876,10 +916,11 @@ resource "nhncloud_networking_vpc_v2" "resource-vpc-01" {
 | name | String | O | VPCの名前 |
 | cidrv4 | String | O | VPC IP帯域 |
 | region | String | - | VPCのリージョン名 |
-| tenant\_id | String | - | VPCのtenant ID |
+| tenant_id | String | - | VPCのテナントID |
 
 
 <a id="create-vpc-subnet-and-attach-routing-table"></a>
+
 ### VPCサブネット作成およびルーティングテーブル接続 { #create-vpc-subnet-and-attach-routing-table }
 
 指定したVPCにユーザーが指定したIP帯域でサブネットを作成し、作成したサブネットに既存のルーティングテーブルを接続します。
@@ -896,12 +937,12 @@ resource "nhncloud_networking_vpcsubnet_v2" "resource-vpcsubnet-01" {
 
 | 名前 | タイプ | 必須 | 説明       |
 | --- | --- |---|------------|
-| vpc\_id | String | O | サブネットが割り当てられるVPC ID |
+| vpc_id | String | O | サブネットが割り当てられる VPC ID |
 | cidr | String | O | サブネットのIP帯域 |
 | name | String | O | サブネットの名前  |
 | region | String | - | サブネットが割り当てられるリージョン名 |
-| tenant\_id | String | - | サブネットが割り当てられるテナントID |
-| routingtable\_id | String | - | ルーティングテーブルID |
+| tenant_id | String | - | サブネットに割り当てられるテナントID |
+| routingtable_id | String | - | ルーティングテーブルID |
 
 
 <a id="create-network-port"></a>
@@ -994,11 +1035,31 @@ resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
 | vpc_id | String  | O  | ルーティングテーブルが属するVPC ID                                             |
 | distributed   | Boolean | -  | ルーティングテーブルのルーティング方式 </br>`true`:分散型、`false`:中央集中型(デフォルト値: `true`) |
 
+<a id="create-internet-gateway"></a>
+
+### インターネットゲートウェイ作成
+
+指定した外部ネットワークに接続するインターネットゲートウェイを作成します。
+外部ネットワーク ID は、NHN Cloud コンソールの **Network > Internet Gateway** で確認するか、外部ネットワーク照会 API で確認できます。
+
+```
+resource "nhncloud_networking_internet_gateway_v2" "resource-igw-01" {
+  name = "tf-igw-01"
+  external_network_id = "50687905-7b9d-423a-b929-ab8b296a7f35"
+}
+```
+
+| 名前     | タイプ      | 必須 | 説明                          |
+|--------|---------|----|-----------------------------|
+| name   | String  | O  | インターネットゲートウェイ名                 |
+| external_network_id | String | O | インターネットゲートウェイが接続する外部ネットワーク ID |
+| region | String  | -  | インターネットゲートウェイのリージョン名            |
+
 <a id="associate-internet-gateway-with-routing-table"></a>
+
 ### ルーティングテーブルにインターネットゲートウェイを接続する { #associate-internet-gateway-with-routing-table }
 
 ルーティングテーブルにインターネットゲートウェイを接続します。
-インターネットゲートウェイはNHN Cloudコンソールで作成できます。インターネットゲートウェイを作成する方法は[ユーザーガイド](https://docs.nhncloud.com/ko/Network/Internet%20Gateway/ko/console-guide/#_2)を参照してください。
 
 ```
 resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
@@ -1473,5 +1534,6 @@ resource "nhncloud_kubernetes_nodegroup_upgrade_v1" "upgrde_nodegroup" {
 | num_max_unavailable_nodes | Integer | - | 最大サービス不可ノード数。最小値: 1、最大値: 当該ワーカーノードグループの現在のノード数、デフォルト: 1 |
 
 <a id="reference"></a>
+
 ## 参考サイト { #reference }
 Terraform Documentation - [https://www.terraform.io/docs/providers/index.html](https://www.terraform.io/docs/providers/index.html)

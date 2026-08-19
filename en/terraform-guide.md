@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=660ef5a6860f -->
 
 <a id="third-party-user-guide-terraform-user-guide"></a>
@@ -21,7 +23,8 @@ Terraform is an open-source tool that lets you easily build and safely change in
     * You can save time to build infrastructure and reduce mistakes.
 
 <a id="terraform-supported-resources"></a>
-#### Supported Resources
+
+#### Resources Support
 
 * Compute
     * nhncloud_compute_instance_v2
@@ -40,6 +43,7 @@ Terraform is an open-source tool that lets you easily build and safely change in
     * nhncloud_networking_vpcsubnet_v2
     * nhncloud_networking_routingtable_v2
     * nhncloud_networking_routingtable_attach_gateway_v2
+    * nhncloud_networking_internet_gateway_v2
     * nhncloud_networking_secgroup_v2
     * nhncloud_networking_secgroup_rule_v2
     * nhncloud_keymanager_secret_v1
@@ -56,7 +60,8 @@ Terraform is an open-source tool that lets you easily build and safely change in
     * nhncloud_kubernetes_nodegroup_upgrade_v1
 
 <a id="terraform-supported-data-sources"></a>
-#### Supported Data Sources
+
+#### Data Sources Support
 
 * nhncloud_images_image_v2
 * nhncloud_blockstorage_volume_v2
@@ -66,13 +71,16 @@ Terraform is an open-source tool that lets you easily build and safely change in
 * nhncloud_networking_vpc_v2
 * nhncloud_networking_vpcsubnet_v2
 * nhncloud_networking_routingtable_v2
+* nhncloud_networking_internet_gateway_v2
 * nhncloud_networking_secgroup_v2
 * nhncloud_keymanager_secret_v1
 * nhncloud_keymanager_container_v1
 * nhncloud_kubernetes_cluster_v1
 * nhncloud_kubernetes_nodegroup_v1
 
+
 <a id="note"></a>
+
 ### Note { #note }
 
 * **The version of the Terraform used in the examples below is 1.0.0.**
@@ -458,6 +466,7 @@ data "nhncloud_blockstorage_snapshot_v2" "my_snapshot" {
 | most_recent | Boolean | - | `true`: Select the most recently created snapshot from the queried snapshot list <br>`false`: Select snapshots in the queried order |
 
 <a id="vpc"></a>
+
 ### VPC { #vpc }
 
 To check UUID of VPC network, go to NHN Cloud console and select VPC from **Network > VPC**.
@@ -474,11 +483,12 @@ data "nhncloud_networking_vpc_v2" "default_network" {
 | Name | Format | Required | Description |
 | ------ | ---- | ---- | --------- |
 | region     | String | - | Region name that VPC to query belongs to |
-| tenant\_id | String | - | Tenant ID that VPC to query belongs to |
+| tenant_id | String | - | Tenant ID that VPC to query belongs to |
 | id | String | - | VPC ID to query |
 | name | String | - | VPC name to query |
 
 <a id="vpc-subnet"></a>
+
 ### VPC Subnet { #vpc-subnet }
 
 To check subnet ID, go to NHN Cloud console and select a subnet from **Network > VPC > Subnet**.
@@ -496,12 +506,13 @@ data "nhncloud_networking_vpcsubnet_v2" "default_subnet" {
 | Name | Type | Required | Description         |
 | --- | --- |---|------------|
 | region | String | - | Region name that subnet to query belongs to |
-| tenant\_id | String | - | Tenant ID that subnet to query belongs to |
+| tenant_id | String | - | Tenant ID that subnet to query belongs to |
 | id | String | - | Subnet ID to query |
 | name | String | - | Subnet name to query |
 | shared | Bool | - | Whether to share subnet to query |
 
 <a id="routing-table"></a>
+
 ### Routing Table { #routing-table }
 ```
 data "nhncloud_networking_routingtable_v2" "default_rt" {
@@ -515,7 +526,30 @@ data "nhncloud_networking_routingtable_v2" "default_rt" {
 | id | String | - | Routing table ID to query      |
 | name | String | - | Routing table name to query   |
 
+<a id="internet-gateway"></a>
+
+### Internet Gateway
+
+You can check the Internet Gateway ID in the NHN Cloud console under **Network > Internet Gateway**.
+
+```
+data "nhncloud_networking_internet_gateway_v2" "default_igw" {
+  name = "tf-igw-01"
+}
+```
+
+| Name | Type | Required | Description |
+| --- | --- |---|---------------------|
+| region | String | - | The name of the region to which the Internet Gateway to look up belongs |
+| tenant_id | String | - | The tenant ID to which the Internet gateway to look up belongs |
+| id | String | - | The ID of the Internet Gateway to look up |
+| name | String | - | The name of the Internet Gateway to look up |
+| external_network_id | String | - | The ID of the external network to which the Internet gateway is connected |
+| routingtable_id | String | - | The ID of the routing table associated with the Internet Gateway to look up |
+
+
 <a id="security-group"></a>
+
 ### Security Group { #security-group }
 ```
 data "nhncloud_networking_secgroup_v2" "default_sg" {
@@ -616,11 +650,13 @@ You can create, modify, or delete resources with Terraform resources. NHN Cloud 
 The following sections describe how to use each resource.
 
 <a id="resources-note"></a>
-### Note { #resources-note }
 
-* For how to use Object Storage, see [User Guide > Storage > Object Storage > Third-Party Tools Usage Guide](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/third-party-tools-guide/).
+### Prerequisites { #resources-note }
+
+* For how to use object storage resources, see [User Guide > Storage > Object Storage > Third-Party Tools User Guide](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/third-party-tools-guide/).
 
 <a id="resources-instance"></a>
+
 ## Resources - Instance { #resources-instance }
 
 <a id="create-instance"></a>
@@ -713,28 +749,31 @@ resource "nhncloud_compute_volume_attach_v2" "volume_to_instance"{
 | volume_id | String | O       | UUID of block storage to be attached |
 
 <a id="resources-instance-key-pair"></a>
+
 ### Key Pair { #resources-instance-key-pair }
 ```
 resource "nhncloud_compute_keypair_v2" "tf_kp_01" {
   name = "tf_kp_01"
 }
 
-# specify public_key
+# Specify public_key
 resource "nhncloud_compute_keypair_v2" "tf_kp_02" {
   name = "tf_kp_02"
   public_key = "ssh-rsa ... Generated-by-Nova"
 }
 ```
 
-| Name        | Format | Required | Description                             |
+| Name | Type | Required | Description |
 |-----------| --- |----|--------------------------------|
-| name      | String | O  | Name of the key pair to create                     |
-| public_key | String | -  | Public key to register<br>If omitted, create a new public key |
+| name | String | O | Key pair name to create |
+| public_key | String | - | Public key to register<br>If omitted, create a new public key |
 
 > [Caution]
 > When you create a key pair through Terraform, the private key is stored **unencrypted** in the state file (terraform.tfstate).
 
+
 <a id="resources-block-storage"></a>
+
 ## Resources - Block Storage { #resources-block-storage }
 
 <a id="create-block-storage"></a>
@@ -805,19 +844,22 @@ Import successful!
 ```
 
 <a id="resources-vpc"></a>
+
 ## Resources - VPC { #resources-vpc }
 
 NHN Cloud supports creation of the following resources with Terraform:
 
 * VPC
 * VPC Subnet
-* Network Port
+* Network port
 * Floating IP
 * Routing Table
+* Internet Gateway
 
 Other VPC resources must be created in the console.
 
 <a id="create-vpc"></a>
+
 ### Create VPC { #create-vpc }
 
 Create a VPC with the specified IP range.
@@ -834,9 +876,10 @@ resource "nhncloud_networking_vpc_v2" "resource-vpc-01" {
 | name | String | O | VPC name |
 | cidrv4 | String | O | VPC IP range |
 | region | String | - | VPC region name |
-| tenant\_id | String | - | VPC tenant ID |
+| tenant_id | String | - | Tenant ID of VPC |
 
 <a id="create-vpc-subnet-and-attach-routing-table"></a>
+
 ### Create VPC Subnet and Attach Routing Table { #create-vpc-subnet-and-attach-routing-table }
 
 Create a subnet with the specified IP range in the specified VPC, and attach the existing routing table to the created subnet.
@@ -853,12 +896,12 @@ resource "nhncloud_networking_vpcsubnet_v2" "resource-vpcsubnet-01" {
 
 | Name | Type | Required | Description         |
 | --- | --- |---|------------|
-| vpc\_id | String | O | VPC ID to which subnet is assigned |
+| vpc_id | String | O | VPC ID to which subnet is assigned |
 | cidr | String | O | IP range of subnet |
 | name | String | O | Name of subnet    |
 | region | String | - | Name of region to which subnet is assigned |
-| tenant\_id | String | - | Tenant ID to which subnet is assigned |
-| routingtable\_id | String | - | Routing table ID |
+| tenant_id | String | - | Tenant ID to which subnet is assigned |
+| routingtable_id | String | - | Routing Table ID |
 
 <a id="create-network-port"></a>
 ### Create Network Port { #create-network-port }
@@ -948,11 +991,31 @@ resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
 | vpc_id | String  | O  | VPC ID to which the routing table belongs                                             |
 | distributed   | Boolean | -  | Routing method of routing table </br>`true`: decentralized, `false`: centralized (default: `true`) |
 
+<a id="create-internet-gateway"></a>
+
+### Create Internet Gateway
+
+Creates an internet gateway that connects to the specified external network.
+You can find the external network ID in the NHN Cloud console under **Network > Internet Gateway**, or by using the List External Networks API.
+
+```
+resource "nhncloud_networking_internet_gateway_v2" "resource-igw-01" {
+  name = "tf-igw-01"
+  external_network_id = "50687905-7b9d-423a-b929-ab8b296a7f35"
+}
+```
+
+| Name | Type | Required | Description |
+|--------|---------|----|-----------------------------|
+| name | String | O | Name of the internet gateway |
+| external_network_id | String | O | ID of the external network to connect to the internet gateway |
+| region | String | - | Region name of the internet gateway |
+
 <a id="associate-internet-gateway-with-routing-table"></a>
+
 ### Associate Internet Gateway with Routing Table { #associate-internet-gateway-with-routing-table }
 
-Associate an Internet gateway to the routing table.
-You can create an Internet gateway in the NHN Cloud console. For information on how to create an Internet gateway, see the [User Guide](https://docs.nhncloud.com/ko/Network/Internet%20Gateway/ko/console-guide/#_2).
+Associates an internet gateway with routing table.
 
 ```
 resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
@@ -1353,9 +1416,10 @@ resource "nhncloud_kubernetes_nodegroup_v1" "resource-nodegroup-01" {
 | flavor_id | UUID | O | Node group instance type UUID |
 | image_id | UUID | O | Node group base image UUID |
 | labels | Object | O | Node group creation information object |
-| labels.availability_zone | String | O | Default worker node group applies: availability zone |
-| labels.boot_volume_type | String | O | Default worker node group applies: block storage size (GB) |
-| labels.ca_enable  | String  | O  | Applied to the worker node group: Whether Cluster Autoscaler is enabled Cluster Autoscaler activation status<br>("True" / "False") || labels.boot_volume_size | String | O | Default worker node group applies: whether to enable the feature<br>("True" / "False")      |
+| labels.availability_zone | String | O | Applied to the default worker node group: Availability zone |
+| labels.boot_volume_type | String | O | Applied to the default worker node group: Block storage type |
+| labels.boot_volume_size | String | O | Applied to the default worker node group: Block storage size (GB) |
+| labels.ca_enable  | String  | O  | Applied to the default worker node group: Cluster Autoscaler: Whether to enable the feature<br>("True" / "False") |
 
 <a id="resize"></a>
 ### Resize { #resize }
@@ -1423,5 +1487,6 @@ resource "nhncloud_kubernetes_nodegroup_upgrade_v1" "upgrde_nodegroup" {
 | num_max_unavailable_nodes | Integer | - | Maximum number of unavailable nodes. Minimum: 1, Maximum: current number of nodes in that worker node group, Default: 1 |
 
 <a id="reference"></a>
+
 ## Reference { #reference }
 Terraform Documentation - [https://www.terraform.io/docs/providers/index.html](https://www.terraform.io/docs/providers/index.html)
