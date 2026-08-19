@@ -22,6 +22,8 @@ Terraform is an open-source tool that lets you easily build and safely change in
     * You can automate the process so that infrastructure with the same configuration can be built and changed in multiple locations.
     * You can save time to build infrastructure and reduce mistakes.
 
+<a id="terraform-supported-resources"></a>
+
 #### Resources Support
 
 * Compute
@@ -56,6 +58,8 @@ Terraform is an open-source tool that lets you easily build and safely change in
     * nhncloud_kubernetes_nodegroup_v1
     * nhncloud_kubernetes_cluster_resize_v1
     * nhncloud_kubernetes_nodegroup_upgrade_v1
+
+<a id="terraform-supported-data-sources"></a>
 
 #### Data Sources Support
 
@@ -645,9 +649,11 @@ You can create, modify, or delete resources with Terraform resources. NHN Cloud 
 
 The following sections describe how to use each resource.
 
-### Prerequisites
+<a id="resources-note"></a>
 
-* For how to use object storage resources, see [User Guide > Storage > Object Storage > Third-Party Tools User Guide](https://docs.nhncloud.com/en/Storage/Object%20Storage/ko/third-party-tools-guide/).
+### Prerequisites { #resources-note }
+
+* For how to use object storage resources, see [User Guide > Storage > Object Storage > Third-Party Tools User Guide](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/third-party-tools-guide/).
 
 <a id="resources-instance"></a>
 
@@ -742,7 +748,9 @@ resource "nhncloud_compute_volume_attach_v2" "volume_to_instance"{
 | instance_id | String | O       | Target instance to attach the block storage |
 | volume_id | String | O       | UUID of block storage to be attached |
 
-### Key Pair
+<a id="resources-instance-key-pair"></a>
+
+### Key Pair { #resources-instance-key-pair }
 ```
 resource "nhncloud_compute_keypair_v2" "tf_kp_01" {
   name = "tf_kp_01"
@@ -983,7 +991,7 @@ resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
 | vpc_id | String  | O  | VPC ID to which the routing table belongs                                             |
 | distributed   | Boolean | -  | Routing method of routing table </br>`true`: decentralized, `false`: centralized (default: `true`) |
 
-<a id="associate-internet-gateway-with-routing-table"></a>
+<a id="create-internet-gateway"></a>
 
 ### Create Internet Gateway
 
@@ -1478,5 +1486,7 @@ resource "nhncloud_kubernetes_nodegroup_upgrade_v1" "upgrde_nodegroup" {
 | num_buffer_nodes | Integer | - | Number of buffer nodes. Minimum: 0, Maximum: (maximum node quota per worker node group - current number of nodes in that worker node group), Default: 1 |
 | num_max_unavailable_nodes | Integer | - | Maximum number of unavailable nodes. Minimum: 1, Maximum: current number of nodes in that worker node group, Default: 1 |
 
-## Reference
+<a id="reference"></a>
+
+## Reference { #reference }
 Terraform Documentation - [https://www.terraform.io/docs/providers/index.html](https://www.terraform.io/docs/providers/index.html)
