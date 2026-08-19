@@ -437,7 +437,7 @@ You can manage members separately in projects and organizations.
 | Service | Role | Description |
 | --- | --- | --- |
 | Infrastructure | ADMIN | Create, Read, Update, and Delete access to basic infrastructure services |
-| Infrastructure | MEMBER | Read access to network services (excluding Network Interface, Floating IP, and Direct Connect) and to NKS, NCS, and Storage Gateway. <br> Create, Read, Update, and Delete access to all other basic infrastructure services.|
+| Infrastructure | MEMBER | Read access to network services (excluding Network Interface, Floating IP, and Direct Connect) and to NKS, NCS, NAS and Storage Gateway. <br> Create, Read, Update, and Delete access to all other basic infrastructure services.|
 | Infrastructure | VIEWER | Create, Read, Update, and Delete access to Key Pair, Direct Connect, and NAS (Offline). <br> Read access to all other basic infrastructure services. |
 | Infrastructure | Routing ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Routing |
 | Infrastructure | Security Group ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Security Groups |
