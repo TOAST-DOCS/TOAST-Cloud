@@ -22,6 +22,8 @@ Terraformはインフラを簡単に構築し、安全に変更し、効率的�
     * 複数の場所に同じ構成のインフラを構築し、変更できるように自動化できます。
     * インフラを構築するのにかかる時間を節約することができ、失敗も減らすことができます。
 
+<a id="terraform-supported-resources"></a>
+
 #### Resources サポート
 
 * Compute
@@ -56,6 +58,8 @@ Terraformはインフラを簡単に構築し、安全に変更し、効率的�
     * nhncloud_kubernetes_nodegroup_v1
     * nhncloud_kubernetes_cluster_resize_v1
     * nhncloud_kubernetes_nodegroup_upgrade_v1
+
+<a id="terraform-supported-data-sources"></a>
 
 #### Data sources サポート
 
@@ -561,7 +565,7 @@ data "nhncloud_networking_routingtable_v2" "default_rt" {
 
 <a id="internet-gateway"></a>
 
-### インターネットゲートウェイ
+### インターネットゲートウェイ { #internet-gateway }
 
 インターネットゲートウェイの ID は、NHN Cloud コンソールの **Network > Internet Gateway** で確認できます。
 
@@ -684,9 +688,11 @@ VPC
 
 次のセッションでは各リソースを使用する方法を説明します。
 
-### 注意
+<a id="resources-note"></a>
 
-* オブジェクトストレージリソースの使用方法については、[ユーザーガイド > Storage > Object Storage > サードパーティツール使用ガイド](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/third-party-tools-guide/)を参照してください。
+### 注意 { #resources-note }
+
+* オブジェクトストレージリソースの使用方法については、[ユーザーガイド > Storage > Object Storage > サードパーティツール使用ガイド](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/third-party-tools-guide/)を参照してください。
 
 <a id="resources-instance"></a>
 
@@ -779,7 +785,9 @@ resource "nhncloud_compute_volume_attach_v2" "volume_to_instance"{
 | instance_id | String | O  | ブロックストレージを接続する対象インスタンス |
 | volume_id | String | O  | 接続するブロックストレージUUID |
 
-### キーペア
+<a id="resources-instance-key-pair"></a>
+
+### キーペア { #resources-instance-key-pair }
 ```
 resource "nhncloud_compute_keypair_v2" "tf_kp_01" {
   name = "tf_kp_01"
@@ -1027,9 +1035,9 @@ resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
 | vpc_id | String  | O  | ルーティングテーブルが属するVPC ID                                             |
 | distributed   | Boolean | -  | ルーティングテーブルのルーティング方式 </br>`true`:分散型、`false`:中央集中型(デフォルト値: `true`) |
 
-<a id="associate-internet-gateway-with-routing-table"></a>
+<a id="create-internet-gateway"></a>
 
-### インターネットゲートウェイ作成
+### インターネットゲートウェイ作成 { #create-internet-gateway }
 
 指定した外部ネットワークに接続するインターネットゲートウェイを作成します。
 外部ネットワーク ID は、NHN Cloud コンソールの **Network > Internet Gateway** で確認するか、外部ネットワーク照会 API で確認できます。
@@ -1525,5 +1533,7 @@ resource "nhncloud_kubernetes_nodegroup_upgrade_v1" "upgrde_nodegroup" {
 | num_buffer_nodes | Integer | - | バッファノード数。最小値: 0、最大値: (ワーカーノードグループあたりの最大ノード数クォータ - 当該ワーカーノードグループの現在のノード数)、デフォルト: 1 |
 | num_max_unavailable_nodes | Integer | - | 最大サービス不可ノード数。最小値: 1、最大値: 当該ワーカーノードグループの現在のノード数、デフォルト: 1 |
 
-## 参考サイト
+<a id="reference"></a>
+
+## 参考サイト { #reference }
 Terraform Documentation - [https://www.terraform.io/docs/providers/index.html](https://www.terraform.io/docs/providers/index.html)
