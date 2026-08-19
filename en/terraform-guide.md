@@ -528,7 +528,7 @@ data "nhncloud_networking_routingtable_v2" "default_rt" {
 
 <a id="internet-gateway"></a>
 
-### Internet Gateway { #internet-gateway }
+### Internet Gateway
 
 You can check the Internet Gateway ID in the NHN Cloud console under **Network > Internet Gateway**.
 
@@ -993,7 +993,7 @@ resource "nhncloud_networking_routingtable_v2" "resource-rt-01" {
 
 <a id="create-internet-gateway"></a>
 
-### Create Internet Gateway { #create-internet-gateway }
+### Create Internet Gateway
 
 Creates an internet gateway that connects to the specified external network.
 You can find the external network ID in the NHN Cloud console under **Network > Internet Gateway**, or by using the List External Networks API.
