@@ -397,7 +397,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | 서비스 | 역할 | 설명 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | 기본 인프라 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
-| Infrastructure | MEMBER | 네트워크 서비스(Network Interface, Floating IP, Direct Connect 제외) 및 NKS, NCS, Storage Gateway Read(읽기) <br> 이 외 기본 인프라 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Infrastructure | MEMBER | 네트워크 서비스(Network Interface, Floating IP, Direct Connect 제외) 및 NKS, NCS, NAS, Storage Gateway Read(읽기) <br> 이 외 기본 인프라 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | VIEWER | Key Pair, Direct Connect, NAS (Offline) Create(생성), Read(읽기), Update(갱신), Delete(삭제) <br>  이 외 기본 인프라 서비스 Read(읽기) |
 | Infrastructure | Routing ADMIN | Infrastructure MEMBER 역할 및 Routing Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
 | Infrastructure | Security Group ADMIN | Infrastructure MEMBER 역할 및 Security Groups Create(생성), Read(읽기), Update(갱신), Delete(삭제) |

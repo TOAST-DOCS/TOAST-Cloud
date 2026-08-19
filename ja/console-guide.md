@@ -397,7 +397,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | サービス | ロール | 説明 |
 | --- | --- | --- |
 | Infrastructure | ADMIN | 基本インフラサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| Infrastructure | MEMBER | ネットワークサービス(Network Interface、フローティングIP、Direct Connectを除く)及びNKS、NCS、Storage Gateway Read(読み取り)<br> その他の基本インフラサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Infrastructure | MEMBER | ネットワークサービス(Network Interface、フローティングIP、Direct Connectを除く)及びNKS、NCS、NAS、Storage Gateway Read(読み取り)<br> その他の基本インフラサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | VIEWER | Key Pair、Direct Connect、NAS (Offline) Create(作成)、Read(読み取り)、Update(更新)、Delete(削除)<br> その他の基本インフラサービス Read(読み取り) |
 | Infrastructure | Routing ADMIN | Infrastructure MEMBER ロール及びRouting Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
 | Infrastructure | Security Group ADMIN | Infrastructure MEMBER ロール及びSecurity Groups Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
