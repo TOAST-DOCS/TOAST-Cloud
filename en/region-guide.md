@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=3a1734fcb5e6 -->
 
 <a id="nhn-cloud-guide-to-nhn-cloud-regions"></a>
@@ -20,11 +22,6 @@ NHN Cloud is expanding its regions to make its service globally available.
 
 <a id="nhn-cloud-regional-service"></a>
 ## NHN Cloud Regional Service { #nhn-cloud-regional-service }
-
-**Regional Service**
-Regional Service refers to services that are provided only for particular regions due to restrictions in infrastructure and service content of eacy country/region/law/product. 
-The service is also provided to serve at different physical locations or to enable redundant data configuration. 
-Regional service is available only for a specific region, and each region may provide different pricing policy. 
 
 **Global Service**
 Global Service refers to services that are available throughout all regions. 
@@ -131,6 +128,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Speech to Text | Global |  |  |  |  | 
 | Machine Learning | Deep Learning Instance | Regional | O |  | O | |  
 |  | AI EasyMaker | Regional | O |  | O |  |  
+|  | NHN Cloud Foundry | Regional | O |  |  | O |
 | Application Service | ROLE | Global |  |  |  |  | 
 |  | API Gateway | Regional | O | O | O |  |  
 |  | RTCS | Global |  |  |  |  | 
