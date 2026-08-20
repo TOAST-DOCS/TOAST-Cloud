@@ -21,7 +21,6 @@ NHN Cloud is expanding its regions to make its service globally available.
 ![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_EN.png)
 
 <a id="nhn-cloud-regional-service"></a>
-
 ## NHN Cloud Regional Service { #nhn-cloud-regional-service }
 
 **Global Service**
