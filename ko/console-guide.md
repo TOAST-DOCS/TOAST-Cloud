@@ -322,7 +322,8 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 멤버 관리를 통해 사용자별 인증(로그인) 및 역할을 통제할 수 있습니다.
 프로젝트와 조직에서 멤버 관리를 별도로 할 수 있습니다.
 
-### NHN Cloud 계정 / IAM 계정 / 서비스 계정 정책
+<a id="policy-for-nhn-cloud-members-iam-members-and-service-accounts"></a>
+### NHN Cloud 계정 / IAM 계정 / 서비스 계정 정책 { #policy-for-nhn-cloud-members-iam-members-and-service-accounts }
 
 | 구분 | [NHN Cloud](http://nhncloud.com) 계정 | IAM 계정 | 서비스 계정 |
 | --- | --- | --- | --- | 
