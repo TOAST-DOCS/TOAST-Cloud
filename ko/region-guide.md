@@ -130,6 +130,7 @@ NHN Cloud는 글로벌한 서비스 제공을 위해 더 많은 지역으로 리
 |  | Speech to Text | 글로벌 |  |  |  |  | 
 | Machine Learning | Deep Learning Instance | 리전 | O |  | O | |  
 |  | AI EasyMaker | 리전 | O |  | O |  |  
+|  | NHN Cloud Foundry | 리전 | O |  |  | O |  
 | Application Service | ROLE | 글로벌 |  |  |  |  | 
 |  | API Gateway | 리전 | O | O | O |  |  
 |  | RTCS | 글로벌 |  |  |  |  | 
