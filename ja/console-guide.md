@@ -324,7 +324,8 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 プロジェクトと組織でメンバー管理を別々に行えます。
 
 
-### NHN CloudアカウントとIAMアカウント、サービスアカウントポリシー
+<a id="policy-for-nhn-cloud-members-iam-members-and-service-accounts"></a>
+### NHN CloudアカウントとIAMアカウント、サービスアカウントポリシー { #policy-for-nhn-cloud-members-iam-members-and-service-accounts }
 
 | 区分 | [NHN Cloud](http://nhncloud.com)アカウント | IAMアカウント | サービスアカウント |
 | --- | --- | --- | --- |
@@ -428,7 +429,6 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 
 
 <a id="project-member-roles-service-use"></a>
-
 #### サービス利用  
 
 * [基本インフラサービス(Infrastructure)](../ja/overview.md#service-composition)のロール別詳細権限は、[全権限マトリックス表示](../etc/infrastructure_roles_guide.html){:target="_blank" rel="noopener"}で確認してください。
