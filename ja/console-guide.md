@@ -408,24 +408,24 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | ロール | 説明 |
 | --- | --- |
 | ADMIN | プロジェクト全体に対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
-| MARKETPLACE_ADMIN | マーケットプレイスサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
-| MARKETPLACE_VIEWER | マーケットプレイスサービス Read(読み取り) |
-| MEMBER | プロジェクト内のすべてのサービスのリソースCreate(作成), Read(読み取り), Update(更新), Delete(削除) - 一部のサービスを除く(関連するロール/権限の確認) |
-| BILLING VIEWER | 利用現況Read(読み取り) |
-| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br>プロジェクト統合Appkey Create(作成), Read(読み取り), Update(更新), Delete(削除)<br>プロジェクトサービス有効化(Enable), 無効化(Disable)<br>プロジェクトDelete(削除) |
-| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br>プロジェクト統合Appkey Read(読み取り) |
-| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br>プロジェクトロールグループCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
-| PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り)<br>プロジェクトロールグループRead(読み取り) |
-| PROJECT NOTICE GROUP MANAGEMENT ADMIN | プロジェクト通知受信グループの管理Create(作成), Read(読み取り), Update(更新), Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループRead(読み取り)| 
-| PROJECT NOTICE GROUP MANAGEMENT VIEWER | プロジェクト通知受信グループの管理Read(読み取り) <br> プロジェクトロールグループRead(読み取り)| 
-| PROJECT NOTICE MANAGEMENT ADMIN | プロジェクト通知管理 Create(作成), Read(読み取り), Update(更新), Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループRead(読み取り)| プロジェクト通知受信グループの管理 Read(読み取り)
-| PROJECT NOTICE MANAGEMENT VIEWER | プロジェクト通知管理 Read(読み取り) <br> プロジェクトロールグループRead(読み取り)| プロジェクト通知受信グループの管理 Read(読み取り)
-| PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティ設定Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
-| PROJECT API SECURITY SETTING VIEWER | プロジェクトAPIセキュリティ設定Read(読み取り)|
-| PROJECT AUTHENTICATION MANAGEMENT ADMIN | プロジェクト認証情報管理Create(作成), Read(読み取り), Update(更新), Delete(削除)|
-| PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォータ管理Create(作成), Read(読み取り), Update(更新), Delete(削除)|
-| PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォータ管理Read(読み取り)|
-| PROJECT_SUPPORT_ADMIN| プロジェクトお問い合わせCreate(作成)|
+| MARKETPLACE_ADMIN | Marketplace サービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| MARKETPLACE_VIEWER | Marketplace サービス Read(読み取り) |
+| MEMBER | プロジェクト内のすべてのサービスのリソース Create(作成), Read(読み取り), Update(更新), Delete(削除) - 一部のサービスを除く(関連するロール/権限の確認) |
+| BILLING VIEWER | 利用現況 Read(読み取り) |
+| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報 Update(更新)<br>プロジェクト統合Appkey Create(作成), Read(読み取り), Update(更新), Delete(削除)<br>プロジェクトサービス有効化(Enable)、無効化(Disable)<br>プロジェクト Delete(削除) |
+| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報 Read(読み取り)<br>プロジェクト統合Appkey Read(読み取り) |
+| PROJECT MEMBER ADMIN | プロジェクトメンバー Create(作成), Read(読み取り), Update(更新), Delete(削除)<br>プロジェクトロールグループ Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| PROJECT MEMBER VIEWER | プロジェクトメンバー Read(読み取り)<br>プロジェクトロールグループ Read(読み取り) |
+| PROJECT NOTICE GROUP MANAGEMENT ADMIN | プロジェクト通知受信グループ管理 Create(作成), Read(読み取り), Update(更新), Delete(削除) <br> プロジェクトメンバー Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)| 
+| PROJECT NOTICE GROUP MANAGEMENT VIEWER | プロジェクト通知受信グループ管理 Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)| 
+| PROJECT NOTICE MANAGEMENT ADMIN | プロジェクト通知管理 Create(作成), Read(読み取り), Update(更新), Delete(削除) <br> プロジェクトメンバー Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループ管理 Read(読み取り)
+| PROJECT NOTICE MANAGEMENT VIEWER | プロジェクト通知管理 Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループ管理 Read(読み取り)
+| PROJECT API SECURITY SETTING ADMIN | プロジェクト API セキュリティ設定 Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
+| PROJECT API SECURITY SETTING VIEWER | プロジェクト API セキュリティ設定 Read(読み取り)|
+| PROJECT AUTHENTICATION MANAGEMENT ADMIN | プロジェクト認証情報管理 Create(作成), Read(読み取り), Update(更新), Delete(削除)|
+| PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォータ管理 Create(作成), Read(読み取り), Update(更新), Delete(削除)|
+| PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォータ管理 Read(読み取り)|
+| PROJECT_SUPPORT_ADMIN| プロジェクトお問い合わせ Create(作成)|
 
 
 <a id="project-member-roles-service-use"></a>
@@ -555,7 +555,18 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | AI EasyMaker | ADMIN | AI EasyMakerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| NHN Cloud Foundry | ADMIN | NHN Cloud Foundry サービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| NHN Cloud Foundry | ADMIN | NHN Cloud Foundry サービスの Create（作成）、Read（読み取り）、Update（更新）、Delete（削除）  |
+| IAP | ADMIN | IAPサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| DataFlow | ADMIN | DataFlowサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| DataQuery | ADMIN | DataQueryサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Data Lake Storage | ADMIN | Data Lake StorageサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除)  |
+| Data Lake Storage | OPERATOR | Data Lake Storageサービス内のバケットリストおよび、すべての情報詳細を照会Read(読み取り)。バケット管理Create(作成)、Update(更新)、Delete(削除)  |
+| Data Lake Storage | VIEWER | Data Lake Storageサービス内のバケットリストおよび、すべての情報詳細を照会Read(読み取り)  |
+| EasyQueue | ADMIN | EasyQueueサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除)、メッセージの送受信  |
+| EasyQueue | CLIENT | EasyQueueサービスの参照(Read)、メッセージの送受信  |
+| EasyQueue | VIEWER | EasyQueueサービス Read(読み取り)  |
 | ROLE | ADMIN | ROLEサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | RTCS | ADMIN | RTCSサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |

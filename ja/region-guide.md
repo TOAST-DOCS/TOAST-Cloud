@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=3a1734fcb5e6 -->
 
 <a id="nhn-cloud-guide-to-nhn-cloud-regions"></a>
@@ -20,11 +22,6 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 
 <a id="nhn-cloud-regional-service"></a>
 ## NHN Cloudリージョンサービス { #nhn-cloud-regional-service }
-
-**リージョンサービス**
-リージョンサービスは、サービスを提供するリージョンのインフラ環境と国/地域/法律/商品でサービスする内容の制限により、特定地域にのみ提供されるサービスです。
-物理的なサービスの提供位置が異なる必要がある場合や、データの二重化構成を行うためにも利用します。
-リージョンサービスは、特定リージョンでのみ利用でき、リージョンごとに課金ポリシーが異なる場合があります。
 
 **グローバルサービス**
 グローバルサービスは、すべてのリージョンで使用できるサービスです。
@@ -131,6 +128,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Speech to Text | グローバル |  |  |  |  | 
 | Machine Learning | Deep Learning Instance | リージョン | O |  | O | |  
 |  | AI EasyMaker | リージョン | O |  | O |  |  
+|  | NHN Cloud Foundry | リージョン | O |  |  | O |
 | Application Service | ROLE | グローバル |  |  |  |  | 
 |  | API Gateway | リージョン | O | O | O |  |  
 |  | RTCS | グローバル |  |  |  |  | 

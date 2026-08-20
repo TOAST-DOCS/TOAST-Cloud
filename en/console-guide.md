@@ -540,7 +540,7 @@ You can manage members separately in projects and organizations.
 | SMS | ADMIN | Create, Read, Update, Delete for SMS Service |
 | SMS | SEND ADMIN | Create, Read in Deliver SMS |
 | SMS | DELIVERY RESULT ADMIN | Read in Retrieve by SMS Request, Create Download Search Result <br> Read in Retrieve Bulk SMS Delivery, Create Download Retrieve Result <br> Read in Retrieve Tagged SMS Delivery, Create Download Retrieve Result |
-| SMS | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates <br> Create, Read, Update, Delete in Preregistration Outgoing Numbers <br> Read in Retrieve Outgoing Number, Create, Read, Update, Delete in Manage Tags <br> Create, Read, Update, Delete in Manage UIDs <br> Create, Read, Update, Delete in Manage Webhooks <br> Create, Read, Update, Delete in Set 080 Call Rejects <br> Create, Read, Update, Delete in Delivery Setting <br> Create, Read, Update, Delete in Statistics Event Key |
+| SMS | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates <br> Create, Read, Update, Delete in Preregistration Outgoing Numbers <br> Read in Retrieve Outgoing Number, Create, Read, Update, Delete in Manage Tags <br> Create, Read, Update, Delete in Manage UIDs <br> Create, Read, Update, Delete in Manage Webhooks<br> Create, Read, Update, Delete in Set 080 Call Rejects <br> Create, Read, Update, Delete in Delivery Setting <br> Create, Read, Update, Delete in Statistics Event Key |
 | SMS | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | RCS Bizmessage | ADMIN | Create, Read, Update, Delete for RCS Bizmessage Service |
 | Email | ADMIN | Create, Read, Update, Delete for Email Service |
@@ -551,14 +551,14 @@ You can manage members separately in projects and organizations.
 | KakaoTalk Bizmessage | ADMIN | Create, Read, Update, Delete for KakaoTalk Bizmessage Service |
 | KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create, Read in Send|
 | KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result<br> (AlimTalk) Read in Query Mass Delivery, Create Download Search Result <br> (FriendTalk)Read in Query Delivery Result, Create Download Search Result|
-| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group <br>(FriendTalk)Read, Delete in Manage Images <br>(FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery<br> Create, Read, Update, Delete in Sending Settings<br> Create, Read, Update, Delete in Manage Webhooks<br> Create, Read, Update, Delete in Statistics Event Key|
+| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group <br>(FriendTalk)Read, Delete in Manage Images <br>(FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery<br> Create, Read, Update, Delete in Sending settings<br> Create, Read, Update, Delete in Manage Webhooks<br> Create, Read, Update, Delete in Statistics Event Key |
 | KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | Face Recognition | ADMIN | Create, Read, Update, Delete for Face Recognition Service |
 | OCR | ADMIN | Create, Read, Update, Delete for OCR |
 | Text to Speech | ADMIN | Create, Read, Update, Delete for Text to Speech |
 | Speech to Text | ADMIN | Create, Read, Update, Delete for Speech to Text |
 | AI EasyMaker | ADMIN | Create, Read, Update, Delete for AI EasyMaker |
-| NHN Cloud Foundry | ADMIN | Create, Read, Update, Delete for NHN Cloud Foundry Service |
+| NHN Cloud Foundry | ADMIN | Create, Read, Update, Delete the NHN Cloud Foundry service |
 | ROLE | ADMIN | Create, Read, Update, Delete for ROLE Service |
 | API Gateway | ADMIN | Create, Read, Update, Delete for API Gateway Service |
 | RTCS | ADMIN | Create, Read, Update, Delete for RTCS Service |
@@ -591,7 +591,7 @@ You can manage members separately in projects and organizations.
 | Private CA | ADMIN | Create, Read, Update, Delete for Service Private CA |
 | Private CA | VIEWER | Read for Private CA Service |
 | eTax | ADMIN | Create, Read, Update, Delete for eTax Service |
-| eTax | VIEWER | Read  for eTax Service |
+| eTax | VIEWER | Read for eTax Service |
 
 
 <a id="project-member-roles-service-permission"></a>
