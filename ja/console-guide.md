@@ -573,22 +573,11 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | ShortURL | ADMIN | ShortURLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | File-Crafter | ADMIN | File-Crafterサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Cloud Scheduler | ADMIN | Cloud Schedulerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| IAP | ADMIN | IAPサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
-| Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Cloud Search | ADMIN | Cloud Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Autocomplete | ADMIN | Autocompleteサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Corporation Search | ADMIN | Corporation Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| DataFlow | ADMIN | DataFlowサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| DataQuery | ADMIN | DataQueryサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | DataQuery | CLUSTER ADMIN | DataQuery サービスクラスターの On（起動）、Off（停止）、Spec Configuration（スペック設定） |
 | DataQuery | DATASOURCE ADMIN | DataQuery サービスデータソースの Create（作成）、Update（修正）、Delete（削除）  |
-| Data Lake Storage | ADMIN | Data Lake StorageサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除)  |
-| Data Lake Storage | OPERATOR | Data Lake Storageサービス内のバケットリストおよび、すべての情報詳細を照会Read(読み取り)。バケット管理Create(作成)、Update(更新)、Delete(削除)  |
-| Data Lake Storage | VIEWER | Data Lake Storageサービス内のバケットリストおよび、すべての情報詳細を照会Read(読み取り)  |
-| EasyQueue | ADMIN | EasyQueueサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除)、メッセージの送受信  |
-| EasyQueue | CLIENT | EasyQueueサービスの参照(Read)、メッセージの送受信  |
-| EasyQueue | VIEWER | EasyQueueサービス Read(読み取り)  |
 | Pipeline | ADMIN | Pipelineサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Deploy | ADMIN | Deployサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Deploy | VIEWER | Deployサービスに対するRead(読み取り)  |
