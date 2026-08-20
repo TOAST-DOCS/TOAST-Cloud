@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=687c0a9962be -->
 
 <a id="nhn-cloud-console-policy-guide"></a>
@@ -418,18 +420,18 @@ You can manage members separately in projects and organizations.
 | PROJECT MEMBER VIEWER | Read for project members<br>Read for project's role groups |
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Receiver Group Management <br> Read for project members <br> Read for project's role groups|
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | Read for project's Notification Receiver Group Management <br> Read for project's role groups|
-| PROJECT NOTICE MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
-| PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
+| PROJECT NOTICE MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
+| PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
 | PROJECT API SECURITY SETTING ADMIN | Create, Read, Update, Delete for project's API Security Setting|
 | PROJECT API SECURITY SETTING VIEWER | Read for project's API Security Setting|
 | PROJECT AUTHENTICATION MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Authentication Info Management|
 | PROJECT QUOTA MANAGEMENT ADMIN| Create, Read, Update, Delete for project's Quota Management|
 | PROJECT QUOTA MANAGEMENT VIEWER| Read for project's Quota Management|
 | PROJECT_SUPPORT_ADMIN| Create project inquiry|
-| PROJECT DASHBOARD VIEWER | Read project dashboard|
 
 
 <a id="project-member-roles-service-use"></a>
+
 #### Service Use 
 
 * For detailed permissions by role for the [basic infrastructure service (Infrastructure)](../en/overview.md), see [View Full Permission Matrix](../etc/infrastructure_roles_guide.html){:target="_blank" rel="noopener"}.
@@ -442,13 +444,13 @@ You can manage members separately in projects and organizations.
 | Infrastructure | Routing ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Routing |
 | Infrastructure | Security Group ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Security Groups |
 | Infrastructure | Load Balancer ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Load Balancer |
-| Infrastructure | Transit Hub ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Transit Hub |
+| Infrastructure | Transit Hub ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Transit Hub |
 | Infrastructure | Peering Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Peering Gateway |
 | Infrastructure | Colocation Gateway ADMIN |Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Colocation Gateway |
 | Infrastructure | NAT Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NAT Gateway |
 | Infrastructure | Service Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Service Gateway |
-| Infrastructure | Private DNS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Private DNS |
-| Infrastructure | Flow Log ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Flow Log |
+| Infrastructure | Private DNS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Private DNS |
+| Infrastructure | Flow Log ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Flow Log |
 | Infrastructure | NCS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NCS |
 | Infrastructure | NKS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NKS |
 | Infrastructure | NAS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NAS |
@@ -456,18 +458,20 @@ You can manage members separately in projects and organizations.
 | Cloud Functions | ADMIN | Create, Read, Update, Delete for Cloud Functions Service |
 | NHN Container Registry (NCR) | ADMIN | Create, Read, Update, Delete for NHN Container Registry (NCR) Service |
 | NHN Container Registry (NCR) | VIEWER | Read for NHN Container Registry (NCR) Service |
-| NHN Container Registry (NCR) | IMAGE UPLOADER | Read for NHN Container Registry (NCR), Upload Image, Create Artifact, Create Tag |
+| NHN Container Registry (NCR) | IMAGE UPLOADER | Read for NHN Container Registry (NCR) Service <br> Upload Image, Create Artifact, Create Tag |
 | DNS Plus | ADMIN | Create, Read, Update, Delete for DNS Plus Service |
 | DNS Plus | VIEWER | Read for DNS Plus Service |
 | Object Storage | ADMIN | Create, Read, Update, Delete for Object Storage Service |
 | Object Storage | Container OPERATOR | Read a detailed list of containers in the Object Storage service and all their information. Create, Update, and Delete container management |
-| Object Storage | Container VIEWER | Read a list of containers in the Object Storage service  |
+| Object Storage | Container VIEWER | Read a list of containers in the Object Storage service |
 | Object Storage | Object READER | Read a list of containers in the Object Storage service and details of some of their information. Read a list of objects and their details. Read object download |
-| Object Storage | Object WRITER | Read a list of containers in the Object Storage service and details of some of their information. Create, Update, and Delete container management  |
+| Object Storage | Object WRITER | Read a list of containers in the Object Storage service and details of some of their information. Create, Update, and Delete container management |
 | Object Storage | Object VIEWER | Read a list of containers in the Object Storage service and details of some of their information. Read a list of objects and their details |
 | Backup | ADMIN | Create, Read, Update, Delete for Backup Service |
 | RDS for MySQL | ADMIN | Create, Read, Update, Delete for RDS for MySQL Service |
 | RDS for MySQL | VIEWER | Read for RDS for MySQL Service |
+| RDS for PostgreSQL | ADMIN | Create, Read, Update, Delete for RDS for PostgreSQL Service |
+| RDS for PostgreSQL | VIEWER | Read for RDS for PostgreSQL Service |
 | RDS for MariaDB | ADMIN | Create, Read, Update, Delete for RDS for MariaDB Service |
 | RDS for MariaDB | VIEWER | Read for RDS for MariaDB Service |
 | RDS for MS-SQL | ADMIN | Create, Read, Update, Delete for RDS for MS-SQL Service |
@@ -524,36 +528,37 @@ You can manage members separately in projects and organizations.
 | Security Advisor | VIEWER | Read for Security Advisor Service  |
 | Network Firewall | ADMIN | Create, Read, Update, Delete for Network Firewall Service  |
 | Network Firewall | VIEWER | Read for Network Firewall Service  |
-| NHN Bastion | ADMIN | Create, Read, Update, Delete for NHN Bastion Service | 
-| NHN Bastion | VIEWER | Read for NHN Bastion Service | 
-| NHN Bastion | USER | Use NHN Bastion Service Terminal | 
-| Cloud Access | ADMIN | Create, Read, Update, Delete for Cloud Access Service | 
-| Cloud Access | VIEWER | Read for Cloud Access Service | 
+| NHN Bastion | ADMIN | Create, Read, Update, Delete for NHN Bastion Service |
+| NHN Bastion | VIEWER | Read for NHN Bastion Service |
+| NHN Bastion | USER | Use NHN Bastion Service Terminal |
+| Cloud Access | ADMIN | Create, Read, Update, Delete for Cloud Access Service |
+| Cloud Access | VIEWER | Read for Cloud Access Service |
 | CDN | ADMIN | Create, Read, Update, Delete for CDN Service |
 | Image Manager | ADMIN | Create, Read, Update, Delete pfor Image Manager Service |
 | Notification Hub | ADMIN | Create, Read, Update, Delete for Notification Hub Service |
 | Push | ADMIN | Create, Read, Update, Delete for Push Service |
 | SMS | ADMIN | Create, Read, Update, Delete for SMS Service |
-| SMS | SEND ADMIN | Create, Read in Deliver SMS |
-| SMS | DELIVERY RESULT ADMIN | Read in Retrieve by SMS Request, Create Download Search Result, Read in Retrieve Bulk SMS Delivery, Create Download Retrieve Result, Read in Retrieve Tagged SMS Delivery, Create Download Retrieve Result  |
-| SMS | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates, Create, Read, Update, Delete in Preregistration Outgoing Numbers, Read in Retrieve Outgoing Number, Create, Read, Update, Delete in Manage Tags, Create, Read, Update, Delete in Manage UIDs, Create, Read, Update, Delete in Manage Webhooks, Create, Read, Update, Delete in Set 080 Call Rejects, Create, Read, Update, Delete in Delivery Setting, Create, Read, Update, Delete in Statistics Event Key |
-| SMS | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
+| SMS | SEND ADMIN | Create, Read in Deliver SMS |
+| SMS | DELIVERY RESULT ADMIN | Read in Retrieve by SMS Request, Create Download Search Result <br> Read in Retrieve Bulk SMS Delivery, Create Download Retrieve Result <br> Read in Retrieve Tagged SMS Delivery, Create Download Retrieve Result |
+| SMS | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates <br> Create, Read, Update, Delete in Preregistration Outgoing Numbers <br> Read in Retrieve Outgoing Number, Create, Read, Update, Delete in Manage Tags <br> Create, Read, Update, Delete in Manage UIDs <br> Create, Read, Update, Delete in Manage Webhooks<br> Create, Read, Update, Delete in Set 080 Call Rejects <br> Create, Read, Update, Delete in Delivery Setting <br> Create, Read, Update, Delete in Statistics Event Key |
+| SMS | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | RCS Bizmessage | ADMIN | Create, Read, Update, Delete for RCS Bizmessage Service |
 | Email | ADMIN | Create, Read, Update, Delete for Email Service |
 | Email | SEND ADMIN | Create, Read in Deliver Mails |
-| Email | DELIVERY RESULT ADMIN | Read in Retrieve by Mail Request, Create Download Search Result<br> Read in Retrieve Scheduled Mail Delivery, Create Download Search Result<br> Read in Retrieve Bulk Mail Delivery, Create Download Search Result<br> Read in Retrieve Tagged Mail Delivery, Create Download Search Result |
-| Email | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates<br> Create, Read, Update, Delete in Manage Call Rejects<br> Create, Read, Update, Delete in Manage Mail Domains<br> Create, Read, Update, Delete in Manage Tags<br> Create, Read, Update, Delete in Manage UIDs<br> Create, Read, Update, Delete in Delivery Setting<br> Create, Read, Update, Delete in Manage Webhooks |
-| Email | STATISTICS ADMIN | Read in Retrieve Statistics, Create Download Search Result |
+| Email | DELIVERY RESULT ADMIN | Read in Retrieve by Mail Request, Create Download Search Result <br> Read in Retrieve Scheduled Mail Delivery, Create Download Search Result <br> Read in Retrieve Bulk Mail Delivery, Create Download Search Result <br> Read in Retrieve Tagged Mail Delivery, Create Download Search Result |
+| Email | SETTING ADMIN | Create, Read, Update, Delete in Manage Templates <br> Create, Read, Update, Delete in Manage Call Rejects <br> Create, Read, Update, Delete in Manage Mail Domains <br> Create, Read, Update, Delete in Manage Tags <br> Create, Read, Update, Delete in Manage UIDs <br> Create, Read, Update, Delete in Delivery Setting <br> Create, Read, Update, Delete in Manage Webhooks |
+| Email | STATISTICS ADMIN | Read in Retrieve Statistics, Create Download Search Result |
 | KakaoTalk Bizmessage | ADMIN | Create, Read, Update, Delete for KakaoTalk Bizmessage Service |
 | KakaoTalk Bizmessage | SEND ADMIN | (AlimTalk) Create, Read in Send|
 | KakaoTalk Bizmessage | DELIVERY RESULT ADMIN | (AlimTalk) Read Query Delivery Result in KakaoTalk Bizmessage, Create Download Search Result<br> (AlimTalk) Read in Query Mass Delivery, Create Download Search Result <br> (FriendTalk)Read in Query Delivery Result, Create Download Search Result|
-| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group <br>(FriendTalk)Read, Delete in Manage Images <br>(FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery|
-| KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
+| KakaoTalk Bizmessage | SETTING ADMIN | Create, Read, Update, Delete in Manage Senders<br> (AlimTalk) Create, Read, Update, Delete in Manage Templates<br> (AlimTalk) Create, Read, Update, Delete in Manage Alternative Delivery<br> (AlimTalk) Create, Read, Update, Delete in Manage sender profile group <br>(FriendTalk)Read, Delete in Manage Images <br>(FriendTalk)Create, Read, Update, Delete in Manage Alternative Delivery<br> Create, Read, Update, Delete in Sending settings<br> Create, Read, Update, Delete in Manage Webhooks<br> Create, Read, Update, Delete in Statistics Event Key |
+| KakaoTalk Bizmessage | STATISTICS ADMIN | Read in Statistics, Create Download Search Result |
 | Face Recognition | ADMIN | Create, Read, Update, Delete for Face Recognition Service |
-| OCR | ADMIN | Create, Read, Update, Delete for OCR | 
+| OCR | ADMIN | Create, Read, Update, Delete for OCR |
 | Text to Speech | ADMIN | Create, Read, Update, Delete for Text to Speech |
 | Speech to Text | ADMIN | Create, Read, Update, Delete for Speech to Text |
 | AI EasyMaker | ADMIN | Create, Read, Update, Delete for AI EasyMaker |
+| NHN Cloud Foundry | ADMIN | Create, Read, Update, Delete the NHN Cloud Foundry service |
 | ROLE | ADMIN | Create, Read, Update, Delete for ROLE Service |
 | API Gateway | ADMIN | Create, Read, Update, Delete for API Gateway Service |
 | RTCS | ADMIN | Create, Read, Update, Delete for RTCS Service |
@@ -584,7 +589,7 @@ You can manage members separately in projects and organizations.
 | Private CA | ADMIN | Create, Read, Update, Delete for Service Private CA |
 | Private CA | VIEWER | Read for Private CA Service |
 | eTax | ADMIN | Create, Read, Update, Delete for eTax Service |
-| eTax | VIEWER | Read  for eTax Service |
+| eTax | VIEWER | Read for eTax Service |
 
 
 <a id="project-member-roles-service-permission"></a>
