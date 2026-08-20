@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=687c0a9962be -->
 
 <a id="nhn-cloud-console-policy-guide"></a>
@@ -405,28 +407,28 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | ロール | 説明 |
 | --- | --- |
 | ADMIN | プロジェクト全体に対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
-| MARKETPLACE_ADMIN | Marketplace サービス Create(作成)、Read(読込)、Update(更新)、Delete(削除) |
-| MARKETPLACE_VIEWER | Marketplace サービス Read(読込) |
-| MEMBER | プロジェクト内のすべてのサービスCreate(作成), Read(読み取り), Update(更新), Delete(削除) - 一部のサービスを除く(関連するロール/権限の確認) |
-| BILLING VIEWER | 利用状況Read(読み取り) |
-| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報Update(更新)<br> プロジェクト統合Appkey Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)  <br> プロジェクトサービス有効化(Enable)/無効化(Disable) <br> プロジェクトDelete(削除) |
-| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報Read(読み取り)<br> プロジェクト統合Appkey Read(読み取り) |
-| PROJECT MEMBER ADMIN | プロジェクトメンバーCreate(作成), Read(読み取り), Update(更新), Delete(削除)<br> プロジェクトロールグループCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
-| PROJECT MEMBER VIEWER | プロジェクトメンバーRead(読み取り)<br> プロジェクトロールグループRead(読み取り) |
-| PROJECT NOTICE GROUP MANAGEMENT ADMIN | プロジェクト通知受信グループの管理Create(作成), Read(読み取り), Update(更新), Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
-| PROJECT NOTICE GROUP MANAGEMENT VIEWER | プロジェクト通知受信グループの管理Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)|
-| PROJECT NOTICE MANAGEMENT ADMIN | プロジェクト通知管理 Create(作成), Read(読取), Update(更新), Delete(削除) <br> プロジェクトメンバーRead(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
-| PROJECT NOTICE MANAGEMENT VIEWER | プロジェクト通知管理 Read(読取) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループの管理 Read(読取)
-| PROJECT API SECURITY SETTING ADMIN | プロジェクトAPIセキュリティー設定Create(作成), Read(読み取り), Update(更新), Delete(削除)|
-| PROJECT API SECURITY SETTING VIEWER | ロジェクトAPIセキュリティー設定Read(読み取り)|
-| PROJECT AUTHENTICATION MANAGEMENT ADMIN | プロジェクト認証情報管理Create(作成), Read(読み取り), Update(更新), Delete(削除)|
-| PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォーター管理Create(作成), Read(読み取り), Update(更新), Delete(削除)|
-| PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォーター管理Read(読み取り)|
-| PROJECT_SUPPORT_ADMIN| プロジェクトお問い合わせCreate(作成)|
-| PROJECT DASHBOARD VIEWER | プロジェクトダッシュボードRead(読み取り) |
+| MARKETPLACE_ADMIN | Marketplace サービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| MARKETPLACE_VIEWER | Marketplace サービス Read(読み取り) |
+| MEMBER | プロジェクト内のすべてのサービスのリソース Create(作成), Read(読み取り), Update(更新), Delete(削除) - 一部のサービスを除く(関連するロール/権限の確認) |
+| BILLING VIEWER | 利用現況 Read(読み取り) |
+| PROJECT MANAGEMENT ADMIN | プロジェクト基本情報 Update(更新)<br>プロジェクト統合Appkey Create(作成), Read(読み取り), Update(更新), Delete(削除)<br>プロジェクトサービス有効化(Enable)、無効化(Disable)<br>プロジェクト Delete(削除) |
+| PROJECT MANAGEMENT VIEWER | プロジェクト基本情報 Read(読み取り)<br>プロジェクト統合Appkey Read(読み取り) |
+| PROJECT MEMBER ADMIN | プロジェクトメンバー Create(作成), Read(読み取り), Update(更新), Delete(削除)<br>プロジェクトロールグループ Create(作成), Read(読み取り), Update(更新), Delete(削除) |
+| PROJECT MEMBER VIEWER | プロジェクトメンバー Read(読み取り)<br>プロジェクトロールグループ Read(読み取り) |
+| PROJECT NOTICE GROUP MANAGEMENT ADMIN | プロジェクト通知受信グループ管理 Create(作成), Read(読み取り), Update(更新), Delete(削除) <br> プロジェクトメンバー Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)| 
+| PROJECT NOTICE GROUP MANAGEMENT VIEWER | プロジェクト通知受信グループ管理 Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)| 
+| PROJECT NOTICE MANAGEMENT ADMIN | プロジェクト通知管理 Create(作成), Read(読み取り), Update(更新), Delete(削除) <br> プロジェクトメンバー Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループ管理 Read(読み取り)
+| PROJECT NOTICE MANAGEMENT VIEWER | プロジェクト通知管理 Read(読み取り) <br> プロジェクトロールグループ Read(読み取り)| プロジェクト通知受信グループ管理 Read(読み取り)
+| PROJECT API SECURITY SETTING ADMIN | プロジェクト API セキュリティ設定 Create(作成)/Read(読み取り)/Update(更新)/Delete(削除)|
+| PROJECT API SECURITY SETTING VIEWER | プロジェクト API セキュリティ設定 Read(読み取り)|
+| PROJECT AUTHENTICATION MANAGEMENT ADMIN | プロジェクト認証情報管理 Create(作成), Read(読み取り), Update(更新), Delete(削除)|
+| PROJECT QUOTA MANAGEMENT ADMIN| プロジェクトクォータ管理 Create(作成), Read(読み取り), Update(更新), Delete(削除)|
+| PROJECT QUOTA MANAGEMENT VIEWER| プロジェクトクォータ管理 Read(読み取り)|
+| PROJECT_SUPPORT_ADMIN| プロジェクトお問い合わせ Create(作成)|
 
 
 <a id="project-member-roles-service-use"></a>
+
 #### サービス利用  
 
 * [基本インフラサービス(Infrastructure)](../ja/overview.md#service-composition)のロール別詳細権限は、[全権限マトリックス表示](../etc/infrastructure_roles_guide.html){:target="_blank" rel="noopener"}で確認してください。
@@ -553,6 +555,7 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Text to Speech | ADMIN | Text to Speechサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  | 
 | Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  | 
 | AI EasyMaker | ADMIN | AI EasyMakerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| NHN Cloud Foundry | ADMIN | NHN Cloud Foundry サービスの Create（作成）、Read（読み取り）、Update（更新）、Delete（削除）  |
 | IAP | ADMIN | IAPサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
