@@ -323,7 +323,8 @@ However, if you delete the project without paying immediately, the bills used so
 Member management allows you to control per-user authentication (login) and role.
 You can manage members separately in projects and organizations.
 
-### Policy for NHN Cloud Members, IAM Members, and Service Accounts
+<a id="policy-for-nhn-cloud-members-iam-members-and-service-accounts"></a>
+### Policy for NHN Cloud Members, IAM Members, and Service Accounts { #policy-for-nhn-cloud-members-iam-members-and-service-accounts }
 
 | Classification | [NHN Cloud](http://nhncloud.com) Members | IAM Members | Service Accounts |
 | --- | --- | --- | --- |
@@ -431,7 +432,6 @@ You can manage members separately in projects and organizations.
 
 
 <a id="project-member-roles-service-use"></a>
-
 #### Service Use 
 
 * For detailed permissions by role for the [basic infrastructure service (Infrastructure)](../en/overview.md), see [View Full Permission Matrix](../etc/infrastructure_roles_guide.html){:target="_blank" rel="noopener"}.
