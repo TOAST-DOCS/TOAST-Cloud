@@ -128,7 +128,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Speech to Text | Global |  |  |  |  | 
 | Machine Learning | Deep Learning Instance | Regional | O |  | O | |  
 |  | AI EasyMaker | Regional | O |  | O |  |  
-|  | NHN Cloud Foundry | Region | O |  |  | O |
+|  | NHN Cloud Foundry | Regional | O |  |  | O |
 | Application Service | ROLE | Global |  |  |  |  | 
 |  | API Gateway | Regional | O | O | O |  |  
 |  | RTCS | Global |  |  |  |  | 
