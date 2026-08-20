@@ -411,9 +411,9 @@ You can manage members separately in projects and organizations.
 | Role | Description |
 | --- | --- |
 | ADMIN | Create, Read, Update, Delete for the entire project |
-| MARKETPLACE_ADMIN | Marketplace Create, Read, Update, and Delete Services |
-| MARKETPLACE_VIEWER | Marketplace Read |
-| MEMBER | Create, Read, Update, Delete for all services in the project - Some services excluded (check related roles/permissions)|
+| MARKETPLACE_ADMIN | Marketplace Service Create, Read, Update, Delete |
+| MARKETPLACE_VIEWER | Marketplace Service Read |
+| MEMBER | Create, Read, Update, Delete for all service resources in the project - Some services excluded (check related roles/permissions) |
 | BILLING VIEWER | Read for usage status |
 | PROJECT MANAGEMENT ADMIN | Update for project's basic information<br>Create, Read, Update, Delete for project's integrated Appkey<br>Enable, Disable project services<br>Delete for projects |
 | PROJECT MANAGEMENT VIEWER | Read for project's basic information<br>Read for project's integrated Appkey |
@@ -446,7 +446,7 @@ You can manage members separately in projects and organizations.
 | Infrastructure | Load Balancer ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Load Balancer |
 | Infrastructure | Transit Hub ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Transit Hub |
 | Infrastructure | Peering Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Peering Gateway |
-| Infrastructure | Colocation Gateway ADMIN |Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Colocation Gateway |
+| Infrastructure | Colocation Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Colocation Gateway |
 | Infrastructure | NAT Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to NAT Gateway |
 | Infrastructure | Service Gateway ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Service Gateway |
 | Infrastructure | Private DNS ADMIN | Infrastructure MEMBER role, plus Create, Read, Update, and Delete access to Private DNS |
@@ -534,7 +534,7 @@ You can manage members separately in projects and organizations.
 | Cloud Access | ADMIN | Create, Read, Update, Delete for Cloud Access Service |
 | Cloud Access | VIEWER | Read for Cloud Access Service |
 | CDN | ADMIN | Create, Read, Update, Delete for CDN Service |
-| Image Manager | ADMIN | Create, Read, Update, Delete pfor Image Manager Service |
+| Image Manager | ADMIN | Create, Read, Update, Delete for Image Manager Service |
 | Notification Hub | ADMIN | Create, Read, Update, Delete for Notification Hub Service |
 | Push | ADMIN | Create, Read, Update, Delete for Push Service |
 | SMS | ADMIN | Create, Read, Update, Delete for SMS Service |
@@ -568,11 +568,13 @@ You can manage members separately in projects and organizations.
 | IAP | ADMIN | Create, Read, Update, Delete for IAP Service |
 | Mobile Device Info | ADMIN | Create, Read, Update, Delete for Mobile Device Info Service |
 | Cloud Search | ADMIN | Create, Read, Update, Delete for Cloud Search Service |
-| Autocomplete | ADMIN | Create, Read, Update, Delete for AutocompleteService |
+| Autocomplete | ADMIN | Create, Read, Update, Delete for Autocomplete Service |
 | Corporation Search | ADMIN | Create, Read, Update, Delete for Corporation Search Service |
 | Log & Crash Search | ADMIN | Create, Read, Update, Delete for Log & Crash Search Service |
 | DataFlow | ADMIN | Create, Read, Update, Delete for DataFlow Service |
 | DataQuery | ADMIN | Create, Read, Update, Delete for DataQuery Service |
+| DataQuery | CLUSTER ADMIN | DataQuery service cluster On, Off, Spec Configuration |
+| DataQuery | DATASOURCE ADMIN | Create, Update, Delete DataQuery service data sources |
 | Data Lake Storage | ADMIN | Create, Read, Update, Delete for Data Lake Storage Service |
 | Data Lake Storage | OPERATOR | Read a detailed list of buckets in the Data Lake Storage service and all their information. Create, Update, and Delete bucket management. |
 | Data Lake Storage | VIEWER | Read a detailed list of buckets in the Data Lake Storage service and all their information. |
