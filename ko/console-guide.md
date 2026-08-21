@@ -1,4 +1,4 @@
-<!-- pre-align:aligned sig=687c0a9962be -->
+<!-- pre-align:aligned sig=e20de7487902 -->
 
 <a id="nhn-cloud-console-policy-guide"></a>
 ## NHN Cloud > 콘솔 정책 가이드 { #nhn-cloud-console-policy-guide }
@@ -322,7 +322,8 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 멤버 관리를 통해 사용자별 인증(로그인) 및 역할을 통제할 수 있습니다.
 프로젝트와 조직에서 멤버 관리를 별도로 할 수 있습니다.
 
-### NHN Cloud 계정 / IAM 계정 / 서비스 계정 정책
+<a id="policy-for-nhn-cloud-members-iam-members-and-service-accounts"></a>
+### NHN Cloud 계정 / IAM 계정 / 서비스 계정 정책 { #policy-for-nhn-cloud-members-iam-members-and-service-accounts }
 
 | 구분 | [NHN Cloud](http://nhncloud.com) 계정 | IAM 계정 | 서비스 계정 |
 | --- | --- | --- | --- | 
@@ -554,6 +555,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Text to Speech | ADMIN | Text to Speech 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Speech to Text | ADMIN | Speech to Text 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | AI EasyMaker | ADMIN | AI EasyMaker 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| NHN Cloud Foundry | ADMIN | NHN Cloud Foundry 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | ROLE | ADMIN | ROLE 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | API Gateway | ADMIN | API Gateway 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | RTCS | ADMIN | RTCS 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
@@ -568,6 +570,8 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | Log & Crash Search | ADMIN | Log & Crash Search 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | DataFlow | ADMIN | DataFlow 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | DataQuery | ADMIN | DataQuery 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
+| DataQuery | CLUSTER ADMIN | DataQuery 서비스 클러스터 On(켜기), Off(끄기), Spec Configuration(스펙 설정)  |
+| DataQuery | DATASOURCE ADMIN | DataQuery 서비스 데이터소스 Create(생성), Update(수정), Delete(삭제)  |
 | Data Lake Storage | ADMIN | Data Lake Storage 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | Data Lake Storage | OPERATOR | Data Lake Storage 서비스 내 버킷 목록 및 모든 정보 상세 조회 Read(읽기). 버킷 관리 Create(생성), Update(갱신), Delete(삭제)  |
 | Data Lake Storage | VIEWER | Data Lake Storage 서비스 내 버킷 목록 및 모든 정보 상세 조회 Read(읽기)  |
