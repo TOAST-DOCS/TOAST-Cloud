@@ -1,12 +1,17 @@
-## NHN Cloud > 보안 정책
+<!-- pre-align:aligned sig=10ba220cbb2f -->
+
+<a id="nhn-cloud-security-policy"></a>
+## NHN Cloud > 보안 정책 { #nhn-cloud-security-policy }
 
 NHN Cloud는 보다 안전한 보안 환경을 제공하고자 보안 상품, 보안 정책, 취약점 정보 등을 안내하고 있습니다.
 다양하고 새로운 공격 기법과 보안 취약점으로부터 고객의 자산을 보호하기 위해, 클라우드 환경에서 자주 발생하는 보안 사고 및 위협에 대비할 수 있는 보안 정책을 아래와 같이 제공합니다.
 
-## 비밀번호 정책
+<a id="password-policy"></a>
+## 비밀번호 정책 { #password-policy }
 사용자 계정(root 및 일반 계정 모두) 비밀번호 설정 시, 일반적으로 유추하기 쉬운 비밀번호를 설정하면, 비인가된 사용자가 비밀번호 대입 공격을 통해 일반 계정 또는 root 역할을 획득하여 시스템에 접근할 수 있습니다. 이로 인해 서버에 저장된 중요 데이터가 유출되거나, 해킹 경유지 서버로 악용될 수 있으므로 안전한 비밀번호를 설정하고 관리해야 합니다.
 
-### 안전한 비밀번호란
+<a id="safe-passwords"></a>
+### 안전한 비밀번호란 { #safe-passwords }
 영문자, 숫자, 특수문자를 조합하여 최소 8자 이상으로 구성합니다. 다음과 같이 추측 가능한 비밀번호를 사용하지 않아야 합니다.
 
 - null 비밀번호
@@ -16,35 +21,42 @@ NHN Cloud는 보다 안전한 보안 환경을 제공하고자 보안 상품, �
 - 주기적으로 비밀번호 재사용
 - 전화번호, 생일, 계정명, 호스트 이름과 같이 추측하기 쉬운 비밀번호
 
-### 비밀번호 정책
+<a id="nhn-cloud-password-policy"></a>
+### 비밀번호 정책 { #nhn-cloud-password-policy }
 NHN Cloud는 고객의 소중한 자산과 서비스를 보호하기 위하여 아래와 같이 비밀번호 정책을 기본 적용합니다.
 
 - 영문자, 숫자, 특수문자 3종류로 조합
 - 최소 8자리 이상
 
-## DRDoS 공격 차단 정책
+<a id="anti-drdos-policy"></a>
+## DRDoS 공격 차단 정책 { #anti-drdos-policy }
 외부 네트워크에 오픈된 인스턴스가 DRDoS 공격 경유지로 악용될 경우 아웃바운드 트래픽의 비정상적인 증가로 인해 서비스 장애나 및 의도하지 않은 트래픽 과금이 발생할 수 있습니다.
 NHN Cloud는 고객의 소중한 자산과 서비스를 보호하기 위하여 DRDoS 공격 경유지로 자주 악용되는 UDP 포트에 대한 차단 정책을 적용하고 있습니다.
 
-### DRDoS(Distributed Reflect DoS, 분산 반사 서비스 거부 공격)란?
+<a id="what-is-drdos-distributed-reflection-denial-of-service"></a>
+### DRDoS(Distributed Reflect DoS, 분산 반사 서비스 거부 공격)란? { #what-is-drdos-distributed-reflection-denial-of-service }
 DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으로 인해 발생합니다. 다수의 좀비 PC를 이용하여 작은 요청 패킷으로 큰 응답 패킷을 만들어 타깃 서버에 트래픽을 집중시킬 수 있기 때문에 최근 해킹 공격에 많이 사용되는 대역폭 잠식형 공격 기법입니다.
 
-### 차단 포트 목록
+<a id="list-of-blocked-ports"></a>
+### 차단 포트 목록 { #list-of-blocked-ports }
 |서비스명 |   차단 포트  | 차단 방법|비고|
 | ---- | ---- | ---- | ---- |
 |Chargen | UDP / 19    | 네트워크 ACL 차단 적용 |   외부에서 접속 불가|
 |SSDP    | UDP / 1900  | 네트워크 ACL 차단 적용 | 외부에서 접속 불가|
 |Memcached   | UDP / 11211 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가|
 
-## 인터넷 포트 차단 정책(inbound)
+<a id="internet-port-blocking-policy-inbound"></a>
+## 인터넷 포트 차단 정책(inbound) { #internet-port-blocking-policy-inbound }
 고객 서비스 보호를 위해 고객이 직접 관리할 수 있는 보안 그룹(security group) 기능 외 침입 차단 시스템을 이용하여 중요 서비스 포트에 대해 차단하고 있습니다.
 
-### NHN Cloud 차단 포트 목록
+<a id="nhn-cloud-list-of-blocked-ports"></a>
+### NHN Cloud 차단 포트 목록 { #nhn-cloud-list-of-blocked-ports }
 |적용 리전 | 서비스명 | 차단 포트 | 차단 방법 | 비고 |
 | ---- | ---- | ---- | ---- | ---- |
 | 한국(판교/평촌/광주) <br> 일본(도쿄) | 시스템 터미널 포트 | TCP/23 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 
-### NHN Cloud(공공기관용) 차단 포트 목록
+<a id="nhn-cloudcloud-for-public-agencies-list-of-blocked-ports"></a>
+### NHN Cloud(공공기관용) 차단 포트 목록 { #nhn-cloudcloud-for-public-agencies-list-of-blocked-ports }
 |서비스명 |   차단 포트  | 차단 방법 |비고|
 | ---- | ---- | ---- | ---- |
 | 시스템 터미널 포트 | TCP/22, 23, 3389 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가|
@@ -52,7 +64,8 @@ DRDoS는 DNS, NTP, SSDP, Memcached 등 애플리케이션의 취약한 설정으
 | Netbios 관련 포트 | TCP, UDP/135, 137, 138, 139, 445 | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 | 기타 | TCP/21(FTP), TCP / 5900(VNC) | 네트워크 ACL 차단 적용 | 외부에서 접속 불가 |
 
-### 포트 추가/허용 신청 절차
+<a id="how-to-apply-for-more-ports"></a>
+### 포트 추가/허용 신청 절차 { #how-to-apply-for-more-ports }
 - 아래 엑셀 파일을 다운로드하여 작성합니다.
 
 [![](https://static.toastoven.net/prod_gov_security/fileicon_download_excel.png)](https://static.toastoven.net/prod_gov_security/NHN%20Cloud%20%EB%B0%A9%ED%99%94%EB%B2%BD%20%EB%B0%8F%20SSL%20VPN%20%EC%A0%95%EC%B1%85%20%EC%8B%A0%EC%B2%AD%EC%84%9C.xlsx)

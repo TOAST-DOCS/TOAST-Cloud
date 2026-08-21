@@ -1,15 +1,21 @@
-## NHN Cloud > 사용 가이드
+<!-- pre-align:aligned sig=5c042ac82e65 -->
+
+<a id="nhn-cloud-user-guide"></a>
+## NHN Cloud > 사용 가이드 { #nhn-cloud-user-guide }
 이 가이드에서는 NHN Cloud 이용 방법을 자세히 설명합니다.
 
 
-## NHN Cloud 회원 가입 
+<a id="join-nhn-cloud"></a>
+## NHN Cloud 회원 가입 { #join-nhn-cloud }
 
-### 회원 가입 절차
+<a id="how-to-join-as-member"></a>
+### 회원 가입 절차 { #how-to-join-as-member }
 https://nhncloud.com에 접속한 후 화면 오른쪽 위에서 **회원 가입**을 클릭합니다.
 회원 가입 절차는 아래와 같습니다.
 ![userguide_01_20210401](https://static.toastoven.net/toast/user_guide/userguide_01_20210401.png)
 
 
+<a id="how-to-join-as-member-select-country"></a>
 #### 국가 선택 
 NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(NHN Cloud)과 일본 회원(NHN Cloud Japan)으로 구분됩니다.
 각 국가의 법령에 의한 NHN Cloud 이용약관과 개인 정보 처리 방침에 동의해야 회원으로 가입할 수 있습니다.
@@ -20,6 +26,7 @@ NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(N
 - 일본 회원(NHN Cloud Japan)
     - 회원 가입 시 '일본'을 선택한 회원
 
+<a id="how-to-join-as-member-select-type-of-membership-individualbusiness"></a>
 #### 회원 유형(개인/사업자) 선택
 회원 유형에 따라 가입 시 필요한 사항은 다음과 같습니다.
 사업자 회원은 회원 가입 시 '한국 또는 일본'국가를 선택한 경우에만 가입할 수 있습니다. 
@@ -32,6 +39,7 @@ NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(N
     - SMS 확인이 가능한 휴대폰
     - 사업자등록증 사본(가입 시 한국 국가를 선택한 사업자 회원만 해당)
 
+<a id="how-to-join-as-member-consent-to-terms-of-use"></a>
 #### 이용 약관 동의
 | 동의 구분 | 설명 | 필수 입력 |
 | --- | --- | --- |
@@ -40,6 +48,7 @@ NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(N
 | 만 14세 이상 | - NHN Cloud 서비스를 이용하기 위한 약관입니다.  <br>- 동의한 경우에만 NHN Cloud 회원으로 가입할 수 있습니다.  | O |
 | 홍보성 정보 수신 | - NHN Cloud에서 시행하는 이벤트, 프로모션, 서비스 홍보 등의 정보 수신에 대한 동의입니다. <br>- 홍보성 정보 수신 동의는 회원 가입 후 회원 정보에서 수정할 수 있습니다.   | x |
 
+<a id="how-to-join-as-member-enter-member-information"></a>
 #### 회원 정보 입력
 | 관리 정보 | 설명 | 필수 입력 |
 | --- | --- | --- |
@@ -52,14 +61,17 @@ NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(N
 | 주소 | - 가입 시 국가를 한국으로 선택한 경우 선택 관리 항목입니다. <br> - 우편번호, 기본 주소, 상세 주소로 구성합니다.  | X |
 | 사업자 정보 | -  사업자 회원의 경우 필수 관리 항목입니다. <br/> - 가입 국가에 따라 입력 정보는 상이할 수 있습니다. <br> - 회사명, 사업자등록번호, 대표자명, 업종/업태, 주소, 유선전화 등의 정보를 관리합니다. <br/> - 사업자등록증에 기재된 정보와 일치해야 합니다.  | O |
 
+<a id="how-to-join-as-member-joining-completed"></a>
 #### 회원 가입 완료
 회원 가입이 완료되면 자동으로 로그인됩니다. NHN Cloud 홈페이지와 콘솔을 이용할 수 있습니다.
 
 
-### 로그인 보안 설정
+<a id="login-security-settings"></a>
+### 로그인 보안 설정 { #login-security-settings }
 로그인 보안 설정에서 2단계 로그인 설정이 가능합니다. 
 '이메일 인증, 휴대폰 인증, Google OTP 인증'을 지원합니다.
 
+<a id="login-security-settings-select-login-security-settings"></a>
 #### 로그인 보안 설정 선택
 ![userguide_02_20230330](https://static.toastoven.net/toast/user_guide/userguide_10_202303.png)
 로그인 후 홈페이지 우측 상단 로그인 계정 클릭 시 표시되는 드롭다운 메뉴에서 **로그인 보안 설정**을 선택합니다.
@@ -70,6 +82,7 @@ NHN Cloud 회원은 회원 가입 시 선택한 국가에 따라 한국 회원(N
     - 이메일 또는 휴대폰으로 인증 후 로그인: 로그인 시 회원 정보의 이메일 또는 휴대폰 번호로 인증번호를 받아 인증
     - Google OTP 인증 후 로그인: 로그인 시 Google OTP 앱으로 인증
 
+<a id="login-security-settings-log-in-after-google-otp-verification"></a>
 #### Google OTP 인증 후 로그인 설정 방법
 2단계 로그인 설정에서 Google OTP 인증 후 로그인을 선택 후 "저장" 버튼 클릭 합니다.
 OTP 인증 설정을 차례대로 진행합니다. 
@@ -95,7 +108,8 @@ OTP 인증 설정이 완료되면 OTP 인증 기기 리스트에 등록된 기�
     - OTP 인증 기기가 2개 이상인 경우: OTP 인증 기기 삭제 가능
     - OTP 인증 기기가 1개인 경우: OTP 인증 기기를 추가하거나 2단계 로그인 설정을 변경해야 삭제가 가능
     
-## 결제 수단 등록
+<a id="register-payment-methods"></a>
+## 결제 수단 등록 { #register-payment-methods }
 NHN Cloud 서비스를 이용하려면 결제 수단을 등록해야 합니다.
 단, 멤버로 초대된 조직 또는 프로젝트가 있다면 결제 수단 등록 없이 NHN Cloud 서비스를 이용할 수 있습니다.
 
@@ -110,7 +124,8 @@ NHN Cloud에서 제공하는 결제 수단은 아래와 같습니다.
     - 개인: 신용카드
     - 사업자: 신용카드
 
-### 결제 수단별 관리 정책
+<a id="management-policy-per-payment-method"></a>
+### 결제 수단별 관리 정책 { #management-policy-per-payment-method }
 결제 수단별 인증 및 관리 정책은 아래와 같습니다.
 
 | 국가 | 회원 유형 | 결제 수단 | 인증 방식 | 입력 정보 | 비고 |
@@ -124,30 +139,39 @@ NHN Cloud에서 제공하는 결제 수단은 아래와 같습니다.
 | 일본 | 개인 | 신용카드 | 카드 소유 인증 | 카드 번호, 유효기간, 이름, 보안 코드 | 카드 유효성 검증을 위해 2엔(円) 결제 후 취소 처리 |
 |  | 사업자 | 신용카드 | 카드 소유 인증 | 카드 번호, 유효기간, 이름, 보안 코드 | 카드 유효성 검증을 위해 2엔(円) 결제 후 취소 처리 |
 
-## 결제 수단 등록 방법 
+<a id="register-payment-method"></a>
+## 결제 수단 등록 방법 { #register-payment-method }
 
-### PAYCO 신용카드 
+<a id="payco-credit-cards"></a>
+### PAYCO 신용카드 { #payco-credit-cards }
+<a id="payco-credit-cards-select-payment-methods"></a>
 #### 결제 수단 선택
 1. **결제 수단** 화면에서 결제 수단 변경 버튼을 클릭합니다.
 2. **자동 결제 수단 등록** 화면에서 **PAYCO 신용카드**를 선택합니다.
 
+<a id="payco-credit-cards-join-payco"></a>
 #### PAYCO 가입
 PAYCO 아이디는 본인의 휴대폰 번호 또는 이메일을 아이디로 사용할 수 있습니다.
 사용할 아이디와 비밀번호를 입력하면 가입이 완료됩니다.
 
+<a id="payco-credit-cards-authenticate-holder-and-register-payment-methods"></a>
 #### 본인 인증 및 결제 수단 등록
 1. 결제 수단 최초 등록 시 휴대폰 본인 인증이 진행됩니다.
 2. 본인 인증 후, 결제 수단 정보를 입력하고 동의 절차를 거치면 등록이 완료됩니다.
    결제 수단 종류에 따라 결제 비밀번호 입력이 필요할 수 있습니다.
 
+<a id="payco-credit-cards-pay-with-payco"></a>
 #### PAYCO 로 결제
 결제 수단을 선택한 후, 결제 비밀번호를 입력하면 결제 수단 등록이 완료됩니다.
 
-### 신용카드(한국)
+<a id="credit-cards"></a>
+### 신용카드(한국) { #credit-cards }
+<a id="credit-cards-select-payment-methods"></a>
 #### 결제 수단 선택
 1. **결제 수단** 화면에서 결제 수단 변경 버튼을 클릭합니다.
 2. **자동 결제 수단 등록** 화면에서 **신용카드**를 선택합니다.
 
+<a id="credit-cards-select-credit-card-types"></a>
 ####  카드 종류 선택
 - 개인/기명 법인카드
     - 휴대폰 본인 인증: 이름, 성별, 생년월일, 휴대폰 번호를 입력하여 본인 인증을 진행합니다.
@@ -155,34 +179,44 @@ PAYCO 아이디는 본인의 휴대폰 번호 또는 이메일을 아이디로 �
 - 무기명 법인카드
     - 사업자등록번호 확인: 사업자등록번호를 입력합니다.
     - 카드 정보 입력: 카드 번호, 카드 유효기간, 비밀번호 앞 2자리를 입력한 후 결제 수단을 등록합니다.
+<a id="credit-cards-complete-registration-of-payment-methods"></a>
 #### 결제 수단 등록 완료
 - 결제 수단이 정상적으로 등록되면, **결제 수단** 화면에서 확인할 수 있습니다.
 
-### 신용카드(일본)
+<a id="register-payment-method-credit-cards"></a>
+### 신용카드(일본) { #register-payment-method-credit-cards }
+<a id="register-payment-method-credit-cards-select-payment-methods"></a>
 #### 결제 수단 선택
 - **결제 수단** 화면에서 결제 수단 변경 버튼을 클릭합니다.
 - **자동 결제 수단 등록** 화면에서 **신용카드 정보(카드번호, 유효기간, 카드 명의, 보안 코드)**를 입력합니다.
+<a id="register-payment-method-credit-cards-complete-registration-of-payment-methods"></a>
 #### 결제 수단 등록 완료
 결제 수단이 정상적으로 등록되면, **결제 수단** 화면에서 확인할 수 있습니다.
 
-### 계좌 이체
+<a id="bank-transfers"></a>
+### 계좌 이체 { #bank-transfers }
+<a id="bank-transfers-select-payment-methods"></a>
 #### 결제 수단 선택
 사업자 회원의 경우에만 사용할 수 있는 결제 수단입니다.
 
 1. **결제 수단** 화면에서 결제 수단 변경 버튼을 클릭합니다.
 2. **자동 결제 수단 등록** 화면에서 **계좌이체**를 선택합니다.
 
+<a id="bank-transfers-enter-account-information"></a>
 #### 계좌 정보 입력
 계좌 정보를 입력합니다.
 
+<a id="bank-transfers-authenticate-public-key-certificates"></a>
 #### 공인인증서 인증
 - 개인 계좌의 경우, 개인 공인인증서를 선택해 인증합니다.
 - 법인 계좌의 경우, 계좌의 사업자 정보와 동일한 사업자 정보로 등록된 공인인증서를 선택해 인증합니다.
 
+<a id="bank-transfers-complete-registration-of-payment-methods"></a>
 #### 결제 수단 등록 완료
 결제 수단이 정상적으로 등록되면, **결제 수단** 화면에서 확인할 수 있습니다.
 
-## 크레딧 관리
+<a id="manage-credits"></a>
+## 크레딧 관리 { #manage-credits }
 NHN Cloud 서비스에서 관리하는 크레딧은 서비스 가입, 리워드, 이벤트, 보상 목적에 따라 무상으로 지급하는 크레딧입니다.
 크레딧은 현금 1원과 동일합니다.
 지급받은 크레딧은 로그인 후 홈페이지 우측 상단 로그인 계정 클릭 시 표시되는 드롭다운 메뉴에서 **크레딧**을 선택하여 확인할 수 있습니다.
@@ -197,17 +231,21 @@ NHN Cloud 서비스에서 관리하는 크레딧은 서비스 가입, 리워드,
 - 가입 축하 크레딧은 NHN Cloud에서 제공하는 서비스의 요금 지불에 이용할 수 있습니다.
     - 제외 서비스: Notification, GPU Instance, 마켓플레이스, 별도 문의 서비스 제외
 
-## 회원 탈퇴
-### 회원 탈퇴 신청
+<a id="withdraw-from-membership"></a>
+## 회원 탈퇴 { #withdraw-from-membership }
+<a id="apply-for-membership-withdrawal"></a>
+### 회원 탈퇴 신청 { #apply-for-membership-withdrawal }
 NHN Cloud 회원 탈퇴는 로그인 후 홈페이지 우측 상단 로그인 계정 클릭 시 표시되는 드롭다운 메뉴에서 **회원 정보**를 선택하여 신청할 수 있습니다.
 **회원 정보** 화면으로 이동하여 오른쪽 하단 **회원 탈퇴** 버튼을 클릭합니다.
 회원 탈퇴 유의 사항을 확인 후, **회원 탈퇴**를 클릭합니다.
 이용 중인 서비스가 있을 때는 회원 탈퇴를 신청할 수 없습니다.
 
-### 회원 탈퇴 검증
+<a id="verify-membership-withdrawal"></a>
+### 회원 탈퇴 검증 { #verify-membership-withdrawal }
 회원 탈퇴 신청 후, 아래 정보를 확인하고 회원 탈퇴를 처리합니다.<br/>
 이용 요금이 남아 있다면, 자동 결제일(매월 8일)에 결제된 후 회원 탈퇴가 처리됩니다. 
 
-### 회원 탈퇴 완료
+<a id="complete-membership-withdrawal"></a>
+### 회원 탈퇴 완료 { #complete-membership-withdrawal }
 회원 탈퇴가 완료되면, 회원 탈퇴 신청 시 등록한 이메일로 탈퇴 내역이 발송됩니다.
 회원 탈퇴 시 모든 이용 정보가 삭제되며, 삭제된 데이터는 복원되지 않습니다.

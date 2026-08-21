@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=65978a09ad39 -->
+
 # Public API 概要
 
 **NHN Cloud > Public API使用ガイド > Public API 概要**
@@ -11,7 +13,8 @@ NHN CloudのPublic APIは、NHN Cloudのサービスとリソースを外部シ�
     * サービスごとにAPIの動作方式やレスポンス形式が異なるため、詳細は各サービスのAPIガイドを参照してください。
     * フレームワークAPI、パートナー管理API、各サービスごとにサポートするAPI認証方式が異なり、一部の認証方式は特定のサービスでのみサポートされます。各Public APIでサポートされる認証方式は[認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/supported-authentication-methods)で確認できます。
 
-## Public APIを始める
+<a id="getting-started-with-public-api"></a>
+## Public APIを始める { #getting-started-with-public-api }
 
 * [認証方式概要](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/auth-method-overview)
 * [認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/supported-authentication-methods)
@@ -20,7 +23,8 @@ NHN CloudのPublic APIは、NHN Cloudのサービスとリソースを外部シ�
 * [パートナー管理APIガイド](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/partner-api/)
 * [リリースノート](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/release-notes/)
 
-## 用語集
+<a id="glossary"></a>
+## 用語集 { #glossary }
 
 | 用語 | 説明 |
 | --- | --- |
