@@ -21,7 +21,15 @@ NHN Cloud is expanding its regions to make its service globally available.
 ![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_EN.png)
 
 <a id="nhn-cloud-regional-service"></a>
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_KR.png)
+
+<a id="nhn-cloud-regional-service"></a>
 ## NHN Cloud Regional Service { #nhn-cloud-regional-service }
+
+**Regional Service**
+Regional Service refers to services that are available only in specific regions due to restrictions in the infrastructure environment of the region providing the service, as well as constraints from the country, area, legal requirements, or product offerings.
+It is also used when the physical service delivery location must differ or when data redundancy configurations are required.
+Regional services are available only in specific regions, and pricing policies may vary by region.
 
 **Global Service**
 Global Service refers to services that are available throughout all regions. 
@@ -83,7 +91,6 @@ All users are provided with the same features, policy, stability and usability, 
 |  | CUBRID Instance  | Regional | O | O | O | O | 
 |  | MariaDB Instance  | Regional | O | O | O | O | 
 |  | Tibero Instance   | Regional | O | O | O | O | 
-|  | Redis Instance | Regional | O | O | O | O |
 |  | Valkey Instance | Regional | O | O | O | O |
 | Monitoring | Service Monitoring | Global |  |  |  |  |
 |  | Cloud Monitoring | Global |  |  |  |  |
