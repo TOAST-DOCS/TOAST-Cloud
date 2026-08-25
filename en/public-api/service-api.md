@@ -1,8 +1,11 @@
+<!-- pre-align:aligned sig=290ed037fa78 -->
+
 # Service API
 
 **NHN Cloud > Public API User Guide > Service API**
 
-## Go to Service API Guide
+<a id="go-to-service-api-guide"></a>
+## Go to Service API Guide { #go-to-service-api-guide }
 
 Service APIs allow external systems or user applications to control and integrate with individual NHN Cloud services and their resources.
 You can find the API Guide for each service under its respective service category.

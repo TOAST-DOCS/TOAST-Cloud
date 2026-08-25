@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=65978a09ad39 -->
+
 # Public API Overview
 
 **NHN Cloud > Public API User Guide > Public API Overview**
@@ -11,7 +13,8 @@ This document provides a comprehensive overview of NHN Cloud Public API usage, i
     * Since API behavior and response formats vary by service, please refer to the specific API guide for each service for more details.
     * Authentication methods vary across Framework APIs, Partner Management APIs, and individual services; some methods are only supported by specific services. You can check the supported authentication methods for each Public API in the [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/supported-authentication-methods) section.
 
-## Getting started with Public API
+<a id="getting-started-with-public-api"></a>
+## Getting started with Public API { #getting-started-with-public-api }
 
 * [Authentication Overview](https://docs.nhncloud.com/en/nhncloud/en/public-api/auth-method-overview)
 * [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/supported-authentication-methods)
@@ -20,7 +23,8 @@ This document provides a comprehensive overview of NHN Cloud Public API usage, i
 * [Partner Management API Guide](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/)
 * [Release Notes](https://docs.nhncloud.com/en/nhncloud/en/public-api/release-notes/)
 
-## Glossary
+<a id="glossary"></a>
+## Glossary { #glossary }
 
 | Terms | Description |
 | --- | --- |

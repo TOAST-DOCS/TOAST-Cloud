@@ -1,40 +1,54 @@
-## NHN Cloud > Overview
+<!-- pre-align:aligned sig=dc37484e22b4 -->
+
+<a id="nhn-cloud-overview"></a>
+## NHN Cloud > Overview { #nhn-cloud-overview }
 
 NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which provides everything necessary for your business operation and service development. 
 
-## Features
+<a id="features"></a>
+## Features { #features }
 
 - It is an easy-to-use cloud service for anyone.
 - It provides convenient infrastructure and platform so that you can focus on development.
 - You can use the service with a simple click on a web browser.
 - You can use the infrastructure and platform at a reasonable cost.
 
-### Composed of Various Services
+<a id="composed-of-various-services"></a>
+### Composed of Various Services { #composed-of-various-services }
 
 - We provide various services required for infrastructure, development, test, operations and technology support, and running a business.
 - From internal messenger and project management, to HR/finance/resource management, services are available for IT infrastructure of a company.
 - The urban data center, designed on its own technology and established in Pangyo, provides optimized operational efficiency.
 
-### Platform-oriented Cloud
+<a id="platform-oriented-cloud"></a>
+### Platform-oriented Cloud { #platform-oriented-cloud }
 
 - The cloud service is platform-oriented based on infrastructure.
 - Functions required to operate infrastructure, content, analysis, games, security, alarm messages, and other applications are provided.
 - Functions required to develop and operate applications are provided.
 - Companies are supported for easy development in the cloud environment.
 
-### Reasonable Prices
+<a id="reasonable-prices"></a>
+### Reasonable Prices { #reasonable-prices }
 
 - You'll be charged by pay-as-you-go. (Some services are charged by basic flat rate.)
 - Contract-based pricing plan provides more discount benefits.
 - Complementary services are free-of-charge.
 
-### Powerful Technology Support
+<a id="powerful-technology-support"></a>
+### Powerful Technology Support { #powerful-technology-support }
 
 - Stable services are ensured with experienced IT operations accumulated for over a decade with Hangame, Bugs, and PAYCO services.
 - Consulting service is provided to establish plans to introduce the cloud environment.
 - Professional engineers are supported 24/7.
 
-## Service Targets  
+<a id="global-cloud"></a>
+### Global Cloud { #global-cloud }
+
+<!-- TODO: translate body -->
+
+<a id="service-targets"></a>
+## Service Targets { #service-targets }
 
 - Companies in need of 1:1 technical consulting due to difficulties in the buildup of infrastructure
 - Private or public businesses for which security is on top of priority
@@ -42,7 +56,8 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 - Mid-and large-size shopping mall owners
 - Businesses in need of integrated messaging services, including SMS, Push and email
 
-## Service Composition
+<a id="service-composition"></a>
+## Service Composition { #service-composition }
 
 | Service | Description |
 | --- | --- |
@@ -70,8 +85,19 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Contact Center | An integrated solution for call center services helps process inquiries more efficiently, and provides elevated operational efficiency and optimized customer experience. |
 | Governance & Audit  | A service that manages the governance of organizations and monitors the various activity logs and events that occurred in the cloud. |
 
+#### Default Infrastructure Services
+| Service Category | Service |
+| ---- | --- |
+| Compute | Instance, Key Pair, GPU Instance, Instance Template, Image, Image Builder, Auto Scale |
+| Container | NKS, NCS |
+| Network | VPC, Subnet, Network ACL, Routing, Flow Log, Security Groups, Load Balancer, NAT Instance, NAT Gateway, Transit Hub, Internet Gateway, Peering Gateway, VPN Gateway, Service Gateway, Traffic Mirroring, Private DNS, Direct Connect, Network Interface, Floating IP, Colocation Gateway |
+| Storage | Block Storage, NAS, NAS (Offline), Storage Gateway |
+| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Valkey Instance |
+| Machine Learning | Deep Learning Instance |
+| Data & Analytics | Kafka Instance |
 
-## Service Release Policy
+<a id="service-release-policy"></a>
+## Service Release Policy { #service-release-policy }
 
 NHN Cloud Service is managed by the Release Policy as below.
 

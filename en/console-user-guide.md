@@ -1,6 +1,10 @@
-## NHN Cloud > Console User Guide
+<!-- pre-align:aligned sig=e42ad12c254a -->
 
-### Terminology
+<a id="nhn-cloud-console-user-guide"></a>
+## NHN Cloud > Console User Guide { #nhn-cloud-console-user-guide }
+
+<a id="terminology"></a>
+### Terminology { #terminology }
 
 
 * Role: A bundle of roles/permissions to use the services and features provided by NHN Cloud
@@ -23,7 +27,8 @@
 
 ![term_3.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_term_03_251124.png)
 
-### Organization 
+<a id="organization"></a>
+### Organization { #organization }
 
 * Policy
     * OWNER/ADMIN/ORG_MEMEBER__ADMIN can create an organization role group by combining roles and permissions provided by NHN Cloud.
@@ -50,7 +55,8 @@
 * Manage Organization Role Group
     * Members can be granted role groups and roles.
 
-### Project
+<a id="project"></a>
+### Project { #project }
 
 * Policy
     * ADMIN/PROJECT MEMBER ADMIN can create a project role group by combining roles and permissions provided by NHN Cloud.

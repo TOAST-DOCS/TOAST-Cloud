@@ -297,16 +297,14 @@ However, if you delete the project without paying immediately, the bills used so
 
 Member management allows you to control per-user authentication (login) and authorization.
 You can manage members separately in projects and organizations.
-Members are classified into NHN Cloud members and IAM members.
 
-### Policy for NHN Cloud Members and IAM Members
+### Policy for NHN Cloud Members, IAM Members, and Service Accounts
 
-| Classification | [NHN Cloud](http://nhncloud.com) Members | IAM Members |
-| --- | --- | --- |
-| Definition                    | - Members for organization management<br>- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud members even if their organizations are deleted. | - Members for the service use<br>- Members who do not consent to the Terms of Use <br>- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted |
-| Method of Member Registration | - Owner/Admin of an organization enters NHN Cloud ID for registration | - Owner/Admin of an organization enters unique ID for registration <br>- Register via SSO or API integration |
-| Member role              | - Manage organizations (Create/Modify organizations / Manage organization members / Manage organization services /Manage billing)<br>- Create projects<br>- Delete projects | - Use organization services                                 |
-| Console Access | - Access NHN Cloud console([https://console.nhncloud.com/](https://console.nhncloud.com/))<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.nhncloud.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) |
+| Classification | [NHN Cloud](http://nhncloud.com) Members | IAM Members | Service Accounts |
+| --- | --- | --- | --- |
+| Definition                    | - Members for organization management<br>- NHN Cloud members who consent to Terms of Use and hence are responsible and obligated for the service use <br>- The members are valid throughout the whole NHN Cloud services and remain as NHN Cloud members even if their organizations are deleted. | - Members for the service use<br>- Members who do not consent to the Terms of Use <br>- Members who are valid only within their organizations, and to be disqualified if their organizations are deleted | - Accounts used not by a person logging in directly, but to separate permissions when a service performs tasks or accesses another service<br>&nbsp;&nbsp;- Separate the create/manage permissions of user accounts (NHN Cloud members, IAM members) from the permissions used when a service performs tasks<br>- Divided into system service accounts and user service accounts |
+| Method of Member Registration | - Owner/Admin of an organization enters NHN Cloud ID for registration | - Owner/Admin of an organization enters unique ID for registration <br>- Register via SSO or API integration | - System service account<br>&nbsp;&nbsp;- Predefined and provided by NHN Cloud for each service<br>&nbsp;&nbsp;- Cannot be arbitrarily modified or deleted by ADMIN or MEMBER_ADMIN<br>- User service account<br>&nbsp;&nbsp;- Created by ADMIN or MEMBER_ADMIN by directly defining the name, role, and more<br>- Register an organization's service account to a project, or a project's service account to an organization via the external service account registration feature for cross-use as needed |
+| Console Access | - Access NHN Cloud console([https://console.nhncloud.com/](https://console.nhncloud.com/))<br>- NHN Cloud > Log in with member ID/password<br >- (optional) Two-factor (email or SMS) authentication | - IAM console (https://{organization domain}.console.nhncloud.com/) access<br>- Access Dooray! and ERP service with the service domain<br>- Log in with ID/PW set by the organization's OWNER (or ADMIN)<br>- Authenticate with login security set by the organization (two-factor authentication, settings per service) | - Unable to log in to the console |
 
 ### Organization Members
 

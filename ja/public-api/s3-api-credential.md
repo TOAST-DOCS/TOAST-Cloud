@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=3b7c984c2dfe -->
+
 # S3 API 認証情報
 
 **NHN Cloud > Public API 使用ガイド > API 認証方式 > S3 API 認証情報**
@@ -15,13 +17,16 @@ S3 API 認証情報は、NHN CloudでAmazon S3互換APIをサポートするサ�
     S3 API 認証情報は、ユーザーごとにプロジェクトあたり最大3個まで発行できます。
 
 
-## S3 API 認証情報の発行
+<a id="issue-s3-api-credentials"></a>
+## S3 API 認証情報の発行 { #issue-s3-api-credentials }
 
-### コンソールからの発行
+<a id="issue-via-console"></a>
+### コンソールからの発行 { #issue-via-console }
 
 Amazon S3互換APIをサポートするサービスコンソールから、S3 API 認証情報を発行できます。コンソールから発行する場合、Secret Keyは発行直後にのみ確認できるため、必ず別途保管してください。詳細は、各サービスのコンソールガイドを参照してください。
 
-### APIでの発行
+<a id="issue-via-api"></a>
+### APIでの発行 { #issue-via-api }
 
 APIを利用してS3 API 認証情報を発行するには、認証トークンが必要です。認証トークンの発行方法は、[IaaS トークン](/nhncloud/ko/public-api/iaas-token/)を参照してください。
 
@@ -32,6 +37,7 @@ Content-Type: application/json
 X-Auth-Token: {token-id}
 ```
 
+<a id="issue-via-api-request"></a>
 #### リクエスト
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
@@ -53,6 +59,7 @@ X-Auth-Token: {token-id}
 </details>
 
 
+<a id="issue-via-api-response"></a>
 #### レスポンス
 
 | 名前 | 種類 | プロパティ | 説明 |
@@ -85,7 +92,8 @@ X-Auth-Token: {token-id}
 </details>
 
 
-## S3 API 認証情報の照会
+<a id="get-s3-api-credentials"></a>
+## S3 API 認証情報の照会 { #get-s3-api-credentials }
 
 発行されたS3 API 認証情報の一覧を照会します。
 
@@ -95,6 +103,7 @@ GET https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{user-id}
 X-Auth-Token: {token-id}
 ```
 
+<a id="get-s3-api-credentials-request"></a>
 #### リクエスト
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
@@ -103,6 +112,7 @@ X-Auth-Token: {token-id}
 | X-Auth-Token | Header | String | O | 発行された認証トークンID |
 
 
+<a id="get-s3-api-credentials-response"></a>
 #### レスポンス
 
 | 名前 | 種類 | プロパティ | 説明 |
@@ -137,7 +147,8 @@ X-Auth-Token: {token-id}
 </details>
 
 
-## S3 API 認証情報の削除
+<a id="delete-s3-api-credentials"></a>
+## S3 API 認証情報の削除 { #delete-s3-api-credentials }
 
 発行されたS3 API 認証情報を削除します。流出が疑われる場合は、該当の認証情報を削除してから新たに発行してください。
 
@@ -147,6 +158,7 @@ DELETE https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{user-
 X-Auth-Token: {token-id}
 ```
 
+<a id="delete-s3-api-credentials-request"></a>
 #### リクエスト
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
@@ -156,6 +168,7 @@ X-Auth-Token: {token-id}
 | X-Auth-Token | Header | String | O | 発行された認証トークンID |
 
 
-## S3 API 認証情報の使用
+<a id="use-s3-api-credentials"></a>
+## S3 API 認証情報の使用 { #use-s3-api-credentials }
 
 S3 API 認証情報は、S3互換APIの呼び出し時にAWS Signature Version 4 署名方式で認証に使用されます。発行されたAccess KeyとSecret KeyをAWS SDKまたはS3互換クライアントに設定することで、S3互換APIを呼び出すことができます。詳細な使用方法は、各サービスのS3互換APIガイドを参照してください。

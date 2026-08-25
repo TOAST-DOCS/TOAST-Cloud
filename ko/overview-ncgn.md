@@ -45,3 +45,13 @@ NHN Cloud에서 제공하는 “국가 행정망 연계가 가능한 최적의 �
 | Monitoring | 가상 서버를 비롯한 NHN Cloud 내 리소스에 대한 지표를 수집 및 제공하고, 웹 서비스의 장애 여부를 모니터링할 수 있습니다. |
 | Security | 보안을 강화할 수 있는 플랫폼을 사용할 수 있습니다. |
 | CloudTrail | 다양한 활동 로그 및 이벤트를 자동으로 수집해주는 무료 서비스입니다. |
+
+### 기본 인프라 서비스
+| 서비스 카테고리 | 서비스 |
+| ---- | --- |
+| Compute | Instance, Key Pair, Instance Template, Image, Auto Scale |
+| Container | NKS, NCS |
+| Network | VPC, Subnet, Network ACL, Routing, Security Groups, Load Balancer, NAT Instance, NAT Gateway, Internet Gateway, Peering Gateway, Service Gateway, Direct Connect, Network Interface, Floating IP, Colocation Gateway |
+| Storage | Block Storage, NAS |
+| Database | MS-SQL Instance, MySQL Instance, PostgreSQL Instance, CUBRID Instance, MariaDB Instance, Tibero Instance, Valkey Instance |
+| Data & Analytics | Kafka Instance |

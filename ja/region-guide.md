@@ -1,24 +1,32 @@
-## NHN Cloud > リージョンガイド
+<!-- machine_translated: true -->
+
+<!-- pre-align:aligned sig=3a1734fcb5e6 -->
+
+<a id="nhn-cloud-guide-to-nhn-cloud-regions"></a>
+## NHN Cloud > リージョンガイド { #nhn-cloud-guide-to-nhn-cloud-regions }
 リージョンは、独立していて地理的に隔離されたサーバーの物理的な位置を意味します。
 一般的にリージョンは、アベイラビリティゾーンと呼ぶ独立した電源およびネットワークを持つデータセンターで構成され、使用したい地域とサービスに応じてリージョンを選択できます。 <br>
-インターネットで、いつどこでも自由にリージョンを選択してNHN Cloudサービスを利用できます。
+インターネットで、いつどこでも自由にリージョンを選択してNHN Cloudサービスをご利用ください。
 
-## NHN Cloudリージョン
+<a id="nhn-cloud-regions"></a>
+## NHN Cloudリージョン { #nhn-cloud-regions }
 
 NHN Cloudは、安定的なグローバルサービスを提供するために、4個のリージョンを運用しています。
 高可用性をサポートするには、複数のアベイラビリティゾーンまたは複数のリージョンにアプリケーションを配布する必要があります。
 NHN Cloudユーザーは、サービス地域と目的に応じて使用するリージョンを選択できます。一般的に主なサービス対象になる地域のリージョンを利用すると、短いレスポンス時間が期待できます。
 
-## NHN Cloudリージョン位置
+<a id="location-of-toat-regions"></a>
+## NHN Cloudリージョン位置 { #location-of-toat-regions }
 NHN Cloudは、グローバルなサービスを提供するために、多くの地域にリージョンを拡大しています。
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_JP.png)
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_KR.png)
 
-## NHN Cloudリージョンサービス
+<a id="nhn-cloud-regional-service"></a>
+## NHN Cloudリージョンサービス { #nhn-cloud-regional-service }
 
 **リージョンサービス**
-リージョンサービスは、サービスを提供するリージョンのインフラ環境と国/地域/法律/商品でサービスする内容の制限により、特定地域にのみ提供されるサービスです。
-物理的なサービスの提供位置が異なる必要がある場合や、データの二重化構成を行うためにも利用します。
-リージョンサービスは、特定リージョンでのみ利用でき、リージョンごとに課金ポリシーが異なる場合があります。
+リージョンサービスは、サービスを提供するリージョンのインフラ環境や、国/地域/法律/商品によるサービス内容の制限により、特定の地域にのみ提供されるサービスです。
+物理的なサービスの提供位置が異なる必要がある場合や、データの冗長化構成のためにも利用します。
+リージョンサービスは特定のリージョンでのみ利用でき、リージョンごとに課金ポリシーが異なる場合があります。
 
 **グローバルサービス**
 グローバルサービスは、すべてのリージョンで使用できるサービスです。
@@ -64,13 +72,13 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Storage | Block Storage | リージョン | O | O | O | O | 
 |  | NAS (offline) | リージョン |  | O |  | O | 
 |  | NAS | リージョン | O | O | O |  |  
-|  | NAS for BigData | リージョン |  |  | O |  |  
+|  | NAS for BigData | リージョン |  |  | O |  |
 |  | Object Storage | リージョン | O | O | O | O |
 |  | Backup | リージョン | O | O | O | O | 
 |  | Storage Gateway | リージョン | O | | |  | 
 |  | Data transporter | リージョン | O | O |  |  |   
 | Database | RDS for MySQL | リージョン | O | O | | O |  
-|  | RDS for PostgreSQL  | リージョン | O |  |  |  |   
+|  | RDS for PostgreSQL  | リージョン | O | O |  |  |   
 |  | RDS for MariaDB | リージョン | O |  |  |   | 
 |  | RDS for MS-SQL | リージョン | O |  |  |   |
 |  | EasyCache | リージョン | O | O |  |   |
@@ -79,8 +87,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | PostgreSQL Instance | リージョン | O | O | O | O |
 |  | CUBRID Instance  | リージョン | O | O | O | O | 
 |  | MariaDB Instance  | リージョン | O | O | O | O | 
-|  | Tibero Instance   | リージョン | O | O | O | O | 
-|  | Redis Instance | リージョン | O | O | O | O |
+|  | Tibero Instance   | リージョン | O | O | O | O |
 |  | Valkey Instance | リージョン | O | O | O | O |
 | Monitoring | Service Monitoring | グローバル |  |  |  |  |
 |  | Cloud Monitoring | グローバル |  |  |  |  |
@@ -125,6 +132,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | Speech to Text | グローバル |  |  |  |  | 
 | Machine Learning | Deep Learning Instance | リージョン | O |  | O | |  
 |  | AI EasyMaker | リージョン | O |  | O |  |  
+|  | NHN Cloud Foundry | リージョン | O |  |  | O |
 | Application Service | ROLE | グローバル |  |  |  |  | 
 |  | API Gateway | リージョン | O | O | O |  |  
 |  | RTCS | グローバル |  |  |  |  | 
@@ -139,7 +147,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 | Data & Analytics | Log & Crash Search | グローバル |  |  |  |  | 
 |  | DataFlow | リージョン | O |  | O |  |  
 |  | DataQuery | リージョン | O |  | O |  |  
-|  | Data Lake Storage | リージョン |  |  | O |  |  
+|  | Data Lake Storage | リージョン |  |  | O | |  
 |  | EasyQueue | リージョン | O | O |  |  | 
 |  | Kafka Instance | リージョン | O | O | O | O | 
 | Dev Tools | Pipeline | リージョン | O |  | O |  |  
