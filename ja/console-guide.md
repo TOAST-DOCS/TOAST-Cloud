@@ -79,9 +79,9 @@ NHN Cloudサービスを安定的かつ効率的に利用するために必要�
 
 <a id="organization-governance-setting-ip-acl-setting"></a>
 #### IP ACL設定
-IP ACL設定に登録されたIPからのみNHN Cloudサービスを利用できます。
-コンソール接続及びUser Access Keyトークン認証方式のPublic API呼び出し時にIP ACLが適用されます。 [認証方式サポート状況の表示](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods/)
-Dooray!サービスは各サービスコンソール画面からIP ACLを設定できます。
+설IP ACL 設定に登録された IP からのみ、NHN Cloud サービスを利用できます。
+コンソールアクセスおよび User Access Key トークン認証方式の Public API 呼び出し時に IP ACL が適用されます。[認証方式サポート状況を確認する](/Support-Status/ja/supported-authentication-methods/)
+Dooray! サービスは、該当サービスのコンソール画面で IP ACL を設定できます。
 
 1. **コンソール**に移動した後、設定したい組織の**組織管理**ページに接続します。
 2. サブタブメニューから**ガバナンス設定**を選択します。
@@ -455,16 +455,16 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Cloud Functions | ADMIN | Cloud Functionsサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り) |
-| NHN Container Registry (NCR) | IMAGE UPLOADER | NHN Container Registry (NCR) サービスに対するRead(読み取り) <br> イメージ アップロード、アーティファクト Create(作成)、タグ Create(作成) |
-| DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| DNS Plus | VIEWER | DNS Plusサービスに対するRead(読み取り) |
-| Object Storage | ADMIN | Object Storageサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| NHN Container Registry (NCR) | IMAGE UPLOADER | NHN Container Registry (NCR) サービス Read(読み取り) <br> イメージ アップロード、アーティファクト Create(作成)、タグ Create(作成) |
+| DNS Plus | ADMIN | DNS Plusサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| DNS Plus | VIEWER | DNS Plusサービス Read(読み取り) |
+| Object Storage | ADMIN | Object Storageサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Object Storage | Container OPERATOR | Object Storageサービス内のコンテナリストおよび、すべての情報詳細を照会Read(読み取り)。コンテナ管理Create(作成)、Update(更新)、Delete(削除) |
 | Object Storage | Container VIEWER | Object Storageサービス内のコンテナリストを照会Read(読み取り)  |
 | Object Storage | Object READER | Object Storageサービス内のコンテナリストおよび、一部の情報詳細を照会Read(読み取り) <br> オブジェクトリストおよび詳細照会Read(読み取り) <br> オブジェクトダウンロードRead(読み取り)  |
 | Object Storage | Object WRITER | Object Storageサービス内のコンテナリストおよび、一部の情報詳細を照会Read(読み取り) <br> オブジェクト管理Create(作成)、Update(更新)、Delete(削除)  |
 | Object Storage | Object VIEWER | Object Storageサービス内のコンテナリストおよび、一部の情報詳細を照会Read(読み取り) <br> オブジェクトリストおよび詳細照会Read(読み取り)  |
-| Backup | ADMIN | Backupサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Backup | ADMIN | Backupサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | RDS for MySQL | ADMIN | RDS for MySQLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | RDS for MySQL | VIEWER | RDS for MySQLサービスに対するRead(読み取り) |
 | RDS for PostgreSQL | ADMIN | RDS for PostgreSQLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
@@ -515,16 +515,16 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Security Monitoring | ADMIN | Security Monitoringサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | CAPTCHA | ADMIN | CAPTCHAサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | WEB Firewall | ADMIN | WEB Firewallサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Vaccine | ADMIN | Vaccineサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Secure Key Manager | ADMIN | Secure Key Managerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager承認要請に対する承認, 拒否, 照会および承認要請生成, 照会  |
-| Secure Key Manager | VIEWER | Secure Key Managerサービスに対するRead(読み取り) |
-| Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
-| Security Advisor | ADMIN | Security Advisorサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Security Advisor | VIEWER | Security Advisorサービスに対するRead(読み取り)  |
-| Network Firewall | ADMIN | Network Firewallサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Network Firewall | VIEWER | Network Firewallサービスに対するRead(読み取り)  |
+| Vaccine | ADMIN | Vaccineサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Secure Key Manager | ADMIN | Secure Key Managerサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Secure Key Manager | APPROVAL ADMIN | Secure Key Managerサービスの承認要請に対する承認, 拒否, 照会および承認要請生成, 照会  |
+| Secure Key Manager | VIEWER | Secure Key Managerサービス Read(読み取り) |
+| Security Compliance | ADMIN | Security  Complianceサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Security Advisor | ADMIN | Security Advisorサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Security Advisor | VIEWER | Security Advisorサービス Read(読み取り)  |
+| Network Firewall | ADMIN | Network Firewallサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Network Firewall | VIEWER | Network Firewallサービス Read(読み取り)  |
 | NHN Bastion | ADMIN | NHN Bastionサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) | 
 | NHN Bastion | VIEWER | NHN Bastionサービスに対するRead(読み取り) | 
 | NHN Bastion | USER | NHN Bastionサービスターミナルの利用 |
@@ -556,17 +556,6 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | AI EasyMaker | ADMIN | AI EasyMakerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | NHN Cloud Foundry | ADMIN | NHN Cloud Foundry サービスの Create（作成）、Read（読み取り）、Update（更新）、Delete（削除）  |
-| IAP | ADMIN | IAPサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| DataFlow | ADMIN | DataFlowサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| DataQuery | ADMIN | DataQueryサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Data Lake Storage | ADMIN | Data Lake StorageサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除)  |
-| Data Lake Storage | OPERATOR | Data Lake Storageサービス内のバケットリストおよび、すべての情報詳細を照会Read(読み取り)。バケット管理Create(作成)、Update(更新)、Delete(削除)  |
-| Data Lake Storage | VIEWER | Data Lake Storageサービス内のバケットリストおよび、すべての情報詳細を照会Read(読み取り)  |
-| EasyQueue | ADMIN | EasyQueueサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除)、メッセージの送受信  |
-| EasyQueue | CLIENT | EasyQueueサービスの参照(Read)、メッセージの送受信  |
-| EasyQueue | VIEWER | EasyQueueサービス Read(読み取り)  |
 | ROLE | ADMIN | ROLEサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | RTCS | ADMIN | RTCSサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
