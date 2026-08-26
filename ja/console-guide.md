@@ -79,7 +79,7 @@ NHN Cloudサービスを安定的かつ効率的に利用するために必要�
 
 <a id="organization-governance-setting-ip-acl-setting"></a>
 #### IP ACL設定
-설IP ACL 設定に登録された IP からのみ、NHN Cloud サービスを利用できます。
+IP ACL 設定に登録された IP からのみ、NHN Cloud サービスを利用できます。
 コンソールアクセスおよび User Access Key トークン認証方式の Public API 呼び出し時に IP ACL が適用されます。[認証方式サポート状況を確認する](/Support-Status/ja/supported-authentication-methods/)
 Dooray! サービスは、該当サービスのコンソール画面で IP ACL を設定できます。
 
