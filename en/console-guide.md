@@ -80,8 +80,8 @@ You can set and manage policies for stable and efficient use of NHN Cloud servic
 <a id="organization-governance-setting-ip-acl-setting"></a>
 #### IP ACL Setting
 NHN Cloud services are accessible only from IP addresses registered in the IP ACL settings.
-IP ACLs are applied to both console access and Public API calls using User Access Key tokens. [View Supported Authentication Methods](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods/)
-For Dooray! services, IP ACL can be set on the service's console screen.
+IP ACLs are applied to both console access and Public API calls using User Access Key tokens. [View Supported Authentication Methods](/Support-Status/en/supported-authentication-methods/)
+You can configure IP ACL settings for the Dooray! service from the service console.
 
 1. Go to **Console** and access the **Organization Management** page of the organization you want to set up.
 2. In the sub-tab menu, select **Governance Settings**.

@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=65978a09ad39 -->
 
 # Public API 概要
@@ -9,19 +11,19 @@ NHN CloudのPublic APIは、NHN Cloudのサービスとリソースを外部シ�
 このドキュメントでは、Public API呼び出し時に必要な認証方法、Public APIごとの認証方式サポート状況、フレームワークAPI、パートナー管理APIなど、Public APIの活用に必要な全般的な内容を説明します。NHN Cloud Public APIを連携しようとする開発者、API認証方式を理解しようとするサービスプランナー、APIベースでの自動化を検討しているシステム管理者がこのドキュメントを活用できます。
 
 
-!!! tip "参考"
-    * サービスごとにAPIの動作方式やレスポンス形式が異なるため、詳細は各サービスのAPIガイドを参照してください。
-    * フレームワークAPI、パートナー管理API、各サービスごとにサポートするAPI認証方式が異なり、一部の認証方式は特定のサービスでのみサポートされます。各Public APIでサポートされる認証方式は[認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/supported-authentication-methods)で確認できます。
+!!! tip "ヒント"
+    * サービスごとに API の動作方式とレスポンス形式が異なるため、詳細については各サービスの API ガイドを参照してください。
+    * フレームワーク API、パートナー管理 API、各サービスでサポートされる API 認証方式はそれぞれ異なり、一部の認証方式は特定のサービスでのみサポートされています。各 Public API でサポートされる認証方式は、[認証方式サポート状況](/Support-Status/ja/supported-authentication-methods/)で確認できます。
 
 <a id="getting-started-with-public-api"></a>
 ## Public APIを始める { #getting-started-with-public-api }
 
-* [認証方式概要](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/auth-method-overview)
-* [認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/supported-authentication-methods)
-* [サービスAPI](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/service-api)
-* [フレームワークAPI](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/framework-api/)
-* [パートナー管理APIガイド](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/partner-api/)
-* [リリースノート](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/release-notes/)
+* [認証方式の概要](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method-overview)
+* [認証方式サポート状況](/Support-Status/ja/supported-authentication-methods/)
+* [サービス API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/service-api)
+* [フレームワーク API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)
+* [パートナー管理 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)
+* [リリースノート](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/release-notes/)
 
 <a id="glossary"></a>
 ## 用語集 { #glossary }
