@@ -327,7 +327,7 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 
 | 구분 | [NHN Cloud](http://nhncloud.com) 계정 | IAM 계정 |
 | --- | --- | --- |
-| 정의 | - 조직 관리를 위한 멤버<br>- NHN Cloud 이용 약관에 동의한 NHN Cloud 회원으로, 서비스 이용에 대한 책임과 의무를 가지는 멤버<br>- NHN Cloud 서비스 전체에서 유효한 멤버로, 소속된 조직이 삭제되어도 NHN Cloud 계정으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
+| 정의 | - 조직 관리를 위한 멤버<br>- NHN Cloud 이용 약관에 동의한 NHN Cloud 회원으로, 서비스 이용 책임과 의무를 가지는 멤버<br>- NHN Cloud 서비스 전체에서 유효한 멤버로, 소속된 조직이 삭제되어도 NHN Cloud 계정으로 존재 | - 서비스 이용을 위한 멤버<br>- NHN Cloud 이용 약관에 동의하지 않은 멤버<br>- 조직 내에서만 유효한 멤버, 소속된 조직이 삭제되면 삭제되는 멤버 |
 | 멤버 등록 방법 | - 조직의 OWNER, ADMIN, ORG_MEMBER_ADMIN이 NHN Cloud 계정 ID를 입력하여 등록 | - 조직의 OWNER, ADMIN, ORG_MEMBER_ADMIN이 조직 내 유일한 ID를 입력하여 등록<br>- SSO 연동/API 연동 등으로 등록 |
 | 콘솔 접근 | - NHN Cloud 콘솔([https://console.nhncloud.com/](https://console.nhncloud.com/)) 접근<br>- NHN Cloud 계정 ID/비밀번호로 로그인<br>- (선택) 2차 인증(이메일 또는 SMS) | - IAM 콘솔(https://{조직 도메인}.console.nhncloud.com/) 접근<br>- Dooray!, ERP 서비스는 해당 서비스 도메인으로 접근<br>- 조직의 OWNER(또는 ADMIN)가 설정한 ID/비밀번호로 로그인<br>- 조직에서 설정한 로그인 보안(2차 인증, 서비스별 설정) 인증 |
 
