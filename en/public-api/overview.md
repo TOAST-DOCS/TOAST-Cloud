@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=65978a09ad39 -->
 
 # Public API Overview
@@ -11,17 +13,17 @@ This document provides a comprehensive overview of NHN Cloud Public API usage, i
 
 !!! tip "Note"
     * Since API behavior and response formats vary by service, please refer to the specific API guide for each service for more details.
-    * Authentication methods vary across Framework APIs, Partner Management APIs, and individual services; some methods are only supported by specific services. You can check the supported authentication methods for each Public API in the [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/supported-authentication-methods) section.
+    * Authentication methods vary across Framework APIs, Partner Management APIs, and individual services; some methods are only supported by specific services. You can check the supported authentication methods for each Public API in the [Supported Authentication Methods](/Support-Status/en/supported-authentication-methods/) section.
 
 <a id="getting-started-with-public-api"></a>
 ## Getting started with Public API { #getting-started-with-public-api }
 
-* [Authentication Overview](https://docs.nhncloud.com/en/nhncloud/en/public-api/auth-method-overview)
-* [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/supported-authentication-methods)
-* [Service API](https://docs.nhncloud.com/en/nhncloud/en/public-api/service-api)
-* [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/)
-* [Partner Management API Guide](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/)
-* [Release Notes](https://docs.nhncloud.com/en/nhncloud/en/public-api/release-notes/)
+* [Authentication Method Overview](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method-overview)
+* [Supported Authentication Methods](/Support-Status/en/supported-authentication-methods/)
+* [Service API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/service-api)
+* [Framework API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)
+* [Partner Management API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)
+* [Release Notes](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/release-notes/)
 
 <a id="glossary"></a>
 ## Glossary { #glossary }

@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=2ab3282ba364 -->
 
 # Authentication Overview
@@ -21,5 +23,5 @@ NHN Cloud Public APIs support User Access Key tokens, IaaS tokens, User Access K
 | S3 API Credentials | AWS EC2-style static key-based authentication | Authentication | Up to 3 per project | None |
 
 
-NHN Cloud Public APIs support different authentication methods for each API. After checking the authentication methods provided by each API in [Supported Authentication Methods](https://docs.nhncloud.com/en/nhncloud/en/public-api/supported-authentication-methods), use the corresponding method to authenticate your API requests.
+NHN Cloud Public APIs support different authentication methods for each API. After checking the authentication methods provided by each API in [Supported Authentication Methods](/Support-Status/en/supported-authentication-methods/), use the corresponding method to authenticate your API requests.
 

@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=2ab3282ba364 -->
 
 # 認証方式概要
@@ -22,4 +24,4 @@ NHN CloudのPublic APIは、認証のためにUser Access Keyトークン、IaaS
 
 
 
-NHN Cloud Public APIは、APIごとに異なる認証方式をサポートします。[認証方式のサポート状況](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/supported-authentication-methods)で各APIが提供する認証方式を確認した後、該当する認証方式を使用してAPIリクエストを認証してください。
+NHN Cloud Public API は、APIごとに異なる認証方式をサポートしています。[認証方式サポート状況](/Support-Status/ja/supported-authentication-methods/)で各APIが提供する認証方式を確認した後、該当の認証方式を使用してAPIリクエストを認証します。

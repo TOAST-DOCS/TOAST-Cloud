@@ -79,9 +79,9 @@ NHN Cloudサービスを安定的かつ効率的に利用するために必要�
 
 <a id="organization-governance-setting-ip-acl-setting"></a>
 #### IP ACL設定
-IP ACL設定に登録されたIPからのみNHN Cloudサービスを利用できます。
-コンソール接続及びUser Access Keyトークン認証方式のPublic API呼び出し時にIP ACLが適用されます。 [認証方式サポート状況の表示](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/supported-authentication-methods/)
-Dooray!サービスは各サービスコンソール画面からIP ACLを設定できます。
+IP ACL 設定に登録された IP からのみ、NHN Cloud サービスを利用できます。
+コンソールアクセスおよび User Access Key トークン認証方式の Public API 呼び出し時に IP ACL が適用されます。[認証方式サポート状況を確認する](/Support-Status/ja/supported-authentication-methods/)
+Dooray! サービスは、該当サービスのコンソール画面で IP ACL を設定できます。
 
 1. **コンソール**に移動した後、設定したい組織の**組織管理**ページに接続します。
 2. サブタブメニューから**ガバナンス設定**を選択します。
@@ -325,13 +325,13 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 
 
 <a id="policy-for-nhn-cloud-members-iam-members-and-service-accounts"></a>
-### NHN CloudアカウントとIAMアカウント、サービスアカウントポリシー { #policy-for-nhn-cloud-members-iam-members-and-service-accounts }
+### NHN Cloud アカウント / IAM アカウントポリシー { #policy-for-nhn-cloud-members-iam-members-and-service-accounts }
 
-| 区分 | [NHN Cloud](http://nhncloud.com)アカウント | IAMアカウント | サービスアカウント |
-| --- | --- | --- | --- |
-| 定義      | - 組織管理のためのメンバー<br>- NHN Cloud利用約款に同意したNHN Cloud会員で、サービス利用に対する責任と義務を有するメンバー<br>- NHN Cloudサービス全体で有効なメンバーで、所属した組織が削除されてもNHN Cloudアカウントとして存在 | - サービス利用のためのメンバー<br>- NHN Cloud利用約款に同意しないメンバー<br>- 組織内でのみ有効なメンバー、所属した組織が削除されると削除されるメンバー | - 人が直接ログインして使用するアカウントではなく、サービス内でタスクを実行したり、あるサービスが他のサービスにアクセスする際の権限分離のために使用するメンバー<br>&nbsp;&nbsp;- ユーザーアカウント(NHN Cloudアカウント、IAMアカウント)が実行する作成・管理権限と、サービスがタスクを実行する際に使用する権限を分離可能<br>- システムサービスアカウントとユーザーサービスアカウントに区分 |
-| メンバー登録方法 | - 組織のOWNERまたはAdminがNHN Cloud IDを入力して登録 | - 組織のOWNERまたはAdminが組織内で唯一のIDを入力して登録<br>- SSO連動/API連携などを通して登録 | - システムサービスアカウント<br>&nbsp;&nbsp;- NHN Cloudがサービス別に事前定義して提供<br>&nbsp;&nbsp;- ADMIN、MEMBER_ADMINによる任意の変更及び削除は不可<br>- ユーザーサービスアカウント<br>&nbsp;&nbsp;- ADMIN、MEMBER_ADMINが名前/ロールなどを直接定義して作成<br>- 外部サービスアカウント登録機能を使用して、必要に応じて組織のサービスアカウントをプロジェクトに、またはプロジェクトのサービスアカウントを組織に登録し、相互に行き来して使用可能 |
-| コンソールアクセス | - NHN Cloudコンソール([https://console.nhncloud.com/](https://console.nhncloud.com/))アクセス<br>- NHN Cloud> 会員ID/パスワードでログイン<br>- (任意) 2次(メールまたはSMS)認証 | - IAMコンソール(https://組織ドメイン.console.nhncloud.com/)アクセス<br>- (Dooray!、ERPサービスは該当サービスドメインでアクセス)<br>- 組織のOWNER(またはADMIN)が設定したID/PWでログイン<br>- 組織で設定したログインセキュリティ(2次認証、サービス別設定)認証 | - コンソールへのログイン不可 |
+| 区分 | [NHN Cloud](http://nhncloud.com)アカウント | IAMアカウント |
+| --- | --- | --- |
+| 定義 | - 組織管理のためのメンバー<br>- NHN Cloud 利用規約に同意した NHN Cloud 会員で、サービス利用の責任と義務を持つメンバー<br>- NHN Cloud サービス全体で有効なメンバーで、所属する組織が削除されても NHN Cloud アカウントとして存在 | - サービス利用のためのメンバー<br>- NHN Cloud 利用規約に同意していないメンバー<br>- 組織内でのみ有効なメンバーで、所属する組織が削除されると削除されるメンバー |
+| メンバー登録方法 | - 組織のOWNERまたはAdminがNHN Cloud IDを入力して登録 | - 組織のOWNERまたはAdminが組織内で唯一のIDを入力して登録<br>- SSO連動/API連携などを通して登録 |
+| コンソールアクセス | - NHN Cloudコンソール([https://console.nhncloud.com/](https://console.nhncloud.com/))アクセス<br>- NHN Cloud> 会員ID/パスワードでログイン<br>- (任意) 2次(メールまたはSMS)認証 | - IAMコンソール(https://組織ドメイン.console.nhncloud.com/)アクセス<br>- (Dooray!、ERPサービスは該当サービスドメインでアクセス)<br>- 組織のOWNER(またはADMIN)が設定したID/PWでログイン<br>- 組織で設定したログインセキュリティ(2次認証、サービス別設定)認証 |
 
 <a id="member-roles"></a>
 ### 会員 ロール { #member-roles }
@@ -455,16 +455,16 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Cloud Functions | ADMIN | Cloud Functionsサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | NHN Container Registry (NCR) | ADMIN | NHN Container Registry (NCR)サービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | NHN Container Registry (NCR) | VIEWER | NHN Container Registry (NCR)サービスに対するRead(読み取り) |
-| NHN Container Registry (NCR) | IMAGE UPLOADER | NHN Container Registry (NCR) サービスに対するRead(読み取り) <br> イメージ アップロード、アーティファクト Create(作成)、タグ Create(作成) |
-| DNS Plus | ADMIN | DNS Plusサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| DNS Plus | VIEWER | DNS Plusサービスに対するRead(読み取り) |
-| Object Storage | ADMIN | Object Storageサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| NHN Container Registry (NCR) | IMAGE UPLOADER | NHN Container Registry (NCR) サービス Read(読み取り) <br> イメージ アップロード、アーティファクト Create(作成)、タグ Create(作成) |
+| DNS Plus | ADMIN | DNS Plusサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| DNS Plus | VIEWER | DNS Plusサービス Read(読み取り) |
+| Object Storage | ADMIN | Object Storageサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | Object Storage | Container OPERATOR | Object Storageサービス内のコンテナリストおよび、すべての情報詳細を照会Read(読み取り)。コンテナ管理Create(作成)、Update(更新)、Delete(削除) |
 | Object Storage | Container VIEWER | Object Storageサービス内のコンテナリストを照会Read(読み取り)  |
 | Object Storage | Object READER | Object Storageサービス内のコンテナリストおよび、一部の情報詳細を照会Read(読み取り) <br> オブジェクトリストおよび詳細照会Read(読み取り) <br> オブジェクトダウンロードRead(読み取り)  |
 | Object Storage | Object WRITER | Object Storageサービス内のコンテナリストおよび、一部の情報詳細を照会Read(読み取り) <br> オブジェクト管理Create(作成)、Update(更新)、Delete(削除)  |
 | Object Storage | Object VIEWER | Object Storageサービス内のコンテナリストおよび、一部の情報詳細を照会Read(読み取り) <br> オブジェクトリストおよび詳細照会Read(読み取り)  |
-| Backup | ADMIN | Backupサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Backup | ADMIN | Backupサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | RDS for MySQL | ADMIN | RDS for MySQLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | RDS for MySQL | VIEWER | RDS for MySQLサービスに対するRead(読み取り) |
 | RDS for PostgreSQL | ADMIN | RDS for PostgreSQLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
@@ -515,16 +515,16 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Security Monitoring | ADMIN | Security Monitoringサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | CAPTCHA | ADMIN | CAPTCHAサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | WEB Firewall | ADMIN | WEB Firewallサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Vaccine | ADMIN | Vaccineサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Secure Key Manager | ADMIN | Secure Key Managerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Secure Key Manager | APPROVAL ADMIN | Secure Key Manager承認要請に対する承認, 拒否, 照会および承認要請生成, 照会  |
-| Secure Key Manager | VIEWER | Secure Key Managerサービスに対するRead(読み取り) |
-| Security  Compliance | ADMIN | Security  Complianceサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
-| Security Advisor | ADMIN | Security Advisorサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Security Advisor | VIEWER | Security Advisorサービスに対するRead(読み取り)  |
-| Network Firewall | ADMIN | Network Firewallサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Network Firewall | VIEWER | Network Firewallサービスに対するRead(読み取り)  |
+| Vaccine | ADMIN | Vaccineサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Secure Key Manager | ADMIN | Secure Key Managerサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Secure Key Manager | APPROVAL ADMIN | Secure Key Managerサービスの承認要請に対する承認, 拒否, 照会および承認要請生成, 照会  |
+| Secure Key Manager | VIEWER | Secure Key Managerサービス Read(読み取り) |
+| Security Compliance | ADMIN | Security  Complianceサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Webshell Threat Detector | ADMIN | Webshell Threat Detectorサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Security Advisor | ADMIN | Security Advisorサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Security Advisor | VIEWER | Security Advisorサービス Read(読み取り)  |
+| Network Firewall | ADMIN | Network Firewallサービス Create(作成), Read(読み取り), Update(更新), Delete(削除)  |
+| Network Firewall | VIEWER | Network Firewallサービス Read(読み取り)  |
 | NHN Bastion | ADMIN | NHN Bastionサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) | 
 | NHN Bastion | VIEWER | NHN Bastionサービスに対するRead(読み取り) | 
 | NHN Bastion | USER | NHN Bastionサービスターミナルの利用 |
@@ -556,17 +556,6 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | Speech to Text | ADMIN | Speech to Textサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | AI EasyMaker | ADMIN | AI EasyMakerサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | NHN Cloud Foundry | ADMIN | NHN Cloud Foundry サービスの Create（作成）、Read（読み取り）、Update（更新）、Delete（削除）  |
-| IAP | ADMIN | IAPサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Mobile Device Info | ADMIN | Mobile Device Infoサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Log & Crash Search | ADMIN | Log & Crash Searchサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| DataFlow | ADMIN | DataFlowサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| DataQuery | ADMIN | DataQueryサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
-| Data Lake Storage | ADMIN | Data Lake StorageサービスCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除)  |
-| Data Lake Storage | OPERATOR | Data Lake Storageサービス内のバケットリストおよび、すべての情報詳細を照会Read(読み取り)。バケット管理Create(作成)、Update(更新)、Delete(削除)  |
-| Data Lake Storage | VIEWER | Data Lake Storageサービス内のバケットリストおよび、すべての情報詳細を照会Read(読み取り)  |
-| EasyQueue | ADMIN | EasyQueueサービス Create(作成)、Read(読み取り)、Update(更新)、Delete(削除)、メッセージの送受信  |
-| EasyQueue | CLIENT | EasyQueueサービスの参照(Read)、メッセージの送受信  |
-| EasyQueue | VIEWER | EasyQueueサービス Read(読み取り)  |
 | ROLE | ADMIN | ROLEサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | API Gateway | ADMIN | API Gatewayサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
 | RTCS | ADMIN | RTCSサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除)  |
