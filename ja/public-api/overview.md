@@ -18,12 +18,12 @@ NHN CloudのPublic APIは、NHN Cloudのサービスとリソースを外部シ�
 <a id="getting-started-with-public-api"></a>
 ## Public APIを始める { #getting-started-with-public-api }
 
-* [認証方式の概要](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method-overview)
+* [認証方式の概要](./auth-method-overview/)
 * [認証方式サポート状況](/Support-Status/ja/supported-authentication-methods/)
-* [サービス API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/service-api)
-* [フレームワーク API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)
-* [パートナー管理 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)
-* [リリースノート](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/release-notes/)
+* [サービス API](./service-api/)
+* [フレームワーク API](./framework-api/)
+* [パートナー管理 API](./partner-api/)
+* [リリースノート](./release-notes/)
 
 <a id="glossary"></a>
 ## 用語集 { #glossary }

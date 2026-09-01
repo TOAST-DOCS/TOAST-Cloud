@@ -20,7 +20,7 @@
 <a id="authentication-and-permission"></a>
 ### 認証及び権限 { #authentication-and-permission }
 
-パートナー管理APIは、API呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](/nhncloud/ja/public-api/user-access-key-token)を参照してください。
+パートナー管理APIは、API呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](./user-access-key-token/)を参照してください。
 
 | ヘッダ名 | 説明 |
 | --- | --- |

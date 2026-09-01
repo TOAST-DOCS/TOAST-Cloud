@@ -16,12 +16,12 @@ NHN Cloud의 Public API는 NHN Cloud의 서비스와 리소스를 외부 시스�
 <a id="getting-started-with-public-api"></a>
 ## Public API 시작하기 { #getting-started-with-public-api }
 
-* [인증 방식 개요](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method-overview)
+* [인증 방식 개요](./auth-method-overview/)
 * [인증 방식 지원 현황](/Support-Status/ko/supported-authentication-methods/)
-* [서비스 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/service-api)
-* [프레임워크 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)
-* [파트너 관리 API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)
-* [릴리스 노트](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/release-notes/)
+* [서비스 API](./service-api/)
+* [프레임워크 API](./framework-api/)
+* [파트너 관리 API](./partner-api/)
+* [릴리스 노트](./release-notes/)
 
 <a id="glossary"></a>
 ## 용어 정리 { #glossary }
