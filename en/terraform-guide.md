@@ -653,7 +653,7 @@ The following sections describe how to use each resource.
 
 ### Prerequisites { #resources-note }
 
-* For how to use object storage resources, see [User Guide > Storage > Object Storage > Third-Party Tools User Guide](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/third-party-tools-guide/).
+* For how to use object storage resources, see [User Guide > Storage > Object Storage > Third-Party Tools User Guide](/Storage/Object%20Storage/en/third-party-tools-guide/).
 
 <a id="resources-instance"></a>
 
@@ -1386,7 +1386,7 @@ resource "nhncloud_kubernetes_cluster_v1" "resource-cluster-01" {
 
 
 > [Note]
-> For a detailed list of NKS cluster add-ons provided by NHN Cloud, please refer to the [View List of Add-ons Provided by NHN Cloud](/Container/NKS/ko/public-api/#nhn-cloud_3) section in the API Guide and the [Add-on List](/Container/NKS/ko/user-guide#addon-mgmt-addon-list) section in the User Guide.
+> For a detailed list of NKS cluster add-ons provided by NHN Cloud, please refer to the [View List of Add-ons Provided by NHN Cloud](/Container/NKS/en/public-api/#view-a-list-of-add-ons-offered-by-nhn-cloud) section in the API Guide and the [Add-on List](/Container/NKS/en/user-guide/#addon-mgmt-addon-list) section in the User Guide.
 
 <a id="create-a-node-group"></a>
 ### Create a Node Group { #create-a-node-group }

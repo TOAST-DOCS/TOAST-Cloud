@@ -18,12 +18,12 @@ This document provides a comprehensive overview of NHN Cloud Public API usage, i
 <a id="getting-started-with-public-api"></a>
 ## Getting started with Public API { #getting-started-with-public-api }
 
-* [Authentication Method Overview](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/auth-method-overview)
+* [Authentication Method Overview](./auth-method-overview/)
 * [Supported Authentication Methods](/Support-Status/en/supported-authentication-methods/)
-* [Service API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/service-api)
-* [Framework API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/)
-* [Partner Management API](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/partner-api/)
-* [Release Notes](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/release-notes/)
+* [Service API](./service-api/)
+* [Framework API](./framework-api/)
+* [Partner Management API](./partner-api/)
+* [Release Notes](./release-notes/)
 
 <a id="glossary"></a>
 ## Glossary { #glossary }
