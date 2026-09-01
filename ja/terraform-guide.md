@@ -692,7 +692,7 @@ VPC
 
 ### 注意 { #resources-note }
 
-* オブジェクトストレージリソースの使用方法については、[ユーザーガイド > Storage > Object Storage > サードパーティツール使用ガイド](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/third-party-tools-guide/)を参照してください。
+* オブジェクトストレージリソースの使用方法については、[ユーザーガイド > Storage > Object Storage > サードパーティツール使用ガイド](/Storage/Object%20Storage/ja/third-party-tools-guide/)を参照してください。
 
 <a id="resources-instance"></a>
 
@@ -1427,7 +1427,7 @@ resource "nhncloud_kubernetes_cluster_v1" "resource-cluster-01" {
 | labels.master_lb_floating_ip_enabled  | String  | O   | Kubernetes APIエンドポイントへのパブリックドメインアドレス作成有無("True" / "False")<br>labels.external_network_idとexternal_subnet_id_listが設定されている場合のみ「True」に設定可能 |
 
 > [参考]
-> NHN Cloudが提供するNKSクラスターアドオンの詳細一覧は、APIガイドの[NHN Cloudが提供するアドオン一覧を見る](/Container/NKS/ko/public-api/#nhn-cloud_3)及びユーザーガイドの[アドオン一覧](/Container/NKS/ko/user-guide#addon-mgmt-addon-list)の項目を参照してください。
+> NHN Cloudが提供するNKSクラスターアドオンの詳細一覧は、APIガイドの[NHN Cloudが提供するアドオン一覧を見る](/Container/NKS/ja/public-api/#view-a-list-of-add-ons-offered-by-nhn-cloud)及びユーザーガイドの[アドオン一覧](/Container/NKS/ja/user-guide/#addon-mgmt-addon-list)の項目を参照してください。
 
 <a id="create-a-node-group"></a>
 ### ノードグループ作成 { #create-a-node-group }

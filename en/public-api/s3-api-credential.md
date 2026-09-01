@@ -28,7 +28,7 @@ You can issue S3 API credentials from the console of a service that supports the
 <a id="issue-via-api"></a>
 ### Issue via API { #issue-via-api }
 
-To obtain credentials using the API, an authentication token is required. To obtain the authentication token, refer to [IaaS Token](/nhncloud/en/public-api/iaas-token/).
+To obtain credentials using the API, an authentication token is required. To obtain the authentication token, refer to [IaaS Token](./iaas-token/).
 
 ```
 POST https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{api-user-id}/credentials/OS-EC2
