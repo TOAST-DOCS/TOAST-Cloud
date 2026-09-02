@@ -388,72 +388,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 <a id="retrieve-the-billing-amount-per-organizations-of-partner-users-response-default-response-structure"></a>
 #### 基本レスポンス構造
 
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| org | Organization | 組織情報 |
-
-**Organization**
-
-| 名前 | タイプ | 説明 |
-| --- | --- | --- |
-| orgId | String | 組織ID |
-| orgName | String | 組織名 |
-| totalAmount | Long | 組織最終金額 |
-| usagePrice | Long | 利用金額 |
-| contractUsagePrice | Long | 約定割引/割増が適用された利用金額合計 |
-| contractDiscountPrice | Long | 約定により割引された金額 |
-| contractExtraPrice | Long | 約定により割増された金額 |
-| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 割引金額 |
-| totalDiscount | Long | 総割引金額 |
-| totalExtra | Long | 総割増金額 |
-| prePaidTotalAmount | Long | 前払い利用金額 |
-| totalCredit | Long | クレジット最終金額 |
-| country | String | 国コード |
-| creditUsages | List&lt;CreditUsageProtocol&gt; | クレジット使用金額 |
-| projectDiscount | PaymentStatementProjectAdjustment | プロジェクト別割引詳細明細一覧 |
-| projectExtra | PaymentStatementProjectAdjustment | プロジェクト別割増詳細明細一覧 |
-| projects | List&lt;Project&gt; | プロジェクト一覧 |
-
-**CreditUsageProtocol**
-
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| balanceTypeCode | String | キャンペーンタイプ |
-| balanceTypeName | String | キャンペーンタイプ名 |
-| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | キャンペーンタイプ名の多言語コード |
-| usageAmount | Long | クレジット使用金額 |
-
-**PaymentStatementProjectAdjustment**
-
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| totalAdjustment | Long | 割引/割増金額合計 |
-| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | 詳細明細 |
-
-**PaymentStatementProjectAdjustmentDetail**
-
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| projectId | String | プロジェクトID |
-| projectName | String | プロジェクト名 |
-| adjustment | Long | 割引/割増金額 |
-| adjustmentTypeCode | String | 割引/割増タイプ<br>- CONTRACT_EXTRA: 約定割増<br>- CONTRACT_PENALTY: 約定違約金<br>- CONTRACT_DISCOUNT: 約定割引<br>- CONTRACT_PAYBACK: パートナーペイバック<br>- STATIC_EXTRA: 固定金額割増<br>- PERCENT_DISCOUNT: パーセント割引<br>- COUPON: クーポン<br>- STATIC_DISCOUNT: 固定金額割引<br>- CUTOFF: 500KRW未満切り捨て |
-| description | String | 割引/割増明細 |
-
-**Project**
-
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| projectId | String | プロジェクトID |
-| projectName | String | プロジェクト名 |
-| totalAmount | Long | プロジェクトの最終金額 |
-| usagePrice | Long | プロジェクト利用金額の合計 |
-| contractUsagePrice | Long | 契約割引/割増を適用した利用金額の合計 |
-| contractDiscountPrice | Long | 約定割引金額 |
-| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 割引金額 |
-| contractExtraPrice | Long | 約定割増金額 |
-| prePaidTotalAmount | Long | 前払い利用金額 |
-
+<!-- TODO: translate body -->
 
 <a id="retrieve-project-lists-of-partner-users"></a>
 ## パートナーユーザーのプロジェクト一覧の照会 { #retrieve-project-lists-of-partner-users }
@@ -561,19 +496,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 <a id="retrieve-project-usage-details-for-partner-user-request-parameter"></a>
 ### リクエストパラメータ { #retrieve-project-usage-details-for-partner-user-request-parameter }
 
-| 名前 | 区分 | 型 | 必須 | 説明 |
-| --- | --- | --- | --- | --- |
-| partnerId | Path | String | Y | パートナーID |
-| month | Path | String | Y | 利用月(yyyy-MM形式) |
-| projectId | Path | String | Y | プロジェクトID |
-| lang | Header | String | N | 言語設定(デフォルト: ko_KR、設定可能な値: ko_KR、ja_JP、en_US) |
-| isHideContract | Query | Boolean | N | 約定情報の非表示の有無 |
-| stationId | Query | String | N | ステーションIDフィルタ |
-| usageSchemaTypeCode | Query | String | N | 使用量の包含有無<br>使用量の照会方法を従来の方法にするか、新規にグループ化された方法にするかを決定します<br>(デフォルト: NO_GROUP)<br><br>- NO_GROUP:使用量がグループ化されずにそのまま表示される方式 <br>- GROUP_BY_PARENT_RESOURCE:親リソース別にグループ化はされるが、具体的な使用量は提供されない方式。返されるtotalItemsを通じて親リソースがいくつ存在するか確認可能<br>- GROUP_BY_PARENT_RESOURCE_INCLUDE_USAGES:親リソース別にグループ化した後、どの親リソースでグループ化されたかとその詳細な使用量まで提供される方式 |
-| categoryMain | Query | String | N | メインカテゴリー<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
-| regionTypeCode | Query | String | N | リージョンタイプコード(最大20文字)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
-| page | Query | Integer | N | 選択したページ(デフォルト: 1、最小: 1)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用できません |
-| limit | Query | Integer | N | ページに表示される項目数、未記入時は全件照会(デフォルト値: 0、最小:0)<br>usageSchemaTypeCodeがNO_GROUPの場合は使用不可 |
+<!-- TODO: translate body -->
 
 <a id="retrieve-project-usage-details-for-partner-user-request-body"></a>
 ### リクエストボディ { #retrieve-project-usage-details-for-partner-user-request-body }
@@ -699,65 +622,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 <a id="retrieve-project-usage-details-for-partner-user-response-default-response-structure"></a>
 #### 基本レスポンス構造
 
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| project | Project | プロジェクト情報 |
-
-**Project**
-
-| 名前 | タイプ | 説明 |
-| --- | --- | --- |
-| projectId | String | プロジェクトID |
-| projectName | String | プロジェクト名 |
-| totalAmount | Long | プロジェクト最終金額 |
-| usagePrice | Long | 利用金額 |
-| contractUsagePrice | Long | 約定割引/割増が適用された利用金額合計 |
-| contractDiscountPrice | Long | 約定により割引された金額 |
-| contractExtraPrice | Long | 約定により割増された金額 |
-| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 割引金額 |
-| totalDiscount | Long | 総割引金額 |
-| totalExtra | Long | 総割増金額 |
-| prePaidTotalAmount | Long | 前払い利用金額 |
-| totalCredit | Long | クレジット最終金額 |
-| country | String | 国コード |
-| creditUsages | List&lt;CreditUsageProtocol&gt; | クレジット使用金額 |
-| projectDiscount | PaymentStatementProjectAdjustment | プロジェクト別割引詳細明細 |
-| projectExtra | PaymentStatementProjectAdjustment | プロジェクト別割増詳細明細 |
-| usageGroups | List&lt;UsageGroup&gt; | 使用量グループ一覧 |
-
-**CreditUsageProtocol**
-
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| balanceTypeCode | String | キャンペーンタイプ(財布タイプ) |
-| balanceTypeName | String | キャンペーンタイプ名(財布タイプ名) |
-| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | キャンペーンタイプ名の多言語コード |
-| usageAmount | Long | クレジット使用金額 |
-
-**PaymentStatementProjectAdjustment**
-
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| totalAdjustment | Long | 割引金額の合計 |
-| details | List&lt;Object&gt; | 詳細履歴 |
-| details[].projectId | String | プロジェクトID |
-| details[].projectName | String | プロジェクト名 |
-| details[].adjustment | Long | 割引金額 |
-| details[].adjustmentTypeCode | String | 割引タイプ<br>- CONTRACT_EXTRA:契約割増<br>- CONTRACT_PENALTY:契約違約金<br>- CONTRACT_DISCOUNT:契約割引<br>- CONTRACT_PAYBACK:パートナーペイバック<br>- STATIC_EXTRA:固定金額割増<br>- PERCENT_DISCOUNT:パーセント割引<br>- COUPON:クーポン<br>- STATIC_DISCOUNT:固定金額割引<br>- CUTOFF: 500KRW未満切り捨て |
-| totalAdjustment | Long | 割引/割増金額合計 |
-| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | 詳細明細 |
-
-**PaymentStatementProjectAdjustmentDetail**
-
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| projectId | String | プロジェクトID |
-| projectName | String | プロジェクト名 |
-| adjustment | Long | 割引/割増金額 |
-| adjustmentTypeCode | String | 割引/割増タイプ<br>- CONTRACT_EXTRA: 約定割増<br>- CONTRACT_PENALTY: 約定違約金<br>- CONTRACT_DISCOUNT: 約定割引<br>- CONTRACT_PAYBACK: パートナーペイバック<br>- STATIC_EXTRA: 固定金額割増<br>- PERCENT_DISCOUNT: パーセント割引<br>- COUPON: クーポン<br>- STATIC_DISCOUNT: 固定金額割引<br>- CUTOFF: 500KRW未満切り捨て |
-| description | String | 割引/割増明細 |
-
-**UsageGroup**
+<!-- TODO: translate body -->
 
 <a id="retrieve-partners-bill"></a>
 ## パートナーの請求書照会 { #retrieve-partners-bill }
@@ -922,51 +787,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 <a id="retrieve-partners-bill-response-default-response-structure"></a>
 #### 基本レスポンス構造
 
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| paymentStatements | List&lt;PaymentStatement&gt; | 請求書一覧 |
-
-**PaymentStatement**
-
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| uuid | String | 会員UUID |
-| autoPaymentTypeCode | String | 決済手段タイプ<br><br>- PAYCO_CREDIT_CARD: PAYCOクレジットカード<br>- CREDIT_CARD:クレジットカード<br>- INTER_CREDIT_CARD:海外クレジットカード<br>- UNION_PAY:銀聯Pay<br>- JAPAN_BILLING:日本ビリング<br>- ACCOUNT_TRANSFER:口座振替<br>- CREDIT_ALL:一般クレジット<br>- CREDIT_LIMIT:イベントクレジット<br>- ESM:内部費用<br>- ONETIME_PAYMENT: 1回限りの決済<br>- TAX_BILL:税金計算書発行<br>- CONTRACT_BILL:税金計算書発行(別途契約により請求金額調整が発生)<br>- NONE:なし |
-| isAutoPayment | Boolean | 自動決済手段かどうか |
-| paymentInfo | String | 決済手段情報 |
-| statements | List&lt;PaymentStatement&gt; | ビリンググループ別決済明細一覧 |
-
-**PaymentStatement**
-
-| 名前 | 型 | 説明 |
-| --- | --- | --- |
-| paymentGroupId | String | 決済グループID |
-| month | String | 利用月 |
-| charge | Long | 使用金額 |
-| supplyAmount | Long | 供給価額 |
-| taxAmount | Long | 付加税額 |
-| totalAmount | Long | 最終金額 |
-| totalCredit | Long | クレジット総使用金額 |
-| totalDiscount | Long | 割引金額 |
-| totalExtra | Long | 割増金額 |
-| prePaidTotalAmount | Long | 前払い利用金額 |
-| freeCredit | Long | 無料クレジット使用金額 |
-| freeCreditAll | Long | 無料全体型クレジット使用金額 |
-| freeCreditLimit | Long | 無料制限型クレジット使用金額 |
-| paidCredit | Long | 有料クレジット使用金額 |
-| paidCreditAll | Long | 有料全体型クレジット使用金額 |
-| paidCreditLimit | Long | 有料制限型クレジット使用金額 |
-| paymentStatusCode | String | 決済ステータス<br><br>- REGISTERED:登録<br>- READY:決済待ち<br>- PAID:決済完了<br>- ERROR:運営者による確認が必要な状態 |
-| country | String | 国コード |
-| cutoff | Long | cutoff |
-| lateFee | Long | 延滞金額 |
-| realSupplyAmount | Long | 実供給価額 |
-| realTaxAmount | Long | 実際に決済された付加税 |
-| receiptStatusCode | String | 売上伝票ステータスコード<br><br>- NONE:まだ会計チームに売上報告がされておらず、売上伝票を閲覧できない状態<br>- EXIST:最終的な金額調整が完了し、会計チームに売上報告がされたため、売上伝票を閲覧できる状態 |
-| refundAccountRegisterStatusCode | String | 返金口座登録ステータス<br><br>- ALLOW: 返金口座登録Open状態<br>- DENY: Default、返金口座登録Close状態 |
-| details | List&lt;PaymentStatementDetail&gt; | ビリンググループ別詳細明細一覧 |
-
-**PaymentStatementDetail**
+<!-- TODO: translate body -->
 
 <a id="retrieve-self-service-metering-of-solutions-partner"></a>
 ## ソリューションパートナーの自社サービスメータリング照会 { #retrieve-self-service-metering-of-solutions-partner }
@@ -1757,50 +1578,5 @@ POST /v1/billing/partners/{partnerId}/meters/search
 <a id="error-code"></a>
 ## エラーコード { #error-code }
 
-| resultCode | 説明 | 措置 |
-| --- | --- | --- |
-| -14 | 許可されていない国のIPからのリクエスト | 許可された国からリクエストするか、国別のIP制限ポリシーを確認してください。 |
-| -8 | リクエストIPが許可されていない、または組織のIP ACLポリシーによりIP検証に失敗 | 組織のIP ACLに当該IPが登録されているかを確認し、許可されたIP範囲からリクエストしてください。 |
-| -7 | 権限が許可されていません | 当該作業に対する権限が許可されていないため、システム管理者にお問い合わせください。 |
-| -6 | 呼び出したAPIに対して呼び出し元の認可に失敗した場合に発生するエラー、またはパートナー権限の検証に失敗 | 呼び出し元がAPI呼び出し権限を持っているかを確認し、必要であればシステム管理者に問い合わせて呼び出し権限をリクエストしてください。呼び出しアカウントの権限とリクエストスコープのパートナーIDを点検してください。 |
-| -5 | 権限拒否 - オーナーではない、または削除しようとする組織の実際のオーナーがリクエストしたパートナーユーザーと異なる | リクエストしたユーザーが当該組織のオーナーであるかを確認し、対象組織が当該パートナーユーザーの所有であるかを確認してください。 |
-| -4 | 権限拒否 - メンバーではない | リクエストしたユーザーが当該パートナーのメンバーであるかを確認し、適切な権限を付与された後に再試行してください。 |
-| -2 | パラメータが不正な場合に発生するエラー | リクエストパラメータの形式と値を確認し、正しい値で再試行 |
-| 404 | 存在しないAPIを呼び出した場合に発生 | 呼び出すAPIのHTTPメソッド、URIを確認してください。 |
-| 500 | 異常なシステムエラー | システム管理者にお問い合わせください。 |
-| 501 | 不正な日付形式 | 日付パラメータを正しい形式で提供してください。 |
-| 502 | 不正なパラメータ | リクエストパラメータの値と形式を確認してください。 |
-| 503 | サービス利用不可または照会期間の規則に違反 | サービスが一時的に利用不可能な状態であるため、しばらくしてから再試行するか、照会期間の規則を遵守してリクエストしてください。 |
-| 504 | JSONパース失敗 | リクエストボディのJSON形式を確認してください。 |
-| 505 | 検証失敗 | リクエストのフィールドの有効性検証を確認してください。 |
-| 1000 | パラメータが不正な場合に発生するエラー | リクエストパラメータの形式と値を確認し、正しい値で再試行してください。 |
-| 1200 | API呼び出し失敗 | しばらくしてから再試行するか、システムの状態を確認してください。 |
-| 10005 | リクエストパラメータが適切でない場合に発生するエラー | リクエストパラメータの必須値や設定可能な値などを確認してください。 |
-| 11010 | 使用量照会権限の不足 | サービス/カウンター/組織に対する権限の確認及び付与を行ってください。 |
-| 11012 | 組織へのアクセス権限がありません | ユーザーに当該組織へのアクセス権限を付与してください。 |
-| 11013 | メンバーがパートナーユーザーではない、または指定したパートナーIDとパートナーユーザーUUIDが一致しない | 当該メンバーが指定された期間にパートナーユーザーであるかを確認し、パートナー関係を再設定してください。パートナーユーザーが当該パートナーに承認・連携されているかを確認してください。 |
-| 12000 | プロジェクトが見つかりません | リクエストしたプロジェクトIDが存在するかを確認し、正しいプロジェクトIDで再試行してください。 |
-| 12100 | プロジェクトメンバーが存在しない場合に発生するエラー | 存在するプロジェクトメンバーのUUIDを使用してください。 |
-| 17001 | アプリキーが見つかりません | アプリキーが正常に発行されたかを確認し、必要に応じて再発行してください。 |
-| 17003 | アプリキーとプロジェクト/サービスが連携されていません | アプリキーを正しいプロジェクト/サービスと連携してください。 |
-| 17501 | 組織が見つかりません | 組織IDが存在するかを確認してください。 |
-| 18001 | プロジェクトが見つかりません | プロジェクトIDが存在するかを確認してください。 |
-| 22001 | パートナーの基本グループがありません | パートナーの基本グループ設定を確認してください。 |
-| 22002 | パートナーの決済グループがありません | パートナーの決済グループ設定を確認してください。 |
-| 22003 | パートナーの調整値の範囲エラー | パートナーの調整値が許容範囲内であるかを確認してください。 |
-| 22004 | ソリューションパートナーのサービスではありません | リクエストしたサービスが当該ソリューションパートナーのサービスであるかを確認してください。 |
-| 22005 | ソリューションパートナーではありません | パートナーがソリューションパートナーの資格を持っているかを確認してください。 |
-| 22021 | 組織作成時、組織オーナーのアカウントに設定された組織作成数の上限を超えた場合に発生するエラー | 1)使用していない組織を削除して作成可能な組織数を確保してください。<br>2)システム管理者を通じて組織作成の最大数を調整してください。 |
-| 22023 | MSPパートナーの上限を超えたため、組織の作成が制限されました | MSPパートナーの上限を調整するか、組織を整理してください。 |
-| 23005 | 組織IDに該当する組織が存在しない場合に発生するエラー | システム管理者にお問い合わせください。 |
-| 24000 | API連携失敗 | システム管理者にお問い合わせください。 |
-| 24001 | アプリキーの有効性検証に失敗 | アプリキーの有効性を確認してください。 |
-| 24002 | メンバー情報の有効性検証に失敗 | メンバー情報を確認してください。 |
-| 24005 | プロジェクトメンバーがいません | 当該メンバーがプロジェクトに属しているかを確認してください。 |
-| 24007 | プロジェクトがありません | プロジェクトIDを確認するか、システム管理者にお問い合わせください。 |
-| 25001 | 国別の税率ポリシーがありません | システム管理者にお問い合わせください。 |
-| 70013 | 利用中のサービスが存在する場合に発生するエラー | 利用中のサービスを無効化してください。 |
-| 70032 | 未払いによる制裁で組織の作成がブロックされました | 未払いを解消し、制裁の解除を要請した後に再試行してください。 |
-| 80400 | 不正なリクエスト | リクエストパラメータの形式及び必須値を確認してください。 |
-| 80401 | 認証失敗 | 認証トークンの有効性及びログイン状態を確認してください。 |
-| 80500 | サーバーエラー | サーバーログを確認後、システム管理者にお問い合わせください。 |
+<!-- TODO: translate body -->
+

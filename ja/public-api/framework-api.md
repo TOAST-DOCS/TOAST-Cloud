@@ -3361,41 +3361,7 @@ IP ACL設定を照会するAPIです。
 <a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-response-body"></a>
 #### レスポンス本文
 
-```json
-{
-  "header": {
-    "isSuccessful": true,
-    "resultCode": 0,
-    "resultMessage": ""
-  },
-  "result": {
-    "content": {
-      "schemaVersion": 1,
-      "value": {
-        "ruleType": "default",
-        "passwordConstraints": {
-          "minLength": 8,
-          "mustNotIncludeIllegalSequence": true,
-          "mustIncludeUpperCase": true,
-          "mustIncludeLowerCase": true,
-          "mustIncludeNumberCase": true,
-          "mustIncludeSpecialCase": true
-        },
-        "passwordExpiry": {
-          "enabled": true,
-          "expiryDays": 90,
-          "allowExpend": true
-        },
-        "limitPasswordReuse": {
-          "enabled": true,
-          "limitCount": 1
-        },
-        "applyRule": "onChangePassword"
-      }
-    }
-  }
-}      
-```
+<!-- TODO: translate body -->
 
 ##### レスポンス
 
