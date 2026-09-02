@@ -262,7 +262,7 @@ This API does not require a request body.
 
 </details>
 
- Name | Type | Description |
+| Name | Type | Description |
 | --- | --- | --- |
 | organizations | List&lt;OrganizationProtocol&gt; | Organization List |
 

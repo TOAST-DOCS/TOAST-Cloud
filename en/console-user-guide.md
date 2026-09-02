@@ -60,7 +60,7 @@
 
 * Policy
     * ADMIN/PROJECT MEMBER ADMIN can create a project role group by combining roles and permissions provided by NHN Cloud.
-    * Project members can be granted roles from created organization role groups or roles provided by NHN Cloud.
+    * Project members can be granted roles from created project role groups or roles provided by NHN Cloud.
 
 ![project_0.png](https://static.toastoven.net/prod_architecture_Icon/consoleuserguide_project_00_251124.png)
 
