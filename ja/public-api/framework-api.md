@@ -3361,7 +3361,38 @@ IP ACL設定を照会するAPIです。
 <a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-response-body"></a>
 #### レスポンス本文
 
-<!-- TODO: translate body -->
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paging": {
+    "limit": 6,
+    "page": 1,
+    "totalCount": 5
+  },
+  "prices": [ {
+    "contractDiscountPolicyId": "jxzEL2C09G20oDX3",
+    "originalPrice": 0.8008281904610115,
+    "monthFrom": "monthFrom",
+    "displayNameJa": "displayNameJa",
+    "rangeFrom": 1.4658129805029452,
+    "monthTo": "monthTo",
+    "counterName": "counterName",
+    "slidingCalculationTypeCode": "NONE",
+    "rangeTo": 5.962133916683182,
+    "displayNameZh": "displayNameZh",
+    "price": 6.027456183070403,
+    "contractId": "3YVRwIVU",
+    "displayNameEn": "displayNameEn",
+    "displayNameKo": "displayNameKo",
+    "seq": 5,
+    "useFixPriceYn": "N"
+  } ]
+}
+```
 
 ##### レスポンス
 
