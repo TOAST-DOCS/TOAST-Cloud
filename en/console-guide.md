@@ -367,7 +367,7 @@ You can manage members separately in projects and organizations.
 | BILLING_VIEWER | Read payment management usage and budget management, and usage status of project in organization. |
 | BUDGET_ADMIN | Create, Read, Update, and Delete in budget management |
 | BUDGET_VIEWER | Read budget management |
-| LOG_VIEWER | Create/Read/Update/Delete user action logs management |
+| LOG_VIEWER | Read for user action logs management, Create, Read, Update, Delete for resource management |
 | ORG_DASHBOARD\_ADMIN | Create, Read, Update, and Delete organization dashboard |
 | ORG_DASHBOARD\_VIEWER | Read organization dashboard |
 | ORG_SUPPORT_ADMIN | Create organization inquiry |
