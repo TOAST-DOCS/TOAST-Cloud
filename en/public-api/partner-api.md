@@ -1900,5 +1900,55 @@ POST /v1/billing/partners/{partnerId}/meters/search
 <a id="error-code"></a>
 ## Error Code { #error-code }
 
-<!-- TODO: translate body -->
+| resultCode | Description | Action |
+| --- | --- | --- |
+| -14 | Request from an IP address not allowed in a country | Request from an allowed country, or check the IP restriction policy for each country |
+| -8 | Request IP address not allowed or IP verification failed due to organization IP ACL policy | Check if the IP address is registered in the organization IP ACL, and make the request from an allowed IP range |
+| -7 | Permission denied | Contact your system administrator as you are not authorized to perform the action |
+| -6 | An error occurs when the caller's authorization for the called API fails, or partner authorization verification fails | Check if the caller has permission to make API calls and, if necessary, contact your system administrator to request permission. Check the calling account permissions and request scope partner ID |
+| -5 | Permission denied - Not the owner or the actual owner of the organization being deleted is different from the requesting partner user | Verify that the requester is the owner of the organization and that the target organization is owned by the partner user |
+| -4 | Permission denied - Not a member | Verify that the requester is a member of the partner organization, obtain the appropriate permissions, and retry |
+| -2 | Error when parameters are incorrect | Check the format and values of the request parameters and retry with the correct values |
+| 404 | Occurs when calling a non-existent API | Check the HTTP method and URI of the calling API |
+| 500 | Abnormal system error | Contact your system administrator |
+| 501 | Invalid date format | Provide the date parameter in the correct format |
+| 502 | Invalid parameter | Check the values and formats of the request parameters |
+| 503 | Service unavailable or query period rules violated | The service is temporarily unavailable. Retry later or comply with the query period rules |
+| 504 | JSON parsing failure | Check the JSON format of the request body |
+| 505 | Validation failure | Check the field validation in the request |
+| 1000 | Error when parameters are incorrect | Check the format and values of the request parameters and retry with the correct values |
+| 1200 | API call failed | Retry later or check the system status |
+| 10005 | Error when request parameters are incorrect | Check the required and configurable values for the request parameters |
+| 11010 | Insufficient permissions to view usage | Check and grant permissions for services/counters/organizations |
+| 11012 | No access to the organization | Grant the user access to the organization |
+| 11013 | The member is not a partner user, or the specified partner ID does not match the partner user UUID | Check whether the member was a partner user during the specified period and reset the partnership. Verify that the partner user is authorized and linked to the partner |
+| 12000 | Project not found | Verify that the requested project ID exists and retry with the correct project ID |
+| 12100 | Error when a project member does not exist | Use an existing project member UUID |
+| 16500 | Asynchronous task not found | Verify that the request was not made with an incorrect asynchronous ID |
+| 17001 | App key not found | Verify that the app key was issued correctly and reissue it if necessary |
+| 17003 | No association between the app key and project/service | Associate the app key with the correct project/service |
+| 17501 | Organization not found | Verify that the organization ID exists |
+| 18001 | Project not found | Verify that the project ID exists |
+| 22001 | No partner default group | Verify the partner default group settings |
+| 22002 | No partner payment group | Verify the partner payment group settings |
+| 22003 | Partner adjustment range error | Verify that the partner adjustment value is within the allowable range |
+| 22004 | Not a solution partner service | Verify that the requested service is a solution partner service |
+| 22005 | Not a solution partner | Verify that the partner qualifies as a solution partner |
+| 22007 | No access permission for the partner | The partner does not have permission to access the resource. Verify that the resource being queried belongs to you or is a resource that you are authorized to view |
+| 22008 | Not the app key for the service | Verify that the request was not made with an incorrect app key |
+| 22009 | Not the counter name for the service | Verify that the request was not made with an incorrect counter name |
+| 22021 | An error occurs when the number of organizations created exceeds the limit set for the organization owner account when creating an organization | 1) Delete unused organizations to secure the number of organizations that can be created <br>2) Adjust the maximum number of organization creations through the system administrator |
+| 22023 | Organization creation is restricted due to exceeding the MSP partner limit | Adjust the MSP partner limit or organize the organization |
+| 23005 | An error occurs when an organization corresponding to the organization ID does not exist | Contact the system administrator |
+| 24000 | API integration failure | Contact the system administrator |
+| 24001 | App key validation failure | Check the app key validity |
+| 24002 | Member information validation failure | Check member information |
+| 24005 | No project members | Check if the member belongs to a project |
+| 24007 | No project | Check the project ID or contact the system administrator |
+| 25001 | No country-specific tax policy | Contact the system administrator |
+| 70013 | An error occurs when a service in use exists | Disable the service in use |
+| 70032 | Organization creation blocked due to non-payment sanctions | Request to resolve non-payment and lift sanctions, then retry |
+| 80400 | Invalid request | Check request parameter format and required values |
+| 80401 | Authentication failure | Check authentication token validity and login status |
+| 80500 | Server error | Check server logs and contact your system administrator |
 

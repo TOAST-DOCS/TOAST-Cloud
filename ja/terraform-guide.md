@@ -83,7 +83,8 @@ Terraformはインフラを簡単に構築し、安全に変更し、効率的�
 
 ### 注意 { #note }
 
-<!-- TODO: translate body -->
+* **以下の例で使用されている Terraform のバージョンは 1.0.0 です。**
+* **バージョンを含むコンポーネントの名前および数値は変更される場合がありますので、確認の上ご使用ください。**
 
 <a id="terraform-installation"></a>
 ## Terraformインストール { #terraform-installation }
@@ -102,7 +103,7 @@ Terraform v1.14.2
 <a id="terraform-provider-provided"></a>
 ## Terraform NHN Cloud provider提供 { #terraform-provider-provided }
 
-<!-- TODO: translate body -->
+NHN Cloud は HashiCorp の公式パートナーとして、[Terraform Registry](https://registry.terraform.io/providers/nhn-cloud/nhncloud/latest) を通じて Terraform provider を提供しています。
 
 <a id="terraform-initialization"></a>
 ## Terraformの初期化 { #terraform-initialization }
@@ -952,12 +953,46 @@ resource "nhncloud_networking_port_v2" "port_1" {
 <a id="create-floating-ip"></a>
 ### Floating IP作成 { #create-floating-ip }
 
-<!-- TODO: translate body -->
+```
+resource "nhncloud_networking_floatingip_v2" "fip_01" {
+  pool = "Public Network"
+}
+```
+
+| 名前 | 形式 | 必須 | 説明 |
+| ------ | --- |---- | --------- |
+| pool | String | O | フローティング IP を作成する IP プール<br>デフォルト値は `Public Network` |
 
 <a id="associate-floating-ip"></a>
 ### Floating IP接続 { #associate-floating-ip }
 
-<!-- TODO: translate body -->
+```
+# ネットワークポートの作成
+resource "nhncloud_networking_port_v2" "port_1" {
+  ...
+}
+
+# インスタンスの作成
+resource "nhncloud_compute_instance_v2" "tf_instance_01" {
+  ...
+}
+
+# フローティングIPの作成
+resource "nhncloud_networking_floatingip_v2" "fip_01" {
+  ...
+}
+
+# フローティングIPの関連付け
+resource "nhncloud_networking_floatingip_associate_v2" "fip_associate" {
+  floating_ip = nhncloud_networking_floatingip_v2.fip_01.address
+  port_id = nhncloud_networking_port_v2.port_1.id
+}
+```
+
+| 名前          | 形式 | 必須  | 説明                    |
+|-------------| --- |---- |-------------------------|
+| floating_ip | String | O | 接続するFloating IP           |
+| port_id     | String | O | Floating IPを接続するポートのUUID |
 
 <a id="create-routing-table"></a>
 ### ルーティングテーブルの作成 { #create-routing-table }
