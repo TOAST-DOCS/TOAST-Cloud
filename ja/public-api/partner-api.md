@@ -427,18 +427,22 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
-| totalAdjustment | Long | 割引/割増金額合計 |
-| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | 詳細明細 |
+| projectId | String | プロジェクトID |
+| projectName | String | プロジェクト名 |
+| totalAmount | Long | プロジェクト最終金額 |
+| usagePrice | Long | プロジェクト利用金額合計 |
+| contractUsagePrice | Long | 約定割引/割増を適用した利用金額合計 |
+| contractDiscountPrice | Long | 約定により割引された金額 |
+| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 割引金額 |
+| contractExtraPrice | Long | 約定により割増された金額 |
+| prePaidTotalAmount | Long | 事前決済利用金額 |
 
 **PaymentStatementProjectAdjustmentDetail**
 
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
-| projectId | String | プロジェクトID |
-| projectName | String | プロジェクト名 |
-| adjustment | Long | 割引/割増金額 |
-| adjustmentTypeCode | String | 割引/割増タイプ<br>- CONTRACT_EXTRA: 約定割増<br>- CONTRACT_PENALTY: 約定違約金<br>- CONTRACT_DISCOUNT: 約定割引<br>- CONTRACT_PAYBACK: パートナーペイバック<br>- STATIC_EXTRA: 固定金額割増<br>- PERCENT_DISCOUNT: パーセント割引<br>- COUPON: クーポン<br>- STATIC_DISCOUNT: 固定金額割引<br>- CUTOFF: 500KRW未満切り捨て |
-| description | String | 割引/割増明細 |
+| totalAdjustment | Long | 割引/割増金額合計 |
+| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | 詳細内訳 |
 
 **Project**
 
@@ -446,13 +450,9 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | --- | --- | --- |
 | projectId | String | プロジェクトID |
 | projectName | String | プロジェクト名 |
-| totalAmount | Long | プロジェクトの最終金額 |
-| usagePrice | Long | プロジェクト利用金額の合計 |
-| contractUsagePrice | Long | 契約割引/割増を適用した利用金額の合計 |
-| contractDiscountPrice | Long | 約定割引金額 |
-| ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 割引金額 |
-| contractExtraPrice | Long | 約定割増金額 |
-| prePaidTotalAmount | Long | 前払い利用金額 |
+| adjustment | Long | 割引/割増金額 |
+| adjustmentTypeCode | String | 割引/割増タイプ<br>- CONTRACT_EXTRA: 約定割増<br>- CONTRACT_PENALTY: 約定違約金<br>- CONTRACT_DISCOUNT: 約定割引<br>- CONTRACT_PAYBACK: パートナーペイバック<br>- STATIC_EXTRA: 固定金額割増<br>- PERCENT_DISCOUNT: パーセント割引<br>- COUPON: クーポン<br>- STATIC_DISCOUNT: 固定金額割引<br>- CUTOFF: 500ウォン未満切り捨て |
+| description | String | 割引/割増内訳 |
 
 
 <a id="retrieve-project-lists-of-partner-users"></a>
@@ -699,7 +699,7 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 <a id="retrieve-project-usage-details-for-partner-user-response-default-response-structure"></a>
 #### 基本レスポンス構造
 
-| 名前 | 型 | 説明 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
 | project | Project | プロジェクト情報 |
 
@@ -709,55 +709,106 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | --- | --- | --- |
 | projectId | String | プロジェクトID |
 | projectName | String | プロジェクト名 |
-| totalAmount | Long | プロジェクト最終金額 |
+| country | String | 国コード |
 | usagePrice | Long | 利用金額 |
-| contractUsagePrice | Long | 約定割引/割増が適用された利用金額合計 |
+| contractUsagePrice | Long | 約定割引/割増が適用された利用金額の合計 |
 | contractDiscountPrice | Long | 約定により割引された金額 |
-| contractExtraPrice | Long | 約定により割増された金額 |
 | ocpDiscountPrice | Long | Optimized Cost Plans(OCPs) 割引金額 |
-| totalDiscount | Long | 総割引金額 |
-| totalExtra | Long | 総割増金額 |
+| contractExtraPrice | Long | 約定により割増された金額 |
+| totalAmount | Long | プロジェクト最終金額 |
+| totalDiscount | Long | 合計割引金額 |
+| totalExtra | Long | 合計割増金額 |
 | prePaidTotalAmount | Long | 前払い利用金額 |
 | totalCredit | Long | クレジット最終金額 |
-| country | String | 国コード |
 | creditUsages | List&lt;CreditUsageProtocol&gt; | クレジット使用金額 |
-| projectDiscount | PaymentStatementProjectAdjustment | プロジェクト別割引詳細明細 |
-| projectExtra | PaymentStatementProjectAdjustment | プロジェクト別割増詳細明細 |
-| usageGroups | List&lt;UsageGroup&gt; | 使用量グループ一覧 |
+| projectDiscount | PaymentStatementProjectAdjustment | プロジェクト別割引の詳細内訳 |
+| projectExtra | PaymentStatementProjectAdjustment | プロジェクト別割増の詳細内訳 |
+| usageGroups | List&lt;UsageGroup&gt; | 使用量グループの一覧 |
 
 **CreditUsageProtocol**
 
-| 名前 | 型 | 説明 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
-| balanceTypeCode | String | キャンペーンタイプ(財布タイプ) |
-| balanceTypeName | String | キャンペーンタイプ名(財布タイプ名) |
+| balanceTypeCode | String | キャンペーンタイプ（残高タイプ） |
+| balanceTypeName | String | キャンペーンタイプ名（残高タイプ名） |
 | i18nBalanceTypeNameMap | Map&lt;String, String&gt; | キャンペーンタイプ名の多言語コード |
 | usageAmount | Long | クレジット使用金額 |
 
 **PaymentStatementProjectAdjustment**
 
-| 名前 | 型 | 説明 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
-| totalAdjustment | Long | 割引金額の合計 |
-| details | List&lt;Object&gt; | 詳細履歴 |
-| details[].projectId | String | プロジェクトID |
-| details[].projectName | String | プロジェクト名 |
-| details[].adjustment | Long | 割引金額 |
-| details[].adjustmentTypeCode | String | 割引タイプ<br>- CONTRACT_EXTRA:契約割増<br>- CONTRACT_PENALTY:契約違約金<br>- CONTRACT_DISCOUNT:契約割引<br>- CONTRACT_PAYBACK:パートナーペイバック<br>- STATIC_EXTRA:固定金額割増<br>- PERCENT_DISCOUNT:パーセント割引<br>- COUPON:クーポン<br>- STATIC_DISCOUNT:固定金額割引<br>- CUTOFF: 500KRW未満切り捨て |
-| totalAdjustment | Long | 割引/割増金額合計 |
-| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | 詳細明細 |
+| totalAdjustment | Long | 割引/割増金額の合計 |
+| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | 詳細内訳 |
 
 **PaymentStatementProjectAdjustmentDetail**
 
-| 名前 | 型 | 説明 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
 | projectId | String | プロジェクトID |
 | projectName | String | プロジェクト名 |
 | adjustment | Long | 割引/割増金額 |
-| adjustmentTypeCode | String | 割引/割増タイプ<br>- CONTRACT_EXTRA: 約定割増<br>- CONTRACT_PENALTY: 約定違約金<br>- CONTRACT_DISCOUNT: 約定割引<br>- CONTRACT_PAYBACK: パートナーペイバック<br>- STATIC_EXTRA: 固定金額割増<br>- PERCENT_DISCOUNT: パーセント割引<br>- COUPON: クーポン<br>- STATIC_DISCOUNT: 固定金額割引<br>- CUTOFF: 500KRW未満切り捨て |
-| description | String | 割引/割増明細 |
+| adjustmentTypeCode | String | 割引/割増タイプ<br>- CONTRACT_EXTRA: 約定割増<br>- CONTRACT_PENALTY: 約定違約金<br>- CONTRACT_DISCOUNT: 約定割引<br>- CONTRACT_PAYBACK: パートナーペイバック<br>- STATIC_EXTRA: 静的金額割増<br>- PERCENT_DISCOUNT: パーセント割引<br>- COUPON: クーポン<br>- STATIC_DISCOUNT: 静的金額割引<br>- CUTOFF: 500ウォン未満切り捨て |
+| description | String | 割引/割増内訳 |
 
 **UsageGroup**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| categoryMain | String | メインカテゴリ |
+| regionTypeCode | String | リージョン |
+| stationId | String | ステーションID |
+| stationName | String | ステーション名 |
+| needType | Boolean | 区分カラムの表示有無 |
+| usagePrice | Long | 利用金額の合計 |
+| totalPrice | Long | 約定割引が適用された利用金額の合計 |
+| totalDiscount | Long | 合計割引金額 |
+| prePaidTotalAmount | Long | 前払い利用金額 |
+| totalItems | Integer | UsageGroup 別の Usage 総数 |
+| usages | List&lt;Usage&gt; | 詳細使用量の一覧 |
+| usageResourceGroups | List&lt;UsageResourceGroup&gt; | グループ化された使用量の一覧 |
+
+**UsageResourceGroup**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| parentResourceId | String | 区分のための親リソースID |
+| parentResourceName | String | 区分のための親リソース名 |
+| usages | List&lt;Usage&gt; | 詳細使用量の一覧 |
+
+**Usage**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| projectId | String | プロジェクトID |
+| projectName | String | プロジェクト名 |
+| resourceId | String | リソースID |
+| parentResourceId | String | 親リソースID |
+| resourceName | String | リソース名 |
+| parentResourceName | String | 親リソース名 |
+| counterName | String | カウンター名 |
+| categoryMain | String | メインカテゴリ |
+| categorySub | String | サブカテゴリ |
+| productUiId | String | ホームページサービス UI ID |
+| regionTypeCode | String | リージョン |
+| displayNameKo | String | 課金単位の表示名（ko） |
+| displayNameEn | String | 課金単位の表示名（en） |
+| displayNameJa | String | 課金単位の表示名（ja） |
+| displayNameZh | String | 課金単位の表示名（zh） |
+| usage | Double | 使用量 |
+| unit | Long | 課金単位 |
+| unitPrice | Double | 単位あたりの価格 |
+| unitName | String | 単位名 |
+| price | Long | 利用金額 |
+| useFixPrice | Boolean | 静的金額かどうか |
+| displayOrder | Long | 表示順序 |
+| contractId | String | 約定ID |
+| contractUnitPrice | Double | 約定単価 |
+| contractPrice | Long | 約定で計算された利用金額 |
+| discountPrice | Long | 割引金額 |
+| discountTypeCode | String | 割引タイプコード<br>BASIC, CONTRACT, OCP |
+| prePaidAmount | Long | 前払い利用金額 |
+| costPlanOrderId | String | Optimized Cost Plans(OCPs) 注文ID |
 
 <a id="retrieve-partners-bill"></a>
 ## パートナーの請求書照会 { #retrieve-partners-bill }
@@ -922,51 +973,139 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/statements
 <a id="retrieve-partners-bill-response-default-response-structure"></a>
 #### 基本レスポンス構造
 
-| 名前 | 型 | 説明 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
 | paymentStatements | List&lt;PaymentStatement&gt; | 請求書一覧 |
 
 **PaymentStatement**
 
-| 名前 | 型 | 説明 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
 | uuid | String | 会員UUID |
-| autoPaymentTypeCode | String | 決済手段タイプ<br><br>- PAYCO_CREDIT_CARD: PAYCOクレジットカード<br>- CREDIT_CARD:クレジットカード<br>- INTER_CREDIT_CARD:海外クレジットカード<br>- UNION_PAY:銀聯Pay<br>- JAPAN_BILLING:日本ビリング<br>- ACCOUNT_TRANSFER:口座振替<br>- CREDIT_ALL:一般クレジット<br>- CREDIT_LIMIT:イベントクレジット<br>- ESM:内部費用<br>- ONETIME_PAYMENT: 1回限りの決済<br>- TAX_BILL:税金計算書発行<br>- CONTRACT_BILL:税金計算書発行(別途契約により請求金額調整が発生)<br>- NONE:なし |
+| autoPaymentTypeCode | String | 決済手段タイプ<br><br>- PAYCO_CREDIT_CARD: Paycoクレジットカード<br>- CREDIT_CARD: クレジットカード<br>- INTER_CREDIT_CARD: 海外クレジットカード<br>- UNION_PAY: UnionPay<br>- JAPAN_BILLING: 日本請求<br>- ACCOUNT_TRANSFER: 口座振替<br>- CREDIT_ALL: 通常クレジット<br>- CREDIT_LIMIT: イベントクレジット<br>- ESM: 内部費用<br>- ONETIME_PAYMENT: 一回決済<br>- TAX_BILL: 税金計算書発行<br>- CONTRACT_BILL: 税金計算書発行（別途契約による請求金額の調整が発生）<br>- NONE: なし |
 | isAutoPayment | Boolean | 自動決済手段かどうか |
 | paymentInfo | String | 決済手段情報 |
-| statements | List&lt;PaymentStatement&gt; | ビリンググループ別決済明細一覧 |
+| statements | List&lt;PaymentStatement&gt; | 請求グループ別決済明細一覧 |
 
 **PaymentStatement**
 
-| 名前 | 型 | 説明 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
 | paymentGroupId | String | 決済グループID |
 | month | String | 利用月 |
-| charge | Long | 使用金額 |
+| charge | Long | 利用金額 |
 | supplyAmount | Long | 供給価額 |
-| taxAmount | Long | 付加税額 |
+| taxAmount | Long | 付加価値税額 |
 | totalAmount | Long | 最終金額 |
-| totalCredit | Long | クレジット総使用金額 |
+| totalCredit | Long | クレジット合計使用金額 |
 | totalDiscount | Long | 割引金額 |
 | totalExtra | Long | 割増金額 |
-| prePaidTotalAmount | Long | 前払い利用金額 |
 | freeCredit | Long | 無料クレジット使用金額 |
 | freeCreditAll | Long | 無料全体型クレジット使用金額 |
 | freeCreditLimit | Long | 無料制限型クレジット使用金額 |
 | paidCredit | Long | 有料クレジット使用金額 |
 | paidCreditAll | Long | 有料全体型クレジット使用金額 |
 | paidCreditLimit | Long | 有料制限型クレジット使用金額 |
-| paymentStatusCode | String | 決済ステータス<br><br>- REGISTERED:登録<br>- READY:決済待ち<br>- PAID:決済完了<br>- ERROR:運営者による確認が必要な状態 |
+| paymentStatusCode | String | 決済ステータス<br><br>- REGISTERED: 登録<br>- READY: 決済待機<br>- PAID: 決済完了<br>- ERROR: 運営者確認が必要な状態 |
 | country | String | 国コード |
 | cutoff | Long | cutoff |
 | lateFee | Long | 延滞金額 |
+| prePaidTotalAmount | Long | 先払い利用金額 |
 | realSupplyAmount | Long | 実供給価額 |
-| realTaxAmount | Long | 実際に決済された付加税 |
-| receiptStatusCode | String | 売上伝票ステータスコード<br><br>- NONE:まだ会計チームに売上報告がされておらず、売上伝票を閲覧できない状態<br>- EXIST:最終的な金額調整が完了し、会計チームに売上報告がされたため、売上伝票を閲覧できる状態 |
-| refundAccountRegisterStatusCode | String | 返金口座登録ステータス<br><br>- ALLOW: 返金口座登録Open状態<br>- DENY: Default、返金口座登録Close状態 |
-| details | List&lt;PaymentStatementDetail&gt; | ビリンググループ別詳細明細一覧 |
+| realTaxAmount | Long | 実決済済み付加価値税 |
+| receiptStatusCode | String | 売上伝票ステータスコード<br><br>- NONE: まだ経理チームへの売上報告が行われていないため、売上伝票を確認できない状態<br>- EXIST: 最終金額の調整が完了した後、経理チームへの売上報告が行われ、売上伝票を確認できる状態 |
+| refundAccountRegisterStatusCode | String | 返金口座登録ステータス<br><br>- ALLOW: 返金口座登録 Open 状態<br>- DENY: デフォルト、返金口座登録 Close 状態 |
+| details | List&lt;PaymentStatementDetail&gt; | 請求グループ別詳細明細一覧 |
 
 **PaymentStatementDetail**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| billingGroupId | String | 請求グループID |
+| billingGroupName | String | 請求グループ名 |
+| charge | Long | 利用金額 |
+| totalDiscount | Long | 割引金額 |
+| totalExtra | Long | 割増金額 |
+| totalAmount | Long | 最終金額 |
+| contractDiscount | Long | 契約割引金額 |
+| contractExtra | Long | 契約割増金額 |
+| ocpDiscount | Long | Optimized Cost Plans (OCPs) 割引金額 |
+| prePaidTotalAmount | Long | 先払い利用金額 |
+| totalCredit | Long | クレジット合計使用金額 |
+| creditUsages | List&lt;CreditUsageProtocol&gt; | クレジット使用金額 |
+| orgList | List&lt;Organization&gt; | 組織一覧 |
+| usageGroups | List&lt;UsageGroup&gt; | 使用量グループ一覧 |
+| billingGroupDiscount | PaymentStatementBillingGroupAdjustment | 請求グループ割引詳細内訳 |
+| billingGroupExtra | PaymentStatementBillingGroupAdjustment | 請求グループ割増詳細内訳 |
+| projectDiscount | PaymentStatementProjectAdjustment | プロジェクト別割引詳細内訳 |
+| projectExtra | PaymentStatementProjectAdjustment | プロジェクト別割増詳細内訳 |
+
+**CreditUsageProtocol**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| balanceTypeCode | String | キャンペーンタイプ（残高タイプ） |
+| balanceTypeName | String | キャンペーンタイプ名（残高タイプ名） |
+| i18nBalanceTypeNameMap | Map&lt;String, String&gt; | キャンペーンタイプ名多言語コード |
+| usageAmount | Long | クレジット使用金額 |
+
+**Organization**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| orgId | String | 組織ID |
+| orgName | String | 組織名 |
+| totalAmount | Long | 組織最終金額 |
+| prePaidTotalAmount | Long | 先払い利用金額 |
+
+**UsageGroup**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| categoryMain | String | メインカテゴリ |
+| regionTypeCode | String | リージョン |
+| stationId | String | ステーションID |
+| stationName | String | ステーション名 |
+| needType | Boolean | 区分カラムの表示有無 |
+| usagePrice | Long | 利用金額合計 |
+| totalPrice | Long | 契約割引適用済み利用金額合計 |
+| totalDiscount | Long | 割引金額合計 |
+| prePaidTotalAmount | Long | 先払い利用金額 |
+| totalItems | Integer | UsageGroup別 Usage 合計件数 |
+| usages | List&lt;Usage&gt; | 詳細使用量一覧 |
+| usageResourceGroups | List&lt;UsageResourceGroup&gt; | グループ化された使用量一覧 |
+
+**PaymentStatementBillingGroupAdjustment**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| totalAdjustment | Long | 割引/割増金額合計 |
+| details | List&lt;PaymentStatementAdjustment&gt; | 詳細内訳 |
+
+**PaymentStatementAdjustment**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| adjustment | Long | 割引/割増金額 |
+| adjustmentTypeCode | String | 割引/割増タイプ<br><br>- CONTRACT_EXTRA: 契約割増<br>- CONTRACT_PENALTY: 契約違約金<br>- CONTRACT_DISCOUNT: 契約割引<br>- CONTRACT_PAYBACK: パートナーペイバック<br>- STATIC_EXTRA: 静的金額割増<br>- PERCENT_DISCOUNT: パーセント割引<br>- COUPON: クーポン<br>- STATIC_DISCOUNT: 静的金額割引<br>- CUTOFF: 500ウォン未満切り捨て |
+| description | String | 割引/割増内訳 |
+
+**PaymentStatementProjectAdjustment**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| totalAdjustment | Long | 割引/割増金額合計 |
+| details | List&lt;PaymentStatementProjectAdjustmentDetail&gt; | 詳細内訳 |
+
+**PaymentStatementProjectAdjustmentDetail**
+
+| 名前 | タイプ | 説明 |
+| --- | --- | --- |
+| projectId | String | プロジェクトID |
+| projectName | String | プロジェクト名 |
+| adjustment | Long | 割引/割増金額 |
+| adjustmentTypeCode | String | 割引/割増タイプ<br><br>- CONTRACT_EXTRA: 契約割増<br>- CONTRACT_PENALTY: 契約違約金<br>- CONTRACT_DISCOUNT: 契約割引<br>- CONTRACT_PAYBACK: パートナーペイバック<br>- STATIC_EXTRA: 静的金額割増<br>- PERCENT_DISCOUNT: パーセント割引<br>- COUPON: クーポン<br>- STATIC_DISCOUNT: 静的金額割引<br>- CUTOFF: 500ウォン未満切り捨て |
+| description | String | 割引/割増内訳 |
 
 <a id="retrieve-self-service-metering-of-solutions-partner"></a>
 ## ソリューションパートナーの自社サービスメータリング照会 { #retrieve-self-service-metering-of-solutions-partner }
@@ -1781,6 +1920,7 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | 11013 | メンバーがパートナーユーザーではない、または指定したパートナーIDとパートナーユーザーUUIDが一致しない | 当該メンバーが指定された期間にパートナーユーザーであるかを確認し、パートナー関係を再設定してください。パートナーユーザーが当該パートナーに承認・連携されているかを確認してください。 |
 | 12000 | プロジェクトが見つかりません | リクエストしたプロジェクトIDが存在するかを確認し、正しいプロジェクトIDで再試行してください。 |
 | 12100 | プロジェクトメンバーが存在しない場合に発生するエラー | 存在するプロジェクトメンバーのUUIDを使用してください。 |
+| 16500 | 非同期タスクが見つかりません | 誤った非同期IDでリクエストしていないかを確認してください。 |
 | 17001 | アプリキーが見つかりません | アプリキーが正常に発行されたかを確認し、必要に応じて再発行してください。 |
 | 17003 | アプリキーとプロジェクト/サービスが連携されていません | アプリキーを正しいプロジェクト/サービスと連携してください。 |
 | 17501 | 組織が見つかりません | 組織IDが存在するかを確認してください。 |
@@ -1790,6 +1930,9 @@ POST /v1/billing/partners/{partnerId}/meters/search
 | 22003 | パートナーの調整値の範囲エラー | パートナーの調整値が許容範囲内であるかを確認してください。 |
 | 22004 | ソリューションパートナーのサービスではありません | リクエストしたサービスが当該ソリューションパートナーのサービスであるかを確認してください。 |
 | 22005 | ソリューションパートナーではありません | パートナーがソリューションパートナーの資格を持っているかを確認してください。 |
+| 22007 | 当該パートナーにアクセス権限がありません | パートナーが当該リソースにアクセスする権限がない状態です。照会対象のリソースが自分のリソースであるか、または自分が照会可能な対象のリソースであるかを確認してください。 |
+| 22008 | 当該サービスのアプリキーではありません | 誤ったアプリキーでリクエストしていないか確認してください。 |
+| 22009 | 該当サービスのカウンター名ではありません | 誤ったカウンター名でリクエストしていないかを確認してください。 |
 | 22021 | 組織作成時、組織オーナーのアカウントに設定された組織作成数の上限を超えた場合に発生するエラー | 1)使用していない組織を削除して作成可能な組織数を確保してください。<br>2)システム管理者を通じて組織作成の最大数を調整してください。 |
 | 22023 | MSPパートナーの上限を超えたため、組織の作成が制限されました | MSPパートナーの上限を調整するか、組織を整理してください。 |
 | 23005 | 組織IDに該当する組織が存在しない場合に発生するエラー | システム管理者にお問い合わせください。 |
