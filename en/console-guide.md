@@ -138,15 +138,15 @@ When NHN Cloud administrator need to view customer's resources (instance, etc.) 
 <a id="organization-governance-setting-privacy-setting"></a>
 #### Privacy Setting
 The privacy setting feature is available if you need to protect your privacy.
-You can mask personal information that is exposed on the service, or if you need to download personal information, you can make it available only in a separate network environment. 
+You can mask personal information that is exposed on the service, or if you need to download personal information, you can make it available only in a separate network environment.
 
-* Privacy Protection Settings
+* Privacy Setting
     * Organization/Project > Manage Members > NHN Cloud Account / IAM Account > Member list download feature
         * If **Not Configured** is selected, all members who have permission to download the account list can download the member list.
-        * If a setting is selected, the member list download feature is disabled, and the member list can only be downloaded from explicitly allowed IP addresses or IP bands.
+        * If **Configured** is selected, the member list download feature is disabled, and the member list can only be downloaded from explicitly allowed IP addresses or IP bands.
     * Organization > CloudTrail > Personal Information
-        * If Not Configured is selected, all members who can view the log list are provided with full information in the log list.
-        * If a setting is selected, personal information (email, name, ID) in the log list is masked before being provided.
+        * If **Not Configured** is selected, all members who can view the log list are provided with full information in the log list.
+        * If **Configured** is selected, personal information (email, name, ID) in the log list is masked before being provided.
 
 <a id="iam-governance-setting"></a>
 ### IAM Governance Setting { #iam-governance-setting }
