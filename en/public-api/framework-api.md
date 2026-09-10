@@ -56,7 +56,7 @@ When the Public API returns, the header part below is included in the response b
 | user-access-key-id | String | 20 characters | User Access Key ID |
 | project-app-key | String | 20 characters | The project's AppKey |
 | product-app-key | String | 16 characters | The service's AppKey |
-| UUID | String | 36 characters | Member's UUID |
+| uuid | String | 36 characters | Member's UUID |
 
 
 !!! danger "Caution"
@@ -1243,7 +1243,7 @@ API to get a specific member of a project.
 |   relationDateTime | Date| No | Time to add members  |
 |   roles | List<RoleBundleProtocol>| No | List of related roles (with condition attributes)  |
 |   statusCode | String| No | Invitation status codes (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   UUID | String| No | Member UUID  |
+|   uuid | String| No | Member UUID  |
 
 
 [RoleBundleProtocol](#rolebundleprotocol)
@@ -1334,7 +1334,7 @@ API for getting a list of members belonging to a project.
 |   memberTypeCode | String| No | Separate members |
 |   relationDateTime | Date| No | Time to add members  |
 |   statusCode | String| No | Invitation status codes (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   UUID | String| No | Member UUID  |
+|   uuid | String| No | Member UUID  |
 
 
 <a id="view-a-project-role-group"></a>
@@ -2223,7 +2223,7 @@ An API to create a role group in the organization.
 | Category | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Path | org-id | String | Yes | Organization ID |
-| Request Body | Request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | Request |
+| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | Request |
 
 <a id="create-organization-role-group-response-body"></a>
 #### Response Body
@@ -2262,7 +2262,7 @@ An API to delete organization role groups.
 | Category | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Path | org-id | String | Yes | Organization ID |
-| Request Body | Request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | Request |
+| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | Request |
 
 <a id="delete-organization-role-group-response-body"></a>
 #### Response Body
@@ -2302,7 +2302,7 @@ An API to modify the name and description of an organization role group.
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Path | org-id | String | Yes | Organization ID |
 | Path | role-group-id | String | Yes | Role group ID |
-| Request Body | Request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | Request |
+| Request Body | request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | Request |
 
 <a id="modify-organization-role-group-information-response-body"></a>
 #### Response Body
@@ -2594,7 +2594,7 @@ API to get the IAM members in your organization.
 |   profileImageUrl | String| No| Profile image URL |
 |   roles | [List<RoleBundleProtocol>](#rolebundleprotocol)| No | List of related roles (with condition attributes)  |
 |   saasRoles | List<IamMemberRole>| No | IAM account roles  |
-|   String | String| No| Account's status |
+|   status | String| No| Account's status |
 |   telephone | String| No | IAM account's phone number  |
 |   userCode | String| Yes | IAM account ID  |
 
@@ -2607,7 +2607,7 @@ API to get the IAM members in your organization.
 |------------ | ------------- | ------- | ------------ |
 |   productId | String| No |
 |   productName | String| No |
-|   String | String| No |
+|   role | String| No |
 
 
 <a id="list-organization-iam-members"></a>
@@ -2715,7 +2715,7 @@ API to get a list of IAM members that belong to this organization.
 | nickname | String | No | User nickname |
 | officeHoursBegin | String | No | Work start time example: 09:00 |
 | officeHoursEnd | String | No | Work end time example: 18:00 |
-| String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| status | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
 | creationType | String | No | Date and time of creation |
 | idProviderId | String | No | Certification Authority ID (if using external authentication) |
 | idProviderType | String | No | service: IAM direct sign-in (default)<br>SSO: Customer SSO integration (cannot be set up if not integrated) |
@@ -2779,7 +2779,7 @@ API to add IAM members to your organization.
 | nickname | String | No | User nickname |
 | officeHoursBegin | String | No | Work start time example: 09:00 |
 | officeHoursEnd | String | No | Work end time example: 18:00 |
-| String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| status | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
 | creationType | String | No | SSO, invited, and registered |
 | mobilePhoneCountryCode | String | No | Country code for mobile phone numbers, required when entering a mobile phone number  |
 
@@ -2805,7 +2805,7 @@ API to add IAM members to your organization.
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#common-response)| Yes   |
-|   UUID | String| No | IAM member UUID  |
+|   uuid | String| No | IAM member UUID  |
 
 
 
@@ -2908,7 +2908,7 @@ API to modify your organization's IAM member information.
 | nickname | String | No | User nickname |
 | officeHoursBegin | String | No | Work start time example: 09:00 |
 | officeHoursEnd | String | No | Work end time example: 18:00 |
-| String | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| status | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
 | creationType | String | No | SSO, invited, and registered |
 | idProviderUserId | String | No | User ID provided by an external certification authority |
 | mobilePhoneCountryCode | String | No | Country code for mobile phone numbers, required when entering a mobile phone number |
@@ -3168,7 +3168,7 @@ API to get settings for login two-factor authentication.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   String | String| No | MFA type<br>none (no setting), totp (Google OTP), email (email) |
+|   type | String| No | MFA type<br>none (no setting), totp (Google OTP), email (email) |
 |   bypassByIp | BypassByIp| No | Exception IP  |
 
 ##### ServiceMfaSettings
@@ -3177,14 +3177,14 @@ API to get settings for login two-factor authentication.
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
 |   serviceId | Sting| No | Service ID  |
-|   String | String| No | MFA type<br>none (no setting), totp (Google OTP), email (email) |
+|   type | String| No | MFA type<br>none (no setting), totp (Google OTP), email (email) |
 |   bypassByIp | BypassByIp| No | Service type. none, totp, email |
 
 ##### BypassByIp
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   String | Boolean| No | Activated or not<br>true (enabled), false (disabled)  |
+|   enable | Boolean| No | Activated or not<br>true (enabled), false (disabled)  |
 |   ipList | List<String>| No | List of exception IPs |
 
 <a id="view-organization-iam-login-failure-security-settings"></a>
@@ -3239,7 +3239,7 @@ API to get login failure security settings.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   String | Boolean| Yes | Activated or not<br>true (enabled), false (disabled)  |
+|   enable | Boolean| Yes | Activated or not<br>true (enabled), false (disabled)  |
 |   loginFailCount | LoginFailCount| No | Setting up login failure security |
 
 
@@ -3347,7 +3347,7 @@ API to get settings for password policies.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| String | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
+| enable | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
 | expiryDays | Integer | Yes | Expiration period |
 | allowExpend | Boolean | Yes | Extendable on expiration<br>true (possible), false (impossible) |
 
@@ -3355,7 +3355,7 @@ API to get settings for password policies.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| String | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
+| enable | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
 | limitCount | Integer | Yes | Number of reuse limits |
 
 <a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription"></a>
@@ -3685,7 +3685,7 @@ Available to all members. No specific permissions required.
 |   userAccessKeyID | String| No | User Access Key ID  |
 |   secretAccessKey | String| No | Secret key (masked)  |
 |   authStatus | String| No | Authentication status codes (STABLE, STOP, BLOCKED) |
-|   UUID | String| No | User UUID |
+|   uuid | String| No | User UUID |
 |   lastUsedDatetime | Date| No | Date of last use you authenticated with User Access Key ID  |
 |   modDatetime | Date| No | Date and time of deletion  |
 |   reIssueDatetime | Date| No | Regeneration time  |
@@ -3885,7 +3885,7 @@ Can only reissue the secret key for the user's own User Access Key ID
 
 ##### ReissueSecretKeyRequest
 
-| Name | Type | Required | Description  |                                               |   
+| Name | Type | Required | Description |   
 |------------ |---------|----|---------------------------------------------------|
 |   needExpireTokens | Boolean | No | Issued token expired or not(true: Expired, false: Not expired)<br>Default false |
 
@@ -3946,7 +3946,7 @@ Can only modify the user's own User Access Key ID
 
 | Name | Type | Required | Description |   
 |----------- | ------------- | ------------- | ------------ |
-| String | String| Yes | State to change (STOP: Stop, STABLE: Enable) |
+| status | String| Yes | State to change (STOP: Stop, STABLE: Enable) |
 
 
 <a id="modify-user-access-key-id-status-response-body"></a>
@@ -4026,7 +4026,7 @@ Only tokens issued with your own User Access Key ID can be viewed
 |------------- |------------- | ------------- |-----|------------------------------------------------------------------------------| 
 |  Path | user-access-key-id | String| Yes | User Access Key ID                                                           | 
 |  Query | token | String| No  | Token body<br>Partial search not supported                                                        | 
-|  Query | String | String| No  | Token status<br>ACTIVE: Active, EXPIRED: Expired                                             | 
+|  Query | status | String| No  | Token status<br>ACTIVE: Active, EXPIRED: Expired                                             | 
 |  Query | lastAccessDatetimeFrom | Date| No  | Date of last token use<br>Get  tokens used at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z` | 
 |  Query | expireDatetimeFrom | Date| No  | Token expiration date<br>Get  tokens expired at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   | 
 |  Query | regDatetimeFrom | Date| No  | Token registration date<br>Get  tokens created at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   |
@@ -4070,7 +4070,7 @@ Only tokens issued with your own User Access Key ID can be viewed
 |   expireDatetime | Date         | No  | Token expiration date             |
 |   lastAccessDatetime | Date         | Yes | Last time you authenticated/authorized with a token |
 |   regDatetime | Date         | Yes | Token creation date           |
-|   String | String       | Yes | Token status              |
+|   status | String       | Yes | Token status              |
 |   tokenId | Long         | Yes | Token ID              |
 
 
@@ -4323,7 +4323,7 @@ API to get a specific IAM account who is part of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   UUID | String| Yes | Member UUID  |
+|   uuid | String| Yes | Member UUID  |
 |   id | String| Yes | ID  |
 |   name | String| No | Name  |
 |   emailAddress | String| No | Member email address  |
@@ -4407,7 +4407,7 @@ API to get a list of IAM accounts who are part of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   UUID | String| Yes | Member UUID  |
+|   uuid | String| Yes | Member UUID  |
 |   id | String| Yes | ID  |
 |   name | String| No | Name  |
 |   emailAddress | String| No | Member email address  |
@@ -4536,7 +4536,7 @@ API to get the credentials of members in the organization or project.
 | Name | Type | Required | Description |
 |------------|--------|------|-----------------------------|
 | authId | String | Yes | Authentication Method ID (masked) |
-| UUID | String | Yes | User UUID |
+| uuid | String | Yes | User UUID |
 | userAccessKeyID | String | Yes | User Access Key ID (masked) |
 | secretAccessKey | String | No | Secret key (whitespace) |
 | authStatusCode | String | Yes | Authentication status codes (STABLE, STOP, BLOCKED) |
@@ -4852,7 +4852,7 @@ Available to all members. No specific permissions required.
 | Category | Name | Type | Required | Description |
 |------------- |------------- | ------------- | ------------- | ------------- |
 | Query |messageType | String| No | Message Type<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
-| Query |languages ​​| List&lt;String>| No | Language<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
+| Query |languages | List&lt;String>| No | Language<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
 | Query |keyword | String| No | Search keyword |
 | Query |messageId | String| No | Message ID |
 | Query |limit | Integer| Yes | Number of displays per page |
@@ -4895,9 +4895,9 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| Header | [Common Response](#common-response) | Yes | |
-| Messages | List<MessageProtocol> | Yes | Message list |
-| Paging | [PagingResponse](#pagingresponse)| Yes | |
+| header | [Common Response](#common-response) | Yes | |
+| messages | List<MessageProtocol> | Yes | Message list |
+| paging | [PagingResponse](#pagingresponse)| Yes | |
 
 ##### MessageProtocol
 
