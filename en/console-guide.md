@@ -420,8 +420,8 @@ You can manage members separately in projects and organizations.
 | PROJECT MEMBER VIEWER | Read for project members<br>Read for project's role groups |
 | PROJECT NOTICE GROUP MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Receiver Group Management <br> Read for project members <br> Read for project's role groups|
 | PROJECT NOTICE GROUP MANAGEMENT VIEWER | Read for project's Notification Receiver Group Management <br> Read for project's role groups|
-| PROJECT NOTICE MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Notification Management <br> Read for project members <br> Read for project's role groups| Read for project's Notification Receiver Group Management
-| PROJECT NOTICE MANAGEMENT VIEWER | Read for project's Notification Management <br> Read for project's role groups| Read for project's Notification Receiver Group Management
+| PROJECT NOTICE MANAGEMENT ADMIN | Create/Read/Update/Delete Project Notice Management <br> Read Project Members <br> Read Project Role Groups <br> Read Project Notification Recipient Group Management |
+| PROJECT NOTICE MANAGEMENT VIEWER | Read Project Notice Management <br> Read Project Role Groups <br> Read Project Notification Recipient Group Management |
 | PROJECT API SECURITY SETTING ADMIN | Create, Read, Update, Delete for project's API Security Setting|
 | PROJECT API SECURITY SETTING VIEWER | Read for project's API Security Setting|
 | PROJECT AUTHENTICATION MANAGEMENT ADMIN | Create, Read, Update, Delete for project's Authentication Info Management|
@@ -630,19 +630,19 @@ The details displayed on the payment management invoice are as follows.
 <a id="manage-notifications"></a>
 ## Manage Notifications { #manage-notifications }
 
-Manage Notifications is a feature that allows you to set the recipients and notification method (Email, SMS) for each notification sent by NHN Cloud.
+Manage Notifications is a feature that allows you to set the recipients and notification method (Email, SMS, Webhook) for each notification sent by NHN Cloud.
 
 1. Click **Organization > Manage Notifications** or **Project > Manage Notifications**.
     - You can manage the notifications you receive for each of your organizations and projects.
 
-2. Among notifications, find a notification for which you want to change the recipient and go to **Modify Receiver > Modify**.
+2. Among notifications, find a notification for which you want to change the recipient and click the **Modify Receiver > Modify** button.
     - You can find notifications by selecting from the list on the left, or by searching for the notification name, recipient, and more in the top-right search area.
-    - To bulk modify recipients of multiple notifications, select the checkboxes of notifications, then click Bulk Modify Receiver at the top of the notification list.
+    - To bulk modify recipients of multiple notifications, select the checkboxes of notifications, then click the **Bulk Set Receivers** button at the top of the notification list.
 
-3. Select who should receive notifications and how they should be **notified (Email, SMS) by member, notification recipient group, and role**.
-    - Webhook is not supported for the notifications.
+3. Select who should receive notifications and how they should be notified (**Recipient and Notification Method (Email, SMS)**) by member, notification recipient group, and role.
+    - Webhooks can be added in the **Webhook Settings** section on the same page, but only for notifications that support webhooks.
     - Notification methods differ depending on notifications.
-    - When you add a notification receiver group to Recipient, the notification method set for that group must match the notification method supported by each notification in order to receive notifications.
+    - When you add a notification recipient group to Recipient, the notification method (Email, SMS) set for that group must match the notification method supported by each notification in order to receive notifications through that method.
 
 4. Click **Save** to save your settings.
 
@@ -652,9 +652,9 @@ Manage Notifications is a feature that allows you to set the recipients and noti
 
 Notification Receiver Group Management allows you to set up receiver groups for notifications sent by NHN Cloud.
 
-Email and SMS notifications are supported with receiver settings based on organization/project roles and receiver settings for members.
-Webhook notifications provide default webhooks and custom webhooks.
-The corresponding notification receiver groups are available when setting up notifications in the **service**.
+Email and SMS notifications are supported through recipient settings based on organization/project roles and member-based recipient settings.
+Webhook notifications provide both default webhooks and custom webhooks.
+The applicable Notification Recipient Group can be used when configuring notifications in **Services**.
 
 <a id="create-notification-receiver-group"></a>
 ### Create Notification Receiver Group { #create-notification-receiver-group }
@@ -675,67 +675,74 @@ The corresponding notification receiver groups are available when setting up not
     - You can set your own receivers in Add Notification Receiver Group.
     - Supports setting up email and SMS notifications for each member.
 
-6. **Webhook Settings**
+6. **Webhook configuration**
     - When sending out notifications, you can set them to a webhook of your choice.
-    - Provides default and custom webhooks by type.  (maximum 5)
+    - Provides default and custom webhooks by type.  (up to 5 each)
 
 <a id="webhook-settings"></a>
 ### Webhook Settings { #webhook-settings }
-1. On the Organization, Project tab, select the ** Notification Receiver Group Management** tab.
-2. Select ** +Add Webhook** in the **Webhook Settings** menu at the bottom.
-3. The **+ Add webhook** popup provides default and custom webhooks by type.
+1. On the Organization, Project tab at the top of the console, select the **[Notification Receiver Group Management]** tab.
+2. Select the **+Add Webhook** button in the **Webhook configuration** menu at the bottom.
+3. In the **Add Webhook** popup, default webhooks and custom webhooks are provided by type.
     - Default Webhook
         - The default webhook can only be sent on service notifications that it supports.
-        - Webhook name
+        - Webhook Name
             - You can enter a name for the default webhook you want to set up, with no character limit and up to 40 characters.
             - Webhook names cannot be duplicated within the same notification receiver group.
-        - Target
-            - You can enter a URL to receive the webhook.
+        - Recipient
+            - You can enter the URL to receive the webhook.
         - Secret Key
             - The secret key to encrypt the URI and the id, source, type, and time with the SHA256 hash algorithm.
                 - Send Authorization in the default webhook header only if a secret key is set.
-                - Example: Authorization : HMAC-SHA256 Signature={encrypted character}"
+                - Example: `Authorization: HMAC-SHA256 Signature={encrypted string}`
                     - You can prevent received requests from being tampered with by man-in-the-middle attackers by checking the Authorization Header.
-        - The HTTP Mehod is POST and the Request Body is in the format below, with the body field varying by service.
-       ```json
-       {
-          "id": "String",
-          "source": "String",
-          "specversion": "String",
-          "type": "String",
-          "body" : "Object"
-         }
-        ```
-    - Custom Webhook
-        - Custom webhooks can only be sent on service notifications that support them.
-        - Webhook name
-            - You can enter a name for the custom webhook you want to set up, up to 40 characters long, with no character limit.
-            * Webhook names cannot be duplicated within the same notification receiver group.
-        * Send to
-            * You can select a destination (custom dashboard or service) to send the webhook to.
-            * You can only select menus or services that offer custom webhooks.
-        * Target
-            * You can enter a URL and HTTP Method to receive the webhook.
+        - The HTTP Method is POST and the Request Body is in the format below, with the body field varying by service.
+
+```json
+   {
+   "id": "String",
+   "source": "String",
+   "specversion": "String",
+   "type": "String",
+   "body" : "Object"
+   }
+```
+
+- Custom Webhook
+    - Custom webhooks can only be sent when a supported service notification occurs.
+    - Webhook Name
+        - You can enter a name for the custom webhook you want to set up, up to 40 characters long.
+        * Webhook names cannot be duplicated within the same notification receiver group.
+    * Service
+        * You can select a service to send the webhook to.
+        * You can only select services that offer custom webhooks.
+    * Event
+        * You can select the events to receive via webhook from the events provided by the selected service.
+    * Recipient
+        * You can enter a URL and HTTP Method to receive the webhook.
 
           | Target to offer | Range to offer |
           | -- | -- |
           | HTTP Method | POST <br> PUT |
           | Transport Protocol | HTTP<br> HTTPS | 
-        - Request data
-            - In Request data, you can enter parameters that are provided by the target.
-                - You can click Ctrl + Space to see which parameters are supported by that the target.
-                - You can see the Value provided in the bottom-right preview.
-                    - "alertId": "${alertId}" ,"orgName": "${orgName}"
-        - Header
-            - You can enter headers to pass to the target.
-            - The Content-type header to pass to the target supports application/json and cannot be modified.
+
+
+- Request data
+    - In Request data, you can enter parameters provided by the selected service and event.
+        - You can click Ctrl + Space to see which parameters are supported by the service and event.
+        - You can see the Value provided in the bottom-right preview.
+            - \"alertId\": \"${alertId}\", <br> \"orgName\" : \"${orgName}\"
+
+- Request headers
+    - You can enter headers to pass to the target.
+    - The Content-type header to pass to the target supports application/json and cannot be modified.
 
           | Header Item | Header Value |
           | -- | -- |
           | Custom-Header1 | Value1 |
           | Custom-Header2 | Value2 | 
 
-        - Enter a name, send to, and receive to, then click **Confirm** to create the webhook.
+- Enter a name, service, event, and notification recipient, then click **Confirm** to create the webhook.
 
 4. The webhooks you added can be found in the webhook settings list.
     * You can click **View** to see the webhook details.
