@@ -1075,7 +1075,7 @@ GET /v1/billing/partners/{partnerId}/products/{productId}/meters
 削除は時間がかかる作業であるため非同期で動作し、削除API呼び出し後に返却されたasyncJobIdでステータスを照会し、完了可否を確認できます。
 
 !!! tip "ソリューションパートナー検証"
-    ソリューションパートナー、またはソリューションパートナーから権限を付与されたユーザーのみ呼び出し可能です。
+    ソリューションパートナー、またはソリューションパートナーから権限を付与されたユーザーのみ呼び出し可能です。
 
 <a id="delete-metering-for-solution-partners-required-permission"></a>
 ### 必要権限 { #delete-metering-for-solution-partners-required-permission }
@@ -1156,10 +1156,10 @@ DELETE /v1/billing/partners/{partnerId}/products/{productId}/meters
 その後、5秒周期で呼び出してステータスを確認することを推奨します。
 
 !!! tip "ソリューションパートナー検証"
-    ソリューションパートナー、またはソリューションパートナーから権限を付与されたユーザーのみ呼び出し可能です。
+    ソリューションパートナー、またはソリューションパートナーから権限を付与されたユーザーのみ呼び出し可能です。
 
 !!! danger "メータリング削除確認時の注意事項"
-    一度正常削除を確認した後は削除jobが消えるため一度のみ呼び出し可能であり、2回目の呼び出しからは16500エラーが返却されます。
+    一度正常削除を確認した後は削除jobが消えるため一度のみ呼び出し可能であり、2回目の呼び出しからは16500エラーが返却されます。
 
 <a id="confirm-deletion-of-solution-partners-metering-required-permission"></a>
 ### 必要権限 { #confirm-deletion-of-solution-partners-metering-required-permission }
