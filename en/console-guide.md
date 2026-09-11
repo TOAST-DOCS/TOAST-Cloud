@@ -660,7 +660,7 @@ The corresponding notification receiver groups are available when setting up not
 ### Create Notification Receiver Group { #create-notification-receiver-group }
 
 1. To create a **notification receiver group**, click **Notification Receiver Group Management** in the organization or project menu.
-2. Click ** + Add Notification Receiver Group**.
+2. Click **+ Add Notification Receiver Group**.
 3. In **Basic information**, enter a name and description for the group receiving notifications.
     - In **Notifications Receiver Group Name**, enter up to 40 characters of Korean, alphanumeric characters, numbers, and special characters
     - In **Description**, enter up to 100 characters without character limit to distinguish the notification receiver group name.
@@ -681,8 +681,8 @@ The corresponding notification receiver groups are available when setting up not
 
 <a id="webhook-settings"></a>
 ### Webhook Settings { #webhook-settings }
-1. On the Organization, Project tab, select the ** Notification Receiver Group Management** tab.
-2. Select ** +Add Webhook** in the **Webhook Settings** menu at the bottom.
+1. On the Organization, Project tab, select the **Notification Receiver Group Management** tab.
+2. Select **+Add Webhook** in the **Webhook Settings** menu at the bottom.
 3. The **+ Add webhook** popup provides default and custom webhooks by type.
     - Default Webhook
         - The default webhook can only be sent on service notifications that it supports.
