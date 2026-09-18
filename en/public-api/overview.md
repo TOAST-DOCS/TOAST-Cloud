@@ -15,10 +15,16 @@ This document provides a comprehensive overview of NHN Cloud Public API usage, i
     * Since API behavior and response formats vary by service, please refer to the specific API guide for each service for more details.
     * Authentication methods vary across Framework APIs, Partner Management APIs, and individual services; some methods are only supported by specific services. You can check the supported authentication methods for each Public API in the [Supported Authentication Methods](/Support-Status/en/supported-authentication-methods/) section.
 
+!!! danger "Caution"
+    Connections that have been idle for a long time may be terminated by the server or network. Reusing a connection that has already been terminated from the connection pool may cause requests to fail. We recommend the following:
+    * **Set the maximum idle time of the connection pool to 25 minutes or less**, which is shorter than the idle timeout of intermediate network segments (approximately 30 minutes).
+    * Perform a validity check before using a connection to filter out connections that have already been terminated.
+    * For requests that are safe to call repeatedly, such as GET requests, implement retry logic when a connection error occurs.
+
 <a id="getting-started-with-public-api"></a>
 ## Getting started with Public API { #getting-started-with-public-api }
 
-* [Authentication Method Overview](./auth-method-overview/)
+* [Authentication Overview](./auth-method-overview/)
 * [Supported Authentication Methods](/Support-Status/en/supported-authentication-methods/)
 * [Service API](./service-api/)
 * [Framework API](./framework-api/)
@@ -36,6 +42,6 @@ This document provides a comprehensive overview of NHN Cloud Public API usage, i
 | Partner Management API | API that allows NHN Cloud partners or authorized users to manage organizations, projects, and billing information within the partner cloud, as well as query product metering data |
 | Authentication | The process of verifying and validating the identity of a subject |
 | Authorization | The process of verifying and granting permissions to an authenticated subject, determining whether they have the right to access specific resources, use certain features, or perform specific actions |
-| Bearer token | A type of security token that grants access to anyone in possession of the token | 
+| Bearer token | A type of security token that grants access to anyone in possession of the token |
 | Keystone | A service responsible for authentication and authorization within OpenStack. It ensures secure access to resources by verifying the identities of users and services and granting appropriate permissions |
 
