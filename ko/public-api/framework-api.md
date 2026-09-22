@@ -123,10 +123,10 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#listorganization-ip-acls) | 조직 IP ACL 목록 조회 |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#get-the-price-of-a-service-on-a-pay-as-you-go-subscription) | 종량제에 등록된 서비스 가격 조회 |
 | GET |[/v1/billing/contracts/basic/products](#list-services-enrolled-in-a-pay-as-you-go-subscription) | 종량제에 등록된 서비스 목록 조회 |
-| GET |[/v1/billing/members/payment-statements](#view-charges-by-payment-statement) | 청구서별 이용요금 조회 |
-| GET |[/v1/billing/members/payment-statements/charge-summaries](#view-charge-summaries-by-scope) | 스코프별 이용요금 조회 |
-| GET |[/v1/billing/members/payment-statements/usages](#view-individual-charge-lines) | 개별 과금 라인 조회 |
-| GET |[/v1/billing/members/payment-statements/dimensions](#view-charge-filter-dimensions) | 이용요금 필터 선택지 조회 |
+| GET |[/v1/billing/members/payment-statements](#view-charges-by-payment-statement) | 청구서별 이용 금액 조회 |
+| GET |[/v1/billing/members/payment-statements/charge-summaries](#view-charge-summaries-by-scope) | 빌링그룹, 조직, 프로젝트별 이용 금액 조회 |
+| GET |[/v1/billing/members/payment-statements/usages](#view-individual-charge-lines) | 상세 내역 이용 금액 조회 |
+| GET |[/v1/billing/members/payment-statements/dimensions](#view-charge-filter-dimensions) | 이용 금액 검색 조건 값 목록 조회 |
 | GET | [/v1/authentications/projects/{project-id}/project-appkeys](#get-project-integrated-appkey) | 프로젝트 통합 Appkey 조회 |
 | GET |[/v1/authentications/user-access-keys](#listuser-access-key-ids) | User Access Key ID 목록 조회 |
 | POST | [/v1/authentications/projects/{project-id}/project-appkeys](#register-a-integrated-project-appkey) | 프로젝트 통합 Appkey 등록 |
@@ -3573,11 +3573,11 @@ IP ACL 설정을 조회하는 API입니다.
 
 
 <a id="view-charges-by-payment-statement"></a>
-### 청구서별 이용요금 조회 { #view-charges-by-payment-statement }
+### 청구서별 이용 금액 조회 { #view-charges-by-payment-statement }
 
 > GET "/v1/billing/members/payment-statements"
 
-청구서 단위의 이용요금을 조회하는 API입니다.
+청구서 단위의 이용 금액을 조회하는 API입니다.
 
 <a id="view-charges-by-payment-statement-required-permissions"></a>
 #### 필요 권한
@@ -3588,7 +3588,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |month | String| Y | 결제월(yyyy-MM) |
+|  Query |month | String| Y | 청구 월(yyyy-MM) |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중)<br>미지정 시 조회 가능한 전체 결제 그룹을 조회 |
 
 <a id="view-charges-by-payment-statement-response-body"></a>
@@ -3613,8 +3613,6 @@ IP ACL 설정을 조회하는 API입니다.
     "totalDiscountAmount": 100000,
     "totalExtraAmount": 0,
     "taxAmount": 90000,
-    "chargedSupplyAmount": 900000,
-    "chargedTaxAmount": 90000,
     "freeCreditAmount": 0,
     "paidCreditAmount": 0,
     "freeCreditAllAmount": 0,
@@ -3623,9 +3621,12 @@ IP ACL 설정을 조회하는 API입니다.
     "paidCreditLimitAmount": 0,
     "totalCreditAmount": 0,
     "prePaidTotalAmount": 0,
-    "lateFeeAmount": 0,
     "cutoffAmount": 0,
+    "lateFeeAmount": 0,
     "totalAmount": 990000,
+    "chargedSupplyAmount": 900000,
+    "chargedTaxAmount": 90000,
+    "chargedTotalAmount": 990000,
     "receiptStatusCode": "EXIST",
     "refundAccountRegisterStatusCode": "DENY"
   } ]
@@ -3637,7 +3638,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
-|   paymentStatementCharges | List&lt;Charge>| Y | 결제 그룹별 이용요금 목록  |
+|   paymentStatementCharges | List&lt;Charge>| Y | 결제 그룹별 이용 금액 목록  |
 
 ##### Charge
 
@@ -3645,45 +3646,43 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ------------- | ------------ |
 |   uuid | String| Y | 회원 UUID  |
 |   paymentGroupId | String| Y | 결제 그룹 ID  |
-|   month | Date| Y | 결제월  |
+|   month | Date| Y | 청구 월  |
 |   country | String| Y | 국가 코드  |
 |   paymentStatusCode | String| Y | 결제 상태 코드<br><ul><li>REGISTERED: 등록</li><li>READY: 결제 대기</li><li>PAID: 결제 완료</li><li>ERROR: 운영자 확인 필요 상태</li></ul> |
-|   autoPaymentTypeCode | String| Y | 결제 수단 타입<br><ul><li>PAYCO_CREDIT_CARD: 페이코 신용카드</li><li>CREDIT_CARD: 신용카드</li><li>INTER_CREDIT_CARD: 해외 신용카드</li><li>UNION_PAY: 유니온페이</li><li>JAPAN_BILLING: 일본 빌링</li><li>ACCOUNT_TRANSFER: 계좌 이체</li><li>CREDIT_ALL: 일반 크레딧</li><li>CREDIT_LIMIT: 이벤트 크레딧</li><li>ESM: 내부 비용</li><li>ONETIME_PAYMENT: 일회성 결제</li><li>TAX_BILL: 세금 계산서 발행</li><li>CONTRACT_BILL: 세금 계산서 발행(별도 계약으로 청구 금액 조정 발생)</li><li>NONE: 없음</li></ul> |
+|   autoPaymentTypeCode | String| Y | 결제 수단 타입  |
 |   paymentInfo | String| N | 결제 수단 정보  |
 |   chargeAmount | Long| Y | 이용 금액  |
 |   totalDiscountAmount | Long| Y | 할인 금액  |
 |   totalExtraAmount | Long| Y | 할증 금액  |
 |   taxAmount | Long| Y | 부가세액(절사 전)  |
-|   chargedSupplyAmount | Long| Y | 실 공급가액<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
-|   chargedTaxAmount | Long| Y | 실 부가세<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
-|   freeCreditAmount | Long| Y | 무료 크레딧 사용 금액  |
-|   paidCreditAmount | Long| Y | 유료 크레딧 사용 금액  |
+|   freeCreditAmount | Long| Y | 무료 크레딧 사용 금액(전체형, 제한형 합계)  |
+|   paidCreditAmount | Long| Y | 유료 크레딧 사용 금액(전체형, 제한형 합계)  |
 |   freeCreditAllAmount | Long| Y | 전체형 무료 크레딧 사용 금액  |
 |   freeCreditLimitAmount | Long| Y | 제한형 무료 크레딧 사용 금액  |
 |   paidCreditAllAmount | Long| Y | 전체형 유료 크레딧 사용 금액  |
 |   paidCreditLimitAmount | Long| Y | 제한형 유료 크레딧 사용 금액  |
 |   totalCreditAmount | Long| Y | 크레딧 총 사용 금액  |
 |   prePaidTotalAmount | Long| Y | 선결제 적용 금액  |
-|   lateFeeAmount | Long| Y | 연체료  |
 |   cutoffAmount | Long| Y | 절사 금액(500원 미만)  |
+|   lateFeeAmount | Long| Y | 연체료  |
 |   totalAmount | Long| Y | 최종 청구 금액(부가세 포함)  |
+|   chargedSupplyAmount | Long| Y | 실 공급가액<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
+|   chargedTaxAmount | Long| Y | 실 부가세<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
+|   chargedTotalAmount | Long| Y | 실 결제 금액<br>실 공급가액 + 실 부가세 + 연체료 |
 |   receiptStatusCode | String| Y | 매출 전표 상태 코드<br><ul><li>NONE: 아직 회계팀으로 매출 보고가 되지 않아, 매출 전표를 볼 수 없는 상태</li><li>EXIST: 최종 금액 조정이 끝난 후, 회계팀으로 매출 보고가 되어, 매출 전표를 볼 수 있는 상태</li></ul> |
 |   refundAccountRegisterStatusCode | String| N | 환불 계좌 등록 상태 코드<br><ul><li>ALLOW: 환불 계좌 등록 Open 상태</li><li>DENY: 환불 계좌 등록 Close 상태(기본값)</li></ul> |
 
 
 <a id="view-charge-summaries-by-scope"></a>
-### 스코프별 이용요금 조회 { #view-charge-summaries-by-scope }
+### 빌링그룹, 조직, 프로젝트별 이용 금액 조회 { #view-charge-summaries-by-scope }
 
 > GET "/v1/billing/members/payment-statements/charge-summaries"
 
-이용요금을 빌링 그룹/조직/프로젝트 스코프로 집계하여 조회하는 API입니다.
+이용 금액을 빌링 그룹/조직/프로젝트 단위로 집계하여 조회하는 API입니다.
 
 !!! danger "주의"
-    * 2020년 5월 이후의 결제월만 조회할 수 있습니다.
-    * `groupBy`에는 결제 그룹(PAYMENT_GROUP)을 지정할 수 없습니다. 결제 그룹 단위 이용요금은 [청구서별 이용요금 조회](#view-charges-by-payment-statement)를 사용하세요.
-
-!!! tip "알아두기"
-    * 사용량 없이 할인/할증만 발생한 대상도 목록에 포함됩니다.
+    * 2020년 5월 이후의 청구 월만 조회할 수 있습니다.
+    * `groupBy`에는 결제 그룹(PAYMENT_GROUP)을 지정할 수 없습니다. 결제 그룹 단위 이용 금액은 [청구서별 이용 금액 조회](#view-charges-by-payment-statement)를 사용하세요.
 
 <a id="view-charge-summaries-by-scope-required-permissions"></a>
 #### 필요 권한
@@ -3694,8 +3693,8 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |month | String| Y | 결제월(yyyy-MM)<br>2020-05 이후만 지원 |
-|  Query |groupBy | String| Y | 집계 스코프(단일)<br><ul><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
+|  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
+|  Query |groupBy | String| Y | 집계 기준(단일)<br><ul><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
@@ -3717,7 +3716,7 @@ IP ACL 설정을 조회하는 API입니다.
   "summaries": [ {
     "paymentGroupId": "3YVRwIVU",
     "billingGroupId": "LY9NQ7lvWvxGj3aW",
-    "billingGroupName": null,
+    "billingGroupName": "빌링그룹 이름",
     "orgId": "eNWZ3jZq2FsMSHaQ",
     "orgName": "조직 이름",
     "projectId": "KGDeiKUq",
@@ -3746,46 +3745,43 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
-|   groupBy | String| Y | 요청한 집계 스코프  |
-|   summaries | List&lt;ChargeSummary>| Y | 스코프별 이용요금 목록  |
+|   groupBy | String| Y | 요청한 집계 기준  |
+|   summaries | List&lt;ChargeSummary>| Y | 빌링그룹, 조직, 프로젝트별 이용 금액 목록  |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### ChargeSummary
 
 | 이름 | 타입 | 필수 | 설명 |   
-|------------ | ------------- | ------------- | ------------ |
-|   paymentGroupId | String| Y | 결제 그룹 ID  |
-|   billingGroupId | String| Y | 빌링 그룹 ID  |
-|   billingGroupName | String| N | 빌링 그룹 이름<br>`groupBy=BILLING_GROUP`일 때만 반환 |
-|   orgId | String| N | 조직 ID<br>`groupBy=ORG`, `groupBy=PROJECT`일 때만 반환 |
-|   orgName | String| N | 조직 이름<br>`groupBy=ORG`, `groupBy=PROJECT`일 때만 반환 |
-|   projectId | String| N | 프로젝트 ID<br>`groupBy=PROJECT`일 때만 반환 |
-|   projectName | String| N | 프로젝트 이름<br>`groupBy=PROJECT`일 때만 반환 |
-|   country | String| Y | 국가 코드  |
-|   usageAmount | Long| Y | 이용 금액  |
-|   contractDiscountAmount | Long| Y | 약정으로 할인된 금액  |
-|   ocpDiscountAmount | Long| Y | Optimized Cost Plans(OCPs) 할인 금액  |
-|   billingGroupDiscountAmount | Long| Y | 빌링 그룹 할인 금액  |
-|   projectDiscountAmount | Long| Y | 프로젝트 할인 금액  |
-|   totalDiscountAmount | Long| Y | 할인 금액 합계  |
-|   contractExtraAmount | Long| Y | 약정으로 할증된 금액  |
-|   billingGroupExtraAmount | Long| Y | 빌링 그룹 할증 금액  |
-|   projectExtraAmount | Long| Y | 프로젝트 할증 금액  |
-|   totalExtraAmount | Long| Y | 할증 금액 합계  |
-|   totalCreditLimitAmount | Long| Y | 제한형 크레딧 적용 금액  |
-|   prePaidTotalAmount | Long| Y | 선결제 적용 금액  |
-|   totalAmount | Long| Y | 최종 금액(부가세 미포함)<br>이용 금액 - 할인 금액 + 할증 금액 - 제한형 크레딧 적용 금액 - 선결제 적용 금액 |
+|------------ | ------------- |----| ----------- |
+|   paymentGroupId | String| Y  | 결제 그룹 ID |
+|   billingGroupId | String| Y  | 빌링 그룹 ID |
+|   billingGroupName | String| Y  | 빌링 그룹 이름 |
+|   orgId | String| N  | 조직 ID<br>`groupBy=ORG`, `groupBy=PROJECT`일 때만 반환 |
+|   orgName | String| N  | 조직 이름<br>`groupBy=ORG`, `groupBy=PROJECT`일 때만 반환 |
+|   projectId | String| N  | 프로젝트 ID<br>`groupBy=PROJECT`일 때만 반환 |
+|   projectName | String| N  | 프로젝트 이름<br>`groupBy=PROJECT`일 때만 반환 |
+|   country | String| Y  | 국가 코드  |
+|   usageAmount | Long| Y  | 이용 금액  |
+|   contractDiscountAmount | Long| Y  | 약정으로 할인된 금액 |
+|   ocpDiscountAmount | Long| Y  | Optimized Cost Plans(OCPs) 할인 금액 |
+|   billingGroupDiscountAmount | Long| Y  | 빌링 그룹 할인 금액 |
+|   projectDiscountAmount | Long| Y  | 프로젝트 할인 금액 |
+|   totalDiscountAmount | Long| Y  | 할인 금액 합계 |
+|   contractExtraAmount | Long| Y  | 약정으로 할증된 금액 |
+|   billingGroupExtraAmount | Long| Y  | 빌링 그룹 할증 금액 |
+|   projectExtraAmount | Long| Y  | 프로젝트 할증 금액 |
+|   totalExtraAmount | Long| Y  | 할증 금액 합계 |
+|   totalCreditLimitAmount | Long| Y  | 제한형 크레딧 적용 금액 |
+|   prePaidTotalAmount | Long| Y  | 선결제 적용 금액 |
+|   totalAmount | Long| Y  | 최종 금액(부가세 미포함)<br>이용 금액 - 할인 금액 + 할증 금액 - 제한형 크레딧 적용 금액 - 선결제 적용 금액 |
 
 
 <a id="view-individual-charge-lines"></a>
-### 개별 과금 라인 조회 { #view-individual-charge-lines }
+### 상세 내역 이용 금액 조회 { #view-individual-charge-lines }
 
 > GET "/v1/billing/members/payment-statements/usages"
 
-개별 과금 라인(사용량 명세)을 조회하는 API입니다.
-
-!!! danger "주의"
-    * 페이징 도중 해당 결제월의 재정산이 발생하면 이미 조회한 과금 라인이 다시 조회되거나 일부가 누락될 수 있습니다.
+상세 내역 단위의 이용 금액을 조회하는 API입니다.
 
 <a id="view-individual-charge-lines-required-permissions"></a>
 #### 필요 권한
@@ -3796,7 +3792,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |month | String| Y | 결제월(yyyy-MM) |
+|  Query |month | String| Y | 청구 월(yyyy-MM) |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
@@ -3855,7 +3851,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
-|   usages | List&lt;UsageLine>| Y | 개별 과금 라인 목록  |
+|   usages | List&lt;UsageLine>| Y | 상세 내역 목록  |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### UsageLine
@@ -3892,18 +3888,18 @@ IP ACL 설정을 조회하는 API입니다.
 
 
 <a id="view-charge-filter-dimensions"></a>
-### 이용요금 필터 선택지 조회 { #view-charge-filter-dimensions }
+### 이용 금액 검색 조건 값 목록 조회 { #view-charge-filter-dimensions }
 
 > GET "/v1/billing/members/payment-statements/dimensions"
 
-이용요금 조회 시 필터로 사용할 수 있는 `dimension`별 선택지 목록을 조회하는 API입니다.
+이용 금액 조회 시 필터로 사용할 수 있는 검색 조건 구분(`dimension`)별 선택지 목록을 조회하는 API입니다.
 
 !!! danger "주의"
-    * 2020년 5월 이후의 결제월만 조회할 수 있습니다.
+    * 2020년 5월 이후의 청구 월만 조회할 수 있습니다.
 
 !!! tip "알아두기"
-    * [스코프별 이용요금 조회](#view-charge-summaries-by-scope)와 동일한 대상에서 선택지를 추출하므로, 여기서 조회한 값을 그대로 필터로 사용할 수 있습니다.
-    * `dimension`은 결제 그룹(1) > 빌링 그룹(2) > 조직(3) > 프로젝트(4)의 계층을 가지며, 각 선택지에는 상위 `dimension`의 식별자와 이름이 함께 반환됩니다.
+    * [빌링그룹, 조직, 프로젝트별 이용 금액 조회](#view-charge-summaries-by-scope)와 동일한 대상에서 선택지를 추출하므로, 여기서 조회한 값을 그대로 필터로 사용할 수 있습니다.
+    * 검색 조건 구분(`dimension`)은 결제 그룹(1) > 빌링 그룹(2) > 조직(3) > 프로젝트(4)의 계층을 가지며, 각 선택지에는 상위 검색 조건 구분의 식별자와 이름이 함께 반환됩니다.
 
 
 <a id="view-charge-filter-dimensions-required-permissions"></a>
@@ -3915,8 +3911,8 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |dimension | String| Y | 조회할 dimension(단일)<br><ul><li>PAYMENT_GROUP: 결제 그룹</li><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
-|  Query |month | String| Y | 결제월(yyyy-MM)<br>2020-05 이후만 지원 |
+|  Query |dimension | String| Y | 조회할 검색 조건 구분(단일)<br><ul><li>PAYMENT_GROUP: 결제 그룹</li><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
+|  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
@@ -3957,16 +3953,16 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
 |   uuid | String| Y | 조회 대상 회원 UUID  |
-|   dimension | Dimension| Y | 조회한 dimension 정보  |
-|   values | List&lt;DimensionValue>| Y | dimension 필터 선택지 목록  |
+|   dimension | Dimension| Y | 조회한 검색 조건 구분 정보  |
+|   values | List&lt;DimensionValue>| Y | 검색 조건 구분별 필터 선택지 목록  |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### Dimension
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   key | String| Y | dimension 키<br>payment_group, billing_group, org, project |
-|   displayName | String| Y | dimension 표시명  |
+|   key | String| Y | 검색 조건 구분 키<br>payment_group, billing_group, org, project |
+|   displayName | String| Y | 검색 조건 구분 표시명  |
 |   level | Integer| Y | 계층 레벨(1이 최상위)  |
 
 ##### DimensionValue
@@ -3976,8 +3972,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   id | String| Y | 식별자  |
 |   name | String| Y | 표시명  |
 |   ownerId | String| N | 소유자 UUID  |
-|   parentId | String| N | 상위 dimension 식별자<br>최상위(결제 그룹)이면 null |
-|   parentName | String| N | 상위 dimension 표시명<br>최상위(결제 그룹)이면 null |
+|   parentId | String| N | 상위 검색 조건 구분 식별자<br>최상위(결제 그룹)이면 null |
+|   parentName | String| N | 상위 검색 조건 구분 표시명<br>최상위(결제 그룹)이면 null |
 
 
 <a id="get-project-integrated-appkey"></a>
