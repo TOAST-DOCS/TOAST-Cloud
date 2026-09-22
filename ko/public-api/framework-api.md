@@ -3682,7 +3682,7 @@ IP ACL 설정을 조회하는 API입니다.
     * 2020년 5월 이후의 결제월만 조회할 수 있습니다.
     * `groupBy`에는 결제 그룹(PAYMENT_GROUP)을 지정할 수 없습니다. 결제 그룹 단위 이용요금은 [청구서별 이용요금 조회](#view-charges-by-payment-statement)를 사용하세요.
 
-!!! tip "참고"
+!!! tip "알아두기"
     * 사용량 없이 할인/할증만 발생한 대상도 목록에 포함됩니다.
 
 <a id="view-charge-summaries-by-scope-required-permissions"></a>
@@ -3896,14 +3896,14 @@ IP ACL 설정을 조회하는 API입니다.
 
 > GET "/v1/billing/members/payment-statements/dimensions"
 
-이용요금 조회 시 필터로 사용할 수 있는 dimension별 선택지 목록을 조회하는 API입니다.
+이용요금 조회 시 필터로 사용할 수 있는 `dimension`별 선택지 목록을 조회하는 API입니다.
 
 !!! danger "주의"
     * 2020년 5월 이후의 결제월만 조회할 수 있습니다.
 
-!!! tip "참고"
+!!! tip "알아두기"
     * [스코프별 이용요금 조회](#view-charge-summaries-by-scope)와 동일한 대상에서 선택지를 추출하므로, 여기서 조회한 값을 그대로 필터로 사용할 수 있습니다.
-    * dimension은 결제 그룹(1) > 빌링 그룹(2) > 조직(3) > 프로젝트(4)의 계층을 가지며, 각 선택지에는 상위 dimension의 식별자와 이름이 함께 반환됩니다.
+    * `dimension`은 결제 그룹(1) > 빌링 그룹(2) > 조직(3) > 프로젝트(4)의 계층을 가지며, 각 선택지에는 상위 `dimension`의 식별자와 이름이 함께 반환됩니다.
 
 
 <a id="view-charge-filter-dimensions-required-permissions"></a>
