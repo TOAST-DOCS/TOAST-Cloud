@@ -797,13 +797,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | displayNameZh | String | 과금 단위 노출 이름(zh) |
 | usage | Double | 사용량 |
 | unit | Long | 과금 단위 |
-| unitPrice | Double | 단위당 가격 |
+| unitPrice | BigDecimal | 단위당 가격 |
 | unitName | String | 단위명 |
 | price | Long | 이용 금액 |
 | useFixPrice | Boolean | 고정 금액 여부 |
 | displayOrder | Long | 표시 순서 |
 | contractId | String | 약정 ID |
-| contractUnitPrice | Double | 약정 단가 |
+| contractUnitPrice | BigDecimal | 약정 단가 |
 | contractPrice | Long | 약정으로 계산된 이용 금액 |
 | discountPrice | Long | 할인 금액 |
 | discountTypeCode | String | 할인 타입 코드<br>BASIC, CONTRACT, OCP |
