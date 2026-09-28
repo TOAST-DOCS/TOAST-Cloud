@@ -17,6 +17,7 @@ This document provides a comprehensive overview of NHN Cloud Public API usage, i
 
 !!! danger "Caution"
     Connections that have been idle for a long time may be terminated by the server or network. Reusing a connection that has already been terminated from the connection pool may cause requests to fail. We recommend the following:
+
     * **Set the maximum idle time of the connection pool to 25 minutes or less**, which is shorter than the idle timeout of intermediate network segments (approximately 30 minutes).
     * Perform a validity check before using a connection to filter out connections that have already been terminated.
     * For requests that are safe to call repeatedly, such as GET requests, implement retry logic when a connection error occurs.
