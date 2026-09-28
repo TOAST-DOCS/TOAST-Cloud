@@ -90,7 +90,11 @@ NHN Cloudは、全てのお客様に安定的なサービスを提供し、意�
 <a id="resource-provision-policy-for-internet-gateway-service"></a>
 ### Internet Gateway サービスリソース提供ポリシー { #resource-provision-policy-for-internet-gateway-service }
 
-<!-- TODO: translate body -->
+リソースの使用量はプロジェクトごとに計算され、リージョンごとに区分してポリシーが適用されます。
+
+|リソース | 提供基準 | デフォルト提供量 | 調整可否 | 最大提供量 |
+|----|----|----|----|----|
+|インターネットゲートウェイ | プロジェクトあたり	|3個| O | |
 
 <a id="resource-provision-policy-for-nat-gateway-service"></a>
 ### NAT Gatewayリソース提供ポリシー { #resource-provision-policy-for-nat-gateway-service }

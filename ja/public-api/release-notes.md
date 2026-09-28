@@ -69,8 +69,6 @@
 <a id="march-25-2025"></a>
 ### 2025. 03. 25. { #march-25-2025 }
 
-<!-- TODO: translate body -->
-
 <a id="march-25-2025-feature-updates"></a>
 #### 機能改善/変更
 

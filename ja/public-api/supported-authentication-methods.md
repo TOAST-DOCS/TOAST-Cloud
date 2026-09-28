@@ -10,9 +10,9 @@ Public APIごとにサポートする認証方式が異なり、一部の認証�
 <a id="check-authentication-methods-for-framework-and-partner-management-apis"></a>
 ## フレームワークAPI及びパートナー管理APIの認証方式の確認 { #check-authentication-methods-for-framework-and-partner-management-apis }
 
-フレームワークAPI及びパートナー管理APIは、認証のためにUser Access Keyトークンを使用します。User Access Keyトークンの発行及びAPI呼び出しに関する詳細は、[User Access Keyトークン](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/user-access-key-token)を参照してください。
+フレームワークAPI及びパートナー管理APIは、認証のためにUser Access Keyトークンを使用します。User Access Keyトークンの発行及びAPI呼び出しに関する詳細は、[User Access Keyトークン](./user-access-key-token/)を参照してください。
 
-フレームワークAPI及びパートナー管理APIの使用に関する詳細は、それぞれ[フレームワークAPI](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/framework-api/)と[パートナー管理APIガイド](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/partner-api/)を参照してください。
+フレームワークAPI及びパートナー管理APIの使用に関する詳細は、それぞれ[フレームワークAPI](./framework-api/)と[パートナー管理APIガイド](./partner-api/)を参照してください。
 
 
 <a id="check-authentication-methods-for-each-service-api"></a>

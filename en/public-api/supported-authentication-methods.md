@@ -10,9 +10,9 @@ Authentication methods vary across Public APIs, and certain methods are only sup
 <a id="check-authentication-methods-for-framework-and-partner-management-apis"></a>
 ## Check Authentication Methods for Framework and Partner Management APIs { #check-authentication-methods-for-framework-and-partner-management-apis }
 
-Framework APIs and Partner Management APIs use User Access Key tokens for authentication. For more information on issuing User Access Key tokens and making API calls, please refer to the [User Access Key Token](https://docs.nhncloud.com/en/nhncloud/en/public-api/user-access-key-token) documentation
+Framework APIs and Partner Management APIs use User Access Key tokens for authentication. For more information on issuing User Access Key tokens and making API calls, please refer to the [User Access Key Token](./user-access-key-token/) documentation
 
-For more information on using Framework APIs and Partner Management APIs, please refer to the [Framework API](https://docs.nhncloud.com/en/nhncloud/en/public-api/framework-api/) and [Partner Management API](https://docs.nhncloud.com/en/nhncloud/en/public-api/partner-api/) documentation, respectively.
+For more information on using Framework APIs and Partner Management APIs, please refer to the [Framework API](./framework-api/) and [Partner Management API](./partner-api/) documentation, respectively.
 
 
 <a id="check-authentication-methods-for-each-service-api"></a>

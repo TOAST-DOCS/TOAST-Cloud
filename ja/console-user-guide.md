@@ -3,8 +3,6 @@
 <a id="nhn-cloud-console-user-guide"></a>
 ## NHN Cloud > コンソール使用ガイド { #nhn-cloud-console-user-guide }
 
-<!-- TODO: translate body -->
-
 <a id="terminology"></a>
 ### 用語定義 { #terminology }
 

@@ -45,7 +45,9 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 <a id="global-cloud"></a>
 ### Global Cloud { #global-cloud }
 
-<!-- TODO: translate body -->
+- Supports Korean companies in expanding into Japan.
+- Provides local companies with robust technology and services accumulated over more than 10 years.
+- Supports a global platform for successful overseas services.
 
 <a id="service-targets"></a>
 ## Service Targets { #service-targets }

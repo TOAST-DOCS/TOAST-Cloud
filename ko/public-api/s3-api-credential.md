@@ -28,7 +28,7 @@ Amazon S3 호환 API를 지원하는 서비스 콘솔에서 S3 API 자격 증명
 <a id="issue-via-api"></a>
 ### API로 발급하기 { #issue-via-api }
 
-API를 이용해 S3 API 자격 증명을 발급하려면 인증 토큰이 필요합니다. 인증 토큰 발급 방법은 [IaaS 토큰](/nhncloud/ko/public-api/iaas-token/)을 참고하세요.
+API를 이용해 S3 API 자격 증명을 발급하려면 인증 토큰이 필요합니다. 인증 토큰 발급 방법은 [IaaS 토큰](./iaas-token/)을 참고하세요.
 
 ```
 POST https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{api-user-id}/credentials/OS-EC2
