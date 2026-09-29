@@ -3604,7 +3604,7 @@ IP ACL 설정을 조회하는 API입니다.
   "paymentStatementCharges": [ {
     "uuid": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
     "paymentGroupId": "3YVRwIVU",
-    "month": "2026-07-01T00:00:00Z",
+    "month": "2026-07-01T00:00:00.000+09:00",
     "country": "KR",
     "paymentStatusCode": "PAID",
     "autoPaymentTypeCode": "CREDIT_CARD",
@@ -3783,6 +3783,9 @@ IP ACL 설정을 조회하는 API입니다.
 
 상세 내역 단위의 이용 금액을 조회하는 API입니다.
 
+!!! danger "주의"
+    * 2020년 5월 이후의 청구 월만 조회할 수 있습니다.
+
 <a id="view-individual-charge-lines-required-permissions"></a>
 #### 필요 권한
 `Member.PaymentStatement.Get`
@@ -3792,7 +3795,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |month | String| Y | 청구 월(yyyy-MM) |
+|  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
@@ -3818,8 +3821,6 @@ IP ACL 설정을 조회하는 API입니다.
     "projectName": "프로젝트 이름",
     "resourceId": "5f1ab1a1-4e6e-4f66-9b1e-2b3f5c6d7e8f",
     "resourceName": "인스턴스 이름",
-    "parentResourceId": null,
-    "parentResourceName": null,
     "counterName": "c2.small",
     "categoryMain": "Compute",
     "categorySub": "Instance",
@@ -3832,15 +3833,14 @@ IP ACL 설정을 조회하는 API입니다.
     "displayNameZh": "c2.small",
     "unitName": "시간",
     "unit": 1,
-    "usageAmount": 720.0,
-    "unitPrice": 61.0,
-    "contractUnitPrice": 55.0,
+    "usageAmount": 720,
+    "unitPrice": 61,
+    "contractUnitPrice": 55,
     "price": 43920,
     "contractPrice": 39600,
     "discountPrice": 4320,
     "discountTypeCode": "CONTRACT",
-    "prePaidAmount": 0,
-    "costPlanOrderId": null
+    "prePaidAmount": 0
   } ],
   "nextCursor": "MTAyNA"
 }
