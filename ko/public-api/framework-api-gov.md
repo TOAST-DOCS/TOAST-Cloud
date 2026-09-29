@@ -3715,7 +3715,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   displayNameZh | String| N | 과금 단위 노출 이름(zh)  |
 |   unitName | String| N | 단위명  |
 |   unit | Long| Y | 과금 단위  |
-|   usageAmount | Double| Y | 사용량  |
+|   usageAmount | BigDecimal| Y | 사용량  |
 |   unitPrice | BigDecimal| Y | 종량제 단가  |
 |   contractUnitPrice | BigDecimal| Y | 약정제 단가  |
 |   price | Long| Y | 이용 금액(종량제)  |
@@ -3737,7 +3737,7 @@ IP ACL 설정을 조회하는 API입니다.
     * 2020년 5월 이후의 청구 월만 조회할 수 있습니다.
 
 !!! tip "알아두기"
-    * 검색 조건 구분(`dimension`)은 결제 그룹(1) > 빌링 그룹(2) > 조직(3) > 프로젝트(4)의 계층을 가지며, 각 선택지에는 상위 검색 조건 구분의 식별자와 이름이 함께 반환됩니다.
+    * 검색 조건 구분(`dimension`)은 결제 그룹 > 빌링 그룹 > 조직 > 프로젝트의 계층을 가지며, 상위 검색 조건 구분(`parentDimension`)과 각 선택지의 상위 식별자·이름이 함께 반환됩니다.
     * [빌링그룹, 조직, 프로젝트별 이용 금액 조회](#빌링그룹-조직-프로젝트별-이용-금액-조회)와 동일한 대상에서 선택지를 추출하므로, 여기서 조회한 값을 그대로 필터로 사용할 수 있습니다.
 
 ##### 필요 권한
@@ -3752,7 +3752,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
-|  Query |ownerIds | List&lt;String>| N | 소유자 UUID 필터(다중, 최대 10개) |
+|  Query |ownerIds | List&lt;String>| N | 소유자 UUID 필터(다중, 최대 10개)<br>`dimension=ORG`, `dimension=PROJECT`는 소속 조직의 소유자를 기준으로 필터링 |
 |  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
 |  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
 
@@ -3766,11 +3766,8 @@ IP ACL 설정을 조회하는 API입니다.
     "resultMessage": "resultMessage"
   },
   "uuid": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
-  "dimension": {
-    "key": "project",
-    "displayName": "프로젝트",
-    "level": 4
-  },
+  "dimension": "PROJECT",
+  "parentDimension": "ORG",
   "values": [ {
     "id": "KGDeiKUq",
     "name": "프로젝트 이름",
@@ -3788,17 +3785,10 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Y   |
 |   uuid | String| Y | 조회 대상 회원 UUID  |
-|   dimension | Dimension| Y | 조회한 검색 조건 구분 정보  |
+|   dimension | String| Y | 조회한 검색 조건 구분<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
+|   parentDimension | String| N | 상위 검색 조건 구분<br>최상위(PAYMENT_GROUP)이면 null |
 |   values | List&lt;DimensionValue>| Y | 검색 조건 구분별 필터 선택지 목록  |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
-
-###### Dimension
-
-| 이름 | 타입 | 필수 | 설명 |   
-|------------ | ------------- | ------------- | ------------ |
-|   key | String| Y | 검색 조건 구분 키<br>payment_group, billing_group, org, project |
-|   displayName | String| Y | 검색 조건 구분 표시명  |
-|   level | Integer| Y | 계층 레벨(1이 최상위)  |
 
 ###### DimensionValue
 
@@ -3806,7 +3796,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ------------- | ------------ |
 |   id | String| Y | 식별자  |
 |   name | String| Y | 표시명  |
-|   ownerId | String| N | 소유자 UUID  |
+|   ownerId | String| N | 소유자 UUID<br>`dimension=ORG`, `dimension=PROJECT`는 소속 조직의 소유자 |
 |   parentId | String| N | 상위 검색 조건 구분 식별자<br>최상위(결제 그룹)이면 null |
 |   parentName | String| N | 상위 검색 조건 구분 표시명<br>최상위(결제 그룹)이면 null |
 
