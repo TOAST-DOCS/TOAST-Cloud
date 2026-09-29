@@ -3564,7 +3564,7 @@ IP ACL 설정을 조회하는 API입니다.
     "projectId": "KGDeiKUq",
     "projectName": "프로젝트 이름",
     "country": "KR",
-    "usageAmount": 1000000,
+    "chargeAmount": 1000000,
     "contractDiscountAmount": 50000,
     "ocpDiscountAmount": 0,
     "billingGroupDiscountAmount": 0,
@@ -3603,7 +3603,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   projectId | String| N  | 프로젝트 ID<br>`groupBy=PROJECT`일 때만 반환 |
 |   projectName | String| N  | 프로젝트 이름<br>`groupBy=PROJECT`일 때만 반환 |
 |   country | String| Y  | 국가 코드  |
-|   usageAmount | Long| Y  | 이용 금액  |
+|   chargeAmount | Long| Y  | 이용 금액  |
 |   contractDiscountAmount | Long| Y  | 약정으로 할인된 금액 |
 |   ocpDiscountAmount | Long| Y  | Optimized Cost Plans(OCPs) 할인 금액 |
 |   billingGroupDiscountAmount | Long| Y  | 빌링 그룹 할인 금액 |
