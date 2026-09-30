@@ -1,4 +1,4 @@
-<!-- pre-align:aligned sig=dc37484e22b4 -->
+<!-- pre-align:aligned sig=4b541eabb400 -->
 
 <a id="nhn-cloud-overview"></a>
 ## NHN Cloud > Overview { #nhn-cloud-overview }
@@ -87,6 +87,7 @@ NHN Cloud is an “integrated cloud service” provided by NHN Cloud, which prov
 | Contact Center | An integrated solution for call center services helps process inquiries more efficiently, and provides elevated operational efficiency and optimized customer experience. |
 | Governance & Audit  | A service that manages the governance of organizations and monitors the various activity logs and events that occurred in the cloud. |
 
+<a id="service-composition-default-infrastructure-services"></a>
 #### Default Infrastructure Services
 | Service Category | Service |
 | ---- | --- |

@@ -1,4 +1,4 @@
-<!-- pre-align:aligned sig=dc37484e22b4 -->
+<!-- pre-align:aligned sig=4b541eabb400 -->
 
 ﻿
 <a id="nhn-cloud-overview"></a>
@@ -89,6 +89,7 @@ NHN Cloudが提供する「統合クラウドサービス」です。企業の�
 | Contact Center | コールセンターの効率的なお問い合わせ処理をサポートする統合ソリューションです。 |
 | Governance & Audit  | 組織のガバナンスを管理し、クラウドで発生したさまざまな活動ログおよびイベントを監視するサービスです。 |
 
+<a id="service-composition-default-infrastructure-services"></a>
 #### 基本インフラサービス
 | サービスカテゴリ | サービス |
 | ---- | --- |
