@@ -1,4 +1,4 @@
-<!-- pre-align:aligned sig=dc37484e22b4 -->
+<!-- pre-align:aligned sig=4b541eabb400 -->
 
 <a id="nhn-cloud-overview"></a>
 ## NHN Cloud > 개요 { #nhn-cloud-overview }
@@ -87,6 +87,7 @@ NHN Cloud에서 제공하는 “통합 클라우드 서비스”이며, 기업�
 | Contact Center | 콜센터 상담 통합 솔루션으로 효율적인 문의 처리를 통해 운영 효율성을 높이고 최적의 고객 경험을 제공할 수 있습니다. |
 | Governance & Audit  | 조직의 거버넌스를 관리하고 클라우드에서 발생한 다양한 활동 로그 및 이벤트를 감시하는 서비스입니다. |
 
+<a id="service-composition-default-infrastructure-services"></a>
 #### 기본 인프라 서비스
 | 서비스 카테고리 | 서비스 |
 | ---- | --- |
