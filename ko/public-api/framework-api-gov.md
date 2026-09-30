@@ -3578,7 +3578,7 @@ IP ACL 설정을 조회하는 API입니다.
     "prePaidTotalAmount": 0,
     "totalAmount": 900000
   } ],
-  "nextCursor": "ZU5XWjNqWnEyRnNNU0hhUV9LR0RlaUtVcQ"
+  "nextCursor": "S0dEZWlLVXE"
 }
 ```
 
@@ -3597,7 +3597,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- |----| ---------- |
 |   paymentGroupId | String| Y  | 결제 그룹 ID |
 |   billingGroupId | String| Y  | 빌링 그룹 ID |
-|   billingGroupName | String| Y  | 빌링 그룹 이름 |
+|   billingGroupName | String| N  | 빌링 그룹 이름 |
 |   orgId | String| N  | 조직 ID<br>`groupBy=ORG`, `groupBy=PROJECT`일 때만 반환 |
 |   orgName | String| N  | 조직 이름<br>`groupBy=ORG`, `groupBy=PROJECT`일 때만 반환 |
 |   projectId | String| N  | 프로젝트 ID<br>`groupBy=PROJECT`일 때만 반환 |
