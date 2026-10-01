@@ -3713,7 +3713,7 @@ IP ACL 설정을 조회하는 API입니다.
     "resultMessage": "resultMessage"
   },
   "groupBy": "PROJECT",
-  "summaries": [ {
+  "chargeSummaries": [ {
     "paymentGroupId": "3YVRwIVU",
     "billingGroupId": "LY9NQ7lvWvxGj3aW",
     "billingGroupName": "빌링그룹 이름",
@@ -3746,7 +3746,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
 |   groupBy | String| Y | 요청한 집계 기준  |
-|   summaries | List&lt;ChargeSummary>| Y | 빌링그룹, 조직, 프로젝트별 이용 금액 목록  |
+|   chargeSummaries | List&lt;ChargeSummary>| Y | 빌링그룹, 조직, 프로젝트별 이용 금액 목록  |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### ChargeSummary
@@ -3916,7 +3916,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
-|  Query |ownerIds | List&lt;String>| N | 소유자 UUID 필터(다중, 최대 10개)<br>`dimension=ORG`, `dimension=PROJECT`는 소속 조직의 소유자를 기준으로 필터링 |
+|  Query |orgOwnerIds | List&lt;String>| N | 조직 소유자 UUID 필터(다중, 최대 10개)<br>해당 청구 월에 지정한 UUID가 소유한 조직의 이용 요금이 있는 값만 반환합니다. |
 |  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
 |  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
 
