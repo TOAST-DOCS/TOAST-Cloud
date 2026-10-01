@@ -83,9 +83,8 @@ Terraformはインフラを簡単に構築し、安全に変更し、効率的�
 
 ### 注意 { #note }
 
-* **下記例のすべてのデータは実際の情報ではありません。必ず正確な情報に修正して使用します。**
-* **下記の例はすべてTerraform 0.12.24を利用しました。**
-
+* **以下の例で使用されている Terraform のバージョンは 1.0.0 です。**
+* **バージョンを含むコンポーネントの名前および数値は変更される場合がありますので、確認の上ご使用ください。**
 
 <a id="terraform-installation"></a>
 ## Terraformインストール { #terraform-installation }
@@ -104,26 +103,7 @@ Terraform v1.14.2
 <a id="terraform-provider-provided"></a>
 ## Terraform NHN Cloud provider提供 { #terraform-provider-provided }
 
-Terraform NHN Cloud providerは次のような**OS/アーキテクチャ**の互換性を提供し、リンクからバイナリファイルをダウンロードできます。
-現在提供するTerraform NHN Cloud providerのバージョンは**1.0.2**です。
-
-* macOS / AMD64
-  * [1.0.0](https://static.toastoven.net/prod_cloud_terraform_provider/darwin_amd64/terraform-provider-nhncloud_v1.0.0)
-  * [1.0.1](https://static.toastoven.net/prod_cloud_terraform_provider/darwin_amd64/terraform-provider-nhncloud_v1.0.1)
-  * [1.0.2](https://static.toastoven.net/prod_cloud_terraform_provider/darwin_amd64/terraform-provider-nhncloud_v1.0.2)
-* macOS / Apple silicon
-  * [1.0.0](https://static.toastoven.net/prod_cloud_terraform_provider/darwin_arm64/terraform-provider-nhncloud_v1.0.0)
-  * [1.0.1](https://static.toastoven.net/prod_cloud_terraform_provider/darwin_arm64/terraform-provider-nhncloud_v1.0.1)
-  * [1.0.2](https://static.toastoven.net/prod_cloud_terraform_provider/darwin_arm64/terraform-provider-nhncloud_v1.0.2)
-* Linux / AMD64
-  * [1.0.0](https://static.toastoven.net/prod_cloud_terraform_provider/linux_amd64/terraform-provider-nhncloud_v1.0.0)
-  * [1.0.1](https://static.toastoven.net/prod_cloud_terraform_provider/linux_amd64/terraform-provider-nhncloud_v1.0.1)
-  * [1.0.2](https://static.toastoven.net/prod_cloud_terraform_provider/linux_amd64/terraform-provider-nhncloud_v1.0.2)
-* Windows / AMD64
-  * [1.0.0](https://static.toastoven.net/prod_cloud_terraform_provider/windows_amd64/terraform-provider-nhncloud_v1.0.0)
-  * [1.0.1](https://static.toastoven.net/prod_cloud_terraform_provider/windows_amd64/terraform-provider-nhncloud_v1.0.1)
-  * [1.0.2](https://static.toastoven.net/prod_cloud_terraform_provider/windows_amd64/terraform-provider-nhncloud_v1.0.2)
-
+NHN Cloud は HashiCorp の公式パートナーとして、[Terraform Registry](https://registry.terraform.io/providers/nhn-cloud/nhncloud/latest) を通じて Terraform provider を提供しています。
 
 <a id="terraform-initialization"></a>
 ## Terraformの初期化 { #terraform-initialization }
@@ -974,47 +954,45 @@ resource "nhncloud_networking_port_v2" "port_1" {
 ### Floating IP作成 { #create-floating-ip }
 
 ```
-resource "nhncloud_compute_floatingip_v2" "fip_01" {
+resource "nhncloud_networking_floatingip_v2" "fip_01" {
   pool = "Public Network"
 }
 ```
 
 | 名前 | 形式 | 必須 | 説明 |
 | ------ | --- |---- | --------- |
-| pool | String | O | Floating IPを作成するIPプール<br>デフォルト値は`Public Network` |
-
+| pool | String | O | フローティング IP を作成する IP プール<br>デフォルト値は `Public Network` |
 
 <a id="associate-floating-ip"></a>
 ### Floating IP接続 { #associate-floating-ip }
+
 ```
 # ネットワークポートの作成
 resource "nhncloud_networking_port_v2" "port_1" {
   ...
 }
 
-# インスタンス作成
+# インスタンスの作成
 resource "nhncloud_compute_instance_v2" "tf_instance_01" {
   ...
 }
 
-# Floating IP作成
-resource "nhncloud_compute_floatingip_v2" "fip_01" {
+# フローティングIPの作成
+resource "nhncloud_networking_floatingip_v2" "fip_01" {
   ...
 }
 
-# Floating IP接続
-resource "nhncloud_compute_floatingip_associate_v2" "fip_associate" {
-  floating_ip = nhncloud_compute_floatingip_v2.fip_01.address
+# フローティングIPの関連付け
+resource "nhncloud_networking_floatingip_associate_v2" "fip_associate" {
+  floating_ip = nhncloud_networking_floatingip_v2.fip_01.address
   port_id = nhncloud_networking_port_v2.port_1.id
 }
-
 ```
 
-| 名前         | 形式 | 必須 | 説明                   |
+| 名前          | 形式 | 必須  | 説明                    |
 |-------------| --- |---- |-------------------------|
 | floating_ip | String | O | 接続するFloating IP           |
-| port_id     | String | O | Floating IPを接続するポートUUID |
-
+| port_id     | String | O | Floating IPを接続するポートのUUID |
 
 <a id="create-routing-table"></a>
 ### ルーティングテーブルの作成 { #create-routing-table }
