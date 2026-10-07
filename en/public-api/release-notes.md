@@ -72,8 +72,8 @@
 <a id="march-25-2025-feature-updates"></a>
 #### Feature Updates
 
-- `IAM 멤버` -> `IAM 계정` terminology change
-- `NHN Cloud 회원` -> `NHN Cloud 계정` terminology change
+- `IAM member` -> `IAM account` terminology change
+- `NHN Cloud member` -> `NHN Cloud account` terminology change
 
 <a id="march-25-2025-added-features"></a>
 #### Added Features
