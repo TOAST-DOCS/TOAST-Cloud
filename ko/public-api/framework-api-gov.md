@@ -282,7 +282,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   projectName | String| Y   | 프로젝트 이름 | 
 |   projectId | String| Y   | 프로젝트 ID | 
 |   orgId | String| Y   | 조직 ID | 
-|   projectStatusCode | String| Y   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 결제가 완료되어 정상적으로 종료된 상태</li><li>BLOCKED: 관리자가 사용을 금지한 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> | 
+|   projectStatusCode | String| Y   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 결제가 완료되어 정상적으로 종료된 상태</li><li>BLOCKED: 관리자가 사용을 금지한 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 요금이 지불되지 않은 상태</li></ul> | 
 
 
 <a id="프로젝트-멤버-단건-삭제"></a>
@@ -419,7 +419,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [공통 응답](#응답)| Y |
-|   childProducts | List&lt;ChildProduct>| N   | 해당 서비스의 하위 서비스 정보로, 하위 서비스가 없으면 포함하지 않음.<br>하위 서비스를 먼저 비활성화하고 해당 서비스를 비활성화해야 함.|
+|   childProducts | List&lt;ChildProduct>| N   | 해당 서비스의 하위 서비스 정보로, 하위 서비스가 없으면 포함하지 않음.<br>하위 서비스를 먼저 비활성화한 후 해당 서비스를 비활성화해야 함.|
 
 ###### ChildProduct
 
@@ -869,7 +869,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
 |   header | [공통 응답](#응답)| Y |
-|   orgMembers | List&lt;OrgMemberWithInviteMemberrotocol>| Y | 조직 멤버 목록 |
+|   orgMembers | List&lt;OrgMemberWithInviteMemberProtocol>| Y | 조직 멤버 목록 |
 |   paging | PagingResponse| Y | 페이지 정보 |
 
 ###### OrgMemberWithInviteMemberProtocol
@@ -1563,7 +1563,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   orgId | String| Y| 프로젝트가 속한 조직 ID |
 |   projectId | String| Y| 프로젝트 ID |
 |   projectName | String| Y| 프로젝트 이름 |
-|   projectStatusCode | String| Y | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 결제가 완료되어 정상적으로 종료된 상태</li><li>BLOCKED: 관리자가 사용을 금지한 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> |
+|   projectStatusCode | String| Y | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 결제가 완료되어 정상적으로 종료된 상태</li><li>BLOCKED: 관리자가 사용을 금지한 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 요금이 지불되지 않은 상태</li></ul> |
 |   regDateTime | Date| Y| 프로젝트 등록 일시 |
 
 
@@ -2606,14 +2606,14 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | officeHoursBegin | String | N | 업무 시작 시간 예: 09:00 |
 | officeHoursEnd | String | N | 업무 종료 시간 예: 18:00 |
 | status | String | Y | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
-| creationType | String | N | 생성 일시 |
+| creationType | String | N | 연동(sso), 초대(invited), 등록(registered) |
 | idProviderId | String | N | 외부 인증을 사용하는 경우, 인증 기관 ID |
 | idProviderType | String | N | service: IAM 계정 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
 | idProviderUserId | String | N | 외부 인증 기관이 제공한 사용자 ID |
 | createdAt | Date | N | 생성 일시 |
 | lastAccessedAt | Date | N | 마지막 접속 일시 |
 | lastLoggedInAt | Date | N | 마지막 로그인 일시 |
-| lastLoggedInIp | String | N | 마지막 로그인 한 IP |
+| lastLoggedInIp | String | N | 마지막 로그인한 IP |
 | passwordChangedAt | Date | N | 비밀번호 변경 일시 |
 | mobilePhoneCountryCode | String | N | 휴대전화 번호 국가 코드 2자리 영문자  |
 | organizationId | String | N | IAM 계정의 조직 ID |
@@ -3404,7 +3404,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   chargingTypeId | String| Y | 과금 유형 ID  |
 |   convertUsageTypeCode | String| Y | 사용량 변환 타입 코드  `NONE`, `HOUR_AVERAGE`, `DAY_AVERAGE` |
 |   counterName | String| Y | 카운터  |
-|   counterTypeCode | String| Y | 사용량 합산 방법<br><ul><li>DELTA: 증가값(HOURLY_SUM)</li><li>GAUGE: 시간 최대값의 합(HOURLY_MAX로 변경 예정)</li><li>HOURLY_LATEST: 1시간 동안 수집된 데이터 중 가장 나중에 수집된 미터링 데이터의 합</li><li>DAILY_MAX: 일 최대값의 합</li><li>MONTHLY_MAX: 월 최대값</li><li>STATUS: 사용 현황</li><ul> |
+|   counterTypeCode | String| Y | 사용량 합산 방법<br><ul><li>DELTA: 증가 값(HOURLY_SUM)</li><li>GAUGE: 시간 최대값의 합(HOURLY_MAX로 변경 예정)</li><li>HOURLY_LATEST: 1시간 동안 수집된 데이터 중 가장 나중에 수집된 미터링 데이터의 합</li><li>DAILY_MAX: 일 최대값의 합</li><li>MONTHLY_MAX: 월 최대값</li><li>STATUS: 사용 현황</li><ul> |
 |   description | String| N | 카운터 설명  |
 |   displayOrder | Integer| Y | 노출 순서  |
 |   marketPlaceMandatoryUsePeriod | Integer| N | 마켓플레이스 필수 사용 기간  |
