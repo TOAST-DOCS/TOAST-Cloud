@@ -124,7 +124,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | POST |[/v1/billing/contracts/basic/products/prices/search](#get-the-price-of-a-service-on-a-pay-as-you-go-subscription) | 종량제에 등록된 서비스 가격 조회 |
 | GET |[/v1/billing/contracts/basic/products](#list-services-enrolled-in-a-pay-as-you-go-subscription) | 종량제에 등록된 서비스 목록 조회 |
 | GET |[/v1/billing/members/payment-statements](#view-charges-by-payment-statement) | 청구서별 이용 금액 조회 |
-| GET |[/v1/billing/members/payment-statements/charge-summaries](#view-charge-summaries-by-scope) | 빌링그룹, 조직, 프로젝트별 이용 금액 조회 |
+| GET |[/v1/billing/members/payment-statements/charge-summaries](#view-charge-summaries-by-scope) | 빌링 그룹, 조직, 프로젝트별 이용 금액 조회 |
 | GET |[/v1/billing/members/payment-statements/usages](#view-individual-charge-lines) | 상세 내역 이용 금액 조회 |
 | GET |[/v1/billing/members/payment-statements/dimensions](#view-charge-filter-dimensions) | 이용 금액 검색 조건 값 목록 조회 |
 | GET | [/v1/authentications/projects/{project-id}/project-appkeys](#get-project-integrated-appkey) | 프로젝트 통합 Appkey 조회 |
@@ -3669,12 +3669,12 @@ IP ACL 설정을 조회하는 API입니다.
 |   chargedSupplyAmount | Long| Y | 실 공급가액<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
 |   chargedTaxAmount | Long| Y | 실 부가세<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
 |   chargedTotalAmount | Long| Y | 실 결제 금액<br>실 공급가액 + 실 부가세 + 연체료 |
-|   receiptStatusCode | String| Y | 매출 전표 상태 코드<br><ul><li>NONE: 아직 회계팀으로 매출 보고가 되지 않아, 매출 전표를 볼 수 없는 상태</li><li>EXIST: 최종 금액 조정이 끝난 후, 회계팀으로 매출 보고가 되어, 매출 전표를 볼 수 있는 상태</li></ul> |
+|   receiptStatusCode | String| Y | 매출 전표 상태 코드<br><ul><li>NONE: 매출 전표를 볼 수 없는 상태</li><li>EXIST: 매출 전표를 볼 수 있는 상태</li></ul> |
 |   refundAccountRegisterStatusCode | String| N | 환불 계좌 등록 상태 코드<br><ul><li>ALLOW: 환불 계좌 등록 Open 상태</li><li>DENY: 환불 계좌 등록 Close 상태(기본값)</li></ul> |
 
 
 <a id="view-charge-summaries-by-scope"></a>
-### 빌링그룹, 조직, 프로젝트별 이용 금액 조회 { #view-charge-summaries-by-scope }
+### 빌링 그룹, 조직, 프로젝트별 이용 금액 조회 { #view-charge-summaries-by-scope }
 
 > GET "/v1/billing/members/payment-statements/charge-summaries"
 
@@ -3716,7 +3716,7 @@ IP ACL 설정을 조회하는 API입니다.
   "chargeSummaries": [ {
     "paymentGroupId": "3YVRwIVU",
     "billingGroupId": "LY9NQ7lvWvxGj3aW",
-    "billingGroupName": "빌링그룹 이름",
+    "billingGroupName": "빌링 그룹 이름",
     "orgId": "eNWZ3jZq2FsMSHaQ",
     "orgName": "조직 이름",
     "projectId": "KGDeiKUq",
@@ -3746,7 +3746,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
 |   groupBy | String| Y | 요청한 집계 기준  |
-|   chargeSummaries | List&lt;ChargeSummary>| Y | 빌링그룹, 조직, 프로젝트별 이용 금액 목록  |
+|   chargeSummaries | List&lt;ChargeSummary>| Y | 빌링 그룹, 조직, 프로젝트별 이용 금액 목록  |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### ChargeSummary
@@ -3833,12 +3833,12 @@ IP ACL 설정을 조회하는 API입니다.
     "displayNameZh": "c2.small",
     "unitName": "시간",
     "unit": 1,
-    "usageAmount": 720,
+    "usageVolume": 720,
     "unitPrice": 61,
     "contractUnitPrice": 55,
-    "price": 43920,
-    "contractPrice": 39600,
-    "discountPrice": 4320,
+    "chargeAmount": 43920,
+    "contractAmount": 39600,
+    "discountAmount": 4320,
     "discountTypeCode": "CONTRACT",
     "prePaidAmount": 0
   } ],
@@ -3874,14 +3874,14 @@ IP ACL 설정을 조회하는 API입니다.
 |   displayNameEn | String| N | 과금 단위 노출 이름(en)  |
 |   displayNameJa | String| N | 과금 단위 노출 이름(ja)  |
 |   displayNameZh | String| N | 과금 단위 노출 이름(zh)  |
-|   unitName | String| N | 단위명  |
+|   unitName | String| N | 단위 이름  |
 |   unit | Long| Y | 과금 단위  |
-|   usageAmount | BigDecimal| Y | 사용량  |
+|   usageVolume | BigDecimal| Y | 사용량  |
 |   unitPrice | BigDecimal| Y | 종량제 단가  |
 |   contractUnitPrice | BigDecimal| Y | 약정제 단가  |
-|   price | Long| Y | 이용 금액(종량제)  |
-|   contractPrice | Long| Y | 약정 적용 금액  |
-|   discountPrice | Long| Y | 약정 할인 금액  |
+|   chargeAmount | Long| Y | 이용 금액(종량제)  |
+|   contractAmount | Long| Y | 약정 적용 금액  |
+|   discountAmount | Long| Y | 약정 할인 금액  |
 |   discountTypeCode | String| N | 할인 유형 코드<br>BASIC, CONTRACT, OCP |
 |   prePaidAmount | Long| Y | 선결제 적용 금액  |
 |   costPlanOrderId | String| N | Optimized Cost Plans(OCPs) 주문 ID  |
@@ -3898,7 +3898,7 @@ IP ACL 설정을 조회하는 API입니다.
     * 2020년 5월 이후의 청구 월만 조회할 수 있습니다.
 
 !!! tip "알아두기"
-    * [빌링그룹, 조직, 프로젝트별 이용 금액 조회](#view-charge-summaries-by-scope)와 동일한 대상에서 선택지를 추출하므로, 여기서 조회한 값을 그대로 필터로 사용할 수 있습니다.
+    * [빌링 그룹, 조직, 프로젝트별 이용 금액 조회](#view-charge-summaries-by-scope)와 동일한 대상에서 선택지를 추출하므로, 여기서 조회한 값을 그대로 필터로 사용할 수 있습니다.
     * 검색 조건 구분(`dimension`)은 결제 그룹 > 빌링 그룹 > 조직 > 프로젝트의 계층을 가지며, 상위 검색 조건 구분(`parentDimension`)과 각 선택지의 상위 식별자·이름이 함께 반환됩니다.
 
 
