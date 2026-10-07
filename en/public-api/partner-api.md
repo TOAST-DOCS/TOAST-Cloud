@@ -1474,11 +1474,11 @@ This API does not require a request body.
 Retrieve details of a partner user's daily usage fees.
 
 !!! tip "Verify Partner Agreement"
-Checks whether the partner is the owner of a given project or organization, or has a partner agreement with the owner on the date being queried.
+    Checks whether the partner is the owner of a given project or organization, or has a partner agreement with the owner on the date being queried.
 
 !!! note "Query Scope Restrictions"
-- Either projectId or orgId must be set.
-- Both projectId and orgId cannot be set simultaneously.
+    - Either projectId or orgId must be set.
+    - Both projectId and orgId cannot be set simultaneously.
 
 <a id="required-permissions"></a>
 ### Required Permissions { #required-permissions }
@@ -1495,7 +1495,7 @@ GET /v1/billing/partners/{partnerId}/daily-usage-prices
 ### Request Parameters { #request-parameters }
 
 | Name | Category | Type | Required | Description |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | Partner ID |
 | projectId | Query | String | N | Project ID<br>Cannot be set simultaneously with orgId |
 | orgId | Query | String | N | Organization ID<br>Cannot be set simultaneously with projectId |
@@ -1594,12 +1594,12 @@ This API does not require a request body.
 Retrieve resource usage prices categorized by tag.
 
 !!! tip "Verify Partner Agreement"
-Checks whether the partner is the owner of the given project or organization, or has a partner agreement with the owner on the date of the query.
+    Checks whether the partner is the owner of the given project or organization, or has a partner agreement with the owner on the date of the query.
 
 !!! tip "Query Scope Restrictions"
-- Either projectId or orgId must be provided.
-- Both projectId and orgId cannot be set simultaneously.
-- Either tagIds or groupIds must be provided.
+    - Either projectId or orgId must be provided.
+    - Both projectId and orgId cannot be set simultaneously.
+    - Either tagIds or groupIds must be provided.
 
 <a id="retrieve-resource-usage-prices-by-tag-required-permissions"></a>
 ### Required Permissions { #retrieve-resource-usage-prices-by-tag-required-permissions }
@@ -1616,7 +1616,7 @@ POST /v1/billing/partners/{partnerId}/resource-usage-prices-by-tag
 ### Request Parameters { #retrieve-resource-usage-prices-by-tag-request-parameters }
 
 | Name | Category | Type | Required | Description |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | partnerId | Path | String | Y | Partner ID |
 | page | Query | Integer | N | Selected page (minimum: 1) |
 | limit | Query | Integer | N | Number of items to display on the page (minimum: 1, maximum: 2,000) |
