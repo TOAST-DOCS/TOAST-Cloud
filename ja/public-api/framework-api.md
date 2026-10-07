@@ -3366,35 +3366,32 @@ IP ACL設定を照会するAPIです。
   "header": {
     "isSuccessful": true,
     "resultCode": 0,
-    "resultMessage": ""
+    "resultMessage": "resultMessage"
   },
-  "result": {
-    "content": {
-      "schemaVersion": 1,
-      "value": {
-        "ruleType": "default",
-        "passwordConstraints": {
-          "minLength": 8,
-          "mustNotIncludeIllegalSequence": true,
-          "mustIncludeUpperCase": true,
-          "mustIncludeLowerCase": true,
-          "mustIncludeNumberCase": true,
-          "mustIncludeSpecialCase": true
-        },
-        "passwordExpiry": {
-          "enabled": true,
-          "expiryDays": 90,
-          "allowExpend": true
-        },
-        "limitPasswordReuse": {
-          "enabled": true,
-          "limitCount": 1
-        },
-        "applyRule": "onChangePassword"
-      }
-    }
-  }
-}      
+  "paging": {
+    "limit": 6,
+    "page": 1,
+    "totalCount": 5
+  },
+  "prices": [ {
+    "contractDiscountPolicyId": "jxzEL2C09G20oDX3",
+    "originalPrice": 0.8008281904610115,
+    "monthFrom": "monthFrom",
+    "displayNameJa": "displayNameJa",
+    "rangeFrom": 1.4658129805029452,
+    "monthTo": "monthTo",
+    "counterName": "counterName",
+    "slidingCalculationTypeCode": "NONE",
+    "rangeTo": 5.962133916683182,
+    "displayNameZh": "displayNameZh",
+    "price": 6.027456183070403,
+    "contractId": "3YVRwIVU",
+    "displayNameEn": "displayNameEn",
+    "displayNameKo": "displayNameKo",
+    "seq": 5,
+    "useFixPriceYn": "N"
+  } ]
+}
 ```
 
 ##### レスポンス
