@@ -305,7 +305,6 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/organizations/{orgId}/usag
 | month | Path | String | Y | Usage month (yyyy-MM format) |
 | orgId | Path | String | Y | Organization ID |
 | lang | Header | String | N | Language settings (default: ko_KR, selectable values: ko_KR, ja_JP, en_US) |
-| isHideContract | Query | Boolean | N | Whether to hide contract information (default: false / true: apply partner masking and exclude creditUsages) |
 | isHideContract | Query | Boolean | N | Whether to hide commitment information (default: false / true: partner masking applied and creditUsages excluded) |
 
 <a id="retrieve-the-billing-amount-per-organizations-of-partner-users-request-body"></a>
