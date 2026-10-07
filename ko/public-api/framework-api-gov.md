@@ -282,7 +282,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   projectName | String| Y   | 프로젝트 이름 | 
 |   projectId | String| Y   | 프로젝트 ID | 
 |   orgId | String| Y   | 조직 ID | 
-|   projectStatusCode | String| Y   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> | 
+|   projectStatusCode | String| Y   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 결제가 완료되어 정상적으로 종료된 상태</li><li>BLOCKED: 관리자가 사용을 금지한 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> | 
 
 
 <a id="프로젝트-멤버-단건-삭제"></a>
@@ -478,7 +478,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   header | [공통 응답](#응답)| Y |
 |   appKey | String| Y | 해당 프로젝트에서 이용 중인 서비스의 앱키 정보|
 |   parentProduct | ParentProduct| N | 상위 서비스 정보가 있으면 해당 정보를 표시하며, 상위 서비스가 없으면 포함하지 않음 |
-|   secretKey | String| N| 해당 프로젝트에서 이용 중인 서비스에 대한 비밀 키 정보<br> 비밀 키를 이용하는 서비스에서만 제공 |
+|   secretKey | String| N| 해당 프로젝트에서 이용 중인 서비스의 비밀 키 정보<br> 비밀 키를 이용하는 서비스에서만 제공 |
 
 
 ###### ParentProduct
@@ -918,7 +918,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |org-id | String| Y | 조회 대상 조직 ID | 
 |  Query |descriptionLike | String| N | 설명 | 
-|  Query |roleGroupNameLike | String| N | 역할 그룹명 |
+|  Query |roleGroupNameLike | String| N | 역할 그룹 이름 |
 |  Query |limit | Integer| N | 페이지당 표시 건수, 기본값 20 |
 |  Query |page | Integer| N | 대상 페이지, 기본값 1 |
 
@@ -1031,7 +1031,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   children | List&lt;ProductUiHierarchyProtocol>| N | 홈페이지 서비스 서비스 UI 목록 |
+|   children | List&lt;ProductUiHierarchyProtocol>| N | 홈페이지 서비스 UI 목록 |
 |   manualLink | String| N|
 |   parentProductUiId | String| N| 서비스 UI 구분 |
 |   productId | String| N|
@@ -1095,7 +1095,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------ | ------------- | ------- | ------------ |
 |   header | [공통 응답](#응답)| Y |
 |   hasUpdateSecretKeyPermission | Boolean| Y | 비밀 키 재발급 가능 권한  |
-|   product | ProjectProductRelationAndProductProtocol| Y  | 지정한 서비스 ID에 대해서 프로젝트에서 사용 중인 서비스 정보를 반환, 오류 시 포함하지 않음 |
+|   product | ProjectProductRelationAndProductProtocol| Y  | 지정한 서비스 ID로 프로젝트에서 사용 중인 서비스 정보를 반환, 오류 시 포함하지 않음 |
 
 
 ###### ProjectProductRelationAndProductProtocol
@@ -1453,7 +1453,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |------------- |------------- | ------------- | ------------- | ------------- | 
 |  Path |project-id | String| Y | 조회 대상 프로젝트 ID | 
 |  Query |descriptionLike | String| N | 설명 |
-|  Query |roleGroupNameLike | String| N | 역할 그룹명 |
+|  Query |roleGroupNameLike | String| N | 역할 그룹 이름 |
 |  Query |limit | Integer| N | 페이지당 표시 건수, 기본값 20 |
 |  Query |page | Integer| N | 대상 페이지, 기본값 1 |
 
@@ -1563,7 +1563,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   orgId | String| Y| 프로젝트가 속한 조직 ID |
 |   projectId | String| Y| 프로젝트 ID |
 |   projectName | String| Y| 프로젝트 이름 |
-|   projectStatusCode | String| Y | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> |
+|   projectStatusCode | String| Y | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 결제가 완료되어 정상적으로 종료된 상태</li><li>BLOCKED: 관리자가 사용을 금지한 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> |
 |   regDateTime | Date| Y| 프로젝트 등록 일시 |
 
 
@@ -1617,7 +1617,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   governanceTypeCode | String| N | 거버넌스 타입<br>- APPROVE_PROCESS: 승인 처리<br>- BLOCK_STORAGE_SNAPSHOT: BlockStorage의 Snapshot 기능 사용 여부<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAAS 리소스 권한 통제 및 접속 단말 제한 설정<br>- PRIVACY_PROTECTION: 개인 정보 보호<br>- UNIQUE_INSTANCE_NAME: 인스턴스명 중복 방지 |
+|   governanceTypeCode | String| N | 거버넌스 타입<br>- APPROVE_PROCESS: 승인 처리<br>- BLOCK_STORAGE_SNAPSHOT: Block Storage의 Snapshot 기능 사용 여부<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAAS 리소스 권한 통제 및 접속 단말 제한 설정<br>- PRIVACY_PROTECTION: 개인 정보 보호<br>- UNIQUE_INSTANCE_NAME: 인스턴스 이름 중복 방지 |
 |   regDatetime | Date| N | 거버넌스 사용 설정 일시  |
 
 
@@ -2467,13 +2467,13 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |   emailAddress | String| Y | IAM 계정 이메일 주소  |
 |   englishName | String| N| 영어 이름 | 
 |   id | String| Y | IAM 계정 UUID  |
-|   idProviderId | String| N| 외부 인증을 사용하는 경우, 인증기관 ID |
+|   idProviderId | String| N| 외부 인증을 사용하는 경우, 인증 기관 ID |
 |   idProviderType | String| N| service: IAM 계정 직접 로그인<br>sso: 고객 SSO 연동 |
-|   idProviderUserId | String| N| 외부 인증기관이 제공한 사용자 ID |
+|   idProviderUserId | String| N| 외부 인증 기관이 제공한 사용자 ID |
 |   lastAccessedAt | Date| N| 계정의 마지막 접속 일시, 없을 경우 null 반환 |
 |   lastLoggedInAt | Date| N| 계정의 마지막 로그인 일시, 없을 경우 null 반환 |
 |   lastLoggedInIp | String| N| 계정의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
-|   maskingEmail | String| N | IAM 계정의 마스킹된 이메일주소  |
+|   maskingEmail | String| N | IAM 계정의 마스킹된 이메일 주소  |
 |   mobilePhone | String| N | IAM 계정의 휴대전화 번호  |
 |   mobilePhoneCountryCode | String| N| 휴대전화 번호 국가 코드 2자리 영문자 |
 |   name | String| Y | IAM 계정의 이름  |
@@ -2607,12 +2607,12 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | officeHoursEnd | String | N | 업무 종료 시간 예: 18:00 |
 | status | String | Y | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
 | creationType | String | N | 생성 일시 |
-| idProviderId | String | N | 외부 인증을 사용하는 경우, 인증기관 ID |
+| idProviderId | String | N | 외부 인증을 사용하는 경우, 인증 기관 ID |
 | idProviderType | String | N | service: IAM 계정 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
-| idProviderUserId | String | N | 외부 인증기관이 제공한 사용자 ID |
+| idProviderUserId | String | N | 외부 인증 기관이 제공한 사용자 ID |
 | createdAt | Date | N | 생성 일시 |
-| lastAccessedAt | Date | N | 마지막 접속일시 |
-| lastLoggedInAt | Date | N | 마지막 로그인일시 |
+| lastAccessedAt | Date | N | 마지막 접속 일시 |
+| lastLoggedInAt | Date | N | 마지막 로그인 일시 |
 | lastLoggedInIp | String | N | 마지막 로그인 한 IP |
 | passwordChangedAt | Date | N | 비밀번호 변경 일시 |
 | mobilePhoneCountryCode | String | N | 휴대전화 번호 국가 코드 2자리 영문자  |
@@ -2668,7 +2668,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | officeHoursBegin | String | N | 업무 시작 시간 예: 09:00 |
 | officeHoursEnd | String | N | 업무 종료 시간 예: 18:00 |
 | status | String | Y | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
-| creationType | String | N | 연동(sso), 초대(invited), 등록(registred) |
+| creationType | String | N | 연동(sso), 초대(invited), 등록(registered) |
 | mobilePhoneCountryCode | String | N | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수  |
 
 
@@ -2723,8 +2723,8 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   locale | String| Y | 사용자의 로케일 정보<br>예: ko |
-|   returnUrl | String| Y | 이메일 변경 알림 메일을 통해서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com, dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
+|   locale | String| Y | 사용자의 로캘 정보<br>예: ko |
+|   returnUrl | String| Y | 이메일 변경 알림 메일에서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com, dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
 
 
 ##### 응답 본문
@@ -2791,8 +2791,8 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 | officeHoursBegin | String | N | 업무 시작 시간 예: 09:00 |
 | officeHoursEnd | String | N | 업무 종료 시간 예: 18:00 |
 | status | String | Y | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
-| creationType | String | N | 연동(sso), 초대(invited), 등록(registred) |
-| idProviderUserId | String | N | 외부 인증기관이 제공한 사용자 ID |
+| creationType | String | N | 연동(sso), 초대(invited), 등록(registered) |
+| idProviderUserId | String | N | 외부 인증 기관이 제공한 사용자 ID |
 | mobilePhoneCountryCode | String | N | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수 |
 
 
@@ -2898,7 +2898,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#응답)| Y   |
-|   orgIpAcl | List&lt;OrgIpAclProtocol>| Y  | 설정 결과, 빈 목록이면 설정이 안된 상태 |
+|   orgIpAcl | List&lt;OrgIpAclProtocol>| Y  | 설정 결과, 빈 목록이면 설정되지 않은 상태 |
 
 ###### OrgIpAclProtocol
 
@@ -2906,7 +2906,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
 |   ips | List&lt;String>| Y  | 허용 IP들 | 
-|   productId | String| Y  | 서비스 ID<br>undefined이면 공통 설정|
+|   productId | String| Y  | 서비스 ID<br>`undefined`이면 공통 설정|
 
 <a id="조직-IAM-계정-로그인-세션-설정-정보를-조회"></a>
 #### 조직 IAM 계정 로그인 세션 설정 정보를 조회
@@ -2960,7 +2960,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   multiSessionsLimit | Integer| Y | 허용 멀티 세션 수  |
 |   sessionTimeoutMinutes | Integer| Y |  세션 타임아웃 |
 |   mobileSessionTimeoutMinutes | Integer| Y |  모바일 세션 타임아웃 |
-|   sessionType | String| Y | fixed/idle. 기본값은 fixed  |
+|   sessionType | String| Y | `fixed`/`idle`. 기본값은 `fixed`  |
 
 <a id="조직-IAM-계정-로그인-2차-인증에-대한-설정을-조회"></a>
 #### 조직 IAM 계정 로그인 2차 인증에 대한 설정을 조회
@@ -3026,16 +3026,16 @@ IP ACL 설정을 조회하는 API입니다.
 ###### Result
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   range | Integer| N | 조직/서비스 여부<br>organization(공통 설정), services(서비스별 설정)  |
-|   organizationMfaSetting | OrganizationMfaSetting| N | 조직 mfa 설정 정보<br>공통 설정 |
-|   serviceMfaSettings | ServiceMfaSettings| N | 서비스별 mfa 설정 정보  |
+|   range | Integer| N | 조직/서비스 구분<br>organization(공통 설정), services(서비스별 설정)  |
+|   organizationMfaSetting | OrganizationMfaSetting| N | 조직 MFA 설정 정보<br>공통 설정 |
+|   serviceMfaSettings | ServiceMfaSettings| N | 서비스별 MFA 설정 정보  |
 
 
 ###### OrganizationMfaSetting
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   type | String| N | mfa 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
+|   type | String| N | MFA 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
 |   bypassByIp | BypassByIp| N | 예외 IP  |
 
 ###### ServiceMfaSettings
@@ -3043,15 +3043,15 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   serviceId | Sting| N | 서비스 ID  |
-|   type | String| N | mfa 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
-|   bypassByIp | BypassByIp| N | 서비스 타입. none, totp, email |
+|   serviceId | String| N | 서비스 ID  |
+|   type | String| N | MFA 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
+|   bypassByIp | BypassByIp| N | 예외 IP |
 
 ###### BypassByIp
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   enable | Boolean| N | 활성화 여부<br>true(사용 중), false(사용 안함)  |
+|   enable | Boolean| N | 활성화 여부<br>`true`(사용 중), `false`(사용 안 함)  |
 |   ipList | List&lt;String>| N | 예외 IP 목록 |
 
 <a id="조직-IAM-계정-로그인-실패-보안-설정을-조회"></a>
@@ -3102,7 +3102,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   enable | Boolean| Y | 활성화 여부<br>true(사용 중), false(사용 안함)  |
+|   enable | Boolean| Y | 활성화 여부<br>`true`(사용 중), `false`(사용 안 함)  |
 |   loginFailCount | LoginFailCount| N | 로그인 실패 보안 설정 |
 
 
@@ -3186,22 +3186,22 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| ruleType | String | Y | 비밀번호 정책<br>default(기본 비밀번호 정책), custom(사용자 비밀번호 정책) |
+| ruleType | String | Y | 비밀번호 정책<br>`default`(기본 비밀번호 정책), `custom`(사용자 비밀번호 정책) |
 | passwordConstraints | PasswordConstraints | Y | 비밀번호 강도 |
 | passwordExpiry | PasswordExpiry | Y | 비밀번호 만료 |
 | limitPasswordReuse | LimitPasswordReuse | Y | 비밀번호 재사용 제한 |
-| applyRule | String | Y | 비밀번호 정책 적용 시점<br>onChangePassword(비밀번호 변경 시 적용), onLogin(즉시 적용) |
+| applyRule | String | Y | 비밀번호 정책 적용 시점<br>`onChangePassword`(비밀번호 변경 시 적용), `onLogin`(즉시 적용) |
 
 ###### PasswordConstraints
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| minLength | integer | Y | 비밀번호 최소 길이 |
-| mustNotIncludeIllegalSequence | boolean | Y | 영문자 1개 이상<br>true(설정), false(설정 안 함) |
-| mustIncludeUpperCase | boolean | Y | 영문 대문자 1개 이상<br>true(설정), false(설정 안 함) |
-| mustIncludeLowerCase | boolean | Y | 영문 소문자 1개 이상<br>true(설정), false(설정 안 함) |
-| mustIncludeNumberCase | boolean | Y | 숫자 1개 이상<br>true(설정), false(설정 안 함) |
-| mustIncludeSpecialCase | boolean | Y | 특수 문자 1개 이상<br>true(설정), false(설정 안 함) |
+| minLength | Integer | Y | 비밀번호 최소 길이 |
+| mustNotIncludeIllegalSequence | Boolean | Y | 영문자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeUpperCase | Boolean | Y | 영문 대문자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeLowerCase | Boolean | Y | 영문 소문자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeNumberCase | Boolean | Y | 숫자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeSpecialCase | Boolean | Y | 특수 문자 1개 이상<br>true(설정), false(설정 안 함) |
 
 ###### PasswordExpiry
 
@@ -3321,8 +3321,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   rangeFrom | BigDecimal| Y | 단가에 속하게 되는 사용량 범위 시작(미포함)  |
 |   rangeTo | BigDecimal| Y | 단가에 속하게 되는 사용량 범위 종료(포함)  |
 |   seq | Long| Y | 일련번호  |
-|   slidingCalculationTypeCode | String| Y | 슬라이딩 요금 계산 유형<br>NONE, SECTION_SUM, SECTION_SELECTED |
-|   useFixPriceYn | String| Y | 고정 금액  여부(Y: 고정 금액 , N: 단가 계산)<br>Y: 범위에 들어올 경우 price가 금액이 됨<br>N:(사용량 x 단가)가 금액이 됨 |
+|   slidingCalculationTypeCode | String| Y | 슬라이딩 요금 계산 유형<br>`NONE`, `SECTION_SUM`, `SECTION_SELECTED` |
+|   useFixPriceYn | String| Y | 고정 금액 여부(Y: 고정 금액, N: 단가 계산)<br>Y: 범위에 들어올 경우 price가 금액이 됨<br>N:(사용량 x 단가)가 금액이 됨 |
 
 <a id="종량제에-등록된-서비스-목록-조회"></a>
 #### 종량제에 등록된 서비스 목록 조회
@@ -3402,9 +3402,9 @@ IP ACL 설정을 조회하는 API입니다.
 |   categoryMain | String| Y | 메인 카테고리  |
 |   categorySub | String| Y | 서브 카테고리  |
 |   chargingTypeId | String| Y | 과금 유형 ID  |
-|   convertUsageTypeCode | String| Y | 사용량 변환 타입 코드  NONE, HOUR_AVERAGE, DAY_AVERAGE |
+|   convertUsageTypeCode | String| Y | 사용량 변환 타입 코드  `NONE`, `HOUR_AVERAGE`, `DAY_AVERAGE` |
 |   counterName | String| Y | 카운터  |
-|   counterTypeCode | String| Y | 사용량의 합산에 대한 방법<br><ul><li>DELTA: 증가값(HOURLY_SUM)</li><li>GAUGE: 시간 최대값의 합(HOURLY_MAX로 변경 예정)</li><li>HOURLY_LATEST: 1시간 동안 수집된 데이터 중 가장 나중에 수집된 미터링 데이터의 합</li><li>DAILY_MAX: 일 최대값의 합</li><li>MONTHLY_MAX: 월 최대값</li><li>STATUS: 사용 현황</li><ul> |
+|   counterTypeCode | String| Y | 사용량 합산 방법<br><ul><li>DELTA: 증가값(HOURLY_SUM)</li><li>GAUGE: 시간 최대값의 합(HOURLY_MAX로 변경 예정)</li><li>HOURLY_LATEST: 1시간 동안 수집된 데이터 중 가장 나중에 수집된 미터링 데이터의 합</li><li>DAILY_MAX: 일 최대값의 합</li><li>MONTHLY_MAX: 월 최대값</li><li>STATUS: 사용 현황</li><ul> |
 |   description | String| N | 카운터 설명  |
 |   displayOrder | Integer| Y | 노출 순서  |
 |   marketPlaceMandatoryUsePeriod | Integer| N | 마켓플레이스 필수 사용 기간  |
@@ -3412,7 +3412,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   minUsage | BigDecimal| Y | 최소 사용량  |
 |   parentCounterName | String| Y | 부모 카운터 이름  |
 |   productId | String| Y | 서비스 아이디  |
-|   productMetadataStatusCode | String| Y | 카운터 상태 코드  STABLE, CLOSED |
+|   productMetadataStatusCode | String| Y | 카운터 상태 코드  `STABLE`, `CLOSED` |
 |   productUiId | String| Y | 홈페이지 카테고리/홈페이지 서비스 식별 ID  |
 |   regionTypeCode | String| Y | 카운터네임이 소속된 리전 코드<br><ul><li>GLOBAL: Global 서비스에 속한 카운터네임</li><li>NONE: GLOBAL과 동일한 의미</li><li>KR1: KR1 리전에 속한 카운터네임</li><li>KR2: KR2 리전에 속한 카운터네임</li><li>...: 해당 리전에 속한 카운터네임</li><ul>  |
 |   unit | Long| Y | 정산 단위  |
@@ -4130,7 +4130,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   secretAccessKey | String| Y   | 비밀키 |
+|   secretAccessKey | String| Y   | 비밀 키 |
 
 <a id="User-Access-Key-ID-상태-수정"></a>
 #### User Access Key ID 상태 수정
@@ -4147,7 +4147,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | user-access-key-id | String| Y | User Acess Key ID | 
+|  Path | user-access-key-id | String| Y | User Access Key ID | 
 | Request Body | request | UpdateUserAccessKeyStatusRequest| Y | 요청 |
 
 
@@ -4518,7 +4518,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   name | String| N | 이름  |
 |   emailAddress | String| N | 멤버 이메일 주소  |
 |   maskingEmail | String| N | 멤버의 마스킹된 이메일  |
-|   mobilePhone | String| N | 전화 번호  |
+|   mobilePhone | String| N | 전화번호  |
 |   relationDateTime | Date| N | 멤버 추가 시간  |
 |   joinYmdt | Date| N | 가입 일시  |
 |   recentLoginYmdt | Date| N | 최근 로그인 일시  |
@@ -4599,7 +4599,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 |   name | String| N | 이름  |
 |   emailAddress | String| N | 멤버 이메일 주소  |
 |   maskingEmail | String| N | 멤버의 마스킹된 이메일  |
-|   mobilePhone | String| N | 전화 번호  |
+|   mobilePhone | String| N | 전화번호  |
 |   relationDateTime | Date| N | 멤버 추가 시간  |
 |   joinYmdt | Date| N | 가입 일시  |
 |   recentLoginYmdt | Date| N | 최근 로그인 일시  |
