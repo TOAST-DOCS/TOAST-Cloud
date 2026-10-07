@@ -660,7 +660,7 @@ The applicable Notification Recipient Group can be used when configuring notific
 ### Create Notification Receiver Group { #create-notification-receiver-group }
 
 1. To create a **notification receiver group**, click **Notification Receiver Group Management** in the organization or project menu.
-2. Click ** + Add Notification Receiver Group**.
+2. Click **+ Add Notification Receiver Group**.
 3. In **Basic information**, enter a name and description for the group receiving notifications.
     - In **Notifications Receiver Group Name**, enter up to 40 characters of Korean, alphanumeric characters, numbers, and special characters
     - In **Description**, enter up to 100 characters without character limit to distinguish the notification receiver group name.

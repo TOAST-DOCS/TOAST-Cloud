@@ -103,8 +103,8 @@ https://oauth.api.nhncloudservice.com/
 <a id="request-jwt-token-issuance"></a>
 ### JWTタイプトークンの発行リクエスト { #request-jwt-token-issuance }
 
-!!! tip 「ポイント」
-現在、EasyQueueサービスのみJWTトークンを使用できます。
+!!! tip "ポイント"
+    現在、EasyQueueサービスのみJWTトークンを使用できます。
 
 * リクエスト
 
@@ -329,7 +329,7 @@ public class Oauth2Config {
 ## User Access Keyトークンの失効リクエスト { #request-user-access-key-token-revocation }
 > `POST /oauth2/token/revoke`
 
-!!! tip 「ポイント」
+!!! tip "ポイント"
     JWTトークンはトークンの失効をサポートしていません。
 
 * リクエスト
@@ -411,8 +411,8 @@ X-NHN-Authorization: Bearer {Access Token}
 ## JWT Public Key照会 { #get-jwt-public-key }
 > `GET /oauth2/jwks`
 
-!!! tip 「ポイント」
-JWTトークンの署名を検証するためのPublic Key一覧を照会します。
+!!! tip "ポイント"
+    JWTトークンの署名を検証するためのPublic Key一覧を照会します。
 
 * レスポンス
 
