@@ -19,7 +19,7 @@ Public API를 호출할 때는 아래 Request Header를 반드시 포함해야 �
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Header |  x-nhn-authorization | String| Yes | 사용자가 발급받은 Bearer 타입 토큰 |
+| Header |  x-nhn-authorization | String| Y | 사용자가 발급받은 Bearer 타입 토큰 |
 
 <a id="응답"></a>
 
@@ -37,9 +37,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   isSuccessful | Boolean | No | 성공 여부  |
-|   resultCode | Integer| No | 결과 코드. 성공 시 0이 반환되며, 실패 시 오류 코드 반환  |
-|   resultMessage | String| No | 결과 메시지  |
+|   isSuccessful | Boolean | N | 성공 여부  |
+|   resultCode | Integer| N | 결과 코드. 성공 시 0이 반환되며, 실패 시 오류 코드 반환  |
+|   resultMessage | String| N | 결과 메시지  |
 
 #### 공통 타입
 <a id="공통-타입"></a>
@@ -119,6 +119,10 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#조직-IP-ACL-목록-조회) | 조직 IP ACL 목록 조회 |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#종량제에-등록된-서비스-가격-조회) | 종량제에 등록된 서비스 가격 조회 |
 | GET |[/v1/billing/contracts/basic/products](#종량제에-등록된-서비스-목록-조회) | 종량제에 등록된 서비스 목록 조회 |
+| GET |[/v1/billing/members/payment-statements](#청구서별-이용-금액-조회) | 청구서별 이용 금액 조회 |
+| GET |[/v1/billing/members/payment-statements/charge-summaries](#빌링-그룹-조직-프로젝트별-이용-금액-조회) | 빌링 그룹, 조직, 프로젝트별 이용 금액 조회 |
+| GET |[/v1/billing/members/payment-statements/usages](#상세-내역-이용-금액-조회) | 상세 내역 이용 금액 조회 |
+| GET |[/v1/billing/members/payment-statements/dimensions](#이용-금액-검색-조건-값-목록-조회) | 이용 금액 검색 조건 값 목록 조회 |
 | GET | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-통합-Appkey-조회) | 프로젝트 통합 Appkey 조회 |
 | GET |[/v1/authentications/user-access-keys](#User-Access-Key-ID-목록-조회) | User Access Key ID 목록 조회 |
 | POST | [/v1/authentications/projects/{project-id}/project-appkeys](#프로젝트-통합-Appkey-등록) | 프로젝트 통합 Appkey 등록 |
@@ -159,8 +163,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 멤버를 추가할 프로젝트 ID | 
-| Request Body | request | CreateMemberRequest| Yes | 요청 |
+|  Path |project-id | String| Y | 멤버를 추가할 프로젝트 ID | 
+| Request Body | request | CreateMemberRequest| Y | 요청 |
 
 
 
@@ -174,10 +178,10 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |  
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List&lt;UserAssignRoleProtocol>| Yes | 사용자에게 할당할 역할 목록  |
-|   memberUuid | String| No | 추가할 멤버의 UUID  |
-|   email | String| No | 추가할 멤버의 이메일  |
-|   userCode | String| No | 추가할 IAM 계정 ID  |
+|   assignRoles | List&lt;UserAssignRoleProtocol>| Y | 사용자에게 할당할 역할 목록  |
+|   memberUuid | String| N | 추가할 멤버의 UUID  |
+|   email | String| N | 추가할 멤버의 이메일  |
+|   userCode | String| N | 추가할 IAM 계정 ID  |
 
 
 ###### UserAssignRoleProtocol
@@ -185,8 +189,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleId | String| Yes | 역할 ID  |
-|   conditions | List&lt;AssignAttributeConditionProtocol>| No | 역할 조건 속성  |
+|   roleId | String| Y | 역할 ID  |
+|   conditions | List&lt;AssignAttributeConditionProtocol>| N | 역할 조건 속성  |
 
 
 ###### AssignAttributeConditionProtocol
@@ -194,9 +198,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   attributeId | String| Yes | 조건 속성 ID  |
-|   attributeOperatorTypeCode | String| Yes | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
-|   attributeValues | List&lt;String>| Yes | 조건 속성 값  |
+|   attributeId | String| Y | 조건 속성 ID  |
+|   attributeOperatorTypeCode | String| Y | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List&lt;String>| Y | 조건 속성 값  |
 
 
 ##### 응답 본문
@@ -216,7 +220,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입           | 필수 | 설명 |   
 |------------ |--------------| ------- | ------------ |
-|   header | [공통 응답](#응답) | Yes |
+|   header | [공통 응답](#응답) | Y |
 
 
 <a id="프로젝트-추가"></a>
@@ -235,8 +239,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path |org-id | String| Yes | 프로젝트를 추가할 조직 ID | 
-| Request Body | request | CreateProjectRequest| Yes | 요청 |
+| Path |org-id | String| Y | 프로젝트를 추가할 조직 ID | 
+| Request Body | request | CreateProjectRequest| Y | 요청 |
 
 
 ###### CreateProjectRequest
@@ -244,8 +248,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------ | ------------ |
-|   description | String| No | 프로젝트 설명(최대 100자) |
-|   projectName | String| Yes| 프로젝트 이름(최대 40자) |
+|   description | String| N | 프로젝트 설명(최대 100자) |
+|   projectName | String| Y| 프로젝트 이름(최대 40자) |
 
 
 ##### 응답 본문
@@ -271,14 +275,14 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes  |
-|   regDateTime | Date| Yes   | 프로젝트 생성 일시 | 
-|   description | String| No   | 프로젝트 설명 | 
-|   ownerId | String| Yes   | 프로젝트 소유자 멤버 ID | 
-|   projectName | String| Yes   | 프로젝트 이름 | 
-|   projectId | String| Yes   | 프로젝트 ID | 
-|   orgId | String| Yes   | 조직 ID | 
-|   projectStatusCode | String| Yes   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> | 
+|   header | [공통 응답](#응답)| Y  |
+|   regDateTime | Date| Y   | 프로젝트 생성 일시 | 
+|   description | String| N   | 프로젝트 설명 | 
+|   ownerId | String| Y   | 프로젝트 소유자 멤버 ID | 
+|   projectName | String| Y   | 프로젝트 이름 | 
+|   projectId | String| Y   | 프로젝트 ID | 
+|   orgId | String| Y   | 조직 ID | 
+|   projectStatusCode | String| Y   | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 결제가 완료되어 정상적으로 종료된 상태</li><li>BLOCKED: 관리자가 사용을 금지한 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 요금이 지불되지 않은 상태</li></ul> | 
 
 
 <a id="프로젝트-멤버-단건-삭제"></a>
@@ -297,8 +301,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Path |target-uuid | String| Yes | 삭제 대상 멤버 UUID | 
+|  Path |project-id | String| Y | 프로젝트 ID | 
+|  Path |target-uuid | String| Y | 삭제 대상 멤버 UUID | 
 
 
 
@@ -320,7 +324,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [공통 응답](#응답)| Y |
 
 
 
@@ -342,7 +346,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 삭제할 프로젝트 ID | 
+|  Path |project-id | String| Y | 삭제할 프로젝트 ID | 
 
 
 
@@ -366,7 +370,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [공통 응답](#응답)| Y |
 
 
 
@@ -385,8 +389,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 서비스를 종료하려는 프로젝트 ID | 
-|  Path |product-id | String| Yes | 서비스 ID | 
+|  Path |project-id | String| Y | 서비스를 종료하려는 프로젝트 ID | 
+|  Path |product-id | String| Y | 서비스 ID | 
 
 
 
@@ -414,17 +418,17 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   childProducts | List&lt;ChildProduct>| No   | 해당 서비스의 하위 서비스 정보로, 하위 서비스가 없으면 포함하지 않음.<br>하위 서비스를 먼저 비활성화하고 해당 서비스를 비활성화해야 함.|
+|   header | [공통 응답](#응답)| Y |
+|   childProducts | List&lt;ChildProduct>| N   | 해당 서비스의 하위 서비스 정보로, 하위 서비스가 없으면 포함하지 않음.<br>하위 서비스를 먼저 비활성화한 후 해당 서비스를 비활성화해야 함.|
 
 ###### ChildProduct
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   productId | String| Yes  |  하위 서비스 ID | 
-|   productName | String| Yes  | 하위 서비스 이름 |
-|   statusCode | String| Yes |   서비스 상태(STABLE, CLOSED) |
+|   productId | String| Y  |  하위 서비스 ID | 
+|   productName | String| Y  | 하위 서비스 이름 |
+|   statusCode | String| Y |   서비스 상태(STABLE, CLOSED) |
 
 
 <a id="프로젝트-서비스-이용"></a>
@@ -443,8 +447,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |product-id | String| Yes | 서비스 ID | 
-|  Path |project-id | String| Yes | 서비스를 이용하려는 프로젝트 ID | 
+|  Path |product-id | String| Y | 서비스 ID | 
+|  Path |project-id | String| Y | 서비스를 이용하려는 프로젝트 ID | 
 
 
 ##### 응답 본문
@@ -471,10 +475,10 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 앱키 정보|
-|   parentProduct | ParentProduct| No | 상위 서비스 정보가 있으면 해당 정보를 표시하며, 상위 서비스가 없으면 포함하지 않음 |
-|   secretKey | String| No| 해당 프로젝트에서 이용 중인 서비스에 대한 비밀 키 정보<br> 비밀 키를 이용하는 서비스에서만 제공 |
+|   header | [공통 응답](#응답)| Y |
+|   appKey | String| Y | 해당 프로젝트에서 이용 중인 서비스의 앱키 정보|
+|   parentProduct | ParentProduct| N | 상위 서비스 정보가 있으면 해당 정보를 표시하며, 상위 서비스가 없으면 포함하지 않음 |
+|   secretKey | String| N| 해당 프로젝트에서 이용 중인 서비스의 비밀 키 정보<br> 비밀 키를 이용하는 서비스에서만 제공 |
 
 
 ###### ParentProduct
@@ -482,9 +486,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   productId | String| Yes  | 서비스 ID |
-|   productName | String| Yes  | 서비스 이름 |
-|   statusCode | String| Yes | 서비스 상태(STABLE, CLOSED) |
+|   productId | String| Y  | 서비스 ID |
+|   productName | String| Y  | 서비스 이름 |
+|   statusCode | String| Y | 서비스 상태(STABLE, CLOSED) |
 
 
 
@@ -506,11 +510,11 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID |
-|  Query |categoryTypeCodes | List&lt;String> | No | 역할/권한/역할 그룹 카테고리 구분(ROLE, PERMISSION, ROLE_GROUP) |
-|  Query |roleNameLike | String| No | 역할/권한/역할 그룹명 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 | 
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |org-id | String| Y | 조직 ID |
+|  Query |categoryTypeCodes | List&lt;String> | N | 역할/권한/역할 그룹 카테고리 구분(ROLE, PERMISSION, ROLE_GROUP) |
+|  Query |roleNameLike | String| N | 역할/권한/역할 그룹명 |
+|  Query |limit | Integer| N | 페이지당 표시 건수, 기본값 20 | 
+|  Query |page | Integer| N | 대상 페이지, 기본값 1 |
 
 
 
@@ -542,21 +546,21 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   roles | List&lt;RoleProtocol>| Yes  | 역할 목록 |
-|   totalCount | Integer| Yes  | 총 개수 |
+|   header | [공통 응답](#응답)| Y |
+|   roles | List&lt;RoleProtocol>| Y  | 역할 목록 |
+|   totalCount | Integer| Y  | 총 개수 |
 
 ###### RoleProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   categoryKey | String| Yes | 역할/권한 카테고리 분류 키<br><ul><li>RoleGroup: 프로젝트 역할 그룹</li><li>OrgRoleGroup: 조직 역할 그룹</li><li>OrgRole: 조직 역할</li><li>ProjectRole: 프로젝트 역할</li><li>BillingRole: Billing 관련 역할</li><li>OrgServiceRole: 조직 서비스 역할</li><li>ProjectServiceRole: 프로젝트 서비스 역할</li><li>SystemRole: 시스템 생성 역할</li></ul>  |
-|   categoryTypeCode | String| Yes | 역할 그룹/역할/권한 구분 코드(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
-|   description | String| Yes | 역할/권한 설명  |
-|   roleCategory | String| Yes | 역할/권한 카테고리 대분류(ORG_ROLE, ORG_ROLE_GROUP, ORG_SERVICE_ROLE, PROJECT_ROLE, PROJECT_ROLE_GROUP, PROJECT_SERVICE_ROLE, SYSTEM_ROLE) |
-|   roleId | String| Yes | 역할/권한 ID  |
-|   roleName | String| Yes | 역할/권한 이름  |
+|   categoryKey | String| Y | 역할/권한 카테고리 분류 키<br><ul><li>RoleGroup: 프로젝트 역할 그룹</li><li>OrgRoleGroup: 조직 역할 그룹</li><li>OrgRole: 조직 역할</li><li>ProjectRole: 프로젝트 역할</li><li>BillingRole: Billing 관련 역할</li><li>OrgServiceRole: 조직 서비스 역할</li><li>ProjectServiceRole: 프로젝트 서비스 역할</li><li>SystemRole: 시스템 생성 역할</li></ul>  |
+|   categoryTypeCode | String| Y | 역할 그룹/역할/권한 구분 코드(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
+|   description | String| Y | 역할/권한 설명  |
+|   roleCategory | String| Y | 역할/권한 카테고리 대분류(ORG_ROLE, ORG_ROLE_GROUP, ORG_SERVICE_ROLE, PROJECT_ROLE, PROJECT_ROLE_GROUP, PROJECT_SERVICE_ROLE, SYSTEM_ROLE) |
+|   roleId | String| Y | 역할/권한 ID  |
+|   roleName | String| Y | 역할/권한 이름  |
 
 
 <a id="프로젝트-역할-목록-조회"></a>
@@ -574,11 +578,11 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Query |categoryTypeCodes | List&lt;String> | No | 역할/권한/역할 그룹 카테고리 구분(ROLE, PERMISSION, ROLE_GROUP) |
-|  Query |roleNameLike | String| No | 역할/권한/역할 그룹명 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 | 
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |project-id | String| Y | 프로젝트 ID | 
+|  Query |categoryTypeCodes | List&lt;String> | N | 역할/권한/역할 그룹 카테고리 구분(ROLE, PERMISSION, ROLE_GROUP) |
+|  Query |roleNameLike | String| N | 역할/권한/역할 그룹명 |
+|  Query |limit | Integer| N | 페이지당 표시 건수, 기본값 20 | 
+|  Query |page | Integer| N | 대상 페이지, 기본값 1 |
 
 
 ##### 응답 본문
@@ -608,9 +612,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   roles | List&lt;[RoleProtocol](#roleprotocol)>| Yes  | 역할 목록 |
-|   totalCount | Integer| Yes  | 총 개수 |
+|   header | [공통 응답](#응답)| Y |
+|   roles | List&lt;[RoleProtocol](#roleprotocol)>| Y  | 역할 목록 |
+|   totalCount | Integer| Y  | 총 개수 |
 
 <a id="조직-도메인-검색"></a>
 #### 조직 도메인 검색
@@ -628,7 +632,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회할 조직의 ID | 
+|  Path |org-id | String| Y | 조회할 조직의 ID | 
 
 
 
@@ -656,8 +660,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   domainList | List&lt;OrgDomainProtocol>| Yes  |
+|   header | [공통 응답](#응답)| Y |
+|   domainList | List&lt;OrgDomainProtocol>| Y  |
 
 
 ###### OrgDomainProtocol
@@ -665,8 +669,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   orgDomainId | String| Yes | 조직 도메인 ID |
-|   orgDomainName | String| Yes | 조직 도메인 이름 |
+|   orgDomainId | String| Y | 조직 도메인 ID |
+|   orgDomainName | String| Y | 조직 도메인 이름 |
 
 
 <a id="조직-멤버-단건-조회"></a>
@@ -685,8 +689,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 멤버를 조회할 조직 ID | 
-|  Path |member-uuid | String| Yes |  조회할 멤버 UUID | 
+|  Path |org-id | String| Y | 멤버를 조회할 조직 ID | 
+|  Path |member-uuid | String| Y |  조회할 멤버 UUID | 
 
 
 
@@ -740,39 +744,39 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   orgMember | OrgMemberRoleBundleProtocol| No  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
+|   header | [공통 응답](#응답)| Y |
+|   orgMember | OrgMemberRoleBundleProtocol| N  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
 
 ###### OrgMemberRoleBundleProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   email | String| Yes | 멤버 이메일 |
-|   id | String| No | 멤버 ID(IAM 계정만 제공) |
-|   inviteStatusCode | String| Yes |   COMPLETE, EXPIRE, UNKNOWN, WAIT |
-|   joinYmdt | Date| Yes | 조직 멤버 등록 일시 |
-|   memberName | String| Yes|   멤버 이름 |
-|   memberTypeCode | String| Yes| 계정 구분(TOAST_CLOUD: NHN Cloud 계정, IAM: IAM 계정) |
-|   memberUuid | String| Yes| 멤버의 UUID |
-|   recentLoginYmdt | Date| Yes| 마지막 로그인 일시 |
-|   recentPasswordModifyYmdt | Date| No| 마지막 비밀번호 변경 일시 |
-|   roleCode | String| No| 역할 ID |
-|   roles | List&lt;RoleBundleProtocol>| No | 연관 역할 목록(조건 속성 포함)  |
-|   secondFactorCertificationYn | String| No| 2단계 로그인 설정 여부(NHN Cloud 계정만 제공) |
+|   email | String| Y | 멤버 이메일 |
+|   id | String| N | 멤버 ID(IAM 계정만 제공) |
+|   inviteStatusCode | String| Y |   COMPLETE, EXPIRE, UNKNOWN, WAIT |
+|   joinYmdt | Date| Y | 조직 멤버 등록 일시 |
+|   memberName | String| Y|   멤버 이름 |
+|   memberTypeCode | String| Y| 계정 구분(TOAST_CLOUD: NHN Cloud 계정, IAM: IAM 계정) |
+|   memberUuid | String| Y| 멤버의 UUID |
+|   recentLoginYmdt | Date| Y| 마지막 로그인 일시 |
+|   recentPasswordModifyYmdt | Date| N| 마지막 비밀번호 변경 일시 |
+|   roleCode | String| N| 역할 ID |
+|   roles | List&lt;RoleBundleProtocol>| N | 연관 역할 목록(조건 속성 포함)  |
+|   secondFactorCertificationYn | String| N| 2단계 로그인 설정 여부(NHN Cloud 계정만 제공) |
 
 
 ###### RoleBundleProtocol
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   roleId | String| Yes |  역할 ID |
-|   roleName | String| Yes |  역할 이름 |
-|   description | String| No |  역할 설명 |
-|   categoryKey | String| Yes | 역할/권한 카테고리 분류 키<br><ul><li>RoleGroup: 프로젝트 역할 그룹</li><li>OrgRoleGroup: 조직 역할 그룹</li><li>OrgRole: 조직 역할</li><li>ProjectRole: 프로젝트 역할</li><li>BillingRole: Billing 관련 역할</li><li>OrgServiceRole: 조직 서비스 역할</li><li>ProjectServiceRole: 프로젝트 서비스 역할</li><li>SystemRole: 시스템 생성 역할</li></ul>  |
-|   categoryTypeCode | String| Yes | 역할 그룹/역할/권한 구분 코드(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
-|   conditions | List&lt;AttributeConditionProtocol>| No | 조건 속성 목록 |
-|   roleApplyPolicyCode | String| Yes | 역할 사용 여부  ALLOW, DENY |
-|   regDateTime | Date| Yes |  역할 생성 일시 |
+|   roleId | String| Y |  역할 ID |
+|   roleName | String| Y |  역할 이름 |
+|   description | String| N |  역할 설명 |
+|   categoryKey | String| Y | 역할/권한 카테고리 분류 키<br><ul><li>RoleGroup: 프로젝트 역할 그룹</li><li>OrgRoleGroup: 조직 역할 그룹</li><li>OrgRole: 조직 역할</li><li>ProjectRole: 프로젝트 역할</li><li>BillingRole: Billing 관련 역할</li><li>OrgServiceRole: 조직 서비스 역할</li><li>ProjectServiceRole: 프로젝트 서비스 역할</li><li>SystemRole: 시스템 생성 역할</li></ul>  |
+|   categoryTypeCode | String| Y | 역할 그룹/역할/권한 구분 코드(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
+|   conditions | List&lt;AttributeConditionProtocol>| N | 조건 속성 목록 |
+|   roleApplyPolicyCode | String| Y | 역할 사용 여부  ALLOW, DENY |
+|   regDateTime | Date| Y |  역할 생성 일시 |
 
 
 
@@ -781,12 +785,12 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   attributeDataTypeCode | String| Yes |  조건 속성 데이터 타입(BOOLEAN, DATETIME, DAY_OF_WEEK, IPADDRESS, NUMERIC, STRING, TIME) |
-|   attributeDescription | String| No | 조건 속성 설명 |
-|   attributeId | String| Yes | 조건 속성 ID |
-|   attributeName | String| Yes | 조건 속성 이름 |
-|   attributeOperatorTypeCode | String| Yes | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
-|   attributeValues | List&lt;String>| Yes| 조건 속성 값 |
+|   attributeDataTypeCode | String| Y |  조건 속성 데이터 타입(BOOLEAN, DATETIME, DAY_OF_WEEK, IPADDRESS, NUMERIC, STRING, TIME) |
+|   attributeDescription | String| N | 조건 속성 설명 |
+|   attributeId | String| Y | 조건 속성 ID |
+|   attributeName | String| Y | 조건 속성 이름 |
+|   attributeOperatorTypeCode | String| Y | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
+|   attributeValues | List&lt;String>| Y| 조건 속성 값 |
 
 
 
@@ -806,8 +810,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-| Request Body | request | SearchOrgMembersRequest| Yes | 요청 |
+|  Path |org-id | String| Y | 조직 ID | 
+| Request Body | request | SearchOrgMembersRequest| Y | 요청 |
 
 
 ###### SearchOrgMembersRequest
@@ -815,17 +819,17 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   memberStatusCodes | List&lt;String>| No | 조회할 멤버의 상태<br><ul><li>STABLE: 초대 완료</li><li>INVITED: 초대 중</li><li>BLOCKED</li><li>NOT_EXIST</li><li>WITHDRAW</li></ul> |
-|   roleIds | Set&lt;String>| No  | 멤버들이 부여받은 역할 ID들 |
-|   paging | PagingBean| No  |
+|   memberStatusCodes | List&lt;String>| N | 조회할 멤버의 상태<br><ul><li>STABLE: 초대 완료</li><li>INVITED: 초대 중</li><li>BLOCKED</li><li>NOT_EXIST</li><li>WITHDRAW</li></ul> |
+|   roleIds | Set&lt;String>| N  | 멤버들이 부여받은 역할 ID들 |
+|   paging | PagingBean| N  |
 
 ###### PagingBean
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 페이지당 표시 건수, 기본값 20  |
-|   page | Integer| No | 대상 페이지, 기본값 1  |
+|   limit | Integer| N | 페이지당 표시 건수, 기본값 20  |
+|   page | Integer| N | 대상 페이지, 기본값 1  |
 
 
 
@@ -864,34 +868,34 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   orgMembers | List&lt;OrgMemberWithInviteMemberrotocol>| Yes | 조직 멤버 목록 |
-|   paging | PagingResponse| Yes | 페이지 정보 |
+|   header | [공통 응답](#응답)| Y |
+|   orgMembers | List&lt;OrgMemberWithInviteMemberProtocol>| Y | 조직 멤버 목록 |
+|   paging | PagingResponse| Y | 페이지 정보 |
 
 ###### OrgMemberWithInviteMemberProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   email | String| Yes | 멤버의 이메일 주소 |
-|   inviteStatusCode | String| No | 멤버의 초대 상태(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   joinYmdt | Date| Yes | 멤버 가입 일시 |
-|   maskingEmail | String| Yes | 멤버의 마스킹된 이메일  |
-|   memberName | String| Yes| 멤버의 이름 |
-|   memberTypeCode | String| Yes| 멤버 구분(TOAST_CLOUD: NHN Cloud 계정, IAM: IAM 계정) |
-|   memberUuid | String| No| 멤버의 UUID<br>초대 중인 경우 값을 반환하지 않음 |
-|   recentLoginYmdt | Date| Yes| 마지막 로그인 일시 |
-|   recentPasswordModifyYmdt | Date| No| 마지막 비밀번호 변경 일시 |
-|   secondFactorCertificationYn | String| No|  2단계 로그인 설정 여부(NHN Cloud 멤버만 제공) |
+|   email | String| Y | 멤버의 이메일 주소 |
+|   inviteStatusCode | String| N | 멤버의 초대 상태(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   joinYmdt | Date| Y | 멤버 가입 일시 |
+|   maskingEmail | String| Y | 멤버의 마스킹된 이메일  |
+|   memberName | String| Y| 멤버의 이름 |
+|   memberTypeCode | String| Y| 멤버 구분(TOAST_CLOUD: NHN Cloud 계정, IAM: IAM 계정) |
+|   memberUuid | String| N| 멤버의 UUID<br>초대 중인 경우 값을 반환하지 않음 |
+|   recentLoginYmdt | Date| Y| 마지막 로그인 일시 |
+|   recentPasswordModifyYmdt | Date| N| 마지막 비밀번호 변경 일시 |
+|   secondFactorCertificationYn | String| N|  2단계 로그인 설정 여부(NHN Cloud 멤버만 제공) |
 
 ###### PagingResponse
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 페이지당 표시 건수, 기본값 20  |
-|   page | Integer| No | 대상 페이지, 기본값 1  |
-|   totalCount | Long| Yes | 총 건수  |
+|   limit | Integer| N | 페이지당 표시 건수, 기본값 20  |
+|   page | Integer| N | 대상 페이지, 기본값 1  |
+|   totalCount | Long| Y | 총 건수  |
 
 
 
@@ -912,11 +916,11 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회 대상 조직 ID | 
-|  Query |descriptionLike | String| No | 설명 | 
-|  Query |roleGroupNameLike | String| No | 역할 그룹명 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |org-id | String| Y | 조회 대상 조직 ID | 
+|  Query |descriptionLike | String| N | 설명 | 
+|  Query |roleGroupNameLike | String| N | 역할 그룹 이름 |
+|  Query |limit | Integer| N | 페이지당 표시 건수, 기본값 20 |
+|  Query |page | Integer| N | 대상 페이지, 기본값 1 |
 
 
 
@@ -954,9 +958,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes  |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   roleGroups | List&lt;RoleGroupProtocol>| Yes | 프로젝트에서 사용 가능한 역할 그룹 목록  |
+|   header | [공통 응답](#응답)| Y  |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   roleGroups | List&lt;RoleGroupProtocol>| Y | 프로젝트에서 사용 가능한 역할 그룹 목록  |
 
 
 ###### RoleGroupProtocol
@@ -964,11 +968,11 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   description | String| No | 역할 그룹 설명 |
-|   regDateTime | Date| Yes | 역할 그룹 생성 일시 |
-|   roleGroupId | String| Yes | 역할 그룹 ID |
-|   roleGroupName | String| Yes| 역할 그룹의 이름 |
-|   roleGroupType | String| Yes | 역할 그룹의 종류<br><ul><li>ORG: 프로젝트 공통 역할 그룹</li><li>ORG_ROLE_GROUP: 조직 역할 그룹</li><li>PROJECT: 프로젝트 역할 그룹</li> |
+|   description | String| N | 역할 그룹 설명 |
+|   regDateTime | Date| Y | 역할 그룹 생성 일시 |
+|   roleGroupId | String| Y | 역할 그룹 ID |
+|   roleGroupName | String| Y| 역할 그룹의 이름 |
+|   roleGroupType | String| Y | 역할 그룹의 종류<br><ul><li>ORG: 프로젝트 공통 역할 그룹</li><li>ORG_ROLE_GROUP: 조직 역할 그룹</li><li>PROJECT: 프로젝트 역할 그룹</li> |
 
 
 <a id="서비스-계층-구조-조회"></a>
@@ -988,8 +992,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |productUiType | String| Yes | 서비스 UI 타입<br><ul><li>PROJECT: 프로젝트 서비스</li><li>ORG: 조직 서비스</li><li>MARKET_PLACE: 마켓플레이스 서비스</li></ul> |
-|  Query |orgId | String| No | 서비스 UI 타입이 ORG인 경우, 조직 ID를 반드시 입력해야 함 |
+|  Query |productUiType | String| Y | 서비스 UI 타입<br><ul><li>PROJECT: 프로젝트 서비스</li><li>ORG: 조직 서비스</li><li>MARKET_PLACE: 마켓플레이스 서비스</li></ul> |
+|  Query |orgId | String| Conditional | 서비스 UI 타입이 ORG인 경우, 조직 ID를 반드시 입력해야 함 |
 
 
 
@@ -1019,20 +1023,20 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   productUiList | List&lt;ProductUiHierarchyProtocol>| Yes  | 홈페이지 카테고리 서비스 UI 목록 |
+|   header | [공통 응답](#응답)| Y |
+|   productUiList | List&lt;ProductUiHierarchyProtocol>| Y  | 홈페이지 카테고리 서비스 UI 목록 |
 
 ###### ProductUiHierarchyProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   children | List&lt;ProductUiHierarchyProtocol>| No | 홈페이지 서비스 서비스 UI 목록 |
-|   manualLink | String| No|
-|   parentProductUiId | String| No| 서비스 UI 구분 |
-|   productId | String| No|
-|   productUiId | String| No| 서비스 UI 식별 키 |
-|   productUiName | String| No|
+|   children | List&lt;ProductUiHierarchyProtocol>| N | 홈페이지 서비스 UI 목록 |
+|   manualLink | String| N|
+|   parentProductUiId | String| N| 서비스 UI 구분 |
+|   productId | String| N|
+|   productUiId | String| N| 서비스 UI 식별 키 |
+|   productUiName | String| N|
 
 
 <a id="프로젝트에서-사용-중인-서비스-조회"></a>
@@ -1051,8 +1055,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회 대상 프로젝트 ID |
-|  Path |product-id | String| Yes | 조회 대상 서비스 ID |
+|  Path |project-id | String| Y | 조회 대상 프로젝트 ID |
+|  Path |product-id | String| Y | 조회 대상 서비스 ID |
 
 
 
@@ -1089,9 +1093,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   hasUpdateSecretKeyPermission | Boolean| Yes | 비밀 키 재발급 가능 권한  |
-|   product | ProjectProductRelationAndProductProtocol| Yes  | 지정한 서비스 ID에 대해서 프로젝트에서 사용 중인 서비스 정보를 반환, 오류 시 포함하지 않음 |
+|   header | [공통 응답](#응답)| Y |
+|   hasUpdateSecretKeyPermission | Boolean| Y | 비밀 키 재발급 가능 권한  |
+|   product | ProjectProductRelationAndProductProtocol| Y  | 지정한 서비스 ID로 프로젝트에서 사용 중인 서비스 정보를 반환, 오류 시 포함하지 않음 |
 
 
 ###### ProjectProductRelationAndProductProtocol
@@ -1099,18 +1103,18 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   appKey | String| Yes | 해당 프로젝트에서 이용 중인 서비스의 앱키 정보  |
-|   externalId | String| No | 테넌트 ID<br>서비스에 테넌트 ID가 존재하는 경우에만 제공 |
-|   productId | String| Yes | 서비스 ID  |
-|   productName | String| Yes | 서비스 이름  |
-|   productSecretKeyCode | String| No | 비밀 키 사용 여부<br>T: 사용함<br>나머지: 사용하지 않음(F, N) |
-|   productStatusCode | String| Yes | 서비스 상태(STABLE, CLOSED) |
-|   projectId | String| Yes | 해당 서비스를 사용하는 프로젝트 ID  |
-|   relationDate | Date| Yes | 서비스 이용 시작 일시  |
-|   secretKey | String| Yes | 서비스 SecretKey<br>secretKey를 이용하는 서비스에서만 제공  |
-|   statusCode | String| Yes | 해당 서비스의 이용 상태(STABLE, CLOSED) |
-|   updateDate | Date| No | 서비스 최종 수정 일시  |
-|   updateUuid | String| No | 서비스 앱키 수정자 UUID  |
+|   appKey | String| Y | 해당 프로젝트에서 이용 중인 서비스의 앱키 정보  |
+|   externalId | String| N | 테넌트 ID<br>서비스에 테넌트 ID가 존재하는 경우에만 제공 |
+|   productId | String| Y | 서비스 ID  |
+|   productName | String| Y | 서비스 이름  |
+|   productSecretKeyCode | String| N | 비밀 키 사용 여부<br>T: 사용함<br>나머지: 사용하지 않음(F, N) |
+|   productStatusCode | String| Y | 서비스 상태(STABLE, CLOSED) |
+|   projectId | String| Y | 해당 서비스를 사용하는 프로젝트 ID  |
+|   relationDate | Date| Y | 서비스 이용 시작 일시  |
+|   secretKey | String| Y | 서비스 SecretKey<br>secretKey를 이용하는 서비스에서만 제공  |
+|   statusCode | String| Y | 해당 서비스의 이용 상태(STABLE, CLOSED) |
+|   updateDate | Date| N | 서비스 최종 수정 일시  |
+|   updateUuid | String| N | 서비스 앱키 수정자 UUID  |
 
 
 <a id="프로젝트-멤버-단건-조회"></a>
@@ -1129,8 +1133,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 멤버를 조회할 프로젝트 ID |
-|  Path |member-uuid | String| Yes | 조회할 멤버 UUID |
+|  Path |project-id | String| Y | 멤버를 조회할 프로젝트 ID |
+|  Path |member-uuid | String| Y | 조회할 멤버 UUID |
 
 
 
@@ -1179,8 +1183,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   projectMember | ProjectMemberRoleBundleProtocol| Yes  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
+|   header | [공통 응답](#응답)| Y |
+|   projectMember | ProjectMemberRoleBundleProtocol| Y  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
 
 
 ###### ProjectMemberRoleBundleProtocol
@@ -1188,14 +1192,14 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   emailAddress | String| No | 멤버 이메일 주소  |
-|   maskingEmail | String| No | 멤버의 마스킹된 이메일  |
-|   memberName | String| No | 멤버 이름  |
-|   memberTypeCode | String| No | 멤버 구분(IAM, TOAST_CLOUD) |
-|   relationDateTime | Date| No | 멤버 추가 시간  |
-|   roles | List&lt;RoleBundleProtocol>| No | 연관 역할 목록(조건 속성 포함)  |
-|   statusCode | String| No | 초대 상태 코드(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   uuid | String| No | 멤버 UUID  |
+|   emailAddress | String| N | 멤버 이메일 주소  |
+|   maskingEmail | String| N | 멤버의 마스킹된 이메일  |
+|   memberName | String| N | 멤버 이름  |
+|   memberTypeCode | String| N | 멤버 구분(IAM, TOAST_CLOUD) |
+|   relationDateTime | Date| N | 멤버 추가 시간  |
+|   roles | List&lt;RoleBundleProtocol>| N | 연관 역할 목록(조건 속성 포함)  |
+|   statusCode | String| N | 초대 상태 코드(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   uuid | String| N | 멤버 UUID  |
 
 
 [RoleBundleProtocol](#rolebundleprotocol)
@@ -1217,8 +1221,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회할 프로젝트 ID | 
-| Request Body | request | SearchProjectMembersRequest| Yes | 요청 |
+|  Path |project-id | String| Y | 조회할 프로젝트 ID | 
+| Request Body | request | SearchProjectMembersRequest| Y | 요청 |
 
 
 
@@ -1227,9 +1231,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   memberStatusCodes | List&lt;String>| No | 프로젝트 멤버 상태 코드(INVITED, STABLE) |
-|   roleIds | List&lt;String>| No | 역할 ID 목록  |
-|   paging | [PagingBean](#pagingbean) | No   |
+|   memberStatusCodes | List&lt;String>| N | 프로젝트 멤버 상태 코드(INVITED, STABLE) |
+|   roleIds | List&lt;String>| N | 역할 ID 목록  |
+|   paging | [PagingBean](#pagingbean) | N   |
 
 
 
@@ -1266,9 +1270,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   projectMembers | List&lt;ProjectMemberProtocol>| Yes | 프로젝트 멤버  |
+|   header | [공통 응답](#응답)| Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   projectMembers | List&lt;ProjectMemberProtocol>| Y | 프로젝트 멤버  |
 
 
 
@@ -1277,13 +1281,13 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   emailAddress | String| No | 멤버 이메일 주소  |
-|   maskingEmail | String| No | 멤버의 마스킹된 이메일  |
-|   memberName | String| No | 멤버 이름  |
-|   memberTypeCode | String| No | 멤버 구분 |
-|   relationDateTime | Date| No | 멤버 추가 시간  |
-|   statusCode | String| No | 초대 상태 코드(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   uuid | String| No | 멤버 UUID  |
+|   emailAddress | String| N | 멤버 이메일 주소  |
+|   maskingEmail | String| N | 멤버의 마스킹된 이메일  |
+|   memberName | String| N | 멤버 이름  |
+|   memberTypeCode | String| N | 멤버 구분 |
+|   relationDateTime | Date| N | 멤버 추가 시간  |
+|   statusCode | String| N | 초대 상태 코드(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   uuid | String| N | 멤버 UUID  |
 
 
 <a id="프로젝트-역할-그룹-단건-조회"></a>
@@ -1302,8 +1306,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회 대상 프로젝트 ID | 
-|  Path |role-group-id | String| Yes | 프로젝트 역할 그룹 ID<br>프로젝트 공통 역할 그룹 ID는 조회 불가 | 
+|  Path |project-id | String| Y | 조회 대상 프로젝트 ID | 
+|  Path |role-group-id | String| Y | 프로젝트 역할 그룹 ID<br>프로젝트 공통 역할 그룹 ID는 조회 불가 | 
 
 
 
@@ -1349,19 +1353,19 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   roleGroup | RoleGroupBundleProtocol| Yes | 연관 역할을 포함한 역할 그룹  |
+|   header | [공통 응답](#응답)| Y |
+|   roleGroup | RoleGroupBundleProtocol| Y | 연관 역할을 포함한 역할 그룹  |
 
 ###### RoleGroupBundleProtocol
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleGroupId | String| No | 역할 그룹 ID  |
-|   roleGroupName | String| No | 역할 그룹 이름  |
-|   description | String| No | 역할 그룹 설명  |
-|   roleGroupType | String| No | 역할 그룹 구분(조직, 프로젝트)  |
-|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 연관 역할 목록  |
-|   regDateTime | Date| No | 등록 일시  |
+|   roleGroupId | String| N | 역할 그룹 ID  |
+|   roleGroupName | String| N | 역할 그룹 이름  |
+|   description | String| N | 역할 그룹 설명  |
+|   roleGroupType | String| N | 역할 그룹 구분(조직, 프로젝트)  |
+|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| N | 연관 역할 목록  |
+|   regDateTime | Date| N | 등록 일시  |
 
 
 
@@ -1380,8 +1384,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회 대상 조직 ID | 
-|  Path |role-group-id | String| Yes | 프로젝트 공통 역할 그룹 ID | 
+|  Path |org-id | String| Y | 조회 대상 조직 ID | 
+|  Path |role-group-id | String| Y | 프로젝트 공통 역할 그룹 ID | 
 
 
 ##### 응답 본문
@@ -1426,8 +1430,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | 연관 역할을 포함한 역할 그룹  |
+|   header | [공통 응답](#응답)| Y |
+|   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Y | 연관 역할을 포함한 역할 그룹  |
 
 
 
@@ -1447,11 +1451,11 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회 대상 프로젝트 ID | 
-|  Query |descriptionLike | String| No | 설명 |
-|  Query |roleGroupNameLike | String| No | 역할 그룹명 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |project-id | String| Y | 조회 대상 프로젝트 ID | 
+|  Query |descriptionLike | String| N | 설명 |
+|  Query |roleGroupNameLike | String| N | 역할 그룹 이름 |
+|  Query |limit | Integer| N | 페이지당 표시 건수, 기본값 20 |
+|  Query |page | Integer| N | 대상 페이지, 기본값 1 |
 
 
 
@@ -1484,9 +1488,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes  |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)>| Yes | 프로젝트에서 사용 가능한 역할 그룹 목록  |
+|   header | [공통 응답](#응답)| Y  |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)>| Y | 프로젝트에서 사용 가능한 역할 그룹 목록  |
 
 <a id="조직에-속한-프로젝트-목록-조회"></a>
 #### 조직에 속한 프로젝트 목록 조회
@@ -1503,11 +1507,11 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회할 조직의 ID | 
-|  Query |memberUuid | String| No | 조직의 멤버 UUID |
-|  Query |projectName | String| No | 프로젝트 이름 |
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
+|  Path |org-id | String| Y | 조회할 조직의 ID | 
+|  Query |memberUuid | String| N | 조직의 멤버 UUID |
+|  Query |projectName | String| N | 프로젝트 이름 |
+|  Query |page | Integer| N | 대상 페이지, 기본값 1 |
+|  Query |limit | Integer| N | 페이지당 표시 건수, 기본값 20 |
 
 
 ##### 응답 본문
@@ -1543,9 +1547,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   paging | [PagingResponse](#pagingresponse) | Yes |
-|   projectList | List&lt;OrgProjectMemberRoleProtocol>| Yes |
+|   header | [공통 응답](#응답)| Y |
+|   paging | [PagingResponse](#pagingresponse) | Y |
+|   projectList | List&lt;OrgProjectMemberRoleProtocol>| Y |
 
 
 
@@ -1553,14 +1557,14 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   delDateTime | Date| No | 프로젝트 삭제 일시 |
-|   description | String| No | 프로젝트 설명 |
-|   modDateTime | Date| No| 프로젝트 수정 일시 |
-|   orgId | String| Yes| 프로젝트가 속한 조직 ID |
-|   projectId | String| Yes| 프로젝트 ID |
-|   projectName | String| Yes| 프로젝트 이름 |
-|   projectStatusCode | String| Yes | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 지불이 완료되어 프로젝트가 잘 닫힌 상태</li><li>BLOCKED: 관리자에 의해 사용이 금지된 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 값이 지불되지 않은 상태</li></ul> |
-|   regDateTime | Date| Yes| 프로젝트 등록 일시 |
+|   delDateTime | Date| N | 프로젝트 삭제 일시 |
+|   description | String| N | 프로젝트 설명 |
+|   modDateTime | Date| N| 프로젝트 수정 일시 |
+|   orgId | String| Y| 프로젝트가 속한 조직 ID |
+|   projectId | String| Y| 프로젝트 ID |
+|   projectName | String| Y| 프로젝트 이름 |
+|   projectStatusCode | String| Y | 프로젝트 상태<br><ul><li>STABLE: 정상적으로 사용 중인 상태</li><li>CLOSED: 결제가 완료되어 정상적으로 종료된 상태</li><li>BLOCKED: 관리자가 사용을 금지한 상태</li><li>TERMINATED: 연체로 인해 모든 리소스가 삭제된 상태</li><li>DISABLED: 모든 서비스가 닫힌 상태지만 요금이 지불되지 않은 상태</li></ul> |
+|   regDateTime | Date| Y| 프로젝트 등록 일시 |
 
 
 <a id="사용-중인-조직-거버넌스-목록-조회"></a>
@@ -1577,7 +1581,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회 대상 조직 ID | 
+|  Path |org-id | String| Y | 조회 대상 조직 ID | 
 
 
 
@@ -1604,8 +1608,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   usingGovernances | List&lt;GovernanceProtocol>| No | 사용 중인 거버넌스 목록  |
+|   header | [공통 응답](#응답)| Y   |
+|   usingGovernances | List&lt;GovernanceProtocol>| N | 사용 중인 거버넌스 목록  |
 
 
 ###### GovernanceProtocol
@@ -1613,8 +1617,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   governanceTypeCode | String| No | 거버넌스 타입<br>- APPROVE_PROCESS: 승인 처리<br>- BLOCK_STORAGE_SNAPSHOT: BlockStorage의 Snapshot 기능 사용 여부<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAAS 리소스 권한 통제 및 접속 단말 제한 설정<br>- PRIVACY_PROTECTION: 개인 정보 보호<br>- UNIQUE_INSTANCE_NAME: 인스턴스명 중복 방지 |
-|   regDatetime | Date| No | 거버넌스 사용 설정 일시  |
+|   governanceTypeCode | String| N | 거버넌스 타입<br>- APPROVE_PROCESS: 승인 처리<br>- BLOCK_STORAGE_SNAPSHOT: Block Storage의 Snapshot 기능 사용 여부<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAAS 리소스 권한 통제 및 접속 단말 제한 설정<br>- PRIVACY_PROTECTION: 개인 정보 보호<br>- UNIQUE_INSTANCE_NAME: 인스턴스 이름 중복 방지 |
+|   regDatetime | Date| N | 거버넌스 사용 설정 일시  |
 
 
 <a id="조직의-프로젝트-공통-역할-그룹-생성"></a>
@@ -1632,16 +1636,16 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-| Request Body | request | CreateRoleGroupRequest| Yes | 요청 |
+|  Path |org-id | String| Y | 조직 ID | 
+| Request Body | request | CreateRoleGroupRequest| Y | 요청 |
 
 ###### CreateRoleGroupRequest
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   description | String| No | 역할 그룹 설명  |
-|   roleGroupName | String| Yes | 역할 그룹 이름  |
-|   roles | List&lt;AssignRoleProtocol>| Yes | 역할 그룹에 할당할 역할 목록  |
+|   description | String| N | 역할 그룹 설명  |
+|   roleGroupName | String| Y | 역할 그룹 이름  |
+|   roles | List&lt;AssignRoleProtocol>| Y | 역할 그룹에 할당할 역할 목록  |
 
 
 ###### AssignRoleProtocol
@@ -1649,9 +1653,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   conditions | List&lt;[AssignAttributeConditionProtocol](#assignattributeconditionprotocol)>| No | 역할 조건 속성  |
-|   roleApplyPolicyCode | String| Yes | 역할 사용 여부  ALLOW, DENY |
-|   roleId | String| Yes | 역할 ID  |
+|   conditions | List&lt;[AssignAttributeConditionProtocol](#assignattributeconditionprotocol)>| N | 역할 조건 속성  |
+|   roleApplyPolicyCode | String| Y | 역할 사용 여부  ALLOW, DENY |
+|   roleId | String| Y | 역할 ID  |
 
 
 
@@ -1672,7 +1676,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 
 <a id="조직의-프로젝트-공통-역할-그룹-삭제"></a>
@@ -1690,8 +1694,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-| Request Body | request | DeleteRoleGroupRequest| Yes | 요청 |
+|  Path |org-id | String| Y | 조직 ID | 
+| Request Body | request | DeleteRoleGroupRequest| Y | 요청 |
 
 
 ###### DeleteRoleGroupRequest
@@ -1699,7 +1703,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleGroupIds | List&lt;String>| Yes | 역할 그룹 ID 목록  |
+|   roleGroupIds | List&lt;String>| Y | 역할 그룹 ID 목록  |
 
 
 ##### 응답 본문
@@ -1718,7 +1722,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="조직의-프로젝트-공통-역할-그룹-정보-수정"></a>
 #### 조직의 프로젝트 공통 역할 그룹 정보 수정
@@ -1735,9 +1739,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-|  Path |role-group-id | String| Yes | 역할 그룹 ID | 
-| Request Body | request | UpdateRoleGroupInfoRequest| Yes | 요청 |
+|  Path |org-id | String| Y | 조직 ID | 
+|  Path |role-group-id | String| Y | 역할 그룹 ID | 
+| Request Body | request | UpdateRoleGroupInfoRequest| Y | 요청 |
 
 
 ###### UpdateRoleGroupInfoRequest
@@ -1745,8 +1749,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   description | String| No | 역할 그룹 설명  |
-|   roleGroupName | String| Yes | 역할 그룹 이름  |
+|   description | String| N | 역할 그룹 설명  |
+|   roleGroupName | String| Y | 역할 그룹 이름  |
 
 
 
@@ -1766,7 +1770,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="조직의-프로젝트-공통-역할-그룹-역할-수정"></a>
 #### 조직의 프로젝트 공통 역할 그룹 역할 수정
@@ -1782,9 +1786,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-|  Path |role-group-id | String| Yes | 역할 그룹 ID | 
-| Request Body | request | UpdateRoleGroupRequest| Yes | 요청 |
+|  Path |org-id | String| Y | 조직 ID | 
+|  Path |role-group-id | String| Y | 역할 그룹 ID | 
+| Request Body | request | UpdateRoleGroupRequest| Y | 요청 |
 
 
 ###### UpdateRoleGroupRequest
@@ -1792,7 +1796,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Yes | 역할 그룹에 할당할 역할 목록  |
+|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Y | 역할 그룹에 할당할 역할 목록  |
 
 
 
@@ -1813,7 +1817,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="프로젝트-역할-그룹-생성"></a>
 #### 프로젝트 역할 그룹 생성
@@ -1831,8 +1835,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest)| Yes | 요청 |
+|  Path |project-id | String| Y | 프로젝트 ID | 
+| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest)| Y | 요청 |
 
 
 
@@ -1854,7 +1858,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="프로젝트-역할-그룹-삭제"></a>
 #### 프로젝트 역할 그룹 삭제
@@ -1872,8 +1876,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest)| Yes | 요청 |
+|  Path |project-id | String| Y | 프로젝트 ID | 
+| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest)| Y | 요청 |
 
 
 
@@ -1895,7 +1899,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="프로젝트-역할-그룹-정보-수정"></a>
 #### 프로젝트 역할 그룹 정보 수정
@@ -1911,9 +1915,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Path |role-group-id | String| Yes | 역할 그룹 ID | 
-| Request Body | request |[UpdateRoleGroupInfoRequest](#updaterolegroupinforequest)| Yes | 요청 |
+|  Path |project-id | String| Y | 프로젝트 ID | 
+|  Path |role-group-id | String| Y | 역할 그룹 ID | 
+| Request Body | request |[UpdateRoleGroupInfoRequest](#updaterolegroupinforequest)| Y | 요청 |
 
 
 
@@ -1935,7 +1939,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 
 <a id="프로젝트-역할-그룹-역할-수정"></a>
@@ -1952,16 +1956,16 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Path |role-group-id | String| Yes | 역할 그룹 ID | 
-| Request Body | request | UpdateRoleGroupRequest| Yes | 요청 |
+|  Path |project-id | String| Y | 프로젝트 ID | 
+|  Path |role-group-id | String| Y | 역할 그룹 ID | 
+| Request Body | request | UpdateRoleGroupRequest| Y | 요청 |
 
 ###### UpdateRoleGroupRequest
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Yes | 역할 그룹에 할당할 역할 목록  |
+|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Y | 역할 그룹에 할당할 역할 목록  |
 
 
 
@@ -1983,7 +1987,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 
 <a id="조직-역할-그룹-전체-조회"></a>
@@ -2002,11 +2006,11 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 조회 대상 조직 ID |
-| Query | descriptionLike | String | No | 설명(해당 문자열이 포함된 결과 조회) |
-| Query | roleGroupNameLike | String | No | 역할 그룹명(해당 문자열이 포함된 결과 조회) |
-| Query | limit | Integer | No | 페이지당 표시 건수(기본값: 20, 최솟값: 1, 최댓값: 2000) |
-| Query | page | Integer | No | 대상 페이지(기본값: 1, 최솟값: 1) |
+| Path | org-id | String | Y | 조회 대상 조직 ID |
+| Query | descriptionLike | String | N | 설명(해당 문자열이 포함된 결과 조회) |
+| Query | roleGroupNameLike | String | N | 역할 그룹명(해당 문자열이 포함된 결과 조회) |
+| Query | limit | Integer | N | 페이지당 표시 건수(기본값: 20, 최솟값: 1, 최댓값: 2000) |
+| Query | page | Integer | N | 대상 페이지(기본값: 1, 최솟값: 1) |
 
 ##### 응답 본문
 
@@ -2038,9 +2042,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 | ------------ | ------------- | --------- | ------------ |
-| header | [공통 응답](#응답) | Yes | |
-| paging | [PagingResponse](#pagingresponse) | Yes | |
-| roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | 조직에서 사용 가능한 역할 그룹 목록 |
+| header | [공통 응답](#응답) | Y | |
+| paging | [PagingResponse](#pagingresponse) | Y | |
+| roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Y | 조직에서 사용 가능한 역할 그룹 목록 |
 
 <a id="조직-역할-그룹-단건-조회"></a>
 
@@ -2058,8 +2062,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 조회 대상 조직 ID |
-| Path | role-group-id | String | Yes | 조직 역할 그룹 ID | 
+| Path | org-id | String | Y | 조회 대상 조직 ID |
+| Path | role-group-id | String | Y | 조직 역할 그룹 ID | 
 
 ##### 응답 본문
 
@@ -2108,8 +2112,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 | ------------ | ------------- | --------- | ------------ |
-| header | [공통 응답](#응답) | Yes | |
-| roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | 연관 역할을 포함한 역할 그룹 |
+| header | [공통 응답](#응답) | Y | |
+| roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Y | 연관 역할을 포함한 역할 그룹 |
 
 <a id="조직-역할-그룹-생성"></a>
 
@@ -2127,8 +2131,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 조직 ID |
-| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | 요청 |
+| Path | org-id | String | Y | 조직 ID |
+| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest) | Y | 요청 |
 
 ##### 응답 본문
 
@@ -2146,7 +2150,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [공통 응답](#응답) | Yes | |
+| header | [공통 응답](#응답) | Y | |
 
 <a id="조직-역할-그룹-삭제"></a>
 
@@ -2164,8 +2168,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 조직 ID |
-| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | 요청 |
+| Path | org-id | String | Y | 조직 ID |
+| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Y | 요청 |
 
 ##### 응답 본문
 
@@ -2183,7 +2187,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [공통 응답](#응답) | Yes | |
+| header | [공통 응답](#응답) | Y | |
 
 <a id="조직-역할-그룹-정보-수정"></a>
 
@@ -2201,9 +2205,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 조직 ID |
-| Path | role-group-id | String | Yes | 역할 그룹 ID |
-| Request Body | request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | 요청 |
+| Path | org-id | String | Y | 조직 ID |
+| Path | role-group-id | String | Y | 역할 그룹 ID |
+| Request Body | request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Y | 요청 |
 
 ##### 응답 본문
 
@@ -2221,7 +2225,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [공통 응답](#응답) | Yes | |
+| header | [공통 응답](#응답) | Y | |
 
 
 <a id="조직-역할-그룹-역할-수정"></a>
@@ -2240,15 +2244,15 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 조직 ID |
-| Path | role-group-id | String | Yes | 역할 그룹 ID |
-| Request Body | request | UpdateRoleGroupRequest | Yes | 요청 |
+| Path | org-id | String | Y | 조직 ID |
+| Path | role-group-id | String | Y | 역할 그룹 ID |
+| Request Body | request | UpdateRoleGroupRequest | Y | 요청 |
 
 ###### UpdateRoleGroupRequest
 
 | 이름 | 타입 | 필수 | 설명 |
 | ------------ | ------------- | ------------- | ------------ |
-| roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Yes | 역할 그룹에 할당할 역할 목록 |
+| roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Y | 역할 그룹에 할당할 역할 목록 |
 
 ##### 응답 본문
 
@@ -2266,7 +2270,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [공통 응답](#응답) | Yes | |
+| header | [공통 응답](#응답) | Y | |
 
 
 <a id="조직-멤버-역할-수정"></a>
@@ -2286,9 +2290,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-|  Path |member-uuid | String| Yes | 수정할 멤버의 UUID | 
-| Request Body | request | UpdateMemberRoleRequest| Yes | 요청 |
+|  Path |org-id | String| Y | 조직 ID | 
+|  Path |member-uuid | String| Y | 수정할 멤버의 UUID | 
+| Request Body | request | UpdateMemberRoleRequest| Y | 요청 |
 
 
 ###### UpdateMemberRoleRequest
@@ -2296,7 +2300,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List&lt;[UserAssignRoleProtocol](#userassignroleprotocol)>| Yes | 사용자에게 할당할 역할 목록  |
+|   assignRoles | List&lt;[UserAssignRoleProtocol](#userassignroleprotocol)>| Y | 사용자에게 할당할 역할 목록  |
 
 
 
@@ -2318,7 +2322,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="프로젝트-멤버-역할-수정"></a>
 #### 프로젝트 멤버 역할 수정
@@ -2334,9 +2338,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Path |member-uuid | String| Yes | 역할 변경 대상 멤버 UUID | 
-| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | 요청 |
+|  Path |project-id | String| Y | 프로젝트 ID | 
+|  Path |member-uuid | String| Y | 역할 변경 대상 멤버 UUID | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Y | 요청 |
 
 
 
@@ -2357,7 +2361,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="조직-IAM-계정-단건-조회"></a>
 #### 조직 IAM 계정 단건 조회
@@ -2374,8 +2378,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조회할 조직 ID | 
-|  Path |member-uuid | String| Yes | 조회할 조직의 IAM 계정 UUID | 
+|  Path |org-id | String| Y | 조회할 조직 ID | 
+|  Path |member-uuid | String| Y | 조회할 조직의 IAM 계정 UUID | 
 
 
 ##### 응답 본문
@@ -2447,45 +2451,45 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   orgMember | OrgIamMemberRoleBundleProtocol| No  |
+|   header | [공통 응답](#응답)| Y   |
+|   orgMember | OrgIamMemberRoleBundleProtocol| N  |
 
 ###### OrgIamMemberRoleBundleProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   corporate | String| No | 회사명 |
-|   country | String| No | 국적(조직 Owner의 국적) |
-|   createdAt | Date| No | 생성 일시 |
-|   creationType | String| No| 계정의 생성 타입 |
-|   department | String| No| 부서명 |
-|   emailAddress | String| Yes | IAM 계정 이메일 주소  |
-|   englishName | String| No| 영어 이름 | 
-|   id | String| Yes | IAM 계정 UUID  |
-|   idProviderId | String| No| 외부 인증을 사용하는 경우, 인증기관 ID |
-|   idProviderType | String| No| service: IAM 계정 직접 로그인<br>sso: 고객 SSO 연동 |
-|   idProviderUserId | String| No| 외부 인증기관이 제공한 사용자 ID |
-|   lastAccessedAt | Date| No| 계정의 마지막 접속 일시, 없을 경우 null 반환 |
-|   lastLoggedInAt | Date| No| 계정의 마지막 로그인 일시, 없을 경우 null 반환 |
-|   lastLoggedInIp | String| No| 계정의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
-|   maskingEmail | String| No | IAM 계정의 마스킹된 이메일주소  |
-|   mobilePhone | String| No | IAM 계정의 휴대전화 번호  |
-|   mobilePhoneCountryCode | String| No| 휴대전화 번호 국가 코드 2자리 영문자 |
-|   name | String| Yes | IAM 계정의 이름  |
-|   nativeName | String| No| 모국어 이름 |
-|   nickname | String| No| 사용자 별명 |
-|   officeHoursBegin | String| No| 업무 시작 시간 예: 09:00 |
-|   officeHoursEnd | String| No| 업무 종료 시간 예: 18:00 |
-|   organizationId | String| Yes | IAM 계정의 조직 ID  |
-|   passwordChangedAt | Date| No| 계정의 마지막 비밀번호 변경 일시, 없을 경우 null 반환 |
-|   position | String| No| 직위 |
-|   profileImageUrl | String| No| 프로필 이미지 URL |
-|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 연관 역할 목록(조건 속성 포함)  |
-|   saasRoles | List&lt;IamMemberRole>| No | IAM 계정 역할  |
-|   status | String| No| 계정의 상태 |
-|   telephone | String| No | IAM 계정의 전화번호  |
-|   userCode | String| Yes | IAM 계정 ID  |
+|   corporate | String| N | 회사명 |
+|   country | String| N | 국적(조직 Owner의 국적) |
+|   createdAt | Date| N | 생성 일시 |
+|   creationType | String| N| 계정의 생성 타입 |
+|   department | String| N| 부서명 |
+|   emailAddress | String| Y | IAM 계정 이메일 주소  |
+|   englishName | String| N| 영어 이름 | 
+|   id | String| Y | IAM 계정 UUID  |
+|   idProviderId | String| N| 외부 인증을 사용하는 경우, 인증 기관 ID |
+|   idProviderType | String| N| service: IAM 계정 직접 로그인<br>sso: 고객 SSO 연동 |
+|   idProviderUserId | String| N| 외부 인증 기관이 제공한 사용자 ID |
+|   lastAccessedAt | Date| N| 계정의 마지막 접속 일시, 없을 경우 null 반환 |
+|   lastLoggedInAt | Date| N| 계정의 마지막 로그인 일시, 없을 경우 null 반환 |
+|   lastLoggedInIp | String| N| 계정의 마지막 로그인 IP 주소, 없을 경우 null 반환 |
+|   maskingEmail | String| N | IAM 계정의 마스킹된 이메일 주소  |
+|   mobilePhone | String| N | IAM 계정의 휴대전화 번호  |
+|   mobilePhoneCountryCode | String| N| 휴대전화 번호 국가 코드 2자리 영문자 |
+|   name | String| Y | IAM 계정의 이름  |
+|   nativeName | String| N| 모국어 이름 |
+|   nickname | String| N| 사용자 별명 |
+|   officeHoursBegin | String| N| 업무 시작 시간 예: 09:00 |
+|   officeHoursEnd | String| N| 업무 종료 시간 예: 18:00 |
+|   organizationId | String| Y | IAM 계정의 조직 ID  |
+|   passwordChangedAt | Date| N| 계정의 마지막 비밀번호 변경 일시, 없을 경우 null 반환 |
+|   position | String| N| 직위 |
+|   profileImageUrl | String| N| 프로필 이미지 URL |
+|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| N | 연관 역할 목록(조건 속성 포함)  |
+|   saasRoles | List&lt;IamMemberRole>| N | IAM 계정 역할  |
+|   status | String| N| 계정의 상태 |
+|   telephone | String| N | IAM 계정의 전화번호  |
+|   userCode | String| Y | IAM 계정 ID  |
 
 
 
@@ -2494,9 +2498,9 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   productId | String| No |
-|   productName | String| No |
-|   role | String| No |
+|   productId | String| N |
+|   productName | String| N |
+|   role | String| N |
 
 
 <a id="조직-IAM-계정-목록-조회"></a>
@@ -2513,16 +2517,16 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-|  Query |email | String| No | IAM 계정의 이메일 주소 |
-|  Query |emailLike | String| No |  |
-|  Query |idProviderType | String| No | service: IAM 계정 직접 로그인<br>sso: 고객 SSO 연동 |
-|  Query |nameLike | String| No |  |
-|  Query |statuses | List&lt;String>| No |  |
-|  Query |userCode | String| No | IAM 계정 ID |
-|  Query |userCodeLike | String| No |  |
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |org-id | String| Y | 조직 ID | 
+|  Query |email | String| N | IAM 계정의 이메일 주소 |
+|  Query |emailLike | String| N |  |
+|  Query |idProviderType | String| N | service: IAM 계정 직접 로그인<br>sso: 고객 SSO 연동 |
+|  Query |nameLike | String| N |  |
+|  Query |statuses | List&lt;String>| N |  |
+|  Query |userCode | String| N | IAM 계정 ID |
+|  Query |userCodeLike | String| N |  |
+|  Query |limit | Integer| N | 페이지당 표시 건수, 기본값 20 |
+|  Query |page | Integer| N | 대상 페이지, 기본값 1 |
 
 ##### 응답 본문
 
@@ -2577,43 +2581,43 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   orgMembers | List&lt;IamOrgMemberProtocol>| No | 조직 IAM 계정 목록  |
-|   paging | [PagingResponse](#pagingresponse)| No  |
+|   header | [공통 응답](#응답)| Y   |
+|   orgMembers | List&lt;IamOrgMemberProtocol>| N | 조직 IAM 계정 목록  |
+|   paging | [PagingResponse](#pagingresponse)| N  |
 
 ###### IamOrgMemberProtocol
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-| id | String | No | IAM 계정 UUID | 
-| userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
-| name | String | Yes | IAM 계정의 사용자 이름 | 
-| emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
-| maskingEmail | String | No | IAM 계정의 마스킹된 이메일 주소 |
-| mobilePhone | String | No | IAM 계정의 휴대전화 번호 |
-| telephone | String | No | IAM 계정의 전화번호 |
-| position | String | No | 직위 |
-| department | String | No | 부서명 |
-| corporate | String | No | 회사명  |
-| profileImageUrl | String | No | 프로필 이미지 URL |
-| englishName | String | No | 영문 이름 |
-| nativeName | String | No | 모국어 이름 |
-| nickname | String | No | 사용자 별명 |
-| officeHoursBegin | String | No | 업무 시작 시간 예: 09:00 |
-| officeHoursEnd | String | No | 업무 종료 시간 예: 18:00 |
-| status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
-| creationType | String | No | 생성 일시 |
-| idProviderId | String | No | 외부 인증을 사용하는 경우, 인증기관 ID |
-| idProviderType | String | No | service: IAM 계정 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
-| idProviderUserId | String | No | 외부 인증기관이 제공한 사용자 ID |
-| createdAt | Date | No | 생성 일시 |
-| lastAccessedAt | Date | No | 마지막 접속일시 |
-| lastLoggedInAt | Date | No | 마지막 로그인일시 |
-| lastLoggedInIp | String | No | 마지막 로그인 한 IP |
-| passwordChangedAt | Date | No | 비밀번호 변경 일시 |
-| mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자  |
-| organizationId | String | No | IAM 계정의 조직 ID |
-| country | String | No | 국적(조직 Owner의 국적) |
+| id | String | N | IAM 계정 UUID | 
+| userCode | String | Y | 로그인 시 사용할 IAM 계정 ID | 
+| name | String | Y | IAM 계정의 사용자 이름 | 
+| emailAddress | String |  Y | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
+| maskingEmail | String | N | IAM 계정의 마스킹된 이메일 주소 |
+| mobilePhone | String | N | IAM 계정의 휴대전화 번호 |
+| telephone | String | N | IAM 계정의 전화번호 |
+| position | String | N | 직위 |
+| department | String | N | 부서명 |
+| corporate | String | N | 회사명  |
+| profileImageUrl | String | N | 프로필 이미지 URL |
+| englishName | String | N | 영문 이름 |
+| nativeName | String | N | 모국어 이름 |
+| nickname | String | N | 사용자 별명 |
+| officeHoursBegin | String | N | 업무 시작 시간 예: 09:00 |
+| officeHoursEnd | String | N | 업무 종료 시간 예: 18:00 |
+| status | String | Y | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
+| creationType | String | N | 연동(sso), 초대(invited), 등록(registered) |
+| idProviderId | String | N | 외부 인증을 사용하는 경우, 인증 기관 ID |
+| idProviderType | String | N | service: IAM 계정 직접 로그인(기본값)<br>sso: 고객 SSO 연동(연동되지 않은 경우 설정 불가) |
+| idProviderUserId | String | N | 외부 인증 기관이 제공한 사용자 ID |
+| createdAt | Date | N | 생성 일시 |
+| lastAccessedAt | Date | N | 마지막 접속 일시 |
+| lastLoggedInAt | Date | N | 마지막 로그인 일시 |
+| lastLoggedInIp | String | N | 마지막 로그인한 IP |
+| passwordChangedAt | Date | N | 비밀번호 변경 일시 |
+| mobilePhoneCountryCode | String | N | 휴대전화 번호 국가 코드 2자리 영문자  |
+| organizationId | String | N | IAM 계정의 조직 ID |
+| country | String | N | 국적(조직 Owner의 국적) |
 
 
 
@@ -2634,38 +2638,38 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
-| Request Body | request | AddIamOrgMemberRequest| Yes | 요청 |
+|  Path |org-id | String| Y | 조직 ID | 
+| Request Body | request | AddIamOrgMemberRequest| Y | 요청 |
 
 ###### AddIamOrgMemberRequest
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Yes   |
+|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Y   |
 
 
 ###### AddIamOrgMemberProtocol
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-| userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
-| name | String | Yes | IAM 계정의 사용자 이름 | 
-| emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
-| mobilePhone | String | No | IAM 계정의 휴대전화 번호 |
-| telephone | String | No | IAM 계정의 전화번호 |
-| position | String | No | 직위 |
-| department | String | No | 부서명 |
-| corporate | String | No | 회사명 |
-| profileImageUrl | String | No | 프로필 이미지 URL |
-| englishName | String | No | 영문 이름 |
-| nativeName | String | No | 모국어 이름 |
-| nickname | String | No | 사용자 별명 |
-| officeHoursBegin | String | No | 업무 시작 시간 예: 09:00 |
-| officeHoursEnd | String | No | 업무 종료 시간 예: 18:00 |
-| status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
-| creationType | String | No | 연동(sso), 초대(invited), 등록(registred) |
-| mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수  |
+| userCode | String | Y | 로그인 시 사용할 IAM 계정 ID | 
+| name | String | Y | IAM 계정의 사용자 이름 | 
+| emailAddress | String |  Y | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
+| mobilePhone | String | N | IAM 계정의 휴대전화 번호 |
+| telephone | String | N | IAM 계정의 전화번호 |
+| position | String | N | 직위 |
+| department | String | N | 부서명 |
+| corporate | String | N | 회사명 |
+| profileImageUrl | String | N | 프로필 이미지 URL |
+| englishName | String | N | 영문 이름 |
+| nativeName | String | N | 모국어 이름 |
+| nickname | String | N | 사용자 별명 |
+| officeHoursBegin | String | N | 업무 시작 시간 예: 09:00 |
+| officeHoursEnd | String | N | 업무 종료 시간 예: 18:00 |
+| status | String | Y | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
+| creationType | String | N | 연동(sso), 초대(invited), 등록(registered) |
+| mobilePhoneCountryCode | String | N | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수  |
 
 
 
@@ -2687,8 +2691,8 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   uuid | String| No | IAM 계정 UUID  |
+|   header | [공통 응답](#응답)| Y   |
+|   uuid | String| N | IAM 계정 UUID  |
 
 
 
@@ -2708,9 +2712,9 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 대상이 되는 조직 ID | 
-|  Path |member-id | String| Yes | 비밀번호를 변경하려는 IAM 계정의 UUID | 
-| Request Body | request | SendPasswordSetupMailRequest| Yes | 요청 |
+|  Path |org-id | String| Y | 대상이 되는 조직 ID | 
+|  Path |member-id | String| Y | 비밀번호를 변경하려는 IAM 계정의 UUID | 
+| Request Body | request | SendPasswordSetupMailRequest| Y | 요청 |
 
 
 
@@ -2719,8 +2723,8 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   locale | String| Yes | 사용자의 로케일 정보<br>예: ko |
-|   returnUrl | String| Yes | 이메일 변경 알림 메일을 통해서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com, dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
+|   locale | String| Y | 사용자의 로캘 정보<br>예: ko |
+|   returnUrl | String| Y | 이메일 변경 알림 메일에서 비밀번호를 변경한 이후 이동할 페이지 주소 정보<br>이동할 주소 정보에는 반드시 toast.com, dooray.com 또는 nhncloud.com 도메인을 입력해야 함 |
 
 
 ##### 응답 본문
@@ -2739,7 +2743,7 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="조직-IAM-계정-정보-수정"></a>
 #### 조직 IAM 계정 정보 수정
@@ -2755,9 +2759,9 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes |   대상이 되는 조직 ID | 
-|  Path |member-uuid | String| Yes | 변경하려는 IAM 계정의 UUID | 
-| Request Body | request | UpdateIamMemberRequest| Yes | 요청 |
+|  Path |org-id | String| Y |   대상이 되는 조직 ID | 
+|  Path |member-uuid | String| Y | 변경하려는 IAM 계정의 UUID | 
+| Request Body | request | UpdateIamMemberRequest| Y | 요청 |
 
 
 ###### UpdateIamMemberRequest
@@ -2765,31 +2769,31 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Yes   |
+|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Y   |
 
 
 ###### UpdateIamOrgMemberProtocol
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-| userCode | String | Yes | 로그인 시 사용할 IAM 계정 ID | 
-| name | String | Yes | IAM 계정의 사용자 이름 | 
-| emailAddress | String |  Yes | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
-| mobilePhone | String | No | IAM 계정의 휴대전화 번호 |
-| telephone | String | No | IAM 계정의 전화번호 |
-| position | String | No | 직위 |
-| department | String | No | 부서명 |
-| corporate | String | No | 회사명 |
-| profileImageUrl | String | No | 프로필 이미지 URL |
-| englishName | String | No | 영문 이름 |
-| nativeName | String | No | 모국어 이름 |
-| nickname | String | No | 사용자 별명 |
-| officeHoursBegin | String | No | 업무 시작 시간 예: 09:00 |
-| officeHoursEnd | String | No | 업무 종료 시간 예: 18:00 |
-| status | String | Yes | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
-| creationType | String | No | 연동(sso), 초대(invited), 등록(registred) |
-| idProviderUserId | String | No | 외부 인증기관이 제공한 사용자 ID |
-| mobilePhoneCountryCode | String | No | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수 |
+| userCode | String | Y | 로그인 시 사용할 IAM 계정 ID | 
+| name | String | Y | IAM 계정의 사용자 이름 | 
+| emailAddress | String |  Y | IAM 계정의 이메일 주소<br>공지를 수신하거나 비밀번호 변경 안내 메일 수신 시 사용됨 |
+| mobilePhone | String | N | IAM 계정의 휴대전화 번호 |
+| telephone | String | N | IAM 계정의 전화번호 |
+| position | String | N | 직위 |
+| department | String | N | 부서명 |
+| corporate | String | N | 회사명 |
+| profileImageUrl | String | N | 프로필 이미지 URL |
+| englishName | String | N | 영문 이름 |
+| nativeName | String | N | 모국어 이름 |
+| nickname | String | N | 사용자 별명 |
+| officeHoursBegin | String | N | 업무 시작 시간 예: 09:00 |
+| officeHoursEnd | String | N | 업무 종료 시간 예: 18:00 |
+| status | String | Y | 계정 상태를 변경할 수 있음<br><ul><li>member: 정상 이용 상태</li><li>leaved: 탈퇴 요청</li></ul>생성 시에는 반드시 member를 지정해야 함 |
+| creationType | String | N | 연동(sso), 초대(invited), 등록(registered) |
+| idProviderUserId | String | N | 외부 인증 기관이 제공한 사용자 ID |
+| mobilePhoneCountryCode | String | N | 휴대전화 번호 국가 코드 2자리 영문자, 휴대전화 번호 입력 시 필수 |
 
 
 ##### 응답 본문
@@ -2808,7 +2812,7 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="조직-IAM-계정-비밀번호-변경"></a>
 #### 조직 IAM 계정 비밀번호 변경
@@ -2824,9 +2828,9 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 대상이 되는 조직 ID | 
-|  Path |member-id | String| Yes | 비밀번호를 변경하려는 IAM 계정의 UUID | 
-| Request Body | request | UpdateIamPasswordRequest| Yes | 요청 |
+|  Path |org-id | String| Y | 대상이 되는 조직 ID | 
+|  Path |member-id | String| Y | 비밀번호를 변경하려는 IAM 계정의 UUID | 
+| Request Body | request | UpdateIamPasswordRequest| Y | 요청 |
 
 
 ###### UpdateIamPasswordRequest
@@ -2834,7 +2838,7 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   password | String| Yes  | 설정할 비밀번호 | 
+|   password | String| Y  | 설정할 비밀번호 | 
 
 
 ##### 응답 본문
@@ -2853,7 +2857,7 @@ IAM 계정의 비밀번호를 변경할 수 있는 이메일을 전송하는 API
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="조직-IP-ACL-목록-조회"></a>
 #### 조직 IP ACL 목록 조회
@@ -2869,7 +2873,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
+|  Path |org-id | String| Y | 조직 ID | 
 
 
 ##### 응답 본문
@@ -2893,16 +2897,16 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   orgIpAcl | List&lt;OrgIpAclProtocol>| Yes  | 설정 결과, 빈 목록이면 설정이 안된 상태 |
+|   header | [공통 응답](#응답)| Y   |
+|   orgIpAcl | List&lt;OrgIpAclProtocol>| Y  | 설정 결과, 빈 목록이면 설정되지 않은 상태 |
 
 ###### OrgIpAclProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   ips | List&lt;String>| Yes  | 허용 IP들 | 
-|   productId | String| Yes  | 서비스 ID<br>undefined이면 공통 설정|
+|   ips | List&lt;String>| Y  | 허용 IP들 | 
+|   productId | String| Y  | 서비스 ID<br>`undefined`이면 공통 설정|
 
 <a id="조직-IAM-계정-로그인-세션-설정-정보를-조회"></a>
 #### 조직 IAM 계정 로그인 세션 설정 정보를 조회
@@ -2918,7 +2922,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
+|  Path |org-id | String| Y | 조직 ID | 
 
 
 ##### 응답 본문
@@ -2946,17 +2950,17 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [공통 응답](#응답)| Yes   |
-| result | Content | Yes | 설정 내용 |
+| header | [공통 응답](#응답)| Y   |
+| result | Content | Y | 설정 내용 |
 
 ###### Content
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   multiSessionsLimit | Integer| Yes | 허용 멀티 세션 수  |
-|   sessionTimeoutMinutes | Integer| Yes |  세션 타임아웃 |
-|   mobileSessionTimeoutMinutes | Integer| Yes |  모바일 세션 타임아웃 |
-|   sessionType | String| Yes | fixed/idle. 기본값은 fixed  |
+|   multiSessionsLimit | Integer| Y | 허용 멀티 세션 수  |
+|   sessionTimeoutMinutes | Integer| Y |  세션 타임아웃 |
+|   mobileSessionTimeoutMinutes | Integer| Y |  모바일 세션 타임아웃 |
+|   sessionType | String| Y | `fixed`/`idle`. 기본값은 `fixed`  |
 
 <a id="조직-IAM-계정-로그인-2차-인증에-대한-설정을-조회"></a>
 #### 조직 IAM 계정 로그인 2차 인증에 대한 설정을 조회
@@ -2973,7 +2977,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
+|  Path |org-id | String| Y | 조직 ID | 
 
 ##### 응답 본문
 
@@ -3016,39 +3020,39 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   result | Result| No |  응답 내용<br>설정한 적이 없으면 null이 반환됨 |
+|   header | [공통 응답](#응답)| Y   |
+|   result | Result| N |  응답 내용<br>설정한 적이 없으면 null이 반환됨 |
 
 ###### Result
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   range | Integer| No | 조직/서비스 여부<br>organization(공통 설정), services(서비스별 설정)  |
-|   organizationMfaSetting | OrganizationMfaSetting| No | 조직 mfa 설정 정보<br>공통 설정 |
-|   serviceMfaSettings | ServiceMfaSettings| No | 서비스별 mfa 설정 정보  |
+|   range | Integer| N | 조직/서비스 구분<br>organization(공통 설정), services(서비스별 설정)  |
+|   organizationMfaSetting | OrganizationMfaSetting| N | 조직 MFA 설정 정보<br>공통 설정 |
+|   serviceMfaSettings | ServiceMfaSettings| N | 서비스별 MFA 설정 정보  |
 
 
 ###### OrganizationMfaSetting
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   type | String| No | mfa 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
-|   bypassByIp | BypassByIp| No | 예외 IP  |
+|   type | String| N | MFA 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
+|   bypassByIp | BypassByIp| N | 예외 IP  |
 
 ###### ServiceMfaSettings
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   serviceId | Sting| No | 서비스 ID  |
-|   type | String| No | mfa 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
-|   bypassByIp | BypassByIp| No | 서비스 타입. none, totp, email |
+|   serviceId | String| N | 서비스 ID  |
+|   type | String| N | MFA 타입<br>none(설정 안 함), totp(Google OTP), email(이메일) |
+|   bypassByIp | BypassByIp| N | 예외 IP |
 
 ###### BypassByIp
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   enable | Boolean| No | 활성화 여부<br>true(사용 중), false(사용 안함)  |
-|   ipList | List&lt;String>| No | 예외 IP 목록 |
+|   enable | Boolean| N | 활성화 여부<br>`true`(사용 중), `false`(사용 안 함)  |
+|   ipList | List&lt;String>| N | 예외 IP 목록 |
 
 <a id="조직-IAM-계정-로그인-실패-보안-설정을-조회"></a>
 #### 조직 IAM 계정 로그인 실패 보안 설정을 조회
@@ -3064,7 +3068,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
+|  Path |org-id | String| Y | 조직 ID | 
 
 
 ##### 응답 본문
@@ -3091,23 +3095,23 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [공통 응답](#응답)| Yes   |
-| result | Result | No | 로그인 실패 보안을 설정한 경우에만 반환되며, 설정하지 않으면 null이 반환됨 |
+| header | [공통 응답](#응답)| Y   |
+| result | Result | N | 로그인 실패 보안을 설정한 경우에만 반환되며, 설정하지 않으면 null이 반환됨 |
 
 ###### Result
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   enable | Boolean| Yes | 활성화 여부<br>true(사용 중), false(사용 안함)  |
-|   loginFailCount | LoginFailCount| No | 로그인 실패 보안 설정 |
+|   enable | Boolean| Y | 활성화 여부<br>`true`(사용 중), `false`(사용 안 함)  |
+|   loginFailCount | LoginFailCount| N | 로그인 실패 보안 설정 |
 
 
 ###### LoginFailCount
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 시도 허용 횟수 |
-|   blockMinutes | Integer| No | 로그인 금지 시간  |
+|   limit | Integer| N | 시도 허용 횟수 |
+|   blockMinutes | Integer| N | 로그인 금지 시간  |
 
 <a id="조직-IAM-계정-비밀번호-정책-조회"></a>
 #### 조직 IAM 계정 비밀번호 정책 조회
@@ -3123,7 +3127,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID | 
+|  Path |org-id | String| Y | 조직 ID | 
 
 
 ##### 응답 본문
@@ -3168,51 +3172,51 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [공통 응답](#응답)| Yes   |
-| result | Content | Yes | 설정 내용 |
+| header | [공통 응답](#응답)| Y   |
+| result | Content | Y | 설정 내용 |
 
 ###### Content
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| schemaVersion | Integer| Yes | 스키마 버전  |
-| value | Value| Yes |  비밀번호 정책 |
+| schemaVersion | Integer| Y | 스키마 버전  |
+| value | Value| Y |  비밀번호 정책 |
 
 ###### Value
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| ruleType | String | Yes | 비밀번호 정책<br>default(기본 비밀번호 정책), custom(사용자 비밀번호 정책) |
-| passwordConstraints | PasswordConstraints | Yes | 비밀번호 강도 |
-| passwordExpiry | PasswordExpiry | Yes | 비밀번호 만료 |
-| limitPasswordReuse | LimitPasswordReuse | Yes | 비밀번호 재사용 제한 |
-| applyRule | String | Yes | 비밀번호 정책 적용 시점<br>onChangePassword(비밀번호 변경 시 적용), onLogin(즉시 적용) |
+| ruleType | String | Y | 비밀번호 정책<br>`default`(기본 비밀번호 정책), `custom`(사용자 비밀번호 정책) |
+| passwordConstraints | PasswordConstraints | Y | 비밀번호 강도 |
+| passwordExpiry | PasswordExpiry | Y | 비밀번호 만료 |
+| limitPasswordReuse | LimitPasswordReuse | Y | 비밀번호 재사용 제한 |
+| applyRule | String | Y | 비밀번호 정책 적용 시점<br>`onChangePassword`(비밀번호 변경 시 적용), `onLogin`(즉시 적용) |
 
 ###### PasswordConstraints
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| minLength | integer | Yes | 비밀번호 최소 길이 |
-| mustNotIncludeIllegalSequence | boolean | Yes | 영문자 1개 이상<br>true(설정), false(설정 안 함) |
-| mustIncludeUpperCase | boolean | Yes | 영문 대문자 1개 이상<br>true(설정), false(설정 안 함) |
-| mustIncludeLowerCase | boolean | Yes | 영문 소문자 1개 이상<br>true(설정), false(설정 안 함) |
-| mustIncludeNumberCase | boolean | Yes | 숫자 1개 이상<br>true(설정), false(설정 안 함) |
-| mustIncludeSpecialCase | boolean | Yes | 특수 문자 1개 이상<br>true(설정), false(설정 안 함) |
+| minLength | Integer | Y | 비밀번호 최소 길이 |
+| mustNotIncludeIllegalSequence | Boolean | Y | 영문자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeUpperCase | Boolean | Y | 영문 대문자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeLowerCase | Boolean | Y | 영문 소문자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeNumberCase | Boolean | Y | 숫자 1개 이상<br>true(설정), false(설정 안 함) |
+| mustIncludeSpecialCase | Boolean | Y | 특수 문자 1개 이상<br>true(설정), false(설정 안 함) |
 
 ###### PasswordExpiry
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안 함) |
-| expiryDays | Integer | Yes | 만료 기간 |
-| allowExpend | Boolean | Yes | 만료 시 연장 가능 여부<br>true(가능), false(불가능) |
+| enable | Boolean | Y | 사용 여부<br>true(설정), false(설정 안 함) |
+| expiryDays | Integer | Y | 만료 기간 |
+| allowExpend | Boolean | Y | 만료 시 연장 가능 여부<br>true(가능), false(불가능) |
 
 ###### LimitPasswordReuse
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| enable | Boolean | Yes | 사용 여부<br>true(설정), false(설정 안 함) |
-| limitCount | Integer | Yes | 재사용 제한 횟수 |
+| enable | Boolean | Y | 사용 여부<br>true(설정), false(설정 안 함) |
+| limitCount | Integer | Y | 재사용 제한 횟수 |
 
 <a id="종량제에-등록된-서비스-가격-조회"></a>
 #### 종량제에 등록된 서비스 가격 조회
@@ -3230,21 +3234,21 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |limit | Integer| No |  |
-| Request Body | request | GetContractProductPriceRequest| Yes | 요청 |
+|  Query |limit | Integer| N |  |
+| Request Body | request | GetContractProductPriceRequest| Y | 요청 |
 
 ##### GetContractProductPriceRequest
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|  counterNames | List&lt;String>| No | 서비스 메타의 counter Name 목록<br>없을 경우 전체 검색함 |
-|   paging | Paging| No  |
+|  counterNames | List&lt;String>| N | 서비스 메타의 counter Name 목록<br>없을 경우 전체 검색함 |
+|   paging | Paging| N  |
 
 ###### Paging
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 페이지당 표시 건수, 기본값 20  |
-|   page | Integer| No | 대상 페이지, 기본값 1  |
+|   limit | Integer| N | 페이지당 표시 건수, 기본값 20  |
+|   page | Integer| N | 대상 페이지, 기본값 1  |
 
 
 ##### 응답 본문
@@ -3286,39 +3290,39 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   paging | PagingResponse| Yes | 정렬 기준이 없는 페이징 결과 반환  |
-|   prices | List&lt;ContractProductPriceProtocol>| Yes | 카운터의 단가 정보를 배열로 반환<br>오류 시 포함되지 않음  |
+|   header | [공통 응답](#응답)| Y   |
+|   paging | PagingResponse| Y | 정렬 기준이 없는 페이징 결과 반환  |
+|   prices | List&lt;ContractProductPriceProtocol>| Y | 카운터의 단가 정보를 배열로 반환<br>오류 시 포함되지 않음  |
 
 ###### PagingResponse
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   limit | Integer| Yes | 조회되는 개수 제한<br>기본값은 20 |
-|   page | Integer| Yes |
-|   totalCount | Integer| Yes |
+|   limit | Integer| Y | 조회되는 개수 제한<br>기본값은 20 |
+|   page | Integer| Y |
+|   totalCount | Integer| Y |
 
 ###### ContractProductPriceProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   contractDiscountPolicyId | String| Yes | 약정 요금 정책 아이디  |
-|   contractId | String| Yes | 약정 아이디  |
-|   counterName | String| Yes | 카운터  |
-|   displayNameEn | String| No |  카운터의 영어 이름  |
-|   displayNameJa | String| No | 카운터의 일본어 이름  |
-|   displayNameKo | String| Yes | 카운터의 한국어 이름  |
-|   displayNameZh | String| No |  카운터의 중국어 이름<br>현재는 영어로 노출됨 |
-|   monthFrom | String| Yes | 단가 정보가 유효한 시작월(포함)  |
-|   monthTo | String| Yes | 단가 정보가 유효한 종료월(미포함)  |
-|   originalPrice | BigDecimal| Yes | 단가  |
-|   price | BigDecimal| Yes | 단가  |
-|   rangeFrom | BigDecimal| Yes | 단가에 속하게 되는 사용량 범위 시작(미포함)  |
-|   rangeTo | BigDecimal| Yes | 단가에 속하게 되는 사용량 범위 종료(포함)  |
-|   seq | Long| Yes | 일련번호  |
-|   slidingCalculationTypeCode | String| Yes | 슬라이딩 요금 계산 유형<br>NONE, SECTION_SUM, SECTION_SELECTED |
-|   useFixPriceYn | String| Yes | 고정 금액  여부(Y: 고정 금액 , N: 단가 계산)<br>Y: 범위에 들어올 경우 price가 금액이 됨<br>N:(사용량 x 단가)가 금액이 됨 |
+|   contractDiscountPolicyId | String| Y | 약정 요금 정책 아이디  |
+|   contractId | String| Y | 약정 아이디  |
+|   counterName | String| Y | 카운터  |
+|   displayNameEn | String| N |  카운터의 영어 이름  |
+|   displayNameJa | String| N | 카운터의 일본어 이름  |
+|   displayNameKo | String| Y | 카운터의 한국어 이름  |
+|   displayNameZh | String| N |  카운터의 중국어 이름<br>현재는 영어로 노출됨 |
+|   monthFrom | String| Y | 단가 정보가 유효한 시작월(포함)  |
+|   monthTo | String| Y | 단가 정보가 유효한 종료월(미포함)  |
+|   originalPrice | BigDecimal| Y | 단가  |
+|   price | BigDecimal| Y | 단가  |
+|   rangeFrom | BigDecimal| Y | 단가에 속하게 되는 사용량 범위 시작(미포함)  |
+|   rangeTo | BigDecimal| Y | 단가에 속하게 되는 사용량 범위 종료(포함)  |
+|   seq | Long| Y | 일련번호  |
+|   slidingCalculationTypeCode | String| Y | 슬라이딩 요금 계산 유형<br>`NONE`, `SECTION_SUM`, `SECTION_SELECTED` |
+|   useFixPriceYn | String| Y | 고정 금액 여부(Y: 고정 금액, N: 단가 계산)<br>Y: 범위에 들어올 경우 price가 금액이 됨<br>N:(사용량 x 단가)가 금액이 됨 |
 
 <a id="종량제에-등록된-서비스-목록-조회"></a>
 #### 종량제에 등록된 서비스 목록 조회
@@ -3334,8 +3338,8 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |limit | Integer| No | 조회되는 개수 제한<br>기본값은 20 |
-|  Query |page | Integer| No |  |
+|  Query |limit | Integer| N | 조회되는 개수 제한<br>기본값은 20 |
+|  Query |page | Integer| N |  |
 
 
 ##### 응답 본문
@@ -3383,9 +3387,9 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   products | List&lt;ProductMetadata>| Yes | 서비스 메타 정보 목록  |
+|   header | [공통 응답](#응답)| Y   |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   products | List&lt;ProductMetadata>| Y | 서비스 메타 정보 목록  |
 
 
 ###### ProductMetadata
@@ -3393,27 +3397,408 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   budgetUsageTypeYn | String| No | 예산 사용량 타입 Yn  Y, N |
-|   calcUnitCode | String| Yes | 금액 계산 시 사용할 단위(미터링 단위를 정산 단위로 변환하여 금액 계산을 수행함), 명세서에 노출할 단위<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
-|   categoryMain | String| Yes | 메인 카테고리  |
-|   categorySub | String| Yes | 서브 카테고리  |
-|   chargingTypeId | String| Yes | 과금 유형 ID  |
-|   convertUsageTypeCode | String| Yes | 사용량 변환 타입 코드  NONE, HOUR_AVERAGE, DAY_AVERAGE |
-|   counterName | String| Yes | 카운터  |
-|   counterTypeCode | String| Yes | 사용량의 합산에 대한 방법<br><ul><li>DELTA: 증가값(HOURLY_SUM)</li><li>GAUGE: 시간 최대값의 합(HOURLY_MAX로 변경 예정)</li><li>HOURLY_LATEST: 1시간 동안 수집된 데이터 중 가장 나중에 수집된 미터링 데이터의 합</li><li>DAILY_MAX: 일 최대값의 합</li><li>MONTHLY_MAX: 월 최대값</li><li>STATUS: 사용 현황</li><ul> |
-|   description | String| No | 카운터 설명  |
-|   displayOrder | Integer| Yes | 노출 순서  |
-|   marketPlaceMandatoryUsePeriod | Integer| No | 마켓플레이스 필수 사용 기간  |
-|   meterUnitCode | String| Yes | 서비스에서 미터링 저장 시 사용량 단위<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
-|   minUsage | BigDecimal| Yes | 최소 사용량  |
-|   parentCounterName | String| Yes | 부모 카운터 이름  |
-|   productId | String| Yes | 서비스 아이디  |
-|   productMetadataStatusCode | String| Yes | 카운터 상태 코드  STABLE, CLOSED |
-|   productUiId | String| Yes | 홈페이지 카테고리/홈페이지 서비스 식별 ID  |
-|   regionTypeCode | String| Yes | 카운터네임이 소속된 리전 코드<br><ul><li>GLOBAL: Global 서비스에 속한 카운터네임</li><li>NONE: GLOBAL과 동일한 의미</li><li>KR1: KR1 리전에 속한 카운터네임</li><li>KR2: KR2 리전에 속한 카운터네임</li><li>...: 해당 리전에 속한 카운터네임</li><ul>  |
-|   unit | Long| Yes | 정산 단위  |
-|   unitName | String| Yes | 청구서에 노출할 이름  |
-|   usageAggregationUnitCode | String| No | 사용량 집계 단위<br>RESOURCE_ID, COUNTER_NAME |
+|   budgetUsageTypeYn | String| N | 예산 사용량 타입 Yn  Y, N |
+|   calcUnitCode | String| Y | 금액 계산 시 사용할 단위(미터링 단위를 정산 단위로 변환하여 금액 계산을 수행함), 명세서에 노출할 단위<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
+|   categoryMain | String| Y | 메인 카테고리  |
+|   categorySub | String| Y | 서브 카테고리  |
+|   chargingTypeId | String| Y | 과금 유형 ID  |
+|   convertUsageTypeCode | String| Y | 사용량 변환 타입 코드  `NONE`, `HOUR_AVERAGE`, `DAY_AVERAGE` |
+|   counterName | String| Y | 카운터  |
+|   counterTypeCode | String| Y | 사용량 합산 방법<br><ul><li>DELTA: 증가 값(HOURLY_SUM)</li><li>GAUGE: 시간 최대값의 합(HOURLY_MAX로 변경 예정)</li><li>HOURLY_LATEST: 1시간 동안 수집된 데이터 중 가장 나중에 수집된 미터링 데이터의 합</li><li>DAILY_MAX: 일 최대값의 합</li><li>MONTHLY_MAX: 월 최대값</li><li>STATUS: 사용 현황</li><ul> |
+|   description | String| N | 카운터 설명  |
+|   displayOrder | Integer| Y | 노출 순서  |
+|   marketPlaceMandatoryUsePeriod | Integer| N | 마켓플레이스 필수 사용 기간  |
+|   meterUnitCode | String| Y | 서비스에서 미터링 저장 시 사용량 단위<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
+|   minUsage | BigDecimal| Y | 최소 사용량  |
+|   parentCounterName | String| Y | 부모 카운터 이름  |
+|   productId | String| Y | 서비스 아이디  |
+|   productMetadataStatusCode | String| Y | 카운터 상태 코드  `STABLE`, `CLOSED` |
+|   productUiId | String| Y | 홈페이지 카테고리/홈페이지 서비스 식별 ID  |
+|   regionTypeCode | String| Y | 카운터네임이 소속된 리전 코드<br><ul><li>GLOBAL: Global 서비스에 속한 카운터네임</li><li>NONE: GLOBAL과 동일한 의미</li><li>KR1: KR1 리전에 속한 카운터네임</li><li>KR2: KR2 리전에 속한 카운터네임</li><li>...: 해당 리전에 속한 카운터네임</li><ul>  |
+|   unit | Long| Y | 정산 단위  |
+|   unitName | String| Y | 청구서에 노출할 이름  |
+|   usageAggregationUnitCode | String| N | 사용량 집계 단위<br>RESOURCE_ID, COUNTER_NAME |
+
+
+<a id="청구서별-이용-금액-조회"></a>
+#### 청구서별 이용 금액 조회
+
+> GET "/v1/billing/members/payment-statements"
+
+청구서 단위의 이용 금액을 조회하는 API입니다.
+
+##### 필요 권한
+`Member.PaymentStatement.Get`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |month | String| Y | 청구 월(yyyy-MM) |
+|  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중)<br>미지정 시 조회 가능한 전체 결제 그룹을 조회 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paymentStatementCharges": [ {
+    "uuid": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
+    "paymentGroupId": "3YVRwIVU",
+    "month": "2026-07-01T00:00:00.000+09:00",
+    "country": "KR",
+    "paymentStatusCode": "PAID",
+    "autoPaymentTypeCode": "CREDIT_CARD",
+    "paymentInfo": "[현대카드] 4403***",
+    "chargeAmount": 1000000,
+    "totalDiscountAmount": 100000,
+    "totalExtraAmount": 0,
+    "taxAmount": 90000,
+    "freeCreditAmount": 0,
+    "paidCreditAmount": 0,
+    "freeCreditAllAmount": 0,
+    "freeCreditLimitAmount": 0,
+    "paidCreditAllAmount": 0,
+    "paidCreditLimitAmount": 0,
+    "totalCreditAmount": 0,
+    "prePaidTotalAmount": 0,
+    "cutoffAmount": 0,
+    "lateFeeAmount": 0,
+    "totalAmount": 990000,
+    "chargedSupplyAmount": 900000,
+    "chargedTaxAmount": 90000,
+    "chargedTotalAmount": 990000,
+    "receiptStatusCode": "EXIST",
+    "refundAccountRegisterStatusCode": "DENY"
+  } ]
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [공통 응답](#응답)| Y   |
+|   paymentStatementCharges | List&lt;Charge>| Y | 결제 그룹별 이용 금액 목록  |
+
+###### Charge
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+|   uuid | String| Y | 회원 UUID  |
+|   paymentGroupId | String| Y | 결제 그룹 ID  |
+|   month | Date| Y | 청구 월  |
+|   country | String| Y | 국가 코드  |
+|   paymentStatusCode | String| Y | 결제 상태 코드<br><ul><li>REGISTERED: 등록</li><li>READY: 결제 대기</li><li>PAID: 결제 완료</li><li>ERROR: 운영자 확인 필요 상태</li></ul> |
+|   autoPaymentTypeCode | String| Y | 결제 수단 타입  |
+|   paymentInfo | String| N | 결제 수단 정보  |
+|   chargeAmount | Long| Y | 이용 금액  |
+|   totalDiscountAmount | Long| Y | 할인 금액  |
+|   totalExtraAmount | Long| Y | 할증 금액  |
+|   taxAmount | Long| Y | 부가세액(절사 전)  |
+|   freeCreditAmount | Long| Y | 무료 크레딧 사용 금액(전체형, 제한형 합계)  |
+|   paidCreditAmount | Long| Y | 유료 크레딧 사용 금액(전체형, 제한형 합계)  |
+|   freeCreditAllAmount | Long| Y | 전체형 무료 크레딧 사용 금액  |
+|   freeCreditLimitAmount | Long| Y | 제한형 무료 크레딧 사용 금액  |
+|   paidCreditAllAmount | Long| Y | 전체형 유료 크레딧 사용 금액  |
+|   paidCreditLimitAmount | Long| Y | 제한형 유료 크레딧 사용 금액  |
+|   totalCreditAmount | Long| Y | 크레딧 총 사용 금액  |
+|   prePaidTotalAmount | Long| Y | 선결제 적용 금액  |
+|   cutoffAmount | Long| Y | 절사 금액(500원 미만)  |
+|   lateFeeAmount | Long| Y | 연체료  |
+|   totalAmount | Long| Y | 최종 청구 금액(부가세 포함)  |
+|   chargedSupplyAmount | Long| Y | 실 공급가액<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
+|   chargedTaxAmount | Long| Y | 실 부가세<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
+|   chargedTotalAmount | Long| Y | 실 결제 금액<br>실 공급가액 + 실 부가세 + 연체료 |
+|   receiptStatusCode | String| Y | 매출 전표 상태 코드<br><ul><li>NONE: 매출 전표를 볼 수 없는 상태</li><li>EXIST: 매출 전표를 볼 수 있는 상태</li></ul> |
+|   refundAccountRegisterStatusCode | String| N | 환불 계좌 등록 상태 코드<br><ul><li>ALLOW: 환불 계좌 등록 Open 상태</li><li>DENY: 환불 계좌 등록 Close 상태(기본값)</li></ul> |
+
+
+<a id="빌링-그룹-조직-프로젝트별-이용-금액-조회"></a>
+#### 빌링 그룹, 조직, 프로젝트별 이용 금액 조회
+
+> GET "/v1/billing/members/payment-statements/charge-summaries"
+
+이용 금액을 빌링 그룹/조직/프로젝트 단위로 집계하여 조회하는 API입니다.
+
+!!! danger "주의"
+    * 2020년 5월 이후의 청구 월만 조회할 수 있습니다.
+    * `groupBy`에는 결제 그룹(PAYMENT_GROUP)을 지정할 수 없습니다. 결제 그룹 단위 이용 금액은 [청구서별 이용 금액 조회](#청구서별-이용-금액-조회)를 사용하세요.
+
+##### 필요 권한
+`Member.PaymentStatement.Get`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
+|  Query |groupBy | String| Y | 집계 기준(단일)<br><ul><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
+|  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
+|  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
+|  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
+|  Query |projectIds | List&lt;String>| N | 프로젝트 ID 필터(다중, 최대 10개) |
+|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
+|  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "groupBy": "PROJECT",
+  "chargeSummaries": [ {
+    "paymentGroupId": "3YVRwIVU",
+    "billingGroupId": "LY9NQ7lvWvxGj3aW",
+    "billingGroupName": "빌링 그룹 이름",
+    "orgId": "eNWZ3jZq2FsMSHaQ",
+    "orgName": "조직 이름",
+    "projectId": "KGDeiKUq",
+    "projectName": "프로젝트 이름",
+    "country": "KR",
+    "chargeAmount": 1000000,
+    "contractDiscountAmount": 50000,
+    "ocpDiscountAmount": 0,
+    "billingGroupDiscountAmount": 0,
+    "projectDiscountAmount": 50000,
+    "totalDiscountAmount": 100000,
+    "contractExtraAmount": 0,
+    "billingGroupExtraAmount": 0,
+    "projectExtraAmount": 0,
+    "totalExtraAmount": 0,
+    "totalCreditLimitAmount": 0,
+    "prePaidTotalAmount": 0,
+    "totalAmount": 900000
+  } ],
+  "nextCursor": "S0dEZWlLVXE"
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [공통 응답](#응답)| Y   |
+|   groupBy | String| Y | 요청한 집계 기준  |
+|   chargeSummaries | List&lt;ChargeSummary>| Y | 빌링 그룹, 조직, 프로젝트별 이용 금액 목록  |
+|   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
+
+###### ChargeSummary
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- |----| ---------- |
+|   paymentGroupId | String| Y  | 결제 그룹 ID |
+|   billingGroupId | String| Y  | 빌링 그룹 ID |
+|   billingGroupName | String| N  | 빌링 그룹 이름 |
+|   orgId | String| N  | 조직 ID<br>`groupBy=ORG`, `groupBy=PROJECT`일 때만 반환 |
+|   orgName | String| N  | 조직 이름<br>`groupBy=ORG`, `groupBy=PROJECT`일 때만 반환 |
+|   projectId | String| N  | 프로젝트 ID<br>`groupBy=PROJECT`일 때만 반환 |
+|   projectName | String| N  | 프로젝트 이름<br>`groupBy=PROJECT`일 때만 반환 |
+|   country | String| Y  | 국가 코드  |
+|   chargeAmount | Long| Y  | 이용 금액  |
+|   contractDiscountAmount | Long| Y  | 약정으로 할인된 금액 |
+|   ocpDiscountAmount | Long| Y  | Optimized Cost Plans(OCPs) 할인 금액 |
+|   billingGroupDiscountAmount | Long| Y  | 빌링 그룹 할인 금액 |
+|   projectDiscountAmount | Long| Y  | 프로젝트 할인 금액 |
+|   totalDiscountAmount | Long| Y  | 할인 금액 합계 |
+|   contractExtraAmount | Long| Y  | 약정으로 할증된 금액 |
+|   billingGroupExtraAmount | Long| Y  | 빌링 그룹 할증 금액 |
+|   projectExtraAmount | Long| Y  | 프로젝트 할증 금액 |
+|   totalExtraAmount | Long| Y  | 할증 금액 합계 |
+|   totalCreditLimitAmount | Long| Y  | 제한형 크레딧 적용 금액 |
+|   prePaidTotalAmount | Long| Y  | 선결제 적용 금액 |
+|   totalAmount | Long| Y  | 최종 금액(부가세 미포함)<br>이용 금액 - 할인 금액 + 할증 금액 - 제한형 크레딧 적용 금액 - 선결제 적용 금액 |
+
+
+<a id="상세-내역-이용-금액-조회"></a>
+#### 상세 내역 이용 금액 조회
+
+> GET "/v1/billing/members/payment-statements/usages"
+
+상세 내역 단위의 이용 금액을 조회하는 API입니다.
+
+!!! danger "주의"
+    * 2020년 5월 이후의 청구 월만 조회할 수 있습니다.
+
+##### 필요 권한
+`Member.PaymentStatement.Get`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
+|  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
+|  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
+|  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
+|  Query |projectIds | List&lt;String>| N | 프로젝트 ID 필터(다중, 최대 10개) |
+|  Query |categoryMains | List&lt;String>| N | 메인 카테고리 필터(다중, 최대 10개) |
+|  Query |regions | List&lt;String>| N | 리전 필터(다중, 최대 10개) |
+|  Query |stationIds | List&lt;String>| N | 스테이션 ID 필터(다중, 최대 10개) |
+|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
+|  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "usages": [ {
+    "projectId": "KGDeiKUq",
+    "projectName": "프로젝트 이름",
+    "resourceId": "5f1ab1a1-4e6e-4f66-9b1e-2b3f5c6d7e8f",
+    "resourceName": "인스턴스 이름",
+    "counterName": "c2.small",
+    "categoryMain": "Compute",
+    "categorySub": "Instance",
+    "regionTypeCode": "KR1",
+    "stationId": "stationId",
+    "stationName": "stationName",
+    "displayNameKo": "c2.small",
+    "displayNameEn": "c2.small",
+    "displayNameJa": "c2.small",
+    "displayNameZh": "c2.small",
+    "unitName": "시간",
+    "unit": 1,
+    "usageVolume": 720,
+    "unitPrice": 61,
+    "contractUnitPrice": 55,
+    "chargeAmount": 43920,
+    "contractAmount": 39600,
+    "discountAmount": 4320,
+    "discountTypeCode": "CONTRACT",
+    "prePaidAmount": 0
+  } ],
+  "nextCursor": "MTAyNA"
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [공통 응답](#응답)| Y   |
+|   usages | List&lt;UsageLine>| Y | 상세 내역 목록  |
+|   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
+
+###### UsageLine
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+|   projectId | String| N | 프로젝트 ID  |
+|   projectName | String| N | 프로젝트 이름  |
+|   resourceId | String| N | 리소스 ID  |
+|   resourceName | String| N | 리소스 이름  |
+|   parentResourceId | String| N | 부모 리소스 ID  |
+|   parentResourceName | String| N | 부모 리소스 이름  |
+|   counterName | String| N | 카운터 이름  |
+|   categoryMain | String| N | 메인 카테고리  |
+|   categorySub | String| N | 서브 카테고리  |
+|   regionTypeCode | String| N | 리전 타입 코드  |
+|   stationId | String| N | 스테이션 ID  |
+|   stationName | String| N | 스테이션 이름  |
+|   displayNameKo | String| N | 과금 단위 노출 이름(ko)  |
+|   displayNameEn | String| N | 과금 단위 노출 이름(en)  |
+|   displayNameJa | String| N | 과금 단위 노출 이름(ja)  |
+|   displayNameZh | String| N | 과금 단위 노출 이름(zh)  |
+|   unitName | String| N | 단위 이름  |
+|   unit | Long| Y | 과금 단위  |
+|   usageVolume | BigDecimal| Y | 사용량  |
+|   unitPrice | BigDecimal| Y | 종량제 단가  |
+|   contractUnitPrice | BigDecimal| Y | 약정제 단가  |
+|   chargeAmount | Long| Y | 이용 금액(종량제)  |
+|   contractAmount | Long| Y | 약정 적용 금액  |
+|   discountAmount | Long| Y | 약정 할인 금액  |
+|   discountTypeCode | String| N | 할인 유형 코드<br>BASIC, CONTRACT, OCP |
+|   prePaidAmount | Long| Y | 선결제 적용 금액  |
+|   costPlanOrderId | String| N | Optimized Cost Plans(OCPs) 주문 ID  |
+
+
+<a id="이용-금액-검색-조건-값-목록-조회"></a>
+#### 이용 금액 검색 조건 값 목록 조회
+
+> GET "/v1/billing/members/payment-statements/dimensions"
+
+이용 금액 조회 시 필터로 사용할 수 있는 검색 조건 구분(`dimension`)별 선택지 목록을 조회하는 API입니다.
+
+!!! danger "주의"
+    * 2020년 5월 이후의 청구 월만 조회할 수 있습니다.
+
+!!! tip "알아두기"
+    * 검색 조건 구분(`dimension`)은 결제 그룹 > 빌링 그룹 > 조직 > 프로젝트의 계층을 가지며, 상위 검색 조건 구분(`parentDimension`)과 각 선택지의 상위 식별자·이름이 함께 반환됩니다.
+    * [빌링 그룹, 조직, 프로젝트별 이용 금액 조회](#빌링-그룹-조직-프로젝트별-이용-금액-조회)와 동일한 대상에서 선택지를 추출하므로, 여기서 조회한 값을 그대로 필터로 사용할 수 있습니다.
+
+##### 필요 권한
+`Member.PaymentStatement.Get`
+
+##### 요청 파라미터
+
+| 구분 | 이름 | 타입 | 필수 | 설명  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |dimension | String| Y | 조회할 검색 조건 구분(단일)<br><ul><li>PAYMENT_GROUP: 결제 그룹</li><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
+|  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
+|  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
+|  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
+|  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
+|  Query |orgOwnerIds | List&lt;String>| N | 조직 소유자 UUID 필터(다중, 최대 10개)<br>해당 청구 월에 지정한 UUID가 소유한 조직의 이용 요금이 있는 값만 반환합니다. |
+|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
+|  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
+
+##### 응답 본문
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "uuid": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
+  "dimension": "PROJECT",
+  "parentDimension": "ORG",
+  "values": [ {
+    "id": "KGDeiKUq",
+    "name": "프로젝트 이름",
+    "ownerId": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
+    "parentId": "eNWZ3jZq2FsMSHaQ",
+    "parentName": "조직 이름"
+  } ],
+  "nextCursor": "S0dEZWlLVXE"
+}
+```
+
+###### 응답
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [공통 응답](#응답)| Y   |
+|   uuid | String| Y | 조회 대상 회원 UUID  |
+|   dimension | String| Y | 조회한 검색 조건 구분<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
+|   parentDimension | String| N | 상위 검색 조건 구분<br>최상위(PAYMENT_GROUP)이면 null |
+|   values | List&lt;DimensionValue>| Y | 검색 조건 구분별 필터 선택지 목록  |
+|   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
+
+###### DimensionValue
+
+| 이름 | 타입 | 필수 | 설명 |   
+|------------ | ------------- | ------------- | ------------ |
+|   id | String| Y | 식별자  |
+|   name | String| Y | 표시명  |
+|   ownerId | String| N | 소유자 UUID<br>`dimension=ORG`, `dimension=PROJECT`는 소속 조직의 소유자 |
+|   parentId | String| N | 상위 검색 조건 구분 식별자<br>최상위(결제 그룹)이면 null |
+|   parentName | String| N | 상위 검색 조건 구분 표시명<br>최상위(결제 그룹)이면 null |
 
 
 <a id="프로젝트-통합-Appkey-조회"></a>
@@ -3430,7 +3815,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회 대상 프로젝트 ID | 
+|  Path |project-id | String| Y | 조회 대상 프로젝트 ID | 
 
 
 ##### 응답 본문
@@ -3459,21 +3844,21 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   authenticationList | List&lt;ProjectAppKeyResponse>| No | 프로젝트 통합 Appkey 목록 |
+|   header | [공통 응답](#응답)| Y |
+|   authenticationList | List&lt;ProjectAppKeyResponse>| N | 프로젝트 통합 Appkey 목록 |
 
 ###### ProjectAppKeyResponse
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   appKey | String| No | 콘솔에 노출되는 프로젝트 통합 Appkey  |
-|   authStatus | String| No | 인증 상태 코드(STABLE, STOP, BLOCKED) |
-|   projectId | String| No | 프로젝트 ID |
-|   lastUsedDatetime | Date| No | 마지막 사용 일시  |
-|   modDatetime | Date| No | 삭제 일시  |
-|   reIssueDatetime | Date| No | 재생성 일시  |
-|   regDatetime | Date| No | 생성 일시  |
+|   authId | String| N | 내부적으로 관리하는 인증 수단 아이디  |
+|   appKey | String| N | 콘솔에 노출되는 프로젝트 통합 Appkey  |
+|   authStatus | String| N | 인증 상태 코드(STABLE, STOP, BLOCKED) |
+|   projectId | String| N | 프로젝트 ID |
+|   lastUsedDatetime | Date| N | 마지막 사용 일시  |
+|   modDatetime | Date| N | 삭제 일시  |
+|   reIssueDatetime | Date| N | 재생성 일시  |
+|   regDatetime | Date| N | 생성 일시  |
 
 <a id="User-Access-Key-ID-목록-조회"></a>
 #### User Access Key ID 목록 조회
@@ -3518,25 +3903,25 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   authentications | List&lt;UserAccessKeyResponse>| No | 인증 정보 목록  |
+|   header | [공통 응답](#응답)| Y   |
+|   authentications | List&lt;UserAccessKeyResponse>| N | 인증 정보 목록  |
 
 ###### UserAccessKeyResponse
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   userAccessKeyID | String| No | User Access Key ID  |
-|   secretAccessKey | String| No | 비밀 키(마스킹 처리됨)  |
-|   authStatus | String| No | 인증 상태 코드(STABLE, STOP, BLOCKED) |
-|   uuid | String| No | 사용자 UUID |
-|   lastUsedDatetime | Date| No | User Access Key ID로 인증한 마지막 일시 |
-|   modDatetime | Date| No | 삭제 일시  |
-|   reIssueDatetime | Date| No | 재생성 일시  |
-|   regDatetime | Date| No | 생성 일시  |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 주기(초 단위)  |
-|   lastTokenUsedDatetime | Long| No | 토큰으로 인증/인가한 마지막 일시              |
-|   validTokenCount | Long| No | 유효한 토큰 개수                       |
+|   authId | String| N | 내부적으로 관리하는 인증 수단 아이디  |
+|   userAccessKeyID | String| N | User Access Key ID  |
+|   secretAccessKey | String| N | 비밀 키(마스킹 처리됨)  |
+|   authStatus | String| N | 인증 상태 코드(STABLE, STOP, BLOCKED) |
+|   uuid | String| N | 사용자 UUID |
+|   lastUsedDatetime | Date| N | User Access Key ID로 인증한 마지막 일시 |
+|   modDatetime | Date| N | 삭제 일시  |
+|   reIssueDatetime | Date| N | 재생성 일시  |
+|   regDatetime | Date| N | 생성 일시  |
+|   tokenExpiryPeriod | Long| N | 토큰 만료 주기(초 단위)  |
+|   lastTokenUsedDatetime | Long| N | 토큰으로 인증/인가한 마지막 일시              |
+|   validTokenCount | Long| N | 유효한 토큰 개수                       |
 
 
 <a id="프로젝트-통합-Appkey-등록"></a>
@@ -3554,14 +3939,14 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path | project-id | String| Yes | AppKey를 등록할 프로젝트 ID |
-| Request Body | request | AddProjectAppKeyRequest| Yes | 요청 |
+| Path | project-id | String| Y | AppKey를 등록할 프로젝트 ID |
+| Request Body | request | AddProjectAppKeyRequest| Y | 요청 |
 
 ###### AddProjectAppKeyRequest
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   appkeyAlias | String | Yes   | 프로젝트 통합 Appkey 별칭<br>100자 제한 |
+|   appkeyAlias | String | Y   | 프로젝트 통합 Appkey 별칭<br>100자 제한 |
 
 
 ##### 응답 본문
@@ -3584,16 +3969,16 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   authentication | ResponseProtocol| No  |
+|   header | [공통 응답](#응답)| Y   |
+|   authentication | ResponseProtocol| N  |
 
 ###### ResponseProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   appKey | String| No | 프로젝트 통합 Appkey |
+|   authId | String| N | 내부적으로 관리하는 인증 수단 아이디  |
+|   appKey | String| N | 프로젝트 통합 Appkey |
 
 <a id="User-Access-Key-ID-등록"></a>
 #### User Access Key ID 등록
@@ -3609,14 +3994,14 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Request Body | PostUserAppKeyRequest | PostUserAppKeyRequest| Yes |  | |
+| Request Body | PostUserAppKeyRequest | PostUserAppKeyRequest| Y |  | |
 
 
 ###### PostUserAppKeyRequest
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 기간<br>초 단위이며, 기본값은 하루 |
+|   tokenExpiryPeriod | Long| N | 토큰 만료 기간<br>초 단위이며, 기본값은 하루 |
 
 
 ##### 응답 본문
@@ -3641,18 +4026,18 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
-|   authentication | ResponseProtocol| No  |
+|   header | [공통 응답](#응답)| Y   |
+|   authentication | ResponseProtocol| N  |
 
 ###### ResponseProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----- | ------------ |
-|   authId | String| No | 내부적으로 관리하는 인증 수단 아이디  |
-|   userAccessKeyID | String| No | User Access Key ID  |
-|   secretAccessKey | String| No | 비밀키 |
-|   tokenExpiryPeriod | Long| No | 토큰 만료 기간(초 단위) |
+|   authId | String| N | 내부적으로 관리하는 인증 수단 아이디  |
+|   userAccessKeyID | String| N | User Access Key ID  |
+|   secretAccessKey | String| N | 비밀키 |
+|   tokenExpiryPeriod | Long| N | 토큰 만료 기간(초 단위) |
 
 <a id="프로젝트-통합-Appkey-삭제"></a>
 #### 프로젝트 통합 Appkey 삭제
@@ -3670,8 +4055,8 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path | project-id | String| Yes | 대상 프로젝트 ID |
-|  Path |app-key | String| Yes | 삭제할 프로젝트 통합 Appkey | 
+| Path | project-id | String| Y | 대상 프로젝트 ID |
+|  Path |app-key | String| Y | 삭제할 프로젝트 통합 Appkey | 
 
 
 ##### 응답 본문
@@ -3689,7 +4074,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 
 <a id="User-Access-Key-ID-비밀-키-재발급"></a>
@@ -3707,15 +4092,15 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |user-access-key-id | String| Yes | User Access Key ID | 
-| Request Body | request | ReissueSecretKeyRequest| Yes | 요청 |
+|  Path |user-access-key-id | String| Y | User Access Key ID | 
+| Request Body | request | ReissueSecretKeyRequest| Y | 요청 |
 
 
 ###### ReissueSecretKeyRequest
 
 | 이름 | 타입      | 필수 | 설명                                                |   
 |------------ |---------|----|---------------------------------------------------|
-|   needExpireTokens | Boolean | No | 발급 받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 false |
+|   needExpireTokens | Boolean | N | 발급 받은 토큰 만료 여부(true: 만료함, false: 만료하지 않음)<br>기본값 false |
 
 ##### 응답 본문
 
@@ -3737,15 +4122,15 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   authentication | ResponseProtocol| No  |
+|   header | [공통 응답](#응답)| Y |
+|   authentication | ResponseProtocol| N  |
 
 ###### ResponseProtocol
 
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   secretAccessKey | String| Yes   | 비밀키 |
+|   secretAccessKey | String| Y   | 비밀 키 |
 
 <a id="User-Access-Key-ID-상태-수정"></a>
 #### User Access Key ID 상태 수정
@@ -3762,15 +4147,15 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | user-access-key-id | String| Yes | User Acess Key ID | 
-| Request Body | request | UpdateUserAccessKeyStatusRequest| Yes | 요청 |
+|  Path | user-access-key-id | String| Y | User Access Key ID | 
+| Request Body | request | UpdateUserAccessKeyStatusRequest| Y | 요청 |
 
 
 ###### UpdateUserAccessKeyStatusRequest
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-| status | String| Yes | 변경할 상태(STOP: 중지, STABLE: 사용) |
+| status | String| Y | 변경할 상태(STOP: 중지, STABLE: 사용) |
 
 
 ##### 응답 본문
@@ -3789,7 +4174,7 @@ User Access Key ID의 비밀 키를 재발급하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 <a id="User-Access-Key-ID-삭제"></a>
 #### User Access Key ID 삭제
@@ -3805,7 +4190,7 @@ User Access Key ID를 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | user-access-key-id | String| Yes | User Access Key ID | 
+|  Path | user-access-key-id | String| Y | User Access Key ID | 
 
 
 ##### 응답 본문
@@ -3825,7 +4210,7 @@ User Access Key ID를 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [공통 응답](#응답)| Y |
 
 
 <a id="토큰-목록-조회"></a>
@@ -3842,14 +4227,14 @@ User Access Key ID로 발급한 토큰 목록을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수  | 설명                                                                           | 
 |------------- |------------- | ------------- |-----|------------------------------------------------------------------------------| 
-|  Path | user-access-key-id | String| Yes | User Access Key ID                                                           | 
-|  Query | token | String| No  | 토큰 전문<br>부분 검색은 지원하지 않음                                                        | 
-|  Query | status | String| No  | 토큰 상태<br>ACTIVE: 활성, EXPIRED: 만료                                             | 
-|  Query | lastAccessDatetimeFrom | Date| No  | 토큰 마지막 사용 일시<br>지정한 시간보다 크거나 같은 시간에 사용된 토큰을 조회<br>예: `2025-02-11T00:56:50.902Z` | 
-|  Query | expireDatetimeFrom | Date| No  | 토큰 만료 일시<br>지정한 시간보다 크거나 같은 시간에 만료된 토큰을 조회<br>예: `2025-02-11T00:56:50.902Z`   | 
-|  Query | regDatetimeFrom | Date| No  | 토큰 등록 일시<br>지정한 시간보다 크거나 같은 시간에 생성된 토큰을 조회<br>예: `2025-02-11T00:56:50.902Z`   |
-|  Query | page | Integer| No  | 대상 페이지<br>기본값 1                                                                |
-|  Query | limit | Integer| No  | 페이지당 표시 건수<br>기본값 20                                                            |
+|  Path | user-access-key-id | String| Y | User Access Key ID                                                           | 
+|  Query | token | String| N  | 토큰 전문<br>부분 검색은 지원하지 않음                                                        | 
+|  Query | status | String| N  | 토큰 상태<br>ACTIVE: 활성, EXPIRED: 만료                                             | 
+|  Query | lastAccessDatetimeFrom | Date| N  | 토큰 마지막 사용 일시<br>지정한 시간보다 크거나 같은 시간에 사용된 토큰을 조회<br>예: `2025-02-11T00:56:50.902Z` | 
+|  Query | expireDatetimeFrom | Date| N  | 토큰 만료 일시<br>지정한 시간보다 크거나 같은 시간에 만료된 토큰을 조회<br>예: `2025-02-11T00:56:50.902Z`   | 
+|  Query | regDatetimeFrom | Date| N  | 토큰 등록 일시<br>지정한 시간보다 크거나 같은 시간에 생성된 토큰을 조회<br>예: `2025-02-11T00:56:50.902Z`   |
+|  Query | page | Integer| N  | 대상 페이지<br>기본값 1                                                                |
+|  Query | limit | Integer| N  | 페이지당 표시 건수<br>기본값 20                                                            |
 
 
 
@@ -3881,14 +4266,14 @@ User Access Key ID로 발급한 토큰 목록을 조회하는 API입니다.
 
 | 이름 | 타입           | 필수  | 설명                 |   
 |------------ |--------------|-----|--------------------|
-|   header | [공통 응답](#응답) | Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   accessToken | String       | Yes | 마스킹 처리된 토큰         |
-|   expireDatetime | Date         | No  | 토큰 만료일             |
-|   lastAccessDatetime | Date         | Yes | 토큰으로 인증/인가한 마지막 일시 |
-|   regDatetime | Date         | Yes | 토큰 생성 일시           |
-|   status | String       | Yes | 토큰 상태              |
-|   tokenId | Long         | Yes | 토큰 ID              |
+|   header | [공통 응답](#응답) | Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   accessToken | String       | Y | 마스킹 처리된 토큰         |
+|   expireDatetime | Date         | N  | 토큰 만료일             |
+|   lastAccessDatetime | Date         | Y | 토큰으로 인증/인가한 마지막 일시 |
+|   regDatetime | Date         | Y | 토큰 생성 일시           |
+|   status | String       | Y | 토큰 상태              |
+|   tokenId | Long         | Y | 토큰 ID              |
 
 
 <a id="토큰-다건-만료"></a>
@@ -3907,9 +4292,9 @@ User Access Key ID로 발급한 토큰을 다건 만료시키는 API입니다.<b
 
 | 구분           | 이름                 | 타입              | 필수  | 설명                 | 
 |--------------|--------------------|-----------------|-----|--------------------| 
-| Path         | user-access-key-id | String          | Yes | User Access Key ID | 
-| Request Body | tokenIds           | List&lt;Long>   | No  | 토큰 ID 목록           | 
-| Request Body         | tokens             | List&lt;String> | No   | 토큰 목록          | 
+| Path         | user-access-key-id | String          | Y | User Access Key ID | 
+| Request Body | tokenIds           | List&lt;Long>   | N  | 토큰 ID 목록           | 
+| Request Body         | tokens             | List&lt;String> | N   | 토큰 목록          | 
 
 
 ##### 응답 본문
@@ -3929,7 +4314,7 @@ User Access Key ID로 발급한 토큰을 다건 만료시키는 API입니다.<b
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [공통 응답](#응답)| Y |
 
 
 <a id="프로젝트-IAM-계정-생성"></a>
@@ -3948,8 +4333,8 @@ IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 멤버를 추가할 프로젝트 ID | 
-| Request Body | request | AddIamProjectMemberRequest| Yes | 요청 |
+|  Path |project-id | String| Y | 멤버를 추가할 프로젝트 ID | 
+| Request Body | request | AddIamProjectMemberRequest| Y | 요청 |
 
 
 
@@ -3963,8 +4348,8 @@ IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |  
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List&lt;UserAssignRoleProtocol>| Yes | 사용자에게 할당할 역할 목록  |
-|   memberUuid | String| Yes | 추가할 멤버의 UUID  |
+|   assignRoles | List&lt;UserAssignRoleProtocol>| Y | 사용자에게 할당할 역할 목록  |
+|   memberUuid | String| Y | 추가할 멤버의 UUID  |
 
 
 ###### UserAssignRoleProtocol
@@ -3972,8 +4357,8 @@ IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleId | String| Yes | 역할 ID  |
-|   conditions | List&lt;AssignAttributeConditionProtocol>| No | 역할 조건 속성  |
+|   roleId | String| Y | 역할 ID  |
+|   conditions | List&lt;AssignAttributeConditionProtocol>| N | 역할 조건 속성  |
 
 
 ###### AssignAttributeConditionProtocol
@@ -3981,9 +4366,9 @@ IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   attributeId | String| Yes | 조건 속성 ID  |
-|   attributeOperatorTypeCode | String| Yes | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
-|   attributeValues | List&lt;String>| Yes | 조건 속성 값  |
+|   attributeId | String| Y | 조건 속성 ID  |
+|   attributeOperatorTypeCode | String| Y | 조건 속성 연산자<br>조건 속성 데이터 타입에 따라 사용할 수 있는 연산자가 다름<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List&lt;String>| Y | 조건 속성 값  |
 
 
 ##### 응답 본문
@@ -4003,7 +4388,7 @@ IAM 계정을 프로젝트 멤버로 추가하는 API입니다.
 
 | 이름 | 타입           | 필수 | 설명 |   
 |------------ |--------------| ------- | ------------ |
-|   header | [공통 응답](#응답) | Yes |
+|   header | [공통 응답](#응답) | Y |
 
 
 <a id="프로젝트-IAM-계정-다건-삭제"></a>
@@ -4022,8 +4407,8 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Request Body |request | DeleteMembersRequest | Yes | 요청 | 
+|  Path |project-id | String| Y | 프로젝트 ID | 
+|  Request Body |request | DeleteMembersRequest | Y | 요청 | 
 
 
 ###### DeleteMembersRequest
@@ -4031,7 +4416,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |  
 |------------ | ------------- | ------------- | ------------ |
-|   memberUuids | List&lt;String>| Yes | 삭제할 대상 계정의 UUID 목록 |
+|   memberUuids | List&lt;String>| Y | 삭제할 대상 계정의 UUID 목록 |
 
 
 ##### 응답 본문
@@ -4051,7 +4436,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
+|   header | [공통 응답](#응답)| Y |
 
 
 <a id="프로젝트-IAM-계정-단건-조회"></a>
@@ -4070,8 +4455,8 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 멤버를 조회할 프로젝트 ID |
-|  Path |member-uuid | String| Yes | 조회할 멤버 UUID |
+|  Path |project-id | String| Y | 멤버를 조회할 프로젝트 ID |
+|  Path |member-uuid | String| Y | 조회할 멤버 UUID |
 
 
 
@@ -4119,8 +4504,8 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   projectMember | ProjectIamMemberRoleBundleProtocol| Yes  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
+|   header | [공통 응답](#응답)| Y |
+|   projectMember | ProjectIamMemberRoleBundleProtocol| Y  | 추가된 멤버 정보, 오류 시 포함되지 않음 |
 
 
 ###### ProjectMemberRoleBundleProtocol
@@ -4128,17 +4513,17 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   uuid | String| Yes | 멤버 UUID  |
-|   id | String| Yes | 아이디  |
-|   name | String| No | 이름  |
-|   emailAddress | String| No | 멤버 이메일 주소  |
-|   maskingEmail | String| No | 멤버의 마스킹된 이메일  |
-|   mobilePhone | String| No | 전화 번호  |
-|   relationDateTime | Date| No | 멤버 추가 시간  |
-|   joinYmdt | Date| No | 가입 일시  |
-|   recentLoginYmdt | Date| No | 최근 로그인 일시  |
-|   recentPasswordModifyYmdt | Date| No | 최근 비밀번호 변경 일시  |
-|   roles | List&lt;RoleBundleProtocol>| No | 연관 역할 목록(조건 속성 포함)  |
+|   uuid | String| Y | 멤버 UUID  |
+|   id | String| Y | 아이디  |
+|   name | String| N | 이름  |
+|   emailAddress | String| N | 멤버 이메일 주소  |
+|   maskingEmail | String| N | 멤버의 마스킹된 이메일  |
+|   mobilePhone | String| N | 전화번호  |
+|   relationDateTime | Date| N | 멤버 추가 시간  |
+|   joinYmdt | Date| N | 가입 일시  |
+|   recentLoginYmdt | Date| N | 최근 로그인 일시  |
+|   recentPasswordModifyYmdt | Date| N | 최근 비밀번호 변경 일시  |
+|   roles | List&lt;RoleBundleProtocol>| N | 연관 역할 목록(조건 속성 포함)  |
 
 
 [RoleBundleProtocol](#rolebundleprotocol)
@@ -4160,9 +4545,9 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 조회할 프로젝트 ID | 
-|  Query |limit | Integer| No | 페이지당 표시 건수, 기본값 20 |
-|  Query |page | Integer| No | 대상 페이지, 기본값 1 |
+|  Path |project-id | String| Y | 조회할 프로젝트 ID | 
+|  Query |limit | Integer| N | 페이지당 표시 건수, 기본값 20 |
+|  Query |page | Integer| N | 대상 페이지, 기본값 1 |
 
 
 
@@ -4198,9 +4583,9 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   projectMembers | List&lt;IamProjectMemberProtocol>| Yes | 프로젝트 멤버 목록  |
+|   header | [공통 응답](#응답)| Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   projectMembers | List&lt;IamProjectMemberProtocol>| Y | 프로젝트 멤버 목록  |
 
 
 
@@ -4209,16 +4594,16 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   uuid | String| Yes | 멤버 UUID  |
-|   id | String| Yes | 아이디  |
-|   name | String| No | 이름  |
-|   emailAddress | String| No | 멤버 이메일 주소  |
-|   maskingEmail | String| No | 멤버의 마스킹된 이메일  |
-|   mobilePhone | String| No | 전화 번호  |
-|   relationDateTime | Date| No | 멤버 추가 시간  |
-|   joinYmdt | Date| No | 가입 일시  |
-|   recentLoginYmdt | Date| No | 최근 로그인 일시  |
-|   recentPasswordModifyYmdt | Date| No | 최근 비밀번호 변경 일시  |
+|   uuid | String| Y | 멤버 UUID  |
+|   id | String| Y | 아이디  |
+|   name | String| N | 이름  |
+|   emailAddress | String| N | 멤버 이메일 주소  |
+|   maskingEmail | String| N | 멤버의 마스킹된 이메일  |
+|   mobilePhone | String| N | 전화번호  |
+|   relationDateTime | Date| N | 멤버 추가 시간  |
+|   joinYmdt | Date| N | 가입 일시  |
+|   recentLoginYmdt | Date| N | 최근 로그인 일시  |
+|   recentPasswordModifyYmdt | Date| N | 최근 비밀번호 변경 일시  |
 
 
 <a id="프로젝트-IAM-계정-역할-수정"></a>
@@ -4235,9 +4620,9 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 프로젝트 ID | 
-|  Path |member-uuid | String| Yes | 역할 변경 대상 멤버 UUID | 
-| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | 요청 |
+|  Path |project-id | String| Y | 프로젝트 ID | 
+|  Path |member-uuid | String| Y | 역할 변경 대상 멤버 UUID | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Y | 요청 |
 
 
 
@@ -4258,7 +4643,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [공통 응답](#응답)| Yes   |
+|   header | [공통 응답](#응답)| Y   |
 
 
 <a id="조직-하위-멤버의-모든-인증정보-목록-조회"></a>
@@ -4277,8 +4662,8 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | UserAccessKey를 조회할 조직 ID |
-|  Query |paging | Paging| No | 페이지당 표시 건수, 기본값 20 |
+|  Path |org-id | String| Y | UserAccessKey를 조회할 조직 ID |
+|  Query |paging | Paging| N | 페이지당 표시 건수, 기본값 20 |
 
 
 
@@ -4322,27 +4707,27 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [공통 응답](#응답)| Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   authenticationList | List&lt;UserAccessKeyResponseV7>| Yes  | 멤버별 인증 키 정보 |
+|   header | [공통 응답](#응답)| Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   authenticationList | List&lt;UserAccessKeyResponseV7>| Y  | 멤버별 인증 키 정보 |
 
 
 ###### UserAccessKeyResponseV7
 
 | 이름 | 타입 | 필수 | 설명 |
 |------------|--------|------|-----------------------------|
-| authId | String | Yes | 인증 수단 ID(마스킹 처리) |
-| uuid | String | Yes | 사용자 UUID |
-| userAccessKeyID | String | Yes | User Access Key ID(마스킹 처리) |
-| secretAccessKey | String | No | 비밀 키(공백 처리) |
-| authStatusCode | String | Yes | 인증 상태 코드(STABLE, STOP, BLOCKED) |
-| tokenExpiryPeriod | Long | No | 토큰 만료 주기 |
-| regDatetime | Date | No | 생성 일시 |
-| modDatetime | Date | No | 삭제 일시 |
-| lastUsedDatetime | Date | No | 마지막 사용 일시 |
-| reIssueDatetime | Date | No | secretAccessKey 재생성 일시 |
-| lastTokenUsedDatetime | Date | No | 토큰 마지막 사용 일시 |
-| validTokenCount | Long | No | 유효한 토큰 개수 |
+| authId | String | Y | 인증 수단 ID(마스킹 처리) |
+| uuid | String | Y | 사용자 UUID |
+| userAccessKeyID | String | Y | User Access Key ID(마스킹 처리) |
+| secretAccessKey | String | N | 비밀 키(공백 처리) |
+| authStatusCode | String | Y | 인증 상태 코드(STABLE, STOP, BLOCKED) |
+| tokenExpiryPeriod | Long | N | 토큰 만료 주기 |
+| regDatetime | Date | N | 생성 일시 |
+| modDatetime | Date | N | 삭제 일시 |
+| lastUsedDatetime | Date | N | 마지막 사용 일시 |
+| reIssueDatetime | Date | N | secretAccessKey 재생성 일시 |
+| lastTokenUsedDatetime | Date | N | 토큰 마지막 사용 일시 |
+| validTokenCount | Long | N | 유효한 토큰 개수 |
 
 <a id="자신의-조직-목록-조회"></a>
 #### 자신의 조직 목록 조회
@@ -4356,10 +4741,10 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| orgName | String | No | 조직 이름 |
-| orgNameMatchTypeCode | String | No | 조직 이름 검색 타입(EXACT: 정확히 일치, LIKE: 부분 일치, 기본값: LIKE) |
-| page | Integer | No | 대상 페이지, 기본값 1 |
-| limit | Integer | No | 페이지당 표시 건수, 기본값 20 |
+| orgName | String | N | 조직 이름 |
+| orgNameMatchTypeCode | String | N | 조직 이름 검색 타입(EXACT: 정확히 일치, LIKE: 부분 일치, 기본값: LIKE) |
+| page | Integer | N | 대상 페이지, 기본값 1 |
+| limit | Integer | N | 페이지당 표시 건수, 기본값 20 |
 
 **[Response Body]**
 ```json
@@ -4411,54 +4796,54 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| header | [공통 응답](#응답) | Yes | |
-| orgList | List&lt;OrgMemberRelationProtocol> | Yes | 조직 목록 정보 |
-| paging | [PagingResponse](#pagingresponse) | Yes | 페이징 정보 |
+| header | [공통 응답](#응답) | Y | |
+| orgList | List&lt;OrgMemberRelationProtocol> | Y | 조직 목록 정보 |
+| paging | [PagingResponse](#pagingresponse) | Y | 페이징 정보 |
 
 ###### OrgMemberRelationProtocol
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| org | OrgProtocol | Yes | 조직 정보 |
-| orgMember | OrgMemberProtocol | Yes | 조직/프로젝트 멤버 정보 |
-| orgOwner | OwnerProtocol | Yes | 조직 Owner 정보 |
+| org | OrgProtocol | Y | 조직 정보 |
+| orgMember | OrgMemberProtocol | Y | 조직/프로젝트 멤버 정보 |
+| orgOwner | OwnerProtocol | Y | 조직 Owner 정보 |
 
 ###### OrgProtocol
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| orgId | String | Yes | 조직 ID |
-| orgName | String | Yes | 조직 이름 |
-| orgStatusCode | String | Yes | 조직 상태 코드(STABLE, CLOSED) |
-| ownerUuid | String | Yes | 조직 Owner UUID |
-| regDateTime | Date | Yes | 조직 생성일시 |
-| remainingJobCode | String | Yes | 조직 후속 작업(NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
-| ipAclTypeCode | String | Yes | 조직 IP ACL 타입 코드(COMMON, INDIVIDUAL) |
-| orgDomainList | List&lt;OrgDomainProtocol> | Yes | 조직 도메인 목록 |
+| orgId | String | Y | 조직 ID |
+| orgName | String | Y | 조직 이름 |
+| orgStatusCode | String | Y | 조직 상태 코드(STABLE, CLOSED) |
+| ownerUuid | String | Y | 조직 Owner UUID |
+| regDateTime | Date | Y | 조직 생성일시 |
+| remainingJobCode | String | Y | 조직 후속 작업(NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
+| ipAclTypeCode | String | Y | 조직 IP ACL 타입 코드(COMMON, INDIVIDUAL) |
+| orgDomainList | List&lt;OrgDomainProtocol> | Y | 조직 도메인 목록 |
 
 ###### OrgMemberProtocol
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| existOrgMember | Boolean | Yes | 조직 멤버 존재 여부 |
-| orgOwner | Boolean | Yes | 조직 Owner 여부 |
+| existOrgMember | Boolean | Y | 조직 멤버 존재 여부 |
+| orgOwner | Boolean | Y | 조직 Owner 여부 |
 
 ###### OwnerProtocol
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| email | String | Yes | 조직 Owner 이메일 |
-| name | String | Yes | 조직 Owner 이름 |
-| restrictStatusCode | String | Yes | 조직 Owner 제약 상태(HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
-| country | String | Yes | 조직 Owner 국가 코드 |
-| restrictTypes | List&lt;String> | Yes | 조직 Owner 제약 목록 |
+| email | String | Y | 조직 Owner 이메일 |
+| name | String | Y | 조직 Owner 이름 |
+| restrictStatusCode | String | Y | 조직 Owner 제약 상태(HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
+| country | String | Y | 조직 Owner 국가 코드 |
+| restrictTypes | List&lt;String> | Y | 조직 Owner 제약 목록 |
 
 ###### OrgDomainProtocol
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| domainId | String | Yes | 조직 도메인 ID |
-| domainName | String | Yes | 조직 도메인 이름 |
+| domainId | String | Y | 조직 도메인 ID |
+| domainName | String | Y | 조직 도메인 이름 |
 
 
 <a id="자신의-조직-추가"></a>
@@ -4475,14 +4860,14 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Request Body | request | [CreateOrgRequest](#createorgrequest)| Yes | 요청 |
+| Request Body | request | [CreateOrgRequest](#createorgrequest)| Y | 요청 |
 
 
 ###### CreateOrgRequest
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| orgName | String | Yes | 생성할 조직 이름(최대 70자) |
+| orgName | String | Y | 생성할 조직 이름(최대 70자) |
 
 
 ##### 응답 본문
@@ -4510,19 +4895,19 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| header | [공통 응답](#응답) | Yes | |
-| orgId | String | Yes | 조직 ID |
-| orgName | String | Yes | 조직 이름 |
-| owner | [Owner](#owner) | Yes | 조직 Owner 정보 |
+| header | [공통 응답](#응답) | Y | |
+| orgId | String | Y | 조직 ID |
+| orgName | String | Y | 조직 이름 |
+| owner | [Owner](#owner) | Y | 조직 Owner 정보 |
 
 ###### Owner
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| email | String | Yes | 조직 Owner 이메일 |
-| name | String | Yes | 조직 Owner 이름 |
-| ownerId | String | Yes | 조직 Owner ID |
-| restrictTypes | List&lt;String> | Yes | 제약 대상 목록 |
+| email | String | Y | 조직 Owner 이메일 |
+| name | String | Y | 조직 Owner 이름 |
+| ownerId | String | Y | 조직 Owner ID |
+| restrictTypes | List&lt;String> | Y | 제약 대상 목록 |
 
 
 <a id="조직-단건-삭제"></a>
@@ -4539,7 +4924,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 조직 ID |
+|  Path |org-id | String| Y | 조직 ID |
 
 
 ##### 응답 본문
@@ -4558,7 +4943,7 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| header | [공통 응답](#응답) | Yes | |
+| header | [공통 응답](#응답) | Y | |
 
 
 <a id="서비스-정보-목록-조회"></a>
@@ -4575,12 +4960,12 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |---|---|---|---|---|
-|  Query | productId | String | No | 서비스 ID |
-|  Query | productCategoryCode | String | No | 서비스 카테고리 코드(PROJECT, ORG, MARKET_PLACE) |
-|  Query | productName | String | No | 서비스 이름 |
-|  Query | productNameLike | String | No | 서비스 이름 Like 검색 |
-|  Query | limit | Integer| No | 페이지당 표시 건수, 기본값 20 | 
-|  Query | page | Integer| No | 대상 페이지, 기본값 1 |
+|  Query | productId | String | N | 서비스 ID |
+|  Query | productCategoryCode | String | N | 서비스 카테고리 코드(PROJECT, ORG, MARKET_PLACE) |
+|  Query | productName | String | N | 서비스 이름 |
+|  Query | productNameLike | String | N | 서비스 이름 Like 검색 |
+|  Query | limit | Integer| N | 페이지당 표시 건수, 기본값 20 | 
+|  Query | page | Integer| N | 대상 페이지, 기본값 1 |
 
 
 ##### 응답 본문
@@ -4613,18 +4998,18 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| header | [공통 응답](#응답) | Yes | |
-| paging | [PagingResponse](#pagingresponse)| Yes | |
-| products | List&lt;Product> | Yes | 서비스 정보 목록 |
+| header | [공통 응답](#응답) | Y | |
+| paging | [PagingResponse](#pagingresponse)| Y | |
+| products | List&lt;Product> | Y | 서비스 정보 목록 |
 
 ###### Product
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| parentProductId | String | No | 부모 서비스 ID |
-| productCategoryCode | String | Yes | 서비스 카테고리 코드(PROJECT, ORG, MARKET_PLACE) |
-| productId | String | Yes | 서비스 ID |
-| productName | String | Yes | 서비스 이름 |
+| parentProductId | String | N | 부모 서비스 ID |
+| productCategoryCode | String | Y | 서비스 카테고리 코드(PROJECT, ORG, MARKET_PLACE) |
+| productId | String | Y | 서비스 ID |
+| productName | String | Y | 서비스 이름 |
 
 
 <a id="역할-설명-다국어-조회"></a>
@@ -4641,12 +5026,12 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Query |messageType | String| No | 메시지 타입<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
-| Query |languages | List&lt;String>| No | 언어<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
-| Query |keyword | String| No | 검색 키워드 |
-| Query |messageId | String| No | 메시지 ID |
-| Query |limit | Integer| Yes | 페이지당 표시 건수 | 
-| Query |page | Integer| Yes | 대상 페이지 |
+| Query |messageType | String| N | 메시지 타입<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
+| Query |languages | List&lt;String>| N | 언어<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
+| Query |keyword | String| N | 검색 키워드 |
+| Query |messageId | String| N | 메시지 ID |
+| Query |limit | Integer| Y | 페이지당 표시 건수 | 
+| Query |page | Integer| Y | 대상 페이지 |
 
 
 ##### 응답 본문
@@ -4684,23 +5069,23 @@ IAM 계정을 해당 프로젝트에서 삭제하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| header | [공통 응답](#응답) | Yes | |
-| messages | List&lt;MessageProtocol> | Yes | 메시지 목록 |
-| paging | [PagingResponse](#pagingresponse)| Yes | |
+| header | [공통 응답](#응답) | Y | |
+| messages | List&lt;MessageProtocol> | Y | 메시지 목록 |
+| paging | [PagingResponse](#pagingresponse)| Y | |
 
 ###### MessageProtocol
 
 | 이름 | 타입 | 필수 | 설명 |
 |---|---|---|---|
-| i18nMessageSeq | Long | No | 메시지 순번 |
-| categoryId | String | No | 카테고리 ID |
-| messageId | String | No | 메시지 ID |
-| messageType | String | No | 메시지 타입(MESSAGE, ERROR) |
-| description | String | No | 설명 |
-| koKr | String | No | 한국어 메시지 |
-| enUs | String | No | 영어 메시지 |
-| jaJp | String | No | 일본어 메시지 |
-| zhCn | String | No | 중국어 메시지 |
+| i18nMessageSeq | Long | N | 메시지 순번 |
+| categoryId | String | N | 카테고리 ID |
+| messageId | String | N | 메시지 ID |
+| messageType | String | N | 메시지 타입(MESSAGE, ERROR) |
+| description | String | N | 설명 |
+| koKr | String | N | 한국어 메시지 |
+| enUs | String | N | 영어 메시지 |
+| jaJp | String | N | 일본어 메시지 |
+| zhCn | String | N | 중국어 메시지 |
 
 
 ### 오류 코드
