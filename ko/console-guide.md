@@ -471,6 +471,8 @@ NHN Cloud 운영자가 장애 대응 등 운영상의 목적으로 고객의 리
 | RDS for PostgreSQL | VIEWER | RDS for PostgreSQL 서비스 Read(읽기) |
 | RDS for MariaDB | ADMIN | RDS for MariaDB 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | RDS for MariaDB | VIEWER | RDS for MariaDB 서비스 Read(읽기) |
+| Database Migration Service | ADMIN | Database Migration Service 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제) |
+| Database Migration Service | VIEWER | Database Migration Service 서비스 Read(읽기) |
 | RDS for MS-SQL | ADMIN | RDS for MS-SQL 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | EasyCache | ADMIN | EasyCache 서비스 Create(생성), Read(읽기), Update(갱신), Delete(삭제)  |
 | EasyCache | VIEWER | EasyCache 서비스 복제 그룹 메뉴 Read(읽기), 모니터링 메뉴 Read(읽기) |

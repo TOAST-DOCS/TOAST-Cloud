@@ -323,6 +323,14 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | DB 인스턴스 Data Storage | DB 인스턴스당 | 2,048GB | O | | 
 | DB 인스턴스 Data Storage | 프로젝트당 | 10,240GB | O | |
 
+### Database Migration Service 서비스 리소스 제공 정책
+리소스 사용량은 프로젝트별로 계산됩니다.
+
+|리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |
+|----|----|----|----|----|
+| 마이그레이션 인스턴스 CPU | 프로젝트당 | 100vCore | X | |
+| 마이그레이션 인스턴스 메모리 | 프로젝트당 | 262,144MB | X | |
+| 마이그레이션 인스턴스 Data Storage | 프로젝트당 | 10,240GB | X | |
 
 <a id="resource-provision-policy-for-network-firewall"></a>
 ### Network Firewall 서비스 리소스 제공 정책 { #resource-provision-policy-for-network-firewall }
