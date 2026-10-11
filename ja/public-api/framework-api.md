@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=252b1c33d7f4 -->
 
 # フレームワークAPI
@@ -23,7 +25,7 @@ Public APIを呼び出す時、下記のRequest Headerを必ず含める必要�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Header |  x-nhn-authorization | String| Yes | ユーザーが発行されたBearerタイプトークン |
+| Header |  x-nhn-authorization | String| Y | ユーザーが発行されたBearerタイプトークン |
 
 <a id="common-response"></a>
 #### レスポンス
@@ -40,9 +42,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   isSuccessful | Boolean | No | 成否 |
-|   resultCode | Integer| No | 結果コード。成功した場合は0が返され、失敗した場合はエラーコードを返します。  |
-|   resultMessage | String| No | 結果メッセージ |
+|   isSuccessful | Boolean | N | 成否 |
+|   resultCode | Integer| N | 結果コード。成功した場合は0が返され、失敗した場合はエラーコードを返します。  |
+|   resultMessage | String| N | 結果メッセージ |
 
 <a id="common-type"></a>
 #### 共通タイプ
@@ -119,6 +121,10 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#listorganization-ip-acls) | 組織IP ACLリスト照会 |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#get-the-price-of-a-service-on-a-pay-as-you-go-subscription) | 従量制に登録されたサービス価格照会 |
 | GET |[/v1/billing/contracts/basic/products](#list-services-enrolled-in-a-pay-as-you-go-subscription) | 従量制に登録されたサービスリスト照会 |
+| GET |[/v1/billing/members/payment-statements](#view-charges-by-payment-statement) | 請求書別利用金額照会 |
+| GET |[/v1/billing/members/payment-statements/charge-summaries](#view-charge-summaries-by-scope) | ビリンググループ、組織、プロジェクト別利用金額照会 |
+| GET |[/v1/billing/members/payment-statements/usages](#view-individual-charge-lines) | 詳細内訳利用金額照会 |
+| GET |[/v1/billing/members/payment-statements/dimensions](#view-charge-filter-dimensions) | 利用金額検索条件値リスト照会 |
 | GET | [/v1/authentications/projects/{project-id}/project-appkeys](#get-project-integrated-appkey) | プロジェクト統合Appkey照会 |
 | GET |[/v1/authentications/user-access-keys](#listuser-access-key-ids) | User Access Key IDリスト照会 |
 | POST | [/v1/authentications/projects/{project-id}/project-appkeys](#register-a-integrated-project-appkey) | プロジェクト統合Appkey登録 |
@@ -160,8 +166,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | メンバーを追加するプロジェクトID | 
-| Request Body | request | CreateMemberRequest| Yes | リクエスト |
+|  Path |project-id | String| Y | メンバーを追加するプロジェクトID | 
+| Request Body | request | CreateMemberRequest| Y | リクエスト |
 
 
 
@@ -175,10 +181,10 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |  
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List&lt;UserAssignRoleProtocol>| Yes | ユーザーに割り当てるロールリスト |
-|   memberUuid | String| No | 追加するメンバーのUUID  |
-|   email | String| No | 追加するメンバーのメールアドレス |
-|   userCode | String| No | 追加するIAMメンバーID  |
+|   assignRoles | List&lt;UserAssignRoleProtocol>| Y | ユーザーに割り当てるロールリスト |
+|   memberUuid | String| N | 追加するメンバーのUUID  |
+|   email | String| N | 追加するメンバーのメールアドレス |
+|   userCode | String| N | 追加するIAMメンバーID  |
 
 
 ##### UserAssignRoleProtocol
@@ -186,8 +192,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleId | String| Yes | ロールID  |
-|   conditions | List&lt;AssignAttributeConditionProtocol>| No | ロール条件属性 |
+|   roleId | String| Y | ロールID  |
+|   conditions | List&lt;AssignAttributeConditionProtocol>| N | ロール条件属性 |
 
 
 ##### AssignAttributeConditionProtocol
@@ -195,9 +201,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   attributeId | String| Yes | 条件属性ID  |
-|   attributeOperatorTypeCode | String| Yes | 条件属性演算子<br>条件属性データ型によって使用できる演算子が異なる<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
-|   attributeValues | List&lt;String>| Yes | 条件属性値 |
+|   attributeId | String| Y | 条件属性ID  |
+|   attributeOperatorTypeCode | String| Y | 条件属性演算子<br>条件属性データ型によって使用できる演算子が異なる<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List&lt;String>| Y | 条件属性値 |
 
 
 <a id="create-a-project-member-response-body"></a>
@@ -218,7 +224,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ          | 必須 | 説明 |   
 |------------ |--------------| ------- | ------------ |
-|   header | [共通レスポンス](#common-response) | Yes |
+|   header | [共通レスポンス](#common-response) | Y |
 
 
 <a id="add-a-project"></a>
@@ -239,8 +245,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path |org-id | String| Yes | プロジェクトを追加する組織ID | 
-| Request Body | request | CreateProjectRequest| Yes | リクエスト |
+| Path |org-id | String| Y | プロジェクトを追加する組織ID | 
+| Request Body | request | CreateProjectRequest| Y | リクエスト |
 
 
 ##### CreateProjectRequest
@@ -248,8 +254,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------ | ------------ |
-|   description | String| No | プロジェクトの説明(最大100文字) |
-|   projectName | String| Yes| プロジェクト名(最大40文字) |
+|   description | String| N | プロジェクトの説明(最大100文字) |
+|   projectName | String| Y| プロジェクト名(最大40文字) |
 
 
 <a id="add-a-project-response-body"></a>
@@ -276,14 +282,14 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes  |
-|   regDateTime | Date| Yes   | プロジェクト作成日時 | 
-|   description | String| No   | プロジェクトの説明 | 
-|   ownerId | String| Yes   | プロジェクト所有者メンバーID | 
-|   projectName | String| Yes   | プロジェクト名 | 
-|   projectId | String| Yes   | プロジェクトID | 
-|   orgId | String| Yes   | 組織ID | 
-|   projectStatusCode | String| Yes   | プロジェクトの状態<br><ul><li>STABLE：正常に使用中の状態</li><li>CLOSED：支払いが完了し、プロジェクトが正常に閉じた状態</li><li>BLOCKED：管理者によって使用が禁止された状態</li><li>TERMINATED：延滞により、全てのリソースが削除された状態</li><li>DISABLED：全てのサービスが閉じた状態であるが、値が支払われていない状態</li></ul> | 
+|   header | [共通レスポンス](#common-response)| Y  |
+|   regDateTime | Date| Y   | プロジェクト作成日時 | 
+|   description | String| N   | プロジェクトの説明 | 
+|   ownerId | String| Y   | プロジェクト所有者メンバーID | 
+|   projectName | String| Y   | プロジェクト名 | 
+|   projectId | String| Y   | プロジェクトID | 
+|   orgId | String| Y   | 組織ID | 
+|   projectStatusCode | String| Y   | プロジェクトの状態<br><ul><li>STABLE：正常に使用中の状態</li><li>CLOSED：支払いが完了し、プロジェクトが正常に閉じた状態</li><li>BLOCKED：管理者によって使用が禁止された状態</li><li>TERMINATED：延滞により、全てのリソースが削除された状態</li><li>DISABLED：全てのサービスが閉じた状態であるが、値が支払われていない状態</li></ul> |
 
 
 <a id="delete-a-single-project-member"></a>
@@ -304,8 +310,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | プロジェクトID | 
-|  Path |target-uuid | String| Yes | 削除対象メンバーUUID | 
+|  Path |project-id | String| Y | プロジェクトID | 
+|  Path |target-uuid | String| Y | 削除対象メンバーUUID | 
 
 
 
@@ -328,7 +334,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
+|   header | [共通レスポンス](#common-response)| Y |
 
 
 
@@ -352,7 +358,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 削除するプロジェクトID | 
+|  Path |project-id | String| Y | 削除するプロジェクトID | 
 
 
 
@@ -377,7 +383,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
+|   header | [共通レスポンス](#common-response)| Y |
 
 
 
@@ -398,8 +404,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | サービスを終了するプロジェクトID | 
-|  Path |product-id | String| Yes | サービスID | 
+|  Path |project-id | String| Y | サービスを終了するプロジェクトID | 
+|  Path |product-id | String| Y | サービスID | 
 
 
 
@@ -428,17 +434,17 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   childProducts | List&lt;ChildProduct>| No   | 該当サービスの下位サービス情報で、下位サービスがない場合は含まれません。<br>下位サービスを先に無効にして、該当サービスを無効化する必要があります。|
+|   header | [共通レスポンス](#common-response)| Y |
+|   childProducts | List&lt;ChildProduct>| N   | 該当サービスの下位サービス情報で、下位サービスがない場合は含まれません。<br>下位サービスを先に無効化してから、該当サービスを無効化する必要があります。|
 
 ##### ChildProduct
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   productId | String| Yes  | 	下位サービスID | 
-|   productName | String| Yes  | 下位サービス名 |
-|   statusCode | String| Yes | サービス状態(STABLE, CLOSED) |
+|   productId | String| Y  | 	下位サービスID | 
+|   productName | String| Y  | 下位サービス名 |
+|   statusCode | String| Y | サービス状態(STABLE, CLOSED) |
 
 
 <a id="use-a-service-product"></a>
@@ -459,8 +465,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |product-id | String| Yes | サービスID | 
-|  Path |project-id | String| Yes | サービスを利用するプロジェクトID | 
+|  Path |product-id | String| Y | サービスID | 
+|  Path |project-id | String| Y | サービスを利用するプロジェクトID | 
 
 
 <a id="use-a-service-product-response-body"></a>
@@ -488,10 +494,10 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   appKey | String| Yes | 該当プロジェクトで利用中のサービスのアプリキー情報|
-|   parentProduct | ParentProduct| No | 上位サービス情報がある場合はその情報を表示し、上位サービスがない場合は含みません。 |
-|   secretKey | String| No| 該当プロジェクトで利用中のサービスの秘密鍵情報<br> 秘密鍵を利用するサービスでのみ提供 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   appKey | String| Y | 該当プロジェクトで利用中のサービスのアプリキー情報|
+|   parentProduct | ParentProduct| N | 上位サービス情報がある場合はその情報を表示し、上位サービスがない場合は含みません。 |
+|   secretKey | String| N| 該当プロジェクトで利用中のサービスの秘密鍵情報<br> 秘密鍵を利用するサービスでのみ提供 |
 
 
 ##### ParentProduct
@@ -499,9 +505,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   productId | String| Yes  | サービスID |
-|   productName | String| Yes  | サービス名 |
-|   statusCode | String| Yes | サービス状態(STABLE, CLOSED) |
+|   productId | String| Y  | サービスID |
+|   productName | String| Y  | サービス名 |
+|   statusCode | String| Y | サービス状態(STABLE, CLOSED) |
 
 
 
@@ -525,11 +531,11 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID |
-|  Query |categoryTypeCodes | List&lt;String> | No | ロール/権限/ロールグループカテゴリー区分(ROLE, PERMISSION, ROLE_GROUP) |
-|  Query |roleNameLike | String| No | ロール/権限/ロールグループ名 |
-|  Query |limit | Integer| No | 1ページあたりの表示件数、デフォルト値20 | 
-|  Query |page | Integer| No | 対象ページ、デフォルト値1 |
+|  Path |org-id | String| Y | 組織ID |
+|  Query |categoryTypeCodes | List&lt;String> | N | ロール/権限/ロールグループカテゴリー区分(ROLE, PERMISSION, ROLE_GROUP) |
+|  Query |roleNameLike | String| N | ロール/権限/ロールグループ名 |
+|  Query |limit | Integer| N | 1ページあたりの表示件数、デフォルト値20 | 
+|  Query |page | Integer| N | 対象ページ、デフォルト値1 |
 
 
 
@@ -562,21 +568,21 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   roles | List&lt;RoleProtocol>| Yes  | ロールリスト |
-|   totalCount | Integer| Yes  | 総数 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   roles | List&lt;RoleProtocol>| Y  | ロールリスト |
+|   totalCount | Integer| Y  | 総数 |
 
 ##### RoleProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   categoryKey | String| Yes | ロール/権限カテゴリー分類キー<br><ul><li>RoleGroup:プロジェクトロールグループ</li><li>OrgRoleGroup:組織ロールグループ</li><li>OrgRole:組織ロール</li><li>ProjectRole:プロジェクトロール</li><li>BillingRole: Billing関連ロール</li><li>OrgServiceRole:組織サービスロール</li><li>ProjectServiceRole:プロジェクトサービスロール</li><li>SystemRole:システム作成ロール</li></ul>  |
-|   categoryTypeCode | String| Yes | ロールグループ/ロール/権限区分コード(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
-|   description | String| Yes | ロール/権限の説明 |
-|   roleCategory | String| Yes | ロール/権限カテゴリー大分類(ORG_ROLE, ORG_ROLE_GROUP, ORG_SERVICE_ROLE, PROJECT_ROLE, PROJECT_ROLE_GROUP, PROJECT_SERVICE_ROLE, SYSTEM_ROLE) |
-|   roleId | String| Yes | ロール/権限ID  |
-|   roleName | String| Yes | ロール/権限名 |
+|   categoryKey | String| Y | ロール/権限カテゴリー分類キー<br><ul><li>RoleGroup:プロジェクトロールグループ</li><li>OrgRoleGroup:組織ロールグループ</li><li>OrgRole:組織ロール</li><li>ProjectRole:プロジェクトロール</li><li>BillingRole: Billing関連ロール</li><li>OrgServiceRole:組織サービスロール</li><li>ProjectServiceRole:プロジェクトサービスロール</li><li>SystemRole:システム作成ロール</li></ul>  |
+|   categoryTypeCode | String| Y | ロールグループ/ロール/権限区分コード(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
+|   description | String| Y | ロール/権限の説明 |
+|   roleCategory | String| Y | ロール/権限カテゴリー大分類(ORG_ROLE, ORG_ROLE_GROUP, ORG_SERVICE_ROLE, PROJECT_ROLE, PROJECT_ROLE_GROUP, PROJECT_SERVICE_ROLE, SYSTEM_ROLE) |
+|   roleId | String| Y | ロール/権限ID  |
+|   roleName | String| Y | ロール/権限名 |
 
 
 <a id="list-project-roles"></a>
@@ -596,11 +602,11 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | プロジェクトID | 
-|  Query |categoryTypeCodes | List&lt;String> | No | ロール/権限/ロールグループカテゴリー区分(ROLE, PERMISSION, ROLE_GROUP) |
-|  Query |roleNameLike | String| No | ロール/権限/ロールグループ名 |
-|  Query |limit | Integer| No | 1ページあたりの表示件数、デフォルト値20 | 
-|  Query |page | Integer| No | 対象ページ、デフォルト値1 |
+|  Path |project-id | String| Y | プロジェクトID | 
+|  Query |categoryTypeCodes | List&lt;String> | N | ロール/権限/ロールグループカテゴリー区分(ROLE, PERMISSION, ROLE_GROUP) |
+|  Query |roleNameLike | String| N | ロール/権限/ロールグループ名 |
+|  Query |limit | Integer| N | 1ページあたりの表示件数、デフォルト値20 | 
+|  Query |page | Integer| N | 対象ページ、デフォルト値1 |
 
 
 <a id="list-project-roles-response-body"></a>
@@ -631,9 +637,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   roles | List&lt;[RoleProtocol](#roleprotocol)>| Yes  | ロールリスト |
-|   totalCount | Integer| Yes  | 総数 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   roles | List&lt;[RoleProtocol](#roleprotocol)>| Y  | ロールリスト |
+|   totalCount | Integer| Y  | 総数 |
 
 <a id="search-for-an-organization-domain"></a>
 ### 組織ドメイン検索 { #search-for-an-organization-domain }
@@ -653,7 +659,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 照会する組織のID | 
+|  Path |org-id | String| Y | 照会する組織のID | 
 
 
 
@@ -682,8 +688,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   domainList | List&lt;OrgDomainProtocol>| Yes  |
+|   header | [共通レスポンス](#common-response)| Y |
+|   domainList | List&lt;OrgDomainProtocol>| Y  |
 
 
 ##### OrgDomainProtocol
@@ -691,8 +697,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   orgDomainId | String| Yes | 組織ドメインID |
-|   orgDomainName | String| Yes | 組織ドメイン名 |
+|   orgDomainId | String| Y | 組織ドメインID |
+|   orgDomainName | String| Y | 組織ドメイン名 |
 
 
 <a id="view-a-organization-member"></a>
@@ -713,8 +719,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | メンバーを照会する組織ID | 
-|  Path |member-uuid | String| Yes | 	照会するメンバーUUID | 
+|  Path |org-id | String| Y | メンバーを照会する組織ID | 
+|  Path |member-uuid | String| Y | 	照会するメンバーUUID | 
 
 
 
@@ -769,39 +775,39 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   orgMember | OrgMemberRoleBundleProtocol| No  | 追加されたメンバー情報、エラーの場合は含まれません。 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   orgMember | OrgMemberRoleBundleProtocol| N  | 追加されたメンバー情報、エラーの場合は含まれません。 |
 
 ##### OrgMemberRoleBundleProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   email | String| Yes | メンバーメール |
-|   id | String| No | メンバーID(IAMメンバーのみ提供) |
-|   inviteStatusCode | String| Yes |   COMPLETE, EXPIRE, UNKNOWN, WAIT |
-|   joinYmdt | Date| Yes | 組織メンバー登録日時 |
-|   memberName | String| Yes| 	メンバー名 |
-|   memberTypeCode | String| Yes| メンバー区分(TOAST_CLOUD: NHN Cloudメンバー、 IAM: IAMメンバー) |
-|   memberUuid | String| Yes| メンバーのUUID |
-|   recentLoginYmdt | Date| Yes| 最後のログイン日時 |
-|   recentPasswordModifyYmdt | Date| No| 最後のパスワード変更日時 |
-|   roleCode | String| No| ロールID |
-|   roles | List&lt;RoleBundleProtocol>| No | 関連ロールリスト(条件属性を含む)  |
-|   secondFactorCertificationYn | String| No| 2段階ログイン設定の有無(NHN Cloudメンバーのみ提供) |
+|   email | String| Y | メンバーメール |
+|   id | String| N | メンバーID(IAMメンバーのみ提供) |
+|   inviteStatusCode | String| Y |   COMPLETE, EXPIRE, UNKNOWN, WAIT |
+|   joinYmdt | Date| Y | 組織メンバー登録日時 |
+|   memberName | String| Y| 	メンバー名 |
+|   memberTypeCode | String| Y| メンバー区分(TOAST_CLOUD: NHN Cloudメンバー、 IAM: IAMメンバー) |
+|   memberUuid | String| Y| メンバーのUUID |
+|   recentLoginYmdt | Date| Y| 最後のログイン日時 |
+|   recentPasswordModifyYmdt | Date| N| 最後のパスワード変更日時 |
+|   roleCode | String| N| ロールID |
+|   roles | List&lt;RoleBundleProtocol>| N | 関連ロールリスト(条件属性を含む)  |
+|   secondFactorCertificationYn | String| N| 2段階ログイン設定の有無(NHN Cloudメンバーのみ提供) |
 
 
 ##### RoleBundleProtocol
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   roleId | String| Yes | ロールID |
-|   roleName | String| Yes | ロール名 |
-|   description | String| No | ロールの説明 |
-|   categoryKey | String| Yes | ロール/権限カテゴリー分類キー<br><ul><li>RoleGroup:プロジェクトロールグループ</li><li>OrgRoleGroup:組織ロールグループ</li><li>OrgRole:組織ロール</li><li>ProjectRole:プロジェクトロール</li><li>BillingRole: Billing関連ロール</li><li>OrgServiceRole:組織サービスロール</li><li>ProjectServiceRole:プロジェクトサービスロール</li><li>SystemRole:システム作成ロール</li></ul>  |
-|   categoryTypeCode | String| Yes | ロールグループ/ロール/権限区分コード(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
-|   conditions | List&lt;AttributeConditionProtocol>| No | 条件属性リスト |
-|   roleApplyPolicyCode | String| Yes | ロール使用有無ALLOW, DENY |
-|   regDateTime | Date| Yes | ロール作成日時 |
+|   roleId | String| Y | ロールID |
+|   roleName | String| Y | ロール名 |
+|   description | String| N | ロールの説明 |
+|   categoryKey | String| Y | ロール/権限カテゴリー分類キー<br><ul><li>RoleGroup:プロジェクトロールグループ</li><li>OrgRoleGroup:組織ロールグループ</li><li>OrgRole:組織ロール</li><li>ProjectRole:プロジェクトロール</li><li>BillingRole: Billing関連ロール</li><li>OrgServiceRole:組織サービスロール</li><li>ProjectServiceRole:プロジェクトサービスロール</li><li>SystemRole:システム作成ロール</li></ul>  |
+|   categoryTypeCode | String| Y | ロールグループ/ロール/権限区分コード(ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
+|   conditions | List&lt;AttributeConditionProtocol>| N | 条件属性リスト |
+|   roleApplyPolicyCode | String| Y | ロール使用有無ALLOW, DENY |
+|   regDateTime | Date| Y | ロール作成日時 |
 
 
 
@@ -810,12 +816,12 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   attributeDataTypeCode | String| Yes | 条件属性データ型(BOOLEAN, DATETIME, DAY_OF_WEEK, IPADDRESS, NUMERIC, STRING, TIME) |
-|   attributeDescription | String| No | 条件属性の説明 |
-|   attributeId | String| Yes | 条件属性ID |
-|   attributeName | String| Yes | 条件属性名 |
-|   attributeOperatorTypeCode | String| Yes | 条件属性演算子<br>条件属性データ型によって使用できる演算子が異なります<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
-|   attributeValues | List&lt;String>| Yes| 条件属性値 |
+|   attributeDataTypeCode | String| Y | 条件属性データ型(BOOLEAN, DATETIME, DAY_OF_WEEK, IPADDRESS, NUMERIC, STRING, TIME) |
+|   attributeDescription | String| N | 条件属性の説明 |
+|   attributeId | String| Y | 条件属性ID |
+|   attributeName | String| Y | 条件属性名 |
+|   attributeOperatorTypeCode | String| Y | 条件属性演算子<br>条件属性データ型によって使用できる演算子が異なります<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
+|   attributeValues | List&lt;String>| Y| 条件属性値 |
 
 
 
@@ -837,8 +843,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
-| Request Body | request | SearchOrgMembersRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 組織ID | 
+| Request Body | request | SearchOrgMembersRequest| Y | リクエスト |
 
 
 ##### SearchOrgMembersRequest
@@ -846,17 +852,17 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   memberStatusCodes | List&lt;String>| No | 照会するメンバーの状態<br><ul><li>STABLE:招待完了</li><li>INVITED:招待中</li><li>BLOCKED</li><li>NOT_EXIST</li><li>WITHDRAW</li></ul> |
-|   roleIds | Set&lt;String>| No  | メンバーが付与されたロールID |
-|   paging | PagingBean| No  |
+|   memberStatusCodes | List&lt;String>| N | 照会するメンバーの状態<br><ul><li>STABLE:招待完了</li><li>INVITED:招待中</li><li>BLOCKED</li><li>NOT_EXIST</li><li>WITHDRAW</li></ul> |
+|   roleIds | Set&lt;String>| N  | メンバーが付与されたロールID |
+|   paging | PagingBean| N  |
 
 ##### PagingBean
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 1ページあたりの表示件数、デフォルト値20  |
-|   page | Integer| No | 対象ページ、デフォルト値1  |
+|   limit | Integer| N | 1ページあたりの表示件数、デフォルト値20  |
+|   page | Integer| N | 対象ページ、デフォルト値1  |
 
 
 
@@ -896,34 +902,34 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   orgMembers | List&lt;OrgMemberWithInviteMemberrotocol>| Yes | 組織メンバーリスト |
-|   paging | PagingResponse| Yes | ページ情報 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   orgMembers | List&lt;OrgMemberWithInviteMemberProtocol>| Y | 組織メンバーリスト |
+|   paging | PagingResponse| Y | ページ情報 |
 
 ##### OrgMemberWithInviteMemberProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   email | String| Yes | メンバーのメールアドレス |
-|   inviteStatusCode | String| No | メンバーの招待状態(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   joinYmdt | Date| Yes | メンバー加入日時 |
-|   maskingEmail | String| Yes | メンバーのマスキングされたメール |
-|   memberName | String| Yes| メンバーの名前 |
-|   memberTypeCode | String| Yes| メンバー区分(TOAST_CLOUD: NHN Cloudメンバー、 IAM: IAMメンバー) |
-|   memberUuid | String| No| メンバーのUUID<br>招待中の場合は値を返しません。 |
-|   recentLoginYmdt | Date| Yes| 最後のログイン日時 |
-|   recentPasswordModifyYmdt | Date| No| 最後のパスワード変更日時 |
-|   secondFactorCertificationYn | String| No|  2段階ログイン設定有無(NHN Cloudメンバーのみ提供) |
+|   email | String| Y | メンバーのメールアドレス |
+|   inviteStatusCode | String| N | メンバーの招待状態(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   joinYmdt | Date| Y | メンバー加入日時 |
+|   maskingEmail | String| Y | メンバーのマスキングされたメール |
+|   memberName | String| Y| メンバーの名前 |
+|   memberTypeCode | String| Y| メンバー区分(TOAST_CLOUD: NHN Cloudメンバー、 IAM: IAMメンバー) |
+|   memberUuid | String| N| メンバーのUUID<br>招待中の場合は値を返しません。 |
+|   recentLoginYmdt | Date| Y| 最後のログイン日時 |
+|   recentPasswordModifyYmdt | Date| N| 最後のパスワード変更日時 |
+|   secondFactorCertificationYn | String| N|  2段階ログイン設定有無(NHN Cloudメンバーのみ提供) |
 
 ##### PagingResponse
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 1ページあたりの表示件数、デフォルト値20  |
-|   page | Integer| No | 対象ページ、デフォルト値1  |
-|   totalCount | Long| Yes | 総件数 |
+|   limit | Integer| N | 1ページあたりの表示件数、デフォルト値20  |
+|   page | Integer| N | 対象ページ、デフォルト値1  |
+|   totalCount | Long| Y | 総件数 |
 
 
 
@@ -946,11 +952,11 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 照会対象組織ID | 
-|  Query |descriptionLike | String| No | 説明 | 
+|  Path |org-id | String| Y | 照会対象組織ID | 
+|  Query |descriptionLike | String| N | 説明 | 
 |  Query |roleGroupNameLike | String| No | ロールグループ名 |
-|  Query |limit | Integer| No | 1ページあたりの表示件数、デフォルト値20 |
-|  Query |page | Integer| No | 対象ページ、デフォルト値1 |
+|  Query |limit | Integer| N | 1ページあたりの表示件数、デフォルト値20 |
+|  Query |page | Integer| N | 対象ページ、デフォルト値1 |
 
 
 
@@ -989,9 +995,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes  |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   roleGroups | List&lt;RoleGroupProtocol>| Yes | プロジェクトで使用可能なロールグループリスト |
+|   header | [共通レスポンス](#common-response)| Y  |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   roleGroups | List&lt;RoleGroupProtocol>| Y | プロジェクトで使用可能なロールグループリスト |
 
 
 ##### RoleGroupProtocol
@@ -999,11 +1005,11 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   description | String| No | ロールグループの説明 |
-|   regDateTime | Date| Yes | ロールグループ作成日時 |
-|   roleGroupId | String| Yes | ロールグループID |
-|   roleGroupName | String| Yes| ロールグループの名前 |
-|   roleGroupType | String| Yes | ロールグループの種類<br><ul><li>ORG:プロジェクト共通ロールグループ</li><li>ORG_ROLE_GROUP:組織ロールグループ</li><li>PROJECT:プロジェクトロールグループ</li> |
+|   description | String| N | ロールグループの説明 |
+|   regDateTime | Date| Y | ロールグループ作成日時 |
+|   roleGroupId | String| Y | ロールグループID |
+|   roleGroupName | String| Y| ロールグループの名前 |
+|   roleGroupType | String| Y | ロールグループの種類<br><ul><li>ORG:プロジェクト共通ロールグループ</li><li>ORG_ROLE_GROUP:組織ロールグループ</li><li>PROJECT:プロジェクトロールグループ</li> |
 
 
 <a id="view-service-hierarchy"></a>
@@ -1025,8 +1031,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |productUiType | String| Yes | サービスUIタイプ<br><ul><li>PROJECT:プロジェクトサービス</li><li>ORG:組織サービス</li><li>MARKET_PLACE:マーケットプレイスサービス</li></ul> |
-|  Query |orgId | String| No | サービスUIタイプがORGの場合、組織IDを必ず入力する必要があります。 |
+|  Query |productUiType | String| Y | サービスUIタイプ<br><ul><li>PROJECT:プロジェクトサービス</li><li>ORG:組織サービス</li><li>MARKET_PLACE:マーケットプレイスサービス</li></ul> |
+|  Query |orgId | String| Conditional | サービスUIタイプがORGの場合、組織IDを必ず入力する必要があります。 |
 
 
 
@@ -1057,20 +1063,20 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   productUiList | List&lt;ProductUiHierarchyProtocol>| Yes  | WebサイトカテゴリーサービスUIリスト |
+|   header | [共通レスポンス](#common-response)| Y |
+|   productUiList | List&lt;ProductUiHierarchyProtocol>| Y  | WebサイトカテゴリーサービスUIリスト |
 
 ##### ProductUiHierarchyProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   children | List&lt;ProductUiHierarchyProtocol>| No | WebサイトサービスサービスUIリスト |
-|   manualLink | String| No|
-|   parentProductUiId | String| No| サービスUI区分 |
-|   productId | String| No|
-|   productUiId | String| No| サービスUI識別キー |
-|   productUiName | String| No|
+|   children | List&lt;ProductUiHierarchyProtocol>| N | WebサイトサービスUIリスト |
+|   manualLink | String| N|
+|   parentProductUiId | String| N| サービスUI区分 |
+|   productId | String| N|
+|   productUiId | String| N| サービスUI識別キー |
+|   productUiName | String| N|
 
 
 <a id="view-a-service-used-in-the-project"></a>
@@ -1091,8 +1097,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 照会対象プロジェクトID |
-|  Path |product-id | String| Yes | 照会対象サービスID |
+|  Path |project-id | String| Y | 照会対象プロジェクトID |
+|  Path |product-id | String| Y | 照会対象サービスID |
 
 
 
@@ -1130,9 +1136,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   hasUpdateSecretKeyPermission | Boolean| Yes | 秘密鍵再発行可能権限 |
-|   product | ProjectProductRelationAndProductProtocol| Yes  | 指定したサービスIDに対して、プロジェクトで使用しているサービス情報を返し、エラー時は含みません。 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   hasUpdateSecretKeyPermission | Boolean| Y | 秘密鍵再発行可能権限 |
+|   product | ProjectProductRelationAndProductProtocol| Y  | 指定したサービスIDに対して、プロジェクトで使用しているサービス情報を返し、エラー時は含みません。 |
 
 
 ##### ProjectProductRelationAndProductProtocol
@@ -1140,18 +1146,18 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   appKey | String| Yes | 該当プロジェクトで利用中のサービスのアプリキー情報 |
-|   externalId | String| No | テナントID<br>サービスにテナントIDが存在する場合にのみ提供 |
-|   productId | String| Yes | サービスID  |
-|   productName | String| Yes | サービス名 |
-|   productSecretKeyCode | String| No | 秘密鍵使用有無<br>T:使用する<br>その他:使用しない(F, N) |
-|   productStatusCode | String| Yes | サービス状態(STABLE, CLOSED) |
-|   projectId | String| Yes | 該当サービスを使用するプロジェクトID  |
-|   relationDate | Date| Yes | サービス利用開始日時 |
-|   secretKey | String| Yes | サービスSecretKey<br>secretKeyを利用するサービスでのみ提供 |
-|   statusCode | String| Yes | 該当サービスの利用状態(STABLE, CLOSED) |
-|   updateDate | Date| No | サービス最終修正日時 |
-|   updateUuid | String| No | サービスアプリキー修正者UUID  |
+|   appKey | String| Y | 該当プロジェクトで利用中のサービスのアプリキー情報 |
+|   externalId | String| N | テナントID<br>サービスにテナントIDが存在する場合にのみ提供 |
+|   productId | String| Y | サービスID  |
+|   productName | String| Y | サービス名 |
+|   productSecretKeyCode | String| N | 秘密鍵使用有無<br>T:使用する<br>その他:使用しない(F, N) |
+|   productStatusCode | String| Y | サービス状態(STABLE, CLOSED) |
+|   projectId | String| Y | 該当サービスを使用するプロジェクトID  |
+|   relationDate | Date| Y | サービス利用開始日時 |
+|   secretKey | String| Y | サービスSecretKey<br>secretKeyを利用するサービスでのみ提供 |
+|   statusCode | String| Y | 該当サービスの利用状態(STABLE, CLOSED) |
+|   updateDate | Date| N | サービス最終修正日時 |
+|   updateUuid | String| N | サービスアプリキー修正者UUID  |
 
 
 <a id="view-a-project-member"></a>
@@ -1172,8 +1178,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | メンバーを照会するプロジェクトID |
-|  Path |member-uuid | String| Yes | 照会するメンバーUUID |
+|  Path |project-id | String| Y | メンバーを照会するプロジェクトID |
+|  Path |member-uuid | String| Y | 照会するメンバーUUID |
 
 
 
@@ -1223,8 +1229,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   projectMember | ProjectMemberRoleBundleProtocol| Yes  | 追加されたメンバー情報、エラー時は含まれません。 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   projectMember | ProjectMemberRoleBundleProtocol| Y  | 追加されたメンバー情報、エラー時は含まれません。 |
 
 
 ##### ProjectMemberRoleBundleProtocol
@@ -1232,14 +1238,14 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   emailAddress | String| No | メンバーのメールアドレス |
-|   maskingEmail | String| No | メンバーのマスキングされたメールアドレス |
-|   memberName | String| No | メンバー名 |
-|   memberTypeCode | String| No | メンバー区分(IAM, TOAST_CLOUD) |
-|   relationDateTime | Date| No | メンバー追加時間 |
-|   roles | List&lt;RoleBundleProtocol>| No | 関連ロールリスト(条件属性を含む)  |
-|   statusCode | String| No | 招待ステータスコード(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   uuid | String| No | メンバーUUID  |
+|   emailAddress | String| N | メンバーのメールアドレス |
+|   maskingEmail | String| N | メンバーのマスキングされたメールアドレス |
+|   memberName | String| N | メンバー名 |
+|   memberTypeCode | String| N | メンバー区分(IAM, TOAST_CLOUD) |
+|   relationDateTime | Date| N | メンバー追加時間 |
+|   roles | List&lt;RoleBundleProtocol>| N | 関連ロールリスト(条件属性を含む)  |
+|   statusCode | String| N | 招待ステータスコード(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   uuid | String| N | メンバーUUID  |
 
 
 [RoleBundleProtocol](#rolebundleprotocol)
@@ -1263,8 +1269,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 照会するプロジェクトID | 
-| Request Body | request | SearchProjectMembersRequest| Yes | リクエスト |
+|  Path |project-id | String| Y | 照会するプロジェクトID | 
+| Request Body | request | SearchProjectMembersRequest| Y | リクエスト |
 
 
 
@@ -1273,9 +1279,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   memberStatusCodes | List&lt;String>| No | プロジェクトメンバーステータスコード(INVITED, STABLE) |
-|   roleIds | List&lt;String>| No | ロールIDリスト |
-|   paging | [PagingBean](#pagingbean) | No   |
+|   memberStatusCodes | List&lt;String>| N | プロジェクトメンバーステータスコード(INVITED, STABLE) |
+|   roleIds | List&lt;String>| N | ロールIDリスト |
+|   paging | [PagingBean](#pagingbean) | N   |
 
 
 
@@ -1313,9 +1319,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   projectMembers | List&lt;ProjectMemberProtocol>| Yes | プロジェクトメンバー |
+|   header | [共通レスポンス](#common-response)| Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   projectMembers | List&lt;ProjectMemberProtocol>| Y | プロジェクトメンバー |
 
 
 
@@ -1324,13 +1330,13 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   emailAddress | String| No | メンバーのメールアドレス |
-|   maskingEmail | String| No | メンバーのマスキングされたメールアドレス |
-|   memberName | String| No | メンバー名 |
-|   memberTypeCode | String| No | メンバー区分 |
-|   relationDateTime | Date| No | メンバー追加時間 |
-|   statusCode | String| No | 招待ステータスコード(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   uuid | String| No | メンバーUUID  |
+|   emailAddress | String| N | メンバーのメールアドレス |
+|   maskingEmail | String| N | メンバーのマスキングされたメールアドレス |
+|   memberName | String| N | メンバー名 |
+|   memberTypeCode | String| N | メンバー区分 |
+|   relationDateTime | Date| N | メンバー追加時間 |
+|   statusCode | String| N | 招待ステータスコード(COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   uuid | String| N | メンバーUUID  |
 
 
 <a id="view-a-project-role-group"></a>
@@ -1351,8 +1357,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 照会対象プロジェクトID | 
-|  Path |role-group-id | String| Yes | プロジェクトロールグループID<br>プロジェクト共通ロールグループIDは照会不可 | 
+|  Path |project-id | String| Y | 照会対象プロジェクトID | 
+|  Path |role-group-id | String| Y | プロジェクトロールグループID<br>プロジェクト共通ロールグループIDは照会不可 | 
 
 
 
@@ -1399,19 +1405,19 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   roleGroup | RoleGroupBundleProtocol| Yes | 関連ロールを含むロールグループ |
+|   header | [共通レスポンス](#common-response)| Y |
+|   roleGroup | RoleGroupBundleProtocol| Y | 関連ロールを含むロールグループ |
 
 ##### RoleGroupBundleProtocol
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleGroupId | String| No | ロールグループID  |
-|   roleGroupName | String| No | ロールグループ名 |
-|   description | String| No | ロールグループの説明 |
-|   roleGroupType | String| No | ロールグループ区分(組織、プロジェクト)  |
-|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 関連ロールリスト |
-|   regDateTime | Date| No | 登録日時 |
+|   roleGroupId | String| N | ロールグループID  |
+|   roleGroupName | String| N | ロールグループ名 |
+|   description | String| N | ロールグループの説明 |
+|   roleGroupType | String| N | ロールグループ区分(組織、プロジェクト)  |
+|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| N | 関連ロールリスト |
+|   regDateTime | Date| N | 登録日時 |
 
 
 
@@ -1432,8 +1438,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 照会対象組織ID | 
-|  Path |role-group-id | String| Yes | プロジェクト共通ロールグループID | 
+|  Path |org-id | String| Y | 照会対象組織ID | 
+|  Path |role-group-id | String| Y | プロジェクト共通ロールグループID | 
 
 
 <a id="view-a-common-role-group-for-the-project-in-the-organization-response-body"></a>
@@ -1479,8 +1485,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | 関連ロールを含むロールグループ |
+|   header | [共通レスポンス](#common-response)| Y |
+|   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Y | 関連ロールを含むロールグループ |
 
 
 
@@ -1502,11 +1508,11 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 照会対象プロジェクトID | 
-|  Query |descriptionLike | String| No | 説明 |
+|  Path |project-id | String| Y | 照会対象プロジェクトID | 
+|  Query |descriptionLike | String| N | 説明 |
 |  Query |roleGroupNameLike | String| No | ロールグループ名 |
-|  Query |limit | Integer| No | 1ページあたりの表示件数、デフォルト値20 |
-|  Query |page | Integer| No | 対象ページ、デフォルト値1 |
+|  Query |limit | Integer| N | 1ページあたりの表示件数、デフォルト値20 |
+|  Query |page | Integer| N | 対象ページ、デフォルト値1 |
 
 
 
@@ -1540,9 +1546,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes  |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)>| Yes | プロジェクトで使用可能なロールグループリスト |
+|   header | [共通レスポンス](#common-response)| Y  |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)>| Y | プロジェクトで使用可能なロールグループリスト |
 
 <a id="list-projects-in-your-organization"></a>
 ### 組織に属するプロジェクトリスト照会 { #list-projects-in-your-organization }
@@ -1561,11 +1567,11 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 照会する組織のID | 
-|  Query |memberUuid | String| No | 組織のメンバーUUID |
-|  Query |projectName | String| No | プロジェクト名 |
-|  Query |page | Integer| No | 対象ページ、デフォルト値1 |
-|  Query |limit | Integer| No | 1ページあたりの表示件数、デフォルト値20 |
+|  Path |org-id | String| Y | 照会する組織のID | 
+|  Query |memberUuid | String| N | 組織のメンバーUUID |
+|  Query |projectName | String| N | プロジェクト名 |
+|  Query |page | Integer| N | 対象ページ、デフォルト値1 |
+|  Query |limit | Integer| N | 1ページあたりの表示件数、デフォルト値20 |
 
 
 <a id="list-projects-in-your-organization-response-body"></a>
@@ -1602,9 +1608,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   paging | [PagingResponse](#pagingresponse) | Yes |
-|   projectList | List&lt;OrgProjectMemberRoleProtocol>| Yes |
+|   header | [共通レスポンス](#common-response)| Y |
+|   paging | [PagingResponse](#pagingresponse) | Y |
+|   projectList | List&lt;OrgProjectMemberRoleProtocol>| Y |
 
 
 
@@ -1612,14 +1618,14 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   delDateTime | Date| No | プロジェクト削除日時 |
-|   description | String| No | プロジェクトの説明 |
-|   modDateTime | Date| No| プロジェクト修正日時 |
-|   orgId | String| Yes| プロジェクトが属する組織ID |
-|   projectId | String| Yes| プロジェクトID |
-|   projectName | String| Yes| プロジェクト名 |
-|   projectStatusCode | String| Yes   | プロジェクトの状態<br><ul><li>STABLE：正常に使用中の状態</li><li>CLOSED：支払いが完了し、プロジェクトが正常に閉じた状態</li><li>BLOCKED：管理者によって使用が禁止された状態</li><li>TERMINATED：延滞により、全てのリソースが削除された状態</li><li>DISABLED：全てのサービスが閉じた状態であるが、値が支払われていない状態</li></ul> | 
-|   regDateTime | Date| Yes| プロジェクト登録日時 |
+|   delDateTime | Date| N | プロジェクト削除日時 |
+|   description | String| N | プロジェクトの説明 |
+|   modDateTime | Date| N| プロジェクト修正日時 |
+|   orgId | String| Y| プロジェクトが属する組織ID |
+|   projectId | String| Y| プロジェクトID |
+|   projectName | String| Y| プロジェクト名 |
+|   projectStatusCode | String| Yes   | プロジェクトの状態<br><ul><li>STABLE：正常に使用中の状態</li><li>CLOSED：支払いが完了し、プロジェクトが正常に閉じた状態</li><li>BLOCKED：管理者によって使用が禁止された状態</li><li>TERMINATED：延滞により、全てのリソースが削除された状態</li><li>DISABLED：全てのサービスが閉じた状態であるが、料金が支払われていない状態</li></ul> |
+|   regDateTime | Date| Y| プロジェクト登録日時 |
 
 
 <a id="list-organization-governance-in-use"></a>
@@ -1638,7 +1644,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 照会対象組織ID | 
+|  Path |org-id | String| Y | 照会対象組織ID | 
 
 
 
@@ -1666,8 +1672,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   usingGovernances | List&lt;GovernanceProtocol>| No | 使用中のガバナンスリスト |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   usingGovernances | List&lt;GovernanceProtocol>| N | 使用中のガバナンスリスト |
 
 
 ##### GovernanceProtocol
@@ -1675,8 +1681,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   governanceTypeCode | String| No | ガバナンスタイプ<br>- APPROVE_PROCESS: 承認処理<br>- BLOCK_STORAGE_SNAPSHOT: BlockStorageのSnapshot機能使用可否<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAASリソース権限制御及び接続端末制限設定<br>- PRIVACY_PROTECTION: 個人情報保護<br>- UNIQUE_INSTANCE_NAME: インスタンス名重複防止 |
-|   regDatetime | Date| No | ガバナンス使用設定日時 |
+|   governanceTypeCode | String| N | ガバナンスタイプ<br>- APPROVE_PROCESS: 承認処理<br>- BLOCK_STORAGE_SNAPSHOT: BlockStorageのSnapshot機能使用可否<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAASリソース権限制御及び接続端末制限設定<br>- PRIVACY_PROTECTION: 個人情報保護<br>- UNIQUE_INSTANCE_NAME: インスタンス名重複防止 |
+|   regDatetime | Date| N | ガバナンス使用設定日時 |
 
 
 <a id="create-a-common-role-group-for-projects-in-the-organization"></a>
@@ -1696,16 +1702,16 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
-| Request Body | request | CreateRoleGroupRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 組織ID | 
+| Request Body | request | CreateRoleGroupRequest| Y | リクエスト |
 
 ##### CreateRoleGroupRequest
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   description | String| No | ロールグループの説明 |
-|   roleGroupName | String| Yes | ロールグループ名 |
-|   roles | List&lt;AssignRoleProtocol>| Yes | ロールグループに割り当てるロールリスト |
+|   description | String| N | ロールグループの説明 |
+|   roleGroupName | String| Y | ロールグループ名 |
+|   roles | List&lt;AssignRoleProtocol>| Y | ロールグループに割り当てるロールリスト |
 
 
 ##### AssignRoleProtocol
@@ -1713,9 +1719,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   conditions | List&lt;[AssignAttributeConditionProtocol](#assignattributeconditionprotocol)>| No | ロール条件属性 |
-|   roleApplyPolicyCode | String| Yes | ロール使用有無ALLOW, DENY |
-|   roleId | String| Yes | ロールID  |
+|   conditions | List&lt;[AssignAttributeConditionProtocol](#assignattributeconditionprotocol)>| N | ロール条件属性 |
+|   roleApplyPolicyCode | String| Y | ロール使用有無ALLOW, DENY |
+|   roleId | String| Y | ロールID  |
 
 
 
@@ -1737,7 +1743,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 
 <a id="delete-a-project-common-role-group-in-the-organization"></a>
@@ -1757,8 +1763,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
-| Request Body | request | DeleteRoleGroupRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 組織ID | 
+| Request Body | request | DeleteRoleGroupRequest| Y | リクエスト |
 
 
 ##### DeleteRoleGroupRequest
@@ -1766,7 +1772,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleGroupIds | List&lt;String>| Yes | ロールグループIDリスト |
+|   roleGroupIds | List&lt;String>| Y | ロールグループIDリスト |
 
 
 <a id="delete-a-project-common-role-group-in-the-organization-response-body"></a>
@@ -1786,7 +1792,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="modify-your-organizations-project-common-role-group-information"></a>
 ### 組織のプロジェクト共通ロールグループ情報修正 { #modify-your-organizations-project-common-role-group-information }
@@ -1805,9 +1811,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
-|  Path |role-group-id | String| Yes | ロールグループID | 
-| Request Body | request | UpdateRoleGroupInfoRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 組織ID | 
+|  Path |role-group-id | String| Y | ロールグループID | 
+| Request Body | request | UpdateRoleGroupInfoRequest| Y | リクエスト |
 
 
 ##### UpdateRoleGroupInfoRequest
@@ -1815,8 +1821,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   description | String| No | ロールグループの説明 |
-|   roleGroupName | String| Yes | ロールグループ名 |
+|   description | String| N | ロールグループの説明 |
+|   roleGroupName | String| Y | ロールグループ名 |
 
 
 
@@ -1837,7 +1843,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="modify-your-organizations-project-common-roles-group-roles"></a>
 ### 組織のプロジェクト共通ロールグループロール修正 { #modify-your-organizations-project-common-roles-group-roles }
@@ -1855,9 +1861,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
-|  Path |role-group-id | String| Yes | ロールグループID | 
-| Request Body | request | UpdateRoleGroupRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 組織ID | 
+|  Path |role-group-id | String| Y | ロールグループID | 
+| Request Body | request | UpdateRoleGroupRequest| Y | リクエスト |
 
 
 ##### UpdateRoleGroupRequest
@@ -1865,7 +1871,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Yes | ロールグループに割り当てるロールリスト |
+|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Y | ロールグループに割り当てるロールリスト |
 
 
 
@@ -1887,7 +1893,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="create-a-project-role-group"></a>
 ### プロジェクトロールグループ作成 { #create-a-project-role-group }
@@ -1907,8 +1913,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | プロジェクトID | 
-| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest)| Yes | リクエスト |
+|  Path |project-id | String| Y | プロジェクトID | 
+| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest)| Y | リクエスト |
 
 
 
@@ -1931,7 +1937,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="delete-a-project-role-group"></a>
 ### プロジェクトロールグループ削除 { #delete-a-project-role-group }
@@ -1951,8 +1957,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | プロジェクトID | 
-| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest)| Yes | リクエスト |
+|  Path |project-id | String| Y | プロジェクトID | 
+| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest)| Y | リクエスト |
 
 
 
@@ -1975,7 +1981,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="edit-project-role-group-information"></a>
 ### プロジェクトロールグループ情報修正 { #edit-project-role-group-information }
@@ -1993,9 +1999,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | プロジェクトID | 
-|  Path |role-group-id | String| Yes | ロールグループID | 
-| Request Body | request |[UpdateRoleGroupInfoRequest](#updaterolegroupinforequest)| Yes | リクエスト |
+|  Path |project-id | String| Y | プロジェクトID | 
+|  Path |role-group-id | String| Y | ロールグループID | 
+| Request Body | request |[UpdateRoleGroupInfoRequest](#updaterolegroupinforequest)| Y | リクエスト |
 
 
 
@@ -2018,7 +2024,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 
 <a id="modify-project-role-group-roles"></a>
@@ -2037,16 +2043,16 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | プロジェクトID | 
-|  Path |role-group-id | String| Yes | ロールグループID | 
-| Request Body | request | UpdateRoleGroupRequest| Yes | リクエスト |
+|  Path |project-id | String| Y | プロジェクトID | 
+|  Path |role-group-id | String| Y | ロールグループID | 
+| Request Body | request | UpdateRoleGroupRequest| Y | リクエスト |
 
 ##### UpdateRoleGroupRequest
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Yes | ロールグループに割り当てるロールリスト |
+|   roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)>| Y | ロールグループに割り当てるロールリスト |
 
 
 
@@ -2069,7 +2075,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="view-all-organization-role-groups"></a>
 ### 組織ロールグループ全件照会 { #view-all-organization-role-groups }
@@ -2087,11 +2093,11 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 照会対象組織ID |
-| Query | descriptionLike | String | No | 説明(該当文字列が含まれる結果照会) |
-| Query | roleGroupNameLike | String | No | ロールグループ名(該当文字列が含まれる結果照会) |
-| Query | limit | Integer | No | 1ページあたりの表示件数(デフォルト値: 20、最小値: 1、最大値: 2000) |
-| Query | page | Integer | No | 対象ページ(デフォルト値: 1、最小値: 1) |
+| Path | org-id | String | Y | 照会対象組織ID |
+| Query | descriptionLike | String | N | 説明(該当文字列が含まれる結果照会) |
+| Query | roleGroupNameLike | String | N | ロールグループ名(該当文字列が含まれる結果照会) |
+| Query | limit | Integer | N | 1ページあたりの表示件数(デフォルト値: 20、最小値: 1、最大値: 2000) |
+| Query | page | Integer | N | 対象ページ(デフォルト値: 1、最小値: 1) |
 
 <a id="view-all-organization-role-groups-response-body"></a>
 #### レスポンス本文
@@ -2124,9 +2130,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |
 | ------------ | ------------- | --------- | ------------ |
-| header | [共通レスポンス](#common-response) | Yes | |
-| paging | [PagingResponse](#pagingresponse) | Yes | |
-| roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | 組織で使用可能なロールグループリスト |
+| header | [共通レスポンス](#common-response) | Y | |
+| paging | [PagingResponse](#pagingresponse) | Y | |
+| roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Y | 組織で使用可能なロールグループリスト |
 
 <a id="view-a-single-organization-role-group"></a>
 ### 組織ロールグループ個別照会 { #view-a-single-organization-role-group }
@@ -2144,8 +2150,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 照会対象組織ID |
-| Path | role-group-id | String | Yes | 組織ロールグループID | 
+| Path | org-id | String | Y | 照会対象組織ID |
+| Path | role-group-id | String | Y | 組織ロールグループID | 
 
 <a id="view-a-single-organization-role-group-response-body"></a>
 #### レスポンス本文
@@ -2195,8 +2201,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |
 | ------------ | ------------- | --------- | ------------ |
-| header | [共通レスポンス](#common-response) | Yes | |
-| roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | 関連ロールを含むロールグループ |
+| header | [共通レスポンス](#common-response) | Y | |
+| roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Y | 関連ロールを含むロールグループ |
 
 <a id="create-organization-role-group"></a>
 ### 組織ロールグループ作成 { #create-organization-role-group }
@@ -2214,8 +2220,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 組織ID |
-| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | リクエスト |
+| Path | org-id | String | Y | 組織ID |
+| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest) | Y | リクエスト |
 
 <a id="create-organization-role-group-response-body"></a>
 #### レスポンス本文
@@ -2234,7 +2240,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [共通レスポンス](#common-response) | Yes | |
+| header | [共通レスポンス](#common-response) | Y | |
 
 <a id="delete-organization-role-group"></a>
 ### 組織ロールグループ削除 { #delete-organization-role-group }
@@ -2252,8 +2258,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 組織ID |
-| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | リクエスト |
+| Path | org-id | String | Y | 組織ID |
+| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Y | リクエスト |
 
 <a id="delete-organization-role-group-response-body"></a>
 #### レスポンス本文
@@ -2272,7 +2278,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [共通レスポンス](#common-response) | Yes | |
+| header | [共通レスポンス](#common-response) | Y | |
 
 <a id="modify-organization-role-group-information"></a>
 ### 組織ロールグループ情報修正 { #modify-organization-role-group-information }
@@ -2290,9 +2296,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 組織ID |
-| Path | role-group-id | String | Yes | ロールグループID |
-| Request Body | request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | リクエスト |
+| Path | org-id | String | Y | 組織ID |
+| Path | role-group-id | String | Y | ロールグループID |
+| Request Body | request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Y | リクエスト |
 
 <a id="modify-organization-role-group-information-response-body"></a>
 #### レスポンス本文
@@ -2311,7 +2317,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [共通レスポンス](#common-response) | Yes | |
+| header | [共通レスポンス](#common-response) | Y | |
 
 
 <a id="modify-an-organization-role-groups-role"></a>
@@ -2330,15 +2336,15 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | 組織ID |
-| Path | role-group-id | String | Yes | ロールグループID |
-| Request Body | request | UpdateRoleGroupRequest | Yes | リクエスト |
+| Path | org-id | String | Y | 組織ID |
+| Path | role-group-id | String | Y | ロールグループID |
+| Request Body | request | UpdateRoleGroupRequest | Y | リクエスト |
 
 ##### UpdateRoleGroupRequest
 
 | 名前 | タイプ | 必須 | 説明 |
 | ------------ | ------------- | ------------- | ------------ |
-| roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Yes | ロールグループに割り当てるロールリスト |
+| roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Y | ロールグループに割り当てるロールリスト |
 
 <a id="modify-an-organization-role-groups-role-response-body"></a>
 #### レスポンス本文
@@ -2357,7 +2363,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [共通レスポンス](#common-response) | Yes | |
+| header | [共通レスポンス](#common-response) | Y | |
 
 
 <a id="modify-organization-member-roles"></a>
@@ -2379,9 +2385,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
-|  Path |member-uuid | String| Yes | 修正するメンバーのUUID | 
-| Request Body | request | UpdateMemberRoleRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 組織ID | 
+|  Path |member-uuid | String| Y | 修正するメンバーのUUID | 
+| Request Body | request | UpdateMemberRoleRequest| Y | リクエスト |
 
 
 ##### UpdateMemberRoleRequest
@@ -2389,7 +2395,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List&lt;[UserAssignRoleProtocol](#userassignroleprotocol)>| Yes | ユーザーに割り当てるロールリスト |
+|   assignRoles | List&lt;[UserAssignRoleProtocol](#userassignroleprotocol)>| Y | ユーザーに割り当てるロールリスト |
 
 
 
@@ -2412,7 +2418,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="modify-project-member-roles"></a>
 ### プロジェクトメンバーロール修正 { #modify-project-member-roles }
@@ -2430,9 +2436,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | プロジェクトID | 
-|  Path |member-uuid | String| Yes | ロール変更対象メンバーUUID | 
-| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | リクエスト |
+|  Path |project-id | String| Y | プロジェクトID | 
+|  Path |member-uuid | String| Y | ロール変更対象メンバーUUID | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Y | リクエスト |
 
 
 
@@ -2454,7 +2460,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="view-organization-iam-members"></a>
 ### 組織IAMメンバー単件照会 { #view-organization-iam-members }
@@ -2473,8 +2479,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 照会する組織ID | 
-|  Path |member-uuid | String| Yes | 照会する組織のIAMメンバーUUID | 
+|  Path |org-id | String| Y | 照会する組織ID | 
+|  Path |member-uuid | String| Y | 照会する組織のIAMメンバーUUID | 
 
 
 <a id="view-organization-iam-members-response-body"></a>
@@ -2547,45 +2553,45 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   orgMember | OrgIamMemberRoleBundleProtocol| No  |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   orgMember | OrgIamMemberRoleBundleProtocol| N  |
 
 ##### OrgIamMemberRoleBundleProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   corporate | String| No | 会社名 |
-|   country | String| No | 国籍(組織Ownerの国籍) |
-|   createdAt | Date| No | 作成日時 |
-|   creationType | String| No| メンバーの作成タイプ |
-|   department | String| No| 部署名 |
-|   emailAddress | String| Yes | IAMメンバーメールアドレス |
-|   englishName | String| No| 英語名 | 
-|   id | String| Yes | IAMメンバーUUID  |
-|   idProviderId | String| No| 外部認証を使用する場合、認証機関ID |
-|   idProviderType | String| No| service: IAM直接ログイン<br>sso:顧客SSO連動 |
-|   idProviderUserId | String| No|
-|   lastAccessedAt | Date| No| メンバーの最後の接続日時、ない場合はnullを返す |
-|   lastLoggedInAt | Date| No| メンバーの最後のログイン日時、ない場合はnullを返す |
-|   lastLoggedInIp | String| No| メンバーの最後のログインIPアドレス、ない場合はnullを返す |
-|   maskingEmail | String| No | IAMメンバーのマスキングされたメールアドレス |
-|   mobilePhone | String| No | IAMメンバーの携帯電話番号 |
-|   mobilePhoneCountryCode | String| No| 携帯電話番号国コード2桁英字 |
-|   name | String| Yes | IAMメンバーの名前 |
-|   nativeName | String| No|
-|   nickname | String| No|
-|   officeHoursBegin | String| No|
-|   officeHoursEnd | String| No|
-|   organizationId | String| Yes | IAMメンバーの組織ID  |
-|   passwordChangedAt | Date| No| メンバーの最後のパスワード変更日時、ない場合はnullを返す |
-|   position | String| No| 役職 |
-|   profileImageUrl | String| No| プロフィールイメージURL |
-|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| No | 関連ロールリスト(条件属性を含む)  |
-|   saasRoles | List&lt;IamMemberRole>| No | IAMメンバーロール |
-|   status | String| No| メンバーの状態 |
-|   telephone | String| No | IAMメンバーの電話番号 |
-|   userCode | String| Yes | IAMメンバーID  |
+|   corporate | String| N | 会社名 |
+|   country | String| N | 国籍(組織Ownerの国籍) |
+|   createdAt | Date| N | 作成日時 |
+|   creationType | String| N| メンバーの作成タイプ |
+|   department | String| N| 部署名 |
+|   emailAddress | String| Y | IAMメンバーメールアドレス |
+|   englishName | String| N| 英語名 | 
+|   id | String| Y | IAMメンバーUUID  |
+|   idProviderId | String| N| 外部認証を使用する場合、認証機関ID |
+|   idProviderType | String| N| service: IAM直接ログイン<br>sso:顧客SSO連動 |
+|   idProviderUserId | String| N| 外部認証機関が提供したユーザーID |
+|   lastAccessedAt | Date| N| メンバーの最後の接続日時、ない場合はnullを返す |
+|   lastLoggedInAt | Date| N| メンバーの最後のログイン日時、ない場合はnullを返す |
+|   lastLoggedInIp | String| N| メンバーの最後のログインIPアドレス、ない場合はnullを返す |
+|   maskingEmail | String| N | IAMアカウントのマスキングされたメールアドレス  |
+|   mobilePhone | String| N | IAMメンバーの携帯電話番号 |
+|   mobilePhoneCountryCode | String| N| 携帯電話番号国コード2桁英字 |
+|   name | String| Y | IAMメンバーの名前 |
+|   nativeName | String| N| 母国語名 |
+|   nickname | String| N| ユーザーの別名 |
+|   officeHoursBegin | String| N| 業務開始時間 例: 09:00 |
+|   officeHoursEnd | String| N| 業務終了時間 例: 18:00 |
+|   organizationId | String| Y | IAMメンバーの組織ID  |
+|   passwordChangedAt | Date| N| メンバーの最後のパスワード変更日時、ない場合はnullを返す |
+|   position | String| N| 役職 |
+|   profileImageUrl | String| N| プロフィールイメージURL |
+|   roles | List&lt;[RoleBundleProtocol](#rolebundleprotocol)>| N | 関連ロールリスト(条件属性を含む)  |
+|   saasRoles | List&lt;IamMemberRole>| N | IAMメンバーロール |
+|   status | String| N| メンバーの状態 |
+|   telephone | String| N | IAMメンバーの電話番号 |
+|   userCode | String| Y | IAMメンバーID  |
 
 
 
@@ -2594,9 +2600,9 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   productId | String| No |
-|   productName | String| No |
-|   role | String| No |
+|   productId | String| N |
+|   productName | String| N |
+|   role | String| N |
 
 
 <a id="list-organization-iam-members"></a>
@@ -2615,16 +2621,16 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
-|  Query |email | String| No | IAMメンバーのメールアドレス |
-|  Query |emailLike | String| No |  |
-|  Query |idProviderType | String| No | service: IAM直接ログイン<br>sso:顧客SSO連動 |
-|  Query |nameLike | String| No |  |
-|  Query |statuses | List&lt;String>| No |  |
-|  Query |userCode | String| No | IAMメンバーID |
-|  Query |userCodeLike | String| No |  |
-|  Query |limit | Integer| No | 1ページあたりの表示件数、デフォルト値20 |
-|  Query |page | Integer| No | 対象ページ、デフォルト値1 |
+|  Path |org-id | String| Y | 組織ID | 
+|  Query |email | String| N | IAMメンバーのメールアドレス |
+|  Query |emailLike | String| N |  |
+|  Query |idProviderType | String| N | service: IAM直接ログイン<br>sso:顧客SSO連動 |
+|  Query |nameLike | String| N |  |
+|  Query |statuses | List&lt;String>| N |  |
+|  Query |userCode | String| N | IAMメンバーID |
+|  Query |userCodeLike | String| N |  |
+|  Query |limit | Integer| N | 1ページあたりの表示件数、デフォルト値20 |
+|  Query |page | Integer| N | 対象ページ、デフォルト値1 |
 
 <a id="list-organization-iam-members-response-body"></a>
 #### レスポンス本文
@@ -2680,43 +2686,43 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   orgMembers | List&lt;IamOrgMemberProtocol>| No | 組織IAMメンバーリスト |
-|   paging | [PagingResponse](#pagingresponse)| No  |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   orgMembers | List&lt;IamOrgMemberProtocol>| N | 組織IAMメンバーリスト |
+|   paging | [PagingResponse](#pagingresponse)| N  |
 
 ##### IamOrgMemberProtocol
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-| id | String | No | IAMメンバーUUID | 
-| userCode | String | Yes | ログイン時に使用するIAMメンバーID | 
-| name | String | Yes | IAMメンバーのユーザー名 | 
-| emailAddress | String |  Yes | IAMメンバーのメールアドレス<br>告知を受信したり、パスワード変更案内メール受信する際に使用されます |
-| maskingEmail | String | No | IAMメンバーのマスキングされたメールアドレス |
-| mobilePhone | String | No | IAMメンバーの携帯電話番号 |
-| telephone | String | No | IAMメンバー電話番号 |
-| position | String | No | 役職 |
-| department | String | No | 部署名 |
-| corporate | String | No | 会社名 |
-| profileImageUrl | String | No | プロフィールイメージURL |
-| englishName | String | No | 英語名 |
-| nativeName | String | No | 母国語名 |
-| nickname | String | No | ユーザーニックネーム |
-| officeHoursBegin | String | No | 業務開始時間例：09:00 |
-| officeHoursEnd | String | No | 業務終了時間例：18:00 |
-| status | String | Yes | メンバーの状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要があります |
-| creationType | String | No | 作成日時 |
-| idProviderId | String | No | 外部認証を使用する場合、認証機関ID |
-| idProviderType | String | No | service: IAM直接ログイン(デフォルト値)<br>sso:顧客SSO連動(連動されていない場合は設定不可) |
-| idProviderUserId | String | No | 外部認証機関が提供したユーザーID |
-| createdAt | Date | No | 作成日時 |
-| lastAccessedAt | Date | No | 最終接続日時 |
-| lastLoggedInAt | Date | No | 最終ログイン日時 |
-| lastLoggedInIp | String | No | 最後にログインしたIP |
-| passwordChangedAt | Date | No | パスワード変更日時 |
-| mobilePhoneCountryCode | String | No | 携帯電話番号国コード2桁英字 |
-| organizationId | String | No | IAMメンバーの組織ID |
-| country | String | No | 国籍(組織Ownerの国籍) |
+| id | String | N | IAMメンバーUUID | 
+| userCode | String | Y | ログイン時に使用するIAMメンバーID | 
+| name | String | Y | IAMメンバーのユーザー名 | 
+| emailAddress | String |  Y | IAMメンバーのメールアドレス<br>告知を受信したり、パスワード変更案内メール受信する際に使用されます |
+| maskingEmail | String | N | IAMメンバーのマスキングされたメールアドレス |
+| mobilePhone | String | N | IAMメンバーの携帯電話番号 |
+| telephone | String | N | IAMメンバー電話番号 |
+| position | String | N | 役職 |
+| department | String | N | 部署名 |
+| corporate | String | N | 会社名 |
+| profileImageUrl | String | N | プロフィールイメージURL |
+| englishName | String | N | 英語名 |
+| nativeName | String | N | 母国語名 |
+| nickname | String | N | ユーザーニックネーム |
+| officeHoursBegin | String | N | 業務開始時間例：09:00 |
+| officeHoursEnd | String | N | 業務終了時間例：18:00 |
+| status | String | Y | メンバーの状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要があります |
+| creationType | String | N | 連携(sso)、招待(invited)、登録(registered) |
+| idProviderId | String | N | 外部認証を使用する場合、認証機関ID |
+| idProviderType | String | N | service: IAM直接ログイン(デフォルト値)<br>sso:顧客SSO連動(連動されていない場合は設定不可) |
+| idProviderUserId | String | N | 外部認証機関が提供したユーザーID |
+| createdAt | Date | N | 作成日時 |
+| lastAccessedAt | Date | N | 最終接続日時 |
+| lastLoggedInAt | Date | N | 最終ログイン日時 |
+| lastLoggedInIp | String | N | 最後にログインしたIP |
+| passwordChangedAt | Date | N | パスワード変更日時 |
+| mobilePhoneCountryCode | String | N | 携帯電話番号国コード2桁英字 |
+| organizationId | String | N | IAMメンバーの組織ID |
+| country | String | N | 国籍(組織Ownerの国籍) |
 
 
 
@@ -2739,38 +2745,38 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
-| Request Body | request | AddIamOrgMemberRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 組織ID | 
+| Request Body | request | AddIamOrgMemberRequest| Y | リクエスト |
 
 ##### AddIamOrgMemberRequest
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Yes   |
+|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Y   |
 
 
 ##### AddIamOrgMemberProtocol
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-| userCode | String | Yes | ログイン時に使用するIAMアカウントID | 
-| name | String | Yes | IAMアカウントのユーザー名 | 
-| emailAddress | String |  Yes | IAMアカウントのメールアドレス<br>告知を受信したりパスワード変更案内メールを受信するのに使用される |
-| mobilePhone | String | No | IAMアカウントの携帯電話番号 |
-| telephone | String | No | IAMアカウントの電話番号 |
-| position | String | No | 役職 |
-| department | String | No | 部署名 |
-| corporate | String | No | 会社名 |
-| profileImageUrl | String | No | プロフィールイメージURL |
-| englishName | String | No | 英語名 |
-| nativeName | String | No | 母国語名 |
-| nickname | String | No | ユーザーニックネーム |
-| officeHoursBegin | String | No | 業務開始時間例：09:00 |
-| officeHoursEnd | String | No | 業務終了時間例：18:00 |
-| status | String | Yes | アカウント状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要がある |
-| creationType | String | No | 連動(sso)、招待(invited)、登録(registred) |
-| mobilePhoneCountryCode | String | No | 携帯電話番号国コード2桁英字、携帯電話番号を入力する場合は必須 |
+| userCode | String | Y | ログイン時に使用するIAMアカウントID | 
+| name | String | Y | IAMアカウントのユーザー名 | 
+| emailAddress | String |  Y | IAMアカウントのメールアドレス<br>告知を受信したりパスワード変更案内メールを受信するのに使用される |
+| mobilePhone | String | N | IAMアカウントの携帯電話番号 |
+| telephone | String | N | IAMアカウントの電話番号 |
+| position | String | N | 役職 |
+| department | String | N | 部署名 |
+| corporate | String | N | 会社名 |
+| profileImageUrl | String | N | プロフィールイメージURL |
+| englishName | String | N | 英語名 |
+| nativeName | String | N | 母国語名 |
+| nickname | String | N | ユーザーニックネーム |
+| officeHoursBegin | String | N | 業務開始時間例：09:00 |
+| officeHoursEnd | String | N | 業務終了時間例：18:00 |
+| status | String | Y | アカウント状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要がある |
+| creationType | String | N | 連動(sso)、招待(invited)、登録(registered) |
+| mobilePhoneCountryCode | String | N | 携帯電話番号国コード2桁英字、携帯電話番号を入力する場合は必須 |
 
 
 
@@ -2793,8 +2799,8 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   uuid | String| No | IAMメンバーUUID  |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   uuid | String| N | IAMメンバーUUID  |
 
 
 
@@ -2816,9 +2822,9 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 対象となる組織ID | 
-|  Path |member-id | String| Yes | パスワードを変更するIAMメンバーのUUID | 
-| Request Body | request | SendPasswordSetupMailRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 対象となる組織ID | 
+|  Path |member-id | String| Y | パスワードを変更するIAMメンバーのUUID | 
+| Request Body | request | SendPasswordSetupMailRequest| Y | リクエスト |
 
 
 
@@ -2827,8 +2833,8 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   locale | String| Yes  | ユーザーのロケール情報<br>例：ko |
-|   returnUrl | String| Yes  | メール変更通知メールを介してパスワードを変更した後に移動するページアドレス情報<br>移動するアドレス情報には必ずtoast.com, dooray.comまたはnhncloud.comドメインを入力する必要があります。 |
+|   locale | String| Y | ユーザーのロケール情報<br>例：ko |
+|   returnUrl | String| Y | メール変更通知メールでパスワードを変更した後に移動するページアドレス情報<br>移動するアドレス情報には必ずtoast.com, dooray.comまたはnhncloud.comドメインを入力する必要があります。 |
 
 
 <a id="send-an-iam-member-password-change-email-response-body"></a>
@@ -2848,7 +2854,7 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="modify-organization-iam-member-information"></a>
 ### 組織IAMメンバー情報修正 { #modify-organization-iam-member-information }
@@ -2866,9 +2872,9 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 	対象となる組織ID | 
-|  Path |member-uuid | String| Yes | 変更するIAMメンバーのUUID | 
-| Request Body | request | UpdateIamMemberRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 	対象となる組織ID | 
+|  Path |member-uuid | String| Y | 変更するIAMメンバーのUUID | 
+| Request Body | request | UpdateIamMemberRequest| Y | リクエスト |
 
 
 ##### UpdateIamMemberRequest
@@ -2876,30 +2882,30 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Yes   |
+|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Y   |
 
 ##### UpdateIamOrgMemberProtocol
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-| userCode | String | Yes | ログイン時に使用するIAMアカウントID | 
-| name | String | Yes | IAMアカウントのユーザー名 | 
-| emailAddress | String |  Yes | IAMアカウントのメールアドレス<br>告知を受信したりパスワード変更案内メールを受信するのに使用される |
-| mobilePhone | String | No | IAMアカウントの携帯電話番号 |
-| telephone | String | No | IAMアカウントの電話番号 |
-| position | String | No | 役職 |
-| department | String | No | 部署名 |
-| corporate | String | No | 会社名 |
-| profileImageUrl | String | No | プロフィールイメージURL |
-| englishName | String | No | 英語名 |
-| nativeName | String | No | 母国語名 |
-| nickname | String | No | ユーザーニックネーム |
-| officeHoursBegin | String | No | 業務開始時間例：09:00 |
-| officeHoursEnd | String | No | 業務終了時間例：18:00 |
-| status | String | Yes | アカウント状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要がある |
-| creationType | String | No | 連動(sso)、招待(invited)、登録(registred) |
-| idProviderUserId | String | No | 外部認証機関が提供したユーザーID |
-| mobilePhoneCountryCode | String | No | 携帯電話番号国コード2桁英字、携帯電話番号を入力する場合は必須 |
+| userCode | String | Y | ログイン時に使用するIAMアカウントID | 
+| name | String | Y | IAMアカウントのユーザー名 | 
+| emailAddress | String |  Y | IAMアカウントのメールアドレス<br>告知を受信したりパスワード変更案内メールを受信するのに使用される |
+| mobilePhone | String | N | IAMアカウントの携帯電話番号 |
+| telephone | String | N | IAMアカウントの電話番号 |
+| position | String | N | 役職 |
+| department | String | N | 部署名 |
+| corporate | String | N | 会社名 |
+| profileImageUrl | String | N | プロフィールイメージURL |
+| englishName | String | N | 英語名 |
+| nativeName | String | N | 母国語名 |
+| nickname | String | N | ユーザーニックネーム |
+| officeHoursBegin | String | N | 業務開始時間例：09:00 |
+| officeHoursEnd | String | N | 業務終了時間例：18:00 |
+| status | String | Y | アカウント状態を変更できる<br><ul><li>member:正常利用状態</li><li>leaved:退会リクエスト</li></ul>作成時には必ずmemberを指定する必要がある |
+| creationType | String | N | 連動(sso)、招待(invited)、登録(registered) |
+| idProviderUserId | String | N | 外部認証機関が提供したユーザーID |
+| mobilePhoneCountryCode | String | N | 携帯電話番号国コード2桁英字、携帯電話番号を入力する場合は必須 |
 
 
 <a id="modify-organization-iam-member-information-response-body"></a>
@@ -2919,7 +2925,7 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="change-an-organization-iam-member-password"></a>
 ### 組織IAMメンバーパスワード変更 { #change-an-organization-iam-member-password }
@@ -2937,9 +2943,9 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 対象となる組織ID | 
-|  Path |member-id | String| Yes | パスワードを変更するIAMメンバーのUUID | 
-| Request Body | request | UpdateIamPasswordRequest| Yes | リクエスト |
+|  Path |org-id | String| Y | 対象となる組織ID | 
+|  Path |member-id | String| Y | パスワードを変更するIAMメンバーのUUID | 
+| Request Body | request | UpdateIamPasswordRequest| Y | リクエスト |
 
 
 ##### UpdateIamPasswordRequest
@@ -2947,7 +2953,7 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   password | String| Yes  | 設定するパスワード | 
+|   password | String| Y  | 設定するパスワード | 
 
 
 <a id="change-an-organization-iam-member-password-response-body"></a>
@@ -2967,7 +2973,7 @@ IAMメンバーのパスワードを変更できるメールを送信するAPI�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="listorganization-ip-acls"></a>
 ### 組織IP ACLリスト照会 { #listorganization-ip-acls }
@@ -2985,7 +2991,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
+|  Path |org-id | String| Y | 組織ID | 
 
 
 <a id="listorganization-ip-acls-response-body"></a>
@@ -3010,16 +3016,16 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   orgIpAcl | List&lt;OrgIpAclProtocol>| Yes  | 設定結果、空リストの場合は設定されていない状態 |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   orgIpAcl | List&lt;OrgIpAclProtocol>| Y  | 設定結果、空リストの場合は設定されていない状態 |
 
 ##### OrgIpAclProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   ips | List&lt;String>| Yes  | 許可IP | 
-|   productId | String| Yes  | サービスID<br>undefinedの場合、共通設定|
+|   ips | List&lt;String>| Y  | 許可IP | 
+|   productId | String| Y  | サービスID<br>`undefined`の場合、共通設定|
 
 <a id="view-organization-iam-sign-in-session-settings-information"></a>
 ### 組織IAMログインセッション設定情報を照会 { #view-organization-iam-sign-in-session-settings-information }
@@ -3037,7 +3043,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
+|  Path |org-id | String| Y | 組織ID | 
 
 
 <a id="view-organization-iam-sign-in-session-settings-information-response-body"></a>
@@ -3067,17 +3073,17 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [共通レスポンス](#common-response)| Yes   |
-| result | Content | Yes | 設定内容 |
+| header | [共通レスポンス](#common-response)| Y   |
+| result | Content | Y | 設定内容 |
 
 ##### Content
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   multiSessionsLimit | Integer| Yes | 許可マルチセッション数 |
-|   sessionTimeoutMinutes | Integer| Yes | 	セッションタイムアウト |
-|   mobileSessionTimeoutMinutes | Integer| Yes | 	モバイルセッションタイムアウト |
-|   sessionType | String| Yes | fixed/idle. デフォルト値はfixed  |
+|   multiSessionsLimit | Integer| Y | 許可マルチセッション数 |
+|   sessionTimeoutMinutes | Integer| Y | 	セッションタイムアウト |
+|   mobileSessionTimeoutMinutes | Integer| Y | 	モバイルセッションタイムアウト |
+|   sessionType | String| Y | `fixed`/`idle`. デフォルト値は`fixed`  |
 
 <a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication"></a>
 ### 組織IAMログイン2段階認証の設定を照会 { #view-settings-for-organizational-iam-sign-in-second-factor-authentication }
@@ -3096,7 +3102,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
+|  Path |org-id | String| Y | 組織ID | 
 
 <a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-response-body"></a>
 #### レスポンス本文
@@ -3141,39 +3147,39 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   result | Result| No | レスポンス内容<br>設定したことがない場合はnullが返されます。 |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   result | Result| N | レスポンス内容<br>設定したことがない場合はnullが返されます。 |
 
 ##### Result
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   range | Integer| No | 組織/サービス<br>organization(共通設定), services(サービス別設定)  |
-|   organizationMfaSetting | OrganizationMfaSetting| No | 組織mfa設定情報<br>共通設定 |
-|   serviceMfaSettings | ServiceMfaSettings| No | サービス別mfa設定情報 |
+|   range | Integer| N | 組織/サービス区分<br>organization(共通設定), services(サービス別設定)  |
+|   organizationMfaSetting | OrganizationMfaSetting| N | 組織MFA設定情報<br>共通設定 |
+|   serviceMfaSettings | ServiceMfaSettings| N | サービス別MFA設定情報  |
 
 
 ##### OrganizationMfaSetting
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   type | String| No | mfaタイプ<br>none(設定しない), totp(Google OTP), email(メール) |
-|   bypassByIp | BypassByIp| No | 例外IP  |
+|   type | String| N | mfaタイプ<br>none(設定しない), totp(Google OTP), email(メール) |
+|   bypassByIp | BypassByIp| N | 例外IP  |
 
 ##### ServiceMfaSettings
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   serviceId | Sting| No | サービスID  |
-|   type | String| No | mfaタイプ<br>none(設定しない), totp(Google OTP), email(メール) |
-|   bypassByIp | BypassByIp| No | サービスタイプ。 none, totp, email |
+|   serviceId | String| N | サービスID  |
+|   type | String| N | mfaタイプ<br>none(設定しない), totp(Google OTP), email(メール) |
+|   bypassByIp | BypassByIp| N | 例外IP |
 
 ##### BypassByIp
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   enable | Boolean| No | 有効化かどうか<br>true(使用中), false(使用しない)  |
-|   ipList | List&lt;String>| No | 例外IPリスト |
+|   enable | Boolean| N | 有効化状態<br>`true`(使用中), `false`(使用しない)  |
+|   ipList | List&lt;String>| N | 例外IPリスト |
 
 <a id="view-organization-iam-login-failure-security-settings"></a>
 ### 組織IAMログイン失敗セキュリティ設定を照会 { #view-organization-iam-login-failure-security-settings }
@@ -3191,7 +3197,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID | 
+|  Path |org-id | String| Y | 組織ID | 
 
 
 <a id="view-organization-iam-login-failure-security-settings-response-body"></a>
@@ -3220,23 +3226,23 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [共通レスポンス](#common-response)| Yes   |
-| result | Result | No | ログイン失敗セキュリティを設定した場合のみ返され、設定しない場合はnullが返されます。 |
+| header | [共通レスポンス](#common-response)| Y   |
+| result | Result | N | ログイン失敗セキュリティを設定した場合のみ返され、設定しない場合はnullが返されます。 |
 
 ##### Result
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   enable | Boolean| Yes | 有効かどうか<br>true(使用中), false(使用しない)  |
-|   loginFailCount | LoginFailCount| No | ログイン失敗セキュリティ設定 |
+|   enable | Boolean| Y | 有効化状態<br>`true`(使用中), `false`(使用しない)  |
+|   loginFailCount | LoginFailCount| N | ログイン失敗セキュリティ設定 |
 
 
 ##### LoginFailCount
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 試行許可回数 |
-|   blockMinutes | Integer| No | ログイン禁止時間 |
+|   limit | Integer| N | 試行許可回数 |
+|   blockMinutes | Integer| N | ログイン禁止時間 |
 
 <a id="get-your-organizations-iam-account-password-policy"></a>
 ### 組織 IAM アカウントパスワードポリシー照会 { #get-your-organizations-iam-account-password-policy }
@@ -3255,7 +3261,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織 ID |
+|  Path |org-id | String| Y | 組織ID |
 
 <a id="get-your-organizations-iam-account-password-policy-response-body"></a>
 #### レスポンスボディ
@@ -3301,28 +3307,51 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [共通レスポンス](#common-response)| Yes   |
-| result | Content | Yes | 設定内容 |
+| header | [共通レスポンス](#common-response)| Y   |
+| result | Content | Y | 設定内容 |
 
 ##### Content
 
-<!-- TODO: translate body -->
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| schemaVersion | Integer| Y | スキーマバージョン  |
+| value | Value| Y |  パスワードポリシー |
 
 ##### Value
 
-<!-- TODO: translate body -->
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| ruleType | String | Y | パスワードポリシー<br>`default`(デフォルトパスワードポリシー)、`custom`(ユーザーパスワードポリシー) |
+| passwordConstraints | PasswordConstraints | Y | パスワード強度 |
+| passwordExpiry | PasswordExpiry | Y | パスワード有効期限 |
+| limitPasswordReuse | LimitPasswordReuse | Y | パスワード再利用制限 |
+| applyRule | String | Y | パスワードポリシー適用タイミング<br>`onChangePassword`(パスワード変更時に適用)、`onLogin`(即座に適用) |
 
 ##### PasswordConstraints
 
-<!-- TODO: translate body -->
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| minLength | Integer | Y | パスワード最小長 |
+| mustNotIncludeIllegalSequence | Boolean | Y | 英字1文字以上<br>true(設定あり)、false(設定なし) |
+| mustIncludeUpperCase | Boolean | Y | 英大文字1文字以上<br>true(設定あり)、false(設定なし) |
+| mustIncludeLowerCase | Boolean | Y | 英小文字1文字以上<br>true(設定あり)、false(設定なし) |
+| mustIncludeNumberCase | Boolean | Y | 数字1文字以上<br>true(設定あり)、false(設定なし) |
+| mustIncludeSpecialCase | Boolean | Y | 特殊文字1文字以上<br>true(設定あり)、false(設定なし) |
 
 ##### PasswordExpiry
 
-<!-- TODO: translate body -->
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| enable | Boolean | Y | 使用有無<br>true(設定あり)、false(設定なし) |
+| expiryDays | Integer | Y | 有効期間 |
+| allowExpend | Boolean | Y | 有効期限切れ時の延長可否<br>true(可能)、false(不可) |
 
 ##### LimitPasswordReuse
 
-<!-- TODO: translate body -->
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| enable | Boolean | Y | 使用有無<br>true(設定あり)、false(設定なし) |
+| limitCount | Integer | Y | 再利用制限回数 |
 
 <a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription"></a>
 ### 従量制に登録された商品価格照会 { #get-the-price-of-a-service-on-a-pay-as-you-go-subscription }
@@ -3342,22 +3371,22 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |limit | Integer| No |  |
-| Request Body | request | GetContractProductPriceRequest| Yes | リクエスト |
+|  Query |limit | Integer| N |  |
+| Request Body | request | GetContractProductPriceRequest| Y | リクエスト |
 
 <a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-getcontractproductpricerequest"></a>
 #### GetContractProductPriceRequest
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|  counterNames | List&lt;String>| No | 商品メタのcounter Nameリスト<br>ない場合は全体検索する |
-|   paging | Paging| No  |
+|  counterNames | List&lt;String>| N | 商品メタのcounter Nameリスト<br>ない場合は全体検索する |
+|   paging | Paging| N  |
 
 ##### Paging
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | 1ページあたりの表示件数、デフォルト値20  |
-|   page | Integer| No | 対象ページ、デフォルト値1  |
+|   limit | Integer| N | 1ページあたりの表示件数、デフォルト値20  |
+|   page | Integer| N | 対象ページ、デフォルト値1  |
 
 
 <a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-response-body"></a>
@@ -3400,39 +3429,39 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   paging | PagingResponse| Yes | ソート基準がないページング結果を返す |
-|   prices | List&lt;ContractProductPriceProtocol>| Yes | カウンターの単価情報を配列で返す<br>エラー時は含まれません。  |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   paging | PagingResponse| Y | ソート基準がないページング結果を返す |
+|   prices | List&lt;ContractProductPriceProtocol>| Y | カウンターの単価情報を配列で返す<br>エラー時は含まれません。  |
 
 ##### PagingResponse
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   limit | Integer| Yes | 照会される数制限<br>デフォルト値は20 |
-|   page | Integer| Yes |
-|   totalCount | Integer| Yes |
+|   limit | Integer| Y | 照会される数制限<br>デフォルト値は20 |
+|   page | Integer| Y |
+|   totalCount | Integer| Y |
 
 ##### ContractProductPriceProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   contractDiscountPolicyId | String| Yes | 約定料金ポリシーID  |
-|   contractId | String| Yes | 約定ID  |
-|   counterName | String| Yes | カウンター |
-|   displayNameEn | String| No | 	カウンターの英語名 |
-|   displayNameJa | String| No | カウンターの日本語名 |
-|   displayNameKo | String| Yes | カウンターの韓国語名 |
-|   displayNameZh | String| No | 	カウンターの中国語名<br>現在は英語で表示されます |
-|   monthFrom | String| Yes | 単価情報が有効な開始月(含む)  |
-|   monthTo | String| Yes | 単価情報が有効な終了月(含まない)  |
-|   originalPrice | BigDecimal| Yes | 単価 |
-|   price | BigDecimal| Yes | 単価 |
-|   rangeFrom | BigDecimal| Yes | 単価に属する使用量範囲開始(含まない)  |
-|   rangeTo | BigDecimal| Yes | 単価に属する使用量範囲終了(含む)  |
-|   seq | Long| Yes | シリアル番号 |
-|   slidingCalculationTypeCode | String| Yes | スライディング料金計算タイプ<br>NONE, SECTION_SUM, SECTION_SELECTED |
-|   useFixPriceYn | String| Yes | 固定金額かどうか(Y:固定金額、 N:単価計算)<br>Y:範囲に入る場合priceが金額になる<br>N: (使用量x単価)が金額になる |
+|   contractDiscountPolicyId | String| Y | 約定料金ポリシーID  |
+|   contractId | String| Y | 約定ID  |
+|   counterName | String| Y | カウンター |
+|   displayNameEn | String| N | 	カウンターの英語名 |
+|   displayNameJa | String| N | カウンターの日本語名 |
+|   displayNameKo | String| Y | カウンターの韓国語名 |
+|   displayNameZh | String| N | 	カウンターの中国語名<br>現在は英語で表示されます |
+|   monthFrom | String| Y | 単価情報が有効な開始月(含む)  |
+|   monthTo | String| Y | 単価情報が有効な終了月(含まない)  |
+|   originalPrice | BigDecimal| Y | 単価 |
+|   price | BigDecimal| Y | 単価 |
+|   rangeFrom | BigDecimal| Y | 単価に属する使用量範囲開始(含まない)  |
+|   rangeTo | BigDecimal| Y | 単価に属する使用量範囲終了(含む)  |
+|   seq | Long| Y | シリアル番号 |
+|   slidingCalculationTypeCode | String| Y | スライディング料金計算タイプ<br>`NONE`, `SECTION_SUM`, `SECTION_SELECTED` |
+|   useFixPriceYn | String| Y | 固定金額かどうか(Y:固定金額、 N:単価計算)<br>Y:範囲に入る場合priceが金額になる<br>N: (使用量x単価)が金額になる |
 
 <a id="list-services-enrolled-in-a-pay-as-you-go-subscription"></a>
 ### 従量制に登録されたサービスリスト照会 { #list-services-enrolled-in-a-pay-as-you-go-subscription }
@@ -3450,8 +3479,8 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |limit | Integer| No | 照会される数制限<br>デフォルト値は20 |
-|  Query |page | Integer| No |  |
+|  Query |limit | Integer| N | 照会される数制限<br>デフォルト値は20 |
+|  Query |page | Integer| N |  |
 
 
 <a id="list-services-enrolled-in-a-pay-as-you-go-subscription-response-body"></a>
@@ -3500,9 +3529,9 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   products | List&lt;ProductMetadata>| Yes | サービスメタ情報リスト |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   products | List&lt;ProductMetadata>| Y | サービスメタ情報リスト |
 
 
 ##### ProductMetadata
@@ -3511,11 +3540,11 @@ IP ACL設定を照会するAPIです。
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
 |   budgetUsageTypeYn | String| No | 予算使用量タイプYn  Y, N |
-|   calcUnitCode | String| Yes | 金額計算時に使用する単位(計量単位を精算単位に変換して金額計算を行う)、明細書に表示する単位<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
+|   calcUnitCode | String| Yes | 金額計算時に使用する単位(メータリング単位を精算単位に変換して金額計算を行う)、明細書に表示する単位<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
 |   categoryMain | String| Yes | メインカテゴリー |
 |   categorySub | String| Yes | サブカテゴリー |
 |   chargingTypeId | String| Yes | 課金タイプID  |
-|   convertUsageTypeCode | String| Yes | 使用量変換タイプコードNONE, HOUR_AVERAGE, DAY_AVERAGE |
+|   convertUsageTypeCode | String| Yes | 使用量変換タイプコード`NONE`, `HOUR_AVERAGE`, `DAY_AVERAGE` |
 |   counterName | String| Yes | カウンター |
 |   counterTypeCode | String| Yes | 使用量の合算方法<br><ul><li>DELTA:増加値(HOURLY_SUM)</li><li>GAUGE:時間最大値の合計(HOURLY_MAXに変更予定)</li><li>HOURLY_LATEST: 1時間の間に収集されたデータのうち、最も遅く収集されたメータリングデータの合計</li><li>DAILY_MAX:日最大値の合計</li><li>MONTHLY_MAX:月最大値</li><li>STATUS:使用状況</li><ul> |
 |   description | String| No | カウンターの説明 |
@@ -3525,12 +3554,405 @@ IP ACL設定を照会するAPIです。
 |   minUsage | BigDecimal| Yes | 最小使用量 |
 |   parentCounterName | String| Yes | 親カウンター名 |
 |   productId | String| Yes | サービスID  |
-|   productMetadataStatusCode | String| Yes | カウンターステータスコードSTABLE, CLOSED |
-|   productUiId | String| Yes | Webサイトカテゴリー/Webサイトサービス識別ID  |
+|   productMetadataStatusCode | String| Yes | カウンターステータスコード`STABLE`, `CLOSED` |
+|   productUiId | String| Yes | ホームページカテゴリー/ホームページサービス識別ID  |
 |   regionTypeCode | String| Yes | カウンターネームが所属するリージョンコード<br><ul><li>GLOBAL: Globalサービスに属するカウンターネーム</li><li>NONE: GLOBALと同じ意味</li><li>KR1: KR1リージョンに属するカウンターネーム</li><li>KR2: KR2リージョンに属するカウンターネーム</li><li>...:該当リージョンに属するカウンターネーム</li><ul>  |
 |   unit | Long| Yes | 精算単位 |
 |   unitName | String| Yes | 請求書に表示する名前 |
 |   usageAggregationUnitCode | String| No | 使用量集計単位<br>RESOURCE_ID, COUNTER_NAME |
+
+<a id="view-charges-by-payment-statement"></a>
+### 請求書別利用金額照会 { #view-charges-by-payment-statement }
+
+> GET "/v1/billing/members/payment-statements"
+
+請求書単位の利用金額を照会するAPIです。
+
+<a id="view-charges-by-payment-statement-required-permissions"></a>
+#### 必要な権限
+`Member.PaymentStatement.Get`
+
+<a id="view-charges-by-payment-statement-request-parameter"></a>
+#### リクエストパラメータ
+
+| 区分 | 名前 | タイプ | 必須 | 説明  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |month | String| Y | 請求月（yyyy-MM） |
+|  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ（複数）<br>未指定の場合、照会可能なすべての決済グループを照会します |
+
+<a id="view-charges-by-payment-statement-response-body"></a>
+#### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paymentStatementCharges": [ {
+    "uuid": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
+    "paymentGroupId": "3YVRwIVU",
+    "month": "2026-07-01T00:00:00.000+09:00",
+    "country": "KR",
+    "paymentStatusCode": "PAID",
+    "autoPaymentTypeCode": "CREDIT_CARD",
+    "paymentInfo": "[現代カード] 4403***",
+    "chargeAmount": 1000000,
+    "totalDiscountAmount": 100000,
+    "totalExtraAmount": 0,
+    "taxAmount": 90000,
+    "freeCreditAmount": 0,
+    "paidCreditAmount": 0,
+    "freeCreditAllAmount": 0,
+    "freeCreditLimitAmount": 0,
+    "paidCreditAllAmount": 0,
+    "paidCreditLimitAmount": 0,
+    "totalCreditAmount": 0,
+    "prePaidTotalAmount": 0,
+    "cutoffAmount": 0,
+    "lateFeeAmount": 0,
+    "totalAmount": 990000,
+    "chargedSupplyAmount": 900000,
+    "chargedTaxAmount": 90000,
+    "chargedTotalAmount": 990000,
+    "receiptStatusCode": "EXIST",
+    "refundAccountRegisterStatusCode": "DENY"
+  } ]
+}
+```
+
+##### レスポンス
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   paymentStatementCharges | List&lt;Charge>| Y | 決済グループ別の利用金額リスト  |
+
+##### Charge
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+|   uuid | String| Y | メンバーUUID  |
+|   paymentGroupId | String| Y | 決済グループID  |
+|   month | Date| Y | 請求月  |
+|   country | String| Y | 国コード  |
+|   paymentStatusCode | String| Y | 決済ステータスコード<br><ul><li>REGISTERED: 登録</li><li>READY: 決済待機</li><li>PAID: 決済完了</li><li>ERROR: 運営者による確認が必要な状態</li></ul> |
+|   autoPaymentTypeCode | String| Y | 決済手段タイプ  |
+|   paymentInfo | String| N | 決済手段情報  |
+|   chargeAmount | Long| Y | 利用金額  |
+|   totalDiscountAmount | Long| Y | 割引金額  |
+|   totalExtraAmount | Long| Y | 割増金額  |
+|   taxAmount | Long| Y | 消費税額（切り捨て前）  |
+|   freeCreditAmount | Long| Y | 無料クレジット使用金額（全体型、制限型合計）  |
+|   paidCreditAmount | Long| Y | 有料クレジット使用金額（全体型、制限型合計）  |
+|   freeCreditAllAmount | Long| Y | 全体型無料クレジット使用金額  |
+|   freeCreditLimitAmount | Long| Y | 制限型無料クレジット使用金額  |
+|   paidCreditAllAmount | Long| Y | 全体型有料クレジット使用金額  |
+|   paidCreditLimitAmount | Long| Y | 制限型有料クレジット使用金額  |
+|   totalCreditAmount | Long| Y | クレジット総使用金額  |
+|   prePaidTotalAmount | Long| Y | 前払い適用金額  |
+|   cutoffAmount | Long| Y | 切り捨て金額（500ウォン未満）  |
+|   lateFeeAmount | Long| Y | 延滞料  |
+|   totalAmount | Long| Y | 最終請求金額（消費税込み）  |
+|   chargedSupplyAmount | Long| Y | 実供給価額<br>クレジット・前払い・切り捨てを反映した実請求金額 |
+|   chargedTaxAmount | Long| Y | 実消費税<br>クレジット・前払い・切り捨てを反映した実請求金額 |
+|   chargedTotalAmount | Long| Y | 実決済金額<br>実供給価額 + 実消費税 + 延滞料 |
+|   receiptStatusCode | String| Y | 売上伝票ステータスコード<br><ul><li>NONE: 売上伝票を表示できない状態</li><li>EXIST: 売上伝票を表示できる状態</li></ul> |
+|   refundAccountRegisterStatusCode | String| N | 返金口座登録ステータスコード<br><ul><li>ALLOW: 返金口座登録Open状態</li><li>DENY: 返金口座登録Close状態（デフォルト）</li></ul> |
+
+
+<a id="view-charge-summaries-by-scope"></a>
+### ビリンググループ、組織、プロジェクト別利用金額の照会 { #view-charge-summaries-by-scope }
+
+> GET "/v1/billing/members/payment-statements/charge-summaries"
+
+利用金額をビリンググループ/組織/プロジェクト単位で集計して照会するAPIです。
+
+!!! danger "注意"
+    * 2020年5月以降の請求月のみ照会できます。
+    * `groupBy`には決済グループ(PAYMENT_GROUP)を指定することはできません。決済グループ単位の利用金額は[請求書別利用金額の照会](#view-charges-by-payment-statement)を使用してください。
+
+<a id="view-charge-summaries-by-scope-required-permissions"></a>
+#### 必要な権限
+`Member.PaymentStatement.Get`
+
+<a id="view-charge-summaries-by-scope-request-parameter"></a>
+#### リクエストパラメータ
+
+| 区分 | 名前 | タイプ | 必須 | 説明  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |month | String| Y | 請求月(yyyy-MM)<br>2020-05以降のみサポート |
+|  Query |groupBy | String| Y | 集計基準(単一)<br><ul><li>BILLING_GROUP: ビリンググループ</li><li>ORG: 組織</li><li>PROJECT: プロジェクト</li></ul> |
+|  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ(複数、最大10件) |
+|  Query |billingGroupIds | List&lt;String>| N | ビリンググループIDフィルタ(複数、最大10件) |
+|  Query |orgIds | List&lt;String>| N | 組織IDフィルタ(複数、最大10件) |
+|  Query |projectIds | List&lt;String>| N | プロジェクトIDフィルタ(複数、最大10件) |
+|  Query |cursor | String| N | 次のページカーソル<br>未指定の場合は最初のページを照会 |
+|  Query |size | Integer| N | 1ページあたりの表示件数(10〜100)<br>デフォルト20 |
+
+<a id="view-charge-summaries-by-scope-response-body"></a>
+#### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "groupBy": "PROJECT",
+  "chargeSummaries": [ {
+    "paymentGroupId": "3YVRwIVU",
+    "billingGroupId": "LY9NQ7lvWvxGj3aW",
+    "billingGroupName": "請求グループ名",
+    "orgId": "eNWZ3jZq2FsMSHaQ",
+    "orgName": "組織名",
+    "projectId": "KGDeiKUq",
+    "projectName": "プロジェクト名",
+    "country": "KR",
+    "chargeAmount": 1000000,
+    "contractDiscountAmount": 50000,
+    "ocpDiscountAmount": 0,
+    "billingGroupDiscountAmount": 0,
+    "projectDiscountAmount": 50000,
+    "totalDiscountAmount": 100000,
+    "contractExtraAmount": 0,
+    "billingGroupExtraAmount": 0,
+    "projectExtraAmount": 0,
+    "totalExtraAmount": 0,
+    "totalCreditLimitAmount": 0,
+    "prePaidTotalAmount": 0,
+    "totalAmount": 900000
+  } ],
+  "nextCursor": "S0dEZWlLVXE"
+}
+```
+
+##### レスポンス
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   groupBy | String| Y | リクエストした集計基準  |
+|   chargeSummaries | List&lt;ChargeSummary>| Y | 請求グループ、組織、プロジェクト別の利用金額リスト  |
+|   nextCursor | String| N | 次のページカーソル<br>最後のページの場合はnull |
+
+##### ChargeSummary
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- |----| ----------- |
+|   paymentGroupId | String| Y  | 決済グループID |
+|   billingGroupId | String| Y  | 請求グループID |
+|   billingGroupName | String| N  | 請求グループ名 |
+|   orgId | String| N  | 組織ID<br>`groupBy=ORG`、`groupBy=PROJECT`の場合のみ返却 |
+|   orgName | String| N  | 組織名<br>`groupBy=ORG`、`groupBy=PROJECT`の場合のみ返却 |
+|   projectId | String| N  | プロジェクトID<br>`groupBy=PROJECT`の場合のみ返却 |
+|   projectName | String| N  | プロジェクト名<br>`groupBy=PROJECT`の場合のみ返却 |
+|   country | String| Y  | 国コード  |
+|   chargeAmount | Long| Y  | 利用金額  |
+|   contractDiscountAmount | Long| Y  | 契約による割引金額 |
+|   ocpDiscountAmount | Long| Y  | Optimized Cost Plans(OCPs)割引金額 |
+|   billingGroupDiscountAmount | Long| Y  | 請求グループ割引金額 |
+|   projectDiscountAmount | Long| Y  | プロジェクト割引金額 |
+|   totalDiscountAmount | Long| Y  | 割引金額合計 |
+|   contractExtraAmount | Long| Y  | 契約による割増金額 |
+|   billingGroupExtraAmount | Long| Y  | 請求グループ割増金額 |
+|   projectExtraAmount | Long| Y  | プロジェクト割増金額 |
+|   totalExtraAmount | Long| Y  | 割増金額合計 |
+|   totalCreditLimitAmount | Long| Y  | 制限型クレジット適用金額 |
+|   prePaidTotalAmount | Long| Y  | 前払い適用金額 |
+|   totalAmount | Long| Y  | 最終金額（税抜）<br>利用金額 - 割引金額 + 割増金額 - 制限型クレジット適用金額 - 前払い適用金額 |
+
+
+<a id="view-individual-charge-lines"></a>
+### 詳細内訳の利用金額照会 { #view-individual-charge-lines }
+
+> GET "/v1/billing/members/payment-statements/usages"
+
+詳細内訳単位の利用金額を照会するAPIです。
+
+!!! danger "注意"
+    * 2020年5月以降の請求月のみ照会できます。
+
+<a id="view-individual-charge-lines-required-permissions"></a>
+#### 必要な権限
+`Member.PaymentStatement.Get`
+
+<a id="view-individual-charge-lines-request-parameter"></a>
+#### リクエストパラメータ
+
+| 区分 | 名前 | タイプ | 必須 | 説明  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |month | String| Y | 請求月 (yyyy-MM)<br>2020-05以降のみサポート |
+|  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ（複数、最大10件） |
+|  Query |billingGroupIds | List&lt;String>| N | ビリンググループIDフィルタ（複数、最大10件） |
+|  Query |orgIds | List&lt;String>| N | 組織IDフィルタ（複数、最大10件） |
+|  Query |projectIds | List&lt;String>| N | プロジェクトIDフィルタ（複数、最大10件） |
+|  Query |categoryMains | List&lt;String>| N | メインカテゴリフィルタ（複数、最大10件） |
+|  Query |regions | List&lt;String>| N | リージョンフィルタ（複数、最大10件） |
+|  Query |stationIds | List&lt;String>| N | ステーションIDフィルタ（複数、最大10件） |
+|  Query |cursor | String| N | 次のページカーソル<br>未指定の場合、最初のページを照会 |
+|  Query |size | Integer| N | 1ページあたりの表示件数（10〜100）<br>デフォルト20 |
+
+<a id="view-individual-charge-lines-response-body"></a>
+#### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "usages": [ {
+    "projectId": "KGDeiKUq",
+    "projectName": "プロジェクト名",
+    "resourceId": "5f1ab1a1-4e6e-4f66-9b1e-2b3f5c6d7e8f",
+    "resourceName": "インスタンス名",
+    "counterName": "c2.small",
+    "categoryMain": "Compute",
+    "categorySub": "Instance",
+    "regionTypeCode": "KR1",
+    "stationId": "stationId",
+    "stationName": "stationName",
+    "displayNameKo": "c2.small",
+    "displayNameEn": "c2.small",
+    "displayNameJa": "c2.small",
+    "displayNameZh": "c2.small",
+    "unitName": "時間",
+    "unit": 1,
+    "usageVolume": 720,
+    "unitPrice": 61,
+    "contractUnitPrice": 55,
+    "chargeAmount": 43920,
+    "contractAmount": 39600,
+    "discountAmount": 4320,
+    "discountTypeCode": "CONTRACT",
+    "prePaidAmount": 0
+  } ],
+  "nextCursor": "MTAyNA"
+}
+```
+
+##### レスポンス
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   usages | List&lt;UsageLine>| Y | 詳細内訳リスト  |
+|   nextCursor | String| N | 次のページカーソル<br>最終ページの場合はnull |
+
+##### UsageLine
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+|   projectId | String| N | プロジェクトID  |
+|   projectName | String| N | プロジェクト名  |
+|   resourceId | String| N | リソースID  |
+|   resourceName | String| N | リソース名  |
+|   parentResourceId | String| N | 親リソースID  |
+|   parentResourceName | String| N | 親リソース名  |
+|   counterName | String| N | カウンター名  |
+|   categoryMain | String| N | メインカテゴリ  |
+|   categorySub | String| N | サブカテゴリ  |
+|   regionTypeCode | String| N | リージョンタイプコード  |
+|   stationId | String| N | ステーションID  |
+|   stationName | String| N | ステーション名  |
+|   displayNameKo | String| N | 課金単位表示名(ko)  |
+|   displayNameEn | String| N | 課金単位表示名(en)  |
+|   displayNameJa | String| N | 課金単位表示名(ja)  |
+|   displayNameZh | String| N | 課金単位表示名(zh)  |
+|   unitName | String| N | 単位名  |
+|   unit | Long| Y | 課金単位  |
+|   usageVolume | BigDecimal| Y | 使用量  |
+|   unitPrice | BigDecimal| Y | 従量制単価  |
+|   contractUnitPrice | BigDecimal| Y | コミットメント制単価  |
+|   chargeAmount | Long| Y | 利用金額(従量制)  |
+|   contractAmount | Long| Y | コミットメント適用金額  |
+|   discountAmount | Long| Y | コミットメント割引金額  |
+|   discountTypeCode | String| N | 割引タイプコード<br>BASIC, CONTRACT, OCP |
+|   prePaidAmount | Long| Y | 前払い適用金額  |
+|   costPlanOrderId | String| N | Optimized Cost Plans(OCPs) 注文ID  |
+
+
+<a id="view-charge-filter-dimensions"></a>
+### 利用金額の検索条件値リスト照会 { #view-charge-filter-dimensions }
+
+> GET "/v1/billing/members/payment-statements/dimensions"
+
+利用金額の照会時にフィルタとして使用できる検索条件区分（`dimension`）ごとの選択肢リストを照会するAPIです。
+
+!!! danger "注意"
+    * 2020年5月以降の請求月のみ照会できます。
+
+!!! tip "ポイント"
+    * [ビリンググループ、組織、プロジェクト別利用金額照会](#view-charge-summaries-by-scope)と同じ対象から選択肢を抽出するため、ここで照会した値をそのままフィルタとして使用できます。
+    * 検索条件区分（`dimension`）は、決済グループ > ビリンググループ > 組織 > プロジェクトの階層を持ち、上位検索条件区分（`parentDimension`）と各選択肢の上位識別子・名前が一緒に返されます。
+
+
+<a id="view-charge-filter-dimensions-required-permissions"></a>
+#### 必要な権限
+`Member.PaymentStatement.Get`
+
+<a id="view-charge-filter-dimensions-request-parameter"></a>
+#### リクエストパラメータ
+
+| 区分 | 名前 | タイプ | 必須 | 説明  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |dimension | String| Y | 照会する検索条件の区分（単一）<br><ul><li>PAYMENT_GROUP: 決済グループ</li><li>BILLING_GROUP: ビリンググループ</li><li>ORG: 組織</li><li>PROJECT: プロジェクト</li></ul> |
+|  Query |month | String| Y | 請求月（yyyy-MM）<br>2020-05以降のみサポート |
+|  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ（複数、最大10件） |
+|  Query |billingGroupIds | List&lt;String>| N | ビリンググループIDフィルタ（複数、最大10件） |
+|  Query |orgIds | List&lt;String>| N | 組織IDフィルタ（複数、最大10件） |
+|  Query |orgOwnerIds | List&lt;String>| N | 組織オーナーUUIDフィルタ（複数、最大10件）<br>該当の請求月に指定したUUIDが所有する組織の利用料金がある値のみ返します。 |
+|  Query |cursor | String| N | 次のページカーソル<br>未指定の場合は先頭ページを照会します |
+|  Query |size | Integer| N | ページあたりの表示件数（10〜100）<br>デフォルト20 |
+
+<a id="view-charge-filter-dimensions-response-body"></a>
+#### レスポンス本文
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "uuid": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
+  "dimension": "PROJECT",
+  "parentDimension": "ORG",
+  "values": [ {
+    "id": "KGDeiKUq",
+    "name": "プロジェクト名",
+    "ownerId": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
+    "parentId": "eNWZ3jZq2FsMSHaQ",
+    "parentName": "組織名"
+  } ],
+  "nextCursor": "S0dEZWlLVXE"
+}
+```
+
+##### レスポンス
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   uuid | String| Y | 照会対象メンバーのUUID  |
+|   dimension | String| Y | 照会した検索条件区分<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
+|   parentDimension | String| N | 上位検索条件区分<br>最上位(PAYMENT_GROUP)の場合はnull |
+|   values | List&lt;DimensionValue>| Y | 検索条件区分別フィルタ選択肢リスト  |
+|   nextCursor | String| N | 次のページカーソル<br>最後のページの場合はnull |
+
+##### DimensionValue
+
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+|   id | String| Y | 識別子  |
+|   name | String| Y | 表示名  |
+|   ownerId | String| N | 所有者UUID<br>`dimension=ORG`、`dimension=PROJECT`は所属組織の所有者 |
+|   parentId | String| N | 上位検索条件区分の識別子<br>最上位(決済グループ)の場合はnull |
+|   parentName | String| N | 上位検索条件区分の表示名<br>最上位(決済グループ)の場合はnull |
 
 
 <a id="get-project-integrated-appkey"></a>
@@ -3549,7 +3971,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 照会対象プロジェクトID | 
+|  Path |project-id | String| Y | 照会対象プロジェクトID | 
 
 
 <a id="get-project-integrated-appkey-response-body"></a>
@@ -3579,21 +4001,21 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   authenticationList | List&lt;ProjectAppKeyResponse>| No | プロジェクト統合Appkey一覧 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   authenticationList | List&lt;ProjectAppKeyResponse>| N | プロジェクト統合Appkey一覧 |
 
 ##### ProjectAppKeyResponse
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   authId | String| No | 内部的に管理する認証手段ID  |
-|   appKey | String| No | コンソールに表示されるプロジェクト統合Appkey |
-|   authStatus | String| No | 認証ステータスコード(STABLE, STOP, BLOCKED) |
-|   projectId | String| No | プロジェクトID |
-|   lastUsedDatetime | Date| No | 最終使用日時 |
-|   modDatetime | Date| No | 削除日時 |
-|   reIssueDatetime | Date| No | 再作成日時 |
-|   regDatetime | Date| No | 作成日時 |
+|   authId | String| N | 内部的に管理する認証手段ID  |
+|   appKey | String| N | コンソールに表示されるプロジェクト統合Appkey |
+|   authStatus | String| N | 認証ステータスコード(STABLE, STOP, BLOCKED) |
+|   projectId | String| N | プロジェクトID |
+|   lastUsedDatetime | Date| N | 最終使用日時 |
+|   modDatetime | Date| N | 削除日時 |
+|   reIssueDatetime | Date| N | 再作成日時 |
+|   regDatetime | Date| N | 作成日時 |
 
 <a id="listuser-access-key-ids"></a>
 ### User Access Key IDリスト照会 { #listuser-access-key-ids }
@@ -3642,26 +4064,26 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   authentications | List&lt;UserAccessKeyResponse>| No | 認証情報リスト |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   authentications | List&lt;UserAccessKeyResponse>| N | 認証情報リスト |
 
 ##### UserAccessKeyResponse
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   authId | String| No | 内部的に管理する認証手段ID  |
-|   userAccessKeyID | String| No | User Access Key ID  |
-|   secretAccessKey | String| No | 秘密鍵(マスキング処理されます)  |
-|   authStatus | String| No | 認証ステータスコード(STABLE, STOP, BLOCKED) |
-|   uuid | String| No | ユーザーUUID |
-|   lastUsedDatetime | Date| No | User Access Key IDで最後に認証した日時 |
-|   modDatetime | Date| No | 削除日時 |
-|   reIssueDatetime | Date| No | 再作成日時 |
-|   regDatetime | Date| No | 作成日時 |
-|   tokenExpiryPeriod | Long| No | トークン有効期限周期(秒単位)  |
-|   tokenFormatCode | String | No | トークンフォーマットコード(OPAQUE、JWT) |
-|   lastTokenUsedDatetime | Long| No | トークンで最後に認証/認可した日時           |
-|   validTokenCount | Long| No | 有効なトークン数                    |
+|   authId | String| N | 内部的に管理する認証手段ID  |
+|   userAccessKeyID | String| N | User Access Key ID  |
+|   secretAccessKey | String| N | 秘密鍵(マスキング処理されます)  |
+|   authStatus | String| N | 認証ステータスコード(STABLE, STOP, BLOCKED) |
+|   uuid | String| N | ユーザーUUID |
+|   lastUsedDatetime | Date| N | User Access Key IDで最後に認証した日時 |
+|   modDatetime | Date| N | 削除日時 |
+|   reIssueDatetime | Date| N | 再作成日時 |
+|   regDatetime | Date| N | 作成日時 |
+|   tokenExpiryPeriod | Long| N | トークン有効期限周期(秒単位)  |
+|   tokenFormatCode | String | N | トークンフォーマットコード(OPAQUE、JWT) |
+|   lastTokenUsedDatetime | Long| N | トークンで最後に認証/認可した日時           |
+|   validTokenCount | Long| N | 有効なトークン数                    |
 
 <a id="register-a-integrated-project-appkey"></a>
 ### プロジェクト統合Appkey登録 { #register-a-integrated-project-appkey }
@@ -3680,14 +4102,14 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path | project-id | String| Yes | AppKeyを登録するプロジェクトID |
-| Request Body | request | AddProjectアプリキーRequest| Yes | リクエスト |
+| Path | project-id | String| Y | AppKeyを登録するプロジェクトID |
+| Request Body | request | AddProjectアプリキーRequest| Y | リクエスト |
 
 ##### AddProjectAppKeyRequest
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   appkeyAlias | String | Yes   | プロジェクト統合Appkeyエイリアス<br>100文字制限 |
+|   appkeyAlias | String | Y   | プロジェクト統合Appkeyエイリアス<br>100文字制限 |
 
 
 <a id="register-a-integrated-project-appkey-response-body"></a>
@@ -3711,16 +4133,16 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   authentication | ResponseProtocol| No  |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   authentication | ResponseProtocol| N  |
 
 ##### ResponseProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   authId | String| No | 内部的に管理する認証手段ID  |
-|   appKey | String| No | プロジェクト統合Appkey |
+|   authId | String| N | 内部的に管理する認証手段ID  |
+|   appKey | String| N | プロジェクト統合Appkey |
 
 <a id="register-a-user-access-key-id"></a>
 ### User Access Key ID登録 { #register-a-user-access-key-id }
@@ -3738,15 +4160,15 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Request Body | PostUserAppKeyRequest | PostUserAppKeyRequest| Yes |  | |
+| Request Body | PostUserAppKeyRequest | PostUserAppKeyRequest| Y |  | |
 
 
 ##### PostUserAppKeyRequest
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   tokenFormatCode | String | No | トークンフォーマットコード<br>OPAQUEとJWTフォーマットを提供し、現在JWTフォーマットトークンはEasyQueueサービスでのみ使用可能<br>デフォルト値はOPAQUE |
-|   tokenExpiryPeriod | Long| No | トークン有効期限<br>秒単位であり、OPAQUEフォーマットトークンの場合はデフォルト値が1日、JWTトークンは1時間<br>OPAQUEフォーマットトークンは最小1分から最大1日まで有効なトークンを作成可能で、JWTフォーマットトークンは最小1分から最大1時間まで有効なトークンを作成可能 |
+|   tokenFormatCode | String | N | トークンフォーマットコード<br>OPAQUEとJWTフォーマットを提供し、現在JWTフォーマットトークンはEasyQueueサービスでのみ使用可能<br>デフォルト値はOPAQUE |
+|   tokenExpiryPeriod | Long| N | トークン有効期限<br>秒単位であり、OPAQUEフォーマットトークンの場合はデフォルト値が1日、JWTトークンは1時間<br>OPAQUEフォーマットトークンは最小1分から最大1日まで有効なトークンを作成可能で、JWTフォーマットトークンは最小1分から最大1時間まで有効なトークンを作成可能 |
 
 
 <a id="register-a-user-access-key-id-response-body"></a>
@@ -3773,19 +4195,20 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
-|   authentication | ResponseProtocol| No  |
+|   header | [共通レスポンス](#common-response)| Y   |
+|   authentication | ResponseProtocol| N  |
 
 ##### ResponseProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----- | ------------ |
-|   authId | String| No | 内部的に管理する認証手段ID  |
-|   userAccessKeyID | String| No | User Access Key ID  |
-|   secretAccessKey | String| No | 秘密鍵 |
-|   tokenExpiryPeriod | Long| No | トークンの有効期限(秒単位) |
-|   tokenFormatCode | String | No | トークンフォーマットコード(OPAQUE、JWT) |
+|   authId | String| N | 内部的に管理する認証手段ID  |
+|   userAccessKeyID | String| N | User Access Key ID  |
+|   secretAccessKey | String| N | 秘密鍵 |
+|   tokenExpiryPeriod | Long| N | トークンの有効期限(秒単位)
+
+|   tokenFormatCode | String | N | トークンフォーマットコード(OPAQUE、JWT) |
 
 <a id="delete-a-project-integrated-appkey"></a>
 ### プロジェクト統合Appkey削除 { #delete-a-project-integrated-appkey }
@@ -3805,8 +4228,8 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path | project-id | String| Yes | 対象プロジェクトID |
-|  Path |app-key | String| Yes | 削除するプロジェクト統合Appkey |
+| Path | project-id | String| Y | 対象プロジェクトID |
+|  Path |app-key | String| Y | 削除するプロジェクト統合Appkey |
 
 
 <a id="delete-a-project-integrated-appkey-response-body"></a>
@@ -3825,7 +4248,7 @@ IP ACL設定を照会するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 
 <a id="reissue-the-user-access-key-id-secret-key"></a>
@@ -3845,15 +4268,15 @@ OPAQUEトークン用のUser Access Key IDを停止するとOPAQUEトークン�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |user-access-key-id | String| Yes | User Access Key ID | 
-| Request Body | request | ReissueSecretKeyRequest| Yes | リクエスト |
+|  Path |user-access-key-id | String| Y | User Access Key ID | 
+| Request Body | request | ReissueSecretKeyRequest| Y | リクエスト |
 
 
 ##### ReissueSecretKeyRequest
 
 | 名前 | タイプ   | 必須 | 説明                                             |   
 |------------ |---------|----|---------------------------------------------------|
-|   needExpireTokens | Boolean | No | 発行されたトークンが期限切れかどうか(true:期限切れ、false:期限切れではない)<br>デフォルト値false |
+|   needExpireTokens | Boolean | N | 発行されたトークンが期限切れかどうか(true:期限切れ、false:期限切れではない)<br>デフォルト値false |
 
 
 <a id="reissue-the-user-access-key-id-secret-key-response-body"></a>
@@ -3877,15 +4300,15 @@ OPAQUEトークン用のUser Access Key IDを停止するとOPAQUEトークン�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   authentication | ResponseProtocol| No  |
+|   header | [共通レスポンス](#common-response)| Y |
+|   authentication | ResponseProtocol| N  |
 
 ##### ResponseProtocol
 
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   secretAccessKey | String| Yes   | 秘密鍵 |
+|   secretAccessKey | String| Y   | シークレットキー |
 
 <a id="modify-user-access-key-id-status"></a>
 ### User Access Key ID状態の修正 { #modify-user-access-key-id-status }
@@ -3904,15 +4327,15 @@ OPAQUEトークン用のUser Access Key IDを停止するとOPAQUEトークン�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | user-access-key-id | String| Yes | User Acess Key ID | 
-| Request Body | request | UpdateUserAccessKeyStatusRequest| Yes | リクエスト |
+|  Path | user-access-key-id | String| Y | User Access Key ID | 
+| Request Body | request | UpdateUserAccessKeyStatusRequest| Y | リクエスト |
 
 
 ##### UpdateUserAccessKeyStatusRequest
 
 | 名前 | タイプ | 必須 | 説明 |   
 |----------- | ------------- | ------------- | ------------ |
-|   status | String| Yes | 変更する状態(STOP:停止、 STABLE:使用) |
+|   status | String| Y | 変更する状態(STOP:停止、 STABLE:使用) |
 
 <a id="modify-user-access-key-id-status-response-body"></a>
 #### レスポンス本文
@@ -3931,7 +4354,7 @@ OPAQUEトークン用のUser Access Key IDを停止するとOPAQUEトークン�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 <a id="delete-a-user-access-key-id"></a>
 ### User Access Key ID削除 { #delete-a-user-access-key-id }
@@ -3949,7 +4372,7 @@ User Access Key IDを削除するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | user-access-key-id | String| Yes | User Access Key ID | 
+|  Path | user-access-key-id | String| Y | User Access Key ID | 
 
 
 <a id="delete-a-user-access-key-id-response-body"></a>
@@ -3970,7 +4393,7 @@ User Access Key IDを削除するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
+|   header | [共通レスポンス](#common-response)| Y |
 
 
 <a id="get-a-list-of-tokens"></a>
@@ -3988,14 +4411,14 @@ User Access Key IDで発行したOPAQUE トークンリストを照会するAPI�
 
 | 区分 | 名前 | タイプ | 必須 | 説明                                                                        | 
 |------------- |------------- | ------------- |-----|------------------------------------------------------------------------------| 
-|  Path | user-access-key-id | String| Yes | User Access Key ID                                                           | 
-|  Query | token | String| No  | トークン専門<br>部分検索はサポートしない                                                    | 
-|  Query | status | String| No  | トークン状態<br>ACTIVE:有効、EXPIRED:期限切れ                                           | 
-|  Query | lastAccessDatetimeFrom | Date| No  | トークンの最終使用日時<br>指定した時間より大きいか同じ時間に使用されたトークンを照会<br>例：`2025-02-11T00:56:50.902Z` | 
-|  Query | expireDatetimeFrom | Date| No  | トークン有効期限<br>指定した時間より大きいか同じ時間に期限切れになったトークンを照会<br>例：`2025-02-11T00:56:50.902Z`   | 
-|  Query | regDatetimeFrom | Date| No  | トークン登録日時<br>指定した時間より大きいか同じ時間に作成されたトークンを照会<br>例：`2025-02-11T00:56:50.902Z`   |
-|  Query | page | Integer| No  | 対象ページ<br>デフォルト値1                                                                |
-|  Query | limit | Integer| No  | 1ページあたりの表示件数<br>デフォルト値20                                                            |
+|  Path | user-access-key-id | String| Y | User Access Key ID                                                           | 
+|  Query | token | String| N  | トークン専門<br>部分検索はサポートしない                                                    | 
+|  Query | status | String| N  | トークン状態<br>ACTIVE:有効、EXPIRED:期限切れ                                           | 
+|  Query | lastAccessDatetimeFrom | Date| N  | トークンの最終使用日時<br>指定した時間より大きいか同じ時間に使用されたトークンを照会<br>例：`2025-02-11T00:56:50.902Z` | 
+|  Query | expireDatetimeFrom | Date| N  | トークン有効期限<br>指定した時間より大きいか同じ時間に期限切れになったトークンを照会<br>例：`2025-02-11T00:56:50.902Z`   | 
+|  Query | regDatetimeFrom | Date| N  | トークン登録日時<br>指定した時間より大きいか同じ時間に作成されたトークンを照会<br>例：`2025-02-11T00:56:50.902Z`   |
+|  Query | page | Integer| N  | 対象ページ<br>デフォルト値1                                                                |
+|  Query | limit | Integer| N  | 1ページあたりの表示件数<br>デフォルト値20                                                            |
 
 
 
@@ -4028,14 +4451,14 @@ User Access Key IDで発行したOPAQUE トークンリストを照会するAPI�
 
 | 名前 | タイプ        | 必須 | 説明              |   
 |------------ |--------------|-----|--------------------|
-|   header | [共通レスポンス](#common-response) | Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   accessToken | String       | Yes | マスキング処理されたトークン      |
-|   expireDatetime | Date         | No  | トークン有効期限           |
-|   lastAccessDatetime | Date         | Yes | トークンで最後に認証/認可した日時 |
-|   regDatetime | Date         | Yes | トークン作成日時        |
-|   status | String       | Yes | トークン状態           |
-|   tokenId | Long         | Yes | トークンID              |
+|   header | [共通レスポンス](#common-response) | Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   accessToken | String       | Y | マスキング処理されたトークン      |
+|   expireDatetime | Date         | N  | トークン有効期限           |
+|   lastAccessDatetime | Date         | Y | トークンで最後に認証/認可した日時 |
+|   regDatetime | Date         | Y | トークン作成日時        |
+|   status | String       | Y | トークン状態           |
+|   tokenId | Long         | Y | トークンID              |
 
 
 <a id="expire-multiple-tokens"></a>
@@ -4056,9 +4479,9 @@ JWTトークンを発行したUser Access Key IDでリクエストしても、JW
 
 | 区分        | 名前              | タイプ           | 必須 | 説明              | 
 |--------------|--------------------|-----------------|-----|--------------------| 
-| Path         | user-access-key-id | String          | Yes | User Access Key ID | 
-| Request Body | tokenIds           | List&lt;Long>   | No  | トークンIDリスト        | 
-| Request Body         | tokens             | List&lt;String> | No   | トークンリスト       | 
+| Path         | user-access-key-id | String          | Y | User Access Key ID | 
+| Request Body | tokenIds           | List&lt;Long>   | N  | トークンIDリスト        | 
+| Request Body         | tokens             | List&lt;String> | N   | トークンリスト       | 
 
 <a id="expire-multiple-tokens-response-body"></a>
 #### レスポンス本文
@@ -4078,7 +4501,7 @@ JWTトークンを発行したUser Access Key IDでリクエストしても、JW
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
+|   header | [共通レスポンス](#common-response)| Y |
 
 
 <a id="create-a-project-iam-account"></a>
@@ -4098,8 +4521,8 @@ IAMアカウントをプロジェクトメンバーとして追加するAPIで�
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | メンバーを追加するプロジェクトID | 
-| Request Body | request | AddIamProjectMemberRequest| Yes | リクエスト |
+|  Path |project-id | String| Y | メンバーを追加するプロジェクトID | 
+| Request Body | request | AddIamProjectMemberRequest| Y | リクエスト |
 
 
 
@@ -4113,8 +4536,8 @@ IAMアカウントをプロジェクトメンバーとして追加するAPIで�
 
 | 名前 | タイプ | 必須 | 説明 |  
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List&lt;UserAssignRoleProtocol>| Yes | ユーザーに割り当てるロールリスト |
-|   memberUuid | String| Yes | 追加するメンバーのUUID  |
+|   assignRoles | List&lt;UserAssignRoleProtocol>| Y | ユーザーに割り当てるロールリスト |
+|   memberUuid | String| Y | 追加するメンバーのUUID  |
 
 
 ##### UserAssignRoleProtocol
@@ -4122,8 +4545,8 @@ IAMアカウントをプロジェクトメンバーとして追加するAPIで�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleId | String| Yes | ロールID  |
-|   conditions | List&lt;AssignAttributeConditionProtocol>| No | ロール条件属性 |
+|   roleId | String| Y | ロールID  |
+|   conditions | List&lt;AssignAttributeConditionProtocol>| N | ロール条件属性 |
 
 
 ##### AssignAttributeConditionProtocol
@@ -4131,9 +4554,9 @@ IAMアカウントをプロジェクトメンバーとして追加するAPIで�
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   attributeId | String| Yes | 条件属性ID  |
-|   attributeOperatorTypeCode | String| Yes | 条件属性演算子<br>条件属性のデータ型によって使用できる演算子が異なります。<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
-|   attributeValues | List&lt;String>| Yes | 条件属性値 |
+|   attributeId | String| Y | 条件属性ID  |
+|   attributeOperatorTypeCode | String| Y | 条件属性演算子<br>条件属性のデータ型によって使用できる演算子が異なります。<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List&lt;String>| Y | 条件属性値 |
 
 
 <a id="create-a-project-iam-account-response-body"></a>
@@ -4154,7 +4577,7 @@ IAMアカウントをプロジェクトメンバーとして追加するAPIで�
 
 | 名前 | タイプ         | 必須 | 説明 |   
 |------------ |--------------| ------- | ------------ |
-|   header | [共通レスポンス](#common-response) | Yes |
+|   header | [共通レスポンス](#common-response) | Y |
 
 
 <a id="delete-multiple-project-iam-accounts"></a>
@@ -4174,8 +4597,8 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | プロジェクトID | 
-|  Request Body |request | DeleteMembersRequest | Yes | リクエスト | 
+|  Path |project-id | String| Y | プロジェクトID | 
+|  Request Body |request | DeleteMembersRequest | Y | リクエスト | 
 
 
 ##### DeleteMembersRequest
@@ -4183,7 +4606,7 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |  
 |------------ | ------------- | ------------- | ------------ |
-|   memberUuids | List&lt;String>| Yes | 削除する対象アカウントのUUIDリスト |
+|   memberUuids | List&lt;String>| Y | 削除する対象アカウントのUUIDリスト |
 
 
 <a id="delete-multiple-project-iam-accounts-response-body"></a>
@@ -4204,7 +4627,7 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
+|   header | [共通レスポンス](#common-response)| Y |
 
 
 <a id="view-a-project-iam-account"></a>
@@ -4224,8 +4647,8 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | メンバーを照会するプロジェクトID |
-|  Path |member-uuid | String| Yes | 照会するメンバーUUID |
+|  Path |project-id | String| Y | メンバーを照会するプロジェクトID |
+|  Path |member-uuid | String| Y | 照会するメンバーUUID |
 
 
 
@@ -4274,8 +4697,8 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   projectMember | ProjectIamMemberRoleBundleProtocol| Yes  | 追加されたメンバー情報、エラー時は含まれません。 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   projectMember | ProjectIamMemberRoleBundleProtocol| Y  | 追加されたメンバー情報、エラー時は含まれません。 |
 
 
 ##### ProjectMemberRoleBundleProtocol
@@ -4283,17 +4706,17 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   uuid | String| Yes | メンバーUUID  |
-|   id | String| Yes | ID  |
-|   name | String| No | 名前 |
-|   emailAddress | String| No | メンバーメールアドレス |
-|   maskingEmail | String| No | メンバーのマスキングされたメールアドレス |
-|   mobilePhone | String| No | 電話番号 |
-|   relationDateTime | Date| No | メンバー追加時間 |
-|   joinYmdt | Date| No | 加入日時 |
-|   recentLoginYmdt | Date| No | 最近のログイン日時 |
-|   recentPasswordModifyYmdt | Date| No | 最近のパスワード変更日時 |
-|   roles | List&lt;RoleBundleProtocol>| No | 関連ロールリスト(条件属性含む)  |
+|   uuid | String| Y | メンバーUUID  |
+|   id | String| Y | ID  |
+|   name | String| N | 名前 |
+|   emailAddress | String| N | メンバーメールアドレス |
+|   maskingEmail | String| N | メンバーのマスキングされたメールアドレス |
+|   mobilePhone | String| N | 電話番号 |
+|   relationDateTime | Date| N | メンバー追加時間 |
+|   joinYmdt | Date| N | 加入日時 |
+|   recentLoginYmdt | Date| N | 最近のログイン日時 |
+|   recentPasswordModifyYmdt | Date| N | 最近のパスワード変更日時 |
+|   roles | List&lt;RoleBundleProtocol>| N | 関連ロールリスト(条件属性含む)  |
 
 
 [RoleBundleProtocol](#rolebundleprotocol)
@@ -4316,9 +4739,9 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | 照会するプロジェクトID | 
-|  Query |limit | Integer| No | 1ページあたりの表示件数、デフォルト値20 |
-|  Query |page | Integer| No | 対象ページ、デフォルト値1 |
+|  Path |project-id | String| Y | 照会するプロジェクトID | 
+|  Query |limit | Integer| N | 1ページあたりの表示件数、デフォルト値20 |
+|  Query |page | Integer| N | 対象ページ、デフォルト値1 |
 
 
 
@@ -4355,9 +4778,9 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   projectMembers | List&lt;IamProjectMemberProtocol>| Yes | プロジェクトメンバーリスト |
+|   header | [共通レスポンス](#common-response)| Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   projectMembers | List&lt;IamProjectMemberProtocol>| Y | プロジェクトメンバーリスト |
 
 
 
@@ -4366,16 +4789,16 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   uuid | String| Yes | メンバーUUID  |
-|   id | String| Yes | ID  |
-|   name | String| No | 名前 |
-|   emailAddress | String| No | メンバーメールアドレス |
-|   maskingEmail | String| No | メンバーのマスキングされたメール |
-|   mobilePhone | String| No | 電話番号 |
-|   relationDateTime | Date| No | メンバー追加時間 |
-|   joinYmdt | Date| No | 加入日時 |
-|   recentLoginYmdt | Date| No | 最近のログイン日時 |
-|   recentPasswordModifyYmdt | Date| No | 最近のパスワード変更日時 |
+|   uuid | String| Y | メンバーUUID  |
+|   id | String| Y | ID  |
+|   name | String| N | 名前 |
+|   emailAddress | String| N | メンバーメールアドレス |
+|   maskingEmail | String| N | メンバーのマスキングされたメール |
+|   mobilePhone | String| N | 電話番号 |
+|   relationDateTime | Date| N | メンバー追加時間 |
+|   joinYmdt | Date| N | 加入日時 |
+|   recentLoginYmdt | Date| N | 最近のログイン日時 |
+|   recentPasswordModifyYmdt | Date| N | 最近のパスワード変更日時 |
 
 
 <a id="modify-project-iam-account-roles"></a>
@@ -4393,9 +4816,9 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | プロジェクトID | 
-|  Path |member-uuid | String| Yes | ロール変更対象メンバーUUID | 
-| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | リクエスト |
+|  Path |project-id | String| Y | プロジェクトID | 
+|  Path |member-uuid | String| Y | ロール変更対象メンバーUUID | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Y | リクエスト |
 
 
 
@@ -4417,7 +4840,7 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes   |
+|   header | [共通レスポンス](#common-response)| Y   |
 
 
 <a id="view-all-credentials-of-members-under-organizations"></a>
@@ -4437,8 +4860,8 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明 | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | UserAccessKeyを照会する組織ID |
-|  Query |paging | Paging| No | 1ページあたりの表示件数、デフォルト値20 |
+|  Path |org-id | String| Y | UserAccessKeyを照会する組織ID |
+|  Query |paging | Paging| N | 1ページあたりの表示件数、デフォルト値20 |
 
 
 
@@ -4483,27 +4906,27 @@ IAMアカウントを該当プロジェクトから削除するAPIです。
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [共通レスポンス](#common-response)| Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   authenticationList | List&lt;UserAccessKeyResponseV7>| Yes  | メンバーごとの認証キー情報 |
+|   header | [共通レスポンス](#common-response)| Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   authenticationList | List&lt;UserAccessKeyResponseV7>| Y  | メンバーごとの認証キー情報 |
 
 
 ##### UserAccessKeyResponseV7
 
 | 名前 | タイプ | 必須 | 説明 |
 |------------|--------|------|-----------------------------|
-| authId | String | Yes | 認証手段ID(マスキング処理) |
-| uuid | String | Yes | ユーザーUUID |
-| userAccessKeyID | String | Yes | User Access Key ID(マスキング処理) |
-| secretAccessKey | String | No | 秘密鍵(空白処理) |
-| authStatusCode | String | Yes | 認証ステータスコード(STABLE, STOP, BLOCKED) |
-| tokenExpiryPeriod | Long | No | トークン有効期限 |
-| regDatetime | Date | No | 作成日時 |
-| modDatetime | Date | No | 削除日時 |
-| lastUsedDatetime | Date | No | 最終使用日時 |
-| reIssueDatetime | Date | No | secretAccessKey再作成日時 |
-| lastTokenUsedDatetime | Date | No | トークン最終使用日時 |
-| validTokenCount | Long | No | 有効なトークン数 |
+| authId | String | Y | 認証手段ID(マスキング処理) |
+| uuid | String | Y | ユーザーUUID |
+| userAccessKeyID | String | Y | User Access Key ID(マスキング処理) |
+| secretAccessKey | String | N | 秘密鍵(空白処理) |
+| authStatusCode | String | Y | 認証ステータスコード(STABLE, STOP, BLOCKED) |
+| tokenExpiryPeriod | Long | N | トークン有効期限 |
+| regDatetime | Date | N | 作成日時 |
+| modDatetime | Date | N | 削除日時 |
+| lastUsedDatetime | Date | N | 最終使用日時 |
+| reIssueDatetime | Date | N | secretAccessKey再作成日時 |
+| lastTokenUsedDatetime | Date | N | トークン最終使用日時 |
+| validTokenCount | Long | N | 有効なトークン数 |
 
 <a id="view-your-own-organization-list"></a>
 ### 自分の組織一覧の照会 { #view-your-own-organization-list }
@@ -4521,10 +4944,10 @@ GET /v1/organizations
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| orgName | String | No | 組織名 |
-| orgNameMatchTypeCode | String | No | 組織名の検索タイプ(EXACT:完全一致、LIKE:部分一致、デフォルト値: LIKE) |
-| page | Integer | No | 対象ページ、デフォルト1 |
-| limit | Integer | No | ページあたりの表示件数、デフォルト20 |
+| orgName | String | N | 組織名 |
+| orgNameMatchTypeCode | String | N | 組織名の検索タイプ(EXACT:完全一致、LIKE:部分一致、デフォルト値: LIKE) |
+| page | Integer | N | 対象ページ、デフォルト1 |
+| limit | Integer | N | ページあたりの表示件数、デフォルト20 |
 
 **[Response Body]**
 ```json
@@ -4576,54 +4999,54 @@ GET /v1/organizations
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| header | [共通レスポンス](#common-response) | Yes | |
-| orgList | List&lt;OrgMemberRelationProtocol> | Yes | 組織一覧情報 |
-| paging | [PagingResponse](#pagingresponse) | Yes | ページング情報 |
+| header | [共通レスポンス](#common-response) | Y | |
+| orgList | List&lt;OrgMemberRelationProtocol> | Y | 組織一覧情報 |
+| paging | [PagingResponse](#pagingresponse) | Y | ページング情報 |
 
 ##### OrgMemberRelationProtocol
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| org | OrgProtocol | Yes | 組織情報 |
-| orgMember | OrgMemberProtocol | Yes | 組織/プロジェクトメンバー情報 |
-| orgOwner | OwnerProtocol | Yes | 組織オーナー情報 |
+| org | OrgProtocol | Y | 組織情報 |
+| orgMember | OrgMemberProtocol | Y | 組織/プロジェクトメンバー情報 |
+| orgOwner | OwnerProtocol | Y | 組織オーナー情報 |
 
 ##### OrgProtocol
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| orgId | String | Yes | 組織ID |
-| orgName | String | Yes | 組織名 |
-| orgStatusCode | String | Yes | 組織ステータスコード(STABLE, CLOSED) |
-| ownerUuid | String | Yes | 組織オーナーUUID |
-| regDateTime | Date | Yes | 組織作成日時 |
-| remainingJobCode | String | Yes | 組織の残りタスク(NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
-| ipAclTypeCode | String | Yes | 組織IP ACLタイプコード(COMMON, INDIVIDUAL) |
-| orgDomainList | List&lt;OrgDomainProtocol> | Yes | 組織ドメイン一覧 |
+| orgId | String | Y | 組織ID |
+| orgName | String | Y | 組織名 |
+| orgStatusCode | String | Y | 組織ステータスコード(STABLE, CLOSED) |
+| ownerUuid | String | Y | 組織オーナーUUID |
+| regDateTime | Date | Y | 組織作成日時 |
+| remainingJobCode | String | Y | 組織の残りタスク(NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
+| ipAclTypeCode | String | Y | 組織IP ACLタイプコード(COMMON, INDIVIDUAL) |
+| orgDomainList | List&lt;OrgDomainProtocol> | Y | 組織ドメイン一覧 |
 
 ##### OrgMemberProtocol
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| existOrgMember | Boolean | Yes | 組織メンバーの存在有無 |
-| orgOwner | Boolean | Yes | 組織オーナーかどうか |
+| existOrgMember | Boolean | Y | 組織メンバーの存在有無 |
+| orgOwner | Boolean | Y | 組織オーナーかどうか |
 
 ##### OwnerProtocol
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| email | String | Yes | 組織オーナーのメールアドレス |
-| name | String | Yes | 組織オーナーの名前 |
-| restrictStatusCode | String | Yes | 組織オーナーの制約ステータス(HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
-| country | String | Yes | 組織オーナーの国コード |
-| restrictTypes | List&lt;String> | Yes | 組織オーナーの制約一覧 |
+| email | String | Y | 組織オーナーのメールアドレス |
+| name | String | Y | 組織オーナーの名前 |
+| restrictStatusCode | String | Y | 組織オーナーの制約ステータス(HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
+| country | String | Y | 組織オーナーの国コード |
+| restrictTypes | List&lt;String> | Y | 組織オーナーの制約一覧 |
 
 ##### OrgDomainProtocol
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| domainId | String | Yes | 組織ドメインID |
-| domainName | String | Yes | 組織ドメイン名 |
+| domainId | String | Y | 組織ドメインID |
+| domainName | String | Y | 組織ドメイン名 |
 
 
 <a id="add-your-own-organization"></a>
@@ -4641,14 +5064,14 @@ GET /v1/organizations
 
 | 区分 | 名前 | タイプ | 必須 | 説明  |
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Request Body | request | [CreateOrgRequest](#createorgrequest)| Yes | リクエスト |
+| Request Body | request | [CreateOrgRequest](#createorgrequest)| Y | リクエスト |
 
 
 ##### CreateOrgRequest
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| orgName | String | Yes | 作成する組織名(最大70文字) |
+| orgName | String | Y | 作成する組織名(最大70文字) |
 
 
 <a id="add-your-own-organization-response-body"></a>
@@ -4676,19 +5099,19 @@ GET /v1/organizations
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| header | [共通レスポンス](#common-response) | Yes | |
-| orgId | String | Yes | 組織ID |
-| orgName | String | Yes | 組織名 |
-| owner | [Owner](#owner) | Yes | 組織オーナー情報 |
+| header | [共通レスポンス](#common-response) | Y | |
+| orgId | String | Y | 組織ID |
+| orgName | String | Y | 組織名 |
+| owner | [Owner](#owner) | Y | 組織オーナー情報 |
 
 ##### Owner
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| email | String | Yes | 組織オーナーのメールアドレス |
-| name | String | Yes | 組織オーナーの名前 |
-| ownerId | String | Yes | 組織オーナーID |
-| restrictTypes | List&lt;String> | Yes | 制約対象一覧 |
+| email | String | Y | 組織オーナーのメールアドレス |
+| name | String | Y | 組織オーナーの名前 |
+| ownerId | String | Y | 組織オーナーID |
+| restrictTypes | List&lt;String> | Y | 制約対象一覧 |
 
 
 <a id="delete-a-single-organization"></a>
@@ -4706,7 +5129,7 @@ GET /v1/organizations
 
 | 区分 | 名前 | タイプ | 必須 | 説明  |
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 組織ID |
+|  Path |org-id | String| Y | 組織ID |
 
 
 <a id="delete-a-single-organization-response-body"></a>
@@ -4726,7 +5149,7 @@ GET /v1/organizations
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| header | [共通レスポンス](#common-response) | Yes | |
+| header | [共通レスポンス](#common-response) | Y | |
 
 
 <a id="retrieve-service-information-list"></a>
@@ -4744,12 +5167,12 @@ GET /v1/organizations
 
 | 区分 | 名前 | タイプ | 必須 | 説明  |
 |---|---|---|---|---|
-|  Query | productId | String | No | サービスID |
-|  Query | productCategoryCode | String | No | サービスカテゴリーコード(PROJECT、ORG、MARKET_PLACE) |
-|  Query | productName | String | No | サービス名 |
-|  Query | productNameLike | String | No | サービス名Like検索 |
-|  Query | limit | Integer| No | ページごとの表示件数、デフォルト値20 |
-|  Query | page | Integer| No | 対象ページ、デフォルト値1 |
+|  Query | productId | String | N | サービスID |
+|  Query | productCategoryCode | String | N | サービスカテゴリーコード(PROJECT、ORG、MARKET_PLACE) |
+|  Query | productName | String | N | サービス名 |
+|  Query | productNameLike | String | N | サービス名Like検索 |
+|  Query | limit | Integer| N | ページごとの表示件数、デフォルト値20 |
+|  Query | page | Integer| N | 対象ページ、デフォルト値1 |
 
 
 <a id="retrieve-service-information-list-response-body"></a>
@@ -4783,18 +5206,18 @@ GET /v1/organizations
 
 | 名前 | 型 | 必須 | 説明 |
 |---|---|---|---|
-| header | [共通レスポンス](#common-response) | Yes | |
-| paging | [PagingResponse](#pagingresponse)| Yes | |
-| products | List&lt;Product> | Yes | サービス情報一覧 |
+| header | [共通レスポンス](#common-response) | Y | |
+| paging | [PagingResponse](#pagingresponse)| Y | |
+| products | List&lt;Product> | Y | サービス情報一覧 |
 
 ##### Product
 
 | 名前 | タイプ | 必須 | 説明 |
 |---|---|---|---|
-| parentProductId | String | No | 親サービスID |
-| productCategoryCode | String | Yes | サービスカテゴリーコード(PROJECT、ORG、MARKET_PLACE) |
-| productId | String | Yes | サービスID |
-| productName | String | Yes | サービス名 |
+| parentProductId | String | N | 親サービスID |
+| productCategoryCode | String | Y | サービスカテゴリーコード(PROJECT、ORG、MARKET_PLACE) |
+| productId | String | Y | サービスID |
+| productName | String | Y | サービス名 |
 
 
 <a id="view-role-descriptions-by-multiple-language"></a>
@@ -4812,12 +5235,12 @@ GET /v1/organizations
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Query |messageType | String| No | メッセージタイプ<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
-| Query |languages | List&lt;String>| No | 言語<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
-| Query |keyword | String| No | 検索キーワード |
-| Query |messageId | String| No | メッセージID |
-| Query |limit | Integer| Yes | ページあたりの表示件数 | 
-| Query |page | Integer| Yes | 対象ページ |
+| Query |messageType | String| N | メッセージタイプ<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
+| Query |languages | List&lt;String>| N | 言語<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
+| Query |keyword | String| N | 検索キーワード |
+| Query |messageId | String| N | メッセージID |
+| Query |limit | Integer| Y | ページあたりの表示件数 | 
+| Query |page | Integer| Y | 対象ページ |
 
 
 <a id="view-role-descriptions-by-multiple-language-response-body"></a>
@@ -4856,23 +5279,23 @@ GET /v1/organizations
 
 | 名前 | タイプ | 必須 | 説明 |
 |---|---|---|---|
-| header | [共通レスポンス](#common-response) | Yes | |
-| messages | List&lt;MessageProtocol> | Yes | メッセージリスト |
-| paging | [PagingResponse](#pagingresponse)| Yes | |
+| header | [共通レスポンス](#common-response) | Y | |
+| messages | List&lt;MessageProtocol> | Y | メッセージリスト |
+| paging | [PagingResponse](#pagingresponse)| Y | |
 
 ##### MessageProtocol
 
 | 名前 | タイプ | 必須 | 説明 |
 |---|---|---|---|
-| i18nMessageSeq | Long | No | メッセージ連番 |
-| categoryId | String | No | カテゴリーID |
-| messageId | String | No | メッセージID |
-| messageType | String | No | メッセージタイプ(MESSAGE, ERROR) |
-| description | String | No | 説明 |
-| koKr | String | No | 韓国語メッセージ |
-| enUs | String | No | 英語メッセージ |
-| jaJp | String | No | 日本語メッセージ |
-| zhCn | String | No | 中国語メッセージ |
+| i18nMessageSeq | Long | N | メッセージ連番 |
+| categoryId | String | N | カテゴリーID |
+| messageId | String | N | メッセージID |
+| messageType | String | N | メッセージタイプ(MESSAGE, ERROR) |
+| description | String | N | 説明 |
+| koKr | String | N | 韓国語メッセージ |
+| enUs | String | N | 英語メッセージ |
+| jaJp | String | N | 日本語メッセージ |
+| zhCn | String | N | 中国語メッセージ |
 
 
 <a id="error-code"></a>
