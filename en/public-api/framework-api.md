@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=252b1c33d7f4 -->
 
 # Framework API
@@ -23,7 +25,7 @@ When calling the Public API, you must include the Request Header below.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Header |  x-nhn-authorization | String| Yes | Bearer type token issued to the user |
+| Header |  x-nhn-authorization | String| Y | Bearer type token issued to the user |
 
 <a id="common-response"></a>
 #### Response
@@ -40,9 +42,9 @@ When the Public API returns, the header part below is included in the response b
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   isSuccessful | Boolean | No | Successful or not  |
-|   resultCode | Integer| No | Result code. 0 is returned on success, or an error code on failure.  |
-|   resultMessage | String| No | Result message  |
+|   isSuccessful | Boolean | N | Successful or not  |
+|   resultCode | Integer| N | Result code. 0 is returned on success, or an error code on failure.  |
+|   resultMessage | String| N | Result message  |
 
 <a id="common-type"></a>
 #### Common Type
@@ -123,6 +125,10 @@ When the Public API returns, the header part below is included in the response b
 | GET |[/v1/organizations/{org-id}/products/ip-acl](#listorganization-ip-acls) | Listorganization IP ACLs |
 | POST |[/v1/billing/contracts/basic/products/prices/search](#get-the-price-of-a-service-on-a-pay-as-you-go-subscription) | Get the price of a service on a pay-as-you-go subscription |
 | GET |[/v1/billing/contracts/basic/products](#list-services-enrolled-in-a-pay-as-you-go-subscription) | List services enrolled in a pay-as-you-go subscription |
+| GET |[/v1/billing/members/payment-statements](#view-charges-by-payment-statement) | View charges by payment statement |
+| GET |[/v1/billing/members/payment-statements/charge-summaries](#view-charge-summaries-by-scope) | View charges by billing group, organization, and project |
+| GET |[/v1/billing/members/payment-statements/usages](#view-individual-charge-lines) | View charges by individual charge line |
+| GET |[/v1/billing/members/payment-statements/dimensions](#view-charge-filter-dimensions) | Retrieve a list of charge filter dimension values |
 | GET |[/v1/authentications/projects/{project-id}/project-appkeys](#get-project-integrated-appkey) | Get Project AppKey |
 | GET |[/v1/authentications/user-access-keys](#listuser-access-key-ids) | ListUser Access Key IDs |
 | POST |[/v1/authentications/projects/{project-id}/project-appkeys](#register-a-integrated-project-appkey) | Register a project AppKey |
@@ -164,8 +170,8 @@ API to add members to a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | The project ID to which you want to add the member | 
-| Request Body | request | CreateMemberRequest| Yes | Request |
+|  Path |project-id | String| Y | The project ID to which you want to add the member | 
+| Request Body | request | CreateMemberRequest| Y | Request |
 
 
 
@@ -179,10 +185,10 @@ API to add members to a project.
 
 | Name | Type | Required | Description |  
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List<UserAssignRoleProtocol>| Yes | List of roles to assign to users  |
-|   memberUuid | String| No | UUID of the member to add  |
-|   email | String| No | The email of the member you want to add  |
-|   userCode | String| No | IAM member ID to add  |
+|   assignRoles | List<UserAssignRoleProtocol>| Y | List of roles to assign to users  |
+|   memberUuid | String| N | UUID of the member to add  |
+|   email | String| N | The email of the member you want to add  |
+|   userCode | String| N | IAM member ID to add  |
 
 
 ##### UserAssignRoleProtocol
@@ -190,8 +196,8 @@ API to add members to a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleId | String| Yes | Role ID  |
-|   conditions | List<AssignAttributeConditionProtocol>| No | Role condition attribute  |
+|   roleId | String| Y | Role ID  |
+|   conditions | List<AssignAttributeConditionProtocol>| N | Role condition attribute  |
 
 
 ##### AssignAttributeConditionProtocol
@@ -199,9 +205,9 @@ API to add members to a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   attributeId | String| Yes | Condition attribute ID  |
-|   attributeOperatorTypeCode | String| Yes | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
-|   attributeValues | List<String>| Yes | Condition attribute value  |
+|   attributeId | String| Y | Condition attribute ID  |
+|   attributeOperatorTypeCode | String| Y | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List<String>| Y | Condition attribute value  |
 
 
 <a id="create-a-project-member-response-body"></a>
@@ -222,7 +228,7 @@ API to add members to a project.
 
 | Name | Type           | Required | Description |   
 |------------ |--------------| ------- | ------------ |
-|   header | [Common response](#common-response) | Yes |
+|   header | [Common response](#common-response) | Y |
 
 
 <a id="add-a-project"></a>
@@ -243,8 +249,8 @@ API to add projects to your organization.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path |org-id | String| Yes | Organization ID to add the project to | 
-| Request Body | request | CreateProjectRequest| Yes | Request |
+| Path |org-id | String| Y | Organization ID to add the project to | 
+| Request Body | request | CreateProjectRequest| Y | Request |
 
 
 ##### CreateProjectRequest
@@ -252,8 +258,8 @@ API to add projects to your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------ | ------------ |
-|   description | String| No | Project description (up to 100 characters) |
-|   projectName | String| Yes| Project name (up to 40 characters) |
+|   description | String| N | Project description (up to 100 characters) |
+|   projectName | String| Y| Project name (up to 40 characters) |
 
 
 <a id="add-a-project-response-body"></a>
@@ -280,14 +286,14 @@ API to add projects to your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#common-response)| Yes  |
-|   regDateTime | Date| Yes   | When the project is created | 
-|   description | String| No   | Project description | 
-|   ownerId | String| Yes   | Project owner member ID | 
-|   projectName | String| Yes   | Project name | 
-|   projectId | String| Yes   | Project ID | 
-|   orgId | String| Yes   | Organization ID | 
-|   projectStatusCode | String| Yes   | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All services are closed but not paid for</li></ul> | 
+|   header | [Common response](#common-response)| Y  |
+|   regDateTime | Date| Y   | When the project is created | 
+|   description | String| N   | Project description | 
+|   ownerId | String| Y   | Project owner member ID | 
+|   projectName | String| Y   | Project name | 
+|   projectId | String| Y   | Project ID | 
+|   orgId | String| Y   | Organization ID | 
+|   projectStatusCode | String| Y   | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All services are closed but not paid for</li></ul> |
 
 
 <a id="delete-a-single-project-member"></a>
@@ -308,8 +314,8 @@ API to delete a user from a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID | 
-|  Path |target-uuid | String| Yes | Member UUID to delete | 
+|  Path |project-id | String| Y | Project ID | 
+|  Path |target-uuid | String| Y | Member UUID to delete | 
 
 
 
@@ -332,7 +338,7 @@ API to delete a user from a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
+|   header | [Common response](#common-response)| Y |
 
 
 
@@ -356,7 +362,7 @@ You'll need one permission from the list below
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID to delete | 
+|  Path |project-id | String| Y | Project ID to delete | 
 
 
 
@@ -381,7 +387,7 @@ You'll need one permission from the list below
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
+|   header | [Common response](#common-response)| Y |
 
 
 
@@ -402,8 +408,8 @@ API to disable a user-specified service so that it is no longer used by this pro
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID of the project you want to shut down | 
-|  Path |product-id | String| Yes | Service ID | 
+|  Path |project-id | String| Y | Project ID of the project you want to shut down | 
+|  Path |product-id | String| Y | Service ID | 
 
 
 
@@ -432,17 +438,17 @@ API to disable a user-specified service so that it is no longer used by this pro
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   childProducts | List<ChildProduct>| No   | Subservice information for that service, not included if there are no subservices.<br>Requires you to disable the child service first and then disable the service.|
+|   header | [Common response](#common-response)| Y |
+|   childProducts | List&lt;ChildProduct>| N   | Subservice information for that service, not included if there are no subservices.<br>Requires you to disable the child service first and then disable the service.|
 
 ##### ChildProduct
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   productId | String| Yes  | 	Subservice ID | 
-|   productName | String| Yes  | Subservice name |
-|   statusCode | String| Yes |   Service status (STABLE, CLOSED) |
+|   productId | String| Y  | 	Subservice ID | 
+|   productName | String| Y  | Subservice name |
+|   statusCode | String| Y |   Service status (STABLE, CLOSED) |
 
 
 <a id="use-a-service-product"></a>
@@ -463,8 +469,8 @@ An API that requests to enable a service you specify to be available in your pro
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |product-id | String| Yes | Service ID | 
-|  Path |project-id | String| Yes | The ID of the project you want to use the service for | 
+|  Path |product-id | String| Y | Service ID | 
+|  Path |project-id | String| Y | The ID of the project you want to use the service for | 
 
 
 <a id="use-a-service-product-response-body"></a>
@@ -492,10 +498,10 @@ An API that requests to enable a service you specify to be available in your pro
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   appKey | String| Yes | AppKey information for the service your project is using|
-|   parentProduct | ParentProduct| No | Shows parent service information if it exists, or does not include it if no parent service exists |
-|   secretKey | String| No| Secret key information for the service your project is using.<br> Only available for services that use secret keys |
+|   header | [Common response](#common-response)| Y |
+|   appKey | String| Y | AppKey information for the service your project is using|
+|   parentProduct | ParentProduct| N | Shows parent service information if it exists, or does not include it if no parent service exists |
+|   secretKey | String| N| Secret key information for the service your project is using.<br> Only available for services that use secret keys |
 
 
 ##### ParentProduct
@@ -503,9 +509,9 @@ An API that requests to enable a service you specify to be available in your pro
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   productId | String| Yes  | Service ID |
-|   productName | String| Yes  | Service name |
-|   statusCode | String| Yes | Service status (STABLE, CLOSED) |
+|   productId | String| Y  | Service ID |
+|   productName | String| Y  | Service name |
+|   statusCode | String| Y | Service status (STABLE, CLOSED) |
 
 
 
@@ -529,11 +535,11 @@ API to request a list of roles that can be granted to users in your organization
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID |
-|  Query |categoryTypeCodes | List<String> | No | Role/Permission/Role Group Category Distinction (ROLE, PERMISSION, ROLE_GROUP) |
-|  Query |roleNameLike | String| No | Role/privilege/role group name |
-|  Query |limit | Integer| No | Number of displays per page, default 20 | 
-|  Query |page | Integer| No | Target Page, default 1 |
+|  Path |org-id | String| Y | Organization ID |
+|  Query |categoryTypeCodes | List<String> | N | Role/Permission/Role Group Category Distinction (ROLE, PERMISSION, ROLE_GROUP) |
+|  Query |roleNameLike | String| N | Role/privilege/role group name |
+|  Query |limit | Integer| N | Number of displays per page, default 20 | 
+|  Query |page | Integer| N | Target Page, default 1 |
 
 
 
@@ -566,21 +572,21 @@ API to request a list of roles that can be granted to users in your organization
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   roles | List<RoleProtocol>| Yes  | Roles list |
-|   totalCount | Integer| Yes  | Total count |
+|   header | [Common response](#common-response)| Y |
+|   roles | List<RoleProtocol>| Y  | Roles list |
+|   totalCount | Integer| Y  | Total count |
 
 ##### RoleProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   categoryKey | String| Yes | Role/Privilege Category Taxonomy Key<br><ul><li>RoleGroup: Project role group</li><li>OrgRoleGroup: Organization Role Group</li><li>OrgRole: Organization Role</li><li>ProjectRole: Project role</li><li>BillingRole: Billing-related roles</li><li>OrgServiceRole: Organization Service Role</li><li>ProjectServiceRole: Project service role</li><li>SystemRole: System-generated role</li></ul>  |
-|   categoryTypeCode | String| Yes | Role group/role/privilege distinguishing codes (ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
-|   description | String| Yes | Role/privilege description  |
-|   roleCategory | String| Yes | Role/Privilege Category Broad Classification (ORG_ROLE, ORG_ROLE_GROUP, ORG_SERVICE_ROLE, PROJECT_ROLE, PROJECT_ROLE_GROUP, PROJECT_SERVICE_ROLE, SYSTEM_ROLE) |
-|   roleId | String| Yes | Role/Privilege ID  |
-|   roleName | String| Yes | Role/privilege name  |
+|   categoryKey | String| Y | Role/Privilege Category Taxonomy Key<br><ul><li>RoleGroup: Project role group</li><li>OrgRoleGroup: Organization Role Group</li><li>OrgRole: Organization Role</li><li>ProjectRole: Project role</li><li>BillingRole: Billing-related roles</li><li>OrgServiceRole: Organization Service Role</li><li>ProjectServiceRole: Project service role</li><li>SystemRole: System-generated role</li></ul>  |
+|   categoryTypeCode | String| Y | Role group/role/privilege distinguishing codes (ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
+|   description | String| Y | Role/privilege description  |
+|   roleCategory | String| Y | Role/Privilege Category Broad Classification (ORG_ROLE, ORG_ROLE_GROUP, ORG_SERVICE_ROLE, PROJECT_ROLE, PROJECT_ROLE_GROUP, PROJECT_SERVICE_ROLE, SYSTEM_ROLE) |
+|   roleId | String| Y | Role/Privilege ID  |
+|   roleName | String| Y | Role/privilege name  |
 
 
 <a id="list-project-roles"></a>
@@ -600,11 +606,11 @@ API to request a list of roles that can be granted to project users.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID | 
-|  Query |categoryTypeCodes | List<String> | No | Role/Permission/Role Group Category Distinction (ROLE, PERMISSION, ROLE_GROUP) |
-|  Query |roleNameLike | String| No | Role/privilege/role group name |
-|  Query |limit | Integer| No | Number of displays per page, default 20 | 
-|  Query |page | Integer| No | Target Page, default 1 |
+|  Path |project-id | String| Y | Project ID | 
+|  Query |categoryTypeCodes | List<String> | N | Role/Permission/Role Group Category Distinction (ROLE, PERMISSION, ROLE_GROUP) |
+|  Query |roleNameLike | String| N | Role/privilege/role group name |
+|  Query |limit | Integer| N | Number of displays per page, default 20 | 
+|  Query |page | Integer| N | Target Page, default 1 |
 
 
 <a id="list-project-roles-response-body"></a>
@@ -635,9 +641,9 @@ API to request a list of roles that can be granted to project users.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   roles | List<[RoleProtocol](#roleprotocol)>| Yes  | Roles list |
-|   totalCount | Integer| Yes  | Total count |
+|   header | [Common response](#common-response)| Y |
+|   roles | List<[RoleProtocol](#roleprotocol)>| Y  | Roles list |
+|   totalCount | Integer| Y  | Total count |
 
 <a id="search-for-an-organization-domain"></a>
 ### Search for an organization domain { #search-for-an-organization-domain }
@@ -657,7 +663,7 @@ API to look up domains for a specific organization.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | The ID of the organization to look up | 
+|  Path |org-id | String| Y | The ID of the organization to look up | 
 
 
 
@@ -686,8 +692,8 @@ API to look up domains for a specific organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   domainList | List<OrgDomainProtocol>| Yes  |
+|   header | [Common response](#common-response)| Y |
+|   domainList | List<OrgDomainProtocol>| Y  |
 
 
 ##### OrgDomainProtocol
@@ -695,8 +701,8 @@ API to look up domains for a specific organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   orgDomainId | String| Yes | Organization domain ID |
-|   orgDomainName | String| Yes | Organization domain name |
+|   orgDomainId | String| Y | Organization domain ID |
+|   orgDomainName | String| Y | Organization domain name |
 
 
 <a id="view-a-organization-member"></a>
@@ -717,8 +723,8 @@ API to get members belonging to an organization.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID for which you want to look up members | 
-|  Path |member-uuid | String| Yes | 	Member UUID to look up | 
+|  Path |org-id | String| Y | Organization ID for which you want to look up members | 
+|  Path |member-uuid | String| Y | 	Member UUID to look up | 
 
 
 
@@ -773,39 +779,39 @@ API to get members belonging to an organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   orgMember | OrgMemberRoleBundleProtocol| No  | Added member information, not included on error |
+|   header | [Common response](#common-response)| Y |
+|   orgMember | OrgMemberRoleBundleProtocol| N  | Added member information, not included on error |
 
 ##### OrgMemberRoleBundleProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   email | String| Yes | Member email |
-|   id | String| No | Member ID (available only to IAM members) |
-|   inviteStatusCode | String| Yes |   COMPLETE, EXPIRE, UNKNOWN, WAIT |
-|   joinYmdt | Date| Yes | Organization member enrollment date |
-|   memberName | String| Yes| 	Member name |
-|   memberTypeCode | String| Yes| Member classification (TOAST_CLOUD: NHN Cloud member, IAM: IAM member) |
-|   memberUuid | String| Yes| Member's UUID |
-|   recentLoginYmdt | Date| Yes| Last login date |
-|   recentPasswordModifyYmdt | Date| No| Date of last password change |
-|   roleCode | String| No| Role ID |
-|   roles | List<RoleBundleProtocol>| No | List of related roles (with condition attributes)  |
-|   secondFactorCertificationYn | String| No| Whether to set up two-step sign-in (available to NHN Cloud members only) |
+|   email | String| Y | Member email |
+|   id | String| N | Member ID (available only to IAM members) |
+|   inviteStatusCode | String| Y |   COMPLETE, EXPIRE, UNKNOWN, WAIT |
+|   joinYmdt | Date| Y | Organization member enrollment date |
+|   memberName | String| Y| 	Member name |
+|   memberTypeCode | String| Y| Member classification (TOAST_CLOUD: NHN Cloud member, IAM: IAM member) |
+|   memberUuid | String| Y| Member's UUID |
+|   recentLoginYmdt | Date| Y| Last login date |
+|   recentPasswordModifyYmdt | Date| N| Date of last password change |
+|   roleCode | String| N| Role ID |
+|   roles | List<RoleBundleProtocol>| N | List of related roles (with condition attributes)  |
+|   secondFactorCertificationYn | String| N| Whether to set up two-step sign-in (available to NHN Cloud members only) |
 
 
 ##### RoleBundleProtocol
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   roleId | String| Yes |  Role ID |
-|   roleName | String| Yes |  Role name |
-|   description | String| No |  Role descriptions |
-|   categoryKey | String| Yes | Role/Privilege Category Taxonomy Key<br><ul><li>RoleGroup: Project role group</li><li>OrgRoleGroup: Organization Role Group</li><li>OrgRole: Organization Role</li><li>ProjectRole: Project role</li><li>BillingRole: Billing-related roles</li><li>OrgServiceRole: Organization Service Role</li><li>ProjectServiceRole: Project service role</li><li>SystemRole: System-generated role</li></ul>  |
-|   categoryTypeCode | String| Yes | Role group/role/privilege distinguishing codes (ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
-|   conditions | List<AttributeConditionProtocol>| No | Condition attributes |
-|   roleApplyPolicyCode | String| Yes | Whether the role is enabled ALLOW, DENY |
-|   regDateTime | Date| Yes |  When the role was created |
+|   roleId | String| Y |  Role ID |
+|   roleName | String| Y |  Role name |
+|   description | String| N |  Role descriptions |
+|   categoryKey | String| Y | Role/Privilege Category Taxonomy Key<br><ul><li>RoleGroup: Project role group</li><li>OrgRoleGroup: Organization Role Group</li><li>OrgRole: Organization Role</li><li>ProjectRole: Project role</li><li>BillingRole: Billing-related roles</li><li>OrgServiceRole: Organization Service Role</li><li>ProjectServiceRole: Project service role</li><li>SystemRole: System-generated role</li></ul>  |
+|   categoryTypeCode | String| Y | Role group/role/privilege distinguishing codes (ORG_ROLE_GROUP, PERMISSION, ROLE, ROLE_GROUP, SYSTEM) |
+|   conditions | List<AttributeConditionProtocol>| N | Condition attributes |
+|   roleApplyPolicyCode | String| Y | Whether the role is enabled ALLOW, DENY |
+|   regDateTime | Date| Y |  When the role was created |
 
 
 
@@ -814,12 +820,12 @@ API to get members belonging to an organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   attributeDataTypeCode | String| Yes |  Conditional attribute data type (BOOLEAN, DATETIME, DAY_OF_WEEK, IPADDRESS, NUMERIC, STRING, TIME) |
-|   attributeDescription | String| No | Condition attribute description |
-|   attributeId | String| Yes | Condition attribute ID |
-|   attributeName | String| Yes | Condition attribute name |
-|   attributeOperatorTypeCode | String| Yes | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
-|   attributeValues | List<String>| Yes| Condition attribute value |
+|   attributeDataTypeCode | String| Y |  Conditional attribute data type (BOOLEAN, DATETIME, DAY_OF_WEEK, IPADDRESS, NUMERIC, STRING, TIME) |
+|   attributeDescription | String| N | Condition attribute description |
+|   attributeId | String| Y | Condition attribute ID |
+|   attributeName | String| Y | Condition attribute name |
+|   attributeOperatorTypeCode | String| Y | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul> |
+|   attributeValues | List<String>| Y| Condition attribute value |
 
 
 
@@ -841,8 +847,8 @@ API to get a list of NHN Cloud members belonging to an organization.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
-| Request Body | request | SearchOrgMembersRequest| Yes | Request |
+|  Path |org-id | String| Y | Organization ID | 
+| Request Body | request | SearchOrgMembersRequest| Y | Request |
 
 
 ##### SearchOrgMembersRequest
@@ -850,17 +856,17 @@ API to get a list of NHN Cloud members belonging to an organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   memberStatusCodes | List<String>| No | Status of the member to look up<br><ul><li>STABLE: Invitation complete</li><li>INVITED: Invited</li><li>BLOCKED</li><li>NOT_EXIST</li><li>Withdraw</li></ul> |
-|   roleIds | Set<String>| No  | Role IDs assigned to members |
-|   paging | PagingBean| No  |
+|   memberStatusCodes | List<String>| N | Status of the member to look up<br><ul><li>STABLE: Invitation complete</li><li>INVITED: Invited</li><li>BLOCKED</li><li>NOT_EXIST</li><li>Withdraw</li></ul> |
+|   roleIds | Set<String>| N  | Role IDs assigned to members |
+|   paging | PagingBean| N  |
 
 ##### PagingBean
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | Number of displays per page, default 20  |
-|   page | Integer| No | Target Page, default 1  |
+|   limit | Integer| N | Number of displays per page, default 20  |
+|   page | Integer| N | Target Page, default 1  |
 
 
 
@@ -900,34 +906,34 @@ API to get a list of NHN Cloud members belonging to an organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   orgMembers | List<OrgMemberWithInviteMemberrotocol>| Yes | Organization member list |
-|   paging | PagingResponse| Yes | About the page |
+|   header | [Common response](#common-response)| Y |
+|   orgMembers | List&lt;OrgMemberWithInviteMemberProtocol>| Y | Organization member list |
+|   paging | PagingResponse| Y | About the page |
 
 ##### OrgMemberWithInviteMemberProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   email | String| Yes | The member's email address |
-|   inviteStatusCode | String| No | Member's invitation status (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   joinYmdt | Date| Yes | When you joined |
-|   maskingEmail | String| Yes | Member's masked email  |
-|   memberName | String| Yes| Member's name |
-|   memberTypeCode | String| Yes| Member classification (TOAST_CLOUD: NHN Cloud member, IAM: IAM member) |
-|   memberUuid | String| No| Member's UUID<br>Doesn't return a value if you're inviting |
-|   recentLoginYmdt | Date| Yes| Last login date |
-|   recentPasswordModifyYmdt | Date| No| Date of last password change |
-|   secondFactorCertificationYn | String| No|  Whether to set up two-step sign-in (available to NHN Cloud members only) |
+|   email | String| Y | The member's email address |
+|   inviteStatusCode | String| N | Member's invitation status (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   joinYmdt | Date| Y | When you joined |
+|   maskingEmail | String| Y | Member's masked email  |
+|   memberName | String| Y| Member's name |
+|   memberTypeCode | String| Y| Member classification (TOAST_CLOUD: NHN Cloud member, IAM: IAM member) |
+|   memberUuid | String| N| Member's UUID<br>Doesn't return a value if you're inviting |
+|   recentLoginYmdt | Date| Y| Last login date |
+|   recentPasswordModifyYmdt | Date| N| Date of last password change |
+|   secondFactorCertificationYn | String| N|  Whether to set up two-step sign-in (available to NHN Cloud members only) |
 
 ##### PagingResponse
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | Number of displays per page, default 20  |
-|   page | Integer| No | Target Page, default 1  |
-|   totalCount | Long| Yes | Total number of cases  |
+|   limit | Integer| N | Number of displays per page, default 20  |
+|   page | Integer| N | Target Page, default 1  |
+|   totalCount | Long| Y | Total number of cases  |
 
 
 
@@ -950,11 +956,11 @@ API to get a list of project common role groups set up by your organization.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID for the lookup | 
-|  Query |descriptionLike | String| No | Description | 
-|  Query |roleGroupNameLike | String| No | Role group name |
-|  Query |limit | Integer| No | Number of displays per page, default 20 |
-|  Query |page | Integer| No | Target Page, default 1 |
+|  Path |org-id | String| Y | Organization ID for the lookup | 
+|  Query |descriptionLike | String| N | Description | 
+|  Query |roleGroupNameLike | String| N | Role group name |
+|  Query |limit | Integer| N | Number of displays per page, default 20 |
+|  Query |page | Integer| N | Target Page, default 1 |
 
 
 
@@ -993,9 +999,9 @@ API to get a list of project common role groups set up by your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#common-response)| Yes  |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   roleGroups | List<RoleGroupProtocol>| Yes | List of available role groups in your project  |
+|   header | [Common response](#common-response)| Y  |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   roleGroups | List<RoleGroupProtocol>| Y | List of available role groups in your project  |
 
 
 ##### RoleGroupProtocol
@@ -1003,11 +1009,11 @@ API to get a list of project common role groups set up by your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   description | String| No | Role group descriptions |
-|   regDateTime | Date| Yes | When the role group was created |
-|   roleGroupId | String| Yes | Role group ID |
-|   roleGroupName | String| Yes| Name of the role group |
-|   roleGroupType | String| Yes | Types of role groups<br><ul><li>ORG: Project common role group</li><li>ORG_ROLE_GROUP: Organization role group</li><li>PROJECT: Project role group</li> |
+|   description | String| N | Role group descriptions |
+|   regDateTime | Date| Y | When the role group was created |
+|   roleGroupId | String| Y | Role group ID |
+|   roleGroupName | String| Y| Name of the role group |
+|   roleGroupType | String| Y | Types of role groups<br><ul><li>ORG: Project common role group</li><li>ORG_ROLE_GROUP: Organization role group</li><li>PROJECT: Project role group</li> |
 
 
 <a id="view-service-hierarchy"></a>
@@ -1029,8 +1035,8 @@ However, if you're viewing an organization's services, you must be a member of a
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |productUiType | String| Yes | Service UI Types<br><ul><li>PROJECT: Project service</li><li>ORG: Organization services</li><li>MARKET_PLACE: Marketplace services</li></ul> |
-|  Query |orgId | String| No | Organization ID must be entered if the product UI type is ORG |
+|  Query |productUiType | String| Y | Service UI Types<br><ul><li>PROJECT: Project service</li><li>ORG: Organization services</li><li>MARKET_PLACE: Marketplace services</li></ul> |
+|  Query |orgId | String| Conditional | Organization ID must be entered if the product UI type is ORG |
 
 
 
@@ -1061,20 +1067,20 @@ However, if you're viewing an organization's services, you must be a member of a
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   productUiList | List<ProductUiHierarchyProtocol>| Yes  | Homepage Category Service UI List |
+|   header | [Common response](#common-response)| Y |
+|   productUiList | List<ProductUiHierarchyProtocol>| Y  | Homepage Category Service UI List |
 
 ##### ProductUiHierarchyProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   children | List<ProductUiHierarchyProtocol>| No | Homepage Service UI List |
-|   manualLink | String| No|
-|   parentProductUiId | String| No| Service UI divisions |
-|   productId | String| No|
-|   productUiId | String| No| Service UI identification key |
-|   productUiName | String| No|
+|   children | List&lt;ProductUiHierarchyProtocol>| N | Homepage Service UI List |
+|   manualLink | String| N|
+|   parentProductUiId | String| N| Service UI divisions |
+|   productId | String| N|
+|   productUiId | String| N| Service UI identification key |
+|   productUiName | String| N|
 
 
 <a id="view-a-service-used-in-the-project"></a>
@@ -1095,8 +1101,8 @@ However, if you're viewing an organization's services, you must be a member of a
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID to look up |
-|  Path |product-id | String| Yes | Service ID to look up |
+|  Path |project-id | String| Y | Project ID to look up |
+|  Path |product-id | String| Y | Service ID to look up |
 
 
 
@@ -1134,9 +1140,9 @@ However, if you're viewing an organization's services, you must be a member of a
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   hasUpdateSecretKeyPermission | Boolean| Yes | Permission to reissue secret keys  |
-|   product | ProjectProductRelationAndProductProtocol| Yes  | Returns information about the services being used by the project for the specified service ID, not including on error |
+|   header | [Common response](#common-response)| Y |
+|   hasUpdateSecretKeyPermission | Boolean| Y | Permission to reissue secret keys  |
+|   product | ProjectProductRelationAndProductProtocol| Y  | Returns information about the services being used by the project for the specified service ID, not including on error |
 
 
 ##### ProjectProductRelationAndProductProtocol
@@ -1144,18 +1150,18 @@ However, if you're viewing an organization's services, you must be a member of a
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   appKey | String| Yes | AppKey information for the service your project is using  |
-|   externalId | String| No | Tenant ID<br>Only available if the tenant ID exists for the service |
-|   productId | String| Yes | Service ID  |
-|   productName | String| Yes | Service name  |
-|   productSecretKeyCode | String| No | Whether to use a secret key<br>T: Enabled<br>Others: Not used (F, N) |
-|   productStatusCode | String| Yes | Service status (STABLE, CLOSED) |
-|   projectId | String| Yes | The project ID that uses the service  |
-|   relationDate | Date| Yes | When you started using the service  |
-|   secretKey | String| Yes | Service SecretKey<br>Only available on services that use secretKey  |
-|   statusCode | String| Yes | The service's usage status (STABLE, CLOSED) |
-|   updateDate | Date| No | Service last modified date  |
-|   updateUuid | String| No | Service AppKey Modifier UUID  |
+|   appKey | String| Y | AppKey information for the service your project is using  |
+|   externalId | String| N | Tenant ID<br>Only available if the tenant ID exists for the service |
+|   productId | String| Y | Service ID  |
+|   productName | String| Y | Service name  |
+|   productSecretKeyCode | String| N | Whether to use a secret key<br>T: Enabled<br>Others: Not used (F, N) |
+|   productStatusCode | String| Y | Service status (STABLE, CLOSED) |
+|   projectId | String| Y | The project ID that uses the service  |
+|   relationDate | Date| Y | When you started using the service  |
+|   secretKey | String| Y | Service SecretKey<br>Only available on services that use secretKey  |
+|   statusCode | String| Y | The service's usage status (STABLE, CLOSED) |
+|   updateDate | Date| N | Service last modified date  |
+|   updateUuid | String| N | Service AppKey Modifier UUID  |
 
 
 <a id="view-a-project-member"></a>
@@ -1176,8 +1182,8 @@ API to get a specific member of a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID to look up members |
-|  Path |member-uuid | String| Yes | Member UUID to look up |
+|  Path |project-id | String| Y | Project ID to look up members |
+|  Path |member-uuid | String| Y | Member UUID to look up |
 
 
 
@@ -1227,8 +1233,8 @@ API to get a specific member of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   projectMember | ProjectMemberRoleBundleProtocol| Yes  | Added member information, not included on error |
+|   header | [Common response](#common-response)| Y |
+|   projectMember | ProjectMemberRoleBundleProtocol| Y  | Added member information, not included on error |
 
 
 ##### ProjectMemberRoleBundleProtocol
@@ -1236,14 +1242,14 @@ API to get a specific member of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   emailAddress | String| No | Member email address  |
-|   maskingEmail | String| No | Member's masked email  |
-|   memberName | String| No | Member name  |
-|   memberTypeCode | String| No | Member Distinction (IAM, TOAST_CLOUD) |
-|   relationDateTime | Date| No | Time to add members  |
-|   roles | List<RoleBundleProtocol>| No | List of related roles (with condition attributes)  |
-|   statusCode | String| No | Invitation status codes (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   uuid | String| No | Member UUID  |
+|   emailAddress | String| N | Member email address  |
+|   maskingEmail | String| N | Member's masked email  |
+|   memberName | String| N | Member name  |
+|   memberTypeCode | String| N | Member Distinction (IAM, TOAST_CLOUD) |
+|   relationDateTime | Date| N | Time to add members  |
+|   roles | List<RoleBundleProtocol>| N | List of related roles (with condition attributes)  |
+|   statusCode | String| N | Invitation status codes (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   uuid | String| N | Member UUID  |
 
 
 [RoleBundleProtocol](#rolebundleprotocol)
@@ -1267,8 +1273,8 @@ API for getting a list of members belonging to a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID to look up | 
-| Request Body | request | SearchProjectMembersRequest| Yes | Request |
+|  Path |project-id | String| Y | Project ID to look up | 
+| Request Body | request | SearchProjectMembersRequest| Y | Request |
 
 
 
@@ -1277,9 +1283,9 @@ API for getting a list of members belonging to a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   memberStatusCodes | List<String>| No | Project member status codes (INVITED, STABLE) |
-|   roleIds | List<String>| No | List of role IDs  |
-|   paging | [PagingBean](#pagingbean) | No   |
+|   memberStatusCodes | List<String>| N | Project member status codes (INVITED, STABLE) |
+|   roleIds | List<String>| N | List of role IDs  |
+|   paging | [PagingBean](#pagingbean) | N   |
 
 
 
@@ -1317,9 +1323,9 @@ API for getting a list of members belonging to a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   projectMembers | List<ProjectMemberProtocol>| Yes | Project members  |
+|   header | [Common response](#common-response)| Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   projectMembers | List<ProjectMemberProtocol>| Y | Project members  |
 
 
 
@@ -1328,13 +1334,13 @@ API for getting a list of members belonging to a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   emailAddress | String| No | Member email address  |
-|   maskingEmail | String| No | Member's masked email  |
-|   memberName | String| No | Member name  |
-|   memberTypeCode | String| No | Separate members |
-|   relationDateTime | Date| No | Time to add members  |
-|   statusCode | String| No | Invitation status codes (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
-|   uuid | String| No | Member UUID  |
+|   emailAddress | String| N | Member email address  |
+|   maskingEmail | String| N | Member's masked email  |
+|   memberName | String| N | Member name  |
+|   memberTypeCode | String| N | Separate members |
+|   relationDateTime | Date| N | Time to add members  |
+|   statusCode | String| N | Invitation status codes (COMPLETE, EXPIRE, UNKNOWN, WAIT) |
+|   uuid | String| N | Member UUID  |
 
 
 <a id="view-a-project-role-group"></a>
@@ -1355,8 +1361,8 @@ API to get a project's role groups.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID to look up | 
-|  Path |role-group-id | String| Yes | Project role group ID<br>Project common role group IDs cannot be looked up | 
+|  Path |project-id | String| Y | Project ID to look up | 
+|  Path |role-group-id | String| Y | Project role group ID<br>Project common role group IDs cannot be looked up | 
 
 
 
@@ -1403,19 +1409,19 @@ API to get a project's role groups.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   roleGroup | RoleGroupBundleProtocol| Yes | Role groups with related roles  |
+|   header | [Common response](#common-response)| Y |
+|   roleGroup | RoleGroupBundleProtocol| Y | Role groups with related roles  |
 
 ##### RoleGroupBundleProtocol
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleGroupId | String| No | Role group ID  |
-|   roleGroupName | String| No | Role group name  |
-|   description | String| No | Role group descriptions  |
-|   roleGroupType | String| No | Role group distinction (organization, project)  |
-|   roles | [List<RoleBundleProtocol>](#rolebundleprotocol)| No | List related roles  |
-|   regDateTime | Date| No | Registered date and time  |
+|   roleGroupId | String| N | Role group ID  |
+|   roleGroupName | String| N | Role group name  |
+|   description | String| N | Role group descriptions  |
+|   roleGroupType | String| N | Role group distinction (organization, project)  |
+|   roles | [List<RoleBundleProtocol>](#rolebundleprotocol)| N | List related roles  |
+|   regDateTime | Date| N | Registered date and time  |
 
 
 
@@ -1436,8 +1442,8 @@ API to get project common role groups.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID for the lookup | 
-|  Path |role-group-id | String| Yes | Project common role group ID | 
+|  Path |org-id | String| Y | Organization ID for the lookup | 
+|  Path |role-group-id | String| Y | Project common role group ID | 
 
 
 <a id="view-a-common-role-group-for-the-project-in-the-organization-response-body"></a>
@@ -1483,8 +1489,8 @@ API to get project common role groups.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | Role groups with related roles  |
+|   header | [Common response](#common-response)| Y |
+|   roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Y | Role groups with related roles  |
 
 
 
@@ -1506,11 +1512,11 @@ API to get all role groups in a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID to look up | 
-|  Query |descriptionLike | String| No | Description |
-|  Query |roleGroupNameLike | String| No | Role group name |
-|  Query |limit | Integer| No | Number of displays per page, default 20 |
-|  Query |page | Integer| No | Target Page, default 1 |
+|  Path |project-id | String| Y | Project ID to look up | 
+|  Query |descriptionLike | String| N | Description |
+|  Query |roleGroupNameLike | String| N | Role group name |
+|  Query |limit | Integer| N | Number of displays per page, default 20 |
+|  Query |page | Integer| N | Target Page, default 1 |
 
 
 
@@ -1544,9 +1550,9 @@ API to get all role groups in a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#common-response)| Yes  |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   roleGroups | List<[RoleGroupProtocol](#rolegroupprotocol)>| Yes | List of available role groups in your project  |
+|   header | [Common response](#common-response)| Y  |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   roleGroups | List<[RoleGroupProtocol](#rolegroupprotocol)>| Y | List of available role groups in your project  |
 
 <a id="list-projects-in-your-organization"></a>
 ### List projects in your organization { #list-projects-in-your-organization }
@@ -1565,11 +1571,11 @@ Members of an organization
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | The ID of the organization to look up | 
-|  Query |memberUuid | String| No | Organization member UUID |
-|  Query |projectName | String| No | Project name |
-|  Query |page | Integer| No | Target Page, default 1 |
-|  Query |limit | Integer| No | Number of displays per page, default 20 |
+|  Path |org-id | String| Y | The ID of the organization to look up | 
+|  Query |memberUuid | String| N | Organization member UUID |
+|  Query |projectName | String| N | Project name |
+|  Query |page | Integer| N | Target Page, default 1 |
+|  Query |limit | Integer| N | Number of displays per page, default 20 |
 
 
 <a id="list-projects-in-your-organization-response-body"></a>
@@ -1606,9 +1612,9 @@ Members of an organization
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   paging | [PagingResponse](#pagingresponse) | Yes |
-|   projectList | List<OrgProjectMemberRoleProtocol>| Yes |
+|   header | [Common response](#common-response)| Y |
+|   paging | [PagingResponse](#pagingresponse) | Y |
+|   projectList | List<OrgProjectMemberRoleProtocol>| Y |
 
 
 
@@ -1616,14 +1622,14 @@ Members of an organization
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   delDateTime | Date| No | Project deletion date |
-|   description | String| No | Project description |
-|   modDateTime | Date| No| Project modification date |
-|   orgId | String| Yes| The organization ID the project belongs to |
-|   projectId | String| Yes| Project ID |
-|   projectName | String| Yes| Project name |
-|   projectStatusCode | String| Yes | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All services are closed but not paid for</li></ul> |
-|   regDateTime | Date| Yes| Project registration date |
+|   delDateTime | Date| N | Project deletion date |
+|   description | String| N | Project description |
+|   modDateTime | Date| N| Project modification date |
+|   orgId | String| Y| The organization ID the project belongs to |
+|   projectId | String| Y| Project ID |
+|   projectName | String| Y| Project name |
+|   projectStatusCode | String| Y | Project status<br><ul><li>STABLE: In normal use</li><li>CLOSED: The payment has been made and the project is well closed.</li><li>BLOCKED: Prohibited by administrator</li><li>TERMINATED: All resources have been deleted due to delinquency.</li><li>DISABLED: All services are closed but not paid for</li></ul> |
+|   regDateTime | Date| Y| Project registration date |
 
 
 <a id="list-organization-governance-in-use"></a>
@@ -1642,7 +1648,7 @@ API to get the active governance.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID for the lookup | 
+|  Path |org-id | String| Y | Organization ID for the lookup | 
 
 
 
@@ -1670,8 +1676,8 @@ API to get the active governance.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   usingGovernances | List<GovernanceProtocol>| No | List governance in use  |
+|   header | [Common response](#common-response)| Y   |
+|   usingGovernances | List<GovernanceProtocol>| N | List governance in use  |
 
 
 ##### GovernanceProtocol
@@ -1679,8 +1685,8 @@ API to get the active governance.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   governanceTypeCode | String| No | Governance type<br>- APPROVE_PROCESS: Approval processing<br>- BLOCK_STORAGE_SNAPSHOT: Whether to use BlockStorage's Snapshot function<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: IAAS resource permission control and access terminal restriction settings<br>- PRIVACY_PROTECTION: privacy protection<br>- UNIQUE_INSTANCE_NAME: prevent instance name duplication |
-|   regDatetime | Date| No | When to enable governance  |
+|   governanceTypeCode | String| N | Governance type<br>- APPROVE_PROCESS: Approval processing<br>- BLOCK_STORAGE_SNAPSHOT: Whether to use BlockStorage's Snapshot function<br>- IAAS_RESOURCE_PROTECTION_AND_SEPARATED_NETWORK: Set control of IaaS resource permissions and restriction on terminal access<br>- PRIVACY_PROTECTION: privacy protection<br>- UNIQUE_INSTANCE_NAME: prevent instance name duplication |
+|   regDatetime | Date| N | When to enable governance  |
 
 
 <a id="create-a-common-role-group-for-projects-in-the-organization"></a>
@@ -1700,16 +1706,16 @@ API to create project common role groups.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
-| Request Body | request | CreateRoleGroupRequest| Yes | Request |
+|  Path |org-id | String| Y | Organization ID | 
+| Request Body | request | CreateRoleGroupRequest| Y | Request |
 
 ##### CreateRoleGroupRequest
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   description | String| No | Role group descriptions  |
-|   roleGroupName | String| Yes | Role group name  |
-|   roles | List<AssignRoleProtocol>| Yes | List roles to assign to a role group  |
+|   description | String| N | Role group descriptions  |
+|   roleGroupName | String| Y | Role group name  |
+|   roles | List<AssignRoleProtocol>| Y | List roles to assign to a role group  |
 
 
 ##### AssignRoleProtocol
@@ -1717,9 +1723,9 @@ API to create project common role groups.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   conditions | List<[AssignAttributeConditionProtocol](#assignattributeconditionprotocol)>| No | Role condition attribute  |
-|   roleApplyPolicyCode | String| Yes | Whether the role is enabled ALLOW, DENY |
-|   roleId | String| Yes | Role ID  |
+|   conditions | List<[AssignAttributeConditionProtocol](#assignattributeconditionprotocol)>| N | Role condition attribute  |
+|   roleApplyPolicyCode | String| Y | Whether the role is enabled ALLOW, DENY |
+|   roleId | String| Y | Role ID  |
 
 
 
@@ -1741,7 +1747,7 @@ API to create project common role groups.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 
 <a id="delete-a-project-common-role-group-in-the-organization"></a>
@@ -1761,8 +1767,8 @@ API to delete a project common role group.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
-| Request Body | request | DeleteRoleGroupRequest| Yes | Request |
+|  Path |org-id | String| Y | Organization ID | 
+| Request Body | request | DeleteRoleGroupRequest| Y | Request |
 
 
 ##### DeleteRoleGroupRequest
@@ -1770,7 +1776,7 @@ API to delete a project common role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleGroupIds | List<String>| Yes | List of role group IDs  |
+|   roleGroupIds | List<String>| Y | List of role group IDs  |
 
 
 <a id="delete-a-project-common-role-group-in-the-organization-response-body"></a>
@@ -1790,7 +1796,7 @@ API to delete a project common role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="modify-your-organizations-project-common-role-group-information"></a>
 ### Modify your organization's project common role group information { #modify-your-organizations-project-common-role-group-information }
@@ -1809,9 +1815,9 @@ API to modify the name and description of a project's common role group.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
-|  Path |role-group-id | String| Yes | Role group ID | 
-| Request Body | request | UpdateRoleGroupInfoRequest| Yes | Request |
+|  Path |org-id | String| Y | Organization ID | 
+|  Path |role-group-id | String| Y | Role group ID | 
+| Request Body | request | UpdateRoleGroupInfoRequest| Y | Request |
 
 
 ##### UpdateRoleGroupInfoRequest
@@ -1819,8 +1825,8 @@ API to modify the name and description of a project's common role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   description | String| No | Role group descriptions  |
-|   roleGroupName | String| Yes | Role group name  |
+|   description | String| N | Role group descriptions  |
+|   roleGroupName | String| Y | Role group name  |
 
 
 
@@ -1841,7 +1847,7 @@ API to modify the name and description of a project's common role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="modify-your-organizations-project-common-roles-group-roles"></a>
 ### Modify your organization's project common roles group roles { #modify-your-organizations-project-common-roles-group-roles }
@@ -1859,9 +1865,9 @@ API to modify roles in the project common roles group.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
-|  Path |role-group-id | String| Yes | Role group ID | 
-| Request Body | request | UpdateRoleGroupRequest| Yes | Request |
+|  Path |org-id | String| Y | Organization ID | 
+|  Path |role-group-id | String| Y | Role group ID | 
+| Request Body | request | UpdateRoleGroupRequest| Y | Request |
 
 
 ##### UpdateRoleGroupRequest
@@ -1869,7 +1875,7 @@ API to modify roles in the project common roles group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roles | List<[AssignRoleProtocol](#assignroleprotocol)>| Yes | List roles to assign to a role group  |
+|   roles | List<[AssignRoleProtocol](#assignroleprotocol)>| Y | List roles to assign to a role group  |
 
 
 
@@ -1891,7 +1897,7 @@ API to modify roles in the project common roles group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="create-a-project-role-group"></a>
 ### Create a project role group { #create-a-project-role-group }
@@ -1911,8 +1917,8 @@ API to create role groups in your project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID | 
-| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest)| Yes | Request |
+|  Path |project-id | String| Y | Project ID | 
+| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest)| Y | Request |
 
 
 
@@ -1935,7 +1941,7 @@ API to create role groups in your project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="delete-a-project-role-group"></a>
 ### Delete a project role group { #delete-a-project-role-group }
@@ -1955,8 +1961,8 @@ API to delete a project role group.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID | 
-| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest)| Yes | Request |
+|  Path |project-id | String| Y | Project ID | 
+| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest)| Y | Request |
 
 
 
@@ -1979,7 +1985,7 @@ API to delete a project role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="edit-project-role-group-information"></a>
 ### Edit project role group information { #edit-project-role-group-information }
@@ -1997,9 +2003,9 @@ API to modify the name and description of a project role group.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID | 
-|  Path |role-group-id | String| Yes | Role group ID | 
-| Request Body | request |[UpdateRoleGroupInfoRequest](#updaterolegroupinforequest)| Yes | Request |
+|  Path |project-id | String| Y | Project ID | 
+|  Path |role-group-id | String| Y | Role group ID | 
+| Request Body | request |[UpdateRoleGroupInfoRequest](#updaterolegroupinforequest)| Y | Request |
 
 
 
@@ -2022,7 +2028,7 @@ API to modify the name and description of a project role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 
 <a id="modify-project-role-group-roles"></a>
@@ -2041,16 +2047,16 @@ API to modify roles in the project role group.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID | 
-|  Path |role-group-id | String| Yes | Role group ID | 
-| Request Body | request | UpdateRoleGroupRequest| Yes | Request |
+|  Path |project-id | String| Y | Project ID | 
+|  Path |role-group-id | String| Y | Role group ID | 
+| Request Body | request | UpdateRoleGroupRequest| Y | Request |
 
 ##### UpdateRoleGroupRequest
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roles | List<[AssignRoleProtocol](#assignroleprotocol)>| Yes | List roles to assign to a role group  |
+|   roles | List<[AssignRoleProtocol](#assignroleprotocol)>| Y | List roles to assign to a role group  |
 
 
 
@@ -2073,7 +2079,7 @@ API to modify roles in the project role group.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 
 <a id="view-all-organization-role-groups"></a>
@@ -2093,11 +2099,11 @@ An API to view all organization role groups.
 
 | Category | name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | Organization ID to be searched |
-| Query | descriptionLike | String | No | Description (view results containing that string) |
-| Query | roleGroupNameLike | String | No | Role group name (search for results containing that string) |
-| Query | limit | Integer | No | Number of views per page (default: 20, minimum: 1, maximum: 2,000) |
-| Query | page | Integer | No | target page (default: 1, minimum: 1) |
+| Path | org-id | String | Y | Organization ID to be searched |
+| Query | descriptionLike | String | N | Description (view results containing that string) |
+| Query | roleGroupNameLike | String | N | Role group name (search for results containing that string) |
+| Query | limit | Integer | N | Number of views per page (default: 20, minimum: 1, maximum: 2,000) |
+| Query | page | Integer | N | target page (default: 1, minimum: 1) |
 
 <a id="view-all-organization-role-groups-response-body"></a>
 #### Response Body
@@ -2130,9 +2136,9 @@ An API to view all organization role groups.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | --------- | ------------ |
-| header | [Common Response](#common-response) | Yes | |
-| paging | [PagingResponse](#pagingresponse) | Yes | |
-| roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Yes | List of role groups available in your organization |
+| header | [Common Response](#common-response) | Y | |
+| paging | [PagingResponse](#pagingresponse) | Y | |
+| roleGroups | List&lt;[RoleGroupProtocol](#rolegroupprotocol)> | Y | List of role groups available in your organization |
 
 <a id="view-a-single-organization-role-group"></a>
 ### View a Single Organization Role Group { #view-a-single-organization-role-group }
@@ -2151,8 +2157,8 @@ An API to view an organization's role group.
 
 | Category | name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | Organization ID to be searched |
-| Path | role-group-id | String | Yes | Organization role group ID |
+| Path | org-id | String | Y | Organization ID to be searched |
+| Path | role-group-id | String | Y | Organization role group ID |
 
 <a id="view-a-single-organization-role-group-response-body"></a>
 #### Response Body
@@ -2202,8 +2208,8 @@ An API to view an organization's role group.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | --------- | ------------ |
-| header | [Common Response](#common-response) | Yes | |
-| roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Yes | Role group with associated roles |
+| header | [Common Response](#common-response) | Y | |
+| roleGroup | [RoleGroupBundleProtocol](#rolegroupbundleprotocol) | Y | Role group with associated roles |
 
 <a id="create-organization-role-group"></a>
 ### Create Organization Role Group { #create-organization-role-group }
@@ -2222,8 +2228,8 @@ An API to create a role group in the organization.
 
 | Category | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | Organization ID |
-| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest) | Yes | Request |
+| Path | org-id | String | Y | Organization ID |
+| Request Body | request | [CreateRoleGroupRequest](#createrolegrouprequest) | Y | Request |
 
 <a id="create-organization-role-group-response-body"></a>
 #### Response Body
@@ -2242,7 +2248,7 @@ An API to create a role group in the organization.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [Common Response](#common-response) | Yes | |
+| header | [Common Response](#common-response) | Y | |
 
 <a id="delete-organization-role-group"></a>
 ### Delete Organization Role Group { #delete-organization-role-group }
@@ -2261,8 +2267,8 @@ An API to delete organization role groups.
 
 | Category | Name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | Organization ID |
-| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Yes | Request |
+| Path | org-id | String | Y | Organization ID |
+| Request Body | request | [DeleteRoleGroupRequest](#deleterolegrouprequest) | Y | Request |
 
 <a id="delete-organization-role-group-response-body"></a>
 #### Response Body
@@ -2281,7 +2287,7 @@ An API to delete organization role groups.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [Common Response](#common-response) | Yes | |
+| header | [Common Response](#common-response) | Y | |
 
 <a id="modify-organization-role-group-information"></a>
 ### Modify Organization Role Group Information { #modify-organization-role-group-information }
@@ -2300,9 +2306,9 @@ An API to modify the name and description of an organization role group.
 
 | Category | name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | Organization ID |
-| Path | role-group-id | String | Yes | Role group ID |
-| Request Body | request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Yes | Request |
+| Path | org-id | String | Y | Organization ID |
+| Path | role-group-id | String | Y | Role group ID |
+| Request Body | request | [UpdateRoleGroupInfoRequest](#updaterolegroupinforequest) | Y | Request |
 
 <a id="modify-organization-role-group-information-response-body"></a>
 #### Response Body
@@ -2321,7 +2327,7 @@ An API to modify the name and description of an organization role group.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [Common Response](#common-response)| Yes | |
+| header | [Common Response](#common-response)| Y | |
 
 
 <a id="modify-an-organization-role-groups-role"></a>
@@ -2341,15 +2347,15 @@ An API to modify roles in an organization role group.
 
 | Category | name | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Path | org-id | String | Yes | Organization ID |
-| Path | role-group-id | String | Yes | Role group ID |
-| Request Body | request | UpdateRoleGroupRequest | Yes | Request |
+| Path | org-id | String | Y | Organization ID |
+| Path | role-group-id | String | Y | Role group ID |
+| Request Body | request | UpdateRoleGroupRequest | Y | Request |
 
 ##### UpdateRoleGroupRequest
 
 | name | Type | Required | Description |
 | ------------ | ------------- | ------------- | ------------ |
-| roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Yes | List of roles to assign to role group |
+| roles | List&lt;[AssignRoleProtocol](#assignroleprotocol)> | Y | List of roles to assign to role group |
 
 <a id="modify-an-organization-role-groups-role-response-body"></a>
 #### Response Body
@@ -2368,7 +2374,7 @@ An API to modify roles in an organization role group.
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | ----------- | ------------ |
-| header | [Common Response](#common-response) | Yes | |
+| header | [Common Response](#common-response) | Y | |
 
 
 <a id="modify-organization-member-roles"></a>
@@ -2390,9 +2396,9 @@ API to modify the roles of members who belong to this organization.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
-|  Path |member-uuid | String| Yes | UUID of the member to modify | 
-| Request Body | request | UpdateMemberRoleRequest| Yes | Request |
+|  Path |org-id | String| Y | Organization ID | 
+|  Path |member-uuid | String| Y | UUID of the member to modify | 
+| Request Body | request | UpdateMemberRoleRequest| Y | Request |
 
 
 ##### UpdateMemberRoleRequest
@@ -2400,7 +2406,7 @@ API to modify the roles of members who belong to this organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List<[UserAssignRoleProtocol](#userassignroleprotocol)>| Yes | List of roles to assign to users  |
+|   assignRoles | List<[UserAssignRoleProtocol](#userassignroleprotocol)>| Y | List of roles to assign to users  |
 
 
 
@@ -2423,7 +2429,7 @@ API to modify the roles of members who belong to this organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="modify-project-member-roles"></a>
 ### Modify project member roles { #modify-project-member-roles }
@@ -2441,9 +2447,9 @@ API to modify the role of a specified member in a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID | 
-|  Path |member-uuid | String| Yes | Member UUID to change role to | 
-| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | Request |
+|  Path |project-id | String| Y | Project ID | 
+|  Path |member-uuid | String| Y | Member UUID to change role to | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Y | Request |
 
 
 
@@ -2465,7 +2471,7 @@ API to modify the role of a specified member in a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="view-organization-iam-members"></a>
 ### View organization IAM members { #view-organization-iam-members }
@@ -2484,8 +2490,8 @@ API to get the IAM members in your organization.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID to look up | 
-|  Path |member-uuid | String| Yes | The IAM member UUID of the organization to look up | 
+|  Path |org-id | String| Y | Organization ID to look up | 
+|  Path |member-uuid | String| Y | The IAM member UUID of the organization to look up | 
 
 
 <a id="view-organization-iam-members-response-body"></a>
@@ -2558,45 +2564,45 @@ API to get the IAM members in your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   orgMember | OrgIamMemberRoleBundleProtocol| No  |
+|   header | [Common response](#common-response)| Y   |
+|   orgMember | OrgIamMemberRoleBundleProtocol| N  |
 
 ##### OrgIamMemberRoleBundleProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   corporate | String| No |Company name |
-|   country | String| No | Nationality (nationality of the organization owner) |
-|   createdAt | Date| No | Date and time of creation |
-|   creationType | String| No| Account creation type |
-|   department | String| No|Department name |
-|   emailAddress | String| Yes | IAM account email address  |
-|   englishName | String| No| English name | 
-|   id | String| Yes | IAM account UUID  |
-|   idProviderId | String| No| Certification Authority ID (if using external authentication) |
-|   idProviderType | String| No| service: IAM direct sign-in<br>SSO: Customer SSO integration |
-|   idProviderUserId | String| No|User ID provided by an external certification authority |
-|   lastAccessedAt | Date| No| The account's last access date, returning null if not present |
-|   lastLoggedInAt | Date| No| The account's last login date, returning null if not found |
-|   lastLoggedInIp | String| No| The account's last login IP address, returning null if not present |
-|   maskingEmail | String| No | Masked email addresses for IAM accounts  |
-|   mobilePhone | String| No | IAM account's mobile phone number  |
-|   mobilePhoneCountryCode | String| No|Country code for mobile phone numbers |
-|   name | String| Yes | Name of the IAM account  |
-|   nativeName | String| No| Native language name |
-|   nickname | String| No| User nickname |
-|   officeHoursBegin | String| No| Work start time example: 09:00 |
-|   officeHoursEnd | String| No| Work end time example: 18:00 |
-|   organizationId | String| Yes | Organization ID for the IAM account  |
-|   passwordChangedAt | Date| No| When the account's last password was changed, returning null if none |
-|   position | String| No| Position |
-|   profileImageUrl | String| No| Profile image URL |
-|   roles | [List<RoleBundleProtocol>](#rolebundleprotocol)| No | List of related roles (with condition attributes)  |
-|   saasRoles | List<IamMemberRole>| No | IAM account roles  |
-|   status | String| No| Account's status |
-|   telephone | String| No | IAM account's phone number  |
-|   userCode | String| Yes | IAM account ID  |
+|   corporate | String| N |Company name |
+|   country | String| N | Nationality (nationality of the organization owner) |
+|   createdAt | Date| N | Date and time of creation |
+|   creationType | String| N| Account creation type |
+|   department | String| N|Department name |
+|   emailAddress | String| Y | IAM account email address  |
+|   englishName | String| N| English name | 
+|   id | String| Y | IAM account UUID  |
+|   idProviderId | String| N| Certification Authority ID (if using external authentication) |
+|   idProviderType | String| N| service: IAM direct sign-in<br>SSO: Customer SSO integration |
+|   idProviderUserId | String| N|User ID provided by an external certification authority |
+|   lastAccessedAt | Date| N| The account's last access date, returning null if not present |
+|   lastLoggedInAt | Date| N| The account's last login date, returning null if not found |
+|   lastLoggedInIp | String| N| The account's last login IP address, returning null if not present |
+|   maskingEmail | String| N | Masked email address of the IAM account  |
+|   mobilePhone | String| N | IAM account's mobile phone number  |
+|   mobilePhoneCountryCode | String| N|Country code for mobile phone numbers |
+|   name | String| Y | Name of the IAM account  |
+|   nativeName | String| N| Native language name |
+|   nickname | String| N| User nickname |
+|   officeHoursBegin | String| N| Work start time example: 09:00 |
+|   officeHoursEnd | String| N| Work end time example: 18:00 |
+|   organizationId | String| Y | Organization ID for the IAM account  |
+|   passwordChangedAt | Date| N| When the account's last password was changed, returning null if none |
+|   position | String| N| Position |
+|   profileImageUrl | String| N| Profile image URL |
+|   roles | [List<RoleBundleProtocol>](#rolebundleprotocol)| N | List of related roles (with condition attributes)  |
+|   saasRoles | List<IamMemberRole>| N | IAM account roles  |
+|   status | String| N| Account's status |
+|   telephone | String| N | IAM account's phone number  |
+|   userCode | String| Y | IAM account ID  |
 
 
 
@@ -2605,9 +2611,9 @@ API to get the IAM members in your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   productId | String| No |
-|   productName | String| No |
-|   role | String| No |
+|   productId | String| N |
+|   productName | String| N |
+|   role | String| N |
 
 
 <a id="list-organization-iam-members"></a>
@@ -2626,16 +2632,16 @@ API to get a list of IAM members that belong to this organization.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
-|  Query |email | String| No | IAM member's email address |
-|  Query |emailLike | String| No |  |
-|  Query |idProviderType | String| No | service: IAM direct sign-in<br>SSO: Customer SSO integration |
-|  Query |nameLike | String| No |  |
-|  Query |statuses | List<String>| No |  |
-|  Query |userCode | String| No | IAM member ID |
-|  Query |userCodeLike | String| No |  |
-|  Query |limit | Integer| No | Number of displays per page, default 20 |
-|  Query |page | Integer| No | Target Page, default 1 |
+|  Path |org-id | String| Y | Organization ID | 
+|  Query |email | String| N | IAM member's email address |
+|  Query |emailLike | String| N |  |
+|  Query |idProviderType | String| N | service: IAM direct sign-in<br>SSO: Customer SSO integration |
+|  Query |nameLike | String| N |  |
+|  Query |statuses | List<String>| N |  |
+|  Query |userCode | String| N | IAM member ID |
+|  Query |userCodeLike | String| N |  |
+|  Query |limit | Integer| N | Number of displays per page, default 20 |
+|  Query |page | Integer| N | Target Page, default 1 |
 
 <a id="list-organization-iam-members-response-body"></a>
 #### Response Body
@@ -2691,43 +2697,43 @@ API to get a list of IAM members that belong to this organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   orgMembers | List<IamOrgMemberProtocol>| No | Organization IAM member list  |
-|   paging | [PagingResponse](#pagingresponse)| No  |
+|   header | [Common response](#common-response)| Y   |
+|   orgMembers | List<IamOrgMemberProtocol>| N | Organization IAM member list  |
+|   paging | [PagingResponse](#pagingresponse)| N  |
 
 ##### IamOrgMemberProtocol
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-| id | String | No | IAM account UUID | 
-| userCode | String | Yes | IAM account ID to use for sign-in | 
-| name | String | Yes | Username of the IAM account | 
-| emailAddress | String |  Yes | IAM account's email address<br>Used to receive notifications or to change your password. |
-| maskingEmail | String | No | Masked email addresses for IAM accounts |
-| mobilePhone | String | No | IAM account's mobile phone number |
-| telephone | String | No | IAM account's phone number |
-| position | String | No | Position |
-| department | String | No | Department name |
-| corporate | String | No | Company name  |
-| profileImageUrl | String | No | Profile image URL |
-| englishName | String | No | English name |
-| nativeName | String | No | Native language name |
-| nickname | String | No | User nickname |
-| officeHoursBegin | String | No | Work start time example: 09:00 |
-| officeHoursEnd | String | No | Work end time example: 18:00 |
-| status | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
-| creationType | String | No | Date and time of creation |
-| idProviderId | String | No | Certification Authority ID (if using external authentication) |
-| idProviderType | String | No | service: IAM direct sign-in (default)<br>SSO: Customer SSO integration (cannot be set up if not integrated) |
-| idProviderUserId | String | No | User ID provided by an external certification authority |
-| createdAt | Date | No | Date and time of creation |
-| lastAccessedAt | Date | No | Date of last access |
-| lastLoggedInAt | Date | No | Date of last login |
-| lastLoggedInIp | String | No | Last logged in IP |
-| passwordChangedAt | Date | No | When to change your password |
-| mobilePhoneCountryCode | String | No | Country code for mobile phone numbers  |
-| organizationId | String | No | Organization ID of the IAM account |
-| country | String | No | Nationality (nationality of the organization owner) |
+| id | String | N | IAM account UUID | 
+| userCode | String | Y | IAM account ID to use for sign-in | 
+| name | String | Y | Username of the IAM account | 
+| emailAddress | String |  Y | IAM account's email address<br>Used to receive notifications or to change your password. |
+| maskingEmail | String | N | Masked email addresses for IAM accounts |
+| mobilePhone | String | N | IAM account's mobile phone number |
+| telephone | String | N | IAM account's phone number |
+| position | String | N | Position |
+| department | String | N | Department name |
+| corporate | String | N | Company name  |
+| profileImageUrl | String | N | Profile image URL |
+| englishName | String | N | English name |
+| nativeName | String | N | Native language name |
+| nickname | String | N | User nickname |
+| officeHoursBegin | String | N | Work start time example: 09:00 |
+| officeHoursEnd | String | N | Work end time example: 18:00 |
+| status | String | Y | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| creationType | String | N | SSO, invited, and registered |
+| idProviderId | String | N | Certification Authority ID (if using external authentication) |
+| idProviderType | String | N | service: IAM direct sign-in (default)<br>SSO: Customer SSO integration (cannot be set up if not integrated) |
+| idProviderUserId | String | N | User ID provided by an external certification authority |
+| createdAt | Date | N | Date and time of creation |
+| lastAccessedAt | Date | N | Date of last access |
+| lastLoggedInAt | Date | N | Date of last login |
+| lastLoggedInIp | String | N | Last logged in IP |
+| passwordChangedAt | Date | N | When to change your password |
+| mobilePhoneCountryCode | String | N | Country code for mobile phone numbers  |
+| organizationId | String | N | Organization ID of the IAM account |
+| country | String | N | Nationality (nationality of the organization owner) |
 
 
 
@@ -2750,38 +2756,38 @@ API to add IAM members to your organization.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
-| Request Body | request | AddIamOrgMemberRequest| Yes | Request |
+|  Path |org-id | String| Y | Organization ID | 
+| Request Body | request | AddIamOrgMemberRequest| Y | Request |
 
 ##### AddIamOrgMemberRequest
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Yes   |
+|   member | [AddIamOrgMemberProtocol](#addiamorgmemberprotocol)| Y   |
 
 
 ##### AddIamOrgMemberProtocol
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-| userCode | String | Yes | The IAM account ID to use for signing in | 
-| name | String | Yes | Username of the IAM account | 
-| emailAddress | String |  Yes | Email address of the IAM account<br>Used to receive notifications or password change. |
-| mobilePhone | String | No | IAM account's mobile phone number |
-| telephone | String | No | IAM account's phone number |
-| position | String | No | Position |
-| department | String | No | Department name |
-| corporate | String | No | Company name |
-| profileImageUrl | String | No | Profile image URL |
-| englishName | String | No | English name |
-| nativeName | String | No | Native language name |
-| nickname | String | No | User nickname |
-| officeHoursBegin | String | No | Work start time example: 09:00 |
-| officeHoursEnd | String | No | Work end time example: 18:00 |
-| status | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
-| creationType | String | No | SSO, invited, and registered |
-| mobilePhoneCountryCode | String | No | Country code for mobile phone numbers, required when entering a mobile phone number  |
+| userCode | String | Y | The IAM account ID to use for signing in | 
+| name | String | Y | Username of the IAM account | 
+| emailAddress | String |  Y | Email address of the IAM account<br>Used to receive notifications or password change. |
+| mobilePhone | String | N | IAM account's mobile phone number |
+| telephone | String | N | IAM account's phone number |
+| position | String | N | Position |
+| department | String | N | Department name |
+| corporate | String | N | Company name |
+| profileImageUrl | String | N | Profile image URL |
+| englishName | String | N | English name |
+| nativeName | String | N | Native language name |
+| nickname | String | N | User nickname |
+| officeHoursBegin | String | N | Work start time example: 09:00 |
+| officeHoursEnd | String | N | Work end time example: 18:00 |
+| status | String | Y | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| creationType | String | N | SSO, invited, and registered |
+| mobilePhoneCountryCode | String | N | Country code for mobile phone numbers, required when entering a mobile phone number  |
 
 
 
@@ -2804,8 +2810,8 @@ API to add IAM members to your organization.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   uuid | String| No | IAM member UUID  |
+|   header | [Common response](#common-response)| Y   |
+|   uuid | String| N | IAM member UUID  |
 
 
 
@@ -2827,9 +2833,9 @@ API to send an email to an IAM member to change their password.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Target organization ID | 
-|  Path |member-id | String| Yes | UUID of the IAM member whose password you want to change | 
-| Request Body | request | SendPasswordSetupMailRequest| Yes | Request |
+|  Path |org-id | String| Y | Target organization ID | 
+|  Path |member-id | String| Y | UUID of the IAM member whose password you want to change | 
+| Request Body | request | SendPasswordSetupMailRequest| Y | Request |
 
 
 
@@ -2838,8 +2844,8 @@ API to send an email to an IAM member to change their password.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   locale | String| Yes  | User's locale information<br>Example: en |
-|   returnUrl | String| Yes  | The address of the page you'll be directed to after you change your password via email change notification.<br>You must enter the toast.com, dooray.com, or nhncloud.com domain in the Go To address information |
+|   locale | String| Y  | User's locale information<br>Example: ko |
+|   returnUrl | String| Y  | The address of the page you'll be directed to after you change your password via email change notification.<br>You must enter the toast.com, dooray.com, or nhncloud.com domain in the Go To address information |
 
 
 <a id="send-an-iam-member-password-change-email-response-body"></a>
@@ -2859,7 +2865,7 @@ API to send an email to an IAM member to change their password.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="modify-organization-iam-member-information"></a>
 ### Modify organization IAM member information { #modify-organization-iam-member-information }
@@ -2877,9 +2883,9 @@ API to modify your organization's IAM member information.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | 	Target organization ID | 
-|  Path |member-uuid | String| Yes | UUID of the IAM member you want to change | 
-| Request Body | request | UpdateIamMemberRequest| Yes | Request |
+|  Path |org-id | String| Y | 	Target organization ID | 
+|  Path |member-uuid | String| Y | UUID of the IAM member you want to change | 
+| Request Body | request | UpdateIamMemberRequest| Y | Request |
 
 
 ##### UpdateIamMemberRequest
@@ -2887,31 +2893,31 @@ API to modify your organization's IAM member information.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Yes   |
+|   member | [UpdateIamOrgMemberProtocol](#updateiamorgmemberprotocol)| Y   |
 
 
 ##### UpdateIamOrgMemberProtocol
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-| userCode | String | Yes | IAM account ID to use for signing in | 
-| name | String | Yes | Username of the IAM account | 
-| emailAddress | String |  Yes | Email address of the IAM account<br>Used to receive notifications or password change. |
-| mobilePhone | String | No | IAM account's mobile phone number |
-| telephone | String | No | IAM account's phone number |
-| position | String | No | Position |
-| department | String | No | Department name |
-| corporate | String | No | Company name |
-| profileImageUrl | String | No | Profile image URL |
-| englishName | String | No | English name |
-| nativeName | String | No | Native language name |
-| nickname | String | No | User nickname |
-| officeHoursBegin | String | No | Work start time example: 09:00 |
-| officeHoursEnd | String | No | Work end time example: 18:00 |
-| status | String | Yes | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
-| creationType | String | No | SSO, invited, and registered |
-| idProviderUserId | String | No | User ID provided by an external certification authority |
-| mobilePhoneCountryCode | String | No | Country code for mobile phone numbers, required when entering a mobile phone number |
+| userCode | String | Y | IAM account ID to use for signing in | 
+| name | String | Y | Username of the IAM account | 
+| emailAddress | String |  Y | Email address of the IAM account<br>Used to receive notifications or password change. |
+| mobilePhone | String | N | IAM account's mobile phone number |
+| telephone | String | N | IAM account's phone number |
+| position | String | N | Position |
+| department | String | N | Department name |
+| corporate | String | N | Company name |
+| profileImageUrl | String | N | Profile image URL |
+| englishName | String | N | English name |
+| nativeName | String | N | Native language name |
+| nickname | String | N | User nickname |
+| officeHoursBegin | String | N | Work start time example: 09:00 |
+| officeHoursEnd | String | N | Work end time example: 18:00 |
+| status | String | Y | Member status can be changed<br><ul><li>member: in good standing</li><li>leaved: Request to leave</li></ul>Must specify member at creation time |
+| creationType | String | N | SSO, invited, and registered |
+| idProviderUserId | String | N | User ID provided by an external certification authority |
+| mobilePhoneCountryCode | String | N | Country code for mobile phone numbers, required when entering a mobile phone number |
 
 
 <a id="modify-organization-iam-member-information-response-body"></a>
@@ -2931,7 +2937,7 @@ API to modify your organization's IAM member information.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="change-an-organization-iam-member-password"></a>
 ### Change an organization IAM member password { #change-an-organization-iam-member-password }
@@ -2949,9 +2955,9 @@ API to change the password of an organization IAM member.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Target organization ID | 
-|  Path |member-id | String| Yes | UUID of the IAM member whose password you want to change | 
-| Request Body | request | UpdateIamPasswordRequest| Yes | Request |
+|  Path |org-id | String| Y | Target organization ID | 
+|  Path |member-id | String| Y | UUID of the IAM member whose password you want to change | 
+| Request Body | request | UpdateIamPasswordRequest| Y | Request |
 
 
 ##### UpdateIamPasswordRequest
@@ -2959,7 +2965,7 @@ API to change the password of an organization IAM member.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   password | String| Yes  | Password to set | 
+|   password | String| Y  | Password to set | 
 
 
 <a id="change-an-organization-iam-member-password-response-body"></a>
@@ -2979,7 +2985,7 @@ API to change the password of an organization IAM member.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="listorganization-ip-acls"></a>
 ### Listorganization IP ACLs { #listorganization-ip-acls }
@@ -2997,7 +3003,7 @@ API to get IP ACL settings.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
+|  Path |org-id | String| Y | Organization ID | 
 
 
 <a id="listorganization-ip-acls-response-body"></a>
@@ -3022,16 +3028,16 @@ API to get IP ACL settings.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   orgIpAcl | List<OrgIpAclProtocol>| Yes  | If the result is an empty list, the setting is not set. |
+|   header | [Common response](#common-response)| Y   |
+|   orgIpAcl | List&lt;OrgIpAclProtocol>| Y  | If the result is an empty list, the setting is not set. |
 
 ##### OrgIpAclProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   ips | List<String>| Yes  | Allowed IPs | 
-|   productId | String| Yes  | Service ID<br>If undefined, set to Common Settings|
+|   ips | List<String>| Y  | Allowed IPs | 
+|   productId | String| Y  | Service ID<br>If `undefined`, set to Common Settings|
 
 <a id="view-organization-iam-sign-in-session-settings-information"></a>
 ### View organization IAM sign-in session settings information { #view-organization-iam-sign-in-session-settings-information }
@@ -3049,7 +3055,7 @@ API to get login session settings information.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
+|  Path |org-id | String| Y | Organization ID | 
 
 
 <a id="view-organization-iam-sign-in-session-settings-information-response-body"></a>
@@ -3079,17 +3085,17 @@ API to get login session settings information.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [Common response](#common-response)| Yes   |
-| result | Content | Yes | Setup contents |
+| header | [Common response](#common-response)| Y   |
+| result | Content | Y | Setup contents |
 
 ##### Content
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   multiSessionsLimit | Integer| Yes | Number of multisessions allowed  |
-|   sessionTimeoutMinutes | Integer| Yes | 	Session timeouts |
-|   mobileSessionTimeoutMinutes | Integer| Yes | 	Mobile session timeout |
-|   sessionType | String| Yes | fixed/idle. The default is fixed  |
+|   multiSessionsLimit | Integer| Y | Number of multisessions allowed  |
+|   sessionTimeoutMinutes | Integer| Y | 	Session timeouts |
+|   mobileSessionTimeoutMinutes | Integer| Y | 	Mobile session timeout |
+|   sessionType | String| Y | `fixed`/`idle`. The default is `fixed`  |
 
 <a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication"></a>
 ### View settings for organizational IAM sign-in second factor authentication { #view-settings-for-organizational-iam-sign-in-second-factor-authentication }
@@ -3108,7 +3114,7 @@ API to get settings for login two-factor authentication.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
+|  Path |org-id | String| Y | Organization ID | 
 
 <a id="view-settings-for-organizational-iam-sign-in-second-factor-authentication-response-body"></a>
 #### Response Body
@@ -3153,39 +3159,39 @@ API to get settings for login two-factor authentication.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   result | Result| No |  Response content<br>If never set, null is returned |
+|   header | [Common response](#common-response)| Y   |
+|   result | Result| N |  Response content<br>If never set, null is returned |
 
 ##### Result
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   range | Integer| No | Organization/Service status<br>organization (common settings), services (service-specific settings)  |
-|   organizationMfaSetting | OrganizationMfaSetting| No | About organizational MFA settings<br>Common Settings |
-|   serviceMfaSettings | ServiceMfaSettings| No | About service-specific MFA settings  |
+|   range | Integer| N | Organization/Service status<br>organization (common settings), services (service-specific settings)  |
+|   organizationMfaSetting | OrganizationMfaSetting| N | About organizational MFA settings<br>Common Settings |
+|   serviceMfaSettings | ServiceMfaSettings| N | About service-specific MFA settings  |
 
 
 ##### OrganizationMfaSetting
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   type | String| No | MFA type<br>none (no setting), totp (Google OTP), email (email) |
-|   bypassByIp | BypassByIp| No | Exception IP  |
+|   type | String| N | MFA type<br>none (no setting), totp (Google OTP), email (email) |
+|   bypassByIp | BypassByIp| N | Exception IP  |
 
 ##### ServiceMfaSettings
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   serviceId | Sting| No | Service ID  |
-|   type | String| No | MFA type<br>none (no setting), totp (Google OTP), email (email) |
-|   bypassByIp | BypassByIp| No | Service type. none, totp, email |
+|   serviceId | String| N | Service ID  |
+|   type | String| N | MFA type<br>none (no setting), totp (Google OTP), email (email) |
+|   bypassByIp | BypassByIp| N | Exception IP |
 
 ##### BypassByIp
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   enable | Boolean| No | Activated or not<br>true (enabled), false (disabled)  |
-|   ipList | List<String>| No | List of exception IPs |
+|   enable | Boolean| N | Activated or not<br>`true` (enabled), `false` (disabled)  |
+|   ipList | List<String>| N | List of exception IPs |
 
 <a id="view-organization-iam-login-failure-security-settings"></a>
 ### View Organization IAM Login Failure Security Settings { #view-organization-iam-login-failure-security-settings }
@@ -3203,7 +3209,7 @@ API to get login failure security settings.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
+|  Path |org-id | String| Y | Organization ID | 
 
 
 <a id="view-organization-iam-login-failure-security-settings-response-body"></a>
@@ -3232,23 +3238,23 @@ API to get login failure security settings.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [Common response](#common-response)| Yes   |
-| result | Result | No | Returned only if login failure security is set, otherwise null is returned |
+| header | [Common response](#common-response)| Y   |
+| result | Result | N | Returned only if login failure security is set, otherwise null is returned |
 
 ##### Result
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   enable | Boolean| Yes | Activated or not<br>true (enabled), false (disabled)  |
-|   loginFailCount | LoginFailCount| No | Setting up login failure security |
+|   enable | Boolean| Y | Activated or not<br>`true` (enabled), `false` (disabled)  |
+|   loginFailCount | LoginFailCount| N | Setting up login failure security |
 
 
 ##### LoginFailCount
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | Number of attempts allowed |
-|   blockMinutes | Integer| No | Login ban time  |
+|   limit | Integer| N | Number of attempts allowed |
+|   blockMinutes | Integer| N | Login ban time  |
 
 <a id="get-your-organizations-iam-account-password-policy"></a>
 ### Get your organization's IAM account password policy { #get-your-organizations-iam-account-password-policy }
@@ -3266,7 +3272,7 @@ API to get settings for password policies.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID | 
+|  Path |org-id | String| Y | Organization ID | 
 
 
 <a id="get-your-organizations-iam-account-password-policy-response-body"></a>
@@ -3312,51 +3318,51 @@ API to get settings for password policies.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| header | [Common response](#common-response)| Yes   |
-| result | Content | Yes | Setup contents |
+| header | [Common response](#common-response)| Y   |
+| result | Content | Y | Setup contents |
 
 ##### Content
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| schemaVersion | Integer| Yes | Schema version  |
-| value | Value| Yes |  Password policy |
+| schemaVersion | Integer| Y | Schema version  |
+| value | Value| Y |  Password policy |
 
 ##### Value
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| ruleType | String | Yes | Password policy<br>default (default password policy), custom (user password policy) |
-| passwordConstraints | PasswordConstraints | Yes | Password strength |
-| passwordExpiry | PasswordExpiry | Yes | Password expiration |
-| limitPasswordReuse | LimitPasswordReuse | Yes | Limit password reuse |
-| applyRule | String | Yes | When to enforce password policies<br>onChangePassword (applies when password changes), onLogin (applies immediately) |
+| ruleType | String | Y | Password policy<br>`default` (default password policy), `custom` (user password policy) |
+| passwordConstraints | PasswordConstraints | Y | Password strength |
+| passwordExpiry | PasswordExpiry | Y | Password expiration |
+| limitPasswordReuse | LimitPasswordReuse | Y | Limit password reuse |
+| applyRule | String | Y | When to enforce password policies<br>`onChangePassword` (applies when password changes), `onLogin` (applies immediately) |
 
 ##### PasswordConstraints
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| minLength | integer | Yes | Password minimum length |
-| mustNotIncludeIllegalSequence | boolean | Yes | At least one alphanumeric character<br>true (set), false (not set) |
-| mustIncludeUpperCase | boolean | Yes | At least one uppercase letter<br>true (set), false (not set) |
-| mustIncludeLowerCase | boolean | Yes | At least one lowercase letter<br>true (set), false (not set) |
-| mustIncludeNumberCase | boolean | Yes | At least one number<br>true (set), false (not set) |
-| mustIncludeSpecialCase | boolean | Yes | One or more special characters<br>true (set), false (not set) |
+| minLength | Integer | Y | Password minimum length |
+| mustNotIncludeIllegalSequence | Boolean | Y | At least one alphanumeric character<br>true (set), false (not set) |
+| mustIncludeUpperCase | Boolean | Y | At least one uppercase letter<br>true (set), false (not set) |
+| mustIncludeLowerCase | Boolean | Y | At least one lowercase letter<br>true (set), false (not set) |
+| mustIncludeNumberCase | Boolean | Y | At least one number<br>true (set), false (not set) |
+| mustIncludeSpecialCase | Boolean | Y | One or more special characters<br>true (set), false (not set) |
 
 ##### PasswordExpiry
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| enable | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
-| expiryDays | Integer | Yes | Expiration period |
-| allowExpend | Boolean | Yes | Extendable on expiration<br>true (possible), false (impossible) |
+| enable | Boolean | Y | Enabled or not<br>true (set), false (not set) |
+| expiryDays | Integer | Y | Expiration period |
+| allowExpend | Boolean | Y | Extendable on expiration<br>true (possible), false (impossible) |
 
 ##### LimitPasswordReuse
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-| enable | Boolean | Yes | Enabled or not<br>true (set), false (not set) |
-| limitCount | Integer | Yes | Number of reuse limits |
+| enable | Boolean | Y | Enabled or not<br>true (set), false (not set) |
+| limitCount | Integer | Y | Number of reuse limits |
 
 <a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription"></a>
 ### Get the price of a service on a pay-as-you-go subscription { #get-the-price-of-a-service-on-a-pay-as-you-go-subscription }
@@ -3376,22 +3382,22 @@ Available to all members. No specific permissions required.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |limit | Integer| No |  |
-| Request Body | request | GetContractProductPriceRequest| Yes | Request |
+|  Query |limit | Integer| N |  |
+| Request Body | request | GetContractProductPriceRequest| Y | Request |
 
 <a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-getcontractproductpricerequest"></a>
 #### GetContractProductPriceRequest
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|  counterNames | List<String>| No | List of counter names in the service meta<br>Full search box if not found |
-|   paging | Paging| No  |
+|  counterNames | List<String>| N | List of counter names in the service meta<br>Full search box if not found |
+|   paging | Paging| N  |
 
 ##### Paging
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   limit | Integer| No | Number of displays per page, default 20  |
-|   page | Integer| No | Target Page, default 1  |
+|   limit | Integer| N | Number of displays per page, default 20  |
+|   page | Integer| N | Target Page, default 1  |
 
 
 <a id="get-the-price-of-a-service-on-a-pay-as-you-go-subscription-response-body"></a>
@@ -3434,39 +3440,39 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   paging | PagingResponse| Yes | Return paging results with no sorting criteria  |
-|   prices | List<ContractProductPriceProtocol>| Yes | Returns unit price information from counters as an array<br>Not included on error  |
+|   header | [Common response](#common-response)| Y   |
+|   paging | PagingResponse| Y | Return paging results with no sorting criteria  |
+|   prices | List<ContractProductPriceProtocol>| Y | Returns unit price information from counters as an array<br>Not included on error  |
 
 ##### PagingResponse
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   limit | Integer| Yes | Limit the number of views<br>Default value is 1. |
-|   page | Integer| Yes |
-|   totalCount | Integer| Yes |
+|   limit | Integer| Y | Limit the number of views<br>Default value is 1. |
+|   page | Integer| Y |
+|   totalCount | Integer| Y |
 
 ##### ContractProductPriceProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   contractDiscountPolicyId | String| Yes | Commitment Rate Policy ID  |
-|   contractId | String| Yes | Commitment ID  |
-|   counterName | String| Yes | Counters  |
-|   displayNameEn | String| No | 	English name of the counter  |
-|   displayNameJa | String| No | Japanese name of the counter  |
-|   displayNameKo | String| Yes | Korean name of the counter  |
-|   displayNameZh | String| No | 	Chinese name of the counter<br>Currently exposed in English |
-|   monthFrom | String| Yes | The start month for which unit price information is valid (inclusive)  |
-|   monthTo | String| Yes | Ending month for which unit price information is valid (not included)  |
-|   originalPrice | BigDecimal| Yes | Unit price  |
-|   price | BigDecimal| Yes | Unit price  |
-|   rangeFrom | BigDecimal| Yes | Start of usage range that falls under unit price (not included)  |
-|   rangeTo | BigDecimal| Yes | Ending usage ranges that fall under unit pricing (inclusive)  |
-|   seq | Long| Yes | Serial number  |
-|   slidingCalculationTypeCode | String| Yes | Types of sliding fee calculations<br>NONE, SECTION_SUM, SECTION_SELECTED |
-|   useFixPriceYn | String| Yes | Fixed amount or not (Y: Fixed amount , N: Unit price calculation)<br>Y: price becomes an amount if it falls in the range<br>N: (Usage x Unit Price) becomes an amount |
+|   contractDiscountPolicyId | String| Y | Commitment Rate Policy ID  |
+|   contractId | String| Y | Commitment ID  |
+|   counterName | String| Y | Counters  |
+|   displayNameEn | String| N | 	English name of the counter  |
+|   displayNameJa | String| N | Japanese name of the counter  |
+|   displayNameKo | String| Y | Korean name of the counter  |
+|   displayNameZh | String| N | 	Chinese name of the counter<br>Currently exposed in English |
+|   monthFrom | String| Y | The start month for which unit price information is valid (inclusive)  |
+|   monthTo | String| Y | Ending month for which unit price information is valid (not included)  |
+|   originalPrice | BigDecimal| Y | Unit price  |
+|   price | BigDecimal| Y | Unit price  |
+|   rangeFrom | BigDecimal| Y | Start of usage range that falls under unit price (not included)  |
+|   rangeTo | BigDecimal| Y | Ending usage ranges that fall under unit pricing (inclusive)  |
+|   seq | Long| Y | Serial number  |
+|   slidingCalculationTypeCode | String| Y | Types of sliding fee calculations<br>`NONE`, `SECTION_SUM`, `SECTION_SELECTED` |
+|   useFixPriceYn | String| Y | Fixed amount or not (Y: Fixed amount , N: Unit price calculation)<br>Y: price becomes an amount if it falls in the range<br>N: (Usage x Unit Price) becomes an amount |
 
 <a id="list-services-enrolled-in-a-pay-as-you-go-subscription"></a>
 ### List services enrolled in a pay-as-you-go subscription { #list-services-enrolled-in-a-pay-as-you-go-subscription }
@@ -3484,8 +3490,8 @@ Available to all members. No specific permissions required.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Query |limit | Integer| No | Limit the number of views<br>Default value is 1. |
-|  Query |page | Integer| No |  |
+|  Query |limit | Integer| N | Limit the number of views<br>Default value is 1. |
+|  Query |page | Integer| N |  |
 
 
 <a id="list-services-enrolled-in-a-pay-as-you-go-subscription-response-body"></a>
@@ -3534,9 +3540,9 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   products | List<ProductMetadata>| Yes | Service meta information list  |
+|   header | [Common response](#common-response)| Y   |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   products | List<ProductMetadata>| Y | Service meta information list  |
 
 
 ##### ProductMetadata
@@ -3544,27 +3550,420 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   budgetUsageTypeYn | String| No | Budget Usage Type Yn Y, N |
-|   calcUnitCode | String| Yes | Units to use when calculating amounts (converts metering units to settlement units to calculate amounts), units to expose on statements<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
-|   categoryMain | String| Yes | Main Categories  |
-|   categorySub | String| Yes | Subcategories  |
-|   chargingTypeId | String| Yes | Billing type ID  |
-|   convertUsageTypeCode | String| Yes | Usage conversion type codes NONE, HOUR_AVERAGE, DAY_AVERAGE |
-|   counterName | String| Yes | Counters  |
-|   counterTypeCode | String| Yes | Methods for summing usage<br><ul><li>DELTA: Incremental value (HOURLY_SUM)</li><li>GAUGE: Sum of hourly maximums (to be changed to HOURLY_MAX)</li><li>HOURLY_LATEST: The sum of the latest metering data collected in a one-hour period.</li><li>DAILY_MAX: Sum of daily maximums</li><li>MONTHLY_MAX: Monthly maximum</li><li>STATUS: Usage status</li><ul> |
-|   description | String| No | Counter descriptions  |
-|   displayOrder | Integer| Yes | Exposure order  |
-|   marketPlaceMandatoryUsePeriod | Integer| No | Marketplace mandatory usage period  |
-|   meterUnitCode | String| Yes | Usage units when storing metering in a service<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
-|   minUsage | BigDecimal| Yes | Minimum usage  |
-|   parentCounterName | String| Yes | Parent counter name  |
-|   productId | String| Yes | Service ID  |
-|   productMetadataStatusCode | String| Yes | Counter status codes STABLE, CLOSED |
-|   productUiId | String| Yes | Homepage Category/Homepage Service Identification ID  |
-|   regionTypeCode | String| Yes | The region code the countername belongs to<br><ul><li>GLOBAL: Countername belonging to the Global service</li><li>NONE: Same meaning as GLOBAL</li><li>KR1: Countername belonging to the KR1 region</li><li>KR2: Countername belonging to the KR2 region</li><li>If you are not sure which region you are in, you can use the following...: Counternames that belong to this region</li><ul>  |
-|   unit | Long| Yes | Settlement units  |
-|   unitName | String| Yes | Name to appear on the invoice  |
-|   usageAggregationUnitCode | String| No | Usage aggregation units<br>RESOURCE_ID, COUNTER_NAME |
+|   budgetUsageTypeYn | String| N | Budget Usage Type Yn Y, N |
+|   calcUnitCode | String| Y | Units to use when calculating amounts (converts metering units to settlement units to calculate amounts), units to expose on statements<br>KB, MB, GB, TB, SECONDS, MINUTE, HOURS, DAYS, MB_HOURS, GB_SECONDS, GB_HOURS, GB_DAYS, CORE_SECONDS, CORE_HOURS, CORE_DAYS, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, VCPU_HOURS, COUNT_HOURS |
+|   categoryMain | String| Y | Main Categories  |
+|   categorySub | String| Y | Subcategories  |
+|   chargingTypeId | String| Y | Billing type ID  |
+|   convertUsageTypeCode | String| Y | Usage conversion type codes `NONE`, `HOUR_AVERAGE`, `DAY_AVERAGE` |
+|   counterName | String| Y | Counters  |
+|   counterTypeCode | String| Y | Methods for summing usage<br><ul><li>DELTA: Incremental value (HOURLY_SUM)</li><li>GAUGE: Sum of hourly maximums (to be changed to HOURLY_MAX)</li><li>HOURLY_LATEST: The sum of the latest metering data collected in a one-hour period.</li><li>DAILY_MAX: Sum of daily maximums</li><li>MONTHLY_MAX: Monthly maximum</li><li>STATUS: Usage status</li><ul> |
+|   description | String| N | Counter descriptions  |
+|   displayOrder | Integer| Y | Exposure order  |
+|   marketPlaceMandatoryUsePeriod | Integer| N | Marketplace mandatory usage period  |
+|   meterUnitCode | String| Y | Usage units when storing metering in a service<br>BYTES, KB, MB, GB, TB, CORE, HOURS, MINUTE, USERS, MAU, MAD, DAU, CALLS, COUNTS, CCU, SECONDS |
+|   minUsage | BigDecimal| Y | Minimum usage  |
+|   parentCounterName | String| Y | Parent counter name  |
+|   productId | String| Y | Service ID  |
+|   productMetadataStatusCode | String| Y | Counter status codes `STABLE`, `CLOSED` |
+|   productUiId | String| Y | Homepage Category/Homepage Service Identification ID  |
+|   regionTypeCode | String| Y | The region code the countername belongs to<br><ul><li>GLOBAL: Countername belonging to the Global service</li><li>NONE: Same meaning as GLOBAL</li><li>KR1: Countername belonging to the KR1 region</li><li>KR2: Countername belonging to the KR2 region</li><li>If you are not sure which region you are in, you can use the following...: Counternames that belong to this region</li><ul>  |
+|   unit | Long| Y | Settlement units  |
+|   unitName | String| Y | Name to appear on the invoice  |
+|   usageAggregationUnitCode | String| N | Usage aggregation units<br>RESOURCE_ID, COUNTER_NAME |
+
+<a id="view-charges-by-payment-statement"></a>
+### View Charges by Payment Statement { #view-charges-by-payment-statement }
+
+> GET "/v1/billing/members/payment-statements"
+
+Retrieves the amount spent per payment statement.
+
+<a id="view-charges-by-payment-statement-required-permissions"></a>
+#### Required Permission
+`Member.PaymentStatement.Get`
+
+<a id="view-charges-by-payment-statement-request-parameter"></a>
+#### Request Parameters
+
+| Category | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |month | String| Y | Billing month (yyyy-MM) |
+|  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple)<br>If not specified, retrieves all accessible payment groups |
+
+<a id="view-charges-by-payment-statement-response-body"></a>
+#### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "paymentStatementCharges": [ {
+    "uuid": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
+    "paymentGroupId": "3YVRwIVU",
+    "month": "2026-07-01T00:00:00.000+09:00",
+    "country": "KR",
+    "paymentStatusCode": "PAID",
+    "autoPaymentTypeCode": "CREDIT_CARD",
+    "paymentInfo": "[Hyundai Card] 4403***",
+    "chargeAmount": 1000000,
+    "totalDiscountAmount": 100000,
+    "totalExtraAmount": 0,
+    "taxAmount": 90000,
+    "freeCreditAmount": 0,
+    "paidCreditAmount": 0,
+    "freeCreditAllAmount": 0,
+    "freeCreditLimitAmount": 0,
+    "paidCreditAllAmount": 0,
+    "paidCreditLimitAmount": 0,
+    "totalCreditAmount": 0,
+    "prePaidTotalAmount": 0,
+    "cutoffAmount": 0,
+    "lateFeeAmount": 0,
+    "totalAmount": 990000,
+    "chargedSupplyAmount": 900000,
+    "chargedTaxAmount": 90000,
+    "chargedTotalAmount": 990000,
+    "receiptStatusCode": "EXIST",
+    "refundAccountRegisterStatusCode": "DENY"
+  } ]
+}
+```
+
+##### Response
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [Common Response](#common-response)| Y   |
+|   paymentStatementCharges | List&lt;Charge>| Y | List of usage amounts by payment group  |
+
+##### Charge
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   uuid | String| Y | Member UUID  |
+|   paymentGroupId | String| Y | Payment group ID  |
+|   month | Date| Y | Billing month  |
+|   country | String| Y | Country code  |
+|   paymentStatusCode | String| Y | Payment status code<br><ul><li>REGISTERED: Register</li><li>READY: Payment pending</li><li>PAID: Payment complete</li><li>ERROR: Operator verification required status</li></ul> |
+|   autoPaymentTypeCode | String| Y | Payment method type  |
+|   paymentInfo | String| N | Payment method information  |
+|   chargeAmount | Long| Y | Amount used  |
+|   totalDiscountAmount | Long| Y | Discount amount  |
+|   totalExtraAmount | Long| Y | Surcharge amount  |
+|   taxAmount | Long| Y | VAT (before truncation)  |
+|   freeCreditAmount | Long| Y | Free credit used (total of all and limited types)  |
+|   paidCreditAmount | Long| Y | Paid credit used (total of all and limited types)  |
+|   freeCreditAllAmount | Long| Y | Free all credit used  |
+|   freeCreditLimitAmount | Long| Y | Free limited credit used  |
+|   paidCreditAllAmount | Long| Y | Paid all credit used  |
+|   paidCreditLimitAmount | Long| Y | Paid limited credit used  |
+|   totalCreditAmount | Long| Y | Total credit used  |
+|   prePaidTotalAmount | Long| Y | Prepayment applied amount  |
+|   cutoffAmount | Long| Y | Truncated amount (less than 500 KRW)  |
+|   lateFeeAmount | Long| Y | Late fee  |
+|   totalAmount | Long| Y | Final billing amount (including VAT)  |
+|   chargedSupplyAmount | Long| Y | Actual supply amount<br>Actual billing amount reflecting credits, prepayments, and truncation |
+|   chargedTaxAmount | Long| Y | Actual VAT<br>Actual billing amount reflecting credits, prepayments, and truncation |
+|   chargedTotalAmount | Long| Y | Actual payment amount<br>Actual supply amount + actual VAT + late fee |
+|   receiptStatusCode | String| Y | Sales voucher status code<br><ul><li>NONE: Sales voucher cannot be viewed</li><li>EXIST: Sales voucher can be viewed</li></ul> |
+|   refundAccountRegisterStatusCode | String| N | Refund account registration status code<br><ul><li>ALLOW: Refund account registration open</li><li>DENY: Refund account registration closed (default)</li></ul> |
+
+
+<a id="view-charge-summaries-by-scope"></a>
+### View Charge Summaries by Billing Group, Organization, and Project { #view-charge-summaries-by-scope }
+
+> GET "/v1/billing/members/payment-statements/charge-summaries"
+
+Retrieves charge summaries aggregated by billing group, organization, or project.
+
+!!! danger "Caution"
+    * You can only retrieve billing months after May 2020.
+    * You cannot specify a payment group (PAYMENT_GROUP) for `groupBy`. For charge amounts by payment group, use [View Charges by Payment Statement](#view-charges-by-payment-statement).
+
+<a id="view-charge-summaries-by-scope-required-permissions"></a>
+#### Required Permission
+`Member.PaymentStatement.Get`
+
+<a id="view-charge-summaries-by-scope-request-parameter"></a>
+#### Request Parameters
+
+| Category | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |month | String| Y | Billing month (yyyy-MM)<br>Supported only from 2020-05 |
+|  Query |groupBy | String| Y | Aggregation criterion (single)<br><ul><li>BILLING_GROUP: Billing group</li><li>ORG: Organization</li><li>PROJECT: Project</li></ul> |
+|  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple, up to 10) |
+|  Query |billingGroupIds | List&lt;String>| N | Billing group ID filter (multiple, up to 10) |
+|  Query |orgIds | List&lt;String>| N | Organization ID filter (multiple, up to 10) |
+|  Query |projectIds | List&lt;String>| N | Project ID filter (multiple, up to 10) |
+|  Query |cursor | String| N | Next page cursor<br>Retrieves the first page if not specified |
+|  Query |size | Integer| N | Number of displays per page (from 10 to 100)<br>Default 20 |
+
+<a id="view-charge-summaries-by-scope-response-body"></a>
+#### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "groupBy": "PROJECT",
+  "chargeSummaries": [ {
+    "paymentGroupId": "3YVRwIVU",
+    "billingGroupId": "LY9NQ7lvWvxGj3aW",
+    "billingGroupName": "Billing group name",
+    "orgId": "eNWZ3jZq2FsMSHaQ",
+    "orgName": "Organization name",
+    "projectId": "KGDeiKUq",
+    "projectName": "Project name",
+    "country": "KR",
+    "chargeAmount": 1000000,
+    "contractDiscountAmount": 50000,
+    "ocpDiscountAmount": 0,
+    "billingGroupDiscountAmount": 0,
+    "projectDiscountAmount": 50000,
+    "totalDiscountAmount": 100000,
+    "contractExtraAmount": 0,
+    "billingGroupExtraAmount": 0,
+    "projectExtraAmount": 0,
+    "totalExtraAmount": 0,
+    "totalCreditLimitAmount": 0,
+    "prePaidTotalAmount": 0,
+    "totalAmount": 900000
+  } ],
+  "nextCursor": "S0dEZWlLVXE"
+}
+```
+
+##### Response
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [Common Response](#common-response)| Y   |
+|   groupBy | String| Y | Requested aggregation criteria  |
+|   chargeSummaries | List&lt;ChargeSummary>| Y | List of usage amounts by billing group, organization, and project  |
+|   nextCursor | String| N | Next page cursor<br>null if it is the last page |
+
+##### ChargeSummary
+
+| Name | Type | Required | Description |   
+|------------ | ------------- |----| ----------- |
+|   paymentGroupId | String| Y  | Payment group ID |
+|   billingGroupId | String| Y  | Billing group ID |
+|   billingGroupName | String| N  | Billing group name |
+|   orgId | String| N  | Organization ID<br>Returned only when `groupBy=ORG` or `groupBy=PROJECT` |
+|   orgName | String| N  | Organization name<br>Returned only when `groupBy=ORG` or `groupBy=PROJECT` |
+|   projectId | String| N  | Project ID<br>Returned only when `groupBy=PROJECT` |
+|   projectName | String| N  | Project name<br>Returned only when `groupBy=PROJECT` |
+|   country | String| Y  | Country code  |
+|   chargeAmount | Long| Y  | Amount used  |
+|   contractDiscountAmount | Long| Y  | Amount discounted by commitment |
+|   ocpDiscountAmount | Long| Y  | Optimized Cost Plans (OCPs) discount amount |
+|   billingGroupDiscountAmount | Long| Y  | Billing group discount amount |
+|   projectDiscountAmount | Long| Y  | Project discount amount |
+|   totalDiscountAmount | Long| Y  | Total discount amount |
+|   contractExtraAmount | Long| Y  | Amount surcharged by commitment |
+|   billingGroupExtraAmount | Long| Y  | Billing group surcharge amount |
+|   projectExtraAmount | Long| Y  | Project surcharge amount |
+|   totalExtraAmount | Long| Y  | Total surcharge amount |
+|   totalCreditLimitAmount | Long| Y  | Restricted credit applied amount |
+|   prePaidTotalAmount | Long| Y  | Prepayment applied amount |
+|   totalAmount | Long| Y  | Final amount (excluding VAT)<br>Amount used - Discount amount + Surcharge amount - Restricted credit applied amount - Prepayment applied amount |
+
+
+<a id="view-individual-charge-lines"></a>
+### View Individual Charge Lines { #view-individual-charge-lines }
+
+> GET "/v1/billing/members/payment-statements/usages"
+
+API to get the usage amount per individual charge line.
+
+!!! danger "Caution"
+    * Only billing months after May 2020 can be queried.
+
+<a id="view-individual-charge-lines-required-permissions"></a>
+#### Required Permission
+`Member.PaymentStatement.Get`
+
+<a id="view-individual-charge-lines-request-parameter"></a>
+#### Request Parameters
+
+| Category | Name | Type | Required | Description  |
+|------------- |------------- | ------------- | ------------- | ------------- |
+|  Query |month | String| Y | Billing month (yyyy-MM)<br>Supported only from 2020-05 onward |
+|  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple, up to 10) |
+|  Query |billingGroupIds | List&lt;String>| N | Billing group ID filter (multiple, up to 10) |
+|  Query |orgIds | List&lt;String>| N | organization ID filter (multiple, up to 10) |
+|  Query |projectIds | List&lt;String>| N | project ID filter (multiple, up to 10) |
+|  Query |categoryMains | List&lt;String>| N | Main category filter (multiple, up to 10) |
+|  Query |regions | List&lt;String>| N | Region filter (multiple, up to 10) |
+|  Query |stationIds | List&lt;String>| N | Station ID filter (multiple, up to 10) |
+|  Query |cursor | String| N | Next page cursor<br>Retrieves the first page if not specified |
+|  Query |size | Integer| N | Number of displays per page (10–100)<br>Default 20 |
+
+<a id="view-individual-charge-lines-response-body"></a>
+#### Response body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "usages": [ {
+    "projectId": "KGDeiKUq",
+    "projectName": "Project name",
+    "resourceId": "5f1ab1a1-4e6e-4f66-9b1e-2b3f5c6d7e8f",
+    "resourceName": "Instance name",
+    "counterName": "c2.small",
+    "categoryMain": "Compute",
+    "categorySub": "Instance",
+    "regionTypeCode": "KR1",
+    "stationId": "stationId",
+    "stationName": "stationName",
+    "displayNameKo": "c2.small",
+    "displayNameEn": "c2.small",
+    "displayNameJa": "c2.small",
+    "displayNameZh": "c2.small",
+    "unitName": "Hour",
+    "unit": 1,
+    "usageVolume": 720,
+    "unitPrice": 61,
+    "contractUnitPrice": 55,
+    "chargeAmount": 43920,
+    "contractAmount": 39600,
+    "discountAmount": 4320,
+    "discountTypeCode": "CONTRACT",
+    "prePaidAmount": 0
+  } ],
+  "nextCursor": "MTAyNA"
+}
+```
+
+##### Response
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [Common response](#common-response)| Y   |
+|   usages | List&lt;UsageLine>| Y | Detailed list  |
+|   nextCursor | String| N | Next page cursor<br>null if last page |
+
+##### UsageLine
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   projectId | String| N | Project ID  |
+|   projectName | String| N | Project name  |
+|   resourceId | String| N | Resource ID  |
+|   resourceName | String| N | Resource name  |
+|   parentResourceId | String| N | Parent resource ID  |
+|   parentResourceName | String| N | Parent resource name  |
+|   counterName | String| N | Counter name  |
+|   categoryMain | String| N | Main category  |
+|   categorySub | String| N | Sub category  |
+|   regionTypeCode | String| N | Region type code  |
+|   stationId | String| N | Station ID  |
+|   stationName | String| N | Station name  |
+|   displayNameKo | String| N | Billing unit display name (ko)  |
+|   displayNameEn | String| N | Billing unit display name (en)  |
+|   displayNameJa | String| N | Billing unit display name (ja)  |
+|   displayNameZh | String| N | Billing unit display name (zh)  |
+|   unitName | String| N | Unit name  |
+|   unit | Long| Y | Charging unit  |
+|   usageVolume | BigDecimal| Y | Usage  |
+|   unitPrice | BigDecimal| Y | Pay-as-you-go unit price  |
+|   contractUnitPrice | BigDecimal| Y | Commitment use discount  |
+|   chargeAmount | Long| Y | Usage amount (pay-as-you-go)  |
+|   contractAmount | Long| Y | Commitment-applied amount  |
+|   discountAmount | Long| Y | Commitment discount amount  |
+|   discountTypeCode | String| N | Discount type code<br>BASIC, CONTRACT, OCP |
+|   prePaidAmount | Long| Y | Prepayment-applied amount  |
+|   costPlanOrderId | String| N | Optimized Cost Plans (OCPs) order ID  |
+
+
+<a id="view-charge-filter-dimensions"></a>
+### List Charge Filter Dimension Values { #view-charge-filter-dimensions }
+
+> GET "/v1/billing/members/payment-statements/dimensions"
+
+This API retrieves a list of options for each search condition category (`dimension`) that can be used as a filter when querying usage charges.
+
+!!! danger "Caution"
+    * Only billing months after May 2020 can be queried.
+
+!!! tip "Note"
+    * Since the options are extracted from the same targets as [View Usage Charges by Billing Group, Organization, and Project](#view-charge-summaries-by-scope), you can use the values retrieved here directly as filters.
+    * The search condition category (`dimension`) has a hierarchy of payment group > billing group > organization > project. The parent search condition category (`parentDimension`) and the parent identifier and name of each option are returned together.
+
+
+<a id="view-charge-filter-dimensions-required-permissions"></a>
+#### Required Permission
+`Member.PaymentStatement.Get`
+
+<a id="view-charge-filter-dimensions-request-parameter"></a>
+#### Request Parameters
+
+| Category | Name | Type | Required | Description  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Query |dimension | String| Y | Search condition category for the query (single)<br><ul><li>PAYMENT_GROUP: Payment group</li><li>BILLING_GROUP: Billing group</li><li>ORG: Organization</li><li>PROJECT: Project</li></ul> |
+|  Query |month | String| Y | Billing month (yyyy-MM)<br>Supported from 2020-05 onwards |
+|  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple, up to 10) |
+|  Query |billingGroupIds | List&lt;String>| N | Billing group ID filter (multiple, up to 10) |
+|  Query |orgIds | List&lt;String>| N | Organization ID filter (multiple, up to 10) |
+|  Query |orgOwnerIds | List&lt;String>| N | Organization owner UUID filter (multiple, up to 10)<br>Returns only values where the organization owned by the specified UUID has usage charges in the billing month. |
+|  Query |cursor | String| N | Next page cursor<br>If not specified, retrieves the first page |
+|  Query |size | Integer| N | Number of displays per page (10–100)<br>Default 20 |
+
+<a id="view-charge-filter-dimensions-response-body"></a>
+#### Response Body
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "resultMessage"
+  },
+  "uuid": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
+  "dimension": "PROJECT",
+  "parentDimension": "ORG",
+  "values": [ {
+    "id": "KGDeiKUq",
+    "name": "Project name",
+    "ownerId": "4ea1d0b8-6bbd-4b3c-b1a9-9f4c6e6a1d2f",
+    "parentId": "eNWZ3jZq2FsMSHaQ",
+    "parentName": "Organization name"
+  } ],
+  "nextCursor": "S0dEZWlLVXE"
+}
+```
+
+##### Response
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ----------- | ------------ |
+|   header | [Common Response](#common-response)| Y   |
+|   uuid | String| Y | UUID of the member to retrieve  |
+|   dimension | String| Y | Filter category of the retrieved search condition<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
+|   parentDimension | String| N | Parent filter category<br>null if it is the top level (PAYMENT_GROUP) |
+|   values | List&lt;DimensionValue>| Y | List of filter options by filter category  |
+|   nextCursor | String| N | Next page cursor<br>null if it is the last page |
+
+##### DimensionValue
+
+| Name | Type | Required | Description |   
+|------------ | ------------- | ------------- | ------------ |
+|   id | String| Y | Identifier  |
+|   name | String| Y | Display name  |
+|   ownerId | String| N | Owner UUID<br>Owner of the affiliated organization if `dimension=ORG` or `dimension=PROJECT` |
+|   parentId | String| N | Identifier of the parent filter category<br>null if it is the top level (billing group) |
+|   parentName | String| N | Display name of the parent filter category<br>null if it is the top level (billing group) |
 
 
 <a id="get-project-integrated-appkey"></a>
@@ -3583,7 +3982,7 @@ API to get a list of project integrated AppKeys being used by the project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID to look up | 
+|  Path |project-id | String| Y | Project ID to look up | 
 
 
 <a id="get-project-integrated-appkey-response-body"></a>
@@ -3613,21 +4012,21 @@ API to get a list of project integrated AppKeys being used by the project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   authenticationList | List<ProjectAppKeyResponse>| No | Project integrated AppKey List |
+|   header | [Common response](#common-response)| Y |
+|   authenticationList | List<ProjectAppKeyResponse>| N | Project integrated AppKey List |
 
 ##### ProjectAppKeyResponse
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   authId | String| No | Internally managed authentication method ID  |
-|   appKey | String| No | Project integrated AppKey exposed to the console  |
-|   authStatus | String| No | Authentication status codes (STABLE, STOP, BLOCKED) |
-|   projectId | String| No | Project ID |
-|   lastUsedDatetime | Date| No | Date of last use  |
-|   modDatetime | Date| No | Date and time of deletion  |
-|   reIssueDatetime | Date| No | Regeneration time  |
-|   regDatetime | Date| No | Date and time of creation  |
+|   authId | String| N | Internally managed authentication method ID  |
+|   appKey | String| N | Project integrated AppKey exposed to the console  |
+|   authStatus | String| N | Authentication status codes (STABLE, STOP, BLOCKED) |
+|   projectId | String| N | Project ID |
+|   lastUsedDatetime | Date| N | Date of last use  |
+|   modDatetime | Date| N | Date and time of deletion  |
+|   reIssueDatetime | Date| N | Regeneration time  |
+|   regDatetime | Date| N | Date and time of creation  |
 
 <a id="listuser-access-key-ids"></a>
 ### ListUser Access Key IDs { #listuser-access-key-ids }
@@ -3674,26 +4073,26 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   authentications | List<UserAccessKeyResponse>| No | List credentials  |
+|   header | [Common response](#common-response)| Y   |
+|   authentications | List<UserAccessKeyResponse>| N | List credentials  |
 
 ##### UserAccessKeyResponse
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   authId | String| No | Internally managed authentication method ID  |
-|   userAccessKeyID | String| No | User Access Key ID  |
-|   secretAccessKey | String| No | Secret key (masked)  |
-|   authStatus | String| No | Authentication status codes (STABLE, STOP, BLOCKED) |
-|   uuid | String| No | User UUID |
-|   lastUsedDatetime | Date| No | Date of last use you authenticated with User Access Key ID  |
-|   modDatetime | Date| No | Date and time of deletion  |
-|   reIssueDatetime | Date| No | Regeneration time  |
-|   regDatetime | Date| No | Date and time of creation  |
-|   tokenExpiryPeriod | Long| No | Token expiration cycle (in seconds)  |
-|   tokenFormatCode | String | No | Token format code (OPAQUE, JWT)  |
-|   lastTokenUsedDatetime | Long| No | Last time you authenticated/authorized with a token              |
-|   validTokenCount | Long| No | Number of valid tokens                      |
+|   authId | String| N | Internally managed authentication method ID  |
+|   userAccessKeyID | String| N | User Access Key ID  |
+|   secretAccessKey | String| N | Secret key (masked)  |
+|   authStatus | String| N | Authentication status codes (STABLE, STOP, BLOCKED) |
+|   uuid | String| N | User UUID |
+|   lastUsedDatetime | Date| N | Date of last use you authenticated with User Access Key ID  |
+|   modDatetime | Date| N | Date and time of deletion  |
+|   reIssueDatetime | Date| N | Regeneration time  |
+|   regDatetime | Date| N | Date and time of creation  |
+|   tokenExpiryPeriod | Long| N | Token expiration cycle (in seconds)  |
+|   tokenFormatCode | String | N | Token format code (OPAQUE, JWT)  |
+|   lastTokenUsedDatetime | Long| N | Last time you authenticated/authorized with a token              |
+|   validTokenCount | Long| N | Number of valid tokens                      |
 
 
 <a id="register-a-integrated-project-appkey"></a>
@@ -3713,14 +4112,14 @@ API to generate an AppKey for use in your project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path | project-id | String| Yes | The project ID where you want to register the AppKey |
-| Request Body | request | AddProjectAppKeyRequest| Yes | Request |
+| Path | project-id | String| Y | The project ID where you want to register the AppKey |
+| Request Body | request | AddProjectAppKeyRequest| Y | Request |
 
 ##### AddProjectAppKeyRequest
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   appkeyAlias | String | Yes   | Project integrated AppKey aliases<br>100-character limit |
+|   appkeyAlias | String | Y   | Project integrated AppKey aliases<br>100-character limit |
 
 
 <a id="register-a-integrated-project-appkey-response-body"></a>
@@ -3744,16 +4143,16 @@ API to generate an AppKey for use in your project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   authentication | ResponseProtocol| No  |
+|   header | [Common response](#common-response)| Y   |
+|   authentication | ResponseProtocol| N  |
 
 ##### ResponseProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   authId | String| No | Internally managed authentication method ID  |
-|   appKey | String| No | Project integrated AppKey |
+|   authId | String| N | Internally managed authentication method ID  |
+|   appKey | String| N | Project integrated AppKey |
 
 <a id="register-a-user-access-key-id"></a>
 ### Register a User Access Key ID { #register-a-user-access-key-id }
@@ -3771,15 +4170,15 @@ Available to all members. No specific permissions required.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Request Body | PostUserAppKeyRequest | PostUserAppKeyRequest| Yes |  | |
+| Request Body | PostUserAppKeyRequest | PostUserAppKeyRequest| Y |  | |
 
 
 ##### PostUserAppKeyRequest
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   tokenFormatCode | String | No | Token format code<br>Supports OPAQUE and JWT formats. Currently, JWT format tokens are available only in the EasyQueue service.<br>Default value is OPAQUE |
-|   tokenExpiryPeriod | Long| No | Token expiry period<br>Specified in seconds. For OPAQUE format tokens, the default is one day; for JWT tokens, the default is one hour.<br>OPAQUE format tokens can be issued with a validity period of at least one minute and up to one day. JWT format tokens can be issued with a validity period of at least one minute and up to one hour. |
+|   tokenFormatCode | String | N | Token format code<br>Supports OPAQUE and JWT formats. Currently, JWT format tokens are available only in the EasyQueue service.<br>Default value is OPAQUE |
+|   tokenExpiryPeriod | Long| N | Token expiry period<br>Specified in seconds. For OPAQUE format tokens, the default is one day; for JWT tokens, the default is one hour.<br>OPAQUE format tokens can be issued with a validity period of at least one minute and up to one day. JWT format tokens can be issued with a validity period of at least one minute and up to one hour. |
 
 
 <a id="register-a-user-access-key-id-response-body"></a>
@@ -3806,19 +4205,20 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
-|   authentication | ResponseProtocol| No  |
+|   header | [Common response](#common-response)| Y   |
+|   authentication | ResponseProtocol| N  |
 
 ##### ResponseProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----- | ------------ |
-|   authId | String| No | Internally managed authentication method ID  |
-|   userAccessKeyID | String| No | User Access Key ID  |
-|   secretAccessKey | String| No | Secret key |
-|   tokenExpiryPeriod | Long| No | Token expiration period (in seconds) |
-|   tokenFormatCode | String | No | Token format code (OPAQUE, JWT) |
+|   authId | String| N | Internally managed authentication method ID  |
+|   userAccessKeyID | String| N | User Access Key ID  |
+|   secretAccessKey | String| N | Secret key |
+|   tokenExpiryPeriod | Long| N | Token expiration period (in seconds)
+
+|   tokenFormatCode | String | N | Token format code (OPAQUE, JWT) |
 
 
 <a id="delete-a-project-integrated-appkey"></a>
@@ -3839,8 +4239,8 @@ API to delete a project AppKey.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-| Path | project-id | String| Yes | Target project ID |
-|  Path |app-key | String| Yes | Project integrated AppKey to delete | 
+| Path | project-id | String| Y | Target project ID |
+|  Path |app-key | String| Y | Project integrated AppKey to delete | 
 
 
 <a id="delete-a-project-integrated-appkey-response-body"></a>
@@ -3859,7 +4259,7 @@ API to delete a project AppKey.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 
 <a id="reissue-the-user-access-key-id-secret-key"></a>
@@ -3879,15 +4279,15 @@ Can only reissue the secret key for the user's own User Access Key ID
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |user-access-key-id | String| Yes | User Access Key ID | 
-| Request Body | request | ReissueSecretKeyRequest| Yes | Request |
+|  Path |user-access-key-id | String| Y | User Access Key ID | 
+| Request Body | request | ReissueSecretKeyRequest| Y | Request |
 
 
 ##### ReissueSecretKeyRequest
 
 | Name | Type | Required | Description |   
 |------------ |---------|----|---------------------------------------------------|
-|   needExpireTokens | Boolean | No | Issued token expired or not(true: Expired, false: Not expired)<br>Default false |
+|   needExpireTokens | Boolean | N | Issued token expired or not(true: Expired, false: Not expired)<br>Default false |
 
 <a id="reissue-the-user-access-key-id-secret-key-response-body"></a>
 #### Response Body
@@ -3910,15 +4310,15 @@ Can only reissue the secret key for the user's own User Access Key ID
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | --------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   authentication | ResponseProtocol| No  |
+|   header | [Common response](#common-response)| Y |
+|   authentication | ResponseProtocol| N  |
 
 ##### ResponseProtocol
 
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   secretAccessKey | String| Yes   | Secret key |
+|   secretAccessKey | String| Y   | Secret key |
 
 <a id="modify-user-access-key-id-status"></a>
 ### Modify User Access Key ID status { #modify-user-access-key-id-status }
@@ -3938,15 +4338,15 @@ Can only modify the user's own User Access Key ID
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | user-access-key-id | String| Yes | User Acess Key ID | 
-| Request Body | request | UpdateUserAccessKeyStatusRequest| Yes | Request |
+|  Path | user-access-key-id | String| Y | User Access Key ID | 
+| Request Body | request | UpdateUserAccessKeyStatusRequest| Y | Request |
 
 
 ##### UpdateUserAccessKeyStatusRequest
 
 | Name | Type | Required | Description |   
 |----------- | ------------- | ------------- | ------------ |
-| status | String| Yes | State to change (STOP: Stop, STABLE: Enable) |
+| status | String| Y | State to change (STOP: Stop, STABLE: Enable) |
 
 
 <a id="modify-user-access-key-id-status-response-body"></a>
@@ -3966,7 +4366,7 @@ Can only modify the user's own User Access Key ID
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 <a id="delete-a-user-access-key-id"></a>
 ### Delete a User Access Key ID { #delete-a-user-access-key-id }
@@ -3984,7 +4384,7 @@ Can only delete the user's own User Access Key ID
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path | user-access-key-id | String| Yes | User Access Key ID | 
+|  Path | user-access-key-id | String| Y | User Access Key ID | 
 
 
 <a id="delete-a-user-access-key-id-response-body"></a>
@@ -4005,7 +4405,7 @@ Can only delete the user's own User Access Key ID
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
+|   header | [Common response](#common-response)| Y |
 
 
 <a id="get-a-list-of-tokens"></a>
@@ -4024,14 +4424,14 @@ Only tokens issued with your own User Access Key ID can be viewed
 
 | In | Name | Type | Required  | Description                                                                           | 
 |------------- |------------- | ------------- |-----|------------------------------------------------------------------------------| 
-|  Path | user-access-key-id | String| Yes | User Access Key ID                                                           | 
-|  Query | token | String| No  | Token body<br>Partial search not supported                                                        | 
-|  Query | status | String| No  | Token status<br>ACTIVE: Active, EXPIRED: Expired                                             | 
-|  Query | lastAccessDatetimeFrom | Date| No  | Date of last token use<br>Get  tokens used at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z` | 
-|  Query | expireDatetimeFrom | Date| No  | Token expiration date<br>Get  tokens expired at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   | 
-|  Query | regDatetimeFrom | Date| No  | Token registration date<br>Get  tokens created at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   |
-|  Query | page | Integer| No  | Target page<br>Default 1                                                                |
-|  Query | limit | Integer| No  | Items per page<br>Default 20                                                            |
+|  Path | user-access-key-id | String| Y | User Access Key ID                                                           | 
+|  Query | token | String| N  | Token body<br>Partial search not supported                                                        | 
+|  Query | status | String| N  | Token status<br>ACTIVE: Active, EXPIRED: Expired                                             | 
+|  Query | lastAccessDatetimeFrom | Date| N  | Date of last token use<br>Get  tokens used at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z` | 
+|  Query | expireDatetimeFrom | Date| N  | Token expiration date<br>Get  tokens expired at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   | 
+|  Query | regDatetimeFrom | Date| N  | Token registration date<br>Get  tokens created at a time greater than or equal to the specified time<br>Example: `2025-02-11T00:56:50.902Z`   |
+|  Query | page | Integer| N  | Target page<br>Default 1                                                                |
+|  Query | limit | Integer| N  | Items per page<br>Default 20                                                            |
 
 
 
@@ -4064,14 +4464,14 @@ Only tokens issued with your own User Access Key ID can be viewed
 
 | Name | Type           | Required  | Description                 |   
 |------------ |--------------|-----|--------------------|
-|   header | [Common response](#common-response) | Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   accessToken | String       | Yes | Masked token         |
-|   expireDatetime | Date         | No  | Token expiration date             |
-|   lastAccessDatetime | Date         | Yes | Last time you authenticated/authorized with a token |
-|   regDatetime | Date         | Yes | Token creation date           |
-|   status | String       | Yes | Token status              |
-|   tokenId | Long         | Yes | Token ID              |
+|   header | [Common response](#common-response) | Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   accessToken | String       | Y | Masked token         |
+|   expireDatetime | Date         | N  | Token expiration date             |
+|   lastAccessDatetime | Date         | Y | Last time you authenticated/authorized with a token |
+|   regDatetime | Date         | Y | Token creation date           |
+|   status | String       | Y | Token status              |
+|   tokenId | Long         | Y | Token ID              |
 
 
 <a id="expire-multiple-tokens"></a>
@@ -4093,9 +4493,9 @@ Only tokens issued with your own User Access Key ID can expire
 
 | In           | Name                 | Type              | Required  | Description                 | 
 |--------------|--------------------|-----------------|-----|--------------------| 
-| Path         | user-access-key-id | String          | Yes | User Access Key ID | 
-| Request Body | tokenIds           | List<Long>   | No  | List of token IDs           | 
-| Request Body         | tokens             | List<String> | No   | List of tokens          | 
+| Path         | user-access-key-id | String          | Y | User Access Key ID | 
+| Request Body | tokenIds           | List<Long>   | N  | List of token IDs           | 
+| Request Body         | tokens             | List<String> | N   | List of tokens          | 
 
 <a id="expire-multiple-tokens-response-body"></a>
 #### Response Body
@@ -4115,7 +4515,7 @@ Only tokens issued with your own User Access Key ID can expire
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
+|   header | [Common response](#common-response)| Y |
 
 
 <a id="create-a-project-iam-account"></a>
@@ -4136,8 +4536,8 @@ API to add an IAM account as a project member.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | The project ID to which you want to add the member | 
-| Request Body | request | AddIamProjectMemberRequest| Yes | Request |
+|  Path |project-id | String| Y | The project ID to which you want to add the member | 
+| Request Body | request | AddIamProjectMemberRequest| Y | Request |
 
 
 
@@ -4151,8 +4551,8 @@ API to add an IAM account as a project member.
 
 | Name | Type | Required | Description |  
 |------------ | ------------- | ------------- | ------------ |
-|   assignRoles | List<UserAssignRoleProtocol>| Yes | List of roles to assign to users  |
-|   memberUuid | String| Yes | UUID of the member to add  |
+|   assignRoles | List<UserAssignRoleProtocol>| Y | List of roles to assign to users  |
+|   memberUuid | String| Y | UUID of the member to add  |
 
 
 ##### UserAssignRoleProtocol
@@ -4160,8 +4560,8 @@ API to add an IAM account as a project member.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   roleId | String| Yes | Role ID  |
-|   conditions | List<AssignAttributeConditionProtocol>| No | Role condition attribute  |
+|   roleId | String| Y | Role ID  |
+|   conditions | List<AssignAttributeConditionProtocol>| N | Role condition attribute  |
 
 
 ##### AssignAttributeConditionProtocol
@@ -4169,9 +4569,9 @@ API to add an IAM account as a project member.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   attributeId | String| Yes | Condition attribute ID  |
-|   attributeOperatorTypeCode | String| Yes | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
-|   attributeValues | List<String>| Yes | Condition attribute value  |
+|   attributeId | String| Y | Condition attribute ID  |
+|   attributeOperatorTypeCode | String| Y | Condition attribute operator<br>Available operators vary depending on the conditional attribute data type<br><ul><li>ALLOW</li><li>ALL_CONTAINS</li><li>ANY_CONTAINS</li><li>ANY_MATCH</li><li>BETWEEN</li><li>BEYOND</li><li>FALSE</li><li>GREATER_THAN</li><li>GREATER_THAN_OR_EQUAL_TO</li><li>LESS_THAN</li><li>LESS_THAN_OR_EQUAL_TO</li><li>NONE_MATCH</li><li>NOT_ALLOW</li><li>NOT_CONTAINS</li><li>TRUE</li></ul>  |
+|   attributeValues | List<String>| Y | Condition attribute value  |
 
 
 <a id="create-a-project-iam-account-response-body"></a>
@@ -4192,7 +4592,7 @@ API to add an IAM account as a project member.
 
 | Name | Type           | Required | Description |   
 |------------ |--------------| ------- | ------------ |
-|   header | [Common response](#common-response) | Yes |
+|   header | [Common response](#common-response) | Y |
 
 
 <a id="delete-multiple-project-iam-accounts"></a>
@@ -4213,8 +4613,8 @@ API to delete IAM accounts from a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID | 
-|  Request Body |request | DeleteMembersRequest | Yes | Request | 
+|  Path |project-id | String| Y | Project ID | 
+|  Request Body |request | DeleteMembersRequest | Y | Request | 
 
 
 ##### DeleteMembersRequest
@@ -4222,7 +4622,7 @@ API to delete IAM accounts from a project.
 
 | Name | Type | Required | Description |  
 |------------ | ------------- | ------------- | ------------ |
-|   memberUuids | List<String>| Yes | List of UUIDs of the target accounts to delete |
+|   memberUuids | List<String>| Y | List of UUIDs of the target accounts to delete |
 
 
 <a id="delete-multiple-project-iam-accounts-response-body"></a>
@@ -4243,7 +4643,7 @@ API to delete IAM accounts from a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
+|   header | [Common response](#common-response)| Y |
 
 
 <a id="view-a-project-iam-account"></a>
@@ -4264,8 +4664,8 @@ API to get a specific IAM account who is part of a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID to look up members |
-|  Path |member-uuid | String| Yes | Member UUID to look up |
+|  Path |project-id | String| Y | Project ID to look up members |
+|  Path |member-uuid | String| Y | Member UUID to look up |
 
 
 
@@ -4314,8 +4714,8 @@ API to get a specific IAM account who is part of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   projectMember | ProjectIamMemberRoleBundleProtocol| Yes  | Added member information, not included on error |
+|   header | [Common response](#common-response)| Y |
+|   projectMember | ProjectIamMemberRoleBundleProtocol| Y  | Added member information, not included on error |
 
 
 ##### ProjectMemberRoleBundleProtocol
@@ -4323,17 +4723,17 @@ API to get a specific IAM account who is part of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   uuid | String| Yes | Member UUID  |
-|   id | String| Yes | ID  |
-|   name | String| No | Name  |
-|   emailAddress | String| No | Member email address  |
-|   maskingEmail | String| No | Member's masked email  |
-|   mobilePhone | String| No | Phone number  |
-|   relationDateTime | Date| No | Time to add members  |
-|   joinYmdt | Date| No | Date to joined  |
-|   recentLoginYmdt | Date| No | Date of last login  |
-|   recentPasswordModifyYmdt | Date| No | Date of last password change  |
-|   roles | List<RoleBundleProtocol>| No | List of related roles (with condition attributes)  |
+|   uuid | String| Y | Member UUID  |
+|   id | String| Y | ID  |
+|   name | String| N | Name  |
+|   emailAddress | String| N | Member email address  |
+|   maskingEmail | String| N | Member's masked email  |
+|   mobilePhone | String| N | Phone number  |
+|   relationDateTime | Date| N | Time to add members  |
+|   joinYmdt | Date| N | Date to joined  |
+|   recentLoginYmdt | Date| N | Date of last login  |
+|   recentPasswordModifyYmdt | Date| N | Date of last password change  |
+|   roles | List<RoleBundleProtocol>| N | List of related roles (with condition attributes)  |
 
 
 [RoleBundleProtocol](#rolebundleprotocol)
@@ -4357,9 +4757,9 @@ API to get a list of IAM accounts who are part of a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID to look up | 
-|  Query |limit | Integer| No | Number of displays per page, default 20 |
-|  Query |page | Integer| No | Target Page, default 1 |
+|  Path |project-id | String| Y | Project ID to look up | 
+|  Query |limit | Integer| N | Number of displays per page, default 20 |
+|  Query |page | Integer| N | Target Page, default 1 |
 
 
 
@@ -4396,9 +4796,9 @@ API to get a list of IAM accounts who are part of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   projectMembers | List<IamProjectMemberProtocol>| Yes | Project member list  |
+|   header | [Common response](#common-response)| Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   projectMembers | List<IamProjectMemberProtocol>| Y | Project member list  |
 
 
 
@@ -4407,16 +4807,16 @@ API to get a list of IAM accounts who are part of a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   uuid | String| Yes | Member UUID  |
-|   id | String| Yes | ID  |
-|   name | String| No | Name  |
-|   emailAddress | String| No | Member email address  |
-|   maskingEmail | String| No | Member's masked email  |
-|   mobilePhone | String| No | Phone number  |
-|   relationDateTime | Date| No | Time to add members  |
-|   joinYmdt | Date| No | Date to joined  |
-|   recentLoginYmdt | Date| No | Date of last login  |
-|   recentPasswordModifyYmdt | Date| No | Date of last password change  |
+|   uuid | String| Y | Member UUID  |
+|   id | String| Y | ID  |
+|   name | String| N | Name  |
+|   emailAddress | String| N | Member email address  |
+|   maskingEmail | String| N | Member's masked email  |
+|   mobilePhone | String| N | Phone number  |
+|   relationDateTime | Date| N | Time to add members  |
+|   joinYmdt | Date| N | Date to joined  |
+|   recentLoginYmdt | Date| N | Date of last login  |
+|   recentPasswordModifyYmdt | Date| N | Date of last password change  |
 
 
 <a id="modify-project-iam-account-roles"></a>
@@ -4435,9 +4835,9 @@ API to change the role of a specified IAM account in a project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |project-id | String| Yes | Project ID | 
-|  Path |member-uuid | String| Yes | Member UUID to change role to | 
-| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Yes | Request |
+|  Path |project-id | String| Y | Project ID | 
+|  Path |member-uuid | String| Y | Member UUID to change role to | 
+| Request Body | request | [UpdateMemberRoleRequest](#updatememberrolerequest)| Y | Request |
 
 
 
@@ -4459,7 +4859,7 @@ API to change the role of a specified IAM account in a project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
-|   header | [Common response](#common-response)| Yes   |
+|   header | [Common response](#common-response)| Y   |
 
 
 <a id="view-all-credentials-of-members-under-organizations"></a>
@@ -4480,8 +4880,8 @@ API to get the credentials of members in the organization or project.
 
 | In | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Path |org-id | String| Yes | Organization ID to look up the UserAccessKey for |
-|  Query |paging | Paging| No | Number of displays per page, default 20 |
+|  Path |org-id | String| Y | Organization ID to look up the UserAccessKey for |
+|  Query |paging | Paging| N | Number of displays per page, default 20 |
 
 
 
@@ -4526,27 +4926,27 @@ API to get the credentials of members in the organization or project.
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------- | ------------ |
-|   header | [Common response](#common-response)| Yes |
-|   paging | [PagingResponse](#pagingresponse)| Yes  |
-|   authenticationList | List<UserAccessKeyResponseV7>| Yes  | Member-specific authentication key information |
+|   header | [Common response](#common-response)| Y |
+|   paging | [PagingResponse](#pagingresponse)| Y  |
+|   authenticationList | List<UserAccessKeyResponseV7>| Y  | Member-specific authentication key information |
 
 
 ##### UserAccessKeyResponseV7
 
 | Name | Type | Required | Description |
 |------------|--------|------|-----------------------------|
-| authId | String | Yes | Authentication Method ID (masked) |
-| uuid | String | Yes | User UUID |
-| userAccessKeyID | String | Yes | User Access Key ID (masked) |
-| secretAccessKey | String | No | Secret key (whitespace) |
-| authStatusCode | String | Yes | Authentication status codes (STABLE, STOP, BLOCKED) |
-| tokenExpiryPeriod | Long | No | Token expiration cycle |
-| regDatetime | Date | No | Date and time of creation |
-| modDatetime | Date | No | Date and time of deletion |
-| lastUsedDatetime | Date | No | Date of last use |
-| reIssueDatetime | Date | No | secretAccessKey regeneration timeout |
-| lastTokenUsedDatetime | Date | No | Date of last token use |
-| validTokenCount | Long | No | Number of valid tokens |
+| authId | String | Y | Authentication Method ID (masked) |
+| uuid | String | Y | User UUID |
+| userAccessKeyID | String | Y | User Access Key ID (masked) |
+| secretAccessKey | String | N | Secret key (whitespace) |
+| authStatusCode | String | Y | Authentication status codes (STABLE, STOP, BLOCKED) |
+| tokenExpiryPeriod | Long | N | Token expiration cycle |
+| regDatetime | Date | N | Date and time of creation |
+| modDatetime | Date | N | Date and time of deletion |
+| lastUsedDatetime | Date | N | Date of last use |
+| reIssueDatetime | Date | N | secretAccessKey regeneration timeout |
+| lastTokenUsedDatetime | Date | N | Date of last token use |
+| validTokenCount | Long | N | Number of valid tokens |
 
 <a id="view-your-own-organization-list"></a>
 ### View your Own Organization List { #view-your-own-organization-list }
@@ -4561,10 +4961,10 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| orgName | String | No | Organization name |
-| orgNameMatchTypeCode | String | No | Search type for organization name (EXACT: exact match, LIKE: partial match, default: LIKE) |
-| page | Integer | No | Target page, default: 1 |
-| limit | Integer | No | No. of views per page, default: 20 |
+| orgName | String | N | Organization name |
+| orgNameMatchTypeCode | String | N | Search type for organization name (EXACT: exact match, LIKE: partial match, default: LIKE) |
+| page | Integer | N | Target page, default: 1 |
+| limit | Integer | N | No. of views per page, default: 20 |
 
 **[Response Body]**
 ```json
@@ -4616,54 +5016,54 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [Common response](#common-response) | Yes | |
-| orgList | List&lt;OrgMemberRelationProtocol> | Yes | Organization lilst info |
-| paging | [PagingResponse](#pagingresponse) | Yes | Paging info |
+| header | [Common response](#common-response) | Y | |
+| orgList | List&lt;OrgMemberRelationProtocol> | Y | Organization lilst info |
+| paging | [PagingResponse](#pagingresponse) | Y | Paging info |
 
 ##### OrgMemberRelationProtocol
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| org | OrgProtocol | Yes | Organization info |
-| orgMember | OrgMemberProtocol | Yes | Organization/project member info |
-| orgOwner | OwnerProtocol | Yes | Organization Owner info |
+| org | OrgProtocol | Y | Organization info |
+| orgMember | OrgMemberProtocol | Y | Organization/project member info |
+| orgOwner | OwnerProtocol | Y | Organization Owner info |
 
 ##### OrgProtocol
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| orgId | String | Yes | Organization ID |
-| orgName | String | Yes | Organization name |
-| orgStatusCode | String | Yes | Organization status code (STABLE, CLOSED) |
-| ownerUuid | String | Yes | Organization Owner UUID |
-| regDateTime | Date | Yes | Organization created on |
-| remainingJobCode | String | Yes | Organization follow-up actions (NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
-| ipAclTypeCode | String | Yes | Type code for organization IP ACL (COMMON, INDIVIDUAL) |
-| orgDomainList | List&lt;OrgDomainProtocol> | Yes | Organization domain list |
+| orgId | String | Y | Organization ID |
+| orgName | String | Y | Organization name |
+| orgStatusCode | String | Y | Organization status code (STABLE, CLOSED) |
+| ownerUuid | String | Y | Organization Owner UUID |
+| regDateTime | Date | Y | Organization created on |
+| remainingJobCode | String | Y | Organization follow-up actions (NONE, IAM_ORG_CREATE, IAM_ORG_UPDATE, IAM_ORG_DELETE) |
+| ipAclTypeCode | String | Y | Type code for organization IP ACL (COMMON, INDIVIDUAL) |
+| orgDomainList | List&lt;OrgDomainProtocol> | Y | Organization domain list |
 
 ##### OrgMemberProtocol
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| existOrgMember | Boolean | Yes | Organization member exists |
-| orgOwner | Boolean | Yes | Organization Owner |
+| existOrgMember | Boolean | Y | Organization member exists |
+| orgOwner | Boolean | Y | Organization Owner |
 
 ##### OwnerProtocol
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| email | String | Yes | Organization Owner email |
-| name | String | Yes | Organization Owner name |
-| restrictStatusCode | String | Yes | Organization Owner restriction status (HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
-| country | String | Yes | Organization Owner country code |
-| restrictTypes | List&lt;String> | Yes | Organization Owner restriction list |
+| email | String | Y | Organization Owner email |
+| name | String | Y | Organization Owner name |
+| restrictStatusCode | String | Y | Organization Owner restriction status (HOLD, MEMBER_BLOCKED, RESOURCE_BLOCKED, RESOURCE_DELETED, STABLE, UNPAID) |
+| country | String | Y | Organization Owner country code |
+| restrictTypes | List&lt;String> | Y | Organization Owner restriction list |
 
 ##### OrgDomainProtocol
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| domainId | String | Yes | Organization domain ID |
-| domainName | String | Yes | Organization domain name |
+| domainId | String | Y | Organization domain ID |
+| domainName | String | Y | Organization domain name |
 
 
 <a id="add-your-own-organization"></a>
@@ -4682,13 +5082,13 @@ Available to all members. No specific permissions required.
 
 | Category | Name | Type | Required | Description |
 |------------- |------------- | ------------- | ------------- | ------------- |
-| Request Body | request | [CreateOrgRequest](#createorgrequest)| Yes | Request |
+| Request Body | request | [CreateOrgRequest](#createorgrequest)| Y | Request |
 
 ##### CreateOrgRequest
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| orgName | String | Yes | Organization name to create (up to 70 characters) |
+| orgName | String | Y | Organization name to create (up to 70 characters) |
 
 
 <a id="add-your-own-organization-response-body"></a>
@@ -4717,19 +5117,19 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [Common response](#common-response) | Yes | |
-| orgId | String | Yes | Organization ID |
-| orgName | String | Yes | Organization name |
-| owner | [Owner](#owner) | Yes | Organization Owner info |
+| header | [Common response](#common-response) | Y | |
+| orgId | String | Y | Organization ID |
+| orgName | String | Y | Organization name |
+| owner | [Owner](#owner) | Y | Organization Owner info |
 
 ##### Owner
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| email | String | Yes | Organization Owner email |
-| name | String | Yes | Organization Owner name |
-| ownerId | String | Yes | Organization Owner ID |
-| restrictTypes | List&lt;String> | Yes | List for restriction targets |
+| email | String | Y | Organization Owner email |
+| name | String | Y | Organization Owner name |
+| ownerId | String | Y | Organization Owner ID |
+| restrictTypes | List&lt;String> | Y | List for restriction targets |
 
 
 <a id="delete-a-single-organization"></a>
@@ -4748,7 +5148,7 @@ An API to delete your own organization.
 
 | Category | Name | Type | Required | Description |
 |------------- |------------- | ------------- | ------------- | ------------- |
-| Path |org-id | String | Yes | Organization ID |
+| Path |org-id | String | Y | Organization ID |
 
 <a id="delete-a-single-organization-response-body"></a>
 #### Response Body
@@ -4767,7 +5167,7 @@ An API to delete your own organization.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [Common Response](#common-response) | Yes | |
+| header | [Common Response](#common-response) | Y | |
 
 <a id="retrieve-service-information-list"></a>
 ### Retrieve Service Information List { #retrieve-service-information-list }
@@ -4785,12 +5185,12 @@ Available to all members. No specific permissions required.
 
 | Category | Name | Type | Required | Description |
 |---|---|---|---|---|
-| Query | productId | String | No | Service ID |
-| Query | productCategoryCode | String | No | Service Category Code (PROJECT, ORG, MARKET_PLACE) |
-| Query | productName | String | No | Service Name |
-| Query | productNameLike | String | No | Service Name Like Search |
-| Query | limit | Integer | No | Number of items displayed per page, default 20 |
-| Query | page | Integer | No | Target page, default 1 |
+| Query | productId | String | N | Service ID |
+| Query | productCategoryCode | String | N | Service Category Code (PROJECT, ORG, MARKET_PLACE) |
+| Query | productName | String | N | Service Name |
+| Query | productNameLike | String | N | Service Name Like Search |
+| Query | limit | Integer | N | Number of items displayed per page, default 20 |
+| Query | page | Integer | N | Target page, default 1 |
 
 <a id="retrieve-service-information-list-response-body"></a>
 #### Response body
@@ -4822,18 +5222,18 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [common response](#common-response) | Yes | |
-| paging | [PagingResponse](#pagingresponse) | Yes | |
-| products | List<Product> | Yes | Service Information List |
+| header | [common response](#common-response) | Y | |
+| paging | [PagingResponse](#pagingresponse) | Y | |
+| products | List<Product> | Y | Service Information List |
 
 ##### Product
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| parentProductId | String | No | Parent Service ID |
-| productCategoryCode | String | Yes | Service Category Code (PROJECT, ORG, MARKET_PLACE) |
-| productId | String | Yes | Service ID |
-| productName | String | Yes | Service Name |
+| parentProductId | String | N | Parent Service ID |
+| productCategoryCode | String | Y | Service Category Code (PROJECT, ORG, MARKET_PLACE) |
+| productId | String | Y | Service ID |
+| productName | String | Y | Service Name |
 
 <a id="view-role-descriptions-by-multiple-language"></a>
 ### View Role Descriptions by Multiple Language { #view-role-descriptions-by-multiple-language }
@@ -4851,12 +5251,12 @@ Available to all members. No specific permissions required.
 
 | Category | Name | Type | Required | Description |
 |------------- |------------- | ------------- | ------------- | ------------- |
-| Query |messageType | String| No | Message Type<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
-| Query |languages | List&lt;String>| No | Language<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
-| Query |keyword | String| No | Search keyword |
-| Query |messageId | String| No | Message ID |
-| Query |limit | Integer| Yes | Number of displays per page |
-| Query |page | Integer| Yes | Target page |
+| Query |messageType | String| N | Message Type<br><ul><li>MESSAGE</li><li>ERROR</li></ul> |
+| Query |languages | List&lt;String>| N | Language<br><ul><li>KO_KR</li><li>JA_JP</li><li>EN_US</li><li>ZH_CN</li></ul> |
+| Query |keyword | String| N | Search keyword |
+| Query |messageId | String| N | Message ID |
+| Query |limit | Integer| Y | Number of displays per page |
+| Query |page | Integer| Y | Target page |
 
 
 <a id="view-role-descriptions-by-multiple-language-response-body"></a>
@@ -4895,23 +5295,23 @@ Available to all members. No specific permissions required.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| header | [Common Response](#common-response) | Yes | |
-| messages | List<MessageProtocol> | Yes | Message list |
-| paging | [PagingResponse](#pagingresponse)| Yes | |
+| header | [Common Response](#common-response) | Y | |
+| messages | List<MessageProtocol> | Y | Message list |
+| paging | [PagingResponse](#pagingresponse)| Y | |
 
 ##### MessageProtocol
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| i18nMessageSeq | Long | No | Message sequence |
-| categoryId | String | No | Category ID |
-| messageId | String | No | Message ID |
-| messageType | String | No | Message type (MESSAGE, ERROR) |
-| description | String | No | Description |
-| koKr | String | No | Korean message |
-| enUs | String | No | English message |
-| jaJp | String | No | Japanese message |
-| zhCn | String | No | Chinese message |
+| i18nMessageSeq | Long | N | Message sequence |
+| categoryId | String | N | Category ID |
+| messageId | String | N | Message ID |
+| messageType | String | N | Message type (MESSAGE, ERROR) |
+| description | String | N | Description |
+| koKr | String | N | Korean message |
+| enUs | String | N | English message |
+| jaJp | String | N | Japanese message |
+| zhCn | String | N | Chinese message |
 
 
 <a id="error-code"></a>
