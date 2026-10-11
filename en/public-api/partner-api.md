@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=a874d1711b7d -->
 
 # Partner Management API Guide
@@ -797,13 +799,13 @@ This API does not require a request body.
 | displayNameZh | String | Billing unit display name (zh) |
 | usage | Double | Usage |
 | unit | Long | Charging unit |
-| unitPrice | Double | Price per unit |
+| unitPrice | BigDecimal | Price per unit |
 | unitName | String | Unit name |
 | price | Long | Usage amount |
 | useFixPrice | Boolean | Fixed price |
 | displayOrder | Long | Display order |
 | contractId | String | Agreement ID |
-| contractUnitPrice | Double | Commitment unit price |
+| contractUnitPrice | BigDecimal | Commitment unit price |
 | contractPrice | Long | Usage amount calculated by commitment |
 | discountPrice | Long | Discount amount |
 | discountTypeCode | String | Discount type code<br>BASIC, CONTRACT, OCP |
