@@ -473,6 +473,8 @@ You can manage members separately in projects and organizations.
 | RDS for PostgreSQL | VIEWER | Read for RDS for PostgreSQL Service |
 | RDS for MariaDB | ADMIN | Create, Read, Update, Delete for RDS for MariaDB Service |
 | RDS for MariaDB | VIEWER | Read for RDS for MariaDB Service |
+| Database Migration Service | ADMIN | Create/Read/Update/Delete in Database Migration Service |
+| Database Migration Service | VIEWER | Read in Database Migration Service |
 | RDS for MS-SQL | ADMIN | Create, Read, Update, Delete for RDS for MS-SQL Service |
 | EasyCache | ADMIN | Create, Read, Update, Delete for EasyCache Service |
 | EasyCache | VIEWER | Read for EasyCache Service Replication Group menu, Read for Monitoring menu |
