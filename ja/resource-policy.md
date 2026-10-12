@@ -1,4 +1,6 @@
-<!-- pre-align:aligned sig=9516cb1f41d0 -->
+<!-- machine_translated: true -->
+
+<!-- pre-align:aligned sig=2f2a99c36dae -->
 
 <a id="nhn-cloud-nhn-cloud-resource-provision-policy"></a>
 ## NHN Cloud > リソース提供ポリシー { #nhn-cloud-nhn-cloud-resource-provision-policy }
@@ -339,6 +341,15 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | DB Instance データストレージ| DB Instanceごと | 2,048GB | O | |
 | DB Instance データストレージ | プロジェクトごと  | 10,240GB | O | | 
 
+<a id="database-migration-service-resource-provision-policy"></a>
+### Database Migration Service サービスリソース提供ポリシー { #database-migration-service-resource-provision-policy }
+リソース使用量はプロジェクトごとに計算されます。
+
+|リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
+|----|----|----|----|----|
+| マイグレーションインスタンスCPU | プロジェクトあたり | 100vCore | X | |
+| マイグレーションインスタンスメモリ | プロジェクトあたり | 262,144MB | X | |
+| マイグレーションインスタンスData Storage | プロジェクトあたり | 10,240GB | X | |
 
 <a id="resource-provision-policy-for-network-firewall"></a>
 ### Network Firewallサービスリソース提供ポリシー { #resource-provision-policy-for-network-firewall }
@@ -399,6 +410,7 @@ KakaoTalk BizmessageサービスとNotification Hubサービスのお知らせ�
 
 <a id="resource-provision-policy-for-face-recognition-service"></a>
 ### Face Recognitionサービスリソース提供ポリシー { #resource-provision-policy-for-face-recognition-service }
+
 | リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
 |----|----|----|----|----|
 | グループ数 |  Face Recognitionサービスごと | 5件 | O | |
