@@ -471,6 +471,8 @@ NHN Cloud運営者が障害対応など運営上の目的で顧客のリソー�
 | RDS for PostgreSQL | VIEWER | RDS for PostgreSQLサービスに対するRead(読み取り) |
 | RDS for MariaDB | ADMIN | RDS for MariaDBサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | RDS for MariaDB | VIEWER | RDS for MariaDBサービスに対するRead(読み取り) |
+| Database Migration Service | ADMIN | Database Migration ServiceサービスのCreate(作成)、Read(読み取り)、Update(更新)、Delete(削除) |
+| Database Migration Service | VIEWER | Database Migration ServiceサービスのRead(読み取り) |
 | RDS for MS-SQL | ADMIN | RDS for MS-SQLサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | EasyCache | ADMIN | EasyCacheサービスに対するCreate(作成), Read(読み取り), Update(更新), Delete(削除) |
 | EasyCache | VIEWER | EasyCacheサービスレプリケーショングループメニューRead(読込)、モニタリングメニューRead(読込) |
