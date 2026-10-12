@@ -1,4 +1,4 @@
-<!-- pre-align:aligned sig=9516cb1f41d0 -->
+<!-- pre-align:aligned sig=2f2a99c36dae -->
 
 <a id="nhn-cloud-nhn-cloud-resource-provision-policy"></a>
 ## NHN Cloud > 리소스 제공 정책 { #nhn-cloud-nhn-cloud-resource-provision-policy }
@@ -323,7 +323,8 @@ Network Interface 콘솔에는 사용자 프로젝트 외 리소스도 함께 �
 | DB 인스턴스 Data Storage | DB 인스턴스당 | 2,048GB | O | | 
 | DB 인스턴스 Data Storage | 프로젝트당 | 10,240GB | O | |
 
-### Database Migration Service 서비스 리소스 제공 정책
+<a id="database-migration-service-resource-provision-policy"></a>
+### Database Migration Service 서비스 리소스 제공 정책 { #database-migration-service-resource-provision-policy }
 리소스 사용량은 프로젝트별로 계산됩니다.
 
 |리소스 | 제공 기준 | 기본 제공량 | 조정 가능 여부 | 최대 제공량 |

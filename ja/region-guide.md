@@ -81,6 +81,7 @@ NHN Cloudは、グローバルなサービスを提供するために、多く�
 |  | RDS for PostgreSQL  | リージョン | O | O |  |  |   
 |  | RDS for MariaDB | リージョン | O |  |  |   | 
 |  | RDS for MS-SQL | リージョン | O |  |  |   |
+|  | Database Migration Service | グローバル |  |  |  |  |
 |  | EasyCache | リージョン | O | O |  |   |
 |  | MS-SQL Instance | リージョン | O | O | O | O | 
 |  | MySQL Instance | リージョン | O | O | O | O |
