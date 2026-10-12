@@ -1,5 +1,3 @@
-<!-- machine_translated: true -->
-
 <!-- pre-align:aligned sig=a874d1711b7d -->
 
 # パートナー管理APIガイド
@@ -798,13 +796,13 @@ GET /v1/billing/partners/{partnerId}/payments/{month}/projects/{projectId}/usage
 | displayNameZh | String | 課金単位の表示名 (zh) |
 | usage | Double | 使用量 |
 | unit | Long | 課金単位 |
-| unitPrice | BigDecimal | 単位あたりの価格 |
+| unitPrice | Double | 単位あたりの価格 |
 | unitName | String | 単位名 |
 | price | Long | 利用金額 |
 | useFixPrice | Boolean | 固定金額の有無 |
 | displayOrder | Long | 表示順序 |
 | contractId | String | 約定ID |
-| contractUnitPrice | BigDecimal | 約定単価 |
+| contractUnitPrice | Double | 約定単価 |
 | contractPrice | Long | 約定で計算された利用金額 |
 | discountPrice | Long | 割引金額 |
 | discountTypeCode | String | 割引タイプコード<br>BASIC、CONTRACT、OCP |
