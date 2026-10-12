@@ -1,4 +1,6 @@
-<!-- pre-align:aligned sig=9516cb1f41d0 -->
+<!-- machine_translated: true -->
+
+<!-- pre-align:aligned sig=2f2a99c36dae -->
 
 <a id="nhn-cloud-nhn-cloud-resource-provision-policy"></a>
 ## NHN Cloud > NHN Cloud Resource Provision Policy { #nhn-cloud-nhn-cloud-resource-provision-policy }
@@ -335,6 +337,15 @@ Resource usage is calculated for each project.
 | DB Instance Data Storage | Per DB Instance | 2,048GB | O | |
 | DB Instance Data Storage | Per project  | 10,240GB | O | | 
 
+<a id="database-migration-service-resource-provision-policy"></a>
+### Database Migration Service Resource Provision Policy { #database-migration-service-resource-provision-policy }
+Resource usage is calculated per project.
+
+| Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
+|---|---|---|---|---|
+| Migration instance CPU | Per project | 100 vCore | X | |
+| Migration instance Memory | Per project | 262,144 MB | X | |
+| Migration instance Data Storage | Per project | 10,240 GB | X | |
 
 <a id="resource-provision-policy-for-network-firewall"></a>
 ### Resource Provision Policy for Network Firewall { #resource-provision-policy-for-network-firewall }
@@ -393,6 +404,7 @@ The number of AlimTalk messages sent by KakaoTalk Bizmessage service and Notific
 
 <a id="resource-provision-policy-for-face-recognition-service"></a>
 ### Resource Provision Policy for Face Recognition Service { #resource-provision-policy-for-face-recognition-service }
+
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
 |----|----|----|----|----|
 | Number of Groups | Per Face Recognition Service | 5 cases | O | |
