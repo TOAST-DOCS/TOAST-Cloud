@@ -337,7 +337,8 @@ Resource usage is calculated for each project.
 | DB Instance Data Storage | Per DB Instance | 2,048GB | O | |
 | DB Instance Data Storage | Per project  | 10,240GB | O | | 
 
-### Database Migration Service Resource Provision Policy
+<a id="database-migration-service-resource-provision-policy"></a>
+### Database Migration Service Resource Provision Policy { #database-migration-service-resource-provision-policy }
 Resource usage is calculated per project.
 
 | Resource | Criteria | Default Amount | Adjustable or Not | Maximum Amount |
