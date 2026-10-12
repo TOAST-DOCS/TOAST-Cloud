@@ -341,7 +341,8 @@ Network Interface コンソールには、ユーザープロジェクト以外�
 | DB Instance データストレージ| DB Instanceごと | 2,048GB | O | |
 | DB Instance データストレージ | プロジェクトごと  | 10,240GB | O | | 
 
-### Database Migration Service サービスリソース提供ポリシー
+<a id="database-migration-service-resource-provision-policy"></a>
+### Database Migration Service サービスリソース提供ポリシー { #database-migration-service-resource-provision-policy }
 リソース使用量はプロジェクトごとに計算されます。
 
 |リソース | 提供基準 | 基本提供量 | 調整の可否 | 最大提供量 |
