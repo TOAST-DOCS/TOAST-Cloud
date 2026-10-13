@@ -195,6 +195,7 @@ You can adjust setting so that users can log in again after a certain period of 
 Depending on the login session setting, a login session will be maintained or expire automatically.
 After the login expires, the user must log in again to access the console.
 This setting is a common configuration that applies uniformly to the IAM console and does not support per-service configuration.
+
 * Login Session Count
     * Set the number of simultaneous logins with the same ID on multiple devices.
     * If this is set to 1, users cannot log in with the same ID on other devices such as PC or smartphone at the same time.

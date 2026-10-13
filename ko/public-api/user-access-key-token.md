@@ -8,6 +8,7 @@ User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer �
 User Access Key 토큰은 역할 기반 접근 제어 방식(ABAC, attribute-Based Access Control)으로 동작하여 토큰을 사용할 경우 NHN Cloud 계정 또는 IAM 계정에 부여된 역할 및 권한이 적용됩니다. 따라서 호출 가능한 API가 해당 계정의 역할 및 권한 범위 내로 제한됩니다. 또한 역할 상세 조건을 설정하여 정밀한 접근 제어가 가능합니다.
 
 NHN Cloud는 두 가지 타입의 토큰을 제공합니다.
+
 - **Opaque 토큰**: 일반적인 NHN Cloud API 호출에 사용되는 기본 토큰 타입
 - **JWT 토큰**: 현재 EasyQueue 서비스의 메시지 전송/수신 시에만 사용 가능한 토큰 타입
 

@@ -8,6 +8,7 @@ User Access Key tokens are temporary Bearer tokens issued based on a User Access
 These tokens operate using Attribute-Based Access Control (ABAC). When using a token, the specific roles and permissions assigned to the NHN Cloud or IAM account are applied, restricting API calls to the authorized scope of that account. Furthermore, you can achieve fine-grained access control by configuring detailed role conditions.
 
 NHN Cloud provides two token types:
+
 - **Opaque token**: The default token type used for general NHN Cloud API calls
 - **JWT token**: A token type currently available only for sending and receiving messages in the EasyQueue service
 

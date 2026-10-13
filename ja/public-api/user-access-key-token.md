@@ -8,6 +8,7 @@ User Access Keyトークンは、User Access Keyに基づいて発行されるBe
 User Access Keyトークンは、ロールベースのアクセス制御(ABAC、Attribute-Based Access Control)方式で動作し、トークンを使用する場合はNHN CloudアカウントまたはIAMアカウントに付与されたロール及び権限が適用されます。そのため、呼び出し可能なAPIは該当アカウントのロール及び権限の範囲内に制限されます。また、ロールの詳細条件を設定することで、きめ細かいアクセス制御が可能です。
 
 NHN Cloudは2種類のタイプのトークンを提供します。
+
 - **Opaqueトークン**: 一般的なNHN Cloud APIの呼び出しに使用されるデフォルトのトークンタイプ
 - **JWTトークン**: 現在、EasyQueueサービスのメッセージ送受信時にのみ使用可能なトークンタイプ
 
