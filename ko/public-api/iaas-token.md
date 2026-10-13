@@ -283,7 +283,7 @@ curl -X POST "https://oauth.api.nhncloudservice.com/authentications/user-access-
       }'
 ```
 
-발급된 IaaS 토큰은 응답 본문이 아닌 **X-Subject-Token 헤더**에 담겨 반환되며, 사용 방법은 [IaaS 토큰 사용하기](#use-iaas-tokens)와 동일합니다.
+발급된 IaaS 토큰은 응답 본문이 아닌 `X-Subject-Token` 헤더에 담겨 반환되며, 사용 방법은 [IaaS 토큰 사용하기](#use-iaas-tokens)와 동일합니다.
 
 !!! tip "알아두기"
     JWT 타입 User Access Key로는 IaaS 토큰을 발급받을 수 없습니다. Opaque 타입 User Access Key만 사용할 수 있습니다.

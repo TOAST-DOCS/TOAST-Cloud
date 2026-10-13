@@ -422,7 +422,7 @@ User Access Key 토큰으로 기본 인프라 서비스(IaaS)의 인증 토큰�
 * **Opaque 타입**의 User Access Key만 사용할 수 있습니다. JWT 타입 User Access Key로는 IaaS 토큰을 발급받을 수 없습니다.
 * User Access Key 토큰이 필요합니다. 발급 방법은 [User Access Key 토큰 발급 요청하기](#request-user-access-key-token-issuance)를 참고하세요.
 * 토큰을 발급받을 프로젝트에 기본 인프라 서비스가 활성화되어 있어야 합니다.
-* User Access Key를 생성한 계정이 해당 프로젝트에 대한 권한을 가지고 있어야 합니다.
+* User Access Key를 생성한 계정이 해당 프로젝트 권한을 가지고 있어야 합니다.
 
 <a id="issue-iaas-token-request"></a>
 ### 요청 { #issue-iaas-token-request }
@@ -438,7 +438,7 @@ User Access Key 토큰으로 기본 인프라 서비스(IaaS)의 인증 토큰�
 <a id="issue-iaas-token-response"></a>
 ### 응답 { #issue-iaas-token-response }
 
-발급된 IaaS 토큰은 응답 본문이 아닌 **X-Subject-Token 헤더**에 담겨 반환됩니다.
+발급된 IaaS 토큰은 응답 본문이 아닌 `X-Subject-Token` 헤더에 담겨 반환됩니다.
 
 | 구분     | 이름               | 타입     | 설명                            |
 |--------|------------------|--------|-------------------------------|
