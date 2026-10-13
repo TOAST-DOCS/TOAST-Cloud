@@ -257,4 +257,37 @@ X-Auth-Token: {IaaS Token}
 
 사용자가 HTTP 헤더에 토큰을 담아 서버에 요청을 보내면 서버가 토큰의 유효성을 확인한 뒤 요청을 승인하거나 거부합니다.
 
+<a id="issue-iaas-token-with-user-access-key"></a>
+## User Access Key로 IaaS 토큰 발급받기 { #issue-iaas-token-with-user-access-key }
+> `POST /authentications/user-access-keys/iaas-tokens`
+
+앞에서 설명한 Identity API를 직접 호출하는 방식 외에, User Access Key 토큰을 사용해 IaaS 토큰을 발급받을 수도 있습니다. 이 방식을 사용하면 API 비밀번호를 설정하거나 테넌트 ID를 확인하지 않아도 됩니다.
+
+| 구분        | Identity API 직접 호출        | User Access Key 토큰 사용            |
+|-----------|---------------------------|----------------------------------|
+| 인증 수단     | NHN Cloud 계정 ID와 API 비밀번호 | User Access Key 토큰               |
+| 프로젝트 지정   | 테넌트 ID를 직접 확인해 전달         | 프로젝트의 앱키로 전달                     |
+| 사전 작업     | API 비밀번호 설정 필요            | User Access Key 발급 필요(Opaque 타입) |
+| 토큰 유효 시간  |                           | 발급 시점 기준 12시간 고정                 |
+
+* 요청 예시
+
+```sh
+curl -X POST "https://oauth.api.nhncloudservice.com/authentications/user-access-keys/iaas-tokens" \
+  -H "Content-Type: application/json" \
+  -H "X-NHN-Authorization: Bearer {User Access Key 토큰}" \
+  -d '{
+        "userAccessKeyId": "flyKphnHuI6sDRglmma6",
+        "secretAccessKey": "yjZRN9uX71IHAiFS",
+        "appKey": "r9Zd7vDEmWMfQb00"
+      }'
+```
+
+발급된 IaaS 토큰은 응답 본문이 아닌 **X-Subject-Token 헤더**에 담겨 반환되며, 사용 방법은 [IaaS 토큰 사용하기](#use-iaas-tokens)와 동일합니다.
+
+!!! tip "알아두기"
+    JWT 타입 User Access Key로는 IaaS 토큰을 발급받을 수 없습니다. Opaque 타입 User Access Key만 사용할 수 있습니다.
+
+요청과 응답의 상세 규격, 사전 조건, 응답 예시는 [User Access Key 토큰 > User Access Key 토큰으로 IaaS 토큰 발급받기](./user-access-key-token/#issue-iaas-token-with-user-access-key-token)에서 확인할 수 있습니다.
+
 

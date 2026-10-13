@@ -405,6 +405,138 @@ X-NHN-Authorization: Bearer {Access Token}
 사용자가  HTTP 헤더에 키를 담아 서버에 요청을 보내면 서버가 토큰의 유효성을 확인한 뒤 요청을 승인하거나 거부합니다.
 
     
+<a id="issue-iaas-token-with-user-access-key-token"></a>
+## User Access Key 토큰으로 IaaS 토큰 발급받기 { #issue-iaas-token-with-user-access-key-token }
+> `POST /authentications/user-access-keys/iaas-tokens`
+
+User Access Key 토큰으로 기본 인프라 서비스(IaaS)의 인증 토큰을 발급받을 수 있습니다. 발급받은 IaaS 토큰으로 Compute, Block Storage, Network 등 인프라 리소스 제어 API를 호출합니다.
+
+기본 인프라 서비스의 Identity API를 직접 호출하는 방식과 달리 API 비밀번호를 설정하거나 테넌트 ID를 확인하지 않아도 됩니다. IaaS 토큰의 사용 방법과 서비스별 엔드포인트는 [IaaS 토큰](./iaas-token/)에서 확인할 수 있습니다.
+
+!!! tip "알아두기"
+    이 API로 발급한 IaaS 토큰의 유효 시간은 12시간으로 고정되어 있으며 변경할 수 없습니다.
+
+<a id="issue-iaas-token-prerequisites"></a>
+### 사전 조건 { #issue-iaas-token-prerequisites }
+
+* **Opaque 타입**의 User Access Key만 사용할 수 있습니다. JWT 타입 User Access Key로는 IaaS 토큰을 발급받을 수 없습니다.
+* User Access Key 토큰이 필요합니다. 발급 방법은 [User Access Key 토큰 발급 요청하기](#request-user-access-key-token-issuance)를 참고하세요.
+* 토큰을 발급받을 프로젝트에 기본 인프라 서비스가 활성화되어 있어야 합니다.
+* User Access Key를 생성한 계정이 해당 프로젝트에 대한 권한을 가지고 있어야 합니다.
+
+<a id="issue-iaas-token-request"></a>
+### 요청 { #issue-iaas-token-request }
+
+| 구분           | 이름                  | 타입     | 필수  | 값                           | 설명                                       |
+|--------------|---------------------|--------|-----|-----------------------------|------------------------------------------|
+| Header       | Content-Type        | String | Yes | application/json            |                                          |
+| Header       | X-NHN-Authorization | String | Yes | Bearer {User Access Key 토큰} | 발급받은 User Access Key 토큰                  |
+| Request Body | userAccessKeyId     | String | Yes |                             | User Access Key ID                       |
+| Request Body | secretAccessKey     | String | Yes |                             | Secret Access Key                        |
+| Request Body | appKey              | String | Yes |                             | 토큰을 발급받을 프로젝트의 앱키. 이 앱키로 대상 프로젝트를 식별합니다. |
+
+<a id="issue-iaas-token-response"></a>
+### 응답 { #issue-iaas-token-response }
+
+발급된 IaaS 토큰은 응답 본문이 아닌 **X-Subject-Token 헤더**에 담겨 반환됩니다.
+
+| 구분     | 이름               | 타입     | 설명                            |
+|--------|------------------|--------|-------------------------------|
+| Header | X-Subject-Token  | String | 발급된 IaaS 토큰                   |
+| Body   | token.issued_at  | String | 토큰 발급 시각                      |
+| Body   | token.expires_at | String | 토큰 만료 시각. 발급 시각으로부터 12시간 뒤입니다 |
+| Body   | token.project    | Object | 토큰이 적용되는 프로젝트 정보              |
+| Body   | token.user       | Object | 토큰을 발급받은 사용자 정보               |
+| Body   | token.roles      | Array  | 해당 프로젝트에서 사용자에게 부여된 역할 목록     |
+| Body   | token.catalog    | Array  | 사용할 수 있는 서비스 엔드포인트 목록         |
+
+<a id="issue-iaas-token-request-example"></a>
+### 요청 예시 { #issue-iaas-token-request-example }
+
+* curl
+
+```sh
+curl -X POST "https://oauth.api.nhncloudservice.com/authentications/user-access-keys/iaas-tokens" \
+  -H "Content-Type: application/json" \
+  -H "X-NHN-Authorization: Bearer luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI" \
+  -d '{
+        "userAccessKeyId": "flyKphnHuI6sDRglmma6",
+        "secretAccessKey": "yjZRN9uX71IHAiFS",
+        "appKey": "r9Zd7vDEmWMfQb00"
+      }'
+```
+
+<a id="issue-iaas-token-response-example"></a>
+### 응답 예시 { #issue-iaas-token-response-example }
+
+* 응답 헤더
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Subject-Token: gAAAAABnDqW1x3TQZ8kP2mN7vL4hR9sE6yU1aI0oF5cB3dG7jK2nM8pQ4rS6tV9wX1zY
+```
+
+* 응답 본문
+
+<details><summary>예시</summary>
+<p>
+
+```json
+{
+  "token": {
+    "methods": [
+      "password"
+    ],
+    "issued_at": "2026-10-13T02:35:05.000000Z",
+    "expires_at": "2026-10-13T14:35:05.000000Z",
+    "project": {
+      "id": "f5073eaa26b64cffbee89411df94ce01",
+      "name": "example-project",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "user": {
+      "id": "a1b2c3d4e5f6478899aabbccddeeff00",
+      "name": "user@example.com",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "roles": [
+      {
+        "id": "21b7753ad7b54f1284af6e292cb35bea",
+        "name": "project_reader"
+      }
+    ],
+    "catalog": [
+      {
+        "type": "compute",
+        "name": "nova",
+        "endpoints": [
+          {
+            "region": "KR1",
+            "interface": "public",
+            "url": "https://kr1-api-instance-infrastructure.nhncloudservice.com/v2/f5073eaa26b64cffbee89411df94ce01"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</p>
+</details>
+
+!!! danger "주의"
+    * User Access Key 또는 Secret Access Key가 일치하지 않거나 User Access Key가 사용 중지 상태이면 토큰이 발급되지 않습니다.
+    * 요청한 앱키의 프로젝트에 기본 인프라 서비스가 활성화되어 있지 않으면 토큰이 발급되지 않습니다.
+    * 사용자가 프로젝트에서 권한을 잃을 경우 발급된 IaaS 토큰은 사용할 수 없습니다.
+
 <a id="get-jwt-public-key"></a>
 ## JWT Public Key 조회 { #get-jwt-public-key }
 > `GET /oauth2/jwks`
