@@ -7,7 +7,7 @@
 <a id="overview"></a>
 ## 概要 { #overview }
 以下で紹介するAPIを通じて、プロジェクトメンバーを作成したり、ロールを付与するなど、組織とプロジェクトを管理できます。
-フレームワークAPIは、呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](/nhncloud/ja/public-api/user-access-key-token)を参照してください。
+フレームワークAPIは、呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](./user-access-key-token/)を参照してください。
 
 <a id="public-api-domain"></a>
 ### Public APIドメイン { #public-api-domain }
@@ -3239,27 +3239,68 @@ IP ACL設定を照会するAPIです。
 <a id="get-your-organizations-iam-account-password-policy"></a>
 ### 組織 IAM アカウントパスワードポリシー照会 { #get-your-organizations-iam-account-password-policy }
 
-<!-- TODO: translate body -->
+> GET "/v1/iam/organizations/{org-id}/settings/password-rule"
+
+パスワードポリシーの設定を照会する API です。
 
 <a id="get-your-organizations-iam-account-password-policy-required-permissions"></a>
 #### 必要な権限
 
-<!-- TODO: translate body -->
+`Organization.Setting.Iam.Get`
 
 <a id="get-your-organizations-iam-account-password-policy-request-parameter"></a>
 #### 要請パラメータ
 
-<!-- TODO: translate body -->
+| 区分 | 名前 | タイプ | 必須 | 説明  | 
+|------------- |------------- | ------------- | ------------- | ------------- | 
+|  Path |org-id | String| Yes | 組織 ID |
 
 <a id="get-your-organizations-iam-account-password-policy-response-body"></a>
 #### レスポンスボディ
 
-<!-- TODO: translate body -->
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": ""
+  },
+  "result": {
+    "content": {
+      "schemaVersion": 1,
+      "value": {
+        "ruleType": "default",
+        "passwordConstraints": {
+          "minLength": 8,
+          "mustNotIncludeIllegalSequence": true,
+          "mustIncludeUpperCase": true,
+          "mustIncludeLowerCase": true,
+          "mustIncludeNumberCase": true,
+          "mustIncludeSpecialCase": true
+        },
+        "passwordExpiry": {
+          "enabled": true,
+          "expiryDays": 90,
+          "allowExpend": true
+        },
+        "limitPasswordReuse": {
+          "enabled": true,
+          "limitCount": 1
+        },
+        "applyRule": "onChangePassword"
+      }
+    }
+  }
+}
+```
 
 <a id="get-your-organizations-iam-account-password-policy-response"></a>
 #### レスポンス
 
-<!-- TODO: translate body -->
+| 名前 | タイプ | 必須 | 説明 |   
+|------------ | ------------- | ------------- | ------------ |
+| header | [共通レスポンス](#common-response)| Yes   |
+| result | Content | Yes | 設定内容 |
 
 ##### Content
 

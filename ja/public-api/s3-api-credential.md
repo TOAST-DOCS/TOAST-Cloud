@@ -28,7 +28,7 @@ Amazon S3互換APIをサポートするサービスコンソールから、S3 AP
 <a id="issue-via-api"></a>
 ### APIでの発行 { #issue-via-api }
 
-APIを利用してS3 API 認証情報を発行するには、認証トークンが必要です。認証トークンの発行方法は、[IaaS トークン](/nhncloud/ko/public-api/iaas-token/)を参照してください。
+APIを利用してS3 API 認証情報を発行するには、認証トークンが必要です。認証トークンの発行方法は、[IaaS トークン](./iaas-token/)を参照してください。
 
 ```
 POST https://api-identity-infrastructure.nhncloudservice.com/v2.0/users/{api-user-id}/credentials/OS-EC2

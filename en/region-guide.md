@@ -16,11 +16,8 @@ To support for high availability, an application must be deployed to many availa
 NHN Cloud users are allowed to select regions depending on the service area and purpose, but recommended to select those regions where service targets are mainly located so as to get fast response.   
 
 <a id="location-of-toat-regions"></a>
-## Location of TOAT Regions { #location-of-toat-regions }
-NHN Cloud is expanding its regions to make its service globally available.  
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_EN.png)
-
-<a id="nhn-cloud-regional-service"></a>
+## NHN Cloud Region Locations { #location-of-toat-regions }
+NHN Cloud is expanding its regions to more areas to provide global services.
 ![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_KR.png)
 
 <a id="nhn-cloud-regional-service"></a>
@@ -84,6 +81,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | RDS for PostgreSQL  | Regional | O | O |  |  |   
 |  | RDS for MariaDB | Regional | O |  |  |   | 
 |  | RDS for MS-SQL | Regional | O |  |  |   |
+|  | Database Migration Service | Global |  |  |  |  |
 |  | EasyCache | Regional | O | O |  |   |
 |  | MS-SQL Instance | Regional | O | O | O | O | 
 |  | MySQL Instance | Regional | O | O | O | O |
