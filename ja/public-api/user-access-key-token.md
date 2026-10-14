@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=9aeb11dc43e9 -->
 
 # User Access Keyトークン
@@ -407,6 +409,137 @@ X-NHN-Authorization: Bearer {Access Token}
 
 ユーザーがHTTPヘッダにキーを含めてサーバーにリクエストを送信すると、サーバーはトークンの有効性を確認した後、リクエストを承認または拒否します。
 
+<a id="issue-iaas-token-with-user-access-key-token"></a>
+## User Access KeyトークンでIaaSトークンを発行する { #issue-iaas-token-with-user-access-key-token }
+> `POST /authentications/user-access-keys/iaas-tokens`
+
+User Access Keyトークンで基本インフラサービス(IaaS)の認証トークンを発行できます。発行したIaaSトークンで、Compute、Block Storage、Networkなどのインフラリソース制御APIを呼び出します。
+
+基本インフラサービスのIdentity APIを直接呼び出す方式とは異なり、APIパスワードを設定したりテナントIDを確認したりする必要はありません。IaaSトークンの使い方とサービスごとのエンドポイントは、[IaaSトークン](./iaas-token/)で確認できます。
+
+!!! tip "ポイント"
+    このAPIで発行したIaaSトークンの有効時間は12時間に固定されており、変更することはできません。
+
+<a id="issue-iaas-token-prerequisites"></a>
+### 前提条件 { #issue-iaas-token-prerequisites }
+
+* **Opaqueタイプ**のUser Access Keyのみ使用できます。JWTタイプのUser Access KeyではIaaSトークンを発行することはできません。
+* User Access Keyトークンが必要です。発行方法は[User Access Keyトークンの発行リクエスト](#request-user-access-key-token-issuance)を参照してください。
+* トークンを発行するプロジェクトで基本インフラサービスが有効化されている必要があります。
+* User Access Keyを作成したアカウントが該当プロジェクトの権限を持っている必要があります。
+
+<a id="issue-iaas-token-request"></a>
+### リクエスト { #issue-iaas-token-request }
+
+| 区分           | 名前                  | タイプ     | 必須  | 値                           | 説明                                       |
+|--------------|---------------------|--------|-----|-----------------------------|------------------------------------------|
+| Header       | Content-Type        | String | Yes | application/json            |                                          |
+| Header       | X-NHN-Authorization | String | Yes | Bearer {User Access Keyトークン} | 発行されたUser Access Keyトークン                  |
+| Request Body | userAccessKeyId     | String | Yes |                             | User Access Key ID                       |
+| Request Body | secretAccessKey     | String | Yes |                             | Secret Access Key                        |
+| Request Body | appKey              | String | Yes |                             | トークンを発行するプロジェクトのアプリキー。このアプリキーで対象プロジェクトを識別します。 |
+
+<a id="issue-iaas-token-response"></a>
+### レスポンス { #issue-iaas-token-response }
+
+発行されたIaaSトークンはレスポンス本文ではなく、`X-Subject-Token`ヘッダに格納されて返されます。
+
+| 区分     | 名前               | タイプ     | 説明                            |
+|--------|------------------|--------|-------------------------------|
+| Header | X-Subject-Token  | String | 発行されたIaaSトークン                   |
+| Body   | token.issued_at  | String | トークン発行時刻                      |
+| Body   | token.expires_at | String | トークン有効期限切れ時刻。発行時刻から12時間後です。 |
+| Body   | token.project    | Object | トークンが適用されるプロジェクト情報              |
+| Body   | token.user       | Object | トークンが発行されたユーザー情報               |
+| Body   | token.roles      | Array  | 該当プロジェクトでユーザーに付与されたロールの一覧     |
+| Body   | token.catalog    | Array  | 使用できるサービスエンドポイントの一覧         |
+
+<a id="issue-iaas-token-request-example"></a>
+### リクエスト例 { #issue-iaas-token-request-example }
+
+* curl
+
+```sh
+curl -X POST "https://oauth.api.nhncloudservice.com/authentications/user-access-keys/iaas-tokens" \
+  -H "Content-Type: application/json" \
+  -H "X-NHN-Authorization: Bearer luzocEoQ3tyMvM6pLtoSTHSphgJSGhl5hVvgSstdVQ1X1bZnf9AEMGAcSERIi1Dq0bybSMv0raOcahZjYpZ2biaaoF3jTi9caF5M2TN9F98iZawbBJmN94CPF2Rpe0JI" \
+  -d '{
+        "userAccessKeyId": "flyKphnHuI6sDRglmma6",
+        "secretAccessKey": "yjZRN9uX71IHAiFS",
+        "appKey": "r9Zd7vDEmWMfQb00"
+      }'
+```
+
+<a id="issue-iaas-token-response-example"></a>
+### レスポンス例 { #issue-iaas-token-response-example }
+
+* レスポンスヘッダ
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Subject-Token: gAAAAABnDqW1x3TQZ8kP2mN7vL4hR9sE6yU1aI0oF5cB3dG7jK2nM8pQ4rS6tV9wX1zY
+```
+
+* レスポンス本文
+
+<details><summary>例</summary>
+<p>
+
+```json
+{
+  "token": {
+    "methods": [
+      "password"
+    ],
+    "issued_at": "2026-10-13T02:35:05.000000Z",
+    "expires_at": "2026-10-13T14:35:05.000000Z",
+    "project": {
+      "id": "f5073eaa26b64cffbee89411df94ce01",
+      "name": "example-project",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "user": {
+      "id": "a1b2c3d4e5f6478899aabbccddeeff00",
+      "name": "user@example.com",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "roles": [
+      {
+        "id": "21b7753ad7b54f1284af6e292cb35bea",
+        "name": "project_reader"
+      }
+    ],
+    "catalog": [
+      {
+        "type": "compute",
+        "name": "nova",
+        "endpoints": [
+          {
+            "region": "KR1",
+            "interface": "public",
+            "url": "https://kr1-api-instance-infrastructure.nhncloudservice.com/v2/f5073eaa26b64cffbee89411df94ce01"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</p>
+</details>
+
+!!! danger "注意"
+    * User Access KeyまたはSecret Access Keyが一致しない場合、またはUser Access Keyが無効状態の場合、トークンが発行されません。
+    * リクエストしたアプリキーのプロジェクトで基本インフラサービスが有効化されていない場合、トークンが発行されません。
+    * ユーザーがプロジェクトで権限を失った場合、発行されたIaaSトークンは使用できません。
 
 <a id="get-jwt-public-key"></a>
 ## JWT Public Key照会 { #get-jwt-public-key }
