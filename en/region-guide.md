@@ -40,7 +40,7 @@ All users are provided with the same features, policy, stability and usability, 
 |  | Ephemeral Storage Instance | Regional | | | | O |  
 |  | GPU Instance | Regional | O |  | O |  | 
 |  | Instance Template | Regional | O | O | O | O |
-|  | Image | Regional | O | O | O | O | O |
+|  | Image | Regional | O | O | O | O |
 |  | Image Builder  | Regional | O | O | O | |  
 |  | Auto Scale | Regional | O | O | O | O | 
 |  | Virtual Desktop | Regional | O | O |  |  | 
