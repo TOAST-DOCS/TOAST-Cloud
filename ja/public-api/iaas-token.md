@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=07d03063e3a6 -->
 
 # IaaSトークン
@@ -256,3 +258,36 @@ X-Auth-Token: {IaaS Token}
 ```
 
 ユーザーがHTTPヘッダにトークンを含めてサーバーにリクエストを送信すると、サーバーはトークンの有効性を確認した後、リクエストを承認または拒否します。
+
+<a id="issue-iaas-token-with-user-access-key"></a>
+## User Access KeyでIaaSトークンを発行する { #issue-iaas-token-with-user-access-key }
+> `POST /authentications/user-access-keys/iaas-tokens`
+
+前述のIdentity APIを直接呼び出す方式のほかに、User Access Keyトークンを使用してIaaSトークンを発行することもできます。この方式を使用すると、APIパスワードを設定したり、テナントIDを確認したりする必要はありません。
+
+| 区分 | Identity APIの直接呼び出し | User Access Keyトークンの使用 |
+|-----------|---------------------------|----------------------------------|
+| 認証手段 | NHN CloudアカウントIDとAPIパスワード | User Access Keyトークン |
+| プロジェクトの指定 | テナントIDを直接確認して渡す | プロジェクトのアプリキーで渡す |
+| 事前作業 | APIパスワードの設定が必要 | User Access Keyの発行が必要(Opaqueタイプ) |
+| トークンの有効時間 | | 発行時点から12時間固定 |
+
+* リクエスト例
+
+```sh
+curl -X POST "https://oauth.api.nhncloudservice.com/authentications/user-access-keys/iaas-tokens" \
+  -H "Content-Type: application/json" \
+  -H "X-NHN-Authorization: Bearer {User Access Keyトークン}" \
+  -d '{
+        "userAccessKeyId": "flyKphnHuI6sDRglmma6",
+        "secretAccessKey": "yjZRN9uX71IHAiFS",
+        "appKey": "r9Zd7vDEmWMfQb00"
+      }'
+```
+
+発行されたIaaSトークンはレスポンス本文ではなく、`X-Subject-Token`ヘッダに格納されて返されます。使用方法は[IaaSトークンを使用する](#use-iaas-tokens)と同じです。
+
+!!! tip "ポイント"
+    JWTタイプのUser Access KeyではIaaSトークンを発行することはできません。OpaqueタイプのUser Access Keyのみ使用できます。
+
+リクエストとレスポンスの詳細仕様、事前条件、レスポンスの例は、[User Access Keyトークン > User Access KeyトークンでIaaSトークンを発行する](./user-access-key-token/#issue-iaas-token-with-user-access-key-token)で確認できます。
