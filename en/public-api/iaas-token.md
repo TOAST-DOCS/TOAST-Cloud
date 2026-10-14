@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=07d03063e3a6 -->
 
 # IaaS Token
@@ -256,5 +258,39 @@ X-Auth-Token: {IaaS Token}
 ```
 
 When a user sends a request with a token in the HTTP header, the server validates the token and then approves or rejects the request.
+
+
+<a id="issue-iaas-token-with-user-access-key"></a>
+## Issue IaaS Token with User Access Key { #issue-iaas-token-with-user-access-key }
+> `POST /authentications/user-access-keys/iaas-tokens`
+
+In addition to calling the Identity API directly as described above, you can also issue an IaaS token by using a User Access Key token. This method does not require you to configure an API password or look up a Tenant ID.
+
+| Category | Direct Identity API Call | Using User Access Key Token |
+|---|---|---|
+| Authentication method | NHN Cloud account ID and API password | User Access Key token |
+| Project specification | Look up and provide the Tenant ID directly | Provide via the project's AppKey |
+| Prerequisites | API password configuration required | User Access Key issuance required (Opaque type) |
+| Token validity time | | Fixed at 12 hours from the time of issuance |
+
+* Request example
+
+```sh
+curl -X POST "https://oauth.api.nhncloudservice.com/authentications/user-access-keys/iaas-tokens" \
+  -H "Content-Type: application/json" \
+  -H "X-NHN-Authorization: Bearer {User Access Key token}" \
+  -d '{
+        "userAccessKeyId": "flyKphnHuI6sDRglmma6",
+        "secretAccessKey": "yjZRN9uX71IHAiFS",
+        "appKey": "r9Zd7vDEmWMfQb00"
+      }'
+```
+
+The issued IaaS token is returned in the `X-Subject-Token` header rather than the response body, and usage is the same as described in [Use IaaS Tokens](#use-iaas-tokens).
+
+!!! tip "Note"
+    IaaS tokens cannot be issued using a JWT type User Access Key. Only Opaque type User Access Keys can be used.
+
+For detailed request and response specifications, prerequisites, and response examples, see [User Access Key Token > Issue IaaS Token with User Access Key Token](./user-access-key-token/#issue-iaas-token-with-user-access-key-token).
 
 
