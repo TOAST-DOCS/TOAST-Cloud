@@ -1,6 +1,6 @@
 <!-- machine_translated: true -->
 
-<!-- pre-align:aligned sig=07d03063e3a6 -->
+<!-- pre-align:aligned sig=8e777113d5c1 -->
 
 # IaaSトークン
 
