@@ -63,6 +63,21 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
     * **조직 관리 > 거버넌스 설정 > 조직 거버넌스 설정 > IP ACL 설정**을 통해 IP ACL을 설정했을 경우, 프레임워크 API 호출 시에도 해당 설정이 적용됩니다.
 
 
+<a id="common-cursor-paging"></a>
+#### 커서 페이징
+요청 파라미터에 `cursor`, 응답에 `nextCursor`가 있는 API는 커서(cursor) 방식으로 페이지를 조회합니다. 전체 결과를 조회하는 방법은 다음과 같습니다.
+
+1. 첫 페이지는 `cursor` 없이 요청합니다.
+2. 응답의 `nextCursor` 값을 다음 요청의 `cursor`에 그대로 넣어 다음 페이지를 요청합니다.
+3. `nextCursor`가 null이 될 때까지 2를 반복합니다.
+
+!!! danger "주의"
+    * 다음 페이지를 요청할 때는 `cursor`, `size`를 제외한 조회 조건을 첫 요청과 같게 유지해야 합니다. 조건을 바꿔도 오류는 발생하지 않지만, 결과가 누락되거나 의도와 다른 결과가 반환될 수 있습니다.
+
+!!! danger "주의"
+    * `cursor`에는 응답으로 받은 `nextCursor` 값만 사용해야 합니다. 형식이 올바르지 않은 값을 전달하면 파라미터 오류(`resultCode` 503)가 반환됩니다.
+
+
 <a id="api"></a>
 ### API { #api }
 
@@ -3699,7 +3714,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
 |  Query |projectIds | List&lt;String>| N | 프로젝트 ID 필터(다중, 최대 10개) |
-|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
+|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회<br>사용 방법은 [커서 페이징](#common-cursor-paging) 참고 |
 |  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
 
 <a id="view-charge-summaries-by-scope-response-body"></a>
@@ -3746,7 +3761,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
 |   groupBy | String| Y | 요청한 집계 기준  |
-|   chargeSummaries | List&lt;ChargeSummary>| Y | 빌링 그룹, 조직, 프로젝트별 이용 금액 목록  |
+|   chargeSummaries | List&lt;ChargeSummary>| Y | 빌링 그룹, 조직, 프로젝트별 이용 금액 목록<br>`groupBy`에 해당하는 ID(`billingGroupId`, `orgId`, `projectId`) 오름차순 정렬 |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### ChargeSummary
@@ -3803,7 +3818,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Query |categoryMains | List&lt;String>| N | 메인 카테고리 필터(다중, 최대 10개) |
 |  Query |regions | List&lt;String>| N | 리전 필터(다중, 최대 10개) |
 |  Query |stationIds | List&lt;String>| N | 스테이션 ID 필터(다중, 최대 10개) |
-|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
+|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회<br>사용 방법은 [커서 페이징](#common-cursor-paging) 참고 |
 |  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
 
 <a id="view-individual-charge-lines-response-body"></a>
@@ -3851,7 +3866,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
-|   usages | List&lt;UsageLine>| Y | 상세 내역 목록  |
+|   usages | List&lt;UsageLine>| Y | 상세 내역 목록<br>상세 내역 생성 순서로 정렬 |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### UsageLine
@@ -3917,7 +3932,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
 |  Query |orgOwnerIds | List&lt;String>| N | 조직 소유자 UUID 필터(다중, 최대 10개)<br>해당 청구 월에 지정한 UUID가 소유한 조직의 이용 요금이 있는 값만 반환합니다. |
-|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
+|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회<br>사용 방법은 [커서 페이징](#common-cursor-paging) 참고 |
 |  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
 
 <a id="view-charge-filter-dimensions-response-body"></a>
@@ -3952,7 +3967,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   uuid | String| Y | 조회 대상 회원 UUID  |
 |   dimension | String| Y | 조회한 검색 조건 구분<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
 |   parentDimension | String| N | 상위 검색 조건 구분<br>최상위(PAYMENT_GROUP)이면 null |
-|   values | List&lt;DimensionValue>| Y | 검색 조건 구분별 필터 선택지 목록  |
+|   values | List&lt;DimensionValue>| Y | 검색 조건 구분별 필터 선택지 목록<br>식별자(`id`) 오름차순 정렬 |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### DimensionValue
