@@ -3613,7 +3613,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象メンバー(リソース所有者)のUUID<br>他のメンバーから[メンバーロール](/nhncloud/ja/console-guide/#member-roles)を付与されて、そのメンバーのリソースを照会するときに入力<br>未入力の場合、ログインしたユーザーのUUIDで照会 |
+|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象メンバー(リソース所有者)のUUID<br>他のメンバーから[メンバーロール](../console-guide/#member-roles)を付与されて、そのメンバーのリソースを照会するときに入力<br>未入力の場合、ログインしたユーザーのUUIDで照会 |
 |  Query |month | String| Y | 請求月（yyyy-MM） |
 |  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ（複数）<br>未指定の場合、照会可能なすべての決済グループを照会します。 |
 
@@ -3719,7 +3719,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象メンバー(リソース所有者)のUUID<br>他のメンバーから[メンバーロール](/nhncloud/ja/console-guide/#member-roles)を付与され、そのメンバーのリソースを照会する際に入力<br>未入力の場合、ログインしたユーザーのUUIDで照会 |
+|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象メンバー(リソース所有者)のUUID<br>他のメンバーから[メンバーロール](../console-guide/#member-roles)を付与され、そのメンバーのリソースを照会する際に入力<br>未入力の場合、ログインしたユーザーのUUIDで照会 |
 |  Query |month | String| Y | 請求月(yyyy-MM)<br>2020-05以降のみサポート |
 |  Query |groupBy | String| Y | 集計基準(単一)<br><ul><li>BILLING_GROUP: ビリンググループ</li><li>ORG: 組織</li><li>PROJECT: プロジェクト</li></ul> |
 |  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ(複数、最大10件) |
@@ -3822,7 +3822,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象のメンバー(リソースオーナー)のUUID<br>他のメンバーから[メンバーロール](/nhncloud/ja/console-guide/#member-roles)を付与され、そのメンバーのリソースを照会する際に入力<br>未入力の場合、ログイン中のユーザーのUUIDで照会 |
+|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象のメンバー(リソースオーナー)のUUID<br>他のメンバーから[メンバーロール](../console-guide/#member-roles)を付与され、そのメンバーのリソースを照会する際に入力<br>未入力の場合、ログイン中のユーザーのUUIDで照会 |
 |  Query |month | String| Y | 請求月(yyyy-MM)<br>2020-05以降のみサポート |
 |  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ(複数、最大10件) |
 |  Query |billingGroupIds | List&lt;String>| N | ビリンググループIDフィルタ(複数、最大10件) |
@@ -3939,7 +3939,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象メンバー（リソース所有者）のUUID<br>他のメンバーから[メンバーロール](/nhncloud/ja/console-guide/#member-roles)を付与され、そのメンバーのリソースを照会する際に入力<br>未入力の場合、ログイン中のユーザーのUUIDで照会 |
+|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象メンバー（リソース所有者）のUUID<br>他のメンバーから[メンバーロール](../console-guide/#member-roles)を付与され、そのメンバーのリソースを照会する際に入力<br>未入力の場合、ログイン中のユーザーのUUIDで照会 |
 |  Query |dimension | String| Y | 照会する検索条件の区分（単一）<br><ul><li>PAYMENT_GROUP: 決済グループ</li><li>BILLING_GROUP: ビリンググループ</li><li>ORG: 組織</li><li>PROJECT: プロジェクト</li></ul> |
 |  Query |month | String| Y | 請求月（yyyy-MM）<br>2020-05以降のみサポート |
 |  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ（複数、最大10件） |
