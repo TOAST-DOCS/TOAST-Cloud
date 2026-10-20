@@ -3449,6 +3449,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 조회 대상 회원(리소스 소유자)의 UUID<br>다른 회원에게 [회원 역할](/nhncloud/ko/console-guide-gov/#member-roles)을 부여받아 해당 회원의 리소스를 조회할 때 입력<br>미입력 시 로그인한 사용자의 UUID로 조회 |
 |  Query |month | String| Y | 청구 월(yyyy-MM) |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중)<br>미지정 시 조회 가능한 전체 결제 그룹을 조회 |
 
@@ -3551,6 +3552,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 조회 대상 회원(리소스 소유자)의 UUID<br>다른 회원에게 [회원 역할](/nhncloud/ko/console-guide-gov/#member-roles)을 부여받아 해당 회원의 리소스를 조회할 때 입력<br>미입력 시 로그인한 사용자의 UUID로 조회 |
 |  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
 |  Query |groupBy | String| Y | 집계 기준(단일)<br><ul><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
@@ -3650,6 +3652,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 조회 대상 회원(리소스 소유자)의 UUID<br>다른 회원에게 [회원 역할](/nhncloud/ko/console-guide-gov/#member-roles)을 부여받아 해당 회원의 리소스를 조회할 때 입력<br>미입력 시 로그인한 사용자의 UUID로 조회 |
 |  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
@@ -3762,6 +3765,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 조회 대상 회원(리소스 소유자)의 UUID<br>다른 회원에게 [회원 역할](/nhncloud/ko/console-guide-gov/#member-roles)을 부여받아 해당 회원의 리소스를 조회할 때 입력<br>미입력 시 로그인한 사용자의 UUID로 조회 |
 |  Query |dimension | String| Y | 조회할 검색 조건 구분(단일)<br><ul><li>PAYMENT_GROUP: 결제 그룹</li><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
 |  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
