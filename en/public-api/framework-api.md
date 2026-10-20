@@ -64,6 +64,42 @@ When the Public API returns, the header part below is included in the response b
 !!! danger "Caution"
     If you set IP ACLs through **Organization Management > Governance Settings > Organization Governance Settings > IP ACL Settings**, those settings are also applied to calls to the framework API.
 
+<a id="common-cursor-paging"></a>
+#### Cursor Paging
+
+APIs with `cursor` in the request parameter and `nextCursor` in the response retrieve the next page using cursor-based pagination.
+A cursor is a bookmark value that indicates how far the data has been retrieved. Unlike page-number-based pagination, you cannot jump directly to a specific page and must retrieve results sequentially from the first page.
+
+| Category | Name | Description |
+|---|---|---|
+| Request | `cursor` | The position from which to continue retrieving. Omit this when retrieving the first page. |
+| Request | `size` | The maximum number of items to receive per page. For default values and allowed ranges, refer to the request parameters for each API. |
+| Response | `nextCursor` | The value used to retrieve the next page. If `null`, there is no more data to retrieve. |
+
+To retrieve all results, follow these steps:
+
+1. Request the first page without `cursor`.
+
+    ```text
+GET /{API path}?{query conditions}&size=20
+    → 20 items in the list, "nextCursor": "Y3Vyc29yLWV4YW1wbGU"
+    ```
+
+2. Use the `nextCursor` value from the response as the `cursor` in the next request.
+
+    ```text
+GET /{API path}?{search conditions}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
+    → 7 items, "nextCursor": null
+    ```
+
+3. Repeat step 2 until the `nextCursor` in the response becomes `null`. In the example above, `nextCursor` is `null`, so retrieval ends.
+
+!!! danger "Caution"
+    * When requesting the next page, keep all query conditions other than `cursor` and `size` the same as in the first request.
+    * Changing the conditions does not cause an error, but results may be missing or different from what was intended.
+    * To change the query conditions, restart from the first page without `cursor`.
+    * For `cursor`, use the `nextCursor` value exactly as received in the response. Do not construct or modify the value manually.
+
 
 <a id="api"></a>
 ### API { #api }
@@ -3588,6 +3624,7 @@ Retrieves the amount spent per payment statement.
 
 | Category | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to look up<br>Enter when looking up the resources of another member who has granted you a [member role](/nhncloud/en/console-guide/#member-roles)<br>If not entered, the lookup is performed using the UUID of the logged-in user |
 |  Query |month | String| Y | Billing month (yyyy-MM) |
 |  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple)<br>If not specified, retrieves all accessible payment groups |
 
@@ -3693,13 +3730,14 @@ Retrieves charge summaries aggregated by billing group, organization, or project
 
 | Category | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to retrieve<br>Enter when accessing a member's resources after being granted a [member role](/nhncloud/en/console-guide/#member-roles) by that member<br>If not entered, retrieves using the logged-in user's UUID |
 |  Query |month | String| Y | Billing month (yyyy-MM)<br>Supported only from 2020-05 |
 |  Query |groupBy | String| Y | Aggregation criterion (single)<br><ul><li>BILLING_GROUP: Billing group</li><li>ORG: Organization</li><li>PROJECT: Project</li></ul> |
 |  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple, up to 10) |
 |  Query |billingGroupIds | List&lt;String>| N | Billing group ID filter (multiple, up to 10) |
 |  Query |orgIds | List&lt;String>| N | Organization ID filter (multiple, up to 10) |
 |  Query |projectIds | List&lt;String>| N | Project ID filter (multiple, up to 10) |
-|  Query |cursor | String| N | Next page cursor<br>Retrieves the first page if not specified |
+|  Query |cursor | String| N | Next page cursor<br>If not specified, retrieves the first page<br>For how to use, see [Cursor Paging](#common-cursor-paging) |
 |  Query |size | Integer| N | Number of displays per page (from 10 to 100)<br>Default 20 |
 
 <a id="view-charge-summaries-by-scope-response-body"></a>
@@ -3746,7 +3784,7 @@ Retrieves charge summaries aggregated by billing group, organization, or project
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common Response](#common-response)| Y   |
 |   groupBy | String| Y | Requested aggregation criteria  |
-|   chargeSummaries | List&lt;ChargeSummary>| Y | List of usage amounts by billing group, organization, and project  |
+|   chargeSummaries | List&lt;ChargeSummary>| Y | List of usage amounts by billing group, organization, and project<br>Sorted in Ascending Order by the ID (`billingGroupId`, `orgId`, `projectId`) corresponding to `groupBy` |
 |   nextCursor | String| N | Next page cursor<br>null if it is the last page |
 
 ##### ChargeSummary
@@ -3795,6 +3833,7 @@ API to get the usage amount per individual charge line.
 
 | Category | Name | Type | Required | Description  |
 |------------- |------------- | ------------- | ------------- | ------------- |
+|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to retrieve<br>Enter when retrieving the resources of another member who has granted you a [member role](/nhncloud/en/console-guide/#member-roles)<br>If not entered, retrieves by the UUID of the logged-in user |
 |  Query |month | String| Y | Billing month (yyyy-MM)<br>Supported only from 2020-05 onward |
 |  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple, up to 10) |
 |  Query |billingGroupIds | List&lt;String>| N | Billing group ID filter (multiple, up to 10) |
@@ -3803,7 +3842,7 @@ API to get the usage amount per individual charge line.
 |  Query |categoryMains | List&lt;String>| N | Main category filter (multiple, up to 10) |
 |  Query |regions | List&lt;String>| N | Region filter (multiple, up to 10) |
 |  Query |stationIds | List&lt;String>| N | Station ID filter (multiple, up to 10) |
-|  Query |cursor | String| N | Next page cursor<br>Retrieves the first page if not specified |
+|  Query |cursor | String| N | Next page cursor<br>If not specified, retrieves the first page<br>For how to use, see [Cursor Paging](#common-cursor-paging) |
 |  Query |size | Integer| N | Number of displays per page (10–100)<br>Default 20 |
 
 <a id="view-individual-charge-lines-response-body"></a>
@@ -3851,7 +3890,7 @@ API to get the usage amount per individual charge line.
 | Name | Type | Required | Description |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#common-response)| Y   |
-|   usages | List&lt;UsageLine>| Y | Detailed list  |
+|   usages | List&lt;UsageLine>| Y | Detailed list<br>Sorted in the order that detailed entries were created |
 |   nextCursor | String| N | Next page cursor<br>null if last page |
 
 ##### UsageLine
@@ -3911,13 +3950,14 @@ This API retrieves a list of options for each search condition category (`dimens
 
 | Category | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to retrieve<br>Enter when querying that member's resources after being granted a [member role](/nhncloud/en/console-guide/#member-roles) by another member<br>If not entered, queries using the UUID of the logged-in user |
 |  Query |dimension | String| Y | Search condition category for the query (single)<br><ul><li>PAYMENT_GROUP: Payment group</li><li>BILLING_GROUP: Billing group</li><li>ORG: Organization</li><li>PROJECT: Project</li></ul> |
 |  Query |month | String| Y | Billing month (yyyy-MM)<br>Supported from 2020-05 onwards |
 |  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple, up to 10) |
 |  Query |billingGroupIds | List&lt;String>| N | Billing group ID filter (multiple, up to 10) |
 |  Query |orgIds | List&lt;String>| N | Organization ID filter (multiple, up to 10) |
 |  Query |orgOwnerIds | List&lt;String>| N | Organization owner UUID filter (multiple, up to 10)<br>Returns only values where the organization owned by the specified UUID has usage charges in the billing month. |
-|  Query |cursor | String| N | Next page cursor<br>If not specified, retrieves the first page |
+|  Query |cursor | String| N | Next page cursor<br>If not specified, retrieves the first page<br>For how to use, see [Cursor Paging](#common-cursor-paging) |
 |  Query |size | Integer| N | Number of displays per page (10–100)<br>Default 20 |
 
 <a id="view-charge-filter-dimensions-response-body"></a>
@@ -3952,7 +3992,7 @@ This API retrieves a list of options for each search condition category (`dimens
 |   uuid | String| Y | UUID of the member to retrieve  |
 |   dimension | String| Y | Filter category of the retrieved search condition<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
 |   parentDimension | String| N | Parent filter category<br>null if it is the top level (PAYMENT_GROUP) |
-|   values | List&lt;DimensionValue>| Y | List of filter options by filter category  |
+|   values | List&lt;DimensionValue>| Y | List of filter options by filter category<br>Sorted by identifier (`id`) in Ascending Order |
 |   nextCursor | String| N | Next page cursor<br>null if it is the last page |
 
 ##### DimensionValue
@@ -4217,6 +4257,7 @@ Available to all members. No specific permissions required.
 |   userAccessKeyID | String| N | User Access Key ID  |
 |   secretAccessKey | String| N | Secret key |
 |   tokenExpiryPeriod | Long| N | Token expiration period (in seconds)
+|   tokenFormatCode | String | N | Token format code (OPAQUE, JWT) |
 
 |   tokenFormatCode | String | N | Token format code (OPAQUE, JWT) |
 
