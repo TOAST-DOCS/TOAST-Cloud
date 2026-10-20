@@ -3624,7 +3624,7 @@ Retrieves the amount spent per payment statement.
 
 | Category | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to look up<br>Enter when looking up the resources of another member who has granted you a [member role](/nhncloud/en/console-guide/#member-roles)<br>If not entered, the lookup is performed using the UUID of the logged-in user |
+|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to look up<br>Enter when looking up the resources of another member who has granted you a [member role](../console-guide/#member-roles)<br>If not entered, the lookup is performed using the UUID of the logged-in user |
 |  Query |month | String| Y | Billing month (yyyy-MM) |
 |  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple)<br>If not specified, retrieves all accessible payment groups |
 
@@ -3730,7 +3730,7 @@ Retrieves charge summaries aggregated by billing group, organization, or project
 
 | Category | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to retrieve<br>Enter when accessing a member's resources after being granted a [member role](/nhncloud/en/console-guide/#member-roles) by that member<br>If not entered, retrieves using the logged-in user's UUID |
+|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to retrieve<br>Enter when accessing a member's resources after being granted a [member role](../console-guide/#member-roles) by that member<br>If not entered, retrieves using the logged-in user's UUID |
 |  Query |month | String| Y | Billing month (yyyy-MM)<br>Supported only from 2020-05 |
 |  Query |groupBy | String| Y | Aggregation criterion (single)<br><ul><li>BILLING_GROUP: Billing group</li><li>ORG: Organization</li><li>PROJECT: Project</li></ul> |
 |  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple, up to 10) |
@@ -3833,7 +3833,7 @@ API to get the usage amount per individual charge line.
 
 | Category | Name | Type | Required | Description  |
 |------------- |------------- | ------------- | ------------- | ------------- |
-|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to retrieve<br>Enter when retrieving the resources of another member who has granted you a [member role](/nhncloud/en/console-guide/#member-roles)<br>If not entered, retrieves by the UUID of the logged-in user |
+|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to retrieve<br>Enter when retrieving the resources of another member who has granted you a [member role](../console-guide/#member-roles)<br>If not entered, retrieves by the UUID of the logged-in user |
 |  Query |month | String| Y | Billing month (yyyy-MM)<br>Supported only from 2020-05 onward |
 |  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple, up to 10) |
 |  Query |billingGroupIds | List&lt;String>| N | Billing group ID filter (multiple, up to 10) |
@@ -3950,7 +3950,7 @@ This API retrieves a list of options for each search condition category (`dimens
 
 | Category | Name | Type | Required | Description  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
-|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to retrieve<br>Enter when querying that member's resources after being granted a [member role](/nhncloud/en/console-guide/#member-roles) by another member<br>If not entered, queries using the UUID of the logged-in user |
+|  Header |x-nhn-resource-owner-uuid | String| N | UUID of the member (resource owner) to retrieve<br>Enter when querying that member's resources after being granted a [member role](../console-guide/#member-roles) by another member<br>If not entered, queries using the UUID of the logged-in user |
 |  Query |dimension | String| Y | Search condition category for the query (single)<br><ul><li>PAYMENT_GROUP: Payment group</li><li>BILLING_GROUP: Billing group</li><li>ORG: Organization</li><li>PROJECT: Project</li></ul> |
 |  Query |month | String| Y | Billing month (yyyy-MM)<br>Supported from 2020-05 onwards |
 |  Query |paymentGroupIds | List&lt;String>| N | Payment group ID filter (multiple, up to 10) |
