@@ -4248,7 +4248,6 @@ IP ACL設定を照会するAPIです。
 |   secretAccessKey | String| N | 秘密鍵 |
 |   tokenExpiryPeriod | Long| N | トークン有効期限(秒単位)
 |   tokenFormatCode | String | N | トークンフォーマットコード(OPAQUE, JWT) |
-|   tokenFormatCode | String | N | トークンフォーマットコード(OPAQUE、JWT) |
 
 <a id="delete-a-project-integrated-appkey"></a>
 ### プロジェクト統合Appkey削除 { #delete-a-project-integrated-appkey }
