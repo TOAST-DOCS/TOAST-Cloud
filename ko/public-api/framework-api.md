@@ -63,6 +63,43 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
     * **조직 관리 > 거버넌스 설정 > 조직 거버넌스 설정 > IP ACL 설정**을 통해 IP ACL을 설정했을 경우, 프레임워크 API 호출 시에도 해당 설정이 적용됩니다.
 
 
+<a id="common-cursor-paging"></a>
+#### 커서 페이징
+
+요청 파라미터에 `cursor`, 응답에 `nextCursor`가 있는 API는 커서(cursor) 방식으로 다음 페이지를 조회합니다.
+커서는 어디까지 조회했는지를 표시하는 책갈피 값입니다. 페이지 번호 방식과 달리 특정 페이지로 바로 이동할 수 없으며, 첫 페이지부터 순서대로 조회합니다.
+
+| 구분 | 이름 | 설명 |
+|---|---|---|
+| 요청 | `cursor` | 이어서 조회할 위치입니다. 첫 페이지를 조회할 때는 생략합니다. |
+| 요청 | `size` | 한 페이지에 받을 최대 건수입니다. 기본값과 허용 범위는 API별 요청 파라미터를 참고하세요. |
+| 응답 | `nextCursor` | 다음 페이지를 조회할 때 사용할 값입니다. `null`이면 더 조회할 데이터가 없습니다. |
+
+전체 결과를 조회하는 방법은 다음과 같습니다.
+
+1. 첫 페이지는 `cursor` 없이 요청합니다.
+
+    ```text
+    GET /{API 경로}?{조회 조건}&size=20
+    → 목록 20건, "nextCursor": "Y3Vyc29yLWV4YW1wbGU"
+    ```
+
+2. 응답의 `nextCursor` 값을 다음 요청의 `cursor`에 그대로 넣어 요청합니다.
+
+    ```text
+    GET /{API 경로}?{조회 조건}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
+    → 목록 7건, "nextCursor": null
+    ```
+
+3. 응답의 `nextCursor`가 `null`이 될 때까지 2를 반복합니다. 위 예시에서는 `nextCursor`가 `null`이므로 조회를 종료합니다.
+
+!!! danger "주의"
+    * 다음 페이지를 요청할 때 `cursor`, `size`를 제외한 조회 조건은 첫 요청과 같게 유지해야 합니다.
+    * 조건을 바꿔도 오류는 발생하지 않지만, 결과가 누락되거나 의도와 다른 결과가 반환될 수 있습니다.
+    * 조회 조건을 바꾸려면 `cursor` 없이 첫 페이지부터 다시 조회합니다.
+    * `cursor`에는 응답으로 받은 `nextCursor` 값을 그대로 사용해야 하며, 값을 직접 만들거나 수정하면 안 됩니다.
+
+
 <a id="api"></a>
 ### API { #api }
 
@@ -3588,6 +3625,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 조회 대상 회원(리소스 소유자)의 UUID<br>다른 회원에게 [회원 역할](/nhncloud/ko/console-guide/#member-roles)을 부여받아 해당 회원의 리소스를 조회할 때 입력<br>미입력 시 로그인한 사용자의 UUID로 조회 |
 |  Query |month | String| Y | 청구 월(yyyy-MM) |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중)<br>미지정 시 조회 가능한 전체 결제 그룹을 조회 |
 
@@ -3693,13 +3731,14 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 조회 대상 회원(리소스 소유자)의 UUID<br>다른 회원에게 [회원 역할](/nhncloud/ko/console-guide/#member-roles)을 부여받아 해당 회원의 리소스를 조회할 때 입력<br>미입력 시 로그인한 사용자의 UUID로 조회 |
 |  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
 |  Query |groupBy | String| Y | 집계 기준(단일)<br><ul><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
 |  Query |projectIds | List&lt;String>| N | 프로젝트 ID 필터(다중, 최대 10개) |
-|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
+|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회<br>사용 방법은 [커서 페이징](#common-cursor-paging) 참고 |
 |  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
 
 <a id="view-charge-summaries-by-scope-response-body"></a>
@@ -3746,7 +3785,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
 |   groupBy | String| Y | 요청한 집계 기준  |
-|   chargeSummaries | List&lt;ChargeSummary>| Y | 빌링 그룹, 조직, 프로젝트별 이용 금액 목록  |
+|   chargeSummaries | List&lt;ChargeSummary>| Y | 빌링 그룹, 조직, 프로젝트별 이용 금액 목록<br>`groupBy`에 해당하는 ID(`billingGroupId`, `orgId`, `projectId`) 오름차순 정렬 |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### ChargeSummary
@@ -3795,6 +3834,7 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 조회 대상 회원(리소스 소유자)의 UUID<br>다른 회원에게 [회원 역할](/nhncloud/ko/console-guide/#member-roles)을 부여받아 해당 회원의 리소스를 조회할 때 입력<br>미입력 시 로그인한 사용자의 UUID로 조회 |
 |  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
@@ -3803,7 +3843,7 @@ IP ACL 설정을 조회하는 API입니다.
 |  Query |categoryMains | List&lt;String>| N | 메인 카테고리 필터(다중, 최대 10개) |
 |  Query |regions | List&lt;String>| N | 리전 필터(다중, 최대 10개) |
 |  Query |stationIds | List&lt;String>| N | 스테이션 ID 필터(다중, 최대 10개) |
-|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
+|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회<br>사용 방법은 [커서 페이징](#common-cursor-paging) 참고 |
 |  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
 
 <a id="view-individual-charge-lines-response-body"></a>
@@ -3851,7 +3891,7 @@ IP ACL 설정을 조회하는 API입니다.
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
-|   usages | List&lt;UsageLine>| Y | 상세 내역 목록  |
+|   usages | List&lt;UsageLine>| Y | 상세 내역 목록<br>상세 내역 생성 순서로 정렬 |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### UsageLine
@@ -3911,13 +3951,14 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 구분 | 이름 | 타입 | 필수 | 설명  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 조회 대상 회원(리소스 소유자)의 UUID<br>다른 회원에게 [회원 역할](/nhncloud/ko/console-guide/#member-roles)을 부여받아 해당 회원의 리소스를 조회할 때 입력<br>미입력 시 로그인한 사용자의 UUID로 조회 |
 |  Query |dimension | String| Y | 조회할 검색 조건 구분(단일)<br><ul><li>PAYMENT_GROUP: 결제 그룹</li><li>BILLING_GROUP: 빌링 그룹</li><li>ORG: 조직</li><li>PROJECT: 프로젝트</li></ul> |
 |  Query |month | String| Y | 청구 월(yyyy-MM)<br>2020-05 이후만 지원 |
 |  Query |paymentGroupIds | List&lt;String>| N | 결제 그룹 ID 필터(다중, 최대 10개) |
 |  Query |billingGroupIds | List&lt;String>| N | 빌링 그룹 ID 필터(다중, 최대 10개) |
 |  Query |orgIds | List&lt;String>| N | 조직 ID 필터(다중, 최대 10개) |
 |  Query |orgOwnerIds | List&lt;String>| N | 조직 소유자 UUID 필터(다중, 최대 10개)<br>해당 청구 월에 지정한 UUID가 소유한 조직의 이용 요금이 있는 값만 반환합니다. |
-|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회 |
+|  Query |cursor | String| N | 다음 페이지 커서<br>미지정 시 첫 페이지를 조회<br>사용 방법은 [커서 페이징](#common-cursor-paging) 참고 |
 |  Query |size | Integer| N | 페이지당 표시 건수(10~100)<br>기본값 20 |
 
 <a id="view-charge-filter-dimensions-response-body"></a>
@@ -3952,7 +3993,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   uuid | String| Y | 조회 대상 회원 UUID  |
 |   dimension | String| Y | 조회한 검색 조건 구분<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
 |   parentDimension | String| N | 상위 검색 조건 구분<br>최상위(PAYMENT_GROUP)이면 null |
-|   values | List&lt;DimensionValue>| Y | 검색 조건 구분별 필터 선택지 목록  |
+|   values | List&lt;DimensionValue>| Y | 검색 조건 구분별 필터 선택지 목록<br>식별자(`id`) 오름차순 정렬 |
 |   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
 
 ##### DimensionValue
