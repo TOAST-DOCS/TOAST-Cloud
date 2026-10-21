@@ -3708,7 +3708,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   chargedTaxAmount | Long| Y | 실 부가세<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
 |   chargedTotalAmount | Long| Y | 실 결제 금액<br>실 공급가액 + 실 부가세 + 연체료 |
 |   receiptStatusCode | String| Y | 매출 전표 상태 코드<br><ul><li>NONE: 매출 전표를 볼 수 없는 상태</li><li>EXIST: 매출 전표를 볼 수 있는 상태</li></ul> |
-|   refundAccountRegisterStatusCode | String| Y | 환불 계좌 등록 상태 코드<br><ul><li>ALLOW: 환불 계좌 등록 Open 상태</li><li>DENY: 환불 계좌 등록 Close 상태(기본값)</li></ul> |
+|   refundAccountRegisterStatusCode | String| Y | 환불 계좌 등록 상태 코드<br><ul><li>`ALLOW`: 환불 계좌 등록 Open 상태</li><li>`DENY`: 환불 계좌 등록 Close 상태(기본값)</li></ul> |
 
 
 <a id="view-charge-summaries-by-scope"></a>
