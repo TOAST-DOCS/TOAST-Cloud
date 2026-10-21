@@ -3924,7 +3924,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   discountAmount | Long| Y | 약정 할인 금액  |
 |   discountTypeCode | String| N | 할인 유형 코드<br>BASIC, CONTRACT, OCP |
 |   prePaidAmount | Long| Y | 선결제 적용 금액  |
-|   costPlanOrderId | String| N | Optimized Cost Plans(OCPs) 주문 ID<br>`discountTypeCode`가 OCP일 때만 반환  |
+|   costPlanOrderId | String| N | Optimized Cost Plans(OCPs) 주문 ID<br>`discountTypeCode`가 `OCP`일 때만 반환  |
 
 
 <a id="view-charge-filter-dimensions"></a>
