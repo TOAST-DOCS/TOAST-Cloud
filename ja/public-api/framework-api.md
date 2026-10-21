@@ -1,6 +1,6 @@
 <!-- machine_translated: true -->
 
-<!-- pre-align:aligned sig=7c85e8979232 -->
+<!-- pre-align:aligned sig=5644502b19f1 -->
 
 # フレームワークAPI
 
@@ -59,6 +59,42 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 | project-app-key | String | 20文字 | プロジェクトのアプリキー |
 | product-app-key | String | 16文字 | サービスのアプリキー |
 | uuid | String | 36文字 | メンバーのUUID |
+
+<a id="common-cursor-paging"></a>
+#### カーソルページング
+
+リクエストパラメータに`cursor`、レスポンスに`nextCursor`があるAPIは、カーソル(cursor)方式で次のページを照会します。
+カーソルは、どこまで照会したかを示すブックマーク値です。ページ番号方式とは異なり、特定のページへ直接移動することはできず、最初のページから順番に照会します。
+
+| 区分 | 名前 | 説明 |
+|---|---|---|
+| リクエスト | `cursor` | 続けて照会する位置です。最初のページを照会する際は省略します。 |
+| リクエスト | `size` | 1ページで受け取る最大件数です。デフォルトと許容範囲はAPI別のリクエストパラメータを参照してください。 |
+| レスポンス | `nextCursor` | 次のページを照会する際に使用する値です。`null`の場合、これ以上照会するデータはありません。 |
+
+全件の結果を照会する方法は次のとおりです。
+
+1. 最初のページは`cursor`なしでリクエストします。
+
+    ```text
+GET /{APIパス}?{照会条件}&size=20
+    → リスト20件, "nextCursor": "Y3Vyc29yLWV4YW1wbGU"
+    ```
+
+2. レスポンスの`nextCursor`値を次のリクエストの`cursor`にそのまま設定してリクエストします。
+
+    ```text
+GET /{APIパス}?{照会条件}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
+    → リスト7件、"nextCursor": null
+    ```
+
+3. レスポンスの`nextCursor`が`null`になるまで2を繰り返します。上記の例では`nextCursor`が`null`のため、照会を終了します。
+
+!!! danger "注意"
+    * 次のページをリクエストする際、`cursor`、`size`を除いた照会条件は最初のリクエストと同じに維持する必要があります。
+    * 条件を変更してもエラーは発生しませんが、結果が欠落したり、意図と異なる結果が返される場合があります。
+    * 照会条件を変更する場合は、`cursor`なしで最初のページから再度照会します。
+    * `cursor`には、レスポンスとして受け取った`nextCursor`値をそのまま使用する必要があり、値を直接作成または修正しないでください。
 
 
 <a id="api"></a>
@@ -3577,6 +3613,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象メンバー(リソース所有者)のUUID<br>他のメンバーから[メンバーロール](../console-guide/#member-roles)を付与されて、そのメンバーのリソースを照会するときに入力<br>未入力の場合、ログインしたユーザーのUUIDで照会 |
 |  Query |month | String| Y | 請求月（yyyy-MM） |
 |  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ（複数）<br>未指定の場合、照会可能なすべての決済グループを照会します。 |
 
@@ -3682,13 +3719,14 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象メンバー(リソース所有者)のUUID<br>他のメンバーから[メンバーロール](../console-guide/#member-roles)を付与され、そのメンバーのリソースを照会する際に入力<br>未入力の場合、ログインしたユーザーのUUIDで照会 |
 |  Query |month | String| Y | 請求月(yyyy-MM)<br>2020-05以降のみサポート |
 |  Query |groupBy | String| Y | 集計基準(単一)<br><ul><li>BILLING_GROUP: ビリンググループ</li><li>ORG: 組織</li><li>PROJECT: プロジェクト</li></ul> |
 |  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ(複数、最大10件) |
 |  Query |billingGroupIds | List&lt;String>| N | ビリンググループIDフィルタ(複数、最大10件) |
 |  Query |orgIds | List&lt;String>| N | 組織IDフィルタ(複数、最大10件) |
 |  Query |projectIds | List&lt;String>| N | プロジェクトIDフィルタ(複数、最大10件) |
-|  Query |cursor | String| N | 次のページカーソル<br>未指定の場合、最初のページを照会 |
+|  Query |cursor | String| N | 次のページカーソル<br>未指定の場合、最初のページを照会<br>使い方は[カーソルページング](#common-cursor-paging)を参照 |
 |  Query |size | Integer| N | ページあたりの表示件数(10〜100)<br>デフォルト20 |
 
 <a id="view-charge-summaries-by-scope-response-body"></a>
@@ -3735,7 +3773,7 @@ IP ACL設定を照会するAPIです。
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#common-response)| Y   |
 |   groupBy | String| Y | リクエストした集計基準  |
-|   chargeSummaries | List&lt;ChargeSummary>| Y | 請求グループ、組織、プロジェクト別の利用金額リスト  |
+|   chargeSummaries | List&lt;ChargeSummary>| Y | 請求グループ、組織、プロジェクト別の利用金額リスト<br>`groupBy`に該当するID(`billingGroupId`、`orgId`、`projectId`)の昇順で並べ替え |
 |   nextCursor | String| N | 次のページカーソル<br>最後のページの場合はnull |
 
 ##### ChargeSummary
@@ -3784,6 +3822,7 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象のメンバー(リソースオーナー)のUUID<br>他のメンバーから[メンバーロール](../console-guide/#member-roles)を付与され、そのメンバーのリソースを照会する際に入力<br>未入力の場合、ログイン中のユーザーのUUIDで照会 |
 |  Query |month | String| Y | 請求月(yyyy-MM)<br>2020-05以降のみサポート |
 |  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ(複数、最大10件) |
 |  Query |billingGroupIds | List&lt;String>| N | ビリンググループIDフィルタ(複数、最大10件) |
@@ -3792,7 +3831,7 @@ IP ACL設定を照会するAPIです。
 |  Query |categoryMains | List&lt;String>| N | メインカテゴリフィルタ(複数、最大10件) |
 |  Query |regions | List&lt;String>| N | リージョンフィルタ(複数、最大10件) |
 |  Query |stationIds | List&lt;String>| N | ステーションIDフィルタ(複数、最大10件) |
-|  Query |cursor | String| N | 次ページカーソル<br>未指定の場合は先頭ページを照会 |
+|  Query |cursor | String| N | 次のページカーソル<br>未指定の場合、最初のページを照会<br>使い方は[カーソルページング](#common-cursor-paging)を参照 |
 |  Query |size | Integer| N | ページあたりの表示件数(10〜100)<br>デフォルト: 20 |
 
 <a id="view-individual-charge-lines-response-body"></a>
@@ -3840,7 +3879,7 @@ IP ACL設定を照会するAPIです。
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#common-response)| Y   |
-|   usages | List&lt;UsageLine>| Y | 詳細内訳リスト  |
+|   usages | List&lt;UsageLine>| Y | 詳細内訳リスト<br>詳細内訳の作成順で並べ替え |
 |   nextCursor | String| N | 次のページカーソル<br>最後のページの場合はnull |
 
 ##### UsageLine
@@ -3900,13 +3939,14 @@ IP ACL設定を照会するAPIです。
 
 | 区分 | 名前 | タイプ | 必須 | 説明  | 
 |------------- |------------- | ------------- | ------------- | ------------- | 
+|  Header |x-nhn-resource-owner-uuid | String| N | 照会対象メンバー（リソース所有者）のUUID<br>他のメンバーから[メンバーロール](../console-guide/#member-roles)を付与され、そのメンバーのリソースを照会する際に入力<br>未入力の場合、ログイン中のユーザーのUUIDで照会 |
 |  Query |dimension | String| Y | 照会する検索条件の区分（単一）<br><ul><li>PAYMENT_GROUP: 決済グループ</li><li>BILLING_GROUP: ビリンググループ</li><li>ORG: 組織</li><li>PROJECT: プロジェクト</li></ul> |
 |  Query |month | String| Y | 請求月（yyyy-MM）<br>2020-05以降のみサポート |
 |  Query |paymentGroupIds | List&lt;String>| N | 決済グループIDフィルタ（複数、最大10件） |
 |  Query |billingGroupIds | List&lt;String>| N | ビリンググループIDフィルタ（複数、最大10件） |
 |  Query |orgIds | List&lt;String>| N | 組織IDフィルタ（複数、最大10件） |
 |  Query |orgOwnerIds | List&lt;String>| N | 組織オーナーUUIDフィルタ（複数、最大10件）<br>該当請求月に指定したUUIDが所有する組織の利用料金がある値のみ返します。 |
-|  Query |cursor | String| N | 次のページカーソル<br>未指定の場合は最初のページを照会します |
+|  Query |cursor | String| N | 次のページカーソル<br>未指定の場合、最初のページを照会<br>使い方については[カーソルページング](#common-cursor-paging)を参照 |
 |  Query |size | Integer| N | 1ページあたりの表示件数（10〜100）<br>デフォルト20 |
 
 <a id="view-charge-filter-dimensions-response-body"></a>
@@ -3941,7 +3981,7 @@ IP ACL設定を照会するAPIです。
 |   uuid | String| Y | 照会対象メンバーUUID  |
 |   dimension | String| Y | 照会した検索条件の区分<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
 |   parentDimension | String| N | 上位検索条件の区分<br>最上位(PAYMENT_GROUP)の場合はnull |
-|   values | List&lt;DimensionValue>| Y | 検索条件区分別フィルタ選択肢リスト  |
+|   values | List&lt;DimensionValue>| Y | 検索条件区分別フィルタ選択肢リスト<br>識別子(`id`)昇順並べ替え |
 |   nextCursor | String| N | 次のページカーソル<br>最終ページの場合はnull |
 
 ##### DimensionValue
@@ -4207,8 +4247,7 @@ IP ACL設定を照会するAPIです。
 |   userAccessKeyID | String| N | User Access Key ID  |
 |   secretAccessKey | String| N | 秘密鍵 |
 |   tokenExpiryPeriod | Long| N | トークン有効期限(秒単位)
-
-|   tokenFormatCode | String | N | トークンフォーマットコード(OPAQUE、JWT) |
+|   tokenFormatCode | String | N | トークンフォーマットコード(OPAQUE, JWT) |
 
 <a id="delete-a-project-integrated-appkey"></a>
 ### プロジェクト統合Appkey削除 { #delete-a-project-integrated-appkey }
