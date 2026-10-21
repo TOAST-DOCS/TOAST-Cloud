@@ -3553,7 +3553,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   chargedTaxAmount | Long| Y | 실 부가세<br>크레딧·선결제·절사를 반영한 실 청구 금액 |
 |   chargedTotalAmount | Long| Y | 실 결제 금액<br>실 공급가액 + 실 부가세 + 연체료 |
 |   receiptStatusCode | String| Y | 매출 전표 상태 코드<br><ul><li>NONE: 매출 전표를 볼 수 없는 상태</li><li>EXIST: 매출 전표를 볼 수 있는 상태</li></ul> |
-|   refundAccountRegisterStatusCode | String| N | 환불 계좌 등록 상태 코드<br><ul><li>ALLOW: 환불 계좌 등록 Open 상태</li><li>DENY: 환불 계좌 등록 Close 상태(기본값)</li></ul> |
+|   refundAccountRegisterStatusCode | String| Y | 환불 계좌 등록 상태 코드<br><ul><li>ALLOW: 환불 계좌 등록 Open 상태</li><li>DENY: 환불 계좌 등록 Close 상태(기본값)</li></ul> |
 
 
 <a id="빌링-그룹-조직-프로젝트별-이용-금액-조회"></a>
@@ -3737,23 +3737,23 @@ IP ACL 설정을 조회하는 API입니다.
 
 | 이름 | 타입 | 필수 | 설명 |   
 |------------ | ------------- | ------------- | ------------ |
-|   projectId | String| N | 프로젝트 ID  |
-|   projectName | String| N | 프로젝트 이름  |
-|   resourceId | String| N | 리소스 ID  |
-|   resourceName | String| N | 리소스 이름  |
-|   parentResourceId | String| N | 부모 리소스 ID  |
-|   parentResourceName | String| N | 부모 리소스 이름  |
-|   counterName | String| N | 카운터 이름  |
-|   categoryMain | String| N | 메인 카테고리  |
-|   categorySub | String| N | 서브 카테고리  |
-|   regionTypeCode | String| N | 리전 타입 코드  |
-|   stationId | String| N | 스테이션 ID  |
-|   stationName | String| N | 스테이션 이름  |
-|   displayNameKo | String| N | 과금 단위 노출 이름(ko)  |
-|   displayNameEn | String| N | 과금 단위 노출 이름(en)  |
-|   displayNameJa | String| N | 과금 단위 노출 이름(ja)  |
-|   displayNameZh | String| N | 과금 단위 노출 이름(zh)  |
-|   unitName | String| N | 단위 이름  |
+|   projectId | String| Y | 프로젝트 ID  |
+|   projectName | String| Y | 프로젝트 이름  |
+|   resourceId | String| N | 리소스 ID<br>리소스 정보가 없으면 빈 문자열  |
+|   resourceName | String| N | 리소스 이름<br>리소스 정보가 없으면 빈 문자열  |
+|   parentResourceId | String| N | 부모 리소스 ID<br>부모 리소스 정보가 없으면 빈 문자열  |
+|   parentResourceName | String| N | 부모 리소스 이름<br>부모 리소스 정보가 없으면 빈 문자열  |
+|   counterName | String| Y | 카운터 이름  |
+|   categoryMain | String| Y | 메인 카테고리  |
+|   categorySub | String| Y | 서브 카테고리  |
+|   regionTypeCode | String| Y | 리전 타입 코드<br>리전 구분이 없으면 NONE  |
+|   stationId | String| N | 스테이션 ID<br>스테이션 단위 서비스일 때만 반환  |
+|   stationName | String| N | 스테이션 이름<br>스테이션 단위 서비스일 때만 반환  |
+|   displayNameKo | String| Y | 과금 단위 노출 이름(ko)  |
+|   displayNameEn | String| Y | 과금 단위 노출 이름(en)  |
+|   displayNameJa | String| Y | 과금 단위 노출 이름(ja)  |
+|   displayNameZh | String| Y | 과금 단위 노출 이름(zh)  |
+|   unitName | String| Y | 단위 이름  |
 |   unit | Long| Y | 과금 단위  |
 |   usageVolume | BigDecimal| Y | 사용량  |
 |   unitPrice | BigDecimal| Y | 종량제 단가  |
@@ -3763,7 +3763,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   discountAmount | Long| Y | 약정 할인 금액  |
 |   discountTypeCode | String| N | 할인 유형 코드<br>BASIC, CONTRACT, OCP |
 |   prePaidAmount | Long| Y | 선결제 적용 금액  |
-|   costPlanOrderId | String| N | Optimized Cost Plans(OCPs) 주문 ID  |
+|   costPlanOrderId | String| N | Optimized Cost Plans(OCPs) 주문 ID<br>`discountTypeCode`가 OCP일 때만 반환  |
 
 
 <a id="이용-금액-검색-조건-값-목록-조회"></a>
@@ -3837,7 +3837,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ------------- | ------------ |
 |   id | String| Y | 식별자  |
 |   name | String| Y | 표시명  |
-|   ownerId | String| N | 소유자 UUID<br>`dimension=ORG`, `dimension=PROJECT`는 소속 조직의 소유자 |
+|   ownerId | String| N | 소유자 UUID<br>`dimension=PAYMENT_GROUP`, `dimension=BILLING_GROUP`은 조회 대상 회원 UUID<br>`dimension=ORG`, `dimension=PROJECT`는 소속 조직의 소유자 |
 |   parentId | String| N | 상위 검색 조건 구분 식별자<br>최상위(결제 그룹)이면 응답에서 생략 |
 |   parentName | String| N | 상위 검색 조건 구분 표시명<br>최상위(결제 그룹)이면 응답에서 생략 |
 
