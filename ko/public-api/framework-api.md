@@ -3907,7 +3907,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   counterName | String| Y | 카운터 이름  |
 |   categoryMain | String| Y | 메인 카테고리  |
 |   categorySub | String| Y | 서브 카테고리  |
-|   regionTypeCode | String| Y | 리전 타입 코드<br>리전 구분이 없으면 NONE  |
+|   regionTypeCode | String| Y | 리전 타입 코드<br>리전 구분이 없으면 `NONE`  |
 |   stationId | String| N | 스테이션 ID<br>스테이션 단위 서비스일 때만 반환  |
 |   stationName | String| N | 스테이션 이름<br>스테이션 단위 서비스일 때만 반환  |
 |   displayNameKo | String| Y | 과금 단위 노출 이름(ko)  |
