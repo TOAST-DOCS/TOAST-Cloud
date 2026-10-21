@@ -74,7 +74,7 @@ A cursor is a bookmark value that indicates how far the data has been retrieved.
 |---|---|---|
 | Request | `cursor` | The position from which to continue retrieving. Omit this when retrieving the first page. |
 | Request | `size` | The maximum number of items to receive per page. For default values and allowed ranges, refer to the request parameters for each API. |
-| Response | `nextCursor` | The value used to retrieve the next page. If `null`, there is no more data to retrieve. |
+| Response | `nextCursor` | The value used to retrieve the next page. If not present in the response, there is no more data to retrieve. |
 
 To retrieve all results, follow these steps:
 
@@ -88,11 +88,11 @@ GET /{API path}?{query conditions}&size=20
 2. Use the `nextCursor` value from the response as the `cursor` in the next request.
 
     ```text
-GET /{API path}?{search conditions}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
-    → 7 items, "nextCursor": null
-    ```
+    GET /{API path}?{search conditions}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
+        → 7 items, no nextCursor
+        ```
 
-3. Repeat step 2 until the `nextCursor` in the response becomes `null`. In the example above, `nextCursor` is `null`, so retrieval ends.
+3. Repeat step 2 until the `nextCursor` is absent from the response. In the example above, `nextCursor` is absent, so retrieval ends.
 
 !!! danger "Caution"
     * When requesting the next page, keep all query conditions other than `cursor` and `size` the same as in the first request.
@@ -3707,7 +3707,7 @@ Retrieves the amount spent per payment statement.
 |   chargedTaxAmount | Long| Y | Actual VAT<br>Actual billing amount reflecting credits, prepayments, and truncation |
 |   chargedTotalAmount | Long| Y | Actual payment amount<br>Actual supply amount + actual VAT + late fee |
 |   receiptStatusCode | String| Y | Sales voucher status code<br><ul><li>NONE: Sales voucher cannot be viewed</li><li>EXIST: Sales voucher can be viewed</li></ul> |
-|   refundAccountRegisterStatusCode | String| N | Refund account registration status code<br><ul><li>ALLOW: Refund account registration open</li><li>DENY: Refund account registration closed (default)</li></ul> |
+|   refundAccountRegisterStatusCode | String| Y | Refund account registration status code<br><ul><li>`ALLOW`: Open status of refund account registration</li><li>`DENY`: Refund account registration closed (default)</li></ul> |
 
 
 <a id="view-charge-summaries-by-scope"></a>
@@ -3785,7 +3785,7 @@ Retrieves charge summaries aggregated by billing group, organization, or project
 |   header | [Common Response](#common-response)| Y   |
 |   groupBy | String| Y | Requested aggregation criteria  |
 |   chargeSummaries | List&lt;ChargeSummary>| Y | List of usage amounts by billing group, organization, and project<br>Sorted in Ascending Order by the ID (`billingGroupId`, `orgId`, `projectId`) corresponding to `groupBy` |
-|   nextCursor | String| N | Next page cursor<br>null if it is the last page |
+|   nextCursor | String| N | Next page cursor<br>Omitted from the response if it is the last page |
 
 ##### ChargeSummary
 
@@ -3891,29 +3891,29 @@ API to get the usage amount per individual charge line.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [Common response](#common-response)| Y   |
 |   usages | List&lt;UsageLine>| Y | Detailed list<br>Sorted in the order that detailed entries were created |
-|   nextCursor | String| N | Next page cursor<br>null if last page |
+|   nextCursor | String| N | Next page cursor<br>Omitted from the response if this is the last page |
 
 ##### UsageLine
 
 | Name | Type | Required | Description |   
 |------------ | ------------- | ------------- | ------------ |
-|   projectId | String| N | Project ID  |
-|   projectName | String| N | Project name  |
-|   resourceId | String| N | Resource ID  |
-|   resourceName | String| N | Resource name  |
-|   parentResourceId | String| N | Parent resource ID  |
-|   parentResourceName | String| N | Parent resource name  |
-|   counterName | String| N | Counter name  |
-|   categoryMain | String| N | Main category  |
-|   categorySub | String| N | Sub category  |
-|   regionTypeCode | String| N | Region type code  |
-|   stationId | String| N | Station ID  |
-|   stationName | String| N | Station name  |
-|   displayNameKo | String| N | Billing unit display name (ko)  |
-|   displayNameEn | String| N | Billing unit display name (en)  |
-|   displayNameJa | String| N | Billing unit display name (ja)  |
-|   displayNameZh | String| N | Billing unit display name (zh)  |
-|   unitName | String| N | Unit name  |
+|   projectId | String| Y | Project ID  |
+|   projectName | String| Y | Project name  |
+|   resourceId | String| N | Resource ID<br>Empty string if no resource information exists  |
+|   resourceName | String| N | Resource name<br>Empty string if no resource information exists  |
+|   parentResourceId | String| N | Parent resource ID<br>Empty string if no parent resource information exists  |
+|   parentResourceName | String| N | Parent resource name<br>Empty string if no parent resource information exists  |
+|   counterName | String| Y | Counter name  |
+|   categoryMain | String| Y | Main category  |
+|   categorySub | String| Y | Sub category  |
+|   regionTypeCode | String| Y | Region type code<br>`NONE` if no region classification exists  |
+|   stationId | String| N | Station ID<br>Returned only for station-level services  |
+|   stationName | String| N | Station name<br>Returned only for station-level services  |
+|   displayNameKo | String| Y | Billing unit display name (ko)  |
+|   displayNameEn | String| Y | Billing unit display name (en)  |
+|   displayNameJa | String| Y | Billing unit display name (ja)  |
+|   displayNameZh | String| Y | Billing unit display name (zh)  |
+|   unitName | String| Y | Unit name  |
 |   unit | Long| Y | Charging unit  |
 |   usageVolume | BigDecimal| Y | Usage  |
 |   unitPrice | BigDecimal| Y | Pay-as-you-go unit price  |
@@ -3923,7 +3923,7 @@ API to get the usage amount per individual charge line.
 |   discountAmount | Long| Y | Commitment discount amount  |
 |   discountTypeCode | String| N | Discount type code<br>BASIC, CONTRACT, OCP |
 |   prePaidAmount | Long| Y | Prepayment-applied amount  |
-|   costPlanOrderId | String| N | Optimized Cost Plans (OCPs) order ID  |
+|   costPlanOrderId | String| N | Optimized Cost Plans (OCPs) order ID<br>Returned only when `discountTypeCode` is `OCP`  |
 
 
 <a id="view-charge-filter-dimensions"></a>
@@ -3991,9 +3991,9 @@ This API retrieves a list of options for each search condition category (`dimens
 |   header | [Common Response](#common-response)| Y   |
 |   uuid | String| Y | UUID of the member to retrieve  |
 |   dimension | String| Y | Filter category of the retrieved search condition<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
-|   parentDimension | String| N | Parent filter category<br>null if it is the top level (PAYMENT_GROUP) |
+|   parentDimension | String| N | Parent search condition category<br>Omitted from the response if it is the top level (PAYMENT_GROUP) |
 |   values | List&lt;DimensionValue>| Y | List of filter options by filter category<br>Sorted by identifier (`id`) in Ascending Order |
-|   nextCursor | String| N | Next page cursor<br>null if it is the last page |
+|   nextCursor | String| N | Next page cursor<br>Omitted from the response if it is the last page |
 
 ##### DimensionValue
 
@@ -4001,9 +4001,9 @@ This API retrieves a list of options for each search condition category (`dimens
 |------------ | ------------- | ------------- | ------------ |
 |   id | String| Y | Identifier  |
 |   name | String| Y | Display name  |
-|   ownerId | String| N | Owner UUID<br>Owner of the affiliated organization if `dimension=ORG` or `dimension=PROJECT` |
-|   parentId | String| N | Identifier of the parent filter category<br>null if it is the top level (billing group) |
-|   parentName | String| N | Display name of the parent filter category<br>null if it is the top level (billing group) |
+|   ownerId | String| N | Owner UUID<br>Member UUID of the query target if `dimension=PAYMENT_GROUP` or `dimension=BILLING_GROUP`<br>Owner of the affiliated organization if `dimension=ORG` or `dimension=PROJECT` |
+|   parentId | String| N | Identifier of the parent filter category<br>Omitted from the response if it is the top level (billing group) |
+|   parentName | String| N | Display name of the parent filter category<br>Omitted from the response if it is the top level (billing group) |
 
 
 <a id="get-project-integrated-appkey"></a>
