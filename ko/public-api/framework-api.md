@@ -73,7 +73,7 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 |---|---|---|
 | 요청 | `cursor` | 이어서 조회할 위치입니다. 첫 페이지를 조회할 때는 생략합니다. |
 | 요청 | `size` | 한 페이지에 받을 최대 건수입니다. 기본값과 허용 범위는 API별 요청 파라미터를 참고하세요. |
-| 응답 | `nextCursor` | 다음 페이지를 조회할 때 사용할 값입니다. `null`이면 더 조회할 데이터가 없습니다. |
+| 응답 | `nextCursor` | 다음 페이지를 조회할 때 사용할 값입니다. 응답에 없으면 더 조회할 데이터가 없습니다. |
 
 전체 결과를 조회하는 방법은 다음과 같습니다.
 
@@ -88,10 +88,10 @@ Public API 반환 시 아래 헤더 부분이 응답 본문에 포함됩니다.
 
     ```text
     GET /{API 경로}?{조회 조건}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
-    → 목록 7건, "nextCursor": null
+    → 목록 7건, nextCursor 없음
     ```
 
-3. 응답의 `nextCursor`가 `null`이 될 때까지 2를 반복합니다. 위 예시에서는 `nextCursor`가 `null`이므로 조회를 종료합니다.
+3. 응답에 `nextCursor`가 없을 때까지 2를 반복합니다. 위 예시에서는 `nextCursor`가 없으므로 조회를 종료합니다.
 
 !!! danger "주의"
     * 다음 페이지를 요청할 때 `cursor`, `size`를 제외한 조회 조건은 첫 요청과 같게 유지해야 합니다.
@@ -3786,7 +3786,7 @@ IP ACL 설정을 조회하는 API입니다.
 |   header | [공통 응답](#common-response)| Y   |
 |   groupBy | String| Y | 요청한 집계 기준  |
 |   chargeSummaries | List&lt;ChargeSummary>| Y | 빌링 그룹, 조직, 프로젝트별 이용 금액 목록<br>`groupBy`에 해당하는 ID(`billingGroupId`, `orgId`, `projectId`) 오름차순 정렬 |
-|   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
+|   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 응답에서 생략 |
 
 ##### ChargeSummary
 
@@ -3892,7 +3892,7 @@ IP ACL 설정을 조회하는 API입니다.
 |------------ | ------------- | ----------- | ------------ |
 |   header | [공통 응답](#common-response)| Y   |
 |   usages | List&lt;UsageLine>| Y | 상세 내역 목록<br>상세 내역 생성 순서로 정렬 |
-|   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
+|   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 응답에서 생략 |
 
 ##### UsageLine
 
@@ -3992,9 +3992,9 @@ IP ACL 설정을 조회하는 API입니다.
 |   header | [공통 응답](#common-response)| Y   |
 |   uuid | String| Y | 조회 대상 회원 UUID  |
 |   dimension | String| Y | 조회한 검색 조건 구분<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
-|   parentDimension | String| N | 상위 검색 조건 구분<br>최상위(PAYMENT_GROUP)이면 null |
+|   parentDimension | String| N | 상위 검색 조건 구분<br>최상위(PAYMENT_GROUP)이면 응답에서 생략 |
 |   values | List&lt;DimensionValue>| Y | 검색 조건 구분별 필터 선택지 목록<br>식별자(`id`) 오름차순 정렬 |
-|   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 null |
+|   nextCursor | String| N | 다음 페이지 커서<br>마지막 페이지이면 응답에서 생략 |
 
 ##### DimensionValue
 
@@ -4003,8 +4003,8 @@ IP ACL 설정을 조회하는 API입니다.
 |   id | String| Y | 식별자  |
 |   name | String| Y | 표시명  |
 |   ownerId | String| N | 소유자 UUID<br>`dimension=ORG`, `dimension=PROJECT`는 소속 조직의 소유자 |
-|   parentId | String| N | 상위 검색 조건 구분 식별자<br>최상위(결제 그룹)이면 null |
-|   parentName | String| N | 상위 검색 조건 구분 표시명<br>최상위(결제 그룹)이면 null |
+|   parentId | String| N | 상위 검색 조건 구분 식별자<br>최상위(결제 그룹)이면 응답에서 생략 |
+|   parentName | String| N | 상위 검색 조건 구분 표시명<br>최상위(결제 그룹)이면 응답에서 생략 |
 
 
 <a id="get-project-integrated-appkey"></a>
