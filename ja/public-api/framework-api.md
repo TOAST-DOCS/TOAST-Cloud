@@ -70,25 +70,25 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 |---|---|---|
 | リクエスト | `cursor` | 続けて照会する位置です。最初のページを照会する際は省略します。 |
 | リクエスト | `size` | 1ページで受け取る最大件数です。デフォルトと許容範囲はAPI別のリクエストパラメータを参照してください。 |
-| レスポンス | `nextCursor` | 次のページを照会する際に使用する値です。`null`の場合、これ以上照会するデータはありません。 |
+| レスポンス | `nextCursor` | 次のページを照会する際に使用する値です。レスポンスに含まれない場合、これ以上照会するデータはありません。 |
 
 全件の結果を照会する方法は次のとおりです。
 
 1. 最初のページは`cursor`なしでリクエストします。
 
     ```text
-GET /{APIパス}?{照会条件}&size=20
+    GET /{APIパス}?{照会条件}&size=20
     → リスト20件, "nextCursor": "Y3Vyc29yLWV4YW1wbGU"
     ```
 
 2. レスポンスの`nextCursor`値を次のリクエストの`cursor`にそのまま設定してリクエストします。
 
     ```text
-GET /{APIパス}?{照会条件}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
-    → リスト7件、"nextCursor": null
+    GET /{APIパス}?{照会条件}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
+    → リスト7件、nextCursor なし
     ```
 
-3. レスポンスの`nextCursor`が`null`になるまで2を繰り返します。上記の例では`nextCursor`が`null`のため、照会を終了します。
+3. レスポンスに`nextCursor`がなくなるまで2を繰り返します。上記の例では`nextCursor`がないため、照会を終了します。
 
 !!! danger "注意"
     * 次のページをリクエストする際、`cursor`、`size`を除いた照会条件は最初のリクエストと同じに維持する必要があります。
@@ -3696,7 +3696,7 @@ IP ACL設定を照会するAPIです。
 |   chargedTaxAmount | Long| Y | 実消費税<br>クレジット・前払い・切り捨てを反映した実請求金額 |
 |   chargedTotalAmount | Long| Y | 実決済金額<br>実供給価額＋実消費税＋延滞料 |
 |   receiptStatusCode | String| Y | 売上伝票ステータスコード<br><ul><li>NONE: 売上伝票を表示できない状態</li><li>EXIST: 売上伝票を表示できる状態</li></ul> |
-|   refundAccountRegisterStatusCode | String| N | 返金口座登録ステータスコード<br><ul><li>ALLOW: 返金口座登録Open状態</li><li>DENY: 返金口座登録Close状態（デフォルト）</li></ul> |
+|   refundAccountRegisterStatusCode | String| Y | 返金口座登録ステータスコード<br><ul><li>`ALLOW`: 返金口座登録Open状態</li><li>`DENY`: 返金口座登録Close状態（デフォルト）</li></ul> |
 
 
 <a id="view-charge-summaries-by-scope"></a>
@@ -3774,7 +3774,7 @@ IP ACL設定を照会するAPIです。
 |   header | [共通レスポンス](#common-response)| Y   |
 |   groupBy | String| Y | リクエストした集計基準  |
 |   chargeSummaries | List&lt;ChargeSummary>| Y | 請求グループ、組織、プロジェクト別の利用金額リスト<br>`groupBy`に該当するID(`billingGroupId`、`orgId`、`projectId`)の昇順で並べ替え |
-|   nextCursor | String| N | 次のページカーソル<br>最後のページの場合はnull |
+|   nextCursor | String| N | 次のページカーソル<br>最後のページの場合はレスポンスから省略 |
 
 ##### ChargeSummary
 
@@ -3880,29 +3880,29 @@ IP ACL設定を照会するAPIです。
 |------------ | ------------- | ----------- | ------------ |
 |   header | [共通レスポンス](#common-response)| Y   |
 |   usages | List&lt;UsageLine>| Y | 詳細内訳リスト<br>詳細内訳の作成順で並べ替え |
-|   nextCursor | String| N | 次のページカーソル<br>最後のページの場合はnull |
+|   nextCursor | String| N | 次のページカーソル<br>最後のページの場合はレスポンスから省略 |
 
 ##### UsageLine
 
 | 名前 | タイプ | 必須 | 説明 |   
 |------------ | ------------- | ------------- | ------------ |
-|   projectId | String| N | プロジェクトID  |
-|   projectName | String| N | プロジェクト名  |
-|   resourceId | String| N | リソースID  |
-|   resourceName | String| N | リソース名  |
-|   parentResourceId | String| N | 親リソースID  |
-|   parentResourceName | String| N | 親リソース名  |
-|   counterName | String| N | カウンター名  |
-|   categoryMain | String| N | メインカテゴリ  |
-|   categorySub | String| N | サブカテゴリ  |
-|   regionTypeCode | String| N | リージョンタイプコード  |
-|   stationId | String| N | ステーションID  |
-|   stationName | String| N | ステーション名  |
-|   displayNameKo | String| N | 課金単位表示名(ko)  |
-|   displayNameEn | String| N | 課金単位表示名(en)  |
-|   displayNameJa | String| N | 課金単位表示名(ja)  |
-|   displayNameZh | String| N | 課金単位表示名(zh)  |
-|   unitName | String| N | 単位名  |
+|   projectId | String| Y | プロジェクトID  |
+|   projectName | String| Y | プロジェクト名  |
+|   resourceId | String| N | リソースID<br>リソース情報がない場合は空文字列  |
+|   resourceName | String| N | リソース名<br>リソース情報がない場合は空文字列  |
+|   parentResourceId | String| N | 親リソースID<br>親リソース情報がない場合は空文字列  |
+|   parentResourceName | String| N | 親リソース名<br>親リソース情報がない場合は空文字列  |
+|   counterName | String| Y | カウンター名  |
+|   categoryMain | String| Y | メインカテゴリ  |
+|   categorySub | String| Y | サブカテゴリ  |
+|   regionTypeCode | String| Y | リージョンタイプコード<br>リージョン区分がない場合は`NONE`  |
+|   stationId | String| N | ステーションID<br>ステーション単位のサービスの場合のみ返されます  |
+|   stationName | String| N | ステーション名<br>ステーション単位のサービスの場合のみ返されます  |
+|   displayNameKo | String| Y | 課金単位表示名(ko)  |
+|   displayNameEn | String| Y | 課金単位表示名(en)  |
+|   displayNameJa | String| Y | 課金単位表示名(ja)  |
+|   displayNameZh | String| Y | 課金単位表示名(zh)  |
+|   unitName | String| Y | 単位名  |
 |   unit | Long| Y | 課金単位  |
 |   usageVolume | BigDecimal| Y | 使用量  |
 |   unitPrice | BigDecimal| Y | 従量制単価  |
@@ -3912,7 +3912,7 @@ IP ACL設定を照会するAPIです。
 |   discountAmount | Long| Y | 契約割引金額  |
 |   discountTypeCode | String| N | 割引タイプコード<br>BASIC, CONTRACT, OCP |
 |   prePaidAmount | Long| Y | 前払い適用金額  |
-|   costPlanOrderId | String| N | Optimized Cost Plans(OCPs) 注文ID  |
+|   costPlanOrderId | String| N | Optimized Cost Plans(OCPs) 注文ID<br>`discountTypeCode`が`OCP`の場合のみ返されます  |
 
 
 <a id="view-charge-filter-dimensions"></a>
@@ -3980,9 +3980,9 @@ IP ACL設定を照会するAPIです。
 |   header | [共通レスポンス](#common-response)| Y   |
 |   uuid | String| Y | 照会対象メンバーUUID  |
 |   dimension | String| Y | 照会した検索条件の区分<br>PAYMENT_GROUP, BILLING_GROUP, ORG, PROJECT |
-|   parentDimension | String| N | 上位検索条件の区分<br>最上位(PAYMENT_GROUP)の場合はnull |
+|   parentDimension | String| N | 上位検索条件の区分<br>最上位(PAYMENT_GROUP)の場合はレスポンスから省略 |
 |   values | List&lt;DimensionValue>| Y | 検索条件区分別フィルタ選択肢リスト<br>識別子(`id`)昇順並べ替え |
-|   nextCursor | String| N | 次のページカーソル<br>最終ページの場合はnull |
+|   nextCursor | String| N | 次のページカーソル<br>最終ページの場合はレスポンスから省略 |
 
 ##### DimensionValue
 
@@ -3990,9 +3990,9 @@ IP ACL設定を照会するAPIです。
 |------------ | ------------- | ------------- | ------------ |
 |   id | String| Y | 識別子  |
 |   name | String| Y | 表示名  |
-|   ownerId | String| N | 所有者UUID<br>`dimension=ORG`、`dimension=PROJECT`の場合は所属組織の所有者 |
-|   parentId | String| N | 上位検索条件区分の識別子<br>最上位(決済グループ)の場合はnull |
-|   parentName | String| N | 上位検索条件区分の表示名<br>最上位(決済グループ)の場合はnull |
+|   ownerId | String| N | 所有者UUID<br>`dimension=PAYMENT_GROUP`、`dimension=BILLING_GROUP`は照会対象メンバーUUID<br>`dimension=ORG`、`dimension=PROJECT`の場合は所属組織の所有者 |
+|   parentId | String| N | 上位検索条件区分の識別子<br>最上位(決済グループ)の場合はレスポンスから省略 |
+|   parentName | String| N | 上位検索条件区分の表示名<br>最上位(決済グループ)の場合はレスポンスから省略 |
 
 
 <a id="get-project-integrated-appkey"></a>
