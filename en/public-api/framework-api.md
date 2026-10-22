@@ -81,7 +81,7 @@ To retrieve all results, follow these steps:
 1. Request the first page without `cursor`.
 
     ```text
-GET /{API path}?{query conditions}&size=20
+    GET /{API path}?{query conditions}&size=20
     → 20 items in the list, "nextCursor": "Y3Vyc29yLWV4YW1wbGU"
     ```
 
@@ -89,8 +89,8 @@ GET /{API path}?{query conditions}&size=20
 
     ```text
     GET /{API path}?{search conditions}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
-        → 7 items, no nextCursor
-        ```
+    → 7 items, no nextCursor
+    ```
 
 3. Repeat step 2 until the `nextCursor` is absent from the response. In the example above, `nextCursor` is absent, so retrieval ends.
 

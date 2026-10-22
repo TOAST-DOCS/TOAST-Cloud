@@ -77,7 +77,7 @@ Public APIの返却時、下記のヘッダ部分がレスポンス本文に含�
 1. 最初のページは`cursor`なしでリクエストします。
 
     ```text
-GET /{APIパス}?{照会条件}&size=20
+    GET /{APIパス}?{照会条件}&size=20
     → リスト20件, "nextCursor": "Y3Vyc29yLWV4YW1wbGU"
     ```
 
@@ -85,8 +85,8 @@ GET /{APIパス}?{照会条件}&size=20
 
     ```text
     GET /{APIパス}?{照会条件}&size=20&cursor=Y3Vyc29yLWV4YW1wbGU
-        → リスト7件、nextCursor なし
-        ```
+    → リスト7件、nextCursor なし
+    ```
 
 3. レスポンスに`nextCursor`がなくなるまで2を繰り返します。上記の例では`nextCursor`がないため、照会を終了します。
 
