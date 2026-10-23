@@ -18,7 +18,7 @@ NHN Cloudユーザーは、サービス地域と目的に応じて使用する�
 <a id="location-of-toat-regions"></a>
 ## NHN Cloudリージョン位置 { #location-of-toat-regions }
 NHN Cloudは、グローバルなサービスを提供するために、多くの地域にリージョンを拡大しています。
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_KR.png)
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_JP.png)
 
 <a id="nhn-cloud-regional-service"></a>
 ## NHN Cloudリージョンサービス { #nhn-cloud-regional-service }

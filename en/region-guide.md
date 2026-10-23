@@ -18,7 +18,7 @@ NHN Cloud users are allowed to select regions depending on the service area and 
 <a id="location-of-toat-regions"></a>
 ## NHN Cloud Region Locations { #location-of-toat-regions }
 NHN Cloud is expanding its regions to more areas to provide global services.
-![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_KR.png)
+![region_guide%2001.png](https://static.toastoven.net/toast/region_guide/Docs_NHNCloud_Region-Guide_EN.png)
 
 <a id="nhn-cloud-regional-service"></a>
 ## NHN Cloud Regional Service { #nhn-cloud-regional-service }
