@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=9aeb11dc43e9 -->
 
 # User Access Keyトークン
@@ -483,3 +485,168 @@ public void verifyToken(String token) throws Exception {
     User Access Keyトークンは、エラー発生時に [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)と同様のエラーコードを返します。トークンリクエストAPI呼び出し、トークン失効リクエストAPI呼び出し、トークン使用などの状況で返される可能性のあるエラーコードは、[フレームワークAPIガイド](./framework-api/#_281)で確認できます。
 
     
+
+<a id="issue-iaas-token-with-user-access-key"></a>
+## User Access KeyでIaaSトークンを発行する { #issue-iaas-token-with-user-access-key }
+> `POST /iaas-tokens/v3/auth/tokens`
+
+User Access Keyを使用して、基本インフラサービス(IaaS)の認証トークンを発行できます。発行したIaaSトークンを使用して、Compute、Block Storage、Networkなどのインフラリソース制御APIを呼び出します。
+
+基本インフラサービスのIdentity APIを直接呼び出す方式とは異なり、APIパスワードを設定したり、テナントIDを確認したりする必要はありません。リクエストとレスポンスはOpenStack Keystone v3仕様に準拠しているため、OpenStack CLIとSDKでも使用できます。IaaSトークンの使い方とサービス別エンドポイントは[IaaSトークン](./iaas-token/)で確認できます。
+
+!!! tip "ポイント"
+    * このAPIで発行したIaaSトークンの有効時間は12時間に固定されており、変更することはできません。
+    * 別途の認証ヘッダは必要ありません。User Access Key IDとSecret Access Keyをリクエストボディに含めて送信します。
+
+<a id="issue-iaas-token-prerequisites"></a>
+### 事前条件 { #issue-iaas-token-prerequisites }
+
+* **Opaqueタイプ**のUser Access Keyのみ使用できます。JWTタイプのUser Access KeyではIaaSトークンを発行できません。
+* トークンを発行するプロジェクトにInstanceまたはObject Storageサービスが有効化されている必要があります。
+* User Access Keyを作成したアカウントが該当プロジェクトの権限を持っている必要があります。
+
+<a id="issue-iaas-token-request"></a>
+### リクエスト { #issue-iaas-token-request }
+
+| 区分           | 名前                                   | タイプ     | 必須  | 値                | 説明                                                                                                            |
+|--------------|--------------------------------------|--------|-----|------------------|---------------------------------------------------------------------------------------------------------------|
+| Header       | Content-Type                         | String | Yes | application/json |                                                                                                                 |
+| Request Body | auth.identity.methods                | Array  | Yes | ["password"]     | 認証方式の一覧です。`password`のみサポートします。                                                                               |
+| Request Body | auth.identity.password.user.id       | String | Yes |                  | User Access Key ID                                                                                              |
+| Request Body | auth.identity.password.user.password | String | Yes |                  | Secret Access Key                                                                                               |
+| Request Body | auth.scope.project.id                | String | Yes |                  | トークンを発行するサービスのAppkey。InstanceまたはObject StorageのAppkeyを使用し、このAppkeyで対象プロジェクトを識別します。Appkeyの確認方法は[Appkey](./appkey/)を参照してください。 |
+
+<a id="issue-iaas-token-response"></a>
+### レスポンス { #issue-iaas-token-response }
+
+発行されたIaaSトークンはレスポンス本文ではなく、`X-Subject-Token`ヘッダに格納されて返されます。
+
+| 区分     | 名前               | タイプ     | 説明                            |
+|--------|------------------|--------|-------------------------------|
+| Header | X-Subject-Token  | String | 発行されたIaaSトークン                   |
+| Body   | token.issued_at  | String | トークン発行時刻                      |
+| Body   | token.expires_at | String | トークン有効期限時刻。発行時刻から12時間後です |
+| Body   | token.project    | Object | トークンが適用されるプロジェクト情報              |
+| Body   | token.user       | Object | トークンを発行されたユーザーの情報               |
+| Body   | token.roles      | Array  | 対象プロジェクトでユーザーに付与されたロール一覧     |
+| Body   | token.catalog    | Array  | 使用できるサービスエンドポイントの一覧         |
+
+<a id="issue-iaas-token-request-example"></a>
+### リクエスト例 { #issue-iaas-token-request-example }
+
+* curl
+
+```sh
+curl -X POST "https://oauth.api.nhncloudservice.com/iaas-tokens/v3/auth/tokens" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "auth": {
+          "identity": {
+            "methods": ["password"],
+            "password": {
+              "user": {
+                "id": "flyKphnHuI6sDRglmma6",
+                "password": "yjZRN9uX71IHAiFS"
+              }
+            }
+          },
+          "scope": {
+            "project": {
+              "id": "r9Zd7vDEmWMfQb00"
+            }
+          }
+        }
+      }'
+```
+
+<a id="issue-iaas-token-response-example"></a>
+### レスポンス例 { #issue-iaas-token-response-example }
+
+* レスポンスヘッダ
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+X-Subject-Token: gAAAAABnDqW1x3TQZ8kP2mN7vL4hR9sE6yU1aI0oF5cB3dG7jK2nM8pQ4rS6tV9wX1zY
+```
+
+* レスポンス本文
+
+<details><summary>例</summary>
+<p>
+
+```json
+{
+  "token": {
+    "methods": [
+      "password"
+    ],
+    "issued_at": "2026-10-13T02:35:05.000000Z",
+    "expires_at": "2026-10-13T14:35:05.000000Z",
+    "project": {
+      "id": "f5073eaa26b64cffbee89411df94ce01",
+      "name": "example-project",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "user": {
+      "id": "a1b2c3d4e5f6478899aabbccddeeff00",
+      "name": "example-user",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "roles": [
+      {
+        "id": "21b7753ad7b54f1284af6e292cb35bea",
+        "name": "project_reader"
+      }
+    ],
+    "catalog": [
+      {
+        "type": "compute",
+        "name": "nova",
+        "endpoints": [
+          {
+            "region": "KR1",
+            "interface": "public",
+            "url": "https://kr1-api-instance-infrastructure.nhncloudservice.com/v2/f5073eaa26b64cffbee89411df94ce01"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</p>
+</details>
+
+<a id="issue-iaas-token-error-response"></a>
+### エラーレスポンス { #issue-iaas-token-error-response }
+
+エラーが発生した場合、OpenStack Keystone仕様のエラーレスポンスを返します。
+
+| HTTPステータスコード              | 説明                                                                     |
+|---------------------------|------------------------------------------------------------------------|
+| 400 Bad Request           | リクエスト形式が正しくない場合                                                      |
+| 401 Unauthorized          | User Access KeyまたはSecret Access Keyが有効でない場合、またはリクエストされたAppkeyでトークンを発行できない場合 |
+| 500 Internal Server Error | サーバー内部エラーが発生した場合                                                       |
+
+```json
+{
+  "error": {
+    "code": 401,
+    "message": "The request you have made requires authentication.",
+    "title": "Unauthorized"
+  }
+}
+```
+
+!!! danger "注意"
+    * User Access KeyまたはSecret Access Keyが一致しない場合、またはUser Access Keyが使用停止状態の場合、トークンは発行されません。
+    * リクエストされたAppkeyのプロジェクトで該当サービスが有効化されていない場合、トークンは発行されません。
+    * ユーザーがプロジェクトで権限を失った場合、発行済みのIaaSトークンは使用できません。
