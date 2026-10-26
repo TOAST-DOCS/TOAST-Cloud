@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=07d03063e3a6 -->
 
 # IaaS Token
@@ -244,6 +246,9 @@ POST /v2.0/tokens
 </p>
 </details>
 
+
+!!! tip "Note"
+    You can also issue an IaaS Token using a User Access Key. This method follows the OpenStack Keystone v3 specification, so you do not need to set an API password or check a Tenant ID. For more information, see [Issue IaaS Token with User Access Key](./user-access-key-token/#issue-iaas-token-with-user-access-key).
 
 <a id="use-iaas-tokens"></a>
 ## Use IaaS tokens { #use-iaas-tokens }
