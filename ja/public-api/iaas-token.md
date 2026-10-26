@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=07d03063e3a6 -->
 
 # IaaSトークン
@@ -244,6 +246,9 @@ POST /v2.0/tokens
 </p>
 </details>
 
+
+!!! tip "ポイント"
+    User Access KeyでもIaaSトークンを発行できます。この方式はOpenStack Keystone v3の仕様に従っており、APIパスワードを設定したり、テナントIDを確認したりする必要はありません。詳細については、[User Access KeyでIaaSトークンを発行する](./user-access-key-token/#issue-iaas-token-with-user-access-key)を参照してください。
 
 <a id="use-iaas-tokens"></a>
 ## IaaSトークンの使用 { #use-iaas-tokens }
