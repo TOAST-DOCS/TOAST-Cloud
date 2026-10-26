@@ -285,3 +285,159 @@ X-NHN-Authorization: Bearer {Access Token}
     User Access Key 토큰은 오류 발생 시 [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2)와 동일한 오류 코드를 반환합니다. 토큰 요청 API 호출, 토큰 만료 요청 API 호출, 토큰 사용 등의 상황에 반환될 수 있는 오류 코드는 [프레임워크 API 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api-gov)에서 확인할 수 있습니다.
 
     
+## User Access Key로 IaaS 토큰 발급받기
+> `POST /iaas-tokens/v3/auth/tokens`
+
+User Access Key로 기본 인프라 서비스(IaaS)의 인증 토큰을 발급받을 수 있습니다. 발급받은 IaaS 토큰으로 Compute, Block Storage, Network 등 인프라 리소스 제어 API를 호출합니다.
+
+기본 인프라 서비스의 Identity API를 직접 호출하는 방식과 달리 API 비밀번호를 설정하거나 테넌트 ID를 확인하지 않아도 됩니다. 요청과 응답은 OpenStack Keystone v3 규격을 따르므로 OpenStack CLI와 SDK에서도 사용할 수 있습니다. IaaS 토큰의 사용 방법과 서비스별 엔드포인트는 [IaaS 토큰](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/iaas-token-gov)에서 확인할 수 있습니다.
+
+!!! tip "알아두기"
+    * 이 API로 발급한 IaaS 토큰의 유효 시간은 12시간으로 고정되어 있으며 변경할 수 없습니다.
+    * 별도의 인증 헤더가 필요하지 않습니다. User Access Key ID와 Secret Access Key를 요청 본문에 담아 전달합니다.
+
+### 사전 조건
+
+* 토큰을 발급받을 프로젝트에 Instance 또는 Object Storage 서비스가 활성화되어 있어야 합니다.
+* User Access Key를 생성한 계정이 해당 프로젝트 권한을 가지고 있어야 합니다.
+
+### 요청
+
+| 구분           | 이름                                   | 타입     | 필수  | 값                | 설명                                                                                                            |
+|--------------|--------------------------------------|--------|-----|------------------|---------------------------------------------------------------------------------------------------------------|
+| Header       | Content-Type                         | String | Yes | application/json |                                                                                                                 |
+| Request Body | auth.identity.methods                | Array  | Yes | ["password"]     | 인증 방식 목록. `password`만 지원합니다                                                                                   |
+| Request Body | auth.identity.password.user.id       | String | Yes |                  | User Access Key ID                                                                                              |
+| Request Body | auth.identity.password.user.password | String | Yes |                  | Secret Access Key                                                                                               |
+| Request Body | auth.scope.project.id                | String | Yes |                  | 토큰을 발급받을 서비스의 Appkey. Instance 또는 Object Storage의 Appkey를 사용하며, 이 Appkey로 대상 프로젝트를 식별합니다. Appkey 확인 방법은 [Appkey](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/appkey-gov)를 참고하세요 |
+
+### 응답
+
+발급된 IaaS 토큰은 응답 본문이 아닌 `X-Subject-Token` 헤더에 담겨 반환됩니다.
+
+| 구분     | 이름               | 타입     | 설명                            |
+|--------|------------------|--------|-------------------------------|
+| Header | X-Subject-Token  | String | 발급된 IaaS 토큰                   |
+| Body   | token.issued_at  | String | 토큰 발급 시각                      |
+| Body   | token.expires_at | String | 토큰 만료 시각. 발급 시각으로부터 12시간 뒤입니다 |
+| Body   | token.project    | Object | 토큰이 적용되는 프로젝트 정보              |
+| Body   | token.user       | Object | 토큰을 발급받은 사용자 정보               |
+| Body   | token.roles      | Array  | 해당 프로젝트에서 사용자에게 부여된 역할 목록     |
+| Body   | token.catalog    | Array  | 사용할 수 있는 서비스 엔드포인트 목록         |
+
+### 요청 예시
+
+* curl
+
+```sh
+curl -X POST "https://oauth.api.gov-nhncloudservice.com/iaas-tokens/v3/auth/tokens" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "auth": {
+          "identity": {
+            "methods": ["password"],
+            "password": {
+              "user": {
+                "id": "flyKphnHuI6sDRglmma6",
+                "password": "yjZRN9uX71IHAiFS"
+              }
+            }
+          },
+          "scope": {
+            "project": {
+              "id": "r9Zd7vDEmWMfQb00"
+            }
+          }
+        }
+      }'
+```
+
+### 응답 예시
+
+* 응답 헤더
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+X-Subject-Token: gAAAAABnDqW1x3TQZ8kP2mN7vL4hR9sE6yU1aI0oF5cB3dG7jK2nM8pQ4rS6tV9wX1zY
+```
+
+* 응답 본문
+
+<details><summary>예시</summary>
+<p>
+
+```json
+{
+  "token": {
+    "methods": [
+      "password"
+    ],
+    "issued_at": "2026-10-13T02:35:05.000000Z",
+    "expires_at": "2026-10-13T14:35:05.000000Z",
+    "project": {
+      "id": "f5073eaa26b64cffbee89411df94ce01",
+      "name": "example-project",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "user": {
+      "id": "a1b2c3d4e5f6478899aabbccddeeff00",
+      "name": "example-user",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "roles": [
+      {
+        "id": "21b7753ad7b54f1284af6e292cb35bea",
+        "name": "project_reader"
+      }
+    ],
+    "catalog": [
+      {
+        "type": "compute",
+        "name": "nova",
+        "endpoints": [
+          {
+            "region": "KR1",
+            "interface": "public",
+            "url": "https://kr1-api-instance-infrastructure.gov-nhncloudservice.com/v2/f5073eaa26b64cffbee89411df94ce01"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</p>
+</details>
+
+### 오류 응답
+
+오류가 발생하면 OpenStack Keystone 규격의 오류 응답을 반환합니다.
+
+| HTTP 상태 코드                 | 설명                                                                     |
+|---------------------------|------------------------------------------------------------------------|
+| 400 Bad Request           | 요청 형식이 올바르지 않은 경우                                                      |
+| 401 Unauthorized          | User Access Key 또는 Secret Access Key가 유효하지 않거나, 요청한 Appkey로 토큰을 발급받을 수 없는 경우 |
+| 500 Internal Server Error | 서버 내부 오류가 발생한 경우                                                       |
+
+```json
+{
+  "error": {
+    "code": 401,
+    "message": "The request you have made requires authentication.",
+    "title": "Unauthorized"
+  }
+}
+```
+
+!!! danger "주의"
+    * User Access Key 또는 Secret Access Key가 일치하지 않거나 User Access Key가 사용 중지 상태이면 토큰이 발급되지 않습니다.
+    * 요청한 Appkey의 프로젝트에 해당 서비스가 활성화되어 있지 않으면 토큰이 발급되지 않습니다.
+    * 사용자가 프로젝트에서 권한을 잃을 경우 발급된 IaaS 토큰은 사용할 수 없습니다.
