@@ -245,6 +245,10 @@ POST /v2.0/tokens
 </details>
 
 
+!!! tip "알아두기"
+    User Access Key로도 IaaS 토큰을 발급받을 수 있습니다. 이 방식은 OpenStack Keystone v3 규격을 따르며, API 비밀번호를 설정하거나 테넌트 ID를 확인하지 않아도 됩니다. 자세한 내용은 [User Access Key로 IaaS 토큰 발급받기](./user-access-key-token/#issue-iaas-token-with-user-access-key)를 참고하세요.
+
+
 <a id="use-iaas-tokens"></a>
 ## IaaS 토큰 사용하기 { #use-iaas-tokens }
 
