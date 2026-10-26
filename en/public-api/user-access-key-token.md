@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=9aeb11dc43e9 -->
 
 # User Access Key Token
@@ -480,3 +482,168 @@ public void verifyToken(String token) throws Exception {
     User Access Key Tokens return the same error codes as defined in [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2). For details on error codes returned during token issuance, revocation, or usage, please refer to the [Framework API Guide](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/framework-api/#_281).
 
     
+
+<a id="issue-iaas-token-with-user-access-key"></a>
+## Issue IaaS Token with User Access Key { #issue-iaas-token-with-user-access-key }
+> `POST /iaas-tokens/v3/auth/tokens`
+
+You can issue an authentication token for the basic infrastructure service (IaaS) using a User Access Key. Use the issued IaaS Token to call APIs for controlling infrastructure resources such as Compute, Block Storage, and Network.
+
+Unlike calling the Identity API of the basic infrastructure service directly, you do not need to configure an API password or check the Tenant ID. Requests and responses follow the OpenStack Keystone v3 specification, so they can also be used with the OpenStack CLI and SDK. For details on how to use IaaS Tokens and service-specific endpoints, see [IaaS Token](./iaas-token/).
+
+!!! tip "Note"
+    * The validity time of an IaaS Token issued through this API is fixed at 12 hours and cannot be changed.
+    * No separate authentication header is required. Include the User Access Key ID and Secret Access Key in the request body.
+
+<a id="issue-iaas-token-prerequisites"></a>
+### Prerequisites { #issue-iaas-token-prerequisites }
+
+* Only **Opaque type** User Access Keys can be used. IaaS Tokens cannot be issued with JWT type User Access Keys.
+* The Instance or Object Storage service must be enabled in the project for which you want to issue a token.
+* The account that created the User Access Key must have permission for the relevant project.
+
+<a id="issue-iaas-token-request"></a>
+### Request { #issue-iaas-token-request }
+
+| Category       | Name                                   | Type   | Required | Value             | Description                                                                                                            |
+|--------------|--------------------------------------|--------|-----|------------------|---------------------------------------------------------------------------------------------------------------|
+| Header       | Content-Type                         | String | Yes | application/json |                                                                                                                 |
+| Request Body | auth.identity.methods                | Array  | Yes | ["password"]     | List of authentication methods. Only `password` is supported.                                                                                   |
+| Request Body | auth.identity.password.user.id       | String | Yes |                  | User Access Key ID                                                                                              |
+| Request Body | auth.identity.password.user.password | String | Yes |                  | Secret Access Key                                                                                               |
+| Request Body | auth.scope.project.id                | String | Yes |                  | AppKey of the service for which the token is to be issued. Uses the AppKey of Instance or Object Storage, and identifies the Target project with this AppKey. For information on how to check the AppKey, see [Appkey](./appkey/). |
+
+<a id="issue-iaas-token-response"></a>
+### Response { #issue-iaas-token-response }
+
+The issued IaaS Token is returned in the `X-Subject-Token` header, not in the response body.
+
+| Category | Name               | Type   | Description                                                      |
+|----------|--------------------|--------|------------------------------------------------------------------|
+| Header   | X-Subject-Token    | String | Issued IaaS Token                                                |
+| Body     | token.issued_at    | String | Token issuance time                                              |
+| Body     | token.expires_at   | String | Token expiration time. This is 12 hours after the issuance time. |
+| Body     | token.project      | Object | Information about the project to which the token applies         |
+| Body     | token.user         | Object | Information about the user who received the token                |
+| Body     | token.roles        | Array  | List of roles assigned to the user in the project                |
+| Body     | token.catalog      | Array  | List of available service endpoints                              |
+
+<a id="issue-iaas-token-request-example"></a>
+### Request Example { #issue-iaas-token-request-example }
+
+* curl
+
+```sh
+curl -X POST "https://oauth.api.nhncloudservice.com/iaas-tokens/v3/auth/tokens" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "auth": {
+          "identity": {
+            "methods": ["password"],
+            "password": {
+              "user": {
+                "id": "flyKphnHuI6sDRglmma6",
+                "password": "yjZRN9uX71IHAiFS"
+              }
+            }
+          },
+          "scope": {
+            "project": {
+              "id": "r9Zd7vDEmWMfQb00"
+            }
+          }
+        }
+      }'
+```
+
+<a id="issue-iaas-token-response-example"></a>
+### Response Examples { #issue-iaas-token-response-example }
+
+* Response Header
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+X-Subject-Token: gAAAAABnDqW1x3TQZ8kP2mN7vL4hR9sE6yU1aI0oF5cB3dG7jK2nM8pQ4rS6tV9wX1zY
+```
+
+* Response Body
+
+<details><summary>Example</summary>
+<p>
+
+```json
+{
+  "token": {
+    "methods": [
+      "password"
+    ],
+    "issued_at": "2026-10-13T02:35:05.000000Z",
+    "expires_at": "2026-10-13T14:35:05.000000Z",
+    "project": {
+      "id": "f5073eaa26b64cffbee89411df94ce01",
+      "name": "example-project",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "user": {
+      "id": "a1b2c3d4e5f6478899aabbccddeeff00",
+      "name": "example-user",
+      "domain": {
+        "id": "default",
+        "name": "Default"
+      }
+    },
+    "roles": [
+      {
+        "id": "21b7753ad7b54f1284af6e292cb35bea",
+        "name": "project_reader"
+      }
+    ],
+    "catalog": [
+      {
+        "type": "compute",
+        "name": "nova",
+        "endpoints": [
+          {
+            "region": "KR1",
+            "interface": "public",
+            "url": "https://kr1-api-instance-infrastructure.nhncloudservice.com/v2/f5073eaa26b64cffbee89411df94ce01"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</p>
+</details>
+
+<a id="issue-iaas-token-error-response"></a>
+### Error Response { #issue-iaas-token-error-response }
+
+If an error occurs, an error response in the OpenStack Keystone specification is returned.
+
+| HTTP Status Code | Description |
+|---------------------------|------------------------------------------------------------------------|
+| 400 Bad Request | The request format is invalid. |
+| 401 Unauthorized | The User Access Key or Secret Access Key is invalid, or a token cannot be issued with the requested AppKey. |
+| 500 Internal Server Error | An internal server error has occurred. |
+
+```json
+{
+  "error": {
+    "code": 401,
+    "message": "The request you have made requires authentication.",
+    "title": "Unauthorized"
+  }
+}
+```
+
+!!! danger "Caution"
+    * If the User Access Key or Secret Access Key does not match, or if the User Access Key is disabled, a token will not be issued.
+    * If the service is not enabled in the project of the requested AppKey, a token will not be issued.
+    * If a user loses their permissions within a project, the issued IaaS Token can no longer be used.
