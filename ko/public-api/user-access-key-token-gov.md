@@ -9,7 +9,7 @@ User Access Key 하나로 용도에 따라 서로 다른 형식의 토큰을 발
 
 | 토큰 형식 | 발급 API | 사용처 | 유효 시간 |
 | --- | --- | --- | --- |
-| Opaque | `POST /oauth2/token/create` | NHN Cloud Public API 전반 | 60초 ~ 24시간(설정 가능) |
+| Opaque | `POST /oauth2/token/create` | NHN Cloud Public API 전반 | 60초~24시간(설정 가능) |
 | Fernet | `POST /iaas-tokens/v3/auth/tokens` | OpenStack 기반 인프라 서비스(Compute, Block Storage, Network 등) | 12시간 고정 |
 
 User Access Key 토큰은 OAuth 2.0 액세스 토큰입니다. IaaS 토큰은 이와 별개로, User Access Key로 OpenStack Keystone의 Fernet 토큰을 발급받습니다.
@@ -307,12 +307,15 @@ User Access Key로 기본 인프라 서비스(IaaS)의 인증 토큰을 발급�
 
 ### 발급되는 토큰 형식
 
-IaaS 토큰은 OpenStack Keystone의 **Fernet** 형식으로 발급됩니다. Fernet 토큰은 사용자, 프로젝트, 역할, 만료 시각 등 인증에 필요한 정보가 토큰 문자열 자체에 암호화되어 담겨 있는 형식으로, `gAAAAA`로 시작하는 문자열입니다.
+IaaS 토큰은 OpenStack Keystone의 Fernet 형식으로 발급됩니다. Fernet 토큰은 사용자, 프로젝트, 역할, 만료 시각 등 인증에 필요한 정보가 토큰 문자열 자체에 암호화되어 담겨 있는 형식으로, `gAAAAA`로 시작하는 문자열입니다.
 
-* 받은 값을 그대로 `X-Auth-Token` 헤더에 담아 전달해야 하며, 토큰 내용을 직접 해석하거나 가공해서는 안 됩니다.
+* 받은 값을 그대로 `X-Auth-Token` 헤더에 전달해야 하며, 토큰 내용을 직접 해석하거나 가공해서는 안 됩니다.
 * OpenStack 표준 형식이므로 OpenStack CLI와 SDK에서 그대로 사용할 수 있습니다.
-* User Access Key 토큰과는 서로 다른 인증 체계입니다. 기본 인프라 서비스 API에는 Fernet 형식의 IaaS 토큰을, 그 외 NHN Cloud Public API에는 User Access Key 토큰을 사용해야 합니다.
-* 발급 후 12시간 동안 유효하며, 만료되면 재발급해야 합니다. 유효 시간은 변경할 수 없습니다.
+* User Access Key 토큰과는 서로 다른 인증 체계입니다.
+* 기본 인프라 서비스 API에는 Fernet 형식의 IaaS 토큰을 사용해야 합니다.
+* 그 외 NHN Cloud Public API에는 User Access Key 토큰을 사용해야 합니다.
+* 발급 후 12시간 동안 유효합니다. 유효 시간은 변경할 수 없습니다.
+* 토큰이 만료되면 재발급해야 합니다.
 
 ### 사전 조건
 
