@@ -9,10 +9,15 @@
 User Access Key tokens are temporary Bearer tokens issued based on a User Access Key. A Bearer token is a type of security token that grants access to any party in possession of the token. By setting an expiration time, you can ensure the security of your resources.
 These tokens operate using Attribute-Based Access Control (ABAC). When using a token, the specific roles and permissions assigned to the NHN Cloud or IAM account are applied, restricting API calls to the authorized scope of that account. Furthermore, you can achieve fine-grained access control by configuring detailed role conditions.
 
-NHN Cloud provides two token types:
+With a single User Access Key, you can issue tokens in different formats depending on the intended use.
 
-- **Opaque token**: The default token type used for general NHN Cloud API calls
-- **JWT token**: A token type currently available only for sending and receiving messages in the EasyQueue service
+| Token Type | Issuance API | Usage | Validity Time | Required User Access Key Format |
+| --- | --- | --- | --- | --- |
+| Opaque | `POST /oauth2/token/create` | NHN Cloud Public APIs (general) | From 60 seconds to 24 hours (settable) | Opaque |
+| JWT | `POST /oauth2/token/create` | EasyQueue message delivery and reception | From 60 seconds to 1 hour (settable) | JWT |
+| Fernet | `POST /iaas-tokens/v3/auth/tokens` | OpenStack-based infrastructure services (Compute, Block Storage, Network, etc.) | 12 hours (fixed) | Opaque |
+
+The format (Opaque / JWT) selected when creating a User Access Key is the format of the OAuth 2.0 access token. The IaaS Token is separate from this — it uses an Opaque-format User Access Key to issue a Fernet token from OpenStack Keystone.
 
 <a id="overview-of-user-access-key-token-issuance-and-public-api-calls"></a>
 ## Overview of User Access Key Token Issuance and Public API Calls { #overview-of-user-access-key-token-issuance-and-public-api-calls }
@@ -495,6 +500,19 @@ Unlike calling the Identity API of the basic infrastructure service directly, yo
     * The validity time of an IaaS Token issued through this API is fixed at 12 hours and cannot be changed.
     * No separate authentication header is required. Include the User Access Key ID and Secret Access Key in the request body.
 
+<a id="issue-iaas-token-format"></a>
+### Issued Token Format { #issue-iaas-token-format }
+
+IaaS tokens are issued in OpenStack Keystone's Fernet format. A Fernet token is a format in which the information required for authentication — such as user, project, role, and expiration time — is encrypted within the token string itself, and the string starts with `gAAAAA`.
+
+* Pass the received value as-is in the `X-Auth-Token` header. Do not attempt to interpret or modify the token contents directly.
+* Because this is the standard OpenStack format, you can use it as-is with the OpenStack CLI and SDK.
+* This is a different authentication scheme from the User Access Key token (Opaque format).
+* You must use a Fernet-format IaaS token for the basic infrastructure service APIs.
+* For all other NHN Cloud Public APIs, you must use a User Access Key token.
+* The token is valid for 12 hours after issuance. The validity time cannot be changed.
+* When the token expires, it must be reissued.
+
 <a id="issue-iaas-token-prerequisites"></a>
 ### Prerequisites { #issue-iaas-token-prerequisites }
 
@@ -516,11 +534,11 @@ Unlike calling the Identity API of the basic infrastructure service directly, yo
 <a id="issue-iaas-token-response"></a>
 ### Response { #issue-iaas-token-response }
 
-The issued IaaS Token is returned in the `X-Subject-Token` header, not in the response body.
+The issued IaaS Token is returned in the `X-Subject-Token` header, not in the response body. This value is an OpenStack Keystone Fernet token, and you use it as-is in the `X-Auth-Token` header to call APIs for controlling infrastructure resources.
 
 | Category | Name               | Type   | Description                                                      |
 |----------|--------------------|--------|------------------------------------------------------------------|
-| Header   | X-Subject-Token    | String | Issued IaaS Token                                                |
+| Header   | X-Subject-Token    | String | Issued IaaS Token (OpenStack Keystone Fernet token)                                                |
 | Body     | token.issued_at    | String | Token issuance time                                              |
 | Body     | token.expires_at   | String | Token expiration time. This is 12 hours after the issuance time. |
 | Body     | token.project      | Object | Information about the project to which the token applies         |
