@@ -7,9 +7,15 @@
 User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. Bearer 토큰은 토큰을 소유한 사용자라면 누구나 접근 권한을 부여 받는 보안 토큰의 한 종류로, 유효 기간을 설정할 수 있어 리소스를 안전하게 보호할 수 있습니다.
 User Access Key 토큰은 역할 기반 접근 제어 방식(ABAC, attribute-Based Access Control)으로 동작하여 토큰을 사용할 경우 NHN Cloud 계정 또는 IAM 계정에 부여된 역할 및 권한이 적용됩니다. 따라서 호출 가능한 API가 해당 계정의 역할 및 권한 범위 내로 제한됩니다. 또한 역할 상세 조건을 설정하여 정밀한 접근 제어가 가능합니다.
 
-NHN Cloud는 두 가지 타입의 토큰을 제공합니다.
-- **Opaque 토큰**: 일반적인 NHN Cloud API 호출에 사용되는 기본 토큰 타입
-- **JWT 토큰**: 현재 EasyQueue 서비스의 메시지 전송/수신 시에만 사용 가능한 토큰 타입
+User Access Key 하나로 용도에 따라 서로 다른 형식의 토큰을 발급받을 수 있습니다.
+
+| 토큰 형식 | 발급 API | 사용처 | 유효 시간 | 필요한 User Access Key 형식 |
+| --- | --- | --- | --- | --- |
+| Opaque | `POST /oauth2/token/create` | NHN Cloud Public API 전반 | 60초 ~ 24시간(설정 가능) | Opaque |
+| JWT | `POST /oauth2/token/create` | EasyQueue 메시지 전송/수신 | 60초 ~ 1시간(설정 가능) | JWT |
+| Fernet | `POST /iaas-tokens/v3/auth/tokens` | OpenStack 기반 인프라 서비스(Compute, Block Storage, Network 등) | 12시간 고정 | Opaque |
+
+User Access Key를 생성할 때 선택하는 형식(Opaque / JWT)은 OAuth 2.0 액세스 토큰의 형식입니다. IaaS 토큰은 이와 별개로, Opaque 형식 User Access Key로 OpenStack Keystone의 Fernet 토큰을 발급받습니다.
 
 <a id="overview-of-user-access-key-token-issuance-and-public-api-calls"></a>
 ## User Access Key 토큰 발급 및 Public API 호출 개요 { #overview-of-user-access-key-token-issuance-and-public-api-calls }
@@ -492,6 +498,16 @@ User Access Key로 기본 인프라 서비스(IaaS)의 인증 토큰을 발급�
     * 이 API로 발급한 IaaS 토큰의 유효 시간은 12시간으로 고정되어 있으며 변경할 수 없습니다.
     * 별도의 인증 헤더가 필요하지 않습니다. User Access Key ID와 Secret Access Key를 요청 본문에 담아 전달합니다.
 
+<a id="issue-iaas-token-format"></a>
+### 발급되는 토큰 형식 { #issue-iaas-token-format }
+
+IaaS 토큰은 OpenStack Keystone의 **Fernet** 형식으로 발급됩니다. Fernet 토큰은 사용자, 프로젝트, 역할, 만료 시각 등 인증에 필요한 정보가 토큰 문자열 자체에 암호화되어 담겨 있는 형식으로, `gAAAAA`로 시작하는 문자열입니다.
+
+* 받은 값을 그대로 `X-Auth-Token` 헤더에 담아 전달해야 하며, 토큰 내용을 직접 해석하거나 가공해서는 안 됩니다.
+* OpenStack 표준 형식이므로 OpenStack CLI와 SDK에서 그대로 사용할 수 있습니다.
+* User Access Key 토큰(Opaque 형식)과는 서로 다른 인증 체계입니다. 기본 인프라 서비스 API에는 Fernet 형식의 IaaS 토큰을, 그 외 NHN Cloud Public API에는 User Access Key 토큰을 사용해야 합니다.
+* 발급 후 12시간 동안 유효하며, 만료되면 재발급해야 합니다. 유효 시간은 변경할 수 없습니다.
+
 <a id="issue-iaas-token-prerequisites"></a>
 ### 사전 조건 { #issue-iaas-token-prerequisites }
 
@@ -513,11 +529,11 @@ User Access Key로 기본 인프라 서비스(IaaS)의 인증 토큰을 발급�
 <a id="issue-iaas-token-response"></a>
 ### 응답 { #issue-iaas-token-response }
 
-발급된 IaaS 토큰은 응답 본문이 아닌 `X-Subject-Token` 헤더에 담겨 반환됩니다.
+발급된 IaaS 토큰은 응답 본문이 아닌 `X-Subject-Token` 헤더에 담겨 반환됩니다. 이 값은 OpenStack Keystone의 Fernet 토큰이며, 그대로 `X-Auth-Token` 헤더에 넣어 인프라 리소스 제어 API를 호출합니다.
 
 | 구분     | 이름               | 타입     | 설명                            |
 |--------|------------------|--------|-------------------------------|
-| Header | X-Subject-Token  | String | 발급된 IaaS 토큰                   |
+| Header | X-Subject-Token  | String | 발급된 IaaS 토큰(OpenStack Keystone Fernet 토큰) |
 | Body   | token.issued_at  | String | 토큰 발급 시각                      |
 | Body   | token.expires_at | String | 토큰 만료 시각. 발급 시각으로부터 12시간 뒤입니다 |
 | Body   | token.project    | Object | 토큰이 적용되는 프로젝트 정보              |
