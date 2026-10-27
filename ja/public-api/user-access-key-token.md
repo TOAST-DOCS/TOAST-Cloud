@@ -1,6 +1,6 @@
 <!-- machine_translated: true -->
 
-<!-- pre-align:aligned sig=795351db7f41 -->
+<!-- pre-align:aligned sig=244a740a7bef -->
 
 # User Access Keyトークン
 
@@ -9,10 +9,15 @@
 User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。Bearerトークンは、トークンを所有するユーザーであれば誰でもアクセス権限が付与されるセキュリティトークンの一種で、有効期限を設定できるためリソースを安全に保護できます。
 User Access Keyトークンは、ロールベースのアクセス制御(ABAC、Attribute-Based Access Control)方式で動作し、トークンを使用する場合はNHN CloudアカウントまたはIAMアカウントに付与されたロール及び権限が適用されます。そのため、呼び出し可能なAPIは該当アカウントのロール及び権限の範囲内に制限されます。また、ロールの詳細条件を設定することで、きめ細かいアクセス制御が可能です。
 
-NHN Cloudは2種類のタイプのトークンを提供します。
+1つのUser Access Keyで、用途に応じて異なる形式のトークンを発行できます。
 
-- **Opaqueトークン**: 一般的なNHN Cloud APIの呼び出しに使用されるデフォルトのトークンタイプ
-- **JWTトークン**: 現在、EasyQueueサービスのメッセージ送受信時にのみ使用可能なトークンタイプ
+| トークン形式 | 発行API | 使用先 | 有効時間 | 必要なUser Access Key形式 |
+| --- | --- | --- | --- | --- |
+| Opaque | `POST /oauth2/token/create` | NHN Cloud Public API全般 | 60秒～24時間(設定可) | Opaque |
+| JWT | `POST /oauth2/token/create` | EasyQueueメッセージ送受信 | 60秒～1時間(設定可) | JWT |
+| Fernet | `POST /iaas-tokens/v3/auth/tokens` | OpenStackベースのインフラサービス(Compute、Block Storage、Networkなど) | 12時間固定 | Opaque |
+
+User Access Keyを作成する際に選択する形式(Opaque / JWT)は、OAuth 2.0アクセストークンの形式です。IaaSトークンはこれとは別に、Opaque形式のUser Access KeyでOpenStack KeystoneのFernetトークンを発行します。
 
 <a id="overview-of-user-access-key-token-issuance-and-public-api-calls"></a>
 ## User Access Keyトークンの発行及びPublic API呼び出しの概要 { #overview-of-user-access-key-token-issuance-and-public-api-calls }
@@ -498,6 +503,19 @@ User Access Keyを使用して、基本インフラサービス(IaaS)の認証�
     * このAPIで発行したIaaSトークンの有効時間は12時間に固定されており、変更することはできません。
     * 別途の認証ヘッダは必要ありません。User Access Key IDとSecret Access Keyをリクエストボディに含めて送信します。
 
+<a id="issue-iaas-token-format"></a>
+### 発行されるトークン形式 { #issue-iaas-token-format }
+
+IaaSトークンはOpenStack KeystoneのFernet形式で発行されます。Fernetトークンは、ユーザー、プロジェクト、ロール、有効期限など認証に必要な情報がトークン文字列自体に暗号化されて含まれる形式で、`gAAAAA`で始まる文字列です。
+
+* 受け取った値をそのまま`X-Auth-Token`ヘッダに渡す必要があり、トークンの内容を直接解析したり加工したりしないでください。
+* OpenStack標準形式のため、OpenStack CLIとSDKでそのまま使用できます。
+* User Access Keyトークン(Opaque形式)とは異なる認証方式です。
+* 基本インフラサービスAPIにはFernet形式のIaaSトークンを使用する必要があります。
+* その他のNHN Cloud Public APIにはUser Access Keyトークンを使用する必要があります。
+* 発行後12時間有効です。有効時間は変更することはできません。
+* トークンの有効期限が切れた場合は再発行する必要があります。
+
 <a id="issue-iaas-token-prerequisites"></a>
 ### 事前条件 { #issue-iaas-token-prerequisites }
 
@@ -519,11 +537,11 @@ User Access Keyを使用して、基本インフラサービス(IaaS)の認証�
 <a id="issue-iaas-token-response"></a>
 ### レスポンス { #issue-iaas-token-response }
 
-発行されたIaaSトークンはレスポンス本文ではなく、`X-Subject-Token`ヘッダに格納されて返されます。
+発行されたIaaSトークンはレスポンス本文ではなく、`X-Subject-Token`ヘッダに格納されて返されます。この値はOpenStack KeystoneのFernetトークンであり、そのまま`X-Auth-Token`ヘッダに入れてインフラリソース制御APIを呼び出します。
 
 | 区分     | 名前               | タイプ     | 説明                            |
 |--------|------------------|--------|-------------------------------|
-| Header | X-Subject-Token  | String | 発行されたIaaSトークン                   |
+| Header | X-Subject-Token  | String | 発行されたIaaSトークン(OpenStack Keystone Fernetトークン) |
 | Body   | token.issued_at  | String | トークン発行時刻                      |
 | Body   | token.expires_at | String | トークン有効期限時刻。発行時刻から12時間後です |
 | Body   | token.project    | Object | トークンが適用されるプロジェクト情報              |
